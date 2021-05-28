@@ -15,13 +15,13 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websocket</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Creates a new [WebSocket client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client).</span>
+    <span class="c1">// Create a new [WebSocket client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client).</span>
    <span class="nx">websocket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">wsClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;ws://echo.websocket.org&quot;</span><span class="p">);</span>
 
-   <span class="c1">// Writes a text message to the server using [writeTextMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client#writeTextMessage).</span>
+   <span class="c1">// Write a text message to the server using [writeTextMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client#writeTextMessage).</span>
    <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">writeTextMessage</span><span class="p">(</span><span class="s">&quot;Text message&quot;</span><span class="p">);</span>
 
-   <span class="c1">// Reads a text message echoed from the server using [readTextMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client#readTextMessage).</span>
+   <span class="c1">// Read a text message echoed from the server using [readTextMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client#readTextMessage).</span>
    <span class="kt">string</span> <span class="nx">textResp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">readTextMessage</span><span class="p">();</span>
    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">textResp</span><span class="p">);</span>
 <span class="p">}</span>
@@ -44,9 +44,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="graphql-hierarchical-resource-paths.html">
+                                    <a class="prev" href="graphql-input-types.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Resources with Hierarchical Resource Paths</p>
+                                        <p>Input Types</p>
                                     </a>
                                 </div>
                                  
@@ -143,7 +143,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates a new <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client">WebSocket client</a>.</p>
+                                            <p>Create a new <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client">WebSocket client</a>.</p>
 
                                         </div>
                                     </div>
@@ -162,7 +162,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Writes a text message to the server using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client#writeTextMessage">writeTextMessage</a>.</p>
+                                            <p>Write a text message to the server using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client#writeTextMessage">writeTextMessage</a>.</p>
 
                                         </div>
                                     </div>
@@ -183,7 +183,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Reads a text message echoed from the server using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client#readTextMessage">readTextMessage</a>.</p>
+                                            <p>Read a text message echoed from the server using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client#readTextMessage">readTextMessage</a>.</p>
 
                                         </div>
                                     </div>

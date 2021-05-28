@@ -14,14 +14,14 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
 
-<span class="c1">// This before-function is executed before the test function.</span>
+<span class="c1">// Executed before the `testFunction` function.</span>
 <span class="kd">function</span> <span class="nx">beforeFunc</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the before function!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="c1">// The Test function.</span>
-<span class="c1">// Use the `before` and `after` attributes to define the function names</span>
-<span class="c1">// of the functions that need to be executed before and after the test function.</span>
+<span class="c1">// The `before` and `after` attributes are used to define the functions</span>
+<span class="c1">// that need to be executed before and after this test function.</span>
 <span class="nd">@test:Config {</span>
     <span class="nx">before</span><span class="p">:</span> <span class="nx">beforeFunc</span><span class="p">,</span>
     <span class="nx">after</span><span class="p">:</span> <span class="nx">afterFunc</span>
@@ -31,7 +31,7 @@ redirect_from:
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// This after-function is executed after the test function.</span>
+<span class="c1">// Executed after the `testFunction` function.</span>
 <span class="kd">function</span> <span class="nx">afterFunc</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the after function!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
@@ -45,8 +45,8 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Before and After Test</h2>
                             <p><p>The <code>before</code> attribute allows you to execute a function before a test function.
- This capability can be used for setting up prerequisites that need to be executed before executing a test.
  Similarly, the <code>after</code> attribute can be used to execute a function after a test function.<br/><br/>
+ These annotations can be used to set up the prerequisites and post actions for a test case.<br/><br/>
  For more information, see <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>
  and the <a href="https://docs.central.ballerina.io/ballerina/test/latest/">Test Module</a>.</p>
 </p>
@@ -143,7 +143,7 @@ import ballerina/test;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This before-function is executed before the test function.</p>
+                                            <p>Executed before the <code>testFunction</code> function.</p>
 
                                         </div>
                                     </div>
@@ -170,8 +170,8 @@ function testFunction() {
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The Test function.
- Use the <code>before</code> and <code>after</code> attributes to define the function names
- of the functions that need to be executed before and after the test function.</p>
+ The <code>before</code> and <code>after</code> attributes are used to define the functions
+ that need to be executed before and after this test function.</p>
 
                                         </div>
                                     </div>
@@ -192,7 +192,7 @@ function testFunction() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This after-function is executed after the test function.</p>
+                                            <p>Executed after the <code>testFunction</code> function.</p>
 
                                         </div>
                                     </div>
@@ -220,6 +220,10 @@ function testFunction() {
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -229,7 +233,18 @@ function testFunction() {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal test test_module
-Compiling source
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Compiling source
         ballerinatest/test_module:0.1.0
 </code></pre></div>
 

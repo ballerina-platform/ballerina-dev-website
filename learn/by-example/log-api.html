@@ -17,65 +17,42 @@ redirect_from:
     <span class="c1">// The Ballerina log API provides functions to log at four levels, which are</span>
     <span class="c1">// `DEBUG`, `ERROR`, `INFO`, and `WARN`. By default, all log messages are</span>
     <span class="c1">// logged to the console at the `INFO` level.</span>
-    <span class="c1">// The log level can be configured via a Ballerina configuration file.</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printDebug</span><span class="p">(</span><span class="s">&quot;debug log&quot;</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log&quot;</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;info log&quot;</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printWarn</span><span class="p">(</span><span class="s">&quot;warn log&quot;</span><span class="p">);</span>
-    <span class="c1">// To set the global log level, place the entry given below in the Config.toml file:</span>
-    <span class="c1">//</span>
-    <span class="c1">// ```</span>
-    <span class="c1">// [ballerina.log]</span>
-    <span class="c1">// level = &quot;[LOG_LEVEL]&quot;</span>
-    <span class="c1">// ```</span>
 
-    <span class="c1">// Each module can also be assigned its own log level. To assign a</span>
-    <span class="c1">// log level to a module, provide the following entry in the Config.toml file:</span>
-    <span class="c1">//</span>
-    <span class="c1">// ```</span>
-    <span class="c1">// [[ballerina.log.modules]]</span>
-    <span class="c1">// name = &quot;[ORG_NAME]/[MODULE_NAME]&quot;</span>
-    <span class="c1">// level = &quot;[LOG_LEVEL]&quot;</span>
-    <span class="c1">// ```</span>
-
-    <span class="c1">// Users can pass any number of key/value pairs which needs to be displayed in the log message.</span>
-    <span class="c1">// These can be of `anydata` type including int, string and boolean.</span>
+    <span class="c1">// You can pass any number of key/value pairs, which need to be displayed in the log message.</span>
+    <span class="c1">// These can be of the `anydata` type including int, string, and boolean.</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;info log&quot;</span><span class="p">,</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">845315</span><span class="p">,</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="nx">successful</span> <span class="p">=</span> <span class="kc">true</span><span class="p">);</span>
 
-    <span class="c1">// Users can also pass key/value pairs where the values are function pointers.</span>
+    <span class="c1">// You can also pass key/value pairs where the values are function pointers.</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;info log&quot;</span><span class="p">,</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">845315</span><span class="p">,</span>
               <span class="nx">name</span> <span class="p">=</span> <span class="nx">isolated</span> <span class="kd">function</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;foo&quot;</span><span class="p">;});</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log&quot;</span><span class="p">,</span>
         <span class="nx">id</span> <span class="p">=</span> <span class="nx">isolated</span> <span class="kd">function</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">845315</span><span class="p">;},</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;foo&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Users can also pass a key/value pair where the value is an error stack trace.</span>
-    <span class="nx">f1</span><span class="p">();</span>
+    <span class="c1">// You can also pass a key/value pair in which the value is an error stack trace.</span>
+    <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">f1</span><span class="p">();</span>
+    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log&quot;</span><span class="p">,</span> <span class="nx">stackTrace</span> <span class="p">=</span> <span class="nx">err</span><span class="p">.</span><span class="nx">stackTrace</span><span class="p">().</span><span class="nx">callStack</span><span class="p">,</span>
+     <span class="nx">username</span> <span class="p">=</span> <span class="s">&quot;Alex92&quot;</span><span class="p">,</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">845315</span><span class="p">);</span>
 
     <span class="c1">// Optionally, an error can be passed to the functions.</span>
     <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;something went wrong!&quot;</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log with cause&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">845315</span><span class="p">,</span>
         <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;foo&quot;</span><span class="p">);</span>
-
-    <span class="c1">// To set the output format to JSON, place the entry given below in the `Config.toml` file.</span>
-    <span class="c1">//</span>
-    <span class="c1">// ```</span>
-    <span class="c1">// [ballerina.log]</span>
-    <span class="c1">// format = &quot;json&quot;</span>
-    <span class="c1">// ```</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">f1</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">f2</span><span class="p">();</span>
+<span class="kd">function</span> <span class="nx">f1</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">f2</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">f2</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">f3</span><span class="p">();</span>
+<span class="kd">function</span> <span class="nx">f2</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">f3</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">f3</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;bad sad&quot;</span><span class="p">);</span>
-    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error log&quot;</span><span class="p">,</span> <span class="nx">stackTrace</span> <span class="p">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">stackTrace</span><span class="p">().</span><span class="nx">callStack</span><span class="p">,</span>
-     <span class="nx">username</span> <span class="p">=</span> <span class="s">&quot;Alex92&quot;</span><span class="p">,</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">845315</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">f3</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;bad sad&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -87,7 +64,29 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Log</h2>
                             <p><p>The Ballerina Log API contains the application log handling functions.<br/><br/>
- For more information on the underlying module,
+ The log level can be configured via a Ballerina configuration file.
+ To set the global log level, place the entry given below in the <code>Config.toml</code> file:</p>
+
+<pre><code> [ballerina.log]
+ level = &quot;[LOG_LEVEL]&quot;
+</code></pre>
+
+<p>Each module can also be assigned its own log level. To assign a
+ log level to a module, provide the following entry in the <code>Config.toml</code> file:</p>
+
+<pre><code> [[ballerina.log.modules]]
+ name = &quot;[ORG_NAME]/[MODULE_NAME]&quot;
+ level = &quot;[LOG_LEVEL]&quot;
+</code></pre>
+
+<p>By default, log messages are logged to the console in LogFmt format.
+ To set the output format to JSON, place the entry given below in the <code>Config.toml</code> file.</p>
+
+<pre><code> [ballerina.log]
+ format = &quot;json&quot;
+</code></pre>
+
+<p>For more information on the underlying module,
  see the <a href="https://docs.central.ballerina.io/ballerina/log/latest/">Log module</a>.</p>
 </p>
 
@@ -129,7 +128,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=0263fb648a1d3507b64e927afaa3594a&file=log_api.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=6f6ecb8f8be81e865848c1d410f02c96&file=log_api.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -147,12 +146,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -219,52 +212,7 @@ redirect_from:
                                         <div>
                                             <p>The Ballerina log API provides functions to log at four levels, which are
  <code>DEBUG</code>, <code>ERROR</code>, <code>INFO</code>, and <code>WARN</code>. By default, all log messages are
- logged to the console at the <code>INFO</code> level.
- The log level can be configured via a Ballerina configuration file.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code empty leading">
-                                    
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>To set the global log level, place the entry given below in the Config.toml file:</p>
-
-<pre><code> [ballerina.log]
- level = &quot;[LOG_LEVEL]&quot;
-</code></pre>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code empty leading">
-                                    
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Each module can also be assigned its own log level. To assign a
- log level to a module, provide the following entry in the Config.toml file:</p>
-
-<pre><code> [[ballerina.log.modules]]
- name = &quot;[ORG_NAME]/[MODULE_NAME]&quot;
- level = &quot;[LOG_LEVEL]&quot;
-</code></pre>
+ logged to the console at the <code>INFO</code> level.</p>
 
                                         </div>
                                     </div>
@@ -283,8 +231,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Users can pass any number of key/value pairs which needs to be displayed in the log message.
- These can be of <code>anydata</code> type including int, string and boolean.</p>
+                                            <p>You can pass any number of key/value pairs, which need to be displayed in the log message.
+ These can be of the <code>anydata</code> type including int, string, and boolean.</p>
 
                                         </div>
                                     </div>
@@ -306,7 +254,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Users can also pass key/value pairs where the values are function pointers.</p>
+                                            <p>You can also pass key/value pairs where the values are function pointers.</p>
 
                                         </div>
                                     </div>
@@ -317,7 +265,9 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    f1();
+                                    <div class="highlight"><pre><code class=language-ballerina>    error err = f1();
+    log:printError(&quot;error log&quot;, stackTrace = err.stackTrace().callStack,
+     username = &quot;Alex92&quot;, id = 845315);
 </code></pre></div>
 
                                 </td>
@@ -325,7 +275,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Users can also pass a key/value pair where the value is an error stack trace.</p>
+                                            <p>You can also pass a key/value pair in which the value is an error stack trace.</p>
 
                                         </div>
                                     </div>
@@ -339,6 +289,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>    error e = error(&quot;something went wrong!&quot;);
     log:printError(&quot;error log with cause&quot;, &#39;error = e, id = 845315,
         name = &quot;foo&quot;);
+}
 </code></pre></div>
 
                                 </td>
@@ -354,34 +305,11 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>To set the output format to JSON, place the entry given below in the <code>Config.toml</code> file.</p>
-
-<pre><code> [ballerina.log]
- format = &quot;json&quot;
-</code></pre>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function f1() {
-    f2();
+                                    <div class="highlight"><pre><code class=language-ballerina>function f1() returns error {
+    return f2();
 }
 </code></pre></div>
 
@@ -394,8 +322,8 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function f2() {
-    f3();
+                                    <div class="highlight"><pre><code class=language-ballerina>function f2() returns error {
+    return f3();
 }
 </code></pre></div>
 
@@ -408,10 +336,8 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function f3() {
-    error e = error(&quot;bad sad&quot;);
-    log:printError(&quot;error log&quot;, stackTrace = e.stackTrace().callStack,
-     username = &quot;Alex92&quot;, id = 845315);
+                                    <div class="highlight"><pre><code class=language-ballerina>function f3() returns error {
+    return error(&quot;bad sad&quot;);
 }
 </code></pre></div>
 
@@ -445,14 +371,14 @@ redirect_from:
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `bal run` command below.
 bal run log_api.bal
-time = 2021-02-23 15:50:36,620 level = ERROR module = &quot;&quot; message = &quot;error log&quot;
-time = 2021-02-23 15:50:36,649 level = INFO  module = &quot;&quot; message = &quot;info log&quot;
-time = 2021-02-23 15:50:36,650 level = WARN  module = &quot;&quot; message = &quot;warn log&quot;
-time = 2021-02-23 15:50:36,660 level = INFO  module = &quot;&quot; message = &quot;info log&quot; name = &quot;foo&quot; id = 845315 successful = true
-time = 2021-02-23 15:50:36,662 level = INFO  module = &quot;&quot; message = &quot;info log&quot; name = &quot;foo&quot; id = 845315
-time = 2021-02-23 15:50:36,664 level = ERROR module = &quot;&quot; message = &quot;error log&quot; name = &quot;foo&quot; id = 845315
-time = 2021-02-23 15:50:36,679 level = ERROR module = &quot;&quot; message = &quot;error log&quot; stackTrace = [{&quot;callableName&quot;:&quot;f3&quot;,&quot;moduleName&quot;:&quot;log-bbe&quot;,&quot;fileName&quot;:&quot;log-bbe.bal&quot;,&quot;lineNumber&quot;:62},{&quot;callableName&quot;:&quot;f2&quot;,&quot;moduleName&quot;:&quot;log-bbe&quot;,&quot;fileName&quot;:&quot;log-bbe.bal&quot;,&quot;lineNumber&quot;:58},{&quot;callableName&quot;:&quot;f1&quot;,&quot;moduleName&quot;:&quot;log-bbe&quot;,&quot;fileName&quot;:&quot;log-bbe.bal&quot;,&quot;lineNumber&quot;:54},{&quot;callableName&quot;:&quot;main&quot;,&quot;moduleName&quot;:&quot;log-bbe&quot;,&quot;fileName&quot;:&quot;log-bbe.bal&quot;,&quot;lineNumber&quot;:39}] id = 845315 username = &quot;Alex92&quot;
-time = 2021-02-23 15:50:36,681 level = ERROR module = &quot;&quot; message = &quot;error log with cause&quot; error = &quot;something went wrong!&quot; name = &quot;foo&quot; id = 845315
+time = 2021-05-14T09:35:07.421+05:30 level = ERROR module = &quot;&quot; message = &quot;error log&quot;
+time = 2021-05-14T09:35:07.431+05:30 level = INFO module = &quot;&quot; message = &quot;info log&quot;
+time = 2021-05-14T09:35:07.432+05:30 level = WARN module = &quot;&quot; message = &quot;warn log&quot;
+time = 2021-05-14T09:35:07.433+05:30 level = INFO module = &quot;&quot; message = &quot;info log&quot; name = &quot;foo&quot; id = 845315 successful = true
+time = 2021-05-14T09:35:07.440+05:30 level = INFO module = &quot;&quot; message = &quot;info log&quot; name = &quot;foo&quot; id = 845315
+time = 2021-05-14T09:35:07.441+05:30 level = ERROR module = &quot;&quot; message = &quot;error log&quot; name = &quot;foo&quot; id = 845315
+time = 2021-05-14T09:35:07.449+05:30 level = ERROR module = &quot;&quot; message = &quot;error log&quot; stackTrace = [{&quot;callableName&quot;:&quot;f3&quot;,&quot;moduleName&quot;:&quot;log&quot;,&quot;fileName&quot;:&quot;log.bal&quot;,&quot;lineNumber&quot;:66},{&quot;callableName&quot;:&quot;f2&quot;,&quot;moduleName&quot;:&quot;log&quot;,&quot;fileName&quot;:&quot;log.bal&quot;,&quot;lineNumber&quot;:62},{&quot;callableName&quot;:&quot;f1&quot;,&quot;moduleName&quot;:&quot;log&quot;,&quot;fileName&quot;:&quot;log.bal&quot;,&quot;lineNumber&quot;:58},{&quot;callableName&quot;:&quot;main&quot;,&quot;moduleName&quot;:&quot;log&quot;,&quot;fileName&quot;:&quot;log.bal&quot;,&quot;lineNumber&quot;:23}] id = 845315 username = &quot;Alex92&quot;
+time = 2021-05-14T09:35:07.460+05:30 level = ERROR module = &quot;&quot; message = &quot;error log with cause&quot; error = &quot;something went wrong!&quot; name = &quot;foo&quot; id = 845315
 </code></pre></div>
 
                                 </td>
@@ -465,14 +391,14 @@ time = 2021-02-23 15:50:36,681 level = ERROR module = &quot;&quot; message = &qu
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># If the `format` is set to &quot;json&quot;, the log output will be as follows.
-{&quot;time&quot;: &quot;2021-02-23 15:51:54,117&quot;, &quot;level&quot;: &quot;ERROR&quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;error log&quot;}
-{&quot;time&quot;: &quot;2021-02-23 15:51:54,147&quot;, &quot;level&quot;: &quot;INFO &quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;info log&quot;}
-{&quot;time&quot;: &quot;2021-02-23 15:51:54,148&quot;, &quot;level&quot;: &quot;WARN &quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;warn log&quot;}
-{&quot;time&quot;: &quot;2021-02-23 15:51:54,156&quot;, &quot;level&quot;: &quot;INFO &quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;info log&quot;, &quot;name&quot;: &quot;foo&quot;, &quot;id&quot;: 845315, &quot;successful&quot;: true}
-{&quot;time&quot;: &quot;2021-02-23 15:51:54,157&quot;, &quot;level&quot;: &quot;INFO &quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;info log&quot;, &quot;name&quot;: &quot;foo&quot;, &quot;id&quot;: 845315}
-{&quot;time&quot;: &quot;2021-02-23 15:51:54,158&quot;, &quot;level&quot;: &quot;ERROR&quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;error log&quot;, &quot;name&quot;: &quot;foo&quot;, &quot;id&quot;: 845315}
-{&quot;time&quot;: &quot;2021-02-23 15:51:54,169&quot;, &quot;level&quot;: &quot;ERROR&quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;error log&quot;, &quot;stackTrace&quot;: [{&quot;callableName&quot;:&quot;f3&quot;,&quot;moduleName&quot;:&quot;log-bbe&quot;,&quot;fileName&quot;:&quot;log-bbe.bal&quot;,&quot;lineNumber&quot;:62},{&quot;callableName&quot;:&quot;f2&quot;,&quot;moduleName&quot;:&quot;log-bbe&quot;,&quot;fileName&quot;:&quot;log-bbe.bal&quot;,&quot;lineNumber&quot;:58},{&quot;callableName&quot;:&quot;f1&quot;,&quot;moduleName&quot;:&quot;log-bbe&quot;,&quot;fileName&quot;:&quot;log-bbe.bal&quot;,&quot;lineNumber&quot;:54},{&quot;callableName&quot;:&quot;main&quot;,&quot;moduleName&quot;:&quot;log-bbe&quot;,&quot;fileName&quot;:&quot;log-bbe.bal&quot;,&quot;lineNumber&quot;:39}], &quot;id&quot;: 845315, &quot;username&quot;: &quot;Alex92&quot;}
-{&quot;time&quot;: &quot;2021-02-23 15:51:54,171&quot;, &quot;level&quot;: &quot;ERROR&quot;, &quot;module&quot;: &quot;&quot;, &quot;message&quot;: &quot;error log with cause&quot;, &quot;error&quot;: &quot;something went wrong!&quot;, &quot;name&quot;: &quot;foo&quot;, &quot;id&quot;: 845315}
+{&quot;time&quot;:&quot;2021-05-14T09:37:05.248+05:30&quot;, &quot;level&quot;:&quot;ERROR&quot;, &quot;module&quot;:&quot;&quot;, &quot;message&quot;:&quot;error log&quot;}
+{&quot;time&quot;:&quot;2021-05-14T09:37:05.263+05:30&quot;, &quot;level&quot;:&quot;INFO&quot;, &quot;module&quot;:&quot;&quot;, &quot;message&quot;:&quot;info log&quot;}
+{&quot;time&quot;:&quot;2021-05-14T09:37:05.264+05:30&quot;, &quot;level&quot;:&quot;WARN&quot;, &quot;module&quot;:&quot;&quot;, &quot;message&quot;:&quot;warn log&quot;}
+{&quot;time&quot;:&quot;2021-05-14T09:37:05.265+05:30&quot;, &quot;level&quot;:&quot;INFO&quot;, &quot;module&quot;:&quot;&quot;, &quot;message&quot;:&quot;info log&quot;, &quot;name&quot;:&quot;foo&quot;, &quot;id&quot;:845315, &quot;successful&quot;:true}
+{&quot;time&quot;:&quot;2021-05-14T09:37:05.278+05:30&quot;, &quot;level&quot;:&quot;INFO&quot;, &quot;module&quot;:&quot;&quot;, &quot;message&quot;:&quot;info log&quot;, &quot;name&quot;:&quot;foo&quot;, &quot;id&quot;:845315}
+{&quot;time&quot;:&quot;2021-05-14T09:37:05.279+05:30&quot;, &quot;level&quot;:&quot;ERROR&quot;, &quot;module&quot;:&quot;&quot;, &quot;message&quot;:&quot;error log&quot;, &quot;name&quot;:&quot;foo&quot;, &quot;id&quot;:845315}
+{&quot;time&quot;:&quot;2021-05-14T09:37:05.285+05:30&quot;, &quot;level&quot;:&quot;ERROR&quot;, &quot;module&quot;:&quot;&quot;, &quot;message&quot;:&quot;error log&quot;, &quot;stackTrace&quot;:[{&quot;callableName&quot;:&quot;f3&quot;, &quot;moduleName&quot;:&quot;log&quot;, &quot;fileName&quot;:&quot;log.bal&quot;, &quot;lineNumber&quot;:66}, {&quot;callableName&quot;:&quot;f2&quot;, &quot;moduleName&quot;:&quot;log&quot;, &quot;fileName&quot;:&quot;log.bal&quot;, &quot;lineNumber&quot;:62}, {&quot;callableName&quot;:&quot;f1&quot;, &quot;moduleName&quot;:&quot;log&quot;, &quot;fileName&quot;:&quot;log.bal&quot;, &quot;lineNumber&quot;:58}, {&quot;callableName&quot;:&quot;main&quot;, &quot;moduleName&quot;:&quot;log&quot;, &quot;fileName&quot;:&quot;log.bal&quot;, &quot;lineNumber&quot;:23}], &quot;id&quot;:845315, &quot;username&quot;:&quot;Alex92&quot;}
+{&quot;time&quot;:&quot;2021-05-14T09:37:05.287+05:30&quot;, &quot;level&quot;:&quot;ERROR&quot;, &quot;module&quot;:&quot;&quot;, &quot;message&quot;:&quot;error log with cause&quot;, &quot;error&quot;:&quot;something went wrong!&quot;, &quot;name&quot;:&quot;foo&quot;, &quot;id&quot;:845315}
 </code></pre></div>
 
                                 </td>

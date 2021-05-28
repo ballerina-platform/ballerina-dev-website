@@ -17,83 +17,87 @@ redirect_from:
 
 <span class="kd">function</span> <span class="nx">hash</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Input value for hash operations.</span>
-    <span class="kt">string</span> <span class="nx">input</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina!&quot;</span><span class="p">;</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">inputArr</span> <span class="p">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
+    <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina!&quot;</span><span class="p">;</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">input</span> <span class="p">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
 
-    <span class="c1">// Hashing input value using [MD5 hashing algorithm](https://docs.central.ballerina.io/ballerina/crypto/latest/functions#hashMd5), and printing hash value using Hex encoding.</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">output</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hashMd5</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">);</span>
+    <span class="c1">// Hashing input value using the [MD5 hashing algorithm](https://docs.central.ballerina.io/ballerina/crypto/latest/functions#hashMd5), and printing the hash value using the Hex encoding.</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">output</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hashMd5</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hex encoded hash with MD5: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase16</span><span class="p">());</span>
 
-    <span class="c1">// Hashing input value using SHA1 hashing algorithm, and printing hash value using Base64 encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hashSha1</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">);</span>
+    <span class="c1">// Hashing the input value using the SHA1 hashing algorithm, and printing the hash value using the Base64 encoding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hashSha1</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base64 encoded hash with SHA1: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase64</span><span class="p">());</span>
 
-    <span class="c1">// Hashing input value using SHA256 hashing algorithm, and printing hash value using Hex encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hashSha256</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">);</span>
+    <span class="c1">// Hashing the input value using the SHA256 hashing algorithm, and printing the hash value using the Hex encoding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hashSha256</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hex encoded hash with SHA256: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase16</span><span class="p">());</span>
 
-    <span class="c1">// Hashing input value using SHA384 hashing algorithm, and printing hash value using Base64 encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hashSha384</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">);</span>
+    <span class="c1">// Hashing the input value using the SHA384 hashing algorithm, and printing the hash value using the Base64 encoding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hashSha384</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base64 encoded hash with SHA384: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase64</span><span class="p">());</span>
 
-    <span class="c1">// Hashing input value using SHA512 hashing algorithm, and printing hash value using Hex encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hashSha512</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">);</span>
+    <span class="c1">// Hashing the input value using the SHA512 hashing algorithm, and printing the hash value using the Hex encoding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hashSha512</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hex encoded hash with SHA512: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase16</span><span class="p">());</span>
 
-    <span class="c1">// Hex encoded CRC32B checksum generation for input value.</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;CRC32B for text: &quot;</span> <span class="o">+</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">crc32b</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">));</span>
+    <span class="c1">// The Hex-encoded CRC32B checksum generation for the input value.</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;CRC32B for text: &quot;</span> <span class="o">+</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">crc32b</span><span class="p">(</span><span class="nx">input</span><span class="p">));</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">hmac</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Input value for hmac operations.</span>
-    <span class="kt">string</span> <span class="nx">input</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina!&quot;</span><span class="p">;</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">inputArr</span> <span class="p">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
+    <span class="c1">// Input value for HMAC operations.</span>
+    <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina!&quot;</span><span class="p">;</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">input</span> <span class="p">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
 
-    <span class="c1">// The key used for HMAC generation.</span>
-    <span class="kt">string</span> <span class="nx">key</span> <span class="p">=</span> <span class="s">&quot;somesecret&quot;</span><span class="p">;</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">keyArr</span> <span class="p">=</span> <span class="nx">key</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
+    <span class="c1">// The key used for the HMAC generation.</span>
+    <span class="kt">string</span> <span class="nx">secret</span> <span class="p">=</span> <span class="s">&quot;somesecret&quot;</span><span class="p">;</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">key</span> <span class="p">=</span> <span class="nx">secret</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
 
-    <span class="c1">// HMAC generation for input value using MD5 hashing algorithm, and printing HMAC value using Hex encoding.</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacMd5</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">keyArr</span><span class="p">);</span>
+    <span class="c1">// HMAC generation for the input value using the MD5 hashing algorithm, and printing the HMAC value using the Hex encoding.</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacMd5</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">key</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hex encoded HMAC with MD5: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase16</span><span class="p">());</span>
 
-    <span class="c1">// HMAC generation for input value using SHA1 hashing algorithm, and printing HMAC value using Base64 encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha1</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">keyArr</span><span class="p">);</span>
+    <span class="c1">// HMAC generation for input the value using the SHA1 hashing algorithm, and printing the HMAC value using the Base64 encoding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha1</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">key</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base64 encoded HMAC with SHA1: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase64</span><span class="p">());</span>
 
-    <span class="c1">// HMAC generation for input value using SHA256 hashing algorithm, and printing HMAC value using Hex encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha256</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">keyArr</span><span class="p">);</span>
+    <span class="c1">// HMAC generation for the input value using the SHA256 hashing algorithm, and printing the HMAC value using the Hex encoding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha256</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">key</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hex encoded HMAC with SHA256: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase16</span><span class="p">());</span>
 
-    <span class="c1">// HMAC generation for input value using SHA384 hashing algorithm, and printing HMAC value using Base64 encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha384</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">keyArr</span><span class="p">);</span>
+    <span class="c1">// HMAC generation for the input value using the SHA384 hashing algorithm, and printing the HMAC value using the Base64 encoding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha384</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">key</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base64 encoded HMAC with SHA384: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase64</span><span class="p">());</span>
 
-    <span class="c1">// HMAC generation for input value using SHA512 hashing algorithm, and printing HMAC value using Hex encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha512</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">keyArr</span><span class="p">);</span>
+    <span class="c1">// HMAC generation for the input value using the SHA512 hashing algorithm, and printing the HMAC value using the Hex encoding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha512</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">key</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hex encoded HMAC with SHA512: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase16</span><span class="p">());</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">decodeKeys</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">[</span><span class="nx">crypto</span><span class="p">:</span><span class="nx">PrivateKey</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">PublicKey</span><span class="p">]|</span><span class="nx">error</span> <span class="p">{</span>
-    <span class="c1">// Obtaining reference to a RSA private key by a key file.</span>
+<span class="kd">function</span> <span class="nx">decodePrivateKey</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">PrivateKey</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+    <span class="c1">// Obtaining the reference to an RSA private key by a key file.</span>
     <span class="kt">string</span> <span class="nx">keyFile</span> <span class="p">=</span> <span class="s">&quot;../resource/path/to/private.key&quot;</span><span class="p">;</span>
     <span class="nx">crypto</span><span class="p">:</span><span class="nx">PrivateKey</span> <span class="nx">privateKey</span> <span class="p">=</span>
         <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodeRsaPrivateKeyFromKeyFile</span><span class="p">(</span><span class="nx">keyFile</span><span class="p">);</span>
 
-    <span class="c1">// Obtaining reference to a RSA private key by a encrypted key file.</span>
+    <span class="c1">// Obtaining the reference to an RSA private key by an encrypted key file.</span>
     <span class="kt">string</span> <span class="nx">encryptedKeyFile</span> <span class="p">=</span> <span class="s">&quot;../resource/path/to/encryptedPrivate.key&quot;</span><span class="p">;</span>
     <span class="nx">privateKey</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodeRsaPrivateKeyFromKeyFile</span><span class="p">(</span><span class="nx">keyFile</span><span class="p">,</span>
-                                                             <span class="s">&quot;ballerina&quot;</span><span class="p">);</span>
+                                                         <span class="s">&quot;ballerina&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Obtaining reference to a RSA private key stored within a PKCS#12 or PFX format archive file.</span>
+    <span class="c1">// Obtaining the reference to an RSA private key stored within a PKCS#12 or PFX format archive file.</span>
     <span class="nx">crypto</span><span class="p">:</span><span class="nx">KeyStore</span> <span class="nx">keyStore</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;../resource/path/to/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
         <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
     <span class="p">};</span>
     <span class="nx">privateKey</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodeRsaPrivateKeyFromKeyStore</span><span class="p">(</span><span class="nx">keyStore</span><span class="p">,</span>
-                                                   <span class="s">&quot;ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;ballerina&quot;</span><span class="p">);</span>
+                                              <span class="s">&quot;ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;ballerina&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Obtaining reference to a RSA public key by a cert file.</span>
+    <span class="k">return</span> <span class="nx">privateKey</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">decodePublicKey</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">PublicKey</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+    <span class="c1">// Obtaining the reference to an RSA public key by a cert file.</span>
     <span class="kt">string</span> <span class="nx">certFile</span> <span class="p">=</span> <span class="s">&quot;../resource/path/to/public.crt&quot;</span><span class="p">;</span>
     <span class="nx">crypto</span><span class="p">:</span><span class="nx">PublicKey</span> <span class="nx">publicKey</span> <span class="p">=</span>
         <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodeRsaPublicKeyFromCertFile</span><span class="p">(</span><span class="nx">certFile</span><span class="p">);</span>
@@ -104,130 +108,125 @@ redirect_from:
         <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
     <span class="p">};</span>
     <span class="nx">publicKey</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodeRsaPublicKeyFromTrustStore</span><span class="p">(</span><span class="nx">trustStore</span><span class="p">,</span>
-                                                              <span class="s">&quot;ballerina&quot;</span><span class="p">);</span>
+                                                             <span class="s">&quot;ballerina&quot;</span><span class="p">);</span>
 
-    <span class="k">return</span> <span class="p">[</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">publicKey</span><span class="p">];</span>
+    <span class="k">return</span> <span class="nx">publicKey</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">sign</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Input value for sign operations.</span>
-    <span class="kt">string</span> <span class="nx">input</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina!&quot;</span><span class="p">;</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">inputArr</span> <span class="p">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
+    <span class="c1">// Input value for the `sign` operations.</span>
+    <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina!&quot;</span><span class="p">;</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">input</span> <span class="p">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
 
-    <span class="c1">// Private and public keys for sign and verify operations.</span>
-    <span class="p">[</span><span class="nx">crypto</span><span class="p">:</span><span class="nx">PrivateKey</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">PublicKey</span><span class="p">]</span> <span class="p">[</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">publicKey</span><span class="p">]</span> <span class="p">=</span>
-        <span class="nx">check</span> <span class="nx">decodeKeys</span><span class="p">();</span>
+    <span class="c1">// Private and public keys for the `sign` and `verify` operations.</span>
+    <span class="nx">crypto</span><span class="p">:</span><span class="nx">PrivateKey</span> <span class="nx">privateKey</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">decodePrivateKey</span><span class="p">();</span>
+    <span class="nx">crypto</span><span class="p">:</span><span class="nx">PublicKey</span> <span class="nx">publicKey</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">decodePublicKey</span><span class="p">();</span>
 
-    <span class="c1">// Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Hex encoding.</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">signRsaMd5</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">);</span>
+    <span class="c1">// Signing the input value using the RSA-MD5 signature algorithms, and printing the signature value using the Hex encoding.</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">signRsaMd5</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hex encoded RSA-MD5 signature: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase16</span><span class="p">());</span>
 
-    <span class="kt">boolean</span> <span class="nx">verified</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">verifyRsaMd5Signature</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">output</span><span class="p">,</span>
-                                                          <span class="nx">publicKey</span><span class="p">);</span>
+    <span class="kt">boolean</span> <span class="nx">verified</span> <span class="p">=</span>
+        <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">verifyRsaMd5Signature</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">output</span><span class="p">,</span> <span class="nx">publicKey</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;RSA-MD5 signature verified: &quot;</span> <span class="o">+</span> <span class="nx">verified</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 
-    <span class="c1">// Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Base64 encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">signRsaSha1</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">);</span>
+    <span class="c1">// Signing the input value using the RSA-MD5 signature algorithms, and printing the signature value using the Base64 encoding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">signRsaSha1</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base64 encoded RSA-SHA1 signature: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase64</span><span class="p">());</span>
 
-    <span class="nx">verified</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">verifyRsaSha1Signature</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">output</span><span class="p">,</span> <span class="nx">publicKey</span><span class="p">);</span>
+    <span class="nx">verified</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">verifyRsaSha1Signature</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">output</span><span class="p">,</span> <span class="nx">publicKey</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;RSA-SHA1 signature verified: &quot;</span> <span class="o">+</span> <span class="nx">verified</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 
-    <span class="c1">// Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Hex encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">signRsaSha256</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">);</span>
+    <span class="c1">// Signing the input value using the RSA-MD5 signature algorithms, and printing the signature value using the Hex encoding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">signRsaSha256</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hex encoded RSA-SHA256 signature: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase16</span><span class="p">());</span>
 
-    <span class="nx">verified</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">verifyRsaSha256Signature</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">output</span><span class="p">,</span>
-                                                     <span class="nx">publicKey</span><span class="p">);</span>
+    <span class="nx">verified</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">verifyRsaSha256Signature</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">output</span><span class="p">,</span> <span class="nx">publicKey</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;RSA-SHA256 signature verified: &quot;</span> <span class="o">+</span> <span class="nx">verified</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 
-    <span class="c1">// Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Base64 encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">signRsaSha384</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">);</span>
+    <span class="c1">// Signing the input value using the RSA-MD5 signature algorithms, and printing the signature value using the Base64 encoding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">signRsaSha384</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Base64 encoded RSA-SHA384 signature: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase64</span><span class="p">());</span>
 
-    <span class="nx">verified</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">verifyRsaSha384Signature</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">output</span><span class="p">,</span>
-                                                     <span class="nx">publicKey</span><span class="p">);</span>
+    <span class="nx">verified</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">verifyRsaSha384Signature</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">output</span><span class="p">,</span> <span class="nx">publicKey</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;RSA-SHA384 signature verified: &quot;</span> <span class="o">+</span> <span class="nx">verified</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 
-    <span class="c1">// Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Hex encoding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">signRsaSha512</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">);</span>
+    <span class="c1">// Signing the input value using the RSA-MD5 signature algorithms, and printing the signature value using the Hex encoding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">signRsaSha512</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hex encoded RSA-SHA512 signature: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase16</span><span class="p">());</span>
 
-    <span class="nx">verified</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">verifyRsaSha512Signature</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">output</span><span class="p">,</span>
-                                                     <span class="nx">publicKey</span><span class="p">);</span>
+    <span class="nx">verified</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">verifyRsaSha512Signature</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">output</span><span class="p">,</span> <span class="nx">publicKey</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;RSA-SHA512 signature verified: &quot;</span> <span class="o">+</span> <span class="nx">verified</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">encrypt</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Input value for encrypt operations.</span>
-    <span class="kt">string</span> <span class="nx">input</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina!&quot;</span><span class="p">;</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">inputArr</span> <span class="p">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
+    <span class="c1">// Input value for the `encrypt` operations.</span>
+    <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina!&quot;</span><span class="p">;</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">input</span> <span class="p">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
 
-    <span class="c1">// Private and public keys for encrypt and decrypt operations.</span>
-    <span class="p">[</span><span class="nx">crypto</span><span class="p">:</span><span class="nx">PrivateKey</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">PublicKey</span><span class="p">]</span> <span class="p">[</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">publicKey</span><span class="p">]</span> <span class="p">=</span>
-        <span class="nx">check</span> <span class="nx">decodeKeys</span><span class="p">();</span>
+    <span class="c1">// Private and public keys for the `encrypt` and `decrypt` operations.</span>
+    <span class="nx">crypto</span><span class="p">:</span><span class="nx">PrivateKey</span> <span class="nx">privateKey</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">decodePrivateKey</span><span class="p">();</span>
+    <span class="nx">crypto</span><span class="p">:</span><span class="nx">PublicKey</span> <span class="nx">publicKey</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">decodePublicKey</span><span class="p">();</span>
 
-    <span class="c1">// Encrypt and decrypt an input value using RSA ECB PKCS1 padding.</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptRsaEcb</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">publicKey</span><span class="p">);</span>
+    <span class="c1">// Encrypts and decrypts an input value using the `RSA ECB PKCS1` padding.</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptRsaEcb</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">publicKey</span><span class="p">);</span>
     <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptRsaEcb</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;RSA ECB PKCS1 decrypted value: &quot;</span> <span class="o">+</span>
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
 
-    <span class="c1">// Encrypt and decrypt an input value using RSA ECB OAEPwithSHA512andMGF1 padding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptRsaEcb</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">publicKey</span><span class="p">,</span>
+    <span class="c1">// Encrypts and decrypts an input value using the `RSA ECB OAEPwithSHA512andMGF1` padding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptRsaEcb</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">publicKey</span><span class="p">,</span>
                                         <span class="nx">crypto</span><span class="p">:</span><span class="nx">OAEPwithSHA512andMGF1</span><span class="p">);</span>
     <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptRsaEcb</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">,</span>
                                         <span class="nx">crypto</span><span class="p">:</span><span class="nx">OAEPwithSHA512andMGF1</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;RSA ECB OAEPwithSHA512andMGF1 decrypted value: &quot;</span> <span class="o">+</span>
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
 
-    <span class="c1">// Randomly generate a 128 bit key for AES encryption.</span>
-    <span class="nx">byte</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="nx">rsaKeyArr</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+    <span class="c1">// Randomly generates a 128 bit key for the AES encryption.</span>
+    <span class="nx">byte</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="nx">rsaKey</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">0</span> <span class="o">...</span> <span class="mi">15</span> <span class="p">{</span>
-        <span class="nx">rsaKeyArr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">byte</span><span class="p">&gt;(</span><span class="nx">check</span> <span class="nx">random</span><span class="p">:</span><span class="nx">createIntInRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">));</span>
+        <span class="nx">rsaKey</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">byte</span><span class="p">&gt;(</span><span class="nx">check</span> <span class="nx">random</span><span class="p">:</span><span class="nx">createIntInRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">));</span>
     <span class="p">}</span>
 
-    <span class="c1">// Randomly generate a 128 bit IV for AES encryption.</span>
-    <span class="nx">byte</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="nx">ivArr</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+    <span class="c1">// Randomly generates a 128 bit IV for the AES encryption.</span>
+    <span class="nx">byte</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="nx">iv</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">0</span> <span class="o">...</span> <span class="mi">15</span> <span class="p">{</span>
-        <span class="nx">ivArr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">byte</span><span class="p">&gt;(</span><span class="nx">check</span> <span class="nx">random</span><span class="p">:</span><span class="nx">createIntInRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">));</span>
+        <span class="nx">iv</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">byte</span><span class="p">&gt;(</span><span class="nx">check</span> <span class="nx">random</span><span class="p">:</span><span class="nx">createIntInRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">));</span>
     <span class="p">}</span>
 
-    <span class="c1">// Encrypt and decrypt an input value using AES CBC PKCS5 padding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesCbc</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">rsaKeyArr</span><span class="p">,</span> <span class="nx">ivArr</span><span class="p">);</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesCbc</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKeyArr</span><span class="p">,</span> <span class="nx">ivArr</span><span class="p">);</span>
+    <span class="c1">// Encrypts and decrypts an input value using the `AES CBC PKCS5` padding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesCbc</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesCbc</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;AES CBC PKCS5 decrypted value: &quot;</span> <span class="o">+</span>
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
 
-    <span class="c1">// Encrypt and decrypt an input value using AES CBC without padding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesCbc</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">rsaKeyArr</span><span class="p">,</span> <span class="nx">ivArr</span><span class="p">,</span>
-                                        <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesCbc</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKeyArr</span><span class="p">,</span> <span class="nx">ivArr</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
+    <span class="c1">// Encrypts and decrypts an input value using the `AES CBC` without padding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesCbc</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesCbc</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;AES CBC no padding decrypted value: &quot;</span> <span class="o">+</span>
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
 
-    <span class="c1">// Encrypt and decrypt an input value using AES GCM PKCS5 padding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesGcm</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">rsaKeyArr</span><span class="p">,</span> <span class="nx">ivArr</span><span class="p">);</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesGcm</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKeyArr</span><span class="p">,</span> <span class="nx">ivArr</span><span class="p">);</span>
+    <span class="c1">// Encrypts and decrypts an input value using the `AES GCM PKCS5` padding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesGcm</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesGcm</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;AES GCM PKCS5 decrypted value: &quot;</span> <span class="o">+</span>
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
 
-    <span class="c1">// Encrypt and decrypt an input value using AES GCM without padding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesGcm</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">rsaKeyArr</span><span class="p">,</span> <span class="nx">ivArr</span><span class="p">,</span>
-                                        <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesGcm</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKeyArr</span><span class="p">,</span> <span class="nx">ivArr</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
+    <span class="c1">// Encrypts and decrypts an input value using the `AES GCM` without padding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesGcm</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesGcm</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;AES GCM no padding decrypted value: &quot;</span> <span class="o">+</span>
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
 
-    <span class="c1">// Encrypt and decrypt an input value using AES ECB PKCS5 padding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesEcb</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">rsaKeyArr</span><span class="p">);</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesEcb</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKeyArr</span><span class="p">);</span>
+    <span class="c1">// Encrypts and decrypts an input value using the `AES ECB PKCS5 padding`.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesEcb</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesEcb</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;AES ECB PKCS5 decrypted value: &quot;</span> <span class="o">+</span>
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
 
-    <span class="c1">// Encrypt and decrypt input value using AES ECB without padding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesEcb</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">rsaKeyArr</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesEcb</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKeyArr</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
+    <span class="c1">// Encrypts and decrypts an input value using the `AES ECB` without padding.</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesEcb</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesEcb</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;AES ECB no padding decrypted value: &quot;</span> <span class="o">+</span>
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
 <span class="p">}</span>
@@ -409,6 +408,10 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -443,8 +446,8 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string input = &quot;Hello Ballerina!&quot;;
-    byte[] inputArr = input.toBytes();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string value = &quot;Hello Ballerina!&quot;;
+    byte[] input = value.toBytes();
 </code></pre></div>
 
                                 </td>
@@ -463,7 +466,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] output = crypto:hashMd5(inputArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] output = crypto:hashMd5(input);
     io:println(&quot;Hex encoded hash with MD5: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -472,7 +475,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Hashing input value using <a href="https://docs.central.ballerina.io/ballerina/crypto/latest/functions#hashMd5">MD5 hashing algorithm</a>, and printing hash value using Hex encoding.</p>
+                                            <p>Hashing input value using the <a href="https://docs.central.ballerina.io/ballerina/crypto/latest/functions#hashMd5">MD5 hashing algorithm</a>, and printing the hash value using the Hex encoding.</p>
 
                                         </div>
                                     </div>
@@ -483,7 +486,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hashSha1(inputArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hashSha1(input);
     io:println(&quot;Base64 encoded hash with SHA1: &quot; + output.toBase64());
 </code></pre></div>
 
@@ -492,7 +495,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Hashing input value using SHA1 hashing algorithm, and printing hash value using Base64 encoding.</p>
+                                            <p>Hashing the input value using the SHA1 hashing algorithm, and printing the hash value using the Base64 encoding.</p>
 
                                         </div>
                                     </div>
@@ -503,7 +506,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hashSha256(inputArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hashSha256(input);
     io:println(&quot;Hex encoded hash with SHA256: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -512,7 +515,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Hashing input value using SHA256 hashing algorithm, and printing hash value using Hex encoding.</p>
+                                            <p>Hashing the input value using the SHA256 hashing algorithm, and printing the hash value using the Hex encoding.</p>
 
                                         </div>
                                     </div>
@@ -523,7 +526,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hashSha384(inputArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hashSha384(input);
     io:println(&quot;Base64 encoded hash with SHA384: &quot; + output.toBase64());
 </code></pre></div>
 
@@ -532,7 +535,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Hashing input value using SHA384 hashing algorithm, and printing hash value using Base64 encoding.</p>
+                                            <p>Hashing the input value using the SHA384 hashing algorithm, and printing the hash value using the Base64 encoding.</p>
 
                                         </div>
                                     </div>
@@ -543,7 +546,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hashSha512(inputArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = crypto:hashSha512(input);
     io:println(&quot;Hex encoded hash with SHA512: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -552,7 +555,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Hashing input value using SHA512 hashing algorithm, and printing hash value using Hex encoding.</p>
+                                            <p>Hashing the input value using the SHA512 hashing algorithm, and printing the hash value using the Hex encoding.</p>
 
                                         </div>
                                     </div>
@@ -563,7 +566,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;CRC32B for text: &quot; + crypto:crc32b(inputArr));
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;CRC32B for text: &quot; + crypto:crc32b(input));
 }
 </code></pre></div>
 
@@ -572,7 +575,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Hex encoded CRC32B checksum generation for input value.</p>
+                                            <p>The Hex-encoded CRC32B checksum generation for the input value.</p>
 
                                         </div>
                                     </div>
@@ -595,8 +598,8 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string input = &quot;Hello Ballerina!&quot;;
-    byte[] inputArr = input.toBytes();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string value = &quot;Hello Ballerina!&quot;;
+    byte[] input = value.toBytes();
 </code></pre></div>
 
                                 </td>
@@ -604,7 +607,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Input value for hmac operations.</p>
+                                            <p>Input value for HMAC operations.</p>
 
                                         </div>
                                     </div>
@@ -615,8 +618,8 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string key = &quot;somesecret&quot;;
-    byte[] keyArr = key.toBytes();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string secret = &quot;somesecret&quot;;
+    byte[] key = secret.toBytes();
 </code></pre></div>
 
                                 </td>
@@ -624,7 +627,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The key used for HMAC generation.</p>
+                                            <p>The key used for the HMAC generation.</p>
 
                                         </div>
                                     </div>
@@ -635,7 +638,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] output = check crypto:hmacMd5(inputArr, keyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] output = check crypto:hmacMd5(input, key);
     io:println(&quot;Hex encoded HMAC with MD5: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -644,7 +647,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>HMAC generation for input value using MD5 hashing algorithm, and printing HMAC value using Hex encoding.</p>
+                                            <p>HMAC generation for the input value using the MD5 hashing algorithm, and printing the HMAC value using the Hex encoding.</p>
 
                                         </div>
                                     </div>
@@ -655,7 +658,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:hmacSha1(inputArr, keyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:hmacSha1(input, key);
     io:println(&quot;Base64 encoded HMAC with SHA1: &quot; + output.toBase64());
 </code></pre></div>
 
@@ -664,7 +667,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>HMAC generation for input value using SHA1 hashing algorithm, and printing HMAC value using Base64 encoding.</p>
+                                            <p>HMAC generation for input the value using the SHA1 hashing algorithm, and printing the HMAC value using the Base64 encoding.</p>
 
                                         </div>
                                     </div>
@@ -675,7 +678,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:hmacSha256(inputArr, keyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:hmacSha256(input, key);
     io:println(&quot;Hex encoded HMAC with SHA256: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -684,7 +687,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>HMAC generation for input value using SHA256 hashing algorithm, and printing HMAC value using Hex encoding.</p>
+                                            <p>HMAC generation for the input value using the SHA256 hashing algorithm, and printing the HMAC value using the Hex encoding.</p>
 
                                         </div>
                                     </div>
@@ -695,7 +698,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:hmacSha384(inputArr, keyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:hmacSha384(input, key);
     io:println(&quot;Base64 encoded HMAC with SHA384: &quot; + output.toBase64());
 </code></pre></div>
 
@@ -704,7 +707,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>HMAC generation for input value using SHA384 hashing algorithm, and printing HMAC value using Base64 encoding.</p>
+                                            <p>HMAC generation for the input value using the SHA384 hashing algorithm, and printing the HMAC value using the Base64 encoding.</p>
 
                                         </div>
                                     </div>
@@ -715,7 +718,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:hmacSha512(inputArr, keyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:hmacSha512(input, key);
     io:println(&quot;Hex encoded HMAC with SHA512: &quot; + output.toBase16());
 }
 </code></pre></div>
@@ -725,7 +728,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>HMAC generation for input value using SHA512 hashing algorithm, and printing HMAC value using Hex encoding.</p>
+                                            <p>HMAC generation for the input value using the SHA512 hashing algorithm, and printing the HMAC value using the Hex encoding.</p>
 
                                         </div>
                                     </div>
@@ -736,7 +739,7 @@ import ballerina/random;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function decodeKeys() returns [crypto:PrivateKey, crypto:PublicKey]|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>function decodePrivateKey() returns crypto:PrivateKey|error {
 </code></pre></div>
 
                                 </td>
@@ -758,7 +761,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Obtaining reference to a RSA private key by a key file.</p>
+                                            <p>Obtaining the reference to an RSA private key by a key file.</p>
 
                                         </div>
                                     </div>
@@ -771,7 +774,7 @@ import ballerina/random;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string encryptedKeyFile = &quot;../resource/path/to/encryptedPrivate.key&quot;;
     privateKey = check crypto:decodeRsaPrivateKeyFromKeyFile(keyFile,
-                                                             &quot;ballerina&quot;);
+                                                         &quot;ballerina&quot;);
 </code></pre></div>
 
                                 </td>
@@ -779,7 +782,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Obtaining reference to a RSA private key by a encrypted key file.</p>
+                                            <p>Obtaining the reference to an RSA private key by an encrypted key file.</p>
 
                                         </div>
                                     </div>
@@ -795,7 +798,7 @@ import ballerina/random;
         password: &quot;ballerina&quot;
     };
     privateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(keyStore,
-                                                   &quot;ballerina&quot;, &quot;ballerina&quot;);
+                                              &quot;ballerina&quot;, &quot;ballerina&quot;);
 </code></pre></div>
 
                                 </td>
@@ -803,10 +806,35 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Obtaining reference to a RSA private key stored within a PKCS#12 or PFX format archive file.</p>
+                                            <p>Obtaining the reference to an RSA private key stored within a PKCS#12 or PFX format archive file.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    return privateKey;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function decodePublicKey() returns crypto:PublicKey|error {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -824,7 +852,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Obtaining reference to a RSA public key by a cert file.</p>
+                                            <p>Obtaining the reference to an RSA public key by a cert file.</p>
 
                                         </div>
                                     </div>
@@ -840,7 +868,7 @@ import ballerina/random;
         password: &quot;ballerina&quot;
     };
     publicKey = check crypto:decodeRsaPublicKeyFromTrustStore(trustStore,
-                                                              &quot;ballerina&quot;);
+                                                             &quot;ballerina&quot;);
 </code></pre></div>
 
                                 </td>
@@ -859,7 +887,7 @@ import ballerina/random;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    return [privateKey, publicKey];
+                                    <div class="highlight"><pre><code class=language-ballerina>    return publicKey;
 }
 </code></pre></div>
 
@@ -884,8 +912,8 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string input = &quot;Hello Ballerina!&quot;;
-    byte[] inputArr = input.toBytes();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string value = &quot;Hello Ballerina!&quot;;
+    byte[] input = value.toBytes();
 </code></pre></div>
 
                                 </td>
@@ -893,7 +921,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Input value for sign operations.</p>
+                                            <p>Input value for the <code>sign</code> operations.</p>
 
                                         </div>
                                     </div>
@@ -904,8 +932,8 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    [crypto:PrivateKey, crypto:PublicKey] [privateKey, publicKey] =
-        check decodeKeys();
+                                    <div class="highlight"><pre><code class=language-ballerina>    crypto:PrivateKey privateKey = check decodePrivateKey();
+    crypto:PublicKey publicKey = check decodePublicKey();
 </code></pre></div>
 
                                 </td>
@@ -913,7 +941,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Private and public keys for sign and verify operations.</p>
+                                            <p>Private and public keys for the <code>sign</code> and <code>verify</code> operations.</p>
 
                                         </div>
                                     </div>
@@ -924,7 +952,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] output = check crypto:signRsaMd5(inputArr, privateKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] output = check crypto:signRsaMd5(input, privateKey);
     io:println(&quot;Hex encoded RSA-MD5 signature: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -933,7 +961,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Hex encoding.</p>
+                                            <p>Signing the input value using the RSA-MD5 signature algorithms, and printing the signature value using the Hex encoding.</p>
 
                                         </div>
                                     </div>
@@ -944,8 +972,8 @@ import ballerina/random;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    boolean verified = check crypto:verifyRsaMd5Signature(inputArr, output,
-                                                          publicKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean verified =
+        check crypto:verifyRsaMd5Signature(input, output, publicKey);
     io:println(&quot;RSA-MD5 signature verified: &quot; + verified.toString());
 </code></pre></div>
 
@@ -958,7 +986,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:signRsaSha1(inputArr, privateKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:signRsaSha1(input, privateKey);
     io:println(&quot;Base64 encoded RSA-SHA1 signature: &quot; + output.toBase64());
 </code></pre></div>
 
@@ -967,7 +995,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Base64 encoding.</p>
+                                            <p>Signing the input value using the RSA-MD5 signature algorithms, and printing the signature value using the Base64 encoding.</p>
 
                                         </div>
                                     </div>
@@ -978,7 +1006,7 @@ import ballerina/random;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    verified = check crypto:verifyRsaSha1Signature(inputArr, output, publicKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>    verified = check crypto:verifyRsaSha1Signature(input, output, publicKey);
     io:println(&quot;RSA-SHA1 signature verified: &quot; + verified.toString());
 </code></pre></div>
 
@@ -991,7 +1019,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:signRsaSha256(inputArr, privateKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:signRsaSha256(input, privateKey);
     io:println(&quot;Hex encoded RSA-SHA256 signature: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -1000,7 +1028,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Hex encoding.</p>
+                                            <p>Signing the input value using the RSA-MD5 signature algorithms, and printing the signature value using the Hex encoding.</p>
 
                                         </div>
                                     </div>
@@ -1011,8 +1039,7 @@ import ballerina/random;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    verified = check crypto:verifyRsaSha256Signature(inputArr, output,
-                                                     publicKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>    verified = check crypto:verifyRsaSha256Signature(input, output, publicKey);
     io:println(&quot;RSA-SHA256 signature verified: &quot; + verified.toString());
 </code></pre></div>
 
@@ -1025,7 +1052,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:signRsaSha384(inputArr, privateKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:signRsaSha384(input, privateKey);
     io:println(&quot;Base64 encoded RSA-SHA384 signature: &quot; + output.toBase64());
 </code></pre></div>
 
@@ -1034,7 +1061,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Base64 encoding.</p>
+                                            <p>Signing the input value using the RSA-MD5 signature algorithms, and printing the signature value using the Base64 encoding.</p>
 
                                         </div>
                                     </div>
@@ -1045,8 +1072,7 @@ import ballerina/random;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    verified = check crypto:verifyRsaSha384Signature(inputArr, output,
-                                                     publicKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>    verified = check crypto:verifyRsaSha384Signature(input, output, publicKey);
     io:println(&quot;RSA-SHA384 signature verified: &quot; + verified.toString());
 </code></pre></div>
 
@@ -1059,7 +1085,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:signRsaSha512(inputArr, privateKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:signRsaSha512(input, privateKey);
     io:println(&quot;Hex encoded RSA-SHA512 signature: &quot; + output.toBase16());
 </code></pre></div>
 
@@ -1068,7 +1094,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Signing input value using RSA-MD5 signature algorithms, and printing the signature value using Hex encoding.</p>
+                                            <p>Signing the input value using the RSA-MD5 signature algorithms, and printing the signature value using the Hex encoding.</p>
 
                                         </div>
                                     </div>
@@ -1079,8 +1105,7 @@ import ballerina/random;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    verified = check crypto:verifyRsaSha512Signature(inputArr, output,
-                                                     publicKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>    verified = check crypto:verifyRsaSha512Signature(input, output, publicKey);
     io:println(&quot;RSA-SHA512 signature verified: &quot; + verified.toString());
 }
 </code></pre></div>
@@ -1106,8 +1131,8 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string input = &quot;Hello Ballerina!&quot;;
-    byte[] inputArr = input.toBytes();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string value = &quot;Hello Ballerina!&quot;;
+    byte[] input = value.toBytes();
 </code></pre></div>
 
                                 </td>
@@ -1115,7 +1140,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Input value for encrypt operations.</p>
+                                            <p>Input value for the <code>encrypt</code> operations.</p>
 
                                         </div>
                                     </div>
@@ -1126,8 +1151,8 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    [crypto:PrivateKey, crypto:PublicKey] [privateKey, publicKey] =
-        check decodeKeys();
+                                    <div class="highlight"><pre><code class=language-ballerina>    crypto:PrivateKey privateKey = check decodePrivateKey();
+    crypto:PublicKey publicKey = check decodePublicKey();
 </code></pre></div>
 
                                 </td>
@@ -1135,7 +1160,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Private and public keys for encrypt and decrypt operations.</p>
+                                            <p>Private and public keys for the <code>encrypt</code> and <code>decrypt</code> operations.</p>
 
                                         </div>
                                     </div>
@@ -1146,7 +1171,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] output = check crypto:encryptRsaEcb(inputArr, publicKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] output = check crypto:encryptRsaEcb(input, publicKey);
     output = check crypto:decryptRsaEcb(output, privateKey);
     io:println(&quot;RSA ECB PKCS1 decrypted value: &quot; +
         check string:fromBytes(output));
@@ -1157,7 +1182,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Encrypt and decrypt an input value using RSA ECB PKCS1 padding.</p>
+                                            <p>Encrypts and decrypts an input value using the <code>RSA ECB PKCS1</code> padding.</p>
 
                                         </div>
                                     </div>
@@ -1168,7 +1193,7 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptRsaEcb(inputArr, publicKey,
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptRsaEcb(input, publicKey,
                                         crypto:OAEPwithSHA512andMGF1);
     output = check crypto:decryptRsaEcb(output, privateKey,
                                         crypto:OAEPwithSHA512andMGF1);
@@ -1181,7 +1206,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Encrypt and decrypt an input value using RSA ECB OAEPwithSHA512andMGF1 padding.</p>
+                                            <p>Encrypts and decrypts an input value using the <code>RSA ECB OAEPwithSHA512andMGF1</code> padding.</p>
 
                                         </div>
                                     </div>
@@ -1192,9 +1217,9 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    byte[16] rsaKeyArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                    <div class="highlight"><pre><code class=language-ballerina>    byte[16] rsaKey = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     foreach var i in 0 ... 15 {
-        rsaKeyArr[i] = &lt;byte&gt;(check random:createIntInRange(0, 255));
+        rsaKey[i] = &lt;byte&gt;(check random:createIntInRange(0, 255));
     }
 </code></pre></div>
 
@@ -1203,7 +1228,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Randomly generate a 128 bit key for AES encryption.</p>
+                                            <p>Randomly generates a 128 bit key for the AES encryption.</p>
 
                                         </div>
                                     </div>
@@ -1214,9 +1239,9 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    byte[16] ivArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                    <div class="highlight"><pre><code class=language-ballerina>    byte[16] iv = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     foreach var i in 0 ... 15 {
-        ivArr[i] = &lt;byte&gt;(check random:createIntInRange(0, 255));
+        iv[i] = &lt;byte&gt;(check random:createIntInRange(0, 255));
     }
 </code></pre></div>
 
@@ -1225,7 +1250,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Randomly generate a 128 bit IV for AES encryption.</p>
+                                            <p>Randomly generates a 128 bit IV for the AES encryption.</p>
 
                                         </div>
                                     </div>
@@ -1236,8 +1261,8 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesCbc(inputArr, rsaKeyArr, ivArr);
-    output = check crypto:decryptAesCbc(output, rsaKeyArr, ivArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesCbc(input, rsaKey, iv);
+    output = check crypto:decryptAesCbc(output, rsaKey, iv);
     io:println(&quot;AES CBC PKCS5 decrypted value: &quot; +
         check string:fromBytes(output));
 </code></pre></div>
@@ -1247,7 +1272,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Encrypt and decrypt an input value using AES CBC PKCS5 padding.</p>
+                                            <p>Encrypts and decrypts an input value using the <code>AES CBC PKCS5</code> padding.</p>
 
                                         </div>
                                     </div>
@@ -1258,9 +1283,8 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesCbc(inputArr, rsaKeyArr, ivArr,
-                                        crypto:NONE);
-    output = check crypto:decryptAesCbc(output, rsaKeyArr, ivArr, crypto:NONE);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesCbc(input, rsaKey, iv, crypto:NONE);
+    output = check crypto:decryptAesCbc(output, rsaKey, iv, crypto:NONE);
     io:println(&quot;AES CBC no padding decrypted value: &quot; +
         check string:fromBytes(output));
 </code></pre></div>
@@ -1270,7 +1294,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Encrypt and decrypt an input value using AES CBC without padding.</p>
+                                            <p>Encrypts and decrypts an input value using the <code>AES CBC</code> without padding.</p>
 
                                         </div>
                                     </div>
@@ -1281,8 +1305,8 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesGcm(inputArr, rsaKeyArr, ivArr);
-    output = check crypto:decryptAesGcm(output, rsaKeyArr, ivArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesGcm(input, rsaKey, iv);
+    output = check crypto:decryptAesGcm(output, rsaKey, iv);
     io:println(&quot;AES GCM PKCS5 decrypted value: &quot; +
         check string:fromBytes(output));
 </code></pre></div>
@@ -1292,7 +1316,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Encrypt and decrypt an input value using AES GCM PKCS5 padding.</p>
+                                            <p>Encrypts and decrypts an input value using the <code>AES GCM PKCS5</code> padding.</p>
 
                                         </div>
                                     </div>
@@ -1303,9 +1327,8 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesGcm(inputArr, rsaKeyArr, ivArr,
-                                        crypto:NONE);
-    output = check crypto:decryptAesGcm(output, rsaKeyArr, ivArr, crypto:NONE);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesGcm(input, rsaKey, iv, crypto:NONE);
+    output = check crypto:decryptAesGcm(output, rsaKey, iv, crypto:NONE);
     io:println(&quot;AES GCM no padding decrypted value: &quot; +
         check string:fromBytes(output));
 </code></pre></div>
@@ -1315,7 +1338,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Encrypt and decrypt an input value using AES GCM without padding.</p>
+                                            <p>Encrypts and decrypts an input value using the <code>AES GCM</code> without padding.</p>
 
                                         </div>
                                     </div>
@@ -1326,8 +1349,8 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesEcb(inputArr, rsaKeyArr);
-    output = check crypto:decryptAesEcb(output, rsaKeyArr);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesEcb(input, rsaKey);
+    output = check crypto:decryptAesEcb(output, rsaKey);
     io:println(&quot;AES ECB PKCS5 decrypted value: &quot; +
         check string:fromBytes(output));
 </code></pre></div>
@@ -1337,7 +1360,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Encrypt and decrypt an input value using AES ECB PKCS5 padding.</p>
+                                            <p>Encrypts and decrypts an input value using the <code>AES ECB PKCS5 padding</code>.</p>
 
                                         </div>
                                     </div>
@@ -1348,8 +1371,8 @@ import ballerina/random;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesEcb(inputArr, rsaKeyArr, crypto:NONE);
-    output = check crypto:decryptAesEcb(output, rsaKeyArr, crypto:NONE);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesEcb(input, rsaKey, crypto:NONE);
+    output = check crypto:decryptAesEcb(output, rsaKey, crypto:NONE);
     io:println(&quot;AES ECB no padding decrypted value: &quot; +
         check string:fromBytes(output));
 }
@@ -1360,7 +1383,7 @@ import ballerina/random;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Encrypt and decrypt input value using AES ECB without padding.</p>
+                                            <p>Encrypts and decrypts an input value using the <code>AES ECB</code> without padding.</p>
 
                                         </div>
                                     </div>

@@ -29,7 +29,8 @@ redirect_from:
             <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_PDF</span><span class="p">);</span>
 
         <span class="c1">//Sends the request to the client with the file content.</span>
-        <span class="k">var</span> <span class="nx">clientResponse</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/stream/receiver&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">clientResponse</span> <span class="p">=</span>
+            <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/stream/receiver&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
 
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">clientResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
@@ -142,7 +143,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=f6ce4fcf5bfd6fe75d0ecb9abc09a74f&file=http_streaming.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=6c34ab915a7b613b591fa4cb4216fc4f&file=http_streaming.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -276,7 +277,8 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var clientResponse = clientEndpoint-&gt;post(&quot;/stream/receiver&quot;, request);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response|error clientResponse =
+            clientEndpoint-&gt;post(&quot;/stream/receiver&quot;, request);
 </code></pre></div>
 
                                 </td>

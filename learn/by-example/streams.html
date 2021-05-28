@@ -91,7 +91,7 @@ redirect_from:
     <span class="c1">//The `reduce` function reduces the stream to a single value.</span>
     <span class="kt">float</span><span class="err">?</span> <span class="nx">avg</span> <span class="p">=</span> <span class="nx">subscriptionStream</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span>
                     <span class="kd">function</span> <span class="p">(</span><span class="kt">float</span> <span class="nx">accum</span><span class="p">,</span> <span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">accum</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">float</span><span class="p">&gt;</span><span class="nx">student</span><span class="p">.</span><span class="nx">score</span> <span class="o">/</span> <span class="nx">studentList</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nx">accum</span> <span class="o">+</span> <span class="nx">student</span><span class="p">.</span><span class="nx">score</span> <span class="o">/</span> <span class="p">&lt;</span><span class="kt">float</span><span class="p">&gt;</span> <span class="nx">studentList</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="p">},</span> <span class="mf">0.0</span><span class="p">);</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nx">avg</span> <span class="nx">is</span> <span class="kt">float</span><span class="p">)</span> <span class="p">{</span>
@@ -193,7 +193,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=11b13d59956a64895e0fccad9e5a0b01&file=streams.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=1297711f0b5fd91be5acfb47d4f2ed24&file=streams.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -548,7 +548,7 @@ which gets invoked when the stream&rsquo;s <code>next()</code> function gets cal
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    float? avg = subscriptionStream.reduce(
                     function (float accum, Student student) returns float {
-        return accum + &lt;float&gt;student.score / studentList.length();
+        return accum + student.score / &lt;float&gt; studentList.length();
     }, 0.0);
 </code></pre></div>
 

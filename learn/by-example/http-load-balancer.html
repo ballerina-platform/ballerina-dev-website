@@ -34,7 +34,7 @@ redirect_from:
     <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.()</span>
             <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
         <span class="kt">json</span> <span class="nx">requestPayload</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">};</span>
-        <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">lbBackendEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="nx">requestPayload</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">lbBackendEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="nx">requestPayload</span><span class="p">);</span>
         <span class="c1">// If a response is returned, the normal process runs. If the service</span>
         <span class="c1">// does not get the expected response, the error-handling logic is</span>
         <span class="c1">// executed.</span>
@@ -282,7 +282,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .()
             returns http:Response|http:InternalServerError {
         json requestPayload = {&quot;name&quot;: &quot;Ballerina&quot;};
-        var response = lbBackendEP-&gt;post(&quot;/&quot;, requestPayload);
+        http:Response|error response = lbBackendEP-&gt;post(&quot;/&quot;, requestPayload);
 </code></pre></div>
 
                                 </td>

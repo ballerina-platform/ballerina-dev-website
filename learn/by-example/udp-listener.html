@@ -14,20 +14,21 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">udp</span><span class="p">;</span>
 
-<span class="c1">// Bind the service to the port.</span>
+<span class="c1">// Binds the service to the port.</span>
 <span class="c1">// Optionally, you can provide the `remoteHost` and `remotePort` to</span>
 <span class="c1">// configure the listener as a connected listener, which only</span>
 <span class="c1">// reads and writes to the configured remote host.</span>
-<span class="c1">// udp:Listener(8080, remoteHost = &quot;www.remote-clinet.com&quot;, remotePort = 9090)</span>
+<span class="c1">// E.g.: `udp:Listener(8080, remoteHost</span>
+<span class="c1">// = &quot;www.remote-clinet.com&quot;, remotePort = 9090)`</span>
 <span class="kd">service</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// This remote method is invoked once the content is received from the client.</span>
-    <span class="c1">// You may replace the `onBytes` method with `onDatagram`, which reads the data as</span>
-    <span class="c1">// readonly &amp; udp:Datagram.</span>
+    <span class="c1">// This remote method is invoked once the content is received from the</span>
+    <span class="c1">// client. You may replace the `onBytes` method with `onDatagram`, which</span>
+    <span class="c1">// reads the data as `readonly &amp; udp:Datagram`.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onDatagram</span><span class="p">(</span><span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Datagram</span> <span class="nx">datagram</span><span class="p">)</span> 
         <span class="nx">returns</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Datagram</span><span class="p">|</span><span class="nx">udp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received by listener: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">datagram</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
-        <span class="c1">// Echo back the data to the same client.</span>
+        <span class="c1">// Echoes back the data to the same client.</span>
         <span class="c1">// This is similar to calling `caller-&gt;sendDatagram(data);`.</span>
         <span class="k">return</span> <span class="nx">datagram</span><span class="p">;</span>
     <span class="p">}</span>
@@ -42,7 +43,7 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>UDP Listener</h2>
                             <p><p>The UDP Listener is used to expose a UDP service over the UDP protocol.
- The UDP Client/ConnectClient is used to send data to a remote UDP server.
+ The UDP <code>Client</code>/<code>ConnectClient</code> is used to send data to a remote UDP server.
  This sample demonstrates the UDP socket listener.<br/><br/>
  For more information on the underlying module,
  see the <a href="https://docs.central.ballerina.io/ballerina/udp/latest">UDP module</a>.</p>
@@ -138,11 +139,12 @@ import ballerina/udp;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Bind the service to the port.
+                                            <p>Binds the service to the port.
  Optionally, you can provide the <code>remoteHost</code> and <code>remotePort</code> to
  configure the listener as a connected listener, which only
  reads and writes to the configured remote host.
- udp:Listener(8080, remoteHost = &ldquo;www.remote-clinet.com&rdquo;, remotePort = 9090)</p>
+ E.g.: <code>udp:Listener(8080, remoteHost
+ = &quot;www.remote-clinet.com&quot;, remotePort = 9090)</code></p>
 
                                         </div>
                                     </div>
@@ -163,9 +165,9 @@ import ballerina/udp;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This remote method is invoked once the content is received from the client.
- You may replace the <code>onBytes</code> method with <code>onDatagram</code>, which reads the data as
- readonly &amp; udp:Datagram.</p>
+                                            <p>This remote method is invoked once the content is received from the
+ client. You may replace the <code>onBytes</code> method with <code>onDatagram</code>, which
+ reads the data as <code>readonly &amp; udp:Datagram</code>.</p>
 
                                         </div>
                                     </div>
@@ -186,7 +188,7 @@ import ballerina/udp;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Echo back the data to the same client.
+                                            <p>Echoes back the data to the same client.
  This is similar to calling <code>caller-&gt;sendDatagram(data);</code>.</p>
 
                                         </div>

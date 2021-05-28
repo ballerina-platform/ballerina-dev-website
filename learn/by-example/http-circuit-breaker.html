@@ -63,7 +63,8 @@ redirect_from:
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span>
             <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">backendClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">backendResponse</span> <span class="p">=</span>
+            <span class="nx">backendClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
         <span class="c1">// If the `backendResponse` is an `http:Response`, it is sent back to</span>
         <span class="c1">// the client. If `backendResponse` is an `http:ClientError`, an</span>
         <span class="c1">// internal server error is returned to the client.</span>
@@ -461,7 +462,8 @@ import ballerina/lang.runtime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function get .(http:Request request)
             returns http:Response|http:InternalServerError {
-        var backendResponse = backendClientEP-&gt;forward(&quot;/hello&quot;, request);
+        http:Response|error backendResponse =
+            backendClientEP-&gt;forward(&quot;/hello&quot;, request);
 </code></pre></div>
 
                                 </td>

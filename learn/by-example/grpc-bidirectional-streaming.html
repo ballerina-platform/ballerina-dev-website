@@ -1,7 +1,7 @@
 ---
 layout: ballerina-example-page
-title: Bidirectional Streaming
-description: This Ballerina by Example has a gRPC streaming service and a non-blocking streaming client. Both the client and the server sends a stream of messages to each other.
+title: Bidirectional Streaming RPC
+description: This Ballerina by Example has a gRPC streaming service and a streaming client. Both the client and the server sends a stream of messages to each other.
 keywords: ballerina, ballerina by example, bbe, grpc, bidirectional streaming
 permalink: /learn/by-example/grpc-bidirectional-streaming
 redirect_from:
@@ -13,37 +13,35 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="c1">// This is the server implementation of the bidirectional streaming scenario.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="nd">@grpc:ServiceDescriptor {</span>
     <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
     <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="s">&quot;Chat&quot;</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">chat</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span>
-                            <span class="nx">returns</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Invoke the chat RPC&quot;</span><span class="p">);</span>
-        <span class="kt">string</span><span class="p">[]</span> <span class="nx">responses</span> <span class="p">=</span> <span class="p">[];</span>
-        <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="c1">// Read and process each message in the client stream.</span>
-        <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">clientStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ChatMessage</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">ChatMessage</span> <span class="nx">chatMsg</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">&gt;</span> <span class="nx">value</span><span class="p">;</span>
-            <span class="nx">responses</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`${chatMsg.message}: ${chatMsg.name}`</span><span class="p">;</span>
-            <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">chat</span><span class="p">(</span><span class="nx">ChatStringCaller</span> <span class="nx">caller</span><span class="p">,</span>
+                    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="c1">// Reads and processes each message in the client stream.</span>
+        <span class="nx">check</span> <span class="nx">clientStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ChatMessage</span> <span class="nx">chatMsg</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">sendString</span><span class="p">(</span>
+                                <span class="kt">string</span> <span class="s">`${chatMsg.name}: ${chatMsg.message}`</span><span class="p">);</span>
         <span class="p">});</span>
         <span class="c1">// Once the client sends a notification to indicate the end of the stream, &#39;()&#39; is returned by the stream.</span>
-        <span class="k">return</span> <span class="nx">responses</span><span class="p">.</span><span class="nx">toStream</span><span class="p">();</span>
+        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="c1">// This is the client implementation of the bidirectional streaming scenario.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="c1">// Client endpoint configuration.</span>
+<span class="c1">// Creates a gRPC client to interact with the remote server.</span>
 <span class="nx">ChatClient</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span> <span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Executes the RPC call and receives the customized streaming client.</span>
     <span class="nx">ChatStreamingClient</span> <span class="nx">streamingClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">chat</span><span class="p">();</span>
+
+    <span class="c1">// Reads server responses in another strand.</span>
+    <span class="nx">future</span><span class="p">&lt;</span><span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">f1</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">readResponse</span><span class="p">(</span><span class="nx">streamingClient</span><span class="p">);</span>
 
     <span class="c1">// Sends multiple messages to the server.</span>
     <span class="nx">ChatMessage</span><span class="p">[]</span> <span class="nx">messages</span> <span class="p">=</span> <span class="p">[</span>
@@ -56,6 +54,12 @@ redirect_from:
     <span class="p">}</span>
     <span class="c1">// Once all the messages are sent, the client sends the message to notify the server about the completion.</span>
     <span class="nx">check</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
+
+    <span class="c1">// Waits until all server messages are received.</span>
+    <span class="nx">check</span> <span class="nx">wait</span> <span class="nx">f1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">readResponse</span><span class="p">(</span><span class="nx">ChatStreamingClient</span> <span class="nx">streamingClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Receives the server stream response iteratively.</span>
     <span class="kt">string</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">streamingClient</span><span class="o">-&gt;</span><span class="nx">receiveString</span><span class="p">();</span>
     <span class="k">while</span> <span class="p">!(</span><span class="nx">result</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
@@ -71,9 +75,9 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Bidirectional Streaming</h2>
-                            <p><p>The gRPC Server Connector exposes the gRPC service over http2.
- This sample demonstrates how the gRPC bidirectional streaming service and the non blocking client
+                            <h2>Bidirectional Streaming RPC</h2>
+                            <p><p>The gRPC Server Connector exposes the gRPC service over HTTP2.
+ This example demonstrates how a gRPC bidirectional streaming service and a client
  operate when each of them sends a sequence of messages using a read-write stream.
  In such scenarios, the two streams operate independently. Therefore, clients and servers can read and write in any order.<br/><br/>
  For more information on the underlying module,
@@ -87,14 +91,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="grpc-client-streaming.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Client Streaming</p>
+                                        <p>Client Streaming RPC</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="grpc-secured-unary.html">
+                                    <a class="next" href="proto-to-ballerina.html">
                                         <span>NEXT ></span>
-                                        <p>Secured Unary</p>
+                                        <p>Proto To Ballerina</p>
                                     </a>
                                 </div>
                                 
@@ -218,7 +222,7 @@ bal grpc --input grpc_bidirectional_streaming.proto  --output stubs
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Please refer example `Proto To Ballerina` to get information on how to use Ballerina Protocol Buffers tool.
+                                    <div class="highlight"><pre><code class=shell-session># For more information on how to use the Ballerina Protocol Buffers tool, see the [Proto To Ballerina](https://ballerina.io/learn/by-example/proto-to-ballerina.html) example.
 </code></pre></div>
 
                                 </td>
@@ -266,7 +270,6 @@ bal grpc --input grpc_bidirectional_streaming.proto  --output stubs
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/grpc;
-import ballerina/log;
 </code></pre></div>
 
                                 </td>
@@ -290,11 +293,8 @@ import ballerina/log;
     descMap: getDescriptorMap()
 }
 service &quot;Chat&quot; on new grpc:Listener(9090) {
-    remote function chat(stream&lt;ChatMessage, grpc:Error?&gt; clientStream)
-                            returns stream&lt;string, grpc:Error?&gt; {
-        log:printInfo(&quot;Invoke the chat RPC&quot;);
-        string[] responses = [];
-        int i = 0;
+    remote function chat(ChatStringCaller caller,
+                    stream&lt;ChatMessage, error?&gt; clientStream) returns error? {
 </code></pre></div>
 
                                 </td>
@@ -306,10 +306,9 @@ service &quot;Chat&quot; on new grpc:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        error? e = clientStream.forEach(function(ChatMessage value) {
-            ChatMessage chatMsg = &lt;ChatMessage&gt; value;
-            responses[i] = string `${chatMsg.message}: ${chatMsg.name}`;
-            i += 1;
+                                    <div class="highlight"><pre><code class=language-ballerina>        check clientStream.forEach(function(ChatMessage chatMsg) {
+            checkpanic caller-&gt;sendString(
+                                string `${chatMsg.name}: ${chatMsg.message}`);
         });
 </code></pre></div>
 
@@ -318,7 +317,7 @@ service &quot;Chat&quot; on new grpc:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Read and process each message in the client stream.</p>
+                                            <p>Reads and processes each message in the client stream.</p>
 
                                         </div>
                                     </div>
@@ -329,7 +328,7 @@ service &quot;Chat&quot; on new grpc:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return responses.toStream();
+                                    <div class="highlight"><pre><code class=language-ballerina>        check caller-&gt;complete();
     }
 }
 </code></pre></div>
@@ -454,6 +453,18 @@ bal run service/target/bin/service.jar
                         
                             
                                 
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
                                     <div class="bal-separator">
                                         <!-- This table is a temporary table to add spacing between output and next bal file-->
                                         <table class="cTopBorder-table">
@@ -501,7 +512,7 @@ bal run service/target/bin/service.jar
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Client endpoint configuration.</p>
+                                            <p>Creates a gRPC client to interact with the remote server.</p>
 
                                         </div>
                                     </div>
@@ -533,6 +544,25 @@ bal run service/target/bin/service.jar
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Executes the RPC call and receives the customized streaming client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;error?&gt; f1 = start readResponse(streamingClient);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Reads server responses in another strand.</p>
 
                                         </div>
                                     </div>
@@ -581,6 +611,38 @@ bal run service/target/bin/service.jar
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    check wait f1;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Waits until all server messages are received.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function readResponse(ChatStreamingClient streamingClient) returns error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

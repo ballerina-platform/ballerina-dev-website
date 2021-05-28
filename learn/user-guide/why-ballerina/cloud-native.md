@@ -129,6 +129,63 @@ Although in the past, you simply wrote their program, built it, and ran it, toda
 Ballerina specializes in moving from code to cloud while providing a unique developer experience. The Ballerina compiler can be extended to read the source code and generate artifacts to deploy your code into different clouds. These artifacts can be Dockerfiles, Docker images, Kubernetes YAML files, or serverless functions.
 
 
+### From Code to Kubernetes
+Kubernetes is the preferred platform for running applications with multiple microservices in production. It can be used for automating deployment and scaling, and management of containerized applications. Kubernetes defines a set of unique building blocks that need to be defined as YAML files and deployed into the Kubernetes cluster.
+
+However, in many cases, creating these YAML files is out of a developer’s comfort zone. The Ballerina compiler can create these YAML files while compiling the source code, so you don’t have to! The code below shows the build option you need to use to do this:
+
+The following code snippet shows how Ballerina compiler can generate YAML files to deploy your code to Kubernetes.
+
+```ballerina
+import ballerina/http;
+
+service /hello on new http:Listener(9090) {
+    resource function get sayHello() returns string
+            returns error? {
+        check caller->respond("Hello, World!");
+    }
+}
+```
+
+Building the source with `bal build --cloud=k8s` will generate the Kubernetes YAML files and Docker image that is required to deploy hello application into Kubernetes.
+
+Building the source with `bal build --cloud=docker` will generate the Docker image and Dockerfile.
+
+### From Code to AWS Lambda
+AWS Lambda is an event-driven, serverless computing platform. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with `@awslambda:Function`, which should have the function signature `function (awslambda:Context, json) returns json|error`.
+
+The sample below illustrates a simple echo function with AWS Lambda annotations. Compiling the sample will generate 
+
+```ballerina
+import ballerinax/awslambda;
+
+// The `@awslambda:Function` annotation marks a function to
+// generate an AWS Lambda function
+@awslambda:Function
+public function echo(awslambda:Context ctx, json input) returns json {
+   return input;
+}
+```
+
+### From Code to Azure Functions
+Azure Functions is a serverless solution that allows you to write less code, maintain less infrastructure, and save on costs. Ballerina functions can be deployed in Azure by annotating a Ballerina function with `@azure_functions:Function`.
+
+```ballerina
+import ballerina/uuid;
+import ballerinax/azure_functions as af;
+
+// HTTP request/response with no authentication
+@af:Function
+public function hello(@af:HTTPTrigger { authLevel: "anonymous" } string payload) 
+                      returns @af:HTTPOutput string|error {
+    return "Hello, " + payload + "!";
+}
+```
+
+### CI/CD with GitHub Actions
+In a microservice architecture, continuous integration and continuous delivery (CI/CD) is critical in creating an agile environment for incorporating incremental changes to your system. There are different technologies that provide this CI / CD functionality and very recently GitHub has introduced GitHub Actions, which is now available for general usage. GitHub Actions provides a convenient mechanism for implementing CI/CD pipelines using their workflow concept, right from our GitHub repositories.
+
+With (Ballerina GitHub Actions)[https://github.com/marketplace/actions/ballerina-action] it is much easier to create a Ballerina development environment with built-in CI/CD. 
 
 <style>
 .nav > li.cVersionItem {

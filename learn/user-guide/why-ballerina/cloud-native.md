@@ -18,7 +18,7 @@ For decades, programming languages have treated networks simply as I/O sources. 
 
 ## Network-Friendly Type System
 
-Ballerina's type system is specifically focused on aiding the development of networked and distributed applications. Ballerina is a `null` safe language with builtin support for popular wire formats `JSON` and `XML`, and seamless conversions between `user-defined` types `JSON`.
+Ballerina's type system is specifically focused on aiding the development of networked and distributed applications. Ballerina is a `null` safe language with builtin support for popular wire formats `JSON` and `XML`, and seamless conversions between  `JSON` and `user-defined` types.
 
 ### Get Started
 

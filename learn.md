@@ -21,7 +21,7 @@ redirect_from:
 
   <img class="cLearnIcon" src="/img/User-Guide-v1.png"/>
   <h2>User Guide</h2>
-  <p>Learn about all the features of the language and its capabilities.</p>
+  <p>Start programming with Ballerina.</p>
   </a>
 
 </div>
@@ -33,7 +33,7 @@ redirect_from:
 <img class="cLearnIcon" src="/img/Ballerina-By-Example-v1.png"/>
 <h2>Ballerina by Example</h2>
 
-<p>Obtain a hands-on experience of the language and its key features.</p>
+<p>Try out an extensive list of Ballerina code examples.</p>
 
 </a>
 </div>
@@ -44,7 +44,7 @@ redirect_from:
 
 <img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
 <h2>API Documentation</h2>
-<p>Check out the Ballerina standard library APIs comprehensively.</p>
+<p>Check out the Ballerina standard library APIs.</p>
 
 
 
@@ -59,7 +59,7 @@ redirect_from:
 
 <h2>Tooling Guide</h2>
 
-<p>Learn about the VSCode plugin and other CLI tools of the platform.</p>
+<p>Learn about using the VSCode plugin and other CLI tools.</p>
 
 </a>
 
@@ -122,8 +122,8 @@ redirect_from:
 <a class="cBoxLink" href="/spec/" target="_blank">
 
 <img class="cLearnIcon" src="/img/Language-Specification-v1.png"/>
-<h2>Language Specification</h2>
-<p>Master Ballerina by reading its formal specification.</p>
+<h2>Language Specifications</h2>
+<p>Read the formal specifications of the Ballerina language.</p>
 </a>
 
 </div>

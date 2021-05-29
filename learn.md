@@ -59,7 +59,7 @@ redirect_from:
 
 <h2>Tooling Guide</h2>
 
-<p>Learn about using the VSCode plugin and other CLI tools of the platform.</p>
+<p>Learn about the VSCode plugin and other CLI tools of the platform.</p>
 
 </a>
 
@@ -122,8 +122,8 @@ redirect_from:
 <a class="cBoxLink" href="/spec/" target="_blank">
 
 <img class="cLearnIcon" src="/img/Language-Specification-v1.png"/>
-<h2>Language Specifications</h2>
-<p>Master Ballerina by reading its formal specifications.</p>
+<h2>Language Specification</h2>
+<p>Master Ballerina by reading its formal specification.</p>
 </a>
 
 </div>

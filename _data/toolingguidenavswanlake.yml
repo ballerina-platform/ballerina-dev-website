@@ -17,7 +17,7 @@
     - title: Language Support
       url: /learn/tooling-guide/visual-studio-code-extension/language-support/ 
       active: language-support
-   - title: Configurations
+    - title: Configurations
       url: /learn/tooling-guide/visual-studio-code-extension/configurations/ 
       active: configurations
 

@@ -73,12 +73,12 @@ service "AdminService" on ep {
     }
     remote function addPerson(Person value) returns AddPersonResponse|error {
         value.id = uuid:createType1AsString();
-        personMap[value.id] = <@untainted> value;
+        personMap[value.id] = value;
         return {id: value.id};
     }
     remote function getPerson(GetPersonRequest value) returns Person|error {
         Person? person = personMap[value.id];
-        if (person is Person) {
+        if person is Person {
             return person;
         } else {
             return error grpc:NotFoundError(string `Person value for id: ${value.id} doesn't exist.`);

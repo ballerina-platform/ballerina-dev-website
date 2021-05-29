@@ -153,3 +153,5 @@ You can pass the `--coverage-format=xml`  flag along with the `--code-coverage` 
  generate the JaCoCo XML report at the end of the test execution.
  This file can be uploaded to CI/CD tools (e.g., CodeCov) to display the coverage information for both Ballerina and
   the native Java sources used within a Ballerina package.
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

@@ -1,10 +1,10 @@
 ---
 layout: ballerina-tooling-guide-left-nav-pages-swanlake
-title: Run and Debug
+title: Debugging
 description: Describes the existing run and debugging functionalities provided by Ballerina in Visual Studio Code.  
 keywords: ballerina debugging, ballerina debug, ballerina debugger, ballerina vscode
-permalink: /learn/tooling-guide/visual-studio-code-extension/run-and-debug/
-active: run-and-debug
+permalink: /learn/tooling-guide/visual-studio-code-extension/debugging/
+active: debugging
 intro: The VS Code Ballerina extension allows you to either run your Ballerina program (without debugging) or debug them easily by launching its debugger. 
 redirect_from:
   - /learn/tools-ides/vscode-plugin/run-and-debug
@@ -21,7 +21,7 @@ redirect_from:
   - /swan-lake/learn/getting-started/setting-up-visual-studio-code/run-and-debug
   - /learn/tooling-guide/vs-code-extension/run-and-debug
   - /learn/tooling-guide/vs-code-extension/run-and-debug/
-  - /learn/tooling-guide/visual-studio-code-extension/run-and-debug
+  - /learn/tooling-guide/visual-studio-code-extension/debugging
 ---
 
 ## Running Without Debugging

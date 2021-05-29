@@ -1,24 +1,23 @@
 ---
 layout: ballerina-example-page
-title: Hello World Service
-description: 
-keywords: 
-permalink: /learn/by-example/hello-world-service
+title: Hello world service
+description: The Hello World HTTP service in Ballerina
+keywords: ballerina, ballerina by example, bbe,
+permalink: /learn/by-example/hello-world-service/
+active: hello-world-service
 redirect_from:
   - /swan-lake/learn/by-example/hello-world-service
   - /swan-lake/learn/by-example/hello-world-service.html
+  - /learn/by-example/
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 
-<span class="c1">// By default, Ballerina exposes an HTTP service via HTTP/1.1.</span>
 <span class="kd">service</span> <span class="o">/</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// The resource method is invoked by the GET request for the</span>
-    <span class="c1">// `/greeting` path. The returned string value</span>
-    <span class="c1">// eventually becomes the payload of the `http:Response`.</span>
+    <span class="c1">// This function responds with `string` value `Hello, World!` to HTTP GET requests.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greeting</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s">&quot;Hello, World!&quot;</span><span class="p">;</span>
     <span class="p">}</span>
@@ -31,10 +30,9 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Hello World Service</h2>
-                            <p><p>In Ballerina, services represent collections of network-accessible entry points.
- Resources represent one such entry point.
- How a resource is exposed over a network protocol depends on the listener to which a service is attached.</p>
+                            <h2>Hello world service</h2>
+                            <p><p>Let&rsquo;s write a simple HTTP service in Ballerina.
+ This example demonstrates the network primitives in the language that make it simpler to develop services.</p>
 </p>
 
                         </td>
@@ -42,9 +40,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="hello-world.html">
+                                    <a class="next" href="programs-and-modules.html">
                                         <span>NEXT ></span>
-                                        <p>Hello World Main</p>
+                                        <p>Programs and modules</p>
                                     </a>
                                 </div>
                                 
@@ -65,6 +63,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/hello-world-service/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ef640bbe11302a76c92276fa54c112a1&file=hello_world_service.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -106,7 +108,7 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>service / on new http:Listener(9090) {
@@ -114,13 +116,6 @@ redirect_from:
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>By default, Ballerina exposes an HTTP service via HTTP/1.1.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -139,9 +134,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The resource method is invoked by the GET request for the
- <code>/greeting</code> path. The returned string value
- eventually becomes the payload of the <code>http:Response</code>.</p>
+                                            <p>This function responds with <code>string</code> value <code>Hello, World!</code> to HTTP GET requests.</p>
 
                                         </div>
                                     </div>
@@ -165,9 +158,7 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run hello_world_service.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run hello_world_service.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 

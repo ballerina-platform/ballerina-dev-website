@@ -112,6 +112,11 @@ This will generate the OpenAPI contracts for the Ballerina services, which are i
   ```
 
 This command will generate the `helloworld-openapi.yaml` file that is related to the `helloworld` service inside the `helloService.bal` file.
+ ```bash
+    bal openapi -i modules/helloworld/helloService.bal --json
+  ```
+This `--json` option can be used with the Ballerina to OpenAPI command to generate the `helloworld-openapi.json` file 
+instead of generating the YAML file.
 
 ## OpenAPI Validator Compiler Plugin
 

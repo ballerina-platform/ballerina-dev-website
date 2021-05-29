@@ -133,3 +133,5 @@ Value - `AccountEndpoint=https://db-cosmos.documents.azure.com:443/;AccountKey=1
 ## What's Next?
 
 For a full sample with all the supported Azure Functions triggers and bindings in Ballerina, see [Azure Functions Deployment Example](/learn/by-example/azure-functions-deployment.html).
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

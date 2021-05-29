@@ -41,7 +41,7 @@ Follow the steps below to create a sample Ballerina program in VSCode.
 
 1. Click **View** in the menu bar of the editor, and click **Command Palette**.
 
- >**Tip:** You can use the shortcut methods `⌘+ ↑+ P` on Mac and `Ctrl + Shift + P` on Windows and Linux.
+    >**Tip:** You can use the shortcut methods `⌘+ ↑+ P` on Mac and `Ctrl + Shift + P` on Windows and Linux.
 
 2. In the search bar, type `Ballerina Examples` and click **Ballerina: Show Examples**.
 
@@ -49,9 +49,9 @@ Follow the steps below to create a sample Ballerina program in VSCode.
 
 4. Click on the **Run** code lens on the editor. 
 
-  You just ran your first Ballerina program with a few clicks.
+    You just ran your first Ballerina program with a few clicks.
 
-  >**Tip:** If you wish to debug further, you can either use the **Debug** codelens or see [Run and Debug](/learn/tooling-guide/visual-studio-code-extension/debugging/).
+    >**Tip:** If you wish to debug further, you can either use the **Debug** codelens or see [Run and Debug](/learn/tooling-guide/visual-studio-code-extension/debugging/).
 
 5. Click the **Show Diagram View** button to view the graphical representation of the program.
 
@@ -59,13 +59,13 @@ Follow the steps below to create a sample Ballerina program in VSCode.
 
 The VS Code Ballerina extension is enriched with language support capabilities and user configuration support. For more information on these capabilities, see the sections below.
 
-- [Diagram Editor]()
+- [Diagram Editor](/learn/tooling-guide/visual-studio-code-extension/diagram-editor/)
 - [Debugging](/learn/tooling-guide/visual-studio-code-extension/debugging/)
-- [VS Code Commands]()
+- [VS Code Commands](/learn/tooling-guide/visual-studio-code-extension/vs-code-commands/)
 - [Language Support](/learn/tooling-guide/visual-studio-code-extension/language-support/)
-- [Configurations]()
+- [Configurations](/learn/tooling-guide/visual-studio-code-extension/configurations/)
 
-
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
 
 
 

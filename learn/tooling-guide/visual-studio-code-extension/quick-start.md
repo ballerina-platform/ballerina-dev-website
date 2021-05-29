@@ -10,6 +10,8 @@ redirect_from:
   - /learn/tooling-guide/visual-studio-code-extension/quick-start/
   - /learn/tooling-guide/visual-studio-code-extension/
   - /learn/tooling-guide/visual-studio-code-extension
+  - /learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/
+  - /learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension
 ---
 
 ## Setting up the Prerequisites

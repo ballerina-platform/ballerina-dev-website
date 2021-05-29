@@ -10,6 +10,10 @@ redirect_from:
 - /learn/user-guide/configurability/trying-it-out
 ---
 
+## Creating the Ballerina Package
+
+Follow the steps below to create the Ballerina package.
+
 1. Execute the command below to create a Ballerina package.
 
     ```bash
@@ -112,11 +116,15 @@ redirect_from:
 
     ```
 
-6. Execute the command below to build an executable of the package. 
+## Running the Ballerina Package
+
+Follow the steps below to run the Ballerina package you created above.
+
+1. Execute the command below to build an executable of the package. 
     ```bash
     bal build
     ```
-    
+
     The output will be as shown below.
 
     ```bash
@@ -127,7 +135,7 @@ redirect_from:
             target/bin/userPortal.jar
     ```
 
-7. Execute the command below to run the program.
+2. Execute the command below to run the program.
 
     ```bash
     bal run target/bin/userPortal.jar

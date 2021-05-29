@@ -1,6 +1,6 @@
 ---
 layout: ballerina-learn-landing-page
-title: Let’s learn Ballerina!
+title: Let’s Learn Ballerina!
 description: Learn and master the Ballerina programming language through setting up, Ballerina by examples, the standard library or API documentation, and how to guides.
 keywords: ballerina, learn, documentation, docs, programming language
 permalink: /learn/
@@ -44,7 +44,7 @@ redirect_from:
 
 <img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
 <h2>API Documentation</h2>
-<p>Learn the Ballerina standard library APIs comprehensively.</p>
+<p>Check out the Ballerina standard library APIs comprehensively.</p>
 
 
 
@@ -59,7 +59,7 @@ redirect_from:
 
 <h2>Tooling Guide</h2>
 
-<p>Learn about the VSCode plugin and other cli tools of the platform.</p>
+<p>Learn about using the VSCode plugin and other CLI tools of the platform.</p>
 
 </a>
 
@@ -71,7 +71,7 @@ redirect_from:
 
 <img class="cLearnIcon" src="/img/Language-Guide-v1.png"/>
 <h2>Language Concepts</h2>
-<p>Learn about all the details of the Ballerina language.</p>
+<p>Get an in-depth understanding of the language principles.</p>
 </a>
 
 </div>
@@ -122,14 +122,13 @@ redirect_from:
 <a class="cBoxLink" href="/spec/" target="_blank">
 
 <img class="cLearnIcon" src="/img/Language-Specification-v1.png"/>
-<h2>Language Specification</h2>
-<p>Master Ballerina by knowing how the platform is specified.</p>
+<h2>Language Specifications</h2>
+<p>Master Ballerina by reading its formal specifications.</p>
 </a>
 
 </div>
 
 <div class="clearfix"></div>
-
 
 
 

@@ -54,5 +54,22 @@ The mapping of Ballerina types to TOML types is given below.
 | record[]           	| `type  Person  record  {`<br/>    `string  name;`<br/>    `int  age; };`<br/>  `configurable   Person[]  people = ?;`           	| Array of TOML tables 	| `[[people]]`<br/>  `name = “John”`<br/> `age = 45`<br/> `[[people]]`<br/>  `name = “Jack”`<br/> `age = 32`                                  	|
 | table              	| `configurable   table < map < string >>  users = ?;`                                                                            	| Array of TOML tables 	| `[[users]]`<br/> `name = "Tom"`<br/> `occupation = "Software Engineer"`<br/> `[[users]]`<br/> `name = "Harry"`<br/> `occupation = "Doctor"` 	|
 
-
 ## Supplying Through Command-Line Arguments
+
+The values of the variables can be provided through the command-line parameters in the format below,
+
+```bash
+-Ckey=value
+```
+
+The key of a CLI parameter can be specified as shown below.
+
+```bash
+key:= [[org-name .] module-name .] variable
+```
+
+Similar to the [TOML syntax](#supplying-through-toml-syntax), the module information of the configurable variable can be provided with the command-line argument in the above format.
+
+The configurable value provided through a command-line argument should be the `toString()` representation of the intended value. A command-line based configuration is only supported for configurable variables of types `int`, `float`, `boolean`, `string`, `decimal`, `enum` and `xml`. 
+
+For an example on defining configurables in a Ballerina program, see [Trying it Out](/learn/user-guide/configurability/trying-it-out/).

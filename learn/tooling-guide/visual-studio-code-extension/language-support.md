@@ -65,9 +65,15 @@ The diagnostics show you the syntax and semantic errors in the source code. Vari
 
 ![Diagnostics](/learn/images/diagnostics.gif)
 
-## Refactoring and Code Fixes
+## Data Mapping
 
-### Code Formatting
+This code action generates the mappings for record types.
+
+![Data Mapping](/learn/images/data-mapping.gif)
+
+>**Tip:** The **Data Mapper: Enabled** setting should be configured to enable the Data Mapper feature.
+
+## Code Formatting
 
 Code formatting has the two options below. 
 
@@ -79,152 +85,152 @@ Code formatting has the two options below.
 
   ![Formatting a Document Range](/learn/images/format-document-range.gif)
 
-### Rename Symbols
+## Rename Symbols
 
 This feature allows you to rename symbols by renaming all the references of the particular symbol.
 
 ![Rename Symbols](/learn/images/rename-symbols.gif)
 
-### Code Lenses
+## Code Lenses
 
-#### Documentation Code Lens
+### Documentation Code Lens
 
 The `Document This` code lens is shown for the public functions without documentation. 
 
 ![Documentation Code Lens](/learn/images/documentation-code-lens.gif)
 
-#### Run and Debug Code Lenses
+### Run and Debug Code Lenses
 
 Run and debug code lenses are shown for the entry points of the Ballerina project and for its test cases. The entry points include the main function and the services within the default module of the project.
 
 ![Run and Debug Code Lenses](/learn/images/run-and-debug-code-lenses.gif)
 
-### Code Actions
+## Code Actions
 
 There are two types of code actions suggested based on the node at a given cursor position and based on the diagnostic at a given cursor position.
 
-#### Create Variables
+### Create Variables
 
 The sections below demonstrates the types of code actions available for creating a variable.
 
-##### Create Variable
+#### Create Variable
 
 Create a variable for an expression where the `Variable Assignment Required` diagnostic is present.
 
 ![Create Variable](/learn/images/create-variable.gif)
 
-##### Create Variable and Type Guard
+#### Create Variable and Type Guard
 
 Create a type guard to handle the error gracefully when the `Variable assignment Required` diagnostic is present.
 
 ![Create Variable and Type Guard](/learn/images/create-variable-and-type-guard.gif)
 
-##### Create Variable and Check Error
+#### Create Variable and Check Error
 
 Add a check expression when the `Variable assignment Required` diagnostic is present.
 
 ![Create Variable and Check Error](/learn/images/create-variable-and-check-error.gif)
 
-##### Ignore Return Value
+#### Ignore Return Value
 
 Ignore the return value with the `_` where the `Variable Assignment Required` diagnostic is present.
 
 ![Ignore Return Value](/learn/images/ignore-return-value.gif)
 
-#### Union Type Variables
+### Union Type Variables
 
 The sections below demonstrates the code actions available for union type variables.
 
-##### Type Guard variable
+#### Type Guard variable
 
 Type guard a variable, if the variable is of the union type.
 
 ![Type Guard variable](/learn/images/type-guard-variable.gif)
 
-##### Add Check Error
+#### Add Check Error
 
 When there is an error union, add a check statement.
 
 ![Add Check Error](/learn/images/add-check-error.gif)
 
-#### Imports
+### Imports
 
 The sections below demonstrates the code actions available for imports.
 
-##### Import a Module
+#### Import a Module
 
 Add the import statement for a module, which has a reference without an import statement. This supports only the langlibs and the standard libraries.
 
 ![Import a Module](/learn/images/import-module.gif)
 
-##### Optimize Imports
+#### Optimize Imports
 
 Optimize the import statements to remove unused imports and arrange the imports on the alphabetical order.
 
 ![Optimize Imports](/learn/images/optimize-imports.gif)
 
-#### Documentation
+### Documentation
 
 The sections below demonstrates the code actions available for documentation.
 
-##### Document This
+#### Document This
 
 Add the documentation to the top-level constructs, resources, and methods.
 
 ![Document This](/learn/images/document-this.gif)
 
-##### Document All
+#### Document All
 
 Document all the top-level constructs.
 
 ![Document All](/learn/images/document-all.gif)
 
-##### Update Documentation
+#### Update Documentation
 
 Update the existing documentation when parameters are missing or not documented. This depends on the warning diagnostic sent by the compiler.
 
 ![Update Documentation](/learn/images/update-documentation.gif)
 
 
-#### Incompatible Types
+### Incompatible Types
 
 The sections below demonstrates the code actions available for incompatible types.
 
-##### Change Variable Type
+#### Change Variable Type
 
 Changes the type of a variable.
 
 ![Change Variable Type](/learn/images/change-variable-type.gif)
 
-##### Add Type Cast
+#### Add Type Cast
 
 Add a type cast for the incompatible types.
 
 ![Add Type Cast](/learn/images/add-type-cast.gif)
 
-##### Fix Return Type
+#### Fix Return Type
 
 Changes the incompatible return type.
 
 ![Fix Return Type](/learn/images/fix-return-type.gif)
 
-##### Change Parameter Type
+#### Change Parameter Type
 
 Changes the type of a function/ method parameter.
 
 ![Change Parameter Type](/learn/images/change-parameter-type.gif)
 
-#### Create Functions
+### Create Functions
 
 The sections below demonstrates the code actions available for creating functions.
 
-##### Create a Function
+#### Create a Function
 
 Creates a function using the selected variables/parameters.
 
 ![Create a Function](/learn/images/create-function.gif)
 
-##### Implement a Method
+#### Implement a Method
 
 Implements the selected method.
 

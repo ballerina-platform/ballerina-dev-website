@@ -118,7 +118,8 @@ function updateReleasearchiveTable(allData) {
             var releaseNoteUrl = getReleaseNoteURL(version);
             if (releaseNoteUrl) {
                 $.get(releaseNoteUrl, function(data) {
-                    $("#" +(version)+"notes").prop("href", releaseNoteUrl);
+                    var versionSelector = $.escapeSelector(version);
+                    $("#" +(versionSelector)+"notes").prop("href", releaseNoteUrl);
                     hljs.initHighlighting.called = false;
                     hljs.initHighlighting();
                     initCodeLineNumbers();

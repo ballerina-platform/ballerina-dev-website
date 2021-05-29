@@ -127,9 +127,6 @@
 - title: Security
   url: '#' 
   sublinks:
-    - title: Writing Secure Ballerina Code
-      url: /learn/user-guide/security/writing-secure-ballerina-code
-      active: writing-secure-ballerina-code
     - title: Authentication and Authorization
       url: /learn/user-guide/authentication-and-authorization
       active: authentication-and-authorization

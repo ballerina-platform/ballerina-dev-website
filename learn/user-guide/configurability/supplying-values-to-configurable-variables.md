@@ -73,3 +73,5 @@ Similar to the [TOML syntax](#supplying-through-toml-syntax), the module informa
 The configurable value provided through a command-line argument should be the `toString()` representation of the intended value. A command-line based configuration is only supported for configurable variables of types `int`, `float`, `boolean`, `string`, `decimal`, `enum` and `xml`. 
 
 For an example on defining configurables in a Ballerina program, see [Trying it Out](/learn/user-guide/configurability/trying-it-out/).
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

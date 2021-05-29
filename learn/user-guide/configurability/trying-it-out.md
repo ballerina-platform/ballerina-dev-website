@@ -150,3 +150,5 @@ Follow the steps below to run the Ballerina package you created above.
     Other users : [{"username":"John","age":56},{"username":"Tom","age":14},{"username":"Anna","age":27}]
     {"time":"2021-05-25T14:01:27.948+05:30", "level":"ERROR", "module":"sample/userPortal", "message":"Maximum number of users is 2"}
     ```
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

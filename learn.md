@@ -59,7 +59,7 @@ redirect_from:
 
 <h2>Tooling Guide</h2>
 
-<p>Learn about using the VSCode plugin and other CLI tools.</p>
+<p>Learn to use the VSCode plugin and other CLI tools.</p>
 
 </a>
 

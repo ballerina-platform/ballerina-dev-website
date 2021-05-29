@@ -29,4 +29,4 @@ By clicking on the **Show Diagram View** button on the editor’s title bar, you
 
 The **Ballerina: Show Diagram View** command is available for quick access.
 
-![Diagrams View](/learn/images/diagrams-view.gif)
+![Diagrams View](/learn/images/diagrams-view-command.gif)

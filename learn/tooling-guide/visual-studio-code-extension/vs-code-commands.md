@@ -1,6 +1,6 @@
 ---
 layout: ballerina-tooling-guide-left-nav-pages-swanlake
-title: VS Code Commands
+title: VSCode Commands
 permalink: /learn/tooling-guide/visual-studio-code-extension/vs-code-commands/
 active: vs-code-commands
 intro: The VS Code Ballerina extension comprises of a set of palette commands to enable easy development using the inherent capabilities of the Ballerina language.
@@ -62,6 +62,8 @@ It adds a Ballerina project module for the given module name using the `bal add`
 
 ![Add Module](/learn/images/add-module.gif)
 
-## Create `cloud.toml`
+## Create `Cloud.toml`
 
 It generates a `Cloud.toml` file for your Ballerina project according to the default [cloud specifications](https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md).
+
+![Create Cloud.toml](/learn/images/create-cloud-toml.gif)

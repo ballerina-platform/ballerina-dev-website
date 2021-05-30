@@ -11,7 +11,7 @@
     - title: Debugging
       url: /learn/tooling-guide/visual-studio-code-extension/debugging/ 
       active: debugging
-    - title: VSCode Commands
+    - title: VS Code Commands
       url: /learn/tooling-guide/visual-studio-code-extension/vs-code-commands/ 
       active: vs-code-commands
     - title: Language Support

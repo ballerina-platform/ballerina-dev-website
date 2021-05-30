@@ -71,7 +71,7 @@ This code action generates the mappings for record types.
 
 ![Data Mapping](/learn/images/data-mapping.gif)
 
->**Tip:** The **Data Mapper: Enabled** setting should be configured to enable the Data Mapper feature.
+>**Tip:** The **Data Mapper: Enabled** [setting](/learn/tooling-guide/visual-studio-code-extension/configurations/#data-mapper-enabled) should be configured to enable the Data Mapper feature.
 
 ## Code Formatting
 

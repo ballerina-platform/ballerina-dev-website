@@ -1,204 +1,130 @@
 - title: Language Concepts
-- sublinks:
-  - active: hello-world-service
-  - title: Hello world service
-  - url: /learn/by-example/hello-world-service/
-  title: Hello World
+- title: Hello World
   url: '#'
-- sublinks:
-    active: documentation
-    title: Documentation
-    url: /learn/by-example/documentation/
-  title: Basics
+  sublinks:
+    - title: Hello World Main
+      url: /downloads/swan-lake-release-notes/hello-world-main
+      active: hello-world-main
+    - title: Hello World Service 
+      url: /downloads/swan-lake-release-notes/hello-world-service
+      active: hello-world-service
+- title: Basics
   url: '#'
-- sublinks:
-    active: resource-path-parameters
-    title: Resource path parameters
-    url: /learn/by-example/resource-path-parameters/
-  title: Network interaction
-  url: '#'
-- sublinks:
-    active: xmlns-declarations
-    title: xmlns declarations
-    url: /learn/by-example/xmlns-declarations/
-  title: Working with Data
-  url: '#'
-- sublinks:
-    active: inter-worker-failure-propagation
-    title: Inter-worker failure propagation
-    url: /learn/by-example/inter-worker-failure-propagation/
-  title: Concurrency
-  url: '#'
-- sublinks: {}
-  title: Transactions
-  url: '#'
-- sublinks:
-    active: inferring-isolated
-    title: Inferring isolated
-    url: /learn/by-example/inferring-isolated/
-  title: Concurrency safety
-  url: '#'
-- title: Working over the network
-- sublinks: {}
-  title: REST API
-  url: '#'
-- sublinks: {}
-  title: HTTP
-  url: '#'
-- sublinks: {}
-  title: HTTP2
-  url: '#'
-- sublinks:
-    active: graphql-input-types
-    title: Input Types
-    url: /learn/by-example/graphql-input-types/
-  title: GraphQL
-  url: '#'
-- sublinks: {}
-  title: WebSockets
-  url: '#'
-- sublinks: {}
-  title: Routing
-  url: '#'
-- sublinks: {}
-  title: WebSub
-  url: '#'
-- sublinks: {}
-  title: Resiliency
-  url: '#'
-- sublinks:
-    active: directory-listener
-    title: Directory Listener
-    url: /learn/by-example/directory-listener/
-  title: Listeners
-  url: '#'
-- sublinks:
-    active: grpc-bidirectional-streaming
-    title: Bidirectional Streaming RPC
-    url: /learn/by-example/grpc-bidirectional-streaming/
-  title: gRPC
-  url: '#'
-- sublinks: {}
-  title: Observability
-  url: '#'
-- sublinks: {}
-  title: OpenAPI
-  url: '#'
-- sublinks: {}
-  title: NATS
-  url: '#'
-- sublinks: {}
-  title: STAN
-  url: '#'
-- sublinks: {}
-  title: Kafka
-  url: '#'
-- sublinks: {}
-  title: RabbitMQ
-  url: '#'
-- sublinks: {}
-  title: TCP
-  url: '#'
-- sublinks: {}
-  title: UDP
-  url: '#'
-- sublinks:
-    active: http-client-oauth2-refresh-token-grant-type
-    title: Client - OAuth2 Refresh Token Grant Type
-    url: /learn/by-example/http-client-oauth2-refresh-token-grant-type/
-  title: REST API Security
-  url: '#'
-- sublinks: {}
-  title: Email
-  url: '#'
-- sublinks: {}
-  title: MySQL
-  url: '#'
-- sublinks: {}
-  title: JDBC
-  url: '#'
-- title: Common libraries
-- sublinks:
-    active: io-xml
-    title: Read/Write XML
-    url: /learn/by-example/io-xml/
-  title: IO
-  url: '#'
-- sublinks:
-    active: security-jwt-issue-validate
-    title: JWT Issue/Validate
-    url: /learn/by-example/security-jwt-issue-validate/
-  title: Security
-  url: '#'
-- sublinks:
-    active: url-encode-decode
-    title: URL Encode/Decode Operations
-    url: /learn/by-example/url-encode-decode/
-  title: URL
-  url: '#'
-- sublinks:
-    active: time-formatting-and-parsing
-    title: Time formatting/Parsing
-    url: /learn/by-example/time-formatting-and-parsing/
-  title: Time
-  url: '#'
-- sublinks:
-    active: cache-invalidation
-    title: Cache Invalidation
-    url: /learn/by-example/cache-invalidation/
-  title: Cache
-  url: '#'
-- sublinks:
-    active: logging-configuration
-    title: Configure Logging
-    url: /learn/by-example/logging-configuration/
-  title: Log
-  url: '#'
-- sublinks:
-    active: directory-listener
-    title: Directory Listener
-    url: /learn/by-example/directory-listener/
-  title: File
-  url: '#'
-- sublinks:
-    active: random-numbers
-    title: Random Numbers
-    url: /learn/by-example/random-numbers/
-  title: Random
-  url: '#'
-- sublinks:
-    active: manage-scheduled-jobs
-    title: Manage Scheduled Jobs
-    url: /learn/by-example/manage-scheduled-jobs/
-  title: Task
-  url: '#'
-- sublinks:
-    active: uuid-operations
-    title: UUID Operations
-    url: /learn/by-example/uuid-operations/
-  title: UUID
-  url: '#'
-- sublinks:
-    active: xslt-transformation
-    title: XSLT Transformation
-    url: /learn/by-example/xslt-transformation/
-  title: XSLT
-  url: '#'
-- sublinks:
-    active: regular-expressions
-    title: Regular Expressions
-    url: /learn/by-example/regular-expressions/
-  title: Regex
-  url: '#'
-- sublinks:
-    active: environment-variables
-    title: Environment Variables
-    url: /learn/by-example/environment-variables/
-  title: OS
-  url: '#'
-- sublinks:
-    active: xml-json-conversion
-    title: XML/JSON Conversion
-    url: /learn/by-example/xml-json-conversion/
-  title: XML Data
-  url: '#'
+  sublinks:
+    - title: Programs and Modules
+      url: /downloads/swan-lake-release-notes/programs-and-modules
+      active: programs-and-modules
+    - title: Variables and types 
+      url: /downloads/swan-lake-release-notes/variables-and-types
+      active: variables-and-types
+    - title: Functions 
+      url: /downloads/swan-lake-release-notes/functions
+      active: functions
+    - title: Identifiers 
+      url: /downloads/swan-lake-release-notes/identifiers
+      active: identifiers
+    - title: Integers
+      url: /downloads/swan-lake-release-notes/integers
+      active: integers
+    - title: Booleans and Conditionals 
+      url: /downloads/swan-lake-release-notes/booleans
+      active: booleans
+    - title: Floating point numbers 
+      url: /downloads/swan-lake-release-notes/floating-point-numbers
+      active: floating-point-numbers
+    - title: Nil 
+      url: /downloads/swan-lake-release-notes/nil
+      active: nil
+    - title: Strings 
+      url: /downloads/swan-lake-release-notes/strings
+      active: strings
+    - title: Langlib Functions 
+      url: /downloads/swan-lake-release-notes/langlib-functions
+      active: langlib-functions
+    - title: Arrays 
+      url: /downloads/swan-lake-release-notes/arrays
+      active: arrays
+    - title: Foreach Statement 
+      url: /downloads/swan-lake-release-notes/foreach-statement
+      active: foreach-statement
+    - title: While Statement 
+      url: /downloads/swan-lake-release-notes/while-statement
+      active: while-statement
+    - title: Binary Data 
+      url: /downloads/swan-lake-release-notes/binary-data
+      active: binary-data
+    - title: Maps 
+      url: /downloads/swan-lake-release-notes/maps
+      active: maps
+    - title: Type Definitions 
+      url: /downloads/swan-lake-release-notes/type-definitions
+      active: type-definitions
+    - title: Records 
+      url: /downloads/swan-lake-release-notes/records
+      active: records
+    - title: Structural Typing
+      url: /downloads/swan-lake-release-notes/structural-typing
+      active: structural-typing
+    - title: Unions 
+      url: /downloads/swan-lake-release-notes/unions
+      active: unions
+    - title: Error Reporting 
+      url: /downloads/swan-lake-release-notes/error-reporting
+      active: error-reporting
+    - title: Error Handling 
+      url: /downloads/swan-lake-release-notes/error-handling
+      active: error-handling
+    - title: Check Expression 
+      url: /downloads/swan-lake-release-notes/check-expression
+      active: check-expression
+    - title: Error Subtyping 
+      url: /downloads/swan-lake-release-notes/error-subtyping
+      active: error-subtyping
+    - title: Panics 
+      url: /downloads/swan-lake-release-notes/panics
+      active: panics
+    - title: Any Type 
+      url: /downloads/swan-lake-release-notes/any-data-type
+      active: any-data-type
+    - title: Ignoring Return Values and Errors 
+      url: /downloads/swan-lake-release-notes/ignoring-return-values-and-errors
+      active: ignoring-return-values-and-errors
+    - title: Covariance 
+      url: /downloads/swan-lake-release-notes/covariance
+      active: covariance
+    - title: Object 
+      url: /downloads/swan-lake-release-notes/object
+      active: object
+    - title: Defining Classes 
+      url: /downloads/swan-lake-release-notes/defining-classes
+      active: defining-classes
+    - title: Init Return Type 
+      url: /downloads/swan-lake-release-notes/init-return-type
+      active: init-return-type
+    - title: Identity 
+      url: /downloads/swan-lake-release-notes/identity
+      active: identity
+    - title: Const and Final  
+      url: /downloads/swan-lake-release-notes/const-and-final 
+      active: const-and-final
+    - title: Enumerations 
+      url: /downloads/swan-lake-release-notes/enumerations
+      active: enumerations
+    - title: Match Statement 
+      url: /downloads/swan-lake-release-notes/match-statement
+      active: match-statement
+    - title: Type Inference  
+      url: /downloads/swan-lake-release-notes/type-inference 
+      active: type-inference
+    - title: Function Values 
+      url: /downloads/swan-lake-release-notes/function-values
+      active: function-values
+    - title: Asynchronous function calls 
+      url: /downloads/swan-lake-release-notes/asynchronous-function-calls
+      active: asynchronous-function-calls
+    - title: Annotations 
+      url: /downloads/swan-lake-release-notes/annotations
+      active: annotations
+    - title: Documentation 
+      url: /downloads/swan-lake-release-notes/documentation
+      active: documentation

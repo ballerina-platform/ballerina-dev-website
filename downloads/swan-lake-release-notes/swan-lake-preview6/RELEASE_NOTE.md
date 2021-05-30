@@ -10,4 +10,7 @@ redirect_from:
 
 This is an internal-only release.
 
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
+
+
  

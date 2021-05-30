@@ -121,7 +121,7 @@ Ballerina does not allow ignoring return values of expressions.
 string:toBytes("ballerina.io");
 ```
 
-However, you can explicitly ignore a return value of an expression by assigning the result of the expressions to `_;`. This is like an implicitly-declared variable of the `any` type that cannot be referenced.
+However, you can explicitly ignore a return value of an expression by assigning the result of the expressions to `_;`. This is like an implicitly declared variable of the `any` type that cannot be referenced.
 
 ```ballerina
 // Ok
@@ -135,7 +135,7 @@ However, Ballerina does not allow ignoring the value of an expression if the typ
 _ =  whois("ballerina.io", whoisClient);
 ```
 
-As explained earlier, `_` is like an implicitly-declared variable of the `any;` this is a union type that includes all the types in Ballerina except for the error type. Therefore, the type that includes all values supported by Ballerina is `any|error`. As per the typing rules in Ballerina, the above statement causes a compilation error because `string|error` is not a subtype of the `any` type.
+As explained earlier, `_` is like an implicitly declared variable of the `any;` this is a union type that includes all the types in Ballerina except for the error type. Therefore, the type that includes all values supported by Ballerina is `any|error`. As per the typing rules in Ballerina, the above statement causes a compilation error because `string|error` is not a subtype of the `any` type.
 
 ### Dealing with Abnormal Errors
 

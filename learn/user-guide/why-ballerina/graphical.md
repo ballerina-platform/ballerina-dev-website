@@ -14,7 +14,7 @@ redirect_from:
   - /learn/user-guide/why-ballerina/graphical
 ---
 
-In today’s cloud-era,technologies that can model distributed systems in a more developer-friendly way are required. This means that for a single use case, you need to model a flow that shows how multiple actors interact with each other, how concurrent execution flows, and what remote endpoints are involved. Sequence diagrams are known to be the best way to visually describe this.
+In today’s cloud era, technologies that can model distributed systems in a more developer-friendly way are required. This means that for a single use case, you need to model a flow that shows how multiple actors interact with each other, how concurrent execution flows, and what remote endpoints are involved. Sequence diagrams are known to be the best way to visually describe this.
 
 That is why it is the foundation for designing the syntax and semantics of the Ballerina language. Ballerina provides the flexibility of a general-purpose language while having features to model solutions based on higher-level abstractions.
 
@@ -26,7 +26,7 @@ In Ballerina, there is a bidirectional mapping between the textual representatio
 
 <img src="/img/why-pages/sequence-diagrams-for-programming-1.png" alt="Sequence Diagrams in Ballerina">
 
-In Ballerina services, the entry point is the service resource function. The actor who invokes the service resource is shown as the `caller`. The default participant is the resource function itself showing the operations in its lifeline. From the resource function, further function calls are shown in its lifeline and their internal operations are expanded and merged to the same sequence diagram to show their operations as well.
+In Ballerina services, the entry point is the service resource function. The actor who invokes the service resource is shown as the `caller`. The default participant is the resource function itself showing the operations in its lifeline. From the resource function, further function calls are shown in its lifeline, and their internal operations are expanded and merged to the same sequence diagram to show their operations as well.
 
 ## Get Started
 
@@ -34,7 +34,7 @@ The Ballerina VSCode plugin can generate a sequence diagram dynamically from the
 
 ## Client Objects and Remote Methods
 
-Ballerina has special network client objects such as HTTP clients and database connections that have their own lifeline to represent its functionality and the messages that it can receive. The messages sent to or the invocations done on these network clients are called remote methods (i.e.,a special method inside a client object that represents a call through the network). Remote calls are distinguished from normal method calls by using the arrow `->` notation.
+Ballerina has special network client objects such as HTTP clients and database connections that have their own lifelines to represent their functionality and the messages they can receive. The messages are sent to remote methods. A remote method is a special method inside a client object that represents a call through the network. Remote calls are distinguished from normal method calls by using the arrow `->` notation.
 
 The following code shows an HTTP client that is used to do GET and POST requests to a remote endpoint.
 
@@ -53,7 +53,7 @@ The HTTP clients represented by the `lookupService` and `reportService` variable
 
 <img src="/img/why-pages/sequence-diagrams-for-programming-2.png" alt="Ballerina sequence diagram for HTTP client remote method call">
 
-In the above diargam, the HTTP clients have become participants of the sequence diagram with its own lifeline in which you visualize the messages sent and received to represent the network calls. In a similar manner, a database client is used to model a remote database server in order to interact using its remote methods to carry out the database operations.
+In the above diagram, the HTTP clients have become participants of the sequence diagram with its own lifeline in which you visualize the messages sent and received to represent the network calls. In a similar manner, a database client is used to model a remote database server in order to interact using its remote methods to carry out the database operations.
 
 ```ballerina
 public function lookupAccountTx(jdbc:Client db, boolean clearTx) 

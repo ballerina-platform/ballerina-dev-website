@@ -10,7 +10,7 @@ redirct_from:
   - /learn/user-guide/why-ballerina/concurrent
 ---
 
-A single operating system thread can contain multiple strands. A single strand is run at a time in a thread and the strands belonging to a single thread are cooperatively multitasked. Strands allow you to optimize the usage of CPU time and is beneficial in implementing non-blocking I/O operations.
+A single operating system thread can contain multiple strands. A single strand is run at a time in a thread and the strands belonging to a single thread are cooperatively multitasked. Strands allow you to optimize the usage of CPU time and are beneficial in implementing non-blocking I/O operations.
 
 A worker represents a single strand execution in a function. Concurrent operations in a function are defined by multiple workers as shown in the example below.
 

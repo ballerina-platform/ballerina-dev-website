@@ -3,7 +3,7 @@ layout: ballerina-tooling-guide-left-nav-pages-swanlake
 title: Diagram Editor
 permalink: /learn/tooling-guide/visual-studio-code-extension/diagram-editor/
 active: diagram-editor
-intro: The Ballerina language possesses [bidirectional mapping between its syntaxes and the visual representation](/learn/user-guide/why-ballerina/graphical/). The Diagram Editor of the Ballerina extension helps you to visualize the graphical representation while developing your Ballerina program via the methods below.
+intro: The Ballerina language possesses bidirectional mapping between its syntaxes and the visual representation. The Diagram Editor of the Ballerina extension helps you to visualize the graphical representation while developing your Ballerina program via the methods below.
 keywords: vscode, extension, visual studio code, ballerina, sequence diagrams, diagram editor, graphical
 description: The Ballerina language possesses bidirectional mapping between its syntaxes and the visual representation. The Diagram Editor of the Ballerina extension helps you to visualize the graphical representation while developing your Ballerina program via the methods below.
 redirect_from:

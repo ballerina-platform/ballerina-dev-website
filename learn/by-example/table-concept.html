@@ -1,0 +1,149 @@
+---
+layout: ballerina-example-page
+title: Table Concept
+description: This BBE demonstrates table concept in Ballerina.
+keywords: ballerina, ballerina by example, bbe, tables
+permalink: /learn/by-example/table-concept
+active: table-concept
+redirect_from:
+  - /swan-lake/learn/by-example/table-concept
+  - /swan-lake/learn/by-example/table-concept.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Table Concept</h2>
+                            <p><p>Ballerina encourages use of its built-in data structures: <code>array</code>, <code>map</code> and <code>table</code>. A <code>table</code> is a
+ collection of records; each <code>record</code> represents a row of the <code>table</code>. A <code>table</code> is plain data if
+ and only if its rows are plain data. Table maintains invariant that each row is uniquely identified
+ by a key. Each row’s key is stored in fields, which must be immutable. <br></br>
+ Compared to maps: <br></br>
+ - key is part of the value, rather than separate. <br></br>
+ - type of the key is not restricted to <code>string</code>. <br></br>
+ - order of members is preserved. <br></br></p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="limit-clause.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Limit clause</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="table-syntax.html">
+                                        <span>NEXT ></span>
+                                        <p>Table syntax</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="table-concept">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/table-concept/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=&file=table_concept.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

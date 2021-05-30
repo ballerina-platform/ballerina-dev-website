@@ -928,7 +928,7 @@
         "category": "Common libraries",
         "samples": [
             {
-                "name": "XML/JSON Conversion",
+                "name": "XML JSON Conversion",
                 "url": "xml-json-conversion"
             }
         ]

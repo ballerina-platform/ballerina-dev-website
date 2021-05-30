@@ -57,7 +57,7 @@ function process(Person[] members, int[] quantities) {
 
 Worker message passing (via Ballerina’s `send (->)` and `receive (<-)` actions) is used for communication between workers. The compiler also explicitly verifies that the `send` and `receive` actions are in a consistent state in order to avoid any deadlock scenarios at runtime.
 
-The `@strand` annotation can be used on a named worker or start action to make the corresponding strand to run on a separate thread.
+The `@strand` annotation can be used on a named worker or start action to make the corresponding strand run on a separate thread.
 
 ```ballerina
 import ballerina/io;

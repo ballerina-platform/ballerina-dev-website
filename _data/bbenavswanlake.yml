@@ -3,8 +3,8 @@
   url: '#'
   sublinks:
     - title: Hello World Main
-      url: /learn/by-example/hello-world-main
-      active: hello-world-main
+      url: /learn/by-example/hello-world
+      active: hello-world
     - title: Hello World Service 
       url: /learn/by-example/hello-world-service
       active: hello-world-service

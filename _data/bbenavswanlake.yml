@@ -85,7 +85,7 @@
       active: panics
     - title: Any Type 
       url: /learn/by-example/any-type
-      active: any-data-type
+      active: any-type
     - title: Ignoring Return Values and Errors 
       url: /learn/by-example/ignoring-return-values-and-errors
       active: ignoring-return-values-and-errors
@@ -266,7 +266,7 @@
     - title: Sequences 
       url: /learn/by-example/sequences
       active: sequences
-    - title: XML data model 
+    - title: XML Data Model 
       url: /learn/by-example/xml-data-model
       active: xml-data-model
     - title: XML Templates 
@@ -278,7 +278,7 @@
     - title: XML Subtyping 
       url: /learn/by-example/xml-subtyping
       active: xml-subtyping
-    - title: XML navigation  
+    - title: XML Navigation  
       url: /learn/by-example/xml-navigation 
       active: xml-navigation 
     - title: XML Templates and Query 

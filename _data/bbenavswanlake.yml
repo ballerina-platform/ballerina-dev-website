@@ -3,382 +3,416 @@
   url: '#'
   sublinks:
     - title: Hello World Main
-      url: /downloads/swan-lake-release-notes/hello-world-main
+      url: /learn/by-example/hello-world-main
       active: hello-world-main
     - title: Hello World Service 
-      url: /downloads/swan-lake-release-notes/hello-world-service
+      url: /learn/by-example/hello-world-service
       active: hello-world-service
 - title: Basics
   url: '#'
   sublinks:
     - title: Programs and Modules
-      url: /downloads/swan-lake-release-notes/programs-and-modules
+      url: /learn/by-example/programs-and-modules
       active: programs-and-modules
     - title: Variables and types 
-      url: /downloads/swan-lake-release-notes/variables-and-types
+      url: /learn/by-example/variables-and-types
       active: variables-and-types
     - title: Functions 
-      url: /downloads/swan-lake-release-notes/functions
+      url: /learn/by-example/functions
       active: functions
     - title: Identifiers 
-      url: /downloads/swan-lake-release-notes/identifiers
+      url: /learn/by-example/identifiers
       active: identifiers
     - title: Integers
-      url: /downloads/swan-lake-release-notes/integers
+      url: /learn/by-example/integers
       active: integers
     - title: Booleans and Conditionals 
-      url: /downloads/swan-lake-release-notes/booleans
+      url: /learn/by-example/booleans
       active: booleans
     - title: Floating point numbers 
-      url: /downloads/swan-lake-release-notes/floating-point-numbers
+      url: /learn/by-example/floating-point-numbers
       active: floating-point-numbers
     - title: Nil 
-      url: /downloads/swan-lake-release-notes/nil
+      url: /learn/by-example/nil
       active: nil
     - title: Strings 
-      url: /downloads/swan-lake-release-notes/strings
+      url: /learn/by-example/strings
       active: strings
     - title: Langlib Functions 
-      url: /downloads/swan-lake-release-notes/langlib-functions
+      url: /learn/by-example/langlib-functions
       active: langlib-functions
     - title: Arrays 
-      url: /downloads/swan-lake-release-notes/arrays
+      url: /learn/by-example/arrays
       active: arrays
     - title: Foreach Statement 
-      url: /downloads/swan-lake-release-notes/foreach-statement
+      url: /learn/by-example/foreach-statement
       active: foreach-statement
     - title: While Statement 
-      url: /downloads/swan-lake-release-notes/while-statement
+      url: /learn/by-example/while-statement
       active: while-statement
     - title: Binary Data 
-      url: /downloads/swan-lake-release-notes/binary-data
+      url: /learn/by-example/binary-data
       active: binary-data
     - title: Maps 
-      url: /downloads/swan-lake-release-notes/maps
+      url: /learn/by-example/maps
       active: maps
     - title: Type Definitions 
-      url: /downloads/swan-lake-release-notes/type-definitions
+      url: /learn/by-example/type-definitions
       active: type-definitions
     - title: Records 
-      url: /downloads/swan-lake-release-notes/records
+      url: /learn/by-example/records
       active: records
     - title: Structural Typing
-      url: /downloads/swan-lake-release-notes/structural-typing
+      url: /learn/by-example/structural-typing
       active: structural-typing
     - title: Unions 
-      url: /downloads/swan-lake-release-notes/unions
+      url: /learn/by-example/unions
       active: unions
     - title: Error Reporting 
-      url: /downloads/swan-lake-release-notes/error-reporting
+      url: /learn/by-example/error-reporting
       active: error-reporting
     - title: Error Handling 
-      url: /downloads/swan-lake-release-notes/error-handling
+      url: /learn/by-example/error-handling
       active: error-handling
     - title: Check Expression 
-      url: /downloads/swan-lake-release-notes/check-expression
+      url: /learn/by-example/check-expression
       active: check-expression
     - title: Error Subtyping 
-      url: /downloads/swan-lake-release-notes/error-subtyping
+      url: /learn/by-example/error-subtyping
       active: error-subtyping
     - title: Panics 
-      url: /downloads/swan-lake-release-notes/panics
+      url: /learn/by-example/panics
       active: panics
     - title: Any Type 
-      url: /downloads/swan-lake-release-notes/any-type
+      url: /learn/by-example/any-type
       active: any-data-type
     - title: Ignoring Return Values and Errors 
-      url: /downloads/swan-lake-release-notes/ignoring-return-values-and-errors
+      url: /learn/by-example/ignoring-return-values-and-errors
       active: ignoring-return-values-and-errors
     - title: Covariance 
-      url: /downloads/swan-lake-release-notes/covariance
+      url: /learn/by-example/covariance
       active: covariance
     - title: Object 
-      url: /downloads/swan-lake-release-notes/object
+      url: /learn/by-example/object
       active: object
     - title: Defining Classes 
-      url: /downloads/swan-lake-release-notes/defining-classes
+      url: /learn/by-example/defining-classes
       active: defining-classes
     - title: Init Return Type 
-      url: /downloads/swan-lake-release-notes/init-return-type
+      url: /learn/by-example/init-return-type
       active: init-return-type
     - title: Identity 
-      url: /downloads/swan-lake-release-notes/identity
+      url: /learn/by-example/identity
       active: identity
     - title: Const and Final  
-      url: /downloads/swan-lake-release-notes/const-and-final 
+      url: /learn/by-example/const-and-final 
       active: const-and-final
     - title: Enumerations 
-      url: /downloads/swan-lake-release-notes/enumerations
+      url: /learn/by-example/enumerations
       active: enumerations
     - title: Match Statement 
-      url: /downloads/swan-lake-release-notes/match-statement
+      url: /learn/by-example/match-statement
       active: match-statement
     - title: Type Inference  
-      url: /downloads/swan-lake-release-notes/type-inference 
+      url: /learn/by-example/type-inference 
       active: type-inference
     - title: Function Values 
-      url: /downloads/swan-lake-release-notes/function-values
+      url: /learn/by-example/function-values
       active: function-values
     - title: Asynchronous function calls 
-      url: /downloads/swan-lake-release-notes/asynchronous-function-calls
+      url: /learn/by-example/asynchronous-function-calls
       active: asynchronous-function-calls
     - title: Annotations 
-      url: /downloads/swan-lake-release-notes/annotations
+      url: /learn/by-example/annotations
       active: annotations
     - title: Documentation 
-      url: /downloads/swan-lake-release-notes/documentation
+      url: /learn/by-example/documentation
       active: documentation
 - title: Network Interaction
   url: '#'
   sublinks:
     - title: Consuming Services 
-      url: /downloads/swan-lake-release-notes/consuming-services
+      url: /learn/by-example/consuming-services
       active: consuming-services
     - title: Providing Services 
-      url: /downloads/swan-lake-release-notes/providing-services
+      url: /learn/by-example/providing-services
       active: providing-services
     - title: Module Lifecycle 
-      url: /downloads/swan-lake-release-notes/module-lifecycle
+      url: /learn/by-example/module-lifecycle
       active: module-lifecycle
     - title: Service Declaration 
-      url: /downloads/swan-lake-release-notes/service-declaration
+      url: /learn/by-example/service-declaration
       active: service-declaration
     - title: Resource Methods 
-      url: /downloads/swan-lake-release-notes/resource-methods
+      url: /learn/by-example/resource-methods
       active: resource-methods
     - title: Hierarchical Resources 
-      url: /downloads/swan-lake-release-notes/hierarchical-resources
+      url: /learn/by-example/hierarchical-resources
       active: hierarchical-resources
     - title: Resource Path Parameters 
-      url: /downloads/swan-lake-release-notes/resource-path-parameters
+      url: /learn/by-example/resource-path-parameters
       active: resource-path-parameters    
     - title: Hierarchical Services 
-      url: /downloads/swan-lake-release-notes/hierarchical-services
+      url: /learn/by-example/hierarchical-services
       active: hierarchical-services
     - title: Representing Responses 
-      url: /downloads/swan-lake-release-notes/representing-responses
+      url: /learn/by-example/representing-responses
       active: representing-responses
 - title: Working With Data
   url: '#'
   sublinks:
     - title: Plain Data 
-      url: /downloads/swan-lake-release-notes/plain-data
+      url: /learn/by-example/plain-data
       active: plain-data
     - title: Ballerina Basic Types 
-      url: /downloads/swan-lake-release-notes/ballerina-basic-types
+      url: /learn/by-example/ballerina-basic-types
       active: ballerina-basic-types
     - title: Decimal Type 
-      url: /downloads/swan-lake-release-notes/decimal-type
+      url: /learn/by-example/decimal-type
       active: decimal-type
     - title: Immutability 
-      url: /downloads/swan-lake-release-notes/immutability
+      url: /learn/by-example/immutability
       active: immutability
     - title: Anydata Type 
-      url: /downloads/swan-lake-release-notes/anydata-type
+      url: /learn/by-example/anydata-type
       active: anydata-type
     - title: Configurable Variables 
-      url: /downloads/swan-lake-release-notes/configurable-variables
+      url: /learn/by-example/configurable-variables
       active: configurable-variables
     - title: Optional Fields 
-      url: /downloads/swan-lake-release-notes/optional-fields
+      url: /learn/by-example/optional-fields
       active: optional-fields
     - title: Open Records 
-      url: /downloads/swan-lake-release-notes/open-records
+      url: /learn/by-example/open-records
       active: open-records
     - title: Controlling openness 
-      url: /downloads/swan-lake-release-notes/controlling-openness
+      url: /learn/by-example/controlling-openness
       active: controlling-openness
     - title: JSON Type 
-      url: /downloads/swan-lake-release-notes/json-type
+      url: /learn/by-example/json-type
       active: json-type
     - title: Working Directly with JSON
-      url: /downloads/swan-lake-release-notes/working-directly-with-json
+      url: /learn/by-example/working-directly-with-json
       active: working-directly-with-json
     - title: Match Statement with Maps 
-      url: /downloads/swan-lake-release-notes/match-statement-with-maps
+      url: /learn/by-example/match-statement-with-maps
       active: match-statement-with-maps
     - title: Converting from User-Defined type to JSON
-      url: /downloads/swan-lake-release-notes/converting-from-user-defined-type-to-json
+      url: /learn/by-example/converting-from-user-defined-type-to-json
       active: converting-from-user-defined-type-to-json
     - title: Converting from JSON to User-Defined Type 
-      url: /downloads/swan-lake-release-notes/converting-from-json-to-user-defined-type
+      url: /learn/by-example/converting-from-json-to-user-defined-type
       active: converting-from-json-to-user-defined-type
     - title: Converting to User-Defined Type 
-      url: /downloads/swan-lake-release-notes/converting-to-user-defined-type
+      url: /learn/by-example/converting-to-user-defined-type
       active: converting-to-user-defined-type
     - title: Resource Method Typing 
-      url: /downloads/swan-lake-release-notes/resource-method-typing
+      url: /learn/by-example/resource-method-typing
       active: resource-method-typing
     - title: JSON Numbers 
-      url: /downloads/swan-lake-release-notes/json-numbers
+      url: /learn/by-example/json-numbers
       active: json-numbers
     - title: Query expressions 
-      url: /downloads/swan-lake-release-notes/query-expressions
+      url: /learn/by-example/query-expressions
       active: query-expressions
     - title: Destructuring Records 
-      url: /downloads/swan-lake-release-notes/destructuring-records
+      url: /learn/by-example/destructuring-records
       active: destructuring-records
     - title: Let Clause 
-      url: /downloads/swan-lake-release-notes/let-clause
+      url: /learn/by-example/let-clause
       active: let-clause
     - title: Ordering 
-      url: /downloads/swan-lake-release-notes/ordering
+      url: /learn/by-example/ordering
       active: ordering
     - title: Limit Clause 
-      url: /downloads/swan-lake-release-notes/limit-clause
+      url: /learn/by-example/limit-clause
       active: limit-clause
     - title: Table Concept 
-      url: /downloads/swan-lake-release-notes/table-concept
+      url: /learn/by-example/table-concept
       active: table-concept
     - title: Table Syntax 
-      url: /downloads/swan-lake-release-notes/table-syntax
+      url: /learn/by-example/table-syntax
       active: table-syntax
     - title: Multiple Key Fields 
-      url: /downloads/swan-lake-release-notes/multiple-key-fields
+      url: /learn/by-example/multiple-key-fields
       active: multiple-key-fields
     - title: Structured Keys 
-      url: /downloads/swan-lake-release-notes/structured-keys
+      url: /learn/by-example/structured-keys
       active: structured-keys
     - title: Querying Tables 
-      url: /downloads/swan-lake-release-notes/querying-tables
+      url: /learn/by-example/querying-tables
       active: querying-tables
     - title: Creating Tables With Query  
-      url: /downloads/swan-lake-release-notes/creating-tables-with-query
+      url: /learn/by-example/creating-tables-with-query
       active: creating-tables-with-query
     - title: Join Clause 
-      url: /downloads/swan-lake-release-notes/join-clause
+      url: /learn/by-example/join-clause
       active: join-clause
     - title: Stream type 
-      url: /downloads/swan-lake-release-notes/stream-type
+      url: /learn/by-example/stream-type
       active: stream-type
     - title: Querying with Streams 
-      url: /downloads/swan-lake-release-notes/querying-with-streams
+      url: /learn/by-example/querying-with-streams
       active: querying-with-streams
     - title: Backtick Templates 
-      url: /downloads/swan-lake-release-notes/backtick-templates
+      url: /learn/by-example/backtick-templates
       active: backtick-templates    
     - title: Raw Templates 
-      url: /downloads/swan-lake-release-notes/raw-templates
+      url: /learn/by-example/raw-templates
       active: raw-templates
     - title: XML 
-      url: /downloads/swan-lake-release-notes/xml
+      url: /learn/by-example/xml
       active: xml
     - title: Sequences 
-      url: /downloads/swan-lake-release-notes/sequences
+      url: /learn/by-example/sequences
       active: sequences
     - title: XML data model 
-      url: /downloads/swan-lake-release-notes/xml-data-model
+      url: /learn/by-example/xml-data-model
       active: xml-data-model
     - title: XML Templates 
-      url: /downloads/swan-lake-release-notes/xml-templates
+      url: /learn/by-example/xml-templates
       active: xml-templates
     - title: XML Operations 
-      url: /downloads/swan-lake-release-notes/xml-operations
+      url: /learn/by-example/xml-operations
       active: xml-operations
     - title: XML Subtyping 
-      url: /downloads/swan-lake-release-notes/xml-subtyping
+      url: /learn/by-example/xml-subtyping
       active: xml-subtyping
     - title: XML navigation  
-      url: /downloads/swan-lake-release-notes/xml-navigation 
+      url: /learn/by-example/xml-navigation 
       active: xml-navigation 
     - title: XML Templates and Query 
-      url: /downloads/swan-lake-release-notes/xml-templates-and-query
+      url: /learn/by-example/xml-templates-and-query
       active: xml-templates-and-query    
     - title: XML Namespaces 
-      url: /downloads/swan-lake-release-notes/xml-namespaces
+      url: /learn/by-example/xml-namespaces
       active: xml-namespaces
     - title: XMLNS Declarations 
-      url: /downloads/swan-lake-release-notes/xmlns-declarations
+      url: /learn/by-example/xmlns-declarations
       active: xmlns-declarations
 - title: Concurrency
   url: '#'
   sublinks:
     - title: Named Workers
-      url: /downloads/swan-lake-release-notes/named-workers
+      url: /learn/by-example/named-workers
       active: named-workers
     - title: Sequence Diagrams 
-      url: /downloads/swan-lake-release-notes/sequence-diagrams
+      url: /learn/by-example/sequence-diagrams
       active: sequence-diagrams
     - title: Waiting for Workers
-      url: /downloads/swan-lake-release-notes/waiting-for-workers
+      url: /learn/by-example/waiting-for-workers
       active: waiting-for-workers
     - title: Strands
-      url: /downloads/swan-lake-release-notes/strands
+      url: /learn/by-example/strands
       active: strands
     - title: Named Worker Return Values
-      url: /downloads/swan-lake-release-notes/named-worker-return-values
+      url: /learn/by-example/named-worker-return-values
       active: named-worker-return-values
     - title: Alternate Wait 
-      url: /downloads/swan-lake-release-notes/alternate-wait
+      url: /learn/by-example/alternate-wait
       active: alternate-wait
     - title: Multiple Wait
-      url: /downloads/swan-lake-release-notes/multiple-wait
+      url: /learn/by-example/multiple-wait
       active: multiple-wait
     - title: Named Workers and Futures 
-      url: /downloads/swan-lake-release-notes/named-workers-and-futures
+      url: /learn/by-example/named-workers-and-futures
       active: named-workers-and-futures
     - title: Inter-Worker Message Passing
-      url: /downloads/swan-lake-release-notes/inter-worker-message-passing
+      url: /learn/by-example/inter-worker-message-passing
       active: inter-worker-message-passing
     - title: Inter-Worker Failure Propagation
-      url: /downloads/swan-lake-release-notes/inter-worker-failure-propagation
+      url: /learn/by-example/inter-worker-failure-propagation
       active: inter-worker-failure-propagation
 - title: Transactions
   url: '#'
   sublinks:
     - title: Transaction Statement
-      url: /downloads/swan-lake-release-notes/transaction-statement
+      url: /learn/by-example/transaction-statement
       active: transaction-statement
     - title: Check Semantics 
-      url: /downloads/swan-lake-release-notes/check-semantics
+      url: /learn/by-example/check-semantics
       active: check-semantics
     - title: Rollback
-      url: /downloads/swan-lake-release-notes/rollback
+      url: /learn/by-example/rollback
       active: rollback
     - title: Retry Transaction Statement
-      url: /downloads/swan-lake-release-notes/retry-transaction-statement
+      url: /learn/by-example/retry-transaction-statement
       active: retry-transaction-statement
     - title: Transactional Qualifier 
-      url: /downloads/swan-lake-release-notes/transactional-qualifier
+      url: /learn/by-example/transactional-qualifier
       active: transactional-qualifier
     - title: Distributed Transactions 
-      url: /downloads/swan-lake-release-notes/distributed-transactions
+      url: /learn/by-example/distributed-transactions
       active: distributed-transactions
     - title: Transactional Named Workers
-      url: /downloads/swan-lake-release-notes/transactional-named-workers
-      active: hello-world-service
+      url: /learn/by-example/transactional-named-workers
+      active: transactional-named-workers
     - title: Commit/Rollback Handlers
-      url: /downloads/swan-lake-release-notes/commit-rollback-handlers
+      url: /learn/by-example/commit-rollback-handlers
       active: commit-rollback-handlers
 - title: Concurrency Safety
   url: '#'
   sublinks:
     - title: Lock Statement
-      url: /downloads/swan-lake-release-notes/lock-statement
+      url: /learn/by-example/lock-statement
       active: lock-statement
     - title: Isolated Functions 
-      url: /downloads/swan-lake-release-notes/isolated-functions
+      url: /learn/by-example/isolated-functions
       active: isolated-functions
     - title: Readonly Type
-      url: /downloads/swan-lake-release-notes/readonly-type
+      url: /learn/by-example/readonly-type
       active: readonly-type
     - title: Readonly and Isolated
-      url: /downloads/swan-lake-release-notes/readonly-and-isolated
+      url: /learn/by-example/readonly-and-isolated
       active: readonly-and-isolated
     - title: Combining Isolated Functions and Lock
-      url: /downloads/swan-lake-release-notes/combining-isolated-functions-and-lock
+      url: /learn/by-example/combining-isolated-functions-and-lock
       active: combining-isolated-functions-and-lock
     - title: Isolated Variables
-      url: /downloads/swan-lake-release-notes/isolated-variables
+      url: /learn/by-example/isolated-variables
       active: isolated-variables
     - title: Isolated Methods
-      url: /downloads/swan-lake-release-notes/isolated-methods
+      url: /learn/by-example/isolated-methods
       active: isolated-methods
     - title: Isolated Objects
-      url: /downloads/swan-lake-release-notes/isolated-objects
+      url: /learn/by-example/isolated-objects
       active: isolated-objects
     - title: Inferring Isolated
-      url: /downloads/swan-lake-release-notes/inferring-isolated
+      url: /learn/by-example/inferring-isolated
       active: inferring-isolated
 
+- title: Working Over the Network
+- title: REST API
+  url: '#'
+  sublinks:
+    - title: Service Data Binding
+      url: /learn/by-example/hello-world-main
+      active: hello-world-main
+    - title: Hello World Service 
+      url: /learn/by-example/hello-world-service
+      active: hello-world-service
+    - title: Hello World Main
+      url: /learn/by-example/hello-world-main
+      active: hello-world-main
+    - title: Hello World Service 
+      url: /learn/by-example/hello-world-service
+      active: hello-world-service
+    - title: Hello World Main
+      url: /learn/by-example/hello-world-main
+      active: hello-world-main
+    - title: Hello World Service 
+      url: /learn/by-example/hello-world-service
+      active: hello-world-service
+    - title: Hello World Main
+      url: /learn/by-example/hello-world-main
+      active: hello-world-main
+    - title: Hello World Service 
+      url: /learn/by-example/hello-world-service
+      active: hello-world-service
+    - title: Hello World Main
+      url: /learn/by-example/hello-world-main
+      active: hello-world-main
+    - title: Hello World Service 
+      url: /learn/by-example/hello-world-service
+      active: hello-world-service
     

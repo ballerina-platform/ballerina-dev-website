@@ -99,3 +99,5 @@ The result of the above diagram represents the response retrieved back from the 
    display:none !important;
 }
 </style>
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
+

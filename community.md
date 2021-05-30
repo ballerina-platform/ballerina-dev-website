@@ -8,12 +8,12 @@ permalink: /community/
 
 The Ballerina community has been bootstrapped by <a href="https://wso2.com" target="_blank">WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open source project with all source code licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, Version 2.0</a> and the specifications licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0" target="_blank">Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
 
-## Try out Ballerina
+## Try Out Ballerina
 
 [Learn Ballerina](/learn) and try out writing Ballerina code on your own.
 
 
-## Subscribe to the newsletter
+## Subscribe to the Newsletter
 
 <a class="cBookmark" id="newsletter"></a>
 
@@ -59,7 +59,7 @@ The Ballerina team is now hosting monthly recorded Community Calls! These are in
 
 - Get involved in our next Community Call by <a href="https://docs.google.com/forms/d/e/1FAIpQLSewd7XGlQeuCI2P9XlQ-A8rtFGn9ghbdYpghIi9K03VlxHcRg/viewform" target="_blank">submitting a discussion topic or requesting to do your own quick demo</a>.
 
-## Seek help
+## Seek Help
 
 We are happy to help! Come engage with us on any channel that works for you.
 
@@ -86,7 +86,7 @@ We are happy to help! Come engage with us on any channel that works for you.
    </div>
 </div>
 
-## Report issues
+## Report Issues
 
 Hit a bump on the road? Report an issue in the relevant repo out of the GitHub repos listed below. We want to fix all bugs!
 
@@ -96,9 +96,9 @@ Hit a bump on the road? Report an issue in the relevant repo out of the GitHub r
    - Website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues" target="_blank">ballerina-dev-website</a> repo
    - Security flaw: send an email to <a href="mailto:security@ballerina.io" target="_blank">security@ballerina.io</a>. For details, see the <a href="/security" target="_blank">security policy</a>.
 
-## Help us grow 
+## Help Us Grow 
 
-Getting a language established is like getting a new religion going. If you like the experience so far, help us to spread the word.
+If you like the experience so far, help us to spread the word.
 
 - Star the [Ballerina GitHub repo](https://github.com/ballerina-platform/ballerina-lang) and show appreciation to the Ballerina maintainers for their work. Also, watch the repo to keep track of Ballerina issues. Thank you!
 <div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div> 

@@ -279,11 +279,12 @@ a.cPlayGround:hover {
     width: 100%;
 }
 .row.cVideoSection {
-   background-color:  #494949;
+   background-color:  #ffffff;
 }
 
 .row.cVideoSection h2 , .row.cVideoSection h3 , .row.cVideoSection  p {
-    color: #fff !important;
+    color: #000 !important;
+    font-family: inherit
 }
 .row.cVideoSection h2 {
     border-bottom: 2px solid #fff !important;

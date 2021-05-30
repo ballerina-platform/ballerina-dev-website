@@ -15,6 +15,70 @@ redirct_from:
 
 In a microservice architecture, smaller services are developed, deployed, and scaled individually. These disaggregated services communicate with each other over the network forcing developers to deal with the [Fallacies of Distributed Computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) as a part of their application logic.
 For decades, programming languages have treated networks simply as I/O sources. Ballerina language introduces language constructs that seamlessly map to network programming concepts such as services and network resources. The sections below demonstrate a few of these language constructs and how they help to develop distributed services.
+
+## Network-Friendly Type System
+
+Ballerina's type system is specifically focused on aiding the development of networked and distributed applications. Ballerina is a `null` safe language with builtin support for popular wire formats `JSON` and `XML`, and seamless conversions between  `JSON` and `user-defined` types.
+
+### Get Started
+
+The sample below demonstrates a few simple usages of `json` and `xml` types.
+
+```ballerina
+public function main() returns error? {
+    string name = "Katie Melua";
+
+    // XML literal.
+    xml album = xml 
+    `<Album>
+        <name>Piece By Piece</name>
+        <artist>${name}</artist>
+        <song>Spider's Web</song>
+        <song>Nine Million Bicycles</song>
+    </Album>`;
+    io:println("XML Value: ", album);
+
+    // Extract the list of song names from the XML value using a query expression.
+    string[] songs = from var song in album/<song> select song.data();
+    io:println("Extracted song names: ", songs);
+
+    // JSON literal.
+    json jAlbum = {
+        "name": (album/<name>).data(),
+        "artist": name,
+        songs
+    };
+    io:println("JSON value: ", jAlbum);
+
+    json artistName = check jAlbum.artist;
+    io:println("Album artist: ", artistName);
+}
+```
+
+The Ballerina source file is compiled and executed in the following manner.
+
+```bash
+bal run xml_json_sample.bal
+```
+
+Output:
+```bash
+Compiling source
+        xml_json_sample.bal
+
+Running executable.
+
+<Album>
+        <name>Piece By Piece</name>
+        <artist>Katie Melua</artist>
+        <song>Spider's Web</song>
+        <song>Nine Million Bicycles</song>
+    </Album>
+Extracted song names: ["Spider's Web","Nine Million Bicycles"]
+JSON value: {"name":"Piece By Piece","artist":"Katie Melua","songs":["Spider's Web","Nine Million Bicycles"]}
+Album artist: Katie Melua
+```
+
 ## Services
 
 Ballerina introduces service typing where services, which work in conjunction with a listener object, can have one or more resource methods in which the application logic is implemented. The listener object provides an interface between the network and the service. It receives network messages from a remote process according to the defined protocol and translates it into calls on the resource methods of the service that has been attached to the listener object.

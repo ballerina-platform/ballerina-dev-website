@@ -111,12 +111,22 @@
       url: /learn/user-guide/calling-java-code-from-ballerina/
       active: calling-java-code-from-ballerina
 
+- title: Configurability
+  url: '#' 
+  sublinks:
+    - title: Defining Configurable Variables
+      url: /learn/user-guide/configurability/defining-configurable-variables/
+      active: defining-configurable-variables
+    - title: Supplying Values to Configurable Variables
+      url: /learn/user-guide/configurability/supplying-values-to-configurable-variables/
+      active: supplying-values-to-configurable-variables
+    - title: Trying it Out
+      url: /learn/user-guide/configurability/trying-it-out/
+      active: trying-it-out
+
 - title: Security
   url: '#' 
   sublinks:
-    - title: Writing Secure Ballerina Code
-      url: /learn/user-guide/security/writing-secure-ballerina-code
-      active: writing-secure-ballerina-code
     - title: Authentication and Authorization
       url: /learn/user-guide/authentication-and-authorization
       active: authentication-and-authorization

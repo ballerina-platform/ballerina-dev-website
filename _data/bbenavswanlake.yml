@@ -502,6 +502,256 @@
     - title: HTTP 2.0 Server Push
       url: /learn/by-example/http-2-0-server-push
       active: http-2-0-server-push
+- title: Resiliency
+  url: '#'
+  sublinks:  
+    - title: Circuit Breaker
+      url: /learn/by-example/http-circuit-breaker
+      active: http-circuit-breaker
+    - title: Load Balancer
+      url: /learn/by-example/http-load-balancer
+      active: http-load-balancer
+    - title: Failover
+      url: /learn/by-example/http-failover
+      active: http-failover
+    - title: Retry
+      url: /learn/by-example/http-retry
+      active: http-retry
+    - title: Timeout
+      url: /learn/by-example/http-timeout
+      active: http-timeout  
+- title: GraphQL
+  url: '#'
+  sublinks:  
+    - title: Hello World
+      url: /learn/by-example/graphql-hello-world
+      active: graphql-hello-world
+    - title: Returning Record Values
+      url: /learn/by-example/graphql-returning-record-values
+      active: graphql-returning-record-values
+    - title: Hierarchical Resource Paths
+      url: /learn/by-example/graphql-hierarchical-resource-paths
+      active: graphql-hierarchical-resource-paths
+    - title: Returning Service Objects
+      url: /learn/by-example/graphql-returning-service-objects
+      active: graphql-returning-service-objects
+    - title: Input Types
+      url: /learn/by-example/graphql-input-types
+      active: graphql-input-types
+- title: WebSockets
+  url: '#'
+  sublinks:  
+    - title: Handle Text Messages with Client
+      url: /learn/by-example/websocket-text-client
+      active: websocket-text-client
+    - title: Handle Binary Messages with Client
+      url: /learn/by-example/websocket-binary-client
+      active: websocket-binary-client
+    - title: Listener Functionalities
+      url: /learn/by-example/websocket-basic-sample
+      active: websocket-basic-sample
+- title: WebSub
+  url: '#'
+  sublinks:  
+    - title: Websub Subscriber Service
+      url: /learn/by-example/websub-webhook-sample
+      active: websub-webhook-sample
+- title: Listeners
+  url: '#'
+  sublinks:  
+    - title: Directory Listener
+      url: /learn/by-example/directory-listener
+      active: directory-listener  
+    - title: Dynamic Listener
+      url: /learn/by-example/dynamic-listener
+      active: dynamic-listener  
+- title: gRPC
+  url: '#'
+  sublinks:  
+    - title: Simple RPC
+      url: /learn/by-example/grpc-simple
+      active: grpc-simple 
+    - title: Simple RPC with Headers
+      url: /learn/by-example/grpc-simple-with-headers
+      active: grpc-simple-with-headers      
+    - title: Secured Simple RPC
+      url: /learn/by-example/grpc-secured-simple
+      active: grpc-secured-simple 
+    - title: Server Streaming RPC
+      url: /learn/by-example/grpc-server-streaming
+      active: grpc-server-streaming 
+    - title: Client Streaming RPC
+      url: /learn/by-example/grpc-client-streaming
+      active: grpc-client-streaming
+    - title: Bidirectional Streaming RPC
+      url: /learn/by-example/grpc-bidirectional-streaming
+      active: grpc-bidirectional-streaming 
+    - title: Proto To Ballerina
+      url: /learn/by-example/proto-to-ballerina
+      active: proto-to-ballerina 
+- title: OpenAPI
+  url: '#'
+  sublinks:  
+    - title: Ballerina To OpenAPI
+      url: /learn/by-example/ballerina-to-openapi
+      active: ballerina-to-openapi
+    - title: OpenAPI To Ballerina
+      url: /learn/by-example/openapi-to-ballerina
+      active: openapi-to-ballerina 
+- title: NATS
+  url: '#'
+  sublinks:  
+    - title: Publish/Subscribe
+      url: /learn/by-example/nats-basic-pub-sub
+      active: nats-basic-pub-sub
+    - title: Request/Reply
+      url: /learn/by-example/nats-basic-request-reply
+      active: nats-basic-request-reply 
+- title: STAN
+  url: '#'
+  sublinks:  
+    - title: Publish/Subscribe
+      url: /learn/by-example/nats-streaming-pub-sub
+      active: nats-streaming-pub-sub
+    - title: Queue Groups
+      url: /learn/by-example/nats-streaming-queue-group
+      active: nats-streaming-queue-group
+    - title: Durable Subscriptions
+      url: /learn/by-example/nats-streaming-durable-subscriptions
+      active: nats-streaming-durable-subscriptions
+    - title: Historical Message Replay
+      url: /learn/by-example/nats-streaming-start-position
+      active: nats-streaming-start-position
+- title: Kafka
+  url: '#'
+  sublinks:  
+    - title: Producer
+      url: /learn/by-example/kafka-producer
+      active: kafka-producer
+    - title: Consumer Service
+      url: /learn/by-example/kafka-consumer-service
+      active: kafka-consumer-service
+    - title: Consumer Client
+      url: /learn/by-example/kafka-consumer-client
+      active: kafka-consumer-client
+    - title: Transactional Producer
+      url: /learn/by-example/kafka-producer-transactional
+      active: kafka-producer-transactional
+    - title: Consumer Groups
+      url: /learn/by-example/kafka-consumer-group-service
+      active: kafka-consumer-group-service
+    - title: SASL Authentication - Consumer
+      url: /learn/by-example/kafka-authentication-sasl-plain-consumer
+      active: kafka-authentication-sasl-plain-consumer
+    - title: SASL Authentication - Producer
+      url: /learn/by-example/kafka-authentication-sasl-plain-producer
+      active: kafka-authentication-sasl-plain-producer
+- title: RabbitMQ
+  url: '#'
+  sublinks:  
+    - title: Producer
+      url: /learn/by-example/rabbitmq-producer
+      active: rabbitmq-producer
+    - title: Consumer
+      url: /learn/by-example/rabbitmq-consumer
+      active: rabbitmq-consumer
+    - title: Client Acknowledgements
+      url: /learn/by-example/rabbitmq-consumer-with-client-acknowledgement
+      active: rabbitmq-consumer-with-client-acknowledgement
+    - title: Transactional Producer
+      url: /learn/by-example/rabbitmq-transaction-producer
+      active: rabbitmq-transaction-producer
+    - title: Transactional Consumer
+      url: /learn/by-example/rabbitmq-transaction-consumer
+      active: rabbitmq-transaction-consumer
+- title: TCP
+  url: '#'
+  sublinks:  
+    - title: TCP Client
+      url: /learn/by-example/tcp-client
+      active: tcp-client
+    - title: TCP Listener
+      url: /learn/by-example/tcp-listener
+      active: tcp-listener
+    - title: TCP Transport Security
+      url: /learn/by-example/tcp-transport-security
+      active: tcp-transport-security
+- title: UDP
+  url: '#'
+  sublinks:  
+    - title: UDP Connectionless Client
+      url: /learn/by-example/udp-client
+      active: udp-client
+    - title: UDP Connection-Oriented Client
+      url: /learn/by-example/udp-connect-client
+      active: udp-connect-client
+    - title: UDP Listener
+      url: /learn/by-example/udp-listener
+      active: udp-listener
+- title: Email
+  url: '#'
+  sublinks:  
+    - title: Send Emails
+      url: /learn/by-example/send-email
+      active: send-email
+    - title: Receive Emails Using a Client
+      url: /learn/by-example/receive-email-using-client
+      active: receive-email-using-client
+    - title: Receive Emails Using a Listener
+      url: /learn/by-example/receive-email-using-listener
+      active: receive-email-using-listener
+- title: MySQL
+  url: '#'
+  sublinks:  
+    - title: Simple Query
+      url: /learn/by-example/mysql-query-operation
+      active: mysql-query-operation
+    - title: Query with Complex Types
+      url: /learn/by-example/mysql-complex-type-queries
+      active: mysql-complex-type-queries
+    - title: DML and DDL Operation
+      url: /learn/by-example/mysql-execute-operation
+      active: mysql-execute-operation
+    - title: Batch Execute
+      url: /learn/by-example/mysql-batch-execute-operation
+      active: mysql-batch-execute-operation
+    - title: Atomic Batch Execute
+      url: /learn/by-example/mysql-atomic-batch-execute-operation
+      active: mysql-atomic-batch-execute-operation
+    - title: Call Stored Procedure
+      url: /learn/by-example/mysql-call-stored-procedures
+      active: mysql-call-stored-procedures
+- title: JDBC
+  url: '#'
+  sublinks:  
+    - title: Simple Query
+      url: /learn/by-example/jdbc-query-operation
+      active: jdbc-query-operation
+    - title: Query with Complex Types
+      url: /learn/by-example/jdbc-complex-type-queries
+      active: jdbc-complex-type-queries
+    - title: DML and DDL Operation
+      url: /learn/by-example/jdbc-execute-operation
+      active: jdbc-execute-operation
+    - title: Batch Execute
+      url: /learn/by-example/jdbc-batch-execute-operation
+      active: jdbc-batch-execute-operation
+    - title: Atomic Batch Execute
+      url: /learn/by-example/jdbc-atomic-batch-execute-operation
+      active: jdbc-atomic-batch-execute-operation
+- title: Observability
+  url: '#'
+  sublinks:  
+    - title: Distributed Tracing
+      url: /learn/by-example/tracing
+      active: tracing
+    - title: Counter-Based Metrics
+      url: /learn/by-example/counter-metrics
+      active: counter-metrics
+    - title: Gauge-Based Metrics
+      url: /learn/by-example/gauge-metrics
+      active: gauge-metrics
+
 
 
     

@@ -84,7 +84,7 @@
       url: /downloads/swan-lake-release-notes/panics
       active: panics
     - title: Any Type 
-      url: /downloads/swan-lake-release-notes/any-data-type
+      url: /downloads/swan-lake-release-notes/any-type
       active: any-data-type
     - title: Ignoring Return Values and Errors 
       url: /downloads/swan-lake-release-notes/ignoring-return-values-and-errors
@@ -128,3 +128,257 @@
     - title: Documentation 
       url: /downloads/swan-lake-release-notes/documentation
       active: documentation
+- title: Network Interaction
+  url: '#'
+  sublinks:
+    - title: Consuming Services 
+      url: /downloads/swan-lake-release-notes/consuming-services
+      active: consuming-services
+    - title: Providing Services 
+      url: /downloads/swan-lake-release-notes/providing-services
+      active: providing-services
+    - title: Module Lifecycle 
+      url: /downloads/swan-lake-release-notes/module-lifecycle
+      active: module-lifecycle
+    - title: Service Declaration 
+      url: /downloads/swan-lake-release-notes/service-declaration
+      active: service-declaration
+    - title: Resource Methods 
+      url: /downloads/swan-lake-release-notes/resource-methods
+      active: resource-methods
+    - title: Hierarchical Resources 
+      url: /downloads/swan-lake-release-notes/hierarchical-resources
+      active: hierarchical-resources
+    - title: Resource Path Parameters 
+      url: /downloads/swan-lake-release-notes/resource-path-parameters
+      active: resource-path-parameters    
+    - title: Hierarchical Services 
+      url: /downloads/swan-lake-release-notes/hierarchical-services
+      active: hierarchical-services
+    - title: Representing Responses 
+      url: /downloads/swan-lake-release-notes/representing-responses
+      active: representing-responses
+- title: Working With Data
+  url: '#'
+  sublinks:
+    - title: Plain Data 
+      url: /downloads/swan-lake-release-notes/plain-data
+      active: plain-data
+    - title: Ballerina Basic Types 
+      url: /downloads/swan-lake-release-notes/ballerina-basic-types
+      active: ballerina-basic-types
+    - title: Decimal Type 
+      url: /downloads/swan-lake-release-notes/decimal-type
+      active: decimal-type
+    - title: Immutability 
+      url: /downloads/swan-lake-release-notes/immutability
+      active: immutability
+    - title: Anydata Type 
+      url: /downloads/swan-lake-release-notes/anydata-type
+      active: anydata-type
+    - title: Configurable Variables 
+      url: /downloads/swan-lake-release-notes/configurable-variables
+      active: configurable-variables
+    - title: Optional Fields 
+      url: /downloads/swan-lake-release-notes/optional-fields
+      active: optional-fields
+    - title: Open Records 
+      url: /downloads/swan-lake-release-notes/open-records
+      active: open-records
+    - title: Controlling openness 
+      url: /downloads/swan-lake-release-notes/controlling-openness
+      active: controlling-openness
+    - title: JSON Type 
+      url: /downloads/swan-lake-release-notes/json-type
+      active: json-type
+    - title: Working Directly with JSON
+      url: /downloads/swan-lake-release-notes/working-directly-with-json
+      active: working-directly-with-json
+    - title: Match Statement with Maps 
+      url: /downloads/swan-lake-release-notes/match-statement-with-maps
+      active: match-statement-with-maps
+    - title: Converting from User-Defined type to JSON
+      url: /downloads/swan-lake-release-notes/converting-from-user-defined-type-to-json
+      active: converting-from-user-defined-type-to-json
+    - title: Converting from JSON to User-Defined Type 
+      url: /downloads/swan-lake-release-notes/converting-from-json-to-user-defined-type
+      active: converting-from-json-to-user-defined-type
+    - title: Converting to User-Defined Type 
+      url: /downloads/swan-lake-release-notes/converting-to-user-defined-type
+      active: converting-to-user-defined-type
+    - title: Resource Method Typing 
+      url: /downloads/swan-lake-release-notes/resource-method-typing
+      active: resource-method-typing
+    - title: JSON Numbers 
+      url: /downloads/swan-lake-release-notes/json-numbers
+      active: json-numbers
+    - title: Query expressions 
+      url: /downloads/swan-lake-release-notes/query-expressions
+      active: query-expressions
+    - title: Destructuring Records 
+      url: /downloads/swan-lake-release-notes/destructuring-records
+      active: destructuring-records
+    - title: Let Clause 
+      url: /downloads/swan-lake-release-notes/let-clause
+      active: let-clause
+    - title: Ordering 
+      url: /downloads/swan-lake-release-notes/ordering
+      active: ordering
+    - title: Limit Clause 
+      url: /downloads/swan-lake-release-notes/limit-clause
+      active: limit-clause
+    - title: Table Concept 
+      url: /downloads/swan-lake-release-notes/table-concept
+      active: table-concept
+    - title: Table Syntax 
+      url: /downloads/swan-lake-release-notes/table-syntax
+      active: table-syntax
+    - title: Multiple Key Fields 
+      url: /downloads/swan-lake-release-notes/multiple-key-fields
+      active: multiple-key-fields
+    - title: Structured Keys 
+      url: /downloads/swan-lake-release-notes/structured-keys
+      active: structured-keys
+    - title: Querying Tables 
+      url: /downloads/swan-lake-release-notes/querying-tables
+      active: querying-tables
+    - title: Creating Tables With Query  
+      url: /downloads/swan-lake-release-notes/creating-tables-with-query
+      active: creating-tables-with-query
+    - title: Join Clause 
+      url: /downloads/swan-lake-release-notes/join-clause
+      active: join-clause
+    - title: Stream type 
+      url: /downloads/swan-lake-release-notes/stream-type
+      active: stream-type
+    - title: Querying with Streams 
+      url: /downloads/swan-lake-release-notes/querying-with-streams
+      active: querying-with-streams
+    - title: Backtick Templates 
+      url: /downloads/swan-lake-release-notes/backtick-templates
+      active: backtick-templates    
+    - title: Raw Templates 
+      url: /downloads/swan-lake-release-notes/raw-templates
+      active: raw-templates
+    - title: XML 
+      url: /downloads/swan-lake-release-notes/xml
+      active: xml
+    - title: Sequences 
+      url: /downloads/swan-lake-release-notes/sequences
+      active: sequences
+    - title: XML data model 
+      url: /downloads/swan-lake-release-notes/xml-data-model
+      active: xml-data-model
+    - title: XML Templates 
+      url: /downloads/swan-lake-release-notes/xml-templates
+      active: xml-templates
+    - title: XML Operations 
+      url: /downloads/swan-lake-release-notes/xml-operations
+      active: xml-operations
+    - title: XML Subtyping 
+      url: /downloads/swan-lake-release-notes/xml-subtyping
+      active: xml-subtyping
+    - title: XML navigation  
+      url: /downloads/swan-lake-release-notes/xml-navigation 
+      active: xml-navigation 
+    - title: XML Templates and Query 
+      url: /downloads/swan-lake-release-notes/xml-templates-and-query
+      active: xml-templates-and-query    
+    - title: XML Namespaces 
+      url: /downloads/swan-lake-release-notes/xml-namespaces
+      active: xml-namespaces
+    - title: XMLNS Declarations 
+      url: /downloads/swan-lake-release-notes/xmlns-declarations
+      active: xmlns-declarations
+- title: Concurrency
+  url: '#'
+  sublinks:
+    - title: Named Workers
+      url: /downloads/swan-lake-release-notes/named-workers
+      active: named-workers
+    - title: Sequence Diagrams 
+      url: /downloads/swan-lake-release-notes/sequence-diagrams
+      active: sequence-diagrams
+    - title: Waiting for Workers
+      url: /downloads/swan-lake-release-notes/waiting-for-workers
+      active: waiting-for-workers
+    - title: Strands
+      url: /downloads/swan-lake-release-notes/strands
+      active: strands
+    - title: Named Worker Return Values
+      url: /downloads/swan-lake-release-notes/named-worker-return-values
+      active: named-worker-return-values
+    - title: Alternate Wait 
+      url: /downloads/swan-lake-release-notes/alternate-wait
+      active: alternate-wait
+    - title: Multiple Wait
+      url: /downloads/swan-lake-release-notes/multiple-wait
+      active: multiple-wait
+    - title: Named Workers and Futures 
+      url: /downloads/swan-lake-release-notes/named-workers-and-futures
+      active: named-workers-and-futures
+    - title: Inter-Worker Message Passing
+      url: /downloads/swan-lake-release-notes/inter-worker-message-passing
+      active: inter-worker-message-passing
+    - title: Inter-Worker Failure Propagation
+      url: /downloads/swan-lake-release-notes/inter-worker-failure-propagation
+      active: inter-worker-failure-propagation
+- title: Transactions
+  url: '#'
+  sublinks:
+    - title: Transaction Statement
+      url: /downloads/swan-lake-release-notes/transaction-statement
+      active: transaction-statement
+    - title: Check Semantics 
+      url: /downloads/swan-lake-release-notes/check-semantics
+      active: check-semantics
+    - title: Rollback
+      url: /downloads/swan-lake-release-notes/rollback
+      active: rollback
+    - title: Retry Transaction Statement
+      url: /downloads/swan-lake-release-notes/retry-transaction-statement
+      active: retry-transaction-statement
+    - title: Transactional Qualifier 
+      url: /downloads/swan-lake-release-notes/transactional-qualifier
+      active: transactional-qualifier
+    - title: Distributed Transactions 
+      url: /downloads/swan-lake-release-notes/distributed-transactions
+      active: distributed-transactions
+    - title: Transactional Named Workers
+      url: /downloads/swan-lake-release-notes/transactional-named-workers
+      active: hello-world-service
+    - title: Commit/Rollback Handlers
+      url: /downloads/swan-lake-release-notes/commit-rollback-handlers
+      active: commit-rollback-handlers
+- title: Concurrency Safety
+  url: '#'
+  sublinks:
+    - title: Lock Statement
+      url: /downloads/swan-lake-release-notes/lock-statement
+      active: lock-statement
+    - title: Isolated Functions 
+      url: /downloads/swan-lake-release-notes/isolated-functions
+      active: isolated-functions
+    - title: Readonly Type
+      url: /downloads/swan-lake-release-notes/readonly-type
+      active: readonly-type
+    - title: Readonly and Isolated
+      url: /downloads/swan-lake-release-notes/readonly-and-isolated
+      active: readonly-and-isolated
+    - title: Combining Isolated Functions and Lock
+      url: /downloads/swan-lake-release-notes/combining-isolated-functions-and-lock
+      active: combining-isolated-functions-and-lock
+    - title: Isolated Variables
+      url: /downloads/swan-lake-release-notes/isolated-variables
+      active: isolated-variables
+    - title: Isolated Methods
+      url: /downloads/swan-lake-release-notes/isolated-methods
+      active: isolated-methods
+    - title: Isolated Objects
+      url: /downloads/swan-lake-release-notes/isolated-objects
+      active: isolated-objects
+    - title: Inferring Isolated
+      url: /downloads/swan-lake-release-notes/inferring-isolated
+      active: inferring-isolated
+
+    

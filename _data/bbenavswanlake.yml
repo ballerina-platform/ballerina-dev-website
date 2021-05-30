@@ -751,6 +751,156 @@
     - title: Gauge-Based Metrics
       url: /learn/by-example/gauge-metrics
       active: gauge-metrics
+- title: Observability
+  url: '#'
+  sublinks:  
+    - title: Distributed Tracing
+      url: /learn/by-example/tracing
+      active: tracing
+    - title: Counter-Based Metrics
+      url: /learn/by-example/counter-metrics
+      active: counter-metrics
+    - title: Gauge-Based Metrics
+      url: /learn/by-example/gauge-metrics
+      active: gauge-metrics
+
+- title: Common Libraries
+- title: IO
+  url: '#'
+  sublinks:
+    - title: Read/Write Bytes
+      url: /learn/by-example/io-bytes
+      active: io-bytes
+    - title: Read/Write Strings
+      url: /learn/by-example/strings
+      active: io-bytes
+    - title: Read/Write CSV
+      url: /learn/by-example/io-csv
+      active: io-csv
+    - title: Read/Write JSON
+      url: /learn/by-example/io-json
+      active: io-json
+    - title: Read/Write XML
+      url: /learn/by-example/io-xml
+      active: io-xml
+- title: Security
+  url: '#'
+  sublinks:
+    - title: Cryptographic Operations
+      url: /learn/by-example/security-crypto
+      active: security-crypto
+    - title: JWT Issue/Validate
+      url: /learn/by-example/security-jwt-issue-validate
+      active: security-jwt-issue-validate
+- title: URL
+  url: '#'
+  sublinks:
+    - title: URL Encode/Decode Operations
+      url: /learn/by-example/url-encode-decode
+      active: url-encode-decode
+- title: Time
+  url: '#'
+  sublinks:
+    - title: UTC Time
+      url: /learn/by-example/time-utc
+      active: time-utc
+    - title: Time with Zone Offset
+      url: /learn/by-example/time-utc-and-civil
+      active: time-utc-and-civil
+    - title: Time formatting/Parsing
+      url: /learn/by-example/time-formatting-and-parsing
+      active: time-formatting-and-parsing
+- title: Cache
+  url: '#'
+  sublinks:
+    - title: Cache Basics
+      url: /learn/by-example/cache-basics
+      active: cache-basics
+    - title: Cache Invalidations
+      url: /learn/by-example/cache-invalidation
+      active: cache-invalidation
+- title: Log
+  url: '#'
+  sublinks:
+    - title: Logging
+      url: /learn/by-example/logging
+      active: logging
+    - title: Logging With Context
+      url: /learn/by-example/logging-with-context
+      active: logging-with-context
+    - title: Configure Logging
+      url: /learn/by-example/logging-configuration
+      active: logging-configuration
+- title: File
+  url: '#'
+  sublinks:
+    - title: File Paths
+      url: /learn/by-example/filepaths
+      active: filepaths
+    - title: Directories
+      url: /learn/by-example/directories
+      active: directories
+    - title: Files
+      url: /learn/by-example/files
+      active: files
+    - title: Temp Files and Directories
+      url: /learn/by-example/temp-files-directories
+      active: temp-files-directories
+    - title: Directory Listener
+      url: /learn/by-example/directory-listener
+      active: directory-listener
+- title: Random
+  url: '#'
+  sublinks:
+    - title: Random Numbers
+      url: /learn/by-example/random-numbers
+      active: random-numbers
+- title: Task
+  url: '#'
+  sublinks:
+    - title: Schedule Job recurrence by Frequency
+      url: /learn/by-example/task-frequency-job-execution
+      active: task-frequency-job-execution
+    - title: Schedule One Time Job
+      url: /learn/by-example/task-one-time-job-execution
+      active: task-one-time-job-execution
+    - title: Manage Scheduled Jobs
+      url: /learn/by-example/manage-scheduled-jobs
+      active: manage-scheduled-jobs
+- title: UUID
+  url: '#'
+  sublinks:
+    - title: Generate UUID
+      url: /learn/by-example/uuid-generation
+      active: uuid-generation
+    - title: UUID Operations
+      url: /learn/by-example/uuid-operations
+      active: uuid-operations
+- title: XSLT
+  url: '#'
+  sublinks:
+    - title: XSLT Transformation
+      url: /learn/by-example/xslt-transformation
+      active: xslt-transformation
+- title: Regex
+  url: '#'
+  sublinks:
+    - title: Regular Expressions
+      url: /learn/by-example/regular-expressions
+      active: regular-expressions
+- title: OS
+  url: '#'
+  sublinks:
+    - title: Environment Variables
+      url: /learn/by-example/environment-variables
+      active: environment-variables
+- title: XML Data
+  url: '#'
+  sublinks:
+    - title: XML/JSON Conversion
+      url: /learn/by-example/xml-json-conversion
+      active: xml-json-conversion
+
 
 
 

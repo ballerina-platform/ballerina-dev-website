@@ -10,9 +10,9 @@ redirct_from:
   - /learn/user-guide/why-ballerina/concurrent
 ---
 
-Ballerina's concurrency model supports both threads and coroutines, and has been designed to have a close correspondence with sequence diagrams.
+Ballerina's concurrency model supports both threads and coroutines and has been designed to have a close correspondence with sequence diagrams.
 
-A Ballerina program is executed on one or more threads. A thread can consist of one or more strands, which are language-managed logical threads of control. Only one strand of a particular thread can run at a time. The strands belonging to a single thread are cooperatively multitasked. Therefore, strands of a single thread behave as coroutines relative to each other.
+A Ballerina program is executed on one or more threads. A thread can consist of one or more strands, which are language-managed, logical threads of control. Only one strand of a particular thread can run at a time. The strands belonging to a single thread are cooperatively multitasked. Therefore, strands of a single thread behave as coroutines relative to each other.
 
 Strands enable cooperative multitasking by "yielding". The runtime scheduler may switch the execution of a strand only when it yields via a wait action, a worker receive action, a library function resulting in a blocking call, etc.
 

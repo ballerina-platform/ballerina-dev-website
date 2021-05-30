@@ -5,48 +5,107 @@ description: Concurrency in Ballerina is enabled by strands, which are lightweig
 keywords: ballerina, ballerina platform, api documentation, testing, ide, ballerina central
 permalink: /learn/user-guide/why-ballerina/concurrent/
 active: concurrent
-intro: Concurrency in Ballerina is enabled by strands, which are lightweight threads. 
+intro: Ballerina's concurrency model supports both threads and coroutines.
 redirct_from:
   - /learn/user-guide/why-ballerina/concurrent
 ---
 
-A single operating system thread can contain multiple strands. A single strand is run at a time in a thread and the strands belonging to a single thread are cooperatively multitasked. Strands allow you to optimize the usage of CPU time and is beneficial in implementing non-blocking I/O operations.
+Ballerina's concurrency model supports both threads and coroutines, and has been designed to have a close correspondence with sequence diagrams.
 
-A worker represents a single strand execution in a function. Concurrent operations in a function are defined by multiple workers as shown in the example below.
+A Ballerina program is executed on one or more threads. A thread can consist of one or more strands, which are language-managed logical threads of control. Only one strand of a particular thread can run at a time. The strands belonging to a single thread are cooperatively multitasked. Therefore, strands of a single thread behave as coroutines relative to each other.
+
+Strands enable cooperative multitasking by "yielding". The runtime scheduler may switch the execution of a strand only when it yields via wait action, a worker receive action, a library function resulting in a blocking call, etc.
+
+Strands allow you to optimize the usage of CPU time and is beneficial in implementing non-blocking I/O operations.
+
+A strand is created due to the execution of either a named worker declaration or start action.
+
+Concurrent operations in a function can be defined by multiple workers. A function has a default worker and may additionally contain named workers. A worker executes concurrently with the other workers (function worker and named workers) in the function.
 
 ```ballerina
-public function initSystem(http:Client lookupService,
-                           http:Client reportService) {
-   worker proc1 {
-       // process something
-       var res1 = lookupService->get("/query");
-       int x = 0;
-       foreach var i in 1...10 { x += i; }
-       x -> proc2;
-       x = <- proc2;
-       http:Request req = new;
-       var res2 = reportService->post("/report", req);
-   }
-   worker proc2 {
-       // process other things
-       int x = 1;
-       int i = 1;
-       while i < 10 { x *= i; }
-       x = <- proc1;
-       var res1 = lookupService->get("/query");
-       // process more
-       x -> proc1;
-   }
+import ballerina/io;
+
+type Person record {|
+    string name;
+    boolean employed;
+|};
+
+function process(Person[] members, int[] quantities) {
+    worker w1 {
+        Person[] employedMembers = from Person p in members
+            where p.employed
+            select p;
+        int count = employedMembers.length();
+        count -> w2;
+        string `Employed Members: ${count}` -> function;
+    }
+
+    worker w2 {
+        int total = int:sum(...quantities);
+        
+        int employedCount = <- w1;
+
+        int avg = employedCount == 0 ? 0 : total/employedCount;
+        string `Average: ${avg}` -> function;
+    }
+
+    string x = <- w1;
+    io:println(x);
+
+    string y = <- w2;
+    io:println(y);
 }
 ```
 
-The code in the above example is contacting a couple of network endpoints retrieving information and reporting the state at the end. The network operations are mixed in with some computational code that is required to do some calculations.
+Worker message passing (via Ballerina’s `send (->)` and `receive (<-)` actions) is used for communication between workers. The compiler also explicitly verifies that the `send` and `receive` actions are in a consistent state in order to avoid any deadlock scenarios at runtime.
 
-This concurrency execution is visualized in the generated sequence diagram below.
+The `@strand` annotation can be used on a named worker or start action to make the corresponding strand to run on a separate thread.
 
-<img src="/img/why-pages/sequence-diagrams-for-programming-5.png" alt="Ballerina sequence diagram visualizing concurrency">
+Concurrency in Ballerina works well with sequence diagrams. A function can be viewed as a sequence diagram. Each worker is represented by a separate lifeline (vertical line).
 
-The workers have become participants in the sequence diagram alongside the HTTP clients. The workers’ activations occur concurrently and communication between them is done using message passing (via Ballerina’s `send (->)` and `receive (<-)` actions. The compiler also explicitly verifies that the `send` and `receive` actions are in a consistent state in order to avoid any deadlock scenarios in the runtime.
+Immutability in the type system can be leveraged to write reliable concurrent programs. Immutability in Ballerina is deep guaranteeing that an immutable structure will always have only immutable values. Therefore, an immutable value can be safely accessed concurrently without using a lock statement.
+
+```ballerina
+type Details record {|
+    int id;
+    string location?;
+|};
+
+function process((Details & readonly)[] entities) {
+    Details[] detailsWithLocation = [];
+    Details[] detailsWithoutLocation = [];
+
+    foreach var details in entities {
+        if details.hasKey("location") {
+            detailsWithLocation.push(details);
+        } else {
+            detailsWithoutLocation.push(details);
+        }
+    }
+
+    // The casts within the workers are safe because the records are immutable 
+    // and therefore guaranteed to have the exact fields.
+    worker w1 {
+        foreach var details in detailsWithoutLocation {
+            persistId(<record {| int id; |}> details);
+        }
+    }
+
+    worker w2 {
+        foreach var details in detailsWithLocation {
+            persistIdWithLocation(<record {| int id; string location; |}> details);
+        }
+    }
+}
+
+function persistId(record {| int id; |} rec) {
+
+}
+
+function persistIdWithLocation(record {| int id; string location; |} rec) {
+    
+}
+```
 
 <style>
 .nav > li.cVersionItem {

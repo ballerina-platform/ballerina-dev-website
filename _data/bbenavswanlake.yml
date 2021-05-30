@@ -386,33 +386,122 @@
   url: '#'
   sublinks:
     - title: Service Data Binding
-      url: /learn/by-example/hello-world-main
-      active: hello-world-main
-    - title: Hello World Service 
-      url: /learn/by-example/hello-world-service
-      active: hello-world-service
-    - title: Hello World Main
-      url: /learn/by-example/hello-world-main
-      active: hello-world-main
-    - title: Hello World Service 
-      url: /learn/by-example/hello-world-service
-      active: hello-world-service
-    - title: Hello World Main
-      url: /learn/by-example/hello-world-main
-      active: hello-world-main
-    - title: Hello World Service 
-      url: /learn/by-example/hello-world-service
-      active: hello-world-service
-    - title: Hello World Main
-      url: /learn/by-example/hello-world-main
-      active: hello-world-main
-    - title: Hello World Service 
-      url: /learn/by-example/hello-world-service
-      active: hello-world-service
-    - title: Hello World Main
-      url: /learn/by-example/hello-world-main
-      active: hello-world-main
-    - title: Hello World Service 
-      url: /learn/by-example/hello-world-service
-      active: hello-world-service
+      url: /learn/by-example/http-data-binding
+      active: http-data-binding
+    - title: Client Data Binding 
+      url: /learn/by-example/http-client-data-binding
+      active: http-client-data-binding
+    - title: Absolute Path and Resource Path
+      url: /learn/by-example/http-absolute-path-and-path
+      active: http-absolute-path-and-path
+    - title: Default Resource
+      url: /learn/by-example/http-default-resource
+      active: http-default-resource
+    - title: Path Matrix Param
+      url: /learn/by-example/http-path-matrix-param
+      active: http-path-matrix-param
+    - title: Resource Return Types 
+      url: /learn/by-example/http-resource-returns
+      active: http-resource-returns
+    - title: Restrict By Media Type
+      url: /learn/by-example/http-restrict-by-media-type
+      active: http-restrict-by-media-type
+    - title: Handling Different Payload Types 
+      url: /learn/by-example/http-different-payload-types
+      active: http-different-payload-types
+- title: REST API Security
+  url: '#'
+  sublinks:
+    - title: Service - SSL/TLS
+      url: /learn/by-example/http-service-ssl-tls
+      active: http-service-ssl-tls
+    - title: Service - Mutual SSL 
+      url: /learn/by-example/http-service-mutual-ssl
+      active: http-service-mutual-ssl
+    - title: Service - Basic Auth File User Store
+      url: /learn/by-example/http-service-basic-auth-file-user-store
+      active: http-service-basic-auth-file-user-store
+    - title: Service - Basic Auth LDAP User Store
+      url: /learn/by-example/http-service-basic-auth-ldap-user-store
+      active: http-service-basic-auth-ldap-user-store
+    - title: Service - JWT Auth
+      url: /learn/by-example/http-service-jwt-auth
+      active: http-service-jwt-auth
+    - title: Service - OAuth2 
+      url: /learn/by-example/http-service-oauth2
+      active: http-service-oauth2
+    - title: Client - SSL/TLS
+      url: /learn/by-example/http-client-ssl-tls
+      active: http-client-ssl-tls
+    - title: Client - Mutual SSL 
+      url: /learn/by-example/http-client-mutual-ssl
+      active: http-client-mutual-ssl
+    - title: Client - Basic Auth
+      url: /learn/by-example/http-client-basic-auth
+      active: http-client-basic-auth
+    - title: Client - Bearer Token Auth 
+      url: /learn/by-example/http-client-bearer-token-auth
+      active: http-client-bearer-token-auth
+    - title: Client - Self Signed JWT Auth
+      url: /learn/by-example/http-client-self-signed-jwt-auth
+      active: http-client-self-signed-jwt-auth
+    - title: Client - OAuth2 Client Credentials Grant Type 
+      url: /learn/by-example/http-client-oauth2-client-credentials-grant-type
+      active: http-client-oauth2-client-credentials-grant-type
+    - title: Client - OAuth2 Password Grant Type
+      url: /learn/by-example/http-client-oauth2-password-grant-type
+      active: http-client-oauth2-password-grant-type
+    - title: Client - OAuth2 Refresh Token Grant Type
+      url: /learn/by-example/http-client-oauth2-refresh-token-grant-type
+      active: http-client-oauth2-refresh-token-grant-type
+- title: HTTP
+  url: '#'
+  sublinks:
+    - title: Client
+      url: /learn/by-example/http-client-endpoint
+      active: http-client-endpoint
+    - title: CORS 
+      url: /learn/by-example/http-cors
+      active: http-cors
+    - title: 100 Continue
+      url: /learn/by-example/http-100-continue
+      active: http-100-continue
+    - title: Redirects
+      url: /learn/by-example/http-redirects
+      active: http-redirects
+    - title: Streaming
+      url: /learn/by-example/http-streaming
+      active: http-streaming
+    - title: Compression
+      url: /learn/by-example/http-compression
+      active: http-compression
+    - title: Cookies
+      url: /learn/by-example/http-cookies
+      active: http-cookies
+    - title: Query Parameter
+      url: /learn/by-example/http-query-parameter
+      active: http-query-parameter
+    - title: Disable Chunking
+      url: http-disable-chunking
+      active: http-disable-chunking
+    - title: Response With Multiparts
+      url: /learn/by-example/http-response-with-multiparts
+      active: http-response-with-multiparts
+    - title: Request With Multiparts
+      url: /learn/by-example/http-request-with-multiparts
+      active: http-request-with-multiparts
+    - title: Passthrough
+      url: /learn/by-example/http-passthrough
+      active: http-passthrough
+- title: HTTP2
+  url: '#'
+  sublinks:  
+    - title: HTTP 1.1 to 2.0 Protocol Switch
+      url: /learn/by-example/http-1-1-to-2-0-protocol-switch
+      active: http-1-1-to-2-0-protocol-switch
+    - title: HTTP 2.0 Server Push
+      url: /learn/by-example/http-2-0-server-push
+      active: http-2-0-server-push
+
+
     

@@ -1,0 +1,508 @@
+---
+layout: ballerina-example-page
+title: Query Parameter
+description: BBE on how to use the `query parameters` in an HTTP service.
+keywords: ballerina, ballerina by example, bbe, http service, query parameter
+permalink: /learn/by-example/http-query-parameter
+active: http-query-parameter
+redirect_from:
+  - /swan-lake/learn/by-example/http-query-parameter
+  - /swan-lake/learn/by-example/http-query-parameter.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+
+<span class="kd">service</span> <span class="o">/</span><span class="nx">product</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// The `a`, `b` method arguments are considered as query parameters.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">count</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span> <span class="nx">count</span> <span class="p">:</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="c1">// The query param type is nilable which means the URI may contain the param.</span>
+    <span class="c1">// In the absence of the query param `id` the type is nil.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">name</span><span class="p">(</span><span class="kt">string</span><span class="err">?</span> <span class="nx">id</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">id</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;product_&quot;</span> <span class="o">+</span> <span class="nx">id</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="s">&quot;product_0000&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// The multiple query param values also can be accommodate to an array.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">detail</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="err">?</span> <span class="nx">colour</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span> <span class="nx">product_colour</span> <span class="p">:</span> <span class="nx">colour</span><span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="c1">// In addition to resource method argument, query params can be retrieved from the inbound request</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">part</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+        <span class="c1">// Gets the [first queryParam](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getQueryParamValue)</span>
+        <span class="c1">// value for a given parameter key.</span>
+        <span class="kt">string</span><span class="err">?</span> <span class="nx">foo</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParamValue</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Gets [multiple queryParam](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getQueryParamValues)</span>
+        <span class="c1">// values for a given parameter key.</span>
+        <span class="kt">string</span><span class="p">[]</span><span class="err">?</span> <span class="nx">bar</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParamValues</span><span class="p">(</span><span class="s">&quot;bar&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Gets [all the queryParam](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getQueryParams)</span>
+        <span class="c1">// key value pairs of the inbound request.</span>
+        <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">all</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParams</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="p">{</span> <span class="nx">foo</span><span class="p">:</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">:</span> <span class="nx">bar</span><span class="p">,</span> <span class="nx">all</span><span class="p">:</span> <span class="nx">all</span><span class="p">};</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Query Parameter</h2>
+                            <p><p>HTTP module provides first class support for reading URL query parameters as resource method argument.
+ The supported types are string, int, float, boolean, decimal, and the array types of the aforementioned types. The
+ query param type can be nilable (e.g., (string? bar)). The request also provide certain method to retrieve query
+ param at their convenience <br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/">HTTP module</a>.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="http-cookies.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Cookies</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="http-disable-chunking.html">
+                                        <span>NEXT ></span>
+                                        <p>Disable Chanking</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="http-query-parameter">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-query-parameter/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=378a3e23e83f1146eee5bc5982e13fa8&file=http_query_parameter.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service /product on new http:Listener(9090) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get count(int a, int b) returns json {
+        return { count : a + b};
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>a</code>, <code>b</code> method arguments are considered as query parameters.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get name(string? id) returns string {
+        if (id is string) {
+            return &quot;product_&quot; + id;
+        }
+        return &quot;product_0000&quot;;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The query param type is nilable which means the URI may contain the param.
+ In the absence of the query param <code>id</code> the type is nil.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get detail(string[]? colour) returns json {
+        return { product_colour : colour};
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The multiple query param values also can be accommodate to an array.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get part(http:Request req) returns json {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>In addition to resource method argument, query params can be retrieved from the inbound request</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        string? foo = req.getQueryParamValue(&quot;foo&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Gets the <a href="https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getQueryParamValue">first queryParam</a>
+ value for a given parameter key.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        string[]? bar = req.getQueryParamValues(&quot;bar&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Gets <a href="https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getQueryParamValues">multiple queryParam</a>
+ values for a given parameter key.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        map&lt;string[]&gt; all = req.getQueryParams();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Gets <a href="https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getQueryParams">all the queryParam</a>
+ key value pairs of the inbound request.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>        return { foo: foo, bar: bar, all: all};
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
+# `.bal` file and use the `bal run` command below.
+bal run http_query_parameter.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Run the cURL command below to invoke product/count resource.
+curl &quot;http://localhost:9090/product/count?a=315&amp;b=585&quot;
+{&quot;count&quot;:900}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Run the cURL command below to invoke product/name resource.
+curl &quot;http://localhost:9090/product/name?id=432423&quot;
+product_432423
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Run the cURL command below to invoke product/detail resource.
+curl &quot;http://localhost:9090/product/detail?colour=red&amp;colour=green&quot;
+{&quot;product_colour&quot;:[&quot;red&quot;, &quot;green&quot;]}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Run the cURL command below to invoke product/part resource.
+curl &quot;http://localhost:9090/product/part?bar=a&amp;bar=b&amp;foo=1&amp;baz=bal&quot;
+{&quot;foo&quot;:&quot;1&quot;, &quot;bar&quot;:[&quot;a&quot;, &quot;b&quot;], &quot;all&quot;:{&quot;bar&quot;:[&quot;a&quot;, &quot;b&quot;], &quot;foo&quot;:[&quot;1&quot;], &quot;baz&quot;:[&quot;bal&quot;]}}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

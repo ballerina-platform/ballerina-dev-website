@@ -1,8 +1,8 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: AWS Lambda
-description: See how the Ballerina deployment in AWS Lambda works
-keywords: ballerina, programming language, serverless, cloud, AWS, Lambda
+description: Learn how to write and deploy AWS Lambda functions using ballerina
+keywords: ballerina, programming language, serverless, cloud, AWS, Lambda, Cloud Native
 permalink: /learn/user-guide/deployment/aws-lambda/
 active: aws-lambda
 intro: The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function.

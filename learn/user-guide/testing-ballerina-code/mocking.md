@@ -231,24 +231,79 @@ public function testGetRandomJoke() {
 
 #### Stubbing a Member Variable
 
+If a `client` object has a public member variable, it can be stubbed to return a mock value for testing.
+
+***Example:***
+
+***main.bal***
+
+```ballerina
+# A record that represents a Product.
+#
+# + code - Code used to identify the product
+# + name - Product Name
+# + quantity - Quantity included in the product
+public type Product record {|
+    readonly int code;
+    string name;
+    string quantity;
+|};
+
+# A table with a list of Products uniquely identified using the code.
+public type ProductInventory table<Product> key(code);
+
+// This is a sample data set in the defined inventory.
+ProductInventory inventory = table [
+            {code: 1,  name: "Milk", quantity: "1l"},
+            {code: 2, name: "Bread", quantity: "500g"},
+            {code: 3, name: "Apple", quantity: "750g"}
+        ];
+
+# This client represets a product.
+#
+# + productCode - An int code used to identify the product.
+public client class ProductClient {
+    public int productCode;
+
+    public function init(int productCode) {
+        self.productCode = productCode;
+    }
+}
+
+// The Client which represents the product with the code `1` (i.e. "Milk").
+ProductClient productClient = new (1);
+
+# Get the name of the product represented by the ProductClient.
+#
+# + return - The name of the product
+public function getProductName() returns string?{
+    if (inventory.hasKey(productClient.productCode)){
+        Product? product = inventory.get(productClient.productCode);
+        if(product is Product){
+                return product.name;
+        }
+    }
+ }
+```
+
 ***main_test.bal***
 
-This test shows how to stub a member variable value of the `clientEndpoint` object.
+This test stubs the member variable `productCode` of the `ProductClient` to set a mock product code.
 
 ```ballerina
 import ballerina/test;
-import ballerina/http;
 
 @test:Config {}
 function testMemberVariable() {
-    // Create a default mock HTTP Client and assign it to the `clientEndpoint` object.
-    clientEndpoint = test:mock(http:Client);
-
-    // Stub the value of the `url` variable to return the specified string.
-    test:prepare(clientEndpoint).getMember("url").thenReturn("https://foo.com/");
-
-    // Verify if the specified value is set.
-    test:assertEquals(clientEndpoint.url, "https://foo.com/");
+    int mockProductCode = 2;
+    // Create a mockClient which represents product with the code `mockProductCode`
+    ProductClient mockClient = test:mock(ProductClient);
+    // Stub the member variable `productCode`
+    test:prepare(mockClient).getMember("productCode").thenReturn(mockProductCode);
+    // Replace `productClient` with the `mockClient`
+    productClient = mockClient;
+    // Assert for the mocked product name.
+    test:assertEquals(getProductName(), "Bread");
 }
 ```
 

@@ -92,19 +92,8 @@ You view the output below.
    >**Info:** As you are using a self-signed certificate in this example, web browsers will generally reject secure WebSocket connections.  
 
    ```ballerina
-   import ballerina/websocket;
    import ballerina/io;
-   import ballerina/os;
-   
-   websocket:WebSocketClientConfiguration wsConf = {
-      secureSocket: {
-         trustStore: {
-               path: os:getEnv("BAL_HOME") +
-                  "/bre/security/ballerinaTruststore.p12",
-               password: "ballerina"
-         }
-      }
-   };
+   import ballerina/websocket;   
    
    public function main() returns error? {
       websocket:Client wsClient = check new ("wss://localhost:8443/ws"{

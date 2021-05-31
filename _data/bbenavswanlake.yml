@@ -773,7 +773,7 @@
       active: io-bytes
     - title: Read/Write Strings
       url: /learn/by-example/strings
-      active: io-bytes
+      active: io-strings
     - title: Read/Write CSV
       url: /learn/by-example/io-csv
       active: io-csv

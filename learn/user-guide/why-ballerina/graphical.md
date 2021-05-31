@@ -73,3 +73,4 @@ The HTTP clients represented by `lookupService` and `reportService` variables ar
 
 
 We can see here how the HTTP clients have become participants of the sequence diagram with its own lifeline, where we visualize the messages sent and received to represent the network calls we do.
+

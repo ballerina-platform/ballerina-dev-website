@@ -11,6 +11,8 @@ redirct_from:
   - /why/from-code-to-cloud
   - /learn/user-guide/why-ballerina/from-code-to-cloud
   - /learn/user-guide/why-ballerina/from-code-to-cloud/
+  - /learn/user-guide/
+  - /learn/user-guide
 ---
 
 In a microservice architecture, smaller services are developed, deployed, and scaled individually. These disaggregated services communicate with each other over the network forcing developers to deal with the [Fallacies of Distributed Computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) as a part of their application logic.

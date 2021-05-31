@@ -19,7 +19,7 @@ redirect_from:
 
 ## Configuring Secure Communication
 
-The TLS features are used with the HTTP client by using the `https` protocol in the endpoint URL. Optionally, you can provide the information on the truststore or server public certificate location to use for validating the server certificates received when creating an HTTP connection over TLS. This is provided using the `secureSocket` property in the [HTTP client configuration](/learn/api-docs/ballerina/#/ballerina/http/latest/records/ClientConfiguration) instance when creating the [`http:Client`](/learn/api-docs/ballerina/#/ballerina/http/latest/clients/Client).
+The TLS features are used with the HTTP client by using the `https` protocol in the endpoint URL. Optionally, you can provide the information on the truststore or server public certificate location to use for validating the server certificates received when creating an HTTP connection over TLS. This is provided using the `secureSocket` property in the [HTTP client configuration](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientConfiguration) instance when creating the [`http:Client`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client).
 
 ### Communicating with an HTTPS Endpoint
 
@@ -27,13 +27,13 @@ The `https_client_demo.bal` example below shows a scenario of communicating with
 
 **https_client_demo.bal**
 ```ballerina
-import ballerina/io;
 import ballerina/http;
+import ballerina/io;
  
 public function main() returns error? {
-   http:Client clientEp = check new ("https://httpbin.org");
-   http:Response resp = check clientEp->get("/get");
-   io:println("Payload: ", resp.getJsonPayload());
+    http:Client clientEp = check new ("https://httpbin.org");
+    http:Response resp = check clientEp->get("/get");
+    io:println("Payload: ", check resp.getJsonPayload());
 }
 ```
 
@@ -41,14 +41,14 @@ Execute the `bal run https_client_demo.bal` command and the output will be as fo
 
 ```bash
 Payload: {
-  "args": {},
-  "headers": {
-	"Host": "httpbin.org",
-	"User-Agent": "ballerina",
-	"X-Amzn-Trace-Id": "Root=1-5fd3c1dc-0f5b5c3809c89dca2044ef70"
-  },
-  "origin": "45.30.94.9",
-  "url": "https://httpbin.org/get"
+    "args": {},
+    "headers": {
+        "Host": "httpbin.org",
+        "User-Agent": "ballerina",
+        "X-Amzn-Trace-Id": "Root=1-5fd3c1dc-0f5b5c3809c89dca2044ef70"
+    },
+    "origin": "45.30.94.9",
+    "url": "https://httpbin.org/get"
 }
 ```
 
@@ -58,18 +58,17 @@ The `https_client_cert_demo.bal` example below shows how a public certificate ca
 
 **https_client_cert_demo.bal**
 ```ballerina
-import ballerina/io;
 import ballerina/http;
+import ballerina/io;
  
 public function main() returns error? {
-   http:ClientConfiguration config = {
-       secureSocket: {
-           cert: "/path/to/public.crt"
-       }
-   };
-   http:Client clientEp = check new("https://httpbin.org", config);
-   http:Response resp = check clientEp->get("/get");
-   io:println("Payload: ", resp.getTextPayload());
+    http:Client clientEp = check new("https://httpbin.org",
+        secureSocket = {
+            cert: "/path/to/public.crt"
+        }
+    );
+    http:Response resp = check clientEp->get("/get");
+    io:println("Payload: ", check resp.getTextPayload());
 }
 ```
 
@@ -77,14 +76,14 @@ Execute the `bal run https_client_cert_demo.bal` command and the output will be 
 
 ```bash
 Payload: {
-  "args": {},
-  "headers": {
-	"Host": "httpbin.org",
-	"User-Agent": "ballerina",
-	"X-Amzn-Trace-Id": "Root=1-5fd3c1dc-0f5b5c3809c89dca2044ef70"
-  },
-  "origin": "45.30.94.9",
-  "url": "https://httpbin.org/get"
+    "args": {},
+    "headers": {
+        "Host": "httpbin.org",
+        "User-Agent": "ballerina",
+        "X-Amzn-Trace-Id": "Root=1-5fd3c1dc-0f5b5c3809c89dca2044ef70"
+    },
+    "origin": "45.30.94.9",
+    "url": "https://httpbin.org/get"
 }
 ```
 
@@ -94,21 +93,20 @@ The `https_client_truststore_demo.bal` example below shows how a truststore can 
 
 **https_client_truststore_demo.bal**
 ```ballerina
-import ballerina/io;
 import ballerina/http;
+import ballerina/io;
  
 public function main() returns error? {
-   http:ClientConfiguration config = {
-       secureSocket: {
-           cert: {
-               path: "/path/to/truststore.p12",
-               password: "password"
-           }
-       }
-   };
-   http:Client clientEp = check new("https://httpbin.org", config);
-   http:Response resp = check clientEp->get("/get");
-   io:println("Payload: ", resp.getTextPayload());
+    http:Client clientEp = check new("https://httpbin.org",
+        secureSocket = {
+            cert: {
+                path: "/path/to/truststore.p12",
+                password: "password"
+            }
+        }
+    );
+    http:Response resp = check clientEp->get("/get");
+    io:println("Payload: ", check resp.getTextPayload());
 }
 ```
 
@@ -116,14 +114,14 @@ Execute the `bal run https_client_truststore_demo.bal` command and the output wi
 
 ```bash
 Payload: {
-  "args": {},
-  "headers": {
-	"Host": "httpbin.org",
-	"User-Agent": "ballerina",
-	"X-Amzn-Trace-Id": "Root=1-5fd3c1dc-0f5b5c3809c89dca2044ef70"
-  },
-  "origin": "45.30.94.9",
-  "url": "https://httpbin.org/get"
+    "args": {},
+    "headers": {
+        "Host": "httpbin.org",
+        "User-Agent": "ballerina",
+        "X-Amzn-Trace-Id": "Root=1-5fd3c1dc-0f5b5c3809c89dca2044ef70"
+    },
+    "origin": "45.30.94.9",
+    "url": "https://httpbin.org/get"
 }
 ```
 
@@ -141,18 +139,17 @@ import ballerina/io;
 import ballerina/http;
  
 public function main() returns error? {
-   http:ClientConfiguration config = {
-       secureSocket: {
+    http:Client clientEp = check new("https://httpbin.org",
+        secureSocket = {
             cert: "/path/to/public.crt",
             key: {
                 certFile: "/path/to/public.crt",
                 keyFile: "path/to/private.key"
             }
-       }
-   };
-   http:Client clientEp = check new("https://httpbin.org", config);
-   http:Response resp = check clientEp->get("/get");
-   io:println("Payload: ", resp.getTextPayload());
+        }
+    );
+    http:Response resp = check clientEp->get("/get");
+    io:println("Payload: ", resp.getTextPayload());
 }
 ```
 

@@ -78,7 +78,7 @@ tr:hover .cCodeDesription {
 }
 
 .highlight {
-    min-width: 645px;
+    /* min-width: 645px; */
 }
 
 .cCodeRight {
@@ -350,10 +350,10 @@ td.cDescTD {
     .cButtonInfoContainer {
         width: 45%;
     }
-    table.cTopBorder-table .cCodeTD,
+    /* table.cTopBorder-table .cCodeTD,
     table.cBottomBorder-table .cCodeTD {
         width: 73%;
-    }
+    } */
 }
 
 @media (max-width: 990px) {

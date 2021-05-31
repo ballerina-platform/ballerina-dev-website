@@ -55,11 +55,11 @@ Generating executables
 	@awslambda:Function: hash
 
         Run the following command to deploy each Ballerina AWS Lambda function:
-        aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb:///aws-ballerina-lambda-functions.zip --handler function.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
+        aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb:///aws-ballerina-lambda-functions.zip --handler functions.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
 
         Run the following command to re-deploy an updated Ballerina AWS Lambda function:
         aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip
-        function.jar
+        functions.jar
 ```
 
 ## Deploying the Function
@@ -79,7 +79,7 @@ You view the output below.
 ```bash
 {
     "FunctionName": "hash",
-    "FunctionArn": "arn:aws:lambda:us-west-1:908363916138:function:hash",
+    "FunctionArn": "arn:aws:lambda:us-west-1:908363916138:functions:hash",
     "Runtime": "provided",
     "Role": "arn:aws:iam::908363916138:role/lambda-role",
     "Handler": "functions.hash",

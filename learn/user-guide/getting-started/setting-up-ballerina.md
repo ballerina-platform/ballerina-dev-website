@@ -17,8 +17,6 @@ redirect_from:
   - /learn/getting-started
   - /learn/user-guide/getting-started
   - /learn/user-guide/getting-started/
-  - /learn/user-guide/
-  - /learn/user-guide
   - /learn/user-guide/getting-started/setting-up-ballerina
 ---
 
@@ -35,7 +33,7 @@ You can use the Ballerina Playground to write Ballerina programs without install
          <div class="col-sm-12 col-md-4 cMainCTAContainer">
             <a class="cBallerina-io-Home-main-download-button cPlayButton" target="_blank" href="https://play.ballerina.io">
                Try Ballerina
-               <p>Try without installing <br>in interactive playground</p>
+               <p>Try without installing <br>in the playground</p>
             </a>
          </div>
    </div></div></div>

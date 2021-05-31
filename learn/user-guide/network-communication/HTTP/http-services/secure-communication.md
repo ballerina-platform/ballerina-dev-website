@@ -17,7 +17,7 @@ redirect_from:
 
 ## Configuring Secure Communication
 
-This is done by providing the optional `secureSocket` property in the [HTTP Listener Configuration](/learn/api-docs/ballerina/#/ballerina/http/latest/records/ListenerConfiguration) instance when creating the [`http:Listener`](/learn/api-docs/ballerina/#/ballerina/http/latest/listeners/Listener).
+This is done by providing the optional `secureSocket` property in the [HTTP Listener Configuration](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerConfiguration) instance when creating the [`http:Listener`](https://docs.central.ballerina.io/ballerina/http/latest/listeners/Listener).
 
 ## Example of HTTPS Endpoint configured Public Certificate and Private Key
 
@@ -25,17 +25,17 @@ The example below shows how an HTTPS service is configured with public certifica
 
 ```ballerina
 import ballerina/http;
- 
-http:ListenerConfiguration conf = {
-   secureSocket: {
-       key: {
-           certFile: "/path/to/public.crt"
-           keyFile: "/path/to/private.key",
-       }
-   }
-};
- 
-service / on new http:Listener(8443, conf) {
+
+listener http:Listener securedEP = new(9090,
+    secureSocket = {
+        key: {
+            certFile: "/path/to/public.crt"
+            keyFile: "/path/to/private.key",
+        }
+    }
+);
+
+service / on securedEP {
     resource function get greeting() returns string {
         return "Hello!";
     }
@@ -49,16 +49,16 @@ The example below shows how an HTTPS service is configured with KeyStore.
 ```ballerina
 import ballerina/http;
  
-http:ListenerConfiguration conf = {
-   secureSocket: {
-       key: {
-           path: "/path/to/keystore.p12"
-           password: "password",
-       }
-   }
-};
+listener http:Listener securedEP = new(9090,
+    secureSocket = {
+        key: {
+            path: "/path/to/keystore.p12"
+            password: "password",
+        }
+    }
+);
  
-service / on new http:Listener(8443, conf) {
+service / on securedEP {
     resource function get greeting() returns string {
         return "Hello!";
     }

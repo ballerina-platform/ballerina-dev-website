@@ -32,7 +32,7 @@ The OpenAPI compiler plugin will allow you to validate a service implementation 
 #### Generating Service and Client Stub from an OpenAPI Contract
 
 ```bash
-bal openapi -i <openapi-contract-path> 
+    bal openapi -i <openapi-contract-path> 
                [--tags: tags list]
                [--operations: operationsID list]
                [--mode service|client ]
@@ -52,15 +52,14 @@ You can give the specific tags and operations that you need to document as servi
 If you want to generate a Service only, you can set the mode as `service` in the OpenAPI tool.
 
 ```bash
-bal openapi -i <openapi-contract-path> --mode service [(-o|--output) output file path]
+    bal openapi -i <openapi-contract-path> --mode service [(-o|--output) output file path]
 ```
 
 If you want to generate a Client only, you can set the mode as  `client` in the OpenAPI tool. 
 This client can be used in client applications to call the service defined in the OpenAPI file.
 
 ```bash
-bal openapi -i <openapi-contract-path> --mode client
-               [(-o|--output) output file path]
+    bal openapi -i <openapi-contract-path> --mode client [(-o|--output) output file path]
 ```
 
 ### Ballerina to OpenAPI
@@ -68,8 +67,7 @@ bal openapi -i <openapi-contract-path> --mode client
 #### Generating the Service for OpenAPI Export
 
 ```bash
-bal openapi -i <ballerina-file-path> 
-               [(-o|--output) output openapi file path]
+    bal openapi -i <ballerina-file-path>  [(-o|--output) output openapi file path]
 ```
 
 Export the Ballerina service to an  OpenAPI Specification 3.0 definition. For the export to work properly, the input Ballerina service should be defined using the basic service and resource-level HTTP annotations.
@@ -95,8 +93,8 @@ Output:
 ```bash
 The service generation process is complete. The following files were created.
 -- hello-service.bal
--- hello-client.bal
--- schema.bal
+-- client.bal
+-- types.bal
 ```
 
 #### Generating an OpenAPI Contract from a Service

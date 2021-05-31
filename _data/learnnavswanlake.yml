@@ -21,8 +21,8 @@
     - title: Concurrent
       url: /learn/user-guide/why-ballerina/concurrent/
       active: concurrent
-    - title: Reliable and Maintainable
-      url: /learn/user-guide/why-ballerina/reliable-and-maintainable/
+    - title: Reliable, Maintainable
+      url: /learn/user-guide/why-ballerina/reliable,maintainable/
       active: reliable-and-maintainable
 
 

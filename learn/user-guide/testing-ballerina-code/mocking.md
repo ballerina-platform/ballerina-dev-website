@@ -312,7 +312,7 @@ function testMemberVariable() {
     // Assert for the mocked product name.
     test:assertEquals(getProductName(), "Bread");
 }
-```
+````
 
 #### Stubbing to Do Nothing
 

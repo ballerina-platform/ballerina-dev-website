@@ -135,10 +135,10 @@ function persistIdWithLocation(record {| int id; string location; |} rec) {
 ```
 
 <style>
-.nav > li.cVersionItem {
+.cBallerinaTocContainer {
     display: none !important;
 }
-.cBalleinaBreadcrumbs li:nth-child(3) , .cBalleinaBreadcrumbs li:nth-child(2) {
+/*.cBalleinaBreadcrumbs li:nth-child(3) , .cBalleinaBreadcrumbs li:nth-child(2) {
    display:none !important;
-}
+}*/
 </style>

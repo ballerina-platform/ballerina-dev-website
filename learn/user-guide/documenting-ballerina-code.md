@@ -26,7 +26,7 @@ Ballerina documentation design and usage is aligned with the package and module 
 * Ballerina programmers can place the documentation inline with the source code using the documentation syntax.
 * Ballerina type definitions, global variables, annotations, listeners, etc. can be documented using the documentation syntax.
 * Fields, parameters, return values, etc. can be marked using documentation attributes.
-* HTML documents can be generated using the `bal doc` command for each Ballerina module and if you have custom handlebars templates, you can use them to generate the HTMLs.
+* Ballerina uses a React app to render the documentation, and the data required is stored as a JSON in `api-docs.js` file. The React app source code can be found in the [Dev-Tools](https://github.com/ballerina-platform/ballerina-dev-tools/tree/main/docerina-ui) Github repo. Developers are welcome to customize and tryout themes and styles in the React app.
 
 ## Writing Ballerina Documentation
 
@@ -107,7 +107,7 @@ A typical package structure of a Ballerina package is like this:
   Ballerina.toml       # Configuration, which defines the package intent.
   main.bal
   Module.md            # Contains descriptive metadata of the default module to be displayed in
-                       # Ballerina Central. This is optional.
+                       # API documentation. This is optional.
   Package.md           # Contains descriptive metadata of the package to be displayed in
                        # Ballerina Central. This is optional.
     modules
@@ -225,9 +225,9 @@ Generating API Documentation
 Saved to: target/apidocs
 ```
 
-`target/apidocs/math` folder would contain the following;
+`target/apidocs/organization/math/0.1.0` folder would contain the following;
 ```bash
-$ ls target/apidocs/
+$ ls target/apidocs/organization/math/0.1.0/
 bundle.js  index.html  ...
 ```
 

@@ -665,6 +665,60 @@ variables can be provided in a file named `Config.toml` located in the tests dir
 For information on using configurable variables, see
  [Configurable Variables](/learn/by-example/configurable.html).
 
+Dependencies meant to be resolved only during testing can be specified in the `Ballerina.toml` file
+by specifiying the scope
+
+```toml
+[[platform.java11.dependency]]
+path = "/user/foo/libs/abc.jar"
+scope = "testOnly"
+```
+
+## Testing Ballerina Services and Clients
+
+Testing Ballerina services involves sending specific requests to the service using a client, 
+and verifying the responses using the assertion functions. The aim is to make sure that the service 
+and client behave as expected when sending and recieving both expected requests and malformed ones.
+
+### Configuring Services and Clients
+
+Services or Clients can be defined in such a way as to accommodate for testing under certain 
+conditions by making use of Configurable variables. Maintaining a test configurable configuration 
+allows us to re-define the host or port as required. For example, when defining a Service, the value
+for the host or port can be specified in the `Config.toml` file, which will be used specifically 
+when running the tests. 
+
+```ballerina
+configurable string hostName = ?;
+configurable int port = ?;
+
+http:Client clientEndpoint = check new (hostName);
+
+service /testService on new http:Listener(port) {
+    
+} 
+```
+
+### Testing Services
+
+Any services defined in the package will start up on their defined ports and will remain running
+for the duration of the testing phase after which they will be automatically shut down. This allows
+you to send requests directly to the service inorder to test its functionality.
+
+To test a service, you can create a client in the test source that sends requests directly to 
+the service and use the test assertion functions to assert the responses. This can be used for both
+services defined in the package as well 
+
+### Testing Clients
+
+In cases where a fully fledged client is already defined for a particular service, we can make use 
+of Object Mocking to mock the calls to the service and return curated responses to the client.
+This is useful when testing the full extent of the client by mocking responses that normally would 
+be difficult to reproduce in an actual scenario. This would cover a variety of scenarios that the 
+client is capable of handling without having the service to actually be up and running.
+
+To lean more about how to use mocking to test services, see [Mocking](/learn/testing-ballerina-code/mocking).
+
 
 ## What's Next?
 

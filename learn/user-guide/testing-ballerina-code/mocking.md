@@ -178,7 +178,10 @@ function getCategoriesResponse() returns http:Response {
 
 ***main_test.bal***
  
-This test stubs the behavior of the `get` function to return a specific value.
+This test stubs the behavior of the `get` function to return a specific value in 2 ways:
+
+1. Stubbing to return a specific value in general
+2. Stubbing to return a specific value based on the input
 
 ```ballerina
 import ballerina/test;
@@ -191,6 +194,10 @@ public function testGetRandomJoke() {
 
     // Stub to return the specified mock response when the `get` function is called.
     test:prepare(clientEndpoint).when("get").thenReturn(getMockResponse());
+
+    // Stub to return the specified mock response when the specified argument is passed.
+    test:prepare(clientEndpoint).when("get").withArguments("/categories")
+        .thenReturn(getCategoriesResponse());
 
     // Invoke the function to test.
     string result = checkpanic getRandomJoke("Sheldon");

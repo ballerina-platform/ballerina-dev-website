@@ -37,20 +37,19 @@ var ws = new WebSocket("wss://localhost:8443/ws");
    import ballerina/os;
    
    websocket:ListenerConfiguration wsConf = {
-   secureSocket: {
-         keyStore: {
-            path: os:getEnv("BAL_HOME") +
-                  "/bre/security/ballerinaKeystore.p12",
-            password: "ballerina"
+         secureSocket: {
+             key: {
+                 certFile: "resource/path/to/public.crt",
+                 keyFile: "/resource/path/to/private.key"
+             }
          }
-   }
    };
    
    service /ws on new websocket:Listener(8443, config = wsConf) {
    
       resource function get .(http:Request req)
                               returns websocket:Service|
-                                    websocket:Error {
+                                    websocket:UpgradeError {
          return new WsService();
       }
    
@@ -108,8 +107,11 @@ You view the output below.
    };
    
    public function main() returns error? {
-      websocket:Client wsClient = check new ("wss://localhost:8443/ws",
-                                             config = wsConf);
+      websocket:Client wsClient = check new ("wss://localhost:8443/ws"{
+              secureSocket: {
+                  cert: "../resource/path/to/public.crt"
+              }
+      });
       check wsClient->writeTextMessage("Hello!");
       string resp = check wsClient->readTextMessage();
       io:println("Response: ", resp);

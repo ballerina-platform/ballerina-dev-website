@@ -5,11 +5,11 @@
         "category": "Language Concepts",
         "samples": [
             {
-                "name": "Hello world main",
+                "name": "Hello World Main",
                 "url": "hello-world"
             },
             {
-                "name": "Hello world service",
+                "name": "Hello World Service",
                 "url": "hello-world-service"
             }
         ]
@@ -20,11 +20,11 @@
         "category": "Language Concepts",
         "samples": [
             {
-                "name": "Programs and modules",
+                "name": "Programs and Modules",
                 "url": "programs-and-modules"
             },
             {
-                "name": "Variables and types",
+                "name": "Variables and Types",
                 "url": "variables-and-types"
             },
             {
@@ -40,11 +40,11 @@
                 "url": "integers"
             },
             {
-                "name": "Booleans and conditionals",
+                "name": "Booleans and Conditionals",
                 "url": "booleans"
             },
             {
-                "name": "Floating point numbers",
+                "name": "Floating Point Numbers",
                 "url": "floating-point-numbers"
             },
             {
@@ -56,7 +56,7 @@
                 "url": "strings"
             },
             {
-                "name": "Langlib functions",
+                "name": "Langlib Functions",
                 "url": "langlib-functions"
             },
             {
@@ -64,15 +64,15 @@
                 "url": "arrays"
             },
             {
-                "name": "foreach statement",
+                "name": "Foreach Statement",
                 "url": "foreach-statement"
             },
             {
-                "name": "while statement",
+                "name": "While Statement",
                 "url": "while-statement"
             },
             {
-                "name": "Binary data",
+                "name": "Binary Data",
                 "url": "binary-data"
             },
             {
@@ -80,7 +80,7 @@
                 "url": "maps"
             },
             {
-                "name": "Type definitions",
+                "name": "Type Definitions",
                 "url": "type-definitions"
             },
             {
@@ -88,7 +88,7 @@
                 "url": "records"
             },
             {
-                "name": "Structural typing",
+                "name": "Structural Typing",
                 "url": "structural-typing"
             },
             {
@@ -96,19 +96,19 @@
                 "url": "unions"
             },
             {
-                "name": "Error reporting",
+                "name": "Error Reporting",
                 "url": "error-reporting"
             },
             {
-                "name": "Error handling",
+                "name": "Error Handling",
                 "url": "error-handling"
             },
             {
-                "name": "check expression",
+                "name": "Check Expression",
                 "url": "check-expression"
             },
             {
-                "name": "Error subtyping",
+                "name": "Error Subtyping",
                 "url": "error-subtyping"
             },
             {
@@ -116,11 +116,11 @@
                 "url": "panics"
             },
             {
-                "name": "any type",
+                "name": "Anydata Type",
                 "url": "anydata-type"
             },
             {
-                "name": "Ignoring return values and errors",
+                "name": "Ignoring Return Values and Errors",
                 "url": "ignoring-return-values-and-errors"
             },
             {
@@ -132,11 +132,11 @@
                 "url": "object"
             },
             {
-                "name": "Defining classes",
+                "name": "Defining Classes",
                 "url": "defining-classes"
             },
             {
-                "name": "init return type",
+                "name": "Init Return Type",
                 "url": "init-return-type"
             },
             {
@@ -144,7 +144,7 @@
                 "url": "identity"
             },
             {
-                "name": "const and final ",
+                "name": "Const and Final ",
                 "url": "const-and-final"
             },
             {
@@ -152,19 +152,19 @@
                 "url": "enumerations"
             },
             {
-                "name": "match statement",
+                "name": "Match Statement",
                 "url": "match-statement"
             },
             {
-                "name": "Type inference ",
+                "name": "Type Inference ",
                 "url": "type-inference"
             },
             {
-                "name": "Function values",
+                "name": "Function Values",
                 "url": "function-values"
             },
             {
-                "name": "Asynchronous function calls",
+                "name": "Asynchronous Function Calls",
                 "url": "asynchronous-function-calls"
             },
             {
@@ -178,55 +178,55 @@
         ]
     },
     {
-        "title": "Network interaction",
+        "title": "Network Interaction",
         "column": 0,
         "category": "Language Concepts",
         "samples": [
             {
-                "name": "Consuming services: Client objects",
+                "name": "Consuming Services: Client Objects",
                 "url": "consuming-services"
             },
             {
-                "name": "Providing services",
+                "name": "Providing Services",
                 "url": "providing-services"
             },
             {
-                "name": "Module lifecycle",
+                "name": "Module Lifecycle",
                 "url": "module-lifecycle"
             },
             {
-                "name": "Service declaration",
+                "name": "Service Declaration",
                 "url": "service-declaration"
             },
             {
-                "name": "Resource methods",
+                "name": "Resource Methods",
                 "url": "resource-methods"
             },
             {
-                "name": "Hierarchical resources",
+                "name": "Hierarchical Resources",
                 "url": "hierarchical-resources"
             },
             {
-                "name": "Resource path parameters",
+                "name": "Resource Path Parameters",
                 "url": "resource-path-parameters"
             }
         ]
     },
     {
-        "title": "Working with Data",
+        "title": "Working With Data",
         "column": 0,
         "category": "Language Concepts",
         "samples": [
             {
-                "name": "Plain data",
+                "name": "Plain Data",
                 "url": "plain-data"
             },
             {
-                "name": "Ballerina basic types",
+                "name": "Ballerina Basic Types",
                 "url": "ballerina-basic-types"
             },
             {
-                "name": "decimal type",
+                "name": "Decimal Type",
                 "url": "decimal-type"
             },
             {
@@ -234,59 +234,59 @@
                 "url": "immutability"
             },
             {
-                "name": "anydata type",
+                "name": "Any Type",
                 "url": "any-type"
             },
             {
-                "name": "Configurable variables",
+                "name": "Configurable Variables",
                 "url": "configurable-variables"
             },
             {
-                "name": "Open records",
+                "name": "Open Records",
                 "url": "open-records"
             },
             {
-                "name": "Controlling openness",
+                "name": "Controlling Openness",
                 "url": "controlling-openness"
             },
             {
-                "name": "json type",
+                "name": "JSON Type",
                 "url": "json-type"
             },
             {
-                "name": "match statement with Maps",
+                "name": "Match Statement With Maps",
                 "url": "match-statement-with-maps"
             },
             {
-                "name": "Converting from user-defined type to JSON",
+                "name": "Converting From User-Defined Type to JSON",
                 "url": "converting-from-user-defined-type-to-json"
             },
             {
-                "name": "Converting from JSON to user-defined type",
+                "name": "Converting From JSON to User-Defined Type",
                 "url": "converting-from-json-to-user-defined-type"
             },
             {
-                "name": "Converting to user-defined type",
+                "name": "Converting to User-Defined Type",
                 "url": "converting-to-user-defined-type"
             },
             {
-                "name": "Resource method typing",
+                "name": "Resource Method Typing",
                 "url": "resource-method-typing"
             },
             {
-                "name": "JSON numbers",
+                "name": "JSON Numbers",
                 "url": "json-numbers"
             },
             {
-                "name": "Query expressions",
+                "name": "Query Expressions",
                 "url": "query-expressions"
             },
             {
-                "name": "Destructuring records",
+                "name": "Destructuring Records",
                 "url": "destructuring-records"
             },
             {
-                "name": "Let clause",
+                "name": "Let Clause",
                 "url": "let-clause"
             },
             {
@@ -294,7 +294,7 @@
                 "url": "ordering"
             },
             {
-                "name": "Limit clause",
+                "name": "Limit Clause",
                 "url": "limit-clause"
             },
             {
@@ -302,43 +302,43 @@
                 "url": "table-concept"
             },
             {
-                "name": "Table syntax",
+                "name": "Table Syntax",
                 "url": "table-syntax"
             },
             {
-                "name": "Multiple key fields",
+                "name": "Multiple Key Fields",
                 "url": "multiple-key-fields"
             },
             {
-                "name": "structured keys",
+                "name": "Structured Keys",
                 "url": "structured-keys"
             },
             {
-                "name": "Querying tables",
+                "name": "Querying Tables",
                 "url": "querying-tables"
             },
             {
-                "name": "Creating tables with query",
+                "name": "Creating Tables With Query",
                 "url": "creating-tables-with-query"
             },
             {
-                "name": "Join clause",
+                "name": "Join Clause",
                 "url": "join-clause"
             },
             {
-                "name": "Stream type",
+                "name": "Stream Type",
                 "url": "stream-type"
             },
             {
-                "name": "Querying with streams",
+                "name": "Querying With Streams",
                 "url": "querying-with-streams"
             },
             {
-                "name": "Backtick templates",
+                "name": "Backtick Templates",
                 "url": "backtick-templates"
             },
             {
-                "name": "Raw templates",
+                "name": "Raw Templates",
                 "url": "raw-templates"
             },
             {
@@ -350,35 +350,35 @@
                 "url": "sequences"
             },
             {
-                "name": "XML data model",
+                "name": "XML Data Model",
                 "url": "xml-data-model"
             },
             {
-                "name": "xml templates",
+                "name": "XML Templates",
                 "url": "xml-templates"
             },
             {
-                "name": "xml operations",
+                "name": "XML Operations",
                 "url": "xml-operations"
             },
             {
-                "name": "xml subtyping",
+                "name": "XML Subtyping",
                 "url": "xml-subtyping"
             },
             {
-                "name": "xml navigation ",
+                "name": "XML Navigation ",
                 "url": "xml-navigation"
             },
             {
-                "name": "XML templates and query",
+                "name": "XML Templates and Query",
                 "url": "xml-templates-and-query"
             },
             {
-                "name": "XML namespaces",
+                "name": "XML Namespaces",
                 "url": "xml-namespaces"
             },
             {
-                "name": "xmlns declarations",
+                "name": "XMLNS Declarations",
                 "url": "xmlns-declarations"
             }
         ]
@@ -389,15 +389,15 @@
         "category": "Language Concepts",
         "samples": [
             {
-                "name": "Named workers",
+                "name": "Named Workers",
                 "url": "named-workers"
             },
             {
-                "name": "Sequence diagrams",
+                "name": "Sequence Diagrams",
                 "url": "sequence-diagrams"
             },
             {
-                "name": "Waiting for workers",
+                "name": "Waiting for Workers",
                 "url": "waiting-for-workers"
             },
             {
@@ -405,27 +405,27 @@
                 "url": "strands"
             },
             {
-                "name": "Named worker return values",
+                "name": "Named Worker Return Values",
                 "url": "named-worker-return-values"
             },
             {
-                "name": "Alternate wait",
+                "name": "Alternate Wait",
                 "url": "alternate-wait"
             },
             {
-                "name": "Multiple wait",
+                "name": "Multiple Wait",
                 "url": "multiple-wait"
             },
             {
-                "name": "Named workers and futures",
+                "name": "Named Workers and Futures",
                 "url": "named-workers-and-futures"
             },
             {
-                "name": "Inter-worker message passing",
+                "name": "Inter-Worker Message Passing",
                 "url": "inter-worker-message-passing"
             },
             {
-                "name": "Inter-worker failure propagation",
+                "name": "Inter-Worker Failure Propagation",
                 "url": "inter-worker-failure-propagation"
             }
         ]
@@ -437,40 +437,40 @@
         "samples": []
     },
     {
-        "title": "Concurrency safety",
+        "title": "Concurrency Safety",
         "column": 0,
         "category": "Language Concepts",
         "samples": [
             {
-                "name": "lock statement",
+                "name": "Lock Statement",
                 "url": "lock-statement"
             },
             {
-                "name": "isolated functions",
+                "name": "Isolated Functions",
                 "url": "isolated-functions"
             },
             {
-                "name": "readonly type",
+                "name": "Readonly Type",
                 "url": "readonly-type"
             },
             {
-                "name": "readonly and isolated",
+                "name": "Readonly and Isolated",
                 "url": "readonly-and-isolated"
             },
             {
-                "name": "Isolated variables",
+                "name": "Isolated Variables",
                 "url": "isolated-variables"
             },
             {
-                "name": "Isolated methods",
+                "name": "Isolated Methods",
                 "url": "isolated-methods"
             },
             {
-                "name": "Isolated objects",
+                "name": "Isolated Objects",
                 "url": "isolated-objects"
             },
             {
-                "name": "Inferring isolated",
+                "name": "Inferring Isolated",
                 "url": "inferring-isolated"
             }
         ]
@@ -478,25 +478,116 @@
     {
         "title": "REST API",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Service Data Binding",
+                "url": "http-data-binding"
+            },
+            {
+                "name": "Client Data Binding",
+                "url": "http-client-data-binding"
+            },
+            {
+                "name": "Absolute Path and Resource Path",
+                "url": "http-absolute-path-and-path"
+            },
+            {
+                "name": "Default Resource",
+                "url": "http-default-resource"
+            },
+            {
+                "name": "Path Matrix Param",
+                "url": "http-path-matrix-param"
+            },
+            {
+                "name": "Resource Return Types",
+                "url": "http-resource-returns"
+            },
+            {
+                "name": "Restrict By Media Type",
+                "url": "http-restrict-by-media-type"
+            },
+            {
+                "name": "Handling Different Payload Types",
+                "url": "http-different-payload-types"
+            }           
+        ]
     },
     {
         "title": "HTTP",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Client",
+                "url": "http-client-endpoint"
+            },
+            {
+                "name": "CORS",
+                "url": "http-cors"
+            },
+            {
+                "name": "100 Continue",
+                "url": "http-100-continue"
+            },
+            {
+                "name": "Redirects",
+                "url": "http-redirects"
+            },
+            {
+                "name": "Streaming",
+                "url": "http-streaming"
+            },
+            {
+                "name": "Compression",
+                "url": "http-compression"
+            },
+            {
+                "name": "Cookies",
+                "url": "http-cookies"
+            },
+            {
+                "name": "Query Parameter",
+                "url": "http-query-parameter"
+            },
+            {
+                "name": "Disable Chanking",
+                "url": "http-disable-chunking"
+            },
+            {
+                "name": "Response With Multiparts",
+                "url": "http-response-with-multiparts"
+            },
+            {
+                "name": "Request With Multiparts",
+                "url": "http-request-with-multiparts"
+            },
+            {
+                "name": "Passthrough",
+                "url": "http-passthrough"
+            }             
+        ]
     },
     {
         "title": "HTTP2",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "HTTP 1.1 to 2.0 Protocol Switch",
+                "url": "http-1-1-to-2-0-protocol-switch"
+            },
+            {
+                "name": "HTTP 2.0 Server Push",
+                "url": "http-2-0-server-push"
+            }    
+        ]
     },
     {
         "title": "GraphQL",
         "column": 0,
-        "category": "Working over the network",
+        "category": "Working Over the Network",
         "samples": [
             {
                 "name": "Hello World",
@@ -523,49 +614,86 @@
     {
         "title": "WebSockets",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
-    },
-    {
-        "title": "Routing",
-        "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Handle Text Messages with Client",
+                "url": "websocket-text-client"
+            },
+            {
+                "name": "Handle Binary Messages with Client",
+                "url": "websocket-binary-client"
+            },
+            {
+                "name": "Listener Functionalities",
+                "url": "websocket-basic-sample"
+            }
+        ]
     },
     {
         "title": "WebSub",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Websub Subscriber Service",
+                "url": "websub-webhook-sample"
+            }
+        ]
     },
     {
         "title": "Resiliency",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Circuit Breaker",
+                "url": "http-circuit-breaker"
+            },
+            {
+                "name": "Load Balancer",
+                "url": "http-load-balancer"
+            },
+            {
+                "name": "Failover",
+                "url": "http-failover"
+            },
+            {
+                "name": "Retry",
+                "url": "http-retry"
+            },
+            {
+                "name": "Timeout",
+                "url": "http-timeout"
+            }          
+        ]
     },
     {
         "title": "Listeners",
         "column": 0,
-        "category": "Working over the network",
+        "category": "Working Over the Network",
         "samples": [
             {
                 "name": "Directory Listener",
                 "url": "directory-listener"
+            },
+            {
+                "name": "Dynamic Listener",
+                "url": "dynamic-listener"
             }
         ]
     },
     {
         "title": "gRPC",
         "column": 0,
-        "category": "Working over the network",
+        "category": "Working Over the Network",
         "samples": [
             {
                 "name": "Simple RPC",
                 "url": "grpc-simple"
             },
             {
-                "name": "Simple RPC with Headers",
+                "name": "Simple RPC With Headers",
                 "url": "grpc-simple-with-headers"
             },
             {
@@ -589,55 +717,182 @@
     {
         "title": "Observability",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Distributed Tracing",
+                "url": "tracing"
+            },
+            {
+                "name": "Counter-Based Metrics",
+                "url": "counter-metrics"
+            },
+            {
+                "name": "Gauge-Based Metrics",
+                "url": "gauge-metrics"
+            }
+
+        ]
     },
     {
         "title": "OpenAPI",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Ballerina To OpenAPI",
+                "url": "ballerina-to-openapi"
+            },
+            {
+                "name": "OpenAPI To Ballerina",
+                "url": "openapi-to-ballerina"
+            }
+
+        ]
     },
     {
         "title": "NATS",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Publish/Subscribe",
+                "url": "nats-basic-pub-sub"
+            },
+            {
+                "name": "Request/Reply",
+                "url": "nats-basic-request-reply"
+            }
+        ]
     },
     {
         "title": "STAN",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Publish/Subscribe",
+                "url": "nats-streaming-pub-sub"
+            },
+            {
+                "name": "Queue Groups",
+                "url": "nats-streaming-queue-group"
+            },
+            {
+                "name": "Durable Subscriptions",
+                "url": "nats-streaming-durable-subscriptions"
+            },
+            {
+                "name": "Historical Message Replay",
+                "url": "nats-streaming-start-position"
+            }                   
+        ]
     },
     {
         "title": "Kafka",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Producer",
+                "url": "kafka-producer"
+            },
+            {
+                "name": "Consumer Service",
+                "url": "kafka-consumer-service"
+            },
+            {
+                "name": "Consumer Client",
+                "url": "kafka-consumer-client"
+            },
+            {
+                "name": "Transactional Producer",
+                "url": "kafka-producer-transactional"
+            },
+            {
+                "name": "Consumer Groups",
+                "url": "kafka-consumer-group-service"
+            },
+            {
+                "name": "SASL Authentication - Consumer",
+                "url": "kafka-authentication-sasl-plain-consumer"
+            },
+            {
+                "name": "SASL Authentication - Producer",
+                "url": "kafka-authentication-sasl-plain-producer"
+            }
+        ]
     },
     {
         "title": "RabbitMQ",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Producer",
+                "url": "rabbitmq-producer"
+            },
+            {
+                "name": "Consumer",
+                "url": "rabbitmq-consumer"
+            },
+            {
+                "name": "Client Acknowledgements",
+                "url": "rabbitmq-consumer-with-client-acknowledgement"
+            },
+            {
+                "name": "Transactional Producer",
+                "url": "rabbitmq-transaction-producer"
+            },
+            {
+                "name": "SASL Authentication - Consumer",
+                "url": "rabbitmq-transaction-consumer"
+            }            
+        ]
     },
     {
         "title": "TCP",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "TCP Client",
+                "url": "tcp-client"
+            },
+            {
+                "name": "TCP Listener",
+                "url": "tcp-listener"
+            },
+            {
+                "name": "TCP Transport Security",
+                "url": "tcp-transport-security"
+            }                        
+        ]
     },
     {
         "title": "UDP",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "UDP Connectionless Client",
+                "url": "udp-client"
+            },
+            {
+                "name": "UDP Connection-Oriented Client",
+                "url": "udp-connect-client"
+            },
+            {
+                "name": "UDP Listener",
+                "url": "udp-listener"
+            } 
+
+        ]
     },
     {
         "title": "REST API Security",
         "column": 0,
-        "category": "Working over the network",
+        "category": "Working Over the Network",
         "samples": [
             {
                 "name": "Service - SSL/TLS",
@@ -700,25 +955,84 @@
     {
         "title": "Email",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Send Emails",
+                "url": "send-email"
+            },
+            {
+                "name": "Receive Emails Using a Client",
+                "url": "receive-email-using-client"
+            },
+            {
+                "name": "Receive Emails Using a Listener",
+                "url": "receive-email-using-listener"
+            }
+        ]
     },
     {
         "title": "MySQL",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Simple Query",
+                "url": "mysql-query-operation"
+            },
+            {
+                "name": "Query With Complex Types",
+                "url": "mysql-complex-type-queries"
+            },
+            {
+                "name": "DML and DDL Operation",
+                "url": "mysql-execute-operation"
+            },
+            {
+                "name": "Batch Execute",
+                "url": "mysql-batch-execute-operation"
+            },
+            {
+                "name": "Atomic Batch Execute",
+                "url": "mysql-atomic-batch-execute-operation"
+            },
+            {
+                "name": "Call Stored Procedures",
+                "url": "mysql-call-stored-procedures"
+            }            
+        ]
     },
     {
         "title": "JDBC",
         "column": 0,
-        "category": "Working over the network",
-        "samples": []
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Simple Query",
+                "url": "jdbc-query-operation"
+            },
+            {
+                "name": "Query With Complex Types",
+                "url": "jdbc-complex-type-queries"
+            },
+            {
+                "name": "DML and DDL Operation",
+                "url": "jdbc-execute-operation"
+            },
+            {
+                "name": "Batch Execute",
+                "url": "jdbc-batch-execute-operation"
+            },
+            {
+                "name": "Atomic Batch Execute",
+                "url": "jdbc-atomic-batch-execute-operation"
+            }
+        ]
     },
     {
         "title": "IO",
         "column": 0,
-        "category": "Common libraries",
+        "category": "Common Libraries",
         "samples": [
             {
                 "name": "Read/Write Bytes",
@@ -745,7 +1059,7 @@
     {
         "title": "Security",
         "column": 0,
-        "category": "Common libraries",
+        "category": "Common Libraries",
         "samples": [
             {
                 "name": "Cryptographic Operations",
@@ -760,7 +1074,7 @@
     {
         "title": "URL",
         "column": 0,
-        "category": "Common libraries",
+        "category": "Common Libraries",
         "samples": [
             {
                 "name": "URL Encode/Decode Operations",
@@ -771,7 +1085,7 @@
     {
         "title": "Time",
         "column": 0,
-        "category": "Common libraries",
+        "category": "Common Libraries",
         "samples": [
             {
                 "name": "UTC Time",
@@ -790,7 +1104,7 @@
     {
         "title": "Cache",
         "column": 0,
-        "category": "Common libraries",
+        "category": "Common Libraries",
         "samples": [
             {
                 "name": "Cache Basics",
@@ -805,7 +1119,7 @@
     {
         "title": "Log",
         "column": 0,
-        "category": "Common libraries",
+        "category": "Common Libraries",
         "samples": [
             {
                 "name": "Logging",
@@ -824,7 +1138,7 @@
     {
         "title": "File",
         "column": 0,
-        "category": "Common libraries",
+        "category": "Common Libraries",
         "samples": [
             {
                 "name": "File Paths",
@@ -847,7 +1161,7 @@
     {
         "title": "Random",
         "column": 0,
-        "category": "Common libraries",
+        "category": "Common Libraries",
         "samples": [
             {
                 "name": "Random Numbers",
@@ -858,7 +1172,7 @@
     {
         "title": "Task",
         "column": 0,
-        "category": "Common libraries",
+        "category": "Common Libraries",
         "samples": [
             {
                 "name": "Schedule Job recurrence by Frequency",
@@ -877,7 +1191,7 @@
     {
         "title": "UUID",
         "column": 0,
-        "category": "Common libraries",
+        "category": "Common Libraries",
         "samples": [
             {
                 "name": "Generate UUID",
@@ -892,7 +1206,7 @@
     {
         "title": "XSLT",
         "column": 0,
-        "category": "Common libraries",
+        "category": "Common Libraries",
         "samples": [
             {
                 "name": "XSLT Transformation",
@@ -903,7 +1217,7 @@
     {
         "title": "Regex",
         "column": 0,
-        "category": "Common libraries",
+        "category": "Common Libraries",
         "samples": [
             {
                 "name": "Regular Expressions",
@@ -914,7 +1228,7 @@
     {
         "title": "OS",
         "column": 0,
-        "category": "Common libraries",
+        "category": "Common Libraries",
         "samples": [
             {
                 "name": "Environment Variables",
@@ -925,10 +1239,10 @@
     {
         "title": "XML Data",
         "column": 0,
-        "category": "Common libraries",
+        "category": "Common Libraries",
         "samples": [
             {
-                "name": "XML/JSON Conversion",
+                "name": "XML JSON Conversion",
                 "url": "xml-json-conversion"
             }
         ]

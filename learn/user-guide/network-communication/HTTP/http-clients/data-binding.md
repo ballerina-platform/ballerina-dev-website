@@ -33,9 +33,9 @@ import ballerina/io;
  
 public function main() returns @tainted error? {
    http:Client clientEp = check new("https://freegeoip.app");
-   json jp = check clientEp->get("/json/", targetType = json);
+   json jp = check clientEp->get("/json/");
    io:println("JSON Payload:\n", jp, "\n");
-   xml xp = check clientEp->get("/xml/", targetType = xml);
+   xml xp = check clientEp->get("/xml/");
    io:println("XML Payload:\n", xp);
 }
 ```
@@ -90,8 +90,7 @@ type Location record {
  
 public function main() returns @tainted error? {
    http:Client clientEp = check new("https://freegeoip.app");
-   Location loc = check clientEp->get("/json/",
-                                   targetType = Location);
+   Location loc = check clientEp->get("/json/");
    io:println("IP: ", loc.ip);
    io:println("Latitude: ", loc.latitude);
    io:println("Longitude: ", loc.longitude);

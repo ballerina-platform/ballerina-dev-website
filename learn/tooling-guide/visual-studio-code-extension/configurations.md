@@ -18,21 +18,21 @@ It enables all code lens features irrespective of the **Code Lens - Docs: Enable
 
 ## Code Lens - Docs: Enabled
 
-It enables the **Documentation** code lens feature, which provides Ballerina document generation capabilities and is enabled by default. This configuration is overridden by the **Code Lens - All: Enabled** setting.
+It enables the **Documentation** [code lens](/learn/tooling-guide/visual-studio-code-extension/language-support/#documentation-code-lens) feature, which provides Ballerina document generation capabilities and is enabled by default. This configuration is overridden by the **Code Lens - All: Enabled** setting.
 
 ## Code Lens - Executor: Enabled
 
-It enables the **Executor** code lens feature, which provides quick run and debug capabilities for the Ballerina language. It is enabled by default. This configuration is overridden by the **Code Lens - All: Enabled** setting.
+It enables the **Executor** [code lens](/learn/tooling-guide/visual-studio-code-extension/language-support/#run-and-debug-code-lenses) feature, which provides quick run and debug capabilities for the Ballerina language. It is enabled by default. This configuration is overridden by the **Code Lens - All: Enabled** setting.
 
 >**Tip:** The **Debug** code lens honors the **debug.saveBeforeStart** setting of the VS Code editor.
 
 ## Data Mapper: Enabled
 
-It enables the **Data Mapper** code actions and is disabled by default.
+It enables the **Data Mapper** [code actions](/learn/tooling-guide/visual-studio-code-extension/language-support/#data-mapping) and is disabled by default.
 
 ## Data Mapper: Url
 
-It specifies the URL of the data mapping service backend.
+It specifies the URL of the [data mapping](/learn/tooling-guide/visual-studio-code-extension/language-support/#data-mapping) service backend.
 
 ## Debug Log
 
@@ -46,20 +46,20 @@ It enables watching file change events of the Ballerina project and is enabled b
 
 ## Enable Telemetry
 
-It enables the Ballerina telemetry service and is enabled by default. 
+It enables the Ballerina [telemetry](https://code.visualstudio.com/docs/getstarted/telemetry) service and is enabled by default. 
 
 >**Tip:** This honors the **telemetry.enableTelemetry** setting of the VS Code editor.
 
 ## Home
 
 It specifies the Ballerina home directory path and is only applicable if the 
-**Plugin - Dev: Mod**  setting is enabled.
+**Plugin - Dev: Mod**  [setting](/learn/tooling-guide/visual-studio-code-extension/configurations/#plugin---dev-mod) is enabled.
 
->**Tip:** Enclose the parts of the path on Windows with quotations if it includes spaces. E.g., `C:\”Program Files”\Ballerina`
+>**Tip:** Enclose the parts of the path on Windows with quotations if it includes spaces. E.g., `C:\"Program Files"\Ballerina`
 
 ## Plugin - Dev: Mod
 
-It enables the plugin development mode and is disabled by default. If it is disabled, the extension picks up the Ballerina runtime installed in the environment. Also, if it is enabled, the extension picks up the Ballerina runtime defined in the **Home** configuration.
+It enables the plugin development mode and is disabled by default. If it is disabled, the extension picks up the Ballerina runtime installed in the environment. Also, if it is enabled, the extension picks up the Ballerina runtime defined in the **Home** [configuration](/learn/tooling-guide/visual-studio-code-extension/configurations/#home).
 
 ## Trace Log
 

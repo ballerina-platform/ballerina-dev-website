@@ -343,6 +343,18 @@ a.cPlayGround:hover {
 }
 
 
+@media screen and (max-width: 1199px) {
+
+    .cBottomLayer ul li {
+        margin-right: 0;
+        margin-left: 30px;
+    }
+
+}
+
+
+
+
 @media screen and (max-width: 991px) {
     #navbar {
         border: 1px solid #c0c0c0;
@@ -354,6 +366,22 @@ a.cPlayGround:hover {
     }
     .cBallerina-io-Home-main-download-button.cPlayButton {
         margin-right: 20px;
+    }
+    a.cBallerina-io-Home-main-download-button {
+
+        min-width: 290px;
+   
+    }
+    .cBottomLayer ul li {
+        float: left;
+    }
+    .row.cBallerinaIntroSection p {
+     
+        margin-bottom: 30px;
+    }
+    .row.cBallerinaIntroSection {
+        background-color: #494949;
+        padding: 80px 0 60px 0;
     }
 }
 
@@ -376,6 +404,13 @@ a.cPlayGround:hover {
             width: 100%;
     }
     .cBallerina-io-Home-main-download-button.cPlayButton {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .cBottomLayer ul li {
+        margin-left: 0;
         margin-right: 0;
     }
 }

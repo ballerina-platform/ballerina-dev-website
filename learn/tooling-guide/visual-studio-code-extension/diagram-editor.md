@@ -24,11 +24,10 @@ By clicking on the **Show Diagram View** button on the editor’s title bar, you
 
 >**Tip:** The Diagram Editor syncs with the latest when you make changes on the text editor.
 
+![Diagram View Button](/learn/images/diagrams-view-command.gif)
 
 ## Show Diagram View Palette Command
 
-The **Ballerina: Show Diagram View** command is available for quick access.
-
-![Diagrams View](/learn/images/diagrams-view-command.gif)
+The **Ballerina: Show Diagram View** [command](/learn/tooling-guide/visual-studio-code-extension/vs-code-commands/#show-diagram-view) is available for quick access.
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

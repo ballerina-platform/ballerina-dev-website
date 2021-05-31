@@ -14,9 +14,9 @@ Ballerina's concurrency model supports both threads and coroutines and has been 
 
 A Ballerina program is executed on one or more threads. A thread can consist of one or more strands, which are language-managed, logical threads of control. Only one strand of a particular thread can run at a time. The strands belonging to a single thread are cooperatively multitasked. Therefore, strands of a single thread behave as coroutines relative to each other.
 
-Strands enable cooperative multitasking by "yielding". The runtime scheduler may switch the execution of a strand only when it yields via a wait action, a worker receive action, a library function resulting in a blocking call, etc.
+Strands enable cooperative multitasking by "yielding". The runtime scheduler may switch the execution of a strand only when it yields via a `wait` action, a worker receive action, a library function resulting in a blocking call, etc.
 
-A strand is created due to the execution of either a named worker declaration or start action.
+A strand is created due to the execution of either a named worker declaration or `start` action.
 
 Concurrent operations in a function can be defined by multiple named workers. A function has a default worker and may additionally contain named workers. A worker executes concurrently with the other workers (function worker and named workers) in the function.
 

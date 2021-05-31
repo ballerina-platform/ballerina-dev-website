@@ -12,15 +12,15 @@ redirect_from:
 
 ## Dependencies
 
-In Ballerina, we can access any public symbol from another module by importing the particular module using an import declaration.The import declaration syntax is as follows:
+In Ballerina, we can access any public symbol from another module by importing the particular module using an import declaration. The import declaration syntax is as follows:
 
 ```bal
 import [org-name /] module-name [as import-prefix];
 ```
 
-*   The org-name is optional for importing a module from the current package.
-*   The import-prefix has to be a valid Ballerina identifier and the import-prefix is used to refer to public symbols in the declared module.
-*   The import-prefix is also optional. If it is not available, the last part of the module-name can be used.
+*   The _org-name_ is optional for importing a module from the current package.
+*   The _import-prefix_ has to be a valid Ballerina identifier and the import-prefix is used to refer to public symbols in the declared module.
+*   The _import-prefix_ is also optional. If it is not available, the last part of the module-name can be used.
 
 If we notice the source code of the main.bal file in our package, we can see the following import statement.
 
@@ -30,7 +30,7 @@ import ballerina/io;
 
 We can import a module by providing the organization name and the module name. The module name of the default module is always the package name.
 
-#### Importing modules of same package
+#### Importing modules of the same package
 
 The organization name can be omitted only if we are importing a module from the same package. Let’s see how we can import a module from the same package.
 
@@ -53,16 +53,16 @@ import hello_world.util
 String formattedMsg = util:properCaseMessage(“hello world!”);
 ```
 
-Since the import-prefix is not given here, we use `util` to refer to the symbols in the hello_world.util module. Here, util:properCaseMessage is called a qualified identifier.
+Since the import-prefix is not given here, we use `util` to refer to the symbols in the hello_world.util module. Here, `util:properCaseMessage` is called a qualified identifier.
 
 ### Managing Dependencies
 
 When we build a package that has dependencies to other packages, the compiler automatically figures out the latest compatible versions of the required packages. 
-For identifying the latest versions of these dependencies, by default, Ballerina searches for the packages of dependencies in 2 repositories: Distribution repository and the Ballerina Central repository.
+For identifying the latest versions of these dependencies, by default, Ballerina searches for the packages of dependencies in 2 repositories: The Distribution repository and the Ballerina Central repository.
 
 **Distribution repository**
 
-Distribution repository is a file system repository that comes with the local ballerina installation. The repository is located at `<BALLERINA_HOME>/repo/bala`.
+The Distribution repository is a file system repository that comes with the local ballerina installation. The repository is located at `<BALLERINA_HOME>/repo/bala`.
 
 **Ballerina Central repository**
 
@@ -89,7 +89,7 @@ Abiding by the common convention of [Semantic Versioning](https://semver.org/), 
 A few examples would be:
 
 *   0.2.3 and 0.2.4 are considered incompatible since the major version is zero
-*   1.2.3, 1.2.4 and 1.4.5 are compatible; 1.4.5 will be considered as the latest
+*   1.2.3, 1.2.4, and 1.4.5 are compatible; 1.4.5 will be considered as the latest
 *   1.2.3-alpha, 1.2.3-alpha.2 and 1.2.3-beta are compatible, 1.2.3-beta is considered as the latest
 *   1.2.3-alpha, 1.2.3-beta, 1.2.4-alpha are compatible, 1.2.4-alpha is considered as the latest
 
@@ -109,7 +109,7 @@ This can be achieved with the local repository.
 
 #### Local repository
 
-The local repository is a custom repository in the local file system. We can push a package to the repository by providing the option '--repository=local' with bal push command.
+The local repository is a custom repository in the local file system. We can push a package to the repository by providing the option `--repository=local` with bal push command.
 
 ```bash
 $ bal push --repository=local

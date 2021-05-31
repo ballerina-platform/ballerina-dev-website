@@ -1,18 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <link rel="stylesheet" href="./html-template-resources/semantic.min.css" />
-    <link rel="stylesheet" href="./html-template-resources/styles/css/styles.css" />
-    <link rel="stylesheet" href="./html-template-resources/components/icon.min.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/themes/prism.min.css" rel="stylesheet" />
-    <script src="./html-template-resources/jquery.min.js"></script>
-    <script src="./html-template-resources/semantic.min.js"></script>
-
-
-</head>
-<body>
-    <div id="root"></div>
-
-<script type="text/javascript" src="bundle.js"></script></body>
+<html lang="en-US">
+<meta charset="utf-8">
+<title>Redirecting&hellip;</title>
+<h1>Redirecting&hellip;</h1>
+<script>
+    let loc = window.location.href;
+    var found = false;
+    let regexExpr = /\/swan-lake\/learn\/api-docs\/ballerina\/#((\/[^\/]*)(\/[^\/]*)?(\/[^\/]*)?$)/;
+    if (regexExpr.test(loc)) {
+        const match = loc.match(regexExpr);
+        if (match[3] != null && match[4] != null) {
+            loc=loc.replace(regexExpr, "/learn/api-docs/ballerina/#/ballerina"+match[2]+"/latest"+match[2]+match[3]+match[4]);
+        } else if (match[3] != null && match[4] == null) {
+            loc=loc.replace(regexExpr, "/learn/api-docs/ballerina/#/ballerina"+match[2]+"/latest"+match[2]+match[3]);
+        } else {
+            loc=loc.replace(regexExpr, "/learn/api-docs/ballerina/#/ballerina"+match[2]+"/latest"+match[2]);
+        }
+        found = true;
+    }
+    if (!found) {
+        loc = window.location.href.replace("swan-lake/learn/api-docs/ballerina", "learn/api-docs/ballerina");
+    }
+    var a = document.createElement('a');
+    var link = document.createTextNode("Click here if you are not redirected");
+    a.appendChild(link);
+    a.title = "Click here if you are not redirected";
+    a.href = loc;
+    document.body.appendChild(a);
+    window.location.href = loc;
+</script>
 </html>

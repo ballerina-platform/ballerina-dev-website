@@ -2,14 +2,16 @@
 name: Publish Homebrew
 
 on:
-  push:
-    branches:
-      - prod-sync
-    paths:
-      - '_data/stable-latest/**'
   workflow_dispatch:
-    branches:
-      - prod-sync
+# disabling the below for now untile we migrate this to homebrew action.
+#  push:
+#    branches:
+#      - prod-sync
+#    paths:
+#      - '_data/stable-latest/**'
+#  workflow_dispatch:
+#    branches:
+#      - prod-sync
 
 jobs:
   publish-homebrew:

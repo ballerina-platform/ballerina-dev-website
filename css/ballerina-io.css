@@ -53,7 +53,7 @@ a:hover {
 }
 
 .wy-breadcrumbs li {
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 
 .wy-breadcrumbs li a:hover {
@@ -1129,7 +1129,9 @@ cursor: pointer;
 
 } 
 
-
+.cGitLink {
+    text-align: right;
+}
 
 
 .cSecondCTAcontainer-left {
@@ -1784,6 +1786,22 @@ ul, #toc {
     margin-bottom: 20px;
 }
 
+
+.wy-breadcrumbs li, .wy-breadcrumbs li a  , ul.wy-breadcrumbs  {
+	color: #22b7b1 !important;
+	font-size: 11px !important;
+    text-transform: uppercase;
+}
+
+ul.wy-breadcrumbs {
+    color: #57595d !important;
+}
+
+.cBalleinaBreadcrumbs li {
+    margin-right: 5px !important;
+}
+
+
 .cCookie-Policy {
     position: fixed;
     bottom: 0;
@@ -1843,4 +1861,38 @@ float: right;
 
 .cCookie-Policy.cHide-Policy {
     display: none;
+}
+
+.cNLButton {
+    background-color: #20b6b0;
+color: #fff;
+padding: 10px 20px;
+display: inline-block;
+margin-top: 20px;
+width: 100%;
+text-align: center;
+
+}
+
+.cNLButton:hover {
+    background-color: #57595d;
+    color: #fff !important;
+}
+
+.cNoPadding {
+    padding: 0;
+}
+
+.cGithubContainer {
+    text-align: right;
+    padding-top: 20px;
+}
+
+.cGithubContainer .icon-github {
+    margin-top: 5px;
+    line-height: 48px !important;
+}
+
+#tree-expand-all ,  #tree-collapse-all {
+    font-size: 14px;
 }

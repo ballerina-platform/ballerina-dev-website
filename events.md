@@ -10,29 +10,73 @@ redirect_from:
 ---
 <script src="/js/events.js"></script>
 <link rel="stylesheet" href="/css/events-page.css">
-<h2>No upcoming events</h2><br/>
+<!--<h2>No upcoming events</h2><br/>-->
 
-<!--<h2>Upcoming Events</h2>	
-<table class="cEventTable cConferencesList" style="width:100%;">	
-   <tr class="event-expiry" style="display:none" data-expiry="December 16, 2020 12:00:00">	
+<h2>Upcoming Events</h2>	
+<table class="cEventTable cConferencesList" style="width:100%;">
+   <tr class="event-expiry" style="display:none" data-expiry="February 23, 2021 12:00:00">	
       <td class="cEventDateContainer">	
-         <span class="cEventDate">December 14 - 16, 2020</span>	
-         <p class="cEventLocation">São Paulo, Brazil</p>	
+         <span class="cEventDate">February 23, 2021</span>	
+         <p class="cEventLocation">Online</p>	
       </td>	
       <td class="cEventDetail">	
-         <a target="_blank" href="https://qconsp.com/">	
-            <h4>QCon São Paulo</h4>	
+         <a target="_blank" href="https://docs.google.com/document/d/1TPi0ktNvk-gQhVh46ckP5_LyhvwLJSQ3NJeSfv8459A/edit">	
+            <h4>Ballerina Community Call</h4>	
          </a>	
          <h5></h5>	
-         <b>Nuwan Bandara,</b> Senior Director - Solutions Architecture, WSO2	
+         <b></b>
       </td>	
-      <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://docs.google.com/document/d/1TPi0ktNvk-gQhVh46ckP5_LyhvwLJSQ3NJeSfv8459A/edit" target="_blank">More Info</a></td>	
+   </tr>
+   <tr class="event-expiry" style="display:none" data-expiry="June 16, 2021 12:00:00">	
+      <td class="cEventDateContainer">	
+         <span class="cEventDate">June 15 - 16, 2021</span>	
+         <p class="cEventLocation">Online</p>	
+      </td>	
+      <td class="cEventDetail">	
+         <a target="_blank" href="https://stackconf.eu/">	
+            <h4>StackConf</h4>	
+         </a>	
+         <h5>Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h5>	
+         <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
+      </td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://stackconf.eu/" target="_blank">More Info</a></td>	
+   </tr>
+   <tr class="event-expiry" style="display:none" data-expiry="April 30, 2021 12:00:00">	
+      <td class="cEventDateContainer">	
+         <span class="cEventDate">April 27 - 30, 2021</span>	
+         <p class="cEventLocation">Online</p>	
+      </td>	
+      <td class="cEventDetail">	
+         <a target="_blank" href="https://www.wurreka.com/ict/virtual-conference/gids-2021/">	
+            <h4>GIDS Live</h4>	
+         </a>	
+         <h5>Cloud Native Middleware as a Programming Language</h5>
+         <h5>Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h5>
+         <b>Anjana Fernando,</b> Senior Director - Solutions Architecture, WSO2
+      </td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.wurreka.com/ict/virtual-conference/gids-2021/sessions" target="_blank">More Info</a></td>	
    </tr>	
-</table>--> 
+</table>
 
 <h2>Past Events</h2>
 <table class="cEventTable cConferencesList" style="width:100%;">
-   <tr class="event-expiry" style="display:none" data-expiry="December 4, 2020 12:00:00">
+   <tr class="event-expiry" style="display:none" data-expiry="February 5, 2021 12:00:00">	
+      <td class="cEventDateContainer">	
+         <span class="cEventDate">February 5, 2021</span>	
+         <p class="cEventLocation">Online</p>	
+      </td>	
+      <td class="cEventDetail">	
+         <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
+            <h4>Lunch & Learn</h4>	
+         </a>	
+         <h5>Ballerina: OS Cloud-native Programming Language</h5>	
+         <b>Caludio Guidi,</b> Jolie Evangelist and Project Co-Leader<br/>	
+         <b>Anjana Fernando,</b> Senior Director - Solutions Architecture, WSO2
+      </td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More Info</a></td>	
+   </tr>	
+   <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
          <span class="cEventDate">December 2 - 4, 2020</span>
          <p class="cEventLocation">Virtual</p>
@@ -46,7 +90,7 @@ redirect_from:
       </td>
       <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/0pKOkMRODF0" target="_blank">Watch Video</a></td>
    </tr>
-   <tr class="event-expiry" style="display:none" data-expiry="October 28, 2020 12:00:00">
+   <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
          <span class="cEventDate">October 28, 2020</span>
          <p class="cEventLocation">Virtual</p>
@@ -455,7 +499,7 @@ redirect_from:
    </td>
    <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Silicon-Valley-Cloud-Native-and-Kubernetes-Meetup/events/265530711/" target="_blank">Register Now</a></td>
    </tr>
-   </table> -->
+   </table> 
 <style>
    .navbar-nav > li.cActive > a {
    color: rgb(87, 89, 93) !important;

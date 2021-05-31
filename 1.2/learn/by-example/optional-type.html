@@ -1,0 +1,372 @@
+---
+layout: ballerina-example-page
+title: Optional Type
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /1.2/learn/by-example/optional-type
+redirect_from:
+  - /v1-2/learn/by-example/optional-type
+  - /v1-2/learn/by-example/optional-type.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// This function (optionally) returns a `string` value. In this example, `string?` is equivalent to `string|()`.</span>
+<span class="kd">function</span> <span class="nx">getValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">key</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span><span class="err">?</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">==</span> <span class="s">&quot;string&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;hello world&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// In Ballerina, the `nil` type that is provided as `()` contains a single value named &quot;nil&quot;. This is used</span>
+    <span class="c1">// to represent the absence of any other value.</span>
+    <span class="c1">// The `nil` value is written as `()`.</span>
+    <span class="c1">// `null` is syntactic sugar for &quot;nil&quot; that is to be used with JSON values because JSON uses `null`.</span>
+    <span class="c1">// `return ();` here is the same as `return;`. Not having a return statement at the end is also the same as</span>
+    <span class="c1">// explicitly returning `()`.</span>
+    <span class="k">return</span> <span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// It is optional for `getValue()` to return a value of type `string`. Thus, the value could be either</span>
+    <span class="c1">// of type `string` or of type `()` and needs to be handled explicitly.</span>
+    <span class="c1">// The statement `string s = getValue(&quot;string&quot;);` produces a compilation error.</span>
+    <span class="kt">string</span><span class="err">?</span> <span class="nx">s</span> <span class="p">=</span> <span class="nx">getValue</span><span class="p">(</span><span class="s">&quot;string&quot;</span><span class="p">);</span>
+
+    <span class="c1">// The type test can then be used to check if the value is in fact a `string` and then operate on it.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Length of the string: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;s is ()&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// A value of type `string` or `()` can be assigned to `s`.</span>
+    <span class="nx">s</span> <span class="p">=</span> <span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Length of the string: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;s is ()&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Optional Type</h2>
+                            <p><p>One of the design principles of the type system of Ballerina is to eliminate null reference errors.
+ Over the years, null reference errors have caused numerous system crashes, security vulnerabilities etc.
+ Optional types in Ballerina allow developers to identify where the value or the function
+ is of type <code>T</code> optionally, for any T. You can syntactically represent this as <code>T?</code> or T|()`.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="byte-type.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Byte Type</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="anydata-type.html">
+                                        <span>NEXT ></span>
+                                        <p>Anydata Type</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="optional-type">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/optional-type/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=6d0ae472499876ad499920cc25324b9f&file=optional_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function getValue(string key) returns string? {
+    if (key == &quot;string&quot;) {
+        return &quot;hello world&quot;;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This function (optionally) returns a <code>string</code> value. In this example, <code>string?</code> is equivalent to <code>string|()</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    return ();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>In Ballerina, the <code>nil</code> type that is provided as <code>()</code> contains a single value named &ldquo;nil&rdquo;. This is used
+ to represent the absence of any other value.
+ The <code>nil</code> value is written as <code>()</code>.
+ <code>null</code> is syntactic sugar for &ldquo;nil&rdquo; that is to be used with JSON values because JSON uses <code>null</code>.
+ <code>return ();</code> here is the same as <code>return;</code>. Not having a return statement at the end is also the same as
+ explicitly returning <code>()</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    string? s = getValue(&quot;string&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>It is optional for <code>getValue()</code> to return a value of type <code>string</code>. Thus, the value could be either
+ of type <code>string</code> or of type <code>()</code> and needs to be handled explicitly.
+ The statement <code>string s = getValue(&quot;string&quot;);</code> produces a compilation error.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (s is string) {
+        io:println(&quot;Length of the string: &quot;, s.length());
+    } else {
+        io:println(&quot;s is ()&quot;);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The type test can then be used to check if the value is in fact a <code>string</code> and then operate on it.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    s = ();
+    if (s is string) {
+        io:println(&quot;Length of the string: &quot;, s.length());
+    } else {
+        io:println(&quot;s is ()&quot;);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A value of type <code>string</code> or <code>()</code> can be assigned to <code>s</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run optional_type.bal
+Length of the string: 11
+s is ()
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

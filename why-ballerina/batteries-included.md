@@ -3,10 +3,7 @@ layout: ballerina-layer-page
 title: Batteries Included
 description: Explore the Ballerina platform, which includes a standard library (API docs), Ballerina Central, a documentation and testing framework, and popular IDE plugins.
 keywords: ballerina, ballerina platform, api documentation, testing, ide, ballerina central
-permalink: /why-ballerina/batteries-included/
-redirct_from:
-  - /why/batteries-included/
-  - /why/batteries-included
+permalink: /why-ballerina/batteries-included-old/
 ---
 <div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">
@@ -45,7 +42,7 @@ redirct_from:
  <p>This contains a list of modules that help developers rapidly build applications. From HTTP and HTTP/2 to WebSockets, WebSub, AMQP, JSON, XML, ProtoBuf, gRPC, and OpenAPI.</p>
 <ul class="cInlinelinklist">
                                  <li>
-                               <a class="cGreenLinkArrow" href="https://ballerina.io/learn/api-docs/ballerina/">Check out the standard library</a>
+                               <a class="cGreenLinkArrow" href="/learn/api-docs/ballerina/">Check out the standard library</a>
                                  </li>
                                  </ul>
 </div>
@@ -103,7 +100,7 @@ and assemble them in powerful ways.
                               
  <ul class="cInlinelinklist">
                                  <li>
-                                 <a class="cGreenLinkArrow"  href="https://ballerina.io/learn/how-to-document-ballerina-code/">How to document Ballerina code </a>
+                                 <a class="cGreenLinkArrow"  href="/learn/how-to-document-ballerina-code/">How to document Ballerina code </a>
                                  </li>
                                  </ul>
 </div>
@@ -132,7 +129,7 @@ and assemble them in powerful ways.
                               
  <ul class="cInlinelinklist">
                                  <li>
-                                 <a class="cGreenLinkArrow"  href="https://ballerina.io/learn/how-to-test-ballerina-code/">How to test Ballerina code</a>
+                                 <a class="cGreenLinkArrow"  href="/learn/how-to-test-ballerina-code/">How to test Ballerina code</a>
                                  </li>
                                  </ul>
 </div>
@@ -158,8 +155,8 @@ and assemble them in powerful ways.
                               <h2 id="async-network-protocol">IDE Plugins</h2>
                               <p>We provide plugins for popular IDEs so you can code in your preferred platform.</p>
 <ul class="cInlinelinklist">
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/vscode-plugin/">VS Code  </a></li>
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/intellij-plugin/">IntelliJ Idea </a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/vscode-plugin/">VS Code  </a></li>
+                                 <li><a class="cGreenLinkArrow" href="/learn/intellij-plugin/">IntelliJ Idea </a></li>
                               </ul>
                              <div class="cQUOTE">
                               <p>"Ballerina will enable fast, quality, 12-factor ready deployments out of the box. The strong annotation set is a great ‘batteries included’ approach that will have Devs and Ops collaborating from the start of development."</p>

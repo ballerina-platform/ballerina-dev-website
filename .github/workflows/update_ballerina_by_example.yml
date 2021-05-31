@@ -53,14 +53,14 @@ jobs:
 
         echo "------------------------------------------------------------------------------------------------------------------------------------------------"
         echo "go run ballerinaByExample/tools/generate.go ballerina-$BALLERINA_VERSION/distributions/jballerina-$BALLERINA_VERSION/examples $SITE_VERSION $BBE_GEN_DIR $GEN_FOR_JEKYLL $IS_LATEST_VERSION"
-        go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}/distributions/jballerina-${BALLERINA_VERSION}/examples" $SITE_VERSION "by-example" "true" "true"
+        go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}/distributions/jballerina-${BALLERINA_VERSION}/examples" $SITE_VERSION "by-example" "true" "false" "true"
         echo "....Completed building BBE Site...."
 
     - name: Remove old examples file
-      run: git rm -r learn/by-example
+      run: git rm -r 1.2/learn/by-example
 
     - name: Copy newly generated examples file
-      run: cp -r ballerina-release/by-example learn/
+      run: cp -r ballerina-release/by-example 1.2/learn/
 
     - name: Push changes for new BBEs
       run: |
@@ -70,7 +70,7 @@ jobs:
         git config --global user.email "ballerina-bot@ballerina.org"
         git config --global user.name "ballerina-bot"
         
-        git add learn/by-example
+        git add 1.2/learn/by-example
         git commit --allow-empty -m 'Update Ballerina by examples'
         
         git push --set-upstream origin automate-bbes-$GITHUB_SHA

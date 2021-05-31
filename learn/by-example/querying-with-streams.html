@@ -1,0 +1,318 @@
+---
+layout: ballerina-example-page
+title: Querying With Streams
+description: This BBE demonstrates querying with streams in Ballerina.
+keywords: ballerina, ballerina by example, bbe,
+permalink: /learn/by-example/querying-with-streams
+active: querying-with-streams
+redirect_from:
+  - /swan-lake/learn/by-example/querying-with-streams
+  - /swan-lake/learn/by-example/querying-with-streams.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="nx">type</span> <span class="nx">Error</span> <span class="nx">error</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">LS</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Error</span><span class="err">?</span><span class="p">&gt;;</span>
+
+<span class="c1">// This method strips the blank lines.</span>
+<span class="kd">function</span> <span class="nx">strip</span><span class="p">(</span><span class="nx">LS</span> <span class="nx">lines</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">LS</span> <span class="p">{</span>
+    <span class="c1">// Creates a `stream` from `query expression`.</span>
+    <span class="nx">LS</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">stream</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">line</span> <span class="nx">in</span> <span class="nx">lines</span>
+             <span class="nx">where</span> <span class="nx">line</span><span class="p">.</span><span class="nx">trim</span><span class="p">().</span><span class="nx">length</span><span class="p">()</span> <span class="p">&gt;</span> <span class="mi">0</span>
+             <span class="nx">select</span> <span class="nx">line</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">count</span><span class="p">(</span><span class="nx">LS</span> <span class="nx">lines</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">Error</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">nLines</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">// Counts the number of lines by iterating the `stream`</span>
+    <span class="c1">// in `query action`.</span>
+    <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">line</span> <span class="nx">in</span> <span class="nx">lines</span>
+              <span class="nx">do</span> <span class="p">{</span>
+                  <span class="nx">nLines</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+              <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">nLines</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Querying With Streams</h2>
+                            <p><p>If stream terminates with <code>error</code>, result of <code>query expression</code> is an <code>error</code>. You cannot use <code>foreach</code>
+ on <code>stream</code> type with termination type that allows <code>error</code>. Instead use <code>from</code> with <code>do</code> clause; the
+ result is a subtype of <code>error?</code>. Use <code>stream</code> keyword in front of <code>from</code> to create a <code>stream</code> which is
+ lazily evaluated. The failure of <code>check</code> within the <code>query</code> will cause the <code>stream</code> to produce an
+ <code>error</code> termination value.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="stream-type.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Stream Type</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="backtick-templates.html">
+                                        <span>NEXT ></span>
+                                        <p>Backtick Templates</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="querying-with-streams">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/querying-with-streams/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=87acbe90f2220684f32052f327c4349e&file=querying_with_streams.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type Error error;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type LS stream&lt;string, Error?&gt;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function strip(LS lines) returns LS {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This method strips the blank lines.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    LS res = stream from var line in lines
+             where line.trim().length() &gt; 0
+             select line;
+    return res;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Creates a <code>stream</code> from <code>query expression</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function count(LS lines) returns int|Error {
+    int nLines = 0;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    var res = check from var line in lines
+              do {
+                  nLines += 1;
+              };
+    return nLines;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Counts the number of lines by iterating the <code>stream</code>
+ in <code>query action</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>bal run querying_with_streams.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

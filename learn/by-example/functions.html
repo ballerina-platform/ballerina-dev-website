@@ -1,37 +1,30 @@
 ---
 layout: ballerina-example-page
 title: Functions
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: This BBE introduces functions in Ballerina.
+keywords: ballerina, ballerina by example, bbe, functions
 permalink: /learn/by-example/functions
+active: functions
 redirect_from:
-  - /v1-2/learn/by-example/functions
-  - /v1-2/learn/by-example/functions.html
+  - /swan-lake/learn/by-example/functions
+  - /swan-lake/learn/by-example/functions.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">printValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+
+<span class="c1">// This function definition has two parameters of type `int`. </span>
+<span class="c1">// `returns` clause specifies type of return value.</span>
+<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">int</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">y</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">sum</span> <span class="p">=</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+    <span class="c1">// `return` statement returns a value.</span>
+    <span class="k">return</span> <span class="nx">sum</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">printAndReturnValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">s</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="nx">t</span> <span class="p">=</span> <span class="s">&quot;Hello &quot;</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">t</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">t</span><span class="p">;</span>
-<span class="p">}</span>
+
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">printValue</span><span class="p">(</span><span class="s">&quot;This is a sample text&quot;</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">printAndReturnValue</span><span class="p">(</span><span class="s">&quot;World&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">functions</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">This</span> <span class="nx">is</span> <span class="nx">a</span> <span class="nx">sample</span> <span class="nx">text</span>
-<span class="mi">11</span>
-<span class="nx">Hello</span> <span class="nx">World</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">));</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -41,8 +34,8 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Functions</h2>
-                            <p><p>Functions operate in the same way as in any other language. It is a mechanism to create a reusable unit of
- functionality within a program.</p>
+                            <p><p>A function accpets zero or more arguments and returns a single value.
+ Function parameters are declared as in C. You are not allowed to assign to parameters in Ballerina.</p>
 </p>
 
                         </td>
@@ -50,16 +43,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="var.html">
+                                    <a class="prev" href="programs-and-modules.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Var</p>
+                                        <p>Programs and Modules</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="functions-with-required-parameters.html">
+                                    <a class="next" href="identifiers.html">
                                         <span>NEXT ></span>
-                                        <p>Required Parameters</p>
+                                        <p>Identifiers</p>
                                     </a>
                                 </div>
                                 
@@ -75,15 +68,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/functions/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/functions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=93bbe4761dcb504f5d5838adc880a777&file=functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a74471cf049ad9b0bc0612388c069289&file=functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -101,16 +94,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -140,9 +123,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function printValue(string value) {
-    io:println(value);
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>function add(int x, int y) returns int {
+    int sum = x + y;
 </code></pre></div>
 
                                 </td>
@@ -150,7 +132,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function takes a <code>string</code> argument. However, it does not return a value.</p>
+                                            <p>This function definition has two parameters of type <code>int</code>.
+ <code>returns</code> clause specifies type of return value.</p>
 
                                         </div>
                                     </div>
@@ -161,8 +144,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function add(int a, int b) returns int {
-    return a + b;
+                                    <div class="highlight"><pre><code class=language-ballerina>    return sum;
 }
 </code></pre></div>
 
@@ -171,8 +153,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function takes in two <code>int</code> values as arguments and returns their
- sum as an integer.</p>
+                                            <p><code>return</code> statement returns a value.</p>
 
                                         </div>
                                     </div>
@@ -182,116 +163,14 @@ redirect_from:
                             
                             <tr class="cTR">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function printAndReturnValue(string s) returns string {
-    string t = &quot;Hello &quot;.concat(s);
-    io:println(t);
-    return t;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>A public function named <code>main</code> is considered as a default entry point of a
- Ballerina program.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    printValue(&quot;This is a sample text&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Call the <code>printValue()</code> function that prints the value provided.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int result = add(5, 6);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Call the <code>add()</code> function to retrieve the result of adding two given values.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(result);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Print the result.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = printAndReturnValue(&quot;World&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+    io:println(add(5, 11));
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Ballerina does not allow ignoring the return value of a function
- invocation implicitly unless the return type is <code>()</code>. A return value can be ignored
- using <code>_</code> if the value may never be an <code>error</code> (i.e., the return type of the
- function does not contain <code>error</code>).</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -312,12 +191,8 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run functions.bal
-This is a sample text
-11
-Hello World
+                                    <div class="highlight"><pre><code class=shell-session>bal run functions.bal
+16
 </code></pre></div>
 
                                 </td>
@@ -345,7 +220,7 @@ Hello World
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

@@ -1,57 +1,33 @@
 ---
 layout: ballerina-example-page
 title: Producer
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: BBE on producing messages to a RabbitMQ queue using Ballerina.
+keywords: ballerina, ballerina by example, rabbitmq, producer, bbe, client
 permalink: /learn/by-example/rabbitmq-producer
+active: rabbitmq-producer
 redirect_from:
-  - /v1-2/learn/by-example/rabbitmq-producer
-  - /v1-2/learn/by-example/rabbitmq-producer.html
+  - /swan-lake/learn/by-example/rabbitmq-producer
+  - /swan-lake/learn/by-example/rabbitmq-producer.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">rabbitmq</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">connection</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span><span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">5672</span><span class="p">});</span>
-    <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Channel</span> <span class="nx">newChannel1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">connection</span><span class="p">);</span>
-    <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Channel</span> <span class="nx">newChannel2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">connection</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">queueResult1</span> <span class="p">=</span> <span class="nx">newChannel1</span><span class="o">-&gt;</span><span class="nx">queueDeclare</span><span class="p">({</span><span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;MyQueue1&quot;</span><span class="p">});</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">queueResult1</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while creating the MyQueue1 queue.&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">var</span> <span class="nx">queueResult2</span> <span class="p">=</span> <span class="nx">newChannel2</span><span class="o">-&gt;</span><span class="nx">queueDeclare</span><span class="p">({</span><span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;MyQueue2&quot;</span><span class="p">});</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">queueResult2</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while creating the MyQueue2 queue.&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="kd">worker</span> <span class="nx">w1</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">newChannel1</span><span class="o">-&gt;</span><span class="nx">basicPublish</span><span class="p">(</span><span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">,</span>
-                                        <span class="s">&quot;MyQueue1&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">sendResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while sending the message to &quot;</span> <span class="o">+</span>
-                     <span class="s">&quot;MyQueue1 using newChannel1.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="kd">worker</span> <span class="nx">w2</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">newChannel2</span><span class="o">-&gt;</span><span class="nx">basicPublish</span><span class="p">(</span><span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">,</span>
-                                        <span class="s">&quot;MyQueue1&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">sendResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while sending the message to &quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;MyQueue1 using newChannel2.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="kd">worker</span> <span class="nx">w3</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">newChannel1</span><span class="o">-&gt;</span><span class="nx">basicPublish</span><span class="p">(</span><span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">,</span>
-                                        <span class="s">&quot;MyQueue2&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">sendResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while sending the message to &quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;MyQueue2 using newChannel1.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">,</span> <span class="nx">w3</span><span class="p">};</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Make</span> <span class="nx">sure</span> <span class="nx">to</span> <span class="nx">have</span> <span class="nx">the</span> <span class="nx">RabbitMQ</span> <span class="nx">broker</span> <span class="nx">running</span><span class="p">.</span>
-<span class="err">#</span>
-<span class="err">#</span> <span class="nx">Navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="err">&#39;</span><span class="nx">rabbitmq_producer</span><span class="p">.</span><span class="nx">bal</span><span class="err">&#39;</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">issue</span> <span class="nx">the</span> <span class="err">&#39;</span><span class="nx">ballerina</span> <span class="nx">run</span><span class="err">&#39;</span> <span class="nx">command</span> <span class="k">as</span> <span class="nx">follows</span><span class="p">.</span><span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">rabbitmq_producer</span><span class="p">.</span><span class="nx">bal</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">rabbitmq</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Creates a ballerina RabbitMQ client.</span>
+    <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">newClient</span> <span class="p">=</span>
+                <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">DEFAULT_HOST</span><span class="p">,</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">DEFAULT_PORT</span><span class="p">);</span>
+
+    <span class="c1">// Declares the queue, MyQueue.</span>
+    <span class="nx">check</span> <span class="nx">newClient</span><span class="o">-&gt;</span><span class="nx">queueDeclare</span><span class="p">(</span><span class="s">&quot;MyQueue&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Publishing messages to an exchange using a routing key.</span>
+    <span class="c1">// Publishes the message using newClient and the routing key named MyQueue.</span>
+    <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">;</span>
+    <span class="nx">check</span> <span class="nx">newClient</span><span class="o">-&gt;</span><span class="nx">publishMessage</span><span class="p">({</span> <span class="nx">content</span><span class="p">:</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span>
+                                            <span class="nx">routingKey</span><span class="p">:</span> <span class="s">&quot;MyQueue&quot;</span> <span class="p">});</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -62,7 +38,9 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Producer</h2>
                             <p><p>In this example, messages are sent to two different queues,
- to one queue using the same channel and to the other using two different channels.</p>
+ to one queue using the same channel and to the other using two different channels.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://docs.central.ballerina.io/ballerinax/rabbitmq/latest">RabbitMQ module</a>.</p>
 </p>
 
                         </td>
@@ -95,11 +73,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/rabbitmq-producer/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/rabbitmq-producer/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=4f6b91679c5a689fd90d060ba50d12eb&file=rabbitmq_producer.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -128,14 +110,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -144,8 +118,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/rabbitmq;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerinax/rabbitmq;
 </code></pre></div>
 
                                 </td>
@@ -157,7 +130,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -169,7 +142,8 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    rabbitmq:Connection connection = new ({host: &quot;localhost&quot;, port: 5672});
+                                    <div class="highlight"><pre><code class=language-ballerina>    rabbitmq:Client newClient =
+                check new(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 </code></pre></div>
 
                                 </td>
@@ -177,7 +151,7 @@ import ballerina/rabbitmq;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates a ballerina RabbitMQ connection that allows re-usability if necessary.</p>
+                                            <p>Creates a ballerina RabbitMQ client.</p>
 
                                         </div>
                                     </div>
@@ -188,8 +162,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    rabbitmq:Channel newChannel1 = new (connection);
-    rabbitmq:Channel newChannel2 = new (connection);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check newClient-&gt;queueDeclare(&quot;MyQueue&quot;);
 </code></pre></div>
 
                                 </td>
@@ -197,105 +170,7 @@ import ballerina/rabbitmq;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates multiple ballerina RabbitMQ channels.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var queueResult1 = newChannel1-&gt;queueDeclare({queueName: &quot;MyQueue1&quot;});
-    if (queueResult1 is error) {
-        io:println(&quot;An error occurred while creating the MyQueue1 queue.&quot;);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Declares the queue, MyQueue1.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var queueResult2 = newChannel2-&gt;queueDeclare({queueName: &quot;MyQueue2&quot;});
-    if (queueResult2 is error) {
-        io:println(&quot;An error occurred while creating the MyQueue2 queue.&quot;);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Declares the queue, MyQueue2.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    worker w1 {
-        var sendResult = newChannel1-&gt;basicPublish(&quot;Hello from Ballerina&quot;,
-                                        &quot;MyQueue1&quot;);
-        if (sendResult is error) {
-            io:println(&quot;An error occurred while sending the message to &quot; +
-                     &quot;MyQueue1 using newChannel1.&quot;);
-        }
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Publishing messages to an exchange using a routing key.
- Publishes the message using newChannel1 and the routing key named MyQueue1.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    worker w2 {
-        var sendResult = newChannel2-&gt;basicPublish(&quot;Hello from Ballerina&quot;,
-                                        &quot;MyQueue1&quot;);
-        if (sendResult is error) {
-            io:println(&quot;An error occurred while sending the message to &quot; +
-                    &quot;MyQueue1 using newChannel2.&quot;);
-        }
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Publishing messages to the same routing key using a different channel.
- Publishes the message using newChannel2 and the same routing key named MyQueue1.</p>
+                                            <p>Declares the queue, MyQueue.</p>
 
                                         </div>
                                     </div>
@@ -306,15 +181,9 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    worker w3 {
-        var sendResult = newChannel1-&gt;basicPublish(&quot;Hello from Ballerina&quot;,
-                                        &quot;MyQueue2&quot;);
-        if (sendResult is error) {
-            io:println(&quot;An error occurred while sending the message to &quot; +
-                    &quot;MyQueue2 using newChannel1.&quot;);
-        }
-    }
-    _ = wait {w1, w2, w3};
+                                    <div class="highlight"><pre><code class=language-ballerina>    string message = &quot;Hello from Ballerina&quot;;
+    check newClient-&gt;publishMessage({ content: message.toBytes(),
+                                            routingKey: &quot;MyQueue&quot; });
 }
 </code></pre></div>
 
@@ -323,8 +192,8 @@ import ballerina/rabbitmq;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Publishing messages to different routing keys using the same channel.
- Publishes the message using newChannel1 to a different routing key named MyQueue2.</p>
+                                            <p>Publishing messages to an exchange using a routing key.
+ Publishes the message using newClient and the routing key named MyQueue.</p>
 
                                         </div>
                                     </div>
@@ -355,7 +224,7 @@ import ballerina/rabbitmq;
                                     <div class="highlight"><pre><code class=shell-session># Make sure to have the RabbitMQ broker running.
 #
 # Navigate to the directory that contains the
-# &#39;rabbitmq_producer.bal&#39; file, and issue the &#39;ballerina run&#39; command as follows.
+# &#39;rabbitmq_producer.bal&#39; file, and run the &#39;bal run&#39; command below.
 </code></pre></div>
 
                                 </td>
@@ -367,7 +236,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>ballerina run rabbitmq_producer.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run rabbitmq_producer.bal
 </code></pre></div>
 
                                 </td>
@@ -395,7 +264,7 @@ import ballerina/rabbitmq;
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

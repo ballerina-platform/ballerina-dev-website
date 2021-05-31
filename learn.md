@@ -1,82 +1,134 @@
 ---
 layout: ballerina-learn-landing-page
-title: Let’s learn Ballerina!
+title: Let’s Learn Ballerina!
 description: Learn and master the Ballerina programming language through setting up, Ballerina by examples, the standard library or API documentation, and how to guides.
 keywords: ballerina, learn, documentation, docs, programming language
 permalink: /learn/
 redirect_from:
-  - /v1-2/learn/tools-ides
-  - /v1-2/learn/tools-ides/
-  - /learn
-  - /v1-2/learn
-  - /v1-2/learn/
-  - /learn/faqs
-  - /learn/faqs/
-  - /v1-2/learn/faqs
-  - /v1-2/learn/faqs/
-  - /learn/faq
-  - /learn/faq/
-  - /v1-2/learn/faq
-  - /v1-2/learn/faq/
-  - /learn/by-guide
-  - /learn/by-guide/
-  - /v1-2/learn/by-guide
-  - /v1-2/learn/by-guide/
+  - /swan-lake/learn/tools-ides
+  - /swan-lake/learn/tools-ides/
+  - /swan-lake/learn/faqs
+  - /swan-lake/learn/faqs/
+  - /swan-lake/learn/faq
+  - /swan-lake/learn/faq/
+  - /swan-lake/learn/by-guide
+  - /swan-lake/learn/by-guide/
+  - /swan-lake/learn
 ---
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
-<div class="col-sm-6 col-md-6 cLearnPageContentCol">
-<h2>Gear Yourself Up</h2>
-   <p>Download Ballerina, set the tools up, and take the Quick Tour.</p>
+  <a class="cBoxLink" href="/learn/user-guide/getting-started/">
 
-   <ul class="cLearnLandingLinks">
-   <li><a href="/learn/installing-ballerina/" class="cGreenLinkArrow">Setting up Ballerina</a></li>
-    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Quick Tour</a></li>
-   </ul>
-
-</div>
-
-<div class="col-sm-6 col-md-6 cLearnPageContentCol">
-<h2>Take Ballerina for a Spin</h2>
-    <p>Try out the Ballerina By Examples and use the Playground.</p>
-
-   <ul class="cLearnLandingLinks">
-   <li><a href="/learn/by-example" class="cGreenLinkArrow">Ballerina By Examples</a></li>
-     <li><a href="https://play.ballerina.io/" class="cGreenLinkArrow">Try Ballerina</a></li>
-   </ul>
+  <img class="cLearnIcon" src="/img/User-Guide-v1.png"/>
+  <h2>User Guide</h2>
+  <p>Start programming with Ballerina.</p>
+  </a>
 
 </div>
 
-<div class="col-sm-6 col-md-6  cLearnPageContentCol">
-<h2>Sharpen Your Skills</h2>
-   <p>Learn more about Ballerina by exploring its features.</p>
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+<a class="cBoxLink" href="/learn/by-example/">
 
-   <ul class="cLearnLandingLinks">
-   <!--<li><a href="/learn/installing-ballerina//" class="cGreenLinkArrow">Ballerina User Guide</a></li>-->
-   <li><a href="/learn/using-the-cli-tools/" class="cGreenLinkArrow">Ballerina CLI Tools</a></li>
-   <li><a href="/learn/structuring-ballerina-code/" class="cGreenLinkArrow">Code Organization</a></li>
-    <li><a href="/learn/deployment/docker/" class="cGreenLinkArrow">Deployment</a></li>
-    <li><a href="/learn/observing-ballerina-code" class="cGreenLinkArrow">Observability</a></li>
-    <li><a href="/learn/calling-java-code-from-ballerina" class="cGreenLinkArrow">Interoperability</a></li>
-    <li><a href="/learn/writing-secure-ballerina-code" class="cGreenLinkArrow">Security</a></li>
-    <li><a href="/learn/testing-ballerina-code/testing-quick-start" class="cGreenLinkArrow">Testing Ballerina Code</a></li>
-    <li><a href="/learn/extending-with-compiler-extensions" class="cGreenLinkArrow">Extending Ballerina</a></li>
-   </ul>
+
+<img class="cLearnIcon" src="/img/Ballerina-By-Example-v1.png"/>
+<h2>Ballerina by Example</h2>
+
+<p>Try out an extensive list of Ballerina code examples.</p>
+
+</a>
+</div>
+
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+<a class="cBoxLink" href="https://docs.central.ballerina.io" target="_blank">
+
+
+<img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
+<h2>API Documentation</h2>
+<p>Check out the Ballerina standard library APIs.</p>
+
+
+
+</a>
 
 </div>
 
-<div class="col-sm-6 col-md-6 cLearnPageContentCol">
-<h2>Know it Inside Out</h2>
-   <p>Master Ballerina by reading through the reference materials.</p>
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+<a class="cBoxLink" href="/learn/tooling-guide/visual-studio-code-extension/quick-start/">
 
-   <ul class="cLearnLandingLinks">
-   <li><a href="/learn/api-docs/ballerina/" class="cGreenLinkArrow">Standard Library (API Documentation)</a></li>
-   <li><a href="/spec/" class="cGreenLinkArrow">Language Specification</a></li>
-    <!--<li><a href="/learn/style-guide/" class="cGreenLinkArrow">Style Guide</a></li>
-    <li><a href="/learn/cli-commands/" class="cGreenLinkArrow">CLI Guide</a></li>-->
-   </ul>
+<img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
+
+<h2>Tooling Guide</h2>
+
+<p>Learn to use the VSCode plugin and other CLI tools.</p>
+
+</a>
+
+  
+</div>
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+
+<a class="cBoxLink" href="/learn/language-concepts/">
+
+<img class="cLearnIcon" src="/img/Language-Guide-v1.png"/>
+<h2>Language Concepts</h2>
+<p>Get an in-depth understanding of the language principles.</p>
+</a>
 
 </div>
 
+<!--<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+
+  <a class="cBoxLink" href="/learn/structuring-ballerina-code/" target="_blank">
+
+  <img class="cLearnIcon" src="/img/User-Guide-v1.png"/>
+  <h2>User Guide</h2>
+  <p>Learn about all the features of the language and its capabilities.</p>
+  </a>
+
+</div>-->
+
+<!--<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+<a class="cBoxLink" href="/learn/by-example/" target="_blank">
+
+
+<img class="cLearnIcon" src="/img/Ballerina-By-Example-v1.png"/>
+<h2>Ballerina by Example</h2>
+
+<p>Obtain a hands-on experience of the language and its key features.</p>
+
+</a>
+
+  
+</div>-->
+
+<!--<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+<a class="cBoxLink" href="/learn/api-docs/ballerina" target="_blank">
+
+
+<img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
+<h2>API Documentation</h2>
+<p>Learn the Ballerina standard library APIs comprehensively.</p>
+
+
+
+</a>
+
+</div>-->
+
+<!--<div class="clearfix"></div>-->
+ 
+<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+
+<a class="cBoxLink" href="/spec/" target="_blank">
+
+<img class="cLearnIcon" src="/img/Language-Specification-v1.png"/>
+<h2>Language Specifications</h2>
+<p>Read the formal specifications of the Ballerina language.</p>
+</a>
+
+</div>
+
+<div class="clearfix"></div>
 
 
 

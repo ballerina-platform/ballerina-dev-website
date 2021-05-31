@@ -132,8 +132,9 @@ nav.cLeftNavContainer {
         padding: 30px;
         background-color: #f7f7f7;
         display: inline-block;
-        min-height: 260px;
+        min-height: 375px;
         border: 1px solid #f7f7f7;
+        text-align: center;
     }
 
     .cBoxLink:hover {
@@ -144,7 +145,7 @@ nav.cLeftNavContainer {
         color: #20b6b0;
         border-color: transparent;
         background-color: transparent;
-    background-image: url("/img/go-bg-green.svg") !important;
+    /* background-image: url("/img/go-bg-green.svg") !important; */
     border-bottom: none;
     background-repeat: no-repeat;
     width: 100%;
@@ -165,6 +166,7 @@ nav.cLeftNavContainer {
     #tree li {
         /* padding: 0 0 10px 0; */
         padding-right: 0px;
+        list-style-image: url('/img/toc-list.svg') !important;
 
     /* padding-right: 30px; */
 
@@ -172,6 +174,11 @@ nav.cLeftNavContainer {
     li.expanded {
         /* border-left: 1px solid #20b6b0; */
         /* margin-bottom: 10px; */
+    }
+
+    .abix-tree-list .collapsed span.icon, .abix-tree-list .expanded span.icon {
+        margin-right: 10px;
+        cursor: pointer;
     }
 
     
@@ -204,11 +211,11 @@ ul#tree  {
 
 
     span.icon {
-        background-color: #20b6b0;
+        background-color: transparent;
         width: 14px;
         height: 14px; 
         display: inline-block;
-        margin-left: -20px;
+        margin-left: -23px;
         background-size: 12px;
         background-repeat: no-repeat;
         background-position: center;
@@ -216,6 +223,7 @@ ul#tree  {
 
     span.icon:hover {
         background-color: #464646;
+
     }
 
 
@@ -223,6 +231,7 @@ ul#tree  {
 
     span.icon.plus-icon {
     background-image: url("/img/plus.svg");
+    background-size: 8px;
     
 
 }
@@ -272,4 +281,50 @@ color: #fff !important;
     padding: 0;
 }
 
+.cLearnIcon {
+	width: 120px;
+}
 
+  
+  /* Chrome 29+ */
+  @media screen and (-webkit-min-device-pixel-ratio:0)
+    and (min-resolution:.001dpcm) {
+        span.icon {
+            background-color: transparent;
+            width: 14px;
+            height: 14px;
+            display: inline-block;
+            margin-left: -21px;
+            background-size: 12px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+  }
+  
+  /* Chrome 22-28 */
+  @media screen and(-webkit-min-device-pixel-ratio:0) {
+    .span.icon {-chrome-:only(; 
+        margin-left: -21px;
+    );} 
+  }
+
+
+
+  @-moz-document url-prefix() {
+    .abix-tree-list .collapsed span.icon, .abix-tree-list .expanded span.icon {
+        margin-right: 8px;
+        cursor: pointer;
+    }
+    
+    span.icon {
+        background-color: transparent;
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        margin-left: -23px;
+        background-size: 12px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+  }

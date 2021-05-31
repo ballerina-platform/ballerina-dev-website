@@ -1,26 +1,32 @@
 ---
 layout: ballerina-example-page
 title: XSLT Transformation
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: This BBE demonstrates how the XML content can be transformed into HTML using a given XSL transformation.
+keywords: ballerina, ballerina by example, bbe, xslt, xml, html, xsl, transformation
 permalink: /learn/by-example/xslt-transformation
+active: xslt-transformation
 redirect_from:
-  - /v1-2/learn/by-example/xslt-transformation
-  - /v1-2/learn/by-example/xslt-transformation.html
+  - /swan-lake/learn/by-example/xslt-transformation
+  - /swan-lake/learn/by-example/xslt-transformation.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">xslt</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">xslt</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Gets an `XML` value, which needs to be transformed.</span>
     <span class="kt">xml</span> <span class="nx">sourceXml</span> <span class="p">=</span> <span class="nx">getXml</span><span class="p">();</span>
+    <span class="c1">// Gets an `XSL` style sheet represented in an XML value.</span>
     <span class="kt">xml</span> <span class="nx">xsl</span> <span class="p">=</span> <span class="nx">getXsl</span><span class="p">();</span>
-    <span class="kt">xml</span><span class="p">|</span><span class="nx">error</span> <span class="nx">target</span> <span class="p">=</span> <span class="nx">xslt</span><span class="p">:</span><span class="nx">transform</span><span class="p">(</span><span class="nx">sourceXml</span><span class="p">,</span> <span class="nx">xsl</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">target</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transformed xml : &quot;</span><span class="p">,</span> <span class="nx">target</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Error : &quot;</span><span class="p">,</span> <span class="nx">target</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="c1">// [Transforms](https://docs.central.ballerina.io/ballerina/xslt/latest/functions#transform) the `XML` content to another format.</span>
+    <span class="kt">xml</span> <span class="nx">target</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">xslt</span><span class="p">:</span><span class="nx">transform</span><span class="p">(</span><span class="nx">sourceXml</span><span class="p">,</span> <span class="nx">xsl</span><span class="p">);</span>
+    
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transformed XML: &quot;</span><span class="p">,</span> <span class="nx">target</span><span class="p">);</span>
 <span class="p">}</span>
+
+<span class="c1">// Returns an `XML` element, which needs to be transformed.</span>
 <span class="kd">function</span> <span class="nx">getXml</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">xml</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kt">xml</span> <span class="s">`&lt;samples&gt;</span>
 <span class="s">                    &lt;song&gt;</span>
@@ -37,32 +43,36 @@ redirect_from:
 <span class="s">                    &lt;/song&gt;</span>
 <span class="s">                &lt;/samples&gt;`</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c1">// Returns an `XSL` style sheet represented by an XML element.</span>
 <span class="kd">function</span> <span class="nx">getXsl</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">xml</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="kt">xml</span> <span class="s">`&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</span>
-<span class="s">                    &lt;xsl:template match=&quot;/&quot;&gt;</span>
-<span class="s">                        &lt;html&gt;</span>
-<span class="s">                            &lt;body&gt;</span>
-<span class="s">                                &lt;h2&gt;All time favourites&lt;/h2&gt;</span>
-<span class="s">                                &lt;table border=&quot;1&quot;&gt;</span>
-<span class="s">                                    &lt;tr bgcolor=&quot;#9acd33&quot;&gt;</span>
-<span class="s">                                        &lt;th&gt;Title&lt;/th&gt;</span>
-<span class="s">                                        &lt;th&gt;Artist&lt;/th&gt;</span>
-<span class="s">                                    &lt;/tr&gt;</span>
-<span class="s">                                &lt;xsl:for-each select=&quot;samples/song&quot;&gt;</span>
-<span class="s">                                    &lt;tr&gt;</span>
-<span class="s">                                        &lt;td&gt;</span>
-<span class="s">                                            &lt;xsl:value-of select=&quot;title&quot;/&gt;</span>
-<span class="s">                                        &lt;/td&gt;</span>
-<span class="s">                                        &lt;td&gt;</span>
-<span class="s">                                            &lt;xsl:value-of select=&quot;artist&quot;/&gt;</span>
-<span class="s">                                        &lt;/td&gt;</span>
-<span class="s">                                    &lt;/tr&gt;</span>
-<span class="s">                                &lt;/xsl:for-each&gt;</span>
-<span class="s">                                &lt;/table&gt;</span>
-<span class="s">                            &lt;/body&gt;</span>
-<span class="s">                        &lt;/html&gt;</span>
-<span class="s">                    &lt;/xsl:template&gt;</span>
-<span class="s">                &lt;/xsl:stylesheet&gt;`</span><span class="p">;</span>
+    <span class="k">return</span> <span class="kt">xml</span>
+        <span class="s">`&lt;xsl:stylesheet version=&quot;1.0&quot; </span>
+<span class="s">                         xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</span>
+<span class="s">            &lt;xsl:template match=&quot;/&quot;&gt;</span>
+<span class="s">                &lt;html&gt;</span>
+<span class="s">                    &lt;body&gt;</span>
+<span class="s">                        &lt;h2&gt;All time favourites&lt;/h2&gt;</span>
+<span class="s">                        &lt;table border=&quot;1&quot;&gt;</span>
+<span class="s">                            &lt;tr bgcolor=&quot;#9acd33&quot;&gt;</span>
+<span class="s">                                &lt;th&gt;Title&lt;/th&gt;</span>
+<span class="s">                                &lt;th&gt;Artist&lt;/th&gt;</span>
+<span class="s">                            &lt;/tr&gt;</span>
+<span class="s">                        &lt;xsl:for-each select=&quot;samples/song&quot;&gt;</span>
+<span class="s">                            &lt;tr&gt;</span>
+<span class="s">                                &lt;td&gt;</span>
+<span class="s">                                    &lt;xsl:value-of select=&quot;title&quot;/&gt;</span>
+<span class="s">                                &lt;/td&gt;</span>
+<span class="s">                                &lt;td&gt;</span>
+<span class="s">                                    &lt;xsl:value-of select=&quot;artist&quot;/&gt;</span>
+<span class="s">                                &lt;/td&gt;</span>
+<span class="s">                            &lt;/tr&gt;</span>
+<span class="s">                        &lt;/xsl:for-each&gt;</span>
+<span class="s">                        &lt;/table&gt;</span>
+<span class="s">                    &lt;/body&gt;</span>
+<span class="s">                &lt;/html&gt;</span>
+<span class="s">            &lt;/xsl:template&gt;</span>
+<span class="s">        &lt;/xsl:stylesheet&gt;`</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -73,7 +83,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>XSLT Transformation</h2>
-                            <p><p>This example demonstrates how the XML content can be transformed to HTML using a given XSL transformation.</p>
+                            <p><p>This example demonstrates how XML content can be transformed to HTML using a given XSL transformation.
+ For more information on the underlying module,
+ see the <a href="https://docs.central.ballerina.io/ballerina/xslt/latest/">XSLT module</a>.</p>
 </p>
 
                         </td>
@@ -81,16 +93,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="task-service-timer.html">
+                                    <a class="prev" href="uuid-operations.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Task Service Timer</p>
+                                        <p>UUID Operations</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="taint-checking.html">
+                                    <a class="next" href="regular-expressions.html">
                                         <span>NEXT ></span>
-                                        <p>Taint Checking</p>
+                                        <p>Regular Expressions</p>
                                     </a>
                                 </div>
                                 
@@ -106,11 +118,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/xslt-transformation/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/xslt-transformation/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=efd48a1dd557f1253043464330566bf3&file=xslt_transformation.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -164,7 +180,7 @@ import ballerina/xslt;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -184,7 +200,7 @@ import ballerina/xslt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Gets an <code>XML</code> object, which needs to be transformed.</p>
+                                            <p>Gets an <code>XML</code> value, which needs to be transformed.</p>
 
                                         </div>
                                     </div>
@@ -203,7 +219,7 @@ import ballerina/xslt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Gets an <code>XSL</code> style sheet represented in an XML object.</p>
+                                            <p>Gets an <code>XSL</code> style sheet represented in an XML value.</p>
 
                                         </div>
                                     </div>
@@ -214,12 +230,9 @@ import ballerina/xslt;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    xml|error target = xslt:transform(sourceXml, xsl);
-    if (target is xml) {
-        io:println(&quot;Transformed xml : &quot;, target);
-    } else {
-        io:print(&quot;Error : &quot;, target);
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml target = check xslt:transform(sourceXml, xsl);
+    
+    io:println(&quot;Transformed XML: &quot;, target);
 }
 </code></pre></div>
 
@@ -228,7 +241,7 @@ import ballerina/xslt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Transforms the <code>XML</code> to another formats.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/xslt/latest/functions#transform">Transforms</a> the <code>XML</code> content to another format.</p>
 
                                         </div>
                                     </div>
@@ -262,7 +275,7 @@ import ballerina/xslt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Returns an <code>XML</code> object, which needs to be transformed.</p>
+                                            <p>Returns an <code>XML</code> element, which needs to be transformed.</p>
 
                                         </div>
                                     </div>
@@ -274,31 +287,33 @@ import ballerina/xslt;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>function getXsl() returns xml {
-    return xml `&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;
-                    &lt;xsl:template match=&quot;/&quot;&gt;
-                        &lt;html&gt;
-                            &lt;body&gt;
-                                &lt;h2&gt;All time favourites&lt;/h2&gt;
-                                &lt;table border=&quot;1&quot;&gt;
-                                    &lt;tr bgcolor=&quot;#9acd33&quot;&gt;
-                                        &lt;th&gt;Title&lt;/th&gt;
-                                        &lt;th&gt;Artist&lt;/th&gt;
-                                    &lt;/tr&gt;
-                                &lt;xsl:for-each select=&quot;samples/song&quot;&gt;
-                                    &lt;tr&gt;
-                                        &lt;td&gt;
-                                            &lt;xsl:value-of select=&quot;title&quot;/&gt;
-                                        &lt;/td&gt;
-                                        &lt;td&gt;
-                                            &lt;xsl:value-of select=&quot;artist&quot;/&gt;
-                                        &lt;/td&gt;
-                                    &lt;/tr&gt;
-                                &lt;/xsl:for-each&gt;
-                                &lt;/table&gt;
-                            &lt;/body&gt;
-                        &lt;/html&gt;
-                    &lt;/xsl:template&gt;
-                &lt;/xsl:stylesheet&gt;`;
+    return xml
+        `&lt;xsl:stylesheet version=&quot;1.0&quot; 
+                         xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;
+            &lt;xsl:template match=&quot;/&quot;&gt;
+                &lt;html&gt;
+                    &lt;body&gt;
+                        &lt;h2&gt;All time favourites&lt;/h2&gt;
+                        &lt;table border=&quot;1&quot;&gt;
+                            &lt;tr bgcolor=&quot;#9acd33&quot;&gt;
+                                &lt;th&gt;Title&lt;/th&gt;
+                                &lt;th&gt;Artist&lt;/th&gt;
+                            &lt;/tr&gt;
+                        &lt;xsl:for-each select=&quot;samples/song&quot;&gt;
+                            &lt;tr&gt;
+                                &lt;td&gt;
+                                    &lt;xsl:value-of select=&quot;title&quot;/&gt;
+                                &lt;/td&gt;
+                                &lt;td&gt;
+                                    &lt;xsl:value-of select=&quot;artist&quot;/&gt;
+                                &lt;/td&gt;
+                            &lt;/tr&gt;
+                        &lt;/xsl:for-each&gt;
+                        &lt;/table&gt;
+                    &lt;/body&gt;
+                &lt;/html&gt;
+            &lt;/xsl:template&gt;
+        &lt;/xsl:stylesheet&gt;`;
 }
 </code></pre></div>
 
@@ -307,7 +322,7 @@ import ballerina/xslt;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Returns an <code>XSL</code> style sheet represented in an XML object.</p>
+                                            <p>Returns an <code>XSL</code> style sheet represented by an XML element.</p>
 
                                         </div>
                                     </div>
@@ -332,9 +347,9 @@ import ballerina/xslt;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and run the `ballerina run` command below.
-$ ballerina run xslt_transformation.bal
-Transformed xml : &lt;html&gt;
+# `.bal` file and run the `bal run` command below.
+bal run xslt_transformation.bal
+Transformed XML: &lt;html&gt;
 &lt;body&gt;
 &lt;h2&gt;All time favourites&lt;/h2&gt;
 &lt;table border=&quot;1&quot;&gt;
@@ -377,7 +392,7 @@ Transformed xml : &lt;html&gt;
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

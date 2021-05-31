@@ -1,27 +1,26 @@
 ---
 layout: ballerina-example-page
 title: Hello World Service
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: The Hello World HTTP service in Ballerina
+keywords: ballerina, ballerina by example, bbe,
 permalink: /learn/by-example/hello-world-service
+active: hello-world-service
 redirect_from:
-  - /v1-2/learn/by-example/hello-world-service
-  - /v1-2/learn/by-example/hello-world-service.html
+  - /swan-lake/learn/by-example/hello-world-service
+  - /swan-lake/learn/by-example/hello-world-service.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kd">service</span> <span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
+
+<span class="kd">service</span> <span class="o">/</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// This function responds with `string` value `Hello, World!` to HTTP GET requests.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greeting</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;Hello, World!&quot;</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">hello_world_service</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
-<span class="nx">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hello/sayHello</span>
-<span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="p">!</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -31,19 +30,25 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Hello World Service</h2>
-                            <p><p>In Ballerina, services represent collections of network-accessible entry points.
- Resources represent one such entry point.
- How a resource is exposed over a network protocol depends on the listener to which a service is attached.</p>
+                            <p><p>Let&rsquo;s write a simple HTTP service in Ballerina.
+ This example demonstrates the network primitives in the language that make it simpler to develop services.</p>
 </p>
 
                         </td>
                         <td class="cRightTD">
                             <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="hello-world.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Hello World Main</p>
+                                    </a>
+                                </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="hello-world.html">
+                                    <a class="next" href="programs-and-modules.html">
                                         <span>NEXT ></span>
-                                        <p>Hello World Main</p>
+                                        <p>Programs and Modules</p>
                                     </a>
                                 </div>
                                 
@@ -59,15 +64,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/hello-world-service/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/hello-world-service/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6afd8c9d85750eb994eac4c294c14119&file=hello_world_service.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=052abba43be38a7f3be2991a6b3cd5e9&file=hello_world_service.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -92,8 +97,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -111,42 +114,14 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service hello on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service / on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>By default, Ballerina exposes an HTTP service via HTTP/1.1.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function sayHello(http:Caller caller,
-        http:Request req) returns error? {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Resource functions are invoked with the HTTP caller and the
- incoming request as arguments.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -154,7 +129,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        check caller-&gt;respond(&quot;Hello, World!&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get greeting() returns string {
+        return &quot;Hello, World!&quot;;
     }
 }
 </code></pre></div>
@@ -164,7 +140,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Send a response back to the caller.</p>
+                                            <p>This function responds with <code>string</code> value <code>Hello, World!</code> to HTTP GET requests.</p>
 
                                         </div>
                                     </div>
@@ -188,9 +164,7 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run hello_world_service.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run hello_world_service.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -216,7 +190,7 @@ ballerina run hello_world_service.bal
                             <tr class="cTR hover-enable cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/hello/sayHello
+                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/greeting
 Hello, World!
 </code></pre></div>
 
@@ -225,7 +199,7 @@ Hello, World!
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Invoke the service using this &ldquo;curl&rdquo; command below.</p>
+                                            <p>Invoke the service using the &ldquo;cURL&rdquo; command below.</p>
 
                                         </div>
                                     </div>
@@ -252,7 +226,7 @@ Hello, World!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

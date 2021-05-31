@@ -1,62 +1,32 @@
 ---
 layout: ballerina-example-page
 title: Arrays
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: This BBE demonstrates arrays in Ballerina.
+keywords: ballerina, ballerina by example, bbe, arrays, mutable list
 permalink: /learn/by-example/arrays
+active: arrays
 redirect_from:
-  - /v1-2/learn/by-example/arrays
-  - /v1-2/learn/by-example/arrays.html
+  - /swan-lake/learn/by-example/arrays
+  - /swan-lake/learn/by-example/arrays.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">int</span><span class="p">[]</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">[];</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-    <span class="kt">int</span><span class="p">[]</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">];</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-    <span class="kt">int</span><span class="p">[]</span> <span class="nx">bReveresed</span> <span class="p">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">reverse</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reversed: &quot;</span><span class="p">,</span> <span class="nx">bReveresed</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before pop: &quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="nx">poppedValue</span> <span class="p">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Popped value: &quot;</span><span class="p">,</span> <span class="nx">poppedValue</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After pop: &quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
-    <span class="kt">int</span><span class="p">[]</span> <span class="nx">doubled</span> <span class="p">=</span> <span class="nx">b</span><span class="p">.</span><span class="kt">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">value</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
-        <span class="p">});</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Doubled: &quot;</span><span class="p">,</span> <span class="nx">doubled</span><span class="p">);</span>
-    <span class="nx">b</span><span class="p">[</span><span class="mi">999</span><span class="p">]</span> <span class="p">=</span> <span class="mi">23</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="mi">999</span><span class="p">]);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-    <span class="kt">int</span><span class="p">[][]</span> <span class="nx">iarray</span> <span class="p">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]];</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">iarray</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">iarray</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">length</span><span class="p">());</span>
-    <span class="nx">iarray</span> <span class="p">=</span> <span class="p">[];</span>
-    <span class="kt">int</span><span class="p">[]</span> <span class="nx">d</span> <span class="p">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">];</span>
-    <span class="nx">iarray</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="nx">d</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">iarray</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]);</span>
-    <span class="kt">int</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="nx">e</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-    <span class="kt">int</span><span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="nx">g</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">arrays</span><span class="p">.</span><span class="nx">bal</span>
-<span class="mi">0</span>
-<span class="mi">1</span>
-<span class="mi">8</span>
-<span class="nx">Reversed</span><span class="p">:</span> <span class="mi">8</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">5</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span>
-<span class="nx">Before</span> <span class="nx">pop</span><span class="p">:</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span>
-<span class="nx">Popped</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">8</span>
-<span class="nx">After</span> <span class="nx">pop</span><span class="p">:</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span>
-<span class="nx">Doubled</span><span class="p">:</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span> <span class="mi">8</span> <span class="mi">10</span> <span class="mi">12</span> <span class="mi">14</span>
-<span class="mi">23</span>
-<span class="mi">1000</span>
-<span class="mi">3</span>
-<span class="mi">3</span>
-<span class="mi">9</span>
-<span class="mi">5</span>
-<span class="mi">4</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span><span class="p">[]</span> <span class="nx">v</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+    <span class="c1">// `v[i]` does indexed access.</span>
+    <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="nx">v</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
+
+    <span class="c1">// `v[i]` is an `lvalue`.</span>
+    <span class="nx">v</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">=</span> <span class="mi">4</span><span class="p">;</span>
+
+    <span class="c1">// len will be 3.</span>
+    <span class="kt">int</span> <span class="nx">len</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -66,9 +36,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Arrays</h2>
-                            <p><p>Arrays are mutable lists of values of dynamic length in which each member in the list is
- of the same type.
- A fixed length array can be created by specifying the length of the array at the time of declaration.</p>
+                            <p><p><code>T[]</code> is an <code>array</code> of <code>T</code>. Arrays are mutable. <code>==</code> and <code>!=</code> on arrays is deep: two arrays are
+ equal if they have the same members in the same order. Ordering is lexicographical based on the
+ ordering of the members. Langlib <code>arr.length()</code> function gets the length; <code>arr.setLength(n)</code> sets the length.</p>
 </p>
 
                         </td>
@@ -76,16 +46,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="values.html">
+                                    <a class="prev" href="langlib-functions.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Values</p>
+                                        <p>Langlib Functions</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="tuple-type.html">
+                                    <a class="next" href="foreach-statement.html">
                                         <span>NEXT ></span>
-                                        <p>Tuples</p>
+                                        <p>Foreach Statement</p>
                                     </a>
                                 </div>
                                 
@@ -101,15 +71,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/arrays/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/arrays/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=55e0c0b525f64df8b372b3f090555b4e&file=arrays.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=dc914c2bdbc3360ae0806bd7d4b4f25c&file=arrays.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -127,24 +97,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -177,6 +129,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
+    int[] v = [1, 2, 3];
 </code></pre></div>
 
                                 </td>
@@ -188,8 +141,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int[] a = [];
-    io:println(a.length());
+                                    <div class="highlight"><pre><code class=language-ballerina>    int n = v[0];
+    io:println(n);
 </code></pre></div>
 
                                 </td>
@@ -197,7 +150,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates an <code>int</code> array of length 0.</p>
+                                            <p><code>v[i]</code> does indexed access.</p>
 
                                         </div>
                                     </div>
@@ -208,9 +161,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int[] b = [1, 2, 3, 4, 5, 6, 7, 8];
-    io:println(b[0]);
-    io:println(b.length());
+                                    <div class="highlight"><pre><code class=language-ballerina>    v[3] = 4;
 </code></pre></div>
 
                                 </td>
@@ -218,187 +169,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates an array specifying an array literal.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int[] bReveresed = b.reverse();
-    io:println(&quot;Reversed: &quot;, bReveresed);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Arrays support several inbuilt functions such as <code>.reverse()</code>, <code>.pop()</code>, <code>.push()</code>, and <code>.removeAll()</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Before pop: &quot;, b);
-    int poppedValue = b.pop();
-    io:println(&quot;Popped value: &quot;, poppedValue);
-    io:println(&quot;After pop: &quot;, b);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int[] doubled = b.map(function (int value) returns int {
-            return value * 2;
-        });
-    io:println(&quot;Doubled: &quot;, doubled);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Arrays are an iterable type and arrays support functional iteration operations such as <code>.map()</code>, <code>.filter()</code>, and
- <code>.reduce()</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    b[999] = 23;
-    io:println(b[999]);
-    io:println(b.length());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Unless the length is explicitly specified or is expected to be inferred, arrays are unbounded in length.
- They can grow up to any length based on the given index.
- In this example, the length of the array is 1000.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int[][] iarray = [[1, 2, 3], [10, 20, 30], [5, 6, 7]];
-    io:println(iarray.length());
-    io:println(iarray[0].length());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Initializes a two dimensional <code>int</code> array.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    iarray = [];
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Initializes the outermost array to an empty array.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int[] d = [9];
-    iarray[0] = d;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Adds a new array as the first element.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(iarray[0][0]);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Prints the first value of the two-dimensional array.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int[5] e = [1, 2, 3, 4, 5];
-    io:println(e.length());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Creates an <code>int</code> array with the fixed length of five.</p>
+                                            <p><code>v[i]</code> is an <code>lvalue</code>.</p>
 
                                         </div>
                                     </div>
@@ -409,8 +180,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int[*] g = [1, 2, 3, 4];
-    io:println(g.length());
+                                    <div class="highlight"><pre><code class=language-ballerina>    int len = v.length();
 }
 </code></pre></div>
 
@@ -419,8 +189,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>To infer the size of the array from the array literal, use the following syntax.
- The length of the array is set to four here.</p>
+                                            <p>len will be 3.</p>
 
                                         </div>
                                     </div>
@@ -444,24 +213,8 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run arrays.bal
-0
+                                    <div class="highlight"><pre><code class=shell-session>bal run arrays.bal
 1
-8
-Reversed: 8 7 6 5 4 3 2 1
-Before pop: 1 2 3 4 5 6 7 8
-Popped value: 8
-After pop: 1 2 3 4 5 6 7
-Doubled: 2 4 6 8 10 12 14
-23
-1000
-3
-3
-9
-5
-4
 </code></pre></div>
 
                                 </td>
@@ -489,7 +242,7 @@ Doubled: 2 4 6 8 10 12 14
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

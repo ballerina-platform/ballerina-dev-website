@@ -6,7 +6,7 @@
       {% include ballerina-head.html %}
       <link rel="stylesheet" href="{{ "/css/ballerina-io-docs.css?200618" | prepend: site.baseurl }}">
    </head>
-   <body class="cBallerina-io">
+   <body class="cBallerina-io" id="top">
       {% include nav.html %}
       <div class="row cBallerina-io-Gray-row">
          <div class="container">
@@ -20,7 +20,7 @@
                      <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
                         <ul class="wy-breadcrumbs">
                            <li class="wy-breadcrumbs-aside">
-                              <a class="icon icon-github" target="_blank" href="https://www.github.com/{{ site.github_username }}/{{ site.git_repo }}/blob/master/{{ page.path | replace: ".html", ".md"}}">Edit on GitHub</a>
+                              <a class="icon icon-github" target="_blank" href="https://www.github.com/{{ site.github_username }}/{{ site.git_repo }}/blob/master/{{ page.path | replace: ".html", ".md"}}"></a>
                            </li>
                         </ul>
                      </div>

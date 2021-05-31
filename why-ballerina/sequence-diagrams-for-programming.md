@@ -3,10 +3,7 @@ layout: ballerina-layer-page
 title: Sequence Diagrams for Programming
 description: See why the sequence diagram is the foundation for designing the syntax and semantics of the Ballerina programming language.
 keywords: ballerina, programming lanaguage, sequence diagram, concurrency
-permalink: /why-ballerina/sequence-diagrams-for-programming/
-redirect_from:
-  - /why/sequence-diagrams-for-programming/
-  - /why/sequence-diagrams-for-programming
+permalink: /why-ballerina/sequence-diagrams-for-programming-old/
 ---
 <div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">
@@ -26,7 +23,7 @@ redirect_from:
                               <p><img src="/img/why-pages/sequence-diagrams-for-programming-1.png" alt="Sequence Diagrams for Programming"></p>
                               <p>In Ballerina services, the entry point is the service resource function. The actor who invokes the service resource is shown as the “caller”. The “Default” participant is the resource function itself, showing the operations in its lifeline. From the resource function, further function calls are shown in its lifeline and their internal operations are expanded and merged to the same sequence diagram to show their operations as well.</p>
                               <h3 id="get-started">Get Started</h3>
-                              <p>The Ballerina IDE plugin (for example, the <a href="https://ballerina.io/learn/vscode-plugin/">VSCode plugin</a>) can generate a sequence diagram dynamically from the source code. To start generating a sequence diagram from your Ballerina code, <a href="https://ballerina.io/learn/vscode-plugin/graphical-editor">download the VSCode plugin and launch the graphical editor</a>.</p>
+                              <p>The Ballerina IDE plugin (for example, the <a href="/learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/">VSCode plugin</a>) can generate a sequence diagram dynamically from the source code. To start generating a sequence diagram from your Ballerina code, <a href="/learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/">download the VSCode plugin and launch the graphical editor</a>.</p>
                            </div>
                         </div>
                      </div>
@@ -65,9 +62,9 @@ redirect_from:
                               <p>In a similar manner, a database client is used to model a remote database server in order to interact using its remote methods to carry out database operations.</p>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">public function lookupAccountTx(jdbc:Client db, boolean clearTx) 
                                 returns @tainted error? {
-   var result = check db->select("SELECT * FROM AccountTx", Account);
+   var result = db->query("SELECT * FROM AccountTx", Account);
    if clearTx {
-       _ = check db->update("DELETE FROM AccountTx");
+       _ = check db->execute("DELETE FROM AccountTx");
    }
 }
 </code></pre>

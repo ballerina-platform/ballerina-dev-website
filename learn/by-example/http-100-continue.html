@@ -1,102 +1,57 @@
 ---
 layout: ballerina-example-page
 title: 100 Continue
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: BBE on how HTTP 100-continue can be handled by the Ballerina server and the HTTP client connector.
+keywords: ballerina, ballerina by example, bbe, http, 100-continue
 permalink: /learn/by-example/http-100-continue
+active: http-100-continue
 redirect_from:
-  - /v1-2/learn/by-example/http-100-continue
-  - /v1-2/learn/by-example/http-100-continue.html
+  - /swan-lake/learn/by-example/http-100-continue
+  - /swan-lake/learn/by-example/http-100-continue.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
-<span class="p">}</span>
-<span class="kd">service</span> <span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+
+<span class="kd">service</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span>
+            <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">ExpectationFailed</span> <span class="p">{</span>
+        <span class="c1">// [Check if the client expects a 100-continue response](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue).</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">expects100Continue</span><span class="p">())</span> <span class="p">{</span>
-            <span class="kt">string</span> <span class="nx">mediaType</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">);</span>
+
+            <span class="kt">string</span> <span class="nx">mediaType</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">mediaType</span><span class="p">.</span><span class="nx">toLowerAscii</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;text/plain&quot;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Send a 100-continue response to the client.</span>
                 <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="k">continue</span><span class="p">();</span>
+
                 <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
                 <span class="p">}</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">417</span><span class="p">;</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Unprocessable Entity&quot;</span><span class="p">);</span>
-                <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-                <span class="p">}</span>
-                <span class="k">return</span><span class="p">;</span>
+                <span class="c1">// Send a 417 response to ignore the payload since content type is mismatched</span>
+                <span class="c1">// with the expected content type.</span>
+                <span class="nx">http</span><span class="p">:</span><span class="nx">ExpectationFailed</span> <span class="nx">resp</span> <span class="p">=</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span><span class="s">&quot;Unprocessable Entity&quot;</span><span class="p">};</span>
+                <span class="k">return</span> <span class="nx">resp</span><span class="p">;</span>
+
             <span class="p">}</span>
         <span class="p">}</span>
+
+        <span class="c1">// The client starts sending the payload once it receives the</span>
+        <span class="c1">// 100-continue response. Retrieve the payload that is sent by the client.</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">200</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Hello World!\n&quot;</span><span class="p">);</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-            <span class="p">}</span>
+            <span class="k">return</span> <span class="s">&quot;Hello World!\n&quot;</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-            <span class="p">}</span>
+            <span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="nx">resp</span> <span class="p">=</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">()};</span>
+            <span class="k">return</span> <span class="nx">resp</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">start</span> <span class="nx">the</span> <span class="kd">service</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">use</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">http_expect_header</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">]</span> <span class="nx">started</span> <span class="nx">HTTP</span><span class="o">/</span><span class="nx">WS</span> <span class="nx">listener</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">9090</span>
-<span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mo">04</span> <span class="mi">21</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">36</span><span class="p">,</span><span class="mi">272</span> <span class="nx">INFO</span>  <span class="p">[</span><span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="o">-</span> <span class="nx">TEST</span> <span class="mi">100</span> <span class="nx">CONTINUE</span><span class="err">#</span><span class="nx">Run</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">curl</span> <span class="nx">command</span> <span class="nx">to</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">client</span><span class="p">.</span>
-<span class="nx">curl</span> <span class="o">-</span><span class="nx">v</span> <span class="o">-</span><span class="nx">d</span> <span class="s">&quot;TEST 100 CONTINUE&quot;</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//localhost:9090/hello -H &#39;Expect:100-continue&#39; -H &#39;Content-Type: text/plain&#39;</span>
-<span class="o">*</span>   <span class="nx">Trying</span> <span class="mf">127.0.0.1</span><span class="o">...</span>
-<span class="o">*</span> <span class="nx">Connected</span> <span class="nx">to</span> <span class="nx">localhost</span> <span class="p">(</span><span class="mf">127.0.0.1</span><span class="p">)</span> <span class="nx">port</span> <span class="mi">9090</span> <span class="p">(</span><span class="err">#</span><span class="mi">0</span><span class="p">)</span>
-<span class="p">&gt;</span> <span class="nx">POST</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-<span class="p">&gt;</span> <span class="nx">Host</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">9090</span>
-<span class="p">&gt;</span> <span class="nx">User</span><span class="o">-</span><span class="nx">Agent</span><span class="p">:</span> <span class="nx">curl</span><span class="o">/</span><span class="mf">7.58.0</span>
-<span class="p">&gt;</span> <span class="nx">Accept</span><span class="p">:</span> <span class="o">*</span><span class="cm">/*</span>
-<span class="cm">&gt; Expect:100-continue</span>
-<span class="cm">&gt; Content-Length: 17</span>
-<span class="cm">&gt; Content-Type: text/plain</span>
-<span class="cm">&gt;</span>
-<span class="cm">&lt; HTTP/1.1 100 Continue</span>
-<span class="cm">* We are completely uploaded and fine</span>
-<span class="cm">&lt; HTTP/1.1 200 OK</span>
-<span class="cm">&lt; content-type: text/plain</span>
-<span class="cm">&lt; content-length: 13</span>
-<span class="cm">&lt;</span>
-<span class="cm">Hello World!</span>
-<span class="cm">* Connection #0 to host localhost left intact# Use the following client to invoke the service using an unsupported media type. Service is supposed to ignore</span>
-<span class="cm"># the payload if the content type does not matched.</span>
-<span class="cm">curl -v -d &#39;{&quot;TEST&quot;:&quot;100 CONTINUE&quot;}&#39; http://localhost:9090/hello -H &#39;Expect:100-continue&#39; -H &#39;Content-Type: application/json&#39;</span>
-<span class="cm">* Connected to localhost (127.0.0.1) port 9090 (#0)</span>
-<span class="cm">&gt; POST /hello HTTP/1.1</span>
-<span class="cm">&gt; Host: localhost:9090</span>
-<span class="cm">&gt; User-Agent: curl/7.58.0</span>
-<span class="cm">&gt; Accept: */</span><span class="o">*</span>
-<span class="p">&gt;</span> <span class="nx">Expect</span><span class="p">:</span><span class="mi">100</span><span class="o">-</span><span class="k">continue</span>
-<span class="p">&gt;</span> <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="kt">json</span>
-<span class="p">&gt;</span> <span class="nx">Content</span><span class="o">-</span><span class="nx">Length</span><span class="p">:</span> <span class="mi">25</span>
-<span class="p">&gt;</span>
-<span class="p">&lt;</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">417</span> <span class="nx">Expectation</span> <span class="nx">Failed</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">type</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="nx">plain</span>
-<span class="p">&lt;</span> <span class="nx">content</span><span class="o">-</span><span class="nx">length</span><span class="p">:</span> <span class="mi">20</span>
-<span class="o">*</span> <span class="nx">HTTP</span> <span class="nx">error</span> <span class="nx">before</span> <span class="nx">end</span> <span class="nx">of</span> <span class="nx">send</span><span class="p">,</span> <span class="nx">stop</span> <span class="nx">sending</span>
-<span class="p">&lt;</span>
-<span class="o">*</span> <span class="nx">Closing</span> <span class="nx">connection</span> <span class="mi">0</span>
-<span class="nx">Unprocessable</span> <span class="nx">Entity</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -107,7 +62,9 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>100 Continue</h2>
                             <p><p>Convenience functions are provided in the HTTP library for ease of use when handling 100-continue scenarios.
- 100-continue indicates that the server has received the request headers and the client can proceed with sending the request.</p>
+ 100-continue indicates that the server has received the request headers and the client can proceed with sending the request.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -115,16 +72,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="http-data-binding.html">
+                                    <a class="prev" href="http-cors.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Data Binding</p>
+                                        <p>CORS</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="different-payload-types.html">
+                                    <a class="next" href="http-redirects.html">
                                         <span>NEXT ></span>
-                                        <p>Handling Different Payload Types</p>
+                                        <p>Redirects</p>
                                     </a>
                                 </div>
                                 
@@ -140,11 +97,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/http-100-continue/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-100-continue/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=81eda232cf1a0abaad506c6008f8765e&file=http_100_continue.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -162,6 +123,12 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -198,10 +165,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    basePath: &quot;/hello&quot;
-}
-service helloWorld on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /hello on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -213,10 +177,8 @@ service helloWorld on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
-        path: &quot;/&quot;
-    }
-    resource function hello(http:Caller caller, http:Request request) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller, http:Request request)
+            returns string|http:InternalServerError|http:ExpectationFailed {
 </code></pre></div>
 
                                 </td>
@@ -229,8 +191,6 @@ service helloWorld on new http:Listener(9090) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        if (request.expects100Continue()) {
-            string mediaType = request.getHeader(&quot;Content-Type&quot;);
-            if (mediaType.toLowerAscii() == &quot;text/plain&quot;) {
 </code></pre></div>
 
                                 </td>
@@ -238,10 +198,23 @@ service helloWorld on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Check if the client expects a 100-continue response.</p>
+                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue">Check if the client expects a 100-continue response</a>.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            string mediaType = request.getContentType();
+            if (mediaType.toLowerAscii() == &quot;text/plain&quot;) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -250,10 +223,6 @@ service helloWorld on new http:Listener(9090) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>                var result = caller-&gt;continue();
-                if (result is error) {
-                    log:printError(&quot;Error sending response&quot;, result);
-                }
-            } else {
 </code></pre></div>
 
                                 </td>
@@ -269,19 +238,26 @@ service helloWorld on new http:Listener(9090) {
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>                if (result is error) {
+                    log:printError(&quot;Error sending response&quot;, &#39;error = result);
+                }
+            } else {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>                http:Response res = new;
-                res.statusCode = 417;
-                res.setPayload(&quot;Unprocessable Entity&quot;);
-                var result = caller-&gt;respond(res);
-                if (result is error) {
-                    log:printError(&quot;Error sending response&quot;, result);
-                }
-                return;
-            }
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>                http:ExpectationFailed resp = {body:&quot;Unprocessable Entity&quot;};
+                return resp;
 </code></pre></div>
 
                                 </td>
@@ -298,6 +274,19 @@ service helloWorld on new http:Listener(9090) {
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            }
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
@@ -305,19 +294,10 @@ service helloWorld on new http:Listener(9090) {
         var payload = request.getTextPayload();
         if (payload is string) {
             log:printInfo(payload);
-            res.statusCode = 200;
-            res.setPayload(&quot;Hello World!\n&quot;);
-            var result = caller-&gt;respond(res);
-            if (result is error) {
-                log:printError(&quot;Error sending response&quot;, result);
-            }
+            return &quot;Hello World!\n&quot;;
         } else {
-            res.statusCode = 500;
-            res.setPayload(&lt;@untainted string&gt;payload.detail()?.message);
-            var result = caller-&gt;respond(res);
-            if (result is error) {
-                log:printError(&quot;Error sending response&quot;, result);
-            }
+            http:InternalServerError resp = {body:payload.message()};
+            return resp;
         }
     }
 }
@@ -354,10 +334,10 @@ service helloWorld on new http:Listener(9090) {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-ballerina run http_expect_header.bal
+# `.bal` file and use the `bal run` command below.
+bal run http_expect_header.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-2018-12-04 21:37:36,272 INFO  [ballerina/log] - TEST 100 CONTINUE
+time = 2021-01-21 20:31:28,347 level = INFO  module = &quot;&quot; message = &quot;TEST 100 CONTINUE&quot;
 </code></pre></div>
 
                                 </td>
@@ -386,7 +366,7 @@ ballerina run http_expect_header.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>#Run the following curl command to run the client.
+                                    <div class="highlight"><pre><code class=shell-session>#Run the cURL command below to run the client.
 curl -v -d &quot;TEST 100 CONTINUE&quot; http://localhost:9090/hello -H &#39;Expect:100-continue&#39; -H &#39;Content-Type: text/plain&#39;
 *   Trying 127.0.0.1...
 * Connected to localhost (127.0.0.1) port 9090 (#0)
@@ -399,10 +379,14 @@ curl -v -d &quot;TEST 100 CONTINUE&quot; http://localhost:9090/hello -H &#39;Exp
 &gt; Content-Type: text/plain
 &gt;
 &lt; HTTP/1.1 100 Continue
+&lt; server: ballerina
+&lt; date: Tue, 22 Sep 2020 09:16:18 +0530
 * We are completely uploaded and fine
 &lt; HTTP/1.1 200 OK
 &lt; content-type: text/plain
 &lt; content-length: 13
+&lt; server: ballerina
+&lt; date: Tue, 22 Sep 2020 09:16:18 +0530
 &lt;
 Hello World!
 * Connection #0 to host localhost left intact
@@ -432,6 +416,8 @@ curl -v -d &#39;{&quot;TEST&quot;:&quot;100 CONTINUE&quot;}&#39; http://localhos
 &lt; HTTP/1.1 417 Expectation Failed
 &lt; content-type: text/plain
 &lt; content-length: 20
+&lt; server: ballerina
+&lt; date: Tue, 22 Sep 2020 09:19:53 +0530
 * HTTP error before end of send, stop sending
 &lt;
 * Closing connection 0
@@ -463,7 +449,7 @@ Unprocessable Entity
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

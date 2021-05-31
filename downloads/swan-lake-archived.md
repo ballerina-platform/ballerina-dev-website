@@ -1,5 +1,5 @@
 ---
-layout: ballerina-landing-page
+layout: ballerina-no-git-inner-page
 title: Swan Lake Archived Versions
 permalink: /downloads/swan-lake-archived/
 ---
@@ -19,12 +19,12 @@ permalink: /downloads/swan-lake-archived/
         <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
             <div class="cStandaloneInstallers" id="archived-versions">
                 <h2>Swan Lake Archived Versions</h2>
-                <div class="cInstallers" style="height:150px"> 
-                <h3 class="release-version">swan-lake-preview6</h3>
+                <!--<div class="cInstallers" style="height:150px">--> 
+                <!--<h3 class="release-version">swan-lake-preview6</h3>
 <div class="releases-row">
-    <div class="col-xs-12 col-sm-16 col-md-6 col-lg-6 cLeftTable">
+    <div class="col-xs-12 col-sm-16 col-md-6 col-lg-6 cLeftTable">-->
 
-This is an internal-only release.
+<!--This is an internal-only release.
 
 </div>
 
@@ -36,5 +36,5 @@ This is an internal-only release.
 </div>
 <style>
 li.cVersionItem  {display: none !important;  }
-</style>
+</style>-->
 

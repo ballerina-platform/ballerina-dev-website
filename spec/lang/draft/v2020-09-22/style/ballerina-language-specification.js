@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     var logo = '<a class="cLogo" href="/">' +
-        ' <img src="http://ballerina.io/img/ballerina-logo.png" alt="Ballerina">' +
+        ' <img src="https://ballerina.io/img/ballerina-logo.png" alt="Ballerina">' +
         '</a>' ;
         
        

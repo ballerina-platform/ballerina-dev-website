@@ -1,41 +1,42 @@
 ---
 layout: ballerina-example-page
 title: Client Acknowledgements
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: BBE on manually acknowledging the messages consumed from a RabbitMQ queue using Ballerina.
+keywords: ballerina, ballerina by example, rabbitmq, consumer, bbe, acknowledgment
 permalink: /learn/by-example/rabbitmq-consumer-with-client-acknowledgement
+active: rabbitmq-consumer-with-client-acknowledgement
 redirect_from:
-  - /v1-2/learn/by-example/rabbitmq-consumer-with-client-acknowledgement
-  - /v1-2/learn/by-example/rabbitmq-consumer-with-client-acknowledgement.html
+  - /swan-lake/learn/by-example/rabbitmq-consumer-with-client-acknowledgement
+  - /swan-lake/learn/by-example/rabbitmq-consumer-with-client-acknowledgement.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">rabbitmq</span><span class="p">;</span>
-<span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">connection</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span><span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">5672</span><span class="p">});</span><span class="nx">listener</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">channelListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">connection</span><span class="p">);</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">rabbitmq</span><span class="p">;</span>
+
+<span class="nx">listener</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">channelListener</span> <span class="p">=</span>
+        <span class="nx">new</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">DEFAULT_HOST</span><span class="p">,</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">DEFAULT_PORT</span><span class="p">);</span>
+
+<span class="c1">// The consumer service listens to the &quot;MyQueue&quot; queue.</span>
+<span class="c1">// The `ackMode` is by default rabbitmq:AUTO_ACK where messages are acknowledged</span>
+<span class="c1">// immediately after consuming.</span>
 <span class="nd">@rabbitmq:ServiceConfig {</span>
-    <span class="nx">queueConfig</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;MyQueue&quot;</span>
-    <span class="p">},</span>
-    <span class="nx">ackMode</span><span class="p">:</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">CLIENT_ACK</span>
+    <span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;MyQueue&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">rabbitmqConsumerAck</span> <span class="nx">on</span> <span class="nx">channelListener</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="kt">message</span><span class="p">.</span><span class="nx">getTextContent</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;The message received: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while retrieving the message content.&quot;</span><span class="p">);</span>
+<span class="c1">// Attaches the service to the listener.</span>
+<span class="kd">service</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">on</span> <span class="nx">channelListener</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">,</span>
+                                                    <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
+        <span class="k">if</span> <span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Received message: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="kt">message</span><span class="o">-&gt;</span><span class="nx">basicAck</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while acknowledging the message.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
+
+        <span class="c1">// Positively acknowledges a single message.</span>
+        <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">basicAck</span><span class="p">();</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Make</span> <span class="nx">sure</span> <span class="nx">to</span> <span class="nx">have</span> <span class="nx">the</span> <span class="nx">RabbitMQ</span> <span class="nx">broker</span> <span class="nx">running</span><span class="p">.</span>
-<span class="err">#</span>
-<span class="err">#</span> <span class="nx">Navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="err">&#39;</span><span class="nx">rabbitmq_consumer_with_client_acknowledgement</span><span class="p">.</span><span class="nx">bal</span><span class="err">&#39;</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">issue</span> <span class="nx">the</span> <span class="err">&#39;</span><span class="nx">ballerina</span> <span class="nx">run</span><span class="err">&#39;</span> <span class="nx">command</span> <span class="k">as</span> <span class="nx">follows</span><span class="p">.</span><span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">rabbitmq_consumer_with_client_acknowledgement</span><span class="p">.</span><span class="nx">bal</span><span class="err">#</span> <span class="nx">The</span> <span class="nx">RabbitMQ</span> <span class="nx">consumer</span> <span class="nx">runs</span> <span class="k">as</span> <span class="nx">a</span> <span class="nx">Ballerina</span> <span class="kd">service</span> <span class="nx">and</span> <span class="nx">listens</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">subscribed</span> <span class="nx">queue</span><span class="mf">.2019</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">29</span> <span class="mi">12</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span><span class="mi">194</span> <span class="nx">INFO</span> <span class="p">[]</span> <span class="o">-</span> <span class="nx">The</span> <span class="kt">message</span> <span class="nx">received</span><span class="p">:</span> <span class="nx">Hello</span> <span class="nx">from</span> <span class="nx">Ballerina</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -49,7 +50,9 @@ redirect_from:
  existing queue using the Ballerina RabbitMQ message listener.
  The received messages are acknowledged manually.
  By default, the ackMode is rabbitmq:AUTO_ACK, which will automatically acknowledge
- all messages once consumed.</p>
+ all messages once consumed.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://docs.central.ballerina.io/ballerinax/rabbitmq/latest">RabbitMQ module</a>.</p>
 </p>
 
                         </td>
@@ -64,9 +67,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="rabbitmq-consumer-with-data-binding.html">
+                                    <a class="next" href="rabbitmq-transaction-producer.html">
                                         <span>NEXT ></span>
-                                        <p>Data Binding</p>
+                                        <p>Transactional Producer</p>
                                     </a>
                                 </div>
                                 
@@ -82,11 +85,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/rabbitmq-consumer-with-client-acknowledgement/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/rabbitmq-consumer-with-client-acknowledgement/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=10b038611320190a0a07606048171ecb&file=rabbitmq_consumer_with_client_acknowledgement.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -115,12 +122,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -130,30 +131,11 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
-import ballerina/rabbitmq;
+import ballerinax/rabbitmq;
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>rabbitmq:Connection connection = new ({host: &quot;localhost&quot;, port: 5672});
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Creates a ballerina RabbitMQ connection that allows re-usability if necessary.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -161,7 +143,8 @@ import ballerina/rabbitmq;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener rabbitmq:Listener channelListener = new (connection);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener rabbitmq:Listener channelListener =
+        new(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 </code></pre></div>
 
                                 </td>
@@ -174,10 +157,7 @@ import ballerina/rabbitmq;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@rabbitmq:ServiceConfig {
-    queueConfig: {
-        queueName: &quot;MyQueue&quot;
-    },
-    ackMode: rabbitmq:CLIENT_ACK
+    queueName: &quot;MyQueue&quot;
 }
 </code></pre></div>
 
@@ -187,8 +167,8 @@ import ballerina/rabbitmq;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The consumer service listens to the &ldquo;MyQueue&rdquo; queue.
- ackMode is by default rabbitmq:AUTO_ACK which will automatically acknowledge
- all messages once consumed.</p>
+ The <code>ackMode</code> is by default rabbitmq:AUTO_ACK where messages are acknowledged
+ immediately after consuming.</p>
 
                                         </div>
                                     </div>
@@ -199,7 +179,13 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service rabbitmqConsumerAck on channelListener {
+                                    <div class="highlight"><pre><code class=language-ballerina>service rabbitmq:Service on channelListener {
+    remote function onMessage(rabbitmq:Message message,
+                                                    rabbitmq:Caller caller) {
+        string|error messageContent = string:fromBytes(message.content);
+        if messageContent is string {
+            log:printInfo(&quot;Received message: &quot; + messageContent);
+        }
 </code></pre></div>
 
                                 </td>
@@ -217,54 +203,8 @@ import ballerina/rabbitmq;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function onMessage(rabbitmq:Message message) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Gets triggered when a message is received by the queue.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var messageContent = message.getTextContent();
-        if (messageContent is string) {
-            log:printInfo(&quot;The message received: &quot; + messageContent);
-        } else {
-            log:printError(&quot;Error occurred while retrieving the message content.&quot;);
-        }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Retrieves the text content of the message.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var result = message-&gt;basicAck();
-        if (result is error) {
-            log:printError(&quot;Error occurred while acknowledging the message.&quot;);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        rabbitmq:Error? result = caller-&gt;basicAck();
     }
 }
 </code></pre></div>
@@ -313,7 +253,7 @@ import ballerina/rabbitmq;
                                     <div class="highlight"><pre><code class=shell-session># Make sure to have the RabbitMQ broker running.
 #
 # Navigate to the directory that contains the
-# &#39;rabbitmq_consumer_with_client_acknowledgement.bal&#39; file and issue the &#39;ballerina run&#39; command as follows.
+# &#39;rabbitmq_consumer_with_client_acknowledgement.bal&#39; file and runthe &#39;bal run&#39; command below.
 </code></pre></div>
 
                                 </td>
@@ -325,7 +265,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>ballerina run rabbitmq_consumer_with_client_acknowledgement.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run rabbitmq_consumer_with_client_acknowledgement.bal
 </code></pre></div>
 
                                 </td>
@@ -349,7 +289,8 @@ import ballerina/rabbitmq;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>2019-03-29 12:11:18,194 INFO [] - The message received: Hello from Ballerina
+                                    <div class="highlight"><pre><code class=shell-session>[ballerinax/rabbitmq] Consumer service started for queue MyQueue
+time = 2021-05-20T14:53:56.067+05:30 level = INFO module = &quot;&quot; message = &quot;Received message: Hello from Ballerina&quot;
 </code></pre></div>
 
                                 </td>
@@ -377,7 +318,7 @@ import ballerina/rabbitmq;
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

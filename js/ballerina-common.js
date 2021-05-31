@@ -64,7 +64,7 @@ function versionSelectorValue(){
         //let ver = "v" + optionText.replace(".", "-");
         
         if(pathValue.indexOf(optionText) > -1){
-            $(option).attr("selected", "selected");
+            $(option).prop('selected', true);
             status = 1;
         }        
     });
@@ -414,7 +414,12 @@ $(document).ready(function() {
             newPath =  "/learn/" + splitedPath[1];
         } else {
             let selectedValue = selectedOption.value;
-            newPath = "/" + selectedValue + "/learn/" + splitedPath[1];
+            if (selectedValue == "swan-lake") {
+                newPath = "/learn/" + splitedPath[1];
+            }
+            else {
+                newPath = "/" + selectedValue + "/learn/" + splitedPath[1];
+            }
         }
         window.open( newPath , "_self" );
     };

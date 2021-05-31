@@ -87,7 +87,7 @@ function updateReleasearchiveTable(allData) {
             }
 
             // temporary adding idea plugin. This needs to be retrieve from release_notes_versions json
-            allArtifact.push("ballerina-intellij-idea-plugin");
+            //allArtifact.push("ballerina-intellij-idea-plugin");
 
             var halfWayThough = Math.ceil(allArtifact.length / 2);
             item["lefttable"] = allArtifact.slice(0, halfWayThough);
@@ -118,7 +118,7 @@ function updateReleasearchiveTable(allData) {
             var releaseNoteUrl = getReleaseNoteURL(version);
             if (releaseNoteUrl) {
                 $.get(releaseNoteUrl, function(data) {
-                    $("#" + getReleaseNotesDivId(version)).html(data);
+                    $("#" +(version)+"notes").prop("href", releaseNoteUrl);
                     hljs.initHighlighting.called = false;
                     hljs.initHighlighting();
                     initCodeLineNumbers();
@@ -136,7 +136,7 @@ function getReleaseNotesDivId(version) {
 }
 
 function getReleaseNoteURL(version) {
-    return base_swanlake_releasenote_url + "/" + version + "/" + releaseNoteFilename;
+    return base_swanlake_releasenote_url + "/" + version + "/";
 }
 
 function isIdeaPlugin(artifact) {

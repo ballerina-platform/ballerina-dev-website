@@ -1,896 +1,657 @@
-[{
+[
+    {
         "title": "Hello World",
         "column": 0,
-        "category": "Language concepts",
-        "samples": [{
-                "name": "Hello World Service",
-                "url": "hello-world-service"
-            },
+        "category": "Language Concepts",
+        "samples": [
             {
                 "name": "Hello World Main",
                 "url": "hello-world"
             },
             {
-                "name": "Hello World Parallel",
-                "url": "hello-world-parallel"
-            },
-            {
-                "name": "Hello World Client",
-                "url": "hello-world-client"
+                "name": "Hello World Service",
+                "url": "hello-world-service"
             }
         ]
     },
- 	{
-        "title": "Ballerina Basics",
+    {
+        "title": "Basics",
         "column": 0,
-        "category": "Language concepts",
-        "samples": [{
-                "name": "Modules",
-                "url": "modules"
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Programs and Modules",
+                "url": "programs-and-modules"
             },
             {
-                "name": "Variables",
-                "url": "variables"
-            },
-            {
-                "name": "Var",
-                "url": "var"
+                "name": "Variables and Types",
+                "url": "variables-and-types"
             },
             {
                 "name": "Functions",
                 "url": "functions"
             },
             {
-                "name": "Required Parameters",
-                "url": "functions-with-required-parameters"
+                "name": "Identifiers",
+                "url": "identifiers"
             },
             {
-                "name": "Defaultable Parameters",
-                "url": "functions-with-defaultable-parameters"
+                "name": "Integers",
+                "url": "integers"
             },
             {
-                "name": "Rest Parameters",
-                "url": "functions-with-rest-parameter"
+                "name": "Booleans and Conditionals",
+                "url": "booleans"
             },
             {
-                "name": "Quoted Identifiers",
-                "url": "quoted-identifiers"
-            }
-        ]
-    },
-    {
-        "title": "Documentation",
-        "column": 0,
-        "category": "Language concepts",
-        "samples": [
-            {
-                "name": "Basic documentation",
-                "url": "basic-documentation"
+                "name": "Floating Point Numbers",
+                "url": "floating-point-numbers"
             },
             {
-                "name": "Deprecation",
-                "url": "deprecation"
-            }
-        ]
-    },
-    {
-        "title": "Functions",
-        "column": 0,
-        "category": "Language concepts",
-        "samples": [{
-                "name": "Function Pointers",
-                "url": "function-pointers"
+                "name": "Nil",
+                "url": "nil"
             },
             {
-                "name": "Anonymous Functions",
-                "url": "anonymous-functions"
+                "name": "Strings",
+                "url": "strings"
             },
             {
-                "name": "Closures",
-                "url": "closures"
-            },
-            {
-                "name": "Expression-bodied Functions",
-                "url": "expression-bodied-functions"
-            },
-            {
-                "name": "Functional Iteration",
-                "url": "functional-iteration"
-            },
-            {
-                "name": "The Main Function",
-                "url": "the-main-function"
-            }
-        ]
-    },
-    {
-        "title": "Flow Control",
-        "column": 0,
-        "category": "Language concepts",
-        "samples": [{
-                "name": "If/Else",
-                "url": "if-else"
-            },
-            {
-                "name": "While",
-                "url": "while"
-            },
-            {
-                "name": "Foreach",
-                "url": "foreach"
-            },
-            {
-                "name": "Match",
-                "url": "match"
-            },
-            {
-                "name": "Tuple Match",
-                "url": "tuple-match-statement"
-            },
-            {
-                "name": "Record Match",
-                "url": "record-match-statement"
-            },
-            {
-                "name": "Error Match",
-                "url": "error-match-statement"
-            },
-            {
-                "name": "Type Test Expression",
-                "url": "type-test-expression"
-            },
-            {
-                "name": "Type Guard",
-                "url": "type-guard"
-            },
-            {
-                "name": "Elvis",
-                "url": "elvis-operator"
-            }
-        ]
-    },
-    {
-        "title": "Query",
-        "column": 0,
-        "category": "Language concepts",
-        "samples": [{
-            "name": "Query Expression",
-            "url": "query-expression"
-        },
-            {
-                "name": "Query Action",
-                "url": "query-action"
-            }
-        ]
-    },
-    {
-        "title": "Values and Types",
-        "column": 1,
-        "category": "Language concepts",
-        "samples": [{
-                "name": "Values",
-                "url": "values"
+                "name": "Langlib Functions",
+                "url": "langlib-functions"
             },
             {
                 "name": "Arrays",
                 "url": "arrays"
             },
             {
-                "name": "Tuples",
-                "url": "tuple-type"
+                "name": "Foreach Statement",
+                "url": "foreach-statement"
+            },
+            {
+                "name": "While Statement",
+                "url": "while-statement"
+            },
+            {
+                "name": "Binary Data",
+                "url": "binary-data"
             },
             {
                 "name": "Maps",
                 "url": "maps"
             },
             {
-                "name": "Table",
-                "url": "table"
+                "name": "Type Definitions",
+                "url": "type-definitions"
             },
             {
-                "name": "Union Types",
-                "url": "union-type"
+                "name": "Records",
+                "url": "records"
             },
             {
-                "name": "Byte Type",
-                "url": "byte-type"
+                "name": "Structural Typing",
+                "url": "structural-typing"
             },
             {
-                "name": "Optional Type",
-                "url": "optional-type"
+                "name": "Unions",
+                "url": "unions"
+            },
+            {
+                "name": "Error Reporting",
+                "url": "error-reporting"
+            },
+            {
+                "name": "Error Handling",
+                "url": "error-handling"
+            },
+            {
+                "name": "Check Expression",
+                "url": "check-expression"
+            },
+            {
+                "name": "Error Subtyping",
+                "url": "error-subtyping"
+            },
+            {
+                "name": "Panics",
+                "url": "panics"
             },
             {
                 "name": "Anydata Type",
                 "url": "anydata-type"
             },
             {
+                "name": "Ignoring Return Values and Errors",
+                "url": "ignoring-return-values-and-errors"
+            },
+            {
+                "name": "Covariance",
+                "url": "covariance"
+            },
+            {
+                "name": "Object",
+                "url": "object"
+            },
+            {
+                "name": "Defining Classes",
+                "url": "defining-classes"
+            },
+            {
+                "name": "Init Return Type",
+                "url": "init-return-type"
+            },
+            {
+                "name": "Identity",
+                "url": "identity"
+            },
+            {
+                "name": "Const and Final ",
+                "url": "const-and-final"
+            },
+            {
+                "name": "Enumerations",
+                "url": "enumerations"
+            },
+            {
+                "name": "Match Statement",
+                "url": "match-statement"
+            },
+            {
+                "name": "Type Inference ",
+                "url": "type-inference"
+            },
+            {
+                "name": "Function Values",
+                "url": "function-values"
+            },
+            {
+                "name": "Asynchronous Function Calls",
+                "url": "asynchronous-function-calls"
+            },
+            {
+                "name": "Annotations",
+                "url": "annotations"
+            },
+            {
+                "name": "Documentation",
+                "url": "documentation"
+            }
+        ]
+    },
+    {
+        "title": "Network Interaction",
+        "column": 0,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Consuming Services: Client Objects",
+                "url": "consuming-services"
+            },
+            {
+                "name": "Providing Services",
+                "url": "providing-services"
+            },
+            {
+                "name": "Module Lifecycle",
+                "url": "module-lifecycle"
+            },
+            {
+                "name": "Service Declaration",
+                "url": "service-declaration"
+            },
+            {
+                "name": "Resource Methods",
+                "url": "resource-methods"
+            },
+            {
+                "name": "Hierarchical Resources",
+                "url": "hierarchical-resources"
+            },
+            {
+                "name": "Resource Path Parameters",
+                "url": "resource-path-parameters"
+            }
+        ]
+    },
+    {
+        "title": "Working With Data",
+        "column": 0,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Plain Data",
+                "url": "plain-data"
+            },
+            {
+                "name": "Ballerina Basic Types",
+                "url": "ballerina-basic-types"
+            },
+            {
+                "name": "Decimal Type",
+                "url": "decimal-type"
+            },
+            {
+                "name": "Immutability",
+                "url": "immutability"
+            },
+            {
                 "name": "Any Type",
                 "url": "any-type"
             },
             {
-                "name": "Constants",
-                "url": "constants"
+                "name": "Configurable Variables",
+                "url": "configurable-variables"
             },
             {
-                "name": "Range Expressions",
-                "url": "range-expressions"
+                "name": "Open Records",
+                "url": "open-records"
             },
             {
-                "name": "String Template Literal",
-                "url": "string-template"
+                "name": "Controlling Openness",
+                "url": "controlling-openness"
             },
             {
-                "name": "Let Expression",
-                "url": "let-expression"
-            }
-        ]
-    },
-    {
-        "title": "Record",
-        "column": 1,
-        "category": "Language concepts",
-        "samples": [{
-                "name": "Record",
-                "url": "records"
+                "name": "JSON Type",
+                "url": "json-type"
             },
             {
-                "name": "Anonymous Records",
-                "url": "anonymous-records"
+                "name": "Match Statement With Maps",
+                "url": "match-statement-with-maps"
             },
             {
-                "name": "Optional Fields",
-                "url": "record-optional-fields"
+                "name": "Converting From User-Defined Type to JSON",
+                "url": "converting-from-user-defined-type-to-json"
             },
             {
-                "name": "Record Type Reference",
-                "url": "record-type-reference"
-            }
-        ]
-    },
-    {
-        "title": "Object",
-        "column": 1,
-        "category": "Language concepts",
-        "samples": [{
-                "name": "Object",
-                "url": "objects"
+                "name": "Converting From JSON to User-Defined Type",
+                "url": "converting-from-json-to-user-defined-type"
             },
             {
-                "name": "Object Initializer",
-                "url": "object-initializer"
+                "name": "Converting to User-Defined Type",
+                "url": "converting-to-user-defined-type"
             },
             {
-                "name": "Object Methods",
-                "url": "object-methods"
+                "name": "Resource Method Typing",
+                "url": "resource-method-typing"
             },
             {
-                "name": "Object Assignability",
-                "url": "object-assignability"
+                "name": "JSON Numbers",
+                "url": "json-numbers"
             },
             {
-                "name": "Abstract Objects",
-                "url": "abstract-objects"
+                "name": "Query Expressions",
+                "url": "query-expressions"
             },
             {
-                "name": "Anonymous Objects",
-                "url": "anonymous-objects"
+                "name": "Destructuring Records",
+                "url": "destructuring-records"
             },
             {
-                "name": "Object Type Reference",
-                "url": "object-type-reference"
+                "name": "Let Clause",
+                "url": "let-clause"
             },
             {
-                "name": "Iterable Objects",
-                "url": "iterable-objects"
-            }
-        ]
-    },
-    {
-        "title": "Value/Type Operations",
-        "column": 1,
-        "category": "Language concepts",
-        "samples": [
-            {
-                "name": "Shift Expressions",
-                "url": "shift-expressions"
+                "name": "Ordering",
+                "url": "ordering"
             },
             {
-                "name": "Binary Bitwise Expressions",
-                "url": "binary-bitwise-expressions"
+                "name": "Limit Clause",
+                "url": "limit-clause"
             },
             {
-                "name": "Compound Assignment Operators",
-                "url": "compound-assignment-operators"
+                "name": "Table Concept",
+                "url": "table-concept"
             },
             {
-                "name": "Equality",
-                "url": "equality"
+                "name": "Table Syntax",
+                "url": "table-syntax"
             },
             {
-                "name": "Length",
-                "url": "length"
+                "name": "Multiple Key Fields",
+                "url": "multiple-key-fields"
             },
             {
-                "name": "Type Cast",
-                "url": "type-cast"
+                "name": "Structured Keys",
+                "url": "structured-keys"
             },
             {
-                "name": "Optional Field Access",
-                "url": "optional-field-access"
+                "name": "Querying Tables",
+                "url": "querying-tables"
             },
             {
-                "name": "Cloning Values",
-                "url": "clone"
+                "name": "Creating Tables With Query",
+                "url": "creating-tables-with-query"
             },
             {
-                "name": "Immutable Values",
-                "url": "immutable-values"
+                "name": "Join Clause",
+                "url": "join-clause"
             },
             {
-                "name": "Type Conversion",
-                "url": "type-conversion"
-            }
-        ]
-    },
-     {
-        "title": "Streams",
-        "column": 1,
-        "category": "Language concepts",
-        "samples": [{
-            "name": "Streams",
-            "url": "streams"
-        }
-        ]
-    },
-    {
-        "title": "JSON / XML",
-        "column": 2,
-        "category": "Language concepts",
-        "samples": [{
-                "name": "JSON",
-                "url": "json"
+                "name": "Stream Type",
+                "url": "stream-type"
             },
             {
-                "name": "JSON Objects",
-                "url": "json-objects"
+                "name": "Querying With Streams",
+                "url": "querying-with-streams"
             },
             {
-                "name": "JSON Arrays",
-                "url": "json-arrays"
+                "name": "Backtick Templates",
+                "url": "backtick-templates"
             },
             {
-                "name": "JSON Access",
-                "url": "json-access"
-            },
-            {
-                "name": "JSON/Record/Map Conversion",
-                "url": "json-record-map-conversion"
-            },
-            {
-                "name": "JSON to XML Conversion",
-                "url": "json-to-xml-conversion"
+                "name": "Raw Templates",
+                "url": "raw-templates"
             },
             {
                 "name": "XML",
                 "url": "xml"
             },
             {
-                "name": "XML Literal",
-                "url": "xml-literal"
+                "name": "Sequences",
+                "url": "sequences"
             },
             {
-                "name": "XML Attributes",
-                "url": "xml-attributes"
+                "name": "XML Data Model",
+                "url": "xml-data-model"
+            },
+            {
+                "name": "XML Templates",
+                "url": "xml-templates"
+            },
+            {
+                "name": "XML Operations",
+                "url": "xml-operations"
+            },
+            {
+                "name": "XML Subtyping",
+                "url": "xml-subtyping"
+            },
+            {
+                "name": "XML Navigation ",
+                "url": "xml-navigation"
+            },
+            {
+                "name": "XML Templates and Query",
+                "url": "xml-templates-and-query"
             },
             {
                 "name": "XML Namespaces",
                 "url": "xml-namespaces"
             },
             {
-                "name": "XML Access",
-                "url": "xml-access"
-            },
-            {
-                "name": "XML Functions",
-                "url": "xml-functions"
-            }
-        ]
-    },
-    {
-        "title": "Binding Patterns",
-        "column": 2,
-        "category": "Language concepts",
-        "samples": [ {
-                "name": "Tuple-Typed Binding Pattern",
-                "url": "tuple-typed-binding-pattern"
-            },
-            {
-                "name": "Record-Typed Binding Pattern",
-                "url": "record-typed-binding-pattern"
-            },
-            {
-                "name": "Error-Typed Binding Pattern",
-                "url": "error-typed-binding-pattern"
-            },
-            {
-                "name": "Tuple Destructure Binding Pattern",
-                "url": "tuple-destructure-binding-pattern"
-            },
-            {
-                "name": "Record Destructure Binding Pattern",
-                "url": "record-destructure-binding-pattern"
-            },
-            {
-                "name": "Error Destructure Binding Pattern",
-                "url": "error-destructure-binding-pattern"
-            }
-        ]
-    },
-    {
-        "title": "Errors",
-        "column": 2,
-        "category": "Language concepts",
-        "samples": [{
-                "name": "Error Handling",
-                "url": "error-handling"
-            },
-            {
-                "name": "Check",
-                "url": "check"
-            },
-            {
-                "name": "Panic",
-                "url": "panic"
-            },
-            {
-                "name": "Check Panic",
-                "url": "checkpanic"
-            },
-            {
-                "name": "Trap",
-                "url": "trap"
-            },
-            {
-                "name": "User-defined Error Types",
-                "url": "user-defined-error"
+                "name": "XMLNS Declarations",
+                "url": "xmlns-declarations"
             }
         ]
     },
     {
         "title": "Concurrency",
-        "column": 2,
-        "category": "Language concepts",
-        "samples": [{
-                "name": "Workers",
-                "url": "workers"
-            },
-            {
-                "name": "Worker Interactions",
-                "url": "worker-interaction"
-            },
-            {
-                "name": "Fork",
-                "url": "fork"
-            },
-            {
-                "name": "Fork Variable Access",
-                "url": "fork-variable-access"
-            },
-            {
-                "name": "Async",
-                "url": "async"
-            },
-            {
-                "name": "Threads and Strands",
-                "url": "threads-and-strands"
-            }
-        ]
-    },
-    {
-        "title": "Lock",
-        "column": 2,
-        "category": "Language concepts",
-        "samples": [{
-            "name": "Lock",
-            "url": "locks"
-        }
-        ]
-    },
-    {
-        "title": "I/O",
-        "column": 3,
-        "category": "Language concepts",
-        "samples": [{
-                "name": "Byte I/O",
-                "url": "byte-io"
-            },
-            {
-                "name": "Data I/O",
-                "url": "data-io"
-            },
-            {
-                "name": "Record I/O",
-                "url": "record-io"
-            },
-            {
-                "name": "CSV I/O",
-                "url": "csv-io"
-            },
-            {
-                "name": "JSON I/O",
-                "url": "json-io"
-            },
-            {
-                "name": "XML I/O",
-                "url": "xml-io"
-            },
-            {
-                "name": "Read/Write Files",
-                "url": "character-io"
-            },
-            {
-                "name": "JSON to CSV Transform",
-                "url": "json-csv"
-            }
-        ]
-    },
-    {
-        "title": "Java Interoperability",
-        "column": 2,
-        "category": "Language concepts",
+        "column": 0,
+        "category": "Language Concepts",
         "samples": [
             {
-                "name": "Create Java Objects",
-                "url": "create-java-objects"
+                "name": "Named Workers",
+                "url": "named-workers"
             },
             {
-                "name": "Invoke Java Methods",
-                "url": "invoke-java-methods"
+                "name": "Sequence Diagrams",
+                "url": "sequence-diagrams"
             },
             {
-                "name": "Access/Mutate Java Fields",
-                "url": "access-mutate-java-fields"
+                "name": "Waiting for Workers",
+                "url": "waiting-for-workers"
             },
             {
-                "name": "Java Arrays",
-                "url": "java-arrays"
+                "name": "Strands",
+                "url": "strands"
             },
             {
-                "name": "Java Varargs",
-                "url": "java-varargs"
+                "name": "Named Worker Return Values",
+                "url": "named-worker-return-values"
             },
             {
-                "name": "Overloaded Methods/Constructors",
-                "url": "overloaded-methods-constructors"
+                "name": "Alternate Wait",
+                "url": "alternate-wait"
             },
             {
-                "name": "Java Exceptions",
-                "url": "java-exceptions"
-            }
-        ]
-    },
- 	{
-        "title": "Common Libraries",
-        "column": 3,
-        "category": "Language concepts",
-        "samples": [{
-                "name": "Time",
-                "url": "time"
+                "name": "Multiple Wait",
+                "url": "multiple-wait"
             },
             {
-                "name": "Cache",
-                "url": "cache"
+                "name": "Named Workers and Futures",
+                "url": "named-workers-and-futures"
             },
             {
-                "name": "Config",
-                "url": "config-api"
+                "name": "Inter-Worker Message Passing",
+                "url": "inter-worker-message-passing"
             },
             {
-                "name": "Log",
-                "url": "log-api"
-            },
-            {
-                "name": "Math",
-                "url": "math-functions"
-            },
-            {
-                "name": "String",
-                "url": "strings"
-            },
-            {
-                "name": "File Path",
-                "url": "filepath"
-            },
-            {
-                "name": "File",
-                "url": "file"
-            },
-            {
-                "name": "Task Scheduler Appointment",
-                "url": "task-scheduler-appointment"
-            },
-            {
-                "name": "Task Scheduler Timer",
-                "url": "task-scheduler-timer"
-            },
-            {
-                "name": "Task Service Appointment",
-                "url": "task-service-appointment"
-            },
-            {
-                "name": "Task Service Timer",
-                "url": "task-service-timer"
-            },
-            {
-                "name": "XSLT Transformation",
-                "url": "xslt-transformation"
+                "name": "Inter-Worker Failure Propagation",
+                "url": "inter-worker-failure-propagation"
             }
         ]
     },
     {
-        "title": "Security",
-        "column": 3,
-        "category": "Language concepts",
-        "samples": [{
-                "name": "Taint Checking",
-                "url": "taint-checking"
-            },
-            {
-                "name": "Cryptographic Operations",
-                "url": "crypto"
-            },
-            {
-                "name": "JWT Issue/Validate",
-                "url": "jwt-issue-validate"
-            },
-            {
-                "name": "URL Encode/Decode Operations",
-                "url": "url-encode-decode"
-            }
-        ]
-    },
- 	{
-        "title": "Testing",
-        "column": 3,
-        "category": "Language concepts",
-        "samples": [{
-                "name": "Assertions",
-                "url": "testerina-assertions"
-            },
-            {
-                "name": "Before and After Test",
-                "url": "testerina-before-and-after-test"
-            },
-            {
-                "name": "Before Each Test",
-                "url": "testerina-before-each-test"
-            },
-            {
-                "name": "Before and After Suite",
-                "url": "testerina-before-and-after-suite"
-            },
-            {
-                "name": "Data Driven Tests",
-                "url": "testerina-data-driven-tests"
-            },
-            {
-                "name": "Guarantee Test Execution Order",
-                "url": "testerina-guarantee-test-execution-order"
-            },
-            {
-                "name": "Function Mocks",
-                "url": "testerina-mocking-functions"
-            },
-            {
-                "name": "Object Mocks",
-                "url": "testerina-mocking-objects"
-            },
-            {
-                "name": "Group Tests",
-                "url": "testerina-group-tests"
-            }        
-        ]
-    },
-    {
-        "title": "Deployment",
-        "column": 3,
-        "category": "Language concepts",
-        "samples": [{
-                "name": "Docker Deployment",
-                "url": "docker-deployment"
-            },
-            {
-                "name": "Kubernetes Deployment",
-                "url": "kubernetes-deployment"
-            },
-            {
-                "name": "OpenShift Deployment",
-                "url": "openshift-deployment"
-            },
-            {
-                "name": "AWS Lambda Deployment",
-                "url": "aws-lambda-deployment"
-            },
-            {
-                "name": "Knative Deployment",
-                "url": "knative-deployment"
-            },
-            {
-                "name": "Azure Functions Deployment",
-                "url": "azure-functions-deployment"
-            }
-        ]
-    },
-    {
-        "title": "HTTP/HTTPS",
+        "title": "Transactions",
         "column": 0,
-        "category": "Working over the network",
-        "samples": [{
-                "name": "Client Endpoint",
-                "url": "http-client-endpoint"
+        "category": "Language Concepts",
+        "samples": []
+    },
+    {
+        "title": "Concurrency Safety",
+        "column": 0,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Lock Statement",
+                "url": "lock-statement"
             },
             {
-                "name": "Redirects",
-                "url": "http-redirects"
+                "name": "Isolated Functions",
+                "url": "isolated-functions"
             },
             {
-                "name": "Base Path and Path",
-                "url": "base-path-and-path"
+                "name": "Readonly Type",
+                "url": "readonly-type"
             },
             {
-                "name": "Query Path Matrix Param",
-                "url": "query-path-matrix-param"
+                "name": "Readonly and Isolated",
+                "url": "readonly-and-isolated"
+            },
+            {
+                "name": "Isolated Variables",
+                "url": "isolated-variables"
+            },
+            {
+                "name": "Isolated Methods",
+                "url": "isolated-methods"
+            },
+            {
+                "name": "Isolated Objects",
+                "url": "isolated-objects"
+            },
+            {
+                "name": "Inferring Isolated",
+                "url": "inferring-isolated"
+            }
+        ]
+    },
+    {
+        "title": "REST API",
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Service Data Binding",
+                "url": "http-data-binding"
+            },
+            {
+                "name": "Client Data Binding",
+                "url": "http-client-data-binding"
+            },
+            {
+                "name": "Absolute Path and Resource Path",
+                "url": "http-absolute-path-and-path"
+            },
+            {
+                "name": "Default Resource",
+                "url": "http-default-resource"
+            },
+            {
+                "name": "Path Matrix Param",
+                "url": "http-path-matrix-param"
+            },
+            {
+                "name": "Resource Return Types",
+                "url": "http-resource-returns"
             },
             {
                 "name": "Restrict By Media Type",
-                "url": "restrict-by-media-type"
+                "url": "http-restrict-by-media-type"
             },
             {
-                "name": "HTTP Caching",
-                "url": "http-caching-client"
-            },
+                "name": "Handling Different Payload Types",
+                "url": "http-different-payload-types"
+            }           
+        ]
+    },
+    {
+        "title": "HTTP",
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
             {
-                "name": "Disable Chunking",
-                "url": "http-disable-chunking"
-            },
-            {
-                "name": "Trace Logs",
-                "url": "http-trace-logs"
-            },
-            {
-                "name": "HTTPS Listener",
-                "url": "https-listener"
-            },
-            {
-                "name": "Basic HTTPS Listener Client",
-                "url": "basic-https-listener-client"
-            },
-            {
-                "name": "Mutual SSL",
-                "url": "mutual-ssl"
-            },
-            {
-                "name": "Request With Multiparts",
-                "url": "request-with-multiparts"
-            },
-            {
-                "name": "Response With Multiparts",
-                "url": "response-with-multiparts"
+                "name": "Client",
+                "url": "http-client-endpoint"
             },
             {
                 "name": "CORS",
                 "url": "http-cors"
             },
             {
-                "name": "Access Logs",
-                "url": "http-access-logs"
-            },
-            {
-                "name": "Data Binding",
-                "url": "http-data-binding"
-            },
-            {
                 "name": "100 Continue",
                 "url": "http-100-continue"
             },
             {
-                "name": "Handling Different Payload Types",
-                "url": "different-payload-types"
+                "name": "Redirects",
+                "url": "http-redirects"
             },
             {
-                "name": "HTTP Streaming",
+                "name": "Streaming",
                 "url": "http-streaming"
             },
             {
-                "name": "HTTP Compression",
+                "name": "Compression",
                 "url": "http-compression"
             },
             {
-                "name": "HTTP Interceptors/Filters",
-                "url": "http-filters"
+                "name": "Cookies",
+                "url": "http-cookies"
             },
             {
-                "name": "HTTP Cookies",
-                "url": "http-cookies"
-            }
+                "name": "Query Parameter",
+                "url": "http-query-parameter"
+            },
+            {
+                "name": "Disable Chanking",
+                "url": "http-disable-chunking"
+            },
+            {
+                "name": "Response With Multiparts",
+                "url": "http-response-with-multiparts"
+            },
+            {
+                "name": "Request With Multiparts",
+                "url": "http-request-with-multiparts"
+            },
+            {
+                "name": "Passthrough",
+                "url": "http-passthrough"
+            }             
         ]
     },
     {
         "title": "HTTP2",
         "column": 0,
-        "category": "Working over the network",
-        "samples": [{
+        "category": "Working Over the Network",
+        "samples": [
+            {
                 "name": "HTTP 1.1 to 2.0 Protocol Switch",
                 "url": "http-1-1-to-2-0-protocol-switch"
             },
             {
                 "name": "HTTP 2.0 Server Push",
                 "url": "http-2-0-server-push"
-            }
+            }    
         ]
     },
- 	{
-        "title": "WebSockets ",
-        "column": 1,
-        "category": "Working over the network",
-        "samples": [{
-                "name": "Client Endpoint",
-                "url": "websocket-client"
+    {
+        "title": "GraphQL",
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Hello World",
+                "url": "graphql-hello-world"
             },
             {
-                "name": "Basic Server Functionalities",
-                "url": "websocket-basic-sample"
+                "name": "Returning Record Values",
+                "url": "graphql-returning-record-values"
             },
             {
-                "name": "HTTP To WebSocket Upgrade",
-                "url": "http-to-websocket-upgrade"
+                "name": "Hierarchical Resource Paths",
+                "url": "graphql-hierarchical-resource-paths"
             },
             {
-                "name": "Proxy Server",
-                "url": "websocket-proxy-server"
+                "name": "Returning Service Objects",
+                "url": "graphql-returning-service-objects"
             },
             {
-                "name": "Chat Application",
-                "url": "websocket-chat-application"
-            },
-            {
-                "name": "Failover",
-                "url": "websocket-failover"
-            },
-            {
-                "name": "Retry",
-                "url": "websocket-retry"
+                "name": "Input Types",
+                "url": "graphql-input-types"
             }
         ]
     },
     {
-        "title": "Routing",
-        "column": 1,
-        "category": "Working over the network",
-        "samples": [{
-                "name": "Header-Based Routing",
-                "url": "header-based-routing"
+        "title": "WebSockets",
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Handle Text Messages with Client",
+                "url": "websocket-text-client"
             },
             {
-                "name": "Passthrough",
-                "url": "passthrough"
+                "name": "Handle Binary Messages with Client",
+                "url": "websocket-binary-client"
             },
             {
-                "name": "Content-Based Routing",
-                "url": "content-based-routing"
+                "name": "Listener Functionalities",
+                "url": "websocket-basic-sample"
+            }
+        ]
+    },
+    {
+        "title": "WebSub",
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Websub Subscriber Service",
+                "url": "websub-webhook-sample"
             }
         ]
     },
     {
         "title": "Resiliency",
-        "column": 1,
-        "category": "Working over the network",
-        "samples": [{
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
+            {
                 "name": "Circuit Breaker",
                 "url": "http-circuit-breaker"
             },
             {
-                "name": "Load Balancing",
+                "name": "Load Balancer",
                 "url": "http-load-balancer"
             },
             {
@@ -904,102 +665,61 @@
             {
                 "name": "Timeout",
                 "url": "http-timeout"
-            }
-        ]
-    },
-    {
-        "title": "WebSub",
-        "column": 1,
-        "category": "Working over the network",
-        "samples": [{
-            "name": "Internal Hub Sample",
-            "url": "websub-internal-hub-sample"
-        },
-            {
-                "name": "Remote Hub Sample",
-                "url": "websub-remote-hub-sample"
-            },
-            {
-                "name": "Hub Client Sample",
-                "url": "websub-hub-client-sample"
-            },
-            {
-                "name": "Service Integration Sample",
-                "url": "websub-service-integration-sample"
-            }
+            }          
         ]
     },
     {
         "title": "Listeners",
-        "column": 1,
-        "category": "Working over the network",
-        "samples": [{
-            "name": "Directory Listener",
-            "url": "directory-listener"
-        }]
-    },
-    {
-        "title": "Database",
-        "column": 2,
-        "category": "Working over the network",
+        "column": 0,
+        "category": "Working Over the Network",
         "samples": [
             {
-                "name": "JDBC Client CRUD Operations",
-                "url": "jdbc-client-crud-operations"
+                "name": "Directory Listener",
+                "url": "directory-listener"
             },
             {
-                "name": "JDBC Client Batch Update",
-                "url": "jdbc-client-batch-update"
-            },
-            {
-                "name": "JDBC Client Call Procedures",
-                "url": "jdbc-client-call-procedures"
-            },
-            {
-                "name": "Streaming a Big Dataset",
-                "url": "jdbc-streaming-big-dataset"
+                "name": "Dynamic Listener",
+                "url": "dynamic-listener"
             }
         ]
     },
     {
         "title": "gRPC",
-        "column": 2,
-        "category": "Working over the network",
-        "samples": [{
-                "name": "Unary Blocking",
-                "url": "grpc-unary-blocking"
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Simple RPC",
+                "url": "grpc-simple"
             },
             {
-                "name": "Unary Non-Blocking",
-                "url": "grpc-unary-non-blocking"
+                "name": "Simple RPC With Headers",
+                "url": "grpc-simple-with-headers"
             },
             {
-                "name": "Server Streaming",
+                "name": "Secured Simple RPC",
+                "url": "grpc-secured-simple"
+            },
+            {
+                "name": "Server Streaming RPC",
                 "url": "grpc-server-streaming"
             },
             {
-                "name": "Client Streaming",
+                "name": "Client Streaming RPC",
                 "url": "grpc-client-streaming"
             },
             {
-                "name": "Bidirectional Streaming",
+                "name": "Bidirectional Streaming RPC",
                 "url": "grpc-bidirectional-streaming"
-            },
-            {
-                "name": "Secured Unary",
-                "url": "grpc-secured-unary"
-            },
-            {
-                "name": "Proto To Ballerina",
-                "url": "proto-to-ballerina"
             }
         ]
     },
- 	{
+    {
         "title": "Observability",
-        "column": 2,
-        "category": "Working over the network",
-        "samples": [{
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
+            {
                 "name": "Distributed Tracing",
                 "url": "tracing"
             },
@@ -1011,16 +731,14 @@
                 "name": "Gauge-Based Metrics",
                 "url": "gauge-metrics"
             }
+
         ]
     },
- 	{
+    {
         "title": "OpenAPI",
-        "column": 2,
-        "category": "Working over the network",
-        "samples": [{
-                "name": "Client Generation",
-                "url": "client-generation"
-            },
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
             {
                 "name": "Ballerina To OpenAPI",
                 "url": "ballerina-to-openapi"
@@ -1029,43 +747,51 @@
                 "name": "OpenAPI To Ballerina",
                 "url": "openapi-to-ballerina"
             }
+
         ]
     },
     {
         "title": "NATS",
-        "column": 3,
-        "category": "Working over the network",
+        "column": 0,
+        "category": "Working Over the Network",
         "samples": [
             {
-                "name": "Basic Publisher and Subscriber",
-                "url": "nats-basic-client"
+                "name": "Publish/Subscribe",
+                "url": "nats-basic-pub-sub"
             },
             {
-                "name": "Basic Streaming Publisher and Subscriber",
-                "url": "nats-streaming-client"
-            },
+                "name": "Request/Reply",
+                "url": "nats-basic-request-reply"
+            }
+        ]
+    },
+    {
+        "title": "STAN",
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
             {
-                "name": "Streaming Publisher and Subscriber With Data Binding",
-                "url": "nats-streaming-consumer-with-data-binding"
-            },
-            {
-                "name": "Durable Subscriptions",
-                "url": "nats-streaming-durable-subscriptions"
+                "name": "Publish/Subscribe",
+                "url": "nats-streaming-pub-sub"
             },
             {
                 "name": "Queue Groups",
                 "url": "nats-streaming-queue-group"
             },
             {
+                "name": "Durable Subscriptions",
+                "url": "nats-streaming-durable-subscriptions"
+            },
+            {
                 "name": "Historical Message Replay",
                 "url": "nats-streaming-start-position"
-            }
+            }                   
         ]
     },
     {
         "title": "Kafka",
-        "column": 3,
-        "category": "Working over the network",
+        "column": 0,
+        "category": "Working Over the Network",
         "samples": [
             {
                 "name": "Producer",
@@ -1085,7 +811,7 @@
             },
             {
                 "name": "Consumer Groups",
-                "url": "kafka-group-service"
+                "url": "kafka-consumer-group-service"
             },
             {
                 "name": "SASL Authentication - Consumer",
@@ -1099,8 +825,8 @@
     },
     {
         "title": "RabbitMQ",
-        "column": 3,
-        "category": "Working over the network",
+        "column": 0,
+        "category": "Working Over the Network",
         "samples": [
             {
                 "name": "Producer",
@@ -1115,138 +841,409 @@
                 "url": "rabbitmq-consumer-with-client-acknowledgement"
             },
             {
-                "name": "Data Binding",
-                "url": "rabbitmq-consumer-with-data-binding"
+                "name": "Transactional Producer",
+                "url": "rabbitmq-transaction-producer"
             },
             {
-                "name": "QoS Settings",
-                "url": "rabbitmq-consumer-with-qos-settings"
-            }
+                "name": "SASL Authentication - Consumer",
+                "url": "rabbitmq-transaction-consumer"
+            }            
         ]
     },
     {
-        "title": "Socket",
-        "column": 3,
-        "category": "Working over the network",
-        "samples": [{
-                "name": "Basic TCP Socket",
-                "url": "tcp-socket-listener-client"
+        "title": "TCP",
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "TCP Client",
+                "url": "tcp-client"
             },
             {
-                "name": "Basic UDP Client Socket",
-                "url": "udp-socket-client"
-            }
+                "name": "TCP Listener",
+                "url": "tcp-listener"
+            },
+            {
+                "name": "TCP Transport Security",
+                "url": "tcp-transport-security"
+            }                        
         ]
     },
     {
-        "title": "Access Control",
-        "column": 3,
-        "category": "Working over the network",
-        "samples": [{
-                "name": "Secured Service with Basic Auth",
-                "url": "secured-service-with-basic-auth"
+        "title": "UDP",
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "UDP Connectionless Client",
+                "url": "udp-client"
             },
             {
-                "name": "Secured Service with JWT Auth",
-                "url": "secured-service-with-jwt-auth"
+                "name": "UDP Connection-Oriented Client",
+                "url": "udp-connect-client"
             },
             {
-                "name": "Secured Service with OAuth2",
-                "url": "secured-service-with-oauth2"
+                "name": "UDP Listener",
+                "url": "udp-listener"
+            } 
+
+        ]
+    },
+    {
+        "title": "REST API Security",
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Service - SSL/TLS",
+                "url": "http-service-ssl-tls"
             },
             {
-                "name": "Secured Service with LDAP",
-                "url": "secured-service-with-ldap"
+                "name": "Service - Mutual SSL",
+                "url": "http-service-mutual-ssl"
             },
             {
-                "name": "Secured Client with Basic Auth",
-                "url": "secured-client-with-basic-auth"
+                "name": "Service - Basic Auth File User Store",
+                "url": "http-service-basic-auth-file-user-store"
             },
             {
-                "name": "Secured Client with JWT Auth",
-                "url": "secured-client-with-jwt-auth"
+                "name": "Service - Basic Auth LDAP User Store",
+                "url": "http-service-basic-auth-ldap-user-store"
             },
             {
-                "name": "Secured Client with OAuth2",
-                "url": "secured-client-with-oauth2"
+                "name": "Service - JWT Auth",
+                "url": "http-service-jwt-auth"
+            },
+            {
+                "name": "Service - OAuth2",
+                "url": "http-service-oauth2"
+            },
+            {
+                "name": "Client - SSL/TLS",
+                "url": "http-client-ssl-tls"
+            },
+            {
+                "name": "Client - Mutual SSL",
+                "url": "http-client-mutual-ssl"
+            },
+            {
+                "name": "Client - Basic Auth",
+                "url": "http-client-basic-auth"
+            },
+            {
+                "name": "Client - Bearer Token Auth",
+                "url": "http-client-bearer-token-auth"
+            },
+            {
+                "name": "Client - Self Signed JWT Auth",
+                "url": "http-client-self-signed-jwt-auth"
+            },
+            {
+                "name": "Client - OAuth2 Client Credentials Grant Type",
+                "url": "http-client-oauth2-client-credentials-grant-type"
+            },
+            {
+                "name": "Client - OAuth2 Password Grant Type",
+                "url": "http-client-oauth2-password-grant-type"
+            },
+            {
+                "name": "Client - OAuth2 Refresh Token Grant Type",
+                "url": "http-client-oauth2-refresh-token-grant-type"
             }
         ]
     },
     {
         "title": "Email",
-        "column": 2,
-        "category": "Working over the network",
-        "samples": [{
-                "name": "Send and Receive Emails",
-                "url": "send-and-receive-emails"
-            }
-        ]
-    },
-    {
-        "title": "JDBC Database Connector",
         "column": 0,
-        "category": "Preview features",
+        "category": "Working Over the Network",
         "samples": [
             {
-                "name": "JDBC Client Initialization",
-                "url": "jdbc2-init-options"
+                "name": "Send Emails",
+                "url": "send-email"
             },
             {
-                "name": "JDBC Select Query Operations",
-                "url": "jdbc2-query-operation"
+                "name": "Receive Emails Using a Client",
+                "url": "receive-email-using-client"
             },
             {
-                "name": "JDBC Query with Complex Types",
-                "url": "jdbc2-complex-type-queries"
-            },
-            {
-                "name": "JDBC DDL and DML Operations",
-                "url": "jdbc2-execute-operation"
+                "name": "Receive Emails Using a Listener",
+                "url": "receive-email-using-listener"
             }
         ]
     },
     {
-        "title": "MySQL Database Connector",
-        "column": 1,
-        "category": "Preview features",
+        "title": "MySQL",
+        "column": 0,
+        "category": "Working Over the Network",
         "samples": [
             {
-                "name": "MySQL Client Initialization",
-                "url": "mysql-init-options"
-            },
-            {
-                "name": "MySQL Select Query Operations",
+                "name": "Simple Query",
                 "url": "mysql-query-operation"
             },
             {
-                "name": "MySQL Query with Complex Types",
+                "name": "Query With Complex Types",
                 "url": "mysql-complex-type-queries"
             },
             {
-                "name": "MySQL DDL and DML Operations",
+                "name": "DML and DDL Operation",
                 "url": "mysql-execute-operation"
+            },
+            {
+                "name": "Batch Execute",
+                "url": "mysql-batch-execute-operation"
+            },
+            {
+                "name": "Atomic Batch Execute",
+                "url": "mysql-atomic-batch-execute-operation"
+            },
+            {
+                "name": "Call Stored Procedures",
+                "url": "mysql-call-stored-procedures"
+            }            
+        ]
+    },
+    {
+        "title": "JDBC",
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Simple Query",
+                "url": "jdbc-query-operation"
+            },
+            {
+                "name": "Query With Complex Types",
+                "url": "jdbc-complex-type-queries"
+            },
+            {
+                "name": "DML and DDL Operation",
+                "url": "jdbc-execute-operation"
+            },
+            {
+                "name": "Batch Execute",
+                "url": "jdbc-batch-execute-operation"
+            },
+            {
+                "name": "Atomic Batch Execute",
+                "url": "jdbc-atomic-batch-execute-operation"
             }
         ]
     },
     {
-        "title": "Transactions",
+        "title": "IO",
         "column": 0,
-        "category": "Experimental features",
-        "samples": [{
-                "name": "Local Transactions",
-                "url": "local-transactions"
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "Read/Write Bytes",
+                "url": "io-bytes"
             },
             {
-                "name": "Local Transactions with participants",
-                "url": "local-transactions-with-participants"
+                "name": "Read/Write Strings",
+                "url": "io-strings"
             },
             {
-                "name": "XA Transactions",
-                "url": "xa-transactions"
+                "name": "Read/Write CSV",
+                "url": "io-csv"
             },
             {
-                "name": "Distributed Transactions",
-                "url": "transactions-distributed"
+                "name": "Read/Write JSON",
+                "url": "io-json"
+            },
+            {
+                "name": "Read/Write XML",
+                "url": "io-xml"
+            }
+        ]
+    },
+    {
+        "title": "Security",
+        "column": 0,
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "Cryptographic Operations",
+                "url": "security-crypto"
+            },
+            {
+                "name": "JWT Issue/Validate",
+                "url": "security-jwt-issue-validate"
+            }
+        ]
+    },
+    {
+        "title": "URL",
+        "column": 0,
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "URL Encode/Decode Operations",
+                "url": "url-encode-decode"
+            }
+        ]
+    },
+    {
+        "title": "Time",
+        "column": 0,
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "UTC Time",
+                "url": "time-utc"
+            },
+            {
+                "name": "Time with Zone Offset",
+                "url": "time-utc-and-civil"
+            },
+            {
+                "name": "Time formatting/Parsing",
+                "url": "time-formatting-and-parsing"
+            }
+        ]
+    },
+    {
+        "title": "Cache",
+        "column": 0,
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "Cache Basics",
+                "url": "cache-basics"
+            },
+            {
+                "name": "Cache Invalidation",
+                "url": "cache-invalidation"
+            }
+        ]
+    },
+    {
+        "title": "Log",
+        "column": 0,
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "Logging",
+                "url": "logging"
+            },
+            {
+                "name": "Logging with Context",
+                "url": "logging-with-context"
+            },
+            {
+                "name": "Configure Logging",
+                "url": "logging-configuration"
+            }
+        ]
+    },
+    {
+        "title": "File",
+        "column": 0,
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "File Paths",
+                "url": "filepaths"
+            },
+            {
+                "name": "Directories",
+                "url": "directories"
+            },
+            {
+                "name": "Temp Files and Directories",
+                "url": "temp-files-directories"
+            },
+            {
+                "name": "Directory Listener",
+                "url": "directory-listener"
+            }
+        ]
+    },
+    {
+        "title": "Random",
+        "column": 0,
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "Random Numbers",
+                "url": "random-numbers"
+            }
+        ]
+    },
+    {
+        "title": "Task",
+        "column": 0,
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "Schedule Job recurrence by Frequency",
+                "url": "task-frequency-job-execution"
+            },
+            {
+                "name": "Schedule one time job",
+                "url": "task-one-time-job-execution"
+            },
+            {
+                "name": "Manage Scheduled Jobs",
+                "url": "manage-scheduled-jobs"
+            }
+        ]
+    },
+    {
+        "title": "UUID",
+        "column": 0,
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "Generate UUID",
+                "url": "uuid-generation"
+            },
+            {
+                "name": "UUID Operations",
+                "url": "uuid-operations"
+            }
+        ]
+    },
+    {
+        "title": "XSLT",
+        "column": 0,
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "XSLT Transformation",
+                "url": "xslt-transformation"
+            }
+        ]
+    },
+    {
+        "title": "Regex",
+        "column": 0,
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "Regular Expressions",
+                "url": "regular-expressions"
+            }
+        ]
+    },
+    {
+        "title": "OS",
+        "column": 0,
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "Environment Variables",
+                "url": "environment-variables"
+            }
+        ]
+    },
+    {
+        "title": "XML Data",
+        "column": 0,
+        "category": "Common Libraries",
+        "samples": [
+            {
+                "name": "XML JSON Conversion",
+                "url": "xml-json-conversion"
             }
         ]
     }

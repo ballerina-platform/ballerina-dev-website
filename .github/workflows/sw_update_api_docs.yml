@@ -31,14 +31,14 @@ jobs:
         unzip ballerina.zip
 
     - name: Remove old API Docs
-      run: git rm -r swan-lake/learn/api-docs/ballerina
+      run: git rm -r learn/api-docs/ballerina
 
     - name: Copy newly generated API Docs
       run: |
         VERSION="`jq -r '.version' _data/swanlake-latest/metadata.json`"
-        SHORT_VERSION="`echo $VERSION | sed 's/swan-lake-preview/slp/g'`"
+        SHORT_VERSION="`jq -r '."short-version"' _data/swanlake-latest/metadata.json`"
 
-        cp -r ballerina-${VERSION}/distributions/ballerina-${SHORT_VERSION}/docs swan-lake/learn/api-docs/ballerina
+        cp -r ballerina-${VERSION}/distributions/ballerina-${SHORT_VERSION}/docs learn/api-docs/ballerina
 
     - name: Push changes for new API Docs
       run: |
@@ -48,7 +48,7 @@ jobs:
         git config --global user.email "ballerina-bot@ballerina.org"
         git config --global user.name "ballerina-bot"
         
-        git add swan-lake/learn/api-docs/ballerina
+        git add learn/api-docs/ballerina
         git commit --allow-empty -m 'Update Swan Lake API Docs'
         
         git push --set-upstream origin automate-apidoc-$GITHUB_SHA

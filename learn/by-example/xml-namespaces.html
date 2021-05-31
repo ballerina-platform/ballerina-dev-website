@@ -1,26 +1,20 @@
 ---
 layout: ballerina-example-page
 title: XML Namespaces
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: This BBE demonstrates xml namespaces in Ballerina.
+keywords: ballerina, ballerina by example, bbe, xml namespace
 permalink: /learn/by-example/xml-namespaces
+active: xml-namespaces
 redirect_from:
-  - /v1-2/learn/by-example/xml-namespaces
-  - /v1-2/learn/by-example/xml-namespaces.html
+  - /swan-lake/learn/by-example/xml-namespaces
+  - /swan-lake/learn/by-example/xml-namespaces.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">xmlns</span> <span class="s">&quot;http://ballerina.com/aa&quot;</span> <span class="k">as</span> <span class="nx">ns0</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">xmlns</span> <span class="s">&quot;http://ballerina.com/bb&quot;</span> <span class="k">as</span> <span class="nx">ns1</span><span class="p">;</span>
-    <span class="nx">xmlns</span> <span class="s">&quot;http://ballerina.com/default&quot;</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">ns0</span><span class="p">:</span><span class="nx">foo</span><span class="p">);</span>
-    <span class="nx">xmlns</span> <span class="s">&quot;http://ballerina.com/updated&quot;</span> <span class="k">as</span> <span class="nx">ns0</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">ns0</span><span class="p">:</span><span class="nx">foo</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="nx">xml_namespaces</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">{</span><span class="nx">http</span><span class="p">:</span><span class="c1">//ballerina.com/aa}foo</span>
-<span class="p">{</span><span class="nx">http</span><span class="p">:</span><span class="c1">//ballerina.com/updated}foo</span>
+                <div class="highlight"><pre><span class="kt">xml</span><span class="p">:</span><span class="nx">Element</span> <span class="nx">e</span> <span class="p">=</span> <span class="kt">xml</span><span class="s">`&lt;p:e xmlns:p=&quot;http://example.com/&quot;/&gt;`</span><span class="p">;</span>
+<span class="c1">// `name` will be `{http://example.com}e`.</span>
+<span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">getName</span><span class="p">();</span>
 </pre></div>
 
             </div>
@@ -30,7 +24,10 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>XML Namespaces</h2>
-                            <p><p>Ballerina has built-in support for defining and using XML namespaces.</p>
+                            <p><p>The goal is to support for namespaces, but no added complexity if you don’t use them. Qualified name
+ <code>ns:x</code> in XML is expanded into `<code>{url}x</code> where <code>url</code> is the namespace name bound to <code>ns</code>. XML namespace
+ declarations are kept as attributes using standard binding of <code>xmlns</code> to
+ <a href="http://www.w3.org/2000/xmlns/">http://www.w3.org/2000/xmlns/</a>.</p>
 </p>
 
                         </td>
@@ -38,16 +35,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="xml-attributes.html">
+                                    <a class="prev" href="xml-templates-and-query.html">
                                         <span>< PREVIOUS</span>
-                                        <p>XML Attributes</p>
+                                        <p>XML Templates and Query</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="xml-access.html">
+                                    <a class="next" href="xmlns-declarations.html">
                                         <span>NEXT ></span>
-                                        <p>XML Access</p>
+                                        <p>XMLNS Declarations</p>
                                     </a>
                                 </div>
                                 
@@ -63,15 +60,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/xml-namespaces/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/xml-namespaces/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=43645c0b57aa9408e51c50442b3745ed&file=xml_namespaces.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=cf531c6984ae17f276d128122767cc29&file=xml_namespaces.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -94,16 +91,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -112,93 +99,11 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>xml:Element e = xml`&lt;p:e xmlns:p=&quot;http://example.com/&quot;/&gt;`;
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>xmlns &quot;http://ballerina.com/aa&quot; as ns0;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    xmlns &quot;http://ballerina.com/bb&quot; as ns1;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Namespaces can be declared at the module level as well as at the function level. The identifier followed by the
- <code>as</code> keyword is the prefix bound to this namespace name.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    xmlns &quot;http://ballerina.com/default&quot;;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Namespaces can be declared without the prefix. This will define a default namespace.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(ns0:foo);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Namespaces can be used for XML-qualified names.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -206,9 +111,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    xmlns &quot;http://ballerina.com/updated&quot; as ns0;
-    io:println(ns0:foo);
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>string name = e.getName();
 </code></pre></div>
 
                                 </td>
@@ -216,7 +119,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Module level namespaces can be overridden at the function level.</p>
+                                            <p><code>name</code> will be <code>{http://example.com}e</code>.</p>
 
                                         </div>
                                     </div>
@@ -240,11 +143,7 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run xml_namespaces.bal
-{http://ballerina.com/aa}foo
-{http://ballerina.com/updated}foo
+                                    <div class="highlight"><pre><code class=shell-session>bal run xml_namespaces.bal
 </code></pre></div>
 
                                 </td>
@@ -272,7 +171,7 @@ ballerina run xml_namespaces.bal
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

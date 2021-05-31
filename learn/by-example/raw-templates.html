@@ -1,0 +1,365 @@
+---
+layout: ballerina-example-page
+title: Raw Templates
+description: This BBE demonstrates raw templates in Ballerina.
+keywords: ballerina, ballerina by example, bbe, raw templates
+permalink: /learn/by-example/raw-templates
+active: raw-templates
+redirect_from:
+  - /swan-lake/learn/by-example/raw-templates
+  - /swan-lake/learn/by-example/raw-templates.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
+
+<span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">dbClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">url</span> <span class="p">=</span> <span class="s">&quot;jdbc:h2:file:./master/orderdb&quot;</span><span class="p">,</span>
+                           <span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">);</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Uses a raw template to create `Orders` table.</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE IF NOT EXISTS Orders</span>
+<span class="s">                                 (orderId INTEGER NOT NULL IDENTITY,</span>
+<span class="s">                                  customerId INTEGER, noOfItems INTEGER,</span>
+<span class="s">                                  PRIMARY KEY (orderId))`</span><span class="p">);</span>
+    <span class="c1">// Uses a raw template to insert values to `Orders` table.</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO Orders (orderId, customerId, noOfItems)</span>
+<span class="s">                                 VALUES (1, 1, 20)`</span><span class="p">);</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO Orders (orderId, customerId, noOfItems)</span>
+<span class="s">                                 VALUES (2, 1, 15)`</span><span class="p">);</span>
+
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{|</span> <span class="nx">anydata</span><span class="o">...</span><span class="p">;</span> <span class="p">|},</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">strm</span> <span class="p">=</span> <span class="nx">getOrders</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">record</span> <span class="p">{|</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">value</span><span class="p">;|}|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">v</span> <span class="p">=</span> <span class="nx">strm</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">v</span> <span class="nx">is</span> <span class="nx">record</span> <span class="p">{|</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">value</span><span class="p">;|})</span> <span class="p">{</span>
+        <span class="nx">record</span> <span class="p">{}</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+        <span class="nx">v</span> <span class="p">=</span> <span class="nx">strm</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getOrders</span><span class="p">(</span><span class="kt">int</span> <span class="nx">customerId</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{|</span> <span class="nx">anydata</span><span class="o">...</span><span class="p">;</span> <span class="p">|},</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="c1">// In this raw template `customerId` variable is interpolated in the literal.</span>
+    <span class="k">return</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM orders</span>
+<span class="s">                          WHERE customerId = ${customerId}`</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Raw Templates</h2>
+                            <p><p>A raw template is a backtick template without a tag. Exposes result of phase 1 without further processing.
+ Raw template is evaluated by evaluating each expression and creating an object containing. <br></br>
+ - an <code>array</code> of the <code>strings</code> separated by insertions. <br></br>
+ - an <code>array</code> of the results of expression evaluation and an <code>array</code> of <code>strings</code> separating. <br></br>
+ Important use case: SQL parameters.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="backtick-templates.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Backtick Templates</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="xml.html">
+                                        <span>NEXT ></span>
+                                        <p>XML</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="raw-templates">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/raw-templates/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=b1113dc3c5a2a1ce89f6daf1743c56a6&file=raw_templates.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerinax/java.jdbc;
+import ballerina/sql;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>jdbc:Client dbClient = check new (url = &quot;jdbc:h2:file:./master/orderdb&quot;,
+                           user = &quot;test&quot;, password = &quot;test&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check dbClient-&gt;execute(`CREATE TABLE IF NOT EXISTS Orders
+                                 (orderId INTEGER NOT NULL IDENTITY,
+                                  customerId INTEGER, noOfItems INTEGER,
+                                  PRIMARY KEY (orderId))`);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Uses a raw template to create <code>Orders</code> table.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check dbClient-&gt;execute(`INSERT INTO Orders (orderId, customerId, noOfItems)
+                                 VALUES (1, 1, 20)`);
+    _ = check dbClient-&gt;execute(`INSERT INTO Orders (orderId, customerId, noOfItems)
+                                 VALUES (2, 1, 15)`);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Uses a raw template to insert values to <code>Orders</code> table.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record {| anydata...; |}, sql:Error?&gt; strm = getOrders(1);
+    record {|record {} value;|}|sql:Error? v = strm.next();
+    while (v is record {|record {} value;|}) {
+        record {} value = v.value;
+        io:println(value);
+        v = strm.next();
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function getOrders(int customerId) returns stream&lt;record {| anydata...; |}, sql:Error?&gt; {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    return dbClient-&gt;query(`SELECT * FROM orders
+                          WHERE customerId = ${customerId}`);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>In this raw template <code>customerId</code> variable is interpolated in the literal.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>bal run raw_templates.bal
+{&quot;ORDERID&quot;:1,&quot;CUSTOMERID&quot;:1,&quot;NOOFITEMS&quot;:20}
+{&quot;ORDERID&quot;:2,&quot;CUSTOMERID&quot;:1,&quot;NOOFITEMS&quot;:15}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

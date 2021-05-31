@@ -3,12 +3,8 @@ layout: ballerina-layer-page
 title: Network-Aware Type System
 description: See how the Ballerina programming language's network-aware type system helps developers work with networked resources in their code.
 keywords: ballerina, programming lanaguage, type system, data binding
-permalink: /why-ballerina/network-aware-type-system/
+permalink: /why-ballerina/network-aware-type-system-old/
 redirect_from:
-- /why/the-network-in-the-language/
-- /why/the-network-in-the-language
-- /why-ballerina
-- /why-ballerina/
 ---
 <div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">
@@ -32,7 +28,7 @@ redirect_from:
                               </p>
                               <h3 >Shapes in Ballerina</h3>
                               <p>
-                                 Types in Ballerina deal with an abstraction of values that don’t consider storage identity. This abstraction is called a <i>shape</i>. For simple types like <code>int</code> and <code>boolean</code>, there is no difference between a shape and a value because they don’t have a storage identity. To understand the concept of a shape, let’s look at the <a href="https://ballerina.io/learn/by-example/records"><code>record</code> type</a> in Ballerina. Because records have storage identity, a reference to the value is stored in the variable rather than storing the actual value. This is comparable to references in Java or pointers in C++.
+                                 Types in Ballerina deal with an abstraction of values that don’t consider storage identity. This abstraction is called a <i>shape</i>. For simple types like <code>int</code> and <code>boolean</code>, there is no difference between a shape and a value because they don’t have a storage identity. To understand the concept of a shape, let’s look at the <a href="/learn/by-example/records"><code>record</code> type</a> in Ballerina. Because records have storage identity, a reference to the value is stored in the variable rather than storing the actual value. This is comparable to references in Java or pointers in C++.
                               </p>
                               <p>Here’s an example of a record that stores the state of a door:</p>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">type DoorState record {|
@@ -93,7 +89,7 @@ io:println("Door - Open: ", eds2.open, " Locked: ", eds2.locked);
 </code></pre>
                               <h3>Benefits of a Structural Type System</h3>
                               <p>A structural type system proves beneficial when you have multiple systems interacting with each other since data exchange and type compatibilities can be resolved easier. Let’s dive into a Ballerina 
-                                 <a href="https://ballerina.io/learn/by-example/query-expression.html">integrated query</a> example, which shows this behavior.
+                                 <a href="/learn/by-example/query-expression.html">integrated query</a> example, which shows this behavior.
                               </p>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">type Result record {|
     string name;
@@ -102,8 +98,8 @@ io:println("Door - Open: ", eds2.open, " Locked: ", eds2.locked);
 |};
 ...
 Result[] results = from var person in persons
+                       let int lgrade = (grades[person.name] ?: 0),
                        where lgrade > 75
-                           let int lgrade = (grades[person.name] ?: 0),
                            string targetCollege = "Stanford"
                            select {
                                name: person.name,
@@ -152,7 +148,7 @@ type Person record {
                               </code></pre>
                               <p>Here, the type <code>Person</code> is an open record type defined with an inclusive-record-type-descriptor by using the "<code>{</code>" and "<code>}</code>" delimiters. This is the default behavior when defining record types in Ballerina. An open record is not limited to the fields that are declared in the record type, so we can set additional fields that are not explicitly mentioned in the type definition.</p>
                               <p>The earlier <code>DoorState</code> record type was defined explicitly as a closed record type with an exclusive-record-type-descriptor by using the "<code>{|</code>" and "<code>|}</code>" delimiters. Therefore we were able to list out all the possible shapes in the <code>DoorState</code> type. If this type was defined as an open record, we would have an infinite number of shapes since <code>DoorState</code> values can have any arbitrary field set in the code.</p>
-                              <p>The <code>Person</code> record type above has an <a href="https://ballerina.io/learn/by-example/record-optional-fields.html">optional field</a> <code>ethnicity</code> (denoted by the suffix "<code>?</code>"). This means the field value of <code>ethnicity</code> of a <code>Person</code> record can be skipped without setting a value. Later on, this field can be accessed using the "<code>?.</code>" operator, which would return a value of type <code>Ethnicity?</code>, which is equivalent to the union type <code>Ethnicity|()</code>. In Ballerina, the nil value and the type is represented by <code>()</code>.</p>
+                              <p>The <code>Person</code> record type above has an <a href="/learn/by-example/record-optional-fields.html">optional field</a> <code>ethnicity</code> (denoted by the suffix "<code>?</code>"). This means the field value of <code>ethnicity</code> of a <code>Person</code> record can be skipped without setting a value. Later on, this field can be accessed using the "<code>?.</code>" operator, which would return a value of type <code>Ethnicity?</code>, which is equivalent to the union type <code>Ethnicity|()</code>. In Ballerina, the nil value and the type is represented by <code>()</code>.</p>
                               <p>Let’s create a new type <code>Student</code>, which will be a subtype of the <code>Person</code> type. </p>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">type Student record {
     string name;
@@ -190,42 +186,32 @@ type Person record {
    io:println(p2);
 }
 </code></pre>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">$ ballerina run sample.bal 
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">$ bal run sample.bal 
 P1's ethnicity: N/A
 P2's ethnicity: White
 name=Anne birthYear=1988 married=true ethnicity=White college=Harvard
 </code></pre>
                               <h3>Network Communication with Data Binding</h3>
                               <p>
-                                 The type system features for records in Ballerina can be used when implementing <a href="https://ballerina.io/learn/by-example/http-data-binding.html">data binding</a> operations with structural validation, data types handling, and payload passthrough operations. The functionality will be demonstrated using an HTTP service in Ballerina: 
+                                 The type system features for records in Ballerina can be used when implementing <a href="/learn/by-example/http-data-binding.html">data binding</a> operations with structural validation, data types handling, and payload passthrough operations. The functionality will be demonstrated using an HTTP service in Ballerina: 
                               </p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">http:Client asianRecordsDB = new("http://example.com/");
- 
-@http:ServiceConfig {
-   basePath: "/"
-}
-service RecordService on new http:Listener(8080) {
- 
-   @http:ResourceConfig {
-       path: "/record",
-       body: "entry"
-   }
-   resource function process(http:Caller caller, http:Request request,
-                             Person entry) returns error? {
-       if entry?.ethnicity == "Asian" {
-           io:println("Asian Record: ", entry);
-           json jsonPayload = check json.constructFrom(entry);
-           _ = check asianRecordsDB->post("/store",
-                                          <@untainteD> jsonPayload);
-       } else {
-           io:println("Non-Asian Record: ", entry);
-       }
-       check caller->respond();
-   }
- 
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">http:Client asianRecordsDB = check new ("http://example.com/");
+
+service / on new http:Listener(8080) {
+
+    resource function get 'record(@http:Payload {} Person entry) returns error? {
+        if entry?.ethnicity == "Asian" {
+            io:println("Asian Record: ", entry);
+            json jsonPayload = check entry.cloneWithType(json);
+            _ = check asianRecordsDB->post("/store", <@untainted>jsonPayload);
+        } else {
+            io:println("Non-Asian Record: ", entry);
+        }
+    }
+
 }
 </code></pre>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">$ ballerina run sample.bal 
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">$ bal run sample.bal 
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
 
 </code></pre>

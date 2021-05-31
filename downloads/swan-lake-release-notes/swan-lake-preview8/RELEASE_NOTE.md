@@ -1,6 +1,10 @@
 ---
-layout: ballerina-blank-page
-title: Release Note
+layout: ballerina-left-nav-release-notes
+title: Swan Lake Preview 8
+permalink: /downloads/swan-lake-release-notes/swan-lake-preview8/
+active: swan-lake-preview8
+redirect_from: 
+    - /downloads/swan-lake-release-notes/swan-lake-preview8
 ---
 
 ### Overview of Ballerina Swan Lake Preview 8 
@@ -16,14 +20,13 @@ This release is the eighth preview version of Ballerina Swan Lake. It includes a
         - [Support Identifier Escapes Without an Initial Quote](#support-identifier-escapes-without-an-initial-quote)
         - [Included Record Parameters](#included-record-parameters)
         - [Service Typing Changes](#service-typing-changes)
-        - [Listener object](#listener-object)
+        - [Listener Object](#listener-object)
         - [Transactional Services](#transactional-services)
     - [Standard Library](#standard-library)
         - [HTTP Module Changes](#http-module-changes)
         - [Log Module Changes](#log-module-changes)
         - [Email Module Changes](#email-module-changes)
         - [WebSub Module Changes](#websub-module-changes)
-        - [UUID Module Changes](#uuid-module-changes)
         - [Introduced New Modules](#introduced-new-modules)
 
 #### Updating Ballerina
@@ -52,8 +55,8 @@ If you have not installed Ballerina, then download the [installers](https://ball
 - Introduction of included record parameters
 - Introduction of service typing changes basing services on objects
 - Extension of Ballerina transaction capabilities to define transactional resource functions and transactional remote functions
-- Improvements to the HTTP, Log, Email, WebSub, and UUID Standard Library modules
-- Introduction of the new GraphQL, NATS Streaming (STAN), and WebSocket Standard Library modules
+- Improvements to the HTTP, Log, Email, and WebSub Standard Library modules
+- Introduction of the new GraphQL, NATS Streaming (STAN), UUID, and WebSocket Standard Library modules
 
 ### What is new in Ballerina Swan Lake Preview 8
 
@@ -70,77 +73,79 @@ int 'a\-b;
 
 ##### Included Record Parameters
 
-Included record parameters can be specified as `*T P` in which `T` denotes the record type descriptor and `P` denotes the name of the parameter. When this is compared with the required parameter, the difference is that the values, which are used for the fields of the included record parameter behave as named arguments for the function call, if it had been declared as parameters of the function.
+Included record parameters can be specified as `*T P` in which `T` denotes a record type descriptor and `P` denotes the name of the parameter.
 
-The field names of all included record parameters, which are not of the `never` type, must be distinct from each other and also from the names of the parameters.
+An included record parameter is similar to a required parameter, but it also allows the caller of the function to specify the value for a field of the record type as a named argument using the field's name, as if it had been declared as a parameter.
 
-```ballerina
-type Student record {
-	string firstName;
-	string secondName;
-	int age;
-	Address address?;
-	never gender?;
-};
+The names of the fields in the record type of an included record parameter must be distinct from each other and also from the names of the other parameters, unless it is an optional field of type `never`.
 
-type Address record {|
-	string city;
-	string country;
-|};
-
-type Grades record {|
-	never maths?;
-	never physics?;
-	never chemistry?;
-
-	int...;
-|};
-
-function studentDetails(int addmissionNo, string addmissionDate, *Student student) {
-	string fullName = <string>student.firstName  + <string>student.secondName;
-	int age = student.age;
-	if (student["address"] is Address) {
-    	Address address = <Address>student["address"];
-	}
-}   
-
-function studentTotalMarks(int maths, int physics, int chemistry, *Grades grades) {
-	int totalMarks = maths + physics + chemistry;
-	foreach [string, int?] [subject, marks] in grades.entries() {
-    	totalMarks = totalMarks + <int>marks;
-	}
-}
-```
-
-A named argument in a function call can correspond to an included record parameter in two different ways.
+A named argument in a function call can correspond to the fields of an included record parameter in two different ways.
 
 1. Being relevant to a field of the included recorded parameter, which is not of the `never` type.
 
-    ```ballerina 
-    public function main() {
-        studentDetails(1001, "2020-Nov-20", firstName = "Peter", secondName = "So", age = 18);
-        studentDetails(1002, "2020-Nov-22", firstName = "Anne", secondName = "Doe", age = 20, address = {city: "Colombo", country: "Sri Lanka"});
-    }
-    ```
+   ```ballerina 
+   import ballerina/io;
+ 
+   type Student record {
+       string firstName;
+       string lastName?;
+   };
+ 
+   function printStudentDetails(int admissionNo, *Student student) {
+       string name = student.firstName;
+ 
+       string? lastName = student?.lastName;
+       if lastName is string {
+           name += string ` ${lastName}`;
+       }
+ 
+       io:println("Admission No: ", admissionNo, ", Student Name: ", name);
+   }  
+ 
+   public function main() {
+       printStudentDetails(1001, firstName = "Peter");
+       printStudentDetails(1002, firstName = "Anne", lastName = "Doe");
+   } 
 
-2. Being relevant to a record rest descriptor of an included record parameter. Here, the field is described by a record rest descriptor either as explicitly part of an exclusive record type descriptor or as implicitly as part of an inclusive record type descriptor. The two conditions below should be satisfied for this.
+   ```
 
-    - In the parameter list, there should be only one included record parameter with a record rest descriptor.
-    - The included record parameter with the record rest descriptor must include optional individual field descriptors of the type `never`, which correspond to each parameter name and the names of each individual field descriptor of the other included record parameters. In addition to these optional individual field descriptors, there should not be any other field descriptors with this included record parameter.
+2. Being relevant to a record rest descriptor of an included record parameter that is of an open record type. The following conditions should be satisfied for this.
 
-    ```ballerina
-    public function main() {
-        studentTotalMarks(90, 85, 75);
-        studentTotalMarks(85, 85, 75, english = 75);
-        studentTotalMarks(75, 85, 90, english = 80, generalTest = 70);
-    }
-    ```
+    - In the parameter list, there should be only one included record parameter that is of an open record type.
+    - The open record type must disallow fields of the same names as the other parameters and individual field descriptors of the other included record parameters, by including optional individual field descriptors of the type `never`.  In addition to these optional individual field descriptors, there should not be any other field descriptors in this record type.
+
+   ```ballerina
+   import ballerina/io;
+ 
+   type Grades record {|
+       never math?;
+       never physics?;
+       int...;
+   |};
+ 
+   function printAverage(int math, int physics, *Grades grades) {
+       int totalMarks = math + physics;
+       int count = grades.length() + 2;
+ 
+       foreach int grade in grades {
+           totalMarks += grade;
+       }
+ 
+       io:println("Average: ", totalMarks/count);
+   }
+ 
+   public function main() {
+       printAverage(90, 85);
+       printAverage(85, 85, chemistry = 75);
+       printAverage(75, 85, chemistry = 90, zoology = 80);
+   }
+   ```
 
 ##### Service Typing Changes
 
 Services are now based on objects. The service declaration syntax below is mere syntactic sugar for creating a new instance of a service class and then attaching it to a listener. With this change, the path that the service should serve on can be provided in the service-declaration syntax. This was previously provided using an annotation.
 
-Previous syntax:
+**Previous Syntax**
 
 ```ballerina
 import ballerina/http;
@@ -153,7 +158,7 @@ service hello on new http:Listener(9090) {
 }
 ```
 
-New syntax:
+**New Syntax**
 
 ```ballerina
 import ballerina/http;
@@ -211,12 +216,12 @@ string[] basePath = ["hello", "path"]; // service on "/hello/path"
 l.attach(hello, basePath);
 ```
 
-##### Listener object 
+##### Listener Object 
 
 Listener is no longer defined in `ballerina/lang.object` lang-library, now it is a compiler known internal type.
 A type is a listener object type if it is a subtype of the object type Listener<T,A>, for some type `T` that is a subtype of `service object {}` and some type `A` that is a subtype of `string[]|string|()`.
 
-The object type Listener<T,A>, is described by the following object type descriptor:
+The `object type Listener<T,A>`, is described by the following object type descriptor:
 
 ```ballerina
 object {
@@ -230,11 +235,11 @@ object {
 
 ##### Transactional Services
 
-Ballerina transaction capabilities are extended to services. Now, you can define transactional resource functions and transactional remote functions. These functions will be participants of global distributed transactions. Infection and agreement protocols are implemented based on the Ballerina distributed transaction protocol. 
+Ballerina transaction capabilities have been extended to services. Now, you can define transactional resource methods and transactional remote methods. These methods will be participants of global distributed transactions. Infection and agreement protocols are implemented based on the Ballerina distributed transaction protocol. 
 
-By defining services as participants, all services work as a single unit of work. If any of the services fails, the whole transaction will be reverted and if all the services are successfully called, the transaction will be completed and committed successfully. 
+By defining services as participants, all services work as a single unit of work. If any of the services fail, the whole transaction will be reverted and if all the services are successfully called, the transaction will be completed and committed successfully. 
 
-**Defining a Transactional Resource Function of a Service**
+###### Defining Transactional Resource Methods in a Service
 
 ```ballerina
 transactional resource function get message(http:Caller caller, http:Request req) {
@@ -245,26 +250,27 @@ transactional resource function get message(http:Caller caller, http:Request req
 }
 ```
 
-**Defining  the Transactional Remote Functions of a Client Object**
+###### Defining Transactional Remote Methods in a Client Object
 
 
 ```ballerina
 transactional remote function callMyFirstService() returns @tainted any|error {
-    return self.httpClient->get("/echo/message");
+    return self.httpClient1->get("/echo/message");
 }
 
 transactional remote function callMySecondService() returns @tainted any|error {
-    return self.httpClient->get("/echo/message");
+    return self.httpClient2->get("/user/history");
 }
 ```
 
-**Calling the Service**
+###### Calling the Service
 
 ```ballerina
 transaction {
     var res1 = client->callMyFirstService();
-   var  res2 = client ->callMySecondService();
-   var x = commit;
+    var res2 = client ->callMySecondService();
+    
+    var x = commit;
     if (x is error) {
         // error code
     } else {
@@ -282,7 +288,7 @@ transaction {
 - Basepath field has been removed from the `ServiceConfig` annotation. Use the `absolute resource path` that begins with `/` as the basePath which is optional and defaults to `/` when not specified.
 - The service type can be added as `http:Service`, which is optional after the `service` keyword.
 
-**Old Syntax**
+**Previous Syntax**
 
 ```ballerina
 @http:ServiceConfig {
@@ -307,7 +313,7 @@ service http:Service /hello on new http:Listener(9090) {
 - Use `default` as the resource method name when the resource has to support all methods including standard HTTP methods and custom methods (e.g., the passthrough/proxy use case).
 - The resource path segment represents the `path` as the `path` field of the `ResourceConfig` has been removed.
 - Use `.` to specify the resource path segment if the path needs to be set as `/`.
-- Path params are specified in the resource path segement within square brackets along with the type. The supported types are string, int, float, boolean (e.g., `path/[string foo]`).
+- Path params are specified in the resource path segment within square brackets along with the type. The supported types are string, int, float, boolean (e.g., `path/[string foo]`).
 - Resource signature parameters are optional. Even the `Caller` and `Request` are optional and not ordered.
 - Query param binding support is added. The supported types are string, int, float, boolean, decimal, and the array types of the aforementioned types. The `Query` param type can be nilable (e.g., `(string? bar)`).
 - Rest param support is added. It can be used as a wildcard path segment to accept requests to multiple different paths. Earlier it was used as `/*` and now it can be specified as `[string… s]` in which `s` is accessible within the resource. 
@@ -327,25 +333,25 @@ service http:Service /mytest on new http:Listener(9090) {
 
 ##### Log Module Changes
 
-- Log levels are reduced to `INFO` and `ERROR`. There will be no user configuration to control the log level. All the logs are printed as standard errors.
+- Log levels are reduced to `INFO` and `ERROR`. There will be no user configuration to control the log level. All the logs will be printed to the standard error stream.
 - There are only two APIs to log messages as follows.
 
-1. Log `INFO` messages
+    1. Log `INFO` messages
 
     ```ballerina
-    log:print(“something went wrong”, id = 845315);
+    log:print("something went wrong", id = 845315);
 
     Output:
-    time = 2019-08-09 11:47:07,342 module = “myorg/hello” message = “something went wrong” id = 845315
+    time = 2019-08-09 11:47:07,342 module = "myorg/hello" message = "something went wrong" id = 845315
     ```
 
-2. Log `ERROR` messages
+    2. Log `ERROR` messages
 
     ```ballerina
-    log:printError(“something went wrong”, err = e, id = 845315);
+    log:printError("something went wrong", err = e, id = 845315);
 
     Output:
-    time = 2019-08-09 11:47:07,342 module = “myorg/hello” message = “something went wrong” error = “invaild operation” id = 845315
+    time = 2019-08-09 11:47:07,342 module = "myorg/hello" message = "something went wrong" error = "invaild operation" id = 845315
     ```
 
 - The API supports passing any number of key/value pairs along with the message.
@@ -355,22 +361,22 @@ service http:Service /mytest on new http:Listener(9090) {
 
 The methods related to sending and receiving emails were renamed. The Listener API was divided into the POP and IMAP protocols. 
 
-**Client Changes**
+###### Client Changes
 
  - The `email:Email` definition is changed to `email:Message`.
  - The `read` method of the `email:ImapClient`, `email:PopClient`, and `email:Listener` (i.e., the new `email:PopListener` and `email:ImapListener`) are changed to `receiveEmailMessage`.
 
-**Service Declaration**
+###### Service Declaration
 
-- The `email:Listener` is splitted into the `email:PopListener` and `email:ImapListener`. Therefore, the `protocol` field is removed from the new protocol-specific listeners. The `email:PopConfig` or `email:ImapConfig` that were used as a field for the `email:Listener` are not required for new the API implementation. The protocol configuration related fields are made parts of the new listeners.
-- The resource functions are changed to remote functions in the new listener APIs.
+- The `email:Listener` is split into the `email:PopListener` and `email:ImapListener`. Therefore, the `protocol` field is removed from the new protocol-specific listeners. The `email:PopConfig` or `email:ImapConfig` that was used as a field for the `email:Listener` is not required for new the API implementation. The protocol configuration-related fields are made parts of the new listeners.
+- The resource methods are changed to remote methods in the new listener APIs.
 - The service name is given as a string with the new Ballerina language changes.
-- The `onMessage` method of the `email:Listener` (i.e., the new `email:PopListener` and `email:ImapListener`) are changed to `onEmailMessage`.
-- The `pollingInterval` field of the `email:Listener` is changed to `pollingIntervalInMillis` in new listener APIs. That makes it consistent across the other Ballerina modules, which are time durations configured in milliseconds.
+- The `onMessage` method of the `email:Listener` (i.e., the new `email:PopListener` and `email:ImapListener`) is changed to `onEmailMessage`.
+- The `pollingInterval` field of the `email:Listener` is changed to `pollingIntervalInMillis` in new listener APIs. That makes it consistent with other Ballerina modules, which have time durations configured in milliseconds.
 
 A sample POP3 listener is given below.
 
-**Old Syntax**
+**Previous Syntax**
 
 ```ballerina
 email:PopConfig popConfig = {
@@ -430,7 +436,7 @@ service "emailObserver" on emailListener {
 - The base path is removed from the `SubscriberServiceConfig` annotation.
 - The `onNotification` and `onIntentVerification` resources are converted to remote methods.
 
-**Old Syntax**
+**Previous Syntax**
 
 ```ballerina
 @websub:SubscriberServiceConfig {
@@ -455,26 +461,26 @@ service websub:SubscriberService /websub on new websub:Listener(8181) {
 }
 ```
 
-##### UUID Module Changes
-
-The Ballerina UUID module is introduced with this release. This module provides functions related to UUID(Universally Unique Identifier) such as generating different types of UUIDs and validating and checking the versions of UUID strings.
-
 ##### Introduced New Modules
 
-**GraphQL**
+###### GraphQL
 
-The Ballerina GraphQL module is introduced with this release. This module provides the support to define GraphQL services and handle simple GraphQL queries. Currently, this supports GraphQL service endpoints with the resource functions, which return `graphql:Scalar` values (`int`, `string`, `boolean`, and `float`) and record types only.
+The Ballerina GraphQL module is introduced with this release. This module provides the support to define GraphQL services and handle simple GraphQL queries. Currently, this supports GraphQL service endpoints with the resource methods, which return `graphql:Scalar` values (`int`, `string`, `boolean`, and `float`) and record types only.
 
-**NATS Streaming (STAN)**
+###### NATS Streaming (STAN)
 
 With this release, a new module is introduced for NATS Streaming. Previously, the Ballerina NATS module included the support for streaming as well. Now, NATS and NATS Streaming are separated into Ballerina NATS and Ballerina STAN modules.
 
-**WebSocket**
+###### UUID
+
+The Ballerina UUID module is introduced with this release. This module provides functions related to UUID (Universally Unique Identifier) such as generating different types of UUIDs and validating and checking the versions of UUID strings.
+
+###### WebSocket
 
 - The WebSocket module has been moved out of the HTTP module. Therefore, you will have to change the import from `ballerina/http` to `ballerina/websocket`.
 - Introduced a new listener for the WebSocket module.
 
-**Old Syntax**
+**Previous Syntax**
 
 ```ballerina
 listener http:Listener wsListener = new (9090);
@@ -492,7 +498,7 @@ listener websocket:Listener wsListener = new (9090);
     1. `websocket:UpgradeService` - This is to handle the WebSocket upgrade. This takes the `http:Request` and `http:Caller` parameters in. This service has a predefined `onUpgrade` remote method that returns a `websocket:Service` or an error. Earlier, this was handled by an HTTP upgrade resource. 
     2. `websocket:Service` - This is to handle events after the WebSocket upgrade. This service is still similar to the earlier WebSocket service, which had predefined resources like `onText`, `onBinary`, `onError`, `onPing`, and `onPong`. With the new syntax, all those resources are converted into remote methods.
 
-**Old Syntax**
+**Previous Syntax**
 
 ```ballerina
 import ballerina/http;

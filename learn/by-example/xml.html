@@ -1,35 +1,18 @@
 ---
 layout: ballerina-example-page
 title: XML
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: This BBE demonstrates xml in Ballerina.
+keywords: ballerina, ballerina by example, bbe, xml
 permalink: /learn/by-example/xml
+active: xml
 redirect_from:
-  - /v1-2/learn/by-example/xml
-  - /v1-2/learn/by-example/xml.html
+  - /swan-lake/learn/by-example/xml
+  - /swan-lake/learn/by-example/xml.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">xml</span> <span class="nx">x1</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book&gt;The Lost World&lt;/book&gt;`</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x1</span><span class="p">);</span>
-    <span class="kt">xml</span> <span class="nx">x2</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`Hello, world!`</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x2</span><span class="p">);</span>
-    <span class="kt">xml</span> <span class="nx">x3</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;!--I am a comment--&gt;`</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x3</span><span class="p">);</span>
-    <span class="kt">xml</span> <span class="nx">x4</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;?target data?&gt;`</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x4</span><span class="p">);</span>
-    <span class="kt">xml</span> <span class="nx">x5</span> <span class="p">=</span> <span class="nx">x1</span> <span class="o">+</span> <span class="nx">x2</span> <span class="o">+</span> <span class="nx">x3</span> <span class="o">+</span> <span class="nx">x4</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nResulting XML sequence:&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x5</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span> <span class="nx">below</span><span class="p">.</span>
-<span class="nx">ballerina</span> <span class="nx">run</span> <span class="kt">xml</span><span class="p">.</span><span class="nx">bal</span>
-<span class="p">&lt;</span><span class="nx">book</span><span class="p">&gt;</span><span class="nx">The</span> <span class="nx">Lost</span> <span class="nx">World</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">book</span><span class="p">&gt;</span>
-<span class="nx">Hello</span><span class="p">,</span> <span class="nx">world</span><span class="p">!</span>
-<span class="p">&lt;!</span><span class="o">--</span><span class="nx">I</span> <span class="nx">am</span> <span class="nx">a</span> <span class="nx">comment</span><span class="o">--</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="err">?</span><span class="nx">target</span> <span class="nx">data</span><span class="err">?</span><span class="p">&gt;</span><span class="nx">Resulting</span> <span class="nx">XML</span> <span class="nx">sequence</span><span class="p">:</span>
-<span class="p">&lt;</span><span class="nx">book</span><span class="p">&gt;</span><span class="nx">The</span> <span class="nx">Lost</span> <span class="nx">World</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">book</span><span class="p">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">world</span><span class="p">!&lt;!</span><span class="o">--</span><span class="nx">I</span> <span class="nx">am</span> <span class="nx">a</span> <span class="nx">comment</span><span class="o">--</span><span class="p">&gt;&lt;</span><span class="err">?</span><span class="nx">target</span> <span class="nx">data</span><span class="err">?</span><span class="p">&gt;</span>
+                <div class="highlight"><pre>
 </pre></div>
 
             </div>
@@ -39,8 +22,11 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>XML</h2>
-                            <p><p>The XML type in Ballerina represents a sequence of zero or more XML items.
- Each item can be an element, a text, a comment, or a processing instruction.</p>
+                            <p><p><code>xml</code> is a separate basic type. Uses sequence concept similar to XQuery and XPath2. Based on XML Infoset,
+ rather than PSVI. Allows XM<code>syntax to be used to construct</code>xml<code>values.</code>xml<code>type is designed to
+ work well for HTML as well as XML. Navigation syntax with XPath-like functionality. Works with</code>query
+ expressions` to provide XQuery FLWOR-like functionality. No up pointers: elements do not have a reference to
+ parents or siblings.</p>
 </p>
 
                         </td>
@@ -48,16 +34,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="json-to-xml-conversion.html">
+                                    <a class="prev" href="raw-templates.html">
                                         <span>< PREVIOUS</span>
-                                        <p>JSON to XML Conversion</p>
+                                        <p>Raw Templates</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="xml-literal.html">
+                                    <a class="next" href="sequences.html">
                                         <span>NEXT ></span>
-                                        <p>XML Literal</p>
+                                        <p>Sequences</p>
                                     </a>
                                 </div>
                                 
@@ -73,15 +59,15 @@ redirect_from:
                             <td class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
-                                        <!--<li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>-->
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/xml/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/xml/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6de5b93e3189bfddca6515b326fbbb68&file=xml.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=&file=xml.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -99,203 +85,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    xml x1 = xml `&lt;book&gt;The Lost World&lt;/book&gt;`;
-    io:println(x1);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The XML element. There can be only one root element.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    xml x2 = xml `Hello, world!`;
-    io:println(x2);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The XML text.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    xml x3 = xml `&lt;!--I am a comment--&gt;`;
-    io:println(x3);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The XML comment.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    xml x4 = xml `&lt;?target data?&gt;`;
-    io:println(x4);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The XML processing instructions.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    xml x5 = x1 + x2 + x3 + x4;
-    io:println(&quot;\nResulting XML sequence:&quot;);
-    io:println(x5);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Multiple XML items can be combined to form a sequence of XML. The resulting sequence is another XML on its own.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command below.
-ballerina run xml.bal
-&lt;book&gt;The Lost World&lt;/book&gt;
-Hello, world!
-&lt;!--I am a comment--&gt;
-&lt;?target data?&gt;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Resulting XML sequence:
-&lt;book&gt;The Lost World&lt;/book&gt;Hello, world!&lt;!--I am a comment--&gt;&lt;?target data?&gt;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
 
 
                     <table class="cBottomBorder-table">
@@ -312,7 +101,7 @@ Hello, world!
      <script>
             $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+                // hljs.initHighlightingOnLoad();
 
                 $(".switch").click(function() {
                     $(".cCodeRight").toggleClass('cShow');

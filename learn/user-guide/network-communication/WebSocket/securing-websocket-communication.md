@@ -29,97 +29,88 @@ var ws = new WebSocket("wss://localhost:8443/ws");
 
 1. Create a `wss_service.bal` file with the content below.
 
-   >**Info:** This updates your initial WebSocket echo service to enable TLS on the communication channel. 
+    >**Info:** This updates your initial WebSocket echo service to enable TLS on the communication channel. 
 
-   ```ballerina
-   import ballerina/http;
-   import ballerina/websocket;
-   import ballerina/os;
-   
-   websocket:ListenerConfiguration wsConf = {
-         secureSocket: {
-             key: {
-                 certFile: "resource/path/to/public.crt",
-                 keyFile: "/resource/path/to/private.key"
-             }
-         }
-   };
-   
-   service /ws on new websocket:Listener(8443, config = wsConf) {
-   
-      resource function get .(http:Request req)
-                              returns websocket:Service|
-                                    websocket:UpgradeError {
-         return new WsService();
-      }
-   
-   }
-   
-   service class WsService {
-   
-      *websocket:Service;
-   
-      remote function onTextMessage(websocket:Caller caller,
-                                    string text) returns error? {
-         check caller->writeTextMessage("Echo: " + text);
-      }   
-   }
-   ```
+    ```ballerina
+    listener websocket:Listener securedEP = new(9090,
+       secureSocket = {
+           key: {
+                certFile: "/path/to/public.crt"
+                keyFile: "/path/to/private.key",
+           }
+       }
+    );
+    
+    service /ws on securedEP {
+        resource function get .(http:Request req) returns websocket:Service|websocket:UpgradeError {
+            return new WsService();
+        }
+    }
+       
+    service class WsService {
+        *websocket:Service;
+        remote function onTextMessage(websocket:Caller caller, string text) returns websocket:Error? {
+            check caller->writeTextMessage("Echo: " + text);
+        }
+    }
+    ```
 
 2. Execute the commands below to run the above service. 
 
    ```bash
    $ ballerina run wss_service.bal
    ```
-You view the output below.
 
-   ```bash
-   Compiling source
+    You view the output below.
+
+    ```bash
+    Compiling source
          wss_service.bal
-   Running executables
-   
-   [ballerina/websocket] started WSS listener 0.0.0.0:8443
-   ```
+    Running executables
+    
+    [ballerina/websocket] started WSS listener 0.0.0.0:9090
+    ```
 
-   In the code above, you simply created a WebSocket listener by providing the [`ListenerConfiguration`](/learn/api-docs/ballerina/#/ballerina/websocket/1.1.2/websocket/records/ListenerConfiguration), which contains the secure socket parameters. 
+    In the code above, you simply created a WebSocket listener by providing the [`websocket:ListenerConfiguration`](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerConfiguration), which contains the secure socket parameters. 
+
 
 3. Write a Ballerina WebSocket client (`wss_client.bal`) below to make a connection and send requests to the service above.
 
-   >**Info:** As you are using a self-signed certificate in this example, web browsers will generally reject secure WebSocket connections.  
+    >**Info:** As you are using a self-signed certificate in this example, web browsers will generally reject secure WebSocket connections.  
 
-   ```ballerina
-   import ballerina/io;
-   import ballerina/websocket;   
-   
-   public function main() returns error? {
-      websocket:Client wsClient = check new ("wss://localhost:8443/ws"{
-              secureSocket: {
-                  cert: "../resource/path/to/public.crt"
-              }
-      });
-      check wsClient->writeTextMessage("Hello!");
-      string resp = check wsClient->readTextMessage();
-      io:println("Response: ", resp);
-   }
-   ```
+    ```ballerina
+    import ballerina/io;
+    import ballerina/websocket;   
+    
+    public function main() returns error? {
+        websocket:Client wsClient = check new ("wss://localhost:8443/ws",
+            secureSocket = {
+                cert: "/path/to/public.crt"
+            }
+        );
+        _ = check wsClient->writeTextMessage("Hello, World!");
+        string response = check wsClient->readTextMessage();
+        io:println(response);
+    }
+    ```
 
 4. Execute the commands below to run the above client. 
 
-   ```bash
-   $ bal run wss_client.bal
-   ```
+    ```bash
+    $ bal run wss_client.bal
+    ```
 
-   You view the output below.
+    You view the output below.
 
-   ```bash
-   Compiling source
+    ```bash
+    Compiling source
          wss_client.bal
+    
+    Running executable
+    
+    Response: Echo: Hello, World!
+    ```
 
-   Running executable
-
-   Response: Echo: Hello!
-   ```
-
-In the code above, you created a [`websocket:Client`](https://docs.central.ballerina.io/ballerina/websocket/latest/clients/Client) by providing the [`websocket:ClientConfiguration`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/ClientConfiguration) value containing the secure socket parameters. From here onwards, any communication done from the client to the WebSocket server will be done with TLS.
+    In the code above, you created a [`websocket:Client`](https://docs.central.ballerina.io/ballerina/websocket/latest/clients/Client) by providing the [`websocket:ClientConfiguration`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/ClientConfiguration) value containing the secure socket parameters. From here onwards, any communication done from the client to the WebSocket server will be done with TLS.
 
 <style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

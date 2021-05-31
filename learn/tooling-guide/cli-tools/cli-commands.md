@@ -148,7 +148,6 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">doc</td>
-<td class="cDescription">Format Ballerina source files as per the <a href="/learn/coding-conventions">Coding Conventions</a>.</td>
 <td class="cDescription">Generate API documents for all public symbols of a Ballerina package. For more information, see <a href="/learn/documenting-ballerina-code">Documenting Ballerina Code</a>.
 </td>
 </tr>

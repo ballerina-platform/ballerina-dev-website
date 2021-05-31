@@ -20,7 +20,7 @@
       {% assign sublinks = entry.sublinks %}
       {% if sublinks %}
       <li class="sub-menu cTopicURL">
-         <div class="cLeftMenuLink cTopiAtag">{{ entry.title }}</div>
+         <div class="cLeftMenuLink cTopiAtag">{{ entry.title }} </div>
          <ul class="sub-ul">
             {% if sublink.url == current_page %}
             <!-- {% assign current = ' class="current"' %} -->
@@ -35,7 +35,7 @@
       </li>
       {% else %}
       <!-- <li{{ current }}><a href="{{ site.baseurl }}{{ entry.url }}">- {{ entry.title }}</a></li> -->
-      <li{% if entry.active == page.active %} class="current"{% endif %}><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+      <li class="cTitleOnly" {% if entry.active == page.active %} class="current"{% endif %}>{{ entry.title }}</li>
       {% endif %}
       {% endfor %}
    </ul>

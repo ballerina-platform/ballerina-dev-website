@@ -23,6 +23,7 @@ redirect_from:
     <span class="c1">// Uses a template containing a `query expression` containing a template.</span>
     <span class="k">return</span> <span class="kt">xml</span><span class="s">`&lt;data&gt;${from var {name, country} in persons</span>
 <span class="s">           select xml`</span><span class="p">&lt;</span><span class="nx">person</span> <span class="nx">country</span><span class="p">=</span><span class="s">&quot;${country}&quot;</span><span class="p">&gt;</span><span class="err">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}&lt;</span><span class="o">/</span><span class="nx">person</span><span class="p">&gt;</span><span class="s">`}&lt;/data&gt;`</span><span class="p">;</span>
+
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
@@ -83,7 +84,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=3ffde237d7ef95077fa48e133ba4bf00&file=xml_templates_and_query.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=758f69fe986a3e881a5bd05ee1d99d7c&file=xml_templates_and_query.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -101,6 +102,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -161,7 +164,6 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    return xml`&lt;data&gt;${from var {name, country} in persons
            select xml`&lt;person country=&quot;${country}&quot;&gt;${name}&lt;/person&gt;`}&lt;/data&gt;`;
-}
 </code></pre></div>
 
                                 </td>
@@ -173,6 +175,18 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

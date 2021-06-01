@@ -6,6 +6,12 @@ on:
         artifact:
           description: 'Artifact ID'     
           required: true
+        version:
+          description: 'Artifact version'     
+          required: true
+        short_version:
+          description: 'Artifact short version'     
+          required: true
 
 jobs:
   bbe-sw-gen:
@@ -37,8 +43,8 @@ jobs:
       run: |
         cd ballerina-release
 
-        BALLERINA_VERSION="`jq -r '.version' ../_data/swanlake-latest/metadata.json`"
-        SHORT_VERSION="`jq -r '."short-version"' ../_data/swanlake-latest/metadata.json`"
+        BALLERINA_VERSION=${{ github.event.inputs.version }}
+        SHORT_VERSION=${{ github.event.inputs.short_version }}
 
         wget --header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"  https://api.github.com/repos/ballerina-platform/ballerina-distribution/actions/artifacts/${{ github.event.inputs.artifact }}/zip  -O "ballerina.zip"
         unzip ballerina.zip

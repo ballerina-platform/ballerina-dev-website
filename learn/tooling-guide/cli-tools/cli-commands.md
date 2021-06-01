@@ -133,12 +133,12 @@ These everyday commands are your best friends! They address the very basics of p
 <table class="cComandTable">
 <tr>
 <td class="cCommand">build</td>
-<td class="cDescription">Compile a standalone `.bal` file, or an entire package into an executable JAR file. For more information, see <a href="/learn/running-ballerina-code">Running Ballerina Code</a>.
+<td class="cDescription">Compile a standalone `.bal` file, or an entire package into an executable JAR file. For more information, see <a href="/learn/user-guide/getting-started/writing-your-first-ballerina-program">Writing Your First Ballerina Program</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">run</td>
-<td class="cDescription">Build and run a standalone `.bal` file, an entire package, or a previously-built program. For more information, see <a href="/learn/running-ballerina-code">Running Ballerina Code</a>.
+<td class="cDescription">Build and run a standalone `.bal` file, an entire package, or a previously-built program. For more information, see <a href="/learn/user-guide/getting-started/writing-your-first-ballerina-program">Writing Your First Ballerina Program</a>.
 </td>
 </tr>
 <tr>
@@ -169,7 +169,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 <table class="cComandTable">
 <tr>
 <td class="cCommand">new</td>
-<td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/structuring-ballerina-code">Structuring Ballerina Code</a>.
+<td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/user-guide/ballerina-packages/creating-your-first-ballerina-package">Ballerina Packages</a>.
 </td>
 </tr>
 <tr>
@@ -189,7 +189,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </tr>
 <tr>
 <td class="cCommand">push</td>
-<td class="cDescription">Upload a package to Ballerina Central. For more information, see <a href="/learn/publishing-packages-to-ballerina-central">Publishing Packages to Ballerina Central</a>.
+<td class="cDescription">Upload a package to Ballerina Central. For more information, see <a href="/learn/user-guide/ballerina-packages/sharing-a-library-package/#publishing-a-library-package-to-ballerina-central">Publishing a library package to Ballerina Central</a>.
 </td>
 </tr>
 <tr>

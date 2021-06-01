@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Sharing a Library package
+title: Sharing a Library Package
 description: The below is all about working with a library package. It explains how a library package is created and published to Ballerina Central.
 keywords: ballerina, programming language, ballerina packages, libraries, publishing packages
 permalink: /learn/user-guide/ballerina-packages/sharing-a-library-package/
@@ -8,10 +8,9 @@ active: sharing-a-library-package
 intro: The below is all about working with a library package. It explains how a library package is created and published to Ballerina Central.
 redirect_from:
 - /learn/user-guide/ballerina-packages/sharing-a-library-package
-- /learn/user-guide/ballerina-packages/sharing-a-library-package/
 ---
 
-### Creating a Library Package
+### Creating a library package
 
 To create a new library package, we use `bal new -t lib`:
 
@@ -57,7 +56,7 @@ Creating bala
 	target/bala/user-hello-any-0.1.0.bala
 ```
 
-### Publishing a Library Package to Ballerina Central
+### Publishing a library package to Ballerina Central
 
 Now that you have a package to share with others, it can be published to the [Ballerina Central](https://central.ballerina.io/). 
 Ensure the package works as intended, because a publish is **permanent**. Once published to Ballerina Central, the version can never be overwritten, 
@@ -101,6 +100,6 @@ That’s how you publish your first package!
 
 Now you can create your second package and use the package you just published in it.
 
-### Using Packages in Ballerina Central
+### Using packages in Ballerina Central
 
 Any package published in Ballerina Central is public and they can be used in packages as explained in the [Dependencies](/learn/user-guide/ballerina-packages/dependencies) section.

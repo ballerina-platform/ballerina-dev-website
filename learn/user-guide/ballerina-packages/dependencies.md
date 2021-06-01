@@ -8,10 +8,9 @@ active: dependencies
 intro: The below are all you need to know about dependencies. It explains imports and how they can be used in your package.
 redirect_from:
 - /learn/user-guide/ballerina-packages/dependencies
-- /learn/user-guide/ballerina-packages/dependencies/
 ---
 
-### Importing Modules
+### Importing modules
 
 In Ballerina, we can access any public symbol from another module by importing the particular module using an import declaration. The import declaration syntax is as follows:
 
@@ -56,7 +55,7 @@ String formattedMsg = util:properCaseMessage(“hello world!”);
 
 Since the import-prefix is not given here, we use `util` to refer to the symbols in the hello_world.util module. Here, `util:properCaseMessage` is called a qualified identifier.
 
-### Managing Dependencies
+### Managing dependencies
 
 When we build a package that has dependencies to other packages, the compiler automatically figures out the latest compatible versions of the required packages. 
 For identifying the latest versions of these dependencies, by default, Ballerina searches for the packages of dependencies in 2 repositories: The Distribution repository and the Ballerina Central repository.

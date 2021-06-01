@@ -3,14 +3,14 @@ layout: ballerina-left-nav-pages-swanlake
 title: Supplying Values to Configurable Variables
 description: You can supply values to configurable variables using the methods below.
 keywords: ballerina, programming language, configurable, variables, 
-permalink: /learn/user-guide/configurability/supplying-values-to-configurable-variables/
-active: supplying-values-to-configurable-variables
+permalink: /learn/user-guide/configurability/providing-values-to-configurable-variables/
+active: providing-values-to-configurable-variables
 intro: You can supply values to configurable variables using the methods below.
 redirect_from:
-- /learn/user-guide/configurability/supplying-values-to-configurable-variables
+- /learn/user-guide/configurability/providing-values-to-configurable-variables
 ---
 
-## Supplying Through TOML Syntax
+## Providing values Through TOML Syntax
 
 The configurable variables can be defined in different modules. Therefore, it is necessary to provide the information of the module in which the variable is defined. 
 
@@ -54,7 +54,7 @@ The mapping of Ballerina types to TOML types is given below.
 | record[]           	| `type  Person  record  {`<br/>    `string  name;`<br/>    `int  age; };`<br/>  `configurable   Person[]  people = ?;`           	| Array of TOML tables 	| `[[people]]`<br/>  `name = “John”`<br/> `age = 45`<br/> `[[people]]`<br/>  `name = “Jack”`<br/> `age = 32`                                  	|
 | table              	| `configurable   table < map < string >>  users = ?;`                                                                            	| Array of TOML tables 	| `[[users]]`<br/> `name = "Tom"`<br/> `occupation = "Software Engineer"`<br/> `[[users]]`<br/> `name = "Harry"`<br/> `occupation = "Doctor"` 	|
 
-## Supplying Through Command-Line Arguments
+## Providing values Through Command-Line Arguments
 
 The values of the variables can be provided through the command-line parameters in the format below,
 

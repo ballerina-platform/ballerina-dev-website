@@ -8,7 +8,7 @@ active: creating-your-first-ballerina-package
 intro: The below are the basic steps you need to know about writing a Ballerina packages. It also introduces the package-related commands in the Ballerina command-line tool.
 redirect_from:
 - /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package
-- /learn/user-guide/ballerina-packages
+- /learn/user-guide/ballerina-packages/
 ---
 
 ## Creating a new package

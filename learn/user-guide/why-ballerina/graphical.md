@@ -32,7 +32,7 @@ One of the key benefits of the diagram is that it acts as documentation to the c
 
 ### Get Started
 
-The Ballerina IDE plugin ( the [VSCode plugin](https://ballerina.io/learn/tooling-guide/visual-studio-code-extension/quick-start/)) can generate a sequence diagram dynamically from the source code. To start generating a sequence diagram from your Ballerina code, [download the VSCode plugin and launch the graphical viewer](https://ballerina.io/learn/tooling-guide/visual-studio-code-extension/quick-start/).
+The Ballerina IDE plugin (the [VSCode plugin](/learn/tooling-guide/visual-studio-code-extension/quick-start/) can generate a sequence diagram dynamically from the source code. To start generating a sequence diagram from your Ballerina code, [download the VSCode plugin and launch the graphical viewer](/learn/tooling-guide/visual-studio-code-extension/quick-start/).
 
 
 ## Graphical Representation

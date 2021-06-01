@@ -153,9 +153,12 @@
 - title: Security
   url: '#' 
   sublinks:
-    - title: Authentication and Authorization
-      url: /learn/user-guide/authentication-and-authorization
-      active: authentication-and-authorization
+    - title: HTTP Listener Authentication and Authorization
+      url: /learn/user-guide/security/http-listener-authentication-and-authorization
+      active: http-listener-authentication-and-authorization
+    - title: HTTP Client Authentication
+      url: /learn/user-guide/security/http-client-authentication/
+      active: http-client-authentication
 
 #- title: Extending Ballerina
   #url: '#' 

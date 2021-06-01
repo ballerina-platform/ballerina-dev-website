@@ -7,7 +7,7 @@ permalink: /learn/user-guide/getting-started/writing-your-first-ballerina-progra
 active: writing-your-first-ballerina-program
 intro: Let's create a simple Ballerina HTTP service and also an HTTP client to invoke it.
 redirect_from:
-  - /learn/user-guide/getting-started/writing-your-first-ballerina-program
+- /learn/user-guide/getting-started/writing-your-first-ballerina-program
 ---
 
 A Ballerina application can have:
@@ -19,7 +19,7 @@ Both of these are considered as entry points for program execution.
 
 Let's create a simple Ballerina HTTP service and an HTTP client with a main function to invoke it.
 
-## Writing a Simple Service
+## Writing a simple service
 
 Let's write a simple HTTP service as shown below in a file with the `.bal` extension:
 
@@ -82,7 +82,7 @@ Hello Ballerina!
 
 Next, let's create a Ballerina HTTP client and use that to invoke the service.
 
-## Creating an HTTP Client to Invoke the Service
+## Creating an HTTP client to invoke the service
 
 A Ballerina client is a component, which interacts with a network-accessible service. It aggregates one or more actions that can be executed on the network-accessible service and accepts configuration parameters related to the network-accessible service.
 
@@ -120,7 +120,7 @@ bal run hello_client.bal
 Hello Ballerina!
 ```
 
-## What's Next?
+## What's next?
 
 Now, that you have written your first Ballerina program, you can explore more about writing [Ballerina Packages](/learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/).
 

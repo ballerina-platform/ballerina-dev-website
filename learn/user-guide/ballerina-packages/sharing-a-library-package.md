@@ -31,7 +31,7 @@ hello
 0 directories, 3 files
 ```
 
-Similar to our first package the `Ballerina.toml` is created. Apart from it, the hello.bal source file and the [Package.md](/learn/user-guide/ballerina-packages/package-layout#packagemd) files are created.
+Similar to our first package the `Ballerina.toml` is created. Apart from it, the `hello.bal` source file and the [Package.md](/learn/user-guide/ballerina-packages/package-layout#packagemd) files are created.
 
 Let’s check the content of the `Ballerina.toml` file.
 
@@ -69,7 +69,8 @@ As a precaution, you may use the [local repository](/learn/user-guide/ballerina-
 
 First, you need to create an account on Ballerina Central. To register, [visit the home page](https://central.ballerina.io) and log in via a Google or GitHub account.
 
-Second, you need to [go to the dashboard page](https://central.ballerina.io/dashboard) and acquire an access token. Now copy the access token into the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`).
+Second, you need to [go to the dashboard page](https://central.ballerina.io/dashboard) and acquire an access token.
+Download and place the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`). If you already have a `Settings.toml` file configured in your home repository, then follow the other option and copy the access token into the `Settings.toml`.
 
 If you are connected to the internet via an HTTP proxy, add the following section to `Settings.toml` and change accordingly.
 

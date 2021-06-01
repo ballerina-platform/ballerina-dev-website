@@ -33,16 +33,17 @@ redirect_from:
     <span class="c1">// This remote function executes when a message or a set of messages are published</span>
     <span class="c1">// to the subscribed topic/topics.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onConsumerRecord</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
-                        <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="c1">// The set of Kafka records received by the service are processed one</span>
         <span class="c1">// by one.</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">kafkaRecord</span> <span class="nx">in</span> <span class="nx">records</span> <span class="p">{</span>
-            <span class="nx">processKafkaRecord</span><span class="p">(</span><span class="nx">kafkaRecord</span><span class="p">);</span>
+            <span class="nx">check</span> <span class="nx">processKafkaRecord</span><span class="p">(</span><span class="nx">kafkaRecord</span><span class="p">);</span>
         <span class="p">}</span>
+
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">processKafkaRecord</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span> <span class="nx">kafkaRecord</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">processKafkaRecord</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span> <span class="nx">kafkaRecord</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
     <span class="c1">// Converts the `byte[]` to a `string`.</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">messageContent</span><span class="p">);</span>
@@ -106,7 +107,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e012818f88073e80c13bb29aff97b2ea&file=kafka_consumer_group_service.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=9f8392cd03d5cff2ad4fc14c1d5581dc&file=kafka_consumer_group_service.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -124,6 +125,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -273,7 +276,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    remote function onConsumerRecord(kafka:Caller caller,
-                        kafka:ConsumerRecord[] records) {
+                        kafka:ConsumerRecord[] records) returns error? {
 </code></pre></div>
 
                                 </td>
@@ -294,10 +297,8 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        foreach var kafkaRecord in records {
-            processKafkaRecord(kafkaRecord);
+            check processKafkaRecord(kafkaRecord);
         }
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -317,7 +318,20 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) returns error? {
     byte[] messageContent = kafkaRecord.value;
 </code></pre></div>
 

@@ -33,6 +33,7 @@ redirect_from:
     <span class="k">var</span> <span class="nx">highPaidEmployees</span> <span class="p">=</span> <span class="nx">table</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">e</span> <span class="nx">in</span> <span class="nx">employees</span>
                             <span class="nx">where</span> <span class="nx">e</span><span class="p">.</span><span class="nx">salary</span> <span class="o">&gt;=</span> <span class="mi">1000</span>
                             <span class="nx">select</span> <span class="nx">e</span><span class="p">;</span>
+                            
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">highPaidEmployees</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -85,7 +86,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=13b19ccfca3bce5719356818b4c62792&file=creating_tables_with_query.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=5591be5dff6966e5692f3051332ec800&file=creating_tables_with_query.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -168,6 +169,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>    var highPaidEmployees = table key(id) from var e in employees
                             where e.salary &gt;= 1000
                             select e;
+                            
     io:println(highPaidEmployees);
 }
 </code></pre></div>

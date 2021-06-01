@@ -36,7 +36,9 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">nameToString</span><span class="p">(</span><span class="nx">Name</span> <span class="nx">nm</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="c1">// Checks whether `nm` belongs to `string` type.</span>
     <span class="k">if</span> <span class="nx">nm</span> <span class="nx">is</span> <span class="kt">string</span> <span class="p">{</span>
+
         <span class="k">return</span> <span class="nx">nm</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">nm</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">nm</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
@@ -94,7 +96,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=9601b3589e277346ec314cd29228c6f8&file=unions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=25e8e8ad1b061d4b1ec162176db6318f&file=unions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -112,6 +114,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -249,10 +255,39 @@ redirect_from:
                             
                             <tr class="cTR">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function nameToString(Name nm) returns string {
-    if nm is string {
-        return nm;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    if nm is string {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Checks whether <code>nm</code> belongs to <code>string</code> type.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>        return nm;
     } else {
         return nm.firstName + &quot; &quot; + nm.lastName;
     }

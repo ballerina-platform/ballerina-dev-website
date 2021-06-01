@@ -22,6 +22,7 @@ redirect_from:
     <span class="c1">// Futures and workers are the same thing.</span>
     <span class="c1">// A reference to a named worker can be implicitly converted into a future.</span>
     <span class="k">return</span> <span class="nx">A</span><span class="p">;</span>
+
 <span class="p">}</span>
 
 <span class="nx">type</span> <span class="nx">FuncInt</span> <span class="kd">function</span> <span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">;</span>
@@ -30,6 +31,7 @@ redirect_from:
     <span class="c1">// `start` is sugar for calling a function with a named worker and returning</span>
     <span class="c1">// the named worker as a future.</span>
     <span class="k">return</span> <span class="nx">start</span> <span class="nx">f</span><span class="p">();</span>
+
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
@@ -95,7 +97,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=0932dc1f1c9c57ade5c94c72d4d9bd3c&file=named_workers_and_futures.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=20ec458dc070399e501aa1e3632211c3&file=named_workers_and_futures.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -113,6 +115,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -167,7 +173,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    return A;
-}
 </code></pre></div>
 
                                 </td>
@@ -180,6 +185,18 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -212,7 +229,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    return start f();
-}
 </code></pre></div>
 
                                 </td>
@@ -225,6 +241,18 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

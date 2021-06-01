@@ -19,9 +19,10 @@ redirect_from:
 
     <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>
 
-    <span class="c1">// No implicit coversion between integers and floating point values are allowed. </span>
-    <span class="c1">// You can `&lt;T&gt;` for explicit conversions.</span>
+    <span class="c1">// No implicit conversions between integers and floating point values are allowed.</span>
+    <span class="c1">// You can use `&lt;T&gt;` for explicit conversions.</span>
     <span class="kt">float</span> <span class="nx">y</span> <span class="p">=</span> <span class="nx">x</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">float</span><span class="p">&gt;</span><span class="nx">n</span><span class="p">;</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -33,7 +34,8 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Floating Point Numbers</h2>
-                            <p><p>The <code>float</code> type is IEEE 64-bit binary floating point (same as <code>double</code> in Java) and supports same arithmetic operators as <code>int</code>.</p>
+                            <p><p>The <code>float</code> type is IEEE 64-bit binary floating point (same as <code>double</code> in Java) and supports the same arithmetic
+ operators as <code>int</code>.</p>
 </p>
 
                         </td>
@@ -74,7 +76,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=86cdfe71e4fcfe43e3c27bea975df3f9&file=floating_point_numbers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=7cef923250bf826c36f2cbc7455b44f4&file=floating_point_numbers.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -92,6 +94,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -145,10 +149,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    float y = x + &lt;float&gt;n;
-    io:println(y);
-}
 </code></pre></div>
 
                                 </td>
@@ -156,11 +158,24 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>No implicit coversion between integers and floating point values are allowed.
- You can <code>&lt;T&gt;</code> for explicit conversions.</p>
+                                            <p>No implicit conversions between integers and floating point values are allowed.
+ You can use <code>&lt;T&gt;</code> for explicit conversions.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(y);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

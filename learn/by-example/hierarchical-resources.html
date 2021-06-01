@@ -20,6 +20,7 @@ redirect_from:
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greeting</span><span class="o">/</span><span class="nx">hello</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
     <span class="p">}</span>
+
 <span class="p">}</span>
 </pre></div>
 
@@ -30,8 +31,8 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Hierarchical Resources</h2>
-                            <p><p>Resource name is relative path, which can have multiple path seqments.
- Base path is absolute path. Single listener can have multple services each with different base paths.</p>
+                            <p><p>Resource name is relative path, which can have multiple path segments.
+ Base path is absolute path. A listener can have multiple services each with different base paths.</p>
 </p>
 
                         </td>
@@ -72,7 +73,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=0aa2e075b5b75e9002f0735c2448da7a&file=hierarchical_resources.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=b2dc6132940a47316b69054236e9b5d6&file=hierarchical_resources.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -90,6 +91,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -135,11 +138,10 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function get greeting/hello(string name) returns string {
         return &quot;Hello, &quot; + name;
     }
-}
 </code></pre></div>
 
                                 </td>
@@ -151,6 +153,18 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

@@ -27,10 +27,14 @@ redirect_from:
 
 <span class="nx">kafka</span><span class="p">:</span><span class="nx">ProducerConfiguration</span> <span class="nx">producerConfigs</span> <span class="p">=</span> <span class="p">{</span>
     <span class="c1">// Provide the relevant authentication configuration record to authenticate the producer.</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="nx">authConfig</span>
+    <span class="nx">auth</span><span class="p">:</span> <span class="nx">authConfig</span><span class="p">,</span>
+    <span class="nx">securityProtocol</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">PROTOCOL_SASL_PLAINTEXT</span>
 <span class="p">};</span>
 
-<span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">,</span> <span class="nx">producerConfigs</span><span class="p">);</span>
+<span class="c1">// Provide the relevant SASL URL of the configured Kafka server.</span>
+<span class="kd">const</span> <span class="kt">string</span> <span class="nx">SASL_URL</span> <span class="p">=</span> <span class="s">&quot;localhost:9093&quot;</span><span class="p">;</span>
+
+<span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">SASL_URL</span><span class="p">,</span> <span class="nx">producerConfigs</span><span class="p">);</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">;</span>
@@ -100,7 +104,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=14ffab45bca57acc46a44db74d55f2c0&file=kafka_authentication_sasl_plain_producer.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=88eef64e6c983ff6d2c9e267105256d9&file=kafka_authentication_sasl_plain_producer.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -118,6 +122,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -230,7 +236,8 @@ import ballerinax/kafka;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    auth: authConfig
+                                    <div class="highlight"><pre><code class=language-ballerina>    auth: authConfig,
+    securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 </code></pre></div>
 
@@ -247,10 +254,29 @@ import ballerinax/kafka;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>const string SASL_URL = &quot;localhost:9093&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Provide the relevant SASL URL of the configured Kafka server.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL, producerConfigs);
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Producer kafkaProducer = check new (SASL_URL, producerConfigs);
 </code></pre></div>
 
                                 </td>

@@ -76,8 +76,8 @@ redirect_from:
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
         <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE Customers(customerId INTEGER</span>
 <span class="s">            NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),</span>
-<span class="s">            registrationID INTEGER UNIQUE, creditLimit DOUBLE, country  VARCHAR(300),</span>
-<span class="s">            PRIMARY KEY (customerId))`</span><span class="p">);</span>
+<span class="s">            registrationID INTEGER UNIQUE, creditLimit DOUBLE,</span>
+<span class="s">            country VARCHAR(300), PRIMARY KEY (customerId))`</span><span class="p">);</span>
 
     <span class="c1">// Adds records to the newly-created table.</span>
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO Customers (firstName,</span>
@@ -148,7 +148,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=4ef1c9dcc8444fe6121c279022a3cb05&file=jdbc_atomic_batch_execute_operation.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=fe0dacbcb1ee61f8d8fed5bbe9b93fc1&file=jdbc_atomic_batch_execute_operation.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -431,8 +431,8 @@ import ballerina/sql;
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
         check jdbcClient -&gt; execute(`CREATE TABLE Customers(customerId INTEGER
             NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),
-            registrationID INTEGER UNIQUE, creditLimit DOUBLE, country  VARCHAR(300),
-            PRIMARY KEY (customerId))`);
+            registrationID INTEGER UNIQUE, creditLimit DOUBLE,
+            country VARCHAR(300), PRIMARY KEY (customerId))`);
 </code></pre></div>
 
                                 </td>

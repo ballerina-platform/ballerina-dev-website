@@ -19,6 +19,7 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="mi">1</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">);</span>
     <span class="c1">// [10, 20, 30] belongs to `int[]`.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">[]);</span>
+
 <span class="p">}</span>
 </pre></div>
 
@@ -30,8 +31,8 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Structural Typing</h2>
                             <p><p>Typing in Ballerina is structural: a type describes a set of values. Ballerina has semantic subtyping:
- subtype means subset. Universe of values is partitioned into <code>basic</code> types. Each value belongs to
- exactly one <code>basic</code> type. Can think of each value as being tagged with its <code>basic</code> type.
+ subtype means subset. Universe of values is partitioned into basic types. Each value belongs to
+ exactly one basic type. Can think of each value as being tagged with its basic type.
  There is a complexity in making structural typing work with mutation. <br/><br/>
  Immutable basic types (so far): <code>nil</code>, <code>boolean</code>, <code>int</code>, <code>float</code>, <code>string</code> <br/><br/>
  Mutable basic types (so far): <code>array</code>, <code>map</code> and <code>record</code></p>
@@ -75,7 +76,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=54365b47b9521fe957a2834196cb0bf8&file=structural_typing.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a4b8af8ca9f52e33421d16439355b652&file=structural_typing.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -93,6 +94,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -152,9 +155,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println([10, 20, 30] is int[]);
-}
 </code></pre></div>
 
                                 </td>
@@ -166,6 +168,18 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

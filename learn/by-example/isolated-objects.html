@@ -24,6 +24,7 @@ redirect_from:
         <span class="nx">lock</span> <span class="p">{</span>
             <span class="c1">// `n` can only be accessed using `self`.</span>
             <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">n</span><span class="p">;</span>
+
         <span class="p">}</span>
     <span class="p">}</span>
 
@@ -38,6 +39,7 @@ redirect_from:
     <span class="c1">// The object’s mutable state is accessible only via the</span>
     <span class="c1">// object itself making it an “isolated root”.</span>
     <span class="nx">Counter</span> <span class="nx">c</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
     <span class="nx">c</span><span class="p">.</span><span class="nx">inc</span><span class="p">();</span>
     <span class="kt">int</span> <span class="nx">v</span> <span class="p">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
@@ -52,12 +54,14 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Isolated Objects</h2>
                             <p><p>An object defined as <code>isolated</code> is similar to a module with <code>isolated</code> module-level variables.
- Mutable fields of an <code>isolated</code> object <br></br>
- - must be <code>private</code> and so can only be accessed using <code>self</code>. <br></br>
- - must be initialized with an <code>isolated</code> expression. <br></br>
- - must only be accessed within a <code>lock</code> statement. <br></br>
- - <code>lock</code> statement must follow the same rules for <code>self</code> as for an <code>isolated</code> variable. <br></br>
- - field is mutable unless it is <code>final</code> and has type that is subtype of <code>readonly</code>. <br></br>
+ Mutable fields of an <code>isolated</code> object,
+ <ul>
+ <li>must be <code>private</code> and so can only be accessed using <code>self</code></li>
+ <li>must be initialized with an <code>isolated</code> expression</li>
+ <li>must only be accessed within a <code>lock</code> statement</li>
+ <li><code>lock</code> statement must follow the same rules for <code>self</code> as for an <code>isolated</code> variable</li>
+ <li>field is mutable unless it is <code>final</code> and has type that is subtype of <code>readonly</code></li>
+ </ul>
  Isolated root concept treats <code>isolated</code> objects as opaque. Isolated functions can access a <code>final</code>
  variable whose type is an <code>isolated</code> object.</p>
 </p>
@@ -100,7 +104,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=7c7145409c230deb3416b6cdbe50f4c0&file=isolated_objects.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=60095877cd10ed3700e1152dada00cfb&file=isolated_objects.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -118,6 +122,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -208,8 +216,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            return self.n;
-        }
-    }
 </code></pre></div>
 
                                 </td>
@@ -221,6 +227,19 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        }
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -256,12 +275,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    Counter c = new;
-    c.inc();
-    int v = c.get();
-    io:println(v);
-}
 </code></pre></div>
 
                                 </td>
@@ -274,6 +289,21 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    c.inc();
+    int v = c.get();
+    io:println(v);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

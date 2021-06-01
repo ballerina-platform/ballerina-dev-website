@@ -20,6 +20,7 @@ redirect_from:
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greeting</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s">&quot;Hello, World!&quot;</span><span class="p">;</span>
     <span class="p">}</span>
+
 <span class="p">}</span>
 </pre></div>
 
@@ -72,7 +73,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=052abba43be38a7f3be2991a6b3cd5e9&file=hello_world_service.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=d9b0c95a37f661cae8a9e55daddac50f&file=hello_world_service.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -90,6 +91,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -128,11 +131,10 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function get greeting() returns string {
         return &quot;Hello, World!&quot;;
     }
-}
 </code></pre></div>
 
                                 </td>
@@ -144,6 +146,18 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -187,22 +201,16 @@ redirect_from:
 
                         <table class="cBBE-body">
                             
-                            <tr class="cTR hover-enable cOutputTr">
+                            <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/greeting
+                                    <div class="highlight"><pre><code class=shell-session># Invoke the service using the &quot;cURL&quot; command below.
+curl http://localhost:9090/greeting
 Hello, World!
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Invoke the service using the &ldquo;cURL&rdquo; command below.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>

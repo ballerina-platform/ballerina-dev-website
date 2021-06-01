@@ -24,6 +24,7 @@ redirect_from:
     <span class="nx">lock</span> <span class="p">{</span>
         <span class="nx">stack</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
     <span class="p">}</span>
+
 <span class="p">}</span>
 
 <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">pop</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
@@ -49,10 +50,13 @@ redirect_from:
                             <p><p>When a variable is declared as <code>isolated</code>, compiler guarantees that it is an <code>isolated</code> root and
  accessed only within a <code>lock</code> statement. An <code>isolated</code> variable declaration must be at module-level,
  not public, and initialized with an <code>isolated</code> expression. A <code>lock</code> statement that accesses an
- <code>isolated</code> variable must maintain <code>isolated</code> root invariant: <br></br>
- - access only one <code>isolated</code> variable. <br></br>
- - call only <code>isolated</code> functions. <br></br>
- - transfers of values in and out must use <code>isolated</code> expressions. <br></br>
+ <code>isolated</code> variable must maintain <code>isolated</code> root invariant:
+ <ul>
+ <li>access only one <code>isolated</code> variable</li>
+ <li>access only one <code>isolated</code> variable</li>
+ <li>call only <code>isolated</code> functions</li>
+ <li>transfers of values in and out must use <code>isolated</code> expressions</li>
+ </ul>
  The <code>isolated</code> functions are allowed to access <code>isolated</code> module-level variables,
  provided they follow the above rules.</p>
 </p>
@@ -95,7 +99,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=357edd24eb76e84ecd3dd8fc025e09af&file=isolated_variables.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c9428b7d06a091f552531b369dfa6f96&file=isolated_variables.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -113,6 +117,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -181,7 +187,6 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>    lock {
         stack.push(n);
     }
-}
 </code></pre></div>
 
                                 </td>
@@ -194,6 +199,18 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

@@ -31,19 +31,24 @@ redirect_from:
     <span class="nx">offsetReset</span><span class="p">:</span> <span class="s">&quot;earliest&quot;</span><span class="p">,</span>
     <span class="nx">topics</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;topic-sasl&quot;</span><span class="p">],</span>
     <span class="c1">// Provide the relevant authentication configuration record to authenticate the consumer.</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="nx">authConfig</span>
+    <span class="nx">auth</span><span class="p">:</span> <span class="nx">authConfig</span><span class="p">,</span>
+    <span class="nx">securityProtocol</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">PROTOCOL_SASL_PLAINTEXT</span>
 <span class="p">};</span>
 
-<span class="nx">listener</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">kafkaListener</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">,</span> <span class="nx">consumerConfig</span><span class="p">);</span>
+<span class="c1">// Provide the relevant SASL URL of the configured Kafka server.</span>
+<span class="kd">const</span> <span class="kt">string</span> <span class="nx">SASL_URL</span> <span class="p">=</span> <span class="s">&quot;localhost:9093&quot;</span><span class="p">;</span>
+
+<span class="nx">listener</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">kafkaListener</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">SASL_URL</span><span class="p">,</span> <span class="nx">consumerConfig</span><span class="p">);</span>
 
 <span class="kd">service</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">on</span> <span class="nx">kafkaListener</span> <span class="p">{</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onConsumerRecord</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
-                                <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="c1">// Loops through the received consumer records.</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">consumerRecord</span> <span class="nx">in</span> <span class="nx">records</span> <span class="p">{</span>
             <span class="c1">// Converts the `byte[]` to a `string`.</span>
             <span class="kt">string</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="nx">check</span>
                                         <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">consumerRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">messageContent</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -103,7 +108,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=580affa9c3f18575776ee5f54a2fafbe&file=kafka_authentication_sasl_plain_consumer.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ec40fcbe561a7832bc7cbe4a02e0e944&file=kafka_authentication_sasl_plain_consumer.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -121,6 +126,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -239,7 +248,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    auth: authConfig
+                                    <div class="highlight"><pre><code class=language-ballerina>    auth: authConfig,
+    securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 </code></pre></div>
 
@@ -256,10 +266,29 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>const string SASL_URL = &quot;localhost:9093&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Provide the relevant SASL URL of the configured Kafka server.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener kafka:Listener kafkaListener = new(kafka:DEFAULT_URL, consumerConfig);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener kafka:Listener kafkaListener = new(SASL_URL, consumerConfig);
 </code></pre></div>
 
                                 </td>
@@ -273,7 +302,7 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>service kafka:Service on kafkaListener {
     remote function onConsumerRecord(kafka:Caller caller,
-                                kafka:ConsumerRecord[] records) {
+                                kafka:ConsumerRecord[] records) returns error? {
 </code></pre></div>
 
                                 </td>
@@ -303,13 +332,9 @@ import ballerina/log;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            string messageContent = check
                                         string:fromBytes(consumerRecord.value);
-            log:printInfo(messageContent);
-        }
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -321,6 +346,21 @@ import ballerina/log;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(messageContent);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

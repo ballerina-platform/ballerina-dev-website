@@ -12,10 +12,10 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">udp</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">udp</span><span class="p">;</span>
 
-<span class="c1">// You can combine listener declaration into service declaration as shown in this exampe. </span>
+<span class="c1">// You can combine a listener declaration with a service declaration as shown in this example.</span>
 <span class="kd">service</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onDatagram</span><span class="p">(</span><span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">udp</span><span class="p">:</span><span class="nx">Datagram</span> <span class="nx">dg</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;bytes received: &quot;</span><span class="p">,</span> <span class="nx">dg</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
@@ -30,11 +30,11 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Service Declaration</h2>
-                            <p><p>A service represents a collection of remotely accessible methods attached to particular listener.
+                            <p><p>A service represents a collection of remotely accessible methods attached to a particular listener.
  A service declaration is syntactic sugar for creating services in Ballerina.
- A service declaration gets desugared into several things including create a listener object,
- registering it with module, creating service object, attaching the service object to the listener object, etc,.
- The type of listener determines required type of remote methods.</p>
+ A service declaration gets desugared into several things including creating a listener object,
+ registering it with the module, creating a service object, attaching the service object to the listener object, etc,.
+ The type of the listener determines required type of remote methods.</p>
 </p>
 
                         </td>
@@ -75,7 +75,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=770209f725338ea713e5bc70d053e046&file=service_declaration.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=2bc62dcc03910d1f9941912f3ada62a3&file=service_declaration.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -106,8 +106,8 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/udp;
-import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerina/udp;
 </code></pre></div>
 
                                 </td>
@@ -131,7 +131,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>You can combine listener declaration into service declaration as shown in this exampe.</p>
+                                            <p>You can combine a listener declaration with a service declaration as shown in this example.</p>
 
                                         </div>
                                     </div>

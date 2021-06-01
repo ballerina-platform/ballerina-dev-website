@@ -30,40 +30,21 @@ redirect_from:
     <span class="c1">// is `final` and the type is a subtype of `readonly` or</span>
     <span class="c1">// `isolated object {}`.</span>
     <span class="nx">r</span><span class="p">.</span><span class="nx">v</span> <span class="p">=</span> <span class="nx">N</span><span class="p">;</span>
+
     <span class="k">return</span> <span class="nx">r</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nx">R</span> <span class="nx">r</span> <span class="p">=</span> <span class="p">{</span><span class="nx">v</span><span class="p">:</span> <span class="mi">0</span><span class="p">};</span>
 
-<span class="c1">// This is not `isolated`.</span>
+<span class="c1">// This is not an `isolated` function.</span>
 <span class="kd">function</span> <span class="nx">setGlobal</span><span class="p">(</span><span class="kt">int</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+
     <span class="nx">r</span><span class="p">.</span><span class="nx">v</span> <span class="p">=</span> <span class="nx">n</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// The initialization expression of an `isolated` variable</span>
-<span class="c1">// has to be an isolated expression, which itself will be</span>
-<span class="c1">// an isolated root.</span>
-<span class="nx">isolated</span> <span class="nx">R</span> <span class="nx">r2</span> <span class="p">=</span> <span class="p">{</span><span class="nx">v</span><span class="p">:</span> <span class="mi">0</span><span class="p">};</span>
-
-<span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">setGlobalIsolated</span><span class="p">(</span><span class="kt">int</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// An `isolated` variable can be accessed within</span>
-    <span class="c1">// a `lock` statement.</span>
-    <span class="nx">lock</span> <span class="p">{</span>
-        <span class="nx">r2</span><span class="p">.</span><span class="nx">v</span> <span class="p">=</span> <span class="nx">n</span><span class="p">;</span>
-    <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">setGlobal</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">r</span><span class="p">);</span>
-
-    <span class="nx">setGlobalIsolated</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
-    <span class="c1">// Accesses the `isolated` variable within a</span>
-    <span class="c1">// `lock` statement.</span>
-    <span class="nx">lock</span> <span class="p">{</span>
-       <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">r2</span><span class="p">);</span>
-    <span class="p">}</span>
-
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">set</span><span class="p">(</span><span class="nx">r</span><span class="p">));</span>
 <span class="p">}</span>
 </pre></div>
@@ -75,24 +56,16 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Isolated Functions</h2>
-                            <p><p>Informal concept: a call to an <code>isolated</code> function is concurrency-safe if it is called with arguments
+                            <p><p>A call to an <code>isolated</code> function is concurrency-safe if it is called with arguments
  that are safe at least until the call returns. <br></br>
- A function defined as <code>isolated</code>: <br></br>
- - has access to mutable state only through its parameters. <br></br>
- - has unrestricted access to immutable state. <br></br>
- - can only call functions that are <code>isolated</code>. <br></br>
+ A function defined as <code>isolated</code>:
+ <ul>
+ <li>has access to mutable state only through its parameters</li>
+ <li>has unrestricted access to immutable state</li>
+ <li>can only call functions that are <code>isolated</code></li>
+ </ul>
  Constraints are enforced at compile-time. <code>isolated</code> is a part of the function type.
- Weaker concept than pure function. <br></br>
- Combining <code>isolated</code> functions and <code>lock</code> allows <code>isolated</code> functions to use
- <code>lock</code> to access mutable module-level state. <br></br>
- Key concept is <code>isolated</code> root. A value <code>r</code> is an <code>isolated</code> root if mutable state reachable
- from <code>r</code> cannot be reached from outside except through <code>r</code>. An expression is an
- <code>isolated</code> expression if it follows rules that guarantee that its value will be an
- <code>isolated</code> root. e.g., <br></br>
- - an expression with a type that is a subtype of <code>readonly</code> is always <code>isolated</code>. <br></br>
- - an expression <code>[E1, E2]</code> is isolated if <code>E1</code> and <code>E2</code> are <code>isolated</code>. <br></br>
- - an expression <code>f(E1, E2)</code> is <code>isolated</code> if <code>E1</code> and <code>E1</code> are <code>isolated</code>, and
- the type of <code>f</code> is an <code>isolated</code> function.</p>
+ Weaker concept than pure function.</p>
 </p>
 
                         </td>
@@ -133,7 +106,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a960fb9c20caf3d8cfc3a1855e32074f&file=isolated_functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=bdde27d5b061d952c4b494c45466c8b1&file=isolated_functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -151,14 +124,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -262,8 +227,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    r.v = N;
-    return r;
-}
 </code></pre></div>
 
                                 </td>
@@ -284,6 +247,19 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    return r;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>R r = {v: 0};
 </code></pre></div>
 
@@ -297,123 +273,30 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function setGlobal(int n) {
-    r.v = n;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is not an <code>isolated</code> function.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    r.v = n;
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is not <code>isolated</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>isolated R r2 = {v: 0};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The initialization expression of an <code>isolated</code> variable
- has to be an isolated expression, which itself will be
- an isolated root.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>isolated function setGlobalIsolated(int n) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    lock {
-        r2.v = n;
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>An <code>isolated</code> variable can be accessed within
- a <code>lock</code> statement.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
-    setGlobal(200);
-    io:println(r);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    setGlobalIsolated(200);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    lock {
-       io:println(r2);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Accesses the <code>isolated</code> variable within a
- <code>lock</code> statement.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -421,7 +304,10 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(set(r));
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+    setGlobal(200);
+    io:println(r);
+    io:println(set(r));
 }
 </code></pre></div>
 
@@ -448,7 +334,6 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run isolated_functions.bal
-{&quot;v&quot;:200}
 {&quot;v&quot;:200}
 {&quot;v&quot;:100}
 </code></pre></div>

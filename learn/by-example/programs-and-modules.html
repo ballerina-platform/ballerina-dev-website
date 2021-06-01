@@ -20,8 +20,9 @@ redirect_from:
 <span class="c1">// `main` function is the program entry point. </span>
 <span class="c1">// `public` makes function visible outside the module.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Here `io:println` means function `println` is in module bound to prefix `io`</span>
+    <span class="c1">// Here `io:println` means function `println` is in the module bound to prefix `io`.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
+
 <span class="p">}</span>
 </pre></div>
 
@@ -33,7 +34,7 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Programs and Modules</h2>
                             <p><p>Every Ballerina program consists of modules. Modules are one or more <code>.bal</code> files.
- Module names take the form <code>org/x.y.z</code>.</p>
+ The module names take the form <code>org/x.y.z</code>.</p>
 </p>
 
                         </td>
@@ -48,9 +49,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="functions.html">
+                                    <a class="next" href="variables-and-types.html">
                                         <span>NEXT ></span>
-                                        <p>Functions</p>
+                                        <p>Variables and Types</p>
                                     </a>
                                 </div>
                                 
@@ -74,7 +75,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=931e47167cbc65c05aa7039ddb1f19df&file=programs_and_modules.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=915a98a9a301816bc80f48f59a7bd397&file=programs_and_modules.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -92,6 +93,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -147,9 +150,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Hello, World!&quot;);
-}
 </code></pre></div>
 
                                 </td>
@@ -157,10 +159,22 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Here <code>io:println</code> means function <code>println</code> is in module bound to prefix <code>io</code></p>
+                                            <p>Here <code>io:println</code> means function <code>println</code> is in the module bound to prefix <code>io</code>.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

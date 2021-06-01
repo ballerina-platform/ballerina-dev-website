@@ -20,9 +20,9 @@ import [org-name /] module-name [as import-prefix];
 
 * The _org-name_ is optional for importing a module from the current package.
 * The _import-prefix_ has to be a valid Ballerina identifier and the import-prefix is used to refer to public symbols in the declared module.
-* The _import-prefix_ is also optional. If it is not available, the last part of the module-name can be used.
+* The _import-prefix_ is also optional. If it is not available, the last part of the module name can be used.
 
-If we notice the source code of the main.bal file in our package, we can see the following import statement.
+If we notice the source code of the `main.bal` file in our package, we can see the following import statement.
 
 ```bal
 import ballerina/io;
@@ -45,7 +45,7 @@ This is the directory structure of our package after adding the `hello_world.uti
 
 2 directories, 3 files
 ```
-We can add a public function in the `hello_world.util` module and use this function in the main.bal file in [the default module](/learn/user-guide/ballerina-packages/modules/#the-default-module).
+We can add a public function in the `hello_world.util` module and use this function in the `main.bal` file in [the default module](/learn/user-guide/ballerina-packages/modules/#the-default-module).
 
 ```bal
 import hello_world.util
@@ -53,7 +53,7 @@ import hello_world.util
 String formattedMsg = util:properCaseMessage(“hello world!”);
 ```
 
-Since the import-prefix is not given here, we use `util` to refer to the symbols in the hello_world.util module. Here, `util:properCaseMessage` is called a qualified identifier.
+Since the import-prefix is not given here, we use `util` to refer to the symbols in the `hello_world.util` module. Here, `util:properCaseMessage` is called a qualified identifier.
 
 ### Managing dependencies
 
@@ -66,7 +66,7 @@ The Distribution repository is a file system repository that comes with the loca
 
 **Ballerina Central repository**
 
-Ballerina Central repository is a remote repository and hence it comes with a local file system cache which is located at `<USER_HOME>/.ballerina/repositories/central.ballerina.io`. When resolving a dependency, the remote repository will be queried only if the specified version is not present in the local cache.
+Ballerina Central repository is a remote repository and hence it comes with a local file system cache which is located at `<USER_HOME>/.ballerina/repositories/central.ballerina.io/repo/bala`. When resolving a dependency, the remote repository will be queried only if the specified version is not present in its local cache.
 
 #### Dependencies.toml
 ```toml
@@ -76,24 +76,23 @@ name = "aws.s3"
 version = "0.99.4”
 ```
 
-When we execute `bal build`, the Dependencies.toml is created if at least one dependency is referred to its stable version. From the second build onwards, the compiler honors the version declared in the Dependencies.toml file until we choose to update the Dependencies.toml file.
+When we execute `bal build`, the `Dependencies.toml` is created if at least one dependency is referred to its stable version. From the second build onwards, the compiler honors the version declared in the `Dependencies.toml` until we choose to update the file.
 
-We can also update the dependencies in the Dependencies.toml file. When we find a newer version of the ballerina/io package which we want to use in our code, we have the option to either delete the corresponding dependency declaration from the TOML file or update the version. If we delete the dependency declaration, then the compiler updates the file with the latest version during the next build.
+When we find a newer version of the `ballerina/io` package which we want to use in our code, we have the option to either delete the corresponding dependency declaration from the `Dependencies.toml` file or update the version. If we delete the dependency declaration, then the compiler updates the file with the latest version during the next build.
 
-When the Dependencies.toml is updated by a build, only stable versions are recorded. If any pre-release versions are used that need to be locked, then they must be manually added to the file.
-
+When the `Dependencies.toml` is updated by a build, only stable versions are recorded. If any pre-release versions are used that need to be locked, then they must be manually added to the file.
 
 ### Version compatibility
 
-Abiding by the common convention of [Semantic Versioning](https://semver.org/), Ballerina considers versions to be **compatible if the major versions are equal and NOT zero**.
+Abiding by the specifications of [Semantic Versioning](https://semver.org/), Ballerina considers two versions to be **compatible if the major versions are equal and not zero**.
 A few examples would be as follows:
 
-* 0.2.3 and 0.2.4 are considered incompatible since the major version is zero
+* 0.2.3 and 0.2.4 are considered incompatible since the major version is zero, major version zero is considered as unstable
 * 1.2.3, 1.2.4, and 1.4.5 are compatible; 1.4.5 will be considered as the latest
 * 1.2.3-alpha, 1.2.3-alpha.2 and 1.2.3-beta are compatible, 1.2.3-beta is considered as the latest
 * 1.2.3-alpha, 1.2.3-beta, 1.2.4-alpha are compatible, 1.2.4-alpha is considered as the latest
 
-This rule is used during the package resolution process and if any two incompatible versions are found in the dependency graph an error will be thrown failing the build.
+This rule is used during the package resolution process and if any two incompatible versions of the same package are found in the dependency graph, an error will be thrown failing the build.
 
 For example, if one dependency in your package depends on version `1.0.0` of `ballerina/log` package and another dependency depends on `2.0.0-beta.1` of the same, the build will fail with the following error in the console.
 
@@ -109,13 +108,13 @@ This can be achieved with the local repository.
 
 #### Local repository
 
-The local repository is a custom repository in the local file system. We can push a package to the repository by providing the option `--repository=local` with bal push command.
+The local repository is a custom repository in the local file system. We can push a package to the repository by providing the option `--repository=local` with the `bal push` command.
 
 ```bash
 $ bal push --repository=local
 ```
 
-Then, by specifying the repository for the preferred dependencies in the Dependencies.toml file we can force it to resolve a package from the local repository
+Then, by specifying the repository for the preferred dependencies in the `Dependencies.toml` file we can force to resolve a package from the local repository.
 
 ```toml
 [[dependency]]

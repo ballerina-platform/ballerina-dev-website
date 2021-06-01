@@ -178,6 +178,8 @@ Marked the `file:Listener` class as an isolated class
 #### `http` Package
 - Improved the `http:Client` remote methods to support the contextually-expected type inference
 - Changed the configuration parameters of the listeners and clients to include the record parameters
+- Populated the error detail of `http:ClientRequestError` and `http:RemoteServerError` with response payload and header
+- Swapped the `mediaType` and `headers` arguments in the client remote methods
 
 #### `sql` Package
 - Added the SQL Array Value type support and introduced the new distinct array value types for identified SQL types

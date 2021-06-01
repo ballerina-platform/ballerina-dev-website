@@ -12,9 +12,36 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="nx">type</span> <span class="nx">Error</span> <span class="nx">error</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Error</span> <span class="nx">error</span><span class="p">;</span>
 
 <span class="nx">type</span> <span class="nx">LS</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Error</span><span class="err">?</span><span class="p">&gt;;</span>
+
+<span class="nx">type</span> <span class="nx">ValueRecord</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">value</span><span class="p">;</span>
+<span class="p">|};</span>
+
+<span class="kd">const</span> <span class="nx">SAMPLE_LINE_COUNT</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="nx">class</span> <span class="nx">LineGenerator</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">inputString</span><span class="p">;</span>
+
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">inputString</span> <span class="p">=</span> <span class="nx">str</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">public</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">ValueRecord</span><span class="p">|</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">SAMPLE_LINE_COUNT</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">{</span><span class="nx">value</span><span class="p">:</span> <span class="nx">self</span><span class="p">.</span><span class="nx">inputString</span><span class="p">};</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="p">{</span><span class="nx">value</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">};</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
 <span class="c1">// This method strips the blank lines.</span>
 <span class="kd">function</span> <span class="nx">strip</span><span class="p">(</span><span class="nx">LS</span> <span class="nx">lines</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">LS</span> <span class="p">{</span>
@@ -22,6 +49,7 @@ redirect_from:
     <span class="nx">LS</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">stream</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">line</span> <span class="nx">in</span> <span class="nx">lines</span>
              <span class="nx">where</span> <span class="nx">line</span><span class="p">.</span><span class="nx">trim</span><span class="p">().</span><span class="nx">length</span><span class="p">()</span> <span class="p">&gt;</span> <span class="mi">0</span>
              <span class="nx">select</span> <span class="nx">line</span><span class="p">;</span>
+
     <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -34,6 +62,21 @@ redirect_from:
                   <span class="nx">nLines</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
               <span class="p">};</span>
     <span class="k">return</span> <span class="nx">nLines</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">LineGenerator</span> <span class="nx">generator</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;Everybody can dance&quot;</span><span class="p">);</span>
+    <span class="nx">LS</span> <span class="nx">inputLineStream</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">generator</span><span class="p">);</span>
+
+    <span class="nx">LS</span> <span class="nx">strippedStream</span> <span class="p">=</span> <span class="nx">strip</span><span class="p">(</span><span class="nx">inputLineStream</span><span class="p">);</span>
+
+    <span class="kt">int</span><span class="p">|</span><span class="nx">Error</span> <span class="nx">nonBlankCount</span> <span class="p">=</span> <span class="nx">count</span><span class="p">(</span><span class="nx">strippedStream</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">nonBlankCount</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Input line count:&quot;</span> <span class="o">+</span> <span class="nx">SAMPLE_LINE_COUNT</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Non blank line count:&quot;</span> <span class="o">+</span> <span class="nx">nonBlankCount</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="p">}</span>
+
 <span class="p">}</span>
 </pre></div>
 
@@ -89,7 +132,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=41511162b74f95f2185fb2a1f75f5a4a&file=querying_with_streams.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=0f80ead1177dd39e1d9a6c49da1cfb2d&file=querying_with_streams.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -120,10 +163,46 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
                         <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
                             
                             <tr class="cTR">
 
@@ -141,6 +220,81 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type LS stream&lt;string, Error?&gt;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type ValueRecord record {|
+    string value;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>const SAMPLE_LINE_COUNT = 5;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>class LineGenerator {
+    int i = -1;
+    string inputString;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    public function init(string str) {
+        self.inputString = str;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    public isolated function next() returns ValueRecord|Error? {
+        self.i += 1;
+        if (self.i &lt; SAMPLE_LINE_COUNT) {
+            if (self.i % 2 == 0) {
+                return {value: self.inputString};
+            }
+            return {value: &quot;&quot;};
+        }
+    }
+}
 </code></pre></div>
 
                                 </td>
@@ -174,8 +328,6 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>    LS res = stream from var line in lines
              where line.trim().length() &gt; 0
              select line;
-    return res;
-}
 </code></pre></div>
 
                                 </td>
@@ -187,6 +339,19 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    return res;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -206,7 +371,7 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var res = check from var line in lines
               do {
                   nLines += 1;
@@ -229,6 +394,71 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+    LineGenerator generator = new (&quot;Everybody can dance&quot;);
+    LS inputLineStream = new (generator);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    LS strippedStream = strip(inputLineStream);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|Error nonBlankCount = count(strippedStream);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    if (nonBlankCount is int) {
+        io:println(&quot;Input line count:&quot; + SAMPLE_LINE_COUNT.toString());
+        io:println(&quot;Non blank line count:&quot; + nonBlankCount.toString());
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                         </table>
                     </div>
                     
@@ -246,6 +476,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run querying_with_streams.bal
+Input line count:5
+Non blank line count:3
 </code></pre></div>
 
                                 </td>

@@ -24,11 +24,6 @@ redirect_from:
             <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">{</span><span class="nx">method</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">method</span><span class="p">,</span> <span class="nx">path</span><span class="p">:</span> <span class="nx">paths</span><span class="p">};</span>
     <span class="p">}</span>
-
-    <span class="c1">// The resource is confined to `GET` requests with the path `/greeting`.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greeting</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s">&quot;Specific resource is invoked&quot;</span><span class="p">;</span>
-    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -82,10 +77,6 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-default-resource/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=87ecf0b17e4e7882004b574373d32fea&file=http_default_resource.bal"><img src="/img/main-play-green-btn.svg" /></a>
-                                        </li>
-                                        
                                     </ul>
                                 </div>
                             </td>
@@ -101,8 +92,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -148,11 +137,12 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default [string... paths](http:Request req)
             returns json {
         return {method: req.method, path: paths};
     }
+}
 </code></pre></div>
 
                                 </td>
@@ -163,28 +153,6 @@ redirect_from:
                                             <p>The <code>default</code> accessor name can be used to match with all methods including standard HTTP methods
  and custom methods. The rest param is used to represent the wildcard of the <code>resource path</code> in which any path
  segment will get dispatched to the resource in the absence of an exact path match.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get greeting() returns string {
-        return &quot;Specific resource is invoked&quot;;
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The resource is confined to <code>GET</code> requests with the path <code>/greeting</code>.</p>
 
                                         </div>
                                     </div>
@@ -228,10 +196,6 @@ bal run http_default_resource.bal
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -239,24 +203,10 @@ bal run http_default_resource.bal
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Run the cURL command below with the unmatched path and method.
 curl &quot;http://localhost:9090/foo/bar&quot; -X POST
 {&quot;method&quot;:&quot;POST&quot;, &quot;path&quot;:[&quot;foo&quot;, &quot;bar&quot;]}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Run the cURL command below to invoke the `greeting` resource.
-curl &quot;http://localhost:9090/greeting&quot;
-Specific resource is invoked
 </code></pre></div>
 
                                 </td>

@@ -7,6 +7,8 @@ description: The Visual Studio Code Ballerina extension provides a set of rich l
 keywords: visual studio, ballerina, extension, vscode
 intro: The Visual Studio Code Ballerina extension provides a set of rich language features along with an enhanced user experience. It offers easy development, execution, debugging, and testing for the Ballerina programming language. You can further visualize the graphical representation of your Ballerina source via the Diagram Editor.
 redirect_from:
+  - /learn/tooling-guide/
+  - /learn/tooling-guide
   - /learn/tooling-guide/visual-studio-code-extension/quick-start
   - /learn/tooling-guide/visual-studio-code-extension/
   - /learn/tooling-guide/visual-studio-code-extension

@@ -62,7 +62,7 @@ Now that you have a package to share with others, it can be published to the [Ba
 Ensure the package works as intended, because a publish is **permanent**. Once published to Ballerina Central, the version can never be overwritten, 
 and the package cannot be removed. However, the number of versions of a package that can be pushed to Ballerina Central is not restricted.
 
-As a precaution, you may use the [local repository](/learn/user-guide/ballerina-packages/dependencies#overriding-dependencies) first to test out the functionality of the library functions before publishing it to the Ballerina Central repository.
+As a precaution, you may use the [local repository](/learn/user-guide/ballerina-packages/dependencies/#overriding-dependencies) first to test out the functionality of the library functions before publishing it to the Ballerina Central repository.
 
 
 #### Setting up before the first publish
@@ -101,4 +101,4 @@ Now you can create your second package and use the package you just published in
 
 ### Using Packages in Ballerina Central
 
-Any package published in Ballerina Central is public and they can be used in packages as explained in the [Dependencies](/learn/user-guide/ballerina-packages/dependencies#dependencies) section.
+Any package published in Ballerina Central is public and they can be used in packages as explained in the [Dependencies](/learn/user-guide/ballerina-packages/dependencies) section.

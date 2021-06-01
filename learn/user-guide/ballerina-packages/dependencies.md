@@ -10,7 +10,7 @@ redirect_from:
 - /learn/user-guide/ballerina-packages/dependencies
 ---
 
-## Dependencies
+### Importing Modules
 
 In Ballerina, we can access any public symbol from another module by importing the particular module using an import declaration. The import declaration syntax is as follows:
 
@@ -18,9 +18,9 @@ In Ballerina, we can access any public symbol from another module by importing t
 import [org-name /] module-name [as import-prefix];
 ```
 
-*   The _org-name_ is optional for importing a module from the current package.
-*   The _import-prefix_ has to be a valid Ballerina identifier and the import-prefix is used to refer to public symbols in the declared module.
-*   The _import-prefix_ is also optional. If it is not available, the last part of the module-name can be used.
+* The _org-name_ is optional for importing a module from the current package.
+* The _import-prefix_ has to be a valid Ballerina identifier and the import-prefix is used to refer to public symbols in the declared module.
+* The _import-prefix_ is also optional. If it is not available, the last part of the module-name can be used.
 
 If we notice the source code of the main.bal file in our package, we can see the following import statement.
 
@@ -45,7 +45,7 @@ This is the directory structure of our package after adding the `hello_world.uti
 
 2 directories, 3 files
 ```
-We can add a public function in the `hello_world.util` module and use this function in the main.bal file in the [default module](/learn/user-guide/ballerina-packages/modules#default-module).
+We can add a public function in the `hello_world.util` module and use this function in the main.bal file in [the default module](/learn/user-guide/ballerina-packages/modules/#the-default-module).
 
 ```bal
 import hello_world.util
@@ -86,12 +86,12 @@ When the Dependencies.toml is updated by a build, only stable versions are recor
 ### Version compatibility
 
 Abiding by the common convention of [Semantic Versioning](https://semver.org/), Ballerina considers versions to be **compatible if the major versions are equal and NOT zero**.
-A few examples would be:
+A few examples would be as follows:
 
-*   0.2.3 and 0.2.4 are considered incompatible since the major version is zero
-*   1.2.3, 1.2.4, and 1.4.5 are compatible; 1.4.5 will be considered as the latest
-*   1.2.3-alpha, 1.2.3-alpha.2 and 1.2.3-beta are compatible, 1.2.3-beta is considered as the latest
-*   1.2.3-alpha, 1.2.3-beta, 1.2.4-alpha are compatible, 1.2.4-alpha is considered as the latest
+* 0.2.3 and 0.2.4 are considered incompatible since the major version is zero
+* 1.2.3, 1.2.4, and 1.4.5 are compatible; 1.4.5 will be considered as the latest
+* 1.2.3-alpha, 1.2.3-alpha.2 and 1.2.3-beta are compatible, 1.2.3-beta is considered as the latest
+* 1.2.3-alpha, 1.2.3-beta, 1.2.4-alpha are compatible, 1.2.4-alpha is considered as the latest
 
 This rule is used during the package resolution process and if any two incompatible versions are found in the dependency graph an error will be thrown failing the build.
 
@@ -104,7 +104,7 @@ error: compilation failed: Two incompatible versions exist in the dependency gra
 ### Overriding dependencies
 
 The desire to override a dependency can arise through a number of scenarios. The most common scenario out of them is the need to test a package 
-before [publishing to the Ballerina Central](/learn/user-guide/ballerina-packages/sharing-a-library-package#publishing-a-library-package-to-ballerina-central). 
+before [publishing to the Ballerina Central](/learn/user-guide/ballerina-packages/sharing-a-library-package/#publishing-a-library-package-to-ballerina-central). 
 This can be achieved with the local repository.
 
 #### Local repository
@@ -119,8 +119,8 @@ Then, by specifying the repository for the preferred dependencies in the Depende
 
 ```toml
 [[dependency]]
-org= "ballerina"
-name= "io"
-version= "0.5.3"
+org= "ballerinax"
+name= "aws.s3"
+version= "0.99.4"
 repository="local"
 ```

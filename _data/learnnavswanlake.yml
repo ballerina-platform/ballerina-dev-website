@@ -52,7 +52,7 @@
       url: /learn/user-guide/ballerina-packages/package-layout/
       active: package-layout
     - title: Modules
-      url: learn/user-guide/ballerina-packages/modules/
+      url: /learn/user-guide/ballerina-packages/modules/
       active: modules
     - title: Dependencies
       url: /learn/user-guide/ballerina-packages/dependencies/
@@ -60,6 +60,22 @@
     - title: Sharing a Library package
       url: /learn/user-guide/ballerina-packages/sharing-a-library-package/
       active: sharing-a-library-package
+
+- title: Testing Ballerina Code
+  url: '#'
+  sublinks:
+    - title: Quick Start
+      url: /learn/user-guide/testing-ballerina-code/testing-quick-start
+      active: testing-quick-start
+    - title: Writing Tests
+      url: /learn/user-guide/testing-ballerina-code/writing-tests
+      active: writing-tests
+    - title: Mocking
+      url: /learn/user-guide/testing-ballerina-code/mocking
+      active: mocking
+    - title: Executing Tests
+      url: /learn/user-guide/testing-ballerina-code/executing-tests
+      active: executing-tests
 
 - title: Code Organization 
   url: '#'
@@ -70,9 +86,6 @@
     - title: Coding Conventions
       url: /learn/user-guide/coding-conventions/
       active: coding-conventions
-    - title: Running Ballerina Code
-      url: /learn/user-guide/running-ballerina-code/
-      active: running-ballerina-code
 
 - title: Network Communication
   url: '#' 
@@ -143,22 +156,6 @@
     - title: Authentication and Authorization
       url: /learn/user-guide/authentication-and-authorization
       active: authentication-and-authorization
-
-- title: Testing Ballerina Code
-  url: '#' 
-  sublinks:
-    - title: Quick Start
-      url: /learn/user-guide/testing-ballerina-code/testing-quick-start
-      active: testing-quick-start
-    - title: Writing Tests
-      url: /learn/user-guide/testing-ballerina-code/writing-tests
-      active: writing-tests
-    - title: Mocking
-      url: /learn/user-guide/testing-ballerina-code/mocking
-      active: mocking
-    - title: Executing Tests
-      url: /learn/user-guide/testing-ballerina-code/executing-tests
-      active: executing-tests
 
 #- title: Extending Ballerina
   #url: '#' 

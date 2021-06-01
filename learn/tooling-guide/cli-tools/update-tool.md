@@ -26,31 +26,15 @@ Ballerina distribution is a term, which refers to these jBallerina and nBallerin
 
 ### Getting to know the Release Channels
 
-Ballerina distributions are released via two different release channels at the moment. One is the Swan Lake release channel and the other one is the 1.x release channel.
+Ballerina distributions are released via two different release channels at the moment. Swan Lake release channel is the primary release channel and the other one is the 1.x release channel. It is recommended to use Swan Lake release channel, if you are new to Ballerina.
 
 Ballerina yet does not have a release channel for nightly builds that give you access to the latest perhaps unstable features.
 
-#### Versioning of the releases
-
-Currently, the 1.x channel of the Ballerina distribution releases strictly follows [SemVer](https://semver.org/) with `major.minor.patch` version numbers.
-
 #### Patch Releases
 
-Patch releases of Ballerina distributions contain bug fixes and fixes for critical stability and security related issues. Occasionally,  you would see on-demand patch releases as well.
+Patch releases of Ballerina distributions contain bug fixes and fixes for critical stability and security related issues. Occasionally, you would see on-demand patch releases for 1.2.x.
 
 *Example patch releases: 1.0.6, 1.1.5, 1.1.10*
-
-#### Minor Releases
-
-These are feature releases of Ballerina distributions. Ballerina programs that you’ve written today should continue to work on these minor releases. 
-
-*Example minor releases: 1.1.0, 1.2.0, 1.3.0*
-
-#### Release Maintenance
-
-In the 1.x release channel, a minor release 1.x.0 is maintained by issuing a series of patch releases as 1.x.y. The maintenance of a particular minor release stops when there are two newer minor releases available.
-
-In other words, patch releases for 1.x.0 stop when jBallerina 1.(x+2).0 is released. E.g., when 1.2 is available, maintaining 1.0.0 will be stopped.
 
 ## Installing Ballerina
 
@@ -63,14 +47,15 @@ Once the installation is complete, you would see the directory structure below i
 ├── bin
 │   └── bal
 ├── dependencies
-│   └── jdk8u202-b08-jre
+│   └── jdk-11.0.8+10-jre
 ├── distributions
-│   ├── ballerina-slp4
+│   ├── ballerina-slalpha3
+│   ├── ballerina-slalpha4
 │   ├── jballerina-1.1.0
 │   ├── jballerina-1.2.8
 │   └── ballerina-version
 └── lib
-    └── ballerina-command-0.8.8.jar
+    └── ballerina-command-1.3.1.jar
 ```
 
 The `distributions` is the directory, in which all your installed distributions are maintained. Only one distribution from the above list can be active at a given time. 
@@ -87,13 +72,18 @@ The `bal update` command updates the Ballerina Tool itself to the latest version
 
 ```sh
 → bal update
-Fetching the latest version from the remote server...
-Downloading ballerina-command-0.8.8
-Downloading ballerina-tool-0.8.8 100% [====================================] 1/1 MB
-
-Updated to latest tool version: 0.8.8
+Fetching the latest tool version from the remote server...
+Downloading ballerina-command-1.3.3 100% [=====================================================================================================================================================================] 1/1 MB (0:00:01 / 0:00:00) 
+Updating environment variables
+The ‘ballerina’ command was changed to ‘bal’. Please use ‘bal’ command from now onwards.
+Ie : $ bal build
+     $ bal dist list
+     $ bal dist update
+Tool version updated to the latest version: 1.3.3
 Cleaning old files...
-Ballerina Tool updated successfully
+Update successfully completed
+
+If you want to update the Ballerina distribution, use 'bal dist update'
 ```
 
 ## Managing your Ballerina Distributions
@@ -141,12 +131,10 @@ The `bal dist list` command lists the installed distributions in your local envi
 
 ```sh
 → bal dist list
-Distributions available locally:
+Distributions available locally: 
 
-  [1.1.0] jballerina version 1.1.0
-  [1.2.5] jballerina version 1.2.5
-* [1.2.8] jballerina version 1.2.8
-  [slp3] ballerina version slp3
+  [slalpha4] Alpha 3
+* [slalpha5] Alpha 4
 
 Distributions available remotely:
 
@@ -172,6 +160,11 @@ Distributions available remotely:
   [1.2.6] jballerina version 1.2.6
   [1.2.7] jballerina version 1.2.7
   [1.2.8] jballerina version 1.2.8
+  [1.2.9]  jballerina version 1.2.9
+  [1.2.10] jballerina version 1.2.10
+  [1.2.11] jballerina version 1.2.11
+  [1.2.12] jballerina version 1.2.12
+  [1.2.13] jballerina version 1.2.13
 
 Swan Lake channel
 
@@ -179,9 +172,16 @@ Swan Lake channel
   [slp2] Preview 2
   [slp3] Preview 3
   [slp4] Preview 4
+  [slp5] Preview 5
+  [slp7] Preview 7
+  [slp8] Preview 8
+  [slalpha1] Alpha 1
+  [slalpha2] Alpha 2
+  [slalpha3] Alpha 3
+  [slalpha4] Alpha 4
+* [slalpha5] Alpha 5
 
 Use 'bal help dist' for more information on specific commands.
-
 ```
 
 > **Note:** The star (*) indicates the active distribution.
@@ -191,22 +191,23 @@ Use 'bal help dist' for more information on specific commands.
 The `bal dist remove <distribution>` command allows you to delete a particular distribution from your local environment. If you’ve been updating Ballerina regularly, you may have accumulated many unused distribution versions. This command helps you to clean them up.
 
 ```sh
-→ bal dist remove 1.2.5
-Distribution '1.2.5' successfully removed
+→ bal dist remove slalpha5
+Distribution 'slalpha5' successfully removed
 ```
 
 ### Updating to the Latest Preview/Patch Version
 
 The `bal dist update` command updates your active distribution to the latest patch version.
 
-E.g., If the active distribution in your environment is `1.2.7` and there exists the patch version `1.2.8` in our servers, this command will fetch and set it as the active distribution.
-
 ```sh
 → sudo bal dist update
-Fetching the latest patch distribution for 'jballerina-1.2.7' from the remote server...
-Fetching the '1.2.8' distribution from the remote server...
-Downloading 1.2.8 100% [==========================================================] 96/96 MB
-Successfully set the latest patch distribution '1.2.8' as the active distribution
+Fetching the latest patch distribution for 'ballerina-slalpha4' from the remote server...
+Fetching the 'slalpha5' distribution from the remote server...
+Downloading slalpha5 100% [================================================================================================================================================================================] 319/319 MB (0:01:21 / 0:00:00) 
+
+Fetching the dependencies for 'slalpha5' from the remote server...
+Dependency 'jdk-11.0.8+10-jre' is already available locally
+Successfully set the latest patch distribution 'slalpha5' as the active distribution
 ```
 
 >**Note:** If the active distribution in your environment is `slp4`, it will bump to the next Swan Lake Preview version, which is `slp5`, and will update to it.
@@ -216,13 +217,13 @@ Successfully set the latest patch distribution '1.2.8' as the active distributio
 The `bal dist pull <distribution>` command downloads a particular distribution and stores it in your local environment. It also sets the fetched distribution as the active distribution.
 
 ```sh
-→ bal dist pull 1.2.5
-Fetching the '1.2.5' distribution from the remote server...
-Downloading 1.2.5 100% [=====================================================================================] 236/236 MB (0:03:33 / 0:00:00)
-
-Fetching the dependencies for '1.2.5' from the remote server...
-Dependency 'jdk8u202-b08-jre' is already available locally
-'1.2.5' successfully set as the active distribution
+→ bal dist pull slalpha4
+Fetching the 'slalpha4' distribution from the remote server...
+Downloading slalpha4 100% [================================================================================================================================================================================] 287/287 MB (0:01:26 / 0:00:00) 
+  
+Fetching the dependencies for 'slalpha4' from the remote server...
+Dependency 'jdk-11.0.8+10-jre' is already available locally
+'slalpha4' successfully set as the active distribution
 ```
 
 ### Changing the Active Distribution
@@ -230,6 +231,6 @@ Dependency 'jdk8u202-b08-jre' is already available locally
 The `bal dist use <distribution>` command sets a particular distribution version as the active one.
 
 ```sh
-→ bal dist use 1.2.5
-'1.2.5' is the current active distribution version
+→ bal dist use slalpha3
+'slalpha3' successfully set as the active distribution
 ```

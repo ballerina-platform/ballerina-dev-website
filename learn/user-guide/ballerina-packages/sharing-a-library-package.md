@@ -8,6 +8,7 @@ active: sharing-a-library-package
 intro: The below is all about working with a library package. It explains how a library package is created and published to Ballerina Central.
 redirect_from:
 - /learn/user-guide/ballerina-packages/sharing-a-library-package
+- /learn/user-guide/ballerina-packages/sharing-a-library-package/
 ---
 
 ### Creating a Library Package

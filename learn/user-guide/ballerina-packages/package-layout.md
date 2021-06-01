@@ -8,6 +8,7 @@ active: package-layout
 intro: The below is the structure of a package directory. It explains the purpose of each file in a package.
 redirect_from:
 - /learn/user-guide/ballerina-packages/package-layout
+- /learn/user-guide/ballerina-packages/package-layout/
 ---
 
 ```bash

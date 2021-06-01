@@ -8,6 +8,7 @@ active: dependencies
 intro: The below are all you need to know about dependencies. It explains imports and how they can be used in your package.
 redirect_from:
 - /learn/user-guide/ballerina-packages/dependencies
+- /learn/user-guide/ballerina-packages/dependencies/
 ---
 
 ### Importing Modules

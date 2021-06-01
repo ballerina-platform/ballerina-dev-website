@@ -381,14 +381,14 @@ ProductAmount[] output = from var product in products
                               select {
                                   ShoppingCardId: product.ShoppingCardId,
                                   Name: product.Name,
-                                  TotalAmount: product.Quantity * priceInfo.Price
+                                  TotalAmount: <float>product.Quantity * priceInfo.Price
                               };
 ```
 
 3. Use the integrated query below to calculate the total bill amount.
 
 ```ballerina
- var result = from var productAmount in output
+ error? result = from var productAmount in output
                     do {
                         totalBillAmount = totalBillAmount + productAmount.TotalAmount;                    
                     }; 
@@ -440,10 +440,10 @@ service /emart on new http:Listener(9090) {
                                select {
                                    ShoppingCardId: product.ShoppingCardId,
                                    Name: product.Name,
-                                   TotalAmount: product.Quantity * priceInfo.Price
+                                   TotalAmount: <float>product.Quantity * priceInfo.Price
                                };
        float totalBillAmount = 0;
-       var result = from var productAmount in output
+       error? result = from var productAmount in output
                    do {
                        totalBillAmount = totalBillAmount + productAmount.TotalAmount;                   
                    };

@@ -53,7 +53,7 @@ Organization names can only contain alphanumerics, underscore, and the maximum l
 
 When we run the `bal new` command, the organization name by default will be set to the user name of our machine. We can choose to update the Ballerina.toml file to amend the organization name appropriately.
 
-The [restrictions for the organization name of a package](/learn/user-guide/ballerina-packages/sharing-a-library-package#organization) when publishing to [Ballerina Central](https://central.ballerina.io/) should also be considered before choosing an organization name.
+As described in the [organization](/learn/user-guide/ballerina-packages/sharing-a-library-package/#publishing-a-library-package-to-ballerina-central) section, the restrictions for the organization name of a package when publishing to [Ballerina Central](https://central.ballerina.io/) should also be considered before choosing an organization name.
 
 
 #### `name` field
@@ -110,7 +110,7 @@ cloud="k8s"
 
 **Dependencies.toml**
 
-The [Dependencies.toml](/learn/user-guide/ballerina-packages/dependencies#dependenciestoml) locks versions of dependencies so that you can have a repeatable build.
+The [Dependencies.toml](/learn/user-guide/ballerina-packages/dependencies/#dependenciestoml) locks versions of dependencies so that you can have a repeatable build.
 
 **Package.md**
 
@@ -126,9 +126,10 @@ These are directories related to the default modules. The [Modules](/learn/user-
 
 **modules/ directory**
 
-This directory contains the other modules. The layout of this directory is explained in the [Module Layout](/learn/user-guide/ballerina-packages/modules#module-layout) section.
+This directory contains the other modules. The layout of this directory is explained in the [Module Layout](/learn/user-guide/ballerina-packages/modules/#module-layout) section.
 
-<style> 
-#tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} 
-.cGitButtonContainer {padding-left: 40px;} 
+<style>
+.cBallerinaTocContainer {
+    display: none !important;
+}
 </style>

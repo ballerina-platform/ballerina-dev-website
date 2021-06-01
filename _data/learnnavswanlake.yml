@@ -86,9 +86,6 @@
     - title: Coding Conventions
       url: /learn/user-guide/coding-conventions/
       active: coding-conventions
-    - title: Running Ballerina Code
-      url: /learn/user-guide/running-ballerina-code/
-      active: running-ballerina-code
 
 - title: Network Communication
   url: '#' 

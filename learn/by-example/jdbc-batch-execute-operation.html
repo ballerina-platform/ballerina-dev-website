@@ -42,7 +42,8 @@ redirect_from:
 <span class="s">                ${data.registrationID}, ${data.creditLimit}, ${data.country})`</span><span class="p">;</span>
     
     <span class="c1">// Inserts the records with the auto-generated ID.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">[]</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">batchExecute</span><span class="p">(</span><span class="nx">insertQueries</span><span class="p">);</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">[]</span> <span class="nx">result</span> <span class="p">=</span>
+                            <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">batchExecute</span><span class="p">(</span><span class="nx">insertQueries</span><span class="p">);</span>
 
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">generatedIds</span> <span class="p">=</span> <span class="p">[];</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">summary</span> <span class="nx">in</span> <span class="nx">result</span> <span class="p">{</span>
@@ -135,7 +136,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a808aedbbb431c64ecd513b6c358a4f1&file=jdbc_batch_execute_operation.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a2cc9fbfaf460883383bf4bd0298ccac&file=jdbc_batch_execute_operation.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -310,7 +311,8 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult[] result = check jdbcClient -&gt; batchExecute(insertQueries);
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult[] result =
+                            check jdbcClient -&gt; batchExecute(insertQueries);
 </code></pre></div>
 
                                 </td>

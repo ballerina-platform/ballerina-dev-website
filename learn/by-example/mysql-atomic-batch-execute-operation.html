@@ -81,14 +81,15 @@ redirect_from:
 
     <span class="c1">// Creates a table in the database.</span>
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE MYSQL_BBE.Customers</span>
-<span class="s">            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  VARCHAR(300), </span>
-<span class="s">            lastName  VARCHAR(300), registrationID INTEGER UNIQUE, creditLimit DOUBLE, </span>
-<span class="s">            country  VARCHAR(300), PRIMARY KEY (customerId))`</span><span class="p">);</span>
+<span class="s">            (customerId INTEGER NOT NULL AUTO_INCREMENT,</span>
+<span class="s">            firstName VARCHAR(300), lastName  VARCHAR(300), registrationID</span>
+<span class="s">            INTEGER UNIQUE, creditLimit DOUBLE, country  VARCHAR(300),</span>
+<span class="s">            PRIMARY KEY (customerId))`</span><span class="p">);</span>
 
     <span class="c1">// Adds records to the newly-created table.</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO MYSQL_BBE.Customers (firstName,</span>
-<span class="s">            lastName, registrationID,creditLimit,country) VALUES (&#39;Peter&#39;,</span>
-<span class="s">            &#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`</span><span class="p">);</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO MYSQL_BBE.Customers</span>
+<span class="s">            (firstName, lastName, registrationID,creditLimit,country) VALUES</span>
+<span class="s">             (&#39;Peter&#39;, &#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`</span><span class="p">);</span>
 
     <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
@@ -131,9 +132,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="jdbc-query-operation.html">
+                                    <a class="next" href="mysql-call-stored-procedures.html">
                                         <span>NEXT ></span>
-                                        <p>Simple Query</p>
+                                        <p>Call Stored Procedures</p>
                                     </a>
                                 </div>
                                 
@@ -157,7 +158,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=dfa43e30b20c006f103469ba5946f8ce&file=mysql_atomic_batch_execute_operation.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=69030fd12b976d868fabc36eab4890b8&file=mysql_atomic_batch_execute_operation.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -463,9 +464,10 @@ import ballerina/sql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient -&gt; execute(`CREATE TABLE MYSQL_BBE.Customers
-            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  VARCHAR(300), 
-            lastName  VARCHAR(300), registrationID INTEGER UNIQUE, creditLimit DOUBLE, 
-            country  VARCHAR(300), PRIMARY KEY (customerId))`);
+            (customerId INTEGER NOT NULL AUTO_INCREMENT,
+            firstName VARCHAR(300), lastName  VARCHAR(300), registrationID
+            INTEGER UNIQUE, creditLimit DOUBLE, country  VARCHAR(300),
+            PRIMARY KEY (customerId))`);
 </code></pre></div>
 
                                 </td>
@@ -484,9 +486,9 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient -&gt; execute(`INSERT INTO MYSQL_BBE.Customers (firstName,
-            lastName, registrationID,creditLimit,country) VALUES (&#39;Peter&#39;,
-            &#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`);
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient -&gt; execute(`INSERT INTO MYSQL_BBE.Customers
+            (firstName, lastName, registrationID,creditLimit,country) VALUES
+             (&#39;Peter&#39;, &#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`);
 </code></pre></div>
 
                                 </td>

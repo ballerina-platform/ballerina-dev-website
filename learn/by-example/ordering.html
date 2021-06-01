@@ -32,6 +32,7 @@ redirect_from:
                         <span class="c1">// must be an `ordered` type. The `order-direction` is `ascending`</span>
                         <span class="c1">// if not specified explicitly.</span>
                         <span class="nx">order</span> <span class="nx">by</span> <span class="nx">e</span><span class="p">.</span><span class="nx">lastName</span> <span class="nx">ascending</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">firstName</span> <span class="nx">ascending</span>
+                        
                         <span class="nx">select</span> <span class="nx">e</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">sorted</span><span class="p">);</span>
 <span class="p">}</span>
@@ -88,7 +89,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=093606b99bf0c212119d39d9ab2539cb&file=ordering.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=eccb9c8f33bf4c90414ee8df30bc27b8&file=ordering.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -182,6 +183,7 @@ redirect_from:
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>                        order by e.lastName ascending, e.firstName ascending
+                        
                         select e;
     io:println(sorted);
 }

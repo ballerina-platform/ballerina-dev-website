@@ -25,7 +25,8 @@ redirect_from:
     <span class="c1">// An annotation can be used to make a strand run on a separate thread.</span>
     <span class="nd">@strand {</span>
         <span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span>
-    <span class="p">}</span>    
+    <span class="p">}</span>
+
     <span class="kd">worker</span> <span class="nx">B</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;In worker B&quot;</span><span class="p">);</span>
     <span class="p">}</span>
@@ -88,7 +89,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=bb4e281f03d801b5609eed33062368d1&file=strands.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=395ac22aa8e73d6989f27cee89ba093f&file=strands.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -106,6 +107,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -174,9 +177,6 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    @strand {
         thread: &quot;any&quot;
-    }    
-    worker B {
-        io:println(&quot;In worker B&quot;);
     }
 </code></pre></div>
 
@@ -189,6 +189,20 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    worker B {
+        io:println(&quot;In worker B&quot;);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

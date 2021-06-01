@@ -21,6 +21,7 @@ redirect_from:
     <span class="nx">lock</span> <span class="p">{</span>
         <span class="nx">n</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">}</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -38,7 +39,7 @@ redirect_from:
                             <h2>Lock Statement</h2>
                             <p><p>The <code>lock</code> statement allows mutable state to be safely accessed from multiple strands that are running on
  separate threads. Semantics are like an atomic section: execution of outermost <code>lock</code> block is not
- interleaved. Naive implementation uses single, global, recursive <code>lock</code>. Efficient implementation can do
+ interleaved. Naive implementation uses single, global, recursive lock. Efficient implementation can do
  compile-time lock inference.</p>
 </p>
 
@@ -47,9 +48,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="inter-worker-failure-propagation.html">
+                                    <a class="prev" href="commit-rollback-handlers.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Inter-Worker Failure Propagation</p>
+                                        <p>Commit/Rollback Handlers</p>
                                     </a>
                                 </div>
                                  
@@ -80,7 +81,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=fdfff72dd57eed186dc63e7178f7978a&file=lock_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=527b1b3a0245672a315544458d57158a&file=lock_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -98,6 +99,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -156,8 +159,6 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>    lock {
         n += 1;
     }
-    io:println(n);
-}
 </code></pre></div>
 
                                 </td>
@@ -169,6 +170,19 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(n);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

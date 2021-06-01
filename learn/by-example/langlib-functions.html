@@ -15,11 +15,12 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// You can call Langlib functions using the method-call syntax.</span>
+    <span class="c1">// You can call langlib functions using the method-call syntax.</span>
     <span class="kt">string</span> <span class="nx">s</span> <span class="p">=</span> <span class="s">&quot;abc&quot;</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
 
-    <span class="c1">// n will be 1</span>
+    <span class="c1">// `n` will be 1.</span>
     <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
 
     <span class="c1">// `s.length()` is same as `string:length(s)`.</span>
@@ -34,9 +35,10 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Langlib Functions</h2>
-                            <p><p>Langlib is a small library defined by language providing fundamental operations on built-in datatypes.
+                            <p><p>Langlib is a small library defined by language providing fundamental operations on built-in data types.
  Langlib functions can be called using convenient method-call syntax, but these types are not objects!
- There exists a <code>ballerina/lang.T</code> module for each built-in type <code>T</code> and they are automatically imported using <code>T</code> prefix.</p>
+ There exists a <code>ballerina/lang.T</code> module for each built-in type <code>T</code> and they are automatically imported
+ using <code>T</code> prefix.</p>
 </p>
 
                         </td>
@@ -77,7 +79,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=4b7bf439b5c2a5c7dbac78675037f5ac&file=langlib_functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=cd83909c7e3d0b6218718e70103f3e3e&file=langlib_functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -95,6 +97,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -139,7 +143,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string s = &quot;abc&quot;.substring(1, 2);
-    io:println(s);
 </code></pre></div>
 
                                 </td>
@@ -147,10 +150,22 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>You can call Langlib functions using the method-call syntax.</p>
+                                            <p>You can call langlib functions using the method-call syntax.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(s);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -166,7 +181,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>n will be 1</p>
+                                            <p><code>n</code> will be 1.</p>
 
                                         </div>
                                     </div>

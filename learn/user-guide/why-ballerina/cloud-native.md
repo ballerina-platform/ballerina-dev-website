@@ -6,8 +6,7 @@ keywords: ballerina, programming language, cloud, kubernetes, docker
 permalink: /learn/user-guide/why-ballerina/cloud-native/
 active: cloud-native
 intro: See how the Ballerina programming language has constructs that seamlessly map to network programming concepts such as services and network resources. It also comes with built-in language support to deploy Ballerina applications on the cloud using Docker and Kubernetes.
-
-redirct_from:
+redirect_from:
   - /why/from-code-to-cloud/
   - /why/from-code-to-cloud
   - /learn/user-guide/why-ballerina/from-code-to-cloud

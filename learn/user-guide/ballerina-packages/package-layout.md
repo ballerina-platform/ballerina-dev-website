@@ -127,3 +127,8 @@ These are directories related to the default modules. The [Modules](/learn/user-
 **modules/ directory**
 
 This directory contains the other modules. The layout of this directory is explained in the [Module Layout](/learn/user-guide/ballerina-packages/modules#module-layout) section.
+
+<style> 
+#tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} 
+.cGitButtonContainer {padding-left: 40px;} 
+</style>

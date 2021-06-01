@@ -10,6 +10,8 @@ redirect_from:
 - /learn/user-guide/ballerina-packages/sharing-a-library-package
 ---
 
+### Creating a Library Package
+
 To create a new library package, we use `bal new -t lib`:
 
 ```bash
@@ -97,8 +99,6 @@ That’s how you publish your first package!
 
 Now you can create your second package and use the package you just published in it.
 
-#### Using Packages in Ballerina Central
+### Using Packages in Ballerina Central
 
-Any package published in Ballerina Central is public and they can be used in packages as explained in the [Dependencies](/learn/user-guide/ballerina-packages/dependencies#dependencies) section. 
-
-
+Any package published in Ballerina Central is public and they can be used in packages as explained in the [Dependencies](/learn/user-guide/ballerina-packages/dependencies#dependencies) section.

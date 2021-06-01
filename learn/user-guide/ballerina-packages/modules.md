@@ -10,8 +10,6 @@ redirect_from:
 - /learn/user-guide/ballerina-packages/modules
 ---
 
-## Modules
-
 A package is a collection of related modules that are versioned and distributed as a single unit. It is common in small projects to have only one module (default) in a package. As a result, the default module’s content is placed directly in the root of the package directory. But as projects grow in complexity, needs arise to organize code better in terms of functionality and visibility. Therefore, Ballerina allows subdividing the code into multiple modules as well.
 
 Module names can only contain alphanumerics, underscores, and periods and the maximum length is 256 characters. The value of the first identifier of the modules belonging to the same package will always be the package name.
@@ -27,12 +25,12 @@ Module names can only contain alphanumerics, underscores, and periods and the ma
 ├── app.bal
 ├── utils.bal
 ├── tests/
-│  ├── main_tests.bal
-│  ├── utils_tests.bal
-│  └── resources/
-│      └── test_res.json
+│     ├── main_tests.bal
+│     ├── utils_tests.bal
+│     └── resources/
+│           └── test_res.json
 └── resources/
-    └── app.png
+      └── app.png
 ```
 
 **`.bal` source files**
@@ -47,20 +45,20 @@ The Module.md file provides a human-readable description of a module. When you v
 
 **resources/ directory**
 
-The resources directory can be used to store all module resources such as images, default configs, etc
+The _resources/_ directory can be used to store all module resources such as images, default configs, etc
 
 **tests/ directory**
 
 The tests directory contains unit tests of the module, and they test the module in isolation. The module-level test cases have access to the symbols with module-level visibility.
 
-#### The default module
+### The default module
 
 When we created a package with `bal new` command, the **_main.bal_** that got created at the root of the package directory belongs to the default module. Similarly, we can add more source files at the root.
 
 Symbols such as functions, variables in one file are visible to other files because they are in the same namespace. This namespace is called the default module of the package. The package name which is specified in the Ballerina.toml file is also the name of the default module.
 
 
-#### Other modules
+### Other modules
 
 The top-level modules directory contains all the other modules. Each immediate subdirectory of the modules directory becomes a Ballerina module and the subdirectory name becomes the module name. Therefore the subdirectory name should be a valid Ballerina identifier.
 
@@ -86,7 +84,7 @@ This creates the `modules` directory in our package root with a source file. Thi
 2 directories, 3 files
 ```
 
-#### Exporting modules
+### Exporting modules
 
 Ballerina provides a mechanism to control the visibility of modules outside of the package.
 

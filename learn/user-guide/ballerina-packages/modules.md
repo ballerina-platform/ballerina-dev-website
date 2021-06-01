@@ -8,6 +8,7 @@ active: modules
 intro: The below are all you need to know about modules. It explains the layout and concept of modules.
 redirect_from:
 - /learn/user-guide/ballerina-packages/modules
+- /learn/user-guide/ballerina-packages/modules/
 ---
 
 A package is a collection of related modules that are versioned and distributed as a single unit. It is common in small projects to have only one module (default) in a package. As a result, the default module’s content is placed directly in the root of the package directory. But as projects grow in complexity, needs arise to organize code better in terms of functionality and visibility. Therefore, Ballerina allows subdividing the code into multiple modules as well.

@@ -26,7 +26,7 @@ Ballerina distribution is a term, which refers to these jBallerina and nBallerin
 
 ### Getting to know the Release Channels
 
-Ballerina distributions are released via two different release channels at the moment. Swan Lake release channel is the primary release channel and the other one is the 1.x release channel. It is recommended to use swan lake release channel, if you are new to Ballerina.
+Ballerina distributions are released via two different release channels at the moment. Swan Lake release channel is the primary release channel and the other one is the 1.x release channel. It is recommended to use Swan Lake release channel, if you are new to Ballerina.
 
 Ballerina yet does not have a release channel for nightly builds that give you access to the latest perhaps unstable features.
 

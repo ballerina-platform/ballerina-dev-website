@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Sharing a Library package
+title: Sharing a Library Package
 description: The below is all about working with a library package. It explains how a library package is created and published to Ballerina Central.
 keywords: ballerina, programming language, ballerina packages, libraries, publishing packages
 permalink: /learn/user-guide/ballerina-packages/sharing-a-library-package/
@@ -10,7 +10,7 @@ redirect_from:
 - /learn/user-guide/ballerina-packages/sharing-a-library-package
 ---
 
-### Creating a Library Package
+### Creating a library package
 
 To create a new library package, we use `bal new -t lib`:
 
@@ -31,7 +31,7 @@ hello
 0 directories, 3 files
 ```
 
-Similar to our first package the `Ballerina.toml` is created. Apart from it, the hello.bal source file and the [Package.md](/learn/user-guide/ballerina-packages/package-layout#packagemd) files are created.
+Similar to our first package the `Ballerina.toml` is created. Apart from it, the `hello.bal` source file and the [Package.md](/learn/user-guide/ballerina-packages/package-layout#packagemd) files are created.
 
 Let’s check the content of the `Ballerina.toml` file.
 
@@ -56,20 +56,21 @@ Creating bala
 	target/bala/user-hello-any-0.1.0.bala
 ```
 
-### Publishing a Library Package to Ballerina Central
+### Publishing a library package to Ballerina Central
 
 Now that you have a package to share with others, it can be published to the [Ballerina Central](https://central.ballerina.io/). 
 Ensure the package works as intended, because a publish is **permanent**. Once published to Ballerina Central, the version can never be overwritten, 
 and the package cannot be removed. However, the number of versions of a package that can be pushed to Ballerina Central is not restricted.
 
-As a precaution, you may use the [local repository](/learn/user-guide/ballerina-packages/dependencies#overriding-dependencies) first to test out the functionality of the library functions before publishing it to the Ballerina Central repository.
+As a precaution, you may use the [local repository](/learn/user-guide/ballerina-packages/dependencies/#overriding-dependencies) first to test out the functionality of the library functions before publishing it to the Ballerina Central repository.
 
 
 #### Setting up before the first publish
 
 First, you need to create an account on Ballerina Central. To register, [visit the home page](https://central.ballerina.io) and log in via a Google or GitHub account.
 
-Second, you need to [go to the dashboard page](https://central.ballerina.io/dashboard) and acquire an access token. Now copy the access token into the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`).
+Second, you need to [go to the dashboard page](https://central.ballerina.io/dashboard) and acquire an access token.
+Download and place the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`). If you already have a `Settings.toml` file configured in your home repository, then follow the other option and copy the access token into the `Settings.toml`.
 
 If you are connected to the internet via an HTTP proxy, add the following section to `Settings.toml` and change accordingly.
 
@@ -99,6 +100,6 @@ That’s how you publish your first package!
 
 Now you can create your second package and use the package you just published in it.
 
-### Using Packages in Ballerina Central
+### Using packages in Ballerina Central
 
-Any package published in Ballerina Central is public and they can be used in packages as explained in the [Dependencies](/learn/user-guide/ballerina-packages/dependencies#dependencies) section.
+Any package published in Ballerina Central is public and they can be used in packages as explained in the [Dependencies](/learn/user-guide/ballerina-packages/dependencies) section.

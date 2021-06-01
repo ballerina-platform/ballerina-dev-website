@@ -14,7 +14,7 @@ redirect_from:
   - /learn/user-guide/why-ballerina/graphical
 ---
 
-In today’s cloud-era, we need technologies that can model distributed systems in a more developer-friendly way. This means that for a single use case we need to model a flow that shows how multiple actors interact with each other, how concurrent execution flows, and what remote endpoints are involved. Sequence diagrams are known to be the best way to visually describe this.
+In today’s cloud era, technologies that can model distributed systems in a more developer-friendly way are required. This means that for a single use case, you need to model a flow that shows how multiple actors interact with each other, how concurrent execution flows, and what remote endpoints are involved. Sequence diagrams are known to be the best way to visually describe this.
 
 That’s why sequence diagrams are the foundation for designing the syntax and semantics of the Ballerina language. Ballerina provides the flexibility of a general-purpose language while having features to model solutions based on higher-level abstractions.
 
@@ -23,7 +23,6 @@ That’s why sequence diagrams are the foundation for designing the syntax and s
 ## Sequence Diagrams in Ballerina
 
  In Ballerina, there is a bidirectional mapping between the textual representation of code in the Ballerina syntax and the visual representation as a sequence diagram. It allows you to visualize any function or a service resource written in Ballerina as a sequence diagram. The diagram will display all the logic and network interaction of that function. You can view these diagrams using the Ballerina VSCode plugin.
-
 
 <img src="/img/why-pages/sequence-diagrams-for-programming-1.png" alt="Ballerina sequence diagram" width="700">
 

@@ -53,7 +53,7 @@ Organization names can only contain alphanumerics, underscore, and the maximum l
 
 When we run the `bal new` command, the organization name by default will be set to the user name of our machine. We can choose to update the Ballerina.toml file to amend the organization name appropriately.
 
-The [restrictions for the organization name of a package](/learn/user-guide/ballerina-packages/sharing-a-library-package#organization) when publishing to [Ballerina Central](https://central.ballerina.io/) should also be considered before choosing an organization name.
+As described in the [organization](/learn/user-guide/ballerina-packages/sharing-a-library-package/#publishing-a-library-package-to-ballerina-central) section, the restrictions for the organization name of a package when publishing to [Ballerina Central](https://central.ballerina.io/) should also be considered before choosing an organization name.
 
 
 #### `name` field
@@ -64,7 +64,7 @@ The name can only contain alphanumerics, underscore, period and the maximum leng
 
 If the package name is not provided in the Ballerina.toml, then the current directory name is set as the package name. If there are any characters in the directory name mismatching the allowed regex, these will be replaced with the `_` character.
 
-##### Hierarchical Package names
+##### Hierarchical package names
 
 When there are various functionalities to be provided, it would make more sense to split them into multiple packages instead of adding it all into a single package.  For scenarios like this, we can give a hierarchical name to the package.
 
@@ -91,7 +91,7 @@ Ballerina follows the convention of [Semantic Versioning](https://semver.org/). 
 *   Once the package is production-ready, you can use a stable version (E.g. 1.0.0). Any subsequent minor or patch releases of the same major version should be backward compatible and should not break existing builds.
 
 
-#### Build Options
+#### Build options
 
 The `[build-options]` table specifies options that should be applied when building the package. We can use build options in the Ballerina.toml instead of passing options to the `bal build` command.
 
@@ -110,7 +110,7 @@ cloud="k8s"
 
 **Dependencies.toml**
 
-The [Dependencies.toml](/learn/user-guide/ballerina-packages/dependencies#dependenciestoml) locks versions of dependencies so that you can have a repeatable build.
+The [Dependencies.toml](/learn/user-guide/ballerina-packages/dependencies/#dependenciestoml) locks versions of dependencies so that you can have a repeatable build.
 
 **Package.md**
 
@@ -126,9 +126,10 @@ These are directories related to the default modules. The [Modules](/learn/user-
 
 **modules/ directory**
 
-This directory contains the other modules. The layout of this directory is explained in the [Module Layout](/learn/user-guide/ballerina-packages/modules#module-layout) section.
+This directory contains the other modules. The layout of this directory is explained in the [Module Layout](/learn/user-guide/ballerina-packages/modules/#module-layout) section.
 
-<style> 
-#tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} 
-.cGitButtonContainer {padding-left: 40px;} 
+<style>
+.cBallerinaTocContainer {
+    display: none !important;
+}
 </style>

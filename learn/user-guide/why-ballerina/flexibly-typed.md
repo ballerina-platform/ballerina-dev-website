@@ -18,7 +18,7 @@ redirect_from:
 
 In a programming language, the type system is the foundation for representing data and implementing logic. It provides the means of creating abstractions to the solutions that you provide. While some languages provide basic functionality, others strive to give in-built functionality for specialized domains.
 
-With more services being available in the cloud, the network-distributed programming domain has grown. As the developer is given the added responsibility of working with networked resources in their code, it is critical that the programming language itself aids in this operation. That’s why Ballerina’s network-friendly type system is specialized for this domain.
+With more services being available in the cloud, the network-distributed programming domain has grown. As the developer is given the added responsibility of working with networked resources in their code, the programming language itself must aid in this operation. That’s why Ballerina’s network-friendly type system is specialized for this domain.
 
 ## Statically Typed and Structural
 
@@ -58,14 +58,14 @@ DoorState ds3 = { open: false, locked: true };
 DoorState ds4 = { open: false, locked: false };
 ```
 
-A type in Ballerina represents a set of the possible shapes it can have. So any value that belongs to either of the above four shapes will be considered to be of the type `DoorState`.
+A type in Ballerina represents a set of possible shapes it can have. So any value that belongs to either of the above four shapes will be considered to be of the type `DoorState`.
 
 <img src="/img/why-pages/why-diagram-01.svg"/>
 <p class="cCaption">Figure 1: Set of shapes of the type <code>DoorState</code></p>
 
 ### Subtypes in Ballerina
 
-Subtyping in Ballerina is semantic. It is defined by means of shapes, where `S` is a subtype of `T` if the set of shapes denoted by `S` are a subset of the shapes denoted by `T`. The examples below demonstrate this behavior.
+Subtyping in Ballerina is semantic. It is defined through shapes, where `S` is a subtype of `T` if the set of shapes denoted by `S` are a subset of the shapes denoted by `T`. The examples below demonstrate this behavior.
 
 The type `boolean` is a simple basic type in Ballerina without a storage identity, so its values become equivalent to its shapes. Therefore, the `boolean` type is defined as having two shapes, `true` and `false`.
 
@@ -148,7 +148,7 @@ In situations such as above, a separate system from our core application may be 
 
 ## Open-by-Default
 
-Ballerina’s open-by-default concept is tied around the <a href="https://en.wikipedia.org/wiki/Robustness_principle">robustness principle</a>. This means that you should design network-aware programs to accept all the data that is sent to you and make the best effort to understand it. Also, when sending data, you should make the best effort to conform to the standard protocols that were agreed upon beforehand. This strategy makes sure you have the best chance of interacting with different systems in a reliable manner.
+Ballerina’s open-by-default concept is tied around the <a href="https://en.wikipedia.org/wiki/Robustness_principle">robustness principle</a>. This means that you should design network-aware programs to accept all the data that is sent to you and make the best effort to understand it. Also, when sending data, you should make the best effort to conform to the standard protocols that were agreed upon beforehand. This strategy makes sure you have the best chance of interacting with different systems reliably.
 
 The main facilitator of this in the type system is the open record concept in Ballerina. The sections above demonstrated closed records and the sections below demonstrate a record type to represent the details of a person.
 
@@ -175,9 +175,9 @@ type Person record {|
 
 Here, the type `Person` is an open record type, the notation `json...;` denotes that this record type can contain additional fields that are not mentioned in the record type descriptor, as long as these additional fields belong to type `json`.
 
-The earlier `DoorState` record type was defined explicitly as a closed record type. Therefore, you were able to list out all the possible shapes in the `DoorState` type. If this type was defined as an open record, you would have an infinite number of shapes since `DoorState` values can have any arbitrary field set in the code.
+The earlier `DoorState` record type was defined explicitly as a closed record type. Therefore, you were able to list out all the possible shapes in the `DoorState` type. If this type was defined as an open record, you would have an infinite number of shapes since `DoorState` values can have any arbitrary fieldset in the code.
 
-The `Person` record type above has an <a href="/learn/by-example/record-optional-fields.html">optional field</a> `creditScore` (denoted by the suffix `"?"`). This means the field value of `creditScore` of a `Person` record can be skipped without setting a value. Later on, this field can be accessed using the `"?."` operator, which would return a value of type `CreditScore?`, which is equivalent to the union type `CreditScore|()`. In Ballerina, the nil value and the type is represented by `()`.
+The `Person` record type above has an <a href="/learn/by-example/record-optional-fields.html">optional field</a> `creditScore` (denoted by the suffix `"?"`). This means the field value of `creditScore` of a `Person` record can be skipped without setting a value. Later on, this field can be accessed using the `"?."` operator, which would return a value of type `CreditScore?`, which is equivalent to the union type `CreditScore|()`. In Ballerina, the nil value and the type are represented by `()`.
 
 Let’s create a new type `Student`, which will be a subtype of the `Person` type.
 

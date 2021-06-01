@@ -1,16 +1,14 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: Creating your first Ballerina Package
-description: The below are basic steps you need to know about writing a Ballerina package. It also introduces the package-related commands in the `bal` command-line tool.
+description: The below are the basic steps you need to know about writing a Ballerina package. It also introduces the package-related commands in the Ballerina command-line tool.
 keywords: ballerina, programming language, ballerina packages, getting started
 permalink: /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/
 active: creating-your-first-ballerina-package
-intro: The below are basic steps you need to know about writing a Ballerina packages. It also introduces the package-related commands in the `bal` command-line tool.
+intro: The below are the basic steps you need to know about writing a Ballerina packages. It also introduces the package-related commands in the Ballerina command-line tool.
 redirect_from:
 - /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package
-- /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/
 - /learn/user-guide/ballerina-packages
-- /learn/user-guide/ballerina-packages/
 ---
 
 ## Creating a new package
@@ -72,7 +70,7 @@ Generating executable
 Then, run it:
 
 ```bash
-$ java -jar target/bin/helloworld.jar
+$ bal run target/bin/helloworld.jar
 Hello World!
 ```
 

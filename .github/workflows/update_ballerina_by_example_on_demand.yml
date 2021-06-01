@@ -40,7 +40,7 @@ jobs:
         BALLERINA_VERSION="`jq -r '.version' ../_data/swanlake-latest/metadata.json`"
         SHORT_VERSION="`jq -r '."short-version"' ../_data/swanlake-latest/metadata.json`"
 
-        wget --header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"  https://api.github.com/repos/ballerina-platform/ballerina-distribution/actions/artifacts/${{ github.event.inputs.artifact }}/zip
+        wget --header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"  https://api.github.com/repos/ballerina-platform/ballerina-distribution/actions/artifacts/${{ github.event.inputs.artifact }}/zip  -O "ballerina.zip"
         unzip ballerina.zip
         unzip ballerina-${BALLERINA_VERSION}.zip
 

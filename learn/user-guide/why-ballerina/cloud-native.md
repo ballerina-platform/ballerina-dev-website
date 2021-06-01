@@ -132,7 +132,7 @@ Some protocols supported out-of-the-box are:
 
 ## Async Network Protocol
 
-In the request-response paradigm, network calls are blocked. However, blocking an OS thread to perform a network interaction is very expensive. That’s why many other languages supported async I/O, and with that, you have to implement complicated logic to handle asynchronous events using techniques such as callbacks and promises.Ballerina’s request-response protocols are implicitly non-blocking and will take care of asynchronous invocations.
+In the request-response paradigm, network calls are blocked. However, blocking an OS thread to perform a network interaction is very expensive. That’s why many other languages supported async I/O, and with that, you have to implement complicated logic to handle asynchronous events using techniques such as callbacks and promises. Ballerina’s request-response protocols are implicitly non-blocking and will take care of asynchronous invocations.
 
 ### Get Started
 

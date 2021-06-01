@@ -42,10 +42,7 @@ service /hello on new http:Listener(9090) {
 }
 ```
 
-## Running the Service
-
 Then, run the service:
-
 ```bash
 $ bal run hello_service.bal
 Compiling source
@@ -114,11 +111,9 @@ public function main() returns @tainted error? {
 }
 ```
 
-## Invoking the Service Using the Client 
-
 Then, run it:
 
-> **Tip:** Make sure the `hello` service is [up and running](#running-the-service).
+> **Tip:** Make sure the `hello` service is [up and running](#writing-a-simple-service).
 
 ```bash
 bal run hello_client.bal
@@ -127,6 +122,6 @@ Hello Ballerina!
 
 ## What's Next?
 
-Now, that you have written your first Ballerina program, you can explore more about writing [Ballerina Packages](/learn/user-guide/structuring-ballerina-code/).
+Now, that you have written your first Ballerina program, you can explore more about writing [Ballerina Packages](/learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/).
 
 <style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

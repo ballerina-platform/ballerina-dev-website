@@ -64,7 +64,7 @@ The name can only contain alphanumerics, underscore, period and the maximum leng
 
 If the package name is not provided in the Ballerina.toml, then the current directory name is set as the package name. If there are any characters in the directory name mismatching the allowed regex, these will be replaced with the `_` character.
 
-##### Hierarchical Package names
+##### Hierarchical package names
 
 When there are various functionalities to be provided, it would make more sense to split them into multiple packages instead of adding it all into a single package.  For scenarios like this, we can give a hierarchical name to the package.
 
@@ -91,7 +91,7 @@ Ballerina follows the convention of [Semantic Versioning](https://semver.org/). 
 *   Once the package is production-ready, you can use a stable version (E.g. 1.0.0). Any subsequent minor or patch releases of the same major version should be backward compatible and should not break existing builds.
 
 
-#### Build Options
+#### Build options
 
 The `[build-options]` table specifies options that should be applied when building the package. We can use build options in the Ballerina.toml instead of passing options to the `bal build` command.
 

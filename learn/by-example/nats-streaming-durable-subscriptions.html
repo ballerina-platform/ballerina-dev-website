@@ -22,7 +22,7 @@ redirect_from:
 
     <span class="c1">// Produces a message to the specified subject.</span>
     <span class="kt">string</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">stanClient</span><span class="o">-&gt;</span><span class="nx">publishMessage</span><span class="p">({</span>
-                                    <span class="nx">content</span><span class="p">:</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span>
+                                    <span class="nx">content</span><span class="p">:</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span>
                                     <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span><span class="p">});</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;GUID &quot;</span> <span class="o">+</span> <span class="nx">result</span> <span class="o">+</span> <span class="s">&quot; received for the produced message.&quot;</span><span class="p">);</span>
     <span class="c1">// Closes the client connection.</span>
@@ -103,10 +103,6 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/nats-streaming-durable-subscriptions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a88edb42ee491cf00f5349b958f96906&file=nats_streaming_durable_subscriptions.bal"><img src="/img/main-play-green-btn.svg" /></a>
-                                        </li>
-                                        
                                     </ul>
                                 </div>
                             </td>
@@ -174,7 +170,7 @@ import ballerinax/stan;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string result = check stanClient-&gt;publishMessage({
-                                    content: &lt;@untainted&gt;message.toBytes(),
+                                    content: message.toBytes(),
                                     subject: &quot;demo&quot;});
     io:println(&quot;GUID &quot; + result + &quot; received for the produced message.&quot;);
 </code></pre></div>

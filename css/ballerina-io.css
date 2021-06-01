@@ -1465,6 +1465,19 @@ td span.line-numbers-rows  {
 }
 
 @media (max-width: 991px) {
+    .cInfoBanner {
+        background: #20b6b0;
+        width: 100%;
+        display: inline-block;
+        color: #fff;
+        padding: 4px !important;
+        /* width: 100%; */
+        text-align: center;
+        font-weight: 600;
+        font-size: 15px !important;
+        position: absolute;
+        z-index: 9999999999999 !important;
+    }
     .navbar-nav>li:last-child a.cSerachIcon {
         display: none;
     }

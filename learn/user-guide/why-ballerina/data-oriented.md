@@ -11,7 +11,7 @@ redirect_from:
 
 As of now, language-integrated queries are supported for iterator implementations such as an array, map, stream, and table. There are two kinds of integrated queries that can be written in Ballerina:
 
-- [**Query expression:**](#query-expressions) allows generating a list, table, string or XML
+- [**Query expression:**](#query-expressions) allows generating a list, table, string, or XML
 - [**Query action:**](#query-actions) executes a set of statements for each element of the iterator
 
 ## Query Expressions

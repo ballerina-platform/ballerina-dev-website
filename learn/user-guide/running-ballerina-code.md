@@ -22,9 +22,9 @@ redirect_from:
 
 A Ballerina application can have:
 
-1. A [`main()`](/learn/by-example/the-main-function.html) function that runs as a terminating process.
+1. A `main()` function that runs as a terminating process.
 
-2. A [`service`](/learn/by-example/hello-world-service.html), which is a hosted non-terminating process.
+2. A `service`, which is a hosted non-terminating process.
 
 Both of these are considered as entry points for program execution. 
 

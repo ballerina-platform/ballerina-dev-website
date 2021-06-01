@@ -46,17 +46,25 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>XML Data Model</h2>
                             <p><p>An <code>xml</code> value is a sequence representing the parsed content of an XML element. <br></br>
- An <code>xml</code> value has four kinds of items. <br></br>
- - <code>element</code>, <code>processing instruction</code> and <code>comment</code> item correspond 1:1 to XML infoset items. <br></br>
- - <code>text</code> item corresponds to one or more Character Information Items. <br></br>
+ An <code>xml</code> value has four kinds of items.
+ <ul>
+ <li><code>element</code>, <code>processing instruction</code> and <code>comment</code> item correspond 1:1 to XML infoset items</li>
+ <li><code>text</code> item corresponds to one or more Character Information Items</li>
+ </ul>
+<br></br>
  XML document is an <code>xml</code> sequence with only one <code>element</code> and no <code>text</code>. An <code>element</code> item is mutable
- and consists of: <br></br>
- - name: type <code>string</code> <br></br>
- - attributes: type <code>map&lt;string&gt;</code> <br></br>
- - children: type <code>xml</code> <br></br>
- A <code>text</code> item is immutable. <br></br>
- - it has no identity: <code>==</code> is the same as <code>===</code> <br></br>
- - consecutive <code>text</code> items never occur in an <code>xml</code> value: they are always merged.</p>
+ and consists of:
+ <ul>
+ <li>name: type <code>string</code></li>
+ <li>attributes: type <code>map&lt;string&gt;</code></li>
+ <li>children: type <code>xml</code></li>
+ </ul>
+<br></br>
+ A <code>text</code> item is immutable.
+ <ul>
+ <li>it has no identity: <code>==</code> is the same as <code>===</code></li>
+ <li>consecutive <code>text</code> items never occur in an <code>xml</code> value: they are always merged</li>
+ </ul></p>
 </p>
 
                         </td>
@@ -97,7 +105,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=86211f560110f610ac4e7c75dc4a7780&file=xml_data_model.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=32b12cd657064d77ca0c84ef019ba81b&file=xml_data_model.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

@@ -21,7 +21,7 @@ redirect_from:
 
     <span class="c1">// Produces a message to the specified subject.</span>
     <span class="nx">check</span> <span class="nx">natsClient</span><span class="o">-&gt;</span><span class="nx">publishMessage</span><span class="p">({</span>
-                             <span class="nx">content</span><span class="p">:</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span>
+                             <span class="nx">content</span><span class="p">:</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span>
                              <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo.bbe&quot;</span><span class="p">});</span>
 
     <span class="c1">// Closes the client connection.</span>
@@ -99,10 +99,6 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/nats-basic-pub-sub/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a0f7a762834381d2f0ba106045964254&file=nats_basic_pub_sub.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -184,7 +180,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    check natsClient-&gt;publishMessage({
-                             content: &lt;@untainted&gt;message.toBytes(),
+                             content: message.toBytes(),
                              subject: &quot;demo.bbe&quot;});
 </code></pre></div>
 

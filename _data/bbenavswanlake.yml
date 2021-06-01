@@ -3,8 +3,8 @@
   url: '#'
   sublinks:
     - title: Hello World Main
-      url: /learn/by-example/hello-world
-      active: hello-world
+      url: /learn/by-example/hello-world-main
+      active: hello-world-main
     - title: Hello World Service 
       url: /learn/by-example/hello-world-service
       active: hello-world-service
@@ -757,18 +757,6 @@
     - title: Gauge-Based Metrics
       url: /learn/by-example/gauge-metrics
       active: gauge-metrics
-- title: Observability
-  url: '#'
-  sublinks:  
-    - title: Distributed Tracing
-      url: /learn/by-example/tracing
-      active: tracing
-    - title: Counter-Based Metrics
-      url: /learn/by-example/counter-metrics
-      active: counter-metrics
-    - title: Gauge-Based Metrics
-      url: /learn/by-example/gauge-metrics
-      active: gauge-metrics
 
 - title: Common Libraries
 - title: IO
@@ -778,7 +766,7 @@
       url: /learn/by-example/io-bytes
       active: io-bytes
     - title: Read/Write Strings
-      url: /learn/by-example/strings
+      url: /learn/by-example/io-strings
       active: io-strings
     - title: Read/Write CSV
       url: /learn/by-example/io-csv
@@ -798,6 +786,39 @@
     - title: JWT Issue/Validate
       url: /learn/by-example/security-jwt-issue-validate
       active: security-jwt-issue-validate
+- title: Testing
+  url: '#'
+  sublinks:
+    - title: Assertions
+      url: /learn/by-example/testerina-assertions
+      active: testerina-assertions
+    - title: Before and After Test
+      url: /learn/by-example/testerina-before-and-after-test
+      active: testerina-before-and-after-test
+    - title: Before and After Each
+      url: /learn/by-example/testerina-before-and-after-each
+      active: testerina-before-and-after-each
+    - title: Before and After Groups
+      url: /learn/by-example/testerina-before-and-after-groups
+      active: testerina-before-and-after-groups
+    - title: Before and After Suite
+      url: /learn/by-example/testerina-before-and-after-suite
+      active: testerina-before-and-after-suite
+    - title: Data Driven Tests
+      url: /learn/by-example/testerina-data-driven-tests
+      active: testerina-data-driven-tests
+    - title: Guarantee Test Execution Order
+      url: /learn/by-example/testerina-guarantee-test-execution-order
+      active: testerina-guarantee-test-execution-order
+    - title: Group Tests
+      url: /learn/by-example/testerina-group-tests
+      active: testerina-group-tests
+    - title: Function Mocking
+      url: /learn/by-example/testerina-mocking-functions
+      active: testerina-mocking-functions
+    - title: Object Mocking
+      url: /learn/by-example/testerina-mocking-objects
+      active: testerina-mocking-objects
 - title: URL
   url: '#'
   sublinks:
@@ -906,12 +927,17 @@
     - title: XML/JSON Conversion
       url: /learn/by-example/xml-json-conversion
       active: xml-json-conversion
+
 - title: Deployment
+- title: Code to Cloud
   url: '#'
   sublinks:
-    - title: Code to Cloud
+    - title: Kubernetes
       url: /learn/by-example/c2c-deployment
       active: c2c-deployment
+- title: Function as a service
+  url: '#'
+  sublinks:
     - title: Azure Functions
       url: /learn/by-example/azure-functions-deployment
       active: azure-functions-deployment

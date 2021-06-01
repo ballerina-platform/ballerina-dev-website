@@ -1,7 +1,7 @@
 ---
 layout: ballerina-tooling-guide-left-nav-pages-swanlake
 title: Debugging
-description: Describes the existing run and debugging functionalities provided by Ballerina in Visual Studio Code.  
+description: Describes debugging functionalities provided by Ballerina in Visual Studio Code.  
 keywords: ballerina debugging, ballerina debug, ballerina debugger, ballerina vscode
 permalink: /learn/tooling-guide/visual-studio-code-extension/debugging/
 active: debugging
@@ -23,22 +23,6 @@ redirect_from:
   - /learn/tooling-guide/vs-code-extension/run-and-debug/
   - /learn/tooling-guide/visual-studio-code-extension/debugging
 ---
-
-## Running Without Debugging
-
-Follow the steps below to run your program (without debugging).
-
-1. On the VSCode editor, open the Ballerina program file you want to run.
-
-2. Click **Run** in the top menu, and then click **Run Without Debugging**.
-
-3. Select **Ballerina Debug** as the **Environment**.
-
-You view the program being executed in the **DEBUG CONSOLE** as shown below.
-
-![Run Without Debugging](/learn/images/run-without-debugging.gif)
-
-<br/>
 
 >**Info:** For more information on debugging your code using VS Code, go to the [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
 
@@ -139,6 +123,22 @@ Follow the steps below to start a remote debug session.
     You view the output in the **DEBUG CONSOLE**.
 
     ![Remote Debug](/learn/images/remote-debug.gif)
+
+<br/>
+
+### Running Without Debugging
+
+Follow the steps below to run your program (without debugging).
+
+1. On the VSCode editor, open the Ballerina program file you want to run.
+
+2. Click **Run** in the top menu, and then click **Run Without Debugging**.
+
+3. Select **Ballerina Debug** as the **Environment**.
+
+You view the program being executed in the **DEBUG CONSOLE** as shown below.
+
+![Run Without Debugging](/learn/images/run-without-debugging.gif)
 
 <br/>
 

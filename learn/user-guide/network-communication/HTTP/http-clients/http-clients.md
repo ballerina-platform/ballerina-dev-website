@@ -47,7 +47,7 @@ The below are some of the remote methods that are most often used in the HTTP cl
 
 ### GET
 
-An HTTP GET request is executed by using the [`get`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote method in the HTTP client. This remote method takes in the request path as the first parameter, and the target type as the second parameter for data-binding operations. The default value of the target type is [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response). The remote method returns a union type consisting of [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response), [`http:PayloadType`](https://docs.central.ballerina.io/ballerina/http/latest/types#PayloadType), and `error`. 
+An HTTP GET request is executed by using the [`get`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote method in the HTTP client. This remote method takes in the request path as the first parameter, and optionally a header map as the second parameter.
 
 The `client_demo_get.bal` below is an example of its usage.
 
@@ -58,28 +58,22 @@ import ballerina/http;
  
 public function main() returns @tainted error? {
    http:Client clientEp = check new("http://httpbin.org");
-   http:Response resp = check clientEp->get("/get");
-   io:println("Content Type: ", resp.getContentType());
-   io:println("Payload: ", resp.getJsonPayload());
-   io:println("Status Code: ", resp.statusCode);
-   io:println("Header [date]: ", resp.getHeader("date"));
+   json resp = check clientEp->get("/get");
+   io:println("Payload: ", resp);
 }
 ```
 
 Execute the `bal run client_demo_get.bal` command and the output will be as follows.
 
 ```bash
-Content Type: application/json
 Payload: {"args":{},"headers":{"Host":"httpbin.org","User-Agent":"ballerina","X-Amzn-Trace-Id":"Root=1-5fd3b719-0d5a1625098ad73b53c0c094"},"origin":"45.30.94.9","url":"http://httpbin.org/get"}
-Status Code: 200
-Header [date]: Fri, 11 Dec 2020 18:14:49 GMT
 ```
 
-The [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response) object can be used to access information such as the client response payload, [content type](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getContentType), [headers](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getHeader), and [cookies](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getCookies).
+In case you want more information than the response payload, the [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response) object can be used to access information such as the client response payload, [content type](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getContentType), [headers](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getHeader), and [cookies](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getCookies).
 
 ### POST
 
-An HTTP POST is executed using the [`post`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote method in the HTTP client. You can provide the request path as the first parameter. The second parameter is a value of the [`http:RequestMessage`](https://docs.central.ballerina.io/ballerina/http/latest/types#RequestMessage), which is a union type of the [`http:Request`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request) and other data-binding types such as XML, JSON, and other custom record types. The third parameter is the target type for providing the response data-binding type, similar to the result of the HTTP GET functionality. The default value of the target type is [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response). 
+An HTTP POST is executed using the [`post`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote method in the HTTP client. You can provide the request path as the first parameter. The second parameter is a value of the [`http:RequestMessage`](https://docs.central.ballerina.io/ballerina/http/latest/types#RequestMessage), which is a union type of the [`http:Request`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request) and other data-binding types such as XML, JSON, and other custom record types. Optionally as the third parameter you can send a header map.
 
 The `client_demo_post.bal` below is an example of its usage.
 
@@ -90,11 +84,8 @@ import ballerina/http;
  
 public function main() returns @tainted error? {
    http:Client clientEp = check new ("http://httpbin.org");
-   http:Request req = new;
-   req.setTextPayload("Hello!");
-   req.setHeader("x-user", "Jack");
-   http:Response resp = check clientEp->post("/post", req);
-   io:println("Payload: ", resp.getJsonPayload());
+   json resp = check clientEp->post("/post", "hello", {"x-user": "Jack"});
+   io:println("Payload: ", resp);
 }
 ```
 

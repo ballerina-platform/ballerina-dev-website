@@ -1,34 +1,40 @@
 ---
 layout: ballerina-example-page
-title: Sequence Diagrams
-description: This BBE demonstrates Ballerina's sequence diagrams
-keywords: ballerina, ballerina by example, bbe, sequence diagram, diagram
-permalink: /learn/by-example/sequence-diagrams
-active: sequence-diagrams
+title: Working directly with JSON
+description: This BBE demonstrates how to work directly with JSON values in Ballerina.
+keywords: ballerina, ballerina by example, bbe, json type, json
+permalink: /learn/by-example/working-directly-with-json
+active: working-directly-with-json
 redirect_from:
-  - /swan-lake/learn/by-example/sequence-diagrams
-  - /swan-lake/learn/by-example/sequence-diagrams.html
+  - /swan-lake/learn/by-example/working-directly-with-json
+  - /swan-lake/learn/by-example/working-directly-with-json.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">value</span> <span class="k">as</span> <span class="nx">value</span><span class="p">;</span>
 
-<span class="c1">// A function can be viewed as a sequence diagram.</span>
-<span class="c1">// The diagram has a lifeline (vertical line) for each worker (both named </span>
-<span class="c1">// worker and function&#39;s default worker).</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// The diagram also has a lifeline for each client object parameter or variable in </span>
-    <span class="c1">// the initialization section, representing the remote system to which the client  </span>
-    <span class="c1">// object is sending messages.</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">cl</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://www.mocky.io&quot;</span><span class="p">);</span>
+<span class="c1">// Define a variable of type `json` that holds a mapping value.</span>
+<span class="kt">json</span> <span class="nx">j</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="nx">x</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">y</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">z</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 
-    <span class="c1">// Each remote method call on a client object is represented as a horizontal line</span>
-    <span class="c1">// between the lifeline of the worker making the call and the remote system.</span>
-    <span class="kt">string</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cl</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v2/5ae082123200006b00510c3d/&quot;</span><span class="p">);</span>
+<span class="c1">// Field access is allowed on the `json`-typed variable. However, the return</span>
+<span class="c1">// type would be a union of `json` and `error`.</span>
+<span class="kt">json</span> <span class="nx">v</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">j</span><span class="p">.</span><span class="nx">x</span><span class="p">.</span><span class="nx">y</span><span class="p">;</span>
+<span class="kt">string</span> <span class="nx">s1</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">v</span><span class="p">.</span><span class="nx">z</span><span class="p">;</span>
 
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
+<span class="c1">// `ensureType` method can also be used to perform conversions.</span>
+<span class="kt">string</span> <span class="nx">s2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">value</span><span class="p">:</span><span class="nx">ensureType</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">z</span><span class="p">,</span> <span class="kt">string</span><span class="p">);</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Value of s1: &quot;</span> <span class="o">+</span> <span class="nx">s2</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Value of s2: &quot;</span> <span class="o">+</span> <span class="nx">s2</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -38,15 +44,12 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Sequence Diagrams</h2>
-                            <p><p>A function can be viewed as a sequence diagram.
- The diagram has a lifeline (vertical line) for each worker (both named
- worker and function&rsquo;s default worker).
- The diagram also has a lifeline for each client object parameter or variable in
- the initialization section, representing the remote system to which the client
- object is sending messages.
- Each remote method call on a client object is represented as a horizontal line
- between the lifeline of the worker making the call and the remote system.</p>
+                            <h2>Working directly with JSON</h2>
+                            <p><p>Ballerina defines certain types as lax types for which static typing rules are less strict.
+ For example, field access (<code>.</code>) and optional field access (<code>?.</code>), which are generally allowed on
+ records and objects for fields that are defined in the type descriptors, are also additionally
+ allowed on lax types. For such operations, some of the type checking is moved from compile time to runtime.
+ <code>json</code> is defined to be a lax type along with any <code>map&lt;T&gt;</code> where <code>T</code> is a lax type.</p>
 </p>
 
                         </td>
@@ -54,16 +57,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="named-workers.html">
+                                    <a class="prev" href="json-type.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Named Workers</p>
+                                        <p>JSON Type</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="waiting-for-workers.html">
+                                    <a class="next" href="match-statement-with-maps.html">
                                         <span>NEXT ></span>
-                                        <p>Waiting for Workers</p>
+                                        <p>Match Statement With Maps</p>
                                     </a>
                                 </div>
                                 
@@ -72,7 +75,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="sequence-diagrams">
+            <div class="example" id="working-directly-with-json">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -83,11 +86,11 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/sequence-diagrams/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/working-directly-with-json/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=5dce48c57e790fa7f0f1cea8fa046ac4&file=sequence_diagrams.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c4dd075461f954d3752d52b50beebcb8&file=working_directly_with_json.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -124,8 +127,8 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
-import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerina/lang.value as value;
 </code></pre></div>
 
                                 </td>
@@ -137,7 +140,13 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>json j = {
+    x: {
+        y: {
+            z: &quot;ballerina&quot;
+        }
+    }
+};
 </code></pre></div>
 
                                 </td>
@@ -145,9 +154,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A function can be viewed as a sequence diagram.
- The diagram has a lifeline (vertical line) for each worker (both named
- worker and function&rsquo;s default worker).</p>
+                                            <p>Define a variable of type <code>json</code> that holds a mapping value.</p>
 
                                         </div>
                                     </div>
@@ -158,7 +165,8 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client cl = check new (&quot;https://www.mocky.io&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>json v = check j.x.y;
+string s1 = check v.z;
 </code></pre></div>
 
                                 </td>
@@ -166,9 +174,8 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The diagram also has a lifeline for each client object parameter or variable in
- the initialization section, representing the remote system to which the client<br />
- object is sending messages.</p>
+                                            <p>Field access is allowed on the <code>json</code>-typed variable. However, the return
+ type would be a union of <code>json</code> and <code>error</code>.</p>
 
                                         </div>
                                     </div>
@@ -179,7 +186,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string payload = check cl-&gt;get(&quot;/v2/5ae082123200006b00510c3d/&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>string s2 = check value:ensureType(v.z, string);
 </code></pre></div>
 
                                 </td>
@@ -187,8 +194,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Each remote method call on a client object is represented as a horizontal line
- between the lifeline of the worker making the call and the remote system.</p>
+                                            <p><code>ensureType</code> method can also be used to perform conversions.</p>
 
                                         </div>
                                     </div>
@@ -199,7 +205,9 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(payload);
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+    io:println(&quot;Value of s1: &quot; + s2);
+    io:println(&quot;Value of s2: &quot; + s2);
 }
 </code></pre></div>
 
@@ -225,8 +233,9 @@ import ballerina/io;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>bal run sequence_diagrams.bal
-Hello World
+                                    <div class="highlight"><pre><code class=shell-session>bal run working_directly_with_json.bal
+Value of s1: ballerina
+Value of s2: ballerina
 </code></pre></div>
 
                                 </td>

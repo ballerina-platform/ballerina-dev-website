@@ -23,12 +23,8 @@ $ bal new hello_world
 This will create a new Ballerina package with a main function. If we are creating a service instead of a main function, we pass the `-t service` option.
 Let’s check what the `bal new` command generated:
 ```bash
-
 $ cd hello_world
 $ tree .
-```
-
-```bash
 helloworld
   ├── Ballerina.toml
   └── main.bal

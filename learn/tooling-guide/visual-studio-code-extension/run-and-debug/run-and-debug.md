@@ -177,7 +177,16 @@ The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
 
 <br/>
 
-### Debug Configurations
+#### Existing Limitations
+
+The features below are currently not supported.
+
+- Anonymous function, query, let, and constructor expressions
+- Qualified identifiers (Hence, cannot evaluate imported module entities.)
+- Function invocations with rest arguments
+- Action invocations
+
+## Debug Configurations
 
 Ballerina debugger supports various debug configuration options via `launch.json` file. You can either add configurations to the existing `launch.json` file (which is located in your workspace root under the `.vscode` directory), or you can generate `launch.json` configurations file with default values by,
 
@@ -215,8 +224,18 @@ The following attributes are supported for all Ballerina `launch` configurations
 
 - `programArgs` - Any program arguments that are required to be passed into the `main` function of the Ballerina program to be launched, can be passed as a list of strings.
 - `commandOptions` - If required, you can configure command options for the Ballerina program to be launched, as a list of strings. You can see the list of all the available command options by executing the following CLI commands in your terminal.
-    - For `Ballerina Debug` configuration - `ballerina run --help`.
-    - For `Ballerina Test` configuration - `ballerina test --help`.
+    - For `Ballerina Debug` configuration:
+
+    ```bash
+    bal run --help
+    ```
+
+    - For `Ballerina Test` configuration:
+
+    ```bash
+    bal test --help
+    ```
+
 - `env` - Any environment variables you need to configure for the launching Ballerina program can be passed as a map of strings (name and value).
 - `debugTests` - Indicates whether to debug the tests for the given script.
 
@@ -225,14 +244,6 @@ The following attributes are supported for all Ballerina `attach` configurations
 - `debuggeeHost` - Host address of the remote process to be attached (If not specified, the default value will be the localhost(`127.0.0.1`)).
 - `debuggeePort` - Port number of the remote process to be attached.
 
-#### Existing Limitations
-
-The features below are currently not supported.
-
-- Anonymous function, query, let, and constructor expressions
-- Qualified identifiers (Hence, cannot evaluate imported module entities.)
-- Function invocations with rest arguments
-- Action invocations
 
 
 

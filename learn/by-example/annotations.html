@@ -13,7 +13,7 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="c1">// The `@display` annotation applies to the transform function</span>
+<span class="c1">// The `@display` annotation applies to the transform function.</span>
 <span class="nd">@display {</span>
     <span class="nx">label</span><span class="p">:</span> <span class="s">&quot;Transform&quot;</span><span class="p">,</span>
     <span class="nx">iconPath</span><span class="p">:</span> <span class="s">&quot;transform.png&quot;</span>
@@ -22,10 +22,10 @@ redirect_from:
    <span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">toUpperAscii</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// The strand annotation applies to the start action.</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// The `@strand` annotation applies to the `start` action.</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">fut</span> <span class="p">=</span> <span class="nd">@strand {</span> <span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span> <span class="p">}</span> <span class="nx">start</span> <span class="nx">foo</span><span class="p">();</span>
-    <span class="kt">int</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wait</span> <span class="nx">fut</span><span class="p">;</span>
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">fut</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -85,7 +85,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=54bff1a79c957cfae4c01045828cf448&file=annotations.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=2e7c4d3f7568fce2d6035b123899aaf5&file=annotations.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -148,7 +148,7 @@ public function transform(string s) returns string {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>@display</code> annotation applies to the transform function</p>
+                                            <p>The <code>@display</code> annotation applies to the transform function.</p>
 
                                         </div>
                                     </div>
@@ -159,7 +159,7 @@ public function transform(string s) returns string {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -172,7 +172,7 @@ public function transform(string s) returns string {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; fut = @strand { thread: &quot;any&quot; } start foo();
-    int x = check wait fut;
+    int|error x = wait fut;
     io:println(x);
 }
 </code></pre></div>
@@ -182,7 +182,7 @@ public function transform(string s) returns string {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The strand annotation applies to the start action.</p>
+                                            <p>The <code>@strand</code> annotation applies to the <code>start</code> action.</p>
 
                                         </div>
                                     </div>

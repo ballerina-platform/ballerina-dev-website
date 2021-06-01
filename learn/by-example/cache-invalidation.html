@@ -12,50 +12,7 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
-
-<span class="kt">string</span><span class="p">[]</span> <span class="nx">outputs</span> <span class="p">=</span> <span class="p">[];</span>
-
-<span class="c1">// This is the mock function, which will replace the real function.</span>
-<span class="nd">@test:Mock {</span>
-    <span class="nx">moduleName</span><span class="p">:</span> <span class="s">&quot;ballerina/io&quot;</span><span class="p">,</span>
-    <span class="nx">functionName</span><span class="p">:</span> <span class="s">&quot;println&quot;</span>
-<span class="p">}</span>
-<span class="nx">test</span><span class="p">:</span><span class="nx">MockFunction</span> <span class="nx">mock_printLn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">();</span>
-
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">mockPrint</span><span class="p">(</span><span class="kt">any</span><span class="p">|</span><span class="nx">error</span><span class="o">...</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">any</span><span class="p">|</span><span class="nx">error</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">val</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">getStringValue</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">outputs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">outputs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nd">@test:Config{</span><span class="p">}</span>
-<span class="kd">function</span> <span class="nx">testFunc</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">when</span><span class="p">(</span><span class="nx">mock_printLn</span><span class="p">).</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;mockPrint&quot;</span><span class="p">);</span>
-
-    <span class="c1">// Invoking the main function.</span>
-    <span class="nx">error</span><span class="err">?</span> <span class="nx">output</span> <span class="p">=</span> <span class="nx">main</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">output</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">test</span><span class="p">:</span><span class="nx">assertFail</span><span class="p">(</span><span class="s">&quot;Test failed&quot;</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">toString</span><span class="p">(),</span> <span class="s">&quot;The value of the key1: value1&quot;</span><span class="p">);</span>
-        <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">outputs</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">toString</span><span class="p">(),</span> <span class="s">&quot;The existing keys in the cache: [\&quot;key1\&quot;,\&quot;key2\&quot;]&quot;</span><span class="p">);</span>
-        <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">outputs</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">toString</span><span class="p">(),</span> <span class="s">&quot;The cache size: 2&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">getStringValue</span><span class="p">(</span><span class="kt">any</span><span class="p">|</span><span class="nx">error</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">any</span><span class="p">|</span><span class="nx">error</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="nx">aValue</span> <span class="p">=</span> <span class="nx">a</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">? a.toString() : a.toString();</span>
-    <span class="kt">string</span> <span class="nx">bValue</span> <span class="p">=</span> <span class="nx">b</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">? b.toString() : b.toString();</span>
-    <span class="k">return</span> <span class="p">(</span><span class="nx">aValue</span> <span class="o">+</span> <span class="nx">bValue</span><span class="p">);</span>
-<span class="p">}</span>
- <span class="mi">41</span>  <span class="nx">new</span><span class="o">-</span><span class="nx">examples</span><span class="o">/</span><span class="nx">cache</span><span class="o">-</span><span class="nx">invalidation</span><span class="o">/</span><span class="nx">cache_invalidation</span><span class="p">.</span><span class="nx">bal</span>
-<span class="nx">Viewed</span>
-<span class="err">@@</span> <span class="o">-</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">41</span> <span class="err">@@</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">cache</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">cache</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -88,7 +45,8 @@ redirect_from:
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">invalidate</span><span class="p">(</span><span class="s">&quot;key2&quot;</span><span class="p">);</span>
 
     <span class="c1">// Gets the keys of the cache entries.</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;The existing keys in after invalidating a given key: &quot;</span><span class="p">,</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">keys</span><span class="p">());</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;The existing keys in after invalidating a given key: &quot;</span><span class="p">,</span>
+                <span class="nx">cache</span><span class="p">.</span><span class="nx">keys</span><span class="p">());</span>
 
     <span class="c1">// Discards all the cache entries of the cache.</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">invalidateAll</span><span class="p">();</span>
@@ -149,7 +107,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=de63da41734d7fb154e7de60c8a47c3d&file=cache_invalidation.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f39c5674bb9b88078a12c12cece6fc2c&file=cache_invalidation.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -196,18 +154,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -216,122 +162,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/test;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>string[] outputs = [];
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Mock {
-    moduleName: &quot;ballerina/io&quot;,
-    functionName: &quot;println&quot;
-}
-test:MockFunction mock_printLn = new();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is the mock function, which will replace the real function.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function mockPrint(any|error... val) {
-    any|error value = val.reduce(getStringValue, &quot;&quot;);
-    if (value is error) {
-        outputs.push(value.message());
-    } else {
-        outputs.push(value.toString());
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config{}
-function testFunc() returns error? {
-    test:when(mock_printLn).call(&quot;mockPrint&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error? output = main();
-    if (output is error) {
-        test:assertFail(&quot;Test failed&quot;);
-    } else {
-        test:assertEquals(outputs[0].toString(), &quot;The value of the key1: value1&quot;);
-        test:assertEquals(outputs[1].toString(), &quot;The existing keys in the cache: [\&quot;key1\&quot;,\&quot;key2\&quot;]&quot;);
-        test:assertEquals(outputs[2].toString(), &quot;The cache size: 2&quot;);
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Invoking the main function.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function getStringValue(any|error a, any|error b) returns string {
-    string aValue = a is error ? a.toString() : a.toString();
-    string bValue = b is error ? b.toString() : b.toString();
-    return (aValue + bValue);
-}
- 41  new-examples/cache-invalidation/cache_invalidation.bal
-Viewed
-@@ -0,0 +1,41 @@
-import ballerina/cache;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/cache;
 import ballerina/io;
 </code></pre></div>
 
@@ -532,7 +363,8 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;The existing keys in after invalidating a given key: &quot;, cache.keys());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;The existing keys in after invalidating a given key: &quot;,
+                cache.keys());
 </code></pre></div>
 
                                 </td>

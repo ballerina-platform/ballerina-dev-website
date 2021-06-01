@@ -36,6 +36,7 @@ redirect_from:
             <span class="nx">v</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
     <span class="k">return</span> <span class="nx">n</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -89,7 +90,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=1263c86cd6776d6cd996ad0931fc85db&file=while_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=68c0c4bb284e3d7db7c83c9f9325ce1c&file=while_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -107,6 +108,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -182,15 +185,13 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    while v != () {
         n += 1;
         if v is LinkedList {
             v = v.next;
         }
     }
-    return n;
-}
 </code></pre></div>
 
                                 </td>
@@ -203,6 +204,19 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    return n;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

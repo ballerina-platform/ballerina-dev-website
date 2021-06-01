@@ -26,9 +26,9 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="c1">// Define a service class to use in GraphQL service.</span>
-<span class="kd">service</span> <span class="nx">class</span> <span class="nx">Person</span> <span class="p">{</span>
-    <span class="nx">private</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
-    <span class="nx">private</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+<span class="nx">isolated</span> <span class="kd">service</span> <span class="nx">class</span> <span class="nx">Person</span> <span class="p">{</span>
+    <span class="nx">private</span> <span class="nx">final</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="nx">private</span> <span class="nx">final</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
 
     <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">name</span><span class="p">;</span>
@@ -36,13 +36,13 @@ redirect_from:
     <span class="p">}</span>
 
     <span class="c1">// Each resource function becomes a field of the `Person` type.</span>
-    <span class="nx">isolated</span> <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">name</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">name</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="nx">isolated</span> <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">age</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">age</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="nx">isolated</span> <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">isAdult</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">isAdult</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">&gt;</span> <span class="mi">21</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -101,7 +101,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=f4766d46fa5fecb93cb2a64cd80215f9&file=graphql_returning_service_objects.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=9cae6183aa33b912a6126b379f3691b3&file=graphql_returning_service_objects.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -201,9 +201,9 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service class Person {
-    private string name;
-    private int age;
+                                    <div class="highlight"><pre><code class=language-ballerina>isolated service class Person {
+    private final string name;
+    private final int age;
 </code></pre></div>
 
                                 </td>
@@ -237,13 +237,13 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated resource function get name() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get name() returns string {
         return self.name;
     }
-    isolated resource function get age() returns int {
+    resource function get age() returns int {
         return self.age;
     }
-    isolated resource function get isAdult() returns boolean {
+    resource function get isAdult() returns boolean {
         return self.age &gt; 21;
     }
 }

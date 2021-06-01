@@ -21,7 +21,7 @@ redirect_from:
 <span class="c1">// A module can have an `init` function just like an object. </span>
 <span class="c1">// The initialization of a module ends by called its `init` function if there is one.</span>
 <span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
- <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hello world&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hello world&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -32,11 +32,11 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Module Lifecycle</h2>
-                            <p><p>All modules are initialized at program startup. Module intialization is ordered so that if module A imports module B,
-  then module A is initialized after module B. intialization phase ends by calling <code>main</code> function. <br/><br/>
+                            <p><p>All modules are initialized at program startup. Module initialization is ordered so that if module A imports module B,
+ then module A is initialized after module B. The initialization phase ends by calling the <code>main</code> function if there is one. <br/><br/>
  A module&rsquo;s listeners are registered during module initialization.
- If there are registered listeners, then initialization phase is followed by listening phase. <br/><br/>
- Listening phase starts by calling <code>start</code> method on each registered listener. Listening phase is terminated by signal (e.g. <code>SIGINT</code>, <code>SIGTERM</code>).</p>
+ If there are registered listeners, then the initialization phase is followed by the listening phase. <br/><br/>
+ The listening phase starts by calling the <code>start</code> method on each registered listener. The listening phase is terminated by signal (e.g. <code>SIGINT</code>, <code>SIGTERM</code>).</p>
 </p>
 
                         </td>
@@ -44,9 +44,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="consuming-services.html">
+                                    <a class="prev" href="providing-services.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Consuming Services: Client Objects</p>
+                                        <p>Providing Services</p>
                                     </a>
                                 </div>
                                  
@@ -77,7 +77,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=95b6334487af2bd6e2e59e1a8503bc92&file=module_lifecycle.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a960927d7d773dc96806304723587537&file=module_lifecycle.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -143,7 +143,7 @@ redirect_from:
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>function init() {
- io:println(&quot;Hello world&quot;);
+    io:println(&quot;Hello world&quot;);
 }
 </code></pre></div>
 

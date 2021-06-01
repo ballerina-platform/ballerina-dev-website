@@ -31,6 +31,7 @@ redirect_from:
     <span class="c1">// The contextually expected type of the `query expression` is an `int[]`.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">salaries</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="p">{</span><span class="nx">salary</span><span class="p">}</span> <span class="nx">in</span> <span class="nx">employees</span>
                      <span class="nx">select</span> <span class="nx">salary</span><span class="p">;</span>
+                     
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">salaries</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -84,7 +85,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=828e042e44a9f5f01b30f7f98ea59c46&file=querying_tables.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=32e66eed258072b41ad3b5efa7af6b10&file=querying_tables.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -166,6 +167,7 @@ redirect_from:
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    int[] salaries = from var {salary} in employees
                      select salary;
+                     
     io:println(salaries);
 }
 </code></pre></div>

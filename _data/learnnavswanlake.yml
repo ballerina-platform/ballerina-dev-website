@@ -52,7 +52,7 @@
       url: /learn/user-guide/ballerina-packages/package-layout/
       active: package-layout
     - title: Modules
-      url: learn/user-guide/ballerina-packages/modules/
+      url: /learn/user-guide/ballerina-packages/modules/
       active: modules
     - title: Dependencies
       url: /learn/user-guide/ballerina-packages/dependencies/

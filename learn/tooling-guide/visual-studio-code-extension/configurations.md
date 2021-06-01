@@ -3,9 +3,9 @@ layout: ballerina-tooling-guide-left-nav-pages-swanlake
 title: Configurations
 permalink: /learn/tooling-guide/visual-studio-code-extension/configurations/
 active: configurations
-intro: The Ballerina extension provides a set of configurations to allow customisations as per your preferences. 
+intro: The Ballerina extension provides a set of configurations to allow customizations as per your preferences. 
 keywords: ballerina, visual studio code, vs code, extension, configurations
-description: The Ballerina extension provides a set of configurations to allow customisations as per your preferences. 
+description: The Ballerina extension provides a set of configurations to allow customizations as per your preferences. 
 redirect_from:
   - /learn/tooling-guide/vs-code-extension/configurations
   - /learn/tooling-guide/vs-code-extension/configurations
@@ -63,7 +63,7 @@ It enables the plugin development mode and is disabled by default. If it is disa
 
 ## Trace Log
 
-It enables printing trace messages onto the Ballerina output channel and is disabled by default. These trace logs mainly include the details of the requests sent form the extension to the Ballerina Language Server.
+It enables printing trace messages onto the Ballerina output channel and is disabled by default. These trace logs mainly include the details of the requests sent from the extension to the Ballerina Language Server.
 
 ![Trace Log](/learn/images/trace-log.gif)
 

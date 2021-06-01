@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: Asynchronous function calls
+title: Asynchronous Function Calls
 description: This BBE demonstrates how to use start action to call a function asynchronouly.
 keywords: ballerina, ballerina by example, bbe, start, Asynchronous function call
 permalink: /learn/by-example/asynchronous-function-calls
@@ -14,12 +14,12 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// start calls a function asynchronously </span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// `start` calls a function asynchronously.</span>
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">fut</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">foo</span><span class="p">();</span>
 
-    <span class="c1">// wait for future&lt;T&gt; gives T|error </span>
-    <span class="kt">int</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wait</span> <span class="nx">fut</span><span class="p">;</span>
+    <span class="c1">// `wait` for `future&lt;T&gt;` gives `T|error`.</span>
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">fut</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -34,7 +34,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Asynchronous function calls</h2>
+                            <h2>Asynchronous Function Calls</h2>
                             <p><p>start calls a function asynchronously and the function runs on a separate logical thread (&ldquo;strand&rdquo;): cooperatively multitasked by default
  Result will be of type future<T> and future is a separate basic type
  Waiting for the same future more than once gives an error.
@@ -48,7 +48,7 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="function-values.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Function values</p>
+                                        <p>Function Values</p>
                                     </a>
                                 </div>
                                  
@@ -79,7 +79,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=f8ba621faa5f059d7d32d42135b7cec8&file=asynchronous_function_calls.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e528eb15a99e63493524e34c8f06fba7&file=asynchronous_function_calls.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -128,7 +128,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -148,7 +148,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>start calls a function asynchronously</p>
+                                            <p><code>start</code> calls a function asynchronously.</p>
 
                                         </div>
                                     </div>
@@ -159,7 +159,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int x = check wait fut;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error x = wait fut;
     io:println(x);
 }
 </code></pre></div>
@@ -169,7 +169,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>wait for future<T> gives T|error</p>
+                                            <p><code>wait</code> for <code>future&lt;T&gt;</code> gives <code>T|error</code>.</p>
 
                                         </div>
                                     </div>

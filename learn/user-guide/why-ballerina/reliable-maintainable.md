@@ -1,12 +1,13 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Reliable and Maintainable
+title: Reliable, Maintainable
 description: The sections below explain how the explicit error handling, static types, and concurrency safety combined with a familiar, readable syntax make programs reliable and maintainable.
 keywords: ballerina, ballerina platform, api documentation, testing, ide, ballerina central
-permalink: /learn/user-guide/why-ballerina/reliable-and-maintainable/
-active: reliable-and-maintainable
+permalink: /learn/user-guide/why-ballerina/reliable-maintainable/
+active: reliable-maintainable
 intro: The sections below explain how the explicit error handling, static types, and concurrency safety combined with a familiar, readable syntax make programs reliable and maintainable. 
 redirct_from:
+  - /learn/user-guide/why-ballerina/reliable-and-maintainable/
   - /learn/user-guide/why-ballerina/reliable-and-maintainable
 ---
 

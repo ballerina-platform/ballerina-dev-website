@@ -19,7 +19,7 @@ The video series below explores the language concepts of Ballerina Swan Lake. Th
 
 <br/>
 
-<iframe width="1150" height="515" src="https://www.youtube.com/embed/videoseries?list=PL7JOecNWBb0KEYJU9TmFiVmQlbPxSR4Hq" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="1150" height="515" src="https://youtube.com/playlist?list=PL7JOecNWBb0KX8RGAjF-oRknb_YIYN-dR" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 <br/>
 

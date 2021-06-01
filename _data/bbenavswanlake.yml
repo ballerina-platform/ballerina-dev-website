@@ -3,8 +3,8 @@
   url: '#'
   sublinks:
     - title: Hello World Main
-      url: /learn/by-example/hello-world-main
-      active: hello-world-main
+      url: /learn/by-example/hello-world
+      active: hello-world
     - title: Hello World Service 
       url: /learn/by-example/hello-world-service
       active: hello-world-service
@@ -14,7 +14,7 @@
     - title: Programs and Modules
       url: /learn/by-example/programs-and-modules
       active: programs-and-modules
-    - title: Variables and types 
+    - title: Variables and Types 
       url: /learn/by-example/variables-and-types
       active: variables-and-types
     - title: Functions 
@@ -29,7 +29,7 @@
     - title: Booleans and Conditionals 
       url: /learn/by-example/booleans
       active: booleans
-    - title: Floating point numbers 
+    - title: Floating Point Numbers 
       url: /learn/by-example/floating-point-numbers
       active: floating-point-numbers
     - title: Nil 
@@ -85,7 +85,7 @@
       active: panics
     - title: Any Type 
       url: /learn/by-example/any-type
-      active: any-data-type
+      active: any-type
     - title: Ignoring Return Values and Errors 
       url: /learn/by-example/ignoring-return-values-and-errors
       active: ignoring-return-values-and-errors
@@ -119,7 +119,7 @@
     - title: Function Values 
       url: /learn/by-example/function-values
       active: function-values
-    - title: Asynchronous function calls 
+    - title: Asynchronous Function Calls 
       url: /learn/by-example/asynchronous-function-calls
       active: asynchronous-function-calls
     - title: Annotations 
@@ -161,12 +161,12 @@
 - title: Working With Data
   url: '#'
   sublinks:
-    - title: Plain Data 
-      url: /learn/by-example/plain-data
-      active: plain-data
-    - title: Ballerina Basic Types 
-      url: /learn/by-example/ballerina-basic-types
-      active: ballerina-basic-types
+    #- title: Plain Data 
+      #url: /learn/by-example/plain-data
+      #active: plain-data
+    #- title: Ballerina Basic Types 
+      #url: /learn/by-example/ballerina-basic-types
+      #active: ballerina-basic-types
     - title: Decimal Type 
       url: /learn/by-example/decimal-type
       active: decimal-type
@@ -185,7 +185,7 @@
     - title: Open Records 
       url: /learn/by-example/open-records
       active: open-records
-    - title: Controlling openness 
+    - title: Controlling Openness 
       url: /learn/by-example/controlling-openness
       active: controlling-openness
     - title: JSON Type 
@@ -197,7 +197,7 @@
     - title: Match Statement with Maps 
       url: /learn/by-example/match-statement-with-maps
       active: match-statement-with-maps
-    - title: Converting from User-Defined type to JSON
+    - title: Converting from User-Defined Type to JSON
       url: /learn/by-example/converting-from-user-defined-type-to-json
       active: converting-from-user-defined-type-to-json
     - title: Converting from JSON to User-Defined Type 
@@ -212,7 +212,7 @@
     - title: JSON Numbers 
       url: /learn/by-example/json-numbers
       active: json-numbers
-    - title: Query expressions 
+    - title: Query Expressions 
       url: /learn/by-example/query-expressions
       active: query-expressions
     - title: Destructuring Records 
@@ -227,9 +227,9 @@
     - title: Limit Clause 
       url: /learn/by-example/limit-clause
       active: limit-clause
-    - title: Table Concept 
-      url: /learn/by-example/table-concept
-      active: table-concept
+    #- title: Table Concept 
+      #url: /learn/by-example/table-concept
+      #active: table-concept
     - title: Table Syntax 
       url: /learn/by-example/table-syntax
       active: table-syntax
@@ -248,7 +248,7 @@
     - title: Join Clause 
       url: /learn/by-example/join-clause
       active: join-clause
-    - title: Stream type 
+    - title: Stream Type 
       url: /learn/by-example/stream-type
       active: stream-type
     - title: Querying with Streams 
@@ -260,13 +260,13 @@
     - title: Raw Templates 
       url: /learn/by-example/raw-templates
       active: raw-templates
-    - title: XML 
-      url: /learn/by-example/xml
-      active: xml
-    - title: Sequences 
-      url: /learn/by-example/sequences
-      active: sequences
-    - title: XML data model 
+    #- title: XML 
+      #url: /learn/by-example/xml
+      #active: xml
+    #- title: Sequences 
+      #url: /learn/by-example/sequences
+      #active: sequences
+    - title: XML Data Model 
       url: /learn/by-example/xml-data-model
       active: xml-data-model
     - title: XML Templates 
@@ -278,7 +278,7 @@
     - title: XML Subtyping 
       url: /learn/by-example/xml-subtyping
       active: xml-subtyping
-    - title: XML navigation  
+    - title: XML Navigation  
       url: /learn/by-example/xml-navigation 
       active: xml-navigation 
     - title: XML Templates and Query 
@@ -341,9 +341,6 @@
     - title: Transactional Qualifier 
       url: /learn/by-example/transactional-qualifier
       active: transactional-qualifier
-    - title: Distributed Transactions 
-      url: /learn/by-example/distributed-transactions
-      active: distributed-transactions
     - title: Transactional Named Workers
       url: /learn/by-example/transactional-named-workers
       active: transactional-named-workers
@@ -538,6 +535,27 @@
     - title: Input Types
       url: /learn/by-example/graphql-input-types
       active: graphql-input-types
+- title: GraphQL Security
+  url: '#'
+  sublinks:
+    - title: Service - SSL/TLS
+      url: /learn/by-example/graphql-service-ssl-tls
+      active: graphql-service-ssl-tls
+    - title: Service - Mutual SSL
+      url: /learn/by-example/graphql-service-mutual-ssl
+      active: graphql-service-mutual-ssl
+    - title: Service - Basic Auth File User Store
+      url: /learn/by-example/graphql-service-basic-auth-file-user-store
+      active: graphql-service-basic-auth-file-user-store
+    - title: Service - Basic Auth LDAP User Store
+      url: /learn/by-example/graphql-service-basic-auth-ldap-user-store
+      active: graphql-service-basic-auth-ldap-user-store
+    - title: Service - JWT Auth
+      url: /learn/by-example/graphql-service-jwt-auth
+      active: graphql-service-jwt-auth
+    - title: Service - OAuth2
+      url: /learn/by-example/graphql-service-oauth2
+      active: graphql-service-oauth2
 - title: WebSockets
   url: '#'
   sublinks:  
@@ -558,10 +576,7 @@
       active: websub-webhook-sample
 - title: Listeners
   url: '#'
-  sublinks:  
-    - title: Directory Listener
-      url: /learn/by-example/directory-listener
-      active: directory-listener  
+  sublinks:
     - title: Dynamic Listener
       url: /learn/by-example/dynamic-listener
       active: dynamic-listener  
@@ -588,16 +603,7 @@
       active: grpc-bidirectional-streaming 
     - title: Proto To Ballerina
       url: /learn/by-example/proto-to-ballerina
-      active: proto-to-ballerina 
-- title: OpenAPI
-  url: '#'
-  sublinks:  
-    - title: Ballerina To OpenAPI
-      url: /learn/by-example/ballerina-to-openapi
-      active: ballerina-to-openapi
-    - title: OpenAPI To Ballerina
-      url: /learn/by-example/openapi-to-ballerina
-      active: openapi-to-ballerina 
+      active: proto-to-ballerina
 - title: NATS
   url: '#'
   sublinks:  
@@ -773,7 +779,7 @@
       active: io-bytes
     - title: Read/Write Strings
       url: /learn/by-example/strings
-      active: io-bytes
+      active: io-strings
     - title: Read/Write CSV
       url: /learn/by-example/io-csv
       active: io-csv
@@ -807,7 +813,7 @@
     - title: Time with Zone Offset
       url: /learn/by-example/time-utc-and-civil
       active: time-utc-and-civil
-    - title: Time formatting/Parsing
+    - title: Time Formatting/Parsing
       url: /learn/by-example/time-formatting-and-parsing
       active: time-formatting-and-parsing
 - title: Cache
@@ -858,7 +864,7 @@
 - title: Task
   url: '#'
   sublinks:
-    - title: Schedule Job recurrence by Frequency
+    - title: Schedule Job Recurrence by Frequency
       url: /learn/by-example/task-frequency-job-execution
       active: task-frequency-job-execution
     - title: Schedule One Time Job
@@ -900,8 +906,15 @@
     - title: XML/JSON Conversion
       url: /learn/by-example/xml-json-conversion
       active: xml-json-conversion
-
-
-
-
-    
+- title: Deployment
+  url: '#'
+  sublinks:
+    - title: Code to Cloud
+      url: /learn/by-example/c2c-deployment
+      active: c2c-deployment
+    - title: Azure Functions
+      url: /learn/by-example/azure-functions-deployment
+      active: azure-functions-deployment
+    - title: AWS Lambda
+      url: /learn/by-example/aws-lambda-deployment
+      active: aws-lambda-deployment

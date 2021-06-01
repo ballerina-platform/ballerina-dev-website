@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: Query expressions
+title: Query Expressions
 description: This BBE demonstrates query expressions in Ballerina.
 keywords: ballerina, ballerina by example, bbe, query, query expression, iterable
 permalink: /learn/by-example/query-expressions
@@ -21,6 +21,7 @@ redirect_from:
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">numsTimes10</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="nx">nums</span>
                         <span class="c1">// The `select` clause is evaluated for each iteration.</span>
                         <span class="nx">select</span> <span class="nx">i</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
+                        
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">numsTimes10</span><span class="p">);</span>
 
     <span class="c1">// This is based on &lt;br&gt;&lt;/br&gt;</span>
@@ -40,7 +41,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Query expressions</h2>
+                            <h2>Query Expressions</h2>
                             <p><p>Query-like expressions start with <code>from</code> clause and end with <code>select</code> clause. It is a
  list comprehension, based on mathematical &ldquo;set builder&rdquo; notation.</p>
 </p>
@@ -52,14 +53,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="json-numbers.html">
                                         <span>< PREVIOUS</span>
-                                        <p>JSON numbers</p>
+                                        <p>JSON Numbers</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="destructuring-records.html">
                                         <span>NEXT ></span>
-                                        <p>Destructuring records</p>
+                                        <p>Destructuring Records</p>
                                     </a>
                                 </div>
                                 
@@ -83,7 +84,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=91bcd41dfb41b960a49c2bc96751dd4e&file=query_expressions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ee8ae5d62dbec27f265c1fb7da704821&file=query_expressions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -165,6 +166,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>                        select i * 10;
+                        
     io:println(numsTimes10);
 </code></pre></div>
 

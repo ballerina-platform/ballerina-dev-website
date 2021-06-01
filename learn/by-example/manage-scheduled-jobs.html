@@ -46,8 +46,10 @@ redirect_from:
     <span class="nx">time</span><span class="p">:</span><span class="nx">Civil</span> <span class="nx">time</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcToCivil</span><span class="p">(</span><span class="nx">newTime</span><span class="p">);</span>
 
     <span class="c1">// Schedules the tasks to execute the job every second.</span>
-    <span class="nx">task</span><span class="p">:</span><span class="nx">JobId</span> <span class="nx">id1</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">task</span><span class="p">:</span><span class="nx">scheduleJobRecurByFrequency</span><span class="p">(</span><span class="nx">new</span> <span class="nx">Job</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;1st Job&quot;</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="nx">task</span><span class="p">:</span><span class="nx">JobId</span> <span class="nx">id2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">task</span><span class="p">:</span><span class="nx">scheduleJobRecurByFrequency</span><span class="p">(</span><span class="nx">new</span> <span class="nx">Job</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;2nd Job&quot;</span><span class="p">),</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="nx">task</span><span class="p">:</span><span class="nx">JobId</span> <span class="nx">id1</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">task</span><span class="p">:</span><span class="nx">scheduleJobRecurByFrequency</span><span class="p">(</span>
+                            <span class="nx">new</span> <span class="nx">Job</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;1st Job&quot;</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="nx">task</span><span class="p">:</span><span class="nx">JobId</span> <span class="nx">id2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">task</span><span class="p">:</span><span class="nx">scheduleJobRecurByFrequency</span><span class="p">(</span>
+                            <span class="nx">new</span> <span class="nx">Job</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;2nd Job&quot;</span><span class="p">),</span> <span class="mi">3</span><span class="p">);</span>
     <span class="c1">// Schedules the one-time job at the specified time.</span>
     <span class="nx">task</span><span class="p">:</span><span class="nx">JobId</span> <span class="nx">id3</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">task</span><span class="p">:</span><span class="nx">scheduleOneTimeJob</span><span class="p">(</span><span class="nx">new</span> <span class="nx">Job</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;3rd Job&quot;</span><span class="p">),</span> <span class="nx">time</span><span class="p">);</span>
 
@@ -132,7 +134,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=f55c185aed5a39ef1d33fb44bad05e32&file=manage_scheduled_jobs.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=98966fa16c5226c94359eec023b1af57&file=manage_scheduled_jobs.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -352,8 +354,10 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    task:JobId id1 = check task:scheduleJobRecurByFrequency(new Job(0, &quot;1st Job&quot;), 1);
-    task:JobId id2 = check task:scheduleJobRecurByFrequency(new Job(0, &quot;2nd Job&quot;), 3);
+                                    <div class="highlight"><pre><code class=language-ballerina>    task:JobId id1 = check task:scheduleJobRecurByFrequency(
+                            new Job(0, &quot;1st Job&quot;), 1);
+    task:JobId id2 = check task:scheduleJobRecurByFrequency(
+                            new Job(0, &quot;2nd Job&quot;), 3);
 </code></pre></div>
 
                                 </td>

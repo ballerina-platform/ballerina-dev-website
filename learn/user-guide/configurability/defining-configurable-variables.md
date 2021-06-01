@@ -40,24 +40,22 @@ The module information of the configurable variable can be provided with command
 
 ### Using Configuration Files
 
-The values can be provided through configuration files in the [TOML(v0.4) format](). The file location can be set through an environment variable with the name `BAL_CONFIG_FILES`. It is possible to specify multiple configuration files using the OS-specific separator. The file precedence order will be as specified in the environment variable. If an environment variable is not specified, it is located in the current working  directory with the file name `Config.toml`.
+The values can be provided through configuration files in the [TOML(v0.4) format](https://toml.io/en/v0.4.0). The file location can be set through an environment variable with the name `BAL_CONFIG_FILES`. It is possible to specify multiple configuration files using the OS-specific separator. The file precedence order will be as specified in the environment variable. If an environment variable is not specified, it is located in the current working  directory with the file name `Config.toml`.
 
 ### Using Environment Variables
 
-The values can be provided through an environment variable with the name `BAL_CONFIG_DATA` in which the content is expected to be in the [TOML(v0.4) format](). 
+The values can be provided through an environment variable with the name `BAL_CONFIG_DATA` in which the content is expected to be in the [TOML(v0.4) format](https://toml.io/en/v0.4.0). 
 
 ## Securing Sensitive Data Using Configurable Variables
 
 A Ballerina runtime can be configured using configurable variables. For more details, see the [Configurable BBE](/learn/by-example/configurable/).
 
 Configuration values containing passwords or secrets should not be passed with the normal configuration.
-
 Such sensitive data can be passed to runtime using a different TOML file, and you can prioritize it higher than the normal configuration by prefixing the file path in the `BAL_CONFIG_FILES` environment variable.
-
 The configuration of sensitive data can be handled at the deployment of the Ballerina program.
 
-For an example, in a Kubernetes environment, a Kubernetes secret can be used with a pod as files in a volume mounted on one or more of its containers or as container environment variables. The TOML file, which contains the sensitive data can be stored as a secret resource in Kubernetes and can be placed in a volume mount when running a pod. The file path can be specified via an [environment variable](#using-environment-variables).
+For example, in a Kubernetes environment, a Kubernetes secret can be used with a pod as files in a volume mounted on one or more of its containers or as container environment variables. The TOML file, which contains the sensitive data can be stored as a secret resource in Kubernetes and can be placed in a volume mount when running a pod. The file path can be specified via an [environment variable](#using-environment-variables).
 
 ## Trying it Out
 
-For an example on defining configurable variables in a Ballerina program, see [Trying it Out](/learn/user-guide/configurability/trying-it-out/).
+For example on defining configurable variables in a Ballerina program, see [Trying it Out](/learn/user-guide/configurability/trying-it-out/).

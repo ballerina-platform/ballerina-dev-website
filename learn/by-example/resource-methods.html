@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: Resource methods
+title: Resource Methods
 description: This BBE introduces the resource concept in Ballerina.
 keywords: ballerina, ballerina by example, bbe, resources, resource methods, HTTP, GraphQL
 permalink: /learn/by-example/resource-methods
@@ -17,7 +17,7 @@ redirect_from:
 <span class="c1">// Service declaration specifies base path for the resource names. The base path is `/` in this example.</span>
 <span class="kd">service</span> <span class="o">/</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Resource method is associated with combination of accessor (`get`) and resource name (`hello`). </span>
-    <span class="c1">// Accessors are determined by the network protocal.</span>
+    <span class="c1">// Accessors are determined by the network protocol.</span>
     <span class="c1">// In HTTP resources, function parameters come from query parameters.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">hello</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
@@ -31,11 +31,11 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Resource methods</h2>
+                            <h2>Resource Methods</h2>
                             <p><p>Service objects use <code>remote</code> methods to expose services in procedural style: remote methods are named by verbs. <br/><br/>
- Service objects user <code>resource</code> methods to expose services in an RESTful style: resources are named by nounds. <br/><br/>
+ Service objects use <code>resource</code> methods to expose services in an RESTful style: resources are named by nouns. <br/><br/>
  Resources are motivated by HTTP, but are general enough also to work for GraphQL.
- <code>resource</code> methods are network-oriented generalization of OO getter/setter concept.</p>
+ <code>resource</code> methods are a network-oriented generalization of OO getter/setter concept.</p>
 </p>
 
                         </td>
@@ -45,14 +45,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="service-declaration.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Service declaration</p>
+                                        <p>Service Declaration</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="hierarchical-resources.html">
                                         <span>NEXT ></span>
-                                        <p>Hierarchical resources</p>
+                                        <p>Hierarchical Resources</p>
                                     </a>
                                 </div>
                                 
@@ -76,7 +76,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=b6c12204cc00da444f058be2200bc74d&file=resource_methods.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=444e6521939209cca2d7a6edc2450e00&file=resource_methods.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -152,7 +152,7 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Resource method is associated with combination of accessor (<code>get</code>) and resource name (<code>hello</code>).
- Accessors are determined by the network protocal.
+ Accessors are determined by the network protocol.
  In HTTP resources, function parameters come from query parameters.</p>
 
                                         </div>

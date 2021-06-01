@@ -15,16 +15,18 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// String literals use double quotes. You can use usual C escapse such as `\t \n`. </span>
+    <span class="c1">// String literals use double quotes. You can use usual C escapes such as `\t \n`.</span>
     <span class="c1">// Numeric escapes specify Unicode code point using one or more hex digits `\u{H}`.</span>
     <span class="kt">string</span> <span class="nx">grin</span> <span class="p">=</span> <span class="s">&quot;\u{1F600}&quot;</span><span class="p">;</span>
 
     <span class="c1">// String concatenation uses `+` operator.</span>
     <span class="kt">string</span> <span class="nx">greeting</span> <span class="p">=</span> <span class="s">&quot;Hello&quot;</span> <span class="o">+</span> <span class="nx">grin</span><span class="p">;</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">greeting</span><span class="p">);</span>
 
     <span class="c1">// `greeting[1]` accesses character at index 1 (zero-based).</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">greeting</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+
 <span class="p">}</span>
 </pre></div>
 
@@ -36,8 +38,8 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Strings</h2>
                             <p><p>The <code>string</code> type represents immutable sequence of zero or more Unicode characters.
- There is no separate character type: a character is represented by string of lenght 1.
- Two <code>string</code> values are <code>==</code> if both sequences have same characters.
+ There is no separate character type: a character is represented by a <code>string</code> of length 1.
+ Two <code>string</code> values are <code>==</code> if both sequences have the same characters.
  You can use <code>&lt; &lt;= &gt; &gt;=</code> operators on <code>string</code> values and they work by comparing code points.
  Unpaired surrogates are not allowed.</p>
 </p>
@@ -56,7 +58,7 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="langlib-functions.html">
                                         <span>NEXT ></span>
-                                        <p>Langlib functions</p>
+                                        <p>Langlib Functions</p>
                                     </a>
                                 </div>
                                 
@@ -80,7 +82,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=693344a4f7f30c3b1cc4bf41241416f0&file=strings.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=9558b030d098391fbed05ba54d88805a&file=strings.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -98,6 +100,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -149,7 +155,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>String literals use double quotes. You can use usual C escapse such as <code>\t \n</code>.
+                                            <p>String literals use double quotes. You can use usual C escapes such as <code>\t \n</code>.
  Numeric escapes specify Unicode code point using one or more hex digits <code>\u{H}</code>.</p>
 
                                         </div>
@@ -162,7 +168,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string greeting = &quot;Hello&quot; + grin;
-    io:println(greeting);
 </code></pre></div>
 
                                 </td>
@@ -178,11 +183,22 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(greeting);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(greeting[1]);
-}
 </code></pre></div>
 
                                 </td>
@@ -194,6 +210,18 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

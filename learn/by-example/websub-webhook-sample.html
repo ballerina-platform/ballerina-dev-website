@@ -1,0 +1,324 @@
+---
+layout: ballerina-example-page
+title: Websub Subscriber Service
+description: This BBE demonstrates how a WebSub Subscriber service could be registered as a WebHook Service for GitHub.
+keywords: ballerina, ballerina by example, bbe, websub, subscriber
+permalink: /learn/by-example/websub-webhook-sample
+active: websub-webhook-sample
+redirect_from:
+  - /swan-lake/learn/by-example/websub-webhook-sample
+  - /swan-lake/learn/by-example/websub-webhook-sample.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="c1">// The Ballerina WebSub Subscriber service, which could be used as a WebHook Listener for GitHub.</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// Annotation-based configurations specifying the subscription parameters.</span>
+<span class="nd">@websub:SubscriberServiceConfig {</span>
+    <span class="nx">target</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">&quot;https://api.github.com/hub&quot;</span><span class="p">,</span> 
+        <span class="s">&quot;https://github.com/&lt;YOUR_ORGANIZATION&gt;/&lt;REPOSITORY&gt;/events/push.json&quot;</span>
+    <span class="p">],</span>
+    <span class="nx">secret</span><span class="p">:</span> <span class="s">&quot;&lt;YOUR_SECRET_KEY&gt;&quot;</span><span class="p">,</span>
+    <span class="nx">httpConfig</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">token</span><span class="p">:</span> <span class="s">&quot;&lt;YOUR_AUTH_TOKEN&gt;&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">subscriber</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Defines the remote function that accepts the event notification request for the WebHook.</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onEventNotification</span><span class="p">(</span>
+                    <span class="nx">websub</span><span class="p">:</span><span class="nx">ContentDistributionMessage</span> <span class="nx">event</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">retrievedContent</span> <span class="p">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">retrievedContent</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">zen</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kt">int</span> <span class="nx">hookId</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">hook_id</span><span class="p">;</span>
+                <span class="kt">int</span> <span class="nx">senderId</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">sender</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span><span class="s">`PingEvent received for webhook [${hookId}]`</span><span class="p">);</span>
+                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span><span class="s">`Event sender [${senderId}]`</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">ref</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kt">string</span> <span class="nx">repositoryName</span> <span class="p">=</span> 
+                            <span class="nx">check</span> <span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">repository</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+                <span class="kt">string</span> <span class="nx">lastUpdatedTime</span> <span class="p">=</span> 
+                            <span class="nx">check</span> <span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">repository</span><span class="p">.</span><span class="nx">updated_at</span><span class="p">;</span>
+                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span><span class="s">`PushEvent received for [${repositoryName}]`</span><span class="p">);</span>
+                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span><span class="s">`Last updated at ${lastUpdatedTime}`</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Unrecognized content type, hence ignoring&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Websub Subscriber Service</h2>
+                            <p><p>Ballerina provides the capability to easily introduce subscriber services that are WebSub-compliant.
+ Ballerina WebSub subscribers can specify the topic and hub to which they wish to subscribe</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="websocket-basic-sample.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Listener Functionalities</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="http-circuit-breaker.html">
+                                        <span>NEXT ></span>
+                                        <p>Circuit Breaker</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="websub-webhook-sample">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/websub-webhook-sample/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=8868bd78832f06191ca8ee4443bae28e&file=websub_webhook_sample.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/websub;
+import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The Ballerina WebSub Subscriber service, which could be used as a WebHook Listener for GitHub.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>@websub:SubscriberServiceConfig {
+    target: [
+        &quot;https://api.github.com/hub&quot;, 
+        &quot;https://github.com/&lt;YOUR_ORGANIZATION&gt;/&lt;REPOSITORY&gt;/events/push.json&quot;
+    ],
+    secret: &quot;&lt;YOUR_SECRET_KEY&gt;&quot;,
+    httpConfig: {
+        auth: {
+            token: &quot;&lt;YOUR_AUTH_TOKEN&gt;&quot;
+        }
+    }
+}
+service /subscriber on new websub:Listener(9090) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Annotation-based configurations specifying the subscription parameters.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onEventNotification(
+                    websub:ContentDistributionMessage event) returns error? {
+        var retrievedContent = event.content;
+        if (retrievedContent is json) {
+            if (retrievedContent.zen is string) {
+                int hookId = check retrievedContent.hook_id;
+                int senderId = check retrievedContent.sender.id;
+                io:println(string`PingEvent received for webhook [${hookId}]`);
+                io:println(string`Event sender [${senderId}]`);
+            } else if (retrievedContent.ref is string) {
+                string repositoryName = 
+                            check retrievedContent.repository.name;
+                string lastUpdatedTime = 
+                            check retrievedContent.repository.updated_at;
+                io:println(string`PushEvent received for [${repositoryName}]`);
+                io:println(string`Last updated at ${lastUpdatedTime}`);
+            }
+        } else {
+            io:println(&quot;Unrecognized content type, hence ignoring&quot;);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Defines the remote function that accepts the event notification request for the WebHook.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
+# `.bal` file, and execute the `bal run` command below.
+bal run websub_webhook_sample.bal
+time = 2021-03-15 15:43:00,198 level = INFO  module = ballerina/websub message = &quot;HTTPS is recommended but using HTTP&quot; 
+time = 2021-03-15 15:43:01,960 level = INFO  module = ballerina/websub message = &quot;Subscription request considered successful for non 202 status code: 204&quot; 
+time = 2021-03-15 15:43:01,962 level = INFO  module = ballerina/websub message = &quot;Subscription Request successfully sent to Hub[https://api.github.com/hub], for Topic[https://github.com/&lt;your-org&gt;/&lt;your-repository/events/push.json], with Callback [&lt;your-callback-url&gt;]. Awaiting intent verification.&quot; 
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+PingEvent received for webhook [287075824]
+Event sender [77491511]
+PushEvent received for [Hello-World]
+Last updated at 2021-03-15T15:43:01Z
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

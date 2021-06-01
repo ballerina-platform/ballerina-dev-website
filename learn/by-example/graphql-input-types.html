@@ -20,7 +20,7 @@ redirect_from:
     <span class="c1">// corresponding GraphQL field. In this GraphQL schema, the </span>
     <span class="c1">// `greeting` field of `Query` type  has a `name`  input value, which accepts</span>
     <span class="c1">// `string` values.</span>
-    <span class="nx">isolated</span> <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greeting</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greeting</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
 
         <span class="k">return</span> <span class="kt">string</span><span class="s">`Hello, ${name}`</span><span class="p">;</span>
     <span class="p">}</span>
@@ -54,9 +54,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="directory-listener.html">
+                                    <a class="next" href="graphql-service-ssl-tls.html">
                                         <span>NEXT ></span>
-                                        <p>Directory Listener</p>
+                                        <p>Service - SSL/TLS</p>
                                     </a>
                                 </div>
                                 
@@ -80,7 +80,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=cdda2d17b4180d9ec750fea8bc9abbc6&file=graphql_input_types.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=23b0a14911d34412950f6345f63a1bd7&file=graphql_input_types.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -139,7 +139,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated resource function get greeting(string name) returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get greeting(string name) returns string {
 </code></pre></div>
 
                                 </td>

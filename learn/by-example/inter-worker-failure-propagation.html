@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: Inter-worker failure propagation
+title: Inter-Worker Failure Propagation
 description: This BBE demonstrates inter-worker failure propagation
 keywords: ballerina, ballerina by example, bbe, worker, failure
 permalink: /learn/by-example/inter-worker-failure-propagation
@@ -27,10 +27,12 @@ redirect_from:
             <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="mi">42</span> <span class="o">-&gt;</span> <span class="kd">function</span><span class="p">;</span>
+
     <span class="p">}</span>
 
     <span class="c1">// Send to or receive from failed worker will propagate the failure.</span>
     <span class="kt">int</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">check</span> <span class="o">&lt;-</span> <span class="nx">A</span><span class="p">;</span>
+
     <span class="k">return</span> <span class="nx">x</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -57,7 +59,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Inter-worker failure propagation</h2>
+                            <h2>Inter-Worker Failure Propagation</h2>
                             <p><p>Workers may need to call functions that can return an error.
  Pairing up of sends and receives guarantees that each send will be
  received, and vice-versa, provided neither sending nor receiving worker
@@ -72,14 +74,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="inter-worker-message-passing.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Inter-worker message passing</p>
+                                        <p>Inter-Worker Message Passing</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="lock-statement.html">
+                                    <a class="next" href="transaction-statement.html">
                                         <span>NEXT ></span>
-                                        <p>lock statement</p>
+                                        <p>Transaction Statement</p>
                                     </a>
                                 </div>
                                 
@@ -103,7 +105,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=35fa77aa68904dcd8952a198a27d4eab&file=inter_worker_failure_propagation.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=3a0e97f46845e6dcfb7df44bb7101d92&file=inter_worker_failure_propagation.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -121,6 +123,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -190,7 +196,6 @@ redirect_from:
             return res;
         }
         42 -&gt; function;
-    }
 </code></pre></div>
 
                                 </td>
@@ -209,12 +214,22 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int x = check &lt;- A;
-    return x;
-}
 </code></pre></div>
 
                                 </td>
@@ -226,6 +241,19 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    return x;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

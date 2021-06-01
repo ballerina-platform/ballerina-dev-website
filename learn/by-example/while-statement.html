@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: while statement
+title: While Statement
 description: This BBE demonstrates while statement in Ballerina.
 keywords: ballerina, ballerina by example, bbe, while, loops
 permalink: /learn/by-example/while-statement
@@ -36,6 +36,7 @@ redirect_from:
             <span class="nx">v</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
+
     <span class="k">return</span> <span class="nx">n</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -46,7 +47,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>while statement</h2>
+                            <h2>While Statement</h2>
                             <p><p>The <code>while</code> statement is a more flexible iteration than <code>foreach</code>. <code>break</code> and <code>continue</code> statements
  can be used within the loops to alter control flow.</p>
 </p>
@@ -58,14 +59,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="foreach-statement.html">
                                         <span>< PREVIOUS</span>
-                                        <p>foreach statement</p>
+                                        <p>Foreach Statement</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="binary-data.html">
                                         <span>NEXT ></span>
-                                        <p>Binary data</p>
+                                        <p>Binary Data</p>
                                     </a>
                                 </div>
                                 
@@ -89,7 +90,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=79094a1aa832229b35c0310b61bd4759&file=while_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=68c0c4bb284e3d7db7c83c9f9325ce1c&file=while_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -107,6 +108,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -182,15 +185,13 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    while v != () {
         n += 1;
         if v is LinkedList {
             v = v.next;
         }
     }
-    return n;
-}
 </code></pre></div>
 
                                 </td>
@@ -203,6 +204,19 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    return n;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

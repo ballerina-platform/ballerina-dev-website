@@ -17,9 +17,11 @@ redirect_from:
 <span class="c1">// This function definition has two parameters of type `int`. </span>
 <span class="c1">// `returns` clause specifies type of return value.</span>
 <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">int</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">y</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+
     <span class="kt">int</span> <span class="nx">sum</span> <span class="p">=</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
     <span class="c1">// `return` statement returns a value.</span>
     <span class="k">return</span> <span class="nx">sum</span><span class="p">;</span>
+
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
@@ -34,7 +36,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Functions</h2>
-                            <p><p>A function accpets zero or more arguments and returns a single value.
+                            <p><p>A function accepts zero or more arguments and returns a single value.
  Function parameters are declared as in C. You are not allowed to assign to parameters in Ballerina.</p>
 </p>
 
@@ -43,9 +45,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="programs-and-modules.html">
+                                    <a class="prev" href="variables-and-types.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Programs and modules</p>
+                                        <p>Variables and Types</p>
                                     </a>
                                 </div>
                                  
@@ -76,7 +78,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=2f942f8f1d3460a41c57f1a4b0c02747&file=functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=b40d91be3bf32b58a4055dda7b713020&file=functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -94,6 +96,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -124,7 +130,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function add(int x, int y) returns int {
-    int sum = x + y;
 </code></pre></div>
 
                                 </td>
@@ -141,11 +146,22 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    int sum = x + y;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    return sum;
-}
 </code></pre></div>
 
                                 </td>
@@ -157,6 +173,18 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

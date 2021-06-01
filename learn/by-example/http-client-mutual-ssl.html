@@ -1,8 +1,8 @@
 ---
 layout: ballerina-example-page
 title: Client - Mutual SSL
-description: BBE on how the Ballerina listener client support mutual SSL.
-keywords: ballerina, ballerina by example, bbe, mutual ssl, ssl protocols, ciphers
+description: BBE on how to secure HTTP client with mutual SSL.
+keywords: ballerina, ballerina by example, bbe, http, mutual ssl, ssl protocols, ciphers
 permalink: /learn/by-example/http-client-mutual-ssl
 active: http-client-mutual-ssl
 redirect_from:
@@ -17,7 +17,7 @@ redirect_from:
 
 <span class="c1">// An HTTP client can be configured to initiate new connections that are</span>
 <span class="c1">// secured via mutual SSL.</span>
-<span class="c1">// The [http:ClientSecureSocket](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientSecureSocket) record provides the SSL-related configurations.</span>
+<span class="c1">// The [`http:ClientSecureSocket`](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientSecureSocket) record provides the SSL-related configurations.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">securedEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span>
     <span class="nx">secureSocket</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">key</span><span class="p">:</span> <span class="p">{</span>
@@ -29,6 +29,7 @@ redirect_from:
             <span class="nx">name</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">TLS</span>
         <span class="p">},</span>
         <span class="nx">ciphers</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA&quot;</span><span class="p">]</span>
+
     <span class="p">}</span>
 <span class="p">);</span>
 
@@ -91,7 +92,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=73cecd0e3a5bf9a77376e12f43e4e712&file=http_client_mutual_ssl.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a60f0cda55ed038aac3ff374238057aa&file=http_client_mutual_ssl.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -109,6 +110,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -148,8 +151,6 @@ import ballerina/io;
             name: http:TLS
         },
         ciphers: [&quot;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA&quot;]
-    }
-);
 </code></pre></div>
 
                                 </td>
@@ -159,10 +160,23 @@ import ballerina/io;
                                         <div>
                                             <p>An HTTP client can be configured to initiate new connections that are
  secured via mutual SSL.
- The <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/ClientSecureSocket">http:ClientSecureSocket</a> record provides the SSL-related configurations.</p>
+ The <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/ClientSecureSocket"><code>http:ClientSecureSocket</code></a> record provides the SSL-related configurations.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    }
+);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

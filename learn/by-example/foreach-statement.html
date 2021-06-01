@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: foreach statement
+title: Foreach Statement
 description: This BBE demonstrates foreach statement in Ballerina.
 keywords: ballerina, ballerina by example, bbe, foreach, loops
 permalink: /learn/by-example/foreach-statement
@@ -27,6 +27,7 @@ redirect_from:
     <span class="nx">foreach</span> <span class="kt">float</span> <span class="nx">x</span> <span class="nx">in</span> <span class="nx">v</span> <span class="p">{</span>
         <span class="nx">r</span> <span class="o">+=</span> <span class="nx">x</span><span class="p">;</span>
     <span class="p">}</span>
+
     <span class="k">return</span> <span class="nx">r</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -37,6 +38,7 @@ redirect_from:
     <span class="nx">foreach</span> <span class="kt">int</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">0</span> <span class="p">..&lt;</span> <span class="nx">v</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">r</span> <span class="o">+=</span> <span class="nx">v</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
     <span class="p">}</span>
+
     <span class="k">return</span> <span class="nx">r</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -47,7 +49,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>foreach statement</h2>
+                            <h2>Foreach Statement</h2>
                             <p><p>The <code>foreach</code> statement iterates over an iterable value, by binding a variable to each member of the
  iterable value in order. <code>foreach</code> also works for strings, and will iterate over each character of the <code>string</code>.</p>
 </p>
@@ -66,7 +68,7 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="while-statement.html">
                                         <span>NEXT ></span>
-                                        <p>while statement</p>
+                                        <p>While Statement</p>
                                     </a>
                                 </div>
                                 
@@ -90,7 +92,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=7850d3acb25f63a51b3204a692305714&file=foreach_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=5aa881764cb01513b869f9b66c201a25&file=foreach_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -108,6 +110,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -173,8 +179,6 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>    foreach float x in v {
         r += x;
     }
-    return r;
-}
 </code></pre></div>
 
                                 </td>
@@ -194,6 +198,19 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    return r;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function sum2(float[] v) returns float {
     float r = 0.0;
 </code></pre></div>
@@ -206,12 +223,10 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    foreach int i in 0 ..&lt; v.length() {
         r += v[i];
     }
-    return r;
-}
 </code></pre></div>
 
                                 </td>
@@ -224,6 +239,19 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    return r;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

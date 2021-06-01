@@ -21,8 +21,8 @@
     - title: Concurrent
       url: /learn/user-guide/why-ballerina/concurrent/
       active: concurrent
-    - title: Reliable and Maintainable
-      url: /learn/user-guide/why-ballerina/reliable-and-maintainable/
+    - title: Reliable, Maintainable
+      url: /learn/user-guide/why-ballerina/reliable-maintainable/
       active: reliable-and-maintainable
 
 
@@ -42,24 +42,50 @@
       url: /learn/user-guide/getting-started/writing-your-first-ballerina-program/
       active: writing-your-first-ballerina-program
 
+- title: Ballerina Packages
+  url: '#'
+  sublinks:
+    - title: Creating your first Ballerina Package
+      url: /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/
+      active: creating-your-first-ballerina-package
+    - title: Package Layout
+      url: /learn/user-guide/ballerina-packages/package-layout/
+      active: package-layout
+    - title: Modules
+      url: /learn/user-guide/ballerina-packages/modules/
+      active: modules
+    - title: Dependencies
+      url: /learn/user-guide/ballerina-packages/dependencies/
+      active: dependencies
+    - title: Sharing a Library package
+      url: /learn/user-guide/ballerina-packages/sharing-a-library-package/
+      active: sharing-a-library-package
+
+- title: Testing Ballerina Code
+  url: '#'
+  sublinks:
+    - title: Quick Start
+      url: /learn/user-guide/testing-ballerina-code/testing-quick-start
+      active: testing-quick-start
+    - title: Writing Tests
+      url: /learn/user-guide/testing-ballerina-code/writing-tests
+      active: writing-tests
+    - title: Mocking
+      url: /learn/user-guide/testing-ballerina-code/mocking
+      active: mocking
+    - title: Executing Tests
+      url: /learn/user-guide/testing-ballerina-code/executing-tests
+      active: executing-tests
+
 - title: Code Organization 
   url: '#'
   sublinks:
-    - title: Structuring Ballerina Code
-      url: /learn/user-guide/structuring-ballerina-code/
-      active: structuring-ballerina-code
     - title: Documenting Ballerina Code
       url: /learn/user-guide/documenting-ballerina-code/
       active: documenting-ballerina-code
     - title: Coding Conventions
       url: /learn/user-guide/coding-conventions/
       active: coding-conventions
-    - title: Running Ballerina Code
-      url: /learn/user-guide/running-ballerina-code/
-      active: running-ballerina-code
-    - title: Publishing Packages to Ballerina Central
-      url: /learn/user-guide/publishing-packages-to-ballerina-central
-      active: publishing-packages-to-ballerina-central
 
 - title: Network Communication
   url: '#' 
@@ -130,22 +156,6 @@
     - title: Authentication and Authorization
       url: /learn/user-guide/authentication-and-authorization
       active: authentication-and-authorization
-
-- title: Testing Ballerina Code
-  url: '#' 
-  sublinks:
-    - title: Quick Start
-      url: /learn/user-guide/testing-ballerina-code/testing-quick-start
-      active: testing-quick-start
-    - title: Writing Tests
-      url: /learn/user-guide/testing-ballerina-code/writing-tests
-      active: writing-tests
-    - title: Mocking
-      url: /learn/user-guide/testing-ballerina-code/mocking
-      active: mocking
-    - title: Executing Tests
-      url: /learn/user-guide/testing-ballerina-code/executing-tests
-      active: executing-tests
 
 #- title: Extending Ballerina
   #url: '#' 

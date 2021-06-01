@@ -33,10 +33,11 @@ redirect_from:
         <span class="nx">y</span><span class="p">:</span> <span class="mi">2</span>
     <span class="p">};</span>
 
-    <span class="c1">// a will be 2</span>
     <span class="kt">int</span> <span class="nx">a</span> <span class="p">=</span> <span class="nx">r</span><span class="p">.</span><span class="nx">y</span><span class="p">;</span>
-    <span class="c1">// b will be 1.</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+
     <span class="kt">int</span> <span class="nx">b</span> <span class="p">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -60,14 +61,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="type-definitions.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Type definitions</p>
+                                        <p>Type Definitions</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="structural-typing.html">
                                         <span>NEXT ></span>
-                                        <p>Structural typing</p>
+                                        <p>Structural Typing</p>
                                     </a>
                                 </div>
                                 
@@ -91,7 +92,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=dd1355a807be30d4e34c957bc1804d86&file=records.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=21bc30fe5dbabf2222de47ca5216fb10&file=records.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -219,41 +220,29 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int a = r.y;
+    io:println(a);
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>a will be 2</p>
-
-                                        </div>
-                                    </div>
-                                    
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    int b = c.x;
+    io:println(b);
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>b will be 1.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -275,6 +264,8 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run records.bal
+2
+1
 </code></pre></div>
 
                                 </td>

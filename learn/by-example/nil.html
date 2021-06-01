@@ -17,10 +17,10 @@ redirect_from:
 <span class="c1">// Here type `int?` indicates that the value of `v` can be an `int` or `()`.</span>
 <span class="kt">int</span><span class="err">?</span> <span class="nx">v</span> <span class="p">=</span> <span class="p">();</span>
 
-<span class="c1">// Here the value of `n` annot be `()`.</span>
-<span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="nx">v</span> <span class="o">==</span> <span class="p">()</span> <span class="err">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="nx">v</span><span class="p">;</span>
+<span class="c1">// Here the value of `n` cannot be `()`.</span>
+<span class="kt">int</span><span class="err">?</span> <span class="nx">n</span> <span class="p">=</span> <span class="nx">v</span> <span class="o">==</span> <span class="p">()</span> <span class="err">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="nx">v</span><span class="p">;</span>
 
-<span class="c1">// Elvis operator `x ?: y` returns `x` if it is not `nil` and y otherwise.</span>
+<span class="c1">// Elvis operator `x ?: y` returns `x` if it is not `nil` and `y` otherwise.</span>
 <span class="kt">int</span> <span class="nx">m</span> <span class="p">=</span> <span class="nx">v</span> <span class="err">?</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
 
 <span class="c1">// Falling off the end of a function or `return` by itself is equivalent to `return ()`.</span>
@@ -30,6 +30,7 @@ redirect_from:
 
 <span class="c1">// Leaving off return type is equivalent to `returns ()`.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -43,7 +44,8 @@ redirect_from:
                             <h2>Nil</h2>
                             <p><p>Ballerina&rsquo;s version of <code>null</code> is called <code>nil</code> and written as <code>()</code>.
  Ballerina types do not implicitly allow <code>nil</code>.
- Type <code>T?</code> means <code>T</code> or <code>nil</code>. You can use <code>==</code> and <code>!=</code> to test whether a value is nil: no implicit coversion to boolean.</p>
+ Type <code>T?</code> means <code>T</code> or <code>nil</code>. You can use <code>==</code> and <code>!=</code> to test whether a value is <code>nil</code>: no implicit conversion to
+ <code>boolean</code>.</p>
 </p>
 
                         </td>
@@ -53,7 +55,7 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="floating-point-numbers.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Floating point numbers</p>
+                                        <p>Floating Point Numbers</p>
                                     </a>
                                 </div>
                                  
@@ -84,7 +86,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=83f904f3de5054e09f5985e79b3871f7&file=nil.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=9a85218fc63fef30a4e8986901c21a78&file=nil.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -102,6 +104,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -154,7 +158,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>int n = v == () ? 0 : v;
+                                    <div class="highlight"><pre><code class=language-ballerina>int? n = v == () ? 0 : v;
 </code></pre></div>
 
                                 </td>
@@ -162,7 +166,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Here the value of <code>n</code> annot be <code>()</code>.</p>
+                                            <p>Here the value of <code>n</code> cannot be <code>()</code>.</p>
 
                                         </div>
                                     </div>
@@ -181,7 +185,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Elvis operator <code>x ?: y</code> returns <code>x</code> if it is not <code>nil</code> and y otherwise.</p>
+                                            <p>Elvis operator <code>x ?: y</code> returns <code>x</code> if it is not <code>nil</code> and <code>y</code> otherwise.</p>
 
                                         </div>
                                     </div>
@@ -212,10 +216,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
-    io:println(v);
-}
 </code></pre></div>
 
                                 </td>
@@ -227,6 +229,19 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(v);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

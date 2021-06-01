@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: Inferring isolated
+title: Inferring Isolated
 description: This BBE introduces isolated inference in Ballerina.
 keywords: ballerina, ballerina by example, bbe, inferring isolated
 permalink: /learn/by-example/inferring-isolated
@@ -20,6 +20,7 @@ redirect_from:
         <span class="c1">// It is safe to access the parameters of `sayHello` for the</span>
         <span class="c1">// duration of the function call.</span>
         <span class="kt">string</span> <span class="nx">a</span> <span class="p">=</span> <span class="nx">sayHello</span><span class="p">(</span><span class="s">&quot;John&quot;</span><span class="p">);</span>
+
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
     <span class="p">}</span>
 
@@ -30,6 +31,7 @@ redirect_from:
 
     <span class="c1">// `sayHello` is inferred to be an `isolated` function.</span>
     <span class="kt">boolean</span> <span class="nx">c</span> <span class="p">=</span> <span class="nx">sayHello</span> <span class="nx">is</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">str</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -44,14 +46,16 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Inferring isolated</h2>
+                            <h2>Inferring Isolated</h2>
                             <p><p><code>isolated</code> is a complex feature, which would be a lot for an application developer to understand.
  A typical Ballerina application consists of a single module that imports multiple library modules.
  Within a single module, we can infer <code>isolated</code> qualifiers. Object w/o mutable fields is
  inherently <code>isolated</code>. Application developer&rsquo;s responsibility is to use <code>lock</code> statement where
- needed. <br></br>
- - access self in a <code>service</code> object with mutable state. <br></br>
- - access mutable module-level variables. <br></br>
+ needed. e.g.,
+ <ul>
+ <li>access self in a <code>service</code> object with mutable state</li>
+ <li>access mutable module-level variables</li>
+ </ul>
  Compiler can inform developer where missing locks are preventing a <code>service</code> object or method from
  being <code>isolated</code>.</p>
 </p>
@@ -63,14 +67,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="isolated-objects.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Isolated objects</p>
+                                        <p>Isolated Objects</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="graphql-hello-world.html">
+                                    <a class="next" href="http-data-binding.html">
                                         <span>NEXT ></span>
-                                        <p>Hello World</p>
+                                        <p>Service Data Binding</p>
                                     </a>
                                 </div>
                                 
@@ -94,7 +98,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=47df907991a5bcf974f9188853015224&file=inferring_isolated.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=d92940f113f76039b84cfcbc579a0db2&file=inferring_isolated.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -112,6 +116,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -179,8 +187,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        string a = sayHello(&quot;John&quot;);
-        io:println(a);
-    }
 </code></pre></div>
 
                                 </td>
@@ -193,6 +199,19 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(a);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -216,8 +235,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    boolean c = sayHello is isolated function (string str) returns string;
-    io:println(c);
-}
 </code></pre></div>
 
                                 </td>
@@ -229,6 +246,19 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(c);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

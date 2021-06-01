@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: Isolated methods
+title: Isolated Methods
 description: This BBE introduces isolated methods in Ballerina.
 keywords: ballerina, ballerina by example, bbe, isolated methods
 permalink: /learn/by-example/isolated-methods
@@ -19,10 +19,12 @@ redirect_from:
 
     <span class="c1">// `isolated` method.</span>
     <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">generate</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+
         <span class="nx">lock</span> <span class="p">{</span>
             <span class="c1">// Uses `self` to access mutable field `i`</span>
             <span class="c1">// within a `lock` statement.</span>
             <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -40,13 +42,15 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Isolated methods</h2>
+                            <h2>Isolated Methods</h2>
                             <p><p>Object methods can be <code>isolated</code>. An <code>isolated</code> method is same as an <code>isolated</code> function with
  <code>self</code> treated as a parameter. An <code>isolated</code> method call is concurrency-safe if both the object
  is safe and the arguments are safe. This is not quite enough for service concurrency: when
- a <code>Listener</code> makes calls to a <code>remote</code> or <code>resource</code> method, <br></br>
- - it can ensure the safety of arguments it passes. <br></br>
- - it has no way to ensure the safety of the object itself (since the object may have fields).</p>
+ a <code>listener</code> makes calls to a <code>remote</code> or <code>resource</code> method,
+ <ul>
+ <li>it can ensure the safety of arguments it passes</li>
+ <li>it has no way to ensure the safety of the object itself (since the object may have fields)</li>
+ </ul></p>
 </p>
 
                         </td>
@@ -56,14 +60,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="isolated-variables.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Isolated variables</p>
+                                        <p>Isolated Variables</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="isolated-objects.html">
                                         <span>NEXT ></span>
-                                        <p>Isolated objects</p>
+                                        <p>Isolated Objects</p>
                                     </a>
                                 </div>
                                 
@@ -87,7 +91,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a6323485a3b7c946ebf71636051ab792&file=isolated_methods.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a63d36b2298befa73e0d0f1b902f9fb8&file=isolated_methods.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -105,6 +109,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -150,7 +158,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    isolated function generate() returns int {
-        lock {
 </code></pre></div>
 
                                 </td>
@@ -166,13 +173,22 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        lock {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            return self.i * 2;
-        }
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -185,6 +201,20 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

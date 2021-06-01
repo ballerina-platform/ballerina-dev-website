@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: Stream type
+title: Stream Type
 description: This BBE demonstrates stream type in Ballerina.
 keywords: ballerina, ballerina by example, bbe, stream type, streams
 permalink: /learn/by-example/stream-type
@@ -12,7 +12,9 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="nx">class</span> <span class="nx">EvenNumberGenerator</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">class</span> <span class="nx">EvenNumberGenerator</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">public</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span> <span class="kt">int</span> <span class="nx">value</span><span class="p">;</span> <span class="p">|}|</span><span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
@@ -20,11 +22,21 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 
+<span class="nx">type</span> <span class="nx">ResultValue</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">int</span> <span class="nx">value</span><span class="p">;</span>
+<span class="p">|};</span>
+
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">EvenNumberGenerator</span> <span class="nx">evenGen</span> <span class="p">=</span> <span class="nx">new</span><span class="p">();</span>
     <span class="c1">// Creates a `stream` passing an `EvenNumberGenerator` object</span>
     <span class="c1">// to the `stream` constructor.</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">evenNumberStream</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">evenGen</span><span class="p">);</span>
+
+    <span class="k">var</span> <span class="nx">evenNumber</span> <span class="p">=</span> <span class="nx">evenNumberStream</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">evenNumber</span> <span class="nx">is</span> <span class="nx">ResultValue</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Retrieved even number: &quot;</span><span class="p">,</span> <span class="nx">evenNumber</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -34,7 +46,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Stream type</h2>
+                            <h2>Stream Type</h2>
                             <p><p>A <code>stream</code> represents a sequence of values that are generated as needed. The end of a <code>stream</code> is indicated with a
  termination value, which is <code>error</code> or <code>nil</code>. The type <code>stream&lt;T,E&gt;</code> is a <code>stream</code> where the members of the
  sequence are type <code>T</code> and termination value is type <code>E</code>. <code>stream&lt;T&gt;</code> means <code>stream&lt;T,()&gt;</code>. The <code>stream</code> type
@@ -48,14 +60,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="join-clause.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Join clause</p>
+                                        <p>Join Clause</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="querying-with-streams.html">
                                         <span>NEXT ></span>
-                                        <p>Querying with streams</p>
+                                        <p>Querying With Streams</p>
                                     </a>
                                 </div>
                                 
@@ -79,7 +91,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=779dedcd0189826d6a38f55c09aa738f&file=stream_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e8105c68f22f846b79bea5fa4d83deee&file=stream_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -104,10 +116,28 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
                         <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
                             
                             <tr class="cTR">
 
@@ -119,6 +149,20 @@ redirect_from:
         return { value: self.i };
     }
 }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type ResultValue record {|
+    int value;
+|};
 </code></pre></div>
 
                                 </td>
@@ -142,9 +186,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    stream&lt;int, error?&gt; evenNumberStream = new(evenGen);
-}
 </code></pre></div>
 
                                 </td>
@@ -157,6 +200,23 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    var evenNumber = evenNumberStream.next();
+    
+    if (evenNumber is ResultValue) {
+        io:println(&quot;Retrieved even number: &quot;, evenNumber.value);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -178,6 +238,7 @@ redirect_from:
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run stream_type.bal
+Retrieved even number: 2
 </code></pre></div>
 
                                 </td>

@@ -1,18 +1,23 @@
 ---
 layout: ballerina-example-page
-title: Plain data
-description: This BBE demonstrates plain data in Ballerina.
-keywords: ballerina, ballerina by example, bbe, plain data
-permalink: /learn/by-example/plain-data
-active: plain-data
+title: Hello World Main
+description: The classic "Hello, World" program in Ballerina
+keywords: ballerina, ballerina by example, bbe,
+permalink: /learn/by-example/hello-world
+active: hello-world
 redirect_from:
-  - /swan-lake/learn/by-example/plain-data
-  - /swan-lake/learn/by-example/plain-data.html
+  - /swan-lake/learn/by-example/hello-world
+  - /swan-lake/learn/by-example/hello-world.html
+  - /learn/by-example/
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -21,28 +26,18 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Plain data</h2>
-                            <p><p>Ballerina has concept of &ldquo;plain data&rdquo;: data that is independent of any specific code operating on the data.
- The network interfaces between programs are based on plain data. It is the opposite of objects, which combine
- data and code. Plain data supports deep copy and deep equality. Plain data supports serialization/deserialization
- without coupling. Key goal of Ballerina is to facilitate programs that work on plain data.</p>
+                            <h2>Hello World Main</h2>
+                            <p><p>Let&rsquo;s write the <code>Hello World</code> program in Ballerina.</p>
 </p>
 
                         </td>
                         <td class="cRightTD">
                             <div class="cTopButtonContainer">
-                                
-                                <div class="cButtonInfoContainer">
-                                    <a class="prev" href="resource-path-parameters.html">
-                                        <span>< PREVIOUS</span>
-                                        <p>Resource path parameters</p>
-                                    </a>
-                                </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="ballerina-basic-types.html">
+                                    <a class="next" href="hello-world-service.html">
                                         <span>NEXT ></span>
-                                        <p>Ballerina basic types</p>
+                                        <p>Hello World Service</p>
                                     </a>
                                 </div>
                                 
@@ -51,7 +46,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="plain-data">
+            <div class="example" id="hello-world">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -62,11 +57,11 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/plain-data/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/hello-world/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=&file=plain_data.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=cc45d7be3a014e742948c4c8350867f7&file=hello_world.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -83,6 +78,73 @@ redirect_from:
                         </tr>
                     </table>
 
+                    
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+    io:println(&quot;Hello, World!&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, place the source code in 
+# `hello_world.bal` file and use `bal run` command.
+bal run hello_world.bal
+Hello, World!
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
                     
 
 

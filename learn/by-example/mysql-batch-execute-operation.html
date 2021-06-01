@@ -43,7 +43,8 @@ redirect_from:
 <span class="s">                ${data.registrationID}, ${data.creditLimit}, ${data.country})`</span><span class="p">;</span>
     
     <span class="c1">// Inserts the records with the auto-generated ID.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">[]</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">batchExecute</span><span class="p">(</span><span class="nx">insertQueries</span><span class="p">);</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">[]</span> <span class="nx">result</span> <span class="p">=</span>
+                            <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">batchExecute</span><span class="p">(</span><span class="nx">insertQueries</span><span class="p">);</span>
 
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">generatedIds</span> <span class="p">=</span> <span class="p">[];</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">summary</span> <span class="nx">in</span> <span class="nx">result</span> <span class="p">{</span>
@@ -74,8 +75,9 @@ redirect_from:
     
     <span class="c1">// Creates a table in the database.</span>
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE MYSQL_BBE.Customers</span>
-<span class="s">            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  VARCHAR(300), </span>
-<span class="s">            lastName  VARCHAR(300), registrationID INTEGER, creditLimit DOUBLE, </span>
+<span class="s">            (customerId INTEGER NOT NULL AUTO_INCREMENT,</span>
+<span class="s">            firstName VARCHAR(300), lastName  VARCHAR(300),</span>
+<span class="s">            registrationID INTEGER, creditLimit DOUBLE,</span>
 <span class="s">            country  VARCHAR(300), PRIMARY KEY (customerId))`</span><span class="p">);</span>  
 
     <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>            
@@ -144,7 +146,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6238fd4c484802a67ac2fc92cf267816&file=mysql_batch_execute_operation.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ff722b65ca91bd7694a35dbffd56ae93&file=mysql_batch_execute_operation.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -323,7 +325,8 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult[] result = check mysqlClient -&gt; batchExecute(insertQueries);
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult[] result =
+                            check mysqlClient -&gt; batchExecute(insertQueries);
 </code></pre></div>
 
                                 </td>
@@ -455,8 +458,9 @@ import ballerina/sql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient -&gt; execute(`CREATE TABLE MYSQL_BBE.Customers
-            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  VARCHAR(300), 
-            lastName  VARCHAR(300), registrationID INTEGER, creditLimit DOUBLE, 
+            (customerId INTEGER NOT NULL AUTO_INCREMENT,
+            firstName VARCHAR(300), lastName  VARCHAR(300),
+            registrationID INTEGER, creditLimit DOUBLE,
             country  VARCHAR(300), PRIMARY KEY (customerId))`);  
 </code></pre></div>
 

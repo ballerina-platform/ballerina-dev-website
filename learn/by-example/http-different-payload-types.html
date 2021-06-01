@@ -24,48 +24,44 @@ redirect_from:
 <span class="kd">service</span> <span class="o">/</span><span class="nx">actionService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">messageUsage</span><span class="p">()</span>
-            <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
+            <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span><span class="p">|</span><span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="c1">//[GET](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote function without any payload.</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/greeting&quot;</span><span class="p">);</span>
-        <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-
-        <span class="c1">//[GET](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote function with</span>
-        <span class="c1">//the request given as a message.</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="s">&quot;/greeting&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
-        <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+        <span class="kt">string</span> <span class="nx">greetingMessage</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/greeting&quot;</span><span class="p">);</span>
+        <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">greetingMessage</span><span class="p">);</span>
 
         <span class="c1">//[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function without any payload.</span>
-        <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="p">());</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="p">());</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
         <span class="c1">//[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function with</span>
         <span class="c1">//text as the payload.</span>
-        <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="s">&quot;Sample Text&quot;</span><span class="p">);</span>
-        <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+        <span class="kt">string</span> <span class="nx">textResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="s">&quot;Sample Text&quot;</span><span class="p">);</span>
+        <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">textResponse</span><span class="p">);</span>
 
         <span class="c1">//[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function with</span>
         <span class="c1">//`xml` as the payload.</span>
-        <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="kt">xml</span> <span class="s">`&lt;yy&gt;Sample Xml&lt;/yy&gt;`</span><span class="p">);</span>
-        <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+        <span class="kt">xml</span> <span class="nx">xmlResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span>
+                                                <span class="kt">xml</span> <span class="s">`&lt;yy&gt;Sample Xml&lt;/yy&gt;`</span><span class="p">);</span>
+        <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">xmlResponse</span><span class="p">);</span>
 
         <span class="c1">//POST remote function with `json` as the payload.</span>
-        <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="nx">color</span><span class="p">:</span> <span class="s">&quot;red&quot;</span><span class="p">});</span>
-        <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+        <span class="kt">json</span> <span class="nx">jsonResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span>
+                                            <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="nx">color</span><span class="p">:</span> <span class="s">&quot;red&quot;</span><span class="p">});</span>
+        <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">jsonResponse</span><span class="p">);</span>
 
         <span class="c1">//[POST](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote function with</span>
         <span class="c1">//`byte[]` as the payload.</span>
         <span class="kt">string</span> <span class="nx">textVal</span> <span class="p">=</span> <span class="s">&quot;Sample Text&quot;</span><span class="p">;</span>
         <span class="nx">byte</span><span class="p">[]</span> <span class="nx">binaryValue</span> <span class="p">=</span> <span class="nx">textVal</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
-        <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="nx">binaryValue</span><span class="p">);</span>
+        <span class="nx">response</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="nx">binaryValue</span><span class="p">);</span>
         <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
         <span class="c1">//Get a byte stream to a given file.</span>
-        <span class="k">var</span> <span class="nx">bStream</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadBlocksAsStream</span><span class="p">(</span><span class="s">&quot;./files/logo.png&quot;</span><span class="p">);</span>
-
+        <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;|</span><span class="nx">io</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">bStream</span> <span class="p">=</span>
+                    <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadBlocksAsStream</span><span class="p">(</span><span class="s">&quot;./files/logo.png&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">bStream</span> <span class="nx">is</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;)</span> <span class="p">{</span>
-            <span class="c1">//Make a POST request with a byte stream as the payload. Since the file path is static `&lt;@untainted&gt;` is used to denote that the byte stream is trusted.</span>
-            <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/image&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">bStream</span><span class="p">);</span>
+            <span class="c1">//Make a POST request with a byte stream as the payload.</span>
+            <span class="nx">response</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/image&quot;</span><span class="p">,</span> <span class="nx">bStream</span><span class="p">);</span>
             <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
             <span class="c1">//[Create a JSON body part](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#setJson).</span>
@@ -78,7 +74,7 @@ redirect_from:
 
             <span class="c1">//Make a POST request with body parts as the payload.</span>
             <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[]</span> <span class="nx">bodyParts</span> <span class="p">=</span> <span class="p">[</span><span class="nx">part1</span><span class="p">,</span> <span class="nx">part2</span><span class="p">];</span>
-            <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="nx">bodyParts</span><span class="p">);</span>
+            <span class="nx">response</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="nx">bodyParts</span><span class="p">);</span>
             <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
             <span class="k">return</span> <span class="s">&quot;Client actions successfully executed!&quot;</span><span class="p">;</span>
@@ -95,141 +91,94 @@ redirect_from:
         <span class="k">return</span> <span class="s">&quot;Hello&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">echo</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">echo</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span>
+      <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">hasHeader</span><span class="p">(</span><span class="s">&quot;content-type&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="kt">string</span> <span class="nx">baseType</span> <span class="p">=</span> <span class="nx">getBaseType</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">());</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_PLAIN</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">var</span> <span class="nx">returnValue</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
-                <span class="kt">string</span> <span class="nx">textValue</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">returnValue</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">textValue</span> <span class="p">=</span> <span class="nx">returnValue</span><span class="p">;</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">textValue</span> <span class="p">=</span> <span class="nx">returnValue</span><span class="p">.</span><span class="kt">message</span><span class="p">();</span>
+            <span class="c1">// filter requests based on content-type</span>
+            <span class="nx">match</span> <span class="p">(</span><span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_PLAIN</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                    <span class="kt">string</span> <span class="nx">textValue</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
+                    <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">textValue</span><span class="p">);</span>
                 <span class="p">}</span>
-                <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">textValue</span><span class="p">);</span>
-                <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_XML</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">var</span> <span class="nx">xmlValue</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getXmlPayload</span><span class="p">();</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">xmlValue</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">xmlValue</span><span class="p">);</span>
-                    <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">sendErrorMsg</span><span class="p">(</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">xmlValue</span><span class="p">);</span>
+                <span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_XML</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                    <span class="kt">xml</span> <span class="nx">xmlValue</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getXmlPayload</span><span class="p">();</span>
+                    <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">xmlValue</span><span class="p">);</span>
                 <span class="p">}</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_JSON</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">var</span> <span class="nx">jsonValue</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">jsonValue</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">jsonValue</span><span class="p">);</span>
-                    <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">sendErrorMsg</span><span class="p">(</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">jsonValue</span><span class="p">);</span>
+                <span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_JSON</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                    <span class="kt">json</span> <span class="nx">jsonValue</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
+                    <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">jsonValue</span><span class="p">);</span>
                 <span class="p">}</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_OCTET_STREAM</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">var</span> <span class="nx">blobValue</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getBinaryPayload</span><span class="p">();</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">blobValue</span> <span class="nx">is</span> <span class="nx">byte</span><span class="p">[])</span> <span class="p">{</span>
-                    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">blobValue</span><span class="p">);</span>
-                    <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">sendErrorMsg</span><span class="p">(</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">blobValue</span><span class="p">);</span>
+                <span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_OCTET_STREAM</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">blobValue</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getBinaryPayload</span><span class="p">();</span>
+                    <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">blobValue</span><span class="p">);</span>
                 <span class="p">}</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">MULTIPART_FORM_DATA</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">var</span> <span class="nx">bodyParts</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getBodyParts</span><span class="p">();</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">bodyParts</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[])</span> <span class="p">{</span>
-                    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">bodyParts</span><span class="p">);</span>
-                    <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">sendErrorMsg</span><span class="p">(</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">bodyParts</span><span class="p">);</span>
+                <span class="nx">mime</span><span class="p">:</span><span class="nx">MULTIPART_FORM_DATA</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                    <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[]</span> <span class="nx">bodyParts</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getBodyParts</span><span class="p">();</span>
+                    <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">bodyParts</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="nx">_</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                    <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span>
+                            <span class="s">&quot;Could not find the requested content type&quot;</span><span class="p">;</span>
+                    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+                    <span class="nx">res</span><span class="p">.</span><span class="nx">setTextPayload</span><span class="p">(</span><span class="kt">message</span><span class="p">);</span>
+                    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">404</span><span class="p">;</span>
+                    <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(());</span>
-            <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+            <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(());</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">image</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">bytes</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getBinaryPayload</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">bytes</span> <span class="nx">is</span> <span class="nx">byte</span><span class="p">[])</span> <span class="p">{</span>
-            <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setBinaryPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">bytes</span><span class="p">,</span>
-                                        <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">IMAGE_PNG</span><span class="p">);</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-            <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">sendErrorMsg</span><span class="p">(</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">bytes</span><span class="p">);</span>
-        <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">image</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span>
+      <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="nx">byte</span><span class="p">[]</span> <span class="nx">bytes</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getBinaryPayload</span><span class="p">();</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">setBinaryPayload</span><span class="p">(</span><span class="nx">bytes</span><span class="p">,</span> <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">IMAGE_PNG</span><span class="p">);</span>
+        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">//Handle response data received from HTTP client remote functions.</span>
-<span class="kd">function</span> <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">//Print the content type of the received data.</span>
+<span class="kd">function</span> <span class="nx">handleResponse</span><span class="p">(</span><span class="kt">string</span><span class="p">|</span><span class="kt">xml</span><span class="p">|</span><span class="kt">json</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Text data: &quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Xml data: &quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Json data: &quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">hasHeader</span><span class="p">(</span><span class="s">&quot;content-type&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="kt">string</span> <span class="nx">baseType</span> <span class="p">=</span> <span class="nx">getBaseType</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">());</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_PLAIN</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Text data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing text data&quot;</span><span class="p">,</span>
+            <span class="nx">match</span> <span class="p">(</span><span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_OCTET_STREAM</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                    <span class="kt">string</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">ClientError</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Response contains binary data: &quot;</span> <span class="o">+</span>
+                                       <span class="nx">payload</span><span class="p">);</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing binary data&quot;</span><span class="p">,</span>
                                                     <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
+                    <span class="p">}</span>
                 <span class="p">}</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_XML</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getXmlPayload</span><span class="p">();</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Xml data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing xml data&quot;</span><span class="p">,</span>
+                <span class="nx">mime</span><span class="p">:</span><span class="nx">MULTIPART_FORM_DATA</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Response contains body parts: &quot;</span><span class="p">);</span>
+                    <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getBodyParts</span><span class="p">();</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[])</span> <span class="p">{</span>
+                        <span class="nx">handleBodyParts</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing multipart data&quot;</span><span class="p">,</span>
                                                     <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
+                    <span class="p">}</span>
                 <span class="p">}</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_JSON</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Json data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing json data&quot;</span><span class="p">,</span>
-                                                    <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
+                <span class="nx">mime</span><span class="p">:</span><span class="nx">IMAGE_PNG</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Response contains an image&quot;</span><span class="p">);</span>
                 <span class="p">}</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_OCTET_STREAM</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Response contains binary data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing binary data&quot;</span><span class="p">,</span>
-                                                    <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
-                <span class="p">}</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">MULTIPART_FORM_DATA</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Response contains body parts: &quot;</span><span class="p">);</span>
-                <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getBodyParts</span><span class="p">();</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[])</span> <span class="p">{</span>
-                    <span class="nx">handleBodyParts</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing multipart data&quot;</span><span class="p">,</span>
-                                                    <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
-                <span class="p">}</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">IMAGE_PNG</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Response contains an image&quot;</span><span class="p">);</span>
             <span class="p">}</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Entity body is not available&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">response</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">sendErrorMsg</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-    <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">handleError</span><span class="p">(</span><span class="nx">error</span><span class="err">?</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -318,7 +267,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=146722f9759418aff9bc4a4e1397fd1a&file=http_different_payload_types.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c4d97b0a055f81d1b3c88625a6834441&file=http_different_payload_types.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -336,14 +285,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -455,7 +396,7 @@ import ballerina/mime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default messageUsage()
-            returns string|http:InternalServerError {
+            returns string|http:InternalServerError|error? {
 </code></pre></div>
 
                                 </td>
@@ -467,8 +408,8 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response|error response = clientEP-&gt;get(&quot;/greeting&quot;);
-        handleResponse(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>        string greetingMessage = check clientEP-&gt;get(&quot;/greeting&quot;);
+        handleResponse(greetingMessage);
 </code></pre></div>
 
                                 </td>
@@ -487,29 +428,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        http:Request request = new;
-        response = clientEP-&gt;execute(&quot;GET&quot;, &quot;/greeting&quot;, request);
-        handleResponse(response);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get">GET</a> remote function with
-the request given as a message.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        response = clientEP-&gt;post(&quot;/echo&quot;, ());
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response response = check clientEP-&gt;post(&quot;/echo&quot;, ());
         handleResponse(response);
 </code></pre></div>
 
@@ -529,8 +448,8 @@ the request given as a message.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        response = clientEP-&gt;post(&quot;/echo&quot;, &quot;Sample Text&quot;);
-        handleResponse(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>        string textResponse = check clientEP-&gt;post(&quot;/echo&quot;, &quot;Sample Text&quot;);
+        handleResponse(textResponse);
 </code></pre></div>
 
                                 </td>
@@ -550,8 +469,9 @@ text as the payload.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        response = clientEP-&gt;post(&quot;/echo&quot;, xml `&lt;yy&gt;Sample Xml&lt;/yy&gt;`);
-        handleResponse(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>        xml xmlResponse = check clientEP-&gt;post(&quot;/echo&quot;,
+                                                xml `&lt;yy&gt;Sample Xml&lt;/yy&gt;`);
+        handleResponse(xmlResponse);
 </code></pre></div>
 
                                 </td>
@@ -571,8 +491,9 @@ text as the payload.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        response = clientEP-&gt;post(&quot;/echo&quot;, {name: &quot;apple&quot;, color: &quot;red&quot;});
-        handleResponse(response);
+                                    <div class="highlight"><pre><code class=language-ballerina>        json jsonResponse = check clientEP-&gt;post(&quot;/echo&quot;,
+                                            {name: &quot;apple&quot;, color: &quot;red&quot;});
+        handleResponse(jsonResponse);
 </code></pre></div>
 
                                 </td>
@@ -593,7 +514,7 @@ text as the payload.</p>
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        string textVal = &quot;Sample Text&quot;;
         byte[] binaryValue = textVal.toBytes();
-        response = clientEP-&gt;post(&quot;/echo&quot;, binaryValue);
+        response = check clientEP-&gt;post(&quot;/echo&quot;, binaryValue);
         handleResponse(response);
 </code></pre></div>
 
@@ -614,7 +535,9 @@ text as the payload.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var bStream = io:fileReadBlocksAsStream(&quot;./files/logo.png&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        stream&lt;byte[], io:Error?&gt;|io:Error bStream =
+                    io:fileReadBlocksAsStream(&quot;./files/logo.png&quot;);
+        if (bStream is stream&lt;byte[], io:Error?&gt;) {
 </code></pre></div>
 
                                 </td>
@@ -630,22 +553,10 @@ text as the payload.</p>
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (bStream is stream&lt;byte[], io:Error?&gt;) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            response = clientEP-&gt;post(&quot;/image&quot;, &lt;@untainted&gt;bStream);
+                                    <div class="highlight"><pre><code class=language-ballerina>            response = check clientEP-&gt;post(&quot;/image&quot;, bStream);
             handleResponse(response);
 </code></pre></div>
 
@@ -654,7 +565,7 @@ text as the payload.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Make a POST request with a byte stream as the payload. Since the file path is static <code>&lt;@untainted&gt;</code> is used to denote that the byte stream is trusted.</p>
+                                            <p>Make a POST request with a byte stream as the payload.</p>
 
                                         </div>
                                     </div>
@@ -706,7 +617,7 @@ text as the payload.</p>
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            mime:Entity[] bodyParts = [part1, part2];
-            response = clientEP-&gt;post(&quot;/echo&quot;, bodyParts);
+            response = check clientEP-&gt;post(&quot;/echo&quot;, bodyParts);
             handleResponse(response);
 </code></pre></div>
 
@@ -776,57 +687,10 @@ text as the payload.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post echo(http:Caller caller, http:Request req) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post echo(http:Caller caller, http:Request req)
+      returns error? {
         if (req.hasHeader(&quot;content-type&quot;)) {
             string baseType = getBaseType(req.getContentType());
-            if (mime:TEXT_PLAIN == baseType) {
-                var returnValue = req.getTextPayload();
-                string textValue = &quot;&quot;;
-                if (returnValue is string) {
-                    textValue = returnValue;
-                } else {
-                    textValue = returnValue.message();
-                }
-                var result = caller-&gt;respond(&lt;@untainted&gt;textValue);
-                handleError(result);
-            } else if (mime:APPLICATION_XML == baseType) {
-                var xmlValue = req.getXmlPayload();
-                if (xmlValue is xml) {
-                    var result = caller-&gt;respond(&lt;@untainted&gt;xmlValue);
-                    handleError(result);
-                } else {
-                    sendErrorMsg(caller, xmlValue);
-                }
-            } else if (mime:APPLICATION_JSON == baseType) {
-                var jsonValue = req.getJsonPayload();
-                if (jsonValue is json) {
-                    var result = caller-&gt;respond(&lt;@untainted&gt;jsonValue);
-                    handleError(result);
-                } else {
-                    sendErrorMsg(caller, jsonValue);
-                }
-            } else if (mime:APPLICATION_OCTET_STREAM == baseType) {
-                var blobValue = req.getBinaryPayload();
-                if (blobValue is byte[]) {
-                    var result = caller-&gt;respond(&lt;@untainted&gt;blobValue);
-                    handleError(result);
-                } else {
-                    sendErrorMsg(caller, blobValue);
-                }
-            } else if (mime:MULTIPART_FORM_DATA == baseType) {
-                var bodyParts = req.getBodyParts();
-                if (bodyParts is mime:Entity[]) {
-                    var result = caller-&gt;respond(&lt;@untainted&gt;bodyParts);
-                    handleError(result);
-                } else {
-                    sendErrorMsg(caller, bodyParts);
-                }
-            }
-        } else {
-            var result = caller-&gt;respond(());
-            handleError(result);
-        }
-    }
 </code></pre></div>
 
                                 </td>
@@ -835,20 +699,67 @@ text as the payload.</p>
                                 </td>
                             </tr>
                             
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            match (baseType) {
+                mime:TEXT_PLAIN =&gt; {
+                    string textValue = check req.getTextPayload();
+                    check caller-&gt;respond(textValue);
+                }
+                mime:APPLICATION_XML =&gt; {
+                    xml xmlValue = check req.getXmlPayload();
+                    check caller-&gt;respond(xmlValue);
+                }
+                mime:APPLICATION_JSON =&gt; {
+                    json jsonValue = check req.getJsonPayload();
+                    check caller-&gt;respond(jsonValue);
+                }
+                mime:APPLICATION_OCTET_STREAM =&gt; {
+                    byte[] blobValue = check req.getBinaryPayload();
+                    check caller-&gt;respond(blobValue);
+                }
+                mime:MULTIPART_FORM_DATA =&gt; {
+                    mime:Entity[] bodyParts = check req.getBodyParts();
+                    check caller-&gt;respond(bodyParts);
+                }
+                _ =&gt; {
+                    string message =
+                            &quot;Could not find the requested content type&quot;;
+                    http:Response res = new;
+                    res.setTextPayload(message);
+                    res.statusCode = 404;
+                    check caller-&gt;respond(res);
+                }
+            }
+        } else {
+            check caller-&gt;respond(());
+        }
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>filter requests based on content-type</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post image(http:Caller caller, http:Request req) {
-        var bytes = req.getBinaryPayload();
-        if (bytes is byte[]) {
-            http:Response response = new;
-            response.setBinaryPayload(&lt;@untainted&gt;bytes,
-                                        contentType = mime:IMAGE_PNG);
-            var result = caller-&gt;respond(response);
-            handleError(result);
-        } else {
-            sendErrorMsg(caller, bytes);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post image(http:Caller caller, http:Request req)
+      returns error? {
+        byte[] bytes = check req.getBinaryPayload();
+        http:Response response = new;
+        response.setBinaryPayload(bytes, contentType = mime:IMAGE_PNG);
+        check caller-&gt;respond(response);
     }
 }
 </code></pre></div>
@@ -862,74 +773,41 @@ text as the payload.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function handleResponse(http:Response|error response) {
-    if (response is http:Response) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Handle response data received from HTTP client remote functions.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (response.hasHeader(&quot;content-type&quot;)) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleResponse(string|xml|json|http:Response|error response) {
+    if (response is string) {
+        log:printInfo(&quot;Text data: &quot; + response);
+    } else if (response is xml) {
+        log:printInfo(&quot;Xml data: &quot; + response.toString());
+    } else if (response is json) {
+        log:printInfo(&quot;Json data: &quot; + response.toJsonString());
+    } else if (response is http:Response) {
+        if (response.hasHeader(&quot;content-type&quot;)) {
             string baseType = getBaseType(response.getContentType());
-            if (mime:TEXT_PLAIN == baseType) {
-                var payload = response.getTextPayload();
-                if (payload is string) {
-                    log:printInfo(&quot;Text data: &quot; + payload);
-                } else {
-                    log:printError(&quot;Error in parsing text data&quot;,
+            match (baseType) {
+                mime:APPLICATION_OCTET_STREAM =&gt; {
+                    string|http:ClientError payload = response.getTextPayload();
+                    if (payload is string) {
+                        log:printInfo(&quot;Response contains binary data: &quot; +
+                                       payload);
+                    } else {
+                        log:printError(&quot;Error in parsing binary data&quot;,
                                                     &#39;error = payload);
+                    }
                 }
-            } else if (mime:APPLICATION_XML == baseType) {
-                var payload = response.getXmlPayload();
-                if (payload is xml) {
-                    log:printInfo(&quot;Xml data: &quot; + payload.toString());
-                } else {
-                    log:printError(&quot;Error in parsing xml data&quot;,
+                mime:MULTIPART_FORM_DATA =&gt; {
+                    log:printInfo(&quot;Response contains body parts: &quot;);
+                    var payload = response.getBodyParts();
+                    if (payload is mime:Entity[]) {
+                        handleBodyParts(payload);
+                    } else {
+                        log:printError(&quot;Error in parsing multipart data&quot;,
                                                     &#39;error = payload);
+                    }
                 }
-            } else if (mime:APPLICATION_JSON == baseType) {
-                var payload = response.getJsonPayload();
-                if (payload is json) {
-                    log:printInfo(&quot;Json data: &quot; + payload.toJsonString());
-                } else {
-                    log:printError(&quot;Error in parsing json data&quot;,
-                                                    &#39;error = payload);
+                mime:IMAGE_PNG =&gt; {
+                    log:printInfo(&quot;Response contains an image&quot;);
                 }
-            } else if (mime:APPLICATION_OCTET_STREAM == baseType) {
-                var payload = response.getTextPayload();
-                if (payload is string) {
-                    log:printInfo(&quot;Response contains binary data: &quot; + payload);
-                } else {
-                    log:printError(&quot;Error in parsing binary data&quot;,
-                                                    &#39;error = payload);
-                }
-            } else if (mime:MULTIPART_FORM_DATA == baseType) {
-                log:printInfo(&quot;Response contains body parts: &quot;);
-                var payload = response.getBodyParts();
-                if (payload is mime:Entity[]) {
-                    handleBodyParts(payload);
-                } else {
-                    log:printError(&quot;Error in parsing multipart data&quot;,
-                                                    &#39;error = payload);
-                }
-            } else if (mime:IMAGE_PNG == baseType) {
-                log:printInfo(&quot;Response contains an image&quot;);
             }
-        } else {
-            log:printInfo(&quot;Entity body is not available&quot;);
         }
     } else {
         log:printError(response.message(), &#39;error = response);
@@ -942,44 +820,10 @@ text as the payload.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Print the content type of the received data.</p>
+                                            <p>Handle response data received from HTTP client remote functions.</p>
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function sendErrorMsg(http:Caller caller, error err) {
-    http:Response res = new;
-    res.statusCode = 500;
-    res.setPayload(&lt;@untainted&gt;err.message());
-    var result = caller-&gt;respond(res);
-    handleError(result);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function handleError(error? result) {
-    if (result is error) {
-        log:printError(result.message(), &#39;error = result);
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>

@@ -17,6 +17,7 @@ redirect_from:
 <span class="kd">service</span> <span class="o">/</span><span class="nx">demo</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Here is how you can make path segments as parameters.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greeting</span><span class="o">/</span><span class="nx">hello</span><span class="o">/</span><span class="p">[</span><span class="kt">string</span> <span class="nx">name</span><span class="p">]()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+
         <span class="k">return</span> <span class="s">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -44,9 +45,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="plain-data.html">
+                                    <a class="next" href="decimal-type.html">
                                         <span>NEXT ></span>
-                                        <p>Plain Data</p>
+                                        <p>Decimal Type</p>
                                     </a>
                                 </div>
                                 
@@ -70,7 +71,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=60d8b3550b2ffc73aeb4fc191b7f05d7&file=resource_path_parameters.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=b22c9ff4735d8f9d6a9480f8275e9d0a&file=resource_path_parameters.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -88,6 +89,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -126,11 +129,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function get greeting/hello/[string name]() returns string {
-        return &quot;Hello, &quot; + name;
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -142,6 +142,20 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>        return &quot;Hello, &quot; + name;
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

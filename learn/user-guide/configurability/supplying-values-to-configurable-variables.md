@@ -70,7 +70,7 @@ key:= [[org-name .] module-name .] variable
 
 Similar to the [TOML syntax](#supplying-through-toml-syntax), the module information of the configurable variable can be provided with the command-line argument in the above format.
 
-The configurable value provided through a command-line argument should be the `toString()` representation of the intended value. A command-line based configuration is only supported for configurable variables of types `int`, `float`, `boolean`, `string`, `decimal`, `enum` and `xml`. 
+The configurable value provided through a command-line argument should be the `toString()` representation of the intended value. A command-line based configuration is only supported for configurable variables of types `int`, `float`, `boolean`, `string`, `decimal`, `enum`, and `xml`. 
 
 For an example on defining configurables in a Ballerina program, see [Trying it Out](/learn/user-guide/configurability/trying-it-out/).
 

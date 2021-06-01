@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, Swan Lake preview 2021-06-01</h1>
+<h1>Ballerina Language Specification, 2021R1</h1>
 <p>
 Primary contributors:
 </p>
@@ -27,7 +27,7 @@ Primary contributors:
 (Other contributors are listed in <a href="#contributors">Appendix D</a>.)
 </p>
 <p>
-Copyright © 2018, 2019, 2020 <a href="https://wso2.com/">WSO2</a>
+Copyright © 2018-2021 <a href="https://wso2.com/">WSO2</a>
 </p>
 <p>
 Licensed under the <a
@@ -38,17 +38,14 @@ Attribution-NoDerivatives 4.0 International</a> license
 Language and document status
 </p>
 <p>
-This is a draft document, previewing the next release of the specification,
-code-named Swan Lake.
+The language described in this specification is now stable. We do not plan to
+make changes that introduce significant incompatibilities.
 </p>
 <p>
 Comments on this document are welcome and should be made by creating an issue in
 <code><a href="https://github.com/ballerina-platform/ballerina-spec"
 >https://github.com/ballerina-platform/ballerina-spec</a></code>, which is the
-GitHub repository where this specification is maintained. The design of the
-language may also be discussed in the <a
-href="mailto:ballerina-dev@googlegroups.com">ballerina-dev@googlegroups.com</a>
-mailing list.
+GitHub repository where this specification is maintained.
 </p>
 <section class="toc">
 <h2>Table of contents</h2>
@@ -3016,6 +3013,11 @@ when and how a filler value can be constructed for a type descriptor.
 <td>map or record type descriptor</td>
 <td><code>{ }</code></td>
 <td>if that is a valid constructor for the type</td>
+</tr>
+<tr>
+<td><code>readonly &amp; T</code></td>
+<td>the filler value for T constructed as read-only</td>
+<td>if that belongs to the type</td>
 </tr>
 <tr>
 <td>table</td>
@@ -8578,10 +8580,11 @@ lock statement:
 <li>when the variable is an isolated module-level variable; since isolated
 module-level variables are not allowed to be public, this restriction applies to
 all functions in the module;</li>
-<li>when the variable is <code>self</code> within an isolated object, unless
-<code>self</code> is being used only to read an isolated field; since
-non-isolated fields are required to be private, this restriction applies only to
-the object's methods.</li>
+<li>when the variable is <code>self</code> within an isolated object and
+<code>self</code> occurs in a field-access-expr <code>self.<var>x</var></code>,
+unless the field <code><var>x</var></code> is isolated; since non-isolated
+fields are required to be private, this restriction applies only to the object's
+methods.</li>
 </ul>
 <p>
 When a lock statement contains one of the above two cases of restricted variable
@@ -11229,6 +11232,15 @@ public isolated function iterator(stream<Type,CompletionType> stm) returns objec
     |}|CompletionType;
 } = external;
 
+# Returns the next member of the stream.
+#
+# + stm - the stream
+# + return - a record containing the next member of the stream, if there is one, or,
+#   otherwise, the completion value
+public isolated function next(stream<Type,CompletionType> stm) returns record {|
+        Type value;
+    |}|CompletionType = external;
+
 # Closes a stream.
 # This releases any system resources being used by the stream.
 # Closing a stream that has already been closed has no efffect and returns `()`.
@@ -11466,17 +11478,17 @@ public isolated function fromCodePointInt(int codePoint) returns Char|error = ex
 
 <pre class="langlib"><![CDATA[
 
-# A type parameter that is a subtype of `any|error`.
+# A type parameter that is a subtype of `map<any|error>`.
 # Has the special semantic that when used in a declaration
 # all uses in the declaration must refer to same type.
 @typeParam
-type Type any|error;
+type MapType map<any|error>;
 
-# A type parameter that is a subtype of `any|error`.
+# A type parameter that is a subtype of `map<any|error>`.
 # Has the special semantic that when used in a declaration
 # all uses in the declaration must refer to same type.
 @typeParam
-type Type1 any|error;
+type MapType1 map<any|error>;
 
 # A type parameter that is a subtype of `anydata`.
 # Has the special semantic that when used in a declaration
@@ -11488,7 +11500,7 @@ type KeyType anydata;
 #
 # + t - the table
 # + return - number of members in `t`
-public isolated function length(table<any|error> t) returns int = external;
+public isolated function length(table<map<any|error>> t) returns int = external;
 
 # Returns an iterator over a table.
 # The iterator will iterate over the members of the table not the keys.
@@ -11497,9 +11509,9 @@ public isolated function length(table<any|error> t) returns int = external;
 # 
 # + t - the table
 # + return - a new iterator object that will iterate over the members of `t`
-public isolated function iterator(table<Type> t) returns object {
+public isolated function iterator(table<MapType> t) returns object {
     public isolated function next() returns record {|
-        Type value;
+        MapType value;
     |}?;
 } = external;
 
@@ -11510,20 +11522,20 @@ public isolated function iterator(table<Type> t) returns object {
 # + t - the table
 # + k - the key
 # + return - member with key `k`
-public isolated function get(table<Type> key<KeyType> t, KeyType k) returns Type = external;
+public isolated function get(table<MapType> key<KeyType> t, KeyType k) returns MapType = external;
 
 # Adds a member `val` to table `t`, replacing any member with the same key value.
 # If `val` replaces an existing member, it will have the same position
 # in the order of the members as the existing member;
 # otherwise, it will be added as the last member.
 # It panics if `val` is inconsistent with the inherent type of `t`.
-public isolated function put(table<Type> t, Type val) = external;
+public isolated function put(table<MapType> t, MapType val) = external;
 
 # Adds a member `val` to table `t`.
 # It will be added as the last member.
 # It panics if `val` has the same key as an existing member of `t`,
 # or if `val` is inconsistent with the inherent type of `t`.
-public isolated function add(table<Type> t, Type val) = external;
+public isolated function add(table<MapType> t, MapType val) = external;
 
 
 # Applies a function each member of a table and returns a table of the result.
@@ -11531,15 +11543,15 @@ public isolated function add(table<Type> t, Type val) = external;
 # + t - the table
 # + func - a function to apply to each member
 # + return - new table containing result of applying function `func` to each member
-public isolated function map(table<Type> t, @isolatedParam function(Type val) returns Type1 func)
-   returns table<Type1> key<never> = external;
+public isolated function map(table<MapType> t, @isolatedParam function(MapType val) returns MapType1 func)
+   returns table<MapType1> key<never> = external;
 
 # Applies a function to each member of a table.
 # The function `func` is applied to each member of `t`.
 #
 # + t - the table
 # + func - a function to apply to each member
-public isolated function forEach(table<Type> t, @isolatedParam function(Type val) returns () func) returns () = external;
+public isolated function forEach(table<MapType> t, @isolatedParam function(MapType val) returns () func) returns () = external;
 
 # Selects the members from a table for which a function returns true.
 # The resulting table will have the same keys as the argument table.
@@ -11547,8 +11559,8 @@ public isolated function forEach(table<Type> t, @isolatedParam function(Type val
 # + t - the table
 # + func - a predicate to apply to each member to test whether it should be included
 # + return - new table containing members for which `func` evaluates to true
-public isolated function filter(table<Type> key<KeyType> t, @isolatedParam function(Type val) returns boolean func)
-   returns table<Type> key<KeyType> = external;
+public isolated function filter(table<MapType> key<KeyType> t, @isolatedParam function(MapType val) returns boolean func)
+   returns table<MapType> key<KeyType> = external;
 
 # Combines the members of a table using a combining function.
 # The combining function takes the combined value so far and a member of the table,
@@ -11558,7 +11570,7 @@ public isolated function filter(table<Type> key<KeyType> t, @isolatedParam funct
 # + func - combining function
 # + initial - initial value for the first argument of combining function `func`
 # + return - result of combining the members of `t` using `func`
-public isolated function reduce(table<Type> t, @isolatedParam function(Type1 accum, Type val) returns Type1 func, Type1 initial) returns Type1 = external;
+public isolated function reduce(table<MapType> t, @isolatedParam function(MapType1 accum, MapType val) returns MapType1 func, MapType1 initial) returns MapType1 = external;
 
 # Removes a member of a table.
 #
@@ -11567,7 +11579,7 @@ public isolated function reduce(table<Type> t, @isolatedParam function(Type1 acc
 # + return - the member of `t` that had key `k`
 # This removed the member of `t` with key `k` and returns it.
 # It panics if there is no such member.
-public isolated function remove(table<Type> key<KeyType> t, KeyType k) returns Type = external;
+public isolated function remove(table<MapType> key<KeyType> t, KeyType k) returns MapType = external;
 
 # Removes a member of a table with a given key, if the table has member with the key.
 #
@@ -11576,32 +11588,32 @@ public isolated function remove(table<Type> key<KeyType> t, KeyType k) returns T
 # + return - the member of `t` that had key `k`, or `()` if `t` does not have a key `k`
 # If `t` has a member with key `k`, it removes and returns it;
 # otherwise it returns `()`.
-public isolated function removeIfHasKey(table<Type> key<KeyType> t, KeyType k) returns Type? = external;
+public isolated function removeIfHasKey(table<MapType> key<KeyType> t, KeyType k) returns MapType? = external;
 
 # Removes all members of a table.
 # This panics if any member cannot be removed.
 #
 # + t - the table
-public isolated function removeAll(table<any|error> t) returns () = external;
+public isolated function removeAll(table<map<any|error>> t) returns () = external;
 
 # Tests whether `t` has a member with key `k`.
 #
 # + t - the table
 # + k - the key
 # + return - true if `t` has a member with key `k`
-public isolated function hasKey(table<Type> key<KeyType> t, KeyType k) returns boolean = external;
+public isolated function hasKey(table<MapType> key<KeyType> t, KeyType k) returns boolean = external;
 
 # Returns a list of all the keys of table `t`.
 #
 # + t - the table
 # + return - a new list of all keys
-public isolated function keys(table<any|error> key<KeyType> t) returns KeyType[] = external;
+public isolated function keys(table<map<any|error>> key<KeyType> t) returns KeyType[] = external;
 
 # Returns a list of all the members of a table.
 #
 # + t - the table
 # + return - an array whose members are the members of `t`
-public isolated function toArray(table<Type> t) returns Type[] = external;
+public isolated function toArray(table<MapType> t) returns MapType[] = external;
 
 # Returns the next available integer key.
 # + t - the table with a key of type int
@@ -11609,7 +11621,7 @@ public isolated function toArray(table<Type> t) returns Type[] = external;
 # This is maximum used key value + 1, or 0 if no key used
 # XXX should it be 0, if the maximum used key value is < 0?
 # Provides similar functionality to auto-increment
-public isolated function nextKey(table<any|error> key<int> t) returns int = external;
+public isolated function nextKey(table<map<any|error>> key<int> t) returns int = external;
 ]]></pre>
 
 </section>
@@ -12288,7 +12300,7 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 <section class="appendix">
 <h2 id="changes">B. Changes since previous releases</h2>
 <section>
-<h3>Summary of changes from 2020R1 to Swan Lake</h3>
+<h3>Summary of changes from 2020R1 to 2021R1</h3>
 <ol>
 <li>There has been a major change to how objects works. All object type
 descriptors are what was previously called <em>abstract</em>: they declare

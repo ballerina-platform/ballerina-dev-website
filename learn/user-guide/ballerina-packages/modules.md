@@ -18,7 +18,7 @@ Module names can only contain alphanumerics, underscores, and periods and the ma
 <package-name>[.<module-directory-name>]
 ```
 
-### Module Layout
+### Module layout
 
 ```bash
 .
@@ -71,7 +71,7 @@ $ bal add util
 
 Added new Ballerina module at the `modules/util` directory.
 
-This creates the `modules` directory in our package root with a source file. This `modules/util` directory contains the hello_world.util module. Now, our package will have the directory structure below.
+This creates the `modules` directory in our package root with a source file. This `modules/util` directory is the module root of `hello_world.util` module. Now, our package will have the directory structure below.
 
 ```bash
 .

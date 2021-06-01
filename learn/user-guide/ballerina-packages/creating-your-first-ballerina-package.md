@@ -59,9 +59,6 @@ Let’s build the package and generate an executable jar file:
 
 ```bash
 $ bal build
-````
-
-```bal
 Compiling source
  	examples/helloworld:0.1.0 
 

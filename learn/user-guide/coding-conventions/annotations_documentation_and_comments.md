@@ -18,7 +18,7 @@ redirect_from:
 ## Annotations
 * Do not have spaces around the `@` symbol.
 * Indent annotations to align them with the starting position of the owner (statement or definition).
-* Each annotation attribute (i.e., key-value pairs) should block indent on its own line.
+* Each annotation attribute (i.e., key-value pairs) can be expanded and block indented on its own line or kept as inline fields.
 
 **Example,**
 
@@ -109,12 +109,14 @@ public function taintedReturn2() returns
 
 function func1() {
     // This is a block-level comment. 
+    int x = 10;
 }
 
 function func2() {
     if (true) {
         if (true) {
             // This is a nested if block-level comment.
+            string a = "hello";
         }
     }
 }
@@ -162,7 +164,9 @@ function getValue(int value) returns int {
 #
 # + value - Parameter description
 # + return - Return value description
-function getValue(int value) returns int {...}
+function getValue(int value) returns int {
+    ...
+}
 
 # Description.
 service / on new http:Listener(8080) {
@@ -170,7 +174,9 @@ service / on new http:Listener(8080) {
     #
     # + caller - Parameter description.
     # + request - Parameter description.
-    resource function get greeting(http:Caller caller, http:Request request) {...}
+    resource function get greeting(http:Caller caller, http:Request request) {
+        ...
+    }
 }
 ```
 

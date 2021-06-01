@@ -10,8 +10,6 @@ redirect_from:
 - /learn/user-guide/ballerina-packages/package-layout
 ---
 
-## Package layout
-
 ```bash
 .
 ├── Ballerina.toml
@@ -21,13 +19,13 @@ redirect_from:
 ├── main.bal
 ├── utils.bal
 ├── tests/
-│   ├── main_tests.bal
-│   └── utils_tests.bal
+│     ├── main_tests.bal
+│     └── utils_tests.bal
 ├── resources/
-│   └── app.png
+│     └── app.png
 ├── modules/
-│   ├── model/
-│   └── module1.test/
+│     ├── model/
+│     └── module1.test/
 └── target/
 ```
 
@@ -47,7 +45,7 @@ observabilityIncluded = true
 
 The `[package]` table contains the meta information about the package.
 
-#### org field
+#### `org` field
 
 The organization is a logical name used for grouping modules together under a common namespace within a repository. Building a library package with `bal build -c` and pushing a library package into a repository will fail without an organization name.
 
@@ -58,7 +56,7 @@ When we run the `bal new` command, the organization name by default will be set 
 The [restrictions for the organization name of a package](/learn/user-guide/ballerina-packages/sharing-a-library-package#organization) when publishing to [Ballerina Central](https://central.ballerina.io/) should also be considered before choosing an organization name.
 
 
-#### name field
+#### `name` field
 
 The package name is an identifier used to refer to the package.
 
@@ -79,7 +77,7 @@ If the same module exists in the latest versions of two different packages, this
 For example, let’s assume you created the `aws.rds` package that contains the module `aws.rds.mysql` and that you have published the version `1.0.0` to [Ballerina Central](https://central.ballerina.io/). Now you have decided to move the `aws.rds.mysql` module to its own package. In this case, you first need to push a newer version of `aws.rds` package that does not contain the module `aws.rds.mysql` and then push the newly created `aws.rds.mysql` package.
 
 
-#### version field
+#### `version` field
 
 Ballerina follows the convention of [Semantic Versioning](https://semver.org/). So in general, we should follow the best practices when versioning a package.
 
@@ -93,9 +91,9 @@ Ballerina follows the convention of [Semantic Versioning](https://semver.org/). 
 *   Once the package is production-ready, you can use a stable version (E.g. 1.0.0). Any subsequent minor or patch releases of the same major version should be backward compatible and should not break existing builds.
 
 
-##### `[build-options]`
+#### Build Options
 
-The [build-options] specifies options that should be applied when building the package. We can use build options in the Ballerina.toml instead of passing options to the `bal build` command.
+The `[build-options]` table specifies options that should be applied when building the package. We can use build options in the Ballerina.toml instead of passing options to the `bal build` command.
 
 The following build options are supported:
 

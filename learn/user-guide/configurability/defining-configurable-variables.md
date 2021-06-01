@@ -8,6 +8,8 @@ active: defining-configurable-variables
 intro: Ballerina supports configurability through the configurable, module-level variables.
 redirect_from:
 - /learn/user-guide/configurability/defining-configurable-variables
+- /learn/user-guide/configurability/
+- /learn/user-guide/configurability
 ---
 
 ## Initialising Configurable Variables

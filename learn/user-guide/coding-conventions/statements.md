@@ -18,14 +18,14 @@ redirect_from:
 
 ## If Statement
 
-* Always enclose the condition with parentheses in the If statement.
+* Avoid enclosing the condition with parentheses in if statements.
   
 **Do's**
 
 ```ballerina
-if (true) {
+if true {
     ...
-} else if (false) {
+} else if false {
     ...
 }
 ```
@@ -34,9 +34,9 @@ if (true) {
 
 
 ```ballerina
-if true {
+if (true) {
     ...
-} else if false {
+} else if (false) {
     ...
 }
 ```
@@ -52,9 +52,9 @@ if true {
 **Example,**
 
 ```ballerina
-if (inProperSallaryRange) {
+if inProperSallaryRange {
       
-} else if (inSallaryRange) {
+} else if inSallaryRange {
       
 } else {
       
@@ -109,25 +109,3 @@ match x {
     var (s, i) if s is int => {}
 }
 ```
-
-## Transaction Statement
-
-* Start each optional clause (`onretry`, `committed`, and `aborted`) in the same line as the closing brace of the matching clause.
-* If `transaction`, `onretry`, `committed`, and `aborted` blocks are empty, add an empty line between the braces. 
-  
-**Example,**
-  
-```ballerina
-function func1() {
-    transaction with retries = 2 {
-          
-    } onretry {
-          
-    } aborted {
-          
-    } committed {
-          
-    }
-}
-```
-

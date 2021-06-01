@@ -43,12 +43,12 @@ function getName() returns string|error {
 string? name;
 ```
 
-* Avoid line breaks in constrained types.
+* Avoid line breaks inside constrained types.
   
 **Do's**
 
 ```ballerina
-  map<int|string> // map reference type
+map<int|string> x;// map reference type
 ```
   
 **Don'ts**
@@ -58,7 +58,7 @@ map<
     int
     |
     string
-> 
+> x;
 ```
 
 ## Operators
@@ -99,7 +99,7 @@ var elvisOperator = name ?: "Unknown";
 name += lastName;
 ```
 
-* When accessing a function, object, or record from another module, do not keep spaces around `:`.
+* When accessing a function, object, class or record from another module, do not keep spaces around `:`.
   
 **Example,**
   

@@ -13,6 +13,8 @@ redirect_from:
   - /learn/user-guide/why-ballerina/from-code-to-cloud/
   - /learn/user-guide/
   - /learn/user-guide
+  - /learn/user-guide/why-ballerina/
+  - /learn/user-guide/why-ballerina
 ---
 
 In a microservice architecture, smaller services are developed, deployed, and scaled individually. These disaggregated services communicate with each other over the network forcing developers to deal with the [Fallacies of Distributed Computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) in their application logic. For decades, programming languages have treated networks simply as I/O sources. The sections below demonstrate a few of Ballerina's inherent capabilities to develop distributed services effectively and the cloud native deployment process that is provided as part of the programming experience. 
@@ -124,10 +126,10 @@ Ballerina services come with built-in concurrency. Every request to a resource m
 
 Some protocols supported out-of-the-box are:
 
-- [HTTP](/learn/by-example/https-listener.html)
+- [HTTP](/learn/by-example/http-client-endpoint)
 - [HTTP 2.0](/learn/by-example/http-1-1-to-2-0-protocol-switch.html)
 - [gRPC](/learn/by-example/proto-to-ballerina.html)
-- [NATS](/learn/by-example/nats-basic-client.html)
+- [NATS](/learn/by-example/nats-basic-pub-sub)
 
 ## Async Network Protocol
 

@@ -45,7 +45,7 @@
 - title: Ballerina Packages
   url: '#'
   sublinks:
-    - title: Creating your first Ballerina Package
+    - title: Creating Your First Ballerina Package
       url: /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/
       active: creating-your-first-ballerina-package
     - title: Package Layout
@@ -57,7 +57,7 @@
     - title: Dependencies
       url: /learn/user-guide/ballerina-packages/dependencies/
       active: dependencies
-    - title: Sharing a Library package
+    - title: Sharing a Library Package
       url: /learn/user-guide/ballerina-packages/sharing-a-library-package/
       active: sharing-a-library-package
 
@@ -143,9 +143,9 @@
     - title: Defining Configurable Variables
       url: /learn/user-guide/configurability/defining-configurable-variables/
       active: defining-configurable-variables
-    - title: Supplying Values to Configurable Variables
-      url: /learn/user-guide/configurability/supplying-values-to-configurable-variables/
-      active: supplying-values-to-configurable-variables
+    - title: Providing Values to Configurable Variables
+      url: /learn/user-guide/configurability/providing-values-to-configurable-variables/
+      active: providing-values-to-configurable-variables
     - title: Trying it Out
       url: /learn/user-guide/configurability/trying-it-out/
       active: trying-it-out

@@ -342,6 +342,17 @@ a.cPlayGround:hover {
     background-color: #000;
 }
 
+a.video-btn img {
+    border: 2px solid transparent;
+    }
+    
+    a.video-btn:hover img {
+    
+        box-shadow: 0px 0px 30px 0 rgba(0,0,0,.2);
+        border: 2px solid #1eb5ae;
+    }
+    
+
 
 @media screen and (max-width: 1199px) {
 

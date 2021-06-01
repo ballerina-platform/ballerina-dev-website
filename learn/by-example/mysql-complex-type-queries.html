@@ -17,18 +17,21 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span>
 
+<span class="c1">// The `BinaryType` record to represent the `BINARY_TYPES` database table.</span>
 <span class="nx">type</span> <span class="nx">BinaryType</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">row_id</span><span class="p">;</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">blob_type</span><span class="p">;</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">binary_type</span><span class="p">;</span>
 <span class="p">|};</span>
 
+<span class="c1">// The `JsonType` record to represent the `JSON_TYPES` database table.</span>
 <span class="nx">type</span> <span class="nx">JsonType</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">row_id</span><span class="p">;</span>
     <span class="kt">json</span> <span class="nx">json_doc</span><span class="p">;</span>
     <span class="kt">json</span> <span class="nx">json_array</span><span class="p">;</span>
 <span class="p">|};</span>
 
+<span class="c1">// The `DateTimeType` record to represent the `DATE_TIME_TYPES` database table.</span>
 <span class="nx">type</span> <span class="nx">DateTimeType</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">row_id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">date_type</span><span class="p">;</span>
@@ -103,11 +106,9 @@ redirect_from:
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE MYSQL_BBE.BINARY_TYPES </span>
 <span class="s">            (row_id INTEGER NOT NULL, blob_type BLOB(1024),  </span>
 <span class="s">            binary_type BINARY(27), PRIMARY KEY (row_id))`</span><span class="p">);</span>
-    
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE MYSQL_BBE.JSON_TYPES</span>
 <span class="s">            (row_id INTEGER NOT NULL, json_doc JSON, json_array JSON,</span>
 <span class="s">            PRIMARY KEY (row_id))`</span><span class="p">);</span>
-
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span>
             <span class="s">`CREATE TABLE MYSQL_BBE.DATE_TIME_TYPES (row_id</span>
 <span class="s">            INTEGER NOT NULL, date_type DATE, time_type TIME, </span>
@@ -119,16 +120,15 @@ redirect_from:
 <span class="s">            (row_id, blob_type, binary_type) VALUES (1,</span>
 <span class="s">            X&#39;77736F322062616C6C6572696E6120626C6F6220746573742E&#39;,  </span>
 <span class="s">            X&#39;77736F322062616C6C6572696E612062696E61727920746573742E&#39;)`</span><span class="p">);</span>
-
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO MYSQL_BBE.JSON_TYPES</span>
 <span class="s">            (row_id, json_doc, json_array) VALUES (1, &#39;{&quot;firstName&quot; : &quot;Jhon&quot;,</span>
 <span class="s">            &quot;lastName&quot; : &quot;Bob&quot;, &quot;age&quot; : 18}&#39;, JSON_ARRAY(1, 2, 3))`</span><span class="p">);</span>
-
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span>
             <span class="s">`Insert into MYSQL_BBE.DATE_TIME_TYPES (row_id,</span>
 <span class="s">            date_type, time_type, timestamp_type, datetime_type) values (1, </span>
 <span class="s">            &#39;2017-05-23&#39;, &#39;14:15:23&#39;, &#39;2017-01-25 16:33:55&#39;, </span>
 <span class="s">            &#39;2017-01-25 16:33:55&#39;)`</span><span class="p">);</span>
+
     <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>        
 <span class="p">}</span>
 
@@ -194,10 +194,6 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-complex-type-queries/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=b6a405f3cb72989dbbb537fdbd3be060&file=mysql_complex_type_queries.bal"><img src="/img/main-play-green-btn.svg" /></a>
-                                        </li>
-                                        
                                     </ul>
                                 </div>
                             </td>
@@ -213,10 +209,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -288,7 +280,7 @@ import ballerina/time;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type BinaryType record {|
@@ -301,10 +293,17 @@ import ballerina/time;
                                 </td>
                                 <td class="docs">
                                     
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>BinaryType</code> record to represent the <code>BINARY_TYPES</code> database table.</p>
+
+                                        </div>
+                                    </div>
+                                    
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type JsonType record {|
@@ -317,10 +316,17 @@ import ballerina/time;
                                 </td>
                                 <td class="docs">
                                     
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>JsonType</code> record to represent the <code>JSON_TYPES</code> database table.</p>
+
+                                        </div>
+                                    </div>
+                                    
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type DateTimeType record {|
@@ -334,6 +340,13 @@ import ballerina/time;
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>DateTimeType</code> record to represent the <code>DATE_TIME_TYPES</code> database table.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -627,9 +640,13 @@ import ballerina/time;
                                     <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient -&gt; execute(`CREATE TABLE MYSQL_BBE.BINARY_TYPES 
             (row_id INTEGER NOT NULL, blob_type BLOB(1024),  
             binary_type BINARY(27), PRIMARY KEY (row_id))`);
-    
     result = check mysqlClient -&gt; execute(`CREATE TABLE MYSQL_BBE.JSON_TYPES
             (row_id INTEGER NOT NULL, json_doc JSON, json_array JSON,
+            PRIMARY KEY (row_id))`);
+    result = check mysqlClient -&gt; execute(
+            `CREATE TABLE MYSQL_BBE.DATE_TIME_TYPES (row_id
+            INTEGER NOT NULL, date_type DATE, time_type TIME, 
+            timestamp_type timestamp, datetime_type  datetime, 
             PRIMARY KEY (row_id))`);
 </code></pre></div>
 
@@ -646,22 +663,6 @@ import ballerina/time;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient -&gt; execute(
-            `CREATE TABLE MYSQL_BBE.DATE_TIME_TYPES (row_id
-            INTEGER NOT NULL, date_type DATE, time_type TIME, 
-            timestamp_type timestamp, datetime_type  datetime, 
-            PRIMARY KEY (row_id))`);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
@@ -669,6 +670,14 @@ import ballerina/time;
             (row_id, blob_type, binary_type) VALUES (1,
             X&#39;77736F322062616C6C6572696E6120626C6F6220746573742E&#39;,  
             X&#39;77736F322062616C6C6572696E612062696E61727920746573742E&#39;)`);
+    result = check mysqlClient -&gt; execute(`INSERT INTO MYSQL_BBE.JSON_TYPES
+            (row_id, json_doc, json_array) VALUES (1, &#39;{&quot;firstName&quot; : &quot;Jhon&quot;,
+            &quot;lastName&quot; : &quot;Bob&quot;, &quot;age&quot; : 18}&#39;, JSON_ARRAY(1, 2, 3))`);
+    result = check mysqlClient -&gt; execute(
+            `Insert into MYSQL_BBE.DATE_TIME_TYPES (row_id,
+            date_type, time_type, timestamp_type, datetime_type) values (1, 
+            &#39;2017-05-23&#39;, &#39;14:15:23&#39;, &#39;2017-01-25 16:33:55&#39;, 
+            &#39;2017-01-25 16:33:55&#39;)`);
 </code></pre></div>
 
                                 </td>
@@ -687,26 +696,7 @@ import ballerina/time;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient -&gt; execute(`INSERT INTO MYSQL_BBE.JSON_TYPES
-            (row_id, json_doc, json_array) VALUES (1, &#39;{&quot;firstName&quot; : &quot;Jhon&quot;,
-            &quot;lastName&quot; : &quot;Bob&quot;, &quot;age&quot; : 18}&#39;, JSON_ARRAY(1, 2, 3))`);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient -&gt; execute(
-            `Insert into MYSQL_BBE.DATE_TIME_TYPES (row_id,
-            date_type, time_type, timestamp_type, datetime_type) values (1, 
-            &#39;2017-05-23&#39;, &#39;14:15:23&#39;, &#39;2017-01-25 16:33:55&#39;, 
-            &#39;2017-01-25 16:33:55&#39;)`);
-    check mysqlClient.close();        
+                                    <div class="highlight"><pre><code class=language-ballerina>    check mysqlClient.close();        
 }
 </code></pre></div>
 

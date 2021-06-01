@@ -177,6 +177,56 @@ The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
 
 <br/>
 
+### Debug Configurations
+
+Ballerina debugger supports various debug configuration options via `launch.json` file. You can either add configurations to the existing `launch.json` file (which is located in your workspace root under the `.vscode` directory), or you can generate `launch.json` configurations file with default values by,
+
+1. Click the **Run and Debug** icon in the left menu or press the **Control + Shift + D** keys, to launch the Debugger view. (for Mac - **Command + Shift +D**).
+
+2. Click on **create a launch.json file** and then select **Ballerina Debug**.
+
+![Run And Debug](/learn/images/run-and-debug.png)
+
+<br/>
+
+![Ballerina Debug](/learn/images/ballerina-debug.png)
+
+<br/>
+
+Here are the default configurations generated for the ballerina debugging:
+
+![Debug Configurations](/learn/images/debug-configurations.png)
+
+<br/>
+
+>**Info:** You can debug a simple ballerina program even without the `launch.json` configurations file, but it is not possible to manage launch configurations and set up advanced debugging.
+
+The auto-generated `launch.json` file consists of three main configurations, namely, `Ballerina Debug`, `Ballerina Test` and `Ballerina Remote`. Each configuration supports different attributes, and those attributes can be identified with the help of IntelliSense suggestions (`⌃Space`).
+
+### Ballerina launch.json attributes
+
+There are many `launch.json` attributes to help and support different types of ballerina debugging scenarios. All the available attributes can be identified with the help of IntelliSense suggestions (`⌃Space`).
+
+The following attributes are mandatory for all configurations.
+
+- `name` - The reader-friendly name to appear in the Debug launch configuration dropdown.
+- `type` - The type of debugger to use for this launch configuration. The attribute value must be kept as `ballerina` for all ballerina debugging configuration types.
+- c request type of this launch configuration. Currently, launch and attach are supported.
+
+The following attributes are supported for all Ballerina `launch` configurations.
+
+- `programArgs` - Any program arguments that are required to be passed into the `main` function of the Ballerina program to be launched, can be passed as a list of strings.
+- `commandOptions` - If required, you can configure command options for the Ballerina program to be launched, as a list of strings. You can see the list of all the available command options by executing the following CLI commands in your terminal.
+    - For `Ballerina Debug` configuration - `ballerina run --help`
+    - For `Ballerina Test` configuration - `ballerina test --help`
+- `env` - Any environment variables you need to configure for the launching Ballerina program can be passed as a map of strings (name and value).
+- `debugTests` - Indicates whether to debug the tests for the given script.
+
+The following attributes are supported for all Ballerina `attach` configurations.
+
+- `debuggeeHost` - remote debug server host
+- `debuggeePort` - remote debug server port   
+
 #### Existing Limitations
 
 The features below are currently not supported.

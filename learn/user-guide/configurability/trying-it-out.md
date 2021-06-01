@@ -37,16 +37,16 @@ Follow the steps below to create the Ballerina package.
     configurable int[] ports = [9090];
     
     public function main() {
-    io:println("Page URL : ", url);
-    io:println("Available ports : ", ports);
-    io:println("Admin : ", users:getAdminUser());
-    
-    table<users:UserInfo> key(username) userTable = users:getUsers();
-    io:println("Other users : ", userTable );
-    
-    if(userTable.length() > 2) {
-        log:printError("Maximum number of users is 2");
-    }
+       io:println("Page URL : ", url);
+       io:println("Available ports : ", ports);
+       io:println("Admin : ", users:getAdminUser());
+       
+       table<users:UserInfo> key(username) userTable = users:getUsers();
+       io:println("Other users : ", userTable );
+       
+       if(userTable.length() > 2) {
+           log:printError("Maximum number of users is 2");
+       }
     }
     ```
 
@@ -54,8 +54,8 @@ Follow the steps below to create the Ballerina package.
 
     ```ballerina
     public type UserInfo record {|
-    readonly string username;
-    int age;
+       readonly string username;
+       int age;
     |};
     
     public type UserTable table<UserInfo> key(username);
@@ -64,11 +64,11 @@ Follow the steps below to create the Ballerina package.
     configurable UserTable users = ?;
     
     public function getAdminUser() returns UserInfo {
-    return admin;
+        return admin;
     }
     
     public function getUsers() returns UserTable {
-    return users;
+        return users;
     }
     ```
 

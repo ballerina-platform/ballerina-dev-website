@@ -8,7 +8,6 @@ active: writing-your-first-ballerina-program
 intro: Let's create a simple Ballerina HTTP service and also an HTTP client to invoke it.
 redirect_from:
 - /learn/user-guide/getting-started/writing-your-first-ballerina-program
-- /learn/user-guide/getting-started/writing-your-first-ballerina-program/
 ---
 
 A Ballerina application can have:

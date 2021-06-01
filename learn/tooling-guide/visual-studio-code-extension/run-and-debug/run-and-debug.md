@@ -199,13 +199,11 @@ Here are the default configurations generated for the ballerina debugging:
 
 <br/>
 
->**Info:** You can debug a simple ballerina program even without the `launch.json` configurations file, but it is not possible to manage launch configurations and set up advanced debugging.
-
-The auto-generated `launch.json` file consists of three main configurations, namely, `Ballerina Debug`, `Ballerina Test` and `Ballerina Remote`. Each configuration supports different attributes, and those attributes can be identified with the help of IntelliSense suggestions (`⌃Space`).
+>**Info:** You can debug a Ballerina program without generating the `launch.json` configurations file, but it is not possible to manage launch configurations and set up advanced debugging.
 
 ### Ballerina launch.json attributes
 
-There are many `launch.json` attributes to help and support different types of ballerina debugging scenarios. All the available attributes can be identified with the help of IntelliSense suggestions (`⌃Space`).
+The auto-generated `launch.json` file consists of three main configurations, namely, `Ballerina Debug`, `Ballerina Test` and `Ballerina Remote`. Each configuration supports different attributes, and those attributes can be identified with the help of IntelliSense suggestions (`⌃Space`).
 
 The following attributes are mandatory for all configurations.
 
@@ -224,8 +222,8 @@ The following attributes are supported for all Ballerina `launch` configurations
 
 The following attributes are supported for all Ballerina `attach` configurations.
 
-- `debuggeeHost` - remote debug server host.
-- `debuggeePort` - remote debug server port.
+- `debuggeeHost` - Host address of the remote process to be attached (If not specified, the default value will be the localhost(`127.0.0.1`)).
+- `debuggeePort` - Port number of the remote process to be attached.
 
 #### Existing Limitations
 

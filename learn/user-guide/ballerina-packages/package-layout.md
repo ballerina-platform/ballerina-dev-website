@@ -55,7 +55,7 @@ Organization names can only contain alphanumerics, underscore, and the maximum l
 
 When we run the `bal new` command, the organization name by default will be set to the user name of our machine. We can choose to update the Ballerina.toml file to amend the organization name appropriately.
 
-The [restrictions for organization name of a package when publishing to Ballerina Central](/learn/user-guide/ballerina-packages/sharing-a-library-package#organization) should also be considered before choosing an organization name.
+The [restrictions for the organization name of a package](/learn/user-guide/ballerina-packages/sharing-a-library-package#organization) when publishing to [Ballerina Central](https://central.ballerina.io/) should also be considered before choosing an organization name.
 
 
 #### name field
@@ -64,19 +64,19 @@ The package name is an identifier used to refer to the package.
 
 The name can only contain alphanumerics, underscore, period and the maximum length is 256 characters
 
-If the package name is not provided in the Ballerina.toml, then the current directory name is set as the package name. If there are any characters in the directory name mismatching the allowed regex, these will be replaced with the `_`.
+If the package name is not provided in the Ballerina.toml, then the current directory name is set as the package name. If there are any characters in the directory name mismatching the allowed regex, these will be replaced with the `_` character.
 
 ##### Hierarchical Package names
 
 When there are various functionalities to be provided, it would make more sense to split them into multiple packages instead of adding it all into a single package.  For scenarios like this, we can give a hierarchical name to the package.
 
-For example, say we need to provide a set of APIs to communicate with AWS. We can choose to support APIs to AWS services using multiple packages such as `aws.s3`, `aws.sqs`, `aws.rds` etc.
+For example, say we need to provide a set of APIs to communicate with AWS. We can choose to support APIs to AWS services using multiple packages such as `aws.s3`, `aws.sqs`, `aws.rds`, etc.
 
 ##### The split module condition
 
-If the same module exists in the latest versions of two different packages, this instance is called a split module condition and an error would be reported failing the build. Therefore, When using hierarchical package names, it is important to ensure that the package repository does not hold another package containing a module with the same name in its latest version.
+If the same module exists in the latest versions of two different packages, this instance is called a "split module condition" and an error would be reported failing the build. Therefore, When using hierarchical package names, it is important to ensure that the package repository does not hold another package containing a module with the same name in its latest version.
 
-For example, let’s assume you created the `aws.rds` package that contains the module `aws.rds.mysql` and that you have published the version `1.0.0` to Ballerina Central. Now you have decided to move the `aws.rds.mysql` module to its own package. In this case, you first need to push a newer version of `aws.rds` package that does not contain the module `aws.rds.mysql` and then push the newly created `aws.rds.mysql` package.
+For example, let’s assume you created the `aws.rds` package that contains the module `aws.rds.mysql` and that you have published the version `1.0.0` to [Ballerina Central](https://central.ballerina.io/). Now you have decided to move the `aws.rds.mysql` module to its own package. In this case, you first need to push a newer version of `aws.rds` package that does not contain the module `aws.rds.mysql` and then push the newly created `aws.rds.mysql` package.
 
 
 #### version field
@@ -84,18 +84,18 @@ For example, let’s assume you created the `aws.rds` package that contains the 
 Ballerina follows the convention of [Semantic Versioning](https://semver.org/). So in general, we should follow the best practices when versioning a package.
 
 *   If the package is in the initial stages of development, label the package with the zero major version (0.x.y). This will give the user a hint that API changes are frequent and that the package is far from being production-ready.
-*   Use versions as three numeric parts (MAJOR.MINOR.PATCH). E.g. 1.0.0
-    *   Increment the patch version when only backwards compatible bug fixes are introduced
-    *   Increment the minor version when new backwards compatible functionality is introduced to the public API
-    *   Increment the major version when any backwards incompatible changes are introduced to the public API
-*   When you are improving the package towards the stabilization to roll out to production, pre-release versions are suitable for versioning (1.0.0- alpha). Though the changes are not at the rate of the initial development phase, API changes are still likely to happen and so pre-release versions are also considered as not being production-ready.
-*   If the changes to pre-release versions are incremental, you can use the numeric pre-release versioning technique (1.0.0-alpha.1, 1.0.0-alpha.2)
-*   Once the package is production-ready, you can use a stable version (1.0.0). Any subsequent minor or patch releases of the same major version should be backward compatible and should not break existing builds.
+*   Use versions as three numeric parts `MAJOR.MINOR.PATCH` (E.g. 1.0.0).
+    *   Increment the patch version when only backward compatible bug fixes are introduced.
+    *   Increment the minor version when new backward compatible functionality is introduced to the public API.
+    *   Increment the major version when any backward incompatible changes are introduced to the public API.
+*   When you are improving the package towards the stabilization to roll out to production, pre-release versions are suitable for versioning (E.g. 1.0.0- alpha). Though the changes are not at the rate of the initial development phase, API changes are still likely to happen and so pre-release versions are also considered as not being production-ready.
+*   If the changes to pre-release versions are incremental, you can use the numeric pre-release versioning technique (E.g. 1.0.0-alpha.1, 1.0.0-alpha.2).
+*   Once the package is production-ready, you can use a stable version (E.g. 1.0.0). Any subsequent minor or patch releases of the same major version should be backward compatible and should not break existing builds.
 
 
 ##### `[build-options]`
 
-The [build-options] specifies options that should be applied when building the package. We can use build options in the Ballerina.toml instead of passing options to `bal build`.
+The [build-options] specifies options that should be applied when building the package. We can use build options in the Ballerina.toml instead of passing options to the `bal build` command.
 
 The following build options are supported:
 
@@ -116,7 +116,7 @@ The [Dependencies.toml](/learn/user-guide/ballerina-packages/dependencies#depend
 
 **Package.md**
 
-The Package.md file provides a human-readable description of a package. This is the first page that you will see when you navigate to the package in Ballerina central. This file is written in markdown format.
+The Package.md file provides a human-readable description of a package. This is the first page that you will see when you navigate to the package in [Ballerina Central](https://central.ballerina.io/). This file is written in markdown format.
 
 **target directory**
 

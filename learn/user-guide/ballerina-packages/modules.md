@@ -18,7 +18,7 @@ Module names can only contain alphanumerics, underscores, and periods and the ma
 <package-name>[.<module-directory-name>]
 ```
 
-### Module Layout
+### Module layout
 
 ```bash
 .

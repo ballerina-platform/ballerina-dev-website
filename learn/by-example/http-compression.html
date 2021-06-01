@@ -1,9 +1,10 @@
 ---
 layout: ballerina-example-page
-title: HTTP Compression
+title: Compression
 description: BBE demonstrates how the Ballerina HTTP service is configured to change the compression behavior.
 keywords: ballerina, ballerina by example, bbe, http, compression, accept-encoding
 permalink: /learn/by-example/http-compression
+active: http-compression
 redirect_from:
   - /swan-lake/learn/by-example/http-compression
   - /swan-lake/learn/by-example/http-compression.html
@@ -73,7 +74,8 @@ redirect_from:
 <span class="kd">service</span> <span class="o">/</span><span class="nx">passthrough</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="kt">json</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/echo&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">req</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span> <span class="p">=</span>
+            <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/echo&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">req</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -102,7 +104,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>HTTP Compression</h2>
+                            <h2>Compression</h2>
                             <p><p>This sample demonstrates how the Ballerina HTTP service is configured to change the compression behaviour. By default, the server
  compresses the response entity body with the scheme(gzip, deflate) that is specified in the Accept-Encoding request header. When
  the particular header is not present or the header value is &ldquo;identity&rdquo;, the server does not perform any compression. Compression
@@ -118,14 +120,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="http-streaming.html">
                                         <span>< PREVIOUS</span>
-                                        <p>HTTP Streaming</p>
+                                        <p>Streaming</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="http-cookies.html">
                                         <span>NEXT ></span>
-                                        <p>HTTP Cookies</p>
+                                        <p>Cookies</p>
                                     </a>
                                 </div>
                                 
@@ -377,7 +379,8 @@ service /alwaysCompress on listenerEndpoint {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Request req) returns http:Response|json {
-        var response = clientEndpoint-&gt;post(&quot;/backend/echo&quot;, &lt;@untainted&gt;req);
+        http:Response|error response =
+            clientEndpoint-&gt;post(&quot;/backend/echo&quot;, &lt;@untainted&gt;req);
         if (response is http:Response) {
             return response;
         } else {

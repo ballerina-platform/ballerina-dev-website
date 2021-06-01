@@ -8,7 +8,7 @@ layout: ballerina-search-page
     }
 
     .form-control-field {
-        width: 90%;
+        width: 100%;
     }
 
     .cResults {
@@ -30,16 +30,51 @@ layout: ballerina-search-page
 padding: 20px;
 }
 
-.cSearchButton img {
-	width: 30px;
-	margin-top: 5px;
-}
+
+
 .nav > li.cVersionItem {
    display: none !important;
 }
 .wy-breadcrumbs-aside{
     display: none !important;
 }
+
+
+
+.cSearchButton {
+	margin-right: 10px;
+	height: 40px !important;
+	outline-style: none;
+	background-color: #20b6b0;
+	text-align: center;
+	min-width: 75px;
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	padding: 0px;
+}
+.cSearchButton:hover {
+    background-color: #494949;
+}
+
+.cSearchButton img {
+	width: 27px;
+	margin-top: 7px;
+}
+.select-css {
+
+
+    border: 1px solid #e6e9ea;
+    height: 42px;
+
+    padding: 10px 20px;
+border-radius: 0;
+font-weight: 200;
+font-size: 16px !important;
+border-radius: 0;
+
+}
+
 </style>
 
 <div class="container">
@@ -47,20 +82,30 @@ padding: 20px;
 </div>
 
 <div class="container cSearchField">
-    <div class="col-sm-12 col-md-3"></div>
+    <div class="col-sm-12 col-md-2"></div>
 
-    <div class="col-sm-12 col-md-6 cSearchPage">
+    <div class="col-sm-12 col-md-8 cSearchPage">
         <form class="cSearch-form-inline ">
-            <input id="searchText" name="searchText" class="form-control-field" type="text" placeholder="Search" aria-label="Search">
-            <select name="searchVersion" id="searchVersion" class="select-css">
-                <option value="swan-lake" data-value="latest">Swan Lake</option>
-                <option value="1.2">v1.2</option>
-            </select>
-            <a id="searchButton" class="cSearchButton"><img src="/img/search-green.svg"/></a>
+      
+            <div class="col-xs-12 col-sm-7 col-md-7" style="padding-left: 5px; padding-right: 5px;">
+                <input id="searchText" name="searchText" class="form-control-field" type="text" placeholder="Search" aria-label="Search">
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3" style="padding-left: 5px; padding-right: 5px;">
+                <select name="searchVersion" id="searchVersion" class="select-css">
+                    <option value="swan-lake" data-value="latest">Swan Lake</option>
+                    <option value="1.2">v1.2</option>
+                </select>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-md-2" style="padding-left: 5px; padding-right: 5px;">
+                <a id="searchButton" class="cSearchButton"><img src="/img/search-white.svg"/></a>
+            </div>
+            
+            
+           
         </form>
     </div>
 
-    <div class="col-sm-12 col-md-3"></div>
+    <div class="col-sm-12 col-md-2"></div>
 
 
 </div>

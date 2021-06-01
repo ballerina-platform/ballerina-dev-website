@@ -6,25 +6,55 @@
     {% include ballerina-example-head.html %}
 </head>
 <body class="cBallerina-io">
+    <link rel="stylesheet" href=/css/ballerina-io-learn-v2.css>
+
     <header data-plugin-header="line-numbers"></header>
+    <style>
+       .container.cBallerinaBySampleContainer {
+          width: 100%   ;
+       }
+       table {
+           width: 100% !important;
+       }
+       /* .highlight {
+          min-width: 20px !important;
+       }
+       .cButtonInfoContainer {
+	
+	margin-left: 7px !important;
+} */
+    </style>
 {% include nav.html %}
 <div class="row cBallerina-io-Gray-row">
     <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+        <div class="col-xs-12 col-sm-12">
+            <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
+                {% include nav-breadcrumbs.html %}
+                <div class="cVersionContainer"></div>
+            </div>
+            <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
+                <ul class="wy-breadcrumbs">
+                    <!-- <li class="wy-breadcrumbs-aside">
+                        <a class="icon icon-github" target="_blank" href="https://www.github.com/{{ site.github_username }}/{{ site.git_repo }}/blob/master/{{ page.path }}">Edit on GitHub</a>
+                    </li> -->
+                </ul>
+            </div>
+            
+        </div>
+        </div>
+    </div>
+    <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
-                <div class="col-xs-12 col-sm-12" style="padding: 0;">
-                    <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
-                        {% include nav-breadcrumbs.html %}
-                        <div class="cVersionContainer"></div>
-                    </div>
-                    <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
-                        <ul class="wy-breadcrumbs">
-                            <!-- <li class="wy-breadcrumbs-aside">
-                                <a class="icon icon-github" target="_blank" href="https://www.github.com/{{ site.github_username }}/{{ site.git_repo }}/blob/master/{{ page.path }}">Edit on GitHub</a>
-                            </li> -->
-                        </ul>
-                    </div>
-                </div>
+       
+                <!-- <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 cBallerina-io-Home-Middle-col">
+                   &nbsp;
+                 </div> -->
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 cBallerina-io-Home-Middle-col">
+                    {% include bbe-nav-swanlake.html %}
+                 </div>
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
                 <div class="cBlallerina-io-docs-content-container">
                     <div class="wy-nav-content">
                         <div class="rst-content">
@@ -35,6 +65,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -49,16 +80,24 @@
         $('[data-button="iGitStarText"]').replaceWith(gitstar);
 
         var gitwatch = '<iframe id="iGitWatchIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=watch&count=true&size=lsmalle&v=2" frameborder="0" scrolling="0"></iframe>';
-        $('[data-button="iGitWatchText"]').replaceWith(gitwatch);
+        $('[data-button="iGitWatchText"]').replaceWith(gitwatch)
+
 
     });
 </script>
 
+
+
+
+<script src="/js/ballerina-leftnav.js"></script>
 <style>
     .cGitButtonContainer {
         display: inline-block;
         width: 100%;
         margin-bottom: 0px;
+    }
+    .container {
+        width: 100% !important;
     }
 
     #iGitStarText {
@@ -72,8 +111,19 @@
         width: 100px;
         float: left;
     }
+    li.cTitleOnly {
+	color: #464646 !important;
+	padding-left: 10px;
+	/* background-color: red; */
+	transition: all .5s ease 0s;
+	padding-top: 20px !important;
+	padding-bottom: 10px !important;
+	border-bottom: 2px solid #22b7b1 !important;
+}
+
 </style>
+
+
 
 </body>
 </html>
-

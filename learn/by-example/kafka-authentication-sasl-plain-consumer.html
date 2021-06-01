@@ -4,6 +4,7 @@ title: SASL Authentication - Consumer
 description: BBE on how to configure a Kafka consumer to use SASL/PLAIN authentication.
 keywords: ballerina, ballerina by example, bbe, kafka, consumer, authentication, SASL
 permalink: /learn/by-example/kafka-authentication-sasl-plain-consumer
+active: kafka-authentication-sasl-plain-consumer
 redirect_from:
   - /swan-lake/learn/by-example/kafka-authentication-sasl-plain-consumer
   - /swan-lake/learn/by-example/kafka-authentication-sasl-plain-consumer.html
@@ -19,32 +20,36 @@ redirect_from:
     <span class="c1">// Provide the authentication mechanism used by the Kafka server.</span>
     <span class="nx">mechanism</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">AUTH_SASL_PLAIN</span><span class="p">,</span>
     <span class="c1">// Username and password should be set here in order to authenticate the consumer.</span>
-    <span class="c1">// Check Ballerina `config` APIs to see how to use encrypted values instead of plain text values here.</span>
+    <span class="c1">// For information on how to secure values instead of directly using plain text values, see [Writing Secure Ballerina Code](https://ballerina.io/learn/user-guide/security/writing-secure-ballerina-code/#securing-sensitive-data-using-configurable-variables).</span>
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina-secret&quot;</span>
-
 <span class="p">};</span>
 
 <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerConfiguration</span> <span class="nx">consumerConfig</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">groupId</span><span class="p">:</span><span class="s">&quot;test-group&quot;</span><span class="p">,</span>
+    <span class="nx">groupId</span><span class="p">:</span> <span class="s">&quot;test-group&quot;</span><span class="p">,</span>
     <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;sasl-consumer&quot;</span><span class="p">,</span>
-    <span class="nx">offsetReset</span><span class="p">:</span><span class="s">&quot;earliest&quot;</span><span class="p">,</span>
-    <span class="nx">topics</span><span class="p">:[</span><span class="s">&quot;topic-sasl&quot;</span><span class="p">],</span>
+    <span class="nx">offsetReset</span><span class="p">:</span> <span class="s">&quot;earliest&quot;</span><span class="p">,</span>
+    <span class="nx">topics</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;topic-sasl&quot;</span><span class="p">],</span>
     <span class="c1">// Provide the relevant authentication configuration record to authenticate the consumer.</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="nx">authConfig</span>
+    <span class="nx">auth</span><span class="p">:</span> <span class="nx">authConfig</span><span class="p">,</span>
+    <span class="nx">securityProtocol</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">PROTOCOL_SASL_PLAINTEXT</span>
 <span class="p">};</span>
 
-<span class="nx">listener</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">kafkaListener</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">,</span> <span class="nx">consumerConfig</span><span class="p">);</span>
+<span class="c1">// Provide the relevant SASL URL of the configured Kafka server.</span>
+<span class="kd">const</span> <span class="kt">string</span> <span class="nx">SASL_URL</span> <span class="p">=</span> <span class="s">&quot;localhost:9093&quot;</span><span class="p">;</span>
+
+<span class="nx">listener</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">kafkaListener</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">SASL_URL</span><span class="p">,</span> <span class="nx">consumerConfig</span><span class="p">);</span>
 
 <span class="kd">service</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">on</span> <span class="nx">kafkaListener</span> <span class="p">{</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onConsumerRecord</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
-                                <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="c1">// Loops through the received consumer records.</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">consumerRecord</span> <span class="nx">in</span> <span class="nx">records</span> <span class="p">{</span>
-            <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageContent</span> <span class="p">=</span>
-                                   <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">consumerRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">messageContent</span><span class="p">);</span>
-            <span class="p">}</span>
+            <span class="c1">// Converts the `byte[]` to a `string`.</span>
+            <span class="kt">string</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="nx">check</span>
+                                        <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">consumerRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">messageContent</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -57,7 +62,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>SASL Authentication - Consumer</h2>
-                            <p><p>Here, is an example of a Kafka consumer using SASL/PLAIN authentication.
+                            <p><p>This is an example of a Kafka consumer using the SASL/PLAIN authentication.
  For this example to work properly, an active Kafka server must be present
  and it should be configured to use the SASL/PLAIN authentication mechanism.
  <br/><br/>
@@ -117,6 +122,12 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -197,6 +208,7 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    username: &quot;ballerina&quot;,
     password: &quot;ballerina-secret&quot;
+};
 </code></pre></div>
 
                                 </td>
@@ -205,7 +217,7 @@ import ballerina/log;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Username and password should be set here in order to authenticate the consumer.
- Check Ballerina <code>config</code> APIs to see how to use encrypted values instead of plain text values here.</p>
+ For information on how to secure values instead of directly using plain text values, see <a href="https://ballerina.io/learn/user-guide/security/writing-secure-ballerina-code/#securing-sensitive-data-using-configurable-variables">Writing Secure Ballerina Code</a>.</p>
 
                                         </div>
                                     </div>
@@ -216,23 +228,11 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>kafka:ConsumerConfiguration consumerConfig = {
-    groupId:&quot;test-group&quot;,
+    groupId: &quot;test-group&quot;,
     clientId: &quot;sasl-consumer&quot;,
-    offsetReset:&quot;earliest&quot;,
-    topics:[&quot;topic-sasl&quot;],
+    offsetReset: &quot;earliest&quot;,
+    topics: [&quot;topic-sasl&quot;],
 </code></pre></div>
 
                                 </td>
@@ -244,7 +244,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    auth: authConfig
+                                    <div class="highlight"><pre><code class=language-ballerina>    auth: authConfig,
+    securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 </code></pre></div>
 
@@ -261,10 +262,29 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>const string SASL_URL = &quot;localhost:9093&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Provide the relevant SASL URL of the configured Kafka server.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener kafka:Listener kafkaListener = new(kafka:DEFAULT_URL, consumerConfig);
+                                    <div class="highlight"><pre><code class=language-ballerina>listener kafka:Listener kafkaListener = new(SASL_URL, consumerConfig);
 </code></pre></div>
 
                                 </td>
@@ -275,16 +295,61 @@ import ballerina/log;
                             
                             <tr class="cTR">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>service kafka:Service on kafkaListener {
     remote function onConsumerRecord(kafka:Caller caller,
-                                kafka:ConsumerRecord[] records) {
-        foreach var consumerRecord in records {
-            string|error messageContent =
-                                   string:fromBytes(consumerRecord.value);
-            if (messageContent is string) {
-                log:printInfo(messageContent);
-            }
+                                kafka:ConsumerRecord[] records) returns error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        foreach var consumerRecord in records {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Loops through the received consumer records.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            string messageContent = check
+                                        string:fromBytes(consumerRecord.value);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Converts the <code>byte[]</code> to a <code>string</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>            log:printInfo(messageContent);
         }
     }
 }

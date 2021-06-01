@@ -4,6 +4,7 @@ title: HTTP 1.1 to 2.0 Protocol Switch
 description: This BBE shows how the Ballerina HTTP service receives a message over the HTTP/1.1 protocol and forwards it to another service over the HTTP/2.0 protocol.
 keywords: ballerina, ballerina by examples, bbe, http, http/1.1, http/2.0, http/2
 permalink: /learn/by-example/http-1-1-to-2-0-protocol-switch
+active: http-1-1-to-2-0-protocol-switch
 redirect_from:
   - /swan-lake/learn/by-example/http-1-1-to-2-0-protocol-switch
   - /swan-lake/learn/by-example/http-1-1-to-2-0-protocol-switch.html
@@ -22,8 +23,8 @@ redirect_from:
     <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">clientRequest</span><span class="p">)</span>
             <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">{</span>
         <span class="c1">// Forward the [clientRequest](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request) to the `http2` service.</span>
-        <span class="k">var</span> <span class="nx">clientResponse</span> <span class="p">=</span> <span class="nx">http2serviceClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/http2service&quot;</span><span class="p">,</span>
-                                                        <span class="nx">clientRequest</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">clientResponse</span> <span class="p">=</span>
+            <span class="nx">http2serviceClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/http2service&quot;</span><span class="p">,</span> <span class="nx">clientRequest</span><span class="p">);</span>
 
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">clientResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
@@ -75,9 +76,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="http-cookies.html">
+                                    <a class="prev" href="http-passthrough.html">
                                         <span>< PREVIOUS</span>
-                                        <p>HTTP Cookies</p>
+                                        <p>Passthrough</p>
                                     </a>
                                 </div>
                                  
@@ -218,8 +219,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var clientResponse = http2serviceClientEP-&gt;forward(&quot;/http2service&quot;,
-                                                        clientRequest);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response|error clientResponse =
+            http2serviceClientEP-&gt;forward(&quot;/http2service&quot;, clientRequest);
 </code></pre></div>
 
                                 </td>

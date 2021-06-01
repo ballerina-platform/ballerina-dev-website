@@ -47,7 +47,7 @@ import ballerina/http;
 // An instance of this object can be used as the test double for the `clientEndpoint`.
 public client class MockHttpClient {
 
-    remote function get(@untainted string path, map<string|string[]>? headers = (), http:TargetType targetType = http:Response) returns @tainted http:Response|http:ClientError {
+    remote function get(@untainted string path, map<string|string[]>? headers = (), http:TargetType targetType = http:Response) returns @tainted http:Response| http:PayloadType | http:ClientError {
 
         http:Response response = new;
         response.statusCode = 500;
@@ -84,50 +84,43 @@ import ballerina/io;
 import ballerina/http;
 import ballerina/regex;
 
-http:Client clientEndpoint = check new("https://api.chucknorris.io/jokes/");
+http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 
 // This function performs a `get` request to the Chuck Norris API and returns a random joke 
 // or an error if the API invocations fail.
 function getRandomJoke(string name, string category = "food") returns @tainted string|error {
     string replacedText = "";
-    var response = clientEndpoint->get("/categories");
+    http:Response response = check clientEndpoint->get("/categories");
 
     // Check if the provided category is available
-    if (response is http:Response) {
-        if (response.statusCode == http:STATUS_OK) {
-            var categories = response.getJsonPayload();
 
-            if (categories is json[]) {
-                if (!isCategoryAvailable(categories, category)) {
-                    error err = error("'" + category + "' is not a valid category.");
-                    io:println(err.message());
-                    return err;
-                }
-            }
-        
-        } else {
-            return createError(response);
+    if (response.statusCode == http:STATUS_OK) {
+        json[] categories = <json[]>check response.getJsonPayload();
+
+        if (!isCategoryAvailable(categories, category)) {
+            error err = error("'" + category + "' is not a valid category.");
+            io:println(err.message());
+            return err;
         }
+
+    } else {
+        return createError(response);
     }
 
     // Get a random joke from the provided category
     response = check clientEndpoint->get("/random?category=" + category);
-    if (response is http:Response) {
-        if (response.statusCode == http:STATUS_OK) {
-            var payload = response.getJsonPayload();
 
-            if (payload is json) {
-                json joke = check payload.value;
-                replacedText = regex:replaceAll(joke.toJsonString(), "Chuck Norris", name);
-                return replacedText;
-            }
-            
-        } else {
-            return createError(response);
-        }
+    if (response.statusCode == http:STATUS_OK) {
+        json payload = check response.getJsonPayload();
+        json joke = check payload.value;
+
+        replacedText = regex:replaceAll(joke.toJsonString(), "Chuck Norris", name);
+        return replacedText;
+
+    } else {
+        return createError(response);
     }
 
-    return replacedText;
 }
 ```
 
@@ -186,7 +179,7 @@ function getCategoriesResponse() returns http:Response {
 ***main_test.bal***
  
 This test stubs the behavior of the `get` function to return a specific value in 2 ways:
-    
+
 1. Stubbing to return a specific value in general
 2. Stubbing to return a specific value based on the input
 
@@ -245,24 +238,79 @@ public function testGetRandomJoke() {
 
 #### Stubbing a Member Variable
 
+If a `client` object has a public member variable, it can be stubbed to return a mock value for testing.
+
+***Example:***
+
+***main.bal***
+
+```ballerina
+# A record that represents a Product.
+#
+# + code - Code used to identify the product
+# + name - Product Name
+# + quantity - Quantity included in the product
+public type Product record {|
+    readonly int code;
+    string name;
+    string quantity;
+|};
+
+# A table with a list of Products uniquely identified using the code.
+public type ProductInventory table<Product> key(code);
+
+// This is a sample data set in the defined inventory.
+ProductInventory inventory = table [
+            {code: 1,  name: "Milk", quantity: "1l"},
+            {code: 2, name: "Bread", quantity: "500g"},
+            {code: 3, name: "Apple", quantity: "750g"}
+        ];
+
+# This client represets a product.
+#
+# + productCode - An int code used to identify the product.
+public client class ProductClient {
+    public int productCode;
+
+    public function init(int productCode) {
+        self.productCode = productCode;
+    }
+}
+
+// The Client which represents the product with the code `1` (i.e. "Milk").
+ProductClient productClient = new (1);
+
+# Get the name of the product represented by the ProductClient.
+#
+# + return - The name of the product
+public function getProductName() returns string?{
+    if (inventory.hasKey(productClient.productCode)){
+        Product? product = inventory.get(productClient.productCode);
+        if(product is Product){
+                return product.name;
+        }
+    }
+ }
+```
+
 ***main_test.bal***
 
-This test shows how to stub a member variable value of the `clientEndpoint` object.
+This test stubs the member variable `productCode` of the `ProductClient` to set a mock product code.
 
 ```ballerina
 import ballerina/test;
-import ballerina/http;
 
 @test:Config {}
 function testMemberVariable() {
-    // Create a default mock HTTP Client and assign it to the `clientEndpoint` object.
-    clientEndpoint = test:mock(http:Client);
-
-    // Stub the value of the `url` variable to return the specified string.
-    test:prepare(clientEndpoint).getMember("url").thenReturn("https://foo.com/");
-
-    // Verify if the specified value is set.
-    test:assertEquals(clientEndpoint.url, "https://foo.com/");
+    int mockProductCode = 2;
+    // Create a mockClient which represents product with the code `mockProductCode`
+    ProductClient mockClient = test:mock(ProductClient);
+    // Stub the member variable `productCode`
+    test:prepare(mockClient).getMember("productCode").thenReturn(mockProductCode);
+    // Replace `productClient` with the `mockClient`
+    productClient = mockClient;
+    // Assert for the mocked product name.
+    test:assertEquals(getProductName(), "Bread");
 }
 ```
 
@@ -277,7 +325,6 @@ If a function has an optional or no return type specified, this function can be 
 
 ```ballerina
 import ballerina/email;
-import ballerina/io;
 
 email:SmtpClient smtpClient = check new ("localhost", "admin","admin");
 
@@ -289,11 +336,7 @@ function sendNotification(string[] emailIds) returns error? {
         to: emailIds,
         body: ""
     };
-    email:Error? response = smtpClient->sendMessage(msg);
-    if (response is error) {
-	io:println("error while sending the email: " + response.message());
-  	return response;
-    }
+    return check smtpClient->sendMessage(msg);
 }
 ```
 ***main_test.bal***

@@ -4,6 +4,7 @@ title: Redirects
 description: BBE on how to do HTTP redirect with the Ballerina HTTP client connector.
 keywords: ballerina, ballerina by example, bbe, http, redirect
 permalink: /learn/by-example/http-redirects
+active: http-redirects
 redirect_from:
   - /swan-lake/learn/by-example/http-redirects
   - /swan-lake/learn/by-example/http-redirects.html
@@ -25,7 +26,7 @@ redirect_from:
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="c1">// Sends a `GET` request to the specified endpoint.</span>
-        <span class="k">var</span> <span class="nx">returnResult</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/redirect1&quot;</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">returnResult</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/redirect1&quot;</span><span class="p">);</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nx">returnResult</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// Retrieves the text payload from the response.</span>
@@ -87,16 +88,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="http-client-endpoint.html">
+                                    <a class="prev" href="http-100-continue.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Client Endpoint</p>
+                                        <p>100 Continue</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="http-client-data-binding.html">
+                                    <a class="next" href="http-streaming.html">
                                         <span>NEXT ></span>
-                                        <p>Client Data Binding</p>
+                                        <p>Streaming</p>
                                     </a>
                                 </div>
                                 
@@ -235,7 +236,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var returnResult = clientEndpoint-&gt;get(&quot;/redirect1&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response|error returnResult = clientEndpoint-&gt;get(&quot;/redirect1&quot;);
 </code></pre></div>
 
                                 </td>

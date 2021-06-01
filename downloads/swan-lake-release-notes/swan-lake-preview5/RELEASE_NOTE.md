@@ -1,6 +1,10 @@
 ---
-layout: ballerina-blank-page
-title: Release Note
+layout: ballerina-left-nav-release-notes
+title: Swan Lake Preview 5
+permalink: /downloads/swan-lake-release-notes/swan-lake-preview5/
+active: swan-lake-preview5
+redirect_from: 
+    - /downloads/swan-lake-release-notes/swan-lake-preview5
 ---
 ### Overview of Ballerina Swan Lake Preview 5 
 
@@ -272,5 +276,5 @@ Improved formatting support for all the language features. The new formatter als
 
 #### Known Issues
 
-- The [WebSub](/learn/api-docs/ballerina/websub/index.html) standard library module (ballerina/websub) is not working with Swan Lake Preview 5.
-- The [Socket](/learn/api-docs/ballerina/socket/index.html) standard library module (ballerina/socket) can only be built offline (i.e., with the `--offline` parameter) with Swan Lake Preview 5.
+- The [WebSub](https://docs.central.ballerina.io/ballerina/websub/latest/) standard library module (ballerina/websub) is not working with Swan Lake Preview 5.
+- The [Socket](https://docs.central.ballerina.io/) standard library module (ballerina/socket) can only be built offline (i.e., with the `--offline` parameter) with Swan Lake Preview 5.

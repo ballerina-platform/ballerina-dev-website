@@ -1,9 +1,10 @@
 ---
 layout: ballerina-example-page
-title: Disable Chunking
+title: Disable Chanking
 description: BBE on how to configure the chunking behavior of the HTTP client in Ballerina.
 keywords: ballerina, ballerina by example, bbe, http, chunked, transfer-encoding
 permalink: /learn/by-example/http-disable-chunking
+active: http-disable-chunking
 redirect_from:
   - /swan-lake/learn/by-example/http-disable-chunking
   - /swan-lake/learn/by-example/http-disable-chunking.html
@@ -27,8 +28,8 @@ redirect_from:
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.()</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
         <span class="c1">//Invoke endpoint with along with a JSON payload.</span>
-        <span class="k">var</span> <span class="nx">clientResponse</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo/&quot;</span><span class="p">,</span>
-                                                  <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">});</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">clientResponse</span> <span class="p">=</span>
+            <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo/&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">});</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">clientResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nx">clientResponse</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -80,7 +81,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Disable Chunking</h2>
+                            <h2>Disable Chanking</h2>
                             <p><p>This sample demonstrates how to configure the chunking behavior of an HTTP client endpoint. By default, the HTTP client sends messages with the <code>content-length</code> header.
 If the message size is larger than the buffer size (8K), messages are chunked. Chunking can be disabled using the connector options.<br/><br/>
  For more information on the underlying module,
@@ -92,16 +93,16 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="restrict-by-media-type.html">
+                                    <a class="prev" href="http-query-parameter.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Restrict By Media Type</p>
+                                        <p>Query Parameter</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="https-listener.html">
+                                    <a class="next" href="http-response-with-multiparts.html">
                                         <span>NEXT ></span>
-                                        <p>HTTPS Listener</p>
+                                        <p>Response With Multiparts</p>
                                     </a>
                                 </div>
                                 
@@ -234,8 +235,8 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var clientResponse = clientEndpoint-&gt;post(&quot;/echo/&quot;,
-                                                  {&quot;name&quot;: &quot;Ballerina&quot;});
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response|error clientResponse =
+            clientEndpoint-&gt;post(&quot;/echo/&quot;, {&quot;name&quot;: &quot;Ballerina&quot;});
         if (clientResponse is http:Response) {
             return clientResponse;
         } else {

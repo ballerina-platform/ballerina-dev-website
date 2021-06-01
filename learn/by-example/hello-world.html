@@ -1,9 +1,10 @@
 ---
 layout: ballerina-example-page
 title: Hello World Main
-description: BBE on how to print “Hello, World!” using a main function in Ballerina. A public function named main is considered as an entry point to a Ballerina program.
-keywords: ballerina, ballerina by example, bbe, hello world main function
+description: The classic "Hello, World" program in Ballerina
+keywords: ballerina, ballerina by example, bbe,
 permalink: /learn/by-example/hello-world
+active: hello-world
 redirect_from:
   - /swan-lake/learn/by-example/hello-world
   - /swan-lake/learn/by-example/hello-world.html
@@ -13,7 +14,6 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="c1">// The `main` function, which acts as the entry point.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
@@ -26,25 +26,17 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Hello World Main</h2>
-                            <p><p>Let&rsquo;s print &ldquo;Hello, World!&rdquo; using a <code>main</code> function in Ballerina.
- A public function named <code>main</code> is considered as an entry point to a Ballerina program.</p>
+                            <p><p>Let&rsquo;s write the <code>Hello World</code> program in Ballerina.</p>
 </p>
 
                         </td>
                         <td class="cRightTD">
                             <div class="cTopButtonContainer">
-                                
-                                <div class="cButtonInfoContainer">
-                                    <a class="prev" href="hello-world-service.html">
-                                        <span>< PREVIOUS</span>
-                                        <p>Hello World Service</p>
-                                    </a>
-                                </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="hello-world-parallel.html">
+                                    <a class="next" href="hello-world-service.html">
                                         <span>NEXT ></span>
-                                        <p>Hello World Parallel</p>
+                                        <p>Hello World Service</p>
                                     </a>
                                 </div>
                                 
@@ -68,7 +60,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=97245e39d05433ed7e717a8a9af9d3d3&file=hello_world.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=0c32bb928eca47095a0917937b6fe0cd&file=hello_world.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -108,7 +100,7 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
@@ -118,13 +110,6 @@ redirect_from:
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>main</code> function, which acts as the entry point.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -145,8 +130,8 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, place the source code in 
+# `hello_world.bal` file and use `bal run` command.
 bal run hello_world.bal
 Hello, World!
 </code></pre></div>

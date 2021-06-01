@@ -4,6 +4,7 @@ title: TCP Client
 description: This Ballerina sample demonstrates how the TCP client interacts with the TCP listener service.
 keywords: ballerina, ballerina by example, bbe, socket, tcp
 permalink: /learn/by-example/tcp-client
+active: tcp-client
 redirect_from:
   - /swan-lake/learn/by-example/tcp-client
   - /swan-lake/learn/by-example/tcp-client.html
@@ -18,7 +19,7 @@ redirect_from:
 
     <span class="c1">// Create a new TCP client by providing the `remoteHost` and `remotePort`.</span>
     <span class="c1">// Optionally, you can provide the interface that the socket needs to bind </span>
-    <span class="c1">// and the timeout in milliseconds, which specifies the read timeout value.</span>
+    <span class="c1">// and the timeout in seconds, which specifies the read timeout value.</span>
     <span class="c1">// tcp:Client client = check new (&quot;localhost&quot;, 3000, localHost = &quot;localhost&quot;,</span>
     <span class="c1">//                             timeout = 5);</span>
     <span class="nx">tcp</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">);</span>
@@ -28,9 +29,9 @@ redirect_from:
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">msgByteArray</span> <span class="p">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
     <span class="nx">check</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">writeBytes</span><span class="p">(</span><span class="nx">msgByteArray</span><span class="p">);</span>
 
-    <span class="c1">// Reading the response from the server.</span>
+    <span class="c1">// Read the response from the server.</span>
     <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">receivedData</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">readBytes</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Recived: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">receivedData</span><span class="p">));</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">receivedData</span><span class="p">));</span>
 
     <span class="c1">// Close the connection between the server and the client.</span>
     <span class="nx">check</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
@@ -57,7 +58,7 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="rabbitmq-transaction-consumer.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Transactional Consumer</p>
+                                        <p>SASL Authentication - Consumer</p>
                                     </a>
                                 </div>
                                  
@@ -158,7 +159,7 @@ import ballerina/tcp;
                                         <div>
                                             <p>Create a new TCP client by providing the <code>remoteHost</code> and <code>remotePort</code>.
  Optionally, you can provide the interface that the socket needs to bind
- and the timeout in milliseconds, which specifies the read timeout value.
+ and the timeout in seconds, which specifies the read timeout value.
  tcp:Client client = check new (&ldquo;localhost&rdquo;, 3000, localHost = &ldquo;localhost&rdquo;,
                              timeout = 5);</p>
 
@@ -193,7 +194,7 @@ import ballerina/tcp;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    readonly &amp; byte[] receivedData = check socketClient-&gt;readBytes();
-    io:println(&quot;Recived: &quot;, string:fromBytes(receivedData));
+    io:println(&quot;Received: &quot;, string:fromBytes(receivedData));
 </code></pre></div>
 
                                 </td>
@@ -201,7 +202,7 @@ import ballerina/tcp;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Reading the response from the server.</p>
+                                            <p>Read the response from the server.</p>
 
                                         </div>
                                     </div>
@@ -282,7 +283,7 @@ bal run tcp_client.bal
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Print the response that is obtained from the server.
-Recived: Hello Ballerina Echo from client
+Received: Hello Ballerina Echo from client
 </code></pre></div>
 
                                 </td>

@@ -4,6 +4,7 @@ title: Producer
 description: BBE on sending messages to a Kafka topic using a `kafka&#58;Producer` object.
 keywords: ballerina, ballerina by example, bbe, kafka, producer
 permalink: /learn/by-example/kafka-producer
+active: kafka-producer
 redirect_from:
   - /swan-lake/learn/by-example/kafka-producer
   - /swan-lake/learn/by-example/kafka-producer.html
@@ -17,11 +18,12 @@ redirect_from:
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello World, Ballerina&quot;</span><span class="p">;</span>
-    <span class="c1">// Send the message to the Kafka topic</span>
+    <span class="c1">// Sends the message to the Kafka topic.</span>
     <span class="nx">check</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">({</span>
                                 <span class="nx">topic</span><span class="p">:</span> <span class="s">&quot;test-kafka-topic&quot;</span><span class="p">,</span>
                                 <span class="nx">value</span><span class="p">:</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">()</span> <span class="p">});</span>
-    <span class="c1">// Flush the sent messages</span>
+
+    <span class="c1">// Flushes the sent messages.</span>
     <span class="nx">check</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="err">&#39;</span><span class="nx">flush</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
@@ -159,7 +161,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Send the message to the Kafka topic</p>
+                                            <p>Sends the message to the Kafka topic.</p>
 
                                         </div>
                                     </div>
@@ -179,7 +181,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Flush the sent messages</p>
+                                            <p>Flushes the sent messages.</p>
 
                                         </div>
                                     </div>

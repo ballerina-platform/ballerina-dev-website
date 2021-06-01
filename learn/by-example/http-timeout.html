@@ -4,6 +4,7 @@ title: Timeout
 description: BBE on how to use an HTTP timeout in Ballerina. This will set a timeout for the requests to get a response and will return an error if a response is not returned within the given timeout.
 keywords: ballerina, ballerina by examples, bbe, http, resiliency, timeout
 permalink: /learn/by-example/http-timeout
+active: http-timeout
 redirect_from:
   - /swan-lake/learn/by-example/http-timeout
   - /swan-lake/learn/by-example/http-timeout.html
@@ -25,7 +26,8 @@ redirect_from:
 <span class="kd">service</span> <span class="o">/</span><span class="k">timeout</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">backendClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">backendResponse</span> <span class="p">=</span>
+            <span class="nx">backendClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
 
         <span class="c1">// If `backendResponse` is an `http:Response`, it is sent back to the</span>
         <span class="c1">// client. If `backendResponse` is an `http:ClientError`, an internal</span>
@@ -99,9 +101,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="directory-listener.html">
+                                    <a class="next" href="dynamic-listener.html">
                                         <span>NEXT ></span>
-                                        <p>Directory Listener</p>
+                                        <p>Dynamic Listener</p>
                                     </a>
                                 </div>
                                 
@@ -249,7 +251,8 @@ import ballerina/lang.runtime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function get .(http:Caller caller, http:Request request) {
-        var backendResponse = backendClientEP-&gt;forward(&quot;/hello&quot;, request);
+        http:Response|error backendResponse =
+            backendClientEP-&gt;forward(&quot;/hello&quot;, request);
 </code></pre></div>
 
                                 </td>

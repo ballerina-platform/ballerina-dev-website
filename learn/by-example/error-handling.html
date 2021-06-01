@@ -1,9 +1,10 @@
 ---
 layout: ballerina-example-page
 title: Error Handling
-description: This BBE demonstrates how errors can be created and returned, and how returned errors can be handled.
-keywords: ballerina, ballerina by example, bbe, error handling
+description: This BBE demonstrates how errors are handled in Ballerina
+keywords: ballerina, ballerina by example, bbe, error, error handling
 permalink: /learn/by-example/error-handling
+active: error-handling
 redirect_from:
   - /swan-lake/learn/by-example/error-handling
   - /swan-lake/learn/by-example/error-handling.html
@@ -13,52 +14,29 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="kd">function</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accountID</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Return an error with &quot;Invalid account ID&quot; as the error message.</span>
-        <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Invalid account ID&quot;</span><span class="p">,</span> <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Return an error with &quot;Account not found&quot; as the error message if `accountID` is greater than hundred.</span>
-        <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Account not found&quot;</span><span class="p">,</span> <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
+<span class="c1">// Convert bytes to a string and then to an int.</span>
+<span class="kd">function</span> <span class="nx">intFromBytes</span><span class="p">(</span><span class="nx">byte</span><span class="p">[]</span> <span class="nx">bytes</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+    <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">ret</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">bytes</span><span class="p">);</span>
+
+    <span class="c1">// The `is` operator can be used to distinguish errors</span>
+    <span class="c1">// from others value.</span>
+    <span class="k">if</span> <span class="nx">ret</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">ret</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">int</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">ret</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="c1">// Return a value if `accountID` is in between zero and hundred inclusive.</span>
-    <span class="k">return</span> <span class="mi">600</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Define an error value using the default error constructor.</span>
-    <span class="c1">// The error message is the first positional argument to the error constructor</span>
-    <span class="c1">// and the type of the message must be a subtype of `string`.</span>
-    <span class="c1">// An optional positional argument can be used to specify the error cause, the error cause must be a</span>
-    <span class="c1">// subtype of error.</span>
-    <span class="c1">// Additional fields providing more details can be passed as named arguments to the constructor</span>
-    <span class="c1">// and the type of each of those must be a subtype of `anydata|readonly`.</span>
-    <span class="nx">error</span> <span class="nx">simpleError</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Simple error occurred&quot;</span><span class="p">);</span>
+<span class="c1">// The `main` function can return an error.</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">intFromBytes</span><span class="p">([</span><span class="mi">104</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">111</span><span class="p">]);</span>    
+    <span class="k">if</span> <span class="nx">res</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
+        <span class="c1">// The `check` expression is shorthand for this pattern of</span>
+        <span class="c1">// checking if a value is an error and returning that value.</span>
+        <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
 
-    <span class="c1">// Print the error message.</span>
-    <span class="c1">// The `.message()`, `.cause()`, and `.detail()` methods can be invoked on error values</span>
-    <span class="c1">// to retrieve the error message, error cause, and details of the error.</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="p">,</span> <span class="nx">simpleError</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-
-    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-    <span class="c1">// If the `result` is an `int`, then print the value.</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Account Balance: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-    <span class="c1">// If an error is returned, print the error message and the account ID from the detail record.</span>
-    <span class="c1">// Each additional error detail field provided to the error constructor is available as a field in the error detail record.</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span>
-                    <span class="s">&quot;, Account ID: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;accountID&quot;</span><span class="p">]);</span>
-        <span class="c1">// Provide an error as the cause by specifying the second positional argument to the error constructor.</span>
-        <span class="nx">error</span> <span class="nx">displayError</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Failed to get account balance&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-
-        <span class="c1">// Get the cause error, if it exists, using the `.cause()` method.</span>
-        <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span> <span class="p">=</span> <span class="nx">displayError</span><span class="p">.</span><span class="nx">cause</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">cause</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Caused by: &quot;</span><span class="p">,</span> <span class="nx">cause</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error cause not provided.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;result: &quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -70,23 +48,8 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Error Handling</h2>
-                            <p><p>Ballerina distinguishes ordinary errors such as failing to open a file or
- failing to send a network response from an exceptional condition
- in the code such as type cast errors.
- Error handling in Ballerina incorporates two different strategies
- depending on the type of the error. For ordinary errors, the error value is returned.
- When the Ballerina runtime encounters exceptional conditions, the runtime
- panics resulting in abrupt completion of execution,
- unless the error is handled explicitly.<br/></p>
-
-<p>Ballerina provides language constructs to handle both returned error values
- and panics. This example demonstrates how errors can be created,
- returned, and how returned errors can be handled.<br/></p>
-
-<p>Ballerina error values are immutable structured values composed of
- an error message, optional error cause, a stack trace representing the execution stack
- at the point at which the error value was created,
- and an error detail record.</p>
+                            <p><p>Usually a function handles errors by passing them up to its caller.
+ The <code>main</code> function can also return an error.</p>
 </p>
 
                         </td>
@@ -94,16 +57,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="array-binding-pattern.html">
+                                    <a class="prev" href="error-reporting.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Array Binding Pattern</p>
+                                        <p>Error Reporting</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="fail.html">
+                                    <a class="next" href="check-expression.html">
                                         <span>NEXT ></span>
-                                        <p>Fail</p>
+                                        <p>Check Expression</p>
                                     </a>
                                 </div>
                                 
@@ -127,7 +90,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=429bce9c802d6b3d07b4e8fc9b876917&file=error_handling.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e2eb5e0caedbe8f960f471b4de50fed7&file=error_handling.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -158,20 +121,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -189,24 +138,11 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function getAccountBalance(int accountID) returns int|error {
-    if (accountID &lt; 0) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return error(&quot;Invalid account ID&quot;, accountID = accountID);
-    } else if (accountID &gt; 100) {
+                                    <div class="highlight"><pre><code class=language-ballerina>function intFromBytes(byte[] bytes) returns int|error {
+    string|error ret = string:fromBytes(bytes);
 </code></pre></div>
 
                                 </td>
@@ -214,7 +150,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Return an error with &ldquo;Invalid account ID&rdquo; as the error message.</p>
+                                            <p>Convert bytes to a string and then to an int.</p>
 
                                         </div>
                                     </div>
@@ -225,27 +161,11 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return error(&quot;Account not found&quot;, accountID = accountID);
+                                    <div class="highlight"><pre><code class=language-ballerina>    if ret is error {
+        return ret;
+    } else {
+        return int:fromString(ret);
     }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Return an error with &ldquo;Account not found&rdquo; as the error message if <code>accountID</code> is greater than hundred.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    return 600;
 }
 </code></pre></div>
 
@@ -254,7 +174,49 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Return a value if <code>accountID</code> is in between zero and hundred inclusive.</p>
+                                            <p>The <code>is</code> operator can be used to distinguish errors
+ from others value.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
+    int|error res = intFromBytes([104, 101, 108, 108, 111]);    
+    if res is error {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>main</code> function can return an error.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        return res;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>check</code> expression is shorthand for this pattern of
+ checking if a value is an error and returning that value.</p>
 
                                         </div>
                                     </div>
@@ -263,158 +225,16 @@ redirect_from:
                             </tr>
                             
                             <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error simpleError = error(&quot;Simple error occurred&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Define an error value using the default error constructor.
- The error message is the first positional argument to the error constructor
- and the type of the message must be a subtype of <code>string</code>.
- An optional positional argument can be used to specify the error cause, the error cause must be a
- subtype of error.
- Additional fields providing more details can be passed as named arguments to the constructor
- and the type of each of those must be a subtype of <code>anydata|readonly</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Error: &quot;, simpleError.message());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Print the error message.
- The <code>.message()</code>, <code>.cause()</code>, and <code>.detail()</code> methods can be invoked on error values
- to retrieve the error message, error cause, and details of the error.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int|error result = getAccountBalance(-1);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is int) {
-        io:println(&quot;Account Balance: &quot;, result);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If the <code>result</code> is an <code>int</code>, then print the value.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    } else {
-        io:println(&quot;Error: &quot;, result.message(),
-                    &quot;, Account ID: &quot;, result.detail()[&quot;accountID&quot;]);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If an error is returned, print the error message and the account ID from the detail record.
- Each additional error detail field provided to the error constructor is available as a field in the error detail record.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        error displayError = error(&quot;Failed to get account balance&quot;, result);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Provide an error as the cause by specifying the second positional argument to the error constructor.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        error? cause = displayError.cause();
-        if (cause is error) {
-            io:println(&quot;Caused by: &quot;, cause.message());
-        } else {
-            io:println(&quot;Error cause not provided.&quot;);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>    } else {
+        io:println(&quot;result: &quot;, res);
     }
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Get the cause error, if it exists, using the <code>.cause()</code> method.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -435,12 +255,8 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run error_handling.bal
-Error: Simple error occurred
-Error: Invalid account ID, Account ID: -1
-Caused by: Invalid account ID
+                                    <div class="highlight"><pre><code class=shell-session>bal run error_handling.bal
+error: {ballerina/lang.int}NumberParsingError {&quot;message&quot;:&quot;&#39;string&#39; value &#39;hello&#39; cannot be converted to &#39;int&#39;&quot;}
 </code></pre></div>
 
                                 </td>

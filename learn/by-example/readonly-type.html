@@ -1,9 +1,10 @@
 ---
 layout: ballerina-example-page
 title: Readonly Type
-description: 
-keywords: 
+description: This BBE introduces readonly type in Ballerina.
+keywords: ballerina, ballerina by example, bbe, readonly type
 permalink: /learn/by-example/readonly-type
+active: readonly-type
 redirect_from:
   - /swan-lake/learn/by-example/readonly-type
   - /swan-lake/learn/by-example/readonly-type.html
@@ -13,30 +14,24 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
+<span class="c1">// A `const` is immutable.</span>
+<span class="kd">const</span> <span class="nx">s</span> <span class="p">=</span> <span class="s">&quot;Anne&quot;</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Row</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="c1">// Both the field and its value are immutable.</span>
+    <span class="nx">readonly</span> <span class="kt">string</span> <span class="nx">k</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">value</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">table</span><span class="p">&lt;</span><span class="nx">Row</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="nx">t</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nx">k</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">17</span> <span class="p">}</span>
+<span class="p">];</span>
+
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// A value belonging to an inherently immutable basic type can be used directly</span>
-    <span class="c1">// where an immutable `readonly` value is expected.</span>
-    <span class="nx">readonly</span> <span class="nx">a</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+    <span class="c1">// Can safely use `s` as a key.</span>
+    <span class="nx">t</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span><span class="nx">k</span><span class="p">:</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">18</span><span class="p">});</span>
 
-    <span class="kt">string</span> <span class="nx">ballerina</span> <span class="p">=</span> <span class="s">&quot;ballerina&quot;</span><span class="p">;</span>
-    <span class="nx">readonly</span> <span class="nx">b</span> <span class="p">=</span> <span class="nx">ballerina</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
-
-    <span class="c1">// A value of a selectively immutable type can be created as immutable, by using</span>
-    <span class="c1">// an intersection type with `readonly` as the contextually expected type.</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">marks</span> <span class="p">=</span> <span class="p">{</span>
-        <span class="nx">math</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
-        <span class="nx">physics</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span>
-        <span class="nx">chemistry</span><span class="p">:</span> <span class="mi">75</span>
-    <span class="p">};</span>
-
-    <span class="c1">// If the inherent type of a value is `T &amp; readonly`, its read-only bit is set,</span>
-    <span class="c1">// and the value will belong to the `readonly` type.</span>
-    <span class="nx">readonly</span> <span class="nx">c</span> <span class="p">=</span> <span class="nx">marks</span><span class="p">;</span>
-    <span class="c1">// The `.isReadOnly()` check for an immutable value returns `true`.</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">marks</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">t</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -47,15 +42,11 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Readonly Type</h2>
-                            <p><p>The <code>readonly</code> type consists of values that are immutable.
- <code>()</code>, <code>boolean</code>, <code>int</code>, <code>float</code>, <code>decimal</code>, <code>string</code>, <code>error</code>, <code>function</code>, <code>service</code>, and <code>typedesc</code> are
- considered to be inherently immutable basic types, and a value belonging to an inherently immutable basic type
- will always belong to the <code>readonly</code> type.
- XML, lists, mappings, tables, and objects are selectively-immutable types, where values belonging to such types
- are immutable and belong to the <code>readonly</code> type, only if they are constructed as immutable values (either by
- using a subtype of <code>readonly</code> as the contextually-expected type with a constructor expression or by calling
- <code>.cloneReadOnly()</code> on a mutable value).
- A <code>readonly</code> value is deeply immutable, and guarantees that members, if any, are also immutable.</p>
+                            <p><p>The <code>readonly</code> type consists of values that are immutable. For structural type <code>T</code>, <code>T &amp; readonly</code> means
+ immutable <code>T</code>. <code>T &amp; readonly</code> is subtype of <code>T</code> and subtype of <code>readonly</code>. Guaranteed that if declared
+ type of a value is a subtype of <code>readonly</code>, then at runtime the value can never be mutated. It is enforced
+ by runtime checks on the mutating structures. With <code>readonly</code> field, both the field and its value
+ are immutable.</p>
 </p>
 
                         </td>
@@ -63,16 +54,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="never-type.html">
+                                    <a class="prev" href="isolated-functions.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Never Type</p>
+                                        <p>Isolated Functions</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="constants.html">
+                                    <a class="next" href="readonly-and-isolated.html">
                                         <span>NEXT ></span>
-                                        <p>Constants</p>
+                                        <p>Readonly and Isolated</p>
                                     </a>
                                 </div>
                                 
@@ -96,7 +87,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=736d5592319f1ac2f56bafb34c7c4a57&file=readonly_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c5fb7498f175c7e8d2156289eca83b29&file=readonly_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -129,6 +120,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -138,6 +131,72 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>const s = &quot;Anne&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A <code>const</code> is immutable.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type Row record {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    readonly string k;
+    int value;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Both the field and its value are immutable.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>table&lt;Row&gt; key(k) t = table [
+    { k: &quot;John&quot;, value: 17 }
+];
 </code></pre></div>
 
                                 </td>
@@ -161,8 +220,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    readonly a = 5;
-    io:println(a);
+                                    <div class="highlight"><pre><code class=language-ballerina>    t.add({k: s, value: 18});
 </code></pre></div>
 
                                 </td>
@@ -170,8 +228,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A value belonging to an inherently immutable basic type can be used directly
- where an immutable <code>readonly</code> value is expected.</p>
+                                            <p>Can safely use <code>s</code> as a key.</p>
 
                                         </div>
                                     </div>
@@ -181,79 +238,13 @@ redirect_from:
                             
                             <tr class="cTR">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string ballerina = &quot;ballerina&quot;;
-    readonly b = ballerina;
-    io:println(b);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;int&gt; &amp; readonly marks = {
-        math: 80,
-        physics: 85,
-        chemistry: 75
-    };
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>A value of a selectively immutable type can be created as immutable, by using
- an intersection type with <code>readonly</code> as the contextually expected type.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    readonly c = marks;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If the inherent type of a value is <code>T &amp; readonly</code>, its read-only bit is set,
- and the value will belong to the <code>readonly</code> type.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(c);
-    io:println(marks.isReadOnly());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(t);
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>.isReadOnly()</code> check for an immutable value returns <code>true</code>.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -274,13 +265,8 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run readonly_type.bal
-5
-ballerina
-{&quot;math&quot;:80,&quot;physics&quot;:85,&quot;chemistry&quot;:75}
-true
+                                    <div class="highlight"><pre><code class=shell-session>bal run readonly_type.bal
+[{&quot;k&quot;:&quot;John&quot;,&quot;value&quot;:17},{&quot;k&quot;:&quot;Anne&quot;,&quot;value&quot;:18}]
 </code></pre></div>
 
                                 </td>

@@ -7,15 +7,24 @@ permalink: /learn/user-guide/getting-started/writing-your-first-ballerina-progra
 active: writing-your-first-ballerina-program
 intro: Let's create a simple Ballerina HTTP service and also an HTTP client to invoke it.
 redirect_from:
-  - /learn/user-guide/getting-started/writing-your-first-ballerina-program
+- /learn/user-guide/getting-started/writing-your-first-ballerina-program
 ---
 
-## Writing a Simple Service
+A Ballerina application can have:
 
-Write a simple HTTP service as shown below in a file with the `.bal` extension.
+* a `main()` function will run as a terminating process 
+* a `service`, is hosted as a non-terminating process. 
+  
+Both of these are considered as entry points for program execution.
+
+Let's create a simple Ballerina HTTP service and an HTTP client with a main function to invoke it.
+
+## Writing a simple service
+
+Let's write a simple HTTP service as shown below in a file with the `.bal` extension:
 
 ***hello_service.bal***
-```ballerina
+```bal
 import ballerina/http;
 
 # A service representing a network-accessible API
@@ -33,46 +42,56 @@ service /hello on new http:Listener(9090) {
 }
 ```
 
-## Running the Service
+Then, run the service:
+```bash
+$ bal run hello_service.bal
+Compiling source
+	hello_service.bal
 
-In the CLI, navigate to the location in which you have the `hello_service.bal` file and run the service by executing the command below.
+Running executable
+
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+```
+This confirms that the service is up and running. 
+
+Alternatively, we can also first build and generate an executable JAR and then run it. Here, we also have the option to provide a name for the executable JAR.
+
+Build the service:
 
 ```bash
-bal run hello_service.bal
+$ bal build -o my_first_service.jar hello_service.bal
+Compiling source
+	hello_service.bal
+
+Generating executable
+	my_first_service.jar
 ```
 
-You get the following output.
-
+Then, run it:
 ```bash
+$ bal run my_first_service.jar
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 ```
 
-This means your service is up and running. 
-
-> **Note:** You can test the service by invoking it using an already-available HTTP client. For example, execute the command below in a new CLI tab to use [cURL](https://curl.haxx.se/download.html) as the client.
+Now let's test the service simply using [cURL](https://curl.haxx.se/download.html):
 
 ```bash
-curl http://localhost:9090/hello/sayHello
-```
-
-You get the following response.
-
-```bash
+$ curl http://localhost:9090/hello/sayHello
 Hello Ballerina!
 ```
 
-Alternatively, you can create a Ballerina HTTP client and use that to invoke the service as follows.
+Next, let's create a Ballerina HTTP client and use that to invoke the service.
 
-## Creating an HTTP Client to Invoke the Service
+## Creating an HTTP client to invoke the service
 
 A Ballerina client is a component, which interacts with a network-accessible service. It aggregates one or more actions that can be executed on the network-accessible service and accepts configuration parameters related to the network-accessible service.
 
-Create a Ballerina client as a Ballerina program with a `main` function as follows to invoke the `hello` service.   
+Let's create a Ballerina client with a `main` function to invoke the `hello` service:  
 
 > **Note**: Returning `error?` from the `main` function allows you to use the `check` keyword to avoid handling errors explicitly. This is only done to keep the code simple. However, in real production code, you may have to handle those errors explicitly.
 
 ***hello_client.bal***
-```ballerina
+```bal
 import ballerina/http;
 import ballerina/io;
 
@@ -92,25 +111,17 @@ public function main() returns @tainted error? {
 }
 ```
 
-## Invoking the Service Using the Client 
+Then, run it:
 
-In a new tab of the CLI, navigate to the location in which you have the `hello_client.bal` file and execute the command below to run the `hello_client.bal` file containing the `main` function (of the client), which invokes the `hello` service.
-
-> **Tip:** Make sure the `hello` service is [up and running](#running-the-service).
+> **Tip:** Make sure the `hello` service is [up and running](#writing-a-simple-service).
 
 ```bash
 bal run hello_client.bal
-```
-
-This would produce the following output.
-
-
-```bash
 Hello Ballerina!
 ```
 
-## What's Next?
+## What's next?
 
-Now, that you have written your first Ballerina program, you can explore more about writing [Ballerina Packages](/learn/user-guide/structuring-ballerina-code/).
+Now, that you have written your first Ballerina program, you can explore more about writing [Ballerina Packages](/learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/).
 
 <style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

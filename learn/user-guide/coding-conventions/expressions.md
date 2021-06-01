@@ -19,16 +19,13 @@ redirect_from:
 
 * Do not keep spaces between the function name and opening parentheses `(`.
   
-* If it is unable to keep the function invocation in a single line due to it exceeding the max line length, split each argument to its own block-indented line.
+* If it is unable to keep the function invocation in a single line due to it exceeding the max line length, split it into a new line based on the best practices given in the [line breaks section](/learn/coding-conventions/#line-breaks).
     
 **Example,**
 
 ```ballerina
-    
-setAgeForEmployee(
-    employeeName,
-    employeeID
-   );
+setAgeForEmployee(employeeName,
+    employeeID);
 ```
 
 ## Record Literal
@@ -50,13 +47,13 @@ Person p = {};
 Person p = {name: "john", age: 20};
 ``` 
 
-* Do not keep any spaces between the key and the colon. Also, Keep only one space between the colon and the value.
+* Do not keep any spaces between the key and the colon. Also, keep only one space between the colon and the value.
   
 **Example,**
 
 ```ballerina
 Person person = {
-    name: "john", // in this field Key is the "name" and value is "john".
+    name: "john" // in this field key is the "name" and value is "john".
 };
 ```
 
@@ -93,12 +90,11 @@ Person p = {
 
 ## Map Literal
 
-* For Map literals, follow the same formatting guidelines as [record literals](/learn/style-guide/expressions#record-literal). 
+* For map literals, follow the same formatting guidelines as [record literals](#record-literal).
   
 **Example,**
 
 ```ballerina
-  
 // Inline map literal.
 map<string> mapOfString1 = {name: "john", id: "0"};
   
@@ -144,14 +140,12 @@ string[] names = ["john", "doe", "jane", "doe"];
 **Example,**
 
 ```ballerina
-    
 string[] names = [
     "john",
     "doe",
     "jane",
     "doe"
 ];
-    
 ```
 
 ## Type Casting
@@ -162,7 +156,7 @@ string[] names = [
 **Example,**
 
 ```ballerina
-string name = <string>json.name;
+string name = <string>person.name;
 ```
 
 * Avoid line breaks in type casting.
@@ -183,7 +177,7 @@ string name = <string>json.name;
 
 ## Table Literal
 
-* Follow [record literals](/learn/style-guide/expressions#record-literal) formatting when formatting a table block.
+* Follow [record literals](#record-literal) formatting when formatting a table block.
   
 **Example,**
   
@@ -199,11 +193,10 @@ type EmployeeTable table<Employee> key(id);
 public function main() {
 
     EmployeeTable employeeTab = table [
-            {id: 1, name: "John", salary: 300.50},
-            {id: 2, name: "Bella", salary: 500.50},
-            {id: 3, name: "Peter", salary: 750.0}
-        ];
-
+        {id: 1, name: "John", salary: 300.50},
+        {id: 2, name: "Bella", salary: 500.50},
+        {id: 3, name: "Peter", salary: 750.0}
+    ];
 }
 ```
   

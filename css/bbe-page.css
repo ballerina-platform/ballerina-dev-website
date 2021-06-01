@@ -124,10 +124,16 @@ code[class*="language-"], pre[class*="language-"] {
 }
 
 .highlight {
-	min-width: 645px;
-	max-width: 645px;
+	/* min-width: 645px;
+	max-width: 645px; */
+    width: 100%;
 }
 
 /*a.copy {
     display: none;
 }*/
+
+.cLeftNavContainerScroll{
+    height: 80vh;
+    overflow-y: scroll
+}

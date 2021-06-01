@@ -52,23 +52,20 @@ For more information on the command, see [Structuring Ballerina Code](/learn/str
     // This function performs a `get` request to the Chuck Norris API and returns a random joke 
     // with the name replaced by the provided name or an error if the API invocation fails.
     function getRandomJoke(string name) returns @tainted string|error {
-        var result = clientEndpoint->get("/random");
-        if (result is http:Response) {
-            http:Response response = <http:Response>result;
-            if (response.statusCode == http:STATUS_OK) {
-                var payload = response.getJsonPayload();
-
-                if (payload is json) {
-                    json joke = check payload.value;
-                    string replacedText = regex:replaceAll(joke.toJsonString(), "Chuck Norris", name);
-                    return replacedText;
-                }
-            } else {
-                error err = error("error occurred while sending GET request");
-                io:println(err.message(), ", status code: ", response.statusCode, ", reason: ", response.getJsonPayload());
-                return err;
+        http:Response response = check clientEndpoint->get("/random");
+        if (response.statusCode == http:STATUS_OK) {
+            var payload = response.getJsonPayload();
+            if (payload is json) {
+                json joke = check payload.value;
+                string replacedText = regex:replaceAll(joke.toJsonString(), "Chuck Norris", name);
+                return replacedText;
             }
+        } else {
+            error err = error("error occurred while sending GET request");
+            io:println(err.message(), ", status code: ", response.statusCode, ", reason: ", response.getJsonPayload());
+            return err;
         }
+
         error err = error("error occurred while sending GET request");
         return err;
     }
@@ -129,7 +126,6 @@ For more information on the command, see [Structuring Ballerina Code](/learn/str
     Generating Test Report
         target/test_results.json
 
-        View the test report at: file:///home/foo/test/sample-package/target/report/index.html
     ```
  
  
@@ -137,3 +133,5 @@ For more information on the command, see [Structuring Ballerina Code](/learn/str
 
 Now, that you have an understanding of how a test case can be written and executed, you can dive deep into the available
  features in the [Writing Tests](/learn/testing-ballerina-code/writing-tests) section.
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

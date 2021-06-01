@@ -1,9 +1,10 @@
 ---
 layout: ballerina-example-page
-title: Resources with Hierarchical Resource Paths
+title: Hierarchical Resource Paths
 description: A GraphQL service endpoint written in Ballerina
 keywords: ballerina, ballerina by example, bbe, graphql, graphql service
 permalink: /learn/by-example/graphql-hierarchical-resource-paths
+active: graphql-hierarchical-resource-paths
 redirect_from:
   - /swan-lake/learn/by-example/graphql-hierarchical-resource-paths
   - /swan-lake/learn/by-example/graphql-hierarchical-resource-paths.html
@@ -14,19 +15,30 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">graphql</span><span class="p">;</span>
 
 <span class="c1">// This service has multiple resources with hierarchical resource paths.</span>
-<span class="c1">// There are two resources under the `profile` path. Therefore, a type named</span>
-<span class="c1">// `profile`, which has two fields (`quote`, and `name`) will be created when the</span>
-<span class="c1">// GraphQL schema is generated for this service.</span>
-<span class="kd">service</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">graphql</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// The root operation has a field named `profile` and it is the first segment</span>
+<span class="c1">// of the hierarchical path in this service. The type of this field will also</span>
+<span class="c1">// be `profile`. (For hierarchical paths, the field name and the type name will</span>
+<span class="c1">// be the same). The `profile` type has two fields: `quote` and `name`. The</span>
+<span class="c1">// type of the `quote` field is `String` and the type of the `name` field is</span>
+<span class="c1">// `name`. The `name` type has two fields:`first` and the `last`. Both of the</span>
+<span class="c1">// fields are of type `String`.</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">graphql</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">4000</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// This resource provides a quote for the provided ID.</span>
+    <span class="c1">// This resource represents the `quote` field under the `profile` object.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">profile</span><span class="o">/</span><span class="nx">quote</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s">&quot;I am the one who knocks!&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="c1">// This resource returns the name for the provided ID.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">profile</span><span class="o">/</span><span class="nx">name</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s">&quot;Walter White&quot;</span><span class="p">;</span>
+    <span class="c1">// This resource represents the `first` field under the `name` object type.</span>
+    <span class="c1">// The `name` field in the `profile` object is of type `name`.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">profile</span><span class="o">/</span><span class="nx">name</span><span class="o">/</span><span class="nx">first</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;Walter&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// This resource represents the `last` field under the `name` object type.</span>
+    <span class="c1">// The `name` field in the `profile` object is of type `name`.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">profile</span><span class="o">/</span><span class="nx">name</span><span class="o">/</span><span class="nx">last</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;White&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -37,12 +49,13 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Resources with Hierarchical Resource Paths</h2>
-                            <p><p>The resources in Ballerina GraphQL services can have hierarchical resource paths. When a hierarchical
- resource is found, a new GraphQL type will be created for each intermediate path, which will have its
- sub paths as fields.<br/><br/>
+                            <h2>Hierarchical Resource Paths</h2>
+                            <p><p>The resources in Ballerina GraphQL services can have hierarchical resource
+ paths. When a hierarchical path is present, an <code>OBJECT</code> type is created for
+ each intermediate path segment with the same name. Every sub path under a
+ path segment will be added as a field of the created type.<br/><br/>
  For more information on the underlying package, see the
- <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">GraphQL package</a>.<br/><br/>
+ <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/"><code>graphql</code> package</a>.<br/><br/>
  This example shows a GraphQL endpoint, which has a <code>profile</code> field of type <code>Person</code>.
  A GraphQL client can query this service to retrieve specific fields or subfields of the <code>Person</code> object.</p>
 </p>
@@ -52,16 +65,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="graphql-resources-with-record-values.html">
+                                    <a class="prev" href="graphql-returning-record-values.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Resources with Record Values</p>
+                                        <p>Returning Record Values</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="websocket-text-client.html">
+                                    <a class="next" href="graphql-returning-service-objects.html">
                                         <span>NEXT ></span>
-                                        <p>Handle Text Messages with Client</p>
+                                        <p>Returning Service Objects</p>
                                     </a>
                                 </div>
                                 
@@ -108,6 +121,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -128,7 +143,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service graphql:Service /graphql on new graphql:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /graphql on new graphql:Listener(4000) {
 </code></pre></div>
 
                                 </td>
@@ -137,9 +152,13 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This service has multiple resources with hierarchical resource paths.
- There are two resources under the <code>profile</code> path. Therefore, a type named
- <code>profile</code>, which has two fields (<code>quote</code>, and <code>name</code>) will be created when the
- GraphQL schema is generated for this service.</p>
+ The root operation has a field named <code>profile</code> and it is the first segment
+ of the hierarchical path in this service. The type of this field will also
+ be <code>profile</code>. (For hierarchical paths, the field name and the type name will
+ be the same). The <code>profile</code> type has two fields: <code>quote</code> and <code>name</code>. The
+ type of the <code>quote</code> field is <code>String</code> and the type of the <code>name</code> field is
+ <code>name</code>. The <code>name</code> type has two fields:<code>first</code> and the <code>last</code>. Both of the
+ fields are of type <code>String</code>.</p>
 
                                         </div>
                                     </div>
@@ -160,7 +179,29 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This resource provides a quote for the provided ID.</p>
+                                            <p>This resource represents the <code>quote</code> field under the <code>profile</code> object.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get profile/name/first() returns string {
+        return &quot;Walter&quot;;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This resource represents the <code>first</code> field under the <code>name</code> object type.
+ The <code>name</code> field in the <code>profile</code> object is of type <code>name</code>.</p>
 
                                         </div>
                                     </div>
@@ -171,8 +212,8 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get profile/name() returns string {
-        return &quot;Walter White&quot;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get profile/name/last() returns string {
+        return &quot;White&quot;;
     }
 }
 </code></pre></div>
@@ -182,7 +223,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This resource returns the name for the provided ID.</p>
+                                            <p>This resource represents the <code>last</code> field under the <code>name</code> object type.
+ The <code>name</code> field in the <code>profile</code> object is of type <code>name</code>.</p>
 
                                         </div>
                                     </div>
@@ -211,7 +253,7 @@ redirect_from:
 # Since Ballerina GraphQL runs on a Ballerina HTTP listener, an `http:Listener`
 # log will be printed.
 bal run graphql_hierarchical_resource_paths.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+[ballerina/http] started HTTP/WS listener 0.0.0.0:4000
 </code></pre></div>
 
                                 </td>
@@ -236,9 +278,10 @@ bal run graphql_hierarchical_resource_paths.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Invoke the GraphQL service with a cURL command.
-curl -XPOST -H &quot;Content-type: application/json&quot; -d &#39;{ &quot;query&quot;: &quot;{ profile { quote } }&quot; }&#39; &#39;http://localhost:9090/graphql&#39;
-{&quot;data&quot;:{&quot;profile&quot;:{&quot;quote&quot;:&quot;I am the one who knocks!&quot;}}}
+                                    <div class="highlight"><pre><code class=shell-session># Send a query to the GraphQL endpoint using a cURL command.
+# The query used: { profile { quote name { first } } }
+curl -X POST -H &quot;Content-type: application/json&quot; -d &#39;{ &quot;query&quot;: &quot;{ profile { quote name { first } } }&quot; }&#39; &#39;http://localhost:4000/graphql&#39;
+{&quot;data&quot;:{&quot;profile&quot;:{&quot;quote&quot;:&quot;I am the one who knocks!&quot;, &quot;name&quot;:{&quot;first&quot;:&quot;Walter&quot;}}}}
 </code></pre></div>
 
                                 </td>

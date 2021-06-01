@@ -1,0 +1,286 @@
+---
+layout: ballerina-example-page
+title: Structured Keys
+description: This BBE demonstrates structured keys in tables in Ballerina.
+keywords: ballerina, ballerina by example, bbe, structured keys, keys
+permalink: /learn/by-example/structured-keys
+active: structured-keys
+redirect_from:
+  - /swan-lake/learn/by-example/structured-keys
+  - /swan-lake/learn/by-example/structured-keys.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="nx">readonly</span> <span class="nx">record</span> <span class="p">{</span>
+        <span class="kt">string</span> <span class="nx">first</span><span class="p">;</span>
+        <span class="kt">string</span> <span class="nx">last</span><span class="p">;</span>
+    <span class="p">}</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">salary</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// key field, `name` is of `record` type.</span>
+    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="nx">t</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[</span>
+        <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="p">{</span><span class="nx">first</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">last</span><span class="p">:</span> <span class="s">&quot;Smith&quot;</span><span class="p">},</span> <span class="nx">salary</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="p">{</span><span class="nx">first</span><span class="p">:</span> <span class="s">&quot;Fred&quot;</span><span class="p">,</span> <span class="nx">last</span><span class="p">:</span> <span class="s">&quot;Bloggs&quot;</span><span class="p">},</span> <span class="nx">salary</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
+    <span class="p">];</span>
+
+    <span class="nx">Employee</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">t</span><span class="p">[{</span><span class="nx">first</span><span class="p">:</span> <span class="s">&quot;Fred&quot;</span><span class="p">,</span> <span class="nx">last</span><span class="p">:</span> <span class="s">&quot;Bloggs&quot;</span><span class="p">}];</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Structured Keys</h2>
+                            <p><p>Key fields can be structured where they belong to any subtype of plain data. The Value of key field
+ must be immutable. Initializer of <code>readonly</code> field will be constructed as immutable. In other cases,
+ can use <code>cloneReadOnly</code> to create an immutable value.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="multiple-key-fields.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Multiple Key Fields</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="querying-tables.html">
+                                        <span>NEXT ></span>
+                                        <p>Querying Tables</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="structured-keys">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/structured-keys/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=96e54db296fdec6058d374d67d7b039b&file=structured_keys.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type Employee record {
+    readonly record {
+        string first;
+        string last;
+    } name;
+    int salary;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    table&lt;Employee&gt; key(name) t = table [
+        {name: {first: &quot;John&quot;, last: &quot;Smith&quot;}, salary: 100},
+        {name: {first: &quot;Fred&quot;, last: &quot;Bloggs&quot;}, salary: 200}
+    ];
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>key field, <code>name</code> is of <code>record</code> type.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    Employee? e = t[{first: &quot;Fred&quot;, last: &quot;Bloggs&quot;}];
+    io:println(e);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>bal run structured_keys.bal
+{&quot;name&quot;:{&quot;first&quot;:&quot;Fred&quot;,&quot;last&quot;:&quot;Bloggs&quot;},&quot;salary&quot;:200}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

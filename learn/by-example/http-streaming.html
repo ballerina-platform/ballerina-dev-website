@@ -1,9 +1,10 @@
 ---
 layout: ballerina-example-page
-title: HTTP Streaming
+title: Streaming
 description: This BBE demonstrates the input and the output streaming capability in Ballerina.
 keywords: ballerina, ballerina by example, bbe, http, streaming
 permalink: /learn/by-example/http-streaming
+active: http-streaming
 redirect_from:
   - /swan-lake/learn/by-example/http-streaming
   - /swan-lake/learn/by-example/http-streaming.html
@@ -29,7 +30,8 @@ redirect_from:
             <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_PDF</span><span class="p">);</span>
 
         <span class="c1">//Sends the request to the client with the file content.</span>
-        <span class="k">var</span> <span class="nx">clientResponse</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/stream/receiver&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">clientResponse</span> <span class="p">=</span>
+            <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/stream/receiver&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
 
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">clientResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
@@ -98,7 +100,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>HTTP Streaming</h2>
+                            <h2>Streaming</h2>
                             <p><p>Ballerina supports HTTP input and output streaming capability based on the Ballerina <code>stream</code> type.<br/><br/>
  For more information on the underlying module,
  see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/">HTTP module</a>.</p>
@@ -109,16 +111,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="different-payload-types.html">
+                                    <a class="prev" href="http-redirects.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Handling Different Payload Types</p>
+                                        <p>Redirects</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="http-compression.html">
                                         <span>NEXT ></span>
-                                        <p>HTTP Compression</p>
+                                        <p>Compression</p>
                                     </a>
                                 </div>
                                 
@@ -139,10 +141,6 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-streaming/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=f6ce4fcf5bfd6fe75d0ecb9abc09a74f&file=http_streaming.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -276,7 +274,8 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var clientResponse = clientEndpoint-&gt;post(&quot;/stream/receiver&quot;, request);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response|error clientResponse =
+            clientEndpoint-&gt;post(&quot;/stream/receiver&quot;, request);
 </code></pre></div>
 
                                 </td>

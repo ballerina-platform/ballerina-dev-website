@@ -80,7 +80,7 @@ Person personRecord = {name: "marcus", id: 0};
 function foo(string name, int id) {
 }
     
-service hello on ep1, ep2 {
+service / on ep1, ep2 {
     ...
 }
 ```
@@ -120,18 +120,18 @@ function setAge(int age) {
 **Do's**
 
 ```ballerina
-if (true) {
+if true {
 }
   
 function setName(string name) {
-  
+    ...
 }
 ```
 
 **Don'ts**
 
 ```ballerina
-if (true)
+if true
 {
     
 }
@@ -149,7 +149,7 @@ function setName(string name)
 ```ballerina
 
 function func1() {
-    if (true) {
+    if true {
     }
 }
 
@@ -170,8 +170,9 @@ function func1() {
 **Example,**
   
 ```ballerina
-if (false) {
-   ...
+if false {
+   int x = 2;
+   string a = "hello";
 }
   
 match a {
@@ -180,7 +181,7 @@ match a {
 ```
 
 ## Parentheses and Brackets
-* Do not have spaces after opening parentheses/bracket and before closing parentheses/bracket.
+* Do not have spaces after opening parenthesis/bracket and before closing parenthesis/bracket.
   
 **Example,**
 
@@ -191,14 +192,17 @@ function setValue(string value) {
     ...
 }
 
-setValue("value");
+public function main() {
+   setValue("value");
+}
 ```
 
-* To define empty parentheses, do not keep spaces between the opening and closing parentheses `()`.
+* To define empty parentheses/brackets, do not keep spaces between the opening and closing parentheses/brackets. i.e. `()` ,`[]`.
   
 **Example,**
 
 ```ballerina
+int[] a = [];
 int|() result = getResult();
 ```
   
@@ -219,9 +223,9 @@ string s = person
     .getName();
   
 // Binary operations in if condition
-if (isNameAvailable 
-    && (i == 1)) {
-  
+if isNameAvailable
+    && (i == 1) {
+    ...
 }
 ```
 
@@ -257,9 +261,9 @@ string s2 =
 **Example,**
 
 ```ballerina
-if (isNameAvailable 
-    && (i == 1)) {
-      
+if isNameAvailable
+    && (i == 1) {
+    ...
 }
   
 // Function parameters.
@@ -271,16 +275,16 @@ function getName(int id, int age,
 
 * However, if you cannot add the type-casting expression or statement with the constrained type in a single line 
   due to it exceeding the max line length, 
-- move the casting type with the operators to a new line.
+  - move the casting type with the operators to a new line.
   
 **Example,**
       
 ```ballerina
-    string name =
-        <string>json.name;
+string name =
+    <string>person.name;
 ```
   
-- keep the constrained type on the same line by splitting the statement from a point before the constraint type.
+  - keep the constrained type on the same line by splitting the statement from a point before the constraint type.
       
 **Example,**
 
@@ -288,15 +292,11 @@ function getName(int id, int age,
 map<int|string> registry = {
     name: "marcus"
 };
-      
-table<Employee> employee = table {
-    {key id, name, address}
-    };
 ```
 
 ## Top-Level Definitions
 
-For style guidelines on imports, service definition, object definition, record definition, referencing record or abstract object, etc., see [Top Level Definitions](/learn/style-guide/definitions).
+For style guidelines on imports, service definition, object definition, record definition, referencing record or object, etc., see [Top Level Definitions](/learn/style-guide/definitions).
 
 ## Operators, Keywords, and Types
 
@@ -313,3 +313,5 @@ For style guidelines on function invocation, literals, tuple, type casting, etc.
 ## Annotations, Documentation, and Comments
 
 For style guidelines on annotations, documentation, and comments, see [Annotations, Documentation, and Comments](/learn/style-guide/annotations_documentation_and_comments).
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

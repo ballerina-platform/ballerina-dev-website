@@ -29,10 +29,9 @@ import ballerina/http;
 const int MIN_AGE = 20;
 int repetitions = 0;
     
-service hello on ep1 {
+service / on ep1 {
     ...
 }
-
 ```
 
 **Don'ts**
@@ -45,16 +44,15 @@ import ballerina/http;
     int repetitions = 0; // Not indented correctly.
         
 // Not indented correctly.
-service hello on ep1 {
+service / on ep1 {
     ...
     }
-        
 ```
 
 - [Imports](#imports)
 - [Function Definition](#function-definition)
 - [Service Definition](#service-definition)
-- [Object Definition](#object-definition)
+- [Class Definition](#class-definition)
 - [Record Definition](#record-definition)
 - [Referencing Record or Abstract Object](#referencing-record-or-abstract-object)
 
@@ -93,7 +91,7 @@ function getAddress(int value,
 }
 ```
 
-- can break before the `returns` keyword and indent it with four spaces from the starting position of the function.
+  - can break before the `returns` keyword and indent it with four spaces from the starting position of the function.
     
 **Example,**
 
@@ -104,7 +102,7 @@ function getAddress(int value, string name)
 }    
 ```
 
-- can break after the `returns` keyword by moving the return value to a new line
+  - can break after the `returns` keyword by moving the return value to a new line
     and indenting it with four spaces from the starting position of the function.
     
 **Example,**
@@ -128,8 +126,8 @@ service / on new http:Listener(9090) {
 }
 ```
 
-* When formatting service-level function definitions, block indent each element and
-  follow the [function formatting guidelines](/learn/coding-conventions/top-level-definitions#function-definition).
+* When formatting service-level method definitions, block indent each element and
+  follow the [function formatting guidelines](#function-definition).
   
 **Example,**
 
@@ -145,13 +143,13 @@ service / on new http:Listener(9090) {
 }
 ```
 
-* Block indent each function definition, resource definition, and field definition inside a service definition.
+* Block indent each method definition, and field definition inside a service definition.
  
 ## Class Definition
 
-* Block indent each field definition and each function definition on their own line.
-* Init function should be placed before all the other functions. 
-* For function definitions in the class definition, follow the [function formatting guidelines](/learn/coding-conventions/top-level-definitions#function-definition).
+* Block indent each field definition, method definition and type inclusion on their own line.
+* Init method should be placed before all the other methods.
+* For method definitions in the class definition, follow the [function formatting guidelines](#function-definition).
 
 **Example,**
 
@@ -181,7 +179,7 @@ class Person {
 ```
 
 ## Record Definition
-Block indent each of the field definitions (including the Rest field) in their own line.
+Block indent each of the field definitions (including the rest field) in their own line.
 
 **Example,**
 
@@ -200,7 +198,7 @@ type Person record {|
 ```
 
 ## Referencing Record or Object 
-* Do not keep spaces between the `*`, the abstract object name, or the record name.
+* Do not keep spaces between the `*` and the object name or the record name.
   
 **Example,**
   

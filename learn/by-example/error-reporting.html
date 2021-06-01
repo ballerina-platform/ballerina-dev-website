@@ -1,0 +1,344 @@
+---
+layout: ballerina-example-page
+title: Error Reporting
+description: This BBE demonstrates how errors are reported in Ballerina
+keywords: ballerina, ballerina by example, bbe, error, error reporting
+permalink: /learn/by-example/error-reporting
+active: error-reporting
+redirect_from:
+  - /swan-lake/learn/by-example/error-reporting
+  - /swan-lake/learn/by-example/error-reporting.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// Parses a string to convert to an integer value.</span>
+<span class="c1">// This function may return error values.</span>
+<span class="c1">// The return type is a union with error.</span>
+<span class="kd">function</span> <span class="nb">parse</span><span class="p">(</span><span class="kt">string</span> <span class="nx">s</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span><span class="p">[]</span> <span class="nx">cps</span> <span class="p">=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">toCodePointInts</span><span class="p">();</span>
+    <span class="nx">foreach</span> <span class="kt">int</span> <span class="nx">cp</span> <span class="nx">in</span> <span class="nx">cps</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">cp</span> <span class="o">-</span> <span class="mh">0x30</span><span class="p">;</span>
+        <span class="k">if</span> <span class="nx">p</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">p</span> <span class="p">&gt;</span> <span class="mi">9</span> <span class="p">{</span>
+            <span class="c1">// If `p` is not a digit construct and return </span>
+            <span class="c1">// an error value with &quot;not a digit&quot; as the error message.</span>
+            <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;not a digit&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">n</span> <span class="p">=</span> <span class="nx">n</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="nx">p</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">n</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// An `int` value is returned when the argument is a string</span>
+    <span class="c1">// that can be successfully parsed as an integer.</span>
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">x</span> <span class="p">=</span> <span class="nb">parse</span><span class="p">(</span><span class="s">&quot;123&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+
+    <span class="c1">// An `error` value is returned when the argument is a string</span>
+    <span class="c1">// that has a character that is not a digit.</span>
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">y</span> <span class="p">=</span> <span class="nb">parse</span><span class="p">(</span><span class="s">&quot;1h&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Error Reporting</h2>
+                            <p><p>Ballerina does not have exceptions. Errors are reported by functions returning
+ error values.
+ <code>error</code> is its own basic type.
+ The return type of a function that may return an error value will be a union with error.
+ An error value includes a <code>string</code> message.
+ An error value includes stack trace from the point where <code>error(msg)</code> is called.
+ Error values are immutable.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="unions.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Unions</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="error-handling.html">
+                                        <span>NEXT ></span>
+                                        <p>Error Handling</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="error-reporting">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/error-reporting/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=3c15c2c69a85cb5e2c1b6fdaed6b0717&file=error_reporting.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function parse(string s) returns int|error {
+    int n = 0;
+    int[] cps = s.toCodePointInts();
+    foreach int cp in cps {
+        int p = cp - 0x30;
+        if p &lt; 0 || p &gt; 9 {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Parses a string to convert to an integer value.
+ This function may return error values.
+ The return type is a union with error.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            return error(&quot;not a digit&quot;);
+        }
+        n = n * 10 + p;
+    }
+    return n;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If <code>p</code> is not a digit construct and return
+ an error value with &ldquo;not a digit&rdquo; as the error message.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error x = parse(&quot;123&quot;);
+    io:println(x);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>An <code>int</code> value is returned when the argument is a string
+ that can be successfully parsed as an integer.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error y = parse(&quot;1h&quot;);
+    io:println(y);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>An <code>error</code> value is returned when the argument is a string
+ that has a character that is not a digit.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>bal run error_reporting.bal
+123
+error(&quot;not a digit&quot;)
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

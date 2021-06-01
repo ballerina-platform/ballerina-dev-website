@@ -3,10 +3,7 @@ layout: ballerina-layer-page
 title: From Code to Cloud
 description: See how the Ballerina programming language has built-in cloud support, which helps developers deploy to cloud platforms like Docker and Kubernetes.
 keywords: ballerina, programming language, cloud, kubernetes, docker
-permalink: /why-ballerina/from-code-to-cloud/
-redirct_from:
-  - /why/from-code-to-cloud/
-  - /why/from-code-to-cloud
+permalink: /why-ballerina/from-code-to-cloud-old/
 ---
 <div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">
@@ -48,37 +45,16 @@ redirct_from:
                               <p>However, in many cases, creating these YAML files is out of a developer’s comfort zone. The Ballerina compiler can create these YAML files while compiling the source code, so you don’t have to! The code below shows the build option you need to use to do this:</p>
                               <h3 id="get-started">Get Started</h3>
                               <p>The following code snippet shows how Ballerina compiler can generate YAML files to deploy your code to Kubernetes.</p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">import ballerina/http;
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">
 import ballerina/http;
 service /hello on new http:Listener(9090) {
-    resource function get sayHello(http:Caller caller, http:Request req)
-            returns error? {
-        check caller->respond("Hello, World!");
+    resource function get sayHello() returns string? {
+        return "Hello, World!";
     }
 }
-service hello on helloWorldEP {
- 
-resource function sayHello(http:Caller caller,
-http:Request request) {
-      var result = caller->respond("Hello World!");
-      if (result is error) {
-          log:printError("Error in responding ", err = result);
-      }
-  }
-}
 </code></pre>
-                              <p>Building the source with <code class="highlighter-rouge cBasicCode">bal build --cloud=k8s</code> will generate the Kubernetes Deployment and Service YAML files that is required to deploy our hello application into Kubernetes.</p>
-                    <!--<ul class="cInlinelinklist">
-                                 <li>
-                                 <a class="cGreenLinkArrow" href="/learn/by-example/kubernetes-deployment.html">Kubernetes Deployment BBE</a>
-                                 </li>
-                                 </ul>
-                            <p>If you are an OpenShift user follow the example below to deploy your application.</p>
-                            <ul class="cInlinelinklist">
-                                 <li>
-                                 <a class="cGreenLinkArrow" href="/learn/by-example/openshift-deployment.html">OpenShift Deployment BBE</a>
-                                 </li>
-                                 </ul>-->
+                              <p>Building the source with <code class="highlighter-rouge cBasicCode">bal build --cloud=k8s</code> will generate the Kubernetes YAML files and Docker image that is required to deploy hello application into Kubernetes.</p>
+                              <p>Building the source with <code class="highlighter-rouge cBasicCode">bal build --cloud=docker</code> will generate the Docker image and Dockerfile.</p>
                           </div>
                         </div>
                      </div>
@@ -103,6 +79,31 @@ http:Request request) {
                               <p><a href="https://aws.amazon.com/lambda/">AWS Lambda</a> is an event-driven, serverless computing platform. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with <code class="highlighter-rouge cBasicCode">@awslambda:Function</code>, which should have the function signature <code class="highlighter-rouge cBasicCode">function (awslambda:Context, json) returns json|error</code>.</p>
 <ul class="cInlinelinklist">
                                  <li><a class="cGreenLinkArrow" href="/learn/by-example/aws-lambda-deployment.html">AWS Lambda Deployment BBE </a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="row cBallerina-io-Gray-row  cContentRows">
+   <div class="container">
+      <div class="row">
+         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+            <div class="col-xs-12 col-sm-12" style="padding: 0;">
+               <div class="cBlallerina-io-docs-content-container">
+                  <div class="wy-nav-content">
+                     <div class="rst-content">
+                        <div role="main">
+                           <div class="section">
+                              <h2 id="async-network-protocol">From Code to Azure Functions</h2>
+                              <p><a href="https://aws.amazon.com/lambda/">Azure Functions</a> is a serverless solution that allows you to write less code, maintain less infrastructure, and save on costs. Ballerina functions can be deployed in Azure by annotating a Ballerina function with <code class="highlighter-rouge cBasicCode">@azure_functions:Function</code>.</p>
+<ul class="cInlinelinklist">
+                                 <li><a class="cGreenLinkArrow" href="/learn/by-example/azure-functions-deployment.html">Azure Functions Deployment BBE </a></li>
                               </ul>
                            </div>
                         </div>

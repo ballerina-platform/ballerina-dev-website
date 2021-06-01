@@ -12,9 +12,9 @@ redirect_from:
 
 ## Modules
 
-A package is a collection of related modules that are versioned and distributed as a single unit. It is common in small projects to have only one module (default) in a package. As a result, the default module’s content is placed directly in the root of the package directory. But as projects grow in complexity, needs arise to organize code better in terms of the functionality and visibility. Therefore, Ballerina allows subdividing the code into multiple modules as well.
+A package is a collection of related modules that are versioned and distributed as a single unit. It is common in small projects to have only one module (default) in a package. As a result, the default module’s content is placed directly in the root of the package directory. But as projects grow in complexity, needs arise to organize code better in terms of functionality and visibility. Therefore, Ballerina allows subdividing the code into multiple modules as well.
 
-Module names can only contain alphanumerics, underscores and periods and the maximum length is 256 characters. The value of the first identifier of the modules belonging to the same package will always be the package name.
+Module names can only contain alphanumerics, underscores, and periods and the maximum length is 256 characters. The value of the first identifier of the modules belonging to the same package will always be the package name.
 
 ```bash
 <package-name>[.<module-directory-name>]
@@ -39,7 +39,7 @@ Module names can only contain alphanumerics, underscores and periods and the max
 
 The source files of a module are placed at the root of the module directory.
 
-The .bal files in directories except the root directory of the module and tests directory are not considered as the sources of the package. These can be treated as Standalone ballerina files.
+The .bal files in directories except for the root directory of the module and tests directory are not considered as the sources of the package. These can be treated as Standalone ballerina files.
 
 **Module.md**
 
@@ -62,18 +62,18 @@ Symbols such as functions, variables in one file are visible to other files beca
 
 #### Other modules
 
-The top-level modules directory contains all the other modules. Each immediate sub-directory of the modules directory becomes a Ballerina module and the subdirectory name becomes the module name. Therefore the subdirectory name should be a valid Ballerina identifier.
+The top-level modules directory contains all the other modules. Each immediate subdirectory of the modules directory becomes a Ballerina module and the subdirectory name becomes the module name. Therefore the subdirectory name should be a valid Ballerina identifier.
 
 The module names are derived by combining the package name and the directory name. E.g., If the package name given in Ballerina.toml is “winery” and the module directory name is model, then the module name will be winery.model.
 
-We can add other modules using the bal add command:
+We can add other modules using the `bal add` command:
 ```bash
 $ bal add util
 ```
 
-Added new bal module at ‘modules/util
+Added new Ballerina module at the `modules/util` directory.
 
-This creates the modules directory in our package root with a source file. This modules/util directory contains the hello_world.util module. Now, our package will have the directory structure below.
+This creates the `modules` directory in our package root with a source file. This `modules/util` directory contains the hello_world.util module. Now, our package will have the directory structure below.
 
 ```bash
 .

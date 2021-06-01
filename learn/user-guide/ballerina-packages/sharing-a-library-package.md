@@ -18,7 +18,7 @@ To create a new library package, we use `bal new -t lib`:
 $ bal new hello --template lib
 ```
 
-This will create a new Ballerina package with a hello function. Let’s checkout what the bal new command generated for a library package:
+This will create a new Ballerina package with a hello function. Let’s check what the bal new command generated for a library package:
 
 ```bash
 $ cd hello
@@ -31,9 +31,9 @@ hello
 0 directories, 3 files
 ```
 
-Similar to our first package the Ballerina.toml is created. Apart from it, the hello.bal source file and the [Package.md](/learn/user-guide/ballerina-packages/package-layout#packagemd) files are created.
+Similar to our first package the `Ballerina.toml` is created. Apart from it, the hello.bal source file and the [Package.md](/learn/user-guide/ballerina-packages/package-layout#packagemd) files are created.
 
-Let’s check the content of the Ballerina.toml file.
+Let’s check the content of the `Ballerina.toml` file.
 
 ```toml
 [package]
@@ -58,7 +58,7 @@ Creating bala
 
 ### Publishing a Library Package to Ballerina Central
 
-Now that you have a package to share with others, it can be published to the Ballerina Central. Ensure the package works as intended, because a publish is **permanent**. Once published to Ballerina Central, the version can never be overwritten, and the package cannot be removed. Nonetheless, the number of versions of a package is not capped out.
+Now that you have a package to share with others, it can be published to the [Ballerina Central](https://central.ballerina.io/). Ensure the package works as intended, because a publish is **permanent**. Once published to Ballerina Central, the version can never be overwritten, and the package cannot be removed. Nonetheless, the number of versions of a package is not capped out.
 
 As a precaution, you may use the [local repository](/learn/user-guide/ballerina-packages/dependencies#overriding-dependencies) first to test out the functionality of the library functions before publishing it to the Ballerina Central repository.
 
@@ -83,11 +83,11 @@ password = ""
 
 When you push a package to Ballerina Central, the organizations for the user is validated against the org defined in the [Ballerina.toml](/learn/user-guide/ballerina-packages/package-layout#ballerinatoml) file. Therefore, when you have more than one organization in Ballerina Central, be sure to pick the organization name that you intend to push the package into and set that as the org in the Ballerina.toml file inside the package directory and rebuild the package.
 
-Also, organization names starting with `ballerina` (e.g. ballerina, ballerinax, ballerinai etc) are reserved for system use and so we cannot publish any packages starting with the prefix ballerina to the Ballerina Central repository. So if you have used a name pattern matching this, update the Ballerina.toml and rebuild the package.
+Also, organization names starting with `ballerina` (e.g. ballerina, ballerinax, ballerinai, etc) are reserved for system use and so we cannot publish any packages starting with the prefix ballerina to the Ballerina Central repository. So if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
 
 #### Publish the package
 
-Now that you are ready to publish, use the bal push command to publish the package to Ballerina central:
+Now that you are ready to publish, use the `bal push` command to publish the package to Ballerina Central:
 
 ```bash
 $ bal push
@@ -99,6 +99,6 @@ Now you can create your second package and use the package you just published in
 
 #### Using Packages published in Ballerina Central
 
-Any package published in Ballerina Central is public and they can be used in packages as explained in [Dependencies](/learn/user-guide/ballerina-packages/dependencies#dependencies) section. 
+Any package published in Ballerina Central is public and they can be used in packages as explained in the [Dependencies](/learn/user-guide/ballerina-packages/dependencies#dependencies) section. 
 
 

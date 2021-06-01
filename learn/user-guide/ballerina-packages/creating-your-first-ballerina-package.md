@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Creating your first Ballerina Package
+title: Creating Your First Ballerina Package
 description: The below are the basic steps you need to know about writing a Ballerina package. It also introduces the package-related commands in the Ballerina command-line tool.
 keywords: ballerina, programming language, ballerina packages, getting started
 permalink: /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/

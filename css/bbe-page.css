@@ -132,3 +132,8 @@ code[class*="language-"], pre[class*="language-"] {
 /*a.copy {
     display: none;
 }*/
+
+.cLeftNavContainerScroll{
+    height: '90vh';
+    overflow-y: scroll
+}

@@ -17,7 +17,7 @@ redirect_from:
   - /learn/network-communication/http/data-binding
 ---
 
-In the [HTTP GET scenarios](/learn/network-communication/http/#get), the default value of the target type parameter is used in the [`get`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote method of the [`http:Client`](https://docs.central.ballerina.io/ballerina/http/latest/clients/HttpClient), which is the [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response). You can also pass in the types `string`, `json`, `xml`, `map<json>`, `byte[]`, custom record, and record array types to perform automatic data binding with the returned payload. 
+[`http:Client`](https://docs.central.ballerina.io/ballerina/http/latest/clients/HttpClient) data binding happens automatically based on the left hand side type. The left hand side type could be any type such as `string`, `json`, `xml`, `map<json>`, `byte[]`, custom record, and record array types. 
 
 In the data binding, any HTTP response that returns the 4xx or 5xx status codes are considered as error situations. Therefore, the [`get`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote method will return the error value of the [`http:ClientError`](https://docs.central.ballerina.io/ballerina/http/latest/errors#ClientError) type. 
 
@@ -33,8 +33,10 @@ import ballerina/io;
  
 public function main() returns @tainted error? {
    http:Client clientEp = check new("https://freegeoip.app");
+
    json jp = check clientEp->get("/json/");
    io:println("JSON Payload:\n", jp, "\n");
+
    xml xp = check clientEp->get("/xml/");
    io:println("XML Payload:\n", xp);
 }
@@ -91,9 +93,6 @@ type Location record {
 public function main() returns @tainted error? {
    http:Client clientEp = check new("https://freegeoip.app");
    Location loc = check clientEp->get("/json/");
-   io:println("IP: ", loc.ip);
-   io:println("Latitude: ", loc.latitude);
-   io:println("Longitude: ", loc.longitude);
    io:println("City/State/Country: ", string `${loc.city}, ${loc.region_code}, ${loc.country_name}`);
 }
 ```
@@ -106,9 +105,6 @@ Compiling source
 
 Running executable
 
-IP: 45.30.94.9
-Latitude: 37.4073
-Longitude: -121.939
 City/State/Country: San Jose, CA, United States
 ```
 

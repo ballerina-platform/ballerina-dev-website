@@ -10,8 +10,6 @@ redirect_from:
 - /learn/user-guide/ballerina-packages/dependencies
 ---
 
-## Dependencies
-
 In Ballerina, we can access any public symbol from another module by importing the particular module using an import declaration. The import declaration syntax is as follows:
 
 ```bal

@@ -10,8 +10,6 @@ redirect_from:
 - /learn/user-guide/ballerina-packages/modules
 ---
 
-## Modules
-
 A package is a collection of related modules that are versioned and distributed as a single unit. It is common in small projects to have only one module (default) in a package. As a result, the default module’s content is placed directly in the root of the package directory. But as projects grow in complexity, needs arise to organize code better in terms of functionality and visibility. Therefore, Ballerina allows subdividing the code into multiple modules as well.
 
 Module names can only contain alphanumerics, underscores, and periods and the maximum length is 256 characters. The value of the first identifier of the modules belonging to the same package will always be the package name.

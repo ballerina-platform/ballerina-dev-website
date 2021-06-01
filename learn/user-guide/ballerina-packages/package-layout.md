@@ -10,8 +10,6 @@ redirect_from:
 - /learn/user-guide/ballerina-packages/package-layout
 ---
 
-## Package layout
-
 ```bash
 .
 ├── Ballerina.toml

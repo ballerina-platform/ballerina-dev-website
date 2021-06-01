@@ -10,8 +10,6 @@ redirect_from:
 - /learn/user-guide/ballerina-packages/sharing-a-library-package
 ---
 
-## Sharing a Library package
-
 To create a new library package, we use `bal new -t lib`:
 
 ```bash

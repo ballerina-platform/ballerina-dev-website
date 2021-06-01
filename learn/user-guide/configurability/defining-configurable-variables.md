@@ -30,7 +30,7 @@ The `configurable` keyword is used to declare a configurable variable. The initi
 
 The values of configurable variables would always be a subtype of `anydata`. A configurable variable is implicitly `final` and cannot be assigned outside the declaration. The static type of the configurable variable is implicitly `readonly`. Therefore, it can always be referenced within an isolated function.
 
-## Supplying Values to Configurable Variables
+## Providing Values to Configurable Variables
 
 Ballerina supports providing the values for configurable variables through configuration files, command-line arguments, and environment variables. The precedence order for retrieving configurable values is as follows.
 
@@ -38,7 +38,7 @@ Ballerina supports providing the values for configurable variables through confi
 
 ### Using Command-Line Arguments
 
-The module information of the configurable variable can be provided with command-line argument. For more information, see [Supplying Configurable Values Through Command-Line Arguments](/learn/user-guide/configurability/providing-values-to-configurable-variables/#supplying-through-command-line-arguments).
+The module information of the configurable variable can be provided with command-line argument. For more information, see [Supplying Configurable Values Through Command-Line Arguments](/learn/user-guide/configurability/providing-values-to-configurable-variables/#providing-values-through-command-line-arguments).
 
 ### Using Configuration Files
 

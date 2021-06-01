@@ -83,3 +83,10 @@ Running executable
 
 Hello World!
 ```
+
+<style>
+.cBallerinaTocContainer {
+    display: none !important;
+}
+</style>
+

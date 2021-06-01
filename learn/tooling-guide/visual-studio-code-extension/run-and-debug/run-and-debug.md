@@ -211,21 +211,21 @@ The following attributes are mandatory for all configurations.
 
 - `name` - The reader-friendly name to appear in the Debug launch configuration dropdown.
 - `type` - The type of debugger to use for this launch configuration. The attribute value must be kept as `ballerina` for all ballerina debugging configuration types.
-- c request type of this launch configuration. Currently, launch and attach are supported.
+- `request` - The request type of this launch configuration. Currently, launch and attach are supported.
 
 The following attributes are supported for all Ballerina `launch` configurations.
 
 - `programArgs` - Any program arguments that are required to be passed into the `main` function of the Ballerina program to be launched, can be passed as a list of strings.
 - `commandOptions` - If required, you can configure command options for the Ballerina program to be launched, as a list of strings. You can see the list of all the available command options by executing the following CLI commands in your terminal.
-    - For `Ballerina Debug` configuration - `ballerina run --help`
-    - For `Ballerina Test` configuration - `ballerina test --help`
+    - For `Ballerina Debug` configuration - `ballerina run --help`.
+    - For `Ballerina Test` configuration - `ballerina test --help`.
 - `env` - Any environment variables you need to configure for the launching Ballerina program can be passed as a map of strings (name and value).
 - `debugTests` - Indicates whether to debug the tests for the given script.
 
 The following attributes are supported for all Ballerina `attach` configurations.
 
-- `debuggeeHost` - remote debug server host
-- `debuggeePort` - remote debug server port   
+- `debuggeeHost` - remote debug server host.
+- `debuggeePort` - remote debug server port.
 
 #### Existing Limitations
 

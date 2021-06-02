@@ -81,7 +81,7 @@ version = "0.99.4”
 
 When you execute `bal build`, the `Dependencies.toml` is created if at least one dependency is referred to its stable version. From the second build onwards, the compiler honors the version declared in the `Dependencies.toml` until you update the file.
 
-When you find a newer version of the `ballerina/io` package, which wyouwant to use in your code, either delete the corresponding dependency declaration from the `Dependencies.toml` file or update the version. If you delete the dependency declaration, then the compiler updates the file with the latest version during the next build.
+When you find a newer version of the `ballerina/io` package, which you want to use in your code, either delete the corresponding dependency declaration from the `Dependencies.toml` file or update the version. If you delete the dependency declaration, then the compiler updates the file with the latest version during the next build.
 
 When the `Dependencies.toml` is updated by a build, only the stable versions are recorded. If any pre-release versions are used that need to be locked, then they must be added manually to the file.
 

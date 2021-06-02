@@ -244,7 +244,7 @@
    {
       "version": "swan-lake-beta1",
       "short-version": "slbeta1",
-      "display-version": "Swan Lake Beta 1",
+      "display-version": "Swan Lake Beta1",
       "release-date": "2021-06-02",
       "windows-installer": "ballerina-windows-installer-x64-swan-lake-beta1.msi",
       "windows-installer-size": "143mb",

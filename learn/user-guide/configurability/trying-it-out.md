@@ -98,9 +98,7 @@ Follow the steps below to create the Ballerina package.
     format = "json"
     ```
 
-    >**Note:** The values for the `url` and `port` variables are given without a module-name header as those variables are defined in the `userPortal` root module.
-
-    Similarly, the `admin` and `users` variables  are defined in a `userPortal.users` non-root module . Therefore, they are provided with the module-name prefix as `userPortal.users`. Also, the project uses a `ballerina/log` imported module, which contains a configurable variable `format`, which is configured in the `Config.toml` file. As `ballerina/log` is neither the root module nor from the root package, it is provided with its org-name and module-name as a `ballerina.log` prefix. 
+    >**Note:** The values for the `url` and `port` variables are given without a module-name header as those variables are defined in the `userPortal` root module. Similarly, the `admin` and `users` variables  are defined in a `userPortal.users` non-root module . Therefore, they are provided with the module-name prefix as `userPortal.users`. Also, the project uses a `ballerina/log` imported module, which contains a configurable variable `format`, which is configured in the `Config.toml` file. As `ballerina/log` is neither the root module nor from the root package, it is provided with its org-name and module-name as a `ballerina.log` prefix. 
 
     The created package will have the structure below.
 

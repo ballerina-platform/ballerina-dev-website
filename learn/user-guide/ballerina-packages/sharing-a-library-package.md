@@ -87,7 +87,7 @@ Ensure the package works as intended because a publish is **permanent**. Once pu
 
 When you push a package to Ballerina Central, the organizations are validated against the value of the `org` field defined in the [Ballerina.toml](/learn/user-guide/ballerina-packages/package-layout#ballerinatoml) file. Therefore, when you have more than one organizations in Ballerina Central, pick the organization name that you intend to push the package into, set that as the `org` in the `Ballerina.toml` file inside the package directory, and rebuild the package.
 
-Also, organization names starting with `ballerina` (e.g., `ballerina`, `ballerinax`, `ballerinai`, etc.) are reserved for system use, and thereby, you cannot publish any packages starting with the `ballerina` prefix to Ballerina Central. Tehrefore, if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
+Also, organization names starting with `ballerina` (e.g., `ballerina`, `ballerinax`, `ballerinai`, etc.) are reserved for system use, and thereby, you cannot publish any packages starting with the `ballerina` prefix to Ballerina Central. Therefore, if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
 
 #### Publishing the Package
 

@@ -122,7 +122,7 @@ io:println("Door - Open: ", eds2.open, " Locked: ", eds2.locked);
 ```
 
 ### Benefits of a Structural Type System
-A structural type system proves beneficial when you have multiple systems interacting with each other since data exchange and type compatibilities can be resolved easier. Let’s dive into a Ballerina <a href="/learn/by-example/query-expression.html">integrated query</a> example, which shows this behavior.
+A structural type system proves beneficial when you have multiple systems interacting with each other since data exchange and type compatibilities can be resolved easier. Let’s dive into a Ballerina <a href="/learn/by-example/query-expressions">integrated query</a> example, which shows this behavior.
 
 ```ballerina
 type Result record {|
@@ -177,7 +177,7 @@ Here, the type `Person` is an open record type, the notation `json...;` denotes 
 
 The earlier `DoorState` record type was defined explicitly as a closed record type. Therefore, you were able to list out all the possible shapes in the `DoorState` type. If this type was defined as an open record, you would have an infinite number of shapes since `DoorState` values can have any arbitrary fieldset in the code.
 
-The `Person` record type above has an <a href="/learn/by-example/record-optional-fields.html">optional field</a> `creditScore` (denoted by the suffix `"?"`). This means the field value of `creditScore` of a `Person` record can be skipped without setting a value. Later on, this field can be accessed using the `"?."` operator, which would return a value of type `CreditScore?`, which is equivalent to the union type `CreditScore|()`. In Ballerina, the nil value and the type are represented by `()`.
+The `Person` record type above has an <a href="/learn/by-example/optional-fields">optional field</a> `creditScore` (denoted by the suffix `"?"`). This means the field value of `creditScore` of a `Person` record can be skipped without setting a value. Later on, this field can be accessed using the `"?."` operator, which would return a value of type `CreditScore?`, which is equivalent to the union type `CreditScore|()`. In Ballerina, the nil value and the type are represented by `()`.
 
 Let’s create a new type `Student`, which will be a subtype of the `Person` type.
 

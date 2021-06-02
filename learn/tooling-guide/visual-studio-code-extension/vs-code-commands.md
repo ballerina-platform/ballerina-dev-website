@@ -62,8 +62,10 @@ It adds a [Ballerina module](/learn/user-guide/structuring-ballerina-code/workin
 
 ![Add Module](/learn/images/add-module.gif)
 
-## Create Cloud.toml
+## Create 'Cloud.toml'
 
 It generates a `Cloud.toml` file for your Ballerina project according to the default [cloud specifications](https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md).
 
 ![Create Cloud.toml](/learn/images/create-cloud-toml.gif)
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

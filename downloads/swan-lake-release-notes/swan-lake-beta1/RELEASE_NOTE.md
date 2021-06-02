@@ -153,7 +153,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta1](https://github
 #### `graphql` Package
 - Added declarative auth configurations
 - Added support for optional types as inputs
-- Added support for returning distinct service object unions
+- Added support for returning unions of distinct service objects
 - Added support for inline fragments
 - Added support for enums as input values
 

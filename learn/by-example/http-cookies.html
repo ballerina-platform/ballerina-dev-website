@@ -68,7 +68,7 @@ redirect_from:
             <span class="kt">string</span><span class="err">?</span> <span class="nx">user</span> <span class="p">=</span> <span class="nx">usernameCookie</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span><span class="p">;</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">user</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
                 <span class="c1">// Respond with the username added to the welcome message.</span>
-                <span class="k">return</span> <span class="s">&quot;Welcome back &quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">user</span><span class="p">;</span>
+                <span class="k">return</span> <span class="s">&quot;Welcome back &quot;</span> <span class="o">+</span> <span class="nx">user</span><span class="p">;</span>
 
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="c1">// If the user is `nil`, send a login message.</span>
@@ -517,7 +517,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>                return &quot;Welcome back &quot; + &lt;@untainted&gt; user;
+                                    <div class="highlight"><pre><code class=language-ballerina>                return &quot;Welcome back &quot; + user;
 </code></pre></div>
 
                                 </td>
@@ -604,9 +604,7 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run cookie_server.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run cookie_server.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9095
 </code></pre></div>
 
@@ -878,9 +876,7 @@ import ballerina/log;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run http_client.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run http_client.bal
 time = 2020-12-15 16:14:08,691 level = INFO  module = &quot;&quot; message = &quot;Welcome back John&quot;
 </code></pre></div>
 

@@ -200,10 +200,6 @@ import ballerina/io;
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -211,27 +207,10 @@ import ballerina/io;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># As a prerequisite, navigate to the directory that contains the
-# `http_service_mutual_ssl.bal` file and execute the `bal run` command below.
-# (You may need to change the certificate file path and private key file path.)
-bal run http_service_mutual_ssl.bal
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the `.bal` file,
-# and execute the `bal run` command below.
-# (You may need to change the certificate file path, private key file path and
-# trusted certificate file path.)
+                                    <div class="highlight"><pre><code class=shell-session># As a prerequisite, start a sample service secured with mutual SSL.
+# You may need to change the certificate file path, private key file path, and
+# trusted certificate file path.
 bal run http_client_mutual_ssl.bal
 Hello, World!
 </code></pre></div>

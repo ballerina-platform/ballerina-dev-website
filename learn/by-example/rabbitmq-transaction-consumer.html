@@ -42,7 +42,7 @@ redirect_from:
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span>
                             <span class="s">&quot;Error occurred while acknowledging the message.&quot;</span><span class="p">);</span>
             <span class="p">}</span>
-            <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
+            <span class="nx">error</span><span class="err">?</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -235,7 +235,7 @@ import ballerinax/rabbitmq;
                 log:printError(
                             &quot;Error occurred while acknowledging the message.&quot;);
             }
-            var res = commit;
+            error? res = commit;
         }
     }
 }
@@ -264,18 +264,6 @@ import ballerinax/rabbitmq;
                                 
                             
                         
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -283,47 +271,9 @@ import ballerinax/rabbitmq;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Make sure to have the RabbitMQ broker running.
-#
-# Navigate to the directory that contains the
-# &#39;rabbitmq_transaction_consumer.bal&#39; file, and run the &#39;bal run&#39; command below.
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>bal run rabbitmq_transaction_consumer.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># The RabbitMQ transaction consumer runs as a Ballerina service and listens to the subscribed queue.
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>[ballerina/http] started HTTP/WS listener 192.168.1.2:51642
+                                    <div class="highlight"><pre><code class=shell-session>bal run rabbitmq_transaction_consumer.bal
+[ballerina/http] started HTTP/WS listener 192.168.1.2:51642
 [ballerinax/rabbitmq] Consumer service started for queue MyQueue
 time = 2021-01-18 15:15:36,514 level = INFO  module = &quot;&quot; message = &quot;The message received: Hello from Ballerina&quot;
 </code></pre></div>

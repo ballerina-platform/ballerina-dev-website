@@ -151,7 +151,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta1](https://github
 ### New Features
 
 #### `graphql` Package
-- Added declarative auth configurations
+- Added declarative auth configuration
 - Added support for optional types as inputs
 - Added support for returning unions of distinct service objects
 - Added support for inline fragments

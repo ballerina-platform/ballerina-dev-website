@@ -23,7 +23,7 @@
       active: concurrent
     - title: Reliable, Maintainable
       url: /learn/user-guide/why-ballerina/reliable-maintainable/
-      active: reliable-and-maintainable
+      active: reliable-maintainable
 
 
 - title: Getting Started 

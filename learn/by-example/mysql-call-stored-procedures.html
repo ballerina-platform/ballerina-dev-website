@@ -38,7 +38,7 @@ redirect_from:
                                 <span class="s">`CALL InsertStudent(${name}, ${age})`</span><span class="p">;</span>
 
     <span class="c1">// Invokes the stored procedure `InsertStudent` with the `IN` parameters.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span> <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">call</span><span class="p">(</span><span class="nx">sqlQuery</span><span class="p">);</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span> <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="nx">sqlQuery</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call stored procedure `InsertStudent`.&quot;</span> <span class="o">+</span>
         <span class="s">&quot;\nAffected Row count: &quot;</span><span class="p">,</span> <span class="nx">retCall</span><span class="p">.</span><span class="nx">executionResult</span><span class="err">?</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
     <span class="nx">check</span> <span class="nx">retCall</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
@@ -50,7 +50,7 @@ redirect_from:
                         <span class="s">`{CALL GetCount(${id}, ${totalCount})}`</span><span class="p">;</span>
 
     <span class="c1">// The stored procedure with the `OUT` and `INOUT` parameters is invoked.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span> <span class="nx">retCall2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">call</span><span class="p">(</span><span class="nx">sqlQuery2</span><span class="p">);</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span> <span class="nx">retCall2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="nx">sqlQuery2</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call stored procedure `GetCount`.&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age of the student with id &#39;1&#39; : &quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total student count: &quot;</span><span class="p">,</span> <span class="nx">totalCount</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
@@ -58,7 +58,7 @@ redirect_from:
 
     <span class="c1">// Invokes the stored procedure, which returns the data.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span> <span class="nx">retCall3</span> <span class="p">=</span> 
-            <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">call</span><span class="p">(</span><span class="s">&quot;{CALL GetStudents()}&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nx">Student</span><span class="p">]);</span>
+            <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="s">`{CALL GetStudents()}`</span><span class="p">,</span> <span class="p">[</span><span class="nx">Student</span><span class="p">]);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call stored procedure `GetStudents`.&quot;</span><span class="p">);</span>              
 
     <span class="c1">// Processes the returned result stream.</span>
@@ -82,22 +82,22 @@ redirect_from:
 
     <span class="c1">// Creates a database.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
-        <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE DATABASE MYSQL_BBE`</span><span class="p">);</span>
+        <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE DATABASE MYSQL_BBE`</span><span class="p">);</span>
 
     <span class="c1">// Creates a table in the database.</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE MYSQL_BBE.Student</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE MYSQL_BBE.Student</span>
 <span class="s">            (id INT AUTO_INCREMENT, age INT, name VARCHAR(255),</span>
 <span class="s">            PRIMARY KEY (id))`</span><span class="p">);</span>
 
     <span class="c1">// Creates the necessary stored procedures using the execute command.</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE PROCEDURE</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE PROCEDURE</span>
 <span class="s">        MYSQL_BBE.InsertStudent (IN pName VARCHAR(255), IN pAge INT)</span>
 <span class="s">        BEGIN INSERT INTO Student(age, name) VALUES (pAge, pName); END`</span><span class="p">);</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE PROCEDURE MYSQL_BBE.GetCount</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE PROCEDURE MYSQL_BBE.GetCount</span>
 <span class="s">        (INOUT pID INT, OUT totalCount INT) BEGIN SELECT age INTO pID FROM</span>
 <span class="s">        Student WHERE id = pID; SELECT COUNT(*) INTO totalCount FROM Student;</span>
 <span class="s">        END`</span><span class="p">);</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE PROCEDURE</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE PROCEDURE</span>
 <span class="s">        MYSQL_BBE.GetStudents() BEGIN SELECT * FROM Student; END`</span><span class="p">);</span>
 
     <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>    
@@ -107,7 +107,7 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Cleans the database.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
-            <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`DROP DATABASE MYSQL_BBE`</span><span class="p">);</span>
+            <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP DATABASE MYSQL_BBE`</span><span class="p">);</span>
 
     <span class="c1">// Closes the MySQL client.</span>
     <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
@@ -340,7 +340,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ProcedureCallResult retCall = check mysqlClient -&gt; call(sqlQuery);
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ProcedureCallResult retCall = check mysqlClient-&gt;call(sqlQuery);
     io:println(&quot;Call stored procedure `InsertStudent`.&quot; +
         &quot;\nAffected Row count: &quot;, retCall.executionResult?.affectedRowCount);
     check retCall.close();
@@ -384,7 +384,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ProcedureCallResult retCall2 = check mysqlClient -&gt; call(sqlQuery2);
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ProcedureCallResult retCall2 = check mysqlClient-&gt;call(sqlQuery2);
     io:println(&quot;Call stored procedure `GetCount`.&quot;);
     io:println(&quot;Age of the student with id &#39;1&#39; : &quot;, id.get(int));
     io:println(&quot;Total student count: &quot;, totalCount.get(int));
@@ -408,7 +408,7 @@ import ballerina/sql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:ProcedureCallResult retCall3 = 
-            check mysqlClient -&gt; call(&quot;{CALL GetStudents()}&quot;, [Student]);
+            check mysqlClient-&gt;call(`{CALL GetStudents()}`, [Student]);
     io:println(&quot;Call stored procedure `GetStudents`.&quot;);              
 </code></pre></div>
 
@@ -496,7 +496,7 @@ import ballerina/sql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
-        check mysqlClient -&gt; execute(`CREATE DATABASE MYSQL_BBE`);
+        check mysqlClient-&gt;execute(`CREATE DATABASE MYSQL_BBE`);
 </code></pre></div>
 
                                 </td>
@@ -515,7 +515,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient -&gt; execute(`CREATE TABLE MYSQL_BBE.Student
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient-&gt;execute(`CREATE TABLE MYSQL_BBE.Student
             (id INT AUTO_INCREMENT, age INT, name VARCHAR(255),
             PRIMARY KEY (id))`);
 </code></pre></div>
@@ -536,14 +536,14 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient -&gt; execute(`CREATE PROCEDURE
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient-&gt;execute(`CREATE PROCEDURE
         MYSQL_BBE.InsertStudent (IN pName VARCHAR(255), IN pAge INT)
         BEGIN INSERT INTO Student(age, name) VALUES (pAge, pName); END`);
-    result = check mysqlClient -&gt; execute(`CREATE PROCEDURE MYSQL_BBE.GetCount
+    result = check mysqlClient-&gt;execute(`CREATE PROCEDURE MYSQL_BBE.GetCount
         (INOUT pID INT, OUT totalCount INT) BEGIN SELECT age INTO pID FROM
         Student WHERE id = pID; SELECT COUNT(*) INTO totalCount FROM Student;
         END`);
-    result = check mysqlClient -&gt; execute(`CREATE PROCEDURE
+    result = check mysqlClient-&gt;execute(`CREATE PROCEDURE
         MYSQL_BBE.GetStudents() BEGIN SELECT * FROM Student; END`);
 </code></pre></div>
 
@@ -596,7 +596,7 @@ import ballerina/sql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
-            check mysqlClient -&gt; execute(`DROP DATABASE MYSQL_BBE`);
+            check mysqlClient-&gt;execute(`DROP DATABASE MYSQL_BBE`);
 </code></pre></div>
 
                                 </td>

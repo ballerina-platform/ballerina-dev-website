@@ -307,6 +307,10 @@ password=&quot;eve@123&quot;
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -314,11 +318,9 @@ password=&quot;eve@123&quot;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the `.bal` file,
-# and execute the `bal run` command below.
-# Ensure that the `Config.toml` file is populated correctly with the user
-# information.
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># As a prerequisite, ensure that the `Config.toml` file is populated correctly
+# with the user information.
 echo &#39;[[&quot;ballerina.auth.users&quot;]]
 username=&quot;alice&quot;
 password=&quot;password1&quot;
@@ -327,7 +329,18 @@ scopes=[&quot;scope1&quot;]
 username=&quot;bob&quot;
 password=&quot;password2&quot;
 scopes=[&quot;scope2&quot;, &quot;scope3&quot;]&#39; &gt; Config.toml
-# (You may need to change the certificate file path and private key file path.)
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># You may need to change the certificate file path and private key file path.
 bal run http_service_basic_auth_file_user_store.bal
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
 </code></pre></div>

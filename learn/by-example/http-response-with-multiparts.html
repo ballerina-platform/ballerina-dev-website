@@ -20,9 +20,6 @@ redirect_from:
 <span class="c1">// Creates an endpoint for the client.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9092&quot;</span><span class="p">);</span>
 
-<span class="c1">// Creates a listener for the service.</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">multipartEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
-
 <span class="kd">service</span> <span class="o">/</span><span class="nx">multiparts</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">encode_out_response</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">{</span>
@@ -54,14 +51,13 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="c1">// Binds the listener to the service.</span>
-<span class="kd">service</span> <span class="o">/</span><span class="nx">multiparts</span> <span class="nx">on</span> <span class="nx">multipartEP</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">multiparts</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="c1">// This resource accepts multipart responses.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">decode_in_response</span><span class="p">()</span>
             <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">inResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="k">var</span> <span class="nx">returnResult</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/multiparts/encode_out_response&quot;</span><span class="p">);</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">returnResult</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span>
+                        <span class="s">&quot;/multiparts/encode_out_response&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">returnResult</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// [Extracts the body parts](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getBodyParts)  from the response.</span>
             <span class="k">var</span> <span class="nx">parentParts</span> <span class="p">=</span> <span class="nx">returnResult</span><span class="p">.</span><span class="nx">getBodyParts</span><span class="p">();</span>
@@ -282,8 +278,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -316,25 +310,6 @@ import ballerina/mime;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Creates an endpoint for the client.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener multipartEP = new (9090);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Creates a listener for the service.</p>
 
                                         </div>
                                     </div>
@@ -513,7 +488,7 @@ absolute file path instead.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service /multiparts on multipartEP {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /multiparts on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -534,9 +509,8 @@ absolute file path instead.</p>
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function get decode_in_response()
             returns string|http:InternalServerError {
-        http:Response inResponse = new;
-        var returnResult = clientEP-&gt;get(&quot;/multiparts/encode_out_response&quot;);
-        http:Response res = new;
+        http:Response|error returnResult = clientEP-&gt;get(
+                        &quot;/multiparts/encode_out_response&quot;);
         if (returnResult is http:Response) {
 </code></pre></div>
 
@@ -864,8 +838,6 @@ vary based on your requirement.</p>
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># In the directory, which contains the `.bal` file, create a directory named `files`,
 # and add an XML file named `test.xml` in it.
-# To start the service, navigate to the directory that contains the
-# `.bal` file and use the `bal run` command below.
 bal run response_with_multiparts.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9092

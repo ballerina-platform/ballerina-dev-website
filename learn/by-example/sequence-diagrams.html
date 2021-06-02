@@ -1,32 +1,34 @@
 ---
 layout: ballerina-example-page
-title: Waiting for Workers
-description: This BBE demonstrates waiting for workers
-keywords: ballerina, ballerina by example, bbe, worker, wait
-permalink: /learn/by-example/waiting-for-workers
-active: waiting-for-workers
+title: Sequence Diagrams
+description: This BBE demonstrates Ballerina's sequence diagrams
+keywords: ballerina, ballerina by example, bbe, sequence diagram, diagram
+permalink: /learn/by-example/sequence-diagrams
+active: sequence-diagrams
 redirect_from:
-  - /swan-lake/learn/by-example/waiting-for-workers
-  - /swan-lake/learn/by-example/waiting-for-workers.html
+  - /swan-lake/learn/by-example/sequence-diagrams
+  - /swan-lake/learn/by-example/sequence-diagrams.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Initializing&quot;</span><span class="p">);</span>
+<span class="c1">// A function can be viewed as a sequence diagram.</span>
+<span class="c1">// The diagram has a lifeline (vertical line) for each worker (both named </span>
+<span class="c1">// worker and function&#39;s default worker).</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// The diagram also has a lifeline for each client object parameter or variable in </span>
+    <span class="c1">// the initialization section, representing the remote system to which the client  </span>
+    <span class="c1">// object is sending messages.</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">cl</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://www.mocky.io&quot;</span><span class="p">);</span>
 
-    <span class="kd">worker</span> <span class="nx">A</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;In worker A&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="c1">// Each remote method call on a client object is represented as a horizontal line</span>
+    <span class="c1">// between the lifeline of the worker making the call and the remote system.</span>
+    <span class="kt">string</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">cl</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v2/5ae082123200006b00510c3d/&quot;</span><span class="p">);</span>
 
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;In function worker&quot;</span><span class="p">);</span>
-
-    <span class="c1">// A worker (function or named) can use `wait` to wait for a named worker.</span>
-    <span class="nx">wait</span> <span class="nx">A</span><span class="p">;</span>
-
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After wait A&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -36,10 +38,15 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Waiting for Workers</h2>
-                            <p><p>Named workers can continue to execute after the function&rsquo;s default worker
- terminates and the function returns.
- A worker (function or named) can use <code>wait</code> to wait for a named worker.</p>
+                            <h2>Sequence Diagrams</h2>
+                            <p><p>A function can be viewed as a sequence diagram.
+ The diagram has a lifeline (vertical line) for each worker (both named
+ worker and function&rsquo;s default worker).
+ The diagram also has a lifeline for each client object parameter or variable in
+ the initialization section, representing the remote system to which the client
+ object is sending messages.
+ Each remote method call on a client object is represented as a horizontal line
+ between the lifeline of the worker making the call and the remote system.</p>
 </p>
 
                         </td>
@@ -47,16 +54,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="sequence-diagrams.html">
+                                    <a class="prev" href="named-workers.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Sequence Diagrams</p>
+                                        <p>Named Workers</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="strands.html">
+                                    <a class="next" href="waiting-for-workers.html">
                                         <span>NEXT ></span>
-                                        <p>Strands</p>
+                                        <p>Waiting for Workers</p>
                                     </a>
                                 </div>
                                 
@@ -65,7 +72,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="waiting-for-workers">
+            <div class="example" id="sequence-diagrams">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -76,11 +83,11 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/waiting-for-workers/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/sequence-diagrams/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=2415945b367cbbbc92b495a762ddf62d&file=waiting_for_workers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c5e19800881b7eb4d38c3129da8bb360&file=sequence_diagrams.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -109,8 +116,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -119,46 +124,8 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
-    io:println(&quot;Initializing&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    worker A {
-        io:println(&quot;In worker A&quot;);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;In function worker&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
+import ballerina/io;
 </code></pre></div>
 
                                 </td>
@@ -170,7 +137,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    wait A;
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -178,7 +145,50 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A worker (function or named) can use <code>wait</code> to wait for a named worker.</p>
+                                            <p>A function can be viewed as a sequence diagram.
+ The diagram has a lifeline (vertical line) for each worker (both named
+ worker and function&rsquo;s default worker).</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client cl = check new (&quot;https://www.mocky.io&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The diagram also has a lifeline for each client object parameter or variable in
+ the initialization section, representing the remote system to which the client<br />
+ object is sending messages.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    string payload = check cl-&gt;get(&quot;/v2/5ae082123200006b00510c3d/&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Each remote method call on a client object is represented as a horizontal line
+ between the lifeline of the worker making the call and the remote system.</p>
 
                                         </div>
                                     </div>
@@ -189,7 +199,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;After wait A&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(payload);
 }
 </code></pre></div>
 
@@ -215,11 +225,8 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>bal run waiting_for_workers.bal
-Initializing
-In function worker
-In worker A
-After wait A
+                                    <div class="highlight"><pre><code class=shell-session>bal run sequence_diagrams.bal
+Hello World
 </code></pre></div>
 
                                 </td>

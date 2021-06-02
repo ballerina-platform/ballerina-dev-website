@@ -14,7 +14,6 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mime</span><span class="p">;</span>
 
 <span class="c1">// Creates an endpoint for the [client](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client).</span>
@@ -22,7 +21,7 @@ redirect_from:
 
 <span class="kd">service</span> <span class="o">/</span><span class="p">&#39;stream on new http:Listener(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">fileupload</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">fileupload</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 
         <span class="c1">//[Sets the file](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#setFileAsPayload) as the request payload.</span>
@@ -30,66 +29,23 @@ redirect_from:
             <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_PDF</span><span class="p">);</span>
 
         <span class="c1">//Sends the request to the client with the file content.</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">clientResponse</span> <span class="p">=</span>
-            <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/stream/receiver&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">clientResponse</span> <span class="p">=</span>
+            <span class="nx">check</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/stream/receiver&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
 
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">clientResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">res</span> <span class="p">=</span> <span class="nx">clientResponse</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending data to the client &quot;</span><span class="p">,</span>
-                            <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">clientResponse</span><span class="p">);</span>
-            <span class="nx">setError</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nx">clientResponse</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error while while sending response to the caller&quot;</span><span class="p">,</span>
-                            <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="c1">// forward received response to caller</span>
+        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">clientResponse</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">receiver</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
-                                        <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+                                        <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="c1">//[Retrieve the byte stream](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getByteStream).</span>
-        <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;|</span><span class="nx">error</span> <span class="nx">streamer</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getByteStream</span><span class="p">();</span>
+        <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">streamer</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getByteStream</span><span class="p">();</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="nx">streamer</span> <span class="nx">is</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;)</span> <span class="p">{</span>
-            <span class="c1">//Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written to.</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="p">? result = io:fileWriteBlocksFromStream(</span>
+        <span class="c1">//Writes the incoming stream to a file using `io:fileWriteBlocksFromStream` API by providing the file location to which the content should be written to.</span>
+        <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteBlocksFromStream</span><span class="p">(</span>
                                     <span class="s">&quot;./files/ReceivedFile.pdf&quot;</span><span class="p">,</span> <span class="nx">streamer</span><span class="p">);</span>
-
-            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error occurred while writing &quot;</span><span class="p">,</span>
-                                                        <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-                <span class="nx">setError</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;File Received!&quot;</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="nx">close</span><span class="p">(</span><span class="nx">streamer</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">setError</span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nx">streamer</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending response&quot;</span><span class="p">,</span>
-                           <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">//Sets the error to the response.</span>
-<span class="kd">function</span> <span class="nx">setError</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-<span class="p">}</span>
-
-<span class="c1">//Closes the byte stream.</span>
-<span class="kd">function</span> <span class="nx">close</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[],</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">byteStream</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">byteStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the stream: &quot;</span><span class="p">,</span>
-                            <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">cr</span><span class="p">);</span>
+        <span class="nx">check</span> <span class="nx">streamer</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;File Received!&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -179,14 +135,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -197,7 +145,6 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
-import ballerina/log;
 import ballerina/mime;
 </code></pre></div>
 
@@ -241,7 +188,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get fileupload(http:Caller caller) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get fileupload(http:Caller caller) returns error? {
         http:Request request = new;
 </code></pre></div>
 
@@ -274,8 +221,8 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response|error clientResponse =
-            clientEndpoint-&gt;post(&quot;/stream/receiver&quot;, request);
+                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response clientResponse =
+            check clientEndpoint-&gt;post(&quot;/stream/receiver&quot;, request);
 </code></pre></div>
 
                                 </td>
@@ -291,27 +238,22 @@ import ballerina/mime;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
-        if (clientResponse is http:Response) {
-            res = clientResponse;
-        } else {
-            log:printError(&quot;Error occurred while sending data to the client &quot;,
-                            &#39;error = clientResponse);
-            setError(res, clientResponse);
-        }
-        var result = caller-&gt;respond(res);
-        if (result is error) {
-            log:printError(&quot;Error while while sending response to the caller&quot;,
-                            &#39;error = result);
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        check caller-&gt;respond(clientResponse);
     }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>forward received response to caller</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -320,8 +262,7 @@ import ballerina/mime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function post receiver(http:Caller caller,
-                                        http:Request request) {
-        http:Response res = new;
+                                        http:Request request) returns error? {
 </code></pre></div>
 
                                 </td>
@@ -333,7 +274,7 @@ import ballerina/mime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        stream&lt;byte[], io:Error?&gt;|error streamer = request.getByteStream();
+                                    <div class="highlight"><pre><code class=language-ballerina>        stream&lt;byte[], io:Error?&gt; streamer = check request.getByteStream();
 </code></pre></div>
 
                                 </td>
@@ -349,23 +290,15 @@ import ballerina/mime;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (streamer is stream&lt;byte[], io:Error?&gt;) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            io:Error? result = io:fileWriteBlocksFromStream(
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>        check io:fileWriteBlocksFromStream(
                                     &quot;./files/ReceivedFile.pdf&quot;, streamer);
+        check streamer.close();
+        check caller-&gt;respond(&quot;File Received!&quot;);
+    }
+}
 </code></pre></div>
 
                                 </td>
@@ -374,82 +307,6 @@ import ballerina/mime;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Writes the incoming stream to a file using <code>io:fileWriteBlocksFromStream</code> API by providing the file location to which the content should be written to.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            if (result is error) {
-                log:printError(&quot;error occurred while writing &quot;,
-                                                        &#39;error = result);
-                setError(res, result);
-            } else {
-                res.setPayload(&quot;File Received!&quot;);
-            }
-            close(streamer);
-        } else {
-            setError(res, streamer);
-        }
-        var result = caller-&gt;respond(res);
-        if (result is error) {
-           log:printError(&quot;Error occurred while sending response&quot;,
-                           &#39;error = result);
-        }
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function setError(http:Response res, error err) {
-    res.statusCode = 500;
-    res.setPayload(&lt;@untainted&gt;err.message());
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Sets the error to the response.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function close(stream&lt;byte[], io:Error?&gt; byteStream) {
-    var cr = byteStream.close();
-    if (cr is error) {
-        log:printError(&quot;Error occurred while closing the stream: &quot;,
-                            &#39;error = cr);
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Closes the byte stream.</p>
 
                                         </div>
                                     </div>

@@ -21,21 +21,20 @@ redirect_from:
             <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">ExpectationFailed</span> <span class="p">{</span>
         <span class="c1">// [Check if the client expects a 100-continue response](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue).</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">expects100Continue</span><span class="p">())</span> <span class="p">{</span>
-
             <span class="kt">string</span> <span class="nx">mediaType</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">mediaType</span><span class="p">.</span><span class="nx">toLowerAscii</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;text/plain&quot;</span><span class="p">)</span> <span class="p">{</span>
+
                 <span class="c1">// Send a 100-continue response to the client.</span>
                 <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="k">continue</span><span class="p">();</span>
-
                 <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
                 <span class="p">}</span>
+
+            <span class="c1">// Send a 417 response to ignore the payload since content type is mismatched</span>
+            <span class="c1">// with the expected content type.</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="c1">// Send a 417 response to ignore the payload since content type is mismatched</span>
-                <span class="c1">// with the expected content type.</span>
                 <span class="nx">http</span><span class="p">:</span><span class="nx">ExpectationFailed</span> <span class="nx">resp</span> <span class="p">=</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span><span class="s">&quot;Unprocessable Entity&quot;</span><span class="p">};</span>
                 <span class="k">return</span> <span class="nx">resp</span><span class="p">;</span>
-
             <span class="p">}</span>
         <span class="p">}</span>
 
@@ -134,12 +133,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -187,6 +180,8 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        if (request.expects100Continue()) {
+            string mediaType = request.getContentType();
+            if (mediaType.toLowerAscii() == &quot;text/plain&quot;) {
 </code></pre></div>
 
                                 </td>
@@ -202,23 +197,13 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            string mediaType = request.getContentType();
-            if (mediaType.toLowerAscii() == &quot;text/plain&quot;) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>                var result = caller-&gt;continue();
+                if (result is error) {
+                    log:printError(&quot;Error sending response&quot;, &#39;error = result);
+                }
 </code></pre></div>
 
                                 </td>
@@ -234,26 +219,14 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>                if (result is error) {
-                    log:printError(&quot;Error sending response&quot;, &#39;error = result);
-                }
-            } else {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>                http:ExpectationFailed resp = {body:&quot;Unprocessable Entity&quot;};
+                                    <div class="highlight"><pre><code class=language-ballerina>            } else {
+                http:ExpectationFailed resp = {body:&quot;Unprocessable Entity&quot;};
                 return resp;
+            }
+        }
 </code></pre></div>
 
                                 </td>
@@ -266,19 +239,6 @@ import ballerina/log;
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            }
-        }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>

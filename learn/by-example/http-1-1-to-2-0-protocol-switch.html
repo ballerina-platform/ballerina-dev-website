@@ -16,7 +16,7 @@ redirect_from:
 
 <span class="c1">// HTTP version is set to 2.0.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">http2serviceClientEP</span> <span class="p">=</span>
-        <span class="nx">checkpanic</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:7090&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">httpVersion</span><span class="p">:</span> <span class="s">&quot;2.0&quot;</span><span class="p">});</span>
+        <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:7090&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">httpVersion</span><span class="p">:</span> <span class="s">&quot;2.0&quot;</span><span class="p">});</span>
 
 <span class="kd">service</span> <span class="o">/</span><span class="nx">http11Service</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
@@ -33,7 +33,7 @@ redirect_from:
             <span class="c1">// Handle the errors that are returned when invoking the</span>
             <span class="c1">// [forward](https://docs.central.ballerina.io/ballerina/http/latest/clients/HttpClient#forward) function.</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">clientResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
 
         <span class="p">}</span>
         <span class="c1">// Send the response back to the caller.</span>
@@ -175,7 +175,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>http:Client http2serviceClientEP =
-        checkpanic new (&quot;http://localhost:7090&quot;, {httpVersion: &quot;2.0&quot;});
+        check new (&quot;http://localhost:7090&quot;, {httpVersion: &quot;2.0&quot;});
 </code></pre></div>
 
                                 </td>
@@ -255,7 +255,7 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            response.statusCode = 500;
-            response.setPayload(&lt;@untainted&gt;clientResponse.message());
+            response.setPayload(clientResponse.message());
 </code></pre></div>
 
                                 </td>

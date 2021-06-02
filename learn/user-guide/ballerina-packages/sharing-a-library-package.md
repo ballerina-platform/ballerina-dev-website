@@ -10,7 +10,7 @@ redirect_from:
 - /learn/user-guide/ballerina-packages/sharing-a-library-package
 ---
 
-### Creating a Library Package
+## Creating a Library Package
 
 Execute the `bal new -t lib` command to create a new library package.
 
@@ -56,7 +56,7 @@ Creating bala
 	target/bala/user-hello-any-0.1.0.bala
 ```
 
-### Publishing a Library Package to Ballerina Central
+## Publishing a Library Package to Ballerina Central
 
 Now, that you have a package to share with others, it can be published to the [Ballerina Central](https://central.ballerina.io/). 
 
@@ -65,7 +65,7 @@ Ensure the package works as intended because a publish is **permanent**. Once pu
 >**Tip:** As a precaution, use the [local repository](/learn/user-guide/ballerina-packages/dependencies/#overriding-dependencies) first to test out the functionality of the library package before publishing it to Ballerina Central.
 
 
-#### Preparing for Publishing
+### Preparing for Publishing
 
 1. Create an account on Ballerina Central. To register, [visit the home page](https://central.ballerina.io) and log in via a Google or GitHub account.
 
@@ -73,23 +73,23 @@ Ensure the package works as intended because a publish is **permanent**. Once pu
 
 3. Download and place the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`). 
 
->**Info:** If you already have a `Settings.toml` file configured in your home repository, follow the other option and copy the access token into the `Settings.toml`. Else, if you are connected to the internet via an HTTP proxy, add the following section to `Settings.toml` and change accordingly.
+If you already have a `Settings.toml` file configured in your home repository, follow the other option and copy the access token into the `Settings.toml`. Else, if you are connected to the internet via an HTTP proxy, add the following section to `Settings.toml` and change accordingly.
 
-    ```toml
-    [proxy]
-    host = "localhost"
-    port = "3128"
-    username = ""
-    password = ""
-    ```
+```toml
+[proxy]
+host = "localhost"
+port = "3128"
+username = ""
+password = ""
+```
 
-#### Organizations
+### Organizations
 
 When you push a package to Ballerina Central, the organizations are validated against the value of the `org` field defined in the [Ballerina.toml](/learn/user-guide/ballerina-packages/package-layout#ballerinatoml) file. Therefore, when you have more than one organizations in Ballerina Central, pick the organization name that you intend to push the package into, set that as the `org` in the `Ballerina.toml` file inside the package directory, and rebuild the package.
 
 Also, organization names starting with `ballerina` (e.g., `ballerina`, `ballerinax`, `ballerinai`, etc.) are reserved for system use, and thereby, you cannot publish any packages starting with the `ballerina` prefix to Ballerina Central. Therefore, if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
 
-#### Publishing the Package
+### Publishing the Package
 
 Now, that you are ready to publish, execute the command below to publish the package to Ballerina Central.
 
@@ -97,7 +97,7 @@ Now, that you are ready to publish, execute the command below to publish the pac
 bal push
 ```
 
-### Using the Packages in Ballerina Central
+## Using the Packages in Ballerina Central
 
 After publishing your first package, you can create a second package and use the already-published package in it.
 

@@ -10,6 +10,8 @@ redirect_from:
 - /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package
 - /learn/user-guide/ballerina-packages/
 - /learn/user-guide/ballerina-packages
+- /learn/structuring-ballerina-code/
+- /learn/structuring-ballerina-code
 ---
 
 The below are the basic steps you need to know about writing a Ballerina package. It also introduces the package-related commands in the Ballerina command-line tool.
@@ -19,7 +21,7 @@ The below are the basic steps you need to know about writing a Ballerina package
 To create a new Ballerina package, use the `bal new` command below.
 
 ```bash
-bal new helloworld
+bal new hello_world
 ```
 
 This will create a new Ballerina package with a main function. If you are creating a service instead of a main function, pass the `-t service` option.
@@ -27,7 +29,7 @@ This will create a new Ballerina package with a main function. If you are creati
 The `bal new` command generates the below.
 
 ```bash
-cd helloworld
+cd hello_world
 tree .
 .
 ├── Ballerina.toml
@@ -42,7 +44,7 @@ The sections below walk you through each of these files.
 
 The [`Ballerina.toml`](/learn/user-guide/ballerina-packages/package-layout#ballerinatoml) file identifies a directory as a Ballerina package.
 
-**`.gitignore**`
+**`.gitignore`**
 
 The `bal new` command also generates the `.gitignore` file by default with `target` added as an entry.
 
@@ -66,10 +68,10 @@ Build the package and generate an executable JAR file as follows.
 ```bash
 bal build
 Compiling source
- 	examples/helloworld:0.1.0 
+ 	examples/hello_world:0.1.0 
 
 Generating executable
-    target/bin/helloworld.jar
+    target/bin/hello_world.jar
 ```
 
 ## Running the Package
@@ -77,20 +79,20 @@ Generating executable
 Then, run it as follows.
 
 ```bash
-bal run target/bin/helloworld.jar
+bal run target/bin/hello_world.jar
 Hello World!
 ```
 
 >**Info:** You can also use `bal run` to compile and then run it in a single step as follows.
 
-    ```bash
-    bal run
-    Compiling source
-        examples/helloworld:0.1.0
+```bash
+bal run
+Compiling source
+    examples/hello_world:0.1.0
 
-    Running executable
+Running executable
 
-    Hello World!
-    ```
+Hello World!
+```
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

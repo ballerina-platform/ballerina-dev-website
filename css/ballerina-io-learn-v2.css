@@ -141,7 +141,7 @@ nav.cLeftNavContainer {
         border: 1px solid #20b6b0;
     }
 
-    a.cBoxLink:focus {
+    a.cBoxLink:focus a.cIconLink:focus{
         text-decoration: none !important;
     }
 

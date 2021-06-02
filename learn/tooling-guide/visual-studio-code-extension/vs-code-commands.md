@@ -34,7 +34,7 @@ It runs your Ballerina project. Once executed, the opened Ballerina project is b
 
 ![Run](/learn/images/run.gif)
 
->**Tip:** If you use any [configurable variables](/learn/user-guide/running-ballerina-code/#configuring-your-ballerina-runtimes), the relevant `Config.toml` file should be added inside the Ballerina project root in case the `BAL_CONFIG_FILES` and `BAL_CONFIG_DATA` environment variables are not defined.
+>**Tip:** If you use any [configurable variables](/learn/user-guide/configurability/), the relevant `Config.toml` file should be added inside the Ballerina project root in case the `BAL_CONFIG_FILES` and `BAL_CONFIG_DATA` environment variables are not defined.
 
 ## Test
 
@@ -42,7 +42,7 @@ It runs all the tests in your Ballerina project using the `bal test` [CLI comman
 
 ![Test](/learn/images/test-command.gif)
 
->**Tip:** If you use any [configurable variables](/learn/user-guide/running-ballerina-code/#configuring-your-ballerina-runtimes), the relevant `Config.toml` file should be added inside the corresponding module’s test directory root.
+>**Tip:** If you use any [configurable variables](/learn/user-guide/configurability/), the relevant `Config.toml` file should be added inside the corresponding module’s test directory root.
 
 ## Document
 
@@ -58,7 +58,7 @@ It is a palette reference to access the **Diagrams** [view](/learn/tooling-guide
 
 ## Add Module
 
-It adds a [Ballerina module](/learn/user-guide/structuring-ballerina-code/working-with-ballerina-modules/) for the given module name using the `bal add` [CLI command](/learn/tooling-guide/cli-tools/cli-commands/#core-commands). 
+It adds a [Ballerina module](/learn/user-guide/ballerina-packages/modules/) for the given module name using the `bal add` [CLI command](/learn/tooling-guide/cli-tools/cli-commands/#core-commands). 
 
 ![Add Module](/learn/images/add-module.gif)
 

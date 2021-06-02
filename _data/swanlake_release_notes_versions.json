@@ -247,13 +247,13 @@
       "display-version": "Swan Lake Beta1",
       "release-date": "2021-06-02",
       "windows-installer": "ballerina-windows-installer-x64-swan-lake-beta1.msi",
-      "windows-installer-size": "143mb",
+      "windows-installer-size": "167mb",
       "linux-installer": "ballerina-linux-installer-x64-swan-lake-beta1.deb",
-      "linux-installer-size": "178mb",
+      "linux-installer-size": "211mb",
       "macos-installer": "ballerina-macos-installer-x64-swan-lake-beta1.pkg",
-      "macos-installer-size": "212mb",
+      "macos-installer-size": "239mb",
       "rpm-installer": "ballerina-linux-installer-x64-swan-lake-beta1.rpm",
-      "rpm-installer-size": "192mb",
+      "rpm-installer-size": "219mb",
       "other-artefacts": [
          "ballerina-swan-lake-beta1.zip",
          "ballerina-metrics-grafana-dashboard-prometheus.json"

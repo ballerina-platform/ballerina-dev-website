@@ -24,7 +24,7 @@ Also, there is a plan to develop a native compiler called nBallerina in the futu
 
 Ballerina distribution is a term, which refers to these jBallerina and nBallerina compilers.
 
-### Getting to know the Release Channels
+### Getting to Know the Release Channels
 
 Ballerina distributions are released via two different release channels at the moment. Swan Lake release channel is the primary release channel and the other one is the 1.x release channel. It is recommended to use Swan Lake release channel, if you are new to Ballerina.
 

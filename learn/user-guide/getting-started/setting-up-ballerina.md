@@ -110,7 +110,7 @@ For more installation options, see [Installation Options](/learn/user-guide/gett
 
 Once you have Ballerina installed, you can use the Update Tool to update it to the latest version. For this, execute the command below in a new CLI tab.
 
-`bal dist pull slalpha2`
+`bal dist pull slbeta1`
 
 >**Info:** You might need to first update the Update Tool to its latest version. If you have an Update Tool version below 0.8.14, execute the `ballerina update` command or else execute the `bal update` command to do this.
 

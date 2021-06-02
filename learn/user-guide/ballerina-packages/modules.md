@@ -18,7 +18,7 @@ Module names can only contain alphanumerics, underscores, and periods and the ma
 <package-name>[.<module-directory-name>]
 ```
 
-### Module Layout
+## Module Layout
 
 ```bash
 .
@@ -39,19 +39,19 @@ The source files of a module are placed at the root of the module directory.
 
 The `.bal` files in the directories except for the root directory of the module and `tests/` directory are not considered as the sources of the package. These can be treated as standalone Ballerina files.
 
-**Module.md**
+**`Module.md`**
 
 The `Module.md` file provides a human-readable description of a module. When you visit a package in [Ballerina Central](https://central.ballerina.io/), you should see all the exported modules of that package. This is the first page you will see when you navigate to an exported module of a package.
 
-**resources/ directory**
+**`resources/` directory**
 
 The `resources/` directory can be used to store all module resources such as images, default configs, etc.
 
-**tests/ directory**
+**`tests/` directory**
 
 The `tests/` directory contains unit tests of the module and they test the module in isolation. The module-level test cases have access to the symbols with module-level visibility.
 
-### The Default Module
+## The Default Module
 
 In the package [you created](/learn/user-guide/ballerina-packages/creating-your-first-ballerina-package), the `main.bal` that got created at the root of the package directory belongs to the default module. Similarly, you can add more source files at the root.
 
@@ -84,7 +84,7 @@ This creates the `modules` directory in your package root. The `modules/util` di
 2 directories, 3 files
 ```
 
-### Exporting Modules
+## Exporting Modules
 
 Ballerina provides a mechanism to control the visibility of modules outside of the package.
 

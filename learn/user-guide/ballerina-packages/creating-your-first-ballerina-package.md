@@ -42,7 +42,7 @@ The sections below walk you through each of these files.
 
 The [`Ballerina.toml`](/learn/user-guide/ballerina-packages/package-layout#ballerinatoml) file identifies a directory as a Ballerina package.
 
-**`.gitignore**`**
+**`.gitignore`**
 
 The `bal new` command also generates the `.gitignore` file by default with `target` added as an entry.
 

@@ -183,7 +183,7 @@ Marked the `file:Listener` class as an `isolated` class.
 - Marked the `sql:Client` class as an `isolated` class
 
 #### `websubhub` Package
-Included the auth configuration to the WebSubHub publisher client configuration
+Included the auth configuration in the WebSubHub publisher client configuration.
 
 ### Bug Fixes
 

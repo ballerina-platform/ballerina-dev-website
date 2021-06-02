@@ -81,10 +81,10 @@
   url: '#'
   sublinks:
     - title: Documenting Ballerina Code
-      url: /learn/user-guide/documenting-ballerina-code/
+      url: /learn/user-guide/code-organization/documenting-ballerina-code/
       active: documenting-ballerina-code
     - title: Coding Conventions
-      url: /learn/user-guide/coding-conventions/
+      url: /learn/user-guide/code-organization/coding-conventions/
       active: coding-conventions
 
 - title: Network Communication
@@ -127,7 +127,7 @@
   url: '#' 
   sublinks:
     - title: Observing Ballerina Code
-      url: /learn/user-guide/observing-ballerina-code
+      url: /learn/user-guide/observability/observing-ballerina-code
       active: observing-ballerina-code
 
 - title: Interoperability

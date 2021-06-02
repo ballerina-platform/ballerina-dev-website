@@ -3,7 +3,7 @@ layout: ballerina-tooling-guide-left-nav-pages-swanlake
 title: VS Code Commands
 permalink: /learn/tooling-guide/visual-studio-code-extension/vs-code-commands/
 active: vs-code-commands
-intro: The VS Code Ballerina extension comprises of a set of palette commands to enable easy development using the inherent capabilities of the Ballerina language.
+intro: The VS Code Ballerina extension comprises a set of palette commands to enable easy development using the inherent capabilities of the Ballerina language.
 keywords: ballerina, visual studio code, vs code, extension, commands
 description: The VS Code Ballerina extension comprises of a set of palette commands to enable easy development using the inherent capabilities of the Ballerina language.
 redirect_from:
@@ -58,7 +58,7 @@ It is a palette reference to access the **Diagrams** [view](/learn/tooling-guide
 
 ## Add Module
 
-It adds a Ballerina [project module](/learn/user-guide/structuring-ballerina-code/working-with-ballerina-modules/) for the given module name using the `bal add` [CLI command](/learn/tooling-guide/cli-tools/cli-commands/#core-commands). 
+It adds a [Ballerina module](/learn/user-guide/structuring-ballerina-code/working-with-ballerina-modules/) for the given module name using the `bal add` [CLI command](/learn/tooling-guide/cli-tools/cli-commands/#core-commands). 
 
 ![Add Module](/learn/images/add-module.gif)
 

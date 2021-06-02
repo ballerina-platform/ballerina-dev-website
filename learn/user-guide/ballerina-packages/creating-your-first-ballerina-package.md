@@ -26,7 +26,7 @@ Let’s check what the `bal new` command generated:
 ```bash
 $ cd helloworld
 $ tree .
-  .
+.
   ├── Ballerina.toml
   └── main.bal
     
@@ -90,4 +90,3 @@ Hello World!
     display: none !important;
 }
 </style>
-

@@ -215,3 +215,4 @@ To view bug fixes, see the GitHub milestone for Swan Lake Beta1 of the repositor
 
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta1%22+label%3ATeam%2FLanguageServer)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/milestone/5?closed=1) 
+- [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FTestFramework+milestone%3A%22Ballerina+Swan+Lake+-+Beta1%22+is%3Aclosed+label%3AType%2FBug)

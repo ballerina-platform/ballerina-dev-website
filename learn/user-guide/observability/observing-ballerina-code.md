@@ -18,6 +18,8 @@ redirect_from:
   - /learn/observing-ballerina-code
   - /learn/user-guide/observing-ballerina-code
   - /learn/user-guide/observing-ballerina-code/
+  - /learn/user-guide/observability/
+  - /learn/user-guide/observability
 ---
 
 ## Providing Observability in Ballerina

@@ -17,6 +17,8 @@ redirect_from:
   - /learn/user-guide/documenting-ballerina-code
   - /learn/user-guide/code-organization/documenting-ballerina-code
   - /learn/user-guide/documenting-ballerina-code/
+  - /learn/user-guide/code-organization/
+  - /learn/user-guide/code-organization
 ---
 
 ## Generating Documentation for Modules

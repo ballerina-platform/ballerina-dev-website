@@ -173,8 +173,8 @@ Marked the `file:Listener` class as an `isolated` class.
 - Added support to use included record parameters instead of the `record` type in the listener initialization
 
 #### `http` Package
-- Improved the `http:Client` remote methods to support the contextually-expected type inference
-- Changed the configuration parameters of the listeners and clients to include the record parameters
+- Improved the `http:Client` remote methods to support inferring the target type from the contextually-expected type
+- Changed the listeners and clients to use include record parameters as configuration parameters
 - Populated the error detail of `http:ClientRequestError` and `http:RemoteServerError` with the response payload and the headers
 - Swapped the `mediaType` and `headers` arguments in the client remote methods
 

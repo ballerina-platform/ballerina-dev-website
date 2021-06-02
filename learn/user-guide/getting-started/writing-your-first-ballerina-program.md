@@ -12,7 +12,7 @@ redirect_from:
 
 A Ballerina application can have:
 
-* a `main()` function will run as a terminating process 
+* a `main()` function will run as a terminating process. 
 * a `service`, is hosted as a non-terminating process. 
   
 Both of these are considered as entry points for program execution.

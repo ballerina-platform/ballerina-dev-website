@@ -1,11 +1,11 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: Setting up Ballerina
-description: A quick tour of the Ballerina programming language, including writing, running, and invoking an HTTP service and using a client to interact with a service.
+description: Let's get started.
 keywords: ballerina, quick tour, programming language, http service
 permalink: /learn/user-guide/getting-started/setting-up-ballerina/
 active: setting-up-ballerina
-intro: Now, that you know a little bit of Ballerina, let's take it for a spin!
+intro: Let's get started.
 redirect_from:
   - /learn/quick-tour
   - /learn/quick-tour/
@@ -110,7 +110,7 @@ For more installation options, see [Installation Options](/learn/user-guide/gett
 
 Once you have Ballerina installed, you can use the Update Tool to update it to the latest version. For this, execute the command below in a new CLI tab.
 
-`bal dist pull slalpha2`
+`bal dist pull slbeta1`
 
 >**Info:** You might need to first update the Update Tool to its latest version. If you have an Update Tool version below 0.8.14, execute the `ballerina update` command or else execute the `bal update` command to do this.
 

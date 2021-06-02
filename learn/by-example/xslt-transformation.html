@@ -4,6 +4,7 @@ title: XSLT Transformation
 description: This BBE demonstrates how the XML content can be transformed into HTML using a given XSL transformation.
 keywords: ballerina, ballerina by example, bbe, xslt, xml, html, xsl, transformation
 permalink: /learn/by-example/xslt-transformation
+active: xslt-transformation
 redirect_from:
   - /swan-lake/learn/by-example/xslt-transformation
   - /swan-lake/learn/by-example/xslt-transformation.html
@@ -92,16 +93,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="uuid.html">
+                                    <a class="prev" href="uuid-operations.html">
                                         <span>< PREVIOUS</span>
-                                        <p>UUID</p>
+                                        <p>UUID Operations</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="taint-checking.html">
+                                    <a class="next" href="regular-expressions.html">
                                         <span>NEXT ></span>
-                                        <p>Taint Checking</p>
+                                        <p>Regular Expressions</p>
                                     </a>
                                 </div>
                                 
@@ -122,6 +123,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/xslt-transformation/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=1b4a786da6ddcb70d222f30ef2117872&file=xslt_transformation.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -341,9 +346,7 @@ import ballerina/xslt;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and run the `bal run` command below.
-bal run xslt_transformation.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run xslt_transformation.bal
 Transformed XML: &lt;html&gt;
 &lt;body&gt;
 &lt;h2&gt;All time favourites&lt;/h2&gt;

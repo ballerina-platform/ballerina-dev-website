@@ -1,9 +1,10 @@
 ---
 layout: ballerina-example-page
 title: Transactional Producer
-description: 
-keywords: 
+description: BBE on transactionally producing messages to a RabbitMQ queue using Ballerina.
+keywords: ballerina, ballerina by example, rabbitmq, producer, bbe, transaction
 permalink: /learn/by-example/rabbitmq-transaction-producer
+active: rabbitmq-transaction-producer
 redirect_from:
   - /swan-lake/learn/by-example/rabbitmq-transaction-producer
   - /swan-lake/learn/by-example/rabbitmq-transaction-producer.html
@@ -25,7 +26,7 @@ redirect_from:
         <span class="c1">// Publishes the message using the routing key named &quot;MyQueue&quot;.</span>
         <span class="nx">check</span> <span class="nx">newClient</span><span class="o">-&gt;</span><span class="nx">publishMessage</span><span class="p">({</span> <span class="nx">content</span><span class="p">:</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span>
                                                     <span class="nx">routingKey</span><span class="p">:</span> <span class="s">&quot;MyQueue&quot;</span> <span class="p">});</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
+        <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -59,7 +60,7 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="rabbitmq-transaction-consumer.html">
                                         <span>NEXT ></span>
-                                        <p>Transactional Consumer</p>
+                                        <p>SASL Authentication - Consumer</p>
                                     </a>
                                 </div>
                                 
@@ -183,7 +184,7 @@ redirect_from:
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        check newClient-&gt;publishMessage({ content: message.toBytes(),
                                                     routingKey: &quot;MyQueue&quot; });
-        var result = commit;
+        error? result = commit;
     }
 }
 </code></pre></div>
@@ -209,14 +210,6 @@ redirect_from:
                                 
                             
                         
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -224,35 +217,9 @@ redirect_from:
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Make sure to have the RabbitMQ broker running.
-#
-# Navigate to the directory that contains the
-# &#39;rabbitmq_transaction_producer.bal&#39; file, and run the &#39;bal run&#39; command below.
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ bal run rabbitmq_transaction_producer.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>[ballerina/http] started HTTP/WS listener 192.168.1.2:51659
+                                    <div class="highlight"><pre><code class=shell-session>bal run rabbitmq_transaction_producer.bal
+[ballerina/http] started HTTP/WS listener 192.168.1.2:51659
 </code></pre></div>
 
                                 </td>

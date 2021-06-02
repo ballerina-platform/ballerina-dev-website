@@ -4,6 +4,7 @@ title: Transactional Producer
 description: BBE on how to transactionally produce messages using `kafka&#58;Producer`.
 keywords: ballerina, ballerina by example, bbe, kafka, producer, transaction
 permalink: /learn/by-example/kafka-producer-transactional
+active: kafka-producer-transactional
 redirect_from:
   - /swan-lake/learn/by-example/kafka-producer-transactional
   - /swan-lake/learn/by-example/kafka-producer-transactional.html
@@ -18,13 +19,11 @@ redirect_from:
     <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;basic-producer&quot;</span><span class="p">,</span>
     <span class="nx">acks</span><span class="p">:</span> <span class="s">&quot;all&quot;</span><span class="p">,</span>
     <span class="nx">retryCount</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="c1">// The `enableIdempotence` should set to `true` to make a producer</span>
-    <span class="c1">// transactional.</span>
+    <span class="c1">// The `enableIdempotence` should set to `true` to make a producer transactional.</span>
     <span class="nx">enableIdempotence</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
 
     <span class="c1">// A `transactionalId` must be provided to make a producer transactional.</span>
     <span class="nx">transactionalId</span><span class="p">:</span> <span class="s">&quot;test-transactional-id&quot;</span>
-
 <span class="p">};</span>
 
 <span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">,</span> <span class="nx">producerConfigs</span><span class="p">);</span>
@@ -32,28 +31,28 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello World Transaction Message&quot;</span><span class="p">;</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">serializedMessage</span> <span class="p">=</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
-
-    <span class="c1">// Here, we create a producer config with optional parameters.</span>
-    <span class="c1">// transactional.id - enable transactional message production.</span>
+    <span class="c1">// Creates a producer config with optional parameters.</span>
+    <span class="c1">// The `transactionalId` enables transactional message production.</span>
     <span class="nx">kafkaAdvancedTransactionalProduce</span><span class="p">(</span><span class="nx">serializedMessage</span><span class="p">);</span>
-
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">kafkaAdvancedTransactionalProduce</span><span class="p">(</span><span class="nx">byte</span><span class="p">[]</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">transaction</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">({</span>
+        <span class="nx">kafka</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">({</span>
             <span class="nx">topic</span><span class="p">:</span> <span class="s">&quot;test-kafka-topic&quot;</span><span class="p">,</span>
             <span class="nx">value</span><span class="p">:</span> <span class="kt">message</span><span class="p">,</span>
-            <span class="nx">partition</span><span class="p">:</span> <span class="mi">0</span> <span class="p">});</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">sendResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Kafka producer failed to send first message&quot;</span><span class="p">,</span>
-                <span class="nx">sendResult</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+            <span class="nx">partition</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">});</span>
+        <span class="c1">// Checks for an error and notifies if an error has occurred.</span>
+        <span class="k">if</span> <span class="nx">sendResult</span> <span class="nx">is</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Error</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred when sending message &quot;</span><span class="p">,</span> <span class="nx">sendResult</span><span class="p">);</span>
         <span class="p">}</span>
+
         <span class="k">var</span> <span class="nx">commitResult</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">commitResult</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">commitResult</span> <span class="nx">is</span> <span class="p">()</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction successful&quot;</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction unsuccessful. &quot;</span> <span class="o">+</span> <span class="nx">commitResult</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction unsuccessful &quot;</span> <span class="o">+</span> <span class="nx">commitResult</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -191,8 +190,7 @@ import ballerinax/kafka;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>enableIdempotence</code> should set to <code>true</code> to make a producer
- transactional.</p>
+                                            <p>The <code>enableIdempotence</code> should set to <code>true</code> to make a producer transactional.</p>
 
                                         </div>
                                     </div>
@@ -204,6 +202,7 @@ import ballerinax/kafka;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    transactionalId: &quot;test-transactional-id&quot;
+};
 </code></pre></div>
 
                                 </td>
@@ -215,18 +214,6 @@ import ballerinax/kafka;
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -261,6 +248,7 @@ import ballerinax/kafka;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    kafkaAdvancedTransactionalProduce(serializedMessage);
+}
 </code></pre></div>
 
                                 </td>
@@ -268,8 +256,8 @@ import ballerinax/kafka;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Here, we create a producer config with optional parameters.
- transactional.id - enable transactional message production.</p>
+                                            <p>Creates a producer config with optional parameters.
+ The <code>transactionalId</code> enables transactional message production.</p>
 
                                         </div>
                                     </div>
@@ -280,7 +268,13 @@ import ballerinax/kafka;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>function kafkaAdvancedTransactionalProduce(byte[] message) {
+    transaction {
+        kafka:Error? sendResult = kafkaProducer-&gt;send({
+            topic: &quot;test-kafka-topic&quot;,
+            value: message,
+            partition: 0
+        });
 </code></pre></div>
 
                                 </td>
@@ -289,24 +283,35 @@ import ballerinax/kafka;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        if sendResult is kafka:Error {
+            io:println(&quot;Error occurred when sending message &quot;, sendResult);
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Checks for an error and notifies if an error has occurred.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function kafkaAdvancedTransactionalProduce(byte[] message) {
-    transaction {
-        var sendResult = kafkaProducer-&gt;send({
-            topic: &quot;test-kafka-topic&quot;,
-            value: message,
-            partition: 0 });
-        if (sendResult is error) {
-            io:println(&quot;Kafka producer failed to send first message&quot;,
-                sendResult.toString());
-        }
-        var commitResult = commit;
-        if (commitResult is ()) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        var commitResult = commit;
+        if commitResult is () {
             io:println(&quot;Transaction successful&quot;);
         } else {
-            io:println(&quot;Transaction unsuccessful. &quot; + commitResult.message());
+            io:println(&quot;Transaction unsuccessful &quot; + commitResult.message());
         }
     }
 }
@@ -326,10 +331,6 @@ import ballerinax/kafka;
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -337,23 +338,8 @@ import ballerinax/kafka;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run --experimental kafka_message_producer_transactional.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># If the producer successfully sent the message, the following will be printed
-# in the Console.
+                                    <div class="highlight"><pre><code class=shell-session>bal run kafka_message_producer_transactional.bal
 [ballerina/http] started HTTP/WS listener 192.168.1.2:57457
 Transaction successful
 </code></pre></div>

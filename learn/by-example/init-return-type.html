@@ -1,0 +1,298 @@
+---
+layout: ballerina-example-page
+title: Init Return Type
+description: This BBE demonstrates init function in Ballerina.
+keywords: ballerina, ballerina by example, bbe, init, return type
+permalink: /learn/by-example/init-return-type
+active: init-return-type
+redirect_from:
+  - /swan-lake/learn/by-example/init-return-type
+  - /swan-lake/learn/by-example/init-return-type.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// Defines a class called `File`.</span>
+<span class="nx">class</span> <span class="nx">File</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">path</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">contents</span><span class="p">;</span>
+    <span class="c1">// `init()` method is used to initialize the `object`</span>
+    <span class="c1">// when creating a new `object`.</span>
+    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">p</span><span class="p">,</span> <span class="kt">string</span><span class="err">?</span> <span class="nx">c</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">path</span> <span class="p">=</span> <span class="nx">p</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">contents</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">c</span><span class="p">.</span><span class="nx">ensureType</span><span class="p">(</span><span class="kt">string</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// `new` returns the newly constructed `File` object.</span>
+    <span class="nx">File</span> <span class="nx">f</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="nx">File</span><span class="p">(</span><span class="s">&quot;test.txt&quot;</span><span class="p">,</span> <span class="s">&quot;Hello World&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">f</span><span class="p">.</span><span class="nx">contents</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Init Return Type</h2>
+                            <p><p><code>init</code> function has a return type, which must be a subtype of <code>error?</code>. If <code>init</code> returns <code>()</code>,
+ then <code>new</code> returns the newly constructed <code>object</code>. If <code>init</code> returns an <code>error</code>, then <code>new</code> returns
+ that <code>error</code>. If <code>init</code> does not specify a return type, then the return type defaults to <code>()</code> as usual,
+ meaning that <code>new</code> will never return an <code>error</code>.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="defining-classes.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Defining Classes</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="identity.html">
+                                        <span>NEXT ></span>
+                                        <p>Identity</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="init-return-type">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/init-return-type/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=42cf99e172d45e303f1fed56ed09e6e1&file=init_return_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>class File {
+    string path;
+    string contents;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Defines a class called <code>File</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    function init(string p, string? c) returns error? {
+        self.path = p;
+        self.contents = check c.ensureType(string);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><code>init()</code> method is used to initialize the <code>object</code>
+ when creating a new <code>object</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    File f = check new File(&quot;test.txt&quot;, &quot;Hello World&quot;);
+    io:println(f.contents);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><code>new</code> returns the newly constructed <code>File</code> object.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>bal run init_return_type.bal
+Hello World
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

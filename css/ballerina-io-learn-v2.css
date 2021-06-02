@@ -141,6 +141,10 @@ nav.cLeftNavContainer {
         border: 1px solid #20b6b0;
     }
 
+    a.cBoxLink:focus a.cIconLink:focus{
+        text-decoration: none !important;
+    }
+
     .cBoxLink h2 {
         color: #20b6b0;
         border-color: transparent;
@@ -284,6 +288,9 @@ color: #fff !important;
 .cLearnIcon {
 	width: 120px;
 }
+
+
+
 
   
   /* Chrome 29+ */

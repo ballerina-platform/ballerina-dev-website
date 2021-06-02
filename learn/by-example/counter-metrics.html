@@ -4,6 +4,7 @@ title: Counter-Based Metrics
 description: BBE on how to use the default Counter Metrics Observability feature in Ballerina.
 keywords: ballerina, ballerina by example, bbe, observability, tracing, opentracing, counter
 permalink: /learn/by-example/counter-metrics
+active: counter-metrics
 redirect_from:
   - /swan-lake/learn/by-example/counter-metrics
   - /swan-lake/learn/by-example/counter-metrics.html
@@ -124,6 +125,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/counter-metrics/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=0431dde66ab6de55e3e82956950f8119&file=counter_metrics.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -467,7 +472,7 @@ counter instance.</p>
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `bal run` command below with the `--observability-included` build time flag and the `Config.toml` runtime configuration file.
-BALCONFIGFILE=Config.toml bal run --observability-included counter_metrics.bal
+BAL_CONFIG_FILES=Config.toml bal run --observability-included counter_metrics.bal
 </code></pre></div>
 
                                 </td>

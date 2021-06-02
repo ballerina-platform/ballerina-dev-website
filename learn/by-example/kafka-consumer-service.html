@@ -4,6 +4,7 @@ title: Consumer Service
 description: BBE on creating a Kafka consumer to receive messages in an asynchronous manner using Ballerina.
 keywords: ballerina, ballerina by example, bbe, kafka, consumer, listener, service, asynchronous
 permalink: /learn/by-example/kafka-consumer-service
+active: kafka-consumer-service
 redirect_from:
   - /swan-lake/learn/by-example/kafka-consumer-service
   - /swan-lake/learn/by-example/kafka-consumer-service.html
@@ -20,9 +21,7 @@ redirect_from:
     <span class="nx">topics</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;test-kafka-topic&quot;</span><span class="p">],</span>
 
     <span class="nx">pollingInterval</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-
-    <span class="c1">// Set `autoCommit` to false, so that the records should be committed</span>
-    <span class="c1">// manually.</span>
+    <span class="c1">// Sets the `autoCommit` to `false` so that the records should be committed manually.</span>
     <span class="nx">autoCommit</span><span class="p">:</span> <span class="kc">false</span>
 <span class="p">};</span>
 
@@ -31,32 +30,30 @@ redirect_from:
 
 <span class="kd">service</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">on</span> <span class="nx">kafkaListener</span> <span class="p">{</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onConsumerRecord</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
-                                <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// The set of Kafka records dispatched to the service are processed one</span>
-        <span class="c1">// by one.</span>
+                                <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="c1">// The set of Kafka records received by the service are processed one by one.</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">kafkaRecord</span> <span class="nx">in</span> <span class="nx">records</span> <span class="p">{</span>
-            <span class="nx">processKafkaRecord</span><span class="p">(</span><span class="nx">kafkaRecord</span><span class="p">);</span>
+            <span class="nx">check</span> <span class="nx">processKafkaRecord</span><span class="p">(</span><span class="nx">kafkaRecord</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="c1">// Commit offsets for returned records by marking them as consumed.</span>
+
+        <span class="c1">// Commits offsets of the returned records by marking them as consumed.</span>
         <span class="nx">kafka</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">commitResult</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">commit</span><span class="p">();</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="nx">commitResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">commitResult</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while committing the &quot;</span> <span class="o">+</span>
                 <span class="s">&quot;offsets for the consumer &quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">commitResult</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">processKafkaRecord</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span> <span class="nx">kafkaRecord</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
-    <span class="c1">// The value should be a `byte[]`, since the byte[] deserializer is used</span>
+<span class="kd">function</span> <span class="nx">processKafkaRecord</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span> <span class="nx">kafkaRecord</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// The value should be a `byte[]` since the byte[] deserializer is used</span>
     <span class="c1">// for the value.</span>
-    <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Value: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Invalid value type received&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+
+    <span class="c1">// Converts the `byte[]` to a `string`.</span>
+    <span class="kt">string</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Received Message: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -67,7 +64,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Consumer Service</h2>
-                            <p><p>Here, is an example in which we create a Kafka consumer used as a listener
+                            <p><p>This is an example, which creates a Kafka consumer used as a listener
  to a service with manual offset commits.
  This consumer uses the builtin <code>int</code> deserializer for the keys and the
  builtin <code>string</code> deserializer for the values. For this example to work
@@ -128,6 +125,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -227,8 +226,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Set <code>autoCommit</code> to false, so that the records should be committed
- manually.</p>
+                                            <p>Sets the <code>autoCommit</code> to <code>false</code> so that the records should be committed manually.</p>
 
                                         </div>
                                     </div>
@@ -254,7 +252,7 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>service kafka:Service on kafkaListener {
     remote function onConsumerRecord(kafka:Caller caller,
-                                kafka:ConsumerRecord[] records) {
+                                kafka:ConsumerRecord[] records) returns error? {
 </code></pre></div>
 
                                 </td>
@@ -267,7 +265,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        foreach var kafkaRecord in records {
-            processKafkaRecord(kafkaRecord);
+            check processKafkaRecord(kafkaRecord);
         }
 </code></pre></div>
 
@@ -276,8 +274,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The set of Kafka records dispatched to the service are processed one
- by one.</p>
+                                            <p>The set of Kafka records received by the service are processed one by one.</p>
 
                                         </div>
                                     </div>
@@ -296,7 +293,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Commit offsets for returned records by marking them as consumed.</p>
+                                            <p>Commits offsets of the returned records by marking them as consumed.</p>
 
                                         </div>
                                     </div>
@@ -307,7 +304,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (commitResult is error) {
+                                    <div class="highlight"><pre><code class=language-ballerina>        if commitResult is error {
             log:printError(&quot;Error occurred while committing the &quot; +
                 &quot;offsets for the consumer &quot;, &#39;error = commitResult);
         }
@@ -324,8 +321,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
-    byte[] value = kafkaRecord.value;
+                                    <div class="highlight"><pre><code class=language-ballerina>function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) returns error? {
 </code></pre></div>
 
                                 </td>
@@ -336,13 +332,29 @@ import ballerina/log;
                             
                             <tr class="cTR hover-enable">
 
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    byte[] value = kafkaRecord.value;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The value should be a <code>byte[]</code> since the byte[] deserializer is used
+ for the value.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string|error messageContent = string:fromBytes(value);
-    if (messageContent is string) {
-        log:printInfo(&quot;Value: &quot; + messageContent);
-    } else {
-        log:printError(&quot;Invalid value type received&quot;);
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    string messageContent = check string:fromBytes(value);
+    log:printInfo(&quot;Received Message: &quot; + messageContent);
 }
 </code></pre></div>
 
@@ -351,8 +363,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The value should be a <code>byte[]</code>, since the byte[] deserializer is used
- for the value.</p>
+                                            <p>Converts the <code>byte[]</code> to a <code>string</code>.</p>
 
                                         </div>
                                     </div>
@@ -368,10 +379,6 @@ import ballerina/log;
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -379,23 +386,8 @@ import ballerina/log;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run kafka_consumer_service.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># If the listener started successfully, the following lines will be printed in
-# the Console.
+                                    <div class="highlight"><pre><code class=shell-session>bal run kafka_consumer_service.bal
 [ballerinax/kafka] kafka servers: localhost:9092
 [ballerinax/kafka] subscribed topics: test-kafka-topic
 [ballerinax/kafka] started kafka listener

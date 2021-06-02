@@ -1,0 +1,479 @@
+---
+layout: ballerina-example-page
+title: XML Navigation 
+description: This BBE demonstrates XML navigation
+keywords: ballerina, ballerina by example, bbe, xml, xml navigation
+permalink: /learn/by-example/xml-navigation
+active: xml-navigation
+redirect_from:
+  - /swan-lake/learn/by-example/xml-navigation
+  - /swan-lake/learn/by-example/xml-navigation.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">xml</span> <span class="nx">x</span> <span class="p">=</span> <span class="kt">xml</span> 
+        <span class="s">`&lt;items&gt;</span>
+<span class="s">            &lt;!--Contents--&gt;</span>
+<span class="s">            &lt;book&gt;</span>
+<span class="s">                &lt;name&gt;A Study in Scarlet&lt;/name&gt;</span>
+<span class="s">                &lt;author&gt;&lt;name&gt;Arthur Conan Doyle&lt;/name&gt;&lt;/author&gt;</span>
+<span class="s">            &lt;/book&gt;</span>
+<span class="s">            &lt;planner&gt;Daily Planner&lt;kind&gt;day&lt;/kind&gt;&lt;pages&gt;365&lt;/pages&gt;&lt;/planner&gt;</span>
+<span class="s">            &lt;book&gt;</span>
+<span class="s">                &lt;name&gt;The Sign of Four&lt;/name&gt;</span>
+<span class="s">                &lt;author&gt;&lt;name&gt;Arthur Conan Doyle&lt;/name&gt;&lt;/author&gt;</span>
+<span class="s">            &lt;/book&gt;</span>
+<span class="s">            &lt;pen&gt;&lt;kind&gt;marker&lt;/kind&gt;&lt;color&gt;blue&lt;/color&gt;&lt;/pen&gt;</span>
+<span class="s">        &lt;/items&gt;`</span><span class="p">;</span>
+
+    <span class="c1">// `x.&lt;para&gt;` - every element in `x` named `para`.</span>
+    <span class="kt">xml</span> <span class="nx">a</span> <span class="p">=</span> <span class="nx">x</span><span class="p">.&lt;</span><span class="nx">items</span><span class="p">&gt;;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+
+    <span class="c1">// `x/*` - for every element `e` in `x`, the children of `e`.</span>
+    <span class="kt">xml</span> <span class="nx">b</span> <span class="p">=</span> <span class="nx">x</span><span class="cm">/*;</span>
+<span class="cm">    io:println(b);</span>
+
+<span class="cm">    // `x/&lt;para&gt;` - for every element `e` in `x`, every element named para in the children of `e`.</span>
+<span class="cm">    xml c = x/&lt;planner&gt;;</span>
+<span class="cm">    io:println(c);</span>
+
+<span class="cm">    // `x/&lt;th|td&gt;` - for every element `e` in `x`, every element named `th` or `td` in the </span>
+<span class="cm">    // children of `e`.</span>
+<span class="cm">    xml d = x/&lt;planner|pen&gt;;</span>
+<span class="cm">    io:println(d);</span>
+
+<span class="cm">    // `x/&lt;*&gt;` - for every element `e` in `x`, every element in the children of `e`.</span>
+<span class="cm">    xml e = x/&lt;*&gt;;</span>
+<span class="cm">    io:println(e);</span>
+
+<span class="cm">    // x/**/</span><span class="p">&lt;</span><span class="nx">para</span><span class="p">&gt;</span>  <span class="o">-</span> <span class="k">for</span> <span class="nx">every</span> <span class="nx">element</span> <span class="s">`e`</span> <span class="nx">in</span> <span class="s">`x`</span><span class="p">,</span> <span class="nx">every</span> <span class="nx">element</span> <span class="nx">named</span> <span class="s">`para`</span> <span class="nx">in</span> 
+    <span class="c1">// the descendants of `e`.</span>
+    <span class="kt">xml</span> <span class="nx">f</span> <span class="p">=</span> <span class="nx">x</span><span class="cm">/**/</span><span class="p">&lt;</span><span class="nx">name</span><span class="p">&gt;;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">f</span><span class="p">);</span>
+
+    <span class="c1">// x/&lt;para&gt;[0]  - for every element `e` in `x`, first element named `para` in </span>
+    <span class="c1">// the children of `e`.</span>
+    <span class="kt">xml</span> <span class="nx">g</span> <span class="p">=</span> <span class="nx">x</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">book</span><span class="p">&gt;[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">g</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>XML Navigation </h2>
+                            <p><p>XML navigation expressions allow for convenient navigation of XML
+ element structure, in a similar way to XPath.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="xml-subtyping.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>XML Subtyping</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="xml-templates-and-query.html">
+                                        <span>NEXT ></span>
+                                        <p>XML Templates and Query</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="xml-navigation">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/xml-navigation/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=bdbeaf4b3d28a68ce3d7732c3c5fb39e&file=xml_navigation.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+    xml x = xml 
+        `&lt;items&gt;
+            &lt;!--Contents--&gt;
+            &lt;book&gt;
+                &lt;name&gt;A Study in Scarlet&lt;/name&gt;
+                &lt;author&gt;&lt;name&gt;Arthur Conan Doyle&lt;/name&gt;&lt;/author&gt;
+            &lt;/book&gt;
+            &lt;planner&gt;Daily Planner&lt;kind&gt;day&lt;/kind&gt;&lt;pages&gt;365&lt;/pages&gt;&lt;/planner&gt;
+            &lt;book&gt;
+                &lt;name&gt;The Sign of Four&lt;/name&gt;
+                &lt;author&gt;&lt;name&gt;Arthur Conan Doyle&lt;/name&gt;&lt;/author&gt;
+            &lt;/book&gt;
+            &lt;pen&gt;&lt;kind&gt;marker&lt;/kind&gt;&lt;color&gt;blue&lt;/color&gt;&lt;/pen&gt;
+        &lt;/items&gt;`;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml a = x.&lt;items&gt;;
+    io:println(a);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><code>x.&lt;para&gt;</code> - every element in <code>x</code> named <code>para</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml b = x/*;
+    io:println(b);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><code>x/*</code> - for every element <code>e</code> in <code>x</code>, the children of <code>e</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml c = x/&lt;planner&gt;;
+    io:println(c);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><code>x/&lt;para&gt;</code> - for every element <code>e</code> in <code>x</code>, every element named para in the children of <code>e</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml d = x/&lt;planner|pen&gt;;
+    io:println(d);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><code>x/&lt;th|td&gt;</code> - for every element <code>e</code> in <code>x</code>, every element named <code>th</code> or <code>td</code> in the
+ children of <code>e</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml e = x/&lt;*&gt;;
+    io:println(e);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><code>x/&lt;*&gt;</code> - for every element <code>e</code> in <code>x</code>, every element in the children of <code>e</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml f = x/**/&lt;name&gt;;
+    io:println(f);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>x/**/<para>  - for every element <code>e</code> in <code>x</code>, every element named <code>para</code> in
+ the descendants of <code>e</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    xml g = x/&lt;book&gt;[0];
+    io:println(g);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>x/<para>[0]  - for every element <code>e</code> in <code>x</code>, first element named <code>para</code> in
+ the children of <code>e</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>bal run xml_navigation.bal
+&lt;items&gt;
+            &lt;!--Contents--&gt;
+            &lt;book&gt;
+                &lt;name&gt;A Study in Scarlet&lt;/name&gt;
+                &lt;author&gt;&lt;name&gt;Arthur Conan Doyle&lt;/name&gt;&lt;/author&gt;
+            &lt;/book&gt;
+            &lt;planner&gt;Daily Planner&lt;kind&gt;day&lt;/kind&gt;&lt;pages&gt;365&lt;/pages&gt;&lt;/planner&gt;
+            &lt;book&gt;
+                &lt;name&gt;The Sign of Four&lt;/name&gt;
+                &lt;author&gt;&lt;name&gt;Arthur Conan Doyle&lt;/name&gt;&lt;/author&gt;
+            &lt;/book&gt;
+            &lt;pen&gt;&lt;kind&gt;marker&lt;/kind&gt;&lt;color&gt;blue&lt;/color&gt;&lt;/pen&gt;
+        &lt;/items&gt;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>            &lt;!--Contents--&gt;
+            &lt;book&gt;
+                &lt;name&gt;A Study in Scarlet&lt;/name&gt;
+                &lt;author&gt;&lt;name&gt;Arthur Conan Doyle&lt;/name&gt;&lt;/author&gt;
+            &lt;/book&gt;
+            &lt;planner&gt;Daily Planner&lt;kind&gt;day&lt;/kind&gt;&lt;pages&gt;365&lt;/pages&gt;&lt;/planner&gt;
+            &lt;book&gt;
+                &lt;name&gt;The Sign of Four&lt;/name&gt;
+                &lt;author&gt;&lt;name&gt;Arthur Conan Doyle&lt;/name&gt;&lt;/author&gt;
+            &lt;/book&gt;
+            &lt;pen&gt;&lt;kind&gt;marker&lt;/kind&gt;&lt;color&gt;blue&lt;/color&gt;&lt;/pen&gt;
+        
+&lt;planner&gt;Daily Planner&lt;kind&gt;day&lt;/kind&gt;&lt;pages&gt;365&lt;/pages&gt;&lt;/planner&gt;
+&lt;planner&gt;Daily Planner&lt;kind&gt;day&lt;/kind&gt;&lt;pages&gt;365&lt;/pages&gt;&lt;/planner&gt;&lt;pen&gt;&lt;kind&gt;marker&lt;/kind&gt;&lt;color&gt;blue&lt;/color&gt;&lt;/pen&gt;
+&lt;book&gt;
+                &lt;name&gt;A Study in Scarlet&lt;/name&gt;
+                &lt;author&gt;&lt;name&gt;Arthur Conan Doyle&lt;/name&gt;&lt;/author&gt;
+            &lt;/book&gt;&lt;planner&gt;Daily Planner&lt;kind&gt;day&lt;/kind&gt;&lt;pages&gt;365&lt;/pages&gt;&lt;/planner&gt;&lt;book&gt;
+                &lt;name&gt;The Sign of Four&lt;/name&gt;
+                &lt;author&gt;&lt;name&gt;Arthur Conan Doyle&lt;/name&gt;&lt;/author&gt;
+            &lt;/book&gt;&lt;pen&gt;&lt;kind&gt;marker&lt;/kind&gt;&lt;color&gt;blue&lt;/color&gt;&lt;/pen&gt;
+&lt;name&gt;A Study in Scarlet&lt;/name&gt;&lt;name&gt;Arthur Conan Doyle&lt;/name&gt;&lt;name&gt;The Sign of Four&lt;/name&gt;&lt;name&gt;Arthur Conan Doyle&lt;/name&gt;
+&lt;book&gt;
+                &lt;name&gt;A Study in Scarlet&lt;/name&gt;
+                &lt;author&gt;&lt;name&gt;Arthur Conan Doyle&lt;/name&gt;&lt;/author&gt;
+            &lt;/book&gt;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

@@ -2,8 +2,9 @@
 layout: ballerina-example-page
 title: Function Mocking
 description: This Ballerina sample demonstrates how to mock functions for unit testing.
-keywords: ballerina, ballerina by example, bbe, testing, mock
+keywords: ballerina, programming language, testing, mocking
 permalink: /learn/by-example/testerina-mocking-functions
+active: testerina-mocking-functions
 redirect_from:
   - /swan-lake/learn/by-example/testerina-mocking-functions
   - /swan-lake/learn/by-example/testerina-mocking-functions.html
@@ -11,14 +12,12 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="c1">// This demonstrates different ways to mock functions.</span>
-
-<span class="c1">// This function calls the `intAdd` function and returns the result.</span>
+                <div class="highlight"><pre><span class="c1">// Calls the `intAdd` function and returns the result.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">addValues</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">intAdd</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// This function adds two integers and returns the result.</span>
+<span class="c1">// Adds two integers and returns the result.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">intAdd</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
 <span class="p">}</span>
@@ -26,27 +25,26 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="c1">// This creates an object for stubbing calls to `intAdd`</span>
-<span class="c1">// which is written in the same module.</span>
+<span class="c1">// Creates a `MockFunction` for stubbing calls to</span>
+<span class="c1">// the `intAdd` function of the same module.</span>
 <span class="nd">@test:Mock {</span> <span class="nx">functionName</span><span class="p">:</span> <span class="s">&quot;intAdd&quot;</span> <span class="p">}</span>
 <span class="nx">test</span><span class="p">:</span><span class="nx">MockFunction</span> <span class="nx">intAddMockFn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">();</span>
 
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testReturn</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// This stubs the calls to `intAdd` function to return the specified value.</span>
+    <span class="c1">// Stubs the calls to return a specific value.</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">when</span><span class="p">(</span><span class="nx">intAddMockFn</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-
-    <span class="c1">// This stubs the calls to `intAdd` function to return the specified value</span>
-    <span class="c1">// when the specified arguments are provided.</span>
+    <span class="c1">// Stubs the calls to return a specific value when</span>
+    <span class="c1">// specific arguments are provided.</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">when</span><span class="p">(</span><span class="nx">intAddMockFn</span><span class="p">).</span><span class="nx">withArguments</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
 
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">intAdd</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;function mocking failed&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">intAdd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
-        <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;function mocking with arguments failed&quot;</span><span class="p">);</span>
+            <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;function mocking with arguments failed&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// This specifies a mock function that should replace the</span>
-<span class="c1">// imported function `println`.</span>
+<span class="c1">// Creates a `MockFunction` that should replace the</span>
+<span class="c1">// imported `io:println` function.</span>
 <span class="nd">@test:Mock {</span>
     <span class="nx">moduleName</span><span class="p">:</span> <span class="s">&quot;ballerina/io&quot;</span><span class="p">,</span>
     <span class="nx">functionName</span><span class="p">:</span> <span class="s">&quot;println&quot;</span>
@@ -55,15 +53,15 @@ redirect_from:
 
 <span class="kt">int</span> <span class="nx">tally</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
 
-<span class="c1">// This is a function that can be called in place of the `io:println` function.</span>
+<span class="c1">// This has a function signature similar to the `io:println` function.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">mockPrint</span><span class="p">(</span><span class="kt">any</span><span class="p">|</span><span class="nx">error</span><span class="o">...</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">tally</span> <span class="p">=</span> <span class="nx">tally</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testCall</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// This stubs the calls to io:println function</span>
-    <span class="c1">// to invoke the specified function.</span>
+    <span class="c1">// Stubs the calls to the `io:println` function</span>
+    <span class="c1">// to invoke the `mockPrint` function instead.</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">when</span><span class="p">(</span><span class="nx">printlnMockFn</span><span class="p">).</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;mockPrint&quot;</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Testing 1&quot;</span><span class="p">);</span>
@@ -82,8 +80,9 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Function Mocking</h2>
                             <p><p>Mock functions allow you to hide the real function implementation and engage your own definition when running tests.
- This allows you to isolate your tests from other modules. Function mocks can be stubbed with return
- values or with a user-defined function, which has the same signature as the real function.<br/><br/>
+ This allows you to isolate your tests from the other modules and functions.<br/><br/>
+ Function mocks can be stubbed with return values or with another user-defined function,
+ which has the same signature as the original function.<br/><br/>
  For more information, see <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>
  and the <a href="https://docs.central.ballerina.io/ballerina/test/latest/">Test Module</a>.</p>
 </p>
@@ -145,29 +144,10 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
                         <table class="cBBE-body">
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code empty leading">
-                                    
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This demonstrates different ways to mock functions.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
                             
                             <tr class="cTR hover-enable">
 
@@ -182,7 +162,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function calls the <code>intAdd</code> function and returns the result.</p>
+                                            <p>Calls the <code>intAdd</code> function and returns the result.</p>
 
                                         </div>
                                     </div>
@@ -203,7 +183,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function adds two integers and returns the result.</p>
+                                            <p>Adds two integers and returns the result.</p>
 
                                         </div>
                                     </div>
@@ -314,8 +294,8 @@ test:MockFunction intAddMockFn = new();
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This creates an object for stubbing calls to <code>intAdd</code>
- which is written in the same module.</p>
+                                            <p>Creates a <code>MockFunction</code> for stubbing calls to
+ the <code>intAdd</code> function of the same module.</p>
 
                                         </div>
                                     </div>
@@ -347,7 +327,7 @@ function testReturn() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This stubs the calls to <code>intAdd</code> function to return the specified value.</p>
+                                            <p>Stubs the calls to return a specific value.</p>
 
                                         </div>
                                     </div>
@@ -366,8 +346,8 @@ function testReturn() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This stubs the calls to <code>intAdd</code> function to return the specified value
- when the specified arguments are provided.</p>
+                                            <p>Stubs the calls to return a specific value when
+ specific arguments are provided.</p>
 
                                         </div>
                                     </div>
@@ -380,7 +360,7 @@ function testReturn() {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    test:assertEquals(intAdd(10, 6), 20, msg = &quot;function mocking failed&quot;);
     test:assertEquals(intAdd(0, 0), -1,
-        msg = &quot;function mocking with arguments failed&quot;);
+            msg = &quot;function mocking with arguments failed&quot;);
 }
 </code></pre></div>
 
@@ -405,8 +385,8 @@ test:MockFunction printlnMockFn = new();
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This specifies a mock function that should replace the
- imported function <code>println</code>.</p>
+                                            <p>Creates a <code>MockFunction</code> that should replace the
+ imported <code>io:println</code> function.</p>
 
                                         </div>
                                     </div>
@@ -439,7 +419,7 @@ test:MockFunction printlnMockFn = new();
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is a function that can be called in place of the <code>io:println</code> function.</p>
+                                            <p>This has a function signature similar to the <code>io:println</code> function.</p>
 
                                         </div>
                                     </div>
@@ -471,8 +451,8 @@ function testCall() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This stubs the calls to io:println function
- to invoke the specified function.</p>
+                                            <p>Stubs the calls to the <code>io:println</code> function
+ to invoke the <code>mockPrint</code> function instead.</p>
 
                                         </div>
                                     </div>
@@ -527,6 +507,18 @@ function testCall() {
                                 
                             
                         
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -535,12 +527,34 @@ function testCall() {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, create a Ballerina project and a module inside it.
-# Replace the content of the `main.bal` and ``main_test.bal` files with the above code
-# and execute the `ballerina test` command below from the project root directory.
-# Function mocking is not supported for testing single BAL files.
-bal test bbe_mocking
-Compiling source
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, create a Ballerina project named `bbe_mocking` and create a `tests` directory inside.
+# Replace the content of the `main.bal` and add the `main_test.bal` to the `tests` directory.
+# Execute the `bal test` command below.
+# Function mocking is not supported for testing single `.bal` files.
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>bal test bbe_mocking
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Compiling source
         ballerinatest/bbe_mocking:0.1.0
 </code></pre></div>
 
@@ -554,7 +568,18 @@ Compiling source
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Running Tests
-        ballerinatest/bbe_mocking:0.1.0
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>        bbe_mocking
 </code></pre></div>
 
                                 </td>

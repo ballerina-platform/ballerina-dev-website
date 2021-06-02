@@ -1,9 +1,10 @@
 ---
 layout: ballerina-example-page
-title: Disable Chunking
+title: Disable Chanking
 description: BBE on how to configure the chunking behavior of the HTTP client in Ballerina.
 keywords: ballerina, ballerina by example, bbe, http, chunked, transfer-encoding
 permalink: /learn/by-example/http-disable-chunking
+active: http-disable-chunking
 redirect_from:
   - /swan-lake/learn/by-example/http-disable-chunking
   - /swan-lake/learn/by-example/http-disable-chunking.html
@@ -16,60 +17,29 @@ redirect_from:
 <span class="c1">// The HTTP client&#39;s chunking behavior can be configured as [CHUNKING_AUTO](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_AUTO),</span>
 <span class="c1">// [CHUNKING_ALWAYS](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_ALWAYS),</span>
 <span class="c1">// or [CHUNKING_NEVER](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_NEVER).</span>
-<span class="c1">// In this example, it is set to `CHUNKING_NEVER`, which means that chunking never happens irrespective of how it is</span>
-<span class="c1">// specified in the request. When chunking is set to `CHUNKING_AUTO`, chunking is done as specified in the request.</span>
+<span class="c1">// In this example, it is set to `CHUNKING_NEVER`, which means that chunking never happens irrespective of the request size. </span>
+<span class="c1">// When chunking is set to `CHUNKING_AUTO`, chunking is done based on the request.</span>
 <span class="c1">// [http1Settings](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings) annotation</span>
 <span class="c1">// provides the chunking-related configurations.</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">,</span>
+<span class="nx">final</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">,</span>
                         <span class="p">{</span><span class="nx">http1Settings</span><span class="p">:</span> <span class="p">{</span><span class="nx">chunking</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">CHUNKING_NEVER</span><span class="p">}});</span>
 
-<span class="kd">service</span> <span class="o">/</span><span class="nx">chunkingSample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.()</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
-        <span class="c1">//Invoke endpoint with along with a JSON payload.</span>
-        <span class="k">var</span> <span class="nx">clientResponse</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo/&quot;</span><span class="p">,</span>
-                                                  <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">});</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">clientResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">clientResponse</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="kt">json</span> <span class="nx">msg</span> <span class="p">=</span>
-                <span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="s">&quot;An error occurred while invoking the service.&quot;</span><span class="p">};</span>
-            <span class="k">return</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span> <span class="nx">msg</span><span class="p">};</span>
-        <span class="p">}</span>
+<span class="kd">service</span> <span class="o">/</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">chunkingSample</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+        <span class="c1">//Invoke endpoint along with a JSON payload.</span>
+        <span class="kt">json</span> <span class="nx">clientResponse</span> <span class="p">=</span>
+            <span class="nx">check</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/echo&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">});</span>
+        <span class="k">return</span> <span class="nx">clientResponse</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// A sample backend, which responds according to the chunking behavior.</span>
-<span class="kd">service</span> <span class="o">/</span><span class="nx">echo</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="p">.(</span><span class="nd">@http:Header{</span><span class="nx">name</span><span class="p">:</span><span class="s">&quot;Content-length&quot;</span><span class="p">}</span> <span class="kt">string</span><span class="err">?</span> <span class="nx">cLen</span><span class="p">,</span>
-             <span class="nd">@http:Header{</span><span class="nx">name</span><span class="p">:</span><span class="s">&quot;Transfer-Encoding&quot;</span><span class="p">}</span> <span class="kt">string</span><span class="err">?</span> <span class="nx">traEncoding</span><span class="p">)</span>
-             <span class="nx">returns</span> <span class="kt">json</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">BadRequest</span> <span class="p">{</span>
-
-        <span class="kt">string</span> <span class="nx">value</span><span class="p">;</span>
-        <span class="c1">//Set the response according to the request headers.</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">cLen</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Length-&quot;</span> <span class="o">+</span> <span class="nx">cLen</span><span class="p">;</span>
-            <span class="c1">//Mark the `value` as trusted data and send out the JSON.</span>
-            <span class="k">return</span> <span class="p">{</span><span class="s">&quot;Outbound request content&quot;</span><span class="p">:</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">value</span><span class="p">};</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">traEncoding</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">value</span> <span class="p">=</span> <span class="nx">traEncoding</span><span class="p">;</span>
-            <span class="c1">//Perform data validation for transfer-encoding.</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;chunked&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;compress&quot;</span>
-                <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;deflate&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;gzip&quot;</span>
-                <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;identity&quot;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Transfer-Encoding contains invalid data&quot;</span><span class="p">;</span>
-                <span class="nx">http</span><span class="p">:</span><span class="nx">BadRequest</span> <span class="nx">badRequest</span> <span class="p">=</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span> <span class="nx">value</span><span class="p">};</span>
-                <span class="k">return</span> <span class="nx">badRequest</span><span class="p">;</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="c1">//Mark the `value` as trusted data and send out the JSON.</span>
-                <span class="k">return</span> <span class="p">{</span><span class="s">&quot;Outbound request content&quot;</span><span class="p">:</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">value</span><span class="p">};</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Neither Transfer-Encoding nor content-length header found&quot;</span><span class="p">;</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">BadRequest</span> <span class="nx">badRequest</span> <span class="p">=</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span> <span class="nx">value</span><span class="p">};</span>
-        <span class="k">return</span> <span class="nx">badRequest</span><span class="p">;</span>
+<span class="kd">service</span> <span class="o">/</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">echo</span><span class="p">(</span><span class="nd">@http:Header{</span><span class="nx">name</span><span class="p">:</span><span class="s">&quot;Content-length&quot;</span><span class="p">}</span> <span class="kt">string</span> <span class="nx">cLen</span><span class="p">)</span>
+             <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+        <span class="c1">//Set the response with the content length.</span>
+        <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Length-&quot;</span> <span class="o">+</span> <span class="nx">cLen</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s">&quot;Outbound request content&quot;</span><span class="p">:</span> <span class="nx">value</span><span class="p">};</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -80,9 +50,9 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Disable Chunking</h2>
-                            <p><p>This sample demonstrates how to configure the chunking behavior of an HTTP client endpoint. By default, the HTTP client sends messages with the <code>content-length</code> header.
-If the message size is larger than the buffer size (8K), messages are chunked. Chunking can be disabled using the connector options.<br/><br/>
+                            <h2>Disable Chanking</h2>
+                            <p><p>This sample demonstrates how to configure the chunking behavior of an <code>http:Client</code>. By default, the HTTP client sends messages with the <code>content-length</code> header.
+If the message size is larger than the buffer size (8K), messages are chunked. Chunking can be disabled using the client options.<br/><br/>
  For more information on the underlying module,
  see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/">HTTP module</a>.</p>
 </p>
@@ -92,16 +62,16 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="restrict-by-media-type.html">
+                                    <a class="prev" href="http-query-parameter.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Restrict By Media Type</p>
+                                        <p>Query Parameter</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="https-listener.html">
+                                    <a class="next" href="http-response-with-multiparts.html">
                                         <span>NEXT ></span>
-                                        <p>HTTPS Listener</p>
+                                        <p>Response With Multiparts</p>
                                     </a>
                                 </div>
                                 
@@ -152,18 +122,6 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -184,7 +142,7 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = check new (&quot;http://localhost:9090&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>final http:Client clientEndpoint = check new (&quot;http://localhost:9090&quot;,
                         {http1Settings: {chunking: http:CHUNKING_NEVER}});
 </code></pre></div>
 
@@ -196,8 +154,8 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                                             <p>The HTTP client&rsquo;s chunking behavior can be configured as <a href="https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_AUTO">CHUNKING_AUTO</a>,
  <a href="https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_ALWAYS">CHUNKING_ALWAYS</a>,
  or <a href="https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_NEVER">CHUNKING_NEVER</a>.
- In this example, it is set to <code>CHUNKING_NEVER</code>, which means that chunking never happens irrespective of how it is
- specified in the request. When chunking is set to <code>CHUNKING_AUTO</code>, chunking is done as specified in the request.
+ In this example, it is set to <code>CHUNKING_NEVER</code>, which means that chunking never happens irrespective of the request size.
+ When chunking is set to <code>CHUNKING_AUTO</code>, chunking is done based on the request.
  <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings">http1Settings</a> annotation
  provides the chunking-related configurations.</p>
 
@@ -210,19 +168,8 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service /chunkingSample on new http:Listener(9092) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get .() returns http:Response|http:InternalServerError {
+                                    <div class="highlight"><pre><code class=language-ballerina>service / on new http:Listener(9092) {
+    resource function get chunkingSample() returns json|error {
 </code></pre></div>
 
                                 </td>
@@ -234,15 +181,9 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var clientResponse = clientEndpoint-&gt;post(&quot;/echo/&quot;,
-                                                  {&quot;name&quot;: &quot;Ballerina&quot;});
-        if (clientResponse is http:Response) {
-            return clientResponse;
-        } else {
-            json msg =
-                {&quot;error&quot;: &quot;An error occurred while invoking the service.&quot;};
-            return {body: msg};
-        }
+                                    <div class="highlight"><pre><code class=language-ballerina>        json clientResponse =
+            check clientEndpoint-&gt;post(&quot;/echo&quot;, {&quot;name&quot;: &quot;Ballerina&quot;});
+        return clientResponse;
     }
 }
 </code></pre></div>
@@ -252,7 +193,7 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Invoke endpoint with along with a JSON payload.</p>
+                                            <p>Invoke endpoint along with a JSON payload.</p>
 
                                         </div>
                                     </div>
@@ -263,7 +204,9 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service /echo on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service / on new http:Listener(9090) {
+    resource function post echo(@http:Header{name:&quot;Content-length&quot;} string cLen)
+             returns json {
 </code></pre></div>
 
                                 </td>
@@ -279,108 +222,11 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post .(@http:Header{name:&quot;Content-length&quot;} string? cLen,
-             @http:Header{name:&quot;Transfer-Encoding&quot;} string? traEncoding)
-             returns json|http:BadRequest {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        string value;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (cLen is string) {
-            value = &quot;Length-&quot; + cLen;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Set the response according to the request headers.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            return {&quot;Outbound request content&quot;: &lt;@untainted&gt;value};
-        }
-        if (traEncoding is string) {
-            value = traEncoding;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Mark the <code>value</code> as trusted data and send out the JSON.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            if (value != &quot;chunked&quot; &amp;&amp; value != &quot;compress&quot;
-                &amp;&amp; value != &quot;deflate&quot; &amp;&amp; value != &quot;gzip&quot;
-                &amp;&amp; value != &quot;identity&quot;) {
-                value = &quot;Transfer-Encoding contains invalid data&quot;;
-                http:BadRequest badRequest = {body: value};
-                return badRequest;
-            } else {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Perform data validation for transfer-encoding.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>                return {&quot;Outbound request content&quot;: &lt;@untainted&gt;value};
-            }
-        }
-        value = &quot;Neither Transfer-Encoding nor content-length header found&quot;;
-        http:BadRequest badRequest = {body: value};
-        return badRequest;
+                                    <div class="highlight"><pre><code class=language-ballerina>        string value = &quot;Length-&quot; + cLen;
+        return {&quot;Outbound request content&quot;: value};
     }
 }
 </code></pre></div>
@@ -390,7 +236,7 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Mark the <code>value</code> as trusted data and send out the JSON.</p>
+                                            <p>Set the response with the content length.</p>
 
                                         </div>
                                     </div>
@@ -414,10 +260,7 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the services, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
-bal run http_disable_chunking.bal
-# Service deployment
+                                    <div class="highlight"><pre><code class=shell-session>bal run http_disable_chunking.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9092
 </code></pre></div>
@@ -436,10 +279,6 @@ bal run http_disable_chunking.bal
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -447,23 +286,10 @@ bal run http_disable_chunking.bal
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>To use the client, execute the cURL command below. 
 curl http://localhost:9092/chunkingSample
 {&quot;Outbound request content&quot;:&quot;Length-20&quot;}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>To enable chunking, change the chunking option of the `clientEndpoint` in the `.bal` file to `http:CHUNKING_ALWAYS`.
-{&quot;Outbound request content&quot;:&quot;chunked&quot;}
 </code></pre></div>
 
                                 </td>

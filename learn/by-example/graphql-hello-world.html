@@ -4,6 +4,7 @@ title: Hello World
 description: A GraphQL service endpoint written in Ballerina
 keywords: ballerina, ballerina by example, bbe, graphql, graphql service
 permalink: /learn/by-example/graphql-hello-world
+active: graphql-hello-world
 redirect_from:
   - /swan-lake/learn/by-example/graphql-hello-world
   - /swan-lake/learn/by-example/graphql-hello-world.html
@@ -14,7 +15,7 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">graphql</span><span class="p">;</span>
 
 <span class="c1">// The `graphql:Service` exposes a GraphQL service on the provided port.</span>
-<span class="kd">service</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">graphql</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">graphql</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">4000</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="c1">// A resource function inside a `graphql:Service` represents a resolver.</span>
     <span class="c1">// This resource can be queried using the `{ greeting }`.</span>
@@ -32,8 +33,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Hello World</h2>
-                            <p><p>In the Ballerina GraphQL package, a service represents a GraphQL endpoint.
- Each resource function inside the service represents a resolver function for a field in the root Query type.<br/><br/>
+                            <p><p>A GraphQL service in Ballerina represents a GraphQL schema. Each resource function of the <code>graphql:Service</code>
+ represents a resolver function in the root <code>Query</code> type. The return type of each resource function will be the
+ type of each field represented by the resource function.<br/><br/>
  For more information on the underlying package, see the
  <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">GraphQL package</a>.<br/><br/>
  This example shows a simple GraphQL endpoint that has a single field in the root Query type, which returns a string.</p>
@@ -51,9 +53,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="graphql-resources-with-record-values.html">
+                                    <a class="next" href="graphql-returning-record-values.html">
                                         <span>NEXT ></span>
-                                        <p>Resources with Record Values</p>
+                                        <p>Returning Record Values</p>
                                     </a>
                                 </div>
                                 
@@ -120,7 +122,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service graphql:Service /graphql on new graphql:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /graphql on new graphql:Listener(4000) {
 </code></pre></div>
 
                                 </td>
@@ -186,12 +188,8 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file, and issue the `bal run` command below.
-# Since Ballerina GraphQL runs on a Ballerina HTTP listener, an `http:Listener`
-# log will be printed.
-bal run graphql_hello_world.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+                                    <div class="highlight"><pre><code class=shell-session>bal run graphql_hello_world.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:4000
 </code></pre></div>
 
                                 </td>
@@ -216,8 +214,9 @@ bal run graphql_hello_world.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Invoke the GraphQL service with a cURL command.
-curl -XPOST -H &quot;Content-type: application/json&quot; -d &#39;{ &quot;query&quot;: &quot; { greeting }&quot; }&#39; &#39;http://localhost:9090/graphql&#39;
+                                    <div class="highlight"><pre><code class=shell-session># Send a query to the GraphQL endpoint using a cURL command.
+# The query used: { greeting }
+curl -X POST -H &quot;Content-type: application/json&quot; -d &#39;{ &quot;query&quot;: &quot;{ greeting }&quot; }&#39; &#39;http://localhost:4000/graphql&#39;
 {&quot;data&quot;:{&quot;greeting&quot;:&quot;Hello, World&quot;}}
 </code></pre></div>
 

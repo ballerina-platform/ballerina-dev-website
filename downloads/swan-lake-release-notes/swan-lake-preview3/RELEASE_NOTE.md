@@ -212,7 +212,7 @@ Furthermore, the line with the error would be replaced with a function call as s
 Grade grades = mapNameAndGradeToGrade(student);
 ```
 
-For more information, see [Code Actions](https://ballerina.io/swan-lake/learn/setting-up-visual-studio-code/language-intelligence/#code-actions).
+For more information, see [Code Actions](/learn/tooling-guide/visual-studio-code-extension/language-support/#code-actions).
 
 ##### Test Framework
 

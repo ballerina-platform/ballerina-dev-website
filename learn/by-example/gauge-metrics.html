@@ -4,6 +4,7 @@ title: Gauge-Based Metrics
 description: BBE on how to use the default Gauge Metrics Observability feature in Ballerina.
 keywords: ballerina, ballerina by example, bbe, observability, tracing, opentracing, gauge
 permalink: /learn/by-example/gauge-metrics
+active: gauge-metrics
 redirect_from:
   - /swan-lake/learn/by-example/gauge-metrics
   - /swan-lake/learn/by-example/gauge-metrics.html
@@ -65,7 +66,7 @@ redirect_from:
         <span class="c1">//Set the value of the gauge with the new value.</span>
         <span class="nx">registeredGaugeWithTags</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
         <span class="kt">float</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">registeredGaugeWithTags</span><span class="p">.</span><span class="nx">getValue</span><span class="p">();</span>
-        <span class="kt">float</span> <span class="nx">newValue</span> <span class="p">=</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">12</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="nx">newValue</span> <span class="p">=</span> <span class="nx">value</span> <span class="o">*</span> <span class="mf">12.0</span><span class="p">;</span>
         <span class="nx">registeredGaugeWithTags</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="nx">newValue</span><span class="p">);</span>
         <span class="c1">//Log the current state of registered gauge with tags.</span>
         <span class="nx">printGauge</span><span class="p">(</span><span class="nx">registeredGaugeWithTags</span><span class="p">);</span>
@@ -90,7 +91,7 @@ redirect_from:
                                         <span class="s">&quot;Some description&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="nx">statsConfigs</span><span class="p">);</span>
         <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">6</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">gaugeWithCustomStats</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="mf">100.0</span> <span class="o">*</span> <span class="nx">i</span><span class="p">);</span>
+            <span class="nx">gaugeWithCustomStats</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(&lt;</span><span class="kt">float</span><span class="p">&gt;(</span><span class="mi">100</span> <span class="o">*</span> <span class="nx">i</span><span class="p">));</span>
             <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="c1">//Log the current state of registered gauge with tags.</span>
@@ -155,9 +156,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="ballerina-to-openapi.html">
+                                    <a class="next" href="nats-basic-pub-sub.html">
                                         <span>NEXT ></span>
-                                        <p>Ballerina To OpenAPI</p>
+                                        <p>Publish/Subscribe</p>
                                     </a>
                                 </div>
                                 
@@ -178,6 +179,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/gauge-metrics/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=d2391594ca254cba0a30e3332f76f34e&file=gauge_metrics.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -522,7 +527,7 @@ Counter instance.</p>
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        registeredGaugeWithTags.increment();
         float value = registeredGaugeWithTags.getValue();
-        float newValue = value * 12;
+        float newValue = value * 12.0;
         registeredGaugeWithTags.setValue(newValue);
 </code></pre></div>
 
@@ -594,7 +599,7 @@ Counter instance.</p>
                                         &quot;Some description&quot;, (), statsConfigs);
         int i = 1;
         while (i &lt; 6) {
-            gaugeWithCustomStats.setValue(100.0 * i);
+            gaugeWithCustomStats.setValue(&lt;float&gt;(100 * i));
             i = i + 1;
         }
 </code></pre></div>
@@ -795,7 +800,7 @@ Counter instance.</p>
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `bal run` command below with the `--observability-included` build time flag and the `Config.toml` runtime configuration file.
-BALCONFIGFILE=Config.toml bal run --observability-included gauge_metrics.bal
+BAL_CONFIG_FILES=Config.toml bal run --observability-included gauge_metrics.bal
 </code></pre></div>
 
                                 </td>

@@ -4,6 +4,7 @@ title: SASL Authentication - Producer
 description: BBE on how to configure a Kafka producer to use SASL/PLAIN authentication.
 keywords: ballerina, ballerina by example, bbe, kafka, producer, authentication, SASL
 permalink: /learn/by-example/kafka-authentication-sasl-plain-producer
+active: kafka-authentication-sasl-plain-producer
 redirect_from:
   - /swan-lake/learn/by-example/kafka-authentication-sasl-plain-producer
   - /swan-lake/learn/by-example/kafka-authentication-sasl-plain-producer.html
@@ -19,29 +20,33 @@ redirect_from:
     <span class="c1">// Provide the authentication mechanism used by the Kafka server.</span>
     <span class="nx">mechanism</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">AUTH_SASL_PLAIN</span><span class="p">,</span>
     <span class="c1">// Username and password should be set here in order to authenticate the producer.</span>
-    <span class="c1">// Check Ballerina `config` APIs to see how to use encrypted values instead of plain text values here.</span>
+    <span class="c1">// For information on how to secure values instead of directly using plain text values, see [Writing Secure Ballerina Code](https://ballerina.io/learn/user-guide/security/writing-secure-ballerina-code/#securing-sensitive-data-using-configurable-variables).</span>
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina-secret&quot;</span>
-
 <span class="p">};</span>
 
 <span class="nx">kafka</span><span class="p">:</span><span class="nx">ProducerConfiguration</span> <span class="nx">producerConfigs</span> <span class="p">=</span> <span class="p">{</span>
     <span class="c1">// Provide the relevant authentication configuration record to authenticate the producer.</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="nx">authConfig</span>
-
+    <span class="nx">auth</span><span class="p">:</span> <span class="nx">authConfig</span><span class="p">,</span>
+    <span class="nx">securityProtocol</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">PROTOCOL_SASL_PLAINTEXT</span>
 <span class="p">};</span>
 
-<span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">,</span> <span class="nx">producerConfigs</span><span class="p">);</span>
+<span class="c1">// Provide the relevant SASL URL of the configured Kafka server.</span>
+<span class="kd">const</span> <span class="kt">string</span> <span class="nx">SASL_URL</span> <span class="p">=</span> <span class="s">&quot;localhost:9093&quot;</span><span class="p">;</span>
+
+<span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">SASL_URL</span><span class="p">,</span> <span class="nx">producerConfigs</span><span class="p">);</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">;</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">({</span>
-                            <span class="nx">topic</span><span class="p">:</span> <span class="s">&quot;topic-sasl&quot;</span><span class="p">,</span>
-                            <span class="nx">value</span><span class="p">:</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">()</span> <span class="p">});</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+    <span class="nx">kafka</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">({</span>
+        <span class="nx">topic</span><span class="p">:</span> <span class="s">&quot;topic-sasl&quot;</span><span class="p">,</span>
+        <span class="nx">value</span><span class="p">:</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">()</span>
+    <span class="p">});</span>
+    <span class="c1">// Checks for an error and notifies if an error has occurred.</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="nx">is</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Error</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred when sending message &quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Message successfully sent&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Message successfully sent.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -53,7 +58,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>SASL Authentication - Producer</h2>
-                            <p><p>Here, is an example of a Kafka producer using SASL/PLAIN authentication.
+                            <p><p>This is an example of a Kafka producer using the SASL/PLAIN authentication.
  For this example to work properly, an active Kafka server must be present
  and it should be configured to use the SASL/PLAIN authentication mechanism.
  <br/><br/>
@@ -195,6 +200,7 @@ import ballerinax/kafka;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    username: &quot;ballerina&quot;,
     password: &quot;ballerina-secret&quot;
+};
 </code></pre></div>
 
                                 </td>
@@ -203,22 +209,10 @@ import ballerinax/kafka;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Username and password should be set here in order to authenticate the producer.
- Check Ballerina <code>config</code> APIs to see how to use encrypted values instead of plain text values here.</p>
+ For information on how to secure values instead of directly using plain text values, see <a href="https://ballerina.io/learn/user-guide/security/writing-secure-ballerina-code/#securing-sensitive-data-using-configurable-variables">Writing Secure Ballerina Code</a>.</p>
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -238,7 +232,9 @@ import ballerinax/kafka;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    auth: authConfig
+                                    <div class="highlight"><pre><code class=language-ballerina>    auth: authConfig,
+    securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
+};
 </code></pre></div>
 
                                 </td>
@@ -254,10 +250,29 @@ import ballerinax/kafka;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>const string SASL_URL = &quot;localhost:9093&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Provide the relevant SASL URL of the configured Kafka server.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>};
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Producer kafkaProducer = check new (SASL_URL, producerConfigs);
 </code></pre></div>
 
                                 </td>
@@ -269,33 +284,40 @@ import ballerinax/kafka;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL, producerConfigs);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
     string message = &quot;Hello from Ballerina&quot;;
-    var result = kafkaProducer-&gt;send({
-                            topic: &quot;topic-sasl&quot;,
-                            value: message.toBytes() });
-    if (result is error) {
-        io:println(result);
+    kafka:Error? err = kafkaProducer-&gt;send({
+        topic: &quot;topic-sasl&quot;,
+        value: message.toBytes()
+    });
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    if err is kafka:Error {
+        io:println(&quot;Error occurred when sending message &quot;, err);
     } else {
-        io:println(&quot;Message successfully sent&quot;);
+        io:println(&quot;Message successfully sent.&quot;);
     }
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Checks for an error and notifies if an error has occurred.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -308,10 +330,6 @@ import ballerinax/kafka;
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -319,23 +337,8 @@ import ballerinax/kafka;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run kafka_authentication_sasl_plain_producer.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># If the producer is authenticated and the message sent successfully,
-# following message will be printed in the console.
+                                    <div class="highlight"><pre><code class=shell-session>bal run kafka_authentication_sasl_plain_producer.bal
 Message successfully sent.
 </code></pre></div>
 

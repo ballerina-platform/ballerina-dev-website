@@ -1,9 +1,10 @@
 ---
 layout: ballerina-example-page
-title: Select Query Operations
-description: BBE demonstrates how to use the MySQL client select query operations with the stream return type in Ballerina.
-keywords: ballerina, ballerina by example, bbe, mysql, query, select, data
+title: Simple Query
+description: This BBE demonstrates how to use the MySQL client select query operations with the stream return type in Ballerina.
+keywords: ballerina, ballerina by example, bbe, MySQL, query, select, data
 permalink: /learn/by-example/mysql-query-operation
+active: mysql-query-operation
 redirect_from:
   - /swan-lake/learn/by-example/mysql-query-operation
   - /swan-lake/learn/by-example/mysql-query-operation.html
@@ -12,73 +13,14 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
 
-<span class="c1">// Username and password of the MySQL database. This is used in the below</span>
-<span class="c1">// examples when initializing the MySQL connector. You need to change these</span>
-<span class="c1">// based on your setup to try locally.</span>
-<span class="kt">string</span> <span class="nx">dbUser</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">;</span>
-<span class="kt">string</span> <span class="nx">dbPassword</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">;</span>
-
-<span class="kd">function</span> <span class="nx">simpleQuery</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ Start Simple Query -------&quot;</span><span class="p">);</span>
-    <span class="c1">// Select the rows in the database table via the query remote operation.</span>
-    <span class="c1">// The result is returned as a stream and the elements of the stream can</span>
-    <span class="c1">// be either a record or an error.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
-        <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;Select * from Customers&quot;</span><span class="p">);</span>
-
-    <span class="c1">// If there is any error during the execution of the SQL query or</span>
-    <span class="c1">// iteration of the result stream, the result stream will terminate and</span>
-    <span class="c1">// return the error.</span>
-    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer full details: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer first name: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">[</span><span class="s">&quot;FirstName&quot;</span><span class="p">]);</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer last name: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">[</span><span class="s">&quot;LastName&quot;</span><span class="p">]);</span>
-    <span class="p">});</span>
-
-    <span class="c1">// Check and handle the error during the SQL query</span>
-    <span class="c1">// or iteration of the result stream.</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;ForEach operation on the stream failed!&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ End Simple Query -------&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">countRows</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ Start Count Total Rows -------&quot;</span><span class="p">);</span>
-    <span class="c1">// The result of the count operation is provided as a record stream.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
-        <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;Select count(*) as Total from Customers&quot;</span><span class="p">);</span>
-
-    <span class="c1">// Since the above count query will return only a single row, the</span>
-    <span class="c1">// `next()` operation is sufficient to retrieve the data.</span>
-    <span class="nx">record</span> <span class="p">{|</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">value</span><span class="p">;|}|</span><span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
-
-    <span class="c1">// Check the result and retrieve the value for total.</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">record</span> <span class="p">{|</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">value</span><span class="p">;|})</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total rows in customer table : &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">value</span><span class="p">[</span><span class="s">&quot;Total&quot;</span><span class="p">]);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Next operation on the stream failed!&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer table is empty&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="c1">// In general cases, the stream will be closed automatically</span>
-    <span class="c1">// when the stream is fully consumed or any error is encountered.</span>
-    <span class="c1">// However, in case if the stream is not fully consumed, the stream should be</span>
-    <span class="c1">// closed specifically.</span>
-    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ End Count Total Rows -------&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="c1">//Define a record to load the query result schema as shown in the &#39;typedQuery&#39; function.</span>
-<span class="c1">//In this example, all columns of the customer table will be loaded.</span>
-<span class="c1">//Therefore, a `Customer` record will be created with all the columns. The name of the result column</span>
-<span class="c1">//and the defined field name of the record will be matched case insensitively.</span>
+<span class="c1">// Defines a record to load the query result schema as shown below in the</span>
+<span class="c1">// &#39;getDataWithTypedQuery&#39; function. In this example, all columns of the </span>
+<span class="c1">// customer table will be loaded. Therefore, the `Customer` record will be </span>
+<span class="c1">// created with all the columns. The column name of the result and the </span>
+<span class="c1">// defined field name of the record will be matched case insensitively.</span>
 <span class="nx">type</span> <span class="nx">Customer</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">customerId</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
@@ -88,74 +30,98 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
 <span class="p">|};</span>
 
-<span class="kd">function</span> <span class="nx">typedQuery</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ Start Query With Type Description -------&quot;</span><span class="p">);</span>
-    <span class="c1">// The result is returned as a Customer record stream and the elements</span>
-    <span class="c1">// of the stream can be either a Customer record or an error.</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Runs the prerequisite setup for the example.</span>
+    <span class="nx">check</span> <span class="nx">beforeExample</span><span class="p">();</span>
+
+    <span class="c1">// Initializes the MySQL client.</span>
+    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span>
+            <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Select the rows in the database table via the query remote operation.</span>
+    <span class="c1">// The result is returned as a stream and the elements of the stream can</span>
+    <span class="c1">// be either a record or an error. The name and type of the attributes </span>
+    <span class="c1">// within the record from the `resultStream` will be automatically </span>
+    <span class="c1">// identified based on the column name and type of the query result.</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
-        <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;Select * from Customers&quot;</span><span class="p">,</span> <span class="nx">Customer</span><span class="p">);</span>
+             <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM Customers`</span><span class="p">);</span>
 
-    <span class="c1">// Cast the generic record type to the Customer stream type.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Customer</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">customerStream</span> <span class="p">=</span>
-        <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Customer</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span><span class="nx">resultStream</span><span class="p">;</span>
-
-    <span class="c1">// Iterate the customer stream.</span>
-    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">customerStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">Customer</span> <span class="nx">customer</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">customer</span><span class="p">);</span>
+    <span class="c1">// If there is any error during the execution of the SQL query or</span>
+    <span class="c1">// iteration of the result stream, the result stream will terminate and</span>
+    <span class="c1">// return the error.</span>
+    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Full Customer details: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">});</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-       <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
-    <span class="p">}</span>
 
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ End Query With Type Description -------&quot;</span><span class="p">);</span>
+    <span class="c1">// The result of the count operation is provided as a record stream.</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream2</span> <span class="p">=</span>
+            <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT COUNT(*) AS total FROM Customers`</span><span class="p">);</span>
+
+    <span class="c1">// Since the above count query will return only a single row,</span>
+    <span class="c1">// the `next()` operation is sufficient to retrieve the data.</span>
+    <span class="nx">record</span> <span class="p">{|</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">value</span><span class="p">;|}|</span><span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">resultStream2</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+    <span class="c1">// Checks the result and retrieves the value for the total.</span>
+    <span class="k">if</span> <span class="nx">result</span> <span class="nx">is</span> <span class="nx">record</span> <span class="p">{|</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">value</span><span class="p">;|}</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total rows in customer table : &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">value</span><span class="p">[</span><span class="s">&quot;total&quot;</span><span class="p">]);</span>
+    <span class="p">}</span> 
+
+    <span class="c1">// In general cases, the stream will be closed automatically</span>
+    <span class="c1">// when the stream is fully consumed or any error is encountered.</span>
+    <span class="c1">// However, in case if the stream is not fully consumed, the stream</span>
+    <span class="c1">// should be closed specifically.</span>
+    <span class="nx">error</span><span class="err">?</span> <span class="nx">er</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+
+    <span class="c1">// The result is returned as a `Customer` record stream and the elements</span>
+    <span class="c1">// of the stream can be either a `Customer` record or an error.</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream3</span> <span class="p">=</span>
+        <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM Customers`</span><span class="p">,</span> <span class="nx">Customer</span><span class="p">);</span>
+
+    <span class="c1">// Casts the generic record type to the `Customer` stream type.</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Customer</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">customerStream</span> <span class="p">=</span>
+        <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Customer</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span><span class="nx">resultStream3</span><span class="p">;</span>
+
+    <span class="c1">// Iterates the customer stream.</span>
+    <span class="nx">error</span><span class="err">?</span> <span class="nx">e2</span> <span class="p">=</span> <span class="nx">customerStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">Customer</span> <span class="nx">customer</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Full Customer details: &quot;</span><span class="p">,</span> <span class="nx">customer</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Performs the cleanup after the example.</span>
+    <span class="nx">check</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">//Initialize the database table with sample data.</span>
-<span class="kd">function</span> <span class="nx">initializeTable</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">);</span>
+<span class="c1">// Initializes the database as a prerequisite to the example.</span>
+<span class="kd">function</span> <span class="nx">beforeExample</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Creates a database.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
-        <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE DATABASE IF NOT EXISTS MYSQL_BBE&quot;</span><span class="p">);</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE IF EXISTS &quot;</span><span class="o">+</span>
-        <span class="s">&quot;MYSQL_BBE.Customers&quot;</span><span class="p">);</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS &quot;</span> <span class="o">+</span>
-        <span class="s">&quot;MYSQL_BBE.Customers(customerId INTEGER &quot;</span> <span class="o">+</span>
-        <span class="s">&quot;NOT NULL AUTO_INCREMENT, FirstName  VARCHAR(300), LastName  &quot;</span> <span class="o">+</span>
-        <span class="s">&quot;VARCHAR(300), RegistrationID INTEGER,&quot;</span> <span class="o">+</span>
-        <span class="s">&quot;CreditLimit DOUBLE, Country  VARCHAR(300), PRIMARY KEY (CustomerId))&quot;</span><span class="p">);</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO MYSQL_BBE.Customers &quot;</span><span class="o">+</span>
-        <span class="s">&quot;(FirstName,LastName,RegistrationID,&quot;</span> <span class="o">+</span>
-        <span class="s">&quot;CreditLimit,Country) VALUES (&#39;Peter&#39;, &#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)&quot;</span><span class="p">);</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO MYSQL_BBE.Customers &quot;</span><span class="o">+</span>
-        <span class="s">&quot;(FirstName,LastName,RegistrationID,&quot;</span> <span class="o">+</span>
-        <span class="s">&quot;CreditLimit,Country) VALUES (&#39;Dan&#39;, &#39;Brown&#39;, 2, 10000, &#39;UK&#39;)&quot;</span><span class="p">);</span>
-    <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+        <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE DATABASE MYSQL_BBE`</span><span class="p">);</span>
+
+    <span class="c1">// Creates a table in the database.</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE MYSQL_BBE.Customers</span>
+<span class="s">            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName</span>
+<span class="s">            VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER,</span>
+<span class="s">            creditLimit DOUBLE, country  VARCHAR(300),</span>
+<span class="s">            PRIMARY KEY (customerId))`</span><span class="p">);</span>
+
+    <span class="c1">// Adds the records to the newly-created table.</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO MYSQL_BBE.Customers</span>
+<span class="s">            (firstName, lastName, registrationID,creditLimit,country) VALUES</span>
+<span class="s">            (&#39;Peter&#39;,&#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`</span><span class="p">);</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO MYSQL_BBE.Customers</span>
+<span class="s">            (firstName, lastName, registrationID,creditLimit,country) VALUES</span>
+<span class="s">            (&#39;Dan&#39;, &#39;Brown&#39;, 2, 10000, &#39;UK&#39;)`</span><span class="p">);</span>
+
+    <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>        
 <span class="p">}</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Initialize the MySQL client.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeTable</span><span class="p">();</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sample data initialization failed!&quot;</span><span class="p">);</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span>
-            <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">mysqlClient</span> <span class="nx">is</span> <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// Execute the `select` queries in different options.</span>
-            <span class="nx">simpleQuery</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
-            <span class="nx">countRows</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
-            <span class="nx">typedQuery</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Queried the database successfully!&quot;</span><span class="p">);</span>
-
-            <span class="c1">// Close the MySQL client.</span>
-            <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;MySQL Client initialization for &quot;</span> <span class="o">+</span>
-                <span class="s">&quot;querying data failed!&quot;</span><span class="p">,</span> <span class="nx">mysqlClient</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+<span class="c1">// Cleans up the database after running the example.</span>
+<span class="kd">function</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Cleans the database.</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
+            <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP DATABASE MYSQL_BBE`</span><span class="p">);</span>
+    <span class="c1">// Closes the MySQL client.</span>
+    <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -165,15 +131,13 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Select Query Operations</h2>
-                            <p><p>This example demonstrates how to use the JDBC client select query operations
+                            <h2>Simple Query</h2>
+                            <p><p>This example demonstrates how to use the MySQL client select query operations
  with the stream return type. Note that the MySQL database driver JAR should
  be defined in the <code>Ballerina.toml</code> file as a dependency.
- See <a href="https://docs.central.ballerina.io/ballerinax/mysql/latest/">MySQL module</a> for sample configuration.
- The MySQL connector uses database properties from MySQL version 8.0.x onwards. Therefore, it is
- recommended to use a MySQL driver version greater than 8.0.x.<br><br>
- For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerinax/mysql/latest/">MySQL module</a>.</p>
+ For a sample configuration and more information on the underlying module, see the <a href="https://docs.central.ballerina.io/ballerinax/mysql/latest/">MySQL module</a>.
+ The MySQL connector uses database properties from MySQL version 8.0.13 onwards. Therefore, it is
+ recommended to use a MySQL driver version greater than 8.0.13.<br><br></p>
 </p>
 
                         </td>
@@ -181,16 +145,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="mysql-init-options.html">
+                                    <a class="prev" href="receive-email-using-listener.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Client Initialization</p>
+                                        <p>Receive Emails Using a Listener</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="mysql-complex-type-queries.html">
                                         <span>NEXT ></span>
-                                        <p>Query with Complex Types</p>
+                                        <p>Query With Complex Types</p>
                                     </a>
                                 </div>
                                 
@@ -275,12 +239,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -290,238 +248,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/sql;
 import ballerinax/mysql;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>string dbUser = &quot;root&quot;;
-string dbPassword = &quot;Test@123&quot;;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Username and password of the MySQL database. This is used in the below
- examples when initializing the MySQL connector. You need to change these
- based on your setup to try locally.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function simpleQuery(mysql:Client mysqlClient) {
-    io:println(&quot;------ Start Simple Query -------&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream =
-        mysqlClient-&gt;query(&quot;Select * from Customers&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Select the rows in the database table via the query remote operation.
- The result is returned as a stream and the elements of the stream can
- be either a record or an error.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = resultStream.forEach(function(record {} result) {
-        io:println(&quot;Customer full details: &quot;, result);
-        io:println(&quot;Customer first name: &quot;, result[&quot;FirstName&quot;]);
-        io:println(&quot;Customer last name: &quot;, result[&quot;LastName&quot;]);
-    });
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If there is any error during the execution of the SQL query or
- iteration of the result stream, the result stream will terminate and
- return the error.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (e is error) {
-        io:println(&quot;ForEach operation on the stream failed!&quot;, e);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Check and handle the error during the SQL query
- or iteration of the result stream.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;------ End Simple Query -------&quot;);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function countRows(mysql:Client mysqlClient) {
-    io:println(&quot;------ Start Count Total Rows -------&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream =
-        mysqlClient-&gt;query(&quot;Select count(*) as Total from Customers&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The result of the count operation is provided as a record stream.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    record {|record {} value;|}|error? result = resultStream.next();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Since the above count query will return only a single row, the
- <code>next()</code> operation is sufficient to retrieve the data.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (result is record {|record {} value;|}) {
-        io:println(&quot;Total rows in customer table : &quot;, result.value[&quot;Total&quot;]);
-    } else if (result is error) {
-        io:println(&quot;Next operation on the stream failed!&quot;, result);
-    } else {
-        io:println(&quot;Customer table is empty&quot;);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Check the result and retrieve the value for total.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = resultStream.close();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>In general cases, the stream will be closed automatically
- when the stream is fully consumed or any error is encountered.
- However, in case if the stream is not fully consumed, the stream should be
- closed specifically.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;------ End Count Total Rows -------&quot;);
-}
+import ballerina/sql;
 </code></pre></div>
 
                                 </td>
@@ -548,10 +276,11 @@ string dbPassword = &quot;Test@123&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Define a record to load the query result schema as shown in the &lsquo;typedQuery&rsquo; function.
-In this example, all columns of the customer table will be loaded.
-Therefore, a <code>Customer</code> record will be created with all the columns. The name of the result column
-and the defined field name of the record will be matched case insensitively.</p>
+                                            <p>Defines a record to load the query result schema as shown below in the
+ &lsquo;getDataWithTypedQuery&rsquo; function. In this example, all columns of the
+ customer table will be loaded. Therefore, the <code>Customer</code> record will be
+ created with all the columns. The column name of the result and the
+ defined field name of the record will be matched case insensitively.</p>
 
                                         </div>
                                     </div>
@@ -562,8 +291,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function typedQuery(mysql:Client mysqlClient) {
-    io:println(&quot;------ Start Query With Type Description -------&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -575,8 +303,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream =
-        mysqlClient-&gt;query(&quot;Select * from Customers&quot;, Customer);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check beforeExample();
 </code></pre></div>
 
                                 </td>
@@ -584,8 +311,178 @@ and the defined field name of the record will be matched case insensitively.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The result is returned as a Customer record stream and the elements
- of the stream can be either a Customer record or an error.</p>
+                                            <p>Runs the prerequisite setup for the example.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient = check new (user = &quot;root&quot;,
+            password = &quot;Test@123&quot;, database = &quot;MYSQL_BBE&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initializes the MySQL client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream =
+             mysqlClient-&gt;query(`SELECT * FROM Customers`);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Select the rows in the database table via the query remote operation.
+ The result is returned as a stream and the elements of the stream can
+ be either a record or an error. The name and type of the attributes
+ within the record from the <code>resultStream</code> will be automatically
+ identified based on the column name and type of the query result.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = resultStream.forEach(function(record {} result) {
+        io:println(&quot;Full Customer details: &quot;, result);
+    });
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If there is any error during the execution of the SQL query or
+ iteration of the result stream, the result stream will terminate and
+ return the error.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream2 =
+            mysqlClient-&gt;query(`SELECT COUNT(*) AS total FROM Customers`);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The result of the count operation is provided as a record stream.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    record {|record {} value;|}|error? result = resultStream2.next();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Since the above count query will return only a single row,
+ the <code>next()</code> operation is sufficient to retrieve the data.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    if result is record {|record {} value;|} {
+        io:println(&quot;Total rows in customer table : &quot;, result.value[&quot;total&quot;]);
+    } 
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Checks the result and retrieves the value for the total.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? er = resultStream.close();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>In general cases, the stream will be closed automatically
+ when the stream is fully consumed or any error is encountered.
+ However, in case if the stream is not fully consumed, the stream
+ should be closed specifically.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream3 =
+        mysqlClient-&gt;query(`SELECT * FROM Customers`, Customer);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The result is returned as a <code>Customer</code> record stream and the elements
+ of the stream can be either a <code>Customer</code> record or an error.</p>
 
                                         </div>
                                     </div>
@@ -597,7 +494,7 @@ and the defined field name of the record will be matched case insensitively.</p>
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    stream&lt;Customer, sql:Error&gt; customerStream =
-        &lt;stream&lt;Customer, sql:Error&gt;&gt;resultStream;
+        &lt;stream&lt;Customer, sql:Error&gt;&gt;resultStream3;
 </code></pre></div>
 
                                 </td>
@@ -605,7 +502,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Cast the generic record type to the Customer stream type.</p>
+                                            <p>Casts the generic record type to the <code>Customer</code> stream type.</p>
 
                                         </div>
                                     </div>
@@ -616,12 +513,9 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = customerStream.forEach(function(Customer customer) {
-        io:println(customer);
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e2 = customerStream.forEach(function(Customer customer) {
+        io:println(&quot;Full Customer details: &quot;, customer);
     });
-    if (e is error) {
-       io:println(e);
-    }
 </code></pre></div>
 
                                 </td>
@@ -629,7 +523,114 @@ and the defined field name of the record will be matched case insensitively.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Iterate the customer stream.</p>
+                                            <p>Iterates the customer stream.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    check afterExample(mysqlClient);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Performs the cleanup after the example.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function beforeExample() returns sql:Error? {
+    mysql:Client mysqlClient = check new (user = &quot;root&quot;, password = &quot;Test@123&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initializes the database as a prerequisite to the example.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
+        check mysqlClient-&gt;execute(`CREATE DATABASE MYSQL_BBE`);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Creates a database.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient-&gt;execute(`CREATE TABLE MYSQL_BBE.Customers
+            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName
+            VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER,
+            creditLimit DOUBLE, country  VARCHAR(300),
+            PRIMARY KEY (customerId))`);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Creates a table in the database.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient-&gt;execute(`INSERT INTO MYSQL_BBE.Customers
+            (firstName, lastName, registrationID,creditLimit,country) VALUES
+            (&#39;Peter&#39;,&#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`);
+    result = check mysqlClient-&gt;execute(`INSERT INTO MYSQL_BBE.Customers
+            (firstName, lastName, registrationID,creditLimit,country) VALUES
+            (&#39;Dan&#39;, &#39;Brown&#39;, 2, 10000, &#39;UK&#39;)`);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Adds the records to the newly-created table.</p>
 
                                         </div>
                                     </div>
@@ -640,7 +641,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;------ End Query With Type Description -------&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check mysqlClient.close();        
 }
 </code></pre></div>
 
@@ -653,25 +654,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function initializeTable() returns sql:Error? {
-    mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
-    sql:ExecutionResult result =
-        check mysqlClient-&gt;execute(&quot;CREATE DATABASE IF NOT EXISTS MYSQL_BBE&quot;);
-    result = check mysqlClient-&gt;execute(&quot;DROP TABLE IF EXISTS &quot;+
-        &quot;MYSQL_BBE.Customers&quot;);
-    result = check mysqlClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS &quot; +
-        &quot;MYSQL_BBE.Customers(customerId INTEGER &quot; +
-        &quot;NOT NULL AUTO_INCREMENT, FirstName  VARCHAR(300), LastName  &quot; +
-        &quot;VARCHAR(300), RegistrationID INTEGER,&quot; +
-        &quot;CreditLimit DOUBLE, Country  VARCHAR(300), PRIMARY KEY (CustomerId))&quot;);
-    result = check mysqlClient-&gt;execute(&quot;INSERT INTO MYSQL_BBE.Customers &quot;+
-        &quot;(FirstName,LastName,RegistrationID,&quot; +
-        &quot;CreditLimit,Country) VALUES (&#39;Peter&#39;, &#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)&quot;);
-    result = check mysqlClient-&gt;execute(&quot;INSERT INTO MYSQL_BBE.Customers &quot;+
-        &quot;(FirstName,LastName,RegistrationID,&quot; +
-        &quot;CreditLimit,Country) VALUES (&#39;Dan&#39;, &#39;Brown&#39;, 2, 10000, &#39;UK&#39;)&quot;);
-    check mysqlClient.close();
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>function afterExample(mysql:Client mysqlClient) returns sql:Error? {
 </code></pre></div>
 
                                 </td>
@@ -679,78 +662,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initialize the database table with sample data.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:Error? err = initializeTable();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Initialize the MySQL client.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (err is sql:Error) {
-        io:println(&quot;Sample data initialization failed!&quot;);
-        io:println(err);
-    } else {
-        mysql:Client|sql:Error mysqlClient = new (user = dbUser,
-            password = dbPassword, database = &quot;MYSQL_BBE&quot;);
-        if (mysqlClient is mysql:Client) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            simpleQuery(mysqlClient);
-            countRows(mysqlClient);
-            typedQuery(mysqlClient);
-            io:println(&quot;Queried the database successfully!&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Execute the <code>select</code> queries in different options.</p>
+                                            <p>Cleans up the database after running the example.</p>
 
                                         </div>
                                     </div>
@@ -761,7 +673,8 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            sql:Error? e = mysqlClient.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
+            check mysqlClient-&gt;execute(`DROP DATABASE MYSQL_BBE`);
 </code></pre></div>
 
                                 </td>
@@ -769,7 +682,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Close the MySQL client.</p>
+                                            <p>Cleans the database.</p>
 
                                         </div>
                                     </div>
@@ -777,19 +690,22 @@ and the defined field name of the record will be matched case insensitively.</p>
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        } else {
-            io:println(&quot;MySQL Client initialization for &quot; +
-                &quot;querying data failed!&quot;, mysqlClient);
-        }
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    check mysqlClient.close();
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Closes the MySQL client.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -814,9 +730,10 @@ and the defined field name of the record will be matched case insensitively.</p>
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>#  To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
-bal run mysql_query_operation.bal
+                                    <div class="highlight"><pre><code class=shell-session># Create a Ballerina project.
+# Copy the example to the project and add relevant database driver jar details to the `Ballerina.toml` file.
+# Execute the command below to build and run the project.
+bal run
 </code></pre></div>
 
                                 </td>
@@ -828,22 +745,11 @@ bal run mysql_query_operation.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>------ Start Simple Query -------
-Customer full details: {&quot;customerId&quot;:1,&quot;FirstName&quot;:&quot;Peter&quot;,&quot;LastName&quot;:&quot;Stuart&quot;,&quot;RegistrationID&quot;:1,&quot;CreditLimit&quot;:5000.75,&quot;Country&quot;:&quot;USA&quot;}
-Customer first name: Peter
-Customer last name: Stuart
-Customer full details: {&quot;customerId&quot;:2,&quot;FirstName&quot;:&quot;Dan&quot;,&quot;LastName&quot;:&quot;Brown&quot;,&quot;RegistrationID&quot;:2,&quot;CreditLimit&quot;:10000.0,&quot;Country&quot;:&quot;UK&quot;}
-Customer first name: Dan
-Customer last name: Brown
------- End Simple Query -------
------- Start Count Total Rows -------
+                                    <div class="highlight"><pre><code class=shell-session>Full Customer details: {&quot;customerId&quot;:1,&quot;firstName&quot;:&quot;Peter&quot;,&quot;lastName&quot;:&quot;Stuart&quot;,&quot;registrationID&quot;:1,&quot;creditLimit&quot;:5000.75,&quot;country&quot;:&quot;USA&quot;}
+Full Customer details: {&quot;customerId&quot;:2,&quot;firstName&quot;:&quot;Dan&quot;,&quot;lastName&quot;:&quot;Brown&quot;,&quot;registrationID&quot;:2,&quot;creditLimit&quot;:10000.0,&quot;country&quot;:&quot;UK&quot;}
 Total rows in customer table : 2
------- End Count Total Rows -------
------- Start Query With Type Description -------
-{&quot;customerId&quot;:1,&quot;firstName&quot;:&quot;Peter&quot;,&quot;lastName&quot;:&quot;Stuart&quot;,&quot;registrationId&quot;:1,&quot;creditLimit&quot;:5000.75,&quot;country&quot;:&quot;USA&quot;}
-{&quot;customerId&quot;:2,&quot;firstName&quot;:&quot;Dan&quot;,&quot;lastName&quot;:&quot;Brown&quot;,&quot;registrationId&quot;:2,&quot;creditLimit&quot;:10000.0,&quot;country&quot;:&quot;UK&quot;}
------- End Query With Type Description -------
-Queried the database successfully!
+Full Customer details: {&quot;customerId&quot;:1,&quot;firstName&quot;:&quot;Peter&quot;,&quot;lastName&quot;:&quot;Stuart&quot;,&quot;registrationId&quot;:1,&quot;creditLimit&quot;:5000.75,&quot;country&quot;:&quot;USA&quot;}
+Full Customer details: {&quot;customerId&quot;:2,&quot;firstName&quot;:&quot;Dan&quot;,&quot;lastName&quot;:&quot;Brown&quot;,&quot;registrationId&quot;:2,&quot;creditLimit&quot;:10000.0,&quot;country&quot;:&quot;UK&quot;}
 </code></pre></div>
 
                                 </td>

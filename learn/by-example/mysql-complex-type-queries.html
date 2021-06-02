@@ -1,9 +1,10 @@
 ---
 layout: ballerina-example-page
-title: Query with Complex Types
-description: BBE on the use of MySQL client with complex data types such as arrays, binary, blobs, clob, and date/time fields in Ballerina.
-keywords: ballerina, ballerina by example, bbe, mysql, datatype, blobs, date, time
+title: Query With Complex Types
+description: This BBE on the use of MySQL client with complex data types such as JSON, binary, blobs, and date/time fields in Ballerina.
+keywords: ballerina, ballerina by example, bbe, mysql, datatype, blobs, json, json_array, date, time
 permalink: /learn/by-example/mysql-complex-type-queries
+active: mysql-complex-type-queries
 redirect_from:
   - /swan-lake/learn/by-example/mysql-complex-type-queries
   - /swan-lake/learn/by-example/mysql-complex-type-queries.html
@@ -12,23 +13,25 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 
-<span class="c1">// Username and password of the MySQL database. This is used in below examples</span>
-<span class="c1">// when initializing the MySQL connector. You need to change these based on</span>
-<span class="c1">// your setup if you are trying locally.</span>
-<span class="kt">string</span> <span class="nx">dbUser</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">;</span>
-<span class="kt">string</span> <span class="nx">dbPassword</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">;</span>
-
-<span class="c1">// Define the record types to be used in the below examples.</span>
+<span class="c1">// The `BinaryType` record to represent the `BINARY_TYPES` database table.</span>
 <span class="nx">type</span> <span class="nx">BinaryType</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">row_id</span><span class="p">;</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">blob_type</span><span class="p">;</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">binary_type</span><span class="p">;</span>
 <span class="p">|};</span>
 
+<span class="c1">// The `JsonType` record to represent the `JSON_TYPES` database table.</span>
+<span class="nx">type</span> <span class="nx">JsonType</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">int</span> <span class="nx">row_id</span><span class="p">;</span>
+    <span class="kt">json</span> <span class="nx">json_doc</span><span class="p">;</span>
+    <span class="kt">json</span> <span class="nx">json_array</span><span class="p">;</span>
+<span class="p">|};</span>
+
+<span class="c1">// The `DateTimeType` record to represent the `DATE_TIME_TYPES` database table.</span>
 <span class="nx">type</span> <span class="nx">DateTimeType</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">row_id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">date_type</span><span class="p">;</span>
@@ -37,138 +40,105 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">datetime_type</span><span class="p">;</span>
 <span class="p">|};</span>
 
-<span class="kd">function</span> <span class="nx">queryBinaryType</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ Query Binary Type -------&quot;</span><span class="p">);</span>
-    <span class="c1">// Select the rows with binary data types.</span>
-    <span class="c1">// The name and type of the attributes within the record from the</span>
-    <span class="c1">// `resultStream` will be automatically identified based on the column</span>
-    <span class="c1">// name and type of the query result.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
-        <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;Select * from BINARY_TYPES&quot;</span><span class="p">);</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Runs the prerequisite setup for the example.</span>
+    <span class="nx">check</span> <span class="nx">beforeExample</span><span class="p">();</span>
 
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Result 1:&quot;</span><span class="p">);</span>
-    <span class="c1">// If there is any error during the execution of the SQL query or</span>
-    <span class="c1">// iteration of the result stream, the result stream will terminate and</span>
-    <span class="c1">// return the error.</span>
-    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Initializes the MySQL client.</span>
+    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span>
+            <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Since the `rowType` is provided as a `BinaryType`, the `resultStream` </span>
+    <span class="c1">// will have `BinaryType` records.</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span> 
+                <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM BINARY_TYPES`</span><span class="p">,</span> <span class="nx">BinaryType</span><span class="p">);</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">BinaryType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">binaryResultStream</span> <span class="p">=</span> 
+                <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">BinaryType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span> <span class="nx">resultStream</span><span class="p">;</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Binary types Result :&quot;</span><span class="p">);</span>
+    <span class="c1">// Iterates the `binaryResultStream`.</span>
+    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">binaryResultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">BinaryType</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
     <span class="p">});</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="c1">// Since the `rowType` is provided as a `BinaryType`, the `resultStream` will</span>
-    <span class="c1">// have `BinaryType` records.</span>
-    <span class="nx">resultStream</span> <span class="p">=</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;Select * from BINARY_TYPES&quot;</span><span class="p">,</span> <span class="nx">BinaryType</span><span class="p">);</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">BinaryType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">binaryResultStream</span> <span class="p">=</span>
-        <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">BinaryType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span><span class="nx">resultStream</span><span class="p">;</span>
 
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Result 2:&quot;</span><span class="p">);</span>
-    <span class="c1">// Iterate the `binaryResultStream`.</span>
-    <span class="nx">e</span> <span class="p">=</span> <span class="nx">binaryResultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">BinaryType</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Since the `rowType` is provided as an `JsonType`, the `resultStream2` will</span>
+    <span class="c1">// have `JsonType` records.</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream2</span> <span class="p">=</span> 
+                <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM JSON_TYPES`</span><span class="p">,</span> <span class="nx">JsonType</span><span class="p">);</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">JsonType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">jsonResultStream</span> <span class="p">=</span>
+                <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">JsonType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span> <span class="nx">resultStream2</span><span class="p">;</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Json type Result :&quot;</span><span class="p">);</span>
+    <span class="c1">// Iterates the `jsonResultStream`.</span>
+    <span class="nx">error</span><span class="err">?</span> <span class="nx">e2</span> <span class="p">=</span> <span class="nx">jsonResultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">JsonType</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
     <span class="p">});</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
-    <span class="p">}</span>
 
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ ********* -------&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">queryDateTimeType</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ Query Date Time Type -------&quot;</span><span class="p">);</span>
-    <span class="c1">// Select the rows with date/time data types.</span>
-    <span class="c1">// The name and type of the attributes within the record from the</span>
-    <span class="c1">// `resultStream` will be automatically identified based on the column</span>
-    <span class="c1">// name and type of the query result.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
-        <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;Select * from DATE_TIME_TYPES&quot;</span><span class="p">);</span>
-
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Result 1:&quot;</span><span class="p">);</span>
-    <span class="c1">// If there is any error during the execution of the SQL query or</span>
-    <span class="c1">// iteration of the result stream, the result stream will terminate and</span>
-    <span class="c1">// return the error.</span>
-    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-    <span class="p">});</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="c1">// Since the `rowType` is provided as a `DateTimeType`, the `resultStream`</span>
-    <span class="c1">// will have `DateTimeType` records. The Date, Time, DateTime, and</span>
-    <span class="c1">// Timestamp fields of the database table can be mapped to time:Utc,</span>
-    <span class="c1">// string and int types in Ballerina.</span>
-    <span class="nx">resultStream</span> <span class="p">=</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;Select * from DATE_TIME_TYPES&quot;</span><span class="p">,</span>
-        <span class="nx">DateTimeType</span><span class="p">);</span>
+    <span class="c1">// Since the `rowType` is provided as a `DateTimeType`, the `resultStream3`</span>
+    <span class="c1">// will have `DateTimeType` records. The `Date`, `Time`, `DateTime`, and</span>
+    <span class="c1">// `Timestamp` fields of the database table can be mapped to `time:Utc`,</span>
+    <span class="c1">// string, and int types in Ballerina.</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream3</span> <span class="p">=</span> 
+                <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM DATE_TIME_TYPES`</span><span class="p">,</span>
+                                     <span class="nx">DateTimeType</span><span class="p">);</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">DateTimeType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">dateResultStream</span> <span class="p">=</span>
-        <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">DateTimeType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span><span class="nx">resultStream</span><span class="p">;</span>
+                <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">DateTimeType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span><span class="nx">resultStream3</span><span class="p">;</span>
 
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Result 2:&quot;</span><span class="p">);</span>
-    <span class="c1">// Iterate the `dateResultStream`.</span>
-    <span class="nx">e</span> <span class="p">=</span> <span class="nx">dateResultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">DateTimeType</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;DateTime types Result :&quot;</span><span class="p">);</span>
+    <span class="c1">// Iterates the `dateResultStream`.</span>
+    <span class="nx">error</span><span class="err">?</span> <span class="nx">e3</span> <span class="p">=</span> <span class="nx">dateResultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">DateTimeType</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
     <span class="p">});</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
-    <span class="p">}</span>
 
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ ********* -------&quot;</span><span class="p">);</span>
+    <span class="c1">// Performs the cleanup after the example.</span>
+    <span class="nx">check</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// Initialize the database table with sample data.</span>
-<span class="kd">function</span> <span class="nx">initializeTable</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+<span class="c1">// Initializes the database as a prerequisite to the example.</span>
+<span class="kd">function</span> <span class="nx">beforeExample</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">);</span>
 
-    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">);</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span>
-        <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE DATABASE IF NOT EXISTS MYSQL_BBE&quot;</span><span class="p">);</span>
+    <span class="c1">// Creates a database.</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
+        <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE DATABASE MYSQL_BBE`</span><span class="p">);</span>
+    
+    <span class="c1">// Create complex data type tables in the database.</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE MYSQL_BBE.BINARY_TYPES</span>
+<span class="s">            (row_id INTEGER NOT NULL, blob_type BLOB(1024),  </span>
+<span class="s">            binary_type BINARY(27), PRIMARY KEY (row_id))`</span><span class="p">);</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE MYSQL_BBE.JSON_TYPES</span>
+<span class="s">            (row_id INTEGER NOT NULL, json_doc JSON, json_array JSON,</span>
+<span class="s">            PRIMARY KEY (row_id))`</span><span class="p">);</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span>
+            <span class="s">`CREATE TABLE MYSQL_BBE.DATE_TIME_TYPES (row_id</span>
+<span class="s">            INTEGER NOT NULL, date_type DATE, time_type TIME, </span>
+<span class="s">            timestamp_type timestamp, datetime_type  datetime, </span>
+<span class="s">            PRIMARY KEY (row_id))`</span><span class="p">);</span>
 
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE IF EXISTS &quot;</span> <span class="o">+</span>
-        <span class="s">&quot;MYSQL_BBE.BINARY_TYPES&quot;</span><span class="p">);</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE MYSQL_BBE.BINARY_TYPES&quot;</span><span class="o">+</span>
-        <span class="s">&quot;(row_id INTEGER NOT NULL, blob_type BLOB(1024), binary_type &quot;</span><span class="o">+</span>
-        <span class="s">&quot;BINARY (27), PRIMARY KEY (row_id))&quot;</span><span class="p">);</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO MYSQL_BBE.BINARY_TYPES &quot;</span><span class="o">+</span>
-        <span class="s">&quot;(row_id, blob_type, binary_type) VALUES (1, &quot;</span><span class="o">+</span>
-        <span class="s">&quot;X&#39;77736F322062616C6C6572696E6120626C6F6220746573742E&#39;,&quot;</span> <span class="o">+</span>
-        <span class="s">&quot;X&#39;77736F322062616C6C6572696E612062696E61727920746573742E&#39;)&quot;</span><span class="p">);</span>
+    <span class="c1">// Adds the records to the newly-created tables.</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO MYSQL_BBE.BINARY_TYPES</span>
+<span class="s">            (row_id, blob_type, binary_type) VALUES (1,</span>
+<span class="s">            X&#39;77736F322062616C6C6572696E6120626C6F6220746573742E&#39;,  </span>
+<span class="s">            X&#39;77736F322062616C6C6572696E612062696E61727920746573742E&#39;)`</span><span class="p">);</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO MYSQL_BBE.JSON_TYPES</span>
+<span class="s">            (row_id, json_doc, json_array) VALUES (1, &#39;{&quot;firstName&quot; : &quot;Jhon&quot;,</span>
+<span class="s">            &quot;lastName&quot; : &quot;Bob&quot;, &quot;age&quot; : 18}&#39;, JSON_ARRAY(1, 2, 3))`</span><span class="p">);</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span>
+            <span class="s">`Insert into MYSQL_BBE.DATE_TIME_TYPES (row_id,</span>
+<span class="s">            date_type, time_type, timestamp_type, datetime_type) values (1, </span>
+<span class="s">            &#39;2017-05-23&#39;, &#39;14:15:23&#39;, &#39;2017-01-25 16:33:55&#39;, </span>
+<span class="s">            &#39;2017-01-25 16:33:55&#39;)`</span><span class="p">);</span>
 
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE IF EXISTS &quot;</span> <span class="o">+</span>
-        <span class="s">&quot;MYSQL_BBE.DATE_TIME_TYPES&quot;</span><span class="p">);</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE &quot;</span><span class="o">+</span>
-        <span class="s">&quot;MYSQL_BBE.DATE_TIME_TYPES(row_id INTEGER NOT NULL,&quot;</span> <span class="o">+</span>
-        <span class="s">&quot;date_type DATE, time_type TIME, timestamp_type timestamp, &quot;</span><span class="o">+</span>
-        <span class="s">&quot;datetime_type  datetime, PRIMARY KEY (row_id))&quot;</span><span class="p">);</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;Insert into &quot;</span> <span class="o">+</span>
-        <span class="s">&quot;MYSQL_BBE.DATE_TIME_TYPES (row_id, date_type, time_type, &quot;</span><span class="o">+</span>
-        <span class="s">&quot;timestamp_type, datetime_type) values (1,&#39;2017-05-23&#39;,&#39;14:15:23&#39;,&quot;</span><span class="o">+</span>
-        <span class="s">&quot;&#39;2017-01-25 16:33:55&#39;,&#39;2017-01-25 16:33:55&#39;)&quot;</span><span class="p">);</span>
+    <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>        
+<span class="p">}</span>
 
+<span class="c1">// Cleans up the database after running the example.</span>
+<span class="kd">function</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Cleans the database.</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
+            <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP DATABASE MYSQL_BBE`</span><span class="p">);</span>
+    <span class="c1">// Closes the MySQL client.</span>
     <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Initialize the MySQL client.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeTable</span><span class="p">();</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sample data initialization failed!&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span>
-            <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">mysqlClient</span> <span class="nx">is</span> <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// Execute the complex data type queries.</span>
-            <span class="nx">queryBinaryType</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
-            <span class="nx">queryDateTimeType</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
-
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sample executed successfully!&quot;</span><span class="p">);</span>
-
-            <span class="c1">// Close the MySQL client.</span>
-            <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;MySQL Client initialization for querying data&quot;</span> <span class="o">+</span>
-            <span class="s">&quot;failed!!&quot;</span><span class="p">,</span> <span class="nx">mysqlClient</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -178,16 +148,13 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Query with Complex Types</h2>
+                            <h2>Query With Complex Types</h2>
                             <p><p>This example demonstrates how to use the MySQL client with complex data types
- such as binary, blobs, and date/time fields. Note that the MySQL database
+ such as JSON, binary, blobs, and date/time fields. Note that the MySQL database
  driver JAR should be defined in the <code>Ballerina.toml</code> file as a dependency.
- See <a href="https://docs.central.ballerina.io/ballerinax/mysql/latest/">MySQL module</a> for sample configuration.
- The MySQL connector uses some database properties from MySQL version 8.0.x
- onwards. Therefore, it is recommended to use a MySQL driver version greater
- than 8.0.x.<br><br>
- For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerinax/mysql/latest/">MySQL module</a>.</p>
+ For a sample configuration and more information on the underlying module, see the <a href="https://docs.central.ballerina.io/ballerinax/mysql/latest/">MySQL module</a>.
+ The MySQL connector uses database properties from MySQL version 8.0.13 onwards. Therefore, it is
+ recommended to use a MySQL driver version greater than 8.0.13.<br><br></p>
 </p>
 
                         </td>
@@ -197,14 +164,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="mysql-query-operation.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Select Query Operations</p>
+                                        <p>Simple Query</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="mysql-execute-operation.html">
                                         <span>NEXT ></span>
-                                        <p>DDL and DML Operations</p>
+                                        <p>DML and DDL Operation</p>
                                     </a>
                                 </div>
                                 
@@ -293,20 +260,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -316,35 +269,13 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerinax/mysql;
 import ballerina/sql;
 import ballerina/time;
-import ballerinax/mysql;
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>string dbUser = &quot;root&quot;;
-string dbPassword = &quot;Test@123&quot;;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Username and password of the MySQL database. This is used in below examples
- when initializing the MySQL connector. You need to change these based on
- your setup if you are trying locally.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -364,7 +295,7 @@ string dbPassword = &quot;Test@123&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Define the record types to be used in the below examples.</p>
+                                            <p>The <code>BinaryType</code> record to represent the <code>BINARY_TYPES</code> database table.</p>
 
                                         </div>
                                     </div>
@@ -372,7 +303,30 @@ string dbPassword = &quot;Test@123&quot;;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type JsonType record {|
+    int row_id;
+    json json_doc;
+    json json_array;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>JsonType</code> record to represent the <code>JSON_TYPES</code> database table.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type DateTimeType record {|
@@ -387,38 +341,9 @@ string dbPassword = &quot;Test@123&quot;;
                                 </td>
                                 <td class="docs">
                                     
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function queryBinaryType(mysql:Client mysqlClient) {
-    io:println(&quot;------ Query Binary Type -------&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream =
-        mysqlClient-&gt;query(&quot;Select * from BINARY_TYPES&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Select the rows with binary data types.
- The name and type of the attributes within the record from the
- <code>resultStream</code> will be automatically identified based on the column
- name and type of the query result.</p>
+                                            <p>The <code>DateTimeType</code> record to represent the <code>DATE_TIME_TYPES</code> database table.</p>
 
                                         </div>
                                     </div>
@@ -429,7 +354,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Result 1:&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
                                 </td>
@@ -441,12 +366,83 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = resultStream.forEach(function(record {} result) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    check beforeExample();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Runs the prerequisite setup for the example.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient = check new (user = &quot;root&quot;,
+            password = &quot;Test@123&quot;, database = &quot;MYSQL_BBE&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initializes the MySQL client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream = 
+                mysqlClient-&gt;query(`SELECT * FROM BINARY_TYPES`, BinaryType);
+    stream&lt;BinaryType, sql:Error&gt; binaryResultStream = 
+                &lt;stream&lt;BinaryType, sql:Error&gt;&gt; resultStream;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Since the <code>rowType</code> is provided as a <code>BinaryType</code>, the <code>resultStream</code>
+ will have <code>BinaryType</code> records.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Binary types Result :&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = binaryResultStream.forEach(function(BinaryType result) {
         io:println(result);
     });
-    if (e is error) {
-        io:println(e);
-    }
 </code></pre></div>
 
                                 </td>
@@ -454,9 +450,7 @@ string dbPassword = &quot;Test@123&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If there is any error during the execution of the SQL query or
- iteration of the result stream, the result stream will terminate and
- return the error.</p>
+                                            <p>Iterates the <code>binaryResultStream</code>.</p>
 
                                         </div>
                                     </div>
@@ -467,9 +461,10 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resultStream = mysqlClient-&gt;query(&quot;Select * from BINARY_TYPES&quot;, BinaryType);
-    stream&lt;BinaryType, sql:Error&gt; binaryResultStream =
-        &lt;stream&lt;BinaryType, sql:Error&gt;&gt;resultStream;
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream2 = 
+                mysqlClient-&gt;query(`SELECT * FROM JSON_TYPES`, JsonType);
+    stream&lt;JsonType, sql:Error&gt; jsonResultStream =
+                &lt;stream&lt;JsonType, sql:Error&gt;&gt; resultStream2;
 </code></pre></div>
 
                                 </td>
@@ -477,8 +472,8 @@ string dbPassword = &quot;Test@123&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since the <code>rowType</code> is provided as a <code>BinaryType</code>, the <code>resultStream</code> will
- have <code>BinaryType</code> records.</p>
+                                            <p>Since the <code>rowType</code> is provided as an <code>JsonType</code>, the <code>resultStream2</code> will
+ have <code>JsonType</code> records.</p>
 
                                         </div>
                                     </div>
@@ -489,7 +484,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Result 2:&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Json type Result :&quot;);
 </code></pre></div>
 
                                 </td>
@@ -501,12 +496,9 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    e = binaryResultStream.forEach(function(BinaryType result) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e2 = jsonResultStream.forEach(function(JsonType result) {
         io:println(result);
     });
-    if (e is error) {
-        io:println(e);
-    }
 </code></pre></div>
 
                                 </td>
@@ -514,94 +506,7 @@ string dbPassword = &quot;Test@123&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Iterate the <code>binaryResultStream</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;------ ********* -------&quot;);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function queryDateTimeType(mysql:Client mysqlClient) {
-    io:println(&quot;------ Query Date Time Type -------&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream =
-        mysqlClient-&gt;query(&quot;Select * from DATE_TIME_TYPES&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Select the rows with date/time data types.
- The name and type of the attributes within the record from the
- <code>resultStream</code> will be automatically identified based on the column
- name and type of the query result.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Result 1:&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = resultStream.forEach(function(record {} result) {
-        io:println(result);
-    });
-    if (e is error) {
-        io:println(e);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If there is any error during the execution of the SQL query or
- iteration of the result stream, the result stream will terminate and
- return the error.</p>
+                                            <p>Iterates the <code>jsonResultStream</code>.</p>
 
                                         </div>
                                     </div>
@@ -612,10 +517,11 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resultStream = mysqlClient-&gt;query(&quot;Select * from DATE_TIME_TYPES&quot;,
-        DateTimeType);
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream3 = 
+                mysqlClient-&gt;query(`SELECT * FROM DATE_TIME_TYPES`,
+                                     DateTimeType);
     stream&lt;DateTimeType, sql:Error&gt; dateResultStream =
-        &lt;stream&lt;DateTimeType, sql:Error&gt;&gt;resultStream;
+                &lt;stream&lt;DateTimeType, sql:Error&gt;&gt;resultStream3;
 </code></pre></div>
 
                                 </td>
@@ -623,10 +529,10 @@ string dbPassword = &quot;Test@123&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since the <code>rowType</code> is provided as a <code>DateTimeType</code>, the <code>resultStream</code>
- will have <code>DateTimeType</code> records. The Date, Time, DateTime, and
- Timestamp fields of the database table can be mapped to time:Utc,
- string and int types in Ballerina.</p>
+                                            <p>Since the <code>rowType</code> is provided as a <code>DateTimeType</code>, the <code>resultStream3</code>
+ will have <code>DateTimeType</code> records. The <code>Date</code>, <code>Time</code>, <code>DateTime</code>, and
+ <code>Timestamp</code> fields of the database table can be mapped to <code>time:Utc</code>,
+ string, and int types in Ballerina.</p>
 
                                         </div>
                                     </div>
@@ -637,7 +543,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Result 2:&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;DateTime types Result :&quot;);
 </code></pre></div>
 
                                 </td>
@@ -649,12 +555,9 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    e = dateResultStream.forEach(function(DateTimeType result) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? e3 = dateResultStream.forEach(function(DateTimeType result) {
         io:println(result);
     });
-    if (e is error) {
-        io:println(e);
-    }
 </code></pre></div>
 
                                 </td>
@@ -662,7 +565,127 @@ string dbPassword = &quot;Test@123&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Iterate the <code>dateResultStream</code>.</p>
+                                            <p>Iterates the <code>dateResultStream</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    check afterExample(mysqlClient);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Performs the cleanup after the example.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>function beforeExample() returns sql:Error? {
+    mysql:Client mysqlClient = check new (user = &quot;root&quot;, password = &quot;Test@123&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initializes the database as a prerequisite to the example.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
+        check mysqlClient-&gt;execute(`CREATE DATABASE MYSQL_BBE`);
+    
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Creates a database.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient-&gt;execute(`CREATE TABLE MYSQL_BBE.BINARY_TYPES
+            (row_id INTEGER NOT NULL, blob_type BLOB(1024),  
+            binary_type BINARY(27), PRIMARY KEY (row_id))`);
+    result = check mysqlClient-&gt;execute(`CREATE TABLE MYSQL_BBE.JSON_TYPES
+            (row_id INTEGER NOT NULL, json_doc JSON, json_array JSON,
+            PRIMARY KEY (row_id))`);
+    result = check mysqlClient-&gt;execute(
+            `CREATE TABLE MYSQL_BBE.DATE_TIME_TYPES (row_id
+            INTEGER NOT NULL, date_type DATE, time_type TIME, 
+            timestamp_type timestamp, datetime_type  datetime, 
+            PRIMARY KEY (row_id))`);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create complex data type tables in the database.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient-&gt;execute(`INSERT INTO MYSQL_BBE.BINARY_TYPES
+            (row_id, blob_type, binary_type) VALUES (1,
+            X&#39;77736F322062616C6C6572696E6120626C6F6220746573742E&#39;,  
+            X&#39;77736F322062616C6C6572696E612062696E61727920746573742E&#39;)`);
+    result = check mysqlClient-&gt;execute(`INSERT INTO MYSQL_BBE.JSON_TYPES
+            (row_id, json_doc, json_array) VALUES (1, &#39;{&quot;firstName&quot; : &quot;Jhon&quot;,
+            &quot;lastName&quot; : &quot;Bob&quot;, &quot;age&quot; : 18}&#39;, JSON_ARRAY(1, 2, 3))`);
+    result = check mysqlClient-&gt;execute(
+            `Insert into MYSQL_BBE.DATE_TIME_TYPES (row_id,
+            date_type, time_type, timestamp_type, datetime_type) values (1, 
+            &#39;2017-05-23&#39;, &#39;14:15:23&#39;, &#39;2017-01-25 16:33:55&#39;, 
+            &#39;2017-01-25 16:33:55&#39;)`);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Adds the records to the newly-created tables.</p>
 
                                         </div>
                                     </div>
@@ -673,7 +696,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;------ ********* -------&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check mysqlClient.close();        
 }
 </code></pre></div>
 
@@ -686,7 +709,7 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function initializeTable() returns sql:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function afterExample(mysql:Client mysqlClient) returns sql:Error? {
 </code></pre></div>
 
                                 </td>
@@ -694,7 +717,7 @@ string dbPassword = &quot;Test@123&quot;;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initialize the database table with sample data.</p>
+                                            <p>Cleans up the database after running the example.</p>
 
                                         </div>
                                     </div>
@@ -702,64 +725,29 @@ string dbPassword = &quot;Test@123&quot;;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
-    sql:ExecutionResult result = check
-        mysqlClient-&gt;execute(&quot;CREATE DATABASE IF NOT EXISTS MYSQL_BBE&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
+            check mysqlClient-&gt;execute(`DROP DATABASE MYSQL_BBE`);
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
                                     
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Cleans the database.</p>
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient-&gt;execute(&quot;DROP TABLE IF EXISTS &quot; +
-        &quot;MYSQL_BBE.BINARY_TYPES&quot;);
-    result = check mysqlClient-&gt;execute(&quot;CREATE TABLE MYSQL_BBE.BINARY_TYPES&quot;+
-        &quot;(row_id INTEGER NOT NULL, blob_type BLOB(1024), binary_type &quot;+
-        &quot;BINARY (27), PRIMARY KEY (row_id))&quot;);
-    result = check mysqlClient-&gt;execute(&quot;INSERT INTO MYSQL_BBE.BINARY_TYPES &quot;+
-        &quot;(row_id, blob_type, binary_type) VALUES (1, &quot;+
-        &quot;X&#39;77736F322062616C6C6572696E6120626C6F6220746573742E&#39;,&quot; +
-        &quot;X&#39;77736F322062616C6C6572696E612062696E61727920746573742E&#39;)&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient-&gt;execute(&quot;DROP TABLE IF EXISTS &quot; +
-        &quot;MYSQL_BBE.DATE_TIME_TYPES&quot;);
-    result = check mysqlClient-&gt;execute(&quot;CREATE TABLE &quot;+
-        &quot;MYSQL_BBE.DATE_TIME_TYPES(row_id INTEGER NOT NULL,&quot; +
-        &quot;date_type DATE, time_type TIME, timestamp_type timestamp, &quot;+
-        &quot;datetime_type  datetime, PRIMARY KEY (row_id))&quot;);
-    result = check mysqlClient-&gt;execute(&quot;Insert into &quot; +
-        &quot;MYSQL_BBE.DATE_TIME_TYPES (row_id, date_type, time_type, &quot;+
-        &quot;timestamp_type, datetime_type) values (1,&#39;2017-05-23&#39;,&#39;14:15:23&#39;,&quot;+
-        &quot;&#39;2017-01-25 16:33:55&#39;,&#39;2017-01-25 16:33:55&#39;)&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
+                                <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    check mysqlClient.close();
 }
 </code></pre></div>
@@ -767,121 +755,12 @@ string dbPassword = &quot;Test@123&quot;;
                                 </td>
                                 <td class="docs">
                                     
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:Error? err = initializeTable();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initialize the MySQL client.</p>
+                                            <p>Closes the MySQL client.</p>
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (err is sql:Error) {
-        io:println(&quot;Sample data initialization failed!&quot;, err);
-    } else {
-        mysql:Client|sql:Error mysqlClient = new (user = dbUser,
-            password = dbPassword, database = &quot;MYSQL_BBE&quot;);
-        if (mysqlClient is mysql:Client) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            queryBinaryType(mysqlClient);
-            queryDateTimeType(mysqlClient);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Execute the complex data type queries.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(&quot;Sample executed successfully!&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            sql:Error? e = mysqlClient.close();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Close the MySQL client.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        } else {
-            io:println(&quot;MySQL Client initialization for querying data&quot; +
-            &quot;failed!!&quot;, mysqlClient);
-        }
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -906,9 +785,10 @@ string dbPassword = &quot;Test@123&quot;;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>#  To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below.
-bal run mysql_complex_type_queries.bal
+                                    <div class="highlight"><pre><code class=shell-session># Create a Ballerina project.
+# Copy the example to the project and add relevant database driver jar details to the `Ballerina.toml` file.
+# Execute the command below to build and run the project.
+bal run
 </code></pre></div>
 
                                 </td>
@@ -920,19 +800,12 @@ bal run mysql_complex_type_queries.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>------ Query Binary Type -------
-Result 1:
+                                    <div class="highlight"><pre><code class=shell-session>Binary types Result :
 {&quot;row_id&quot;:1,&quot;blob_type&quot;:[119,115,111,50,32,98,97,108,108,101,114,105,110,97,32,98,108,111,98,32,116,101,115,116,46],&quot;binary_type&quot;:[119,115,111,50,32,98,97,108,108,101,114,105,110,97,32,98,105,110,97,114,121,32,116,101,115,116,46]}
-Result 2:
-{&quot;row_id&quot;:1,&quot;blob_type&quot;:[119,115,111,50,32,98,97,108,108,101,114,105,110,97,32,98,108,111,98,32,116,101,115,116,46],&quot;binary_type&quot;:[119,115,111,50,32,98,97,108,108,101,114,105,110,97,32,98,105,110,97,114,121,32,116,101,115,116,46]}
------- ********* -------
------- Query Date Time Type -------
-Result 1:
-{&quot;row_id&quot;:1,&quot;date_type&quot;:&quot;2017-05-23&quot;,&quot;time_type&quot;:&quot;14:15:23&quot;,&quot;timestamp_type&quot;:&quot;2017-01-25 16:33:55.0&quot;,&quot;datetime_type&quot;:&quot;2017-01-25 16:33:55.0&quot;}
-Result 2:
-{&quot;row_id&quot;:1,&quot;date_type&quot;:&quot;2017-05-23&quot;,&quot;time_type&quot;:31523000,&quot;timestamp_type&quot;:1485342235 0,&quot;datetime_type&quot;:&quot;2017-01-25 16:33:55.0&quot;}
------- ********* -------
-Sample executed successfully!
+Json type Result :
+{&quot;row_id&quot;:1,&quot;json_doc&quot;:{&quot;age&quot;:18,&quot;lastName&quot;:&quot;Bob&quot;,&quot;firstName&quot;:&quot;Jhon&quot;},&quot;json_array&quot;:[1,2,3]}
+DateTime types Result :
+{&quot;row_id&quot;:1,&quot;date_type&quot;:&quot;2017-05-23&quot;,&quot;time_type&quot;:11723000,&quot;timestamp_type&quot;:1485342235 0,&quot;datetime_type&quot;:&quot;2017-01-25 11:03:55.0&quot;}
 </code></pre></div>
 
                                 </td>

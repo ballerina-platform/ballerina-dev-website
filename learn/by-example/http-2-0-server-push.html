@@ -4,6 +4,7 @@ title: HTTP 2.0 Server Push
 description: This BBE demonstrates sending and receiving HTTP/2 Server Push messages in Ballerina HTTP Library.
 keywords: ballerina, ballerina by examples, bbe, http, http/2.0, http/2
 permalink: /learn/by-example/http-2-0-server-push
+active: http-2-0-server-push
 redirect_from:
   - /swan-lake/learn/by-example/http-2-0-server-push
   - /swan-lake/learn/by-example/http-2-0-server-push.html
@@ -101,8 +102,8 @@ redirect_from:
 
 <span class="c1">// Create an [HTTP client](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client) that can send HTTP/2 messages.</span>
 <span class="c1">// HTTP version is set to 2.0.</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span>
-        <span class="nx">checkpanic</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:7090&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">httpVersion</span><span class="p">:</span> <span class="s">&quot;2.0&quot;</span><span class="p">});</span>
+<span class="nx">final</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span>
+        <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:7090&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">httpVersion</span><span class="p">:</span> <span class="s">&quot;2.0&quot;</span><span class="p">});</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 
@@ -622,9 +623,7 @@ import ballerina/log;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `bal run` command below.
-bal run http_2.0_service.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run http_2.0_service.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:7090
 </code></pre></div>
 
@@ -753,8 +752,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP =
-        checkpanic new (&quot;http://localhost:7090&quot;, {httpVersion: &quot;2.0&quot;});
+                                    <div class="highlight"><pre><code class=language-ballerina>final http:Client clientEP =
+        check new (&quot;http://localhost:7090&quot;, {httpVersion: &quot;2.0&quot;});
 </code></pre></div>
 
                                 </td>
@@ -1117,8 +1116,7 @@ import ballerina/log;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>#Run the `http_client.bal` that contains ballerina client.
-bal run http_client.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run http_client.bal
 time = 2021-01-21 18:54:45,237 level = INFO  module = &quot;&quot; message = &quot;Received a promise for /resource1&quot;
 time = 2021-01-21 18:54:45,278 level = INFO  module = &quot;&quot; message = &quot;Received a promise for /resource2&quot;
 time = 2021-01-21 18:54:45,281 level = INFO  module = &quot;&quot; message = &quot;Push promise for resource2 rejected&quot;

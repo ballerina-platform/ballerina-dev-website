@@ -118,7 +118,8 @@ function updateReleasearchiveTable(allData) {
             var releaseNoteUrl = getReleaseNoteURL(version);
             if (releaseNoteUrl) {
                 $.get(releaseNoteUrl, function(data) {
-                    $("#" + getReleaseNotesDivId(version)).html(data);
+                    var versionSelector = $.escapeSelector(version);
+                    $("#" +(versionSelector)+"notes").prop("href", releaseNoteUrl);
                     hljs.initHighlighting.called = false;
                     hljs.initHighlighting();
                     initCodeLineNumbers();
@@ -136,7 +137,7 @@ function getReleaseNotesDivId(version) {
 }
 
 function getReleaseNoteURL(version) {
-    return base_releasenote_url + "/" + version + "/" + releaseNoteFilename;
+    return base_releasenote_url + "/" + version + "/";
 }
 
 function isIdeaPlugin(artifact) {

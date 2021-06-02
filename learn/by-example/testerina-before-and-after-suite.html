@@ -4,6 +4,7 @@ title: Before and After Suite
 description: 
 keywords: 
 permalink: /learn/by-example/testerina-before-and-after-suite
+active: testerina-before-and-after-suite
 redirect_from:
   - /swan-lake/learn/by-example/testerina-before-and-after-suite
   - /swan-lake/learn/by-example/testerina-before-and-after-suite.html
@@ -14,7 +15,7 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
 
-<span class="c1">// The function annotated with `BeforeSuite` is executed before all the test functions in the module.</span>
+<span class="c1">// Executed before all the test functions in the module.</span>
 <span class="err">@</span><span class="nx">test</span><span class="p">:</span><span class="nx">BeforeSuite</span>
 <span class="kd">function</span> <span class="nx">beforeSuit</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the before suite function!&quot;</span><span class="p">);</span>
@@ -34,7 +35,7 @@ redirect_from:
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// The function annotated with `AfterSuite` will be executed after all the test functions in the module have been executed.</span>
+<span class="c1">// Executed after all the test functions in the module.</span>
 <span class="nd">@test:AfterSuite {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">afterSuite</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the after suite function!&quot;</span><span class="p">);</span>
@@ -48,10 +49,10 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Before and After Suite</h2>
-                            <p><p>The <code>BeforeSuite</code> feature allows you to execute a function before executing a test suite.
- A module is considered as a suite in Testerina. This capability can be used for
- setting up prerequisites before executing a test suite.
+                            <p><p>The <code>BeforeSuite</code> annotation allows you to execute a function before executing a test suite.
  Similarly, the <code>AfterSuite</code> annotation can be used to execute a function after a test suite.<br/><br/>
+ A module is considered as a suite in the Test framework. <br></br>
+ These annotations can be used to set up prerequisites and post actions for a test suite.
  For more information, see <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>
  and the <a href="https://docs.central.ballerina.io/ballerina/test/latest/">Test Module</a>.</p>
 </p>
@@ -151,7 +152,7 @@ function beforeSuit() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The function annotated with <code>BeforeSuite</code> is executed before all the test functions in the module.</p>
+                                            <p>Executed before all the test functions in the module.</p>
 
                                         </div>
                                     </div>
@@ -219,7 +220,7 @@ function afterSuite() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The function annotated with <code>AfterSuite</code> will be executed after all the test functions in the module have been executed.</p>
+                                            <p>Executed after all the test functions in the module.</p>
 
                                         </div>
                                     </div>
@@ -247,6 +248,10 @@ function afterSuite() {
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -256,7 +261,18 @@ function afterSuite() {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal test test_module
-Compiling source
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Compiling source
         ballerinatest/test_module:0.1.0
 </code></pre></div>
 

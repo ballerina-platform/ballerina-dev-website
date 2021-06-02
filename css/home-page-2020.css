@@ -11,9 +11,15 @@ padding: 80px 0 130px 0;
     background-color: #494949;
 }
 
+a.cMobileLogo {
+    display: none;
+}
+
 .row.cBallerinaFeatureSection {
     /* padding: 80px 0; */
 }
+
+
 
 .navbar-nav > li > a {
     color: #fff;
@@ -36,15 +42,18 @@ img.cHomePageLogo {
 
 .row.cBallerinaIntroSection p {
     color: #c0c0c0;
+    font-size: 3.1rem;
+line-height: 4rem;
 }
 
 
 .cBottomLayer ul  {
     padding: 0;
 
-margin: 30px 0;
+margin: 10px 0;
 
 display: inline-block;
+float: right;
 
 }
 
@@ -53,14 +62,18 @@ display: inline-block;
 
 display: inline-block;
 
-float: left;
+float: right;
 
 margin-right: 30px;
-width: 240px;
+/* width: 240px; */
 }
 
 .cTopLayer , .cBottomLayer {
     padding: 0;
+}
+
+.cTopLayer  {
+    padding-bottom: 60px;
 }
 
 .row.cBallerinaIntroSection .cBallerina-io-Home-main-download-button p {
@@ -174,7 +187,8 @@ a.cBallerina-io-Home-main-download-button {
 	/* margin-top: 30px; */
 	font-weight: 500;
     text-decoration: none;
-    min-width: 350px;
+    min-width: 400px;
+  
 
 }
 
@@ -186,7 +200,7 @@ a.cPlayButton {
 
 a.cBallerina-io-Home-main-download-button {
 	margin-bottom: 10px;
-	min-width: 350px;
+	min-width: 400px;
 	border: 1px solid #20b6b0;
 }
 a.cBallerina-io-Home-main-download-button:hover {
@@ -201,6 +215,7 @@ a.cBallerina-io-Home-main-download-button:hover {
 
 button.navbar-toggle {
     background-color: #20b6b0 !important;
+
 }
 
 .row.cBallerinaIntroSection .cBallerina-io-Home-main-download-button:hover p {
@@ -215,6 +230,141 @@ button.navbar-toggle {
 	display: none !important;
 }
 
+.cHomeWhyBallerinaBox {
+	display: inline-block;
+	padding-right: 60px;
+	min-height: 400px;
+}
+
+.cHomeWhyBallerinaRow > .col-md-4:last-child > .cHomeWhyBallerinaBox {
+
+	padding-right: 0;
+
+}
+
+.cHomeWhyBallerinaBox img {
+	height: 100px;
+}
+
+a.cGreenLinkArrow {
+    color: #20b6b0 !important;
+}
+a.cGreenLinkArrow:hover {
+    color: #000 !important;
+}
+.cHomeWhyBallerinaBox h3 {
+	margin-bottom: 30px;
+}
+
+
+
+a.cPlayGround {
+	list-style: none !important;
+	padding-right: 23px;
+	background-image: url("/img/playground-icon.svg");
+	background-repeat: no-repeat;
+	background-position: right center;
+	margin: 0 0 10px 0;
+	margin-left: 0 !important;
+	display: inline list-item;
+	float: right;
+    color: #20b6b0 !important;
+}
+
+a.cPlayGround:hover {
+    color: #000 !important;
+}
+
+.cVideoImage img {
+    width: 100%;
+}
+.row.cVideoSection {
+   background-color:  #ffffff;
+}
+
+.row.cVideoSection h2 , .row.cVideoSection h3 , .row.cVideoSection  p {
+    color: #000 !important;
+    font-family: inherit
+}
+.row.cVideoSection h2 {
+    border-bottom: 2px solid #fff !important;
+}
+.row.cVideoSection h3 {
+    margin-bottom: 30px;
+}
+.modal-dialog {
+    max-width:none;
+    margin: 1.75rem auto;
+    width: 60%;
+}
+.modal {
+    position: fixed;
+    top: 102px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    outline: 0;
+}
+.modal-body {
+    background-color: #000;
+}
+.modal-backdrop.show {
+    opacity: 0.8;
+}
+
+.modal-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1040;
+	width: 100vw;
+	height: 100vh;
+	background-color: #000;
+}
+.close {
+	float: right;
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 1;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
+	filter: alpha(opacity=20);
+	opacity: 1;
+	color: #fff !important;
+	padding: 20px;
+	display: inline-block;
+	position: absolute;
+	top: -5px;
+	right: -30px;
+    background-color: #000;
+}
+
+a.video-btn img {
+    border: 2px solid transparent;
+    }
+    
+    a.video-btn:hover img {
+    
+        box-shadow: 0px 0px 30px 0 rgba(0,0,0,.2);
+        border: 2px solid #1eb5ae;
+    }
+    
+
+
+@media screen and (max-width: 1199px) {
+
+    .cBottomLayer ul li {
+        margin-right: 0;
+        margin-left: 30px;
+    }
+
+}
+
+
+
 
 @media screen and (max-width: 991px) {
     #navbar {
@@ -227,6 +377,22 @@ button.navbar-toggle {
     }
     .cBallerina-io-Home-main-download-button.cPlayButton {
         margin-right: 20px;
+    }
+    a.cBallerina-io-Home-main-download-button {
+
+        min-width: 290px;
+   
+    }
+    .cBottomLayer ul li {
+        float: left;
+    }
+    .row.cBallerinaIntroSection p {
+     
+        margin-bottom: 30px;
+    }
+    .row.cBallerinaIntroSection {
+        background-color: #494949;
+        padding: 80px 0 60px 0;
     }
 }
 
@@ -249,6 +415,13 @@ button.navbar-toggle {
             width: 100%;
     }
     .cBallerina-io-Home-main-download-button.cPlayButton {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .cBottomLayer ul li {
+        margin-left: 0;
         margin-right: 0;
     }
 }

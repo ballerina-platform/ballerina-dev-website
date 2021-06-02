@@ -4,6 +4,7 @@ title: Durable Subscriptions
 description: 
 keywords: 
 permalink: /learn/by-example/nats-streaming-durable-subscriptions
+active: nats-streaming-durable-subscriptions
 redirect_from:
   - /swan-lake/learn/by-example/nats-streaming-durable-subscriptions
   - /swan-lake/learn/by-example/nats-streaming-durable-subscriptions.html
@@ -14,51 +15,37 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">stan</span><span class="p">;</span>
 
-<span class="c1">// Represents the escape character.</span>
-<span class="kd">const</span> <span class="kt">string</span> <span class="nx">ESCAPE</span> <span class="p">=</span> <span class="s">&quot;!q&quot;</span><span class="p">;</span>
-
-<span class="c1">// Produces a message to a subject in the NATS Streaming sever.</span>
+<span class="c1">// Produces a message to a subject in the NATS sever.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-    <span class="nx">stan</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">publisher</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="nx">stan</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">;</span>
+    <span class="nx">stan</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">stanClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="nx">stan</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">);</span>
 
-    <span class="k">while</span> <span class="p">(</span><span class="kt">message</span> <span class="o">!=</span> <span class="nx">ESCAPE</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">message</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Message: &quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="o">!=</span> <span class="nx">ESCAPE</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// Produces a message to the specified subject.</span>
-            <span class="kt">string</span><span class="p">|</span><span class="nx">stan</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span>
-                            <span class="nx">publisher</span><span class="o">-&gt;</span><span class="nx">publishMessage</span><span class="p">({</span>
-                                    <span class="nx">content</span><span class="p">:</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span>
+    <span class="c1">// Produces a message to the specified subject.</span>
+    <span class="kt">string</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">stanClient</span><span class="o">-&gt;</span><span class="nx">publishMessage</span><span class="p">({</span>
+                                    <span class="nx">content</span><span class="p">:</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span>
                                     <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span><span class="p">});</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">stan</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while producing the message.&quot;</span><span class="p">);</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;GUID &quot;</span> <span class="o">+</span> <span class="nx">result</span> <span class="o">+</span>
-                            <span class="s">&quot; received for the produced message.&quot;</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;GUID &quot;</span> <span class="o">+</span> <span class="nx">result</span> <span class="o">+</span> <span class="s">&quot; received for the produced message.&quot;</span><span class="p">);</span>
+    <span class="c1">// Closes the client connection.</span>
+    <span class="nx">check</span> <span class="nx">stanClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">stan</span><span class="p">;</span>
 
-<span class="c1">// Initializes the NATS Streaming listener.</span>
+<span class="c1">// Initializes the NATS Streaming listener with a specific client ID.</span>
 <span class="nx">listener</span> <span class="nx">stan</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">lis</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">stan</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">,</span> <span class="nx">clientId</span> <span class="p">=</span> <span class="s">&quot;c0&quot;</span><span class="p">);</span>
 
-<span class="c1">// Binds the consumer to listen to the messages published to the &#39;demo&#39; subject.</span>
+<span class="c1">// Provides the durable name to create a durable subscription.</span>
 <span class="nd">@stan:ServiceConfig {</span>
     <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span><span class="p">,</span>
     <span class="nx">durableName</span><span class="p">:</span> <span class="s">&quot;sample-name&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">stan</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">on</span> <span class="nx">lis</span> <span class="p">{</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">stan</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
-       <span class="c1">// Prints the incoming message in the console.</span>
-       <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageData</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
-       <span class="k">if</span> <span class="p">(</span><span class="nx">messageData</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received message: &quot;</span> <span class="o">+</span> <span class="nx">messageData</span><span class="p">);</span>
-       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while obtaining message data.&quot;</span><span class="p">);</span>
-       <span class="p">}</span>
+        <span class="c1">// Prints the incoming message in the console.</span>
+        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageData</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
+        <span class="k">if</span> <span class="nx">messageData</span> <span class="nx">is</span> <span class="kt">string</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Received message: &quot;</span> <span class="o">+</span> <span class="nx">messageData</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -76,7 +63,7 @@ redirect_from:
  disconnects, the position is lost. Durable subscriptions
  remember their position even if the client is disconnected.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerinax/nats/latest">NATS module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/stan/latest">STAN module</a>.</p>
 </p>
 
                         </td>
@@ -84,16 +71,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="nats-streaming-client.html">
+                                    <a class="prev" href="nats-streaming-queue-group.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Basic Streaming Publisher and Subscriber</p>
+                                        <p>Queue Groups</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="nats-streaming-queue-group.html">
+                                    <a class="next" href="nats-streaming-start-position.html">
                                         <span>NEXT ></span>
-                                        <p>Queue Groups</p>
+                                        <p>Historical Message Replay</p>
                                     </a>
                                 </div>
                                 
@@ -140,8 +127,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -163,28 +148,9 @@ import ballerinax/stan;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>const string ESCAPE = &quot;!q&quot;;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Represents the escape character.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
-    string message = &quot;&quot;;
-    stan:Client publisher = check new(stan:DEFAULT_URL);
+    string message = &quot;Hello from Ballerina&quot;;
+    stan:Client stanClient = check new(stan:DEFAULT_URL);
 </code></pre></div>
 
                                 </td>
@@ -192,7 +158,7 @@ import ballerinax/stan;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Produces a message to a subject in the NATS Streaming sever.</p>
+                                            <p>Produces a message to a subject in the NATS sever.</p>
 
                                         </div>
                                     </div>
@@ -200,36 +166,13 @@ import ballerinax/stan;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    while (message != ESCAPE) {
-        message = io:readln(&quot;Message: &quot;);
-        if (message != ESCAPE) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>            string|stan:Error result =
-                            publisher-&gt;publishMessage({
-                                    content: &lt;@untainted&gt;message.toBytes(),
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    string result = check stanClient-&gt;publishMessage({
+                                    content: message.toBytes(),
                                     subject: &quot;demo&quot;});
-            if (result is stan:Error) {
-                io:println(&quot;Error occurred while producing the message.&quot;);
-            } else {
-                io:println(&quot;GUID &quot; + result +
-                            &quot; received for the produced message.&quot;);
-            }
-        }
-    }
-}
+    io:println(&quot;GUID &quot; + result + &quot; received for the produced message.&quot;);
 </code></pre></div>
 
                                 </td>
@@ -238,6 +181,26 @@ import ballerinax/stan;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Produces a message to the specified subject.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    check stanClient.close();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Closes the client connection.</p>
 
                                         </div>
                                     </div>
@@ -261,10 +224,7 @@ import ballerinax/stan;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run publisher.bal
-Message: First Message
+                                    <div class="highlight"><pre><code class=shell-session>bal run publisher.bal
 GUID m2jS6SLLefK325DWTkkwBh received for the produced message.
 </code></pre></div>
 
@@ -312,7 +272,7 @@ GUID m2jS6SLLefK325DWTkkwBh received for the produced message.
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/log;
 import ballerinax/stan;
 </code></pre></div>
 
@@ -333,7 +293,7 @@ import ballerinax/stan;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initializes the NATS Streaming listener.</p>
+                                            <p>Initializes the NATS Streaming listener with a specific client ID.</p>
 
                                         </div>
                                     </div>
@@ -357,7 +317,7 @@ service stan:Service on lis {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Binds the consumer to listen to the messages published to the &lsquo;demo&rsquo; subject.</p>
+                                            <p>Provides the durable name to create a durable subscription.</p>
 
                                         </div>
                                     </div>
@@ -368,12 +328,10 @@ service stan:Service on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>       string|error messageData = string:fromBytes(message.content);
-       if (messageData is string) {
-            io:println(&quot;Received message: &quot; + messageData);
-       } else {
-            io:println(&quot;Error occurred while obtaining message data.&quot;);
-       }
+                                    <div class="highlight"><pre><code class=language-ballerina>        string|error messageData = string:fromBytes(message.content);
+        if messageData is string {
+            log:printInfo(&quot;Received message: &quot; + messageData);
+        }
     }
 }
 </code></pre></div>
@@ -407,14 +365,6 @@ service stan:Service on lis {
                                 
                             
                         
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -423,22 +373,9 @@ service stan:Service on lis {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run subscriber.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>[ballerinax/nats] Client subscribed for subject demo
-Received message: First Message
+                                    <div class="highlight"><pre><code class=shell-session>bal run subscriber.bal
+[ballerinax/nats] Client subscribed for subject demo
+time = 2021-05-20T13:03:23.344+05:30 level = INFO module = &quot;&quot; message = &quot;Received message: Hello from Ballerina&quot;
 </code></pre></div>
 
                                 </td>
@@ -464,21 +401,10 @@ Received message: First Message
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>bal run subscriber.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>[ballerinax/nats] Client subscribed for subject demo
-Received message: Second Message
+                                    <div class="highlight"><pre><code class=shell-session>bal run subscriber.bal
+[ballerinax/nats] Client subscribed for subject demo
+time = 2021-05-20T13:03:46.928+05:30 level = INFO module = &quot;&quot; message = &quot;Received message: Hello from Ballerina&quot;
 </code></pre></div>
 
                                 </td>

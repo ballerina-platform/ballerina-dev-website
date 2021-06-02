@@ -1,9 +1,10 @@
 ---
 layout: ballerina-example-page
-title: Task One-time Job Execution
-description: BBE on how to schedule the one-time job execution in Ballerina.
-keywords: ballerina, ballerina by examples, bbe, task, job
+title: Schedule one time job
+description: BBE on how to schedule a one-time job execution in Ballerina.
+keywords: ballerina, ballerina by examples, BBE, task, job, scheduler
 permalink: /learn/by-example/task-one-time-job-execution
+active: task-one-time-job-execution
 redirect_from:
   - /swan-lake/learn/by-example/task-one-time-job-execution
   - /swan-lake/learn/by-example/task-one-time-job-execution.html
@@ -16,13 +17,13 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span>
 
-<span class="c1">// Creating a job to be executed by the scheduler.</span>
+<span class="c1">// Creates a job to be executed by the scheduler.</span>
 <span class="nx">class</span> <span class="nx">Job</span> <span class="p">{</span>
 
     <span class="o">*</span><span class="nx">task</span><span class="p">:</span><span class="nx">Job</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
 
-    <span class="c1">// Get executed by the scheduler when the scheduled trigger fires.</span>
+    <span class="c1">// Executes this function when the scheduled trigger fires.</span>
     <span class="nx">public</span> <span class="kd">function</span> <span class="nx">execute</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;MyCounter: &quot;</span><span class="p">,</span> <span class="nx">self</span><span class="p">.</span><span class="nx">i</span><span class="p">);</span>
@@ -34,17 +35,17 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Get the current time.</span>
+    <span class="c1">// Gets the current time.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Utc</span> <span class="nx">currentUtc</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcNow</span><span class="p">();</span>
-    <span class="c1">// Increase the time by three seconds to get the specified time for scheduling the job.</span>
+    <span class="c1">// Increases the time by three seconds to get the specified time for scheduling the job.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Utc</span> <span class="nx">newTime</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcAddSeconds</span><span class="p">(</span><span class="nx">currentUtc</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-    <span class="c1">// Get the `time:Civil` for the given time.</span>
+    <span class="c1">// Gets the `time:Civil` for the given time.</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Civil</span> <span class="nx">time</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcToCivil</span><span class="p">(</span><span class="nx">newTime</span><span class="p">);</span>
 
-    <span class="c1">// Schedule the one-time job at the specified time.</span>
+    <span class="c1">// Schedules the one-time job at the specified time.</span>
     <span class="nx">task</span><span class="p">:</span><span class="nx">JobId</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">task</span><span class="p">:</span><span class="nx">scheduleOneTimeJob</span><span class="p">(</span><span class="nx">new</span> <span class="nx">Job</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nx">time</span><span class="p">);</span>
 
-    <span class="c1">// Wait for five seconds.</span>
+    <span class="c1">// Waits for five seconds.</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -55,7 +56,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Task One-time Job Execution</h2>
+                            <h2>Schedule one time job</h2>
                             <p><p>A  <code>task:scheduleOneTimeJob()</code> can be used to execute Ballerina jobs at a specific time.
  The <code>task:Job</code> and time should be specified to schedule the job.
  For more information on the underlying module,
@@ -69,14 +70,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="task-frequency-job-execution.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Task Frequency Job Execution</p>
+                                        <p>Schedule Job recurrence by Frequency</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="uuid.html">
+                                    <a class="next" href="manage-scheduled-jobs.html">
                                         <span>NEXT ></span>
-                                        <p>UUID</p>
+                                        <p>Manage Scheduled Jobs</p>
                                     </a>
                                 </div>
                                 
@@ -97,6 +98,10 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/task-one-time-job-execution/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=222b2fe04b5a065b20bc3cff35da631b&file=task_one_time_job_execution.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -168,7 +173,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creating a job to be executed by the scheduler.</p>
+                                            <p>Creates a job to be executed by the scheduler.</p>
 
                                         </div>
                                     </div>
@@ -203,7 +208,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get executed by the scheduler when the scheduled trigger fires.</p>
+                                            <p>Executes this function when the scheduled trigger fires.</p>
 
                                         </div>
                                     </div>
@@ -249,7 +254,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the current time.</p>
+                                            <p>Gets the current time.</p>
 
                                         </div>
                                     </div>
@@ -268,7 +273,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Increase the time by three seconds to get the specified time for scheduling the job.</p>
+                                            <p>Increases the time by three seconds to get the specified time for scheduling the job.</p>
 
                                         </div>
                                     </div>
@@ -287,7 +292,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the <code>time:Civil</code> for the given time.</p>
+                                            <p>Gets the <code>time:Civil</code> for the given time.</p>
 
                                         </div>
                                     </div>
@@ -306,7 +311,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Schedule the one-time job at the specified time.</p>
+                                            <p>Schedules the one-time job at the specified time.</p>
 
                                         </div>
                                     </div>
@@ -326,7 +331,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Wait for five seconds.</p>
+                                            <p>Waits for five seconds.</p>
 
                                         </div>
                                     </div>
@@ -350,9 +355,7 @@ import ballerina/time;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run task_one_time_job_execution.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run task_one_time_job_execution.bal
 MyCounter: 1
 </code></pre></div>
 

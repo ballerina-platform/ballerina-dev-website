@@ -4,6 +4,7 @@ title: CORS
 description: BBE demonstrates the HTTP service-level and the resource-level CORS configuration.
 keywords: ballerina, ballerina by example, bbe, http, cors
 permalink: /learn/by-example/http-cors
+active: http-cors
 redirect_from:
   - /swan-lake/learn/by-example/http-cors
   - /swan-lake/learn/by-example/http-cors.html
@@ -66,16 +67,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="response-with-multiparts.html">
+                                    <a class="prev" href="http-client-endpoint.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Response With Multiparts</p>
+                                        <p>Client</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="http-data-binding.html">
+                                    <a class="next" href="http-100-continue.html">
                                         <span>NEXT ></span>
-                                        <p>Service Data Binding</p>
+                                        <p>100 Continue</p>
                                     </a>
                                 </div>
                                 
@@ -236,9 +237,7 @@ service /crossOriginService on new http:Listener(9092) {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `bal run` command below.
-bal run http_cors.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run http_cors.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9092
 </code></pre></div>
 

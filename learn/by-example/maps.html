@@ -1,9 +1,10 @@
 ---
 layout: ballerina-example-page
 title: Maps
-description: 
-keywords: 
+description: This BBE demonstrates maps in Ballerina.
+keywords: ballerina, ballerina by example, bbe, maps
 permalink: /learn/by-example/maps
+active: maps
 redirect_from:
   - /swan-lake/learn/by-example/maps
   - /swan-lake/learn/by-example/maps.html
@@ -13,111 +14,25 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="c1">// A record representing marks received for humanities subjects.</span>
-<span class="nx">type</span> <span class="nx">Humanities</span> <span class="nx">record</span> <span class="p">{|</span>
-    <span class="kt">int</span> <span class="nx">history</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="nx">geography</span><span class="p">;</span>
-<span class="p">|};</span>
-
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Declare a `map` constrained by the type `string`.</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">;</span>
-
-    <span class="kt">string</span> <span class="nx">city</span> <span class="p">=</span> <span class="s">&quot;Colombo&quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">country</span> <span class="p">=</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">codeLiteral</span> <span class="p">=</span> <span class="s">&quot;code&quot;</span><span class="p">;</span>
-
-    <span class="c1">// You can also declare and initialize a `map` with a mapping constructor</span>
-    <span class="c1">// expression.</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">addrMap</span> <span class="p">=</span> <span class="p">{</span>
-        <span class="c1">// A field can be specified as a key-value pair.</span>
-        <span class="nx">line1</span><span class="p">:</span> <span class="s">&quot;No. 20&quot;</span><span class="p">,</span>
-        <span class="nx">line2</span><span class="p">:</span> <span class="s">&quot;Palm Grove&quot;</span><span class="p">,</span>
-        <span class="c1">// The value in a key-value pair can be any expression, which evaluates</span>
-        <span class="c1">// to a value of a type that belongs to the constraint type of the map.</span>
-        <span class="nx">city</span><span class="p">:</span> <span class="s">&quot;Colombo 03&quot;</span><span class="p">,</span>
-        <span class="c1">// A field can also be just a variable reference, which would result</span>
-        <span class="c1">// in the variable name being the field name and the variable itself</span>
-        <span class="c1">// being the value expression.</span>
-        <span class="c1">// This is equivalent to saying `country: country`.</span>
-        <span class="nx">country</span><span class="p">,</span>
-        <span class="c1">// The key in a key-value pair can also be a computed key.</span>
-        <span class="c1">// A computed key is defined by specifying the key expression within</span>
-        <span class="c1">// brackets. The key expression must belong to type `string`.</span>
-        <span class="c1">// For a computed key, the key expression is evaluated at runtime and</span>
-        <span class="c1">// the resulting value is used as the key.</span>
-        <span class="p">[</span><span class="nx">codeLiteral</span><span class="p">]:</span> <span class="s">&quot;00300&quot;</span>
+    <span class="c1">// Creates a `map` constrained by the type `int`.</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="s">&quot;x&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">&quot;y&quot;</span><span class="p">:</span> <span class="mi">2</span>
     <span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">addrMap</span><span class="p">);</span>
 
-    <span class="c1">// Member access can be used to retrieve a value from a map.</span>
-    <span class="c1">// Member access returns the value if a field exists in the map with the</span>
-    <span class="c1">// specified key. Else, it returns `()` if a field does not exist with the specified key.</span>
-    <span class="c1">// Thus, the type of a member access expression for a map is the union of</span>
-    <span class="c1">// the constraint type and the nil type.</span>
-    <span class="kt">string</span><span class="err">?</span> <span class="nx">countryValue</span> <span class="p">=</span> <span class="nx">addrMap</span><span class="p">[</span><span class="s">&quot;country&quot;</span><span class="p">];</span>
+    <span class="c1">// Gets the entry for `x`.</span>
+    <span class="kt">int</span><span class="err">?</span> <span class="nx">v</span> <span class="p">=</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;x&quot;</span><span class="p">];</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="nx">countryValue</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">countryValue</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;key &#39;country&#39; not found&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
 
-    <span class="c1">// Retrieve a value using the `.get()` method.</span>
-    <span class="c1">// If the map has a field with the specified key, `.get()` returns the value.</span>
-    <span class="c1">// Else, it panics if the map does not have a field with the specified key.</span>
-    <span class="c1">// Thus, the return type of `.get()` when invoked on a map is the map&#39;s constraint type.</span>
-    <span class="kt">string</span> <span class="nx">line2Value</span> <span class="p">=</span> <span class="nx">addrMap</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;line2&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">line2Value</span><span class="p">);</span>
+    <span class="c1">// Adds a new entry for `z`.</span>
+    <span class="nx">m</span><span class="p">[</span><span class="s">&quot;z&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>
 
-    <span class="c1">// The `.hasKey()` function checks if a map contains the specified key.</span>
-    <span class="kt">boolean</span> <span class="nx">hasPostalCode</span> <span class="p">=</span> <span class="nx">addrMap</span><span class="p">.</span><span class="nx">hasKey</span><span class="p">(</span><span class="s">&quot;postalCode&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">hasPostalCode</span><span class="p">);</span>
+    <span class="c1">// Using `m[&quot;x&quot;]` wouldn&#39;t work here because type would be `int?`,</span>
+    <span class="c1">// not `int`.</span>
+    <span class="nx">m</span><span class="p">[</span><span class="s">&quot;z&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="nx">m</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Member access expressions can be used on the left hand side of an assignment</span>
-    <span class="c1">// to add fields to a map or update an already-existing field in the map.</span>
-    <span class="nx">addrMap</span><span class="p">[</span><span class="s">&quot;postalCode&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;00300&quot;</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">addrMap</span><span class="p">);</span>
-
-    <span class="c1">// The `.keys()` method returns the keys of the map as an array.</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">addrMap</span><span class="p">.</span><span class="nx">keys</span><span class="p">());</span>
-
-    <span class="c1">// Print the number of fields in the map.</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">addrMap</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-
-    <span class="c1">// Fields can be removed using the `.remove()` method.</span>
-    <span class="kt">string</span> <span class="nx">removedElement</span> <span class="p">=</span> <span class="nx">addrMap</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s">&quot;code&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">addrMap</span><span class="p">);</span>
-
-    <span class="c1">// Maps support functional iteration.</span>
-    <span class="nx">addrMap</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
-    <span class="p">});</span>
-
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">marks</span> <span class="p">=</span> <span class="p">{</span><span class="nx">sam</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nx">jon</span><span class="p">:</span> <span class="mi">60</span><span class="p">};</span>
-
-    <span class="c1">// Calling the `.entries()` method on a map will return a new map with values</span>
-    <span class="c1">// containing the key-value pairs as an array of tuples.</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">modifiedMarks</span> <span class="p">=</span> <span class="nx">marks</span><span class="p">.</span><span class="nx">entries</span><span class="p">().</span><span class="kt">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">([</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">pair</span><span class="p">)</span>
-        <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">score</span><span class="p">]</span> <span class="p">=</span> <span class="nx">pair</span><span class="p">;</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span> <span class="s">`${name} scored: ${score}`</span><span class="p">);</span>
-            <span class="k">return</span> <span class="nx">score</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">modifiedMarks</span><span class="p">);</span>
-
-    <span class="c1">// Create a record value of type `Humanities`.  </span>
-    <span class="nx">Humanities</span> <span class="nx">humanitiesMarks</span> <span class="p">=</span> <span class="p">{</span><span class="nx">history</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="nx">geography</span><span class="p">:</span> <span class="mi">75</span><span class="p">};</span>
-
-    <span class="c1">// A mapping constructor expression can also include a spread field</span>
-    <span class="c1">// referring to another mapping value. When a spread field is specified,</span>
-    <span class="c1">// all the fields of the relevant mapping value are added to the new</span>
-    <span class="c1">// mapping value being created.</span>
-    <span class="c1">// A spread field is used with `humanitiesMarks` to include all the entries</span>
-    <span class="c1">// in `humanitiesMarks` when creating `allMarks`.</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">allMarks</span> <span class="p">=</span> <span class="p">{</span><span class="nx">physics</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="o">...</span><span class="nx">humanitiesMarks</span><span class="p">,</span> <span class="nx">chemistry</span><span class="p">:</span> <span class="mi">75</span><span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">allMarks</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -128,10 +43,11 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Maps</h2>
-                            <p><p>The <code>map</code> type in Ballerina defines a mutable mapping from keys (that are strings) to values of the type specified as
- the map&rsquo;s constraint type.<br/><br/>
- For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerina/lang.map/latest/">lang.map module</a>.</p>
+                            <p><p>The <code>map&lt;T&gt;</code> type is a <code>map</code> from strings to <code>T</code>. <code>map</code> syntax is similar to JSON. Maps are mutable: <code>m[k]</code> is an
+ <code>lvalue</code>. <code>foreach</code> will iterate over the values of the <code>map</code>. <code>m[k]</code> gets entry for <code>k</code>; <code>nil</code> if missing.
+ Use <code>m.get(k)</code> when you know that there is an entry for <code>k</code>. <code>m.keys()</code> can be used to iterate over keys,
+ to get the keys as an <code>array</code> of strings. <code>==</code> and <code>!=</code> on maps is deep: two maps are equal if they
+ have the same set of keys and the values for each key are equal.</p>
 </p>
 
                         </td>
@@ -139,16 +55,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="tuple-type.html">
+                                    <a class="prev" href="binary-data.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Tuples</p>
+                                        <p>Binary Data</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="table.html">
+                                    <a class="next" href="type-definitions.html">
                                         <span>NEXT ></span>
-                                        <p>Table</p>
+                                        <p>Type Definitions</p>
                                     </a>
                                 </div>
                                 
@@ -172,7 +88,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=9c8d5db96b579bbdb016e9e0a1d1fa91&file=maps.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=839d55a3b805212a49f6cbf14a3db9a9&file=maps.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -207,36 +123,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -250,28 +136,6 @@ redirect_from:
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>type Humanities record {|
-    int history;
-    int geography;
-|};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>A record representing marks received for humanities subjects.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -291,124 +155,10 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string&gt; m;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Declare a <code>map</code> constrained by the type <code>string</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string city = &quot;Colombo&quot;;
-    string country = &quot;Sri Lanka&quot;;
-    string codeLiteral = &quot;code&quot;;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;string&gt; addrMap = {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>You can also declare and initialize a <code>map</code> with a mapping constructor
- expression.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        line1: &quot;No. 20&quot;,
-        line2: &quot;Palm Grove&quot;,
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>A field can be specified as a key-value pair.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        city: &quot;Colombo 03&quot;,
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The value in a key-value pair can be any expression, which evaluates
- to a value of a type that belongs to the constraint type of the map.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        country,
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>A field can also be just a variable reference, which would result
- in the variable name being the field name and the variable itself
- being the value expression.
- This is equivalent to saying <code>country: country</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        [codeLiteral]: &quot;00300&quot;
+                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;int&gt; m = {
+        &quot;x&quot;: 1,
+        &quot;y&quot;: 2
     };
-    io:println(addrMap);
 </code></pre></div>
 
                                 </td>
@@ -416,11 +166,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The key in a key-value pair can also be a computed key.
- A computed key is defined by specifying the key expression within
- brackets. The key expression must belong to type <code>string</code>.
- For a computed key, the key expression is evaluated at runtime and
- the resulting value is used as the key.</p>
+                                            <p>Creates a <code>map</code> constrained by the type <code>int</code>.</p>
 
                                         </div>
                                     </div>
@@ -431,7 +177,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string? countryValue = addrMap[&quot;country&quot;];
+                                    <div class="highlight"><pre><code class=language-ballerina>    int? v = m[&quot;x&quot;];
 </code></pre></div>
 
                                 </td>
@@ -439,11 +185,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Member access can be used to retrieve a value from a map.
- Member access returns the value if a field exists in the map with the
- specified key. Else, it returns <code>()</code> if a field does not exist with the specified key.
- Thus, the type of a member access expression for a map is the union of
- the constraint type and the nil type.</p>
+                                            <p>Gets the entry for <code>x</code>.</p>
 
                                         </div>
                                     </div>
@@ -454,11 +196,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (countryValue is string) {
-        io:println(countryValue);
-    } else {
-        io:println(&quot;key &#39;country&#39; not found&quot;);
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(v);
 </code></pre></div>
 
                                 </td>
@@ -470,8 +208,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string line2Value = addrMap.get(&quot;line2&quot;);
-    io:println(line2Value);
+                                    <div class="highlight"><pre><code class=language-ballerina>    m[&quot;z&quot;] = 5;
 </code></pre></div>
 
                                 </td>
@@ -479,10 +216,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Retrieve a value using the <code>.get()</code> method.
- If the map has a field with the specified key, <code>.get()</code> returns the value.
- Else, it panics if the map does not have a field with the specified key.
- Thus, the return type of <code>.get()</code> when invoked on a map is the map&rsquo;s constraint type.</p>
+                                            <p>Adds a new entry for <code>z</code>.</p>
 
                                         </div>
                                     </div>
@@ -493,8 +227,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    boolean hasPostalCode = addrMap.hasKey(&quot;postalCode&quot;);
-    io:println(hasPostalCode);
+                                    <div class="highlight"><pre><code class=language-ballerina>    m[&quot;z&quot;] = m.get(&quot;x&quot;);
 </code></pre></div>
 
                                 </td>
@@ -502,107 +235,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>.hasKey()</code> function checks if a map contains the specified key.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    addrMap[&quot;postalCode&quot;] = &quot;00300&quot;;
-    io:println(addrMap);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Member access expressions can be used on the left hand side of an assignment
- to add fields to a map or update an already-existing field in the map.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(addrMap.keys());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>.keys()</code> method returns the keys of the map as an array.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(addrMap.length());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Print the number of fields in the map.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string removedElement = addrMap.remove(&quot;code&quot;);
-    io:println(addrMap);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Fields can be removed using the <code>.remove()</code> method.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    addrMap.forEach(function (string value) {
-        io:println(value);
-    });
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Maps support functional iteration.</p>
+                                            <p>Using <code>m[&quot;x&quot;]</code> wouldn&rsquo;t work here because type would be <code>int?</code>,
+ not <code>int</code>.</p>
 
                                         </div>
                                     </div>
@@ -611,85 +245,13 @@ redirect_from:
                             </tr>
                             
                             <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;int&gt; marks = {sam: 50, jon: 60};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;int&gt; modifiedMarks = marks.entries().map(function ([string, int] pair)
-        returns int {
-            var [name, score] = pair;
-            io:println(string `${name} scored: ${score}`);
-            return score + 10;
-        }
-    );
-    io:println(modifiedMarks);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Calling the <code>.entries()</code> method on a map will return a new map with values
- containing the key-value pairs as an array of tuples.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Humanities humanitiesMarks = {history: 80, geography: 75};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a record value of type <code>Humanities</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    map&lt;int&gt; allMarks = {physics: 100, ...humanitiesMarks, chemistry: 75};
-    io:println(allMarks);
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>A mapping constructor expression can also include a spread field
- referring to another mapping value. When a spread field is specified,
- all the fields of the relevant mapping value are added to the new
- mapping value being created.
- A spread field is used with <code>humanitiesMarks</code> to include all the entries
- in <code>humanitiesMarks</code> when creating <code>allMarks</code>.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -710,26 +272,8 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run maps.bal
-{&quot;line1&quot;:&quot;No. 20&quot;,&quot;line2&quot;:&quot;Palm Grove&quot;,&quot;city&quot;:&quot;Colombo 03&quot;,&quot;country&quot;:&quot;Sri Lanka&quot;,&quot;code&quot;:&quot;00300&quot;}
-Sri Lanka
-Palm Grove
-false
-{&quot;line1&quot;:&quot;No. 20&quot;,&quot;line2&quot;:&quot;Palm Grove&quot;,&quot;city&quot;:&quot;Colombo 03&quot;,&quot;country&quot;:&quot;Sri Lanka&quot;,&quot;code&quot;:&quot;00300&quot;,&quot;postalCode&quot;:&quot;00300&quot;}
-[&quot;line1&quot;,&quot;line2&quot;,&quot;city&quot;,&quot;country&quot;,&quot;code&quot;,&quot;postalCode&quot;]
-6
-{&quot;line1&quot;:&quot;No. 20&quot;,&quot;line2&quot;:&quot;Palm Grove&quot;,&quot;city&quot;:&quot;Colombo 03&quot;,&quot;country&quot;:&quot;Sri Lanka&quot;,&quot;postalCode&quot;:&quot;00300&quot;}
-No. 20
-Palm Grove
-Colombo 03
-Sri Lanka
-00300
-sam scored: 50
-jon scored: 60
-{&quot;sam&quot;:60,&quot;jon&quot;:70}
-{&quot;physics&quot;:100,&quot;history&quot;:80,&quot;geography&quot;:75,&quot;chemistry&quot;:75}
+                                    <div class="highlight"><pre><code class=shell-session>bal run maps.bal
+1
 </code></pre></div>
 
                                 </td>

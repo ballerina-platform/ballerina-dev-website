@@ -1,9 +1,10 @@
 ---
 layout: ballerina-example-page
 title: Any Type
-description: 
-keywords: 
+description: This BBE demonstrates the any type in Ballerina
+keywords: ballerina, ballerina by example, bbe, any, any type
 permalink: /learn/by-example/any-type
+active: any-type
 redirect_from:
   - /swan-lake/learn/by-example/any-type
   - /swan-lake/learn/by-example/any-type.html
@@ -12,58 +13,26 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span>
 
-<span class="nx">class</span> <span class="nx">Person</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="nx">fname</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">lname</span><span class="p">;</span>
-
-    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">fname</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">lname</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">fname</span> <span class="p">=</span> <span class="nx">fname</span><span class="p">;</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">lname</span> <span class="p">=</span> <span class="nx">lname</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">fname</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">lname</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// This function returns a value of the `any` type.</span>
-<span class="kd">function</span> <span class="nx">lookupInfo</span><span class="p">(</span><span class="kt">string</span> <span class="nx">id</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">any</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="nx">id</span> <span class="o">==</span> <span class="s">&quot;pi&quot;</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kt">float</span><span class="p">:</span><span class="nx">PI</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">id</span> <span class="o">==</span> <span class="s">&quot;date&quot;</span> <span class="p">{</span>
-        <span class="nx">time</span><span class="p">:</span><span class="nx">Utc</span> <span class="nx">utc</span> <span class="p">=</span> <span class="nx">checkpanic</span> 
-            <span class="nx">time</span><span class="p">:</span><span class="nx">utcFromString</span><span class="p">(</span><span class="s">&quot;2021-03-29T09:35:37.529306Z&quot;</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcToString</span><span class="p">(</span><span class="nx">utc</span><span class="p">);</span> 
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">id</span> <span class="o">==</span> <span class="s">&quot;bio&quot;</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s">&quot;Jane&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="c1">// A variable of type `any` can hold any value except an error.</span>
+<span class="kt">any</span> <span class="nx">x</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// In this example, the variable named `any1` of the `any` type holds</span>
-    <span class="c1">// a `Person` object.</span>
-    <span class="kt">any</span> <span class="nx">any1</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">);</span>
+    <span class="c1">// Can cast `any` to specific type.</span>
+    <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="nx">x</span><span class="p">;</span>
+    
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
 
-    <span class="c1">// Before anything useful can be done with `any1`, it is required to ascertain</span>
-    <span class="c1">// its type. A type cast or a type guard can be used for this.</span>
-    <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">any1</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Full name: &quot;</span><span class="p">,</span> <span class="nx">john</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>
+    <span class="c1">// Langlib lang.value module contains functions that apply to multiple basic types.</span>
+    <span class="c1">// Can convert to string.</span>
+    <span class="kt">string</span> <span class="nx">s</span> <span class="p">=</span> <span class="nx">x</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
 
-    <span class="k">if</span> <span class="nx">any1</span> <span class="nx">is</span> <span class="nx">Person</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;First name: &quot;</span><span class="p">,</span> <span class="nx">any1</span><span class="p">.</span><span class="nx">fname</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">s</span> <span class="o">==</span> <span class="s">&quot;1&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Variables of type `any` can hold values of any type except for `error`.</span>
-    <span class="kt">int</span><span class="p">[]</span> <span class="nx">intArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
-    <span class="kt">any</span> <span class="nx">anyArray</span> <span class="p">=</span> <span class="nx">intArray</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">anyArray</span><span class="p">);</span>
+    <span class="c1">// Can test its type with the `is` operator.</span>
+    <span class="kt">float</span> <span class="nx">f</span> <span class="p">=</span> <span class="nx">x</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">|</span><span class="kt">float</span> <span class="err">?</span> <span class="p">&lt;</span><span class="kt">float</span><span class="p">&gt;</span><span class="nx">x</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">;</span>
 
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">lookupInfo</span><span class="p">(</span><span class="s">&quot;pi&quot;</span><span class="p">));</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">lookupInfo</span><span class="p">(</span><span class="s">&quot;date&quot;</span><span class="p">));</span>
-    <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">lookupInfo</span><span class="p">(</span><span class="s">&quot;bio&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">f</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -74,10 +43,10 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Any Type</h2>
-                            <p><p>The <code>any</code> type can represent a variable of any type except the <code>error</code> type.
- When you do not have prior knowledge of the type of a variable, you can assign it to a variable of type <code>any</code>.
- Values of these variables can come from dynamic content such as the request and response message references and
- reference variable types.</p>
+                            <p><p><code>any</code> means any value except an error.
+ Equivalent to a union of all non-error basic types.
+ Use <code>any|error</code> for absolutely any value.
+ Langlib lang.value module contains functions that apply to multiple basic types.</p>
 </p>
 
                         </td>
@@ -85,16 +54,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="anydata-type.html">
+                                    <a class="prev" href="immutability.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Anydata Type</p>
+                                        <p>Immutability</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="never-type.html">
+                                    <a class="next" href="configurable-variables.html">
                                         <span>NEXT ></span>
-                                        <p>Never Type</p>
+                                        <p>Configurable Variables</p>
                                     </a>
                                 </div>
                                 
@@ -118,7 +87,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=5c79b8859eb1b4535cada6f647c05d0f&file=any_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=beac4e9cffe11f8f9c29786d322eda65&file=any_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -153,12 +122,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -168,51 +131,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/time;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>class Person {
-    string fname;
-    string lname;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    function init(string fname, string lname) {
-        self.fname = fname;
-        self.lname = lname;
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    function getFullName() returns string {
-        return self.fname + &quot; &quot; + self.lname;
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -224,17 +142,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function lookupInfo(string id) returns any {
-    if id == &quot;pi&quot; {
-        return float:PI;
-    } else if id == &quot;date&quot; {
-        time:Utc utc = checkpanic 
-            time:utcFromString(&quot;2021-03-29T09:35:37.529306Z&quot;);
-        return time:utcToString(utc); 
-    } else if id == &quot;bio&quot; {
-        return new Person(&quot;Jane&quot;, &quot;Doe&quot;);
-    }
-}
+                                    <div class="highlight"><pre><code class=language-ballerina>any x = 1;
 </code></pre></div>
 
                                 </td>
@@ -242,7 +150,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function returns a value of the <code>any</code> type.</p>
+                                            <p>A variable of type <code>any</code> can hold any value except an error.</p>
 
                                         </div>
                                     </div>
@@ -265,7 +173,9 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    any any1 = new Person(&quot;John&quot;, &quot;Doe&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    int n = &lt;int&gt;x;
+    
+    io:println(n);
 </code></pre></div>
 
                                 </td>
@@ -273,8 +183,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>In this example, the variable named <code>any1</code> of the <code>any</code> type holds
- a <code>Person</code> object.</p>
+                                            <p>Can cast <code>any</code> to specific type.</p>
 
                                         </div>
                                     </div>
@@ -285,8 +194,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Person john = &lt;Person&gt; any1;
-    io:println(&quot;Full name: &quot;, john.getFullName());
+                                    <div class="highlight"><pre><code class=language-ballerina>    string s = x.toString();
 </code></pre></div>
 
                                 </td>
@@ -294,8 +202,8 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Before anything useful can be done with <code>any1</code>, it is required to ascertain
- its type. A type cast or a type guard can be used for this.</p>
+                                            <p>Langlib lang.value module contains functions that apply to multiple basic types.
+ Can convert to string.</p>
 
                                         </div>
                                     </div>
@@ -306,9 +214,7 @@ import ballerina/time;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if any1 is Person {
-        io:println(&quot;First name: &quot;, any1.fname);
-    }
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(s == &quot;1&quot;);
 </code></pre></div>
 
                                 </td>
@@ -320,9 +226,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int[] intArray = [1, 3, 5, 6];
-    any anyArray = intArray;
-    io:println(anyArray);
+                                    <div class="highlight"><pre><code class=language-ballerina>    float f = x is int|float ? &lt;float&gt;x : 0.0;
 </code></pre></div>
 
                                 </td>
@@ -330,7 +234,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Variables of type <code>any</code> can hold values of any type except for <code>error</code>.</p>
+                                            <p>Can test its type with the <code>is</code> operator.</p>
 
                                         </div>
                                     </div>
@@ -341,10 +245,7 @@ import ballerina/time;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(lookupInfo(&quot;pi&quot;));
-    io:println(lookupInfo(&quot;date&quot;));
-    Person person = &lt;Person&gt; lookupInfo(&quot;bio&quot;);
-    io:println(person.getFullName());
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(f);
 }
 </code></pre></div>
 
@@ -370,15 +271,10 @@ import ballerina/time;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run any_type.bal
-Full name: John Doe
-First name: John
-[1,3,5,6]
-3.141592653589793
-2021-03-29T09:35:37.529306Z
-Jane Doe
+                                    <div class="highlight"><pre><code class=shell-session>bal run any_type.bal
+1
+true
+1.0
 </code></pre></div>
 
                                 </td>

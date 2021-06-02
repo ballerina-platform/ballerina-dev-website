@@ -4,6 +4,7 @@ title: Receive Emails Using a Client
 description: This is a BBE on receiving emails. It has the client functionality for receiving emails.
 keywords: ballerina, ballerina by example, bbe, email, POP3, POP, IMAP
 permalink: /learn/by-example/receive-email-using-client
+active: receive-email-using-client
 redirect_from:
   - /swan-lake/learn/by-example/receive-email-using-client
   - /swan-lake/learn/by-example/receive-email-using-client.html
@@ -15,13 +16,13 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Create the client with the connection parameters, host, username, and</span>
+    <span class="c1">// Creates the client with the connection parameters, host, username, and</span>
     <span class="c1">// password. An error is returned in a failure. The default port number</span>
     <span class="c1">// `995` is used over SSL with these configurations.</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">PopClient</span> <span class="nx">popClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;pop.email.com&quot;</span><span class="p">,</span> <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span>
         <span class="s">&quot;pass456&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Read the first unseen email received by the POP3 server. `()` is</span>
+    <span class="c1">// Reads the first unseen email received by the POP3 server. `()` is</span>
     <span class="c1">// returned when there are no new unseen emails. In error cases, an</span>
     <span class="c1">// error is returned.</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">Message</span><span class="err">?</span> <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">popClient</span><span class="o">-&gt;</span><span class="nx">receiveMessage</span><span class="p">();</span>
@@ -35,16 +36,16 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;There are no emails in the INBOX.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="c1">// Closes the POP3 store which would close the TCP connection.</span>
+    <span class="c1">// Closes the POP3 store, which would close the TCP connection.</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">closeStatus</span> <span class="p">=</span> <span class="nx">popClient</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
 
-    <span class="c1">// Create the client with the connection parameters, host, username, and</span>
+    <span class="c1">// Creates the client with the connection parameters, host, username, and</span>
     <span class="c1">// password. An error is received in a failure. The default port number</span>
     <span class="c1">// `993` is used over SSL with these configurations.</span>
     <span class="nx">email</span><span class="p">:</span><span class="nx">ImapClient</span> <span class="nx">imapClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;imap.email.com&quot;</span><span class="p">,</span>
         <span class="s">&quot;reader@email.com&quot;</span><span class="p">,</span> <span class="s">&quot;pass456&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Read the first unseen email received by the IMAP4 server. `()` is</span>
+    <span class="c1">// Reads the first unseen email received by the IMAP4 server. `()` is</span>
     <span class="c1">// returned when there are no new unseen emails. In error cases, an</span>
     <span class="c1">// error is returned.</span>
     <span class="nx">emailResponse</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">imapClient</span><span class="o">-&gt;</span><span class="nx">receiveMessage</span><span class="p">();</span>
@@ -114,10 +115,6 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/receive-email-using-client/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=271f068bd37c45ab80450d4c11e75626&file=receive_email_using_client.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -204,7 +201,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create the client with the connection parameters, host, username, and
+                                            <p>Creates the client with the connection parameters, host, username, and
  password. An error is returned in a failure. The default port number
  <code>995</code> is used over SSL with these configurations.</p>
 
@@ -225,7 +222,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Read the first unseen email received by the POP3 server. <code>()</code> is
+                                            <p>Reads the first unseen email received by the POP3 server. <code>()</code> is
  returned when there are no new unseen emails. In error cases, an
  error is returned.</p>
 
@@ -282,7 +279,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Closes the POP3 store which would close the TCP connection.</p>
+                                            <p>Closes the POP3 store, which would close the TCP connection.</p>
 
                                         </div>
                                     </div>
@@ -302,7 +299,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create the client with the connection parameters, host, username, and
+                                            <p>Creates the client with the connection parameters, host, username, and
  password. An error is received in a failure. The default port number
  <code>993</code> is used over SSL with these configurations.</p>
 
@@ -323,7 +320,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Read the first unseen email received by the IMAP4 server. <code>()</code> is
+                                            <p>Reads the first unseen email received by the IMAP4 server. <code>()</code> is
  returned when there are no new unseen emails. In error cases, an
  error is returned.</p>
 
@@ -420,9 +417,7 @@ import ballerina/io;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run email.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run email.bal
 </code></pre></div>
 
                                 </td>

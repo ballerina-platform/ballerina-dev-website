@@ -18,7 +18,7 @@ To create a new library package, we use `bal new -t lib`:
 $ bal new hello --template lib
 ```
 
-This will create a new Ballerina package with a hello function. Let’s check what the `bal new` command generated for a library package:
+This will create a new Ballerina package with a `hello` function. Let’s check what the `bal new` command generated for a library package:
 
 ```bash
 $ cd hello
@@ -62,7 +62,7 @@ Now that you have a package to share with others, it can be published to the [Ba
 Ensure the package works as intended, because a publish is **permanent**. Once published to Ballerina Central, the version can never be overwritten, 
 and the package cannot be removed. However, the number of versions of a package that can be pushed to Ballerina Central is not restricted.
 
-As a precaution, you may use the [local repository](/learn/user-guide/ballerina-packages/dependencies/#overriding-dependencies) first to test out the functionality of the library functions before publishing it to the Ballerina Central repository.
+As a precaution, you may use the [local repository](/learn/user-guide/ballerina-packages/dependencies/#overriding-dependencies) first to test out the functionality of the library package before publishing it to the Ballerina Central repository.
 
 
 #### Setting up before the first publish
@@ -84,9 +84,9 @@ password = ""
 
 #### Organizations
 
-When you push a package to Ballerina Central, the organizations for the user is validated against the org defined in the [Ballerina.toml](/learn/user-guide/ballerina-packages/package-layout#ballerinatoml) file. Therefore, when you have more than one organization in Ballerina Central, be sure to pick the organization name that you intend to push the package into and set that as the org in the Ballerina.toml file inside the package directory and rebuild the package.
+When you push a package to Ballerina Central, the organizations for the user is validated against the value of `org` field defined in the [Ballerina.toml](/learn/user-guide/ballerina-packages/package-layout#ballerinatoml) file. Therefore, when you have more than one organization in Ballerina Central, be sure to pick the organization name that you intend to push the package into, and set that as the `org` in the `Ballerina.toml` file inside the package directory and rebuild the package.
 
-Also, organization names starting with `ballerina` (e.g. ballerina, ballerinax, ballerinai, etc) are reserved for system use and so we cannot publish any packages starting with the prefix ballerina to the Ballerina Central repository. So if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
+Also, organization names starting with `ballerina` (e.g. ballerina, ballerinax, ballerinai, etc) are reserved for system use and so we cannot publish any packages starting with the prefix "ballerina" to the Ballerina Central repository. So if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
 
 #### Publish the package
 

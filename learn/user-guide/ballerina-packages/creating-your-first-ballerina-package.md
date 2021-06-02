@@ -5,7 +5,7 @@ description: The below are the basic steps you need to know about writing a Ball
 keywords: ballerina, programming language, ballerina packages, getting started
 permalink: /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/
 active: creating-your-first-ballerina-package
-intro: The below are the basic steps you need to know about writing a Ballerina packages. It also introduces the package-related commands in the Ballerina command-line tool.
+intro: The below are the basic steps you need to know about writing a Ballerina package. It also introduces the package-related commands in the Ballerina command-line tool.
 redirect_from:
 - /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package
 - /learn/user-guide/ballerina-packages/
@@ -41,7 +41,7 @@ The [Ballerina.toml](/learn/user-guide/ballerina-packages/package-layout#balleri
 
 **.gitignore**
 
-The `bal new` command also generates the .gitignore file by default with `target` added as an entry.
+The `bal new` command also generates the `.gitignore` file by default with `target` added as an entry.
 
 **main.bal**
 

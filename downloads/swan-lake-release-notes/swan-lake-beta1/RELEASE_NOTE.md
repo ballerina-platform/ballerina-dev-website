@@ -72,7 +72,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta1](https://github
 
 Configurable variables with enum types are supported to provide values through command-line arguments and a TOML file.
 
-For example, see the configurable variable with the `enum` type.
 
 ```ballerina
 public enum HttpVersion {

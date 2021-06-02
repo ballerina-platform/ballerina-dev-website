@@ -1,11 +1,11 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: Modules
-description: The below are all you need to know about modules. It explains the layout and the concept of modules.
+description: The sections below include information about the concept of modules.
 keywords: ballerina, programming language, ballerina packages, modules, module layout
 permalink: /learn/user-guide/ballerina-packages/modules/
 active: modules
-intro: The below are all you need to know about modules. It explains the layout and the concept of modules.
+intro: The sections below include information about the concept of modules.
 redirect_from:
 - /learn/user-guide/ballerina-packages/modules
 ---

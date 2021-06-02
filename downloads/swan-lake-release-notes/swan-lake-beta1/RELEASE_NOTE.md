@@ -192,7 +192,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta1](https://github
 ## Code to Cloud Updates
 
 ### New Features
-Added `@cloud:Expose` annotation to support custom listeners.
+Added the `@cloud:Expose` annotation to support custom listeners.
 
 ### Bug Fixes
 

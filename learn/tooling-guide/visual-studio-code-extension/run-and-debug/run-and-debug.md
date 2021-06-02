@@ -34,7 +34,7 @@ The VS Code Ballerina extension gives you the same debugging experience as the c
 
 <br/>
 
-1. Open the folder, which includes the Ballerina program you want to debug and select the file.
+1. Open the folder, which includes the Ballerina program you want to debug, and select the file.
 
 2. Press the **Control + Shift + D** keys (for Mac: **Command + Shift +D**) to launch the Debugger view.
 
@@ -202,7 +202,7 @@ Ballerina debugger supports various debug configuration options via `launch.json
 
 <br/>
 
-Here are the default configurations generated for the ballerina debugging:
+Here are the default configurations generated for the Ballerina debugging:
 
 ![Debug Configurations](/learn/images/debug-configurations.png)
 
@@ -212,12 +212,12 @@ Here are the default configurations generated for the ballerina debugging:
 
 ### Ballerina launch.json attributes
 
-The auto-generated `launch.json` file consists of three main configurations, namely, `Ballerina Debug`, `Ballerina Test` and `Ballerina Remote`. Each configuration supports different attributes, and those attributes can be identified with the help of IntelliSense suggestions (`⌃Space`).
+The auto-generated `launch.json` file consists of three main configurations, namely, `Ballerina Debug`, `Ballerina Test`, and `Ballerina Remote`. Each configuration supports different attributes, and those attributes can be identified with the help of IntelliSense suggestions (`⌃Space`).
 
 The following attributes are mandatory for all configurations.
 
 - `name` - The reader-friendly name to appear in the Debug launch configuration dropdown.
-- `type` - The type of debugger to use for this launch configuration. The attribute value must be kept as `ballerina` for all ballerina debugging configuration types.
+- `type` - The type of debugger to use for this launch configuration. The attribute value must be kept as `ballerina` for all Ballerina debugging configuration types.
 - `request` - The request type of this launch configuration. Currently, launch and attach are supported.
 
 The following attributes are supported for all Ballerina `launch` configurations.

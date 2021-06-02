@@ -18,15 +18,15 @@ The single source file program is a quick and easy way to get started with Balle
 To create a new Ballerina package, we use the bal new command:
 
 ```bash
-$ bal new hello_world
+$ bal new helloworld
 ```
 
 This will create a new Ballerina package with a main function. If we are creating a service instead of a main function, we pass the `-t service` option.
 Let’s check what the `bal new` command generated:
 ```bash
-$ cd hello_world
+$ cd helloworld
 $ tree .
-helloworld
+.
   ├── Ballerina.toml
   └── main.bal
     
@@ -90,4 +90,3 @@ Hello World!
     display: none !important;
 }
 </style>
-

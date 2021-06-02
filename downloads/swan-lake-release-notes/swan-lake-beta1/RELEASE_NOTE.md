@@ -40,7 +40,6 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 ### Breaking Changes
 
-- The Taint analyzer is disabled and the `--taint-check` option is removed. The annotations `@tainted` and `@untainted` were left intact as placeholders for backward compatibility. Any script that used to pass the `--taint-check` option to the `bal run` or `bal build` commands will fail.
 - An included record parameter of a function can only be specified after any required and/or defaultable parameters of the function.
 - Additive expressions and multiplicative expressions are no longer supported with numeric values when the static types of the operands belong to different numeric basic types.
 - Configurable variables are implicitly `final` now. Moreover, the type of such a variable is now effectively the intersection of the specified type and `readonly`. Therefore, configurable variables no longer support the `final` and `isolated` qualifiers.
@@ -59,6 +58,8 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
   | T1 & T2                   | left          |
   | T1 &#124; T2              | left          |
   | function (args) returns T | right         |
+
+- The Taint analyzer is disabled and the `--taint-check` option is removed. The annotations `@tainted` and `@untainted` were left intact as placeholders for backward compatibility. Any script that used to pass the `--taint-check` option to the `bal run` or `bal build` commands will fail.
 
 ### Bug Fixes
 
@@ -208,8 +209,10 @@ To view bug fixes, see the GitHub milestone for Swan Lake Beta1 of the repositor
 #### Debugger
 - Added remote debugging support for the command that runs the Ballerina executable JAR
 - Added support for debugging a single Ballerina test in Visual Studio Code
+
 #### Test Framework
-- Introduced a flag to pass the expected code coverage report formats
+Introduced a flag to pass the expected code coverage report formats
+
 ### Bug Fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Beta1 of the repositories below.

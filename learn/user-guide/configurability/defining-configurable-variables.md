@@ -34,11 +34,11 @@ The values of configurable variables would always be a subtype of `anydata`. A c
 
 Ballerina supports providing the values for configurable variables through configuration files, command-line arguments, and environment variables. The precedence order for retrieving configurable values is as follows.
 
->**Tip:** For more information on the methods below, see [Supplying Values to Configurable Variables](/learn/user-guide/configurability/providing-values-to-configurable-variables/).
+>**Tip:** For more information on the methods below, see [Providing Values to Configurable Variables](/learn/user-guide/configurability/providing-values-to-configurable-variables/).
 
 ### Using Command-Line Arguments
 
-The module information of the configurable variable can be provided with command-line argument. For more information, see [Supplying Configurable Values Through Command-Line Arguments](/learn/user-guide/configurability/providing-values-to-configurable-variables/#providing-values-through-command-line-arguments).
+The module information of the configurable variable can be provided with command-line argument. For more information, see [Providing Configurable Values Through Command-Line Arguments](/learn/user-guide/configurability/providing-values-to-configurable-variables/#providing-values-through-command-line-arguments).
 
 ### Using Configuration Files
 

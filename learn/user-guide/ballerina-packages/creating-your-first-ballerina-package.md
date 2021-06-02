@@ -29,8 +29,8 @@ The `bal new` command generates the below.
 cd helloworld
 tree .
 .
-  ├── Ballerina.toml
-  └── main.bal
+├── Ballerina.toml
+└── main.bal
     
 0 directories, 2 files
 ```

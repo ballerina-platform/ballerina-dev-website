@@ -38,7 +38,7 @@ The `Ballerina.toml` identifies the directory as a Ballerina package. It contain
 org = "samjs"
 name = "winery"
 version = "0.1.0"
-exported = [winery, winery.model]
+export = ["winery", "winery.model"]
 
 [build-options]
 observabilityIncluded = true
@@ -82,14 +82,14 @@ For example, if you created the `aws.rds` package that contains the `aws.rds.mys
 
 Ballerina strictly follows the rules of [Semantic Versioning](https://semver.org/). Therefore, in general, you should follow the SemVer best practices when versioning a package.
 
-*   If the package is in the initial stages of development, label the package with the zero major version (0.x.y). This will give you a hint that API changes are frequent and that the package is far from being production-ready.
-*   Use the versions as three numeric parts `MAJOR.MINOR.PATCH` (e.g., `1.0.0`).
-    *   Increment the patch version when only backward-compatible bug fixes are introduced.
-    *   Increment the minor version when new backward-compatible functionality is introduced to the public API.
-    *   Increment the major version when any backward-incompatible changes are introduced to the public API.
-*   When you are improving the package towards the stabilization to roll out to production, pre-release versions are suitable for versioning (e.g., `1.0.0- alpha`). Though the changes are not at the rate of the initial development phase, API changes are still likely to happen, and thereby, the pre-release versions are not considered as production-ready.
-*   If the changes to pre-release versions are incremental, you can use the numeric pre-release versioning technique (e.g., `1.0.0-alpha.1`, `1.0.0-alpha.2`).
-*   Once the package is production-ready, you can use a stable version (e.g., `1.0.0`). Any subsequent minor or patch releases of the same major version should be backward compatible, and thereby, should not break the existing builds.
+*   If the package is in the initial stages of development, label the package with the zero major version (0.x.y). This will give the user a hint that API changes are frequent and that the package is far from being production-ready.
+*   Use versions as three numeric parts `MAJOR.MINOR.PATCH` (E.g. 1.0.0).
+    *   Increment the patch version when only backward compatible bug fixes are introduced.
+    *   Increment the minor version when new backward compatible functionality is introduced to the public API.
+    *   Increment the major version when any backward incompatible changes are introduced to the public API.
+*   When you are improving the package towards the stabilization to roll out to production, pre-release versions are suitable for versioning (E.g. 1.0.0-alpha). Though the changes are not at the rate of the initial development phase, API changes are still likely to happen and so pre-release versions are not considered as production-ready.
+*   If the changes to pre-release versions are incremental, you can use the numeric pre-release versioning technique (E.g. 1.0.0-alpha.1, 1.0.0-alpha.2).
+*   Once the package is production-ready, you can use a stable version (E.g. 1.0.0). Any subsequent minor or patch releases of the same major version should be backward compatible and thus, should not break existing builds.
 
 
 ### Build Options
@@ -100,13 +100,13 @@ Ballerina supports the following build options.
 
 ```toml
 [build-options]
-observabilityIncluded=true
-experimental=true
-offline=true
-skipTests=true
-testReport=true
-codeCoverage=true
-cloud="k8s"
+observabilityIncluded = true
+experimental = true
+offline = true
+skipTests = true
+testReport = true
+codeCoverage = true
+cloud = "k8s"
 ```
 
 **`Dependencies.toml`**

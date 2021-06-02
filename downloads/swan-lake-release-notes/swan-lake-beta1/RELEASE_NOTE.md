@@ -207,7 +207,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Beta1 of the repositor
 ### Improvements
 
 #### Debugger
-- Added remote debugging support for the command, which runs the Ballerina executable JAR
+- Added remote debugging support for the command that runs the Ballerina executable JAR
 - Added support for debugging a single Ballerina test in Visual Studio Code
 
 ### Bug Fixes

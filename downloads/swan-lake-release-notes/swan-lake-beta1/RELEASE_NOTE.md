@@ -40,6 +40,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 ### Breaking Changes
 
+- The Taint analyzer is disabled and the `--taint-check` option is removed. The annotations `@tainted` and `@untainted` were left intact as placeholders for backward compatibility. Any script that used to pass the `--taint-check` option to the `bal run` or `bal build` commands will fail.
 - An included record parameter of a function can only be specified after any required and/or defaultable parameters of the function.
 - Additive expressions and multiplicative expressions are no longer supported with numeric values when the static types of the operands belong to different numeric basic types.
 - Configurable variables are implicitly `final` now. Moreover, the type of such a variable is now effectively the intersection of the specified type and `readonly`. Therefore, configurable variables no longer support the `final` and `isolated` qualifiers.
@@ -82,16 +83,14 @@ public enum HttpVersion {
 configurable configLib:HttpVersion & readonly httpVersion = ?;
 ```
 
-The value for `httpVersion` can be provided via the `Config.toml` file or as a command-line argument as below.
-
-**TOML:**
+The value for `httpVersion` can be provided via the `Config.toml` file or as a command-line argument as shown below.
 
 ```toml
 [configUnionTypes]
 httpVersion = "HTTP_1_1"
 ```
 
-**Command-line Argument:**
+The command-line argument will be as shown below.
 
 ```bash
 -ChttpVersion=HTTP_1_1
@@ -117,8 +116,6 @@ configurable map<string>[] users = ?;
 ```
 
 the values can be provided in the `Config.toml` as follows.
-
-**TOML:**
 
 ```toml
 [admin]
@@ -208,11 +205,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Beta1 of the repositor
 
 ## Developer Tools Updates
 
-### Language Server 
-
-To view bug fixes, see the [GitHub milestone for Swan Lake Beta1](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta1%22+label%3ATeam%2FLanguageServer).
-
-### New Features
+### Improvements
 
 #### Debugger
 - Added remote debugging support for the command, which runs the Ballerina executable JAR
@@ -224,9 +217,3 @@ To view bug fixes, see the GitHub milestone for Swan Lake Beta1 of the repositor
 
 - [Language](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta1%22+label%3ATeam%2FLanguageServer)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/milestone/5?closed=1) 
-
-### Ballerina Packages Updates
-
-## Breaking Changes
-
-The Taint analyzer is disabled and the `--taint-check` option is removed. The annotations `@tainted` and `@untainted` were left intact as placeholders for backward compatibility. Any script that used to pass the `--taint-check` option to the `bal run` or `bal build` commands will fail.

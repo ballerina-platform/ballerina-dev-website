@@ -70,7 +70,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta1](https://github
 
 #### Improved Configurable Variables to Support Enum Types
 
-Configurable variables with enum types are supported to provide values through command-line arguments and a TOML file.
+Values can be provided for configurable variables of `enum` types via command-line arguments and a TOML file.
 
 
 ```ballerina

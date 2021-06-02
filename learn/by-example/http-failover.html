@@ -15,9 +15,6 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">runtime</span><span class="p">;</span>
 
-<span class="c1">// Create an endpoint with port 8080 for the mock backend services.</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">backendEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">8080</span><span class="p">);</span>
-
 <span class="c1">// Define the failover client endpoint to call the backend services.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">FailoverClient</span> <span class="nx">foBackendEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">({</span>
 
@@ -32,39 +29,24 @@ redirect_from:
         <span class="p">]</span>
 <span class="p">});</span>
 
-<span class="kd">service</span> <span class="o">/</span><span class="nx">fo</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.()</span>
-            <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">foBackendEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
-
-        <span class="c1">// If `backendResponse` is an `http:Response`, it is sent back to the</span>
-        <span class="c1">// client. If `backendResponse` is an `http:ClientError`, an internal</span>
-        <span class="c1">// server error is returned to the client.</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">backendResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">backendResponse</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span> <span class="nx">backendResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">()};</span>
-        <span class="p">}</span>
-
+<span class="kd">service</span> <span class="o">/</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">fo</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+        <span class="kt">string</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">foBackendEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">payload</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// Define the sample service to mock connection timeouts and service outages.</span>
-<span class="kd">service</span> <span class="o">/</span><span class="nx">echo</span> <span class="nx">on</span> <span class="nx">backendEP</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">echo</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="c1">// Delay the response for 30 seconds to mimic network level delays.</span>
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>
-
         <span class="k">return</span> <span class="s">&quot;echo Resource is invoked&quot;</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
 
-<span class="c1">// Define the sample service to mock a healthy service.</span>
-<span class="kd">service</span> <span class="o">/</span><span class="nx">mock</span> <span class="nx">on</span> <span class="nx">backendEP</span> <span class="p">{</span>
-
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="c1">// Define the sample resource to mock a healthy service.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">mock</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s">&quot;Mock Resource is Invoked.&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -78,7 +60,11 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Failover</h2>
                             <p><p>Ballerina users can configure multiple HTTP clients in a given failover group.
- If one of the HTTP clients (dependencies) fails, Ballerina automatically fails over to another endpoint.<br/><br/>
+ If one of the HTTP clients (dependencies) fails, Ballerina automatically fails over to another endpoint.
+ The following example depicts the <code>FailoverClient</code> behaviour with three target services. The first two targets
+ are configured to mimic failure backends.
+ After the first invocation the client resumes the failover from the last successful target. In this case it is
+ the third target and the client will get the immediate response for subsequent calls.<br/><br/>
  For more information on the underlying module,
  see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/">HTTP module</a>.</p>
 </p>
@@ -152,20 +138,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -180,25 +152,6 @@ import ballerina/lang.runtime;
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener backendEP = new (8080);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create an endpoint with port 8080 for the mock backend services.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -263,58 +216,11 @@ import ballerina/lang.runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service /fo on new http:Listener(9090) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .()
-            returns http:Response|http:InternalServerError {
-        http:Response|error backendResponse = foBackendEP-&gt;get(&quot;/&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (backendResponse is http:Response) {
-            return backendResponse;
-        } else {
-            return {body: backendResponse.message()};
-        }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If <code>backendResponse</code> is an <code>http:Response</code>, it is sent back to the
- client. If <code>backendResponse</code> is an <code>http:ClientError</code>, an internal
- server error is returned to the client.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    }
+                                    <div class="highlight"><pre><code class=language-ballerina>service / on new http:Listener(9090) {
+    resource function &#39;default fo() returns string|error {
+        string payload = check foBackendEP-&gt;get(&quot;/&quot;);
+        return payload;
+    }
 }
 </code></pre></div>
 
@@ -327,7 +233,8 @@ import ballerina/lang.runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service /echo on backendEP {
+                                    <div class="highlight"><pre><code class=language-ballerina>service / on new http:Listener(8080) {
+    resource function &#39;default echo() returns string {
 </code></pre></div>
 
                                 </td>
@@ -343,22 +250,12 @@ import ballerina/lang.runtime;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .() returns string {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        runtime:sleep(30);
+        return &quot;echo Resource is invoked&quot;;
+    }
 </code></pre></div>
 
                                 </td>
@@ -374,43 +271,10 @@ import ballerina/lang.runtime;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return &quot;echo Resource is invoked&quot;;
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service /mock on backendEP {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Define the sample service to mock a healthy service.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .() returns string {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default mock() returns string {
         return &quot;Mock Resource is Invoked.&quot;;
     }
 }
@@ -418,6 +282,13 @@ import ballerina/lang.runtime;
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Define the sample resource to mock a healthy service.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -438,9 +309,7 @@ import ballerina/lang.runtime;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the services, navigate to the directory that contains the
-# `.bal` file and use the `bal run` command below.
-bal run http_failover.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run http_failover.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
@@ -468,51 +337,8 @@ bal run http_failover.bal
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the Failover Service, use the cURL command below.
-curl -v http://localhost:9090/fo
-# The `FailoverClient` endpoint is configured with three target services.The first two targets are configured to mimic
-# failure backends. If one target service goes down, the failover client automatically calls the other targets.
-# Once you invoke the Failover demo service, the Failover client fails over the request to the configured
-# target endpoints. In this example, the third target is configured to give a successful response and the following
-# response is given when the failover demo service is invoked.
-# Server response:
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
-&gt; GET /fo HTTP/1.1
-&gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
-&gt; Accept: */*
-&gt;
-&lt; HTTP/1.1 200 OK
-&lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 15:29:37 +0530
-&lt; server: ballerina/1.0.0-beta
-&lt; content-length: 25
-&lt;
-* Connection #0 to host localhost left intact
-Mock Resource is Invoked.
-# Invoke the Failover Service again using the cURL command below.
-curl -v http://localhost:9090/fo
-# At this point, Ballerina failover client already knows that leading endpoints (in this case the first two targets)
-# failed in the last invocation and it got the successful response from the third target. So the failover client
-# resumes the failover from the last successful target. In this case it is the third target and the client will get
-# the immediate response for subsequent calls.
-# Server response:
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
-&gt; GET /fo HTTP/1.1
-&gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
-&gt; Accept: */*
-&gt;
-&lt; HTTP/1.1 200 OK
-&lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 15:29:41 +0530
-&lt; server: ballerina/1.0.0-beta
-&lt; content-length: 25
-&lt;
-* Connection #0 to host localhost left intact
+# The first invocation will take a while but the subsequent invocations will be faster.
+curl http://localhost:9090/fo
 Mock Resource is Invoked.
 </code></pre></div>
 

@@ -43,7 +43,7 @@ redirect_from:
 
     <span class="c1">// The transaction block can be used to roll back if any error occurred.</span>
     <span class="nx">transaction</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">batchExecute</span><span class="p">(</span><span class="nx">insertQueries</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">batchExecute</span><span class="p">(</span><span class="nx">insertQueries</span><span class="p">);</span>
         <span class="k">if</span> <span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">BatchExecuteError</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="nx">executionResults</span><span class="p">);</span>
@@ -59,7 +59,7 @@ redirect_from:
 
     <span class="c1">// Checks the data after the batch execution.</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
-        <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">query</span><span class="p">(</span><span class="s">&quot;SELECT * FROM Customers&quot;</span><span class="p">);</span>
+        <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;SELECT * FROM Customers&quot;</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Data in Customers table:&quot;</span><span class="p">);</span>
     <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
@@ -74,13 +74,13 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">beforeExample</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Creates a table in the database.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
-        <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE Customers(customerId INTEGER</span>
+        <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE Customers(customerId INTEGER</span>
 <span class="s">            NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),</span>
 <span class="s">            registrationID INTEGER UNIQUE, creditLimit DOUBLE,</span>
 <span class="s">            country VARCHAR(300), PRIMARY KEY (customerId))`</span><span class="p">);</span>
 
     <span class="c1">// Adds records to the newly-created table.</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO Customers (firstName,</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO Customers (firstName,</span>
 <span class="s">            lastName, registrationID,creditLimit,country) VALUES (&#39;Peter&#39;,</span>
 <span class="s">            &#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`</span><span class="p">);</span>
 <span class="p">}</span>
@@ -89,7 +89,7 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Cleans the database.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
-            <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`DROP TABLE Customers`</span><span class="p">);</span>
+            <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP TABLE Customers`</span><span class="p">);</span>
     <span class="c1">// Closes the JDBC client.</span>
     <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
@@ -319,7 +319,7 @@ import ballerina/sql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    transaction {
-        var result = jdbcClient -&gt; batchExecute(insertQueries);
+        var result = jdbcClient-&gt;batchExecute(insertQueries);
         if result is sql:BatchExecuteError {
             io:println(result.message());
             io:println(result.detail()?.executionResults);
@@ -351,7 +351,7 @@ import ballerina/sql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream =
-        jdbcClient -&gt; query(&quot;SELECT * FROM Customers&quot;);
+        jdbcClient-&gt;query(&quot;SELECT * FROM Customers&quot;);
 </code></pre></div>
 
                                 </td>
@@ -425,7 +425,7 @@ import ballerina/sql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
-        check jdbcClient -&gt; execute(`CREATE TABLE Customers(customerId INTEGER
+        check jdbcClient-&gt;execute(`CREATE TABLE Customers(customerId INTEGER
             NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),
             registrationID INTEGER UNIQUE, creditLimit DOUBLE,
             country VARCHAR(300), PRIMARY KEY (customerId))`);
@@ -447,7 +447,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check jdbcClient -&gt; execute(`INSERT INTO Customers (firstName,
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check jdbcClient-&gt;execute(`INSERT INTO Customers (firstName,
             lastName, registrationID,creditLimit,country) VALUES (&#39;Peter&#39;,
             &#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`);
 }
@@ -489,7 +489,7 @@ import ballerina/sql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
-            check jdbcClient -&gt; execute(`DROP TABLE Customers`);
+            check jdbcClient-&gt;execute(`DROP TABLE Customers`);
 </code></pre></div>
 
                                 </td>

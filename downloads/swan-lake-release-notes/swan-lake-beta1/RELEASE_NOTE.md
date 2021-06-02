@@ -180,7 +180,7 @@ Marked the `file:Listener` class as an `isolated` class.
 
 #### `sql` Package
 - Added the SQL Array Value type support and introduced the new distinct array value types for identified SQL types
-- Marked the `sql:Client` class as an isolated class
+- Marked the `sql:Client` class as an `isolated` class
 
 #### `websubhub` Package
 Included the auth configuration to the WebSubHub publisher client configuration

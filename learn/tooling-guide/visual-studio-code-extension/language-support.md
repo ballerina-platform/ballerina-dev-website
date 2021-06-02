@@ -49,7 +49,7 @@ When typing a function/method call expression, the signature help will show info
 
 ### Go to Definition 
 
-For a symbol, this feature will navigate you to the definition of the particular symbol. For example, when invoking the go to definition from a function call expression, you will be navigated to the definition of the function. Apart from jumping to the definition, the peek definition will also be supported. The behaviour will be the same not only for the constructs within the sources in the current package but also for external modules and standard libraries as well.
+For a symbol, this feature will navigate you to the definition of the particular symbol. For example, when invoking the go to definition from a function call expression, you will be navigated to the definition of the function. Apart from jumping to the definition, the peek definition will also be supported. The behavior will be the same not only for the constructs within the sources in the current package but also for external modules and standard libraries as well.
 
 ![Go to Definition](/learn/images/go-to-definition.gif)
 
@@ -111,7 +111,7 @@ There are two types of code actions suggested based on the node at a given curso
 
 ### Create Variables
 
-The sections below demonstrates the types of code actions available for creating a variable.
+The sections below demonstrate the types of code actions available for creating a variable.
 
 #### Create Variable
 
@@ -139,7 +139,7 @@ Ignore the return value with the `_` where the `Variable Assignment Required` di
 
 ### Union Type Variables
 
-The sections below demonstrates the code actions available for union type variables.
+The sections below demonstrate the code actions available for union type variables.
 
 #### Type Guard variable
 
@@ -155,23 +155,23 @@ When there is an error union, add a check statement.
 
 ### Imports
 
-The sections below demonstrates the code actions available for imports.
+The sections below demonstrate the code actions available for imports.
 
 #### Import a Module
 
-Add the import statement for a module, which has a reference without an import statement. This supports only the langlibs and the standard libraries.
+Add the import statement for a module, which has a reference without an import statement. This supports only the language library and the standard library.
 
 ![Import a Module](/learn/images/import-module.gif)
 
 #### Optimize Imports
 
-Optimize the import statements to remove unused imports and arrange the imports on the alphabetical order.
+Optimize the import statements to remove unused imports and arrange the imports in alphabetical order.
 
 ![Optimize Imports](/learn/images/optimize-imports.gif)
 
 ### Documentation
 
-The sections below demonstrates the code actions available for documentation.
+The sections below demonstrate the code actions available for documentation.
 
 #### Document This
 
@@ -194,7 +194,7 @@ Update the existing documentation when parameters are missing or not documented.
 
 ### Incompatible Types
 
-The sections below demonstrates the code actions available for incompatible types.
+The sections below demonstrate the code actions available for incompatible types.
 
 #### Change Variable Type
 
@@ -222,7 +222,7 @@ Changes the type of a function/ method parameter.
 
 ### Create Functions
 
-The sections below demonstrates the code actions available for creating functions.
+The sections below demonstrate the code actions available for creating functions.
 
 #### Create a Function
 

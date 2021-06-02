@@ -28,7 +28,7 @@ Follow the steps below to install the Ballerina extension.
 
 ![Installing the Ballerina Extension](/learn/images/installing-the-extension.gif)
 
-1. Go to the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=wso2.ballerina&ssr=false) in the Visual Studio Code marketplace, and click **Install**.
+1. Go to the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=wso2.ballerina&ssr=false) in the Visual Studio Code Marketplace, and click **Install**.
 
 2. Click **Open Visual Studio Code** and install the extension.
 
@@ -53,7 +53,7 @@ Follow the steps below to create a sample Ballerina program in VSCode.
 
     You just ran your first Ballerina program with a few clicks.
 
-    >**Tip:** If you wish to debug further, you can either use the **Debug** codelens or see [Run and Debug](/learn/tooling-guide/visual-studio-code-extension/debugging/).
+    >**Tip:** If you wish to debug further, you can either use the **Debug** code lens or see [Run and Debug](/learn/tooling-guide/visual-studio-code-extension/debugging/).
 
 5. Click the **Show Diagram View** button on the editor’s title bar to view the graphical representation of the program.
 

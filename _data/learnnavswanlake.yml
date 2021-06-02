@@ -134,7 +134,7 @@
   url: '#' 
   sublinks:
     - title: Calling Java Code from Ballerina
-      url: /learn/user-guide/calling-java-code-from-ballerina/
+      url: /learn/user-guide/interoperability/calling-java-code-from-ballerina/
       active: calling-java-code-from-ballerina
 
 - title: Configurability

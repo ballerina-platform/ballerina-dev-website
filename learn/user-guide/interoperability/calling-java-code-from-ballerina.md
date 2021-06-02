@@ -89,7 +89,8 @@ You can see them in the imported class list. We encourage you to generate Baller
 Now, we'll create an environment for our Ballerina program. 
 
 ### Step 2 - Setting Up the Ballerina Package
-This section assumes that you have already read [Structuring Ballerina Code](/learn/structuring-ballerina-code/). 
+
+This section assumes that you have already read [Ballerina Packages](/learn/user-guide/ballerina-packages/). 
 
 #### Creating a Ballerina Package
 ```sh

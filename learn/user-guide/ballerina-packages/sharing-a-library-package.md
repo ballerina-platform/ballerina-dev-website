@@ -71,9 +71,7 @@ Ensure the package works as intended because a publish is **permanent**. Once pu
 
 2. Navigate to the [Dashboard](https://central.ballerina.io/dashboard) and acquire an access token.
 
-3. Download and place the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`). 
-
-If you already have a `Settings.toml` file configured in your home repository, follow the other option and copy the access token into the `Settings.toml`. Else, if you are connected to the internet via an HTTP proxy, add the following section to `Settings.toml` and change accordingly.
+3. Download and place the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`). If you already have a `Settings.toml` file configured in your home repository, follow the other option and copy the access token into the `Settings.toml`. Else, if you are connected to the internet via an HTTP proxy, add the following section to `Settings.toml` and change accordingly.
 
 ```toml
 [proxy]

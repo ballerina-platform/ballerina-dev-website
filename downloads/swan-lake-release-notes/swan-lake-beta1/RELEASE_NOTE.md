@@ -47,7 +47,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Type narrowing will no longer take place for captured variables of an anonymous function since the narrowed type cannot be guaranteed during the execution of the function.
 - Type narrowing will now be reset after a compound assignment.
 - Worker message passing after waiting for the same worker has been disallowed.
-- When a named worker is used in a `wait` action, it can no longer be used in a variable reference anywhere else.
+- When a named worker is used in a `wait` action, it can no longer be used in a variable reference anywhere else. 
 - When the type-descriptor is ambiguous, it is parsed according to the following table in which the precedence is specified in decreasing order.
 
   For example, `A & B | C` is considered to be `(A & B) | C`.
@@ -215,5 +215,5 @@ To view bug fixes, see the GitHub milestone for Swan Lake Beta1 of the repositor
 
 To view bug fixes, see the GitHub milestone for Swan Lake Beta1 of the repositories below.
 
-- [Language](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta1%22+label%3ATeam%2FLanguageServer)
+- [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta1%22+label%3ATeam%2FLanguageServer)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/milestone/5?closed=1) 

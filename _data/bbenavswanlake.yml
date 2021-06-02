@@ -421,18 +421,15 @@
     - title: Default Resource
       url: /learn/by-example/http-default-resource
       active: http-default-resource
-    - title: Path Matrix Param
-      url: /learn/by-example/http-path-matrix-param
-      active: http-path-matrix-param
+    - title: Path Param
+      url: /learn/by-example/http-path-param
+      active: http-path-param
     - title: Resource Return Types 
       url: /learn/by-example/http-resource-returns
       active: http-resource-returns
     - title: Restrict By Media Type
       url: /learn/by-example/http-restrict-by-media-type
       active: http-restrict-by-media-type
-    - title: Handling Different Payload Types 
-      url: /learn/by-example/http-different-payload-types
-      active: http-different-payload-types
 - title: REST API Security
   url: '#'
   sublinks:

@@ -104,7 +104,7 @@ $ bal run main.jar
 
 A Ballerina runtime can be configured using configurable variables. The values for `configurable` variables can be provided through command-line parameters and configuration files. 
 
-When loading the values to the configurable variables, command-line arguments get the higher precedence than the configuration TOML files. For more details, see [Configurable BBE](/learn/by-example/configurable.html).
+When loading the values to the configurable variables, command-line arguments get the higher precedence than the configuration TOML files. 
 
 Consider the following example, which uses configurable variables.
 

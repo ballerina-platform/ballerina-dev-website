@@ -58,7 +58,7 @@ In the package [you created](/learn/user-guide/ballerina-packages/creating-your-
 Symbols such as functions and variables in one file are visible to other files because they are in the same namespace. This namespace is called the default module of the package. The package name, which is specified in the `Ballerina.toml` file is also the name of the default module.
 
 
-### Other Modules
+## Other Modules
 
 The top-level `modules/` directory contains all the other modules. Each immediate subdirectory of the `modules/` directory becomes a Ballerina module and the subdirectory name becomes the module name. Therefore, the subdirectory name should be a valid Ballerina identifier.
 

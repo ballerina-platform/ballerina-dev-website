@@ -79,7 +79,7 @@ public enum HttpVersion {
     HTTP_2
 }
 
-configurable configLib:HttpVersion & readonly httpVersion = ?;
+configurable HttpVersion httpVersion = ?;
 ```
 
 The value for `httpVersion` can be provided via the `Config.toml` file or as a command-line argument as shown below.
@@ -97,7 +97,7 @@ The command-line argument will be as shown below.
 
 #### Improved Configurable Variables to Support Map Types
 
-The `configurable` feature is improved to support variables with the `map` types through the TOML syntax. 
+The `configurable` feature is improved to support variables of `map` types. Values can be provided via a TOML file.
 
 For example, if the `map`-typed configurable variables are defined in the following way, 
 

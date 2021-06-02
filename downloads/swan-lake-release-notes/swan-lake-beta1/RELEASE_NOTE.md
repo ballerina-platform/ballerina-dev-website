@@ -140,7 +140,7 @@ location = "US"
 
 ### Breaking Changes
 
-- The `io.ballerina.runtime.api.types.Type#getName` and `io.ballerina.runtime.api.types.Type#getQualifiedName` methods now return an empty string if no name was associated with the type. The `io.ballerina.runtime.api.types.Type#toString` method can be used to get the string representation of a type if required.
+- The `io.ballerina.runtime.api.types.Type#getName` and `io.ballerina.runtime.api.types.Type#getQualifiedName` methods now return an empty string if no name was associated with the type. The `io.ballerina.runtime.api.types.Type#toString` method can be used to get the string representation of a type.
 - `Wait` actions that wait for expressions that are not named workers can return errors now. The eventual type of such wait future expressions is now `T|error` where `T` is the type of the original return value.
 
 ### Bug Fixes

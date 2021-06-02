@@ -10,7 +10,7 @@ redirect_from:
 ---
 ## Overview of Ballerina Swan Lake Beta1
 
-<em>This is the Beta1 release in a series of planned Beta releases leading up to the Ballerina Swan Lake GA release.</em> 
+<em>This is the first beta release leading up to the Ballerina Swan Lake GA release.</em> 
 
 It introduces the new language features planned for the Swan Lake GA release and includes improvements and bug fixes done to the compiler, runtime, standard library, and developer tooling after the Swan Lake Alpha5 release.
 

@@ -164,7 +164,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta1](https://github
 Marked the `cache:Cache` class as an `isolated` class.
 
 #### `file` Package
-Marked the `file:Listener` class as an isolated class
+Marked the `file:Listener` class as an `isolated` class.
 
 #### `graphql` Package
 - Improved introspection validation and execution

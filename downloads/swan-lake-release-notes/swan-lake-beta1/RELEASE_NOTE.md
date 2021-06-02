@@ -208,7 +208,8 @@ To view bug fixes, see the GitHub milestone for Swan Lake Beta1 of the repositor
 #### Debugger
 - Added remote debugging support for the command that runs the Ballerina executable JAR
 - Added support for debugging a single Ballerina test in Visual Studio Code
-
+#### Test Framework
+- Introduced a flag to pass the expected code coverage report formats
 ### Bug Fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Beta1 of the repositories below.

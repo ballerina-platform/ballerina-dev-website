@@ -1,11 +1,11 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: Setting up Ballerina
-description: A quick tour of the Ballerina programming language, including writing, running, and invoking an HTTP service and using a client to interact with a service.
+description: Let's get started.
 keywords: ballerina, quick tour, programming language, http service
 permalink: /learn/user-guide/getting-started/setting-up-ballerina/
 active: setting-up-ballerina
-intro: Now, that you know a little bit of Ballerina, let's take it for a spin!
+intro: Let's get started.
 redirect_from:
   - /learn/quick-tour
   - /learn/quick-tour/

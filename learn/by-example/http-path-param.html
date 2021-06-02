@@ -1,43 +1,29 @@
 ---
 layout: ballerina-example-page
-title: Path Matrix Param
+title: Path Param
 description: BBE on how to extract values using the `PathParam` and `MatrixParam` parameters in Ballerina.
-keywords: ballerina, ballerina by example, bbe, http, pathparam, matrixparam
-permalink: /learn/by-example/http-path-matrix-param
-active: http-path-matrix-param
+keywords: ballerina, ballerina by example, bbe, http, path param
+permalink: /learn/by-example/http-path-param
+active: http-path-param
 redirect_from:
-  - /swan-lake/learn/by-example/http-path-matrix-param
-  - /swan-lake/learn/by-example/http-path-matrix-param.html
+  - /swan-lake/learn/by-example/http-path-param
+  - /swan-lake/learn/by-example/http-path-param.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 
-<span class="kd">service</span> <span class="o">/</span><span class="nx">sample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">company</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="c1">// The path param is defined as a part of the resource path along with the type and it is extracted from the</span>
     <span class="c1">// request URI.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">path</span><span class="o">/</span><span class="p">[</span><span class="kt">string</span> <span class="nx">foo</span><span class="p">](</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">empId</span><span class="o">/</span><span class="p">[</span><span class="kt">int</span> <span class="nx">id</span><span class="p">]()</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span><span class="nx">empId</span><span class="p">:</span> <span class="nx">id</span><span class="p">};</span>
+    <span class="p">}</span>
 
-        <span class="c1">// Gets the [MatrixParams](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams).</span>
-        <span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="p">&gt;</span> <span class="nx">pathMParams</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getMatrixParams</span><span class="p">(</span><span class="s">&quot;/sample/path&quot;</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">pathMParams</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">];</span>
-        <span class="k">var</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">pathMParams</span><span class="p">[</span><span class="s">&quot;b&quot;</span><span class="p">];</span>
-        <span class="kt">string</span> <span class="nx">pathMatrixStr</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`a=${a}, b=${b}`</span><span class="p">;</span>
-        <span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="p">&gt;</span> <span class="nx">fooMParams</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getMatrixParams</span><span class="p">(</span><span class="s">&quot;/sample/path/&quot;</span> <span class="o">+</span> <span class="nx">foo</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">x</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">fooMParams</span><span class="p">[</span><span class="s">&quot;x&quot;</span><span class="p">];</span>
-        <span class="k">var</span> <span class="nx">y</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">fooMParams</span><span class="p">[</span><span class="s">&quot;y&quot;</span><span class="p">];</span>
-        <span class="kt">string</span> <span class="nx">fooMatrixStr</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`x=${x}, y=${y}`</span><span class="p">;</span>
-        <span class="kt">json</span> <span class="nx">matrixJson</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;path&quot;</span><span class="p">:</span> <span class="nx">pathMatrixStr</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">:</span> <span class="nx">fooMatrixStr</span><span class="p">};</span>
-
-        <span class="c1">// Create a JSON payload with the extracted values.</span>
-        <span class="kt">json</span> <span class="nx">responseJson</span> <span class="p">=</span> <span class="p">{</span>
-            <span class="s">&quot;pathParam&quot;</span><span class="p">:</span> <span class="nx">foo</span><span class="p">,</span>
-            <span class="s">&quot;matrix&quot;</span><span class="p">:</span> <span class="nx">matrixJson</span>
-        <span class="p">};</span>
-        <span class="c1">// Send a response with the JSON payload to the client.</span>
-        <span class="k">return</span> <span class="nx">responseJson</span><span class="p">;</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">empName</span><span class="o">/</span><span class="p">[</span><span class="kt">string</span> <span class="nx">first</span><span class="p">]</span><span class="o">/</span><span class="p">[</span><span class="kt">string</span> <span class="nx">last</span><span class="p">]()</span> <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="nx">first</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="nx">last</span><span class="p">};</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -48,10 +34,9 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Path Matrix Param</h2>
+                            <h2>Path Param</h2>
                             <p><p>HTTP module provides first class support for specifying <code>Path parameters</code> in the resource path along with the type.
- The supported types are string, int, float, boolean, and decimal (e.g., path/[string foo]).
- Ballerina supports extracting <code>MatrixParam</code> values using an <code>http:Request</code> method.<br/><br/>
+ The supported types are string, int, float, boolean, and decimal (e.g., path/[string foo]).<br/><br/>
  For more information on the underlying module,
  see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/">HTTP module</a>.</p>
 </p>
@@ -68,9 +53,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="http-resource-returns.html">
+                                    <a class="next" href="http-matrix-param.html">
                                         <span>NEXT ></span>
-                                        <p>Resource Return Types</p>
+                                        <p>Matrix Param</p>
                                     </a>
                                 </div>
                                 
@@ -79,7 +64,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="http-path-matrix-param">
+            <div class="example" id="http-path-param">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -90,7 +75,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-path-matrix-param/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-path-param/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -108,10 +93,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -141,7 +122,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service /sample on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /company on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -153,7 +134,9 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get path/[string foo](http:Request req) returns json {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get empId/[int id]() returns json {
+        return {empId: id};
+    }
 </code></pre></div>
 
                                 </td>
@@ -170,72 +153,17 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        map&lt;any&gt; pathMParams = req.getMatrixParams(&quot;/sample/path&quot;);
-        var a = &lt;string&gt;pathMParams[&quot;a&quot;];
-        var b = &lt;string&gt;pathMParams[&quot;b&quot;];
-        string pathMatrixStr = string `a=${a}, b=${b}`;
-        map&lt;any&gt; fooMParams = req.getMatrixParams(&quot;/sample/path/&quot; + foo);
-        var x = &lt;string&gt;fooMParams[&quot;x&quot;];
-        var y = &lt;string&gt;fooMParams[&quot;y&quot;];
-        string fooMatrixStr = string `x=${x}, y=${y}`;
-        json matrixJson = {&quot;path&quot;: pathMatrixStr, &quot;foo&quot;: fooMatrixStr};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Gets the <a href="https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams">MatrixParams</a>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        json responseJson = {
-            &quot;pathParam&quot;: foo,
-            &quot;matrix&quot;: matrixJson
-        };
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a JSON payload with the extracted values.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return responseJson;
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get empName/[string first]/[string last]() returns json {
+        return {firstName: first, lastName: last};
     }
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Send a response with the JSON payload to the client.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -258,7 +186,7 @@ redirect_from:
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and use the `bal run` command below.
-bal run http_path_matrix_param.bal
+bal run http_path_param.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -276,6 +204,10 @@ bal run http_path_matrix_param.bal
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -283,10 +215,23 @@ bal run http_path_matrix_param.bal
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Run the cURL command below to invoke the service.
-curl &quot;http://localhost:9090/sample/path;a=4;b=5/value1;x=10;y=15&quot;
-{&quot;pathParam&quot;:&quot;value1&quot;, &quot;matrix&quot;:{&quot;path&quot;:&quot;a=4, b=5&quot;, &quot;foo&quot;:&quot;x=10, y=15&quot;}}
+curl &quot;http://localhost:9090/company/empId/23&quot;
+{&quot;empId&quot;:23}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>curl &quot;http://localhost:9090/company/empName/Adele/Ferguson&quot;
+{&quot;firstName&quot;:&quot;Adele&quot;, &quot;lastName&quot;:&quot;Ferguson&quot;}
 </code></pre></div>
 
                                 </td>

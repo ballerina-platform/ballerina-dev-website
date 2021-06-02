@@ -42,7 +42,7 @@ redirect_from:
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span>
                             <span class="s">&quot;Error occurred while acknowledging the message.&quot;</span><span class="p">);</span>
             <span class="p">}</span>
-            <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
+            <span class="nx">error</span><span class="err">?</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -235,7 +235,7 @@ import ballerinax/rabbitmq;
                 log:printError(
                             &quot;Error occurred while acknowledging the message.&quot;);
             }
-            var res = commit;
+            error? res = commit;
         }
     }
 }

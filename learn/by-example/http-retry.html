@@ -48,29 +48,17 @@ redirect_from:
 
     <span class="c1">// Parameters include a reference to the caller and an object of the</span>
     <span class="c1">// request data.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">.()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
 
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">backendResponse</span> <span class="p">=</span>
-            <span class="nx">backendClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
+        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">backendClientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">);</span>
 
-        <span class="c1">// If `backendResponse` is an `http:Response`, it is sent back to the</span>
+        <span class="c1">// If `backendResponse` is a `string`, it is sent back to the</span>
         <span class="c1">// client. If `backendResponse` is an `http:ClientError`, an internal</span>
         <span class="c1">// server error is returned to the client.</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">backendResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span>
-                                <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
-            <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">backendResponse</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">backendResponse</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">((&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="nx">error</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">).</span><span class="kt">message</span><span class="p">());</span>
-            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span>
-                                <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
-            <span class="p">}</span>
+            <span class="k">return</span> <span class="p">{</span> <span class="nx">body</span><span class="p">:</span> <span class="nx">backendResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">()};</span>
         <span class="p">}</span>
 
     <span class="p">}</span>
@@ -83,29 +71,20 @@ redirect_from:
 <span class="c1">// This should run separately from the `retryDemoService` service.</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">counter</span> <span class="p">=</span> <span class="nx">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="nx">counter</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="c1">// Delay the response by 5 seconds to mimic network level delays.</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span>
                 <span class="s">&quot;Request received from the client to delayed service.&quot;</span><span class="p">);</span>
-            <span class="c1">// Delay the response by 5 seconds to mimic network level delays.</span>
             <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 
-            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
-            <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">responseToCaller</span><span class="p">);</span>
+            <span class="k">return</span> <span class="s">&quot;Hello World!!!&quot;</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span>
                 <span class="s">&quot;Request received from the client to healthy service.&quot;</span><span class="p">);</span>
-            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
-            <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">responseToCaller</span><span class="p">);</span>
+            <span class="k">return</span> <span class="s">&quot;Hello World!!!&quot;</span><span class="p">;</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">error</span><span class="err">?</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span>
-                        <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -174,8 +153,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -381,7 +358,7 @@ import ballerina/lang.runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .(http:Caller caller, http:Request request) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default .() returns string|http:InternalServerError {
 </code></pre></div>
 
                                 </td>
@@ -401,8 +378,7 @@ import ballerina/lang.runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response|error backendResponse =
-            backendClientEP-&gt;forward(&quot;/hello&quot;, request);
+                                    <div class="highlight"><pre><code class=language-ballerina>        string|error backendResponse = backendClientEP-&gt;get(&quot;/hello&quot;);
 </code></pre></div>
 
                                 </td>
@@ -414,21 +390,10 @@ import ballerina/lang.runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (backendResponse is http:Response) {
-            var responseToCaller = caller-&gt;respond(&lt;@untainted&gt;backendResponse);
-            if (responseToCaller is error) {
-                log:printError(&quot;Error sending response&quot;,
-                                &#39;error = responseToCaller);
-            }
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (backendResponse is string) {
+            return backendResponse;
         } else {
-            http:Response response = new;
-            response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            response.setPayload((&lt;@untainted error&gt;backendResponse).message());
-            var responseToCaller = caller-&gt;respond(response);
-            if (responseToCaller is error) {
-                log:printError(&quot;Error sending response&quot;,
-                                &#39;error = responseToCaller);
-            }
+            return { body: backendResponse.message()};
         }
 </code></pre></div>
 
@@ -437,7 +402,7 @@ import ballerina/lang.runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If <code>backendResponse</code> is an <code>http:Response</code>, it is sent back to the
+                                            <p>If <code>backendResponse</code> is a <code>string</code>, it is sent back to the
  client. If <code>backendResponse</code> is an <code>http:ClientError</code>, an internal
  server error is returned to the client.</p>
 
@@ -496,11 +461,8 @@ import ballerina/lang.runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get .(http:Caller caller, http:Request req) {
-        counter = counter + 1;
-        if (counter % 4 != 0) {
-            log:printInfo(
-                &quot;Request received from the client to delayed service.&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get .() returns string {
+        counter += 1;
 </code></pre></div>
 
                                 </td>
@@ -512,7 +474,10 @@ import ballerina/lang.runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            runtime:sleep(5);
+                                    <div class="highlight"><pre><code class=language-ballerina>        if (counter % 4 != 0) {
+            log:printInfo(
+                &quot;Request received from the client to delayed service.&quot;);
+            runtime:sleep(5);
 </code></pre></div>
 
                                 </td>
@@ -530,32 +495,13 @@ import ballerina/lang.runtime;
                             
                             <tr class="cTR">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            var responseToCaller = caller-&gt;respond(&quot;Hello World!!!&quot;);
-            handleRespondResult(responseToCaller);
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>            return &quot;Hello World!!!&quot;;
         } else {
             log:printInfo(
                 &quot;Request received from the client to healthy service.&quot;);
-            var responseToCaller = caller-&gt;respond(&quot;Hello World!!!&quot;);
-            handleRespondResult(responseToCaller);
+            return &quot;Hello World!!!&quot;;
         }
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>function handleRespondResult(error? result) {
-    if (result is http:ListenerError) {
-        log:printError(&quot;Error sending response from mock service&quot;,
-                        &#39;error = result);
     }
 }
 </code></pre></div>
@@ -589,10 +535,7 @@ bal run http_retry.bal.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
 time = 2021-01-21 19:00:21,374 level = INFO  module = &quot;&quot; message = &quot;Request received from the client to delayed service.&quot;
 time = 2021-01-21 19:00:26,379 level = INFO  module = &quot;&quot; message = &quot;Request received from the client to delayed service.&quot;
-time = 2021-01-21 19:00:26,446 level = ERROR module = &quot;&quot; message = &quot;Error sending response from mock service&quot; error = &quot;Connection between remote client and host is closed&quot;
-time = 2021-01-21 19:00:31,387 level = ERROR module = &quot;&quot; message = &quot;Error sending response from mock service&quot; error = &quot;Connection between remote client and host is closed&quot;
 time = 2021-01-21 19:00:34,402 level = INFO  module = &quot;&quot; message = &quot;Request received from the client to delayed service.&quot;
-time = 2021-01-21 19:00:39,409 level = ERROR module = &quot;&quot; message = &quot;Error sending response from mock service&quot; error = &quot;Connection between remote client and host is closed&quot;
 time = 2021-01-21 19:00:48,404 level = INFO  module = &quot;&quot; message = &quot;Request received from the client to healthy service.&quot;
 </code></pre></div>
 

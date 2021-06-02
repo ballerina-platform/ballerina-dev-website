@@ -27,10 +27,10 @@ redirect_from:
 
             <h2 id="swanlake">{{ site.data.swanlake-latest.metadata.display-version }} <span id="versionInfo">({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2>
             <div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;" >
-               <p>If you already have jBallerina installed, you can use the <a href="/learn/tooling-guide/cli-tools/update-tool/">Ballerina Update Tool</a> to update it to {{ site.data.swanlake-latest.metadata.display-version }}. To do this, first, execute the command below to get the Update Tool updated to its latest version. </p>
+               <p>If you are already using Ballerina, use the <a href="/learn/tooling-guide/cli-tools/update-tool/">Ballerina Update Tool</a> to directly update to {{ site.data.swanlake-latest.metadata.display-version }}. First, run the command below to update the Update Tool to its latest version. </p>
                <pre>bal update</pre>
-               <p>If you are using an <strong>Update Tool version below 0.8.14</strong>, execute the `ballerina update` command to update it. Next, execute the command below to update to {{ site.data.swanlake-latest.metadata.display-version }}.</p>
-               <pre>bal dist pull {{ site.data.swanlake-latest.metadata.version | replace: "swan-lake-alpha", "slalpha" }}</pre>
+               <p>If your <strong>Update Tool is below version 0.8.14</strong>, use the `ballerina update` command. Next, run the command below to update to {{ site.data.swanlake-latest.metadata.display-version }}.</p>
+               <pre>bal dist pull {{ site.data.swanlake-latest.metadata.short-version}}</pre>
                <p>For further details, see the <a href="/downloads/swan-lake-release-notes/">Release Note</a>. </p>
             </div>
             <br>

@@ -10,7 +10,7 @@ redirect_from:
 - /learn/user-guide/ballerina-packages/dependencies
 ---
 
-### Importing Modules
+## Importing Modules
 
 In Ballerina, you can access any public symbol from another module by importing the particular module using an import declaration. The import declaration syntax is as follows.
 
@@ -18,9 +18,9 @@ In Ballerina, you can access any public symbol from another module by importing 
 import [org-name /] module-name [as import-prefix];
 ```
 
-* The `_org-name_` is optional for importing a module from the current package.
-* The `_import-prefix_` has to be a valid Ballerina identifier and the import-prefix is used to refer to public symbols in the declared module.
-* The `_import-prefix_` is also optional. If it is not available, the last part of the module name can be used.
+* The `org-name` is optional for importing a module from the current package.
+* The `import-prefix` has to be a valid Ballerina identifier and the import-prefix is used to refer to public symbols in the declared module.
+* The `import-prefix` is also optional. If it is not available, the last part of the module name can be used.
 
 **Note:** The source code of the `main.bal` file in your package will have the import statement below.
 
@@ -30,7 +30,7 @@ import ballerina/io;
 
 You can import a module by providing the organization name and the module name. The module name of the default module is always the package name.
 
-#### Importing Modules of the Same Package
+### Importing Modules of the Same Package
 
 The organization name can be omitted only if you are importing a module from the same package. 
 
@@ -57,7 +57,7 @@ String formattedMsg = util:properCaseMessage(“hello world!”);
 
 Since the import-prefix is not given here, use `util` to refer to the symbols in the `hello_world.util` module. Here, `util:properCaseMessage` is called a qualified identifier.
 
-### Managing Dependencies
+## Managing Dependencies
 
 When you build a package that has dependencies to other packages, the compiler automatically figures out the latest compatible versions of the required packages. 
 For identifying the latest versions of these dependencies, by default, Ballerina searches for the packages of dependencies in 2 repositories: The distribution repository and the Ballerina Central repository.
@@ -70,7 +70,7 @@ The distribution repository is a file system repository that comes with the loca
 
 Ballerina Central repository is a remote repository, and thereby, it comes with a local file system cache, which is located at `<USER_HOME>/.ballerina/repositories/central.ballerina.io/repo/bala`. When resolving a dependency, the remote repository will be queried only if the specified version is not present in its local cache.
 
-#### 'Dependencies.toml'
+### Dependencies.toml
 
 ```toml
 [[dependency]]
@@ -85,7 +85,7 @@ When you find a newer version of the `ballerina/io` package, which you want to u
 
 When the `Dependencies.toml` is updated by a build, only the stable versions are recorded. If any pre-release versions are used that need to be locked, then they must be added manually to the file.
 
-### Version Compatibility
+## Version Compatibility
 
 Abiding by the specifications of [Semantic Versioning](https://semver.org/), Ballerina considers two versions to be **compatible if the major versions are equal and not zero**.
 
@@ -104,12 +104,12 @@ For example, if one dependency in your package depends on the `1.0.0` version of
 error: compilation failed: Two incompatible versions exist in the dependency graph: ballerina/log versions: 1.0.0, 2.0.0-beta.1
 ```
 
-### Overriding Dependencies
+## Overriding Dependencies
 
 The needto override a dependency can arise through a number of scenarios. The most common scenario out of them is the need to test a package 
 before [publishing to the Ballerina Central](/learn/user-guide/ballerina-packages/sharing-a-library-package/#publishing-a-library-package-to-ballerina-central). This can be achieved with the local repository.
 
-#### The Local Repository
+### The Local Repository
 
 The local repository is a custom repository in the local file system. You can push a package to the repository by providing the `--repository=local` option  with the `bal push` command below.
 

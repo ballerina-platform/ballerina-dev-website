@@ -3,7 +3,7 @@ layout: ballerina-tooling-guide-left-nav-pages-swanlake
 title: VS Code Commands
 permalink: /learn/tooling-guide/visual-studio-code-extension/vs-code-commands/
 active: vs-code-commands
-intro: The VS Code Ballerina extension comprises of a set of palette commands to enable easy development using the inherent capabilities of the Ballerina language.
+intro: The VS Code Ballerina extension comprises a set of palette commands to enable easy development using the inherent capabilities of the Ballerina language.
 keywords: ballerina, visual studio code, vs code, extension, commands
 description: The VS Code Ballerina extension comprises of a set of palette commands to enable easy development using the inherent capabilities of the Ballerina language.
 redirect_from:
@@ -34,7 +34,7 @@ It runs your Ballerina project. Once executed, the opened Ballerina project is b
 
 ![Run](/learn/images/run.gif)
 
->**Tip:** If you use any [configurable variables](/learn/user-guide/running-ballerina-code/#configuring-your-ballerina-runtimes), the relevant `Config.toml` file should be added inside the Ballerina project root in case the `BAL_CONFIG_FILES` and `BAL_CONFIG_DATA` environment variables are not defined.
+>**Tip:** If you use any [configurable variables](/learn/user-guide/configurability/), the relevant `Config.toml` file should be added inside the Ballerina project root in case the `BAL_CONFIG_FILES` and `BAL_CONFIG_DATA` environment variables are not defined.
 
 ## Test
 
@@ -42,7 +42,7 @@ It runs all the tests in your Ballerina project using the `bal test` [CLI comman
 
 ![Test](/learn/images/test-command.gif)
 
->**Tip:** If you use any [configurable variables](/learn/user-guide/running-ballerina-code/#configuring-your-ballerina-runtimes), the relevant `Config.toml` file should be added inside the corresponding module’s test directory root.
+>**Tip:** If you use any [configurable variables](/learn/user-guide/configurability/), the relevant `Config.toml` file should be added inside the corresponding module’s test directory root.
 
 ## Document
 
@@ -58,12 +58,14 @@ It is a palette reference to access the **Diagrams** [view](/learn/tooling-guide
 
 ## Add Module
 
-It adds a Ballerina [project module](/learn/user-guide/structuring-ballerina-code/working-with-ballerina-modules/) for the given module name using the `bal add` [CLI command](/learn/tooling-guide/cli-tools/cli-commands/#core-commands). 
+It adds a [Ballerina module](/learn/user-guide/ballerina-packages/modules/) for the given module name using the `bal add` [CLI command](/learn/tooling-guide/cli-tools/cli-commands/#core-commands). 
 
 ![Add Module](/learn/images/add-module.gif)
 
-## Create Cloud.toml
+## Create 'Cloud.toml'
 
 It generates a `Cloud.toml` file for your Ballerina project according to the default [cloud specifications](https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md).
 
 ![Create Cloud.toml](/learn/images/create-cloud-toml.gif)
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

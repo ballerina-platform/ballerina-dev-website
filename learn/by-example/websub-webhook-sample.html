@@ -103,10 +103,6 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/websub-webhook-sample/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=8868bd78832f06191ca8ee4443bae28e&file=websub_webhook_sample.bal"><img src="/img/main-play-green-btn.svg" /></a>
-                                        </li>
-                                        
                                     </ul>
                                 </div>
                             </td>
@@ -241,9 +237,7 @@ service /subscriber on new websub:Listener(9090) {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run websub_webhook_sample.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run websub_webhook_sample.bal
 time = 2021-03-15 15:43:00,198 level = INFO  module = ballerina/websub message = &quot;HTTPS is recommended but using HTTP&quot; 
 time = 2021-03-15 15:43:01,960 level = INFO  module = ballerina/websub message = &quot;Subscription request considered successful for non 202 status code: 204&quot; 
 time = 2021-03-15 15:43:01,962 level = INFO  module = ballerina/websub message = &quot;Subscription Request successfully sent to Hub[https://api.github.com/hub], for Topic[https://github.com/&lt;your-org&gt;/&lt;your-repository/events/push.json], with Callback [&lt;your-callback-url&gt;]. Awaiting intent verification.&quot; 

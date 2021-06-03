@@ -15,7 +15,7 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">graphql</span><span class="p">;</span>
 
 <span class="c1">// The `graphql:Service` exposes a GraphQL service on the provided port.</span>
-<span class="kd">service</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">graphql</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">4000</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">graphql</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">4000</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="c1">// A resource function inside a `graphql:Service` represents a resolver.</span>
     <span class="c1">// This resource can be queried using the `{ greeting }`.</span>
@@ -78,10 +78,6 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/graphql-hello-world/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=caf6eb74b5014763f0a1776146a778b1&file=graphql_hello_world.bal"><img src="/img/main-play-green-btn.svg" /></a>
-                                        </li>
-                                        
                                     </ul>
                                 </div>
                             </td>
@@ -126,7 +122,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service graphql:Service /graphql on new graphql:Listener(4000) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /graphql on new graphql:Listener(4000) {
 </code></pre></div>
 
                                 </td>
@@ -192,11 +188,7 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file, and issue the `bal run` command below.
-# Since Ballerina GraphQL runs on a Ballerina HTTP listener, an `http:Listener`
-# log will be printed.
-bal run graphql_hello_world.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run graphql_hello_world.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:4000
 </code></pre></div>
 

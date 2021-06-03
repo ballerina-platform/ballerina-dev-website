@@ -14,37 +14,36 @@ redirect_from:
   - /learn/user-guide/why-ballerina/graphical
 ---
 
-In today’s cloud-era, we need technologies that can model distributed systems in a more developer-friendly way. This means that for a single use case we need to model a flow that shows how multiple actors interact with each other, how concurrent execution flows, and what remote endpoints are involved. Sequence diagrams are known to be the best way to visually describe this.
+In today’s cloud-era, you need technologies that can model distributed systems in a more developer-friendly way. This means that for a single use case you need to model a flow that shows how multiple actors interact with each other, how concurrent execution flows, and what remote endpoints are involved. Sequence diagrams are known to be the best way to visually describe this.
 
 That’s why sequence diagrams are the foundation for designing the syntax and semantics of the Ballerina language. Ballerina provides the flexibility of a general-purpose language while having features to model solutions based on higher-level abstractions.
 
-> ***"[With Ballerina] you can get sequence diagrams automatically. When things start to get complicated and you need to understand and socialize with the rest of your team what it is that you're building, these diagrams become very helpful." -- Christian Posta, field CTO, solo.io***
 
 ## Sequence Diagrams in Ballerina
 
- In Ballerina, there is a bidirectional mapping between the textual representation of code in the Ballerina syntax and the visual representation as a sequence diagram. It allows you to visualize any function or a service resource written in Ballerina as a sequence diagram. The diagram will display all the logic and network interaction of that function. You can view these diagrams using the Ballerina VSCode plugin.
+Being based on sequence diagrams, Ballerina allows you to visualize a program written in Ballerina as a sequence diagram. The diagram will display  the logic and network interaction of a function or a service resource. You can view these diagrams using the Ballerina VSCode plugin.
 
+<img src="/img/why-pages/sequence-diagrams-for-programming-1.png" alt="Ballerina sequence diagram"  style="width:100%; border: 1px solid #eee;">
 
-<img src="/img/why-pages/sequence-diagrams-for-programming-1.png" alt="Ballerina sequence diagram" width="700">
+One of the key benefits of the diagram is that it acts as documentation to the code. It makes it far easier to comprehend the program than reading the source code. Even if you are not familiar with Ballerina code syntax it is easier to understand the diagram.
 
-One of the key benefits of the diagram is that it acts as documentation to the code. It makes it far easier to comprehend the program than reading the source code. Even if you are not familiar with Ballerina code syntax it is easier to understand the diagram. 
+> ***"[With Ballerina] you can get sequence diagrams automatically. When things start to get complicated and you need to understand and socialize with the rest of your team what it is that you're building, these diagrams become very helpful." -- Christian Posta, field CTO, solo.io***
 
 
 ### Get Started
 
-The Ballerina IDE plugin ( the [VSCode plugin](https://ballerina.io/learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/)) can generate a sequence diagram dynamically from the source code. To start generating a sequence diagram from your Ballerina code, [download the VSCode plugin and launch the graphical ](https://ballerina.io/learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/)viewer.
+The Ballerina IDE plugin (the [VSCode plugin](/learn/tooling-guide/visual-studio-code-extension/quick-start/) can generate a sequence diagram dynamically from the source code. To start generating a sequence diagram from your Ballerina code, [download the VSCode plugin and launch the graphical viewer](/learn/tooling-guide/visual-studio-code-extension/quick-start/).
 
 
-## Graphical Syntax
+## Graphical Representation
+
+### Functions
+
+Functions in Ballerina are visualized as a sequence diagram. The diagram will have a lifeline with start and end which represent the default worker of the function. The worker lifeline will be displayed as a flow diagram to represent function logic.
 
 
-### Functions 
 
-Functions in Ballerina are visualized as a sequence diagram. The diagram will have a lifeline with start and end which represent the default worker of the function. The worker lifeline will be displayed as a flow diagram to represent function logic. 
-
-
-
-<img src="/img/why-pages/sequence-diagrams-for-programming-2.png" alt="Ballerina sequence diagram of HTTP resource definition" width="700">
+<img src="/img/why-pages/sequence-diagrams-for-programming-2.png" alt="Ballerina sequence diagram of HTTP resource definition" style="width:100%; border: 1px solid #eee;">
 
 
 ### Client Objects and Remote Methods
@@ -69,8 +68,8 @@ The HTTP clients represented by `lookupService` and `reportService` variables ar
 
 
 
-<img src="/img/why-pages/sequence-diagrams-for-programming-3.png" alt="Ballerina sequence diagram of HTTP resource definition" width="700">
+<img src="/img/why-pages/sequence-diagrams-for-programming-3.png" alt="Ballerina sequence diagram of HTTP resource definition" style="width:100%; border: 1px solid #eee;">
 
 
-We can see here how the HTTP clients have become participants of the sequence diagram with its own lifeline, where we visualize the messages sent and received to represent the network calls we do.
+You can see here how the HTTP clients have become participants of the sequence diagram with its own lifeline, where you visualize the messages sent and received to represent the network calls you do.
 

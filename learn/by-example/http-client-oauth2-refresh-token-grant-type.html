@@ -71,9 +71,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="send-email.html">
+                                    <a class="next" href="http-client-endpoint.html">
                                         <span>NEXT ></span>
-                                        <p>Send Emails</p>
+                                        <p>Client</p>
                                     </a>
                                 </div>
                                 
@@ -94,10 +94,6 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-client-oauth2-refresh-token-grant-type/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=abea5554679f94f13ff8acff12b070f1&file=http_client_oauth2_refresh_token_grant_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -209,10 +205,8 @@ import ballerina/io;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Before test this sample, first start a sample service secured with OAuth2.
-# To run this sample, navigate to the directory that contains the `.bal` file,
-# and execute the `bal run` command below.
-# (You may need to change the trusted certificate file path.)
+                                    <div class="highlight"><pre><code class=shell-session># As a prerequisite, start a sample service secured with OAuth2.
+# You may need to change the trusted certificate file path.
 bal run http_client_oauth2_refresh_token_grant_type.bal
 Hello, World!
 </code></pre></div>

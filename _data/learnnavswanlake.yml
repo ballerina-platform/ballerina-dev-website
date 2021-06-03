@@ -23,7 +23,7 @@
       active: concurrent
     - title: Reliable, Maintainable
       url: /learn/user-guide/why-ballerina/reliable-maintainable/
-      active: reliable-and-maintainable
+      active: reliable-maintainable
 
 
 - title: Getting Started 
@@ -45,7 +45,7 @@
 - title: Ballerina Packages
   url: '#'
   sublinks:
-    - title: Creating your first Ballerina Package
+    - title: Creating Your First Ballerina Package
       url: /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/
       active: creating-your-first-ballerina-package
     - title: Package Layout
@@ -57,7 +57,7 @@
     - title: Dependencies
       url: /learn/user-guide/ballerina-packages/dependencies/
       active: dependencies
-    - title: Sharing a Library package
+    - title: Sharing a Library Package
       url: /learn/user-guide/ballerina-packages/sharing-a-library-package/
       active: sharing-a-library-package
 
@@ -81,10 +81,10 @@
   url: '#'
   sublinks:
     - title: Documenting Ballerina Code
-      url: /learn/user-guide/documenting-ballerina-code/
+      url: /learn/user-guide/code-organization/documenting-ballerina-code/
       active: documenting-ballerina-code
     - title: Coding Conventions
-      url: /learn/user-guide/coding-conventions/
+      url: /learn/user-guide/code-organization/coding-conventions/
       active: coding-conventions
 
 - title: Network Communication
@@ -127,14 +127,14 @@
   url: '#' 
   sublinks:
     - title: Observing Ballerina Code
-      url: /learn/user-guide/observing-ballerina-code
+      url: /learn/user-guide/observability/observing-ballerina-code
       active: observing-ballerina-code
 
 - title: Interoperability
   url: '#' 
   sublinks:
     - title: Calling Java Code from Ballerina
-      url: /learn/user-guide/calling-java-code-from-ballerina/
+      url: /learn/user-guide/interoperability/calling-java-code-from-ballerina/
       active: calling-java-code-from-ballerina
 
 - title: Configurability
@@ -143,9 +143,9 @@
     - title: Defining Configurable Variables
       url: /learn/user-guide/configurability/defining-configurable-variables/
       active: defining-configurable-variables
-    - title: Supplying Values to Configurable Variables
-      url: /learn/user-guide/configurability/supplying-values-to-configurable-variables/
-      active: supplying-values-to-configurable-variables
+    - title: Providing Values to Configurable Variables
+      url: /learn/user-guide/configurability/providing-values-to-configurable-variables/
+      active: providing-values-to-configurable-variables
     - title: Trying it Out
       url: /learn/user-guide/configurability/trying-it-out/
       active: trying-it-out
@@ -153,9 +153,12 @@
 - title: Security
   url: '#' 
   sublinks:
-    - title: Authentication and Authorization
-      url: /learn/user-guide/authentication-and-authorization
-      active: authentication-and-authorization
+    - title: HTTP Listener Authentication and Authorization
+      url: /learn/user-guide/security/http-listener-authentication-and-authorization
+      active: http-listener-authentication-and-authorization
+    - title: HTTP Client Authentication
+      url: /learn/user-guide/security/http-client-authentication/
+      active: http-client-authentication
 
 #- title: Extending Ballerina
   #url: '#' 

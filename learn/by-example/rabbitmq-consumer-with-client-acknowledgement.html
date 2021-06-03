@@ -92,10 +92,6 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/rabbitmq-consumer-with-client-acknowledgement/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=74cbb662640c00231b04251108aa0965&file=rabbitmq_consumer_with_client_acknowledgement.bal"><img src="/img/main-play-green-btn.svg" /></a>
-                                        </li>
-                                        
                                     </ul>
                                 </div>
                             </td>
@@ -230,18 +226,6 @@ import ballerinax/rabbitmq;
                                 
                             
                         
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -249,47 +233,9 @@ import ballerinax/rabbitmq;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Make sure to have the RabbitMQ broker running.
-#
-# Navigate to the directory that contains the
-# &#39;rabbitmq_consumer_with_client_acknowledgement.bal&#39; file and runthe &#39;bal run&#39; command below.
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>bal run rabbitmq_consumer_with_client_acknowledgement.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># The RabbitMQ consumer runs as a Ballerina service and listens to the subscribed queue.
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>[ballerinax/rabbitmq] Consumer service started for queue MyQueue
+                                    <div class="highlight"><pre><code class=shell-session>bal run rabbitmq_consumer_with_client_acknowledgement.bal
+[ballerinax/rabbitmq] Consumer service started for queue MyQueue
 time = 2021-05-20T14:53:56.067+05:30 level = INFO module = &quot;&quot; message = &quot;Received message: Hello from Ballerina&quot;
 </code></pre></div>
 

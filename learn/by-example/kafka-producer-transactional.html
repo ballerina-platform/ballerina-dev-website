@@ -45,8 +45,7 @@ redirect_from:
         <span class="p">});</span>
         <span class="c1">// Checks for an error and notifies if an error has occurred.</span>
         <span class="k">if</span> <span class="nx">sendResult</span> <span class="nx">is</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Error</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred when sending message &quot;</span><span class="p">,</span>
-                <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">sendResult</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred when sending message &quot;</span><span class="p">,</span> <span class="nx">sendResult</span><span class="p">);</span>
         <span class="p">}</span>
 
         <span class="k">var</span> <span class="nx">commitResult</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
@@ -109,10 +108,6 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/kafka-producer-transactional/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6ebccebe080ce8ec141a9b880098cfa7&file=kafka_producer_transactional.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -292,8 +287,7 @@ import ballerinax/kafka;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        if sendResult is kafka:Error {
-            io:println(&quot;Error occurred when sending message &quot;,
-                &#39;error = sendResult);
+            io:println(&quot;Error occurred when sending message &quot;, sendResult);
         }
 </code></pre></div>
 
@@ -337,10 +331,6 @@ import ballerinax/kafka;
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -348,23 +338,8 @@ import ballerinax/kafka;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run --experimental kafka_message_producer_transactional.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># If the producer successfully sent the message, the following will be printed
-# in the Console.
+                                    <div class="highlight"><pre><code class=shell-session>bal run kafka_message_producer_transactional.bal
 [ballerina/http] started HTTP/WS listener 192.168.1.2:57457
 Transaction successful
 </code></pre></div>

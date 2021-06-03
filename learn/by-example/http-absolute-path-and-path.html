@@ -14,29 +14,18 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 
-<span class="c1">// The `absolute resource path` identifier represents the absolute path to the service.  When bound to a listener</span>
+<span class="c1">// The `absolute resource path` represents the absolute path to the service. When bound to a listener</span>
 <span class="c1">// endpoint, the service will be accessible at the specified path. If the path is omitted, then it defaults to `/`.</span>
 <span class="c1">// A string literal also can represent the absolute path. E.g., `&quot;/foo&quot;`.</span>
 <span class="c1">// The `type descriptor` represents the respective type of the service. E.g., `http:Service`.</span>
 <span class="kd">service</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">foo</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// The `resource method name` identifier (`post`) confines the resource to the specified HTTP methods. In this</span>
-    <span class="c1">// instance, only `POST` requests are allowed. The `default` accessor name can be used to match with all methods</span>
+    <span class="c1">// The `resource method name` (`post`) confines the resource to the specified HTTP methods. In this</span>
+    <span class="c1">// instance, only `POST` requests are allowed. The `default` accessor can be used to match with all methods</span>
     <span class="c1">// including standard HTTP methods and custom methods.</span>
-    <span class="c1">// The `resource path` identifier associates the relative path to the service object&#39;s path. E.g., `bar`.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">bar</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">{</span>
-        <span class="c1">// This method retrieves the request payload as a JSON.</span>
-        <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// Since the JSON is known to be valid, `untaint` the data denoting that the data is trusted and set the JSON to the response.</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-        <span class="p">}</span>
-        <span class="c1">// Reply to the client with the response.</span>
-        <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
+    <span class="c1">// The `resource path` associates the relative path to the service object&#39;s path. E.g., `bar`.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">bar</span><span class="p">(</span><span class="nd">@http:Payload json payload) returns json {</span>
+        <span class="k">return</span> <span class="nx">payload</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -60,16 +49,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="http-client-data-binding.html">
+                                    <a class="prev" href="aws-lambda-deployment.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Client Data Binding</p>
+                                        <p>AWS Lambda</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="http-default-resource.html">
+                                    <a class="next" href="http-data-binding.html">
                                         <span>NEXT ></span>
-                                        <p>Default Resource</p>
+                                        <p>Service Data Binding</p>
                                     </a>
                                 </div>
                                 
@@ -92,10 +81,6 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-absolute-path-and-path/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a95e2bf433d4e19323709ea0b4c91ee5&file=http_absolute_path_and_path.bal"><img src="/img/main-play-green-btn.svg" /></a>
-                                        </li>
-                                        
                                     </ul>
                                 </div>
                             </td>
@@ -111,12 +96,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -152,7 +131,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>absolute resource path</code> identifier represents the absolute path to the service.  When bound to a listener
+                                            <p>The <code>absolute resource path</code> represents the absolute path to the service. When bound to a listener
  endpoint, the service will be accessible at the specified path. If the path is omitted, then it defaults to <code>/</code>.
  A string literal also can represent the absolute path. E.g., <code>&quot;/foo&quot;</code>.
  The <code>type descriptor</code> represents the respective type of the service. E.g., <code>http:Service</code>.</p>
@@ -165,74 +144,9 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post bar(http:Request req) returns http:Response {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>resource method name</code> identifier (<code>post</code>) confines the resource to the specified HTTP methods. In this
- instance, only <code>POST</code> requests are allowed. The <code>default</code> accessor name can be used to match with all methods
- including standard HTTP methods and custom methods.
- The <code>resource path</code> identifier associates the relative path to the service object&rsquo;s path. E.g., <code>bar</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var payload = req.getJsonPayload();
-        http:Response res = new;
-        if (payload is json) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This method retrieves the request payload as a JSON.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            res.setJsonPayload(&lt;@untainted&gt;payload);
-        } else {
-            res.statusCode = 500;
-            res.setPayload(&lt;@untainted&gt;payload.message());
-        }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Since the JSON is known to be valid, <code>untaint</code> the data denoting that the data is trusted and set the JSON to the response.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return res;
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post bar(@http:Payload json payload) returns json {
+        return payload;
     }
 }
 </code></pre></div>
@@ -242,7 +156,10 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Reply to the client with the response.</p>
+                                            <p>The <code>resource method name</code> (<code>post</code>) confines the resource to the specified HTTP methods. In this
+ instance, only <code>POST</code> requests are allowed. The <code>default</code> accessor can be used to match with all methods
+ including standard HTTP methods and custom methods.
+ The <code>resource path</code> associates the relative path to the service object&rsquo;s path. E.g., <code>bar</code>.</p>
 
                                         </div>
                                     </div>
@@ -266,9 +183,7 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `bal run` command below.
-bal run absolute_path_and_path.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run absolute_path_and_path.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 

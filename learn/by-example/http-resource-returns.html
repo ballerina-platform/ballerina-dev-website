@@ -26,7 +26,6 @@ redirect_from:
     <span class="c1">// annotation.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">branch</span><span class="p">()</span> <span class="nx">returns</span>
             <span class="nd">@http:Payload {mediaType:&quot;application/json+id&quot;} json {</span>
-
         <span class="k">return</span> <span class="p">{</span> <span class="nx">branch</span> <span class="p">:</span> <span class="p">[</span><span class="s">&quot;Colombo, Srilanka&quot;</span><span class="p">]};</span>
     <span class="p">}</span>
 
@@ -34,16 +33,15 @@ redirect_from:
     <span class="c1">// can be state as return type to send responses with specific HTTP status codes.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">[</span><span class="kt">string</span> <span class="err">&#39;</span><span class="nx">type</span><span class="p">]()</span>
             <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Ok</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="p">{</span>
-
         <span class="k">if</span> <span class="err">&#39;</span><span class="nx">type</span> <span class="o">==</span> <span class="s">&quot;open&quot;</span> <span class="p">{</span>
+
             <span class="c1">// Creates response with 200 status code and set body as response payload.</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Ok</span> <span class="nx">ok</span> <span class="p">=</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span> <span class="s">&quot;Bank is open&quot;</span><span class="p">};</span>
-
             <span class="k">return</span> <span class="nx">ok</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
             <span class="c1">// Creates response with 500 status code and set body as response payload.</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="nx">err</span> <span class="p">=</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span> <span class="s">&quot;Bank is closed&quot;</span><span class="p">};</span>
-
             <span class="k">return</span> <span class="nx">err</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -53,7 +51,6 @@ redirect_from:
     <span class="c1">// record, hence 201 response will be sent.</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">createAccount</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span>
             <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="o">*</span><span class="nx">http</span><span class="p">:</span><span class="nx">Created</span><span class="p">;</span> <span class="nx">PersonAccount</span> <span class="nx">body</span><span class="p">;|}</span> <span class="p">{</span>
-
         <span class="nx">PersonAccount</span> <span class="nx">account</span> <span class="p">=</span> <span class="p">{</span><span class="nx">accountNo</span><span class="p">:</span> <span class="mi">84230</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">name</span><span class="p">};</span>
         <span class="k">return</span> <span class="p">{</span>
             <span class="nx">mediaType</span><span class="p">:</span> <span class="s">&quot;application/account+json&quot;</span><span class="p">,</span>
@@ -86,9 +83,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="http-path-matrix-param.html">
+                                    <a class="prev" href="http-matrix-param.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Path Matrix Param</p>
+                                        <p>Matrix Param</p>
                                     </a>
                                 </div>
                                  
@@ -118,10 +115,6 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-resource-returns/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=72709e5a2da8bea27a32b28dbc1574b2&file=http_resource_returns.bal"><img src="/img/main-play-green-btn.svg" /></a>
-                                        </li>
-                                        
                                     </ul>
                                 </div>
                             </td>
@@ -137,16 +130,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -213,6 +196,8 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function get branch() returns
             @http:Payload {mediaType:&quot;application/json+id&quot;} json {
+        return { branch : [&quot;Colombo, Srilanka&quot;]};
+    }
 </code></pre></div>
 
                                 </td>
@@ -230,24 +215,12 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        return { branch : [&quot;Colombo, Srilanka&quot;]};
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function get [string &#39;type]()
             returns http:Ok|http:InternalServerError {
+        if &#39;type == &quot;open&quot; {
 </code></pre></div>
 
                                 </td>
@@ -264,22 +237,12 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if &#39;type == &quot;open&quot; {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            http:Ok ok = {body: &quot;Bank is open&quot;};
+            return ok;
+        } else {
 </code></pre></div>
 
                                 </td>
@@ -295,23 +258,13 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            return ok;
-        } else {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            http:InternalServerError err = {body: &quot;Bank is closed&quot;};
+            return err;
+        }
+    }
 </code></pre></div>
 
                                 </td>
@@ -327,46 +280,12 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>            return err;
-        }
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function get createAccount(string name)
             returns record {|*http:Created; PersonAccount body;|} {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Inline response records are useful to return headers and body along with status code. In this instance the
- return type is a subtype of <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/Created">http:Created</a>
- record, hence 201 response will be sent.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        PersonAccount account = {accountNo: 84230, name: name};
+        PersonAccount account = {accountNo: 84230, name: name};
         return {
             mediaType: &quot;application/account+json&quot;,
             headers: {
@@ -380,6 +299,15 @@ redirect_from:
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Inline response records are useful to return headers and body along with status code. In this instance the
+ return type is a subtype of <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/Created">http:Created</a>
+ record, hence 201 response will be sent.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -400,9 +328,7 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `bal run` command below.
-bal run http_resource_returns.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run http_resource_returns.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -415,10 +341,6 @@ bal run http_resource_returns.bal
                         </table>
                     </div>
                     
-                        
-                            
-                                
-                            
                         
                             
                                 
@@ -481,32 +403,6 @@ curl -v &quot;http://localhost:9090/bank/open&quot;
 &lt;
 * Connection #0 to host localhost left intact
 Bank is open* Closing connection 0
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Run the cURL command below to invoke second resource again.
-curl -v &quot;http://localhost:9090/bank/close&quot;
-&gt; GET /bank/close HTTP/1.1
-&gt; Host: localhost:9090
-&gt; User-Agent: curl/7.64.1
-&gt; Accept: */*
-&gt;
-&lt; HTTP/1.1 500 Internal Server Error
-&lt; content-type: text/plain
-&lt; content-length: 14
-&lt; server: ballerina
-&lt; date: Sat, 15 May 2021 16:18:36 +0530
-&lt;
-* Connection #0 to host localhost left intact
-Bank is closed* Closing connection 0
 </code></pre></div>
 
                                 </td>

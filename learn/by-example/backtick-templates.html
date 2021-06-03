@@ -37,9 +37,12 @@ redirect_from:
                             <p><p>The backtick templates consist of a tag followed by characters surrounded by backticks. They can contain
  <code>expressions</code> in <code>${...}</code> to be interpolated. If no escapes are recognized: use an <code>expression</code> to escape.
  They can contain newlines. <br></br>
- Processed in two phases. <br></br>
- - Phase 1 does tag-independent parse: result is a list of <code>strings</code> and <code>expressions</code>. <br></br>
- - Phase 2 is tag-dependent. <br></br>
+ Processed in two phases.
+ <ul>
+ <li>Phase 1 does tag-independent parse: result is a list of <code>strings</code> and <code>expressions</code></li>
+ <li>Phase 2 is tag-dependent</li>
+ </ul>
+<br></br>
  Phase 2 for <code>string...</code> converts <code>expressions</code> to <code>strings</code> and concatenates. <code>base16</code> and <code>base64</code>
  tags do not allow <code>expressions</code>.</p>
 </p>
@@ -82,7 +85,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=9f1f9df5c1be51dd6690c87b22c6924d&file=backtick_templates.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c0eb8880cac3ff2a5d3153c4c8e1e7dc&file=backtick_templates.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

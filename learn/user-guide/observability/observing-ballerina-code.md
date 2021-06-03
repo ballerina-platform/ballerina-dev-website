@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Observing Ballerina Code
 description: See how Ballerina supports observability by exposing itself via metrics, tracing, and logs to external systems.
 keywords: ballerina, observability, metrics, tracing, logs
-permalink: /learn/user-guide/observing-ballerina-code/
+permalink: /learn/user-guide/observability/observing-ballerina-code/
 active: observing-ballerina-code
 intro: Observability is a measure of how well internal states of a system can be inferred from knowledge of its external outputs.
 redirect_from:
@@ -17,6 +17,9 @@ redirect_from:
   - /learn/observing-ballerina-code/
   - /learn/observing-ballerina-code
   - /learn/user-guide/observing-ballerina-code
+  - /learn/user-guide/observing-ballerina-code/
+  - /learn/user-guide/observability/
+  - /learn/user-guide/observability
 ---
 
 ## Providing Observability in Ballerina

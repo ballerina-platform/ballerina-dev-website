@@ -14,7 +14,7 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">graphql</span><span class="p">;</span>
 
-<span class="kd">service</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Service</span> <span class="o">/</span><span class="nx">graphql</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">4000</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="o">/</span><span class="nx">graphql</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">4000</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="c1">// Resource functions can return service objects. The returning service</span>
     <span class="c1">// object is mapped to an `OBJECT` type in GraphQL. Each resource</span>
@@ -26,11 +26,11 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="c1">// Define a service class to use in GraphQL service.</span>
-<span class="nx">isolated</span> <span class="kd">service</span> <span class="nx">class</span> <span class="nx">Person</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="nx">class</span> <span class="nx">Person</span> <span class="p">{</span>
     <span class="nx">private</span> <span class="nx">final</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="nx">private</span> <span class="nx">final</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
 
-    <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">name</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">age</span><span class="p">;</span>
     <span class="p">}</span>
@@ -100,10 +100,6 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/graphql-returning-service-objects/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=9cae6183aa33b912a6126b379f3691b3&file=graphql_returning_service_objects.bal"><img src="/img/main-play-green-btn.svg" /></a>
-                                        </li>
-                                        
                                     </ul>
                                 </div>
                             </td>
@@ -154,7 +150,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service graphql:Service /graphql on new graphql:Listener(4000) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /graphql on new graphql:Listener(4000) {
 </code></pre></div>
 
                                 </td>
@@ -201,7 +197,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>isolated service class Person {
+                                    <div class="highlight"><pre><code class=language-ballerina>service class Person {
     private final string name;
     private final int age;
 </code></pre></div>
@@ -222,7 +218,7 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated function init(string name, int age) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    function init(string name, int age) {
         self.name = name;
         self.age = age;
     }
@@ -278,11 +274,7 @@ redirect_from:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file, and issue the `bal run` command below.
-# Since Ballerina GraphQL runs on a Ballerina HTTP listener, an `http:Listener`
-# log will be printed.
-bal run graphql_returning_service_objects.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run graphql_returning_service_objects.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:4000
 </code></pre></div>
 

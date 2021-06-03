@@ -44,7 +44,7 @@ redirect_from:
     <span class="p">});</span>
     <span class="c1">// Checks for an error and notifies if an error has occurred.</span>
     <span class="k">if</span> <span class="nx">err</span> <span class="nx">is</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Error</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred when sending message &quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred when sending message &quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Message successfully sent.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
@@ -101,10 +101,6 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/kafka-authentication-sasl-plain-producer/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=88eef64e6c983ff6d2c9e267105256d9&file=kafka_authentication_sasl_plain_producer.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -306,7 +302,7 @@ import ballerinax/kafka;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    if err is kafka:Error {
-        io:println(&quot;Error occurred when sending message &quot;, &#39;error = err);
+        io:println(&quot;Error occurred when sending message &quot;, err);
     } else {
         io:println(&quot;Message successfully sent.&quot;);
     }
@@ -334,10 +330,6 @@ import ballerinax/kafka;
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -345,23 +337,8 @@ import ballerinax/kafka;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run kafka_authentication_sasl_plain_producer.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># If the producer is authenticated and the message is sent successfully,
-# the following message will be printed in the console.
+                                    <div class="highlight"><pre><code class=shell-session>bal run kafka_authentication_sasl_plain_producer.bal
 Message successfully sent.
 </code></pre></div>
 

@@ -56,7 +56,7 @@ import ballerina/test;
 Once the test module is imported, the following annotation can be used to write a test function.
 
 
-### @test:Config {}
+### '@test:Config {}'
 
 The function specified after the annotation is a test function. This annotation supports the following value fields.
 
@@ -663,7 +663,7 @@ Configurations for testing can be provided using configurable variables. The val
 variables can be provided in a file named `Config.toml` located in the tests directory.
 
 For information on using configurable variables, see
- [Configurable Variables](/learn/by-example/configurable.html).
+ [Configurable Variables](/learn/user-guide/configurability/defining-configurable-variables/).
 
 ## Test Dependencies
 

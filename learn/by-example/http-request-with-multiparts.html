@@ -31,7 +31,7 @@ redirect_from:
             <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">part</span> <span class="nx">in</span> <span class="nx">bodyParts</span> <span class="p">{</span>
                 <span class="nx">handleContent</span><span class="p">(</span><span class="nx">part</span><span class="p">);</span>
             <span class="p">}</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">bodyParts</span><span class="p">);</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">bodyParts</span><span class="p">);</span>
             <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">bodyParts</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
@@ -166,10 +166,6 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-request-with-multiparts/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=23cb114192a04709f218836ac82fe32a&file=http_request_with_multiparts.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -314,7 +310,7 @@ import ballerina/mime;
             foreach var part in bodyParts {
                 handleContent(part);
             }
-            response.setPayload(&lt;@untainted&gt;bodyParts);
+            response.setPayload(bodyParts);
             return response;
         } else {
             log:printError(bodyParts.message());
@@ -613,8 +609,6 @@ import ballerina/mime;
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># In the directory, which contains the `.bal` file, create a directory named `file`,
 # and add an XML files named `test.xml` in it.
-# To start the service, navigate to the directory that contains the
-# `.bal` file and use the `bal run` command below.
 bal run request_with_multiparts.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 time = 2021-01-21 22:00:17,167 level = INFO  module = &quot;&quot; message = &quot;{&quot;name&quot;:&quot;ballerina&quot;}&quot;

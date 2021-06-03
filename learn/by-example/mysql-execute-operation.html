@@ -31,7 +31,7 @@ redirect_from:
             <span class="s">`UPDATE Customers SET creditLimit = ${newCreditLimit} </span>
 <span class="s">            where customerId = 1`</span><span class="p">;</span>
 
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="nx">updateQuery</span><span class="p">);</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="nx">updateQuery</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Updated Row count: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="err">?</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
 
     <span class="kt">string</span> <span class="nx">firstName</span> <span class="p">=</span> <span class="s">&quot;Dan&quot;</span><span class="p">;</span>
@@ -40,7 +40,7 @@ redirect_from:
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedQuery</span> <span class="nx">deleteQuery</span> <span class="p">=</span>
             <span class="s">`DELETE FROM Customers WHERE firstName = ${firstName}`</span><span class="p">;</span>
     
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="nx">deleteQuery</span><span class="p">);</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="nx">deleteQuery</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Deleted Row count: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
 
     <span class="c1">// Performs the cleanup after the example.</span>
@@ -53,10 +53,10 @@ redirect_from:
 
     <span class="c1">// Creates a database.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
-        <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE DATABASE MYSQL_BBE`</span><span class="p">);</span>
+        <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE DATABASE MYSQL_BBE`</span><span class="p">);</span>
 
     <span class="c1">//Creates a table in the database.</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE MYSQL_BBE.Customers</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE MYSQL_BBE.Customers</span>
 <span class="s">            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  </span>
 <span class="s">            VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER, </span>
 <span class="s">            creditLimit DOUBLE, country VARCHAR(300),</span>
@@ -64,10 +64,10 @@ redirect_from:
 
     <span class="c1">// Inserts data into the table. The result will have the `affectedRowCount`</span>
     <span class="c1">// and `lastInsertedId` with the auto-generated ID of the last row.</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO MYSQL_BBE.Customers</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO MYSQL_BBE.Customers</span>
 <span class="s">            (firstName, lastName, registrationID,creditLimit,country) VALUES</span>
 <span class="s">            (&#39;Peter&#39;,&#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`</span><span class="p">);</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO MYSQL_BBE.Customers</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO MYSQL_BBE.Customers</span>
 <span class="s">            (firstName, lastName, registrationID,creditLimit,country) VALUES</span>
 <span class="s">            (&#39;Dan&#39;, &#39;Brown&#39;, 2, 10000, &#39;UK&#39;)`</span><span class="p">);</span>
 
@@ -81,7 +81,7 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Cleans the database.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
-            <span class="nx">check</span> <span class="nx">mysqlClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`DROP DATABASE MYSQL_BBE`</span><span class="p">);</span>
+            <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP DATABASE MYSQL_BBE`</span><span class="p">);</span>
     <span class="c1">// Closes the MySQL client.</span>
     <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
@@ -136,10 +136,6 @@ redirect_from:
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-execute-operation/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6a5429d042075abb2e8c7c0fa55168aa&file=mysql_execute_operation.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -302,7 +298,7 @@ import ballerina/sql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result = check mysqlClient -&gt; execute(updateQuery);
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result = check mysqlClient-&gt;execute(updateQuery);
     io:println(&quot;Updated Row count: &quot;, result?.affectedRowCount);
 </code></pre></div>
 
@@ -330,7 +326,7 @@ import ballerina/sql;
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:ParameterizedQuery deleteQuery =
             `DELETE FROM Customers WHERE firstName = ${firstName}`;
     
-    result = check mysqlClient -&gt; execute(deleteQuery);
+    result = check mysqlClient-&gt;execute(deleteQuery);
     io:println(&quot;Deleted Row count: &quot;, result.affectedRowCount);
 </code></pre></div>
 
@@ -391,7 +387,7 @@ import ballerina/sql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
-        check mysqlClient -&gt; execute(`CREATE DATABASE MYSQL_BBE`);
+        check mysqlClient-&gt;execute(`CREATE DATABASE MYSQL_BBE`);
 </code></pre></div>
 
                                 </td>
@@ -410,7 +406,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient -&gt; execute(`CREATE TABLE MYSQL_BBE.Customers
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient-&gt;execute(`CREATE TABLE MYSQL_BBE.Customers
             (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  
             VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER, 
             creditLimit DOUBLE, country VARCHAR(300),
@@ -433,10 +429,10 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient -&gt; execute(`INSERT INTO MYSQL_BBE.Customers
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check mysqlClient-&gt;execute(`INSERT INTO MYSQL_BBE.Customers
             (firstName, lastName, registrationID,creditLimit,country) VALUES
             (&#39;Peter&#39;,&#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`);
-    result = check mysqlClient -&gt; execute(`INSERT INTO MYSQL_BBE.Customers
+    result = check mysqlClient-&gt;execute(`INSERT INTO MYSQL_BBE.Customers
             (firstName, lastName, registrationID,creditLimit,country) VALUES
             (&#39;Dan&#39;, &#39;Brown&#39;, 2, 10000, &#39;UK&#39;)`);
 </code></pre></div>
@@ -504,7 +500,7 @@ import ballerina/sql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
-            check mysqlClient -&gt; execute(`DROP DATABASE MYSQL_BBE`);
+            check mysqlClient-&gt;execute(`DROP DATABASE MYSQL_BBE`);
 </code></pre></div>
 
                                 </td>

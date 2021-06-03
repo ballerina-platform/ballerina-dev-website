@@ -83,10 +83,6 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-client-ssl-tls/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=8c06b7c09ca0a30d0d0c5890df1794b9&file=http_client_ssl_tls.bal"><img src="/img/main-play-green-btn.svg" /></a>
-                                        </li>
-                                        
                                     </ul>
                                 </div>
                             </td>
@@ -177,10 +173,6 @@ import ballerina/io;
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -188,26 +180,9 @@ import ballerina/io;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># As a prerequisite, navigate to the directory that contains the
-# `http_service_ssl_tls.bal` file and execute the `bal run` command below.
-# (You may need to change the certificate file path and private key file path.)
-bal run http_service_ssl_tls.bal
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the `.bal` file,
-# and execute the `bal run` command below.
-# (You may need to change the trusted certificate file path.)
+                                    <div class="highlight"><pre><code class=shell-session># As a prerequisite, start a sample service secured with SSL.
+# You may need to change the trusted certificate file path.
 bal run http_client_ssl_tls.bal
 Hello, World!
 </code></pre></div>

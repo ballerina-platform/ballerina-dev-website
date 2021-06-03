@@ -1,11 +1,6 @@
 name: Publish VS-Code plugin
 
-on:
-  push:
-    branches:
-      - prod-sync
-    paths:
-      - '_data/stable-latest/**'
+on: workflow_dispatch
                         
 jobs:
   publish:

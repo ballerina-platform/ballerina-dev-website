@@ -152,12 +152,6 @@
     - title: Resource Path Parameters 
       url: /learn/by-example/resource-path-parameters
       active: resource-path-parameters    
-    - title: Hierarchical Services 
-      url: /learn/by-example/hierarchical-services
-      active: hierarchical-services
-    - title: Representing Responses 
-      url: /learn/by-example/representing-responses
-      active: representing-responses
 - title: Working With Data
   url: '#'
   sublinks:
@@ -377,6 +371,39 @@
     - title: Inferring Isolated
       url: /learn/by-example/inferring-isolated
       active: inferring-isolated
+- title: Testing
+  url: '#'
+  sublinks:
+    - title: Assertions
+      url: /learn/by-example/testerina-assertions
+      active: testerina-assertions
+    - title: Before and After Test
+      url: /learn/by-example/testerina-before-and-after-test
+      active: testerina-before-and-after-test
+    - title: Before and After Each
+      url: /learn/by-example/testerina-before-and-after-each
+      active: testerina-before-and-after-each
+    - title: Before and After Groups
+      url: /learn/by-example/testerina-before-and-after-groups
+      active: testerina-before-and-after-groups
+    - title: Before and After Suite
+      url: /learn/by-example/testerina-before-and-after-suite
+      active: testerina-before-and-after-suite
+    - title: Data Driven Tests
+      url: /learn/by-example/testerina-data-driven-tests
+      active: testerina-data-driven-tests
+    - title: Guarantee Test Execution Order
+      url: /learn/by-example/testerina-guarantee-test-execution-order
+      active: testerina-guarantee-test-execution-order
+    - title: Group Tests
+      url: /learn/by-example/testerina-group-tests
+      active: testerina-group-tests
+    - title: Function Mocking
+      url: /learn/by-example/testerina-mocking-functions
+      active: testerina-mocking-functions
+    - title: Object Mocking
+      url: /learn/by-example/testerina-mocking-objects
+      active: testerina-mocking-objects
 
 - title: Working Over the Network
 - title: REST API
@@ -394,18 +421,15 @@
     - title: Default Resource
       url: /learn/by-example/http-default-resource
       active: http-default-resource
-    - title: Path Matrix Param
-      url: /learn/by-example/http-path-matrix-param
-      active: http-path-matrix-param
+    - title: Path Param
+      url: /learn/by-example/http-path-param
+      active: http-path-param
     - title: Resource Return Types 
       url: /learn/by-example/http-resource-returns
       active: http-resource-returns
     - title: Restrict By Media Type
       url: /learn/by-example/http-restrict-by-media-type
       active: http-restrict-by-media-type
-    - title: Handling Different Payload Types 
-      url: /learn/by-example/http-different-payload-types
-      active: http-different-payload-types
 - title: REST API Security
   url: '#'
   sublinks:
@@ -757,18 +781,6 @@
     - title: Gauge-Based Metrics
       url: /learn/by-example/gauge-metrics
       active: gauge-metrics
-- title: Observability
-  url: '#'
-  sublinks:  
-    - title: Distributed Tracing
-      url: /learn/by-example/tracing
-      active: tracing
-    - title: Counter-Based Metrics
-      url: /learn/by-example/counter-metrics
-      active: counter-metrics
-    - title: Gauge-Based Metrics
-      url: /learn/by-example/gauge-metrics
-      active: gauge-metrics
 
 - title: Common Libraries
 - title: IO
@@ -778,7 +790,7 @@
       url: /learn/by-example/io-bytes
       active: io-bytes
     - title: Read/Write Strings
-      url: /learn/by-example/strings
+      url: /learn/by-example/io-strings
       active: io-strings
     - title: Read/Write CSV
       url: /learn/by-example/io-csv
@@ -906,12 +918,17 @@
     - title: XML/JSON Conversion
       url: /learn/by-example/xml-json-conversion
       active: xml-json-conversion
+
 - title: Deployment
+- title: Code to Cloud
   url: '#'
   sublinks:
-    - title: Code to Cloud
+    - title: Kubernetes
       url: /learn/by-example/c2c-deployment
       active: c2c-deployment
+- title: Function as a Service
+  url: '#'
+  sublinks:
     - title: Azure Functions
       url: /learn/by-example/azure-functions-deployment
       active: azure-functions-deployment

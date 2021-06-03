@@ -131,10 +131,6 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/tcp-transport-security/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=cd51b6948b41e3134a832ab6efd7d2fd&file=tcp_transport_security.bal"><img src="/img/main-play-green-btn.svg" /></a>
-                                        </li>
-                                        
                                     </ul>
                                 </div>
                             </td>
@@ -296,9 +292,7 @@ import ballerina/io;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service and run the main function, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below along with the Ballerina home path as a config.
-# (You may need to change the trusted certificate file path.)
+                                    <div class="highlight"><pre><code class=shell-session># You may need to change the trusted certificate file path.
 bal run tcp_transport_security_client.bal
 Hello Ballerina Echo from secure client
 </code></pre></div>
@@ -537,9 +531,7 @@ import ballerina/io;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service and run the main function, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below along with the Ballerina home path as a config.
-# (You may need to change the certificate file path and private key file path.)
+                                    <div class="highlight"><pre><code class=shell-session># You may need to change the certificate file path and private key file path.
 bal run tcp_transport_security_listener.bal
 Client connected to server: 5639
 Received: Hello Ballerina Echo from secure client

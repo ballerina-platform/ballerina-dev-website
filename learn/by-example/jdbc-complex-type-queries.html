@@ -17,6 +17,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span>
 
+<span class="c1">// The `BinaryType` record to represent the `BINARY_TYPES` database table.</span>
 <span class="nx">type</span> <span class="nx">BinaryType</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">row_id</span><span class="p">;</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">blob_type</span><span class="p">;</span>
@@ -24,6 +25,7 @@ redirect_from:
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">binary_type</span><span class="p">;</span>
 <span class="p">|};</span>
 
+<span class="c1">// The `ArrayType` record to represent the `ARRAY_TYPES` database table.</span>
 <span class="nx">type</span> <span class="nx">ArrayType</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">row_id</span><span class="p">;</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">int_array</span><span class="p">;</span>
@@ -34,6 +36,7 @@ redirect_from:
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">string_array</span><span class="p">;</span>
 <span class="p">|};</span>
 
+<span class="c1">// The `DateTimeType` record to represent the `DATE_TIME_TYPES` database table.</span>
 <span class="nx">type</span> <span class="nx">DateTimeType</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">row_id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">date_type</span><span class="p">;</span>
@@ -52,7 +55,7 @@ redirect_from:
     <span class="c1">// Since the `rowType` is provided as a `BinaryType`, the `resultStream` </span>
     <span class="c1">// will have `BinaryType` records.</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span> 
-                <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM BINARY_TYPES`</span><span class="p">,</span> <span class="nx">BinaryType</span><span class="p">);</span>
+                <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM BINARY_TYPES`</span><span class="p">,</span> <span class="nx">BinaryType</span><span class="p">);</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">BinaryType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">binaryResultStream</span> <span class="p">=</span> 
                 <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">BinaryType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span> <span class="nx">resultStream</span><span class="p">;</span>
 
@@ -65,7 +68,7 @@ redirect_from:
     <span class="c1">// Since the `rowType` is provided as an `ArrayType`, the `resultStream2` will</span>
     <span class="c1">// have `ArrayType` records.</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream2</span> <span class="p">=</span> 
-                <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM ARRAY_TYPES`</span><span class="p">,</span> <span class="nx">ArrayType</span><span class="p">);</span>
+                <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM ARRAY_TYPES`</span><span class="p">,</span> <span class="nx">ArrayType</span><span class="p">);</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ArrayType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">arrayResultStream</span> <span class="p">=</span>
                 <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ArrayType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span><span class="nx">resultStream2</span><span class="p">;</span>
 
@@ -80,7 +83,7 @@ redirect_from:
     <span class="c1">// `Timestamp` fields of the database table can be mapped to `time:Utc`,</span>
     <span class="c1">// string, and int types in Ballerina.</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream3</span> <span class="p">=</span> 
-                <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM DATE_TIME_TYPES`</span><span class="p">,</span>
+                <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM DATE_TIME_TYPES`</span><span class="p">,</span>
                 <span class="nx">DateTimeType</span><span class="p">);</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">DateTimeType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">dateResultStream</span> <span class="p">=</span>
                 <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">DateTimeType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span><span class="nx">resultStream3</span><span class="p">;</span>
@@ -99,34 +102,30 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">beforeExample</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Creates complex data type tables in the database.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
-        <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE BINARY_TYPES (row_id </span>
+        <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE BINARY_TYPES (row_id</span>
 <span class="s">            INTEGER NOT NULL, blob_type BLOB(1024), clob_type CLOB(1024), </span>
 <span class="s">            binary_type BINARY(27), PRIMARY KEY (row_id))`</span><span class="p">);</span>
-    
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE ARRAY_TYPES (row_id </span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE ARRAY_TYPES (row_id</span>
 <span class="s">            INTEGER NOT NULL, int_array ARRAY, long_array ARRAY, </span>
 <span class="s">            float_array ARRAY, double_array ARRAY, boolean_array ARRAY, </span>
 <span class="s">            string_array ARRAY, PRIMARY KEY (row_id))`</span><span class="p">);</span>
-
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE DATE_TIME_TYPES(row_id </span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE DATE_TIME_TYPES(row_id</span>
 <span class="s">            INTEGER NOT NULL, date_type DATE, time_type TIME, </span>
 <span class="s">            timestamp_type timestamp, datetime_type  datetime, </span>
 <span class="s">            PRIMARY KEY (row_id))`</span><span class="p">);</span>
 
     <span class="c1">// Adds the records to the newly-created tables.</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO BINARY_TYPES (row_id, </span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO BINARY_TYPES (row_id,</span>
 <span class="s">            blob_type, clob_type, binary_type) VALUES (1, </span>
 <span class="s">            X&#39;77736F322062616C6C6572696E6120626C6F6220746573742E&#39;, </span>
 <span class="s">            CONVERT(&#39;very long text&#39;, CLOB), </span>
 <span class="s">            X&#39;77736F322062616C6C6572696E612062696E61727920746573742E&#39;)`</span><span class="p">);</span>
-
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO ARRAY_TYPES (row_id, </span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO ARRAY_TYPES (row_id,</span>
 <span class="s">            int_array, long_array, float_array, double_array, boolean_array, </span>
 <span class="s">            string_array) VALUES (1, (1, 2, 3), (100000000, 200000000, </span>
 <span class="s">            300000000), (245.23, 5559.49, 8796.123), (245.23, 5559.49, </span>
 <span class="s">            8796.123), (TRUE, FALSE, TRUE), (&#39;Hello&#39;, &#39;Ballerina&#39;))`</span><span class="p">);</span>
-
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`Insert into DATE_TIME_TYPES (row_id, </span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`Insert into DATE_TIME_TYPES (row_id,</span>
 <span class="s">            date_type, time_type, timestamp_type, datetime_type) values (1, </span>
 <span class="s">            &#39;2017-05-23&#39;, &#39;14:15:23&#39;, &#39;2017-01-25 16:33:55&#39;, </span>
 <span class="s">            &#39;2017-01-25 16:33:55&#39;)`</span><span class="p">);</span>
@@ -136,9 +135,9 @@ redirect_from:
 <span class="kd">function</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Cleans the database.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
-            <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`DROP TABLE BINARY_TYPES`</span><span class="p">);</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`DROP TABLE ARRAY_TYPES`</span><span class="p">);</span>
-    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span> <span class="o">-&gt;</span> <span class="nx">execute</span><span class="p">(</span><span class="s">`DROP TABLE DATE_TIME_TYPES`</span><span class="p">);</span>
+            <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP TABLE BINARY_TYPES`</span><span class="p">);</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP TABLE ARRAY_TYPES`</span><span class="p">);</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP TABLE DATE_TIME_TYPES`</span><span class="p">);</span>
     <span class="c1">// Closes the JDBC client.</span>
     <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
@@ -195,10 +194,6 @@ redirect_from:
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/jdbc-complex-type-queries/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
-                                        <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=757c7725f237b050837c56e4c6c65b39&file=jdbc_complex_type_queries.bal"><img src="/img/main-play-green-btn.svg" /></a>
-                                        </li>
-                                        
                                     </ul>
                                 </div>
                             </td>
@@ -214,12 +209,6 @@ redirect_from:
                     </table>
 
                     
-                        
-                            
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -287,7 +276,7 @@ import ballerina/time;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type BinaryType record {|
@@ -301,10 +290,17 @@ import ballerina/time;
                                 </td>
                                 <td class="docs">
                                     
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>BinaryType</code> record to represent the <code>BINARY_TYPES</code> database table.</p>
+
+                                        </div>
+                                    </div>
+                                    
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type ArrayType record {|
@@ -321,10 +317,17 @@ import ballerina/time;
                                 </td>
                                 <td class="docs">
                                     
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>ArrayType</code> record to represent the <code>ARRAY_TYPES</code> database table.</p>
+
+                                        </div>
+                                    </div>
+                                    
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type DateTimeType record {|
@@ -338,6 +341,13 @@ import ballerina/time;
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>DateTimeType</code> record to represent the <code>DATE_TIME_TYPES</code> database table.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -397,7 +407,7 @@ import ballerina/time;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream = 
-                jdbcClient -&gt; query(`SELECT * FROM BINARY_TYPES`, BinaryType);
+                jdbcClient-&gt;query(`SELECT * FROM BINARY_TYPES`, BinaryType);
     stream&lt;BinaryType, sql:Error&gt; binaryResultStream = 
                 &lt;stream&lt;BinaryType, sql:Error&gt;&gt; resultStream;
 </code></pre></div>
@@ -453,7 +463,7 @@ import ballerina/time;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream2 = 
-                jdbcClient -&gt; query(`SELECT * FROM ARRAY_TYPES`, ArrayType);
+                jdbcClient-&gt;query(`SELECT * FROM ARRAY_TYPES`, ArrayType);
     stream&lt;ArrayType, sql:Error&gt; arrayResultStream =
                 &lt;stream&lt;ArrayType, sql:Error&gt;&gt;resultStream2;
 </code></pre></div>
@@ -509,7 +519,7 @@ import ballerina/time;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream3 = 
-                jdbcClient -&gt; query(`SELECT * FROM DATE_TIME_TYPES`,
+                jdbcClient-&gt;query(`SELECT * FROM DATE_TIME_TYPES`,
                 DateTimeType);
     stream&lt;DateTimeType, sql:Error&gt; dateResultStream =
                 &lt;stream&lt;DateTimeType, sql:Error&gt;&gt;resultStream3;
@@ -607,14 +617,17 @@ import ballerina/time;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
-        check jdbcClient -&gt; execute(`CREATE TABLE BINARY_TYPES (row_id 
+        check jdbcClient-&gt;execute(`CREATE TABLE BINARY_TYPES (row_id
             INTEGER NOT NULL, blob_type BLOB(1024), clob_type CLOB(1024), 
             binary_type BINARY(27), PRIMARY KEY (row_id))`);
-    
-    result = check jdbcClient -&gt; execute(`CREATE TABLE ARRAY_TYPES (row_id 
+    result = check jdbcClient-&gt;execute(`CREATE TABLE ARRAY_TYPES (row_id
             INTEGER NOT NULL, int_array ARRAY, long_array ARRAY, 
             float_array ARRAY, double_array ARRAY, boolean_array ARRAY, 
             string_array ARRAY, PRIMARY KEY (row_id))`);
+    result = check jdbcClient-&gt;execute(`CREATE TABLE DATE_TIME_TYPES(row_id
+            INTEGER NOT NULL, date_type DATE, time_type TIME, 
+            timestamp_type timestamp, datetime_type  datetime, 
+            PRIMARY KEY (row_id))`);
 </code></pre></div>
 
                                 </td>
@@ -630,29 +643,24 @@ import ballerina/time;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check jdbcClient -&gt; execute(`CREATE TABLE DATE_TIME_TYPES(row_id 
-            INTEGER NOT NULL, date_type DATE, time_type TIME, 
-            timestamp_type timestamp, datetime_type  datetime, 
-            PRIMARY KEY (row_id))`);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check jdbcClient -&gt; execute(`INSERT INTO BINARY_TYPES (row_id, 
+                                    <div class="highlight"><pre><code class=language-ballerina>    result = check jdbcClient-&gt;execute(`INSERT INTO BINARY_TYPES (row_id,
             blob_type, clob_type, binary_type) VALUES (1, 
             X&#39;77736F322062616C6C6572696E6120626C6F6220746573742E&#39;, 
             CONVERT(&#39;very long text&#39;, CLOB), 
             X&#39;77736F322062616C6C6572696E612062696E61727920746573742E&#39;)`);
+    result = check jdbcClient-&gt;execute(`INSERT INTO ARRAY_TYPES (row_id,
+            int_array, long_array, float_array, double_array, boolean_array, 
+            string_array) VALUES (1, (1, 2, 3), (100000000, 200000000, 
+            300000000), (245.23, 5559.49, 8796.123), (245.23, 5559.49, 
+            8796.123), (TRUE, FALSE, TRUE), (&#39;Hello&#39;, &#39;Ballerina&#39;))`);
+    result = check jdbcClient-&gt;execute(`Insert into DATE_TIME_TYPES (row_id,
+            date_type, time_type, timestamp_type, datetime_type) values (1, 
+            &#39;2017-05-23&#39;, &#39;14:15:23&#39;, &#39;2017-01-25 16:33:55&#39;, 
+            &#39;2017-01-25 16:33:55&#39;)`);
+}
 </code></pre></div>
 
                                 </td>
@@ -664,38 +672,6 @@ import ballerina/time;
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check jdbcClient -&gt; execute(`INSERT INTO ARRAY_TYPES (row_id, 
-            int_array, long_array, float_array, double_array, boolean_array, 
-            string_array) VALUES (1, (1, 2, 3), (100000000, 200000000, 
-            300000000), (245.23, 5559.49, 8796.123), (245.23, 5559.49, 
-            8796.123), (TRUE, FALSE, TRUE), (&#39;Hello&#39;, &#39;Ballerina&#39;))`);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    result = check jdbcClient -&gt; execute(`Insert into DATE_TIME_TYPES (row_id, 
-            date_type, time_type, timestamp_type, datetime_type) values (1, 
-            &#39;2017-05-23&#39;, &#39;14:15:23&#39;, &#39;2017-01-25 16:33:55&#39;, 
-            &#39;2017-01-25 16:33:55&#39;)`);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -723,9 +699,9 @@ import ballerina/time;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
-            check jdbcClient -&gt; execute(`DROP TABLE BINARY_TYPES`);
-    result = check jdbcClient -&gt; execute(`DROP TABLE ARRAY_TYPES`);
-    result = check jdbcClient -&gt; execute(`DROP TABLE DATE_TIME_TYPES`);
+            check jdbcClient-&gt;execute(`DROP TABLE BINARY_TYPES`);
+    result = check jdbcClient-&gt;execute(`DROP TABLE ARRAY_TYPES`);
+    result = check jdbcClient-&gt;execute(`DROP TABLE DATE_TIME_TYPES`);
 </code></pre></div>
 
                                 </td>

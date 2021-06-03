@@ -7,12 +7,12 @@ permalink: /learn/user-guide/getting-started/writing-your-first-ballerina-progra
 active: writing-your-first-ballerina-program
 intro: Let's create a simple Ballerina HTTP service and also an HTTP client to invoke it.
 redirect_from:
-  - /learn/user-guide/getting-started/writing-your-first-ballerina-program
+- /learn/user-guide/getting-started/writing-your-first-ballerina-program
 ---
 
 A Ballerina application can have:
 
-* a `main()` function will run as a terminating process 
+* a `main()` function will run as a terminating process. 
 * a `service`, is hosted as a non-terminating process. 
   
 Both of these are considered as entry points for program execution.

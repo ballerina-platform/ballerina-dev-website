@@ -8,6 +8,8 @@ active: defining-configurable-variables
 intro: Ballerina supports configurability through the configurable, module-level variables.
 redirect_from:
 - /learn/user-guide/configurability/defining-configurable-variables
+- /learn/user-guide/configurability/
+- /learn/user-guide/configurability
 ---
 
 ## Initialising Configurable Variables
@@ -28,15 +30,15 @@ The `configurable` keyword is used to declare a configurable variable. The initi
 
 The values of configurable variables would always be a subtype of `anydata`. A configurable variable is implicitly `final` and cannot be assigned outside the declaration. The static type of the configurable variable is implicitly `readonly`. Therefore, it can always be referenced within an isolated function.
 
-## Supplying Values to Configurable Variables
+## Providing Values to Configurable Variables
 
 Ballerina supports providing the values for configurable variables through configuration files, command-line arguments, and environment variables. The precedence order for retrieving configurable values is as follows.
 
->**Tip:** For more information on the methods below, see [Supplying Values to Configurable Variables](/learn/user-guide/configurability/supplying-values-to-configurable-variables/).
+>**Tip:** For more information on the methods below, see [Providing Values to Configurable Variables](/learn/user-guide/configurability/providing-values-to-configurable-variables/).
 
 ### Using Command-Line Arguments
 
-The module information of the configurable variable can be provided with command-line argument. For more information, see [Supplying Configurable Values Through Command-Line Arguments](/learn/user-guide/configurability/supplying-values-to-configurable-variables/#supplying-through-command-line-arguments).
+The module information of the configurable variable can be provided with command-line argument. For more information, see [Providing Configurable Values Through Command-Line Arguments](/learn/user-guide/configurability/providing-values-to-configurable-variables/#providing-values-through-command-line-arguments).
 
 ### Using Configuration Files
 
@@ -47,8 +49,6 @@ The values can be provided through configuration files in the [TOML(v0.4) format
 The values can be provided through an environment variable with the name `BAL_CONFIG_DATA` in which the content is expected to be in the [TOML(v0.4) format](https://toml.io/en/v0.4.0). 
 
 ## Securing Sensitive Data Using Configurable Variables
-
-A Ballerina runtime can be configured using configurable variables. For more details, see the [Configurable BBE](/learn/by-example/configurable/).
 
 Configuration values containing passwords or secrets should not be passed with the normal configuration.
 Such sensitive data can be passed to runtime using a different TOML file, and you can prioritize it higher than the normal configuration by prefixing the file path in the `BAL_CONFIG_FILES` environment variable.

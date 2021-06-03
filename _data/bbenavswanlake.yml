@@ -409,27 +409,39 @@
 - title: REST API
   url: '#'
   sublinks:
+    - title: Service Path and Resource Path
+      url: /learn/by-example/http-absolute-path-and-path
+      active: http-absolute-path-and-path
     - title: Service Data Binding
       url: /learn/by-example/http-data-binding
       active: http-data-binding
-    - title: Client Data Binding 
-      url: /learn/by-example/http-client-data-binding
-      active: http-client-data-binding
-    - title: Absolute Path and Resource Path
-      url: /learn/by-example/http-absolute-path-and-path
-      active: http-absolute-path-and-path
     - title: Default Resource
       url: /learn/by-example/http-default-resource
       active: http-default-resource
-    - title: Path Param
+    - title: Path Parameter
       url: /learn/by-example/http-path-param
       active: http-path-param
-    - title: Resource Return Types 
+    - title: Query Parameter
+      url: /learn/by-example/http-query-parameter
+      active: http-query-parameter
+    - title: Matrix Parameter
+      url: /learn/by-example/http-matrix-param
+      active: http-matrix-param
+    - title: Typed Resource Responses
       url: /learn/by-example/http-resource-returns
       active: http-resource-returns
     - title: Restrict By Media Type
       url: /learn/by-example/http-restrict-by-media-type
       active: http-restrict-by-media-type
+- title: REST Client
+  url: '#'
+  sublinks:
+    - title: Client
+      url: /learn/by-example/http-client-endpoint
+      active: http-client-endpoint
+    - title: Client Data Binding
+      url: /learn/by-example/http-client-data-binding
+      active: http-client-data-binding
 - title: REST API Security
   url: '#'
   sublinks:
@@ -475,21 +487,18 @@
     - title: Client - OAuth2 Refresh Token Grant Type
       url: /learn/by-example/http-client-oauth2-refresh-token-grant-type
       active: http-client-oauth2-refresh-token-grant-type
-- title: HTTP
+- title: REST API Advance
   url: '#'
   sublinks:
-    - title: Client
-      url: /learn/by-example/http-client-endpoint
-      active: http-client-endpoint
+    - title: Redirects
+      url: /learn/by-example/http-redirects
+      active: http-redirects
     - title: CORS 
       url: /learn/by-example/http-cors
       active: http-cors
     - title: 100 Continue
       url: /learn/by-example/http-100-continue
       active: http-100-continue
-    - title: Redirects
-      url: /learn/by-example/http-redirects
-      active: http-redirects
     - title: Streaming
       url: /learn/by-example/http-streaming
       active: http-streaming
@@ -499,10 +508,7 @@
     - title: Cookies
       url: /learn/by-example/http-cookies
       active: http-cookies
-    - title: Query Parameter
-      url: /learn/by-example/http-query-parameter
-      active: http-query-parameter
-    - title: Disable Chunking
+    - title: Chunking
       url: http-disable-chunking
       active: http-disable-chunking
     - title: Response With Multiparts

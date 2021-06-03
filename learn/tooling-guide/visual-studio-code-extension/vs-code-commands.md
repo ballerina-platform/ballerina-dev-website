@@ -50,11 +50,11 @@ It is a quick guide to generate documentation for your Ballerina project. Once e
 
 ![Document](/learn/images/document.gif)
 
-## Show Diagram View
+## Show Diagram
 
 It is a palette reference to access the **Diagrams** [view](/learn/tooling-guide/visual-studio-code-extension/diagram-editor/#diagrams-view). On execution, the diagram editor of the first diagram component listed under the **Diagrams** view is rendered.
 
-![Show Diagram View](/learn/images/show-diagram-view.gif)
+![Show Diagram](/learn/images/show-diagram-view.gif)
 
 ## Add Module
 

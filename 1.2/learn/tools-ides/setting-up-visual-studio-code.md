@@ -46,7 +46,7 @@ This downloads the extension and installs it.
 
 ### Installing by Downloading the Extension
 
-1. Download the [Visual Studio Code Ballerina Extension](https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina).
+1. Download the [Visual Studio Code Ballerina Extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
 
 2. Follow either of the below approaches to install the extension.
     - [Using the VS Code editor](#using-the-vs-code-editor)

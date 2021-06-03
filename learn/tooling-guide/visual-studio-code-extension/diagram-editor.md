@@ -26,8 +26,8 @@ By clicking on the **Show Diagram View** button on the editor’s title bar, you
 
 ![Diagram View Button](/learn/images/diagrams-view-command.gif)
 
-## Show Diagram View Palette Command
+## Show Diagram Palette Command
 
-The **Ballerina: Show Diagram View** [command](/learn/tooling-guide/visual-studio-code-extension/vs-code-commands/#show-diagram-view) is available for quick access.
+The **Ballerina: Show Diagram** [command](/learn/tooling-guide/visual-studio-code-extension/vs-code-commands/#show-diagram-view) is available for quick access.
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

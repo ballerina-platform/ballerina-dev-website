@@ -25,7 +25,7 @@ The video series below explores the language concepts of Ballerina Swan Lake. Th
 
 <br/>
 
-You can also find the [slide deck](/learn/language-guide/Ballerina_Language_Presentation-2021-03-08.pdf) used for these presentations below.
+You can also find the [slide deck](/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf) used for these presentations below.
 
 <br/>
 

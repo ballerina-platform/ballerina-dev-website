@@ -77,15 +77,34 @@
       url: /learn/user-guide/testing-ballerina-code/executing-tests
       active: executing-tests
 
-- title: Code Organization 
+- title: 
   url: '#'
   sublinks:
     - title: Documenting Ballerina Code
       url: /learn/user-guide/code-organization/documenting-ballerina-code/
       active: documenting-ballerina-code
+
+- title: Style Guide
+  url: '#'
+  sublinks:
     - title: Coding Conventions
-      url: /learn/user-guide/code-organization/coding-conventions/
+      url: /learn/user-guide/style-guide/coding-conventions/
       active: coding-conventions
+    - title: Top-Level Definitions
+      url: /learn/user-guide/style-guide/coding-conventions/top-level-definitions/
+      active: top-level-definitions
+    - title: Operators, Keywords, and Types
+      url: /learn/user-guide/style-guide/coding-conventions/operators-keywords-and-types/
+      active: operators-keywords-and-types
+    - title: Statements
+      url: /learn/user-guide/style-guide/coding-conventions/statements/
+      active: statements
+    - title: Expressions
+      url: /learn/user-guide/style-guide/coding-conventions/expressions/
+      active: expressions
+    - title: Annotations, Documentation, and Comments
+      url: /learn/user-guide/style-guide/coding-conventions/annotations-documentation-and-comments/
+      active: annotations-documentation-and-comments
 
 - title: Network Communication
   url: '#' 

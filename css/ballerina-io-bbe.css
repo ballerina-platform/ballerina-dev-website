@@ -452,3 +452,7 @@ ol, ul {
 .cLeftTD li {
     list-style: disc !important;
 }
+
+.cLeftTD a {
+    color: #20b6b0 !important;
+}

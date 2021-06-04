@@ -3,7 +3,7 @@
   sublinks:
     - title: Introduction
       url: /learn/by-example/introduction/
-      active: hello-world
+      active: introduction
 - title: Language Concepts
 - title: Hello World
   url: '#'

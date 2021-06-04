@@ -914,11 +914,15 @@
       active: xml-json-conversion
 
 - title: Observability
+- title: Tracing
   url: '#'
   sublinks:  
     - title: Distributed Tracing
       url: /learn/by-example/tracing
       active: tracing
+- title: Metrics
+  url: '#'
+  sublinks:
     - title: Counter-Based Metrics
       url: /learn/by-example/counter-metrics
       active: counter-metrics

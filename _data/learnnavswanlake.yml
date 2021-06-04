@@ -77,7 +77,7 @@
       url: /learn/user-guide/testing-ballerina-code/executing-tests
       active: executing-tests
 
-- title: 
+- title: Generating Code Documentation
   url: '#'
   sublinks:
     - title: Documenting Ballerina Code

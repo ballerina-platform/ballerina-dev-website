@@ -455,4 +455,5 @@ ol, ul {
 
 .cLeftTD a {
     color: #20b6b0 !important;
+    font-family: inherit !important;
 }

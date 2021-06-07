@@ -131,156 +131,54 @@ On the other hand, symbols defined in the test files will not be visible inside 
 
 The Ballerina test framework supports the following assertions, which help to verify the expected behavior of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
 
-
-### assertTrue(boolean expression, string message)
-
-Asserts that the expression is true with an optional message.
-
-***Example:***
-```ballerina
-import ballerina/test;
-
-@test:Config {}
-function testAssertTrue() {
-    boolean value = false;
-    test:assertTrue(value, msg = "AssertTrue failed");
-}
-```
-
-### assertFalse(boolean expression, string message)
-
-Asserts that the expression is false with an optional message.
-
-***Example:***
-```ballerina
-import ballerina/test;
-
-@test:Config {}
-function testAssertFalse() {
-    boolean value = false;
-    test:assertFalse(value, msg = "AssertFalse failed");
-}
-```
-
-### assertEquals(anydata|error actual, anydata expected, string message)
-
-Asserts that the actual value is equal to the expected value with an optional message.
-
-***Example:***
-```ballerina
-import ballerina/test;
-
-@test:Config {}
-function testAssertIntEquals() {
-
-    int answer = 0;
-    int a = 5;
-    int b = 3;
-    answer = intAdd(a, b);
-    test:assertEquals(answer, 8, msg = "IntAdd function failed");
-}
-
-function intAdd(int a, int b) returns (int) {
-    return (a + b);
-}
-```
-
-### assertNotEquals(anydata actual, anydata expected, string message)
-
-Asserts that the actual value is not equal to the expected value with an optional message.
-
-***Example:***
-
-```ballerina
-import ballerina/test;
-
-@test:Config {}
-function testAssertIntEquals() {
-
-    int answer = 0;
-    int a = 5;
-    int b = 3;
-    answer = intAdd(a, b);
-    test:assertNotEquals(answer, 8, msg = "Matches");
-}
-
-function intAdd(int a, int b) returns (int) {
-    return (a + b);
-}
-```
-
-### assertExactEquals(any|error actual, any|error expected, string message)
-
-Asserts that the actual entity is exactly equal to the expected entity with an optional message.
-
-***Example:***
-```ballerina
-import ballerina/test;
-
-class Person {
-    public string name = "";
-    public int age = 0;
-    public Person? parent = ();
-    private string email = "default@abc.com";
-    string address = "No 20, Palm grove";
-}
-
-@test:Config {}
-function testAssertExactEqualsObject() {
-    Person p1 = new;
-    Person p2 = p1;
-    test:assertExactEquals(p1, p2, msg = "Objects are not exactly equal");
-}
-```
-
-### assertNotExactEquals(any|error actual, any|error expected, string message)
-
-Asserts that the actual entity is not exactly equal to the expected entity with an optional message.
-
-***Example:***
-
-```ballerina
-import ballerina/test;
-
-class Person {
-    public string name = "";
-    public int age = 0;
-    public Person? parent = ();
-    private string email = "default@abc.com";
-    string address = "No 20, Palm grove";
-}
-
-@test:Config {}
-function testAssertNotExactEqualsObject() {
-    Person p1 = new;
-    Person p2 = new ();
-    test:assertNotExactEquals(p1, p2, msg = "Objects are exactly equal");
-}
-```
-
-### assertFail(string message)
-
-Fails the test. This is useful to fail a test based on a check for a condition while it is in execution.
-
-***Example:***
-
-```ballerina
-import ballerina/test;
-
-@test:Config {}
-function foo() {
-    error? e = trap bar(); // Expecting `bar()` to panic
-    if (e is error) {
-        test:assertEquals(e.message().toString(), "Invalid Operation", msg = "Invalid error reason"); // Some other assertions
-    } else {
-        test:assertFail(msg = "Expected an error");
-    }
-}
-
-function bar() {
-    panic error("Invalid Operation");
-}
-```
+<table class="table cCodeTable" >
+    <tr>
+       <th class="cDescription">Assertion Function</th>
+       <th class="cCodeCol">Description</th>
+    </tr>
+    <tr>
+       <td>assertTrue(boolean expression, string message)</td>
+       <td>
+          Asserts that the expression is true with an optional message.
+       </td>
+    </tr>
+    <tr>
+       <td>assertFalse(boolean expression, string message)</td>
+       <td>
+          Asserts that the expression is false with an optional message.
+       </td>
+    </tr>
+    <tr>
+       <td>assertEquals(anydata|error actual, anydata expected, string message)</td>
+       <td>
+          Asserts that the actual value is equal to the expected value with an optional message.
+       </td>
+    </tr>
+    <tr>
+       <td>assertNotEquals(anydata actual, anydata expected, string message)</td>
+       <td>
+          Asserts that the actual value is not equal to the expected value with an optional message.
+       </td>
+    </tr>
+    <tr>
+       <td>assertExactEquals(any|error actual, any|error expected, string message)</td>
+       <td>
+          Asserts that the actual entity is exactly equal to the expected entity with an optional message.
+       </td>
+    </tr>
+    <tr>
+       <td>assertNotExactEquals(any|error actual, any|error expected, string message)</td>
+       <td>
+          Asserts that the actual entity is not exactly equal to the expected entity with an optional message.
+       </td>
+    </tr>
+    <tr>
+       <td>assertFail(string message)</td>
+       <td>
+           Fails the test. This is useful to fail a test based on a check for a condition while it is in execution.
+       </td>
+    </tr>
+</table>
 
 ### Difference between expected and actual values when using 'assertEquals'
 

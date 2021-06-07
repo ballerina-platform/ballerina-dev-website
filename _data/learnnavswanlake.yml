@@ -70,6 +70,9 @@
     - title: Writing Tests
       url: /learn/user-guide/testing-ballerina-code/writing-tests
       active: writing-tests
+    - title: Testing Services and Clients
+      url: /learn/user-guide/testing-ballerina-code/testing-services-and-clients
+      active: testing-services-and-clients
     - title: Mocking
       url: /learn/user-guide/testing-ballerina-code/mocking
       active: mocking

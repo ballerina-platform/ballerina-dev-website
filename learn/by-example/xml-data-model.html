@@ -52,15 +52,15 @@ redirect_from:
  <li><code>text</code> item corresponds to one or more Character Information Items</li>
  </ul>
 <br></br>
- XML document is an <code>xml</code> sequence with only one <code>element</code> and no <code>text</code>. An <code>element</code> item is mutable
- and consists of:
+ <p>XML document is an <code>xml</code> sequence with only one <code>element</code> and no <code>text</code>. An <code>element</code> item is mutable
+ and consists of:</p>
  <ul>
  <li>name: type <code>string</code></li>
  <li>attributes: type <code>map&lt;string&gt;</code></li>
  <li>children: type <code>xml</code></li>
  </ul>
 <br></br>
- A <code>text</code> item is immutable.
+ <p>A <code>text</code> item is immutable.</p>
  <ul>
  <li>it has no identity: <code>==</code> is the same as <code>===</code></li>
  <li>consecutive <code>text</code> items never occur in an <code>xml</code> value: they are always merged</li>

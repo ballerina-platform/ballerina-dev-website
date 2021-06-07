@@ -34,6 +34,7 @@ Follow the steps below to install the Ballerina extension.
 
   >**Tip:** To verify if the extension is installed, check if the Ballerina SDK Version is displayed on the VSCode status bar. If you get `Ballerina SDK: Error` or `Ballerina SDK: Detecting` on the status bar, [enable extension debug logs](/learn/tooling-guide/visual-studio-code-extension/configurations/#debug-log) to troubleshoot.
 
+  ![Diagrams View](/learn/images/show-version-on-vscode.png)
 
 ## Running Your First Ballerina Program
 

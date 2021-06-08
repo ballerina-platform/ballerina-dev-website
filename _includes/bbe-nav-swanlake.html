@@ -28,6 +28,7 @@
             {% else %}
             {% endif %}
             {% for sample in samples %}
+            {% assign permalink = 'learn/by-example' | append: sample.url %}
             <!-- <li {{ current-sub }} ><a href="{{ site.baseurl }}{{ samples.permalink  }}">- {{ samples.title }}</a></li> -->
             <li{% if sample.url == page.url %} class="current-sub"{% endif %}><a href="{{ sample.permalink  }}">{{ sample.name }}</a></li>
             {% endfor %}

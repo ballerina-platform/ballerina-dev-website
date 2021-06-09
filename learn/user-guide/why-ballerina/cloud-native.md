@@ -15,6 +15,7 @@ redirect_from:
   - /learn/user-guide
   - /learn/user-guide/why-ballerina/
   - /learn/user-guide/why-ballerina
+  - /learn/user-guide/why-ballerina/cloud-native
 ---
 
 In a microservice architecture, smaller services are developed, deployed, and scaled individually. These disaggregated services communicate with each other over the network forcing developers to deal with the [Fallacies of Distributed Computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) in their application logic. For decades, programming languages have treated networks simply as I/O sources. The sections below demonstrate a few of Ballerina's inherent capabilities to develop distributed services effectively and the cloud native deployment process that is provided as part of the programming experience. 
@@ -256,7 +257,7 @@ With (Ballerina GitHub Actions)[https://github.com/marketplace/actions/ballerina
 .nav > li.cVersionItem {
     display: none !important;
 }
-.cBalleinaBreadcrumbs li:nth-child(3) , .cBalleinaBreadcrumbs li:nth-child(2) {
+/**.cBalleinaBreadcrumbs li:nth-child(3) , .cBalleinaBreadcrumbs li:nth-child(2) {
    display:none !important;
-}
+}**/
 </style>

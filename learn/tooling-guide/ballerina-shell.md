@@ -55,7 +55,7 @@ A module can be imported as follows. Once a module is imported, it can be used i
 =$ import ballerina/io
 ```
 
-Execute the `/imports` command below to view the list of the imported modules.
+Execute the `/imports` command to view the list of the imported modules.
 
 ```bash
 =$ /imports

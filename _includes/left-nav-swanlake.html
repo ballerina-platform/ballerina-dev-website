@@ -8,7 +8,7 @@
 {% endif %}
 {% endfor %}
 <!-- Then we build the nav bar. -->
-<nav class="cLeftNavContainer">
+<nav class="cLeftNavContainer cLeftNavContainerScroll">
    <ul class="cMainLeftNav">
       {% for entry in site.data.learnnavswanlake %}
       {% if entry.url == current_page %}
@@ -29,7 +29,20 @@
             {% endif %}
             {% for sublink in sublinks %}
             <!-- <li {{ current-sub }} ><a href="{{ site.baseurl }}{{ sublink.url }}">- {{ sublink.title }}</a></li> -->
+            {% assign sublinkLevels = sublink.innersublinks %}
+            {% if sublinkLevels %} 
+          
+            <li {% if sublink.active == page.active %} class="current-sub"{% endif %}>
+                  <div class="cLeftMenuLink cTopiAtag">{{ sublink.title }}</div>  
+                  <ul class="sub-ul-two">
+                     {% for sublinkLevel in sublinkLevels %} 
+                     <li {% if sublinkLevel.active == page.active %} class="current-inner-sub"{% endif %}><a href="{{sublinkLevel.url}}">{{sublinkLevel.title}}</a></li>
+                     {% endfor %}
+                  </ul>  
+            </li> 
+            {% else %}
             <li{% if sublink.active == page.active %} class="current-sub"{% endif %}><a href="{{ sublink.url }}">{{ sublink.title }}</a></li>
+            {% endif %}
             {% endfor %}
          </ul>
       </li>

@@ -95,7 +95,14 @@
   sublinks:
     - title: HTTP
       url: /learn/user-guide/network-communication/http/
-      active: http
+      active: http 
+      innersublinks:
+        - title: HTTP Clients
+          url: /learn/user-guide/network-communication/http/http-clients/
+          active: http-clients
+        - title: HTTP Services
+          url: /learn/user-guide/network-communication/http/http-services/
+          active: http-services
     - title: gRPC
       url: /learn/user-guide/network-communication/grpc/
       active: grpc

@@ -77,7 +77,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 With this release we will be introducing Ballerina Packages. Ballerina Package is a bundle that consist of one or more Ballerina modules. Going forward, the Ballerina Package will be used to share Ballerina libraries. 
 
 
-With the introduction of Ballerina packages Ballerina project structure and build tools has also been changed. Please refer to the [Structuring Ballerina Code](https://ballerina.io/swan-lake/learn/structuring-ballerina-code/) page for more details. 
+With the introduction of Ballerina packages Ballerina project structure and build tools has also been changed. Please refer to the [Structuring Ballerina Code](/learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/) page for more details. 
 
 
 For Swan Lake releases Ballerina Central will support users to push and pull Ballerina Packages. Going forward It will not be possible to push individual modules with swan lake releases. With the preview releases you have the ability to push and pull Ballerina Packages to/from Central. However the Packages pushed using preview releases will be cleared when we release the swan lake GA release.You can use the existing Ballerina Central key to push Packages.

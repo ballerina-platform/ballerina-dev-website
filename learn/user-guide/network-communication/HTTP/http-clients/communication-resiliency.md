@@ -141,7 +141,7 @@ public function main() returns @tainted error? {
 
 In the above code, the three hosts configured using the `targets` property provide the list of base URLs used for the load balancing requests. 
 
-For more detailed configuration options, see the [http:LoadBalanceClientConfiguration](https://docs.central.ballerina.io/ballerina/http/latest/records/LoadBalanceClientConfiguration).
+For more detailed configuration options, see the [`http:LoadBalanceClientConfiguration`](https://docs.central.ballerina.io/ballerina/http/latest/clients/LoadBalanceClient).
 
 ## Handling Failover Scenarios
 
@@ -166,7 +166,7 @@ public function main() returns @tainted error? {
 }
 ```
 
-For more detailed configuration options of the failover client, see the [`http:FailoverClientConfiguration`](https://docs.central.ballerina.io/ballerina/http/latest/records/FailoverClientConfiguration). 
+For more detailed configuration options of the failover client, see the [`http:FailoverClientConfiguration`](https://docs.central.ballerina.io/ballerina/http/latest/clients/FailoverClient). 
 
 ## What's Next?
 

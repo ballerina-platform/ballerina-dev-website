@@ -19,7 +19,7 @@ redirect_from:
 
 ## Data Streaming Modes
 
-In Ballerina, the clients automatically switch between the chunked or non-chunked modes based on the size of the content provided as the payload. This is controlled by the [`http:ClientConfiguration`](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientConfiguration) object’s [`http1Settings.chunking`](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings) property, which has a default value of [`AUTO`](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_AUTO). The fully supported modes are as follows.
+In Ballerina, the clients automatically switch between the chunked or non-chunked modes based on the size of the content provided as the payload. This is controlled by the [`http:ClientConfiguration`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client) object’s [`http1Settings.chunking`](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings) property, which has a default value of [`AUTO`](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_AUTO). The fully supported modes are as follows.
 
 - [`AUTO:`](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_AUTO): If the payload is less than 8KB, the client will not use chunking. It will load the full content to the memory, set the “Content-Length” header with the content size, and send out the request. Otherwise, it will use chunking to stream the data to the remote endpoint. 
 - [`ALWAYS:`](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_ALWAYS): The client will always use chunking to stream the payload to the remote endpoint. 

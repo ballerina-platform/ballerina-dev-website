@@ -1,6 +1,6 @@
 nav.cLeftNavContainer {
   padding-top: 10px;
-  padding-right: 30px;
+  padding-right: 5px;
 }
 nav.cLeftNavContainer ul {
   padding: 0;
@@ -299,14 +299,15 @@ a.cTopLink:hover {
   width: 120px;
 }
 
-.cLeftNavSticky {
-  position: sticky;
-  top: 80px;
-}
-
-.cLeftNavContainerScroll {
-  height: 80vh;
-  overflow-y: scroll;
+@media only screen and (min-width: 992px) {
+  .cLeftNavSticky {
+    position: sticky;
+    top: 80px;
+  }
+  .cLeftNavContainerScroll {
+    height: calc(100vh - 140px);
+    overflow-y: scroll;
+  }
 }
 
 .cLeftNavContainerScroll::-webkit-scrollbar {
@@ -348,7 +349,7 @@ a.cTopLink:hover {
 /* Chrome 22-28 */
 @media screen and(-webkit-min-device-pixel-ratio:0) {
   .span.icon {
-    -chrome-: only(; margin-left: -21px;);
+    -chrome-: only(margin-left: -21px;);
   }
 }
 

@@ -98,7 +98,7 @@ Type definitions can be written just as you write them in a source file. The She
  > }
 ```
 
-Execute the `/dclns` command below to view the defined types (and other module-level declarations).
+Execute the `/dclns` command to view the defined types (and other module-level declarations).
 
 ```bash
 =$ /dclns                                                                                                                                                                                                          

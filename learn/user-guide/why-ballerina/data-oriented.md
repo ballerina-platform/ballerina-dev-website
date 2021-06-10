@@ -251,7 +251,7 @@ The `main` method is responsible for identifying the popular books according to 
 .nav > li.cVersionItem {
     display: none !important;
 }
-.cBalleinaBreadcrumbs li:nth-child(3) , .cBalleinaBreadcrumbs li:nth-child(2) {
+/**.cBalleinaBreadcrumbs li:nth-child(3) , .cBalleinaBreadcrumbs li:nth-child(2) {
    display:none !important;
-}
+}**/
 </style>

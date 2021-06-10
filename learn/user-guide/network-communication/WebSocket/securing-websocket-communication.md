@@ -111,6 +111,6 @@ var ws = new WebSocket("wss://localhost:8443/ws");
     Response: Echo: Hello, World!
     ```
 
-    In the code above, you created a [`websocket:Client`](https://docs.central.ballerina.io/ballerina/websocket/latest/clients/Client) by providing the [`websocket:ClientConfiguration`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/ClientConfiguration) value containing the secure socket parameters. From here onwards, any communication done from the client to the WebSocket server will be done with TLS.
+    In the code above, you created a [`websocket:Client`](https://docs.central.ballerina.io/ballerina/websocket/latest/clients/Client) by providing the [`websocket:ClientConfiguration`](https://docs.central.ballerina.io/ballerina/websocket/latest/clients/Client) value containing the secure socket parameters. From here onwards, any communication done from the client to the WebSocket server will be done with TLS.
 
 <style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

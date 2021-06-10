@@ -1,337 +1,373 @@
 nav.cLeftNavContainer {
-    padding-top: 10px;
-    padding-right: 30px;
-    }
-    nav.cLeftNavContainer ul {
-    padding: 0;
-    }
-    nav.cLeftNavContainer ul li {
-    padding: 0;
-    border-bottom: 1px solid #e6e6e6;
-    }
-    nav.cLeftNavContainer ul li:last-child {
-    border: none;
-    }
-    nav.cLeftNavContainer ul li.current a , nav.cLeftNavContainer ul li.current-sub a {
-    color: #464646;
-    font-weight: 600;
-    }
-    .sub-menu {
-    background-image: url("/img/down-arrow-learn.svg");
-    background-size: 15px;
-    background-repeat: no-repeat;
-    background-position: right 15px;
-    transition: all .5s ease 0s;
-    }
-    /* sub-ul */
-    .sub-ul.showmenu {
+  padding-top: 10px;
+  padding-right: 5px;
+}
+nav.cLeftNavContainer ul {
+  padding: 0;
+}
+nav.cLeftNavContainer ul li {
+  padding: 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+nav.cLeftNavContainer ul li:last-child {
+  border: none;
+}
+nav.cLeftNavContainer ul li.current a,
+nav.cLeftNavContainer ul li.current-sub a {
+  color: #464646;
+  font-weight: 600;
+}
+.sub-menu {
+  background-image: url("/img/down-arrow-learn.svg");
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: right 15px;
+  transition: all 0.5s ease 0s;
+}
+/* sub-ul */
+/* .sub-ul.showmenu {
     display: block !important;
-    }
-    .sub-menu.OpenUL , .sub-menu.OpenULElement {
-    padding: 2px 0px 0 0px;
-    background-color: #f7f7f7;
-    transition: all .5s ease 0s;
-    /* border: 1px solid #e6e6e6; */
-    border-top: none;
-    margin-top: -1px;
-    }
-    .sub-menu.OpenULElement {
-    background-image: url("/img/up-arrow-learn.svg");
-    cursor: pointer;
-    }
-    .sub-menu.OpenUL {
+    } */
+
+.sub-menu.CurrentUl .cLeftMenuLink {
+  color: #464646 !important;
+  font-weight: 600;
+  padding-left: 10px;
+}
+.sub-menu.CurrentUl.OpenUL .cLeftMenuLink {
+  font-weight: 400;
+}
+.sub-menu.CurrentUl {
+  background-color: #f0f0f0;
+}
+.sub-menu.OpenUL,
+.sub-menu.OpenULElement {
+  padding: 2px 0px 0 0px;
+  background-color: #f7f7f7;
+  transition: all 0.5s ease 0s;
+  /* border: 1px solid #e6e6e6; */
+  border-top: none;
+  margin-top: -1px;
+  background-image: url("/img/up-arrow-learn.svg");
+  cursor: pointer;
+}
+.sub-menu.OpenULElement {
+  background-image: url("/img/up-arrow-learn.svg");
+  cursor: pointer;
+}
+/* .sub-menu.OpenUL {
     background-image: none;
-    }
-    .sub-menu.OpenUL .cLeftMenuLink.cTopiAtag {
-    cursor: text !important;
-    }
-    .cLeftMenuLink.cTopiAtag {
-    cursor: pointer;
-    }
-    .sub-menu.OpenUL ul, .sub-menu.OpenULElement ul {
-    padding-left: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    transition: all .5s ease 0s;
-    }
-    .sub-menu.OpenUL.cTopicURL , .sub-menu.OpenULElement.cTopicURL {
-    color: #464646 !important;
-    /* font-weight: 600; */
-    background-color: #f0f0f0;
-    padding-left: 0px;
-    /* cursor: pointer; */
-    }
-    .sub-menu.OpenUL a.cTopiAtag  , .sub-menu.OpenULElement .cTopiAtag , .sub-menu.OpenULElement .cLeftMenuLink , .sub-menu.OpenUL .cLeftMenuLink {
-    color: #464646 !important;
-    padding-left: 10px;
-    transition: all .5s ease 0s;
-    /* cursor: pointer; */
-    }
-    /* nav.cLeftNavContainer ul li::after {
+    } */
+.sub-menu.OpenUL .cLeftMenuLink.cTopiAtag {
+  /* cursor: text !important; */
+}
+.cLeftMenuLink.cTopiAtag {
+  cursor: pointer;
+}
+.sub-menu.OpenUL ul,
+.sub-menu.OpenULElement ul {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  transition: all 0.5s ease 0s;
+}
+.sub-menu.OpenUL.cTopicURL,
+.sub-menu.OpenULElement.cTopicURL {
+  color: #464646 !important;
+  /* font-weight: 600; */
+  background-color: #f0f0f0;
+  padding-left: 0px;
+  /* cursor: pointer; */
+}
+.sub-menu.OpenUL a.cTopiAtag,
+.sub-menu.OpenULElement .cTopiAtag,
+.sub-menu.OpenULElement .cLeftMenuLink,
+.sub-menu.OpenUL .cLeftMenuLink {
+  color: #464646 !important;
+  padding-left: 10px;
+  transition: all 0.5s ease 0s;
+  /* cursor: pointer; */
+}
+/* nav.cLeftNavContainer ul li::after {
     background-color: seagreen;
     } */
-    nav.cLeftNavContainer ul li a , nav.cLeftNavContainer ul li .cLeftMenuLink {
-    padding: 10px 0;
-    display: inline-block;
-    width: 100%;
-    color: #22b7b1;
-    padding-right: 30px;
-    transition: all .5s ease 0s;
-    }
-    nav.cLeftNavContainer ul li ul li a {
-    padding-right: 0;
-    padding-left: 15px;
-    }
-    /* nav.cLeftNavContainer ul li ul li::before {
+nav.cLeftNavContainer ul li a,
+nav.cLeftNavContainer ul li .cLeftMenuLink {
+  padding: 10px 0;
+  display: inline-block;
+  width: 100%;
+  color: #22b7b1;
+  padding-right: 30px;
+  transition: all 0.5s ease 0s;
+}
+nav.cLeftNavContainer ul li ul li a {
+  padding-right: 0;
+  padding-left: 15px;
+}
+/* nav.cLeftNavContainer ul li ul li::before {
     content: "–";
     position: absolute;
     display: inline-block;
     line-height: 43px;
     transition: all .5s ease 0s;
     } */
-    ul.sub-ul.Open-submenu {
-    display: block !important;
-    transition: all .5s ease 0s;
-    }
-    ul.sub-ul {
-    background-color: #f7f7f7;
-    }
-    /* LANDING PAGE */
-    .cLandingPageintro {
-    padding-top: 0;;
-    }
-    .cBallerina-io .cLearnPageContentCol h2 {
-    margin-top: 20px;
-    font-size: 24px;
-    margin-bottom: 20px;
-    }
-    .cLearnPageContentCol  {
-    /* min-height: 340px; */
-    margin-bottom: 30px;
-    }
-    ul.cLearnLandingLinks {
-    margin: 20px 0 0 0;
-    padding: 0;;   
-    }
-    ul.cLearnLandingLinks li {
-    list-style: none !important;
-    padding-left: 40px;
-    background-image: url("/img/toc-bg.svg");
-    background-repeat: no-repeat;
-    background-position: left center;
-    margin: 0 0 10px 0;
-    margin-left: 0 !important;
-    }
-    ul.cLearnLandingLinks li::marker {
-    margin-left: 0px !important;
-    }
-    ul.cLearnLandingLinks li a {
-    font-weight: 400;
-    }
-    .cBoxLink {
-        padding: 30px;
-        background-color: #f7f7f7;
-        display: inline-block;
-        min-height: 375px;
-        border: 1px solid #f7f7f7;
-        text-align: center;
-    }
+ul.sub-ul.Open-submenu {
+  display: block;
+  transition: all 0.5s ease 0s;
+}
+ul.sub-ul {
+  background-color: #f7f7f7;
+}
+/* LANDING PAGE */
+.cLandingPageintro {
+  padding-top: 0;
+}
+.cBallerina-io .cLearnPageContentCol h2 {
+  margin-top: 20px;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.cLearnPageContentCol {
+  /* min-height: 340px; */
+  margin-bottom: 30px;
+}
+ul.cLearnLandingLinks {
+  margin: 20px 0 0 0;
+  padding: 0;
+}
+ul.cLearnLandingLinks li {
+  list-style: none !important;
+  padding-left: 40px;
+  background-image: url("/img/toc-bg.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  margin: 0 0 10px 0;
+  margin-left: 0 !important;
+}
+ul.cLearnLandingLinks li::marker {
+  margin-left: 0px !important;
+}
+ul.cLearnLandingLinks li a {
+  font-weight: 400;
+}
+.cBoxLink {
+  padding: 30px;
+  background-color: #f7f7f7;
+  display: inline-block;
+  min-height: 375px;
+  border: 1px solid #f7f7f7;
+  text-align: center;
+}
 
-    .cBoxLink:hover {
-        border: 1px solid #20b6b0;
-    }
+.cBoxLink:hover {
+  border: 1px solid #20b6b0;
+}
 
-    a.cBoxLink:focus a.cIconLink:focus{
-        text-decoration: none !important;
-    }
+a.cBoxLink:focus a.cIconLink:focus {
+  text-decoration: none !important;
+}
 
-    .cBoxLink h2 {
-        color: #20b6b0;
-        border-color: transparent;
-        background-color: transparent;
-    /* background-image: url("/img/go-bg-green.svg") !important; */
-    border-bottom: none;
-    background-repeat: no-repeat;
-    width: 100%;
-    background-size: 50px;
-    background-position: right;
-    padding-bottom: 0;
-    margin-top: 0 !important;
-    height: 50px;
-    line-height:50px;
-    font-size: 22px !important;
-    margin-bottom: 10px !important;
-    
-    }
-    .cBoxLink:hover h2 {
-        color: #585A5E;
-        border-color: #585A5E;
-    }
-    #tree li {
-        /* padding: 0 0 10px 0; */
-        padding-right: 0px;
-        list-style-image: url('/img/toc-list.svg') !important;
+.cBoxLink h2 {
+  color: #20b6b0;
+  border-color: transparent;
+  background-color: transparent;
+  /* background-image: url("/img/go-bg-green.svg") !important; */
+  border-bottom: none;
+  background-repeat: no-repeat;
+  width: 100%;
+  background-size: 50px;
+  background-position: right;
+  padding-bottom: 0;
+  margin-top: 0 !important;
+  height: 50px;
+  line-height: 50px;
+  font-size: 22px !important;
+  margin-bottom: 10px !important;
+}
+.cBoxLink:hover h2 {
+  color: #585a5e;
+  border-color: #585a5e;
+}
+#tree li {
+  /* padding: 0 0 10px 0; */
+  padding-right: 0px;
+  list-style-image: url("/img/toc-list.svg") !important;
 
-    /* padding-right: 30px; */
+  /* padding-right: 30px; */
+}
+li.expanded {
+  /* border-left: 1px solid #20b6b0; */
+  /* margin-bottom: 10px; */
+}
 
-    }
-    li.expanded {
-        /* border-left: 1px solid #20b6b0; */
-        /* margin-bottom: 10px; */
-    }
+.abix-tree-list .collapsed span.icon,
+.abix-tree-list .expanded span.icon {
+  margin-right: 10px;
+  cursor: pointer;
+}
 
-    .abix-tree-list .collapsed span.icon, .abix-tree-list .expanded span.icon {
-        margin-right: 10px;
-        cursor: pointer;
-    }
-
-    
-ul#tree  {
-    padding-left: 20px;
+ul#tree {
+  padding-left: 20px;
 }
 
 #tree li a {
-    font-size: 16px !important;
-    font-weight: 600;
-    margin-bottom: 5px;
-    display: inline-block;
+  font-size: 16px !important;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: inline-block;
 }
 
 #tree li li a {
-    font-size: 16px !important;
-    font-weight: 500;
+  font-size: 16px !important;
+  font-weight: 500;
 }
 
 #tree li li li a {
-    font-size: 16px !important;
-    font-weight: 400;
+  font-size: 16px !important;
+  font-weight: 400;
 }
 
 #tree li li li li a {
-    font-size: 16px !important;
-    font-weight: 300;
+  font-size: 16px !important;
+  font-weight: 300;
 }
 
+span.icon {
+  background-color: transparent;
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  margin-left: -23px;
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
+span.icon:hover {
+  background-color: #464646;
+}
 
-    span.icon {
-        background-color: transparent;
-        width: 14px;
-        height: 14px; 
-        display: inline-block;
-        margin-left: -23px;
-        background-size: 12px;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-
-    span.icon:hover {
-        background-color: #464646;
-
-    }
-
-
-
-
-    span.icon.plus-icon {
-    background-image: url("/img/plus.svg");
-    background-size: 8px;
-    
-
+span.icon.plus-icon {
+  background-image: url("/img/plus.svg");
+  background-size: 8px;
 }
 
 span.icon.minus-icon {
-    background-image: url("/img/minus.svg");
-    background-color: #464646;
-    
-
+  background-image: url("/img/minus.svg");
+  background-color: #464646;
 }
 
 .cBallerinaTocContainer {
-    background-color: #f7f7f7;
-    display: inline-block;
-    width: 100%;
-    padding: 30px 30px 20px 30px;
+  background-color: #f7f7f7;
+  display: inline-block;
+  width: 100%;
+  padding: 30px 30px 20px 30px;
 }
 
 p.cTOCcontol {
-    margin-top: 0;
-    margin-bottom: 30px;
+  margin-top: 0;
+  margin-bottom: 30px;
 }
 
 .cPositionRelative {
-    position: relative;
+  position: relative;
 }
- 
+
 a.cTopLink {
-	position: fixed;
-	bottom: 30px;
-	right: 0px;
-	padding: 10px 20px;
-	background: #20b6b0;
-	color: #fff !important;
-	font-weight: 600;
+  position: fixed;
+  bottom: 30px;
+  right: 0px;
+  padding: 10px 20px;
+  background: #20b6b0;
+  color: #fff !important;
+  font-weight: 600;
 }
 a.cTopLink.dispalaynone {
-    display: none;
+  display: none;
 }
 
 a.cTopLink:hover {
-background-color: #464646 !important;
-color: #fff !important;
+  background-color: #464646 !important;
+  color: #fff !important;
 }
 
 .cBallerina-io-breadcrumbs {
-    padding: 0;
+  padding: 0;
 }
 
 .cLearnIcon {
-	width: 120px;
+  width: 120px;
 }
 
-
-
-
-  
-  /* Chrome 29+ */
-  @media screen and (-webkit-min-device-pixel-ratio:0)
-    and (min-resolution:.001dpcm) {
-        span.icon {
-            background-color: transparent;
-            width: 14px;
-            height: 14px;
-            display: inline-block;
-            margin-left: -21px;
-            background-size: 12px;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
+@media only screen and (min-width: 992px) {
+  .cLeftNavSticky {
+    position: sticky;
+    top: 80px;
   }
-  
-  /* Chrome 22-28 */
-  @media screen and(-webkit-min-device-pixel-ratio:0) {
-    .span.icon {-chrome-:only(; 
-        margin-left: -21px;
-    );} 
+  .cLeftNavContainerScroll {
+    height: calc(100vh - 140px);
+    overflow-y: scroll;
+  }
+}
+
+.cLeftNavContainerScroll::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.cLeftNavContainerScroll::-webkit-scrollbar:vertical {
+  width: 11px;
+}
+
+.cLeftNavContainerScroll::-webkit-scrollbar:horizontal {
+  height: 11px;
+}
+
+.cLeftNavContainerScroll::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid white; /* should match background, can't be transparent */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.cLeftNavContainerScroll::-webkit-scrollbar-track {
+  background-color: #fff;
+  border-radius: 8px;
+}
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  span.icon {
+    background-color: transparent;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-left: -21px;
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+/* Chrome 22-28 */
+@media screen and(-webkit-min-device-pixel-ratio:0) {
+  .span.icon {
+    -chrome-: only(margin-left: -21px;);
+  }
+}
+
+@-moz-document url-prefix() {
+  .abix-tree-list .collapsed span.icon,
+  .abix-tree-list .expanded span.icon {
+    margin-right: 8px;
+    cursor: pointer;
   }
 
-
-
-  @-moz-document url-prefix() {
-    .abix-tree-list .collapsed span.icon, .abix-tree-list .expanded span.icon {
-        margin-right: 8px;
-        cursor: pointer;
-    }
-    
-    span.icon {
-        background-color: transparent;
-        width: 14px;
-        height: 14px;
-        display: inline-block;
-        margin-left: -23px;
-        background-size: 12px;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-
+  span.icon {
+    background-color: transparent;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-left: -23px;
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
   }
+}

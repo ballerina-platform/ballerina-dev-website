@@ -1,17 +1,25 @@
-{% for entry in site.data.all-bbes %}
-{% capture fullurl %}{{ site.baseurl }}{{ entry.permalink }}{% endcapture %}
-{% if fullurl == page.permalink %}
+{% assign eurl = '#' %}
+{% for entry in site.data.bbenavswanlake %}
+{% capture fullurl %}{{ site.baseurl }}{{ eurl }}{% endcapture %}
+{% if fullurl == page.url %}
 {% assign current_page = fullurl %}
 {% break %}
-{% elsif page.permalink contains fullurl %}
+{% elsif page.url contains fullurl %}
 {% assign current_page = fullurl %}
 {% endif %}
 {% endfor %}
 <!-- Then we build the nav bar. -->
 <nav class="cLeftNavContainer cLeftNavContainerScroll">
    <ul class="cMainLeftNav">
+      <li class="cTitleOnly" {% if eurl == page.url %} class="current"{% endif %}>Ballerina By Example</li>
+      <li{% if sample.url == page.active %} class="current-sub"{% endif %}><a href="/learn/by-example/introduction/">Introduction</a></li>
+      {% assign category = '' %}
       {% for entry in site.data.all-bbes %}
-      {% if entry.permalink  == current_page %}
+      {% unless category contains entry.category %}
+      {% assign category = category | append: entry.category %}
+      <li class="cTitleOnly" {% if eurl == page.url %} class="current"{% endif %}>{{ entry.category }}</li>
+      {% endunless %}
+      {% if eurl == current_page %}
       {% assign current = ' class="current"' %}
       {% else %}
       <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
@@ -22,21 +30,19 @@
       <li class="sub-menu cTopicURL">
          <div class="cLeftMenuLink cTopiAtag">{{ entry.title }} </div>
          <ul class="sub-ul">
-            {% if samples.permalink  == current_page %}
+            {% if sample.url == current_page %}
             <!-- {% assign current = ' class="current"' %} -->
-            {% assign page.url = ' class="current-sub"' %}
+            {% assign page.active = ' class="current-sub"' %}
             {% else %}
             {% endif %}
             {% for sample in samples %}
-            {% assign permalink = 'learn/by-example' | append: sample.url %}
-            <!-- <li {{ current-sub }} ><a href="{{ site.baseurl }}{{ samples.permalink  }}">- {{ samples.title }}</a></li> -->
-            <li{% if sample.url == page.url %} class="current-sub"{% endif %}><a href="{{ sample.permalink  }}">{{ sample.name }}</a></li>
+            {% assign permalink = '/learn/by-example/' | append: sample.url %}
+            <li{% if sample.url == page.active %} class="current-sub"{% endif %}><a href="{{ permalink }}">{{ sample.name }}</a></li>
             {% endfor %}
          </ul>
       </li>
       {% else %}
-      <!-- <li{{ current }}><a href="{{ site.baseurl }}{{ entry.permalink  }}">- {{ entry.title }}</a></li> -->
-      <li class="cTitleOnly" {% if entry.url == page.url %} class="current"{% endif %}>{{ entry.title }}</li>
+      <li class="cTitleOnly" {% if entry.active == page.active %} class="current"{% endif %}>{{ entry.title }}</li>
       {% endif %}
       {% endfor %}
    </ul>

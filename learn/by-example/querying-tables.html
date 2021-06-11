@@ -28,10 +28,11 @@ redirect_from:
     <span class="p">];</span>
 
     <span class="c1">// `from` clause iterates `employees` `table`.</span>
-    <span class="c1">// The contextually expected type of the `query expression` is an `int[]`.</span>
+    <span class="c1">// The contextually-expected type of the `query expression` is an `int[]`.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">salaries</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="p">{</span><span class="nx">salary</span><span class="p">}</span> <span class="nx">in</span> <span class="nx">employees</span>
                      <span class="nx">select</span> <span class="nx">salary</span><span class="p">;</span>
-                     
+
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">salaries</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -85,7 +86,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=39464685c673c2fe3b7f580d911c24b1&file=querying_tables.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a435e572a72afb52ff82d6159f8365ce&file=querying_tables.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -103,6 +104,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -164,12 +167,9 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int[] salaries = from var {salary} in employees
                      select salary;
-                     
-    io:println(salaries);
-}
 </code></pre></div>
 
                                 </td>
@@ -178,10 +178,23 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p><code>from</code> clause iterates <code>employees</code> <code>table</code>.
- The contextually expected type of the <code>query expression</code> is an <code>int[]</code>.</p>
+ The contextually-expected type of the <code>query expression</code> is an <code>int[]</code>.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(salaries);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

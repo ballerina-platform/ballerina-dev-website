@@ -15,15 +15,16 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Allowed only if return value is ().</span>
+    <span class="c1">// Allowed only if the return value is `()`.</span>
     <span class="nx">doX</span><span class="p">();</span>
 
-    <span class="c1">// Allowed if return value does not include error.</span>
+    <span class="c1">// Allowed if the return value does not include an `error`.</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">getX</span><span class="p">();</span>
 
-    <span class="c1">// Use checkpanic if you don&#39;t want to handle an error.</span>
+    <span class="c1">// Use `checkpanic` if you don&#39;t want to handle an `error`.</span>
     <span class="nx">checkpanic</span> <span class="nx">tryX</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
     <span class="nx">checkpanic</span> <span class="nx">tryX</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">doX</span><span class="p">()</span> <span class="p">{</span>
@@ -98,7 +99,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=2667b1b4320860a0242d72a21881f546&file=ignoring_return_values_and_errors.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=4243ec3091e89ce751728c602ee41dae&file=ignoring_return_values_and_errors.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -116,6 +117,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -173,7 +176,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Allowed only if return value is ().</p>
+                                            <p>Allowed only if the return value is <code>()</code>.</p>
 
                                         </div>
                                     </div>
@@ -192,7 +195,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Allowed if return value does not include error.</p>
+                                            <p>Allowed if the return value does not include an <code>error</code>.</p>
 
                                         </div>
                                     </div>
@@ -205,7 +208,6 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    checkpanic tryX(true);
     checkpanic tryX(false);
-}
 </code></pre></div>
 
                                 </td>
@@ -213,10 +215,22 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Use checkpanic if you don&rsquo;t want to handle an error.</p>
+                                            <p>Use <code>checkpanic</code> if you don&rsquo;t want to handle an <code>error</code>.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

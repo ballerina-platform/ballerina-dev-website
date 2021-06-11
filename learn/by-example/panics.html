@@ -16,9 +16,11 @@ redirect_from:
 
 <span class="c1">// `n` must not be `0`.</span>
 <span class="kd">function</span> <span class="nx">divide</span><span class="p">(</span><span class="kt">int</span> <span class="nx">m</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">n</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+
     <span class="k">if</span> <span class="nx">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
         <span class="c1">// Panic if `n` is `0`.</span>
         <span class="nx">panic</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;division by 0&quot;</span><span class="p">);</span>
+
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">m</span><span class="o">/</span><span class="nx">n</span><span class="p">;</span>
 <span class="p">}</span>
@@ -30,6 +32,7 @@ redirect_from:
     <span class="c1">// terminate and the following code will not be</span>
     <span class="c1">// executed.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+
 <span class="p">}</span>
 </pre></div>
 
@@ -86,7 +89,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=5de8e65bc4ef08b092a21e142f7381f3&file=panics.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=b2c5b3fae87ae9cfedbfe9aebe550f00&file=panics.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -104,6 +107,12 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -136,7 +145,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function divide(int m, int n) returns int {
-    if n == 0 {
 </code></pre></div>
 
                                 </td>
@@ -152,13 +160,22 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    if n == 0 {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        panic error(&quot;division by 0&quot;);
-    }
-    return m/n;
-}
 </code></pre></div>
 
                                 </td>
@@ -170,6 +187,20 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    }
+    return m/n;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -189,9 +220,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(x);
-}
 </code></pre></div>
 
                                 </td>
@@ -205,6 +235,18 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

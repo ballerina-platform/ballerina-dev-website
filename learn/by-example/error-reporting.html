@@ -16,16 +16,18 @@ redirect_from:
 
 <span class="c1">// Parses a string to convert to an integer value.</span>
 <span class="c1">// This function may return error values.</span>
-<span class="c1">// The return type is a union with error.</span>
+<span class="c1">// The return type is a union with the error.</span>
 <span class="kd">function</span> <span class="nb">parse</span><span class="p">(</span><span class="kt">string</span> <span class="nx">s</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+
     <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">cps</span> <span class="p">=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">toCodePointInts</span><span class="p">();</span>
     <span class="nx">foreach</span> <span class="kt">int</span> <span class="nx">cp</span> <span class="nx">in</span> <span class="nx">cps</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">cp</span> <span class="o">-</span> <span class="mh">0x30</span><span class="p">;</span>
         <span class="k">if</span> <span class="nx">p</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">p</span> <span class="p">&gt;</span> <span class="mi">9</span> <span class="p">{</span>
-            <span class="c1">// If `p` is not a digit construct and return </span>
+            <span class="c1">// If `p` is not a digit construct, it returns</span>
             <span class="c1">// an error value with &quot;not a digit&quot; as the error message.</span>
             <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;not a digit&quot;</span><span class="p">);</span>
+
         <span class="p">}</span>
         <span class="nx">n</span> <span class="p">=</span> <span class="nx">n</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="nx">p</span><span class="p">;</span>
     <span class="p">}</span>
@@ -33,14 +35,16 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// An `int` value is returned when the argument is a string</span>
-    <span class="c1">// that can be successfully parsed as an integer.</span>
+    <span class="c1">// An `int` value is returned when the argument is a string,</span>
+    <span class="c1">// which can be parsed successfully  as an integer.</span>
     <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">x</span> <span class="p">=</span> <span class="nb">parse</span><span class="p">(</span><span class="s">&quot;123&quot;</span><span class="p">);</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
 
-    <span class="c1">// An `error` value is returned when the argument is a string</span>
-    <span class="c1">// that has a character that is not a digit.</span>
+    <span class="c1">// An `error` value is returned when the argument is a string,</span>
+    <span class="c1">// which has a character that is not a digit.</span>
     <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">y</span> <span class="p">=</span> <span class="nb">parse</span><span class="p">(</span><span class="s">&quot;1h&quot;</span><span class="p">);</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -99,7 +103,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=b3bbf8ca413fba400205c4296b88154c&file=error_reporting.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=8d5538a3cbad257f8e7dcdd594ba61f1&file=error_reporting.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -117,6 +121,14 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -151,11 +163,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function parse(string s) returns int|error {
-    int n = 0;
-    int[] cps = s.toCodePointInts();
-    foreach int cp in cps {
-        int p = cp - 0x30;
-        if p &lt; 0 || p &gt; 9 {
 </code></pre></div>
 
                                 </td>
@@ -165,10 +172,26 @@ redirect_from:
                                         <div>
                                             <p>Parses a string to convert to an integer value.
  This function may return error values.
- The return type is a union with error.</p>
+ The return type is a union with the error.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    int n = 0;
+    int[] cps = s.toCodePointInts();
+    foreach int cp in cps {
+        int p = cp - 0x30;
+        if p &lt; 0 || p &gt; 9 {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -177,7 +200,26 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            return error(&quot;not a digit&quot;);
-        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If <code>p</code> is not a digit construct, it returns
+ an error value with &ldquo;not a digit&rdquo; as the error message.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        }
         n = n * 10 + p;
     }
     return n;
@@ -186,14 +228,6 @@ redirect_from:
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If <code>p</code> is not a digit construct and return
- an error value with &ldquo;not a digit&rdquo; as the error message.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -214,7 +248,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int|error x = parse(&quot;123&quot;);
-    io:println(x);
 </code></pre></div>
 
                                 </td>
@@ -222,8 +255,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>An <code>int</code> value is returned when the argument is a string
- that can be successfully parsed as an integer.</p>
+                                            <p>An <code>int</code> value is returned when the argument is a string,
+ which can be parsed successfully  as an integer.</p>
 
                                         </div>
                                     </div>
@@ -231,12 +264,22 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(x);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int|error y = parse(&quot;1h&quot;);
-    io:println(y);
-}
 </code></pre></div>
 
                                 </td>
@@ -244,11 +287,24 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>An <code>error</code> value is returned when the argument is a string
- that has a character that is not a digit.</p>
+                                            <p>An <code>error</code> value is returned when the argument is a string,
+ which has a character that is not a digit.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(y);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

@@ -21,16 +21,21 @@ redirect_from:
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">numsTimes10</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="nx">nums</span>
                         <span class="c1">// The `select` clause is evaluated for each iteration.</span>
                         <span class="nx">select</span> <span class="nx">i</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
+
                         
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">numsTimes10</span><span class="p">);</span>
 
-    <span class="c1">// This is based on &lt;br&gt;&lt;/br&gt;</span>
-    <span class="c1">// `{ 10 × i | i ∈ nums }` &lt;br&gt;&lt;/br&gt;</span>
-    <span class="c1">// `{ i | i mod 2 = 0, i ∈ nums }` &lt;br&gt;&lt;/br&gt;</span>
+    <span class="c1">// This is based on</span>
+    <span class="c1">//</span>
+    <span class="c1">// `{ 10 × i | i ∈ nums }`</span>
+    <span class="c1">//</span>
+    <span class="c1">// `{ i | i mod 2 = 0, i ∈ nums }`</span>
+    <span class="c1">//</span>
     <span class="c1">// set builder notation.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">evenNums</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="nx">nums</span>
                      <span class="nx">where</span> <span class="nx">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
                      <span class="nx">select</span> <span class="nx">i</span><span class="p">;</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">evenNums</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -84,7 +89,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=b4d59bb9e9dbbfdc00b05dc3049a01c1&file=query_expressions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=9a95eb9a4a9e01f366d2ba1a5b641432&file=query_expressions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -102,6 +107,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -166,8 +175,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>                        select i * 10;
-                        
-    io:println(numsTimes10);
 </code></pre></div>
 
                                 </td>
@@ -183,14 +190,25 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>                        
+    io:println(numsTimes10);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int[] evenNums = from var i in nums
                      where i % 2 == 0
                      select i;
-    io:println(evenNums);
-}
 </code></pre></div>
 
                                 </td>
@@ -198,13 +216,29 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is based on <br></br>
- <code>{ 10 × i | i ∈ nums }</code> <br></br>
- <code>{ i | i mod 2 = 0, i ∈ nums }</code> <br></br>
- set builder notation.</p>
+                                            <p>This is based on</p>
+
+<p><code>{ 10 × i | i ∈ nums }</code></p>
+
+<p><code>{ i | i mod 2 = 0, i ∈ nums }</code></p>
+
+<p>set builder notation.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(evenNums);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

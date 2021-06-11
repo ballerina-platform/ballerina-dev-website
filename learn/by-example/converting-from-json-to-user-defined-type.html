@@ -22,9 +22,9 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">json</span> <span class="nx">j</span> <span class="p">=</span> <span class="p">{</span><span class="nx">x</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nx">y</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">};</span>
 
-    <span class="c1">// With mutable values, would not be type-safe to allow a cast.</span>
-    <span class="c1">// Cast to T will work on mutable structure s only if inherent type </span>
-    <span class="c1">// of s is subtype of T.</span>
+    <span class="c1">// With mutable values, it would not be type-safe to allow a cast.</span>
+    <span class="c1">// Cast to `T` will work on the mutable structure `s` only if the inherent type</span>
+    <span class="c1">// of `s` is a subtype of `T`.</span>
     <span class="c1">// Casting of immutable value will work.</span>
     <span class="kt">json</span> <span class="nx">k</span> <span class="p">=</span> <span class="nx">j</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
     <span class="nx">Coord</span> <span class="nx">c</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Coord</span><span class="p">&gt;</span> <span class="nx">k</span><span class="p">;</span>
@@ -42,10 +42,10 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Converting From JSON to User-Defined Type</h2>
                             <p><p>With mutable values, would not be type-safe to allow a cast.
- Mutable structures have inherent type that limits mutation.
- Cast to T will work on mutable structure s only if inherent type
- of s is subtype of T.
- Casting of immutable value will work, but does not do numeric conversions.</p>
+ Mutable structures have the <code>inherent</code> type that limits mutation.
+ Cast to <code>T</code> will work on mutable structure <code>s</code> only if the <code>inherent</code> type
+ of <code>s</code> is a subtype of <code>T</code>.
+ Casting of immutable value will work but it does not do numeric conversions.</p>
 </p>
 
                         </td>
@@ -86,7 +86,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=f2f920ab2b46451ff97c50f7b898f4a8&file=converting_from_json_to_user_defined_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=6dd1d32f71751bd6889f1d9c87ebf874&file=converting_from_json_to_user_defined_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -172,9 +172,9 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>With mutable values, would not be type-safe to allow a cast.
- Cast to T will work on mutable structure s only if inherent type
- of s is subtype of T.
+                                            <p>With mutable values, it would not be type-safe to allow a cast.
+ Cast to <code>T</code> will work on the mutable structure <code>s</code> only if the inherent type
+ of <code>s</code> is a subtype of <code>T</code>.
  Casting of immutable value will work.</p>
 
                                         </div>

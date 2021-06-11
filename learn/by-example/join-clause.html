@@ -44,6 +44,8 @@ redirect_from:
                         <span class="c1">// based on the `userId`. The iteration is skipped when the</span>
                         <span class="c1">// condition is not satisfied.</span>
                         <span class="nx">on</span> <span class="nx">login</span><span class="p">.</span><span class="nx">userId</span> <span class="nx">equals</span> <span class="nx">user</span><span class="p">.</span><span class="nx">id</span>
+
+
                         <span class="nx">select</span> <span class="nx">user</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot;:&quot;</span> <span class="o">+</span> <span class="nx">login</span><span class="p">.</span><span class="nx">time</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">loginLog</span><span class="p">);</span>
 <span class="p">}</span>
@@ -99,7 +101,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=9afe7fb82b4fd8566269a05ab6c9c8ff&file=join_clause.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=28816439355d0683f90ce6e3adc59b30&file=join_clause.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -117,6 +119,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -247,11 +251,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>                        on login.userId equals user.id
-                        select user.name + &quot;:&quot; + login.time;
-    io:println(loginLog);
-}
 </code></pre></div>
 
                                 </td>
@@ -265,6 +266,20 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>                        select user.name + &quot;:&quot; + login.time;
+    io:println(loginLog);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

@@ -42,9 +42,10 @@ redirect_from:
 
 <span class="kd">function</span> <span class="nx">getOrders</span><span class="p">(</span><span class="kt">int</span> <span class="nx">customerId</span><span class="p">)</span>
     <span class="nx">returns</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{|</span> <span class="nx">anydata</span><span class="o">...</span><span class="p">;</span> <span class="p">|},</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="p">{</span>
-    <span class="c1">// In this raw template `customerId` variable is interpolated in the literal.</span>
+    <span class="c1">// In this raw template, the `customerId` variable is interpolated in the literal.</span>
     <span class="k">return</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM orders</span>
 <span class="s">                          WHERE customerId = ${customerId}`</span><span class="p">);</span>
+
 <span class="p">}</span>
 </pre></div>
 
@@ -117,6 +118,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -256,10 +259,9 @@ import ballerina/sql;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    return dbClient-&gt;query(`SELECT * FROM orders
                           WHERE customerId = ${customerId}`);
-}
 </code></pre></div>
 
                                 </td>
@@ -267,10 +269,22 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>In this raw template <code>customerId</code> variable is interpolated in the literal.</p>
+                                            <p>In this raw template, the <code>customerId</code> variable is interpolated in the literal.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

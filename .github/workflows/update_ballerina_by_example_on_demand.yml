@@ -50,7 +50,7 @@ jobs:
         unzip ballerina.zip
         unzip ballerina-${BALLERINA_VERSION}.zip
 
-        cp ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples/index.json _data/all-bbes.json
+        cp ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples/index.json ../_data/all-bbes.json
 
         go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples" "swan-lake" "by-example" "true" "true" "true"
 

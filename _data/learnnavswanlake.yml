@@ -96,7 +96,7 @@
     - title: HTTP
       url: /learn/user-guide/network-communication/http/
       active: http 
-      innersublinks:
+      sublinks:
         - title: HTTP Clients
           url: /learn/user-guide/network-communication/http/http-clients/
           active: http-clients

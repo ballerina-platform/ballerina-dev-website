@@ -29,7 +29,7 @@
             {% endif %}
             {% for sublink in sublinks %}
             <!-- <li {{ current-sub }} ><a href="{{ site.baseurl }}{{ sublink.url }}">- {{ sublink.title }}</a></li> -->
-            {% assign innerSublinks = sublink.innersublinks %}
+            {% assign innerSublinks = sublink.sublinks %}
             {% if innerSublinks %} 
           
             <li {% if sublink.active == page.active %} class="inner-sub-menu current-sub" {% else %} class="inner-sub-menu " {% endif %}>

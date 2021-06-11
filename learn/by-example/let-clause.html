@@ -31,6 +31,7 @@ redirect_from:
                      <span class="nx">let</span> <span class="kt">int</span> <span class="nx">len1</span> <span class="p">=</span> <span class="nx">first</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span>
                      <span class="c1">// The `where` clause provides a way to perform conditional execution.</span>
                      <span class="nx">where</span> <span class="nx">len1</span> <span class="p">&gt;</span> <span class="mi">0</span>
+
                      <span class="nx">let</span> <span class="kt">int</span> <span class="nx">len2</span> <span class="p">=</span> <span class="nx">last</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span>
                      <span class="nx">where</span> <span class="nx">len2</span> <span class="p">&gt;</span> <span class="mi">0</span>
                      <span class="nx">let</span> <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">first</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">last</span>
@@ -89,7 +90,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e52548fd4a12647f077cffd0830de173&file=let_clause.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=fe4afff1e2d8fdec57e598a611bf1e88&file=let_clause.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -107,6 +108,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -202,15 +205,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>                     where len1 &gt; 0
-                     let int len2 = last.length()
-                     where len2 &gt; 0
-                     let string name = first + &quot; &quot; + last
-                     select name;
-                     
-    io:println(names);
-}
 </code></pre></div>
 
                                 </td>
@@ -222,6 +218,24 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>                     let int len2 = last.length()
+                     where len2 &gt; 0
+                     let string name = first + &quot; &quot; + last
+                     select name;
+                     
+    io:println(names);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

@@ -20,8 +20,9 @@ redirect_from:
 <span class="kt">any</span><span class="p">[]</span> <span class="nx">av</span> <span class="p">=</span> <span class="nx">iv</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Runtime error; otherwise `iv[0]` would have wrong type.</span>
+    <span class="c1">// A runtime error or else `iv[0]` would have the wrong type.</span>
     <span class="nx">av</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;str&quot;</span><span class="p">;</span>
+
 <span class="p">}</span>
 </pre></div>
 
@@ -78,7 +79,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=4e3e094e4ed3574c5f1dacac1f28e101&file=covariance.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=1d94fc3873a557d1115ed51a31bcd9c6&file=covariance.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -96,6 +97,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -157,9 +160,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    av[0] = &quot;str&quot;;
-}
 </code></pre></div>
 
                                 </td>
@@ -167,10 +169,22 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Runtime error; otherwise <code>iv[0]</code> would have wrong type.</p>
+                                            <p>A runtime error or else <code>iv[0]</code> would have the wrong type.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

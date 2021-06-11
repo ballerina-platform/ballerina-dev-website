@@ -24,15 +24,17 @@ redirect_from:
     <span class="c1">// Creates an immutable `Student` value using an intersection</span>
     <span class="c1">// type with `readonly`.</span>
     <span class="nx">Student</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">student</span> <span class="p">=</span> <span class="p">{</span>
+
         <span class="nx">grade</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span>
-        <span class="c1">// The applicable contextually expected type for `marks`</span>
+        <span class="c1">// The applicable contextually-expected type for `marks`.</span>
         <span class="c1">// is now `map&lt;int&gt; &amp; readonly`. Thus the value for `marks`</span>
         <span class="c1">// will be constructed as an immutable map.</span>
         <span class="nx">marks</span><span class="p">:</span> <span class="p">{</span>
             <span class="s">&quot;Maths&quot;</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>
             <span class="s">&quot;English&quot;</span><span class="p">:</span> <span class="mi">90</span>
         <span class="p">}</span>
+
     <span class="p">};</span>
     <span class="kt">boolean</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">student</span><span class="p">[</span><span class="s">&quot;marks&quot;</span><span class="p">]</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="o">&amp;</span> <span class="nx">readonly</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
@@ -116,6 +118,10 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -165,8 +171,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    Student &amp; readonly student = {
-        grade: 12,
-        name: &quot;John&quot;,
 </code></pre></div>
 
                                 </td>
@@ -183,17 +187,26 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        grade: 12,
+        name: &quot;John&quot;,
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        marks: {
             &quot;Maths&quot;: 75,
             &quot;English&quot;: 90
         }
-    };
-    boolean x = student[&quot;marks&quot;] is map&lt;int&gt; &amp; readonly;
-    io:println(x);
-}
 </code></pre></div>
 
                                 </td>
@@ -201,12 +214,27 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The applicable contextually expected type for <code>marks</code>
+                                            <p>The applicable contextually-expected type for <code>marks</code>.
  is now <code>map&lt;int&gt; &amp; readonly</code>. Thus the value for <code>marks</code>
  will be constructed as an immutable map.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    };
+    boolean x = student[&quot;marks&quot;] is map&lt;int&gt; &amp; readonly;
+    io:println(x);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

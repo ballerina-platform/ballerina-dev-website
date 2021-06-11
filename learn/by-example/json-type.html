@@ -17,13 +17,13 @@ redirect_from:
 
 <span class="kt">json</span> <span class="nx">j</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;x&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;y&quot;</span><span class="p">:</span> <span class="mi">2</span> <span class="p">};</span>
 
-<span class="c1">// Returns the `string` that represents `j` in `JSON` format.</span>
+<span class="c1">// Returns the `string` that represents `j` in JSON format.</span>
 <span class="kt">string</span> <span class="nx">s</span> <span class="p">=</span> <span class="nx">j</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">();</span>
 
-<span class="c1">// Parses a `string` in `JSON` format and returns the the value that it represents.</span>
+<span class="c1">// Parses a `string` in the JSON format and returns the value that it represents.</span>
 <span class="kt">json</span> <span class="nx">j2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">value</span><span class="p">:</span><span class="nx">fromJsonString</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
 
-<span class="c1">// Allows `null` for `JSON` compatibility.</span>
+<span class="c1">// Allows `null` for JSON compatibility.</span>
 <span class="kt">json</span> <span class="nx">j3</span> <span class="p">=</span> <span class="kc">null</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
@@ -40,8 +40,8 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>JSON Type</h2>
                             <p><p><code>json</code> type is a union: <code>()|boolean|int|float|decimal|string|json[]|map&lt;json&gt;</code>. A <code>json</code> value can
- be converted to and from <code>JSON</code> format straightforwardly, except for choice of Ballerina numeric type.
- Ballerina syntax is compatible with <code>JSON</code> and allows <code>null</code> for <code>()</code> for <code>JSON</code> compatibility.
+ be converted to and from the JSON format straightforwardly except for the choice of the Ballerina numeric type.
+ Ballerina syntax is compatible with <code>JSON</code> and allows <code>null</code> for <code>()</code> for JSON compatibility.
  <code>json</code> is <code>anydata</code> without <code>table</code> and <code>xml</code>. <code>toJson</code> recursively converts <code>anydata</code> to <code>json</code>.
  <code>table</code> values are converted to <code>arrays</code>. <code>xml</code> values are converted to <code>strings</code>.<code>json</code> and <code>xml</code>
  types are not parallel.</p>
@@ -85,7 +85,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=73dbf381fbe83fdbea2adf1e7996d006&file=json_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=af63df15e70b81c53ff7ab396e01f996&file=json_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -157,7 +157,7 @@ import ballerina/lang.value;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Returns the <code>string</code> that represents <code>j</code> in <code>JSON</code> format.</p>
+                                            <p>Returns the <code>string</code> that represents <code>j</code> in JSON format.</p>
 
                                         </div>
                                     </div>
@@ -176,7 +176,7 @@ import ballerina/lang.value;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Parses a <code>string</code> in <code>JSON</code> format and returns the the value that it represents.</p>
+                                            <p>Parses a <code>string</code> in the JSON format and returns the value that it represents.</p>
 
                                         </div>
                                     </div>
@@ -195,7 +195,7 @@ import ballerina/lang.value;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Allows <code>null</code> for <code>JSON</code> compatibility.</p>
+                                            <p>Allows <code>null</code> for JSON compatibility.</p>
 
                                         </div>
                                     </div>

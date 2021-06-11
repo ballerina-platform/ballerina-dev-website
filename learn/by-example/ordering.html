@@ -32,7 +32,8 @@ redirect_from:
                         <span class="c1">// must be an `ordered` type. The `order-direction` is `ascending`</span>
                         <span class="c1">// if not specified explicitly.</span>
                         <span class="nx">order</span> <span class="nx">by</span> <span class="nx">e</span><span class="p">.</span><span class="nx">lastName</span> <span class="nx">ascending</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">firstName</span> <span class="nx">ascending</span>
-                        
+
+
                         <span class="nx">select</span> <span class="nx">e</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">sorted</span><span class="p">);</span>
 <span class="p">}</span>
@@ -89,7 +90,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=58ce13363134cdb91697020f5ddee624&file=ordering.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=470d70ed6a9a653541050ab875ed7dba&file=ordering.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -107,6 +108,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -181,12 +184,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>                        order by e.lastName ascending, e.firstName ascending
-                        
-                        select e;
-    io:println(sorted);
-}
 </code></pre></div>
 
                                 </td>
@@ -201,6 +200,20 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>                        select e;
+    io:println(sorted);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

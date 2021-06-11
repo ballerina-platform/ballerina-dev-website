@@ -29,7 +29,8 @@ redirect_from:
 
     <span class="c1">// The key sequence provides keyed access to members of the `table`.</span>
     <span class="nx">Employee</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">t</span><span class="p">[</span><span class="s">&quot;Fred&quot;</span><span class="p">,</span> <span class="s">&quot;Bloggs&quot;</span><span class="p">];</span>
-    
+
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -84,7 +85,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=3a44ef3660e3aa479fef96f6c8997034&file=multiple_key_fields.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=359488cc33c8868292bfc2b6266228bf&file=multiple_key_fields.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -102,6 +103,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -182,11 +185,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    Employee? e = t[&quot;Fred&quot;, &quot;Bloggs&quot;];
-    
-    io:println(e);
-}
 </code></pre></div>
 
                                 </td>
@@ -198,6 +198,19 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(e);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

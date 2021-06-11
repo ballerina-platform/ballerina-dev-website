@@ -19,18 +19,19 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">MyClass</span> <span class="nx">obj1</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">MyClass</span><span class="p">();</span>
     <span class="nx">MyClass</span> <span class="nx">obj2</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">MyClass</span><span class="p">();</span>
-    <span class="c1">// b1 will be true.</span>
+    <span class="c1">// `b1` will be true.</span>
     <span class="kt">boolean</span> <span class="nx">b1</span> <span class="p">=</span> <span class="p">(</span><span class="nx">obj1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">obj1</span><span class="p">);</span>
-    <span class="c1">// b2 will be false.</span>
+    <span class="c1">// `b2` will be false.</span>
     <span class="kt">boolean</span> <span class="nx">b2</span> <span class="p">=</span> <span class="p">(</span><span class="nx">obj1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">obj2</span><span class="p">);</span>
-    <span class="c1">// b3 will be true.</span>
+    <span class="c1">// `b3` will be true.</span>
     <span class="kt">boolean</span> <span class="nx">b3</span> <span class="p">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]);</span>
-    <span class="c1">// b4 will be false.</span>
+    <span class="c1">// `b4` will be false.</span>
     <span class="kt">boolean</span> <span class="nx">b4</span> <span class="p">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span><span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]);</span>
-    <span class="c1">// b5 will be true.</span>
+    <span class="c1">// `b5` will be true.</span>
     <span class="kt">boolean</span> <span class="nx">b5</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.0</span> <span class="o">==</span> <span class="o">+</span><span class="mf">0.0</span><span class="p">);</span>
-    <span class="c1">// b6 will be false.</span>
+    <span class="c1">// `b6` will be false.</span>
     <span class="kt">boolean</span> <span class="nx">b6</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.0</span> <span class="o">==</span><span class="p">=</span> <span class="o">+</span><span class="mf">0.0</span><span class="p">);</span>
+
 <span class="p">}</span>
 </pre></div>
 
@@ -83,7 +84,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=41ae63d66f0ce7f4b3084632d33f0953&file=identity.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=47fdcd3281558c9c0c4fd2e1d35c616c&file=identity.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -101,6 +102,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -162,7 +165,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>b1 will be true.</p>
+                                            <p><code>b1</code> will be true.</p>
 
                                         </div>
                                     </div>
@@ -181,7 +184,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>b2 will be false.</p>
+                                            <p><code>b2</code> will be false.</p>
 
                                         </div>
                                     </div>
@@ -200,7 +203,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>b3 will be true.</p>
+                                            <p><code>b3</code> will be true.</p>
 
                                         </div>
                                     </div>
@@ -219,7 +222,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>b4 will be false.</p>
+                                            <p><code>b4</code> will be false.</p>
 
                                         </div>
                                     </div>
@@ -238,7 +241,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>b5 will be true.</p>
+                                            <p><code>b5</code> will be true.</p>
 
                                         </div>
                                     </div>
@@ -248,9 +251,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    boolean b6 = (-0.0 === +0.0);
-}
 </code></pre></div>
 
                                 </td>
@@ -258,10 +260,22 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>b6 will be false.</p>
+                                            <p><code>b6</code> will be false.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

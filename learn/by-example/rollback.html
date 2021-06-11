@@ -12,7 +12,7 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="c1">// Define the `Update` record type.</span>
+                <div class="highlight"><pre><span class="c1">// Defines the `Update` record type.</span>
 <span class="nx">type</span> <span class="nx">Update</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">updateIndex</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">stockMnt</span><span class="p">;</span>
@@ -20,16 +20,17 @@ redirect_from:
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
 
-    <span class="c1">// Create an array of `Update` records.</span>
+    <span class="c1">// Creates an array of `Update` records.</span>
     <span class="nx">Update</span><span class="p">[]</span> <span class="nx">updates</span> <span class="p">=</span>
     <span class="p">[{</span><span class="nx">updateIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">stockMnt</span><span class="p">:</span> <span class="mi">2000</span><span class="p">},</span>
     <span class="p">{</span><span class="nx">updateIndex</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">stockMnt</span><span class="p">:</span> <span class="o">-</span><span class="mi">1000</span><span class="p">},</span>
     <span class="p">{</span><span class="nx">updateIndex</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">stockMnt</span><span class="p">:</span> <span class="mi">1500</span><span class="p">},</span>
     <span class="p">{</span><span class="nx">updateIndex</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">stockMnt</span><span class="p">:</span> <span class="o">-</span><span class="mi">1000</span><span class="p">},</span>
     <span class="p">{</span><span class="nx">updateIndex</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">stockMnt</span><span class="p">:</span> <span class="o">-</span><span class="mi">2000</span><span class="p">}];</span>
-    <span class="c1">// If error is returned from `transfer` function,</span>
-    <span class="c1">// the error is returned from main and exit.</span>
+    <span class="c1">// If an error is returned from the `transfer` function,</span>
+    <span class="c1">// the error is returned from the `main` and it exits.</span>
     <span class="nx">check</span> <span class="nx">transfer</span><span class="p">(</span><span class="nx">updates</span><span class="p">);</span>
+
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">transfer</span><span class="p">(</span><span class="nx">Update</span><span class="p">[]</span> <span class="nx">updates</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -37,13 +38,14 @@ redirect_from:
     <span class="nx">transaction</span> <span class="p">{</span>
         <span class="c1">// Inside the transaction, call `doUpdate` on each `update` record.</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">u</span> <span class="nx">in</span> <span class="nx">updates</span> <span class="p">{</span>
-            <span class="c1">// If an error is returned, `transfer` function returns with</span>
+            <span class="c1">// If an error is returned, the `transfer` function returns with</span>
             <span class="c1">// that error and the transaction is rolled back.</span>
             <span class="nx">check</span> <span class="nx">doUpdate</span><span class="p">(</span><span class="nx">u</span><span class="p">);</span>
-        <span class="p">}</span>
 
-        <span class="c1">// `commit` will not be called, because of implicit rollback.</span>
+        <span class="p">}</span>
+        <span class="c1">// `commit` will not be called,because of an implicit rollback.</span>
         <span class="nx">check</span> <span class="nx">commit</span><span class="p">;</span>
+
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -52,6 +54,7 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">stockMnt</span> <span class="p">&lt;</span> <span class="o">-</span><span class="mi">1500</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Not enough Stocks: &quot;</span><span class="p">,</span> <span class="nx">stockIndex</span> <span class="p">=</span> <span class="nx">u</span><span class="p">.</span><span class="nx">updateIndex</span><span class="p">);</span>
     <span class="p">}</span>
+
 <span class="p">}</span>
 </pre></div>
 
@@ -63,8 +66,8 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Rollback</h2>
                             <p><p>If there is a fail or panic in the execution of the block, then the transaction is rolled back.
- Transaction statement can also contain rollback statement.
- Every possible exit from a transaction block must be  either <code>commit</code>, <code>rollback</code>, fail exit (e.g. from check) or panic exit.
+ Transaction statement can also contain a rollback statement.
+ Every possible exit from a transaction block must be either <code>commit</code>, <code>rollback</code>, fail exit (e.g., from <code>check</code>), or panic exit.
  Rollback does not automatically restore Ballerina variables to values before the transaction.</p>
 </p>
 
@@ -106,7 +109,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=0625b8fb99f281c4b19a642ba12561ff&file=rollback.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c400922a604610cbc5c54d459253a537&file=rollback.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -124,6 +127,14 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -166,7 +177,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Define the <code>Update</code> record type.</p>
+                                            <p>Defines the <code>Update</code> record type.</p>
 
                                         </div>
                                     </div>
@@ -202,7 +213,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create an array of <code>Update</code> records.</p>
+                                            <p>Creates an array of <code>Update</code> records.</p>
 
                                         </div>
                                     </div>
@@ -214,7 +225,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    check transfer(updates);
-}
 </code></pre></div>
 
                                 </td>
@@ -222,11 +232,23 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If error is returned from <code>transfer</code> function,
- the error is returned from main and exit.</p>
+                                            <p>If an error is returned from the <code>transfer</code> function,
+ the error is returned from the <code>main</code> and it exits.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -278,7 +300,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            check doUpdate(u);
-        }
 </code></pre></div>
 
                                 </td>
@@ -286,7 +307,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If an error is returned, <code>transfer</code> function returns with
+                                            <p>If an error is returned, the <code>transfer</code> function returns with
  that error and the transaction is rolled back.</p>
 
                                         </div>
@@ -295,12 +316,22 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        check commit;
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -308,10 +339,23 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>commit</code> will not be called, because of implicit rollback.</p>
+                                            <p><code>commit</code> will not be called,because of an implicit rollback.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -330,11 +374,10 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    if (u.stockMnt &lt; -1500) {
         return error(&quot;Not enough Stocks: &quot;, stockIndex = u.updateIndex);
     }
-}
 </code></pre></div>
 
                                 </td>
@@ -346,6 +389,18 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

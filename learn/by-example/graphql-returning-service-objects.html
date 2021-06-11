@@ -19,7 +19,7 @@ redirect_from:
     <span class="c1">// Resource functions can return service objects. The returning service</span>
     <span class="c1">// object is mapped to an `OBJECT` type in GraphQL. Each resource</span>
     <span class="c1">// function is mapped to a field in the `OBJECT`.</span>
-    <span class="nx">isolated</span> <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">profile</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">profile</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
 
         <span class="k">return</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;Walter White&quot;</span><span class="p">,</span> <span class="mi">51</span><span class="p">);</span>
     <span class="p">}</span>
@@ -162,7 +162,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    isolated resource function get profile() returns Person {
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get profile() returns Person {
 </code></pre></div>
 
                                 </td>

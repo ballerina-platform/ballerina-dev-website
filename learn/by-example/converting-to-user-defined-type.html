@@ -22,13 +22,15 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="kt">json</span> <span class="nx">j</span> <span class="p">=</span> <span class="p">{</span><span class="nx">x</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nx">y</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">};</span>
 
-    <span class="c1">// Argument is a typedesc value.</span>
-    <span class="c1">// Static return type depends on argument.</span>
+    <span class="c1">// Argument is a `typedesc` value.</span>
+    <span class="c1">// The static return type depends on the argument.</span>
     <span class="nx">Coord</span> <span class="nx">c</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">j</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="nx">Coord</span><span class="p">);</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">x</span><span class="p">);</span>
 
-    <span class="c1">// Argument defaulted from context.</span>
+    <span class="c1">// Argument defaulted from the context.</span>
     <span class="nx">Coord</span> <span class="nx">d</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">j</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">();</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">x</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -88,7 +90,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=96efa30c5d7bf9394527cd2e2fe3c067&file=converting_to_user_defined_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e15b3c9bc11d71bf05997a6d1e8874bb&file=converting_to_user_defined_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -106,6 +108,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -166,7 +172,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    Coord c = check j.cloneWithType(Coord);
-    io:println(c.x);
 </code></pre></div>
 
                                 </td>
@@ -174,8 +179,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Argument is a typedesc value.
- Static return type depends on argument.</p>
+                                            <p>Argument is a <code>typedesc</code> value.
+ The static return type depends on the argument.</p>
 
                                         </div>
                                     </div>
@@ -183,12 +188,22 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(c.x);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    Coord d = check j.cloneWithType();
-    io:println(d.x);
-}
 </code></pre></div>
 
                                 </td>
@@ -196,10 +211,23 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Argument defaulted from context.</p>
+                                            <p>Argument defaulted from the context.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(d.x);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

@@ -36,7 +36,7 @@ jobs:
     - name: Generate BBEs
       run: |
         cd ballerina-release
-        cp ../ballerina-distribution/examples/index.json ../ballerina-dev-website/_data/all-bbes.json
+        cp ../ballerina-distribution/examples/index.json ../_data/all-bbes.json
         cp -r ../ballerina-distribution/examples .
 
         go run ballerinaByExample/tools/generate.go "examples" "swan-lake" "by-example" "true" "true" "true"

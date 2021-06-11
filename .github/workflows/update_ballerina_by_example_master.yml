@@ -36,14 +36,6 @@ jobs:
     - name: Generate BBEs
       run: |
         cd ballerina-release
-
-        BALLERINA_VERSION=${{ github.event.inputs.version }}
-        SHORT_VERSION=${{ github.event.inputs.short_version }}
-
-        wget --header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"  https://api.github.com/repos/ballerina-platform/ballerina-distribution/actions/artifacts/${{ github.event.inputs.artifact }}/zip  -O "ballerina.zip"
-        unzip ballerina.zip
-        unzip ballerina-${BALLERINA_VERSION}.zip
-
         cp ../ballerina-distribution/examples/index.json ../_data/all-bbes.json
         cp -r ../examples .
 

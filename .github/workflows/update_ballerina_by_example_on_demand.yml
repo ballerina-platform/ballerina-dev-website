@@ -68,6 +68,7 @@ jobs:
         git config --global user.email "ballerina-bot@ballerina.org"
         git config --global user.name "ballerina-bot"
         
+        git add _data/all-bbes.json
         git add learn/by-example
         git commit --allow-empty -m 'Update Ballerina Swan Lake by examples'
         

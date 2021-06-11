@@ -2,22 +2,43 @@
 
 <style>
     .cInfoBanner {
-	background: #20b6b0;
-	width: 100%;
-	display: inline-block;
-	color: #fff;
-	padding: 10px;
-	width: 100%;
-	text-align: center;
-	font-weight: 600;
-	font-size: 20px;
-}
-    }
+        background: #20b6b0;
+        width: 100%;
+        display: inline-block;
+        color: #fff;
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+        font-weight: 600;
+        font-size: 20px;
+    } 
     .cInfoBanner:hover {
         background-color: #1b7e7a;
         color: #fff !important;
     }
 
+    .feedbackBtn {
+        transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+        background: #20b6b0;
+        color: #fff;
+        font-size:  14px;
+        position: fixed;
+        font-weight: 600;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 6px 0px 0px 6px;
+        writing-mode: vertical-lr;
+        padding: 15px 2px;
+        line-height: 30px;
+        box-shadow: 0 1px 0 rgba(153, 153, 153, 0.25) inset, 0 -1px 0 rgba(0, 0, 0, 0.25) inset;
+    }
+
+    .feedbackBtn:hover {
+        background-color: #3c464c;
+        color: #fff !important;
+
+    }
 </style>
 <a href="https://ballerina.io/downloads/" class="cInfoBanner">
     Swan Lake Beta1 is here.
@@ -74,3 +95,4 @@
         </div>
     </div>
 </div>
+<a  onclick=window.open("https://github.com/"+"ballerina-platform/ballerina-dev-website"+"/issues/new?title=Doc%20Feedback:&body=Location%20:%20"+window.location.href);  title="Report Issues" class="feedbackBtn localLink"  >Report Issues</a>

@@ -29,14 +29,14 @@
             {% endif %}
             {% for sublink in sublinks %}
             <!-- <li {{ current-sub }} ><a href="{{ site.baseurl }}{{ sublink.url }}">- {{ sublink.title }}</a></li> -->
-            {% assign sublinkLevels = sublink.innersublinks %}
-            {% if sublinkLevels %} 
+            {% assign innerSublinks = sublink.innersublinks %}
+            {% if innerSublinks %} 
           
-            <li {% if sublink.active == page.active %} class="current-sub"{% endif %}>
-                  <div class="cLeftMenuLink cTopiAtag">{{ sublink.title }}</div>  
+            <li {% if sublink.active == page.active %} class="inner-sub-menu current-sub" {% else %} class="inner-sub-menu " {% endif %}>
+                  <div class="cLeftMenuInnerLink cTopiAtag">{{ sublink.title }}</div>  
                   <ul class="sub-ul-two">
-                     {% for sublinkLevel in sublinkLevels %} 
-                     <li {% if sublinkLevel.active == page.active %} class="current-inner-sub"{% endif %}><a href="{{sublinkLevel.url}}">{{sublinkLevel.title}}</a></li>
+                     {% for innerSubLink in innerSublinks %} 
+                     <li {% if innerSubLink.active == page.active %} class="current-inner-sub" {% endif %}><a href="{{innerSubLink.url}}">{{innerSubLink.title}}</a></li>
                      {% endfor %}
                   </ul>  
             </li> 

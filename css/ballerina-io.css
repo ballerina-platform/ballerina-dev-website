@@ -1859,3 +1859,22 @@ ul.wy-breadcrumbs {
 #tree-collapse-all {
     font-size: 14px;
 }
+a:focus {
+    outline: none;
+    text-decoration: none;
+}
+
+h1 code[class*="language-"],
+h2 code[class*="language-"],
+h3 code[class*="language-"],
+h4 code[class*="language-"],
+h5 code[class*="language-"],
+h6 code[class*="language-"],
+h1 pre[class*="language-"],
+h2 pre[class*="language-"],
+h3 pre[class*="language-"],
+h4 pre[class*="language-"],
+h5 pre[class*="language-"],
+h6 pre[class*="language-"] {
+    font-size: inherit !important;
+}

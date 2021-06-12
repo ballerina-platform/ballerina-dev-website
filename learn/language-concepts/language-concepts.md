@@ -6,6 +6,14 @@ redirect_from:
   - /learn/language-guide
   - /learn/language-guide/
   - /learn/language-concepts
+  - /learn/language-guide/Ballerina_Language_Presentation-2021-01-29.pdf/
+  - /learn/language-guide/Ballerina_Language_Presentation-2021-01-29.pdf
+  - /learn/language-guide/Ballerina_Language_Presentation-2021-03-08.pdf
+  - /learn/language-guide/Ballerina_Language_Presentation-2021-03-08.pdf/
+  - /learn/language-concepts/Ballerina_Language_Presentation-2021-01-29.pdf/
+  - /learn/language-concepts/Ballerina_Language_Presentation-2021-01-29.pdf
+  - /learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf
+  - /learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf/
 ---
 
 <style>

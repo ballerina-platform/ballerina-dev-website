@@ -14,12 +14,19 @@ nav.cLeftNavContainer ul li:last-child {
 }
 nav.cLeftNavContainer ul li.current a,
 nav.cLeftNavContainer ul li.current-sub a,
+nav.cLeftNavContainer ul li.current-inner-three-sub a {
+  color: #464646;
+  font-weight: 600;
+}
+nav.cLeftNavContainer ul li.current a,
+nav.cLeftNavContainer ul li.current-sub a,
 nav.cLeftNavContainer ul li.current-inner-sub a {
   color: #464646;
   font-weight: 600;
 }
 .sub-menu,
-.inner-sub-menu {
+.inner-sub-menu,
+.inner-sub-menu-two {
   background-image: url("/img/down-arrow-learn.svg");
   background-size: 15px;
   background-repeat: no-repeat;
@@ -37,15 +44,14 @@ nav.cLeftNavContainer ul li.current-inner-sub a {
   padding-left: 10px;
 }
 .sub-menu.CurrentUl.OpenUL .cLeftMenuLink,
-.inner-sub-menu.CurrentUl.OpenUL .cLeftMenuInnerLink {
+.inner-sub-menu.CurrentUl.OpenUL .cLeftMenuInnerLink,
+.inner-sub-menu-two.CurrentUl.OpenUL .cLeftMenuInnerLink {
   font-weight: 400;
 }
 .sub-menu.CurrentUl {
   background-color: #f0f0f0;
 }
 
-.inner-sub-menu.CurrentUl {
-}
 .inner-sub-menu .cLeftMenuInnerLink {
   padding: 10px 0;
   padding-left: 15px;
@@ -56,20 +62,24 @@ nav.cLeftNavContainer ul li.current-inner-sub a {
   transition: all 0.5s ease 0s;
 }
 
-.inner-sub-menu.OpenUL .cLeftMenuInnerLink {
+.inner-sub-menu.OpenUL .cLeftMenuInnerLink,
+.inner-sub-menu-two.OpenUL .cLeftMenuTwoLink {
   color: #464646 !important;
 }
-.inner-sub-menu.CurrentUl .cLeftMenuInnerLink {
+.inner-sub-menu.CurrentUl .cLeftMenuInnerLink,
+.inner-sub-menu-two.CurrentUl .cLeftMenuTwoLink {
   color: #464646;
   font-weight: 500;
   font-size: 0.95em;
   padding: 10px 15px 5px 15px;
 }
-.sub-menu .sub-ul-two li a {
+.sub-menu .sub-ul-two li a,
+.sub-menu .sub-ul-two li .cLeftMenuTwoLink {
   font-size: 0.85em;
 }
 .sub-menu.OpenUL,
-.inner-sub-menu.OpenUL {
+.inner-sub-menu.OpenUL,
+.inner-sub-menu-two.OpenUL {
   padding: 2px 0px 0 0px;
   background-color: #f7f7f7;
   transition: all 0.5s ease 0s;
@@ -79,7 +89,24 @@ nav.cLeftNavContainer ul li.current-inner-sub a {
   background-image: url("/img/up-arrow-learn.svg");
   cursor: pointer;
 }
-
+.inner-sub-menu-two.cLeftMenuTwoLink {
+  padding: 10px 0;
+  padding-left: 15px;
+  display: inline-block;
+  width: 100%;
+  color: #22b7b1;
+  padding-right: 30px;
+  transition: all 0.5s ease 0s;
+}
+.inner-sub-menu-two .cLeftMenuTwoLink {
+  padding: 10px 0;
+  padding-left: 15px;
+  display: inline-block;
+  width: 100%;
+  color: #22b7b1;
+  padding-right: 30px;
+  transition: all 0.5s ease 0s;
+}
 .cLeftMenuLink.cTopiAtag,
 .cLeftMenuInnerLink.cTopiAtag {
   cursor: pointer;

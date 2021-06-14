@@ -14,32 +14,34 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="c1">// Anonymous function syntax</span>
+<span class="c1">// Anonymous function syntax.</span>
 <span class="k">var</span> <span class="nx">isOdd</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="kt">int</span> <span class="nx">n</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="c1">// Function type syntax</span>
+<span class="c1">// Function type syntax.</span>
 <span class="nx">type</span> <span class="nx">IntFilter</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">n</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span><span class="p">;</span>
 
-<span class="c1">// Module level function defintion</span>
+<span class="c1">// Module-level function definition.</span>
 <span class="kd">function</span> <span class="nx">isEven</span><span class="p">(</span><span class="kt">int</span> <span class="nx">n</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Function `isEven` refered as a value</span>
+    <span class="c1">// The `isEven` function  referred as a value.</span>
     <span class="nx">IntFilter</span> <span class="nx">f</span> <span class="p">=</span> <span class="nx">isEven</span><span class="p">;</span>
 
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">nums</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
 
     <span class="c1">// Arrays provide the usual functional methods: </span>
-    <span class="c1">// filter, map, forEach, reduce</span>
+    <span class="c1">// `filter`, `map`, `forEach`, and `reduce`.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">evenNums</span> <span class="p">=</span> <span class="nx">nums</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">f</span><span class="p">);</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">evenNums</span><span class="p">);</span>
 
-    <span class="c1">// Shorthand syntax for when type is inferred and body is an expression</span>
+    <span class="c1">// Shorthand syntax when the type is inferred and the body is an expression.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">oddNums</span> <span class="p">=</span> <span class="nx">nums</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">n</span> <span class="p">=&gt;</span> <span class="nx">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">);</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">oddNums</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -94,7 +96,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a2f436574b038f4e5d7e4f7be7a78204&file=function_values.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a9e22c66ab7e4eb6eb5959a24edce985&file=function_values.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -112,6 +114,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -161,7 +167,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Anonymous function syntax</p>
+                                            <p>Anonymous function syntax.</p>
 
                                         </div>
                                     </div>
@@ -180,7 +186,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Function type syntax</p>
+                                            <p>Function type syntax.</p>
 
                                         </div>
                                     </div>
@@ -201,7 +207,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Module level function defintion</p>
+                                            <p>Module-level function definition.</p>
 
                                         </div>
                                     </div>
@@ -232,7 +238,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Function <code>isEven</code> refered as a value</p>
+                                            <p>The <code>isEven</code> function  referred as a value.</p>
 
                                         </div>
                                     </div>
@@ -256,7 +262,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int[] evenNums = nums.filter(f);
-    io:println(evenNums);
 </code></pre></div>
 
                                 </td>
@@ -265,7 +270,7 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Arrays provide the usual functional methods:
- filter, map, forEach, reduce</p>
+ <code>filter</code>, <code>map</code>, <code>forEach</code>, and <code>reduce</code>.</p>
 
                                         </div>
                                     </div>
@@ -273,12 +278,22 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(evenNums);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int[] oddNums = nums.filter(n =&gt; n % 2 != 0);
-    io:println(oddNums);
-}
 </code></pre></div>
 
                                 </td>
@@ -286,10 +301,23 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Shorthand syntax for when type is inferred and body is an expression</p>
+                                            <p>Shorthand syntax when the type is inferred and the body is an expression.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(oddNums);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

@@ -129,8 +129,4 @@ These are directories related to the default module. For detailed information, s
 
 This directory contains the other modules. The layout of this directory is explained in the [Module Layout](/learn/user-guide/ballerina-packages/modules/#module-layout).
 
-<style>
-.cBallerinaTocContainer {
-    display: none !important;
-}
-</style>
+ 

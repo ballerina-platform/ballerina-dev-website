@@ -1,17 +1,8 @@
-name: Create PR for new Swan Lake BBEs pages on demand
+name: Create PR for new Swan Lake BBEs pages on distribution repo changes
 
 on: 
+  repository_dispatch:
   workflow_dispatch:
-      inputs:
-        artifact:
-          description: 'Artifact ID'     
-          required: true
-        version:
-          description: 'Artifact version'     
-          required: true
-        short_version:
-          description: 'Artifact short version'     
-          required: true
 
 jobs:
   bbe-sw-gen:
@@ -39,20 +30,16 @@ jobs:
     - name: Clone ballerina-release
       run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-release.git
 
+    - name: Clone ballerina-distribution
+      run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-distribution.git
+
     - name: Generate BBEs
       run: |
         cd ballerina-release
+        cp ../ballerina-distribution/examples/index.json ../_data/all-bbes.json
+        cp -r ../ballerina-distribution/examples .
 
-        BALLERINA_VERSION=${{ github.event.inputs.version }}
-        SHORT_VERSION=${{ github.event.inputs.short_version }}
-
-        wget --header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"  https://api.github.com/repos/ballerina-platform/ballerina-distribution/actions/artifacts/${{ github.event.inputs.artifact }}/zip  -O "ballerina.zip"
-        unzip ballerina.zip
-        unzip ballerina-${BALLERINA_VERSION}.zip
-
-        cp ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples/index.json ../_data/all-bbes.json
-
-        go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples" "swan-lake" "by-example" "true" "true" "true"
+        go run ballerinaByExample/tools/generate.go "examples" "swan-lake" "by-example" "true" "true" "true"
 
     - name: Remove old examples file
       run: git rm -r learn/by-example

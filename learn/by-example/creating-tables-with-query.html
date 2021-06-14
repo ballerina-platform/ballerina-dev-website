@@ -27,13 +27,14 @@ redirect_from:
         <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Fred&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Bloggs&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mi">2000</span><span class="p">}</span>
     <span class="p">];</span>
 
-    <span class="c1">// The `query expression` starts with `table`.</span>
+    <span class="c1">// The query expression starts with `table`.</span>
     <span class="c1">// The key specifier `key(id)` specifies the key sequence of the constructed `table`.</span>
-    <span class="c1">// The result of the `query expression` is a `table`.</span>
+    <span class="c1">// The result of the query expression is a `table`.</span>
     <span class="k">var</span> <span class="nx">highPaidEmployees</span> <span class="p">=</span> <span class="nx">table</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">e</span> <span class="nx">in</span> <span class="nx">employees</span>
                             <span class="nx">where</span> <span class="nx">e</span><span class="p">.</span><span class="nx">salary</span> <span class="o">&gt;=</span> <span class="mi">1000</span>
                             <span class="nx">select</span> <span class="nx">e</span><span class="p">;</span>
-                            
+
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">highPaidEmployees</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -45,7 +46,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Creating Tables With Query</h2>
-                            <p><p><code>Query expressions</code> can create tables. Key of created <code>table</code> can be specified explicitly.</p>
+                            <p><p>Query expressions can create tables. The key of the created <code>table</code> can be specified explicitly.</p>
 </p>
 
                         </td>
@@ -86,7 +87,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=ee746d601bbf86fb8ad8265941c7a979&file=creating_tables_with_query.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e6797d1fc14f8248c9df964dac6dc3a6&file=creating_tables_with_query.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -104,6 +105,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -165,13 +168,10 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var highPaidEmployees = table key(id) from var e in employees
                             where e.salary &gt;= 1000
                             select e;
-                            
-    io:println(highPaidEmployees);
-}
 </code></pre></div>
 
                                 </td>
@@ -179,12 +179,25 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>query expression</code> starts with <code>table</code>.
+                                            <p>The query expression starts with <code>table</code>.
  The key specifier <code>key(id)</code> specifies the key sequence of the constructed <code>table</code>.
- The result of the <code>query expression</code> is a <code>table</code>.</p>
+ The result of the query expression is a <code>table</code>.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(highPaidEmployees);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

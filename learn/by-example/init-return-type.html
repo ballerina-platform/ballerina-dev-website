@@ -16,19 +16,22 @@ redirect_from:
 
 <span class="c1">// Defines a class called `File`.</span>
 <span class="nx">class</span> <span class="nx">File</span> <span class="p">{</span>
+
     <span class="kt">string</span> <span class="nx">path</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">contents</span><span class="p">;</span>
-    <span class="c1">// `init()` method is used to initialize the `object`</span>
+    <span class="c1">// The `init()` method is used to initialize the `object`.</span>
     <span class="c1">// when creating a new `object`.</span>
     <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">p</span><span class="p">,</span> <span class="kt">string</span><span class="err">?</span> <span class="nx">c</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">path</span> <span class="p">=</span> <span class="nx">p</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">contents</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">c</span><span class="p">.</span><span class="nx">ensureType</span><span class="p">(</span><span class="kt">string</span><span class="p">);</span>
     <span class="p">}</span>
+
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// `new` returns the newly constructed `File` object.</span>
+    <span class="c1">// `new` returns the newly-constructed `File` object.</span>
     <span class="nx">File</span> <span class="nx">f</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="nx">File</span><span class="p">(</span><span class="s">&quot;test.txt&quot;</span><span class="p">,</span> <span class="s">&quot;Hello World&quot;</span><span class="p">);</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">f</span><span class="p">.</span><span class="nx">contents</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -84,7 +87,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=2f9fe09bfecdee5daae49698b83e4f54&file=init_return_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=6397dc031129acdb712ac056438e2b40&file=init_return_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -102,6 +105,12 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -134,8 +143,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>class File {
-    string path;
-    string contents;
 </code></pre></div>
 
                                 </td>
@@ -151,6 +158,19 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    string path;
+    string contents;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
@@ -158,7 +178,6 @@ redirect_from:
         self.path = p;
         self.contents = check c.ensureType(string);
     }
-}
 </code></pre></div>
 
                                 </td>
@@ -166,11 +185,23 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>init()</code> method is used to initialize the <code>object</code>
+                                            <p>The <code>init()</code> method is used to initialize the <code>object</code>.
  when creating a new <code>object</code>.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -189,10 +220,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    File f = check new File(&quot;test.txt&quot;, &quot;Hello World&quot;);
-    io:println(f.contents);
-}
 </code></pre></div>
 
                                 </td>
@@ -200,10 +229,23 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>new</code> returns the newly constructed <code>File</code> object.</p>
+                                            <p><code>new</code> returns the newly-constructed <code>File</code> object.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(f.contents);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

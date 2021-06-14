@@ -14,13 +14,15 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="c1">// Convert bytes to a string and then to an int.</span>
+<span class="c1">// Converts bytes to a string and then to an int.</span>
 <span class="kd">function</span> <span class="nx">intFromBytes</span><span class="p">(</span><span class="nx">byte</span><span class="p">[]</span> <span class="nx">bytes</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+
     <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">ret</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">bytes</span><span class="p">);</span>
 
     <span class="c1">// The `is` operator can be used to distinguish errors</span>
-    <span class="c1">// from others value.</span>
+    <span class="c1">// from other values.</span>
     <span class="k">if</span> <span class="nx">ret</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
+
         <span class="k">return</span> <span class="nx">ret</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kt">int</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">ret</span><span class="p">);</span>
@@ -29,6 +31,7 @@ redirect_from:
 
 <span class="c1">// The `main` function can return an error.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+
     <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">intFromBytes</span><span class="p">([</span><span class="mi">104</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">111</span><span class="p">]);</span>    
     <span class="k">if</span> <span class="nx">res</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
         <span class="c1">// The `check` expression is shorthand for this pattern of</span>
@@ -90,7 +93,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e40c51f8d93ae8718ceee66f86fac500&file=error_handling.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=0c33ca913927af2dcb99d9d7934ddbc9&file=error_handling.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -108,6 +111,12 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -142,7 +151,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function intFromBytes(byte[] bytes) returns int|error {
-    string|error ret = string:fromBytes(bytes);
 </code></pre></div>
 
                                 </td>
@@ -150,10 +158,22 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Convert bytes to a string and then to an int.</p>
+                                            <p>Converts bytes to a string and then to an int.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    string|error ret = string:fromBytes(bytes);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -162,7 +182,26 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    if ret is error {
-        return ret;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>is</code> operator can be used to distinguish errors
+ from other values.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        return ret;
     } else {
         return int:fromString(ret);
     }
@@ -172,14 +211,6 @@ redirect_from:
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>is</code> operator can be used to distinguish errors
- from others value.</p>
-
-                                        </div>
-                                    </div>
-                                    
                                 </td>
                             </tr>
                             
@@ -187,8 +218,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
-    int|error res = intFromBytes([104, 101, 108, 108, 111]);    
-    if res is error {
 </code></pre></div>
 
                                 </td>
@@ -200,6 +229,19 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    int|error res = intFromBytes([104, 101, 108, 108, 111]);    
+    if res is error {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

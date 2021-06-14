@@ -23,9 +23,10 @@ redirect_from:
 
 <span class="nx">transactional</span> <span class="kd">function</span> <span class="nx">update</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">check</span> <span class="nx">updateDatabase</span><span class="p">();</span>
-    <span class="c1">//  Registers a commit handler to be invoked when `commit` is executed.</span>
+    <span class="c1">//  Registers a commit handler to be invoked when the `commit` is executed.</span>
     <span class="p">&#39;transaction:onCommit(</span><span class="nx">sendEmail</span><span class="p">);</span>
     <span class="p">&#39;transaction:onRollback(</span><span class="nx">logError</span><span class="p">);</span>
+
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">updateDatabase</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -93,7 +94,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=c5522c0a46224502680697c06fd2418b&file=commit_rollback_handlers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=7f064ab6dce8f4fa69f26206e8f5a497&file=commit_rollback_handlers.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -111,6 +112,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -178,7 +181,6 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    &#39;transaction:onCommit(sendEmail);
     &#39;transaction:onRollback(logError);
-}
 </code></pre></div>
 
                                 </td>
@@ -186,10 +188,22 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Registers a commit handler to be invoked when <code>commit</code> is executed.</p>
+                                            <p>Registers a commit handler to be invoked when the <code>commit</code> is executed.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

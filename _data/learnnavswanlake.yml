@@ -114,10 +114,32 @@
   sublinks:
     - title: HTTP
       url: /learn/user-guide/network-communication/http/
-      active: http
+      active: http 
+      sublinks:
+        - title: HTTP Clients
+          url: /learn/user-guide/network-communication/http/http-clients/
+          active: http-clients
+        - title: HTTP Services
+          url: /learn/user-guide/network-communication/http/http-services/
+          active: http-services
     - title: gRPC
-      url: /learn/user-guide/network-communication/grpc/
-      active: grpc
+      url: '#' 
+      sublinks:
+        - title: Defining the Interface of the Service
+          url: /learn/user-guide/network-communication/grpc/defining-the-service-interface/
+          active: defining-the-service-interface
+        - title: Implementing gRPC Services and Clients
+          url: '#'
+          sublinks:
+            - title: Implementing gRPC Services 
+              url: /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-services/
+              active: implementing-grpc-services
+            - title: Implementing gRPC Clients
+              url: /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-clients/
+              active: implementing-grpc-clients
+        - title: Performing gRPC Streaming
+          url: /learn/user-guide/network-communication/grpc/performing-grpc-streaming/
+          active: performing-grpc-streaming
     - title: WebSocket
       url: /learn/user-guide/network-communication/websocket/
       active: websocket

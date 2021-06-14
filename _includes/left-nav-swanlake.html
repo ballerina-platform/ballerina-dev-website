@@ -8,7 +8,7 @@
 {% endif %}
 {% endfor %}
 <!-- Then we build the nav bar. -->
-<nav class="cLeftNavContainer">
+<nav class="cLeftNavContainer cLeftNavContainerScroll">
    <ul class="cMainLeftNav">
       {% for entry in site.data.learnnavswanlake %}
       {% if entry.url == current_page %}
@@ -29,7 +29,37 @@
             {% endif %}
             {% for sublink in sublinks %}
             <!-- <li {{ current-sub }} ><a href="{{ site.baseurl }}{{ sublink.url }}">- {{ sublink.title }}</a></li> -->
+            {% assign innerTwoSublinks = sublink.sublinks %}
+            {% if innerTwoSublinks %} 
+          
+            <li {% if sublink.active == page.active %} class="inner-sub-menu current-sub" {% else %} class="inner-sub-menu " {% endif %}>
+                  <div class="cLeftMenuInnerLink cTopiAtag">{{ sublink.title }}</div>  
+                  <ul class="sub-ul-two">
+                     {% for innerTwoSubLink in innerTwoSublinks %} 
+                     {% assign innerThreeSublinks = innerTwoSubLink.sublinks %}
+
+                     {% if innerThreeSublinks %} 
+                     <li {% if innerTwoSubLink.active == page.active %} class="inner-sub-menu-two current-inner-sub"  {% else %}  class="inner-sub-menu-two " {% endif %}> 
+                        <div class="cLeftMenuTwoLink cTopiAtag">{{ innerTwoSubLink.title }}</div>
+                        <ul class="sub-ul-three">
+                           {% for innerThreeSublink in innerThreeSublinks %} 
+                           <li {% if innerThreeSublink.active == page.active %} class="inner-sub-menu-three current-inner-three-sub" {% endif %}>
+                              <a href="{{innerThreeSublink.url}}">{{innerThreeSublink.title}}</a>
+                           </li>
+                           {% endfor %}
+                        </ul>
+                     </li>
+                     {% else %}
+                     <li {% if innerTwoSubLink.active == page.active %} class=" current-inner-sub" {% endif %}>
+                        <a href="{{innerTwoSubLink.url}}">{{innerTwoSubLink.title}}</a>
+                     </li>
+                     {% endif %}
+                     {% endfor %}
+                  </ul>  
+            </li> 
+            {% else %}
             <li{% if sublink.active == page.active %} class="current-sub"{% endif %}><a href="{{ sublink.url }}">{{ sublink.title }}</a></li>
+            {% endif %}
             {% endfor %}
          </ul>
       </li>

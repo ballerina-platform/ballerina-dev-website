@@ -16,21 +16,24 @@ redirect_from:
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">do</span> <span class="p">{</span>
-        <span class="c1">// If either foo() or bar() invocations returns an error,</span>
-        <span class="c1">// error will be returned from main function and execution</span>
-        <span class="c1">// of main function ends.</span>
+        <span class="c1">// If either `foo()` or `bar()` invocations returns an `error`,</span>
+        <span class="c1">// the error will be returned from the `main` function and execution</span>
+        <span class="c1">// of the `main` function ends.</span>
         <span class="nx">check</span> <span class="nx">foo</span><span class="p">();</span>
         <span class="nx">check</span> <span class="nx">bar</span><span class="p">();</span>
+
         <span class="k">if</span> <span class="p">!</span><span class="nx">isOK</span><span class="p">()</span> <span class="p">{</span>
-            <span class="c1">// explicitly fail with an error.</span>
+            <span class="c1">// Fails explicitly with an `error`.</span>
             <span class="nx">fail</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;not OK&quot;</span><span class="p">);</span>
+
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="c1">// failure with the respective error is caught by `on fail` block.</span>
+    <span class="c1">// Failure with the respective error is caught by the `on fail` block.</span>
     <span class="nx">on</span> <span class="nx">fail</span> <span class="k">var</span> <span class="nx">e</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
         <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
     <span class="p">}</span>
+
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -42,8 +45,9 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">isOK</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
-    <span class="c1">// not OK</span>
+    <span class="c1">// Returns `false`.</span>
     <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+
 <span class="p">}</span>
 </pre></div>
 
@@ -102,7 +106,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6adb2c13f0fac7161797605917a40fc2&file=check_semantics.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=98888c15254eefb839777088b8f7ec06&file=check_semantics.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -120,6 +124,14 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -174,7 +186,6 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        check foo();
         check bar();
-        if !isOK() {
 </code></pre></div>
 
                                 </td>
@@ -182,12 +193,24 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If either foo() or bar() invocations returns an error,
- error will be returned from main function and execution
- of main function ends.</p>
+                                            <p>If either <code>foo()</code> or <code>bar()</code> invocations returns an <code>error</code>,
+ the error will be returned from the <code>main</code> function and execution
+ of the <code>main</code> function ends.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        if !isOK() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -196,8 +219,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            fail error(&quot;not OK&quot;);
-        }
-    }
 </code></pre></div>
 
                                 </td>
@@ -205,10 +226,23 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>explicitly fail with an error.</p>
+                                            <p>Fails explicitly with an <code>error</code>.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        }
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -220,7 +254,6 @@ redirect_from:
         io:println(e.toString());
         return e;
     }
-}
 </code></pre></div>
 
                                 </td>
@@ -228,10 +261,22 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>failure with the respective error is caught by <code>on fail</code> block.</p>
+                                            <p>Failure with the respective error is caught by the <code>on fail</code> block.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -278,9 +323,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    return false;
-}
 </code></pre></div>
 
                                 </td>
@@ -288,10 +332,22 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>not OK</p>
+                                            <p>Returns <code>false</code>.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

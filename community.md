@@ -92,13 +92,13 @@ We are happy to help! Come engage with us on any channel that works for you.
 
 ## Report Issues
 
-Hit a bump on the road? Report an issue in the relevant repo out of the GitHub repos listed below. We want to fix all bugs!
+Report issues in the GitHub repositories of the areas and components listed below. 
 
-   - Compiler, runtime, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues" target="_blank">ballerina-lang</a> repo
-   - Standard Library: <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues" target="_blank">ballerina-standard-library</a> repo
-   - Language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues" target="_blank">ballerina-spec</a> repo
-   - Website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues" target="_blank">ballerina-dev-website</a> repo
-   - Security flaw: send an email to <a href="mailto:security@ballerina.io" target="_blank">security@ballerina.io</a>. For details, see the <a href="/security" target="_blank">security policy</a>.
+- <a href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose" target="_blank">Compiler, runtime, or tooling</a> 
+- <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues" target="_blank">Standard Library</a> 
+- <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues/new/choose" target="_blank">Language specification</a> 
+- <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">Website</a> 
+- <a href="mailto:security@ballerina.io" target="_blank">Security</a> (For details, see the <a href="/security" target="_blank">security policy</a>.
 
 ## Help Us Grow 
 

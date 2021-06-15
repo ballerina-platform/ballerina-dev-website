@@ -602,3 +602,26 @@ ul.lower-latin li {
         transition: all 0.2s ease 0s;
     }
 }
+.cBallerina-io .permalinkHeader{
+    padding-top: 80px;
+    margin-top: -40px;
+}
+.permalinkHeader{
+    position: relative; 
+    display: flex !important;
+    align-items: center;
+}
+.permalinkHeader .permalink{  
+    visibility: hidden;
+    transition: all 0.3s; 
+    margin-left: -24px;
+    background-image: url(../img/icons/permilink.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 24px ;
+    height: 16px; 
+}
+.permalinkHeader:hover .permalink{
+    visibility: visible;
+}

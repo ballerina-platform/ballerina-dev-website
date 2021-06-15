@@ -286,6 +286,9 @@ pre code {
     line-height: 32px;
     background-size: 30px;
 }
+p.cWindows , p.cLinux , p.cMac, p.cVSCode {
+    line-height: 32px;
+}
 .cWindows {
     background-image: url("/img/downloads/windows.svg");
 }

@@ -11,8 +11,6 @@ redirect_from:
   - /why/from-code-to-cloud
   - /learn/user-guide/why-ballerina/from-code-to-cloud
   - /learn/user-guide/why-ballerina/from-code-to-cloud/
-  - /learn/user-guide/
-  - /learn/user-guide
   - /learn/user-guide/why-ballerina/
   - /learn/user-guide/why-ballerina
   - /learn/user-guide/why-ballerina/cloud-native

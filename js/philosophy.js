@@ -95,7 +95,7 @@ function printExamples() {
     let pathValue = window.location.pathname;
     let splitedPath = pathValue.split("/learn/");
     let version = splitedPath[0];
-    $.getJSON(version + "/learn/data/all-bbes.json", function(example_data) {
+    $.getJSON(version + "/learn/by-example/all-bbes.json", function(example_data) {
         $.getJSON(version +"/learn/by-example/built-bbes.json", function(built_example_data) {
             var i = 0;
             var div_content;

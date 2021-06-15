@@ -28,7 +28,7 @@ redirect_from:
 <span class="c1">// `http:JwtValidatorConfig` configurations.</span>
 <span class="c1">// Authorization is based on scopes. A scope maps to one or more groups.</span>
 <span class="c1">// Authorization can be enabled by setting the `string|string[]` type</span>
-<span class="c1">// configurations.</span>
+<span class="c1">// configurations for `scopes` field.</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -204,7 +204,7 @@ service /foo on securedEP {
  <code>http:JwtValidatorConfig</code> configurations.
  Authorization is based on scopes. A scope maps to one or more groups.
  Authorization can be enabled by setting the <code>string|string[]</code> type
- configurations.</p>
+ configurations for <code>scopes</code> field.</p>
 
                                         </div>
                                     </div>
@@ -252,8 +252,7 @@ service /foo on securedEP {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># You may need to change the certificate file path, private key file path, and
-# trusted certificate file path.
+                                    <div class="highlight"><pre><code class=shell-session># You may need to change the certificate file path and private key file path.
 bal run http_service_jwt_auth.bal
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
 </code></pre></div>

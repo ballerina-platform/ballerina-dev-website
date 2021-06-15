@@ -52,12 +52,10 @@ redirect_from:
     <span class="c1">// Runs the prerequisite setup for the example.</span>
     <span class="nx">check</span> <span class="nx">beforeExample</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">);</span>
 
-    <span class="c1">// Since the `rowType` is provided as a `BinaryType`, the `resultStream` </span>
+    <span class="c1">// Since the `rowType` is provided as a `BinaryType`, the `binaryResultStream`</span>
     <span class="c1">// will have `BinaryType` records.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span> 
-                <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM BINARY_TYPES`</span><span class="p">,</span> <span class="nx">BinaryType</span><span class="p">);</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">BinaryType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">binaryResultStream</span> <span class="p">=</span> 
-                <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">BinaryType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span> <span class="nx">resultStream</span><span class="p">;</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">BinaryType</span><span class="p">,</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">binaryResultStream</span> <span class="p">=</span>
+                <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM BINARY_TYPES`</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Binary types Result :&quot;</span><span class="p">);</span>
     <span class="c1">// Iterates the `binaryResultStream`.</span>
@@ -65,12 +63,10 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
     <span class="p">});</span>
 
-    <span class="c1">// Since the `rowType` is provided as an `ArrayType`, the `resultStream2` will</span>
+    <span class="c1">// Since the `rowType` is provided as an `ArrayType`, the `arrayResultStream` will</span>
     <span class="c1">// have `ArrayType` records.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream2</span> <span class="p">=</span> 
-                <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM ARRAY_TYPES`</span><span class="p">,</span> <span class="nx">ArrayType</span><span class="p">);</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ArrayType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">arrayResultStream</span> <span class="p">=</span>
-                <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ArrayType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span><span class="nx">resultStream2</span><span class="p">;</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ArrayType</span><span class="p">,</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">arrayResultStream</span> <span class="p">=</span>
+                <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM ARRAY_TYPES`</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Array types Result :&quot;</span><span class="p">);</span>
     <span class="c1">// Iterates the `arrayResultStream`.</span>
@@ -78,15 +74,12 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
     <span class="p">});</span>
 
-    <span class="c1">// Since the `rowType` is provided as a `DateTimeType`, the `resultStream3`</span>
+    <span class="c1">// Since the `rowType` is provided as a `DateTimeType`, the `dateResultStream`</span>
     <span class="c1">// will have `DateTimeType` records. The `Date`, `Time`, `DateTime`, and</span>
     <span class="c1">// `Timestamp` fields of the database table can be mapped to `time:Utc`,</span>
     <span class="c1">// string, and int types in Ballerina.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream3</span> <span class="p">=</span> 
-                <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM DATE_TIME_TYPES`</span><span class="p">,</span>
-                <span class="nx">DateTimeType</span><span class="p">);</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">DateTimeType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">dateResultStream</span> <span class="p">=</span>
-                <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">DateTimeType</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span><span class="nx">resultStream3</span><span class="p">;</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">DateTimeType</span><span class="p">,</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">dateResultStream</span> <span class="p">=</span>
+                <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM DATE_TIME_TYPES`</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;DateTime types Result :&quot;</span><span class="p">);</span>
     <span class="c1">// Iterates the `dateResultStream`.</span>
@@ -406,10 +399,8 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream = 
-                jdbcClient-&gt;query(`SELECT * FROM BINARY_TYPES`, BinaryType);
-    stream&lt;BinaryType, sql:Error&gt; binaryResultStream = 
-                &lt;stream&lt;BinaryType, sql:Error&gt;&gt; resultStream;
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;BinaryType, error&gt; binaryResultStream =
+                jdbcClient-&gt;query(`SELECT * FROM BINARY_TYPES`);
 </code></pre></div>
 
                                 </td>
@@ -417,7 +408,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since the <code>rowType</code> is provided as a <code>BinaryType</code>, the <code>resultStream</code>
+                                            <p>Since the <code>rowType</code> is provided as a <code>BinaryType</code>, the <code>binaryResultStream</code>
  will have <code>BinaryType</code> records.</p>
 
                                         </div>
@@ -462,10 +453,8 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream2 = 
-                jdbcClient-&gt;query(`SELECT * FROM ARRAY_TYPES`, ArrayType);
-    stream&lt;ArrayType, sql:Error&gt; arrayResultStream =
-                &lt;stream&lt;ArrayType, sql:Error&gt;&gt;resultStream2;
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;ArrayType, error&gt; arrayResultStream =
+                jdbcClient-&gt;query(`SELECT * FROM ARRAY_TYPES`);
 </code></pre></div>
 
                                 </td>
@@ -473,7 +462,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since the <code>rowType</code> is provided as an <code>ArrayType</code>, the <code>resultStream2</code> will
+                                            <p>Since the <code>rowType</code> is provided as an <code>ArrayType</code>, the <code>arrayResultStream</code> will
  have <code>ArrayType</code> records.</p>
 
                                         </div>
@@ -518,11 +507,8 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream3 = 
-                jdbcClient-&gt;query(`SELECT * FROM DATE_TIME_TYPES`,
-                DateTimeType);
-    stream&lt;DateTimeType, sql:Error&gt; dateResultStream =
-                &lt;stream&lt;DateTimeType, sql:Error&gt;&gt;resultStream3;
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;DateTimeType, error&gt; dateResultStream =
+                jdbcClient-&gt;query(`SELECT * FROM DATE_TIME_TYPES`);
 </code></pre></div>
 
                                 </td>
@@ -530,7 +516,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since the <code>rowType</code> is provided as a <code>DateTimeType</code>, the <code>resultStream3</code>
+                                            <p>Since the <code>rowType</code> is provided as a <code>DateTimeType</code>, the <code>dateResultStream</code>
  will have <code>DateTimeType</code> records. The <code>Date</code>, <code>Time</code>, <code>DateTime</code>, and
  <code>Timestamp</code> fields of the database table can be mapped to <code>time:Utc</code>,
  string, and int types in Ballerina.</p>

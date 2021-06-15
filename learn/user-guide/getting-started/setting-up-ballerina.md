@@ -41,7 +41,7 @@ You can use the Ballerina Playground to write Ballerina programs without install
 
 ## Downloading Ballerina
 
-[Download](/downloads) Ballerina based on the operating system you are using and install it. 
+[Download](/downloads) Ballerina based on the operating system you are using and install it.
 
 <link rel="stylesheet" href="/css/download-page.css">
 <script src="/js/download-page.js"></script>
@@ -50,8 +50,8 @@ You can use the Ballerina Playground to write Ballerina programs without install
    <div class="container">
       <div class=" ">
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-            <p class="cWindows"><b>Windows</b></p>
-            <a id="packWindows" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}" class="cGTMDownload cDownload cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.windows-installer }}">
+            <h3 class="cWindows"><b>Windows</b></h3>
+            <a id="packWindows" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}" class="cGTMDownload cDownload cDownloadNew smallMargin" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.windows-installer }}">
                <div class="cSize">Installer  msi <span id="packWindowsName">{{ site.data.swanlake-latest.metadata.windows-installer-size }}</span></div>
             </a>
             <ul class="cDiwnloadSubLinks">
@@ -61,9 +61,9 @@ You can use the Ballerina Playground to write Ballerina programs without install
             </ul>
          </div>
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-            <p class="cLinux"><b>Linux</b></p>
+            <h3 class="cLinux"><b>Linux</b></h3>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: 0;">
-               <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}" class="cGTMDownload cDownload cLinuxPKGs  cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.linux-installer }}">
+               <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}" class="cGTMDownload cDownload cLinuxPKGs  cDownloadNew smallMargin" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.linux-installer }}">
                   <div class="cSize">deb  <span id="packLinuxName">{{ site.data.swanlake-latest.metadata.linux-installer-size }}</span></div>
                </a>
                <ul class="cDiwnloadSubLinks">
@@ -73,7 +73,7 @@ You can use the Ballerina Playground to write Ballerina programs without install
                </ul>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: 0;">
-               <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}" class="cGTMDownload cDownload cLinuxPKGs cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.rpm-installer }}">
+               <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}" class="cGTMDownload cDownload cLinuxPKGs cDownloadNew smallMargin" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.rpm-installer }}">
                   <div class="cSize">rpm  <span id="packLinuxName">{{ site.data.swanlake-latest.metadata.rpm-installer-size }}</span></div>
                </a>
                <ul class="cDiwnloadSubLinks">
@@ -85,8 +85,8 @@ You can use the Ballerina Playground to write Ballerina programs without install
          </div>
          <div class="clearfix"></div>
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-            <p class="cMac"><b>macOS</b></p>
-            <a id="packMac" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}" class="cGTMDownload cDownload cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.macos-installer }}">
+            <h3 class="cMac"><b>macOS</b></h3>
+            <a id="packMac" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}" class="cGTMDownload cDownload cDownloadNew smallMargin" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.macos-installer }}">
                <div class="cSize">Installer pkg <span id="packWindowsName">{{ site.data.swanlake-latest.metadata.windows-installer-size }}</span></div>
             </a>
             <ul class="cDiwnloadSubLinks">
@@ -95,8 +95,7 @@ You can use the Ballerina Playground to write Ballerina programs without install
                <li style="font-size:13px;"><a id="packMacAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.asc">asc</a></li>
             </ul>
          </div>
-         </div></div></div> 
-
+         </div></div></div>
 
 For more download options, see [Downloads](/download).
 
@@ -112,7 +111,7 @@ Once you have Ballerina installed, you can use the Update Tool to update it to t
 
 `bal dist pull slbeta1`
 
->**Info:** You might need to first update the Update Tool to its latest version. If you have an Update Tool version below 0.8.14, execute the `ballerina update` command or else execute the `bal update` command to do this.
+> **Info:** You might need to first update the Update Tool to its latest version. If you have an Update Tool version below 0.8.14, execute the `ballerina update` command or else execute the `bal update` command to do this.
 
 For more information, see [Update Tool](/learn/tooling-guide/cli-tools/update-tool/).
 
@@ -122,5 +121,4 @@ Ballerina provides an extension to try out its development capabilities in Visua
 
 ## What's Next?
 
-Now, that your environment for Ballerina is all set up and running, let's [write your first Ballerina program](/learn/user-guide/getting-started/writing-your-first-ballerina-program/). 
-
+Now, that your environment for Ballerina is all set up and running, let's [write your first Ballerina program](/learn/user-guide/getting-started/writing-your-first-ballerina-program/).

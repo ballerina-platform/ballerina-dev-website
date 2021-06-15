@@ -82,7 +82,13 @@
 .cBlallerina-io-docs-content-container a {
     color: #20b6b0 !important;
 }
-
+.cBlallerina-io-docs-content-container p a code {
+    color: #20b6b0 !important;
+    font-size: inherit !important;
+}
+.cBlallerina-io-docs-content-container p a:hover code {
+    color: #464646 !important;
+}
 .wy-breadcrumbs li a:hover , .cBlallerina-io-docs-content-container a:hover {
     color: #464646 !important;
 }

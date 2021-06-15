@@ -596,3 +596,17 @@ ul.lower-latin li {
         transition: all 0.2s ease 0s;
     }
 }
+.cBallerina-io .permalinkHeader{
+    padding-top: 80px;
+    margin-top: -40px;
+}
+.permalinkHeader{
+    position: relative; 
+}
+.permalinkHeader .permalink{  
+    visibility: hidden;
+    transition: all 0.3s;
+}
+.permalinkHeader:hover .permalink{
+    visibility: visible;
+}

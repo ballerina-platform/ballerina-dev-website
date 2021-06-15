@@ -65,7 +65,7 @@ The Ballerina team is now hosting monthly recorded Community Calls! These are in
 
 We are happy to help! Come engage with us on any channel that works for you.
 
-<div class="col-sm-12 col-md-12 cBallerinaLearnWrapper cGrayWrapper cCommunityLinks">
+<div class="row cBallerinaLearnWrapper cGrayWrapper cCommunityLinks">
   <div class="col-sm-12 col-md-3 cBoxContainer cCommunityIconsContainer">
       <div class="cBallerina-Box">
       <a class="cCommunityIcons" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"></a>

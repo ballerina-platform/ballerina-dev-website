@@ -18,6 +18,8 @@ redirect_from:
   - /learn/user-guide/getting-started
   - /learn/user-guide/getting-started/
   - /learn/user-guide/getting-started/setting-up-ballerina
+  - /learn/user-guide/
+  - /learn/user-guide
 ---
 
 ## Trying Ballerina in the Playground

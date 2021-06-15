@@ -50,7 +50,7 @@ You can use the Ballerina Playground to write Ballerina programs without install
    <div class="container">
       <div class=" ">
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-            <h3 class="cWindows"><b>Windows</b></h3>
+            <p class="cWindows"><b>Windows</b></p>
             <a id="packWindows" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}" class="cGTMDownload cDownload cDownloadNew smallMargin" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.windows-installer }}">
                <div class="cSize">Installer  msi <span id="packWindowsName">{{ site.data.swanlake-latest.metadata.windows-installer-size }}</span></div>
             </a>
@@ -61,7 +61,7 @@ You can use the Ballerina Playground to write Ballerina programs without install
             </ul>
          </div>
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-            <h3 class="cLinux"><b>Linux</b></h3>
+            <p class="cLinux"><b>Linux</b></p>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: 0;">
                <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}" class="cGTMDownload cDownload cLinuxPKGs  cDownloadNew smallMargin" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.linux-installer }}">
                   <div class="cSize">deb  <span id="packLinuxName">{{ site.data.swanlake-latest.metadata.linux-installer-size }}</span></div>
@@ -85,7 +85,7 @@ You can use the Ballerina Playground to write Ballerina programs without install
          </div>
          <div class="clearfix"></div>
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-            <h3 class="cMac"><b>macOS</b></h3>
+            <p class="cMac"><b>macOS</b></p>
             <a id="packMac" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}" class="cGTMDownload cDownload cDownloadNew smallMargin" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.macos-installer }}">
                <div class="cSize">Installer pkg <span id="packWindowsName">{{ site.data.swanlake-latest.metadata.windows-installer-size }}</span></div>
             </a>

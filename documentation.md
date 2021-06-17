@@ -16,7 +16,7 @@ A video introduction to the Ballerina Programming Language and what's new in Swa
 
 ### [Language Taste Screencasts](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s)
 
-End-to-end video screencasts like the one done on writing a service.
+End-to-end screencasts covering popular use cases that give a taste of the Ballerina language.
 
 ### [Language Walkthrough Slides](http://localhost:4000/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
 

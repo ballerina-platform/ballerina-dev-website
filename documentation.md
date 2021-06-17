@@ -24,7 +24,7 @@ A comprehensive reference slide deck explaining the language.
 
 ### [Language Walkthrough Video](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s) 
 
-Video recording of the language slide deck.
+A video recording of the language slide deck.
 
 ### [Learn by Example](/learn/by-example/)
 

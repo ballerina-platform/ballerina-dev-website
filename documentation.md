@@ -20,7 +20,7 @@ End-to-end screencasts covering popular use cases that give a taste of the Balle
 
 ### [Language Walkthrough Slides](http://localhost:4000/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
 
-Slide deck explaining the language.
+A comprehensive reference slide deck explaining the language.
 
 ### [Language Walkthrough Video](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s) 
 

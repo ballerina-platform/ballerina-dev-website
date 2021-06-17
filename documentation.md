@@ -12,7 +12,7 @@ redirect_from:
 
 ### [Language Introduction Video](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s)
 
-Video presentation of above which can be used as a sample of how to present the one hour deck.
+A video introduction to the Ballerina Programming Language and what's new in Swan Lake.
 
 ### [Language Taste Screencasts](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s)
 

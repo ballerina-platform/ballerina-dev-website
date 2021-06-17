@@ -28,7 +28,7 @@ A video recording of the language slide deck.
 
 ### [Learn by Example](/learn/by-example/)
 
-Guided path to learn the language by a series of examples.
+A guided path to learn the language through a series of examples.
 
 ## Concepts
 

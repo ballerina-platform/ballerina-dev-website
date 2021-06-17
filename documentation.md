@@ -28,7 +28,7 @@ A video recording of the language slide deck.
 
 ### [Learn by Example](/learn/by-example/)
 
-Guided path to learn the language by a series of examples.
+A guided path to learn the language through a series of examples.
 
 ## Concepts
 
@@ -38,7 +38,7 @@ Explains the unique aspects of Ballerina.
 
 ### [User Guide](/learn/user-guide/)
 
-Series of guides on various things you need to do during the Ballerina development cycle.
+A series of guides on various things you need to do during the Ballerina development cycle.
 
 ## References
 

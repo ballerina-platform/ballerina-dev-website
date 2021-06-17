@@ -44,11 +44,11 @@ Series of guides on various things you need to do during the Ballerina developme
 
 ### [Language Introduction Slides](http://localhost:4000/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
 
-One hour presentation on the language to talk about the language.
+Presentation slides on the Ballerina language that anyone can use to talk about the language.
 
 ### [Language Guide](/learn/language-concepts/)
 
-Prose extracted from the slide deck and videos with expanded examples.
+An elaborate textual guide to the Ballerina language. 
 
 ### [Library Documentation](/learn/api-docs/)
 
@@ -56,7 +56,7 @@ All library API docs.
 
 ### [Reference Guide by Examples](/learn/by-example/)
 
-Series of examples that serve as a reference guide for each language construct and concept.
+A series of examples that serve as a reference guide for each language construct & concept.
 
 ### [Platform Specifications](/spec/)
 

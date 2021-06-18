@@ -10,13 +10,13 @@ redirect_from:
 ---
 ## Getting Started
 
-### [Language Introduction Video](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s)
+### [Language Introduction Video]
 
 A video introduction to the Ballerina Programming Language and what's new in Swan Lake.
 
-### [Language Taste Screencasts](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s)
+### [Language Tasters](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s)
 
-End-to-end screencasts covering popular use cases that give a taste of the Ballerina language.
+End-to-end screencasts covering common use cases that give a taste of the Ballerina language.
 
 ### [Language Walkthrough Slides](http://localhost:4000/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
 
@@ -34,7 +34,7 @@ A guided path to learn the language through a series of examples.
 
 ### [Why Ballerina](/learn/why-ballerina/)
 
-Explains the unique aspects of Ballerina.
+Why you shoud use Ballerina.
 
 ### [User Guide](/learn/user-guide/)
 
@@ -56,11 +56,11 @@ All library API docs.
 
 ### [Reference Guide by Examples](/learn/by-example/)
 
-A series of examples that serve as a reference guide for each language construct & concept.
+A series of examples that serve as a reference guide for each language construct and concept.
 
-### [Platform Specifications](/spec/)
+### [Specifications](/spec/)
 
-All platform specs.
+Specifications for the platform.
 
 
 <style>

@@ -303,7 +303,9 @@ span.icon.minus-icon {
   background-image: url("/img/minus.svg");
   background-color: #464646;
 }
-
+.abix-tree-list .collapsed span.icon, .abix-tree-list .expanded span.icon{
+  margin-right: 8px !important;
+}
 .cBallerinaTocContainer {
   background-color: #f7f7f7;
   display: inline-block;

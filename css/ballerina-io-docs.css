@@ -82,7 +82,13 @@
 .cBlallerina-io-docs-content-container a {
     color: #20b6b0 !important;
 }
-
+.cBlallerina-io-docs-content-container p a code {
+    color: #20b6b0 !important;
+    font-size: inherit !important;
+}
+.cBlallerina-io-docs-content-container p a:hover code {
+    color: #464646 !important;
+}
 .wy-breadcrumbs li a:hover , .cBlallerina-io-docs-content-container a:hover {
     color: #464646 !important;
 }
@@ -462,7 +468,7 @@ input.cSubmitButton {
     margin: 0 15px;
     transition: none !important;
     font-size: 18px;
-    font-weight: 200;
+    /*font-weight: 200;*/
     background-color: #57595d;
     color: #ffffff !important;
     padding: 7px 26px;
@@ -595,4 +601,28 @@ ul.lower-latin li {
         transform: rotate(180deg);
         transition: all 0.2s ease 0s;
     }
+}
+.cBallerina-io .permalinkHeader{
+    padding-top: 80px;
+    margin-top: -40px;
+}
+.permalinkHeader{
+    position: relative; 
+    /* display: flex !important; */
+    /* align-items: center; */
+}
+.permalinkHeader .permalink{  
+    visibility: hidden;
+    transition: all 0.3s; 
+    margin-left: -24px;
+    background-image: url(../img/icons/permilink.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 24px ;
+    height: 16px; 
+    display: inline-block;
+}
+.permalinkHeader:hover .permalink{
+    visibility: visible;
 }

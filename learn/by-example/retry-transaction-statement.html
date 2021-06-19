@@ -15,15 +15,16 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Short for retry&lt;DefaultRetryManager&gt;(3)</span>
-    <span class="c1">// If any of `doStage1` and `doStage2` returns  `error:Retriable`,</span>
-    <span class="c1">// program will retry execution until execution succeed without an error `error:Retriable`.</span>
-    <span class="c1">// By default, it will retry 3 times with `DefaultRetryManager`.</span>
+    <span class="c1">// Short for `retry&lt;DefaultRetryManager&gt;(3)`.</span>
+    <span class="c1">// If any of the `doStage1` and `doStage2` returns  `error:Retriable`,</span>
+    <span class="c1">// the program will retry execution until execution succeeds without an `error:Retriable` error.</span>
+    <span class="c1">// By default, it will retry 3 times with the `DefaultRetryManager`.</span>
     <span class="nx">retry</span> <span class="nx">transaction</span> <span class="p">{</span>
         <span class="nx">check</span> <span class="nx">doStage1</span><span class="p">();</span>
         <span class="nx">check</span> <span class="nx">doStage2</span><span class="p">();</span>
         <span class="nx">check</span> <span class="nx">commit</span><span class="p">;</span>
     <span class="p">}</span>
+
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">doStage1</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -32,8 +33,9 @@ redirect_from:
 
 <span class="kd">function</span> <span class="nx">doStage2</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Returns `error:Retriable` error for retrying.</span>
-    <span class="c1">// To support custom errors, a custom implementation of `RetryManager` is required.</span>
+    <span class="c1">// To support custom errors, a custom implementation of the `RetryManager` is required.</span>
     <span class="k">return</span> <span class="nx">error</span> <span class="p">&#39;error:Retriable(</span><span class="s">&quot;Stage2 failed&quot;</span><span class="p">);</span>
+
 <span class="p">}</span>
 </pre></div>
 
@@ -90,7 +92,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=1bbc417279d8773eeb8bdc23e11b8921&file=retry_transaction_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=dc42099687db75280e809d67c89dc386&file=retry_transaction_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -108,6 +110,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -158,7 +164,6 @@ redirect_from:
         check doStage2();
         check commit;
     }
-}
 </code></pre></div>
 
                                 </td>
@@ -166,13 +171,25 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Short for retry<DefaultRetryManager>(3)
- If any of <code>doStage1</code> and <code>doStage2</code> returns  <code>error:Retriable</code>,
- program will retry execution until execution succeed without an error <code>error:Retriable</code>.
- By default, it will retry 3 times with <code>DefaultRetryManager</code>.</p>
+                                            <p>Short for <code>retry&lt;DefaultRetryManager&gt;(3)</code>.
+ If any of the <code>doStage1</code> and <code>doStage2</code> returns  <code>error:Retriable</code>,
+ the program will retry execution until execution succeeds without an <code>error:Retriable</code> error.
+ By default, it will retry 3 times with the <code>DefaultRetryManager</code>.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -205,9 +222,8 @@ redirect_from:
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    return error &#39;error:Retriable(&quot;Stage2 failed&quot;);
-}
 </code></pre></div>
 
                                 </td>
@@ -216,10 +232,22 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Returns <code>error:Retriable</code> error for retrying.
- To support custom errors, a custom implementation of <code>RetryManager</code> is required.</p>
+ To support custom errors, a custom implementation of the <code>RetryManager</code> is required.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

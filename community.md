@@ -5,9 +5,9 @@ intro: We warmly welcome all contributors to the Ballerina community to help est
 keywords: ballerina, community, ballerina community
 permalink: /community/
 redirect_from:
-   - /events
-   - /events/
-   - /community
+  - /events
+  - /events/
+  - /community
 ---
 
 The Ballerina community has been bootstrapped by <a href="https://wso2.com" target="_blank">WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open source project with all source code licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, Version 2.0</a> and the specifications licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0" target="_blank">Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
@@ -15,7 +15,6 @@ The Ballerina community has been bootstrapped by <a href="https://wso2.com" targ
 ## Try Out Ballerina
 
 [Learn Ballerina](/learn) and try out writing Ballerina code on your own.
-
 
 ## Subscribe to the Newsletter
 
@@ -31,8 +30,7 @@ We curate a periodic newsletter on Ballerina with hand-picked content and regula
 
 Interested? Subscribe to it below:
 
-
-<div class="col-sm-12 col-md-12" style="padding:0;">
+<div class="row"  >
    <div class="col-sm-12 col-md-6 cFormSection">
       <form id="subscribeForm">
       <div id="form-error" class="alert alert-danger"></div>
@@ -55,7 +53,7 @@ Interested? Subscribe to it below:
 
 The Ballerina team is now hosting monthly recorded Community Calls! These are interactive meetings that will explore Ballerina use cases. These calls give you direct access to our Engineers and other community members to question or discuss about Ballerina and your projects.
 
-- Get information on the <a href="https://docs.google.com/document/d/1TPi0ktNvk-gQhVh46ckP5_LyhvwLJSQ3NJeSfv8459A/edit" target="_blank">past and upcoming calls</a>. 
+- Get information on the <a href="https://docs.google.com/document/d/1TPi0ktNvk-gQhVh46ckP5_LyhvwLJSQ3NJeSfv8459A/edit" target="_blank">past and upcoming calls</a>.
 
 - Be notified about the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJkkaXmOf-ULhZ1Oi7bXAG_UmieRQ3wF8mKDohWux-8Ltfsw/viewform" target="_blank">details of the upcoming community calls</a>.
 
@@ -67,7 +65,7 @@ The Ballerina team is now hosting monthly recorded Community Calls! These are in
 
 We are happy to help! Come engage with us on any channel that works for you.
 
-<div class="col-sm-12 col-md-12 cBallerinaLearnWrapper cGrayWrapper cCommunityLinks">
+<div class="row cBallerinaLearnWrapper cGrayWrapper cCommunityLinks">
   <div class="col-sm-12 col-md-3 cBoxContainer cCommunityIconsContainer">
       <div class="cBallerina-Box">
       <a class="cCommunityIcons" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"></a>
@@ -92,31 +90,30 @@ We are happy to help! Come engage with us on any channel that works for you.
 
 ## Report Issues
 
-Hit a bump on the road? Report an issue in the relevant repo out of the GitHub repos listed below. We want to fix all bugs!
+Report issues in the GitHub repositories of the areas and components listed below.
 
-   - Compiler, runtime, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues" target="_blank">ballerina-lang</a> repo
-   - Standard Library: <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues" target="_blank">ballerina-standard-library</a> repo
-   - Language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues" target="_blank">ballerina-spec</a> repo
-   - Website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues" target="_blank">ballerina-dev-website</a> repo
-   - Security flaw: send an email to <a href="mailto:security@ballerina.io" target="_blank">security@ballerina.io</a>. For details, see the <a href="/security" target="_blank">security policy</a>.
+- <a href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose" target="_blank">Compiler, runtime, or tooling</a>
+- <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues" target="_blank">Standard Library</a>
+- <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues/new/choose" target="_blank">Language specification</a>
+- <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">Website</a>
+- <a href="mailto:security@ballerina.io" target="_blank">Security</a> (For details, see the <a href="/security" target="_blank">security policy</a>.)
 
-## Help Us Grow 
+## Help Us Grow
 
 If you like the experience so far, help us to spread the word.
 
 - Star the [Ballerina GitHub repo](https://github.com/ballerina-platform/ballerina-lang) and show appreciation to the Ballerina maintainers for their work. Also, watch the repo to keep track of Ballerina issues. Thank you!
-<div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div> 
+<div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
 - Follow us on Twitter: <a href="https://twitter.com/ballerinalang" target="_blank">@ballerinalang</a>. Tweet with the "#ballerinalang" hashtag.
-- Share the wealth by publishing your Ballerina module on <a href="https://central.ballerina.io" target="_blank">Ballerina Central</a> so that the whole community can benefit from your work. 
-- Write your own blog and submit it to be published in our <a href="https://medium.com/ballerina-techblog" target="_blank">community-driven Tech Blog</a>. 
+- Share the wealth by publishing your Ballerina module on <a href="https://central.ballerina.io" target="_blank">Ballerina Central</a> so that the whole community can benefit from your work.
+- Write your own blog and submit it to be published in our <a href="https://medium.com/ballerina-techblog" target="_blank">community-driven Tech Blog</a>.
 - Buzz us on <a href="mailto:contact@ballerina.io" target="_blank">contact@ballerina.io</a> if you want to organize a local meetup or hackathon. WSO2 will get right on it and help with presentation/training content, logistics, swag, and some funds for munchies.
 - Download any file of the <a href="https://github.com/ballerina-platform/ballerina-dev-website/tree/master/ballerina-logos" target="_blank">Ballerina logo</a> to use for content or swag.
 - Use the <a href="https://github.com/marketplace/actions/ballerina-action" target="_blank"> GitHub Action for the Ballerina CLI</a> to wrap Ballerina commands inside GitHub Actions.
 
-
 <!-- ## Want to be kept up-to-date?
 
-We run an announcement-only, no-marketing-spam mailing list that we will use to inform you of new releases and similar relevant information. If you’d like to join please submit the form below: 
+We run an announcement-only, no-marketing-spam mailing list that we will use to inform you of new releases and similar relevant information. If you’d like to join please submit the form below:
 
 (GDPR compliant mandatory consent click included!)
 
@@ -127,7 +124,7 @@ We run an announcement-only, no-marketing-spam mailing list that we will use to 
 
 ## Contribute to Ballerina
 
-Join us and contribute to the source code to make Ballerina better! To be aware of the ground rules as you start, see the <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md" target="_blank">Contribution Guide</a>. Happy contributing! 
+Join us and contribute to the source code to make Ballerina better! To be aware of the ground rules as you start, see the <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md" target="_blank">Contribution Guide</a>. Happy contributing!
 
 <style>
 .nav > li.cVersionItem {
@@ -229,7 +226,6 @@ body {font-family: Arial;}
 }
 </style>
 
-
 <h2>Join Ballerina Events</h2>
 <p>Click to see information about past and upcoming Ballerina events.</p>
 
@@ -244,20 +240,13 @@ body {font-family: Arial;}
   <script src="/js/events.js"></script>
 <link rel="stylesheet" href="/css/events-page.css">
   <table class="cEventTable cConferencesList" style="width:100%;">
-   <tr class="event-expiry" style="display:none" data-expiry="June 16, 2021 12:00:00">	
+     <!-- <tr class="event-expiry" style="display:none" data-expiry="June 16, 2021 12:00:00">	
       <td class="cEventDateContainer">	
-         <span class="cEventDate">June 15 - 16, 2021</span>	
-         <p class="cEventLocation">Online</p>	
-      </td>	
-      <td class="cEventDetail">	
-         <a target="_blank" href="https://stackconf.eu/">	
-            <h4>StackConf</h4>	
-         </a>	
-         <h5>Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h5>	
-         <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
-      </td>	
-      <td class="cEventURL"><a class="cEventRegistration" href="https://stackconf.eu/" target="_blank">More Info</a></td>	
-   </tr>	
+         <span class="cEventDate">We will update you soon.</span>	
+          <span class="cEventDate">June 15 - 16, 2021</span>	 -->
+         <!-- <p class="cEventLocation">Online</p>	  -->
+   <!-- </tr>	  -->
+   <p>We will update you soon.</p>
 </table>
 </div>
 
@@ -265,6 +254,20 @@ body {font-family: Arial;}
   <!--<h3>Past Events</h3>
   <p>The below are the past Ballerina events.</p>-->
   <table class="cEventTable cConferencesList" style="width:100%;">
+       <tr class="event-expiry" style="display:none" data-expiry="">	
+      <td class="cEventDateContainer">	
+         <span class="cEventDate">June 15 - 16, 2021</span>	
+         <p class="cEventLocation">Online</p>	
+      </td>	
+      <td class="cEventDetail">	
+         <a target="_blank" href="https://www.wurreka.com/ict/virtual-conference/gids-2021/">	
+            <h4>StackConf</h4>	
+         </a>	
+         <h5>Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h5>
+         <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
+      </td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://stackconf.eu/" target="_blank">More Info</a></td>	
+   </tr>
     <tr class="event-expiry" style="display:none" data-expiry="">	
       <td class="cEventDateContainer">	
          <span class="cEventDate">April 27 - 30, 2021</span>	
@@ -768,4 +771,3 @@ document.getElementById("defaultOpen").click();
       display:none;
    }
 </style>
- 

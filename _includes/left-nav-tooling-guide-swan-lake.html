@@ -8,7 +8,7 @@
 {% endif %}
 {% endfor %}
 <!-- Then we build the nav bar. -->
-<nav class="cLeftNavContainer">
+<nav class="cLeftNavContainer cLeftNavContainerScroll">
    <ul class="cMainLeftNav">
       {% for entry in site.data.toolingguidenavswanlake %}
       {% if entry.url == current_page %}
@@ -29,12 +29,24 @@
             {% endif %}
             {% for sublink in sublinks %}
             <!-- <li {{ current-sub }} ><a href="{{ site.baseurl }}{{ sublink.url }}">- {{ sublink.title }}</a></li> -->
+            {% assign innerSublinks = sublink.sublinks %}
+            {% if innerSublinks %} 
+            <li {% if sublink.active == page.active %} class="inner-sub-menu current-sub" {% else %} class="inner-sub-menu " {% endif %}>
+               <div class="cLeftMenuInnerLink cTopiAtag">{{ sublink.title }}</div>  
+               <ul class="sub-ul-two">
+                  {% for innerSubLink in innerSublinks %} 
+                  <li {% if innerSubLink.active == page.active %} class="current-inner-sub" {% endif %}><a href="{{innerSubLink.url}}">{{innerSubLink.title}}</a></li>
+                  {% endfor %}
+               </ul>  
+            </li> 
+            {% else %}
             <li{% if sublink.active == page.active %} class="current-sub"{% endif %}><a href="{{ sublink.url }}">{{ sublink.title }}</a></li>
+            {% endif %}
             {% endfor %}
          </ul>
       </li>
       {% else %}
-      <!-- <li{{ current }}><a href="{{ site.baseurl }}{{ entry.url }}">- {{ entry.title }}</a></li> -->
+     
       <li{% if entry.active == page.active %} class="current"{% endif %}><a href="{{ entry.url }}">{{ entry.title }}</a></li>
       {% endif %}
       {% endfor %}

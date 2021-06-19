@@ -27,18 +27,20 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// Called within transaction stmt</span>
+<span class="c1">// Called within the transaction statement.</span>
 <span class="nx">transactional</span> <span class="kd">function</span> <span class="nx">doUpdate</span><span class="p">(</span><span class="nx">Update</span> <span class="nx">u</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Call non-transactional function</span>
+    <span class="c1">// Calls the `foo()` non-transactional function.</span>
     <span class="nx">foo</span><span class="p">(</span><span class="nx">u</span><span class="p">);</span>
-    <span class="c1">// Call transactional function</span>
+    <span class="c1">// Calls the `bar()` transactional function.</span>
     <span class="nx">bar</span><span class="p">(</span><span class="nx">u</span><span class="p">);</span>
+
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">Update</span> <span class="nx">u</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="nx">transactional</span> <span class="p">{</span>
-        <span class="c1">// This is transactional context</span>
+        <span class="c1">// This is a transactional context.</span>
         <span class="nx">bar</span><span class="p">(</span><span class="nx">u</span><span class="p">);</span>
+
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -98,7 +100,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=04a6aa2abaa723a4a734a5fa26f58dc6&file=transactional_qualifier.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=92b41c2fc860f90b2efeffb5b5df7950&file=transactional_qualifier.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -116,6 +118,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -196,7 +202,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Called within transaction stmt</p>
+                                            <p>Called within the transaction statement.</p>
 
                                         </div>
                                     </div>
@@ -215,7 +221,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Call non-transactional function</p>
+                                            <p>Calls the <code>foo()</code> non-transactional function.</p>
 
                                         </div>
                                     </div>
@@ -227,7 +233,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    bar(u);
-}
 </code></pre></div>
 
                                 </td>
@@ -235,10 +240,22 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Call transactional function</p>
+                                            <p>Calls the <code>bar()</code> transactional function.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -260,8 +277,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        bar(u);
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -269,10 +284,23 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is transactional context</p>
+                                            <p>This is a transactional context.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

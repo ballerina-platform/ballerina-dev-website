@@ -26,8 +26,9 @@ redirect_from:
 <span class="nx">Err</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">error</span> <span class="nx">XErr</span><span class="p">(</span><span class="s">&quot;Whoops!&quot;</span><span class="p">);</span>
 
 <span class="kd">function</span> <span class="nx">desc</span><span class="p">(</span><span class="nx">Err</span> <span class="nx">err</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-    <span class="c1">// `is` operator can be used to distinguish distinct subtypes.</span>
+    <span class="c1">// The `is` operator can be used to distinguish distinct subtypes.</span>
     <span class="k">return</span> <span class="nx">err</span> <span class="nx">is</span> <span class="nx">XErr</span> <span class="err">?</span> <span class="s">&quot;X&quot;</span> <span class="p">:</span> <span class="s">&quot;Y&quot;</span><span class="p">;</span>
+
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
@@ -90,7 +91,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=d471b5035b4f5d1da6d621aca4321275&file=error_subtyping.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=fcb77b512a117cac65ba00be279ee285&file=error_subtyping.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -108,6 +109,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -209,7 +212,6 @@ type YErr distinct error;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    return err is XErr ? &quot;X&quot; : &quot;Y&quot;;
-}
 </code></pre></div>
 
                                 </td>
@@ -217,10 +219,22 @@ type YErr distinct error;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>is</code> operator can be used to distinguish distinct subtypes.</p>
+                                            <p>The <code>is</code> operator can be used to distinguish distinct subtypes.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

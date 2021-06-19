@@ -13,13 +13,8 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websocket</span><span class="p">;</span>
 
-<span class="nd">@websocket:ServiceConfig {</span>
-    <span class="nx">subProtocols</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;xml&quot;</span><span class="p">,</span> <span class="s">&quot;json&quot;</span><span class="p">],</span>
-    <span class="nx">idleTimeout</span><span class="p">:</span> <span class="mi">120</span>
-<span class="p">}</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">basic</span><span class="o">/</span><span class="nx">ws</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
    <span class="kd">resource</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.()</span>
                      <span class="nx">returns</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Service</span><span class="p">|</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">UpgradeError</span> <span class="p">{</span>
@@ -33,12 +28,9 @@ redirect_from:
     <span class="c1">// This `remote function` is triggered when a new text message is received</span>
     <span class="c1">// from a client.</span>
     <span class="nx">remote</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">onTextMessage</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
-                                 <span class="kt">string</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+                                 <span class="kt">string</span> <span class="nx">text</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\ntext message: &quot;</span> <span class="o">+</span> <span class="nx">text</span><span class="p">);</span>
-        <span class="nx">websocket</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeTextMessage</span><span class="p">(</span><span class="s">&quot;You said: &quot;</span> <span class="o">+</span> <span class="nx">text</span><span class="p">);</span>
-        <span class="k">if</span> <span class="nx">err</span> <span class="nx">is</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Error</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending text&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeTextMessage</span><span class="p">(</span><span class="s">&quot;You said: &quot;</span> <span class="o">+</span> <span class="nx">text</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -67,9 +59,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="websub-webhook-sample.html">
+                                    <a class="next" href="websocket-service-ssl-tls.html">
                                         <span>NEXT ></span>
-                                        <p>Websub Subscriber Service</p>
+                                        <p>Service - SSL/TLS</p>
                                     </a>
                                 </div>
                                 
@@ -127,7 +119,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/log;
 import ballerina/websocket;
 </code></pre></div>
 
@@ -140,11 +131,7 @@ import ballerina/websocket;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@websocket:ServiceConfig {
-    subProtocols: [&quot;xml&quot;, &quot;json&quot;],
-    idleTimeout: 120
-}
-service /basic/ws on new websocket:Listener(9090) {
+                                    <div class="highlight"><pre><code class=language-ballerina>service /basic/ws on new websocket:Listener(9090) {
    resource isolated function get .()
                      returns websocket:Service|websocket:UpgradeError {
 </code></pre></div>
@@ -193,12 +180,9 @@ service /basic/ws on new websocket:Listener(9090) {
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    remote isolated function onTextMessage(websocket:Caller caller,
-                                 string text) {
+                                 string text) returns websocket:Error? {
         io:println(&quot;\ntext message: &quot; + text);
-        websocket:Error? err = caller-&gt;writeTextMessage(&quot;You said: &quot; + text);
-        if err is websocket:Error {
-            log:printError(&quot;Error occurred when sending text&quot;, &#39;error = err);
-        }
+        check caller-&gt;writeTextMessage(&quot;You said: &quot; + text);
     }
 }
 </code></pre></div>
@@ -225,18 +209,6 @@ service /basic/ws on new websocket:Listener(9090) {
                                 
                             
                         
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -244,48 +216,8 @@ service /basic/ws on new websocket:Listener(9090) {
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>bal run websocket_basic_sample.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To check the sample, use a Chrome or Firefox JavaScript console and run the commands below. &lt;br&gt;
-# Change `xml` to another sub protocol to observe the behavior of the WebSocket server.
-var ws = new WebSocket(&quot;ws://localhost:9090/basic/ws&quot;, &quot;xml&quot;, &quot;my-protocol&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>ws.onmessage = function(frame) {console.log(frame.data)};
-ws.onclose = function(frame) {console.log(frame)};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Send a message.
-ws.send(&quot;hello world&quot;);
+                                    <div class="highlight"><pre><code class=shell-session>bal run websocket_basic_sample.bal
 </code></pre></div>
 
                                 </td>

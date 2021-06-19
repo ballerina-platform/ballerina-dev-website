@@ -68,4 +68,10 @@ It generates a `Cloud.toml` file for your Ballerina project according to the def
 
 ![Create Cloud.toml](/learn/images/create-cloud-toml.gif)
 
+## Paste JSON as Record 
+
+This command converts a JSON string (that is copied to the clipboard) to a Ballerina record(s) and pastes it in your code.
+
+![Paste JSON as Record](/learn/images/paste-json-as-record.gif)
+
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

@@ -29,7 +29,8 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="o">/</span><span class="nx">subscriber</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Service path is not specified, hence Subscriber Service will auto generate a unique random service path segment.</span>
+<span class="kd">service</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Defines the remote function that accepts the event notification request for the WebHook.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onEventNotification</span><span class="p">(</span>
                     <span class="nx">websub</span><span class="p">:</span><span class="nx">ContentDistributionMessage</span> <span class="nx">event</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -63,7 +64,12 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Websub Subscriber Service</h2>
                             <p><p>Ballerina provides the capability to easily introduce subscriber services that are WebSub-compliant.
- Ballerina WebSub subscribers can specify the topic and hub to which they wish to subscribe</p>
+ Ballerina WebSub subscribers can specify the topic and hub to which they wish to subscribe to receive notifications.
+ If not specified WebSub Subscriber Services will auto generate a unique random service path segment.
+ Ballerina WebSub Subscriber Services could thus be registered as WebHooks to receive event notifications.
+ In this example, a WebSub Subscriber service is used to implement a GitHub-based WebHook service.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://docs.central.ballerina.io/ballerina/websub/latest/">WebSub module</a>.</p>
 </p>
 
                         </td>
@@ -71,9 +77,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="websocket-basic-sample.html">
+                                    <a class="prev" href="websocket-client-oauth2-refresh-token-grant-type.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Listener Functionalities</p>
+                                        <p>Client - OAuth2 Refresh Token Grant Type</p>
                                     </a>
                                 </div>
                                  
@@ -125,6 +131,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -165,7 +173,6 @@ import ballerina/io;
         }
     }
 }
-service /subscriber on new websub:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -174,6 +181,25 @@ service /subscriber on new websub:Listener(9090) {
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Annotation-based configurations specifying the subscription parameters.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service on new websub:Listener(9090) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Service path is not specified, hence Subscriber Service will auto generate a unique random service path segment.</p>
 
                                         </div>
                                     </div>

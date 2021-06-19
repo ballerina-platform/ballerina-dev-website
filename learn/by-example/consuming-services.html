@@ -19,9 +19,10 @@ redirect_from:
     <span class="c1">// A client object is created by applying `new` to a client class.</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.github.com/&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Remote method calls use `-&gt;` syntax. This enables sequence diagram view.</span>
+    <span class="c1">// The remote method calls use the `-&gt;` syntax. This enables the sequence diagram view.</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">resp</span> <span class="p">=</span>
                     <span class="nx">check</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/orgs/ballerina-platform/repos&quot;</span><span class="p">);</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -77,7 +78,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=19fbe4576cd82114211894ab1c1592c3&file=consuming_services.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=8ef26b4781daf1acb5a623fa450f6ee5&file=consuming_services.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -95,6 +96,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -155,11 +158,9 @@ import ballerina/io;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    http:Response resp =
                     check httpClient-&gt;get(&quot;/orgs/ballerina-platform/repos&quot;);
-    io:println(resp.statusCode);
-}
 </code></pre></div>
 
                                 </td>
@@ -167,10 +168,23 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Remote method calls use <code>-&gt;</code> syntax. This enables sequence diagram view.</p>
+                                            <p>The remote method calls use the <code>-&gt;</code> syntax. This enables the sequence diagram view.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(resp.statusCode);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

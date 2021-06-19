@@ -1118,14 +1118,14 @@
                 "name": "Hierarchical Resource Paths",
                 "url": "graphql-hierarchical-resource-paths",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true
             },
             {
                 "name": "Returning Service Objects",
                 "url": "graphql-returning-service-objects",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true
             },
             {

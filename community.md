@@ -96,7 +96,7 @@ Report issues in the GitHub repositories of the areas and components listed belo
 - <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues" target="_blank">Standard Library</a>
 - <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues/new/choose" target="_blank">Language specification</a>
 - <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">Website</a>
-- <a href="mailto:security@ballerina.io" target="_blank">Security</a> (For details, see the <a href="/security" target="_blank">security policy</a>.
+- <a href="mailto:security@ballerina.io" target="_blank">Security</a> (For details, see the <a href="/security" target="_blank">security policy</a>.)
 
 ## Help Us Grow
 
@@ -240,20 +240,13 @@ body {font-family: Arial;}
   <script src="/js/events.js"></script>
 <link rel="stylesheet" href="/css/events-page.css">
   <table class="cEventTable cConferencesList" style="width:100%;">
-   <tr class="event-expiry" style="display:none" data-expiry="June 16, 2021 12:00:00">	
+     <!-- <tr class="event-expiry" style="display:none" data-expiry="June 16, 2021 12:00:00">	
       <td class="cEventDateContainer">	
-         <span class="cEventDate">June 15 - 16, 2021</span>	
-         <p class="cEventLocation">Online</p>	
-      </td>	
-      <td class="cEventDetail">	
-         <a target="_blank" href="https://stackconf.eu/">	
-            <h4>StackConf</h4>	
-         </a>	
-         <h5>Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h5>	
-         <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
-      </td>	
-      <td class="cEventURL"><a class="cEventRegistration" href="https://stackconf.eu/" target="_blank">More Info</a></td>	
-   </tr>	
+         <span class="cEventDate">We will update you soon.</span>	
+          <span class="cEventDate">June 15 - 16, 2021</span>	 -->
+         <!-- <p class="cEventLocation">Online</p>	  -->
+   <!-- </tr>	  -->
+   <p>We will update you soon.</p>
 </table>
 </div>
 
@@ -261,6 +254,20 @@ body {font-family: Arial;}
   <!--<h3>Past Events</h3>
   <p>The below are the past Ballerina events.</p>-->
   <table class="cEventTable cConferencesList" style="width:100%;">
+       <tr class="event-expiry" style="display:none" data-expiry="">	
+      <td class="cEventDateContainer">	
+         <span class="cEventDate">June 15 - 16, 2021</span>	
+         <p class="cEventLocation">Online</p>	
+      </td>	
+      <td class="cEventDetail">	
+         <a target="_blank" href="https://www.wurreka.com/ict/virtual-conference/gids-2021/">	
+            <h4>StackConf</h4>	
+         </a>	
+         <h5>Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h5>
+         <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
+      </td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://stackconf.eu/" target="_blank">More Info</a></td>	
+   </tr>
     <tr class="event-expiry" style="display:none" data-expiry="">	
       <td class="cEventDateContainer">	
          <span class="cEventDate">April 27 - 30, 2021</span>	

@@ -70,7 +70,7 @@ It generates a `Cloud.toml` file for your Ballerina project according to the def
 
 ## Paste JSON as Record 
 
-This command converts and pastes a JSON string that is copied to the clipboard as a Ballerina record(s).
+This command converts a JSON string (that is copied to the clipboard) to a Ballerina record(s) and pastes it in your code.
 
 ![Paste JSON as Record](/learn/images/paste-json-as-record.gif)
 

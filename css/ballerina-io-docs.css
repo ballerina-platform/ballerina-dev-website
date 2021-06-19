@@ -468,7 +468,7 @@ input.cSubmitButton {
     margin: 0 15px;
     transition: none !important;
     font-size: 18px;
-    font-weight: 200;
+    /*font-weight: 200;*/
     background-color: #57595d;
     color: #ffffff !important;
     padding: 7px 26px;

@@ -28,7 +28,7 @@ redirect_from:
     <span class="nx">check</span> <span class="nx">beforeExample</span><span class="p">();</span>
 
     <span class="c1">// Initializes the MySQL client.</span>
-    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span>
+    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> 
             <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE&quot;</span><span class="p">);</span>
 
     <span class="c1">// Creates a parameterized query to invoke the procedure.</span>
@@ -39,7 +39,7 @@ redirect_from:
 
     <span class="c1">// Invokes the stored procedure `InsertStudent` with the `IN` parameters.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span> <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="nx">sqlQuery</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call stored procedure `InsertStudent`.&quot;</span> <span class="o">+</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call stored procedure `InsertStudent`.&quot;</span> <span class="o">+</span> 
         <span class="s">&quot;\nAffected Row count: &quot;</span><span class="p">,</span> <span class="nx">retCall</span><span class="p">.</span><span class="nx">executionResult</span><span class="err">?</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
     <span class="nx">check</span> <span class="nx">retCall</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 
@@ -59,13 +59,13 @@ redirect_from:
     <span class="c1">// Invokes the stored procedure, which returns the data.</span>
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ProcedureCallResult</span> <span class="nx">retCall3</span> <span class="p">=</span> 
             <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="s">`{CALL GetStudents()}`</span><span class="p">,</span> <span class="p">[</span><span class="nx">Student</span><span class="p">]);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call stored procedure `GetStudents`.&quot;</span><span class="p">);</span>              
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call stored procedure `GetStudents`.&quot;</span><span class="p">);</span>
 
     <span class="c1">// Processes the returned result stream.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">retCall3</span><span class="p">.</span><span class="nx">queryResult</span><span class="p">;</span>
-    <span class="k">if</span> <span class="nx">result</span> <span class="nx">is</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{},</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">retCall3</span><span class="p">.</span><span class="nx">queryResult</span><span class="p">;</span>
+    <span class="k">if</span> <span class="nx">result</span> <span class="nx">is</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{},</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="p">{</span>
         <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">studentStream</span> <span class="p">=</span> 
-                <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span> <span class="nx">result</span><span class="p">;</span>
+                <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span><span class="nx">result</span><span class="p">;</span>
         <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">studentStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student details: &quot;</span><span class="p">,</span> <span class="nx">student</span><span class="p">);</span>
         <span class="p">});</span>
@@ -81,7 +81,7 @@ redirect_from:
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">);</span>
 
     <span class="c1">// Creates a database.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span> 
         <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE DATABASE MYSQL_BBE`</span><span class="p">);</span>
 
     <span class="c1">// Creates a table in the database.</span>
@@ -100,13 +100,13 @@ redirect_from:
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE PROCEDURE</span>
 <span class="s">        MYSQL_BBE.GetStudents() BEGIN SELECT * FROM Student; END`</span><span class="p">);</span>
 
-    <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>    
+    <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="c1">// Cleans up the database after running the example.</span>
 <span class="kd">function</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Cleans the database.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span> 
             <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP DATABASE MYSQL_BBE`</span><span class="p">);</span>
 
     <span class="c1">// Closes the MySQL client.</span>
@@ -298,7 +298,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient = check new (user = &quot;root&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient = check new (user = &quot;root&quot;, 
             password = &quot;Test@123&quot;, database = &quot;MYSQL_BBE&quot;);
 </code></pre></div>
 
@@ -341,7 +341,7 @@ import ballerina/sql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:ProcedureCallResult retCall = check mysqlClient-&gt;call(sqlQuery);
-    io:println(&quot;Call stored procedure `InsertStudent`.&quot; +
+    io:println(&quot;Call stored procedure `InsertStudent`.&quot; + 
         &quot;\nAffected Row count: &quot;, retCall.executionResult?.affectedRowCount);
     check retCall.close();
 </code></pre></div>
@@ -409,7 +409,7 @@ import ballerina/sql;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    sql:ProcedureCallResult retCall3 = 
             check mysqlClient-&gt;call(`{CALL GetStudents()}`, [Student]);
-    io:println(&quot;Call stored procedure `GetStudents`.&quot;);              
+    io:println(&quot;Call stored procedure `GetStudents`.&quot;);
 </code></pre></div>
 
                                 </td>
@@ -428,10 +428,10 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, sql:Error&gt;? result = retCall3.queryResult;
-    if result is stream&lt;record{}, sql:Error&gt; {
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record {}, sql:Error&gt;? result = retCall3.queryResult;
+    if result is stream&lt;record {}, sql:Error&gt; {
         stream&lt;Student, sql:Error&gt; studentStream = 
-                &lt;stream&lt;Student, sql:Error&gt;&gt; result;
+                &lt;stream&lt;Student, sql:Error&gt;&gt;result;
         sql:Error? e = studentStream.forEach(function(Student student) {
             io:println(&quot;Student details: &quot;, student);
         });
@@ -495,7 +495,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result = 
         check mysqlClient-&gt;execute(`CREATE DATABASE MYSQL_BBE`);
 </code></pre></div>
 
@@ -563,7 +563,7 @@ import ballerina/sql;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check mysqlClient.close();    
+                                    <div class="highlight"><pre><code class=language-ballerina>    check mysqlClient.close();
 }
 </code></pre></div>
 
@@ -595,7 +595,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result = 
             check mysqlClient-&gt;execute(`DROP DATABASE MYSQL_BBE`);
 </code></pre></div>
 

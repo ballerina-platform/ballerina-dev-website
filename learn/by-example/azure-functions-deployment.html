@@ -309,26 +309,26 @@ redirect_from:
                             
                         
 
-                    <div>
+                    <div class="codeSnippeset">
 
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/uuid;
 import ballerinax/azure_functions as af;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function hello(@af:HTTPTrigger { authLevel: &quot;anonymous&quot; }
                       string payload)
@@ -337,8 +337,8 @@ public function hello(@af:HTTPTrigger { authLevel: &quot;anonymous&quot; }
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -347,12 +347,12 @@ public function hello(@af:HTTPTrigger { authLevel: &quot;anonymous&quot; }
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function fromHttpToQueue(af:Context ctx, 
             @af:HTTPTrigger af:HTTPRequest req, 
@@ -363,8 +363,8 @@ public function fromHttpToQueue(af:Context ctx,
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -373,12 +373,12 @@ public function fromHttpToQueue(af:Context ctx,
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function fromQueueToQueue(af:Context ctx, 
         @af:QueueTrigger { queueName: &quot;queue2&quot; } string inMsg,
@@ -389,8 +389,8 @@ public function fromQueueToQueue(af:Context ctx,
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -399,12 +399,12 @@ public function fromQueueToQueue(af:Context ctx,
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function fromBlobToQueue(af:Context ctx, 
         @af:BlobTrigger { path: &quot;bpath1/{name}&quot; } byte[] blobIn,
@@ -415,8 +415,8 @@ public function fromBlobToQueue(af:Context ctx,
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -425,12 +425,12 @@ public function fromBlobToQueue(af:Context ctx,
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerBlobInput(@af:HTTPTrigger af:HTTPRequest req, 
                     @af:BlobInput { path: &quot;bpath1/{Query.name}&quot; }
@@ -445,8 +445,8 @@ public function httpTriggerBlobInput(@af:HTTPTrigger af:HTTPRequest req,
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -455,12 +455,12 @@ public function httpTriggerBlobInput(@af:HTTPTrigger af:HTTPRequest req,
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerBlobOutput(@af:HTTPTrigger af:HTTPRequest req, 
         @af:BlobOutput { path: &quot;bpath1/{Query.name}&quot; }
@@ -472,8 +472,8 @@ public function httpTriggerBlobOutput(@af:HTTPTrigger af:HTTPRequest req,
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -482,12 +482,12 @@ public function httpTriggerBlobOutput(@af:HTTPTrigger af:HTTPRequest req,
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerBlobOutput2(@af:HTTPTrigger af:HTTPRequest req,
         @af:BlobOutput { path: &quot;bpath1/{Query.name}&quot; } af:BytesOutputBinding bb)
@@ -498,8 +498,8 @@ public function httpTriggerBlobOutput2(@af:HTTPTrigger af:HTTPRequest req,
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -508,12 +508,12 @@ public function httpTriggerBlobOutput2(@af:HTTPTrigger af:HTTPRequest req,
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function sendSMS(@af:HTTPTrigger af:HTTPRequest req, 
                         @af:TwilioSmsOutput { fromNumber: &quot;+12069845840&quot; } 
@@ -526,8 +526,8 @@ public function sendSMS(@af:HTTPTrigger af:HTTPRequest req,
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -536,12 +536,12 @@ public function sendSMS(@af:HTTPTrigger af:HTTPRequest req,
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public type Person record {
     string id;
     string name;
@@ -549,15 +549,15 @@ public function sendSMS(@af:HTTPTrigger af:HTTPRequest req,
 };
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function cosmosDBToQueue1(@af:CosmosDBTrigger { 
         connectionStringSetting: &quot;CosmosDBConnection&quot;, databaseName: &quot;db1&quot;,
@@ -567,8 +567,8 @@ public function cosmosDBToQueue1(@af:CosmosDBTrigger {
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -577,12 +577,12 @@ public function cosmosDBToQueue1(@af:CosmosDBTrigger {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function cosmosDBToQueue2(@af:CosmosDBTrigger { 
         connectionStringSetting: &quot;CosmosDBConnection&quot;, databaseName: &quot;db1&quot;, 
@@ -592,15 +592,15 @@ public function cosmosDBToQueue2(@af:CosmosDBTrigger {
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerCosmosDBInput1(
             @af:HTTPTrigger af:HTTPRequest httpReq, 
@@ -612,8 +612,8 @@ public function httpTriggerCosmosDBInput1(
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -622,12 +622,12 @@ public function httpTriggerCosmosDBInput1(
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerCosmosDBInput2(
             @af:HTTPTrigger af:HTTPRequest httpReq, 
@@ -640,15 +640,15 @@ public function httpTriggerCosmosDBInput2(
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerCosmosDBInput3(
         @af:HTTPTrigger { route: &quot;c1/{country}&quot; } af:HTTPRequest httpReq, 
@@ -661,15 +661,15 @@ public function httpTriggerCosmosDBInput3(
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerCosmosDBOutput1(
     @af:HTTPTrigger af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) 
@@ -683,8 +683,8 @@ public function httpTriggerCosmosDBOutput1(
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -693,12 +693,12 @@ public function httpTriggerCosmosDBOutput1(
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerCosmosDBOutput2(
         @af:HTTPTrigger af:HTTPRequest httpReq, 
@@ -715,15 +715,15 @@ public function httpTriggerCosmosDBOutput2(
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function httpTriggerCosmosDBOutput3(
                     @af:HTTPTrigger af:HTTPRequest httpReq) 
@@ -737,15 +737,15 @@ public function httpTriggerCosmosDBOutput3(
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>@af:Function
 public function queuePopulationTimer(
             @af:TimerTrigger { schedule: &quot;*/10 * * * * *&quot; } json triggerInfo, 
@@ -754,8 +754,8 @@ public function queuePopulationTimer(
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -764,10 +764,10 @@ public function queuePopulationTimer(
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
                         
@@ -840,67 +840,67 @@ public function queuePopulationTimer(
                             
                         
 
-                    <div>
+                    <div class="codeSnippeset">
 
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Prerequisites: Azure CLI tools installation and configuration
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Build the Ballerina program to generate the Azure Functions
 bal build azure_functions_deployment.bal
 Compiling source
 	azure_functions_deployment.bal
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Generating executables
 	azure_functions_deployment.jar
 	@azure_functions:Function: hello, fromHttpToQueue, fromQueueToQueue, fromBlobToQueue, httpTriggerBlobInput, httpTriggerBlobOutput, sendSMS, cosmosDBToQueue1, cosmosDBToQueue2, httpTriggerCosmosDBInput1, httpTriggerCosmosDBInput2, httpTriggerCosmosDBInput3, httpTriggerCosmosDBOutput1, httpTriggerCosmosDBOutput2, httpTriggerCosmosDBOutput3, queuePopulationTimer
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>	Run the following command to deploy Ballerina Azure Functions:
 	az functionapp deployment source config-zip -g &lt;resource_group&gt; -n &lt;function_app_name&gt; --src azure-functions.zip
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Execute the following Azure CLI command to publish the functions (replace with your respective Azure &lt;resource_group&gt; and &lt;function_app_name&gt;)
 az functionapp deployment source config-zip -g functions1777 -n functions1777 --src  azure-functions.zip 
 Getting scm site credentials for zip deployment
@@ -930,170 +930,170 @@ Deployment endpoint responded with status code 202
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Invoke the functions (replace with your &lt;auth_code&gt; value in authenticated requests)
 curl -d &quot;Jack&quot; https://functions1777.azurewebsites.net/api/hello
 Hello, Jack!
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>curl -d &quot;ABCDE&quot; https://functions1777.azurewebsites.net/api/fromHttpToQueue?code=&lt;auth_code&gt;
 Request: url=https://functions1777.azurewebsites.net/api/fromHttpToQueue... body=ABCDE
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>curl &quot;https://functions1777.azurewebsites.net/api/httpTriggerBlobInput?name=input.txt&amp;code=&lt;auth_code&gt;&quot;
 Blob: input.txt Length: 6 Content: 65 66 67 68 69 10
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>curl -d &quot;123456&quot; &quot;https://functions1777.azurewebsites.net/api/httpTriggerBlobOutput?name=payload.txt&amp;code=&lt;auth_code&gt;&quot;
 Blob: payload.txt Content: 123456
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>curl -d &quot;123456&quot; &quot;https://functions1777.azurewebsites.net/api/httpTriggerBlobOutput2?name=payload.txt&amp;code=&lt;auth_code&gt;&quot;
 Blob: payload.txt Content: 65 66 67 97 98
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>curl -d &quot;Hello!&quot; &quot;https://functions1777.azurewebsites.net/api/sendSMS?to=xxxxxxxxxx&amp;code=&lt;auth_code&gt;&quot;
 Message - to: xxxxxxxxxx body: Hello!
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>curl &quot;https://functions1777.azurewebsites.net/api/httpTriggerCosmosDBInput1?id=id1&amp;code=&lt;auth_code&gt;&quot;
 id=id1 _rid=zEkwANYTRPoFAAAAAAAAAA== _self=dbs/zEkwAA==/colls/zEkwANYTRPo=/docs/zEkwANYTRPoFAAAAAAAAAA==/ _ts=1591201470 _etag=&quot;10009f6c-0000-0100-0000-5ed7cebe0000&quot; name=Tom birthYear=1950 country=Sri Lanka pk=p1
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>curl &quot;https://functions1777.azurewebsites.net/api/httpTriggerCosmosDBInput2?id=id1&amp;code=&lt;auth_code&gt;&quot;
 id=id1 name=Tom birthYear=1950 _rid=zEkwANYTRPoFAAAAAAAAAA== _self=dbs/zEkwAA==/colls/zEkwANYTRPo=/docs/zEkwANYTRPoFAAAAAAAAAA==/ _ts=1591201470 _etag=&quot;10009f6c-0000-0100-0000-5ed7cebe0000&quot; country=Sri Lanka pk=p1
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>curl &quot;https://functions1777.azurewebsites.net/api/c1/Sri%20Lanka?code=&lt;auth_code&gt;&quot;
 id=id3 name=Jack X birthYear=1950 country=Sri Lanka pk=p1 _rid=zEkwANYTRPoEAAAAAAAAAA== _self=dbs/zEkwAA==/colls/zEkwANYTRPo=/docs/zEkwANYTRPoEAAAAAAAAAA==/ _etag=&quot;1000076b-0000-0100-0000-5ed7cc110000&quot; _attachments=attachments/ _ts=1591200785 id=id4 name=Tom birthYear=1950 country=Sri Lanka pk=p1 _rid=zEkwANYTRPoFAAAAAAAAAA== _self=dbs/zEkwAA==/colls/zEkwANYTRPo=/docs/zEkwANYTRPoFAAAAAAAAAA==/ _etag=&quot;10009f6c-0000-0100-0000-5ed7cebe0000&quot; _attachments=attachments/ _ts=1591201470
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>curl https://functions1777.azurewebsites.net/api/httpTriggerCosmosDBOutput1?code=&lt;auth_code&gt;
 Adding entry: id=abf42517-53d7-4fa3-a30c-87cb65e9597d name=John Doe birthYear=1980
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>curl https://functions1777.azurewebsites.net/api/httpTriggerCosmosDBOutput2?code=&lt;auth_code&gt;
 Adding entries: id=f510e0d2-5341-4901-8c12-9aac1b212378 name=John Doe A birthYear=1985 id=cc145a0f-cb4f-4a5f-8d0f-fbf01209aa2d name=John Doe B birthYear=1990
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>curl https://functions1777.azurewebsites.net/api/httpTriggerCosmosDBOutput3?code=&lt;auth_code&gt;
 [{&quot;id&quot;:&quot;4ba53cb4-47a1-4028-af7b-2515f0a9c6bf&quot;,&quot;name&quot;:&quot;Jack&quot;,&quot;birthYear&quot;:2001},{&quot;id&quot;:&quot;5b8a6697-c9e9-488d-91b3-3942574efeef&quot;,&quot;name&quot;:&quot;Will&quot;,&quot;birthYear&quot;:2005}]
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 

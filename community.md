@@ -81,11 +81,11 @@ We are happy to help! Come engage with us on any channel that works for you.
       <a class="cCommunityIcons" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"></a>
       </div>
    </div>
-   <div class="col-sm-12 col-md-3 cBoxContainer cCommunityIconsContainer">
+   <!--<div class="col-sm-12 col-md-3 cBoxContainer cCommunityIconsContainer">
       <div class="cBallerina-Box">
       <a class="cCommunityIcons" href="https://groups.google.com/forum/#!forum/ballerina-dev" target="_blank"><img src="/img/google-groups.svg"></a>
       </div>
-   </div>
+   </div>-->
 </div>
 
 ## Report Issues

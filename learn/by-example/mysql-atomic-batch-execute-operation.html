@@ -21,23 +21,38 @@ redirect_from:
     <span class="nx">check</span> <span class="nx">beforeExample</span><span class="p">();</span>
 
     <span class="c1">// Initializes the MySQL client.</span>
-    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span>
+    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> 
             <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE&quot;</span><span class="p">);</span>
 
     <span class="c1">// Records with the duplicate `registrationID` entry. Here it is `registrationID` = 1.</span>
     <span class="k">var</span> <span class="nx">insertRecords</span> <span class="p">=</span> <span class="p">[</span>
-        <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Linda&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Jones&quot;</span><span class="p">,</span> <span class="nx">registrationID</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-                                    <span class="nx">creditLimit</span><span class="p">:</span> <span class="mf">10000.75</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Stuart&quot;</span><span class="p">,</span> <span class="nx">registrationID</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                                    <span class="nx">creditLimit</span><span class="p">:</span> <span class="mf">5000.75</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Camellia&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Potter&quot;</span><span class="p">,</span> <span class="nx">registrationID</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-                                    <span class="nx">creditLimit</span><span class="p">:</span> <span class="mf">2000.25</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span><span class="p">}</span>
+        <span class="p">{</span>
+            <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Linda&quot;</span><span class="p">,</span>
+            <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Jones&quot;</span><span class="p">,</span>
+            <span class="nx">registrationID</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="nx">creditLimit</span><span class="p">:</span> <span class="mf">10000.75</span><span class="p">,</span>
+            <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span>
+        <span class="p">},</span> 
+        <span class="p">{</span>
+            <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span>
+            <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Stuart&quot;</span><span class="p">,</span>
+            <span class="nx">registrationID</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nx">creditLimit</span><span class="p">:</span> <span class="mf">5000.75</span><span class="p">,</span>
+            <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span>
+        <span class="p">},</span> 
+        <span class="p">{</span>
+            <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Camellia&quot;</span><span class="p">,</span>
+            <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Potter&quot;</span><span class="p">,</span>
+            <span class="nx">registrationID</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="nx">creditLimit</span><span class="p">:</span> <span class="mf">2000.25</span><span class="p">,</span>
+            <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span>
+        <span class="p">}</span>
     <span class="p">];</span>
 
     <span class="c1">// Creates a batch parameterized query.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedQuery</span><span class="p">[]</span> <span class="nx">insertQueries</span> <span class="p">=</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedQuery</span><span class="p">[]</span> <span class="nx">insertQueries</span> <span class="p">=</span> 
         <span class="nx">from</span> <span class="k">var</span> <span class="nx">data</span> <span class="nx">in</span> <span class="nx">insertRecords</span>
-            <span class="nx">select</span>  <span class="s">`INSERT INTO Customers</span>
+        <span class="nx">select</span> <span class="s">`INSERT INTO Customers</span>
 <span class="s">                (firstName, lastName, registrationID, creditLimit, country)</span>
 <span class="s">                VALUES (${data.firstName}, ${data.lastName},</span>
 <span class="s">                ${data.registrationID}, ${data.creditLimit}, ${data.country})`</span><span class="p">;</span>
@@ -59,12 +74,12 @@ redirect_from:
     <span class="p">}</span>
 
     <span class="c1">// Checks the data after the batch execution.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span> 
         <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM Customers`</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Data in Customers table:&quot;</span><span class="p">);</span>
     <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
     <span class="p">});</span>
 
     <span class="c1">// Performs a cleanup after the example.</span>
@@ -76,7 +91,7 @@ redirect_from:
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">);</span>
 
     <span class="c1">// Creates a database.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span> 
         <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE DATABASE MYSQL_BBE`</span><span class="p">);</span>
 
     <span class="c1">// Creates a table in the database.</span>
@@ -97,7 +112,7 @@ redirect_from:
 <span class="c1">// Cleans up the database after running the example.</span>
 <span class="kd">function</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Cleans the database.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span> 
             <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP DATABASE MYSQL_BBE`</span><span class="p">);</span>
     <span class="c1">// Closes the MySQL client.</span>
     <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
@@ -262,7 +277,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient = check new (user = &quot;root&quot;,
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient = check new (user = &quot;root&quot;, 
             password = &quot;Test@123&quot;, database = &quot;MYSQL_BBE&quot;);
 </code></pre></div>
 
@@ -283,12 +298,27 @@ import ballerina/sql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var insertRecords = [
-        {firstName: &quot;Linda&quot;, lastName: &quot;Jones&quot;, registrationID: 4,
-                                    creditLimit: 10000.75, country: &quot;USA&quot;},
-        {firstName: &quot;Peter&quot;, lastName: &quot;Stuart&quot;, registrationID: 1,
-                                    creditLimit: 5000.75, country: &quot;USA&quot;},
-        {firstName: &quot;Camellia&quot;, lastName: &quot;Potter&quot;, registrationID: 5,
-                                    creditLimit: 2000.25, country: &quot;USA&quot;}
+        {
+            firstName: &quot;Linda&quot;,
+            lastName: &quot;Jones&quot;,
+            registrationID: 4,
+            creditLimit: 10000.75,
+            country: &quot;USA&quot;
+        }, 
+        {
+            firstName: &quot;Peter&quot;,
+            lastName: &quot;Stuart&quot;,
+            registrationID: 1,
+            creditLimit: 5000.75,
+            country: &quot;USA&quot;
+        }, 
+        {
+            firstName: &quot;Camellia&quot;,
+            lastName: &quot;Potter&quot;,
+            registrationID: 5,
+            creditLimit: 2000.25,
+            country: &quot;USA&quot;
+        }
     ];
 </code></pre></div>
 
@@ -308,9 +338,9 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ParameterizedQuery[] insertQueries =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ParameterizedQuery[] insertQueries = 
         from var data in insertRecords
-            select  `INSERT INTO Customers
+        select `INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
                 VALUES (${data.firstName}, ${data.lastName},
                 ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
@@ -364,7 +394,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record{}, error&gt; resultStream =
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record {}, error&gt; resultStream = 
         mysqlClient-&gt;query(`SELECT * FROM Customers`);
 </code></pre></div>
 
@@ -386,7 +416,7 @@ import ballerina/sql;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Data in Customers table:&quot;);
     error? e = resultStream.forEach(function(record {} result) {
-                 io:println(result.toString());
+        io:println(result.toString());
     });
 </code></pre></div>
 
@@ -439,7 +469,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result = 
         check mysqlClient-&gt;execute(`CREATE DATABASE MYSQL_BBE`);
 </code></pre></div>
 
@@ -535,7 +565,7 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result =
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result = 
             check mysqlClient-&gt;execute(`DROP DATABASE MYSQL_BBE`);
 </code></pre></div>
 

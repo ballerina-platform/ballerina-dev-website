@@ -17,31 +17,38 @@ layout: ballerina-inner-page
   }
 </style> -->
 <script>
-    //Handling bulk redirections
-    var pathname = window.location.pathname;
-    var redirection = validate_redirection(pathname);
-  
-    if (pathname.indexOf("/swan-lake/") !== -1){
-        var redirectpath = pathname.replace("/swan-lake","");
-        document.write('<meta http-equiv="refresh" content="0; url=' + redirectpath + '">');
-    } else if (redirection.type == "versioned") {
-      var new_path = pathname.replace('v', '').replace('-', '.');
-      document.write('<meta http-equiv="refresh" content="0; url=' + new_path + '">');
-    } else if(redirection.type == "path" && typeof redirection.dest != "undefined"){
-          var new_path = redirection.dest;
-          document.write('<meta http-equiv="refresh" content="0; url=' + new_path + '">');
-    }else {
-      $('body').show();
-    }
-  </script>
+  //Handling bulk redirections
+  var pathname = window.location.pathname;
+  var redirection = validate_redirection(pathname);
+
+  if (pathname.indexOf("/swan-lake/") !== -1) {
+    var redirectpath = pathname.replace("/swan-lake", "");
+    document.write('<meta http-equiv="refresh" content="0; url=' + redirectpath + '">');
+  } else if (redirection.type == "versioned") {
+    var new_path = pathname.replace('v', '').replace('-', '.');
+    document.write('<meta http-equiv="refresh" content="0; url=' + new_path + '">');
+  } else if (redirection.type == "path" && typeof redirection.dest != "undefined") {
+    var new_path = redirection.dest;
+    document.write('<meta http-equiv="refresh" content="0; url=' + new_path + '">');
+  } else {
+    $('body').show();
+  }
+</script>
 
 <div class="container">
   <h1>404</h1>
 
   <p><strong>Page not found. :(</strong></p>
-  <p>You can either <a href="#" onclick="history.go(-1);return false;">go back</a> to the previous page, use other keywords to <a href="/learn/">search,</a> or contact the <a href="https://groups.google.com/forum/#!forum/ballerina-dev">Ballerina Team</a>.</p>
+  <p>You can either <a href="#" onclick="history.go(-1);return false;">go back</a> to the previous page, use other
+    keywords to <a href="/learn/">search,</a> or contact the <a href="https://ballerina-platform.slack.com/">Ballerina
+      Team</a>.</p>
 </div>
 
 <style>
-  #table-of-content , .cVersionItem , #versions, .icon.icon-github {display: none !important; }
+  #table-of-content,
+  .cVersionItem,
+  #versions,
+  .icon.icon-github {
+    display: none !important;
+  }
 </style>

@@ -649,7 +649,7 @@
                 "name": "Retry Transaction Statement",
                 "url": "retry-transaction-statement",
                 "verifyBuild": true,
-                "verifyOutput": false
+                "verifyOutput": true
             },
             {
                 "name": "Transactional Qualifier",

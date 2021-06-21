@@ -50,10 +50,21 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Table Syntax</h2>
-                            <p><p>A <code>record</code> field can be declared as <code>readonly</code>: cannot assign to the field after the record is created.
- <code>table</code> type gives type of row and name of key field. <code>table constructor expression</code> looks like an
- <code>array constructor</code>. <code>foreach</code> statement will iterate over a table&rsquo;s rows in order. Use <code>t[k]</code>
- to access a row using its key.</p>
+                            <p><p>A <code>table</code> is a collection of records. Each <code>record</code> represents a row of the <code>table</code>.
+ A <code>table</code> is plain data if and only if its rows are plain data. A <code>table</code> maintains an invariant
+ that each row is uniquely identified by a key. Each row’s key is stored in fields, which
+ must be immutable. <br/><br/>
+ Compared to maps,
+ <ul>
+ <li>key is part of the value rather than being separate.</li>
+ <li>The type of the key is not restricted to <code>string</code>.</li>
+ <li>The order of the members is preserved.</li>
+ </ul>
+ <br/><br/>
+ <p>A <code>record</code> field can be declared as <code>readonly</code>. A value cannot be assigned to such a field
+ after the record is created. The <code>table</code> type gives the type of the row and the name of the key field.
+ The <code>table constructor expression</code> looks like an <code>array constructor</code>. The <code>foreach</code> statement will
+ iterate over a table&rsquo;s rows in their order. Use <code>t[k]</code> to access a row using its key.</p></p>
 </p>
 
                         </td>
@@ -94,7 +105,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=c9b0ff31fd6bfade28c370431fd45e76&file=table_syntax.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f8e4d5a4fbe63602f7729761d9c930e2&file=table_syntax.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

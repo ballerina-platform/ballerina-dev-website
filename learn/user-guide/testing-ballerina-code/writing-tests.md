@@ -93,7 +93,8 @@ function testFunction1() {
     test:assertTrue(true, msg = "Failed!");
 }
 
-// This test function depends on the `testFunction3`.
+// This test function depends on the `testFunction3` and is executed with an 
+// array based data set.
 @test:Config{  
     before: beforeFunc,
     after: afterFunc,
@@ -118,6 +119,25 @@ function dataGen() returns (int[][]) {
 function testFunction3() {
     io:println("I'm in test function 3!");
     test:assertTrue(true, msg = "Failed!");
+}
+
+// This test is executed with a map based data set.
+@test:Config {
+    dataProvider: mapDataProvider
+}
+function mapDataProviderTest(int value1, int value2, string fruit) returns error? {
+    io:println("Input : [" + value1.toBalString() + "," + value2.toBalString() + "," + fruit + "]");
+    test:assertEquals(value1, value2, msg = "The provided values are not equal");
+    test:assertEquals(fruit.length(), 6);
+}
+
+// The data provider function, which returns a  data set as a map of tuples.
+function mapDataProvider() returns map<[int, int, string]>|error {
+    map<[int, int, string]> dataSet = {
+        "banana": [10, 10, "banana"],
+        "cherry": [5, 5, "cherry"]
+    };
+    return dataSet;
 }
 ```
 
@@ -238,15 +258,14 @@ function testAssertString() {
 
          Diff    :
 
-         --- expected
-         +++ actual
+         --- actual
+         +++ expected
 
          @@ -1,2 +1,2 @@
 
-         -hello user
-         +hello Ballerina user
+         -hello Ballerina user
+         +hello user
          Welcome to Ballerina
-
 ```
 
 #### Values of the `JSON/record/map` type

@@ -161,7 +161,7 @@ code[class*="language-"], pre[class*="language-"] {
     border-radius: 8px; 
 }
 .codeSnippeset{
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 .codeSnippeset .cTR {
     display: flex;
@@ -197,7 +197,7 @@ code[class*="language-"], pre[class*="language-"] {
 .codeSnippeset .cTR:first-child .code {
     border-top-width: 30px;
 }
-.codeSnippeset .cTR.cOutputTr:first-child .code {
+.codeSnippeset .cTR.cOutputTr:last-child .code {
     border-top-width: 0;
     border-bottom-width: 30px;
 }

@@ -114,7 +114,7 @@ function getRandomJoke(string name, string category = "food") returns @tainted s
         json payload = check response.getJsonPayload();
         json joke = check payload.value;
 
-        replacedText = regex:replaceAll(joke.toJsonString(), "Chuck Norris", name);
+        replacedText = regex:replaceAll(joke.toString(), "Chuck Norris", name);
         return replacedText;
 
     } else {
@@ -135,7 +135,7 @@ import ballerina/http;
 // This function checks if the provided category is a valid one.
 function isCategoryAvailable(json[] categories, string category) returns boolean {
     foreach var cat in categories {
-        if (cat.toJsonString() == category) {
+        if (cat.toString() == category) {
             return true;
         }
     }
@@ -312,7 +312,7 @@ function testMemberVariable() {
     // Assert for the mocked product name.
     test:assertEquals(getProductName(), "Bread");
 }
-````
+```
 
 #### Stubbing to Do Nothing
 

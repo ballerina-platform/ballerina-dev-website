@@ -1,8 +1,10 @@
 ---
 layout: ballerina-example-page-old
 title: Data Binding
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /1.2/learn/by-example/http-data-binding
+active: http-data-binding
 redirect_from:
   - /v1-2/learn/by-example/http-data-binding
   - /v1-2/learn/by-example/http-data-binding.html
@@ -142,58 +144,28 @@ redirect_from:
                         </tr>
                     </table>
 
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type Student record {
     string Name;
     int Grade;
@@ -201,28 +173,28 @@ import ballerina/log;
 };
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {}
 service hello on new http:Listener(9090) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         body: &quot;orderDetails&quot;
@@ -231,8 +203,8 @@ service hello on new http:Listener(9090) {
                                json orderDetails) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -241,12 +213,12 @@ service hello on new http:Listener(9090) {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var details = orderDetails.Details;
         http:Response res = new;
         if (details is json) {
@@ -262,8 +234,8 @@ service hello on new http:Listener(9090) {
     }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -272,12 +244,12 @@ service hello on new http:Listener(9090) {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         body: &quot;store&quot;,
@@ -286,8 +258,8 @@ service hello on new http:Listener(9090) {
     resource function bindXML(http:Caller caller, http:Request req, xml store) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -296,19 +268,19 @@ service hello on new http:Listener(9090) {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        xml city = store.selectDescendants(&quot;{http://www.test.com}city&quot;);
         http:Response res = new;
         res.setPayload(&lt;@untainted&gt;city);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -317,12 +289,12 @@ service hello on new http:Listener(9090) {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
             log:printError(result.reason(), result);
@@ -330,15 +302,15 @@ service hello on new http:Listener(9090) {
     }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         body: &quot;student&quot;,
@@ -348,8 +320,8 @@ service hello on new http:Listener(9090) {
                                  Student student) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -359,12 +331,12 @@ match the record.</p>
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        string name = &lt;@untainted&gt;student.Name;
         int grade = &lt;@untainted&gt;student.Grade;
         string english = &lt;@untained string&gt;student.Marks[&quot;English&quot;];
@@ -372,8 +344,8 @@ match the record.</p>
         res.setPayload({Name: name, Grade: grade, English: english});
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -382,12 +354,12 @@ match the record.</p>
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
             log:printError(result.reason(), result);
@@ -396,28 +368,22 @@ match the record.</p>
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command below.
 ballerina run http_data_binding.bal
@@ -425,89 +391,70 @@ ballerina run http_data_binding.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the `bindJson` resource, execute the HTTP request below.
 curl -v http://localhost:9090/hello/bindJson -d &#39;{ &quot;Details&quot;: { &quot;ID&quot;: &quot;77999&quot;, &quot;Name&quot;: &quot;XYZ&quot;} , &quot;Location&quot;: { &quot;No&quot;: &quot;01&quot;, &quot;City&quot;: &quot;Colombo&quot;}}&#39; -H &quot;Content-Type:application/json&quot;
 # Server response:
 {&quot;ID&quot;:&quot;77999&quot;, &quot;Name&quot;:&quot;XYZ&quot;}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the `bindXML` resource, execute the HTTP request below.
 curl -v http://localhost:9090/hello/bindXML -d &quot;&lt;h:Store id = \&quot;AST\&quot; xmlns:h=\&quot;http://www.test.com\&quot;&gt;&lt;h:street&gt;Main&lt;/h:street&gt;&lt;h:city&gt;94&lt;/h:city&gt;&lt;/h:Store&gt;&quot; -H &quot;Content-Type:application/xml&quot;
 # Server response:
 &lt;h:city xmlns:h=&quot;http://www.test.com&quot;&gt;94&lt;/h:city&gt;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the `bindStruct` resource, execute the HTTP request below.
 curl -v http://localhost:9090/hello/bindStruct -d &#39;{ &quot;Name&quot;: &quot;John&quot;, &quot;Grade&quot;: 12, &quot;Marks&quot;: {&quot;English&quot; : &quot;85&quot;, &quot;IT&quot; : &quot;100&quot;}}&#39; -H &quot;Content-Type:application/json&quot;
 # Server response:
 {&quot;Name&quot;:&quot;John&quot;, &quot;Grade&quot;:12, &quot;English&quot;:&quot;85&quot;}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

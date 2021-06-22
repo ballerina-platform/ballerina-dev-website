@@ -1,8 +1,10 @@
 ---
 layout: ballerina-example-page-old
 title: Access/Mutate Java Fields
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /1.2/learn/by-example/access-mutate-java-fields
+active: access-mutate-java-fields
 redirect_from:
   - /v1-2/learn/by-example/access-mutate-java-fields
   - /v1-2/learn/by-example/access-mutate-java-fields.html
@@ -78,7 +80,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=efe6462a649d5a3d2bed68894d833645&file=access_mutate_java_fields.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=156b9757a16ad59fc7dde21bb908c7f2&file=access_mutate_java_fields.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -88,52 +90,36 @@ redirect_from:
                         </tr>
                     </table>
 
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/java;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function pi() returns float = @java:FieldGet {
     name: &quot;PI&quot;,
     class: &quot;java/lang/Math&quot;
 } external;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -142,32 +128,32 @@ import ballerina/java;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
     float r = 4;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    float l = 2 * pi() * r;
     io:println(l);
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -176,48 +162,37 @@ import ballerina/java;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command below.
 ballerina run access_mutate_java_fields.bal
 25.132741228718345
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

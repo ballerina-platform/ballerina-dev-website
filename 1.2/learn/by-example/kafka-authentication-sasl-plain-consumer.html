@@ -1,8 +1,10 @@
 ---
 layout: ballerina-example-page-old
 title: SASL Authentication - Consumer
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /1.2/learn/by-example/kafka-authentication-sasl-plain-consumer
+active: kafka-authentication-sasl-plain-consumer
 redirect_from:
   - /v1-2/learn/by-example/kafka-authentication-sasl-plain-consumer
   - /v1-2/learn/by-example/kafka-authentication-sasl-plain-consumer.html
@@ -102,57 +104,33 @@ redirect_from:
                         </tr>
                     </table>
 
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/kafka;
 import ballerina/log;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>kafka:AuthenticationConfiguration authConfig = {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -161,17 +139,17 @@ import ballerina/log;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    mechanism: kafka:AUTH_SASL_PLAIN,
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -180,19 +158,19 @@ import ballerina/log;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    username: &quot;ballerina&quot;,
     password: &quot;ballerina-secret&quot;
 };
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -202,12 +180,12 @@ import ballerina/log;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>kafka:ConsumerConfiguration consumerConfig = {
     bootstrapServers:&quot;localhost:9092&quot;,
     groupId:&quot;test-group&quot;,
@@ -217,21 +195,21 @@ import ballerina/log;
     valueDeserializerType: kafka:DES_STRING,
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    authenticationConfiguration: authConfig
 };
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -240,24 +218,24 @@ import ballerina/log;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>listener kafka:Consumer consumer = new(consumerConfig);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>service KafkaService on consumer {
     resource function onMessage(kafka:Consumer consumer, kafka:ConsumerRecord[] records) {
         foreach var consumerRecord in records {
@@ -268,46 +246,36 @@ import ballerina/log;
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run kafka_authentication_sasl_plain_consumer.bal
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The following lines will be printed in the Console when consumer starts.
 # If the consumer connected successfully, it will start to receive messages
 # from the subscribed topic(s).
@@ -316,23 +284,18 @@ ballerina run kafka_authentication_sasl_plain_consumer.bal
 [ballerina/kafka] started kafka listener
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

@@ -1,8 +1,10 @@
 ---
 layout: ballerina-example-page-old
 title: Record Match
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /1.2/learn/by-example/record-match-statement
+active: record-match-statement
 redirect_from:
   - /v1-2/learn/by-example/record-match-statement
   - /v1-2/learn/by-example/record-match-statement.html
@@ -155,7 +157,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=206f4774bc2ca51627e8f91386928852&file=record_match_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=cab73f69f3b9ba97bc29d6db0dcc4f85&file=record_match_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -165,119 +167,71 @@ redirect_from:
                         </tr>
                     </table>
 
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type RecordOne record {
     string var1;
 };
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type RecordTwo record {|
     string var1;
     int var2;
 |};
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type RecordThree record {
     string var1;
     RecordTwo var2;
 };
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
     RecordOne rec1 = {var1: &quot;Hello&quot;, &quot;var2&quot;: 150};
     RecordOne rec2 = {var1: &quot;Hello&quot;, &quot;var2&quot;: true};
@@ -285,64 +239,64 @@ redirect_from:
     RecordOne rec4 = {var1: &quot;Hello&quot;};
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    basicMatch(rec1);
     basicMatch(rec2);
     basicMatch(rec3);
     basicMatch(rec4);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    RecordTwo tRec1 = {var1: &quot;Ballerina&quot;, var2: 500};
     RecordThree tRec2 = {var1: &quot;Language&quot;, var2: tRec1};
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    matchWithTypeGuard(tRec1);
     matchWithTypeGuard(tRec2);
     matchWithTypeGuard(true);
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function basicMatch(any a) {
     match a {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -352,19 +306,19 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var {var1, var2, var3} =&gt; {
             io:println(&quot;Matched with three vars : &quot;, var1, &quot;, &quot;, var2, &quot;, &quot;, var3);
         }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -374,19 +328,19 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var {var1, var2} =&gt; {
             io:println(&quot;Matched with two vars : &quot;, var1, &quot;, &quot;, var2);
         }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -396,12 +350,12 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var {var1} =&gt; {
             io:println(&quot;Matched with single var : &quot;, var1);
         }
@@ -409,8 +363,8 @@ redirect_from:
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -419,17 +373,17 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function matchWithTypeGuard(any matchExpr) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -441,17 +395,17 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    match matchExpr {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -461,19 +415,19 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var {var1, var2} if var2 is string =&gt; {
             io:println(&quot;Matched with string typeguard&quot;);
         }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -482,19 +436,19 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var {var1, var2} if (var1 is int &amp;&amp; var2 is int) =&gt; {
             io:println(&quot;Matched with int and int typeguard : &quot;, var1);
         }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -503,19 +457,19 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var {var1, var2} if (var1 is string &amp;&amp; var2 is int) =&gt; {
             io:println(&quot;Matched with string and int typeguard : &quot;, var1);
         }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -524,19 +478,19 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var {var1, var2} if (var1 is int &amp;&amp; var2 is RecordTwo) =&gt; {
             io:println(&quot;Matched with int and RecordTwo typeguard : &quot;, var1);
         }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -545,19 +499,19 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var {var1, var2} if (var1 is string &amp;&amp; var2 is RecordTwo) =&gt; {
             io:println(&quot;Matched with string and RecordTwo typeguard : &quot;, var2.var1);
         }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -566,12 +520,12 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        var x =&gt; {
             io:println(&quot;Matched with Default&quot;);
         }
@@ -579,8 +533,8 @@ redirect_from:
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -590,25 +544,19 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run record_match_statement.bal
@@ -621,23 +569,18 @@ Matched with string and RecordTwo typeguard : Ballerina
 Matched with Default
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

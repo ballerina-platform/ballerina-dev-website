@@ -1,8 +1,10 @@
 ---
 layout: ballerina-example-page-old
 title: Required Parameters
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /1.2/learn/by-example/functions-with-required-parameters
+active: functions-with-required-parameters
 redirect_from:
   - /v1-2/learn/by-example/functions-with-required-parameters
   - /v1-2/learn/by-example/functions-with-required-parameters.html
@@ -85,7 +87,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=53d9eaedad4a04f17fd0dbec8b1c9388&file=functions_with_required_parameters.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c0607f6c23826ef23d75b26d4db73953&file=functions_with_required_parameters.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -95,56 +97,34 @@ redirect_from:
                         </tr>
                     </table>
 
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function calculate(int a, int b, int c) returns int {
     return a + 2 * b + 3 * c;
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -155,29 +135,29 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int result = calculate(5, 6, 7);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -188,17 +168,17 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(result);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -207,17 +187,17 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    result = calculate(5, c = 7, b = 6);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -228,18 +208,18 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(result);
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -248,25 +228,19 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run functions_with_required_parameters.bal
@@ -274,23 +248,18 @@ ballerina run functions_with_required_parameters.bal
 38
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

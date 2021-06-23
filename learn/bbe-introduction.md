@@ -8,8 +8,6 @@ active: introduction
 intro: Try out the extensive collection of Ballerina by Example (BBE) below to grasp the features and concepts of Ballerina.
 redirect_from:
   - /learn/by-example/introduction
-  - /learn/by-example/
-  - /learn/by-example
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">

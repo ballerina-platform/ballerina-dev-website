@@ -18,13 +18,13 @@ The **Diagrams** view shows a list of functions and services of the currently-op
 
 ![Diagrams View](/learn/images/diagrams-view.gif)
 
-## Diagram View Button
+## Show Diagram Button
 
-By clicking on the **Show Diagram View** button on the editor’s title bar, you can quickly switch to the **Diagrams** view. This option shows the diagram of the first component listed under the **Diagrams** view.
+By clicking on the **Show Diagram** button on the editor’s title bar, you can quickly switch to the **Diagrams** view. This option shows the diagram of the first component listed under the **Diagrams** view.
 
 >**Tip:** The Diagram Editor syncs with the latest when you make changes on the text editor.
 
-![Diagram View Button](/learn/images/diagrams-view-command.gif)
+![Show Diagram Button](/learn/images/diagrams-view-command.gif)
 
 ## Show Diagram Palette Command
 

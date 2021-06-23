@@ -10,7 +10,7 @@ redirect_from:
 ---
 ## Getting Started
 
-### [Language Introduction Video]
+### Language Introduction Video
 
 A video introduction to the Ballerina Programming Language and what's new in Swan Lake.
 
@@ -26,7 +26,7 @@ A comprehensive reference slide deck explaining the language.
 
 A video recording of the language slide deck.
 
-### [Learn by Example](/learn/by-example/)
+### [Learn by Example](/learn/by-example/introduction/)
 
 A guided path to learn the language through a series of examples.
 
@@ -54,7 +54,7 @@ An elaborate textual guide to the Ballerina language.
 
 All library API docs.
 
-### [Reference Guide by Examples](/learn/by-example/)
+### [Reference by Examples](/learn/by-example/)
 
 A series of examples that serve as a reference guide for each language construct and concept.
 

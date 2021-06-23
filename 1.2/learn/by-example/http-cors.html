@@ -1,8 +1,10 @@
 ---
 layout: ballerina-example-page-old
 title: CORS
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /1.2/learn/by-example/http-cors
+active: http-cors
 redirect_from:
   - /v1-2/learn/by-example/http-cors
   - /v1-2/learn/by-example/http-cors.html
@@ -119,44 +121,28 @@ unless there are headers configured at the resource-level. Ballerina CORS suppor
                         </tr>
                     </table>
 
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     cors: {
         allowOrigins: [&quot;http://www.m3.com&quot;, &quot;http://www.hello.com&quot;],
@@ -169,8 +155,8 @@ import ballerina/log;
 service crossOriginService on new http:Listener(9092) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -179,12 +165,12 @@ service crossOriginService on new http:Listener(9092) {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/company&quot;,
@@ -205,8 +191,8 @@ service crossOriginService on new http:Listener(9092) {
     }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -215,12 +201,12 @@ service crossOriginService on new http:Listener(9092) {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         path: &quot;/lang&quot;
@@ -237,8 +223,8 @@ service crossOriginService on new http:Listener(9092) {
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -248,78 +234,54 @@ service-level CORS headers are applied to this resource.</p>
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command below.
 ballerina run http_cors.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9092
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Run this curl command to send a CORS simple request. 
 curl -v &quot;http://localhost:9092/crossOriginService/company&quot; -H &quot;Origin:http://www.bbc.com&quot;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>&lt; HTTP/1.1 200 OK
 &lt; Content-Type: application/json
 &lt; Access-Control-Allow-Origin: http://www.bbc.com
@@ -328,28 +290,28 @@ curl -v &quot;http://localhost:9092/crossOriginService/company&quot; -H &quot;Or
 {&quot;type&quot;:&quot;middleware&quot;}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Run this curl command to send a CORS preflight request. 
 curl -v &quot;http://localhost:9092/crossOriginService/lang&quot; -X OPTIONS -H &quot;Origin:http://www.m3.com&quot; -H &quot;Access-Control-Request-Method:POST&quot;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>&lt; HTTP/1.1 200 OK
 &lt; Access-Control-Allow-Origin: http://www.m3.com
 &lt; Access-Control-Allow-Methods: POST
@@ -357,23 +319,18 @@ curl -v &quot;http://localhost:9092/crossOriginService/lang&quot; -X OPTIONS -H 
 &lt; Content-Length: 0
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

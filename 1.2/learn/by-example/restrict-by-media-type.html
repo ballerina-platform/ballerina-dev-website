@@ -1,8 +1,10 @@
 ---
 layout: ballerina-example-page-old
 title: Restrict By Media Type
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /1.2/learn/by-example/restrict-by-media-type
+active: restrict-by-media-type
 redirect_from:
   - /v1-2/learn/by-example/restrict-by-media-type
   - /v1-2/learn/by-example/restrict-by-media-type.html
@@ -103,62 +105,40 @@ redirect_from:
                         </tr>
                     </table>
 
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>service infoService on new http:Listener(9092) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;],
         path: &quot;/&quot;,
@@ -168,8 +148,8 @@ import ballerina/log;
     resource function student(http:Caller caller, http:Request req) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -182,19 +162,19 @@ import ballerina/log;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
         var msg = req.getJsonPayload();
         if (msg is json) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -203,17 +183,17 @@ import ballerina/log;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            string nameString = &lt;string&gt;msg.name;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -222,12 +202,12 @@ import ballerina/log;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            xml name = xml `&lt;name&gt;${nameString}&lt;/name&gt;`;
             res.setXmlPayload(&lt;@untained&gt;name);
         } else {
@@ -236,8 +216,8 @@ import ballerina/log;
         }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -246,12 +226,12 @@ import ballerina/log;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
             log:printError(&quot;Error in responding&quot;, result);
@@ -260,28 +240,22 @@ import ballerina/log;
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command below.
 ballerina run restrict_by_media_type.bal
@@ -289,36 +263,22 @@ ballerina run restrict_by_media_type.bal
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9092
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the service, execute the following cURL request.
 curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot; -H &quot;Content-Type:application/json&quot; -d &#39;{&quot;name&quot;:&quot;Ballerina&quot;}&#39;
 # The server response.
@@ -330,15 +290,15 @@ curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot; 
 &lt;name&gt;Ballerina&lt;/name&gt;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the service using unsupported media type, execute the following cURL request. The content type of the
 # request is not listed under the `consumes` resource configuration.
 curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot; -H &quot;Content-Type:text/plain&quot; -d &quot;Hello ballerina&quot;
@@ -350,15 +310,15 @@ curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot; 
 * Connection #0 to host localhost left intact
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the service with a media type that is not acceptable, execute the following cURL request. The media type mentioned
 # in the Accept header is not listed under the `produces` resource configuration.
 curl -v http://localhost:9092/infoService -H &quot;Accept:text/html&quot; -H &quot;Content-Type:application/json&quot; -d &#39;{&quot;name&quot;:&quot;Ballerina&quot;}&#39;
@@ -370,23 +330,18 @@ curl -v http://localhost:9092/infoService -H &quot;Accept:text/html&quot; -H &qu
 * Connection #0 to host localhost left intact
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

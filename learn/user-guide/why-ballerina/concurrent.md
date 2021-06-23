@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Concurrent
 description: Concurrency in Ballerina is enabled by strands, which are lightweight threads. 
 keywords: ballerina, ballerina platform, api documentation, testing, ide, ballerina central

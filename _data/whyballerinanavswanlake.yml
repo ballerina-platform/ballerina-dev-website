@@ -1,27 +1,27 @@
 
 - title: Cloud Native
-  url: /learn/getting-started/quick-tour/
-  active: quick-tour
+  url: /learn/why-ballerina/cloud-native/
+  active: cloud-native
 
 - title: Flexibly Typed
-  url: /learn/getting-started/installing-ballerina/
-  active: installing-ballerina
+  url: /learn/why-ballerina/flexibly-typed/
+  active: flexibly-typed
 
 - title: Data Oriented
-  url: /learn/user-guide/getting-started/building-from-source/
-  active: building-from-source
+  url: /learn/why-ballerina/data-oriented/
+  active: data-oriented
 
 - title: Graphical
-  url: /learn/getting-started/setting-up-visual-studio-code/ 
-  active: setting-up-visual-studio-code
+  url: /learn/why-ballerina/graphical/ 
+  active: graphical
 
 - title: Concurrent
-  url: /learn/getting-started/setting-up-visual-studio-code/ 
-  active: setting-up-visual-studio-code
+  url: /learn/why-ballerina/concurrent/ 
+  active: concurrent
 
 - title: Reliable, Maintainable
-  url: /learn/getting-started/setting-up-visual-studio-code/ 
-  active: setting-up-visual-studio-code
+  url: /learn/why-ballerina/reliable-maintainable/ 
+  active: reliable-maintainable
 
 
 

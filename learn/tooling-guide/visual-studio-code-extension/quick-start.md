@@ -56,7 +56,7 @@ Follow the steps below to create a sample Ballerina program in VSCode.
 
     >**Tip:** If you wish to debug further, you can either use the **Debug** code lens or see [Run and Debug](/learn/tooling-guide/visual-studio-code-extension/debugging/).
 
-5. Click the **Show Diagram View** button on the editor’s title bar to view the graphical representation of the program.
+5. Click the **Show Diagram** button on the editor’s title bar to view the graphical representation of the program.
 
 ## What’s Next?
 

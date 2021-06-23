@@ -271,7 +271,7 @@
                 "name": "Consuming Services: Client Objects",
                 "url": "consuming-services",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": false
             },
             {
                 "name": "Providing Services",

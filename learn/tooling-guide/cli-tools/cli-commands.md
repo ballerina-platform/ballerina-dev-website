@@ -29,21 +29,22 @@ In the CLI, execute the `bal help` command to view all the actions you can perfo
 ```sh
 → bal help
 NAME
-       The Ballerina tool
+       The Ballerina Tool
 
 SYNOPSIS
-       bal <-v | --version>
-       bal [command] <-h | --help>
-       bal <command> [<args>]
+       bal [-v | --version]
+       bal help
+       bal <command> [-h | --help]
 
 
 DESCRIPTION
-       Ballerina is a statically typed, concurrent programming language, focusing on network interaction and structured
-       data. It is intended to be the core of a language-centric middleware platform. It has all the general-purpose
-       functionality expected of a modern programming language, but it also has several unusual aspects that make it
+       Ballerina is a statically-typed, concurrent programming language focusing on network
+       interaction and structured data. It is intended to be the core of a language-centric
+       middleware platform. It not only has all the general-purpose functionality expected
+       from a modern programming language but also has several unusual aspects that make it
        particularly suitable for its intended purpose.
 
-       Find more information at: https://ballerina.io/
+       Find more information at: https://ballerina.io
 
 
 OPTIONS
@@ -51,42 +52,35 @@ OPTIONS
            Print the Ballerina version information.
 
        -h, --help
-           Print usage details of a command.
+           Print the usage details of a command.
 
 
 BALLERINA COMMANDS
-        Here is a list of available subcommands:
+        The below is a list of the available subcommands:
 
    Core Commands:
-        build           Compile Ballerina program into an executable
-        run             Build and run Ballerina program
+        build           Compile a Ballerina program into an executable
+        run             Build and run a Ballerina program
         test            Run package tests
         doc             Generate API documentation
-        clean           Clean artifacts generated during the build
+        clean           Clean the artifacts generated during the build
         format          Format Ballerina sources
 
    Package Commands:
         new             Create a new Ballerina package
-        init            Create a new Ballerina package in the current directory
-        add             Create a new Ballerina module in the package
+        init            Initialise a new Ballerina package in the current directory
+        add             Add a new Ballerina module in the package
         pull            Pull a package from Ballerina Central
         push            Upload a package to Ballerina Central
         search          Search Ballerina Central for packages
 
    Other Commands:
-        encrypt         Encrypt sensitive data
-        grpc            Generate Ballerina sources for the given protobuf definition
-        openapi         Generate Ballerina sources for the given OpenAPI definition and vice versa.
-        version         Print Ballerina version
-        bindgen         Generate Ballerina bindings for Java APIs
-        shell           Run ballerina interactive REPL [EXPERIMENTAL]
-
-   Update Commands:
-        dist            Manage Ballerina distributions
-        update          Update the Ballerina tool
-
-
-Use 'bal help <command>' for more information on a specific command.
+        grpc            Generate the Ballerina sources for a given Protocol Buffer definition
+        openapi         Generate the Ballerina sources for a given OpenAPI definition and
+                        vice versa [EXPERIMENTAL]
+        version         Print the Ballerina version
+        bindgen         Generate the Ballerina bindings for Java APIs
+        shell           Run Ballerina interactive REPL [EXPERIMENTAL]
 ```
 
 You can use it in the below format.
@@ -101,12 +95,13 @@ NAME
        ballerina-pull - Fetch packages from Ballerina Central
 
 SYNOPSIS
-       bal pull <org-name>/<package-name>[:<version>]
+       bal pull <org-name>/<package-name>
+       bal pull <org-name>/<package-name>:<version>
 
 
 DESCRIPTION
-       The pull command downloads the specified package from Ballerina Central
-       along with its dependencies. It then caches this package in the
+       Download the specified package from Ballerina Central
+       along with its dependencies and cache it in the
        '.ballerina' directory in the user home.
 
        Ballerina Central is a package repository hosted at
@@ -117,11 +112,11 @@ DESCRIPTION
 
 
 EXAMPLES
-       Pull the latest version of 'gmail' connector in 'wso2' organization
+       Pull the latest version of the 'gmail' connector in the 'wso2' organization
        from Ballerina Central.
           $ bal pull wso2/gmail
 
-       Pull the '1.1.0' version of 'gmail' connector in 'wso2' organization
+       Pull the '1.1.0' version of the 'gmail' connector in the 'wso2' organization
        from Ballerina Central.
           $ bal pull wso2/gmail:1.1.0
 ```

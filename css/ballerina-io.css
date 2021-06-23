@@ -34,6 +34,10 @@ input[type="search"] {
 body.cBallerina-io .row {
     margin: 0;
 }
+body.cBallerina-io .row.rowWithMargin {
+    margin-left: -15px;
+    margin-right: -15px;
+}
 
 body.cBallerina-io .container {
     padding: 0;
@@ -1291,7 +1295,7 @@ td span.line-numbers-rows {
     }
     .navbar-header {
         padding-left: 0px;
-        height: 65px;
+        height: 60px;
         width: 100%;
         display: inline-block;
     }
@@ -1314,7 +1318,7 @@ td span.line-numbers-rows {
         z-index: 999;
     }
     .navbar-toggle {
-        margin-top: 15px;
+        margin-top: 5px;
         margin-right: 0;
     }
     .nav.navbar-nav {
@@ -1336,7 +1340,7 @@ td span.line-numbers-rows {
         padding-right: 20px;
     }
     .row.cBallerina-io-Nav {
-        padding: 10px 0 20px 0;
+        padding: 20px 0 20px 0;
         border-top: 10px solid #20b6b0;
         height: 100px;
     }
@@ -1877,4 +1881,51 @@ h4 pre[class*="language-"],
 h5 pre[class*="language-"],
 h6 pre[class*="language-"] {
     font-size: inherit !important;
+}
+.leftNavToggleCont {
+    margin-left: auto;
+}
+.leftNavToggleBtn {
+}
+.leftNavToggleCont .leftNavToggleBtn {
+    display: flex;
+    padding: 5px 10px;
+    border: 1px solid #7eebe7;
+    position: relative;
+    background-color: white;
+}
+.leftNavToggleCont .leftNavToggleBtn .text {
+    margin-right: 10px;
+}
+.leftNavToggleCont .leftNavToggleBtn .icon {
+    width: 20px;
+    height: 20px;
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(/img/icons/left-nav-toggle-icon.svg);
+    transition: all 0.3s;
+}
+.leftNavToggleCont .leftNavToggleBtn.active .icon {
+    background-image: url(/img/icons/left-nav-close-icon.svg);
+    background-size: 12px;
+}
+@media only screen and (min-width: 992px) {
+    .mobileSubNav {
+        display: none;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .cLeftNavContainer {
+        display: none;
+    }
+    .mobileSubNav {
+        display: flex;
+    }
+    .cLeftNavSticky {
+        margin-top: 70px;
+    }
+    .cBallerina-io-breadcrumbs {
+        display: none;
+    }
 }

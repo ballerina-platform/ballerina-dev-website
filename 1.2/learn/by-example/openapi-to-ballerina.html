@@ -1,8 +1,10 @@
 ---
 layout: ballerina-example-page-old
 title: OpenAPI To Ballerina
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /1.2/learn/by-example/openapi-to-ballerina
+active: openapi-to-ballerina
 redirect_from:
   - /v1-2/learn/by-example/openapi-to-ballerina
   - /v1-2/learn/by-example/openapi-to-ballerina.html
@@ -73,25 +75,15 @@ redirect_from:
                         </tr>
                     </table>
 
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+              
                     
-                        
+                    <div class="codeSnippeset">
+
+                        <div class="cBBE-body">
                             
-                        
+                            <div class="cTR">
 
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=yaml>openapi: &quot;3.0.0&quot;
 info:
   version: 1.0.0
@@ -203,32 +195,22 @@ components:
           type: string
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Run the following command in a Ballerina project to generate the service from OpenAPI contract.
 ballerina openapi gen-service petStore:petService openapi_to_ballerina.yaml
 Note: This is an Experimental tool ship under ballerina hence this will only support limited set of functionality.
@@ -240,15 +222,15 @@ src/
 -- schema.bal
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Run the following command in a Ballerina project to generate the service client from OpenAPI contract.
 ballerina openapi gen-client petservice_client openapi_to_ballerina.yaml
 Note: This is an Experimental tool ship under ballerina hence this will only support limited set of functionality.
@@ -260,23 +242,18 @@ src/
 -- schema.bal
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

@@ -34,6 +34,10 @@ input[type="search"] {
 body.cBallerina-io .row {
     margin: 0;
 }
+body.cBallerina-io .row.rowWithMargin {
+    margin-left: -15px;
+    margin-right: -15px;
+}
 
 body.cBallerina-io .container {
     padding: 0;

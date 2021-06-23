@@ -264,7 +264,7 @@
     },
     {
         "title": "Network Interaction",
-        "column": 0,
+        "column": 1,
         "category": "Language Concepts",
         "samples": [
             {
@@ -318,7 +318,7 @@
     },
     {
         "title": "Working With Data",
-        "column": 0,
+        "column": 1,
         "category": "Language Concepts",
         "samples": [
             {
@@ -557,7 +557,7 @@
     },
     {
         "title": "Concurrency",
-        "column": 0,
+        "column": 2,
         "category": "Language Concepts",
         "samples": [
             {
@@ -624,7 +624,7 @@
     },
     {
         "title": "Transactions",
-        "column": 0,
+        "column": 2,
         "category": "Language Concepts",
         "samples": [
             {
@@ -673,7 +673,7 @@
     },
     {
         "title": "Concurrency Safety",
-        "column": 0,
+        "column": 2,
         "category": "Language Concepts",
         "samples": [
             {
@@ -734,7 +734,7 @@
     },
     {
         "title": "Testing",
-        "column": 0,
+        "column": 3,
         "category": "Language Concepts",
         "samples": [
             {
@@ -1076,7 +1076,7 @@
     },
     {
         "title": "HTTP2",
-        "column": 0,
+        "column": 1,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1097,7 +1097,7 @@
     },
     {
         "title": "GraphQL",
-        "column": 0,
+        "column": 1,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1139,7 +1139,7 @@
     },
     {
         "title": "GraphQL Security",
-        "column": 0,
+        "column": 1,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1188,7 +1188,7 @@
     },
     {
         "title": "WebSockets",
-        "column": 0,
+        "column": 1,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1214,7 +1214,7 @@
     },
     {
         "title": "WebSocket Security",
-        "column": 0,
+        "column": 1,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1319,7 +1319,7 @@
     },
     {
         "title": "WebSub",
-        "column": 0,
+        "column": 1,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1333,7 +1333,7 @@
     },
     {
         "title": "Resiliency",
-        "column": 0,
+        "column": 2,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1375,7 +1375,7 @@
     },
     {
         "title": "Listeners",
-        "column": 0,
+        "column": 2,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1389,7 +1389,7 @@
     },
     {
         "title": "gRPC",
-        "column": 0,
+        "column": 2,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1445,7 +1445,7 @@
     },
     {
         "title": "NATS",
-        "column": 0,
+        "column": 2,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1466,7 +1466,7 @@
     },
     {
         "title": "STAN",
-        "column": 0,
+        "column": 2,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1501,7 +1501,7 @@
     },
     {
         "title": "Kafka",
-        "column": 0,
+        "column": 2,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1557,7 +1557,7 @@
     },
     {
         "title": "RabbitMQ",
-        "column": 0,
+        "column": 3,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1599,7 +1599,7 @@
     },
     {
         "title": "TCP",
-        "column": 0,
+        "column": 3,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1627,7 +1627,7 @@
     },
     {
         "title": "UDP",
-        "column": 0,
+        "column": 3,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1655,7 +1655,7 @@
     },
     {
         "title": "Email",
-        "column": 0,
+        "column": 3,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1683,7 +1683,7 @@
     },
     {
         "title": "MySQL",
-        "column": 0,
+        "column": 3,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1732,7 +1732,7 @@
     },
     {
         "title": "JDBC",
-        "column": 0,
+        "column": 3,
         "category": "Working Over the Network",
         "samples": [
             {
@@ -1846,7 +1846,7 @@
     },
     {
         "title": "Time",
-        "column": 0,
+        "column": 1,
         "category": "Common Libraries",
         "samples": [
             {
@@ -1871,7 +1871,7 @@
     },
     {
         "title": "Cache",
-        "column": 0,
+        "column": 1,
         "category": "Common Libraries",
         "samples": [
             {
@@ -1890,7 +1890,7 @@
     },
     {
         "title": "Log",
-        "column": 0,
+        "column": 1,
         "category": "Common Libraries",
         "samples": [
             {
@@ -1916,7 +1916,7 @@
     },
     {
         "title": "File",
-        "column": 0,
+        "column": 2,
         "category": "Common Libraries",
         "samples": [
             {
@@ -1954,7 +1954,7 @@
     },
     {
         "title": "Random",
-        "column": 0,
+        "column": 2,
         "category": "Common Libraries",
         "samples": [
             {
@@ -1967,7 +1967,7 @@
     },
     {
         "title": "Task",
-        "column": 0,
+        "column": 2,
         "category": "Common Libraries",
         "samples": [
             {
@@ -1992,7 +1992,7 @@
     },
     {
         "title": "UUID",
-        "column": 0,
+        "column": 3,
         "category": "Common Libraries",
         "samples": [
             {
@@ -2011,7 +2011,7 @@
     },
     {
         "title": "XSLT",
-        "column": 0,
+        "column": 3,
         "category": "Common Libraries",
         "samples": [
             {
@@ -2024,7 +2024,7 @@
     },
     {
         "title": "Regex",
-        "column": 0,
+        "column": 3,
         "category": "Common Libraries",
         "samples": [
             {
@@ -2037,7 +2037,7 @@
     },
     {
         "title": "OS",
-        "column": 0,
+        "column": 3,
         "category": "Common Libraries",
         "samples": [
             {
@@ -2050,7 +2050,7 @@
     },
     {
         "title": "XML Data",
-        "column": 0,
+        "column": 3,
         "category": "Common Libraries",
         "samples": [
             {
@@ -2084,7 +2084,7 @@
     },
     {
             "title": "Metrics",
-            "column": 0,
+            "column": 1,
             "category": "Observability",
             "samples": [
                 {
@@ -2112,7 +2112,7 @@
     },
     {
         "title": "Function as a Service",
-        "column": 0,
+        "column": 1,
         "category": "Deployment",
         "samples": [
             {

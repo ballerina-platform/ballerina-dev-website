@@ -61,7 +61,7 @@ a.cEventRegistration{
     margin: 0 15px;
     transition: none !important;
     font-size: 16px;
-    font-weight: 200;
+    /* font-weight: 200; */
     background-color: #20b6b0;
     color: #ffffff !important;
     padding: 10px 20px  ; 

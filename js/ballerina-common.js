@@ -397,8 +397,13 @@ $(function() {
     } else if (pathname.indexOf("help") != -1) {
         $("#helpli").addClass("cActive");
     } else if (pathname.indexOf("lean/events") != -1) {
-    $("#eventsli").addClass("cActive");
-}
+        $("#eventsli").addClass("cActive");
+    }
+
+    $('.leftNavToggleBtn').click(function(){
+        $(this).toggleClass('active');
+        $('.cLeftNavContainer').slideToggle();
+    })
 });
 
 

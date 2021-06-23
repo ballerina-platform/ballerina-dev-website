@@ -1,8 +1,10 @@
 ---
 layout: ballerina-example-page-old
 title: JDBC Client Call Procedures
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /1.2/learn/by-example/jdbc-client-call-procedures
+active: jdbc-client-call-procedures
 redirect_from:
   - /v1-2/learn/by-example/jdbc-client-call-procedures
   - /v1-2/learn/by-example/jdbc-client-call-procedures.html
@@ -190,76 +192,28 @@ redirect_from:
                         </tr>
                     </table>
 
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerinax/java.jdbc;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>jdbc:Client testDB = new ({
     url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
     username: &quot;test&quot;,
@@ -268,8 +222,8 @@ import ballerinax/java.jdbc;
 });
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -279,12 +233,12 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type Student record {
     int id;
     int age;
@@ -292,8 +246,8 @@ import ballerinax/java.jdbc;
 };
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -302,32 +256,32 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;The update operation - Creating table and procedures:&quot;);
     var ret = testDB-&gt;update(&quot;CREATE TABLE student(id INT AUTO_INCREMENT, &quot; +
         &quot;age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;);
     handleUpdate(ret, &quot;Create student table&quot;);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -336,12 +290,12 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE INSERTDATA(IN pAge INT, &quot; +
         &quot;IN pName VARCHAR(255)) &quot; +
         &quot;BEGIN &quot; +
@@ -350,8 +304,8 @@ import ballerinax/java.jdbc;
     handleUpdate(ret, &quot;Stored procedure with IN param creation&quot;);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -360,12 +314,12 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE GETCOUNT (INOUT pID INT, &quot; +
         &quot;OUT pCount INT) &quot; +
         &quot;BEGIN &quot; +
@@ -376,8 +330,8 @@ import ballerinax/java.jdbc;
     handleUpdate(ret, &quot;Stored procedure with INOUT/OUT param creation&quot;);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -386,31 +340,31 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE GETSTUDENTS() &quot; +
         &quot;BEGIN SELECT * FROM student; END&quot;);
     handleUpdate(ret, &quot;Stored procedure with result set return&quot;);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nThe call operation - With IN params&quot;);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -420,12 +374,12 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var retCall = testDB-&gt;call(&quot;{CALL INSERTDATA(?,?)}&quot;, (), 20, &quot;George&quot;);
     if (retCall is error) {
         io:println(&quot;Stored procedure call failed: &quot;,
@@ -435,8 +389,8 @@ import ballerinax/java.jdbc;
     }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -445,17 +399,17 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nThe call operation - With INOUT/OUT params&quot;);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -464,12 +418,12 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    jdbc:Parameter pId = {
         sqlType: jdbc:TYPE_INTEGER,
         value: 20,
@@ -481,8 +435,8 @@ import ballerinax/java.jdbc;
     };
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -491,12 +445,12 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    retCall = testDB-&gt;call(&quot;{CALL GETCOUNT(?,?)}&quot;, (), pId, pCount);
     if (retCall is error) {
         io:println(&quot;Stored procedure call failed: &quot;,
@@ -508,8 +462,8 @@ import ballerinax/java.jdbc;
     }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -518,20 +472,20 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    retCall = testDB-&gt;call(&quot;{CALL GETSTUDENTS()}&quot;, [Student]);
     if (retCall is error) {
         io:println(&quot;Stored procedure call failed: &quot;,
                     &lt;string&gt;retCall.detail()?.message);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -540,12 +494,12 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    } else if retCall is table&lt;record {}&gt;[] {
         io:println(&quot;Data in students table:&quot;);
         foreach var row in retCall[0] {
@@ -556,22 +510,22 @@ import ballerinax/java.jdbc;
     }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nThe update operation - Drop the tables and procedures&quot;);
     ret = testDB-&gt;update(&quot;DROP TABLE student&quot;);
     handleUpdate(ret, &quot;Drop table student&quot;);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -580,52 +534,52 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;DROP PROCEDURE INSERTDATA&quot;);
     handleUpdate(ret, &quot;Drop stored procedure INSERTDATA&quot;);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;DROP PROCEDURE GETCOUNT&quot;);
     handleUpdate(ret, &quot;Drop stored procedure GETCOUNT&quot;);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;DROP PROCEDURE GETSTUDENTS&quot;);
     handleUpdate(ret, &quot;Drop stored procedure GETSTUDENTS&quot;);
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>function handleUpdate(jdbc:UpdateResult|jdbc:Error returned, string message) {
     if (returned is jdbc:UpdateResult) {
         io:println(message, &quot; status: &quot;, returned.updatedRowCount);
@@ -635,8 +589,8 @@ import ballerinax/java.jdbc;
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -645,37 +599,19 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># At the command line, navigate to the directory that contains the
 # `.bal` file and run the `ballerina run` command below.
 ballerina run jdbc_client_call_procedures.bal
@@ -686,28 +622,28 @@ Stored procedure with INOUT/OUT param creation status: 0
 Stored procedure with result set return status: 0
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>The call operation - With IN params
 Call operation with IN params successful
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>The call operation - With INOUT/OUT params
 Call operation with INOUT and OUT params successful
 Student ID of the student with age of 20: 1
@@ -716,15 +652,15 @@ Data in students table:
 id=1 age=20 name=George
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>The update operation - Drop the tables and procedures
 Drop table student status: 0
 Drop stored procedure INSERTDATA status: 0
@@ -732,23 +668,18 @@ Drop stored procedure GETCOUNT status: 0
 Drop stored procedure GETSTUDENTS status: 0
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

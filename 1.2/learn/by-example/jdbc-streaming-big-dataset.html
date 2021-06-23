@@ -1,8 +1,10 @@
 ---
 layout: ballerina-example-page-old
 title: Streaming a Big Dataset
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /1.2/learn/by-example/jdbc-streaming-big-dataset
+active: jdbc-streaming-big-dataset
 redirect_from:
   - /v1-2/learn/by-example/jdbc-streaming-big-dataset
   - /v1-2/learn/by-example/jdbc-streaming-big-dataset.html
@@ -179,56 +181,30 @@ redirect_from:
                         </tr>
                     </table>
 
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/jsonutils;
 import ballerina/log;
 import ballerinax/java.jdbc;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>jdbc:Client testDB = new ({
     url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
     username: &quot;test&quot;,
@@ -237,8 +213,8 @@ import ballerinax/java.jdbc;
 });
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -248,17 +224,17 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>service dataService on new http:Listener(9090) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -267,31 +243,31 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function getData(http:Caller caller, http:Request req) {
         http:Response res = new;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        var selectRet = testDB-&gt;select(&quot;SELECT * FROM Data&quot;, ());
         if (selectRet is table&lt;record {}&gt;) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -301,17 +277,17 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            json jsonConversionRet = jsonutils:fromTable(selectRet);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -322,18 +298,18 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            res.setPayload(&lt;@untainted&gt;jsonConversionRet);
         } else {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -343,12 +319,12 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            res.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
             res.setPayload({&quot;Error&quot;: &quot;Error occured while retrieving data &quot; +
                 &quot;from the database&quot;
@@ -356,8 +332,8 @@ import ballerinax/java.jdbc;
         }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -367,12 +343,12 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        var respondRet = caller-&gt;respond(res);
         if (respondRet is error) {
             log:printError(&quot;Sending response failed&quot;, respondRet);
@@ -381,8 +357,8 @@ import ballerinax/java.jdbc;
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -391,115 +367,32 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
+                        <div class="cBBE-body">
+                            
+                            <div class="cTR">
 
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># At the command line, navigate to the directory that contains the
-# `.bal` files and run the `ballerina run` command below.
-ballerina run data_setup.bal
-ballerina run big_data_service.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/dataService/getData &gt; /tmp/response-data.txt
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100  199M    0  199M    0     0  90.0M      0 --:--:--  0:00:02 --:--:-- 90.0M
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                                    <div class="bal-separator">
-                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
-                                        <table class="cTopBorder-table">
-                                            <tbody><tr>
-                                                <td class="cCodeTD"></td>
-                                                <td class="cDescTD"></td>
-                                            </tr>
-                                        </tbody></table>
-                                    </div>
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerinax/java.jdbc;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
     jdbc:Client testDB = new ({
         url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
@@ -509,22 +402,22 @@ import ballerinax/java.jdbc;
     });
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var ret = testDB-&gt;update(&quot;CREATE TABLE Data (id INT, field1 &quot; +
     &quot;VARCHAR(1024), field2 VARCHAR(1024));&quot;);
     handleUpdate(ret, &quot;Create Data table&quot;);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -533,12 +426,12 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE PopulateData(IN row_count INT) &quot; +
        &quot;BEGIN &quot; +
            &quot;DECLARE count INT; &quot; +
@@ -559,8 +452,8 @@ import ballerinax/java.jdbc;
     handleUpdate(ret, &quot;Stored procedure with IN param creation&quot;);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -569,12 +462,12 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var retCall = testDB-&gt;call(&quot;CALL PopulateData(?)&quot;, (), 100000);
     if (retCall is error) {
         io:println(&quot;Stored procedure call failed: &quot;,
@@ -585,8 +478,8 @@ import ballerinax/java.jdbc;
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -596,12 +489,12 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>function handleUpdate(jdbc:UpdateResult|jdbc:Error returned, string message) {
     if (returned is jdbc:UpdateResult) {
         io:println(message, &quot; status: &quot;, returned.updatedRowCount);
@@ -611,8 +504,8 @@ import ballerinax/java.jdbc;
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -621,20 +514,52 @@ import ballerinax/java.jdbc;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
+                    </div>
+                    
+                    <div class="codeSnippeset">
+
+                        <div class="cBBE-body">
+                            
+                            <div class="cTR cOutputTr">
+
+                                <div class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># At the command line, navigate to the directory that contains the
+# `.bal` files and run the `ballerina run` command below.
+ballerina run data_setup.bal
+ballerina run big_data_service.bal
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR cOutputTr">
+
+                                <div class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/dataService/getData &gt; /tmp/response-data.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  199M    0  199M    0     0  90.0M      0 --:--:--  0:00:02 --:--:-- 90.0M
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

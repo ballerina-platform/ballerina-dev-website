@@ -44,7 +44,7 @@ It runs all the tests in your Ballerina project using the `bal test` [CLI comman
 
 >**Tip:** If you use any [configurable variables](/learn/user-guide/configurability/), the relevant `Config.toml` file should be added inside the corresponding module’s test directory root.
 
-## Document
+## Build Documentation
 
 It is a quick guide to generate documentation for your Ballerina project. Once executed, the documentation is generated using the `bal doc` [CLI command](/learn/tooling-guide/cli-tools/cli-commands/#core-commands). The generated documentation can be found inside the `apidocs` directory in the project `target`. 
 

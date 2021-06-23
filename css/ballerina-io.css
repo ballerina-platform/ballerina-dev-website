@@ -1878,3 +1878,43 @@ h5 pre[class*="language-"],
 h6 pre[class*="language-"] {
     font-size: inherit !important;
 }
+.leftNavToggleCont {
+    margin-left: auto;
+}
+.leftNavToggleBtn {
+}
+.leftNavToggleCont .leftNavToggleBtn {
+    display: flex;
+    padding: 5px 10px;
+    border: 1px solid #7eebe7;
+    position: relative;
+    background-color: white;
+}
+.leftNavToggleCont .leftNavToggleBtn .text {
+    margin-right: 10px;
+}
+.leftNavToggleCont .leftNavToggleBtn .icon {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(/img/icons/left-nav-toggle-icon.svg);
+    transition: all 0.3s;
+}
+.leftNavToggleCont .leftNavToggleBtn.active .icon {
+    background-image: url(/img/icons/left-nav-close-icon.svg);
+}
+@media only screen and (min-width: 992px) {
+    .mobileSubNav {
+        display: none;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .cLeftNavContainer {
+        display: none;
+    }
+    .mobileSubNav {
+        display: flex;
+    }
+}

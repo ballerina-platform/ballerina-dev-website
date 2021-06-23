@@ -1291,7 +1291,7 @@ td span.line-numbers-rows {
     }
     .navbar-header {
         padding-left: 0px;
-        height: 65px;
+        height: 60px;
         width: 100%;
         display: inline-block;
     }
@@ -1314,7 +1314,7 @@ td span.line-numbers-rows {
         z-index: 999;
     }
     .navbar-toggle {
-        margin-top: 15px;
+        margin-top: 5px;
         margin-right: 0;
     }
     .nav.navbar-nav {
@@ -1336,7 +1336,7 @@ td span.line-numbers-rows {
         padding-right: 20px;
     }
     .row.cBallerina-io-Nav {
-        padding: 10px 0 20px 0;
+        padding: 20px 0 20px 0;
         border-top: 10px solid #20b6b0;
         height: 100px;
     }
@@ -1896,7 +1896,7 @@ h6 pre[class*="language-"] {
 .leftNavToggleCont .leftNavToggleBtn .icon {
     width: 20px;
     height: 20px;
-    background-size: contain;
+    background-size: 16px;
     background-position: center;
     background-repeat: no-repeat;
     background-image: url(/img/icons/left-nav-toggle-icon.svg);
@@ -1904,6 +1904,7 @@ h6 pre[class*="language-"] {
 }
 .leftNavToggleCont .leftNavToggleBtn.active .icon {
     background-image: url(/img/icons/left-nav-close-icon.svg);
+    background-size: 12px;
 }
 @media only screen and (min-width: 992px) {
     .mobileSubNav {
@@ -1916,5 +1917,11 @@ h6 pre[class*="language-"] {
     }
     .mobileSubNav {
         display: flex;
+    }
+    .cLeftNavSticky {
+        margin-top: 70px;
+    }
+    .cBallerina-io-breadcrumbs {
+        display: none;
     }
 }

@@ -1,8 +1,10 @@
 ---
 layout: ballerina-example-page-old
 title: Secured Client with OAuth2
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /1.2/learn/by-example/secured-client-with-oauth2
+active: secured-client-with-oauth2
 redirect_from:
   - /v1-2/learn/by-example/secured-client-with-oauth2
   - /v1-2/learn/by-example/secured-client-with-oauth2.html
@@ -239,60 +241,30 @@ redirect_from:
                         </tr>
                     </table>
 
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/config;
 import ballerina/log;
 import ballerina/oauth2;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>oauth2:OutboundOAuth2Provider oauth2Provider1 = new ({
     tokenUrl: &quot;&lt;Token URL for the authorization endpoint&gt;&quot;,
     clientId: &quot;&lt;Client ID for the client credentials grant authentication&gt;&quot;,
@@ -310,8 +282,8 @@ import ballerina/oauth2;
 http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -323,12 +295,12 @@ http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP1 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
     auth: {
         authHandler: oauth2Handler1
@@ -343,15 +315,15 @@ http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
 });
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>oauth2:OutboundOAuth2Provider oauth2Provider2 = new ({
     tokenUrl: &quot;&lt;Token URL for the authorization endpoint&gt;&quot;,
     username: &quot;&lt;Username for password grant authentication&gt;&quot;,
@@ -383,8 +355,8 @@ http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
 http:BearerAuthHandler oauth2Handler2 = new (oauth2Provider2);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -398,12 +370,12 @@ http:BearerAuthHandler oauth2Handler2 = new (oauth2Provider2);
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP2 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
     auth: {
         authHandler: oauth2Handler2
@@ -418,15 +390,15 @@ http:BearerAuthHandler oauth2Handler2 = new (oauth2Provider2);
 });
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>oauth2:OutboundOAuth2Provider oauth2Provider3 = new ({
     accessToken: &quot;&lt;Access token for the authorization endpoint&gt;&quot;,
     refreshConfig: {
@@ -448,8 +420,8 @@ http:BearerAuthHandler oauth2Handler2 = new (oauth2Provider2);
 http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -462,12 +434,12 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>http:Client clientEP3 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
     auth: {
         authHandler: oauth2Handler3
@@ -482,27 +454,27 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
 });
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var response1 = clientEP1-&gt;get(&quot;/&quot;);
     if (response1 is http:Response) {
         var result = response1.getJsonPayload();
@@ -516,8 +488,8 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
     }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -526,12 +498,12 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var response2 = clientEP2-&gt;get(&quot;/&quot;);
     if (response2 is http:Response) {
         var result = response2.getJsonPayload();
@@ -545,8 +517,8 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
     }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -555,12 +527,12 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    var response3 = clientEP3-&gt;get(&quot;/&quot;);
     if (response3 is http:Response) {
         var result = response3.getJsonPayload();
@@ -575,8 +547,8 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -585,63 +557,48 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To test the client, configure the clients with required parameters and
 # execute the below command by passing Ballerina home path as a system property.
 ballerina run secured_client_with_oauth2.bal --b7a.home=&lt;ballerina_home_path&gt;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># This should log the JSON output returned by the REST endpoints.
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

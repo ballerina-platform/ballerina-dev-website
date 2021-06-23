@@ -61,6 +61,13 @@ Run all the functions in the given module.
 $ bal test --tests PackageName.<module_name>:*
 ```
 
+Run only the specified cases of a data set provided using the `dataProvider` attribute.
+Use `#` as the separator and append the case identifier to end of the test function name.
+
+```
+$ bal test --tests <test_function>#Case1
+```
+
 Run only the previously-failed test cases in the current package.
 
 ```

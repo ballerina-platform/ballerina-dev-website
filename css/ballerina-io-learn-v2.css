@@ -149,7 +149,7 @@ nav.cLeftNavContainer ul li .cLeftMenuLink {
 }
 nav.cLeftNavContainer ul li ul li a {
   padding-right: 0;
-  padding-left: 15px;
+  padding-left: 5px;
 }
 /* nav.cLeftNavContainer ul li ul li::before {
     content: "–";
@@ -303,7 +303,8 @@ span.icon.minus-icon {
   background-image: url("/img/minus.svg");
   background-color: #464646;
 }
-.abix-tree-list .collapsed span.icon, .abix-tree-list .expanded span.icon{
+.abix-tree-list .collapsed span.icon,
+.abix-tree-list .expanded span.icon {
   margin-right: 8px !important;
 }
 .cBallerinaTocContainer {

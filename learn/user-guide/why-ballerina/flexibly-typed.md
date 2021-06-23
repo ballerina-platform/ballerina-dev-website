@@ -269,7 +269,7 @@ $ bal run sample.bal
 
 ### Test Scenarios
 
-<table class="table cCodeTable" >
+<table class="table cCodeTable cCodeTableFixedLayout" >
                                  <tr>
                                     <th class="cDescription">Description</th>
                                     <th class="cCodeCol">Request</th>
@@ -277,7 +277,9 @@ $ bal run sample.bal
                                  </tr>
                                 <tr>
                                     <td>
+                                        <span>
                                        A request is sent without setting the <code>married</code> field. Since this field has a default value in the <code>Person</code> type, the value is automatically populated to that. The <code>ethnicity</code> field is not set since it is marked as optional.
+                                       </span>
                                     </td>
                                     <td>
                                        <span class="cTableCode">curl -d '{ "name": "John Little",  "birthYear": 1855 }' http://localhost:8080/record</span>

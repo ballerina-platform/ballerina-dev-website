@@ -620,6 +620,19 @@ ul.lower-latin li {
 .permalinkHeader:hover .permalink {
     visibility: visible;
 }
+
+.cCodeTable tr th.cDescription {
+    width: 33.3333%;
+}
+.cCodeTable tr th.cCodeCol {
+    width: 33.3333%;
+}
+.cCodeTable tr td .cTableCode {
+    word-wrap: break-word;
+}
+.cCodeTable.cCodeTableFixedLayout {
+    table-layout: fixed;
+}
 @media (max-width: 991px) {
     .navbar-header {
         margin-top: 0;

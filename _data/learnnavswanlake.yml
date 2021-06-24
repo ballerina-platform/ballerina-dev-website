@@ -1,31 +1,3 @@
-
-#- title: Getting Started
-  #url: /learn/user-guide/getting-started/
-  #active: getting-started
-
-- title: Why Ballerina 
-  url: '#'
-  sublinks:
-    - title: Cloud Native
-      url: /learn/user-guide/why-ballerina/cloud-native/
-      active: cloud-native
-    - title: Flexibly Typed
-      url: /learn/user-guide/why-ballerina/flexibly-typed/
-      active: flexibly-typed
-    - title: Data Oriented
-      url: /learn/user-guide/why-ballerina/data-oriented/
-      active: data-oriented
-    - title: Graphical
-      url: /learn/user-guide/why-ballerina/graphical/
-      active: graphical
-    - title: Concurrent
-      url: /learn/user-guide/why-ballerina/concurrent/
-      active: concurrent
-    - title: Reliable, Maintainable
-      url: /learn/user-guide/why-ballerina/reliable-maintainable/
-      active: reliable-maintainable
-
-
 - title: Getting Started 
   url: '#'
   sublinks:
@@ -211,15 +183,3 @@
       #url: /swan-lake/learn/extending-with-compiler-extensions
       #active: extending-with-compiler-extensions
       
- 
-
-
-   
-
-      
-
-
-
-
-
-

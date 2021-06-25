@@ -222,16 +222,17 @@ public class SnakeYamlSample {
 Our goal here is to create a new `java.io.FileInputStream` instance from the filename. In step 3, we generated bindings for the required Java classes. The following is the code snippet that does the job. 
 
 ```ballerina
-FileInputStream | FileNotFoundException fileInputStream = newFileInputStream3(filename);
+javaio:FileInputStream | javaio:FileNotFoundException fileInputStream = javaio:newFileInputStream3(filename);
 ```
 
 Here, `FileInputStream` is the Ballerina class generated for the `java.io.FileInputStream` class.
+- Ballerina bindings for each Java package are mapped onto a separate Ballerina module by default. Therefore, you need to import them when using them inside other modules. Here the `java.io` Ballerina module (mapping the corresponding Java package) is imported as `javaio`. However, if you wish to generate all the bindings inside a single directory you can do so by using the `[(-o|--output) <output-path>]` command option.
 - You can find functions that start with `newFileInputStream` in the generated code. Each such function creates a new `java.io.FileInputStream` instance. Ballerina does not support function overloading. Therefore, the bindgen tool generates a separate Ballerina function for each overloaded method or constructor. We will improve the function names of the generated bindings in a future release. 
 - All the public instance methods in the `java.io.FileInputStream` class are mapped to methods in the generated Ballerina class. You can refer [the `bindgen` tool](#the-bindgen-tool) section for more details on how other Java class members are mapped into Ballerina bindings.
 
 Next, we’ll handle the error using a type guard.
 ```ballerina
-if fileInputStream is FileNotFoundException {
+if fileInputStream is javaio:FileNotFoundException {
 	// The type of fileInputStream is FileNotFoundException within this block
     io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.message());
 } else {
@@ -239,14 +240,14 @@ if fileInputStream is FileNotFoundException {
 }
 ```
 #### Creating the SnakeYAML Entry Point
-The `org.yaml.snakeyaml.Yaml` class is the entry point to the SnakeYAML API.  The generated corresponding Ballerina class is `Yaml`. The `newYaml1()` function is mapped to the default constructor of the Java class.
+The `org.yaml.snakeyaml.Yaml` class is the entry point to the SnakeYAML API.  The generated corresponding Ballerina class is `Yaml`. The `newYaml1()` function is mapped to the default constructor of the Java class. Let's import the `org.yaml.snakeyaml` Ballerina module as `snakeyaml`.
 ```ballerina
-Yaml yaml = newYaml1();
+snakeyaml:Yaml yaml = snakeyaml:newYaml1();
 ```
 ####  Loading the YAML Document
-We'll be using the `org.yaml.snakeyaml.Yaml.load(InputStream is)` method to get a Java Map instance from the given `InputStream`.
+We'll be using the `org.yaml.snakeyaml.Yaml.load(InputStream is)` method to get a Java Map instance from the given `InputStream`. Since, `Object` class resides inside the `java.lang` module, let's import it as `javalang`.
 ```ballerina
-Object mapObj = yaml.load(fileInputStream);
+javalang:Object mapObj = yaml.load(fileInputStream);
 ```
 
 The `org.yaml.snakeyaml.Yaml.load(InputStream is)` is a generic method. The bindgen tool does not support Java generics at the moment. That is why the corresponding Ballerina method returns an Object.  
@@ -260,15 +261,18 @@ io:println(mapObj);
 Here, is the complete code. You can replace the contents in `main.bal` with the following code.
 ```ballerina
 import ballerina/io;
+import yaml_package.java.io as javaio;
+import yaml_package.java.lang as javalang;
+import yaml_package.org.yaml.snakeyaml as snakeyaml;
  
 public function main(string... args) returns error? {
    string filename = args[0];
-   FileInputStream | FileNotFoundException fileInputStream = newFileInputStream3(filename);
-   if fileInputStream is FileNotFoundException {
+   javaio:FileInputStream | javaio:FileNotFoundException fileInputStream = javaio:newFileInputStream3(filename);
+   if fileInputStream is javaio:FileNotFoundException {
        io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.message());
    } else {
-       Yaml yaml = newYaml1();
-       Object mapObj = yaml.load(fileInputStream);
+       snakeyaml:Yaml yaml = snakeyaml:newYaml1();
+       javalang:Object mapObj = yaml.load(fileInputStream);
        io:println(mapObj);
    }
 }
@@ -325,7 +329,7 @@ The `bindgen` is a CLI tool, which generates Ballerina bindings for Java classes
 ```sh
 ballerina bindgen [(-cp|--classpath) <classpath>...]
                   [(-mvn|--maven) <groupId>:<artifactId>:<version>]
-                  [(-o|--output) <output> | (-m|--modules)]
+                  [(-o|--output) <output-path>]
                   [--public]
                   (<class-name>...)
 ```
@@ -337,20 +341,17 @@ This optional parameter could be used to specify one or more comma-delimited cla
 This optional parameter could be used to specify a Maven dependency required for the generation of the Ballerina bindings. Here, the specified library and its transitive dependencies will be resolved into the `target/platform-libs` directory of the package. If the tool is not executed inside a package or if the output path does not point to a package, the `target/platform-libs` directory structure will be created in the output path to store the Maven dependencies. The tool will also update the `Ballerina.toml` file with the platform libraries if the command is executed inside a Ballerina package.
 
 `(-o|--output) <output>`
-This optional parameter could be used to specify the directory path to which the Ballerina bindings should be inserted. If this path is not specified, the output will be written to the same directory from which the command is run. You can point to the path of a Ballerina module to generate the code inside a Ballerina module.
-
-`(-m|--modules)`
-This optional flag could be used to generate Ballerina module-level mappings for each Java package, instead of generating all the bindings inside the default module or a single output directory. If this flag is specified, all the generated Java class mappings belonging to a specific Java package will reside inside a separate module representing this Java package.
+This optional parameter could be used to generate all the bindings inside a single directory instead of generating module level mappings. This option could be used in instances where all the mappings are required inside a single module. The specified directory doesn't always have to be inside a Ballerina package.
 
 `--public`
-Set the visibility modifier of the generated binding classes to public. Unless the `(-m|--modules)` flag is used, the generated bindings will be module private by default.
+Set the visibility modifier of the generated binding classes to public. This flag will be applicable only if the bindings are generated inside a single directory.
 
 `<class-name>...`
 One or more space-separated fully-qualified Java class names for which the Ballerina bridge code is to be generated. Please note that these class names should be provided at the end of the command.
 
 ### Generated Bridge Code
 
-When the tool is run, a `.bal` file will be created to represent each Java class. This would contain the respective Ballerina binding class along with the required Java interoperability mappings. If the `(-m|--modules)` flag is used, these `.bal` files will be generated inside separate modules representing the Java package structure, else they will be generated inside a single directory.
+When the tool is run, a `.bal` file will be created to represent each Java class. This would contain the respective Ballerina binding class along with the required Java interoperability mappings. These `.bal` files will be generated inside separate modules representing the Java package structure by default. If the `[(-o|--output) <output-path>]` option is used, they will be generated inside a single directory.
 
 Apart from creating bindings for the specified Java classes, the command will also generate empty Ballerina binding classes for the dependent Java classes. A Java class would be considered dependent if it is used inside one of the generated Ballerina binding classes.
 
@@ -358,7 +359,7 @@ A set of additional `.bal` files will be generated to store the error types used
 
 The generated bindings will be inside the specified output directory as follows.
 
-	<specified-output-dir>
+	<module-dir>
 	    ├── <class-name>.bal // generated classes
         ├── ...
 	    ├── <class-name>.bal // generated dependent classes

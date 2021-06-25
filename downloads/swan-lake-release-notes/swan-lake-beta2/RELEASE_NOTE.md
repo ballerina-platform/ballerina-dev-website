@@ -78,7 +78,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta2](https://github
 
 ```ballerina
 configurable map<anydata> myMap = ?;
-
 configurable int|string id = ?;
 ```
 

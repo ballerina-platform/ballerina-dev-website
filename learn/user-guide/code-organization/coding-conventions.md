@@ -19,6 +19,8 @@ redirect_from:
   - /learn/user-guide/code-organization/coding-conventions
   - /learn/user-guide/code-organization/coding-conventions/
   - /learn/user-guide/style-guide/coding-conventions
+  - /learn/user-guide/style-guide/
+  - /learn/user-guide/style-guide
 ---
 
 > You can follow your own coding style when writing Ballerina source code. Also, plugins and tools can be configured to match your coding style.

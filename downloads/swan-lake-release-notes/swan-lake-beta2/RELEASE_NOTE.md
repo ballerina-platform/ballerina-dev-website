@@ -66,6 +66,24 @@ public function main() {
 }
 ```
 
+- Changed inferred type of rest field after a mapping from `map` to a `record` with the remaining field types.
+
+```ballerina
+type XY record {
+   int x; int y;
+};
+
+// any field other than x and y
+type NotXY record {
+   never x?; never y?;
+};
+
+public function extra(XY xy) returns NotXY {
+   var {x: _, y: _,...extra} = xy;
+   return extra;
+}
+```
+
 ### Bug Fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta2](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta2%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).

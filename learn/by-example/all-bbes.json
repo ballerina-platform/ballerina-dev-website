@@ -8,14 +8,16 @@
                 "name": "Hello World Main",
                 "url": "hello-world",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Hello World Service",
                 "url": "hello-world-service",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             }
         ]
     },
@@ -28,237 +30,276 @@
                 "name": "Programs and Modules",
                 "url": "programs-and-modules",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Variables and Types",
                 "url": "variables-and-types",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Functions",
                 "url": "functions",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Identifiers",
                 "url": "identifiers",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Integers",
                 "url": "integers",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Booleans and Conditionals",
                 "url": "booleans",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Floating Point Numbers",
                 "url": "floating-point-numbers",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Nil",
                 "url": "nil",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Strings",
                 "url": "strings",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Langlib Functions",
                 "url": "langlib-functions",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Arrays",
                 "url": "arrays",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Foreach Statement",
                 "url": "foreach-statement",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "While Statement",
                 "url": "while-statement",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Binary Data",
                 "url": "binary-data",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Maps",
                 "url": "maps",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Type Definitions",
                 "url": "type-definitions",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Records",
                 "url": "records",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Structural Typing",
                 "url": "structural-typing",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Unions",
                 "url": "unions",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Error Reporting",
                 "url": "error-reporting",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Error Handling",
                 "url": "error-handling",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Check Expression",
                 "url": "check-expression",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Error Subtyping",
                 "url": "error-subtyping",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Panics",
                 "url": "panics",
                 "verifyBuild": true,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": true
             },
             {
                 "name": "Anydata Type",
                 "url": "anydata-type",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Ignoring Return Values and Errors",
                 "url": "ignoring-return-values-and-errors",
                 "verifyBuild": true,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": true
             },
             {
                 "name": "Covariance",
                 "url": "covariance",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Object",
                 "url": "object",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Defining Classes",
                 "url": "defining-classes",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Init Return Type",
                 "url": "init-return-type",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Identity",
                 "url": "identity",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Const and Final ",
                 "url": "const-and-final",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Enumerations",
                 "url": "enumerations",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Match Statement",
                 "url": "match-statement",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Type Inference ",
                 "url": "type-inference",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Function Values",
                 "url": "function-values",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Asynchronous Function Calls",
                 "url": "asynchronous-function-calls",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Annotations",
                 "url": "annotations",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Documentation",
                 "url": "documentation",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
         ]
     },
@@ -271,48 +312,55 @@
                 "name": "Consuming Services: Client Objects",
                 "url": "consuming-services",
                 "verifyBuild": true,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": true
             },
             {
                 "name": "Providing Services",
                 "url": "providing-services",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Module Lifecycle",
                 "url": "module-lifecycle",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Service Declaration",
                 "url": "service-declaration",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Resource Methods",
                 "url": "resource-methods",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Hierarchical Resources",
                 "url": "hierarchical-resources",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Resource Path Parameters",
                 "url": "resource-path-parameters",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             }
         ]
     },
@@ -325,233 +373,271 @@
                 "name": "Decimal Type",
                 "url": "decimal-type",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Immutability",
                 "url": "immutability",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Any Type",
                 "url": "any-type",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Configurable Variables",
                 "url": "configurable-variables",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Optional Fields",
                 "url": "optional-fields",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Open Records",
                 "url": "open-records",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Controlling Openness",
                 "url": "controlling-openness",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "JSON Type",
                 "url": "json-type",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Working directly with JSON",
                 "url": "working-directly-with-json",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Match Statement With Maps",
                 "url": "match-statement-with-maps",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Converting From User-Defined Type to JSON",
                 "url": "converting-from-user-defined-type-to-json",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Converting From JSON to User-Defined Type",
                 "url": "converting-from-json-to-user-defined-type",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Converting to User-Defined Type",
                 "url": "converting-to-user-defined-type",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Resource Method Typing",
                 "url": "resource-method-typing",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "JSON Numbers",
                 "url": "json-numbers",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Query Expressions",
                 "url": "query-expressions",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Destructuring Records",
                 "url": "destructuring-records",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Let Clause",
                 "url": "let-clause",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Ordering",
                 "url": "ordering",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Limit Clause",
                 "url": "limit-clause",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Table Syntax",
                 "url": "table-syntax",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Multiple Key Fields",
                 "url": "multiple-key-fields",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Structured Keys",
                 "url": "structured-keys",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Querying Tables",
                 "url": "querying-tables",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Creating Tables With Query",
                 "url": "creating-tables-with-query",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Join Clause",
                 "url": "join-clause",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Stream Type",
                 "url": "stream-type",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Querying With Streams",
                 "url": "querying-with-streams",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Backtick Templates",
                 "url": "backtick-templates",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Raw Templates",
                 "url": "raw-templates",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "XML Data Model",
                 "url": "xml-data-model",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "XML Templates",
                 "url": "xml-templates",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "XML Operations",
                 "url": "xml-operations",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "XML Subtyping",
                 "url": "xml-subtyping",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "XML Navigation ",
                 "url": "xml-navigation",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "XML Templates and Query",
                 "url": "xml-templates-and-query",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "XML Namespaces",
                 "url": "xml-namespaces",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "XMLNS Declarations",
                 "url": "xmlns-declarations",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
         ]
     },
@@ -564,61 +650,71 @@
                 "name": "Named Workers",
                 "url": "named-workers",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Sequence Diagrams",
                 "url": "sequence-diagrams",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Waiting for Workers",
                 "url": "waiting-for-workers",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Strands",
                 "url": "strands",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Named Worker Return Values",
                 "url": "named-worker-return-values",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Alternate Wait",
                 "url": "alternate-wait",
                 "verifyBuild": true,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": true
             },
             {
                 "name": "Multiple Wait",
                 "url": "multiple-wait",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Named Workers and Futures",
                 "url": "named-workers-and-futures",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Inter-Worker Message Passing",
                 "url": "inter-worker-message-passing",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Inter-Worker Failure Propagation",
                 "url": "inter-worker-failure-propagation",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
         ]
     },
@@ -631,43 +727,50 @@
                 "name": "Transaction Statement",
                 "url": "transaction-statement",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Check Semantics",
                 "url": "check-semantics",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Rollback",
                 "url": "rollback",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Retry Transaction Statement",
                 "url": "retry-transaction-statement",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Transactional Qualifier",
                 "url": "transactional-qualifier",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Transactional Named Workers",
                 "url": "transactional-named-workers",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Commit/Rollback Handlers",
                 "url": "commit-rollback-handlers",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
         ]
     },
@@ -680,55 +783,64 @@
                 "name": "Lock Statement",
                 "url": "lock-statement",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Isolated Functions",
                 "url": "isolated-functions",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Readonly Type",
                 "url": "readonly-type",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Readonly and Isolated",
                 "url": "readonly-and-isolated",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Combining Isolated Functions and Lock",
                 "url": "combining-isolated-functions-and-lock",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Isolated Variables",
                 "url": "isolated-variables",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Isolated Methods",
                 "url": "isolated-methods",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Isolated Objects",
                 "url": "isolated-objects",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Inferring Isolated",
                 "url": "inferring-isolated",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": true
             }
         ]
     },
@@ -742,70 +854,80 @@
                 "url": "testerina-assertions",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Before and After Test",
                 "url": "testerina-before-and-after-test",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Before and After Each",
                 "url": "testerina-before-and-after-each",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Before and After Groups",
                 "url": "testerina-before-and-after-groups",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Before and After Suite",
                 "url": "testerina-before-and-after-suite",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Data Driven Tests",
                 "url": "testerina-data-driven-tests",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Guarantee Test Execution Order",
                 "url": "testerina-guarantee-test-execution-order",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Group Tests",
                 "url": "testerina-group-tests",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Function Mocking",
                 "url": "testerina-mocking-functions",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Object Mocking",
                 "url": "testerina-mocking-objects",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": true
             }
         ]
     },
@@ -819,56 +941,64 @@
                 "url": "http-absolute-path-and-path",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service Data Binding",
                 "url": "http-data-binding",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Default Resource",
                 "url": "http-default-resource",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Path Parameter",
                 "url": "http-path-param",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Query Parameter",
                 "url": "http-query-parameter",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Matrix Parameter",
                 "url": "http-matrix-param",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Typed Resource Responses",
                 "url": "http-resource-returns",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Restrict By Media Type",
                 "url": "http-restrict-by-media-type",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -881,14 +1011,16 @@
                 "name": "Client",
                 "url": "http-client-endpoint",
                 "verifyBuild": false,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": false
             },
             {
                 "name": "Client Data Binding",
                 "url": "http-client-data-binding",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -902,98 +1034,112 @@
                 "url": "http-service-ssl-tls",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service - Mutual SSL",
                 "url": "http-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service - Basic Auth File User Store",
                 "url": "http-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service - Basic Auth LDAP User Store",
                 "url": "http-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service - JWT Auth",
                 "url": "http-service-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service - OAuth2",
                 "url": "http-service-oauth2",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - SSL/TLS",
                 "url": "http-client-ssl-tls",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - Mutual SSL",
                 "url": "http-client-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - Basic Auth",
                 "url": "http-client-basic-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - Bearer Token Auth",
                 "url": "http-client-bearer-token-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - Self Signed JWT Auth",
                 "url": "http-client-self-signed-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - OAuth2 Client Credentials Grant Type",
                 "url": "http-client-oauth2-client-credentials-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - OAuth2 Password Grant Type",
                 "url": "http-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - OAuth2 Refresh Token Grant Type",
                 "url": "http-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1007,70 +1153,80 @@
                 "url": "http-redirects",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "CORS",
                 "url": "http-cors",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "100 Continue",
                 "url": "http-100-continue",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Streaming",
                 "url": "http-streaming",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Compression",
                 "url": "http-compression",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Cookies",
                 "url": "http-cookies",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Chunking",
                 "url": "http-disable-chunking",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Response With Multiparts",
                 "url": "http-response-with-multiparts",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Request With Multiparts",
                 "url": "http-request-with-multiparts",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Passthrough",
                 "url": "http-passthrough",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1084,14 +1240,16 @@
                 "url": "http-1-1-to-2-0-protocol-switch",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "HTTP 2.0 Server Push",
                 "url": "http-2-0-server-push",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1105,35 +1263,40 @@
                 "url": "graphql-hello-world",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Returning Record Values",
                 "url": "graphql-returning-record-values",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Hierarchical Resource Paths",
                 "url": "graphql-hierarchical-resource-paths",
                 "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Returning Service Objects",
                 "url": "graphql-returning-service-objects",
                 "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Input Types",
                 "url": "graphql-input-types",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1147,42 +1310,48 @@
                 "url": "graphql-service-ssl-tls",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service - Mutual SSL",
                 "url": "graphql-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service - Basic Auth File User Store",
                 "url": "graphql-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service - Basic Auth LDAP User Store",
                 "url": "graphql-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service - JWT Auth",
                 "url": "graphql-service-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service - OAuth2",
                 "url": "graphql-service-oauth2",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1195,20 +1364,23 @@
                 "name": "Handle Text Messages with Client",
                 "url": "websocket-text-client",
                 "verifyBuild": false,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": false
             },
             {
                 "name": "Handle Binary Messages with Client",
                 "url": "websocket-binary-client",
                 "verifyBuild": false,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": false
             },
             {
                 "name": "Listener Functionalities",
                 "url": "websocket-basic-sample",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1222,98 +1394,112 @@
                 "url": "websocket-service-ssl-tls",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service - Mutual SSL",
                 "url": "websocket-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service - Basic Auth File User Store",
                 "url": "websocket-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service - Basic Auth LDAP User Store",
                 "url": "websocket-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service - JWT Auth",
                 "url": "websocket-service-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Service - OAuth2",
                 "url": "websocket-service-oauth2",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - SSL/TLS",
                 "url": "websocket-client-ssl-tls",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - Mutual SSL",
                 "url": "websocket-client-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - Basic Auth",
                 "url": "websocket-client-basic-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - Bearer Token Auth",
                 "url": "websocket-client-bearer-token-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - Self Signed JWT Auth",
                 "url": "websocket-client-self-signed-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - OAuth2 Client Credentials Grant Type",
                 "url": "websocket-client-oauth2-client-credentials-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - OAuth2 Password Grant Type",
                 "url": "websocket-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client - OAuth2 Refresh Token Grant Type",
                 "url": "websocket-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1327,7 +1513,8 @@
                 "url": "websub-webhook-sample",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1341,35 +1528,40 @@
                 "url": "http-circuit-breaker",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Load Balancer",
                 "url": "http-load-balancer",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Failover",
                 "url": "http-failover",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Retry",
                 "url": "http-retry",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Timeout",
                 "url": "http-timeout",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1383,7 +1575,8 @@
                 "url": "dynamic-listener",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1397,49 +1590,56 @@
                 "url": "grpc-simple",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Simple RPC With Headers",
                 "url": "grpc-simple-with-headers",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Secured Simple RPC",
                 "url": "grpc-secured-simple",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Server Streaming RPC",
                 "url": "grpc-server-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client Streaming RPC",
                 "url": "grpc-client-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Bidirectional Streaming RPC",
                 "url": "grpc-bidirectional-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Proto To Ballerina",
                 "url": "proto-to-ballerina",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1453,14 +1653,16 @@
                 "url": "nats-basic-pub-sub",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Request/Reply",
                 "url": "nats-basic-request-reply",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1474,28 +1676,32 @@
                 "url": "nats-streaming-pub-sub",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Queue Groups",
                 "url": "nats-streaming-queue-group",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Durable Subscriptions",
                 "url": "nats-streaming-durable-subscriptions",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Historical Message Replay",
                 "url": "nats-streaming-start-position",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1509,49 +1715,56 @@
                 "url": "kafka-producer",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Consumer Service",
                 "url": "kafka-consumer-service",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Consumer Client",
                 "url": "kafka-consumer-client",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Transactional Producer",
                 "url": "kafka-producer-transactional",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Consumer Groups",
                 "url": "kafka-consumer-group-service",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "SASL Authentication - Consumer",
                 "url": "kafka-authentication-sasl-plain-consumer",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "SASL Authentication - Producer",
                 "url": "kafka-authentication-sasl-plain-producer",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1565,35 +1778,40 @@
                 "url": "rabbitmq-producer",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Consumer",
                 "url": "rabbitmq-consumer",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Client Acknowledgements",
                 "url": "rabbitmq-consumer-with-client-acknowledgement",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Transactional Producer",
                 "url": "rabbitmq-transaction-producer",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "SASL Authentication - Consumer",
                 "url": "rabbitmq-transaction-consumer",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1607,21 +1825,24 @@
                 "url": "tcp-client",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "TCP Listener",
                 "url": "tcp-listener",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "TCP Transport Security",
                 "url": "tcp-transport-security",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1635,21 +1856,24 @@
                 "url": "udp-client",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "UDP Connection-Oriented Client",
                 "url": "udp-connect-client",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "UDP Listener",
                 "url": "udp-listener",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1663,21 +1887,24 @@
                 "url": "send-email",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Receive Emails Using a Client",
                 "url": "receive-email-using-client",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Receive Emails Using a Listener",
                 "url": "receive-email-using-listener",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1691,42 +1918,48 @@
                 "url": "mysql-query-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Query With Complex Types",
                 "url": "mysql-complex-type-queries",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "DML and DDL Operation",
                 "url": "mysql-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Batch Execute",
                 "url": "mysql-batch-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Atomic Batch Execute",
                 "url": "mysql-atomic-batch-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Call Stored Procedures",
                 "url": "mysql-call-stored-procedures",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1740,35 +1973,40 @@
                 "url": "jdbc-query-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Query With Complex Types",
                 "url": "jdbc-complex-type-queries",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "DML and DDL Operation",
                 "url": "jdbc-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Batch Execute",
                 "url": "jdbc-batch-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Atomic Batch Execute",
                 "url": "jdbc-atomic-batch-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1782,31 +2020,36 @@
                 "url": "io-bytes",
                 "verifyBuild": true,
                 "verifyOutput": true,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Read/Write Strings",
                 "url": "io-strings",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Read/Write CSV",
                 "url": "io-csv",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Read/Write JSON",
                 "url": "io-json",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Read/Write XML",
                 "url": "io-xml",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1820,14 +2063,16 @@
                 "url": "security-crypto",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "JWT Issue/Validate",
                 "url": "security-jwt-issue-validate",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1840,7 +2085,8 @@
                 "name": "URL Encode/Decode Operations",
                 "url": "url-encode-decode",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1853,19 +2099,22 @@
                 "name": "UTC Time",
                 "url": "time-utc",
                 "verifyBuild": true,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": false
             },
             {
                 "name": "Time with Zone Offset",
                 "url": "time-utc-and-civil",
                 "verifyBuild": true,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": false
             },
             {
                 "name": "Time formatting/Parsing",
                 "url": "time-formatting-and-parsing",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1878,13 +2127,15 @@
                 "name": "Cache Basics",
                 "url": "cache-basics",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Cache Invalidation",
                 "url": "cache-invalidation",
                 "verifyBuild": false,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1897,20 +2148,23 @@
                 "name": "Logging",
                 "url": "logging",
                 "verifyBuild": true,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": false
             },
             {
                 "name": "Logging with Context",
                 "url": "logging-with-context",
                 "verifyBuild": true,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": false
             },
             {
                 "name": "Configure Logging",
                 "url": "logging-configuration",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1923,32 +2177,37 @@
                 "name": "File Paths",
                 "url": "filepaths",
                 "verifyBuild": false,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": false
             },
             {
                 "name": "Directories",
                 "url": "directories",
                 "verifyBuild": true,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": false
             },
             {
                 "name": "Files",
                 "url": "files",
                 "verifyBuild": true,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": false
             },
             {
                 "name": "Temp Files and Directories",
                 "url": "temp-files-directories",
                 "verifyBuild": true,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": false
             },
             {
                 "name": "Directory Listener",
                 "url": "directory-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1961,7 +2220,8 @@
                 "name": "Random Numbers",
                 "url": "random-numbers",
                 "verifyBuild": true,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1974,19 +2234,22 @@
                 "name": "Schedule Job recurrence by Frequency",
                 "url": "task-frequency-job-execution",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Schedule one time job",
                 "url": "task-one-time-job-execution",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Manage Scheduled Jobs",
                 "url": "manage-scheduled-jobs",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1999,13 +2262,15 @@
                 "name": "Generate UUID",
                 "url": "uuid-generation",
                 "verifyBuild": true,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": false
             },
             {
                 "name": "UUID Operations",
                 "url": "uuid-operations",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -2018,7 +2283,8 @@
                 "name": "XSLT Transformation",
                 "url": "xslt-transformation",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -2031,7 +2297,8 @@
                 "name": "Regular Expressions",
                 "url": "regular-expressions",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -2044,7 +2311,8 @@
                 "name": "Environment Variables",
                 "url": "environment-variables",
                 "verifyBuild": true,
-                "verifyOutput": false
+                "verifyOutput": false,
+                "isLearnByExample": false
             }
         ]
     },
@@ -2057,7 +2325,8 @@
                 "name": "XML JSON Conversion",
                 "url": "xml-json-conversion",
                 "verifyBuild": true,
-                "verifyOutput": true
+                "verifyOutput": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -2071,14 +2340,16 @@
                 "url": "tracing",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "Counter-Based Metrics",
                 "url": "counter-metrics",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -2092,7 +2363,8 @@
                 "url": "gauge-metrics",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
                 }
         ]
     },
@@ -2106,7 +2378,8 @@
                 "url": "c2c-deployment",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -2120,14 +2393,16 @@
                 "url": "azure-functions-deployment",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             },
             {
                 "name": "AWS Lambda",
                 "url": "aws-lambda-deployment",
                 "verifyBuild": false,
                 "verifyOutput": false,
-                "disablePlayground": true
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     }

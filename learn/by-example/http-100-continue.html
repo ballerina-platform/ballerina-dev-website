@@ -18,7 +18,7 @@ redirect_from:
 <span class="kd">service</span> <span class="o">/</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span>
-            <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">ExpectationFailed</span> <span class="p">{</span>
+            <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="c1">// [Check if the client expects a 100-continue response](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue).</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">expects100Continue</span><span class="p">())</span> <span class="p">{</span>
             <span class="kt">string</span> <span class="nx">mediaType</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">();</span>
@@ -33,8 +33,10 @@ redirect_from:
             <span class="c1">// Send a 417 response to ignore the payload since content type is mismatched</span>
             <span class="c1">// with the expected content type.</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">http</span><span class="p">:</span><span class="nx">ExpectationFailed</span> <span class="nx">resp</span> <span class="p">=</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span><span class="s">&quot;Unprocessable Entity&quot;</span><span class="p">};</span>
-                <span class="k">return</span> <span class="nx">resp</span><span class="p">;</span>
+                <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+                <span class="nx">resp</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_EXPECTATION_FAILED</span><span class="p">;</span>
+                <span class="nx">resp</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Unprocessable Entity&quot;</span><span class="p">);</span>
+                <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">resp</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
 
@@ -43,10 +45,12 @@ redirect_from:
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
-            <span class="k">return</span> <span class="s">&quot;Hello World!\n&quot;</span><span class="p">;</span>
+            <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!\n&quot;</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">http</span><span class="p">:</span><span class="nx">InternalServerError</span> <span class="nx">resp</span> <span class="p">=</span> <span class="p">{</span><span class="nx">body</span><span class="p">:</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">()};</span>
-            <span class="k">return</span> <span class="nx">resp</span><span class="p">;</span>
+            <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+            <span class="nx">resp</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
+            <span class="nx">resp</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+            <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">resp</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -144,7 +148,7 @@ import ballerina/log;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default hello(http:Caller caller, http:Request request)
-            returns string|http:InternalServerError|http:ExpectationFailed {
+            returns error? {
 </code></pre></div>
 
                                 </div>
@@ -200,8 +204,10 @@ import ballerina/log;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            } else {
-                http:ExpectationFailed resp = {body:&quot;Unprocessable Entity&quot;};
-                return resp;
+                http:Response resp = new;
+                resp.statusCode = http:STATUS_EXPECTATION_FAILED;
+                resp.setPayload(&quot;Unprocessable Entity&quot;);
+                check caller-&gt;respond(resp);
             }
         }
 </code></pre></div>
@@ -226,10 +232,12 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=language-ballerina>        var payload = request.getTextPayload();
         if (payload is string) {
             log:printInfo(payload);
-            return &quot;Hello World!\n&quot;;
+            check caller-&gt;respond(&quot;Hello World!\n&quot;);
         } else {
-            http:InternalServerError resp = {body:payload.message()};
-            return resp;
+            http:Response resp = new;
+            resp.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
+            resp.setPayload(payload.message());
+            check caller-&gt;respond(resp);
         }
     }
 }

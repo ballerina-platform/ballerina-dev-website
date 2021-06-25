@@ -939,63 +939,63 @@
             {
                 "name": "Service Path and Resource Path",
                 "url": "http-absolute-path-and-path",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Service Data Binding",
                 "url": "http-data-binding",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Default Resource",
                 "url": "http-default-resource",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Path Parameter",
                 "url": "http-path-param",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Query Parameter",
                 "url": "http-query-parameter",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Matrix Parameter",
                 "url": "http-matrix-param",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "HTTP Headers",
-                "url": "http-headers",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "name": "Header Parameter",
+                "url": "http-header-param",
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Typed Resource Responses",
                 "url": "http-resource-returns",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
@@ -1003,7 +1003,7 @@
             {
                 "name": "Restrict By Media Type",
                 "url": "http-restrict-by-media-type",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
@@ -1025,8 +1025,8 @@
             {
                 "name": "Client Data Binding",
                 "url": "http-client-data-binding",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1159,7 +1159,7 @@
             {
                 "name": "Redirects",
                 "url": "http-redirects",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
@@ -1167,7 +1167,7 @@
             {
                 "name": "CORS",
                 "url": "http-cors",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
@@ -1175,8 +1175,8 @@
             {
                 "name": "100 Continue",
                 "url": "http-100-continue",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1191,7 +1191,7 @@
             {
                 "name": "Compression",
                 "url": "http-compression",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
@@ -1199,7 +1199,7 @@
             {
                 "name": "Cookies",
                 "url": "http-cookies",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
@@ -1207,8 +1207,8 @@
             {
                 "name": "Chunking",
                 "url": "http-disable-chunking",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1231,7 +1231,7 @@
             {
                 "name": "Passthrough",
                 "url": "http-passthrough",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
@@ -1246,15 +1246,15 @@
             {
                 "name": "HTTP 1.1 to 2.0 Protocol Switch",
                 "url": "http-1-1-to-2-0-protocol-switch",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "HTTP 2.0 Server Push",
                 "url": "http-2-0-server-push",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false

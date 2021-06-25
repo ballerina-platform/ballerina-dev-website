@@ -11,7 +11,7 @@
 <!-- Then we build the nav bar. -->
 <nav class="cLeftNavContainer cLeftNavContainerScroll">
    <ul class="cMainLeftNav">
-      <li class="cTitleOnly" {% if eurl == page.url %} class="current"{% endif %}>Ballerina By Example</li>
+      <li class="cTitleOnly" {% if eurl == page.url %} class="current"{% endif %}>Ballerina By Examples</li>
       <li{% if sample.url == page.active %} class="current-sub"{% endif %}><a href="/learn/by-example/introduction/">Introduction</a></li>
       {% assign category = '' %}
       {% for entry in site.data.all-bbes %}

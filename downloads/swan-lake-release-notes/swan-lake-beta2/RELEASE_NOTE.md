@@ -38,33 +38,33 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 - Introduced the support for recursive tuple types.
 
-    ```ballerina
-    type RecursiveType [int, RecursiveType[]];
+```ballerina
+type RecursiveType [int, RecursiveType[]];
 
-    public function main() {
-        RecursiveType a = [1];
-        RecursiveType b = [1, []];
-        RecursiveType c = [1, [a]];
+public function main() {
+    RecursiveType a = [1];
+    RecursiveType b = [1, []];
+    RecursiveType c = [1, [a]];
+}
+```
+
+- Changed the static type of the string iteration from `string` to `string:Char`.
+
+```ballerina
+public function main() {
+    string str = "foo";
+
+    foreach string:Char s in str {
+        io:println(s);        
     }
-    ```
 
-- Changed the static type of string iteration from `string` to `string:Char`.
+    record {| string:Char value; |}? next = str.iterator().next();
 
-    ```ballerina
-    public function main() {
-        string str = "foo";
-
-        foreach string:Char s in str {
-            io:println(s);        
-        }
-
-        record {| string:Char value; |}? next = str.iterator().next();
-
-        if !(next is ()) {
-            io:println(next.value);
-        }
+    if !(next is ()) {
+        io:println(next.value);
     }
-    ```
+}
+```
 
 ### Bug Fixes
 
@@ -76,11 +76,11 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta2](https://github
 
 - Introduced the support for `configurable` variables of union types via the TOML syntax. 
 
-    ```ballerina
-    configurable map<anydata> myMap = ?;
+```ballerina
+configurable map<anydata> myMap = ?;
 
-    configurable int|string id = ?;
-    ```
+configurable int|string id = ?;
+```
 
 **TOML:**
 
@@ -112,12 +112,12 @@ Added observability span context values to log messages when observability is en
 
 Introduced the `io:fprint` and `io:fprintln` APIs.
 
-    ```ballerina
-    io:fprint(io:stderr, "Unexpected error occurred");
-    io:fprintln(io:stderr, "Unexpected error occurred");
-    io:fprint(io:stdout, "Passed without an error");
-    io:fprintln(io:stdout, "Passed without an error");
-    ```
+```ballerina
+io:fprint(io:stderr, "Unexpected error occurred");
+io:fprintln(io:stderr, "Unexpected error occurred");
+io:fprint(io:stdout, "Passed without an error");
+io:fprintln(io:stdout, "Passed without an error");
+```
 
 #### `websocket` Package
 
@@ -164,7 +164,7 @@ stream<Customer, error> customerStream = sqlClient->query(`SELECT * FROM Custome
 
 #### `ftp` Package
 
-- Changed the `get`, `append` and `put` method APIs to support `stream` instead of using `io:ReadableByteChannel` for reading and writing files.
+- Changed the `get`, `append`, and `put` method APIs to support `stream` instead of using `io:ReadableByteChannel` for reading and writing files.
 - Updated to support the FTP protocol with password and private key based authentications.
 
 #### `websub` Package
@@ -213,8 +213,6 @@ Changed the default bindings mapping approach to generate module-level mappings 
 
 To view bug fixes, see the GitHub milestone for Swan Lake Beta2 of the repositories below.
 
-- [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta1%22+label%3ATeam%2FLanguageServer)
-- [Update Tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+project%3Aballerina-platform%2F32)
-- [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Beta%22)
+- [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta2%22+label%3ATeam%2FLanguageServer)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+label%3AArea%2FDebugger+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta2%22)
 - [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FTestFramework+milestone%3A%22Ballerina+Swan+Lake+-+Beta2%22+label%3AType%2FBug+)

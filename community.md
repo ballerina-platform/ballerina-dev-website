@@ -435,7 +435,7 @@ body {font-family: Arial;}
          <h5>Ballerina – An Open-Source, Cloud-Native Programming Language for Microservices</h5>
          <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/lafernando/ballerina-opensource-cloudnative-programming-language-for-microservices" target="_blank">View Slides</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/lafernando/ballerina-an-opensource-cloudnative-programming-language-for-microservices" target="_blank">View Slides</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">

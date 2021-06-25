@@ -109,7 +109,7 @@ Added observability span context values to log messages when observability is en
 
 #### `io` Package
 
-Introduced the `io:fprint` and `io:fprintln` APIs.
+Introduced the `io:fprint` and `io:fprintln` APIs which allows the users to print content to a given stream (standard error or standard out).
 
 ```ballerina
 io:fprint(io:stderr, "Unexpected error occurred");

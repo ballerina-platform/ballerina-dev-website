@@ -8,36 +8,37 @@ redirect_from:
     - /downloads/swan-lake-release-notes/
     - /downloads/swan-lake-release-notes
 ---
-### Overview of Ballerina Swan Lake Beta2
+## Overview of Ballerina Swan Lake Beta2
 
 <em>This is the second beta release leading up to the Ballerina Swan Lake GA release.</em> 
 
 It introduces the new language features planned for the Swan Lake GA release and includes improvements and bug fixes done to the compiler, runtime, standard library, and developer tooling after the Swan Lake Beta1 release.
 
-### Updating Ballerina
+## Updating Ballerina
 
-If you are already using Ballerina, you can use the [Update Tool](/learn/tooling-guide/cli-tools/update-tool/) to directly update to Ballerina Swan Lake Beta 2 as follows. 
+If you are already using Ballerina, use the [Ballerina Update Tool](/learn/tooling-guide/cli-tools/update-tool/) to directly update to Ballerina Swan Lake Beta2. 
 
-To do this, first, execute the command below to get the update tool updated to its latest version. 
+First, run the command below to update the update tool to its latest version. 
 
 > `bal update`
 
-If you are using an **Update Tool version below 0.8.14**, execute the `ballerina update` command to update it. Next, execute the command below to update to Swan Lake <VERSION>.
+If your **Update Tool is below version 0.8.14**, use the `ballerina update` command.
+
+Next, run the command below to update to Swan Lake Beta2.
 
 > `bal dist pull slbeta2`
 
-### Installing Ballerina
+## Installing Ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
-### Language Updates
+## Language Updates
 
-#### New Features
+### Improvements
 
-#### Improvements
-- Support for recursive tuple types has been introduced with this release.
+- Introduced the support for recursive tuple types.
 
-```
+```ballerina
 type RecursiveType [int, RecursiveType[]];
 
 public function main() {
@@ -47,7 +48,7 @@ public function main() {
 }
 ```
 
-- The static type of string iteration has been changed from `string` to `string:Char`.
+- Changed he static type of string iteration from `string` to `string:Char`.
 
 ```ballerina
 public function main() {
@@ -65,17 +66,15 @@ public function main() {
 }
 ```
 
-#### Bug Fixes
+### Bug Fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta2](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta2%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).
 
-### Runtime Updates
+## Runtime Updates
 
-#### New Features
+### Improvements
 
-#### Improvements
-
-- Support has been introduced for `configurable` variables of union types via the TOML syntax. 
+- Introduced the support for `configurable` variables of union types via the TOML syntax. 
 
 ```ballerina
 configurable map<anydata> myMap = ?;
@@ -93,21 +92,26 @@ name = "John"
 age = 10
 ```
 
-#### Bug Fixes
+### Bug Fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta2](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta2%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
 
-### Standard Library Updates
+## Standard Library Updates
 
-The new `postgresql` database package is introduced with this release. This package provides the functionality required to access and manipulate data stored in a PostgreSQL database.
+### New Features
 
-#### New Features
+#### `postgresql` Package
 
-##### Log Package
-Added Observability span context values to log messages when observability is enabled.
+Introduced the new `postgresql` database package with this release. This package provides the functionality required to access and manipulate data stored in a PostgreSQL database.
 
-##### I/O Package
+#### `log` Package
+
+Added observability span context values to log messages when observability is enabled.
+
+#### `io` Package
+
 Introduced the `io:fprint` and `io:fprintln` APIs.
+
 ```ballerina
 io:fprint(io:stderr, "Unexpected error occurred");
 io:fprintln(io:stderr, "Unexpected error occurred");
@@ -115,16 +119,19 @@ io:fprint(io:stdout, "Passed without an error");
 io:fprintln(io:stdout, "Passed without an error");
 ```
 
-##### WebSocket Package
-- Introduce declarative auth support for server side. 
+#### `websocket` Package
 
-##### WebSub Package
-- Add a utility method to retrieve http-headers from `websub:ContentDistributionMessage`.
+Introduced the declarative auth support for the server side. 
 
-#### Improvements
+#### `websub` Package
 
-##### Database Packages
-Return type of the stream is now inferred as a second parameter to the query remote method.
+Added a utility method to retrieve HTTP headers from the `websub:ContentDistributionMessage`.
+
+### Improvements
+
+#### Database Packages
+
+Made the return type of the stream to be inferred now as a second parameter to the query remote method.
 
 **Previous Syntax**
 
@@ -135,9 +142,8 @@ stream<record{}, error> resultStream =
 stream<Customer, sql:Error> customerStream =
         <stream<Customer, sql:Error>>resultStream;
 ```
-According to the previous syntax, the Ballerina user can give the `Customer` record as the expected record 
-type of the stream but the user can not get that stream directly. Ballerina developer has to cast the returned 
-stream to the expected stream. Therefore, This has been improved to directly get data as an expected record type.
+
+According to the previous syntax, you can give the `Customer` record as the expected record type of the stream but you can not get that stream directly. For that, you have to cast the returned stream to the expected stream. Therefore, this has been improved to directly get data as an expected record type.
 
 **New Syntax**
 
@@ -145,76 +151,70 @@ stream to the expected stream. Therefore, This has been improved to directly get
 stream<Customer, error> customerStream = sqlClient->query(`SELECT * FROM Customers`);
 ```
 
-##### HTTP Package
-- Respond with 202 Accepted response when the resource function returns nil. If the http:Caller is used in the resource, then returning nil from the resource leads to a  500 Internal Server Error response.
-- Log error stacktrace when an error is returned from the resource function and connection failures.
-- Log warning when the same request is responded more than one time.
+#### `http` Package
 
-##### GraphQL Package
-- Make GraphQL resource execution non-blocking
-- Sending `BAD_REQUEST` status code for the responses with document validation errors
+- Updated to respond with a 202 Accepted response when the resource function returns nil. If the `http:Caller` is used in the resource, then, returning nil from the resource leads to a 500 Internal Server Error response.
+- Updated to log the error stacktrace when an error is returned from the resource function and on connection failures.
+- Updated to log a warning when the same request is responded more than one time.
 
-##### FTP Package
-- Change `get`, `append` and `put` method APIs to support `stream` instead of using `io:ReadableByteChannel` for reading and writing files.
-- Support SFTP protocol with password and private key based authentication.
+#### `graphql` Package
 
-##### WebSub Package
-- Log error stacktrace when an error is returned from the remote function of Subscriber Service.
-- Return module specific errors from the WebSub public APIs.
-- Allow non-remote methods in Subscriber Service.
+- Made the GraphQL resource execution non-blocking.
+- Updated to send a `BAD_REQUEST` status code for the responses with document validation errors.
 
-##### WebSubHub Package
-- Log error stacktrace when an error is returned from the remote function of Hub Service.
-- Return module specific errors from the WebSubHub public APIs.
-- Allow non-remote methods in Hub Service.
-- Allow `http:Headers` as optional parameter to specific remote-methods(`onRegisterTopic`/`onDeregisterTopic`/`onUpdateMessage`/`onSubscription`/`onUnsubscription`).
+#### `ftp` Package
 
-#### Bug Fixes
+- Changed the `get`, `append` and `put` method APIs to support `stream` instead of using `io:ReadableByteChannel` for reading and writing files.
+- Updated to support the FTP protocol with password and private key based authentications.
+
+#### `websub` Package
+
+- Updated to log the error stacktrace when an error is returned from the remote function of the subscriber service.
+- Updated to return module specific errors from the WebSub public APIs.
+- Updated to allow non-remote methods in the subscriber service.
+
+#### `websubhub` Package
+
+- Updated to log the error stacktrace when an error is returned from the remote function of the hub service.
+- Updated to return the module-specific errors from the WebSubHub public APIs.
+- Updated to allow non-remote methods in the Hub Service.
+- Updated to allow `http:Headers` as an optional parameter in specific remote-methods(`onRegisterTopic`/`onDeregisterTopic`/`onUpdateMessage`/`onSubscription`/`onUnsubscription`).
+
+### Bug Fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta2](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+Beta2%22+label%3AType%2FBug).
 
-### Code to Cloud Updates
+## Code to Cloud Updates
 
-#### New Features
-
-#### Improvements
-
-#### Bug Fixes
+### Bug Fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta2](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Beta2%22).
 
-### Developer Tools Updates
+## Developer Tools Updates
 
-#### Language Server 
+### New Features
 
-To view bug fixes, see the [GitHub milestone for Swan Lake <VERSION>](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta2%22+label%3AType%2FBug+label%3ATeam%2FLanguageServer).
-
-#### New Features
-
-##### Debugger 
+#### Debugger 
 - Added expression evaluation support for client remote method call actions.
-- Added support to show the child element count inline (without having to expand the parent element) for Ballerina structured (i.e. Map, List, Table, XML and JSON) variables.
+- Added support to show the child element count inline (without having to expand the parent element) for Ballerina structured (i.e., Map, List, Table, XML and JSON) variables.
 
-#### Improvements
+### Improvements
 
-##### Bindgen Tool
-- Changed the default bindings mapping approach to generate module-level mappings, instead of having to use an explicit flag for this behavior. Generation of single directory mappings is facilitated using the option `[(-o|--output) <output-path>]`.
+#### Bindgen Tool
 
-##### Test Framework
+- Changed the default bindings mapping approach to generate module-level mappings instead of having to use an explicit flag for this behavior. Generation of single directory mappings is facilitated using the `[(-o|--output) <output-path>]` option.
+
+#### Test Framework
 
 - Added support for map of tuples as the data set for data provider functions.
-- Added case based filtering when running tests against data sets.
+- Added case-based filtering when running tests against data sets.
 
-#### Bug Fixes
+### Bug Fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Beta2 of the repositories below.
 
-- [Language](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta2%22+label%3AType%2FBug+label%3ATeam%2FDevTools)
+- [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta1%22+label%3ATeam%2FLanguageServer)
 - [Update Tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+project%3Aballerina-platform%2F32)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Beta%22)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+label%3AArea%2FDebugger+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta2%22)
 - [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FTestFramework+milestone%3A%22Ballerina+Swan+Lake+-+Beta2%22+label%3AType%2FBug+)
-
-#### Ballerina Packages Updates
-
-### Breaking Changes

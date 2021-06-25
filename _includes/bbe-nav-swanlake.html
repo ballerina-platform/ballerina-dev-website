@@ -26,7 +26,20 @@
       <!-- {% assign current = null %} -->
       {% endif %}
       {% assign samples = entry.samples %}
-      {% if samples %}
+      {% assign sampleContentLength = 0 %}
+      {% for sample in samples %} 
+      {% if sample.isLearnByExample %}
+       {% assign sampleContentLength = sampleContentLength+1 %} 
+      {% endif %} 
+      {% endfor %}
+ 
+      {% if samples %} 
+
+      <!-- need fix here -->
+      {% if sampleContentLength==0 %}   
+         <div></div>
+      {% else %}
+
       <li class="sub-menu cTopicURL">
          <div class="cLeftMenuLink cTopiAtag">{{ entry.title }} </div>
          <ul class="sub-ul">
@@ -34,13 +47,22 @@
             <!-- {% assign current = ' class="current"' %} -->
             {% assign page.active = ' class="current-sub"' %}
             {% else %}
-            {% endif %}
+            {% endif %} 
             {% for sample in samples %}
             {% assign permalink = '/learn/by-example/' | append: sample.url %}
-            <li{% if sample.url == page.active %} class="current-sub"{% endif %}><a href="{{ permalink }}">{{ sample.name }}</a></li>
+            {% if sample.isLearnByExample %}
+            <li{% if sample.url == page.active %} class="current-sub"{% endif %}>
+               <a href="{{ permalink }}">
+               {{ sample.name }} 
+               </a>
+            </li>
+            {% endif %}
+
             {% endfor %}
          </ul>
       </li>
+      {% endif %}
+
       {% else %}
       <li class="cTitleOnly" {% if entry.active == page.active %} class="current"{% endif %}>{{ entry.title }}</li>
       {% endif %}

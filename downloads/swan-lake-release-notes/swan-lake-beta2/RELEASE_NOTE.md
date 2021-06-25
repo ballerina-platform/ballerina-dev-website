@@ -38,33 +38,33 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 - Introduced the support for recursive tuple types.
 
-```ballerina
-type RecursiveType [int, RecursiveType[]];
+    ```ballerina
+    type RecursiveType [int, RecursiveType[]];
 
-public function main() {
-    RecursiveType a = [1];
-    RecursiveType b = [1, []];
-    RecursiveType c = [1, [a]];
-}
-```
-
-- Changed he static type of string iteration from `string` to `string:Char`.
-
-```ballerina
-public function main() {
-    string str = "foo";
-
-    foreach string:Char s in str {
-        io:println(s);        
+    public function main() {
+        RecursiveType a = [1];
+        RecursiveType b = [1, []];
+        RecursiveType c = [1, [a]];
     }
+    ```
 
-    record {| string:Char value; |}? next = str.iterator().next();
+- Changed the static type of string iteration from `string` to `string:Char`.
 
-    if !(next is ()) {
-        io:println(next.value);
+    ```ballerina
+    public function main() {
+        string str = "foo";
+
+        foreach string:Char s in str {
+            io:println(s);        
+        }
+
+        record {| string:Char value; |}? next = str.iterator().next();
+
+        if !(next is ()) {
+            io:println(next.value);
+        }
     }
-}
-```
+    ```
 
 ### Bug Fixes
 
@@ -76,11 +76,11 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta2](https://github
 
 - Introduced the support for `configurable` variables of union types via the TOML syntax. 
 
-```ballerina
-configurable map<anydata> myMap = ?;
+    ```ballerina
+    configurable map<anydata> myMap = ?;
 
-configurable int|string id = ?;
-```
+    configurable int|string id = ?;
+    ```
 
 **TOML:**
 
@@ -112,16 +112,16 @@ Added observability span context values to log messages when observability is en
 
 Introduced the `io:fprint` and `io:fprintln` APIs.
 
-```ballerina
-io:fprint(io:stderr, "Unexpected error occurred");
-io:fprintln(io:stderr, "Unexpected error occurred");
-io:fprint(io:stdout, "Passed without an error");
-io:fprintln(io:stdout, "Passed without an error");
-```
+    ```ballerina
+    io:fprint(io:stderr, "Unexpected error occurred");
+    io:fprintln(io:stderr, "Unexpected error occurred");
+    io:fprint(io:stdout, "Passed without an error");
+    io:fprintln(io:stdout, "Passed without an error");
+    ```
 
 #### `websocket` Package
 
-Introduced the declarative auth support for the server side. 
+Introduced the declarative auth support for the server-side. 
 
 #### `websub` Package
 
@@ -154,7 +154,7 @@ stream<Customer, error> customerStream = sqlClient->query(`SELECT * FROM Custome
 #### `http` Package
 
 - Updated to respond with a 202 Accepted response when the resource function returns nil. If the `http:Caller` is used in the resource, then, returning nil from the resource leads to a 500 Internal Server Error response.
-- Updated to log the error stacktrace when an error is returned from the resource function and on connection failures.
+- Updated to log the error stack trace when an error is returned from the resource function and on connection failures.
 - Updated to log a warning when the same request is responded more than one time.
 
 #### `graphql` Package
@@ -169,13 +169,13 @@ stream<Customer, error> customerStream = sqlClient->query(`SELECT * FROM Custome
 
 #### `websub` Package
 
-- Updated to log the error stacktrace when an error is returned from the remote function of the subscriber service.
-- Updated to return module specific errors from the WebSub public APIs.
+- Updated to log the error stack trace when an error is returned from the remote function of the subscriber service.
+- Updated to return module-specific errors from the WebSub public APIs.
 - Updated to allow non-remote methods in the subscriber service.
 
 #### `websubhub` Package
 
-- Updated to log the error stacktrace when an error is returned from the remote function of the hub service.
+- Updated to log the error stack trace when an error is returned from the remote function of the hub service.
 - Updated to return the module-specific errors from the WebSubHub public APIs.
 - Updated to allow non-remote methods in the Hub Service.
 - Updated to allow `http:Headers` as an optional parameter in specific remote-methods(`onRegisterTopic`/`onDeregisterTopic`/`onUpdateMessage`/`onSubscription`/`onUnsubscription`).
@@ -196,17 +196,17 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta2](https://github
 
 #### Debugger 
 - Added expression evaluation support for client remote method call actions.
-- Added support to show the child element count inline (without having to expand the parent element) for Ballerina structured (i.e., Map, List, Table, XML and JSON) variables.
+- Added support to show the child element count inline (without having to expand the parent element) for Ballerina structured (i.e., Map, List, Table, XML, and JSON) variables.
 
 ### Improvements
 
 #### Bindgen Tool
 
-- Changed the default bindings mapping approach to generate module-level mappings instead of having to use an explicit flag for this behavior. Generation of single directory mappings is facilitated using the `[(-o|--output) <output-path>]` option.
+Changed the default bindings mapping approach to generate module-level mappings instead of having to use an explicit flag for this behavior. Generation of single directory mappings is facilitated using the `[(-o|--output) <output-path>]` option.
 
 #### Test Framework
 
-- Added support for map of tuples as the data set for data provider functions.
+- Added support for a map of tuples as the data set for data provider functions.
 - Added case-based filtering when running tests against data sets.
 
 ### Bug Fixes

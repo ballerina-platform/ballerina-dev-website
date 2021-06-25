@@ -985,6 +985,14 @@
                 "isLearnByExample": false
             },
             {
+                "name": "HTTP Headers",
+                "url": "http-headers",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Typed Resource Responses",
                 "url": "http-resource-returns",
                 "verifyBuild": false,

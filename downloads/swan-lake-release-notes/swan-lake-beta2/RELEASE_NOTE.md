@@ -84,6 +84,13 @@ public function extra(XY xy) returns NotXY {
 }
 ```
 
+- Supported unary operators in constant expressions.
+
+```ballerina
+const int MIN_VALUE = (-(10+5));
+const int CUI3 = ~2;
+```
+
 ### Bug Fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta2](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta2%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).

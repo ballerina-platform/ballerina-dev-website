@@ -25,8 +25,9 @@ redirect_from:
 <table class="cTopInfoContainer cTopControlsContainer">
 <tr>
 <td class="cLeftTD">
-<h2>Ballerina By Example</h2>
-<p>Try out the extensive collection of Ballerina by Examples (BBEs) below to grasp the features and concepts of Ballerina.</p>                                          
+<h2>Ballerina By Examples</h2>
+<p>Try out the extensive collection of Ballerina by Examples (BBEs) below to grasp the features and concepts of Ballerina.</p> <br/>
+<blockquote><p>For a complete reference of examples, see <a href="/learn/by-example/">Reference By Examples.</a></p></blockquote>                                       
 <h3>Language Concepts</h3>
 <ul>
 <li><strong><a href="/learn/by-example/hello-world">Hello World:</a></strong> A simple Ballerina Hello World program.</li>
@@ -38,7 +39,7 @@ redirect_from:
 <li><strong><a href="/learn/by-example/lock-statement">Concurrency Safety:</a></strong> Writing Ballerina programs that guarantee concurrency safety.</li>
 <li><strong><a href="/learn/by-example/testerina-assertions">Testing:</a></strong> Writing tests for your Ballerina code.</li>
 </ul>            
-<h3>Working Over the Network</h3>
+<!-- <h3>Working Over the Network</h3>
 <ul>
 <li><strong><a href="/learn/by-example/http-absolute-path-and-path">REST API:</a></strong> The behaviour of the HTTP listeners and services.</li>
 <li><strong><a href="/learn/by-example/http-client-endpoint">REST Client:</a></strong> The behaviour of the HTTP clients.</li>
@@ -78,9 +79,9 @@ redirect_from:
 <li><strong><a href="/learn/by-example/regular-expressions">Regex:</a></strong> Manipulate the string by using Regex.</li>
 <li><strong><a href="/learn/by-example/environment-variables">OS:</a></strong> Retrieve information about the environment variables of the Operating System.</li>
 <li><strong><a href="/learn/by-example/xml-json-conversion">XML Data:</a></strong> The conversion between JSON and XML.</li>
-</ul>
+</ul> -->
 
-<h3>Deployment</h3>
+<!-- <h3>Deployment</h3>
 <ul>
 <li><strong><a href="/learn/by-example/c2c-deployment">Code to Cloud:</a></strong> Generate the Kubernetes YAML files, the Dockerfile, and Docker image for Ballerina Programs.</li>
 <li><strong><a href="/learn/by-example/azure-functions-deployment">Function as a Service:</a></strong> Create Ballerina functions to run on AWS Lambda or Azure FaaS.</li>
@@ -88,5 +89,5 @@ redirect_from:
 <h3>Observability</h3>
 <ul>
 <li><strong><a href="/learn/by-example/tracing">Tracing:</a></strong> The usage of traces using the built-in observability features.</li>
-<li><strong><a href="/learn/by-example/counter-metrics">Metrics:</a></strong> The usage of metrics using the built-in observability features.</li>
-</ul>
+<li><strong><a href="/learn/by-example/counter-metrics">Metrics:</a></strong> The usage of metrics using the built-in observability features.</li> 
+</ul>-->

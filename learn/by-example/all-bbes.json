@@ -113,8 +113,8 @@
             {
                 "name": "While Statement",
                 "url": "while-statement",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -149,8 +149,8 @@
             {
                 "name": "Structural Typing",
                 "url": "structural-typing",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -193,7 +193,7 @@
                 "name": "Panics",
                 "url": "panics",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
@@ -207,7 +207,7 @@
                 "name": "Ignoring Return Values and Errors",
                 "url": "ignoring-return-values-and-errors",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
@@ -313,13 +313,15 @@
                 "url": "consuming-services",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Failing intermittently due to github rate limiting",
                 "isLearnByExample": true
             },
             {
                 "name": "Providing Services",
                 "url": "providing-services",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -333,32 +335,33 @@
             {
                 "name": "Service Declaration",
                 "url": "service-declaration",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Does not include udp client",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
             {
                 "name": "Resource Methods",
                 "url": "resource-methods",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
             {
                 "name": "Hierarchical Resources",
                 "url": "hierarchical-resources",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
             {
                 "name": "Resource Path Parameters",
                 "url": "resource-path-parameters",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             }
@@ -379,8 +382,8 @@
             {
                 "name": "Immutability",
                 "url": "immutability",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -464,8 +467,8 @@
             {
                 "name": "Resource Method Typing",
                 "url": "resource-method-typing",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -579,6 +582,7 @@
                 "url": "raw-templates",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -606,8 +610,8 @@
             {
                 "name": "XML Subtyping",
                 "url": "xml-subtyping",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -686,6 +690,7 @@
                 "url": "alternate-wait",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": true
             },
             {
@@ -854,6 +859,7 @@
                 "url": "testerina-assertions",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -862,6 +868,7 @@
                 "url": "testerina-before-and-after-test",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -870,6 +877,7 @@
                 "url": "testerina-before-and-after-each",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -878,6 +886,7 @@
                 "url": "testerina-before-and-after-groups",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -886,6 +895,7 @@
                 "url": "testerina-before-and-after-suite",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -894,6 +904,7 @@
                 "url": "testerina-data-driven-tests",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -902,6 +913,7 @@
                 "url": "testerina-guarantee-test-execution-order",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -910,6 +922,7 @@
                 "url": "testerina-group-tests",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -918,6 +931,7 @@
                 "url": "testerina-mocking-functions",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -926,6 +940,7 @@
                 "url": "testerina-mocking-objects",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": true
             }
@@ -1371,22 +1386,23 @@
             {
                 "name": "Handle Text Messages with Client",
                 "url": "websocket-text-client",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Handle Binary Messages with Client",
                 "url": "websocket-binary-client",
-                "verifyBuild": false,
-                "verifyOutput": false,
+                "verifyBuild": true,
+                "verifyOutput": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Listener Functionalities",
                 "url": "websocket-basic-sample",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1598,6 +1614,7 @@
                 "url": "grpc-simple",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1606,6 +1623,7 @@
                 "url": "grpc-simple-with-headers",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1614,6 +1632,7 @@
                 "url": "grpc-secured-simple",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1622,6 +1641,7 @@
                 "url": "grpc-server-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1630,6 +1650,7 @@
                 "url": "grpc-client-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1638,6 +1659,7 @@
                 "url": "grpc-bidirectional-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1646,6 +1668,7 @@
                 "url": "proto-to-ballerina",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1661,6 +1684,7 @@
                 "url": "nats-basic-pub-sub",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1669,6 +1693,7 @@
                 "url": "nats-basic-request-reply",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1684,6 +1709,7 @@
                 "url": "nats-streaming-pub-sub",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1692,6 +1718,7 @@
                 "url": "nats-streaming-queue-group",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1700,6 +1727,7 @@
                 "url": "nats-streaming-durable-subscriptions",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1708,6 +1736,7 @@
                 "url": "nats-streaming-start-position",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1723,6 +1752,7 @@
                 "url": "kafka-producer",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1731,6 +1761,7 @@
                 "url": "kafka-consumer-service",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1739,6 +1770,7 @@
                 "url": "kafka-consumer-client",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1747,6 +1779,7 @@
                 "url": "kafka-producer-transactional",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1755,6 +1788,7 @@
                 "url": "kafka-consumer-group-service",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1763,6 +1797,7 @@
                 "url": "kafka-authentication-sasl-plain-consumer",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1771,6 +1806,7 @@
                 "url": "kafka-authentication-sasl-plain-producer",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1786,6 +1822,7 @@
                 "url": "rabbitmq-producer",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1794,6 +1831,7 @@
                 "url": "rabbitmq-consumer",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1802,6 +1840,7 @@
                 "url": "rabbitmq-consumer-with-client-acknowledgement",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1810,6 +1849,7 @@
                 "url": "rabbitmq-transaction-producer",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1818,6 +1858,7 @@
                 "url": "rabbitmq-transaction-consumer",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1831,24 +1872,27 @@
             {
                 "name": "TCP Client",
                 "url": "tcp-client",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Service not present",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "TCP Listener",
                 "url": "tcp-listener",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "TCP Transport Security",
                 "url": "tcp-transport-security",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1862,24 +1906,27 @@
             {
                 "name": "UDP Connectionless Client",
                 "url": "udp-client",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be reached",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "UDP Connection-Oriented Client",
                 "url": "udp-connect-client",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be reached",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "UDP Listener",
                 "url": "udp-listener",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1893,24 +1940,27 @@
             {
                 "name": "Send Emails",
                 "url": "send-email",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Receive Emails Using a Client",
                 "url": "receive-email-using-client",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Receive Emails Using a Listener",
                 "url": "receive-email-using-listener",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1926,6 +1976,7 @@
                 "url": "mysql-query-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1934,6 +1985,7 @@
                 "url": "mysql-complex-type-queries",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1942,6 +1994,7 @@
                 "url": "mysql-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1950,6 +2003,7 @@
                 "url": "mysql-batch-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1958,6 +2012,7 @@
                 "url": "mysql-atomic-batch-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1966,6 +2021,7 @@
                 "url": "mysql-call-stored-procedures",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1981,6 +2037,7 @@
                 "url": "jdbc-query-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1989,6 +2046,7 @@
                 "url": "jdbc-complex-type-queries",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1997,6 +2055,7 @@
                 "url": "jdbc-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -2005,6 +2064,7 @@
                 "url": "jdbc-batch-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -2013,6 +2073,7 @@
                 "url": "jdbc-atomic-batch-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -2108,6 +2169,7 @@
                 "url": "time-utc",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2115,6 +2177,7 @@
                 "url": "time-utc-and-civil",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2141,8 +2204,9 @@
             {
                 "name": "Cache Invalidation",
                 "url": "cache-invalidation",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Intermittently failing with github api rate limiting",
                 "isLearnByExample": false
             }
         ]
@@ -2157,6 +2221,7 @@
                 "url": "logging",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2164,6 +2229,7 @@
                 "url": "logging-with-context",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2171,6 +2237,7 @@
                 "url": "logging-configuration",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -2184,8 +2251,9 @@
             {
                 "name": "File Paths",
                 "url": "filepaths",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2193,6 +2261,7 @@
                 "url": "directories",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2200,6 +2269,7 @@
                 "url": "files",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2207,6 +2277,7 @@
                 "url": "temp-files-directories",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2214,6 +2285,7 @@
                 "url": "directory-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -2229,6 +2301,7 @@
                 "url": "random-numbers",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             }
         ]
@@ -2271,6 +2344,7 @@
                 "url": "uuid-generation",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             },
             {
@@ -2320,6 +2394,7 @@
                 "url": "environment-variables",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes varying output",
                 "isLearnByExample": false
             }
         ]
@@ -2348,6 +2423,7 @@
                 "url": "tracing",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -2356,6 +2432,7 @@
                 "url": "counter-metrics",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -2371,6 +2448,7 @@
                 "url": "gauge-metrics",
                 "verifyBuild": false,
                 "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
                 }
@@ -2384,8 +2462,9 @@
             {
                 "name": "Kubernetes",
                 "url": "c2c-deployment",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -2399,16 +2478,18 @@
             {
                 "name": "Azure Functions",
                 "url": "azure-functions-deployment",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "AWS Lambda",
                 "url": "aws-lambda-deployment",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
             }

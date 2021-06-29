@@ -142,7 +142,7 @@ stream<Customer, sql:Error> customerStream =
         <stream<Customer, sql:Error>>resultStream;
 ```
 
-According to the previous syntax, you can give the `Customer` record as the expected record type of the stream but you can not get that stream directly. For that, you have to cast the returned stream to the expected stream. Therefore, this has been improved to directly get data as an expected record type.
+According to the previous syntax, you can give the `Customer` record as the expected record type of the stream but you cannot get that stream directly. To do that, you have to cast the returned stream to the expected stream. Therefore, this has been improved to directly access data as an expected record type.
 
 **New Syntax**
 

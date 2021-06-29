@@ -1248,7 +1248,14 @@ td span::before,
 td span.line-numbers-rows {
     display: none !important;
 }
-
+li code span::before,
+li code span.line-numbers-rows {
+    display: none !important;
+}
+li pre code span::before,
+li pre code span.line-numbers-rows {
+    display: block !important;
+}
 @-webkit-keyframes loader {
     from {
         -webkit-transform: rotate(0deg);

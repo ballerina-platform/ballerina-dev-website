@@ -287,7 +287,14 @@ a.next {
 .cTopControlsContainer {
     width: 100%;
 }
-
+.cTopControlsContainer .cTopControlsRow {
+    display: flex;
+    width: 100%;
+}
+.cTopControlsContainer .cTopControlsRow .cLeftTD {
+    flex: 0 0 60%;
+    max-width: 60%;
+}
 .cLeftTD {
     width: 62%;
     vertical-align: top;

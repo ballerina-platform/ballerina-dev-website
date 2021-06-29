@@ -360,11 +360,11 @@ td.cDescTD {
         width: 73%;
     } */
 }
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
     .cTopControlsContainer .cBBE-links {
         padding-right: 20px;
     }
-}
+} */
 @media (max-width: 990px) {
     a.next p {
         text-align: right;

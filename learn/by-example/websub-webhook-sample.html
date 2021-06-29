@@ -38,14 +38,14 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">retrievedContent</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">zen</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
                 <span class="kt">int</span> <span class="nx">hookId</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">hook_id</span><span class="p">;</span>
-                <span class="kt">int</span> <span class="nx">senderId</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">sender</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+                <span class="kt">json</span> <span class="nx">sender</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">sender</span><span class="p">;</span>
+                <span class="kt">int</span> <span class="nx">senderId</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">sender</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span><span class="s">`PingEvent received for webhook [${hookId}]`</span><span class="p">);</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span><span class="s">`Event sender [${senderId}]`</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">ref</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                <span class="kt">string</span> <span class="nx">repositoryName</span> <span class="p">=</span> 
-                            <span class="nx">check</span> <span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">repository</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-                <span class="kt">string</span> <span class="nx">lastUpdatedTime</span> <span class="p">=</span> 
-                            <span class="nx">check</span> <span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">repository</span><span class="p">.</span><span class="nx">updated_at</span><span class="p">;</span>
+                <span class="kt">json</span> <span class="nx">repository</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">repository</span><span class="p">;</span>
+                <span class="kt">string</span> <span class="nx">repositoryName</span> <span class="p">=</span>  <span class="nx">check</span> <span class="nx">repository</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+                <span class="kt">string</span> <span class="nx">lastUpdatedTime</span> <span class="p">=</span>  <span class="nx">check</span> <span class="nx">repository</span><span class="p">.</span><span class="nx">updated_at</span><span class="p">;</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span><span class="s">`PushEvent received for [${repositoryName}]`</span><span class="p">);</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span><span class="s">`Last updated at ${lastUpdatedTime}`</span><span class="p">);</span>
             <span class="p">}</span>
@@ -200,14 +200,14 @@ import ballerina/io;
         if (retrievedContent is json) {
             if (retrievedContent.zen is string) {
                 int hookId = check retrievedContent.hook_id;
-                int senderId = check retrievedContent.sender.id;
+                json sender = check retrievedContent.sender;
+                int senderId = check sender.id;
                 io:println(string`PingEvent received for webhook [${hookId}]`);
                 io:println(string`Event sender [${senderId}]`);
             } else if (retrievedContent.ref is string) {
-                string repositoryName = 
-                            check retrievedContent.repository.name;
-                string lastUpdatedTime = 
-                            check retrievedContent.repository.updated_at;
+                json repository = check retrievedContent.repository;
+                string repositoryName =  check repository.name;
+                string lastUpdatedTime =  check repository.updated_at;
                 io:println(string`PushEvent received for [${repositoryName}]`);
                 io:println(string`Last updated at ${lastUpdatedTime}`);
             }

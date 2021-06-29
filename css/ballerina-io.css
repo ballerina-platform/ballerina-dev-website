@@ -1936,3 +1936,9 @@ h6 pre[class*="language-"] {
         display: none;
     }
 }
+ol li.line-numbers pre code span.line-numbers-rows {
+    display: block !important;
+}
+ol li.line-numbers pre code span.line-numbers-rows span:before {
+    display: block !important;
+}

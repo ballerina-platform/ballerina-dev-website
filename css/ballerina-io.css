@@ -1223,8 +1223,6 @@ ul.wy-breadcrumbs {
 }
 p span::before,
 p span.line-numbers-rows,
-li span::before,
-li span.line-numbers-rows,
 h2 span::before,
 h2 span.line-numbers-rows,
 h3 span::before,
@@ -1936,9 +1934,11 @@ h6 pre[class*="language-"] {
         display: none;
     }
 }
-ol li.line-numbers pre code span.line-numbers-rows {
+/* ol li.line-numbers pre code span.line-numbers-rows,
+ul li.line-numbers pre code span.line-numbers-rows {
     display: block !important;
 }
-ol li.line-numbers pre code span.line-numbers-rows span:before {
+ol li.line-numbers pre code span.line-numbers-rows span:before,
+ul li.line-numbers pre code span.line-numbers-rows span:before {
     display: block !important;
-}
+} */

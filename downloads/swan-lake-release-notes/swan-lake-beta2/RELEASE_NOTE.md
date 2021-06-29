@@ -158,7 +158,7 @@ stream<Customer, error> customerStream = sqlClient->query(`SELECT * FROM Custome
 
 #### `graphql` Package
 
-- Made the GraphQL resource execution non-blocking.
+- GraphQL resource execution is now non-blocking.
 - Updated to send a `BAD_REQUEST` status code for the responses with document validation errors.
 
 #### `ftp` Package

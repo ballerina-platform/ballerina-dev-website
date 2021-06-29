@@ -177,7 +177,7 @@ stream<Customer, error> customerStream = sqlClient->query(`SELECT * FROM Custome
 - Updated to log the error stack trace when an error is returned from the remote function of the hub service.
 - Updated to return the module-specific errors from the WebSubHub public APIs.
 - Updated to allow non-remote methods in the Hub Service.
-- Updated to allow `http:Headers` as an optional parameter in specific remote-methods(`onRegisterTopic`/`onDeregisterTopic`/`onUpdateMessage`/`onSubscription`/`onUnsubscription`).
+- Updated to allow `http:Headers` as an optional parameter in specific remote methods(`onRegisterTopic`/`onDeregisterTopic`/`onUpdateMessage`/`onSubscription`/`onUnsubscription`).
 
 ### Bug Fixes
 

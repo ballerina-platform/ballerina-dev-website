@@ -120,7 +120,7 @@ io:fprintln(io:stdout, "Passed without an error");
 
 #### `websocket` Package
 
-Introduced the declarative auth support for the server-side. 
+Introduced declarative auth support for the server-side. 
 
 #### `websub` Package
 

@@ -313,7 +313,14 @@ span.icon.minus-icon {
   width: 100%;
   padding: 30px 30px 20px 30px;
 }
-
+.cBallerinaTocContainer ul li a code {
+  font-size: inherit !important;
+  color: inherit !important;
+  background-color: #eaeaea !important;
+}
+.cBallerinaTocContainer .line-numbers-rows > span {
+  display: none !important;
+}
 p.cTOCcontol {
   margin-top: 0;
   margin-bottom: 30px;

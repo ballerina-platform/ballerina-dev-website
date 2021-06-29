@@ -287,7 +287,14 @@ a.next {
 .cTopControlsContainer {
     width: 100%;
 }
-
+.cTopControlsContainer .cTopControlsRow {
+    display: flex;
+    width: 100%;
+}
+.cTopControlsContainer .cTopControlsRow .cLeftTD {
+    flex: 0 0 60%;
+    max-width: 60%;
+}
 .cLeftTD {
     width: 62%;
     vertical-align: top;
@@ -353,11 +360,11 @@ td.cDescTD {
         width: 73%;
     } */
 }
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
     .cTopControlsContainer .cBBE-links {
         padding-right: 20px;
     }
-}
+} */
 @media (max-width: 990px) {
     a.next p {
         text-align: right;

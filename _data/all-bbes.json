@@ -1535,7 +1535,7 @@
             {
                 "name": "Websub Subscriber Service",
                 "url": "websub-webhook-sample",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false

@@ -38,33 +38,33 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 - Introduced the support for recursive tuple types.
 
-```ballerina
-type RecursiveType [int, RecursiveType[]];
+    ```ballerina
+    type RecursiveType [int, RecursiveType[]];
 
-public function main() {
-    RecursiveType a = [1];
-    RecursiveType b = [1, []];
-    RecursiveType c = [1, [a]];
-}
-```
+    public function main() {
+        RecursiveType a = [1];
+        RecursiveType b = [1, []];
+        RecursiveType c = [1, [a]];
+    }
+    ```
 
 - Changed the static type of the string iteration from `string` to `string:Char`.
 
-```ballerina
-public function main() {
-    string str = "foo";
+    ```ballerina
+    public function main() {
+        string str = "foo";
 
-    foreach string:Char s in str {
-        io:println(s);        
+        foreach string:Char s in str {
+            io:println(s);
+        }
+
+        record {|string:Char value;|}? next = str.iterator().next();
+
+        if !(next is ()) {
+            io:println(next.value);
+        }
     }
-
-    record {| string:Char value; |}? next = str.iterator().next();
-
-    if !(next is ()) {
-        io:println(next.value);
-    }
-}
-```
+    ```
 
 ### Bug Fixes
 
@@ -76,10 +76,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta2](https://github
 
 - Introduced `configurable` variables of union types via the TOML syntax. 
 
-```ballerina
-configurable map<anydata> myMap = ?;
-configurable int|string id = ?;
-```
+    ```ballerina
+    configurable map<anydata> myMap = ?;
+    configurable int|string id = ?;
+    ```
 
 **TOML:**
 
@@ -131,10 +131,10 @@ Made the return type of the stream to be inferred now as a second parameter to t
 **Previous Syntax**
 
 ```ballerina
-stream<record{}, error> resultStream =
-        jdbcClient->query(`SELECT * FROM Customers`, Customer);
+stream<record {}, error> resultStream = 
+jdbcClient->query(`SELECT * FROM Customers`,Customer);
 
-stream<Customer, sql:Error> customerStream =
+stream<Customer, sql:Error> customerStream = 
         <stream<Customer, sql:Error>>resultStream;
 ```
 

@@ -578,7 +578,7 @@ service Chat on new grpc:Listener(9090) {
     ChatClient chatClient = new(&quot;http://localhost:9090&quot;);
 
     // Execute the service streaming call by registering a message listener.
-    grpc:StreamingClient|grpc:Error ep = = chatClient-&gt;chat(ChatMessageListener);
+    grpc:StreamingClient|grpc:Error ep = chatClient-&gt;chat(ChatMessageListener);
 
 // Send multiple messages to the server.
 string[] greets = [&quot;Hi&quot;, &quot;Hey&quot;, &quot;GM&quot;];

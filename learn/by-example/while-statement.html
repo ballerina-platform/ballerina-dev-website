@@ -32,9 +32,7 @@ redirect_from:
     <span class="c1">// as long as the value of `v` is not `nil`.</span>
     <span class="k">while</span> <span class="nx">v</span> <span class="o">!=</span> <span class="p">()</span> <span class="p">{</span>
         <span class="nx">n</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">if</span> <span class="nx">v</span> <span class="nx">is</span> <span class="nx">LinkedList</span> <span class="p">{</span>
-            <span class="nx">v</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
-        <span class="p">}</span>
+        <span class="nx">v</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">next</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="nx">n</span><span class="p">;</span>
@@ -164,9 +162,7 @@ redirect_from:
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    while v != () {
         n += 1;
-        if v is LinkedList {
-            v = v.next;
-        }
+        v = v.next;
     }
 </code></pre></div>
 

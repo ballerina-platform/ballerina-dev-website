@@ -2,10 +2,9 @@
     display: none !important;
 }
 
-
 .row.cBallerinaIntroSection {
-background-color: #fff;
-padding: 0px 0 0px 0;
+    background-color: #fff;
+    padding: 0px 0 0px 0;
 }
 #iMainNavigation {
     background-color: #fff;
@@ -29,40 +28,39 @@ img.cHomePageLogo {
 .row.cBallerinaIntroSection h1 {
     color: #464646;
 
-font-size: 40px;
+    font-size: 40px;
 
-font-weight: 100;
+    font-weight: 100;
 
-line-height: 50px;
+    line-height: 50px;
 
-margin: 40px 0;
+    margin: 40px 0;
 }
 
 .row.cBallerinaIntroSection p {
     /* color: #c0c0c0; */
 }
 
-
-.cBottomLayer ul  {
+.cBottomLayer ul {
     padding: 0;
 
-margin: 30px 0;
+    margin: 30px 0;
 
-display: inline-block;
-
+    display: inline-block;
 }
 
 .cBottomLayer ul li {
     list-style: none;
 
-display: inline-block;
+    display: inline-block;
 
-float: left;
+    float: left;
 
-margin-right: 30px;
+    margin-right: 30px;
 }
 
-.cTopLayer , .cBottomLayer {
+.cTopLayer,
+.cBottomLayer {
     padding: 0;
 }
 
@@ -76,7 +74,7 @@ margin-right: 30px;
     line-height: 15px;
 }
 
-.row.cBallerinaIntroSection .cBallerina-io-Home-main-download-button:hover  p {
+.row.cBallerinaIntroSection .cBallerina-io-Home-main-download-button:hover p {
     color: #464646;
 }
 
@@ -91,17 +89,17 @@ a.cPlayButton {
     /* -webkit-transform: rotate(30deg); */
 }
 
-a.cBBEButton p, a.cPlayButton p {
+a.cBBEButton p,
+a.cPlayButton p {
     color: #464646 !important;
 }
 a.cBBEButton:hover p {
     /* color: #ffffff  !important; */
-
 }
 
-a.cBBEButton img, a.cPlayButton img {
-width: 230px;
-
+a.cBBEButton img,
+a.cPlayButton img {
+    width: 230px;
 }
 
 a.cIconLink {
@@ -116,13 +114,10 @@ a.cIconLink {
     font-weight: 500;
 }
 
-
 a.cIconLink:hover {
     color: #20b6b0;
     background-image: url("/img/go-bg-home-hover.svg");
 }
-
-
 
 .cBallerina-io p.cQuotes {
     padding: 30px 0;
@@ -130,27 +125,27 @@ a.cIconLink:hover {
 
     padding-bottom: 40px;
 
-display: inline-block;
+    display: inline-block;
 
-color: #7f7f7f;
+    color: #7f7f7f;
 
-width: 100%;
+    width: 100%;
 
-/* font-style: italic; */
+    /* font-style: italic; */
 
-margin-top: 5px;
+    margin-top: 5px;
 
-font-size: 20px;
+    font-size: 20px;
 
-font-weight: 100;
+    font-weight: 100;
 
-margin-bottom: 3px;
+    margin-bottom: 3px;
 
-font-family: 'Special Elite', cursive;
+    font-family: "Special Elite", cursive;
 
-line-height: 36px;
+    line-height: 36px;
 
-padding-bottom: 11px;
+    padding-bottom: 11px;
 }
 
 .cQuotes span {
@@ -158,16 +153,14 @@ padding-bottom: 11px;
 }
 .cBallerina-io p.cQuotes span a {
     color: #c7c7c7;
-    font-size: 18px;
+    font-size: 16px;
 }
-
 
 body.cBallerina-io .container.cFeatureSection {
     padding: 20px 0;
     /* margin-bottom: 80px; */
     border-bottom: 1px solid #c7c7c7;
 }
-
 
 body.cBallerina-io .container.cFeatureSection:last-child {
     border: none !important;
@@ -178,20 +171,19 @@ body.cBallerina-io .container.cFeatureSection:last-child {
 }
 table.cFeaturesNav {
     /* width: 100%; */
-   
-  position: sticky;
 
-  top: 0;
+    position: sticky;
+
+    top: 0;
 }
 
-
-table.cFeaturesNav  td {
+table.cFeaturesNav td {
     text-align: left;
     padding-right: 50px;
 }
 
 table.cFeaturesNav td a {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: #20b6b0;
 }
@@ -217,14 +209,12 @@ div.sticky {
     background-color: #fff;
     padding: 10px;
     z-index: 99999;
-  
-  }
+}
 
-  a.cBookmarkTop {
-position: absolute;
+a.cBookmarkTop {
+    position: absolute;
     margin-top: -140px;
-  }
-
+}
 
 .cMainCTAContainer {
     padding-top: 10px;
@@ -259,11 +249,7 @@ a.cBallerina-io-Home-main-download-button.cCentralButton {
     color: #20b6b0;
     border: 1px solid #20b6b0;
     background-image: url("/img/main-go-icon.svg");
-
-   
-
 }
-
 
 a.cBallerina-io-Home-main-download-button.cCentralButton:hover {
     color: #464646;
@@ -280,7 +266,6 @@ a.cBallerina-io-Home-main-download-button.cCentralButton:hover {
     color: #20b6b0;
 }
 
-
 p a {
     color: #20b6b0;
 }
@@ -293,22 +278,20 @@ ul.cInlinelinklist li a {
     color: #20b6b0;
 }
 
-
 ul.cInlinelinklist li {
-	list-style: none !important;
-	padding-left: 40px;
-	background-image: url("/img/toc-bg.svg");
-	background-repeat: no-repeat;
-	background-position: left center;
-	margin: 0 0 10px 0;
-	margin-left: 0 !important;
-	width: 100%;
-	display: block;
-	float: none;
+    list-style: none !important;
+    padding-left: 40px;
+    background-image: url("/img/toc-bg.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0 0 10px 0;
+    margin-left: 0 !important;
+    width: 100%;
+    display: block;
+    float: none;
 }
 
-
-  @media screen and (max-width: 990px) {
+@media screen and (max-width: 990px) {
     .cBallerina-io p.cQuotes {
         margin-top: 30px;
     }
@@ -322,9 +305,9 @@ ul.cInlinelinklist li {
         float: left;
 
         display: inline-block;
-        
+
         width: 100%;
-        
+
         margin-top: 20px;
     }
     .cFeaturesNav {
@@ -336,4 +319,4 @@ ul.cInlinelinklist li {
     button.navbar-toggle {
         background: #fff;
     }
-  }
+}

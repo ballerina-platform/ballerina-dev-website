@@ -25,8 +25,8 @@ redirect_from:
 <table class="cTopInfoContainer cTopControlsContainer">
 <tr>
 <td class="cLeftTD">
-<h2>Ballerina By Examples</h2>
-<p>Try out the extensive collection of Ballerina by Examples (BBEs) below to grasp the features and concepts of Ballerina.</p> <br/>
+<h2>Learn By Examples</h2>
+<p>Try out the extensive collection of examples below to grasp the features and concepts of Ballerina.</p> <br/>
 <blockquote><p>For a complete reference of examples, see <a href="/learn/by-example/">Reference By Examples.</a></p></blockquote>                                       
 <h3>Language Concepts</h3>
 <ul>

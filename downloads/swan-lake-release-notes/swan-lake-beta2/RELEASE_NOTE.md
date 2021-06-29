@@ -99,10 +99,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta2](https://github
 
 ### New Features
 
-#### `postgresql` Package
-
-Introduced the new `postgresql` database package with this release. This package provides the functionality required to access and manipulate data stored in a PostgreSQL database.
-
 #### `log` Package
 
 Added observability span context values to log messages when observability is enabled.
@@ -158,7 +154,7 @@ stream<Customer, error> customerStream = sqlClient->query(`SELECT * FROM Custome
 
 #### `graphql` Package
 
-- GraphQL resource execution is now non-blocking.
+- Made the GraphQL resource execution non-blocking.
 - Updated to send a `BAD_REQUEST` status code for the responses with document validation errors.
 
 #### `ftp` Package
@@ -177,7 +173,7 @@ stream<Customer, error> customerStream = sqlClient->query(`SELECT * FROM Custome
 - Updated to log the error stack trace when an error is returned from the remote function of the hub service.
 - Updated to return the module-specific errors from the WebSubHub public APIs.
 - Updated to allow non-remote methods in the Hub Service.
-- Updated to allow `http:Headers` as an optional parameter in specific remote methods(`onRegisterTopic`/`onDeregisterTopic`/`onUpdateMessage`/`onSubscription`/`onUnsubscription`).
+- Updated to allow `http:Headers` as an optional parameter in specific remote methods (`onRegisterTopic`/`onDeregisterTopic`/`onUpdateMessage`/`onSubscription`/`onUnsubscription`).
 
 ### Bug Fixes
 

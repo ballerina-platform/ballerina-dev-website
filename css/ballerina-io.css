@@ -97,13 +97,13 @@ a:hover {
 }
 
 p.cTagLine {
-    font-size: 18px !important;
+    font-size: 16px !important;
 
     line-height: 30px !important;
 }
 
 .cBallerina-io p {
-    font-size: 18px;
+    font-size: 16px;
 
     color: #57595d;
 
@@ -893,7 +893,7 @@ a.cMobileLogo {
 }
 
 .wy-nav-content h1 {
-    font-size: 45px;
+    font-size: 38px;
     color: #585a5e;
     font-weight: 200;
     margin-bottom: 30px;
@@ -987,7 +987,7 @@ h7 {
 }
 
 .cBallerina-io h2 {
-    font-size: 30px;
+    font-size: 32px;
 
     margin-top: 40px;
 
@@ -1004,7 +1004,18 @@ h7 {
 
     /* text-transform: uppercase; */
 }
-
+.cBallerina-io h3 {
+    font-size: 28px;
+}
+.cBallerina-io h4 {
+    font-size: 22px;
+}
+.cBallerina-io h5 {
+    font-size: 20px;
+}
+.cBallerina-io h6 {
+    font-size: 18px;
+}
 /* CON BANNER */
 
 #iBanner {

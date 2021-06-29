@@ -215,7 +215,7 @@ article ol li,
 .rst-content .toctree-wrapper ul li,
 .wy-plain-list-disc li,
 article ul li {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 24px;
     font-weight: 300;
     color: #57595d;
@@ -241,7 +241,7 @@ th {
 }
 
 .modal-content {
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 0;
 }
 

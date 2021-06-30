@@ -29,7 +29,7 @@ redirect_from:
 └── target/
 ```
 
-## Ballerina.toml
+## `Ballerina.toml`
 
 The `Ballerina.toml` identifies the directory as a Ballerina package. It contains all the meta-information that is needed to build your package.
 
@@ -46,7 +46,7 @@ observabilityIncluded = true
 
 The `[package]` table contains the meta information about the package.
 
-### The 'org' Field
+### The `org` Field
 
 The organization is a logical name used for grouping modules together under a common namespace within a repository. Building a library package with `bal build -c` and pushing a library package into a repository will fail without an organization name.
 
@@ -57,7 +57,7 @@ When you run the `bal new` command, the organization name by default will be set
 As described in [organization](/learn/user-guide/ballerina-packages/sharing-a-library-package/#publishing-a-library-package-to-ballerina-central), the restrictions for the organization name of a package when publishing to [Ballerina Central](https://central.ballerina.io/) should also be considered before choosing an organization name.
 
 
-### The 'name' Field
+### The `name` Field
 
 The package name is an identifier used to refer to the package.
 
@@ -109,11 +109,11 @@ codeCoverage = true
 cloud = "k8s"
 ```
 
-## Dependencies.toml
+## `Dependencies.toml`
 
 The [`Dependencies.toml`](/learn/user-guide/ballerina-packages/dependencies/#dependenciestoml) locks the versions of the dependencies so that you can have a repeatable build.
 
-## Package.md
+## `Package.md`
 
 The `Package.md` file provides a human-readable description of a package. This is the first page that you will see when you navigate to the package in [Ballerina Central](https://central.ballerina.io/). This file is written in markdown format.
 

@@ -130,9 +130,13 @@
         if(isFromRefPage){ 
             $('.bbe-by-example-page-row').addClass('hide');
             $('.bbe-by-reference-page-row').removeClass('hide');
+            $('.cTopButtonContainer').show();
+            $('.cVersionItem').hide();
         }else{ 
             $('.bbe-by-example-page-row').removeClass('hide');
             $('.bbe-by-reference-page-row').addClass('hide');
+            $('.cTopButtonContainer').hide();
+            $('.cVersionItem').show(); 
         }
     }
 </script>

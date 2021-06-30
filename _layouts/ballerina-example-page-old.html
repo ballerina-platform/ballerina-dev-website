@@ -50,8 +50,24 @@
 
         var gitwatch = '<iframe id="iGitWatchIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=watch&count=true&size=lsmalle&v=2" frameborder="0" scrolling="0"></iframe>';
         $('[data-button="iGitWatchText"]').replaceWith(gitwatch);
-
+        checkIsFromRefrencePage();   
     });
+    function checkIsFromRefrencePage(){ 
+        var url_string =window.location.href; 
+        var url = new URL(url_string);
+        var isFromRefPage = url.searchParams.get("is_ref_by_example");
+        if(isFromRefPage){ 
+            $('.bbe-by-example-page-row').addClass('hide');
+            $('.bbe-by-reference-page-row').removeClass('hide');
+            $('.cTopButtonContainer').show();
+            $('.cVersionItem').hide();
+        }else{ 
+            $('.bbe-by-example-page-row').removeClass('hide');
+            $('.bbe-by-reference-page-row').addClass('hide');
+            $('.cTopButtonContainer').hide();
+            $('.cVersionItem').show(); 
+        }
+    }
 </script>
 
 <style>

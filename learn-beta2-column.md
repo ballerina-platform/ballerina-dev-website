@@ -105,7 +105,7 @@ redirect_from:
   font-size:20px;
 }
 .column-gray-box-row{
-display: -webkit-box;
+	display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;

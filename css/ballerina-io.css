@@ -1610,7 +1610,11 @@ li pre code span.line-numbers-rows {
 .select-css option {
     font-weight: normal;
 }
-
+@media (min-width: 992px) {
+    .cSearchMenu {
+        padding-left: 15px;
+    }
+}
 @media (max-width: 1000px) {
     .cSearchMenu {
         position: absolute;

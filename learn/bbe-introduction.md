@@ -38,7 +38,13 @@ redirect_from:
 <li><strong><a href="/learn/by-example/transaction-statement">Transactions:</a></strong> Writing transaction-aware programs in Ballerina.</li>
 <li><strong><a href="/learn/by-example/lock-statement">Concurrency Safety:</a></strong> Writing Ballerina programs that guarantee concurrency safety.</li>
 <li><strong><a href="/learn/by-example/testerina-assertions">Testing:</a></strong> Writing tests for your Ballerina code.</li>
-</ul>            
+</ul>   
+
+<style>
+  .cBallerina-io-Nav .nav > li.cVersionItem {
+      display: block !important;
+   }
+</style>
 <!-- <h3>Working Over the Network</h3>
 <ul>
 <li><strong><a href="/learn/by-example/http-absolute-path-and-path">REST API:</a></strong> The behaviour of the HTTP listeners and services.</li>

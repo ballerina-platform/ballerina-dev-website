@@ -8,7 +8,6 @@ on:
       - '_data/stable-latest/**'
   workflow_dispatch:
 
-
 jobs:
   bbe-gen:
     runs-on: ubuntu-latest
@@ -35,9 +34,12 @@ jobs:
     - name: Clone ballerina-release
       run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-release.git
 
+
     - name: Generate BBEs
       run: |
         cd ballerina-release
+
+        git checkout ballerina-1.2.x
 
         BALLERINA_VERSION="`jq -r '.version' ../_data/stable-latest/metadata.json`"
         array=($(echo $BALLERINA_VERSION | tr "." "\n"))

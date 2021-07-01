@@ -1,4 +1,4 @@
-name: Create PR for new Ballerina by examples pages
+name: Create PR for new 1.2. Ballerina by examples pages
 
 on:
   push:
@@ -6,6 +6,8 @@ on:
       - master
     paths:
       - '_data/stable-latest/**'
+  workflow_dispatch:
+
 
 jobs:
   bbe-gen:

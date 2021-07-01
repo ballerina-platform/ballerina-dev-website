@@ -25,8 +25,7 @@ const hitTemplate = function(hit) {
     breadcrumbs = hit._highlightResult.headings.map(match => {
       return `<span class="post-breadcrumb">${match.value}</span>`
     }).join(' > ')
-  }
-
+  } 
   const content = hit._highlightResult.html.value;
 
   return `

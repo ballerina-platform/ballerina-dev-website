@@ -50,3 +50,6 @@ exclude: ["downloads/RELEASE_NOTE.md","vendor","0.991/","v1-2","v1-1","v1-0","v0
 #   - vendor/ruby/
 dist_server: https://dist-dev.ballerina.io
 plugin_vscode_repo: https://github.com/ballerina-platform/plugin-vscode
+algolia:
+  application_id: 1UGB2K5V0K
+  index_name: jekyll wso2_bbe_dev_sameeral 

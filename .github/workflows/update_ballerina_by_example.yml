@@ -1,4 +1,4 @@
-name: Create PR for new 1.2. Ballerina by examples pages
+name: Create PR for new Ballerina by examples pages
 
 on:
   push:

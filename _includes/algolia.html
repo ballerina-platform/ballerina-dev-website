@@ -1,9 +1,13 @@
+<!-- <script src="/js/algolia-instant-search.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
 
 <script>
+  var paramText = window.location.href;
+  var searchparamText =paramText.split('?')[1]
+
 const search = instantsearch({
   appId: '{{ site.algolia.application_id }}',
   apiKey: '{{ site.algolia.search_only_api_key }}',
@@ -19,20 +23,12 @@ const hitTemplate = function(hit) {
   let url = `{{ site.baseurl }}${hit.url}#${hit.anchor}`;
 
   const title = hit._highlightResult.title.value;
-
-  let breadcrumbs = '';
-  if (hit._highlightResult.headings) {
-    breadcrumbs = hit._highlightResult.headings.map(match => {
-      return `<span class="post-breadcrumb">${match.value}</span>`
-    }).join(' > ')
-  } 
+ 
   const content = hit._highlightResult.html.value;
 
   return `
-    <div class="post-item">
-      <span class="post-meta">${date}</span>
-      <h2><a class="post-link" href="${url}">${title}</a></h2>
-      {{#breadcrumbs}}<a href="${url}" class="post-breadcrumbs">${breadcrumbs}</a>{{/breadcrumbs}}
+    <div class="post-item"> 
+      <h2><a class="post-link" href="${url}">${title}</a></h2>  
       <div class="post-snippet">${content}</div>
     </div>
   `;
@@ -41,9 +37,10 @@ const hitTemplate = function(hit) {
 
 search.addWidget(
   instantsearch.widgets.searchBox({
+    // defaultSearchVal:"testvaluewdiget",
     container: '#search-searchbar',
-    placeholder: 'Search into posts...',
-    poweredBy: true // This is required if you're on the free Community plan
+    placeholder: 'Search into posts...', 
+    poweredBy: true  
   })
 );
 
@@ -57,6 +54,7 @@ search.addWidget(
 );
 
 search.start();
+// $('.ais-search-box input').val(searchparamText);
 </script>
 
 <style>

@@ -81,6 +81,7 @@ let redirections = {
     "/learn/by-example/abstract-objects.html":"/learn/by-example/object-type.html",
     "/learn/by-example/anonymous-objects.html":"/learn/by-example/object-constructor-expression.html",
     "/learn/by-example/readonly-objects-and-fields.html":"/learn/by-example/readonly-objects.html",
+    "/1.2/learn/by-example/introduction/":"/1.2/learn/by-example/"
 
     // API Docs not available
 

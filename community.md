@@ -108,7 +108,7 @@ If you like the experience so far, help us to spread the word.
 - Share the wealth by publishing your Ballerina module on <a href="https://central.ballerina.io" target="_blank">Ballerina Central</a> so that the whole community can benefit from your work.
 - Write your own blog and submit it to be published in our <a href="https://medium.com/ballerina-techblog" target="_blank">community-driven Tech Blog</a>.
 - Buzz us on <a href="mailto:contact@ballerina.io" target="_blank">contact@ballerina.io</a> if you want to organize a local meetup or hackathon. WSO2 will get right on it and help with presentation/training content, logistics, swag, and some funds for munchies.
-- Download any file of the <a href="https://github.com/ballerina-platform/ballerina-dev-website/tree/master/ballerina-logos" target="_blank">Ballerina logo</a> to use for content or swag.
+- Download the <a href="/trademark-usage-policy/#the-ballerina-logo" target="_blank">Ballerina logo</a> to use for content or swag.
 - Use the <a href="https://github.com/marketplace/actions/ballerina-action" target="_blank"> GitHub Action for the Ballerina CLI</a> to wrap Ballerina commands inside GitHub Actions.
 
 <!-- ## Want to be kept up-to-date?

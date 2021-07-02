@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - '_data/stable-latest/**'
+  workflow_dispatch:
 
 jobs:
   bbe-gen:
@@ -33,9 +34,12 @@ jobs:
     - name: Clone ballerina-release
       run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-release.git
 
+
     - name: Generate BBEs
       run: |
         cd ballerina-release
+
+        git checkout ballerina-1.2.x
 
         BALLERINA_VERSION="`jq -r '.version' ../_data/stable-latest/metadata.json`"
         array=($(echo $BALLERINA_VERSION | tr "." "\n"))
@@ -49,7 +53,7 @@ jobs:
           exit 1
         fi
 
-        mv ballerina-${BALLERINA_VERSION}/distributions/jballerina-${BALLERINA_VERSION}/examples/index.json ballerina-${BALLERINA_VERSION}/distributions/jballerina-${BALLERINA_VERSION}/examples/all-bbes.json
+        cp ballerina-${BALLERINA_VERSION}/distributions/jballerina-${BALLERINA_VERSION}/examples/index.json ballerina-${BALLERINA_VERSION}/distributions/jballerina-${BALLERINA_VERSION}/examples/all-bbes.json
 
         echo "------------------------------------------------------------------------------------------------------------------------------------------------"
         echo "go run ballerinaByExample/tools/generate.go ballerina-$BALLERINA_VERSION/distributions/jballerina-$BALLERINA_VERSION/examples $SITE_VERSION $BBE_GEN_DIR $GEN_FOR_JEKYLL $IS_LATEST_VERSION"

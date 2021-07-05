@@ -194,6 +194,14 @@ Contains the volume definitions of the application. No default volumes will be g
 | local_path 	| Path of the volume         	| "files"       	|
 | size       	| Maximum size of the volume 	| "2Gi"         	|
 
+#### [[settings]]
+Contains the settings related to artifacts generation.
+
+|Identifier      |Description	                                     |Example Value |
+|---	         |---	                                             |---	        |
+|singleYAML   	 |Generate a single YAML file with all the artifacts |true  	    |
+|buildImage      |Build Docker image  	                             |true      	|
+
 ## Code to Cloud Samples
 
 For sample use cases of code to cloud, see [Code to Cloud Samples](/learn/deployment/code-to-cloud/samples).

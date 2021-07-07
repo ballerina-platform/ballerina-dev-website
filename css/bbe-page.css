@@ -160,3 +160,70 @@ code[class*="language-"], pre[class*="language-"] {
     background-color: #fff; 
     border-radius: 8px; 
 }
+.codeSnippeset{
+    /* margin-top: 10px; */
+}
+.codeSnippeset .cTR {
+    display: flex;
+}
+.codeSnippeset .cTR .code {
+    flex: 0 0 60%;
+    max-width: 60%;
+    border-left-width: 30px;
+    border-right-width: 30px;
+    border-color: #eeeeee;
+    border-style: solid;
+    border-bottom-width: 0;
+    border-top-width: 0;
+    box-shadow: 0px 5px 5px  rgba(66, 47, 47, 0.2);
+}
+.codeSnippeset .cTR .docs {
+    flex: 0 0 40%;
+    max-width: 40%;
+}
+.codeSnippeset .cTR:not(.cOutputTr) > .code code {
+    background-color: transparent !important;
+}
+.codeSnippeset .cTR:hover .cCodeDesription {
+    background-image: url(https://ballerina.io/img/green-arrow.svg) !important;
+}
+.codeSnippeset .cTR:hover .docs > .cCodeDesription > div {
+    background-color: #20b6af;
+    color: #ffffff;
+}
+.codeSnippeset .cTR.hover-enable:hover .code {
+    background-color: #cceeec;
+}
+.codeSnippeset .cTR:first-child .code {
+    border-top-width: 30px;
+}
+.codeSnippeset .cTR.cOutputTr:last-child .code {
+    border-top-width: 0;
+    border-bottom-width: 30px;
+}
+
+.codeSnippeset .cTR.cOutputTr .code code {
+    color: #3ad1ca;
+    text-shadow: none;
+}
+.codeSnippeset .cCodeDesription p{
+    font-size: 15px;
+}
+@media only screen and (max-width: 991px) {
+    .codeSnippeset .cTR {
+      flex-direction: column;
+    }
+  
+    .codeSnippeset .cTR .code {
+        flex: 0 0 100%;
+        max-width: 100%; 
+        box-shadow: 0 2px 5px 0px rgb(0, 0 ,0 , 0.17);
+        border: none !important;
+    }
+    .codeSnippeset .cTR .docs {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+  }

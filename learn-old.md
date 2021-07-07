@@ -36,7 +36,7 @@ redirect_from:
 
 
 <img class="cLearnIcon" src="/img/Ballerina-By-Example-v1.png"/>
-<h2>Ballerina by Example</h2>
+<h2>Ballerina by Examples</h2>
 
 <p>Obtain a hands-on experience of the language and its key features.</p>
 

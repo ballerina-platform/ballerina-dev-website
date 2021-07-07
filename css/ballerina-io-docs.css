@@ -25,8 +25,8 @@
 .cBallerina-io-Home-Left-col {
     display: none;
 }
-.navbar-nav.cTopNav>li:first-child,
-.navbar-nav.cTopNav>li:nth-child(2) {
+.navbar-nav.cTopNav > li:first-child,
+.navbar-nav.cTopNav > li:nth-child(2) {
     display: block;
 }
 
@@ -82,8 +82,15 @@
 .cBlallerina-io-docs-content-container a {
     color: #20b6b0 !important;
 }
-
-.wy-breadcrumbs li a:hover , .cBlallerina-io-docs-content-container a:hover {
+.cBlallerina-io-docs-content-container p a code {
+    color: #20b6b0 !important;
+    font-size: inherit !important;
+}
+.cBlallerina-io-docs-content-container p a:hover code {
+    color: #464646 !important;
+}
+.wy-breadcrumbs li a:hover,
+.cBlallerina-io-docs-content-container a:hover {
     color: #464646 !important;
 }
 
@@ -120,11 +127,11 @@ nav.stickynav,
     color: #22b7b1 !important;
 }
 
-.wy-menu-vertical .subnav li.current>a {
+.wy-menu-vertical .subnav li.current > a {
     border: none;
 }
 
-.wy-menu-vertical .subnav li.current>ul li a {
+.wy-menu-vertical .subnav li.current > ul li a {
     border: none;
     padding-top: 0;
     padding-bottom: 0;
@@ -180,9 +187,6 @@ li.current a.current {
     display: none;
 }
 
-
-
-
 .cSideBar-Button {
     display: none;
 }
@@ -211,7 +215,7 @@ article ol li,
 .rst-content .toctree-wrapper ul li,
 .wy-plain-list-disc li,
 article ul li {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 24px;
     font-weight: 300;
     color: #57595d;
@@ -237,7 +241,7 @@ th {
 }
 
 .modal-content {
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 0;
 }
 
@@ -261,11 +265,11 @@ h4.modal-title {
     vertical-align: top;
     height: 29px;
     width: 90px;
-    color: #585A5E !important;
+    color: #585a5e !important;
     margin: 0;
     margin-left: 0px;
-    background: #FFF !important;
-    border: 1px solid #A6A8AB;
+    background: #fff !important;
+    border: 1px solid #a6a8ab;
     border-radius: 0%;
     padding: 3px 0;
     letter-spacing: 1px;
@@ -286,7 +290,7 @@ h4.modal-title {
 }
 
 .modal-content .subscribeForm {
-    margin: 0 0 .3125em;
+    margin: 0 0 0.3125em;
     margin-bottom: 0.3125em;
     color: #20b6b0;
     font-size: 13px;
@@ -303,7 +307,6 @@ h4.modal-title {
 #iGitEdit {
     margin-top: 3px;
 }
-
 
 /*EVENTS SECTION*/
 
@@ -404,7 +407,6 @@ td.cEventDateContainer span.cEventDate {
     margin-bottom: 5px;
 }
 
-
 /*Form error*/
 
 .modal .error {
@@ -417,7 +419,6 @@ td.cEventDateContainer span.cEventDate {
     font-weight: 200;
     color: #20b6b0;
 }
-
 
 /*INLINE FORMS*/
 
@@ -450,7 +451,7 @@ select.cSelect {
 }
 
 select.cSelect {
-    padding: .2em .1em;
+    padding: 0.2em 0.1em;
 }
 
 .cInlineForm .cTextfieldstyle.cTextarea {
@@ -462,7 +463,7 @@ input.cSubmitButton {
     margin: 0 15px;
     transition: none !important;
     font-size: 18px;
-    font-weight: 200;
+    /*font-weight: 200;*/
     background-color: #57595d;
     color: #ffffff !important;
     padding: 7px 26px;
@@ -508,7 +509,6 @@ ul.lower-latin li {
 
 .cCommunityLinks img {
     width: 50px;
-
 }
 
 .cCommunityLinks {
@@ -521,19 +521,19 @@ ul.lower-latin li {
     background: #fff !important;
 }
 
-.fa-github::before, .icon-github::before {
+.fa-github::before,
+.icon-github::before {
     content: "" !important;
 }
 
-.fa-github, .icon-github {
+.fa-github,
+.icon-github {
     background-image: url("/img/github.svg");
     background-size: 20px;
     background-position: left;
     background-repeat: no-repeat;
     padding-left: 28px !important;
 }
-
-
 
 @media (min-width: 990px) {
     .cBallerina-io-Home-Left-col,
@@ -594,5 +594,47 @@ ul.lower-latin li {
     .cSideBar-Button.cOpen img {
         transform: rotate(180deg);
         transition: all 0.2s ease 0s;
+    }
+}
+.cBallerina-io .permalinkHeader {
+    padding-top: 80px;
+    margin-top: -20px;
+}
+.permalinkHeader {
+    position: relative;
+    /* display: flex !important; */
+    /* align-items: center; */
+}
+.permalinkHeader .permalink {
+    visibility: hidden;
+    transition: all 0.3s;
+    margin-left: -24px;
+    background-image: url(../img/icons/permilink.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 24px;
+    height: 16px;
+    display: inline-block;
+}
+.permalinkHeader:hover .permalink {
+    visibility: visible;
+}
+
+.cCodeTable tr th.cDescription {
+    width: 33.3333%;
+}
+.cCodeTable tr th.cCodeCol {
+    width: 33.3333%;
+}
+.cCodeTable tr td .cTableCode {
+    word-wrap: break-word;
+}
+.cCodeTable.cCodeTableFixedLayout {
+    table-layout: fixed;
+}
+@media (max-width: 991px) {
+    .navbar-header {
+        margin-top: 0;
     }
 }

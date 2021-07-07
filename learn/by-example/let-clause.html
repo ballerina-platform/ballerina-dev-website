@@ -31,6 +31,7 @@ redirect_from:
                      <span class="nx">let</span> <span class="kt">int</span> <span class="nx">len1</span> <span class="p">=</span> <span class="nx">first</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span>
                      <span class="c1">// The `where` clause provides a way to perform conditional execution.</span>
                      <span class="nx">where</span> <span class="nx">len1</span> <span class="p">&gt;</span> <span class="mi">0</span>
+
                      <span class="nx">let</span> <span class="kt">int</span> <span class="nx">len2</span> <span class="p">=</span> <span class="nx">last</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span>
                      <span class="nx">where</span> <span class="nx">len2</span> <span class="p">&gt;</span> <span class="mi">0</span>
                      <span class="nx">let</span> <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">first</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">last</span>
@@ -56,14 +57,14 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="destructuring-records.html">
+                                    <a class="prev" href="destructuring-records.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
                                         <p>Destructuring Records</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="ordering.html">
+                                    <a class="next" href="ordering.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
                                         <p>Ordering</p>
                                     </a>
@@ -76,9 +77,9 @@ redirect_from:
             </div>
             <div class="example" id="let-clause">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
-                    <table class="cTopControlsContainer">
-                        <tr>
-                            <td class="cLeftTD">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -89,57 +90,35 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e52548fd4a12647f077cffd0830de173&file=let_clause.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=3a754aad1614fa5faad15c99b7e19dac&file=let_clause.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
                                 </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+                            </div> 
+                        </div>
+                    </div>
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type Person record {
  string first;
  string last;
@@ -147,15 +126,15 @@ redirect_from:
 };
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
     Person[] persons = [
         {first: &quot;Melina&quot;, last: &quot;Kodel&quot;, yearOfBirth: 1994},
@@ -163,32 +142,32 @@ redirect_from:
     ];
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string[] names = from var {first, last} in persons
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>                     let int len1 = first.length()
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -197,24 +176,17 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>                     where len1 &gt; 0
-                     let int len2 = last.length()
-                     where len2 &gt; 0
-                     let string name = first + &quot; &quot; + last
-                     select name;
-                     
-    io:println(names);
-}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -223,46 +195,53 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                            <div class="cTR">
+
+                                <div class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>                     let int len2 = last.length()
+                     where len2 &gt; 0
+                     let string name = first + &quot; &quot; + last
+                     select name;
+                     
+    io:println(names);
+}
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run let_clause.bal
 [&quot;Melina Kodel&quot;,&quot;Tom Riddle&quot;]
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

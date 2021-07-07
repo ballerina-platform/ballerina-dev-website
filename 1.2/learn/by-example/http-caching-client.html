@@ -1,8 +1,10 @@
 ---
 layout: ballerina-example-page
 title: HTTP Caching
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /1.2/learn/by-example/http-caching-client
+active: http-caching-client
 redirect_from:
   - /v1-2/learn/by-example/http-caching-client
   - /v1-2/learn/by-example/http-caching-client.html
@@ -128,14 +130,14 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="restrict-by-media-type.html">
+                                    <a class="prev" href="restrict-by-media-type.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
                                         <p>Restrict By Media Type</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="http-disable-chunking.html">
+                                    <a class="next" href="http-disable-chunking.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
                                         <p>Disable Chunking</p>
                                     </a>
@@ -148,9 +150,9 @@ redirect_from:
             </div>
             <div class="example" id="http-caching-client">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
-                    <table class="cTopControlsContainer">
-                        <tr>
-                            <td class="cLeftTD">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -162,80 +164,34 @@ redirect_from:
                                         
                                     </ul>
                                 </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+                            </div> 
+                        </div>
+                    </div>
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code empty leading">
+                                <div class="code empty leading">
                                     
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -253,40 +209,40 @@ import ballerina/log;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>http:Client cachingEP = new (&quot;http://localhost:8080&quot;,
                              {cache: {enabled: true, isShared: true}});
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/cache&quot;
 }
 service cachingProxy on new http:Listener(9090) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/&quot;
@@ -295,27 +251,27 @@ service cachingProxy on new http:Listener(9090) {
         var response = cachingEP-&gt;forward(&quot;/hello&quot;, req);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        if (response is http:Response) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            var result = caller-&gt;respond(response);
             if (result is error) {
                 log:printError(&quot;Failed to respond to the caller&quot;, result);
@@ -323,8 +279,8 @@ service cachingProxy on new http:Listener(9090) {
         } else {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -335,12 +291,12 @@ service cachingProxy on new http:Listener(9090) {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>            http:Response res = new;
             res.statusCode = 500;
             res.setPayload(&lt;string&gt;response.detail()?.message);
@@ -353,8 +309,8 @@ service cachingProxy on new http:Listener(9090) {
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -364,32 +320,32 @@ service cachingProxy on new http:Listener(9090) {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>json payload = {&quot;message&quot;: &quot;Hello, World!&quot;};
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;
 }
 service helloWorld on new http:Listener(8080) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -398,34 +354,34 @@ service helloWorld on new http:Listener(8080) {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {path: &quot;/&quot;}
     resource function sayHello(http:Caller caller, http:Request req) {
         http:Response res = new;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        http:ResponseCacheControl resCC = new;
         resCC.maxAge = 15;
         resCC.mustRevalidate = true;
         resCC.isPrivate = false;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -442,29 +398,29 @@ service helloWorld on new http:Listener(8080) {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        res.cacheControl = resCC;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        res.setETag(payload);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -475,17 +431,17 @@ service helloWorld on new http:Listener(8080) {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        res.setLastModified();
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -495,27 +451,27 @@ service helloWorld on new http:Listener(8080) {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>        res.setPayload(payload);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code empty leading">
+                                <div class="code empty leading">
                                     
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -527,12 +483,12 @@ service helloWorld on new http:Listener(8080) {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
             log:printError(&quot;Failed to respond to the caller&quot;, result);
@@ -541,80 +497,22 @@ service helloWorld on new http:Listener(8080) {
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The two services have to be run separately to observe the following output. 
 # For clarity, only the relevant parts of the HTTP trace logs have been included here.
 # At the command line, navigate to the directory that contains the
@@ -630,15 +528,15 @@ User-Agent: curl/7.58.0
 Accept: */*
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The proxy in turn, makes a request to the backend service.
 [2019-09-08 12:35:46,750] TRACE {http.tracelog.upstream} - [id: 0x91bab3cd, correlatedSource: 0x75aee346, host:/127.0.0.1:46172 - remote:localhost/127.0.0.1:8080] OUTBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
 GET /hello HTTP/1.1
@@ -648,15 +546,15 @@ user-agent: ballerina/1.0.0
 connection: keep-alive
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The backend service responds with a `200 OK` and it contains `etag` and `cache-control` headers. This response can be cached and as such, the caching client caches it. As seen from the `max-age` directive of the &#39;cache-control` header, this response is valid for 15 seconds.
 [2019-09-08 12:35:46,800] TRACE {http.tracelog.upstream} - [id: 0x91bab3cd, correlatedSource: 0x75aee346, host:/127.0.0.1:46172 - remote:localhost/127.0.0.1:8080] INBOUND: DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
 HTTP/1.1 200 OK
@@ -671,15 +569,15 @@ date: Sun, 8 Sep 2019 12:35:46 +0530
 {&quot;message&quot;:&quot;Hello, World!&quot;}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The response is sent back to the client.
 [2019-09-08 12:35:46,814] TRACE {http.tracelog.downstream} - [id: 0x75aee346, correlatedSource: n/a, host:localhost/127.0.0.1:9090 - remote:localhost/127.0.0.1:54140] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))
 HTTP/1.1 200 OK
@@ -693,15 +591,15 @@ content-length: 27, 27B
 {&quot;message&quot;:&quot;Hello, World!&quot;}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Subsequent requests to the proxy within the next 15 seconds are served from the proxy&#39;s cache. As seen here, the backend service is not contacted.
 [2019-09-08 12:36:00,421] TRACE {http.tracelog.downstream} - [id: 0xa8de466e, correlatedSource: n/a, host:/127.0.0.1:9090 - remote:/127.0.0.1:54146] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
 GET /cache HTTP/1.1
@@ -710,15 +608,15 @@ User-Agent: curl/7.58.0
 Accept: */*
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Cached response.
 [2019-09-08 12:36:00,435] TRACE {http.tracelog.downstream} - [id: 0xa8de466e, correlatedSource: n/a, host:localhost/127.0.0.1:9090 - remote:localhost/127.0.0.1:54146] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))
 HTTP/1.1 200 OK
@@ -733,15 +631,15 @@ content-length: 27, 27B
 {&quot;message&quot;:&quot;Hello, World!&quot;}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Another request is sent after remaining idle for a while.
 [2019-09-08 12:36:11,009] TRACE {http.tracelog.downstream} - [id: 0xc7e78a3e, correlatedSource: n/a, host:/127.0.0.1:9090 - remote:/127.0.0.1:54148] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
 GET /cache HTTP/1.1
@@ -750,15 +648,15 @@ User-Agent: curl/7.58.0
 Accept: */*
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># This time, the request is not served from the cache. The backend service is contacted. The `if-none-match` header sends the entity tag of the now stale response, so that the backend service may determine whether this response is still valid.
 [2019-09-08 12:36:11,022] TRACE {http.tracelog.upstream} - [id: 0x91bab3cd, correlatedSource: 0xc7e78a3e, host:/127.0.0.1:46172 - remote:localhost/127.0.0.1:8080] OUTBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
 GET /hello HTTP/1.1
@@ -770,15 +668,15 @@ connection: keep-alive
 content-length: 0
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The response has not changed. Therefore the backend services respond with a `304 Not Modified` response. Based on this, the proxy will refresh the response, so that it can continue serving the cached response.
 [2019-09-08 12:36:11,028] TRACE {http.tracelog.upstream} - [id: 0x91bab3cd, correlatedSource: 0xc7e78a3e, host:/127.0.0.1:46172 - remote:localhost/127.0.0.1:8080] INBOUND: DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
 HTTP/1.1 304 Not Modified
@@ -790,15 +688,15 @@ server: ballerina/1.0.0
 date: Sun, 8 Sep 2019 12:36:11 +0530
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The cached response is served yet again since the response has not changed.
 [2019-09-08 12:36:11,039] TRACE {http.tracelog.downstream} - [id: 0xc7e78a3e, correlatedSource: n/a, host:localhost/127.0.0.1:9090 - remote:localhost/127.0.0.1:54148] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))
 HTTP/1.1 200 OK
@@ -813,15 +711,15 @@ content-length: 27, 27B
 {&quot;message&quot;:&quot;Hello, World!&quot;}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The output for the mock service.
 ballerina run  hello_service.bal --b7a.http.tracelog.console=true 
 ballerina: deploying service(s) in &#39;hello_service.bal&#39;
@@ -835,15 +733,15 @@ user-agent: ballerina/1.0.0
 connection: keep-alive
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The service responds with a `200 OK` with the relevant caching headers set.
 [2019-09-08 12:35:46,792] TRACE {http.tracelog.downstream} - [id: 0xfef23c5c, correlatedSource: n/a, host:localhost/127.0.0.1:8080 - remote:localhost/127.0.0.1:46172] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))
 HTTP/1.1 200 OK
@@ -857,15 +755,15 @@ date: Sun, 8 Sep 2019 12:35:46 +0530, 27B
 {&quot;message&quot;:&quot;Hello, World!&quot;}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The backend service only gets another request when the cached response and the proxy have expired and it wants to validate it again.
 [2019-09-08 12:36:11,024] TRACE {http.tracelog.downstream} - [id: 0xfef23c5c, correlatedSource: n/a, host:localhost/127.0.0.1:8080 - remote:localhost/127.0.0.1:46172] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
 GET /hello HTTP/1.1
@@ -877,15 +775,15 @@ connection: keep-alive
 content-length: 0
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># After checking the `if-none-match` header, the service determines that the response is still the same and that the proxy can keep reusing it.
 [2019-09-08 12:36:11,027] TRACE {http.tracelog.downstream} - [id: 0xfef23c5c, correlatedSource: n/a, host:localhost/127.0.0.1:8080 - remote:localhost/127.0.0.1:46172] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 0, cap: 0, components=1))
 HTTP/1.1 304 Not Modified
@@ -897,36 +795,22 @@ server: ballerina/1.0.0
 date: Sun, 8 Sep 2019 12:36:11 +0530, 0B
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#Run the following curl command to run the client. 
 curl -v http://localhost:9090/cache
 *   Trying 127.0.0.1...
@@ -950,15 +834,15 @@ curl -v http://localhost:9090/cache
 {&quot;message&quot;:&quot;Hello, World!&quot;}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>curl -v http://localhost:9090/cache
 *   Trying 127.0.0.1...
 * TCP_NODELAY set
@@ -982,15 +866,15 @@ curl -v http://localhost:9090/cache
 {&quot;message&quot;:&quot;Hello, World!&quot;}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>curl -v http://localhost:9090/cache
 *   Trying 127.0.0.1...
 * TCP_NODELAY set
@@ -1014,23 +898,18 @@ curl -v http://localhost:9090/cache
 {&quot;message&quot;:&quot;Hello, World!&quot;}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

@@ -106,8 +106,10 @@
         {% if include.item_class and include.item_class != blank %}
             {% capture listItemClass %}{:.{{ include.item_class | replace: '%level%', headerLevel }}}{% endcapture %}
         {% endif %}
-
-        {% capture anchor_body %}{% if include.sanitize %}{{ header | strip_html }}{% else %}{{ header }}{% endif %}{% endcapture %}
+        
+        <!-- Removed the "strip_html" to enable backtics in the TOC -->
+        <!-- {% capture anchor_body %}{% if include.sanitize %}{{ header | strip_html }}{% else %}{{ header }}{% endif %}{% endcapture %} -->
+        {% capture anchor_body %}{% if include.sanitize %}{{ header }}{% else %}{{ header }}{% endif %}{% endcapture %}
         {% capture anchor_body %}{{ anchor_body | replace: "|", "\|" }}{% endcapture %}
 
         {% if html_id %}

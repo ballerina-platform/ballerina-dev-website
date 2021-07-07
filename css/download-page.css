@@ -1,20 +1,16 @@
-
 a,
 a:visited,
 a:hover,
 a:focus {
-/*    color: #20b6b0 !important;*/
+    /*    color: #20b6b0 !important;*/
 }
 
 .cDownloadsHeader h1 {
     font-size: 45px;
-    color: #585A5E;
+    color: #585a5e;
     font-weight: 200;
     margin-bottom: 30px;
-
-
 }
-
 
 .cDownloadsHeader p {
     font-size: 16px;
@@ -40,22 +36,24 @@ h2 {
 }
 
 a.cDownload {
-	display: block;
-	margin: 0 15px;
-	transition: none !important;
-	font-size: 25px;
-	font-weight: 200;
-	background-color: #57595d;
-	color: #ffffff !important;
-	padding: 20px 10px 20px 60px;
-	background-image: url("../img/download-bg.svg");
-	background-repeat: no-repeat;
-	background-position: left 20px top 20px;
-	text-decoration: none;
-	min-height: 60px;
-	line-height: 35px;
+    display: block;
+    margin: 0 15px;
+    transition: none !important;
+    font-size: 25px;
+    font-weight: 200;
+    background-color: #57595d;
+    color: #ffffff !important;
+    padding: 20px 10px 20px 60px;
+    background-image: url("../img/download-bg.svg");
+    background-repeat: no-repeat;
+    background-position: left 20px top 20px;
+    text-decoration: none;
+    min-height: 60px;
+    line-height: 35px;
 }
-
+a.cDownload.smallMargin {
+    margin: 0 0.5px;
+}
 a.cDownload .cSize {
     font-family: monaco, Consolas, "Lucida Console", monospace;
     font-size: 14px;
@@ -66,7 +64,7 @@ a.cDownload .cSize {
 .cArchived a,
 .cArchived a:hover,
 .cArchived a:focus {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 300;
     background-color: #57595d;
     color: #ffffff;
@@ -113,28 +111,28 @@ a.cDownload .cSize {
 .cInstallers h3.release-version {
     font-size: 22px;
 
-color: #555;
+    color: #555;
 
-letter-spacing: 0.5px;
+    letter-spacing: 0.5px;
 
-text-transform: none;
+    text-transform: none;
 
-/* font-family: "pragmatica", sans-serif; */
+    /* font-family: "pragmatica", sans-serif; */
 
-line-height: 28px;
+    line-height: 28px;
 
-font-weight: 400;
+    font-weight: 400;
 
-padding: 0;
+    padding: 0;
 
-margin: 20px 0 15px 0;
+    margin: 20px 0 15px 0;
 
-border: none;
+    border: none;
 }
 
 .cInstallers table {
     width: 100%;
-    border-top: solid .5px #a7a8ab;
+    border-top: solid 0.5px #a7a8ab;
     margin: 0;
 }
 
@@ -145,7 +143,7 @@ border: none;
     color: #585a5e;
     border: none !important;
     vertical-align: top;
-    border-bottom: solid .5px #a7a8ab !important;
+    border-bottom: solid 0.5px #a7a8ab !important;
 }
 
 .cInstallers table tr td a {
@@ -216,7 +214,7 @@ ul.cDiwnloadSubLinks li a {
 }
 
 a.cArchivedReleaseNotesLink {
-    font-size: 18px;
+    font-size: 16px;
     color: #20b6b0;
     /* font-family: "CalibreWeb-Semibold", "pragmatica", sans-serif; */
     display: inline-block;
@@ -251,11 +249,11 @@ a.cArchivedReleaseNotesLink {
 
 .wy-breadcrumbs li,
 .wy-breadcrumbs li a {
-    display: inline-block
+    display: inline-block;
 }
 
 ul.wy-breadcrumbs {
-    padding: 0
+    padding: 0;
 }
 
 #iBanner {
@@ -276,13 +274,20 @@ pre code {
     display: block;
 }
 
-
-.cWindows , .cLinux , .cMac, .cVSCode {
-    
+.cWindows,
+.cLinux,
+.cMac,
+.cVSCode {
     background-repeat: no-repeat;
     padding-left: 40px;
     line-height: 32px;
     background-size: 30px;
+}
+p.cWindows,
+p.cLinux,
+p.cMac,
+p.cVSCode {
+    line-height: 32px;
 }
 .cWindows {
     background-image: url("/img/downloads/windows.svg");

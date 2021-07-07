@@ -1,8 +1,10 @@
 ---
 layout: ballerina-example-page
 title: Guarantee Test Execution Order
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /1.2/learn/by-example/testerina-guarantee-test-execution-order
+active: testerina-guarantee-test-execution-order
 redirect_from:
   - /v1-2/learn/by-example/testerina-guarantee-test-execution-order
   - /v1-2/learn/by-example/testerina-guarantee-test-execution-order.html
@@ -51,7 +53,7 @@ redirect_from:
                             <p><p>The <code>dependsOn</code>attribute can be used to define a list of function names that the test
  function depends on. These functions will be executed before the test execution.
  This allows you to ensure that the tests are being executed in the expected order.<br/><br/>
- For more information, see <a href="https://ballerina.io/learn/how-to-test-ballerina-code/">How to Test Ballerina Code</a>
+ For more information, see <a href="https://ballerina.io/1.2/learn/how-to-test-ballerina-code/">How to Test Ballerina Code</a>
  and the <a href="https://ballerina.io/1.2/learn/api-docs/ballerina/test/index.html">Test Module</a>.</p>
 </p>
 
@@ -60,14 +62,14 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="testerina-data-driven-tests.html">
+                                    <a class="prev" href="testerina-data-driven-tests.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
                                         <p>Data Driven Tests</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="testerina-mocking-functions.html">
+                                    <a class="next" href="testerina-mocking-functions.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
                                         <p>Function Mocks</p>
                                     </a>
@@ -80,9 +82,9 @@ redirect_from:
             </div>
             <div class="example" id="testerina-guarantee-test-execution-order">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
-                    <table class="cTopControlsContainer">
-                        <tr>
-                            <td class="cLeftTD">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -94,56 +96,36 @@ redirect_from:
                                         
                                     </ul>
                                 </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+                            </div> 
+                        </div>
+                    </div>
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/test;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@test:Config {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -152,12 +134,12 @@ import ballerina/test;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    dependsOn: [&quot;testFunction3&quot;]
 }
 function testFunction1() {
@@ -166,8 +148,8 @@ function testFunction1() {
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -176,12 +158,12 @@ function testFunction1() {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@test:Config {
     dependsOn: [&quot;testFunction1&quot;]
 }
@@ -191,8 +173,8 @@ function testFunction2() {
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -201,12 +183,12 @@ function testFunction2() {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
 function testFunction3() {
     io:println(&quot;I&#39;m in test function 3!&quot;);
@@ -214,8 +196,8 @@ function testFunction3() {
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -225,61 +207,47 @@ function testFunction3() {
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># For the moment `ballerina test` works only in projects.
 ballerina test test_module
 Compiling source
         ballerinatest/test_module:0.1.0
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Creating balos
         target/balo/test_module-2020r1-any-0.1.0.balo
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Running tests
     ballerinatest/test_module:0.1.0
 I&#39;m in test function 3!
@@ -290,23 +258,18 @@ I&#39;m in test function 2!
         0 skipped
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

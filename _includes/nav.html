@@ -1,58 +1,57 @@
-
-
 <style>
     .cInfoBanner {
-	background: #20b6b0;
-	width: 100%;
-	display: inline-block;
-	color: #fff;
-	padding: 10px;
-	width: 100%;
-	text-align: center;
-	font-weight: 600;
-	font-size: 20px;
-}
+        background: #20b6b0;
+        width: 100%;
+        display: inline-block;
+        color: #fff;
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+        font-weight: 600;
+        font-size: 20px;
     }
+
     .cInfoBanner:hover {
         background-color: #1b7e7a;
         color: #fff !important;
     }
-
 </style>
 <a href="https://ballerina.io/downloads/" class="cInfoBanner">
     Swan Lake Beta1 is here.
 </a>
 <div class="row cBallerina-io-Nav" id="iMainNavigation">
- 
+
     <div class="container">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <nav class="navbar">
                 <div>
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                             <span class="sr-only">&#9776</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina" /></a>
                     </div>
                     <div id="navbar" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav cTopNav">
                             <li class="toctree-l1" id="playli"><a class="cBioTopLink" href="/downloads/">Download</a>
                             </li>
-                            <li class="toctree-l1" id="playli"><a class="cBioTopLink" href="https://play.ballerina.io/" target="_blank">Playground</a>
+                            <li class="toctree-l1" id="playli"><a class="cBioTopLink" href="https://play.ballerina.io/"
+                                    target="_blank">Playground</a>
                             </li>
-                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Docs</a>
                             </li>
                             <!--<li class="active toctree-l1" id="eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
                             </li>-->
                             <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
-                                                      target="_blank">Central</a></li>
+                                    target="_blank">Central</a></li>
                             <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
                             </li>
-                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink"
+                                    href="https://blog.ballerina.io">Blog</a>
                             </li>
                             <li class="cVersionItem">
                                 <div class="cVersionContainer">
@@ -62,11 +61,17 @@
                                         <option value="1.2">v1.2</option>
                                         <option value="1.1">v1.1</option>
                                         <option value="1.0">v1.0</option>
-                                   
+
                                     </select>
                                 </div>
                             </li>
-                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                            <li class="cSearchMenu">
+                               
+                                {% include algolia.html %}
+                                <!-- <form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field"
+                                        type="search" placeholder="Search" aria-label="Search"><a id="searchBtn"
+                                        href="#" class="cSearchButton"><img src="/img/search.svg" /></a></form> -->
+                            </li>
                         </ul>
                     </div>
                 </div>

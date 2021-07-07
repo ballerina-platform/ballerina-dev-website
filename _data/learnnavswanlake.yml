@@ -1,31 +1,3 @@
-
-#- title: Getting Started
-  #url: /learn/user-guide/getting-started/
-  #active: getting-started
-
-- title: Why Ballerina 
-  url: '#'
-  sublinks:
-    - title: Cloud Native
-      url: /learn/user-guide/why-ballerina/cloud-native/
-      active: cloud-native
-    - title: Flexibly Typed
-      url: /learn/user-guide/why-ballerina/flexibly-typed/
-      active: flexibly-typed
-    - title: Data Oriented
-      url: /learn/user-guide/why-ballerina/data-oriented/
-      active: data-oriented
-    - title: Graphical
-      url: /learn/user-guide/why-ballerina/graphical/
-      active: graphical
-    - title: Concurrent
-      url: /learn/user-guide/why-ballerina/concurrent/
-      active: concurrent
-    - title: Reliable, Maintainable
-      url: /learn/user-guide/why-ballerina/reliable-maintainable/
-      active: reliable-maintainable
-
-
 - title: Getting Started 
   url: '#'
   sublinks:
@@ -80,25 +52,66 @@
       url: /learn/user-guide/testing-ballerina-code/executing-tests
       active: executing-tests
 
-- title: Code Organization 
+- title: Generating Code Documentation
   url: '#'
   sublinks:
     - title: Documenting Ballerina Code
       url: /learn/user-guide/code-organization/documenting-ballerina-code/
       active: documenting-ballerina-code
+
+- title: Style Guide
+  url: '#'
+  sublinks:
     - title: Coding Conventions
-      url: /learn/user-guide/code-organization/coding-conventions/
+      url: /learn/user-guide/style-guide/coding-conventions/
       active: coding-conventions
+    - title: Top-Level Definitions
+      url: /learn/user-guide/style-guide/coding-conventions/top-level-definitions/
+      active: top-level-definitions
+    - title: Operators, Keywords, and Types
+      url: /learn/user-guide/style-guide/coding-conventions/operators-keywords-and-types/
+      active: operators-keywords-and-types
+    - title: Statements
+      url: /learn/user-guide/style-guide/coding-conventions/statements/
+      active: statements
+    - title: Expressions
+      url: /learn/user-guide/style-guide/coding-conventions/expressions/
+      active: expressions
+    - title: Annotations, Documentation, and Comments
+      url: /learn/user-guide/style-guide/coding-conventions/annotations-documentation-and-comments/
+      active: annotations-documentation-and-comments
 
 - title: Network Communication
   url: '#' 
   sublinks:
     - title: HTTP
       url: /learn/user-guide/network-communication/http/
-      active: http
+      active: http 
+      sublinks:
+        - title: HTTP Clients
+          url: /learn/user-guide/network-communication/http/http-clients/
+          active: http-clients
+        - title: HTTP Services
+          url: /learn/user-guide/network-communication/http/http-services/
+          active: http-services
     - title: gRPC
-      url: /learn/user-guide/network-communication/grpc/
-      active: grpc
+      url: '#' 
+      sublinks:
+        - title: Defining the Interface of the Service
+          url: /learn/user-guide/network-communication/grpc/defining-the-service-interface/
+          active: defining-the-service-interface
+        - title: Implementing gRPC Services and Clients
+          url: '#'
+          sublinks:
+            - title: Implementing gRPC Services 
+              url: /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-services/
+              active: implementing-grpc-services
+            - title: Implementing gRPC Clients
+              url: /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-clients/
+              active: implementing-grpc-clients
+        - title: Performing gRPC Streaming
+          url: /learn/user-guide/network-communication/grpc/performing-grpc-streaming/
+          active: performing-grpc-streaming
     - title: WebSocket
       url: /learn/user-guide/network-communication/websocket/
       active: websocket
@@ -170,15 +183,3 @@
       #url: /swan-lake/learn/extending-with-compiler-extensions
       #active: extending-with-compiler-extensions
       
- 
-
-
-   
-
-      
-
-
-
-
-
-

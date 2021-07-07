@@ -1,9 +1,9 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Flexibly Typed
 description: See how the Ballerina programming language's flexible type system helps developers work with networked resources in their code.
 keywords: ballerina, programming lanaguage, type system, data binding
-permalink: /learn/user-guide/why-ballerina/flexibly-typed/
+permalink: /learn/why-ballerina/flexibly-typed/
 active: flexibly-typed
 intro: See how the Ballerina programming language's flexible type system helps developers work with networked resources in their code.
 redirect_from:
@@ -14,6 +14,8 @@ redirect_from:
 - /learn/user-guide/why-ballerina/network-aware-type-system
 - /learn/user-guide/why-ballerina/network-aware-type-system/
 - /learn/user-guide/why-ballerina/flexibly-typed
+- /learn/user-guide/why-ballerina/flexibly-typed/
+- /learn/why-ballerina/flexibly-typed
 ---
 
 In a programming language, the type system is the foundation for representing data and implementing logic. It provides the means of creating abstractions to the solutions that you provide. While some languages provide basic functionality, others strive to give in-built functionality for specialized domains.
@@ -269,7 +271,7 @@ $ bal run sample.bal
 
 ### Test Scenarios
 
-<table class="table cCodeTable" >
+<table class="table cCodeTable cCodeTableFixedLayout" >
                                  <tr>
                                     <th class="cDescription">Description</th>
                                     <th class="cCodeCol">Request</th>
@@ -277,50 +279,52 @@ $ bal run sample.bal
                                  </tr>
                                 <tr>
                                     <td>
+                                        <span>
                                        A request is sent without setting the <code>married</code> field. Since this field has a default value in the <code>Person</code> type, the value is automatically populated to that. The <code>ethnicity</code> field is not set since it is marked as optional.
+                                       </span>
                                     </td>
                                     <td>
-                                       <span class="cTableCode">curl -d '{ "name": "John Little",  "birthYear": 1855 }' http://localhost:8080/record</span>
+                                       <span class="cTableCode"><code>curl -d '{ "name": "John Little",  "birthYear": 1855 }' http://localhost:8080/record</code></span>
                                     </td>
                                     <td>
-                                        <span class="cTableCode">Low credit score {"name":"John Little","birthYear":1855,"married":false}</span>
+                                        <span class="cTableCode"><code>Low credit score {"name":"John Little","birthYear":1855,"married":false}</code></span>
                                     </td>
                                  </tr> 
                                  <tr>
                                     <td>A request is sent with a string value given for the integer field <code>birthYear</code>. The service validates the value for the field and the request fails.</td>
                                    <td>
-                                       <span class="cTableCode">curl -d '{ "name": "John Little",  "birthYear": "1855" }' http://localhost:8080/record</span>
+                                       <span class="cTableCode"><code>curl -d '{ "name": "John Little",  "birthYear": "1855" }' http://localhost:8080/record</code></span>
                                     </td>
                                     <td>
-                                        <span class="cTableCode">data binding failed: error {ballerina/lang.typedesc}ConversionError message='map '<' json > ' value cannot be converted to 'Person'</span>
+                                        <span class="cTableCode"><code>data binding failed: error {ballerina/lang.typedesc}ConversionError message='map '<' json > ' value cannot be converted to 'Person'</code></span>
                                     </td>
                                  </tr> 
                               <tr>
                                     <td>A request is sent with the optional <code>ethnicity</code> field also set. </td>
                                     <td>
-                                       <span class="cTableCode">curl -d '{ "name": "Sunil Perera",  "birthYear": 1950, "married": true, "creditScore": "GOOD" }' http://localhost:8080/record</span>
+                                       <span class="cTableCode"><code>curl -d '{ "name": "Sunil Perera",  "birthYear": 1950, "married": true, "creditScore": "GOOD" }' http://localhost:8080/record</code></span>
                                     </td>
                                     <td>
-                                       <span class="cTableCode">High credit score {"name":"Sunil Perera","birthYear":1950,"married":true,"creditScore":"GOOD"}
+                                       <span class="cTableCode"><code>High credit score {"name":"Sunil Perera","birthYear":1950,"married":true,"creditScore":"GOOD"}</code>
 </span>
                                     </td>
                                  </tr>
                                    <tr>
                                     <td>A request is sent with a non-existing value of the <code>Ethnicity</code> union type. This is validated by the service and the request fails.</td>
                                     <td>
-                                       <span class="cTableCode">curl -d '{ "name": "Tim Kern",  "birthYear": 1995, "creditScore": "HIGH", "country": "Japan", "zipcode": "98101" }' http://localhost:8080/record</span>
+                                       <span class="cTableCode"><code>curl -d '{ "name": "Tim Kern",  "birthYear": 1995, "creditScore": "HIGH", "country": "Japan", "zipcode": "98101" }' http://localhost:8080/record</code></span>
                                     </td>
                                     <td>
-                                       <span class="cTableCode">data binding failed: error {ballerina/lang.typedesc}ConversionError message='map< json >' value cannot be converted to 'Person'</span>
+                                       <span class="cTableCode"><code>data binding failed: error {ballerina/lang.typedesc}ConversionError message='map< json >' value cannot be converted to 'Person'</code></span>
 </td>
                                  </tr>
                                   <tr>
                                     <td>A request is sent with additional fields not explicitly mentioned in the <code>Person</code> type. Since <code>Person</code> is an open record type, the service accepts and makes these extra fields available to be passed through to other systems, e.g. a forwarding service.</td>
                                     <td>
-                                       <span class="cTableCode">curl -d '{ "name": "Tim Kern",  "birthYear": 1995, "creditScore": "EXCELLENT", "country": "Japan", "zipcode": "98101" }' http://localhost:8080/record</span>
+                                       <span class="cTableCode"><code>curl -d '{ "name": "Tim Kern",  "birthYear": 1995, "creditScore": "EXCELLENT", "country": "Japan", "zipcode": "98101" }' http://localhost:8080/record</code></span>
                                     </td>
                                     <td>
-                                       <span class="cTableCode">High credit score {"name":"Tim Kern","birthYear":1995,"married":false,"creditScore":"EXCELLENT","country":"Japan","zipcode":"98101"}</span>
+                                       <span class="cTableCode"><code>High credit score {"name":"Tim Kern","birthYear":1995,"married":false,"creditScore":"EXCELLENT","country":"Japan","zipcode":"98101"}</code></span>
                                     </td>
                                  </tr> 
                               </table>

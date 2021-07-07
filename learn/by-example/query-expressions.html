@@ -21,16 +21,21 @@ redirect_from:
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">numsTimes10</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="nx">nums</span>
                         <span class="c1">// The `select` clause is evaluated for each iteration.</span>
                         <span class="nx">select</span> <span class="nx">i</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
+
                         
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">numsTimes10</span><span class="p">);</span>
 
-    <span class="c1">// This is based on &lt;br&gt;&lt;/br&gt;</span>
-    <span class="c1">// `{ 10 × i | i ∈ nums }` &lt;br&gt;&lt;/br&gt;</span>
-    <span class="c1">// `{ i | i mod 2 = 0, i ∈ nums }` &lt;br&gt;&lt;/br&gt;</span>
+    <span class="c1">// This is based on</span>
+    <span class="c1">//</span>
+    <span class="c1">// `{ 10 × i | i ∈ nums }`</span>
+    <span class="c1">//</span>
+    <span class="c1">// `{ i | i mod 2 = 0, i ∈ nums }`</span>
+    <span class="c1">//</span>
     <span class="c1">// set builder notation.</span>
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">evenNums</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="nx">nums</span>
                      <span class="nx">where</span> <span class="nx">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
                      <span class="nx">select</span> <span class="nx">i</span><span class="p">;</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">evenNums</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -51,14 +56,14 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="json-numbers.html">
+                                    <a class="prev" href="json-numbers.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
                                         <p>JSON Numbers</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="destructuring-records.html">
+                                    <a class="next" href="destructuring-records.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
                                         <p>Destructuring Records</p>
                                     </a>
@@ -71,9 +76,9 @@ redirect_from:
             </div>
             <div class="example" id="query-expressions">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
-                    <table class="cTopControlsContainer">
-                        <tr>
-                            <td class="cLeftTD">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -84,73 +89,53 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=b4d59bb9e9dbbfdc00b05dc3049a01c1&file=query_expressions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=682ac7f5aa6b608ed655038e1e9127cc&file=query_expressions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
                                 </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+                            </div> 
+                        </div>
+                    </div>
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
     int[] nums = [1, 2, 3, 4];
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int[] numsTimes10 = from var i in nums
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -159,19 +144,17 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>                        select i * 10;
-                        
-    io:println(numsTimes10);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -180,73 +163,89 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR">
 
-                                <td class="code">
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>                        
+    io:println(numsTimes10);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int[] evenNums = from var i in nums
                      where i % 2 == 0
                      select i;
-    io:println(evenNums);
-}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is based on <br></br>
- <code>{ 10 × i | i ∈ nums }</code> <br></br>
- <code>{ i | i mod 2 = 0, i ∈ nums }</code> <br></br>
- set builder notation.</p>
+                                            <p>This is based on</p>
+
+<p><code>{ 10 × i | i ∈ nums }</code></p>
+
+<p><code>{ i | i mod 2 = 0, i ∈ nums }</code></p>
+
+<p>set builder notation.</p>
 
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                            <div class="cTR">
+
+                                <div class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(evenNums);
+}
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run query_expressions.bal
 [10,20,30,40]
 [2,4]
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

@@ -15,15 +15,16 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Short for retry&lt;DefaultRetryManager&gt;(3)</span>
-    <span class="c1">// If any of `doStage1` and `doStage2` returns  `error:Retriable`,</span>
-    <span class="c1">// program will retry execution until execution succeed without an error `error:Retriable`.</span>
-    <span class="c1">// By default, it will retry 3 times with `DefaultRetryManager`.</span>
+    <span class="c1">// Short for `retry&lt;DefaultRetryManager&gt;(3)`.</span>
+    <span class="c1">// If any of the `doStage1` and `doStage2` returns  `error:Retriable`,</span>
+    <span class="c1">// the program will retry execution until execution succeeds without an `error:Retriable` error.</span>
+    <span class="c1">// By default, it will retry 3 times with the `DefaultRetryManager`.</span>
     <span class="nx">retry</span> <span class="nx">transaction</span> <span class="p">{</span>
         <span class="nx">check</span> <span class="nx">doStage1</span><span class="p">();</span>
         <span class="nx">check</span> <span class="nx">doStage2</span><span class="p">();</span>
         <span class="nx">check</span> <span class="nx">commit</span><span class="p">;</span>
     <span class="p">}</span>
+
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">doStage1</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -32,8 +33,9 @@ redirect_from:
 
 <span class="kd">function</span> <span class="nx">doStage2</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Returns `error:Retriable` error for retrying.</span>
-    <span class="c1">// To support custom errors, a custom implementation of `RetryManager` is required.</span>
+    <span class="c1">// To support custom errors, a custom implementation of the `RetryManager` is required.</span>
     <span class="k">return</span> <span class="nx">error</span> <span class="p">&#39;error:Retriable(</span><span class="s">&quot;Stage2 failed&quot;</span><span class="p">);</span>
+
 <span class="p">}</span>
 </pre></div>
 
@@ -57,14 +59,14 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="rollback.html">
+                                    <a class="prev" href="rollback.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
                                         <p>Rollback</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="transactional-qualifier.html">
+                                    <a class="next" href="transactional-qualifier.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
                                         <p>Transactional Qualifier</p>
                                     </a>
@@ -77,9 +79,9 @@ redirect_from:
             </div>
             <div class="example" id="retry-transaction-statement">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
-                    <table class="cTopControlsContainer">
-                        <tr>
-                            <td class="cLeftTD">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -90,156 +92,150 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=1bbc417279d8773eeb8bdc23e11b8921&file=retry_transaction_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ef780a404b8d12ca8cd553358deb172d&file=retry_transaction_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
                                 </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+                            </div> 
+                        </div>
+                    </div>
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    retry transaction {
         check doStage1();
         check doStage2();
         check commit;
     }
-}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Short for retry<DefaultRetryManager>(3)
- If any of <code>doStage1</code> and <code>doStage2</code> returns  <code>error:Retriable</code>,
- program will retry execution until execution succeed without an error <code>error:Retriable</code>.
- By default, it will retry 3 times with <code>DefaultRetryManager</code>.</p>
+                                            <p>Short for <code>retry&lt;DefaultRetryManager&gt;(3)</code>.
+ If any of the <code>doStage1</code> and <code>doStage2</code> returns  <code>error:Retriable</code>,
+ the program will retry execution until execution succeeds without an <code>error:Retriable</code> error.
+ By default, it will retry 3 times with the <code>DefaultRetryManager</code>.</p>
 
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function doStage1() returns error? {
     io:println(&quot;Stage1 completed&quot;);
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function doStage2() returns error? {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    return error &#39;error:Retriable(&quot;Stage2 failed&quot;);
-}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Returns <code>error:Retriable</code> error for retrying.
- To support custom errors, a custom implementation of <code>RetryManager</code> is required.</p>
+ To support custom errors, a custom implementation of the <code>RetryManager</code> is required.</p>
 
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                            <div class="cTR">
+
+                                <div class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run retry_transaction_statement.bal
 Stage1 completed
 Stage1 completed
@@ -248,23 +244,18 @@ Stage1 completed
 error: Stage2 failed {}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

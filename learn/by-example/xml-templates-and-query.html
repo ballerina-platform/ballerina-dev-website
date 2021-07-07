@@ -20,7 +20,7 @@ redirect_from:
 <span class="p">|};</span>
 
 <span class="kd">function</span> <span class="nx">personsToXml</span><span class="p">(</span><span class="nx">Person</span><span class="p">[]</span> <span class="nx">persons</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">xml</span> <span class="p">{</span>
-    <span class="c1">// Uses a template containing a `query expression` containing a template.</span>
+    <span class="c1">// Uses a template containing a query expression, which also contains a template.</span>
     <span class="k">return</span> <span class="kt">xml</span><span class="s">`&lt;data&gt;${from var {name, country} in persons</span>
 <span class="s">           select xml`</span><span class="p">&lt;</span><span class="nx">person</span> <span class="nx">country</span><span class="p">=</span><span class="s">&quot;${country}&quot;</span><span class="p">&gt;</span><span class="err">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}&lt;</span><span class="o">/</span><span class="nx">person</span><span class="p">&gt;</span><span class="s">`}&lt;/data&gt;`</span><span class="p">;</span>
 
@@ -42,8 +42,8 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>XML Templates and Query</h2>
-                            <p><p>XML templates combine nicely with <code>query</code>. (e.g., you can have a template containing a <code>query expression</code>
- containing a template).</p>
+                            <p><p>XML templates can be combined with queries (e.g., you can have a template containing a query expression, which
+ also contains a template).</p>
 </p>
 
                         </td>
@@ -51,14 +51,14 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="xml-navigation.html">
+                                    <a class="prev" href="xml-navigation.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
                                         <p>XML Navigation </p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="xml-namespaces.html">
+                                    <a class="next" href="xml-namespaces.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
                                         <p>XML Namespaces</p>
                                     </a>
@@ -71,9 +71,9 @@ redirect_from:
             </div>
             <div class="example" id="xml-templates-and-query">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
-                    <table class="cTopControlsContainer">
-                        <tr>
-                            <td class="cLeftTD">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -84,116 +84,94 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=b4dda54ca55edf316cef400bf4a4b308&file=xml_templates_and_query.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=479f7b5500cabc8df1d6565645092244&file=xml_templates_and_query.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
                                 </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+                            </div> 
+                        </div>
+                    </div>
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type Person record {|
     string name;
     string country;
 |};
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function personsToXml(Person[] persons) returns xml {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    return xml`&lt;data&gt;${from var {name, country} in persons
            select xml`&lt;person country=&quot;${country}&quot;&gt;${name}&lt;/person&gt;`}&lt;/data&gt;`;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Uses a template containing a <code>query expression</code> containing a template.</p>
+                                            <p>Uses a template containing a query expression, which also contains a template.</p>
 
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
     Person[] persons = [
         {name: &quot;Jane&quot;, country: &quot;USA&quot;},
@@ -203,49 +181,38 @@ redirect_from:
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run xml_templates_and_query.bal
 &lt;data&gt;&lt;person country=&quot;USA&quot;&gt;Jane&lt;/person&gt;&lt;person country=&quot;Germany&quot;&gt;Mike&lt;/person&gt;&lt;/data&gt;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

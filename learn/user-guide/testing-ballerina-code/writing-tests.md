@@ -93,7 +93,8 @@ function testFunction1() {
     test:assertTrue(true, msg = "Failed!");
 }
 
-// This test function depends on the `testFunction3`.
+// This test function depends on the `testFunction3` and is executed with an 
+// array based data set.
 @test:Config{  
     before: beforeFunc,
     after: afterFunc,
@@ -110,14 +111,34 @@ function dataGen() returns (int[][]) {
     return [[1]];
 }
 
-// This is a random test function. This will randomly execute without depending on the other functions.
-// However, note that the `testFunction2` function depends on this.
+// This is a random test function. This will randomly execute without depending  on
+// the other functions. However, note that the `testFunction2` function depends on this.
+
 @test:Config {
     groups: ["g1", "g2"]
 }
 function testFunction3() {
     io:println("I'm in test function 3!");
     test:assertTrue(true, msg = "Failed!");
+}
+
+// This test is executed with a map based data set.
+@test:Config {
+    dataProvider: mapDataProvider
+}
+function mapDataProviderTest(int value1, int value2, string fruit) returns error? {
+    io:println("Input : [" + value1.toBalString() + "," + value2.toBalString() + "," + fruit + "]");
+    test:assertEquals(value1, value2, msg = "The provided values are not equal");
+    test:assertEquals(fruit.length(), 6);
+}
+
+// The data provider function, which returns a  data set as a map of tuples.
+function mapDataProvider() returns map<[int, int, string]>|error {
+    map<[int, int, string]> dataSet = {
+        "banana": [10, 10, "banana"],
+        "cherry": [5, 5, "cherry"]
+    };
+    return dataSet;
 }
 ```
 
@@ -221,7 +242,8 @@ import ballerina/test;
 
 @test:Config {}
 function testAssertString() {
-    test:assertEquals("hello Ballerina user\nWelcome to Ballerina", "hello user\nWelcome to Ballerina");
+    test:assertEquals("hello Ballerina user\nWelcome to Ballerina",
+        "hello user\nWelcome to Ballerina");
 }
 ```
 
@@ -238,15 +260,14 @@ function testAssertString() {
 
          Diff    :
 
-         --- expected
-         +++ actual
+         --- actual
+         +++ expected
 
          @@ -1,2 +1,2 @@
 
-         -hello user
-         +hello Ballerina user
+         -hello Ballerina user
+         +hello user
          Welcome to Ballerina
-
 ```
 
 #### Values of the `JSON/record/map` type
@@ -287,27 +308,28 @@ function testAssertJson() {
 
 ```bash
 [fail] testAssertJson:
-    Assertion Failed!
 
-      expected: '{"name2":"Amie","age":21,"marks":{"maths":35,"english":90,"status":{"pass":false...'
-      actual  : '{"name":"Anne","age":"21","marks":{"maths":99,"english":90,"status":{"pass":true...'
+Assertion Failed!
 
-      Diff    :
+expected: '{"name2":"Amie","age":21,"marks":{"maths":35,"english":90,"status":{"pass":false...'
+actual  : '{"name":"Anne","age":"21","marks":{"maths":99,"english":90,"status":{"pass":true...'
 
-        expected keys   : name2
-        actual keys     : name
+Diff    :
 
-        key: age
-        expected value  : <int> 21
-        actual value    : <string> 21
+    expected keys   : name2
+    actual keys     : name
 
-        key: marks.maths
-        expected value  : 35
-        actual value    : 99
+    key: age
+    expected value  : <int> 21
+    actual value    : <string> 21
 
-        key: marks.status.pass
-        expected value  : false
-        actual value    : true
+    key: marks.maths
+    expected value  : 35
+    actual value    : 99
+
+    key: marks.status.pass
+    expected value  : false
+    actual value    : true
 
 ```
 
@@ -355,7 +377,8 @@ This can be used for initializing the test suite level pre-requisites.
 import ballerina/io;
 import ballerina/test;
 
-// The `BeforeSuite` function is executed before running all the test functions in this module. 
+// The `BeforeSuite` function is executed before running all the test
+// functions in this module.
 @test:BeforeSuite
 function beforeFunc() {
     io:println("I'm the before suite function!");
@@ -387,13 +410,15 @@ For each group specified in this annotation, the `BeforeGroups` annotated functi
 import ballerina/io;
 import ballerina/test;
 
-// The `beforeGroups1` function is executed before running all the test functions belonging to the `g1` group.
+// The `beforeGroups1` function is executed before running all the test functions
+// belonging to the `g1` group.
 @test:BeforeGroups { value:["g1"] }
 function beforeGroups1() {
     io:println("I'm the before groups function!");
 }
 
-// Another `beforeGroups2` function is executed before running all the test functions belonging to the `g1` and `g2` groups. 
+// Another `beforeGroups2` function is executed before running all the test functions
+// belonging to the `g1` and `g2` groups.
 @test:BeforeGroups { value:["g1", "g2"] }
 function beforeGroups2() {
     io:println("I'm another before groups function!");
@@ -517,13 +542,15 @@ function testFunction2() {
     test:assertTrue(true, msg = "Failed");
 }
 
-// The `afterGroupsFunc1` function is executed before running all the test functions belonging to the `g1` group.
+// The `afterGroupsFunc1` function is executed before running all the test functions
+// belonging to the `g1` group.
 @test:AfterGroups { value:["g1"] }
 function afterGroupsFunc1() {
     io:println("I'm the after groups function!");
 }
 
-// The `afterGroupsFunc2` function is executed before running all the test functions belonging to the `g1` and `g2` groups. 
+// The `afterGroupsFunc2` function is executed before running all the test functions
+// belonging to the `g1` and `g2` groups.
 @test:AfterGroups { value:["g1", "g2"] }
 function afterGroupsFunc2() {
     io:println("I'm another after groups function!");

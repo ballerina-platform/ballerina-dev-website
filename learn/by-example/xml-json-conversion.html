@@ -49,7 +49,7 @@ redirect_from:
                             <h2>XML JSON Conversion</h2>
                             <p><p>The <code>xmldata:fromJson()</code> and <code>xmldata:toJson()</code> functions are used to do the conversions between JSON and XML.
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerina/xmldata/latest/">XmlData module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerina/xmldata/latest/">xmldata module</a>.</p>
 </p>
 
                         </td>
@@ -57,12 +57,19 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="environment-variables.html">
+                                    <a class="prev" href="environment-variables.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
                                         <p>Environment Variables</p>
                                     </a>
                                 </div>
                                  
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="tracing.html?is_ref_by_example=true">
+                                        <span>NEXT ></span>
+                                        <p>Distributed Tracing</p>
+                                    </a>
+                                </div>
+                                
                             </div>
                         </td>
                     </tr>
@@ -70,9 +77,9 @@ redirect_from:
             </div>
             <div class="example" id="xml-json-conversion">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
-                    <table class="cTopControlsContainer">
-                        <tr>
-                            <td class="cLeftTD">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -83,70 +90,48 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=b1dedbda564fa08526310d9d0bfd47df&file=xml_json_conversion.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=6052bc7d4e381d9baebf2f954ff337af&file=xml_json_conversion.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
                                 </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+                            </div> 
+                        </div>
+                    </div>
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 import ballerina/xmldata;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    json jsonObject = {&quot;Store&quot;: {
             &quot;@id&quot;: &quot;AST&quot;,
             &quot;name&quot;: &quot;Anne&quot;,
@@ -158,8 +143,8 @@ import ballerina/xmldata;
         }};
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -168,18 +153,18 @@ import ballerina/xmldata;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    xml? xmlData = check xmldata:fromJson(jsonObject);
     io:println(xmlData);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -189,32 +174,32 @@ import ballerina/xmldata;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    if (xmlData is xml) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        jsonObject = check xmldata:toJson(xmlData);
         io:println(jsonObject);
     }
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -224,47 +209,36 @@ import ballerina/xmldata;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run xml_json_conversion.bal
 &lt;Store id=&quot;AST&quot;&gt;&lt;name&gt;Anne&lt;/name&gt;&lt;address&gt;&lt;street&gt;Main&lt;/street&gt;&lt;city&gt;94&lt;/city&gt;&lt;/address&gt;&lt;codes&gt;&lt;root&gt;4&lt;/root&gt;&lt;root&gt;8&lt;/root&gt;&lt;/codes&gt;&lt;/Store&gt;
 {&quot;Store&quot;:{&quot;name&quot;:&quot;Anne&quot;,&quot;address&quot;:{&quot;street&quot;:&quot;Main&quot;,&quot;city&quot;:&quot;94&quot;},&quot;codes&quot;:{&quot;root&quot;:[&quot;4&quot;,&quot;8&quot;]}},&quot;@id&quot;:&quot;AST&quot;}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

@@ -44,7 +44,7 @@ It runs all the tests in your Ballerina project using the `bal test` [CLI comman
 
 >**Tip:** If you use any [configurable variables](/learn/user-guide/configurability/), the relevant `Config.toml` file should be added inside the corresponding module’s test directory root.
 
-## Document
+## Build Documentation
 
 It is a quick guide to generate documentation for your Ballerina project. Once executed, the documentation is generated using the `bal doc` [CLI command](/learn/tooling-guide/cli-tools/cli-commands/#core-commands). The generated documentation can be found inside the `apidocs` directory in the project `target`. 
 
@@ -67,5 +67,11 @@ It adds a [Ballerina module](/learn/user-guide/ballerina-packages/modules/) for 
 It generates a `Cloud.toml` file for your Ballerina project according to the default [cloud specifications](https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md).
 
 ![Create Cloud.toml](/learn/images/create-cloud-toml.gif)
+
+## Paste JSON as Record 
+
+This command converts a JSON string (that is copied to the clipboard) to a Ballerina record(s) and pastes it in your code.
+
+![Paste JSON as Record](/learn/images/paste-json-as-record.gif)
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

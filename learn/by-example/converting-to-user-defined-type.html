@@ -22,13 +22,15 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="kt">json</span> <span class="nx">j</span> <span class="p">=</span> <span class="p">{</span><span class="nx">x</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nx">y</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">};</span>
 
-    <span class="c1">// Argument is a typedesc value.</span>
-    <span class="c1">// Static return type depends on argument.</span>
+    <span class="c1">// Argument is a `typedesc` value.</span>
+    <span class="c1">// The static return type depends on the argument.</span>
     <span class="nx">Coord</span> <span class="nx">c</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">j</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="nx">Coord</span><span class="p">);</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">x</span><span class="p">);</span>
 
-    <span class="c1">// Argument defaulted from context.</span>
+    <span class="c1">// Argument defaulted from the context.</span>
     <span class="nx">Coord</span> <span class="nx">d</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">j</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">();</span>
+
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">x</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -55,14 +57,14 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="converting-from-json-to-user-defined-type.html">
+                                    <a class="prev" href="converting-from-json-to-user-defined-type.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
                                         <p>Converting From JSON to User-Defined Type</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="resource-method-typing.html">
+                                    <a class="next" href="resource-method-typing.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
                                         <p>Resource Method Typing</p>
                                     </a>
@@ -75,9 +77,9 @@ redirect_from:
             </div>
             <div class="example" id="converting-to-user-defined-type">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
-                    <table class="cTopControlsContainer">
-                        <tr>
-                            <td class="cLeftTD">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -88,160 +90,151 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=96efa30c5d7bf9394527cd2e2fe3c067&file=converting_to_user_defined_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ab4342643ed6c4005d4f255534fa187f&file=converting_to_user_defined_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
                                 </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+                            </div> 
+                        </div>
+                    </div>
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type Coord record {
     float x;
     float y;
 };
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
     json j = {x: 1.0, y: 2.0};
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    Coord c = check j.cloneWithType(Coord);
-    io:println(c.x);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Argument is a typedesc value.
- Static return type depends on argument.</p>
+                                            <p>Argument is a <code>typedesc</code> value.
+ The static return type depends on the argument.</p>
 
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR">
 
-                                <td class="code">
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(c.x);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    Coord d = check j.cloneWithType();
-    io:println(d.x);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Argument defaulted from the context.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(d.x);
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Argument defaulted from context.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run converting_to_user_defined_type.bal
 1.0
 1.0
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

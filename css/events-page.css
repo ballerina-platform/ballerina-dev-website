@@ -56,8 +56,27 @@ td.cEventDateContainer span.cEventDate {
     margin-bottom: 5px;
 }
 
-
-a.cEventRegistration, input.cSubmitButton {
+a.cEventRegistration{
+    display: block;
+    margin: 0 15px;
+    transition: none !important;
+    font-size: 16px;
+    /* font-weight: 200; */
+    background-color: #20b6b0;
+    color: #ffffff !important;
+    padding: 10px 20px  ; 
+    background-repeat: no-repeat;
+    background-position: left 25px top 18px;
+    text-decoration: none;   
+    border: none;
+    font-family: "pragmatica", sans-serif; 
+    transition: all 0.3s;
+}
+a.cEventRegistration:hover{
+    background-color: #57595d;
+    color: #ffffff !important;
+}
+ input.cSubmitButton {
     
     display: inline-block;
 margin: 0 15px;
@@ -103,7 +122,9 @@ td.cEventDateContainer , td.cEventDetail , td.cEventURL {
     border-bottom: 1px solid #c7c7c7 !important;
     padding: 30px 0;
 }
-
+td.cEventURL{
+    padding-left: 15px;
+}
 .nav > li.cVersionItem {
     display: none !important;
 }

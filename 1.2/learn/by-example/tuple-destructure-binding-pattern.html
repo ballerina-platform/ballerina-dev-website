@@ -1,8 +1,10 @@
 ---
 layout: ballerina-example-page
 title: Tuple Destructure Binding Pattern
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+description: 
+keywords: 
 permalink: /1.2/learn/by-example/tuple-destructure-binding-pattern
+active: tuple-destructure-binding-pattern
 redirect_from:
   - /v1-2/learn/by-example/tuple-destructure-binding-pattern
   - /v1-2/learn/by-example/tuple-destructure-binding-pattern.html
@@ -80,14 +82,14 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="error-typed-binding-pattern.html">
+                                    <a class="prev" href="error-typed-binding-pattern.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
                                         <p>Error-Typed Binding Pattern</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="record-destructure-binding-pattern.html">
+                                    <a class="next" href="record-destructure-binding-pattern.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
                                         <p>Record Destructure Binding Pattern</p>
                                     </a>
@@ -100,9 +102,9 @@ redirect_from:
             </div>
             <div class="example" id="tuple-destructure-binding-pattern">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
-                    <table class="cTopControlsContainer">
-                        <tr>
-                            <td class="cLeftTD">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -113,84 +115,54 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=9c844aec04db021ebca403ff382a2c03&file=tuple_destructure_binding_pattern.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=5147c20ef68a85f2d28db2aa2a60eb93&file=tuple_destructure_binding_pattern.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
                                 </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+                            </div> 
+                        </div>
+                    </div>
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    [string, [int, boolean]] [a1, [a2, a3]] = [&quot;Hello&quot;, [123, true]];
     [a1, [a2, a3]] = [&quot;Ballerina&quot;, [453, false]];
     io:println(&quot;Tuple variable : &quot;, a1, &quot; &quot;, a2, &quot; &quot;, a3);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -200,12 +172,12 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    [string, [int, boolean]] [b1, [b2, b3]] = [&quot;Hello&quot;, [123, true]];
     b1 = &quot;Ballerina&quot;;
     b2 = 453;
@@ -213,8 +185,8 @@ redirect_from:
     io:println(&quot;Tuple variable : &quot;, b1, &quot; &quot;, b2, &quot; &quot;, b3);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -224,12 +196,12 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    [string, [int, [boolean, float]]] [c1, [c2, [c3, c4]]] =
                                         [&quot;Test&quot;, [123, [true, 5.6]]];
     [[c1, c2], c3] = [[&quot;Ballerina&quot;, 453], false];
@@ -237,8 +209,8 @@ redirect_from:
     io:println(&quot;Tuple variable : &quot;, c1, &quot; &quot;, c2, &quot; &quot;, c3, &quot; &quot;, c4);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -248,12 +220,12 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    [[string, [int, [boolean, int]]], [float, int]] v1 =
                             [[&quot;Ballerina&quot;, [3, [true, 34]]], [5.6, 45]];
     [[string, [int, [boolean, int]]],
@@ -263,8 +235,8 @@ redirect_from:
                     d1, &quot; &quot;, d2, &quot; &quot;, d3, &quot; &quot;, d4, &quot; &quot;, d5, &quot; &quot;, d6);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -273,18 +245,18 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var [e1, [e2, e3]] = foo();
     io:println(&quot;Tuple variable : &quot;, e1, &quot; &quot;, e2, &quot; &quot;, e3);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -293,68 +265,62 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var [[f1, [f2, [f3, f4]]], [f5, f6]] = bar();
     io:println(&quot;Tuple variable : &quot;,
                             f1, &quot; &quot;, f2, &quot; &quot;, f3, &quot; &quot;, f4, &quot; &quot;, f5, &quot; &quot;, f6);
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function foo() returns [string, [int, boolean]] {
     return [&quot;Ballerina&quot;, [453, false]];
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>function bar() returns [[string, [int, [boolean, int]]], [float, int]] {
     return [[&quot;Ballerina&quot;, [3, [true, 34]]], [5.6, 45]];
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command below.
 ballerina run tuple_destructure_binding_pattern.bal
@@ -366,23 +332,18 @@ Tuple variable : Ballerina 453 false
 Tuple variable : Ballerina 3 true 34 5.6 45
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

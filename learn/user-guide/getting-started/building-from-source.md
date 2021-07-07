@@ -1,14 +1,21 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: Building from Source
-description: The sections below will guide you to build and use the basic Ballerina runtime build and also the complete Ballerina distribution build. 
+description: The sections below will guide you to build either the complete Ballerina distribution or the basic Ballerina runtime build as preferred. 
 keywords: ballerina, installing ballerina, programming language, build from source, distribution build, runtime build
 permalink: /learn/user-guide/getting-started/building-from-source/
 active: building-from-source
-intro: The sections below will guide you to build and use the basic Ballerina runtime build and also the complete Ballerina distribution build. 
+intro: The sections below will guide you to build either the complete Ballerina distribution or the basic Ballerina runtime build as preferred. 
 redirect_from:
     - /learn/user-guide/getting-started/building-from-source
 ---
+
+## Overview
+
+[Building the complete Ballerina distribution](#building-the-complete-ballerina-distribution) provides you access to all the main features of Ballerina such as the runtime, corresponding tools, standard library modules etc.
+
+>**Info:** However, if you need just a plain Ballerina language build with only the basic language features and the JBallerina Java (Java Introp) API in it, you can [build only the Ballerina Runtime with the tools](#building-only-the-ballerina-runtime-with-the-tools)
+
 
 ## Setting up the Prerequisites
 
@@ -34,9 +41,87 @@ Follow the steps below to set up the prerequisites.
     set packagePAT=<YOUR_PERSONAL_ACCESS_TOKEN>
     ```
 
-## Building the Ballerina Runtime with the Tools
+## Building the Complete Ballerina Distribution
 
-Follow the steps below to build the Ballerina runtime with the corresponding tools.
+Follow the steps below to build the [`ballerina-distribution` repository](https://github.com/ballerina-platform/ballerina-distribution) to get full access to the complete Ballerina distribution.
+
+1. Fork the `ballerina-distribution` repository to your GitHub account and execute following command to clone it.
+
+    ```bash
+    git clone --recursive https://github.com/<GITHUB_USERNAME>/ballerina-distribution.git
+    ```
+
+2. Navigate to the `<BALLERINA_DISTRIBUTION_PROJECT>` directory, and execute the command below to start the build (here, the tests are excluded to speed up the build).
+
+    **For Unix/macOS:**
+
+    ```bash
+    ./gradlew clean build -x test
+    ```
+
+    **For Windows:**
+
+    ```bash
+    gradlew clean build -x test
+    ```
+
+3. Extract the built Ballerina Language distribution (i.e., the `<BALLERINA_DISTRIBUTION_PROJECT>/ballerina/build/distributions/ballerina-<VERSION>.zip` file) to a preferred location.
+    
+4. Configure the environment variables below.
+
+    **For Unix/macOS:**
+
+    ```bash
+    # Set up the `BALLERINA_HOME` environment variable.
+    export BALLERINA_HOME="<YOUR_LOCATION>/ballerina-<VERSION>";
+
+    # Include the binaries to the system `PATH`.
+    PATH=$BALLERINA_HOME/bin:$PATH;
+    export PATH;
+    ```
+
+    **For Windows:**
+
+    ```bash
+    # Set up the `BALLERINA_HOME` environment variable.
+    set BALLERINA_HOME="<YOUR_LOCATION>\ballerina-<VERSION>";
+
+    # Include the binaries to the system `PATH`.
+    set PATH=%PATH%;%BALLERINA_HOME%\bin;
+    ```
+
+### Testing the Distribution Build
+
+Since this is a complete Ballerina distribution build, this will have all the Standard Library module dependencies included in it. 
+
+Therefore, follow the steps below to write a simple program using the Ballerina [`io` module](https://github.com/ballerina-platform/module-ballerina-io/) to test the distribution build.
+
+1. Create a `hello_world_with_io.bal` file with the code below.
+
+    ```ballerina
+    import ballerina/io;
+
+    // ballerina hello world program
+    public function main() {
+          io:println("Hello, World with IO!");
+    }
+    ```
+
+2. Execute the command below to build and run this program.
+
+    ```bash
+    bal run hello_world_with_io.bal
+    ```
+
+    If your build is successful, you view the output below.
+
+    ```bash
+    Hello, World with IO!
+    ```
+
+## Building Only the Ballerina Runtime with the Tools
+
+Follow the steps below to build just the Ballerina runtime with the corresponding tools.
 
 1. Fork the [`ballerina-lang` repository](https://github.com/ballerina-platform/ballerina-lang) to your GitHub account and execute following command to clone it.
 
@@ -130,82 +215,3 @@ Therefore, follow the steps below to write a basic Ballerina program using only 
     Hello, World!
     ```
 
-## Building the Complete Ballerina Distribution
-
-With the [basic language distribution](#building-the-ballerina-runtime-with-the-tools), you will not get access to the Ballerina Standard Library Packages, which is one of the main features of Ballerina.
-
-Therefore, follow the steps below to build the [`ballerina-distribution` repository](https://github.com/ballerina-platform/ballerina-distribution) as well (to get full access to the complete Ballerina distribution).
-
-1. Fork the `ballerina-distribution` repository to your GitHub account and execute following command to clone it.
-
-    ```bash
-    git clone --recursive https://github.com/<GITHUB_USERNAME>/ballerina-distribution.git
-    ```
-
-2. Navigate to the `<BALLERINA_DISTRIBUTION_PROJECT>` directory, and execute the command below to start the build (here, the tests are excluded to speed up the build).
-
-    **For Unix/macOS:**
-
-    ```bash
-    ./gradlew clean build -x test
-    ```
-
-    **For Windows:**
-
-    ```bash
-    gradlew clean build -x test
-    ```
-
-3. Extract the built Ballerina Language distribution (i.e., the `<BALLERINA_DISTRIBUTION_PROJECT>/ballerina/build/distributions/ballerina-<VERSION>.zip` file) to a preferred location.
-    
-4. Configure the environment variables below.
-
-    **For Unix/macOS:**
-
-    ```bash
-    # Set up the `BALLERINA_HOME` environment variable.
-    export BALLERINA_HOME="<YOUR_LOCATION>/ballerina-<VERSION>";
-
-    # Include the binaries to the system `PATH`.
-    PATH=$BALLERINA_HOME/bin:$PATH;
-    export PATH;
-    ```
-
-    **For Windows:**
-
-    ```bash
-    # Set up the `BALLERINA_HOME` environment variable.
-    set BALLERINA_HOME="<YOUR_LOCATION>\ballerina-<VERSION>";
-
-    # Include the binaries to the system `PATH`.
-    set PATH=%PATH%;%BALLERINA_HOME%\bin;
-    ```
-
-### Testing the Distribution Build
-
-Since this is a complete Ballerina distribution build, this will have all the Standard Library module dependencies included in it. 
-
-Therefore, follow the steps below to write a simple program using the Ballerina [`io` module](https://github.com/ballerina-platform/module-ballerina-io/) to test the distribution build.
-
-1. Create a `hello_world_with_io.bal` file with the code below.
-
-    ```ballerina
-    import ballerina/io;
-
-    // ballerina hello world program
-    public function main() {
-          io:println("Hello, World with IO!");
-    }
-    ```
-
-2. Execute the command below to build and run this program.
-
-    ```bash
-    bal run hello_world_with_io.bal
-    ```
-
-    If your build is successful, you view the output below.
-
-    ```bash
-    Hello, World with IO!
-    ```

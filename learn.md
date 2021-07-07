@@ -17,7 +17,7 @@ redirect_from:
 ---
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
 
-  <a class="cBoxLink" href="/learn/user-guide/why-ballerina/cloud-native/">
+  <a class="cBoxLink" href="/learn/user-guide/">
 
   <img class="cLearnIcon" src="/img/User-Guide-v1.png"/>
   <h2>User Guide</h2>
@@ -31,7 +31,7 @@ redirect_from:
 
 
 <img class="cLearnIcon" src="/img/Ballerina-By-Example-v1.png"/>
-<h2>Ballerina by Example</h2>
+<h2>Ballerina by Examples</h2>
 
 <p>Try out an extensive list of Ballerina code examples.</p>
 
@@ -92,7 +92,7 @@ redirect_from:
 
 
 <img class="cLearnIcon" src="/img/Ballerina-By-Example-v1.png"/>
-<h2>Ballerina by Example</h2>
+<h2>Ballerina by Examples</h2>
 
 <p>Obtain a hands-on experience of the language and its key features.</p>
 

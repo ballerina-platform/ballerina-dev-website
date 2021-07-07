@@ -39,7 +39,7 @@ redirect_from:
 </div>
 
 <div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="https://docs.central.ballerina.io" target="_blank">
+<a class="cBoxLink" href="https://lib.ballerina.io" target="_blank">
 
 
 <img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>

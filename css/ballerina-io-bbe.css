@@ -473,3 +473,8 @@ ul {
     color: #20b6b0 !important;
     font-family: inherit !important;
 }
+@media only screen and (max-width: 991px) {
+    .row.cBallerina-io-Gray-row {
+        padding-top: 20px;
+    }
+}

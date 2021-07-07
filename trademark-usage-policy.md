@@ -1,15 +1,15 @@
 ---
 layout: ballerina-inner-page
 title: Ballerina Trademark Usage Policy
-description: Ballerina trademarks should be used in accordance with the sections below or with specific written permission obtained from WSO2. Usage of Trademarks in violation of the guidelines below in this policy is prohibited. 
+description: Ballerina trademarks should be used in accordance with the sections below or with specific written permission obtained from WSO2. Usage of Trademarks in violation of the guidelines in this policy is prohibited. Any reference to trademarks and marks in this policy will include names, logos, and any service marks relating to Ballerina owned by WSO2, Inc (“Trademarks”).
 keywords: ballerina, community, ballerina community, branding, trademark, logo, brand guildlines, policy
-intro: Ballerina trademarks should be used in accordance with the sections below or with specific written permission obtained from WSO2. Usage of Trademarks in violation of the guidelines below in this policy is prohibited.  
+intro: Ballerina trademarks should be used in accordance with the sections below or with specific written permission obtained from WSO2. Usage of Trademarks in violation of the guidelines in this policy is prohibited. Any reference to trademarks and marks in this policy will include names, logos, and any service marks relating to Ballerina owned by WSO2, Inc (“Trademarks”).
 permalink: /trademark-usage-policy/
 redirect_from: 
   - /trademark-usage-policy
 ---
 
-The open-source software licenses under which the Ballerina language is released do not extend to the Ballerina trademark and logo usage nor is a right or license to use the Ballerina Trademarks implied. Any reference to trademarks and marks in this policy will include names, logos, and any service marks relating to Ballerina owned by WSO2, Inc (“Trademarks”). 
+The open-source software licenses under which the Ballerina language is released do not extend to the Ballerina Trademark nor does it give an implied right or license to use the Ballerina Trademarks. 
 
 ## The Ballerina Logo
 
@@ -35,7 +35,7 @@ You can download the Ballerina logo in the formats below.
 
 ## Logo Colors
 
-The coloration of the Ballerina logo is an essential element in setting a recognizable tone and look for identity. Consistent use of color enhances the strength of the identity.
+The coloration of the Ballerina logo is an essential element in setting a recognizable tone and identity. Consistent use of color enhances the strength of the identity.
 
 The primary color for the logo is a dark gray shade, which is accompanied by a vibrant teal.
 
@@ -44,6 +44,7 @@ These colors should be balanced by adding white and light gray to complete the p
 As a rule, the Pantone colors represent the most exact matches of the brand colors and should be used primarily. The CMYK values can be used alternatively when Pantone is not available. For onscreen uses (presentations, email, and other digital applications), use the RGB values.
 
 COLORS VARY BETWEEN PLATFORMS AND MATCHING SYSTEMS. AS A RULE, THE PANTONE COATED CHIP SHOULD BE USED AS A MASTER.
+
 
 <div class="row cBallerinaLearnWrapper cGrayWrapper cCommunityLinks">
   <div class="col-sm-12 col-md-1 cBoxContainer cCommunityIconsContainer">
@@ -124,7 +125,8 @@ It is permitted to use the Ballerina Trademark without damaging its value and go
 
 5. The trademark notice accompanying the Ballerina Trademark must not be changed. (E.g.,  The ® mark should not be replaced by the ™ mark.) 
 
-6. The logo should always be used in situations that are in favor of Ballerina and WSO2 and it is prohibited to use the logo in a way that would be in WSO2’s sole opinion derogatory,  misrepresenting, unfair, libelous, obscene, or with false statements and this shall include but not limit the usage of the logo on blogs, social media, or other public platforms.
+6. The logo should always be used in situations that are in favor of Ballerina and WSO2. It is prohibited to use the logo in a way that would be in WSO2’s sole opinion derogatory, misrepresenting, unfair, libelous, obscene, or with false statements.  This shall include but is not limited to the usage of the logo on blogs, social media, presentations, or other public platforms.
+
 
 
 ## Proper Uses

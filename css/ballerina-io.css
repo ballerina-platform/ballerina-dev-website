@@ -1612,7 +1612,7 @@ li pre code span.line-numbers-rows {
 }
 @media (min-width: 992px) {
     .cSearchMenu {
-        padding-left: 15px;
+        margin-left: 15px;
     }
 }
 @media (max-width: 1000px) {
@@ -1949,8 +1949,8 @@ h6 pre[class*="language-"] {
     .mobileSubNav {
         display: flex;
     }
-    .cLeftNavSticky {
-        margin-top: 70px;
+    .mobileSubNav {
+        margin-top: 60px;
     }
     .cBallerina-io-breadcrumbs {
         display: none;

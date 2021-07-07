@@ -1,6 +1,7 @@
 name: Sync artifacts from dev to prod
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - prod-sync

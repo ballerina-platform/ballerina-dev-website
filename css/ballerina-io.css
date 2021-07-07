@@ -1949,8 +1949,8 @@ h6 pre[class*="language-"] {
     .mobileSubNav {
         display: flex;
     }
-    .cLeftNavSticky {
-        margin-top: 70px;
+    .mobileSubNav {
+        margin-top: 60px;
     }
     .cBallerina-io-breadcrumbs {
         display: none;

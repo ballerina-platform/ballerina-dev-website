@@ -15,13 +15,14 @@ The open-source software licenses under which the Ballerina language is released
 
 You can download the Ballerina logo in the formats below.
 
->**Info:** In situations where the original logo can not be used on a given background or a print medium, the Ballerina monochrome logo can be used.
+>**Info:** In situations where the original logo can not be used on a given background or a print medium, the Ballerina inverted logo can be used.
 
 <div class="row cBallerinaLearnWrapper cGrayWrapper cCommunityLinks">
   <div class="col-sm-12 col-md-6 cBoxContainer cCommunityIconsContainer">
       <div class="cBallerina-Box">
       <img style="width:222px" src="/img/logo-images/ballerina_logo_normal.svg">
       </div>
+      <p>Original Logo</p>
       <p> <a href="/img/branding/ballerina_logo_dgrey_svg.svg" target="_blank">SVG</a> |<a href="/img/branding/ballerina_logo_dgrey_png.png" target="_blank"> PNG</a> |<a href="/img/branding/ballerina_logo_dgrey_source_file.eps" target="_blank">  EPS </a></p>
    </div>
 
@@ -29,6 +30,7 @@ You can download the Ballerina logo in the formats below.
       <div class="cBallerina-Box">
       <img style="width:222px" src="/img/logo-images/ballerina_logo_black.svg">
       </div>
+      <p>Inverted Logo</p>
       <p> <a href="/img/branding/ballerina_logo_white_m__svg.svg" target="_blank">SVG</a> |<a href="/img/branding/ballerina_logo_white_m_png.png" target="_blank"> PNG</a> |<a href="/img/branding/ballerina_logo_white_m_source_file.eps" target="_blank">  EPS </a></p>
    </div>
 </div>
@@ -141,11 +143,11 @@ If your usage of the logo is within the permitted scenarios listed above, then y
        To ensure that the Ballerina logo is the most highly visible whenever used, it’s important to have plenty of clear space surrounding the logo. This specifically refers to graphics, type, and other elements that could clutter and distract from the identity of the logo.
     </p>
     <p>
-    All sides of the logo must have adequate clear space as shown below denoted by the X. The clear space around the logo will need to scale proportionally to the size of the logo.  
+    All sides of the logo must have adequate clear space as shown in the diagram and denoted by the X. The clear space around the logo will need to scale proportionally to the size of the logo.  
     </p>
   </div>
   <div class="column" style="float: right;width: 50%;padding: 10px;">
-    <img src="/img/logo-images/specific.svg" style="width:400px; margin-top:10px;">
+    <img src="/img/logo-images/specific-1.svg" style="width:400px; margin-top:10px;">
   </div>
 </div>
 
@@ -208,35 +210,27 @@ If the Ballerina logo is on a darker background, the logo should be clearly visi
   </div>
   <div class="column" style="float: right;width: 50%;">
   <div class="row cBallerinaLearnWrapper cGrayWrapper cCommunityLinks" style="margin-top: 25px;padding: 0px;">
-  <div class="col-sm-12 col-md-4 cBoxContainer cCommunityIconsContainer">
+  <div class="col-sm-12 col-md-6 cBoxContainer cCommunityIconsContainer">
   <div class="cBallerina-Box">
       <img style="width:222px" src="/img/logo-images/ballerina_logo_lightbg_black.svg">
       
   </div>
   </div>
-    <div class="col-sm-12 col-md-4 cBoxContainer cCommunityIconsContainer">
+    <div class="col-sm-12 col-md-6 cBoxContainer cCommunityIconsContainer">
   <div class="cBallerina-Box">
       <img style="width:222px" src="/img/logo-images/ballerina_logo_lightbg_b.svg">
   </div>
   </div>
-  <div class="col-sm-12 col-md-4 cBoxContainer cCommunityIconsContainer">
-  <div class="cBallerina-Box">
-      <img style="width:222px" src="/img/logo-images/ballerina_logo_darkbg_ltg.svg">
-  </div>
-  </div>
+  
 </div>
 <div class="row cBallerinaLearnWrapper cGrayWrapper cCommunityLinks">
-  <div class="col-sm-12 col-md-4 cBoxContainer cCommunityIconsContainer">
+  <div class="col-sm-12 col-md-6 cBoxContainer cCommunityIconsContainer">
   <div class="cBallerina-Box">
       <img style="width:222px" src="/img/logo-images/ballerina_logo_darkbg_w.svg">
   </div>
   </div>
-    <div class="col-sm-12 col-md-4 cBoxContainer cCommunityIconsContainer">
-  <div class="cBallerina-Box">
-  <img style="width:222px" src="/img/logo-images/ballerina_logo_lightbg_blue.svg">
-  </div>
-  </div>
-  <div class="col-sm-12 col-md-4 cBoxContainer cCommunityIconsContainer">
+  
+  <div class="col-sm-12 col-md-6 cBoxContainer cCommunityIconsContainer">
   <div class="cBallerina-Box">
       <img style="width:222px" src="/img/logo-images/ballerina_logo_darkbg_blue.svg">
   </div>

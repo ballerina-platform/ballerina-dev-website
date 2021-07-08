@@ -85,7 +85,7 @@ For instructions, see [Building from Source](/learn/user-guide/getting-started/b
 
 ## Uninstalling Ballerina
 
-Usually, the installation location is `/Library/Ballerina/distributions` in macOS, `/usr/lib/ballerina/distributions` for DEB and `/usr/lib64/ballerina/distributions` for RPM in Linux, and `C:\Program Files\Ballerina\distributions` in Windows. You can either remove a particular jBallerina version or all the jBallerina versions installed in these locations.
+Usually, the installation location is `/Library/Ballerina/` in macOS, `/usr/lib/ballerina/` for DEB and `/usr/lib64/ballerina/` for RPM in Linux, and `C:\Program Files\Ballerina\` in Windows. You can either remove a particular jBallerina version or all the jBallerina versions installed in these locations.
 
 To remove:
 

@@ -22,7 +22,7 @@ You can download the Ballerina logo in the formats below.
       <div class="cBallerina-Box">
       <img style="width:222px" src="/img/logo-images/ballerina_logo_normal.svg">
       </div>
-      <p>Original Logo</p>
+      <p><b>Original Logo</b></p>
       <p> <a href="/img/branding/ballerina_logo_dgrey_svg.svg" target="_blank">SVG</a> |<a href="/img/branding/ballerina_logo_dgrey_png.png" target="_blank"> PNG</a> |<a href="/img/branding/ballerina_logo_dgrey_source_file.eps" target="_blank">  EPS </a></p>
    </div>
 
@@ -30,7 +30,7 @@ You can download the Ballerina logo in the formats below.
       <div class="cBallerina-Box">
       <img style="width:222px" src="/img/logo-images/ballerina_logo_black.svg">
       </div>
-      <p>Inverted Logo</p>
+      <p><b>Inverted Logo</b></p>
       <p> <a href="/img/branding/ballerina_logo_white_m__svg.svg" target="_blank">SVG</a> |<a href="/img/branding/ballerina_logo_white_m_png.png" target="_blank"> PNG</a> |<a href="/img/branding/ballerina_logo_white_m_source_file.eps" target="_blank">  EPS </a></p>
    </div>
 </div>
@@ -143,11 +143,11 @@ If your usage of the logo is within the permitted scenarios listed above, then y
        To ensure that the Ballerina logo is the most highly visible whenever used, it’s important to have plenty of clear space surrounding the logo. This specifically refers to graphics, type, and other elements that could clutter and distract from the identity of the logo.
     </p>
     <p>
-    All sides of the logo must have adequate clear space as shown in the diagram and denoted by the X. The clear space around the logo will need to scale proportionally to the size of the logo.  
+    All sides of the logo must have adequate clear space, which are equal to the height of the letter "B" denoted by the "X" as shown in the diagram. The clear space around the logo will need to scale proportionally to the size of the logo.  
     </p>
   </div>
   <div class="column" style="float: right;width: 50%;padding: 10px;">
-    <img src="/img/logo-images/specific-1.svg" style="width:400px; margin-top:10px;">
+    <img src="/img/logo-images/specific-2.svg" style="width:400px; margin-top:10px;">
   </div>
 </div>
 
@@ -205,7 +205,7 @@ ________________________________________________________________________________
   <div class="column" style="float: left;width: 50%;padding: 10px;">
     <!-- <p style="Color:#494949;font-size:24px">3. Use colors based on the background.</p> -->
     <p>     
-If the Ballerina logo is on a darker background, the logo should be clearly visible and the inverted logo should be used. For lighter backgrounds, the normal logo should be used.
+    Use the normal logo for lighter backgrounds. If the background color is darker, use the inverted logo to make it clearly visible. 
     </p>
   </div>
   <div class="column" style="float: right;width: 50%;">
@@ -321,7 +321,6 @@ The Ballerina logo should always be seen clearly and consistently. Altering or r
 ## Disclaimer
 
 WSO2 does not make any express or implied warranties including but not limited to the warranties of non-infringement of any third party intellectual property rights. 
-
 Also, WSO2 shall not be liable for any claims relating to the user’s activities falling within the scope of the permission and the user hereby agrees to indemnify, defend, and hold WSO2 and its contributors harmless against any such claims. All Ballerina Trademarks are owned by WSO2, Inc.,
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

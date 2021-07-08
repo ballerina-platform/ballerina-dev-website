@@ -40,7 +40,9 @@ The installer should put the `C:\Program Files\Ballerina\<BALLERINA-DIRECTORY>\b
 
 ### Installing on Linux
 
-[Download the DEB file or RPM file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `/usr/lib64/ballerina` directory.
+[Download the DEB file or RPM file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the following directory.
+- For DEB:  `/usr/lib/ballerina`
+- For RPM:  `/usr/lib64/ballerina`
 
 > **Info:** Alternatively, you can use either of the commands below to install Ballerina using the downloaded DEB or RPM file. Replace the `ballerina-linux-installer-x64-<BALLERINA-VERSION>.deb` or `ballerina-linux-installer-x64<BALLERINA-VERSION>.rpm` with the actual file path. 
 
@@ -83,7 +85,7 @@ For instructions, see [Building from Source](/learn/user-guide/getting-started/b
 
 ## Uninstalling Ballerina
 
-Usually, the installation location is `/Library/Ballerina/distributions` in macOS, `/usr/lib64/Ballerina/distributions` in Linux, and `C:\Program Files\Ballerina\distributions` in Windows. You can either remove a particular jBallerina version or all the jBallerina versions installed in these locations.
+Usually, the installation location is `/Library/Ballerina/distributions` in macOS, `/usr/lib/ballerina/distributions` for DEB and `/usr/lib64/ballerina/distributions` for RPM in Linux, and `C:\Program Files\Ballerina\distributions` in Windows. You can either remove a particular jBallerina version or all the jBallerina versions installed in these locations.
 
 To remove:
 

@@ -321,6 +321,7 @@ The Ballerina logo should always be seen clearly and consistently. Altering or r
 ## Disclaimer
 
 WSO2 does not make any express or implied warranties including but not limited to the warranties of non-infringement of any third party intellectual property rights. 
+
 Also, WSO2 shall not be liable for any claims relating to the user’s activities falling within the scope of the permission and the user hereby agrees to indemnify, defend, and hold WSO2 and its contributors harmless against any such claims. All Ballerina Trademarks are owned by WSO2, Inc.,
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

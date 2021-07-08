@@ -1,6 +1,7 @@
-name: Sync artifacts from dev to prod
+name: "[1.2.x] Sync artifacts from dev to prod"
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - prod-sync
@@ -40,4 +41,3 @@ jobs:
         echo "extracted release version: $version"
 
         aws s3 cp s3://dist-dev.ballerina.io/downloads/$version/ s3://dist.ballerina.io/downloads/$version/ --recursive
-

@@ -36,11 +36,17 @@ const hitTemplate = function(hit) {
   if(hit._highlightResult.html&&hit._highlightResult.html.value){
     content = hit._highlightResult.html.value;
   }
+  if(title!==""){
+    title = `<h2>${title}</h2>`;
+  }  
+  if(content!==""){
+    content = ` <div class="post-snippet">${content}</div>`;
+  } 
   return `
-    <a href="${url}" class="post-item"> 
-      <h2>${title} </h2>  
-      <div class="post-snippet">${content}</div>
-    </a>
+    <div class="post-item"> 
+      <a class="post-link"  href="${url}">  ${title}</a>
+       ${content}
+    </div>
   `;
 }
 
@@ -102,6 +108,7 @@ $(document).mouseup(function(e)
     width: 180px;
   }
   .ais-search-box--input{
+    padding-right: 36px;
 
   }
   .search-searchbar{
@@ -168,7 +175,7 @@ $(document).mouseup(function(e)
     display: block;
   }
   .post-list .ais-hits .ais-hits--item .post-item:hover{
-    background-color: #efefef;
+    /* background-color: #efefef; */
 
   }
   .post-list .ais-hits .ais-hits--item .post-item h2{
@@ -176,15 +183,17 @@ $(document).mouseup(function(e)
     margin-bottom: 10px;
     font-size: 16px;
     color:#20b6b0;
-    padding-bottom: 5px;
+    padding: 5px 0;
     display: block;
-    border-bottom: 1px solid #c7c7c7;
-
+    border-bottom: 1px solid #c7c7c7; 
+  }
+  .post-list .ais-hits .ais-hits--item .post-item h2:hover{
+    background-color: #efefef; 
   }
   .post-snippet .ais-Highlight{
-    color:#20b6b0;
+    color:#0b5d5b;
     font-style: italic;
-    font-weight: 400;
+    /* font-weight: 400; */
 
   }
   .post-list .ais-hits .ais-hits--item .post-item .post-snippet{

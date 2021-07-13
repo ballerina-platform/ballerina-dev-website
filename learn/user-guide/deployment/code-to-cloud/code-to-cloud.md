@@ -126,30 +126,38 @@ Contains the environment variables required for the application.
 
 Contains the secrets required for the application.
 
-| Identifier     	| Description                                      	| Example Value         	|
+| Identifier        | Description                                        | Example Value            |
 |----------------	|--------------------------------------------------	|-----------------------	|
-| key_ref        	| Reference key of the secret                      	| "MYSQL_ROOT_PASSWORD" 	|
-| name(optional) 	| Name of the secret if its different from the key 	| "ROOT_PASSWORD"       	|
-| secret_name    	| Name of the secret group                         	| "db-credential-secret" 	|
+| key_ref            | Reference key of the secret                        | "MYSQL_ROOT_PASSWORD"    |
+| name(optional)    | Name of the secret if its different from the key    | "ROOT_PASSWORD"        |
+| secret_name        | Name of the secret group                            | "db-credential-secret"    |
 
-### '[[cloud.config.files]]'
+#### [[cloud.config.maps]]
 
-Contains the external configuration files for the code.
+Contains the external files required for the code.
 
-| Identifier 	| Description                                     	| Example Value                        	|
-|------------	|-------------------------------------------------	|--------------------------------------	|
-| file       	| Path of the external configuration file         	| "resource/ballerina.conf"            	|
-| mount_path 	| Path of the configuration file in the container 	| "/home/ballerina/foo/ballerina.conf" 	|
+|Identifier |Description                                        |Example Value                      |
+|---	    |---	                                            |---	                              |
+|file    |Path of the external file            |"resource/file.txt"          |
+|mount_path |Path of the file in the container    |"/home/ballerina/foo/file.txt" |
+
+#### [[cloud.config.files]]
+
+Contains config toml files required for the code.
+
+|Identifier |Description                                        |Example Value                      |
+|---	    |---	                                            |---	                              |
+|file    |Path of the external file            |"conf/Config.toml"          |
 
 ### '[cloud.deployment]'
 
 Contains the properties related to the deployment.
 
-| Identifier           	| Description                                          	| Default Value 	|
+| Identifier            | Description                                            | Default Value    |
 |----------------------	|------------------------------------------------------	|---------------	|
-| internal_domain_name 	| Name of the internal domain                          	| $MODULE_NAME  	|
-| external_accessible  	| Status of exposing the container outside the cluster 	| true          	|
-| min_memory           	| Minimum memory allocated to the container            	| "100Mi"       	|
+| internal_domain_name    | Name of the internal domain                            | $MODULE_NAME    |
+| external_accessible    | Status of exposing the container outside the cluster    | true            |
+| min_memory            | Minimum memory allocated to the container                | "100Mi"        |
 | max_memory           	| Maximum memory allocated to the container            	| "256Mi"       	|
 | min_cpu              	| Minimum CPU allocated to the container               	| "1000m"       	|
 | max_cpu              	| Maximum CPU allocated to the container               	| "1500m"       	|

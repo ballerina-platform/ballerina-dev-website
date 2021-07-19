@@ -42,6 +42,9 @@ const hitTemplate = function(hit) {
   if(content!==""){
     content = ` <div class="post-snippet">${content}</div>`;
   } 
+  if(title===""){
+    return null;
+  }
   return `
     <div class="post-item"> 
       <a class="post-link"  href="${url}">  ${title}</a>

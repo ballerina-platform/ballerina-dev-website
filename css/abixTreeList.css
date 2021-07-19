@@ -11,7 +11,7 @@ span.icon {
     background-color: transparent;
     width: 14px;
     height: 14px;
-    background-size: 12px;
+    background-size: 10px;
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -22,11 +22,9 @@ span.icon:hover {
 
 span.icon.plus-icon {
     background-image: url("/img/plus.svg");
-    background-size: 8px;
 }
 
 span.icon.minus-icon {
-    background-image: url("/img/minus.svg");
     background-color: #464646;
 }
 #tree li {
@@ -44,6 +42,11 @@ ul.abix-tree-list {
 ul.abix-tree-list li {
     padding-left: 25px;
     position: relative;
+    list-style: none;
+}
+ul.abix-tree-list li.expanded:before,
+ul.abix-tree-list li.collapsed:before {
+    display: none;
 }
 ul.abix-tree-list li ul {
     padding-left: 10px;
@@ -51,8 +54,11 @@ ul.abix-tree-list li ul {
 ul.abix-tree-list li ul li:last-child {
     margin-bottom: 5px;
 }
-ul.abix-tree-list li::marker {
+.cBallerinaTocContainer ul li::marker {
     display: none;
+}
+.cBallerinaTocContainer ul li {
+    list-style: none !important;
 }
 ul.abix-tree-list li:before {
     content: "";
@@ -70,6 +76,7 @@ ul.abix-tree-list li span.icon {
 ul.abix-tree-list li span.icon {
     z-index: 2;
     cursor: pointer;
+    background-color: #20b6b0;
 }
 
 ul.abix-tree-list li a {

@@ -11,7 +11,7 @@ We say "nearly everything" as there are a few simple conditions that apply.
 
 If you’re looking to understand if and how you can use the Ballerina brand in a project, you’ve come to the right place. Please note that the user experience with all our products should never be altered. After reading through this site, if you still have questions, [contact us](/community/#report-issues).  
 
-All of our brand features are protected by the applicable trademark, copyright and other intellectual property laws. However, Ballerina’s trademarks and other brand features are not included in this license. For information on usage of trademarks relating to the Ballerina project please go through our [trademark usage policy]().
+All of our brand features are protected by the applicable trademark, copyright and other intellectual property laws. However, Ballerina’s trademarks and other brand features are not included in this license. For information on usage of trademarks relating to the Ballerina project please go through our [trademark usage policy](/trademark-usage-policy/).
 
 In some cases, a page may include content consisting of images, audio or video material, or a link to content on a different webpage (such as videos or slide decks). This content is not covered by the license, unless specifically noted.
 

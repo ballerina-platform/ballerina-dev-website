@@ -1696,6 +1696,15 @@
                 "disableVerificationReason": "Includes ballerinax components",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Secured Connection",
+                "url": "nats-basic-secure-connection",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1734,6 +1743,15 @@
             {
                 "name": "Historical Message Replay",
                 "url": "nats-streaming-start-position",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Secured Connection",
+                "url": "nats-streaming-secure-connection",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -1854,8 +1872,17 @@
                 "isLearnByExample": false
             },
             {
-                "name": "SASL Authentication - Consumer",
+                "name": "Transactional Consumer",
                 "url": "rabbitmq-transaction-consumer",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Secured Connection",
+                "url": "rabbitmq-secure-connection",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",

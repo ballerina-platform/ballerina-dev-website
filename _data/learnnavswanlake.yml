@@ -145,6 +145,9 @@
     - title: Observing Ballerina Code
       url: /learn/user-guide/observability/observing-ballerina-code
       active: observing-ballerina-code
+    - title: Observing Ballerina Services Through Choreo
+      url: /learn/user-guide/observability/observing-ballerina-services-through-choreo
+      active: observing-ballerina-services-through-choreo
 
 - title: Interoperability
   url: '#' 

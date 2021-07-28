@@ -6,8 +6,16 @@
 
 
 <div class="search-searchbar" id="search-searchbar"></div>
-<div class="post-list" id="search-hits">
-  
+<div class="post-list" id="post-list" >
+  <div id="search-hits" class="search-hits">
+
+  </div>
+  <span class="">
+    <div class="ais-search-box--powered-by">
+    Search by
+    <a class="ais-search-box--powered-by-link" href="https://www.algolia.com/?utm_source=instantsearch.js&amp;utm_medium=website&amp;utm_content=127.0.0.1&amp;utm_campaign=poweredby" target="_blank">Algolia</a>
+  </div>
+</span>
 </div>
 <script>
   var paramText = window.location.href;
@@ -60,13 +68,14 @@ search.addWidget(
     container: '#search-searchbar',
     placeholder: 'Search...',
     autofocus:false ,
-    showReset:false
+    showReset:false,
+    // poweredBy: true
   })
 );
 
 search.addWidget(
   instantsearch.widgets.hits({
-    container: '#search-hits',
+    container: '#search-hits', 
     templates: {
       item: hitTemplate
     }
@@ -88,9 +97,9 @@ $(function(){
   });
   function showHideSearchList(searchBoxVal){
     if(searchBoxVal.replace(/\s/g, '').length){
-      $('#search-hits').show();
+      $('#post-list').show();
     }else{
-      $('#search-hits').hide(); 
+      $('#post-list').hide(); 
     }
   }
 })
@@ -100,7 +109,7 @@ $(document).mouseup(function(e)
     // if the target of the click isn't the container nor a descendant of the container
     if (!container.is(e.target) && container.has(e.target).length === 0) 
     {
-        container.find('#search-hits').hide();
+        container.find('#post-list').hide();
     }
 });
 </script>
@@ -153,22 +162,23 @@ $(document).mouseup(function(e)
       top: 100%;
       display: none;
       min-width: 100%;
-     
+      box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.308);
+      border: 1px solid #e7e7e7;
+      background-color: white;
   }
   .post-list .ais-hits{
-      background-color: white;
+     
+      
       padding: 20px 10px;
       min-width: 400px;
       max-width: 400px;
       max-height: 400px;
-      overflow: auto;
-      box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.308);
-      border: 1px solid #e7e7e7;
+      overflow: auto; 
    
   }
-  .post-list .ais-hits .ais-hits__empty{
-    padding: 20px 15px;
 
+  .post-list .ais-hits .ais-hits__empty{
+    padding: 20px 15px; 
   }
   .post-list .ais-hits .ais-hits--item{ 
    
@@ -206,4 +216,7 @@ $(document).mouseup(function(e)
     font-size: 14px;
     line-height: 20px;
 }
+.post-list .ais-search-box--powered-by{
+  padding: 5px 10px;
+ }
 </style>

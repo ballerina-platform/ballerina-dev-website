@@ -54,26 +54,28 @@ Follow the steps below to add observability in the executable created by Balleri
 ## Step 3 - Observe the Ballerina Service
 
 1. Once the configuration file has been created, execute the command below to pass it to the Ballerina program with the `BAL_CONFIG_FILES` environment variable.
-```bash
-$ BAL_CONFIG_FILES=<path-to-conf>/Config.toml bal run --observability-included hello_world.bal
-```
 
->You view the output below.
-```bash
-Compiling source
+    ```bash 
+    $ BAL_CONFIG_FILES=<path-to-conf>/Config.toml bal run --observability-included hello_world.bal
+    ```
+
+    >You view the output below.
+
+    ```bash
+    Compiling source
     hello_world.bal
 
-Running executable
+    Running executable
 
-ballerina: initializing connection with observability backend periscope.choreo.dev:443
-ballerina: visit http://console.choreo.dev/observe/app/918e4591-b7a3-11eb-8af4-bb5c98e5b4d6/918e502d-b7a3-11eb-8af4-bb5c98e5b4d6 to access observability data
-ballerina: started publishing metrics to Choreo
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-```
+    ballerina: initializing connection with observability backend periscope.choreo.dev:443
+    ballerina: visit http://console.choreo.dev/observe/app/918e4591-b7a3-11eb-8af4-bb5c98e5b4d6/918e502d-b7a3-11eb-8af4-bb5c98e5b4d6 to access observability data
+    ballerina: started publishing metrics to Choreo
+    [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+    ```
 
-2. Click on the URL provided. You will be directed to the Choreo portal where you can view the metrics and traces exposed via the throughput and latency graphs.
+2. Click on the URL provided. You will be directed to the Choreo portal where you can view the metrics and traces exposed via the throughput and latency graphs. 
+  >**Note:** If you haven't sent any requests to the Ballerina service, you may see a banner with the message "No request received during the selected time period".
 
->**Note:** If you haven't sent any requests to the Ballerina service, you may see a banner with the message "No request received during the selected time period".
 
 ## Step 4 - Sending Few Requests
 

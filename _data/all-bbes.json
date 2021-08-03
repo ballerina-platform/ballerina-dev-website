@@ -732,7 +732,7 @@
                 "name": "Transaction Statement",
                 "url": "transaction-statement",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": true
             },
             {
@@ -746,35 +746,35 @@
                 "name": "Rollback",
                 "url": "rollback",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": true
             },
             {
                 "name": "Retry Transaction Statement",
                 "url": "retry-transaction-statement",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": true
             },
             {
                 "name": "Transactional Qualifier",
                 "url": "transactional-qualifier",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": true
             },
             {
                 "name": "Transactional Named Workers",
                 "url": "transactional-named-workers",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": true
             },
             {
                 "name": "Commit/Rollback Handlers",
                 "url": "commit-rollback-handlers",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": true
             }
         ]
@@ -2342,21 +2342,21 @@
                 "name": "Schedule Job recurrence by Frequency",
                 "url": "task-frequency-job-execution",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": false
             },
             {
                 "name": "Schedule one time job",
                 "url": "task-one-time-job-execution",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": false
             },
             {
                 "name": "Manage Scheduled Jobs",
                 "url": "manage-scheduled-jobs",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": false
             }
         ]
@@ -2392,7 +2392,7 @@
                 "name": "XSLT Transformation",
                 "url": "xslt-transformation",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": false
             }
         ]

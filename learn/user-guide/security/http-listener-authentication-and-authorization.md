@@ -221,7 +221,7 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-ListenerFileUserStoreBasicAuthHandler handler = new;
+http:ListenerFileUserStoreBasicAuthHandler handler = new;
 
 service /foo on securedEP {
     resource function get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
@@ -383,7 +383,7 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-ListenerFileUserStoreBasicAuthHandler handler = new({
+http:ListenerLdapUserStoreBasicAuthHandler handler = new({
     domainName: "ballerina.io",
     connectionUrl: "ldap://localhost:20000",
     connectionName: "uid=admin,ou=system",
@@ -544,7 +544,7 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-ListenerFileUserStoreBasicAuthHandler handler = new({
+http:ListenerJwtAuthHandler handler = new({
     issuer: "wso2",
     audience: "ballerina",
     signatureConfig: {
@@ -695,7 +695,7 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-ListenerFileUserStoreBasicAuthHandler handler = new({
+http:ListenerOAuth2Handler handler = new({
     url: "https://localhost:9999/oauth2/token/introspect",
     tokenTypeHint: "access_token",
     scopeKey: "scp",

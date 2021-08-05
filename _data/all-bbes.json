@@ -86,7 +86,7 @@
                 "name": "Strings",
                 "url": "strings",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": true
             },
             {
@@ -1628,15 +1628,6 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Secured Simple RPC",
-                "url": "grpc-secured-simple",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Has different naming convention",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
                 "name": "Server Streaming RPC",
                 "url": "grpc-server-streaming",
                 "verifyBuild": true,
@@ -1669,6 +1660,125 @@
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "gRPC Security",
+        "column": 0,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Service - SSL/TLS",
+                "url": "grpc-service-ssl-tls",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Service - Mutual SSL",
+                "url": "grpc-service-mutual-ssl",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Service - Basic Auth File User Store",
+                "url": "grpc-service-basic-auth-file-user-store",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Service - Basic Auth LDAP User Store",
+                "url": "grpc-service-basic-auth-ldap-user-store",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Service - JWT Auth",
+                "url": "grpc-service-jwt-auth",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Service - OAuth2",
+                "url": "grpc-service-oauth2",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client - SSL/TLS",
+                "url": "grpc-client-ssl-tls",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client - Mutual SSL",
+                "url": "grpc-client-mutual-ssl",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client - Basic Auth",
+                "url": "grpc-client-basic-auth",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client - Bearer Token Auth",
+                "url": "grpc-client-bearer-token-auth",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client - Self Signed JWT Auth",
+                "url": "grpc-client-self-signed-jwt-auth",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client - OAuth2 Client Credentials Grant Type",
+                "url": "grpc-client-oauth2-client-credentials-grant-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client - OAuth2 Password Grant Type",
+                "url": "grpc-client-oauth2-password-grant-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client - OAuth2 Refresh Token Grant Type",
+                "url": "grpc-client-oauth2-refresh-token-grant-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             }

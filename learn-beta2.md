@@ -10,7 +10,7 @@ redirect_from:
 ---
 ## Getting Started
 
-### Language Introduction Video
+### [Language Introduction Video](/learn/language-concepts/Ballerina_Swan_Lake_Presentation_Deck_V1.0.pdf)
 
 A video introduction to the Ballerina Programming Language and what's new in Swan Lake.
 

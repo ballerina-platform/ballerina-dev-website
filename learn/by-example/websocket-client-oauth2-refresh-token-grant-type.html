@@ -17,7 +17,7 @@ redirect_from:
 
 <span class="c1">// Defines the WebSocket client to call the OAuth2 secured APIs.</span>
 <span class="c1">// The client is enriched with the `Authorization: Bearer &lt;token&gt;` header by</span>
-<span class="c1">// passing the `websocket:OAuth2RefreshTokenGrantConfig` for the `auth` configuration of the</span>
+<span class="c1">// passing the [`websocket:OAuth2RefreshTokenGrantConfig`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/OAuth2RefreshTokenGrantConfig) for the `auth` configuration of the</span>
 <span class="c1">// client.</span>
 <span class="nx">websocket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">securedEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;wss://localhost:9090/foo/bar&quot;</span><span class="p">,</span>
     <span class="nx">auth</span> <span class="p">=</span> <span class="p">{</span>
@@ -150,7 +150,7 @@ import ballerina/websocket;
                                         <div>
                                             <p>Defines the WebSocket client to call the OAuth2 secured APIs.
  The client is enriched with the <code>Authorization: Bearer &lt;token&gt;</code> header by
- passing the <code>websocket:OAuth2RefreshTokenGrantConfig</code> for the <code>auth</code> configuration of the
+ passing the <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/records/OAuth2RefreshTokenGrantConfig"><code>websocket:OAuth2RefreshTokenGrantConfig</code></a> for the <code>auth</code> configuration of the
  client.</p>
 
                                         </div>

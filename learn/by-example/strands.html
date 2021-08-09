@@ -17,7 +17,7 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// By default, named workers are multitasked cooperatively, not preemptively.</span>
     <span class="c1">// Each named worker has a &quot;strand&quot; (logical thread of control) and execution</span>
-    <span class="c1">// switches been strands only at specific &quot;yield&quot; points.</span>
+    <span class="c1">// switches between strands only at specific &quot;yield&quot; points.</span>
     <span class="kd">worker</span> <span class="nx">A</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;In worker A&quot;</span><span class="p">);</span>
     <span class="p">}</span>
@@ -44,7 +44,7 @@ redirect_from:
                             <h2>Strands</h2>
                             <p><p>By default, named workers are multitasked cooperatively, not preemptively.
  Each named worker has a &ldquo;strand&rdquo; (logical thread of control) and execution
- switches been strands only at specific &ldquo;yield&rdquo; points such as doing a wait
+ switches between strands only at specific &ldquo;yield&rdquo; points such as doing a wait
  or when a library function invokes a system call that would block.
  This avoids the need for users to lock variables that are accessed from
  multiple named workers.
@@ -89,7 +89,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=618ac39f5f890f6a9088b90e273b74f1&file=strands.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=7bbad905f0d25bf8168fff0684bdd34f&file=strands.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -142,7 +142,7 @@ redirect_from:
                                         <div>
                                             <p>By default, named workers are multitasked cooperatively, not preemptively.
  Each named worker has a &ldquo;strand&rdquo; (logical thread of control) and execution
- switches been strands only at specific &ldquo;yield&rdquo; points.</p>
+ switches between strands only at specific &ldquo;yield&rdquo; points.</p>
 
                                         </div>
                                     </div>

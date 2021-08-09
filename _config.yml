@@ -51,6 +51,9 @@ exclude: ["downloads/RELEASE_NOTE.md","vendor","0.991/","v1-2","v1-1","v1-0","v0
 dist_server: https://dist.ballerina.io
 plugin_vscode_repo: https://github.com/ballerina-platform/plugin-vscode
 algolia:
-  application_id: VEFFNV19B3
-  index_name: jekyll wso2-ballerina-docs 
-  search_only_api_key: 737b0009164fdf533343caa89c328667
+  # application_id: VEFFNV19B3
+  # index_name: jekyll wso2-ballerina-docs 
+  # search_only_api_key: 737b0009164fdf533343caa89c328667
+  application_id: 1UGB2K5V0K
+  index_name: jekyll wso2_bbe_dev_sameeral 
+  search_only_api_key: fbb148c3fb14152176aec9976c0f425d

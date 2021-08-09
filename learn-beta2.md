@@ -12,7 +12,7 @@ redirect_from:
 
 ### [Language Introduction Slides](/learn/language-concepts/Ballerina_Swan_Lake_Presentation_Deck_V1.0.pdf)
 
-The reference slide deck of the video introduction to the Ballerina Programming Language and what's new in Swan Lake.
+An introduction to the Ballerina Programming Language and what's new in Swan Lake.
 
 ### [Language Tasters](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s)
 

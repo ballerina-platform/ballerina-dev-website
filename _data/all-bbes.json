@@ -86,7 +86,7 @@
                 "name": "Strings",
                 "url": "strings",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": true
             },
             {
@@ -1667,7 +1667,7 @@
     },
     {
         "title": "gRPC Security",
-        "column": 0,
+        "column": 2,
         "category": "Working Over the Network",
         "samples": [
             {

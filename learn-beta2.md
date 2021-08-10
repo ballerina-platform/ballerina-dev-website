@@ -38,6 +38,10 @@ A series of guides on various things you need to do during the Ballerina develop
 
 A comprehensive reference slide deck explaining the language.
 
+### [Language Introduction Slides](/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
+
+A comprehensive reference slide deck explaining the language.
+
 ### [Language Guide](/learn/language-concepts/)
 
 An elaborate textual guide to the Ballerina language. 

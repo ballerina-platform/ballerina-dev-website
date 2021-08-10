@@ -34,11 +34,11 @@ A series of guides on various things you need to do during the Ballerina develop
 
 ## References
 
+### [Language Introduction Slides](/learn/language-concepts/Ballerina_Swan_Lake_Presentation_Deck_V1.0.pdf)
+
+Presentation slides on the Ballerina language that anyone can use to talk about the language.
+
 ### [Language Walkthrough Slides](/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
-
-A comprehensive reference slide deck explaining the language.
-
-### [Language Introduction Slides](/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
 
 A comprehensive reference slide deck explaining the language.
 

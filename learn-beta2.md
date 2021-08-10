@@ -10,10 +10,6 @@ redirect_from:
 ---
 ## Getting Started
 
-### [Language Tasters](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s)
-
-End-to-end screencasts covering common use cases that give a taste of the Ballerina language.
-
 ### [Language Walkthrough Video](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s) 
 
 A video recording of the language slide deck.

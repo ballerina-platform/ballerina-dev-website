@@ -14,6 +14,10 @@ redirect_from:
 
 A video recording of the language slide deck.
 
+### [Language Walkthrough Slides](/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
+
+A comprehensive reference slide deck explaining the language.
+
 ### [Learn by Example](/learn/by-example/introduction/)
 
 A guided path to learn the language through a series of examples.
@@ -33,10 +37,6 @@ A series of guides on various things you need to do during the Ballerina develop
 ### [Language Introduction Slides](/learn/language-concepts/Ballerina_Swan_Lake_Presentation_Deck_V1.0.pdf)
 
 Presentation slides on the Ballerina language that anyone can use to talk about the language.
-
-### [Language Walkthrough Slides](/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
-
-A comprehensive reference slide deck explaining the language.
 
 ### [Language Guide](/learn/language-concepts/)
 

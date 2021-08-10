@@ -34,11 +34,7 @@ A series of guides on various things you need to do during the Ballerina develop
 
 ## References
 
-### [Language Introduction Slides](http://localhost:4000/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
-
-Presentation slides on the Ballerina language that anyone can use to talk about the language.
-
-### [Language Walkthrough Slides](http://localhost:4000/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
+### [Language Walkthrough Slides](/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
 
 A comprehensive reference slide deck explaining the language.
 

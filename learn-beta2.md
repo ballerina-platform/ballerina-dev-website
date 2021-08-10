@@ -10,21 +10,13 @@ redirect_from:
 ---
 ## Getting Started
 
-### Language Introduction Video
-
-A video introduction to the Ballerina Programming Language and what's new in Swan Lake.
-
-### [Language Tasters](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s)
-
-End-to-end screencasts covering common use cases that give a taste of the Ballerina language.
-
-### [Language Walkthrough Slides](http://localhost:4000/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
-
-A comprehensive reference slide deck explaining the language.
-
 ### [Language Walkthrough Video](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s) 
 
 A video recording of the language slide deck.
+
+### [Language Walkthrough Slides](/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
+
+A comprehensive reference slide deck explaining the language.
 
 ### [Learn by Example](/learn/by-example/introduction/)
 
@@ -42,7 +34,7 @@ A series of guides on various things you need to do during the Ballerina develop
 
 ## References
 
-### [Language Introduction Slides](http://localhost:4000/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
+### [Language Introduction Slides](/learn/language-concepts/Ballerina_Swan_Lake_Presentation_Deck_V1.0.pdf)
 
 Presentation slides on the Ballerina language that anyone can use to talk about the language.
 

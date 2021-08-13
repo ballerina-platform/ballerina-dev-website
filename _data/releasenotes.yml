@@ -50,6 +50,9 @@
 - title: 1.2 Release Notes
   url: '#'
   sublinks:
+    - title: 1.2.18
+      url: /downloads/1.2.x-release-notes/1.2.18
+      active: 1.2.18
     - title: 1.2.17
       url: /downloads/1.2.x-release-notes/1.2.17
       active: 1.2.17

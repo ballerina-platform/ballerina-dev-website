@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-references-left-nav-pages-swanlake
 title: Top-Level Definitions
 active: top-level-definitions
 permalink: /learn/user-guide/style-guide/coding-conventions/top-level-definitions/

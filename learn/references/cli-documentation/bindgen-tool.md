@@ -1,5 +1,5 @@
 ---
-layout: ballerina-tooling-guide-left-nav-pages-swanlake
+layout: ballerina-references-left-nav-pages-swanlake
 title: BindGen Tool
 description: The sections below demonstrate the functionality of the BindGen Tool.
 keywords: ballerina, programming language, openapi, open api, restful api

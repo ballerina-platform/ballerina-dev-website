@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-references-left-nav-pages-swanlake
 title: Language Concepts
 permalink: /learn/language-concepts/
 redirect_from:

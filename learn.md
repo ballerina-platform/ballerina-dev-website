@@ -34,7 +34,7 @@ A comprehensive reference slide deck explaining the language.
 
 Details of all the high-level and important features of the Ballerina Visual Studio Code extension.
 
-## Concepts
+## Guides
 
 ### [Why Ballerina](/learn/why-ballerina/)
 

@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Installation Options
 description: Get started with the Ballerina programming language by following these instructions on installing and setting up Ballerina.
 keywords: ballerina, installing ballerina, programming language, ballerina installation

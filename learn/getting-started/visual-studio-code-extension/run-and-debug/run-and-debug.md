@@ -1,5 +1,5 @@
 ---
-layout: ballerina-tooling-guide-left-nav-pages-swanlake
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Debugging
 description: Describes debugging functionalities provided by Ballerina in Visual Studio Code.  
 keywords: ballerina debugging, ballerina debug, ballerina debugger, ballerina vscode

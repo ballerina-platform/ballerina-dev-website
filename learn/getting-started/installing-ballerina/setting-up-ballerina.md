@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Setting up Ballerina
 description: Let's get started.
 keywords: ballerina, quick tour, programming language, http service

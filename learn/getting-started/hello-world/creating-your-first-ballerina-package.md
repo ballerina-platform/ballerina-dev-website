@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Creating Your First Ballerina Package
 description: The single source file program is a quick and easy way to get started with Ballerina. However, when your code grows, you need to create a Ballerina package to organize your code.
 keywords: ballerina, programming language, ballerina packages, getting started

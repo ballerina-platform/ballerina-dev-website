@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Building from Source
 description: The sections below will guide you to build either the complete Ballerina distribution or the basic Ballerina runtime build as preferred. 
 keywords: ballerina, installing ballerina, programming language, build from source, distribution build, runtime build

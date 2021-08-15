@@ -1,5 +1,5 @@
 ---
-layout: ballerina-tooling-guide-left-nav-pages-swanlake
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Language Support
 permalink: /learn/tooling-guide/visual-studio-code-extension/language-support/
 active: language-support

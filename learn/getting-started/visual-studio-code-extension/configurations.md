@@ -1,5 +1,5 @@
 ---
-layout: ballerina-tooling-guide-left-nav-pages-swanlake
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Configurations
 permalink: /learn/tooling-guide/visual-studio-code-extension/configurations/
 active: configurations

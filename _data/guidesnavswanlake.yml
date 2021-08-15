@@ -1,60 +1,104 @@
+- title: Why Ballerina
+  url: /learn/user-guide/getting-started/building-from-source/
+  active: building-from-source
 
-- title: Installing Ballerina
+
+- title: Organizing Ballerina Code
   url: #
   sublinks:
-    - title: Setting up Ballerina
+    - title: Package Layout
       url: /learn/getting-started/setting-up-visual-studio-code/
       active: language-intelligence
-    - title: Installation Options
+    - title: Modules
       url: /learn/getting-started/setting-up-visual-studio-code/
       active: language-intelligence
-    - title: Building from Source
+    - title: Dependencies
       url: /learn/getting-started/setting-up-visual-studio-code/
       active: language-intelligence
 
-- title: Hello World
+- title: Testing Ballerina Code
   url: #
   sublinks:
-    - title: Writing Your First Ballerina Program
+    - title: Testing Quick Start
       url: /learn/getting-started/setting-up-visual-studio-code/
       active: language-intelligence
     - title: Creating Your First Ballerina Package
       url: /learn/getting-started/setting-up-visual-studio-code/
       active: language-intelligence
+    - title: Testing Quick Start
+      url: /learn/getting-started/setting-up-visual-studio-code/
+      active: language-intelligence
+    - title: Testing Quick Start
+      url: /learn/getting-started/setting-up-visual-studio-code/
+      active: language-intelligence
+    - title: Testing Quick Start
+      url: /learn/getting-started/setting-up-visual-studio-code/
+      active: language-intelligence
 
-- title: Learn By Examples
+- title: Generating Code Documentation
   url: /learn/user-guide/getting-started/building-from-source/
   active: building-from-source
 
-- title: Language Walkthrough Video
-  url: /learn/user-guide/getting-started/building-from-source/
-  active: building-from-source
-
-- title: Language Walkthrough Slides
-  url: /learn/user-guide/getting-started/building-from-source/
-  active: building-from-source
-
-- title: Visual Studio Code Extension
-  url: # 
+- title: Making Ballerina Programs Configurable
+  url: #
   sublinks:
-    - title: Quick Start
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
+    - title: Defining Configurable Variables
+      url: /learn/getting-started/setting-up-visual-studio-code/
       active: language-intelligence
-    - title: Diagram Editor
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
+    - title: Providing Values to Configurable Variables
+      url: /learn/getting-started/setting-up-visual-studio-code/
       active: language-intelligence
-    - title: Debugging
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
+    - title: Trying Out Configurability
+      url: /learn/getting-started/setting-up-visual-studio-code/
       active: language-intelligence
-    - title: VS Code Commands
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
+
+- title: Observing Ballerina Programs
+  url: #
+  sublinks:
+    - title: Observing Your Application with Choreo
+      url: /learn/getting-started/setting-up-visual-studio-code/
       active: language-intelligence
-    - title: Language Support
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
+    - title: Observing Your Application with Prometheus, Grafana, and Jaeger
+      url: /learn/getting-started/setting-up-visual-studio-code/
       active: language-intelligence
-    - title: Configurations
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
+
+- title: Running Ballerina Programs in the Cloud
+  url: #
+  sublinks:
+    - title: Code to Cloud
+      url: /learn/getting-started/setting-up-visual-studio-code/
       active: language-intelligence
+    - title: Function as a Service (FaaS) with Ballerina
+      url: #
+      sublinks:
+        - title: AWS Lambda
+          url: /learn/getting-started/setting-up-visual-studio-code/
+          active: language-intelligence
+        - title: Azure Functions
+          url: /learn/getting-started/setting-up-visual-studio-code/
+          active: language-intelligence
+
+- title: Managing Dependencies 
+  url: #
+  sublinks:
+    - title: Declaring Dependencies
+      url: /learn/getting-started/setting-up-visual-studio-code/
+      active: language-intelligence
+
+- title: Publishing packages to Ballerina Central
+  url: /learn/user-guide/getting-started/building-from-source/
+  active: building-from-source
+
+- title: Calling Java Code from Ballerina
+  url: /learn/user-guide/getting-started/building-from-source/
+  active: building-from-source
+
+
+
+
+
+
+
 
 
 

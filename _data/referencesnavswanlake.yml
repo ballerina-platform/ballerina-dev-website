@@ -1,60 +1,47 @@
+- title: Language Guide/Concepts
+  url: /learn/user-guide/getting-started/building-from-source/
+  active: building-from-source
 
-- title: Installing Ballerina
+- title: Reference Guide by Examples
+  url: /learn/user-guide/getting-started/building-from-source/
+  active: building-from-source
+
+- title: Library Documentation
+  url: /learn/user-guide/getting-started/building-from-source/
+  active: building-from-source
+
+- title: CLI Documentation 
+  url: /learn/user-guide/getting-started/building-from-source/
+  active: building-from-source
+
+- title: Platform Specifications
+  url: /learn/user-guide/getting-started/building-from-source/
+  active: building-from-source
+
+- title: Style Guide
   url: #
   sublinks:
-    - title: Setting up Ballerina
+    - title: Coding Conventions
       url: /learn/getting-started/setting-up-visual-studio-code/
       active: language-intelligence
-    - title: Installation Options
+    - title: Top-Level Definitions
       url: /learn/getting-started/setting-up-visual-studio-code/
       active: language-intelligence
-    - title: Building from Source
+    - title: Operators, Keywords, and Types
+      url: /learn/getting-started/setting-up-visual-studio-code/
+      active: language-intelligence
+    - title: Statements
+      url: /learn/getting-started/setting-up-visual-studio-code/
+      active: language-intelligence
+    - title: Expressions
+      url: /learn/getting-started/setting-up-visual-studio-code/
+      active: language-intelligence
+    - title: Annotations, Documentation, and Comments
       url: /learn/getting-started/setting-up-visual-studio-code/
       active: language-intelligence
 
-- title: Hello World
-  url: #
-  sublinks:
-    - title: Writing Your First Ballerina Program
-      url: /learn/getting-started/setting-up-visual-studio-code/
-      active: language-intelligence
-    - title: Creating Your First Ballerina Package
-      url: /learn/getting-started/setting-up-visual-studio-code/
-      active: language-intelligence
 
-- title: Learn By Examples
-  url: /learn/user-guide/getting-started/building-from-source/
-  active: building-from-source
 
-- title: Language Walkthrough Video
-  url: /learn/user-guide/getting-started/building-from-source/
-  active: building-from-source
-
-- title: Language Walkthrough Slides
-  url: /learn/user-guide/getting-started/building-from-source/
-  active: building-from-source
-
-- title: Visual Studio Code Extension
-  url: # 
-  sublinks:
-    - title: Quick Start
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
-      active: language-intelligence
-    - title: Diagram Editor
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
-      active: language-intelligence
-    - title: Debugging
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
-      active: language-intelligence
-    - title: VS Code Commands
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
-      active: language-intelligence
-    - title: Language Support
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
-      active: language-intelligence
-    - title: Configurations
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
-      active: language-intelligence
 
 
 

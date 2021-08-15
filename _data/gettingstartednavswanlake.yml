@@ -3,24 +3,24 @@
   url: #
   sublinks:
     - title: Setting up Ballerina
-      url: /learn/getting-started/setting-up-visual-studio-code/
-      active: language-intelligence
+      url: /learn/getting-started/installing-ballerina/setting-up-ballerina/
+      active: setting-up-ballerina
     - title: Installation Options
-      url: /learn/getting-started/setting-up-visual-studio-code/
-      active: language-intelligence
+      url: /learn/getting-started/installing-ballerina/installation-options/
+      active: installation-options
     - title: Building from Source
-      url: /learn/getting-started/setting-up-visual-studio-code/
-      active: language-intelligence
+      url: /learn/getting-started/installing-ballerina/building-from-source/
+      active: building-from-source
 
 - title: Hello World
   url: #
   sublinks:
     - title: Writing Your First Ballerina Program
-      url: /learn/getting-started/setting-up-visual-studio-code/
-      active: language-intelligence
+      url: /learn/getting-started/hello-world/writing-your-first-ballerina-program/
+      active: writing-your-first-ballerina-program
     - title: Creating Your First Ballerina Package
-      url: /learn/getting-started/setting-up-visual-studio-code/
-      active: language-intelligence
+      url: /learn/getting-started/hello-world/creating-your-first-ballerina-package/
+      active: creating-your-first-ballerina-package
 
 - title: Learn By Examples
   url: /learn/user-guide/getting-started/building-from-source/
@@ -38,23 +38,23 @@
   url: # 
   sublinks:
     - title: Quick Start
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
-      active: language-intelligence
+      url: /learn/getting-started/visual-studio-code-extension/quick-start/ 
+      active: quick-start
     - title: Diagram Editor
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
-      active: language-intelligence
+      url: /learn/getting-started/visual-studio-code-extension/diagram-editor/ 
+      active: diagram-editor
     - title: Debugging
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
-      active: language-intelligence
+      url: /learn/getting-started/visual-studio-code-extension/debugging/ 
+      active: debugging
     - title: VS Code Commands
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
-      active: language-intelligence
+      url: /learn/getting-started/visual-studio-code-extension/vs-code-commands/ 
+      active: vs-code-commands
     - title: Language Support
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
-      active: language-intelligence
+      url: /learn/getting-started/visual-studio-code-extension/language-support/ 
+      active: language-support
     - title: Configurations
-      url: /learn/getting-started/setting-up-visual-studio-code/language-intelligence/ 
-      active: language-intelligence
+      url: /learn/getting-started/visual-studio-code-extension/configurations/ 
+      active: configurations
 
 
 

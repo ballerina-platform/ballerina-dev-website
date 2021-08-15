@@ -3,11 +3,14 @@ layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Building from Source
 description: The sections below will guide you to build either the complete Ballerina distribution or the basic Ballerina runtime build as preferred. 
 keywords: ballerina, installing ballerina, programming language, build from source, distribution build, runtime build
-permalink: /learn/user-guide/getting-started/building-from-source/
+permalink: /learn/getting-started/installing-ballerina/building-from-source/
 active: building-from-source
 intro: The sections below will guide you to build either the complete Ballerina distribution or the basic Ballerina runtime build as preferred. 
 redirect_from:
     - /learn/user-guide/getting-started/building-from-source
+    - /learn/user-guide/getting-started/building-from-source/
+    - /learn/user-guide/getting-started/building-from-source
+    - /learn/getting-started/installing-ballerina/building-from-source
 ---
 
 ## Overview

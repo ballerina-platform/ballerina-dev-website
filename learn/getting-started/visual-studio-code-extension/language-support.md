@@ -1,7 +1,7 @@
 ---
 layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Language Support
-permalink: /learn/tooling-guide/visual-studio-code-extension/language-support/
+permalink: /learn/getting-started/visual-studio-code-extension/language-support/
 active: language-support
 intro: The Visual Studio Code Ballerina extension brings in language support to enhance the development experience and increase its efficiency. This is built into the extension via a Language Server implementation, which consists of the below features.
 description: The Visual Studio Code Ballerina extension brings in language support to enhance the development experience and increase its efficiency. This is built into the extension via a Language Server implementation, which consists of the below features.
@@ -23,6 +23,8 @@ redirect_from:
   - /learn/tooling-guide/visual-studio-code-extension/language-support/language-intelligence
   - /learn/tooling-guide/visual-studio-code-extension/language-support/language-intelligence/
   - /learn/tooling-guide/visual-studio-code-extension/language-support
+  - /learn/tooling-guide/visual-studio-code-extension/language-support/
+  - /learn/getting-started/visual-studio-code-extension/language-support
 ---
 
 ## IntelliSense

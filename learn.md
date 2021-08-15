@@ -10,11 +10,11 @@ redirect_from:
 ---
 ## Getting Started
 
-### [Installing Ballerina](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s) 
+### [Installing Ballerina](/learn/getting-started/installing-ballerina/setting-up-ballerina/) 
 
 How to download and install Ballerina via the installers.
 
-### [Hello World](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s) 
+### [Hello World](/learn/getting-started/hello-world/writing-your-first-ballerina-program/) 
 
 Write your first Ballerina program and create your first Ballerina package.
 
@@ -30,7 +30,7 @@ A video recording of the language slide deck.
 
 A comprehensive reference slide deck explaining the language.
 
-### [Visual Studio Code Extension]()
+### [Visual Studio Code Extension](/learn/getting-started/visual-studio-code-extension/quick-start/)
 
 Details of all the high-level and important features of the Ballerina Visual Studio Code extension.
 

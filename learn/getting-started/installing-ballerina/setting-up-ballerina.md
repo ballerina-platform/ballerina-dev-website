@@ -3,7 +3,7 @@ layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Setting up Ballerina
 description: Let's get started.
 keywords: ballerina, quick tour, programming language, http service
-permalink: /learn/user-guide/getting-started/setting-up-ballerina/
+permalink: /learn/getting-started/installing-ballerina/setting-up-ballerina/
 active: setting-up-ballerina
 intro: Let's get started.
 redirect_from:
@@ -20,6 +20,9 @@ redirect_from:
   - /learn/user-guide/getting-started/setting-up-ballerina
   - /learn/user-guide/
   - /learn/user-guide
+  - /learn/user-guide/getting-started/setting-up-ballerina
+  - /learn/user-guide/getting-started/setting-up-ballerina/
+  - /learn/getting-started/installing-ballerina/setting-up-ballerina
 ---
 
 ## Trying Ballerina in the Playground

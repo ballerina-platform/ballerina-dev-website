@@ -3,11 +3,13 @@ layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Writing Your First Ballerina Program
 description: Let's create a simple Ballerina HTTP service and also an HTTP client to invoke it.
 keywords: ballerina, quick tour, programming language, http service
-permalink: /learn/user-guide/getting-started/writing-your-first-ballerina-program/
+permalink: /learn/getting-started/hello-world/writing-your-first-ballerina-program/
 active: writing-your-first-ballerina-program
 intro: Let's create a simple Ballerina HTTP service and also an HTTP client to invoke it.
 redirect_from:
 - /learn/user-guide/getting-started/writing-your-first-ballerina-program
+- /learn/user-guide/getting-started/writing-your-first-ballerina-program/
+- /learn/getting-started/hello-world/writing-your-first-ballerina-program
 ---
 
 A Ballerina application can have:

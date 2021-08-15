@@ -1,7 +1,7 @@
 ---
 layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Configurations
-permalink: /learn/tooling-guide/visual-studio-code-extension/configurations/
+permalink: /learn/getting-started/visual-studio-code-extension/configurations/
 active: configurations
 intro: The Ballerina extension provides a set of configurations to allow customizations as per your preferences. 
 keywords: ballerina, visual studio code, vs code, extension, configurations
@@ -10,6 +10,8 @@ redirect_from:
   - /learn/tooling-guide/vs-code-extension/configurations
   - /learn/tooling-guide/vs-code-extension/configurations
   - /learn/tooling-guide/visual-studio-code-extension/configurations
+  - /learn/tooling-guide/visual-studio-code-extension/configurations/
+  - /learn/getting-started/visual-studio-code-extension/configurations
 ---
 
 ## Code Lens - All: Enabled

@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-guides-left-nav-pages-swanlake
 title: Observing Ballerina Services Through Choreo
 description: Choreo is a digital innovation platform that allows you to develop, deploy, and manage cloud-native applications at scale. 
 keywords: ballerina, observability, metrics, tracing, logs, choreo

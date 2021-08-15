@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-guides-left-nav-pages-swanlake
 title: Docker
 description: See how the Ballerina deployment in Docker works
 keywords: ballerina, programming language, services, cloud, docker

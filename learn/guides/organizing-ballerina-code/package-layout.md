@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-guides-left-nav-pages-swanlake
 title: Package Layout
 description: The sections below include information about the structure of a package directory. It explains the purpose of each file in a package.
 keywords: ballerina, programming language, ballerina packages, package structure, package layout

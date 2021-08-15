@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-guides-left-nav-pages-swanlake
 title: Sharing a Library Package
 description: The sections below include information about working with library packages.
 keywords: ballerina, programming language, ballerina packages, libraries, publishing packages

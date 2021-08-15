@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-guides-left-nav-pages-swanlake
 title: Code to Cloud
 description: Ballerina Code to Cloud is designed to allow developers to write code without thinking about the deployment platform. 
 keywords: ballerina, programming language, services, cloud, kubernetes, docker

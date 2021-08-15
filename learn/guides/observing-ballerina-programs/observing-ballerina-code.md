@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-guides-left-nav-pages-swanlake
 title: Observing Ballerina Code
 description: See how Ballerina supports observability by exposing itself via metrics, tracing, and logs to external systems.
 keywords: ballerina, observability, metrics, tracing, logs

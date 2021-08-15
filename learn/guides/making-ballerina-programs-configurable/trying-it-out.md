@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-guides-left-nav-pages-swanlake
 title: Trying it Out
 description: The example below demonstrates how to use configurable variables inside a Ballerina project. 
 keywords: ballerina, programming language, configurable, variables, 

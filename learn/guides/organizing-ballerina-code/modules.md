@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-guides-left-nav-pages-swanlake
 title: Modules
 description: The sections below include information about the concept of modules.
 keywords: ballerina, programming language, ballerina packages, modules, module layout

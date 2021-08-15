@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-guides-left-nav-pages-swanlake
 title: Mocking
 description: Learn how to use Ballerina's built-in mocking API provided by the test to test modules
  independent from other modules and external endpoints.

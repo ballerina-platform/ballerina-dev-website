@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-guides-left-nav-pages-swanlake
 title: Samples
 description: Sample use cases of Ballerina code to cloud. 
 keywords: ballerina, programming language, services, cloud, kubernetes, docker

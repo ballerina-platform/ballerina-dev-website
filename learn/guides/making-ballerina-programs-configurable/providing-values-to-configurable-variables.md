@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-guides-left-nav-pages-swanlake
 title: Providing Values to Configurable Variables
 description: You can supply values to configurable variables using the methods below.
 keywords: ballerina, programming language, configurable, variables, 

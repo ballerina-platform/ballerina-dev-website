@@ -1,134 +1,129 @@
 ---
 layout: ballerina-learn-landing-page
-title: Let’s Learn Ballerina!
-description: Learn and master the Ballerina programming language through setting up, Ballerina by examples, the standard library or API documentation, and how to guides.
+title: Learn
+description: Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below.
 keywords: ballerina, learn, documentation, docs, programming language
 permalink: /learn/
+intro: Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below.
 redirect_from:
-  - /swan-lake/learn/tools-ides
-  - /swan-lake/learn/tools-ides/
-  - /swan-lake/learn/faqs
-  - /swan-lake/learn/faqs/
-  - /swan-lake/learn/faq
-  - /swan-lake/learn/faq/
-  - /swan-lake/learn/by-guide
-  - /swan-lake/learn/by-guide/
-  - /swan-lake/learn
+- /learn
 ---
-<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+## Getting Started
 
-  <a class="cBoxLink" href="/learn/user-guide/">
+### [Installing Ballerina](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s) 
 
-  <img class="cLearnIcon" src="/img/User-Guide-v1.png"/>
-  <h2>User Guide</h2>
-  <p>Start programming with Ballerina.</p>
-  </a>
+How to download and install Ballerina via the installers.
 
-</div>
+### [Hello World](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s) 
 
-<div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/by-example/">
+Write your first Ballerina program and create your first Ballerina package.
 
+### [Learn by Examples](/learn/by-example/introduction/)
 
-<img class="cLearnIcon" src="/img/Ballerina-By-Example-v1.png"/>
-<h2>Ballerina by Examples</h2>
+A guided path to learn the language through a series of examples.
 
-<p>Try out an extensive list of Ballerina code examples.</p>
+### [Language Walkthrough Video](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s) 
 
-</a>
-</div>
+A video recording of the language slide deck.
 
-<div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="https://lib.ballerina.io/" target="_blank">
+### [Language Walkthrough Slides](/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
 
+A comprehensive reference slide deck explaining the language.
 
-<img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
-<h2>API Documentation</h2>
-<p>Check out the Ballerina standard library APIs.</p>
+### [Visual Studio Code Extension]()
 
+Details of all the high-level and important features of the Ballerina Visual Studio Code extension.
 
+## Concepts
 
-</a>
+### [Why Ballerina](/learn/why-ballerina/)
 
-</div>
+Why you shoud use Ballerina.
 
-<div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/tooling-guide/visual-studio-code-extension/quick-start/">
+### [Organizing Ballerina Code]()
 
-<img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
+Organize your Ballerina code via its encapsulated components.
 
-<h2>Tooling Guide</h2>
+### [Testing Ballerina Code]()
 
-<p>Learn to use the VSCode plugin and other CLI tools.</p>
+Write automated tests using the built-in test framework.
 
-</a>
+### [Generating Code Documentation]()
 
-  
-</div>
-<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+Generate documentation for your Ballerina code.
 
-<a class="cBoxLink" href="/learn/language-concepts/">
+### [Making Ballerina Programs Configurable]()
 
-<img class="cLearnIcon" src="/img/Language-Guide-v1.png"/>
-<h2>Language Concepts</h2>
-<p>Get an in-depth understanding of the language principles.</p>
-</a>
+Explains the Ballerina language support for configurability.
 
-</div>
+### [Observing Ballerina Programs]()
 
-<!--<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+How to observe Ballerina programs using the supported methods.
 
-  <a class="cBoxLink" href="/learn/structuring-ballerina-code/" target="_blank">
+### [Running Ballerina Programs in the Cloud]()
 
-  <img class="cLearnIcon" src="/img/User-Guide-v1.png"/>
-  <h2>User Guide</h2>
-  <p>Learn about all the features of the language and its capabilities.</p>
-  </a>
+Implement code to cloud user scenarios using Ballerina.
 
-</div>-->
+### [Managing Dependencies]()
 
-<!--<div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/by-example/" target="_blank">
+Declare dependencies in Ballerina code and manage them.
+
+### [Publishing Packages to Ballerina Central]()
+
+Upload your packages to host them in Ballerina Central.
+
+### [Calling Java Code from Ballerina]()
+
+The interoperability support provided between Java and Ballerina.
 
 
-<img class="cLearnIcon" src="/img/Ballerina-By-Example-v1.png"/>
-<h2>Ballerina by Examples</h2>
+## References
 
-<p>Obtain a hands-on experience of the language and its key features.</p>
+### [Language Introduction Slides](/learn/language-concepts/Ballerina_Swan_Lake_Presentation_Deck_V1.0.pdf)
 
-</a>
+Presentation slides on the Ballerina language that anyone can use to talk about the language.
 
-  
-</div>-->
+### [Language Guide](/learn/language-concepts/)
 
-<!--<div class="col-sm-12 col-md-4 cLearnPageContentCol">
-<a class="cBoxLink" href="/learn/api-docs/ballerina" target="_blank">
+An elaborate textual guide to the Ballerina language. 
 
+### [Reference by Examples](/learn/by-example/)
 
-<img class="cLearnIcon" src="/img/API-Documentation-v1.png"/>
-<h2>API Documentation</h2>
-<p>Learn the Ballerina standard library APIs comprehensively.</p>
+A series of examples that serve as a reference guide for each language construct and concept.
 
+### [Library Documentation](/learn/api-docs/)
 
+All library API docs.
 
-</a>
+### [CLI Documentation](/learn/api-docs/)
 
-</div>-->
+All the CLI commands availabe in Ballerina.
 
-<!--<div class="clearfix"></div>-->
- 
-<div class="col-sm-12 col-md-4 cLearnPageContentCol">
+### [Platform Specifications](/spec/)
 
-<a class="cBoxLink" href="/spec/" target="_blank">
+Specifications of the platform.
 
-<img class="cLearnIcon" src="/img/Language-Specification-v1.png"/>
-<h2>Language Specifications</h2>
-<p>Read the formal specifications of the Ballerina language.</p>
-</a>
+### [Style Guide]()
 
-</div>
-
-<div class="clearfix"></div>
+Coding conventions of the Ballerina language.
 
 
+<style>
+.cBallerina-io-Gray-row.cLandingPageintro{
 
+padding-bottom:0;
+}
+
+.cBallerina-io-Home-Middle-col{
+padding-left:15px !important;
+}
+
+#getting-started, #concepts, #references{
+
+    background-color:#eeeeee;
+    display: block;
+    padding: 10px 15px;
+    border-bottom: none;
+}
+
+</style>

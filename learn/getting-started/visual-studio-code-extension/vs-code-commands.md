@@ -1,7 +1,7 @@
 ---
 layout: ballerina-getting-started-left-nav-pages-swanlake
 title: VS Code Commands
-permalink: /learn/getting-started/visual-studio-code-extension/vs-code-commands/
+permalink: /learn/visual-studio-code-extension/vs-code-commands/
 active: vs-code-commands
 intro: The VS Code Ballerina extension comprises a set of palette commands to enable easy development using the inherent capabilities of the Ballerina language.
 keywords: ballerina, visual studio code, vs code, extension, commands
@@ -12,6 +12,8 @@ redirect_from:
   - /learn/tooling-guide/visual-studio-code-extension/vs-code-commands
   - /learn/tooling-guide/visual-studio-code-extension/vs-code-commands/
   - /learn/getting-started/visual-studio-code-extension/vs-code-commands
+  - /learn/getting-started/visual-studio-code-extension/vs-code-commands/
+  - /learn/visual-studio-code-extension/vs-code-commands
 ---
 
 >**Tip:** Click **View** in the menu bar of the editor and click **Command Palette** to access the command palette. Alternatively, use the VS Code palette shortcut (`⌘ + ↑ + P` on Mac and `Ctrl + Shift + P` on Windows and Linux) to execute the commands.

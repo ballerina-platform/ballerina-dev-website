@@ -1,5 +1,5 @@
 ---
-layout: ballerina-getting-started-left-nav-pages-swanlake
+layout: ballerina-example-page
 title: Introduction
 description: Try out the extensive collection of Ballerina by Example (BBE) below to grasp the features and concepts of Ballerina.
 keywords: ballerina, example, programming language, bbe

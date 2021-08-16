@@ -1,5 +1,5 @@
 ---
-layout: ballerina-references-left-nav-pages-swanlake
+layout: ballerina-style-guide-left-nav-pages-swanlake
 title: Statements
 active: statements
 permalink: /learn/style-guide/statements/

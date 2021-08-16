@@ -1,5 +1,5 @@
 ---
-layout: ballerina-references-left-nav-pages-swanlake
+layout: ballerina-style-guide-left-nav-pages-swanlake
 title: Annotations, Documentation and Comments
 permalink: /learn/style-guide/annotations-documentation-and-comments/
 active: annotations-documentation-and-comments

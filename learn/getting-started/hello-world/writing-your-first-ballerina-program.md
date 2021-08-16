@@ -1,5 +1,5 @@
 ---
-layout: ballerina-getting-started-left-nav-pages-swanlake
+layout: ballerina-hello-world-left-nav-pages-swanlake
 title: Writing Your First Ballerina Program
 description: Let's create a simple Ballerina HTTP service and also an HTTP client to invoke it.
 keywords: ballerina, quick tour, programming language, http service

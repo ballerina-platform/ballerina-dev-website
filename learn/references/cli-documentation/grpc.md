@@ -1,5 +1,5 @@
 ---
-layout: ballerina-references-left-nav-pages-swanlake
+layout: ballerina-cli-documentation-left-nav-pages-swanlake
 title: gRPC
 description: The 'Protocol Buffers to Ballerina' tool provides capabilities to generate Ballerina source code for the Protocol Buffer definition.
 keywords: ballerina, protocol buffers, programming language

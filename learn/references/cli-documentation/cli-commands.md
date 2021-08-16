@@ -1,5 +1,5 @@
 ---
-layout: ballerina-references-left-nav-pages-swanlake
+layout: ballerina-cli-documentation-left-nav-pages-swanlake
 title: CLI Commands
 description: Learn all the command line interface (CLI) commands you need to get started, build, test and run programs, work with Ballerina Central, and manage packages.
 keywords: ballerina, cli, command line interface, programming language

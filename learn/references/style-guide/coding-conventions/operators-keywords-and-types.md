@@ -1,5 +1,5 @@
 ---
-layout: ballerina-references-left-nav-pages-swanlake
+layout: ballerina-style-guide-left-nav-pages-swanlake
 title: Operators, Keywords, and Types
 active: operators-keywords-and-types
 permalink: /learn/style-guide/operators-keywords-and-types/

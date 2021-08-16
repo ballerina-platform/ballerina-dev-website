@@ -78,7 +78,7 @@ The interoperability support provided between Java and Ballerina.
 
 A series of examples that serve as a reference guide for each language construct and concept.
 
-### [Library Documentation](/learn/api-docs/)
+### [Library Documentation](https://lib.ballerina.io/)
 
 All library API docs.
 
@@ -86,7 +86,7 @@ All library API docs.
 
 All the CLI commands availabe in Ballerina.
 
-### [Platform Specifications](/learn/spec/)
+### [Platform Specifications](/learn/platform-specifications/)
 
 Specifications of the platform.
 

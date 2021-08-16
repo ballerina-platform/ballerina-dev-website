@@ -1,5 +1,5 @@
 ---
-layout: ballerina-hello-world-left-nav-pages-swanlake
+layout: ballerina-visual-studio-code-extension-left-nav-pages-swanlake
 title: Configurations
 permalink: /learn/visual-studio-code-extension/configurations/
 active: configurations

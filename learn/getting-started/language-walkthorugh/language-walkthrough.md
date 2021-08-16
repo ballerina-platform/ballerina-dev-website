@@ -1,6 +1,6 @@
 ---
 layout: ballerina-inner-page
-title: Language Concepts
+title: Language Walkthrough
 permalink: /learn/language-walkthrough/
 redirect_from:
   - /learn/language-guide

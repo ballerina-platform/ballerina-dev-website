@@ -14,8 +14,6 @@ redirect_from:
   - /learn/testing-ballerina-code
   - /swan-lake/learn/testing-ballerina-code/testing-quick-start/
   - /swan-lake/learn/testing-ballerina-code/testing-quick-start
-  - /learn/testing-ballerina-code/testing-quick-start/
-  - /learn/testing-ballerina-code/testing-quick-start
   - /learn/user-guide/testing-ballerina-code/testing-quick-start
   - /learn/user-guide/testing-ballerina-code/
   - /learn/user-guide/testing-ballerina-code

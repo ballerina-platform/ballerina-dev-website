@@ -10,11 +10,11 @@ redirect_from:
 ---
 ## Getting Started
 
-### [Installing Ballerina](/learn/installing-ballerina/) 
+### [Installing Ballerina](/learn/installing-ballerina/setting-up-ballerina/) 
 
 How to download and install Ballerina via the installers.
 
-### [Hello World](/learn/getting-started/hello-world/) 
+### [Hello World](/learn/getting-started/hello-world/writing-your-first-ballerina-program/) 
 
 Write your first Ballerina program and create your first Ballerina package.
 
@@ -26,21 +26,21 @@ A guided path to learn the language through a series of examples.
 
 A comprehensive video explaining the language and its reference slide deck.
 
-### [Visual Studio Code Extension](/learn/visual-studio-code-extension/)
+### [Visual Studio Code Extension](/learn/visual-studio-code-extension/quick-start/)
 
 Details of all the high-level and important features of the Ballerina Visual Studio Code extension.
 
 ## Guides
 
-### [Why Ballerina](/learn/why-ballerina/)
+### [Why Ballerina](/learn/why-ballerina/cloud-native/)
 
 Why you shoud use Ballerina.
 
-### [Organizing Ballerina Code](/learn/organizing-ballerina-code/)
+### [Organizing Ballerina Code](/learn/organizing-ballerina-code/package-layout/)
 
 Organize your Ballerina code via its encapsulated components.
 
-### [Testing Ballerina Code](/learn/testing-ballerina-code/)
+### [Testing Ballerina Code](/learn/testing-ballerina-code/testing-quick-start/)
 
 Write automated tests using the built-in test framework.
 
@@ -48,15 +48,15 @@ Write automated tests using the built-in test framework.
 
 Generate documentation for your Ballerina code.
 
-### [Making Ballerina Programs Configurable](/learn/making-ballerina-programs-configurable/)
+### [Making Ballerina Programs Configurable](/learn/making-ballerina-programs-configurable/defining-configurable-variables/)
 
 Explains the Ballerina language support for configurability.
 
-### [Observing Ballerina Programs](/learn/observing-ballerina-programs/)
+### [Observing Ballerina Programs](/learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/)
 
 How to observe Ballerina programs using the supported methods.
 
-### [Running Ballerina Programs in the Cloud](/learn/running-ballerina-programs-in-the-cloud/)
+### [Running Ballerina Programs in the Cloud](/learn/running-ballerina-programs-in-the-cloud/code-to-cloud/)
 
 Implement code to cloud user scenarios using Ballerina.
 
@@ -90,10 +90,9 @@ All the CLI commands availabe in Ballerina.
 
 Specifications of the platform.
 
-### [Style Guide](/learn/style-guide/)
+### [Style Guide](/learn/style-guide/coding-conventions/)
 
 Coding conventions of the Ballerina language.
-
 
 <style>
 .cBallerina-io-Gray-row.cLandingPageintro{

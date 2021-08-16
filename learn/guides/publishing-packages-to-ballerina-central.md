@@ -1,6 +1,6 @@
 ---
 layout: ballerina-guides-left-nav-pages-swanlake
-title: Sharing a Library Package
+title: Publishing Packages to Ballerina Central
 description: The sections below include information about working with library packages.
 keywords: ballerina, programming language, ballerina packages, libraries, publishing packages
 permalink: /learn/publishing-packages-to-ballerina-central/

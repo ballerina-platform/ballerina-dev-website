@@ -1,5 +1,5 @@
 ---
-layout: layout: bballerina-hello-world-left-nav-pages-swanlake
+layout: ballerina-hello-world-left-nav-pages-swanlake
 title: Quick Start
 permalink: /learn/visual-studio-code-extension/quick-start/
 active: quick-start

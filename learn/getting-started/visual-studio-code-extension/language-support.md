@@ -1,5 +1,5 @@
 ---
-layout: layout: bballerina-hello-world-left-nav-pages-swanlake
+layout: ballerina-hello-world-left-nav-pages-swanlake
 title: Language Support
 permalink: /learn/visual-studio-code-extension/language-support/
 active: language-support

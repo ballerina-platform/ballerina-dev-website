@@ -1,5 +1,5 @@
 ---
-layout: layout: bballerina-hello-world-left-nav-pages-swanlake
+layout: ballerina-hello-world-left-nav-pages-swanlake
 title: VS Code Commands
 permalink: /learn/visual-studio-code-extension/vs-code-commands/
 active: vs-code-commands

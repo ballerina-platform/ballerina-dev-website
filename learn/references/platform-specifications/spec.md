@@ -1,5 +1,5 @@
 ---
-layout: ballerina-references-left-nav-pages-swanlake
+layout: ballerina-no-git-inner-page
 title: Ballerina Platform Specifications
 intro: Read the Ballerina language spec and other specifications that cover the standard library, built-in language extensions, testing, documentation, and more.
 keywords: ballerina, language specification, spec 

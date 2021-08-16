@@ -1,10 +1,10 @@
 ---
 layout: ballerina-guides-left-nav-pages-swanlake
-title: Observing Ballerina Code
+title: Observing Your Application with Prometheus, Grafana, and Jaeger
 description: See how Ballerina supports observability by exposing itself via metrics, tracing, and logs to external systems.
 keywords: ballerina, observability, metrics, tracing, logs
-permalink: /learn/user-guide/observability/observing-ballerina-code/
-active: observing-ballerina-code
+permalink: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/
+active: observing-your-application-with-prometheus-grafana-and-jaeger
 intro: Observability is a measure of how well internal states of a system can be inferred from knowledge of its external outputs.
 redirect_from:
   - /learn/how-to-observe-ballerina-code
@@ -20,6 +20,11 @@ redirect_from:
   - /learn/user-guide/observing-ballerina-code/
   - /learn/user-guide/observability/
   - /learn/user-guide/observability
+  - /learn/user-guide/observability/observing-ballerina-code/
+  - /learn/user-guide/observability/observing-ballerina-code
+  - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger
+  - /learn/observing-ballerina-programs/
+  - /learn/observing-ballerina-programs
 ---
 
 ## Providing Observability in Ballerina

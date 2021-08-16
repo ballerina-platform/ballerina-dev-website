@@ -3,7 +3,7 @@ layout: ballerina-guides-left-nav-pages-swanlake
 title: Executing Tests
 description: Learn how to use different options for executing Ballerina tests.
 keywords: ballerina, programming language, testing
-permalink: /learn/user-guide/testing-ballerina-code/executing-tests/
+permalink: /learn/testing-ballerina-code/executing-tests/
 active: executing-tests
 intro: The sections below include information about executing tests in Ballerina.
 redirect_from:
@@ -13,6 +13,7 @@ redirect_from:
   - /learn/testing-ballerina-code/executing-tests/
   - /learn/testing-ballerina-code/executing-tests
   - /learn/user-guide/testing-ballerina-code/executing-tests
+  - /learn/user-guide/testing-ballerina-code/executing-tests/
 ---
 
 ## Executing Tests Using CLI Commands

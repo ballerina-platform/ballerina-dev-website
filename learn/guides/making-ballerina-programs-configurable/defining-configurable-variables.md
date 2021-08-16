@@ -3,13 +3,17 @@ layout: ballerina-guides-left-nav-pages-swanlake
 title: Defining Configurable Variables
 description: Ballerina supports configurability through the configurable, module-level variables.
 keywords: ballerina, programming language, configurable, variables, 
-permalink: /learn/user-guide/configurability/defining-configurable-variables/
+permalink: /learn/making-ballerina-programs-configurable/defining-configurable-variables/
 active: defining-configurable-variables
 intro: Ballerina supports configurability through the configurable, module-level variables.
 redirect_from:
 - /learn/user-guide/configurability/defining-configurable-variables
+- /learn/user-guide/configurability/defining-configurable-variables/
 - /learn/user-guide/configurability/
 - /learn/user-guide/configurability
+- /learn/making-ballerina-programs-configurable/
+- /learn/making-ballerina-programs-configurable
+- /learn/making-ballerina-programs-configurable/defining-configurable-variables
 ---
 
 ## Initialising Configurable Variables

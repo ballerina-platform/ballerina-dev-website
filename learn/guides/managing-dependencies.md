@@ -3,11 +3,13 @@ layout: ballerina-guides-left-nav-pages-swanlake
 title: Dependencies
 description: The sections below include information about dependencies, imports, and how they can be used in your package.
 keywords: ballerina, programming language, ballerina packages, dependencies, importing modules
-permalink: /learn/user-guide/ballerina-packages/dependencies/
-active: dependencies
+permalink: /learn/managing-dependencies/
+active: managing-dependencies
 intro: The sections below include information about dependencies, imports, and how they can be used in your package.
 redirect_from:
 - /learn/user-guide/ballerina-packages/dependencies
+- /learn/user-guide/ballerina-packages/dependencies/
+- /learn/managing-dependencies
 ---
 
 ## Importing Modules

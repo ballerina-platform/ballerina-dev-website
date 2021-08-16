@@ -3,11 +3,13 @@ layout: ballerina-guides-left-nav-pages-swanlake
 title: Sharing a Library Package
 description: The sections below include information about working with library packages.
 keywords: ballerina, programming language, ballerina packages, libraries, publishing packages
-permalink: /learn/user-guide/ballerina-packages/sharing-a-library-package/
-active: sharing-a-library-package
+permalink: /learn/publishing-packages-to-ballerina-central/
+active: publishing-packages-to-ballerina-central
 intro: The sections below include information about working with library packages.
 redirect_from:
-- /learn/user-guide/ballerina-packages/sharing-a-library-package
+ - /learn/user-guide/ballerina-packages/sharing-a-library-package
+ - /learn/user-guide/ballerina-packages/sharing-a-library-package/
+ - /learn/publishing-packages-to-ballerina-central
 ---
 
 ## Creating a Library Package

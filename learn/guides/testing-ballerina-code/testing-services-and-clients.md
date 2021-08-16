@@ -3,7 +3,7 @@ layout: ballerina-guides-left-nav-pages-swanlake
 title: Testing Services and Clients
 description: Learn how to use Ballerina's built-in test framework to write tests for Services and Clients.
 keywords: ballerina, programming language, testing
-permalink: /learn/user-guide/testing-ballerina-code/testing-services-and-clients/
+permalink: /learn/testing-ballerina-code/testing-services-and-clients/
 active: testing-services-and-clients
 intro: Testing Ballerina services involves sending specific requests to the service using a client and verifying the responses using the assertion functions. The aim is to make sure that the service and client behave as expected when sending and recieving both expected requests and malformed ones.
 redirect_from:
@@ -13,6 +13,7 @@ redirect_from:
 - /learn/testing-ballerina-code/testing-services-and-clients/
 - /learn/testing-ballerina-code/testing-services-and-clients
 - /learn/user-guide/testing-ballerina-code/testing-services-and-clients
+- /learn/user-guide/testing-ballerina-code/testing-services-and-clients/
 ---
 
 ## Testing Services

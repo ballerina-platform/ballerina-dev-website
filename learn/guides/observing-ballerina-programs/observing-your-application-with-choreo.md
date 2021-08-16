@@ -1,13 +1,15 @@
 ---
 layout: ballerina-guides-left-nav-pages-swanlake
-title: Observing Ballerina Services Through Choreo
+title: Observing Your Application with Choreo
 description: Choreo is a digital innovation platform that allows you to develop, deploy, and manage cloud-native applications at scale. 
 keywords: ballerina, observability, metrics, tracing, logs, choreo
-permalink: /learn/user-guide/observability/observing-ballerina-services-through-choreo/
-active: observing-ballerina-services-through-choreo
+permalink: /learn/observing-ballerina-programs/observing-your-application-with-choreo/
+active: observing-your-application-with-choreo
 intro: Choreo is a digital innovation platform that allows you to develop, deploy, and manage cloud-native applications at scale. 
 redirect_from:
   - /learn/user-guide/observability/observing-ballerina-services-through-choreo
+  - /learn/user-guide/observability/observing-ballerina-services-through-choreo/
+  - /learn/observing-ballerina-programs/observing-your-application-with-choreo
 ---
 
 >**Info:** If you already have login access to [Choreo](https://wso2.com/choreo/), see [Observability Overview](https://wso2.com/choreo/docs/observability/observability-overview/) to observe your Ballerina program in Choreo.

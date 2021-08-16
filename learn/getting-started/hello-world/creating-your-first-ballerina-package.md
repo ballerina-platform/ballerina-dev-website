@@ -7,15 +7,15 @@ permalink: /learn/hello-world/creating-your-first-ballerina-package/
 active: creating-your-first-ballerina-package
 intro: The single source file program is a quick and easy way to get started with Ballerina. However, when your code grows, you need to create a Ballerina package to organize your code.
 redirect_from:
-- /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package
-- /learn/user-guide/ballerina-packages/
-- /learn/user-guide/ballerina-packages
-- /learn/structuring-ballerina-code/
-- /learn/structuring-ballerina-code
-- /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/
-- /learn/getting-started/hello-world/creating-your-first-ballerina-package
-- /learn/getting-started/hello-world/creating-your-first-ballerina-package/
-- /learn/hello-world/creating-your-first-ballerina-package
+ - /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package
+ - /learn/user-guide/ballerina-packages/
+ - /learn/user-guide/ballerina-packages
+ - /learn/structuring-ballerina-code/
+ - /learn/structuring-ballerina-code
+ - /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/
+ - /learn/getting-started/hello-world/creating-your-first-ballerina-package
+ - /learn/getting-started/hello-world/creating-your-first-ballerina-package/
+ - /learn/hello-world/creating-your-first-ballerina-package
 ---
 
 The below are the basic steps you need to know about writing a Ballerina package. It also introduces the package-related commands in the Ballerina command-line tool.

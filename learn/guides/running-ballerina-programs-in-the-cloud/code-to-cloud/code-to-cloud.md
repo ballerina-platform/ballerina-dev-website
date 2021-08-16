@@ -19,6 +19,8 @@ redirect_from:
   - /learn/user-guide/deployment/docker
   - /learn/user-guide/deployment/code-to-cloud/
   - /learn/running-ballerina-programs-in-the-cloud/code-to-cloud
+  - /learn/running-ballerina-programs-in-the-cloud/
+  - /learn/running-ballerina-programs-in-the-cloud
 ---
 
 This greatly simplifies the experience of developing and deploying Ballerina code in the cloud. It also enables using cloud native technologies easily without in-depth knowledge.

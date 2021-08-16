@@ -25,6 +25,8 @@ redirect_from:
   - /learn/getting-started/installing-ballerina/setting-up-ballerina
   - /learn/getting-started/installing-ballerina/setting-up-ballerina/
   - /learn/installing-ballerina/setting-up-ballerina
+  - /learn/installing-ballerina/
+  - /learn/installing-ballerina
 ---
 
 ## Trying Ballerina in the Playground

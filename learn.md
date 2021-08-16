@@ -10,11 +10,11 @@ redirect_from:
 ---
 ## Getting Started
 
-### [Installing Ballerina](/learn/getting-started/installing-ballerina/setting-up-ballerina/) 
+### [Installing Ballerina](/learn/installing-ballerina/) 
 
 How to download and install Ballerina via the installers.
 
-### [Hello World](/learn/getting-started/hello-world/writing-your-first-ballerina-program/) 
+### [Hello World](/learn/getting-started/hello-world/) 
 
 Write your first Ballerina program and create your first Ballerina package.
 
@@ -22,15 +22,11 @@ Write your first Ballerina program and create your first Ballerina package.
 
 A guided path to learn the language through a series of examples.
 
-### [Language Walkthrough Video](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s) 
+### [Language Walkthrough](/learn/language-walkthrough/)
 
-A video recording of the language slide deck.
+A comprehensive video explaining the language and its reference slide deck.
 
-### [Language Walkthrough Slides](/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
-
-A comprehensive reference slide deck explaining the language.
-
-### [Visual Studio Code Extension](/learn/getting-started/visual-studio-code-extension/quick-start/)
+### [Visual Studio Code Extension](/learn/visual-studio-code-extension/)
 
 Details of all the high-level and important features of the Ballerina Visual Studio Code extension.
 
@@ -40,52 +36,43 @@ Details of all the high-level and important features of the Ballerina Visual Stu
 
 Why you shoud use Ballerina.
 
-### [Organizing Ballerina Code]()
+### [Organizing Ballerina Code](/learn/organizing-ballerina-code/)
 
 Organize your Ballerina code via its encapsulated components.
 
-### [Testing Ballerina Code]()
+### [Testing Ballerina Code](/learn/testing-ballerina-code/)
 
 Write automated tests using the built-in test framework.
 
-### [Generating Code Documentation]()
+### [Generating Code Documentation](/learn/generating-code-documentation/)
 
 Generate documentation for your Ballerina code.
 
-### [Making Ballerina Programs Configurable]()
+### [Making Ballerina Programs Configurable](/learn/making-ballerina-programs-configurable/)
 
 Explains the Ballerina language support for configurability.
 
-### [Observing Ballerina Programs]()
+### [Observing Ballerina Programs](/learn/observing-ballerina-programs/)
 
 How to observe Ballerina programs using the supported methods.
 
-### [Running Ballerina Programs in the Cloud]()
+### [Running Ballerina Programs in the Cloud](/learn/running-ballerina-programs-in-the-cloud/)
 
 Implement code to cloud user scenarios using Ballerina.
 
-### [Managing Dependencies]()
+### [Managing Dependencies](/learn/managing-dependencies/)
 
 Declare dependencies in Ballerina code and manage them.
 
-### [Publishing Packages to Ballerina Central]()
+### [Publishing Packages to Ballerina Central](/learn/publishing-packages-to-ballerina-central/)
 
 Upload your packages to host them in Ballerina Central.
 
-### [Calling Java Code from Ballerina]()
+### [Calling Java Code from Ballerina and Vice Versa](/learn/calling-java-code-from-ballerina-and-vice-versa/)
 
 The interoperability support provided between Java and Ballerina.
 
-
 ## References
-
-### [Language Introduction Slides](/learn/language-concepts/Ballerina_Swan_Lake_Presentation_Deck_V1.0.pdf)
-
-Presentation slides on the Ballerina language that anyone can use to talk about the language.
-
-### [Language Guide](/learn/language-concepts/)
-
-An elaborate textual guide to the Ballerina language. 
 
 ### [Reference by Examples](/learn/by-example/)
 
@@ -95,15 +82,15 @@ A series of examples that serve as a reference guide for each language construct
 
 All library API docs.
 
-### [CLI Documentation](/learn/api-docs/)
+### [CLI Documentation](/learn/cli-documentation/cli-commands/)
 
 All the CLI commands availabe in Ballerina.
 
-### [Platform Specifications](/spec/)
+### [Platform Specifications](/learn/spec/)
 
 Specifications of the platform.
 
-### [Style Guide]()
+### [Style Guide](/learn/style-guide/)
 
 Coding conventions of the Ballerina language.
 

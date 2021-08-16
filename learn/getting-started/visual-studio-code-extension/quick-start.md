@@ -18,6 +18,8 @@ redirect_from:
   - /learn/getting-started/visual-studio-code-extension/quick-start
   - /learn/getting-started/visual-studio-code-extension/quick-start/
   - /learn/visual-studio-code-extension/quick-start
+  - /learn/visual-studio-code-extension/
+  - /learn/visual-studio-code-extension
 ---
 
 ## Setting up the Prerequisites

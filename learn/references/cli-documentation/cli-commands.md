@@ -18,6 +18,8 @@ redirect_from:
   - /learn/tooling-guide/cli-tools
   - /learn/tooling-guide/cli-tools/cli-commands/
   - /learn/cli-documentation/cli-commands
+  - /learn/cli-documentation
+  - /learn/cli-documentation/
 ---
 
 ## Using the Ballerina Tool

@@ -7,9 +7,11 @@ permalink: /learn/organizing-ballerina-code/package-layout/
 active: package-layout
 intro: The sections below include information about the structure of a package directory. It explains the purpose of each file in a package.
 redirect_from:
- - /learn/user-guide/ballerina-packages/package-layout
- - /learn/user-guide/ballerina-packages/package-layout/
- - /learn/organizing-ballerina-code/package-layout
+  - /learn/user-guide/ballerina-packages/package-layout
+  - /learn/user-guide/ballerina-packages/package-layout/
+  - /learn/organizing-ballerina-code/package-layout
+  - /learn/organizing-ballerina-code/
+  - /learn/organizing-ballerina-code
 ---
 
 ```bash

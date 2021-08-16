@@ -3,7 +3,7 @@ layout: ballerina-references-left-nav-pages-swanlake
 title: OpenAPI 
 description: Check out how the Ballerina OpenAPI tooling makes it easy for users to start developing a service documented in the OpenAPI contract.
 keywords: ballerina, programming language, openapi, open api, restful api
-permalink: /learn/tooling-guide/cli-tools/openapi/
+permalink: /learn/cli-documentation/openapi/
 active: openapi
 intro: OpenAPI Specification is a specification that creates a RESTFUL contract for APIs, detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina OpenAPI tooling will make it easy for users to start the development of a service documented in an OpenAPI contract in Ballerina by generating Ballerina service and client skeletons.
 redirect_from:
@@ -13,6 +13,8 @@ redirect_from:
   - /swan-lake/learn/using-the-openapi-tools/
   - /swan-lake/learn/using-the-openapi-tools
   - /learn/tooling-guide/cli-tools/openapi
+  - /learn/tooling-guide/cli-tools/openapi/
+  - /learn/cli-documentation/openapi
 ---
 
 ## Using the Capabilities of the OpenAPI Tools

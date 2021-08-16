@@ -3,13 +3,12 @@ layout: ballerina-references-left-nav-pages-swanlake
 title: Coding Conventions
 description: The Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. The Ballerina code formatting tools are based on this guide.
 keywords: ballerina, programming language, ballerina style guide
-permalink: /learn/user-guide/style-guide/coding-conventions/
+permalink: /learn/style-guide/coding-conventions/
 active: coding-conventions
 intro: This Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. Therefore, the Ballerina code formatting tools are based on this guide.
 redirect_from:
-  - /learn/style-guide
   - /learn/style-guide/
-  - /learn/coding-conventions
+  - /learn/style-guide
   - /swan-lake/learn/coding-conventions/
   - /swan-lake/learn/coding-conventions
   - /learn/coding-conventions/
@@ -19,8 +18,10 @@ redirect_from:
   - /learn/user-guide/code-organization/coding-conventions
   - /learn/user-guide/code-organization/coding-conventions/
   - /learn/user-guide/style-guide/coding-conventions
+  - /learn/user-guide/style-guide/coding-conventions/
   - /learn/user-guide/style-guide/
   - /learn/user-guide/style-guide
+  - /learn/style-guide/coding-conventions/
 ---
 
 > You can follow your own coding style when writing Ballerina source code. Also, plugins and tools can be configured to match your coding style.

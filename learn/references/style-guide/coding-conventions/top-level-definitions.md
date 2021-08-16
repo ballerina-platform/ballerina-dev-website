@@ -2,10 +2,9 @@
 layout: ballerina-references-left-nav-pages-swanlake
 title: Top-Level Definitions
 active: top-level-definitions
-permalink: /learn/user-guide/style-guide/coding-conventions/top-level-definitions/
+permalink: /learn/style-guide/top-level-definitions/
 intro: The sections below include the coding conventions with respect to top-level definitions.
 redirect_from:
-  - /learn/style-guide/definitions/
   - /learn/style-guide/definitions
   - /learn/coding-conventions/definitions
   - /learn/coding-conventions/top-level-definitions
@@ -17,6 +16,7 @@ redirect_from:
   - /learn/user-guide/coding-conventions/top-level-definitions/
   - /learn/user-guide/code-organization/coding-conventions/top-level-definitions/
   - /learn/user-guide/code-organization/coding-conventions/top-level-definitions
+  - /learn/user-guide/style-guide/coding-conventions/top-level-definitions
   - /learn/user-guide/style-guide/coding-conventions/top-level-definitions
 ---
 

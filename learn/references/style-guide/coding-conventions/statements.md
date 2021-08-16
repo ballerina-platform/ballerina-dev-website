@@ -2,10 +2,9 @@
 layout: ballerina-references-left-nav-pages-swanlake
 title: Statements
 active: statements
-permalink: /learn/user-guide/style-guide/coding-conventions/statements/
+permalink: /learn/style-guide/statements/
 intro: The sections below include the coding conventions with respect to statements.
 redirect_from:
-  - /learn/style-guide/statements/
   - /learn/style-guide/statements
   - /learn/coding-conventions/statements
   - /swan-lake/learn/coding-conventions/statements/
@@ -17,6 +16,7 @@ redirect_from:
   - /learn/user-guide/code-organization/coding-conventions/statements/
   - /learn/user-guide/code-organization/coding-conventions/statements
   - /learn/user-guide/style-guide/coding-conventions/statements
+  - /learn/user-guide/style-guide/coding-conventions/statements/
 
 ---
 

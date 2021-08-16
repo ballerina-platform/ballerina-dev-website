@@ -2,10 +2,9 @@
 layout: ballerina-references-left-nav-pages-swanlake
 title: Expressions
 active: expressions
-permalink: /learn/user-guide/style-guide/coding-conventions/expressions/
+permalink: /learn/style-guide/expressions/
 intro: The sections below include the coding conventions with respect to expressions.
 redirect_from:
-  - /learn/style-guide/expressions/
   - /learn/style-guide/expressions
   - /learn/coding-conventions/expressions
   - /swan-lake/learn/coding-conventions/expressions/
@@ -17,6 +16,7 @@ redirect_from:
   - /learn/user-guide/code-organization/coding-conventions/expressions/
   - /learn/user-guide/code-organization/coding-conventions/expressions
   - /learn/user-guide/style-guide/coding-conventions/expressions
+  - /learn/user-guide/style-guide/coding-conventions/expressions/
 ---
 
 ## Function Invocation

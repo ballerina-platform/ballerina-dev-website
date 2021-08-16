@@ -82,6 +82,10 @@
     - title: Code to Cloud
       url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/
       active: code-to-cloud
+      sublinks:
+        - title: Code to Cloud Samples
+          url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-samples
+          active: code-to-cloud-samples
     - title: Function as a Service (FaaS) with Ballerina
       url: #
       sublinks:

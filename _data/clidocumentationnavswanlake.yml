@@ -1,0 +1,40 @@
+- title: CLI Documentation
+  url: #
+  sublinks:
+    - title: CLI Commands
+      url: /learn/cli-documentation/cli-commands/
+      active: cli-commands
+    - title: Update Tools
+      url: /learn/cli-documentation/update-tool/
+      active: update-tool
+    - title: Open API
+      url: /learn/cli-documentation/openapi/
+      active: openapi
+    - title: GRPC
+      url: /learn/cli-documentation/grpc/
+      active: grpc
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+   
+
+      
+
+
+
+
+
+

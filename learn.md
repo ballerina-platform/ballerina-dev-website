@@ -16,7 +16,7 @@ redirect_from:
 		<div class="column-gray-box"> 
 			<h2 id="getting-started">Getting Started</h2>
 			<h3 id="installing-ballerina"><a href="/learn/installing-ballerina/setting-up-ballerina/">Installing Ballerina</a></h3>
-			<p>How to download and install Ballerina via the installers.</p>
+			<p>Download and install Ballerina via the installers.</p>
 			<h3 id="hello-world"><a href="/learn/getting-started/hello-world/writing-your-first-ballerina-program/">Hello World</a></h3>
 			<p>Write your first Ballerina program and create your first Ballerina package.</p>
 			<h3 id="learn-by-example"><a href="/learn/by-example/introduction/">Learn by Examples</a></h3>
@@ -41,26 +41,26 @@ redirect_from:
 		<!--<h3 id="writing-idiomatic-ballerina-code"><a href="/learn/user-guide/">Writing Idiomatic Ballerina Code</a></h3>
 		<p>Guide developers to start thinking in Ballerina.</p>-->
 		<h3 id="organizing-ballerina-code"><a href="/learn/organizing-ballerina-code/package-layout/">Organizing Ballerina Code</a></h3>
-		<p>Covers the basics of projects/packages/modules.</p>
+		<p>Basics of projects/packages/modules.</p>
 		<h3 id="testing-ballerina-code"><a href="/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a></h3>
 		<p>Write automated tests using the built-in test framework.</p>
 		<h3 id="generatinging-code-documentation"><a href="/learn/generating-code-documentation/">Generating Code Documentation
 </a></h3>
-		<p>Covers the usage of the `bal doc` CLI command.</p>
+		<p>The usage of the `bal doc` CLI command.</p>
 		<h3 id="making-ballerina-programs-configurable"><a href="/learn/making-ballerina-programs-configurable/defining-configurable-variables/">Making Ballerina Programs Configurable</a></h3>
-		<p>Explains the language support for configurability.</p>
+		<p>The language support for configurability.</p>
 		<h3 id="observing-ballerina-programs"><a href="/learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/">Observing Ballerina Programs
 </a></h3>
-		<p>Covers the basics of the observing functionalities provided for Ballerina programs.</p>
+		<p>The basics of the observing functionalities provided for Ballerina programs.</p>
 		<h3 id="running-ballerina-programs-in-the-cloud"><a href="/learn/running-ballerina-programs-in-the-cloud/code-to-cloud/">Running Ballerina Programs in the Cloud
 </a></h3>
-		<p>Explains the cloud offerrings for running Ballerina programs.</p>
+		<p>The cloud offerrings for running Ballerina programs.</p>
 		<h3 id="managing-dependencies"><a href="/learn/managing-dependencies/">Managing Dependencies </a></h3>
-		<p>Explains how to declare and manage dependencies and how to use the local repository.</p>
+		<p>Declare and manage dependencies and how to use the local repository.</p>
 		<h3 id="publishing-packages-to-ballerina-central"><a href="/learn/publishing-packages-to-ballerina-central/">Publishing Packages to Ballerina Central</a></h3>
-		<p>Provides instructions on how to publish your package to Ballerina Central.</p>
+		<p>Instructions on how to publish your package to Ballerina Central.</p>
 		<h3 id="calling-java-code-from-ballerina-and-vice-versa"><a href="/learn/calling-java-code-from-ballerina-and-vice-versa/">Calling Java Code from Ballerina and Vice Versa</a></h3>
-		<p>Provides instructions on the supported interoperability features.</p>
+		<p>Instructions on the supported interoperability features.</p>
 		</div>
 	</div>
 	<div class="column-gray-box-grid">
@@ -75,7 +75,7 @@ redirect_from:
 		<h3 id="library-documentation"><a href="https://lib.ballerina.io/">Library Documentation</a></h3>
 		<p>All library API docs.</p>
 		<h3 id="the-bal-tool"><a href="/learn/cli-documentation/cli-commands/">CLI Documentation</a></h3>
-		<p>Provides details of all the CLI commands of the `bal` tool.</p>
+		<p>Details of all the CLI commands of the `bal` tool.</p>
 		<h3 id="specifications"><a href="/learn/platform-specifications/">Platform Specifications</a></h3>
 		<p>Specifications for the platform.</p>
         <h3 id="style-guide"><a href="/learn/style-guide/coding-conventions/">Style Guide</a></h3>

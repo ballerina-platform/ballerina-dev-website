@@ -36,9 +36,9 @@ redirect_from:
 
 The Ballerina HTTP services/resources can be configured to authenticate and authorize the inbound requests. Ballerina has built-in support for the following listener authentication mechanisms.
 
-- Basic authentication
-- JWT authentication
-- OAuth2 authentication
+- Basic Auth
+- JWT Auth
+- OAuth2
 
 The example below represents how a service can be secured. The `http:ServiceConfig` annotation should have an `auth` field, which is an array of elements consisting of   `http:FileUserStoreConfigWithScopes`, `http:LdapUserStoreConfigWithScopes`, `http:JwtValidatorConfigWithScopes`, or `http:OAuth2IntrospectionConfigWithScopes` records. Each of these records consists of a record specific configuration (`http:FileUserStoreConfig`, `http:LdapUserStoreConfig`, `http:JwtValidatorConfig`, `http:OAuth2IntrospectionConfig` in this order) and an optional field, which consists of a `string` or `string[]`. The record-specific configuration is used for authentication and the optional field can be used for authorization.
 
@@ -570,7 +570,7 @@ service /foo on securedEP {
 
 ## OAuth2
 
-Ballerina supports OAuth2 authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have an `http:OAuth2IntrospectionConfigWithScopes` record as an element. If the `oauth2IntrospectionConfig` field is assigned with the `http:OAuth2IntrospectionConfig` implementation, the authentication will be evaluated. Optionally, the user can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
+Ballerina supports OAuth2 authorization for services/resources. The `auth` field of a service/resource annotation should have an `http:OAuth2IntrospectionConfigWithScopes` record as an element. If the `oauth2IntrospectionConfig` field is assigned with the `http:OAuth2IntrospectionConfig` implementation, the authentication will be evaluated. Optionally, the user can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
 The `http:OAuth2IntrospectionConfig` configurations include:
 

@@ -12,9 +12,9 @@ redirect_from:
 
 The Ballerina HTTP client can be configured to send authentication information to the endpoint being invoked. Ballerina has built-in support for the following client authentication mechanisms.
 
-- Basic authentication
-- JWT authentication
-- OAuth2 authentication
+- Basic Auth
+- JWT Auth
+- OAuth2
 
 The following example represents how an HTTP client can be configured to call a secured endpoint.  The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:CredentialsConfig`, `http:BearerTokenConfig`, `http:JwtIssuerConfig`, `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, and `http:OAuth2RefreshTokenGrantConfig` records.
 
@@ -163,23 +163,23 @@ public function main() {
 
 ## OAuth2
 
-Ballerina supports Basic Authentication for clients. It supports the client credentials grant type, password grant type, and refresh token grant type, in which, the credentials can be provided manually, and after that refreshing is handled internally. The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, or `http:OAuth2RefreshTokenGrantConfig` records.
+Ballerina supports OAuth2 authorization for clients. It supports the client credentials grant type, password grant type, and refresh token grant type, in which, the credentials can be provided manually, and after that refreshing is handled internally. The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, or `http:OAuth2RefreshTokenGrantConfig` records.
 
 ### Client Credentials Grant Type
 
 The `http:OAuth2ClientCredentialsGrantConfig` configurations include:
 
-* `tokenUrl` - Token URL for the authorization endpoint
-* `clientId` - Client ID for the client credentials grant authentication
-* `clientSecret` - Client secret for the client credentials grant authentication
+* `tokenUrl` - Token URL of the token endpoint
+* `clientId` - Client ID for the client authentication
+* `clientSecret` - Client secret for the client authentication
 * `scopes` - Scope(s) of the access request
-* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if the authorization server response does not contain an `expires_in` field
+* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if the token endpoint response does not contain an `expires_in` field
 * `clockSkew` - Clock skew (in seconds) that can be used to avoid token validation failures due to clock synchronization problems
-* `optionalParams` - Map of optional parameters to be used for the authorization endpoint
-* `credentialBearer` - Bearer of the authentication credentials, which is sent to the authorization endpoint
+* `optionalParams` -  Map of optional parameters use for the token endpoint
+* `credentialBearer` - Bearer of the authentication credentials, which is sent to the token endpoint
     * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the Authentication Header
     * `http:POST_BODY_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
-* `clientConfig` - HTTP client configurations, which are used to call the authorization endpoint
+* `clientConfig` - HTTP client configurations, which are used to call the token endpoint
     * `httpVersion` - The HTTP version of the client
     * `customHeaders` - The list of custom HTTP headers
     * `customPayload` - The list of custom HTTP payload parameters
@@ -226,11 +226,11 @@ public function main() {
 
 The `http:OAuth2PasswordGrantConfig` configurations include:
 
-* `tokenUrl` - Token URL for the authorization endpoint
-* `username` - Username for the password grant authentication
-* `password` - Password for the password grant authentication
-* `clientId` - Client ID for the password grant authentication
-* `clientSecret` - Client secret for the password grant authentication
+* `tokenUrl` - Token URL of the token endpoint
+* `username` - Username for the password grant type
+* `password` - Password for the password grant type
+* `clientId` - Client ID for the client authentication
+* `clientSecret` - Client secret for the client authentication
 * `scopes` - Scope(s) of the access request
 * `refreshConfig` - Configurations for refreshing the access token
     * `refreshUrl` - Refresh token URL for the refresh token server
@@ -240,13 +240,13 @@ The `http:OAuth2PasswordGrantConfig` configurations include:
         * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the Authentication Header
         * `http:POST_BODY_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
     * `clientConfig` - HTTP client configurations, which are used to call the authorization endpoint
-* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if the authorization server response does not contain an `expires_in` field
+* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if the token endpoint response does not contain an `expires_in` field
 * `clockSkew` - Clock skew (in seconds) that can be used to avoid token validation failures due to clock synchronization problems
-* `optionalParams` - Map of optional parameters to be used for the authorization endpoint
-* `credentialBearer` - Bearer of the authentication credentials, which is sent to the authorization endpoint
+* `optionalParams` - Map of optional parameters use for the token endpoint
+* `credentialBearer` - Bearer of the authentication credentials, which is sent to the token endpoint
     * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the Authentication Header
     * `http:POST_BODY_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
-* `clientConfig` - HTTP client configurations, which are used to call the authorization endpoint
+* `clientConfig` - HTTP client configurations, which are used to call the token endpoint
     * `httpVersion` - The HTTP version of the client
     * `customHeaders` - The list of custom HTTP headers
     * `customPayload` - The list of custom HTTP payload parameters
@@ -304,18 +304,18 @@ public function main() {
 
 The `http:OAuth2RefreshTokenGrantConfig` configurations include:
 
-* `refreshUrl` - Refresh token URL for the refresh token server
-* `refreshToken` - Refresh token for the refresh token server
-* `clientId` - Client ID for authentication against the authorization endpoint
-* `clientSecret` - Client secret for authentication against the authorization endpoint
+* `refreshUrl` - Refresh token URL of the token endpoint
+* `refreshToken` - Refresh token for the token endpoint
+* `clientId` - Client ID for the client authentication
+* `clientSecret` - Client secret for the client authentication
 * `scopes` - Scope(s) of the access request
-* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if the authorization server response does not contain an `expires_in` field
+* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if the token endpoint response does not contain an `expires_in` field
 * `clockSkew` - Clock skew (in seconds) that can be used to avoid token validation failures due to clock synchronization problems
-* `optionalParams` - Map of optional parameters to be used for the authorization endpoint
-* `credentialBearer` - Bearer of the authentication credentials, which is sent to the authorization endpoint
+* `optionalParams` - Map of optional parameters use for the token endpoint
+* `credentialBearer` - Bearer of the authentication credentials, which is sent to the token endpoint
     * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the Authentication Header
     * `http:POST_BODY_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
-* `clientConfig` - HTTP client configurations, which are used to call the authorization endpoint
+* `clientConfig` - HTTP client configurations, which are used to call the token endpoint
     * `httpVersion` - The HTTP version of the client
     * `customHeaders` - The list of custom HTTP headers
     * `customPayload` - The list of custom HTTP payload parameters

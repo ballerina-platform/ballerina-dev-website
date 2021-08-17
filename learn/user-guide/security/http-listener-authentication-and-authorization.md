@@ -140,7 +140,7 @@ listener http:Listener securedEP = new(9090,
     auth: [
         {
             fileUserStoreConfig: {},
-            scopes: ["hello"]
+            scopes: ["admin"]
         }
     ]
 }
@@ -282,16 +282,16 @@ listener http:Listener securedEP = new(9090,
     auth: [
         {
             ldapUserStoreConfig: {
-                domainName: "ballerina.io",
-                connectionUrl: "ldap://localhost:20000",
-                connectionName: "uid=admin,ou=system",
-                connectionPassword: "secret",
-                userSearchBase: "ou=Users,dc=ballerina,dc=io",
-                userEntryObjectClass: "identityPerson",
+                domainName: "avix.lk",
+                connectionUrl: "ldap://localhost:389",
+                connectionName: "cn=admin,dc=avix,dc=lk",
+                connectionPassword: "avix123",
+                userSearchBase: "ou=Users,dc=avix,dc=lk",
+                userEntryObjectClass: "inetOrgPerson",
                 userNameAttribute: "uid",
-                userNameSearchFilter: "(&(objectClass=person)(uid=?))",
-                userNameListFilter: "(objectClass=person)",
-                groupSearchBase: ["ou=Groups,dc=ballerina,dc=io"],
+                userNameSearchFilter: "(&(objectClass=inetOrgPerson)(uid=?))",
+                userNameListFilter: "(objectClass=inetOrgPerson)",
+                groupSearchBase: ["ou=Groups,dc=avix,dc=lk"],
                 groupEntryObjectClass: "groupOfNames",
                 groupNameAttribute: "cn",
                 groupNameSearchFilter: "(&(objectClass=groupOfNames)(cn=?))",
@@ -299,10 +299,10 @@ listener http:Listener securedEP = new(9090,
                 membershipAttribute: "member",
                 userRolesCacheEnabled: true,
                 connectionPoolingEnabled: false,
-                connectionTimeout: 5000,
-                readTimeout: 60000
+                connectionTimeout: 5,
+                readTimeout: 60
             },
-            scopes: ["hello"]
+            scopes: ["admin"]
         }
     ]
 }
@@ -384,16 +384,16 @@ listener http:Listener securedEP = new(9090,
 );
 
 http:ListenerLdapUserStoreBasicAuthHandler handler = new({
-    domainName: "ballerina.io",
-    connectionUrl: "ldap://localhost:20000",
-    connectionName: "uid=admin,ou=system",
-    connectionPassword: "secret",
-    userSearchBase: "ou=Users,dc=ballerina,dc=io",
-    userEntryObjectClass: "identityPerson",
+    domainName: "avix.lk",
+    connectionUrl: "ldap://localhost:389",
+    connectionName: "cn=admin,dc=avix,dc=lk",
+    connectionPassword: "avix123",
+    userSearchBase: "ou=Users,dc=avix,dc=lk",
+    userEntryObjectClass: "inetOrgPerson",
     userNameAttribute: "uid",
-    userNameSearchFilter: "(&(objectClass=person)(uid=?))",
-    userNameListFilter: "(objectClass=person)",
-    groupSearchBase: ["ou=Groups,dc=ballerina,dc=io"],
+    userNameSearchFilter: "(&(objectClass=inetOrgPerson)(uid=?))",
+    userNameListFilter: "(objectClass=inetOrgPerson)",
+    groupSearchBase: ["ou=Groups,dc=avix,dc=lk"],
     groupEntryObjectClass: "groupOfNames",
     groupNameAttribute: "cn",
     groupNameSearchFilter: "(&(objectClass=groupOfNames)(cn=?))",
@@ -401,8 +401,8 @@ http:ListenerLdapUserStoreBasicAuthHandler handler = new({
     membershipAttribute: "member",
     userRolesCacheEnabled: true,
     connectionPoolingEnabled: false,
-    connectionTimeout: 5000,
-    readTimeout: 60000
+    connectionTimeout: 5,
+    readTimeout: 60
 });
 
 service /foo on securedEP {
@@ -464,7 +464,7 @@ listener http:Listener securedEP = new(9090,
                 },
                 scopeKey: "scp"
             },
-            scopes: ["hello"]
+            scopes: ["admin"]
         }
     ]
 }
@@ -606,7 +606,7 @@ listener http:Listener securedEP = new(9090,
     auth: [
         {
             oauth2IntrospectionConfig: {
-                url: "https://localhost:9999/oauth2/token/introspect",
+                url: "https://localhost:9445/oauth2/introspect",
                 tokenTypeHint: "access_token",
                 scopeKey: "scp",
                 clientConfig: {
@@ -615,7 +615,7 @@ listener http:Listener securedEP = new(9090,
                     }
                 }
             },
-            scopes: ["hello"]
+            scopes: ["admin"]
         }
     ]
 }
@@ -697,7 +697,7 @@ listener http:Listener securedEP = new(9090,
 );
 
 http:ListenerOAuth2Handler handler = new({
-    url: "https://localhost:9999/oauth2/token/introspect",
+    url: "https://localhost:9445/oauth2/introspect",
     tokenTypeHint: "access_token",
     scopeKey: "scp",
     clientConfig: {

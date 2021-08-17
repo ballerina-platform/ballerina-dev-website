@@ -16,7 +16,7 @@ The Ballerina HTTP client can be configured to send authentication information t
 - JWT Auth
 - OAuth2
 
-The following example represents how an HTTP client can be configured to call a secured endpoint.  The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:CredentialsConfig`, `http:BearerTokenConfig`, `http:JwtIssuerConfig`, `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, and `http:OAuth2RefreshTokenGrantConfig` records.
+The following example represents how an HTTP client can be configured to call a secured endpoint.  The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:CredentialsConfig`, `http:BearerTokenConfig`, `http:JwtIssuerConfig`, `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, `http:OAuth2RefreshTokenGrantConfig`, and `http:OAuth2JwtBearerGrantConfig` records.
 
 ```ballerina
 import ballerina/http;
@@ -55,14 +55,9 @@ http:Client securedEP = check new("https://localhost:9090",
     }
 );
 
-public function main() {
-    // Send a `GET` request to the specified endpoint.
-    http:Response|http:ClientError response = securedEP->get("/foo/bar");
-    if (response is http:Response) {
-        log:print(response.statusCode.toString());
-    } else {
-        log:printError("Failed to call the endpoint.", 'error = response);
-    }
+public function main() returns error? {
+    json response = check securedEP->get("/foo/bar");
+    log:printInfo(response.toJsonString());
 }
 ```
 
@@ -109,7 +104,7 @@ http:Client securedEP = check new("https://localhost:9090",
         audience: ["ballerina", "ballerina.org", "ballerina.io"],
         jwtId: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In",
         keyId: "5a0b754-895f-4279-8843-b745e11a57e9",
-        customClaims: { "scp": "hello" },
+        customClaims: { "scp": "admin" },
         expTime: 3600,
         signatureConfig: {
             algorithm: jwt:RS256,
@@ -123,14 +118,9 @@ http:Client securedEP = check new("https://localhost:9090",
     }
 );
 
-public function main() {
-    // Send a `GET` request to the specified endpoint.
-    http:Response|http:ClientError response = securedEP->get("/foo/bar");
-    if (response is http:Response) {
-        log:print(response.statusCode.toString());
-    } else {
-        log:printError("Failed to call the endpoint.", 'error = response);
-    }
+public function main() returns error? {
+    json response = check securedEP->get("/foo/bar");
+    log:printInfo(response.toJsonString());
 }
 ```
 
@@ -155,14 +145,9 @@ http:Client securedEP = check new("https://localhost:9090",
     }
 );
 
-public function main() {
-    // Send a `GET` request to the specified endpoint.
-    http:Response|http:ClientError response = securedEP->get("/foo/bar");
-    if (response is http:Response) {
-        log:print(response.statusCode.toString());
-    } else {
-        log:printError("Failed to call the endpoint.", 'error = response);
-    }
+public function main() returns error? {
+    json response = check securedEP->get("/foo/bar");
+    log:printInfo(response.toJsonString());
 }
 ```
 
@@ -201,10 +186,10 @@ import ballerina/log;
 
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
-        tokenUrl: "https://localhost:9090/oauth2/token",
-        clientId: "s6BhdRkqt3",
-        clientSecret: "7Fjfp0ZBr1KtDRbnfVdmIw",
-        scopes: ["hello"],
+        tokenUrl: "https://localhost:9445/oauth2/token",
+        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+        scopes: ["admin"],
         clientConfig: {
             secureSocket: {
                 cert: "/path/to/public.crt"
@@ -216,14 +201,9 @@ http:Client securedEP = check new("https://localhost:9090",
     }
 );
 
-public function main() {
-    // Send a `GET` request to the specified endpoint.
-    http:Response|http:ClientError response = securedEP->get("/foo/bar");
-    if (response is http:Response) {
-        log:print(response.statusCode.toString());
-    } else {
-        log:printError("Failed to call the endpoint.", 'error = response);
-    }
+public function main() returns error? {
+    json response = check securedEP->get("/foo/bar");
+    log:printInfo(response.toJsonString());
 }
 ```
 
@@ -268,15 +248,15 @@ import ballerina/log;
 
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
-        tokenUrl: "https://localhost:9090/oauth2/token",
+        tokenUrl: "https://localhost:9445/oauth2/token",
         username: "admin",
         password: "123",
-        clientId: "s6BhdRkqt3",
-        clientSecret: "7Fjfp0ZBr1KtDRbnfVdmIw",
-        scopes: ["hello"],
+        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+        scopes: ["admin"],
         refreshConfig: {
-            refreshUrl: "https://localhost:9090/oauth2/token/refresh",
-            scopes: ["hello"],
+            refreshUrl: "https://localhost:9445/oauth2/token",
+            scopes: ["admin"],
             clientConfig: {
                 secureSocket: {
                     cert: "/path/to/public.crt"
@@ -294,14 +274,9 @@ http:Client securedEP = check new("https://localhost:9090",
     }
 );
 
-public function main() {
-    // Send a `GET` request to the specified endpoint.
-    http:Response|http:ClientError response = securedEP->get("/foo/bar");
-    if (response is http:Response) {
-        log:print(response.statusCode.toString());
-    } else {
-        log:printError("Failed to call the endpoint.", 'error = response);
-    }
+public function main() returns error? {
+    json response = check securedEP->get("/foo/bar");
+    log:printInfo(response.toJsonString());
 }
 ```
 
@@ -337,11 +312,11 @@ import ballerina/log;
 
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
-        refreshUrl: "https://localhost:9090/oauth2/token/refresh",
-        refreshToken: "tGzv3JOkF0XG5Qx2TlKWIA",
-        clientId: "s6BhdRkqt3",
-        clientSecret: "7Fjfp0ZBr1KtDRbnfVdmIw",
-        scopes: ["hello"],
+        refreshUrl: "https://localhost:9445/oauth2/token",
+        refreshToken: "24f19603-8565-4b5f-a036-88a945e1f272",
+        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+        scopes: ["admin"],
         clientConfig: {
             secureSocket: {
                 cert: "/path/to/public.crt"
@@ -353,14 +328,9 @@ http:Client securedEP = check new("https://localhost:9090",
     }
 );
 
-public function main() {
-    // Send a `GET` request to the specified endpoint.
-    http:Response|http:ClientError response = securedEP->get("/foo/bar");
-    if (response is http:Response) {
-        log:print(response.statusCode.toString());
-    } else {
-        log:printError("Failed to call the endpoint.", 'error = response);
-    }
+public function main() returns error? {
+    json response = check securedEP->get("/foo/bar");
+    log:printInfo(response.toJsonString());
 }
 ```
 
@@ -396,11 +366,11 @@ import ballerina/log;
 
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
-        tokenUrl: "https://localhost:9090/oauth2/token",
+        tokenUrl: "https://localhost:9445/oauth2/token",
         assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
-        clientId: "s6BhdRkqt3",
-        clientSecret: "7Fjfp0ZBr1KtDRbnfVdmIw",
-        scopes: ["hello"],
+        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+        scopes: ["admin"],
         clientConfig: {
             secureSocket: {
                 cert: "/path/to/public.crt"
@@ -412,13 +382,8 @@ http:Client securedEP = check new("https://localhost:9090",
     }
 );
 
-public function main() {
-    // Send a `GET` request to the specified endpoint.
-    http:Response|http:ClientError response = securedEP->get("/foo/bar");
-    if (response is http:Response) {
-        log:print(response.statusCode.toString());
-    } else {
-        log:printError("Failed to call the endpoint.", 'error = response);
-    }
+public function main() returns error? {
+    json response = check securedEP->get("/foo/bar");
+    log:printInfo(response.toJsonString());
 }
 ```

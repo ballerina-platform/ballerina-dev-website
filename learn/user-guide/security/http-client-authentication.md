@@ -84,14 +84,19 @@ The `http:JwtIssuerConfig` configurations include:
         * `jwt:RS256` - The RSA-SHA256 algorithm
         * `jwt:RS384` - The RSA-SHA384 algorithm
         * `jwt:RS512` - The RSA-SHA512 algorithm
+        * `jwt:HS256` - The HMAC-SHA256 algorithm
+        * `jwt:HS384` - The HMAC-SHA384 algorithm
+        * `jwt:HS512` - The HMAC-SHA512 algorithm
         * `jwt:NONE` - Unsecured JWTs (no signing)
-    * `config` - KeyStore configurations or private key configurations
+    * `config` - KeyStore configurations, private key configurations or shared key configurations
         * `keyStore` - KeyStore to be used in JWT signing
         * `keyAlias` - Signing key alias
         * `keyPassword` - Signing key password
             * --- OR ---
         * `keyFile` - Private key to be used in JWT signing
         * `keyPassword` - Password of the private key (if encrypted)
+            * --- OR ---
+        * Shared key to be used in JWT signing
 
 ```ballerina
 import ballerina/http;
@@ -334,6 +339,65 @@ http:Client securedEP = check new("https://localhost:9090",
     auth = {
         refreshUrl: "https://localhost:9090/oauth2/token/refresh",
         refreshToken: "tGzv3JOkF0XG5Qx2TlKWIA",
+        clientId: "s6BhdRkqt3",
+        clientSecret: "7Fjfp0ZBr1KtDRbnfVdmIw",
+        scopes: ["hello"],
+        clientConfig: {
+            secureSocket: {
+                cert: "/path/to/public.crt"
+            }
+        }
+    },
+    secureSocket = {
+        cert: "/path/to/public.crt"
+    }
+);
+
+public function main() {
+    // Send a `GET` request to the specified endpoint.
+    http:Response|http:ClientError response = securedEP->get("/foo/bar");
+    if (response is http:Response) {
+        log:print(response.statusCode.toString());
+    } else {
+        log:printError("Failed to call the endpoint.", 'error = response);
+    }
+}
+```
+
+### JWT Bearer Grant Type
+
+The `http:OAuth2JwtBearerGrantConfig` configurations include:
+
+* `tokenUrl` - Token URL of the token endpoint
+* `assertion` - A single JWT for the JWT bearer grant type
+* `clientId` - Client ID for the client authentication
+* `clientSecret` - Client secret for the client authentication
+* `scopes` - Scope(s) of the access request
+* `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if the token endpoint response does not contain an `expires_in` field
+* `clockSkew` - Clock skew (in seconds) that can be used to avoid token validation failures due to clock synchronization problems
+* `optionalParams` - Map of optional parameters use for the token endpoint
+* `credentialBearer` - Bearer of the authentication credentials, which is sent to the token endpoint
+    * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the Authentication Header
+    * `http:POST_BODY_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
+* `clientConfig` - HTTP client configurations, which are used to call the token endpoint
+    * `httpVersion` - The HTTP version of the client
+    * `customHeaders` - The list of custom HTTP headers
+    * `customPayload` - The list of custom HTTP payload parameters
+    * `auth` - The client auth configurations
+        * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:RefreshTokenGrantConfig`
+    * `secureSocket` - SSL/TLS-related configurations
+        * `disable` - Disable SSL validation
+        * `cert` - Configurations associated with the `crypto:TrustStore` or single certificate file that the client trusts
+        * `key` - Configurations associated with the `crypto:KeyStore` or a combination of certificate and private key of the client
+
+```ballerina
+import ballerina/http;
+import ballerina/log;
+
+http:Client securedEP = check new("https://localhost:9090",
+    auth = {
+        tokenUrl: "https://localhost:9090/oauth2/token",
+        assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
         clientId: "s6BhdRkqt3",
         clientSecret: "7Fjfp0ZBr1KtDRbnfVdmIw",
         scopes: ["hello"],

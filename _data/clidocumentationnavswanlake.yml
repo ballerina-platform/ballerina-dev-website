@@ -13,7 +13,4 @@
     - title: GRPC
       url: /learn/cli-documentation/grpc/
       active: grpc
-    - title: GRPC2
-      url: /learn/cli-documentation/grpc2/
-      active: grpc2
-   
+ 

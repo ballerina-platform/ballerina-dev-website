@@ -1,0 +1,21 @@
+- title: Visual Studio Code Extension
+  url: #
+  sublinks:
+    - title: Quick Start
+      url: /learn/visual-studio-code-extension/quick-start/
+      active: quick-start
+    - title: Diagram Editor
+      url: /learn/visual-studio-code-extension/diagram-editor/
+      active: diagram-editor
+    - title: Debugging
+      url: /learn/visual-studio-code-extension/debugging/
+      active: debugging
+    - title: VS Code Commands
+      url: /learn/visual-studio-code-extension/vs-code-commands/
+      active: vs-code-commands
+    - title: Language Support
+      url: /learn/visual-studio-code-extension/language-support/
+      active: language-support
+    - title: Configurations
+      url: /learn/visual-studio-code-extension/configurations/
+      active: configurations      

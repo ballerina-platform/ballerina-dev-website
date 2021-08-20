@@ -43,7 +43,7 @@ redirect_from:
     <span class="c1">// be either a record or an error. The name and type of the attributes </span>
     <span class="c1">// within the record from the `resultStream` will be automatically </span>
     <span class="c1">// identified based on the column name and type of the query result.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span> 
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{},</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
             <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM Customers`</span><span class="p">);</span>
 
     <span class="c1">// If there is any error during the execution of the SQL query or</span>
@@ -54,7 +54,7 @@ redirect_from:
     <span class="p">});</span>
 
     <span class="c1">// The result of the count operation is provided as a record stream.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream2</span> <span class="p">=</span> 
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{},</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">resultStream2</span> <span class="p">=</span>
             <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT COUNT(*) AS total FROM Customers`</span><span class="p">);</span>
 
     <span class="c1">// Since the above count query will return only a single row,</span>
@@ -69,17 +69,13 @@ redirect_from:
     <span class="c1">// when the stream is fully consumed or any error is encountered.</span>
     <span class="c1">// However, in case if the stream is not fully consumed, the stream</span>
     <span class="c1">// should be closed specifically.</span>
-    <span class="nx">error</span><span class="err">?</span> <span class="nx">er</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+    <span class="nx">error</span><span class="err">?</span> <span class="nx">er</span> <span class="p">=</span> <span class="nx">resultStream2</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 
     <span class="c1">// If a `Customer` stream type is defined when calling the query method,</span>
     <span class="c1">// The result is returned as a `Customer` record stream and the elements</span>
     <span class="c1">// of the stream can be either a `Customer` record or an error.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Customer</span><span class="p">,</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">customerStream</span> <span class="p">=</span> 
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Customer</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">customerStream</span> <span class="p">=</span>
         <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM Customers`</span><span class="p">);</span>
-
-    <span class="c1">// Casts the generic record type to the `Customer` stream type.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Customer</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">&gt;</span> <span class="nx">customerStream</span> <span class="p">=</span> 
-        <span class="p">&lt;</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Customer</span><span class="p">,</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="o">&gt;&gt;</span><span class="nx">resultStream3</span><span class="p">;</span>
 
     <span class="c1">// Iterates the customer stream.</span>
     <span class="nx">error</span><span class="err">?</span> <span class="nx">e2</span> <span class="p">=</span> <span class="nx">customerStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">Customer</span> <span class="nx">customer</span><span class="p">)</span> <span class="p">{</span>
@@ -133,7 +129,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Simple Query</h2>
-                            <p><p>This example demonstrates how to use the MySQL client select query operations
+                            <p><p>This BBE demonstrates how to use the MySQL client select query operations
  with the stream return type. Note that the MySQL database driver JAR should
  be defined in the <code>Ballerina.toml</code> file as a dependency.
  For a sample configuration and more information on the underlying module, see the <a href="https://docs.central.ballerina.io/ballerinax/mysql/latest/">MySQL module</a>.
@@ -287,7 +283,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record {}, error&gt; resultStream = 
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record {}, error?&gt; resultStream =
             mysqlClient-&gt;query(`SELECT * FROM Customers`);
 </code></pre></div>
 
@@ -334,7 +330,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record {}, error&gt; resultStream2 = 
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record {}, error?&gt; resultStream2 =
             mysqlClient-&gt;query(`SELECT COUNT(*) AS total FROM Customers`);
 </code></pre></div>
 
@@ -395,7 +391,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error? er = resultStream.close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    error? er = resultStream2.close();
 </code></pre></div>
 
                                 </div>
@@ -417,7 +413,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;Customer, error&gt; customerStream = 
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;Customer, error?&gt; customerStream =
         mysqlClient-&gt;query(`SELECT * FROM Customers`);
 </code></pre></div>
 
@@ -429,26 +425,6 @@ import ballerina/sql;
                                             <p>If a <code>Customer</code> stream type is defined when calling the query method,
  The result is returned as a <code>Customer</code> record stream and the elements
  of the stream can be either a <code>Customer</code> record or an error.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;Customer, sql:Error&gt; customerStream = 
-        &lt;stream&lt;Customer, sql:Error&gt;&gt;resultStream3;
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Casts the generic record type to the <code>Customer</code> stream type.</p>
 
                                         </div>
                                     </div>

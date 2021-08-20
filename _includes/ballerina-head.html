@@ -4,7 +4,7 @@
 {% if page.description %}
 <meta name="description" content="{{ page.description }}" />
 {% else %}
-<meta name="description" content="Documentation for the Ballerina Programming Language">
+<meta name="description" content="A Programming Language for Network Distributed Applications">
 {% endif %}
 <meta name="author" content="WSO2, Inc.">
 {% if page.keywords %}
@@ -17,24 +17,41 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
 <!--FB-->
-<meta property="og:type"               content="article" />
-<meta property="og:title"              content="Ballerina - {{ page.title }}" />
-<meta property="og:description"        content="{{ page.description }}" />
-<meta property="og:image"              content="/img/ballerina-sm-2.jpg" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Ballerina - {{ page.title }}" />
+{% if page.description %}
+<meta property="og:description" content="{{ page.description }}" />
+{% else %}
+<meta property="og:description" content="A Programming Language for Network Distributed Applications" />
+{% endif %}
+ 
+<meta property="og:image" itemprop="image" content="https://ballerina.io/img/ballerina-sm-2.jpg" />
+
+<!-- <meta name="twitter:image:width" content="610"> -->
+<!--LINKED IN  -->
+<meta property='og:title' content="Ballerina"/>
+<meta property='og:image' content="https://ballerina.io/img/ballerina-sm-2.jpg"/>
+<meta property='og:description' itemprop="image" content="{{ page.description }}"/>
+
 <!--TWITTER-->
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@ballerinalang">
 <meta name="twitter:creator" content="@ballerinalang">
-<meta name="twitter:title" content="Ballerina">
-<meta name="twitter:description" content="{{ page.description }}">
-<meta name="twitter:image" content="/img/ballerina-sm-2.jpg">
-<meta name="twitter:text:description" content="{{ page.description }}">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image:width" content="610">
-<!--LINKED IN  -->
-<meta property='og:title' content="Ballerina"/>
-<meta property='og:image' content="/img/ballerina-sm-2.jpg"/>
-<meta property='og:description' content="{{ page.description }}"/>
+<meta name="twitter:title" content="Ballerina"> 
+<meta name="twitter:card" content="summary_large_image"> 
+{% if page.description %}
+<meta property="twitter:description" content="{{ page.description }}" />
+{% else %}
+<meta property="twitter:description" content="A Programming Language for Network Distributed Applications" />
+{% endif %}
+<meta name="twitter:image" content="https://ballerina.io/img/ballerina-sm-2.jpg ">
+{% if page.description %}
+<meta property="twitter:text:description" content="{{ page.description }}" />
+{% else %}
+<meta property="twitter:text:description" content="A Programming Language for Network Distributed Applications" />
+{% endif %}
+<meta property='twitter:image' content="https://ballerina.io/img/ballerina-sm-2.jpg"/>
+
 <script>
    window.dataLayer = window.dataLayer || [];
    function gtag() {

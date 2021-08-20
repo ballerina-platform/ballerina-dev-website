@@ -40,7 +40,9 @@ The installer should put the `C:\Program Files\Ballerina\<BALLERINA-DIRECTORY>\b
 
 ### Installing on Linux
 
-[Download the DEB file or RPM file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `/usr/lib64/ballerina` directory.
+[Download the DEB file or RPM file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the following directory.
+- For DEB file:  `/usr/lib/ballerina`
+- For RPM file:  `/usr/lib64/ballerina`
 
 > **Info:** Alternatively, you can use either of the commands below to install Ballerina using the downloaded DEB or RPM file. Replace the `ballerina-linux-installer-x64-<BALLERINA-VERSION>.deb` or `ballerina-linux-installer-x64<BALLERINA-VERSION>.rpm` with the actual file path. 
 
@@ -68,12 +70,13 @@ rpm -i ballerina-linux-installer-x64-swan-lake-preview1.rpm
 
 ## Updating Ballerina
 
-If you already have a jBallerina version above 1.1.0 installed, you can use the update tool to update to the latest jBallerina version by executing either of the commands below.
+If you already have a jBallerina version above 1.1.0 installed, you can use the update tool to update to the latest jBallerina version and set it as the active version by executing either of the commands below.
 
 **Command**|**Description**
 :-----:|:-----:
 `bal dist update`|Update to the latest patch version of the active distribution
-`bal dist pull <JBALLERINA-VERSION>`|Fetch a specific distribution and set it as the active version
+`bal dist pull latest`|Update to the latest jballerina version
+`bal dist pull <JBALLERINA-VERSION>`|Fetch a specific distribution 
 
 For more information, see [Keeping Ballerina Up to Date](/learn/tooling-guide/cli-tools/update-tool/).
   
@@ -83,12 +86,25 @@ For instructions, see [Building from Source](/learn/user-guide/getting-started/b
 
 ## Uninstalling Ballerina
 
-Usually, the installation location is `/Library/Ballerina/distributions` in macOS, `/usr/lib64/Ballerina/distributions` in Linux, and `C:\Program Files\Ballerina\distributions` in Windows. You can either remove a particular jBallerina version or all the jBallerina versions installed in these locations.
+Usually, the installation location is `/Library/Ballerina/` in macOS, `/usr/lib/ballerina/` for DEB and `/usr/lib64/ballerina/` for RPM in Linux, and `C:\Program Files\Ballerina\` in Windows.
 
 To remove:
 
 - a specific jBallerina version (via the update tool): execute `bal dist remove` 
+- all non-active distributions (via the update tool): execute `bal dist remove -a` 
 - all the installed jBallerina versions: delete the `/../Ballerina` directory in the respective installation location
+
+> **Info:** Alternatively, you can uninstall Ballerina using the commands below by replacing the actual package name in Linux and from the control panel in Windows.
+
+For example, for the DEB file:
+```
+apt-get remove ballerina-swan-lake-preview1
+```
+
+For example, for the RPM file:
+```
+rpm -e ballerina-swan-lake-preview1
+```
 
 ## What's Next?
 

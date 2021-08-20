@@ -37,6 +37,8 @@ bal openapi -i <openapi-contract-path>
                [--operations: operationsID list]
                [--mode service|client ]
                [(-o|--output): output file path]
+               [-n | --nullable]
+               [--license] <license-file-path>
 ```
 
 Generates both the Ballerina service and Ballerina client stub for a given OpenAPI file.
@@ -56,12 +58,29 @@ bal openapi -i <openapi-contract-path> --mode service [(-o|--output) output file
 ```
 
 If you want to generate a Client only, you can set the mode as  `client` in the OpenAPI tool. 
-This client can be used in client applications to call the service defined in the OpenAPI file.
+This client can be used in client applications to call the service defined in the OpenAPI file. Enabling `client` mode you can have boilerplate with tests relevant to client remote functions. 
 
 ```bash
 bal openapi -i <openapi-contract-path> --mode client [(-o|--output) output file path]
 ```
 
+##### Nullable
+This is an optional flag in the OpenAPI to Ballerina command. If your OpenAPI specification includes JSON schema
+properties that are not marked as `nullable:true` may return as null in some responses. It will result in JSON
+schema to Ballerina record data binding error. This is a safe option to generate all data types in the record with
+ Ballerina nil support.
+
+```bash
+bal openapi -i <openapi-contract-path> [(-n| --nullable)]
+```
+
+##### License 
+If you want to generate the Ballerina files with the given copyright or license header. you can use this `--license
+` flag with your copyright text.
+
+```bash
+bal openapi -i <openapi-contract-path> --license <license-file-path>
+```
 ### Ballerina to OpenAPI
 
 #### Generating the Service for OpenAPI Export
@@ -86,7 +105,7 @@ bal openapi -i <ballerina-file-path> (-s | --service) <service-name>
 bal openapi -i hello.yaml
 ```
 
-This will generate a Ballerina service and client stub for the `hello.yaml` OpenAPI contract named `hello-service` and client named `hello-client`. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project.
+This will generate a Ballerina service and client stub for the `hello.yaml` OpenAPI contract named `hello-service` and client named `client`. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project.
 
 Output:
 
@@ -95,6 +114,19 @@ The service generation process is complete. The following files were created.
 -- hello-service.bal
 -- client.bal
 -- types.bal
+-- tests
+     |- tests.bal
+```
+#### Generating the Service and Client Stub from OpenAPI with license 
+
+```bash
+bal openapi -i hello.yaml --license license.txt
+```
+
+#### Generating the Ballerina Records from OpenAPI Schema with Ballerina nil support for record fields 
+
+```bash
+bal openapi -i hello.yaml --nullable
 ```
 
 #### Generating an OpenAPI Contract from a Service

@@ -19,17 +19,13 @@ redirect_from:
 
 The OpenAPI tools provide the following capabilities.
  
- 1. Generate the Ballerina service or client code for a given OpenAPI definition. 
- 2. Export the OpenAPI definition of a Ballerina service.
- 3. Validate service implementation of a given OpenAPI Contract.
-    
-The `openapi` command in Ballerina is used for OpenAPI to Ballerina and Ballerina to OpenAPI code generations. Code generation from OpenAPI to Ballerina can produce service stubs and client stubs.
-
-The OpenAPI compiler plugin will allow you to validate a service implementation against an OpenAPI contract during the compile time. This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract.   
+ 1. Generate the Ballerina service stub or client stub for a given OpenAPI definition (use `openapi` command).
+ 2. Export the OpenAPI definition of a given Ballerina service (use `openapi` command).
+ 3. Validate service implementation of a given OpenAPI contract (annotate your Ballerina service with `openapi` annotation).
+    - The OpenAPI compiler plugin will allow you to validate a service implementation against an OpenAPI contract during
+  the compile time.This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract.   
 
 ### OpenAPI to Ballerina
-
-#### Generating Service and Client Stub from an OpenAPI Contract
 
 ```bash
 bal openapi -i <openapi-contract-path>
@@ -41,41 +37,46 @@ bal openapi -i <openapi-contract-path>
                [--license: license file path]
 ```
 
-Generates both the Ballerina service and Ballerina client stub for a given OpenAPI file.
-
-The `-i <openapi-contract-path>` parameter is mandatory and it specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).
-
-You can give the specific tags and operations that you need to document as services without documenting all the operations using these optional `--tags` and `--operations` commands.
-
-`(-o|--output)` is an optional parameter. You can use this to give the output path for the generated files. If not, it will take the path of the current directory as the output path.
+* Parameter `openapi-contract-path` specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api
+.json`) and is mandatory.
+* To generate the Ballerina client or service stub with a subset of tags defined in the OpenAPI contract, use the
+ options `--tags` and specify the tags you need as specified in OpenAPI definition.
+* To generate the Ballerina client or service stub with a subset of operations defined in the OpenAPI contract, use the
+  options `--operations` and specify the operations you need as specified in OpenAPI definition.
+* The Ballerina files will be generated at the same location OpenAPI command is executed. Optionally, you can point
+ another directory location using the optional flag  `(-o|--output)`.
+* The OpenAPI to Ballerina Command generates both client and service stub by default. If you need to restrict the
+ code generation to client or service stub only, use `--mode` option (see below).
 
 ##### Modes
 
-If you want to generate a Service only, you can set the mode as `service` in the OpenAPI tool.
+###### 1. Client Mode
+If you want to generate the Ballerina client only, you can set the mode as  `client` when running the OpenAPI tool. 
+The generated client can be used in your applications to call the service defined in the OpenAPI file. This mode will
+ generate tests for the generated remote functions as well.
+
+```bash
+bal openapi -i <openapi-contract-path> --mode client [(-o|--output) output file path]
+```
+###### 2. Service Mode
+If you want to generate the Ballerina service only, you can set the mode as `service` when running the OpenAPI tool.
 
 ```bash
 bal openapi -i <openapi-contract-path> --mode service [(-o|--output) output file path]
 ```
 
-If you want to generate a Client only, you can set the mode as  `client` in the OpenAPI tool. 
-This client can be used in client applications to call the service defined in the OpenAPI file. Enabling `client` mode you can have boilerplate with tests relevant to client remote functions. 
-
-```bash
-bal openapi -i <openapi-contract-path> --mode client [(-o|--output) output file path]
-```
-
-##### Nullable
+##### Nullable Flag
 This is an optional flag in the OpenAPI to Ballerina command. If your OpenAPI specification includes JSON schema
 properties that are not marked as `nullable:true` may return as null in some responses. It will result in JSON
-schema to Ballerina record data binding error. This is a safe option to generate all data types in the record with
- Ballerina nil support.
+schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to 
+ generate all data types in the generated record with Ballerina nil support by turing on this flag.
 
 ```bash
 bal openapi -i <openapi-contract-path> [(-n| --nullable)]
 ```
 
 ##### License 
-If you want to generate the Ballerina files with the given copyright or license header. you can use this `--license
+If you want to generate the Ballerina files with the given copyright or license header, you can use this `--license
 ` flag with your copyright text.
 
 ```bash
@@ -117,13 +118,13 @@ The service generation process is complete. The following files were created.
 -- tests
      |- tests.bal
 ```
-#### Generating the Service and Client Stub from OpenAPI with license 
+#### Generating the Service and Client Stub from OpenAPI with License 
 
 ```bash
 bal openapi -i hello.yaml --license license.txt
 ```
 
-#### Generating the Ballerina Records from OpenAPI Schema with Ballerina nil support for record fields 
+#### Generating the Ballerina Records from OpenAPI Schema with Ballerina Nil Support for Record Fields  
 
 ```bash
 bal openapi -i hello.yaml --nullable

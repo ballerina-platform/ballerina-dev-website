@@ -16,7 +16,19 @@
         background-color: #c0c0c0;
         color: #494949 !important;
     }
+    #noscript-warning{
+        position: relative;
+    text-align: center;
+    padding: 7px 15px;
+    background-color: #57595d;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    }
 </style>
+<noscript>
+    <div id="noscript-warning">Ballerina works best with JavaScript enabled.</div>
+</noscript>
 <a href="https://ballerina.io/downloads/" class="cInfoBanner">
     Swan Lake Beta2 is here.
 </a>
@@ -68,7 +80,7 @@
                             </li>
                             <li class="cSearchMenu">
                                
-                                {% include algolia.html %}
+                                {% include algolia-open-source.html %}
                                 <!-- <form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field"
                                         type="search" placeholder="Search" aria-label="Search"><a id="searchBtn"
                                         href="#" class="cSearchButton"><img src="/img/search.svg" /></a></form> -->

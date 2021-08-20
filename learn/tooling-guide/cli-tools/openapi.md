@@ -37,8 +37,8 @@ bal openapi -i <openapi-contract-path>
                [--operations: operationsID list]
                [--mode service|client ]
                [(-o|--output): output file path]
-               [-n | --nullable]
-               [--license] <license-file-path>
+               [(-n | --nullable)]
+               [--license: license file path]
 ```
 
 Generates both the Ballerina service and Ballerina client stub for a given OpenAPI file.
@@ -79,7 +79,7 @@ If you want to generate the Ballerina files with the given copyright or license 
 ` flag with your copyright text.
 
 ```bash
-bal openapi -i <openapi-contract-path> --license <license-file-path>
+bal openapi -i <openapi-contract-path> [--license <license-file-path>]
 ```
 ### Ballerina to OpenAPI
 

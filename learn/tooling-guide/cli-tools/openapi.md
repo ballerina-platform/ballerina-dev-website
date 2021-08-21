@@ -67,7 +67,7 @@ bal openapi -i <openapi-contract-path> --mode service [(-o|--output) output file
 
 ##### Nullable Flag
 This is an optional flag in the OpenAPI to Ballerina command. If your OpenAPI specification includes JSON schema
-properties that are not marked as `nullable:true` may return as null in some responses. It will result in JSON
+properties that are not marked as `nullable:true`, they may return as null in some responses. It will result a JSON
 schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to 
  generate all data types in the generated record with Ballerina nil support by turing on this flag.
 

@@ -1,4 +1,4 @@
-.row.cBallerinaIntroSection {
+/* .row.cBallerinaIntroSection {
     background-color: #494949;
     padding: 20px 0 20px 0;
 }
@@ -17,9 +17,9 @@ a.cMobileLogo {
 
 .row.cBallerinaFeatureSection {
     /* padding: 80px 0; */
-}
 
-.navbar-nav > li > a {
+
+/* .navbar-nav > li > a {
     color: #fff;
 }
 .navbar-nav > li > a:hover {
@@ -28,7 +28,7 @@ a.cMobileLogo {
 
 img.cHomePageLogo {
     width: 330px;
-}
+}  */
 .row.cBallerinaIntroSection h1 {
     color: #ffffff;
 
@@ -74,11 +74,7 @@ img.cHomePageLogo {
     /* width: 240px; */
 }
 
-.linkText{
-    font-size: 20px;
-    color: #20b6b0;
-   
-}
+
 
 .cTopLayer,
 .cBottomLayer {
@@ -337,7 +333,9 @@ a.cBallerina-io-Home-main-download-button:hover {
     position: absolute;
     top: 0;
 } */
-
+.fInput{
+    width: 800px;
+}
 
 .cPara{
     font-size: 20px;
@@ -350,10 +348,10 @@ a.cBallerina-io-Home-main-download-button:hover {
 
 .cbtn{
     background-color:#20b6b0;
-    color:white;
+    color: #fff !important;;
     border-radius:0px;
-    margin:30px; 
-    padding: 10px 20px;
+    margin:10px !important; 
+    padding: 10px 20px !important;
 }
 
 .cbtn1{
@@ -365,7 +363,7 @@ a.cBallerina-io-Home-main-download-button:hover {
     border: #20b6b0;
     border-width: 1px;
 }
-
+/* 
 .navbar-toggle .icon-bar {
     background-color: #494949;
 }
@@ -373,7 +371,7 @@ a.cBallerina-io-Home-main-download-button:hover {
 button.navbar-toggle {
     background-color: #20b6b0 !important;
 }
-
+*/
 .row.cBallerinaIntroSection .cBallerina-io-Home-main-download-button:hover p {
     color: #494949;
 }
@@ -439,7 +437,7 @@ a.cPlayGround:hover {
 .row.cVideoSection p {
     color: #000 !important;
     font-family: inherit;
-}
+} 
 .row.cVideoSection h2 {
     border-bottom: 2px solid #fff !important;
 }
@@ -463,7 +461,8 @@ a.cPlayGround:hover {
     outline: 0;
 }
 .modal-body {
-    background-color: #000;
+    background-color: #fff;
+    width: 100%;
 }
 .modal-backdrop.show {
     opacity: 0.8;
@@ -530,6 +529,9 @@ a.video-btn:hover img {
         margin-right: 0;
         margin-left: 30px;
     }
+    .fInput{
+        width: 600px !important;
+    }
 }
 
 @media screen and (max-width: 991px) {
@@ -557,6 +559,10 @@ a.video-btn:hover img {
         background-color: #494949;
         padding: 80px 0 60px 0;
     }
+
+    .fInput{
+        width: 500px !important;
+    }
 }
 
 @media screen and (max-width: 744px) {
@@ -580,12 +586,19 @@ a.video-btn:hover img {
     .cBallerina-io-Home-main-download-button.cPlayButton {
         margin-right: 0;
     }
+    .fInput{
+        width: 400px !important;
+    }
 }
 
 @media screen and (max-width: 440px) {
     .cBottomLayer ul li {
         margin-left: 0;
         margin-right: 0;
+    }
+
+    .fInput{
+        width: 180px !important;
     }
 }
 

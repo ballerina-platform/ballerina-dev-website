@@ -37,7 +37,7 @@ redirect_from:
 		<div class="column-gray-box">  
 		<h2 id="concepts">Guides</h2>
 		<h3 id="why-ballerina"><a href="/learn/why-ballerina/cloud-native/">Why Ballerina</a></h3>
-		<p>Why you shoud use Ballerina.</p>
+		<p>Why you should use Ballerina.</p>
 		<!--<h3 id="writing-idiomatic-ballerina-code"><a href="/learn/user-guide/">Writing Idiomatic Ballerina Code</a></h3>
 		<p>Guide developers to start thinking in Ballerina.</p>-->
 		<h3 id="organizing-ballerina-code"><a href="/learn/organizing-ballerina-code/package-layout/">Organizing Ballerina Code</a></h3>
@@ -51,10 +51,10 @@ redirect_from:
 		<p>The language support for configurability.</p>
 		<h3 id="observing-ballerina-programs"><a href="/learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/">Observing Ballerina Programs
 </a></h3>
-		<p>The basics of the observing functionalities provided for Ballerina programs.</p>
+		<p>The basics of the observing functionalities that are provided for Ballerina programs.</p>
 		<h3 id="running-ballerina-programs-in-the-cloud"><a href="/learn/running-ballerina-programs-in-the-cloud/code-to-cloud/">Running Ballerina Programs in the Cloud
 </a></h3>
-		<p>The cloud offerrings for running Ballerina programs.</p>
+		<p>The cloud offerings for running Ballerina programs.</p>
 		<h3 id="managing-dependencies"><a href="/learn/managing-dependencies/">Managing Dependencies </a></h3>
 		<p>Declare and manage dependencies and how to use the local repository.</p>
 		<h3 id="publishing-packages-to-ballerina-central"><a href="/learn/publishing-packages-to-ballerina-central/">Publishing Packages to Ballerina Central</a></h3>

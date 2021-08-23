@@ -464,6 +464,7 @@ a.cPlayGround:hover {
     background-color: #fff;
     width: 100%;
 }
+
 .modal-backdrop.show {
     opacity: 0.8;
 }
@@ -497,22 +498,26 @@ a.cPlayGround:hover {
 
 .linkText{
     color: #20b6b0;
-    font-weight:500;
+    font-weight:400;
+    font-size: 16px;
 }
 
 .linkText:hover{
     color: #ffffff !important;
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .linkText1{
     color: #20b6b0;
-    font-weight:500;
+    font-weight:400;
+    font-size: 16px;
 }
 
 .linkText1:hover{
     color:#464646 !important;
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 a.video-btn img {

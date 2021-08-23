@@ -46,7 +46,7 @@ redirect_from:
 		<p>Write automated tests using the built-in test framework.</p>
 		<h3 id="generatinging-code-documentation"><a href="/learn/generating-code-documentation/">Generating Code Documentation
 </a></h3>
-		<p>The usage of the `bal doc` CLI command.</p>
+		<p>The usage of the <code class="highlighter-rouge language-plaintext">bal doc</code> CLI command.</p>
 		<h3 id="making-ballerina-programs-configurable"><a href="/learn/making-ballerina-programs-configurable/defining-configurable-variables/">Making Ballerina Programs Configurable</a></h3>
 		<p>The language support for configurability.</p>
 		<h3 id="observing-ballerina-programs"><a href="/learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/">Observing Ballerina Programs
@@ -75,7 +75,7 @@ redirect_from:
 		<h3 id="library-documentation"><a href="https://lib.ballerina.io/">Library Documentation</a></h3>
 		<p>All library API docs.</p>
 		<h3 id="the-bal-tool"><a href="/learn/cli-documentation/cli-commands/">CLI Documentation</a></h3>
-		<p>Details of all the CLI commands of the `bal` tool.</p>
+		<p>Details of all the CLI commands of the <code class="highlighter-rouge language-plaintext">bal</code> tool.</p>
 		<h3 id="specifications"><a href="/learn/platform-specifications/">Platform Specifications</a></h3>
 		<p>Specifications for the platform.</p>
         <h3 id="style-guide"><a href="/learn/style-guide/coding-conventions/">Style Guide</a></h3>
@@ -87,6 +87,9 @@ redirect_from:
 </div>
 
 <style>
+	:not(pre) > code[class*="language-"], pre[class*="language-"]{
+		    background: #e0dede !important;
+	}
 .cBallerina-io-Gray-row.cLandingPageintro{ 
 	padding-bottom:0;
 }

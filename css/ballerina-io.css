@@ -1615,7 +1615,7 @@ li pre code span.line-numbers-rows {
         margin-left: 15px;
     }
 }
-@media (max-width: 1000px) {
+/* @media (max-width: 1000px) {
     .cSearchMenu {
         position: absolute;
         bottom: 25px;
@@ -1631,7 +1631,7 @@ li pre code span.line-numbers-rows {
     .cVlable {
         color: #fff !important;
     }
-}
+} */
 
 @media (max-width: 991px) {
     .navbar-header {
@@ -1964,3 +1964,31 @@ ol li.line-numbers pre code span.line-numbers-rows span:before,
 ul li.line-numbers pre code span.line-numbers-rows span:before {
     display: block !important;
 } */
+@media only screen and (max-width: 1199px) {
+    .cBallerina-io-Nav > .container {
+        width: 100%;
+    }
+    .cMobileLogo img {
+        max-width: 120px;
+    }
+    .algolia-search-cont {
+        max-width: 140px;
+    }
+    .cVersionItem {
+        padding-right: 0px;
+    }
+    .algolia-autocomplete {
+        flex-grow: 1;
+    }
+    .algolia-search-cont .algolia-search-box {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .navbar-nav > li > a {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

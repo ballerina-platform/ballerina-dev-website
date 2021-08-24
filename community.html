@@ -23,7 +23,7 @@ redirect_from:
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<script src="https://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
   
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
 <!-- <link rel="stylesheet" href="/css/home-page-old.css"/> -->
@@ -33,9 +33,9 @@ redirect_from:
     <!-- <h1>The Ballerina Community</h1> -->
     <!-- <p class="cPara" style="font-size: 20px;" >The Ballerina community has been bootstrapped by <a class="linkText" href="https://wso2.com/" target="_blank" >WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open-source project with all source code licensed under the <a class="linkText" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" ">Apache License, Version 2.0,</a> and the specifications licensed under the <a class="linkText" href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" >Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
     </p>  -->
-    <h2 style="margin-top: 0px;">Join the Community</h2>	
+    <h2 style="margin-top: 0px;margin-left: 10px;">Join the Community</h2>	
     
-    <div class="row" style="position: relative;"> 
+    <div class="row" style="position: relative;">  
         <div class="card ctopcards col-sm-12 col-md-6 col-lg-2 " style=" background-color: transparent;color: white;">
           <div class="card-body text-center cCardbody">
             <img class="cTopLogoImage" src="/img/community/Slack_1.svg" >
@@ -76,10 +76,10 @@ redirect_from:
     </div>
     
     <div class="container">
-    <h2>Subscribe</h2>
-    <p>Join the monthly Community Calls, which are interactive meetings that will explore Ballerina use cases to get direct access to our Engineers and other community members. Also, you can get hand-picked content and regular language updates delivered right to you via the monthly newsletter. Subscribe to them from below.
+    <h2 style="margin-left: 10px;">Subscribe</h2>
+    <p style="margin-left: 10px;">Join the monthly Community Calls, which are interactive meetings that will explore Ballerina use cases to get direct access to our Engineers and other community members. Also, you can get hand-picked content and regular language updates delivered right to you via the monthly newsletter. Subscribe to them from below.
     </p>
-    <div class="row"  >
+    <div class="row" style="margin-left: 10px;" >
        <div class="col-sm-12 col-md-6  cFormSection" style="margin:20px 0px;padding:10px 0px">
           <form id="subscribeForm">
           <div class="form-group">
@@ -207,7 +207,7 @@ redirect_from:
     </div>
     
     
-     <ul class="list-inline">
+     <ul class="list-inline" style="margin-left: 10px;">
         <li class="list-inline-item" style="margin: 0;"><a class="cIconLink" href="https://ballerina.io/community/newsletter/#past-issues" target="_blank">See Newsletters</a></li>
         <li class="list-inline-item" ><a class="cIconLink" href="https://www.youtube.com/playlist?list=PL7JOecNWBb0JAdYWqeGmD35MjE0KTjHXU" target="_blank">See Community Calls</a></li>
     </ul>
@@ -216,7 +216,7 @@ redirect_from:
     
     <div class="container">
     
-      <div class="row">
+      <div class="row" style="margin-left: 10px;">
         <h2>Take Part in Events</h2>
     
         <p>
@@ -261,21 +261,40 @@ redirect_from:
       </div>
     
     
-      <div class="row" style="padding-top:20px;padding-bottom: 20px;">
+      <div class="row" style="padding-top:20px;padding-bottom: 20px;margin-left: 10px;">
       
        
           <div class="card card-body">
             <div class="container">
               <div class="row" >
-                <div class="col sm-12 col-md-6 col-md-6" style="padding-left: 0px;">
+                <div class="col sm-12 col-md-6 col-md-6" style="padding: 0px;">
                   <div id="map" style="width:100%;height:600px;">
                     <script type="text/javascript">
                       var locations = [
-                        ['Automatic Microservices Observability with Open-Source Programming Language: Ballerina - Anjana Fernando', 31.952162, -115.606551, 4],
-                        ['Cloud Native Middleware as a Programming Language - Jadd Jennings', 23.885838, -111.384984, 5],
-                        ['Code to Kubernetes: Languages of Infrastructure - Anjana Fernando', 6.795535, 79.865451, 3],
-                        ['Code to Kubernetes: Deployment Should not Be an Afterthought - Lakmal Warusawithana', 28.536275, 77.154256, 2],
-                        ['Let us Dance Together! Ballerina - Paul Fremantle', 33.724340, 137.724394, 1]
+                        {
+                          id: "e_001",
+                          info: 'Automatic Microservices Observability with Open-Source Programming Language: Ballerina - Anjana Fernando',
+                          coordinates: [ 31.952162, -115.606551, 4]
+                        },
+                        {
+                          id: "e_002",
+                          info: 'Cloud Native Middleware as a Programming Language - Jadd Jennings',
+                          coordinates: [  23.885838, -111.384984, 5]
+                        },
+                        {
+                          id: "e_003",
+                          info: 'Code to Kubernetes: Languages of Infrastructure - Anjana Fernando',
+                          coordinates: [  6.795535, 79.865451, 3]
+                        },
+                        {
+                          id: "e_004",
+                          info: 'Code to Kubernetes: Deployment Should not Be an Afterthought - Lakmal Warusawithana',
+                          coordinates: [  28.536275, 77.154256, 2]
+                        },
+                        // ['Cloud Native Middleware as a Programming Language - Jadd Jennings', 23.885838, -111.384984, 5],
+                        // ['Code to Kubernetes: Languages of Infrastructure - Anjana Fernando', 6.795535, 79.865451, 3],
+                        // ['Code to Kubernetes: Deployment Should not Be an Afterthought - Lakmal Warusawithana', 28.536275, 77.154256, 2],
+                        // ['Let us Dance Together! Ballerina - Paul Fremantle', 33.724340, 137.724394, 1]
                       ];
                   
                       var map = new google.maps.Map(document.getElementById('map'), {
@@ -293,15 +312,17 @@ redirect_from:
                   
                       for (i = 0; i < locations.length; i++) {  
                         marker = new google.maps.Marker({
-                          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                          position: new google.maps.LatLng(locations[i].coordinates[0], locations[i].coordinates[1]),
                           map: map
                           
                         });
                   
                         google.maps.event.addListener(marker, 'click', (function(marker, i) {
                           return function() {
-                            infowindow.setContent(locations[i][0]);
+                            infowindow.setContent(locations[i].info);
                             infowindow.open(map, marker);
+
+                            document.getElementById("cards-window").scrollTop = document.getElementById(locations[i].id).offsetTop;                          
                             
                           }
                         })(marker, i));
@@ -317,10 +338,10 @@ redirect_from:
                   
                 </div>
                 <div class="col sm-12 col-md-6 col-lg-6">
-                   <div class="overflow-auto" style="height:600px; overflow-y: scroll; " >
+                   <div id="cards-window" class="overflow-auto" style="height:600px; overflow-y: scroll; " >
                     
                     
-                      <div class="card text-left cBoxType1" style="margin: 10px;" >
+                      <div  id="e_004"class="card text-left cBoxType1" style="margin: 10px;" >
                         <div class="card-body" style="margin:20px 15px; padding:10px 15px">
                           <h4 class="card-title" style="color: #20b6b0;">12 April 2020 | <span style="color: #212a32;">12:00-13:00</span> | Online</h4>
                           <h4 class="card-title" style="color: #212a32;">Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h4>
@@ -332,7 +353,7 @@ redirect_from:
                         </div>
                       </div>
     
-                      <div class="card text-left cBoxType1" style="margin: 10px;" >
+                      <div id="e_002" class="card text-left cBoxType1" style="margin: 10px;" >
                         <div class="card-body" style="margin:20px 15px; padding:10px 15px">
                           <h4 class="card-title" style="color: #212a32;">	
                             <h4 class="card-title" style="color: #20b6b0;">12 April 2020 | <span style="color: #212a32;">12:00-13:00</span> | Online</h4>
@@ -345,9 +366,10 @@ redirect_from:
                         </div>
                       </div>
     
-                      <div class="card text-left cBoxType1" style="margin: 10px;">
-                        <h4 class="card-title" style="color: #20b6b0;">5 February 2020 | <span style="color: #212a32;">12:00-13:00</span> | Online</h4>
+                      <div  id="e_001" class="card text-left cBoxType1" style="margin: 10px;">
+                        
                         <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">5 February 2020 | <span style="color: #212a32;">12:00-13:00</span> | Online</h4>
                           <h4 class="card-title" style="color: #212a32;">Ballerina: OS Cloud-native Programming Language</h4>
                           <h5 class="card-title" style="color: #212a32;">Caludio Guidi</h5>
                           <p class="card-text cPara" style="color: #212a32;">Jolie Evangelist and Project Co-Leader</p>
@@ -372,18 +394,18 @@ redirect_from:
     
     </section>
     
-    <h2>Contribute </h2>
+    <h2 style="margin-left: 10px;" >Contribute </h2>
     
     
     <div class="container"  style="padding-top:20px;padding-bottom: 20px;">
      
-      <div class="row">
-        <div class="col-md-12">
+      <div class="row" style="margin: 0px;">
+        <div class="col-sm-12 col-md-12 col-lg-12">
           <div class="carousel slide multi-item-carousel" id="theCarousel">
             <div class="carousel-inner">
               <div class="item active">
                 <div class="col-xs-4">
-                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/jayjune2021.png" alt="John" style="width:100%">
+                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/jayjune2021.png" alt="John" class="cimageprofile">
                     <div class="card-body-center" style="padding:10px;">
                       <h3 style="color: #20b6b0;text-align: center;margin-top:0px;margin-bottom: 0px;">Contributor Name</h3>
                       <p class="title" style="color: #465867;text-align: center;">Software Engineer</p>
@@ -393,7 +415,7 @@ redirect_from:
               </div>
               <div class="item">
                 <div class="col-xs-4">
-                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/sameerajune2021.png" alt="John" style="width:100%">
+                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/sameerajune2021.png" alt="John" class="cimageprofile">
                     <div class="card-body-center" style="padding:10px;">
                       <h3 style="color: #20b6b0;text-align: center;margin-top:0px;margin-bottom: 0px;">Contributor Name</h3>
                       <p class="title" style="color: #465867;text-align: center;">Software Engineer</p>
@@ -403,7 +425,7 @@ redirect_from:
               </div>
               <div class="item">
                 <div class="col-xs-4">
-                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/prabhashijune2021.png" alt="John" style="width:100%">
+                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/prabhashijune2021.png" alt="John" class="cimageprofile">
                     <div class="card-body-center" style="padding:10px;">
                       <h3 style="color: #20b6b0;text-align: center;margin-top:0px;margin-bottom: 0px;">Contributor Name</h3>
                       <p class="title" style="color: #465867;text-align: center;">Software Engineer</p>
@@ -413,7 +435,7 @@ redirect_from:
               </div>
               <div class="item">
                 <div class="col-xs-4">
-                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/rashnimimay2021.png" alt="John" style="width:100%">
+                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/rashnimimay2021.png" alt="John" class="cimageprofile">
                     <div class="card-body-center" style="padding:10px;">
                       <h3 style="color: #20b6b0;text-align: center;margin-top:0px;margin-bottom: 0px;">Contributor Name</h3>
                       <p class="title" style="color: #465867;text-align: center;">Software Engineer</p>
@@ -423,7 +445,7 @@ redirect_from:
               </div>
               <div class="item">
                 <div class="col-xs-4">
-                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/russjune2021.png" alt="John" style="width:100%">
+                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/russjune2021.png" alt="John" class="cimageprofile">
                     <div class="card-body-center" style="padding:10px;">
                       <h3 style="color: #20b6b0;text-align: center;margin-top:0px;margin-bottom: 0px;">Contributor Name</h3>
                       <p class="title" style="color: #465867;text-align: center;">Software Engineer</p>
@@ -433,7 +455,7 @@ redirect_from:
               </div>
               <div class="item">
                 <div class="col-xs-4">
-                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/renon2021.png" alt="John" style="width:100%">
+                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/renon2021.png" alt="John" class="cimageprofile">
                     <div class="card-body-center" style="padding:10px;">
                       <h3 style="color: #20b6b0;text-align: center;margin-top:0px;margin-bottom: 0px;">Contributor Name</h3>
                       <p class="title" style="color: #465867;text-align: center;">Software Engineer</p>
@@ -444,7 +466,7 @@ redirect_from:
              
               <div class="item">
                 <div class="col-xs-4">
-                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/tharindunjune2021.png" alt="John" style="width:100%">
+                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/tharindunjune2021.png" alt="John" class="cimageprofile">
                     <div class="card-body-center" style="padding:10px;">
                       <h3 style="color: #20b6b0;text-align: center;margin-top:0px;margin-bottom: 0px;">Contributor Name</h3>
                       <p class="title" style="color: #465867;text-align: center;">Software Engineer</p>
@@ -490,9 +512,9 @@ redirect_from:
     
     
     
-    <h3 style="margin-top: 20px;">View Contributions</h3>
+    <h3 style="margin-top: 20px;margin-left: 10px;">View Contributions</h3>
     
-    <div class="container" style="background-color:#E6EAEB;" style="padding-top:40px;padding-bottom: 40px;">
+    <div class="container" style="background-color:#E6EAEB;" style="padding-top:40px;padding-bottom: 40px;margin-left: 10px;">
     
     
     
@@ -638,7 +660,7 @@ redirect_from:
     
     
     
-    <h2>Become a Contributor</h2>
+    <h2 style="margin-left: 10px;">Become a Contributor</h2>
     
     <div class="container" style="padding-bottom: 40px;">
       <div class="row">
@@ -782,9 +804,58 @@ redirect_from:
                 <input type="text" class="form-control" id="recipient-name" style="border-radius: 0px;border: #20b6b0 solid 1px;">
               </div>
               <div class="form-group">
-                <label for="message-text" class="col-form-label">Link to Contribution</label>
-                <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                <label for="message-text" class="col-form-label">Number of Contributions </label>
+                <select class="form-control " id="selectOption2" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  <option value="oneVlog">1</option>
+                  <option value="twoVlogs">2</option>
+                  <option value="threeVlogs">3</option>
+                </select>
               </div>
+
+              <div id="oneVlog" class="group2">
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                </div>
+              </div>
+
+              <div id="twoVlogs" class="group2">
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                </div>
+              </div>
+
+              <div id="threeVlogs" class="group2">
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                </div>
+              </div>
+
+
+              <script>
+                $(document).ready(function () {
+                $('.group2').hide();
+                $('#oneVlog').show();
+                $('#selectOption2').change(function () {
+                $('.group2').hide();
+                $('#'+$(this).val()).show();
+                })
+                });
+              </script>
             
             </form>
           </div>
@@ -818,10 +889,60 @@ redirect_from:
                 <label for="message-text" class="col-form-label">Email address</label>
                 <input type="text" class="form-control" id="recipient-name" style="border-radius: 0px;border: #20b6b0 solid 1px;">
               </div>
+
               <div class="form-group">
-                <label for="message-text" class="col-form-label">Link to Contribution</label>
-                <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                <label for="message-text" class="col-form-label">Number of Contributions </label>
+                <select class="form-control " id="selectOption1" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  <option value="OneBlog">1</option>
+                  <option value="TwoBlogs">2</option>
+                  <option value="ThreeBlogs">3</option>
+                </select>
               </div>
+
+              <div id="OneBlog" class="group1">
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                </div>
+              </div>
+
+              <div id="TwoBlogs" class="group1">
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                </div>
+              </div>
+
+              <div id="ThreeBlogs" class="group1">
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                </div>
+              </div>
+
+
+              <script>
+                $(document).ready(function () {
+                $('.group1').hide();
+                $('#OneBlog').show();
+                $('#selectOption1').change(function () {
+                $('.group1').hide();
+                $('#'+$(this).val()).show();
+                })
+                });
+              </script>
             
             </form>
           </div>

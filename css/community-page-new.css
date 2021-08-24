@@ -390,6 +390,12 @@ button.navbar-toggle {
     min-height: 400px;
 }
 
+.cimageprofile{
+    display: block;
+     margin-left: auto;
+     margin-right: auto;
+     width: 50%;
+}
 .cHomeWhyBallerinaRow > .col-md-4:last-child > .cHomeWhyBallerinaBox {
     padding-right: 0;
 }

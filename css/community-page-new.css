@@ -210,8 +210,14 @@ a.cIconLink {
 
 a.cIconLink:hover {
     color: #20b6b0;
-    background-image: url("/img/go-bg-home-hover.svg");
-    color: #20b6b0 !important;
+    background-image: url("/img/go-bg-home.svg");
+    background-repeat: no-repeat;
+    background-position: right center;
+    color:  #585A5E !important;
+    padding: 10px 0;
+    padding-right: 0px;
+    padding-right: 40px;
+    display: flex;
 }
 
 .cBallerina-io p.cQuotes {
@@ -381,13 +387,15 @@ a.cBallerina-io-Home-main-download-button:hover {
 }
 
 .example::-webkit-scrollbar {
-    display: none;
+    /* display: none; */
+    scrollbar-width: thin;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .scrollbarHide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+    scrollbar-width: thin;
+  /*-ms-overflow-style: none;   IE and Edge */
+  /*scrollbar-width: none;   Firefox */
 }
 /* .cBoxType1{
     right:0;

@@ -119,6 +119,23 @@ redirect_from:
                   </button>
                 </div>
                 <div class="modal-body" style="background-color: #fff;">
+                  <!--Alert Box Thank you-->
+                  <div class="alert " role="alert" id="successAlert1"  style="background-color: #E6EAEB;color: #20b6b0;">
+                    <h4 class="alert-heading">Thank you!</h4>
+                    <p>We appreciate your effort to contribute to the Ballerina.</p>
+                    <hr>
+                    <p class="mb-0">If you need any further info. Please reach us via contact@ballerina.io.</p>
+                  </div>
+                  <!--Alert Box Thank you-->
+                  <!--Alert Box Wrong-->
+                  <div class="alert " role="alert" id="wrongAlert1"style="background-color: #E6EAEB;color: #20b6b0;">
+                    <h4 class="alert-heading">Oops!</h4>
+                    <p>Something wrong ! Can you try again.</p>
+                    <hr>
+                    <p class="mb-0">If you need any further info. Please reach us via contact@ballerina.io.</p>
+                  </div>
+                  <!--Alert Box Wrong-->
+                  <!--Form for the Contribution start here-->
                   <form>
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label" >Email Address</label>
@@ -178,20 +195,9 @@ redirect_from:
                       })
                       });
                     </script>
-    
-    
-                    <!-- <div class="form-group">
-                      <label for="message-text" class="col-form-label">Suggested Topic</label>
-                      <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                    </div>
-                    <div class="form-group">
-                      <label for="message-text" class="col-form-label">Suggested Article</label>
-                      <input type="text" class="form-control" id="suggested-article" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlFile1">Suggested Content</label>
-                      <input type="file" class="form-control-file " id="FormControlFile1" >
-                    </div> -->
+
+                  <!--Form for the Contribution end here-->
+  
                   </form>
                 </div>
                 <div class="modal-footer">
@@ -239,10 +245,13 @@ redirect_from:
               <!-- Wrapper for slides -->
               <div class="carousel-inner">
                 <div class="item active">
-                  <img src="/img/community/event-img-1.png" alt="Los Angeles" style="width:100%;" />
+                  <img src="/img/community/event-img-1.png" alt="event-img-1" style="width:100%;" />
                 </div>
                 <div class="item ">
-                  <img src="/img/community/event-img-2.png" alt="Chicago" style="width:100%;" />
+                  <img src="/img/community/event-img-2.png" alt="event-img-2" style="width:100%;" />
+                </div>
+                <div class="item ">
+                  <img src="/img/community/event-img-3.png" alt="event-img-3" style="width:100%;" />
                 </div>
               </div>
               <!-- Left and right controls -->
@@ -271,34 +280,56 @@ redirect_from:
                   <div id="map" style="width:100%;height:600px;">
                     <script type="text/javascript">
                       var locations = [
-                        {
-                          id: "e_001",
-                          info: 'Automatic Microservices Observability with Open-Source Programming Language: Ballerina - Anjana Fernando',
-                          coordinates: [ 31.952162, -115.606551, 4]
+                       {
+                          id: "e_13",
+                          info: 'Ballerina - A Modern Cloud-based Open Source Programming Language',
+                          coordinates: [48.8566969,2.3514616, 9]
+                        },
+                       {
+                          id: "e_14",
+                          info: 'An Introduction to the Ballerina Programming Language',
+                          coordinates: [37.3893889,-122.0832101, 8]
                         },
                         {
-                          id: "e_002",
-                          info: 'Cloud Native Middleware as a Programming Language - Jadd Jennings',
-                          coordinates: [  23.885838, -111.384984, 5]
+                          id: "e_15",
+                          info: 'Conquering Network-Distributed Applications Using the Ballerina Programming Language',
+                          coordinates: [37.7790262,-122.419906, 7]
                         },
                         {
-                          id: "e_003",
-                          info: 'Code to Kubernetes: Languages of Infrastructure - Anjana Fernando',
-                          coordinates: [  6.795535, 79.865451, 3]
+                          id: "e_19",
+                          info: '[Talk] Code to Cloud',
+                          coordinates: [54.6870458,25.2829111, 6]
                         },
                         {
-                          id: "e_004",
-                          info: 'Code to Kubernetes: Deployment Should not Be an Afterthought - Lakmal Warusawithana',
-                          coordinates: [  28.536275, 77.154256, 2]
+                          id: "e_21",
+                          info: 'Ballerina – An Open-Source, Cloud-Native Programming Language for Microservices',
+                          coordinates: [32.7174202,-117.1627728, 5]
                         },
-                        // ['Cloud Native Middleware as a Programming Language - Jadd Jennings', 23.885838, -111.384984, 5],
-                        // ['Code to Kubernetes: Languages of Infrastructure - Anjana Fernando', 6.795535, 79.865451, 3],
-                        // ['Code to Kubernetes: Deployment Should not Be an Afterthought - Lakmal Warusawithana', 28.536275, 77.154256, 2],
-                        // ['Let us Dance Together! Ballerina - Paul Fremantle', 33.724340, 137.724394, 1]
+                        {
+                          id: "e_27",
+                          info: 'Code to Kubernetes: Deployment Should not be an Afterthought',
+                          coordinates: [48.1371079,11.5753822, 4]
+                        },
+                        {
+                          id: "e_31",
+                          info: 'Automatic Microservices Observability with Open-Source Programming Language: Ballerina',
+                          coordinates: [34.4443293,-122.1598455, 3]
+                        },
+                        {
+                          id: "e_32",
+                          info: 'Cloud Native Middleware as a Programming Language',
+                          coordinates: [33.4443293,-122.1598445, 2]
+                        },
+                        {
+                          id: "e_33",
+                          info: 'Automatic Microservices Observability with Open-Source Programming Language: Ballerina',
+                          coordinates: [37.4443293,-122.1598465, 1]
+                        },
+                      
                       ];
                   
                       var map = new google.maps.Map(document.getElementById('map'), {
-                        zoom: 3,
+                        zoom: 2,
                         center: new google.maps.LatLng(-33.92, 151.25),
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                         
@@ -316,6 +347,14 @@ redirect_from:
                           map: map
                           
                         });
+
+                        google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
+                          return function() {
+                            infowindow.setContent(locations[i].info);
+                            infowindow.open(map, marker);                         
+                            
+                          }
+                        })(marker, i));
                   
                         google.maps.event.addListener(marker, 'click', (function(marker, i) {
                           return function() {
@@ -337,47 +376,311 @@ redirect_from:
                  
                   
                 </div>
-                <div class="col sm-12 col-md-6 col-lg-6">
-                   <div id="cards-window" class="overflow-auto" style="height:600px; overflow-y: scroll; " >
+                <div class="col sm-12 col-md-6 col-lg-6" style="box-shadow: none;">
+                   <div id="cards-window" class="overflow-auto scrollbarHide" style="height:600px; overflow-y: scroll;box-shadow: none; " >
                     
                     
-                      <div  id="e_004"class="card text-left cBoxType1" style="margin: 10px;" >
+                      <div  id="e_33"class="cBoxType1" >
                         <div class="card-body" style="margin:20px 15px; padding:10px 15px">
-                          <h4 class="card-title" style="color: #20b6b0;">12 April 2020 | <span style="color: #212a32;">12:00-13:00</span> | Online</h4>
-                          <h4 class="card-title" style="color: #212a32;">Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h4>
-                          <h5 class="card-title" style="color: #212a32;">Anjana Fernando</h5>
-                          <p class="card-text cPara" style="color: #212a32;">Director of Developer Relations - CTO Office, WSO2</p>
-                          <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p>
-                          <a href="https://calendar.google.com/event?action=TEMPLATE&tmeid=NWtkbDdlcWlhNzB1bzlrcTkyYXRzbWU0YjggZGludXNoYW5Ad3NvMi5jb20&tmsrc=dinushan%40wso2.com"><button type="button" href="https://calendar.google.com/event?action=TEMPLATE&tmeid=NWtkbDdlcWlhNzB1bzlrcTkyYXRzbWU0YjggZGludXNoYW5Ad3NvMi5jb20&tmsrc=dinushan%40wso2.com" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
-                          <button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button>
+                          <h4 class="card-title" style="color: #20b6b0;">15-16 June 2021 | <span style="color: #585A5E;">12:00-13:00</span> | Online</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">StackConf</p>
+                          <h4 class="card-title" style="color: #585A5E;">Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director - Developer Relations, WSO2 </p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="https://calendar.google.com/event?action=TEMPLATE&tmeid=NWtkbDdlcWlhNzB1bzlrcTkyYXRzbWU0YjggZGludXNoYW5Ad3NvMi5jb20&tmsrc=dinushan%40wso2.com" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://stackconf.eu/" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
                         </div>
                       </div>
+
+                      <div  id="e_32"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">27-30 April 2021 | <span style="color: #585A5E;">12:00-13:00</span> | Online</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">GIDS Live</p>
+                          <h4 class="card-title" style="color: #585A5E;">Cloud Native Middleware as a Programming Language</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director - Developer Relations, WSO2 </p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://wurreka.com/watch/gids-2021/cloud-native-middleware-as-a-programming-language" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Video</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_31"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">27-30 April 2021 | <span style="color: #585A5E;">12:00-13:00</span> | Online</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">GIDS Live</p>
+                          <h4 class="card-title" style="color: #585A5E;">Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director - Developer Relations, WSO2 </p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://wurreka.com/watch/gids-2021/automatic-microservices-observability-with-open-source-progr" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Watch Video</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_30"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">5 February 2021 | <span style="color: #585A5E;">12:00-13:00</span> | Online</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">Lunch & Learn</p>
+                          <h4 class="card-title" style="color: #585A5E;">Ballerina: OS Cloud-native Programming Language</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Caludio Guidi</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Jolie Evangelist and Project Co-Leader</p>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director - Developer Relations, WSO2 </p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_29"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">2-4 December 2020 | <span style="color: #585A5E;">12:00-13:00</span> | Virtual</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">Open Source Summit Japan</p>
+                          <h4 class="card-title" style="color: #585A5E;">Ballerina: An Open-Source Cloud-Native Programming Language</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director - Developer Relations, WSO2 </p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://youtu.be/0pKOkMRODF0" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Watch Video</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_28"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">28 October 2020 <span style="color: #585A5E;"></span> | Virtual</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">API World Virtual</p>
+                          <h4 class="card-title" style="color: #585A5E;">Code to Kubernetes: Deployment Shouldn't be an Afterthought</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Lakmal Warusawithana</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Senior Director - Developer Relations, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://apiworld.co/conference/speakers/" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">More Info</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_27"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">27-29 October 2020 <span style="color: #585A5E;"></span> | Virtual</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">API World Virtual</p>
+                          <h4 class="card-title" style="color: #585A5E;">Automatic Microservices Observability with Ballerina</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director - Developer Relations, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://apiworld.co/conference/speakers/" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">More Info</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_26"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">19-21 October 2020 <span style="color: #585A5E;"></span> | Virtual</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">Open Source Automation Days</p>
+                          <h4 class="card-title" style="color: #585A5E;">Code to Kubernetes: Deployment Shouldn't be an Afterthought</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Lakmal Warusawithana</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Senior Director - Developer Relations, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://osad-munich.org/en/featured-speakers/code-to-kubernetes-deployment-shouldnt-be-an-afterthought/" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">More Info</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_25"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">7 October 2020 <span style="color: #585A5E;"></span> | Virtual</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">Cloud Colombo</p>
+                          <h4 class="card-title" style="color: #585A5E;">Ballerina - A Cloud Native Programming Language</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director - Developer Relations, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.youtube.com/watch?v=OJUYOFds-s4&ab_channel=CloudColombo" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Watch Video</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_24"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">30 September 2020 <span style="color: #585A5E;"></span> | Virtual</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">DeveloperWeek Global: Cloud</p>
+                          <h4 class="card-title" style="color: #585A5E;">Code to Kubernetes: Deployment Shouldn't Be an Afterthought</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Lakmal Warusawithana</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Senior Director - Developer Relations, WSO2 </p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://emamo.com/event/developerweek-global-cloud-2020/s/open-talk-code-to-kubernetes-deployment-shouldnt-be-an-afterthought-NyPYlo" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">More Info</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_23"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">29 September 2020 <span style="color: #585A5E;"></span> | Virtual</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">DeveloperWeek Global: Cloud</p>
+                          <h4 class="card-title" style="color: #585A5E;">Code to Kubernetes: Languages of Infrastructure</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director - Developer Relations, WSO2  </p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.slideshare.net/BallerinaLang/code-to-kubernetes-languages-of-infrastructure" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_22"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">26 September 2020 <span style="color: #585A5E;"></span> | Virtual</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">Nova Code Camp</p>
+                          <h4 class="card-title" style="color: #585A5E;">Let's Dance Together! Ballerina</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Vanjikumaran Sivajothy</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Senior Lead Solutions Engineer, WSO2 </p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://novacodecamp.org/app/speakers/aa20c381-1fa5-42c6-8095-a01ca1bab0b7" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">More Info</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_21"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">28 May 2020 <span style="color: #585A5E;"></span> | San Diego, California, USA</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">San Diego Cloud Native Computing Meetup</p>
+                          <h4 class="card-title" style="color: #585A5E;">Ballerina – An Open-Source, Cloud-Native Programming Language for Microservices</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director of Developer Relations, WSO2 </p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.slideshare.net/lafernando/ballerina-an-opensource-cloudnative-programming-language-for-microservices" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_20"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">7 May 2020 <span style="color: #585A5E;"></span> | Online</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">Cloud DC Meetup</p>
+                          <h4 class="card-title" style="color: #585A5E;">Cloud Native Development with Ballerina</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Jadd Jennings</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Hub Solutions Engineer, Oracle Cloud Solution Hub </p>
+                          <h5 class="card-title" style="color:#585A5E;">Dhvani Sheth</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Senior Solutions Engineer, Oracle  </p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.slideshare.net/BallerinaLang/cloud-dc-meetup-cloud-native-development-with-ballerina" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_19"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">26 March 2020 <span style="color: #585A5E;"></span> | Vilnius, Lithuania</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">DevOps Pro Europe 2020</p>
+                          <h4 class="card-title" style="color: #585A5E;">[Talk] Code to Cloud</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Lakmal Warusawithana</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Senior Director of Developer Relations, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.youtube.com/watch?v=5IXPMlAUqrU&list=PLqYhGsQ9iSEpaZPFQwT4AJNXvp0id4NSo&index=26&t=0s" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Watch Video</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_18"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">25 March 2020 <span style="color: #585A5E;"></span> | Vilnius, Lithuania</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">DevOps Pro Europe 2020</p>
+                          <h4 class="card-title" style="color: #585A5E;">[Talk] Ballerina: The Cloud-Native and DevOps Friendly Programming Language</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director of Developer Relations, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.youtube.com/watch?v=RezJDgTaZSg&list=PLqYhGsQ9iSEpaZPFQwT4AJNXvp0id4NSo&index=12&t=0s" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Watch Video</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_17"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">24 March 2020 <span style="color: #585A5E;"></span> | Vilnius, Lithuania</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">DevOps Pro Europe 2020</p>
+                          <h4 class="card-title" style="color: #585A5E;">[Workshop] Ballerina: Cloud Native Middleware as a Programming Language</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director of Developer Relations, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://github.com/lafernando/ballerina-cloud-native-middleware-workshop" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Code</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_16"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">10 March 2020 <span style="color: #585A5E;"></span> | San Jose, California, USA</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">Kubernetes for Developers Meetup</p>
+                          <h4 class="card-title" style="color: #585A5E;">Ballerinas & Zebras in Kubernetes</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Lakmal Warusawithana</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Senior Director of Developer Relations, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://primetime.bluejeans.com/a2m/events/playback/dc1fb3a9-a03b-48ac-aa56-8314d0b85f79" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Watch Video</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_15"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">12-16 February 2020 <span style="color: #585A5E;"></span> | San Francisco, California, USA</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">DeveloperWeek 2020</p>
+                          <h4 class="card-title" style="color: #585A5E;">Conquering Network-Distributed Applications Using the Ballerina Programming Language</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director of Developer Relations, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.slideshare.net/BallerinaLang/developerweek-2020-conquering-network-distributed-applications-using-ballerina" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_14"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">12 December 2019 <span style="color: #585A5E;"></span> | Mountain View, California, USA</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">Cloud-Native and Kubernetes Meetup in Silicon Valley</p>
+                          <h4 class="card-title" style="color: #585A5E;">An Introduction to the Ballerina Programming Language</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director of Developer Relations, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.slideshare.net/BallerinaLang/cloudnative-and-kubernetes-meetup-in-silicon-valley-ballerina-cloud-native-programming-language" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
+                        </div>
+                      </div>
+
+                      
+
+                      <div  id="e_13"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">10-11 December 2019 <span style="color: #585A5E;"></span> | Paris, France</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">Paris Open Source Summit</p>
+                          <h4 class="card-title" style="color: #585A5E;">Ballerina - A Modern Cloud-based Open Source Programming Language</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Paul Fremantle</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">CTO and Co-founder, WSO2 </p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.opensourcesummit.paris/" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">More Info</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_12"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">5 December 2019 <span style="color: #585A5E;"></span> | San Jose, California, USA</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">Downtown San Jose DevOps Meetup</p>
+                          <h4 class="card-title" style="color: #585A5E;">Ballerina - A Programming Language for Cloud and DevOps</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director of Developer Relations - CTO Office, WSO2  </p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.opensourcesummit.paris/" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+
     
-                      <div id="e_002" class="card text-left cBoxType1" style="margin: 10px;" >
-                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
-                          <h4 class="card-title" style="color: #212a32;">	
-                            <h4 class="card-title" style="color: #20b6b0;">12 April 2020 | <span style="color: #212a32;">12:00-13:00</span> | Online</h4>
-                            GIDS Live <br>Cloud Native Middleware as a Programming Language</h4>
-                          <h5 class="card-title" style="color: #212a32;">Anjana Fernando</h5>
-                          <p class="card-text cPara" style="color: #212a32;">Director of Developer Relations - CTO Office, WSO2</p>
-                          <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p>
-                          <button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button>
-                          <button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button>
-                        </div>
-                      </div>
-    
-                      <div  id="e_001" class="card text-left cBoxType1" style="margin: 10px;">
-                        
-                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
-                          <h4 class="card-title" style="color: #20b6b0;">5 February 2020 | <span style="color: #212a32;">12:00-13:00</span> | Online</h4>
-                          <h4 class="card-title" style="color: #212a32;">Ballerina: OS Cloud-native Programming Language</h4>
-                          <h5 class="card-title" style="color: #212a32;">Caludio Guidi</h5>
-                          <p class="card-text cPara" style="color: #212a32;">Jolie Evangelist and Project Co-Leader</p>
-                          <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p>
-                          <button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button>
-                          <button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button>
-                        </div>
-                      </div>
+                      
           </div>
                   
                 </div>
@@ -404,8 +707,8 @@ redirect_from:
           <div class="carousel slide multi-item-carousel" id="theCarousel">
             <div class="carousel-inner">
               <div class="item active">
-                <div class="col-xs-4">
-                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/jayjune2021.png" alt="John" class="cimageprofile">
+                <div class="col-xs-4 col-md-4 col-lg-4">
+                  <div class="profileCard"> <img src="/img/community/jayjune2021.png" alt="John" class="cimageprofile">
                     <div class="card-body-center" style="padding:10px;">
                       <h3 style="color: #20b6b0;text-align: center;margin-top:0px;margin-bottom: 0px;">Contributor Name</h3>
                       <p class="title" style="color: #465867;text-align: center;">Software Engineer</p>
@@ -414,8 +717,8 @@ redirect_from:
                 </div>
               </div>
               <div class="item">
-                <div class="col-xs-4">
-                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/sameerajune2021.png" alt="John" class="cimageprofile">
+                <div class="col-xs-4 col-md-4 col-lg-4">
+                  <div class="profileCard" > <img src="/img/community/sameerajune2021.png" alt="John" class="cimageprofile">
                     <div class="card-body-center" style="padding:10px;">
                       <h3 style="color: #20b6b0;text-align: center;margin-top:0px;margin-bottom: 0px;">Contributor Name</h3>
                       <p class="title" style="color: #465867;text-align: center;">Software Engineer</p>
@@ -424,8 +727,8 @@ redirect_from:
                 </div>
               </div>
               <div class="item">
-                <div class="col-xs-4">
-                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/prabhashijune2021.png" alt="John" class="cimageprofile">
+                <div class="col-xs-4 col-md-4 col-lg-4">
+                  <div class="profileCard"> <img src="/img/community/prabhashijune2021.png" alt="John" class="cimageprofile">
                     <div class="card-body-center" style="padding:10px;">
                       <h3 style="color: #20b6b0;text-align: center;margin-top:0px;margin-bottom: 0px;">Contributor Name</h3>
                       <p class="title" style="color: #465867;text-align: center;">Software Engineer</p>
@@ -434,8 +737,8 @@ redirect_from:
                 </div>
               </div>
               <div class="item">
-                <div class="col-xs-4">
-                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/rashnimimay2021.png" alt="John" class="cimageprofile">
+                <div class="col-xs-4 col-md-4 col-lg-4">
+                  <div class="profileCard"> <img src="/img/community/rashnimimay2021.png" alt="John" class="cimageprofile">
                     <div class="card-body-center" style="padding:10px;">
                       <h3 style="color: #20b6b0;text-align: center;margin-top:0px;margin-bottom: 0px;">Contributor Name</h3>
                       <p class="title" style="color: #465867;text-align: center;">Software Engineer</p>
@@ -444,8 +747,8 @@ redirect_from:
                 </div>
               </div>
               <div class="item">
-                <div class="col-xs-4">
-                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/russjune2021.png" alt="John" class="cimageprofile">
+                <div class="col-xs-4 col-md-4 col-lg-4">
+                  <div class="profileCard" > <img src="/img/community/russjune2021.png" alt="John" class="cimageprofile">
                     <div class="card-body-center" style="padding:10px;">
                       <h3 style="color: #20b6b0;text-align: center;margin-top:0px;margin-bottom: 0px;">Contributor Name</h3>
                       <p class="title" style="color: #465867;text-align: center;">Software Engineer</p>
@@ -454,8 +757,8 @@ redirect_from:
                 </div>
               </div>
               <div class="item">
-                <div class="col-xs-4">
-                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/renon2021.png" alt="John" class="cimageprofile">
+                <div class="col-xs-4 col-md-4 col-lg-4">
+                  <div class="profileCard"> <img src="/img/community/renon2021.png" alt="John" class="cimageprofile">
                     <div class="card-body-center" style="padding:10px;">
                       <h3 style="color: #20b6b0;text-align: center;margin-top:0px;margin-bottom: 0px;">Contributor Name</h3>
                       <p class="title" style="color: #465867;text-align: center;">Software Engineer</p>
@@ -465,8 +768,8 @@ redirect_from:
               </div>
              
               <div class="item">
-                <div class="col-xs-4">
-                  <div class="card" style="margin: 10px 15px;"> <img src="/img/community/tharindunjune2021.png" alt="John" class="cimageprofile">
+                <div class="col-xs-4 col-md-4 col-lg-4">
+                  <div class="profileCard" > <img src="/img/community/tharindunjune2021.png" alt="John" class="cimageprofile">
                     <div class="card-body-center" style="padding:10px;">
                       <h3 style="color: #20b6b0;text-align: center;margin-top:0px;margin-bottom: 0px;">Contributor Name</h3>
                       <p class="title" style="color: #465867;text-align: center;">Software Engineer</p>
@@ -520,55 +823,69 @@ redirect_from:
     
     <div class="row" style="padding-bottom:30px;padding-left:10px;padding-right:10px;padding-top:10px;  ">
         <div class="col-md-6">
-         <h3>Vlogs</h3>
+         <h3 style="margin:20px 0px;">Vlogs</h3>
           <div class="overflow-auto" style="height:500px; overflow-y: scroll;">
-            <a class="linkTest1" href="https://medium.com/ballerina-techblog/go-real-time-with-ballerina-websockets-58c40ac11d6" target="_blank" style="color:#585A5E;" >
-            <div class="card" style="border-color:#E6EAEB;">
+            <a class="linkTest1" href="https://www.youtube.com/watch?v=4mwEZ4dInRU&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=1" target="_blank" style="color:#585A5E;" >
+            <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
                <div class="row">
-                  <div class="col-md-6" style="padding-left:0px;">
-                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:250px;height:150px;color:#585A5E;">
-                  </div>
-                  <div class="col-md-6" style="padding:10px 20px">
-                    <h5 class="card-title" style="padding-bottom:30px;">Service Mesh in Practice,<br> BallerinaCon 2018</h5>
-                    <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                  </div>
+                   <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                     <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:100%;color:#585A5E;">
+                   </div>
+                   <div class="col-sm-12 col-md-6 col-lg-6"style="padding:10px 20px" >
+                     <h5 class="card-title" >Ballerina, a Microservices Native Language</h5>
+                     <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
               </div>
             </div>
            </a>
-           <a class="linkTest1" href="https://medium.com/ballerina-techblog/go-real-time-with-ballerina-websockets-58c40ac11d6" target="_blank" style="color:#585A5E;" >
-            <div class="card" style="border-color:#E6EAEB;">
+           <a class="linkTest1" href="https://www.youtube.com/watch?v=z25CPqJMFUk&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=2" target="_blank" style="color:#585A5E;" >
+            <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
                <div class="row">
-                  <div class="col-md-6" style="padding-left:0px;">
-                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:250px;height:150px;color:#585A5E;">
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:100%;color:#585A5E;">
                   </div>
-                  <div class="col-md-6" style="padding:10px 20px">
-                    <h5 class="card-title" style="padding-bottom:30px;">Ballerina: An Open-Source Cloud-Native Programming Language</h5>
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                    <h5 class="card-title" >Building Lightweight Microservices Using Redis</h5>
                     <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
                   </div>
               </div>
             </div>
           </a>
-          <a class="linkTest1" href="https://medium.com/ballerina-techblog/go-real-time-with-ballerina-websockets-58c40ac11d6" target="_blank" style="color:#585A5E;" >
-            <div class="card" style="border-color:#E6EAEB;">
+          <a class="linkTest1" href="https://www.youtube.com/watch?v=JtwmHo5Ivwg&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=3" target="_blank" style="color:#585A5E;" >
+            <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
                <div class="row">
-                  <div class="col-md-6" style="padding-left:0px;">
-                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:250px;height:150px;color:#585A5E;">
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:100%;color:#585A5E;">
                   </div>
-                  <div class="col-md-6" style="padding:10px 20px">
-                    <h5 class="card-title" style="padding-bottom:30px;">Query, Tables, and XML <br>- Ballerina Language Swan Lake</h5>
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                    <h5 class="card-title" >Ballerina - A new language for the networked world</h5>
                     <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
                   </div>
               </div>
             </div>
           </a>
-          <a class="linkTest1" href="https://medium.com/ballerina-techblog/go-real-time-with-ballerina-websockets-58c40ac11d6" target="_blank" style="color:#585A5E;" >
-            <div class="card" style="border-color:#E6EAEB;">
+          <a class="linkTest1" href="https://www.youtube.com/watch?v=GSHixCT0Gcg&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=4" target="_blank" style="color:#585A5E;" >
+            <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
                <div class="row">
-                  <div class="col-md-6" style="padding-left:0px;">
-                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:250px;height:150px;color:#585A5E;" >
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
                   </div>
-                  <div class="col-md-6" style="padding:10px 20px">
-                    <h5 class="card-title" style="padding-bottom:30px;">Creating a Service in Ballerina - Tutorial</h5>
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                    <h5 class="card-title" >TGI Kubernetes 042: Ballerina</h5>
+                    <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                  </div>
+              </div>
+            </div>
+          </a>
+
+          <a class="linkTest1" href="https://www.youtube.com/watch?v=zPgYfBF56eA&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=5" target="_blank" style="color:#585A5E;" >
+            <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+               <div class="row">
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                    <h5 class="card-title" >Tyler Jewell, WSO2 | KubeCon + CloudNativeCon EU 2018</h5>
                     <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
                   </div>
               </div>
@@ -580,75 +897,147 @@ redirect_from:
         </div>
     
          <div class="col-md-6">
-         <h3>Blogs</h3>
-          <div class="overflow-auto" style="height:500px; overflow-y: scroll;">
+         <h3 style="margin:20px 0px;">Blogs</h3>
+          <div class="overflow-auto" style="height:500px; overflow-y: scroll; ">
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/unit-test-ballerina-integration-with-mock-backends-ffff790edb9f" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title" >Unit test Ballerina integration with Mock backends</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/get-started-with-service-testing-using-ballerina-test-framework-18e3b907a33" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title" >Get started with service testing using Ballerina test framework</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/microservices-security-with-ballerina-e9d430f05373" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title" >Microservices Security with Ballerina</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
+    
             <a class="linkTest1" href="https://medium.com/ballerina-techblog/go-real-time-with-ballerina-websockets-58c40ac11d6" target="_blank" style="color:#585A5E;" >
-            <div class="card" style="border-color:#E6EAEB;">
-               <div class="row">
-                  <div class="col-md-6" style="padding-left:0px;">
-                    <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:250px;height:150px;">
-                  </div>
-                  <div class="col-md-6" style="padding:10px 20px">
-                    <h5 class="card-title" style="padding-bottom:30px;">Go Real-Time with Ballerina WebSockets</h5>
-                    <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                  </div>
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title" >Go Real-Time with Ballerina WebSockets</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
               </div>
-            </div>
-          </a>
-          <a class="linkTest1" href="https://medium.com/ballerina-techblog/rest-is-history-lets-do-graphql-with-ballerina-dce7510b61e8" target="_blank" style="color:#585A5E;" >
-            <div class="card" style="border-color:#E6EAEB;">
-               <div class="row">
-                  <div class="col-md-6" style="padding-left:0px;">
-                    <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:250px;height:150px;">
-                  </div>
-                  <div class="col-md-6" style="padding:10px 20px">
-                    <h5 class="card-title" style="padding-bottom:30px;">REST is History, Let’s Do GraphQL (with Ballerina)</h5>
-                    <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                  </div>
-              </div>
-            </div>
-          </a>
-          <a class="linkTest1" href="https://medium.com/ballerina-techblog/rest-is-history-lets-do-graphql-with-ballerina-dce7510b61e8" target="_blank" style="color:#585A5E;"  >
-            <div class="card" style="border-color:#E6EAEB;">
-               <div class="row">
-                  <div class="col-md-6" style="padding-left:0px;">
-                    <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:250px;height:150px;">
-                  </div>
-                  <div class="col-md-6" style="padding:10px 20px">
-                    <h5 class="card-title" style="padding-bottom:30px;">REST is History, Let’s Do GraphQL (with Ballerina)</h5>
-                    <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                  </div>
-              </div>
-            </div>
-          </a>
+            </a>
     
-          <a class="linkTest1" href="https://medium.com/ballerina-techblog/rest-is-history-lets-do-graphql-with-ballerina-dce7510b61e8" target="_blank" style="color:#585A5E;"  >
-            <div class="card" style="border-color:#E6EAEB;">
-               <div class="row">
-                  <div class="col-md-6" style="padding-left:0px;">
-                    <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:250px;height:150px;">
-                  </div>
-                  <div class="col-md-6" style="padding:10px 20px">
-                    <h5 class="card-title" style="padding-bottom:30px;">REST is History, Let’s Do GraphQL (with Ballerina)</h5>
-                    <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                  </div>
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/rest-is-history-lets-do-graphql-with-ballerina-dce7510b61e8" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title" >REST is History, Let’s Do GraphQL (with Ballerina)</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
               </div>
-            </div>
-          </a>
-    
-          <a class="linkTest1" href="https://medium.com/ballerina-techblog/rest-is-history-lets-do-graphql-with-ballerina-dce7510b61e8" target="_blank" style="color:#585A5E;"  >
-            <div class="card" style="border-color:#E6EAEB;">
-               <div class="row">
-                  <div class="col-md-6" style="padding-left:0px;">
-                    <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:250px;height:150px;">
-                  </div>
-                  <div class="col-md-6" style="padding:10px 20px">
-                    <h5 class="card-title" style="padding-bottom:30px;">REST is History, Let’s Do GraphQL (with Ballerina)</h5>
-                    <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                  </div>
+            </a>
+
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/single-liner-payload-read-85a16e3265fc" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title" >Single Liner Payload Read…</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
+
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-integration-programming-language-5d8e1b52e582" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title" >Ballerina: Integration Programming Language</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
+
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-shell-repl-implementation-overview-ee7e909da20c" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title" >Ballerina Shell REPL — Implementation Overview</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
+
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-shell-a-repl-for-ballerina-d5053c94363f" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title" >Ballerina Shell — A REPL for Ballerina</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
+
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-concurrency-model-and-non-blocking-i-o-14c6bed595f4" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title" >Ballerina Concurrency Model and Non-Blocking I/O</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
+
+
     
     
           </div>
@@ -666,7 +1055,7 @@ redirect_from:
       <div class="row">
                   <div class="col-sm-12 col-md-4 col-lg-4">
                   
-                    <div class="card cBoxCard"  >
+                    <div class="cBoxCard"  >
                         <div class="card-body text-primary" style="padding: 18px;">
                           <!-- <img src="https://wso2.cachefly.net/wso2/sites/all/2021/images/support-doc.svg" alt="support-doc" style="width:60px;"> -->
                           <h5 class="card-title" style="color: #212a32;">Contribute to the Source </h5>
@@ -679,7 +1068,7 @@ redirect_from:
            
                 <div class="col-sm-12 col-md-4 col-lg-4">
           
-                  <div class="card cBoxCard"  >
+                  <div class="cBoxCard"  >
                       <div class="card-body text-primary" style="padding: 18px;">
                         <!-- <img src="https://wso2.cachefly.net/wso2/sites/all/2021/images/support-doc.svg" alt="support-doc" style="width:60px;"> -->
                         <h5 class="card-title" style="color: #212a32;">Contribute to Ballerina Central            </h5>
@@ -693,7 +1082,7 @@ redirect_from:
     
     <div class="col-sm-12 col-md-4 col-lg-4">
         
-        <div class="card cBoxCard" >
+        <div class="cBoxCard" >
             <div class="card-body text-primary" style="padding: 18px;">
               <!-- <img src="https://wso2.cachefly.net/wso2/sites/all/2021/images/support-tech-support.svg" alt="support-tec" style="width:60px;"> -->
               <h5 class="card-title" style="color: #212a32;">Report Issues </h5>
@@ -709,7 +1098,7 @@ redirect_from:
     
         <div class="col-sm-12 col-md-4 col-lg-4">
                    
-          <div class="card cBoxCard" >
+          <div class="cBoxCard" >
               <div class="card-body text-primary" style="padding: 18px;">
                 <!-- <img src="https://wso2.cachefly.net/wso2/sites/all/2021/images/support-community.svg" alt="support-community" style="width:60px;"> -->
                 <h5 class="card-title" style="color: #212a32;">Submit Blogs</h5>
@@ -722,7 +1111,7 @@ redirect_from:
     
       <div class="col-sm-12 col-md-4 col-lg-4">
          
-          <div class="card cBoxCard" >
+          <div class="cBoxCard" >
               <div class="card-body text-primary" style="padding: 18px;">
                 <!-- <img src="https://wso2.cachefly.net/wso2/sites/all/2021/images/support-tech-support.svg" alt="support-tec" style="width:60px;"> -->
                 <h5 class="card-title" style="color: #212a32;">Submit Vlogs</h5>
@@ -737,7 +1126,7 @@ redirect_from:
     
       <div class="col-sm-12 col-md-4 col-lg-4">
           
-        <div class="card cBoxCard" >
+        <div class="cBoxCard" >
             <div class="card-body text-primary" style="padding: 18px;">
               <!-- <img src="https://wso2.cachefly.net/wso2/sites/all/2021/images/support-community.svg" alt="support-community" style="width:60px;"> -->
               <h5 class="card-title" style="color: #212a32;">Use Resources</h5>
@@ -771,7 +1160,7 @@ redirect_from:
               <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-standard-library/issues" target="_blank"> Standard Library</a></li>
               <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-standard-library/issues/new/choose" target="_blank">  Language specification</a></li>
               <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">  Website</a></li>
-              <li><a class="linkText" href="mailto:security@ballerina.io" target="_blank">Security</a> (For details, see the <a class="linkText" href="/security" target="_blank">security policy</a>.)</li>
+              <li><a class="linkText" href="mailto:security@ballerina.io" target="_blank">Security</a> <span style="font-size: 16px;">(For details, see the</span> <a class="linkText" href="/security" target="_blank">security policy</a>.)</li>
             </ul>  
           
           </div>
@@ -794,6 +1183,23 @@ redirect_from:
             </button>
           </div>
           <div class="modal-body" style="background-color: #fff; font-size: 20;;">
+             <!--Alert Box Thank you-->
+             <div class="alert " role="alert" id="successAlert1"  style="background-color: #E6EAEB;color: #20b6b0;">
+              <h4 class="alert-heading">Thank you!</h4>
+              <p>We appreciate your effort to contribute to the Ballerina.</p>
+              <hr>
+              <p class="mb-0">If you need any further info. Please reach us via contact@ballerina.io.</p>
+            </div>
+            <!--Alert Box Thank you-->
+            <!--Alert Box Wrong-->
+            <div class="alert " role="alert" id="wrongAlert1"style="background-color: #E6EAEB;color: #20b6b0;">
+              <h4 class="alert-heading">Oops!</h4>
+              <p>Something wrong ! Can you try again.</p>
+              <hr>
+              <p class="mb-0">If you need any further info. Please reach us via contact@ballerina.io.</p>
+            </div>
+            <!--Alert Box Wrong-->
+            <!--Form for the Submit Vlogs start here-->
             <form>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label" >Name</label>
@@ -814,33 +1220,33 @@ redirect_from:
 
               <div id="oneVlog" class="group2">
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
                   <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
               </div>
 
               <div id="twoVlogs" class="group2">
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
                   <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <label for="message-text" class="col-form-label">Link to Contribution 2</label>
                   <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
               </div>
 
               <div id="threeVlogs" class="group2">
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
                   <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <label for="message-text" class="col-form-label">Link to Contribution 2</label>
                   <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <label for="message-text" class="col-form-label">Link to Contribution 3</label>
                   <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
               </div>
@@ -858,6 +1264,7 @@ redirect_from:
               </script>
             
             </form>
+            <!--Form for the Submit Vlogs end here-->
           </div>
           <div class="modal-footer">
             <button type="reset" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Close</button>
@@ -880,6 +1287,23 @@ redirect_from:
             </button>
           </div>
           <div class="modal-body" style="background-color: #fff; font-size: 20;;">
+             <!--Alert Box Thank you-->
+             <div class="alert " role="alert" id="successAlert1"  style="background-color: #E6EAEB;color: #20b6b0;">
+              <h4 class="alert-heading">Thank you!</h4>
+              <p>We appreciate your effort to contribute to the Ballerina.</p>
+              <hr>
+              <p class="mb-0">If you need any further info. Please reach us via contact@ballerina.io.</p>
+            </div>
+            <!--Alert Box Thank you-->
+            <!--Alert Box Wrong-->
+            <div class="alert " role="alert" id="wrongAlert1"style="background-color: #E6EAEB;color: #20b6b0;">
+              <h4 class="alert-heading">Oops!</h4>
+              <p>Something wrong ! Can you try again.</p>
+              <hr>
+              <p class="mb-0">If you need any further info. Please reach us via contact@ballerina.io.</p>
+            </div>
+            <!--Alert Box Wrong-->
+            <!--Form for the Submit Blogs start here-->
             <form>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label" >Name</label>
@@ -901,33 +1325,33 @@ redirect_from:
 
               <div id="OneBlog" class="group1">
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
                   <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
               </div>
 
               <div id="TwoBlogs" class="group1">
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
                   <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <label for="message-text" class="col-form-label">Link to Contribution 2</label>
                   <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
               </div>
 
               <div id="ThreeBlogs" class="group1">
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
                   <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <label for="message-text" class="col-form-label">Link to Contribution 2</label>
                   <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution</label>
+                  <label for="message-text" class="col-form-label">Link to Contribution 3</label>
                   <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
               </div>
@@ -943,7 +1367,7 @@ redirect_from:
                 })
                 });
               </script>
-            
+            <!--Form for the Submit Blogs end here-->
             </form>
           </div>
           <div class="modal-footer">
@@ -954,4 +1378,4 @@ redirect_from:
       </div>
     </div>
 </div>
-    
+  

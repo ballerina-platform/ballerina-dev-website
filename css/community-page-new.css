@@ -210,14 +210,14 @@ a.cIconLink {
 
 a.cIconLink:hover {
     color: #20b6b0;
-    background-image: url("/img/go-bg-home.svg");
+    background-image: url("/img/go-bg-hover-home-grey.png");
     background-repeat: no-repeat;
     background-position: right center;
     color:  #585A5E !important;
     padding: 10px 0;
     padding-right: 0px;
     padding-right: 40px;
-    display: flex;
+  
 }
 
 .cBallerina-io p.cQuotes {
@@ -388,12 +388,12 @@ a.cBallerina-io-Home-main-download-button:hover {
 
 .example::-webkit-scrollbar {
     /* display: none; */
-    scrollbar-width: thin;
+    scrollbar-width:auto;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .scrollbarHide {
-    scrollbar-width: thin;
+    scrollbar-width: auto;
   /*-ms-overflow-style: none;   IE and Edge */
   /*scrollbar-width: none;   Firefox */
 }

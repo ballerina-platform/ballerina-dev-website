@@ -139,19 +139,19 @@ redirect_from:
                   <form>
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label" >Email Address</label>
-                      <input type="text" class="form-control fInput" id="recipient-email" style="border-radius: 0px;border: #20b6b0 solid 1px; ">
+                      <input type="text" class="form-control " id="recipient-email" style="border-radius: 0px;border: #20b6b0 solid 1px; ">
                     </div>
                     <div class="form-group">
                       <label for="message-text" class="col-form-label">Name</label>
-                      <input type="text" class="form-control fInput" id="recipient-name" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                      <input type="text" class="form-control" id="recipient-name" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                     </div>
                     <div class="form-group">
                       <label for="message-text" class="col-form-label">Company Name (Optional)</label>
-                      <input type="text" class="form-control fInput" id="recipient-company-name" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                      <input type="text" class="form-control " id="recipient-company-name" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                     </div>
                     <div class="form-group">
                       <label for="message-text" class="col-form-label">Contribution for </label>
-                      <select class="form-control fInput" id="selectOption" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                      <select class="form-control " id="selectOption" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                         <option value="oNewsletter">Newsletter</option>
                         <option value="oCommcall">Community Call</option>
                       </select>
@@ -160,26 +160,27 @@ redirect_from:
                     <div id="oNewsletter" class="group">
                       <div class="form-group">
                         <label for="message-text" class="col-form-label">Suggested Topic</label>
-                        <input type="text" class="form-control fInput" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                        <input type="text" class="form-control " id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                       </div>
                       <div class="form-group">
-                        <label for="exampleFormControlFile1">Suggested Content</label>
-                        <input type="file" class="form-control-file " id="FormControlFile1" >
+                        <label for="message-text" class="col-form-label">Link to Suggested Article</label>
+                        <input type="text" class="form-control " id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                       </div>
+                     
                     </div>
     
                     <div id="oCommcall" class="group">
                       <div class="form-group">
                         <label for="message-text" class="col-form-label">Suggested Topic</label>
-                        <input type="text" class="form-control fInput" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                        <input type="text" class="form-control " id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                       </div>
                       <div class="form-group">
-                        <label for="message-text" class="col-form-label">Suggested Article</label>
-                        <input type="text" class="form-control fInput" id="suggested-article" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                        <label for="message-text" class="col-form-label">Link to Suggested Content</label>
+                        <input type="text" class="form-control " id="suggested-article" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                       </div>
                       <div class="form-group">
                         <label for="message-text" class="col-form-label">Suggested Demo Duration</label>
-                        <input type="text" class="form-control fInput" id="suggested-article" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                        <input type="text" class="form-control " id="suggested-article" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                       </div>
                       
                     </div>
@@ -272,9 +273,6 @@ redirect_from:
                 <div class="item ">
                   <img src="/img/community/event-img-8.png" alt="event-img-3"  />
                 </div>
-                <div class="item ">
-                  <img src="/img/community/event-img-9.png" alt="event-img-3"  />
-                </div>
               </div>
               <!-- Left and right controls -->
               <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -302,6 +300,56 @@ redirect_from:
                   <div id="map" style="width:100%;height:600px;">
                     <script type="text/javascript">
                       var locations = [
+                      {
+                          id: "e_01",
+                          info: 'Conquering Network Distributed Applications Using the Ballerina Programming Language',
+                          coordinates: [36.2354121683998,-115.20263671875001, 19]
+                        },
+                      {
+                          id: "e_02",
+                          info: 'Ballerina - Re-inventing Middleware in a Programming Language',
+                          coordinates: [36.1672559,-115.148516, 18]
+                        },
+                      {
+                          id: "e_03",
+                          info: 'Ballerina - Cloud Native Middleware as a Programming Language',
+                          coordinates: [40.730608477796636,-73.77319335937501, 17]
+                        },
+                      {
+                          id: "e_05",
+                          info: 'Effective Microservices Development with Ballerina',
+                          coordinates: [39.9622601,-83.0007065, 16]
+                        },
+                      {
+                          id: "e_06",
+                          info: 'Ballerina — Cloud-native Middleware as a Programming Language',
+                          coordinates: [37.792422407988575,-122.27233886718751, 15]
+                        },
+                      {
+                          id: "e_07",
+                          info: 'Efficient Microservices Deployment Pipelines',
+                          coordinates: [37.43997405227057,-121.99218750000001, 14]
+                        },
+                      {
+                          id: "e_08",
+                          info: 'The better java for Java microservice developers',
+                          coordinates: [6.9349969,79.8538463, 13]
+                        },
+                      {
+                          id: "e_09",
+                          info: 'Ballerina — Cloud-native Middleware as a Programming Language',
+                          coordinates: [46.9482713,7.4514512, 12]
+                        },
+                      {
+                          id: "e_10",
+                          info: 'Microservices in Practice with Ballerina, Kubernetes and Istio',
+                          coordinates: [30.2711286,-97.7436995, 11]
+                        },
+                      {
+                          id: "e_11",
+                          info: 'Ballerina — Cloud-native Middleware as a Programming Language',
+                          coordinates: [51.5073219,-0.1276474, 10]
+                        },
                        {
                           id: "e_13",
                           info: 'Ballerina - A Modern Cloud-based Open Source Programming Language',
@@ -353,7 +401,8 @@ redirect_from:
                       var map = new google.maps.Map(document.getElementById('map'), {
                         zoom: 2,
                         center: new google.maps.LatLng(37.43997405227057,-28.125000000000004),
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        mapId:'8fa919dd075c1a10'
                         
                       });
                       
@@ -389,10 +438,7 @@ redirect_from:
                         })(marker, i));
                       }
                     </script>
-                    <!-- <script
-                      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf2Y_GVAEPziqrGLD1U8BOXYTn8nkBORM&callback=initMap&libraries=&v=weekly"
-                      async
-                    ></script> -->
+                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWAVdOUBjiet7Uw2ca-FNdSlON_nV-Rs0&callback=initMap"></script>
                     
                   </div>
                  
@@ -693,6 +739,155 @@ redirect_from:
                           <a href="https://www.opensourcesummit.paris/" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
                         </div>
                       </div>
+
+                      <div  id="e_11"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">7 November 2019 <span style="color: #585A5E;"></span> | London, UK</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">WSO2 Summit London</p>
+                          <h4 class="card-title" style="color: #585A5E;">Ballerina — Cloud-native Middleware as a Programming Language</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Mauro Niewolski</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Senior Solutions Engineer, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://wso2.com/library/summit/2019/11/wso2-integration-summit-london-2019-ballerina-cloud-native-middleware-as-a-programming-language/" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Watch Video</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_10"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">5-7 November 2019 <span style="color: #585A5E;"></span> | Austin, Texas, USA</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">DeveloperWeek Austin</p>
+                          <h4 class="card-title" style="color: #585A5E;">Microservices in Practice with Ballerina, Kubernetes and Istio </h4>
+                          <h5 class="card-title" style="color:#585A5E;">Lakmal Warusawithana</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Senior Director of Developer Relations - CTO Office, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.slideshare.net/BallerinaLang/developerweek-austin-2019-microservices-in-practice-with-ballerina-kubernetes-and-istio" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_09"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">5 November 2019 <span style="color: #585A5E;"></span> | Bern, Switzerland</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">WSO2 Summit Bern</p>
+                          <h4 class="card-title" style="color: #585A5E;">Ballerina — Cloud-native Middleware as a Programming Language </h4>
+                          <h5 class="card-title" style="color:#585A5E;">Paul Fremantle</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">CTO and Co-founder, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.slideshare.net/wso2.org/wso2-integration-summit-bern-2019-ballerina-cloudnative-middleware-as-a-programming-language" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_08"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">5 November 2019 <span style="color: #585A5E;"></span> | Colombo, Sri Lanka</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">Java Colombo Meetup</p>
+                          <h4 class="card-title" style="color: #585A5E;">The better java for Java microservice developers</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Sanjiva Weerawarana</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Founder and CEO, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.youtube.com/watch?v=tZwOl01x8TU" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Watch Video</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_07"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">8-10 October 2019 <span style="color: #585A5E;"></span> | San Jose, California, USA</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">API World</p>
+                          <h4 class="card-title" style="color: #585A5E;">Efficient Microservices Deployment Pipelines</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director of Developer Relations - CTO Office, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://files.devnetwork.cloud/APIWorld/presentations/2019/Anjana_Fernando.pdf" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_06"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">8 October 2019 <span style="color: #585A5E;"></span> | San Francisco, California, USA</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">WSO2 Summit San Francisco</p>
+                          <h4 class="card-title" style="color: #585A5E;">Ballerina — Cloud-native Middleware as a Programming Language</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Sameera Jayasoma</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Senior Director, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://wso2.com/library/summit/2019/10/wso2-integration-summit-sanfrancisco-2019-ballerina-cloud-native-middleware-as-a-programming-language/" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Watch Video</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_05"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">26 September 2019 <span style="color: #585A5E;"></span> | Columbus, USA</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">Columbus Microservices Meetup</p>
+                          <h4 class="card-title" style="color: #585A5E;">Effective Microservices Development with Ballerina</h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director of Developer Relations - CTO Office, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.slideshare.net/lafernando/effective-microservices-development-with-ballerina" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_04"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">26 September 2019 <span style="color: #585A5E;"></span> | Columbus, USA</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">Columbus Microservices Meetup</p>
+                          <h4 class="card-title" style="color: #585A5E;">Ballerina in Real-World Use-Case </h4>
+                          <h5 class="card-title" style="color:#585A5E;">Glenn Donaldson & Jim Kittle</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Ohio State University</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.slideshare.net/secret/AW4Gz2reZ0xNW" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_03"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">24 September 2019 <span style="color: #585A5E;"></span> | New York, USA</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">WSO2 Summit New York</p>
+                          <h4 class="card-title" style="color: #585A5E;">Ballerina - Cloud Native Middleware as a Programming Language </h4>
+                          <h5 class="card-title" style="color:#585A5E;">Lakmal Warusawithana</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Senior Director of Developer Relations - CTO Office, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.slideshare.net/wso2.org/wso2-integration-summit-new-york-2019-ballerina-cloud-native-middleware-as-a-programming-language" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_02"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">9-12 September 2019 <span style="color: #585A5E;"></span> | Las Vegas, Nevada, USA</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">ApacheCon North America 2019</p>
+                          <h4 class="card-title" style="color: #585A5E;">Ballerina - Re-inventing Middleware in a Programming Language </h4>
+                          <h5 class="card-title" style="color:#585A5E;">Paul Fremantle</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">CTO and Co-founder, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.slideshare.net/BallerinaLang/apachecon-na-2019-reinventing-middleware-in-a-programming-language" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
+                        </div>
+                      </div>
+
+                      <div  id="e_01"class="cBoxType1" >
+                        <div class="card-body" style="margin:20px 15px; padding:10px 15px">
+                          <h4 class="card-title" style="color: #20b6b0;">9-12 September 2019 <span style="color: #585A5E;"></span> | Las Vegas, Nevada, USA</h4>
+                          <p class="cPara"style="color: #212a32;font-size: 20px;">ApacheCon North America 2019</p>
+                          <h4 class="card-title" style="color: #585A5E;">Conquering Network Distributed Applications Using the Ballerina Programming Language </h4>
+                          <h5 class="card-title" style="color:#585A5E;">Anjana Fernando</h5>
+                          <p class="card-text cPara" style="color: #585A5E;">Director of Developer Relations - CTO Office, WSO2</p>
+                          <!-- <p class="card-text cPara" style="color:#465867;">The customer onboarding process guarantees that customers begin their journey with WSO2 products successfully.</p> -->
+                          <a href="" target="_blank"><button type="button" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Add to the calender</button></a>
+                          <a href="https://www.slideshare.net/BallerinaLang/apachecon-na-2019-conquering-network-distributed-applications-using-the-ballerina-programming-language" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
+                        </div>
+                      </div>
+
+
+
+
+
+
 
 
 

@@ -165,11 +165,34 @@ line-height: 2px;
     background-color: #ffffff;
     border: none;
     border-radius:0;
-    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    /* box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;  */
     margin-top:20px;
 }
 
+.profileCard{
+    margin: 10px 15px;
+    border:#E6EAEB solid 0.1px ;
+    text-align: left;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 0;
+    box-shadow: 0;
+    box-shadow:none;
+}
 
+.cBoxCard{
+  
+    border:#E6EAEB solid 0.1px ;
+    text-align: left;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 0;
+    box-shadow: 0;
+    margin-bottom: 15px;
+    margin-top:15px;
+    box-shadow:none;
+
+}
 
 
 a.cIconLink {
@@ -262,15 +285,7 @@ a.cBallerina-io-Home-main-com-button {
     
 }
 
-.ctopcards{
-    background-color:#494949;
-    border-radius:0px;
-    border: 0.75px solid white;
-    min-width:210px;
-    margin:12px; 
-    
 
-}
 
 a.cPlayButton {
     background-color: transparent;
@@ -296,6 +311,18 @@ a.cBallerina-io-Home-main-download-button:hover {
     text-align: center;
     margin-bottom: 10px;
     padding-bottom: 30px;
+}
+
+.cardBoxcontribution{
+    font-size: 1em;
+    overflow: hidden;
+    padding: 5;
+    margin-right: 15px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0;
+    margin-bottom: 10px;
 }
 
 .cCard{
@@ -324,7 +351,44 @@ a.cBallerina-io-Home-main-download-button:hover {
     background-color:#464646;
 }
 
+.cBoxType1{
+    margin-top:0px;
+    border-bottom:#E6EAEB solid 0.1px ;
+    text-align: left;
+    overflow: hidden;
+    padding: 5;
+    margin-right: 15px;
+    background-color: #ffffff;
+    border-radius: 0;
+    box-shadow: 0;
+    margin-bottom: 10px;
+    box-shadow:none;
+}
 
+.ctopcards{
+    background-color:#fff;
+    border-radius:0px;
+    border:#E6EAEB solid 0.1px ;
+    min-width:210px;
+    margin:12px; 
+    text-align: center;
+    box-shadow: none;
+
+}
+
+.cBoxType1:hover{
+    background-color: aliceblue;
+}
+
+.example::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbarHide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 /* .cBoxType1{
     right:0;
 }
@@ -390,6 +454,12 @@ button.navbar-toggle {
     min-height: 400px;
 }
 
+.cimageprofile{
+    display: block;
+     margin-left: auto;
+     margin-right: auto;
+     width: 50%;
+}
 .cHomeWhyBallerinaRow > .col-md-4:last-child > .cHomeWhyBallerinaBox {
     padding-right: 0;
 }

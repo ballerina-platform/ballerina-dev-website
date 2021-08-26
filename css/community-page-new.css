@@ -81,10 +81,10 @@ img.cHomePageLogo {
     padding: 0;
 }
 
-ul.b {
+/* ul.b {
     list-style-type: square;
     color: #464646;
-  }
+  } */
 
 .cTopLayer {
     padding-bottom: 60px;
@@ -388,12 +388,13 @@ a.cBallerina-io-Home-main-download-button:hover {
 
 .example::-webkit-scrollbar {
     /* display: none; */
-    scrollbar-width:auto;
+    scrollbar-width:10px;
+
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .scrollbarHide {
-    scrollbar-width: auto;
+    scrollbar-width: 10px;
   /*-ms-overflow-style: none;   IE and Edge */
   /*scrollbar-width: none;   Firefox */
 }

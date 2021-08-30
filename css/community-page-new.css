@@ -382,6 +382,14 @@ a.cBallerina-io-Home-main-download-button:hover {
 
 }
 
+@media screen and (max-width: 774px) {
+    .cCardbody{
+        margin-bottom: 0px !important;
+        padding-bottom: 0px !important;
+    }
+  
+  }
+
 .cBoxType1:hover{
     background-color: aliceblue;
 }
@@ -426,6 +434,9 @@ a.cBallerina-io-Home-main-download-button:hover {
     margin:10px !important; 
     padding: 10px 20px !important;
 }
+.cbtn:hover{
+    background-color:#494949;
+}
 
 .cbtn1{
     background-color:#ffffff;
@@ -436,6 +447,28 @@ a.cBallerina-io-Home-main-download-button:hover {
     border: #20b6b0;
     border-width: 1px;
 }
+
+.cbtn1:hover{
+    color:#494949 !important;
+    border: #494949 solid 1px!important;
+    border-width: 1px !important;
+    border-radius:0px !important;
+}
+
+.cbtn2{
+    background-color:#ffffff;
+    color:#20b6b0;
+    border-radius:0px;
+    margin:30px; 
+    padding: 10px 20px;
+    border: none!important;
+}
+
+.cbtn2:hover{
+    background-color:#494949 !important;
+    
+}
+
 /* 
 .navbar-toggle .icon-bar {
     background-color: #494949;

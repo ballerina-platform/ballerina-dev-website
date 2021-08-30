@@ -1,4 +1,4 @@
-.row.cBallerinaIntroSection {
+/* .row.cBallerinaIntroSection {
     background-color: #494949;
     padding: 20px 0 20px 0;
 }
@@ -17,9 +17,9 @@ a.cMobileLogo {
 
 .row.cBallerinaFeatureSection {
     /* padding: 80px 0; */
-}
 
-.navbar-nav > li > a {
+
+/* .navbar-nav > li > a {
     color: #fff;
 }
 .navbar-nav > li > a:hover {
@@ -28,7 +28,7 @@ a.cMobileLogo {
 
 img.cHomePageLogo {
     width: 330px;
-}
+}  */
 .row.cBallerinaIntroSection h1 {
     color: #ffffff;
 
@@ -74,21 +74,17 @@ img.cHomePageLogo {
     /* width: 240px; */
 }
 
-.linkText{
-    font-size: 20px;
-    color: #20b6b0;
-   
-}
+
 
 .cTopLayer,
 .cBottomLayer {
     padding: 0;
 }
 
-ul.b {
+/* ul.b {
     list-style-type: square;
     color: #464646;
-  }
+  } */
 
 .cTopLayer {
     padding-bottom: 60px;
@@ -169,11 +165,34 @@ line-height: 2px;
     background-color: #ffffff;
     border: none;
     border-radius:0;
-    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    /* box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;  */
     margin-top:20px;
 }
 
+.profileCard{
+    margin: 10px 15px;
+    border:#E6EAEB solid 0.1px ;
+    text-align: left;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 0;
+    box-shadow: 0;
+    box-shadow:none;
+}
 
+.cBoxCard{
+  
+    border:#E6EAEB solid 0.1px ;
+    text-align: left;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 0;
+    box-shadow: 0;
+    margin-bottom: 15px;
+    margin-top:15px;
+    box-shadow:none;
+
+}
 
 
 a.cIconLink {
@@ -191,8 +210,14 @@ a.cIconLink {
 
 a.cIconLink:hover {
     color: #20b6b0;
-    background-image: url("/img/go-bg-home-hover.svg");
-    color: #20b6b0 !important;
+    background-image: url("/img/go-bg-hover-home-grey.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+    color:  #585A5E !important;
+    padding: 10px 0;
+    padding-right: 0px;
+    padding-right: 40px;
+  
 }
 
 .cBallerina-io p.cQuotes {
@@ -266,15 +291,7 @@ a.cBallerina-io-Home-main-com-button {
     
 }
 
-.ctopcards{
-    background-color:#494949;
-    border-radius:0px;
-    border: 0.75px solid white;
-    min-width:210px;
-    margin:12px; 
-    
 
-}
 
 a.cPlayButton {
     background-color: transparent;
@@ -300,6 +317,18 @@ a.cBallerina-io-Home-main-download-button:hover {
     text-align: center;
     margin-bottom: 10px;
     padding-bottom: 30px;
+}
+
+.cardBoxcontribution{
+    font-size: 1em;
+    overflow: hidden;
+    padding: 5;
+    margin-right: 15px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0;
+    margin-bottom: 10px;
 }
 
 .cCard{
@@ -328,7 +357,55 @@ a.cBallerina-io-Home-main-download-button:hover {
     background-color:#464646;
 }
 
+.cBoxType1{
+    margin-top:0px;
+    border-bottom:#E6EAEB solid 0.1px ;
+    text-align: left;
+    overflow: hidden;
+    padding: 5;
+    margin-right: 15px;
+    background-color: #ffffff;
+    border-radius: 0;
+    box-shadow: 0;
+    margin-bottom: 10px;
+    box-shadow:none;
+}
 
+.ctopcards{
+    background-color:#fff;
+    border-radius:0px;
+    border:#E6EAEB solid 0.1px ;
+    min-width:210px;
+    margin:12px; 
+    text-align: center;
+    box-shadow: none;
+
+}
+
+@media screen and (max-width: 774px) {
+    .cCardbody{
+        margin-bottom: 0px !important;
+        padding-bottom: 0px !important;
+    }
+  
+  }
+
+.cBoxType1:hover{
+    background-color: aliceblue;
+}
+
+.example::-webkit-scrollbar {
+    /* display: none; */
+    scrollbar-width:10px;
+
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbarHide {
+    scrollbar-width: 10px;
+  /*-ms-overflow-style: 10px;   IE and Edge */
+  /*scrollbar-width: 10px;   Firefox */
+}
 /* .cBoxType1{
     right:0;
 }
@@ -337,7 +414,9 @@ a.cBallerina-io-Home-main-download-button:hover {
     position: absolute;
     top: 0;
 } */
-
+.fInput{
+    width: 800px;
+}
 
 .cPara{
     font-size: 20px;
@@ -350,10 +429,13 @@ a.cBallerina-io-Home-main-download-button:hover {
 
 .cbtn{
     background-color:#20b6b0;
-    color:white;
+    color: #fff !important;;
     border-radius:0px;
-    margin:30px; 
-    padding: 10px 20px;
+    margin:10px !important; 
+    padding: 10px 20px !important;
+}
+.cbtn:hover{
+    background-color:#494949;
 }
 
 .cbtn1{
@@ -366,6 +448,28 @@ a.cBallerina-io-Home-main-download-button:hover {
     border-width: 1px;
 }
 
+.cbtn1:hover{
+    color:#494949 !important;
+    border: #494949 solid 1px!important;
+    border-width: 1px !important;
+    border-radius:0px !important;
+}
+
+.cbtn2{
+    background-color:#ffffff;
+    color:#20b6b0;
+    border-radius:0px;
+    margin:30px; 
+    padding: 10px 20px;
+    border: none!important;
+}
+
+.cbtn2:hover{
+    background-color:#494949 !important;
+    
+}
+
+/* 
 .navbar-toggle .icon-bar {
     background-color: #494949;
 }
@@ -373,7 +477,7 @@ a.cBallerina-io-Home-main-download-button:hover {
 button.navbar-toggle {
     background-color: #20b6b0 !important;
 }
-
+*/
 .row.cBallerinaIntroSection .cBallerina-io-Home-main-download-button:hover p {
     color: #494949;
 }
@@ -392,6 +496,12 @@ button.navbar-toggle {
     min-height: 400px;
 }
 
+.cimageprofile{
+    display: block;
+     margin-left: auto;
+     margin-right: auto;
+     width: 50%;
+}
 .cHomeWhyBallerinaRow > .col-md-4:last-child > .cHomeWhyBallerinaBox {
     padding-right: 0;
 }
@@ -439,7 +549,7 @@ a.cPlayGround:hover {
 .row.cVideoSection p {
     color: #000 !important;
     font-family: inherit;
-}
+} 
 .row.cVideoSection h2 {
     border-bottom: 2px solid #fff !important;
 }
@@ -463,8 +573,10 @@ a.cPlayGround:hover {
     outline: 0;
 }
 .modal-body {
-    background-color: #000;
+    background-color: #fff;
+    width: 100%;
 }
+
 .modal-backdrop.show {
     opacity: 0.8;
 }
@@ -498,22 +610,26 @@ a.cPlayGround:hover {
 
 .linkText{
     color: #20b6b0;
-    font-weight:500;
+    font-weight:400;
+    font-size: 16px;
 }
 
 .linkText:hover{
     color: #ffffff !important;
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .linkText1{
     color: #20b6b0;
-    font-weight:500;
+    font-weight:400;
+    font-size: 16px;
 }
 
 .linkText1:hover{
     color:#464646 !important;
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 a.video-btn img {
@@ -529,6 +645,9 @@ a.video-btn:hover img {
     .cBottomLayer ul li {
         margin-right: 0;
         margin-left: 30px;
+    }
+    .fInput{
+        width: 600px !important;
     }
 }
 
@@ -557,6 +676,10 @@ a.video-btn:hover img {
         background-color: #494949;
         padding: 80px 0 60px 0;
     }
+
+    .fInput{
+        width: 500px !important;
+    }
 }
 
 @media screen and (max-width: 744px) {
@@ -580,12 +703,19 @@ a.video-btn:hover img {
     .cBallerina-io-Home-main-download-button.cPlayButton {
         margin-right: 0;
     }
+    .fInput{
+        width: 400px !important;
+    }
 }
 
 @media screen and (max-width: 440px) {
     .cBottomLayer ul li {
         margin-left: 0;
         margin-right: 0;
+    }
+
+    .fInput{
+        width: 180px !important;
     }
 }
 

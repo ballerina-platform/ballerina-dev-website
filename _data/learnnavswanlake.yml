@@ -1,31 +1,3 @@
-
-#- title: Getting Started
-  #url: /learn/user-guide/getting-started/
-  #active: getting-started
-
-- title: Why Ballerina 
-  url: '#'
-  sublinks:
-    - title: Cloud Native
-      url: /learn/user-guide/why-ballerina/cloud-native/
-      active: cloud-native
-    - title: Flexibly Typed
-      url: /learn/user-guide/why-ballerina/flexibly-typed/
-      active: flexibly-typed
-    - title: Data Oriented
-      url: /learn/user-guide/why-ballerina/data-oriented/
-      active: data-oriented
-    - title: Graphical
-      url: /learn/user-guide/why-ballerina/graphical/
-      active: graphical
-    - title: Concurrent
-      url: /learn/user-guide/why-ballerina/concurrent/
-      active: concurrent
-    - title: Reliable, Maintainable
-      url: /learn/user-guide/why-ballerina/reliable-maintainable/
-      active: reliable-and-maintainable
-
-
 - title: Getting Started 
   url: '#'
   sublinks:
@@ -45,7 +17,7 @@
 - title: Ballerina Packages
   url: '#'
   sublinks:
-    - title: Creating your first Ballerina Package
+    - title: Creating Your First Ballerina Package
       url: /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/
       active: creating-your-first-ballerina-package
     - title: Package Layout
@@ -57,7 +29,7 @@
     - title: Dependencies
       url: /learn/user-guide/ballerina-packages/dependencies/
       active: dependencies
-    - title: Sharing a Library package
+    - title: Sharing a Library Package
       url: /learn/user-guide/ballerina-packages/sharing-a-library-package/
       active: sharing-a-library-package
 
@@ -70,6 +42,9 @@
     - title: Writing Tests
       url: /learn/user-guide/testing-ballerina-code/writing-tests
       active: writing-tests
+    - title: Testing Services and Clients
+      url: /learn/user-guide/testing-ballerina-code/testing-services-and-clients
+      active: testing-services-and-clients
     - title: Mocking
       url: /learn/user-guide/testing-ballerina-code/mocking
       active: mocking
@@ -77,25 +52,66 @@
       url: /learn/user-guide/testing-ballerina-code/executing-tests
       active: executing-tests
 
-- title: Code Organization 
+- title: Generating Code Documentation
   url: '#'
   sublinks:
     - title: Documenting Ballerina Code
-      url: /learn/user-guide/documenting-ballerina-code/
+      url: /learn/user-guide/code-organization/documenting-ballerina-code/
       active: documenting-ballerina-code
+
+- title: Style Guide
+  url: '#'
+  sublinks:
     - title: Coding Conventions
-      url: /learn/user-guide/coding-conventions/
+      url: /learn/user-guide/style-guide/coding-conventions/
       active: coding-conventions
+    - title: Top-Level Definitions
+      url: /learn/user-guide/style-guide/coding-conventions/top-level-definitions/
+      active: top-level-definitions
+    - title: Operators, Keywords, and Types
+      url: /learn/user-guide/style-guide/coding-conventions/operators-keywords-and-types/
+      active: operators-keywords-and-types
+    - title: Statements
+      url: /learn/user-guide/style-guide/coding-conventions/statements/
+      active: statements
+    - title: Expressions
+      url: /learn/user-guide/style-guide/coding-conventions/expressions/
+      active: expressions
+    - title: Annotations, Documentation, and Comments
+      url: /learn/user-guide/style-guide/coding-conventions/annotations-documentation-and-comments/
+      active: annotations-documentation-and-comments
 
 - title: Network Communication
   url: '#' 
   sublinks:
     - title: HTTP
       url: /learn/user-guide/network-communication/http/
-      active: http
+      active: http 
+      sublinks:
+        - title: HTTP Clients
+          url: /learn/user-guide/network-communication/http/http-clients/
+          active: http-clients
+        - title: HTTP Services
+          url: /learn/user-guide/network-communication/http/http-services/
+          active: http-services
     - title: gRPC
-      url: /learn/user-guide/network-communication/grpc/
-      active: grpc
+      url: '#' 
+      sublinks:
+        - title: Defining the Interface of the Service
+          url: /learn/user-guide/network-communication/grpc/defining-the-service-interface/
+          active: defining-the-service-interface
+        - title: Implementing gRPC Services and Clients
+          url: '#'
+          sublinks:
+            - title: Implementing gRPC Services 
+              url: /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-services/
+              active: implementing-grpc-services
+            - title: Implementing gRPC Clients
+              url: /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-clients/
+              active: implementing-grpc-clients
+        - title: Performing gRPC Streaming
+          url: /learn/user-guide/network-communication/grpc/performing-grpc-streaming/
+          active: performing-grpc-streaming
     - title: WebSocket
       url: /learn/user-guide/network-communication/websocket/
       active: websocket
@@ -127,14 +143,17 @@
   url: '#' 
   sublinks:
     - title: Observing Ballerina Code
-      url: /learn/user-guide/observing-ballerina-code
+      url: /learn/user-guide/observability/observing-ballerina-code
       active: observing-ballerina-code
+    - title: Observing Ballerina Services Through Choreo
+      url: /learn/user-guide/observability/observing-ballerina-services-through-choreo
+      active: observing-ballerina-services-through-choreo
 
 - title: Interoperability
   url: '#' 
   sublinks:
     - title: Calling Java Code from Ballerina
-      url: /learn/user-guide/calling-java-code-from-ballerina/
+      url: /learn/user-guide/interoperability/calling-java-code-from-ballerina/
       active: calling-java-code-from-ballerina
 
 - title: Configurability
@@ -143,9 +162,9 @@
     - title: Defining Configurable Variables
       url: /learn/user-guide/configurability/defining-configurable-variables/
       active: defining-configurable-variables
-    - title: Supplying Values to Configurable Variables
-      url: /learn/user-guide/configurability/supplying-values-to-configurable-variables/
-      active: supplying-values-to-configurable-variables
+    - title: Providing Values to Configurable Variables
+      url: /learn/user-guide/configurability/providing-values-to-configurable-variables/
+      active: providing-values-to-configurable-variables
     - title: Trying it Out
       url: /learn/user-guide/configurability/trying-it-out/
       active: trying-it-out
@@ -165,17 +184,4 @@
   #sublinks:
     #- title: Extending with Compiler Extensions 
       #url: /swan-lake/learn/extending-with-compiler-extensions
-      #active: extending-with-compiler-extensions
-      
- 
-
-
-   
-
-      
-
-
-
-
-
-
+      #active: extending-with-compiler-extensions     

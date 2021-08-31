@@ -11,7 +11,9 @@
       <div class="row cBallerina-io-Gray-row">
          <div class="container">
             <div class="row">
-               <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-Home-Middle-col">
+               <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-Home-Middle-col cLeftNavSticky">
+                  {% include side-nav-menu-button.html %}
+
                   {% include left-nav-release-notes.html %}
                </div>
                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 cBallerina-io-Home-Middle-col">
@@ -66,13 +68,23 @@
             $('[data-button="iGitWatchText"]').replaceWith(gitwatch);
          
          });
+    
+         $allHeaders= $(":header"); //Select all header elements such as h1 h2 h3 h4 h5 h6
+         $allHeaders.each(function(){
+            var link = $(this).attr('id');
          
+            var permLink = " <a class=\"permalink\" href=\"#"+link+"\"></a>";
+            if(link){
+               $(this).addClass('permalinkHeader').prepend(permLink) 
+            } 
+         });
+     
      </script>
      <script src="/js/ballerina-leftnav.js"></script>
 
 
 
-     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
      <script src="/js/abixTreeList.min.js"></script>
      <script>
          $(document).ready(function() {

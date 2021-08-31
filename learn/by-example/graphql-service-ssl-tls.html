@@ -15,7 +15,7 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">graphql</span><span class="p">;</span>
 
 <span class="c1">// A GraphQL listener can be configured to communicate through HTTPS as well.</span>
-<span class="c1">// To secure an listener using HTTPS, the listener needs to be configured with</span>
+<span class="c1">// To secure a listener using HTTPS, the listener needs to be configured with</span>
 <span class="c1">// a certificate file and a private key file for the listener.</span>
 <span class="c1">// The [`graphql:ListenerSecureSocket`](https://docs.central.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket) record</span>
 <span class="c1">// provides the SSL-related listener configurations of the listener.</span>
@@ -54,14 +54,14 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="graphql-input-types.html">
+                                    <a class="prev" href="graphql-input-types.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
                                         <p>Input Types</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="graphql-service-mutual-ssl.html">
+                                    <a class="next" href="graphql-service-mutual-ssl.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
                                         <p>Service - Mutual SSL</p>
                                     </a>
@@ -74,9 +74,9 @@ redirect_from:
             </div>
             <div class="example" id="graphql-service-ssl-tls">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
-                    <table class="cTopControlsContainer">
-                        <tr>
-                            <td class="cLeftTD">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -88,46 +88,30 @@ redirect_from:
                                         
                                     </ul>
                                 </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+                            </div> 
+                        </div>
+                    </div>
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/graphql;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>listener graphql:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -138,13 +122,13 @@ redirect_from:
 );
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>A GraphQL listener can be configured to communicate through HTTPS as well.
- To secure an listener using HTTPS, the listener needs to be configured with
+ To secure a listener using HTTPS, the listener needs to be configured with
  a certificate file and a private key file for the listener.
  The <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket"><code>graphql:ListenerSecureSocket</code></a> record
  provides the SSL-related listener configurations of the listener.</p>
@@ -152,12 +136,12 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>service /graphql on securedEP {
     resource function get greeting() returns string {
         return &quot;Hello, World!&quot;;
@@ -165,52 +149,18 @@ redirect_from:
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the `.bal` file,
-# and execute the `bal run` command below.
-# (You may need to change the certificate file path and private key file path.)
-bal run graphql_service_ssl_tls.bal
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

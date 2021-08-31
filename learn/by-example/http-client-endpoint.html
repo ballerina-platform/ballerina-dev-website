@@ -16,58 +16,31 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
 <span class="c1">// Creates a new client with the backend URL.</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://postman-echo.com&quot;</span><span class="p">);</span>
+<span class="nx">final</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://postman-echo.com&quot;</span><span class="p">);</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;GET request:&quot;</span><span class="p">);</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Sends a `GET` request to the specified endpoint.</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get?test=123&quot;</span><span class="p">);</span>
-    <span class="c1">// Handles the response.</span>
-    <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nPOST request:&quot;</span><span class="p">);</span>
-    <span class="c1">// Sends a `POST` request to the specified endpoint.</span>
-    <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/post&quot;</span><span class="p">,</span> <span class="s">&quot;POST: Hello World&quot;</span><span class="p">);</span>
-    <span class="c1">// Handles the response.</span>
-    <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nUse custom HTTP verbs:&quot;</span><span class="p">);</span>
-    <span class="c1">// Uses the `execute()` remote function for custom HTTP verbs.</span>
-    <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;COPY&quot;</span><span class="p">,</span> <span class="s">&quot;/get&quot;</span><span class="p">,</span> <span class="s">&quot;CUSTOM: Hello World&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;GET request:&quot;</span><span class="p">);</span>
+    <span class="kt">json</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get?test=123&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
 
     <span class="c1">// The `get()`, `head()`, and `options()` have the optional headers parameter to send out headers,</span>
-    <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get&quot;</span><span class="p">,</span>
-                            <span class="p">{</span><span class="s">&quot;Sample-Name&quot;</span><span class="p">:</span> <span class="s">&quot;http-client-connector&quot;</span><span class="p">});</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nGET request with Headers:&quot;</span><span class="p">);</span>
+    <span class="nx">resp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get&quot;</span><span class="p">,</span>
+            <span class="p">{</span><span class="s">&quot;Sample-Name&quot;</span><span class="p">:</span> <span class="s">&quot;http-client-connector&quot;</span><span class="p">});</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// [Get the content type](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getContentType) from the response.</span>
-        <span class="kt">string</span> <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">();</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Content-Type: &quot;</span> <span class="o">+</span> <span class="nx">contentType</span><span class="p">);</span>
+    <span class="c1">// Sends a `POST` request to the specified endpoint.</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nPOST request:&quot;</span><span class="p">);</span>
+    <span class="nx">resp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/post&quot;</span><span class="p">,</span> <span class="s">&quot;POST: Hello World&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
 
-        <span class="kt">int</span> <span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">;</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Status code: &quot;</span> <span class="o">+</span> <span class="nx">statusCode</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="c1">// Uses the `execute()` remote function for custom HTTP verbs.</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nUse custom HTTP verbs:&quot;</span><span class="p">);</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span>
+                        <span class="s">&quot;COPY&quot;</span><span class="p">,</span> <span class="s">&quot;/get&quot;</span><span class="p">,</span> <span class="s">&quot;CUSTOM: Hello World&quot;</span><span class="p">);</span>
 
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span>
-                            <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">//The below function handles the response received from the remote HTTP endpoint.</span>
-<span class="kd">function</span> <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// [Get the JSON payload](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getJsonPayload) from the response.</span>
-        <span class="k">var</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// Prints the received `JSON` response.</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Invalid payload received:&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span>
-                            <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Status code: &quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -88,16 +61,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="http-different-payload-types.html">
+                                    <a class="prev" href="http-restrict-by-media-type.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
-                                        <p>Handling Different Payload Types</p>
+                                        <p>Restrict By Media Type</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="http-cors.html">
+                                    <a class="next" href="http-client-data-binding.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
-                                        <p>CORS</p>
+                                        <p>Client Data Binding</p>
                                     </a>
                                 </div>
                                 
@@ -108,9 +81,9 @@ redirect_from:
             </div>
             <div class="example" id="http-client-endpoint">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
-                    <table class="cTopControlsContainer">
-                        <tr>
-                            <td class="cLeftTD">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -121,87 +94,41 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=9b1e8ff8a3d5337b1d2d7fa7929e2b34&file=http_client_endpoint.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ee29e0e01655f1cda1711a4c88807d8e&file=http_client_endpoint.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
                                 </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+                            </div> 
+                        </div>
+                    </div>
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
 import ballerina/io;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Client clientEndpoint = check new (&quot;http://postman-echo.com&quot;);
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>final http:Client clientEndpoint = check new (&quot;http://postman-echo.com&quot;);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -210,30 +137,31 @@ import ballerina/io;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
-    io:println(&quot;GET request:&quot;);
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    http:Response|error response = clientEndpoint-&gt;get(&quot;/get?test=123&quot;);
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;GET request:&quot;);
+    json resp = check clientEndpoint-&gt;get(&quot;/get?test=123&quot;);
+    io:println(resp.toJsonString());
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -242,118 +170,20 @@ import ballerina/io;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    handleResponse(response);
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nGET request with Headers:&quot;);
+    resp = check clientEndpoint-&gt;get(&quot;/get&quot;,
+            {&quot;Sample-Name&quot;: &quot;http-client-connector&quot;});
+    io:println(resp.toJsonString());
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Handles the response.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nPOST request:&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    response = clientEndpoint-&gt;post(&quot;/post&quot;, &quot;POST: Hello World&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Sends a <code>POST</code> request to the specified endpoint.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    handleResponse(response);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Handles the response.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nUse custom HTTP verbs:&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    response = clientEndpoint-&gt;execute(&quot;COPY&quot;, &quot;/get&quot;, &quot;CUSTOM: Hello World&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Uses the <code>execute()</code> remote function for custom HTTP verbs.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    response = clientEndpoint-&gt;get(&quot;/get&quot;,
-                            {&quot;Sample-Name&quot;: &quot;http-client-connector&quot;});
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -362,212 +192,130 @@ import ballerina/io;
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    if (response is http:Response) {
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nPOST request:&quot;);
+    resp = check clientEndpoint-&gt;post(&quot;/post&quot;, &quot;POST: Hello World&quot;);
+    io:println(resp.toJsonString());
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        string contentType = response.getContentType();
-        io:println(&quot;Content-Type: &quot; + contentType);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getContentType">Get the content type</a> from the response.</p>
+                                            <p>Sends a <code>POST</code> request to the specified endpoint.</p>
 
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        int statusCode = response.statusCode;
-        io:println(&quot;Status code: &quot; + statusCode.toString());
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;\nUse custom HTTP verbs:&quot;);
+    http:Response response = check clientEndpoint-&gt;execute(
+                        &quot;COPY&quot;, &quot;/get&quot;, &quot;CUSTOM: Hello World&quot;);
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Uses the <code>execute()</code> remote function for custom HTTP verbs.</p>
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    } else {
-        io:println(&quot;Error when calling the backend: &quot;,
-                            response.message());
-    }
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Status code: &quot; + response.statusCode.toString());
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function handleResponse(http:Response|error response) {
-    if (response is http:Response) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The below function handles the response received from the remote HTTP endpoint.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        var msg = response.getJsonPayload();
-        if (msg is json) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p><a href="https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getJsonPayload">Get the JSON payload</a> from the response.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>            io:println(msg.toJsonString());
-        } else {
-            io:println(&quot;Invalid payload received:&quot;, msg.message());
-        }
-    } else {
-        io:println(&quot;Error when calling the backend: &quot;,
-                            response.message());
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Prints the received <code>JSON</code> response.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `bal run` command below.
-bal run http_client_endpoint.bal
+                                <div class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>bal run http_client_endpoint.bal
 GET request:
-{&quot;args&quot;:{&quot;test&quot;:&quot;123&quot;}, &quot;headers&quot;:{&quot;x-forwarded-proto&quot;:&quot;http&quot;, &quot;x-forwarded-port&quot;:&quot;80&quot;, &quot;host&quot;:&quot;postman-echo.com&quot;, &quot;x-amzn-trace-id&quot;:&quot;Root=1-5f6acc0b-5f17f7991ebad5eb7f01c723&quot;, &quot;user-agent&quot;:&quot;ballerina&quot;}, &quot;url&quot;:&quot;http://postman-echo.com/get?test=123&quot;}
+{&quot;args&quot;:{&quot;test&quot;:&quot;123&quot;}, &quot;headers&quot;:{&quot;x-forwarded-proto&quot;:&quot;http&quot;, &quot;x-forwarded-port&quot;:&quot;80&quot;, &quot;host&quot;:&quot;postman-echo.com&quot;, &quot;x-amzn-trace-id&quot;:&quot;Root=1-60b723e3-2cec8477340e121571a5df88&quot;, &quot;user-agent&quot;:&quot;ballerina&quot;}, &quot;url&quot;:&quot;http://postman-echo.com/get?test=123&quot;}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <div class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>GET request with Headers:
+{&quot;args&quot;:{}, &quot;headers&quot;:{&quot;x-forwarded-proto&quot;:&quot;http&quot;, &quot;x-forwarded-port&quot;:&quot;80&quot;, &quot;host&quot;:&quot;postman-echo.com&quot;, &quot;x-amzn-trace-id&quot;:&quot;Root=1-60b723e6-124af9746490533b1a560cca&quot;, &quot;sample-name&quot;:&quot;http-client-connector&quot;, &quot;user-agent&quot;:&quot;ballerina&quot;}, &quot;url&quot;:&quot;http://postman-echo.com/get&quot;}
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR cOutputTr">
+
+                                <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>POST request:
-{&quot;args&quot;:{}, &quot;data&quot;:&quot;POST: Hello World&quot;, &quot;files&quot;:{}, &quot;form&quot;:{}, &quot;headers&quot;:{&quot;x-forwarded-proto&quot;:&quot;http&quot;, &quot;x-forwarded-port&quot;:&quot;80&quot;, &quot;host&quot;:&quot;postman-echo.com&quot;, &quot;x-amzn-trace-id&quot;:&quot;Root=1-5f6acc0b-f81ed9556fbed9f17ee221b9&quot;, &quot;content-length&quot;:&quot;17&quot;, &quot;content-type&quot;:&quot;text/plain&quot;, &quot;user-agent&quot;:&quot;ballerina&quot;}, &quot;json&quot;:null, &quot;url&quot;:&quot;http://postman-echo.com/post&quot;}
+{&quot;args&quot;:{}, &quot;data&quot;:&quot;POST: Hello World&quot;, &quot;files&quot;:{}, &quot;form&quot;:{}, &quot;headers&quot;:{&quot;x-forwarded-proto&quot;:&quot;http&quot;, &quot;x-forwarded-port&quot;:&quot;80&quot;, &quot;host&quot;:&quot;postman-echo.com&quot;, &quot;x-amzn-trace-id&quot;:&quot;Root=1-60b723e6-60ad459c47889ca53a89df90&quot;, &quot;content-length&quot;:&quot;17&quot;, &quot;content-type&quot;:&quot;text/plain&quot;, &quot;user-agent&quot;:&quot;ballerina&quot;}, &quot;json&quot;:null, &quot;url&quot;:&quot;http://postman-echo.com/post&quot;}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Use custom HTTP verbs:
-Content-Type: application/json; charset=utf-8
-Status code: 200
+Status code: 404
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

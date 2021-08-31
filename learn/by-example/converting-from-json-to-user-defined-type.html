@@ -22,9 +22,9 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">json</span> <span class="nx">j</span> <span class="p">=</span> <span class="p">{</span><span class="nx">x</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nx">y</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">};</span>
 
-    <span class="c1">// With mutable values, would not be type-safe to allow a cast.</span>
-    <span class="c1">// Cast to T will work on mutable structure s only if inherent type </span>
-    <span class="c1">// of s is subtype of T.</span>
+    <span class="c1">// With mutable values, it would not be type-safe to allow a cast.</span>
+    <span class="c1">// Cast to `T` will work on the mutable structure `s` only if the inherent type</span>
+    <span class="c1">// of `s` is a subtype of `T`.</span>
     <span class="c1">// Casting of immutable value will work.</span>
     <span class="kt">json</span> <span class="nx">k</span> <span class="p">=</span> <span class="nx">j</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
     <span class="nx">Coord</span> <span class="nx">c</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Coord</span><span class="p">&gt;</span> <span class="nx">k</span><span class="p">;</span>
@@ -42,10 +42,10 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Converting From JSON to User-Defined Type</h2>
                             <p><p>With mutable values, would not be type-safe to allow a cast.
- Mutable structures have inherent type that limits mutation.
- Cast to T will work on mutable structure s only if inherent type
- of s is subtype of T.
- Casting of immutable value will work, but does not do numeric conversions.</p>
+ Mutable structures have the <code>inherent</code> type that limits mutation.
+ Cast to <code>T</code> will work on mutable structure <code>s</code> only if the <code>inherent</code> type
+ of <code>s</code> is a subtype of <code>T</code>.
+ Casting of immutable value will work but it does not do numeric conversions.</p>
 </p>
 
                         </td>
@@ -53,14 +53,14 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="converting-from-user-defined-type-to-json.html">
+                                    <a class="prev" href="converting-from-user-defined-type-to-json.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
                                         <p>Converting From User-Defined Type to JSON</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="converting-to-user-defined-type.html">
+                                    <a class="next" href="converting-to-user-defined-type.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
                                         <p>Converting to User-Defined Type</p>
                                     </a>
@@ -73,9 +73,9 @@ redirect_from:
             </div>
             <div class="example" id="converting-from-json-to-user-defined-type">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
-                    <table class="cTopControlsContainer">
-                        <tr>
-                            <td class="cLeftTD">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -86,155 +86,124 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=bf680ec48744aef086846f61afd1ac1d&file=converting_from_json_to_user_defined_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=548c734675ce30b58cdb1206aa2cdf3e&file=converting_from_json_to_user_defined_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
                                 </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+                            </div> 
+                        </div>
+                    </div>
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type Coord record {
     float x;
     float y;
 };
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
     json j = {x: 1.0, y: 2.0};
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    json k = j.cloneReadOnly();
     Coord c = &lt;Coord&gt; k;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>With mutable values, would not be type-safe to allow a cast.
- Cast to T will work on mutable structure s only if inherent type
- of s is subtype of T.
+                                            <p>With mutable values, it would not be type-safe to allow a cast.
+ Cast to <code>T</code> will work on the mutable structure <code>s</code> only if the inherent type
+ of <code>s</code> is a subtype of <code>T</code>.
  Casting of immutable value will work.</p>
 
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(c.x);
     io:println(c.y);
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run converting_from_json_to_user_defined_type.bal
 1.0
 2.0
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

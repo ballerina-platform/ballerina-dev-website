@@ -1,0 +1,112 @@
+- title: Why Ballerina
+  url: #
+  sublinks:
+    - title: Cloud Native
+      url: /learn/why-ballerina/cloud-native/
+      active: cloud-native
+    - title: Flexibly Typed
+      url: /learn/why-ballerina/flexibly-typed/
+      active: flexibly-typed
+    - title: Data Oriented
+      url: /learn/why-ballerina/data-oriented/
+      active: data-oriented
+    - title: Graphical
+      url: /learn/why-ballerina/graphical/
+      active: graphical
+    - title: Concurrent
+      url: /learn/why-ballerina/concurrent/
+      active: Concurrent
+    - title: Reliable, Maintainable
+      url: /learn/why-ballerina/reliable-maintainable/
+      active: reliable-maintainable
+
+- title: Organizing Ballerina Code
+  url: #
+  sublinks:
+    - title: Package Layout
+      url: /learn/organizing-ballerina-code/package-layout/
+      active: package-layout
+    - title: Modules
+      url: /learn/organizing-ballerina-code/modules/
+      active: modules
+
+- title: Testing Ballerina Code
+  url: #
+  sublinks:
+    - title: Testing Quick Start
+      url: /learn/testing-ballerina-code/testing-quick-start/
+      active: testing-quick-start
+    - title: Writing Tests
+      url: /learn/testing-ballerina-code/writing-tests/
+      active: writing-tests
+    - title: Testing Services and Clients
+      url: /learn/testing-ballerina-code/testing-services-and-clients/
+      active: testing-services-and-clients
+    - title: Mocking
+      url: /learn/testing-ballerina-code/mocking/
+      active: mocking
+    - title: Executing Tests
+      url: /learn/testing-ballerina-code/executing-tests/
+      active: executing-tests
+
+- title: Generating Code Documentation
+  url: /learn/generating-code-documentation
+  active: generating-code-documentation
+
+- title: Making Ballerina Programs Configurable
+  url: #
+  sublinks:
+    - title: Defining Configurable Variables
+      url: /learn/making-ballerina-programs-configurable/defining-configurable-variables/
+      active: defining-configurable-variables
+    - title: Providing Values to Configurable Variables
+      url: /learn/making-ballerina-programs-configurable/providing-values-to-configurable-variables/
+      active: providing-values-to-configurable-variables
+    - title: Trying Out Configurability
+      url: /learn/making-ballerina-programs-configurable/trying-it-out/
+      active: trying-it-out
+
+- title: Observing Ballerina Programs
+  url: #
+  sublinks:
+    - title: Observing Your Application with Prometheus, Grafana, and Jaeger
+      url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/
+      active: observing-your-application-with-prometheus-grafana-and-jaeger
+    - title: Observing Your Application with Choreo
+      url: /learn/observing-ballerina-programs/observing-your-application-with-choreo/
+      active: observing-your-application-with-choreo
+
+- title: Running Ballerina Programs in the Cloud
+  url: #
+  sublinks:
+    - title: Code to Cloud
+      url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/
+      active: code-to-cloud
+      sublinks:
+        - title: Code to Cloud Samples
+          url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-samples
+          active: code-to-cloud-samples
+    - title: Function as a Service (FaaS) with Ballerina
+      url: #
+      sublinks:
+        - title: AWS Lambda
+          url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
+          active: aws-lambda
+        - title: Azure Functions
+          url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
+          active: azure-functions
+
+- title: Managing Dependencies 
+  url: #
+  sublinks:
+    - title: Declaring Dependencies
+      url: /learn/managing-dependencies/
+      active: managing-dependencies
+
+- title: Publishing packages to Ballerina Central
+  url: /learn/publishing-packages-to-ballerina-central/
+  active: publishing-packages-to-ballerina-central
+
+- title: Calling Java Code from Ballerina and Vice Versa
+  url: /learn/calling-java-code-from-ballerina-and-vice-versa/
+  active: calling-java-code-from-ballerina-and-vice-versa

@@ -51,7 +51,7 @@ public function apigwRequest(awslambda:Context ctx, awslambda:APIGatewayProxyReq
 }
 ```
 
-The first parameter with the [awslambda:Context](/1.2/learn/api-docs/ballerina/awslambda/objects/Context.html) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
+The first parameter with the [awslambda:Context](https://docs.central.ballerina.io/ballerinax/awslambda/1.0.0/classes/Context) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
 
 The second parameter contains the input request data. This input value will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). 
 
@@ -130,3 +130,5 @@ $ cat response.txt
 ## What's Next?
 
 For more information on how to connect external event sources such as Amazon DynamoDB and Amazon S3 to Lambda Functions, go to [AWS Lambda event source mapping documentation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html).
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

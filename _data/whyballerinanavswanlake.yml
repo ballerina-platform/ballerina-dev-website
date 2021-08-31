@@ -1,0 +1,24 @@
+
+- title: Cloud Native
+  url: /learn/why-ballerina/cloud-native/
+  active: cloud-native
+
+- title: Flexibly Typed
+  url: /learn/why-ballerina/flexibly-typed/
+  active: flexibly-typed
+
+- title: Data Oriented
+  url: /learn/why-ballerina/data-oriented/
+  active: data-oriented
+
+- title: Graphical
+  url: /learn/why-ballerina/graphical/ 
+  active: graphical
+
+- title: Concurrent
+  url: /learn/why-ballerina/concurrent/ 
+  active: concurrent
+
+- title: Reliable, Maintainable
+  url: /learn/why-ballerina/reliable-maintainable/ 
+  active: reliable-maintainable 

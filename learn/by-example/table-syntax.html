@@ -31,6 +31,7 @@ redirect_from:
     <span class="nx">foreach</span> <span class="nx">Employee</span> <span class="nx">e</span> <span class="nx">in</span> <span class="nx">t</span> <span class="p">{</span>
         <span class="nx">e</span><span class="p">.</span><span class="nx">salary</span> <span class="o">+=</span> <span class="nx">n</span><span class="p">;</span>
     <span class="p">}</span>
+
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
@@ -49,10 +50,21 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Table Syntax</h2>
-                            <p><p>A <code>record</code> field can be declared as <code>readonly</code>: cannot assign to the field after the record is created.
- <code>table</code> type gives type of row and name of key field. <code>table constructor expression</code> looks like an
- <code>array constructor</code>. <code>foreach</code> statement will iterate over a table&rsquo;s rows in order. Use <code>t[k]</code>
- to access a row using its key.</p>
+                            <p><p>A <code>table</code> is a collection of records. Each <code>record</code> represents a row of the <code>table</code>.
+ A <code>table</code> is plain data if and only if its rows are plain data. A <code>table</code> maintains an invariant
+ that each row is uniquely identified by a key. Each row’s key is stored in fields, which
+ must be immutable. <br/><br/>
+ Compared to maps,
+ <ul>
+ <li>key is part of the value rather than being separate.</li>
+ <li>The type of the key is not restricted to <code>string</code>.</li>
+ <li>The order of the members is preserved.</li>
+ </ul>
+ <br/><br/>
+ <p>A <code>record</code> field can be declared as <code>readonly</code>. A value cannot be assigned to such a field
+ after the record is created. The <code>table</code> type gives the type of the row and the name of the key field.
+ The <code>table constructor expression</code> looks like an <code>array constructor</code>. The <code>foreach</code> statement will
+ iterate over a table&rsquo;s rows in their order. Use <code>t[k]</code> to access a row using its key.</p></p>
 </p>
 
                         </td>
@@ -60,14 +72,14 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="limit-clause.html">
+                                    <a class="prev" href="limit-clause.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
                                         <p>Limit Clause</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="multiple-key-fields.html">
+                                    <a class="next" href="multiple-key-fields.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
                                         <p>Multiple Key Fields</p>
                                     </a>
@@ -80,9 +92,9 @@ redirect_from:
             </div>
             <div class="example" id="table-syntax">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
-                    <table class="cTopControlsContainer">
-                        <tr>
-                            <td class="cLeftTD">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -93,84 +105,58 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=96548d74e7064a49ab85cce0d0e606af&file=table_syntax.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=cc986dd23a3261a39c0a16cfe529ba45&file=table_syntax.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
                                 </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+                            </div> 
+                        </div>
+                    </div>
+              
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type Employee record {
     readonly string name;
     int salary;
 };
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>table&lt;Employee&gt; key(name) t = table [
     { name: &quot;John&quot;, salary: 100 },
     { name: &quot;Jane&quot;, salary: 200 }
 ];
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -180,32 +166,31 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function increaseSalary(int n) {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    foreach Employee e in t {
         e.salary += n;
     }
-}
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -214,29 +199,41 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>}
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    Employee? e = t[&quot;Fred&quot;];
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -245,60 +242,49 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    increaseSalary(100);
     io:println(t);
 }
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run table_syntax.bal
 [{&quot;name&quot;:&quot;John&quot;,&quot;salary&quot;:200},{&quot;name&quot;:&quot;Jane&quot;,&quot;salary&quot;:300}]
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

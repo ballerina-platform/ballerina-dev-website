@@ -9,11 +9,12 @@ Except as detailed below, the content on this website is licensed under the [Cre
 ## What is not licensed?
 We say "nearly everything" as there are a few simple conditions that apply.
 
-Ballerina's trademarks and other brand features are not included in this license. If you're looking to understand if and how you can use the Ballerina brand in a project, you've come to the right place. After reading through this site, if you still have questions, please fill out and submit a formal request form.
+If you’re looking to understand if and how you can use the Ballerina brand in a project, you’ve come to the right place. Please note that the user experience with all our products should never be altered. After reading through this site, if you still have questions, [contact us](/community/#report-issues).  
 
-All of our brand features are protected by applicable trademark, copyright and other intellectual property laws. If you would like to use any of our brand features on your website, in an ad, in an article or book, or reproduce them anywhere else, or in any other medium, you'll need to receive permission from Ballerina first. And please note that the user experience with all our products should never be altered.
+All of our brand features are protected by the applicable trademark, copyright and other intellectual property laws. However, Ballerina’s trademarks and other brand features are not included in this license. For information on usage of trademarks relating to the Ballerina project please go through our [trademark usage policy](/trademark-usage-policy/).
 
 In some cases, a page may include content consisting of images, audio or video material, or a link to content on a different webpage (such as videos or slide decks). This content is not covered by the license, unless specifically noted.
+
 
 ## Attribution
 Proper attribution is required when you reuse or create modified versions of content that appears on a page made available under the terms of the Creative Commons Attribution license. The complete requirements for attribution can be found in section 4 of the [Creative Commons legal code](http://creativecommons.org/licenses/by/3.0/legalcode).
@@ -42,7 +43,7 @@ If you produce non-hypertext works, such as books, audio, or video, we ask that 
 ### Ballerina Website Attributions
 In the creation of this website, we used the following Creative Commons Attribution license: 
 
-* [Ballerina by Example](https://ballerina.io/learn/by-example/) sample pages are generated using a [tool](https://github.com/mmcgrana/gobyexample/) developed by [mmcgrana](https://github.com/mmcgrana), licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) and modified from the original.
+* [Ballerina by Examples](https://ballerina.io/learn/by-example/) sample pages are generated using a [tool](https://github.com/mmcgrana/gobyexample/) developed by [mmcgrana](https://github.com/mmcgrana), licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) and modified from the original.
 
 ## Contact
 If you have any comments regarding Ballerina.io license policies, please send feedback to [legal@wso2.com](mailto:legal@wso2.com).

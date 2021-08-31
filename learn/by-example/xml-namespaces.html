@@ -24,10 +24,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>XML Namespaces</h2>
-                            <p><p>The goal is to support for namespaces, but no added complexity if you don’t use them. Qualified name
- <code>ns:x</code> in XML is expanded into `<code>{url}x</code> where <code>url</code> is the namespace name bound to <code>ns</code>. XML namespace
- declarations are kept as attributes using standard binding of <code>xmlns</code> to
- <a href="http://www.w3.org/2000/xmlns/">http://www.w3.org/2000/xmlns/</a>.</p>
+                            <p><p>The goal is to support namespaces without adding complexity if you don’t use them. The
+ <code>ns:x</code> qualified name in XML is expanded into <code>{url}x</code> where <code>url</code> is the namespace name bound to <code>ns</code>. The XML namespace
+ declarations are kept as attributes using the standard binding of <a href="http://www.w3.org/2000/xmlns/">xmlns</a>.</p>
 </p>
 
                         </td>
@@ -35,14 +34,14 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="xml-templates-and-query.html">
+                                    <a class="prev" href="xml-templates-and-query.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
                                         <p>XML Templates and Query</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="xmlns-declarations.html">
+                                    <a class="next" href="xmlns-declarations.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
                                         <p>XMLNS Declarations</p>
                                     </a>
@@ -55,9 +54,9 @@ redirect_from:
             </div>
             <div class="example" id="xml-namespaces">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
-                    <table class="cTopControlsContainer">
-                        <tr>
-                            <td class="cLeftTD">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -68,54 +67,40 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=066f487c1fc6e2b3f90cfbfe16bb8b5a&file=xml_namespaces.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=15eb30ac5a09750bda238bfe7742592c&file=xml_namespaces.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
                                 </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-
-                    <table class="cTopBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
-
+                            </div> 
+                        </div>
+                    </div>
+              
                     
-                        
-                            
-                        
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR">
+                            <div class="cTR">
 
-                                <td class="code leading">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>xml:Element e = xml`&lt;p:e xmlns:p=&quot;http://example.com/&quot;/&gt;`;
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                            <tr class="cTR hover-enable">
+                            <div class="cTR hover-enable">
 
-                                <td class="code">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>string name = e.getName();
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
@@ -124,45 +109,34 @@ redirect_from:
                                         </div>
                                     </div>
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
+                    <div class="codeSnippeset">
 
-                    <div>
-
-                        <table class="cBBE-body">
+                        <div class="cBBE-body">
                             
-                            <tr class="cTR cOutputTr">
+                            <div class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run xml_namespaces.bal
 </code></pre></div>
 
-                                </td>
-                                <td class="docs">
+                                </div>
+                                <div class="docs">
                                     
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                             
-                        </table>
+                        </div>
                     </div>
                     
 
 
-                    <table class="cBottomBorder-table">
-                        <tr>
-                            <td class="cCodeTD"></td>
-                            <td class="cDescTD"></td>
-                        </tr>
-                    </table>
+                     
                 </div>
             </div>
         </div>

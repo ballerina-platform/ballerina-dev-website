@@ -25,7 +25,9 @@ span.icon.plus-icon {
 }
 
 span.icon.minus-icon {
-    background-color: #464646;
+    /* background-color: #464646; */
+    background-image: url("/img/minus.svg");
+
 }
 #tree li {
     /* list-style-image: url("/img/toc-list.svg") !important; */
@@ -46,7 +48,7 @@ ul.abix-tree-list li {
 }
 ul.abix-tree-list li.expanded:before,
 ul.abix-tree-list li.collapsed:before {
-    display: none;
+    /* display: none; */
 }
 ul.abix-tree-list li ul {
     padding-left: 10px;
@@ -75,10 +77,19 @@ ul.abix-tree-list li span.icon {
 }
 ul.abix-tree-list li span.icon {
     z-index: 2;
-    cursor: pointer;
+    cursor: pointer; 
+    background-color: #20b6b0;
+
+}
+ul.abix-tree-list li span.icon.plus-icon { 
     background-color: #20b6b0;
 }
-
+ul.abix-tree-list li span.icon.plus-icon:hover { 
+    background-color: #464646;
+}
+ul.abix-tree-list li span.icon.minus-icon {
+    background-color: #464646;
+}
 ul.abix-tree-list li a {
     font-weight: 600;
     display: block;

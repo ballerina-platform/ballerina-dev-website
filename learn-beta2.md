@@ -1,67 +1,97 @@
 ---
 layout: ballerina-learn-landing-page
-title: Docs
+title: Learn
 description: Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below.
 keywords: ballerina, learn, documentation, docs, programming language
 permalink: /learn-beta2/
 intro: Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below.
 redirect_from:
-- /learn-beta2
 ---
 ## Getting Started
 
-### Language Introduction Video
+### [Installing Ballerina](/learn/installing-ballerina/setting-up-ballerina/) 
 
-A video introduction to the Ballerina Programming Language and what's new in Swan Lake.
+How to download and install Ballerina via the installers.
 
-### [Language Tasters](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s)
+### [Hello World](/learn/getting-started/hello-world/writing-your-first-ballerina-program/) 
 
-End-to-end screencasts covering common use cases that give a taste of the Ballerina language.
+Write your first Ballerina program and create your first Ballerina package.
 
-### [Language Walkthrough Slides](http://localhost:4000/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
-
-A comprehensive reference slide deck explaining the language.
-
-### [Language Walkthrough Video](https://www.youtube.com/watch?v=My_uqtHvXV8&t=10s) 
-
-A video recording of the language slide deck.
-
-### [Learn by Example](/learn/by-example/introduction/)
+### [Learn by Examples](/learn/by-example/introduction/)
 
 A guided path to learn the language through a series of examples.
 
-## Concepts
+### [Language Walkthrough](/learn/language-walkthrough/)
 
-### [Why Ballerina](/learn/why-ballerina/)
+A comprehensive video explaining the language and its reference slide deck.
+
+### [Visual Studio Code Extension](/learn/visual-studio-code-extension/quick-start/)
+
+Details of all the high-level and important features of the Ballerina Visual Studio Code extension.
+
+## Guides
+
+### [Why Ballerina](/learn/why-ballerina/cloud-native/)
 
 Why you shoud use Ballerina.
 
-### [User Guide](/learn/user-guide/)
+### [Organizing Ballerina Code](/learn/organizing-ballerina-code/package-layout/)
 
-A series of guides on various things you need to do during the Ballerina development cycle.
+Covers the basics of projects/packages/modules.
+
+### [Testing Ballerina Code](/learn/testing-ballerina-code/testing-quick-start/)
+
+Write automated tests using the built-in test framework.
+
+### [Generating Code Documentation](/learn/generating-code-documentation/)
+
+Covers the usage of the `bal doc` CLI command.
+
+### [Making Ballerina Programs Configurable](/learn/making-ballerina-programs-configurable/defining-configurable-variables/)
+
+Explains the Ballerina language support for configurability.
+
+### [Observing Ballerina Programs](/learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/)
+
+How to observe Ballerina programs using the supported methods.
+
+### [Running Ballerina Programs in the Cloud](/learn/running-ballerina-programs-in-the-cloud/code-to-cloud/)
+
+Implement code to cloud user scenarios using Ballerina.
+
+### [Managing Dependencies](/learn/managing-dependencies/)
+
+Declare dependencies in Ballerina code and manage them.
+
+### [Publishing Packages to Ballerina Central](/learn/publishing-packages-to-ballerina-central/)
+
+Upload your packages to host them in Ballerina Central.
+
+### [Calling Java Code from Ballerina and Vice Versa](/learn/calling-java-code-from-ballerina-and-vice-versa/)
+
+The interoperability support provided between Java and Ballerina.
 
 ## References
-
-### [Language Introduction Slides](http://localhost:4000/learn/language-concepts/Ballerina_Language_Presentation-2021-03-08.pdf)
-
-Presentation slides on the Ballerina language that anyone can use to talk about the language.
-
-### [Language Guide](/learn/language-concepts/)
-
-An elaborate textual guide to the Ballerina language. 
-
-### [Library Documentation](/learn/api-docs/)
-
-All library API docs.
 
 ### [Reference by Examples](/learn/by-example/)
 
 A series of examples that serve as a reference guide for each language construct and concept.
 
-### [Specifications](/spec/)
+### [Library Documentation](https://lib.ballerina.io/)
 
-Specifications for the platform.
+All library API docs.
 
+### [CLI Documentation](/learn/cli-documentation/cli-commands/)
+
+All the CLI commands availabe in Ballerina.
+
+### [Platform Specifications](/learn/platform-specifications/)
+
+Specifications of the platform.
+
+### [Style Guide](/learn/style-guide/coding-conventions/)
+
+Coding conventions of the Ballerina language.
 
 <style>
 .cBallerina-io-Gray-row.cLandingPageintro{

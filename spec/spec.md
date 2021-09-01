@@ -1,17 +1,21 @@
 ---
 layout: ballerina-no-git-inner-page
-title: Ballerina Platform Specifications
+title: Platform Specifications
 intro: Read the Ballerina language spec and other specifications that cover the standard library, built-in language extensions, testing, documentation, and more.
 keywords: ballerina, language specification, spec 
-permalink: /spec/
+permalink: /learn/platform-specifications/
 redirect_from:
   - /learn/language-specification
   - /learn/language-specification/
+  - /spec
+  - /spec/
+  - /learn/platform-specifications
+  
 ---
 
-## Ballerina Language specifications and proposals
+## Ballerina Language Specifications and Proposals
 
-### Released specifications
+### Released Specifications
 
 The below are the most stable versions of the lanuguage specification, which are in sync with the Ballerina releases.
 
@@ -25,23 +29,23 @@ The below are the most stable versions of the lanuguage specification, which are
 | <a target="_blank" href="/spec/lang/2019R2/">2019R2</a> | 2019-07-01 | Major revised edition of the language |
 | <a target="_blank" href="/spec/lang/2019R1/">2019R1</a> | 2019-05-01 | First release with new versioning scheme with significant revisions |
 
-### Current snapshot
+### Current Snapshot
 
 For a snapshot of the current language specification including all changes, see the <a target="_blank" href="https://ballerina.io/spec/lang/master/">main language specification</a>.
 
-### Previous drafts 
+### Previous Drafts 
 
 For previous draft language specifications of a Ballerina release, see the <a target="_blank" href="https://ballerina.io/spec/lang/draft/">draft language specification</a>.
 
-### Specification versioning convention
+### Specification Versioning Convention
 
 From the start of 2019, Ballerina  specifications are versioned chronologically using the convention `20XYRn`, where `XY` is the 2-digit year (e.g., 19), `R` stands for "Release", and `n` is the release number for that year. Prior to 2019, a semver versioning scheme was used. However, that approach was abandoned when the language specification reached 0.980.
 
-### Proposals for improvements/enhancements
+### Proposals for Improvements/Enhancements
 
 For the proposals for improving Ballerina, see the <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/README.md">work in progress proposals</a>.
 
-## Ballerina Platform specifications
+## Ballerina Platform Specifications
 
 | Specification | Latest Released Version | Current Snapshot |
 | ---- | --------------- | ---------------- |

@@ -72,7 +72,7 @@ The `http:JwtIssuerConfig` configurations include:
 * `audience` - JWT audience, which is mapped to the `aud`
 * `jwtId` - JWT ID, which is mapped to the `jti`
 * `keyId` - JWT key ID, which is mapped to the `kid`
-* `customClaims` - Map of custom claims
+* `customClaims` - Map of the custom claims
 * `expTime` - Expiry time in seconds
 * `signatureConfig` - JWT signature configurations
     * `algorithm` - Cryptographic signing algorithm for JWS
@@ -220,7 +220,7 @@ The `http:OAuth2PasswordGrantConfig` configurations include:
 * `refreshConfig` - Configurations for refreshing the access token
     * `refreshUrl` - Refresh token URL for the refresh token server
     * `scopes` - Scope(s) of the access request
-    * `optionalParams` - Map of optional parameters to be used for the authorization endpoint
+    * `optionalParams` - Map of the optional parameters to be used for the authorization endpoint
     * `credentialBearer` - Bearer of the authentication credentials, which is sent to the authorization endpoint
         * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the Authentication Header
         * `http:POST_BODY_BEARER` - Indicates that the Authentication credentials should be sent via the body of the POST request
@@ -345,7 +345,7 @@ The `http:OAuth2JwtBearerGrantConfig` configurations include:
 * `scopes` - Scope(s) of the access request
 * `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if the token endpoint response does not contain an `expires_in` field
 * `clockSkew` - Clock skew (in seconds) that can be used to avoid token validation failures due to clock synchronization problems
-* `optionalParams` - Map of optional parameters use for the token endpoint
+* `optionalParams` - Map of the optional parameters used for the token endpoint
 * `credentialBearer` - Bearer of the authentication credentials, which is sent to the token endpoint
     * `http:AUTH_HEADER_BEARER` - Indicates that the authentication credentials should be sent via the `Authorization` header
     * `http:POST_BODY_BEARER` - Indicates that the authentication credentials should be sent via the body of the POST request
@@ -356,7 +356,7 @@ The `http:OAuth2JwtBearerGrantConfig` configurations include:
     * `auth` - The client auth configurations
         * `oauth2:ClientCredentialsGrantConfig`|`oauth2:PasswordGrantConfig`|`oauth2:RefreshTokenGrantConfig`
     * `secureSocket` - SSL/TLS-related configurations
-        * `disable` - Disable the SSL validation
+        * `enable` - Enable the SSL validation
         * `cert` - Configurations associated with the `crypto:TrustStore` or single certificate file that the client trusts
         * `key` - Configurations associated with the `crypto:KeyStore` or a combination of certificate and private key of the client
 

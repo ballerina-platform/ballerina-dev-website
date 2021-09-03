@@ -27,7 +27,23 @@ let redirections = {
     "/1.2/learn/deployment/code-to-cloud/":"/page-not-available.html",
     "/1.1/learn/deployment/code-to-cloud/":"/page-not-available.html",
     "/1.0/learn/deployment/code-to-cloud/":"/page-not-available.html",
-    
+    "/learn/user-guide/network-communication/http/http-clients/":"/learn/by-example/",
+    "/learn/user-guide/network-communication/http/http-services/":"/learn/by-example/",
+    "/learn/user-guide/network-communication/grpc/defining-the-service-interface/":"/learn/by-example/",
+    "/learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-services/":"/learn/by-example/",
+    "/learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-clients/":"/learn/by-example/",
+    "/learn/user-guide/network-communication/grpc/performing-grpc-streaming/":"/learn/by-example/",
+    "/learn/user-guide/network-communication/websocket/":"/learn/by-example/",
+    "/learn/user-guide/network-communication/graphql/":"/learn/by-example/",
+    "/learn/user-guide/data-and-events-processing/using-language-integrated-queries/":"/learn/by-example/",
+    "/learn/user-guide/security/http-listener-authentication-and-authorization/":"/learn/by-example/",
+    "/learn/user-guide/security/http-client-authentication/":"/learn/by-example/",
+    "/learn/extending-with-compiler-extensions/":"/learn/by-example/",
+    "/learn/tooling-guide/ballerina-shell/":"/learn/by-example/",
+    "/learn/cli-documentation/update-tool/":"/learn/by-example/",
+    "/learn/cli-documentation/openapi/":"/learn/by-example/",
+
+
 
     // BBEs not available.
     "/1.1/learn/by-example/jdbc-streaming-big-dataset.html":"/page-not-available.html",

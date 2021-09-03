@@ -43,7 +43,7 @@ redirect_from:
 		<h3 id="organizing-ballerina-code"><a href="/learn/organizing-ballerina-code/package-layout/">Organizing Ballerina Code</a></h3>
 		<p>Basics of projects, packages, and modules.</p>
 		<h3 id="testing-ballerina-code"><a href="/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a></h3>
-		<p>Writing automated tests using the built-in test framework.</p>
+		<p>Details on writing automated tests using the built-in test framework.</p>
 		<h3 id="generatinging-code-documentation"><a href="/learn/generating-code-documentation/">Generating Code Documentation
 </a></h3>
 		<p>The usage of the <code class="highlighter-rouge language-plaintext">bal doc</code> CLI command.</p>
@@ -56,7 +56,7 @@ redirect_from:
 </a></h3>
 		<p>The cloud offerings for running Ballerina programs.</p>
 		<h3 id="managing-dependencies"><a href="/learn/managing-dependencies/">Managing Dependencies </a></h3>
-		<p>Declaring and managing dependencies and using the local repository.</p>
+		<p>Details on declaring and managing dependencies and using the local repository.</p>
 		<h3 id="publishing-packages-to-ballerina-central"><a href="/learn/publishing-packages-to-ballerina-central/">Publishing Packages to Ballerina Central</a></h3>
 		<p>Details on publishing your library package to Ballerina Central.</p>
 		<h3 id="calling-java-code-from-ballerina-and-vice-versa"><a href="/learn/calling-java-code-from-ballerina-and-vice-versa/">Calling Java Code from Ballerina and Vice Versa</a></h3>
@@ -71,7 +71,7 @@ redirect_from:
 		<h3 id="reference-guide-by-examples"><a href="/learn/by-example/">Reference by Examples</a></h3>
 		<p>A series of examples that serve as a reference guide for language constructs, concepts, and standard library modules.</p>
 		<h3 id="library-documentation"><a href="https://lib.ballerina.io/">Library Documentation</a></h3>
-		<p>Standard library API documentation.</p>
+		<p>Ballerina library API documentation.</p>
 		<h3 id="the-bal-tool"><a href="/learn/cli-documentation/cli-commands/">CLI Documentation</a></h3>
 		<p>Details of all the CLI commands of the <code class="highlighter-rouge language-plaintext">bal</code> tool.</p>
 		<h3 id="specifications"><a href="/learn/platform-specifications/">Platform Specifications</a></h3>

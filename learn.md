@@ -58,7 +58,7 @@ redirect_from:
 		<h3 id="managing-dependencies"><a href="/learn/managing-dependencies/">Managing Dependencies </a></h3>
 		<p>Details of declaring and managing dependencies and using the local repository.</p>
 		<h3 id="publishing-packages-to-ballerina-central"><a href="/learn/publishing-packages-to-ballerina-central/">Publishing Packages to Ballerina Central</a></h3>
-		<p>Details on publishing your library package to Ballerina Central.</p>
+		<p>Details of publishing your library package to Ballerina Central.</p>
 		<h3 id="calling-java-code-from-ballerina-and-vice-versa"><a href="/learn/calling-java-code-from-ballerina-and-vice-versa/">Calling Java Code from Ballerina and Vice Versa</a></h3>
 		<p>Instructions on the supported interoperability features.</p>
 		</div>

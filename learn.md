@@ -85,6 +85,7 @@ redirect_from:
 		</div>
 	</div>
 </div>
+
 <style>
 	:not(pre) > code[class*="language-"], pre[class*="language-"]{
 		    background: #e0dede !important;

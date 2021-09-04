@@ -19,7 +19,7 @@ redirect_from:
 
 A Ballerina service’s structure and its semantics are defined by the service type (i.e., the type of the listener attached to it). A basic HTTP service is structured in Ballerina as shown below. 
 
-<img src="/learn/images/http-resource-anatomy-new.png" alt="HTTP Resource Anatomy" width="800" height="400">
+<img src="/learn/images/http-resource-anatomy-new.png" alt="HTTP Resource Anatomy" width="800" height="450">
 
 The elements of the service are as follows.
 

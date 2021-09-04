@@ -438,7 +438,6 @@ The `http:JwtValidatorConfig` configurations include:
     * `trustStoreConfig` - JWT TrustStore configurations
         * `trustStore` - TrustStore used for signature verification
         * `certAlias` - Token-signed public key certificate alias
-    * `secret` - HMAC secret configuration
 * `cacheConfig` - Configurations related to the cache, which are used to store parsed JWT information
 
 ```ballerina

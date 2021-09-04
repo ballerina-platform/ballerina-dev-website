@@ -73,12 +73,12 @@ The type `boolean` is a simple basic type in Ballerina without a storage identit
 
 The `boolean` type’s shapes can be defined in set notation as `Sboolean = { true, false }`. This can be visualized as seen in Figure 2 below.
 
-<img src="/img/why-pages/why-diagram-02.svg"/>
+<img src="/learn/images/why-diagram-02-new.png"/>
 <p class="cCaption">Figure 2: Set of shapes of the type <code>boolean</code></p>
 
 Now, according to our subtyping rules, we can derive new types based on the `boolean` type by creating subsets of its shapes. For example, a new type we can create is `boolean_false` where its only supported shape/value would be `false`. The new type is shown in Figure 3 below.
 
-<img src="/img/why-pages/why-diagram-03.svg"/>
+<img src="/learn/images/why-diagram-03-new.png"/>
 <p class="cCaption">Figure 3: Shapes sets of types <code>boolean</code> and <code>boolean_false</code></p>
 
 The new type `boolean_false` can be defined in Ballerina code in the following manner:
@@ -99,7 +99,7 @@ As you can see, `bv1` of type `boolean_false` can be assigned to `bv2` of type b
 
 We have now seen how Ballerina’s subtyping works in relation to simple types. Let’s take a look at creating subtypes of records by revisiting our `DoorState` scenario. Here, we will create a new type `EmergencyDoorState`, where the `locked` field has to always have the value `false`. The resultant types and their shapes can be seen below in Figure 4.
 
-<img src="/img/why-pages/why-diagram-04.svg"/>
+<img src="/learn/images/why-diagram-04-new.png"/>
 <p class="cCaption">Figure 4: Shapes sets of types <code>DoorState</code> and <code>EmergencyDoorState</code></p>
 
 The type definition of `EmergencyDoorState` type is shown below:

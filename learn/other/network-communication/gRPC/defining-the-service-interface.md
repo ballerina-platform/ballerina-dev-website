@@ -21,7 +21,7 @@ In an RPC service, the first step is to define the interface of the service. Thi
 
 For example, the diagram below shows a sample RPC service, which contains the actions to do some computational operations, store them, and return a custom type. 
 
-<img src="/learn/images/grpc-admin-service.png" alt="Admin RPC Service" width="300" height="400">
+<img src="/learn/images/grpc-admin-service-new.png" alt="Admin RPC Service" width="300" height="400">
 
 ### Creating the Proto File
 

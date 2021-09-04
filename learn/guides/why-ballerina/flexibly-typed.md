@@ -62,7 +62,7 @@ DoorState ds4 = { open: false, locked: false };
 
 A type in Ballerina represents a set of possible shapes it can have. So any value that belongs to either of the above four shapes will be considered to be of the type `DoorState`.
 
-<img src="/img/why-pages/why-diagram-01.svg"/>
+<img src="/img/why-pages/why-diagram-01-new.svg"/>
 <p class="cCaption">Figure 1: Set of shapes of the type <code>DoorState</code></p>
 
 ### Subtypes in Ballerina

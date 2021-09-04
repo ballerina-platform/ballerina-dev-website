@@ -80,7 +80,7 @@ The `http:JwtIssuerConfig` configurations include:
         * `jwt:RS384` - The RSA-SHA384 algorithm
         * `jwt:RS512` - The RSA-SHA512 algorithm
         * `jwt:NONE` - Unsecured JWTs (no signing)
-    * `config` - KeyStore configurations or private key configurations configurations
+    * `config` - KeyStore configurations or private key configurations
         * `keyStore` - KeyStore to be used in JWT signing
         * `keyAlias` - Signing key alias
         * `keyPassword` - Signing key password

@@ -19,7 +19,7 @@ redirect_from:
 
 The use case is a typical e-commerce scenario of processing orders in an online store. The entity-relationship diagram below shows a simplified representation of a real-life implementation that can be used in a relational database.
 
-<img src="/learn/images/orders-erd.png" alt="Simply Easy Learning" width="550" height="400">
+<img src="/learn/images/orders-erd-new.png" alt="Simply Easy Learning" width="550" height="450">
 
 ## Defining the Object Graph
 

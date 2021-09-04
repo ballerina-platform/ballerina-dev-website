@@ -10,8 +10,6 @@ redirect_from:
 - /learn/testing-ballerina-code/testing-services-and-clients
 - /swan-lake/learn/testing-ballerina-code/testing-services-and-clients/
 - /swan-lake/learn/testing-ballerina-code/testing-services-and-clients
-- /learn/testing-ballerina-code/testing-services-and-clients/
-- /learn/testing-ballerina-code/testing-services-and-clients
 - /learn/user-guide/testing-ballerina-code/testing-services-and-clients
 - /learn/user-guide/testing-ballerina-code/testing-services-and-clients/
 ---

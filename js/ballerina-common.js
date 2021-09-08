@@ -447,21 +447,29 @@ $(document).ready(function() {
     function subscribeUserOS() {
         $("#form-error").html("");
         var email = $('#userEmail').val();
-        var optin = $('#optin').is(":checked");
+        var nloptin = $('#nloptin').is(":checked");
+        var ccoptin = $('#ccoptin').is(":checked");
+
+        var type = "";
+        if(nloptin){type += "-Newsletters-";}
+
+        if(ccoptin){type += "-Community Calls-";}
+
         $('#subscribeUserMessage').remove("");
         if (email == "") {
-            $("#form-error").text("Please enter your email.");
+            $("#form-error").text("Please enter your email");
             $("#form-error").addClass("cShowBlock");
         } else if (!isEmail(email)) {
-            $("#form-error").text("Please enter a valid email.");
+            $("#form-error").text("Please enter a valid email");
             $("#form-error").addClass("cShowBlock");
-        } else if(!optin){
-            $("#form-error").text("Please confirm email subscription");
+        } else if(!nloptin && !ccoptin){
+            $("#form-error").text("Please select an option");
             $("#form-error").addClass("cShowBlock");
         }else {
             $('#subscribeForm').trigger("reset");
-            $(".pdframe").html("<iframe src='https://go.pardot.com/l/142131/2017-02-16/3c6zgy?email=" + email + "'></iframe>");
-            $("#form-status").text("You have successfully subscribed to the newsletter.");
+//            $(".pdframe").html("<iframe src='https://go.pardot.com/l/142131/2017-02-16/3c6zgy?email=" + email + "&type=" + type + "'></iframe>");
+console.log('https://go.pardot.com/l/142131/2017-02-16/3c6zgy?email="' + email + '"&type="' + type + '"');
+            $("#form-status").text("You have successfully subscribed");
             $("#form-status").addClass("cShowBlock");
             $("#form-error").removeClass("cShowBlock");
             
@@ -546,6 +554,33 @@ $(document).ready(function() {
         }
     });
 
+
+    //Contribute to Agenda
+    $("#agSuccessAlert").hide();
+    $("#agendaSubButton").click(function(event) {
+        event.preventDefault();
+        agendaContribution();
+    });
+
+    //Contribute to vlog
+    $("#vlSuccessAlert").hide();
+    $("#vlogSubButton").click(function(event) {
+        event.preventDefault();
+        vlogContribution();
+    });
+
+    //Contribute to blog
+    $("#blSuccessAlert").hide();
+    $("#blogSubButton").click(function(event) {
+        event.preventDefault();
+        blogContribution();
+    });
+
+    //reset button
+    $(".resetButton").click(function(event) {
+        $('form').trigger("reset");
+    });
+
 });
 
 function validate_redirection(path) {
@@ -574,4 +609,171 @@ function validate_redirection(path) {
         }
     }
     return redirection;
+}
+
+
+function agendaContribution() {
+    $("#agform-error").html("");
+    var email = $('#agendaEmail').val();
+    var name = $('#agendaName').val();
+    var namesegs = name.split(" ");
+    var firstname = namesegs[0];
+    var lastname = "";
+    if(typeof namesegs[1] !== "undefined"){lastname = namesegs[1];}
+
+    var company = $('#agendaCompany').val();
+
+    var contribution = $('#selectAgendaOption').val();
+    
+    var submission = "";
+
+if(contribution == "oNewsletter"){
+    var nltopic = $('#agendaTopic').val();
+    var nlcontent = $('#agendaContent').val();
+    submission = "Newsletter: Topic : "+ nltopic +", Content : " + nlcontent;
+}else{
+    var topic = $('#agendaCallTopic').val();
+    var content = $('#agendaCallArticle').val();
+    var duration = $('#agendaCallDuration').val();
+    submission = "Community Call: Topic : "+ topic +", Content : " + content + "Duration : "+duration;
+}
+    $('#subscribeUserMessage').remove("");
+    if (email == "" || name == "") {
+        $("#agform-error").text("Please enter your personal information");
+        $("#agform-error").addClass("cShowBlock");
+    } else if (!isEmail(email)) {
+        $("#agform-error").text("Please enter a valid email");
+        $("#agform-error").addClass("cShowBlock");
+    } else if (contribution == "oNewsletter" && (nltopic == "" || nlcontent == "")) {
+            $("#agform-error").text("Please enter the newsletter details");
+            $("#agform-error").addClass("cShowBlock");
+        
+    }else if (contribution == "oCommcall" && (topic == "" || content == "" || duration == "")) {
+            $("#agform-error").text("Please enter the community call details");
+            $("#agform-error").addClass("cShowBlock");
+        
+    }else {
+        $('#agendaContribute').trigger("reset");
+        //$(".pdframe").html("<iframe src='https://go.pardot.com/l/142131/2021-08-25/9sy26w?email=" + email + "&first_name=" + first_name + "&last_name=" + lastname + "&compnay=" + compnay + "&submission=" + submission + "'></iframe>");
+        console.log('https://go.pardot.com/l/142131/2021-08-25/9sy26w?email="' + email + '"&first_name="' + firstname + '"&last_name="' + lastname + '"&company="' + company + '"&submission="' + submission + '"');
+        $("#agSuccessAlert").show();
+        //$("#form-status").addClass("cShowBlock");
+        $("#agform-error").removeClass("cShowBlock");
+        
+    }
+    return;
+}
+
+function vlogContribution() {
+    $("#vlform-error").html("");
+    var email = $('#vlEmail').val();
+    var name = $('#vlName').val();
+    var namesegs = name.split(" ");
+    var firstname = namesegs[0];
+    var lastname = "";
+    if(typeof namesegs[1] !== "undefined"){lastname = namesegs[1];}
+    var vlogCount = $('#selectOption2').val();
+
+    var submission = "";
+
+    var vLink1 = $('#rsuggested-topic1').val();
+    var vLink2 = $('#rsuggested-topic2').val();
+    var vLink3 = $('#rsuggested-topic3').val();
+
+    if(vLink1 != ""){
+        submission += "Link1 : "+ vLink1 ;
+    }
+    if(vLink2 != ""){
+        submission += ", Link 2 "+ vLink2 ;
+    }
+    if(vLink3 != ""){
+        submission += ", Link3 : "+ vLink3 ;
+    }
+    
+
+    if (email == "" || name == "") {
+        $("#vlform-error").text("Please enter your personal information");
+        $("#vlform-error").addClass("cShowBlock");
+    } else if (!isEmail(email)) {
+        $("#vlform-error").text("Please enter a valid email");
+        $("#vlform-error").addClass("cShowBlock");
+    } else if (vlogCount == 1 && (vLink1 == "")) {
+            $("#vlform-error").text("Please add the Vlog details");
+            $("#vlform-error").addClass("cShowBlock");
+        
+    }else if (vlogCount == 2 && (vLink2 == "")) {
+        $("#vlform-error").text("Please add the Vlog details");
+        $("#vlform-error").addClass("cShowBlock");
+    
+    }else if (vlogCount == 3 && (vLink3 == "")) {
+        $("#vlform-error").text("Please add the Vlog details");
+        $("#vlform-error").addClass("cShowBlock");
+
+    }else {
+        $('#vlogContribute').trigger("reset");
+       // $(".pdframe").html("<iframe src='https://go.pardot.com/l/142131/2021-08-25/9sy271?email=" + email + "&first_name=" + firstname + "&last_name=" + lastname + "&submission=" + submission + "'></iframe>");
+       console.log('https://go.pardot.com/l/142131/2021-08-25/9sy271?email="' + email + '"&first_name=" '+ firstname + '"&last_name="' + lastname + '"&submission="' + submission + '"');
+        $("#vlSuccessAlert").show();
+        //$("#form-status").addClass("cShowBlock");
+        $("#vlform-error").removeClass("cShowBlock");
+        
+    }
+    return;
+}
+
+function blogContribution() {
+    $("#blform-error").html("");
+    var email = $('#blEmail').val();
+    var name = $('#blName').val();
+    var namesegs = name.split(" ");
+    var firstname = namesegs[0];
+    var lastname = "";
+    if(typeof namesegs[1] !== "undefined"){lastname = namesegs[1];}
+    var blogCount = $('#selectOption1').val();
+
+    var submission = "";
+
+    var bLink1 = $('#blsuggested-topic1').val();
+    var bLink2 = $('#blsuggested-topic2').val();
+    var bLink3 = $('#blsuggested-topic3').val();
+
+    if(bLink1 != ""){
+        submission += "Link1 : "+ bLink1 ;
+    }
+    if(bLink2 != ""){
+        submission += ", Link 2 : "+ bLink2 ;
+    }
+    if(bLink3 != ""){
+        submission += ", Link3 : "+ bLink3 ;
+    }
+    
+
+    if (email == "" || name == "") {
+        $("#blform-error").text("Please enter your personal information");
+        $("#blform-error").addClass("cShowBlock");
+    } else if (!isEmail(email)) {
+        $("#blform-error").text("Please enter a valid email.");
+        $("#blform-error").addClass("cShowBlock");
+    } else if (blogCount == "oneBlog" && (bLink1 == "")) {
+            $("#blform-error").text("Please add the blog details");
+            $("#blform-error").addClass("cShowBlock");
+        
+    }else if (blogCount == "twoBlogs" && (bLink2 == "")) {
+        $("#blform-error").text("Please add the blog details");
+        $("#blform-error").addClass("cShowBlock");
+    
+    }else if (blogCount == "threeBlogs" && (bLink3 == "")) {
+        $("#blform-error").text("Please add the blog details");
+        $("#blform-error").addClass("cShowBlock");
+
+    }else {
+        $('#blogContribute').trigger("reset");
+        //$(".pdframe").html("<iframe src='https://go.pardot.com/l/142131/2021-08-25/9sy26y?email=" + email + "&first_name=" + firstname + "&last_name=" + lastname + "&submission=" + submission + "'></iframe>");
+        console.log('https://go.pardot.com/l/142131/2021-08-25/9sy26y?email="' + email + '"&first_name="' + firstname + '"&last_name="' + lastname + '"&submission="' + submission + '"');
+        $("#blSuccessAlert").show();
+        //$("#form-status").addClass("cShowBlock");
+        $("#blform-error").removeClass("cShowBlock");
+        
+    }
+    return;
 }

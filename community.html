@@ -26,7 +26,14 @@ redirect_from:
   
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
 <!-- <link rel="stylesheet" href="/css/home-page-old.css"/> -->
-
+<style>
+  #form-status , #form-error, #agform-error, #vlform-error, #blform-error, #agSuccessAlert, #agFailAlert, #vlFailAlert, #blFailAlert{
+  display:none;
+  }
+  #form-status.cShowBlock , #form-error.cShowBlock, #agform-error.cShowBlock, #vlform-error.cShowBlock, #blform-error.cShowBlock {
+  display:block;
+  }
+</style>
 
 <div class="container" >
     <!-- <h1>The Ballerina Community</h1> -->
@@ -81,21 +88,23 @@ redirect_from:
     <div class="row" style="margin-left: 10px;" >
        <div class="col-sm-12 col-md-6  cFormSection" style="margin:20px 0px;padding:10px 0px">
           <form id="subscribeForm">
-          <div class="form-group">
-            
-             <label for="userEmail" style="font-size: 20px; color:#585A5E;font-weight: 500;">Email address</label>
-             <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter your Email address" style="border-radius: 0;border: #20b6b0 solid 1px;">
-             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-          </div>
-             <div class="form-check">
-             <input type="checkbox" class="form-check-input" id="option1">
-             <label class="form-check-label" for="cBallerinaCheck" style="font-size: 14px; color:#585A5E; font-weight: 500;">I wish to  get updates for Newsletters</label><br>
-             <input type="checkbox" class="form-check-input" id="option1">
-             <label class="form-check-label" for="cBallerinaCheck" style="font-size: 14px; color:#585A5E;font-weight: 500;">I wish to  get updates for Community calls</label>
-          </div>
-          <button type="button" class="cbtn2" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Subscribe</button>
-          <button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contribute to the Agenda</button>
-          <!-- <button  class="cUserButton1" id="agendaUserButton" style="border-width:2px;">Contribute to Agenda</button> -->
+            <div id="form-error" class="alert alert-danger"></div>
+            <div id="form-status" class="alert alert-success"></div>
+            <div class="form-group">
+              
+                <label for="userEmail" style="font-size: 20px; color:#585A5E;font-weight: 500;">Email address</label>
+                <input type="email" required-field="1" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter your Email address" style="border-radius: 0;border: #20b6b0 solid 1px;">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+                <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="nloptin">
+                <label class="form-check-label" for="cBallerinaCheck" style="font-size: 14px; color:#585A5E; font-weight: 500;">I wish to  get updates for Newsletters</label><br>
+                <input type="checkbox" class="form-check-input" id="ccoptin">
+                <label class="form-check-label" for="cBallerinaCheck" style="font-size: 14px; color:#585A5E;font-weight: 500;">I wish to  get updates for Community calls</label>
+            </div>
+            <button type="button" class="cbtn1" id="subscribeUserButton" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Subscribe</button>
+            <button type="button" class="cbtn1" id="" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contribute to the Agenda</button>
+            <!-- <button  class="cUserButton1" id="agendaUserButton" style="border-width:2px;">Contribute to Agenda</button> -->
           </form>
     
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -119,7 +128,7 @@ redirect_from:
                 </div>
                 <div class="modal-body" style="background-color: #fff;">
                   <!--Alert Box Thank you-->
-                  <div class="alert " role="alert" id="successAlert1"  style="background-color: #E6EAEB;color: #20b6b0;">
+                  <div class="alert " role="alert" id="agSuccessAlert"  style="background-color: #E6EAEB;color: #20b6b0;">
                     <h4 class="alert-heading">Thank you!</h4>
                     <p>We appreciate your effort to contribute to the Ballerina.</p>
                     <hr>
@@ -127,83 +136,87 @@ redirect_from:
                   </div>
                   <!--Alert Box Thank you-->
                   <!--Alert Box Wrong-->
-                  <div class="alert " role="alert" id="wrongAlert1"style="background-color: #E6EAEB;color: #20b6b0;">
+                  <div class="alert " role="alert" id="agFailAlert"style="background-color: #E6EAEB;color: #20b6b0;">
                     <h4 class="alert-heading">Oops!</h4>
                     <p>Something wrong ! Can you try again.</p>
                     <hr>
                     <p class="mb-0">If you need any further info. Please reach us via contact@ballerina.io.</p>
                   </div>
+                  <div id="agform-error" class="alert alert-danger"></div>
                   <!--Alert Box Wrong-->
                   <!--Form for the Contribution start here-->
-                  <form>
-                    <div class="form-group">
-                      <label for="recipient-name" class="col-form-label" >Email Address</label>
-                      <input type="text" class="form-control " id="recipient-email" style="border-radius: 0px;border: #20b6b0 solid 1px; ">
-                    </div>
-                    <div class="form-group">
-                      <label for="message-text" class="col-form-label">Name</label>
-                      <input type="text" class="form-control" id="recipient-name" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                    </div>
-                    <div class="form-group">
-                      <label for="message-text" class="col-form-label">Company Name (Optional)</label>
-                      <input type="text" class="form-control " id="recipient-company-name" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                    </div>
-                    <div class="form-group">
-                      <label for="message-text" class="col-form-label">Contribution for </label>
-                      <select class="form-control " id="selectOption" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                        <option value="oNewsletter">Newsletter</option>
-                        <option value="oCommcall">Community Call</option>
-                      </select>
-                    </div>
-    
-                    <div id="oNewsletter" class="group">
-                      <div class="form-group">
-                        <label for="message-text" class="col-form-label">Suggested Topic</label>
-                        <input type="text" class="form-control " id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                      </div>
-                      <div class="form-group">
-                        <label for="message-text" class="col-form-label">Link to Suggested Article</label>
-                        <input type="text" class="form-control " id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                      </div>
-                     
-                    </div>
-    
-                    <div id="oCommcall" class="group">
-                      <div class="form-group">
-                        <label for="message-text" class="col-form-label">Suggested Topic</label>
-                        <input type="text" class="form-control " id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                      </div>
-                      <div class="form-group">
-                        <label for="message-text" class="col-form-label">Link to Suggested Content</label>
-                        <input type="text" class="form-control " id="suggested-article" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                      </div>
-                      <div class="form-group">
-                        <label for="message-text" class="col-form-label">Suggested Demo Duration</label>
-                        <input type="text" class="form-control " id="suggested-article" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                      </div>
-                      
-                    </div>
-    
-    
-                    <script>
-                      $(document).ready(function () {
-                      $('.group').hide();
-                      $('#oNewsletter').show();
-                      $('#selectOption').change(function () {
-                      $('.group').hide();
-                      $('#'+$(this).val()).show();
-                      })
-                      });
-                    </script>
+                  <form id="agendaContribute" name="agendaContribute">
 
-                  <!--Form for the Contribution end here-->
+                      <div class="form-group">
+                        <label for="message-text" class="col-form-label">Name*</label>
+                        <input type="text" maxlength="100" required-field="1" class="form-control fInput" id="agendaName" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                      </div>
+                      <div class="form-group">
+                          <label for="recipient-name" class="col-form-label" >Email Address*</label>
+                          <input type="text" maxlength="100" required-field="1" class="form-control fInput" id="agendaEmail" style="border-radius: 0px;border: #20b6b0 solid 1px; ">
+                        </div>
+                      <div class="form-group">
+                        <label for="message-text" class="col-form-label">Company Name (Optional)</label>
+                        <input type="text" maxlength="100" class="form-control fInput" id="agendaCompany" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                      </div>
+                      <div class="form-group">
+                        <label for="message-text" class="col-form-label">Contribution for </label>
+                        <select class="form-control fInput" id="selectAgendaOption" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                          <option value="oNewsletter">Newsletter</option>
+                          <option value="oCommcall">Community Call</option>
+                        </select>
+                      </div>
+      
+                      <div id="oNewsletter" class="group">
+                        <div class="form-group">
+                          <label for="message-text" class="col-form-label">Suggested Topic*</label>
+                          <input type="text" class="form-control fInput" id="agendaTopic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlFile1">Suggested Content*</label>
+                          <input type="text" class="form-control fInput" id="agendaContent" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                        </div>
+                      </div>
+      
+                      <div id="oCommcall" class="group">
+                        <div class="form-group">
+                          <label for="message-text" class="col-form-label">Suggested Topic*</label>
+                          <input type="text" maxlength="500" class="form-control fInput" id="agendaCallTopic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                        </div>
+                        <div class="form-group">
+                          <label for="message-text" class="col-form-label">Suggested Article URL*</label>
+                          <input type="text" maxlength="500" class="form-control fInput" id="agendaCallArticle" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                        </div>
+                        <div class="form-group">
+                          <label for="message-text" class="col-form-label">Suggested Demo Duration (minutes)*</label>
+                          <input type="text" maxlength="4" class="form-control fInput" id="agendaCallDuration" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                        </div>
+                        
+                      </div>
+      
+      
+                      <script>
+                        $(document).ready(function () {
+                        $('.group').hide();
+                        $('#oNewsletter').show();
+                        $('#selectAgendaOption').change(function () {
+                        $('.group').hide();
+                        $('#'+$(this).val()).show();
+                        })
+                        });
+                      </script>
   
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="reset" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Close</button>
-                  <button type="submit" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
-                </div>
+                    <!--Form for the Contribution end here-->
+    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="reset" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Close</button>
+                    <button type="button" id="agendaSubButton" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
+                  </div>
+  
+                </form>
+                
               </div>
             </div>
           </div>
@@ -1294,7 +1307,7 @@ redirect_from:
           </div>
           <div class="modal-body" style="background-color: #fff; font-size: 20;;">
              <!--Alert Box Thank you-->
-             <div class="alert " role="alert" id="successAlert1"  style="background-color: #E6EAEB;color: #20b6b0;">
+             <div class="alert " role="alert" id="vlSuccessAlert"  style="background-color: #E6EAEB;color: #20b6b0;">
               <h4 class="alert-heading">Thank you!</h4>
               <p>We appreciate your effort to contribute to the Ballerina.</p>
               <hr>
@@ -1302,87 +1315,81 @@ redirect_from:
             </div>
             <!--Alert Box Thank you-->
             <!--Alert Box Wrong-->
-            <div class="alert " role="alert" id="wrongAlert1"style="background-color: #E6EAEB;color: #20b6b0;">
+            <div class="alert " role="alert" id="vlFailAlert"style="background-color: #E6EAEB;color: #20b6b0;">
               <h4 class="alert-heading">Oops!</h4>
               <p>Something wrong ! Can you try again.</p>
               <hr>
               <p class="mb-0">If you need any further info. Please reach us via contact@ballerina.io.</p>
             </div>
+            <div id="vlform-error" class="alert alert-danger"></div>
             <!--Alert Box Wrong-->
             <!--Form for the Submit Vlogs start here-->
-            <form>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label" >Name</label>
-                <input type="text" class="form-control" id="recipient-email" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-              </div>
-              <div class="form-group">
-                <label for="message-text" class="col-form-label">Email address</label>
-                <input type="text" class="form-control" id="recipient-name" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-              </div>
-              <div class="form-group">
-                <label for="message-text" class="col-form-label">Number of Contributions </label>
-                <select class="form-control " id="selectOption2" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                  <option value="oneVlog">1</option>
-                  <option value="twoVlogs">2</option>
-                  <option value="threeVlogs">3</option>
-                </select>
-              </div>
-
-              <div id="oneVlog" class="group2">
+            <form  id="vlogContribute" name="vlogContribute">
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
-                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                </div>
-              </div>
-
-              <div id="twoVlogs" class="group2">
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
-                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  <label for="recipient-name" class="col-form-label" >Name*</label>
+                  <input type="text" maxlength="100" class="form-control" id="vlName" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution 2</label>
-                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                </div>
-              </div>
-
-              <div id="threeVlogs" class="group2">
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
-                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  <label for="message-text" class="col-form-label">Email address*</label>
+                  <input type="text" maxlength="100" class="form-control" id="vlEmail" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution 2</label>
-                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  <label for="message-text" class="col-form-label">Number of Contributions </label>
+                  <select class="form-control " id="selectOption2" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                    <option value="oneVlog">1</option>
+                    <option value="twoVlogs">2</option>
+                    <option value="threeVlogs">3</option>
+                  </select>
                 </div>
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution 3</label>
-                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+  
+  
+                <div id="threeVlogs" class="group2">
+                  <div class="form-group vlog-link" id="vlog1">
+                    <label for="message-text" class="col-form-label">Link to Contribution 1*</label>
+                    <input type="text" maxlength="300" class="form-control" id="rsuggested-topic1" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  </div>
+                  <div class="form-group vlog-link" id="vlog2">
+                    <label for="message-text" class="col-form-label">Link to Contribution 2*</label>
+                    <input type="text" maxlength="300" class="form-control" id="rsuggested-topic2" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  </div>
+                  <div class="form-group vlog-link" id="vlog3">
+                    <label for="message-text" class="col-form-label">Link to Contribution 3*</label>
+                    <input type="text" maxlength="300" class="form-control" id="rsuggested-topic3" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  </div>
                 </div>
-              </div>
-
-
-              <script>
-                $(document).ready(function () {
-                $('.group2').hide();
-                $('#oneVlog').show();
-                $('#selectOption2').change(function () {
-                $('.group2').hide();
-                $('#'+$(this).val()).show();
-                })
-                });
-              </script>
-            
-            </form>
-            <!--Form for the Submit Vlogs end here-->
-          </div>
-          <div class="modal-footer">
-            <button type="reset" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Close</button>
-            <button type="submit" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
+  
+  
+                <script>
+                  $(document).ready(function () {
+                    $('.vlog-link').hide();   
+                    $('#vlog1').show();             
+                    $('#selectOption2').change(function () {
+                      $('.vlog-link').hide();  
+                      $('#'+$(this).val()).show();
+                      if($(this).val() == "oneVlog"){
+                        $('#vlog1').show();
+                      }else if($(this).val() == "twoVlogs"){
+                        $('#vlog1').show();
+                        $('#vlog2').show();
+                      }else{
+                        $('#vlog1').show();
+                        $('#vlog2').show();
+                        $('#vlog3').show();
+                      }
+                    })
+                  });
+                </script>
+              
+              </form>
+              <!--Form for the Submit Vlogs end here-->
+            </div>
+            <div class="modal-footer">
+              <button type="reset" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Close</button>
+              <button type="submit" id="vlogSubButton" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     
     
     <div class="modal fade" id="submitcontent_blog" tabindex="-1" role="dialog" aria-labelledby="submitcontent_blogLabel" aria-hidden="true">
@@ -1398,7 +1405,7 @@ redirect_from:
           </div>
           <div class="modal-body" style="background-color: #fff; font-size: 20;;">
              <!--Alert Box Thank you-->
-             <div class="alert " role="alert" id="successAlert1"  style="background-color: #E6EAEB;color: #20b6b0;">
+             <div class="alert " role="alert" id="blSuccessAlert"  style="background-color: #E6EAEB;color: #20b6b0;">
               <h4 class="alert-heading">Thank you!</h4>
               <p>We appreciate your effort to contribute to the Ballerina.</p>
               <hr>
@@ -1406,86 +1413,79 @@ redirect_from:
             </div>
             <!--Alert Box Thank you-->
             <!--Alert Box Wrong-->
-            <div class="alert " role="alert" id="wrongAlert1"style="background-color: #E6EAEB;color: #20b6b0;">
+            <div class="alert " role="alert" id="blFailAlert"style="background-color: #E6EAEB;color: #20b6b0;">
               <h4 class="alert-heading">Oops!</h4>
               <p>Something wrong ! Can you try again.</p>
               <hr>
               <p class="mb-0">If you need any further info. Please reach us via contact@ballerina.io.</p>
             </div>
+            <div id="blform-error" class="alert alert-danger"></div>
             <!--Alert Box Wrong-->
             <!--Form for the Submit Blogs start here-->
-            <form>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label" >Name</label>
-                <input type="text" class="form-control" id="recipient-email" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-              </div>
-              <div class="form-group">
-                <label for="message-text" class="col-form-label">Email address</label>
-                <input type="text" class="form-control" id="recipient-name" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-              </div>
-
-              <div class="form-group">
-                <label for="message-text" class="col-form-label">Number of Contributions </label>
-                <select class="form-control " id="selectOption1" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                  <option value="OneBlog">1</option>
-                  <option value="TwoBlogs">2</option>
-                  <option value="ThreeBlogs">3</option>
-                </select>
-              </div>
-
-              <div id="OneBlog" class="group1">
+            <form id="blogContribute" name="blogContribute">
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
-                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                </div>
-              </div>
-
-              <div id="TwoBlogs" class="group1">
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
-                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  <label for="recipient-name" class="col-form-label" >Name*</label>
+                  <input type="text" maxlength="100" class="form-control" id="blName" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution 2</label>
-                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  <label for="message-text" class="col-form-label">Email address*</label>
+                  <input type="text" maxlength="100" class="form-control" id="blEmail" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
-              </div>
-
-              <div id="ThreeBlogs" class="group1">
+  
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
-                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  <label for="message-text" class="col-form-label">Number of Contributions </label>
+                  <select class="form-control " id="selectOption1" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                    <option value="oneBlog">1</option>
+                    <option value="twoBlogs">2</option>
+                    <option value="threeBlogs">3</option>
+                  </select>
                 </div>
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution 2</label>
-                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+  
+                <div id="ThreeBlogs" class="group1">
+                  <div class="form-group blog-link" id="blog1">
+                    <label for="message-text" class="col-form-label">Link to Contribution 1*</label>
+                    <input type="text" maxlength="300" class="form-control" id="blsuggested-topic1" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  </div>
+                  <div class="form-group blog-link" id="blog2">
+                    <label for="message-text" class="col-form-label">Link to Contribution 2*</label>
+                    <input type="text" maxlength="300" class="form-control" id="blsuggested-topic2" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  </div>
+                  <div class="form-group blog-link" id="blog3">
+                    <label for="message-text" class="col-form-label">Link to Contribution 3*</label>
+                    <input type="text" maxlength="300" class="form-control" id="blsuggested-topic3" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution 3</label>
-                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                </div>
-              </div>
-
-
-              <script>
-                $(document).ready(function () {
-                $('.group1').hide();
-                $('#OneBlog').show();
-                $('#selectOption1').change(function () {
-                $('.group1').hide();
-                $('#'+$(this).val()).show();
-                })
-                });
-              </script>
-            <!--Form for the Submit Blogs end here-->
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="reset" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Close</button>
-            <button type="submit" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
+  
+                <script>
+                  $(document).ready(function () {
+                    $('.blog-link').hide();   
+                    $('#blog1').show();             
+                    $('#selectOption1').change(function () {
+                      $('.blog-link').hide();  
+                      $('#'+$(this).val()).show();
+                      if($(this).val() == "oneBlog"){
+                        $('#blog1').show();
+                      }else if($(this).val() == "twoBlogs"){
+                        $('#blog1').show();
+                        $('#blog2').show();
+                      }else{
+                        $('#blog1').show();
+                        $('#blog2').show();
+                        $('#blog3').show();
+                      }
+                    })
+                  });
+                </script>
+  
+              <!--Form for the Submit Blogs end here-->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="reset" id="blogResetButton" class="cbtn1 resetButton" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Close</button>
+              <button type="submit" id="blogSubButton" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-</div>
+  </div>
   

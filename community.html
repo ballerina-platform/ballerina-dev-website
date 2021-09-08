@@ -386,11 +386,7 @@ redirect_from:
                           info: 'Code to Kubernetes: Deployment Should not be an Afterthought',
                           coordinates: [48.1371079,11.5753822, 4]
                         },
-                        {
-                          id: "e_31",
-                          info: 'Automatic Microservices Observability with Open-Source Programming Language: Ballerina',
-                          coordinates: [34.4443293,-122.1598455, 3]
-                        },
+                       
                         
                       
                       ];
@@ -429,20 +425,23 @@ redirect_from:
                             infowindow.setContent(locations[i].info);
                             infowindow.open(map, marker);
 
-                            document.getElementById("cards-window").scrollTop = document.getElementById(locations[i].id).offsetTop;                          
+                            document.getElementById("cards-window").scrollTop = document.getElementById(locations[i].id).offsetTop;
+                            document.getElementById(locations[i].id).style.backgroundColor="aliceblue";
+                                                   
                             
                           }
                         })(marker, i));
                       }
                     </script>
-                  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWAVdOUBjiet7Uw2ca-FNdSlON_nV-Rs0&callback=initMap"></script> 
+                   <script async defer src="https://maps.googleapis.com/maps/api/js?key=QUl6YVN5QTgwSEJkU2V2cjJXLW56QmMwYmRnRlduN0swZ2d2anA0&callback=initMap"></script> 
+
                     
                   </div>
                  
                   
                 </div>
                 <div class="col sm-12 col-md-6 col-lg-6" >
-                   <div id="cards-window" class="overflow-auto scrollbarHide" style="height:600px; overflow-y: scroll; " >
+                   <div id="cards-window"  class="overflow-auto scrollbar" style="height:600px; overflow-y: scroll; " >
                     
                     
                       <div  id="e_33"class="cBoxType1" >
@@ -1028,228 +1027,123 @@ redirect_from:
     
     <!-- <h3 style="margin-top: 20px;margin-left: 10px;">View Contributions</h3> -->
     
-    <div class="container" style="background-color:#E6EAEB;" style="padding-top:40px;padding-bottom: 40px;margin-left: 10px;">
+    <div class="container" style="background-color:#fafafa ;" style="padding-top:40px;padding-bottom: 40px;margin-left: 10px;">
     
     
     
     <div class="row" style="padding-bottom:30px;padding-left:10px;padding-right:10px;padding-top:10px;  ">
         <div class="col-md-6">
-         <h3 style="margin:20px 0px;">Vlogs</h3>
+         <h3 style="margin:20px 0px 30px 0px;">Watch</h3>
           <div class="overflow-auto" style="height:500px; overflow-y: scroll;">
-            <a class="linkTest1" href="https://www.youtube.com/watch?v=4mwEZ4dInRU&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=1" target="_blank" style="color:#585A5E;" >
-            <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
-               <div class="row">
-                   <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
-                     <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:100%;color:#585A5E;">
-                   </div>
-                   <div class="col-sm-12 col-md-6 col-lg-6"style="padding:10px 20px" >
-                     <h5 class="card-title"  style="font-weight:500; line-height:26px;">Ballerina, a Microservices Native Language</h5>
-                     <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                    </div>
-              </div>
-            </div>
-           </a>
-           <a class="linkTest1" href="https://www.youtube.com/watch?v=z25CPqJMFUk&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=2" target="_blank" style="color:#585A5E;" >
-            <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
-               <div class="row">
-                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
-                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:100%;color:#585A5E;">
-                  </div>
-                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
-                    <h5 class="card-title"  style="font-weight:500; line-height:26px;">Building Lightweight Microservices Using Redis</h5>
-                    <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                  </div>
-              </div>
-            </div>
-          </a>
-          <a class="linkTest1" href="https://www.youtube.com/watch?v=JtwmHo5Ivwg&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=3" target="_blank" style="color:#585A5E;" >
-            <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
-               <div class="row">
-                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
-                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:100%;color:#585A5E;">
-                  </div>
-                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
-                    <h5 class="card-title"  style="font-weight:500; line-height:26px;">Ballerina - A new language for the networked world</h5>
-                    <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                  </div>
-              </div>
-            </div>
-          </a>
-          <a class="linkTest1" href="https://www.youtube.com/watch?v=GSHixCT0Gcg&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=4" target="_blank" style="color:#585A5E;" >
-            <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
-               <div class="row">
-                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
-                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
-                  </div>
-                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
-                    <h5 class="card-title"  style="font-weight:500; line-height:26px;">TGI Kubernetes 042: Ballerina</h5>
-                    <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                  </div>
-              </div>
-            </div>
-          </a>
+          <ul style="padding-left: 0px;">
+            <a class="linkTest1" href="https://www.youtube.com/watch?v=4mwEZ4dInRU&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=1" target="_blank" style="color:#585A5E; line-height: 20px;" >
+            <li class="watchlist">
+              <h5 style="margin: 0px; line-height: 28px;">Ballerina, a Microservices Native Language</h5>
+            </li> 
+            </a>
+           <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
+            <a class="linkTest1" href="https://www.youtube.com/watch?v=z25CPqJMFUk&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=2" target="_blank" style="color:#585A5E; line-height: 20px;" >
+              <li class="watchlist">
+                <h5 style="margin: 0px; line-height: 28px;">Building Lightweight Microservices Using Redis</h5>
+              </li>
+            </a>
+           <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
+            <a class="linkTest1" href="https://www.youtube.com/watch?v=JtwmHo5Ivwg&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=3" target="_blank" style="color:#585A5E; line-height: 20px;" >
+              <li class="watchlist">
+                <h5 style="margin: 0px; line-height: 28px;">Ballerina - A new language for the networked world</h5>
+              </li>
+            </a>
+           <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
+            <a class="linkTest1" href="https://www.youtube.com/watch?v=GSHixCT0Gcg&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=4" target="_blank" style="color:#585A5E; line-height: 20px;" >
+              <li class="watchlist">
+                <h5 style="margin: 0px; line-height: 28px;">TGI Kubernetes 042: Ballerina</h5>
+              </li>
+            </a>
+           <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
+            <a class="linkTest1" href="https://www.youtube.com/watch?v=zPgYfBF56eA&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=5" target="_blank" style="color:#585A5E; line-height: 20px;" >
+              <li class="watchlist">
+                <h5 style="margin: 0px; line-height: 28px;">Tyler Jewell, WSO2 | KubeCon + CloudNativeCon EU 2018</h5>
+              </li>
+            </a>
+           <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
+            <a class="linkTest1" href="https://www.youtube.com/watch?v=4mwEZ4dInRU&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=1" target="_blank" style="color:#585A5E; line-height: 20px;" >
+              <li class="watchlist">
+                <h5 style="margin: 0px; line-height: 28px;">Ballerina, a Microservices Native Language</h5>
+              </li>
+            </a>
 
-          <a class="linkTest1" href="https://www.youtube.com/watch?v=zPgYfBF56eA&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=5" target="_blank" style="color:#585A5E;margin-bottom:0px;" >
-            <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
-               <div class="row">
-                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
-                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
-                  </div>
-                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
-                    <h5 class="card-title"  style="font-weight:500; line-height:26px;">Tyler Jewell, WSO2 | KubeCon + CloudNativeCon EU 2018</h5>
-                    <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                  </div>
-              </div>
-            </div>
-          </a>
+
+          </ul>
+           
     
     
           </div>
         </div>
     
          <div class="col-md-6">
-         <h3 style="margin:20px 0px;">Blogs</h3>
+         <h3 style="margin:20px 0px 30px 0px;">Read</h3>
           <div class="overflow-auto" style="height:500px; overflow-y: scroll; ">
-            <a class="linkTest1" href="https://medium.com/ballerina-techblog/unit-test-ballerina-integration-with-mock-backends-ffff790edb9f" target="_blank" style="color:#585A5E;" >
-              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
-                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
-                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
-                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Unit test Ballerina integration with Mock backends</h5>
-                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                    </div>
-                </div>
-              </div>
-            </a>
-            <a class="linkTest1" href="https://medium.com/ballerina-techblog/get-started-with-service-testing-using-ballerina-test-framework-18e3b907a33" target="_blank" style="color:#585A5E;" >
-              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
-                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
-                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
-                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Get started with service testing using Ballerina test framework</h5>
-                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                    </div>
-                </div>
-              </div>
-            </a>
-            <a class="linkTest1" href="https://medium.com/ballerina-techblog/microservices-security-with-ballerina-e9d430f05373" target="_blank" style="color:#585A5E;" >
-              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
-                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
-                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
-                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Microservices Security with Ballerina</h5>
-                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                    </div>
-                </div>
-              </div>
-            </a>
-    
-            <a class="linkTest1" href="https://medium.com/ballerina-techblog/go-real-time-with-ballerina-websockets-58c40ac11d6" target="_blank" style="color:#585A5E;" >
-              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
-                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
-                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
-                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Go Real-Time with Ballerina WebSockets</h5>
-                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                    </div>
-                </div>
-              </div>
-            </a>
-    
-            <a class="linkTest1" href="https://medium.com/ballerina-techblog/rest-is-history-lets-do-graphql-with-ballerina-dce7510b61e8" target="_blank" style="color:#585A5E;" >
-              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
-                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
-                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
-                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">REST is History, Let’s Do GraphQL (with Ballerina)</h5>
-                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                    </div>
-                </div>
-              </div>
-            </a>
+           
+            <ul style="padding-left: 0px;">
+              <a class="linkTest1" href="https://medium.com/ballerina-techblog/unit-test-ballerina-integration-with-mock-backends-ffff790edb9f" target="_blank" style="color:#585A5E; line-height: 20px;" >
+              <li class="watchlistblog">
+                <h5 style="margin: 0px; line-height: 28px;">Unit test Ballerina integration with Mock backends</h5>
+              </li> 
+              </a>
+              <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
+              <a class="linkTest1" href="https://medium.com/ballerina-techblog/get-started-with-service-testing-using-ballerina-test-framework-18e3b907a33" target="_blank" style="color:#585A5E; line-height: 20px;" >
+                <li class="watchlistblog">
+                  <h5 style="margin: 0px; line-height: 28px;">Get started with service testing using Ballerina test framework</h5>
+                </li>
+              </a>
+             <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
+              <a class="linkTest1" href="https://medium.com/ballerina-techblog/microservices-security-with-ballerina-e9d430f05373" target="_blank" style="color:#585A5E; line-height: 20px;" >
+                <li class="watchlistblog">
+                  <h5 style="margin: 0px; line-height: 28px;">Microservices Security with Ballerina</h5>
+                </li>
+              </a>
+             <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
+              <a class="linkTest1" href="https://medium.com/ballerina-techblog/go-real-time-with-ballerina-websockets-58c40ac11d6" target="_blank" style="color:#585A5E; line-height: 20px;" >
+                <li class="watchlistblog">
+                  <h5 style="margin: 0px; line-height: 28px;">Go Real-Time with Ballerina WebSockets</h5>
+                </li>
+              </a>
+             <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
+              <a class="linkTest1" href="https://medium.com/ballerina-techblog/rest-is-history-lets-do-graphql-with-ballerina-dce7510b61e8" target="_blank" style="color:#585A5E; line-height: 20px;" >
+                <li class="watchlistblog">
+                  <h5 style="margin: 0px; line-height: 28px;">REST is History, Let’s Do GraphQL (with Ballerina)</h5>
+                </li>
+              </a>
 
-            <a class="linkTest1" href="https://medium.com/ballerina-techblog/single-liner-payload-read-85a16e3265fc" target="_blank" style="color:#585A5E;" >
-              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
-                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
-                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
-                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Single Liner Payload Read…</h5>
-                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                    </div>
-                </div>
-              </div>
-            </a>
+             <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
+  
+              <a class="linkTest1" href="https://medium.com/ballerina-techblog/single-liner-payload-read-85a16e3265fc" target="_blank" style="color:#585A5E; line-height: 20px;" >
+                <li class="watchlistblog">
+                  <h5 style="margin: 0px; line-height: 28px;">Single Liner Payload Read…</h5>
+                </li>
+              </a>
 
-            <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-integration-programming-language-5d8e1b52e582" target="_blank" style="color:#585A5E;" >
-              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
-                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
-                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
-                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Ballerina: Integration Programming Language</h5>
-                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                    </div>
-                </div>
-              </div>
-            </a>
-
-            <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-shell-repl-implementation-overview-ee7e909da20c" target="_blank" style="color:#585A5E;" >
-              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
-                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
-                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
-                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Ballerina Shell REPL — Implementation Overview</h5>
-                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                    </div>
-                </div>
-              </div>
-            </a>
-
-            <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-shell-a-repl-for-ballerina-d5053c94363f" target="_blank" style="color:#585A5E;" >
-              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
-                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
-                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
-                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Ballerina Shell — A REPL for Ballerina</h5>
-                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                    </div>
-                </div>
-              </div>
-            </a>
-
-            <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-concurrency-model-and-non-blocking-i-o-14c6bed595f4" target="_blank" style="color:#585A5E;margin-bottom:0px;" >
-              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
-                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
-                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
-                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Ballerina Concurrency Model and Non-Blocking I/O</h5>
-                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
-                    </div>
-                </div>
-              </div>
-            </a>
-
-
-    
+             <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
+              <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-shell-repl-implementation-overview-ee7e909da20c" target="_blank" style="color:#585A5E; line-height: 20px;" >
+                <li class="watchlistblog">
+                  <h5 style="margin: 0px; line-height: 28px;">Ballerina Shell REPL — Implementation Overview</h5>
+                </li>
+              </a>
+             <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
+              <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-integration-programming-language-5d8e1b52e582" target="_blank" style="color:#585A5E; line-height: 20px;" >
+                <li class="watchlistblog">
+                  <h5 style="margin: 0px; line-height: 28px;">Ballerina: Integration Programming Language</h5>
+                </li>
+              </a>
+              <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
+              <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-concurrency-model-and-non-blocking-i-o-14c6bed595f4" target="_blank" style="color:#585A5E; line-height: 20px;" >
+                <li class="watchlistblog">
+                  <h5 style="margin: 0px; line-height: 28px;">Ballerina Concurrency Model and Non-Blocking I/O</h5>
+                </li>
+              </a>
+  
+  
+            </ul>
     
           </div>
         </div>

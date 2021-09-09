@@ -653,8 +653,9 @@ if(contribution == "oNewsletter"){
         
     }else {
         $('#agendaContribute').trigger("reset");
-        $(".pdframe").html("<iframe src='https://go.pardot.com/l/142131/2021-08-25/9sy26w?email=" + email + "&first_name=" + first_name + "&last_name=" + lastname + "&compnay=" + compnay + "&submission=" + submission + "'></iframe>");
+        $(".pdframe").html("<iframe src='https://go.pardot.com/l/142131/2021-08-25/9sy26w?email=" + email + "&first_name=" + firstname + "&last_name=" + lastname + "&company=" + company + "&submission=" + submission + "'></iframe>");
         $("#agSuccessAlert").show();
+        $("#agendaContribute").hide();
         //$("#form-status").addClass("cShowBlock");
         $("#agform-error").removeClass("cShowBlock");
         
@@ -711,6 +712,7 @@ function vlogContribution() {
         $('#vlogContribute').trigger("reset");
         $(".pdframe").html("<iframe src='https://go.pardot.com/l/142131/2021-08-25/9sy271?email=" + email + "&first_name=" + firstname + "&last_name=" + lastname + "&submission=" + submission + "'></iframe>");
         $("#vlSuccessAlert").show();
+        $('#vlogContribute').hide();
         //$("#form-status").addClass("cShowBlock");
         $("#vlform-error").removeClass("cShowBlock");
         
@@ -767,6 +769,7 @@ function blogContribution() {
         $('#blogContribute').trigger("reset");
         $(".pdframe").html("<iframe src='https://go.pardot.com/l/142131/2021-08-25/9sy26y?email=" + email + "&first_name=" + firstname + "&last_name=" + lastname + "&submission=" + submission + "'></iframe>");
         $("#blSuccessAlert").show();
+        $('#blogContribute').hide();
         //$("#form-status").addClass("cShowBlock");
         $("#blform-error").removeClass("cShowBlock");
         

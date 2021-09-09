@@ -582,6 +582,10 @@ $(document).ready(function() {
 
 });
 
+function isUrlValid(url) {
+    return /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(url);
+}
+
 function validate_redirection(path) {
     $('body').hide();
     let obsolete_paths = ["/v0-990", "/v0-991", "/v1-0", "/v1-1"];
@@ -696,16 +700,22 @@ function vlogContribution() {
     } else if (!isEmail(email)) {
         $("#vlform-error").text("Please enter a valid email");
         $("#vlform-error").addClass("cShowBlock");
-    } else if (vlogCount == 1 && (vLink1 == "")) {
+    } else if (vlogCount == "oneVlog" && (vLink1 == "")) {
             $("#vlform-error").text("Please add the Vlog details");
             $("#vlform-error").addClass("cShowBlock");
         
-    }else if (vlogCount == 2 && (vLink2 == "")) {
+    }else if (vlogCount == "twoVlogs" && (vLink2 == "")) {
         $("#vlform-error").text("Please add the Vlog details");
         $("#vlform-error").addClass("cShowBlock");
     
-    }else if (vlogCount == 3 && (vLink3 == "")) {
+    }else if (vlogCount == "threeVlogs" && (vLink3 == "")) {
         $("#vlform-error").text("Please add the Vlog details");
+        $("#vlform-error").addClass("cShowBlock");
+
+    }else if ((vlogCount == "oneVlog" && !isUrlValid(vLink1)) || 
+    ((vlogCount == "twoVlogs") && (!isUrlValid(vLink1) || !isUrlValid(vLink2))) || 
+    (vlogCount == "threeVlogs" && !isUrlValid(vLink1) || !isUrlValid(vLink2) || !isUrlValid(vLink3))) {
+        $("#vlform-error").text("Please add a valid Vlog link");
         $("#vlform-error").addClass("cShowBlock");
 
     }else {
@@ -763,6 +773,12 @@ function blogContribution() {
     
     }else if (blogCount == "threeBlogs" && (bLink3 == "")) {
         $("#blform-error").text("Please add the blog details");
+        $("#blform-error").addClass("cShowBlock");
+
+    }else if ((blogCount == "oneBlog" && !isUrlValid(bLink1)) || 
+    ((blogCount == "twoBlogs") && (!isUrlValid(bLink1) || !isUrlValid(bLink2))) || 
+    (blogCount == "threeBlogs" && !isUrlValid(bLink1) || !isUrlValid(bLink2) || !isUrlValid(bLink3))) {
+    $("#blform-error").text("Please add a valid Blog link");
         $("#blform-error").addClass("cShowBlock");
 
     }else {

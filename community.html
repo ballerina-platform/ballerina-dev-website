@@ -143,7 +143,7 @@ redirect_from:
                     <hr>
                     <p class="mb-0">If you need any further info. Please reach us via contact@ballerina.io.</p>
                   </div>
-                  <div id="agform-error" class="alert alert-danger"></div>
+                  <div id="agform-error" class="alert alert-danger1"></div>
                   <!--Alert Box Wrong-->
                   <!--Form for the Contribution start here-->
                   <form id="agendaContribute" name="agendaContribute">
@@ -316,38 +316,46 @@ redirect_from:
           <div class="card card-body">
             <div class="container">
               <div class="row" >
-                <div class="col sm-12 col-md-6 col-md-6" style="padding: 0px;">
-                  <div id="map" style="width:100%;height:664.85px;"> </div>
+                
 
-                    
-                 
+                <div class="col sm-12 col-md-6 col-md-6" style="padding: 0px;">
+                  <div id="map" style="width:100%;height:656px;"> </div>
                   
                 </div>
                 <div class="col sm-12 col-md-6 col-lg-6" >
-                <div class="row">
+
+                  <div class="tab">
+                    <a data-toggle="tab" href="#upcoming"><button type="button" class=" cbtn2 " id="upcoming_e" style="background-color: #20b6b0;color:#fff;margin:0px 0px 10px 0px;">Upcoming Events</button></a>
+                    <a data-toggle="tab" href="#past"><button type="button" class="cbtn1 " id="past_e"  style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin:0px 0px 10px 10px;">Past Events</button></a>
+                    <!-- <button class="tablinks" onclick="openCity(event, 'London')">London</button>
+                    <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button> -->
+                  </div>
+                 
+                <!-- <div class="row">
                  
                   <div class="map_filter">
                     <button type="button" class="cbtn2 " id="upcoming_e" style="background-color: #20b6b0;color:#fff;margin:0px 0px 10px 0px;">Upcoming Events</button>
                     <button type="button" class="cbtn1 " id="past_e"  style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin:0px 0px 10px 10px;">Past Events</button>
                   </div>
-                </div>
-                  <script>
-                    $("#upcoming_e").click(function(){
-                      document.getElementById("cards-window").scrollTop = document.getElementById('upcoming_events').offsetTop;
-                     })
-                  </script>
-                   <script>
-                    $("#past_e").click(function(){
-                      document.getElementById("cards-window").scrollTop = document.getElementById('past_events').offsetTop;
-                     })
-                  </script>
+                </div> -->
+                <!-- <div id="Upcoming" class="tabcontent">
+                  <div class="row">
+                    <div id="cards-window"  class="overflow-auto scrollbar" style="height:600px; overflow-y: scroll;" >
+                    </div>
+                  </div>
+                </div> -->
 
+               
                   <div class="row">
                    <div id="cards-window"  class="overflow-auto scrollbar" style="height:600px; overflow-y: scroll;" >
+                    <div class="tab-content">
                    
-                    <div  id="upcoming_events"class="" >
-                      <h3 style="margin:20px 0px 30px 0px;">Upcoming Events</h3>
+                    <div id="upcoming" class="tab-pane">
+
+                    
+ 
                     </div>
+                    <div id="past" class="tab-pane">
                       <div  id="e_33"class="cBoxType1" >
                         <div class="card-body" style="margin:20px 15px; padding:10px 15px">
                           <h4 class="card-title" style="color: #20b6b0; font-weight:400;">15-16 June 2021 | <span style="color: #585A5E;">12:00-13:00</span> | Online</h4>
@@ -415,6 +423,9 @@ redirect_from:
                         </div>
                       </div>
 
+                   
+                    
+
                       <div  id="e_28"class="cBoxType1" >
                         <div class="card-body" style="margin:20px 15px; padding:10px 15px">
                           <h4 class="card-title" style="color: #20b6b0; font-weight:400;">28 October 2020 <span style="color: #585A5E;"></span> | Virtual</h4>
@@ -427,9 +438,7 @@ redirect_from:
                           <a href="https://apiworld.co/conference/speakers/" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">More Info</button></a>
                         </div>
                       </div>
-                      <div  id="past_events"class="" >
-                        <h3 style="margin:20px 0px 30px 0px;">Past Events</h3>
-                      </div>
+                     
                       <div  id="e_27"class="cBoxType1" >
                         <div class="card-body" style="margin:20px 15px; padding:10px 15px">
                           <h4 class="card-title" style="color: #20b6b0; font-weight:400;">27-29 October 2020 <span style="color: #585A5E;"></span> | Virtual</h4>
@@ -784,7 +793,7 @@ redirect_from:
                           <a href="https://www.slideshare.net/BallerinaLang/apachecon-na-2019-conquering-network-distributed-applications-using-the-ballerina-programming-language" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
                         </div>
                       </div>
-
+                   </div>
                </div>
 
 
@@ -1378,7 +1387,8 @@ redirect_from:
     </div>
   
    
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFCAmKNCKRiv_1FbUzKZf6j-YnJih7NNo&callback=initMap&libraries=&v=weekly" async type="text/javascript"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFCAmKNCKRiv_1FbUzKZf6j-YnJih7NNo&callback=initMap&libraries=&v=weekly" async type="text/javascript"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1LSqvEBQu2ZxmqR1VL4nLytlHvTIXpfQ&callback=initMap&libraries=&v=weekly" async type="text/javascript"></script>
     <script type="text/javascript">
       
       var locations = [
@@ -1487,6 +1497,7 @@ redirect_from:
           position: new google.maps.LatLng(locations[i].coordinates[0], locations[i].coordinates[1]),
           map: map,
           // icon:"https://wso2.cachefly.net/wso2/sites/all/2021/images/marker-ballerina.png",
+          icon:"/img/community/marker-ballerina.png",
           
         });
 
@@ -1514,3 +1525,27 @@ redirect_from:
       } 
       
     </script>
+
+
+<!-- <script>
+  function openEvent(event, Upcoming) {
+// Declare all variables
+var i, tabcontent, tablinks;
+
+// Get all elements with class="tabcontent" and hide them
+tabcontent = document.getElementsByClassName("tabcontent");
+for (i = 0; i < tabcontent.length; i++) {
+tabcontent[i].style.display = "none";
+}
+
+// Get all elements with class="tablinks" and remove the class "active"
+tablinks = document.getElementsByClassName("tablinks");
+for (i = 0; i < tablinks.length; i++) {
+tablinks[i].className = tablinks[i].className.replace(" active", "");
+}
+
+// Show the current tab, and add an "active" class to the button that opened the tab
+document.getElementById(cityName).style.display = "block";
+evt.currentTarget.className += " active";
+} 
+</script> -->

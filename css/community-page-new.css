@@ -461,7 +461,7 @@ li.watchlistblog:hover {
         margin-left: 0px !important;
     }
 
-    .map_filter{
+    .tab{
         margin-top: 10px;
     }
   
@@ -477,7 +477,7 @@ li.watchlistblog:hover {
 {
  
   max-width:540px;
-  padding-top: 30px;
+ 
 }
 
 #style-1::-webkit-scrollbar

@@ -104,7 +104,7 @@ a.cBallerina-io-Home-main-download-button {
     color: #fff;
 }
 
-.cSignUp, button#subscribeUserButton {
+.cSignUp {
 	background: #56b3af;
 	border: none;
 	color: #fff;
@@ -119,8 +119,18 @@ a.cBallerina-io-Home-main-download-button {
 	font-weight: 400;
 }
 
-.cSignUp:hover , button#subscribeUserButton:hover {
+.cSignUp:hover:hover {
 background:#464646;
+}
+
+.alert-danger1{
+    background-color: #464646;
+    color:#fff;
+}
+
+.alert-success1{
+    background-color: #56b3af;
+    color: #fff;
 }
 
 .cAgenda, button#agendaUserButton {

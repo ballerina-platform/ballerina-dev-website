@@ -108,7 +108,7 @@ a.cBallerina-io-Home-main-download-button {
 	background: #56b3af;
 	border: none;
 	color: #fff;
-	/* padding: 10px 20px; */
+	 padding: 10px 20px; 
 	margin-top: 15px;
 	display: inline-block;
 	width: auto;
@@ -387,7 +387,8 @@ a.cBallerina-io-Home-main-download-button:hover {
 
 li.watchlist {
     /** the image will be vertically aligned in the center **/
-    background: url(/img/community/play-original.png) left center no-repeat; 
+    background: url(/img/community/play-original.svg) left center no-repeat; 
+    background-size:29px;
 
     /** move the text to the right **/
     padding-left: 40px; 
@@ -398,7 +399,8 @@ li.watchlist {
 
 li.watchlist:hover {
     /** the image will be vertically aligned in the center **/
-    background: url(/img/community/play-hover.png) left center no-repeat; 
+    background: url(/img/community/play-hover.svg) left center no-repeat; 
+    background-size:29px;
 
     /** move the text to the right **/
     padding-left: 40px; 
@@ -412,8 +414,8 @@ li.watchlist:hover {
 
 li.watchlistblog {
     /** the image will be vertically aligned in the center **/
-    background: url(/img/community/read-original.png) left center no-repeat; 
-
+    background: url(/img/community/read-original.svg) left center no-repeat; 
+    background-size:29px;
     /** move the text to the right **/
     padding-left: 40px; 
     margin-bottom: 20px;
@@ -425,7 +427,8 @@ li.watchlistblog {
 
 li.watchlistblog:hover {
     /** the image will be vertically aligned in the center **/
-    background: url(/img/community/read-hover.png) left center no-repeat; 
+    background: url(/img/community/read-hover.svg) left center no-repeat; 
+    background-size:29px;
 
     /** move the text to the right **/
     padding-left: 40px; 
@@ -447,6 +450,10 @@ li.watchlistblog:hover {
     .cbtn1{
         margin-left: 0px !important;
     }
+
+    .map_filter{
+        margin-top: 10px;
+    }
   
   }
 
@@ -459,7 +466,8 @@ li.watchlistblog:hover {
 .scrollbar
 {
  
-  max-width:545px;
+  max-width:540px;
+  padding-top: 30px;
 }
 
 #style-1::-webkit-scrollbar
@@ -529,11 +537,12 @@ li.watchlistblog:hover {
     border-radius:0px;
     margin:30px; 
     padding: 10px 20px;
-    border: none!important;
+    border: #20b6b0 solid 1px !important;
 }
 
 .cbtn2:hover{
     background-color:#494949 !important;
+    border: #494949 solid 1px !important;
     
 }
 

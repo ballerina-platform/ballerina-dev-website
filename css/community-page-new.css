@@ -104,11 +104,11 @@ a.cBallerina-io-Home-main-download-button {
     color: #fff;
 }
 
-.cSignUp, button#subscribeUserButton {
+.cSignUp {
 	background: #56b3af;
 	border: none;
 	color: #fff;
-	/* padding: 10px 20px; */
+	 padding: 10px 20px; 
 	margin-top: 15px;
 	display: inline-block;
 	width: auto;
@@ -119,8 +119,18 @@ a.cBallerina-io-Home-main-download-button {
 	font-weight: 400;
 }
 
-.cSignUp:hover , button#subscribeUserButton:hover {
+.cSignUp:hover:hover {
 background:#464646;
+}
+
+.alert-danger1{
+    background-color: #797979;
+    color:#fff;
+}
+
+.alert-success1{
+    background-color: #56b3af;
+    color: #fff;
 }
 
 .cAgenda, button#agendaUserButton {
@@ -367,7 +377,6 @@ a.cBallerina-io-Home-main-download-button:hover {
     background-color: #ffffff;
     border-radius: 0;
     box-shadow: 0;
-    margin-bottom: 10px;
     box-shadow:none;
 }
 
@@ -382,10 +391,78 @@ a.cBallerina-io-Home-main-download-button:hover {
 
 }
 
+.watchlist{
+    list-style: none !important;
+}
+
+li.watchlist {
+    /** the image will be vertically aligned in the center **/
+    background: url(/img/community/play-original.svg) left center no-repeat; 
+    background-size:29px;
+
+    /** move the text to the right **/
+    padding-left: 40px; 
+    margin-bottom: 20px;
+    
+    
+}
+
+li.watchlist:hover {
+    /** the image will be vertically aligned in the center **/
+    background: url(/img/community/play-hover.svg) left center no-repeat; 
+    background-size:29px;
+
+    /** move the text to the right **/
+    padding-left: 40px; 
+}
+
+
+.watchlistblog{
+    list-style: none !important;
+    
+}
+
+li.watchlistblog {
+    /** the image will be vertically aligned in the center **/
+    background: url(/img/community/read-original.svg) left center no-repeat; 
+    background-size:29px;
+    /** move the text to the right **/
+    padding-left: 40px; 
+    margin-bottom: 20px;
+    
+
+    
+    
+}
+
+li.watchlistblog:hover {
+    /** the image will be vertically aligned in the center **/
+    background: url(/img/community/read-hover.svg) left center no-repeat; 
+    background-size:29px;
+
+    /** move the text to the right **/
+    padding-left: 40px; 
+}
+/* .watchlist{
+    list-style-image: url('/img/community/play-original.png') left center no-repeat !important;
+    background: url(../img/bullet.png) left center no-repeat;
+    line-height: 50px;
+    background-color: none;
+    background-repeat: no-repeat;
+    background-position:  10px;
+} */
+
 @media screen and (max-width: 774px) {
     .cCardbody{
         margin-bottom: 0px !important;
         padding-bottom: 0px !important;
+    }
+    .cbtn1{
+        margin-left: 0px !important;
+    }
+
+    .tab{
+        margin-top: 10px;
     }
   
   }
@@ -394,17 +471,26 @@ a.cBallerina-io-Home-main-download-button:hover {
     background-color: aliceblue;
 }
 
-.example::-webkit-scrollbar {
-    /* display: none; */
-    scrollbar-width:10px;
 
+
+.scrollbar
+{
+ 
+  max-width:540px;
+ 
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.scrollbarHide {
-    scrollbar-width: 10px;
-  /*-ms-overflow-style: 10px;   IE and Edge */
-  /*scrollbar-width: 10px;   Firefox */
+#style-1::-webkit-scrollbar
+{
+  width: 16px;
+  background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar-thumb
+{
+  border-radius: 12px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
 }
 /* .cBoxType1{
     right:0;
@@ -461,11 +547,12 @@ a.cBallerina-io-Home-main-download-button:hover {
     border-radius:0px;
     margin:30px; 
     padding: 10px 20px;
-    border: none!important;
+    border: #20b6b0 solid 1px !important;
 }
 
 .cbtn2:hover{
     background-color:#494949 !important;
+    border: #494949 solid 1px !important;
     
 }
 

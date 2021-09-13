@@ -219,7 +219,9 @@ redirect_from:
                     
                   </div>
                   <div class="modal-footer">
+
                     <button type="reset" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Reset</button>
+
                     <button type="button" id="agendaSubButton" class="cbtn2" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
                   </div>
   
@@ -1392,12 +1394,23 @@ redirect_from:
                   <label for="message-text" class="col-form-label">Link to Contribution 2</label>
                   <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
-              </div>
 
-              <div id="threeVlogs" class="group2">
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
-                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+  
+  
+                <div id="threeVlogs" class="group2">
+                  <div class="form-group vlog-link" id="vlog1">
+                    <label for="message-text" class="col-form-label">Link to Contribution 1*</label>
+                    <input type="text" maxlength="300" class="form-control" id="rsuggested-topic1" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  </div>
+                  <div class="form-group vlog-link" id="vlog2">
+                    <label for="message-text" class="col-form-label">Link to Contribution 2*</label>
+                    <input type="text" maxlength="300" class="form-control" id="rsuggested-topic2" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  </div>
+                  <div class="form-group vlog-link" id="vlog3">
+                    <label for="message-text" class="col-form-label">Link to Contribution 3*</label>
+                    <input type="text" maxlength="300" class="form-control" id="rsuggested-topic3" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  </div>
+
                 </div>
   
   
@@ -1426,7 +1439,9 @@ redirect_from:
               <!--Form for the Submit Vlogs end here-->
             </div>
             <div class="modal-footer">
+
               <button type="reset" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Reset</button>
+
               <button type="submit" id="vlogSubButton" class="cbtn2" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
             </div>
           </div>
@@ -1499,12 +1514,22 @@ redirect_from:
                   <label for="message-text" class="col-form-label">Link to Contribution 2</label>
                   <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
-              </div>
 
-              <div id="ThreeBlogs" class="group1">
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
-                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+  
+                <div id="ThreeBlogs" class="group1">
+                  <div class="form-group blog-link" id="blog1">
+                    <label for="message-text" class="col-form-label">Link to Contribution 1*</label>
+                    <input type="text" maxlength="300" class="form-control" id="blsuggested-topic1" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  </div>
+                  <div class="form-group blog-link" id="blog2">
+                    <label for="message-text" class="col-form-label">Link to Contribution 2*</label>
+                    <input type="text" maxlength="300" class="form-control" id="blsuggested-topic2" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  </div>
+                  <div class="form-group blog-link" id="blog3">
+                    <label for="message-text" class="col-form-label">Link to Contribution 3*</label>
+                    <input type="text" maxlength="300" class="form-control" id="blsuggested-topic3" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  </div>
+
                 </div>
   
                 <script>
@@ -1532,7 +1557,9 @@ redirect_from:
               </form>
             </div>
             <div class="modal-footer">
+ 
               <button type="reset" id="blogResetButton" class="cbtn1 resetButton" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Reset</button>
+
               <button type="submit" id="blogSubButton" class="cbtn2" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
             </div>
           </div>
@@ -1541,7 +1568,9 @@ redirect_from:
     </div>
   
    
+
    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFCAmKNCKRiv_1FbUzKZf6j-YnJih7NNo&callback=initMap&libraries=&v=weekly" async type="text/javascript"></script> 
+
    
     <script type="text/javascript">
       
@@ -1702,4 +1731,6 @@ tablinks[i].className = tablinks[i].className.replace(" active", "");
 document.getElementById(cityName).style.display = "block";
 evt.currentTarget.className += " active";
 } 
+
 </script> -->
+

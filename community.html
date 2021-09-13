@@ -39,7 +39,7 @@ redirect_from:
     <!-- <h1>The Ballerina Community</h1> -->
     <!-- <p class="cPara" style="font-size: 20px;" >The Ballerina community has been bootstrapped by <a class="linkText" href="https://wso2.com/" target="_blank" >WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open-source project with all source code licensed under the <a class="linkText" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" ">Apache License, Version 2.0,</a> and the specifications licensed under the <a class="linkText" href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" >Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
     </p>  -->
-    <h2 style="margin-top: 0px;margin-left: 10px;">Join the Community</h2>	
+    <h2 style="margin-top: 0px;margin-left:15px;">Join the Community</h2>	
     
     <div class="row" style="position: relative;">  
         <div class="card ctopcards col-sm-12 col-md-6 col-lg-2 " style=" background-color: transparent;color: white;">
@@ -82,27 +82,28 @@ redirect_from:
     </div>
     
     <div class="container">
-    <h2 style="margin-left: 10px;">Subscribe for Updates</h2>
-    <p style="margin-left: 10px;">Join the monthly Community Calls, which are interactive meetings that will explore Ballerina use cases to get direct access to our Engineers and other community members. Also, you can get hand-picked content and regular language updates delivered right to you via the monthly newsletter. Subscribe to them from below.
+    <h2 style="margin-left: 15px;">Subscribe for Updates</h2>
+    <p style="margin-left: 15px;">Join the monthly Community Calls, which are interactive meetings that will explore Ballerina use cases to get direct access to our Engineers and other community members. Also, you can get hand-picked content and regular language updates delivered right to you via the monthly newsletter. Subscribe to them from below.
     </p>
-    <div class="row" style="margin-left: 10px;" >
+    <div class="row" style="margin-left: 15px;" >
        <div class="col-sm-12 col-md-6  cFormSection" style="margin:20px 0px;padding:10px 0px">
           <form id="subscribeForm">
-            <div id="form-error" class="alert alert-danger"></div>
-            <div id="form-status" class="alert alert-success"></div>
+            <div id="form-error" class="alert alert-danger1"></div>
+            <div id="form-status" class="alert alert-success1"></div>
             <div class="form-group">
               
                 <label for="userEmail" style="font-size: 20px; color:#585A5E;font-weight: 500;">Email address</label>
-                <input type="email" required-field="1" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter your Email address" style="border-radius: 0;border: #20b6b0 solid 1px;">
+                <input type="email" required-field="1" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter your Email address" style="border-radius: 0;border: #20b6b0 solid 1px;margin-bottom: 5px;">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
                 <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="nloptin">
+                <input type="checkbox" class="form-check-input" id="nloptin" style="margin-right:5px;"> 
                 <label class="form-check-label" for="cBallerinaCheck" style="font-size: 14px; color:#585A5E; font-weight: 500;">I wish to  get updates for Newsletters</label><br>
-                <input type="checkbox" class="form-check-input" id="ccoptin">
+                <input type="checkbox" class="form-check-input" id="ccoptin" style="margin-right:5px;"> 
                 <label class="form-check-label" for="cBallerinaCheck" style="font-size: 14px; color:#585A5E;font-weight: 500;">I wish to  get updates for Community calls</label>
             </div>
-            <button type="button" class="cbtn2" id="subscribeUserButton" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Subscribe</button>
+            <!-- <button type="button" class="cbtn2" id="subscribeUserButton" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;text-transform: none !important;" >Subscribe</button> -->
+            <button type="button" class="cbtn2" id="subscribe_button" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Subscribe</button>
             <button type="button" class="cbtn1" id="" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Contribute to the Agenda</button>
             <!-- <button  class="cUserButton1" id="agendaUserButton" style="border-width:2px;">Contribute to Agenda</button> -->
           </form>
@@ -142,26 +143,26 @@ redirect_from:
                     <hr>
                     <p class="mb-0">If you need any further info. Please reach us via contact@ballerina.io.</p>
                   </div>
-                  <div id="agform-error" class="alert alert-danger"></div>
+                  <div id="agform-error" class="alert alert-danger1"></div>
                   <!--Alert Box Wrong-->
                   <!--Form for the Contribution start here-->
                   <form id="agendaContribute" name="agendaContribute">
 
                       <div class="form-group">
                         <label for="message-text" class="col-form-label">Name*</label>
-                        <input type="text" maxlength="100" required-field="1" class="form-control fInput" id="agendaName" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                        <input type="text" maxlength="100" required-field="1" class="form-control" id="agendaName" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                       </div>
                       <div class="form-group">
                           <label for="recipient-name" class="col-form-label" >Email Address*</label>
-                          <input type="text" maxlength="100" required-field="1" class="form-control fInput" id="agendaEmail" style="border-radius: 0px;border: #20b6b0 solid 1px; ">
+                          <input type="text" maxlength="100" required-field="1" class="form-control " id="agendaEmail" style="border-radius: 0px;border: #20b6b0 solid 1px; ">
                         </div>
                       <div class="form-group">
                         <label for="message-text" class="col-form-label">Company Name (Optional)</label>
-                        <input type="text" maxlength="100" class="form-control fInput" id="agendaCompany" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                        <input type="text" maxlength="100" class="form-control " id="agendaCompany" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                       </div>
                       <div class="form-group">
                         <label for="message-text" class="col-form-label">Contribution for </label>
-                        <select class="form-control fInput" id="selectAgendaOption" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                        <select class="form-control " id="selectAgendaOption" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                           <option value="oNewsletter">Newsletter</option>
                           <option value="oCommcall">Community Call</option>
                         </select>
@@ -170,26 +171,26 @@ redirect_from:
                       <div id="oNewsletter" class="group">
                         <div class="form-group">
                           <label for="message-text" class="col-form-label">Suggested Topic*</label>
-                          <input type="text" class="form-control fInput" id="agendaTopic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                          <input type="text" class="form-control " id="agendaTopic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                         </div>
                         <div class="form-group">
                           <label for="exampleFormControlFile1">Suggested Content*</label>
-                          <textarea class="form-control fInput" id="agendaContent" style="border-radius: 0px;border: #20b6b0 solid 1px;"></textarea>
+                          <input type="text" class="form-control" id="agendaContent" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                         </div>
                       </div>
       
                       <div id="oCommcall" class="group">
                         <div class="form-group">
                           <label for="message-text" class="col-form-label">Suggested Topic*</label>
-                          <input type="text" maxlength="500" class="form-control fInput" id="agendaCallTopic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                          <input type="text" maxlength="500" class="form-control " id="agendaCallTopic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                         </div>
                         <div class="form-group">
                           <label for="message-text" class="col-form-label">Suggested Article URL*</label>
-                          <input type="text" maxlength="500" class="form-control fInput" id="agendaCallArticle" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                          <input type="text" maxlength="500" class="form-control " id="agendaCallArticle" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                         </div>
                         <div class="form-group">
                           <label for="message-text" class="col-form-label">Suggested Demo Duration (minutes)*</label>
-                          <input type="number" maxlength="4" class="form-control fInput" id="agendaCallDuration" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                          <input type="text" maxlength="4" class="form-control " id="agendaCallDuration" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                         </div>
                         
                       </div>
@@ -211,8 +212,8 @@ redirect_from:
                     
                   </div>
                   <div class="modal-footer">
-                    <button type="reset" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Reset</button>
-                    <button type="button" id="agendaSubButton" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
+                    <button type="reset" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Close</button>
+                    <button type="button" id="agendaSubButton" class="cbtn2" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
                   </div>
   
                 </form>
@@ -226,7 +227,7 @@ redirect_from:
     </div>
     
     
-     <ul class="list-inline" style="margin-left: 10px;">
+     <ul class="list-inline" style="margin-left: 15px;">
         <li class="list-inline-item" style="margin: 0;"><a class="cIconLink" href="https://ballerina.io/community/newsletter/#past-issues" target="_blank">See Newsletters</a></li>
         <li class="list-inline-item" ><a class="cIconLink" href="https://www.youtube.com/playlist?list=PL7JOecNWBb0JAdYWqeGmD35MjE0KTjHXU" target="_blank">See Community Calls</a></li>
     </ul>
@@ -235,7 +236,7 @@ redirect_from:
     
     <div class="container">
     
-      <div class="row" style="margin-left: 10px;">
+      <div class="row" style="margin-left: 15px;">
         <h2>Take Part in Events</h2>
     
         <p>
@@ -309,23 +310,49 @@ redirect_from:
       </div>
     
     
-      <div class="row" style="padding-top:20px;padding-bottom: 20px;margin-left: 10px;">
+      <div class="row" style="padding-top:20px;padding-bottom: 20px;margin-left: 15px;">
       
        
           <div class="card card-body">
             <div class="container">
               <div class="row" >
-                <div class="col sm-12 col-md-6 col-md-6" style="padding: 0px;">
-                  <div id="map" style="width:100%;height:600px;"> </div>
+                
 
-                    
-                 
+                <div class="col sm-12 col-md-6 col-md-6" style="padding: 0px;">
+                  <div id="map" style="width:100%;height:656px;"> </div>
                   
                 </div>
                 <div class="col sm-12 col-md-6 col-lg-6" >
-                   <div id="cards-window"  class="overflow-auto scrollbar" style="height:600px; overflow-y: scroll; " >
-                    
-                    
+
+                  <div class="tab">
+                    <a data-toggle="tab" href="#upcoming"><button type="button" class=" cbtn2 " id="upcoming_e" style="background-color: #20b6b0;color:#fff;margin:0px 0px 10px 0px;">Upcoming Events</button></a>
+                    <a data-toggle="tab" href="#past"><button type="button" class="cbtn1 " id="past_e"  style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin:0px 0px 10px 10px;">Past Events</button></a>
+                    <!-- <button class="tablinks" onclick="openCity(event, 'London')">London</button>
+                    <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button> -->
+                  </div>
+                 
+                <!-- <div class="row">
+                 
+                  <div class="map_filter">
+                    <button type="button" class="cbtn2 " id="upcoming_e" style="background-color: #20b6b0;color:#fff;margin:0px 0px 10px 0px;">Upcoming Events</button>
+                    <button type="button" class="cbtn1 " id="past_e"  style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin:0px 0px 10px 10px;">Past Events</button>
+                  </div>
+                </div> -->
+                <!-- <div id="Upcoming" class="tabcontent">
+                  <div class="row">
+                    <div id="cards-window"  class="overflow-auto scrollbar" style="height:600px; overflow-y: scroll;" >
+                    </div>
+                  </div>
+                </div> -->
+
+               
+                  <div class="row">
+                   <div id="cards-window"  class="overflow-auto scrollbar" style="height:600px; overflow-y: scroll;" >
+                    <div class="tab-content">
+                   
+                    <div id="upcoming" class="tab-pane">
+                    </div>
+                    <div id="past" class="tab-pane">
                       <div  id="e_33"class="cBoxType1" >
                         <div class="card-body" style="margin:20px 15px; padding:10px 15px">
                           <h4 class="card-title" style="color: #20b6b0; font-weight:400;">15-16 June 2021 | <span style="color: #585A5E;">12:00-13:00</span> | Online</h4>
@@ -393,6 +420,9 @@ redirect_from:
                         </div>
                       </div>
 
+                   
+                    
+
                       <div  id="e_28"class="cBoxType1" >
                         <div class="card-body" style="margin:20px 15px; padding:10px 15px">
                           <h4 class="card-title" style="color: #20b6b0; font-weight:400;">28 October 2020 <span style="color: #585A5E;"></span> | Virtual</h4>
@@ -405,7 +435,7 @@ redirect_from:
                           <a href="https://apiworld.co/conference/speakers/" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">More Info</button></a>
                         </div>
                       </div>
-
+                     
                       <div  id="e_27"class="cBoxType1" >
                         <div class="card-body" style="margin:20px 15px; padding:10px 15px">
                           <h4 class="card-title" style="color: #20b6b0; font-weight:400;">27-29 October 2020 <span style="color: #585A5E;"></span> | Virtual</h4>
@@ -760,8 +790,8 @@ redirect_from:
                           <a href="https://www.slideshare.net/BallerinaLang/apachecon-na-2019-conquering-network-distributed-applications-using-the-ballerina-programming-language" target="_blank"><button type="button" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">View Slides</button></a>
                         </div>
                       </div>
-
-
+                   </div>
+               </div>
 
 
 
@@ -792,7 +822,7 @@ redirect_from:
     
     </section>
     
-    <h2 style="margin-left: 10px;" >View Community Contributions</h2>
+    <h2 style="margin-left: 15px;" >View Community Contributions</h2>
     
     
     <!-- <div class="container"  style="padding-top:20px;padding-bottom: 20px;">
@@ -909,7 +939,7 @@ redirect_from:
     
     <!-- <h3 style="margin-top: 20px;margin-left: 10px;">View Contributions</h3> -->
     
-    <div class="container" style="background-color:#fafafa ;" style="padding-top:40px;padding-bottom: 40px;margin-left: 10px;">
+    <div class="container" style="background-color:#fafafa ;" style="padding-top:40px;padding-bottom: 40px;margin-left: 15px;">
     
     
     
@@ -1036,7 +1066,7 @@ redirect_from:
     
     
     
-    <h2 style="margin-left: 10px;">Become a Contributor</h2>
+    <h2 style="margin-left: 15px;">Become a Contributor</h2>
     
     <div class="container" style="padding-bottom: 40px;">
       <div class="row">
@@ -1210,15 +1240,15 @@ redirect_from:
                 <div id="threeVlogs" class="group2">
                   <div class="form-group vlog-link" id="vlog1">
                     <label for="message-text" class="col-form-label">Link to Contribution 1*</label>
-                    <input type="text" placeholder="Link format should be http(s)://example.com/a" maxlength="300" class="form-control" id="rsuggested-topic1" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                    <input type="text" maxlength="300" class="form-control" id="rsuggested-topic1" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                   </div>
                   <div class="form-group vlog-link" id="vlog2">
                     <label for="message-text" class="col-form-label">Link to Contribution 2*</label>
-                    <input type="text" placeholder="Link format should be http(s)://example.com/a" maxlength="300" class="form-control" id="rsuggested-topic2" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                    <input type="text" maxlength="300" class="form-control" id="rsuggested-topic2" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                   </div>
                   <div class="form-group vlog-link" id="vlog3">
                     <label for="message-text" class="col-form-label">Link to Contribution 3*</label>
-                    <input type="text" placeholder="Link format should be http(s)://example.com/a" maxlength="300" class="form-control" id="rsuggested-topic3" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                    <input type="text" maxlength="300" class="form-control" id="rsuggested-topic3" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                   </div>
                 </div>
   
@@ -1244,12 +1274,12 @@ redirect_from:
                   });
                 </script>
               
-                <div class="modal-footer">
-                  <button type="reset" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Reset</button>
-                  <button type="submit" id="vlogSubButton" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
-                </div>
               </form>
               <!--Form for the Submit Vlogs end here-->
+            </div>
+            <div class="modal-footer">
+              <button type="reset" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Close</button>
+              <button type="submit" id="vlogSubButton" class="cbtn2" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
             </div>
           </div>
         </div>
@@ -1308,15 +1338,15 @@ redirect_from:
                 <div id="ThreeBlogs" class="group1">
                   <div class="form-group blog-link" id="blog1">
                     <label for="message-text" class="col-form-label">Link to Contribution 1*</label>
-                    <input type="text" placeholder="Link format should be http(s)://example.com/a" maxlength="300" class="form-control" id="blsuggested-topic1" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                    <input type="text" maxlength="300" class="form-control" id="blsuggested-topic1" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                   </div>
                   <div class="form-group blog-link" id="blog2">
                     <label for="message-text" class="col-form-label">Link to Contribution 2*</label>
-                    <input type="text" placeholder="Link format should be http(s)://example.com/a" maxlength="300" class="form-control" id="blsuggested-topic2" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                    <input type="text" maxlength="300" class="form-control" id="blsuggested-topic2" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                   </div>
                   <div class="form-group blog-link" id="blog3">
                     <label for="message-text" class="col-form-label">Link to Contribution 3*</label>
-                    <input type="text" placeholder="Link format should be http(s)://example.com/a" maxlength="300" class="form-control" id="blsuggested-topic3" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                    <input type="text" maxlength="300" class="form-control" id="blsuggested-topic3" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                   </div>
                 </div>
   
@@ -1341,21 +1371,21 @@ redirect_from:
                   });
                 </script>
   
-              <div class="modal-footer">
-                <button type="reset" id="blogResetButton" class="cbtn1 resetButton" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Reset</button>
-                <button type="submit" id="blogSubButton" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
-              </div>
               <!--Form for the Submit Blogs end here-->
               </form>
             </div>
-
+            <div class="modal-footer">
+              <button type="reset" id="blogResetButton" class="cbtn1 resetButton" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Close</button>
+              <button type="submit" id="blogSubButton" class="cbtn2" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
   
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFCAmKNCKRiv_1FbUzKZf6j-YnJih7NNo&callback=initMap&libraries=&v=weekly" async type="text/javascript"></script>
+   
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFCAmKNCKRiv_1FbUzKZf6j-YnJih7NNo&callback=initMap&libraries=&v=weekly" async type="text/javascript"></script> 
+   
     <script type="text/javascript">
       
       var locations = [
@@ -1453,7 +1483,7 @@ redirect_from:
       });
 
 
-      const image ="https://wso2.cachefly.net/wso2/sites/all/2021/images/marker-1.png";
+ 
       
       var infowindow = new google.maps.InfoWindow();
   
@@ -1462,7 +1492,9 @@ redirect_from:
       for (i = 0; i < locations.length; i++) {  
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(locations[i].coordinates[0], locations[i].coordinates[1]),
-          map: map
+          map: map,
+          // icon:"https://wso2.cachefly.net/wso2/sites/all/2021/images/marker-ballerina.png",
+          icon:"/img/community/marker-ballerina.png",
           
         });
 
@@ -1490,3 +1522,27 @@ redirect_from:
       } 
       
     </script>
+
+
+<!-- <script>
+  function openEvent(event, Upcoming) {
+// Declare all variables
+var i, tabcontent, tablinks;
+
+// Get all elements with class="tabcontent" and hide them
+tabcontent = document.getElementsByClassName("tabcontent");
+for (i = 0; i < tabcontent.length; i++) {
+tabcontent[i].style.display = "none";
+}
+
+// Get all elements with class="tablinks" and remove the class "active"
+tablinks = document.getElementsByClassName("tablinks");
+for (i = 0; i < tablinks.length; i++) {
+tablinks[i].className = tablinks[i].className.replace(" active", "");
+}
+
+// Show the current tab, and add an "active" class to the button that opened the tab
+document.getElementById(cityName).style.display = "block";
+evt.currentTarget.className += " active";
+} 
+</script> -->

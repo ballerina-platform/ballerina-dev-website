@@ -7,7 +7,9 @@ permalink: /learn/user-guide/security/http-client-authentication/
 active: http-client-authentication
 intro: Ballerina HTTP clients can be configured to enforce authentication.
 redirect_from:
-- /learn/user-guide/security/http-client-authentication
+    - /learn/user-guide/security/http-client-authentication
+redirect_to:
+    - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 The Ballerina HTTP client can be configured to send authentication information to the endpoint being invoked. Ballerina has built-in support for the following client authentication mechanisms.

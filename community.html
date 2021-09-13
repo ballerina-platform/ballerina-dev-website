@@ -26,14 +26,7 @@ redirect_from:
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=2"></script> -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
 <!-- <link rel="stylesheet" href="/css/home-page-old.css"/> -->
-<style>
-  #form-status , #form-error, #agform-error, #vlform-error, #blform-error, #agSuccessAlert, #agFailAlert, #vlFailAlert, #blFailAlert{
-  display:none;
-  }
-  #form-status.cShowBlock , #form-error.cShowBlock, #agform-error.cShowBlock, #vlform-error.cShowBlock, #blform-error.cShowBlock {
-  display:block;
-  }
-</style>
+
 
 <div class="container" >
     <!-- <h1>The Ballerina Community</h1> -->
@@ -129,7 +122,7 @@ redirect_from:
                 </div>
                 <div class="modal-body" style="background-color: #fff;">
                   <!--Alert Box Thank you-->
-                  <div class="alert " role="alert" id="agSuccessAlert"  style="background-color: #E6EAEB;color: #20b6b0;">
+                  <div class="alert " role="alert" id="successAlert1"  style="background-color: #E6EAEB;color: #20b6b0;">
                     <h4 class="alert-heading">Thank you!</h4>
                     <p>We appreciate your effort to contribute to the Ballerina.</p>
                     <hr>
@@ -137,7 +130,7 @@ redirect_from:
                   </div>
                   <!--Alert Box Thank you-->
                   <!--Alert Box Wrong-->
-                  <div class="alert " role="alert" id="agFailAlert"style="background-color: #E6EAEB;color: #20b6b0;">
+                  <div class="alert " role="alert" id="wrongAlert1"style="background-color: #E6EAEB;color: #20b6b0;">
                     <h4 class="alert-heading">Oops!</h4>
                     <p>Something wrong ! Can you try again.</p>
                     <hr>
@@ -146,8 +139,28 @@ redirect_from:
                   <div id="agform-error" class="alert alert-danger1"></div>
                   <!--Alert Box Wrong-->
                   <!--Form for the Contribution start here-->
-                  <form id="agendaContribute" name="agendaContribute">
-
+                  <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label" >Email Address</label>
+                      <input type="text" class="form-control " id="recipient-email" style="border-radius: 0px;border: #20b6b0 solid 1px; ">
+                    </div>
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Name</label>
+                      <input type="text" class="form-control" id="recipient-name" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                    </div>
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Company Name (Optional)</label>
+                      <input type="text" class="form-control " id="recipient-company-name" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                    </div>
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Contribution for </label>
+                      <select class="form-control " id="selectOption" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                        <option value="oNewsletter">Newsletter</option>
+                        <option value="oCommcall">Community Call</option>
+                      </select>
+                    </div>
+    
+                    <div id="oNewsletter" class="group">
                       <div class="form-group">
                         <label for="message-text" class="col-form-label">Name*</label>
                         <input type="text" maxlength="100" required-field="1" class="form-control" id="agendaName" style="border-radius: 0px;border: #20b6b0 solid 1px;">
@@ -160,6 +173,10 @@ redirect_from:
                         <label for="message-text" class="col-form-label">Company Name (Optional)</label>
                         <input type="text" maxlength="100" class="form-control " id="agendaCompany" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                       </div>
+                     
+                    </div>
+    
+                    <div id="oCommcall" class="group">
                       <div class="form-group">
                         <label for="message-text" class="col-form-label">Contribution for </label>
                         <select class="form-control " id="selectAgendaOption" style="border-radius: 0px;border: #20b6b0 solid 1px;">
@@ -194,20 +211,8 @@ redirect_from:
                         </div>
                         
                       </div>
-      
-      
-                      <script>
-                        $(document).ready(function () {
-                        $('.group').hide();
-                        $('#oNewsletter').show();
-                        $('#selectAgendaOption').change(function () {
-                        $('.group').hide();
-                        $('#'+$(this).val()).show();
-                        })
-                        });
-                      </script>
-  
-                    <!--Form for the Contribution end here-->
+                      
+                    </div>
     
                     
                   </div>
@@ -216,8 +221,12 @@ redirect_from:
                     <button type="button" id="agendaSubButton" class="cbtn2" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
                   </div>
   
-                </form>
-                
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="reset" class="cbtn1" style="background-color: none;color: #20b6b0;border: #20b6b0 solid 1px;margin: 10px;">Close</button>
+                  <button type="submit" class="cbtn1" style="background-color: #20b6b0;color:#fff;margin: 10px 0px;" >Submit</button>
+                </div>
               </div>
             </div>
           </div>
@@ -945,117 +954,222 @@ redirect_from:
     
     <div class="row" style="padding-bottom:30px;padding-left:10px;padding-right:10px;padding-top:10px;  ">
         <div class="col-md-6">
-         <h3 style="margin:20px 0px 30px 0px;">Watch</h3>
+         <h3 style="margin:20px 0px;">Vlogs</h3>
           <div class="overflow-auto" style="height:500px; overflow-y: scroll;">
-          <ul style="padding-left: 0px;">
-            <a class="linkTest1" href="https://www.youtube.com/watch?v=4mwEZ4dInRU&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=1" target="_blank" style="color:#585A5E; line-height: 20px;" >
-            <li class="watchlist">
-              <h5 style="margin: 0px; line-height: 28px;">Ballerina, a Microservices Native Language</h5>
-            </li> 
-            </a>
-           <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
-            <a class="linkTest1" href="https://www.youtube.com/watch?v=z25CPqJMFUk&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=2" target="_blank" style="color:#585A5E; line-height: 20px;" >
-              <li class="watchlist">
-                <h5 style="margin: 0px; line-height: 28px;">Building Lightweight Microservices Using Redis</h5>
-              </li>
-            </a>
-           <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
-            <a class="linkTest1" href="https://www.youtube.com/watch?v=JtwmHo5Ivwg&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=3" target="_blank" style="color:#585A5E; line-height: 20px;" >
-              <li class="watchlist">
-                <h5 style="margin: 0px; line-height: 28px;">Ballerina - A new language for the networked world</h5>
-              </li>
-            </a>
-           <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
-            <a class="linkTest1" href="https://www.youtube.com/watch?v=GSHixCT0Gcg&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=4" target="_blank" style="color:#585A5E; line-height: 20px;" >
-              <li class="watchlist">
-                <h5 style="margin: 0px; line-height: 28px;">TGI Kubernetes 042: Ballerina</h5>
-              </li>
-            </a>
-           <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
-            <a class="linkTest1" href="https://www.youtube.com/watch?v=zPgYfBF56eA&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=5" target="_blank" style="color:#585A5E; line-height: 20px;" >
-              <li class="watchlist">
-                <h5 style="margin: 0px; line-height: 28px;">Tyler Jewell, WSO2 | KubeCon + CloudNativeCon EU 2018</h5>
-              </li>
-            </a>
-           <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
-            <a class="linkTest1" href="https://www.youtube.com/watch?v=4mwEZ4dInRU&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=1" target="_blank" style="color:#585A5E; line-height: 20px;" >
-              <li class="watchlist">
-                <h5 style="margin: 0px; line-height: 28px;">Ballerina, a Microservices Native Language</h5>
-              </li>
-            </a>
+            <a class="linkTest1" href="https://www.youtube.com/watch?v=4mwEZ4dInRU&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=1" target="_blank" style="color:#585A5E;" >
+            <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+               <div class="row">
+                   <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                     <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:100%;color:#585A5E;">
+                   </div>
+                   <div class="col-sm-12 col-md-6 col-lg-6"style="padding:10px 20px" >
+                     <h5 class="card-title"  style="font-weight:500; line-height:26px;">Ballerina, a Microservices Native Language</h5>
+                     <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+              </div>
+            </div>
+           </a>
+           <a class="linkTest1" href="https://www.youtube.com/watch?v=z25CPqJMFUk&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=2" target="_blank" style="color:#585A5E;" >
+            <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+               <div class="row">
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:100%;color:#585A5E;">
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                    <h5 class="card-title"  style="font-weight:500; line-height:26px;">Building Lightweight Microservices Using Redis</h5>
+                    <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                  </div>
+              </div>
+            </div>
+          </a>
+          <a class="linkTest1" href="https://www.youtube.com/watch?v=JtwmHo5Ivwg&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=3" target="_blank" style="color:#585A5E;" >
+            <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+               <div class="row">
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:100%;color:#585A5E;">
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                    <h5 class="card-title"  style="font-weight:500; line-height:26px;">Ballerina - A new language for the networked world</h5>
+                    <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                  </div>
+              </div>
+            </div>
+          </a>
+          <a class="linkTest1" href="https://www.youtube.com/watch?v=GSHixCT0Gcg&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=4" target="_blank" style="color:#585A5E;" >
+            <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+               <div class="row">
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                    <h5 class="card-title"  style="font-weight:500; line-height:26px;">TGI Kubernetes 042: Ballerina</h5>
+                    <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                  </div>
+              </div>
+            </div>
+          </a>
 
-
-          </ul>
-           
+          <a class="linkTest1" href="https://www.youtube.com/watch?v=zPgYfBF56eA&list=PL7JOecNWBb0Ko86qexZhNKzbo2-oDUUQJ&index=5" target="_blank" style="color:#585A5E;margin-bottom:0px;" >
+            <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+               <div class="row">
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                    <img class="card-img-left" src="/img/community/ballerina-vlogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                    <h5 class="card-title"  style="font-weight:500; line-height:26px;">Tyler Jewell, WSO2 | KubeCon + CloudNativeCon EU 2018</h5>
+                    <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                  </div>
+              </div>
+            </div>
+          </a>
     
     
           </div>
         </div>
     
          <div class="col-md-6">
-         <h3 style="margin:20px 0px 30px 0px;">Read</h3>
+         <h3 style="margin:20px 0px;">Blogs</h3>
           <div class="overflow-auto" style="height:500px; overflow-y: scroll; ">
-           
-            <ul style="padding-left: 0px;">
-              <a class="linkTest1" href="https://medium.com/ballerina-techblog/unit-test-ballerina-integration-with-mock-backends-ffff790edb9f" target="_blank" style="color:#585A5E; line-height: 20px;" >
-              <li class="watchlistblog">
-                <h5 style="margin: 0px; line-height: 28px;">Unit test Ballerina integration with Mock backends</h5>
-              </li> 
-              </a>
-              <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
-              <a class="linkTest1" href="https://medium.com/ballerina-techblog/get-started-with-service-testing-using-ballerina-test-framework-18e3b907a33" target="_blank" style="color:#585A5E; line-height: 20px;" >
-                <li class="watchlistblog">
-                  <h5 style="margin: 0px; line-height: 28px;">Get started with service testing using Ballerina test framework</h5>
-                </li>
-              </a>
-             <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
-              <a class="linkTest1" href="https://medium.com/ballerina-techblog/microservices-security-with-ballerina-e9d430f05373" target="_blank" style="color:#585A5E; line-height: 20px;" >
-                <li class="watchlistblog">
-                  <h5 style="margin: 0px; line-height: 28px;">Microservices Security with Ballerina</h5>
-                </li>
-              </a>
-             <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
-              <a class="linkTest1" href="https://medium.com/ballerina-techblog/go-real-time-with-ballerina-websockets-58c40ac11d6" target="_blank" style="color:#585A5E; line-height: 20px;" >
-                <li class="watchlistblog">
-                  <h5 style="margin: 0px; line-height: 28px;">Go Real-Time with Ballerina WebSockets</h5>
-                </li>
-              </a>
-             <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
-              <a class="linkTest1" href="https://medium.com/ballerina-techblog/rest-is-history-lets-do-graphql-with-ballerina-dce7510b61e8" target="_blank" style="color:#585A5E; line-height: 20px;" >
-                <li class="watchlistblog">
-                  <h5 style="margin: 0px; line-height: 28px;">REST is History, Let’s Do GraphQL (with Ballerina)</h5>
-                </li>
-              </a>
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/unit-test-ballerina-integration-with-mock-backends-ffff790edb9f" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Unit test Ballerina integration with Mock backends</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/get-started-with-service-testing-using-ballerina-test-framework-18e3b907a33" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Get started with service testing using Ballerina test framework</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/microservices-security-with-ballerina-e9d430f05373" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Microservices Security with Ballerina</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
+    
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/go-real-time-with-ballerina-websockets-58c40ac11d6" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Go Real-Time with Ballerina WebSockets</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
+    
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/rest-is-history-lets-do-graphql-with-ballerina-dce7510b61e8" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">REST is History, Let’s Do GraphQL (with Ballerina)</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
 
-             <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
-  
-              <a class="linkTest1" href="https://medium.com/ballerina-techblog/single-liner-payload-read-85a16e3265fc" target="_blank" style="color:#585A5E; line-height: 20px;" >
-                <li class="watchlistblog">
-                  <h5 style="margin: 0px; line-height: 28px;">Single Liner Payload Read…</h5>
-                </li>
-              </a>
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/single-liner-payload-read-85a16e3265fc" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Single Liner Payload Read…</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
 
-             <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
-              <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-shell-repl-implementation-overview-ee7e909da20c" target="_blank" style="color:#585A5E; line-height: 20px;" >
-                <li class="watchlistblog">
-                  <h5 style="margin: 0px; line-height: 28px;">Ballerina Shell REPL — Implementation Overview</h5>
-                </li>
-              </a>
-             <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
-              <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-integration-programming-language-5d8e1b52e582" target="_blank" style="color:#585A5E; line-height: 20px;" >
-                <li class="watchlistblog">
-                  <h5 style="margin: 0px; line-height: 28px;">Ballerina: Integration Programming Language</h5>
-                </li>
-              </a>
-              <hr  style="border: .3px solid #a1a1a1;opacity: 0.25" width="98%" align="left">
-              <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-concurrency-model-and-non-blocking-i-o-14c6bed595f4" target="_blank" style="color:#585A5E; line-height: 20px;" >
-                <li class="watchlistblog">
-                  <h5 style="margin: 0px; line-height: 28px;">Ballerina Concurrency Model and Non-Blocking I/O</h5>
-                </li>
-              </a>
-  
-  
-            </ul>
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-integration-programming-language-5d8e1b52e582" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Ballerina: Integration Programming Language</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
+
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-shell-repl-implementation-overview-ee7e909da20c" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Ballerina Shell REPL — Implementation Overview</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
+
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-shell-a-repl-for-ballerina-d5053c94363f" target="_blank" style="color:#585A5E;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Ballerina Shell — A REPL for Ballerina</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
+
+            <a class="linkTest1" href="https://medium.com/ballerina-techblog/ballerina-concurrency-model-and-non-blocking-i-o-14c6bed595f4" target="_blank" style="color:#585A5E;margin-bottom:0px;" >
+              <div class="cardBoxcontribution" style="border-color:#E6EAEB;">
+                 <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:0px;">
+                      <img class="card-img-left" src="/img/community/ballerina-blogs.png" alt="Card image cap" style="width:100%;color:#585A5E;" >
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="padding:10px 20px">
+                      <h5 class="card-title"  style="font-weight:500; line-height:26px;">Ballerina Concurrency Model and Non-Blocking I/O</h5>
+                      <!-- <p class="card-text" style="color:#56b3af;">Watch</p> -->
+                    </div>
+                </div>
+              </div>
+            </a>
+
+
+    
     
           </div>
         </div>
@@ -1201,7 +1315,7 @@ redirect_from:
           </div>
           <div class="modal-body" style="background-color: #fff; font-size: 20;;">
              <!--Alert Box Thank you-->
-             <div class="alert " role="alert" id="vlSuccessAlert"  style="background-color: #E6EAEB;color: #20b6b0;">
+             <div class="alert " role="alert" id="successAlert1"  style="background-color: #E6EAEB;color: #20b6b0;">
               <h4 class="alert-heading">Thank you!</h4>
               <p>We appreciate your effort to contribute to the Ballerina.</p>
               <hr>
@@ -1209,47 +1323,54 @@ redirect_from:
             </div>
             <!--Alert Box Thank you-->
             <!--Alert Box Wrong-->
-            <div class="alert " role="alert" id="vlFailAlert"style="background-color: #E6EAEB;color: #20b6b0;">
+            <div class="alert " role="alert" id="wrongAlert1"style="background-color: #E6EAEB;color: #20b6b0;">
               <h4 class="alert-heading">Oops!</h4>
               <p>Something wrong ! Can you try again.</p>
               <hr>
               <p class="mb-0">If you need any further info. Please reach us via contact@ballerina.io.</p>
             </div>
-            <div id="vlform-error" class="alert alert-danger"></div>
             <!--Alert Box Wrong-->
             <!--Form for the Submit Vlogs start here-->
-            <form  id="vlogContribute" name="vlogContribute">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label" >Name</label>
+                <input type="text" class="form-control" id="recipient-email" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Email address</label>
+                <input type="text" class="form-control" id="recipient-name" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Number of Contributions </label>
+                <select class="form-control " id="selectOption2" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  <option value="oneVlog">1</option>
+                  <option value="twoVlogs">2</option>
+                  <option value="threeVlogs">3</option>
+                </select>
+              </div>
+
+              <div id="oneVlog" class="group2">
                 <div class="form-group">
-                  <label for="recipient-name" class="col-form-label" >Name*</label>
-                  <input type="text" maxlength="100" class="form-control" id="vlName" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                </div>
+              </div>
+
+              <div id="twoVlogs" class="group2">
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Email address*</label>
-                  <input type="text" maxlength="100" class="form-control" id="vlEmail" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  <label for="message-text" class="col-form-label">Link to Contribution 2</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
+              </div>
+
+              <div id="threeVlogs" class="group2">
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Number of Contributions </label>
-                  <select class="form-control " id="selectOption2" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                    <option value="oneVlog">1</option>
-                    <option value="twoVlogs">2</option>
-                    <option value="threeVlogs">3</option>
-                  </select>
-                </div>
-  
-  
-                <div id="threeVlogs" class="group2">
-                  <div class="form-group vlog-link" id="vlog1">
-                    <label for="message-text" class="col-form-label">Link to Contribution 1*</label>
-                    <input type="text" maxlength="300" class="form-control" id="rsuggested-topic1" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                  </div>
-                  <div class="form-group vlog-link" id="vlog2">
-                    <label for="message-text" class="col-form-label">Link to Contribution 2*</label>
-                    <input type="text" maxlength="300" class="form-control" id="rsuggested-topic2" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                  </div>
-                  <div class="form-group vlog-link" id="vlog3">
-                    <label for="message-text" class="col-form-label">Link to Contribution 3*</label>
-                    <input type="text" maxlength="300" class="form-control" id="rsuggested-topic3" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                  </div>
+                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
   
   
@@ -1284,6 +1405,7 @@ redirect_from:
           </div>
         </div>
       </div>
+    </div>
     
     
     <div class="modal fade" id="submitcontent_blog" tabindex="-1" role="dialog" aria-labelledby="submitcontent_blogLabel" aria-hidden="true">
@@ -1299,7 +1421,7 @@ redirect_from:
           </div>
           <div class="modal-body" style="background-color: #fff; font-size: 20;;">
              <!--Alert Box Thank you-->
-             <div class="alert " role="alert" id="blSuccessAlert"  style="background-color: #E6EAEB;color: #20b6b0;">
+             <div class="alert " role="alert" id="successAlert1"  style="background-color: #E6EAEB;color: #20b6b0;">
               <h4 class="alert-heading">Thank you!</h4>
               <p>We appreciate your effort to contribute to the Ballerina.</p>
               <hr>
@@ -1307,47 +1429,55 @@ redirect_from:
             </div>
             <!--Alert Box Thank you-->
             <!--Alert Box Wrong-->
-            <div class="alert " role="alert" id="blFailAlert"style="background-color: #E6EAEB;color: #20b6b0;">
+            <div class="alert " role="alert" id="wrongAlert1"style="background-color: #E6EAEB;color: #20b6b0;">
               <h4 class="alert-heading">Oops!</h4>
               <p>Something wrong ! Can you try again.</p>
               <hr>
               <p class="mb-0">If you need any further info. Please reach us via contact@ballerina.io.</p>
             </div>
-            <div id="blform-error" class="alert alert-danger"></div>
             <!--Alert Box Wrong-->
             <!--Form for the Submit Blogs start here-->
-            <form id="blogContribute" name="blogContribute">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label" >Name</label>
+                <input type="text" class="form-control" id="recipient-email" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Email address</label>
+                <input type="text" class="form-control" id="recipient-name" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+              </div>
+
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Number of Contributions </label>
+                <select class="form-control " id="selectOption1" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  <option value="OneBlog">1</option>
+                  <option value="TwoBlogs">2</option>
+                  <option value="ThreeBlogs">3</option>
+                </select>
+              </div>
+
+              <div id="OneBlog" class="group1">
                 <div class="form-group">
-                  <label for="recipient-name" class="col-form-label" >Name*</label>
-                  <input type="text" maxlength="100" class="form-control" id="blName" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                </div>
+              </div>
+
+              <div id="TwoBlogs" class="group1">
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Email address*</label>
-                  <input type="text" maxlength="100" class="form-control" id="blEmail" style="border-radius: 0px;border: #20b6b0 solid 1px;">
+                  <label for="message-text" class="col-form-label">Link to Contribution 2</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
-  
+              </div>
+
+              <div id="ThreeBlogs" class="group1">
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">Number of Contributions </label>
-                  <select class="form-control " id="selectOption1" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                    <option value="oneBlog">1</option>
-                    <option value="twoBlogs">2</option>
-                    <option value="threeBlogs">3</option>
-                  </select>
-                </div>
-  
-                <div id="ThreeBlogs" class="group1">
-                  <div class="form-group blog-link" id="blog1">
-                    <label for="message-text" class="col-form-label">Link to Contribution 1*</label>
-                    <input type="text" maxlength="300" class="form-control" id="blsuggested-topic1" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                  </div>
-                  <div class="form-group blog-link" id="blog2">
-                    <label for="message-text" class="col-form-label">Link to Contribution 2*</label>
-                    <input type="text" maxlength="300" class="form-control" id="blsuggested-topic2" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                  </div>
-                  <div class="form-group blog-link" id="blog3">
-                    <label for="message-text" class="col-form-label">Link to Contribution 3*</label>
-                    <input type="text" maxlength="300" class="form-control" id="blsuggested-topic3" style="border-radius: 0px;border: #20b6b0 solid 1px;">
-                  </div>
+                  <label for="message-text" class="col-form-label">Link to Contribution 1</label>
+                  <input type="text" class="form-control" id="rsuggested-topic" style="border-radius: 0px;border: #20b6b0 solid 1px;">
                 </div>
   
                 <script>

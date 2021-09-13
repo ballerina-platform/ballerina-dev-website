@@ -13,6 +13,8 @@ redirect_from:
   - /learn/network-communication/grpc/implementing-grpc-services-and-clients/
   - /learn/network-communication/grpc/implementing-grpc-services-and-clients
   - /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients
+redirect_to:
+  - https://lib.ballerina.io/ballerina/grpc/latest/
 ---
 
 After completing the [gRPC service implementation](/learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-services/), you can call these service methods using a client as follows. 

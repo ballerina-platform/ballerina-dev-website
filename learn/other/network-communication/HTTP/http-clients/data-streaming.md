@@ -15,6 +15,8 @@ redirect_from:
   - /learn/user-guide/network-communication/http/http-clients/data-streaming
   - /learn/network-communication/http/data-streaming/
   - /learn/network-communication/http/data-streaming
+redirect_to:
+  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Data Streaming Modes

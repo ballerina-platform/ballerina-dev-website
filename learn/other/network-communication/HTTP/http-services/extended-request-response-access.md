@@ -13,6 +13,8 @@ redirect_from:
   - /learn/network-communication/http/http-services/extended-request-response-access/
   - /learn/network-communication/http/http-services/extended-request-response-access
   - /learn/user-guide/network-communication/http/http-services
+redirect_to:
+  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Interacting With the Remote Client

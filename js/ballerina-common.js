@@ -248,7 +248,7 @@ $("table").addClass('table-striped');
     /*
      * subscribe form
      */
-    $("#subscribeUserButton").click(function(event) {
+    $("#subscribe_button").click(function(event) {
         event.preventDefault();
         subscribeUser($(this).val());
     });
@@ -430,7 +430,7 @@ $(document).ready(function() {
     };
 
     //subscribe form
-    $("#subscribeUserButton").click(function(event) {
+    $("#subscribe_button").click(function(event) {
         event.preventDefault();
         subscribeUserOS();
     });

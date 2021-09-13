@@ -10,3 +10,10 @@
     - title: Building from Source
       url: /learn/installing-ballerina/building-from-source/
       active: building-from-source
+      sublinks:
+        - title: Overview
+          url: /learn/installing-ballerina/building-from-source/#overview
+          active: overview
+        - title: Setting up the Prerequisites
+          url: /learn/installing-ballerina/building-from-source/#setting-up-the-prerequisites
+          active: setting-up-the-prerequisites

@@ -28,7 +28,7 @@ redirect_from:
 <h2>Learn By Examples</h2>
 <p>Try out the extensive collection of examples below to grasp the features and concepts of Ballerina.</p> <br/>
 <blockquote><p>For a complete reference of examples, see <a href="/learn/by-example/">Reference By Examples.</a></p></blockquote>                                       
-<h3>Language Concepts</h3>
+<!-- <h3>Language Concepts</h3>-->
 <ul>
 <li><strong><a href="/learn/by-example/hello-world">Hello World:</a></strong> A simple Ballerina Hello World program.</li>
 <li><strong><a href="/learn/by-example/programs-and-modules">Basics:</a></strong> The fundamentals of the language.</li>

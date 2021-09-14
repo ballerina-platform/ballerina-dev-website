@@ -464,6 +464,10 @@ li.watchlistblog:hover {
     .tab{
         margin-top: 10px;
     }
+
+    .nav{
+        margin-top: 10px;
+    }
   
   }
 
@@ -556,6 +560,42 @@ li.watchlistblog:hover {
     
 }
 
+.cbtn3{
+    background-color:#ffffff;
+    color:#20b6b0;
+    border-radius:0px;
+    margin:0px; 
+    padding: 10px 20px;
+    border: #20b6b0;
+    border: #20b6b0 solid 1px !important;
+}
+
+
+
+ .cbtn3:hover{
+    background-color:#20b6b0 !important;
+    color:#fff !important;
+    border-radius:0px ;
+    
+    padding: 10px 20px !important;
+    border: #20b6b0 solid 1px !important;
+}
+
+.active #button_a{
+    background-color:#20b6b0 !important;
+    color:#fff !important;
+    border-radius:0px ;
+    padding: 10px 20px !important;
+    border: #20b6b0 solid 1px !important;
+}
+
+.active #button_b{
+    background-color:#20b6b0 !important;
+    color:#fff !important;
+    border-radius:0px ;
+    padding: 10px 20px !important;
+    border: #20b6b0 solid 1px !important;
+}
 /* 
 .navbar-toggle .icon-bar {
     background-color: #494949;

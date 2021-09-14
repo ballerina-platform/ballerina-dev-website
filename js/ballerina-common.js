@@ -457,18 +457,18 @@ $(document).ready(function() {
 
         $('#subscribeUserMessage').remove("");
         if (email == "") {
-            $("#form-error").text("Please enter your email");
+            $("#form-error").text("Please enter your email.");
             $("#form-error").addClass("cShowBlock");
         } else if (!isEmail(email)) {
-            $("#form-error").text("Please enter a valid email");
+            $("#form-error").text("Please enter a valid email.");
             $("#form-error").addClass("cShowBlock");
         } else if(!nloptin && !ccoptin){
-            $("#form-error").text("Please select a subscribe option");
+            $("#form-error").text("Please select a subscribe option.");
             $("#form-error").addClass("cShowBlock");
         }else {
             $('#subscribeForm').trigger("reset");
             $(".pdframe").html("<iframe src='https://go.pardot.com/l/142131/2017-02-16/3c6zgy?email=" + email + "&type=" + type + "'></iframe>");
-            $("#form-status").text("You have successfully subscribed");
+            $("#form-status").text("You have subscribed successfully.");
             $("#form-status").addClass("cShowBlock");
             $("#form-error").removeClass("cShowBlock");
             
@@ -522,16 +522,16 @@ $(document).ready(function() {
                     }
                     if (result.body.ok) {
                         $('#slackEmail').val('');
-                        $("#slackEmail").attr("placeholder", "Your invitation has been sent to "+email);
+                        $("#slackEmail").attr("placeholder", "Your invitation has been sent to "+email+".");
                     } else if(result.body.error == "already_in_team"){
                         $('#slackEmail').val('');
-                        $("#slackEmail").attr("placeholder", "This email is already subscribed");
+                        $("#slackEmail").attr("placeholder", "This email is already subscribed.");
                     }else if(result.body.error == "already_invited"){
                         $('#slackEmail').val('');
-                        $("#slackEmail").attr("placeholder", "This email is already invited");
+                        $("#slackEmail").attr("placeholder", "This email is already invited.");
                     }else{
                         $('#slackEmail').val('');
-                        $("#slackEmail").attr("placeholder", "Something went wrong, try again!");
+                        $("#slackEmail").attr("placeholder", "Something went wrong, please try again.");
                     }
                 });
             }            
@@ -642,17 +642,17 @@ if(contribution == "oNewsletter"){
 }
     $('#subscribeUserMessage').remove("");
     if (email == "" || name == "") {
-        $("#agform-error").text("Please enter your personal information");
+        $("#agform-error").text("Please enter your personal information.");
         $("#agform-error").addClass("cShowBlock");
     } else if (!isEmail(email)) {
-        $("#agform-error").text("Please enter a valid email");
+        $("#agform-error").text("Please enter a valid email.");
         $("#agform-error").addClass("cShowBlock");
     } else if (contribution == "oNewsletter" && (nltopic == "" || nlcontent == "")) {
-            $("#agform-error").text("Please enter the newsletter details");
+            $("#agform-error").text("Please enter the newsletter details.");
             $("#agform-error").addClass("cShowBlock");
         
     }else if (contribution == "oCommcall" && (topic == "" || content == "" || duration == "")) {
-            $("#agform-error").text("Please enter the community call details");
+            $("#agform-error").text("Please enter the community call details.");
             $("#agform-error").addClass("cShowBlock");
         
     }else {
@@ -695,27 +695,27 @@ function vlogContribution() {
     
 
     if (email == "" || name == "") {
-        $("#vlform-error").text("Please enter your personal information");
+        $("#vlform-error").text("Please enter your personal information.");
         $("#vlform-error").addClass("cShowBlock");
     } else if (!isEmail(email)) {
-        $("#vlform-error").text("Please enter a valid email");
+        $("#vlform-error").text("Please enter a valid email.");
         $("#vlform-error").addClass("cShowBlock");
     } else if (vlogCount == "oneVlog" && (vLink1 == "")) {
-            $("#vlform-error").text("Please add the Vlog details");
+            $("#vlform-error").text("Please add the vlog details.");
             $("#vlform-error").addClass("cShowBlock");
         
     }else if (vlogCount == "twoVlogs" && (vLink2 == "")) {
-        $("#vlform-error").text("Please add the Vlog details");
+        $("#vlform-error").text("Please add the vlog details.");
         $("#vlform-error").addClass("cShowBlock");
     
     }else if (vlogCount == "threeVlogs" && (vLink3 == "")) {
-        $("#vlform-error").text("Please add the Vlog details");
+        $("#vlform-error").text("Please add the vlog details.");
         $("#vlform-error").addClass("cShowBlock");
 
     }else if ((vlogCount == "oneVlog" && !isUrlValid(vLink1)) || 
     ((vlogCount == "twoVlogs") && (!isUrlValid(vLink1) || !isUrlValid(vLink2))) || 
     (vlogCount == "threeVlogs" && !isUrlValid(vLink1) || !isUrlValid(vLink2) || !isUrlValid(vLink3))) {
-        $("#vlform-error").text("Please add a valid Vlog link");
+        $("#vlform-error").text("Please add a valid vlog link.");
         $("#vlform-error").addClass("cShowBlock");
 
     }else {
@@ -758,27 +758,27 @@ function blogContribution() {
     
 
     if (email == "" || name == "") {
-        $("#blform-error").text("Please enter your personal information");
+        $("#blform-error").text("Please enter your personal information.");
         $("#blform-error").addClass("cShowBlock");
     } else if (!isEmail(email)) {
         $("#blform-error").text("Please enter a valid email.");
         $("#blform-error").addClass("cShowBlock");
     } else if (blogCount == "oneBlog" && (bLink1 == "")) {
-            $("#blform-error").text("Please add the blog details");
+            $("#blform-error").text("Please add the blog details.");
             $("#blform-error").addClass("cShowBlock");
         
     }else if (blogCount == "twoBlogs" && (bLink2 == "")) {
-        $("#blform-error").text("Please add the blog details");
+        $("#blform-error").text("Please add the blog details.");
         $("#blform-error").addClass("cShowBlock");
     
     }else if (blogCount == "threeBlogs" && (bLink3 == "")) {
-        $("#blform-error").text("Please add the blog details");
+        $("#blform-error").text("Please add the blog details.");
         $("#blform-error").addClass("cShowBlock");
 
     }else if ((blogCount == "oneBlog" && !isUrlValid(bLink1)) || 
     ((blogCount == "twoBlogs") && (!isUrlValid(bLink1) || !isUrlValid(bLink2))) || 
     (blogCount == "threeBlogs" && !isUrlValid(bLink1) || !isUrlValid(bLink2) || !isUrlValid(bLink3))) {
-    $("#blform-error").text("Please add a valid Blog link");
+    $("#blform-error").text("Please add a valid blog link.");
         $("#blform-error").addClass("cShowBlock");
 
     }else {

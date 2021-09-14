@@ -37,7 +37,6 @@ redirect_from:
 <li><strong><a href="/learn/by-example/named-workers">Concurrency:</a></strong> Using Ballerina for parallel and concurrent programming.</li>
 <li><strong><a href="/learn/by-example/transaction-statement">Transactions:</a></strong> Writing transaction-aware programs in Ballerina.</li>
 <li><strong><a href="/learn/by-example/lock-statement">Concurrency Safety:</a></strong> Writing Ballerina programs that guarantee concurrency safety.</li>
-<li><strong><a href="/learn/by-example/testerina-assertions">Testing:</a></strong> Writing tests for your Ballerina code.</li>
 </ul>   
 
 <style>

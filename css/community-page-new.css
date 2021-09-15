@@ -104,11 +104,11 @@ a.cBallerina-io-Home-main-download-button {
     color: #fff;
 }
 
-.cSignUp, button#subscribeUserButton {
+.cSignUp {
 	background: #56b3af;
 	border: none;
 	color: #fff;
-	/* padding: 10px 20px; */
+	 padding: 10px 20px; 
 	margin-top: 15px;
 	display: inline-block;
 	width: auto;
@@ -119,8 +119,18 @@ a.cBallerina-io-Home-main-download-button {
 	font-weight: 400;
 }
 
-.cSignUp:hover , button#subscribeUserButton:hover {
+.cSignUp:hover:hover {
 background:#464646;
+}
+
+.alert-danger1{
+    background-color: #797979;
+    color:#fff;
+}
+
+.alert-success1{
+    background-color: #56b3af;
+    color: #fff;
 }
 
 .cAgenda, button#agendaUserButton {
@@ -387,7 +397,12 @@ a.cBallerina-io-Home-main-download-button:hover {
 
 li.watchlist {
     /** the image will be vertically aligned in the center **/
+<<<<<<< HEAD
     background: url(/img/community/play-original.png) left center no-repeat; 
+=======
+    background: url(/img/community/play-original.svg) left center no-repeat; 
+    background-size:29px;
+>>>>>>> a9f9813b669401ebb51bea3f088c456495732073
 
     /** move the text to the right **/
     padding-left: 40px; 
@@ -398,11 +413,17 @@ li.watchlist {
 
 li.watchlist:hover {
     /** the image will be vertically aligned in the center **/
+<<<<<<< HEAD
     background: url(/img/community/play-hover.png) left center no-repeat; 
+=======
+    background: url(/img/community/play-hover.svg) left center no-repeat; 
+    background-size:29px;
+>>>>>>> a9f9813b669401ebb51bea3f088c456495732073
 
     /** move the text to the right **/
     padding-left: 40px; 
 }
+<<<<<<< HEAD
 
 
 .watchlistblog{
@@ -468,6 +489,83 @@ li.watchlistblog:hover {
   background-color: #F5F5F5;
 }
 
+=======
+
+
+.watchlistblog{
+    list-style: none !important;
+    
+}
+
+li.watchlistblog {
+    /** the image will be vertically aligned in the center **/
+    background: url(/img/community/read-original.svg) left center no-repeat; 
+    background-size:29px;
+    /** move the text to the right **/
+    padding-left: 40px; 
+    margin-bottom: 20px;
+    
+
+    
+    
+}
+
+li.watchlistblog:hover {
+    /** the image will be vertically aligned in the center **/
+    background: url(/img/community/read-hover.svg) left center no-repeat; 
+    background-size:29px;
+
+    /** move the text to the right **/
+    padding-left: 40px; 
+}
+/* .watchlist{
+    list-style-image: url('/img/community/play-original.png') left center no-repeat !important;
+    background: url(../img/bullet.png) left center no-repeat;
+    line-height: 50px;
+    background-color: none;
+    background-repeat: no-repeat;
+    background-position:  10px;
+} */
+
+@media screen and (max-width: 774px) {
+    .cCardbody{
+        margin-bottom: 0px !important;
+        padding-bottom: 0px !important;
+    }
+    .cbtn1{
+        margin-left: 0px !important;
+    }
+
+    .tab{
+        margin-top: 10px;
+    }
+
+    .nav{
+        margin-top: 10px;
+    }
+  
+  }
+
+.cBoxType1:hover{
+    background-color: aliceblue;
+}
+
+
+
+.scrollbar
+{
+ 
+  max-width:540px;
+ 
+}
+
+#style-1::-webkit-scrollbar
+{
+  width: 16px;
+  background-color: #F5F5F5;
+}
+
+>>>>>>> a9f9813b669401ebb51bea3f088c456495732073
 #style-1::-webkit-scrollbar-thumb
 {
   border-radius: 12px;
@@ -529,14 +627,61 @@ li.watchlistblog:hover {
     border-radius:0px;
     margin:30px; 
     padding: 10px 20px;
+<<<<<<< HEAD
     border: none!important;
+=======
+    border: #20b6b0 solid 1px !important;
+>>>>>>> a9f9813b669401ebb51bea3f088c456495732073
 }
 
 .cbtn2:hover{
     background-color:#494949 !important;
+<<<<<<< HEAD
     
 }
 
+=======
+    border: #494949 solid 1px !important;
+    
+}
+
+.cbtn3{
+    background-color:#ffffff;
+    color:#20b6b0;
+    border-radius:0px;
+    margin:0px; 
+    padding: 10px 20px;
+    border: #20b6b0;
+    border: #20b6b0 solid 1px !important;
+}
+
+
+
+ .cbtn3:hover{
+    background-color:#20b6b0 !important;
+    color:#fff !important;
+    border-radius:0px ;
+    
+    padding: 10px 20px !important;
+    border: #20b6b0 solid 1px !important;
+}
+
+.active #button_a{
+    background-color:#20b6b0 !important;
+    color:#fff !important;
+    border-radius:0px ;
+    padding: 10px 20px !important;
+    border: #20b6b0 solid 1px !important;
+}
+
+.active #button_b{
+    background-color:#20b6b0 !important;
+    color:#fff !important;
+    border-radius:0px ;
+    padding: 10px 20px !important;
+    border: #20b6b0 solid 1px !important;
+}
+>>>>>>> a9f9813b669401ebb51bea3f088c456495732073
 /* 
 .navbar-toggle .icon-bar {
     background-color: #494949;

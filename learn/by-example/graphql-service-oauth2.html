@@ -68,7 +68,7 @@ redirect_from:
  Ballerina uses the concept of scopes for authorization. A resource declared
  in a service can be bound to one/more scope(s). The scope can be included
  in the introspection response using a custom claim attribute. That custom
- claim attribute also can be configured as the <code>scopeKey</code>.<br/>
+ claim attribute is also can be configured as the <code>scopeKey</code>.<br/>
  In the authorization phase, the scopes of the service are compared
  against the scope included in the introspection response for at least one
  match between the two sets.<br/><br/>
@@ -243,10 +243,14 @@ bal run graphql_service_oauth2.bal
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

@@ -642,7 +642,7 @@ if(contribution == "oNewsletter"){
 }
     $('#subscribeUserMessage').remove("");
     if (email == "" || name == "") {
-        $("#agform-error").text("Please enter your personal information.");
+        $("#agform-error").text("Please fill the required details of your contribution.");
         $("#agform-error").addClass("cShowBlock");
     } else if (!isEmail(email)) {
         $("#agform-error").text("Please enter a valid email.");
@@ -695,7 +695,7 @@ function vlogContribution() {
     
 
     if (email == "" || name == "") {
-        $("#vlform-error").text("Please enter your personal information.");
+        $("#vlform-error").text("Please fill the required details of your contribution.");
         $("#vlform-error").addClass("cShowBlock");
     } else if (!isEmail(email)) {
         $("#vlform-error").text("Please enter a valid email.");
@@ -758,7 +758,7 @@ function blogContribution() {
     
 
     if (email == "" || name == "") {
-        $("#blform-error").text("Please enter your personal information.");
+        $("#blform-error").text("Please fill the required details of your contribution.");
         $("#blform-error").addClass("cShowBlock");
     } else if (!isEmail(email)) {
         $("#blform-error").text("Please enter a valid email.");

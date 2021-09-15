@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, socket, tcp
 permalink: /learn/by-example/tcp-client
 active: tcp-client
 redirect_from:
-  - /swan-lake/learn/by-example/tcp-client
-  - /swan-lake/learn/by-example/tcp-client.html
+  - /swa-lake/learn/by-example/tcp-client
+  - /swa-lake/learn/by-example/tcp-client.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -56,9 +56,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="rabbitmq-secure-connection.html?is_ref_by_example=true">
+                                    <a class="prev" href="rabbitmq-transaction-consumer.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
-                                        <p>Secured Connection</p>
+                                        <p>SASL Authentication - Consumer</p>
                                     </a>
                                 </div>
                                  
@@ -250,10 +250,14 @@ Received: Hello Ballerina Echo from client
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

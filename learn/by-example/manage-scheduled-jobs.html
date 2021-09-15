@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, BBE, task, job, scheduler
 permalink: /learn/by-example/manage-scheduled-jobs
 active: manage-scheduled-jobs
 redirect_from:
-  - /swan-lake/learn/by-example/manage-scheduled-jobs
-  - /swan-lake/learn/by-example/manage-scheduled-jobs.html
+  - /swa-lake/learn/by-example/manage-scheduled-jobs
+  - /swa-lake/learn/by-example/manage-scheduled-jobs.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -134,7 +134,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=93ed121d1170b36001ecf820151fb3fd&file=manage_scheduled_jobs.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f97a37d43da18bd61f9ed243702f97ff&file=manage_scheduled_jobs.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -561,10 +561,14 @@ No of running jobs: 2
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

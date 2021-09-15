@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, string, unicode, utf-8, char
 permalink: /learn/by-example/strings
 active: strings
 redirect_from:
-  - /swan-lake/learn/by-example/strings
-  - /swan-lake/learn/by-example/strings.html
+  - /swa-lake/learn/by-example/strings
+  - /swa-lake/learn/by-example/strings.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -82,7 +82,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=72369a71621ed4907b5bd05fa51557b4&file=strings.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=3e0a8fce9775a9da911e6ee4d2429231&file=strings.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -213,7 +213,7 @@ redirect_from:
 
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run strings.bal
-Hello😀
+Helloὠ0
 e
 </code></pre></div>
 
@@ -244,10 +244,14 @@ e
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

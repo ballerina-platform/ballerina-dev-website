@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, jdbc, insert, update, delete
 permalink: /learn/by-example/jdbc-execute-operation
 active: jdbc-execute-operation
 redirect_from:
-  - /swan-lake/learn/by-example/jdbc-execute-operation
-  - /swan-lake/learn/by-example/jdbc-execute-operation.html
+  - /swa-lake/learn/by-example/jdbc-execute-operation
+  - /swa-lake/learn/by-example/jdbc-execute-operation.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -85,7 +85,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>DML and DDL Operation</h2>
-                            <p><p>This BBE demonstrates how to use the JDBC client with DDL and
+                            <p><p>This example demonstrates how to use the JDBC client with DDL and
  DML operations. Note that the relevant database driver JAR
  should be defined in the <code>Ballerina.toml</code> file as a dependency.
  This sample is based on an H2 database and the H2 database driver JAR need to be added to <code>Ballerina.toml</code> file.
@@ -514,10 +514,14 @@ Deleted Row count: 1
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

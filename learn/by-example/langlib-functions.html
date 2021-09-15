@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, langlib, module, Language, Libra
 permalink: /learn/by-example/langlib-functions
 active: langlib-functions
 redirect_from:
-  - /swan-lake/learn/by-example/langlib-functions
-  - /swan-lake/learn/by-example/langlib-functions.html
+  - /swa-lake/learn/by-example/langlib-functions
+  - /swa-lake/learn/by-example/langlib-functions.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -80,7 +80,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=81d99184d2cd8df9360468c10cd70b21&file=langlib_functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a384eac8b11249e02e36a79f932e6d8f&file=langlib_functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -240,10 +240,14 @@ b
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, email, POP3, POP, IMAP
 permalink: /learn/by-example/receive-email-using-client
 active: receive-email-using-client
 redirect_from:
-  - /swan-lake/learn/by-example/receive-email-using-client
-  - /swan-lake/learn/by-example/receive-email-using-client.html
+  - /swa-lake/learn/by-example/receive-email-using-client
+  - /swa-lake/learn/by-example/receive-email-using-client.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -413,10 +413,14 @@ import ballerina/io;
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

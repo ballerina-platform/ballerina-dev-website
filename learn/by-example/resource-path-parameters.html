@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, path parameters, resources
 permalink: /learn/by-example/resource-path-parameters
 active: resource-path-parameters
 redirect_from:
-  - /swan-lake/learn/by-example/resource-path-parameters
-  - /swan-lake/learn/by-example/resource-path-parameters.html
+  - /swa-lake/learn/by-example/resource-path-parameters
+  - /swa-lake/learn/by-example/resource-path-parameters.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -200,10 +200,14 @@ Hello, Ballerina
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

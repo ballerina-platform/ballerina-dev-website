@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, isolated methods
 permalink: /learn/by-example/isolated-methods
 active: isolated-methods
 redirect_from:
-  - /swan-lake/learn/by-example/isolated-methods
-  - /swan-lake/learn/by-example/isolated-methods.html
+  - /swa-lake/learn/by-example/isolated-methods
+  - /swa-lake/learn/by-example/isolated-methods.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -91,7 +91,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=53467da1e77b0dda359d3b848ca2793f&file=isolated_methods.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=574fc9cf8b680c301eb6521161f8c8d9&file=isolated_methods.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -252,10 +252,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

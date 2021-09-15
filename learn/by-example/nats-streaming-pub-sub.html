@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, nats, streaming, server, subscri
 permalink: /learn/by-example/nats-streaming-pub-sub
 active: nats-streaming-pub-sub
 redirect_from:
-  - /swan-lake/learn/by-example/nats-streaming-pub-sub
-  - /swan-lake/learn/by-example/nats-streaming-pub-sub.html
+  - /swa-lake/learn/by-example/nats-streaming-pub-sub
+  - /swa-lake/learn/by-example/nats-streaming-pub-sub.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -68,9 +68,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="nats-basic-secure-connection.html?is_ref_by_example=true">
+                                    <a class="prev" href="nats-basic-request-reply.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
-                                        <p>Secured Connection</p>
+                                        <p>Request/Reply</p>
                                     </a>
                                 </div>
                                  
@@ -335,10 +335,14 @@ time = 2021-05-20T12:51:47.417+05:30 level = INFO module = &quot;&quot; message 
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

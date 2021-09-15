@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe,
 permalink: /learn/by-example/hello-world-service
 active: hello-world-service
 redirect_from:
-  - /swan-lake/learn/by-example/hello-world-service
-  - /swan-lake/learn/by-example/hello-world-service.html
+  - /swa-lake/learn/by-example/hello-world-service
+  - /swa-lake/learn/by-example/hello-world-service.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -202,10 +202,14 @@ Hello, World!
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

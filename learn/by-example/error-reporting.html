@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, error, error reporting
 permalink: /learn/by-example/error-reporting
 active: error-reporting
 redirect_from:
-  - /swan-lake/learn/by-example/error-reporting
-  - /swan-lake/learn/by-example/error-reporting.html
+  - /swa-lake/learn/by-example/error-reporting
+  - /swa-lake/learn/by-example/error-reporting.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -103,7 +103,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e7b12b958228817d744b68cd258c5c6b&file=error_reporting.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a7a061c6f31b73dbafd21edb8917cb29&file=error_reporting.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -321,10 +321,14 @@ error(&quot;not a digit&quot;)
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

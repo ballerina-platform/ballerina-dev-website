@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, grpc, server streaming
 permalink: /learn/by-example/grpc-server-streaming
 active: grpc-server-streaming
 redirect_from:
-  - /swan-lake/learn/by-example/grpc-server-streaming
-  - /swan-lake/learn/by-example/grpc-server-streaming.html
+  - /swa-lake/learn/by-example/grpc-server-streaming
+  - /swa-lake/learn/by-example/grpc-server-streaming.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -71,9 +71,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="grpc-simple-with-headers.html?is_ref_by_example=true">
+                                    <a class="prev" href="grpc-secured-simple.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
-                                        <p>Simple RPC With Headers</p>
+                                        <p>Secured Simple RPC</p>
                                     </a>
                                 </div>
                                  
@@ -512,10 +512,14 @@ bal run client/target/bin/client.jar
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

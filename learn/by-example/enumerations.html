@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, enum, enumerations
 permalink: /learn/by-example/enumerations
 active: enumerations
 redirect_from:
-  - /swan-lake/learn/by-example/enumerations
-  - /swan-lake/learn/by-example/enumerations.html
+  - /swa-lake/learn/by-example/enumerations
+  - /swa-lake/learn/by-example/enumerations.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -89,7 +89,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=d24d10860857b69218f8e080f76b4391&file=enumerations.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=cd3dbf57cb444a235e3434da396fb45b&file=enumerations.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -224,10 +224,14 @@ English
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

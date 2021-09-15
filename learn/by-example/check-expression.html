@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, error, check
 permalink: /learn/by-example/check-expression
 active: check-expression
 redirect_from:
-  - /swan-lake/learn/by-example/check-expression
-  - /swan-lake/learn/by-example/check-expression.html
+  - /swa-lake/learn/by-example/check-expression
+  - /swa-lake/learn/by-example/check-expression.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -86,7 +86,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=2d9481c93aa90361201e11dc89cb7584&file=check_expression.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f20297fd8313d9d94b4132ea8f453447&file=check_expression.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -223,10 +223,14 @@ error(&quot;{ballerina/lang.int}NumberParsingError&quot;,message=&quot;&#39;stri
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

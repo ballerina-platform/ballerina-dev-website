@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, open record
 permalink: /learn/by-example/open-records
 active: open-records
 redirect_from:
-  - /swan-lake/learn/by-example/open-records
-  - /swan-lake/learn/by-example/open-records.html
+  - /swa-lake/learn/by-example/open-records
+  - /swa-lake/learn/by-example/open-records.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -96,7 +96,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e44df90043af9e23b1fed5e13ef81631&file=open_records.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=4f40d561e86c226604f0ed25b00bb49f&file=open_records.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -295,10 +295,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

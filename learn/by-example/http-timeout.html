@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by examples, bbe, http, resiliency, timeout
 permalink: /learn/by-example/http-timeout
 active: http-timeout
 redirect_from:
-  - /swan-lake/learn/by-example/http-timeout
-  - /swan-lake/learn/by-example/http-timeout.html
+  - /swa-lake/learn/by-example/http-timeout
+  - /swa-lake/learn/by-example/http-timeout.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -372,10 +372,14 @@ Request timed out. Please try again in sometime.
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

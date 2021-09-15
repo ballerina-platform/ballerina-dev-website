@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, xml namespace
 permalink: /learn/by-example/xml-namespaces
 active: xml-namespaces
 redirect_from:
-  - /swan-lake/learn/by-example/xml-namespaces
-  - /swan-lake/learn/by-example/xml-namespaces.html
+  - /swa-lake/learn/by-example/xml-namespaces
+  - /swa-lake/learn/by-example/xml-namespaces.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -67,7 +67,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=15eb30ac5a09750bda238bfe7742592c&file=xml_namespaces.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=273165c193e6dcfb43e57de1a1e98926&file=xml_namespaces.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -152,10 +152,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

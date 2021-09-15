@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, http, content-type, accept
 permalink: /learn/by-example/http-restrict-by-media-type
 active: http-restrict-by-media-type
 redirect_from:
-  - /swan-lake/learn/by-example/http-restrict-by-media-type
-  - /swan-lake/learn/by-example/http-restrict-by-media-type.html
+  - /swa-lake/learn/by-example/http-restrict-by-media-type
+  - /swa-lake/learn/by-example/http-restrict-by-media-type.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -295,10 +295,14 @@ curl -v http://localhost:9092/infoService -H &quot;Accept:text/html&quot; -H &qu
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

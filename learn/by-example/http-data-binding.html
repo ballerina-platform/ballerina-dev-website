@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, http, data binding
 permalink: /learn/by-example/http-data-binding
 active: http-data-binding
 redirect_from:
-  - /swan-lake/learn/by-example/http-data-binding
-  - /swan-lake/learn/by-example/http-data-binding.html
+  - /swa-lake/learn/by-example/http-data-binding
+  - /swa-lake/learn/by-example/http-data-binding.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -273,10 +273,14 @@ curl http://localhost:9090/hello/bindXML -d &quot;&lt;h:Store id = \&quot;AST\&q
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

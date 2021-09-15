@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, nil, null
 permalink: /learn/by-example/nil
 active: nil
 redirect_from:
-  - /swan-lake/learn/by-example/nil
-  - /swan-lake/learn/by-example/nil.html
+  - /swa-lake/learn/by-example/nil
+  - /swa-lake/learn/by-example/nil.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -86,7 +86,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a528245e22694d5d831a8a1d6fdc2b54&file=nil.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=cfb26c343a5e96916ef2c26290e87265&file=nil.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -262,10 +262,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

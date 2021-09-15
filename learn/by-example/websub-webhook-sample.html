@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, websub, subscriber
 permalink: /learn/by-example/websub-webhook-sample
 active: websub-webhook-sample
 redirect_from:
-  - /swan-lake/learn/by-example/websub-webhook-sample
-  - /swan-lake/learn/by-example/websub-webhook-sample.html
+  - /swa-lake/learn/by-example/websub-webhook-sample
+  - /swa-lake/learn/by-example/websub-webhook-sample.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -277,10 +277,14 @@ Last updated at 2021-03-15T15:43:01Z
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

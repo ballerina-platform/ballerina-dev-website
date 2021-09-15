@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, match
 permalink: /learn/by-example/match-statement
 active: match-statement
 redirect_from:
-  - /swan-lake/learn/by-example/match-statement
-  - /swan-lake/learn/by-example/match-statement.html
+  - /swa-lake/learn/by-example/match-statement
+  - /swa-lake/learn/by-example/match-statement.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -100,7 +100,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=d6846e63cf05af711e2b2f6321125a05&file=match_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c527dbc5847e381cc9bc5719bf7a372b&file=match_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -260,10 +260,14 @@ any
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

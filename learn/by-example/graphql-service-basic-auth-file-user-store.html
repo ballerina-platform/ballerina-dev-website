@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, graphql, auth, basic auth
 permalink: /learn/by-example/graphql-service-basic-auth-file-user-store
 active: graphql-service-basic-auth-file-user-store
 redirect_from:
-  - /swan-lake/learn/by-example/graphql-service-basic-auth-file-user-store
-  - /swan-lake/learn/by-example/graphql-service-basic-auth-file-user-store.html
+  - /swa-lake/learn/by-example/graphql-service-basic-auth-file-user-store
+  - /swa-lake/learn/by-example/graphql-service-basic-auth-file-user-store.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -296,10 +296,14 @@ bal run graphql_service_basic_auth_file_user_store.bal
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

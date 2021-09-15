@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, conversion, json
 permalink: /learn/by-example/converting-from-json-to-user-defined-type
 active: converting-from-json-to-user-defined-type
 redirect_from:
-  - /swan-lake/learn/by-example/converting-from-json-to-user-defined-type
-  - /swan-lake/learn/by-example/converting-from-json-to-user-defined-type.html
+  - /swa-lake/learn/by-example/converting-from-json-to-user-defined-type
+  - /swa-lake/learn/by-example/converting-from-json-to-user-defined-type.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -86,7 +86,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=548c734675ce30b58cdb1206aa2cdf3e&file=converting_from_json_to_user_defined_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=bfd241b530fca5d1698a482abeb5b998&file=converting_from_json_to_user_defined_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -219,10 +219,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

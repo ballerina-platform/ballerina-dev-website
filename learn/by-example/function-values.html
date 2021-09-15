@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, functions, lambda,
 permalink: /learn/by-example/function-values
 active: function-values
 redirect_from:
-  - /swan-lake/learn/by-example/function-values
-  - /swan-lake/learn/by-example/function-values.html
+  - /swa-lake/learn/by-example/function-values
+  - /swa-lake/learn/by-example/function-values.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -96,7 +96,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=c961b3d061efb67816187ee940695f38&file=function_values.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=034a24f34466fdb414eb2543cee3a7c8&file=function_values.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -332,10 +332,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

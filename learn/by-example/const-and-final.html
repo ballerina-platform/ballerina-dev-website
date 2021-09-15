@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, const, final
 permalink: /learn/by-example/const-and-final
 active: const-and-final
 redirect_from:
-  - /swan-lake/learn/by-example/const-and-final
-  - /swan-lake/learn/by-example/const-and-final.html
+  - /swa-lake/learn/by-example/const-and-final
+  - /swa-lake/learn/by-example/const-and-final.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -83,7 +83,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=cd73753e6f4bf7b6f07e3784a368ba33&file=const_and_final.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=3586971ca1a47e536e4c53b8a1d9fa42&file=const_and_final.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -222,10 +222,14 @@ Hello World
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

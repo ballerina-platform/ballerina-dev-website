@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, service, UDP, service declaratio
 permalink: /learn/by-example/service-declaration
 active: service-declaration
 redirect_from:
-  - /swan-lake/learn/by-example/service-declaration
-  - /swan-lake/learn/by-example/service-declaration.html
+  - /swa-lake/learn/by-example/service-declaration
+  - /swa-lake/learn/by-example/service-declaration.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -183,10 +183,14 @@ Hello, Ballerina
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

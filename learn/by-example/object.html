@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, object, class
 permalink: /learn/by-example/object
 active: object
 redirect_from:
-  - /swan-lake/learn/by-example/object
-  - /swan-lake/learn/by-example/object.html
+  - /swa-lake/learn/by-example/object
+  - /swa-lake/learn/by-example/object.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -94,7 +94,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=eb334a018ede91906302a903ee1e8922&file=object.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=516853e9b529411bcdb7052484941a6e&file=object.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -285,10 +285,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

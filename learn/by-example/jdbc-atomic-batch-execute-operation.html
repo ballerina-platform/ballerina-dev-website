@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, jdbc, insert, update, delete, ba
 permalink: /learn/by-example/jdbc-atomic-batch-execute-operation
 active: jdbc-atomic-batch-execute-operation
 redirect_from:
-  - /swan-lake/learn/by-example/jdbc-atomic-batch-execute-operation
-  - /swan-lake/learn/by-example/jdbc-atomic-batch-execute-operation.html
+  - /swa-lake/learn/by-example/jdbc-atomic-batch-execute-operation
+  - /swa-lake/learn/by-example/jdbc-atomic-batch-execute-operation.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -73,7 +73,7 @@ redirect_from:
     <span class="p">}</span>
 
     <span class="c1">// Checks the data after the batch execution.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{},</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span> 
         <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM Customers`</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Data in Customers table:&quot;</span><span class="p">);</span>
@@ -117,7 +117,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Atomic Batch Execute</h2>
-                            <p><p>This BBE demonstrates how to use the JDBC client to execute a batch of
+                            <p><p>This example demonstrates how to use the JDBC client to execute a batch of
  DDL/DML operations with the help of a <code>transaction</code> to achieve the atomic behaviour.
  Note that the relevant database driver JAR should be defined in the <code>Ballerina.toml</code>
  file as a dependency.
@@ -338,7 +338,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record {}, error?&gt; resultStream =
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record {}, error&gt; resultStream = 
         jdbcClient-&gt;query(`SELECT * FROM Customers`);
 </code></pre></div>
 
@@ -591,10 +591,14 @@ Rollback transaction.
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

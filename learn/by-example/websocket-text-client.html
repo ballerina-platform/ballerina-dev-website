@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, websocket, sync, client
 permalink: /learn/by-example/websocket-text-client
 active: websocket-text-client
 redirect_from:
-  - /swan-lake/learn/by-example/websocket-text-client
-  - /swan-lake/learn/by-example/websocket-text-client.html
+  - /swa-lake/learn/by-example/websocket-text-client
+  - /swa-lake/learn/by-example/websocket-text-client.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -78,7 +78,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=d86b703efbc1f153274a16f6898c2825&file=websocket_text_client.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=aa53c1f012ed691c27c70dabcddc3f38&file=websocket_text_client.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -228,10 +228,14 @@ import ballerina/websocket;
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

@@ -6,8 +6,8 @@ keywords:
 permalink: /learn/by-example/c2c-deployment
 active: c2c-deployment
 redirect_from:
-  - /swan-lake/learn/by-example/c2c-deployment
-  - /swan-lake/learn/by-example/c2c-deployment.html
+  - /swa-lake/learn/by-example/c2c-deployment
+  - /swa-lake/learn/by-example/c2c-deployment.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -499,10 +499,14 @@ Hello, World from service helloWorld !
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

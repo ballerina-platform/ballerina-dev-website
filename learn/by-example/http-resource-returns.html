@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, http resource, return types, sta
 permalink: /learn/by-example/http-resource-returns
 active: http-resource-returns
 redirect_from:
-  - /swan-lake/learn/by-example/http-resource-returns
-  - /swan-lake/learn/by-example/http-resource-returns.html
+  - /swa-lake/learn/by-example/http-resource-returns
+  - /swa-lake/learn/by-example/http-resource-returns.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -49,7 +49,7 @@ redirect_from:
     <span class="c1">// Inline response records are useful to return headers and body along with status code. In this instance the</span>
     <span class="c1">// return type is a subtype of [http:Created](https://docs.central.ballerina.io/ballerina/http/latest/records/Created)</span>
     <span class="c1">// record, hence 201 response will be sent.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">put</span> <span class="nx">account</span><span class="p">(</span><span class="err">@</span><span class="nx">http</span><span class="p">:</span><span class="nx">Payload</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">)</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">createAccount</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span>
             <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="o">*</span><span class="nx">http</span><span class="p">:</span><span class="nx">Created</span><span class="p">;</span> <span class="nx">PersonAccount</span> <span class="nx">body</span><span class="p">;|}</span> <span class="p">{</span>
         <span class="nx">PersonAccount</span> <span class="nx">account</span> <span class="p">=</span> <span class="p">{</span><span class="nx">accountNo</span><span class="p">:</span> <span class="mi">84230</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">name</span><span class="p">};</span>
         <span class="k">return</span> <span class="p">{</span>
@@ -257,7 +257,7 @@ redirect_from:
                             <div class="cTR hover-enable">
 
                                 <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function put account(@http:Payload string name)
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get createAccount(string name)
             returns record {|*http:Created; PersonAccount body;|} {
         PersonAccount account = {accountNo: 84230, name: name};
         return {
@@ -368,14 +368,12 @@ Bank is open* Closing connection 0
                             <div class="cTR cOutputTr">
 
                                 <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Run the cURL command below to invoke bank/account resource.
-curl -v &quot;http://localhost:9090/bank/account&quot; -d &quot;bal&quot; -X PUT
-&gt; PUT /bank/account HTTP/1.1
+                                    <div class="highlight"><pre><code class=shell-session>Run the cURL command below to invoke bank/createAccount resource.
+curl -v &quot;http://localhost:9090/bank/createAccount?name=bal&quot;
+&gt; GET /bank/createAccount?name=bal HTTP/1.1
 &gt; Host: localhost:9090
 &gt; User-Agent: curl/7.64.1
 &gt; Accept: */*
-&gt; Content-Length: 3
-&gt; Content-Type: application/x-www-form-urlencoded
 &gt;
 &lt; HTTP/1.1 201 Created
 &lt; Location: /myServer/084230
@@ -415,10 +413,14 @@ curl -v &quot;http://localhost:9090/bank/account&quot; -d &quot;bal&quot; -X PUT
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

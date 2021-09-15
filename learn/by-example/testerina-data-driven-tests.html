@@ -6,8 +6,8 @@ keywords:
 permalink: /learn/by-example/testerina-data-driven-tests
 active: testerina-data-driven-tests
 redirect_from:
-  - /swan-lake/learn/by-example/testerina-data-driven-tests
-  - /swan-lake/learn/by-example/testerina-data-driven-tests.html
+  - /swa-lake/learn/by-example/testerina-data-driven-tests
+  - /swa-lake/learn/by-example/testerina-data-driven-tests.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -328,10 +328,14 @@ Input : [5,6,11]
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, worker, message passing
 permalink: /learn/by-example/inter-worker-message-passing
 active: inter-worker-message-passing
 redirect_from:
-  - /swan-lake/learn/by-example/inter-worker-message-passing
-  - /swan-lake/learn/by-example/inter-worker-message-passing.html
+  - /swa-lake/learn/by-example/inter-worker-message-passing
+  - /swa-lake/learn/by-example/inter-worker-message-passing.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -98,7 +98,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=5d0b7acbfdb0b1b62a032482d085a028&file=inter_worker_message_passing.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=db2f3319cc33685f0d02ef40c96e1c9c&file=inter_worker_message_passing.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -314,10 +314,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

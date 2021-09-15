@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, limit clause
 permalink: /learn/by-example/limit-clause
 active: limit-clause
 redirect_from:
-  - /swan-lake/learn/by-example/limit-clause
-  - /swan-lake/learn/by-example/limit-clause.html
+  - /swa-lake/learn/by-example/limit-clause
+  - /swa-lake/learn/by-example/limit-clause.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -90,7 +90,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=68ab82d43e06a6e66d7b3d58cdfc6a8b&file=limit_clause.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e7b2236cc6b9dbaba0751f07572baff6&file=limit_clause.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -252,10 +252,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

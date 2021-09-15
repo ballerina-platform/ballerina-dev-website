@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, mime, multiparts, entity
 permalink: /learn/by-example/http-response-with-multiparts
 active: http-response-with-multiparts
 redirect_from:
-  - /swan-lake/learn/by-example/http-response-with-multiparts
-  - /swan-lake/learn/by-example/http-response-with-multiparts.html
+  - /swa-lake/learn/by-example/http-response-with-multiparts
+  - /swa-lake/learn/by-example/http-response-with-multiparts.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -901,10 +901,14 @@ Body Parts Received!
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

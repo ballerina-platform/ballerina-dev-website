@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, jdbc, datatype, blobs, date, tim
 permalink: /learn/by-example/jdbc-complex-type-queries
 active: jdbc-complex-type-queries
 redirect_from:
-  - /swan-lake/learn/by-example/jdbc-complex-type-queries
-  - /swan-lake/learn/by-example/jdbc-complex-type-queries.html
+  - /swa-lake/learn/by-example/jdbc-complex-type-queries
+  - /swa-lake/learn/by-example/jdbc-complex-type-queries.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -54,7 +54,7 @@ redirect_from:
 
     <span class="c1">// Since the `rowType` is provided as a `BinaryType`, the `binaryResultStream`</span>
     <span class="c1">// will have `BinaryType` records.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">BinaryType</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">binaryResultStream</span> <span class="p">=</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">BinaryType</span><span class="p">,</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">binaryResultStream</span> <span class="p">=</span>
                 <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM BINARY_TYPES`</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Binary types Result :&quot;</span><span class="p">);</span>
@@ -65,7 +65,7 @@ redirect_from:
 
     <span class="c1">// Since the `rowType` is provided as an `ArrayType`, the `arrayResultStream` will</span>
     <span class="c1">// have `ArrayType` records.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ArrayType</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">arrayResultStream</span> <span class="p">=</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ArrayType</span><span class="p">,</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">arrayResultStream</span> <span class="p">=</span>
                 <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM ARRAY_TYPES`</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Array types Result :&quot;</span><span class="p">);</span>
@@ -78,7 +78,7 @@ redirect_from:
     <span class="c1">// will have `DateTimeType` records. The `Date`, `Time`, `DateTime`, and</span>
     <span class="c1">// `Timestamp` fields of the database table can be mapped to `time:Utc`,</span>
     <span class="c1">// string, and int types in Ballerina.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">DateTimeType</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">dateResultStream</span> <span class="p">=</span>
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">DateTimeType</span><span class="p">,</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">dateResultStream</span> <span class="p">=</span>
                 <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM DATE_TIME_TYPES`</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;DateTime types Result :&quot;</span><span class="p">);</span>
@@ -143,7 +143,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Query With Complex Types</h2>
-                            <p><p>This BBE demonstrates how to use the JDBC client with complex data types
+                            <p><p>This example demonstrates how to use the JDBC client with complex data types
  such as arrays, binary, blobs, clob, and date/time fields. Note that the
  relevant database driver JAR should be defined in the <code>Ballerina.toml</code> file as a dependency.
  This sample is based on an H2 database and the H2 database driver JAR need to be added to <code>Ballerina.toml</code> file.
@@ -343,7 +343,7 @@ import ballerina/time;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;BinaryType, error?&gt; binaryResultStream =
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;BinaryType, error&gt; binaryResultStream =
                 jdbcClient-&gt;query(`SELECT * FROM BINARY_TYPES`);
 </code></pre></div>
 
@@ -397,7 +397,7 @@ import ballerina/time;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;ArrayType, error?&gt; arrayResultStream =
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;ArrayType, error&gt; arrayResultStream =
                 jdbcClient-&gt;query(`SELECT * FROM ARRAY_TYPES`);
 </code></pre></div>
 
@@ -451,7 +451,7 @@ import ballerina/time;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;DateTimeType, error?&gt; dateResultStream =
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;DateTimeType, error&gt; dateResultStream =
                 jdbcClient-&gt;query(`SELECT * FROM DATE_TIME_TYPES`);
 </code></pre></div>
 
@@ -727,10 +727,14 @@ DateTime types Result :
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

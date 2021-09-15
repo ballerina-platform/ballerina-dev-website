@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by examples, bbe, http, http/1.1, http/2.0, http/
 permalink: /learn/by-example/http-1-1-to-2-0-protocol-switch
 active: http-1-1-to-2-0-protocol-switch
 redirect_from:
-  - /swan-lake/learn/by-example/http-1-1-to-2-0-protocol-switch
-  - /swan-lake/learn/by-example/http-1-1-to-2-0-protocol-switch.html
+  - /swa-lake/learn/by-example/http-1-1-to-2-0-protocol-switch
+  - /swa-lake/learn/by-example/http-1-1-to-2-0-protocol-switch.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -357,10 +357,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

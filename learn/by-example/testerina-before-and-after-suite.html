@@ -6,8 +6,8 @@ keywords:
 permalink: /learn/by-example/testerina-before-and-after-suite
 active: testerina-before-and-after-suite
 redirect_from:
-  - /swan-lake/learn/by-example/testerina-before-and-after-suite
-  - /swan-lake/learn/by-example/testerina-before-and-after-suite.html
+  - /swa-lake/learn/by-example/testerina-before-and-after-suite
+  - /swa-lake/learn/by-example/testerina-before-and-after-suite.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -305,10 +305,14 @@ I&#39;m the after suite function!
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, covariance, arrays, maps
 permalink: /learn/by-example/covariance
 active: covariance
 redirect_from:
-  - /swan-lake/learn/by-example/covariance
-  - /swan-lake/learn/by-example/covariance.html
+  - /swa-lake/learn/by-example/covariance
+  - /swa-lake/learn/by-example/covariance.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -79,7 +79,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=aadba041f215b19b8868536226dc17d9&file=covariance.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=6ee29ad39c13aa84f510f96e473b8e6c&file=covariance.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -211,10 +211,14 @@ error: {ballerina/lang.array}InherentTypeViolation {&quot;message&quot;:&quot;in
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, inferring isolated
 permalink: /learn/by-example/inferring-isolated
 active: inferring-isolated
 redirect_from:
-  - /swan-lake/learn/by-example/inferring-isolated
-  - /swan-lake/learn/by-example/inferring-isolated.html
+  - /swa-lake/learn/by-example/inferring-isolated
+  - /swa-lake/learn/by-example/inferring-isolated.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -99,7 +99,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a2d52d4e5dd9afca670b2d67ed372922&file=inferring_isolated.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ff66993d5185fb3b95542dcd39cd9dfa&file=inferring_isolated.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -293,10 +293,14 @@ Hello John
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

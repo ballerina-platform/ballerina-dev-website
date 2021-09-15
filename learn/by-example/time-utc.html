@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by examples, bbe, time, current, epoch, utc
 permalink: /learn/by-example/time-utc
 active: time-utc
 redirect_from:
-  - /swan-lake/learn/by-example/time-utc
-  - /swan-lake/learn/by-example/time-utc.html
+  - /swa-lake/learn/by-example/time-utc
+  - /swa-lake/learn/by-example/time-utc.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -80,7 +80,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=da4f5813cec35cf90db5a50cef297943&file=time_utc.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=72c08878069b80cd14601dadf634f2fa&file=time_utc.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -189,10 +189,14 @@ Nanoseconds fraction: 0.005413000s
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

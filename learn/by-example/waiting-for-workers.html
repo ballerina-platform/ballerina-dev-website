@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, worker, wait
 permalink: /learn/by-example/waiting-for-workers
 active: waiting-for-workers
 redirect_from:
-  - /swan-lake/learn/by-example/waiting-for-workers
-  - /swan-lake/learn/by-example/waiting-for-workers.html
+  - /swa-lake/learn/by-example/waiting-for-workers
+  - /swa-lake/learn/by-example/waiting-for-workers.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -80,7 +80,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=5c9fd06d7fd7a03b56cbe1daa41d0018&file=waiting_for_workers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=7d11d30fe81839f4c77ec2c7259fd545&file=waiting_for_workers.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -221,10 +221,14 @@ After wait A
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

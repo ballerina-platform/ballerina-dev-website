@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, retry, retry transaction, retry 
 permalink: /learn/by-example/retry-transaction-statement
 active: retry-transaction-statement
 redirect_from:
-  - /swan-lake/learn/by-example/retry-transaction-statement
-  - /swan-lake/learn/by-example/retry-transaction-statement.html
+  - /swa-lake/learn/by-example/retry-transaction-statement
+  - /swa-lake/learn/by-example/retry-transaction-statement.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -92,7 +92,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=ec07e0c9f97677c53b9fb1bbc33f77b8&file=retry_transaction_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=62442cfca074aed253a8bc1ab8318114&file=retry_transaction_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -271,10 +271,14 @@ error: Stage2 failed {}
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

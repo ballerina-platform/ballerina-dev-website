@@ -6,8 +6,8 @@ keywords:
 permalink: /learn/by-example/testerina-before-and-after-groups
 active: testerina-before-and-after-groups
 redirect_from:
-  - /swan-lake/learn/by-example/testerina-before-and-after-groups
-  - /swan-lake/learn/by-example/testerina-before-and-after-groups.html
+  - /swa-lake/learn/by-example/testerina-before-and-after-groups
+  - /swa-lake/learn/by-example/testerina-before-and-after-groups.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -304,10 +304,14 @@ I&#39;m in test function 2!
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

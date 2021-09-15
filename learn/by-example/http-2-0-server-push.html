@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by examples, bbe, http, http/2.0, http/2
 permalink: /learn/by-example/http-2-0-server-push
 active: http-2-0-server-push
 redirect_from:
-  - /swan-lake/learn/by-example/http-2-0-server-push
-  - /swan-lake/learn/by-example/http-2-0-server-push.html
+  - /swa-lake/learn/by-example/http-2-0-server-push
+  - /swa-lake/learn/by-example/http-2-0-server-push.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -1005,10 +1005,14 @@ time = 2021-01-21 18:54:45,468 level = INFO  module = &quot;&quot; message = &qu
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

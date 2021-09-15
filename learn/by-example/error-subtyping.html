@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, error, error subtypes
 permalink: /learn/by-example/error-subtyping
 active: error-subtyping
 redirect_from:
-  - /swan-lake/learn/by-example/error-subtyping
-  - /swan-lake/learn/by-example/error-subtyping.html
+  - /swa-lake/learn/by-example/error-subtyping
+  - /swa-lake/learn/by-example/error-subtyping.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -91,7 +91,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=02ab99b6a0399e174e7d3f50a5055592&file=error_subtyping.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=7ad6daba054a33b7c3824f2ee1006adc&file=error_subtyping.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -268,10 +268,14 @@ X
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

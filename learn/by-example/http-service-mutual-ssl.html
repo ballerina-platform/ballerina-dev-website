@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, http, mutual ssl, ssl protocols,
 permalink: /learn/by-example/http-service-mutual-ssl
 active: http-service-mutual-ssl
 redirect_from:
-  - /swan-lake/learn/by-example/http-service-mutual-ssl
-  - /swan-lake/learn/by-example/http-service-mutual-ssl.html
+  - /swa-lake/learn/by-example/http-service-mutual-ssl
+  - /swa-lake/learn/by-example/http-service-mutual-ssl.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -264,27 +264,6 @@ bal run http_service_mutual_ssl.bal
                         </div>
                     </div>
                     
-                    <div class="codeSnippeset">
-
-                        <div class="cBBE-body">
-                            
-                            <div class="cTR cOutputTr">
-
-                                <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the service, use the cURL commands below.
-curl https://localhost:9090/foo/bar --cert /path/to/client-public.crt
-    --key /path/to/client-private.key --cacert /path/to/server-public.crt
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
 
 
                      
@@ -303,10 +282,14 @@ curl https://localhost:9090/foo/bar --cert /path/to/client-public.crt
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

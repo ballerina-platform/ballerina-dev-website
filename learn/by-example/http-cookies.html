@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, http, cookies
 permalink: /learn/by-example/http-cookies
 active: http-cookies
 redirect_from:
-  - /swan-lake/learn/by-example/http-cookies
-  - /swan-lake/learn/by-example/http-cookies.html
+  - /swa-lake/learn/by-example/http-cookies
+  - /swa-lake/learn/by-example/http-cookies.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -791,10 +791,14 @@ time = 2020-12-15 16:14:08,691 level = INFO  module = &quot;&quot; message = &qu
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

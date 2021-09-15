@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, xml data model, xml
 permalink: /learn/by-example/xml-data-model
 active: xml-data-model
 redirect_from:
-  - /swan-lake/learn/by-example/xml-data-model
-  - /swan-lake/learn/by-example/xml-data-model.html
+  - /swa-lake/learn/by-example/xml-data-model
+  - /swa-lake/learn/by-example/xml-data-model.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -106,7 +106,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=c565c5db7046657aea25445a5441cbc5&file=xml_data_model.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=dced644575ec7c3766fbe5fd2f466e4c&file=xml_data_model.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -302,10 +302,14 @@ Hello, world!
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

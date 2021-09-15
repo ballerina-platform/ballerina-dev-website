@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, url encoding, url decoding
 permalink: /learn/by-example/url-encode-decode
 active: url-encode-decode
 redirect_from:
-  - /swan-lake/learn/by-example/url-encode-decode
-  - /swan-lake/learn/by-example/url-encode-decode.html
+  - /swa-lake/learn/by-example/url-encode-decode
+  - /swa-lake/learn/by-example/url-encode-decode.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -78,7 +78,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=f389cafc0393a07fff4138a0884c5b9a&file=url_encode_decode.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a4fbf1b66ab3f6bbc317380910df042d&file=url_encode_decode.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -213,10 +213,14 @@ URL decoded value: data=value
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

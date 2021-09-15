@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, socket, udp
 permalink: /learn/by-example/udp-client
 active: udp-client
 redirect_from:
-  - /swan-lake/learn/by-example/udp-client
-  - /swan-lake/learn/by-example/udp-client.html
+  - /swa-lake/learn/by-example/udp-client
+  - /swa-lake/learn/by-example/udp-client.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -289,10 +289,14 @@ Received: Hello Ballerina echo
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

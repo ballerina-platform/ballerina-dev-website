@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by examples, BBE, task, job, scheduler
 permalink: /learn/by-example/task-one-time-job-execution
 active: task-one-time-job-execution
 redirect_from:
-  - /swan-lake/learn/by-example/task-one-time-job-execution
-  - /swan-lake/learn/by-example/task-one-time-job-execution.html
+  - /swa-lake/learn/by-example/task-one-time-job-execution
+  - /swa-lake/learn/by-example/task-one-time-job-execution.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -101,7 +101,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a0a9bb1ca160144d3346e63cfcb0d281&file=task_one_time_job_execution.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c0a962f0fa4e63040ebb46086d783008&file=task_one_time_job_execution.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -348,10 +348,14 @@ MyCounter: 1
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, worker, alternate wait
 permalink: /learn/by-example/alternate-wait
 active: alternate-wait
 redirect_from:
-  - /swan-lake/learn/by-example/alternate-wait
-  - /swan-lake/learn/by-example/alternate-wait.html
+  - /swa-lake/learn/by-example/alternate-wait
+  - /swa-lake/learn/by-example/alternate-wait.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -95,7 +95,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=4f122f0a6328902ef31e5068b04c00cb&file=alternate_wait.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=6d3df91f74baea5fc57fa8c23c67149e&file=alternate_wait.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -276,10 +276,14 @@ import ballerina/io;
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

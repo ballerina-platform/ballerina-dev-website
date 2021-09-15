@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, integers, int, int type
 permalink: /learn/by-example/integers
 active: integers
 redirect_from:
-  - /swan-lake/learn/by-example/integers
-  - /swan-lake/learn/by-example/integers.html
+  - /swa-lake/learn/by-example/integers
+  - /swa-lake/learn/by-example/integers.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -76,7 +76,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=19813a2ac8c7b5fca73878366a3bef66&file=integers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=145fa69462812a47ead6d790d38a8509&file=integers.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -207,10 +207,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

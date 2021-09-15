@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, resource, service, data binding
 permalink: /learn/by-example/resource-method-typing
 active: resource-method-typing
 redirect_from:
-  - /swan-lake/learn/by-example/resource-method-typing
-  - /swan-lake/learn/by-example/resource-method-typing.html
+  - /swa-lake/learn/by-example/resource-method-typing
+  - /swa-lake/learn/by-example/resource-method-typing.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -247,10 +247,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

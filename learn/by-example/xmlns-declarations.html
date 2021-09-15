@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, xmlns declarations
 permalink: /learn/by-example/xmlns-declarations
 active: xmlns-declarations
 redirect_from:
-  - /swan-lake/learn/by-example/xmlns-declarations
-  - /swan-lake/learn/by-example/xmlns-declarations.html
+  - /swa-lake/learn/by-example/xmlns-declarations
+  - /swa-lake/learn/by-example/xmlns-declarations.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -78,7 +78,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e9b79c68fb7f71d086c84fffa399d44d&file=xmlns_declarations.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e7e0ca8ce946a37e3a6e8e6c93cb36f6&file=xmlns_declarations.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -214,10 +214,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

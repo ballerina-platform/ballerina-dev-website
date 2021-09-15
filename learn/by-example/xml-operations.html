@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, xml, xml operations
 permalink: /learn/by-example/xml-operations
 active: xml-operations
 redirect_from:
-  - /swan-lake/learn/by-example/xml-operations
-  - /swan-lake/learn/by-example/xml-operations.html
+  - /swa-lake/learn/by-example/xml-operations
+  - /swa-lake/learn/by-example/xml-operations.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -124,7 +124,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a35caae8ff32f3bc5874dc4f9f5d61ca&file=xml_operations.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=6c20bc32a3d92aa01b65c4212953f08a&file=xml_operations.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -439,10 +439,14 @@ true
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

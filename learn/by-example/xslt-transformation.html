@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, xslt, xml, html, xsl, transforma
 permalink: /learn/by-example/xslt-transformation
 active: xslt-transformation
 redirect_from:
-  - /swan-lake/learn/by-example/xslt-transformation
-  - /swan-lake/learn/by-example/xslt-transformation.html
+  - /swa-lake/learn/by-example/xslt-transformation
+  - /swa-lake/learn/by-example/xslt-transformation.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -126,7 +126,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=fc0722e3fc223edf2232146507a09bcb&file=xslt_transformation.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=6cdca295372c93898fbb6f60b2be1286&file=xslt_transformation.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -362,10 +362,14 @@ Transformed XML: &lt;html&gt;
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

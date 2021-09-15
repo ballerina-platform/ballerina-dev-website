@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, records, destructuring
 permalink: /learn/by-example/destructuring-records
 active: destructuring-records
 redirect_from:
-  - /swan-lake/learn/by-example/destructuring-records
-  - /swan-lake/learn/by-example/destructuring-records.html
+  - /swa-lake/learn/by-example/destructuring-records
+  - /swa-lake/learn/by-example/destructuring-records.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -94,7 +94,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=bb42d0fe2aef957603c5f2ac923c9ec2&file=destructuring_records.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ff171c7851d6f4230db8a00cb4d504c8&file=destructuring_records.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -261,10 +261,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

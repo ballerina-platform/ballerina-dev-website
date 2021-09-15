@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by examples, bbe, time, utc, civil
 permalink: /learn/by-example/time-utc-and-civil
 active: time-utc-and-civil
 redirect_from:
-  - /swan-lake/learn/by-example/time-utc-and-civil
-  - /swan-lake/learn/by-example/time-utc-and-civil.html
+  - /swa-lake/learn/by-example/time-utc-and-civil
+  - /swa-lake/learn/by-example/time-utc-and-civil.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -94,7 +94,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6b1734597993f22e1af56c5d3c61bc18&file=time_utc_and_civil.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=3e205516af0e414adff40acb0c27f707&file=time_utc_and_civil.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -250,10 +250,14 @@ UTC value of the civil record: 1618269650 0.52
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

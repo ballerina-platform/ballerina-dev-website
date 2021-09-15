@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, rabbitmq, producer, bbe, transaction
 permalink: /learn/by-example/rabbitmq-transaction-producer
 active: rabbitmq-transaction-producer
 redirect_from:
-  - /swan-lake/learn/by-example/rabbitmq-transaction-producer
-  - /swan-lake/learn/by-example/rabbitmq-transaction-producer.html
+  - /swa-lake/learn/by-example/rabbitmq-transaction-producer
+  - /swa-lake/learn/by-example/rabbitmq-transaction-producer.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -60,7 +60,7 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="rabbitmq-transaction-consumer.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
-                                        <p>Transactional Consumer</p>
+                                        <p>SASL Authentication - Consumer</p>
                                     </a>
                                 </div>
                                 
@@ -223,10 +223,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

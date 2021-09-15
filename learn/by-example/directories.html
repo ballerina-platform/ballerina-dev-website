@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by examples, BBE, directory, file, path
 permalink: /learn/by-example/directories
 active: directories
 redirect_from:
-  - /swan-lake/learn/by-example/directories
-  - /swan-lake/learn/by-example/directories.html
+  - /swa-lake/learn/by-example/directories
+  - /swa-lake/learn/by-example/directories.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -100,7 +100,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=26cb91001098ba0eaf360b6392002068&file=directories.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ce9842ee38155e6e702c511b3f22f2f1&file=directories.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -332,10 +332,14 @@ Directories removed successfully.
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

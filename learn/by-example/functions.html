@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, functions
 permalink: /learn/by-example/functions
 active: functions
 redirect_from:
-  - /swan-lake/learn/by-example/functions
-  - /swan-lake/learn/by-example/functions.html
+  - /swa-lake/learn/by-example/functions
+  - /swa-lake/learn/by-example/functions.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -78,7 +78,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6ce4d1769f91bc36c0702aa77b18cdc0&file=functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a93747e0fdb9c3e594d676eae2a7f6f7&file=functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -222,10 +222,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

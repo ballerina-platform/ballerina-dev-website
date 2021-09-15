@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, sequence diagram, diagram
 permalink: /learn/by-example/sequence-diagrams
 active: sequence-diagrams
 redirect_from:
-  - /swan-lake/learn/by-example/sequence-diagrams
-  - /swan-lake/learn/by-example/sequence-diagrams.html
+  - /swa-lake/learn/by-example/sequence-diagrams
+  - /swa-lake/learn/by-example/sequence-diagrams.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -90,7 +90,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=ee8592e5068c6d7b0115bf77de46e53a&file=sequence_diagrams.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f7eb47f7726b48f5b9850934e1a838d9&file=sequence_diagrams.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -233,10 +233,14 @@ Hello World
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

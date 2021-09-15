@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, http service, path, verb
 permalink: /learn/by-example/http-default-resource
 active: http-default-resource
 redirect_from:
-  - /swan-lake/learn/by-example/http-default-resource
-  - /swan-lake/learn/by-example/http-default-resource.html
+  - /swa-lake/learn/by-example/http-default-resource
+  - /swa-lake/learn/by-example/http-default-resource.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -206,10 +206,14 @@ curl &quot;http://localhost:9090/foo/bar&quot; -X POST
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

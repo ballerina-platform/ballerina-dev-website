@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, decimal type, decimal
 permalink: /learn/by-example/decimal-type
 active: decimal-type
 redirect_from:
-  - /swan-lake/learn/by-example/decimal-type
-  - /swan-lake/learn/by-example/decimal-type.html
+  - /swa-lake/learn/by-example/decimal-type
+  - /swa-lake/learn/by-example/decimal-type.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -85,7 +85,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=82554cee343d7ca19657a865250c1fc6&file=decimal_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=4388d8926c6bddb2faee420f73dcb88e&file=decimal_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -202,10 +202,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, optional, fields, record
 permalink: /learn/by-example/optional-fields
 active: optional-fields
 redirect_from:
-  - /swan-lake/learn/by-example/optional-fields
-  - /swan-lake/learn/by-example/optional-fields.html
+  - /swa-lake/learn/by-example/optional-fields
+  - /swa-lake/learn/by-example/optional-fields.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -87,7 +87,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=2756971020689779a0dd6b82f6455331&file=optional_fields.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e8ef63c2bc0dd1fb13113394df1da29d&file=optional_fields.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -249,10 +249,14 @@ Subject value:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

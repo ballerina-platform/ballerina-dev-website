@@ -6,8 +6,8 @@ keywords:
 permalink: /learn/by-example/testerina-group-tests
 active: testerina-group-tests
 redirect_from:
-  - /swan-lake/learn/by-example/testerina-group-tests
-  - /swan-lake/learn/by-example/testerina-group-tests.html
+  - /swa-lake/learn/by-example/testerina-group-tests
+  - /swa-lake/learn/by-example/testerina-group-tests.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -461,10 +461,14 @@ I&#39;m the ungrouped test
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, kafka, consumer, kafka consumer 
 permalink: /learn/by-example/kafka-consumer-group-service
 active: kafka-consumer-group-service
 redirect_from:
-  - /swan-lake/learn/by-example/kafka-consumer-group-service
-  - /swan-lake/learn/by-example/kafka-consumer-group-service.html
+  - /swa-lake/learn/by-example/kafka-consumer-group-service
+  - /swa-lake/learn/by-example/kafka-consumer-group-service.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -379,10 +379,14 @@ import ballerina/log;
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

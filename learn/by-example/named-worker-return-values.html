@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, worker, return
 permalink: /learn/by-example/named-worker-return-values
 active: named-worker-return-values
 redirect_from:
-  - /swan-lake/learn/by-example/named-worker-return-values
-  - /swan-lake/learn/by-example/named-worker-return-values.html
+  - /swa-lake/learn/by-example/named-worker-return-values
+  - /swa-lake/learn/by-example/named-worker-return-values.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -97,7 +97,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=4a337975df05b746c905865d7ceaac71&file=named_worker_return_values.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=84a94ca293145b387b1c0aa5058c393b&file=named_worker_return_values.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -306,10 +306,14 @@ error: {ballerina/lang.int}NumberParsingError {&quot;message&quot;:&quot;&#39;st
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

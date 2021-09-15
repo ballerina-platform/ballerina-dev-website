@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, graphql, auth, jwt auth
 permalink: /learn/by-example/graphql-service-jwt-auth
 active: graphql-service-jwt-auth
 redirect_from:
-  - /swan-lake/learn/by-example/graphql-service-jwt-auth
-  - /swan-lake/learn/by-example/graphql-service-jwt-auth.html
+  - /swa-lake/learn/by-example/graphql-service-jwt-auth
+  - /swa-lake/learn/by-example/graphql-service-jwt-auth.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -236,10 +236,14 @@ bal run graphql_service_jwt_auth.bal
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

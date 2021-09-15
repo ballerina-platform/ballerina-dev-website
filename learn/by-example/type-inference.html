@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, var,
 permalink: /learn/by-example/type-inference
 active: type-inference
 redirect_from:
-  - /swan-lake/learn/by-example/type-inference
-  - /swan-lake/learn/by-example/type-inference.html
+  - /swa-lake/learn/by-example/type-inference
+  - /swa-lake/learn/by-example/type-inference.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -94,7 +94,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=76f4e817f8d15d43a4d748d53ac8c429&file=type_inference.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=5ea93b6190f83b372c525d7a3247b7fa&file=type_inference.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -317,10 +317,14 @@ str
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

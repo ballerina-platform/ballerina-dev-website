@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, lock statement
 permalink: /learn/by-example/lock-statement
 active: lock-statement
 redirect_from:
-  - /swan-lake/learn/by-example/lock-statement
-  - /swan-lake/learn/by-example/lock-statement.html
+  - /swa-lake/learn/by-example/lock-statement
+  - /swa-lake/learn/by-example/lock-statement.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -81,7 +81,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=ea50134a35750f2fd9279e5911a38afb&file=lock_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=941fa9f16a9096973648101c6caddfe5&file=lock_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -220,10 +220,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

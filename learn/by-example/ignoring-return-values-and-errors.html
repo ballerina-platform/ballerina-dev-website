@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, error, ignore value
 permalink: /learn/by-example/ignoring-return-values-and-errors
 active: ignoring-return-values-and-errors
 redirect_from:
-  - /swan-lake/learn/by-example/ignoring-return-values-and-errors
-  - /swan-lake/learn/by-example/ignoring-return-values-and-errors.html
+  - /swa-lake/learn/by-example/ignoring-return-values-and-errors
+  - /swa-lake/learn/by-example/ignoring-return-values-and-errors.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -99,7 +99,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a0d3729cfe68b736930e50af119b5406&file=ignoring_return_values_and_errors.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c7286e481a74c7cf7634e08b0f727949&file=ignoring_return_values_and_errors.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -300,10 +300,14 @@ error: error!
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

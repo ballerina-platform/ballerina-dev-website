@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by examples, bbe, bytes
 permalink: /learn/by-example/io-bytes
 active: io-bytes
 redirect_from:
-  - /swan-lake/learn/by-example/io-bytes
-  - /swan-lake/learn/by-example/io-bytes.html
+  - /swa-lake/learn/by-example/io-bytes
+  - /swa-lake/learn/by-example/io-bytes.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -272,10 +272,14 @@ Successfully copied the image as a stream.
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

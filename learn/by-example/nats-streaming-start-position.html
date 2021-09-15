@@ -6,8 +6,8 @@ keywords:
 permalink: /learn/by-example/nats-streaming-start-position
 active: nats-streaming-start-position
 redirect_from:
-  - /swan-lake/learn/by-example/nats-streaming-start-position
-  - /swan-lake/learn/by-example/nats-streaming-start-position.html
+  - /swa-lake/learn/by-example/nats-streaming-start-position
+  - /swa-lake/learn/by-example/nats-streaming-start-position.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -163,9 +163,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="nats-streaming-secure-connection.html?is_ref_by_example=true">
+                                    <a class="next" href="kafka-producer.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
-                                        <p>Secured Connection</p>
+                                        <p>Producer</p>
                                     </a>
                                 </div>
                                 
@@ -707,10 +707,14 @@ Message Received to service receiveFromBeginning: Forth Message
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

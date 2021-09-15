@@ -6,8 +6,8 @@ keywords:
 permalink: /learn/by-example/nats-streaming-queue-group
 active: nats-streaming-queue-group
 redirect_from:
-  - /swan-lake/learn/by-example/nats-streaming-queue-group
-  - /swan-lake/learn/by-example/nats-streaming-queue-group.html
+  - /swa-lake/learn/by-example/nats-streaming-queue-group
+  - /swa-lake/learn/by-example/nats-streaming-queue-group.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -509,10 +509,14 @@ Message Received to second queue group member: Third Message
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

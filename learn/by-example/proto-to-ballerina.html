@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, grpc, protobuf, protocol buffer
 permalink: /learn/by-example/proto-to-ballerina
 active: proto-to-ballerina
 redirect_from:
-  - /swan-lake/learn/by-example/proto-to-ballerina
-  - /swan-lake/learn/by-example/proto-to-ballerina.html
+  - /swa-lake/learn/by-example/proto-to-ballerina
+  - /swa-lake/learn/by-example/proto-to-ballerina.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -51,9 +51,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="grpc-service-ssl-tls.html?is_ref_by_example=true">
+                                    <a class="next" href="nats-basic-pub-sub.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
-                                        <p>Service - SSL/TLS</p>
+                                        <p>Publish/Subscribe</p>
                                     </a>
                                 </div>
                                 
@@ -204,10 +204,14 @@ bal grpc --input proto_to_ballerina.proto
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

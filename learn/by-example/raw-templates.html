@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, raw templates
 permalink: /learn/by-example/raw-templates
 active: raw-templates
 redirect_from:
-  - /swan-lake/learn/by-example/raw-templates
-  - /swan-lake/learn/by-example/raw-templates.html
+  - /swa-lake/learn/by-example/raw-templates
+  - /swa-lake/learn/by-example/raw-templates.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -303,10 +303,14 @@ import ballerina/sql;
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

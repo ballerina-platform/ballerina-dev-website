@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, graphql, graphql service
 permalink: /learn/by-example/graphql-returning-service-objects
 active: graphql-returning-service-objects
 redirect_from:
-  - /swan-lake/learn/by-example/graphql-returning-service-objects
-  - /swan-lake/learn/by-example/graphql-returning-service-objects.html
+  - /swa-lake/learn/by-example/graphql-returning-service-objects
+  - /swa-lake/learn/by-example/graphql-returning-service-objects.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -297,10 +297,14 @@ curl -X POST -H &quot;Content-type: application/json&quot; -d &#39;{ &quot;query
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

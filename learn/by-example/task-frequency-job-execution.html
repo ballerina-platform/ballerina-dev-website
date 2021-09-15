@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by examples, BBE, task, job, scheduler
 permalink: /learn/by-example/task-frequency-job-execution
 active: task-frequency-job-execution
 redirect_from:
-  - /swan-lake/learn/by-example/task-frequency-job-execution
-  - /swan-lake/learn/by-example/task-frequency-job-execution.html
+  - /swa-lake/learn/by-example/task-frequency-job-execution
+  - /swa-lake/learn/by-example/task-frequency-job-execution.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -98,7 +98,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=d05b6faeb2b6815a98755b110c00a8cc&file=task_frequency_job_execution.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=485d9ead6d0e12a287be1d74bc4deea6&file=task_frequency_job_execution.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -315,10 +315,14 @@ MyCounter: 10
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

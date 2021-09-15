@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, type definition
 permalink: /learn/by-example/type-definitions
 active: type-definitions
 redirect_from:
-  - /swan-lake/learn/by-example/type-definitions
-  - /swan-lake/learn/by-example/type-definitions.html
+  - /swa-lake/learn/by-example/type-definitions
+  - /swa-lake/learn/by-example/type-definitions.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -77,7 +77,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=626e195f5c5b502691b97365cef9ce49&file=type_definitions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=79a8120e7db31a1eef78a3e839b17bed&file=type_definitions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -211,10 +211,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

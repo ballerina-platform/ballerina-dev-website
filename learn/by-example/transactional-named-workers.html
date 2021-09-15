@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, workers, transactions, transacti
 permalink: /learn/by-example/transactional-named-workers
 active: transactional-named-workers
 redirect_from:
-  - /swan-lake/learn/by-example/transactional-named-workers
-  - /swan-lake/learn/by-example/transactional-named-workers.html
+  - /swa-lake/learn/by-example/transactional-named-workers
+  - /swa-lake/learn/by-example/transactional-named-workers.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -94,7 +94,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=28edea1a3cadea7c591816a92a809483&file=transactional_named_workers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=db735fcc8dbe8cdaf9f509afe57e24d1&file=transactional_named_workers.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -264,10 +264,14 @@ bar() invoked
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, http, cors
 permalink: /learn/by-example/http-cors
 active: http-cors
 redirect_from:
-  - /swan-lake/learn/by-example/http-cors
-  - /swan-lake/learn/by-example/http-cors.html
+  - /swa-lake/learn/by-example/http-cors
+  - /swa-lake/learn/by-example/http-cors.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -308,10 +308,14 @@ curl -v &quot;http://localhost:9092/crossOriginService/lang&quot; -X OPTIONS -H 
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

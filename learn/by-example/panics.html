@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, error, panic
 permalink: /learn/by-example/panics
 active: panics
 redirect_from:
-  - /swan-lake/learn/by-example/panics
-  - /swan-lake/learn/by-example/panics.html
+  - /swa-lake/learn/by-example/panics
+  - /swa-lake/learn/by-example/panics.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -89,7 +89,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=9a7b2abcfe3c399b7de9a6c298f3bb3f&file=panics.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=47b27bb085409cdb9530402be1b196c0&file=panics.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -268,10 +268,14 @@ error: division by 0
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

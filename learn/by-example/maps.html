@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, maps
 permalink: /learn/by-example/maps
 active: maps
 redirect_from:
-  - /swan-lake/learn/by-example/maps
-  - /swan-lake/learn/by-example/maps.html
+  - /swa-lake/learn/by-example/maps
+  - /swa-lake/learn/by-example/maps.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -88,7 +88,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=85c30337a768630bee762e0038ee77ae&file=maps.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ac5a0fd8c6da255dec311fc5b659dc08&file=maps.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -271,10 +271,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by examples, bbe, uuid, version, validation, stri
 permalink: /learn/by-example/uuid-operations
 active: uuid-operations
 redirect_from:
-  - /swan-lake/learn/by-example/uuid-operations
-  - /swan-lake/learn/by-example/uuid-operations.html
+  - /swa-lake/learn/by-example/uuid-operations
+  - /swa-lake/learn/by-example/uuid-operations.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -113,7 +113,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=b577a744a601fea5bd481fbb8d87028d&file=uuid_operations.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=921b7d167f30a82ee3b015d229e2fb7f&file=uuid_operations.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -385,10 +385,14 @@ UUID record: {&quot;timeLow&quot;:1133987422,&quot;timeMid&quot;:13817,&quot;tim
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, worker, concurrency
 permalink: /learn/by-example/named-workers
 active: named-workers
 redirect_from:
-  - /swan-lake/learn/by-example/named-workers
-  - /swan-lake/learn/by-example/named-workers.html
+  - /swa-lake/learn/by-example/named-workers
+  - /swa-lake/learn/by-example/named-workers.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -91,7 +91,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a892977d4b5f18b3b63a505111730008&file=named_workers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=8eb2d4db2b8456b736d96cdb657320e0&file=named_workers.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -273,10 +273,14 @@ Hello from worker A
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

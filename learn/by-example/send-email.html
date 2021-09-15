@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, email, SMTP
 permalink: /learn/by-example/send-email
 active: send-email
 redirect_from:
-  - /swan-lake/learn/by-example/send-email
-  - /swan-lake/learn/by-example/send-email.html
+  - /swa-lake/learn/by-example/send-email
+  - /swa-lake/learn/by-example/send-email.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -393,10 +393,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

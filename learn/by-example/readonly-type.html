@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, readonly type
 permalink: /learn/by-example/readonly-type
 active: readonly-type
 redirect_from:
-  - /swan-lake/learn/by-example/readonly-type
-  - /swan-lake/learn/by-example/readonly-type.html
+  - /swa-lake/learn/by-example/readonly-type
+  - /swa-lake/learn/by-example/readonly-type.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -88,7 +88,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=4c7a35fbf5b1e25e3d32a8a61cf77b8a&file=readonly_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=dafd0eb86c64002e59f43c112fccb858&file=readonly_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -276,10 +276,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

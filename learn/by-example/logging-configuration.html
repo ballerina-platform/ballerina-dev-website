@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by examples, bbe, log, level, format
 permalink: /learn/by-example/logging-configuration
 active: logging-configuration
 redirect_from:
-  - /swan-lake/learn/by-example/logging-configuration
-  - /swan-lake/learn/by-example/logging-configuration.html
+  - /swa-lake/learn/by-example/logging-configuration
+  - /swa-lake/learn/by-example/logging-configuration.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -237,10 +237,14 @@ time = 2021-05-25T11:11:24.915+05:30 level = WARN module = &quot;&quot; message 
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

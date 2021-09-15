@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, http service, query parameter
 permalink: /learn/by-example/http-query-parameter
 active: http-query-parameter
 redirect_from:
-  - /swan-lake/learn/by-example/http-query-parameter
-  - /swan-lake/learn/by-example/http-query-parameter.html
+  - /swa-lake/learn/by-example/http-query-parameter
+  - /swa-lake/learn/by-example/http-query-parameter.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -282,10 +282,14 @@ curl &quot;http://localhost:9090/product/detail?colour=red&amp;colour=green&quot
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

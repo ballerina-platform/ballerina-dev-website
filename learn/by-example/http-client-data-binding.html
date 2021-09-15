@@ -6,8 +6,8 @@ keywords: ballerina, ballerina by example, bbe, http, client, data binding
 permalink: /learn/by-example/http-client-data-binding
 active: http-client-data-binding
 redirect_from:
-  - /swan-lake/learn/by-example/http-client-data-binding
-  - /swan-lake/learn/by-example/http-client-data-binding.html
+  - /swa-lake/learn/by-example/http-client-data-binding
+  - /swa-lake/learn/by-example/http-client-data-binding.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -455,10 +455,14 @@ curl &quot;http://localhost:9090/call/4xx&quot;
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

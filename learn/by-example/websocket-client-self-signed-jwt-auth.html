@@ -17,7 +17,7 @@ redirect_from:
 
 <span class="c1">// Defines the WebSocket client to call the JWT auth secured APIs.</span>
 <span class="c1">// The client is enriched with the `Authorization: Bearer &lt;token&gt;` header by</span>
-<span class="c1">// passing the [`websocket:JwtIssuerConfig`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/JwtIssuerConfig) for the `auth` configuration of the</span>
+<span class="c1">// passing the `websocket:JwtIssuerConfig` for the `auth` configuration of the</span>
 <span class="c1">// client. A self-signed JWT is issued before the request is sent.</span>
 <span class="nx">websocket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">securedEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;wss://localhost:9090/foo/bar&quot;</span><span class="p">,</span>
     <span class="nx">auth</span> <span class="p">=</span> <span class="p">{</span>
@@ -154,7 +154,7 @@ import ballerina/websocket;
                                         <div>
                                             <p>Defines the WebSocket client to call the JWT auth secured APIs.
  The client is enriched with the <code>Authorization: Bearer &lt;token&gt;</code> header by
- passing the <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/records/JwtIssuerConfig"><code>websocket:JwtIssuerConfig</code></a> for the <code>auth</code> configuration of the
+ passing the <code>websocket:JwtIssuerConfig</code> for the <code>auth</code> configuration of the
  client. A self-signed JWT is issued before the request is sent.</p>
 
                                         </div>
@@ -222,10 +222,14 @@ Hello, World!
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

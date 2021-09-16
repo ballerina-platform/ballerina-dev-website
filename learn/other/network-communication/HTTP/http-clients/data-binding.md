@@ -15,6 +15,8 @@ redirect_from:
   - /learn/user-guide/network-communication/http/http-clients/data-binding
   - /learn/network-communication/http/data-binding/
   - /learn/network-communication/http/data-binding
+redirect_to:
+  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 [`http:Client`](https://docs.central.ballerina.io/ballerina/http/latest/clients/HttpClient) data binding happens automatically based on the left hand side type. The left hand side type could be any type such as `string`, `json`, `xml`, `map<json>`, `byte[]`, custom record, and record array types. 

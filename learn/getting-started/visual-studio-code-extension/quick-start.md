@@ -10,11 +10,11 @@ redirect_from:
   - /learn/tooling-guide/
   - /learn/tooling-guide
   - /learn/tooling-guide/visual-studio-code-extension/quick-start
+  - /learn/tooling-guide/visual-studio-code-extension/quick-start/
   - /learn/tooling-guide/visual-studio-code-extension/
   - /learn/tooling-guide/visual-studio-code-extension
   - /learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension/
   - /learn/tooling-guide/vs-code-extension/installing-the-vs-code-extension
-  - /learn/tooling-guide/visual-studio-code-extension/quick-start
   - /learn/getting-started/visual-studio-code-extension/quick-start
   - /learn/getting-started/visual-studio-code-extension/quick-start/
   - /learn/visual-studio-code-extension/quick-start

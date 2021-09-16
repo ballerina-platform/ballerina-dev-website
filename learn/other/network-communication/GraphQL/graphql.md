@@ -13,6 +13,8 @@ redirect_from:
   - /learn/network-communication/graphql/
   - /learn/network-communication/graphql
   - /learn/user-guide/network-communication/graphql
+redirect_to:
+  - https://lib.ballerina.io/ballerina/graphql/latest/
 ---
 
 ## Introducing the Use Case

@@ -4,9 +4,11 @@ title: The Ballerina Community
 intro: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!
 description: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!.
 keywords: ballerina, community, ballerina community
-permalink: /community-old/
+permalink: /community/
 redirect_from:
-
+  - /events
+  - /events/
+  - /community
 ---
 
 The Ballerina community has been bootstrapped by <a href="https://wso2.com" target="_blank">WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open source project with all source code licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, Version 2.0</a> and the specifications licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0" target="_blank">Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
@@ -22,7 +24,7 @@ The Ballerina community has been bootstrapped by <a href="https://wso2.com" targ
 We curate a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
 <ul class="cInlinelinklist">
-<li><a class="cGreenLinkArrow" href="/community/newsletter/2021-2/" target="_blank">Latest Ballerina Newsletter</a></li>
+<li><a class="cGreenLinkArrow" href="/community/newsletter/2021-3/" target="_blank">Latest Ballerina Newsletter</a></li>
 <li><a class="cGreenLinkArrow" href="/community/newsletter/#past-issues" target="_blank">Past newsletter issues</a></li>
 
 </ul>
@@ -92,8 +94,8 @@ We are happy to help! Come engage with us on any channel that works for you.
 Report issues in the GitHub repositories of the areas and components listed below.
 
 - <a href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose" target="_blank">Compiler, runtime, or tooling</a>
-- <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues" target="_blank">Standard Library</a>
-- <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues/new/choose" target="_blank">Language specification</a>
+- <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues/new/choose" target="_blank">Standard Library</a>
+- <a href="https://github.com/ballerina-platform/ballerina-spec/issues/new" target="_blank">Language specification</a>
 - <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">Website</a>
 - <a href="mailto:security@ballerina.io" target="_blank">Security</a> (For details, see the <a href="/security" target="_blank">security policy</a>.)
 

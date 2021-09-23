@@ -13,6 +13,8 @@ redirect_from:
   - /learn/network-communication/http/http-services/secure-communication/
   - /learn/network-communication/http/http-services/secure-communication/
   - /learn/user-guide/network-communication/http/http-services/secure-communication
+redirect_to:
+  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Configuring Secure Communication

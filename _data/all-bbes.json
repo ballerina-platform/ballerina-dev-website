@@ -861,7 +861,7 @@
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
-                "isLearnByExample": true
+                "isLearnByExample": false
             },
             {
                 "name": "Before and After Test",
@@ -870,7 +870,7 @@
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
-                "isLearnByExample": true
+                "isLearnByExample": false
             },
             {
                 "name": "Before and After Each",
@@ -879,7 +879,7 @@
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
-                "isLearnByExample": true
+                "isLearnByExample": false
             },
             {
                 "name": "Before and After Groups",
@@ -888,7 +888,7 @@
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
-                "isLearnByExample": true
+                "isLearnByExample": false
             },
             {
                 "name": "Before and After Suite",
@@ -897,7 +897,7 @@
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
-                "isLearnByExample": true
+                "isLearnByExample": false
             },
             {
                 "name": "Data Driven Tests",
@@ -906,7 +906,7 @@
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
-                "isLearnByExample": true
+                "isLearnByExample": false
             },
             {
                 "name": "Guarantee Test Execution Order",
@@ -915,7 +915,7 @@
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
-                "isLearnByExample": true
+                "isLearnByExample": false
             },
             {
                 "name": "Group Tests",
@@ -924,7 +924,7 @@
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
-                "isLearnByExample": true
+                "isLearnByExample": false
             },
             {
                 "name": "Function Mocking",
@@ -933,7 +933,7 @@
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
-                "isLearnByExample": true
+                "isLearnByExample": false
             },
             {
                 "name": "Object Mocking",
@@ -942,7 +942,7 @@
                 "verifyOutput": false,
                 "disableVerificationReason": "Has different naming convention",
                 "disablePlayground": true,
-                "isLearnByExample": true
+                "isLearnByExample": false
             }
         ]
     },

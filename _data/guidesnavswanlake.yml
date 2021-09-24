@@ -1,5 +1,5 @@
 - title: Why Ballerina
-  url: #
+  url: '#'
   sublinks:
     - title: Cloud Native
       url: /learn/why-ballerina/cloud-native/
@@ -21,7 +21,7 @@
       active: reliable-maintainable
 
 - title: Organizing Ballerina Code
-  url: #
+  url: '#'
   sublinks:
     - title: Package Layout
       url: /learn/organizing-ballerina-code/package-layout/
@@ -31,7 +31,7 @@
       active: modules
 
 - title: Testing Ballerina Code
-  url: #
+  url: '#'
   sublinks:
     - title: Testing Quick Start
       url: /learn/testing-ballerina-code/testing-quick-start/
@@ -54,7 +54,7 @@
   active: generating-code-documentation
 
 - title: Making Ballerina Programs Configurable
-  url: #
+  url: '#'
   sublinks:
     - title: Defining Configurable Variables
       url: /learn/making-ballerina-programs-configurable/defining-configurable-variables/
@@ -67,7 +67,7 @@
       active: trying-it-out
 
 - title: Observing Ballerina Programs
-  url: #
+  url: '#'
   sublinks:
     - title: Observing Your Application with Prometheus, Grafana, and Jaeger
       url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/
@@ -77,7 +77,7 @@
       active: observing-your-application-with-choreo
 
 - title: Running Ballerina Programs in the Cloud
-  url: #
+  url: '#'
   sublinks:
     - title: Code to Cloud
       url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/
@@ -87,7 +87,7 @@
           url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-samples
           active: code-to-cloud-samples
     - title: Function as a Service (FaaS) with Ballerina
-      url: #
+      url: '#'
       sublinks:
         - title: AWS Lambda
           url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
@@ -96,8 +96,8 @@
           url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
           active: azure-functions
 
-- title: Managing Dependencies 
-  url: #
+- title: Managing Dependencies Dependencies 
+  url: '#'
   sublinks:
     - title: Declaring Dependencies
       url: /learn/managing-dependencies/
@@ -110,3 +110,4 @@
 - title: Calling Java Code from Ballerina and Vice Versa
   url: /learn/calling-java-code-from-ballerina-and-vice-versa/
   active: calling-java-code-from-ballerina-and-vice-versa
+

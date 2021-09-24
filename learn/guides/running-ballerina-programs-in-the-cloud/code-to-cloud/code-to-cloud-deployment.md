@@ -1,10 +1,10 @@
 ---
 layout: ballerina-guides-left-nav-pages-swanlake
-title: Code to Cloud
+title: Code to Cloud Deployment
 description: Ballerina Code to Cloud is designed to allow developers to write code without thinking about the deployment platform. 
 keywords: ballerina, programming language, services, cloud, kubernetes, docker
-permalink: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/
-active: code-to-cloud
+permalink: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/
+active: code-to-cloud-deployment
 intro: Ballerina Code to Cloud is designed to allow developers to write code without thinking about the deployment platform. 
 redirect_from:
   - /learn/deployment/code-to-cloud
@@ -19,8 +19,10 @@ redirect_from:
   - /learn/user-guide/deployment/docker
   - /learn/user-guide/deployment/code-to-cloud/
   - /learn/running-ballerina-programs-in-the-cloud/code-to-cloud
+  - /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/
   - /learn/running-ballerina-programs-in-the-cloud/
   - /learn/running-ballerina-programs-in-the-cloud
+  - /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-deployment
 ---
 
 This greatly simplifies the experience of developing and deploying Ballerina code in the cloud. It also enables using cloud native technologies easily without in-depth knowledge.

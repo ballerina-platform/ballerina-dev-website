@@ -1,8 +1,8 @@
 ---
 layout: ballerina-visual-studio-code-extension-left-nav-pages-swanlake
-title: Quick Start
-permalink: /learn/visual-studio-code-extension/quick-start/
-active: quick-start
+title: VS Code Quick Start
+permalink: /learn/visual-studio-code-extension/vs-code-quick-start/
+active: vs-code-quick-start
 description: The Visual Studio Code Ballerina extension provides a set of rich language features along with an enhanced user experience. It offers easy development, execution, debugging, and testing for the Ballerina programming language. You can further visualize the graphical representation of your Ballerina source via the Diagram Editor.
 keywords: visual studio, ballerina, extension, vscode
 intro: The Visual Studio Code Ballerina extension provides a set of rich language features along with an enhanced user experience. It offers easy development, execution, debugging, and testing for the Ballerina programming language. You can further visualize the graphical representation of your Ballerina source via the Diagram Editor.
@@ -18,6 +18,7 @@ redirect_from:
   - /learn/getting-started/visual-studio-code-extension/quick-start
   - /learn/getting-started/visual-studio-code-extension/quick-start/
   - /learn/visual-studio-code-extension/quick-start
+  - /learn/visual-studio-code-extension/quick-start/
   - /learn/visual-studio-code-extension/
   - /learn/visual-studio-code-extension
 ---

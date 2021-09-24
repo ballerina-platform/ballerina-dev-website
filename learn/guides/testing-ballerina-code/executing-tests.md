@@ -10,8 +10,6 @@ redirect_from:
   - /learn/testing-ballerina-code/executing-tests
   - /swan-lake/learn/testing-ballerina-code/executing-tests/
   - /swan-lake/learn/testing-ballerina-code/executing-tests
-  - /learn/testing-ballerina-code/executing-tests/
-  - /learn/testing-ballerina-code/executing-tests
   - /learn/user-guide/testing-ballerina-code/executing-tests
   - /learn/user-guide/testing-ballerina-code/executing-tests/
 ---

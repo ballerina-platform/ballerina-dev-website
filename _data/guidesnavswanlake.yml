@@ -15,7 +15,7 @@
       active: graphical
     - title: Concurrent
       url: /learn/why-ballerina/concurrent/
-      active: Concurrent
+      active: concurrent
     - title: Reliable, Maintainable
       url: /learn/why-ballerina/reliable-maintainable/
       active: reliable-maintainable
@@ -33,9 +33,9 @@
 - title: Testing Ballerina Code
   url: '#'
   sublinks:
-    - title: Testing Quick Start
-      url: /learn/testing-ballerina-code/testing-quick-start/
-      active: testing-quick-start
+    - title: Quick Start on Testing
+      url: /learn/testing-ballerina-code/quick-start-on-testing/
+      active: quick-start-on-testing
     - title: Writing Tests
       url: /learn/testing-ballerina-code/writing-tests/
       active: writing-tests
@@ -63,8 +63,8 @@
       url: /learn/making-ballerina-programs-configurable/providing-values-to-configurable-variables/
       active: providing-values-to-configurable-variables
     - title: Trying Out Configurability
-      url: /learn/making-ballerina-programs-configurable/trying-it-out/
-      active: trying-it-out
+      url: /learn/making-ballerina-programs-configurable/trying-out-configurability/
+      active: trying-out-configurability
 
 - title: Observing Ballerina Programs
   url: '#'
@@ -83,6 +83,9 @@
       url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/
       active: code-to-cloud
       sublinks:
+        - title: Code to Cloud Deployment
+          url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-deployment
+          active: code-to-cloud-deployment
         - title: Code to Cloud Samples
           url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-samples
           active: code-to-cloud-samples
@@ -96,12 +99,9 @@
           url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
           active: azure-functions
 
-- title: Managing Dependencies Dependencies 
-  url: '#'
-  sublinks:
-    - title: Declaring Dependencies
-      url: /learn/managing-dependencies/
-      active: managing-dependencies
+- title: Managing Dependencies 
+  url: /learn/managing-dependencies/
+  active: managing-dependencies
 
 - title: Publishing packages to Ballerina Central
   url: /learn/publishing-packages-to-ballerina-central/

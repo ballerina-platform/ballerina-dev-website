@@ -1,9 +1,9 @@
 - title: Visual Studio Code Extension
   url: #
   sublinks:
-    - title: Quick Start
-      url: /learn/visual-studio-code-extension/quick-start/
-      active: quick-start
+    - title: VS Code Quick Start
+      url: /learn/visual-studio-code-extension/vs-code-quick-start/
+      active: vs-code-quick-start
     - title: Diagram Editor
       url: /learn/visual-studio-code-extension/diagram-editor/
       active: diagram-editor

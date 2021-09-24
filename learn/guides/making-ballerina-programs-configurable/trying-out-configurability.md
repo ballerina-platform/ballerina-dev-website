@@ -1,15 +1,17 @@
 ---
 layout: ballerina-guides-left-nav-pages-swanlake
-title: Trying it Out
+title: Trying Out Configurability
 description: The example below demonstrates how to use configurable variables inside a Ballerina project. 
 keywords: ballerina, programming language, configurable, variables, 
-permalink: /learn/making-ballerina-programs-configurable/trying-it-out/
-active: trying-it-out
+permalink: /learn/making-ballerina-programs-configurable/trying-out-configurability/
+active: trying-out-configurability
 intro: The example below demonstrates how to use configurable variables inside a Ballerina project.
 redirect_from:
  - /learn/user-guide/configurability/trying-it-out
  - /learn/user-guide/configurability/trying-it-out/
  - /learn/making-ballerina-programs-configurable/trying-it-out
+ - /learn/making-ballerina-programs-configurable/trying-it-out/
+ - /learn/making-ballerina-programs-configurable/trying-out-configurability
 ---
 
 ## Creating the Ballerina Package

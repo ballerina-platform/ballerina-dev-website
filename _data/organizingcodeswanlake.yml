@@ -2,8 +2,7 @@
   url: '#'
   sublinks:
     - title: Package Layout
-      url: /learn/organizing-ballerina-code/package-layout/
-      active: package-layout
+      url: '#'
       sublinks:
         - title: Ballerina.toml
           url: /learn/organizing-ballerina-code/package-layout/#ballerinatoml
@@ -24,8 +23,7 @@
           url: /learn/organizing-ballerina-code/package-layout/#the-modules-directory
           active: the-modules-directory
     - title: Modules
-      url: /learn/organizing-ballerina-code/modules/
-      active: modules
+      url: '#'
       sublinks:
         - title: Module Layout
           url: /learn/organizing-ballerina-code/modules/#module-layout

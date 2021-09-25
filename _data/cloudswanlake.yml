@@ -5,8 +5,7 @@
       url: '#'
       sublinks:
         - title: Code to Cloud Deployment
-          url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/
-          active: code-to-cloud-deployment
+          url: '#'
           sublinks:
             - title: Setting Up the Prerequisites
               url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#setting-up-the-prerequisites
@@ -24,8 +23,7 @@
               url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#code-to-cloud-samples
               active: code-to-cloud-samples
         - title: Code to Cloud Samples
-          url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-samples/
-          active: '#'
+          url: '#'
           sublinks:
             - title: Hello World Sample
               url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-samples/#hello-world-sample
@@ -37,8 +35,7 @@
       url: '#'
       sublinks:
         - title: AWS Lambda
-          url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
-          active: aws-lambda
+          url: '#'
           sublinks:
             - title: Writing a Function
               url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/#writing-a-function
@@ -56,8 +53,7 @@
               url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/#whats-next
               active: whats-next
         - title: Azure Functions
-          url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
-          active: aws-lambda
+          url: '#'
           sublinks:
             - title: Triggers and Bindings
               url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#triggers-and-bindings

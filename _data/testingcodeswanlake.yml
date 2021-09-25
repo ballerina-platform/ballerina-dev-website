@@ -2,8 +2,7 @@
   url: '#'
   sublinks:
     - title: Quick Start on Testing 
-      url: /learn/testing-ballerina-code/quick-start-on-testing/
-      active: quick-start-on-testing
+      url: '#'
       sublinks:
         - title: Writing a Simple Function
           url: /learn/testing-ballerina-code/quick-start-on-testing/#writing-a-simple-function
@@ -12,8 +11,7 @@
           url: /learn/testing-ballerina-code/quick-start-on-testing/#whats-next
           active: whats-next
     - title: Writing Tests
-      url: /learn/testing-ballerina-code/writing-tests/
-      active: writing-tests
+      url: '#'
       sublinks:
         - title: Project Structure
           url: /learn/testing-ballerina-code/writing-tests/#project-structure
@@ -49,8 +47,7 @@
           url: /learn/testing-ballerina-code/writing-tests/#whats-next
           active: whats-next
     - title: Testing Services and Clients
-      url: /learn/testing-ballerina-code/testing-services-and-clients/
-      active: testing-services-and-clients
+      url: '#'
       sublinks:
         - title: Testing Services
           url: /learn/testing-ballerina-code/testing-services-and-clients/#testing-services
@@ -62,8 +59,7 @@
           url: /learn/testing-ballerina-code/testing-services-and-clients/#configuring-services-and-clients
           active: configuring-services-and-clients
     - title: Mocking
-      url: /learn/testing-ballerina-code/mocking/
-      active: mocking
+      url: '#'
       sublinks:
         - title: Mocking Objects
           url: /learn/testing-ballerina-code/mocking/#mocking-objects
@@ -75,8 +71,7 @@
           url: /learn/testing-ballerina-code/mocking/#whats-next
           active: whats-next
     - title: Executing Tests
-      url: /learn/testing-ballerina-code/executing-tests/
-      active: executing-tests
+      url: '#'
       sublinks:
         - title: Executing Tests Using CLI Commands
           url: /learn/testing-ballerina-code/executing-tests/#executing-tests-using-cli-commands

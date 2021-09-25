@@ -2,8 +2,7 @@
   url: '#'
   sublinks:
     - title: Observing Your Application with Prometheus, Grafana, and Jaeger
-      url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/
-      active: observing-your-application-with-prometheus-grafana-and-jaeger
+      url: '#'
       sublinks:
         - title: Providing Observability in Ballerina
           url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/#providing-observability-in-ballerina
@@ -21,8 +20,7 @@
           url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/#distributed-logging
           active: distributed-logging
     - title: Observing Your Application with Choreo
-      url: /learn/observing-ballerina-programs/observing-your-application-with-choreo/
-      active: observing-your-application-with-choreo
+      url: '#'
       sublinks:
         - title: Step 1 - Creating a Hello World Ballerina Service
           url: /learn/observing-ballerina-programs/observing-your-application-with-choreo/#step-1---creating-a-hello-world-ballerina-service

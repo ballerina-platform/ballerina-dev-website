@@ -2,8 +2,7 @@
   url: '#'
   sublinks:
     - title: Defining Configurable Variables 
-      url: /learn/making-ballerina-programs-configurable/defining-configurable-variables/
-      active: defining-configurable-variables
+      url: '#'
       sublinks:
         - title: Initialising Configurable Variables
           url: /learn/making-ballerina-programs-configurable/defining-configurable-variables/#initialising-configurable-variables
@@ -18,8 +17,7 @@
           url: /learn/making-ballerina-programs-configurable/defining-configurable-variables/#trying-it-out
           active: trying-it-out
     - title: Providing Values to Configurable Variables
-      url: /learn/making-ballerina-programs-configurable/providing-values-to-configurable-variables/
-      active: providing-values-to-configurable-variables
+      url: '#'
       sublinks:
         - title: Providing Values Through TOML Syntax
           url: /learn/making-ballerina-programs-configurable/providing-values-to-configurable-variables/#providing-values-through-toml-syntax
@@ -31,8 +29,7 @@
           url: /learn/making-ballerina-programs-configurable/providing-values-to-configurable-variables/#providing-values-through-command-line-arguments
           active: providing-values-through-command-line-arguments
     - title: Trying Out Configurability
-      url: /learn/making-ballerina-programs-configurable/trying-out-configurability/
-      active: trying-out-configurability
+      url: '#'
       sublinks:
         - title: Creating the Ballerina Package
           url: /learn/making-ballerina-programs-configurable/trying-out-configurability/#creating-the-ballerina-package

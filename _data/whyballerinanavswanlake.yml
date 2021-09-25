@@ -2,8 +2,7 @@
   url: '#'
   sublinks:
     - title: Cloud Native 
-      url: /learn/why-ballerina/cloud-native/
-      active: cloud-native
+      url: '#'
       sublinks:
         - title: Network-Friendly Type System
           url: /learn/why-ballerina/cloud-native/#network-friendly-type-system
@@ -21,8 +20,7 @@
           url: /learn/why-ballerina/cloud-native/#code-to-cloud
           active: code-to-cloud
     - title: Flexibly Typed
-      url: /learn/why-ballerina/flexibly-typed/
-      active: flexibly-typed
+      url: '#'
       sublinks:
         - title: Statically Typed and Structural
           url: /learn/why-ballerina/flexibly-typed/#statically-typed-and-structural
@@ -34,8 +32,7 @@
           url: /learn/why-ballerina/flexibly-typed/#network-communication-with-data-binding
           active: network-communication-with-data-binding
     - title: Data Oriented
-      url: /learn/why-ballerina/data-oriented/
-      active: data-oriented
+      url: '#'
       sublinks:
         - title: Query Expressions
           url: /learn/why-ballerina/data-oriented/#query-expressions
@@ -47,8 +44,7 @@
           url: /learn/why-ballerina/data-oriented/#writing-integrated-queries
           active: writing-integrated-queries
     - title: Graphical 
-      url: /learn/why-ballerina/graphical/
-      active: graphical
+      url: '#'
       sublinks:
         - title: Sequence Diagrams in Ballerina
           url: /learn/why-ballerina/graphical/#sequence-diagrams-in-ballerina
@@ -60,12 +56,11 @@
       url: /learn/why-ballerina/concurrent/
       active: concurrent
     - title: Reliable, Maintainable 
-      url: /learn/why-ballerina/reliable-maintainable/
-      active: reliable-maintainable
+      url: '#'
       sublinks:
         - title: Explicit Error Handling
           url: /learn/why-ballerina/reliable-maintainable/#explicit-error-handling
-          active: explicit-error-handling
+          active: sequence-diagrams-in-ballerina
 
 
 

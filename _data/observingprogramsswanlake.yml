@@ -33,7 +33,7 @@
         - title: Step 3 - Observe the Ballerina Service
           url: /learn/observing-ballerina-programs/observing-your-application-with-choreo/#step-3---observe-the-ballerina-service
           active: step-3---observe-the-ballerina-service
-        - title: step-4---sending-few-requests
+        - title: step-4 - sending-few-requests
           url: /learn/observing-ballerina-programs/observing-your-application-with-choreo/#step-4---sending-few-requests
           active: step-4---sending-few-requests
 

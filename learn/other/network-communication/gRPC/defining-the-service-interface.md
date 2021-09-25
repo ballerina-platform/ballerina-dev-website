@@ -15,6 +15,8 @@ redirect_from:
   - /learn/user-guide/network-communication/grpc
   - /learn/user-guide/network-communication/grpc/
   - /learn/user-guide/network-communication/grpc/defining-the-service-interface
+redirect_to:
+  - https://lib.ballerina.io/ballerina/grpc/latest/
 ---
 
 In an RPC service, the first step is to define the interface of the service. This is done using an IDL (Interface Definition Language) file. The IDL file of a gRPC service is provided using Protocol Buffers. Protobuf is a standard for serializing structured data. It provides the structures required for defining services, operations, and messages used in the service communication. 

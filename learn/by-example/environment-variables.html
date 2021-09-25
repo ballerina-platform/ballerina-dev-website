@@ -80,7 +80,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=b281cd2a1ce742b9a6e1f355c97e4aea&file=environment_variables.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=de46509c73c926849d7f04bfa187b516&file=environment_variables.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -223,10 +223,14 @@ Userhome: /Users/Alex
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

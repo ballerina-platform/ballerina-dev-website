@@ -98,7 +98,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=5d0b7acbfdb0b1b62a032482d085a028&file=inter_worker_message_passing.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=aa444bd91853be4af1e10a4d85f6677b&file=inter_worker_message_passing.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -314,10 +314,14 @@ redirect_from:
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

@@ -81,7 +81,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=b29149ccd5651091c29452cc8cca97cd&file=temp_files_directories.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=edf8eeb0a384d3834d9b53fcfe9b9901&file=temp_files_directories.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -224,10 +224,14 @@ Absolute path of the tmp file: /var/folders/f2/1s2f2mzd30ldl_fzxk4_gq3c0000gn/T/
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

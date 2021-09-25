@@ -17,7 +17,8 @@ redirect_from:
   - /learn/user-guide/code-organization/coding-conventions/top-level-definitions/
   - /learn/user-guide/code-organization/coding-conventions/top-level-definitions
   - /learn/user-guide/style-guide/coding-conventions/top-level-definitions
-  - /learn/user-guide/style-guide/coding-conventions/top-level-definitions
+  - /learn/user-guide/style-guide/coding-conventions/top-level-definitions/
+  - /learn/style-guide/top-level-definitions
 ---
 
 ## General Practices

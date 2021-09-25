@@ -25,7 +25,7 @@ redirect_from:
 
 <span class="c1">// The service can be secured with Basic auth and can be authorized optionally.</span>
 <span class="c1">// Using Basic auth with the file user store can be enabled by setting the</span>
-<span class="c1">// [`websocket:FileUserStoreConfig`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/FileUserStoreConfig) configurations.</span>
+<span class="c1">// `websocket:FileUserStoreConfig` configurations.</span>
 <span class="c1">// Authorization is based on scopes. A scope maps to one or more groups.</span>
 <span class="c1">// Authorization can be enabled by setting the `string|string[]` type</span>
 <span class="c1">// configurations for `scopes` field.</span>
@@ -179,7 +179,7 @@ service /foo on securedEP {
                                         <div>
                                             <p>The service can be secured with Basic auth and can be authorized optionally.
  Using Basic auth with the file user store can be enabled by setting the
- <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/records/FileUserStoreConfig"><code>websocket:FileUserStoreConfig</code></a> configurations.
+ <code>websocket:FileUserStoreConfig</code> configurations.
  Authorization is based on scopes. A scope maps to one or more groups.
  Authorization can be enabled by setting the <code>string|string[]</code> type
  configurations for <code>scopes</code> field.</p>
@@ -322,10 +322,14 @@ bal run websocket_service_basic_auth_file_user_store.bal
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

@@ -22,6 +22,10 @@ redirect_from:
   - /learn/user-guide/interoperability/
   - /learn/user-guide/interoperability
   - /learn/calling-java-code-from-ballerina-and-vice-versa
+  - /learn/tooling-guide/cli-tools/bindgen-tool/
+  - /learn/tooling-guide/cli-tools/bindgen-tool
+  - /learn/cli-documentation/bindgen-tool/
+  - /learn/cli-documentation/bindgen-tool
 ---
 
 ## Ballerina Bindings to Java Code

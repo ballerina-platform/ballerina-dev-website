@@ -1,6 +1,6 @@
 ---
 layout: ballerina-guides-left-nav-pages-swanlake
-title: Samples
+title: Code to Cloud Samples
 description: Sample use cases of Ballerina code to cloud. 
 keywords: ballerina, programming language, services, cloud, kubernetes, docker
 permalink: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-samples/

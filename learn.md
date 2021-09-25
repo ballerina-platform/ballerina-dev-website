@@ -29,6 +29,8 @@ redirect_from:
 			<p>A comprehensive reference slide deck explaining the language.</p>-->
 			<h3 id="language-walkthrough-video"><a href="/learn/language-walkthrough/">Language Walkthrough</a></h3>
 			<p>A video series, which explains the language and its reference slide deck.</p>
+			<h3 id="installing-ballerina"><a href="/learn/ballerina-shell">Ballerina Shell</a></h3>
+			<p>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
 			<h3 id="installing-ballerina"><a href="/learn/visual-studio-code-extension/quick-start/">Visual Studio Code Extension</a></h3>
 			<p>Details of all the features of the Ballerina Visual Studio Code extension.</p>
 		</div>

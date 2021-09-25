@@ -1,4 +1,4 @@
-{% for entry in site.data.learnnavswanlake %}
+{% for entry in site.data.configurableswanlake %}
 {% capture fullurl %}{{ site.baseurl }}{{ entry.url }}{% endcapture %}
 {% if fullurl == page.url %}
 {% assign current_page = fullurl %}
@@ -10,7 +10,7 @@
 <!-- Then we build the nav bar. -->
 <nav class="cLeftNavContainer cLeftNavContainerScroll">
    <ul class="cMainLeftNav">
-      {% for entry in site.data.learnnavswanlake %}
+      {% for entry in site.data.configurableswanlake %}
       {% if entry.url == current_page %}
       {% assign current = ' class="current"' %}
       {% else %}

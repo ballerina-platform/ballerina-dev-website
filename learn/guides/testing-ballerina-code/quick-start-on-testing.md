@@ -1,11 +1,6 @@
 ---
-<<<<<<< HEAD:learn/guides/testing-ballerina-code/quick-start-on-testing.md
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Quick Start
-=======
-layout: ballerina-guides-left-nav-pages-swanlake
 title: Quick Start on Testing
->>>>>>> 08a5459d1e9ca9ff9127fda7664b59a8053e39e9:learn/guides/testing-ballerina-code/quick-start-on-testing.md
 description: Learn how to use Ballerina's built-in test framework to write testable code. The test framework provides a set of building blocks to help write and run tests.
 keywords: ballerina, programming language, testing
 permalink: /learn/testing-ballerina-code/quick-start-on-testing/
@@ -24,10 +19,7 @@ redirect_from:
   - /learn/user-guide/testing-ballerina-code/testing-quick-start/
   - /learn/user-guide/testing-ballerina-code/
   - /learn/user-guide/testing-ballerina-code
-<<<<<<< HEAD:learn/guides/testing-ballerina-code/quick-start-on-testing.md
   - /learn/user-guide/testing-ballerina-code/testing-quick-start/
-=======
->>>>>>> 08a5459d1e9ca9ff9127fda7664b59a8053e39e9:learn/guides/testing-ballerina-code/quick-start-on-testing.md
   - /learn/testing-ballerina-code/quick-start-on-testing
 ---
 

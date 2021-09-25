@@ -11,7 +11,7 @@
       url: /learn/testing-ballerina-code/testing-services-and-clients/
       active: testing-services-and-clients
     - title: Mocking
-      url: learn/testing-ballerina-code/mocking/
+      url: /learn/testing-ballerina-code/mocking/
       active: mocking
     - title: Executing Tests
       url: /learn/testing-ballerina-code/executing-tests/

@@ -1,5 +1,5 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-cloud-left-nav-pages-swanlake
 title: Azure Functions
 description: Learn how to write and deploy Azure Functions using ballerina
 keywords: ballerina, programming language, serverless, cloud, Azure, Functions, Cloud Native

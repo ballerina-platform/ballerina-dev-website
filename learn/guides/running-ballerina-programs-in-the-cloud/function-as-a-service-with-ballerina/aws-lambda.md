@@ -1,5 +1,5 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-cloud-left-nav-pages-swanlake
 title: AWS Lambda
 description: Learn how to write and deploy AWS Lambda functions using ballerina
 keywords: ballerina, programming language, serverless, cloud, AWS, Lambda, Cloud Native

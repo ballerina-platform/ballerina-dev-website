@@ -1,5 +1,5 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Reliable, Maintainable
 description: The sections below explain how the explicit error handling, static types, and concurrency safety combined with a familiar, readable syntax make programs reliable and maintainable.
 keywords: ballerina, ballerina platform, api documentation, testing, ide, ballerina central
@@ -170,11 +170,3 @@ Panics can be trapped with a `trap` expression. Ballerina raises a panic on an i
 int|error result = trap (m + n);
 ```
 
-<style>
-.nav > li.cVersionItem {
-    display: none !important;
-}
-.cBalleinaBreadcrumbs li:nth-child(3) , .cBalleinaBreadcrumbs li:nth-child(2) {
-   display:none !important;
-}
-</style>

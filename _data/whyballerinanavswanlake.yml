@@ -1,187 +1,28 @@
-- title: Getting Started 
+- title: Why Ballerina 
   url: '#'
   sublinks:
-    - title: Setting up Ballerina 
-      url: /learn/user-guide/getting-started/setting-up-ballerina/
-      active: setting-up-ballerina
-    - title: Installation Options
-      url: /learn/user-guide/getting-started/installation-options/
-      active: installation-options
-    - title: Building from Source
-      url: /learn/user-guide/getting-started/building-from-source/
-      active: building-from-source
-    - title: Writing Your First Ballerina Program 
-      url: /learn/user-guide/getting-started/writing-your-first-ballerina-program/
-      active: writing-your-first-ballerina-program
+    - title: Cloud Native 
+      url: /learn/why-ballerina/cloud-native/
+      active: cloud-native
+    - title: Flexibly Typed
+      url: /learn/why-ballerina/flexibly-typed/
+      active: flexibly-typed
+    - title: Data Oriented
+      url: /learn/why-ballerina/data-oriented/
+      active: data-oriented
+    - title: Graphical 
+      url: /learn/why-ballerina/graphical/
+      active: graphical
+    - title: Concurrent
+      url: /learn/why-ballerina/concurrent/
+      active: concurrent
+    - title: Reliable, Maintainable 
+      url: /learn/why-ballerina/reliable-maintainable/
+      active: reliable-maintainable
 
-- title: Ballerina Packages
-  url: '#'
-  sublinks:
-    - title: Creating Your First Ballerina Package
-      url: /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/
-      active: creating-your-first-ballerina-package
-    - title: Package Layout
-      url: /learn/user-guide/ballerina-packages/package-layout/
-      active: package-layout
-    - title: Modules
-      url: /learn/user-guide/ballerina-packages/modules/
-      active: modules
-    - title: Dependencies
-      url: /learn/user-guide/ballerina-packages/dependencies/
-      active: dependencies
-    - title: Sharing a Library Package
-      url: /learn/user-guide/ballerina-packages/sharing-a-library-package/
-      active: sharing-a-library-package
 
-- title: Testing Ballerina Code
-  url: '#'
-  sublinks:
-    - title: Quick Start
-      url: /learn/user-guide/testing-ballerina-code/testing-quick-start
-      active: testing-quick-start
-    - title: Writing Tests
-      url: /learn/user-guide/testing-ballerina-code/writing-tests
-      active: writing-tests
-    - title: Testing Services and Clients
-      url: /learn/user-guide/testing-ballerina-code/testing-services-and-clients
-      active: testing-services-and-clients
-    - title: Mocking
-      url: /learn/user-guide/testing-ballerina-code/mocking
-      active: mocking
-    - title: Executing Tests
-      url: /learn/user-guide/testing-ballerina-code/executing-tests
-      active: executing-tests
 
-- title: Generating Code Documentation
-  url: '#'
-  sublinks:
-    - title: Documenting Ballerina Code
-      url: /learn/user-guide/code-organization/documenting-ballerina-code/
-      active: documenting-ballerina-code
 
-- title: Style Guide
-  url: '#'
-  sublinks:
-    - title: Coding Conventions
-      url: /learn/user-guide/style-guide/coding-conventions/
-      active: coding-conventions
-    - title: Top-Level Definitions
-      url: /learn/user-guide/style-guide/coding-conventions/top-level-definitions/
-      active: top-level-definitions
-    - title: Operators, Keywords, and Types
-      url: /learn/user-guide/style-guide/coding-conventions/operators-keywords-and-types/
-      active: operators-keywords-and-types
-    - title: Statements
-      url: /learn/user-guide/style-guide/coding-conventions/statements/
-      active: statements
-    - title: Expressions
-      url: /learn/user-guide/style-guide/coding-conventions/expressions/
-      active: expressions
-    - title: Annotations, Documentation, and Comments
-      url: /learn/user-guide/style-guide/coding-conventions/annotations-documentation-and-comments/
-      active: annotations-documentation-and-comments
 
-- title: Network Communication
-  url: '#' 
-  sublinks:
-    - title: HTTP
-      url: /learn/user-guide/network-communication/http/
-      active: http 
-      sublinks:
-        - title: HTTP Clients
-          url: /learn/user-guide/network-communication/http/http-clients/
-          active: http-clients
-        - title: HTTP Services
-          url: /learn/user-guide/network-communication/http/http-services/
-          active: http-services
-    - title: gRPC
-      url: '#' 
-      sublinks:
-        - title: Defining the Interface of the Service
-          url: /learn/user-guide/network-communication/grpc/defining-the-service-interface/
-          active: defining-the-service-interface
-        - title: Implementing gRPC Services and Clients
-          url: '#'
-          sublinks:
-            - title: Implementing gRPC Services 
-              url: /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-services/
-              active: implementing-grpc-services
-            - title: Implementing gRPC Clients
-              url: /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-clients/
-              active: implementing-grpc-clients
-        - title: Performing gRPC Streaming
-          url: /learn/user-guide/network-communication/grpc/performing-grpc-streaming/
-          active: performing-grpc-streaming
-    - title: WebSocket
-      url: /learn/user-guide/network-communication/websocket/
-      active: websocket
-    - title: GraphQL
-      url: /learn/user-guide/network-communication/graphql/
-      active: graphql
 
-- title: Data and Events Processing 
-  url: '#' 
-  sublinks:
-    - title: Using Language-Integrated Queries
-      url: /learn/user-guide/data-and-events-processing/using-language-integrated-queries/
-      active: using-language-integrated-queries
-
-- title: Deployment
-  url: '#' 
-  sublinks:
-    - title: Code to Cloud
-      url: /learn/user-guide/deployment/code-to-cloud/
-      active: code-to-cloud
-    - title: AWS Lambda
-      url: /learn/user-guide/deployment/aws-lambda/
-      active: aws-lambda
-    - title: Azure Functions
-      url: /learn/user-guide/deployment/azure-functions/
-      active: azure-functions
-
-- title: Observability
-  url: '#' 
-  sublinks:
-    - title: Observing Ballerina Code
-      url: /learn/user-guide/observability/observing-ballerina-code
-      active: observing-ballerina-code
-    - title: Observing Ballerina Services Through Choreo
-      url: /learn/user-guide/observability/observing-ballerina-services-through-choreo
-      active: observing-ballerina-services-through-choreo
-
-- title: Interoperability
-  url: '#' 
-  sublinks:
-    - title: Calling Java Code from Ballerina
-      url: /learn/user-guide/interoperability/calling-java-code-from-ballerina/
-      active: calling-java-code-from-ballerina
-
-- title: Configurability
-  url: '#' 
-  sublinks:
-    - title: Defining Configurable Variables
-      url: /learn/user-guide/configurability/defining-configurable-variables/
-      active: defining-configurable-variables
-    - title: Providing Values to Configurable Variables
-      url: /learn/user-guide/configurability/providing-values-to-configurable-variables/
-      active: providing-values-to-configurable-variables
-    - title: Trying it Out
-      url: /learn/user-guide/configurability/trying-it-out/
-      active: trying-it-out
-
-- title: Security
-  url: '#' 
-  sublinks:
-    - title: HTTP Listener Authentication and Authorization
-      url: /learn/user-guide/security/http-listener-authentication-and-authorization
-      active: http-listener-authentication-and-authorization
-    - title: HTTP Client Authentication
-      url: /learn/user-guide/security/http-client-authentication/
-      active: http-client-authentication
-
-#- title: Extending Ballerina
-  #url: '#' 
-  #sublinks:
-    #- title: Extending with Compiler Extensions 
-      #url: /swan-lake/learn/extending-with-compiler-extensions
-      #active: extending-with-compiler-extensions     
+  

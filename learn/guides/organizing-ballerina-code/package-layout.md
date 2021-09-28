@@ -14,6 +14,8 @@ redirect_from:
   - /learn/organizing-ballerina-code
   - /learn/user-guide/structuring-ballerina-code/
   - /learn/user-guide/structuring-ballerina-code
+  - /learn/user-guide/ballerina-packages/
+  - /learn/user-guide/ballerina-packages
 ---
 
 ```bash

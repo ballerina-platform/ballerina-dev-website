@@ -553,7 +553,7 @@ function read() returns int|IOException {
 
 ## Packaging Java Libraries with Ballerina Programs
 
->**Note:** This section assumes that you have already read [Structuring Ballerina Code](/learn/user-guide/ballerina-packages/).
+>**Note:** This section assumes that you have already read [Structuring Ballerina Code](/learn/organizing-ballerina-code/package-layout/).
  
 When you compile a Ballerina program with `bal build`, the compiler creates an executable JAR file and when you compile a Ballerina module with `bal build -c`, the compiler creates a BALA file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.
 

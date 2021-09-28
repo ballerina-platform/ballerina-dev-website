@@ -49,7 +49,7 @@ This is the directory structure of your package after adding the `hello_world.ut
 2 directories, 3 files
 ```
 
-You can add a public function in the `hello_world.util` module and use this function in the `main.bal` file in [the default module](/learn/user-guide/ballerina-packages/modules/#the-default-module).
+You can add a public function in the `hello_world.util` module and use this function in the `main.bal` file in [the default module](/learn/organizing-ballerina-code/modules/#the-default-module).
 
 ```bal
 import hello_world.util
@@ -109,7 +109,7 @@ error: compilation failed: Two incompatible versions exist in the dependency gra
 ## Overriding Dependencies
 
 The needto override a dependency can arise through a number of scenarios. The most common scenario out of them is the need to test a package 
-before [publishing to the Ballerina Central](/learn/user-guide/ballerina-packages/sharing-a-library-package/#publishing-a-library-package-to-ballerina-central). This can be achieved with the local repository.
+before [publishing to the Ballerina Central](/learn/publishing-packages-to-ballerina-central/#publishing-a-library-package-to-ballerina-central). This can be achieved with the local repository.
 
 ### The Local Repository
 

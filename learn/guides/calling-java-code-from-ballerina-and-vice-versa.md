@@ -223,7 +223,7 @@ public class SnakeYamlSample {
 }
 ```
 
-#### Creating the 'FileInputStream'
+#### Creating the `FileInputStream`
 Our goal here is to create a new `java.io.FileInputStream` instance from the filename. In step 3, we generated bindings for the required Java classes. The following is the code snippet that does the job. 
 
 ```ballerina
@@ -306,7 +306,7 @@ In this section, we explained how to use the `bindgen` tool to generate Ballerin
 
 The next sections provide more details on various aspects related to Java interoperability in Ballerina. 
 
-## The 'bindgen' Tool
+## The `bindgen` Tool
 
 The following subsections explain how the `bindgen` tool works.
 
@@ -329,7 +329,7 @@ The following subsections explain how the `bindgen` tool works.
 
 The `bindgen` is a CLI tool, which generates Ballerina bindings for Java classes.
 
-### The 'bindgen' Command
+### The `bindgen` Command
 
 ```sh
 ballerina bindgen [(-cp|--classpath) <classpath>...]
@@ -796,7 +796,7 @@ function newArrayDequeWithCollection(handle c) returns handle = @java:Constructo
 } external;
 ```
 
-##### The 'paramTypes' Field
+##### The `paramTypes` Field
 You can use the `paramTypes` field to resolve the exact overloaded method. This field is defined as follows.
 
 ```ballerina

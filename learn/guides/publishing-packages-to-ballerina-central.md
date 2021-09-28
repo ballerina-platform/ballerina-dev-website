@@ -33,7 +33,7 @@ hello
 0 directories, 3 files
 ```
 
-It creates the `Ballerina.toml` file. Apart from it, the `hello.bal` source file and the [Package.md](/learn/user-guide/ballerina-packages/package-layout#packagemd) files are created. For more information on these, see [/learn/user-guide/ballerina-packages/package-layout/].
+It creates the `Ballerina.toml` file. Apart from it, the `hello.bal` source file and the [Package.md](/learn/organizing-ballerina-code/package-layout/#packagemd) files are created. For more information on these, see [Package Layout](/learn/organizing-ballerina-code/package-layout/).
 
 The `Ballerina.toml` file will include the content below.
 
@@ -101,4 +101,4 @@ bal push
 
 After publishing your first package, you can create a second package and use the already-published package in it.
 
-Any package published in Ballerina Central is public and they can be used in packages as explained in [Dependencies](/learn/user-guide/ballerina-packages/dependencies).
+Any package published in Ballerina Central is public and they can be used in packages as explained in [Dependencies](/learn/managing-dependencies/).

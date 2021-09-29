@@ -32,6 +32,8 @@ redirect_from:
 - /learn/user-guide/security
 - /learn/user-guide/security/authentication-and-authorization/
 - /learn/user-guide/security/authentication-and-authorization
+redirect_to:
+    - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 The Ballerina HTTP services/resources can be configured to authenticate and authorize the inbound requests. Ballerina has built-in support for the following listener authentication mechanisms.

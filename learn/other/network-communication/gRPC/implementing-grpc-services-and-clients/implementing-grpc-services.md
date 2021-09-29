@@ -15,6 +15,8 @@ redirect_from:
   - /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients
   - /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/
   - /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-services
+redirect_to:
+  - https://lib.ballerina.io/ballerina/grpc/latest/
 ---
 
 Execute the `bal new service` command to create a Ballerina package to implement the service. You view the output below.

@@ -15,6 +15,8 @@ redirect_from:
   - /learn/user-guide/deployment/aws-lambda
   - /learn/user-guide/deployment/aws-lambda/
   - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda
+  - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/
+  - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina
 ---
 
 Exposing a Ballerina function as an AWS Lambda function is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json) returns json|error`. 
@@ -33,7 +35,7 @@ public function hash(awslambda:Context ctx, json input) returns json|error {
 }
 ```
 
-The first parameter with the [awslambda:Context](/learn/api-docs/ballerina/#/awslambda/classes/Context) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
+The first parameter with the [awslambda:Context](https://lib.ballerina.io/ballerinax/awslambda/latest/classes/Context) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
 
 The second parameter with the `json` value contains the input request data. This input value format will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). The return type of the function is `json|error`, which means in a successful scenario, the function can return a `json` value with the response, or else in an error situation, the function will return an `error` value, which provides information on the error to the system.
 

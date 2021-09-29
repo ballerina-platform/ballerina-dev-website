@@ -22,6 +22,10 @@ redirect_from:
   - /learn/user-guide/interoperability/
   - /learn/user-guide/interoperability
   - /learn/calling-java-code-from-ballerina-and-vice-versa
+  - /learn/tooling-guide/cli-tools/bindgen-tool/
+  - /learn/tooling-guide/cli-tools/bindgen-tool
+  - /learn/cli-documentation/bindgen-tool/
+  - /learn/cli-documentation/bindgen-tool
 ---
 
 ## Ballerina Bindings to Java Code
@@ -219,7 +223,7 @@ public class SnakeYamlSample {
 }
 ```
 
-#### Creating the 'FileInputStream'
+#### Creating the `FileInputStream`
 Our goal here is to create a new `java.io.FileInputStream` instance from the filename. In step 3, we generated bindings for the required Java classes. The following is the code snippet that does the job. 
 
 ```ballerina
@@ -302,7 +306,7 @@ In this section, we explained how to use the `bindgen` tool to generate Ballerin
 
 The next sections provide more details on various aspects related to Java interoperability in Ballerina. 
 
-## The 'bindgen' Tool
+## The `bindgen` Tool
 
 The following subsections explain how the `bindgen` tool works.
 
@@ -325,7 +329,7 @@ The following subsections explain how the `bindgen` tool works.
 
 The `bindgen` is a CLI tool, which generates Ballerina bindings for Java classes.
 
-### The 'bindgen' Command
+### The `bindgen` Command
 
 ```sh
 ballerina bindgen [(-cp|--classpath) <classpath>...]
@@ -549,7 +553,7 @@ function read() returns int|IOException {
 
 ## Packaging Java Libraries with Ballerina Programs
 
->**Note:** This section assumes that you have already read [Structuring Ballerina Code](/learn/user-guide/ballerina-packages/).
+>**Note:** This section assumes that you have already read [Structuring Ballerina Code](/learn/organizing-ballerina-code/package-layout/).
  
 When you compile a Ballerina program with `bal build`, the compiler creates an executable JAR file and when you compile a Ballerina module with `bal build -c`, the compiler creates a BALA file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.
 
@@ -792,7 +796,7 @@ function newArrayDequeWithCollection(handle c) returns handle = @java:Constructo
 } external;
 ```
 
-##### The 'paramTypes' Field
+##### The `paramTypes` Field
 You can use the `paramTypes` field to resolve the exact overloaded method. This field is defined as follows.
 
 ```ballerina

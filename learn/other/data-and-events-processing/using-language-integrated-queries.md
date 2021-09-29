@@ -17,6 +17,8 @@ redirect_from:
   - /learn/user-guide/data-and-events-processing/using-language-integrated-queries
   - /learn/user-guide/data-and-events-processing/
   - /learn/user-guide/data-and-events-processing
+redirect_to:
+  - /learn/by-example/
 ---
 
 ## Using Language-Integrated Queries

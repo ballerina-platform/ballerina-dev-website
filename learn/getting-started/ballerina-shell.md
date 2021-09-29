@@ -1,12 +1,14 @@
 ---
-layout: ballerina-tooling-guide-left-nav-pages-swanlake
+layout: ballerina-inner-page
 title: Ballerina Shell
-permalink: /learn/tooling-guide/ballerina-shell/
+permalink: /learn/ballerina-shell/
 description: The Ballerina Shell is a Read-Evaluate-Print Loop (REPL) for Ballerina.
 active: ballerina-shell
 intro: The Ballerina Shell is a Read-Evaluate-Print Loop (REPL) for Ballerina.
 redirect_from:
   - /learn/tooling-guide/ballerina-shell
+  - /learn/tooling-guide/ballerina-shell/
+  - /learn/ballerina-shell
 ---
 
 It allows you to evaluate snippets of code without having to write complete programs. 

@@ -17,7 +17,8 @@ redirect_from:
   - /learn/user-guide/code-organization/coding-conventions/top-level-definitions/
   - /learn/user-guide/code-organization/coding-conventions/top-level-definitions
   - /learn/user-guide/style-guide/coding-conventions/top-level-definitions
-  - /learn/user-guide/style-guide/coding-conventions/top-level-definitions
+  - /learn/user-guide/style-guide/coding-conventions/top-level-definitions/
+  - /learn/style-guide/top-level-definitions
 ---
 
 ## General Practices
@@ -52,13 +53,6 @@ service / on ep1 {
     ...
     }
 ```
-
-- [Imports](#imports)
-- [Function Definition](#function-definition)
-- [Service Definition](#service-definition)
-- [Class Definition](#class-definition)
-- [Record Definition](#record-definition)
-- [Referencing Record or Abstract Object](#referencing-record-or-abstract-object)
 
 ## Imports
 

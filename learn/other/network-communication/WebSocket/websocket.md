@@ -13,6 +13,8 @@ redirect_from:
   - /learn/network-communication/websocket/
   - /learn/network-communication/websocket
   - /learn/user-guide/network-communication/websocket
+redirect_to:
+  - https://lib.ballerina.io/ballerina/websocket/latest/
 ---
 
 ## Upgrading the WebSocket 

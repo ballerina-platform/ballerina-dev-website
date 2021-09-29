@@ -23,7 +23,7 @@ redirect_from:
 
 * Do not keep spaces between the function name and opening parentheses `(`.
   
-* If it is unable to keep the function invocation in a single line due to it exceeding the max line length, split it into a new line based on the best practices given in the [line breaks section](/learn/coding-conventions/#line-breaks).
+* If it is unable to keep the function invocation in a single line due to it exceeding the max line length, split it into a new line based on the best practices given in [line breaks](/learn/style-guide/coding-conventions/#line-breaks).
     
 **Example,**
 

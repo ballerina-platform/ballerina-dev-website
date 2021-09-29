@@ -15,7 +15,7 @@ redirect_from:
 	<div class="column-gray-box-grid">
 		<div class="column-gray-box"> 
 			<h2 id="getting-started">Getting Started</h2>
-			<h3 id="installing-ballerina"><a href="/learn/installing-ballerina/setting-up-ballerina/">Setting Up Ballerina</a></h3>
+			<h3 id="installing-ballerina"><a href="/learn/installing-ballerina/setting-up-ballerina/">Installing Ballerina</a></h3>
 			<p>Setting up the Ballerina development environment.</p>
 			<h3 id="hello-world"><a href="/learn/getting-started/hello-world/writing-your-first-ballerina-program/">Hello World</a></h3>
 			<p>Writing your first Ballerina program and creating your first Ballerina package.</p>
@@ -29,6 +29,8 @@ redirect_from:
 			<p>A comprehensive reference slide deck explaining the language.</p>-->
 			<h3 id="language-walkthrough-video"><a href="/learn/language-walkthrough/">Language Walkthrough</a></h3>
 			<p>A video series, which explains the language and its reference slide deck.</p>
+			<h3 id="installing-ballerina"><a href="/learn/ballerina-shell">Ballerina Shell</a></h3>
+			<p>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
 			<h3 id="installing-ballerina"><a href="/learn/visual-studio-code-extension/quick-start/">Visual Studio Code Extension</a></h3>
 			<p>Details of all the features of the Ballerina Visual Studio Code extension.</p>
 		</div>

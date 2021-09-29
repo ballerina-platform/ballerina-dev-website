@@ -13,6 +13,8 @@ redirect_from:
   - /learn/network-communication/http/http-clients/
   - /learn/network-communication/http/http-clients
   - /learn/user-guide/network-communication/http/http-clients
+redirect_to:
+  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Creating HTTP Clients

@@ -153,6 +153,8 @@ Visual Studio Code allows you to debug Ballerina programs through the Ballerina 
 
 - Launch/Attach
 - Breakpoints
+  - Conditional Breakpoints
+  - Logpoints
 - Pause & Continue
 - Step In/Out/Over
 - Variables
@@ -164,7 +166,25 @@ Visual Studio Code allows you to debug Ballerina programs through the Ballerina 
 
 <!--For more information on the above features, see [Using the Debugging Features](/learn/tooling-guide/visual-studio-code-extension/run-and-debug/using-the-debugging-features/).-->
 
-### Using Expression Evaluation
+### Conditional Breakpoints
+
+The Ballerina debugger provides the ability of setting Ballerina expression-based conditions for regular breakpoints. 
+The debugger will suspend at the breakpoint only whenever the expression evaluates to true.
+
+![Debugger Conditional Breakpoints](/learn/images/debugger-conditional-breakpoints.gif)                
+                      
+### Logpoints        
+
+Logpoints are another variant of breakpoints which does not "break" the program execution, but instead logs a message to the console. 
+Logpoints are especially useful for injecting logging while debugging production servers that cannot be paused or stopped.
+
+Log messages can either be plain texts, or string templates which can contain expressions to be evaluated within curly braces ('{}').
+
+Logpoints can also be enabled/disabled and can be controlled by conditions, similar to regular breakpoints.
+       
+![Debugger Logpoints](/learn/images/debugger-logpoints.gif)   
+
+### Expression Evaluation
 
 Ballerina expression evaluator allows evaluating Ballerina variables and expressions at runtime allowing them to be viewed when the IDE is in the break mode.
 
@@ -184,12 +204,8 @@ The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
 
 #### Existing Limitations
 
-The features below are currently not supported.
-
-- Anonymous function, query, let, and constructor expressions
-- Qualified identifiers (Hence, cannot evaluate imported module entities.)
-- Function invocations with rest arguments
-- Action invocations
+- Anonymous function, let, and constructor expressions are currently not supported.
+- Limited support for Ballerina actions (only remote method call actions are supported)
 
 ## Debug Configurations
 

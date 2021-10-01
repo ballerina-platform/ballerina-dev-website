@@ -169,14 +169,13 @@ Visual Studio Code allows you to debug Ballerina programs through the Ballerina 
 ### Conditional Breakpoints
 
 The Ballerina debugger provides the ability of setting Ballerina expression-based conditions for regular breakpoints. 
-The debugger will suspend at the breakpoint only whenever the expression evaluates to true.
+The debugger will suspend at the breakpoint whenever the expression evaluates to true.
 
 ![Debugger Conditional Breakpoints](/learn/images/debugger-conditional-breakpoints.gif)                
                       
 ### Logpoints        
 
-Logpoints are another variant of breakpoints which does not "break" the program execution, but instead logs a message to the console. 
-Logpoints are especially useful for injecting logging while debugging production servers that cannot be paused or stopped.
+Logpoints are another variant of breakpoints which does not "break" the program execution, but instead logs a message to the console. Logpoints are especially useful for injecting logging while debugging production servers that cannot be paused or stopped.
 
 Log messages can either be plain texts, or string templates which can contain expressions to be evaluated within curly braces ('{}').
 

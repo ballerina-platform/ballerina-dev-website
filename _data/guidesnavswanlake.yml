@@ -1,5 +1,5 @@
 - title: Why Ballerina
-  url: #
+  url: '#'
   sublinks:
     - title: Cloud Native
       url: /learn/why-ballerina/cloud-native/
@@ -15,13 +15,13 @@
       active: graphical
     - title: Concurrent
       url: /learn/why-ballerina/concurrent/
-      active: Concurrent
+      active: concurrent
     - title: Reliable, Maintainable
       url: /learn/why-ballerina/reliable-maintainable/
       active: reliable-maintainable
 
 - title: Organizing Ballerina Code
-  url: #
+  url: '#'
   sublinks:
     - title: Package Layout
       url: /learn/organizing-ballerina-code/package-layout/
@@ -31,11 +31,11 @@
       active: modules
 
 - title: Testing Ballerina Code
-  url: #
+  url: '#'
   sublinks:
-    - title: Testing Quick Start
-      url: /learn/testing-ballerina-code/testing-quick-start/
-      active: testing-quick-start
+    - title: Quick Start on Testing
+      url: /learn/testing-ballerina-code/quick-start-on-testing/
+      active: quick-start-on-testing
     - title: Writing Tests
       url: /learn/testing-ballerina-code/writing-tests/
       active: writing-tests
@@ -54,7 +54,7 @@
   active: generating-code-documentation
 
 - title: Making Ballerina Programs Configurable
-  url: #
+  url: '#'
   sublinks:
     - title: Defining Configurable Variables
       url: /learn/making-ballerina-programs-configurable/defining-configurable-variables/
@@ -63,11 +63,11 @@
       url: /learn/making-ballerina-programs-configurable/providing-values-to-configurable-variables/
       active: providing-values-to-configurable-variables
     - title: Trying Out Configurability
-      url: /learn/making-ballerina-programs-configurable/trying-it-out/
-      active: trying-it-out
+      url: /learn/making-ballerina-programs-configurable/trying-out-configurability/
+      active: trying-out-configurability
 
 - title: Observing Ballerina Programs
-  url: #
+  url: '#'
   sublinks:
     - title: Observing Your Application with Prometheus, Grafana, and Jaeger
       url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/
@@ -77,17 +77,20 @@
       active: observing-your-application-with-choreo
 
 - title: Running Ballerina Programs in the Cloud
-  url: #
+  url: '#'
   sublinks:
     - title: Code to Cloud
       url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/
       active: code-to-cloud
       sublinks:
+        - title: Code to Cloud Deployment
+          url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-deployment
+          active: code-to-cloud-deployment
         - title: Code to Cloud Samples
           url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-samples
           active: code-to-cloud-samples
     - title: Function as a Service (FaaS) with Ballerina
-      url: #
+      url: '#'
       sublinks:
         - title: AWS Lambda
           url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
@@ -97,11 +100,8 @@
           active: azure-functions
 
 - title: Managing Dependencies 
-  url: #
-  sublinks:
-    - title: Declaring Dependencies
-      url: /learn/managing-dependencies/
-      active: managing-dependencies
+  url: /learn/managing-dependencies/
+  active: managing-dependencies
 
 - title: Publishing packages to Ballerina Central
   url: /learn/publishing-packages-to-ballerina-central/
@@ -110,3 +110,4 @@
 - title: Calling Java Code from Ballerina and Vice Versa
   url: /learn/calling-java-code-from-ballerina-and-vice-versa/
   active: calling-java-code-from-ballerina-and-vice-versa
+

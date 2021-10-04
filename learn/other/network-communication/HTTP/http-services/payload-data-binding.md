@@ -13,6 +13,8 @@ redirect_from:
   - /learn/network-communication/http/http-services/payload-data-binding/
   - /learn/network-communication/http/http-services/payload-data-binding
   - /learn/user-guide/network-communication/http/http-services/payload-data-binding
+redirect_to:
+  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Using the Annotation

@@ -19,7 +19,7 @@ redirect_from:
 <span class="kd">const</span> <span class="kt">string</span> <span class="nx">SASL_URL</span> <span class="p">=</span> <span class="s">&quot;localhost:9093&quot;</span><span class="p">;</span>
 
 <span class="nx">kafka</span><span class="p">:</span><span class="nx">ProducerConfiguration</span> <span class="nx">producerConfig</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="c1">// Provide the relevant authentication configurations to authenticate the producer by [`kafka:AuthenticationConfiguration`](https://docs.central.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration).</span>
+    <span class="c1">// Provide the relevant authentication configurations to authenticate the producer by `kafka:AuthenticationConfiguration`.</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="c1">// Provide the authentication mechanism used by the Kafka server.</span>
         <span class="nx">mechanism</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">AUTH_SASL_PLAIN</span><span class="p">,</span>
@@ -162,7 +162,7 @@ import ballerinax/kafka;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Provide the relevant authentication configurations to authenticate the producer by <a href="https://docs.central.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration"><code>kafka:AuthenticationConfiguration</code></a>.</p>
+                                            <p>Provide the relevant authentication configurations to authenticate the producer by <code>kafka:AuthenticationConfiguration</code>.</p>
 
                                         </div>
                                     </div>
@@ -286,10 +286,14 @@ Message published successfully.
                     $(".cCodeLeft").toggleClass('cHide');
                 });
 
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
                 // register "copy to clipboard" event to elements with "copy" class
                 var clipboard = new ClipboardJS('.copy', {
                     text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
+                        return codeText;
                     }
                 });
 

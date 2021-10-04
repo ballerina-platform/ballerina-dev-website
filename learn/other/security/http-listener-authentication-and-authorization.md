@@ -32,13 +32,15 @@ redirect_from:
 - /learn/user-guide/security
 - /learn/user-guide/security/authentication-and-authorization/
 - /learn/user-guide/security/authentication-and-authorization
+redirect_to:
+    - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 The Ballerina HTTP services/resources can be configured to authenticate and authorize the inbound requests. Ballerina has built-in support for the following listener authentication mechanisms.
 
-- Basic authentication
-- JWT authentication
-- OAuth2 authentication
+- Basic Auth
+- JWT Auth
+- OAuth2
 
 The example below represents how a service can be secured. The `http:ServiceConfig` annotation should have an `auth` field, which is an array of elements consisting of   `http:FileUserStoreConfigWithScopes`, `http:LdapUserStoreConfigWithScopes`, `http:JwtValidatorConfigWithScopes`, or `http:OAuth2IntrospectionConfigWithScopes` records. Each of these records consists of a record specific configuration (`http:FileUserStoreConfig`, `http:LdapUserStoreConfig`, `http:JwtValidatorConfig`, `http:OAuth2IntrospectionConfig` in this order) and an optional field, which consists of a `string` or `string[]`. The record-specific configuration is used for authentication and the optional field can be used for authorization.
 
@@ -140,7 +142,7 @@ listener http:Listener securedEP = new(9090,
     auth: [
         {
             fileUserStoreConfig: {},
-            scopes: ["hello"]
+            scopes: ["admin"]
         }
     ]
 }
@@ -221,7 +223,7 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-ListenerFileUserStoreBasicAuthHandler handler = new;
+http:ListenerFileUserStoreBasicAuthHandler handler = new;
 
 service /foo on securedEP {
     resource function get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
@@ -282,16 +284,16 @@ listener http:Listener securedEP = new(9090,
     auth: [
         {
             ldapUserStoreConfig: {
-                domainName: "ballerina.io",
-                connectionUrl: "ldap://localhost:20000",
-                connectionName: "uid=admin,ou=system",
-                connectionPassword: "secret",
-                userSearchBase: "ou=Users,dc=ballerina,dc=io",
-                userEntryObjectClass: "identityPerson",
+                domainName: "avix.lk",
+                connectionUrl: "ldap://localhost:389",
+                connectionName: "cn=admin,dc=avix,dc=lk",
+                connectionPassword: "avix123",
+                userSearchBase: "ou=Users,dc=avix,dc=lk",
+                userEntryObjectClass: "inetOrgPerson",
                 userNameAttribute: "uid",
-                userNameSearchFilter: "(&(objectClass=person)(uid=?))",
-                userNameListFilter: "(objectClass=person)",
-                groupSearchBase: ["ou=Groups,dc=ballerina,dc=io"],
+                userNameSearchFilter: "(&(objectClass=inetOrgPerson)(uid=?))",
+                userNameListFilter: "(objectClass=inetOrgPerson)",
+                groupSearchBase: ["ou=Groups,dc=avix,dc=lk"],
                 groupEntryObjectClass: "groupOfNames",
                 groupNameAttribute: "cn",
                 groupNameSearchFilter: "(&(objectClass=groupOfNames)(cn=?))",
@@ -299,10 +301,10 @@ listener http:Listener securedEP = new(9090,
                 membershipAttribute: "member",
                 userRolesCacheEnabled: true,
                 connectionPoolingEnabled: false,
-                connectionTimeout: 5000,
-                readTimeout: 60000
+                connectionTimeout: 5,
+                readTimeout: 60
             },
-            scopes: ["hello"]
+            scopes: ["admin"]
         }
     ]
 }
@@ -383,17 +385,17 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-ListenerFileUserStoreBasicAuthHandler handler = new({
-    domainName: "ballerina.io",
-    connectionUrl: "ldap://localhost:20000",
-    connectionName: "uid=admin,ou=system",
-    connectionPassword: "secret",
-    userSearchBase: "ou=Users,dc=ballerina,dc=io",
-    userEntryObjectClass: "identityPerson",
+http:ListenerLdapUserStoreBasicAuthHandler handler = new({
+    domainName: "avix.lk",
+    connectionUrl: "ldap://localhost:389",
+    connectionName: "cn=admin,dc=avix,dc=lk",
+    connectionPassword: "avix123",
+    userSearchBase: "ou=Users,dc=avix,dc=lk",
+    userEntryObjectClass: "inetOrgPerson",
     userNameAttribute: "uid",
-    userNameSearchFilter: "(&(objectClass=person)(uid=?))",
-    userNameListFilter: "(objectClass=person)",
-    groupSearchBase: ["ou=Groups,dc=ballerina,dc=io"],
+    userNameSearchFilter: "(&(objectClass=inetOrgPerson)(uid=?))",
+    userNameListFilter: "(objectClass=inetOrgPerson)",
+    groupSearchBase: ["ou=Groups,dc=avix,dc=lk"],
     groupEntryObjectClass: "groupOfNames",
     groupNameAttribute: "cn",
     groupNameSearchFilter: "(&(objectClass=groupOfNames)(cn=?))",
@@ -401,8 +403,8 @@ ListenerFileUserStoreBasicAuthHandler handler = new({
     membershipAttribute: "member",
     userRolesCacheEnabled: true,
     connectionPoolingEnabled: false,
-    connectionTimeout: 5000,
-    readTimeout: 60000
+    connectionTimeout: 5,
+    readTimeout: 60
 });
 
 service /foo on securedEP {
@@ -463,7 +465,7 @@ listener http:Listener securedEP = new(9090,
                 },
                 scopeKey: "scp"
             },
-            scopes: ["hello"]
+            scopes: ["admin"]
         }
     ]
 }
@@ -544,7 +546,7 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-ListenerFileUserStoreBasicAuthHandler handler = new({
+http:ListenerJwtAuthHandler handler = new({
     issuer: "wso2",
     audience: "ballerina",
     signatureConfig: {
@@ -570,13 +572,13 @@ service /foo on securedEP {
 
 ## OAuth2
 
-Ballerina supports OAuth2 authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have an `http:OAuth2IntrospectionConfigWithScopes` record as an element. If the `oauth2IntrospectionConfig` field is assigned with the `http:OAuth2IntrospectionConfig` implementation, the authentication will be evaluated. Optionally, the user can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
+Ballerina supports OAuth2 authorization for services/resources. The `auth` field of a service/resource annotation should have an `http:OAuth2IntrospectionConfigWithScopes` record as an element. If the `oauth2IntrospectionConfig` field is assigned with the `http:OAuth2IntrospectionConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
 The `http:OAuth2IntrospectionConfig` configurations include:
 
 * `url` - URL of the introspection server
 * `tokenTypeHint` - A hint about the type of the token submitted for introspection
-* `optionalParams` - Map of optional parameters used for the introspection endpoint
+* `optionalParams` - Map of the optional parameters used for the introspection endpoint
 * `cacheConfig` - Configurations for the cache used to store the OAuth2 token and other related information
 * `defaultTokenExpTime` - Expiration time (in seconds) of the tokens if the introspection response does not contain an `exp` field
 * `clientConfig` - HTTP client configurations, which call the introspection server
@@ -585,7 +587,7 @@ The `http:OAuth2IntrospectionConfig` configurations include:
     * `customPayload` - The list of custom HTTP payload parameters
     * `auth` - The client auth configurations
     * `secureSocket` - SSL/TLS-related configurations
-        * `disable` - Disable SSL validation
+        * `enable` - Enable the SSL validation
         * `cert` - Configurations associated with the `crypto:TrustStore` or single certificate file that the client trusts
         * `key` - Configurations associated with the `crypto:KeyStore` or a combination of the certificate and private key of the client
 
@@ -605,7 +607,7 @@ listener http:Listener securedEP = new(9090,
     auth: [
         {
             oauth2IntrospectionConfig: {
-                url: "https://localhost:9999/oauth2/token/introspect",
+                url: "https://localhost:9445/oauth2/introspect",
                 tokenTypeHint: "access_token",
                 scopeKey: "scp",
                 clientConfig: {
@@ -614,7 +616,7 @@ listener http:Listener securedEP = new(9090,
                     }
                 }
             },
-            scopes: ["hello"]
+            scopes: ["admin"]
         }
     ]
 }
@@ -695,8 +697,8 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-ListenerFileUserStoreBasicAuthHandler handler = new({
-    url: "https://localhost:9999/oauth2/token/introspect",
+http:ListenerOAuth2Handler handler = new({
+    url: "https://localhost:9445/oauth2/introspect",
     tokenTypeHint: "access_token",
     scopeKey: "scp",
     clientConfig: {

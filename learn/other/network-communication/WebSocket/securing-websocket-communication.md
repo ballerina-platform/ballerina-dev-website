@@ -13,6 +13,8 @@ redirect_from:
   - /learn/network-communication/websocket/securing-websocket-communication/
   - /learn/network-communication/websocket/securing-websocket-communication
   - /learn/user-guide/network-communication/websocket/securing-websocket-communication
+redirect_to:
+  - https://lib.ballerina.io/ballerina/websocket/latest/
 ---
 
 ## Configuring a Secure Socket 

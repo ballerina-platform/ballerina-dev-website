@@ -16,6 +16,8 @@ redirect_from:
   - /learn/using-intellij-plugin-features/
   - /swan-lake//learn/setting-up-intellij-idea/using-intellij-plugin-features/
   - /swan-lake//learn/setting-up-intellij-idea/using-intellij-plugin-features
+redirect_to:
+  - /learn/
 ---
 
 ## Running Ballerina Programs

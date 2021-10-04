@@ -13,6 +13,8 @@ redirect_from:
   - /learn/network-communication/http/http-services/multipart-message-handling/
   - /learn/network-communication/http/http-services/multipart-message-handling
   - /learn/user-guide/network-communication/http/http-services/multipart-message-handling
+redirect_to:
+  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Using MIME Entities

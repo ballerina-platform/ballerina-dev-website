@@ -13,16 +13,17 @@ redirect_from:
   - /learn/network-communication/grpc/performing-grpc-streaming/
   - /learn/network-communication/grpc/performing-grpc-streaming
   - /learn/user-guide/network-communication/grpc/performing-grpc-streaming
+redirect_to:
+  - https://lib.ballerina.io/ballerina/grpc/latest/
 ---
 
 >**Info:** gRPC supports both client and bi-directional streaming. In client streaming, the client writes a sequence of messages and sends them to the server via a stream. Once the client has finished writing the messages, it waits for the server to read them and return a response. In bi-directional streaming, the client and server each send a sequence of messages using read-write streams that operate independently allowing them to read and write in any order.
-
 
 ## Implementing Bi-Directional Streaming
 
 The diagram below depicts an example implementation of a gRPC client and bi-directional streaming using Ballerina. It shows the `streaming calc service`, which contains the `sum` and `incrementalSum` methods to represent the client and bi-directional streaming operations respectively. 
 
-<img src="/learn/images/streaming-calc-service.png" alt="Streaming Calc RPC Service" width="400" height="250">
+<img src="/learn/images/streaming-calc-service-new.png" alt="Streaming Calc RPC Service" width="500" height="450">
 
 ## Creating the Protobuf Definition of the Service
 

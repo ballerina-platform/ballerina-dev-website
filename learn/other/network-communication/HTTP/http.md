@@ -17,6 +17,8 @@ redirect_from:
   - /learn/user-guide/network-communication/http
   - /learn/user-guide/network-communication/
   - /learn/user-guide/network-communication
+redirect_to:
+  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Working with HTTP Clients

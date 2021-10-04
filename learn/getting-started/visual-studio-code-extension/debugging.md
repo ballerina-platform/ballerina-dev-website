@@ -175,11 +175,11 @@ The debugger will suspend at the breakpoint whenever the expression evaluates to
                       
 ### Logpoints        
 
-Logpoints are another variant of breakpoints which does not "break" the program execution, but instead logs a message to the console. Logpoints are especially useful for injecting logging while debugging production servers that cannot be paused or stopped.
+Logpoints are another variant of breakpoints, which do not "break" the program execution but instead log a message to the console. Logpoints are especially useful for injecting logging while debugging production servers that cannot be paused or stopped.
 
 Log messages can either be plain texts, or string templates which can contain expressions to be evaluated within curly braces ('{}').
 
-Logpoints can also be enabled/disabled and can be controlled by conditions, similar to regular breakpoints.
+Logpoints can also be enabled/disabled and can be controlled by conditions similar to regular breakpoints.
        
 ![Debugger Logpoints](/learn/images/debugger-logpoints.gif)   
 

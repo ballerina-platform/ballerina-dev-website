@@ -288,103 +288,96 @@ string b = string:join(" ", "hello", "world!");
 ### Bug Fixes
 
 - In a stream type `stream<T, C>;` the completion type `C` should always include nil if it is a bounded stream. The bug of this being not validated for stream implementors has been fixed.
-
-```ballerina
-class StreamImplementor {
-   public isolated function next() returns record {|int value;|}|error? {
-       return;
-   }
-}
- 
-stream<int, error> stm = new (new StreamImplementor()); // Will now result in an error.
-```
+    ```ballerina
+    class StreamImplementor {
+    public isolated function next() returns record {|int value;|}|error? {
+        return;
+    }
+    }
+    
+    stream<int, error> stm = new (new StreamImplementor()); // Will now result in an error.
+    ```
 
 - Resource methods are no longer added to the type via object type inclusions. This was previously added even though resource methods do not affect typing.
-
-```ballerina
-service class Foo {
-   resource function get f1() returns string {
-       return "foo";
-   }
- 
-   function f2() returns int => 42;
-}
- 
-// It is no longer required to implement the `get f1` resource method.
-service class Bar {
-   *Foo;
- 
-   function f2() returns int => 36;
-}
-```
+    ```ballerina
+    service class Foo {
+    resource function get f1() returns string {
+        return "foo";
+    }
+    
+    function f2() returns int => 42;
+    }
+    
+    // It is no longer required to implement the `get f1` resource method.
+    service class Bar {
+    *Foo;
+    
+    function f2() returns int => 36;
+    }
+    ```
 
 - A bug in string unescaping of Unicode codepoints > `0xFFFF` has been fixed.
-
-```ballerina
-import ballerina/io;
- 
-public function main() {
-  string str = "Hello world! \u{1F600}";
-  io:println(str);
-}
-```
+    ```ballerina
+    import ballerina/io;
+    
+    public function main() {
+    string str = "Hello world! \u{1F600}";
+    io:println(str);
+    }
+    ```
 
 The above code snippet, which previously printed `Hello world!  ὠ0` will now print `Hello world! 😀`.
 
 - A bug in escaping `NumericEscape` has been fixed.
-
-```ballerina
-import ballerina/io;
- 
-public function main() {
-  string str = "\\u{61}pple";
-  io:println(str);
-}
-```
+    ```ballerina
+    import ballerina/io;
+    
+    public function main() {
+    string str = "\\u{61}pple";
+    io:println(str);
+    }
+    ```
 
 This code snippet, which previously printed `\u0061pple` will now print `\u{61}pple`.
 
 - A bug that resulted in `NumericEscape` in the template string not being interpreted literally has been fixed.
-
-```ballerina
-import ballerina/io;
- 
-public function main() {
-  string str = string `\u{61}pple`;
-  io:println(str);
-}
-```
+    ```ballerina
+    import ballerina/io;
+    
+    public function main() {
+    string str = string `\u{61}pple`;
+    io:println(str);
+    }
+    ```
 
 The code snippet above, which previously printed `\u0061pple` will now print `\u{61}pple`.
 
 - A bug that resulted in self-referencing not being detected when referenced via a `let` expression or a constant reference expression has been fixed.
 
-The following will now result in errors.
+    The following will now result in errors.
+    ```ballerina
+    const int INTEGER = INTEGER; // Compilation error.
 
-```ballerina
-const int INTEGER = INTEGER; // Compilation error.
-
-public function main() {
-    string s = let string[] arr = [s] in arr[0]; // Compilation error.
-}
-```
+    public function main() {
+        string s = let string[] arr = [s] in arr[0]; // Compilation error.
+    }
+    ```
 
 - Type narrowing is now reset on any assignment to a narrowed variable. Previously, type narrowing was not reset if the static type of the new value was a subtype of the narrowed type. This was a deviation from the specification.
+    ```ballerina
+    public function main() {
+        int|string v = 0;
 
-```ballerina
-public function main() {
-    int|string v = 0;
+        if v is int {
+            int x = v; // Valid.
 
-    if v is int {
-        int x = v; // Valid.
+            // Now, the type is reset to `int|string` even though `1` belongs to `int`.
+            v += 1;
 
-        // Now, the type is reset to `int|string` even though `1` belongs to `int`.
-        v += 1;
-
-        int y = v; // Invalid, will now result in an error.
+            int y = v; // Invalid, will now result in an error.
+        }
     }
-}
-```
+    ```
 
 To view all bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta3%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).
 
@@ -564,7 +557,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github
 - Introduced the support for a directory with PROTO files as the input (`--input` flag) for the gRPC command
 - Introduced the support for external import paths in the gRPC command using the `--proto_path` flag
 - Added the PROTO file name as a suffix for the `ROOT_DESCRIPTOR` constant and `getDescriptorMap` function to fix the re-declared symbol issue when multiple stub files are put into the same module. If you are going to regenerate the stub files with the Swan Lake Beta3 release, you need to change the service annotation like below.
-
     ```ballerina
     @grpc:ServiceDescriptor {
     descriptor: ROOT_DESCRIPTOR_<PROTO_FILE_NAME>,
@@ -593,7 +585,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github
     
 #### `sql` Package
 - Added support for the `queryRow()` in the database connectors. This method allows retrieving a single row as a record or a single value from the database.
-
     ```ballerina
     record{} queryResult = sqlClient->queryRow(`SELECT * FROM ExTable where row_id = 1`);
     int count = sqlClient->queryRow(`SELECT COUNT(*) FROM ExTable`);
@@ -601,7 +592,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github
 
 - Introduced the `queryConcat()` and `arrayFlattenQuery()` util functions to create a complex query dynamically.
   - The `queryConcat()` function creates a parameterized query by concatenating a set of parameterized queries.
-
     ```ballerina
     sql:ParameterizedQuery query = `SELECT * FROM students`;
     sql:ParameterizedQuery query1 = ` WHERE id < ${id} AND age > ${age}`;
@@ -609,7 +599,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github
     ```
 
   - The `arrayFlattenQuery()` is introduced to make the array flattening easier. It makes the inclusion of varying array elements into the query easier by flattening the array to return a parameterized query.
-
     ```ballerina
     int[] ids = [1, 2];
     sql:ParameterizedQuery sqlQuery = sql:queryConcat(`SELECT * FROM DataTable WHERE id IN (`, sql:arrayFlattenQuery(ids), `)`);
@@ -652,7 +641,6 @@ Moved the `maxQueryDepth` validation from compile-time to runtime
 - Changed the return type of the SQL query API to include the completion type as nil in the stream. The SQL query code below demonstrates this change
     
     **Previous Syntax**
-
     ```ballerina
     stream<RowType, error> resultStream = sqlClient->query(``);
     ```
@@ -666,7 +654,6 @@ Moved the `maxQueryDepth` validation from compile-time to runtime
 - Removed support for the string query parameter
 
     **Previous Syntax**
-
     ```ballerina
     stream<RowType, error?> resultStream = sqlClient->query("SELECT * FROM Students;");
     ```
@@ -699,14 +686,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github
 
 With Swan Lake Beta3, the way how dependencies of a package are managed has been changed. The new implementation will ensure the following. 
 
- - The new build will ensure that you will get updates of the dependent packages (direct or transitive) automatically
- - Introducing the `--sticky` flag in case you want to lock the dependency versions for subsequent builds
+- The new build will ensure that you will get updates of the dependent packages (direct or transitive) automatically
+- Introducing the `--sticky` flag in case you want to lock the dependency versions for subsequent builds
 
 The following changes have been introduced.
 
 - Introduced the `Dependencies.toml` version 2. Going forward, this will be automatically managed by the `build` command and you should not modify it. If you already have a `Dependencies.toml` file, it will be automatically updated to the new version.
 - Packages in the local repository need to be configured in the `Ballerina.toml` file. The format is as follows.
-
     ```toml
     [[dependency]]
     org = "ballerinax"
@@ -714,7 +700,6 @@ The following changes have been introduced.
     version = "0.99.20"
     ```
 - The minimum distribution required to compile a package can be specified in the `Ballerina.toml` file as follows. The packages created with Beta3 will have this added with the `bal new` command.
-
     ```toml
     [[package]]
     org = "ballerinax"

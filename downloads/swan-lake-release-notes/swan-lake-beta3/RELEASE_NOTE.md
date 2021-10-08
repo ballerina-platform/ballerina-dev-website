@@ -519,9 +519,8 @@ if (isIsolated) {
 The two new APIs below are introduced to the `ObjectType`.
 
 ```java
-    boolean isIsolated();
-
-    boolean isIsolated(String methodName);
+boolean isIsolated();
+boolean isIsolated(String methodName);
 ```
 
 #### Removed the Package Version from the Runtime
@@ -566,13 +565,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github
 - Introduced the support for external import paths in the gRPC command using the `--proto_path` flag
 - Added the PROTO file name as a suffix for the `ROOT_DESCRIPTOR` constant and `getDescriptorMap` function to fix the re-declared symbol issue when multiple stub files are put into the same module. If you are going to regenerate the stub files with the Swan Lake Beta3 release, you need to change the service annotation like below.
 
-```ballerina
-@grpc:ServiceDescriptor {
-   descriptor: ROOT_DESCRIPTOR_<PROTO_FILE_NAME>,
-   descMap: getDescriptorMap<Proto_File_Name>()
-}
-service "HelloWorld" on new grpc:Listener(9090) {
-```
+    ```ballerina
+    @grpc:ServiceDescriptor {
+    descriptor: ROOT_DESCRIPTOR_<PROTO_FILE_NAME>,
+    descMap: getDescriptorMap<Proto_File_Name>()
+    }
+    service "HelloWorld" on new grpc:Listener(9090) {
+    ```
 
 #### `http` Package
 - Enabled HTTP trace and access log support
@@ -586,8 +585,8 @@ service "HelloWorld" on new grpc:Listener(9090) {
 - Added HMAC signature support for JWT
   
 #### `log` Package
-- Added observability span context values to the log messages when observability is enabled.
-- Introduced a function(`log:setOutputFile`) to write the log output to a file.
+- Added observability span context values to the log messages when observability is enabled
+- Introduced a function(`log:setOutputFile`) to write the log output to a file
 
 #### `oauth2` Package
 - Added JWT bearer grant type support
@@ -595,10 +594,10 @@ service "HelloWorld" on new grpc:Listener(9090) {
 #### `sql` Package
 - Added support for the `queryRow()` in the database connectors. This method allows retrieving a single row as a record or a single value from the database.
 
-```ballerina
-record{} queryResult = sqlClient->queryRow(`SELECT * FROM ExTable where row_id = 1`);
-int count = sqlClient->queryRow(`SELECT COUNT(*) FROM ExTable`);
-```
+    ```ballerina
+    record{} queryResult = sqlClient->queryRow(`SELECT * FROM ExTable where row_id = 1`);
+    int count = sqlClient->queryRow(`SELECT COUNT(*) FROM ExTable`);
+    ```
 
 - Introduced the `queryConcat()` and `arrayFlattenQuery()` util functions to create a complex query dynamically.
   - The `queryConcat()` function creates a parameterized query by concatenating a set of parameterized queries.
@@ -628,7 +627,7 @@ int count = sqlClient->queryRow(`SELECT COUNT(*) FROM ExTable`);
 ### Improvements
 
 #### `graphql` Package
-Updated to validate the `maxQueryDepth` at runtime as opposed to validating it at compile time
+Moved the `maxQueryDepth` validation from compile-time to runtime
 
 #### `http` Package
 - Added support for the `map<json>` as the query parameter type
@@ -710,18 +709,18 @@ The following changes have been introduced.
 
     ```toml
     [[dependency]]
-    org = “ballerinax”
-    name = “github”
-    version = “0.99.20”
+    org = "ballerinax"
+    name = "github"
+    version = "0.99.20"
     ```
 - The minimum distribution required to compile a package can be specified in the `Ballerina.toml` file as follows. The packages created with Beta3 will have this added with the `bal new` command.
 
     ```toml
     [[package]]
-    org = “ballerinax”
-    name = “github”
-    version = “2.0.0”
-    distibution = “slbeta3”
+    org = "ballerinax"
+    name = "github"
+    version = "2.0.0"
+    distibution = "slbeta3"
     ```
     
 ## Developer Tools Updates

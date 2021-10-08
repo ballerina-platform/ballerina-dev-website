@@ -315,7 +315,7 @@ service class Bar {
 }
 ```
 
-- A bug in string unescaping of unicode codepoints > `0xFFFF` has been fixed.
+- A bug in string unescaping of Unicode codepoints > `0xFFFF` has been fixed.
 
 ```ballerina
 import ballerina/io;

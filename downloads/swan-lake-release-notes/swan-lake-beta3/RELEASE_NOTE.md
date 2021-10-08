@@ -628,7 +628,7 @@ int count = sqlClient->queryRow(`SELECT COUNT(*) FROM ExTable`);
 #### Improvements
 
 ##### `graphql` Package
-- Validated the `maxQueryDepth` at runtime as opposed to validating it at compile time
+- Updated to validate the `maxQueryDepth` at runtime as opposed to validating it at compile time
 
 ##### `http` Package
 - Added support for the `map<json>` as the query parameter type

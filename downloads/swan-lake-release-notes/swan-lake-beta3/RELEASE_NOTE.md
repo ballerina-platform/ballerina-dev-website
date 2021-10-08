@@ -462,8 +462,8 @@ num2 = 26
 
 The error stack trace has been improved to include the error cause locations. Stack frames of the wrapped error causes are also added to the stack trace.
 
-E.g.,
 For the following example,
+
 ```ballerina
 public function main() {
     panic bar();
@@ -493,8 +493,7 @@ cause_location.0:y(main.bal:10)
 ##### New Runtime Java APIs
 
 ###### Invoke the Ballerina Object Method Asynchronously
-New JAVA Runtime APIs are introduced to execute the Ballerina object method from Java. The object method caller can decide 
-whether to execute the object method sequentially or concurrently using the appropriate API.
+New Java Runtime APIs are introduced to execute the Ballerina object method from Java. The object method caller can decide whether to execute the object method sequentially or concurrently using the appropriate API.
 
 If the caller can ensure that the given object and object method is isolated and no data race is possible for the mutable 
 state with given arguments, they can use the `invokeMethodAsyncConcurrently` method, or otherwise, the `invokeMethodAsyncSequentially` method.
@@ -616,13 +615,13 @@ int count = sqlClient->queryRow(`SELECT COUNT(*) FROM ExTable`);
 - Introduced the header annotation and query param binding support
 
 ##### FTP Package
-- Add SFTP and related security
-- Add the support for an anonymous user
+- Added SFTP and related security
+- Added the support for an anonymous user
 
 #### Improvements
 
 ##### GraphQL Package
-- Validate the `maxQueryDepth` at runtime as opposed to validating it at compile time
+- Validated the `maxQueryDepth` at runtime as opposed to validating it at compile time
 
 ##### HTTP Package
 - Added support for the `map<json>` as query parameter type
@@ -633,13 +632,13 @@ int count = sqlClient->queryRow(`SELECT COUNT(*) FROM ExTable`);
 - Introduced a write timeout for the WebSocket client
 
 ##### FTP Package
-- Introduce byte stream related functionality to FTP module
-- Rename `BasicAuth` record to `Credentials` in the configuration
-- Return an error once an error occurs while the FTP Client is initialized
-- Throw an error when file/directory does not exist in the `isDirectory` method
-- Remove `arraySize` parameter from the `get` method of the FTP Client API
-- Change `boolean` typed `compressInput` parameter of the `put` method of FTP Client to an `enum` type with the name, `compressionType`
-- Make the access to the `WatchEvent` as `readonly` in the FTP Listener
+- Introduced the byte stream related functionality to the FTP module
+- Renamed the `BasicAuth` record to `Credentials` in the configuration
+- Updated to return an error once an error occurs while the FTP Client is initialized
+- Updated to throw an error when a file/directory does not exist in the `isDirectory` method
+- Removed the `arraySize` parameter from the `get` method of the FTP Client API
+- Changed the `boolean` typed `compressInput` parameter of the `put` method of the FTP client to an `enum` type with the name `compressionType`
+- Made the access to the `WatchEvent` as `readonly` in the FTP Listener
 
 ##### SQL Package
 - Improved the throughput performance with asynchronous database queries.
@@ -685,7 +684,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Beta3%22).
 
-### Dependency Management 
+### Dependency Management Updates
 
 With Swan Lake Beta3, the way how dependencies of a package are managed has been changed. The new implementation will ensure the following. 
 

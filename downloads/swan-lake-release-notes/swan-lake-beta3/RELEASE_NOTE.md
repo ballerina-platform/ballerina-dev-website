@@ -531,7 +531,7 @@ The fully-qualified package version has been removed from the runtime and will o
 
 #### Bug Fixes
 
-- The completion type of a stream is now considered in runtime assignability checks.
+The completion type of a stream is now considered in runtime assignability checks.
 
 ```ballerina
 stream<int, error?> stm = new (new StreamImplementor());
@@ -628,7 +628,7 @@ int count = sqlClient->queryRow(`SELECT COUNT(*) FROM ExTable`);
 #### Improvements
 
 ##### `graphql` Package
-- Updated to validate the `maxQueryDepth` at runtime as opposed to validating it at compile time
+Updated to validate the `maxQueryDepth` at runtime as opposed to validating it at compile time
 
 ##### `http` Package
 - Added support for the `map<json>` as the query parameter type
@@ -663,8 +663,8 @@ int count = sqlClient->queryRow(`SELECT COUNT(*) FROM ExTable`);
     stream<RowType, error?> resultStream = sqlClient->query(``);
     ```
 
-- Improved the error types in the SQL module with the introduction of typed errors for data manipulation under the `sql:ApplicationError`.
-- Removed support for the string query parameter.
+- Improved the error types in the SQL module with the introduction of typed errors for data manipulation under the `sql:ApplicationError`
+- Removed support for the string query parameter
 
     **Previous Syntax**
 
@@ -678,7 +678,7 @@ int count = sqlClient->queryRow(`SELECT COUNT(*) FROM ExTable`);
     ```
 
 ##### `io` Package
-- Changed the `io:readin` function input parameter to optional. In the previous API, it was required to pass a value to be printed before reading the user input as a string. It was removed due to the breaking change and made optional. It is not recommended to pass a value to print it in the console.
+Changed the `io:readin` function input parameter to optional. In the previous API, it was required to pass a value to be printed before reading the user input as a string. It was removed due to the breaking change and made optional. It is not recommended to pass a value to print it in the console.
 
 #### Bug Fixes
 
@@ -749,19 +749,19 @@ The following changes have been introduced.
 - Added evaluation support for expressions with import references
     
 ##### Ballerina OpenAPI Tool
-- Introduced a new command-line option to generate all the record fields that are not specifically mentioned as `nullable:false` in the OpenAPI schema property as nullable to reduce the type conversion errors in the OpenAPI to Ballerina command
+- Introduced a new command-line option to generate all the record fields that are not specifically mentioned as `nullable:false` in the OpenAPI schema property as nullable to reduce the type conversion errors in the OpenAPI to Ballerina command.
 
   >`bal openapi -i <openapi-contract-file>  --nullable`
 
-- Introduced a new command-line option to add user-required license or copyright headers for the generated Ballerina files via OpenAPI to Ballerina command
+- Introduced a new command-line option to add user-required license or copyright headers for the generated Ballerina files via OpenAPI to Ballerina command.
 
   >`bal openapi -i <openapi-contract-file> --license <license-file> `
 
-- Introduced a new command-line option to generate the JSON file via the Ballerina to OpenAPI command
+- Introduced a new command-line option to generate the JSON file via the Ballerina to OpenAPI command.
 
   >`bal openapi -i <service-file> --json`
 
-- Added support to generate a boilerplate of test functions for each remote function implemented within a client connector
+- Added support to generate a boilerplate of test functions for each remote function implemented within a client connector.
 
 #### Improvements
 ##### Ballerina OpenAPI Tool

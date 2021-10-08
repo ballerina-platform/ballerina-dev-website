@@ -326,7 +326,7 @@ public function main() {
 }
 ```
 
-The above code snippet which previously printed `Hello world!  ὠ0` will now print `Hello world! 😀`.
+The above code snippet, which previously printed `Hello world!  ὠ0` will now print `Hello world! 😀`.
 
 - A bug in escaping `NumericEscape` has been fixed.
 

@@ -108,7 +108,7 @@ error: compilation failed: Two incompatible versions exist in the dependency gra
 
 ## Overriding Dependencies
 
-The needto override a dependency can arise through a number of scenarios. The most common scenario out of them is the need to test a package 
+The need to override a dependency can arise through a number of scenarios. The most common scenario out of them is the need to test a package 
 before [publishing to the Ballerina Central](/learn/publishing-packages-to-ballerina-central/#publishing-a-library-package-to-ballerina-central). This can be achieved with the local repository.
 
 ### The Local Repository

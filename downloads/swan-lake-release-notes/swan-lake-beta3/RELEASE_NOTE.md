@@ -677,7 +677,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github
 
 #### Improvements
 - Added a flag to disable docker image generation
-- Added the secret generation support for http clients
+- Added the secret generation support for HTTP clients
 - Improved diagnostics for failed value retrievals
 - Added support for multiple volumes
 

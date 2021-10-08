@@ -634,11 +634,11 @@ int count = sqlClient->queryRow(`SELECT COUNT(*) FROM ExTable`);
 ##### FTP Package
 - Introduced the byte stream related functionality to the FTP module
 - Renamed the `BasicAuth` record to `Credentials` in the configuration
-- Updated to return an error once an error occurs while the FTP Client is initialized
+- Updated to return an error once an error occurs while the FTP client is initialized
 - Updated to throw an error when a file/directory does not exist in the `isDirectory` method
-- Removed the `arraySize` parameter from the `get` method of the FTP Client API
+- Removed the `arraySize` parameter from the `get` method of the FTP client API
 - Changed the `boolean` typed `compressInput` parameter of the `put` method of the FTP client to an `enum` type with the name `compressionType`
-- Made the access to the `WatchEvent` as `readonly` in the FTP Listener
+- Made the access to the `WatchEvent` as `readonly` in the FTP listener
 
 ##### SQL Package
 - Improved the throughput performance with asynchronous database queries.
@@ -737,7 +737,7 @@ Clients can set the `ls.compilation.online` system property to `true` or `false`
 
 #### Improvements
 ##### Ballerina OpenAPI Tool
-###### Ballerina OpenAPI client and schema generation improvements for the OpenAPI to Ballerina command
+###### Ballerina OpenAPI Client and Schema Generation Improvements for the OpenAPI to Ballerina Command
 - Added support to generate suitable client connector authentication mechanisms by mapping the security schemes
   given in the OpenAPI specification (OAS)
 - Added support to generate API documentation for the client init method, remote functions, and records
@@ -745,7 +745,7 @@ Clients can set the `ls.compilation.online` system property to `true` or `false`
 - Added support to generate records for nested referenced schemas in the OpenAPI specification 
 - Improved the OpenAPI tool to select the `https` server URL when multiple URLs are given in the OpenAPI specification
  
-###### The Ballerina to OpenAPI command improvements
+###### The Ballerina to OpenAPI Command mprovements
 - Added support for Language Server extension 
 - Improved the response status code map to `202` when the resource function does not have the `return` type
 - Improved mapping different status code responses in the resource function
@@ -764,8 +764,5 @@ To view bug fixes, see the GitHub milestone for Swan Lake Beta2 of the repositor
 - [Update Tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+project%3Aballerina-platform%2F32)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta3%22+label%3AType%2FBug)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+label%3AArea%2FDebugger+milestone%3A%22Ballerina+Swan+Lake+-+Beta3%22+is%3Aclosed)
-- [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FTestFramework+milestone%3A%22Ballerina+Swan+Lake+-+Beta2%22+label%3AType%2FBug+)
+- [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FTestFramework+milestone%3A%22Ballerina+Swan+Lake+-+Beta3%22+label%3AType%2FBug+)
 
-#### Ballerina Packages Updates
-
-### Breaking Changes

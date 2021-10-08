@@ -714,7 +714,7 @@ The following changes have been introduced.
     name = “github”
     version = “0.99.20”
     ```
-- The minimum distribution required to compile a package can be specified in the `Ballerina.toml` file. The packages created with Beta3 will have this added with the `bal new command`as follows.
+- The minimum distribution required to compile a package can be specified in the `Ballerina.toml` file as follows. The packages created with Beta3 will have this added with the `bal new` command.
 
     ```toml
     [[package]]

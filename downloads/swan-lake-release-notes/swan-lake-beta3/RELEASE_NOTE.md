@@ -747,7 +747,7 @@ Clients can set the `ls.compilation.online` system property to `true` or `false`
 - Improved the OpenAPI tool to select the `https` server URL when multiple URLs are given in the OpenAPI specification
  
 ###### The Ballerina to OpenAPI command improvements
-- Added support for language server extension 
+- Added support for Language Server extension 
 - Improved the response status code map to `202` when the resource function does not have the `return` type
 - Improved mapping different status code responses in the resource function
 - Enhanced generating an OpenAPI schema with Ballerina `typeInclusion` scenarios

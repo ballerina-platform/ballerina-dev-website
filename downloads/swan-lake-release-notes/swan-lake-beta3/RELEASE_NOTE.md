@@ -708,7 +708,7 @@ The following changes have been introduced.
 - Added the completion extension API for TOML configuration files
 - Added completion support for the `Ballerina.toml` file
 - Added the offline build configuration option
-Clients can set the `ls.compilation.online` system property to`true` or `false` in order to run the language server's compilations online or offline. By default, the compilations are running offline. 
+Clients can set the `ls.compilation.online` system property to `true` or `false` in order to run the Language Server's compilations online or offline. By default, the compilations are running offline. 
 
 ##### Debugger
 - Introduced log points support

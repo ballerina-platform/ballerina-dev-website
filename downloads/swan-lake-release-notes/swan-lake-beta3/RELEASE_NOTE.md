@@ -406,7 +406,7 @@ xmlVar = "<book><name>Sherlock Holmes</name></book>"
 
 The `configurable` feature is improved to support configuring extra fields in record variables through TOML syntax.
 
-For example, if a configurable variable with an open record type is defined in the following way,
+For example, if a configurable variable of an open record type is defined in the following way,
 
 ```ballerina
 type Person record {

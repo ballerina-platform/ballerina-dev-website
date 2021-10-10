@@ -311,9 +311,9 @@ string b = string:join(" ", "hello", "world!");
     
     // It is no longer required to implement the `get f1` resource method.
     service class Bar {
-    *Foo;
+        *Foo;
     
-    function f2() returns int => 36;
+        function f2() returns int => 36;
     }
     ```
 

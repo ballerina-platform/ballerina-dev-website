@@ -393,7 +393,7 @@ For example, if an XML-typed configurable variable is defined in the following w
 ``` ballerina
 configurable xml xmlVar = ?;
 ```
-the values can be provided in the `Config.toml` file as follows.
+the value can be provided in the `Config.toml` file as follows.
 
 
 ```toml

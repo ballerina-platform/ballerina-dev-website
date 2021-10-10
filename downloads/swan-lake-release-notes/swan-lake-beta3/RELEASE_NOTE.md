@@ -428,7 +428,7 @@ mapVal.a = "a"
 mapVal.b = 123
 ```
 
-The additional fields that are created from the TOML values will have the following types.
+The extra fields that are created from the TOML values will have the following types.
 
 * TOML Integer - `int`
 * TOML Float - `float`

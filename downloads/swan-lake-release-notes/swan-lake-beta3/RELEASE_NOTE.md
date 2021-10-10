@@ -761,7 +761,7 @@ The following changes have been introduced.
  
 ##### The Ballerina to OpenAPI Command Improvements
 - Added support for the Language Server extension 
-- Improved the response status code map to `202` when the resource function does not have the `return` type
+- Improved the response status code map to `202` when the resource function does not have a return type
 - Improved mapping different status code responses in the resource function
 - Enhanced generating an OpenAPI schema with Ballerina `typeInclusion` scenarios
 - Added a resource function API documentation mapping to the OAS description and summary

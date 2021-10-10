@@ -344,8 +344,8 @@ This code snippet, which previously printed `\u0061pple` will now print `\u{61}p
     import ballerina/io;
     
     public function main() {
-    string str = string `\u{61}pple`;
-    io:println(str);
+        string str = string `\u{61}pple`;
+        io:println(str);
     }
     ```
 

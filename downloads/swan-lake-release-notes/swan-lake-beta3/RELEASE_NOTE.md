@@ -388,7 +388,7 @@ To view all bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://gi
 
 The `configurable` feature is improved to support variables of XML types through the TOML syntax.
 
-For example, if the XML-typed configurable variables are defined in the following way,
+For example, if an XML-typed configurable variable is defined in the following way,
 
 ``` ballerina
 configurable xml xmlVar = ?;

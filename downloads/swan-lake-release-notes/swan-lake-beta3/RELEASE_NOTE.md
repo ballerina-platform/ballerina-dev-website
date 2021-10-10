@@ -332,8 +332,8 @@ The above code snippet, which previously printed `Hello world!  ὠ0` will now p
     import ballerina/io;
     
     public function main() {
-    string str = "\\u{61}pple";
-    io:println(str);
+        string str = "\\u{61}pple";
+        io:println(str);
     }
     ```
 

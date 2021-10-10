@@ -508,7 +508,7 @@ if (isIsolated) {
 
 > **Info:** The previous `invokeMethodAsync` methods are deprecated.
 
-#####  API to Retrieve the Isolated Ballerina Object or Object Method 
+#####  API to Retrieve whether a Ballerina Object or Method is `isolated`
 
 The two new APIs below are introduced to the `ObjectType`.
 

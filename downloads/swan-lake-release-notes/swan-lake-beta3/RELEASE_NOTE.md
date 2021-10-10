@@ -463,12 +463,15 @@ For the following example,
 public function main() {
     panic bar();
 }
+
 function bar() returns error {
     return error("a", y());
 }
+
 function y() returns error {
     return x();
 }
+
 function x() returns error {
     return error("b");
 }

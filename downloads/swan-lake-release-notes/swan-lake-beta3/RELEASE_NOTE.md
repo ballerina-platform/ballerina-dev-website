@@ -386,7 +386,7 @@ To view all bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://gi
 
 #### Improved Configurable Variables to Support XML Types Through TOML Syntax
 
-The `configurable` feature is improved to support variables with XML types through the TOML syntax.
+The `configurable` feature is improved to support variables of XML types through the TOML syntax.
 
 For example, if the XML-typed configurable variables are defined in the following way,
 

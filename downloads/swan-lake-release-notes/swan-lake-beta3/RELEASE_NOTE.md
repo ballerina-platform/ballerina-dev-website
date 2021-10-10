@@ -52,7 +52,7 @@ public function main() {
 
 #### Inferring Types for Numeric Literals in Additive and Multiplicative Expressions
 
-The type for numeric literals in additive and multiplicative expressions is now inferred from the contextually-expected type.
+The types for numeric literals in additive and multiplicative expressions are now inferred from the contextually-expected type.
 
 When the contextually-expected type for an additive or multiplicative expression is `float`, the type of a literal used as a subexpression is inferred to be `float`. Similarly, if the contextually-expected type is `decimal`, the type of the literal is inferred to be `decimal`.
 

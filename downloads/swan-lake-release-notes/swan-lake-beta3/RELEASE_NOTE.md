@@ -281,6 +281,7 @@ Identifiers that are keywords in a query expression context (`where`, `join`, `o
 ```ballerina
 // Now allowed. No longer required to use a quoted identifier (`'limit`).
 int limit = 5;
+
 // Now allowed. No longer required to use a quoted identifier (`string:'join()`).
 string b = string:join(" ", "hello", "world!"); 
 ``` 

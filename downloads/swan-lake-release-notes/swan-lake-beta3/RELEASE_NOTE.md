@@ -216,7 +216,7 @@ service / on new http:Listener(8080) {
 
 `check` can now be used in the initializer of an object field if the class or object constructor expression has an `init` method with a compatible return type (i.e., the error type that the expression could evaluate to is a subtype of the return type of the `init` method).
 
-If the expression is used with `check` results in an error value, the `init` method will return the error resulting in either the `new` expression returning an error or the object constructor expression resulting in an error.
+If the expression that is used with `check` results in an error value, the `init` method will return the error resulting in either the `new` expression returning an error or the object constructor expression resulting in an error.
 
 ```ballerina
 import ballerina/io;

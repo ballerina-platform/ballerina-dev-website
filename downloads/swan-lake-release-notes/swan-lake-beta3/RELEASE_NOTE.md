@@ -492,7 +492,7 @@ cause_location.0:y(main.bal:8)
 
 ##### Invoke the Ballerina Object Method Asynchronously
 
-New Java Runtime APIs are introduced to execute the Ballerina object method from Java. The object method caller can decide whether to execute the object method sequentially or concurrently using the appropriate API.
+New Java Runtime APIs are introduced to execute a Ballerina object method from Java. The object method caller can decide whether to execute the object method sequentially or concurrently using the appropriate API.
 
 If the caller can ensure that the given object and object method is isolated and no data race is possible for the mutable state with given arguments, they can use the `invokeMethodAsyncConcurrently` method, or otherwise, the `invokeMethodAsyncSequentially` method.
 

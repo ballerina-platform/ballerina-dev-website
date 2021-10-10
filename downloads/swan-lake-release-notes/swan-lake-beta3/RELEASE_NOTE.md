@@ -291,9 +291,9 @@ string b = string:join(" ", "hello", "world!");
 - In a stream type `stream<T, C>;` the completion type `C` should always include nil if it is a bounded stream. A bug which resulted in this not being validated for stream implementors has been fixed.
     ```ballerina
     class StreamImplementor {
-    public isolated function next() returns record {|int value;|}|error? {
-        return;
-    }
+        public isolated function next() returns record {|int value;|}|error? {
+        
+        }
     }
     
     stream<int, error> stm = new (new StreamImplementor()); // Will now result in an error.

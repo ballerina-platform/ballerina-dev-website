@@ -481,11 +481,11 @@ the expected stack trace will be as follows.
 
 ```
 error: a
-at cause_location.0:bar(main.bal:6)
+at cause_location.0:bar(main.bal:5)
 cause_location.0:main(main.bal:2)
 cause: b
-at cause_location.0:x(main.bal:14)
-cause_location.0:y(main.bal:10)
+at cause_location.0:x(main.bal:11)
+cause_location.0:y(main.bal:8)
 ... 2 more
 ```
 #### New Runtime Java APIs

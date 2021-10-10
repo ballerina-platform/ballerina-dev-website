@@ -122,7 +122,7 @@ public function main() returns error? {
 
 #### Enum Declarations with Duplicate Members
 
-Enum declarations can have duplicate members.
+Enum declarations can now have duplicate members.
 
 For example, the following declarations in which both `LiftStatus` and `TrailStatus` have the same `OPEN` and `CLOSED` members are now allowed.
 

@@ -156,7 +156,7 @@ public function main() {
 
 #### Directly Calling Function-typed Fields of an Object
 
-Fields of an object that are of a function type can now be directly called via an object value using the method call syntax.
+Fields of an object that are of a function type can now be called directly via an object value using the method call syntax.
 
 ```ballerina
 class Engine {

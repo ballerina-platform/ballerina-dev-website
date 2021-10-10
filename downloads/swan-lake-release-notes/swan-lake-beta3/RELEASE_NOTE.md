@@ -404,7 +404,7 @@ xmlVar = "<book><name>Sherlock Holmes</name></book>"
 
 #### Improved Configurable Variables to Support Additional Fields and Rest Fields for Records
 
-The `configurable` feature is improved to support additional fields and rest fields in record variables through the TOML syntax.
+The `configurable` feature is improved to support configuring extra fields in record variables through TOML syntax.
 
 For example, if a configurable variable with an open record type is defined in the following way,
 

@@ -437,7 +437,7 @@ The extra fields that are created from the TOML values will have the following t
 * TOML Table - `map<anydata>`
 * TOML Table array - `map<anydata>[]`
 
-Similarly, if a configurable variable with a record type that contains a rest field is defined in the following way,
+Similarly, if a configurable variable of a closed record type is defined in the following way,
 
 ```ballerina
 public type Numbers record {|

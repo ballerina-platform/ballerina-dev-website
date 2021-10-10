@@ -302,11 +302,9 @@ string b = string:join(" ", "hello", "world!");
 - Resource methods are no longer added to the type via object type inclusions. This was previously added even though resource methods do not affect typing.
     ```ballerina
     service class Foo {
-    resource function get f1() returns string {
-        return "foo";
-    }
+        resource function get f1() returns string => "foo";
     
-    function f2() returns int => 42;
+        function f2() returns int => 42;
     }
     
     // It is no longer required to implement the `get f1` resource method.

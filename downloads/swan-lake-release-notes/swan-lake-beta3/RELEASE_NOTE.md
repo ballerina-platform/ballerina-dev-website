@@ -320,8 +320,8 @@ string b = string:join(" ", "hello", "world!");
     import ballerina/io;
     
     public function main() {
-    string str = "Hello world! \u{1F600}";
-    io:println(str);
+        string str = "Hello world! \u{1F600}";
+        io:println(str);
     }
     ```
 

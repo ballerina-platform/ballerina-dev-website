@@ -573,6 +573,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github
 - Introduced support for the service-specific media-type subtype prefix
 - Introduced the introspection resource method to get the generated OpenAPI document of the service
 - Added OAuth2 JWT bearer grant type support for client
+- Add support to overwrite the scopes config by resource annotation
+- Introduce introspection resource method to get generated OpenAPI document of the service
+- Introduce service config treatNilableAsOptional for query and header params
+- Add support to URL with empty scheme in http:Client
 
 #### `jwt` Package
 - Added HMAC signature support for JWT

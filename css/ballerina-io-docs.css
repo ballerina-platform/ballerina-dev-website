@@ -611,7 +611,7 @@ ul.lower-latin li {
     margin-bottom: 20px !important;
 }
 
-ul.table-striped{
+/* ul.table-striped{
     padding-left:40px !important;
     margin-left:40px !important;
     margin-bottom:10px !important;
@@ -619,7 +619,7 @@ ul.table-striped{
 
 ul.cBallerina-io p{
     padding-left:40px !important;
-}
+} */
 .permalinkHeader {
     position: relative;
     /* display: flex !important; */

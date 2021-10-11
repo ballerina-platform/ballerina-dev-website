@@ -221,10 +221,3 @@ To view bug fixes, see the GitHub milestone for Swan Lake Beta1 of the repositor
 - [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FTestFramework+milestone%3A%22Ballerina+Swan+Lake+-+Beta1%22+is%3Aclosed+label%3AType%2FBug)
 
 
-<!-- <style>
-    .table-striped{
-        padding-left:40px;
-        margin-left:40px;
-        margin-bottom:10px;
-    }
-</style> -->

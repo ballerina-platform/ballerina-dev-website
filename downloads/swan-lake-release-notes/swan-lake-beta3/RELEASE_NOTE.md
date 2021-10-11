@@ -490,7 +490,7 @@ cause_location.0:y(main.bal:8)
 ```
 #### New Runtime Java APIs
 
-##### Invoke the Ballerina Object Method Asynchronously
+##### API to Invoke a Ballerina Object Method Asynchronously
 
 New Java Runtime APIs are introduced to execute a Ballerina object method from Java. The object method caller can decide whether to execute the object method sequentially or concurrently using the appropriate API.
 

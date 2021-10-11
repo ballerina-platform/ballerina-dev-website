@@ -400,7 +400,7 @@ the value can be provided in the `Config.toml` file as follows.
 xmlVar = "<book><name>Sherlock Holmes</name></book>"
 ```
 
-#### Improved Configurable Variables to Support Additional Fields and Rest Fields for Records
+#### Support to Provide Extra Fields for Configurable Variables of Open Record Types
 
 The `configurable` feature is improved to support configuring extra fields in record variables through TOML syntax.
 

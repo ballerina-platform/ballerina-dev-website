@@ -518,7 +518,7 @@ boolean isIsolated();
 boolean isIsolated(String methodName);
 ```
 
-#### Removed the Package Version from the Runtime
+#### Removed Fully-Qualified Package Version from Runtime
 
 The fully-qualified package version has been removed from the runtime and will only have the major version. Therefore, when you provide the version to the Ballerina runtime Java API (e.g., when creating values), you need to provide only the package runtime version. The stack traces will contain only the major package versions.
 

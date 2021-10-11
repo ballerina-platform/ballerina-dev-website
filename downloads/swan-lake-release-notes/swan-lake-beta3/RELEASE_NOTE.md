@@ -388,7 +388,7 @@ the value can be provided in the `Config.toml` file as follows.
 xmlVar = "<book><name>Sherlock Holmes</name></book>"
 ```
 
-#### Improved Configurable Variables to Support Additional Fields and Rest Fields for Records
+#### Support to Provide Extra Fields for Configurable Variables of Open Record Types
 
 The `configurable` feature is improved to support configuring extra fields in record variables through TOML syntax.
 
@@ -478,7 +478,7 @@ cause_location.0:y(main.bal:8)
 ```
 #### New Runtime Java APIs
 
-##### Invoke the Ballerina Object Method Asynchronously
+##### API to Invoke a Ballerina Object Method Asynchronously
 
 New Java Runtime APIs are introduced to execute a Ballerina object method from Java. The object method caller can decide whether to execute the object method sequentially or concurrently using the appropriate API.
 
@@ -506,7 +506,7 @@ boolean isIsolated();
 boolean isIsolated(String methodName);
 ```
 
-#### Removed the Package Version from the Runtime
+#### Removed Fully-Qualified Package Version from Runtime
 
 The fully-qualified package version has been removed from the runtime and will only have the major version. Therefore, when you provide the version to the Ballerina runtime Java API (e.g., when creating values), you need to provide only the package runtime version. The stack traces will contain only the major package versions.
 

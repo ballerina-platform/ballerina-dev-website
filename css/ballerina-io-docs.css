@@ -10,7 +10,12 @@
 
 .cBallerina-io p {
     margin: 10px 0;
+
 }
+.cBallerina-io li p:first-child{
+    margin-top:0px;
+}
+
 
 .cBallerinaFooterSignUp p {
     margin-bottom: 0 !important;
@@ -206,6 +211,8 @@ table.docutils thead {
 .wy-breadcrumbs li a {
     padding-right: 0;
 }
+
+
 
 .rst-content .section ol li,
 .rst-content ol.arabic li,
@@ -599,9 +606,20 @@ ul.lower-latin li {
     }
 }
 .cBallerina-io .permalinkHeader {
-    padding-top: 80px;
+    padding-top: 40px !important;
     margin-top: -20px;
+    margin-bottom: 20px !important;
 }
+
+/* ul.table-striped{
+    padding-left:40px !important;
+    margin-left:40px !important;
+    margin-bottom:10px !important;
+}
+
+ul.cBallerina-io p{
+    padding-left:40px !important;
+} */
 .permalinkHeader {
     position: relative;
     /* display: flex !important; */

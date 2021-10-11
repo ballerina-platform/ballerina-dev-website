@@ -52,7 +52,7 @@ public function main() {
 
 #### Inferring Types for Numeric Literals in Additive and Multiplicative Expressions
 
-The type for numeric literals in additive and multiplicative expressions is now inferred from the contextually-expected type.
+The types for numeric literals in additive and multiplicative expressions are now inferred from the contextually-expected type.
 
 When the contextually-expected type for an additive or multiplicative expression is `float`, the type of a literal used as a subexpression is inferred to be `float`. Similarly, if the contextually-expected type is `decimal`, the type of the literal is inferred to be `decimal`.
 
@@ -122,7 +122,7 @@ public function main() returns error? {
 
 #### Enum Declarations with Duplicate Members
 
-Enum declarations can have duplicate members.
+Enum declarations can now have duplicate members.
 
 For example, the following declarations in which both `LiftStatus` and `TrailStatus` have the same `OPEN` and `CLOSED` members are now allowed.
 
@@ -156,7 +156,7 @@ public function main() {
 
 #### Directly Calling Function-typed Fields of an Object
 
-Fields of an object that are of a function type can now be directly called via an object value using the method call syntax.
+Fields of an object that are of a function type can now be called directly via an object value using the method call syntax.
 
 ```ballerina
 class Engine {
@@ -216,7 +216,7 @@ service / on new http:Listener(8080) {
 
 `check` can now be used in the initializer of an object field if the class or object constructor expression has an `init` method with a compatible return type (i.e., the error type that the expression could evaluate to is a subtype of the return type of the `init` method).
 
-If the expression is used with `check` results in an error value, the `init` method will return the error resulting in either the `new` expression returning an error or the object constructor expression resulting in an error.
+If the expression that is used with `check` results in an error value, the `init` method will return the error resulting in either the `new` expression returning an error or the object constructor expression resulting in an error.
 
 ```ballerina
 import ballerina/io;
@@ -281,18 +281,19 @@ Identifiers that are keywords in a query expression context (`where`, `join`, `o
 ```ballerina
 // Now allowed. No longer required to use a quoted identifier (`'limit`).
 int limit = 5;
+
 // Now allowed. No longer required to use a quoted identifier (`string:'join()`).
 string b = string:join(" ", "hello", "world!"); 
 ``` 
 
 ### Bug Fixes
 
-- In a stream type `stream<T, C>;` the completion type `C` should always include nil if it is a bounded stream. The bug of this being not validated for stream implementors has been fixed.
+- In a stream type `stream<T, C>;` the completion type `C` should always include nil if it is a bounded stream. A bug which resulted in this not being validated for stream implementors has been fixed.
     ```ballerina
     class StreamImplementor {
-    public isolated function next() returns record {|int value;|}|error? {
-        return;
-    }
+        public isolated function next() returns record {|int value;|}|error? {
+        
+        }
     }
     
     stream<int, error> stm = new (new StreamImplementor()); // Will now result in an error.
@@ -301,18 +302,16 @@ string b = string:join(" ", "hello", "world!");
 - Resource methods are no longer added to the type via object type inclusions. This was previously added even though resource methods do not affect typing.
     ```ballerina
     service class Foo {
-    resource function get f1() returns string {
-        return "foo";
-    }
+        resource function get f1() returns string => "foo";
     
-    function f2() returns int => 42;
+        function f2() returns int => 42;
     }
     
     // It is no longer required to implement the `get f1` resource method.
     service class Bar {
-    *Foo;
+        *Foo;
     
-    function f2() returns int => 36;
+        function f2() returns int => 36;
     }
     ```
 
@@ -321,8 +320,8 @@ string b = string:join(" ", "hello", "world!");
     import ballerina/io;
     
     public function main() {
-    string str = "Hello world! \u{1F600}";
-    io:println(str);
+        string str = "Hello world! \u{1F600}";
+        io:println(str);
     }
     ```
 
@@ -333,8 +332,8 @@ The above code snippet, which previously printed `Hello world!  ὠ0` will now p
     import ballerina/io;
     
     public function main() {
-    string str = "\\u{61}pple";
-    io:println(str);
+        string str = "\\u{61}pple";
+        io:println(str);
     }
     ```
 
@@ -345,8 +344,8 @@ This code snippet, which previously printed `\u0061pple` will now print `\u{61}p
     import ballerina/io;
     
     public function main() {
-    string str = string `\u{61}pple`;
-    io:println(str);
+        string str = string `\u{61}pple`;
+        io:println(str);
     }
     ```
 
@@ -387,14 +386,14 @@ To view all bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://gi
 
 #### Improved Configurable Variables to Support XML Types Through TOML Syntax
 
-The `configurable` feature is improved to support variables with XML types through the TOML syntax.
+The `configurable` feature is improved to support variables of XML types through the TOML syntax.
 
-For example, if the XML-typed configurable variables are defined in the following way,
+For example, if an XML-typed configurable variable is defined in the following way,
 
 ``` ballerina
 configurable xml xmlVar = ?;
 ```
-the values can be provided in the `Config.toml` file as follows.
+the value can be provided in the `Config.toml` file as follows.
 
 
 ```toml
@@ -403,9 +402,9 @@ xmlVar = "<book><name>Sherlock Holmes</name></book>"
 
 #### Improved Configurable Variables to Support Additional Fields and Rest Fields for Records
 
-The `configurable` feature is improved to support additional fields and rest fields in record variables through the TOML syntax.
+The `configurable` feature is improved to support configuring extra fields in record variables through TOML syntax.
 
-For example, if a configurable variable with an open record type is defined in the following way,
+For example, if a configurable variable of an open record type is defined in the following way,
 
 ```ballerina
 type Person record {
@@ -427,7 +426,7 @@ mapVal.a = "a"
 mapVal.b = 123
 ```
 
-The additional fields that are created from the TOML values will have the following types.
+The extra fields that are created from the TOML values will have the following types.
 
 * TOML Integer - `int`
 * TOML Float - `float`
@@ -436,7 +435,7 @@ The additional fields that are created from the TOML values will have the follow
 * TOML Table - `map<anydata>`
 * TOML Table array - `map<anydata>[]`
 
-Similarly, if a configurable variable with a record type that contains a rest field is defined in the following way,
+Similarly, if a configurable variable of a closed record type is defined in the following way,
 
 ```ballerina
 public type Numbers record {|
@@ -464,12 +463,15 @@ For the following example,
 public function main() {
     panic bar();
 }
+
 function bar() returns error {
     return error("a", y());
 }
+
 function y() returns error {
     return x();
 }
+
 function x() returns error {
     return error("b");
 }
@@ -479,20 +481,20 @@ the expected stack trace will be as follows.
 
 ```
 error: a
-at cause_location.0:bar(main.bal:6)
+at cause_location.0:bar(main.bal:5)
 cause_location.0:main(main.bal:2)
 cause: b
-at cause_location.0:x(main.bal:14)
-cause_location.0:y(main.bal:10)
+at cause_location.0:x(main.bal:11)
+cause_location.0:y(main.bal:8)
 ... 2 more
 ```
 #### New Runtime Java APIs
 
 ##### Invoke the Ballerina Object Method Asynchronously
 
-New Java Runtime APIs are introduced to execute the Ballerina object method from Java. The object method caller can decide whether to execute the object method sequentially or concurrently using the appropriate API.
+New Java Runtime APIs are introduced to execute a Ballerina object method from Java. The object method caller can decide whether to execute the object method sequentially or concurrently using the appropriate API.
 
-If the caller can ensure that the given object and object method is isolated and no data race is possible for the mutable state with given arguments, they can use the `invokeMethodAsyncConcurrently` method, or otherwise, the `invokeMethodAsyncSequentially` method.
+If the object and the method are `isolated` and the caller can ensure that there will be no data race with arguments that have mutable state, they can use the `invokeMethodAsyncConcurrently` method, or otherwise, the `invokeMethodAsyncSequentially` method.
 
 ```java
 boolean isIsolated = object.getType().isIsolated(methodName);
@@ -507,7 +509,7 @@ if (isIsolated) {
 
 > **Info:** The previous `invokeMethodAsync` methods are deprecated.
 
-#####  API to Retrieve the Isolated Ballerina Object or Object Method 
+#####  API to Retrieve whether a Ballerina Object or Method is `isolated`
 
 The two new APIs below are introduced to the `ObjectType`.
 
@@ -518,7 +520,7 @@ boolean isIsolated(String methodName);
 
 #### Removed the Package Version from the Runtime
 
-The fully-qualified package version has been removed from the runtime and will only have the major version. Therefore, when you provide the version to the Ballerina runtime Java API like creating runtime values, you need to provide only the package runtime version. The stack traces will contain only the major package versions.
+The fully-qualified package version has been removed from the runtime and will only have the major version. Therefore, when you provide the version to the Ballerina runtime Java API (e.g., when creating values), you need to provide only the package runtime version. The stack traces will contain only the major package versions.
 
 
 ### Bug Fixes
@@ -572,6 +574,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github
 - Introduced support for the service-specific media-type subtype prefix
 - Introduced the introspection resource method to get the generated OpenAPI document of the service
 - Added OAuth2 JWT bearer grant type support for client
+- Add support to overwrite the scopes config by resource annotation
+- Introduce introspection resource method to get generated OpenAPI document of the service
+- Introduce service config treatNilableAsOptional for query and header params
+- Add support to URL with empty scheme in http:Client
 
 #### `jwt` Package
 - Added HMAC signature support for JWT
@@ -760,7 +766,7 @@ The following changes have been introduced.
  
 ##### The Ballerina to OpenAPI Command Improvements
 - Added support for the Language Server extension 
-- Improved the response status code map to `202` when the resource function does not have the `return` type
+- Improved the response status code map to `202` when the resource function does not have a return type
 - Improved mapping different status code responses in the resource function
 - Enhanced generating an OpenAPI schema with Ballerina `typeInclusion` scenarios
 - Added a resource function API documentation mapping to the OAS description and summary

@@ -50,7 +50,6 @@ jobs:
     - name: Push changes for new BBEs
       run: |
         git checkout automate-bbes-$GITHUB_SHA 2>/dev/null || git checkout -b automate-bbes-$GITHUB_SHA
-        git checkout -b automate-bbes-$GITHUB_SHA origin/dev
         
         git config --global user.email "ballerina-bot@ballerina.org"
         git config --global user.name "ballerina-bot"

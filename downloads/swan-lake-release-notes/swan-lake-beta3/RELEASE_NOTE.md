@@ -638,14 +638,14 @@ Moved the `maxQueryDepth` validation from compile-time to runtime
 #### `sql` Package
 - Improved the throughput performance with asynchronous database queries
 - Introduced new array out parameter types in call procedures
-- Changed the return type of the SQL query API to include the completion type as nil in the stream. The SQL query code below demonstrates this change
+- Changed the return type of the SQL query API to include the completion type as nil in the stream. The SQL query code below demonstrates this change</li>
     
-    **Previous Syntax**
+    **Previous Syntax:**
     ```ballerina
     stream<RowType, error> resultStream = sqlClient->query(``);
     ```
 
-    **New Syntax**
+    **New Syntax:**
     ```ballerina
     stream<RowType, error?> resultStream = sqlClient->query(``);
     ```
@@ -653,12 +653,12 @@ Moved the `maxQueryDepth` validation from compile-time to runtime
 - Improved the error types in the SQL module with the introduction of typed errors for data manipulation under the `sql:ApplicationError`
 - Removed support for the string query parameter
 
-    **Previous Syntax**
+    **Previous Syntax:**
     ```ballerina
     stream<RowType, error?> resultStream = sqlClient->query("SELECT * FROM Students;");
     ```
 
-    **New Syntax**
+    **New Syntax:**
     ```ballerina
     stream<RowType, error?> resultStream = sqlClient->query(`SELECT * FROM Students;`);
     ```

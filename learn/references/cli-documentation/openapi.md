@@ -52,7 +52,7 @@ bal openapi -i <openapi-contract-path>
 
 ##### Modes
 
-###### 1. Client Mode
+###### Client Mode
 If you want to generate the Ballerina client only, you can set the mode as  `client` when running the OpenAPI tool. 
 The generated client can be used in your applications to call the service defined in the OpenAPI file. This mode will
  generate tests for the generated remote functions as well.
@@ -60,7 +60,8 @@ The generated client can be used in your applications to call the service define
 ```bash
 bal openapi -i <openapi-contract-path> --mode client [(-o|--output) output file path]
 ```
-###### 2. Service Mode
+
+###### Service Mode
 If you want to generate the Ballerina service only, you can set the mode as `service` when running the OpenAPI tool.
 
 ```bash

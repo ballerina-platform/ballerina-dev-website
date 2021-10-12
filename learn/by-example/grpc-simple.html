@@ -16,8 +16,8 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 
 <span class="nd">@grpc:ServiceDescriptor {</span>
-    <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
-    <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
+    <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR_GRPC_SIMPLE</span><span class="p">,</span>
+    <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMapGrpcSimple</span><span class="p">()</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="s">&quot;HelloWorld&quot;</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
@@ -200,8 +200,8 @@ service HelloWorld {
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR,
-    descMap: getDescriptorMap()
+    descriptor: ROOT_DESCRIPTOR_GRPC_SIMPLE,
+    descMap: getDescriptorMapGrpcSimple()
 }
 service &quot;HelloWorld&quot; on new grpc:Listener(9090) {
 </code></pre></div>

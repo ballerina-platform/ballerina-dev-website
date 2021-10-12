@@ -49,7 +49,6 @@
                                  <div class="col-xs-12 col-sm-12 cNoPadding">
                                     <p>{{ page.intro }}</p>
                                     <div class="cBallerinaTocContainer" id="table-of-content">
-                                       <p class="cTOCcontol" ><strong>Table of contents</strong> <span class="cTocElements">  &nbsp;  </span> <a href="#" id="tree-expand-all">Expand all</a> <span class="cTocElements"> &nbsp; </span> <a href="#" id="tree-collapse-all">Collapse all</a></p>
                                        {% include toc.html html=content sanitize=true id="tree" %}
                                     </div>
                                     {{ content }}
@@ -111,7 +110,7 @@
      <script src="/js/abixTreeList.min.js"></script>
      <script>
          $(document).ready(function() {
-             $('#tree').abixTreeList();
+
              $allHeaders= $(":header"); //Select all header elements such as h1 h2 h3 h4 h5 h6
                 $allHeaders.each(function(){
                   var link = $(this).attr('id');
@@ -121,6 +120,7 @@
                      $(this).addClass('permalinkHeader').prepend(permLink) 
                   } 
                 });
+                $('#tree').abixTreeList();  
          });
 
 

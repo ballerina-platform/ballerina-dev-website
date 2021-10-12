@@ -15,7 +15,7 @@ redirect_from:
 	<div class="column-gray-box-grid">
 		<div class="column-gray-box"> 
 			<h2 id="getting-started">Getting Started</h2>
-			<h3 id="installing-ballerina"><a href="/learn/installing-ballerina/setting-up-ballerina/">Setting Up Ballerina</a></h3>
+			<h3 id="installing-ballerina"><a href="/learn/installing-ballerina/setting-up-ballerina/">Installing Ballerina</a></h3>
 			<p>Setting up the Ballerina development environment.</p>
 			<h3 id="hello-world"><a href="/learn/getting-started/hello-world/writing-your-first-ballerina-program/">Hello World</a></h3>
 			<p>Writing your first Ballerina program and creating your first Ballerina package.</p>

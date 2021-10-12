@@ -17,8 +17,8 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
 <span class="nd">@grpc:ServiceDescriptor {</span>
-    <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
-    <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
+    <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR_GRPC_SERVER_STREAMING</span><span class="p">,</span>
+    <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMapGrpcServerStreaming</span><span class="p">()</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="s">&quot;HelloWorld&quot;</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">lotsOfReplies</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span>
@@ -71,9 +71,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="grpc-secured-simple.html?is_ref_by_example=true">
+                                    <a class="prev" href="grpc-simple-with-headers.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
-                                        <p>Secured Simple RPC</p>
+                                        <p>Simple RPC With Headers</p>
                                     </a>
                                 </div>
                                  
@@ -214,8 +214,8 @@ import ballerina/log;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR,
-    descMap: getDescriptorMap()
+    descriptor: ROOT_DESCRIPTOR_GRPC_SERVER_STREAMING,
+    descMap: getDescriptorMapGrpcServerStreaming()
 }
 service &quot;HelloWorld&quot; on new grpc:Listener(9090) {
     remote function lotsOfReplies(string name)

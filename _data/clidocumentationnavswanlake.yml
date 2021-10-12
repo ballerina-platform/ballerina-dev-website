@@ -7,7 +7,7 @@
     - title: Update Tool
       url: /learn/cli-documentation/update-tool/
       active: update-tool
-    - title: Open API
+    - title: OpenAPI
       url: /learn/cli-documentation/openapi/
       active: openapi
     - title: GRPC

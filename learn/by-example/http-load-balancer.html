@@ -18,7 +18,7 @@ redirect_from:
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">backendEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">8080</span><span class="p">);</span>
 
 <span class="c1">// Define the load balance client endpoint to call the backend services.</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">LoadBalanceClient</span> <span class="nx">lbBackendEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">({</span>
+<span class="nx">final</span> <span class="nx">http</span><span class="p">:</span><span class="nx">LoadBalanceClient</span> <span class="nx">lbBackendEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">({</span>
         <span class="c1">// Define the set of HTTP clients that need to be load balanced.</span>
         <span class="nx">targets</span><span class="p">:</span> <span class="p">[</span>
             <span class="p">{</span><span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://localhost:8080/mock1&quot;</span><span class="p">},</span>
@@ -151,7 +151,7 @@ redirect_from:
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:LoadBalanceClient lbBackendEP = check new ({
+                                    <div class="highlight"><pre><code class=language-ballerina>final http:LoadBalanceClient lbBackendEP = check new ({
 </code></pre></div>
 
                                 </div>

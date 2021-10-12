@@ -17,7 +17,7 @@ redirect_from:
 
 <span class="c1">// Defines the HTTP client to call the Basic auth secured APIs.</span>
 <span class="c1">// The client is enriched with the `Authorization: Basic &lt;token&gt;` header by</span>
-<span class="c1">// passing the `http:CredentialsConfig` for the `auth` configuration of the</span>
+<span class="c1">// passing the [`http:CredentialsConfig`](https://docs.central.ballerina.io/ballerina/http/latest/records/CredentialsConfig) for the `auth` configuration of the</span>
 <span class="c1">// client.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">securedEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span>
     <span class="nx">auth</span> <span class="p">=</span> <span class="p">{</span>
@@ -133,7 +133,7 @@ import ballerina/io;
                                         <div>
                                             <p>Defines the HTTP client to call the Basic auth secured APIs.
  The client is enriched with the <code>Authorization: Basic &lt;token&gt;</code> header by
- passing the <code>http:CredentialsConfig</code> for the <code>auth</code> configuration of the
+ passing the <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/CredentialsConfig"><code>http:CredentialsConfig</code></a> for the <code>auth</code> configuration of the
  client.</p>
 
                                         </div>

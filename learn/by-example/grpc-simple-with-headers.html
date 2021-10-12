@@ -15,14 +15,16 @@ redirect_from:
                 <div class="highlight"><pre><span class="c1">// This is the server implementation of the simple RPC scenario.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">protobuf</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">wrappers</span><span class="p">;</span>
 
 <span class="nd">@grpc:ServiceDescriptor {</span>
-    <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR</span><span class="p">,</span>
-    <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMap</span><span class="p">()</span>
+    <span class="nx">descriptor</span><span class="p">:</span> <span class="nx">ROOT_DESCRIPTOR_GRPC_SIMPLE_WITH_HEADERS</span><span class="p">,</span>
+    <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMapGrpcSimpleWithHeaders</span><span class="p">()</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="s">&quot;HelloWorld&quot;</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">ContextString</span> <span class="nx">request</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">ContextString</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">wrappers</span><span class="p">:</span><span class="nx">ContextString</span> <span class="nx">request</span><span class="p">)</span>
+                        <span class="nx">returns</span> <span class="nx">wrappers</span><span class="p">:</span><span class="nx">ContextString</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
         <span class="c1">// Reads the request message and creates a response.</span>
         <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello &quot;</span> <span class="o">+</span> <span class="nx">request</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
 
@@ -39,17 +41,18 @@ redirect_from:
 <span class="c1">// This is the client implementation of the simple RPC scenario.</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">protobuf</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">wrappers</span><span class="p">;</span>
 
 <span class="c1">// Creates a gRPC client to interact with the remote server.</span>
 <span class="nx">HelloWorldClient</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span> <span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Creates the request message with the header value.</span>
-    <span class="nx">ContextString</span> <span class="nx">requestMessage</span> <span class="p">=</span>
+    <span class="nx">wrappers</span><span class="p">:</span><span class="nx">ContextString</span> <span class="nx">requestMessage</span> <span class="p">=</span>
     <span class="p">{</span><span class="nx">content</span><span class="p">:</span> <span class="s">&quot;WSO2&quot;</span><span class="p">,</span> <span class="nx">headers</span><span class="p">:</span> <span class="p">{</span><span class="nx">client_header_key</span><span class="p">:</span> <span class="s">&quot;0987654321&quot;</span><span class="p">}};</span>
 
     <span class="c1">// Executes a simple remote call.</span>
-    <span class="nx">ContextString</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">helloContext</span><span class="p">(</span><span class="nx">requestMessage</span><span class="p">);</span>
+    <span class="nx">wrappers</span><span class="p">:</span><span class="nx">ContextString</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">helloContext</span><span class="p">(</span><span class="nx">requestMessage</span><span class="p">);</span>
 
     <span class="c1">// Prints the received result.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
@@ -85,9 +88,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="grpc-secured-simple.html?is_ref_by_example=true">
+                                    <a class="next" href="grpc-server-streaming.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
-                                        <p>Secured Simple RPC</p>
+                                        <p>Server Streaming RPC</p>
                                     </a>
                                 </div>
                                 
@@ -202,6 +205,7 @@ service HelloWorld {
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/grpc;
 import ballerina/log;
+import ballerina/protobuf.types.wrappers;
 </code></pre></div>
 
                                 </div>
@@ -221,8 +225,8 @@ import ballerina/log;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR,
-    descMap: getDescriptorMap()
+    descriptor: ROOT_DESCRIPTOR_GRPC_SIMPLE_WITH_HEADERS,
+    descMap: getDescriptorMapGrpcSimpleWithHeaders()
 }
 service &quot;HelloWorld&quot; on new grpc:Listener(9090) {
 </code></pre></div>
@@ -236,7 +240,8 @@ service &quot;HelloWorld&quot; on new grpc:Listener(9090) {
                             <div class="cTR">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function hello(ContextString request) returns ContextString|error {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function hello(wrappers:ContextString request)
+                        returns wrappers:ContextString|error {
 </code></pre></div>
 
                                 </div>
@@ -378,6 +383,7 @@ service &quot;HelloWorld&quot; on new grpc:Listener(9090) {
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/grpc;
 import ballerina/io;
+import ballerina/protobuf.types.wrappers;
 </code></pre></div>
 
                                 </div>
@@ -427,7 +433,7 @@ import ballerina/io;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    ContextString requestMessage =
+                                    <div class="highlight"><pre><code class=language-ballerina>    wrappers:ContextString requestMessage =
     {content: &quot;WSO2&quot;, headers: {client_header_key: &quot;0987654321&quot;}};
 </code></pre></div>
 
@@ -447,7 +453,7 @@ import ballerina/io;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    ContextString result = check ep-&gt;helloContext(requestMessage);
+                                    <div class="highlight"><pre><code class=language-ballerina>    wrappers:ContextString result = check ep-&gt;helloContext(requestMessage);
 </code></pre></div>
 
                                 </div>

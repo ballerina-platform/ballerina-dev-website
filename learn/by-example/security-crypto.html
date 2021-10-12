@@ -184,9 +184,9 @@ redirect_from:
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
 
     <span class="c1">// Randomly generates a 128 bit key for the AES encryption.</span>
-    <span class="nx">byte</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="nx">rsaKey</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+    <span class="nx">byte</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="nx">aesKey</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">0</span> <span class="o">...</span> <span class="mi">15</span> <span class="p">{</span>
-        <span class="nx">rsaKey</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">byte</span><span class="p">&gt;(</span><span class="nx">check</span> <span class="nx">random</span><span class="p">:</span><span class="nx">createIntInRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">));</span>
+        <span class="nx">aesKey</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">byte</span><span class="p">&gt;(</span><span class="nx">check</span> <span class="nx">random</span><span class="p">:</span><span class="nx">createIntInRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">));</span>
     <span class="p">}</span>
 
     <span class="c1">// Randomly generates a 128 bit IV for the AES encryption.</span>
@@ -196,38 +196,38 @@ redirect_from:
     <span class="p">}</span>
 
     <span class="c1">// Encrypts and decrypts an input value using the `AES CBC PKCS5` padding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesCbc</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">);</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesCbc</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesCbc</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">aesKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesCbc</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">aesKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;AES CBC PKCS5 decrypted value: &quot;</span> <span class="o">+</span>
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
 
     <span class="c1">// Encrypts and decrypts an input value using the `AES CBC` without padding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesCbc</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesCbc</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesCbc</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">aesKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesCbc</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">aesKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;AES CBC no padding decrypted value: &quot;</span> <span class="o">+</span>
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
 
     <span class="c1">// Encrypts and decrypts an input value using the `AES GCM PKCS5` padding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesGcm</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">);</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesGcm</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesGcm</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">aesKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesGcm</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">aesKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;AES GCM PKCS5 decrypted value: &quot;</span> <span class="o">+</span>
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
 
     <span class="c1">// Encrypts and decrypts an input value using the `AES GCM` without padding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesGcm</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesGcm</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesGcm</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">aesKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesGcm</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">aesKey</span><span class="p">,</span> <span class="nx">iv</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;AES GCM no padding decrypted value: &quot;</span> <span class="o">+</span>
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
 
     <span class="c1">// Encrypts and decrypts an input value using the `AES ECB PKCS5 padding`.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesEcb</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">);</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesEcb</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesEcb</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">aesKey</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesEcb</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">aesKey</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;AES ECB PKCS5 decrypted value: &quot;</span> <span class="o">+</span>
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
 
     <span class="c1">// Encrypts and decrypts an input value using the `AES ECB` without padding.</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesEcb</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
-    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesEcb</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKey</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptAesEcb</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">aesKey</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
+    <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesEcb</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">aesKey</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;AES ECB no padding decrypted value: &quot;</span> <span class="o">+</span>
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
 <span class="p">}</span>
@@ -1102,9 +1102,9 @@ import ballerina/random;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    byte[16] rsaKey = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                                    <div class="highlight"><pre><code class=language-ballerina>    byte[16] aesKey = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     foreach var i in 0 ... 15 {
-        rsaKey[i] = &lt;byte&gt;(check random:createIntInRange(0, 255));
+        aesKey[i] = &lt;byte&gt;(check random:createIntInRange(0, 255));
     }
 </code></pre></div>
 
@@ -1146,8 +1146,8 @@ import ballerina/random;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesCbc(input, rsaKey, iv);
-    output = check crypto:decryptAesCbc(output, rsaKey, iv);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesCbc(input, aesKey, iv);
+    output = check crypto:decryptAesCbc(output, aesKey, iv);
     io:println(&quot;AES CBC PKCS5 decrypted value: &quot; +
         check string:fromBytes(output));
 </code></pre></div>
@@ -1168,8 +1168,8 @@ import ballerina/random;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesCbc(input, rsaKey, iv, crypto:NONE);
-    output = check crypto:decryptAesCbc(output, rsaKey, iv, crypto:NONE);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesCbc(input, aesKey, iv, crypto:NONE);
+    output = check crypto:decryptAesCbc(output, aesKey, iv, crypto:NONE);
     io:println(&quot;AES CBC no padding decrypted value: &quot; +
         check string:fromBytes(output));
 </code></pre></div>
@@ -1190,8 +1190,8 @@ import ballerina/random;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesGcm(input, rsaKey, iv);
-    output = check crypto:decryptAesGcm(output, rsaKey, iv);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesGcm(input, aesKey, iv);
+    output = check crypto:decryptAesGcm(output, aesKey, iv);
     io:println(&quot;AES GCM PKCS5 decrypted value: &quot; +
         check string:fromBytes(output));
 </code></pre></div>
@@ -1212,8 +1212,8 @@ import ballerina/random;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesGcm(input, rsaKey, iv, crypto:NONE);
-    output = check crypto:decryptAesGcm(output, rsaKey, iv, crypto:NONE);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesGcm(input, aesKey, iv, crypto:NONE);
+    output = check crypto:decryptAesGcm(output, aesKey, iv, crypto:NONE);
     io:println(&quot;AES GCM no padding decrypted value: &quot; +
         check string:fromBytes(output));
 </code></pre></div>
@@ -1234,8 +1234,8 @@ import ballerina/random;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesEcb(input, rsaKey);
-    output = check crypto:decryptAesEcb(output, rsaKey);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesEcb(input, aesKey);
+    output = check crypto:decryptAesEcb(output, aesKey);
     io:println(&quot;AES ECB PKCS5 decrypted value: &quot; +
         check string:fromBytes(output));
 </code></pre></div>
@@ -1256,8 +1256,8 @@ import ballerina/random;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesEcb(input, rsaKey, crypto:NONE);
-    output = check crypto:decryptAesEcb(output, rsaKey, crypto:NONE);
+                                    <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:encryptAesEcb(input, aesKey, crypto:NONE);
+    output = check crypto:decryptAesEcb(output, aesKey, crypto:NONE);
     io:println(&quot;AES ECB no padding decrypted value: &quot; +
         check string:fromBytes(output));
 }

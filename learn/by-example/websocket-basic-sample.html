@@ -17,7 +17,7 @@ redirect_from:
 
 <span class="kd">service</span> <span class="o">/</span><span class="nx">basic</span><span class="o">/</span><span class="nx">ws</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
    <span class="kd">resource</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.()</span>
-                     <span class="nx">returns</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Service</span><span class="p">|</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">UpgradeError</span> <span class="p">{</span>
+                     <span class="nx">returns</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Service</span><span class="p">|</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Error</span> <span class="p">{</span>
        <span class="c1">// Accept the WebSocket upgrade by returning a `websocket:Service`.</span>
        <span class="k">return</span> <span class="nx">new</span> <span class="nx">WsService</span><span class="p">();</span>
    <span class="p">}</span>
@@ -52,9 +52,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="websocket-binary-client.html?is_ref_by_example=true">
+                                    <a class="prev" href="websocket-retry-client.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
-                                        <p>Handle Binary Messages with Client</p>
+                                        <p>Retry</p>
                                     </a>
                                 </div>
                                  
@@ -113,7 +113,7 @@ import ballerina/websocket;
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>service /basic/ws on new websocket:Listener(9090) {
    resource isolated function get .()
-                     returns websocket:Service|websocket:UpgradeError {
+                     returns websocket:Service|websocket:Error {
 </code></pre></div>
 
                                 </div>

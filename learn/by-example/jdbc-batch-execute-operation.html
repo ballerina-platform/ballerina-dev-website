@@ -67,7 +67,7 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nInsert success, generated IDs are: &quot;</span><span class="p">,</span> <span class="nx">generatedIds</span><span class="p">,</span> <span class="s">&quot;\n&quot;</span><span class="p">);</span>
 
     <span class="c1">// Checks the data after the batch execution.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span> 
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{},</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
         <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM Customers`</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Data in Customers table:&quot;</span><span class="p">);</span>
@@ -106,7 +106,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Batch Execute</h2>
-                            <p><p>This example demonstrates how to use the JDBC client to execute a batch of
+                            <p><p>This BBE demonstrates how to use the JDBC client to execute a batch of
  DDL/DML operations. Note that the relevant database driver JAR
  should be defined in the <code>Ballerina.toml</code> file as a dependency.
  This sample is based on an H2 database and the H2 database driver JAR need to be added to the <code>Ballerina.toml</code> file.
@@ -330,7 +330,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record {}, error&gt; resultStream = 
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record {}, error?&gt; resultStream =
         jdbcClient-&gt;query(`SELECT * FROM Customers`);
 </code></pre></div>
 

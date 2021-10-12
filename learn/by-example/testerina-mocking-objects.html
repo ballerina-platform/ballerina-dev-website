@@ -138,13 +138,15 @@ redirect_from:
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="p">());</span>
 <span class="p">}</span>
 
-<span class="nd">@test:Config {</span> <span class="p">}</span>
+<span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testMemberVariable</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">mockId</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">;</span>
-    <span class="nx">exampleClient</span> <span class="p">=</span> <span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">ExampleClient</span><span class="p">);</span>
-    <span class="c1">// Stubs the value of the `id` to return the specified string.</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">exampleClient</span><span class="p">).</span><span class="nx">getMember</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">mockId</span><span class="p">);</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">exampleClient</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">mockId</span><span class="p">);</span>
+    <span class="nx">lock</span> <span class="p">{</span>
+        <span class="nx">exampleClient</span> <span class="p">=</span> <span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">ExampleClient</span><span class="p">);</span>
+        <span class="c1">// Stubs the value of the `id` to return the specified string.</span>
+        <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">exampleClient</span><span class="p">).</span><span class="nx">getMember</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">mockId</span><span class="p">);</span>
+        <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">exampleClient</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">mockId</span><span class="p">);</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -657,10 +659,11 @@ function testSendNotification() {
                             <div class="cTR">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config { }
+                                    <div class="highlight"><pre><code class=language-ballerina>@test:Config {}
 function testMemberVariable() {
     string mockId = &quot;test&quot;;
-    exampleClient = test:mock(ExampleClient);
+    lock {
+        exampleClient = test:mock(ExampleClient);
 </code></pre></div>
 
                                 </div>
@@ -672,8 +675,9 @@ function testMemberVariable() {
                             <div class="cTR hover-enable">
 
                                 <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    test:prepare(exampleClient).getMember(&quot;id&quot;).thenReturn(mockId);
-    test:assertEquals(exampleClient.id, mockId);
+                                    <div class="highlight"><pre><code class=language-ballerina>        test:prepare(exampleClient).getMember(&quot;id&quot;).thenReturn(mockId);
+        test:assertEquals(exampleClient.id, mockId);
+    }
 }
 </code></pre></div>
 

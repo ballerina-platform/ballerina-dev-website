@@ -8,15 +8,15 @@ intro: Ballerina is a comprehensive language that is easy to grasp for anyone wi
 redirect_from:
 
 ---
-
+<!-- Tabs-->
 <div class="tab">
-  <button class="tablinks active" onclick="openCity(event, 'London')">Getting Started</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Guides</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">References</button>
+  <button class="tablinks active" onclick="openCity(event, 'Getting_Started')">Getting Started</button>
+  <button class="tablinks" onclick="openCity(event, 'Guides')">Guides</button>
+  <button class="tablinks" onclick="openCity(event, 'Ref')">References</button>
 </div>
 
 <!-- Tab content -->
-<div id="London" class="tabcontent " style="display:block;">
+<div id="Getting_Started" class="tabcontent " style="display:block;">
   
 <div class="container">
 <div class="row balraw" style="background-color:aliceblue;padding: 25px 25px 15px 25px; margin-bottom:30px; width:97.04%">
@@ -44,9 +44,8 @@ redirect_from:
 </div>
 </div>
 
-<div id="Paris" class="tabcontent">
+<div id="Guides" class="tabcontent">
  <div class="container">
-<!-- <div class="row" style="background-color:#efefef;padding: 25px 25px 15px 25px;margin-bottom:30px"> -->
 <div class="row balraw" style="background-color:aliceblue;padding: 25px 25px 15px 25px;margin-bottom:30px;width:97.04%">
 
 		<h3 id="why-ballerina"><a href="/learn/why-ballerina/cloud-native/">Why Ballerina</a></h3>
@@ -76,11 +75,10 @@ redirect_from:
 		<p>Instructions on the supported interoperability features.</p>
 
 </div>
-
 </div>
 </div>
 
-<div id="Tokyo" class="tabcontent">
+<div id="Ref" class="tabcontent">
  <div class="container">
 <div class="row balraw" style="background-color:aliceblue;padding: 25px 25px 15px 25px;margin-bottom:30px;width:97.04%">
 
@@ -105,17 +103,7 @@ redirect_from:
 
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
+<!-- Style -->
 <style>
 	:not(pre) > code[class*="language-"], pre[class*="language-"]{
 		    background: #e0dede !important;
@@ -123,7 +111,6 @@ redirect_from:
 .cBallerina-io-Gray-row.cLandingPageintro{ 
 	padding-bottom:0;
 }
-
 
 .cBallerina-io-Home-Middle-col{
 	padding-left:15px !important;
@@ -218,8 +205,6 @@ redirect_from:
   
 }
 
-
-
 /* Create an active/current tablink class */
 .tab button.active {
   background-color: aliceblue;
@@ -234,7 +219,7 @@ redirect_from:
   border-top: none;
 } 
 </style>
-
+<!-- Script -->
 <script>
     function openCity(evt, cityName) {
   // Declare all variables

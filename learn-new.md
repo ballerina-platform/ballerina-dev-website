@@ -100,7 +100,6 @@ redirect_from:
 		<p>Provides details of all the CLI commands of the `bal` tool.</p>-->
 
 </div>
-
 </div>
 </div>
 <!-- Style -->
@@ -189,28 +188,18 @@ redirect_from:
   transition: 0.3s;
   text-align: center;
   width:32.8%;
-  /* border-top: #efefef 1px solid; */
-  /* border-right: #efefef 1px solid; */
-  /* border-left: #efefef 1px solid; */
-  /* margin:0px auto; */
-  
-  
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
   background-color: aliceblue;
-  text-decoration:underline solid 2px;
- 
-  
+  text-decoration:underline solid 2px; 
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
   background-color: aliceblue;
   color:#20b6b0 ;
-
- 
 }
 
 /* Style the tab content */

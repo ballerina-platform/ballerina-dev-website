@@ -1220,6 +1220,23 @@
                 "isLearnByExample": false
             },
             {
+
+                "name": "Trace logs",
+                "url": "http-trace-logs",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Access logs",
+                "url": "http-access-logs",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Cookies",
                 "url": "http-cookies",
                 "verifyBuild": true,
@@ -1336,6 +1353,14 @@
                 "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Context",
+                "url": "graphql-context",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1411,6 +1436,15 @@
                 "url": "websocket-binary-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            
+            {
+                "name": "Retry",
+                "url": "websocket-retry-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
                 "isLearnByExample": false
             },
             {

@@ -1437,7 +1437,6 @@
                 "verifyOutput": false,
                 "isLearnByExample": false
             },
-            
             {
                 "name": "Retry",
                 "url": "websocket-retry-client",

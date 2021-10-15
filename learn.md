@@ -11,11 +11,10 @@ redirect_from:
  - /learn
 ---
 
-<div class="column-gray-box-row">
-	<div class="column-gray-box-grid">
-		<div class="column-gray-box"> 
-			<h2 id="getting-started">Getting Started</h2>
-			<h3 id="installing-ballerina"><a href="/learn/installing-ballerina/setting-up-ballerina/">Installing Ballerina</a></h3>
+<div class="container">
+<div class="row" style="background-color:#efefef;padding: 25px 25px 15px 25px; margin-bottom:30px">
+<h2 id="getting-started">Getting Started</h2>
+			<h3 id="installing-ballerina"><a href="/learn/installing-ballerina/setting-up-ballerina/">Setting Up Ballerina</a></h3>
 			<p>Setting up the Ballerina development environment.</p>
 			<h3 id="hello-world"><a href="/learn/getting-started/hello-world/writing-your-first-ballerina-program/">Hello World</a></h3>
 			<p>Writing your first Ballerina program and creating your first Ballerina package.</p>
@@ -29,15 +28,14 @@ redirect_from:
 			<p>A comprehensive reference slide deck explaining the language.</p>-->
 			<h3 id="language-walkthrough-video"><a href="/learn/language-walkthrough/">Language Walkthrough</a></h3>
 			<p>A video series, which explains the language and its reference slide deck.</p>
-			<h3 id="installing-ballerina"><a href="/learn/ballerina-shell">Ballerina Shell</a></h3>
-			<p>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
 			<h3 id="installing-ballerina"><a href="/learn/visual-studio-code-extension/quick-start/">Visual Studio Code Extension</a></h3>
 			<p>Details of all the features of the Ballerina Visual Studio Code extension.</p>
-		</div>
-	</div>
-	<div class="column-gray-box-grid">
-		<div class="column-gray-box">  
-		<h2 id="concepts">Guides</h2>
+</div>
+</div>
+
+<div class="container">
+<div class="row" style="background-color:#efefef;padding: 25px 25px 15px 25px;margin-bottom:30px">
+<h2 id="concepts">Guides</h2>
 		<h3 id="why-ballerina"><a href="/learn/why-ballerina/cloud-native/">Why Ballerina</a></h3>
 		<p>Why you should use Ballerina.</p>
 		<!--<h3 id="writing-idiomatic-ballerina-code"><a href="/learn/user-guide/">Writing Idiomatic Ballerina Code</a></h3>
@@ -63,11 +61,12 @@ redirect_from:
 		<p>Details of publishing your library package to Ballerina Central.</p>
 		<h3 id="calling-java-code-from-ballerina-and-vice-versa"><a href="/learn/calling-java-code-from-ballerina-and-vice-versa/">Calling Java Code from Ballerina and Vice Versa</a></h3>
 		<p>Instructions on the supported interoperability features.</p>
-		</div>
-	</div>
-	<div class="column-gray-box-grid">
-		<div class="column-gray-box">  
-		<h2 id="references">References</h2>
+</div>
+</div>
+
+<div class="container">
+<div class="row" style="background-color:#efefef;padding: 25px 25px 15px 25px;margin-bottom:30px">
+	<h2 id="references">References</h2>
 		<!--<h3 id="language-guide"><a href="/learn/language-concepts/">Language Guide</a></h3>
 		<p>An elaborate textual guide to the Ballerina language.</p>-->
 		<h3 id="reference-guide-by-examples"><a href="/learn/by-example/">Reference by Examples</a></h3>
@@ -84,8 +83,7 @@ redirect_from:
 		<p>Presentation slides on the Ballerina language that you can use to talk about the language.</p>
         <!--<h3 id="blogs-and-articles"><a href="https://blog.ballerina.io/">Blogs/Articles</a></h3>
 		<p>Provides details of all the CLI commands of the `bal` tool.</p>-->
-		</div>
-	</div>
+</div>
 </div>
 
 <style>
@@ -104,11 +102,11 @@ redirect_from:
     background-color:#efefef;
 	height:	100%;
 }
-.cBallerina-io .column-gray-box h2{ 
+.row h2{ 
   display:block;
   margin-top:0;
 }
-.cBallerina-io .column-gray-box h3{ 
+.row h3{ 
   font-size:20px;
 }
 .column-gray-box-row{

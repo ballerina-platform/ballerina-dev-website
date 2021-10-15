@@ -1220,7 +1220,6 @@
                 "isLearnByExample": false
             },
             {
-
                 "name": "Trace logs",
                 "url": "http-trace-logs",
                 "verifyBuild": true,

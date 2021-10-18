@@ -1,4 +1,4 @@
-# Part 3 : Completing the picture
+# Part 3: Completing the picture
 
 Let’s now look at the other features of the Ballerina language. These are a mixed bag of additional options to the language, making everything fit together to build a Ballerina application.
 
@@ -443,20 +443,20 @@ Therefore, any array of type *T*,  as in *T[ ]*, can be described as *[T . . .]*
 
 ## Array/map Symmetry
 
-| Basic Type | Index Type | JSON   | Constructor | Type with uniform member type | Type with per-index member type | Open type |
-|------------|------------|------------------|-------------------------------|---------------------------------|---------------|
-| list       | int        | array  | [           | array                         | tuple                       | [T0, Tr...]   |
-|            |            |        |    “foo”,   | T[ ]                          | [T0, T1]                    |               |
-|            |            |             “bar”    |                               |                             |               |
-|            |            |        | ]           |                               |                             |               |
-|------------|------------|--------|-------------|-------------------------------|-----------------------------|---------------|
-| mapping    | string     | object | {           | map                           | record                      | record {|     |
-|            |            |        |  x : "foo", |                               |                             |               |
-|            |            |        |  y : "bar"  | map <T>                       | ``record {``                | Tx;           |
-|            |            |        | }           |                               |    ``Tx : x;``              | Tr ...;       |
-|            |            |        |             |                               |    ``Ty : y;``              |               |
-|            |            |        |             |                               |  ``}``                      | |}            |
-|------------|------------|--------|-------------|-------------------------------|-----------------------------|---------------|
+| Basic Type | Index Type | JSON   | Constructor | Type with uniform member type | Type with per-index member type |   Open type   |
+|------------|------------|--------|-------------|-------------------------------|---------------------------------|---------------|
+| list       | int        | array  | [           | array                         | tuple                           | [T0, Tr...]   |
+|            |            |        |    “foo”,   | T[ ]                          | [T0, T1]                        |               |
+|            |            |             “bar”    |                               |                                 |               |
+|            |            |        | ]           |                               |                                 |               |
+|------------|------------|--------|-------------|-------------------------------|----------------------------- -- |---------------|
+| mapping    | string     | object | {           | map                           | record                          | record {|     |
+|            |            |        |  x : "foo", |                               |                                 |               |
+|            |            |        |  y : "bar"  | map <T>                       | ``record {``                    | Tx;           |
+|            |            |        | }           |                               |    ``Tx : x;``                  | Tr ...;       |
+|            |            |        |             |                               |    ``Ty : y;``                  |               |
+|            |            |        |             |                               |  ``}``                          | |}            |
+|------------|------------|--------|-------------|-------------------------------|-----------------------------    |---------------|
 
 Overall, Ballerina provides quite a nice symmetry between lists and mappings.  
 

@@ -2,9 +2,9 @@
 
 ## Familiar Subset of Ballerina
 
-Ballerina is a modern programming language focused on building applications for the cloud era. It has a familiar syntax resembling the C family of languages, such as C/C++, C#, Java, JavaScript. It brings in many powerful concepts from existing programming languages and some unconventional abstraction mechanisms to make application development for the cloud more intuitive and less strenuous.
+Ballerina is a modern programming language focused on building applications for the cloud era. It has a familiar syntax resembling the C family of languages, such as C/C++, C#, Java and JavaScript. It brings in many powerful concepts from existing programming languages and some unconventional abstraction mechanisms to make application development for the cloud more intuitive and less strenuous.
 
-Part 1 of this language guide presents the subset of Ballerina language common to most modern programming languages. It covers the baseline features such as data types, control flow, error handling, which should be very familiar to most programmers. These features are the foundation for you to use some of the more distinctive features of Ballerina that will be covered in the subsequent parts.<br><br>
+Part 1 of this language guide presents the subset of Ballerina language common to most modern programming languages. It covers the baseline features such as data types, control flow and error handling, which should be very familiar to most programmers. These features are the foundation for some of the more distinctive features of Ballerina that will be covered in the subsequent parts.<br><br>
 
 ## Programs and Modules
 
@@ -12,7 +12,7 @@ Ballerina programs consist of modules, and each module consists of one or more *
   
 The most important thing that a module does is define named functions.
 
-Here is how a simple Ballerina module looks like:
+Here's what a simple Ballerina module looks like:
 
 ```
 import ballerina/io; 
@@ -22,7 +22,7 @@ public function main() {
 }
 ```
 
-The ``import`` keyword is used to bind predefined library modules to module prefix. Ballerina modules have two-part names represented by an organization name and a module name. In this case, the organization is **``ballerina``**. The module is **``io``**. The bound identifier to refer to this library module is set to the module name **``io``**. To override the default identifier binding for the module, you can use the ``as`` keyword, like *``import ballerina/io as oi``*.
+The ``import`` keyword is used to bind predefined library modules to module prefix. Ballerina modules have two-part names represented by an organization name and a module name. In this case, the organization is **``ballerina``** , and the module is **``io``**. The bound identifier that refers to this library module is set to the module name **``io``**. To override the default identifier binding for the module, you can use the ``as`` keyword as follows, *``import ballerina/io as oi``*.
 
 Module hierarchies follow the `‘/’` and `‘.’` notation, for example, *``org/x.y.z``* to refer to modules, and sub-modules. The `‘:’` notation points to a function defined within the module.
 
@@ -66,7 +66,7 @@ function add(int x, int y) returns int {
 
 In the above code example, you see the definition for **``add``** function. It accepts two parameters of type ``int``, **``x``** and **``y``**. It also returns a value of type int. The ``returns`` keyword specifies the type of return value.
 
-Inside the function, a simple addition operation is performed whose result is stored and returned in another variable **``sum``** of type ``int`` using the ``return`` statement.<br><br>
+Inside the function, when a simple addition operation is performed, the result is stored and returned in another variable **``sum``** of type ``int`` using the ``return`` statement.<br><br>
 
 ## Syntax
 
@@ -499,7 +499,7 @@ So in the above code example, the function defines a local variable **``ret``** 
 
 ## ``check`` expression
 
-Instead of using the ``is`` operator within the regular conditional flow for checking errors, Ballerina has a shorthand method available.  Using the ``check`` keyword, error handling and return statements are much more concise.
+Instead of using the ``is`` operator within the regular conditional flow for checking errors, Ballerina has a shorthand method available. Using the ``check`` keyword, error handling and return statements are much more concise.
 
 So the **``intFromBytes()``** function defined in the previous section can now be written as: 
 
@@ -516,7 +516,7 @@ In this case, the expression following the ``check`` keyword is evaluated and th
 
 ## Error subtyping
 
-Ballerina also allows fine-grained error detection based on error subtypes.  Error subtypes can be defined using the distinct keyword.
+Ballerina also allows fine-grained error detection based on error subtypes. Error subtypes can be defined using the distinct keyword.
 
 ```
 type XErr distinct error;
@@ -616,7 +616,7 @@ any [ ] av = iv;
   
 This is perfectly valid in Ballerina because the set of values allowed by an array of integer type is a subset of the values allowed by an array of any type. So this way, you can have some flexibility in allowing fixed inherent type substitution based on the set of values.
 
-Ballerina’s static type checking ensures that the result of a read operation on the array  **``av``** will be consistent with static type.  However, writing will result in an error because the Array iv has an inherent type set to integer . As a result, this code will lead to a runtime error since it is trying to mutate the Array to a type other than the inherent type.
+Ballerina’s static type checking ensures that the result of a read operation on the array  **``av``** will be consistent with static type. However, writing will result in an error because the Array iv has an inherent type set to integer. As a result, this code will lead to a runtime error since it is trying to mutate the Array to a type other than the inherent type.
 
 ```
 av[0] = “str”; //Error
@@ -919,7 +919,7 @@ public function add(int x, int y)
 }
 ```
 
-The above code example adds documentation for describing the parameters, and the return type of the function **``add()``**  This is a Ballerina-flavoured Markdown (BFM) which makes it more convenient to generate pretty documentation using one of the platform tools.<br><br>
+The above code example adds documentation for describing the parameters, and the return type of the function **``add()``**.  This is a Ballerina-flavoured Markdown (BFM) which makes it more convenient to generate pretty documentation using one of the platform tools.<br><br>
 
 ## Annotations
 

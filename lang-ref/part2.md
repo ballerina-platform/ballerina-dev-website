@@ -4,7 +4,7 @@ In this part, you will learn about the features of the Ballerina programming lan
 
 Ballerina aims to be as pragmatic as possible by taking cues from existing patterns used in programming. It models cloud-era applications that make heavy use of network interaction, network data, and concurrency. In addition, Ballerina focuses on providing integration that acts like glue for orchestrating other programs and ensures reliability and maintainability while also assuring moderate cognitive load on programmers.
 
-Ballerina’s genesis is based on the evolving trends in programming on the cloud. In the pre-cloud era, programming was more about reading/writing files, invoking system calls and library functions. It also did not have much to do in terms of concurrency, as most programs were standalone desktop applications. However, now in the cloud era, files are replaced by network services and system calls/libraries are replaced by web APIs. Additionally, concurrency is pervasive with expectations to scale and elasticity. Ballerina’s feature set takes into account these evolutionary trends such that these are incorporated in the core of the language.
+Ballerina’s genesis is based on the evolving trends in programming on the cloud. In the pre-cloud era, programming was more about reading/writing files, invoking system calls, and library functions. It also did not have much to do in terms of concurrency, as most programs were standalone desktop applications. However, now in the cloud era, files are replaced by network services and system calls/libraries are replaced by web APIs. Additionally, concurrency is pervasive with expectations to scale and elasticity. Ballerina’s feature set takes into account these evolutionary trends such that these are incorporated in the core of the language.
 
 Individually these features may not stand out. However, it is the combination of them in specific programming scenarios that makes them distinctive.
 
@@ -335,7 +335,7 @@ Ballerina’s type system is unique from other programming languages because it 
 
 Therefore, Ballerina's type system design is based on defining a data type interface that works consistently across the memory buffers of the process in which the data is processed and in the network.
 
-To facilitate this requirement, the typing system needs to do a few things differently than the regular type system. It must be flexible like a schema language. And one of the ways it is done in Ballerina is by using optional fields.
+To facilitate this requirement, the typing system needs to do a few things differently than the regular type system. It must be flexible, like a schema language. And one of the ways it is done in Ballerina is by using optional fields.
 
 You can define a record with an optional field.
 

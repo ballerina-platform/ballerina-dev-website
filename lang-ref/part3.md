@@ -122,7 +122,7 @@ In the above code example, the query pipeline has a ``limit`` clause which evalu
 
 Ballerina supports yet another structured data type, table.
 
-Ballerina's philosophy is to use tables as containers for building centralized data structures that are operated on by multiple functions. This concept augurs well with the various scripting languages, like Lisp, Python, or JavaScript, which are primarily used for integration purposes to glue two disparate systems together. This is opposite to the philosophy followed in languages like Java, where programmers create separate classes and objects for separating the concerns within the code and write separate containers for data structures. Ballerina encourages the use of its built-in data structures rather than everybody designing their own custom data structures.
+Ballerina's philosophy is to use tables as containers for building centralized data structures that are operated on by multiple functions. This concept augurs well with the various scripting languages, like Lisp, Python, or JavaScript, which are primarily used for integration purposes to glue two disparate systems together. This is the opposite of the philosophy followed in languages like Java, where programmers create separate classes and objects to separate the concerns within the code and write different containers for data structures. Ballerina encourages the use of its built-in data structures rather than everybody designing their own custom data structures.
 
 Tables are a built-in data structure. They are just like the arrays and maps that you have seen so far. Therefore, they have some array-like and some map-like features.
 
@@ -265,7 +265,7 @@ var highPaidEmployees =
 
 In the above code example, a new table is produced from the query expression, which selects all the rows whose **``salary``** field is greater than or equal to 1000. A table is created as a result of the query expression explicitly specifying what to create by starting with the table keyword. The key of the created table can also be specified explicitly.<br><br>
 
-## Join Clause
+### Join Clause
 
 Ballerina queries can also leverage the join clause on table keys.
 
@@ -311,7 +311,7 @@ A stream type is a separate basic type but acts as an object. A stream is define
 
 Generating the values for a stream can  result in an error, in which case the stream is terminated with an error value.<br><br>
 
-## Querying with Streams
+### Querying with Streams
 
 You can use the same query expressions with streams.
 
@@ -384,7 +384,7 @@ In the above example, assume that **``db``** is a client object making a remote 
 
 ## XML Overview
 
-In Ballerina XML is a separate basic type. It is based on the concept of sequence, and is derived from the concept of XQuery as well as XPath2. The model of XML used in Ballerina is based on XML Infoset, which follows the basic concept of XML elements and attributes, rather than the XML schema, as in the case of PSVI (Post-Schema Validation Infoset).
+In Ballerina, XML is a separate basic type. It is based on the concept of sequence, and is derived from the concept of XQuery as well as XPath2. The model of XML used in Ballerina is based on XML Infoset, which follows the basic concept of XML elements and attributes, rather than the XML schema, as in the case of PSVI (Post-Schema Validation Infoset).
 
 Ballerina uses the template concept to construct xml values. It is designed to work with the underlying concepts of elements and attributes, which also forms the basis for HTML also. Therefore Ballerina treats HTML as XML.
 
@@ -392,7 +392,7 @@ As part of XML handling, Ballerina provides a navigation syntax with an XPath-li
 
 Overall the XML design in Ballerina is opinionated, and it works more like the regular containers such as lists and tables. Also, Ballerina’s XML representation doesn't support an up pointer. Therefore, the XML elements do not have references to parents and siblings since they do not know where they are in the overall XML structure.<br><br>
 
-## Sequences
+### Sequences
 
 A sequence is another categorization of types within Ballerina that we briefly mentioned earlier. It is a basic type. string and xml are the two sequence types in Ballerina.
 
@@ -406,7 +406,7 @@ The mutability of a sequence is similar to strings. Members of a sequence are al
 
 A sequence has no storage identity.  Two sequences will match for === operator if their members match for the same operation.<br><br>
 
-## XML Data Model
+### XML Data Model
 
 In Ballerina, an xml value is a sequence representing the parsed content of an XML item.
 
@@ -416,7 +416,7 @@ An element item consists of three things, name of string type, attributes of typ
 
 An element item is mutable whereas text items are immutable.<br><br>
 
-## XML Templates
+### XML Templates
 
 XML templates are used to create xml values.
 
@@ -430,7 +430,7 @@ xml p = xml `<p>${content}</p>`;
 
 The above code example defines two variables **``content``** and **``p``** of xml type using the backtick template containing the xml tag.  In this case the phase two of the template processing does a parsing using the XML 1.0 recommendation’s grammar for content (what XML allows between a start-tag and end-tag). You can place the interpolated expressions of the template within XML content, or in attribute values, as string values.<br><br>
 
-## XML Operations
+### XML Operations
 
 You can also perform different operations on values of xml type.
 
@@ -488,7 +488,7 @@ Ballerina LangLib provides a *lang.xml* library module for performing operations
 x2.setChildren(xml `<language>French</language>`);
 ```
 
-## XML Subtyping
+### XML Subtyping
 
 Ballerina also supports inbuilt subtypes of the xml type. This is beneficial for performing operations on some xml values that represent an element rather than the entire xml sequence. Similarly, it does not make sense to set children for an XML text item since it does not have any children. So such checks can be taken care of with the type system by defining subtypes.
 
@@ -527,7 +527,7 @@ In the above code example, the function **``rename( )``** performs the operation
 
 In the function, the ``foreach`` loop iterates through the list of elements of **``x``**  which is returned by **``elements( )``** and belongs to type *xml<xml:Element>*. Therefore, you can call **``getName( )``** for each *xml:Element* and check for the old name. And if the name matches, **``setName( )``** is called to change the name. The function executes recursively for children of an *xml:Element*.<br><br>
 
-## XML Navigation Syntactic Sugar
+### XML Navigation Syntactic Sugar
 
 Ballerina supports the use of navigational syntax to access items within the xml value. This is similar to the functionality of XPath.
 
@@ -549,7 +549,7 @@ For accessing every element named *para* in the descendants of *x*, use *x/\*\*/
 
 For accessing the first element named *para* in the children of *e* in *x*, use  *x/\<para>[0]*.Using the *[ ]* syntax you can point to the nth element.<br><br>
 
-## Querying with XML
+### Querying with XML
 
 You can also use the regular query expression in Ballerina to query XML.
 
@@ -565,7 +565,7 @@ In the above code example, you can use the query expression to iterate over the 
 
 This query returns a new xml containing a sequence of *\<para>* elements.<br><br>
 
-## Combining XML Templates and Queries
+### Combining XML Templates and Queries
 
 You can combine the concept of template with queries to build nested templates. With this feature, you build powerful templates having query expressions, with inner templates.
 
@@ -591,7 +591,7 @@ At the end, an xml value containing a sequence of *\<data>* element with zero or
 
 This is a very powerful feature unique to Ballerina. In this way, you can also build library functions that build HTML snippets as xml values for your application.<br><br>
 
-## XML Namespaces
+### XML Namespaces
 
 Ballerina supports XML namespaces without adding another level of complexity in the existing xml type system. But this is optional and you can use XML without using the namespaces also.
 
@@ -604,7 +604,7 @@ string name = e.getName();
 
 In the above code example, the variable **``name``** is set to an expanded name if **``e``**, which is *{http://example.com}e*.<br><br>
 
-## XMLNS Seclarations
+### XMLNS Seclarations
 
 Overall, to make the XML work in Ballerina, you need XML namespace declarations in code. XML namespace declarations look like import declarations.
 

@@ -64,7 +64,7 @@ jobs:
     - name: Create pull request for new BBEs
       shell: bash
       run: |
-        curl -fsSL https://github.com/github/hub/raw/dev/script/get | bash -s 2.14.1
+        curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
         bin/hub pull-request -m '[Automated] Update Ballerina by examples(BBEs) pages'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

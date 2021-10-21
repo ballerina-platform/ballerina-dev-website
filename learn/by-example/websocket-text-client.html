@@ -16,13 +16,13 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websocket</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Create a new [WebSocket client](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client).</span>
+    <span class="c1">// Create a new [WebSocket client](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client).</span>
    <span class="nx">websocket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">wsClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;ws://echo.websocket.org&quot;</span><span class="p">);</span>
 
-   <span class="c1">// Write a text message to the server using [writeTextMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client#writeTextMessage).</span>
+   <span class="c1">// Write a text message to the server using [writeTextMessage](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client#writeTextMessage).</span>
    <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">writeTextMessage</span><span class="p">(</span><span class="s">&quot;Text message&quot;</span><span class="p">);</span>
 
-   <span class="c1">// Read a text message echoed from the server using [readTextMessage](https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client#readTextMessage).</span>
+   <span class="c1">// Read a text message echoed from the server using [readTextMessage](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client#readTextMessage).</span>
    <span class="kt">string</span> <span class="nx">textResp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">readTextMessage</span><span class="p">();</span>
    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">textResp</span><span class="p">);</span>
 <span class="p">}</span>
@@ -37,7 +37,7 @@ redirect_from:
                             <h2>Handle Text Messages with Client</h2>
                             <p><p>The WebSocket client can be used to connect to and interact with a WebSocket server in a Synchronous manner. This example demonstrates how to read and write text messages using ballerina websocket client<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/">WebSocket module</a>.</p>
+ see the <a href="https://lib.ballerina.io/ballerina/websocket/latest/">WebSocket module</a>.</p>
 </p>
 
                         </td>
@@ -78,7 +78,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=85a0c8b7bfb888754538af058d2c44b7&file=websocket_text_client.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=9dd66d7046894ca96c37e964de354229&file=websocket_text_client.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -128,7 +128,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a new <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client">WebSocket client</a>.</p>
+                                            <p>Create a new <a href="https://lib.ballerina.io/ballerina/websocket/latest/clients/Client">WebSocket client</a>.</p>
 
                                         </div>
                                     </div>
@@ -147,7 +147,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Write a text message to the server using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client#writeTextMessage">writeTextMessage</a>.</p>
+                                            <p>Write a text message to the server using <a href="https://lib.ballerina.io/ballerina/websocket/latest/clients/Client#writeTextMessage">writeTextMessage</a>.</p>
 
                                         </div>
                                     </div>
@@ -168,7 +168,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Read a text message echoed from the server using <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/#/ballerina/websocket/latest/clients/Client#readTextMessage">readTextMessage</a>.</p>
+                                            <p>Read a text message echoed from the server using <a href="https://lib.ballerina.io/ballerina/websocket/latest/clients/Client#readTextMessage">readTextMessage</a>.</p>
 
                                         </div>
                                     </div>

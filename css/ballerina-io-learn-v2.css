@@ -30,8 +30,18 @@ nav.cLeftNavContainer ul li.current-inner-sub a {
 }
 .highlight{
   color: #464646 !important;
-  
-  
+}
+
+#tree-expand-all , #tree-collapse-all, .cTocElements {
+  display:none !important;
+} 
+
+.cGitButtonContainer {
+  display:none !important;
+} 
+
+.cBallerinaTocContainer  {
+    display:none !important;
 }
 
 .sub-menu,

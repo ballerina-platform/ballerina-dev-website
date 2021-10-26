@@ -181,7 +181,7 @@ Logpoints can also be enabled/disabled and can be controlled by conditions, simi
 
 ![Debugger Logpoints](/learn/images/debugger-logpoints.gif)
 
-Log messages can either be plain texts, or string templates which can contain expressions to be evaluated within ('${}') syntax.
+Log messages can either be plain texts, or string templates which can contain expressions to be evaluated within `${}` syntax.
 
 ![Debugger String Temaplate Logpoints](/learn/images/debugger-logpoints-template.gif)
 

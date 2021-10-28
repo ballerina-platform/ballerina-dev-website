@@ -309,7 +309,7 @@ Ballerina supports the concept of stream. A stream is a sequence of values that 
 
 A stream type is a separate basic type but acts as an object. A stream is defined with the stream keyword, as stream *<T,E>*, where members of the stream sequence are of type T and termination value is of type E. A shorter definition of *stream\<T>* can be used to mean *stream<T,( )>*, where the termination value is nil.
 
-Generating the values for a stream can  result in an error, in which case the stream is terminated with an error value.<br><br>
+Generating the values for a stream can result in an error, in which case the stream is terminated with an error value.<br><br>
 
 ### Querying with Streams
 

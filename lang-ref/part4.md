@@ -6,7 +6,7 @@
 
 One of the key aspects of the Ballerina language is to support concurrency. With more and more applications needing to support network interaction, concurrency becomes important for handling scale. But at the same time, it introduces complexities in data handling.
 
-One of the main ideas in Ballerina is to have a graphical view of the program. This concept is all about providing deeper insights into what the program is doing rather than spewing out the static syntax tree. Consider the three most important aspects of the Ballerina language, namely data handling, network interaction, and concurrency. Of these three features, network interaction and concurrency add a fair bit of complexity to an application. Based on common wisdom,  a sequence diagram provides the most incisive view of a program involving network interaction and concurrency.
+One of the main ideas in Ballerina is to have a graphical view of the program. This concept is all about providing deeper insights into what the program is doing rather than spewing out the static syntax tree. Consider the three most important aspects of the Ballerina language, namely data handling, network interaction, and concurrency. Of these three features, network interaction and concurrency add a fair bit of complexity to an application. Based on common wisdom, a sequence diagram provides the most incisive view of a program involving network interaction and concurrency.
 
 In Ballerina, concurrency related features are built into the language as first-class citizens, and they map directly onto sequence diagrams. For example, you can define a concurrent flow of control using a named worker.
 

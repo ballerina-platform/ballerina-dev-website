@@ -126,7 +126,7 @@ Ballerina's philosophy is to use tables as containers for building centralized d
 
 Tables are a built-in data structure. They are just like the arrays and maps that you have seen so far. Therefore, they have some array-like and some map-like features.
 
-A table is an array of records, and each record represents a row in the table. The rows are identified by keys, which is similar to maps. Thus, you can either iterate over the table, item by item, like arrays, or directly point to the item using the associated key. But unlike in maps where the keys are of string type and are different from the fields, a table stores the keys as fields in the rows. This approach is similar to the concept of primary keys in a SQL based database table where one of the columns is designated as a primary key which is uniquely used to identify the database record.
+A table is an array of records, and each record represents a row in the table. The rows are identified by keys, which is similar to maps. Thus, you can either iterate over the table, item by item, like arrays, or directly point to the item using the associated key. But unlike in maps where the keys are of string type and are different from the fields, a table stores the keys as fields in the rows. This approach is similar to the concept of primary keys in a SQL based database table where one of the columns is designated as a primary key, which is uniquely used to identify the database record.
 
 Therefore, a table maintains an invariant that each row is uniquely identified by a key that is not limited to string type and is immutable. Additionally, tables also preserve the order of the rows.<br><br>
 

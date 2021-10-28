@@ -523,7 +523,7 @@ In the above code example, there are two map types declared at the top, **``Entr
 
 This variable **``m``** is ``final``, which means that it cannot be set again. It is also ``readonly``, which means that its value is deeply immutable. Because of that, it is completely safe to access **``m``** from multiple threads. Therefore, when it is accessed in the isolated function **``lookup( )``**, it returns the **``Entry``** type which is also readonly type, thereby ensuring complete concurrency safety.
 
-In this way, ``readonly`` type complements isolated functions. If such a function is part of a method for service listeners where it has to read or write data and execute some code, the isolated specifier provides information about the function’s execution context, and  readonly specifier provides information about immutability of the data.<br><br>
+In this way, ``readonly`` type complements isolated functions. If such a function is part of a method for service listeners where it has to read or write data and execute some code, the isolated specifier provides information about the function’s execution context, and readonly specifier provides information about immutability of the data.<br><br>
 
 ### Combining Isolated Function with Lock
 

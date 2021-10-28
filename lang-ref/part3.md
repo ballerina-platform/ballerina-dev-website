@@ -332,7 +332,7 @@ The important thing to note here is that the query works the stream lazily. It d
 
 Using the stream keyword in front of ``from`` makes this query expression return a new stream with the same type. An error is returned if the iteration results in an error. However, if there is an error as a result of evaluation, then it will result in the returned stream being terminated with that error value. You can capture that error only while reading the returned stream.
 
-You can also iterate over streams,  like a loop operation, to perform some computation. However, you cannot use ``foreach`` with a stream that may terminate with an error since foreach cannot produce a value because it is a statement and error values cannot be ignored in Ballerina. You can achieve that with the do clause, in conjunction with the ``from`` clause.
+You can also iterate over streams, like a loop operation, to perform some computation. However, you cannot use ``foreach`` with a stream that may terminate with an error since foreach cannot produce a value because it is a statement and error values cannot be ignored in Ballerina. You can achieve that with the do clause, in conjunction with the ``from`` clause.
 
 ```
 function count(LS lines) returns int|Error {

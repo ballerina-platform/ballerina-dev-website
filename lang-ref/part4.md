@@ -176,7 +176,7 @@ future<int> c = startInt(() => 100);
 int d = check wait c;
 ```
 
-In the above code example, the function **``startInt( )``** expects an argument of the  function type **``FuncInt``** as an argument. When called, it starts the execution of the function on a separate strand and returns a future for it.<br><br>
+In the above code example, the function **``startInt( )``** expects an argument of the function type **``FuncInt``** as an argument. When called, it starts the execution of the function on a separate strand and returns a future for it.<br><br>
 
 ### Inter-worker Message Passing
 

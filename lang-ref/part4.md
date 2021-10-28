@@ -444,7 +444,7 @@ The semantics of the lock block is like an atomic section, and the execution of 
 
 Ballerina's main goal for service concurrency is to achieve decent performance and a decent level of safety.  
 
-Decent performance means that the Listener can have multiple threads serving incoming requests concurrently. Similarly, a decent level of safety boils down to the expectation that there are no undetected data races that lead to wrong results. Additionally, the safety mechanism strives to detect  such errors in runtime that cannot be caught at compile time. It is difficult to do it entirely at compile time since it would entail a more complex and restrictive system.
+Decent performance means that the Listener can have multiple threads serving incoming requests concurrently. Similarly, a decent level of safety boils down to the expectation that there are no undetected data races that lead to wrong results. Additionally, the safety mechanism strives to detect such errors in runtime that cannot be caught at compile time. It is difficult to do it entirely at compile time since it would entail a more complex and restrictive system.
 
 You can expect Ballerina to figure out the code and tell whether the program is safe for strands to be executed on separate threads or not. In case it is safe, it is guaranteed that there will not be any undetected data races.
 

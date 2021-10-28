@@ -71,7 +71,7 @@ string[] names = from var {first, last} in persons
                  select name;
 ```
 
-In the above code example, multiple ``let`` and ``where`` clauses are used to construct an array of strings names containing names of all persons, by concatenating their first and last names. The record entries whose first or last names have a length of zero are selected out by using the first and second combination of ``let`` and ``where`` clauses.  The overall query expression follows the semantics like XQUERY FLWOR ((for, let, where, order by, and return).
+In the above code example, multiple ``let`` and ``where`` clauses are used to construct an array of strings names containing names of all persons, by concatenating their first and last names. The record entries whose first or last names have a length of zero are selected out by using the first and second combination of ``let`` and ``where`` clauses. The overall query expression follows the semantics like XQUERY FLWOR (for, let, where, order by, and return).
 
 You can think of the overall semantics like a pipeline, which starts off by generating a list of bindings in the first stage, and the subsequent stages take the bindings from the previous stage of the pipeline and outputs another set of variable bindings.<br><br>
 

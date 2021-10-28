@@ -336,7 +336,7 @@ function doStage2() returns error? {
 }
 ```
 
-In the above code example, the ``retry`` keyword is used in front of the transaction statement.  Using the retry keyword implicitly creates a DefaultRetryManager object, as *retry<DefaultRetryManager>(3)*, that retries the transaction three times.
+In the above code example, the ``retry`` keyword is used in front of the transaction statement. Using the retry keyword implicitly creates a DefaultRetryManager object, as *retry<DefaultRetryManager>(3)*, that retries the transaction three times.
 
 You can specify an optional type parameter which belongs to the RetryManager object with retry, when defining the transaction. If the transaction block fails with an error, the RetryManager object calls *shouldRetry(e)* with the error value *e*. Based on this, the RetryManager decides whether or not to retry the transaction. The DefaultRetryManager is used in case a RetryManager object is not passed explicitly. It is part of the error module.
 

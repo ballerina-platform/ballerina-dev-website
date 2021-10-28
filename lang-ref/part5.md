@@ -564,7 +564,7 @@ function foo(Pair pair) {
 
 In the above code example, the ``match`` statement has a binding pattern that matches the variables **``x``** and **``y``** to the  *x* and *y* fields of the record pair. The binding pattern also has a rest binding pattern to capture the additional fields that may be defined in **``pair``**, since it is an open record. The record value pair will be matched to this since it has the fields *x* and *y*, and the variable **``rest``** will be bound to everything else in pair.
 
-The type for rest can be interpreted as a map of anydata. But when it is included in the binding pattern that includes the fields **``x``** and **``y``** from **``Pair``**, we know that the type of rest should be defined in such a way that it must not contain the field *x* and *y* itself.  This is achieved through another kind of type called the never type, which is covered in the next section.<br><br>
+The type for rest can be interpreted as a map of anydata. But when it is included in the binding pattern that includes the fields **``x``** and **``y``** from **``Pair``**, we know that the type of rest should be defined in such a way that it must not contain the field *x* and *y* itself. This is achieved through another kind of type called the never type, which is covered in the next section.<br><br>
 
 ## ``never`` Type
 

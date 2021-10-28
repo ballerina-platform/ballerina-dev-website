@@ -98,7 +98,7 @@ Employee[] employees = [
 
 In the above code example, an ``order by`` clause is added to the query, along with the keys that you want to sort by, and the order of sorting. In this case, the keys are the *lastName* and *firstName* fields of the **``Employee``** record, and the order is set to ascending. So this query takes a list of variable bindings, sorts them and generates a new array of records in the specified sorted order.
 
-The ordering works consistently with the existing `<, <=, >, >=` operators that Ballerina already has. The ``order by`` clause also allows other expressions apart from  field access. In case the ordering needs to be done for unicode strings, a library module can be used to specify the sort key such that ordering can be achieved in a locale specific way.
+The ordering works consistently with the existing `<, <=, >, >=` operators that Ballerina already has. The ``order by`` clause also allows other expressions apart from field access. In case the ordering needs to be done for unicode strings, a library module can be used to specify the sort key such that ordering can be achieved in a locale specific way.
 
 There are some complex cases where ordering cannot be achieved. This happens when the type of the order by expression does not support ordering. For Ballerina, any comparison with nil , floating point NaN are unordered. So if these unordered  types are encountered in the query, they will be returned at the end.
 

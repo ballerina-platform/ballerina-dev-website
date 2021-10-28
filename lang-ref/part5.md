@@ -706,7 +706,7 @@ public isolated function ensureType(
 = external;
 ```
 
-In this case, the function accepts the type descriptor **``t``** as a parameter and the return type is either of type **``t``** or an error.  The implementation of this code is currently external, since there is limited support within the language for handling this feature within the code.
+In this case, the function accepts the type descriptor **``t``** as a parameter and the return type is either of type **``t``** or an error. The implementation of this code is currently external, since there is limited support within the language for handling this feature within the code.
 
 This function also works through implicit type identification based on the context.
 

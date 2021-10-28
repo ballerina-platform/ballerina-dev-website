@@ -116,7 +116,7 @@ Employee[] top100 =
     select e
 ```
 
-In the above code example, the query pipeline has a ``limit`` clause which evaluates to an integer with value 100. The pipeline generates a list of **``Employee``** record entries in  descending order, based on the *salary* field and the ``limit`` clause limits the generated result to the first 100 entries.<br><br>
+In the above code example, the query pipeline has a ``limit`` clause which evaluates to an integer with value 100. The pipeline generates a list of **``Employee``** record entries in descending order, based on the *salary* field and the ``limit`` clause limits the generated result to the first 100 entries.<br><br>
 
 ## Table Concept  
 

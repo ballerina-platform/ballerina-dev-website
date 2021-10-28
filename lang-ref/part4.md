@@ -232,7 +232,7 @@ function demo() returns int|error {
 }
 ```
 
-In the above code example, the worker **``A``** is sending an integer value to the default worker. However, before sending, it has to call another function **``foo( )``** which may return an error. In that case, the send will never happen, and the error will propagate to the default worker. Consequently, either an integer value or error is received.  That’s why the check expression is used in the default worker along with the `‘<-’` notation at the receiver side for capturing the error. Panics are also propagated similarly.<br><br>
+In the above code example, the worker **``A``** is sending an integer value to the default worker. However, before sending, it has to call another function **``foo( )``** which may return an error. In that case, the send will never happen, and the error will propagate to the default worker. Consequently, either an integer value or error is received. That’s why the check expression is used in the default worker along with the `‘<-’` notation at the receiver side for capturing the error. Panics are also propagated similarly.<br><br>
 
 
 ## Transactions

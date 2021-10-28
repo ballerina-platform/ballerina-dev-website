@@ -68,7 +68,7 @@ While a strand has a separate logical thread of control, the actual execution st
 
 ### Named Worker Return Values
 
-Named workers can have return values just like functions, which is nil by default.  You can also use ``check`` to handle errors.
+Named workers can have return values just like functions, which is nil by default. You can also use ``check`` to handle errors.
 
 ```
 function demo(string s) returns int|error {

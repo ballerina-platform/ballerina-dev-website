@@ -85,7 +85,7 @@ function demo(string s) returns int|error {
 
 In the above code example, the worker **``A``** returns either an integer or an error. Under normal circumstances, the worker will return an integer value, and the function **``demo( )``** waits for **``A``**, assigns the returned integer value to **``y``**, and returns the result of incrementing that value by one.  
 
-In case the *int:fromString(s)* call within the worker returns an error, the check will fail, causing the worker **``A``** to return the error. Subsequently, the check expression within **``demo( )``** will also return the error.  The ``return`` statement in a named worker terminates the worker and not the enclosing function.<br><br>
+In case the *int:fromString(s)* call within the worker returns an error, the check will fail, causing the worker **``A``** to return the error. Subsequently, the check expression within **``demo( )``** will also return the error. The ``return`` statement in a named worker terminates the worker and not the enclosing function.<br><br>
 
 
 ### Alternate Wait

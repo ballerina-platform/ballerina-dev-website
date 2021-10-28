@@ -29,7 +29,7 @@ If you define a function as *foo(int x, int y, int z) { . .  }* , then you can c
 - *foo(z = 3, y = 2, x = 1)*
 - *foo(1, z = 3, y = 2)*
 
-The first option calls the function in the usual way without using the names for arguments.  The second and third options use named arguments that transformed into positional arguments by the Ballerina compiler. Arguments list of the function are described by a tuple type, and names are not part of that type. You can also combine the named arguments with unnamed ones, as shown in the fourth option.
+The first option calls the function in the usual way without using the names for arguments. The second and third options use named arguments that transformed into positional arguments by the Ballerina compiler. Arguments list of the function are described by a tuple type, and names are not part of that type. You can also combine the named arguments with unnamed ones, as shown in the fourth option.
 
 You have to pay special attention to argument names of remote methods and resource methods, since these names are exposed as public interfaces for API endpoints. This is also applicable for public function in a module. Changing the argument names of such functions makes the module incompatible when it is imported into other modules.<br><br>
 

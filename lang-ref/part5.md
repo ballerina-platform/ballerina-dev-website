@@ -621,7 +621,7 @@ Handle type is basically an opaque handle that can be passed to external functio
 
 ## Built-in Integer Subtypes
 
-Another feature that is particularly useful when interacting with external code is the concept of built-in subtypes.  Ballerina only has one integer type which is a 64 bit, signed type. But the external code may use different variants of integers, and you need to support those types. LangLib provides these variants as subtypes.
+Another feature that is particularly useful when interacting with external code is the concept of built-in subtypes. Ballerina only has one integer type which is a 64 bit, signed type. But the external code may use different variants of integers, and you need to support those types. LangLib provides these variants as subtypes.
 
 ```
 function srand(int:Unsigned32 seed)

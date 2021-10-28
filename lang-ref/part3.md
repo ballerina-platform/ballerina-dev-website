@@ -428,7 +428,7 @@ xml content = xml`<a href="${url}">Ballerina</a> is an <em>exciting</em> new lan
 xml p = xml `<p>${content}</p>`;
 ```
 
-The above code example defines two variables **``content``** and **``p``** of xml type using the backtick template containing the xml tag.  In this case the phase two of the template processing does a parsing using the XML 1.0 recommendation’s grammar for content (what XML allows between a start-tag and end-tag). You can place the interpolated expressions of the template within XML content, or in attribute values, as string values.<br><br>
+The above code example defines two variables **``content``** and **``p``** of xml type using the backtick template containing the xml tag. In this case the phase two of the template processing does a parsing using the XML 1.0 recommendation’s grammar for content (what XML allows between a start-tag and end-tag). You can place the interpolated expressions of the template within XML content, or in attribute values, as string values.<br><br>
 
 ### XML Operations
 

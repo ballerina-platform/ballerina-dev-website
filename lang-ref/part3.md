@@ -360,7 +360,7 @@ string s = string `Hello, ${name}`;
   
 In the above code example, the value of **``s``** is evaluated as *“Hello, James”* from the backtick template. It has a string tag, and the expression *${name}* evaluates to the value of variable **``name``**, which is interpolated within the backtick string to return a string value.
 
-The backtick template is evaluated in two phases. The first phase accumulates the contents of the template in a list of strings and a list of expressions. In the second phase,  depending on the tag, the expression is evaluated and turned into the type of tag. In this case, it converts  the result of the expression into a string, since the tag is a string.  
+The backtick template is evaluated in two phases. The first phase accumulates the contents of the template in a list of strings and a list of expressions. In the second phase, depending on the tag, the expression is evaluated and turned into the type of tag. In this case, it converts the result of the expression into a string, since the tag is a string.  
 
 In case you want to add the backtick itself, within a backtick template, you can use the same *${ . . . }* syntax.
 

@@ -401,7 +401,7 @@ function toSeconds(Time ip)
 }
 ```
 
-In the above code example, **``Time``** is a tuple type. It represents a time in days and seconds as an integer and a decimal value respectively. The function **``toSeconds( )``** accepts a variable of type Time and converts it to seconds. Within the conversion logic,  the tuple value is destructured into two variables: **``day``** and **``seconds``** using a binding pattern with values initialized from the tuple. This way, you can break down the list of values into individual variables to be used for computation.  
+In the above code example, **``Time``** is a tuple type. It represents a time in days and seconds as an integer and a decimal value respectively. The function **``toSeconds( )``** accepts a variable of type Time and converts it to seconds. Within the conversion logic, the tuple value is destructured into two variables: **``day``** and **``seconds``** using a binding pattern with values initialized from the tuple. This way, you can break down the list of values into individual variables to be used for computation.
 
 With this approach, you can read tuple values in a more idiomatic way within the code, instead of using index-based access.<br><br>
 

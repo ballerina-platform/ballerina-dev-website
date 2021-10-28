@@ -388,7 +388,7 @@ In Ballerina, XML is a separate basic type. It is based on the concept of sequen
 
 Ballerina uses the template concept to construct xml values. It is designed to work with the underlying concepts of elements and attributes, which also forms the basis for HTML also. Therefore Ballerina treats HTML as XML.
 
-As part of XML handling, Ballerina provides a navigation syntax with an XPath-like syntax.  The xml type also works well with query expressions to provide XQuery FLWOR like functionality.
+As part of XML handling, Ballerina provides a navigation syntax with an XPath-like syntax. The xml type also works well with query expressions to provide XQuery FLWOR like functionality.
 
 Overall the XML design in Ballerina is opinionated, and it works more like the regular containers such as lists and tables. Also, Ballerina’s XML representation doesn't support an up pointer. Therefore, the XML elements do not have references to parents and siblings since they do not know where they are in the overall XML structure.<br><br>
 

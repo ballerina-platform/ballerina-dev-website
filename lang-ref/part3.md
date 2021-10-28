@@ -380,7 +380,7 @@ One of the important use cases of raw templates is the preparation of the databa
 db->query(`SELECT * FROM  order WHERE customer_id = ${customerId}’);
 ```
 
-In the above example, assume that **``db``** is a client object making a remote call to a SQL database. The raw template passed to the query method translates to an array of two strings *“SELECT * FROM  order WHERE customer_id =”* and “”. The second string is empty as it comes after the expression.  Along with that, it also passes an array of expression evaluation which is the value of variable **``customerId``**. Thus, the SQL syntax is turned into the right syntax with the required substitution for the underlying SQL implementation.<br><br>
+In the above example, assume that **``db``** is a client object making a remote call to a SQL database. The raw template passed to the query method translates to an array of two strings *“SELECT * FROM order WHERE customer_id =”* and “”. The second string is empty as it comes after the expression. Along with that, it also passes an array of expression evaluation which is the value of variable **``customerId``**. Thus, the SQL syntax is turned into the right syntax with the required substitution for the underlying SQL implementation.<br><br>
 
 ## XML Overview
 

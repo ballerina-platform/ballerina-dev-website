@@ -568,7 +568,7 @@ The type for rest can be interpreted as a map of anydata. But when it is include
 
 ## ``never`` Type
 
-Ballerina also supports a ``never`` type which means that no value belongs to such a type.  This is useful on quite a few occasions. One simple way to leverage never type is to use it as a return type for a function that never returns normally.
+Ballerina also supports a ``never`` type which means that no value belongs to such a type. This is useful on quite a few occasions. One simple way to leverage never type is to use it as a return type for a function that never returns normally.
 
 ```
 function whoops() returns never {

@@ -404,7 +404,7 @@ Similarly, the way an XML element is represented is by a sequence of that XML el
 
 The mutability of a sequence is similar to strings. Members of a sequence are also immutable, just like strings. For example, you cannot mutate a sequence of one item into a sequence of two items.
 
-A sequence has no storage identity.  Two sequences will match for === operator if their members match for the same operation.<br><br>
+A sequence has no storage identity. Two sequences will match for === operator if their members match for the same operation.<br><br>
 
 ### XML Data Model
 

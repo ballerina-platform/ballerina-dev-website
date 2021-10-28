@@ -617,7 +617,7 @@ In the above code example, the function **``open( )``** has an external implemen
 
 As part of interfacing with external implementation, Ballerina supports another basic type called ``handle``. A handle value is a reference to storage managed externally and it may be passed a reference to an external function, like in JVM where you may have a JAVA object reference pointing to the implementation.
 
-Handle type is basically an opaque handle that can be passed to external functions.There is no typing for handle and can be added as a private member of a Ballerina class for better type safety. Alternatively, you can also have an entire module that is implemented in something other than Ballerina.<br><br>
+Handle type is basically an opaque handle that can be passed to external functions. There is no typing for handle and can be added as a private member of a Ballerina class for better type safety. Alternatively, you can also have an entire module that is implemented in something other than Ballerina.<br><br>
 
 ## Built-in Integer Subtypes
 

@@ -6,7 +6,7 @@ Ballerina aims to be as pragmatic as possible by taking cues from existing patte
 
 Ballerina’s genesis is based on the evolving trends in programming on the cloud. In the pre-cloud era, programming was more about reading/writing files, invoking system calls, and library functions. It also did not have much to do in terms of concurrency, as most programs were standalone desktop applications. However, now in the cloud era, files are replaced by network services and system calls/libraries are replaced by web APIs. Additionally, concurrency is pervasive with expectations to scale and elasticity. Ballerina’s feature set takes into account these evolutionary trends such that these are incorporated in the core of the language.
 
-Individually these features may not stand out. However, it is the combination of them in specific programming scenarios that makes them distinctive.
+Individually these features may not stand out. However, it is the combination of them in specific programming scenarios that make them distinctive.
 
 This and the subsequent two parts will talk about these features. Let’s start with network interaction. The two fundamental operations in any network interaction are consuming services and providing services.<br><br>
 
@@ -37,13 +37,13 @@ In the above code example, the client object **``sc``** represents a client clas
 
 The client object **``sc``** calls a remote method **``sendEmailMessage()``** with the `‘->’` call syntax. This notation signifies that it is a remote call to a network service. It augurs well with the sequence diagram view of the application and provides a syntactically distinguished view for better readability.
 
-Remote method calls have some restrictions. For example, they are not allowed in deeply nested expressions.  Additionally, there is a separate symbol space for these methods, and they are implicitly public.
+Remote method calls have some restrictions. For example, they are not allowed in deeply nested expressions. Additionally, there is a separate symbol space for these methods, and they are implicitly public.
 
 Applications typically do not need to write client classes. Instead, these classes are either provided by the library modules or generated from some flavor of interface definition language.<br><br>
 
 ## Providing Services
 
-Providing services is a bit more complex interaction with three main things involved.
+Providing services is a more complex interaction with three main things involved.
 
 The first is a service object. These objects are defined by applications and contain remote methods that are remotely accessible. It is called by a remote system. Similarly, remote methods of a client object call the remote system.
 
@@ -67,11 +67,11 @@ This also registers the Listener with the enclosing module. If the ``new`` retur
 
 As mentioned earlier, all modules have a life cycle, so let's understand a few aspects of the life cycle.
 
-During initialization, all module’s listeners are registered. The initialization sequence is ordered such that if module A imports module B, then module A is initialized after module B. The initialization phase ends by calling the main function.
+During initialization, all module listeners are registered. The initialization sequence is ordered such that if module A imports module B, then module A is initialized after module B. The initialization phase ends by calling the main function.
 
 If there are registered listeners in a module, the module initialization phase is followed by the listening phase. The listening phase begins by calling the start method on each registered listener. It ends when the program is terminated with a signal (for example, SIGINT or SIGTERM). This is followed by a call to either *gracefulStop* or *immediateStop* on each registered listener, depending on what kind of signal was used to terminate the program.
 
-These life cycle related activities are built into Ballerina, and you as a programmer do not have to handle it when writing small programs which do not deal with network services.<br><br>
+These life cycle related activities are built into Ballerina, and as a programmer, you do not have to handle it when writing small programs which do not deal with network services.<br><br>
 
 ## Module ``init`` Function
 
@@ -632,4 +632,4 @@ While converting from Ballerina’s numeric types to JSON, using the **``toJsonS
 
 But converting from JSON to Ballerina’s numeric types requires additional interpretation. The **``fromJsonString( )``** converts JSON numeric syntax into integer type, if possible, and decimal otherwise, to preserve the number precision of the numeric data in JSON. This is the case in which you do not have any type information. Subsequently, you can use **``cloneWithType( )``** or **``ensureType( )``** to convert from integer or decimal to the user’s chosen numeric type.  
 
-The net result is  the same, and you can convert between JSON and Ballerina’s numeric types across the full range of all values. But based on how far you go in the conversion process within the program, the types will be dependent based on that. The one exception to this conversion is -0. It is an edge case and represented as float type.
+The net result is the same, and you can convert between JSON and Ballerina’s numeric types across the full range of all values. But based on how far you go in the conversion process within the program, the types will be dependent based on that. The one exception to this conversion is -0. It is an edge case and represented as float type.

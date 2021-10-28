@@ -498,7 +498,7 @@ You can define a xml element value that belongs to a subtype *xml:Element* of ``
 xml:Element p = xml`<p>Hello</p>`;
 ```
 
-In this case, *Element* is a subtype of ``xml`` and **``p``** comprises sequences of length one containing one element.  Similarly, *xml:Comment* and *xml:ProcessingInstruction* subtypes are also available.
+In this case, *Element* is a subtype of ``xml`` and **``p``** comprises sequences of length one containing one element. Similarly, *xml:Comment* and *xml:ProcessingInstruction* subtypes are also available.
 
 An xml value belongs to *xml:Text* type if it consists of a text item or is empty. You can create an xml:Text type from string, and if the string is empty then the xml:Text value is also empty.
 

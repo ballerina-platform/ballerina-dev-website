@@ -40,7 +40,7 @@ Additionally, if the function also has a client object for interacting with a re
 
 ### Waiting for Workers
 
-Named workers can continue to execute even after the function’s default worker terminates and the function returns.  So if you want to wait for the worker to terminate before returning from the function, you have to wait for it explicitly.
+Named workers can continue to execute even after the function’s default worker terminates and the function returns. So if you want to wait for the worker to terminate before returning from the function, you have to wait for it explicitly.
 
 ```
 public function main() {

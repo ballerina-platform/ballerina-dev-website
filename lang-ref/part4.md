@@ -346,7 +346,7 @@ This retry mechanism can be used even without transactions. So any block of code
 
 ### Transactional Qualifier
 
-At compile time, Ballerina can identify the regions of the code that execute within a transactional context.  Within a transaction statement, the body of the statement is a transaction context. Therefore, when executing a code within the transaction context, you are guaranteed at compile-time to have a current transaction for that transaction context.
+At compile time, Ballerina can identify the regions of the code that execute within a transactional context. Within a transaction statement, the body of the statement is a transaction context. Therefore, when executing a code within the transaction context, you are guaranteed at compile-time to have a current transaction for that transaction context.
 
 By using the transactional qualifier in a function, it is restricted to be called only in a transaction context. Moreover, the body of such a function will itself be a transactional context.
 

@@ -4,7 +4,7 @@ Let’s now look at the other features of the Ballerina language. These are a mi
 
 ## Default Values for Function Parameters
 
-Ballerina allows the setting of default values for function parameters. You can use literal values or even expressions as default values to parameters.. Additionally, the default value expressions can use the values of preceding parameters.
+Ballerina allows the setting of default values for function parameters. You can use literal values or even expressions as default values to parameters. Additionally, the default value expressions can use the values of preceding parameters.
 
 ```
 function substring(

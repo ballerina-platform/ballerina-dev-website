@@ -37,5 +37,5 @@ bundle exec jekyll serve
 ```
 
 **Troubleshooting Tips:** 
-1. For installation instructions, see the [Jekyll Installation Documentation](https://jekyllrb.com/docs/installation/).
+1. For more information on the installation instructions, see the [Jekyll Installation Documentation](https://jekyllrb.com/docs/installation/).
 2. If you get the `cannot load such file -- webrick` error, execute the `bundle add webrick` command.

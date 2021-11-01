@@ -35,3 +35,7 @@ Build the site and make it available on a local server
 ```shell
 bundle exec jekyll serve
 ```
+
+Troubleshooting Tips: 
+1. For installation instructions, see [Jekyll Installation Documentations](https://jekyllrb.com/docs/installation/).
+2. If you get the ``require': cannot load such file -- webrick` error, execute the `bundle add webrick` command.

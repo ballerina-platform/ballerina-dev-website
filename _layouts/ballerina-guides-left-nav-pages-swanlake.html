@@ -66,19 +66,11 @@
      <script src="/js/abixTreeList.min.js"></script>
      <script>
          $(document).ready(function() {
-
-             
-                $allHeaders= $(":header"); //Select all header elements such as h1 h2 h3 h4 h5 h6
-                $allHeaders.each(function(){
-                  var link = $(this).attr('id');
-              
-                  var permLink = " <a class=\"permalink\" href=\"#"+link+"\"></a>";
-                  if(link){
-                     $(this).addClass('permalinkHeader').prepend(permLink) 
-                  } 
-                });
-                $('#tree').abixTreeList();  
+             $('#tree').abixTreeList();
          });
+
+
+
 
 
          $(window).scroll(function () {

@@ -29,13 +29,16 @@ redirect_from:
 ---
 
 ## Ballerina Bindings to Java Code
-Your task is to write Ballerina code (Ballerina bindings) that lets you call the corresponding Java API as illustrated in the below diagram. 
+You can write Ballerina code (Ballerina bindings) that let you call the corresponding Java API as illustrated in the below diagram. 
 
 <img src="/learn/images/interoperability-diagram-new.png" alt="Ballerina bindings to Java code" width="300" height="450">
 
-This guide teaches you how to write those bindings manually as well as how to generate those bindings automatically but first, let's look at why you want to call Java from Ballerina. 
+The sections below explain how to write those bindings manually as well as how to generate those bindings automatically. 
 
 ## The Need to Call Java from Ballerina 
+
+First, let's look at why you want to call Java from Ballerina. 
+
 - Ballerina is a relatively new language. Therefore, you may experience a shortage of libraries in [Ballerina Central](https://central.ballerina.io/). In such situations, as a workaround, you can use an existing Java library.
 - You are already familiar with a stable Java API that you would like to use in your Ballerina package.
 - You want to take advantage of the strengths of Ballerina but you don’t want to reinvest in the libraries that you or your company have written already. 

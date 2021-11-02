@@ -30,6 +30,7 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-redirect-from
+  - jekyll-sitemap
 breadcrumbs:
   root:
     hide: true  # show breadcrumbs on root/home page

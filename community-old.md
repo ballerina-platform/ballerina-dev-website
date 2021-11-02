@@ -260,8 +260,10 @@ body {font-family: Arial;}
          <span class="cEventDate">June 15 - 16, 2021</span>	
          <p class="cEventLocation">Online</p>	
       </td>	
-      <td class="cEventDetail">		
+      <td class="cEventDetail">	
+         <a target="_blank" href="https://www.wurreka.com/ict/virtual-conference/gids-2021/">	
             <h4>StackConf</h4>	
+         </a>	
          <h5>Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h5>
          <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
       </td>	
@@ -272,22 +274,28 @@ body {font-family: Arial;}
          <span class="cEventDate">April 27 - 30, 2021</span>	
          <p class="cEventLocation">Online</p>	
       </td>	
-      <td class="cEventDetail">		
-            <h4>GIDS Live</h4>		
+      <td class="cEventDetail">	
+         <a target="_blank" href="https://www.wurreka.com/ict/virtual-conference/gids-2021/">	
+            <h4>GIDS Live</h4>	
+         </a>	
          <h5>Cloud Native Middleware as a Programming Language</h5>
          <b>Anjana Fernando,</b> Senior Director - Solutions Architecture, WSO2
       </td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://wurreka.com/watch/gids-2021/cloud-native-middleware-as-a-programming-language" target="_blank">View Video</a></td>	
    </tr>
     <tr class="event-expiry" style="display:none" data-expiry="">	
       <td class="cEventDateContainer">	
          <span class="cEventDate">April 27 - 30, 2021</span>	
          <p class="cEventLocation">Online</p>	
       </td>	
-      <td class="cEventDetail">		
+      <td class="cEventDetail">	
+         <a target="_blank" href="https://www.wurreka.com/ict/virtual-conference/gids-2021/">	
             <h4>GIDS Live</h4>	
+         </a>
          <h5>Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h5>
          <b>Anjana Fernando,</b> Senior Director - Solutions Architecture, WSO2
       </td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://wurreka.com/watch/gids-2021/automatic-microservices-observability-with-open-source-progr" target="_blank">View Video</a></td>	
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">	
       <td class="cEventDateContainer">	
@@ -408,10 +416,13 @@ body {font-family: Arial;}
          <p class="cEventLocation">Virtual</p>
       </td>
       <td class="cEventDetail">
+         <a target="_blank" href="https://novacodecamp.org/app/speakers/aa20c381-1fa5-42c6-8095-a01ca1bab0b7">
             <h4>Nova Code Camp</h4>
+         </a>
          <h5>Let's Dance Together! Ballerina</h5>
          <b>Vanjikumaran Sivajothy,</b> Senior Lead Solutions Engineer, WSO2
       </td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://novacodecamp.org/app/speakers/aa20c381-1fa5-42c6-8095-a01ca1bab0b7" target="_blank">More Info</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">

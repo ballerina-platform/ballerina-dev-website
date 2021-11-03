@@ -1,4 +1,6 @@
-User-Agent: *	
+User-Agent: *
+Disallow: /
+User-Agent: web-site-map	
 Allow: /
 User-agent: Twitterbot
 Allow: *  

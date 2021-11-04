@@ -16,7 +16,7 @@ This is a periodic newsletter on Ballerina with hand-picked content and regular 
 <h2 id="past-issues">Past issues </h2>
 
 <ul class="cInlinelinklist cPastIssues">
-    <li><a class="cGreenLinkArrow" href="/community/newsletter/2021-3/">2021-4</a>September 30, 2021</li>
+    <li><a class="cGreenLinkArrow" href="/community/newsletter/2021-4/">2021-4</a>September 30, 2021</li>
     <li><a class="cGreenLinkArrow" href="/community/newsletter/2021-3/">2021-3</a>August 30, 2021</li> 
     <li><a class="cGreenLinkArrow" href="/community/newsletter/2021-2/">2021-2</a>July 13, 2021</li> 
     <li><a class="cGreenLinkArrow" href="/community/newsletter/2021-1/">2021-1</a>March 3, 2021</li>

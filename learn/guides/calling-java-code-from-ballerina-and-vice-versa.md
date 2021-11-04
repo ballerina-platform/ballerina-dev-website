@@ -46,7 +46,7 @@ First, let's look at why you want to call Java from Ballerina.
 There may be other reasons but these are great motivations to use Ballerina bindings. 
 
 ## Writing Ballerina Bindings
-Writing Ballerina bindings manually is a tedious task. You’ll soon see why. Therefore, we’ve developed a tool called `bindgen` that can generate Ballerina bindings for given Java APIs. The [first section](#using-the-snakeyaml-java-library-in-ballerina) of this guide shows you how to use it. The [second section](#the-bindgen-tool) is a reference guide to the tool.
+Writing Ballerina bindings manually is a tedious task. Therefore,`bindgen` tool eases it by generating Ballerina bindings for given Java APIs. The [first section](#using-the-snakeyaml-java-library-in-ballerina) of this guide shows you how to use it. The [second section](#the-bindgen-tool) is a reference guide to the tool.
 
 The [third section](#packaging-java-libraries-with-ballerina-programs) explains how to package Java libraries (JAR files) with Ballerina programs. This section is useful because whenever you generate bindings for a Java library, you need to package this Java library and its transitive dependencies to produce a self-contained executable program. 
 
@@ -60,9 +60,9 @@ We'll develop a Ballerina program that parses the given YAML file and writes the
 Let's get started.
 
 ### Step 1 - Writing the Java Code
-We recommend you to always start by writing the Java code. It gives you an idea of the set of Java classes required to implement your logic. Then, we can use the `bindgen` tool to generate Ballerina bindings for those classes. 
+Is it recommended to always start by writing the Java code. It gives you an idea of the set of Java classes required to implement your logic. Then, we can use the `bindgen` tool to generate Ballerina bindings for those classes. 
 
-The following Java code uses the SnakeYAML API to parse the given YAML file. Note that this is not the most idiomatic way of writing the Java code for this scenario. 
+The Java code below uses the SnakeYAML API to parse the given YAML file. Note that this is not the most idiomatic way of writing the Java code for this scenario. 
 
 ```java
 import org.yaml.snakeyaml.Yaml;

@@ -3,6 +3,8 @@
 	"release-date":"2021-11-03",
 	"windows-installer":"ballerina-windows-installer-x64-1.2.21.msi",
 	"windows-installer-size":"141mb",
+    	"zip-installer":"ballerina-1.2.21.zip",
+    	"zip-installer-size":"114mb",
 	"linux-installer":"ballerina-linux-installer-x64-1.2.21.deb",
 	"linux-installer-size":"134mb",
 	"macos-installer":"ballerina-macos-installer-x64-1.2.21.pkg",

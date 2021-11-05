@@ -43,6 +43,7 @@ redirect_from:
 
     <span class="c1">// The Hex-encoded CRC32B checksum generation for the input value.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;CRC32B for text: &quot;</span> <span class="o">+</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">crc32b</span><span class="p">(</span><span class="nx">input</span><span class="p">));</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">hmac</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -73,6 +74,7 @@ redirect_from:
     <span class="c1">// HMAC generation for the input value using the SHA512 hashing algorithm, and printing the HMAC value using the Hex encoding.</span>
     <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">hmacSha512</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">key</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hex encoded HMAC with SHA512: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase16</span><span class="p">());</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">decodePrivateKey</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">PrivateKey</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
@@ -158,6 +160,7 @@ redirect_from:
 
     <span class="nx">verified</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">verifyRsaSha512Signature</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">output</span><span class="p">,</span> <span class="nx">publicKey</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;RSA-SHA512 signature verified: &quot;</span> <span class="o">+</span> <span class="nx">verified</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">encrypt</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -230,6 +233,7 @@ redirect_from:
     <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesEcb</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">aesKey</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;AES ECB no padding decrypted value: &quot;</span> <span class="o">+</span>
         <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">output</span><span class="p">));</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -237,6 +241,7 @@ redirect_from:
     <span class="nx">check</span> <span class="nx">hmac</span><span class="p">();</span>
     <span class="nx">check</span> <span class="nx">sign</span><span class="p">();</span>
     <span class="nx">check</span> <span class="nx">encrypt</span><span class="p">();</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -452,6 +457,7 @@ import ballerina/random;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;CRC32B for text: &quot; + crypto:crc32b(input));
+    return;
 }
 </code></pre></div>
 
@@ -605,6 +611,7 @@ import ballerina/random;
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    output = check crypto:hmacSha512(input, key);
     io:println(&quot;Hex encoded HMAC with SHA512: &quot; + output.toBase16());
+    return;
 }
 </code></pre></div>
 
@@ -992,6 +999,7 @@ import ballerina/random;
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    verified = check crypto:verifyRsaSha512Signature(input, output, publicKey);
     io:println(&quot;RSA-SHA512 signature verified: &quot; + verified.toString());
+    return;
 }
 </code></pre></div>
 
@@ -1260,6 +1268,7 @@ import ballerina/random;
     output = check crypto:decryptAesEcb(output, aesKey, crypto:NONE);
     io:println(&quot;AES ECB no padding decrypted value: &quot; +
         check string:fromBytes(output));
+    return;
 }
 </code></pre></div>
 
@@ -1284,6 +1293,7 @@ import ballerina/random;
     check hmac();
     check sign();
     check encrypt();
+    return;
 }
 </code></pre></div>
 

@@ -43,6 +43,7 @@ redirect_from:
 
     <span class="c1">// Unschedules the job.</span>
     <span class="nx">check</span> <span class="nx">task</span><span class="p">:</span><span class="nx">unscheduleJob</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -98,7 +99,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=9b6a1cb4e2ea9e35f94a15c422b258a2&file=task_frequency_job_execution.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=599ef2652164578ca41439c432c85244&file=task_frequency_job_execution.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -249,6 +250,7 @@ import ballerina/task;
 
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    check task:unscheduleJob(id);
+    return;
 }
 </code></pre></div>
 

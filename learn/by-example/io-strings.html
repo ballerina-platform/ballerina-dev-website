@@ -44,6 +44,7 @@ redirect_from:
     <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">lineStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">string</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
                                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
                            <span class="p">});</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -97,7 +98,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6b4d4558352359fd457f155355219296&file=io_strings.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=39efe6713810a47a2f1f9a849365876d&file=io_strings.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -282,6 +283,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>    error? e = lineStream.forEach(function(string val) {
                                io:println(val);
                            });
+    return;
 }
 </code></pre></div>
 

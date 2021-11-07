@@ -34,6 +34,7 @@ redirect_from:
     <span class="c1">// the content will be written to the given destination file using the given stream.</span>
     <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">fileWriteBlocksFromStream</span><span class="p">(</span><span class="nx">imageCopyPath2</span><span class="p">,</span> <span class="nx">blockStream</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Successfully copied the image as a stream.&quot;</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -207,6 +208,7 @@ redirect_from:
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    check io:fileWriteBlocksFromStream(imageCopyPath2, blockStream);
     io:println(&quot;Successfully copied the image as a stream.&quot;);
+    return;
 }
 </code></pre></div>
 

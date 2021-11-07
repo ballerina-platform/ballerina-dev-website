@@ -25,6 +25,7 @@ redirect_from:
         <span class="nx">check</span> <span class="nx">doUpdate</span><span class="p">(</span><span class="nx">updates</span><span class="p">);</span>
         <span class="nx">check</span> <span class="nx">commit</span><span class="p">;</span>
     <span class="p">}</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="c1">// Called within the transaction statement.</span>
@@ -33,7 +34,7 @@ redirect_from:
     <span class="nx">foo</span><span class="p">(</span><span class="nx">u</span><span class="p">);</span>
     <span class="c1">// Calls the `bar()` transactional function.</span>
     <span class="nx">bar</span><span class="p">(</span><span class="nx">u</span><span class="p">);</span>
-
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">Update</span> <span class="nx">u</span><span class="p">)</span> <span class="p">{</span>
@@ -100,7 +101,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=2f3d438fd531846c762a2739812228ea&file=transactional_qualifier.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e1b248a105cbcecbb9b5affd679d0c93&file=transactional_qualifier.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -150,6 +151,7 @@ redirect_from:
         check doUpdate(updates);
         check commit;
     }
+    return;
 }
 </code></pre></div>
 
@@ -201,6 +203,8 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    bar(u);
+    return;
+}
 </code></pre></div>
 
                                 </div>
@@ -212,18 +216,6 @@ redirect_from:
 
                                         </div>
                                     </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>}
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
                                     
                                 </div>
                             </div>

@@ -25,10 +25,12 @@ redirect_from:
         <span class="nx">check</span> <span class="nx">commit</span><span class="p">;</span>
     <span class="p">}</span>
 
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">doStage1</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stage1 completed&quot;</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">doStage2</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -92,7 +94,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=eef9dd601be80c65276af0ebc36e41fe&file=retry_transaction_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=563ccc453c145fa565065e323e312cc6&file=retry_transaction_statement.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -159,7 +161,8 @@ redirect_from:
                             <div class="cTR">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>    return;
+}
 </code></pre></div>
 
                                 </div>
@@ -173,6 +176,7 @@ redirect_from:
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>function doStage1() returns error? {
     io:println(&quot;Stage1 completed&quot;);
+    return;
 }
 </code></pre></div>
 

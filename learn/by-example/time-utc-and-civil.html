@@ -40,6 +40,7 @@ redirect_from:
     <span class="p">};</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Utc</span> <span class="nx">utc2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcFromCivil</span><span class="p">(</span><span class="nx">civil2</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">`UTC value of the civil record: ${utc2.toString()}`</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -94,7 +95,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=2567044eba617200b1eaebe30ac68ed1&file=time_utc_and_civil.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=50a04716d8663de7c6ed5c5c262040cc&file=time_utc_and_civil.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -189,6 +190,7 @@ import ballerina/time;
     };
     time:Utc utc2 = check time:utcFromCivil(civil2);
     io:println(`UTC value of the civil record: ${utc2.toString()}`);
+    return;
 }
 </code></pre></div>
 

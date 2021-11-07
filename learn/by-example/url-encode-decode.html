@@ -25,6 +25,7 @@ redirect_from:
     <span class="c1">// Decoding an encoded URL component into a string.</span>
     <span class="kt">string</span> <span class="nx">decoded</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">url</span><span class="p">:</span><span class="nx">decode</span><span class="p">(</span><span class="nx">value2</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;URL decoded value: &quot;</span><span class="p">,</span> <span class="nx">decoded</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -78,7 +79,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=541dd4f1b0f748c90dde0a751b17cb4c&file=url_encode_decode.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=2d9e31a54d0f502e42806a8e6249bd77&file=url_encode_decode.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -155,6 +156,7 @@ import ballerina/io;
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    string decoded = check url:decode(value2, &quot;UTF-8&quot;);
     io:println(&quot;URL decoded value: &quot;, decoded);
+    return;
 }
 </code></pre></div>
 

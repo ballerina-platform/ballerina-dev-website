@@ -43,6 +43,7 @@ redirect_from:
     <span class="nx">check</span> <span class="nx">securedEP</span><span class="o">-&gt;</span><span class="nx">writeTextMessage</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
     <span class="kt">string</span> <span class="nx">textMessage</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">securedEP</span><span class="o">-&gt;</span><span class="nx">readTextMessage</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">textMessage</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -170,6 +171,7 @@ import ballerina/websocket;
     check securedEP-&gt;writeTextMessage(&quot;Hello, World!&quot;);
     string textMessage = check securedEP-&gt;readTextMessage();
     io:println(textMessage);
+    return;
 }
 </code></pre></div>
 

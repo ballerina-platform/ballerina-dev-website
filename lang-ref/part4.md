@@ -31,14 +31,14 @@ The keyword ``worker`` is used to define a named worker. In the above code examp
 
 The named workers do not start executing until their declaration point. This means that the code before the named workers is always executed before they start. However, the variables declared before all the named workers and function parameters are accessible within the code inside named workers.<br><br>
 
-### Sequence Diagram
+### Sequence diagram
 
 A function can be viewed as a sequence diagram. To translate a Ballerina function into a sequence diagram based depiction, you can consider each worker (default and named) as a lifeline, depicted by a vertical line. Therefore the previous code example can be regarded as a sequence diagram consisting of three lifelines, two for the named workers and one for the default worker of the function.
 
 Additionally, if the function also has a client object for interacting with a remote system, then that client object also has a lifeline. If a worker makes a remote method call on a client object, that is represented as a horizontal line between the lifelines of the worker making the call and the remote object.<br><br>
 
 
-### Waiting for Workers
+### Waiting for workers
 
 Named workers can continue to execute even after the function’s default worker terminates and the function returns. So if you want to wait for the worker to terminate before returning from the function, you have to wait for it explicitly.
 
@@ -66,7 +66,7 @@ The execution of a strand switches only at specific yield points, such as doing 
 
 While a strand has a separate logical thread of control, the actual execution still happens on a common physical thread at the CPU level. However, you can use an annotation to make the strand run on a separate thread.<br><br>
 
-### Named Worker Return Values
+### Named worker return values
 
 Named workers can have return values just like functions, which is nil by default. You can also use ``check`` to handle errors.
 
@@ -88,7 +88,7 @@ In the above code example, the worker **``A``** returns either an integer or an 
 In case the *int:fromString(s)* call within the worker returns an error, the check will fail, causing the worker **``A``** to return the error. Subsequently, the check expression within **``demo( )``** will also return the error. The ``return`` statement in a named worker terminates the worker and not the enclosing function.<br><br>
 
 
-### Alternate Wait
+### Alternate wait
 
 Instead of waiting on one worker, you can also wait for one of several workers.
 
@@ -116,7 +116,7 @@ In the above code example, the function **``altFetch( )``** declares two workers
 
 The return value of both the functions and workers is a union of string and error. In case an error is returned by the  the workers or the **``fetch( )``** function, it is returned from the function **``altFetch( )``** also.<br><br>
 
-### Multiple Wait
+### Multiple wait
 
 In case you want to wait for all the workers, Ballerina allows that too.
 
@@ -178,7 +178,7 @@ int d = check wait c;
 
 In the above code example, the function **``startInt( )``** expects an argument of the function type **``FuncInt``** as an argument. When called, it starts the execution of the function on a separate strand and returns a future for it.<br><br>
 
-### Inter-worker Message Passing
+### Inter-worker message passing
 
 You can pass messages between workers using the `‘->’` and `‘<-’` notation.
 
@@ -245,7 +245,7 @@ Further, the transaction concept can also be combined with network interaction f
 
 This concept is not the same as transactional memory, where the memory space is committed or rolled back to a previous value.<br><br>
 
-### ``transaction`` Statement
+### ``transaction`` statement
 
 You can define a transaction within a transaction block as follows.
 
@@ -262,7 +262,7 @@ In the above code example, a transaction block is used to perform two function c
 
 It is normal for commits to fail. You can use the check expression to handle errors.
 
-### ``check`` Semantics
+### ``check`` semantics
 
 The check expression is not merely for returning errors. When ``check`` gets an error, it fails and the enclosing block decides what to do with the error. Most blocks pass the failure up to the enclosing block and function definitions handle failure by returning the error. Alternatively, to handle the errors returned from transactions, you can use the ``on fail`` statement as part of the check semantics.
 
@@ -314,7 +314,7 @@ There are four ways in which a transaction block can exit in Ballerina. Under no
 
 The rollback operation does not automatically restore Ballerina variables to values before the transaction. Instead, it only tells the transaction manager to roll back the execution point.<br><br>
 
-### ``retry`` Transaction Statement
+### ``retry`` transaction statement
 
 Transactional errors are often transient, and may go away when retried. As a result, you can retry the transaction if it fails due to an error within the transaction block.
 
@@ -403,7 +403,7 @@ transactional function bar() {
 
 In the above code example, the named worker **``A``** has a ``transactional`` qualifier. Therefore the strand for execution of the code within **``A``** will have a new transaction that is branched from the calling transactional context within the function **``exec( )``**.<br><br>
 
-### Commit/rollback Handlers
+### Commit/rollback handlers
 
 Often, there is a need to execute additional code depending upon whether the transaction was committed or not. In Ballerina, you can check for the status of a transaction and execute additional code to handle the specific outcome of the transaction, either for commit or rollback.
 
@@ -421,7 +421,7 @@ In the above code example, the function **``update( )``** has a transactional co
 
 This is particularly useful when the **``update( )``** function is called from a remote or resource transactional method, in a service object, and is invoked by another remote Ballerina program as a result of service invocation. The transaction manager of the Ballerina program that initiated the transaction, will send a message to the Ballerina program in which this function is running. The two transaction managers follow a two phase commit, such that when the remote Ballerina program knows that commit is successful, it will then arrange for the transaction manager of the Ballerina program running the **``update( )``** function to call the commit handler.<br><br>
 
-## Concurency Safety
+## Concurency safety
 
 ### ``lock`` Statement
 
@@ -440,7 +440,7 @@ In the above code example, the ``lock`` block allows the safe mutation of the va
 
 The semantics of the lock block is like an atomic section, and the execution of outer lock blocks is not interleaved. From an implementation point of view, developers can think of this as a single global lock. The Ballerina compiler will optimize this by inferring a more fine grain set of locks to have the same semantic with better performance characteristics.<br><br>
 
-### Service Concurrency
+### Service concurrency
 
 Ballerina's main goal for service concurrency is to achieve decent performance and a decent level of safety.  
 
@@ -450,7 +450,7 @@ You can expect Ballerina to figure out the code and tell whether the program is 
 
 The ``lock`` statement is not enough to achieve this safety since it is left to the developer to use it. Therefore, there are additional provisions in Ballerina that provide the level of protection that is in line with the expected safety, as stated above.<br><br>
 
-### ``isolated`` Functions
+### ``isolated`` functions
 
 To achieve the intended goals of safety, Ballerina offers the concept of isolated function. An isolated function is a function that is concurrency safe if its arguments are safe. So it is not unconditionally safe, but if called with the right arguments, it is safe.
 
@@ -471,7 +471,7 @@ In the above code example, the function **``set( )``** is an ``isolated`` functi
 
 The constraints for isolated functions are applied at compile time. This concept of isolation functions is a weaker version of the pure function concept found in the D programming language.
 
-### ``readonly`` Type
+### ``readonly`` type
 
 In  Ballerina, you have a ``readonly`` type whose value is immutable. This is represented as a type to which values belong only if they are immutable.
 
@@ -525,7 +525,7 @@ This variable **``m``** is ``final``, which means that it cannot be set again. I
 
 In this way, ``readonly`` type complements isolated functions. If such a function is part of a method for service listeners where it has to read or write data and execute some code, the isolated specifier provides information about the function’s execution context, and readonly specifier provides information about immutability of the data.<br><br>
 
-### Combining Isolated Function with Lock
+### Combining isolated function with lock
 
 To keep things from getting overly complex, you can combine the isolated function with lock to access mutable module-level state.
 
@@ -533,7 +533,7 @@ A module-level mutable variable follows the concept of isolated root. It is an i
 
 Similarly, an expression is an isolated expression if it follows rules that guarantee that its value will be an isolated root. As an example, an expression with a type that is a subtype of readonly is always isolated. Similarly, an expression *[E1, E2]* is isolated if *E1* and *E2* are isolated. Also, an expression *f(E1, E2)* is isolated if *E1* and *E2* are isolated, and the type of *f* is an isolated function.<br><br>
 
-### Isolated Variables
+### Isolated variables
 
 You can extend the concept of isolated functions to module-level variables. When a module-level variable is declared as isolated, the compiler guarantees that it is an isolated root and is accessed only within a lock statement.
 
@@ -559,7 +559,7 @@ There are certain constraints with respect to defining isolated variables. First
 
 Additionally, some more constraints apply to the usage of isolated variables. The lock statement can only access one isolated variable. Further, it can only call isolated functions and use isolated expressions for transfer of values in and out of the block. Isolated functions are allowed to access isolated module-level variables as long as they adhere to the above constraints.<br><br>
 
-### Isolated Methods
+### Isolated methods
 
 The concept of isolation can also be applied to object methods.  An isolated object method is the same as an isolated function. It has an implicit reference to self, which is treated as a parameter.  
 
@@ -568,7 +568,7 @@ An isolated method is concurrency-safe if both the object and the arguments are 
 Therefore, just having isolated methods alone does not guarantee complete concurrency safety.<br><br>
 
 
-### Isolated Objects
+### Isolated objects
 
 To bridge this concurrency gap in isolated methods, you can also define isolated objects. An isolated object is just like a module with isolated module-level variables.
 

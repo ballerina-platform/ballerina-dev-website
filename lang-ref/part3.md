@@ -2,9 +2,9 @@
 
 In this part, you will learn about some of the plain data supported by Ballerina that we have not covered in the last part, specifically, tables and XML types.<br><br>
 
-## Query Expressions
+## Query expressions
 
-### SQL-like Syntax for List Comprehensions
+### SQL-like syntax for list comprehensions
 
 Ballerina supports SQL-like query syntax for performing list comprehensions. This is similar to C# and Python’s way of list comprehension. In this case, the list is defined as an array.
 
@@ -27,7 +27,7 @@ The array **``numTimes10``** is constructed by iterating over nums using the ``f
 
 Similarly, you can also apply SQL-like filters to the iterating expression using the ``where`` clause. The array **``evenNums``** is built in that way by introducing the ``where`` clause that filters the values for which the expression evaluates to true. The resultant list is *[2,4]*.<br><br>
 
-### Destructuring Records
+### Destructuring records
 
 The list comprehension concept can also be applied to structured types, such as records.
 
@@ -57,7 +57,7 @@ var names = from var {first, last} in persons
 
 In this way, a binding pattern *{ x }* can be substituted for *{ x : x }*.<br><br>
 
-### Let Clause
+### Let clause
 
 You can also have any number of ``let`` clauses within the query expression, between ``from`` and ``select``.
 
@@ -104,7 +104,7 @@ There are some complex cases where ordering cannot be achieved. This happens whe
 
 A real-world example of an unordered scenario is the price of items on a shopping website. You see some items that have a price, and some items do not have a price due to some reason, or it indicates that the site will send a notification when the price is available. Now, if you want to list all the items based on an order starting from least expensive, then you want to see the items with the price first, instead of the items without the price. That's why applying the query on item's price with ascending order will return the unordered items, with a price value of nil, at the end. The same is applicable for ordering items in descending order when you want to see the most expensive items first.<br><br>
 
-### ``limit`` Clause
+### ``limit`` clause
 
 Ballerina also supports the ``limit`` clause within the query expression.
 
@@ -118,7 +118,7 @@ Employee[] top100 =
 
 In the above code example, the query pipeline has a ``limit`` clause which evaluates to an integer with value 100. The pipeline generates a list of **``Employee``** record entries in descending order, based on the *salary* field and the ``limit`` clause limits the generated result to the first 100 entries.<br><br>
 
-## Table Concept  
+## Table concept  
 
 Ballerina supports yet another structured data type, table.
 
@@ -130,7 +130,7 @@ A table is an array of records, and each record represents a row in the table. T
 
 Therefore, a table maintains an invariant that each row is uniquely identified by a key that is not limited to string type and is immutable. Additionally, tables also preserve the order of the rows.<br><br>
 
-### Table Syntax
+### Table syntax
 
 The table syntax in Ballerina looks like this.
 
@@ -171,7 +171,7 @@ function increaseSalary(int n) {
 
 There is a direct and simple mapping from a table to JSON. Table to JSON conversion will result in an array of JSON objects where each member of the array corresponds to a member of the table.<br><br>
 
-### Multiple Key Fields
+### Multiple key fields
 
 You can have a table that has a multiple part key spread over several fields.
 
@@ -197,7 +197,7 @@ Subsequently, you can also look up the table using both keys.
 Employee? e = t["Fred", "Bloggs"];
 ```
 
-### Structured Keys
+### Structured keys
 
 The keys are not restricted to string type. You can also have keys belonging to any subtype of plain data, which also includes structured types.
 
@@ -226,7 +226,7 @@ Employee? e = t[{first: "Fred", last: "Bloggs"}];
 
 With structured types, you have the ability to define rich keys, with different types, such as arrays of bytes, which makes it a binary key. This is a very powerful way of programming with tables, where you can directly work with the keys, instead of being constrained by faked up string representations of your keys.<br><br>
 
-### Querying Tables
+### Querying tables
 
 Apart from looking up rows in a table, you can also combine them with queries.
 
@@ -251,7 +251,7 @@ In the above code example, **``salaries``** is an array constructed from a query
 
 The actual type of the query output is determined by the context, for example integer array in this case, or the input type.<br><br>
 
-### Creating Tables with Query
+### Creating tables with query
 
 You can also use a query expression to create tables.
 
@@ -265,7 +265,7 @@ var highPaidEmployees =
 
 In the above code example, a new table is produced from the query expression, which selects all the rows whose **``salary``** field is greater than or equal to 1000. A table is created as a result of the query expression explicitly specifying what to create by starting with the table keyword. The key of the created table can also be specified explicitly.<br><br>
 
-### Join Clause
+### Join clause
 
 Ballerina queries can also leverage the join clause on table keys.
 
@@ -303,7 +303,7 @@ The query uses the ``join`` clause to combine the list of **``logins``** and the
 
 The ``join`` clause uses an internal hashtable, thereby improving the query  efficiency compared to O(n2) time complexity observed in nested ``from`` clauses.  The type to join on must be anydata.<br><br>
 
-## Stream Type
+## Stream type
 
 Ballerina supports the concept of stream. A stream is a sequence of values that are generated as needed. This concept is the opposite of a list that is pre-populated with values before you perform any operations on it.
 
@@ -311,7 +311,7 @@ A stream type is a separate basic type but acts as an object. A stream is define
 
 Generating the values for a stream can result in an error, in which case the stream is terminated with an error value.<br><br>
 
-### Querying with Streams
+### Querying with streams
 
 You can use the same query expressions with streams.
 
@@ -349,7 +349,7 @@ In the above code example, the function **``count()``** works on the stream of t
 
 The use of the ``check`` keyword before the query handles the scenario where the stream’s termination value can be an error by capturing the error  locally within the function call and returning it.<br><br>
 
-## Backtick Templates
+## Backtick templates
 
 Ballerina supports the concepts of backticks. A backtick template is composed of a tag followed by a backtick string, enclosed within the ``‘ ` ’`` notation, where you can have expressions that are enclosed in *${ . . . }*.
 
@@ -370,7 +370,7 @@ string s = string `Backtick:${"`"}`;
 
 In the above code example, the string **``s``** will be assigned a value of *“Backtick:`’*.<br><br>
 
-## Raw Templates
+## Raw templates
 
 Raw templates are backtick templates without the tag, in which case the phase two of the template evaluation only performs expression evaluation. A raw template returns an object containing an array of strings separated by insertions and an array of the results of expression evaluation.
 
@@ -382,7 +382,7 @@ db->query(`SELECT * FROM  order WHERE customer_id = ${customerId}’);
 
 In the above example, assume that **``db``** is a client object making a remote call to a SQL database. The raw template passed to the query method translates to an array of two strings *“SELECT * FROM order WHERE customer_id =”* and “”. The second string is empty as it comes after the expression. Along with that, it also passes an array of expression evaluation which is the value of variable **``customerId``**. Thus, the SQL syntax is turned into the right syntax with the required substitution for the underlying SQL implementation.<br><br>
 
-## XML Overview
+## XML overview
 
 In Ballerina, XML is a separate basic type. It is based on the concept of sequence, and is derived from the concept of XQuery as well as XPath2. The model of XML used in Ballerina is based on XML Infoset, which follows the basic concept of XML elements and attributes, rather than the XML schema, as in the case of PSVI (Post-Schema Validation Infoset).
 
@@ -406,7 +406,7 @@ The mutability of a sequence is similar to strings. Members of a sequence are al
 
 A sequence has no storage identity. Two sequences will match for === operator if their members match for the same operation.<br><br>
 
-### XML Data Model
+### XML data model
 
 In Ballerina, an xml value is a sequence representing the parsed content of an XML item.
 
@@ -416,7 +416,7 @@ An element item consists of three things, name of string type, attributes of typ
 
 An element item is mutable whereas text items are immutable.<br><br>
 
-### XML Templates
+### XML templates
 
 XML templates are used to create xml values.
 
@@ -430,7 +430,7 @@ xml p = xml `<p>${content}</p>`;
 
 The above code example defines two variables **``content``** and **``p``** of xml type using the backtick template containing the xml tag. In this case the phase two of the template processing does a parsing using the XML 1.0 recommendation’s grammar for content (what XML allows between a start-tag and end-tag). You can place the interpolated expressions of the template within XML content, or in attribute values, as string values.<br><br>
 
-### XML Operations
+### XML operations
 
 You can also perform different operations on values of xml type.
 
@@ -488,7 +488,7 @@ Ballerina LangLib provides a *lang.xml* library module for performing operations
 x2.setChildren(xml `<language>French</language>`);
 ```
 
-### XML Subtyping
+### XML subtyping
 
 Ballerina also supports inbuilt subtypes of the xml type. This is beneficial for performing operations on some xml values that represent an element rather than the entire xml sequence. Similarly, it does not make sense to set children for an XML text item since it does not have any children. So such checks can be taken care of with the type system by defining subtypes.
 
@@ -527,7 +527,7 @@ In the above code example, the function **``rename( )``** performs the operation
 
 In the function, the ``foreach`` loop iterates through the list of elements of **``x``**  which is returned by **``elements( )``** and belongs to type *xml<xml:Element>*. Therefore, you can call **``getName( )``** for each *xml:Element* and check for the old name. And if the name matches, **``setName( )``** is called to change the name. The function executes recursively for children of an *xml:Element*.<br><br>
 
-### XML Navigation Syntactic Sugar
+### XML navigation syntactic sugar
 
 Ballerina supports the use of navigational syntax to access items within the xml value. This is similar to the functionality of XPath.
 
@@ -565,7 +565,7 @@ In the above code example, you can use the query expression to iterate over the 
 
 This query returns a new xml containing a sequence of *\<para>* elements.<br><br>
 
-### Combining XML Templates and Queries
+### Combining XML templates and queries
 
 You can combine the concept of template with queries to build nested templates. With this feature, you build powerful templates having query expressions, with inner templates.
 
@@ -591,7 +591,7 @@ At the end, an xml value containing a sequence of *\<data>* element with zero or
 
 This is a very powerful feature unique to Ballerina. In this way, you can also build library functions that build HTML snippets as xml values for your application.<br><br>
 
-### XML Namespaces
+### XML namespaces
 
 Ballerina supports XML namespaces without adding another level of complexity in the existing xml type system. But this is optional and you can use XML without using the namespaces also.
 
@@ -604,7 +604,7 @@ string name = e.getName();
 
 In the above code example, the variable **``name``** is set to an expanded name if **``e``**, which is *{http://example.com}e*.<br><br>
 
-### XMLNS Seclarations
+### XMLNS seclarations
 
 Overall, to make the XML work in Ballerina, you need XML namespace declarations in code. XML namespace declarations look like import declarations.
 

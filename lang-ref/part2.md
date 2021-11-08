@@ -10,7 +10,7 @@ Individually these features may not stand out. However, it is the combination of
 
 This and the subsequent two parts will talk about these features. Let’s start with network interaction. The two fundamental operations in any network interaction are consuming services and providing services.<br><br>
 
-## Consuming Services: Client Objects
+## Consuming services: Client objects
 
 Client applications consume network services. Therefore, Ballerina provides client objects to allow a program to interact with remote network services using remote methods.
 
@@ -41,7 +41,7 @@ Remote method calls have some restrictions. For example, they are not allowed in
 
 Applications typically do not need to write client classes. Instead, these classes are either provided by the library modules or generated from some flavor of interface definition language.<br><br>
 
-## Providing Services
+## Providing services
 
 Providing services is a more complex interaction with three main things involved.
 
@@ -51,7 +51,7 @@ The second is a Listener object. It receives a network input and makes calls to 
 
 Modules have a lifecycle and are initialized on program startup. Post initializations, the registered listeners start up, and when the program shuts down, the registered listeners also shut down.<br><br>
 
-## Listener Declaration
+## Listener declaration
 
 A listener declaration looks very much like a variable declaration.
 
@@ -63,7 +63,7 @@ listener http:Listener h = new(8080);
 
 This also registers the Listener with the enclosing module. If the ``new`` returns an error, the module initialization fails and exits with an error at runtime.<br><br>
 
-## Module Lifecycle
+## Module lifecycle
 
 As mentioned earlier, all modules have a life cycle, so let's understand a few aspects of the life cycle.
 
@@ -73,7 +73,7 @@ If there are registered listeners in a module, the module initialization phase i
 
 These life cycle related activities are built into Ballerina, and as a programmer, you do not have to handle it when writing small programs which do not deal with network services.<br><br>
 
-## Module ``init`` Function
+## Module ``init`` function
 
 Modules have an *init* function, just like objects. It gets called after all other variables are initialized within the module.
 
@@ -89,7 +89,7 @@ The return type of this **``init()``** function must be a subtype of error?. If 
 
 Ballerina treats it as an error if a module is imported without using it. If you want to import a module because of what its initialization does, then use *``as _``* in import.
 
-## Constructing Objects Without Classes
+## Constructing objects without classes
 
 Ballerina allows you to construct objects even without classes. This is useful for initializing service objects.
 
@@ -106,7 +106,7 @@ string greeting = obj.greet();
 
 In the above code example, the ``object`` keyword is used in the expression that returns the object **``obj``**. This is called an object constructor. It has one method **``greet()``** that returns a string “Hello World”. So there is no class involved in this case.
 
-## Service Declaration
+## Service declaration
 
 The above pattern for creating an object directly without the involvement of classes is helpful for service declaration.
 
@@ -142,7 +142,7 @@ function init(){
 }
 ```
 
-## Representing Responses
+## Representing responses
 
 Traditionally, all network protocols use a standard request-response pattern. In Ballerina  when a client remote method makes a request, the return value of the method provides a response. Similarly, when the service remote method is invoked, the return value of the method provides the response.
 
@@ -150,7 +150,7 @@ However, there are two limitations to this approach. Firstly, the application ha
 
 A more flexible approach is to include a client object as a parameter in the service's remote method, representing the caller. In this way, the service object's remote method responds by making remote calls on the client object via this parameter.<br><br>
 
-## Resource Concept
+## Resource concept
 
 Similar to remote methods, service objects have another concept called resources.
 
@@ -194,7 +194,7 @@ In the above code example, the service object is attached to the HTTP listener w
 
 A single listener can have multiple services attached to it, each with different base paths.<br><br>
 
-## Resource Path Parameters
+## Resource path parameters
 
 The resource paths can also be parameterized such that instead of having fixed, static paths, they can be dynamically assigned during the service invocation.  
 
@@ -213,7 +213,7 @@ service /demo on new http:Listener(8080) {
 
 In this case, the fixed resource path is *"/demo/greeting"* followed by a parameterized segment defined within `'[ ]'` in the resource method. This arrangement is similar to how HTTP resources are defined with parameterized path segments for RESTful services.<br><br>
 
-## Hierarchical Services
+## Hierarchical services
 
 Like hierarchical resources, you can also have hierarchical service objects.
 
@@ -223,7 +223,7 @@ Root service is a special case that dispatches the sub services that are returne
 
 This hierarchical arrangement of services aligns well with the concept of GraphQL, wherein you have a graph of objects, and a service object represents each GraphQL object, and the field within the objects becomes the resources in Ballerina.<br><br>
 
-## Plain Data
+## Plain data
 
 Let’s now take a look at the network data. This is the data that is independent of any specific code operating on the data. This data is typically exchanged through network interfaces between programs. In Ballerina, this is known as plain data.
 
@@ -231,7 +231,7 @@ This concept is the opposite of objects, which combine data and code as one enti
 
 As a programming language designed for network programming over the cloud, Ballerina makes it easy to work with plain data, and it defines a different type for it.<br><br>
 
-## Ballerina Basic Types
+## Ballerina basic types
 
 If you categorize all the types of data supported by Ballerina, it is easier for you to know whether they are plain data.
 
@@ -245,7 +245,7 @@ Structural types are array, map, record, tuple, and table. These are plain data 
 
 And finally, the behavioral types include function, object, error, stream, typedesc, handle. These are not plain data.<br><br>
 
-## ``decimal`` Type
+## ``decimal`` type
 
 Ballerina supports one more numeric data type like integers and floating points, which is called decimal. However, it does not support implicit conversion.  
 
@@ -269,7 +269,7 @@ Decimal numbers are not the same as binary floating point numbers defined as per
 
 In Ballerina, decimal numbers do not offer infinite precision. It is limited to 34 digits only, which is more than enough for representing large physical measurements, such as the universe's age, which takes 27 digits. Additionally, decimal numbers do not support infinity, NaN, or negative zero.<br><br>
 
-## Plain Data Basic Types To Come
+## Plain data basic types to come
 
 Ballerina supports two more plain data types that we have not covered yet.
 
@@ -285,7 +285,7 @@ Structural values can be constructed either as mutable or immutable. The value i
 
 Ballerina's notion of immutability is deep. This means that if you have an immutable structure, all its members have to be immutable. This also makes it safer to pass immutable values to other threads for concurrent access.<br><br>
 
-## ``anydata`` Type
+## ``anydata`` type
 
 You can use ``anydata`` keyword to define plain data.
 
@@ -313,7 +313,7 @@ const RED = {R: 0xFF, G: 0, B: 0};
 
 The equality operation also takes care of cycles within anydata structure values.<br><br>
 
-## Configurable Variables
+## Configurable variables
 
 Ballerina also has a concept of a configurable variable. A module level variable can be declared as configurable. This is useful when some of the application code is defined just to configure things. You can use the ``configurable`` keyword in this case.
 
@@ -329,7 +329,7 @@ configurable string password = ?;
 
 A configurable variable must be a subtype of anydata.<br><br>
 
-## Optional Fields
+## Optional fields
 
 Ballerina’s type system is unique from other programming languages because it describes data both in program memory as well as in the wire. This is especially relevant for the cloud era, where more applications use APIs which provide network interfaces to a different system to send and receive data on the wire.  
 
@@ -366,7 +366,7 @@ string? Subject = h?.subject;
 You can use `‘?.’` to access the optional field. It will return Nil if the field is not present.
 This feature is handy for describing the type of data payloads transferred across network interfaces that typically contain mandatory and optional fields.<br><br>
 
-## Open Records
+## Open records
 
 Open records is another concept that is important for dealing with network interfaces. By default, a record type declared in Ballerina is open. This means that you can add more fields to it than those specified.
 
@@ -397,7 +397,7 @@ Similarly, the **``Person p``** also accepts the variable **``e``**, which is of
 
 An open record is equivalent to *map\<anydata>* where the key is anydata that is referring to any field within the record.<br><br>
 
-## Controlling Openness
+## Controlling openness
 
 If you do not want to allow the open behavior in records, Ballerina has a special syntax.
 
@@ -433,7 +433,7 @@ map<string> m2 = h;
 
 If you have an open record, then additional fields of anydata can be added. But otherwise, use *T…* to allow other fields of type T. Therefore *``map<T>``* is same as *``record {| T. . . ; |}``*.
 
-## ``json`` Type
+## ``json`` type
 
 Ballerina defines another type ``json``.
 
@@ -457,7 +457,7 @@ Ballerina also allows the use of ``null`` keyword instead of `‘( )’` for the
 
 ``json`` is basically ``anydata`` but without ``table`` and ``xml``. ``json`` and ``xml`` types are not parallel.<br><br>
 
-## Working with JSON: Two Approaches
+## Working with JSON: Two approaches
 
 Ballerina allows two approaches to work with JSON data.
 
@@ -467,7 +467,7 @@ Additionally, it is also possible to convert from JSON to application specific t
 
 The second approach is something where Ballerina really shines compared to other languages because it is very hard to translate between JSON and the native types in other languages.<br><br>
 
-## Working with Json Directly
+## Working with Json directly
 
 Working directly with JSON data is easy with the use of json type.
 
@@ -515,7 +515,7 @@ In the above code example, the ``match`` expression uses the json value **``j``*
 
 ``match`` schematics are open, and you do not have to specify all the fields of the ``json`` value in the pattern for matching.<br><br>
 
-## Converting from User-defined Types to JSON
+## Converting from user-defined types to JSON
 
 A user-defined type can be easily converted to JSON. In this case, there are two possibilities.
 
@@ -545,7 +545,7 @@ json j = coord.toJson();
 
 In the above code example, **``Coord``** is an open record.  Therefore any number of ``anydata`` fields can be added to it, including tables and xml. The **``toJson( )``** function converts ``anydata`` to ``json``, such that all the sub-types, including tables and xml are handled appropriately.<br><br>
 
-## Converting from JSON to User-defined Type
+## Converting from JSON to user-defined type
 
 There are a few nuances involved in converting from JSON to user-defined type.
 
@@ -569,7 +569,7 @@ However, this does not work because the json fields can be later assigned to som
 Coord c = <Coord>j.cloneReadOnly( );
 ```
 
-## Converting to User-defined Type: cloneWithType
+## Converting to user-defined type: cloneWithType
 
 There is another way of converting from JSON to a user-defined type.
 
@@ -624,7 +624,7 @@ Thanks to the implicit data binding and conversion feature of Ballerina, the JSO
 
 Annotations added to this code also helps in refining the mapping between Ballerina-declared type and wire format. Further, the service declaration can also be used to generate OpenAPI spec.<br><br>
 
-## JSON Numbers
+## JSON numbers
 
 There is one complication in dealing with JSON in Ballerina. This is because Ballerina allows the json type to have a union of integer, floating point number, and decimal. Whereas the JSON specification only has one numeric type. It does not distinguish between integers and floating point numbers.
 

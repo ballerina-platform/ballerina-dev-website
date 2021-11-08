@@ -6,7 +6,7 @@ Ballerina is a modern programming language focused on building applications for 
 
 Part 1 of this language guide presents the subset of Ballerina language common to most modern programming languages. It covers the baseline features such as data types, control flow and error handling, which should be very familiar to most programmers. These features are the foundation for some of the more distinctive features of Ballerina that will be covered in the subsequent parts.<br><br>
 
-## Programs and Modules
+## Programs and modules
 
 Ballerina programs consist of modules, and each module consists of one or more *.bal* files.
   
@@ -28,7 +28,7 @@ Module hierarchies follow the `‘/’` and `‘.’` notation, for example, *``
 
 The main function is the program entry point, and the public keyword makes this function visible outside the module.  This function calls the println( ) function defined in the io module using the `‘:’` notation. Every statement in a Ballerina program code must be terminated with a semicolon.<br><br>
 
-## Variables & Types
+## Variables and types
 
 Modules and functions can declare variables.
 
@@ -105,7 +105,7 @@ The integer data type supports all the basic arithmetic operators, such as `‘+
 
 However, there are a couple of notable deviations in Ballerina. Firstly, increment and decrement operators, `‘++’` and `‘--’` are not supported. Moreover, integer overflow results in a runtime error, unlike in C, where it rolls over.<br><br>
 
-## Floating Point Numbers
+## Floating point numbers
 
 In Ballerina, floating point numbers have an IEEE 64-bit binary representation, the same as double in Java. They are declared with the ``float`` keyword, and they support all operations similar to the integers, except bitwise operators.
 
@@ -119,7 +119,7 @@ However, they cannot be implicitly converted to or from integers. You can use th
 
 In Ballerina, NaN, the IEEE defined terminology for Not a Number, equals to itself. Therefore the `‘==’` operator on two NANs will return true. For floating point types, the operator `‘==’` and `‘!=’` test for the same value and is not numerically equivalent as per IEEE defined convention.<br><br>
 
- ## Booleans and Conditionals
+ ## Booleans and conditionals
 
 Boolean type has only two values, ``true`` and ``false``.
 
@@ -201,7 +201,7 @@ The `‘[i]’` expression on a string value points to the character at index i.
 
 Ballerina does not support the notion of a separate character type, like in C. Instead, a character is considered a single-length string.<br><br>
 
-## Langlib Functions
+## Langlib functions
 
 Ballerina defines a small library for providing fundamental operations on built-in datatypes. 
 
@@ -305,7 +305,7 @@ In this example, the ``while`` loop is checking for a boolean condition to check
 
 It also supports the usual ``break`` and ``continue`` statements.<br><br>
 
-## Binary Data
+## Binary data
 
 Binary data is represented by an array of bytes.
 
@@ -346,7 +346,7 @@ When used within a ``foreach`` loop, it will iterate over all the values of a Ma
 
 The use of comparison operators `‘==’` and `‘!=’` on a Map will perform a deep comparison. Two Maps are equal if they have the same set of keys and the values for each key are equal.<br><br>
 
-## Type Definitions
+## Type definitions
 
 Ballerina allows you to define a name for a type. You can create user-defined type identifiers from the built-in types supported by the language.
 
@@ -395,7 +395,7 @@ int a = c.x;
 
 Records are mutable, and the individual record identifier *``c.x``* is lvalue. Rules for record comparison are the same as that for Maps.<br><br>
 
-## Structural Typing
+## Structural typing
 
 In Ballerina, the data types are defined in terms of a set of values. A type is a label for a set of values. These values can be part of a finite set or an infinite set.
 
@@ -449,7 +449,7 @@ function nameToString(Name nm) returns string {
  
 In this way, the ``is`` operator in a condition causes the declared type to be narrowed.<br><br>
 
-## Error Reporting
+## Error reporting
 
 Ballerina does not support the notion of exception. Instead, errors are handled as part of the normal control flow. Errors are first-class citizens in Ballerina. There are a few mechanisms for handling errors, which are centered around an error type. error is a basic type in Ballerina, and error values can be passed around just like any other type.
 
@@ -478,7 +478,7 @@ In case a function is expected to return only error values, a return type of ``e
 
 An error value includes a string message and the stack trace from the point where *``error( )``* is called, and it is immutable.<br><br>
 
-## Error Handling
+## Error handling
 
 When an error is reported from a function, it is passed up to its caller. Ultimately it is handled at the main function, which can return it. Alternatively, you can use the ``is`` operator to check for the error type as part of the regular control flow to make a decision.
 
@@ -497,7 +497,7 @@ function intFromBytes(byte[] bytes) returns int|error {
 
 So in the above code example, the function defines a local variable **``ret``** to hold the returned value of function **``fromBytes( )``**. **``ret``** is a union of string or error type. Therefore to ascertain the actual type, ``is`` operator is used.<br><br>
 
-## ``check`` Expression
+## ``check`` expression
 
 Instead of using the ``is`` operator within the regular conditional flow for checking errors, Ballerina has a shorthand method available. Using the ``check`` keyword, error handling and return statements are much more concise.
 
@@ -514,7 +514,7 @@ function intFromBytes(byte[] bytes) returns int|error {
   
 In this case, the expression following the ``check`` keyword is evaluated and the function returns immediately if it results in an error.<br><br>
 
-## Error Subtyping
+## Error subtyping
 
 Ballerina also allows fine-grained error detection based on error subtypes. Error subtypes can be defined using the distinct keyword.
 
@@ -557,7 +557,7 @@ function divide(int m, int n) returns int {
  
 A panic statement results in immediate program termination and has an associated error value.<br><br>
 
-## ``any`` Type
+## ``any`` type
 
 Ballerina also allows an ``any`` type, which means any value except an error. A variable of type any can be cast to a specific type using the ``‘< >’`` symbol enclosure.
 
@@ -580,7 +580,7 @@ float f = x is int|float ? <float>x : 0.0;
 ```
 <br><br>
 
-## Ignoring Return Values and Errors
+## Ignoring return values and errors
 
 Ballerina does not allow silently ignoring return values of functions unless they return nil.
 
@@ -640,7 +640,7 @@ function demoMyClass( ) {
 
 In the above code example, the function **``demoMyClass()``** creates an object **``x``** of class **``MyClass``** using the ``new`` operator. You can use the `‘.’` notation to call the object’s methods or access its fields.<br><br>
 
-## Defining Classes
+## Defining classes
 
 Ballerina supports the concept of class which is a structured type containing data and behavior.
 
@@ -792,7 +792,7 @@ The match statement defines multiple clause statement blocks with the `‘=>’`
 
 In the above example, the match uses the value held by **``v``**, and matches it against six match clauses having distinct patterns. During execution, the patterns will be evaluated in order, using equals equals (==) to test the pattern match, and the matched clause’s statement block will be executed.<br><br>
 
-## Type Inference
+## Type inference
 
 Type inference allows the program to infer the actual data type of variables.
 
@@ -830,7 +830,7 @@ Here the variable **``x``** is declared as ``var`` but the type is inferred as *
 
 Type inference is applicable for variables in local scope. Therefore ``var`` should be used sparingly for variables used within a very limited scope, like in a ``foreach`` loop. Overusing it makes the code harder to understand.<br><br>
 
-## Functional Programming
+## Functional programming
 
 Ballerina defines functions also as values and they work as closures. Therefore function is also a type, which can be defined as a basic type as follows:
 
@@ -869,7 +869,7 @@ int[] oddNums = nums.filter(n => n % 2 != 0);
 
 As shown for the array **``oddNums``**, type of parameter **``n``** is inferred from the array with which the **``filter( )``** function is used.<br><br>
 
-## Asynchronous Function Calls
+## Asynchronous function calls
 
 Ballerina also supports asynchronous function calls. You can call a function asynchronously as follows:
 

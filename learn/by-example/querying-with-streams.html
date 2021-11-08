@@ -58,7 +58,7 @@ redirect_from:
     <span class="kt">int</span> <span class="nx">nLines</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="c1">// Counts the number of lines by iterating the `stream`</span>
     <span class="c1">// in `query action`.</span>
-    <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">line</span> <span class="nx">in</span> <span class="nx">lines</span>
+    <span class="k">var</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">_</span> <span class="nx">in</span> <span class="nx">lines</span>
               <span class="nx">do</span> <span class="p">{</span>
                   <span class="nx">nLines</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
               <span class="p">};</span>
@@ -134,7 +134,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=7e24e4aff7fa0ca3ba13ee5286ad649f&file=querying_with_streams.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=159d0328129f583648cd939a0fa118d9&file=querying_with_streams.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -329,7 +329,7 @@ redirect_from:
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var res = check from var line in lines
+                                    <div class="highlight"><pre><code class=language-ballerina>    var _ = check from var _ in lines
               do {
                   nLines += 1;
               };

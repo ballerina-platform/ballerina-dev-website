@@ -1,4 +1,4 @@
-# Part 2a: What makes Ballerina Distinctive
+# Part 2a: What Makes Ballerina Distinctive
 
 In this part, you will learn about the features of the Ballerina programming language that are distinctive. These features revolve around key design considerations that make Ballerina suitable for cloud application programming using small and medium-sized programs.
 

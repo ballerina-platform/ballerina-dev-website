@@ -27,7 +27,6 @@ redirect_from:
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello from Ballerina&quot;</span><span class="p">;</span>
     <span class="nx">check</span> <span class="nx">newClient</span><span class="o">-&gt;</span><span class="nx">publishMessage</span><span class="p">({</span> <span class="nx">content</span><span class="p">:</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span>
                                             <span class="nx">routingKey</span><span class="p">:</span> <span class="s">&quot;MyQueue&quot;</span> <span class="p">});</span>
-    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -161,7 +160,6 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>    string message = &quot;Hello from Ballerina&quot;;
     check newClient-&gt;publishMessage({ content: message.toBytes(),
                                             routingKey: &quot;MyQueue&quot; });
-    return;
 }
 </code></pre></div>
 

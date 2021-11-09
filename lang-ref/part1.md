@@ -1,6 +1,6 @@
-# Part 1 - How Ballerina does what all programming languages do
+# Part 1 - How Ballerina does what all Programming Languages do
 
-## Familiar subset of Ballerina
+## Familiar Subset of Ballerina
 
 Ballerina is a modern programming language focused on building applications for the cloud era. It has a familiar syntax resembling the C family of languages, such as C/C++, C#, Java and JavaScript. It brings in many powerful concepts from existing programming languages and some unconventional abstraction mechanisms to make application development for the cloud more intuitive and less strenuous.
 
@@ -28,7 +28,7 @@ Module hierarchies follow the `‘/’` and `‘.’` notation, for example, *``
 
 The main function is the program entry point, and the public keyword makes this function visible outside the module.  This function calls the println( ) function defined in the io module using the `‘:’` notation. Every statement in a Ballerina program code must be terminated with a semicolon.<br><br>
 
-## Variables & Types
+## Variables and Types
 
 Modules and functions can declare variables.
 

@@ -467,7 +467,7 @@ Additionally, it is also possible to convert from JSON to application specific t
 
 The second approach is something where Ballerina really shines compared to other languages because it is very hard to translate between JSON and the native types in other languages.<br><br>
 
-## Working with JSON Directly
+## Working With JSON Directly
 
 Working directly with JSON data is easy with the use of json type.
 

@@ -1,8 +1,8 @@
-# Part 2c: Concurrency and transactions
+# Part 2c: Concurrency and Transactions
 
-## Sequence-diagram based concurrency
+## Sequence-diagram Based Concurrency
 
-### Named workers
+### Named Workers
 
 One of the key aspects of the Ballerina language is to support concurrency. With more and more applications needing to support network interaction, concurrency becomes important for handling scale. But at the same time, it introduces complexities in data handling.
 
@@ -146,7 +146,7 @@ In the above code example, the function **``multiFetch( )``** declares two worke
 
 Instead of explicitly constructing the record constructor in the ``wait`` expression, you can also use the shorthand *wait { X , Y }* which equates to *{ X:X , Y:Y}*. This works with the concept of futures also, as explained in the next section.<br><br>
 
-### Named workers and futures
+### Named Workers and Futures
 
 Workers and futures are the same things. A named worker referred to as a value, becomes a future. This return type of the worker becomes the type of future.
 
@@ -215,7 +215,7 @@ The pairing of message send and receive expression with  `‘->’` and `‘<-�
 
 This way of message passing is easy to use as it avoids the complex deadlocks but has limited expressiveness.<br><br>
 
-### Inter-worker failure propagation
+### Inter-worker Failure Propagation
 
 In the ideal case, pairing the sends and receives guarantees that every message sent will be received, and vice versa. But what if the sender worker has an error before passing the message to the receiver worker?
 
@@ -372,7 +372,7 @@ In the above code example, the functions **``doUpdate( )``** and **``bar( )``** 
 
 The transactional expression is also used as a boolean test to check whether a current transaction is active at runtime. Using a transactional expression in a condition results in a transactional context. Inside the function **``foo( )``** the ``if`` statement is used to check for a current transaction before calling the transactional function **``bar( )``**. In this way, you can check for the transactional context even inside a non-transactional function to perform transaction dependent operations.<br><br>
 
-### Distributed transactions
+### Distributed Transactions
 
 Ballerina is designed so that transactions work together with network interactions. Therefore, the resource and remote methods of service objects and remote methods of client objects can be declared transactional. But the actual working of transactional behavior is implementation-dependent which is kept under the covers to avoid complications.
 
@@ -403,7 +403,7 @@ transactional function bar() {
 
 In the above code example, the named worker **``A``** has a ``transactional`` qualifier. Therefore the strand for execution of the code within **``A``** will have a new transaction that is branched from the calling transactional context within the function **``exec( )``**.<br><br>
 
-### Commit/rollback Handlers
+### Commit/Rollback Handlers
 
 Often, there is a need to execute additional code depending upon whether the transaction was committed or not. In Ballerina, you can check for the status of a transaction and execute additional code to handle the specific outcome of the transaction, either for commit or rollback.
 

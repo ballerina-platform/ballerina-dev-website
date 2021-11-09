@@ -81,7 +81,6 @@ redirect_from:
         <span class="k">if</span> <span class="nx">messageData</span> <span class="nx">is</span> <span class="kt">string</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Received message: &quot;</span> <span class="o">+</span> <span class="nx">messageData</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -428,7 +427,6 @@ service stan:Service on securedEP {
         if messageData is string {
             log:printInfo(&quot;Received message: &quot; + messageData);
         }
-        return;
     }
 }
 </code></pre></div>

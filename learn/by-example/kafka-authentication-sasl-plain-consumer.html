@@ -42,7 +42,6 @@ redirect_from:
             <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">consumerRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -240,7 +239,6 @@ import ballerina/log;
             string value = check string:fromBytes(consumerRecord.value);
             log:printInfo(value);
         }
-        return;
     }
 }
 </code></pre></div>

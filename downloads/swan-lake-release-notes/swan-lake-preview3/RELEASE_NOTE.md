@@ -332,4 +332,4 @@ public function fromHttpToQueue(af:Context ctx,
 }
 ```
 
-For more information, see [Azure Functions](https://ballerina.io/swan-lake/learn/deployment/azure-functions/) and the [Azure Functions Deployment Example](http://dev.ballerina.io/swan-lake/learn/by-example/azure-functions-deployment.html).
+For more information, see [Azure Functions](https://ballerina.io/swan-lake/learn/deployment/azure-functions/).

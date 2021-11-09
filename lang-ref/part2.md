@@ -1,4 +1,4 @@
-# Part 2a: What makes Ballerina distinctive
+# Part 2a: What makes Ballerina Distinctive
 
 In this part, you will learn about the features of the Ballerina programming language that are distinctive. These features revolve around key design considerations that make Ballerina suitable for cloud application programming using small and medium-sized programs.
 
@@ -175,7 +175,7 @@ This is an example of a resource method. Instead of ``remote``, it uses the ``re
 
 So this service object defines a resource *“/hello”* with a query parameter **``name``**.<br><br>
 
-## Hierarchical resources
+## Hierarchical Resources
 
 Resources are hierarchical. They have a path, which consists of a base path and multiple segments.
 
@@ -433,7 +433,7 @@ map<string> m2 = h;
 
 If you have an open record, then additional fields of anydata can be added. But otherwise, use *T…* to allow other fields of type T. Therefore *``map<T>``* is same as *``record {| T. . . ; |}``*.
 
-## ``json`` Type
+## ``JSON`` Type
 
 Ballerina defines another type ``json``.
 
@@ -467,7 +467,7 @@ Additionally, it is also possible to convert from JSON to application specific t
 
 The second approach is something where Ballerina really shines compared to other languages because it is very hard to translate between JSON and the native types in other languages.<br><br>
 
-## Working with Json Directly
+## Working with JSON Directly
 
 Working directly with JSON data is easy with the use of json type.
 
@@ -493,7 +493,7 @@ Ballerina supports runtime checking of the ``json`` structure to raise runtime e
 string s = check value:ensureType(v, string);
 ```
 
-## ``match`` statements with maps
+## ``match`` Statements with Maps
 
 ``json`` values can be used in a ``match`` statement to provide flexible pattern matching based on the fields in the ``json`` structure.
 
@@ -515,7 +515,7 @@ In the above code example, the ``match`` expression uses the json value **``j``*
 
 ``match`` schematics are open, and you do not have to specify all the fields of the ``json`` value in the pattern for matching.<br><br>
 
-## Converting from User-defined Types to JSON
+## Converting from User-Defined Types to JSON
 
 A user-defined type can be easily converted to JSON. In this case, there are two possibilities.
 
@@ -594,7 +594,7 @@ Coord c = check j.cloneWithType();
 
 In this case, the argument is implicitly obtained from the context.<br><br>
 
-## Resource method typing
+## Resource Method Typing
 
 The features of JSON to user-defined type conversion and vice versa are advantageous when you write the service object in Ballerina.
 

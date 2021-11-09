@@ -493,7 +493,7 @@ Ballerina supports runtime checking of the ``json`` structure to raise runtime e
 string s = check value:ensureType(v, string);
 ```
 
-## ``match`` Statements with Maps
+## ``match`` Statements With Maps
 
 ``json`` values can be used in a ``match`` statement to provide flexible pattern matching based on the fields in the ``json`` structure.
 

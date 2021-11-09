@@ -1,6 +1,6 @@
 # Part 2c: Concurrency and Transactions
 
-## Sequence-diagram Based Concurrency
+## Sequence-Diagram-Based Concurrency
 
 ### Named Workers
 

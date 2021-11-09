@@ -1,4 +1,4 @@
-# Part 3: Completing the picture
+# Part 3: Completing the Picture
 
 Let’s now look at the other features of the Ballerina language. These are a mixed bag of additional options to the language, making everything fit together to build a Ballerina application.
 
@@ -441,7 +441,7 @@ In the above code example, the tuple type **``Id``** has the first member of the
 
 Therefore, any array of type *T*,  as in *T[ ]*, can be described as *[T . . .]* , which is a tuple  containing zero or more *T* type members in the list. Tuples are not open by default.<br><br>
 
-## Array/map Symmetry
+## Array/Map Symmetry
 
 | Basic Type | Index Type | JSON   | Constructor | Type with uniform member type | Type with per-index member type |   Open type   |
 |------------|------------|--------|-------------|-------------------------------|---------------------------------|---------------|

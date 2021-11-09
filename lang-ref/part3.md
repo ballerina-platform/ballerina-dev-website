@@ -604,7 +604,7 @@ string name = e.getName();
 
 In the above code example, the variable **``name``** is set to an expanded name if **``e``**, which is *{http://example.com}e*.<br><br>
 
-### XMLNS Seclarations
+### XMLNS Declarations
 
 Overall, to make the XML work in Ballerina, you need XML namespace declarations in code. XML namespace declarations look like import declarations.
 

@@ -433,7 +433,7 @@ map<string> m2 = h;
 
 If you have an open record, then additional fields of anydata can be added. But otherwise, use *T…* to allow other fields of type T. Therefore *``map<T>``* is same as *``record {| T. . . ; |}``*.
 
-## ``JSON`` Type
+## ``json`` Type
 
 Ballerina defines another type ``json``.
 

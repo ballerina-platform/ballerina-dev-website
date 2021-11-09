@@ -1,4 +1,4 @@
-# Part 1 - How Ballerina does what all Programming Languages do
+# Part 1 - How Ballerina Does What all Programming Languages Do
 
 ## Familiar Subset of Ballerina
 

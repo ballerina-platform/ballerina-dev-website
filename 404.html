@@ -24,6 +24,10 @@ layout: ballerina-inner-page
   if (pathname.indexOf("/swan-lake/") !== -1) {
     var redirectpath = pathname.replace("/swan-lake", "");
     document.write('<meta http-equiv="refresh" content="0; url=' + redirectpath + '">');
+  } else if (pathname.indexOf("/learn/by-example/") !== -1) {
+    document.write('<meta http-equiv="refresh" content="0; url=/learn/reference-by-example/">');
+  } else if (pathname.indexOf("/learn/reference-by-example/") !== -1) {
+    document.write('<meta http-equiv="refresh" content="0; url=/learn/reference-by-example/">');
   } else if (redirection.type == "versioned") {
     var new_path = pathname.replace('v', '').replace('-', '.');
     document.write('<meta http-equiv="refresh" content="0; url=' + new_path + '">');

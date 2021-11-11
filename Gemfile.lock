@@ -108,6 +108,7 @@ GEM
     tzinfo-data (1.2021.1)
       tzinfo (>= 1.0.0)
     verbal_expressions (0.1.5)
+    webrick (1.7.0)
 
 PLATFORMS
   java
@@ -125,6 +126,7 @@ DEPENDENCIES
   kramdown-parser-gfm
   minima (~> 2.0)
   tzinfo-data
+  webrick (~> 1.7)
 
 BUNDLED WITH
-   2.2.10
+   2.2.30

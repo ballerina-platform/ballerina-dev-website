@@ -37,6 +37,7 @@ redirect_from:
         <span class="nx">jsonObject</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">xmldata</span><span class="p">:</span><span class="nx">toJson</span><span class="p">(</span><span class="nx">xmlData</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jsonObject</span><span class="p">);</span>
     <span class="p">}</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -90,7 +91,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=386007f3210a9816f4abeed5f87fd676&file=xml_json_conversion.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c2ea01cdd7e19f4cca8ec7636b286b61&file=xml_json_conversion.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -195,6 +196,7 @@ import ballerina/xmldata;
                                     <div class="highlight"><pre><code class=language-ballerina>        jsonObject = check xmldata:toJson(xmlData);
         io:println(jsonObject);
     }
+    return;
 }
 </code></pre></div>
 
@@ -224,7 +226,7 @@ import ballerina/xmldata;
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run xml_json_conversion.bal
 &lt;Store id=&quot;AST&quot;&gt;&lt;name&gt;Anne&lt;/name&gt;&lt;address&gt;&lt;street&gt;Main&lt;/street&gt;&lt;city&gt;94&lt;/city&gt;&lt;/address&gt;&lt;codes&gt;&lt;root&gt;4&lt;/root&gt;&lt;root&gt;8&lt;/root&gt;&lt;/codes&gt;&lt;/Store&gt;
-{&quot;Store&quot;:{&quot;name&quot;:&quot;Anne&quot;,&quot;address&quot;:{&quot;street&quot;:&quot;Main&quot;,&quot;city&quot;:&quot;94&quot;},&quot;codes&quot;:{&quot;root&quot;:[&quot;4&quot;,&quot;8&quot;]}},&quot;@id&quot;:&quot;AST&quot;}
+{&quot;Store&quot;:{&quot;name&quot;:&quot;Anne&quot;,&quot;address&quot;:{&quot;street&quot;:&quot;Main&quot;,&quot;city&quot;:&quot;94&quot;},&quot;codes&quot;:{&quot;root&quot;:[&quot;4&quot;,&quot;8&quot;]},&quot;@id&quot;:&quot;AST&quot;}}
 </code></pre></div>
 
                                 </div>

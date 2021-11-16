@@ -37,6 +37,7 @@ redirect_from:
     <span class="nx">Result</span> <span class="nx">res</span> <span class="p">=</span>  <span class="nx">multiFetch</span><span class="p">(</span><span class="s">&quot;https://postman-echo.com/get?lang=ballerina&quot;</span><span class="p">,</span>
                              <span class="s">&quot;https://postman-echo.com/get?greeting=hello&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">fetch</span><span class="p">(</span><span class="kt">string</span> <span class="nx">url</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
@@ -95,7 +96,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=f6998a6ac99f7d689a553e517200854b&file=multiple_wait.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=bab430d5dcb308cb03b86a20063f87f6&file=multiple_wait.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -193,6 +194,7 @@ import ballerina/io;
     Result res =  multiFetch(&quot;https://postman-echo.com/get?lang=ballerina&quot;,
                              &quot;https://postman-echo.com/get?greeting=hello&quot;);
     io:println(res);
+    return;
 }
 </code></pre></div>
 

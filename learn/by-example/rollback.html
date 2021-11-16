@@ -30,7 +30,7 @@ redirect_from:
     <span class="c1">// If an error is returned from the `transfer` function,</span>
     <span class="c1">// the error is returned from the `main` and it exits.</span>
     <span class="nx">check</span> <span class="nx">transfer</span><span class="p">(</span><span class="nx">updates</span><span class="p">);</span>
-
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">transfer</span><span class="p">(</span><span class="nx">Update</span><span class="p">[]</span> <span class="nx">updates</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -47,6 +47,7 @@ redirect_from:
         <span class="nx">check</span> <span class="nx">commit</span><span class="p">;</span>
 
     <span class="p">}</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">doUpdate</span><span class="p">(</span><span class="nx">Update</span> <span class="nx">u</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -55,6 +56,7 @@ redirect_from:
         <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Not enough Stocks: &quot;</span><span class="p">,</span> <span class="nx">stockIndex</span> <span class="p">=</span> <span class="nx">u</span><span class="p">.</span><span class="nx">updateIndex</span><span class="p">);</span>
     <span class="p">}</span>
 
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -109,7 +111,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=4d4bba0adabcd37423c151ca51836630&file=rollback.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=856a036563089805ca9c5213e4de78ee&file=rollback.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -185,6 +187,8 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    check transfer(updates);
+    return;
+}
 </code></pre></div>
 
                                 </div>
@@ -197,18 +201,6 @@ redirect_from:
 
                                         </div>
                                     </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>}
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
                                     
                                 </div>
                             </div>
@@ -311,6 +303,7 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    }
+    return;
 }
 </code></pre></div>
 
@@ -356,7 +349,8 @@ redirect_from:
                             <div class="cTR">
 
                                 <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>}
+                                    <div class="highlight"><pre><code class=language-ballerina>    return;
+}
 </code></pre></div>
 
                                 </div>

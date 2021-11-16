@@ -1,5 +1,5 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-managing-dependencies-left-nav-pages-swanlake
 title: Managing Dependencies
 description: The sections below include information about dependencies, imports, and how they can be used in your package.
 keywords: ballerina, programming language, ballerina packages, dependencies, importing modules
@@ -59,7 +59,7 @@ String formattedMsg = util:properCaseMessage(“hello world!”);
 
 Since the import-prefix is not given here, use `util` to refer to the symbols in the `hello_world.util` module. Here, `util:properCaseMessage` is called a qualified identifier.
 
-## Managing Dependencies
+## Handling Dependencies
 
 When you build a package that has dependencies to other packages, the compiler automatically figures out the latest compatible versions of the required packages. 
 For identifying the latest versions of these dependencies, by default, Ballerina searches for the packages of dependencies in 2 repositories: The distribution repository and the Ballerina Central repository.

@@ -3,13 +3,58 @@
   sublinks:
     - title: CLI Commands
       url: /learn/cli-documentation/cli-commands/
-      active: cli-commands
+      sublinks:
+        - title: Using the Ballerina Tool
+          url: /learn/cli-documentation/cli-commands/#using-the-ballerina-tool
+          active: using-the-ballerina-tool
+        - title: Core Commands
+          url: /learn/cli-documentation/cli-commands/#core-commands
+          active: core-commands
+        - title: Package Commands
+          url: /learn/cli-documentation/cli-commands/#package-commands
+          active: package-commands
+        - title: Other Commands
+          url: /learn/cli-documentation/cli-commands/#other-commands
+          active: other-commands
+        - title: Update Commands
+          url: /learn/cli-documentation/cli-commands/#update-commands
+          active: update-commands
     - title: Update Tool
       url: /learn/cli-documentation/update-tool/
-      active: update-tool
+      sublinks:
+        - title: Understanding Ballerina Distributions
+          url: /learn/cli-documentation/update-tool/#understanding-ballerina-distributions
+          active: understanding-ballerina-distributions
+        - title: Getting to Know the Release Channels
+          url: /learn/cli-documentation/update-tool/#getting-to-know-the-release-channels
+          active: getting-to-know-the-release-channels
+        - title: Installing Ballerina
+          url: /learn/cli-documentation/update-tool/#installing-ballerina
+          active: installing-ballerina
+        - title: Updating the Ballerina Tool
+          url: /learn/cli-documentation/update-tool/#updating-the-ballerina-tool
+          active: updating-the-ballerina-tool
+        - title: Managing your Ballerina Distributions
+          url: /learn/cli-documentation/update-tool/#managing-your-ballerina-distributions
+          active: managing-your-ballerina-distributions
     - title: Open API
       url: /learn/cli-documentation/openapi/
-      active: openapi
+      sublinks:
+        - title: Using the Capabilities of the OpenAPI Tools
+          url: /learn/cli-documentation/openapi/#using-the-capabilities-of-the-openapi-tools
+          active: using-the-capabilities-of-the-openapi-tools
+        - title: OpenAPI Validator Compiler Plugin
+          url: /learn/cli-documentation/openapi/#openapi-validator-compiler-plugin
+          active: openapi-validator-compiler-plugin
     - title: GRPC
       url: /learn/cli-documentation/grpc/
-      active: grpc 
+      sublinks:
+        - title: Usage of the Tool
+          url: /learn/cli-documentation/grpc/#usage-of-the-tool
+          active: usage-of-the-tool
+        - title: CLI Command
+          url: /learn/cli-documentation/grpc/#cli-command
+          active: cli-command
+        - title: Sample
+          url: /learn/cli-documentation/grpc/#sample
+          active: sample

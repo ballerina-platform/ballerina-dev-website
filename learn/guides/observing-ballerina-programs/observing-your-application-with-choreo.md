@@ -53,7 +53,7 @@ Follow the steps below to add observability in the executable created by Balleri
   provider="choreo"
   ```
 
-## Step 3 - Observe the Ballerina Service
+## Step 3 - Observing the Ballerina Service
 
 1. Once the configuration file has been created, execute the command below to pass it to the Ballerina program with the `BAL_CONFIG_FILES` environment variable.
 

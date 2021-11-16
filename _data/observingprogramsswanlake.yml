@@ -28,10 +28,10 @@
         - title: Step 2 - Configuring Choreo to Observe a Ballerina Service
           url: /learn/observing-ballerina-programs/observing-your-application-with-choreo/#step-2---configuring-choreo-to-observe-a-ballerina-service
           active: step-2---configuring-choreo-to-observe-a-ballerina-service
-        - title: Step 3 - Observe the Ballerina Service
-          url: /learn/observing-ballerina-programs/observing-your-application-with-choreo/#step-3---observe-the-ballerina-service
-          active: step-3---observe-the-ballerina-service
-        - title: step-4 - sending-few-requests
+        - title: Step 3 - Observing the Ballerina Service
+          url: /learn/observing-ballerina-programs/observing-your-application-with-choreo/#step-3---observing-the-ballerina-service
+          active: step-3---observing-the-ballerina-service
+        - title: Step-4 - Sending Few Requests
           url: /learn/observing-ballerina-programs/observing-your-application-with-choreo/#step-4---sending-few-requests
           active: step-4---sending-few-requests
 

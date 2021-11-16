@@ -1,66 +1,22 @@
-- title: Installing Ballerina
+- title: Ballerina Shell
   url: #
   sublinks:
-    - title: Setting up Ballerina
-      url: /learn/installing-ballerina/setting-up-ballerina/
-      sublinks:
-          - title: Trying Ballerina in the Playground
-            url: /learn/installing-ballerina/setting-up-ballerina/#trying-ballerina-in-the-playground
-            active: trying-ballerina-in-the-playground
-          - title: Downloading Ballerina
-            url: /learn/installing-ballerina/setting-up-ballerina/#downloading-ballerina
-            active: downloading-ballerina
-          - title: Installing Ballerina
-            url: /learn/installing-ballerina/setting-up-ballerina/#installing-ballerina
-            active: installing-ballerina
-          - title: Updating Ballerina
-            url: /learn/installing-ballerina/setting-up-ballerina/#updating-ballerina
-            active: updating-ballerina
-          - title: Installing the VSCode Extension
-            url: /learn/installing-ballerina/setting-up-ballerina/#installing-the-vscode-extension
-            active: installing-the-vscode-extension
-          - title: What’s Next?
-            url: /learn/installing-ballerina/setting-up-ballerina/#whats-next
-            active: whats-next
-    - title: Installation Options
-      url: /learn/installing-ballerina/installation-options/
-      sublinks:
-          - title: Installing Ballerina via Installers
-            url: /learn/installing-ballerina/installation-options/#installing-ballerina-via-installers
-            active: installing-ballerina-via-installers
-          - title: Installing via the Ballerina Language ZIP File
-            url: /learn/installing-ballerina/installation-options/#installing-via-the-ballerina-language-zip-file
-            active: installing-via-the-ballerina-language-zip-file
-          - title: Updating Ballerina
-            url: /learn/installing-ballerina/installation-options/#updating-ballerina
-            active: updating-ballerina
-          - title: Building from Source
-            url: /learn/installing-ballerina/installation-options/#building-from-source
-            active: building-from-source
-          - title: Uninstalling Ballerina
-            url: /learn/installing-ballerina/installation-options/#uninstalling-ballerina
-            active: uninstalling-ballerina
-          - title: What’s Next?
-            url: /learn/installing-ballerina/installation-options/#whats-next
-            active: whats-next
-    - title: Building from Source
-      url: /learn/installing-ballerina/building-from-source/
-      sublinks:
-          - title: Overview
-            url: /learn/installing-ballerina/building-from-source/#overview
-            active: overview
-          - title: Setting up the Prerequisites
-            url: /learn/installing-ballerina/building-from-source/#setting-up-the-prerequisites
-            active: setting-up-the-prerequisites
-          - title: Building the Complete Ballerina Distribution
-            url: /learn/installing-ballerina/building-from-source/#building-the-complete-ballerina-distribution
-            active: building-the-complete-ballerina-distribution
-          - title: Testing the Distribution Build
-            url: /learn/installing-ballerina/building-from-source/#testing-the-distribution-build
-            active: testing-the-distribution-build
-          - title: Building Only the Ballerina Runtime with the Tools
-            url: /learn/installing-ballerina/building-from-source/#building-only-the-ballerina-runtime-with-the-tools
-            active: building-only-the-ballerina-runtime-with-the-tools
-          - title: Testing the Runtime Build
-            url: /learn/installing-ballerina/building-from-source/#testing-the-runtime-build
-            active: testing-the-runtime-build
+    - title: Setting up the Prerequisites
+      url: /learn/ballerina-shell/#setting-up-the-prerequisites
+      active: setting-up-the-prerequisites
+    - title: Starting the Shell
+      url: /learn/ballerina-shell/#starting-the-shell
+      active: starting-the-shell
+    - title: Stopping the Shell
+      url: /learn/ballerina-shell/#stopping-the-shell
+      active: stopping-the-shell
+    - title: Evaluating Code Snippets
+      url: /learn/ballerina-shell/#evaluating-code-snippets
+      active: evaluating-code-snippets
+    - title: Loading Definitions from a File
+      url: /learn/ballerina-shell/#loading-definitions-from-a-file
+      active: loading-definitions-from-a-file
+    - title: Resetting the State
+      url: /learn/ballerina-shell/#resetting-the-state
+      active: resetting-the-state
+

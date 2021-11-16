@@ -1,5 +1,5 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-calling-java-code-left-nav-pages-swanlake
 title: Calling Java Code from Ballerina and Vice Versa
 description: See how Ballerina offers a straightforward way to call existing Java code from Ballerina and a Java API to call Ballerina code from Java.
 keywords: ballerina, programming language, java api, interoperability

@@ -4,9 +4,9 @@
     - title: Importing Modules
       url: /learn/managing-dependencies/#importing-modules
       active: importing-modules
-    - title: Managing Dependencies
-      url: /learn/managing-dependencies/#managing-dependencies
-      active: managing-dependencies
+    - title: Handling Dependencies
+      url: /learn/managing-dependencies/#handling-dependencies
+      active: handling-dependencies
     - title: Version Compatibility
       url: /learn/managing-dependencies/#version-compatibility
       active: version-compatibility

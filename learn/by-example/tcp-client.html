@@ -34,7 +34,7 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">receivedData</span><span class="p">));</span>
 
     <span class="c1">// Close the connection between the server and the client.</span>
-    <span class="nx">check</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -191,7 +191,7 @@ import ballerina/tcp;
                             <div class="cTR hover-enable">
 
                                 <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check socketClient-&gt;close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    return socketClient-&gt;close();
 }
 </code></pre></div>
 

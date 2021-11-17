@@ -34,17 +34,17 @@ redirect_from:
         <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Echo: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
         <span class="c1">// Echoes back the data to the client from which the data is received.</span>
-        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="c1">// This remote method is invoked in an erroneous situation,</span>
     <span class="c1">// which occurs during the execution of the `onConnect` or `onBytes` method.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">err</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="c1">// This remote method is invoked when the connection is closed.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onClose</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onClose</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client left&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -204,7 +204,7 @@ import ballerina/tcp;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        check caller-&gt;writeBytes(data);
+                                    <div class="highlight"><pre><code class=language-ballerina>        return caller-&gt;writeBytes(data);
     }
 </code></pre></div>
 
@@ -224,7 +224,7 @@ import ballerina/tcp;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onError(tcp:Error err) returns tcp:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onError(tcp:Error err) {
         log:printError(&quot;An error occurred&quot;, &#39;error = err);
     }
 </code></pre></div>
@@ -246,7 +246,7 @@ import ballerina/tcp;
                             <div class="cTR hover-enable">
 
                                 <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onClose() returns tcp:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onClose() {
         io:println(&quot;Client left&quot;);
     }
 }

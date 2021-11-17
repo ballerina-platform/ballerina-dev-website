@@ -177,11 +177,22 @@ The debugger will suspend at the breakpoint whenever the expression evaluates to
 
 Logpoints are another variant of breakpoints, which do not "break" the program execution but instead log a message to the console. Logpoints are especially useful for injecting logging while debugging production servers that cannot be paused or stopped.
 
-Log messages can either be plain texts, or string templates which can contain expressions to be evaluated within curly braces ('{}').
-
 Logpoints can also be enabled/disabled and can be controlled by conditions similar to regular breakpoints.
-       
-![Debugger Logpoints](/learn/images/debugger-logpoints.gif)   
+
+![Debugger Logpoints](/learn/images/debugger-logpoints.gif)
+
+Log messages can either be plain texts or string templates, which can contain expressions to be evaluated within the `${}` syntax.
+
+![Debugger String Temaplate Logpoints](/learn/images/debugger-logpoints-template.gif)
+
+### Pause/Continue
+
+Any running Ballerina programs can be suspended immediately at the current execution line of the program using the `pause` command in VSCode as shown below. 
+With this feature, you are able to suspend (and resume) the remote VM resulting in a debug hit at the current execution line of the program. 
+
+![Debugger Pause/Resume Commands](/learn/images/debugger-pause-resume-commands.gif)
+
+This feature will be useful in contexts where the program seems to be hanged due to blocking operations/infinite loops, and when you want to know the exact line that the program is waiting on.
 
 ### Expression Evaluation
 

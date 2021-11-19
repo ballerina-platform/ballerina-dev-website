@@ -38,7 +38,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 Updated unary expressions (`+`, `-`, and `~`), multiplicative expressions, additive expressions, shift expressions, and binary bitwise expressions to be used with operands of optional numeric types. If the static type of an operand is an optional numeric type, the static type of the result will also be an optional numeric type.
 
-The examples below are now allowed.
+The examples below are allowed now.
 
 ```ballerina
 import ballerina/io;
@@ -49,18 +49,18 @@ public function main() {
     int? c = ();
 
     int? d = a + b;
-    io:println(d is ()); // prints `false`
-    io:println(d); // prints `15`
+    io:println(d is ()); // Prints `false`.
+    io:println(d); // Prints `15`.
 
     int? e = a - c;
-    io:println(e is ()); // prints `true`
+    io:println(e is ()); // Prints `true`.
 
     // Also allowed.
     int? f = a * b;
     int? g = a << c;
     int? h = a & b;
     int? i = -a;
-    int? j = +c; // result is `()`
+    int? j = +c; // The result is `()`.
 }
 
 ```
@@ -88,7 +88,7 @@ public function main() {
 However, the below is still not allowed since the field's type includes nil.
 
 ```ballerina
-string? department = employee.department; // error
+string? department = employee.department; // Error.
 ```
 
 If the static type of the expression on which the access is done is a non-lax union type, field access is allowed only if it is a union of record types and
@@ -113,7 +113,7 @@ public function main() {
         dob: "1990-01-10"
     };
 
-    // This is now allowed since `name` is an optional field in `Person`
+    // This is allowed now since `name` is an optional field in `Person`
     // and a required field in `Employee`, and the type of the field is `string` 
     // in both records and does not include nil.
     string? _ = val.name;
@@ -135,7 +135,7 @@ public function main() {
 
 Introduced restrictions for when a function or a method is called in a match guard to ensure that the match guard does not mutate the value being matched.
 
-A function or method call is now allowed in a match guard only if it meets one of the conditions below.
+A function or method call is allowed now in a match guard only if it meets one of the conditions below.
 - the type of the expression following `match` is a subtype of `readonly` or
 - the function/method is `isolated` and the types of any and all arguments are subtypes of `readonly`
 
@@ -335,7 +335,7 @@ public function main() {
 Updated a function having an optional type that is not a subtype of `error?` as the return type to explicitly return a value. A warning is emitted when such a function does not explicitly return a value and falls off at the end of the function body. 
 
 ```ballerina
-function parse(string str) returns int? { // Now results in a warning. 
+function parse(string str) returns int? { // Now, results in a warning. 
     int|error a = int:fromString(str);
     if a is int {
         return a;
@@ -505,7 +505,7 @@ function parse(string str) returns int? { // Now results in a warning.
     type Error error<Detail>;
 
     function fn(Error e) {
-        Detail & readonly detail = e.detail(); // Now allowed.
+        Detail & readonly detail = e.detail(); // Allowed now.
     }
     ```
 
@@ -729,7 +729,7 @@ Stopped the JSON parser supporting single quotes to mark the boundaries of a str
 public function main() {
     string s = "{ 'foo': 'bar' }";
     json j = checkpanic s.fromJsonString();
-    // this will now result in a runtime error
+    // This will now result in a runtime error.
 }
 ```
 
@@ -767,39 +767,39 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta4](https://github
 
 ### New Features
 
-#### MySQL Package
+#### `mysql` Package
 - Introduced failover and retry support
 - Added `noAccessToProcedureBodies` options
 
-#### Log Package
+#### `log` Package
 - Introduced the `setOutputFile` function to write the log output to a file
 
-#### HTTP Package
+#### `http` Package
 - Introduced request and request error interceptors
 
-#### gRPC Package
+#### `grpc` Package
 - Introduced Protobuf `Any` type support
 
 ### Improvements
 
-#### SQL Package
+#### `sql` Package
 - Improved the `queryRow()` function to support union return types
 - Improved the parameterized query to support the escaped backtick as insertions
 
-#### Log Package
+#### `log` Package
 - Added `error:StackFrame[]` as a key-value pair type
     
-#### HTTP Package
+#### `http` Package
 - Marked the HTTP service type as distinct
 - Relaxed the data-binding restriction for status codes without content
 - Changed the `Listener.getConfig()` API to return an `InferredListenerConfiguration`
 
-#### WebSub Package
-- Generated unique-service-path should not be changed after compilation
-- Mark WebSub Service type as distinct
+#### `websub` Package
+- Updated to not change the generated unique-service-path after compilation
+- Marked the WebSub service type as distinct
 
-#### WebSubHub Package
-- Mark WebSubHub Service type as distinct
+#### `websubhub` Package
+- Marked the WebSubHub service type as distinct
 
 ### Bug Fixes
 

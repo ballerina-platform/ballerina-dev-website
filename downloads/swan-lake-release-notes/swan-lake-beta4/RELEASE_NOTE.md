@@ -376,7 +376,7 @@ function parse(string str) returns int? { // Now results in a warning.
 
     public function main() {
         io:print("Ballerina"); // Valid.
-        io : print("Ballerina"); // compilation error: intervening whitespaces are not allowed in a qualified identifier.
+        io : print("Ballerina"); // Compilation error: intervening whitespaces are not allowed in a qualified identifier.
     }
     ```
 
@@ -450,19 +450,19 @@ function parse(string str) returns int? { // Now results in a warning.
 
     ```ballerina
     xml<xml:Element> employees = xml `<e1><name>Jo</name></e1><e2><name>Mary</name></e2>`;
-    xml:Element employee1 = employees.get(0);// Now allowed.
+    xml:Element employee1 = employees.get(0);// Allowed now.
     ```
 
 - Updated the `table:map` function’s function argument `func` and the return type to work with subtypes of mapping types instead of any type.
 
     ```ballerina
     table<record {int id; string name;}> tb = table [
-    {id: 1234, name: "Jo"},
-    {id: 2345, name: "May"}
-    ];
+            {id: 1234, name: "Jo"},
+            {id: 2345, name: "May"}
+        ];
 
-    var idTable = tb.map(function (record {int id; string name;} r) returns int { // No longer allowed.
-    return r.id;
+    var idTable = tb.map(function(record {int id; string name;} r) returns int { // No longer allowed.
+        return r.id;
     });
     ```
 
@@ -472,14 +472,14 @@ function parse(string str) returns int? { // Now results in a warning.
 
     ```ballerina
     public class CallStack {
-    public CallStackElement[] callStack = [];
+        public CallStackElement[] callStack = [];
     }
     ```
 
     This has now been fixed, and it is no longer possible to retrieve an `error:CallStack` object or directly access the `callStack` array as shown below.
 
     ```ballerina
-    error:CallStack callStack = err.stackTrace(); // `CallStack` is undefined
+    error:CallStack callStack = err.stackTrace(); // `CallStack` is undefined.
     error:CallStackElement[] elements = err.stackTrace().callStack; // Not allowed, `CallStackElement` is undefined, no `callStack` field.
     ```
 
@@ -487,25 +487,25 @@ function parse(string str) returns int? { // Now results in a warning.
 
     ```ballerina
     public type StackFrame readonly & object {
-    public function toString() returns string;
+        public function toString() returns string;
     };
     ```
 
     ```ballerina
-    error:StackFrame[] stackTrace = e.stackTrace(); // Now returns `error:StackFrame[]`.
+    error:StackFrame[] stackTrace = e.stackTrace(); // Now, returns `error:StackFrame[]`.
     ```
 
 - Made the return type of the `error:detail` function in the `lang.error` module a subtype of `readonly`. It is the intersection of `readonly` and the detail type of the error.
 
     ```ballerina
     type Detail record {|
-    int code;
+        int code;
     |};
-    
+
     type Error error<Detail>;
-    
+
     function fn(Error e) {
-    Detail & readonly detail = e.detail(); // Now allowed.
+        Detail & readonly detail = e.detail(); // Now allowed.
     }
     ```
 
@@ -522,10 +522,10 @@ function parse(string str) returns int? { // Now results in a warning.
 
     public function main() {
         float result = float:min(1, float:NaN);
-        io:println(result === float:NaN); // prints true
+        io:println(result === float:NaN); // Prints `true`.
 
         result = float:max(5, float:NaN);
-        io:println(result === float:NaN); // prints true
+        io:println(result === float:NaN); // Prints `true`.
     }
     ```
 
@@ -535,8 +535,8 @@ function parse(string str) returns int? { // Now results in a warning.
     import ballerina/io;
 
     public function main() {
-    decimal|error result = decimal:fromString("0xab12"); // Now returns an error.
-    io:println(result is error); // prints true
+        decimal|error result = decimal:fromString("0xab12"); // Now, returns an error.
+        io:println(result is error); // Prints `true`.
     }
     ```
 
@@ -546,8 +546,8 @@ function parse(string str) returns int? { // Now results in a warning.
     import ballerina/io;
 
     public function main() {
-        float|error result = float:fromString("12.24f"); // Now returns an error
-        io:println(result is error); // prints true
+        float|error result = float:fromString("12.24f"); // Now, returns an error.
+        io:println(result is error); // Prints `true`.
     }
     ```
 
@@ -555,10 +555,10 @@ function parse(string str) returns int? { // Now results in a warning.
 
     ```ballerina
     import ballerina/io;
-    
+
     public function main() {
-    float|error result = float:fromHexString("12.3");
-    io:println(result is error); // prints true, error message - invalid hex string: ‘12.3’
+        float|error result = float:fromHexString("12.3");
+        io:println(result is error); // Prints `true`, error message - invalid hex string: ‘12.3’.
     }
     ```
 
@@ -631,7 +631,7 @@ function parse(string str) returns int? { // Now results in a warning.
     The example below now results in a compile-time error since the type of the literal is considered to be `float` and `Foo` does not contain `float` `2`.
 
     ```ballerina
-    Foo z = 2; // Now results in a compile-time error.
+    Foo z = 2; // Now, results in a compile-time error.
     ```
 
 
@@ -824,4 +824,3 @@ To view bug fixes, see the GitHub milestone for Swan Lake Beta4 of the repositor
 
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta4%22+label%3AType%2FBug+label%3ATeam%2FDevTools)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Beta4%22) 
-

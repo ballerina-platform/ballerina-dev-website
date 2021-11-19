@@ -631,8 +631,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake <VERSION>](https://gi
 
 ### Runtime Updates
 
-#### New Features
-
 #### Improvements
 
 ##### Improved Error Messages on a Type Conversion Failure
@@ -793,10 +791,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake <VERSION>](https://gi
 
 ### Code to Cloud Updates
 
-#### New Features
-
-#### Improvements
-
 #### Bug Fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake <VERSION> of the repositories below.
@@ -828,20 +822,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake <VERSION>](https://gi
 
 #### Bug Fixes
 
-##### Language Server 
-
-To view bug fixes, see the [GitHub milestone for Swan Lake <VERSION>](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta4%22+label%3AType%2FBug+label%3ATeam%2FLanguageServer).
- 
-#### Improvements
-
-#### Bug Fixes
-
 To view bug fixes, see the GitHub milestone for Swan Lake <VERSION> of the repositories below.
 
-- [Language](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta4%22+label%3AType%2FBug+label%3ATeam%2FDevTools)
+- [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta4%22+label%3AType%2FBug+label%3ATeam%2FDevTools)
 - [Update Tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+project%3Aballerina-platform%2F32)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Beta4%22) 
 
-#### Ballerina Packages Updates
-
-### Breaking Changes

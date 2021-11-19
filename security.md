@@ -5,7 +5,7 @@ intro: Ballerina project maintainers take security issues very seriously and all
 permalink: /security/
 ---
 
-## Reporting a vulnerability
+## Reporting a Vulnerability
 
 Ensure you are using the latest Ballerina version before you run an automated security scan or perform a penetration test against it.
 
@@ -27,7 +27,7 @@ Also, use the following template when reporting vulnerabilities so that it conta
 
 We will keep you informed of the progress towards a fix and disclosure of the vulnerability if the reported issue is identified as a true positive. 
 
-## Handling a vulnerability
+## Handling a Vulnerability
 
 The below is an overview of the vulnerability handling process.
 
@@ -36,6 +36,12 @@ The below is an overview of the vulnerability handling process.
 3. The fix gets applied to the main branch and a new version of the distribution gets released if required.
 4. The reported user is kept updated on the progress of the process. 
 
+## Getting Acknowledged and Rewarded
+
+Your effort of reporting vulnerabilities or any other issues related to the security of the Ballerina components below will be recognised and honored via the [WSO2 reward and acknowledgement program](https://docs.wso2.com/display/Security/WSO2+Security+Reward+and+Acknowledgement+Program).
+
+- [Ballerina website](https://ballerina.io/)
+- [Ballerina platform](https://github.com/ballerina-platform)
 
 <style>
 .nav > li.cVersionItem {

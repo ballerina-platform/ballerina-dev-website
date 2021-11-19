@@ -378,7 +378,7 @@ function parse(string str) returns int? { // Now results in a warning.
         io:print("Ballerina"); // Valid.
         io : print("Ballerina"); // compilation error: intervening whitespaces are not allowed in a qualified identifier.
     }
-```
+    ```
 
     With this, `x ? a : b:c` will now be parsed as `x ? a : (b:c)` since the colon with spaces is interpreted only as part of a conditional expression.
 

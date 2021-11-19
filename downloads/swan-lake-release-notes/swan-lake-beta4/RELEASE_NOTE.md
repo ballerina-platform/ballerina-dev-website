@@ -42,26 +42,27 @@ The examples below are now allowed.
 
 ```ballerina
 import ballerina/io;
- 
+
 public function main() {
-   int? a = 10;
-   int? b = 5;
-   int? c = ();
- 
-   int? d = a + b;
-   io:println(d is ()); // prints `false`
-   io:println(d); // prints `15`
- 
-   int? e = a - c;
-   io:println(e is ()); // prints `true`
- 
-   // Also allowed.
-   int? f = a * b;
-   int? g = a << c;
-   int? h = a & b;
-   int? i = -a;
-   int? j = +c; // result is `()`
+    int? a = 10;
+    int? b = 5;
+    int? c = ();
+
+    int? d = a + b;
+    io:println(d is ()); // prints `false`
+    io:println(d); // prints `15`
+
+    int? e = a - c;
+    io:println(e is ()); // prints `true`
+
+    // Also allowed.
+    int? f = a * b;
+    int? g = a << c;
+    int? h = a & b;
+    int? i = -a;
+    int? j = +c; // result is `()`
 }
+
 ```
 
 ##### Support for Accessing Optional Fields of a Record Using Field Access
@@ -142,31 +143,31 @@ The below will now result in compilation errors.
 
 ```ballerina
 type Data record {
-   string name;
-   boolean valid;
-   int id?;
-   decimal price?;
+    string name;
+    boolean valid;
+    int id?;
+    decimal price?;
 };
- 
+
 public function main() {
-   Data data = {name: "Jo", valid: false};
-   [int, decimal] currentValues = [1234, 20.5];
- 
-   match data {
-       var {id, price} => {
-       }
-       // Now, this results in compilation errors for the match guard since neither the type of the 
-       // matched expression nor the types of the arguments are subtypes of `readonly`.
-       var {name} if stillValid(data, currentValues) =>  {
-       }
-   }
+    Data data = {name: "Jo", valid: false};
+    [int, decimal] currentValues = [1234, 20.5];
+
+    match data {
+        var {id, price} => {
+        }
+        // Now, this results in compilation errors for the match guard since neither the type of the 
+        // matched expression nor the types of the arguments are subtypes of `readonly`.
+        var {name} if stillValid(data, currentValues) => {
+        }
+    }
 }
- 
+
 isolated function stillValid(Data data, [int, decimal] values) returns boolean {
-   // ...
-   data.id = values[0];
-   data.price = values[1];
-   return false;
+    // ...
+    data.id = values[0];
+    data.price = values[1];
+    return false;
 }
 ```
 
@@ -218,7 +219,11 @@ function fn4() {
 ```
 
 ```ballerina
-enum E { X, Y, Z }
+enum E {
+    X,
+    Y,
+    Z
+}
 
 function fn1(E e) {
     if e is X {
@@ -229,7 +234,7 @@ function fn1(E e) {
         doZ();
     } else {
         // Any statement in this block will now be unreachable.
-    } 
+    }
 }
 
 function fn2(E e) {
@@ -241,19 +246,19 @@ function fn2(E e) {
         doZ();
     } else if e is Y {
         // Any statement in this block will now be unreachable.
-    } 
+    }
 }
 
 function fn3(E e) returns int {
     if e is X {
         return 1;
-    } 
+    }
     if e is Y {
         return 2;
-    } 
+    }
     if e is Z {
         return 3;
-    } 
+    }
     // Any statement here will now be unreachable.
 }
 ```
@@ -301,7 +306,8 @@ The example below which previously resulted in a runtime panic will now result i
 
 ```ballerina
 function validate(int?[] arr) returns boolean {
-    int? value = let int length = arr.length() in length > 0 ? length : ();
+    int? value = let int length = arr.length()
+        in length > 0 ? length : ();
 
     if value is int {
         foreach int? item in arr {
@@ -318,9 +324,9 @@ function validate(int?[] arr) returns boolean {
 
     return false;
 }
- 
+
 public function main() {
-   boolean validationRes = validate([(), 2, 1]);
+    boolean validationRes = validate([(), 2, 1]);
 }
 ```
 
@@ -671,7 +677,7 @@ public function main() {
 ``` 
 now gives the error below.
 
-```
+```bash
 error: {ballerina/lang.value}ConversionError {"message":"'json[]' value cannot be converted to '[Journey,[Journey,map<Journey>],()[],int...]': 
                 missing required field '[0].rating' of type '[string,decimal]' in record 'Journey'
                 map field '[0].destinations.Bali' should be of type 'int', found '"2"'
@@ -749,7 +755,7 @@ d = 45
 
 then, it will fail with the errors below.
 
-```
+```bash
 error: [Config.toml:(2:1,2:14)] unused configuration value 'b'
 error: [Config.toml:(4:1,5:7)] unused configuration value 'c'
 error: [Config.toml:(5:1,5:7)] unused configuration value 'c.d'

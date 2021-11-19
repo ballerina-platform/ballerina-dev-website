@@ -568,20 +568,18 @@ function parse(string str) returns int? { // Now, results in a warning.
 	
     ```ballerina
     public class CustomRetryManager {
-    private int count;
-
-    public function init(int count = 3) {
-        self.count = count;
-    }
-
-    public function shouldRetry(error e) returns boolean {
-        if e is CustomError && self.count > 0 {
-            self.count -= 1;
-            return true;
-        } else {
-            return false;
+        private int count;
+        public function init(int count = 3) {
+            self.count = count;
         }
-    }
+        public function shouldRetry(error e) returns boolean {
+            if e is CustomError && self.count > 0 {
+                self.count -= 1;
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
     ```
 

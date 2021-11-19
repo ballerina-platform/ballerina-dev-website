@@ -794,6 +794,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta4](https://github
 - Relaxed the data-binding restriction for status codes without content
 - Changed the `Listener.getConfig()` API to return an `InferredListenerConfiguration`
 
+#### WebSub Package
+- Generated unique-service-path should not be changed after compilation
+- Mark WebSub Service type as distinct
+
+#### WebSubHub Package
+- Mark WebSubHub Service type as distinct
+
 ### Bug Fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta4](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+Beta4%22+label%3AType%2FBug).

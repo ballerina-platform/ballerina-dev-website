@@ -72,6 +72,24 @@ rpm -i ballerina-linux-installer-x64-swan-lake-<VERSION>.rpm
         - **Variable name:** PATH
         - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, `C:\Program Files\Ballerina\ballerina-<VERSION>\bin`
 
+## Verifying the Installation
+
+After installing Ballerina, run the following test to verify if Ballerina has been successfully installed. 
+
+Execute the command below from the command shell of the operating system.
+
+```bash
+bal -v
+```
+
+Make certain the command output shows the version that you downloaded as shown below.
+
+```bash
+Ballerina Swan Lake <VERSION>
+Language specification 2021R1
+Update Tool 1.3.6
+```
+
 ## Updating Ballerina
 
 If you already have a jBallerina version above 1.1.0 installed, you can use the update tool to update to the latest jBallerina version and set it as the active version by executing either of the commands below.

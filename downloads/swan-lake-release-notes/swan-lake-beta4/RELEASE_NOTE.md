@@ -495,7 +495,7 @@ function parse(string str) returns int? { // Now results in a warning.
     error:StackFrame[] stackTrace = e.stackTrace(); // Now returns `error:StackFrame[]`.
     ```
 
-- made the return type of the `error:detail` function in the `lang.error` module a subtype of `readonly`. It is the intersection of `readonly` and the detail type of the error.
+- Made the return type of the `error:detail` function in the `lang.error` module a subtype of `readonly`. It is the intersection of `readonly` and the detail type of the error.
 
     ```ballerina
     type Detail record {|

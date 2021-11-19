@@ -70,7 +70,7 @@ The distribution repository is a file system repository that comes with the loca
 
 **Ballerina Central repository**
 
-Ballerina Central repository is a remote repository, and thereby, it comes with a local file system cache, which is located at `<USER_HOME>/.ballerina/repositories/central.ballerina.io/repo/bala`. When resolving a dependency, the remote repository will be queried only if the specified version is not present in its local cache.
+Ballerina Central repository is a remote repository, and thereby, it comes with a local file system cache, which is located at `<USER_HOME>/.ballerina/repositories/central.ballerina.io/bala`. When resolving a dependency, the remote repository will be queried only if the specified version is not present in its local cache.
 
 ### Dependencies.toml
 

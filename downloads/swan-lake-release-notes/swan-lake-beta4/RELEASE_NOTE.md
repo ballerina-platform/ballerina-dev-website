@@ -701,9 +701,9 @@ Improved the runtime Java error creator API to get a `BMap` as the `details` par
 BError createError(Module module, String errorTypeName, BString message, BError cause, BMap<BString, Object> details)
 ```
 
-### New Runtime Java APIs
+#### New Runtime Java APIs
 
-#### API to Access Information of Type Inclusions at the Runtime
+##### API to Access Information of Type Inclusions at the Runtime
 
 Introduced a new API to retrieve the type IDs of the given `io.ballerina.runtime.api.types.ObjectType`.
 
@@ -711,7 +711,7 @@ Introduced a new API to retrieve the type IDs of the given `io.ballerina.runtime
 TypeIdSet getTypeIdSet();
 ``` 
 
-#### API to Retrieve the Constituent Types of an Intersection Type
+##### API to Retrieve the Constituent Types of an Intersection Type
 
 Introduced a new API to provide the list of constituent types of a given `io.ballerina.runtime.api.types.IntersectionType`.
 

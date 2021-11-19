@@ -54,8 +54,6 @@ Interested? Subscribe to it below:
 
 The Ballerina team is now hosting monthly recorded Community Calls! These are interactive meetings that will explore Ballerina use cases. These calls give you direct access to our Engineers and other community members to question or discuss about Ballerina and your projects.
 
-- Get information on the <a href="https://docs.google.com/document/d/1TPi0ktNvk-gQhVh46ckP5_LyhvwLJSQ3NJeSfv8459A/edit" target="_blank">past and upcoming calls</a>.
-
 - Be notified about the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJkkaXmOf-ULhZ1Oi7bXAG_UmieRQ3wF8mKDohWux-8Ltfsw/viewform" target="_blank">details of the upcoming community calls</a>.
 
 - Check out the recordings of all our <a href="https://www.youtube.com/playlist?list=PL7JOecNWBb0JAdYWqeGmD35MjE0KTjHXU">past community calls</a>.

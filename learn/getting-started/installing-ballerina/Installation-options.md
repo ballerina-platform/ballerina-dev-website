@@ -52,12 +52,12 @@ The installer should put the `C:\Program Files\Ballerina\<BALLERINA-DIRECTORY>\b
 
 For example, for the DEB file:
 ```
-dpkg -i ballerina-linux-installer-x64-swan-lake-preview1.deb 
+dpkg -i ballerina-linux-installer-x64-swan-lake-<VERSION>.deb 
 ```
 
 For example, for the RPM file:
 ```
-rpm -i ballerina-linux-installer-x64-swan-lake-preview1.rpm 
+rpm -i ballerina-linux-installer-x64-swan-lake-<VERSION>.rpm 
 ```
 
 ## Installing via the Ballerina Language ZIP File
@@ -102,12 +102,12 @@ To remove:
 
 For example, for the DEB file:
 ```
-apt-get remove ballerina-swan-lake-preview1
+apt-get remove ballerina-swan-lake-<VERSION>
 ```
 
 For example, for the RPM file:
 ```
-rpm -e ballerina-swan-lake-preview1
+rpm -e ballerina-swan-lake-<VERSION>
 ```
 
 ## What's Next?

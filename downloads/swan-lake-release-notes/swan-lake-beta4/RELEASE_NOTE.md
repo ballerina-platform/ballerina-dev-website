@@ -36,7 +36,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 ##### Support for Numeric Operations with Operands of Optional Numeric Types
 
-Unary expressions (`+`, `-`, and `~`), multiplicative expressions, additive expressions, shift expressions, and binary bitwise expressions can now be used with operands of optional numeric types. If the static type of an operand is an optional numeric type, the static type of the result will also be an optional numeric type.
+Updated unary expressions (`+`, `-`, and `~`), multiplicative expressions, additive expressions, shift expressions, and binary bitwise expressions to be used with operands of optional numeric types. If the static type of an operand is an optional numeric type, the static type of the result will also be an optional numeric type.
 
 The examples below are now allowed.
 
@@ -66,7 +66,7 @@ public function main() {
 
 ##### Support for Accessing Optional Fields of a Record Using Field Access
 
-Optional fields of records, that are of types that do not include nil, can now be accessed using field access expressions.
+Updated optional fields of records, which are of types that do not include nil to be accessed using field access expressions.
 
 ```ballerina
 type Employee record {
@@ -132,7 +132,7 @@ public function main() {
 
 ##### Restrictions When Calling a Function or a Method in a Match Guard
 
-Restrictions have been introduced for when a function or a method is called in a match guard in order to ensure that the match guard does not mutate the value being matched.
+Introduced restrictions for when a function or a method is called in a match guard to ensure that the match guard does not mutate the value being matched.
 
 A function or method call is now allowed in a match guard only if it meets one of the conditions below.
 - the type of the expression following `match` is a subtype of `readonly` or
@@ -172,7 +172,7 @@ isolated function stillValid(Data data, [int, decimal] values) returns boolean {
 
 ##### Improved Support for Unreachability
 
-Unreachability analysis has been improved for if-else statements and `while` statements. Constant conditions that are known to be either true or false at compile-time are now considered in the unreachability analysis.
+Improved the unreachability analysis of `if-else` statements and `while` statements. Constant conditions that are known to be either true or false at compile-time are now considered in the unreachability analysis.
 
 The conditions below are taken into consideration in the analysis of unreachability.
 
@@ -186,11 +186,11 @@ import ballerina/io;
 
 function fn1() {
     if false {
-        io:println("unreachable"); // this will now result in a compilation error: unreachable code
+        io:println("unreachable"); // This will now result in a compilation error: unreachable code.
     }
 
     while false {
-        io:println("unreachable"); // this will now result in a compilation error: unreachable code
+        io:println("unreachable"); // This will now result in a compilation error: unreachable code.
     }
 }
 
@@ -198,7 +198,7 @@ function fn2() {
     if true {
         io:println("reachable");
     } else {
-        io:println("unreachable"); // this will now result in a compilation error: unreachable code
+        io:println("unreachable"); // This will now result in a compilation error: unreachable code.
     }
 }
 
@@ -206,14 +206,14 @@ function fn3() {
     if true {
         return;
     }
-    io:println("unreachable"); // this will now result in a compilation error: unreachable code
+    io:println("unreachable"); // This will now result in a compilation error: unreachable code.
 }
 
 function fn4() {
     while true {
         return;
     }
-    io:println("unreachable"); // this will now result in a compilation error: unreachable code
+    io:println("unreachable"); // This will now result in a compilation error: unreachable code.
 }
 ```
 
@@ -228,7 +228,7 @@ function fn1(E e) {
     } else if e is Z {
         doZ();
     } else {
-        // any statement in this block will now be unreachable
+        // Any statement in this block will now be unreachable.
     } 
 }
 
@@ -240,7 +240,7 @@ function fn2(E e) {
     } else if e is Z {
         doZ();
     } else if e is Y {
-        // any statement in this block will now be unreachable
+        // Any statement in this block will now be unreachable.
     } 
 }
 
@@ -254,13 +254,13 @@ function fn3(E e) returns int {
     if e is Z {
         return 3;
     } 
-    // any statement here will now be unreachable
+    // Any statement here will now be unreachable.
 }
 ```
 
 ##### Type Narrowing Following an `if` Statement Without an `else` Block if the `if` Statement Block Cannot Complete Normally
 
-Building on the improvements introduced to unreachabillity analysis, types are now narrowed following an `if` statement without an `else` block, if the `if` statement block cannot complete normally.
+Narrowed the types following an `if` statement without an `else` block, if the `if` statement block cannot complete normally by building on the improvements introduced to the unreachabillity analysis.
 
 ```ballerina
 function populate(int[] arr, string str) returns error? {
@@ -286,7 +286,7 @@ function populate(int[] arr, string str) returns error? {
         return error("Invalid Value", res);
     }
 
-    // Previously allowed, now a compilation error since `res`'s type is now `int` and doesn't include `error`.
+    // This was previously allowed but now a compilation error since `res`'s type is now `int` and doesn't include `error`.
     int intRes = check res;
 
     arr.push(intRes);
@@ -295,9 +295,9 @@ function populate(int[] arr, string str) returns error? {
 
 ##### Restrictions on Assignments to Narrowed Variables within Loops
 
-Within a `while` statement or a `foreach` statement, it is no longer possible to assign a value to a variable that was narrowed outside the statement unless the loop terminates after the assignment (i.e., at the end of the loop body and at every `continue` statement there must be no possibility that a narrowed variable has been assigned to).
+Stopped the possibility to assign a value to a variable that was narrowed outside the statement within a `while` statement or a `foreach` statement. Unless the loop terminates after the assignment (i.e., at the end of the loop body and at every `continue` statement), there must be no possibility that a narrowed variable to be assigned.
 
-The sample below which previously resulted in a runtime panic will now result in a compilation error.
+The example below which previously resulted in a runtime panic will now result in a compilation error.
 
 ```ballerina
 function validate(int?[] arr) returns boolean {
@@ -308,7 +308,7 @@ function validate(int?[] arr) returns boolean {
             int currentValue = value;
 
             if item is () {
-                value = (); // error: invalid attempt to assign a value to a variable narrowed outside the loop
+                value = (); // Error: invalid attempt to assign a value to a variable narrowed outside the loop.
                 continue;
             }
 
@@ -326,7 +326,7 @@ public function main() {
 
 ##### Change in Expected Return Statements in a Function with an Optional Type as the Return Type
 
-A function having an optional type that is not a subtype of `error?` as the return type is now expected to explicitly return a value. A warning is emitted when such a function does not explicitly return a value and falls off the end of the function body. 
+Updated a function having an optional type that is not a subtype of `error?` as the return type to explicitly return a value. A warning is emitted when such a function does not explicitly return a value and falls off at the end of the function body. 
 
 ```ballerina
 function parse(string str) returns int? { // Now results in a warning. 
@@ -339,7 +339,7 @@ function parse(string str) returns int? { // Now results in a warning.
 
 #### Bug Fixes and Breaking Changes
 
-- The trailing dot format of the floating point literal has been disallowed to avoid lexical ambiguity.
+- Disallowed the trailing dot format of the floating-point literal to avoid lexical ambiguity.
 
     ```ballerina
     // The below are now disallowed.
@@ -363,7 +363,7 @@ function parse(string str) returns int? { // Now results in a warning.
     float f14 = 0x1A.0p4;
     ```
 
-- Intervening white spaces have been disallowed in the qualified identifier to avoid a parsing ambiguity between the ternary conditional expression and qualified identifier.
+- Disallowed intervening white spaces in the qualified identifier to avoid a parsing ambiguity between the ternary conditional expression and qualified identifier.
   
     ```ballerina
     import ballerina/io;
@@ -376,7 +376,7 @@ function parse(string str) returns int? { // Now results in a warning.
 
     With this, `x ? a : b:c` will now be parsed as `x ? a : (b:c)` since the colon with spaces is interpreted only as part of a conditional expression.
 
-- A bug that resulted in hash collisions not being handled correctly in `table` values has been fixed. 
+- Fixed a bug that resulted in hash collisions not being handled correctly in `table` values.
 
     ```ballerina
     import ballerina/io;
@@ -390,7 +390,7 @@ function parse(string str) returns int? { // Now results in a warning.
 
     The above code snippet, which previously printed `true` will now print `false`.
 
-- Object type inclusion with an object that has private fields or members has been disallowed.
+- Disallowed object type inclusions with an object that has private fields or members.
 
     ```ballerina
     class Person {
@@ -422,32 +422,32 @@ function parse(string str) returns int? { // Now results in a warning.
     }
     ```
 
-- A bug that resulted in compilation errors not being emitted for invalid `xml` template expressions has been fixed.
+- Fixed a bug that resulted in compilation errors not being emitted for invalid `xml` template expressions.
 
     ```ballerina
     xml x = xml `</>`; // Will now result in an error.
     ```
 
-- A bug that resulted in compilation errors not being emitted for duplicate fields written with escape sequences in the mapping constructor has been fixed.
+- Fixed a bug that resulted in compilation errors not being emitted for duplicate fields written with escape sequences in the mapping constructor.
 
     ```ballerina
     map<any> x = {a\\: 454, "a\\": false}; // Will now result in an error.
     ```
 
-- `xml:createElement` now accepts the attribute map as the second argument.
+- Updated the `xml:createElement` to accept the attribute map as the second argument.
 
     ```ballerina
     xml:Element jo = xml:createElement("name", {id: "1234"}, xml `Jo`);
     ```
 
-- The `xml:get` function’s return type has been updated to return the exact type `T` when the `xml` sequence is of type `xml<T>`.
+- Updated the `xml:get` function’s return type to return the exact type `T` when the `xml` sequence is of type `xml<T>`.
 
     ```ballerina
     xml<xml:Element> employees = xml `<e1><name>Jo</name></e1><e2><name>Mary</name></e2>`;
     xml:Element employee1 = employees.get(0);// Now allowed.
     ```
 
-- The `table:map` function’s function argument `func` and the return type have been updated to work with subtypes of mapping types instead of any type.
+- Updated the `table:map` function’s function argument `func` and the return type to work with subtypes of mapping types instead of any type.
 
     ```ballerina
     table<record {int id; string name;}> tb = table [
@@ -460,9 +460,9 @@ function parse(string str) returns int? { // Now results in a warning.
     });
     ```
 
-- Few deviations in the `lang.error` module have been corrected according to the language specification. The `CallStack` class and `CallStackElement` records have been removed. Now a stack frame is represented by an `error:StackFrame` object.
+- Corrected a few deviations in the `lang.error` module according to the language specification. The `CallStack` class and `CallStackElement` records have been removed. Now, a stack frame is represented by an `error:StackFrame` object.
 	
-    Prior to Swan Lake Beta4, the `error:stackTrace()` function returned an `error:CallStack` object which had the following structure, which was a deviation from the specification.
+    Prior to Swan Lake Beta4, the `error:stackTrace()` function returned an `error:CallStack` object which had the structure below which was a deviation from the specification.
 
     ```ballerina
     public class CallStack {
@@ -470,14 +470,14 @@ function parse(string str) returns int? { // Now results in a warning.
     }
     ```
 
-    This has now been fixed, and it is no longer possible to retrieve an `error:CallStack` object or directly access the `callStack` array as follows.
+    This has now been fixed, and it is no longer possible to retrieve an `error:CallStack` object or directly access the `callStack` array as shown below.
 
     ```ballerina
     error:CallStack callStack = err.stackTrace(); // `CallStack` is undefined
     error:CallStackElement[] elements = err.stackTrace().callStack; // Not allowed, `CallStackElement` is undefined, no `callStack` field.
     ```
 
-    The `error:stackTrace` function now returns an array of StackFrame objects.
+    The `error:stackTrace` function now returns an array of `StackFrame` objects.
 
     ```ballerina
     public type StackFrame readonly & object {
@@ -489,7 +489,7 @@ function parse(string str) returns int? { // Now results in a warning.
     error:StackFrame[] stackTrace = e.stackTrace(); // Now returns `error:StackFrame[]`.
     ```
 
-- The return type of the `error:detail` function in the lang.error module is now a subtype of `readonly`. It is the intersection of `readonly` and the detail type of the error.
+- made the return type of the `error:detail` function in the `lang.error` module a subtype of `readonly`. It is the intersection of `readonly` and the detail type of the error.
 
     ```ballerina
     type Detail record {|
@@ -503,13 +503,13 @@ function parse(string str) returns int? { // Now results in a warning.
     }
     ```
 
-- A deviation in the `stream:next` function’s stream argument name has been fixed. The name has been changed from `strm` to `stm`.
+- Fixed a deviation in the `stream:next` function’s stream argument name. The name has been changed from `strm` to `stm`.
 
-- A bug in `array:sort` which was sorting the original list has been rectified. The function now returns a new sorted array. The original array remains unchanged.
+- Fixed a bug in `array:sort`, which was sorting the original list. The function now returns a new sorted array. The original array remains unchanged.
 
-- The name of the argument to `transaction:setData()` has been changed from `e` to `data`. Moreover, the static type of the argument to `transaction:setData()` and the return type of `lang.transaction:getData()` have been changed to `readonly`. They were previously of type `(any|error) & readonly` and even this change would accept/return the same set of values.
+- Changed the name of the argument to `transaction:setData()` from `e` to `data`. Moreover, changed the static type of the argument to `transaction:setData()` and the return type of `lang.transaction:getData()` to `readonly`. They were previously of type `(any|error) & readonly` and even this change would accept/return the same set of values.
 
-- The `float:min()` and `float:max()` functions now return `float:NaN` if an argument is `float:NaN`. 
+- Updated the `float:min()` and `float:max()` functions to return `float:NaN` if an argument is `float:NaN`. 
 
     ```ballerina
     import ballerina/io;
@@ -523,7 +523,7 @@ function parse(string str) returns int? { // Now results in a warning.
     }
     ```
 
-- A bug in the `decimal:fromString()` function which allowed parsing a string that matched the `HexFloatingPointLiteral` has been fixed. It now returns an error.
+- Fixed a bug in the `decimal:fromString()` function, which allowed parsing a string that matched the `HexFloatingPointLiteral`. It now returns an error.
 
     ```ballerina
     import ballerina/io;
@@ -534,7 +534,7 @@ function parse(string str) returns int? { // Now results in a warning.
     }
     ```
 
-- A bug in the `float:fromString()` function allowed parsing a string that had matched a `DecimalFloatingPointNumber` with `FloatingPointTypeSuffix` has been fixed. This will now return an error.
+- Fixed a bug in the `float:fromString()` function allowed parsing a string that had matched a `DecimalFloatingPointNumber` with `FloatingPointTypeSuffix`. This will now return an error.
 
     ```ballerina
     import ballerina/io;
@@ -545,7 +545,7 @@ function parse(string str) returns int? { // Now results in a warning.
     }
     ```
 
-- The `float:fromHexString()` function now returns an error if the provided string argument does not match a `HexFloatingPointLiteral`. 
+- Updated the `float:fromHexString()` function to return an error if the provided string argument does not match a `HexFloatingPointLiteral`. 
 
     ```ballerina
     import ballerina/io;
@@ -556,9 +556,9 @@ function parse(string str) returns int? { // Now results in a warning.
     }
     ```
 
-- A spec deviation was fixed in `int:toHexString` which was causing it to convert negative values to a positive number before converting to a hexadecimal string.
+- Fixed a spec deviation in the `int:toHexString`, which was causing it to convert negative values to a positive number before converting to a hexadecimal string.
 
-- A deviation in the `lang.error` `RetryManager` and `DefaultRetryManager` objects' `shouldRetry` method argument type is fixed. The type has been changed from `error?` to `error`.
+- Fixed a deviation in the `lang.error` `RetryManager` and `DefaultRetryManager` objects' `shouldRetry` method argument type. The type has been changed from `error?` to `error`.
 	
     ```ballerina
     public class CustomRetryManager {
@@ -579,7 +579,7 @@ function parse(string str) returns int? { // Now results in a warning.
     }
     ```
 
-- Attempting to use an out of range float value where the applicable contextually-expected type is `float` will now result in a compile-time error.
+- Updated the attempting to use an out of range float value where the applicable contextually-expected type is `float` to result in a compile-time error.
 
     ```ballerina
     public function main() {
@@ -587,11 +587,11 @@ function parse(string str) returns int? { // Now results in a warning.
     }
     ```
 
-- Spec deviations related to identifying the types of numeric literals have been fixed. 
+- Fixed the spec deviations related to identifying the types of numeric literals. 
 
-    If the numeric literal does not include the float type suffix or the decimal type suffix and if it is not a hex floating-point literal, the type of the numeric literal will be based on the following rules.
+    If the numeric literal does not include the float type suffix or the decimal type suffix and if it is not a hex floating-point literal, the type of the numeric literal will be based on the rules below.
 
-    1. If the literal is a floating point literal, then the possible basic types in order of preference are `[float, decimal]`; otherwise they are `[int, float, decimal]`.
+    1. If the literal is a floating-point literal, then the possible basic types in order of preference are `[float, decimal]`. Otherwise, they are `[int, float, decimal]`.
     2. If there is a contextually-expected type `C` and there is an intersection between `C` and the possible numeric basic types identified above, use the most preferred such type.
     3. Otherwise, use the most preferred possible basic type.
 
@@ -622,7 +622,7 @@ function parse(string str) returns int? { // Now results in a warning.
     }
     ```
 
-    The following now results in a compile-time error since the type of the literal is considered to be `float` and `Foo` does not contain `float` `2`.
+    The example below now results in a compile-time error since the type of the literal is considered to be `float` and `Foo` does not contain `float` `2`.
 
     ```ballerina
     Foo z = 2; // Now results in a compile-time error.
@@ -637,9 +637,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta4](https://github
 
 ##### Improved Error Messages on a Type Conversion Failure
 
-Detailed error messages are now given on a type conversion failure narrowing down the specific location of errors in the structural types. A maximum number of 20 errors are shown at a time.
+Updated the detailed error messages to be given on a type conversion failure narrowing down the specific location of errors in the structural types. A maximum number of 20 errors are shown at a time.
 
-E.g.,
+For example, the code below 
+
 ```ballerina
 type Journey record {|
     map<int> destinations;
@@ -668,7 +669,8 @@ public function main() {
     tupleType val = checkpanic j.cloneWithType();
 }
 ``` 
-now gives
+now gives the error below.
+
 ```
 error: {ballerina/lang.value}ConversionError {"message":"'json[]' value cannot be converted to '[Journey,[Journey,map<Journey>],()[],int...]': 
                 missing required field '[0].rating' of type '[string,decimal]' in record 'Journey'
@@ -687,7 +689,7 @@ error: {ballerina/lang.value}ConversionError {"message":"'json[]' value cannot b
 
 ##### Improvement in the Runtime Error Creator API 
 
-The runtime Java error creator API has been improved to get a `BMap` as the `details` parameter. 
+Improved the runtime Java error creator API to get a `BMap` as the `details` parameter. 
 
 ```Java
 BError createError(Module module, String errorTypeName, BString message, BError cause, BMap<BString, Object> details)
@@ -697,7 +699,7 @@ BError createError(Module module, String errorTypeName, BString message, BError 
 
 ##### API to Access Information of Type Inclusions at the Runtime
 
-A new API is introduced to retrieve the type IDs of the given `io.ballerina.runtime.api.types.ObjectType`.
+Introduced a new API to retrieve the type IDs of the given `io.ballerina.runtime.api.types.ObjectType`.
 
 ```Java
 TypeIdSet getTypeIdSet();
@@ -705,7 +707,7 @@ TypeIdSet getTypeIdSet();
 
 ##### API to Retrieve the Constituent Types of an Intersection Type
 
-A new API is introduced to provide the list of constituent types of a given `io.ballerina.runtime.api.types.IntersectionType`.
+Introduced a new API to provide the list of constituent types of a given `io.ballerina.runtime.api.types.IntersectionType`.
 
 ```Java
 List<Type> getConstituentTypes();
@@ -715,7 +717,7 @@ List<Type> getConstituentTypes();
 
 ##### Removed Supporting the Single-Quote to Mark the Boundary of a JSON String Value 
 
-To comply with the JSON [specification](https://www.json.org/), the JSON parser is no longer supporting single quotes to mark the boundaries of a string. Only double quotes are supported.
+Stopped the JSON parser supporting single quotes to mark the boundaries of a string to comply with the JSON [specification](https://www.json.org/). Only double quotes are supported now.
 
 ```ballerina
 public function main() {
@@ -727,16 +729,15 @@ public function main() {
 
 ##### Throw Unused Configurable Value Warnings as Errors
 
-When there is a configuration value provided in the `Config.toml` file or a command line argument that does not match
-with the existing configurable variables, it will fail at runtime with an error instead of a warning.
+When there is a configuration value provided in the `Config.toml` file or a command-line argument that does not match with the existing configurable variables, it will fail at runtime with an error instead of a warning.
 
-For example, if you have the following in the `main.bal` file,
+For example, if you have the below in the `main.bal` file,
 
 ```ballerina
 configurable int a = ?;
 ```
 
-and the following in the `Config.toml` file,
+and the below in the `Config.toml` file,
 
 ```toml
 a = 2
@@ -746,7 +747,7 @@ b = "invalid"
 d = 45
 ```
 
-then, it will fail with the following errors.
+then, it will fail with the errors below.
 
 ```
 error: [Config.toml:(2:1,2:14)] unused configuration value 'b'
@@ -808,7 +809,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta4](https://github
 
 ##### Debugger
 - Added support for debug pause instructions. With this support, any running Ballerina programs can be suspended immediately at the current execution line of the program.
-- [Preview Feature] Introduced Ballerina code completion support in the VSCode debug console. Now, a context-aware completion list will be suggested automatically for Ballerina expressions in the VSCode evaluation window.
+- [Preview Feature] Introduced Ballerina code completion support in the Visual Studio Code debug console. Now, a context-aware completion list will be suggested automatically for Ballerina expressions in the VSCode evaluation window.
 - Added string template support for debug logpoints. Now, you can interpolate expressions within debug logpoint messages by using the `${}` syntax so that the debug logpoints can be used to log state variable information without suspending the program. 
 
 #### Bug Fixes

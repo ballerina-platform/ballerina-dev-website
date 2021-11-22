@@ -58,6 +58,8 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="kd">service</span> <span class="nx">class</span> <span class="nx">EchoService</span> <span class="p">{</span>
+    <span class="o">*</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">ConnectionService</span><span class="p">;</span>
+
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onBytes</span><span class="p">(</span><span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">byte</span><span class="p">[]</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received message: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
         <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
@@ -277,9 +279,21 @@ import ballerina/tcp;
                             
                             <div class="cTR">
 
-                                <div class="code">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>service class EchoService {
-    remote function onBytes(readonly &amp; byte[] data) returns byte[] {
+    *tcp:ConnectionService;
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onBytes(readonly &amp; byte[] data) returns byte[] {
         io:println(&quot;Received message: &quot;, string:fromBytes(data));
         return data;
     }

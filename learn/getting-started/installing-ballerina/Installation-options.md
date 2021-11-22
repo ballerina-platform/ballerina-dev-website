@@ -52,12 +52,12 @@ The installer should put the `C:\Program Files\Ballerina\<BALLERINA-DIRECTORY>\b
 
 For example, for the DEB file:
 ```
-dpkg -i ballerina-linux-installer-x64-swan-lake-preview1.deb 
+dpkg -i ballerina-linux-installer-x64-swan-lake-<VERSION>.deb 
 ```
 
 For example, for the RPM file:
 ```
-rpm -i ballerina-linux-installer-x64-swan-lake-preview1.rpm 
+rpm -i ballerina-linux-installer-x64-swan-lake-<VERSION>.rpm 
 ```
 
 ## Installing via the Ballerina Language ZIP File
@@ -71,6 +71,24 @@ rpm -i ballerina-linux-installer-x64-swan-lake-preview1.rpm
     - **For Windows:** add a new environment variable specifying the following values:
         - **Variable name:** PATH
         - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, `C:\Program Files\Ballerina\ballerina-<VERSION>\bin`
+
+## Verifying the Installation
+
+After installing Ballerina, run the following test to verify if Ballerina has been successfully installed. 
+
+Execute the command below from the command shell of the operating system.
+
+```bash
+bal -v
+```
+
+Make certain the command output shows the version that you downloaded as shown below.
+
+```bash
+Ballerina Swan Lake <VERSION>
+Language specification 2021R1
+Update Tool 1.3.6
+```
 
 ## Updating Ballerina
 
@@ -102,12 +120,12 @@ To remove:
 
 For example, for the DEB file:
 ```
-apt-get remove ballerina-swan-lake-preview1
+apt-get remove ballerina-swan-lake-<VERSION>
 ```
 
 For example, for the RPM file:
 ```
-rpm -e ballerina-swan-lake-preview1
+rpm -e ballerina-swan-lake-<VERSION>
 ```
 
 ## What's Next?

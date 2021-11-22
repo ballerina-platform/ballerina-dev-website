@@ -53,7 +53,6 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">emailString</span> <span class="p">=</span> <span class="nx">check</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">civilToEmailString</span><span class="p">(</span><span class="nx">civil2</span><span class="p">,</span> <span class="nx">time</span><span class="p">:</span><span class="nx">PREFER_ZONE_OFFSET</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">`Email string of the civil record: ${emailString}`</span><span class="p">);</span>
-
 <span class="p">}</span>
 </pre></div>
 
@@ -109,7 +108,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=023edc78b9e83a0c4cdb221f1a625c3a&file=time_formatting_and_parsing.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f758eac645851f73357d60f27f7ce552&file=time_formatting_and_parsing.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -278,10 +277,11 @@ import ballerina/time;
                             
                             <div class="cTR hover-enable">
 
-                                <div class="code leading">
+                                <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    string emailString = check
     time:civilToEmailString(civil2, time:PREFER_ZONE_OFFSET);
     io:println(`Email string of the civil record: ${emailString}`);
+}
 </code></pre></div>
 
                                 </div>
@@ -294,18 +294,6 @@ import ballerina/time;
 
                                         </div>
                                     </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
-
-                                <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>}
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
                                     
                                 </div>
                             </div>

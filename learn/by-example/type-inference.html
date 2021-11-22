@@ -32,9 +32,10 @@ redirect_from:
 
     <span class="c1">// Infers `x` as the `MyClass` type.</span>
     <span class="k">var</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">MyClass</span><span class="p">();</span>
+    <span class="nx">MyClass</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">x</span><span class="p">;</span>
 
     <span class="c1">// Infers the class for `new` as `MyClass`.</span>
-    <span class="nx">MyClass</span> <span class="nx">y</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+    <span class="nx">MyClass</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 
 <span class="p">}</span>
 
@@ -94,7 +95,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=8f96f45c82104d3b298f44ffdaefd6b8&file=type_inference.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=121b79ec0736555bcbd1a5b9617f377b&file=type_inference.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -203,6 +204,7 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var x = new MyClass();
+    MyClass _ = x;
 </code></pre></div>
 
                                 </div>
@@ -221,7 +223,7 @@ redirect_from:
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    MyClass y = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    MyClass _ = new;
 </code></pre></div>
 
                                 </div>

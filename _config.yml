@@ -57,3 +57,21 @@ algolia:
   application_id: 1UGB2K5V0K
   index_name: jekyll wso2_bbe_dev_sameeral 
   search_only_api_key: fbb148c3fb14152176aec9976c0f425d
+defaults:
+  -
+    scope:
+      path:            "1.1"
+    values:
+      sitemap:         false
+  -
+    scope:
+      path:            "1.0"
+    values:
+      sitemap:         false
+  -
+    scope:
+      path:            "1.2"
+    values:
+      sitemap:         false
+
+

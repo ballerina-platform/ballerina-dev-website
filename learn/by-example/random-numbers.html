@@ -23,6 +23,7 @@ redirect_from:
     <span class="c1">// Generates a random number between the given start(inclusive) and end(exclusive) values.</span>
     <span class="kt">int</span> <span class="nx">randomInteger</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">random</span><span class="p">:</span><span class="nx">createIntInRange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Random integer number in range: &quot;</span><span class="p">,</span> <span class="nx">randomInteger</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -76,7 +77,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=1efb09ac642c68cceb2a0337d95a68ea&file=random_numbers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=4e7386865636ec258caeb3f581d8bb3e&file=random_numbers.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -140,6 +141,7 @@ import ballerina/random;
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    int randomInteger = check random:createIntInRange(1, 100);
     io:println(&quot;Random integer number in range: &quot;, randomInteger);
+    return;
 }
 </code></pre></div>
 

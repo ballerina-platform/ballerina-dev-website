@@ -22,9 +22,11 @@ redirect_from:
 
     <span class="c1">// `n` will be 1.</span>
     <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
 
     <span class="c1">// `s.length()` is same as `string:length(s)`.</span>
     <span class="kt">int</span> <span class="nx">m</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">length</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span>
 
 <span class="p">}</span>
 </pre></div>
@@ -80,7 +82,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=4761b3bce4667b326fc6e678d6c9bb86&file=langlib_functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=edf99e3ab909e1926d5d4381108e9985&file=langlib_functions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -153,6 +155,7 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int n = s.length();
+    io:println(n);
 </code></pre></div>
 
                                 </div>
@@ -172,6 +175,7 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int m = string:length(s);
+    io:println(m);
 </code></pre></div>
 
                                 </div>
@@ -211,6 +215,8 @@ redirect_from:
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run langlib_functions.bal
 b
+1
+1
 </code></pre></div>
 
                                 </div>

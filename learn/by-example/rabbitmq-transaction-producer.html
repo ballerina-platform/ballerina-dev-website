@@ -26,7 +26,7 @@ redirect_from:
         <span class="c1">// Publishes the message using the routing key named &quot;MyQueue&quot;.</span>
         <span class="nx">check</span> <span class="nx">newClient</span><span class="o">-&gt;</span><span class="nx">publishMessage</span><span class="p">({</span> <span class="nx">content</span><span class="p">:</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">(),</span>
                                                     <span class="nx">routingKey</span><span class="p">:</span> <span class="s">&quot;MyQueue&quot;</span> <span class="p">});</span>
-        <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
+        <span class="nx">check</span> <span class="nx">commit</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -164,7 +164,7 @@ redirect_from:
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        check newClient-&gt;publishMessage({ content: message.toBytes(),
                                                     routingKey: &quot;MyQueue&quot; });
-        error? result = commit;
+        check commit;
     }
 }
 </code></pre></div>
@@ -193,7 +193,6 @@ redirect_from:
 
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run rabbitmq_transaction_producer.bal
-[ballerina/http] started HTTP/WS listener 192.168.1.2:51659
 </code></pre></div>
 
                                 </div>

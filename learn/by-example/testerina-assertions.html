@@ -48,8 +48,7 @@ redirect_from:
 
 <span class="nd">@test:Config {</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testAssertFail</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">boolean</span> <span class="nx">flag</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">flag</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="c1">// Intentionally, throws an `AssertionError`.</span>
@@ -302,8 +301,7 @@ function testAssertFalse() {
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>@test:Config { }
 function testAssertFail() {
-    boolean flag = true;
-    if (flag) {
+    if (true) {
         return;
     }
 </code></pre></div>

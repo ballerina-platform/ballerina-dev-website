@@ -217,6 +217,8 @@ function fn4() {
 }
 ```
 
+The below is another example.
+
 ```ballerina
 enum E {
     X,

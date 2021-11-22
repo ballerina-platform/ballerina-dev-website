@@ -28,6 +28,7 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="kd">service</span> <span class="nx">class</span> <span class="nx">EchoService</span> <span class="p">{</span>
+    <span class="o">*</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">ConnectionService</span><span class="p">;</span>
 
     <span class="c1">// This remote method is invoked once the content is received from the client.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onBytes</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">)</span> 
@@ -172,6 +173,7 @@ import ballerina/tcp;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>service class EchoService {
+    *tcp:ConnectionService;
 </code></pre></div>
 
                                 </div>

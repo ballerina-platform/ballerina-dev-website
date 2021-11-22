@@ -684,10 +684,8 @@ body {font-family: Arial;}
          <p class="cEventLocation">Las Vegas, Nevada, USA</p>
       </td>
       <td class="cEventDetail">
-         <a target="_blank" href="https://apachecon.com/acna19/s/#/schedule">
-            <h4>ApacheCon North America 2019</h4>
-         </a>
-         <h5>Ballerina - Re-inventing Middleware in a Programming Language</h5>
+       <h4>ApacheCon North America 2019</h4>
+       <h5>Ballerina - Re-inventing Middleware in a Programming Language</h5>
          <b>Paul Fremantle,</b> CTO and Co-founder, WSO2
       </td>
       <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/apachecon-na-2019-reinventing-middleware-in-a-programming-language" target="_blank">View Slides</a></td>
@@ -698,9 +696,7 @@ body {font-family: Arial;}
          <p class="cEventLocation">Las Vegas, Nevada, USA</p>
       </td>
       <td class="cEventDetail">
-         <a target="_blank" href="https://apachecon.com/acna19/s/#/schedule">
             <h4>ApacheCon North America 2019</h4>
-         </a>
          <h5>Conquering Network Distributed Applications Using the Ballerina Programming Language</h5>
          <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
       </td>

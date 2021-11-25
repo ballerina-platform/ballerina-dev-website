@@ -789,16 +789,15 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta4](https://github
 - Added `error:StackFrame[]` as a key-value pair type
     
 #### `http` Package
-- Marked the HTTP service type as distinct
 - Relaxed the data-binding restriction for status codes without content
 - Changed the `Listener.getConfig()` API to return an `InferredListenerConfiguration`
 
 #### `websub` Package
 - Updated to not change the generated unique-service-path after compilation
-- Marked the WebSub service type as distinct
 
-#### `websubhub` Package
-- Marked the WebSubHub service type as distinct
+### Changes
+- Marked all the standard library services as `distinct`
+- Removed all the `info` logs printed from the listeners
 
 ### Bug Fixes
 

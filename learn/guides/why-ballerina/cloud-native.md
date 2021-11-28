@@ -253,7 +253,7 @@ public function hello(@af:HTTPTrigger { authLevel: "anonymous" } string payload)
 ### CI/CD with GitHub Actions
 In a microservice architecture, continuous integration and continuous delivery (CI/CD) is critical in creating an agile environment to incorporate incremental changes to your system. Different technologies provide this CI/CD functionality, and very recently, GitHub has introduced GitHub Actions, which are now available for general usage. GitHub Actions is a convenient mechanism for implementing CI/CD pipelines using their workflow concept right from your GitHub repositories.
 
-With [Ballerina GitHub Action](https://github.com/marketplace/actions/ballerina-action), it is much easier to create a Ballerina development environment with built-in CI/CD. 
+>**Info:** With the [Ballerina GitHub Action](https://github.com/marketplace/actions/ballerina-action), it is much easier to create a Ballerina development environment with built-in CI/CD. 
 
 <style>
 .nav > li.cVersionItem {

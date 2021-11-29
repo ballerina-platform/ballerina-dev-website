@@ -31,7 +31,6 @@ redirect_from:
     <span class="c1">// Client will retry 20 times(20 seconds in time) until the server gets started.</span>
     <span class="kt">string</span> <span class="nx">retryMsg</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">readTextMessage</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">retryMsg</span><span class="p">);</span>
-    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -172,7 +171,6 @@ import ballerina/websocket;
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    string retryMsg = check wsClient-&gt;readTextMessage();
     io:println(retryMsg);
-    return;
 }
 </code></pre></div>
 

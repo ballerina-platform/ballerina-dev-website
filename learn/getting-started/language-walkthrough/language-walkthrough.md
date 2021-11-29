@@ -4,8 +4,8 @@ title: Language Walkthrough
 permalink: /learn/language-walkthrough/
 redirect_from:
   - /learn/language-concepts
-  - /learn/language-guide/Ballerina_Language_Presentation-2021-03-08.pdf
-  - /learn/language-guide/Ballerina_Language_Presentation-2021-01-29.pdf
+  - /learn/language-walkthrough/Ballerina_Language_Presentation-2021-03-08.pdf
+  - /learn/language-walkthrough/Ballerina_Language_Presentation-2021-01-29.pdf
   - /learn/language-concepts/
   - /learn/language-concepts
   - /learn/language-walkthrough

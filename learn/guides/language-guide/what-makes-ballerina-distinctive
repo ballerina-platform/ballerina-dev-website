@@ -183,7 +183,7 @@ This is an example of a resource method. Instead of ``remote``, it uses the ``re
 
 So this service object defines a resource *“/hello”* with a query parameter **``name``**.<br><br>
 
-## Hierarchical resources
+## Hierarchical Resources
 
 Resources are hierarchical. They have a path, which consists of a base path and multiple segments.
 
@@ -475,7 +475,7 @@ Additionally, it is also possible to convert from JSON to application specific t
 
 The second approach is something where Ballerina really shines compared to other languages because it is very hard to translate between JSON and the native types in other languages.<br><br>
 
-## Working with Json Directly
+## Working with JSON Directly
 
 Working directly with JSON data is easy with the use of json type.
 
@@ -501,7 +501,7 @@ Ballerina supports runtime checking of the ``json`` structure to raise runtime e
 string s = check value:ensureType(v, string);
 ```
 
-## ``match`` statements with maps
+## ``match`` Statements with Maps
 
 ``json`` values can be used in a ``match`` statement to provide flexible pattern matching based on the fields in the ``json`` structure.
 
@@ -602,7 +602,7 @@ Coord c = check j.cloneWithType();
 
 In this case, the argument is implicitly obtained from the context.<br><br>
 
-## Resource method typing
+## Resource Method Typing
 
 The features of JSON to user-defined type conversion and vice versa are advantageous when you write the service object in Ballerina.
 

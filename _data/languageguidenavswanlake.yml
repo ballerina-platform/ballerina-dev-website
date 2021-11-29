@@ -1,0 +1,20 @@
+
+- title: How Ballerina Does What All Programming Languages Do
+  url: /learn/language-guide/how-ballerina-does-what-all-programming-languages-do/
+  active: how-ballerina-does-what-all-programming-languages-do
+
+- title: What Makes Ballerina Distinctive
+  url: /learn/language-guide/what-makes-ballerina-distinctive/
+  active: what-makes-ballerina-distinctive
+
+- title: Query, Tables, and XML
+  url: /learn/language-guide/query-tables-and-xml/
+  active: query-tables-and-xml
+
+- title: Concurrency and Transactions
+  url: /learn/language-guide/concurrency-and-transactions/ 
+  active: concurrency-and-transactions
+
+- title: Completing the Picture
+  url: /learn/language-guide/completing-the-picture/ 
+  active: ompleting-the-picture

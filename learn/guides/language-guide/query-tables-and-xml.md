@@ -1,5 +1,5 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-language-guide-left-nav-pages-swanlake
 title: Query, Tables, and XML
 description: In this part, you will learn about some of the plain data supported by Ballerina that we have not covered in the last part, specifically, tables and XML types.
 keywords: ballerina, programming language, ballerina packages,language-guide

@@ -155,7 +155,7 @@ redirect_from:
     <p >Why you should use Ballerina.  </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important">
-  <a href="/learn/language-guide/completing-the-picture/">
+  <a href="/learn/language-guide/how-ballerina-does-what-all-programming-languages-do/">
    <h3 id="language-guide">Language Guide</h3></a>
     <p >Guide to learn the Ballerina language.  </p>
 </div>

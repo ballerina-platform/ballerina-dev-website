@@ -1,5 +1,5 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-language-guide-left-nav-pages-swanlake
 title: What Makes Ballerina Distinctive
 description: In this part, you will learn about the features of the Ballerina programming language that are distinctive. These features revolve around key design considerations that make Ballerina suitable for cloud application programming using small and medium-sized programs.
 keywords: ballerina, programming language, ballerina packages,language-guide

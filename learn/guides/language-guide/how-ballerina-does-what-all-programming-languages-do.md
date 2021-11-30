@@ -1,5 +1,5 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-language-guide-left-nav-pages-swanlake
 title: How Ballerina Does What All Programming Languages Do
 description: The sections below include information about how Ballerina does what all programming languages do.
 keywords: ballerina, programming language, ballerina packages,language-guide

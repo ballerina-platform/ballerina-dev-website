@@ -26,6 +26,10 @@ layout: ballerina-inner-page
     document.write('<meta http-equiv="refresh" content="0; url=' + redirectpath + '">');
   } else if (pathname.indexOf("/learn/by-example/") !== -1) {
     document.write('<meta http-equiv="refresh" content="0; url=/learn/by-example/">');
+  } else if (pathname.indexOf("/1.1/learn/") !== -1) {
+    document.write('<meta http-equiv="refresh" content="0; url=/1.1/learn/">');
+  } else if (pathname.indexOf("/1.0/learn/") !== -1) {
+    document.write('<meta http-equiv="refresh" content="0; url=/1.0/learn/">');
   } else if (redirection.type == "versioned") {
     var new_path = pathname.replace('v', '').replace('-', '.');
     document.write('<meta http-equiv="refresh" content="0; url=' + new_path + '">');

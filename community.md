@@ -93,6 +93,7 @@ Report issues in the GitHub repositories of the areas and components listed belo
 
 - <a href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose" target="_blank">Compiler, runtime, or tooling</a>
 - <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues/new/choose" target="_blank">Standard Library</a>
+- <a href="https://github.com/wso2/ballerina-plugin-vscode/issues/new/choose" target="_blank">Ballerina Visual Studio Code extension</a>
 - <a href="https://github.com/ballerina-platform/ballerina-spec/issues/new" target="_blank">Language specification</a>
 - <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">Website</a>
 - <a href="mailto:security@ballerina.io" target="_blank">Security</a> (For details, see the <a href="/security" target="_blank">security policy</a>.)

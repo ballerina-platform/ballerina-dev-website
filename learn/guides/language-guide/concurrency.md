@@ -1,13 +1,13 @@
 ---
 layout: ballerina-language-guide-left-nav-pages-swanlake
-title: Concurrency and Transactions
+title: Concurrency 
 description: Let’s now look at how concurrency and transactions are handled in Ballerina. 
 keywords: ballerina, programming language, ballerina packages,language-guide
-permalink: /learn/language-guide/concurrency-and-transactions/
-active: concurrency-and-transactions
+permalink: /learn/language-guide/concurrency/
+active: concurrency
 intro: Let’s now look at how concurrency and transactions are handled in Ballerina. 
 redirect_from:
-- /learn/language-guide/concurrency-and-transactions
+- /learn/language-guide/concurrency
 ---
 
 ## Sequence-diagram based concurrency

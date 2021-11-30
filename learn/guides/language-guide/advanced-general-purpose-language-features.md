@@ -1,13 +1,13 @@
 ---
 layout: ballerina-language-guide-left-nav-pages-swanlake
-title: Completing the Picture
+title: Advanced, General-Purpose Language Features
 description: Let’s now look at the other features of the Ballerina language. These are a mixed bag of additional options to the language, making everything fit together to build a Ballerina application.
 keywords: ballerina, programming language, ballerina packages,language-guide
-permalink: /learn/language-guide/completing-the-picture/
-active: completing-the-picture
+permalink: /learn/language-guide/advanced-general-purpose-language-features/
+active: advanced-general-purpose-language-features
 intro: Let’s now look at the other features of the Ballerina language. These are a mixed bag of additional options to the language, making everything fit together to build a Ballerina application.
 redirect_from:
-- /learn/language-guide/completing-the-picture
+- /learn/language-guide/advanced-general-purpose-language-features
 ---
 
 ## Default Values for Function Parameters

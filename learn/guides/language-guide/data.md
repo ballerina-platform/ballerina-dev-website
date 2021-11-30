@@ -1,13 +1,13 @@
 ---
 layout: ballerina-language-guide-left-nav-pages-swanlake
-title: Query, Tables, and XML
+title: Data
 description: In this part, you will learn about some of the plain data supported by Ballerina that we have not covered in the last part, specifically, tables and XML types.
 keywords: ballerina, programming language, ballerina packages,language-guide
-permalink: /learn/language-guide/query-tables-and-xml/
-active: query-tables-and-xml
+permalink: /learn/language-guide/data/
+active: data
 intro: In this part, you will learn about some of the plain data supported by Ballerina that we have not covered in the last part, specifically, tables and XML types.
 redirect_from:
-- /learn/language-guide/query-tables-and-xml
+- /learn/language-guide/data
 ---
 
 ## Query Expressions

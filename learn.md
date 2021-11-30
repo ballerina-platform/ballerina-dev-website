@@ -105,39 +105,50 @@ redirect_from:
 
 <div class="row" style=" margin-bottom:30px">
 <h2 id="getting-started">Getting Started</h2>
+
 <div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card" >
+<div class="col-lg-6 col-md-6 col-sm-12 card">
+<h3 id="language-walkthrough-video"><a href="/learn/language-guide/how-ballerina-does-what-all-programming-languages-do">How Ballerina Does What All Programming Languages Do</a></h3>
+<p>Get started quickly with the language.</p>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
   <a href="/learn/installing-ballerina/setting-up-ballerina/">
     <h3 id="installing-ballerina">Installing Ballerina</h3> </a>
     <p >Setting up the Ballerina development environment.  </p>
 </div>
+</div>
 
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card">
  <a href="/learn/getting-started/hello-world/writing-your-first-ballerina-program/">
     <h3 id="hello-world">Hello World</h3></a>
    <p >Writing your first Ballerina program and creating your first Ballerina package. </p>
 </div>
-</div>
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card">
+
+<div class="col-lg-6 col-md-6 col-sm-12 card"style="margin-right:0px !important;">
 <a href="/learn/by-example/introduction/">
     <h3 id="learn-by-example">Learn by Examples</h3></a>
     <p >A series of guided examples to learn the language. </p>
 </div>
+</div>
 
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card" >
   <a href="/learn/language-walkthrough/">
    	<h3 id="language-walkthrough-video">Language Walkthrough</h3></a>
   <p >A video series, which explains the language and its reference slide deck. </p>
 </div>
-</div>
-
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card">
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
 <h3 id="language-walkthrough-video"><a href="/learn/ballerina-shell/">Ballerina Shell</a></h3>
 <p>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
 </div>
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card" >
  <a href="/learn/visual-studio-code-extension/quick-start/">
     <h3 id="installing-ballerina">Visual Studio Code Extension</h3></a>
     <p >Details of all the features of the Ballerina Visual Studio Code extension. </p>
@@ -155,7 +166,7 @@ redirect_from:
     <p >Why you should use Ballerina.  </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important">
-  <a href="/learn/language-guide/how-ballerina-does-what-all-programming-languages-do/">
+  <a href="/learn/language-guide/network-interaction/">
    <h3 id="language-guide">Language Guide</h3></a>
     <p >Guide to learn the Ballerina language.  </p>
 </div>

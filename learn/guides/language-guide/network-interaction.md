@@ -1,10 +1,10 @@
 ---
 layout: ballerina-language-guide-left-nav-pages-swanlake
-title: What Makes Ballerina Distinctive
+title: Network Interaction
 description: In this part, you will learn about the features of the Ballerina programming language that are distinctive. These features revolve around key design considerations that make Ballerina suitable for cloud application programming using small and medium-sized programs.
 keywords: ballerina, programming language, ballerina packages,language-guide
-permalink: /learn/language-guide/what-makes-ballerina-distinctive/
-active: what-makes-ballerina-distinctive
+permalink: /learn/language-guide/network-interaction/
+active: network-interaction
 intro: In this part, you will learn about the features of the Ballerina programming language that are distinctive. These features revolve around key design considerations that make Ballerina suitable for cloud application programming using small and medium-sized programs.
 redirect_from:
 - /learn/language-guide/what-makes-ballerina-distinctive

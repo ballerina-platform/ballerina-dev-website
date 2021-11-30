@@ -42,8 +42,20 @@ let redirections = {
     "/learn/tooling-guide/ballerina-shell/":"/learn/by-example/",
     "/learn/cli-documentation/update-tool/":"/learn/by-example/",
     "/learn/cli-documentation/openapi/":"/learn/by-example/",
-
-
+    "/1.2/learn/ballerina-shell/":"/page-not-available.html",
+    "/1.2/learn/language-walkthrough/":"/page-not-available.html",
+    "/1.2/learn/visual-studio-code-extension/vs-code-commands/":"/page-not-available.html",
+    "/1.2/learn/visual-studio-code-extension/configurations/":"/page-not-available.html",
+    "/1.2/learn/testing-ballerina-code/testing-services-and-clients/":"/page-not-available.html",
+    "/1.2/learn/making-ballerina-programs-configurable/defining-configurable-variables/":"/page-not-available.html",
+    "/1.2/learn/making-ballerina-programs-configurable/providing-values-to-configurable-variables/":"/page-not-available.html",
+    "/1.2/learn/making-ballerina-programs-configurable/trying-out-configurability":"/page-not-available.html",
+    "/1.2/learn/observing-ballerina-programs/observing-your-application-with-choreo/":"/page-not-available.html",
+    "/1.2/learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/":"/page-not-available.html",
+    "/1.2/learn/running-ballerina-programs-in-the-cloud/code-to-cloud-samples/":"/page-not-available.html",
+    "/1.2/learn/managing-dependencies/":"/page-not-available.html",
+    "/1.2/learn/publishing-packages-to-ballerina-central/":"/page-not-available.html",
+    "/1.2/learn/language-introduction/":"/page-not-available.html",
 
     // BBEs not available.
     "/1.1/learn/by-example/jdbc-streaming-big-dataset.html":"/page-not-available.html",

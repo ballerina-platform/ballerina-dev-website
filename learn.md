@@ -111,7 +111,6 @@ redirect_from:
 <h3 id="language-walkthrough-video"><a href="/learn/language-guide/how-ballerina-does-what-all-programming-languages-do">How Ballerina Does What All Programming Languages Do</a></h3>
 <p>Get started quickly with the language.</p>
 </div>
-
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
   <a href="/learn/installing-ballerina/setting-up-ballerina/">
     <h3 id="installing-ballerina">Installing Ballerina</h3> </a>
@@ -125,14 +124,12 @@ redirect_from:
     <h3 id="hello-world">Hello World</h3></a>
    <p >Writing your first Ballerina program and creating your first Ballerina package. </p>
 </div>
-
-<div class="col-lg-6 col-md-6 col-sm-12 card"style="margin-right:0px !important;">
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
 <a href="/learn/by-example/introduction/">
     <h3 id="learn-by-example">Learn by Examples</h3></a>
     <p >A series of guided examples to learn the language. </p>
 </div>
 </div>
-
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card" >
@@ -145,14 +142,12 @@ redirect_from:
 <p>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
 </div>
 </div>
-</div>
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card" >
  <a href="/learn/visual-studio-code-extension/quick-start/">
     <h3 id="installing-ballerina">Visual Studio Code Extension</h3></a>
     <p >Details of all the features of the Ballerina Visual Studio Code extension. </p>
-</div>
 </div>
 </div>
 

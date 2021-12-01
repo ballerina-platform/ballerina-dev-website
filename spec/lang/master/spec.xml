@@ -2229,7 +2229,7 @@ the object on which the method is invoked that it has to parameters.
 <pre
 class="grammar"><dfn>remote-method-decl</dfn> :=
    <abbr>metadata</abbr> <abbr>remote-method-quals</abbr> 
-   <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <code>;</code>
+   <code>function</code> <abbr>remote-method-name</abbr> <abbr>function-signature</abbr> <code>;</code>
 <dfn>remote-method-quals</dfn> :=
    <abbr>remote-qual</abbr> <abbr>function-quals</abbr>
    | <abbr>isolated-qual</abbr> [<abbr>transactional-qual</abbr>] <abbr>remote-qual</abbr>
@@ -2237,15 +2237,16 @@ class="grammar"><dfn>remote-method-decl</dfn> :=
    | <abbr>isolated-qual</abbr> <abbr>remote-qual</abbr> <abbr>transactional-qual</abbr>
    | <abbr>transactional-qual</abbr> <abbr>remote-qual</abbr> <abbr>isolated-qual</abbr>
 <dfn>remote-qual</dfn> := <code>remote</code>
+<dfn>remote-method-name</dfn> := <abbr>identifier</abbr>
 </pre>
 <p>
 A <code>remote-method-decl</code> declares a remote method. An object can
 include a <code>remote-method-decl</code> only if it is a network interaction
 object. A remote method is a method for network interaction: a remote method of
 a client object is for outbound network interaction; a remote method of a
-service object is for inbound network interaction. The <code>method-name</code>
+service object is for inbound network interaction. The <code>remote-method-name</code>
 of a <code>remote-method-decl</code> must be distinct from the
-<code>method-name</code> of every other <code>remote-method-decl</code> in the
+<code>remote-method-name</code> of every other <code>remote-method-decl</code> in the
 <code>object-type-descriptor</code>. However, a <code>method-decl</code> and a
 <code>remote-method-decl</code> can have the same name. A remote method cannot
 be called using the normal method call syntax. A remote method of a client
@@ -4756,7 +4757,7 @@ A <code>method-defn</code> defines a method of an object.
 <pre
 class="grammar"><dfn>remote-method-defn</dfn> :=
    <abbr>metadata</abbr> <abbr>remote-method-quals</abbr>
-   <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
+   <code>function</code> <abbr>remote-method-name</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
 </pre>
 <p>
 A <code>remote-method-defn</code> defines a remote method. This is allowed only
@@ -7671,7 +7672,7 @@ worker lifeline to the client object lifeline.
 </p>
 
 <pre
-class="grammar"><dfn>client-remote-method-call-action</dfn> := <abbr>expression</abbr> <code>-&gt;</code> <abbr>method-name</abbr> <code>(</code> <abbr>arg-list</abbr> <code>)</code>
+class="grammar"><dfn>client-remote-method-call-action</dfn> := <abbr>expression</abbr> <code>-&gt;</code> <abbr>remote-method-name</abbr> <code>(</code> <abbr>arg-list</abbr> <code>)</code>
 </pre>
 <p>
 Calls a remote method of a client object. This works the same as a method call
@@ -7872,8 +7873,13 @@ E3</li>
 <li>in a statement if E1 { B1 } else { B2 }, the narrowed types implied by the
 truth of E1 apply within B1 and the narrowed types implied by the falsity of E1
 apply within E2</li>
+<li>in a statement while E { B }, the narrowed types implied by the truth of E
+apply with B</li>
 <li>in a match-clause P if E => { B }, the narrowed types implied by the truth
 of E apply within B</li>
+<li>in a query-expr or query-action, the narrowed types implied by the truth of
+the expression in a where-clause apply within all following clauses in that
+query-expr or query-action</li>
 <li>the narrowed type for a variable x no longer applies as soon as there is a
 possibility of x being assigned to</li>
 </ul>
@@ -12344,6 +12350,10 @@ separating words.</li>
 <li>Add the <code>!is</code> operator.</li>
 <li>Allow <code>null</code> as a type descriptor.</li>
 <li>An object type is not allowed to include a class with private members.</li>
+<li>Conditional variable type narrowing from the condition of a while statement
+is applied to the body of a while statement.</li>
+<li>Conditional variable type narrowing is now done for a <code>where</code> clause in a
+query expression or action.</li>
 </ol>
 </section>
 <section>

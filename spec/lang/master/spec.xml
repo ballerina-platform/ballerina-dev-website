@@ -2207,7 +2207,8 @@ class="grammar"><dfn>method-decl</dfn> :=
    <abbr>metadata</abbr> [<code>public</code>] <abbr>method-quals</abbr>
    <code>function</code> <abbr>method-name</abbr> <abbr>function-signature</abbr> <code>;</code>
 <dfn>method-quals</dfn> := <abbr>function-quals</abbr>
-<dfn>method-name</dfn> := <abbr>identifier</abbr>
+<dfn>method-name</dfn> := <abbr>identifier</abbr> | <abbr>special-method-name</abbr>
+<dfn>special-method-name</dfn> := <code>map</code> | <code>join</code> | <code>start</code>
 </pre>
 <p>
 A <code>method-decl</code> describes a method of the object. The
@@ -2217,7 +2218,9 @@ A <code>method-decl</code> describes a method of the object. The
 every <code>object-field-descriptor</code> in the
 <code>object-type-descriptor</code>. Note that here is no method overloading.
 The <code>method-name</code> in a <code>method-decl</code> must not be
-<code>init</code>.
+<code>init</code>. The identifiers <code>map</code>, <code>join</code> and
+<code>start</code>, which are usually reserved keywords, are allowed as method
+names.
 </p>
 
 <p>
@@ -2883,7 +2886,7 @@ described by the following object type descriptor:
 <pre>object {
    public function attach(T svc, A attachPoint) returns error?;
    public function detach(T svc) returns error?;
-   public function 'start() returns error?;
+   public function start() returns error?;
    public function gracefulStop() returns error?;
    public function immediateStop() returns error?;
 }
@@ -10291,7 +10294,7 @@ public isolated function enumerate(Type[] arr) returns [int, Type][] = external;
 # + arr - the array
 # + func - a function to apply to each member
 # + return - new array containing result of applying `func` to each member of `arr` in order
-public isolated function 'map(Type[] arr, @isolatedParam function(Type val) returns Type1 func) returns Type1[] = external;
+public isolated function map(Type[] arr, @isolatedParam function(Type val) returns Type1 func) returns Type1[] = external;
 
 # Applies a function to each member of an array.
 # The function `func` is applied to each member of array `arr` in order.
@@ -11137,7 +11140,7 @@ public isolated function entries(map<Type> m) returns map<[string, Type]> = exte
 # + m - the map
 # + func - a function to apply to each member
 # + return - new map containing result of applying function `func` to each member
-public isolated function 'map(map<Type> m, @isolatedParam function(Type val) returns Type1 func) returns map<Type1> = external;
+public isolated function map(map<Type> m, @isolatedParam function(Type val) returns Type1 func) returns map<Type1> = external;
 
 # Applies a function to each member of a map.
 # The function `func` is applied to each member of `m`.
@@ -11310,7 +11313,7 @@ public isolated function close(stream<Type,CompletionType> stm) returns Completi
 # + stm - the stream
 # + func - a function to apply to each member
 # + return - new stream containing result of applying `func` to each member of `stm` in order
-public isolated function 'map(stream<Type,CompletionType> stm, @isolatedParam function(Type val) returns Type1 func)
+public isolated function map(stream<Type,CompletionType> stm, @isolatedParam function(Type val) returns Type1 func)
    returns stream<Type1,CompletionType> = external;
 
 # Applies a function to each member of a stream.
@@ -11406,7 +11409,7 @@ public isolated function codePointCompare(string str1, string str2) returns int 
 # + strs - strings to be joined
 # + return - a string consisting of all of `strs` concatenated in order
 #     with `separator` in between them
-public isolated function 'join(string separator, string... strs) returns string = external;
+public isolated function join(string separator, string... strs) returns string = external;
 
 # Finds the first occurrence of one string in another string.
 #
@@ -12107,7 +12110,7 @@ public isolated function sleep(decimal seconds) = external;
 
 # A listener that is dynamically registered with a module.
 public type DynamicListener object {
-   public function 'start() returns error?;
+   public function start() returns error?;
    public function gracefulStop() returns error?;
    public function immediateStop() returns error?;
 };

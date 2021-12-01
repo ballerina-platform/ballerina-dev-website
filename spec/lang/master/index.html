@@ -2724,7 +2724,8 @@ the object has been constructed.
    <a href="#metadata"><span class="ntref">metadata</span></a> [<code>public</code>] <a href="#method-quals"><span class="ntref">method-quals</span></a>
    <code>function</code> <a href="#method-name"><span class="ntref">method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <code>;</code>
 <span class="ntdfn" id="method-quals">method-quals</span> := <a href="#function-quals"><span class="ntref">function-quals</span></a>
-<span class="ntdfn" id="method-name">method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
+<span class="ntdfn" id="method-name">method-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a> | <a href="#special-method-name"><span class="ntref">special-method-name</span></a>
+<span class="ntdfn" id="special-method-name">special-method-name</span> := <code>map</code> | <code>join</code> | <code>start</code>
 </pre>
 <p>
 A <code>method-decl</code> describes a method of the object. The
@@ -2734,7 +2735,9 @@ A <code>method-decl</code> describes a method of the object. The
 every <code>object-field-descriptor</code> in the
 <code>object-type-descriptor</code>. Note that here is no method overloading.
 The <code>method-name</code> in a <code>method-decl</code> must not be
-<code>init</code>.
+<code>init</code>. The identifiers <code>map</code>, <code>join</code> and
+<code>start</code>, which are usually reserved keywords, are allowed as method
+names.
 </p>
 
 <p>
@@ -3380,7 +3383,7 @@ described by the following object type descriptor:
 <pre>object {
    public function attach(T svc, A attachPoint) returns error?;
    public function detach(T svc) returns error?;
-   public function 'start() returns error?;
+   public function start() returns error?;
    public function gracefulStop() returns error?;
    public function immediateStop() returns error?;
 }
@@ -10735,7 +10738,7 @@ public isolated function enumerate(Type[] arr) returns [int, Type][] = external;
 # + arr - the array
 # + func - a function to apply to each member
 # + return - new array containing result of applying `func` to each member of `arr` in order
-public isolated function 'map(Type[] arr, @isolatedParam function(Type val) returns Type1 func) returns Type1[] = external;
+public isolated function map(Type[] arr, @isolatedParam function(Type val) returns Type1 func) returns Type1[] = external;
 
 # Applies a function to each member of an array.
 # The function `func` is applied to each member of array `arr` in order.
@@ -11581,7 +11584,7 @@ public isolated function entries(map&lt;Type&gt; m) returns map&lt;[string, Type
 # + m - the map
 # + func - a function to apply to each member
 # + return - new map containing result of applying function `func` to each member
-public isolated function 'map(map&lt;Type&gt; m, @isolatedParam function(Type val) returns Type1 func) returns map&lt;Type1&gt; = external;
+public isolated function map(map&lt;Type&gt; m, @isolatedParam function(Type val) returns Type1 func) returns map&lt;Type1&gt; = external;
 
 # Applies a function to each member of a map.
 # The function `func` is applied to each member of `m`.
@@ -11754,7 +11757,7 @@ public isolated function close(stream&lt;Type,CompletionType&gt; stm) returns Co
 # + stm - the stream
 # + func - a function to apply to each member
 # + return - new stream containing result of applying `func` to each member of `stm` in order
-public isolated function 'map(stream&lt;Type,CompletionType&gt; stm, @isolatedParam function(Type val) returns Type1 func)
+public isolated function map(stream&lt;Type,CompletionType&gt; stm, @isolatedParam function(Type val) returns Type1 func)
    returns stream&lt;Type1,CompletionType&gt; = external;
 
 # Applies a function to each member of a stream.
@@ -11850,7 +11853,7 @@ public isolated function codePointCompare(string str1, string str2) returns int 
 # + strs - strings to be joined
 # + return - a string consisting of all of `strs` concatenated in order
 #     with `separator` in between them
-public isolated function 'join(string separator, string... strs) returns string = external;
+public isolated function join(string separator, string... strs) returns string = external;
 
 # Finds the first occurrence of one string in another string.
 #
@@ -12551,7 +12554,7 @@ public isolated function sleep(decimal seconds) = external;
 
 # A listener that is dynamically registered with a module.
 public type DynamicListener object {
-   public function 'start() returns error?;
+   public function start() returns error?;
    public function gracefulStop() returns error?;
    public function immediateStop() returns error?;
 };

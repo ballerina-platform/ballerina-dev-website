@@ -71,8 +71,8 @@ redirect_from:
 <span class="c1">// Cleans up the database after running the example.</span>
 <span class="kd">function</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Cleans the database.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span> 
-            <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP TABLE Customers`</span><span class="p">);</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP TABLE Customers`</span><span class="p">);</span>
+    
     <span class="c1">// Closes the JDBC client.</span>
     <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
@@ -419,8 +419,8 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result = 
-            check jdbcClient-&gt;execute(`DROP TABLE Customers`);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check jdbcClient-&gt;execute(`DROP TABLE Customers`);
+    
 </code></pre></div>
 
                                 </div>

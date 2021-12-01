@@ -25,7 +25,6 @@ redirect_from:
    <span class="c1">// Read a text message echoed from the server using [readTextMessage](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client#readTextMessage).</span>
    <span class="kt">string</span> <span class="nx">textResp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">readTextMessage</span><span class="p">();</span>
    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">textResp</span><span class="p">);</span>
-   <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -79,7 +78,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=4b86a8098c2c3f6a58bebd980985c49e&file=websocket_text_client.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=d52ecbc07cf8e1efbf1b5366284f2e01&file=websocket_text_client.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -161,7 +160,6 @@ import ballerina/websocket;
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>   string textResp = check wsClient-&gt;readTextMessage();
    io:println(textResp);
-   return;
 }
 </code></pre></div>
 

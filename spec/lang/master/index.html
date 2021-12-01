@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2021R1</h1>
+<h1>Ballerina Language Specification, 2022R1 preview 2021-12-01</h1>
 <p>
 Primary contributors:
 </p>
@@ -576,19 +576,21 @@ GitHub repository where this specification is maintained.
 <li>A. <a href="#references">References</a>
 </li>
 <li>B. <a href="#changes">Changes since previous releases</a><ul>
-<li>B.1 <a href="#section_B.1">Summary of changes from 2020R1 to 2021R1</a>
+<li>B.1 <a href="#section_B.1">Summary of changes from 2021R1 to 2022R1</a>
 </li>
-<li>B.2 <a href="#section_B.2">Summary of changes from 2019R3 to 2020R1</a>
+<li>B.2 <a href="#section_B.2">Summary of changes from 2020R1 to 2021R1</a>
 </li>
-<li>B.3 <a href="#section_B.3">Summary of changes from 2019R2 to 2019R3</a>
+<li>B.3 <a href="#section_B.3">Summary of changes from 2019R3 to 2020R1</a>
 </li>
-<li>B.4 <a href="#section_B.4">Summary of changes from 2019R1 to 2019R2</a>
+<li>B.4 <a href="#section_B.4">Summary of changes from 2019R2 to 2019R3</a>
 </li>
-<li>B.5 <a href="#section_B.5">Summary of changes from 0.990 to 2019R1</a>
+<li>B.5 <a href="#section_B.5">Summary of changes from 2019R1 to 2019R2</a>
 </li>
-<li>B.6 <a href="#section_B.6">Summary of changes from 0.980 to 0.990</a>
+<li>B.6 <a href="#section_B.6">Summary of changes from 0.990 to 2019R1</a>
 </li>
-<li>B.7 <a href="#section_B.7">Summary of changes from 0.970 to 0.980</a>
+<li>B.7 <a href="#section_B.7">Summary of changes from 0.980 to 0.990</a>
+</li>
+<li>B.8 <a href="#section_B.8">Summary of changes from 0.970 to 0.980</a>
 </li>
 </ul>
 </li>
@@ -839,6 +841,16 @@ syntax allows an arbitrary non-empty string to be treated as an identifier. In a
 point; more precisely, it must be a hexadecimal numeral denoting an integer
 <em>n</em> where 0 ≤ <em>n</em> &lt; 0xD800 or 0xDFFF &lt; n ≤
 0x10FFFF.
+</p>
+
+<pre class="grammar"><span class="ntdfn" id="RestrictedIdentifier">RestrictedIdentifier</span> := <a href="#AsciiLetter"><span class="ntref">AsciiLetter</span></a> <a href="#RestrictedFollowingChar"><span class="ntref">RestrictedFollowingChar</span></a>* <a href="#RestrictedIdentifierWord"><span class="ntref">RestrictedIdentifierWord</span></a>*
+<span class="ntdfn" id="RestrictedIdentifierWord">RestrictedIdentifierWord</span> := <code>_</code> <a href="#RestrictedFollowingChar"><span class="ntref">RestrictedFollowingChar</span></a>+
+<span class="ntdfn" id="RestrictedFollowingChar">RestrictedFollowingChar</span> := <a href="#AsciiLetter"><span class="ntref">AsciiLetter</span></a> | <a href="#AsciiDigit"><span class="ntref">AsciiDigit</span></a>
+</pre>
+
+<p>
+Identifiers used for the names of organizations and modules are restricted to
+<code>RestrictedIdentifier</code>.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="TokenWhiteSpace">TokenWhiteSpace</span> := (<a href="#Comment"><span class="ntref">Comment</span></a> | <a href="#WhiteSpaceChar"><span class="ntref">WhiteSpaceChar</span></a>)*
@@ -1472,7 +1484,7 @@ All simple basic types are inherently immutable.
 <section>
 <h4 id="section_5.2.1">5.2.1 Nil</h4>
 
-<pre class="grammar"><span class="ntdfn" id="nil-type-descriptor">nil-type-descriptor</span> :=  <code>(</code> <code>)</code>
+<pre class="grammar"><span class="ntdfn" id="nil-type-descriptor">nil-type-descriptor</span> := <a href="#nil-literal"><span class="ntref">nil-literal</span></a>
 <span class="ntdfn" id="nil-literal">nil-literal</span> :=  <code>(</code> <code>)</code> | <code>null</code>
 </pre>
 <p>
@@ -1483,8 +1495,7 @@ use of null should be restricted to JSON-related contexts.
 </p>
 <p>
 The nil type is special, in that it is the only basic type that consists of a
-single value. The type descriptor for the nil type is not written using a
-keyword, but is instead written <code>()</code> like the value.
+single value. 
 </p>
 </section>
 <section>
@@ -1533,7 +1544,7 @@ unsigned integers representable in 8, 16 and 32 bits.
    | <a href="#DottedDecimalNumber"><span class="ntref">DottedDecimalNumber</span></a> [<a href="#Exponent"><span class="ntref">Exponent</span></a>] [<a href="#FloatingPointTypeSuffix"><span class="ntref">FloatingPointTypeSuffix</span></a>]
    | <a href="#DecimalNumber"><span class="ntref">DecimalNumber</span></a> <a href="#FloatingPointTypeSuffix"><span class="ntref">FloatingPointTypeSuffix</span></a>
 <span class="ntdfn" id="DottedDecimalNumber">DottedDecimalNumber</span> :=
-   <a href="#DecimalNumber"><span class="ntref">DecimalNumber</span></a> <code>.</code> <a href="#Digit"><span class="ntref">Digit</span></a>*
+   <a href="#DecimalNumber"><span class="ntref">DecimalNumber</span></a> <code>.</code> <a href="#Digit"><span class="ntref">Digit</span></a>+
    | <code>.</code> <a href="#Digit"><span class="ntref">Digit</span></a>+
 <span class="ntdfn" id="Exponent">Exponent</span> := <a href="#ExponentIndicator"><span class="ntref">ExponentIndicator</span></a> [<a href="#Sign"><span class="ntref">Sign</span></a>] <a href="#Digit"><span class="ntref">Digit</span></a>+
 <span class="ntdfn" id="ExponentIndicator">ExponentIndicator</span> := <code>e</code> | <code>E</code>
@@ -1542,7 +1553,7 @@ unsigned integers representable in 8, 16 and 32 bits.
    <a href="#HexNumber"><span class="ntref">HexNumber</span></a> <a href="#HexExponent"><span class="ntref">HexExponent</span></a>
    | <a href="#DottedHexNumber"><span class="ntref">DottedHexNumber</span></a> [<a href="#HexExponent"><span class="ntref">HexExponent</span></a>]
 <span class="ntdfn" id="DottedHexNumber">DottedHexNumber</span> :=
-   <a href="#HexDigit"><span class="ntref">HexDigit</span></a>+ <code>.</code> <a href="#HexDigit"><span class="ntref">HexDigit</span></a>*
+   <a href="#HexDigit"><span class="ntref">HexDigit</span></a>+ <code>.</code> <a href="#HexDigit"><span class="ntref">HexDigit</span></a>+
    | <code>.</code> <a href="#HexDigit"><span class="ntref">HexDigit</span></a>+
 <span class="ntdfn" id="HexExponent">HexExponent</span> := <a href="#HexExponentIndicator"><span class="ntref">HexExponentIndicator</span></a> [<a href="#Sign"><span class="ntref">Sign</span></a>] <a href="#Digit"><span class="ntref">Digit</span></a>+
 <span class="ntdfn" id="HexExponentIndicator">HexExponentIndicator</span> := <code>p</code> | <code>P</code>
@@ -2099,12 +2110,6 @@ the field is also on. The read-only bit of a field is part of the read-only
 aspect of the mapping value's shape.
 </p>
 <p>
-A mapping is iterable: the iteration sequence consists of the members of the
-mapping and the iteration completion value is always nil. The order of the iteration
-sequence is implementation-dependent, but implementations are encouraged to
-preserve and use the order in which the fields were added.
-</p>
-<p>
 The type of mapping values can be described by two kinds of type descriptors.
 </p>
 
@@ -2122,6 +2127,15 @@ constraint is not merely that the value looks like T<sub><em>f</em></sub>.
 <p>
 Both kinds of type descriptor are covariant in the types of their members.
 </p>
+<p>
+A mapping value is iterable: the iteration sequence consists of the members of
+the mapping value and the iteration completion value is always nil. When the
+inherent type of a mapping value is equivalent to a
+<code>map-type-descriptor</code>, the order of iteration must correspond to the
+order in which fields were added. In other cases, the order of the iteration
+sequence is implementation-dependent.
+</p>
+
 <section>
 <h5 id="section_5.4.2.1">5.4.2.1 Map types</h5>
 <p>
@@ -2820,7 +2834,7 @@ Every type descriptor referenced directly or indirectly by a
 <code>type-reference</code> in an <code>object-type-inclusion</code> must be an
 <code>object-type-descriptor</code>, <code>distinct-type-descriptor</code>,
 <code>intersection-type-descriptor</code> or
-a class without a <code>readonly</code> qualifier; the
+a class that has no <code>private</code> members and no <code>readonly</code> qualifier; the
 referenced type descriptor will thus necessarily be definite and a subtype of
 object. If a referenced object-type-descriptor or class has an
 <code>isolated</code>, <code>service</code> or <code>client</code> qualifier
@@ -4418,6 +4432,8 @@ associativity.
 <code>x &gt;= y</code>
 <br>
 <code>x is y</code>
+<br>
+<code>x !is y</code>
    </td>
    <td>non</td>
   </tr>
@@ -4980,7 +4996,7 @@ each <var>i</var> from <var>k</var> + 1 up to the fixed length of the list, the
   | <a href="#spread-field"><span class="ntref">spread-field</span></a>
 <span class="ntdfn" id="specific-field">specific-field</span> :=
    [<code>readonly</code>] (<a href="#field-name"><span class="ntref">field-name</span></a> | <a href="#string-literal"><span class="ntref">string-literal</span></a>) <code>:</code> <a href="#value-expr"><span class="ntref">value-expr</span></a>
-   | [<code>readonly</code>] [<a href="#variable-name"><span class="ntref">variable-name</span></a>]
+   | [<code>readonly</code>] <a href="#variable-name"><span class="ntref">variable-name</span></a>
 <span class="ntdfn" id="value-expr">value-expr</span> := <a href="#expression"><span class="ntref">expression</span></a>
 <span class="ntdfn" id="computed-name-field">computed-name-field</span> := <code>[</code> <a href="#field-name-expr"><span class="ntref">field-name-expr</span></a> <code>]</code> <code>:</code> <a href="#value-expr"><span class="ntref">value-expr</span></a>
 <span class="ntdfn" id="field-name-expr">field-name-expr</span> := <a href="#expression"><span class="ntref">expression</span></a>
@@ -5059,6 +5075,13 @@ the mapping-constructor-expr will panic. The modifications are performed in the
 order in which the computed-name-fields occur in the mapping-constructor-expr.
 </p>
 <p>
+When the inherent type is equivalent to a map-type-descriptor, the order in
+which fields are added to mapping value being constructed (and thus the
+iteration order of the fields) is the same as the order of the fields in the
+mapping-constructor-expr, except that all fields specified by a
+computed-named-field are added after all other fields.
+</p>
+<p>
 If the applicable contextually expected type is a subtype of readonly, then the
 mapping will be constructed with its read-only bit on. If the inherent type
 makes a specific field readonly, then that field will be constructed with its
@@ -5091,7 +5114,7 @@ The inherent type of the constructed table is a table type descriptor including
 a key-specifier <code>table&lt;<var>T</var>&gt; key(<var>ks</var>)</code>, where
 <code><var>T</var></code> is the member type and <code><var>ks</var></code> is
 the key sequence. The inherent type is determined from the contextually expected
-type togther with the table-constructor-expr. The static type of the
+type together with the table-constructor-expr. The static type of the
 table-constructor-expr will be the same as this inherent type.
 </p>
 <p>
@@ -6445,8 +6468,8 @@ as the characters of the string;</li>
 </li>
 </ul>
 <p>
-If the contextually expected type for a multiplicative-expr is T, then the
-contextualy expected type for both operand expressions is T', where a value v is
+If the contextually expected type for an additive-expr is T, then the
+contextually expected type for both operand expressions is T', where a value v is
 in T' if it belongs to int, decimal, float, string or xml and T contains a value
 with the same basic type as v.
 </p>
@@ -6559,14 +6582,17 @@ and otherwise false.
 
 <pre class="grammar"><span class="ntdfn" id="is-expr">is-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>is</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>
+   | <a href="#expression"><span class="ntref">expression</span></a> <code>!</code> <code>is</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>   
 </pre>
 <p>
-An is-expr tests where a value belongs to a type.
+An is-expr tests whether a value belongs to a type.
 </p>
 <p>
-An is-expr is evaluated by evaluating the expression yielding a result v. If v
-belongs to the type denoted by type-descriptor, then the result of the is-expr
-is true; otherwise the result of the is-expr is false.
+An is-expr is evaluated by evaluating the expression yielding a result v.
+If the operator is <code>is</code>, then the result of the expression is true if
+v belongs to the type denoted by the type-descriptor, and otherwise false. If
+the operator is <code>!is</code>, then the result of the expression is false if
+v belongs to the type denoted by the type-descriptor, and otherwise true.
 </p>
 </section>
 <section>
@@ -6611,7 +6637,7 @@ v<sub>1</sub> is the same as the storage identity of v<sub>2</sub>.</li>
 </ul>
 <p>
 The == operator tests for deep equality. The != operator results in the negation
-of the result of the == operator. For both == and !=, both operands must have a
+of the result of the == operator. For both == and !=, at least one of the operands must have a
 static type that is a subtype of anydata. Two values v1, v2 are deeply equal if
 DeepEquals(v1, v2) is true.
 </p>
@@ -6744,7 +6770,7 @@ or <code>checkpanic <var>Expr</var></code> is T. However, if:
 <li>the static type of <code><var>Expr</var></code> is lax,</li>
 <li>T is a subtype of <code>json</code>, and</li>
 <li>there is a contextually expected type S, where S is a subtype of
-<code>()|int|float|decimal|string</code>,</li>
+<code>()|boolean|int|float|decimal|string</code>,</li>
 </ul>
 <p>
 then instead <code>check <var>Expr</var></code> is treated as <code>check
@@ -9152,7 +9178,7 @@ to succeed by the static type of the associated error value.
 </pre>
 <p>
 The type-parameter in a retry-spec specifies a class, which must be a subtype of
-RetryManager&gt;F&lt;, where F is the failure type of the statement-block; this
+RetryManager&lt;F&gt;, where F is the failure type of the statement-block; this
 implies that the parameter type of the class's shouldRetry method must be a
 supertype of F. The arg-list in a retry-spec specifies parameters to be passed
 to the class's <code>init</code> method; as with <code>new</code>, the arg-list
@@ -9517,8 +9543,9 @@ not constrained.
 <pre class="grammar"><span class="ntdfn" id="import-decl">import-decl</span> := <code>import</code> [<a href="#org-name"><span class="ntref">org-name</span></a> <code>/</code>] <a href="#module-name"><span class="ntref">module-name</span></a> [<code>as</code> <a href="#import-prefix"><span class="ntref">import-prefix</span></a>] <code>;</code>
 <span class="ntdfn" id="import-prefix">import-prefix</span> := <a href="#module-prefix"><span class="ntref">module-prefix</span></a> | <code>_</code>
 <span class="ntdfn" id="module-prefix">module-prefix</span> := <a href="#identifier"><span class="ntref">identifier</span></a> | <a href="#predeclared-prefix"><span class="ntref">predeclared-prefix</span></a>
-<span class="ntdfn" id="org-name">org-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
-<span class="ntdfn" id="module-name">module-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a> (<code>.</code> <a href="#identifier"><span class="ntref">identifier</span></a>)*
+<span class="ntdfn" id="org-name">org-name</span> := <a href="#import-identifier"><span class="ntref">import-identifier</span></a>
+<span class="ntdfn" id="module-name">module-name</span> := <a href="#import-identifier"><span class="ntref">import-identifier</span></a> (<code>.</code> <a href="#import-identifier"><span class="ntref">import-identifier</span></a>)*
+<span class="ntdfn" id="import-identifier">import-identifier</span> := <a href="#RestrictedIdentifier"><span class="ntref">RestrictedIdentifier</span></a>
 
 <span class="ntdfn" id="qualified-identifier">qualified-identifier</span> := <a href="#module-prefix"><span class="ntref">module-prefix</span></a> <code>:</code> <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>
@@ -10553,7 +10580,7 @@ table.
 </tr>
 <tr>
 <td>Signed32</td>
-<td>-2,147,483,648‬ ≤ <em>v</em> ≤ 2,147,483,6487</td>
+<td>-2,147,483,648 ≤ <em>v</em> ≤ 2,147,483,647</td>
 </tr>
 <tr>
 <td>string</td>
@@ -10884,7 +10911,7 @@ public isolated function toStream(T[] arr) returns stream&lt;T,()&gt; = external
 # and also `1` for true and `0` for `false`.
 # This is the inverse of `value:toString` applied to a `boolean`.
 #
-# + s - string representing a boolean valie
+# + s - string representing a boolean value
 # + return - boolean that `s` represents, or an error if there is no such boolean
 public isolated function fromString(string s) returns boolean|error = external;
 </pre>
@@ -11013,7 +11040,7 @@ public type StackFrame readonly &amp; object {
    # Returns a string representing this StackFrame.
    # This must not contain any newline characters.
    # + return - a string
-   public function toString() returns string;
+   public isolated function toString() returns string;
 };
 
 # Returns an array representing an error's stack trace.
@@ -11614,8 +11641,8 @@ public type Iterable distinct object {
     # + return - a new iterator object
     public function iterator() returns object {
         public function next() returns record {| any|error value; |}|error?;
-    }
-}
+    };
+};
 
 # Distinct RawTemplate type.
 # A raw template expression constructs an object belonging to this type.
@@ -11687,7 +11714,7 @@ public isolated function next(stream&lt;Type,CompletionType&gt; stm) returns rec
 
 # Closes a stream.
 # This releases any system resources being used by the stream.
-# Closing a stream that has already been closed has no efffect and returns `()`.
+# Closing a stream that has already been closed has no effect and returns `()`.
 #
 # + stm - the stream to close
 # + return - () if the close completed successfully, otherwise an error
@@ -11922,6 +11949,12 @@ public isolated function fromCodePointInt(int codePoint) returns Char|error = ex
 
 <pre class="langlib">
 
+# A type parameter that is a subtype of `any|error`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type Type any|error;
+
 # A type parameter that is a subtype of `map&lt;any|error&gt;`.
 # Has the special semantic that when used in a declaration
 # all uses in the declaration must refer to same type.
@@ -12014,7 +12047,7 @@ public isolated function filter(table&lt;MapType&gt; key&lt;KeyType&gt; t, @isol
 # + func - combining function
 # + initial - initial value for the first argument of combining function `func`
 # + return - result of combining the members of `t` using `func`
-public isolated function reduce(table&lt;MapType&gt; t, @isolatedParam function(MapType1 accum, MapType val) returns MapType1 func, MapType1 initial) returns MapType1 = external;
+public isolated function reduce(table&lt;MapType&gt; t, @isolatedParam function(Type accum, MapType val) returns Type func, Type initial) returns Type = external;
 
 # Removes a member of a table.
 #
@@ -12184,7 +12217,7 @@ public isolated function iterator(xml&lt;ItemType&gt; x) returns object {
 # `x` does not have an item with index `i`.
 #
 # + x - the xml sequence 
-# + k - the index
+# + i - the index
 # + return - the item with index `i` in `x`
 public isolated function get(xml&lt;ItemType&gt; x, int i) returns ItemType = external;
 
@@ -12624,7 +12657,7 @@ public isolated function toBalString(any v) returns string = external;
 # an error if the string cannot be parsed
 # The subset of Ballerina expression syntax supported is that produced
 # by toBalString when applied to an anydata value.
-function fromBalString(string s) returns anydata|error = external;
+public isolated function fromBalString(string s) returns anydata|error = external;
 
 
 # Converts a value of type `anydata` to `json`.
@@ -12744,7 +12777,22 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 <section class="appendix">
 <h2 id="changes">B. Changes since previous releases</h2>
 <section>
-<h3 id="section_B.1">B.1 Summary of changes from 2020R1 to 2021R1</h3>
+<h3 id="section_B.1">B.1 Summary of changes from 2021R1 to 2022R1</h3>
+<ol>
+<li>Maps are required to preserve insertion order.</li>
+<li>The static typing rules for <code>==</code> and <code>!=</code> have been
+relaxed to require only one operand to be <code>anydata</code>.</li>
+<li>The identifiers of organizations and modules refererenced in import
+declarations are restricted to ASCII alpha-numberic characters with underscores
+separating words.</li>
+<li>Floating pointer literals are not allowed to end with a trailing dot.</li>
+<li>Add the <code>!is</code> operator.</li>
+<li>Allow <code>null</code> as a type descriptor.</li>
+<li>An object type is not allowed to include a class with private members.</li>
+</ol>
+</section>
+<section>
+<h3 id="section_B.2">B.2 Summary of changes from 2020R1 to 2021R1</h3>
 <ol>
 <li>There has been a major change to how objects works. All object type
 descriptors are what was previously called <em>abstract</em>: they declare
@@ -12818,7 +12866,7 @@ referenced using the <code>function</code> keyword rather than the
 </ol>
 </section>
 <section>
-<h3 id="section_B.2">B.2 Summary of changes from 2019R3 to 2020R1</h3>
+<h3 id="section_B.3">B.3 Summary of changes from 2019R3 to 2020R1</h3>
 <ol>
 <li>Query expressions and query actions have been added. This is the first stage
 of language-integrated query.</li>
@@ -12854,7 +12902,7 @@ types.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.3">B.3 Summary of changes from 2019R2 to 2019R3</h3>
+<h3 id="section_B.4">B.4 Summary of changes from 2019R2 to 2019R3</h3>
 <ol>
 <li>An import declaration can use <code>as _</code> to include a module in the
 program without using its symbols.</li>
@@ -12866,7 +12914,7 @@ not a named worker.</li>
 </section>
 
 <section>
-<h3 id="section_B.4">B.4 Summary of changes from 2019R1 to 2019R2</h3>
+<h3 id="section_B.5">B.5 Summary of changes from 2019R1 to 2019R2</h3>
 <ol>
 <li>The concept of a built-in method has been replaced by the concept of a lang
 library. A method call on a value of non-object type is now treated as a
@@ -12912,7 +12960,7 @@ replace the old delimited identifier syntax <code>^"<var>s</var>"</code>.</li>
 
 </section>
 <section>
-<h3 id="section_B.5">B.5 Summary of changes from 0.990 to 2019R1</h3>
+<h3 id="section_B.6">B.6 Summary of changes from 0.990 to 2019R1</h3>
 <p>
 The specification has switched to a new versioning scheme. The <var>n</var>-th
 version of the specification released in year 20<var>xy</var> will be labelled
@@ -12981,7 +13029,7 @@ now required to be specified before named arguments.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.6">B.6 Summary of changes from 0.980 to 0.990</h3>
+<h3 id="section_B.7">B.7 Summary of changes from 0.980 to 0.990</h3>
 <p>
 <strong>Structural types and values</strong>
 </p>
@@ -13075,7 +13123,7 @@ definition.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.7">B.7 Summary of changes from 0.970 to 0.980</h3>
+<h3 id="section_B.8">B.8 Summary of changes from 0.970 to 0.980</h3>
 <ol>
 <li>The decimal type has been added.</li>
 <li>There are no longer any implicit numeric conversions.</li>

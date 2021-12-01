@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2021R1</h1>
+<h1>Ballerina Language Specification, 2022R1 preview 2021-12-01</h1>
 <p>
 Primary contributors:
 </p>
@@ -295,6 +295,17 @@ syntax allows an arbitrary non-empty string to be treated as an identifier. In a
 point; more precisely, it must be a hexadecimal numeral denoting an integer
 <em>n</em> where 0 &#x2264; <em>n</em> &lt; 0xD800 or 0xDFFF &lt; n &#x2264;
 0x10FFFF.
+</p>
+
+<pre
+class="grammar"><dfn>RestrictedIdentifier</dfn> := <abbr>AsciiLetter</abbr> <abbr>RestrictedFollowingChar</abbr>* <abbr>RestrictedIdentifierWord</abbr>*
+<dfn>RestrictedIdentifierWord</dfn> := <code>_</code> <abbr>RestrictedFollowingChar</abbr>+
+<dfn>RestrictedFollowingChar</dfn> := <abbr>AsciiLetter</abbr> | <abbr>AsciiDigit</abbr>
+</pre>
+
+<p>
+Identifiers used for the names of organizations and modules are restricted to
+<code>RestrictedIdentifier</code>.
 </p>
 
 <pre
@@ -931,7 +942,7 @@ class="grammar"><dfn>simple-type-descriptor</dfn> :=
 <h4>Nil</h4>
 
 <pre
-class="grammar"><dfn>nil-type-descriptor</dfn> :=  <code>(</code> <code>)</code>
+class="grammar"><dfn>nil-type-descriptor</dfn> := <abbr>nil-literal</abbr>
 <dfn>nil-literal</dfn> :=  <code>(</code> <code>)</code> | <code>null</code>
 </pre>
 <p>
@@ -942,8 +953,7 @@ use of null should be restricted to JSON-related contexts.
 </p>
 <p>
 The nil type is special, in that it is the only basic type that consists of a
-single value. The type descriptor for the nil type is not written using a
-keyword, but is instead written <code>()</code> like the value.
+single value. 
 </p>
 </section>
 <section>
@@ -995,7 +1005,7 @@ class="grammar"><dfn>floating-point-type-descriptor</dfn> := <code>float</code> 
    | <abbr>DottedDecimalNumber</abbr> [<abbr>Exponent</abbr>] [<abbr>FloatingPointTypeSuffix</abbr>]
    | <abbr>DecimalNumber</abbr> <abbr>FloatingPointTypeSuffix</abbr>
 <dfn>DottedDecimalNumber</dfn> :=
-   <abbr>DecimalNumber</abbr> <code>.</code> <abbr>Digit</abbr>*
+   <abbr>DecimalNumber</abbr> <code>.</code> <abbr>Digit</abbr>+
    | <code>.</code> <abbr>Digit</abbr>+
 <dfn>Exponent</dfn> := <abbr>ExponentIndicator</abbr> [<abbr>Sign</abbr>] <abbr>Digit</abbr>+
 <dfn>ExponentIndicator</dfn> := <code>e</code> | <code>E</code>
@@ -1004,7 +1014,7 @@ class="grammar"><dfn>floating-point-type-descriptor</dfn> := <code>float</code> 
    <abbr>HexNumber</abbr> <abbr>HexExponent</abbr>
    | <abbr>DottedHexNumber</abbr> [<abbr>HexExponent</abbr>]
 <dfn>DottedHexNumber</dfn> :=
-   <abbr>HexDigit</abbr>+ <code>.</code> <abbr>HexDigit</abbr>*
+   <abbr>HexDigit</abbr>+ <code>.</code> <abbr>HexDigit</abbr>+
    | <code>.</code> <abbr>HexDigit</abbr>+
 <dfn>HexExponent</dfn> := <abbr>HexExponentIndicator</abbr> [<abbr>Sign</abbr>] <abbr>Digit</abbr>+
 <dfn>HexExponentIndicator</dfn> := <code>p</code> | <code>P</code>
@@ -1565,12 +1575,6 @@ the field is also on. The read-only bit of a field is part of the read-only
 aspect of the mapping value's shape.
 </p>
 <p>
-A mapping is iterable: the iteration sequence consists of the members of the
-mapping and the iteration completion value is always nil. The order of the iteration
-sequence is implementation-dependent, but implementations are encouraged to
-preserve and use the order in which the fields were added.
-</p>
-<p>
 The type of mapping values can be described by two kinds of type descriptors.
 </p>
 
@@ -1589,6 +1593,15 @@ constraint is not merely that the value looks like T<sub><em>f</em></sub>.
 <p>
 Both kinds of type descriptor are covariant in the types of their members.
 </p>
+<p>
+A mapping value is iterable: the iteration sequence consists of the members of
+the mapping value and the iteration completion value is always nil. When the
+inherent type of a mapping value is equivalent to a
+<code>map-type-descriptor</code>, the order of iteration must correspond to the
+order in which fields were added. In other cases, the order of the iteration
+sequence is implementation-dependent.
+</p>
+
 <section>
 <h5>Map types</h5>
 <p>
@@ -2306,7 +2319,7 @@ Every type descriptor referenced directly or indirectly by a
 <code>type-reference</code> in an <code>object-type-inclusion</code> must be an
 <code>object-type-descriptor</code>, <code>distinct-type-descriptor</code>,
 <code>intersection-type-descriptor</code> or
-a class without a <code>readonly</code> qualifier; the
+a class that has no <code>private</code> members and no <code>readonly</code> qualifier; the
 referenced type descriptor will thus necessarily be definite and a subtype of
 object. If a referenced object-type-descriptor or class has an
 <code>isolated</code>, <code>service</code> or <code>client</code> qualifier
@@ -3884,6 +3897,8 @@ associativity.
 <code>x &gt;= y</code>
 <br />
 <code>x is y</code>
+<br />
+<code>x !is y</code>
    </td>
    <td>non</td>
   </tr>
@@ -4458,7 +4473,7 @@ class="grammar"><dfn>mapping-constructor-expr</dfn> := <code>{</code> [<abbr>fie
   | <abbr>spread-field</abbr>
 <dfn>specific-field</dfn> :=
    [<code>readonly</code>] (<abbr>field-name</abbr> | <abbr>string-literal</abbr>) <code>:</code> <abbr>value-expr</abbr>
-   | [<code>readonly</code>] [<abbr>variable-name</abbr>]
+   | [<code>readonly</code>] <abbr>variable-name</abbr>
 <dfn>value-expr</dfn> := <abbr>expression</abbr>
 <dfn>computed-name-field</dfn> := <code>[</code> <abbr>field-name-expr</abbr> <code>]</code> <code>:</code> <abbr>value-expr</abbr>
 <dfn>field-name-expr</dfn> := <abbr>expression</abbr>
@@ -4537,6 +4552,13 @@ the mapping-constructor-expr will panic. The modifications are performed in the
 order in which the computed-name-fields occur in the mapping-constructor-expr.
 </p>
 <p>
+When the inherent type is equivalent to a map-type-descriptor, the order in
+which fields are added to mapping value being constructed (and thus the
+iteration order of the fields) is the same as the order of the fields in the
+mapping-constructor-expr, except that all fields specified by a
+computed-named-field are added after all other fields.
+</p>
+<p>
 If the applicable contextually expected type is a subtype of readonly, then the
 mapping will be constructed with its read-only bit on. If the inherent type
 makes a specific field readonly, then that field will be constructed with its
@@ -4570,7 +4592,7 @@ The inherent type of the constructed table is a table type descriptor including
 a key-specifier <code>table&lt;<var>T</var>&gt; key(<var>ks</var>)</code>, where
 <code><var>T</var></code> is the member type and <code><var>ks</var></code> is
 the key sequence. The inherent type is determined from the contextually expected
-type togther with the table-constructor-expr. The static type of the
+type together with the table-constructor-expr. The static type of the
 table-constructor-expr will be the same as this inherent type.
 </p>
 <p>
@@ -5932,8 +5954,8 @@ as the characters of the string;</li>
 </li>
 </ul>
 <p>
-If the contextually expected type for a multiplicative-expr is T, then the
-contextualy expected type for both operand expressions is T', where a value v is
+If the contextually expected type for an additive-expr is T, then the
+contextually expected type for both operand expressions is T', where a value v is
 in T' if it belongs to int, decimal, float, string or xml and T contains a value
 with the same basic type as v.
 </p>
@@ -6044,14 +6066,17 @@ and otherwise false.
 <pre
 class="grammar"><dfn>is-expr</dfn> :=
    <abbr>expression</abbr> <code>is</code> <abbr>type-descriptor</abbr>
+   | <abbr>expression</abbr> <code>!</code> <code>is</code> <abbr>type-descriptor</abbr>   
 </pre>
 <p>
-An is-expr tests where a value belongs to a type.
+An is-expr tests whether a value belongs to a type.
 </p>
 <p>
-An is-expr is evaluated by evaluating the expression yielding a result v. If v
-belongs to the type denoted by type-descriptor, then the result of the is-expr
-is true; otherwise the result of the is-expr is false.
+An is-expr is evaluated by evaluating the expression yielding a result v.
+If the operator is <code>is</code>, then the result of the expression is true if
+v belongs to the type denoted by the type-descriptor, and otherwise false. If
+the operator is <code>!is</code>, then the result of the expression is false if
+v belongs to the type denoted by the type-descriptor, and otherwise true.
 </p>
 </section>
 <section>
@@ -6096,7 +6121,7 @@ v<sub>1</sub> is the same as the storage identity of v<sub>2</sub>.</li>
 </ul>
 <p>
 The == operator tests for deep equality. The != operator results in the negation
-of the result of the == operator. For both == and !=, both operands must have a
+of the result of the == operator. For both == and !=, at least one of the operands must have a
 static type that is a subtype of anydata. Two values v1, v2 are deeply equal if
 DeepEquals(v1, v2) is true.
 </p>
@@ -6233,7 +6258,7 @@ or <code>checkpanic <var>Expr</var></code> is T. However, if:
 <li>the static type of <code><var>Expr</var></code> is lax,</li>
 <li>T is a subtype of <code>json</code>, and</li>
 <li>there is a contextually expected type S, where S is a subtype of
-<code>()|int|float|decimal|string</code>,</li>
+<code>()|boolean|int|float|decimal|string</code>,</li>
 </ul>
 <p>
 then instead <code>check <var>Expr</var></code> is treated as <code>check
@@ -8685,7 +8710,7 @@ class="grammar"><dfn>retry-stmt</dfn> := <code>retry</code> <abbr>retry-spec</ab
 </pre>
 <p>
 The type-parameter in a retry-spec specifies a class, which must be a subtype of
-RetryManager&gt;F&lt;, where F is the failure type of the statement-block; this
+RetryManager&lt;F&gt;, where F is the failure type of the statement-block; this
 implies that the parameter type of the class's shouldRetry method must be a
 supertype of F. The arg-list in a retry-spec specifies parameters to be passed
 to the class's <code>init</code> method; as with <code>new</code>, the arg-list
@@ -9058,8 +9083,9 @@ class="grammar"><dfn>module-part</dfn> := <abbr>import-decl</abbr>* <abbr>other-
 class="grammar"><dfn>import-decl</dfn> := <code>import</code> [<abbr>org-name</abbr> <code>/</code>] <abbr>module-name</abbr> [<code>as</code> <abbr>import-prefix</abbr>] <code>;</code>
 <dfn>import-prefix</dfn> := <abbr>module-prefix</abbr> | <code>_</code>
 <dfn>module-prefix</dfn> := <abbr>identifier</abbr> | <abbr>predeclared-prefix</abbr>
-<dfn>org-name</dfn> := <abbr>identifier</abbr>
-<dfn>module-name</dfn> := <abbr>identifier</abbr> (<code>.</code> <abbr>identifier</abbr>)*
+<dfn>org-name</dfn> := <abbr>import-identifier</abbr>
+<dfn>module-name</dfn> := <abbr>import-identifier</abbr> (<code>.</code> <abbr>import-identifier</abbr>)*
+<dfn>import-identifier</dfn> := <abbr>RestrictedIdentifier</abbr>
 
 <dfn>qualified-identifier</dfn> := <abbr>module-prefix</abbr> <code>:</code> <abbr>identifier</abbr>
 </pre>
@@ -10114,7 +10140,7 @@ table.
 </tr>
 <tr>
 <td>Signed32</td>
-<td>-2,147,483,648‬ &#x2264; <em>v</em> &#x2264; 2,147,483,6487</td>
+<td>-2,147,483,648 &#x2264; <em>v</em> &#x2264; 2,147,483,647</td>
 </tr>
 <tr>
 <td>string</td>
@@ -10440,7 +10466,7 @@ public isolated function toStream(T[] arr) returns stream<T,()> = external;
 # and also `1` for true and `0` for `false`.
 # This is the inverse of `value:toString` applied to a `boolean`.
 #
-# + s - string representing a boolean valie
+# + s - string representing a boolean value
 # + return - boolean that `s` represents, or an error if there is no such boolean
 public isolated function fromString(string s) returns boolean|error = external;
 ]]></pre>
@@ -10569,7 +10595,7 @@ public type StackFrame readonly & object {
    # Returns a string representing this StackFrame.
    # This must not contain any newline characters.
    # + return - a string
-   public function toString() returns string;
+   public isolated function toString() returns string;
 };
 
 # Returns an array representing an error's stack trace.
@@ -11170,8 +11196,8 @@ public type Iterable distinct object {
     # + return - a new iterator object
     public function iterator() returns object {
         public function next() returns record {| any|error value; |}|error?;
-    }
-}
+    };
+};
 
 # Distinct RawTemplate type.
 # A raw template expression constructs an object belonging to this type.
@@ -11243,7 +11269,7 @@ public isolated function next(stream<Type,CompletionType> stm) returns record {|
 
 # Closes a stream.
 # This releases any system resources being used by the stream.
-# Closing a stream that has already been closed has no efffect and returns `()`.
+# Closing a stream that has already been closed has no effect and returns `()`.
 #
 # + stm - the stream to close
 # + return - () if the close completed successfully, otherwise an error
@@ -11478,6 +11504,12 @@ public isolated function fromCodePointInt(int codePoint) returns Char|error = ex
 
 <pre class="langlib"><![CDATA[
 
+# A type parameter that is a subtype of `any|error`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type Type any|error;
+
 # A type parameter that is a subtype of `map<any|error>`.
 # Has the special semantic that when used in a declaration
 # all uses in the declaration must refer to same type.
@@ -11570,7 +11602,7 @@ public isolated function filter(table<MapType> key<KeyType> t, @isolatedParam fu
 # + func - combining function
 # + initial - initial value for the first argument of combining function `func`
 # + return - result of combining the members of `t` using `func`
-public isolated function reduce(table<MapType> t, @isolatedParam function(MapType1 accum, MapType val) returns MapType1 func, MapType1 initial) returns MapType1 = external;
+public isolated function reduce(table<MapType> t, @isolatedParam function(Type accum, MapType val) returns Type func, Type initial) returns Type = external;
 
 # Removes a member of a table.
 #
@@ -11740,7 +11772,7 @@ public isolated function iterator(xml<ItemType> x) returns object {
 # `x` does not have an item with index `i`.
 #
 # + x - the xml sequence 
-# + k - the index
+# + i - the index
 # + return - the item with index `i` in `x`
 public isolated function get(xml<ItemType> x, int i) returns ItemType = external;
 
@@ -12180,7 +12212,7 @@ public isolated function toBalString(any v) returns string = external;
 # an error if the string cannot be parsed
 # The subset of Ballerina expression syntax supported is that produced
 # by toBalString when applied to an anydata value.
-function fromBalString(string s) returns anydata|error = external;
+public isolated function fromBalString(string s) returns anydata|error = external;
 
 
 # Converts a value of type `anydata` to `json`.
@@ -12299,6 +12331,21 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 </section>
 <section class="appendix">
 <h2 id="changes">B. Changes since previous releases</h2>
+<section>
+<h3>Summary of changes from 2021R1 to 2022R1</h3>
+<ol>
+<li>Maps are required to preserve insertion order.</li>
+<li>The static typing rules for <code>==</code> and <code>!=</code> have been
+relaxed to require only one operand to be <code>anydata</code>.</li>
+<li>The identifiers of organizations and modules refererenced in import
+declarations are restricted to ASCII alpha-numberic characters with underscores
+separating words.</li>
+<li>Floating pointer literals are not allowed to end with a trailing dot.</li>
+<li>Add the <code>!is</code> operator.</li>
+<li>Allow <code>null</code> as a type descriptor.</li>
+<li>An object type is not allowed to include a class with private members.</li>
+</ol>
+</section>
 <section>
 <h3>Summary of changes from 2020R1 to 2021R1</h3>
 <ol>

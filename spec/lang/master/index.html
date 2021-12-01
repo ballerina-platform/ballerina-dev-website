@@ -8771,7 +8771,7 @@ A <code>do-stmt</code> is executed by executing its
 <pre class="grammar"><span class="ntdfn" id="match-stmt">match-stmt</span> := <code>match</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>{</code> <a href="#match-clause"><span class="ntref">match-clause</span></a>+ <code>}</code>
 <span class="ntdfn" id="match-clause">match-clause</span> :=
   <a href="#match-pattern-list"><span class="ntref">match-pattern-list</span></a> [<a href="#match-guard"><span class="ntref">match-guard</span></a>] <code>=&gt;</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
-<span class="ntdfn" id="match-guard">match-guard</span> := <code>if</code> <a href="#expression"><span class="ntref">expression</span></a>
+<span class="ntdfn" id="match-guard">match-guard</span> := <code>if</code> <a href="#match-guard-expr"><span class="ntref">match-guard-expr</span></a>
 </pre>
 <p>
 A match statement selects a statement block to execute based on which patterns a
@@ -8803,6 +8803,22 @@ The scope of any variables created in a match-pattern-list of a match-clause is
 both the match-guard, if any, and the statement-block in that match-clause. The
 static type of the expression in match-guard must be a subtype of boolean.
 </p>
+
+<pre class="grammar"><span class="ntdfn" id="match-guard-expr">match-guard-expr</span> := <a href="#expression"><span class="ntref">expression</span></a>
+</pre>
+<p>
+A match-guard-expr must not include a <code>function-call-expr</code> or
+<code>method-call-expr</code> unless either
+</p>
+<ul>
+<li>the static type of the <code>action-or-expr</code> following
+<code>match</code> is a subtype of <code>readonly</code>; or</li>
+<li>the function or method being called is <code>isolated</code> and the static
+type of every argument to the function or method is a subtype of
+<code>readonly</code>; in the case of a method-call-expr, the static type of the
+object whose method is being called must also be a subtype of
+<code>readonly</code>.</li>
+</ul>
 
 <pre class="grammar"><span class="ntdfn" id="match-pattern-list">match-pattern-list</span> := 
   <a href="#match-pattern"><span class="ntref">match-pattern</span></a> (<code>|</code> <a href="#match-pattern"><span class="ntref">match-pattern</span></a>)*
@@ -12799,6 +12815,8 @@ separating words.</li>
 is applied to the body of a while statement.</li>
 <li>Conditional variable type narrowing is now done for a <code>where</code> clause in a
 query expression or action.</li>
+<li>A function call is only allowed with an expression in a match-guard when
+there is no possibility that it can mutate the value being matched.</li>
 </ol>
 </section>
 <section>

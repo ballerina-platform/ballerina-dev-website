@@ -34,7 +34,7 @@ If you are using an **Update Tool version below 0.8.14**, execute the `ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
-<style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style>
+
 
 
 

@@ -24,7 +24,7 @@ The Ballerina community has been bootstrapped by <a href="https://wso2.com" targ
 We curate a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
 <ul class="cInlinelinklist">
-<li><a class="cGreenLinkArrow" href="/community/newsletter/2021-5/" target="_blank">Latest Ballerina Newsletter</a></li>
+<li><a class="cGreenLinkArrow" href="/community/newsletter/2021-6/" target="_blank">Latest Ballerina Newsletter</a></li>
 <li><a class="cGreenLinkArrow" href="/community/newsletter/#past-issues" target="_blank">Past newsletter issues</a></li>
 
 </ul>
@@ -93,6 +93,7 @@ Report issues in the GitHub repositories of the areas and components listed belo
 
 - <a href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose" target="_blank">Compiler, runtime, or tooling</a>
 - <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues/new/choose" target="_blank">Standard Library</a>
+- <a href="https://github.com/wso2/ballerina-plugin-vscode/issues/new/choose" target="_blank">Ballerina Visual Studio Code extension</a>
 - <a href="https://github.com/ballerina-platform/ballerina-spec/issues/new" target="_blank">Language specification</a>
 - <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">Website</a>
 - <a href="mailto:security@ballerina.io" target="_blank">Security</a> (For details, see the <a href="/security" target="_blank">security policy</a>.)
@@ -684,10 +685,8 @@ body {font-family: Arial;}
          <p class="cEventLocation">Las Vegas, Nevada, USA</p>
       </td>
       <td class="cEventDetail">
-         <a target="_blank" href="https://apachecon.com/acna19/s/#/schedule">
-            <h4>ApacheCon North America 2019</h4>
-         </a>
-         <h5>Ballerina - Re-inventing Middleware in a Programming Language</h5>
+       <h4>ApacheCon North America 2019</h4>
+       <h5>Ballerina - Re-inventing Middleware in a Programming Language</h5>
          <b>Paul Fremantle,</b> CTO and Co-founder, WSO2
       </td>
       <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/apachecon-na-2019-reinventing-middleware-in-a-programming-language" target="_blank">View Slides</a></td>
@@ -698,9 +697,7 @@ body {font-family: Arial;}
          <p class="cEventLocation">Las Vegas, Nevada, USA</p>
       </td>
       <td class="cEventDetail">
-         <a target="_blank" href="https://apachecon.com/acna19/s/#/schedule">
             <h4>ApacheCon North America 2019</h4>
-         </a>
          <h5>Conquering Network Distributed Applications Using the Ballerina Programming Language</h5>
          <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
       </td>

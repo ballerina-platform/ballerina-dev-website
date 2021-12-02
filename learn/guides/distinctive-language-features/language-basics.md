@@ -1,15 +1,13 @@
 ---
-layout: ballerina-language-guide-left-nav-pages-swanlake
-title: How Ballerina Does What All Programming Languages Do
-description: The sections below include information about how Ballerina does what all programming languages do.
+layout: ballerina-guides-left-nav-pages-swanlake
+title: Language Basics
+description: This page provides an introduction to the Ballerina language to help you get started with the basics that are common to all C-Family programming languages. 
 keywords: ballerina, programming language, ballerina packages,language-guide
-permalink: /learn/language-guide/how-ballerina-does-what-all-programming-languages-do/
-active: how-ballerina-does-what-all-programming-languages-do
-intro: The sections below include information about how Ballerina does what all programming languages do.
+permalink: /learn/language-basics/
+active: language-basics
+intro: This page provides an introduction to the Ballerina language to help you get started with the basics that are common to all C-Family programming languages. 
 redirect_from:
-- /learn/language-guide/how-ballerina-does-what-all-programming-languages-do
-- /learn/language-guide/
-- /learn/language-guide
+- /learn/language-basics
 ---
 
 ## Familiar Subset of Ballerina

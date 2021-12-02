@@ -30,7 +30,7 @@ redirect_from:
 <span class="s">            &lt;pen&gt;&lt;kind&gt;marker&lt;/kind&gt;&lt;color&gt;blue&lt;/color&gt;&lt;/pen&gt;</span>
 <span class="s">        &lt;/items&gt;`</span><span class="p">;</span>
 
-    <span class="c1">// `x.&lt;para&gt;` - every element in `x` named `para`.</span>
+    <span class="c1">// `x.&lt;items&gt;` - every element in `x` named `items`.</span>
     <span class="kt">xml</span> <span class="nx">a</span> <span class="p">=</span> <span class="nx">x</span><span class="p">.&lt;</span><span class="nx">items</span><span class="p">&gt;;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
 
@@ -38,11 +38,11 @@ redirect_from:
     <span class="kt">xml</span> <span class="nx">b</span> <span class="p">=</span> <span class="nx">x</span><span class="cm">/*;</span>
 <span class="cm">    io:println(b);</span>
 
-<span class="cm">    // `x/&lt;para&gt;` - for every element `e` in `x`, every element named para in the children of `e`.</span>
+<span class="cm">    // `x/&lt;planner&gt;` - for every element `e` in `x`, every element named `planner` in the children of `e`.</span>
 <span class="cm">    xml c = x/&lt;planner&gt;;</span>
 <span class="cm">    io:println(c);</span>
 
-<span class="cm">    // `x/&lt;th|td&gt;` - for every element `e` in `x`, every element named `th` or `td` in the </span>
+<span class="cm">    // `x/&lt;planner|pen&gt;` - for every element `e` in `x`, every element named `planner` or `pen` in the</span>
 <span class="cm">    // children of `e`.</span>
 <span class="cm">    xml d = x/&lt;planner|pen&gt;;</span>
 <span class="cm">    io:println(d);</span>
@@ -51,13 +51,13 @@ redirect_from:
 <span class="cm">    xml e = x/&lt;*&gt;;</span>
 <span class="cm">    io:println(e);</span>
 
-<span class="cm">    // x/**/</span><span class="p">&lt;</span><span class="nx">para</span><span class="p">&gt;</span>  <span class="o">-</span> <span class="k">for</span> <span class="nx">every</span> <span class="nx">element</span> <span class="s">`e`</span> <span class="nx">in</span> <span class="s">`x`</span><span class="p">,</span> <span class="nx">every</span> <span class="nx">element</span> <span class="nx">named</span> <span class="s">`para`</span> <span class="nx">in</span> 
+<span class="cm">    // x/**/</span><span class="p">&lt;</span><span class="nx">name</span><span class="p">&gt;</span>  <span class="o">-</span> <span class="k">for</span> <span class="nx">every</span> <span class="nx">element</span> <span class="s">`e`</span> <span class="nx">in</span> <span class="s">`x`</span><span class="p">,</span> <span class="nx">every</span> <span class="nx">element</span> <span class="nx">named</span> <span class="s">`name`</span> <span class="nx">in</span>
     <span class="c1">// the descendants of `e`.</span>
     <span class="kt">xml</span> <span class="nx">f</span> <span class="p">=</span> <span class="nx">x</span><span class="cm">/**/</span><span class="p">&lt;</span><span class="nx">name</span><span class="p">&gt;;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">f</span><span class="p">);</span>
 
-    <span class="c1">// x/&lt;para&gt;[0]  - for every element `e` in `x`, first element named `para` in </span>
-    <span class="c1">// The children of `e`.</span>
+    <span class="c1">// x/&lt;book&gt;[0]  - for every element `e` in `x`, first element named `book` in</span>
+    <span class="c1">// the children of `e`.</span>
     <span class="kt">xml</span> <span class="nx">g</span> <span class="p">=</span> <span class="nx">x</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">book</span><span class="p">&gt;[</span><span class="mi">0</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">g</span><span class="p">);</span>
 
@@ -113,7 +113,11 @@ redirect_from:
                                         </li>
                                         
                                         <li>
+<<<<<<< HEAD
                                             <a target="_blank" href="https://play.ballerina.io/?gist=556391aa9922551b67352b3674ff4d22&file=xml_navigation.bal"><img src="/img/main-play-green-btn.svg" /></a>
+=======
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=3669bbf45e58be48ea763470f700046d&file=xml_navigation.bal"><img src="/img/main-play-green-btn.svg" /></a>
+>>>>>>> b9a97067a1a19599488b674b69f9c45fa97a36b8
                                         </li>
                                         
                                     </ul>
@@ -177,7 +181,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>x.&lt;para&gt;</code> - every element in <code>x</code> named <code>para</code>.</p>
+                                            <p><code>x.&lt;items&gt;</code> - every element in <code>x</code> named <code>items</code>.</p>
 
                                         </div>
                                     </div>
@@ -217,7 +221,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>x/&lt;para&gt;</code> - for every element <code>e</code> in <code>x</code>, every element named para in the children of <code>e</code>.</p>
+                                            <p><code>x/&lt;planner&gt;</code> - for every element <code>e</code> in <code>x</code>, every element named <code>planner</code> in the children of <code>e</code>.</p>
 
                                         </div>
                                     </div>
@@ -237,7 +241,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>x/&lt;th|td&gt;</code> - for every element <code>e</code> in <code>x</code>, every element named <code>th</code> or <code>td</code> in the
+                                            <p><code>x/&lt;planner|pen&gt;</code> - for every element <code>e</code> in <code>x</code>, every element named <code>planner</code> or <code>pen</code> in the
  children of <code>e</code>.</p>
 
                                         </div>
@@ -278,7 +282,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>x/**/<para>  - for every element <code>e</code> in <code>x</code>, every element named <code>para</code> in
+                                            <p>x/**/<name>  - for every element <code>e</code> in <code>x</code>, every element named <code>name</code> in
  the descendants of <code>e</code>.</p>
 
                                         </div>
@@ -299,8 +303,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>x/<para>[0]  - for every element <code>e</code> in <code>x</code>, first element named <code>para</code> in
- The children of <code>e</code>.</p>
+                                            <p>x/<book>[0]  - for every element <code>e</code> in <code>x</code>, first element named <code>book</code> in
+ the children of <code>e</code>.</p>
 
                                         </div>
                                     </div>

@@ -11,10 +11,13 @@ redirect_from:
   - /learn/user-guide/observability/observing-ballerina-services-through-choreo/
   - /learn/observing-ballerina-programs/observing-your-application-with-choreo
 ---
+<article class="tip" markdown="1">
 
 >**Info:** If you already have login access to [Choreo](https://wso2.com/choreo/), see [Observability Overview](https://wso2.com/choreo/docs/observability/observability-overview/) to observe your Ballerina program in Choreo.
 
 Follow the steps below to observe a Ballerina service without logging in to Choreo.
+
+<section id="step-1---creating-a-hello-world-ballerina-service" markdown="1">
 
 ## Step 1 - Creating a Hello World Ballerina Service
 
@@ -33,6 +36,8 @@ service /hello on new http:Listener(9090) {
    }
 }
 ```
+</section>
+<section id="step-2---configuring-choreo-to-observe-a-ballerina-service" markdown="1">
 
 ## Step 2 - Configuring Choreo to Observe a Ballerina Service
 
@@ -52,6 +57,8 @@ Follow the steps below to add observability in the executable created by Balleri
   enabled=true
   provider="choreo"
   ```
+</section>
+<section id="step-3---observe-the-ballerina-service" markdown="1">
 
 ## Step 3 - Observing the Ballerina Service
 
@@ -78,6 +85,8 @@ Follow the steps below to add observability in the executable created by Balleri
 2. Click on the URL provided. You will be directed to the Choreo portal where you can view the metrics and traces exposed via the throughput and latency graphs. 
   >**Note:** If you haven't sent any requests to the Ballerina service, you may see a banner with the message "No request received during the selected time period".
 
+</section>
+<section id="step-4---sending-few-requests" markdown="1">
 
 ## Step 4 - Sending Few Requests
 
@@ -94,3 +103,5 @@ After sending a few requests, you view the graphs rendered with data. The sample
 >**Info:** Currently monitoring logs is not supported by default. To enable log monitoring for your service, see [Setting up Elastic Stack](/learn/user-guide/observability/observing-ballerina-code/#setting-up-the-external-systems-for-log-analytics) to configure [Elastic Stack](https://www.elastic.co/).
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
+</section>
+</article>

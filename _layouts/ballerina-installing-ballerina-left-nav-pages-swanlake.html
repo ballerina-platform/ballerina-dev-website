@@ -9,14 +9,14 @@
    <body class="cBallerina-io" id="top">
       {% include nav.html %}
       <div class="row cBallerina-io-Gray-row">
-         <div class="container">
+         <div class="container-fluid">
             <div class="row">
-               <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-Home-Middle-col cLeftNavSticky">
+               <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 cBallerina-io-Home-Middle-col cLeftNavSticky">
                   {% include side-nav-menu-button.html %}
 
                   {% include left-nav-installing-ballerina-swan-lake.html %}
                </div>
-               <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 cBallerina-io-Home-Middle-col">
+               <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 cBallerina-io-Home-Middle-col">
                   <div class="col-xs-12 col-sm-12" style="padding: 0;">
                      <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
                         {% include nav-breadcrumbs.html %}
@@ -54,6 +54,14 @@
                      <a class="cTopLink" href="#top">Back to Top &#x2934;</a>
                   </div>
                </div>
+               <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-Home-Middle-col cLeftNavSticky">
+              
+                  <div class="toc">
+                     <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke="#464646" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
+                      </svg>
+                  </div>
+               </div>
             </div>
          </div>
       </div>
@@ -71,6 +79,7 @@
          
      </script>
      <script src="/js/ballerina-leftnav.js"></script>
+     <script src="/js/right-toc.js"></script>
 
 
 
@@ -110,6 +119,9 @@
 
 
     });
+
+  
+    
 
      </script>
 

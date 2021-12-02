@@ -1,4 +1,4 @@
-var ToC =
+var tableOfContent =
   "<nav role='navigation' class='toc'>" +
     "<p></p>" +
     "<ul> ";
@@ -13,20 +13,14 @@ $("article h2").each(function() {
 
   newLine =
     "<li>" +
-      "<a href='" + link + "'>" +
-        title +
-      "</a>" +
-    "</li>";
-
-  ToC += newLine;
-
+      "<a href='" + link + "'>" + title + "</a>" + "</li>";
+      tableOfContent += newLine;
 });
-
-ToC +=
+tableOfContent +=
    "</ul>" +
   "</nav>";
 
-$(".toc").prepend(ToC);
+$(".toc").prepend(tableOfContent);
 
 var toc = document.querySelector( '.toc' );
 var tocPath = document.querySelector( '.toc-marker path' );

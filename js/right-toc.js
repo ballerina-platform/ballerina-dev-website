@@ -1,16 +1,10 @@
 var tableOfContent =
-  "<nav role='navigation' class='toc'>" +
-    "<p></p>" +
-    "<ul> ";
-
+  "<nav role='navigation' class='toc'>" + "<p></p>" + "<ul> ";
 var newLine, el, title, link;
-
 $("article h2").each(function() {
-
   el = $(this);
   title = el.text();
   link = "#" + el.attr("id");
-
   newLine =
     "<li>" +
       "<a href='" + link + "'>" + title + "</a>" + "</li>";
@@ -19,9 +13,7 @@ $("article h2").each(function() {
 tableOfContent +=
    "</ul>" +
   "</nav>";
-
 $(".toc").prepend(tableOfContent);
-
 var toc = document.querySelector( '.toc' );
 var tocPath = document.querySelector( '.toc-marker path' );
 var tocItems;

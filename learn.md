@@ -161,7 +161,7 @@ redirect_from:
     <p >Why you should use Ballerina.  </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important">
-  <a href="/learn/language-guide/network-interaction/">
+  <a href="/learn/distinctive-language-features/network-interaction/">
    <h3 id="distinctive-language-features">Distinctive Language Features</h3></a>
     <p >A guide to the language features that make Ballerina distinctive.  </p>
 </div>

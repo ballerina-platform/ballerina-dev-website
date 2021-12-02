@@ -108,7 +108,7 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
-<h3 id="language-basics"><a href="/learn/language-guide/language-basics">Language Basics</a></h3>
+<h3 id="language-basics"><a href="/learn/language-basics">Language Basics</a></h3>
 <p>Get started with the basics that are common to all C-Family programming languages.</p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">

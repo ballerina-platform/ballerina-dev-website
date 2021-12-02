@@ -41,15 +41,12 @@ Here is an overview of our approach to handling vulnerabilities:
 1. The vulnerability will be reported privately to our security team at [security@ballerina.io](mailto:security@ballerina.io).
 
 2. Your email will be acknowledged within 24 hours, and you’ll receive a detailed response to your email indicating the next steps in handling your report. You will be updated on the progress. 
-3. The reported vulnerability will be confirmed and fixed by the security team at WSO2.
+3. If case of a true-positive finding, the reported vulnerability will be confirmed and fixed by the relevant teams at WSO2.
 4. The fix will be applied to the main branch and a new version of the distribution will be released immediately if required.
 
 
 
-
-3. The reported vulnerability gets fixed and the solution gets verified by the relevant teams at WSO2.
-3. The fix gets applied to the main branch and a new version of the distribution gets released if required.
-4. The reported user is kept updated on the progress of the process. 
+5. The reported user is kept updated on the progress of the process. 
 
 ## Getting Acknowledged and Rewarded
 

@@ -1420,29 +1420,6 @@
         ]
     },
     {
-        "title": "REST API Interceptors",
-        "column": 1,
-        "category": "Working Over the Network",
-        "samples": [
-            {
-                "name": "Request Interceptor",
-                "url": "http-request-interceptor",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Request Error Interceptor",
-                "url": "http-request-error-interceptor",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            }
-        ]
-    },
-    {
         "title": "HTTP2",
         "column": 1,
         "category": "Working Over the Network",

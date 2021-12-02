@@ -108,8 +108,8 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
-<h3 id="language-walkthrough-video"><a href="/learn/language-guide/how-ballerina-does-what-all-programming-languages-do">How Ballerina Does What All Programming Languages Do</a></h3>
-<p>Get started quickly with the language.</p>
+<h3 id="language-basics"><a href="/learn/language-basics">Language Basics</a></h3>
+<p>Get started with the basics that are common to all C-Family programming languages.</p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
   <a href="/learn/installing-ballerina/setting-up-ballerina/">
@@ -161,9 +161,9 @@ redirect_from:
     <p >Why you should use Ballerina.  </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important">
-  <a href="/learn/language-guide/network-interaction/">
-   <h3 id="language-guide">Language Guide</h3></a>
-    <p >Guide to learn the Ballerina language.  </p>
+  <a href="/learn/distinctive-language-features/network-interaction/">
+   <h3 id="distinctive-language-features">Distinctive Language Features</h3></a>
+    <p >A guide to the language features that make Ballerina distinctive.  </p>
 </div>
 </div>
 

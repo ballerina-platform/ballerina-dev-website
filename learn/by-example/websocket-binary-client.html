@@ -27,7 +27,6 @@ redirect_from:
    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">byteResp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">readBinaryMessage</span><span class="p">();</span>
    <span class="kt">string</span> <span class="nx">stringResp</span> <span class="p">=</span> <span class="nx">check</span> <span class="p">&#39;string:fromBytes(</span><span class="nx">byteResp</span><span class="p">);</span>
    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">stringResp</span><span class="p">);</span>
-   <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -81,7 +80,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a0e2e2820c01228c7b006607e60dbfe3&file=websocket_binary_client.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f3e6758c7614d8dee1b3d08a910b2b06&file=websocket_binary_client.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -165,7 +164,6 @@ import ballerina/websocket;
                                     <div class="highlight"><pre><code class=language-ballerina>   byte[] byteResp = check wsClient-&gt;readBinaryMessage();
    string stringResp = check &#39;string:fromBytes(byteResp);
    io:println(stringResp);
-   return;
 }
 </code></pre></div>
 

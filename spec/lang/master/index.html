@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R1 preview 2021-12-01</h1>
+<h1>Ballerina Language Specification, 2022R1 preview 2021-12-03</h1>
 <p>
 Primary contributors:
 </p>
@@ -2020,8 +2020,9 @@ An array type-descriptor describes a type of list value by specifying the type
 that the value for all members must belong to, and optionally, a length.
 </p>
 
-<pre class="grammar"><span class="ntdfn" id="array-type-descriptor">array-type-descriptor</span> := <a href="#member-type-descriptor"><span class="ntref">member-type-descriptor</span></a> <code>[</code> [ <a href="#array-length"><span class="ntref">array-length</span></a> ] <code>]</code>
-<span class="ntdfn" id="member-type-descriptor">member-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>
+<pre class="grammar"><span class="ntdfn" id="array-type-descriptor">array-type-descriptor</span> := <a href="#array-member-type-descriptor"><span class="ntref">array-member-type-descriptor</span></a> <a href="#array-dimension"><span class="ntref">array-dimension</span></a>+
+<span class="ntdfn" id="array-dimension">array-dimension</span> := <code>[</code> [ <a href="#array-length"><span class="ntref">array-length</span></a> ] <code>]</code>
+<span class="ntdfn" id="array-member-type-descriptor">array-member-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <em>but not</em> <a href="#array-type-descriptor"><span class="ntref">array-type-descriptor</span></a>
 <span class="ntdfn" id="array-length">array-length</span> :=
    <a href="#int-literal"><span class="ntref">int-literal</span></a>
    | <a href="#constant-reference-expr"><span class="ntref">constant-reference-expr</span></a>
@@ -2032,6 +2033,22 @@ that the value for all members must belong to, and optionally, a length.
 A type <code>T[]</code> contains a list shape if all members of the list shape
 are in <code>T</code>. A type <code>T[n]</code> contains a list shape if in
 addition the length of the list shape is n.
+</p>
+<p>
+When an <code>array-type-descriptor</code> includes multiple
+<code>array-dimension</code>s, the <code>array-dimension</code>s are interpreted
+so that the order of the dimensions in the <code>array-type-descriptor</code> is
+consistent with the order of the dimensions in a
+<code>member-access-expr</code>. Specifically, a type
+<code>T[n<sub>1</sub>]...[n<sub>k - 1</sub>][n<sub>k</sub>]</code> is
+interpreted as <code>(T[n<sub>k</sub>])[n<sub>1</sub>]...[n<sub>k -
+1</sub>]</code>. Thus, for a value <code>v</code> of type <code>T[M][N]</code>,
+a member-access-expr <code>v[i][j]</code> will evaluate to an value of type
+<code>T</code> if and only if 0 ≤ <code>i</code> ≤ <code>M</code>
+and 0 ≤ <code>j</code> ≤ <code>N</code>. An
+<code>array-type-descriptor</code> is parsed to include all following
+<code>array-dimension</code>s: an <code>array-type-descriptor</code> is not
+recognized as <code>array-member-type-descriptor</code>.
 </p>
 <p>
 A <code>constant-reference-expr</code> in an <code>array-length</code> must
@@ -12828,6 +12845,9 @@ query expression or action.</li>
 there is no possibility that it can mutate the value being matched.</li>
 <li>A member of an enum declaration can have the same identifier as a member of
 another enum declaration.</li>
+<li>The interpretation of multiple dimensions in an array-type-descriptor has
+been changed to make the order of dimensions in the type-descriptor consistent
+with the order of dimensions in an expression that accesses the array.</li>
 </ol>
 </section>
 <section>

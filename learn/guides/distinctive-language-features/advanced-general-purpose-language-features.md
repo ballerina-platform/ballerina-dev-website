@@ -454,7 +454,7 @@ Therefore, any array of type *T*,  as in *T[ ]*, can be described as *[T . . .]*
 | Basic<br>type | Index type | JSON   | Constructor                       | Type with<br>uniform<br>member<br>type | Type with<br>per-index member<br>type       | Open type                            |
 |---------------|------------|--------|-----------------------------------|----------------------------------------|---------------------------------------------|--------------------------------------|
 | list          | int        | array  | [<br> "foo",<br> "bar"<br>]       | array<br><br>T[]                       | tuple<br><br>[T0,T1]                        | <br>[T0,Tr...]                       |
-| mapping       | string     | object | {<br> x: "foo",<br> y: "bar"<br>} | map<br><br>map&lt;T&gt;                     | record<br><br>record {<br> Tx x; Ty y;<br>} | record {\|<br> Tx;<br> Tr...;<br>\|} |
+| mapping       | string     | object | {<br> x: "foo",<br> y: "bar"<br>} | map<br><br>map&lt;T&gt;                     | record<br><br>record {<br> Tx x; Ty y;<br>} | record {\|<br> Tx x;<br> Tr...;<br>\|} |
 
 Overall, Ballerina provides quite a nice symmetry between lists and mappings.  
 

@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R1 preview 2021-12-04</h1>
+<h1>Ballerina Language Specification, 2022R1 preview 2021-12-05</h1>
 <p>
 Primary contributors:
 </p>
@@ -300,7 +300,7 @@ point; more precisely, it must be a hexadecimal numeral denoting an integer
 <pre
 class="grammar"><dfn>RestrictedIdentifier</dfn> := <abbr>AsciiLetter</abbr> <abbr>RestrictedFollowingChar</abbr>* <abbr>RestrictedIdentifierWord</abbr>*
 <dfn>RestrictedIdentifierWord</dfn> := <code>_</code> <abbr>RestrictedFollowingChar</abbr>+
-<dfn>RestrictedFollowingChar</dfn> := <abbr>AsciiLetter</abbr> | <abbr>AsciiDigit</abbr>
+<dfn>RestrictedFollowingChar</dfn> := <abbr>AsciiLetter</abbr> | <abbr>Digit</abbr>
 </pre>
 
 <p>
@@ -1545,6 +1545,7 @@ class="grammar"><dfn>tuple-type-descriptor</dfn> :=
 <dfn>tuple-member-type-descriptors</dfn> :=
    <abbr>member-type-descriptor</abbr> (<code>,</code> <abbr>member-type-descriptor</abbr>)* [<code>,</code> <abbr>tuple-rest-descriptor</abbr>]
    | [ <abbr>tuple-rest-descriptor</abbr> ]
+<dfn>member-type-descriptor</dfn> := <abbr>type-descriptor</abbr>
 <dfn>tuple-rest-descriptor</dfn> := <abbr>type-descriptor</abbr> <code>...</code>
 
 </pre>

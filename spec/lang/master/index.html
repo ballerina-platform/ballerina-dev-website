@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R1 preview 2021-12-04</h1>
+<h1>Ballerina Language Specification, 2022R1 preview 2021-12-05</h1>
 <p>
 Primary contributors:
 </p>
@@ -847,7 +847,7 @@ point; more precisely, it must be a hexadecimal numeral denoting an integer
 
 <pre class="grammar"><span class="ntdfn" id="RestrictedIdentifier">RestrictedIdentifier</span> := <a href="#AsciiLetter"><span class="ntref">AsciiLetter</span></a> <a href="#RestrictedFollowingChar"><span class="ntref">RestrictedFollowingChar</span></a>* <a href="#RestrictedIdentifierWord"><span class="ntref">RestrictedIdentifierWord</span></a>*
 <span class="ntdfn" id="RestrictedIdentifierWord">RestrictedIdentifierWord</span> := <code>_</code> <a href="#RestrictedFollowingChar"><span class="ntref">RestrictedFollowingChar</span></a>+
-<span class="ntdfn" id="RestrictedFollowingChar">RestrictedFollowingChar</span> := <a href="#AsciiLetter"><span class="ntref">AsciiLetter</span></a> | <a href="#AsciiDigit"><span class="ntref">AsciiDigit</span></a>
+<span class="ntdfn" id="RestrictedFollowingChar">RestrictedFollowingChar</span> := <a href="#AsciiLetter"><span class="ntref">AsciiLetter</span></a> | <a href="#Digit"><span class="ntref">Digit</span></a>
 </pre>
 
 <p>
@@ -2082,6 +2082,7 @@ type for each member of the list.
 <span class="ntdfn" id="tuple-member-type-descriptors">tuple-member-type-descriptors</span> :=
    <a href="#member-type-descriptor"><span class="ntref">member-type-descriptor</span></a> (<code>,</code> <a href="#member-type-descriptor"><span class="ntref">member-type-descriptor</span></a>)* [<code>,</code> <a href="#tuple-rest-descriptor"><span class="ntref">tuple-rest-descriptor</span></a>]
    | [ <a href="#tuple-rest-descriptor"><span class="ntref">tuple-rest-descriptor</span></a> ]
+<span class="ntdfn" id="member-type-descriptor">member-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>
 <span class="ntdfn" id="tuple-rest-descriptor">tuple-rest-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>...</code>
 
 </pre>

@@ -121,7 +121,7 @@ redirect_from:
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
 <a href="/learn/by-example/">
-    <h3 id="learn-by-example">Ballerina by Examples</h3></a>
+    <h3 id="learn-by-example">Ballerina by Example</h3></a>
     <p >A series of examples that serve as a reference guide for language constructs, concepts, and standard library modules. </p>
 </div>
 

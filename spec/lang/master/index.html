@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R1 preview 2021-12-05</h1>
+<h1>Ballerina Language Specification, 2022R1 preview 2021-12-06</h1>
 <p>
 Primary contributors:
 </p>
@@ -796,7 +796,7 @@ code points:
 <li>surrogates (0xD800 to 0xDFFF)</li>
 <li>non-characters (the 66 code points that Unicode designates as
 non-characters)</li>
-<li>C0 control characters (0x0 to 0x1F and 0x1F) other than whitespace (0x9,
+<li>C0 control characters (0x0 to 0x1F and 0x1F) other than white space (0x9,
 0xA, 0xC, 0xD)</li>
 <li>C1 control characters (0x80 to 0x9F)</li>
 </ul>
@@ -864,6 +864,16 @@ Identifiers used for the names of organizations and modules are restricted to
 <code>TokenWhiteSpace</code> is implicitly allowed on the right hand side of
 productions for non-terminals whose names start with a lower-case letter.
 </p>
+
+<pre class="grammar"><span class="ntdfn" id="NoSpaceColon">NoSpaceColon</span> := <code>:</code>
+</pre>
+<p>
+When <code>NoSpaceColon</code> is used in a production,
+<code>TokenWhiteSpace</code> is not allowed immediately before or after the
+colon. When a literal <code>:</code> is used in a production, white space is
+handled in the same was as for any other character.
+</p>
+
 </section>
 <section>
 <h2 id="values_types">5. Values, types and variables</h2>
@@ -5598,7 +5608,7 @@ is not a class or stream type.
 
 <pre class="grammar"><span class="ntdfn" id="variable-reference-expr">variable-reference-expr</span> := <a href="#variable-reference"><span class="ntref">variable-reference</span></a>
 <span class="ntdfn" id="variable-reference">variable-reference</span> := <a href="#identifier"><span class="ntref">identifier</span></a> | <a href="#qualified-identifier"><span class="ntref">qualified-identifier</span></a> | <a href="#xml-qualified-name"><span class="ntref">xml-qualified-name</span></a>
-<span class="ntdfn" id="xml-qualified-name">xml-qualified-name</span> := <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> <code>:</code> <a href="#identifier"><span class="ntref">identifier</span></a>
+<span class="ntdfn" id="xml-qualified-name">xml-qualified-name</span> := <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> <a href="#NoSpaceColon"><span class="ntref">NoSpaceColon</span></a> <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>
 <p>
 A variable-reference can refer to a variable, a parameter, a constant (defined
@@ -7310,8 +7320,8 @@ in a similar way to XPath.
 <span class="ntdfn" id="xml-atomic-name-pattern">xml-atomic-name-pattern</span> :=
   <code>*</code>
   | <a href="#identifier"><span class="ntref">identifier</span></a>
-  | <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> <code>:</code> <a href="#identifier"><span class="ntref">identifier</span></a>
-  | <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> <code>:</code> <code>*</code>
+  | <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> <a href="#NoSpaceColon"><span class="ntref">NoSpaceColon</span></a> <a href="#identifier"><span class="ntref">identifier</span></a>
+  | <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> <a href="#NoSpaceColon"><span class="ntref">NoSpaceColon</span></a> <code>*</code>
 </pre>
 
 <p>
@@ -9680,7 +9690,7 @@ not constrained.
 <span class="ntdfn" id="module-name">module-name</span> := <a href="#import-identifier"><span class="ntref">import-identifier</span></a> (<code>.</code> <a href="#import-identifier"><span class="ntref">import-identifier</span></a>)*
 <span class="ntdfn" id="import-identifier">import-identifier</span> := <a href="#RestrictedIdentifier"><span class="ntref">RestrictedIdentifier</span></a>
 
-<span class="ntdfn" id="qualified-identifier">qualified-identifier</span> := <a href="#module-prefix"><span class="ntref">module-prefix</span></a> <code>:</code> <a href="#identifier"><span class="ntref">identifier</span></a>
+<span class="ntdfn" id="qualified-identifier">qualified-identifier</span> := <a href="#module-prefix"><span class="ntref">module-prefix</span></a> <a href="#NoSpaceColon"><span class="ntref">NoSpaceColon</span></a> <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>
 <p>
 If org-name is omitted, it is defaulted from the organization of the importing
@@ -12925,6 +12935,7 @@ relaxed to require only one operand to be <code>anydata</code>.</li>
 declarations are restricted to ASCII alpha-numberic characters with underscores
 separating words.</li>
 <li>Floating pointer literals are not allowed to end with a trailing dot.</li>
+<li>No white space is allowed within a qualified name.</li>
 <li>Add the <code>!is</code> operator.</li>
 <li>Allow <code>null</code> as a type descriptor.</li>
 <li>An object type is not allowed to include a class with private members.</li>

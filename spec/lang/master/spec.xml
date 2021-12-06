@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R1 preview 2021-12-05</h1>
+<h1>Ballerina Language Specification, 2022R1 preview 2021-12-06</h1>
 <p>
 Primary contributors:
 </p>
@@ -247,7 +247,7 @@ code points:
 <li>surrogates (0xD800 to 0xDFFF)</li>
 <li>non-characters (the 66 code points that Unicode designates as
 non-characters)</li>
-<li>C0 control characters (0x0 to 0x1F and 0x1F) other than whitespace (0x9,
+<li>C0 control characters (0x0 to 0x1F and 0x1F) other than white space (0x9,
 0xA, 0xC, 0xD)</li>
 <li>C1 control characters (0x80 to 0x9F)</li>
 </ul>
@@ -318,6 +318,17 @@ class="grammar"><dfn>TokenWhiteSpace</dfn> := (<abbr>Comment</abbr> | <abbr>Whit
 <code>TokenWhiteSpace</code> is implicitly allowed on the right hand side of
 productions for non-terminals whose names start with a lower-case letter.
 </p>
+
+<pre
+class="grammar"><dfn>NoSpaceColon</dfn> := <code>:</code>
+</pre>
+<p>
+When <code>NoSpaceColon</code> is used in a production,
+<code>TokenWhiteSpace</code> is not allowed immediately before or after the
+colon. When a literal <code>:</code> is used in a production, white space is
+handled in the same was as for any other character.
+</p>
+
 </section>
 <section>
 <h2 id="values_types">5. Values, types and variables</h2>
@@ -5078,7 +5089,7 @@ is not a class or stream type.
 <pre
 class="grammar"><dfn>variable-reference-expr</dfn> := <abbr>variable-reference</abbr>
 <dfn>variable-reference</dfn> := <abbr>identifier</abbr> | <abbr>qualified-identifier</abbr> | <abbr>xml-qualified-name</abbr>
-<dfn>xml-qualified-name</dfn> := <abbr>xml-namespace-prefix</abbr> <code>:</code> <abbr>identifier</abbr>
+<dfn>xml-qualified-name</dfn> := <abbr>xml-namespace-prefix</abbr> <abbr>NoSpaceColon</abbr> <abbr>identifier</abbr>
 </pre>
 <p>
 A variable-reference can refer to a variable, a parameter, a constant (defined
@@ -6800,8 +6811,8 @@ class="grammar"><dfn>xml-name-pattern</dfn> := <abbr>xml-atomic-name-pattern</ab
 <dfn>xml-atomic-name-pattern</dfn> :=
   <code>*</code>
   | <abbr>identifier</abbr>
-  | <abbr>xml-namespace-prefix</abbr> <code>:</code> <abbr>identifier</abbr>
-  | <abbr>xml-namespace-prefix</abbr> <code>:</code> <code>*</code>
+  | <abbr>xml-namespace-prefix</abbr> <abbr>NoSpaceColon</abbr> <abbr>identifier</abbr>
+  | <abbr>xml-namespace-prefix</abbr> <abbr>NoSpaceColon</abbr> <code>*</code>
 </pre>
 
 <p>
@@ -9224,7 +9235,7 @@ class="grammar"><dfn>import-decl</dfn> := <code>import</code> [<abbr>org-name</a
 <dfn>module-name</dfn> := <abbr>import-identifier</abbr> (<code>.</code> <abbr>import-identifier</abbr>)*
 <dfn>import-identifier</dfn> := <abbr>RestrictedIdentifier</abbr>
 
-<dfn>qualified-identifier</dfn> := <abbr>module-prefix</abbr> <code>:</code> <abbr>identifier</abbr>
+<dfn>qualified-identifier</dfn> := <abbr>module-prefix</abbr> <abbr>NoSpaceColon</abbr> <abbr>identifier</abbr>
 </pre>
 <p>
 If org-name is omitted, it is defaulted from the organization of the importing
@@ -12484,6 +12495,7 @@ relaxed to require only one operand to be <code>anydata</code>.</li>
 declarations are restricted to ASCII alpha-numberic characters with underscores
 separating words.</li>
 <li>Floating pointer literals are not allowed to end with a trailing dot.</li>
+<li>No white space is allowed within a qualified name.</li>
 <li>Add the <code>!is</code> operator.</li>
 <li>Allow <code>null</code> as a type descriptor.</li>
 <li>An object type is not allowed to include a class with private members.</li>

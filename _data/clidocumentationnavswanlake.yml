@@ -3,22 +3,7 @@
   sublinks:
     - title: CLI Commands
       url: /learn/cli-documentation/cli-commands/
-      sublinks:
-        - title: Using the Ballerina Tool
-          url: /learn/cli-documentation/cli-commands/#using-the-ballerina-tool
-          active: using-the-ballerina-tool
-        - title: Core Commands
-          url: /learn/cli-documentation/cli-commands/#core-commands
-          active: core-commands
-        - title: Package Commands
-          url: /learn/cli-documentation/cli-commands/#package-commands
-          active: package-commands
-        - title: Other Commands
-          url: /learn/cli-documentation/cli-commands/#other-commands
-          active: other-commands
-        - title: Update Commands
-          url: /learn/cli-documentation/cli-commands/#update-commands
-          active: update-commands
+      active: cli-commands
     - title: Update Tool
       url: /learn/cli-documentation/update-tool/
       sublinks:

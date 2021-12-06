@@ -1,5 +1,5 @@
 ---
-layout: ballerina-ballerina-shell-left-nav-pages-swanlake
+layout: ballerina-inner-page
 title: Ballerina Shell
 permalink: /learn/ballerina-shell/
 description: The Ballerina Shell is a Read-Evaluate-Print Loop (REPL) for Ballerina.

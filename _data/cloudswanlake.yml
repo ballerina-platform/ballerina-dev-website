@@ -5,73 +5,20 @@
       url: '#'
       sublinks:
         - title: Code to Cloud Deployment
-          url: '#'
-          sublinks:
-            - title: Setting Up the Prerequisites
-              url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#setting-up-the-prerequisites
-              active: setting-up-the-prerequisites
-            - title: How Code to Cloud Works
-              url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#how-code-to-cloud-works
-              active: how-code-to-cloud-works
-            - title: Package Layout
-              url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#package-layout
-              active: package-layout
-            - title: Properties of the ‘Cloud.toml’ File
-              url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#properties-of-the-cloudtoml-file
-              active: properties-of-the-cloudtoml-file
-            - title: Code to Cloud Samples
-              url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#code-to-cloud-samples
-              active: code-to-cloud-samples
+          url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/
+          active: code-to-cloud-deployment
         - title: Code to Cloud Samples
-          url: '#'
-          sublinks:
-            - title: Hello World Sample
-              url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-samples/#hello-world-sample
-              active: hello-world-sample
-            - title: Resource Limits and Auto Scaling Sample
-              url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-samples/#resource-limits-and-auto-scaling-sample
-              active: resource-limits-and-auto-scaling-sample
+          url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-samples/
+          active: code-to-cloud-samples
     - title: Function as a Service (FaaS) with Ballerina
       url: '#'
       sublinks:
         - title: AWS Lambda
-          url: '#'
-          sublinks:
-            - title: Writing a Function
-              url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/#writing-a-function
-              active: writing-a-function
-            - title: Building the Function
-              url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/#building-the-function
-              active: building-the-function
-            - title: Deploying the Function
-              url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/#deploying-the-function
-              active: deploying-the-function
-            - title: Invoking the Function
-              url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/#invoking-the-function
-              active: invoking-the-function
-            - title: What’s Next?
-              url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/#whats-next
-              active: whats-next
+          url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
+          active: aws-lambda
         - title: Azure Functions
-          url: '#'
-          sublinks:
-            - title: Triggers and Bindings
-              url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#triggers-and-bindings
-              active: triggers-and-bindings
-            - title: Writing a Function
-              url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#writing-a-function
-              active: writing-a-function
-            - title: Building the Function
-              url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#building-the-function
-              active: building-the-function
-            - title: Deploying the Function
-              url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#deploying-the-function
-              active: deploying-the-function
-            - title: Invoking the Function
-              url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#invoking-the-function
-              active: invoking-the-function
-            - title: What’s Next?
-              url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#whats-next
-              active: whats-next
+          url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
+          active: azure-functions
+ 
   
 

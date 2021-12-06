@@ -1,90 +1,22 @@
 - title: Testing Ballerina Code 
-  url: '#'
+  url: /learn/testing-ballerina-code/quick-start-on-testing/
   sublinks:
     - title: Quick Start on Testing 
-      url: '#'
-      sublinks:
-        - title: Writing a Simple Function
-          url: /learn/testing-ballerina-code/quick-start-on-testing/#writing-a-simple-function
-          active: writing-a-simple-function
-        - title: What’s Next?
-          url: /learn/testing-ballerina-code/quick-start-on-testing/#whats-next
-          active: whats-next
+      url: /learn/testing-ballerina-code/quick-start-on-testing/
+      active: quick-start-on-testing
     - title: Writing Tests
-      url: '#'
-      sublinks:
-        - title: Project Structure
-          url: /learn/testing-ballerina-code/writing-tests/#project-structure
-          active: project-structure
-        - title: Test Source Files
-          url: /learn/testing-ballerina-code/writing-tests/#test-source-files
-          active: test-source-files
-        - title: Test Resources
-          url: /learn/testing-ballerina-code/writing-tests/#test-resources
-          active: test-resources
-        - title: Defining a Test
-          url: /learn/testing-ballerina-code/writing-tests/#defining-a-test
-          active: defining-a-test
-        - title: Visibility of Symbols
-          url: /learn/testing-ballerina-code/writing-tests/#visibility-of-symbols
-          active: visibility-of-symbols
-        - title: Using Assertions
-          url: /learn/testing-ballerina-code/writing-tests/#using-assertions
-          active: using-assertions
-        - title: Setup and Teardown
-          url: /learn/testing-ballerina-code/writing-tests/#setup-and-teardown
-          active: setup-and-teardown
-        - title: test:AfterGroups {}
-          url: /learn/testing-ballerina-code/writing-tests/#testaftergroups-
-          active: testaftergroups-
-        - title: Test Configurations
-          url: /learn/testing-ballerina-code/writing-tests/#test-configurations
-          active: test-configurations
-        - title: Test Dependencies
-          url: /learn/testing-ballerina-code/writing-tests/#test-dependencies
-          active: test-dependencies
-        - title: What’s Next?
-          url: /learn/testing-ballerina-code/writing-tests/#whats-next
-          active: whats-next
+      url: /learn/testing-ballerina-code/writing-tests/
+      active: writing-tests
     - title: Testing Services and Clients
-      url: '#'
-      sublinks:
-        - title: Testing Services
-          url: /learn/testing-ballerina-code/testing-services-and-clients/#testing-services
-          active: testing-services
-        - title: Testing Clients
-          url: /learn/testing-ballerina-code/testing-services-and-clients/#testing-clients
-          active: testing-clients
-        - title: Configuring Services and Clients
-          url: /learn/testing-ballerina-code/testing-services-and-clients/#configuring-services-and-clients
-          active: configuring-services-and-clients
+      url: /learn/testing-ballerina-code/testing-services-and-clients/
+      active: testing-services-and-clients
     - title: Mocking
-      url: '#'
-      sublinks:
-        - title: Mocking Objects
-          url: /learn/testing-ballerina-code/mocking/#mocking-objects
-          active: mocking-objects
-        - title: Mocking Functions
-          url: /learn/testing-ballerina-code/mocking/#mocking-functions
-          active: mocking-functions
-        - title: What’s Next?
-          url: /learn/testing-ballerina-code/mocking/#whats-next
-          active: whats-next
+      url: /learn/testing-ballerina-code/mocking/
+      active: mocking
     - title: Executing Tests
-      url: '#'
-      sublinks:
-        - title: Executing Tests Using CLI Commands
-          url: /learn/testing-ballerina-code/executing-tests/#executing-tests-using-cli-commands
-          active: executing-tests-using-cli-commands
-        - title: Test Report
-          url: /learn/testing-ballerina-code/executing-tests/#test-report
-          active: test-report
-        - title: Code Coverage Report
-          url: /learn/testing-ballerina-code/executing-tests/#code-coverage-report
-          active: code-coverage-report
-        - title: JaCoCo XML Report
-          url: /learn/testing-ballerina-code/executing-tests/#jacoco-xml-report
-          active: jacoco-xml-report
+      url: /learn/testing-ballerina-code/executing-tests/
+      active: executing-tests
+
 
 
 

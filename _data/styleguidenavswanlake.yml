@@ -3,115 +3,20 @@
   sublinks:
     - title: Coding Conventions
       url: /learn/style-guide/coding-conventions/
-      sublinks:
-        - title: Indentation and Line Length
-          url: /learn/style-guide/coding-conventions/#indentation-and-line-length
-          active: indentation-and-line-length
-        - title: Line Spacing
-          url: /learn/style-guide/coding-conventions/#line-spacing
-          active: line-spacing
-        - title: Blank Lines
-          url: /learn/style-guide/coding-conventions/#blank-lines
-          active: blank-lines
-        - title: Blocks
-          url: /learn/style-guide/coding-conventions/#blocks
-          active: blocks
-        - title: Parentheses and Brackets
-          url: /learn/style-guide/coding-conventions/#parentheses-and-brackets
-          active: parentheses-and-brackets
-        - title: Line Breaks
-          url: /learn/style-guide/coding-conventions/#line-breaks
-          active: line-breaks
-        - title: Top-Level Definitions
-          url: /learn/style-guide/coding-conventions/#top-level-definitions
-          active: top-level-definitions
-        - title: Operators, Keywords, and Types
-          url: /learn/style-guide/coding-conventions/#operators-keywords-and-types
-          active: operators-keywords-and-types
-        - title: Statements
-          url: /learn/style-guide/coding-conventions/#statements
-          active: statements
-        - title: Expressions
-          url: /learn/style-guide/coding-conventions/#expressions
-          active: expressions
-        - title: Annotations, Documentation, and Comments
-          url: /learn/style-guide/coding-conventions/#annotations-documentation-and-comments
-          active: annotations-documentation-and-comments
+      active: coding-conventions
     - title: Top-Level Definitions
       url: /learn/style-guide/top-level-definitions/
-      sublinks:
-        - title: General Practices
-          url: /learn/style-guide/top-level-definitions/#general-practices
-          active: general-practices
-        - title: Imports
-          url: /learn/style-guide/top-level-definitions/#imports
-          active: imports
-        - title: Function Definition
-          url: /learn/style-guide/top-level-definitions/#function-definition
-          active: function-definition
-        - title: Service Definition
-          url: /learn/style-guide/top-level-definitions/#service-definition
-          active: service-definition
-        - title: Class Definition
-          url: /learn/style-guide/top-level-definitions/#class-definition
-          active: class-definition
-        - title: Record Definition
-          url: /learn/style-guide/top-level-definitions/#record-definition
-          active: record-definition
-        - title: Referencing Record or Object
-          url: /learn/style-guide/top-level-definitions/#referencing-record-or-object
-          active: referencing-record-or-object
+      active: top-level-definitions
     - title: Operators, Keywords, and Types
       url: /learn/style-guide/operators-keywords-and-types/
-      sublinks:
-        - title: Keywords and Types
-          url: /learn/style-guide/operators-keywords-and-types/#keywords-and-types
-          active: keywords-and-types
-        - title: Operators
-          url: /learn/style-guide/operators-keywords-and-types/#operators
-          active: operators
+      active: operators-keywords-and-types
     - title: Statements
       url: /learn/style-guide/statements/
-      sublinks:
-        - title: If Statement
-          url: /learn/style-guide/statements/#if-statement
-          active: if-statement
-        - title: Match Statement
-          url: /learn/style-guide/statements/#match-statement
-          active: match-statement
+      active: statements
     - title: Expressions
       url: /learn/style-guide/expressions/
-      sublinks:
-        - title: Function Invocation
-          url: /learn/style-guide/expressions/#function-invocation
-          active: function-invocation
-        - title: Record Literal
-          url: /learn/style-guide/expressions/#record-literal
-          active: record-literal
-        - title: Map Literal
-          url: /learn/style-guide/expressions/#map-literal
-          active: map-literal
-        - title: Tuple
-          url: /learn/style-guide/expressions/#tuple
-          active: tuple
-        - title: Array Literal
-          url: /learn/style-guide/expressions/#array-literal
-          active: array-literal
-        - title: Type Casting
-          url: /learn/style-guide/expressions/#type-casting
-          active: type-casting
-        - title: Table Literal
-          url: /learn/style-guide/expressions/#table-literal
-          active: table-literal
+      active: expressions
     - title: Annotations, Documentation and Comments
       url: /learn/style-guide/annotations-documentation-and-comments/
-      sublinks:
-        - title: Annotations
-          url: /learn/style-guide/annotations-documentation-and-comments/#annotations
-          active: annotations
-        - title: Comments
-          url: /learn/style-guide/annotations-documentation-and-comments/#comments
-          active: comments
-        - title: Documentation
-          url: /learn/style-guide/annotations-documentation-and-comments/#documentation
-          active: documentation
+      active: annotations-documentation-and-comments
+

@@ -6,40 +6,11 @@
       active: cli-commands
     - title: Update Tool
       url: /learn/cli-documentation/update-tool/
-      sublinks:
-        - title: Understanding Ballerina Distributions
-          url: /learn/cli-documentation/update-tool/#understanding-ballerina-distributions
-          active: understanding-ballerina-distributions
-        - title: Getting to Know the Release Channels
-          url: /learn/cli-documentation/update-tool/#getting-to-know-the-release-channels
-          active: getting-to-know-the-release-channels
-        - title: Installing Ballerina
-          url: /learn/cli-documentation/update-tool/#installing-ballerina
-          active: installing-ballerina
-        - title: Updating the Ballerina Tool
-          url: /learn/cli-documentation/update-tool/#updating-the-ballerina-tool
-          active: updating-the-ballerina-tool
-        - title: Managing your Ballerina Distributions
-          url: /learn/cli-documentation/update-tool/#managing-your-ballerina-distributions
-          active: managing-your-ballerina-distributions
+      active: update-tool
     - title: Open API
       url: /learn/cli-documentation/openapi/
-      sublinks:
-        - title: Using the Capabilities of the OpenAPI Tools
-          url: /learn/cli-documentation/openapi/#using-the-capabilities-of-the-openapi-tools
-          active: using-the-capabilities-of-the-openapi-tools
-        - title: OpenAPI Validator Compiler Plugin
-          url: /learn/cli-documentation/openapi/#openapi-validator-compiler-plugin
-          active: openapi-validator-compiler-plugin
+      active: openapi
     - title: GRPC
       url: /learn/cli-documentation/grpc/
-      sublinks:
-        - title: Usage of the Tool
-          url: /learn/cli-documentation/grpc/#usage-of-the-tool
-          active: usage-of-the-tool
-        - title: CLI Command
-          url: /learn/cli-documentation/grpc/#cli-command
-          active: cli-command
-        - title: Sample
-          url: /learn/cli-documentation/grpc/#sample
-          active: sample
+      active: grpc
+  

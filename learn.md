@@ -150,7 +150,7 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card" >
-  <a href="/learn/why-ballerina/cloud-native/">
+  <a href="/why-ballerina/cloud-native/">
    <h3 id="why-ballerina">Why Ballerina</h3></a>
     <p >Why you should use Ballerina.  </p>
 </div>

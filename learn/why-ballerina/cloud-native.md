@@ -3,7 +3,7 @@ layout: ballerina-guides-left-nav-pages-swanlake
 title: Cloud Native
 description: See how the Ballerina programming language has built-in language constructs for network interactions and cloud support. 
 keywords: ballerina, programming language, cloud, kubernetes, docker
-permalink: /learn/why-ballerina/cloud-native/
+permalink: /why-ballerina/cloud-native/
 active: cloud-native
 intro: See how the Ballerina programming language has constructs that seamlessly map to network programming concepts such as services and network resources. It also comes with built-in language support to deploy Ballerina applications on the cloud using Docker and Kubernetes.
 redirect_from:
@@ -15,9 +15,13 @@ redirect_from:
   - /learn/user-guide/why-ballerina
   - /learn/user-guide/why-ballerina/cloud-native
   - /learn/user-guide/why-ballerina/cloud-native/
-  - /learn/why-ballerina/cloud-native
   - /learn/why-ballerina/
   - /learn/why-ballerina
+  - /learn/why-ballerina/cloud-native/
+  - /learn/why-ballerina/cloud-native
+  - /why-ballerina/cloud-native
+  - /why-ballerina/
+  - /why-ballerina
 ---
 
 In a microservice architecture, smaller services are developed, deployed, and scaled individually. These disaggregated services communicate with each other over the network forcing developers to deal with the [Fallacies of Distributed Computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) in their application logic. For decades, programming languages have treated networks simply as I/O sources. The sections below demonstrate a few of Ballerina's inherent capabilities to develop distributed services effectively and the cloud native deployment process that is provided as part of the programming experience. 

@@ -2,7 +2,7 @@
 layout: ballerina-left-nav-release-notes
 title: Swan Lake Beta6
 permalink: /downloads/swan-lake-release-notes/swan-lake-beta6/
-active: swan-lake-beta5
+active: swan-lake-beta6
 redirect_from: 
     - /downloads/swan-lake-release-notes/swan-lake-beta6
     - /downloads/swan-lake-release-notes/

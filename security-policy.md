@@ -13,7 +13,7 @@ Thank you for taking the time to [responsibly disclose](https://en.wikipedia.org
 
 ## Reporting a Vulnerability
 
-First of all, make sure that you are using the latest Ballerina version before you run an automated security scan or perform a penetration test against it. All security vulnerabilities and any other concerns related to security should be reported by sending an emailing to [security@ballerina.io](mailto:security@ballerina.io).  
+First of all, make sure that you are using the latest Ballerina version before you run an automated security scan or perform a penetration test against it. All security vulnerabilities and any other concerns related to security should be reported by sending an email to [security@ballerina.io](mailto:security@ballerina.io).  
 
 > **WARNING:** To ensure end-user security, **please do not use any other medium to report security vulnerabilities**. Also, kindly refrain from disclosing the vulnerability details you come across with others, in any forums, sites, or other groups (public or private) before its mitigation and disclosure processes are completed.
 

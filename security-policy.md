@@ -32,7 +32,7 @@ Also, use the following template when reporting vulnerabilities so that it conta
 - **Impact:** state self-assessed impact
 - **Solution:** propose a  solution if you have one
 
-We will keep you informed of the progress towards a fix and disclosure of the vulnerability if the reported issue is identified as a true positive.
+We will keep you informed of the progress towards fixing and disclosing of the vulnerability if the reported issue is identified as a true positive.
 
 ## Handling a Vulnerability
 

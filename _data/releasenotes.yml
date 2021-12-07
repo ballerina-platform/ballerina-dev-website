@@ -59,7 +59,10 @@
 - title: 1.2 Release Notes
   url: '#'
   sublinks:
-    - title: 1.2.1
+    - title: 1.2.22
+      url: /downloads/1.2.x-release-notes/1.2.22
+      active: 1.2.22
+    - title: 1.2.21
       url: /downloads/1.2.x-release-notes/1.2.21
       active: 1.2.21
     - title: 1.2.20

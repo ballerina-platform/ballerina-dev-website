@@ -35,9 +35,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 ### Improvements
 
-- Updated the static type of the unary plus expression to be the same as the static type of the operand.
-
-The assignments below are allowed now.
+Updated the static type of the unary plus expression to be the same as the static type of the operand. The assignments below are allowed now.
 
 ```ballerina
 
@@ -74,17 +72,17 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta6](https://github
 ### New Features
 
 #### `graphql` Package
-Added support for the GraphQL list type inputs
+Added support for the GraphQL list type inputs.
 
 #### `http` Package
-Introduced request and request error interceptors at the service level
+Introduced request and request error interceptors at the service level.
 
 ### Improvements
 
 #### `http` Package
-- Changed the `RequestContext:add` function to `RequestContext:set`
-- Allowed listener-level interceptors to have only the default path
-- Improved `parseHeader()` function to support multiple header values
+- Changed the `RequestContext:add` function to `RequestContext:set`.
+- Allowed listener-level interceptors to have only the default path.
+- Improved the `parseHeader()` function to support multiple header values.
 
 ## Developer Tools Updates
 

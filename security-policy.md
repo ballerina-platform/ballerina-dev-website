@@ -20,7 +20,7 @@ First of all, make sure that you are using the latest Ballerina version before y
 
 If you would like, you can encrypt your report using the  following public key to send secure messages to [security@ballerina.io](mailto:security@ballerina.io):
 
-> security@ballerina.io: 0168 DA26 2989 0DB9 4ACD 8367 E683 061E 2F85 C381 
+> security@ballerina.io: AC48 3C56 C0A0 6020 4BBE F3E4 182F 3F21 255F CCE9 
 
 This key can also be found at [keys.openpgp.org](https://keys.openpgp.org/vks/v1/by-fingerprint/AC483C56C0A060204BBEF3E4182F3F21255FCCE9).
 

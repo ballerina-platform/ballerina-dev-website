@@ -22,7 +22,7 @@ If you would like, you can encrypt your report using the  following public key t
 
 > security@ballerina.io: 0168 DA26 2989 0DB9 4ACD 8367 E683 061E 2F85 C381 
 
-This key can also be found at [pgp.mit.edu](https://pgp.surfnet.nl/pks/lookup?op=vindex&fingerprint=on&search=0xE683061E2F85C381).
+This key can also be found at [keys.openpgp.org](https://keys.openpgp.org/vks/v1/by-fingerprint/AC483C56C0A060204BBEF3E4182F3F21255FCCE9).
 
 Also, use the following template when reporting vulnerabilities so that it contains all the required information that helps expedite the analysis and mitigation process.
 

@@ -125,9 +125,11 @@ Allowed listener-level interceptors to have only the default path.
 #### CLI
 
 - Introduced the `--target-dir` flag to the `run`, `test`, `doc`, and `clean` commands. With this, you can pass a custom directory to the aforementioned commands.
-- Added support for creating packages using template packages in Ballerina Central. (E.g., `bal new -t wso2/choreo_sample`)
+- Added support for creating packages using template packages in Ballerina Central. For example, `bal new -t wso2/choreo_sample`.
 
-#### `Ballerina.toml`
+### Ballerina Packages
+
+#### New Features
 
 Added support to add an `icon` field under the `[package]` table. For example,
 ```toml

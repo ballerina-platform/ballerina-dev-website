@@ -108,21 +108,21 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
-<h3 id="language-basics"><a href="/learn/language-basics">Language Basics</a></h3>
-<p>Get started with the basics that are common to all C-Family programming languages.</p>
-</div>
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
   <a href="/learn/installing-ballerina/setting-up-ballerina/">
     <h3 id="installing-ballerina">Installing Ballerina</h3> </a>
     <p >Setting up the Ballerina development environment.  </p>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+ <a href="/learn/getting-started/hello-world/writing-your-first-ballerina-program/">
+    <h3 id="hello-world">Hello World</h3></a>
+   <p >Writing your first Ballerina program and creating your first Ballerina package. </p>
 </div>
 </div>
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
- <a href="/learn/getting-started/hello-world/writing-your-first-ballerina-program/">
-    <h3 id="hello-world">Hello World</h3></a>
-   <p >Writing your first Ballerina program and creating your first Ballerina package. </p>
+<h3 id="language-basics"><a href="/learn/language-basics">Language Basics</a></h3>
+<p>Get started with the basics that are common to all C-Family programming languages.</p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
 <a href="/learn/by-example/introduction/">

@@ -262,6 +262,7 @@ redirect_from:
 		<p>Presentation slides on the Ballerina language that you can use to talk about the language.</p>
 </div>
 </div>
+</div>
 
 
 <div class="row" style=" margin-bottom:30px">
@@ -272,8 +273,6 @@ redirect_from:
    	<h3 id="language-walkthrough-video">Language Walkthrough</h3></a>
   <p >A video series, which explains the language and its reference slide deck. </p>
 </div>
-</div>
-
 </div>
 
 

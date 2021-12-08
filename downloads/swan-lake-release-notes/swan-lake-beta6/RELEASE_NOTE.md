@@ -38,7 +38,6 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 Updated the static type of the unary plus expression to be the same as the static type of the operand. The assignments below are allowed now.
 
 ```ballerina
-
 public function main() {
     int:Unsigned8 a = 32;
     int:Unsigned8 b = +a;
@@ -95,8 +94,8 @@ Allowed listener-level interceptors to have only the default path.
       *http:RequestInterceptor;
 
       resource function 'default [string... path](http:RequestContext ctx) returns http:NextService|error? {
-        ctx.set("last-interceptor", "default-interceptor");
-        return ctx.next();
+          ctx.set("last-interceptor", "default-interceptor");
+          return ctx.next();
       }
   }
   ```

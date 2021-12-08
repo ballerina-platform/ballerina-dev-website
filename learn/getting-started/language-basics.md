@@ -675,7 +675,7 @@ class MyClass {
 
 The **``init``** method is the constructor for this class, and the keyword ``self`` is used to access the object. It also uses the standard access specifiers, ``private`` and ``public``, which translates to accessibility within the class definition and outside of it.<br><br>
 
-## ``init`` return type
+## ``init`` Return Type
 
 The **``init()``** method of a class can have a return type which must be a subtype of the union of error and nil.
 

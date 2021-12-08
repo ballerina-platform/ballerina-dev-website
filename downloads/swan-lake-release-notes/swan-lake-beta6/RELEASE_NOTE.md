@@ -89,7 +89,22 @@ Allowed listener-level interceptors to have only the default path.
 
 #### `http` Package
 - Changed the `RequestContext:add` function to `RequestContext:set`.
-- Improved the `parseHeader()` function to support multiple header values.
+
+  ```ballerina
+  service class DefaultRequestInterceptor {
+      *http:RequestInterceptor;
+
+      resource function 'default [string... path](http:RequestContext ctx) returns http:NextService|error? {
+        ctx.set("last-interceptor", "default-interceptor");
+        return ctx.next();
+      }
+  }
+  ```
+- Changed the `parseHeader()` function to support multiple header values.
+
+  ```ballerina
+  http:HeaderValue[] values = check http:parseHeader("text/plain;level=1;q=0.6, application/xml;level=2");
+  ```
 
 ## Developer Tools Updates
 

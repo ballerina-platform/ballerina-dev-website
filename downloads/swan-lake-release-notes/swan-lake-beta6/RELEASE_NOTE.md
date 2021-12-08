@@ -76,6 +76,9 @@ Added support for the GraphQL list type inputs.
 #### `http` Package
 Introduced request and request error interceptors at the service level.
 
+#### `xmldata` Package
+Added support to convert an XML to a Record
+
 #### `time` Package
 Added time zone handling support.
 

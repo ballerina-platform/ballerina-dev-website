@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Security Policy
-intro: Ballerina project maintainers take security issues very seriously and all the vulnerability reports are treated with the highest priority and confidentiality.
+intro: We take security issues very seriously and all the vulnerability reports are treated with the highest priority and confidentiality.
 permalink: /security-policy/
 redirect_from:
     - /security/
@@ -9,37 +9,47 @@ redirect_from:
     - /security-policy
 ---
 
-## Reporting a vulnerability
+Thank you for taking the time to [responsibly disclose](https://en.wikipedia.org/wiki/Responsible_disclosure) any vulnerabilities you find.
 
-Ensure you are using the latest Ballerina version before you run an automated security scan or perform a penetration test against it.
+## Reporting a Vulnerability
 
-Based on the ethics of responsible disclosure, you must **only use the [security@ballerina.io](mailto:security@ballerina.io) mailing list** to report security vulnerabilities and any other concerns regarding the security aspects of the source code or any other resource in this repo.
+First of all, make sure that you are using the latest Ballerina version before you run an automated security scan or perform a penetration test against it. All security vulnerabilities and any other concerns related to security should be reported by sending an email to [security@ballerina.io](mailto:security@ballerina.io).  
 
-> **WARNING:** To protect the end-user security, **please do not use any other medium to report security vulnerabilities**. Also, kindly refrain from disclosing the vulnerability details you come across with other individuals, in any forums, sites, or other groups - public or private before it’s mitigation actions and disclosure process are completed.
+> **WARNING:** To ensure end-user security, **please do not use any other medium to report security vulnerabilities**. Also, kindly refrain from disclosing the vulnerability details you come across with others, in any forums, sites, or other groups (public or private) before its mitigation and disclosure processes are completed.
 
-Use the following key to send secure messages to [security@ballerina.io](mailto:security@ballerina.io):
 
-> security@ballerina.io: 0168 DA26 2989 0DB9 4ACD 8367 E683 061E 2F85 C381 [pgp.mit.edu](https://pgp.surfnet.nl/pks/lookup?op=vindex&fingerprint=on&search=0xE683061E2F85C381)
+If you would like, you can encrypt your report using the  following public key to send secure messages to [security@ballerina.io](mailto:security@ballerina.io):
 
-Also, use the following template when reporting vulnerabilities so that it contains all the required information and helps expedite the analysis and mitigation process.
+> security@ballerina.io: AC48 3C56 C0A0 6020 4BBE F3E4 182F 3F21 255F CCE9 
 
-- **Vulnerable Ballerina artifact(s) and version(s):** list of the Ballerina artifacts/versions that are considered as vulnerable
-- **Overview:** high-level overview of the issue and self-assessed severity
+This key can also be found at [keys.openpgp.org](https://keys.openpgp.org/vks/v1/by-fingerprint/AC483C56C0A060204BBEF3E4182F3F21255FCCE9).
+
+Also, use the following template when reporting vulnerabilities so that it contains all the required information that helps expedite the analysis and mitigation process.
+
+- **Vulnerable Ballerina artifact(s) and version(s):** list  the vulnerable Ballerina artifact(s) and version(s) 
+- **Overview:** provide a high-level overview of the issue and self-assessed severity
 - **Description:** include the steps to reproduce
-- **Impact:** self-assessed impact
-- **Solution:** any proposed solution
+- **Impact:** state self-assessed impact
+- **Solution:** propose a  solution if you have one
 
-We will keep you informed of the progress towards a fix and disclosure of the vulnerability if the reported issue is identified as a true positive. 
+We will keep you informed of the progress towards fixing and disclosing of the vulnerability if the reported issue is identified as a true positive.
 
-## Handling a vulnerability
+## Handling a Vulnerability
 
-The below is an overview of the vulnerability handling process.
+Here is an overview of our approach to handling vulnerabilities:
 
-1. The vulnerability will be reported privately to [security@ballerina.io](mailto:security@ballerina.io). (The initial response time will be less than 24 hours).
-2. The reported vulnerability gets fixed and the solution gets verified by the relevant teams at WSO2.
-3. The fix gets applied to the main branch and a new version of the distribution gets released if required.
-4. The reported user is kept updated on the progress of the process. 
+1. The vulnerability will be reported privately to our security team at [security@ballerina.io](mailto:security@ballerina.io).
+2. Your email will be acknowledged within 24 hours, and you’ll receive a detailed response to your email indicating the next steps in handling your report. You will be updated on the progress. 
+3. In case of a true-positive finding, the reported vulnerability will be confirmed and fixed by the relevant teams at WSO2.
+4. The fix will be applied to the affected components and a new version will be released immediately if required.
+5. The reported user is kept updated on the progress of the process. 
 
+## Getting Acknowledged and Rewarded
+
+Your efforts in reporting vulnerabilities or any other issues related to the security of Ballerina will be recognized and honored via the [WSO2 Security Reward and Acknowledgement Program](https://docs.wso2.com/display/Security/WSO2+Security+Reward+and+Acknowledgement+Program). 
+
+
+>**Note:** The reward program is currently applicable to vulnerabilities reported only in the compiler, runtime, CLI tooling, standard library, VS Code plugin and,  [website](https://ballerina.io).
 
 <style>
 .nav > li.cVersionItem {

@@ -1,9 +1,9 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Graphical
 description: See why the support for a graphical model lays the foundation for designing the syntax and semantics of the Ballerina programming language.
 keywords: ballerina, programming lanaguage, sequence diagram, graphical, diagram editor, why ballerina
-permalink: /learn/why-ballerina/graphical/
+permalink: /why-ballerina/graphical/
 active: graphical
 intro: See why the support for a graphical model lays the foundation for designing the syntax and semantics of the Ballerina programming language.
 redirect_from:
@@ -14,6 +14,8 @@ redirect_from:
   - /learn/user-guide/why-ballerina/graphical
   - /learn/user-guide/why-ballerina/graphical/
   - /learn/why-ballerina/graphical
+  - /learn/why-ballerina/graphical/
+  - /why-ballerina/graphical
 ---
 
 In today’s cloud-era, you need technologies that can model distributed systems in a more developer-friendly way. This means that for a single use case you need to model a flow that shows how multiple actors interact with each other, how concurrent execution flows, and what remote endpoints are involved. Sequence diagrams are known to be the best way to visually describe this.

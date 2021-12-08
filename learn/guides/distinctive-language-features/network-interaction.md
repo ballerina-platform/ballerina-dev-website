@@ -1,5 +1,5 @@
 ---
-layout: ballerina-language-guide-left-nav-pages-swanlake
+layout: ballerina-distinctive-language-features-left-nav-pages-swanlake
 title: Network Interaction
 description: In this part, you will learn about the features of the Ballerina programming language that are distinctive. These features revolve around key design considerations that make Ballerina suitable for cloud application programming using small and medium-sized programs.
 keywords: ballerina, programming language, ballerina packages,language-guide

@@ -64,7 +64,7 @@ public function main() {
 
 ### Bug Fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake Beta6](https://github.com/ballerina-platform/ballerina-lang/milestone/119).
+To view bug fixes, see the [GitHub milestone for Swan Lake Beta6](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta6%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).
 
 ## Standard Library Updates
 
@@ -108,6 +108,10 @@ Allowed listener-level interceptors to have only the default path.
   http:HeaderValue[] values = check http:parseHeader("text/plain;level=1;q=0.6, application/xml;level=2");
   ```
 
+### Bug Fixes
+
+To view bug fixes, see the [GitHub milestone for Swan Lake Beta6](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+Beta6%22+label%3AType%2FBug).
+
 ## Developer Tools Updates
 
 ### Improvements
@@ -126,6 +130,14 @@ Allowed listener-level interceptors to have only the default path.
 
 - Introduced the `--target-dir` flag to the `run`, `test`, `doc`, and `clean` commands. With this, you can pass a custom directory to the aforementioned commands.
 - Added support for creating packages using template packages in Ballerina Central. For example, `bal new -t wso2/choreo_sample`.
+
+### Bug Fixes
+
+To view bug fixes, see the GitHub milestone for Swan Lake Beta3 of the repositories below.
+
+- [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta6%22+label%3AType%2FBug+label%3ATeam%2FLanguageServer)
+- [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta6%22+label%3AType%2FBug)
+- [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+label%3AArea%2FDebugger+milestone%3A%22Ballerina+Swan+Lake+-+Beta6%22+is%3Aclosed)
 
 ### Ballerina Packages
 

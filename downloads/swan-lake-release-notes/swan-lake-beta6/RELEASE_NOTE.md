@@ -95,7 +95,7 @@ Allowed listener-level interceptors to have only the default path.
 
 ### Improvements
 
-#### OpenAPI Tool Updates
+#### OpenAPI Tool 
 
 ##### OpenAPI to Ballerina Command Improvements
 
@@ -108,3 +108,26 @@ Added the `--with-tests` flag for the OpenAPI client generation command to gener
 Added the `--export-openapi` flag for the `bal build` command to generate OpenAPI contract files for all the services in the current package. For example,
 
   > `bal build --export-openapi`
+
+### Breaking Changes
+
+#### Test Framework 
+
+Improved the `assertFail` function to eliminate the fake return/panic that had to be added after the statement. The signature of the function is changed as follows.
+
+**Old signature:** `public isolated function assertFail(string msg = "Test Failed!");`
+**New signature:** `public isolated function assertFail(string msg = "Test Failed!") returns never;`
+
+For example, the function below, which compiled without an issue in Beta5 will throw an `unreachable code` compilation error after this signature change.
+
+```ballerina
+ function testFunc(int|string val) returns int? {
+   if (val is int) {
+       return val;
+   } else {
+       test:assertFail();
+   }
+   return; //Remove this fake return statement to compile with Swan lake Beta6.
+}
+```
+ 

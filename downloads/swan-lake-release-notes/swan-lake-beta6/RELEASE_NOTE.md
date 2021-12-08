@@ -139,7 +139,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Beta3 of the repositor
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta6%22+label%3AType%2FBug)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+label%3AArea%2FDebugger+milestone%3A%22Ballerina+Swan+Lake+-+Beta6%22+is%3Aclosed)
 
-## Ballerina Packages
+## Ballerina Packages Updates
 
 ### New Features
 
@@ -154,9 +154,9 @@ icon = “images/icon.png”
 
 >**Info:** The specified icon file will be packaged into the `docs/` directory of the Ballerina archive (`.bala`). Only the `.png` format is supported for the icon.
 
-### Breaking Changes
+## Breaking Changes
 
-#### Test Framework 
+### Test Framework 
 
 Improved the `assertFail` function to eliminate the fake return/panic that had to be added after the statement. The signature of the function is changed as follows.
 

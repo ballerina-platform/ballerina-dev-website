@@ -77,6 +77,9 @@ Added support for the GraphQL list type inputs.
 #### `http` Package
 Introduced request and request error interceptors at the service level.
 
+#### `time` Package
+Added time zone handling support.
+
 ### Improvements
 
 #### `http` Package

@@ -128,12 +128,12 @@ Improved the `assertFail` function to eliminate the fake return/panic that had t
 **Old Signature:** 
 
 ```ballerina
-`public isolated function assertFail(string msg = "Test Failed!");`
+public isolated function assertFail(string msg = "Test Failed!");
 ```
 
 **New Signature:** 
 ```ballerina
-`public isolated function assertFail(string msg = "Test Failed!") returns never;`
+public isolated function assertFail(string msg = "Test Failed!") returns never;
 ```
 
 For example, the function below, which compiled without an issue in Beta5 will throw an `unreachable code` compilation error after this signature change.

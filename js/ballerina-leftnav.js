@@ -61,3 +61,16 @@ $(function () {
   });
 });
 
+$(function() {
+  // Catch URL
+  var url = window.location.href;
+
+  // check the URL with a tag
+  $(".sub-ul-two a").each(function() {
+      if (url == (this.href)) {
+          $(this).closest("a").addClass("cLeftMenuInnerLink cTopiAtag highlight");
+          document.getElementsByClassName("cLeftMenuInnerLink cTopiAtag highlight")[0].scrollIntoView();
+        
+      }
+  });
+});  

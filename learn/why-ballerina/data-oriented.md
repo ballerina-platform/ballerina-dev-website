@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Data Oriented
 description: Language-integrated queries specify the logic in SQL-like syntax to process data and events. They are easy to write and understand due to the simplicity of the syntax. See how Ballerina provides first-class support for writing queries that process data.
 keywords: ballerina, networking, microservices, programming language, distributed computing, services, data oriented, data transformation

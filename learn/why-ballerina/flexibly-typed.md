@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Flexibly Typed
 description: See how the Ballerina programming language's flexible type system helps developers work with networked resources in their code.
 keywords: ballerina, programming lanaguage, type system, data binding
@@ -9,8 +9,6 @@ intro: See how the Ballerina programming language's flexible type system helps d
 redirect_from:
 - /why/the-network-in-the-language/
 - /why/the-network-in-the-language
-- /why-ballerina
-- /why-ballerina/
 - /learn/user-guide/why-ballerina/network-aware-type-system
 - /learn/user-guide/why-ballerina/network-aware-type-system/
 - /learn/user-guide/why-ballerina/flexibly-typed

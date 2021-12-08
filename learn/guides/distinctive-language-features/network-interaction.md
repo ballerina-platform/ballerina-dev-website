@@ -20,7 +20,7 @@ Individually these features may not stand out. However, it is the combination of
 
 This and the subsequent two parts will talk about these features. Let’s start with network interaction. The two fundamental operations in any network interaction are consuming services and providing services.<br><br>
 
-## Consuming Services: Client Objects
+## Consuming Services - Client Objects
 
 Client applications consume network services. Therefore, Ballerina provides client objects to allow a program to interact with remote network services using remote methods.
 

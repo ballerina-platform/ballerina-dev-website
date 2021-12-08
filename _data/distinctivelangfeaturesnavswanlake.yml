@@ -1,0 +1,100 @@
+- title: Distinctive Lanuguage Features
+  url: #
+  sublinks:
+    - title: Network Interaction
+      url: #
+      sublinks:
+          - title: Consuming Services - Client Objects
+            url: /learn/distinctive-language-features/network-interaction/#consuming-services-client-objects
+            active: consuming-services-client-objects
+          - title: Providing Services
+            url: /learn/distinctive-language-features/network-interaction/#providing-services
+            active: providing-services
+          - title: Listener Declaration
+            url: /learn/distinctive-language-features/network-interaction/#listener-declaration
+            active: listener-declaration
+          - title: Module Lifecycle
+            url: /learn/distinctive-language-features/network-interaction/#module-lifecycle
+            active: module-lifecycle
+          - title: Module init Function
+            url: /learn/distinctive-language-features/network-interaction/#module-init-function
+            active: module-init-function
+          - title: Constructing Objects Without Classes
+            url: /learn/distinctive-language-features/network-interaction/#constructing-objects-without-classes
+            active: constructing-objects-without-classes
+          - title: Service Declaration
+            url: /learn/distinctive-language-features/network-interaction/#service-declaration
+            active: service-declaration
+          - title: Representing Responses
+            url: /learn/distinctive-language-features/network-interaction/#representing-responses
+            active: representing-responses
+          - title: Resource Concept
+            url: /learn/distinctive-language-features/network-interaction/#resource-concept
+            active: resource-concept
+          - title: Resources
+            url: /learn/distinctive-language-features/network-interaction/#resources
+            active: resources
+          - title: Hierarchical Resources
+            url: /learn/distinctive-language-features/network-interaction/#hierarchical-resources
+            active: hierarchical-resources
+          - title: Resource Path Parameters
+            url: /learn/distinctive-language-features/network-interaction/#resource-path-parameters
+            active: resource-path-parameters
+          - title: Hierarchical Services
+            url: /learn/distinctive-language-features/network-interaction/#hierarchical-services
+            active: hierarchical-services
+    - title: Data
+      url: #
+      sublinks:
+          - title: Installing Ballerina via Installers
+            url: /learn/distinctive-language-features/data/#installing-ballerina-via-installers
+            active: installing-ballerina-via-installers
+          - title: Installing via the Ballerina Language ZIP File
+            url: /learn/distinctive-language-features/data/#installing-via-the-ballerina-language-zip-file
+            active: installing-via-the-ballerina-language-zip-file
+          - title: Updating Ballerina
+            url: /learn/distinctive-language-features/data/#updating-ballerina
+            active: updating-ballerina
+          - title: Building from Source
+            url: /learn/distinctive-language-features/data/#building-from-source
+            active: building-from-source
+          - title: Uninstalling Ballerina
+            url: /learn/distinctive-language-features/data/#uninstalling-ballerina
+            active: uninstalling-ballerina
+          - title: What’s Next?
+            url: /learn/distinctive-language-features/data/#whats-next
+            active: whats-next
+    - title: Concurrency
+      url: #
+      sublinks:
+          - title: Sequence-diagram based concurrency
+            url: /learn/distinctive-language-features/concurrency/#sequence-diagram-based-concurrency
+            active: sequence-diagram-based-concurrency
+          - title: Transactions
+            url: /learn/distinctive-language-features/concurrency/#transactions
+            active: transactions
+          - title: transaction Statement
+            url: /learn/distinctive-language-features/concurrency/#transaction-statement
+            active: transaction-statement
+    - title: Advanced, General-Purpose Language Features
+      url: #
+      sublinks:
+          - title: Overview
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#overview
+            active: overview
+          - title: Setting up the Prerequisites
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#setting-up-the-prerequisites
+            active: setting-up-the-prerequisites
+          - title: Building the Complete Ballerina Distribution
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#building-the-complete-ballerina-distribution
+            active: building-the-complete-ballerina-distribution
+          - title: Testing the Distribution Build
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#testing-the-distribution-build
+            active: testing-the-distribution-build
+          - title: Building Only the Ballerina Runtime with the Tools
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#building-only-the-ballerina-runtime-with-the-tools
+            active: building-only-the-ballerina-runtime-with-the-tools
+          - title: Testing the Runtime Build
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#testing-the-runtime-build
+            active: testing-the-runtime-build
+

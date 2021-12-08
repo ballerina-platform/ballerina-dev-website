@@ -3,13 +3,15 @@ layout: ballerina-guides-left-nav-pages-swanlake
 title: Concurrent
 description: Concurrency in Ballerina is enabled by strands, which are lightweight threads. 
 keywords: ballerina, ballerina platform, api documentation, testing, ide, ballerina central
-permalink: /learn/why-ballerina/concurrent/
+permalink: /why-ballerina/concurrent/
 active: concurrent
 intro: Concurrency in Ballerina is enabled by strands, which are lightweight threads.
 redirct_from:
   - /learn/user-guide/why-ballerina/concurrent
   - /learn/user-guide/why-ballerina/concurrent/
   - /learn/why-ballerina/concurrent
+  - /learn/why-ballerina/concurrent/
+  - /why-ballerina/concurrent
 ---
 
 Ballerina's concurrency model supports both threads and coroutines and has been designed to have a close correspondence with sequence diagrams.

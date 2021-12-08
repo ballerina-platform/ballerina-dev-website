@@ -3,7 +3,7 @@ layout: ballerina-guides-left-nav-pages-swanlake
 title: Flexibly Typed
 description: See how the Ballerina programming language's flexible type system helps developers work with networked resources in their code.
 keywords: ballerina, programming lanaguage, type system, data binding
-permalink: /learn/why-ballerina/flexibly-typed/
+permalink: /why-ballerina/flexibly-typed/
 active: flexibly-typed
 intro: See how the Ballerina programming language's flexible type system helps developers work with networked resources in their code.
 redirect_from:
@@ -16,6 +16,8 @@ redirect_from:
 - /learn/user-guide/why-ballerina/flexibly-typed
 - /learn/user-guide/why-ballerina/flexibly-typed/
 - /learn/why-ballerina/flexibly-typed
+- /learn/why-ballerina/flexibly-typed/
+- /why-ballerina/flexibly-typed
 ---
 
 In a programming language, the type system is the foundation for representing data and implementing logic. It provides the means of creating abstractions to the solutions that you provide. While some languages provide basic functionality, others strive to give in-built functionality for specialized domains.

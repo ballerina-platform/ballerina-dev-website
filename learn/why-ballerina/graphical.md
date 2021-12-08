@@ -1,5 +1,5 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-inner-page
 title: Graphical
 description: See why the support for a graphical model lays the foundation for designing the syntax and semantics of the Ballerina programming language.
 keywords: ballerina, programming lanaguage, sequence diagram, graphical, diagram editor, why ballerina

@@ -1420,6 +1420,37 @@
         ]
     },
     {
+        "title": "REST API Interceptors",
+        "column": 1,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Request Interceptor At Listener Level",
+                "url": "http-request-interceptor-at-listener",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Request Interceptor At Service Level",
+                "url": "http-request-interceptor-at-service",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Request Error Interceptor",
+                "url": "http-request-error-interceptor",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
         "title": "HTTP2",
         "column": 1,
         "category": "Working Over the Network",
@@ -2801,7 +2832,7 @@
                 "name": "XML JSON Conversion",
                 "url": "xml-json-conversion",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": false
             }
         ]

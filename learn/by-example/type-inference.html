@@ -32,9 +32,10 @@ redirect_from:
 
     <span class="c1">// Infers `x` as the `MyClass` type.</span>
     <span class="k">var</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">MyClass</span><span class="p">();</span>
+    <span class="nx">MyClass</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">x</span><span class="p">;</span>
 
     <span class="c1">// Infers the class for `new` as `MyClass`.</span>
-    <span class="nx">MyClass</span> <span class="nx">y</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+    <span class="nx">MyClass</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 
 <span class="p">}</span>
 
@@ -61,16 +62,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="match-statement.html?is_ref_by_example=true">
+                                    <a class="prev" href="covariance.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
-                                        <p>Match Statement</p>
+                                        <p>Covariance</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="function-values.html?is_ref_by_example=true">
+                                    <a class="next" href="maps.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
-                                        <p>Function Values</p>
+                                        <p>Maps</p>
                                     </a>
                                 </div>
                                 
@@ -94,7 +95,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=469125e53090deb1c68c66c872d606bb&file=type_inference.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=643ce275c904a2eea059978056274718&file=type_inference.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -203,6 +204,7 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    var x = new MyClass();
+    MyClass _ = x;
 </code></pre></div>
 
                                 </div>
@@ -221,7 +223,7 @@ redirect_from:
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    MyClass y = new;
+                                    <div class="highlight"><pre><code class=language-ballerina>    MyClass _ = new;
 </code></pre></div>
 
                                 </div>

@@ -37,6 +37,7 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// Retrieves `Employee` with key value `Fred`.</span>
     <span class="nx">Employee</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">t</span><span class="p">[</span><span class="s">&quot;Fred&quot;</span><span class="p">];</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">toBalString</span><span class="p">());</span>
 
     <span class="nx">increaseSalary</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">t</span><span class="p">);</span>
@@ -72,9 +73,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="limit-clause.html?is_ref_by_example=true">
+                                    <a class="prev" href="json-numbers.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
-                                        <p>Limit Clause</p>
+                                        <p>JSON Numbers</p>
                                     </a>
                                 </div>
                                  
@@ -105,7 +106,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=d0fd3760f293b71677f4c0660179b32c&file=table_syntax.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a9ec6e5fc78eb35d2b3e5dde59c9e4f2&file=table_syntax.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -230,6 +231,7 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    Employee? e = t[&quot;Fred&quot;];
+    io:println(e.toBalString());
 </code></pre></div>
 
                                 </div>
@@ -270,6 +272,7 @@ redirect_from:
 
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run table_syntax.bal
+()
 [{&quot;name&quot;:&quot;John&quot;,&quot;salary&quot;:200},{&quot;name&quot;:&quot;Jane&quot;,&quot;salary&quot;:300}]
 </code></pre></div>
 

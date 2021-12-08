@@ -17,7 +17,7 @@ redirect_from:
 
 <span class="c1">// Defines the HTTP client to call the JWT auth secured APIs.</span>
 <span class="c1">// The client is enriched with the `Authorization: Bearer &lt;token&gt;` header by</span>
-<span class="c1">// passing the `http:JwtIssuerConfig` for the `auth` configuration of the</span>
+<span class="c1">// passing the [`http:JwtIssuerConfig`](https://docs.central.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig) for the `auth` configuration of the</span>
 <span class="c1">// client. A self-signed JWT is issued before the request is sent.</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">securedEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span>
     <span class="nx">auth</span> <span class="p">=</span> <span class="p">{</span>
@@ -153,7 +153,7 @@ import ballerina/io;
                                         <div>
                                             <p>Defines the HTTP client to call the JWT auth secured APIs.
  The client is enriched with the <code>Authorization: Bearer &lt;token&gt;</code> header by
- passing the <code>http:JwtIssuerConfig</code> for the <code>auth</code> configuration of the
+ passing the <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig"><code>http:JwtIssuerConfig</code></a> for the <code>auth</code> configuration of the
  client. A self-signed JWT is issued before the request is sent.</p>
 
                                         </div>

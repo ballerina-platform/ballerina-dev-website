@@ -18,7 +18,7 @@ redirect_from:
 
 <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">httpListener</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
 
-<span class="k">var</span> <span class="nx">helloService</span> <span class="p">=</span>  <span class="kd">service</span> <span class="nx">object</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">helloService</span> <span class="p">=</span>  <span class="kd">service</span> <span class="nx">object</span> <span class="p">{</span>
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Send a response back to the caller.</span>
@@ -149,7 +149,7 @@ import ballerina/log;
                             <div class="cTR">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>var helloService =  service object {
+                                    <div class="highlight"><pre><code class=language-ballerina>http:Service helloService =  service object {
 </code></pre></div>
 
                                 </div>
@@ -393,7 +393,6 @@ import ballerina/log;
 
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run dynamic_listener.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 </code></pre></div>
 
                                 </div>

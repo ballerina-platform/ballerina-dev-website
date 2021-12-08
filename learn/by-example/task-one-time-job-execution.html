@@ -43,7 +43,7 @@ redirect_from:
     <span class="nx">time</span><span class="p">:</span><span class="nx">Civil</span> <span class="nx">time</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">utcToCivil</span><span class="p">(</span><span class="nx">newTime</span><span class="p">);</span>
 
     <span class="c1">// Schedules the one-time job at the specified time.</span>
-    <span class="nx">task</span><span class="p">:</span><span class="nx">JobId</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">task</span><span class="p">:</span><span class="nx">scheduleOneTimeJob</span><span class="p">(</span><span class="nx">new</span> <span class="nx">Job</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nx">time</span><span class="p">);</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">task</span><span class="p">:</span><span class="nx">scheduleOneTimeJob</span><span class="p">(</span><span class="nx">new</span> <span class="nx">Job</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nx">time</span><span class="p">);</span>
 
     <span class="c1">// Waits for five seconds.</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
@@ -101,7 +101,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=d6c2ff401e5a62fe4a2f61cc92a5b2b1&file=task_one_time_job_execution.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=&file=task_one_time_job_execution.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -271,7 +271,7 @@ import ballerina/time;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    task:JobId result = check task:scheduleOneTimeJob(new Job(0), time);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check task:scheduleOneTimeJob(new Job(0), time);
 </code></pre></div>
 
                                 </div>

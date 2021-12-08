@@ -41,7 +41,7 @@ redirect_from:
     <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">lineStream</span> <span class="p">=</span> <span class="nx">check</span>
                                     <span class="nx">io</span><span class="p">:</span><span class="nx">fileReadLinesAsStream</span><span class="p">(</span><span class="nx">textFilePath3</span><span class="p">);</span>
     <span class="c1">// Iterates through the stream and prints the content.</span>
-    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">lineStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">string</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">check</span> <span class="nx">lineStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="kt">string</span> <span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
                                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
                            <span class="p">});</span>
 <span class="p">}</span>
@@ -97,7 +97,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=f6794110a6c8602e93b2c055c4ca5e7d&file=io_strings.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ee9ff75a43bb853318ca0b3a575094ac&file=io_strings.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -279,7 +279,7 @@ redirect_from:
                             <div class="cTR hover-enable">
 
                                 <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    error? e = lineStream.forEach(function(string val) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    check lineStream.forEach(function(string val) {
                                io:println(val);
                            });
 }

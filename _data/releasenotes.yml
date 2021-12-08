@@ -1,6 +1,15 @@
 - title: Swan Lake Release Notes
   url: '#'
   sublinks:
+    - title: Swan Lake Beta 5
+      url: /downloads/swan-lake-release-notes/swan-lake-beta5
+      active: swan-lake-beta5
+    - title: Swan Lake Beta 4
+      url: /downloads/swan-lake-release-notes/swan-lake-beta4
+      active: swan-lake-beta4
+    - title: Swan Lake Beta 3
+      url: /downloads/swan-lake-release-notes/swan-lake-beta3
+      active: swan-lake-beta3
     - title: Swan Lake Beta 2
       url: /downloads/swan-lake-release-notes/swan-lake-beta2
       active: swan-lake-beta2
@@ -50,6 +59,15 @@
 - title: 1.2 Release Notes
   url: '#'
   sublinks:
+    - title: 1.2.22
+      url: /downloads/1.2.x-release-notes/1.2.22
+      active: 1.2.22
+    - title: 1.2.21
+      url: /downloads/1.2.x-release-notes/1.2.21
+      active: 1.2.21
+    - title: 1.2.20
+      url: /downloads/1.2.x-release-notes/1.2.20
+      active: 1.2.20
     - title: 1.2.19
       url: /downloads/1.2.x-release-notes/1.2.19
       active: 1.2.19

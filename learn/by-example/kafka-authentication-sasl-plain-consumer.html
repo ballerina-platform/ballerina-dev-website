@@ -21,7 +21,7 @@ redirect_from:
 <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerConfiguration</span> <span class="nx">consumerConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">groupId</span><span class="p">:</span> <span class="s">&quot;test-group&quot;</span><span class="p">,</span>
     <span class="nx">topics</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;demo-security&quot;</span><span class="p">],</span>
-    <span class="c1">// Provide the relevant authentication configurations to authenticate the consumer by `kafka:AuthenticationConfiguration`.</span>
+    <span class="c1">// Provide the relevant authentication configurations to authenticate the consumer by [`kafka:AuthenticationConfiguration`](https://docs.central.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration).</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="c1">// Provide the authentication mechanism used by the Kafka server.</span>
         <span class="nx">mechanism</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">AUTH_SASL_PLAIN</span><span class="p">,</span>
@@ -166,7 +166,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Provide the relevant authentication configurations to authenticate the consumer by <code>kafka:AuthenticationConfiguration</code>.</p>
+                                            <p>Provide the relevant authentication configurations to authenticate the consumer by <a href="https://docs.central.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration"><code>kafka:AuthenticationConfiguration</code></a>.</p>
 
                                         </div>
                                     </div>
@@ -260,7 +260,6 @@ import ballerina/log;
 
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run kafka_authentication_sasl_plain_consumer.bal
-[ballerinax/kafka] Kafka listener started for topics: demo-security
 </code></pre></div>
 
                                 </div>

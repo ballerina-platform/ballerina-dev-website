@@ -21,6 +21,8 @@ redirect_from:
   - /learn/visual-studio-code-extension/quick-start/
   - /learn/visual-studio-code-extension/
   - /learn/visual-studio-code-extension
+  - /learn/tools-ides/vscode-plugin/
+  - /learn/tools-ides/vscode-plugin
 ---
 
 ## Setting up the Prerequisites

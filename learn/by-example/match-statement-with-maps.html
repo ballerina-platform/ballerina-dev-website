@@ -24,6 +24,7 @@ redirect_from:
         <span class="p">{</span><span class="nx">command</span><span class="p">:</span> <span class="s">&quot;add&quot;</span><span class="p">,</span> <span class="nx">amount</span><span class="p">:</span> <span class="k">var</span> <span class="nx">x</span><span class="p">}</span> <span class="p">=&gt;</span> <span class="p">{</span>
             <span class="nx">decimal</span> <span class="nx">n</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">x</span><span class="p">.</span><span class="nx">ensureType</span><span class="p">(</span><span class="nx">decimal</span><span class="p">);</span>
             <span class="nx">add</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
 
         <span class="nx">_</span> <span class="p">=&gt;</span> <span class="p">{</span>
@@ -42,7 +43,8 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">check</span> <span class="nx">foo</span><span class="p">({</span><span class="nx">command</span><span class="p">:</span> <span class="s">&quot;add&quot;</span><span class="p">,</span> <span class="nx">amount</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">status</span><span class="p">:</span> <span class="s">&quot;pending&quot;</span><span class="p">});</span> 
     <span class="nx">check</span> <span class="nx">foo</span><span class="p">({</span><span class="nx">command</span><span class="p">:</span> <span class="s">&quot;add&quot;</span><span class="p">,</span> <span class="nx">amount</span><span class="p">:</span> <span class="mi">10</span><span class="p">});</span>   
-    <span class="nx">check</span> <span class="nx">foo</span><span class="p">({</span><span class="nx">command</span><span class="p">:</span> <span class="s">&quot;subtract&quot;</span><span class="p">,</span> <span class="nx">amount</span><span class="p">:</span> <span class="mi">100</span><span class="p">});</span>    
+    <span class="nx">check</span> <span class="nx">foo</span><span class="p">({</span><span class="nx">command</span><span class="p">:</span> <span class="s">&quot;subtract&quot;</span><span class="p">,</span> <span class="nx">amount</span><span class="p">:</span> <span class="mi">100</span><span class="p">});</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -98,7 +100,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=2aad0a642286161cdc708c9fe78e476d&file=match_statement_with_maps.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=8d398afa7fdad76f52265a3579d94dac&file=match_statement_with_maps.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -143,6 +145,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>        {command: &quot;add&quot;, amount: var x} =&gt; {
             decimal n = check x.ensureType(decimal);
             add(n);
+            return;
         }
 </code></pre></div>
 
@@ -212,7 +215,8 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
     check foo({command: &quot;add&quot;, amount: 100, status: &quot;pending&quot;}); 
     check foo({command: &quot;add&quot;, amount: 10});   
-    check foo({command: &quot;subtract&quot;, amount: 100});    
+    check foo({command: &quot;subtract&quot;, amount: 100});
+    return;
 }
 </code></pre></div>
 

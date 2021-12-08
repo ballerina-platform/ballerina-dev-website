@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: SASL Authentication - Consumer
+title: Transactional Consumer
 description: BBE on transactionally acknowledging messages consumed from a RabbitMQ queue using Ballerina.
 keywords: ballerina, ballerina by example, rabbitmq, bbe, consumer, transaction
 permalink: /learn/by-example/rabbitmq-transaction-consumer
@@ -54,7 +54,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>SASL Authentication - Consumer</h2>
+                            <h2>Transactional Consumer</h2>
                             <p><p>In this example, the messages are consumed from an
  existing queue using the Ballerina RabbitMQ message listener
  and Ballerina transactions.
@@ -78,9 +78,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="tcp-client.html?is_ref_by_example=true">
+                                    <a class="next" href="rabbitmq-secure-connection.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
-                                        <p>TCP Client</p>
+                                        <p>Secured Connection</p>
                                     </a>
                                 </div>
                                 
@@ -245,8 +245,6 @@ import ballerinax/rabbitmq;
 
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run rabbitmq_transaction_consumer.bal
-[ballerina/http] started HTTP/WS listener 192.168.1.2:51642
-[ballerinax/rabbitmq] Consumer service started for queue MyQueue
 time = 2021-01-18 15:15:36,514 level = INFO  module = &quot;&quot; message = &quot;The message received: Hello from Ballerina&quot;
 </code></pre></div>
 

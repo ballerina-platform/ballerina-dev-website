@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: TCP Listener
+title: Listener
 description: This Ballerina sample demonstrates how the TCP  listener service interacts with the TCP client.
 keywords: ballerina, ballerina by example, bbe, socket, tcp
 permalink: /learn/by-example/tcp-listener
@@ -28,23 +28,24 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="kd">service</span> <span class="nx">class</span> <span class="nx">EchoService</span> <span class="p">{</span>
+    <span class="o">*</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">ConnectionService</span><span class="p">;</span>
 
     <span class="c1">// This remote method is invoked once the content is received from the client.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onBytes</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">)</span> 
         <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Echo: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
         <span class="c1">// Echoes back the data to the client from which the data is received.</span>
-        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="c1">// This remote method is invoked in an erroneous situation,</span>
     <span class="c1">// which occurs during the execution of the `onConnect` or `onBytes` method.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">err</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="c1">// This remote method is invoked when the connection is closed.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onClose</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">tcp</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onClose</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client left&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -56,7 +57,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>TCP Listener</h2>
+                            <h2>Listener</h2>
                             <p><p>The TCP Listener is used to expose a TCP service over the TCP protocol.
  This sample demonstrates how the TCP socket listener service interacts with the TCP client.<br/><br/>
  For more information on the underlying module,
@@ -70,14 +71,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="tcp-client.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
-                                        <p>TCP Client</p>
+                                        <p>Client</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="tcp-transport-security.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
-                                        <p>TCP Transport Security</p>
+                                        <p>Transport Security</p>
                                     </a>
                                 </div>
                                 
@@ -172,6 +173,7 @@ import ballerina/tcp;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>service class EchoService {
+    *tcp:ConnectionService;
 </code></pre></div>
 
                                 </div>
@@ -204,7 +206,7 @@ import ballerina/tcp;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        check caller-&gt;writeBytes(data);
+                                    <div class="highlight"><pre><code class=language-ballerina>        return caller-&gt;writeBytes(data);
     }
 </code></pre></div>
 
@@ -224,7 +226,7 @@ import ballerina/tcp;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onError(tcp:Error err) returns tcp:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onError(tcp:Error err) {
         log:printError(&quot;An error occurred&quot;, &#39;error = err);
     }
 </code></pre></div>
@@ -246,7 +248,7 @@ import ballerina/tcp;
                             <div class="cTR hover-enable">
 
                                 <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onClose() returns tcp:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onClose() {
         io:println(&quot;Client left&quot;);
     }
 }

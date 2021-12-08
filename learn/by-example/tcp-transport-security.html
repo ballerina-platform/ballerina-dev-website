@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: TCP Transport Security
+title: Transport Security
 description: BBE on how to secure TCP listener and client with SSL.
 keywords: ballerina, ballerina by example, bbe, ssl, tls, tcp client, tcp listener
 permalink: /learn/by-example/tcp-transport-security
@@ -30,13 +30,13 @@ redirect_from:
     <span class="nx">check</span> <span class="nx">securedClientEP</span><span class="o">-&gt;</span><span class="nx">writeBytes</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">());</span>
     <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">receivedData</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">securedClientEP</span><span class="o">-&gt;</span><span class="nx">readBytes</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received message: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">receivedData</span><span class="p">));</span>
-    <span class="nx">check</span> <span class="nx">securedClientEP</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">securedClientEP</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">tcp</span><span class="p">;</span>
 
 <span class="c1">// An HTTP listener can be configured to communicate through SSL/TLS as well.</span>
-<span class="c1">// To secure an listener using SSL/TLS, the listener needs to be configured with</span>
+<span class="c1">// To secure a listener using SSL/TLS, the listener needs to be configured with</span>
 <span class="c1">// a certificate file and a private key file for the listener.</span>
 <span class="c1">// The [`tcp:ListenerSecureSocket`](https://docs.central.ballerina.io/ballerina/tcp/latest/records/ListenerSecureSocket) record</span>
 <span class="c1">// provides the SSL-related listener configurations of the listener.</span>
@@ -58,6 +58,8 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="kd">service</span> <span class="nx">class</span> <span class="nx">EchoService</span> <span class="p">{</span>
+    <span class="o">*</span><span class="nx">tcp</span><span class="p">:</span><span class="nx">ConnectionService</span><span class="p">;</span>
+
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onBytes</span><span class="p">(</span><span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">byte</span><span class="p">[]</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received message: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
         <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
@@ -71,7 +73,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>TCP Transport Security</h2>
+                            <h2>Transport Security</h2>
                             <p><p>This example demonstrates how the Ballerina TCP client can be configured to
  connect to an SSL/TLS listener through a one-way SSL/TLS connection
  (i.e., the server is verified by the client). This example uses the Ballerina
@@ -88,14 +90,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="tcp-listener.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
-                                        <p>TCP Listener</p>
+                                        <p>Listener</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="udp-client.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
-                                        <p>UDP Connectionless Client</p>
+                                        <p>Connectionless Client</p>
                                     </a>
                                 </div>
                                 
@@ -176,7 +178,7 @@ import ballerina/tcp;
     check securedClientEP-&gt;writeBytes(&quot;Hello, World!&quot;.toBytes());
     readonly &amp; byte[] receivedData = check securedClientEP-&gt;readBytes();
     io:println(&quot;Received message: &quot;, string:fromBytes(receivedData));
-    check securedClientEP-&gt;close();
+    return securedClientEP-&gt;close();
 }
 </code></pre></div>
 
@@ -246,7 +248,7 @@ import ballerina/tcp;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>An HTTP listener can be configured to communicate through SSL/TLS as well.
- To secure an listener using SSL/TLS, the listener needs to be configured with
+ To secure a listener using SSL/TLS, the listener needs to be configured with
  a certificate file and a private key file for the listener.
  The <a href="https://docs.central.ballerina.io/ballerina/tcp/latest/records/ListenerSecureSocket"><code>tcp:ListenerSecureSocket</code></a> record
  provides the SSL-related listener configurations of the listener.</p>
@@ -277,9 +279,21 @@ import ballerina/tcp;
                             
                             <div class="cTR">
 
-                                <div class="code">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>service class EchoService {
-    remote function onBytes(readonly &amp; byte[] data) returns byte[] {
+    *tcp:ConnectionService;
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onBytes(readonly &amp; byte[] data) returns byte[] {
         io:println(&quot;Received message: &quot;, string:fromBytes(data));
         return data;
     }

@@ -27,7 +27,7 @@ redirect_from:
             <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="mi">42</span> <span class="o">-&gt;</span> <span class="kd">function</span><span class="p">;</span>
-
+        <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="c1">// Send to or receive from failed worker will propagate the failure.</span>
@@ -42,6 +42,7 @@ redirect_from:
     <span class="p">}</span>
 
     <span class="nx">counter</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -50,6 +51,8 @@ redirect_from:
 
     <span class="kt">int</span> <span class="nx">b</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">demo</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -105,7 +108,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e068014c2b7986c5293aa2bea047cf1c&file=inter_worker_failure_propagation.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=99ec7e45b0eafeec57961293739271a1&file=inter_worker_failure_propagation.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -164,6 +167,8 @@ redirect_from:
             return res;
         }
         42 -&gt; function;
+        return;
+    }
 </code></pre></div>
 
                                 </div>
@@ -178,18 +183,6 @@ redirect_from:
 
                                         </div>
                                     </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    }
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
                                     
                                 </div>
                             </div>
@@ -245,6 +238,7 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    counter += 1;
+    return;
 }
 </code></pre></div>
 
@@ -270,9 +264,21 @@ redirect_from:
                             
                             <div class="cTR">
 
-                                <div class="code">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    int b = check demo();
     io:println(b);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    return;
 }
 </code></pre></div>
 

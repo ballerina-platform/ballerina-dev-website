@@ -1,20 +1,20 @@
 {
-  "version":"swan-lake-beta2",
-  "short-version":"slbeta2",
-  "display-version":"Swan Lake Beta2",
-  "release-date":"2021-07-07",
-  "windows-installer":"ballerina-windows-installer-x64-swan-lake-beta2.msi",
-  "windows-installer-size":"144mb",
-  "linux-installer":"ballerina-linux-installer-x64-swan-lake-beta2.deb",
-  "linux-installer-size":"185mb",
-  "macos-installer":"ballerina-macos-installer-x64-swan-lake-beta2.pkg",
-  "macos-installer-size":"219mb",
-  "rpm-installer":"ballerina-linux-installer-x64-swan-lake-beta2.rpm",
-  "rpm-installer-size":"199mb",
-  "other-artefacts":[
-    "ballerina-swan-lake-beta2.zip",
-    "ballerina-metrics-grafana-dashboard-prometheus.json"
+	"version":"swan-lake-beta5",
+	"short-version":"slbeta5",
+	"display-version":"Swan Lake Beta 5",
+	"release-date":"2021-12-01",
+	"windows-installer":"ballerina-windows-installer-x64-swan-lake-beta5.msi",
+	"windows-installer-size":"158mb",
+	"linux-installer":"ballerina-linux-installer-x64-swan-lake-beta5.deb",
+	"linux-installer-size":"176mb",
+	"macos-installer":"ballerina-macos-installer-x64-swan-lake-beta5.pkg",
+	"macos-installer-size":"211mb",
+	"rpm-installer":"ballerina-linux-installer-x64-swan-lake-beta5.rpm",
+	"rpm-installer-size":"215mb",
+	"other-artefacts":[
+		"ballerina-swan-lake-beta5.zip",
+		"ballerina-metrics-grafana-dashboard-prometheus.json"
   ],
-  "api-docs":"ballerina-api-docs-swan-lake-beta2.zip",
-  "release-notes":"ballerina-release-notes-swan-lake-beta2.md"
+	"api-docs":"ballerina-api-docs-swan-lake-beta5.zip",
+	"release-notes":"ballerina-release-notes-swan-lake-beta5.md"
 }

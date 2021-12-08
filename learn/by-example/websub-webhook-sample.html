@@ -77,9 +77,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="websocket-client-oauth2-refresh-token-grant-type.html?is_ref_by_example=true">
+                                    <a class="prev" href="websocket-client-oauth2-jwt-bearer-grant-type.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
-                                        <p>Client - OAuth2 Refresh Token Grant Type</p>
+                                        <p>Client - OAuth2 JWT Bearer Grant Type</p>
                                     </a>
                                 </div>
                                  
@@ -240,10 +240,7 @@ import ballerina/io;
 
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run websub_webhook_sample.bal
-time = 2021-03-15 15:43:00,198 level = INFO  module = ballerina/websub message = &quot;HTTPS is recommended but using HTTP&quot; 
-time = 2021-03-15 15:43:01,960 level = INFO  module = ballerina/websub message = &quot;Subscription request considered successful for non 202 status code: 204&quot; 
-time = 2021-03-15 15:43:01,962 level = INFO  module = ballerina/websub message = &quot;Subscription Request successfully sent to Hub[https://api.github.com/hub], for Topic[https://github.com/&lt;your-org&gt;/&lt;your-repository/events/push.json], with Callback [&lt;your-callback-url&gt;]. Awaiting intent verification.&quot; 
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+time = 2021-03-15 15:43:00,198 level = WARN module = ballerina/websub message = &quot;HTTPS is recommended but using HTTP&quot;
 PingEvent received for webhook [287075824]
 Event sender [77491511]
 PushEvent received for [Hello-World]

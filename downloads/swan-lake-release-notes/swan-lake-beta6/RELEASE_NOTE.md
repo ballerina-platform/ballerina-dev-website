@@ -97,15 +97,11 @@ Allowed listener-level interceptors to have only the default path.
 
 #### OpenAPI Tool 
 
-##### OpenAPI to Ballerina Command Improvements
-
-Added the `--with-tests` flag for the OpenAPI client generation command to generate boiler-plate tests file of the relevant remote functions. For example,
+- Added the `--with-tests` option for the OpenAPI client generation command, which will generate a test file template for all the relevant remote functions of the client. For example,
 
   > `bal openapi -i <openapi contract> --mode client --with-tests`
 
-##### Ballerina to OpenAPI Command Improvements
-
-Added the `--export-openapi` flag for the `bal build` command to generate OpenAPI contract files for all the services in the current package. For example,
+- Added the `--export-openapi` option for the `build` command, which will generate OpenAPI contract files for all the services in the current package. For example,
 
   > `bal build --export-openapi`
 

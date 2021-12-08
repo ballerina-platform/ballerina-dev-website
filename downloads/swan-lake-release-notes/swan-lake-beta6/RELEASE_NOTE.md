@@ -139,9 +139,9 @@ To view bug fixes, see the GitHub milestone for Swan Lake Beta3 of the repositor
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta6%22+label%3AType%2FBug)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+label%3AArea%2FDebugger+milestone%3A%22Ballerina+Swan+Lake+-+Beta6%22+is%3Aclosed)
 
-### Ballerina Packages
+## Ballerina Packages
 
-#### New Features
+### New Features
 
 Added support to add an `icon` field under the `[package]` table. For example,
 ```toml

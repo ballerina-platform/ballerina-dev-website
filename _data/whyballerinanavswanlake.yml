@@ -1,24 +1,64 @@
-
-- title: Cloud Native
-  url: /learn/why-ballerina/cloud-native/
-  active: cloud-native
-
-- title: Flexibly Typed
-  url: /learn/why-ballerina/flexibly-typed/
-  active: flexibly-typed
-
-- title: Data Oriented
-  url: /learn/why-ballerina/data-oriented/
-  active: data-oriented
-
-- title: Graphical
-  url: /learn/why-ballerina/graphical/ 
-  active: graphical
-
-- title: Concurrent
-  url: /learn/why-ballerina/concurrent/ 
-  active: concurrent
-
-- title: Reliable, Maintainable
-  url: /learn/why-ballerina/reliable-maintainable/ 
-  active: reliable-maintainable 
+- title: Why Ballerina 
+  url: '#'
+  sublinks:
+    - title: Cloud Native 
+      url: '#'
+      sublinks:
+        - title: Network-Friendly Type System
+          url: /why-ballerina/cloud-native/#network-friendly-type-system
+          active: network-friendly-type-system
+        - title: Services 
+          url: /why-ballerina/cloud-native/#services
+          active: services
+        - title: Async Network Protocol
+          url: /why-ballerina/cloud-native/#async-network-protocol
+          active: async-network-protocol
+        - title: Client Objects 
+          url: /why-ballerina/cloud-native/#client-objects
+          active: client-objects
+        - title: Code to Cloud 
+          url: /why-ballerina/cloud-native/#code-to-cloud
+          active: code-to-cloud
+    - title: Flexibly Typed
+      url: '#'
+      sublinks:
+        - title: Statically Typed and Structural
+          url: /why-ballerina/flexibly-typed/#statically-typed-and-structural
+          active: statically-typed-and-structural
+        - title: Open-by-Default 
+          url: /why-ballerina/flexibly-typed/#open-by-default
+          active: open-by-default
+        - title: Network Communication with Data Binding
+          url: /why-ballerina/flexibly-typed/#network-communication-with-data-binding
+          active: network-communication-with-data-binding
+    - title: Data Oriented
+      url: '#'
+      sublinks:
+        - title: Query Expressions
+          url: /why-ballerina/data-oriented/#query-expressions
+          active: query-expressions
+        - title: Query Actions 
+          url: /why-ballerina/data-oriented/#query-actions
+          active: query-actions
+        - title: Writing Integrated Queries
+          url: /why-ballerina/data-oriented/#writing-integrated-queries
+          active: writing-integrated-queries
+    - title: Graphical 
+      url: '#'
+      sublinks:
+        - title: Sequence Diagrams in Ballerina
+          url: /why-ballerina/graphical/#sequence-diagrams-in-ballerina
+          active: sequence-diagrams-in-ballerina
+        - title: Graphical Representation
+          url: /why-ballerina/graphical/#graphical-representation
+          active: graphical-representation
+    - title: Concurrent
+      url: /why-ballerina/concurrent/
+      active: concurrent
+    - title: Reliable, Maintainable 
+      url: '#'
+      sublinks:
+        - title: Explicit Error Handling
+          url: /why-ballerina/reliable-maintainable/#explicit-error-handling
+          active: sequence-diagrams-in-ballerina
+          

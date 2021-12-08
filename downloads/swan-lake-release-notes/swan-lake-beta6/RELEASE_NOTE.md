@@ -80,6 +80,10 @@ Introduced request and request error interceptors at the service level.
 #### `time` Package
 Added time zone handling support.
 
+#### `time` Package
+Add time zone handling APIs.
+
+
 ### Improvements
 
 #### `http` Package

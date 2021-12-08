@@ -125,7 +125,7 @@ redirect_from:
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
 <a href="/learn/by-example/introduction/">
-    <h3 id="learn-by-example">Learn by Examples</h3></a>
+    <h3 id="learn-by-example">Ballerina by Example</h3></a>
     <p >A series of guided examples to learn the language. </p>
 </div>
 
@@ -227,45 +227,40 @@ redirect_from:
 
 <div class="row" style="margin-bottom:30px">
 	<h2 id="references">References</h2>
+	
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card" >
-<a href="/learn/by-example/">
- <h3 id="reference-guide-by-examples">Reference by Examples</h3></a>
-		<p>A series of examples that serve as a reference guide for language constructs, concepts, and standard library modules. </p>
-</div>
-
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
  <a href="https://lib.ballerina.io/">
   	<h3 id="library-documentation">Library Documentation</h3></a>
 		<p>Ballerina library API documentation. </p>
 </div>
-</div>	
 
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card" >
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
   <a href="/learn/cli-documentation/cli-commands/">
  	<h3 id="the-bal-tool">CLI Documentation</h3></a>
 		<p>Details of all the CLI commands of the <code class="highlighter-rouge language-plaintext">bal</code> tool.  </p>
 </div>
-
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+</div>
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card" >
  <a href="/learn/platform-specifications/">
   <h3 id="specifications">Platform Specifications</h3></a>
 		<p>Details of the Ballerina language specifications and proposals.  </p>
 </div>
-</div>
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card" >
+
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
   <a href="/learn/style-guide/coding-conventions/">
  	 <h3 id="style-guide">Style Guide</h3></a>
 		<p>Best practices to follow when formatting Ballerina code.   </p>
 </div>
-
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+</div>
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card" >
  <a href="/learn/language-introduction/">
   	<h3 id="language-introduction-slides">Language Introduction</h3></a>
 		<p>Presentation slides on the Ballerina language that you can use to talk about the language.</p>
+</div>
 </div>
 </div>
 
@@ -278,8 +273,6 @@ redirect_from:
    	<h3 id="language-walkthrough-video">Language Walkthrough</h3></a>
   <p >A video series, which explains the language and its reference slide deck. </p>
 </div>
-</div>
-
 </div>
 
 

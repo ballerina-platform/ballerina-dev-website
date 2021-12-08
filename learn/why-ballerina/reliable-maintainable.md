@@ -1,15 +1,17 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Reliable, Maintainable
 description: The sections below explain how the explicit error handling, static types, and concurrency safety combined with a familiar, readable syntax make programs reliable and maintainable.
 keywords: ballerina, ballerina platform, api documentation, testing, ide, ballerina central
-permalink: /learn/why-ballerina/reliable-maintainable/
+permalink: /why-ballerina/reliable-maintainable/
 active: reliable-maintainable
 intro: The sections below explain how the explicit error handling, static types, and concurrency safety combined with a familiar, readable syntax make programs reliable and maintainable. 
 redirct_from:
   - /learn/user-guide/why-ballerina/reliable-and-maintainable/
   - /learn/user-guide/why-ballerina/reliable-maintainable
   - /learn/why-ballerina/reliable-maintainable
+  - /learn/why-ballerina/reliable-maintainable/
+  - /why-ballerina/reliable-maintainable
 ---
 
 ## Explicit Error Handling  
@@ -170,11 +172,14 @@ Panics can be trapped with a `trap` expression. Ballerina raises a panic on an i
 int|error result = trap (m + n);
 ```
 
+<<<<<<< HEAD:learn/guides/why-ballerina/reliable-maintainable.md
+=======
 <style>
 .nav > li.cVersionItem {
     display: none !important;
 }
-.cBalleinaBreadcrumbs li:nth-child(3) , .cBalleinaBreadcrumbs li:nth-child(2) {
+/* .cBalleinaBreadcrumbs li:nth-child(3) , .cBalleinaBreadcrumbs li:nth-child(2) {
    display:none !important;
-}
+} */
 </style>
+>>>>>>> 89276c24bd9a167a68619c802d1d9d54e8fa0d65:learn/why-ballerina/reliable-maintainable.md

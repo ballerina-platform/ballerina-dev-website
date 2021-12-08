@@ -95,13 +95,15 @@ Add time zone handling APIs.
 
 ### Improvements
 
-#### OpenAPI to Ballerina Command Improvements
+#### OpenAPI Tool Updates
+
+##### OpenAPI to Ballerina Command Improvements
 
 Added the `--with-tests` flag for the OpenAPI client generation command to generate boiler-plate test files of the relevant remote functions. For example,
 
   > `bal openapi -i <openapi contract> --mode client --with-tests`
 
-#### Ballerina to OpenAPI Command Improvements
+##### Ballerina to OpenAPI Command Improvements
 
 Added the `--export-openapi` flag for the `bal build` command to generate OpenAPI contract files for all the services in the current package. For example,
 

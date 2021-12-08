@@ -21,28 +21,8 @@
           active: update-commands
     - title: Update Tool
       url: /learn/cli-documentation/update-tool/
-<<<<<<< HEAD
-      sublinks:
-        - title: Understanding Ballerina Distributions
-          url: /learn/cli-documentation/update-tool/#understanding-ballerina-distributions
-          active: understanding-ballerina-distributions
-        - title: Getting to Know the Release Channels
-          url: /learn/cli-documentation/update-tool/#getting-to-know-the-release-channels
-          active: getting-to-know-the-release-channels
-        - title: Installing Ballerina
-          url: /learn/cli-documentation/update-tool/#installing-ballerina
-          active: installing-ballerina
-        - title: Updating the Ballerina Tool
-          url: /learn/cli-documentation/update-tool/#updating-the-ballerina-tool
-          active: updating-the-ballerina-tool
-        - title: Managing your Ballerina Distributions
-          url: /learn/cli-documentation/update-tool/#managing-your-ballerina-distributions
-          active: managing-your-ballerina-distributions
-    - title: Open API
-=======
       active: update-tool
     - title: OpenAPI
->>>>>>> 89276c24bd9a167a68619c802d1d9d54e8fa0d65
       url: /learn/cli-documentation/openapi/
       sublinks:
         - title: Using the Capabilities of the OpenAPI Tools

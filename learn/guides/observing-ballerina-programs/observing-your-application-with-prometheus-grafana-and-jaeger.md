@@ -1,5 +1,5 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-observing-programs-left-nav-pages-swanlake
 title: Observing Your Application with Prometheus, Grafana, and Jaeger
 description: See how Ballerina supports observability by exposing itself via metrics, tracing, and logs to external systems.
 keywords: ballerina, observability, metrics, tracing, logs
@@ -26,6 +26,9 @@ redirect_from:
   - /learn/observing-ballerina-programs/
   - /learn/observing-ballerina-programs
 ---
+<article class="tip" markdown="1">
+
+<section id="providing-observability-in-ballerina" markdown="1">
 
 ## Providing Observability in Ballerina
 
@@ -38,6 +41,9 @@ connectors use semantic tags to make tracing and metrics monitoring more informa
 This guide focuses on enabling Ballerina service observability with some of its supported systems.
 [Prometheus] and [Grafana] are used for metrics monitoring, and [Jaeger] is used for distributed tracing. 
 Ballerina logs can be fed to any external log monitoring system like [Elastic Stack] to perform log monitoring and analysis.
+
+</section>
+<section id="observing-a-ballerina-service" markdown="1">
 
 ## Observing a Ballerina Service
 
@@ -159,6 +165,9 @@ If you have configured log analytics, view the logs in Kibana via <http://localh
 
 ![Kibana Sample Dashboard](/learn/images/kibana-sample-dashboard.png "Kibana Sample Dashboard")
 
+</section>
+<section id="monitoring-metrics" markdown="1">
+
 ## Monitoring Metrics
 Metrics help to monitor the runtime behavior of a service. Therefore, metrics are a vital part of monitoring
 Ballerina services. However, metrics are not the same as analytics. For example, you should not use metrics to do
@@ -267,6 +276,9 @@ Ballerina HTTP Client Metrics Dashboard Panel will be as below.
 Ballerina SQL Client Metrics Dashboard Panel will be as below.
 ![Ballerina SQL Client Metrics](/learn/images/grafana-ballerina-metrics-2.png "Ballerina Sample SQL Client Metrics Dashboard")
 
+</section>
+<section id="distributed-tracing" markdown="1">
+
 ## Distributed Tracing
 
 Tracing provides information regarding the roundtrip of a service invocation based on the concept of spans, which are
@@ -358,6 +370,9 @@ $ docker run -d -p 13133:13133 -p 16686:16686 -p 55680:55680 jaegertracing/opent
 The image below is the sample tracing information you can see from Jaeger.
 
 ![Jaeger Tracing Dashboard](/learn/images/jaeger-tracing-dashboard.png "Jaeger Tracing Dashboard")
+
+</section>
+<section id="distributed-logging" markdown="1">
 
 ## Distributed Logging
 Ballerina distributed logging and analysis is supported by Elastic Stack. Ballerina has a log module for logging in to the console. In order to monitor the logs, the Ballerina standard output needs to be redirected to a file.
@@ -471,3 +486,7 @@ $ docker run -v /tmp/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /<path-to-
 [Grafana]: https://grafana.com/
 [Jaeger]: https://www.jaegertracing.io/
 [Elastic Stack]: https://www.elastic.co/
+
+</section>
+
+</article>

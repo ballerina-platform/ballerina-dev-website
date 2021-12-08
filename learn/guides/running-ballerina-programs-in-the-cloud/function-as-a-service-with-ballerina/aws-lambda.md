@@ -1,5 +1,5 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-cloud-left-nav-pages-swanlake
 title: AWS Lambda
 description: Learn how to write and deploy AWS Lambda functions using ballerina
 keywords: ballerina, programming language, serverless, cloud, AWS, Lambda, Cloud Native
@@ -15,8 +15,6 @@ redirect_from:
   - /learn/user-guide/deployment/aws-lambda
   - /learn/user-guide/deployment/aws-lambda/
   - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda
-  - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/
-  - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina
 ---
 
 Exposing a Ballerina function as an AWS Lambda function is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json) returns json|error`. 

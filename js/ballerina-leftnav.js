@@ -23,7 +23,7 @@
 // });
 
 $(function () {
-  $(".sub-menu ul").hide();
+  $(".sub-menu ul").show();
   if($("li.current-sub").length>0){
     $("li.current-sub")
     .parent()
@@ -50,3 +50,27 @@ $(function () {
     $(this).parent(".inner-sub-menu-two").toggleClass("OpenUL").children("ul").slideToggle();
   });
 });
+
+
+  $(function() {
+  $("a").click(function() {
+     // remove classes from all
+     $("a").removeClass("cLeftMenuInnerLink cTopiAtag highlight");
+     // add class to the one we clicked
+     $(this).addClass("cLeftMenuInnerLink cTopiAtag highlight");
+  });
+});
+
+$(function() {
+  // Catch URL
+  var url = window.location.href;
+
+  // check the URL with a tag
+  $(".sub-ul-two a").each(function() {
+      if (url == (this.href)) {
+          $(this).closest("a").addClass("cLeftMenuInnerLink cTopiAtag highlight");
+          document.getElementsByClassName("cLeftMenuInnerLink cTopiAtag highlight")[0].scrollIntoView();
+        
+      }
+  });
+});  

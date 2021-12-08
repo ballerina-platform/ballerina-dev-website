@@ -1,0 +1,16 @@
+- title: Platform Specifications
+  url: #
+  sublinks:
+    - title: Ballerina Language Specifications and Proposals
+      url: /learn/platform-specifications/#ballerina-language-specifications-and-proposals
+      active: ballerina-language-specifications-and-proposals
+    - title: Ballerina Platform Specifications
+      url: /learn/platform-specifications/#ballerina-platform-specifications
+      active: ballerina-platform-specifications
+    - title: About Ballerina Specifications
+      url: /learn/platform-specifications/#about-ballerina-specifications
+      active: about-ballerina-specifications
+
+
+
+

@@ -156,11 +156,7 @@ redirect_from:
 </h3></a>
   	<p>The usage of the <code class="highlighter-rouge language-plaintext">bal doc</code> CLI command.   </p>
 </div>
-<<<<<<< HEAD
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important">
-=======
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important" >
->>>>>>> d7698cfb9784c62b4b43aeb8681b491efce40d34
  <a href="/learn/making-ballerina-programs-configurable/defining-configurable-variables/">
   	<h3 id="making-ballerina-programs-configurable">Making Ballerina Programs Configurable</h3></a>
  	<p>The language support for configurability.   </p>

@@ -1,5 +1,5 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-testing-code-left-nav-pages-swanlake
 title: Quick Start on Testing
 description: Learn how to use Ballerina's built-in test framework to write testable code. The test framework provides a set of building blocks to help write and run tests.
 keywords: ballerina, programming language, testing
@@ -19,6 +19,7 @@ redirect_from:
   - /learn/user-guide/testing-ballerina-code/testing-quick-start/
   - /learn/user-guide/testing-ballerina-code/
   - /learn/user-guide/testing-ballerina-code
+  - /learn/user-guide/testing-ballerina-code/testing-quick-start/
   - /learn/testing-ballerina-code/quick-start-on-testing
 ---
 

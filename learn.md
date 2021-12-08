@@ -11,7 +11,6 @@ redirect_from:
  - /learn
 ---
 
-
 <style>
 	:not(pre) > code[class*="language-"], pre[class*="language-"]{
 		    background: #e0dede !important;
@@ -131,41 +130,10 @@ redirect_from:
 </div>
 </div>
 
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card" >
-  <a href="/learn/language-walkthrough/">
-   	<h3 id="language-walkthrough-video">Language Walkthrough</h3></a>
-  <p >A video series, which explains the language and its reference slide deck. </p>
-</div>
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
-<h3 id="language-walkthrough-video"><a href="/learn/ballerina-shell/">Ballerina Shell</a></h3>
-<p>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
-</div>
-</div>
-
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card" >
- <a href="/learn/visual-studio-code-extension/quick-start/">
-    <h3 id="installing-ballerina">Visual Studio Code Extension</h3></a>
-    <p >Details of all the features of the Ballerina Visual Studio Code extension. </p>
-</div>
 </div>
 
 <div class="row" style="margin-bottom:30px;">
 <h2 id="concepts">Guides</h2>
-
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card" >
-  <a href="/learn/why-ballerina/cloud-native/">
-   <h3 id="why-ballerina">Why Ballerina</h3></a>
-    <p >Why you should use Ballerina.  </p>
-</div>
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important">
-  <a href="/learn/distinctive-language-features/network-interaction/">
-   <h3 id="distinctive-language-features">Distinctive Language Features</h3></a>
-    <p >A guide to the language features that make Ballerina distinctive.  </p>
-</div>
-</div>
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
@@ -188,7 +156,11 @@ redirect_from:
 </h3></a>
   	<p>The usage of the <code class="highlighter-rouge language-plaintext">bal doc</code> CLI command.   </p>
 </div>
+<<<<<<< HEAD
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important">
+=======
+<div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important" >
+>>>>>>> d7698cfb9784c62b4b43aeb8681b491efce40d34
  <a href="/learn/making-ballerina-programs-configurable/defining-configurable-variables/">
   	<h3 id="making-ballerina-programs-configurable">Making Ballerina Programs Configurable</h3></a>
  	<p>The language support for configurability.   </p>
@@ -198,13 +170,14 @@ redirect_from:
 
 <div class="row">
 
-<div class="col-lg-6 col-md-6 col-sm-12 card">
+<div class="col-lg-6 col-md-6 col-sm-12 card" >
   <a href="/learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/">
  	<h3 id="observing-ballerina-programs">Observing Ballerina Programs
 </h3></a>
   		<p>Basics of the observability functionalities that are provided for Ballerina programs. </p>
 </div>
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important">
+
+<div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
  <a href="/learn/running-ballerina-programs-in-the-cloud/code-to-cloud/">
   		<h3 id="running-ballerina-programs-in-the-cloud">Running Ballerina Programs in the Cloud
 </h3></a>
@@ -220,21 +193,33 @@ redirect_from:
  	<h3 id="managing-dependencies">Managing Dependencies </h3></a>
   			<p>Details of declaring and managing dependencies and using the local repository.</p>
 </div>
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important">
+<div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;" >
 <a href="/learn/publishing-packages-to-ballerina-central/">
   		<h3 id="publishing-packages-to-ballerina-central">Publishing Packages to Ballerina Central</h3></a>
 		<p>Details of publishing your library package to Ballerina Central.  </p>
 </div>
-</div>		
-<div class="row">
+</div>	
 
+<div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card" >
 <a href="/learn/calling-java-code-from-ballerina-and-vice-versa/">
  <h3 id="calling-java-code-from-ballerina-and-vice-versa">Calling Java Code from Ballerina and Vice Versa</h3></a>
 		<p>Instructions on the supported interoperability features. </p>
 </div>
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+<h3 id="language-walkthrough-video"><a href="/learn/ballerina-shell/">Ballerina Shell</a></h3>
+<p>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
+</div>
+</div>
 
-</div>				
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card">
+ <a href="/learn/visual-studio-code-extension/quick-start/">
+    <h3 id="installing-ballerina">Visual Studio Code Extension</h3></a>
+    <p >Details of all the features of the Ballerina Visual Studio Code extension. </p>
+</div>
+</div>
+
 </div>
 
 
@@ -282,5 +267,20 @@ redirect_from:
 		<p>Presentation slides on the Ballerina language that you can use to talk about the language.</p>
 </div>
 </div>
+
+
+<div class="row" style=" margin-bottom:30px">
+<h2 id="getting-started">Talks</h2>
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+  <a href="/learn/language-walkthrough/">
+   	<h3 id="language-walkthrough-video">Language Walkthrough</h3></a>
+  <p >A video series, which explains the language and its reference slide deck. </p>
+</div>
+</div>
+
+</div>
+
+
 </div>
 

@@ -244,7 +244,7 @@ Ballerina also allows the use of ``null`` keyword instead of `‘( )’` for the
 
 ``json`` is basically ``anydata`` but without ``table`` and ``xml``. ``json`` and ``xml`` types are not parallel.<br><br>
 
-## Working with JSON: Two Approaches
+## Working with JSON - Two Approaches
 
 Ballerina allows two approaches to work with JSON data.
 
@@ -356,7 +356,7 @@ However, this does not work because the json fields can be later assigned to som
 Coord c = <Coord>j.cloneReadOnly( );
 ```
 
-## Converting to User-defined Type: cloneWithType
+## Converting to User-defined Type - `cloneWithType`
 
 There is another way of converting from JSON to a user-defined type.
 

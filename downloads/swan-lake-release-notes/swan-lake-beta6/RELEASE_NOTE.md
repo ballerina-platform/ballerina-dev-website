@@ -83,12 +83,15 @@ Added time zone handling support.
 #### `time` Package
 Add time zone handling APIs.
 
-
 ### Improvements
 
 #### `http` Package
+Allowed listener-level interceptors to have only the default path.
+
+### Breaking Changes
+
+#### `http` Package
 - Changed the `RequestContext:add` function to `RequestContext:set`.
-- Allowed listener-level interceptors to have only the default path.
 - Improved the `parseHeader()` function to support multiple header values.
 
 ## Developer Tools Updates
@@ -99,7 +102,7 @@ Add time zone handling APIs.
 
 ##### OpenAPI to Ballerina Command Improvements
 
-Added the `--with-tests` flag for the OpenAPI client generation command to generate boiler-plate test files of the relevant remote functions. For example,
+Added the `--with-tests` flag for the OpenAPI client generation command to generate boiler-plate tests file of the relevant remote functions. For example,
 
   > `bal openapi -i <openapi contract> --mode client --with-tests`
 

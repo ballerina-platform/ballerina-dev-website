@@ -99,7 +99,7 @@ Add time zone handling APIs.
 
 Added the `--with-tests` flag for the OpenAPI client generation command to generate boiler-plate test files of the relevant remote functions. For example,
 
-  > `bal openapi -i <openapi contract> --mode client --with-test`
+  > `bal openapi -i <openapi contract> --mode client --with-tests`
 
 #### Ballerina to OpenAPI Command Improvements
 

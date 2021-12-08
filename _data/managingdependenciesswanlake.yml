@@ -1,0 +1,15 @@
+- title: Managing Dependencies
+  url: #
+  sublinks:
+    - title: Importing Modules
+      url: /learn/managing-dependencies/#importing-modules
+      active: importing-modules
+    - title: Handling Dependencies
+      url: /learn/managing-dependencies/#handling-dependencies
+      active: handling-dependencies
+    - title: Version Compatibility
+      url: /learn/managing-dependencies/#version-compatibility
+      active: version-compatibility
+    - title: Overriding Dependencies
+      url: /learn/managing-dependencies/#overriding-dependencies
+      active: overriding-dependencies

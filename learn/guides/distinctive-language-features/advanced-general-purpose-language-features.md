@@ -1,5 +1,5 @@
 ---
-layout: ballerina-language-guide-left-nav-pages-swanlake
+layout: ballerina-distinctive-language-features-left-nav-pages-swanlake
 title: Advanced, General-Purpose Language Features
 description: Let’s now look at the other features of the Ballerina language. These are a mixed bag of additional options to the language, making everything fit together to build a Ballerina application.
 keywords: ballerina, programming language, ballerina packages,language-guide
@@ -449,7 +449,7 @@ In the above code example, the tuple type **``Id``** has the first member of the
 
 Therefore, any array of type *T*,  as in *T[ ]*, can be described as *[T . . .]* , which is a tuple  containing zero or more *T* type members in the list. Tuples are not open by default.<br><br>
 
-## Array/map Symmetry
+## Array/Map Symmetry
 
 | Basic<br>type | Index type | JSON   | Constructor                       | Type with<br>uniform<br>member<br>type | Type with<br>per-index member<br>type       | Open type                            |
 |---------------|------------|--------|-----------------------------------|----------------------------------------|---------------------------------------------|--------------------------------------|
@@ -641,7 +641,7 @@ Similarly, LangLib provides subtypes *int:Signed32*, *int:Signed16* and *int:Sig
 
 One important thing to remember about these subtypes is that these are not separate basic types. Operations on these subtypes work exactly like integers. These subtypes allow better optimization of storage, particularly for arrays.<br><br>
 
-## Built in String Subtype
+## Built-in String Subtype
 
 Similar to integer subtypes, Langlib also supports a Char type which is a subtype of string. In Ballerina a single character is defined as a string of length one, but you can still use the subtype *string:Char*.
 

@@ -77,7 +77,7 @@ Added support for the GraphQL list type inputs.
 Introduced request and request error interceptors at the service level.
 
 #### `xmldata` Package
-Added support to convert an XML to a Record
+Added support to convert an XML to a record.
 
 #### `time` Package
 Added time zone handling support.
@@ -121,6 +121,24 @@ Allowed listener-level interceptors to have only the default path.
 - Added the `--export-openapi` option for the `build` command, which will generate OpenAPI contract files for all the services in the current package. For example,
 
   > `bal build --export-openapi`
+
+#### CLI
+
+- Introduced the `--target-dir` flag to the `run`, `test`, `doc`, and `clean` commands. With this, you can pass a custom directory to the aforementioned commands.
+- Added support for creating packages using template packages in Ballerina Central. (E.g., `bal new -t wso2/choreo_sample`)
+
+#### `Ballerina.toml`
+
+Added support to add an `icon` field under the `[package]` table. For example,
+```toml
+[package]
+org = "ballerinax"
+name = "googleapis.gmail"
+version = "0.1.0”
+icon = “images/icon.png”
+```
+
+>**Info:** The specified icon file will be packaged into the `docs/` directory of the Ballerina archive (`.bala`). Only the `.png` format is supported for the icon.
 
 ### Breaking Changes
 

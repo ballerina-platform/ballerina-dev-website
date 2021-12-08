@@ -124,7 +124,7 @@ redirect_from:
     <p >Get started with the basics that are common to all C-Family programming languages. </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
-<a href="/learn/by-example/introduction/">
+<a href="/learn/by-example/">
     <h3 id="learn-by-example">Ballerina by Example</h3></a>
     <p >A series of guided examples to learn the language. </p>
 </div>

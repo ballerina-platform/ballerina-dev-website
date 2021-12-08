@@ -125,8 +125,16 @@ Allowed listener-level interceptors to have only the default path.
 
 Improved the `assertFail` function to eliminate the fake return/panic that had to be added after the statement. The signature of the function is changed as follows.
 
-**Old signature:** `public isolated function assertFail(string msg = "Test Failed!");`
-**New signature:** `public isolated function assertFail(string msg = "Test Failed!") returns never;`
+**Old Signature:** 
+
+```ballerina
+`public isolated function assertFail(string msg = "Test Failed!");`
+```
+
+**New Signature:** 
+```ballerina
+`public isolated function assertFail(string msg = "Test Failed!") returns never;`
+```
 
 For example, the function below, which compiled without an issue in Beta5 will throw an `unreachable code` compilation error after this signature change.
 

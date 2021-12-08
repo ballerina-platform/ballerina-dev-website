@@ -61,36 +61,4 @@
         - title: Explicit Error Handling
           url: /learn/why-ballerina/reliable-maintainable/#explicit-error-handling
           active: sequence-diagrams-in-ballerina
-
-<<<<<<< HEAD
-
-
-
-
-
-  
-=======
-- title: Cloud Native
-  url: /why-ballerina/cloud-native/
-  active: cloud-native
-
-- title: Flexibly Typed
-  url: /why-ballerina/flexibly-typed/
-  active: flexibly-typed
-
-- title: Data Oriented
-  url: /why-ballerina/data-oriented/
-  active: data-oriented
-
-- title: Graphical
-  url: /why-ballerina/graphical/ 
-  active: graphical
-
-- title: Concurrent
-  url: /why-ballerina/concurrent/ 
-  active: concurrent
-
-- title: Reliable, Maintainable
-  url: /why-ballerina/reliable-maintainable/ 
-  active: reliable-maintainable 
->>>>>>> 89276c24bd9a167a68619c802d1d9d54e8fa0d65
+          

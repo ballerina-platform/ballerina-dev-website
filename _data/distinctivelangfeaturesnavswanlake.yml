@@ -82,7 +82,7 @@
           - title: Working with JSON - Two Approaches
             url: /learn/distinctive-language-features/data/#working-with-json-two-approaches
             active: working-with-json-two-approaches
-         - title: Working with JSON Directly
+          - title: Working with JSON Directly
             url: /learn/distinctive-language-features/data/#working-with-json-directly
             active: working-with-json-directly
           - title: match Statements with Maps
@@ -109,7 +109,7 @@
           - title: Table Concept
             url: /learn/distinctive-language-features/data/#table-concept
             active: table-concept
-         - title: Stream Type
+          - title: Stream Type
             url: /learn/distinctive-language-features/data/#stream-type
             active: stream-type
           - title: Backtick Templates
@@ -154,7 +154,7 @@
           - title: Object Types
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#object-types
             active: object-types
-         - title: Object Type Inclusion
+          - title: Object Type Inclusion
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#object-type-inclusion
             active: object-type-inclusion
           - title: Distinct Object Types
@@ -172,7 +172,7 @@
           - title: Type Intersection for Error Types
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#type-intersection-for-error-types
             active: type-intersection-for-error-types
-         - title: Type Intersection
+          - title: Type Intersection
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#type-intersection
             active: type-intersection
           - title: Expression-oriented Style
@@ -196,7 +196,7 @@
           - title: Array/Map Symmetry
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#arraymap-symmetry
             active: arraymap-symmetry
-         - title: Rest Parameters
+          - title: Rest Parameters
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#rest-parameters
             active: rest-parameters
           - title: Spread Operator . . .x

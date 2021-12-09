@@ -89,6 +89,21 @@ Allowed listener-level interceptors to have only the default path.
 
 ### Breaking Changes
 
+#### `graphql` Package
+Deprecated the `add` function in the `graphql:Context` object and introduced the `set` function.
+
+**Old Method:**
+```ballerina
+graphql:Context context = new;
+graphql:Error? result = context.add("key", "<value>"); // Can return an error
+```
+
+**New Method:**
+```ballerina
+graphql:Context context = new;
+context.set("key", "<value>"); // Does not return anything
+```
+
 #### `http` Package
 - Changed the `RequestContext:add` function to `RequestContext:set`.
 

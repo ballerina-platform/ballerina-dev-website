@@ -59,7 +59,7 @@ public function main() {
 
 **``greeting``** is a module-level variable of type ``string`` initialized to a value of "Hello" and **``name``** is a local variable of type ``string`` initialized to a value "Ballerina".
 
-In Ballerina, variable assignments are statements and not expressions.<br><br>
+In Ballerina, variable assignments are statements and not expressions.
 
 ## Functions
 
@@ -76,7 +76,7 @@ function add(int x, int y) returns int {
 
 In the above code example, you see the definition for **``add``** function. It accepts two parameters of type ``int``, **``x``** and **``y``**. It also returns a value of type int. The ``returns`` keyword specifies the type of return value.
 
-Inside the function, when a simple addition operation is performed, the result is stored and returned in another variable **``sum``** of type ``int`` using the ``return`` statement.<br><br>
+Inside the function, when a simple addition operation is performed, the result is stored and returned in another variable **``sum``** of type ``int`` using the ``return`` statement.
 
 ## Syntax
 
@@ -99,7 +99,7 @@ The overall syntax is pretty-much C like. Comments start with `‘//’` till th
 
 You can also use Unicode characters for identifiers. Unicode literals can be defined by using the `\u{H}` to represent Unicode code points in hex format.
 
-Keywords such as ``int``, ``function``, ``string`` are reserved keywords in Ballerina. You can use them as identifiers by prefixing them with a single quote.<br><br>
+Keywords such as ``int``, ``function``, ``string`` are reserved keywords in Ballerina. You can use them as identifiers by prefixing them with a single quote.
 
 ## Integers
 
@@ -113,7 +113,7 @@ int n  = 0xFFFF;
 
 The integer data type supports all the basic arithmetic operators, such as `‘+’` ,`’-’` , `‘*’` , `‘/’`, and `‘%’`, the comparison operators, `‘==’` , `‘!=’`, `‘<’` , `‘>’`, `‘<=’`, `‘>=’`, as well as the compound assignment operations `‘+=’` & `‘-=’`. It also supports the usual bitwise operators, `‘&’`, `‘|’` , `‘^’` , `‘~’`  , `‘<<’`  and  `‘>>’`. The operator precedence rules are exactly as per C.
 
-However, there are a couple of notable deviations in Ballerina. Firstly, increment and decrement operators, `‘++’` and `‘--’` are not supported. Moreover, integer overflow results in a runtime error, unlike in C, where it rolls over.<br><br>
+However, there are a couple of notable deviations in Ballerina. Firstly, increment and decrement operators, `‘++’` and `‘--’` are not supported. Moreover, integer overflow results in a runtime error, unlike in C, where it rolls over.
 
 ## Floating Point Numbers
 
@@ -157,7 +157,7 @@ function foo() {
 }
 ```
 
-Curly braces are required in ``if else`` and all compound statements in Ballerina. However, the parenthesis before the curly braces are optional.<br><br>
+Curly braces are required in ``if else`` and all compound statements in Ballerina. However, the parenthesis before the curly braces are optional.
 
 ## Nil
 
@@ -189,7 +189,7 @@ function foo() returns () {
 }
 ```
 
-Alternatively, any function that ends without a return statement implicitly returns nil.<br><br>
+Alternatively, any function that ends without a return statement implicitly returns nil.
 
 ## Strings
 
@@ -209,7 +209,7 @@ string greeting = “Hello” + grin;
 
 The `‘[i]’` expression on a string value points to the character at index i. The index positions on the string type start with zero.
 
-Ballerina does not support the notion of a separate character type, like in C. Instead, a character is considered a single-length string.<br><br>
+Ballerina does not support the notion of a separate character type, like in C. Instead, a character is considered a single-length string.
 
 ## Langlib Functions
 
@@ -285,7 +285,7 @@ function sum(float[ ] v) returns float {
 }
 ```
 
-Here the integer type **``i``** is set to a sequence of linearly incrementing numbers that ranges from zero to the length of Array **``v``**. Therefore, ``foreach`` statement iterates over the length of the array and increments **``i``** during each iteration.<br><br>
+Here the integer type **``i``** is set to a sequence of linearly incrementing numbers that ranges from zero to the length of Array **``v``**. Therefore, ``foreach`` statement iterates over the length of the array and increments **``i``** during each iteration.
 
 ## ``while`` Statement
 
@@ -311,7 +311,7 @@ function len(LinkedList ll) returns int {
 
 In this example, the ``while`` loop is checking for a boolean condition to check for the end of the linked list **``ll``**.
 
-It also supports the usual ``break`` and ``continue`` statements.<br><br>
+It also supports the usual ``break`` and ``continue`` statements.
 
 ## Binary Data
 
@@ -329,7 +329,7 @@ The Byte represents a number between 0 and 0xFF. You can define it with the ``by
 byte b = 0xFF;
 ```
 
-In Ballerina, Byte is not the same as a character in C. It is a subtype of the integer. Therefore it supports all the bitwise operators on integers. Some of these operators produce an integer type, and some like the `‘&’` operator produce a ``byte``.<br><br>
+In Ballerina, Byte is not the same as a character in C. It is a subtype of the integer. Therefore it supports all the bitwise operators on integers. Some of these operators produce an integer type, and some like the `‘&’` operator produce a ``byte``.
 
 ## Maps
 
@@ -352,7 +352,7 @@ int? v = m[“x”];
   
 When used within a ``foreach`` loop, it will iterate over all the values of a Map. You can also use the Langlib functions such as *``get(k)``* to get the value mapped to the string key *``k``*, or *``keys( )``* to return an Array containing all the key strings of the Map.
 
-The use of comparison operators `‘==’` and `‘!=’` on a Map will perform a deep comparison. Two Maps are equal if they have the same set of keys and the values for each key are equal.<br><br>
+The use of comparison operators `‘==’` and `‘!=’` on a Map will perform a deep comparison. Two Maps are equal if they have the same set of keys and the values for each key are equal.
 
 ## Type Definitions
 
@@ -369,7 +369,7 @@ MapArray arr = {
 }
 ```
 
-This is similar to the typedef concept in C, where the identifier **``MapArray``** acts as an alias for the actual type.<br><br>
+This is similar to the typedef concept in C, where the identifier **``MapArray``** acts as an alias for the actual type.
 
 ## Records
 
@@ -401,7 +401,7 @@ Coord c = { x: 1 , y: 2};
 int a = c.x;
 ```
 
-Records are mutable, and the individual record identifier *``c.x``* is lvalue. Rules for record comparison are the same as that for Maps.<br><br>
+Records are mutable, and the individual record identifier *``c.x``* is lvalue. Rules for record comparison are the same as that for Maps.
 
 ## Structural Typing
 
@@ -455,7 +455,7 @@ function nameToString(Name nm) returns string {
 }
 ```
  
-In this way, the ``is`` operator in a condition causes the declared type to be narrowed.<br><br>
+In this way, the ``is`` operator in a condition causes the declared type to be narrowed.
 
 ## Error Reporting
 
@@ -484,7 +484,7 @@ In the above code example, the function **``parse()``** returns a union of integ
 
 In case a function is expected to return only error values, a return type of ``error?`` is used.   Ignoring an error also has to be done explicitly.
 
-An error value includes a string message and the stack trace from the point where *``error( )``* is called, and it is immutable.<br><br>
+An error value includes a string message and the stack trace from the point where *``error( )``* is called, and it is immutable.
 
 ## Error Handling
 
@@ -503,7 +503,7 @@ function intFromBytes(byte[] bytes) returns int|error {
 }
 ```
 
-So, in the above code example, the function defines a local variable **``ret``** to hold the returned value of function **``fromBytes( )``**. **``ret``** is a union of string or error type. Therefore to ascertain the actual type, ``is`` operator is used.<br><br>
+So, in the above code example, the function defines a local variable **``ret``** to hold the returned value of function **``fromBytes( )``**. **``ret``** is a union of string or error type. Therefore to ascertain the actual type, ``is`` operator is used.
 
 ## ``check`` Expression
 
@@ -520,7 +520,7 @@ function intFromBytes(byte[] bytes) returns int|error {
 }
 ```
   
-In this case, the expression following the ``check`` keyword is evaluated and the function returns immediately if it results in an error.<br><br>
+In this case, the expression following the ``check`` keyword is evaluated and the function returns immediately if it results in an error.
 
 ## Error Subtyping
 
@@ -627,7 +627,7 @@ Ballerina’s static type checking ensures that the result of a read operation o
 av[0] = “str”; //Error
 ```
 
-This is covariance, which means that a write to a mutable structure may result in a runtime error. Apart from arrays, maps and records are the other data structures with an inherent type that constrains mutation.<br><br>
+This is covariance, which means that a write to a mutable structure may result in a runtime error. Apart from arrays, maps and records are the other data structures with an inherent type that constrains mutation.
 
 ## Object
 
@@ -643,7 +643,7 @@ function demoMyClass( ) {
 }
 ```
 
-In the above code example, the function **``demoMyClass()``** creates an object **``x``** of class **``MyClass``** using the ``new`` operator. You can use the `‘.’` notation to call the object’s methods or access its fields.<br><br>
+In the above code example, the function **``demoMyClass()``** creates an object **``x``** of class **``MyClass``** using the ``new`` operator. You can use the `‘.’` notation to call the object’s methods or access its fields.
 
 ## Defining Classes
 
@@ -668,7 +668,7 @@ class MyClass {
 }
 ```
 
-The **``init``** method is the constructor for this class, and the keyword ``self`` is used to access the object. It also uses the standard access specifiers, ``private`` and ``public``, which translates to accessibility within the class definition and outside of it.<br><br>
+The **``init``** method is the constructor for this class, and the keyword ``self`` is used to access the object. It also uses the standard access specifiers, ``private`` and ``public``, which translates to accessibility within the class definition and outside of it.
 
 ## ``init`` Return Type
 
@@ -693,7 +693,7 @@ File f = check new File(“text.txt”);
  
 If *``init( )``* call returns normally, the newly constructed object is returned. Otherwise, the new operator returns the error value.
 
-Usually, the return type of **``init()``** is nil if not specified. It also means that init will never return an error.<br><br>
+Usually, the return type of **``init()``** is nil if not specified. It also means that init will never return an error.
 
 ## Identity
 
@@ -724,7 +724,7 @@ boolean b4 = ([1,2,3] === [1,2,3]);
 
 In the above code example, the first operation results in true as both the arrays have exactly the same content. However, the second operation is false because it is using the `‘===’` operator to check for memory location, and the two inline arrays point to different memory locations, even though their contents are the same.  
 
-In the case of floating point numbers, IEEE defines -0.0 and +0.0 as the same. Therefore applying `‘==’` to compare -0.0 and +0.0 would return a true, whereas *``-0.0 === +0.0``* would always be false as they are not identical.<br><br>
+In the case of floating point numbers, IEEE defines -0.0 and +0.0 as the same. Therefore applying `‘==’` to compare -0.0 and +0.0 would return a true, whereas *``-0.0 === +0.0``* would always be false as they are not identical.
 
 ## ``const`` and ``final``
 
@@ -740,7 +740,7 @@ Apart from ``const``, there is also support for ``final``. Variables defined wit
 final string msg = loadMessage();
 ```
 
-This is also applicable for class fields.<br><br>
+This is also applicable for class fields.
 
 ## Enumerations
 
@@ -832,7 +832,7 @@ MyClass x = new;
 
 Here the variable **``x``** is declared as ``var`` but the type is inferred as **``MyClass``**. The opposite syntax is also valid, wherein the **``x``** is defined as a type of **``MyClass``** and is initialized with ``new``.
 
-Type inference is applicable for variables in local scope. Therefore ``var`` should be used sparingly for variables used within a very limited scope, like in a ``foreach`` loop. Overusing it makes the code harder to understand.<br><br>
+Type inference is applicable for variables in local scope. Therefore ``var`` should be used sparingly for variables used within a very limited scope, like in a ``foreach`` loop. Overusing it makes the code harder to understand.
 
 ## Functional Programming
 
@@ -870,7 +870,7 @@ Instead of passing a function variable, you can also pass anonymous functions as
 int[] oddNums = nums.filter(n => n % 2 != 0);
 ```
 
-As shown for the array **``oddNums``**, type of parameter **``n``** is inferred from the array with which the **``filter( )``** function is used.<br><br>
+As shown for the array **``oddNums``**, type of parameter **``n``** is inferred from the array with which the **``filter( )``** function is used.
 
 ## Asynchronous Function Calls
 
@@ -904,7 +904,7 @@ int x1 = check f.f1;
 int x2 = check f.f2;
 ```
  
-In case you want to terminate the ``future``, you can do a *``f.cancel( )``*.<br><br>
+In case you want to terminate the ``future``, you can do a *``f.cancel( )``*.
 
 ## Documentation
 
@@ -921,7 +921,7 @@ public function add(int x, int y)
 }
 ```
 
-The above code example adds documentation for describing the parameters, and the return type of the function **``add()``**.  This is a Ballerina-flavoured Markdown (BFM) which makes it more convenient to generate pretty documentation using one of the platform tools.<br><br>
+The above code example adds documentation for describing the parameters, and the return type of the function **``add()``**.  This is a Ballerina-flavoured Markdown (BFM) which makes it more convenient to generate pretty documentation using one of the platform tools.
 
 ## Annotations
 

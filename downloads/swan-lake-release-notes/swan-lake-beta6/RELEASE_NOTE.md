@@ -92,13 +92,13 @@ Allowed listener-level interceptors to have only the default path.
 #### `graphql` Package
 Deprecated the `add` function in the `graphql:Context` object and introduced the `set` function.
 
-Existing method:
+**Old Method:**
 ```ballerina
 graphql:Context context = new;
 graphql:Error? result = context.add("key", "<value>"); // Can return an error
 ```
 
-New method:
+**New Method:**
 ```ballerina
 graphql:Context context = new;
 context.set("key", "<value>"); // Does not return anything

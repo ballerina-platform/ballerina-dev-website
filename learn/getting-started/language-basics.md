@@ -24,7 +24,7 @@ The most important thing that a module does is define named functions.
 
 Here's what a simple Ballerina module looks like:
 
-```
+```ballerina
 import ballerina/io; 
 
 public function main() {
@@ -36,7 +36,7 @@ The ``import`` keyword is used to bind predefined library modules to module pref
 
 Module hierarchies follow the `‘/’` and `‘.’` notation, for example, *``org/x.y.z``* to refer to modules, and sub-modules. The `‘:’` notation points to a function defined within the module.
 
-The main function is the program entry point, and the public keyword makes this function visible outside the module.  This function calls the println( ) function defined in the io module using the `‘:’` notation. Every statement in a Ballerina program code must be terminated with a semicolon.<br><br>
+The main function is the program entry point, and the public keyword makes this function visible outside the module.  This function calls the println( ) function defined in the io module using the `‘:’` notation. Every statement in a Ballerina program code must be terminated with a semicolon.
 
 ## Variables and Types
 
@@ -46,7 +46,7 @@ Variables have types. Ballerina defines a few built-in types, such as  integers,
 
 Here is a typical way of declaring variables:
 
-```
+```ballerina
 import ballerina/io;
 
 string greeting = "Hello";
@@ -67,7 +67,7 @@ Like all higher-level programming languages, Ballerina supports functions.
 
 A function definition in Ballerina has a familiar syntax that includes parameters and a return type.
 
-```
+```ballerina
 function add(int x, int y) returns int {
     int sum = x + y;
     return sum;
@@ -82,7 +82,7 @@ Inside the function, when a simple addition operation is performed, the result i
 
 The general syntax of a Ballerina program is as follows:
 
-```
+```ballerina
 //This is a comment
 int count = 0;
 
@@ -105,7 +105,7 @@ Keywords such as ``int``, ``function``, ``string`` are reserved keywords in Ball
 
 Ballerina defines an integer data type in a 64 bit signed representation. The keyword ``int`` is used for declaring an integer. The integer literals can be declared either in decimal or hexadecimal format.
 
-```
+```ballerina
 int m = 1;
 
 int n  = 0xFFFF;
@@ -119,7 +119,7 @@ However, there are a couple of notable deviations in Ballerina. Firstly, increme
 
 In Ballerina, floating point numbers have an IEEE 64-bit binary representation, the same as double in Java. They are declared with the ``float`` keyword, and they support all operations similar to the integers, except bitwise operators.
 
-```
+```ballerina
 float x = 1.0;
 
 float y = x + <float>n;
@@ -127,13 +127,13 @@ float y = x + <float>n;
 
 However, they cannot be implicitly converted to or from integers. You can use the `‘<T>’` notation for explicit conversion.
 
-In Ballerina, NaN, the IEEE defined terminology for Not a Number, equals to itself. Therefore the `‘==’` operator on two NANs will return true. For floating point types, the operator `‘==’` and `‘!=’` test for the same value and is not numerically equivalent as per IEEE defined convention.<br><br>
+In Ballerina, NaN, the IEEE defined terminology for Not a Number, equals to itself. Therefore the `‘==’` operator on two NANs will return true. For floating point types, the operator `‘==’` and `‘!=’` test for the same value and is not numerically equivalent as per IEEE defined convention.
 
  ## Booleans and Conditionals
 
 Boolean type has only two values, ``true`` and ``false``.
 
-```
+```ballerina
 boolean flag = true;
 ```
 
@@ -141,13 +141,13 @@ Ballerina supports the logical operators, `‘!’` , `‘||’` and `‘&&’` 
 
 Booleans are also used in conditional expressions like:
 
-```
+```ballerina
 int n = flag ? 1 : 2;
 ```
 
 The usual way of using booleans is in the ``if else`` conditional block like:
 
-```
+```ballerina
 function foo() {
     if flag {
         io:println(1);
@@ -163,7 +163,7 @@ Curly braces are required in ``if else`` and all compound statements in Ballerin
 
 Nil is another data type. It has a special significance in Ballerina as it denotes the equivalent of what is known as a null value in other C family languages. If you want to declare the value of any type as nil, here is how it is done.
 
-```
+```ballerina
 int? v = ();
 ```
 
@@ -171,19 +171,19 @@ The keyword ``int`` is followed by a `‘?’` notation. It means that **``v``**
 
 The comparison operators `‘==’` and `‘!=’` operate on a value to test whether the value is nil.
 
-```
+```ballerina
 int n = v == ( ) ? 0 : v;
 ```
 
 Similarly, you can also use it in an Elvis operator such as *``x ?: y``* that returns **``x``** if it is not nil or **``y``** otherwise.
 
-```
+```ballerina
 int n = v ?: 0;
 ```
 
 Nil is also considered as a returned value for functions. So a function can be written as:
 
-```
+```ballerina
 function foo() returns () {
     return ();
 }
@@ -195,7 +195,7 @@ Alternatively, any function that ends without a return statement implicitly retu
 
 Strings are an immutable sequence of zero or more unicode characters. To define a string type, you use the keyword ``string`` in Ballerina.
 
-```
+```ballerina
 string grin = “\u{1F600}”
 ```
 
@@ -203,7 +203,7 @@ String literals are enclosed in double quotes and support the usual C style esca
 
 The string type supports the usual operators. The `‘==’`  operator checks for the same characters. The comparison operators, `‘<’` , `‘<=’`, `‘=>’`, `‘>’` work by comparing code points. The `‘+’` operator is used for concatenation.
 
-```
+```ballerina
 string greeting = “Hello” + grin;
 ```
 
@@ -217,7 +217,7 @@ Ballerina defines a small library for providing fundamental operations on built-
 
 For example, you can perform some of the standard operations on string type, like getting the substring or finding the length.
 
-```
+```ballerina
 string s = “abc”.substring(1,2);
 
 int n = s.length( );
@@ -227,10 +227,9 @@ The substring and length are the Langlib functions that can be called using the 
 
 Ballerina imports the Langlib library for *``ballerina/lang.T``* where *``T``* represents every built-in type. So in the case of the above code example, the string length can also be found by calling the **``length( )``** function on *``ballerina/lang.string``* module.
 
-```
+```ballerina
 int n = string:length(s);
 ```
-<br><br>
 
 ## Arrays
 
@@ -238,13 +237,13 @@ Arrays are sequential data structures consisting of values of the same type.
 
 An array of ``int`` type is declared as:
 
-```
+```ballerina
 int[] v = [1,2,3];  
 ```
 
 You can index the individual elements of this array using the `‘[i]’` notation. So the second element of **``v``** can be accessed as *``v[1]``*.
 
-```
+```ballerina
 int n = v[1];
 ```
 
@@ -254,16 +253,15 @@ The comparison operators `‘==’` and `‘!=’` perform a deep comparison of 
 
 Langlib functions are available for Arrays to perform simple operations, such as finding the length of an array.
 
-```
+```ballerina
 int len = v.length()
 ```
-<br><br>
 
 ## ``foreach`` Statement
 
 A ``foreach`` statement iterates over an Array by binding a variable to each Array element at every loop iteration.
 
-```
+```ballerina
 function sum(float[ ] v) returns float {
     float r = 0.0;
     foreach float x in v {
@@ -277,7 +275,7 @@ In this code example, the floating point type **``x``** is bound to each element
 
 The foreach statement can also be constructed from a range expression, ``‘. . <’``.
 
-```
+```ballerina
 function sum(float[ ] v) returns float {
     float r = 0.0;
     foreach int i in 0 ..< v.length() {
@@ -293,7 +291,7 @@ Here the integer type **``i``** is set to a sequence of linearly incrementing nu
 
 The while loop in Ballerina behaves exactly like the in C.
 
-```
+```ballerina
 type LinkedList record {
     string value;
     LinkedList? next;
@@ -319,7 +317,7 @@ It also supports the usual ``break`` and ``continue`` statements.<br><br>
 
 Binary data is represented by an array of bytes.
 
-```
+```ballerina
 byte[] data = base64 `yPHaytRgJPg+QjjylUHakEwz1fWPx/wXCW41JSmqYW8=`; 
 ```
 
@@ -327,7 +325,7 @@ An Array of binary data can be represented in source code using base 64 or base 
 
 The Byte represents a number between 0 and 0xFF. You can define it with the ``byte`` keyword.
 
-```
+```ballerina
 byte b = 0xFF;
 ```
 
@@ -337,7 +335,7 @@ In Ballerina, Byte is not the same as a character in C. It is a subtype of the i
 
 A map is an associative structure of multiple string values as keys and their values.  If you want to create a map with integer type, then you would define it as:
 
-```
+```ballerina
 map<int> m = {
   “x”  :  1,
   “Y”  :  2
@@ -346,7 +344,7 @@ map<int> m = {
  
 The syntax of a map is very similar to JSON. Maps are mutable, and *``m[“x”]``* will return the integer value stored in *``“x”``*, or nil if missing.
 
-```
+```ballerina
 m[“x”] = 5;
 
 int? v = m[“x”];
@@ -362,7 +360,7 @@ Ballerina allows you to define a name for a type. You can create user-defined ty
 
 For example, it you have a array of map of string type, *``map<string>[ ]``*, you can define a type for it as follows:
 
-```
+```ballerina
 type MapArray map<string>[];
 
 MapArray arr = {
@@ -377,7 +375,7 @@ This is similar to the typedef concept in C, where the identifier **``MapArray``
 
 A Record is a collection of fields of a specific type. With record types you have control over what your keys are.  
 
-```
+```ballerina
 record { int x; int y; } r = {
     x: 1,
     y: 2
@@ -388,7 +386,7 @@ The above code defines a record **``r``** with two integer fields **``x``** and 
 
 You can also define it using the type definition as follows:
 
-```
+```ballerina
 type Coord record {
     int x;
     int y;
@@ -397,7 +395,7 @@ type Coord record {
 
 Subsequently, you can declare the **``Coord``** record and set or access its field values.
 
-```
+```ballerina
 Coord c = { x: 1 , y: 2};
 
 int a = c.x;
@@ -413,7 +411,7 @@ For example, the integer type has a finite set consisting of values within the r
 
 There is also a concept of semantic subtyping, which means a subset of the values of the basic types. For example, the byte type is a subset of integer as it allows only a subset of values that are a part of the integer value set.
 
-Additionally, Ballerina allows you to define your own types, such as arrays, maps and records, which are mutable.<br><br>
+Additionally, Ballerina allows you to define your own types, such as arrays, maps and records, which are mutable.
 
 ## Unions
 
@@ -423,7 +421,7 @@ You have already seen this with the `‘T?’` notation where a variable can be 
 
 Similarly, you can define a type that holds an integer as well as a string.
 
-```
+```ballerina
 type flexType string|int;
 
 flexType a = 1;
@@ -435,7 +433,7 @@ Using the `‘|’` symbol in the type definition, you can create a Union of mul
 
 You can also apply the concept of union to structured data types like records. So it is possible to have a union of a record containing string type fields and a basic string type.
 
-```
+```ballerina
 type StructuredName record {
     string firstName;
     string lastName;
@@ -446,7 +444,7 @@ type Name StructuredName|string;
  
 At runtime, you can define the business logic by checking the currently held value of the union using the `is` operator.
 
-```
+```ballerina
 function nameToString(Name nm) returns string {
    
     if nm is string {
@@ -465,7 +463,7 @@ Ballerina does not support the notion of exception. Instead, errors are handled 
 
 Errors are reported by functions returning error values.
 
-```
+```ballerina
 function parse(string s) returns int|error {
     
     int n = 0;
@@ -492,7 +490,7 @@ An error value includes a string message and the stack trace from the point wher
 
 When an error is reported from a function, it is passed up to its caller. Ultimately it is handled at the main function, which can return it. Alternatively, you can use the ``is`` operator to check for the error type as part of the regular control flow to make a decision.
 
-```
+```ballerina
 function intFromBytes(byte[] bytes) returns int|error {
     
     string|error ret = string:fromBytes(bytes);
@@ -505,7 +503,7 @@ function intFromBytes(byte[] bytes) returns int|error {
 }
 ```
 
-So in the above code example, the function defines a local variable **``ret``** to hold the returned value of function **``fromBytes( )``**. **``ret``** is a union of string or error type. Therefore to ascertain the actual type, ``is`` operator is used.<br><br>
+So, in the above code example, the function defines a local variable **``ret``** to hold the returned value of function **``fromBytes( )``**. **``ret``** is a union of string or error type. Therefore to ascertain the actual type, ``is`` operator is used.<br><br>
 
 ## ``check`` Expression
 
@@ -513,7 +511,7 @@ Instead of using the ``is`` operator within the regular conditional flow for che
 
 So the **``intFromBytes()``** function defined in the previous section can now be written as: 
 
-```
+```ballerina
 function intFromBytes(byte[] bytes) returns int|error {
 
     string str = check string:fromBytes(bytes);
@@ -528,27 +526,26 @@ In this case, the expression following the ``check`` keyword is evaluated and th
 
 Ballerina also allows fine-grained error detection based on error subtypes. Error subtypes can be defined using the distinct keyword.
 
-```
+```ballerina
 type XErr distinct error;
 type YErr distinct error;
 
 type Err XErr|YErr;
 ```
 
-Now you can use the defined subtype in an error constructor to create error values of that type.
+Now, you can use the defined subtype in an error constructor to create error values of that type.
 
-```
+```ballerina
 Err err = error XErr("Whoops!");
 ```
 
 You can use the ``is`` operator to distinguish between the distinct subtypes.
 
-```
+```ballerina
 function desc(Err err) returns string {
     return err is XErr ? "X" : "Y";
 }
 ```
-<br><br>
 
 ## Panics
 
@@ -556,7 +553,7 @@ In Ballerina, there is a distinction between normal and abnormal errors. Normal 
 
 Normal errors are handled by returning values of the error type. Abnormal errors are handled using the panic statement.
 
-```
+```ballerina
 function divide(int m, int n) returns int {
     if n == 0 {
         panic error("division by 0");
@@ -565,13 +562,13 @@ function divide(int m, int n) returns int {
 }
 ```
  
-A panic statement results in immediate program termination and has an associated error value.<br><br>
+A panic statement results in immediate program termination and has an associated error value.
 
 ## ``any`` Type
 
 Ballerina also allows an ``any`` type, which means any value except an error. A variable of type any can be cast to a specific type using the ``‘< >’`` symbol enclosure.
 
-```
+```ballerina
 any x = 1;
 
 int n = <int>x;
@@ -579,38 +576,36 @@ int n = <int>x;
 
 It can be converted to string.
 
-```
+```ballerina
 string s = x.toString( );
 ```
 
 You can also use the ``is`` operator to test its type.
 
-```
+```ballerina
 float f = x is int|float ? <float>x : 0.0;
 ```
-<br><br>
 
 ## Ignoring Return Values and Errors
 
 Ballerina does not allow silently ignoring return values of functions unless they return nil.
 
-```
+```ballerina
 // Allowed only if return value is ()
 doX( );
 ```
 
 To ignore the return value, you can assign it to `‘_’`, which acts as an implicitly declared variable of any type that cannot be referenced.
 
-```
+```ballerina
 _ = getX( );
 ```
 
 When a function returns an error type, it has to be handled. ``checkpanic`` keyword can be used otherwise but it panics on error rather than returning.
 
-```
+```ballerina
 checkpanic tryX( );
 ```
-<br><br>
 
 ## Covariance
 
@@ -618,7 +613,7 @@ Ballerina's typing system follows a structured type system based on the set of v
 
 Therefore, you can have an array of integer type that is assigned to an array of any type.
 
-```
+```ballerina
 int [ ] iv = [ 1, 2, 3];
 
 any [ ] av = iv;
@@ -628,7 +623,7 @@ This is perfectly valid in Ballerina because the set of values allowed by an arr
 
 Ballerina’s static type checking ensures that the result of a read operation on the array  **``av``** will be consistent with static type. However, writing will result in an error because the Array iv has an inherent type set to integer. As a result, this code will lead to a runtime error since it is trying to mutate the Array to a type other than the inherent type.
 
-```
+```ballerina
 av[0] = “str”; //Error
 ```
 
@@ -640,7 +635,7 @@ Ballerina provides another basic type which is an Object that bundles together c
 
 Objects are initialized based on a class defined within some module.
 
-```
+```ballerina
 function demoMyClass( ) {
     m:MyClass x = new m:MyClass(1234);
     x.foo( );
@@ -654,7 +649,7 @@ In the above code example, the function **``demoMyClass()``** creates an object 
 
 Ballerina supports the concept of class which is a structured type containing data and behavior.
 
-```
+```ballerina
 class MyClass {
     
     private int n;
@@ -679,7 +674,7 @@ The **``init``** method is the constructor for this class, and the keyword ``sel
 
 The **``init()``** method of a class can have a return type which must be a subtype of the union of error and nil.
 
-```
+```ballerina
 class File {
 
     string path;
@@ -704,7 +699,7 @@ Usually, the return type of **``init()``** is nil if not specified. It also mean
 
 In Ballerina, the identity of an object is determined by the memory location where the object resides in runtime. To check the identity, you can use the `‘===’` and `‘!===’` notation.
 
-```
+```ballerina
 MyClass obj1 = new MyClass();
 MyClass obj2 = new MyClass();
 
@@ -719,7 +714,7 @@ In the above code example, both **``obj1``** and **``obj2``** are objects of **`
  
 The `‘==’` operator is used to check for contents of a structure type like Arrays.
 
-```
+```ballerina
 //true
 boolean b3 = ([1,2,3] == [1,2,3]);
 
@@ -735,13 +730,13 @@ In the case of floating point numbers, IEEE defines -0.0 and +0.0 as the same. T
 
 Ballerina supports ``const``, which is an immutable singleton type having a value known at compile time.
 
-```
+```ballerina
 const MAX_VALUE = 1000;
 ```
 
 Apart from ``const``, there is also support for ``final``. Variables defined with the ``final`` keyword cannot be reassigned after being initialized.
 
-```
+```ballerina
 final string msg = loadMessage();
 ```
 
@@ -751,7 +746,7 @@ This is also applicable for class fields.<br><br>
 
 Ballerina supports the notion of Enumerations which is a shorthand way for expressing union of string constants.
 
-```
+```ballerina
 enum Color {
     RED, GREEN, BLUE
 }
@@ -759,7 +754,7 @@ enum Color {
 
 Using the ``enum`` keyword, you can define this enumeration of three strings “RED”, “GREEN” and “BLUE”, which would be otherwise defined separately as a constant:
 
-```
+```ballerina
 const RED = “RED”;
 const GREEN = “GREEN”;
 const BLUE = “BLUE”;
@@ -769,20 +764,19 @@ type Color = RED|GREEN|BLUE;
  
 You can also have an enumeration where members define associated string values explicitly.
 
-```
+```ballerina
 enum Language {
     ENG = "English",
     TL = "Tamil",
     SI = "Sinhala"
 }
 ```
-<br><br>
 
 ## ``match`` Statement
 
 The ``match`` statement is like the switch case statement in C, but it is more flexible. You can use it to match values of different types.
 
-```
+```ballerina
 const KEY = “xyzzy”;
 
 function mtest(any v) returns string {
@@ -800,7 +794,7 @@ function mtest(any v) returns string {
 
 The match statement defines multiple clause statement blocks with the `‘=>’` operator. The left hand side of the `‘=>’` operator in each clause is the pattern for value match. It can contain literals or identifiers referring to a constant.Additionally, it can also contain multiple patterns specified using `‘|’`, and `‘_’` to match any value that is not an error.  
 
-In the above example, the match uses the value held by **``v``**, and matches it against six match clauses having distinct patterns. During execution, the patterns will be evaluated in order, using equals equals (==) to test the pattern match, and the matched clause’s statement block will be executed.<br><br>
+In the above example, the match uses the value held by **``v``**, and matches it against six match clauses having distinct patterns. During execution, the patterns will be evaluated in order, using equals equals (==) to test the pattern match, and the matched clause’s statement block will be executed.
 
 ## Type Inference
 
@@ -808,7 +802,7 @@ Type inference allows the program to infer the actual data type of variables.
 
 This feature is a convenient way to use a generic type for a local variable and helps avoid repeated type declarations.
 
-```
+```ballerina
 var x = "str";
 ```
 
@@ -816,7 +810,7 @@ In this code example, the keyword ``var`` is used to declare the variable **``x`
 
 This is especially useful in a ``foreach`` loop to declare the local variable for iterating over a collection, like arrays.
 
-```
+```ballerina
 function printLines(string[] sv) {
     
     foreach var s in sv {
@@ -830,7 +824,7 @@ In this code example, the type of variable **``s``** is inferred to be of type s
 
 Type inference also works with classes.
 
-```
+```ballerina
 var x = new MyClass();
 
 MyClass x = new;
@@ -844,7 +838,7 @@ Type inference is applicable for variables in local scope. Therefore ``var`` sho
 
 Ballerina defines functions also as values and they work as closures. Therefore function is also a type, which can be defined as a basic type as follows:
 
-```
+```ballerina
 var isOdd = function(int n) returns boolean {
     return n % 2 != 0;
 };
@@ -862,7 +856,7 @@ In the above example, the variable **``isOdd``** defines an anonymous function. 
 
 These function values can be passed around as arguments. For example, the Langlib library for arrays defines a function **``filter(f)``** which accepts a function type **``f``** for performing specific filtering operations on arrays.
 
-```
+```ballerina
 int[  ] nums = [1, 2, 3];
 
 int[  ] evenNums = nums.filter(f);
@@ -872,10 +866,9 @@ int[  ] evenNums = nums.filter(f);
 
 Instead of passing a function variable, you can also pass anonymous functions as an argument.
 
-```
+```ballerina
 int[] oddNums = nums.filter(n => n % 2 != 0);
 ```
-
 
 As shown for the array **``oddNums``**, type of parameter **``n``** is inferred from the array with which the **``filter( )``** function is used.<br><br>
 
@@ -883,7 +876,7 @@ As shown for the array **``oddNums``**, type of parameter **``n``** is inferred 
 
 Ballerina also supports asynchronous function calls. You can call a function asynchronously as follows:
 
-```
+```ballerina
 future<int> f1 = start foo( );
 
 future<int> f2 = start foo( );
@@ -895,9 +888,8 @@ The result of this invocation is returned as a future. It is a separate basic ty
 
 You can then wait for the function call with the ``wait`` keyword.
 
-```
+```ballerina
 int x1 = check wait f1;
-
 int x2 = check wait f2; 
 ```
 
@@ -905,7 +897,7 @@ Waiting on a *``future<T>``* returns *``T|error``*. Waiting on the same future m
 
 Instead of separately waiting for the function, you can use a better way.
 
-```
+```ballerina
 var f = wait { f1 , f2 };
 
 int x1 = check f.f1;
@@ -918,7 +910,7 @@ In case you want to terminate the ``future``, you can do a *``f.cancel( )``*.<br
 
 Ballerina supports a structured way for documenting the code. Use the `‘#’` as a starting character in the line, defines a structured documentation in Markdown format.
 
-```
+```ballerina
 # Adds two integers.
 # + x - an integer
 # + y - another integer
@@ -935,7 +927,7 @@ The above code example adds documentation for describing the parameters, and the
 
 Annotations are defined using the `‘@’` notation followed by a tag. This is a way of defining metadata to the code.
 
-```
+```ballerina
 @display {
     iconPath: "transform.png"
 }
@@ -948,4 +940,5 @@ future<int> fut = @strand { thread: "any" } start foo();
 
 In the above code example, the annotation *``@display``* is attached to the function **``transform()``** and *``@strand``* applies to the keyword ``start``, calling the function **``foo()``** asynchronously. As you can see, this annotation uses a mapping constructor expression, which is one of the ways to define them.
 
-The annotations shown above are using unprefixed tags that refer to standard platform-defined annotations. You can also have prefixed tags for user-defined annotations declared in modules.<br><br>
+The annotations shown above are using unprefixed tags that refer to standard platform-defined annotations. You can also have prefixed tags for user-defined annotations declared in modules.
+ 

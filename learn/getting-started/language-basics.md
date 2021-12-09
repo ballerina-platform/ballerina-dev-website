@@ -12,9 +12,9 @@ redirect_from:
 
 ## Familiar Subset of Ballerina
 
-Ballerina is a modern programming language focused on building applications for the cloud era. It has a familiar syntax resembling the C family of languages, such as C/C++, C#, Java and JavaScript. It brings in many powerful concepts from existing programming languages and some unconventional abstraction mechanisms to make application development for the cloud more intuitive and less strenuous.
+Ballerina is a modern programming language focused on building applications for the cloud era. It has a familiar syntax resembling the C-family of languages such as C/C++, C#, Java, and JavaScript. It brings in many powerful concepts from existing programming languages and some unconventional abstraction mechanisms to make application development for the cloud more intuitive and less strenuous.
 
-Part 1 of this language guide presents the subset of Ballerina language common to most modern programming languages. It covers the baseline features such as data types, control flow and error handling, which should be very familiar to most programmers. These features are the foundation for some of the more distinctive features of Ballerina that will be covered in the subsequent parts.<br><br>
+This guide presents the subset of the Ballerina language that is common to most modern programming languages. It covers the baseline features such as data types, control flow, and error handling, which should be very familiar to most programmers. These features are the foundation for some of the more [distinctive features of Ballerina](/learn/distinctive-language-features/network-interaction/). 
 
 ## Programs and Modules
 

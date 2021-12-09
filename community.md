@@ -432,9 +432,9 @@ body {font-family: Arial;}
          <p class="cEventLocation">Online</p>
       </td>
       <td class="cEventDetail">
-         <a target="_blank" href="https://www.meetup.com/CloudDC/">
+         <!-- <a target="_blank" href="https://www.meetup.com/CloudDC/"> -->
             <h4>Cloud DC Meetup</h4>
-         </a>
+         <!-- </a> -->
          <h5>Cloud Native Development with Ballerina</h5>
          <b>Jadd Jennings,</b> Hub Solutions Engineer, Oracle Cloud Solution Hub<br/>
          <b>Dhvani Sheth,</b> Senior Solutions Engineer, Oracle

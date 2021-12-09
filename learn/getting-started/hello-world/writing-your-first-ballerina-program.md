@@ -126,8 +126,4 @@ bal run hello_client.bal
 Hello Ballerina!
 ```
 
-## What's Next?
-
-Now, that you have written your first Ballerina program, you can explore more about writing [Ballerina Packages](/learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/).
-
 <style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

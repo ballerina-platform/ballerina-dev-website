@@ -1,4 +1,4 @@
-name: Create PR for new Ballerina by examples pages
+name: Create PR for new Ballerina By Example pages
 
 on:
   push:
@@ -75,7 +75,7 @@ jobs:
         git config --global user.name "ballerina-bot"
         
         git add 1.2/learn/by-example
-        git commit --allow-empty -m 'Update Ballerina by examples'
+        git commit --allow-empty -m 'Update Ballerina By Example'
         
         git push --set-upstream origin automate-bbes-$GITHUB_SHA
         echo 'Successfully pushed to automate-bbes-$GITHUB_SHA branch'
@@ -84,6 +84,6 @@ jobs:
       shell: bash
       run: |
         curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-        bin/hub pull-request -m '[Automated] Update Ballerina by examples(BBEs) pages for the new release'
+        bin/hub pull-request -m '[Automated] Update Ballerina By Example(BBEs) pages for the new release'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

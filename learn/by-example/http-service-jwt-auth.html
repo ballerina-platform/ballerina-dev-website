@@ -25,7 +25,7 @@ redirect_from:
 
 <span class="c1">// The service can be secured with JWT authentication and can be authorized</span>
 <span class="c1">// optionally. JWT authentication can be enabled by setting the</span>
-<span class="c1">// `http:JwtValidatorConfig` configurations.</span>
+<span class="c1">// [`http:JwtValidatorConfig`](https://docs.central.ballerina.io/ballerina/http/latest/records/JwtValidatorConfig) configurations.</span>
 <span class="c1">// Authorization is based on scopes. A scope maps to one or more groups.</span>
 <span class="c1">// Authorization can be enabled by setting the `string|string[]` type</span>
 <span class="c1">// configurations for `scopes` field.</span>
@@ -88,9 +88,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="http-service-oauth2.html?is_ref_by_example=true">
+                                    <a class="next" href="http-client-ssl-tls.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
-                                        <p>Service - OAuth2</p>
+                                        <p>Client - SSL/TLS</p>
                                     </a>
                                 </div>
                                 
@@ -183,7 +183,7 @@ service /foo on securedEP {
                                         <div>
                                             <p>The service can be secured with JWT authentication and can be authorized
  optionally. JWT authentication can be enabled by setting the
- <code>http:JwtValidatorConfig</code> configurations.
+ <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/JwtValidatorConfig"><code>http:JwtValidatorConfig</code></a> configurations.
  Authorization is based on scopes. A scope maps to one or more groups.
  Authorization can be enabled by setting the <code>string|string[]</code> type
  configurations for <code>scopes</code> field.</p>
@@ -230,7 +230,6 @@ service /foo on securedEP {
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># You may need to change the certificate file path and private key file path.
 bal run http_service_jwt_auth.bal
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
 </code></pre></div>
 
                                 </div>

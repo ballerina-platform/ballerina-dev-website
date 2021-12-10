@@ -277,7 +277,7 @@ Follow the steps below to execute the Kubernetes service.
 
 This sample focuses on setting up resource limits and auto-scaling for the generated container. When you specify a resource limit for a container, the kubelet enforces those limits so that the running container is not allowed to use more of that resource than the limit you set. 
 
-Auto-scaling policies allow the container to scale seamlessly without overloading a single container. Code to cloud generates artifacts required for the orchestrator to limit the resources taken from one container. It also generates auto-scaling artifacts to smoothly scale when containers are overloaded. Code to cloud sets the default values for these configurations. You can find those values under the [Cloud.toml properties](/learn/deployment/code-to-cloud#properties-of-the-kubernetestoml-file). These values will be overridden in this example. 
+Auto-scaling policies allow the container to scale seamlessly without overloading a single container. Code to cloud generates artifacts required for the orchestrator to limit the resources taken from one container. It also generates auto-scaling artifacts to smoothly scale when containers are overloaded. Code to cloud sets the default values for these configurations. You can find those values under the [`Cloud.toml` properties](/learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#properties-of-the-cloudtoml-file). These values will be overridden in this example. 
 
 ### Creating the Ballerina Package
 

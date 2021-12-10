@@ -14,6 +14,8 @@ redirect_from:
   - /learn/organizing-ballerina-code
   - /learn/user-guide/structuring-ballerina-code/
   - /learn/user-guide/structuring-ballerina-code
+  - /learn/user-guide/ballerina-packages/
+  - /learn/user-guide/ballerina-packages
 ---
 
 ```bash
@@ -117,7 +119,7 @@ cloud = "k8s"
 
 ## `Dependencies.toml`
 
-The [`Dependencies.toml`](/learn/user-guide/ballerina-packages/dependencies/#dependenciestoml) locks the versions of the dependencies so that you can have a repeatable build.
+The [`Dependencies.toml`](/learn/managing-dependencies/#managing-dependencies) locks the versions of the dependencies so that you can have a repeatable build.
 
 ## `Package.md`
 

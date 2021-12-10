@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: TCP Client
+title: Client
 description: This Ballerina sample demonstrates how the TCP client interacts with the TCP listener service.
 keywords: ballerina, ballerina by example, bbe, socket, tcp
 permalink: /learn/by-example/tcp-client
@@ -34,7 +34,7 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received: &quot;</span><span class="p">,</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">receivedData</span><span class="p">));</span>
 
     <span class="c1">// Close the connection between the server and the client.</span>
-    <span class="nx">check</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -44,7 +44,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>TCP Client</h2>
+                            <h2>Client</h2>
                             <p><p>The TCP Client is used to connect to a remote TCP server.
  This sample demonstrates how the TCP client interacts with the TCP server.<br/><br/>
  For more information on the underlying module,
@@ -56,16 +56,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="rabbitmq-transaction-consumer.html?is_ref_by_example=true">
+                                    <a class="prev" href="rabbitmq-secure-connection.html?is_ref_by_example=true">
                                         <span>< PREVIOUS</span>
-                                        <p>SASL Authentication - Consumer</p>
+                                        <p>Secured Connection</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="tcp-listener.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
-                                        <p>TCP Listener</p>
+                                        <p>Listener</p>
                                     </a>
                                 </div>
                                 
@@ -191,7 +191,7 @@ import ballerina/tcp;
                             <div class="cTR hover-enable">
 
                                 <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check socketClient-&gt;close();
+                                    <div class="highlight"><pre><code class=language-ballerina>    return socketClient-&gt;close();
 }
 </code></pre></div>
 

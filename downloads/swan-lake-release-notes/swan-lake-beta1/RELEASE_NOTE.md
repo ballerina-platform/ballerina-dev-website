@@ -48,8 +48,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Worker message passing after waiting for the same worker has been disallowed.
 - When a named worker is used in a `wait` action, it can no longer be used in a variable reference anywhere else. 
 - When the type-descriptor is ambiguous, it is parsed according to the following table in which the precedence is specified in decreasing order.
-
-  For example, `A & B | C` is considered to be `(A & B) | C`.
+For example, `A & B | C` is considered to be `(A & B) | C`.
 
   | Operator                  | Associativity |
   |---------------------------|---------------|
@@ -220,3 +219,5 @@ To view bug fixes, see the GitHub milestone for Swan Lake Beta1 of the repositor
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta1%22+label%3ATeam%2FLanguageServer)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/milestone/5?closed=1) 
 - [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FTestFramework+milestone%3A%22Ballerina+Swan+Lake+-+Beta1%22+is%3Aclosed+label%3AType%2FBug)
+
+

@@ -49,9 +49,22 @@ bal openapi -i <openapi-contract-path>
  another directory location using the optional flag  `(-o|--output)`.
 * The OpenAPI to Ballerina Command generates both client and service stub by default. If you need to restrict the
  code generation to client or service stub only, use `--mode` option (see below).
+<<<<<<< HEAD
+=======
 
 ##### Modes
 
+###### Client Mode
+If you want to generate the Ballerina client only, you can set the mode as  `client` when running the OpenAPI tool. 
+The generated client can be used in your applications to call the service defined in the OpenAPI file. This mode will
+ generate tests for the generated remote functions as well.
+>>>>>>> 89276c24bd9a167a68619c802d1d9d54e8fa0d65
+
+```bash
+bal openapi -i <openapi-contract-path> --mode client [(-o|--output) output file path]
+```
+
+<<<<<<< HEAD
 ###### 1. Client Mode
 If you want to generate the Ballerina client only, you can set the mode as  `client` when running the OpenAPI tool. 
 The generated client can be used in your applications to call the service defined in the OpenAPI file. This mode will
@@ -61,6 +74,9 @@ The generated client can be used in your applications to call the service define
 bal openapi -i <openapi-contract-path> --mode client [(-o|--output) output file path]
 ```
 ###### 2. Service Mode
+=======
+###### Service Mode
+>>>>>>> 89276c24bd9a167a68619c802d1d9d54e8fa0d65
 If you want to generate the Ballerina service only, you can set the mode as `service` when running the OpenAPI tool.
 
 ```bash

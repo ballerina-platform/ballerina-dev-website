@@ -29,13 +29,16 @@ redirect_from:
 ---
 
 ## Ballerina Bindings to Java Code
-Your task is to write Ballerina code (Ballerina bindings) that lets you call the corresponding Java API as illustrated in the below diagram. 
+You can write Ballerina code (Ballerina bindings) that let you call the corresponding Java API as illustrated in the below diagram. 
 
 <img src="/learn/images/interoperability-diagram-new.png" alt="Ballerina bindings to Java code" width="300" height="450">
 
-This guide teaches you how to write those bindings manually as well as how to generate those bindings automatically but first, let's look at why you want to call Java from Ballerina. 
+The sections below explain how to write those bindings manually as well as how to generate those bindings automatically. 
 
 ## The Need to Call Java from Ballerina 
+
+First, let's look at why you want to call Java from Ballerina. 
+
 - Ballerina is a relatively new language. Therefore, you may experience a shortage of libraries in [Ballerina Central](https://central.ballerina.io/). In such situations, as a workaround, you can use an existing Java library.
 - You are already familiar with a stable Java API that you would like to use in your Ballerina package.
 - You want to take advantage of the strengths of Ballerina but you don’t want to reinvest in the libraries that you or your company have written already. 
@@ -43,7 +46,7 @@ This guide teaches you how to write those bindings manually as well as how to ge
 There may be other reasons but these are great motivations to use Ballerina bindings. 
 
 ## Writing Ballerina Bindings
-Writing Ballerina bindings manually is a tedious task. You’ll soon see why. Therefore, we’ve developed a tool called `bindgen` that can generate Ballerina bindings for given Java APIs. The [first section](#using-the-snakeyaml-java-library-in-ballerina) of this guide shows you how to use it. The [second section](#the-bindgen-tool) is a reference guide to the tool.
+Writing Ballerina bindings manually is a tedious task. Therefore,`bindgen` tool eases it by generating Ballerina bindings for given Java APIs. The [first section](#using-the-snakeyaml-java-library-in-ballerina) of this guide shows you how to use it. The [second section](#the-bindgen-tool) is a reference guide to the tool.
 
 The [third section](#packaging-java-libraries-with-ballerina-programs) explains how to package Java libraries (JAR files) with Ballerina programs. This section is useful because whenever you generate bindings for a Java library, you need to package this Java library and its transitive dependencies to produce a self-contained executable program. 
 
@@ -57,9 +60,9 @@ We'll develop a Ballerina program that parses the given YAML file and writes the
 Let's get started.
 
 ### Step 1 - Writing the Java Code
-We recommend you to always start by writing the Java code. It gives you an idea of the set of Java classes required to implement your logic. Then, we can use the `bindgen` tool to generate Ballerina bindings for those classes. 
+It is recommended to always start by writing the Java code. It gives you an idea of the set of Java classes required to implement your logic. Then, we can use the `bindgen` tool to generate Ballerina bindings for those classes. 
 
-The following Java code uses the SnakeYAML API to parse the given YAML file. Note that this is not the most idiomatic way of writing the Java code for this scenario. 
+The Java code below uses the SnakeYAML API to parse the given YAML file. Note that this is not the most idiomatic way of writing the Java code for this scenario. 
 
 ```java
 import org.yaml.snakeyaml.Yaml;
@@ -223,7 +226,7 @@ public class SnakeYamlSample {
 }
 ```
 
-#### Creating the 'FileInputStream'
+#### Creating the `FileInputStream`
 Our goal here is to create a new `java.io.FileInputStream` instance from the filename. In step 3, we generated bindings for the required Java classes. The following is the code snippet that does the job. 
 
 ```ballerina
@@ -306,7 +309,7 @@ In this section, we explained how to use the `bindgen` tool to generate Ballerin
 
 The next sections provide more details on various aspects related to Java interoperability in Ballerina. 
 
-## The 'bindgen' Tool
+## The `bindgen` Tool
 
 The following subsections explain how the `bindgen` tool works.
 
@@ -329,7 +332,7 @@ The following subsections explain how the `bindgen` tool works.
 
 The `bindgen` is a CLI tool, which generates Ballerina bindings for Java classes.
 
-### The 'bindgen' Command
+### The `bindgen` Command
 
 ```sh
 ballerina bindgen [(-cp|--classpath) <classpath>...]
@@ -553,7 +556,7 @@ function read() returns int|IOException {
 
 ## Packaging Java Libraries with Ballerina Programs
 
->**Note:** This section assumes that you have already read [Structuring Ballerina Code](/learn/user-guide/ballerina-packages/).
+>**Note:** This section assumes that you have already read [Structuring Ballerina Code](/learn/organizing-ballerina-code/package-layout/).
  
 When you compile a Ballerina program with `bal build`, the compiler creates an executable JAR file and when you compile a Ballerina module with `bal build -c`, the compiler creates a BALA file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.
 
@@ -796,7 +799,7 @@ function newArrayDequeWithCollection(handle c) returns handle = @java:Constructo
 } external;
 ```
 
-##### The 'paramTypes' Field
+##### The `paramTypes` Field
 You can use the `paramTypes` field to resolve the exact overloaded method. This field is defined as follows.
 
 ```ballerina

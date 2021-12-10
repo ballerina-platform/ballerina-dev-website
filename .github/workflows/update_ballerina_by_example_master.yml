@@ -50,7 +50,6 @@ jobs:
     - name: Push changes for new BBEs
       run: |
         git checkout automate-bbes-$GITHUB_SHA 2>/dev/null || git checkout -b automate-bbes-$GITHUB_SHA
-        git checkout -b dev origin/dev
         
         git config --global user.email "ballerina-bot@ballerina.org"
         git config --global user.name "ballerina-bot"
@@ -65,7 +64,7 @@ jobs:
     - name: Create pull request for new BBEs
       shell: bash
       run: |
-        curl -fsSL https://github.com/github/hub/raw/dev/script/get | bash -s 2.14.1
-        bin/hub pull-request -m '[Automated] Update Ballerina by examples(BBEs) pages'
+        curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+        bin/hub pull-request -b dev -m '[Automated] Update Ballerina By Example(BBEs) pages'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

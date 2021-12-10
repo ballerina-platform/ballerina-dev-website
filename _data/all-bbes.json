@@ -15,7 +15,7 @@
                 "name": "Hello World Service",
                 "url": "hello-world-service",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": true
             }
@@ -41,29 +41,22 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Functions",
-                "url": "functions",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
                 "name": "Identifiers",
                 "url": "identifiers",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
-            },
+            }
+        ]
+    },
+    {
+        "title": "Simple Basic Types",
+        "column": 0,
+        "category": "Language Concepts",
+        "samples": [
             {
                 "name": "Integers",
                 "url": "integers",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Booleans and Conditionals",
-                "url": "booleans",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -76,33 +69,82 @@
                 "isLearnByExample": true
             },
             {
+                "name": "Decimal Type",
+                "url": "decimal-type",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
                 "name": "Nil",
                 "url": "nil",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
-            },
+            }
+        ]
+    },
+    {
+        "title": "Strings",
+        "column": 0,
+        "category": "Language Concepts",
+        "samples": [
             {
                 "name": "Strings",
                 "url": "strings",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": true
-            },
+            }
+        ]
+    },
+    {
+        "title": "Conditional Statements",
+        "column": 0,
+        "category": "Language Concepts",
+        "samples": [
             {
-                "name": "Langlib Functions",
-                "url": "langlib-functions",
+                "name": "Booleans and Conditionals",
+                "url": "booleans",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Arrays",
-                "url": "arrays",
+                "name": "Match Statement",
+                "url": "match-statement",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Functions",
+        "column": 0,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Functions",
+                "url": "functions",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
+            {
+                "name": "Function Values",
+                "url": "function-values",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Iteration",
+        "column": 0,
+        "category": "Language Concepts",
+        "samples": [
             {
                 "name": "Foreach Statement",
                 "url": "foreach-statement",
@@ -117,31 +159,38 @@
                 "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Lang Library",
+        "column": 0,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Langlib Functions",
+                "url": "langlib-functions",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Types and Typing",
+        "column": 0,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Arrays",
+                "url": "arrays",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
             {
                 "name": "Binary Data",
                 "url": "binary-data",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Maps",
-                "url": "maps",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Type Definitions",
-                "url": "type-definitions",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Records",
-                "url": "records",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -162,12 +211,131 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Error Reporting",
+                "name": "Errors",
                 "url": "error-reporting",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
+            {
+                "name": "Anydata Type",
+                "url": "anydata-type",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Any Type",
+                "url": "any-type",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Type Definitions",
+                "url": "type-definitions",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Covariance",
+                "url": "covariance",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Type Inference ",
+                "url": "type-inference",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Mappings",
+        "column": 1,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Maps",
+                "url": "maps",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Records",
+                "url": "records",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Records",
+        "column": 1,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Optional Fields",
+                "url": "optional-fields",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Open Records",
+                "url": "open-records",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Controlling Openness",
+                "url": "controlling-openness",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Objects",
+        "column": 1,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Object",
+                "url": "object",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Defining Classes",
+                "url": "defining-classes",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Init Return Type",
+                "url": "init-return-type",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Error Handling",
+        "column": 1,
+        "category": "Language Concepts",
+        "samples": [
             {
                 "name": "Error Handling",
                 "url": "error-handling",
@@ -195,49 +363,29 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
-            },
-            {
-                "name": "Anydata Type",
-                "url": "anydata-type",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
+            }
+
+        ]
+    },
+    {
+        "title": "Ignoring Return Values and Errors",
+        "column": 1,
+        "category": "Language Concepts",
+        "samples": [
             {
                 "name": "Ignoring Return Values and Errors",
                 "url": "ignoring-return-values-and-errors",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
-            },
-            {
-                "name": "Covariance",
-                "url": "covariance",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Object",
-                "url": "object",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Defining Classes",
-                "url": "defining-classes",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Init Return Type",
-                "url": "init-return-type",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
+            }
+        ]
+    },
+    {
+        "title": "Mutability and Identity",
+        "column": 1,
+        "category": "Language Concepts",
+        "samples": [
             {
                 "name": "Identity",
                 "url": "identity",
@@ -260,168 +408,20 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Match Statement",
-                "url": "match-statement",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Type Inference ",
-                "url": "type-inference",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Function Values",
-                "url": "function-values",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Asynchronous Function Calls",
-                "url": "asynchronous-function-calls",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Annotations",
-                "url": "annotations",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Documentation",
-                "url": "documentation",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            }
-        ]
-    },
-    {
-        "title": "Network Interaction",
-        "column": 1,
-        "category": "Language Concepts",
-        "samples": [
-            {
-                "name": "Consuming Services: Client Objects",
-                "url": "consuming-services",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Failing intermittently due to github rate limiting",
-                "isLearnByExample": true
-            },
-            {
-                "name": "Providing Services",
-                "url": "providing-services",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Service cannot be stopped",
-                "disablePlayground": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Module Lifecycle",
-                "url": "module-lifecycle",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Service Declaration",
-                "url": "service-declaration",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disableVerificationReason": "Does not include udp client",
-                "disablePlayground": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Resource Methods",
-                "url": "resource-methods",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "disablePlayground": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Hierarchical Resources",
-                "url": "hierarchical-resources",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "disablePlayground": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Resource Path Parameters",
-                "url": "resource-path-parameters",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "disablePlayground": true,
-                "isLearnByExample": true
-            }
-        ]
-    },
-    {
-        "title": "Working With Data",
-        "column": 1,
-        "category": "Language Concepts",
-        "samples": [
-            {
-                "name": "Decimal Type",
-                "url": "decimal-type",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
                 "name": "Immutability",
                 "url": "immutability",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "disablePlayground": true,
                 "isLearnByExample": true
-            },
-            {
-                "name": "Any Type",
-                "url": "any-type",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Configurable Variables",
-                "url": "configurable-variables",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Optional Fields",
-                "url": "optional-fields",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Open Records",
-                "url": "open-records",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Controlling Openness",
-                "url": "controlling-openness",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
+            }
+        ]
+    },
+    {
+        "title": "JSON",
+        "column": 1,
+        "category": "Language Concepts",
+        "samples": [
             {
                 "name": "JSON Type",
                 "url": "json-type",
@@ -468,7 +468,7 @@
                 "name": "Resource Method Typing",
                 "url": "resource-method-typing",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": true
             },
@@ -478,7 +478,42 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Tables",
+        "column": 2,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Table Syntax",
+                "url": "table-syntax",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
             },
+            {
+                "name": "Multiple Key Fields",
+                "url": "multiple-key-fields",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Structured Keys",
+                "url": "structured-keys",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Query Expressions",
+        "column": 2,
+        "category": "Language Concepts",
+        "samples": [
             {
                 "name": "Query Expressions",
                 "url": "query-expressions",
@@ -510,27 +545,6 @@
             {
                 "name": "Limit Clause",
                 "url": "limit-clause",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Table Syntax",
-                "url": "table-syntax",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Multiple Key Fields",
-                "url": "multiple-key-fields",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
-            {
-                "name": "Structured Keys",
-                "url": "structured-keys",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -569,14 +583,14 @@
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
-            },
-            {
-                "name": "Backtick Templates",
-                "url": "backtick-templates",
-                "verifyBuild": true,
-                "verifyOutput": true,
-                "isLearnByExample": true
-            },
+            }
+        ]
+    },
+    {
+        "title": "Backtick Templates",
+        "column": 2,
+        "category": "Language Concepts",
+        "samples": [
             {
                 "name": "Raw Templates",
                 "url": "raw-templates",
@@ -587,8 +601,8 @@
                 "isLearnByExample": true
             },
             {
-                "name": "XML Data Model",
-                "url": "xml-data-model",
+                "name": "Backtick Templates",
+                "url": "backtick-templates",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -596,6 +610,20 @@
             {
                 "name": "XML Templates",
                 "url": "xml-templates",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "XML",
+        "column": 2,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "XML Data Model",
+                "url": "xml-data-model",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
@@ -646,10 +674,116 @@
         ]
     },
     {
-        "title": "Concurrency",
+        "title": "Metadata",
         "column": 2,
         "category": "Language Concepts",
         "samples": [
+            {
+                "name": "Documentation",
+                "url": "documentation",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Annotations",
+                "url": "annotations",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Network Interaction",
+        "column": 2,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Consuming Services: Client Objects",
+                "url": "consuming-services",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Failing intermittently due to github rate limiting",
+                "isLearnByExample": true
+            },
+            {
+                "name": "Providing Services",
+                "url": "providing-services",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Service cannot be stopped",
+                "disablePlayground": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Module Lifecycle",
+                "url": "module-lifecycle",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Service Declaration",
+                "url": "service-declaration",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Does not include udp client",
+                "disablePlayground": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Resource Methods",
+                "url": "resource-methods",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Hierarchical Resources",
+                "url": "hierarchical-resources",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": true
+            },
+            {
+                "name": "Resource Path Parameters",
+                "url": "resource-path-parameters",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Configurability",
+        "column": 2,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Configurable Variables",
+                "url": "configurable-variables",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            }
+        ]
+    },
+    {
+        "title": "Concurrency",
+        "column": 3,
+        "category": "Language Concepts",
+        "samples": [
+            {
+                "name": "Asynchronous Function Calls",
+                "url": "asynchronous-function-calls",
+                "verifyBuild": true,
+                "verifyOutput": true,
+                "isLearnByExample": true
+            },
             {
                 "name": "Named Workers",
                 "url": "named-workers",
@@ -725,14 +859,14 @@
     },
     {
         "title": "Transactions",
-        "column": 2,
+        "column": 3,
         "category": "Language Concepts",
         "samples": [
             {
                 "name": "Transaction Statement",
                 "url": "transaction-statement",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
@@ -746,42 +880,42 @@
                 "name": "Rollback",
                 "url": "rollback",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
                 "name": "Retry Transaction Statement",
                 "url": "retry-transaction-statement",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
                 "name": "Transactional Qualifier",
                 "url": "transactional-qualifier",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
                 "name": "Transactional Named Workers",
                 "url": "transactional-named-workers",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
                 "name": "Commit/Rollback Handlers",
                 "url": "commit-rollback-handlers",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": true
             }
         ]
     },
     {
         "title": "Concurrency Safety",
-        "column": 2,
+        "column": 3,
         "category": "Language Concepts",
         "samples": [
             {
@@ -955,7 +1089,7 @@
                 "name": "Service Path and Resource Path",
                 "url": "http-absolute-path-and-path",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -963,7 +1097,7 @@
                 "name": "Service Data Binding",
                 "url": "http-data-binding",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -971,7 +1105,7 @@
                 "name": "Default Resource",
                 "url": "http-default-resource",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -979,7 +1113,7 @@
                 "name": "Path Parameter",
                 "url": "http-path-param",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -987,7 +1121,7 @@
                 "name": "Query Parameter",
                 "url": "http-query-parameter",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -995,7 +1129,7 @@
                 "name": "Matrix Parameter",
                 "url": "http-matrix-param",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1003,7 +1137,7 @@
                 "name": "Header Parameter",
                 "url": "http-header-param",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1041,7 +1175,15 @@
                 "name": "Client Data Binding",
                 "url": "http-client-data-binding",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Caching Client",
+                "url": "http-caching-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1056,7 +1198,7 @@
                 "name": "Service - SSL/TLS",
                 "url": "http-service-ssl-tls",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1064,7 +1206,7 @@
                 "name": "Service - Mutual SSL",
                 "url": "http-service-mutual-ssl",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1072,7 +1214,7 @@
                 "name": "Service - Basic Auth File User Store",
                 "url": "http-service-basic-auth-file-user-store",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1080,7 +1222,7 @@
                 "name": "Service - Basic Auth LDAP User Store",
                 "url": "http-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1088,15 +1230,15 @@
                 "name": "Service - JWT Auth",
                 "url": "http-service-jwt-auth",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Service - OAuth2",
-                "url": "http-service-oauth2",
+                "url": "ce-oauth2",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1163,6 +1305,14 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Client - OAuth2 JWT Bearer Grant Type",
+                "url": "http-client-oauth2-jwt-bearer-grant-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1191,7 +1341,7 @@
                 "name": "100 Continue",
                 "url": "http-100-continue",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1212,6 +1362,22 @@
                 "isLearnByExample": false
             },
             {
+                "name": "Trace logs",
+                "url": "http-trace-logs",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Access logs",
+                "url": "http-access-logs",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
                 "name": "Cookies",
                 "url": "http-cookies",
                 "verifyBuild": true,
@@ -1223,7 +1389,7 @@
                 "name": "Chunking",
                 "url": "http-disable-chunking",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1254,6 +1420,29 @@
         ]
     },
     {
+        "title": "REST API Interceptors",
+        "column": 1,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Request Interceptor",
+                "url": "http-request-interceptor",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Request Error Interceptor",
+                "url": "http-request-error-interceptor",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
         "title": "HTTP2",
         "column": 1,
         "category": "Working Over the Network",
@@ -1262,7 +1451,7 @@
                 "name": "HTTP 1.1 to 2.0 Protocol Switch",
                 "url": "http-1-1-to-2-0-protocol-switch",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1285,7 +1474,7 @@
                 "name": "Hello World",
                 "url": "graphql-hello-world",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1293,7 +1482,7 @@
                 "name": "Returning Record Values",
                 "url": "graphql-returning-record-values",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1301,7 +1490,7 @@
                 "name": "Hierarchical Resource Paths",
                 "url": "graphql-hierarchical-resource-paths",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1309,7 +1498,7 @@
                 "name": "Returning Service Objects",
                 "url": "graphql-returning-service-objects",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1317,7 +1506,23 @@
                 "name": "Input Types",
                 "url": "graphql-input-types",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Mutations",
+                "url": "graphql-mutations",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Context",
+                "url": "graphql-context",
+                "verifyBuild": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1332,7 +1537,7 @@
                 "name": "Service - SSL/TLS",
                 "url": "graphql-service-ssl-tls",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1340,7 +1545,7 @@
                 "name": "Service - Mutual SSL",
                 "url": "graphql-service-mutual-ssl",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1348,7 +1553,7 @@
                 "name": "Service - Basic Auth File User Store",
                 "url": "graphql-service-basic-auth-file-user-store",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1356,7 +1561,7 @@
                 "name": "Service - Basic Auth LDAP User Store",
                 "url": "graphql-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1364,7 +1569,7 @@
                 "name": "Service - JWT Auth",
                 "url": "graphql-service-jwt-auth",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1372,7 +1577,7 @@
                 "name": "Service - OAuth2",
                 "url": "graphql-service-oauth2",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1387,14 +1592,22 @@
                 "name": "Handle Text Messages with Client",
                 "url": "websocket-text-client",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "isLearnByExample": false
             },
             {
                 "name": "Handle Binary Messages with Client",
                 "url": "websocket-binary-client",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Retry",
+                "url": "websocket-retry-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
@@ -1417,7 +1630,7 @@
                 "name": "Service - SSL/TLS",
                 "url": "websocket-service-ssl-tls",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1425,7 +1638,7 @@
                 "name": "Service - Mutual SSL",
                 "url": "websocket-service-mutual-ssl",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1433,7 +1646,7 @@
                 "name": "Service - Basic Auth File User Store",
                 "url": "websocket-service-basic-auth-file-user-store",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1441,7 +1654,7 @@
                 "name": "Service - Basic Auth LDAP User Store",
                 "url": "websocket-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1449,7 +1662,7 @@
                 "name": "Service - JWT Auth",
                 "url": "websocket-service-jwt-auth",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1457,7 +1670,7 @@
                 "name": "Service - OAuth2",
                 "url": "websocket-service-oauth2",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1524,6 +1737,14 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Client - OAuth2 JWT Bearer Grant Type",
+                "url": "websocket-client-oauth2-jwt-bearer-grant-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1551,7 +1772,7 @@
                 "name": "Circuit Breaker",
                 "url": "http-circuit-breaker",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1559,7 +1780,7 @@
                 "name": "Load Balancer",
                 "url": "http-load-balancer",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1567,7 +1788,7 @@
                 "name": "Failover",
                 "url": "http-failover",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1575,7 +1796,7 @@
                 "name": "Retry",
                 "url": "http-retry",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
@@ -1583,7 +1804,7 @@
                 "name": "Timeout",
                 "url": "http-timeout",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1598,7 +1819,7 @@
                 "name": "Dynamic Listener",
                 "url": "dynamic-listener",
                 "verifyBuild": true,
-                "verifyOutput": true,
+                "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             }
@@ -1777,6 +1998,14 @@
             {
                 "name": "Client - OAuth2 Refresh Token Grant Type",
                 "url": "grpc-client-oauth2-refresh-token-grant-type",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Client - OAuth2 JWT Bearer Grant Type",
+                "url": "grpc-client-oauth2-jwt-bearer-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -2007,7 +2236,7 @@
         "category": "Working Over the Network",
         "samples": [
             {
-                "name": "TCP Client",
+                "name": "Client",
                 "url": "tcp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2016,7 +2245,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "TCP Listener",
+                "name": "Listener",
                 "url": "tcp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2025,7 +2254,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "TCP Transport Security",
+                "name": "Transport Security",
                 "url": "tcp-transport-security",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2041,7 +2270,7 @@
         "category": "Working Over the Network",
         "samples": [
             {
-                "name": "UDP Connectionless Client",
+                "name": "Connectionless Client",
                 "url": "udp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2050,7 +2279,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "UDP Connection-Oriented Client",
+                "name": "Connection-Oriented Client",
                 "url": "udp-connect-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2059,7 +2288,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "UDP Listener",
+                "name": "Listener",
                 "url": "udp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2095,6 +2324,56 @@
             {
                 "name": "Receive Emails Using a Listener",
                 "url": "receive-email-using-listener",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "FTP",
+        "column": 3,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Client",
+                "url": "ftp-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Listener",
+                "url": "ftp-listener",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "SFTP",
+        "column": 3,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Client",
+                "url": "sftp-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Listener",
+                "url": "sftp-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",

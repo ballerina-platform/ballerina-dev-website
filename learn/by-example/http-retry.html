@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Retry
 description: BBE on how to use an HTTP retry in Ballerina. The retry client can be used to automatically retry when an erroneous response is received.
-keywords: ballerina, ballerina by examples, bbe, http, resiliency, retry
+keywords: ballerina, Ballerina By Example, bbe, http, resiliency, retry
 permalink: /learn/by-example/http-retry
 active: http-retry
 redirect_from:
@@ -380,8 +380,6 @@ import ballerina/lang.runtime;
 
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run http_retry.bal.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-[ballerina/http] started HTTP/WS listener 0.0.0.0:8080
 time = 2021-01-21 19:00:21,374 level = INFO  module = &quot;&quot; message = &quot;Request received from the client to delayed service.&quot;
 time = 2021-01-21 19:00:26,379 level = INFO  module = &quot;&quot; message = &quot;Request received from the client to delayed service.&quot;
 time = 2021-01-21 19:00:34,402 level = INFO  module = &quot;&quot; message = &quot;Request received from the client to delayed service.&quot;

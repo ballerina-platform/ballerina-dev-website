@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Client
 description: BBE on how to interact with an HTTP server using Ballerina HTTP Client Connector.
-keywords: ballerina, ballerina by examples, bbe, http, client
+keywords: ballerina, Ballerina By Example, bbe, http, client
 permalink: /learn/by-example/http-client-endpoint
 active: http-client-endpoint
 redirect_from:
@@ -15,10 +15,11 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="c1">// Creates a new client with the backend URL.</span>
-<span class="nx">final</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://postman-echo.com&quot;</span><span class="p">);</span>
-
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// Creates a new client with the backend URL.</span>
+    <span class="nx">final</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> 
+                        <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://postman-echo.com&quot;</span><span class="p">);</span>
+    
     <span class="c1">// Sends a `GET` request to the specified endpoint.</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;GET request:&quot;</span><span class="p">);</span>
     <span class="kt">json</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get?test=123&quot;</span><span class="p">);</span>
@@ -94,7 +95,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=799547c5c8430028a563fcb023eb398e&file=http_client_endpoint.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=0f9119c05c60831260b0bddf474701c0&file=http_client_endpoint.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -121,10 +122,24 @@ import ballerina/io;
                                 </div>
                             </div>
                             
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>final http:Client clientEndpoint = check new (&quot;http://postman-echo.com&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    final http:Client clientEndpoint = 
+                        check new (&quot;http://postman-echo.com&quot;);
+    
 </code></pre></div>
 
                                 </div>
@@ -136,18 +151,6 @@ import ballerina/io;
 
                                         </div>
                                     </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
                                     
                                 </div>
                             </div>

@@ -42,6 +42,8 @@ redirect_from:
     <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">c</span> <span class="p">=</span> <span class="nx">startInt</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="mi">100</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">d</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wait</span> <span class="nx">c</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">d</span><span class="p">);</span>
+
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -97,7 +99,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=7a0c35b7b3df26ce95f2804ea6cae740&file=named_workers_and_futures.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=0f190212a879858a302e595df606198e&file=named_workers_and_futures.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -244,10 +246,22 @@ redirect_from:
                             
                             <div class="cTR">
 
-                                <div class="code">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; c = startInt(() =&gt; 100);
     int d = check wait c;
     io:println(d);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    return;
 }
 </code></pre></div>
 

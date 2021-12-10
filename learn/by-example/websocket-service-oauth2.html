@@ -25,7 +25,7 @@ redirect_from:
 
 <span class="c1">// The service can be secured with OAuth2 authentication and can be authorized</span>
 <span class="c1">// optionally. OAuth2 authentication can be enabled by setting the</span>
-<span class="c1">// `websocket:OAuth2IntrospectionConfig` configurations.</span>
+<span class="c1">// [`websocket:OAuth2IntrospectionConfig`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/OAuth2IntrospectionConfig) configurations.</span>
 <span class="c1">// Authorization is based on scopes. A scope maps to one or more groups.</span>
 <span class="c1">// Authorization can be enabled by setting the `string|string[]` type</span>
 <span class="c1">// configurations for `scopes` field.</span>
@@ -76,7 +76,7 @@ redirect_from:
  Ballerina uses the concept of scopes for authorization. A resource declared
  in a service can be bound to one/more scope(s). The scope can be included
  in the introspection response using a custom claim attribute. That custom
- claim attribute is also can be configured as the <code>scopeKey</code>.<br/>
+ claim attribute also can be configured as the <code>scopeKey</code>.<br/>
  In the authorization phase, the scopes of the service are compared
  against the scope included in the introspection response for at least one
  match between the two sets.<br/><br/>
@@ -198,7 +198,7 @@ service /foo on securedEP {
                                         <div>
                                             <p>The service can be secured with OAuth2 authentication and can be authorized
  optionally. OAuth2 authentication can be enabled by setting the
- <code>websocket:OAuth2IntrospectionConfig</code> configurations.
+ <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/records/OAuth2IntrospectionConfig"><code>websocket:OAuth2IntrospectionConfig</code></a> configurations.
  Authorization is based on scopes. A scope maps to one or more groups.
  Authorization can be enabled by setting the <code>string|string[]</code> type
  configurations for <code>scopes</code> field.</p>
@@ -239,7 +239,6 @@ service /foo on securedEP {
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># You may need to change the certificate file path and private key file path.
 bal run websocket_service_oauth2.bal
-[ballerina/websocket] started WSS listener 0.0.0.0:9090
 </code></pre></div>
 
                                 </div>

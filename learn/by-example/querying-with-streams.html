@@ -40,6 +40,7 @@ redirect_from:
             <span class="p">}</span>
             <span class="k">return</span> <span class="p">{</span><span class="nx">value</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">};</span>
         <span class="p">}</span>
+        <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -57,7 +58,7 @@ redirect_from:
     <span class="kt">int</span> <span class="nx">nLines</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="c1">// Counts the number of lines by iterating the `stream`</span>
     <span class="c1">// in `query action`.</span>
-    <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">line</span> <span class="nx">in</span> <span class="nx">lines</span>
+    <span class="k">var</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">_</span> <span class="nx">in</span> <span class="nx">lines</span>
               <span class="nx">do</span> <span class="p">{</span>
                   <span class="nx">nLines</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
               <span class="p">};</span>
@@ -107,9 +108,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="backtick-templates.html?is_ref_by_example=true">
+                                    <a class="next" href="raw-templates.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
-                                        <p>Backtick Templates</p>
+                                        <p>Raw Templates</p>
                                     </a>
                                 </div>
                                 
@@ -133,7 +134,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=bc59467c9131aa0c16cc743ee31e7bf1&file=querying_with_streams.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=85b3d1c7252934fccbdf4d07f8278f3c&file=querying_with_streams.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -248,6 +249,7 @@ redirect_from:
             }
             return {value: &quot;&quot;};
         }
+        return;
     }
 }
 </code></pre></div>
@@ -327,7 +329,7 @@ redirect_from:
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var res = check from var line in lines
+                                    <div class="highlight"><pre><code class=language-ballerina>    var _ = check from var _ in lines
               do {
                   nLines += 1;
               };

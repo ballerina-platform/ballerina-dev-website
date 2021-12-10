@@ -252,7 +252,27 @@ redirect_from:
                                     <div class="highlight"><pre><code class=shell-session># You may need to change the certificate file path, private key file path, and
 # trusted certificate file path.
 bal run http_service_mutual_ssl.bal
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="codeSnippeset">
+
+                        <div class="cBBE-body">
+                            
+                            <div class="cTR cOutputTr">
+
+                                <div class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the service, use the cURL commands below.
+curl https://localhost:9090/foo/bar --cert /path/to/client-public.crt
+    --key /path/to/client-private.key --cacert /path/to/server-public.crt
 </code></pre></div>
 
                                 </div>

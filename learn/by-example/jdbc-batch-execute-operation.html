@@ -67,11 +67,11 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nInsert success, generated IDs are: &quot;</span><span class="p">,</span> <span class="nx">generatedIds</span><span class="p">,</span> <span class="s">&quot;\n&quot;</span><span class="p">);</span>
 
     <span class="c1">// Checks the data after the batch execution.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span> 
+    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{},</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
         <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM Customers`</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Data in Customers table:&quot;</span><span class="p">);</span>
-    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">check</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
     <span class="p">});</span>
 
@@ -82,8 +82,7 @@ redirect_from:
 <span class="c1">// Initializes the database as a prerequisite to the example.</span>
 <span class="kd">function</span> <span class="nx">beforeExample</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Creates a table in the database.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span> 
-        <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE Customers(customerId INTEGER</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE Customers(customerId INTEGER</span>
 <span class="s">            NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),</span>
 <span class="s">            registrationID INTEGER, creditLimit DOUBLE, country  VARCHAR(300),</span>
 <span class="s">            PRIMARY KEY (customerId))`</span><span class="p">);</span>
@@ -92,8 +91,8 @@ redirect_from:
 <span class="c1">// Cleans up the database after running the example.</span>
 <span class="kd">function</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Cleans the database.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span> 
-            <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP TABLE Customers`</span><span class="p">);</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP TABLE Customers`</span><span class="p">);</span>
+    
     <span class="c1">// Closes the JDBC client.</span>
     <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
@@ -106,7 +105,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Batch Execute</h2>
-                            <p><p>This example demonstrates how to use the JDBC client to execute a batch of
+                            <p><p>This BBE demonstrates how to use the JDBC client to execute a batch of
  DDL/DML operations. Note that the relevant database driver JAR
  should be defined in the <code>Ballerina.toml</code> file as a dependency.
  This sample is based on an H2 database and the H2 database driver JAR need to be added to the <code>Ballerina.toml</code> file.
@@ -330,7 +329,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record {}, error&gt; resultStream = 
+                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record {}, error?&gt; resultStream =
         jdbcClient-&gt;query(`SELECT * FROM Customers`);
 </code></pre></div>
 
@@ -351,7 +350,7 @@ import ballerina/sql;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Data in Customers table:&quot;);
-    error? e = resultStream.forEach(function(record {} result) {
+    check resultStream.forEach(function(record {} result) {
         io:println(result.toString());
     });
 </code></pre></div>
@@ -404,8 +403,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result = 
-        check jdbcClient-&gt;execute(`CREATE TABLE Customers(customerId INTEGER
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check jdbcClient-&gt;execute(`CREATE TABLE Customers(customerId INTEGER
             NOT NULL IDENTITY, firstName  VARCHAR(300), lastName  VARCHAR(300),
             registrationID INTEGER, creditLimit DOUBLE, country  VARCHAR(300),
             PRIMARY KEY (customerId))`);
@@ -447,8 +445,8 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result = 
-            check jdbcClient-&gt;execute(`DROP TABLE Customers`);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check jdbcClient-&gt;execute(`DROP TABLE Customers`);
+    
 </code></pre></div>
 
                                 </div>

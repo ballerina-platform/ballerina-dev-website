@@ -430,7 +430,7 @@ $(document).ready(function() {
     };
 
     //subscribe form
-    $("#subscribe_button").click(function(event) {
+    $("#subscribeUserButton").click(function(event) {
         event.preventDefault();
         subscribeUserOS();
     });
@@ -449,6 +449,7 @@ $(document).ready(function() {
         var email = $('#userEmail').val();
         var nloptin = $('#nloptin').is(":checked");
         var ccoptin = $('#ccoptin').is(":checked");
+        var emailoptin = $('#optin').is(":checked");
 
         var type = "";
         if(nloptin){type += "-Newsletters-";}
@@ -462,7 +463,8 @@ $(document).ready(function() {
         } else if (!isEmail(email)) {
             $("#form-error").text("Please enter a valid email.");
             $("#form-error").addClass("cShowBlock");
-        } else if(!nloptin && !ccoptin){
+        } //else if(!nloptin && !ccoptin){
+            else if(!emailoptin){
             $("#form-error").text("Please select a subscribe option.");
             $("#form-error").addClass("cShowBlock");
         }else {

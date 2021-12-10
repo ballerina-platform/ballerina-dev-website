@@ -50,6 +50,7 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">i</span> <span class="p">=</span> <span class="s">&quot;-0&quot;</span><span class="p">;</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">typeof</span> <span class="nx">check</span> <span class="nx">i</span><span class="p">.</span><span class="nx">fromJsonString</span><span class="p">());</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -84,9 +85,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="query-expressions.html?is_ref_by_example=true">
+                                    <a class="next" href="table-syntax.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
-                                        <p>Query Expressions</p>
+                                        <p>Table Syntax</p>
                                     </a>
                                 </div>
                                 
@@ -110,7 +111,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=9e89f778f3897b9f2395d25172c709bb&file=json_numbers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=55e740d0090a59d3b281228fb096f5dc&file=json_numbers.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -315,6 +316,7 @@ redirect_from:
 
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(typeof check i.fromJsonString());
+    return;
 }
 </code></pre></div>
 
@@ -337,11 +339,11 @@ redirect_from:
                                     <div class="highlight"><pre><code class=shell-session>bal run json_numbers.bal
 [1, 2.1, 3.24]
 [1,2.1,3.24]
-typedesc int
-typedesc decimal
-typedesc decimal
+typedesc 1
+typedesc 2.1
+typedesc 3.24
 3.24
-typedesc float
+typedesc -0.0
 </code></pre></div>
 
                                 </div>

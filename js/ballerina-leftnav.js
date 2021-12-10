@@ -56,6 +56,7 @@ $(function () {
   $("a").click(function() {
      // remove classes from all
      $("a").removeClass("cLeftMenuInnerLink cTopiAtag highlight");
+
      // add class to the one we clicked
      $(this).addClass("cLeftMenuInnerLink cTopiAtag highlight");
   });
@@ -69,8 +70,18 @@ $(function() {
   $(".sub-ul-two a").each(function() {
       if (url == (this.href)) {
           $(this).closest("a").addClass("cLeftMenuInnerLink cTopiAtag highlight");
-          document.getElementsByClassName("cLeftMenuInnerLink cTopiAtag highlight")[0].scrollIntoView();
-        
+          //scroll the li to top
+          $(".cLeftMenuInnerLink.cTopiAtag.highlight")[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+
       }
   });
+  $(document).ready(function(){ 
+    $('.cLeftMenuInnerLink.cTopiAtag.highlight')[0].click(function(){
+    }); 
+  });
+  
+  $( "li" ).removeClass( "current-inner-sub" )
+  $( "li" ).removeClass( "inner-sub-menu-three" )
+  $( "li" ).removeClass( "current-inner-three-sub" )
+
 });  

@@ -1,0 +1,1195 @@
+---
+layout: ballerina-home-page
+title: Ballerina Community Page
+description: 
+permalink: /community-new/
+intro: 
+redirect_from:
+
+---
+
+<style>
+    .text-feild{
+        padding: 20px 20px;
+        margin: 5px 0px;
+        width: 100%;
+        display: inline-block;      
+    }
+
+    .submit-button{
+        padding: 10px 20px;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        background-color: #20b6b0;
+        color: #fff;
+        margin: 5px 0px;
+        border: none;
+    }
+
+    .event-card{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .cBoxCard{
+  
+  border:#E6EAEB solid 0.1px ;
+  text-align: left;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 0;
+  box-shadow: 0;
+  margin-bottom: 15px;
+  margin-top:15px;
+  box-shadow:none;
+    }
+    .cBoxCard-1{
+  
+  
+  text-align: left;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 0;
+  box-shadow: 0;
+  margin-bottom: 15px;
+  margin-top:15px;
+  box-shadow:none;
+    }
+.form-check-label{
+    display: inline-block;
+max-width: 100%;
+margin-bottom: 5px;
+font-weight: 400;
+font-size: 10px;
+}
+  
+.checkbox-wrapper {
+  white-space: nowrap
+}
+.checkbox {
+  vertical-align: top;
+  display:inline-block
+}
+.checkbox-label {
+  white-space: normal;
+  display:inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  color: #57595d;
+  padding-left: 8px;
+}
+
+.card p{
+    margin-top:15px !important;
+    margin-bottom:0px !important;
+}
+
+.card{
+    border: none;
+    margin: 10px 40px 15px 0px;
+    padding: 0px 0px;
+    max-width: 360px;
+}
+
+
+.card h4{
+    color: #20b6b0;
+    height: 45px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #585A5E;
+  background-color: #fff;
+  background-image: none;
+  border-radius: 0px;
+  transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #585A5E;
+  border-radius: 0px;
+  -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+  box-shadow: 0 3px 9px rgba(0,0,0,.5);
+  outline: 0;
+}
+
+.btn-form-submit{
+    padding: 10px 20px;
+        display: inline-block;
+        text-align: center;
+        background-color: #20b6b0;
+        color: #fff;
+        border: none;
+        border-radius: 0px;
+        margin-bottom:5px;
+}
+
+.btn-form-close{
+    padding: 10px 20px;
+        display: inline-block;
+        text-align: center;
+        background-color: #E6EAEB;
+        color: #464646;
+        margin: 5px 0px;
+        border: none;
+        border-radius: 0px;
+}
+.col-form-label{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+</style>
+
+<div class="container">
+
+<div class="section" style="padding-bottom: 30px;">
+    <h1 id="the-ballerina-community" style="margin: 70px 0 30px 0;" >The Ballerina Community </h1>
+    <p >
+        The Ballerina community has been bootstrapped by <a class="linkText" href="https://wso2.com/" target="_blank" >WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open-source project with all source code licensed under the <a class="linkText" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" ">Apache License, Version 2.0,</a> and the specifications licensed under the <a class="linkText" href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" >Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
+    </p>
+</div>
+
+<section id="subscribe-newsletter" style="padding-bottom: 30px;">
+<h2 style="padding-right: 15px;">Subscribe to our Newsletter</h2>
+
+<div class="row" >
+  
+    <div class="col-sm-12 col-md-6 col-lg-6" style="float: left;width: 50%; padding-left: 0px;">
+      <p>
+        Want to get hand-picked content and the latest news on Ballerina delivered directly to your inbox? Then subscribe to our monthly Newsletter today!
+      </p>
+      <p>
+        You can unsubscribe from our emails at any time. See our privacy policy for how we protect your data.  
+      </p>
+    </div>
+    <!-- <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;width: 50%;"> -->
+        <form id="bio-newsletter-subscribeForm" >
+        
+        
+        <!-- <div class="row"> -->
+            <div class="col-sm-12 col-md-4 col-lg-4" style="float: left;">
+             
+                <input type="email" required-field="1" class="form-control text-feild" id="bio-newsletter-subscription" aria-describedby="emailHelp" placeholder="Enter your Email address" style="border-radius: 0;border: #20b6b0 solid 1px;">
+                <!--Alert Box Thank you-->
+                <div class="alert alert-success alert-dismissible fade show" role="alert" id="newsletterSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
+                <strong>Thank you.</strong> You are now subscribed to the Ballerina newsletter.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <!--Alert Box Thank you-->
+                <!--Alert Box Wrong-->
+                <div class="alert alert-success alert-dismissible fade show" role="alert" id="newsletterFailAlert" style="background-color: #E6EAEB;color: #454646;display:none !important;">
+                    <strong>Enter a valid email address.</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                <!--Alert Box Wrong-->
+
+                <div class="text-left checkbox-wrapper">
+                    <input type="checkbox" id="terms" class="checkbox">
+                    <label class="checkbox-label" for="terms">We care about your privacy. </label>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-2 col-lg-2" style="float: right;">
+                <button type="button" class="submit-button" id="subscribe_button" >Subscribe</button>
+            </div>
+        <!-- </div>  -->
+        </form>
+    <!-- </div> -->
+</div>
+</section>
+
+<section id="secondary-nav-bar">
+    
+
+</section>
+
+<section id="event-section"  style="padding-bottom: 30px;">
+    <h2 style="padding-right: 15px;">Take Part in Events</h2>
+    <div class="row" >
+      
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: left;width: 50%; padding-left: 0px;">
+          <p>
+            Join us at our upcoming events and be a part of the conversation. Each month, we host or are a part of a series of events where we share our roadmap, demos, and language updates.
+          </p>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;width: 50%;">
+        <p style="text-align: right;">
+            <a href="/learn/why-ballerina/data-oriented/" style="color: #20b6b0; text-decoration: none; text-align: right;">View All Events</a>
+        </p>
+      
+        </div>
+    </div> 
+    <h3 style="padding-right: 15px;padding-bottom: 20px;">Upcoming Events</h2>
+    <div class="row">
+      
+        <div class="col-sm-12 col-md-6 col-lg-6 " style="float: left;width: 50%; ">
+            <div class="col-sm-12 col-md-3 col-lg-3" style="" >
+                <p style="color: #585A5E; font-size:17px;float: right;">Nov 25, 2021</p>
+                <p style="float: right;">Tuesday</p>
+                <p style="float: right;">Virtual</p>
+
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-9" style="border-left: 2px #585A5E solid;">
+                <p>
+                    Tech Talk
+                </p>
+                <h4 style="color: #20b6b0;">Ballerina Tech Talk</h4>
+                <p>
+                    Join us at our upcoming events and be a part of the conversation. Each month, we host or are a part of a series of events where we share our roadmap
+                </p>
+
+            </div>   
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;width: 50%;">
+            <div class="col-sm-12 col-md-3 col-lg-3" >
+                <p style="color: #585A5E; font-size:17px;float: right;">Dec 25, 2021</p>
+                <p style="float: right;">Tuesday</p>
+                <p style="float: right;">Virtual</p>
+
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-9" style="border-left: 2px #585A5E solid;padding-right: 0px;">
+                <p>
+                    Tech Talk
+                </p>
+                <h4 style="color: #20b6b0;">Ballerina Tech Talk</h4>
+                <p>
+                    Join us at our upcoming events and be a part of the conversation. Each month, we host or are a part of a series of events where we share our roadmap
+                </p>
+
+            </div>   
+           
+        </div>
+    </div> 
+
+</section>
+
+<section id="resources" style="padding-bottom: 30px;">
+    <h2 style="padding-right: 15px;">Resources</h2>
+    <div class="row">
+      
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: left;width: 50%; padding-left: 0px;">
+          <p>
+            We have curated a list of articles, blogs, and videos that were created by the Ballerina community. These resources cover the language, platform, tools and use-cases with implementation details. 
+          </p>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;width: 50%;">
+        <p style="text-align: right;">
+            <a href="/learn/why-ballerina/data-oriented/" style="color: #20b6b0; text-decoration: none; text-align: right;">View All Resources</a>
+        </p>
+      
+        </div>
+    </div> 
+    <div class="row" style="padding-bottom: 20px;">
+        <div class="col-sm-12 col-md-4 col-lg-4" style="padding-left: 0px;">
+            <div class="cBoxCard"  >
+                <div class="card-body text-primary" style="padding: 18px;">
+                  <h4 class="card-title" style="color:#20b6b0;margin-top:0px">Contribute to the Source </h4>
+                  <p class="card-text " > We have curated a list of articles, blogs, and videos that were created by the Ballerina community. </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4" style="padding-left: 0px;">
+            <div class="cBoxCard"  >
+                <div class="card-body text-primary" style="padding: 18px;">
+                  <h4 class="card-title" style="color:#20b6b0;margin-top:0px">Contribute to the Source </h4>
+                  <p class="card-text " > We have curated a list of articles, blogs, and videos that were created by the Ballerina community.  </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4" style="padding-left: 0px;">
+            <div class="cBoxCard"  >
+                <div class="card-body text-primary" style="padding: 18px;">
+                  <h4 class="card-title" style="color:#20b6b0;margin-top:0px">Contribute to the Source </h4>
+                  <p class="card-text " > We have curated a list of articles, blogs, and videos that were created by the Ballerina community.  </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+<section style="padding-bottom: 30px;">
+    <div class="container-fluid" style="background-color: #E6EAEB;">
+        <div class="container" style="padding-top: 15px;padding-bottom:15px;">
+            <h2 style="padding-right: 15px;">Ballerina Slack Community</h2>
+
+                <div class="row">
+  
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="float: left;width: 50%; padding-left: 0px;">
+                        <p style="padding-bottom: 20px;">
+                            Our 2000+ strong Slack Community is here to help answer all your Ballerina inquiries. Our members include some very experienced engineers from Ballerina and also experts from some of the world’s top companies. Use this space to find answers to your questions, get support or learn how others are using Ballerina.
+                        </p>
+                        <form id="bio-slack-subscribeForm">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-8 col-lg-8" style="float: left;padding-left: 0px;">
+                                    <input type="email" required-field="1" class="form-control text-feild" id="bio-slack-join-email" aria-describedby="emailHelp" placeholder="Enter your Email address" style="border-radius: 0;border: #20b6b0 solid 1px;">
+                                    <!--Alert Box Thank you-->
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert" id="slackSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
+                                    <strong>Thank you.</strong>Your invitation has been sent to {your email address}.
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <!--Alert Box Thank you-->
+                                    <!--Alert Box Wrong-->
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert" id="slackFailAlert" style="background-color: #E6EAEB;color: #454646;display:none !important;">
+                                    <strong>Enter a valid email address.</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <!--Alert Box Wrong-->
+                                    <div class="text-left checkbox-wrapper">
+                                        <input type="checkbox" id="terms" class="checkbox">
+                                        <label class="checkbox-label" for="terms">We care about your privacy. You can unsubscribe.</label>
+                                    </div>
+                                
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-4" style="float: right;">
+                                    <button type="button" class="submit-button" id="subscribe_button" >Join Us</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <p style="padding-bottom: 40px; font-weight: 400;">
+                           Are you already member? <a href="" style="color: #20b6b0;">Go to Slack here</a>
+                        </p>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;width: 50%;">
+        
+                    </div>
+                </div>
+        </div>
+    </div>
+</section >
+<div class="container" >
+<section style="padding-bottom: 30px;">
+    <h2 style="padding-right: 15px;">Monthly Tech Talk</h2>
+    <div class="row">
+      
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: left;width: 50%; padding-left: 0px;">
+          <p style="padding-bottom: 25px;">
+            We host a public tech talk every month, where our engineers discuss different technical topics, show you how Ballerina can be leveraged to implement related use cases, present upcoming features, and answer all your burning questions live. These interactive sessions will give you direct access to our engineers and other community members to discuss Ballerina and your projects.
+          </p>
+          <form id="bio-tech-talk-subscribeForm">
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-lg-8" style="float: left;padding-left: 0px;">
+                    <input type="email" required-field="1" class="form-control text-feild" id="bio-tech-talk-sub-email" aria-describedby="emailHelp" placeholder="Enter your Email address" style="border-radius: 0;border: #20b6b0 solid 1px;">
+                    <!--Alert Box Thank you-->
+                    <div class="alert alert-success alert-dismissible fade show" role="alert" id="bioTechTalkSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
+                    <strong>Thank you.</strong> You will receive notifications for our upcoming tech talks.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <!--Alert Box Thank you-->
+                    <!--Alert Box Wrong-->
+                    <div class="alert alert-success alert-dismissible fade show" role="alert" id="bioTechTalkWrongAlert" style="background-color: #E6EAEB;color: #454646;display:none !important;">
+                    <strong>Enter a valid email address.</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <!--Alert Box Wrong-->
+                    
+                    <div class="text-left checkbox-wrapper">
+                        <input type="checkbox" id="terms" class="checkbox">
+                        <label class="checkbox-label" for="terms">We care about your privacy. You can unsubscribe from our emails at any time. See our privacy policy for how we use and protect your data.</label>
+                    </div>
+                
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4" style="float: right;">
+                    <button type="button" class="submit-button" id="subscribe_button" >Register</button>
+                </div>
+            </div>
+         </form>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;width: 50%;">
+        <p style="text-align: right;">
+            <a href="/learn/why-ballerina/data-oriented/" style="color: #20b6b0; text-decoration: none; text-align: right;">View Past Tech Talks</a>
+        </p>
+        <div class="row " style="float: left; background-color: #E6EAEB;padding: 25px 20px;margin: 25px 0;">
+
+            <h5 style="padding-left:25px;margin-bottom: 20px;"> Next Call</h5>
+            <div class="col-sm-12 col-md-4 col-lg-4" style="" >
+                <p style="color: #585A5E; font-size:17px;float: right;">Nov 25, 2021</p>
+                <p style="float: right;">Tuesday</p>
+                <!-- <p style="float: right;">Virtual</p> -->
+
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-8" style="border-left: 2px #585A5E solid;">
+                <p>
+                    Tech Talk
+                </p>
+                <h4 style="color: #20b6b0;">Ballerina Tech Talk</h4>
+                <p>
+                    Join us at our upcoming events and be a part of the conversation. 
+                </p>
+
+            </div>   
+        </div>
+
+      
+        </div>
+    </div> 
+</section>
+<section style="padding-bottom: 30px;">
+    <h2 style="padding-right: 15px;">Get Involved</h2>
+   
+    <div class="row" style="padding-bottom: 20px;">
+     
+
+        <div class="col-lg-4 col-md-4 col-sm-12 card">
+            <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md">
+                     <h4 id="running-ballerina-programs-in-the-cloud">Contribute to the Source Code
+           </h4></a>
+                <p>Make Ballerina better by contributing to the source code! Read the Contribution Guide and get started. Happy contributing!</p>
+           
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 card">
+            <a href="https://central.ballerina.io/">
+                     <h4 id="running-ballerina-programs-in-the-cloud">Contribute to Ballerina Central
+           </h4></a>
+                <p>Let the whole community benefit from your work by creating and publishing your own Ballerina module. </p>
+           
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 card" style="margin-right:0px !important;">
+            <a href="">
+                     <h4 id="running-ballerina-programs-in-the-cloud">Report Issues
+           </h4></a>
+                <p>Report issues in the GitHub repositories.</p>
+           
+        </div>
+       
+    </div>
+    <div class="row" style="padding-bottom: 20px;">
+        <div class="col-lg-4 col-md-4 col-sm-12 card">
+            <a  id="myBtn">
+                     <h4 id="running-ballerina-programs-in-the-cloud" >Contribute to our Resource Library
+           </h4></a>
+                <p>Submit an article, blog or video to our Community-driven collection of resources.</p>
+           
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 card">
+            <a id="submitUseCase">
+                     <h4 id="running-ballerina-programs-in-the-cloud">Submit a Use Case 
+           </h4></a>
+                <p>Tell us how you're using Ballerina for your project and be a part of our Community Stories. </p>
+           
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 card" style="margin-right:0px !important;">
+            <a href="">
+                     <h4 id="running-ballerina-programs-in-the-cloud">Host a Ballerina Event
+           </h4></a>
+                <p>Want to talk about Ballerina at your local tech meetup? Reach us at contact@ballerina.io and we will help you with any presentation content.</p>
+           
+        </div>
+    </div>
+
+</section>
+
+
+
+<section style="padding-bottom: 30px;">
+    <h2 style="padding-right: 15px;">Contact Us</h2>
+    <div class="row" >
+      
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;">
+          <p style="padding-bottom: 25px;">
+            We’re always looking to understand how we can help our community make the best use of Ballerina.
+          </p>
+          <a href="mailto:contact@ballerina.io"><button type="button" class="submit-button" style="width:50%">Email contact@ballerina.io</button></a>
+    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;">
+        &nbsp;
+      
+        </div>
+    </div> 
+
+</section>
+     <!--Modal Start for Submit Content-->
+    <div class="modal fade" id="submitresources" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Submit Content </h5>
+          <!--Alert Box Thank you-->
+          <div class="alert alert-success alert-dismissible fade show" role="alert" id="submitContentSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
+            <strong>Thank you for your submission.</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <!--Alert Box Thank you-->
+            <!--Alert Box Wrong-->
+            <div class="alert alert-success alert-dismissible fade show" role="alert" id="submitContentFailAlert" style="background-color: #E6EAEB;color: #454646;display:none !important;">
+                <strong>Oops! Something went wrong.</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            <!--Alert Box Wrong-->
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="contentOwnerName" class="col-form-label">Name of content owner</label>
+              <input type="text" class="form-control" id="contentOwnerName" required>
+            </div>
+            <div class="form-group">
+                <label for="contentOwnerEmail" class="col-form-label">Email address</label>
+                <input type="email" class="form-control" id="contentOwnerEmail" required>
+            </div>
+            
+           <div class="form-group">
+                <label for="contentOwnercountry" class="col-form-label">Country</label>
+                <select name="country" class="form-control" id="contentOwnercountry" required>
+                    <option value="">Please Select</option>
+                    <option value="Afganistan">Afghanistan</option>
+                    <option value="Albania">Albania</option>
+                    <option value="Algeria">Algeria</option>
+                    <option value="American Samoa">American Samoa</option>
+                    <option value="Andorra">Andorra</option>
+                    <option value="Angola">Angola</option>
+                    <option value="Anguilla">Anguilla</option>
+                    <option value="Antigua & Barbuda">Antigua & Barbuda</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Armenia">Armenia</option>
+                    <option value="Aruba">Aruba</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Austria">Austria</option>
+                    <option value="Azerbaijan">Azerbaijan</option>
+                    <option value="Bahamas">Bahamas</option>
+                    <option value="Bahrain">Bahrain</option>
+                    <option value="Bangladesh">Bangladesh</option>
+                    <option value="Barbados">Barbados</option>
+                    <option value="Belarus">Belarus</option>
+                    <option value="Belgium">Belgium</option>
+                    <option value="Belize">Belize</option>
+                    <option value="Benin">Benin</option>
+                    <option value="Bermuda">Bermuda</option>
+                    <option value="Bhutan">Bhutan</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Bonaire">Bonaire</option>
+                    <option value="Bosnia & Herzegovina">Bosnia & Herzegovina</option>
+                    <option value="Botswana">Botswana</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="British Indian Ocean Ter">British Indian Ocean Ter</option>
+                    <option value="Brunei">Brunei</option>
+                    <option value="Bulgaria">Bulgaria</option>
+                    <option value="Burkina Faso">Burkina Faso</option>
+                    <option value="Burundi">Burundi</option>
+                    <option value="Cambodia">Cambodia</option>
+                    <option value="Cameroon">Cameroon</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Canary Islands">Canary Islands</option>
+                    <option value="Cape Verde">Cape Verde</option>
+                    <option value="Cayman Islands">Cayman Islands</option>
+                    <option value="Central African Republic">Central African Republic</option>
+                    <option value="Chad">Chad</option>
+                    <option value="Channel Islands">Channel Islands</option>
+                    <option value="Chile">Chile</option>
+                    <option value="China">China</option>
+                    <option value="Christmas Island">Christmas Island</option>
+                    <option value="Cocos Island">Cocos Island</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Comoros">Comoros</option>
+                    <option value="Congo">Congo</option>
+                    <option value="Cook Islands">Cook Islands</option>
+                    <option value="Costa Rica">Costa Rica</option>
+                    <option value="Cote DIvoire">Cote DIvoire</option>
+                    <option value="Croatia">Croatia</option>
+                    <option value="Cuba">Cuba</option>
+                    <option value="Curaco">Curacao</option>
+                    <option value="Cyprus">Cyprus</option>
+                    <option value="Czech Republic">Czech Republic</option>
+                    <option value="Denmark">Denmark</option>
+                    <option value="Djibouti">Djibouti</option>
+                    <option value="Dominica">Dominica</option>
+                    <option value="Dominican Republic">Dominican Republic</option>
+                    <option value="East Timor">East Timor</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="El Salvador">El Salvador</option>
+                    <option value="Equatorial Guinea">Equatorial Guinea</option>
+                    <option value="Eritrea">Eritrea</option>
+                    <option value="Estonia">Estonia</option>
+                    <option value="Ethiopia">Ethiopia</option>
+                    <option value="Falkland Islands">Falkland Islands</option>
+                    <option value="Faroe Islands">Faroe Islands</option>
+                    <option value="Fiji">Fiji</option>
+                    <option value="Finland">Finland</option>
+                    <option value="France">France</option>
+                    <option value="French Guiana">French Guiana</option>
+                    <option value="French Polynesia">French Polynesia</option>
+                    <option value="French Southern Ter">French Southern Ter</option>
+                    <option value="Gabon">Gabon</option>
+                    <option value="Gambia">Gambia</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Ghana">Ghana</option>
+                    <option value="Gibraltar">Gibraltar</option>
+                    <option value="Great Britain">Great Britain</option>
+                    <option value="Greece">Greece</option>
+                    <option value="Greenland">Greenland</option>
+                    <option value="Grenada">Grenada</option>
+                    <option value="Guadeloupe">Guadeloupe</option>
+                    <option value="Guam">Guam</option>
+                    <option value="Guatemala">Guatemala</option>
+                    <option value="Guinea">Guinea</option>
+                    <option value="Guyana">Guyana</option>
+                    <option value="Haiti">Haiti</option>
+                    <option value="Hawaii">Hawaii</option>
+                    <option value="Honduras">Honduras</option>
+                    <option value="Hong Kong">Hong Kong</option>
+                    <option value="Hungary">Hungary</option>
+                    <option value="Iceland">Iceland</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="India">India</option>
+                    <option value="Iran">Iran</option>
+                    <option value="Iraq">Iraq</option>
+                    <option value="Ireland">Ireland</option>
+                    <option value="Isle of Man">Isle of Man</option>
+                    <option value="Israel">Israel</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Jamaica">Jamaica</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Jordan">Jordan</option>
+                    <option value="Kazakhstan">Kazakhstan</option>
+                    <option value="Kenya">Kenya</option>
+                    <option value="Kiribati">Kiribati</option>
+                    <option value="Korea North">Korea North</option>
+                    <option value="Korea Sout">Korea South</option>
+                    <option value="Kuwait">Kuwait</option>
+                    <option value="Kyrgyzstan">Kyrgyzstan</option>
+                    <option value="Laos">Laos</option>
+                    <option value="Latvia">Latvia</option>
+                    <option value="Lebanon">Lebanon</option>
+                    <option value="Lesotho">Lesotho</option>
+                    <option value="Liberia">Liberia</option>
+                    <option value="Libya">Libya</option>
+                    <option value="Liechtenstein">Liechtenstein</option>
+                    <option value="Lithuania">Lithuania</option>
+                    <option value="Luxembourg">Luxembourg</option>
+                    <option value="Macau">Macau</option>
+                    <option value="Macedonia">Macedonia</option>
+                    <option value="Madagascar">Madagascar</option>
+                    <option value="Malaysia">Malaysia</option>
+                    <option value="Malawi">Malawi</option>
+                    <option value="Maldives">Maldives</option>
+                    <option value="Mali">Mali</option>
+                    <option value="Malta">Malta</option>
+                    <option value="Marshall Islands">Marshall Islands</option>
+                    <option value="Martinique">Martinique</option>
+                    <option value="Mauritania">Mauritania</option>
+                    <option value="Mauritius">Mauritius</option>
+                    <option value="Mayotte">Mayotte</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="Midway Islands">Midway Islands</option>
+                    <option value="Moldova">Moldova</option>
+                    <option value="Monaco">Monaco</option>
+                    <option value="Mongolia">Mongolia</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Morocco">Morocco</option>
+                    <option value="Mozambique">Mozambique</option>
+                    <option value="Myanmar">Myanmar</option>
+                    <option value="Nambia">Nambia</option>
+                    <option value="Nauru">Nauru</option>
+                    <option value="Nepal">Nepal</option>
+                    <option value="Netherland Antilles">Netherland Antilles</option>
+                    <option value="Netherlands">Netherlands (Holland, Europe)</option>
+                    <option value="Nevis">Nevis</option>
+                    <option value="New Caledonia">New Caledonia</option>
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="Nicaragua">Nicaragua</option>
+                    <option value="Niger">Niger</option>
+                    <option value="Nigeria">Nigeria</option>
+                    <option value="Niue">Niue</option>
+                    <option value="Norfolk Island">Norfolk Island</option>
+                    <option value="Norway">Norway</option>
+                    <option value="Oman">Oman</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Palau Island">Palau Island</option>
+                    <option value="Palestine">Palestine</option>
+                    <option value="Panama">Panama</option>
+                    <option value="Papua New Guinea">Papua New Guinea</option>
+                    <option value="Paraguay">Paraguay</option>
+                    <option value="Peru">Peru</option>
+                    <option value="Phillipines">Philippines</option>
+                    <option value="Pitcairn Island">Pitcairn Island</option>
+                    <option value="Poland">Poland</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Puerto Rico">Puerto Rico</option>
+                    <option value="Qatar">Qatar</option>
+                    <option value="Republic of Montenegro">Republic of Montenegro</option>
+                    <option value="Republic of Serbia">Republic of Serbia</option>
+                    <option value="Reunion">Reunion</option>
+                    <option value="Romania">Romania</option>
+                    <option value="Russia">Russia</option>
+                    <option value="Rwanda">Rwanda</option>
+                    <option value="St Barthelemy">St Barthelemy</option>
+                    <option value="St Eustatius">St Eustatius</option>
+                    <option value="St Helena">St Helena</option>
+                    <option value="St Kitts-Nevis">St Kitts-Nevis</option>
+                    <option value="St Lucia">St Lucia</option>
+                    <option value="St Maarten">St Maarten</option>
+                    <option value="St Pierre & Miquelon">St Pierre & Miquelon</option>
+                    <option value="St Vincent & Grenadines">St Vincent & Grenadines</option>
+                    <option value="Saipan">Saipan</option>
+                    <option value="Samoa">Samoa</option>
+                    <option value="Samoa American">Samoa American</option>
+                    <option value="San Marino">San Marino</option>
+                    <option value="Sao Tome & Principe">Sao Tome & Principe</option>
+                    <option value="Saudi Arabia">Saudi Arabia</option>
+                    <option value="Senegal">Senegal</option>
+                    <option value="Seychelles">Seychelles</option>
+                    <option value="Sierra Leone">Sierra Leone</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="Slovakia">Slovakia</option>
+                    <option value="Slovenia">Slovenia</option>
+                    <option value="Solomon Islands">Solomon Islands</option>
+                    <option value="Somalia">Somalia</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Sri Lanka">Sri Lanka</option>
+                    <option value="Sudan">Sudan</option>
+                    <option value="Suriname">Suriname</option>
+                    <option value="Swaziland">Swaziland</option>
+                    <option value="Sweden">Sweden</option>
+                    <option value="Switzerland">Switzerland</option>
+                    <option value="Syria">Syria</option>
+                    <option value="Tahiti">Tahiti</option>
+                    <option value="Taiwan">Taiwan</option>
+                    <option value="Tajikistan">Tajikistan</option>
+                    <option value="Tanzania">Tanzania</option>
+                    <option value="Thailand">Thailand</option>
+                    <option value="Togo">Togo</option>
+                    <option value="Tokelau">Tokelau</option>
+                    <option value="Tonga">Tonga</option>
+                    <option value="Trinidad & Tobago">Trinidad & Tobago</option>
+                    <option value="Tunisia">Tunisia</option>
+                    <option value="Turkey">Turkey</option>
+                    <option value="Turkmenistan">Turkmenistan</option>
+                    <option value="Turks & Caicos Is">Turks & Caicos Is</option>
+                    <option value="Tuvalu">Tuvalu</option>
+                    <option value="Uganda">Uganda</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Ukraine">Ukraine</option>
+                    <option value="United Arab Erimates">United Arab Emirates</option>
+                    <option value="United States of America">United States of America</option>
+                    <option value="Uraguay">Uruguay</option>
+                    <option value="Uzbekistan">Uzbekistan</option>
+                    <option value="Vanuatu">Vanuatu</option>
+                    <option value="Vatican City State">Vatican City State</option>
+                    <option value="Venezuela">Venezuela</option>
+                    <option value="Vietnam">Vietnam</option>
+                    <option value="Virgin Islands (Brit)">Virgin Islands (Brit)</option>
+                    <option value="Virgin Islands (USA)">Virgin Islands (USA)</option>
+                    <option value="Wake Island">Wake Island</option>
+                    <option value="Wallis & Futana Is">Wallis & Futana Is</option>
+                    <option value="Yemen">Yemen</option>
+                    <option value="Zaire">Zaire</option>
+                    <option value="Zambia">Zambia</option>
+                    <option value="Zimbabwe">Zimbabwe</option>
+                    </select>
+            </div> 
+            <div class="form-group">
+                <label for="contentLink" class="col-form-label" required>Link to the content</label>
+                <input type="text" class="form-control" id="contentLink">
+            </div>
+            <div class="form-group">
+              <label for="contentMessege" class="col-form-label">Additional Information (Optional)</label>
+              <textarea class="form-control" id="contentMessege"></textarea>
+            </div>
+            <div class="text-left checkbox-wrapper">
+                <input type="checkbox" id="terms" class="checkbox">
+                <label class="checkbox-label" for="terms">By submitting this form, you agree to let Ballerina use your company name and/or other details on our website and other marketing material.</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-form-close" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-form-submit">Submit</button>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!--Modal Finish for Submit Content-->
+
+
+    <!--Modal Start for SubmitUsecase-->
+    <div class="modal fade" id="submitUseCaseForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Tell us how you are using Ballerina </h5>
+              <!--Alert Box Thank you-->
+              <div class="alert alert-success alert-dismissible fade show" role="alert" id="newsletterSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
+                <strong>Thank you for sharing. We will be in touch.</strong> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <!--Alert Box Thank you-->
+                <!--Alert Box Wrong-->
+                <div class="alert alert-success alert-dismissible fade show" role="alert" id="newsletterSuccessAlert" style="background-color: #E6EAEB;color: #454646;display:none !important;">
+                    <strong>Oops! Something went wrong.</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                <!--Alert Box Wrong-->
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="usecaseSubName" class="col-form-label">Your Name</label>
+                  <input type="text" class="form-control" id="usecaseSubName" required>
+                </div>
+                <div class="form-group">
+                    <label for="usecaseSubCompany" class="col-form-label">Name of Company</label>
+                    <input type="text" class="form-control" id="usecaseSubCompany" required>
+                </div>
+                <div class="form-group">
+                    <label for="usecaseSubDesignation" class="col-form-label">Designation</label>
+                    <input type="text" class="form-control" id="usecaseSubDesignation" required>
+                </div>
+                <div class="form-group">
+                    <label for="usecaseSubWorkEmail" class="col-form-label">Your work email</label>
+                    <input type="email" class="form-control" id="usecaseSubWorkEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="usecaseSubIndustry" class="col-form-label">Industry</label>
+                    <select name="industry" class="form-control" id="usecaseSubIndustry" required>
+                        <option value="">Please Select</option>
+                        <option value="Agriculture">Agriculture</option>
+                        <option value="Automotive">Automotive</option>
+                        <option value="Computers & Electronics">Computers & Electronics</option>
+                        <option value="Consumer Goods">Consumer Goods</option>
+                        <option value="Education">Education</option>
+                        <option value="Financial Services">Financial Services</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="Government">Government</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Hospitality">Hospitality</option>
+                        <option value="Life Sciences">Life Sciences</option>
+                        <option value="Manufacturing">Manufacturing</option>
+                        <option value="Marketing & Advertising">Marketing & Advertising</option>
+                        <option value="Media & Entertainment">Media & Entertainment</option>
+                        <option value="Non-Profit Organization">Non-Profit Organization</option>
+                        <option value="Power and Utilities">Power and Utilities</option>
+                        <option value="Professional Services">Professional Services</option>
+                        <option value="Real Estate & Construction">Real Estate & Construction</option>
+                        <option value="Retail">Retail</option>
+                        <option value="Software & Internet">Software & Internet</option>
+                        <option value="Telecommunications">Telecommunications</option>
+                        <option value="Transportation & Logistics">Transportation & Logistics</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Wholesale & Distribution">Wholesale & Distribution</option>
+                        <option value="Other">Other</option> 
+                        </select>
+                </div>
+               <div class="form-group">
+                    <label for="usecaseSubCountry" class="col-form-label">Country</label>
+                    <select name="usecaseSubCountry" class="form-control" id="usecaseSubCountry" required>
+                        <option value="">Please Select</option>
+                        <option value="Afganistan">Afghanistan</option>
+                        <option value="Albania">Albania</option>
+                        <option value="Algeria">Algeria</option>
+                        <option value="American Samoa">American Samoa</option>
+                        <option value="Andorra">Andorra</option>
+                        <option value="Angola">Angola</option>
+                        <option value="Anguilla">Anguilla</option>
+                        <option value="Antigua & Barbuda">Antigua & Barbuda</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Armenia">Armenia</option>
+                        <option value="Aruba">Aruba</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Austria">Austria</option>
+                        <option value="Azerbaijan">Azerbaijan</option>
+                        <option value="Bahamas">Bahamas</option>
+                        <option value="Bahrain">Bahrain</option>
+                        <option value="Bangladesh">Bangladesh</option>
+                        <option value="Barbados">Barbados</option>
+                        <option value="Belarus">Belarus</option>
+                        <option value="Belgium">Belgium</option>
+                        <option value="Belize">Belize</option>
+                        <option value="Benin">Benin</option>
+                        <option value="Bermuda">Bermuda</option>
+                        <option value="Bhutan">Bhutan</option>
+                        <option value="Bolivia">Bolivia</option>
+                        <option value="Bonaire">Bonaire</option>
+                        <option value="Bosnia & Herzegovina">Bosnia & Herzegovina</option>
+                        <option value="Botswana">Botswana</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="British Indian Ocean Ter">British Indian Ocean Ter</option>
+                        <option value="Brunei">Brunei</option>
+                        <option value="Bulgaria">Bulgaria</option>
+                        <option value="Burkina Faso">Burkina Faso</option>
+                        <option value="Burundi">Burundi</option>
+                        <option value="Cambodia">Cambodia</option>
+                        <option value="Cameroon">Cameroon</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Canary Islands">Canary Islands</option>
+                        <option value="Cape Verde">Cape Verde</option>
+                        <option value="Cayman Islands">Cayman Islands</option>
+                        <option value="Central African Republic">Central African Republic</option>
+                        <option value="Chad">Chad</option>
+                        <option value="Channel Islands">Channel Islands</option>
+                        <option value="Chile">Chile</option>
+                        <option value="China">China</option>
+                        <option value="Christmas Island">Christmas Island</option>
+                        <option value="Cocos Island">Cocos Island</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Comoros">Comoros</option>
+                        <option value="Congo">Congo</option>
+                        <option value="Cook Islands">Cook Islands</option>
+                        <option value="Costa Rica">Costa Rica</option>
+                        <option value="Cote DIvoire">Cote DIvoire</option>
+                        <option value="Croatia">Croatia</option>
+                        <option value="Cuba">Cuba</option>
+                        <option value="Curaco">Curacao</option>
+                        <option value="Cyprus">Cyprus</option>
+                        <option value="Czech Republic">Czech Republic</option>
+                        <option value="Denmark">Denmark</option>
+                        <option value="Djibouti">Djibouti</option>
+                        <option value="Dominica">Dominica</option>
+                        <option value="Dominican Republic">Dominican Republic</option>
+                        <option value="East Timor">East Timor</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="El Salvador">El Salvador</option>
+                        <option value="Equatorial Guinea">Equatorial Guinea</option>
+                        <option value="Eritrea">Eritrea</option>
+                        <option value="Estonia">Estonia</option>
+                        <option value="Ethiopia">Ethiopia</option>
+                        <option value="Falkland Islands">Falkland Islands</option>
+                        <option value="Faroe Islands">Faroe Islands</option>
+                        <option value="Fiji">Fiji</option>
+                        <option value="Finland">Finland</option>
+                        <option value="France">France</option>
+                        <option value="French Guiana">French Guiana</option>
+                        <option value="French Polynesia">French Polynesia</option>
+                        <option value="French Southern Ter">French Southern Ter</option>
+                        <option value="Gabon">Gabon</option>
+                        <option value="Gambia">Gambia</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Germany">Germany</option>
+                        <option value="Ghana">Ghana</option>
+                        <option value="Gibraltar">Gibraltar</option>
+                        <option value="Great Britain">Great Britain</option>
+                        <option value="Greece">Greece</option>
+                        <option value="Greenland">Greenland</option>
+                        <option value="Grenada">Grenada</option>
+                        <option value="Guadeloupe">Guadeloupe</option>
+                        <option value="Guam">Guam</option>
+                        <option value="Guatemala">Guatemala</option>
+                        <option value="Guinea">Guinea</option>
+                        <option value="Guyana">Guyana</option>
+                        <option value="Haiti">Haiti</option>
+                        <option value="Hawaii">Hawaii</option>
+                        <option value="Honduras">Honduras</option>
+                        <option value="Hong Kong">Hong Kong</option>
+                        <option value="Hungary">Hungary</option>
+                        <option value="Iceland">Iceland</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="India">India</option>
+                        <option value="Iran">Iran</option>
+                        <option value="Iraq">Iraq</option>
+                        <option value="Ireland">Ireland</option>
+                        <option value="Isle of Man">Isle of Man</option>
+                        <option value="Israel">Israel</option>
+                        <option value="Italy">Italy</option>
+                        <option value="Jamaica">Jamaica</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Jordan">Jordan</option>
+                        <option value="Kazakhstan">Kazakhstan</option>
+                        <option value="Kenya">Kenya</option>
+                        <option value="Kiribati">Kiribati</option>
+                        <option value="Korea North">Korea North</option>
+                        <option value="Korea Sout">Korea South</option>
+                        <option value="Kuwait">Kuwait</option>
+                        <option value="Kyrgyzstan">Kyrgyzstan</option>
+                        <option value="Laos">Laos</option>
+                        <option value="Latvia">Latvia</option>
+                        <option value="Lebanon">Lebanon</option>
+                        <option value="Lesotho">Lesotho</option>
+                        <option value="Liberia">Liberia</option>
+                        <option value="Libya">Libya</option>
+                        <option value="Liechtenstein">Liechtenstein</option>
+                        <option value="Lithuania">Lithuania</option>
+                        <option value="Luxembourg">Luxembourg</option>
+                        <option value="Macau">Macau</option>
+                        <option value="Macedonia">Macedonia</option>
+                        <option value="Madagascar">Madagascar</option>
+                        <option value="Malaysia">Malaysia</option>
+                        <option value="Malawi">Malawi</option>
+                        <option value="Maldives">Maldives</option>
+                        <option value="Mali">Mali</option>
+                        <option value="Malta">Malta</option>
+                        <option value="Marshall Islands">Marshall Islands</option>
+                        <option value="Martinique">Martinique</option>
+                        <option value="Mauritania">Mauritania</option>
+                        <option value="Mauritius">Mauritius</option>
+                        <option value="Mayotte">Mayotte</option>
+                        <option value="Mexico">Mexico</option>
+                        <option value="Midway Islands">Midway Islands</option>
+                        <option value="Moldova">Moldova</option>
+                        <option value="Monaco">Monaco</option>
+                        <option value="Mongolia">Mongolia</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Morocco">Morocco</option>
+                        <option value="Mozambique">Mozambique</option>
+                        <option value="Myanmar">Myanmar</option>
+                        <option value="Nambia">Nambia</option>
+                        <option value="Nauru">Nauru</option>
+                        <option value="Nepal">Nepal</option>
+                        <option value="Netherland Antilles">Netherland Antilles</option>
+                        <option value="Netherlands">Netherlands (Holland, Europe)</option>
+                        <option value="Nevis">Nevis</option>
+                        <option value="New Caledonia">New Caledonia</option>
+                        <option value="New Zealand">New Zealand</option>
+                        <option value="Nicaragua">Nicaragua</option>
+                        <option value="Niger">Niger</option>
+                        <option value="Nigeria">Nigeria</option>
+                        <option value="Niue">Niue</option>
+                        <option value="Norfolk Island">Norfolk Island</option>
+                        <option value="Norway">Norway</option>
+                        <option value="Oman">Oman</option>
+                        <option value="Pakistan">Pakistan</option>
+                        <option value="Palau Island">Palau Island</option>
+                        <option value="Palestine">Palestine</option>
+                        <option value="Panama">Panama</option>
+                        <option value="Papua New Guinea">Papua New Guinea</option>
+                        <option value="Paraguay">Paraguay</option>
+                        <option value="Peru">Peru</option>
+                        <option value="Phillipines">Philippines</option>
+                        <option value="Pitcairn Island">Pitcairn Island</option>
+                        <option value="Poland">Poland</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="Puerto Rico">Puerto Rico</option>
+                        <option value="Qatar">Qatar</option>
+                        <option value="Republic of Montenegro">Republic of Montenegro</option>
+                        <option value="Republic of Serbia">Republic of Serbia</option>
+                        <option value="Reunion">Reunion</option>
+                        <option value="Romania">Romania</option>
+                        <option value="Russia">Russia</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="St Barthelemy">St Barthelemy</option>
+                        <option value="St Eustatius">St Eustatius</option>
+                        <option value="St Helena">St Helena</option>
+                        <option value="St Kitts-Nevis">St Kitts-Nevis</option>
+                        <option value="St Lucia">St Lucia</option>
+                        <option value="St Maarten">St Maarten</option>
+                        <option value="St Pierre & Miquelon">St Pierre & Miquelon</option>
+                        <option value="St Vincent & Grenadines">St Vincent & Grenadines</option>
+                        <option value="Saipan">Saipan</option>
+                        <option value="Samoa">Samoa</option>
+                        <option value="Samoa American">Samoa American</option>
+                        <option value="San Marino">San Marino</option>
+                        <option value="Sao Tome & Principe">Sao Tome & Principe</option>
+                        <option value="Saudi Arabia">Saudi Arabia</option>
+                        <option value="Senegal">Senegal</option>
+                        <option value="Seychelles">Seychelles</option>
+                        <option value="Sierra Leone">Sierra Leone</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="Slovakia">Slovakia</option>
+                        <option value="Slovenia">Slovenia</option>
+                        <option value="Solomon Islands">Solomon Islands</option>
+                        <option value="Somalia">Somalia</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="Spain">Spain</option>
+                        <option value="Sri Lanka">Sri Lanka</option>
+                        <option value="Sudan">Sudan</option>
+                        <option value="Suriname">Suriname</option>
+                        <option value="Swaziland">Swaziland</option>
+                        <option value="Sweden">Sweden</option>
+                        <option value="Switzerland">Switzerland</option>
+                        <option value="Syria">Syria</option>
+                        <option value="Tahiti">Tahiti</option>
+                        <option value="Taiwan">Taiwan</option>
+                        <option value="Tajikistan">Tajikistan</option>
+                        <option value="Tanzania">Tanzania</option>
+                        <option value="Thailand">Thailand</option>
+                        <option value="Togo">Togo</option>
+                        <option value="Tokelau">Tokelau</option>
+                        <option value="Tonga">Tonga</option>
+                        <option value="Trinidad & Tobago">Trinidad & Tobago</option>
+                        <option value="Tunisia">Tunisia</option>
+                        <option value="Turkey">Turkey</option>
+                        <option value="Turkmenistan">Turkmenistan</option>
+                        <option value="Turks & Caicos Is">Turks & Caicos Is</option>
+                        <option value="Tuvalu">Tuvalu</option>
+                        <option value="Uganda">Uganda</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="Ukraine">Ukraine</option>
+                        <option value="United Arab Erimates">United Arab Emirates</option>
+                        <option value="United States of America">United States of America</option>
+                        <option value="Uraguay">Uruguay</option>
+                        <option value="Uzbekistan">Uzbekistan</option>
+                        <option value="Vanuatu">Vanuatu</option>
+                        <option value="Vatican City State">Vatican City State</option>
+                        <option value="Venezuela">Venezuela</option>
+                        <option value="Vietnam">Vietnam</option>
+                        <option value="Virgin Islands (Brit)">Virgin Islands (Brit)</option>
+                        <option value="Virgin Islands (USA)">Virgin Islands (USA)</option>
+                        <option value="Wake Island">Wake Island</option>
+                        <option value="Wallis & Futana Is">Wallis & Futana Is</option>
+                        <option value="Yemen">Yemen</option>
+                        <option value="Zaire">Zaire</option>
+                        <option value="Zambia">Zambia</option>
+                        <option value="Zimbabwe">Zimbabwe</option>
+                        </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="usecaseSubMessege" class="col-form-label">Tell us how you're using Ballerina</label>
+                  <textarea class="form-control" id="usecaseSubMessege" required></textarea>
+                </div>
+                <div class="text-left checkbox-wrapper">
+                    <input type="checkbox" id="terms" class="checkbox">
+                    <label class="checkbox-label" for="terms">By submitting this form, you agree to let Ballerina use your company name and/or other details on our website and other marketing material.</label>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-form-close" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-form-submit">Submit</button>
+            </div>
+          </div>
+        </div>
+        </div>
+    <!--Modal Finish for Submit Usecase-->
+
+
+
+</div>
+
+<script>
+    $(document).ready(function(){
+      $("#myBtn").click(function(){
+        $("#submitresources").modal();
+      });
+    });
+
+    $(document).ready(function(){
+      $("#submitUseCase").click(function(){
+        $("#submitUseCaseForm").modal();
+      });
+    });
+</script>

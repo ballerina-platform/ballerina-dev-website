@@ -1,0 +1,319 @@
+---
+layout: ballerina-home-page
+title: Ballerina Community Page
+description: 
+permalink: /tech-talk/
+intro: 
+redirect_from:
+
+---
+
+<style>
+    .text-feild{
+        padding: 20px 20px;
+        margin: 5px 0px;
+        width: 100%;
+        display: inline-block;      
+    }
+
+    .submit-button{
+        padding: 10px 20px;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        background-color: #20b6b0;
+        color: #fff;
+        margin: 5px 0px;
+        border: none;
+    }
+
+    .event-card{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .cBoxCard{
+  
+  border:#E6EAEB solid 0.1px ;
+  text-align: left;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 0;
+  box-shadow: 0;
+  margin-bottom: 15px;
+  margin-top:15px;
+  box-shadow:none;
+    }
+    .cBoxCard-1{
+  
+  
+  text-align: left;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 0;
+  box-shadow: 0;
+  margin-bottom: 15px;
+  margin-top:15px;
+  box-shadow:none;
+    }
+.form-check-label{
+    display: inline-block;
+max-width: 100%;
+margin-bottom: 5px;
+font-weight: 400;
+font-size: 10px;
+}
+  
+.checkbox-wrapper {
+  white-space: nowrap
+}
+.checkbox {
+  vertical-align: top;
+  display:inline-block
+}
+.checkbox-label {
+  white-space: normal;
+  display:inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  color: #57595d;
+  padding-left: 8px;
+}
+
+.card p{
+    margin-top:15px !important;
+    margin-bottom:0px !important;
+}
+
+.card{
+    border: none;
+    margin: 10px 40px 15px 0px;
+    padding: 0px 0px;
+    max-width: 360px;
+}
+
+
+.card h4{
+    color: #20b6b0;
+    height: 45px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #585A5E;
+  background-color: #fff;
+  background-image: none;
+  border-radius: 0px;
+  transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #585A5E;
+  border-radius: 0px;
+  -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+  box-shadow: 0 3px 9px rgba(0,0,0,.5);
+  outline: 0;
+}
+
+.btn-form-submit{
+    padding: 10px 20px;
+        display: inline-block;
+        text-align: center;
+        background-color: #20b6b0;
+        color: #fff;
+        border: none;
+        border-radius: 0px;
+        margin-bottom:5px;
+}
+
+.btn-form-close{
+    padding: 10px 20px;
+        display: inline-block;
+        text-align: center;
+        background-color: #E6EAEB;
+        color: #464646;
+        margin: 5px 0px;
+        border: none;
+        border-radius: 0px;
+}
+.col-form-label{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+</style>
+
+
+<div class="container">
+
+    <section style="padding-bottom: 30px;">
+        <h2 style="padding-right: 15px;">Ballerina Tech Talk</h2>
+        <div class="row">
+          
+            <div class="col-sm-12 col-md-6 col-lg-6" style="float: left;padding-left: 0px;">
+              <p style="padding-bottom: 25px;">
+                We host a public tech talk every month, where our engineers discuss different technical topics, show you how Ballerina can be leveraged to implement related use cases, present upcoming features, and answer all your burning questions live. These interactive sessions will give you direct access to our engineers and other community members to discuss Ballerina and your projects.
+              </p>
+              <form id="bio-tech-talk-subscribeForm">
+                <div class="row">
+                    <div class="col-sm-12 col-md-8 col-lg-8" style="float: left;padding-left: 0px;">
+                        <input type="email" required-field="1" class="form-control text-feild" id="bio-tech-talk-sub-email" aria-describedby="emailHelp" placeholder="Enter your Email address" style="border-radius: 0;border: #20b6b0 solid 1px;">
+                        <!--Alert Box Thank you-->
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" id="bioTechTalkSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
+                        <strong>Thank you.</strong> You will receive notifications for our upcoming tech talks.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <!--Alert Box Thank you-->
+                        <!--Alert Box Wrong-->
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" id="bioTechTalkWrongAlert" style="background-color: #E6EAEB;color: #454646;display:none !important;">
+                        <strong>Enter a valid email address.</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <!--Alert Box Wrong-->
+                        
+                        <div class="text-left checkbox-wrapper">
+                            <input type="checkbox" id="terms" class="checkbox">
+                            <label class="checkbox-label" for="terms">We care about your privacy. You can unsubscribe from our emails at any time. See our privacy policy for how we use and protect your data.</label>
+                        </div>
+                    
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4" style="float: right;">
+                        <button type="button" class="submit-button" id="subscribe_button" >Register</button>
+                    </div>
+                </div>
+             </form>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;">
+          
+            <div class="row " style="float: left; background-color: #E6EAEB;padding: 25px 20px;">
+    
+                <h5 style="padding-left:25px;margin-bottom: 20px;"> Next Call</h5>
+                <div class="col-sm-12 col-md-4 col-lg-4" style="" >
+                    <p style="color: #585A5E; font-size:17px;float: right;">Nov 25, 2021</p>
+                    <p style="float: right;">Tuesday</p>
+                    <!-- <p style="float: right;">Virtual</p> -->
+    
+                </div>
+                <div class="col-sm-12 col-md-8 col-lg-8" style="border-left: 2px #585A5E solid;">
+                    <p>
+                        Tech Talk
+                    </p>
+                    <h4 style="color: #20b6b0;">Ballerina Tech Talk</h4>
+                    <p>
+                        Join us at our upcoming events and be a part of the conversation. 
+                    </p>
+    
+                </div>   
+            </div>
+    
+          
+            </div>
+        </div> 
+    </section>
+    <section style="padding-bottom: 30px;">
+        <div class="row">
+            <div class="col-sm-12 col-md-1 col-lg-1" style="float: left; padding-left: 0px;">
+                &nbsp;
+            </div>
+        <div class="col-sm-12 col-md-7 col-lg-7" style="float: left; text-align: left;">
+            <h3 style="margin-top: 15px;"> Do you want to contribute  Ballerina Tech Talk ? </h3>
+        </div>
+        <div class="col-sm-12 col-md-3 col-lg-3" style="float: left; padding-left: 0px;">
+            <button type="button" class="submit-button" id="sumbitTechTalk" data-toggle="modal" data-target="#sumbitTechTalkForm" >Submit Here</button>
+        </div>
+        <div class="col-sm-12 col-md-1 col-lg-1" style="float: left; padding-left: 0px;">
+            &nbsp;
+        </div>
+        </div>
+
+
+
+
+    </section>
+
+    <section style="padding-bottom: 30px;">
+        <h2 style="padding-right: 15px;">Past Tech Talk</h2>
+
+
+    </section>
+    
+
+
+     <!--Modal Start for Submit Content-->
+     <div class="modal fade" id="sumbitTechTalkForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Suggest Topics or Give Feedback</h5>
+              <!--Alert Box Thank you-->
+              <div class="alert alert-success alert-dismissible fade show" role="alert" id="newsletterSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
+                <strong>Thank you for your submission.</strong> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <!--Alert Box Thank you-->
+                <!--Alert Box Wrong-->
+                <div class="alert alert-success alert-dismissible fade show" role="alert" id="newsletterSuccessAlert" style="background-color: #E6EAEB;color: #454646;display:none !important;">
+                    <strong>Oops! Something went wrong.</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                <!--Alert Box Wrong-->
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Name</label>
+                  <input type="text" class="form-control" id="recipient-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Email address</label>
+                    <input type="email" class="form-control" id="recipient-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Company Name (Optional)</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Topic Suggestion or Feedback</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-form-close" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-form-submit">Submit</button>
+            </div>
+          </div>
+        </div>
+        </div>
+         <!--Modal Finish for Submit Content-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

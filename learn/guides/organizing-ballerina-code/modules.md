@@ -1,5 +1,5 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-organizing-code-left-nav-pages-swanlake
 title: Modules
 description: The sections below include information about the concept of modules.
 keywords: ballerina, programming language, ballerina packages, modules, module layout
@@ -13,6 +13,7 @@ redirect_from:
  - /learn/organizing-ballerina-code
  - /learn/organizing-ballerina-code/modules
 ---
+
 
 A package is a collection of related modules that are versioned and distributed as a single unit. It is common in small projects to have only one module (default) in a package. As a result, the default module’s content is placed directly in the root of the package directory. However, as projects grow in complexity, the need arises to organize code better in terms of functionality and visibility. Therefore, Ballerina allows subdividing the code into multiple modules as well.
 
@@ -95,5 +96,6 @@ Ballerina provides a mechanism to control the visibility of modules outside of t
 By default, only the default module of a package is exported. Other modules of the package are visible only to the modules in the same package.
 
 If any module should be visible to other packages, the module must be marked as `exported` in the `Ballerina.toml` under the [`[package]` table](/learn/user-guide/ballerina-packages/package-layout#ballerinatoml).
+
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

@@ -11,7 +11,6 @@ redirect_from:
  - /learn
 ---
 
-
 <style>
 	:not(pre) > code[class*="language-"], pre[class*="language-"]{
 		    background: #e0dede !important;

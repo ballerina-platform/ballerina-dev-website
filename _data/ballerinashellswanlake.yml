@@ -1,0 +1,22 @@
+- title: Ballerina Shell
+  url: #
+  sublinks:
+    - title: Setting up the Prerequisites
+      url: /learn/ballerina-shell/#setting-up-the-prerequisites
+      active: setting-up-the-prerequisites
+    - title: Starting the Shell
+      url: /learn/ballerina-shell/#starting-the-shell
+      active: starting-the-shell
+    - title: Stopping the Shell
+      url: /learn/ballerina-shell/#stopping-the-shell
+      active: stopping-the-shell
+    - title: Evaluating Code Snippets
+      url: /learn/ballerina-shell/#evaluating-code-snippets
+      active: evaluating-code-snippets
+    - title: Loading Definitions from a File
+      url: /learn/ballerina-shell/#loading-definitions-from-a-file
+      active: loading-definitions-from-a-file
+    - title: Resetting the State
+      url: /learn/ballerina-shell/#resetting-the-state
+      active: resetting-the-state
+

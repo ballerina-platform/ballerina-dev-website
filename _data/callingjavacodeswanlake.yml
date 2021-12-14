@@ -1,0 +1,30 @@
+- title: Calling Java Code from Ballerina and Vice Versa
+  url: #
+  sublinks:
+    - title: Ballerina Bindings to Java Code
+      url: /learn/calling-java-code-from-ballerina-and-vice-versa/#ballerina-bindings-to-java-code
+      active: ballerina-bindings-to-java-code
+    - title: The Need to Call Java from Ballerina
+      url: /learn/calling-java-code-from-ballerina-and-vice-versa/#the-need-to-call-java-from-ballerina
+      active: the-need-to-call-java-from-ballerina
+    - title: Writing Ballerina Bindings
+      url: /learn/calling-java-code-from-ballerina-and-vice-versa/#writing-ballerina-bindings
+      active: writing-ballerina-bindings
+    - title: Using the SnakeYAML Java Library in Ballerina
+      url: /learn/calling-java-code-from-ballerina-and-vice-versa/#using-the-snakeyaml-java-library-in-ballerina
+      active: using-the-snakeyaml-java-library-in-ballerina
+    - title: The bindgen Tool
+      url: /learn/calling-java-code-from-ballerina-and-vice-versa/#the-bindgen-tool
+      active: the-bindgen-tool
+    - title: Packaging Java Libraries with Ballerina Programs
+      url: /learn/calling-java-code-from-ballerina-and-vice-versa/#packaging-java-libraries-with-ballerina-programs
+      active: packaging-java-libraries-with-ballerina-programs
+    - title: Ballerina FFI
+      url: /learn/calling-java-code-from-ballerina-and-vice-versa/#ballerina-ffi
+      active: ballerina-ffi
+    - title: Calling Java Programs from Ballerina
+      url: /learn/calling-java-code-from-ballerina-and-vice-versa/#calling-java-programs-from-ballerina
+      active: calling-java-programs-from-ballerina
+
+
+

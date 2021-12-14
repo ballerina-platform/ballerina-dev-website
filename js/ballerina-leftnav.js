@@ -71,10 +71,11 @@ $(function() {
       if (url == (this.href)) {
           $(this).closest("a").addClass("cLeftMenuInnerLink cTopiAtag highlight");
           //scroll the li to top
-          $(".cLeftMenuInnerLink.cTopiAtag.highlight")[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+          //$(".cLeftMenuInnerLink.cTopiAtag.highlight")[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
 
       }
   });
+  $(".cLeftMenuInnerLink.cTopiAtag.highlight")[0].scrollIntoView({});
   $(document).ready(function(){ 
     $('.cLeftMenuInnerLink.cTopiAtag.highlight')[0].click(function(){
     }); 

@@ -24,6 +24,8 @@ redirect_from:
   - /learn/installing-ballerina/installation-options
 ---
 
+
+
 ## Installing Ballerina via Installers
 
 Follow the instructions below to install the latest Ballerina version using the installer. The installer will automatically uninstall the old Ballerina version if you have one already installed.
@@ -60,6 +62,7 @@ For example, for the RPM file:
 rpm -i ballerina-linux-installer-x64-swan-lake-<VERSION>.rpm 
 ```
 
+
 ## Installing via the Ballerina Language ZIP File
 
 > **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the [AdoptOpenJRE](https://adoptopenjdk.net/) version 11 or above.
@@ -71,6 +74,7 @@ rpm -i ballerina-linux-installer-x64-swan-lake-<VERSION>.rpm
     - **For Windows:** add a new environment variable specifying the following values:
         - **Variable name:** PATH
         - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, `C:\Program Files\Ballerina\ballerina-<VERSION>\bin`
+
 
 ## Verifying the Installation
 
@@ -101,10 +105,13 @@ If you already have a jBallerina version above 1.1.0 installed, you can use the 
 `bal dist pull <JBALLERINA-VERSION>`|Fetch a specific distribution 
 
 For more information, see [Keeping Ballerina Up to Date](/learn/tooling-guide/cli-tools/update-tool/).
-  
+
+
 ## Building from Source
 
 For instructions, see [Building from Source](/learn/user-guide/getting-started/building-from-source/).
+
+
 
 ## Uninstalling Ballerina
 
@@ -128,10 +135,10 @@ For example, for the RPM file:
 rpm -e ballerina-swan-lake-<VERSION>
 ```
 
+
 ## What's Next?
 
 Once you have successfully installed Ballerina, now you can [write your first Ballerina program](/learn/user-guide/getting-started/writing-your-first-ballerina-program/).
 
 >**Tip:** To get help when you work with Ballerina, see [Community](/community).
-
 

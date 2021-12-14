@@ -5,8 +5,6 @@ permalink: /downloads/swan-lake-release-notes/swan-lake-beta5/
 active: swan-lake-beta5
 redirect_from: 
     - /downloads/swan-lake-release-notes/swan-lake-beta5
-    - /downloads/swan-lake-release-notes/
-    - /downloads/swan-lake-release-notes
 ---
 
 ### Overview of Ballerina Swan Lake Beta5

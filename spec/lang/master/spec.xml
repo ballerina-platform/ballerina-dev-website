@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R1 preview 2021-12-01</h1>
+<h1>Ballerina Language Specification, 2022R1 preview 2021-12-07</h1>
 <p>
 Primary contributors:
 </p>
@@ -247,7 +247,7 @@ code points:
 <li>surrogates (0xD800 to 0xDFFF)</li>
 <li>non-characters (the 66 code points that Unicode designates as
 non-characters)</li>
-<li>C0 control characters (0x0 to 0x1F and 0x1F) other than whitespace (0x9,
+<li>C0 control characters (0x0 to 0x1F and 0x1F) other than white space (0x9,
 0xA, 0xC, 0xD)</li>
 <li>C1 control characters (0x80 to 0x9F)</li>
 </ul>
@@ -300,7 +300,7 @@ point; more precisely, it must be a hexadecimal numeral denoting an integer
 <pre
 class="grammar"><dfn>RestrictedIdentifier</dfn> := <abbr>AsciiLetter</abbr> <abbr>RestrictedFollowingChar</abbr>* <abbr>RestrictedIdentifierWord</abbr>*
 <dfn>RestrictedIdentifierWord</dfn> := <code>_</code> <abbr>RestrictedFollowingChar</abbr>+
-<dfn>RestrictedFollowingChar</dfn> := <abbr>AsciiLetter</abbr> | <abbr>AsciiDigit</abbr>
+<dfn>RestrictedFollowingChar</dfn> := <abbr>AsciiLetter</abbr> | <abbr>Digit</abbr>
 </pre>
 
 <p>
@@ -318,6 +318,17 @@ class="grammar"><dfn>TokenWhiteSpace</dfn> := (<abbr>Comment</abbr> | <abbr>Whit
 <code>TokenWhiteSpace</code> is implicitly allowed on the right hand side of
 productions for non-terminals whose names start with a lower-case letter.
 </p>
+
+<pre
+class="grammar"><dfn>NoSpaceColon</dfn> := <code>:</code>
+</pre>
+<p>
+When <code>NoSpaceColon</code> is used in a production,
+<code>TokenWhiteSpace</code> is not allowed immediately before or after the
+colon. When a literal <code>:</code> is used in a production, white space is
+handled in the same was as for any other character.
+</p>
+
 </section>
 <section>
 <h2 id="values_types">5. Values, types and variables</h2>
@@ -1484,8 +1495,9 @@ that the value for all members must belong to, and optionally, a length.
 </p>
 
 <pre
-class="grammar"><dfn>array-type-descriptor</dfn> := <abbr>member-type-descriptor</abbr> <code>[</code> [ <abbr>array-length</abbr> ] <code>]</code>
-<dfn>member-type-descriptor</dfn> := <abbr>type-descriptor</abbr>
+class="grammar"><dfn>array-type-descriptor</dfn> := <abbr>array-member-type-descriptor</abbr> <abbr>array-dimension</abbr>+
+<dfn>array-dimension</dfn> := <code>[</code> [ <abbr>array-length</abbr> ] <code>]</code>
+<dfn>array-member-type-descriptor</dfn> := <abbr>type-descriptor</abbr> <em>but not</em> <abbr>array-type-descriptor</abbr>
 <dfn>array-length</dfn> :=
    <abbr>int-literal</abbr>
    | <abbr>constant-reference-expr</abbr>
@@ -1496,6 +1508,22 @@ class="grammar"><dfn>array-type-descriptor</dfn> := <abbr>member-type-descriptor
 A type <code>T[]</code> contains a list shape if all members of the list shape
 are in <code>T</code>. A type <code>T[n]</code> contains a list shape if in
 addition the length of the list shape is n.
+</p>
+<p>
+When an <code>array-type-descriptor</code> includes multiple
+<code>array-dimension</code>s, the <code>array-dimension</code>s are interpreted
+so that the order of the dimensions in the <code>array-type-descriptor</code> is
+consistent with the order of the dimensions in a
+<code>member-access-expr</code>. Specifically, a type
+<code>T[n<sub>1</sub>]...[n<sub>k - 1</sub>][n<sub>k</sub>]</code> is
+interpreted as <code>(T[n<sub>k</sub>])[n<sub>1</sub>]...[n<sub>k -
+1</sub>]</code>. Thus, for a value <code>v</code> of type <code>T[M][N]</code>,
+a member-access-expr <code>v[i][j]</code> will evaluate to an value of type
+<code>T</code> if and only if 0 &#x2264; <code>i</code> &#x2264; <code>M</code>
+and 0 &#x2264; <code>j</code> &#x2264; <code>N</code>. An
+<code>array-type-descriptor</code> is parsed to include all following
+<code>array-dimension</code>s: an <code>array-type-descriptor</code> is not
+recognized as <code>array-member-type-descriptor</code>.
 </p>
 <p>
 A <code>constant-reference-expr</code> in an <code>array-length</code> must
@@ -1528,6 +1556,7 @@ class="grammar"><dfn>tuple-type-descriptor</dfn> :=
 <dfn>tuple-member-type-descriptors</dfn> :=
    <abbr>member-type-descriptor</abbr> (<code>,</code> <abbr>member-type-descriptor</abbr>)* [<code>,</code> <abbr>tuple-rest-descriptor</abbr>]
    | [ <abbr>tuple-rest-descriptor</abbr> ]
+<dfn>member-type-descriptor</dfn> := <abbr>type-descriptor</abbr>
 <dfn>tuple-rest-descriptor</dfn> := <abbr>type-descriptor</abbr> <code>...</code>
 
 </pre>
@@ -3467,7 +3496,7 @@ which both x and y belong, then:
 </ul>
 <p>
 The most straightforward ordered types are basic types where all the values of
-the type can be put into an order. These types are boolean, int, string. For
+the type can be put into an order. These types are nil, boolean, int, string. For
 each of these three types, for any pair of values x, y belonging to the type
 </p>
 <ul>
@@ -4094,6 +4123,18 @@ singleton type <code>"X"</code>, but the broad type is <code>string</code>.
 </p>
 </section>
 <section>
+<h4 id="singleton_typing">Singleton typing</h4>
+<p>
+The specification of a particular kind of compound expression may say that the
+static type of the result of an expression E is a type T <em>modified by the
+usual singleton typing rules</em>. This means that when all subexpressions of
+the compound expression have a singleton type, then the static type of E is a
+singleton subtype of T. This subtype is computed by evaluating the expression at
+compile-time with operands whose values belong to the corresponding singleton
+types.
+</p>
+</section>
+<section>
 <h4>Isolated expressions</h4>
 <p>
 Ballerina defines requirements for when an expression is <em>isolated</em>. If
@@ -4312,6 +4353,11 @@ operation with the direct style. The result of evaluating the
 <code>string-template-expr</code> is a string comprising the literal characters
 and the results of evaluating and converting the interpolations, in the order in
 which they occur in the <code>BacktickString</code>.
+</p>
+<p>
+The static type of the result of the string-template-expr is
+<code>string</code>, modified by the usual <a href="#singleton_rules">singleton
+typing</a> rules.
 </p>
 <p>
 A literal <code>`</code> can be included in string template by using an
@@ -5043,7 +5089,7 @@ is not a class or stream type.
 <pre
 class="grammar"><dfn>variable-reference-expr</dfn> := <abbr>variable-reference</abbr>
 <dfn>variable-reference</dfn> := <abbr>identifier</abbr> | <abbr>qualified-identifier</abbr> | <abbr>xml-qualified-name</abbr>
-<dfn>xml-qualified-name</dfn> := <abbr>xml-namespace-prefix</abbr> <code>:</code> <abbr>identifier</abbr>
+<dfn>xml-qualified-name</dfn> := <abbr>xml-namespace-prefix</abbr> <abbr>NoSpaceColon</abbr> <abbr>identifier</abbr>
 </pre>
 <p>
 A variable-reference can refer to a variable, a parameter, a constant (defined
@@ -5793,9 +5839,10 @@ class="grammar"><dfn>unary-expr</dfn> :=
 </pre>
 <p>
 The unary <code>-</code> operator performs negation. The static type of the
-operand must be a number; the static type of the result is the same basic type
-as the static type of the operand. The semantics for each basic type are as
-follows:
+operand must be a number; the static type of the result is the basic type of the
+static type of the operand, modified by the usual <a
+href="#singleton_typing">singleton typing</a> rules. The semantics for each
+basic type are as follows:
 </p>
 <ul>
 <li>int: negation for int is the same as subtraction from zero; a panic will
@@ -5813,16 +5860,20 @@ same basic type as v.
 <p>
 The unary + operator returns the value of its operand expression. The static
 type of the operand must be a number, and the static type of the result is the
-same as the static type of the operand expression.
+same as the static type of the operand expression, modified by the usual <a
+href="#singleton_typing">singleton typing</a> rules.
 </p>
 <p>
 The ~ operator inverts the bits of its operand expression. The static type of
-the operand must be int, and the static type of the result is an int.
+the operand must be int, and the static type of the result is int, modified by
+the usual <a href="#singleton_typing">singleton typing</a> rules.
 </p>
 <p>
 The <code>!</code> operator performs logical negation. The static type of the
 operand expression must be boolean. The <code>!</code> operator returns true if
-its operand is false and false if its operand is true.
+its operand is false and false if its operand is true. The static type of the
+result is boolean, modified by the usual <a href="#singleton_typing">singleton
+typing</a> rules.
 </p>
 </section>
 <section>
@@ -5840,8 +5891,7 @@ performs division; the <code>%</code> operator performs remainder.
 </p>
 <p>
 The static type of both operand expressions is required to be a subtype of the
-same basic type; this basic type will be the static type of the result. The
-following basic types are allowed:
+same basic type. The following basic types are allowed:
 </p>
 <ul>
 <li>int
@@ -5891,6 +5941,14 @@ of <code><var>x</var></code></li>
 </li>
 </ul>
 <p>
+The static type of the result of a multiplicative-expr is the basic type of its
+subexpressions, modified by the usual <a href="#singleton_typing">singleton
+typing</a> rules, except that the result type is always <code>float</code> in
+the case where the operator is <code>/</code> and the right-hand operand is
+singleton float <code>0.0</code>. (This is a consequence of the fact that
+<code>0.0 == -0.0</code>, but <code>1.0/0.0 != 1.0/-0.0</code>.)
+</p>
+<p>
 If the contextually expected type for a multiplicative-expr is T, then the
 contextualy expected type for both operand expressions is T', where a value v is
 in T' if it belongs to int, decimal or float, and T contains a value with the
@@ -5910,15 +5968,16 @@ The <code>+</code> operator is used for both addition and concatenation; the
 <code>-</code> operator is used for subtraction.
 </p>
 <p>
-It is required that either
+It is required that either:
 </p>
 <ul>
 <li>the static type of both operand expressions is a subtype of the same basic
-type, in which case this basic type will be the static type of the result,
+type, in which case the static type of the result will be this basic type,
+modified by the usual <a href="#singleton_typing">singleton typing</a> rules;
 or</li>
 <li>the static type of one operand expression must be a subtype of xml and of
 the other operand expression must be a subtype of string, in which case the
-static type of the result is xml</li>
+static type of the result is xml.</li>
 </ul>
 <p>
 The semantics for each basic type is as follows:
@@ -5995,7 +6054,8 @@ subtype of <code>int:Unsigned<var>K</var></code> when <code><var>K</var></code>
 is 8, 16 or 32, then the static type of the result is
 <code>int:Unsigned<var>N</var></code> where <code><var>N</var></code> is the
 smallest such <code><var>K</var></code>; otherwise, the static type of the
-result is <code>int</code>.
+result is <code>int</code>. In all cases the static type of the result is
+modified by the usual <a href="#singleton_typing">singleton typing</a> rules.
 </p>
 </section>
 <section>
@@ -6047,7 +6107,8 @@ class="grammar"><dfn>relational-expr</dfn> :=
 <p>
 A relational-expr tests the relative order of two values. There must be an <a
 href="#ordering">ordered</a> type to which the static type of both operands
-belong. The static type of the result is boolean.
+belong. The static type of the result is boolean, modified by the usual <a
+href="#singleton_typing">singleton typing</a> rules.
 </p>
 <p>
 A relational-expr is evaluated by first evaluating the two expressions,
@@ -6130,6 +6191,12 @@ static type that is a subtype of anydata. Two values v1, v2 are deeply equal if
 DeepEquals(v1, v2) is true.
 </p>
 <p>
+The static type of the result of expression is boolean; in the case of the ==
+and != operators, the static type is modified by the usual <a
+href="#singleton_typing">singleton typing</a> rules; in the case of the === and
+!== operators, the static type is not so modified.
+</p>
+<p>
 Note that === and == are the same for simple values except for floating point types.
 </p>
 <p>
@@ -6179,6 +6246,10 @@ is 8, 16 or 32, then the static type of the result is
 smallest such <code><var>K</var></code>; otherwise, the static type of the result
 is <code>int</code>.</li>
 </ul>
+<p>
+In all cases, the static type of the result is modified by the usual <a
+href="#singleton_typing">singleton typing</a> rules.
+</p>
 </section>
 
 <section>
@@ -6216,6 +6287,20 @@ evaluated;</li>
 <li>otherwise, the result of the logical-or-expr is the result of evaluating
 the right-hand expression.</li>
 </ol>
+
+<p>
+The static type of the result of a logical-expr is boolean, modified by the
+usual <a href="#singleton_typing">singleton typing</a> rules. Furthermore:
+</p>
+<ul>
+<li>if the expression is a logical-and-expr and the static type of left-hand
+expression is singleton false, then the static type of the result is singleton
+false, regardless of the static type of the right-hand-expression;</li>
+<li>if the expression is a logical-or-expr and the static type of left-hand
+expression is singleton true, then the static type of the result is singleton
+true, regardless of the static type of the right-hand-expression.</li>
+</ul>
+
 </section>
 
 <section>
@@ -6223,18 +6308,55 @@ the right-hand expression.</li>
 
 <pre
 class="grammar"><dfn>conditional-expr</dfn> :=
-   <abbr>expression</abbr> <code>?</code> <abbr>expression</abbr> <code>:</code> <abbr>expression</abbr>
-   | <abbr>expression</abbr> <code>?:</code> <abbr>expression</abbr>
+  <abbr>ternary-conditional-expr</abbr>
+  | <abbr>nil-conditional-expr</abbr>
+<dfn>ternary-conditional-expr</dfn> := <abbr>expression</abbr> <code>?</code> <abbr>expression</abbr> <code>:</code> <abbr>expression</abbr>
+<dfn>nil-conditional-expr</dfn> := <abbr>expression</abbr> <code>?:</code> <abbr>expression</abbr>
 </pre>
 <p>
-L <code>?:</code> R is evaluated as follows:
+A ternary-conditional-expr C <code>?</code> T <code>:</code> F is evaluated as
+follows:
 </p>
 <ol>
-<li>Evaluate L to get a value x</li>
-<li>If x is not nil, then return x.</li>
-<li>Otherwise, return the result of evaluating R.</li>
+<li>evaluate C to get a value boolean value v;</li>
+<li>if v is true, then the result is the result of evaluating T.</li>
+<li>Otherwise, the result is the result of evaluating F.</li>
+</ol>
+<p>
+In a ternary-conditional-expr C <code>?</code> T <code>:</code> F, the static
+type of C must be a subtype of boolean, and the static type of the result is
+determined from ther static types of C, T and F as follows:
+</p>
+<ol>
+<li>if the static type of C is singleton true, then the static
+type of the result is the static type of T;</li>
+<li>if the static type of C is singleton false, then the static
+type of the result is the static type of F;</li>
+<li>otherwise, the static type of the result is the union of the static types of
+T and F.</li>
+</ol>
+<p>
+A nil-conditional-expr L <code>?:</code> R is evaluated as follows:
+</p>
+<ol>
+<li>evaluate L to get a value v;</li>
+<li>if v is not nil, then the result is v;</li>
+<li>otherwise, the result is the result of evaluating R.</li>
+</ol>
+<p>
+The static type of the result of L <code>?:</code> R is determined from the
+static types of L and R as follows:
+</p>
+<ol>
+<li>if the static type of L is nil, then the static type of
+the result is the static type of R;</li>
+<li>if the static type of L does not include nil, then the static type of
+the result is the static type of L;</li>
+<li>otherwise, the static type of the result is the union of the difference of
+the static type of L and (), and the static type of R.</li>
 </ol>
 </section>
+
 <section>
 <h3>Checking expression</h3>
 
@@ -6689,8 +6811,8 @@ class="grammar"><dfn>xml-name-pattern</dfn> := <abbr>xml-atomic-name-pattern</ab
 <dfn>xml-atomic-name-pattern</dfn> :=
   <code>*</code>
   | <abbr>identifier</abbr>
-  | <abbr>xml-namespace-prefix</abbr> <code>:</code> <abbr>identifier</abbr>
-  | <abbr>xml-namespace-prefix</abbr> <code>:</code> <code>*</code>
+  | <abbr>xml-namespace-prefix</abbr> <abbr>NoSpaceColon</abbr> <abbr>identifier</abbr>
+  | <abbr>xml-namespace-prefix</abbr> <abbr>NoSpaceColon</abbr> <code>*</code>
 </pre>
 
 <p>
@@ -9113,7 +9235,7 @@ class="grammar"><dfn>import-decl</dfn> := <code>import</code> [<abbr>org-name</a
 <dfn>module-name</dfn> := <abbr>import-identifier</abbr> (<code>.</code> <abbr>import-identifier</abbr>)*
 <dfn>import-identifier</dfn> := <abbr>RestrictedIdentifier</abbr>
 
-<dfn>qualified-identifier</dfn> := <abbr>module-prefix</abbr> <code>:</code> <abbr>identifier</abbr>
+<dfn>qualified-identifier</dfn> := <abbr>module-prefix</abbr> <abbr>NoSpaceColon</abbr> <abbr>identifier</abbr>
 </pre>
 <p>
 If org-name is omitted, it is defaulted from the organization of the importing
@@ -12373,6 +12495,7 @@ relaxed to require only one operand to be <code>anydata</code>.</li>
 declarations are restricted to ASCII alpha-numberic characters with underscores
 separating words.</li>
 <li>Floating pointer literals are not allowed to end with a trailing dot.</li>
+<li>No white space is allowed within a qualified name.</li>
 <li>Add the <code>!is</code> operator.</li>
 <li>Allow <code>null</code> as a type descriptor.</li>
 <li>An object type is not allowed to include a class with private members.</li>
@@ -12384,6 +12507,11 @@ query expression or action.</li>
 there is no possibility that it can mutate the value being matched.</li>
 <li>A member of an enum declaration can have the same identifier as a member of
 another enum declaration.</li>
+<li>The interpretation of multiple dimensions in an array-type-descriptor has
+been changed to make the order of dimensions in the type-descriptor consistent
+with the order of dimensions in an expression that accesses the array.</li>
+<li>The static type of an expression now has singleton type when all its
+subexpressions have singleton type.</li>
 </ol>
 </section>
 <section>

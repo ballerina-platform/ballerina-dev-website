@@ -1178,6 +1178,14 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Caching Client",
+                "url": "http-caching-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1404,6 +1412,37 @@
             {
                 "name": "Passthrough",
                 "url": "http-passthrough",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            }
+        ]
+    },
+    {
+        "title": "REST API Interceptors",
+        "column": 1,
+        "category": "Working Over the Network",
+        "samples": [
+            {
+                "name": "Request Interceptor At Listener Level",
+                "url": "http-request-interceptor-at-listener",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Request Interceptor At Service Level",
+                "url": "http-request-interceptor-at-service",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Request Error Interceptor",
+                "url": "http-request-error-interceptor",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,

@@ -1425,8 +1425,16 @@
         "category": "Working Over the Network",
         "samples": [
             {
-                "name": "Request Interceptor",
-                "url": "http-request-interceptor",
+                "name": "Request Interceptor At Listener Level",
+                "url": "http-request-interceptor-at-listener",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Request Interceptor At Service Level",
+                "url": "http-request-interceptor-at-service",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,

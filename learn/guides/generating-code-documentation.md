@@ -1,5 +1,5 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-generating-doc-left-nav-pages-swanlake
 title: Generating Code Documentation
 description: Learn how to write unstructured documents with a bit of structure to enable HTML content generation as API documentation.
 keywords: ballerina, programming language, api documentation, api docs

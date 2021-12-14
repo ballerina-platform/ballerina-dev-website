@@ -3,7 +3,22 @@
   sublinks:
     - title: Writing Your First Ballerina Program
       url: /learn/hello-world/writing-your-first-ballerina-program/
-      active: writing-your-first-ballerina-program
+      sublinks:
+        - title: Writing a Simple Service
+          url: /learn/hello-world/writing-your-first-ballerina-program/#writing-a-simple-service/
+          active: writing-a-simple-service
+        - title: Creating an HTTP Client to Invoke the Service
+          url: /learn/hello-world/writing-your-first-ballerina-program/#creating-an-http-client-to-invoke-the-service/
+          active: creating-an-http-client-to-invoke-the-service
     - title: Creating Your First Ballerina Package
       url: /learn/hello-world/creating-your-first-ballerina-package/
-      active: creating-your-first-ballerina-package    
+      sublinks:
+        - title: Creating the Package
+          url: /learn/hello-world/creating-your-first-ballerina-package/#creating-the-package/
+          active: creating-the-package 
+        - title: Building the Package
+          url: /learn/hello-world/creating-your-first-ballerina-package/#building-the-package/
+          active: building-the-package 
+        - title: Running the Package
+          url: /learn/hello-world/creating-your-first-ballerina-package/#running-the-package/
+          active: running-the-package 

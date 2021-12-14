@@ -24,6 +24,31 @@ nav.cLeftNavContainer ul li.current-inner-sub a {
   color: #464646;
   font-weight: 600;
 }
+
+.sub-ul-two{
+  padding-left: 28px !important;
+}
+
+.sub-ul-three{
+  padding-left: 38px !important;
+}
+
+.highlight{
+  color: #464646 !important;
+}
+
+#tree-expand-all , #tree-collapse-all, .cTocElements {
+  display:none !important;
+} 
+
+.cGitButtonContainer {
+  display:none !important;
+} 
+
+.cBallerinaTocContainer  {
+    display:none !important;
+}
+
 .sub-menu,
 .inner-sub-menu,
 .inner-sub-menu-two {
@@ -51,6 +76,49 @@ nav.cLeftNavContainer ul li.current-inner-sub a {
 .sub-menu.CurrentUl {
   background-color: #f0f0f0;
 }
+
+
+.toc {
+  padding-top: 10px;
+  width: 100%;
+  max-height: 100%;
+  line-height: 2;
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.toc ul ul {
+  padding-left: 2em;
+}
+.toc li a {
+  display: inline-block;
+  color: #22b7b1;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.toc li.visible > a {
+  color: #464646;
+  transform: translate(5px); 
+}
+
+.toc-marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.toc-marker path {
+  transition: all 0.3s ease;
+}
+
+
+
+
 
 .inner-sub-menu .cLeftMenuInnerLink {
   padding: 10px 0;

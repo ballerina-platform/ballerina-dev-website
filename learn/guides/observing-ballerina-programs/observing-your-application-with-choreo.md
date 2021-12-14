@@ -1,5 +1,5 @@
 ---
-layout: ballerina-guides-left-nav-pages-swanlake
+layout: ballerina-observing-programs-left-nav-pages-swanlake
 title: Observing Your Application with Choreo
 description: Choreo is a digital innovation platform that allows you to develop, deploy, and manage cloud-native applications at scale. 
 keywords: ballerina, observability, metrics, tracing, logs, choreo
@@ -12,9 +12,12 @@ redirect_from:
   - /learn/observing-ballerina-programs/observing-your-application-with-choreo
 ---
 
+
 >**Info:** If you already have login access to [Choreo](https://wso2.com/choreo/), see [Observability Overview](https://wso2.com/choreo/docs/observability/observability-overview/) to observe your Ballerina program in Choreo.
 
 Follow the steps below to observe a Ballerina service without logging in to Choreo.
+
+
 
 ## Step 1 - Creating a Hello World Ballerina Service
 
@@ -33,6 +36,7 @@ service /hello on new http:Listener(9090) {
    }
 }
 ```
+
 
 ## Step 2 - Configuring Choreo to Observe a Ballerina Service
 
@@ -53,7 +57,8 @@ Follow the steps below to add observability in the executable created by Balleri
   provider="choreo"
   ```
 
-## Step 3 - Observe the Ballerina Service
+
+## Step 3 - Observing the Ballerina Service
 
 1. Once the configuration file has been created, execute the command below to pass it to the Ballerina program with the `BAL_CONFIG_FILES` environment variable.
 
@@ -94,3 +99,5 @@ After sending a few requests, you view the graphs rendered with data. The sample
 >**Info:** Currently monitoring logs is not supported by default. To enable log monitoring for your service, see [Setting up Elastic Stack](/learn/user-guide/observability/observing-ballerina-code/#setting-up-the-external-systems-for-log-analytics) to configure [Elastic Stack](https://www.elastic.co/).
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
+
+</article>

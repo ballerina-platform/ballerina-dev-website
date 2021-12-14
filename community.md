@@ -91,11 +91,11 @@ We are happy to help! Come engage with us on any channel that works for you.
 
 Report issues in the GitHub repositories of the areas and components listed below.
 
-- <a href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose" target="_blank">Compiler, runtime, or tooling</a>
+- <a href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose" target="_blank">Compiler, runtime, and CLI tooling</a>
 - <a href="https://github.com/ballerina-platform/ballerina-standard-library/issues/new/choose" target="_blank">Standard Library</a>
 - <a href="https://github.com/wso2/ballerina-plugin-vscode/issues/new/choose" target="_blank">Ballerina Visual Studio Code extension</a>
-- <a href="https://github.com/ballerina-platform/ballerina-spec/issues/new" target="_blank">Language specification</a>
-- <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">Website</a>
+- <a href="https://github.com/ballerina-platform/ballerina-spec/issues/new" target="_blank">Platform specifications</a>
+- <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">Website, Ballerina Central, API Docs</a>
 - <a href="mailto:security@ballerina.io" target="_blank">Security</a> (For details, see the <a href="/security" target="_blank">security policy</a>.)
 
 ## Help Us Grow
@@ -432,9 +432,9 @@ body {font-family: Arial;}
          <p class="cEventLocation">Online</p>
       </td>
       <td class="cEventDetail">
-         <a target="_blank" href="https://www.meetup.com/CloudDC/">
+         <!-- <a target="_blank" href="https://www.meetup.com/CloudDC/"> -->
             <h4>Cloud DC Meetup</h4>
-         </a>
+         <!-- </a> -->
          <h5>Cloud Native Development with Ballerina</h5>
          <b>Jadd Jennings,</b> Hub Solutions Engineer, Oracle Cloud Solution Hub<br/>
          <b>Dhvani Sheth,</b> Senior Solutions Engineer, Oracle

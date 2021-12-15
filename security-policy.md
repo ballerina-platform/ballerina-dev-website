@@ -51,6 +51,10 @@ Your efforts in reporting vulnerabilities or any other issues related to the sec
 
 >**Note:** The reward program is currently applicable to vulnerabilities reported only in the compiler, runtime, CLI tooling, standard library, VS Code plugin and,  [website](https://ballerina.io).
 
+## Publishing Security Advisories
+
+For the Ballerina security advisories that are already published, see [Security Advisories](https://github.com/ballerina-platform/ballerina-lang/security/advisories).
+
 <style>
 .nav > li.cVersionItem {
     display: none !important;

@@ -16,7 +16,7 @@ Let’s now take a look at the network data. This is the data that is independen
 
 This concept is the opposite of objects, which combine data and code as one entity. But when you are writing network interfaces, you want to work with plain data. It supports a bunch of operations such as deep copy and deep equality checks. You can also serialize and deserialize it without worrying about coupling between the data and its associated code, like objects.
 
-As a programming language designed for network programming over the cloud, Ballerina makes it easy to work with plain data, and it defines a different type for it.<br><br>
+As a programming language designed for network programming over the cloud, Ballerina makes it easy to work with plain data, and it defines a different type for it.
 
 ## Ballerina Basic Types
 
@@ -30,7 +30,7 @@ Sequence types are string and xml. These are also plain data always.
 
 Structural types are array, map, record, tuple, and table. These are plain data only if their members are plain data.
 
-And finally, the behavioral types include function, object, error, stream, typedesc, handle. These are not plain data.<br><br>
+And finally, the behavioral types include function, object, error, stream, typedesc, handle. These are not plain data.
 
 ## ``decimal`` Type
 
@@ -38,7 +38,7 @@ Ballerina supports one more numeric data type like integers and floating points,
 
 You can use the ``decimal`` keyword to declare a decimal variable.
 
-```
+```ballerina
 function floatSurprise() {
 
     float f = 100.10 - 0.01;
@@ -54,7 +54,7 @@ A decimal number represents a decimal fraction exactly. That means that the prec
 
 Decimal numbers are not the same as binary floating point numbers defined as per IEEE standard. They are not built into the ALU logic on the processor. Therefore their computation is slower yet more accurate and precise.
 
-In Ballerina, decimal numbers do not offer infinite precision. It is limited to 34 digits only, which is more than enough for representing large physical measurements, such as the universe's age, which takes 27 digits. Additionally, decimal numbers do not support infinity, NaN, or negative zero.<br><br>
+In Ballerina, decimal numbers do not offer infinite precision. It is limited to 34 digits only, which is more than enough for representing large physical measurements, such as the universe's age, which takes 27 digits. Additionally, decimal numbers do not support infinity, NaN, or negative zero.
 
 ## Plain Data Basic Types To Come
 
@@ -62,7 +62,7 @@ Ballerina supports two more plain data types that we have not covered yet.
 
 The first one is the table.  It is designed to work with arrays and maps. It contains an array of records. It provides random access based on a key, which is a concept similar to relational databases. The keys are stored in fields of records, and these fields are immutable.
 
-The second one is the XML type. It is a sequence type built on a sequence of XML items like elements, text, processing instructions, comments. It is a similar concept to strings and XQuery. XML attributes are represented by *map\<string>* and it supports writing XML literals using XML syntax.<br><br>
+The second one is the XML type. It is a sequence type built on a sequence of XML items like elements, text, processing instructions, comments. It is a similar concept to strings and XQuery. XML attributes are represented by *map\<string>* and it supports writing XML literals using XML syntax.
 
 ## Immutability
 
@@ -70,13 +70,13 @@ One of the crucial features of plain data is that it can be made immutable. You 
 
 Structural values can be constructed either as mutable or immutable. The value includes a flag that indicates whether it's immutable or not and it is fixed at the time of construction of the value. Attempting to mutate an immutable structure causes a panic at runtime.
 
-Ballerina's notion of immutability is deep. This means that if you have an immutable structure, all its members have to be immutable. This also makes it safer to pass immutable values to other threads for concurrent access.<br><br>
+Ballerina's notion of immutability is deep. This means that if you have an immutable structure, all its members have to be immutable. This also makes it safer to pass immutable values to other threads for concurrent access.
 
 ## ``anydata`` Type
 
 You can use ``anydata`` keyword to define plain data.
 
-```
+```ballerina
 anydata x1 = [1, "string", true];
 ```
 
@@ -84,7 +84,7 @@ It is a subtype of any. `‘==’` and `‘!=’`  operators on anydata test for
 
 You can clone anydata using the **``clone( )``** function.
 
-```
+```ballerina
 anydata x2 = x1.clone();
 ```
 
@@ -92,29 +92,29 @@ This returns a new anydata **``x2``**, with the same mutability as **``x1``**. T
 
 anydata also allows boolean comparison and ``const``.
 
-```
+```ballerina
 boolean eq = (x1 == x2);
 
 const RED = {R: 0xFF, G: 0, B: 0};
 ```
 
-The equality operation also takes care of cycles within anydata structure values.<br><br>
+The equality operation also takes care of cycles within anydata structure values.
 
 ## Configurable Variables
 
 Ballerina also has a concept of a configurable variable. A module level variable can be declared as configurable. This is useful when some of the application code is defined just to configure things. You can use the ``configurable`` keyword in this case.
 
-```
+```ballerina
 configurable int port = 8080;
 ```
 
 The initializer of a configurable variable can be overridden in runtime. A variable where configuration is required can use an initializer `‘?’`.
 
-```
+```ballerina
 configurable string password = ?;
 ```
 
-A configurable variable must be a subtype of anydata.<br><br>
+A configurable variable must be a subtype of anydata.
 
 ## Optional Fields
 
@@ -126,7 +126,7 @@ To facilitate this requirement, the typing system needs to do a few things diffe
 
 You can define a record with an optional field.
 
-```
+```ballerina
 type Headers record {
    string 'from;
    string to;
@@ -139,7 +139,7 @@ type Headers record {
 
 In the above type declaration, the record Headers has three fields. The field subject is suffixed with `‘?’` , which tells the compiler that it is an optional field. Thus, you can define a variable of type Headers with or without the optional field.
 
-```
+```ballerina
 Headers h = {
 
     from: “John”,
@@ -151,13 +151,13 @@ string? Subject = h?.subject;
 ```
 
 You can use `‘?.’` to access the optional field. It will return Nil if the field is not present.
-This feature is handy for describing the type of data payloads transferred across network interfaces that typically contain mandatory and optional fields.<br><br>
+This feature is handy for describing the type of data payloads transferred across network interfaces that typically contain mandatory and optional fields.
 
 ## Open Records
 
 Open records is another concept that is important for dealing with network interfaces. By default, a record type declared in Ballerina is open. This means that you can add more fields to it than those specified.
 
-```
+```ballerina
 type Person record {
     string name;
 };
@@ -182,13 +182,13 @@ In the above code example, the record type **``Person``** and **``Employee``** a
 
 Similarly, the **``Person p``** also accepts the variable **``e``**, which is of **``Employee``** type. In this case, the field **``id``** is treated as anydata within **``p``**.  In this way, Ballerina allows a record to be open such that additional unspecified fields can be added in runtime.
 
-An open record is equivalent to *map\<anydata>* where the key is anydata that is referring to any field within the record.<br><br>
+An open record is equivalent to *map\<anydata>* where the key is anydata that is referring to any field within the record.
 
 ## Controlling Openness
 
 If you do not want to allow the open behavior in records, Ballerina has a special syntax.
 
-```
+```ballerina
 type Coord record {|
     float x;
     float y;
@@ -203,7 +203,7 @@ In the above code example, using a `‘{|’` and `‘|}’` delimiter indicates
 
 You can also use a `‘...’` notation to allow other fields of the same type T within a record.
 
-```
+```ballerina
 type Headers record {|
     string 'from;
     string to;
@@ -224,7 +224,7 @@ If you have an open record, then additional fields of anydata can be added. But 
 
 Ballerina defines another type ``json``.
 
-```
+```ballerina
 json j = { "x": 1, "y": 2 };
 ```
 
@@ -232,7 +232,7 @@ json j = { "x": 1, "y": 2 };
 
 A ``json`` value can be converted to and from JSON format in a straightforward way, except for the numeric types in Ballerina, which are not natively available in JSON specification.
 
-```
+```ballerina
 string s = j.toJsonString();
 
 json j2 = check value:fromJsonString(s);
@@ -242,7 +242,7 @@ json j3 = null;
 
 Ballerina also allows the use of ``null`` keyword instead of `‘( )’` for the sake of JSON compatibility. The LangLib provides a few functions like **``toJson()``** and **``fromJson()``** to recursively convert between ``anydata`` and ``json``.  In that case, the table values are converted to arrays, and XML values are converted to strings.
 
-``json`` is basically ``anydata`` but without ``table`` and ``xml``. ``json`` and ``xml`` types are not parallel.<br><br>
+``json`` is basically ``anydata`` but without ``table`` and ``xml``. ``json`` and ``xml`` types are not parallel.
 
 ## Working with JSON - Two Approaches
 
@@ -252,13 +252,13 @@ The first approach enables you to work with ``json`` value directly.  This is ea
 
 Additionally, it is also possible to convert from JSON to application specific type as a second approach. For example, you can convert from JSON to a user-defined subtype of anydata, process that data in an application specific subtype, and convert it back to JSON.
 
-The second approach is something where Ballerina really shines compared to other languages because it is very hard to translate between JSON and the native types in other languages.<br><br>
+The second approach is something where Ballerina really shines compared to other languages because it is very hard to translate between JSON and the native types in other languages.
 
 ## Working with JSON Directly
 
 Working directly with JSON data is easy with the use of json type.
 
-```
+```ballerina
 json j = {
     x: {
         y: {
@@ -276,7 +276,7 @@ You can define any ``json`` structure like **``j``** and access its fields using
 
 Ballerina supports runtime checking of the ``json`` structure to raise runtime errors using the ``check`` expression. This gives a feel of working with a dynamic language where the JSON structure is unknown at compile time. Additionally, LangLib functions are also provided to check for types explicitly.
 
-```
+```ballerina
 string s = check value:ensureType(v, string);
 ```
 
@@ -284,7 +284,7 @@ string s = check value:ensureType(v, string);
 
 ``json`` values can be used in a ``match`` statement to provide flexible pattern matching based on the fields in the ``json`` structure.
 
-```
+```ballerina
 function foo(json j) returns error? {
     match j {
         {command: "add", amount: var x} => {
@@ -300,7 +300,7 @@ function foo(json j) returns error? {
 
 In the above code example, the ``match`` expression uses the json value **``j``**. The interesting thing is that the match pattern also binds to a variable **``x``** used within the code for additional processing. In this way, you can directly use ``json`` structure within the control flow of your program.
 
-``match`` schematics are open, and you do not have to specify all the fields of the ``json`` value in the pattern for matching.<br><br>
+``match`` schematics are open, and you do not have to specify all the fields of the ``json`` value in the pattern for matching.
 
 ## Converting from User-defined Types to JSON
 
@@ -308,7 +308,7 @@ A user-defined type can be easily converted to JSON. In this case, there are two
 
 For types that are closed, the conversion is implicit.
 
-```
+```ballerina
 type ClosedCoord record {|
     float x;
     float y;
@@ -321,7 +321,7 @@ json j = coord;
 
 In the case of open types, things are a bit complicated. For that purpose, LangLib provides functions to make your work easier.
 
-```
+```ballerina
 type Coord record {
     float x;
     float y;
@@ -330,7 +330,7 @@ type Coord record {
 json j = coord.toJson();
 ```
 
-In the above code example, **``Coord``** is an open record.  Therefore any number of ``anydata`` fields can be added to it, including tables and xml. The **``toJson( )``** function converts ``anydata`` to ``json``, such that all the sub-types, including tables and xml are handled appropriately.<br><br>
+In the above code example, **``Coord``** is an open record.  Therefore any number of ``anydata`` fields can be added to it, including tables and xml. The **``toJson( )``** function converts ``anydata`` to ``json``, such that all the sub-types, including tables and xml are handled appropriately.
 
 ## Converting from JSON to User-defined Type
 
@@ -338,7 +338,7 @@ There are a few nuances involved in converting from JSON to user-defined type.
 
 One obvious mechanism is typecasting.
 
-```
+```ballerina
 type Coord record {
     float x;
     float y;
@@ -352,7 +352,7 @@ Coord c = <Coord>j
 
 However, this does not work because the json fields can be later assigned to something other than float, and therefore the typecasting operation would not be type safe.  This goes back to the concept of covariance you learned earlier that limits mutation on type structures with inherent types. Therefore you can only create a read-only copy, and use it in the type cast expression.
 
-```
+```ballerina
 Coord c = <Coord>j.cloneReadOnly( );
 ```
 
@@ -360,7 +360,7 @@ Coord c = <Coord>j.cloneReadOnly( );
 
 There is another way of converting from JSON to a user-defined type.
 
-```
+```ballerina
 type Coord record {
     float x;
     float y;
@@ -375,11 +375,11 @@ In the above example, the function **``cloneWithType( )``** uses the typedesc ar
 
 This is a LangLib function. You can also use the function without the argument from lang.value.
 
-```
+```ballerina
 Coord c = check j.cloneWithType();
 ```
 
-In this case, the argument is implicitly obtained from the context.<br><br>
+In this case, the argument is implicitly obtained from the context.
 
 ## Resource Method Typing
 
@@ -387,8 +387,7 @@ The features of JSON to user-defined type conversion and vice versa are advantag
 
 Here is a code that defines a service for a calculator API with the add endpoint.
 
-```
-
+```ballerina
 import ballerina/http;
 
 type Args {|
@@ -409,7 +408,7 @@ In the above code example, **``Args``** is a closed record. It is passed as an a
 
 Thanks to the implicit data binding and conversion feature of Ballerina, the JSON payload coming in the wire as part of the HTTP request is converted to the **``Args``** record, using **``cloneWithType( )``**. Therefore its fields **``x``** and **``y``** are readily accessible. The return value of the resource function is a decimal type which is a subtype of anydata and is mapped to the protocol format in the wire, which in most cases is JSON.  This is how Ballerina types can be used to describe data on the wire, or on network interfaces.
 
-Annotations added to this code also helps in refining the mapping between Ballerina-declared type and wire format. Further, the service declaration can also be used to generate OpenAPI spec.<br><br>
+Annotations added to this code also helps in refining the mapping between Ballerina-declared type and wire format. Further, the service declaration can also be used to generate OpenAPI spec.
 
 ## JSON Numbers
 
@@ -429,7 +428,7 @@ Ballerina supports SQL-like query syntax for performing list comprehensions. Thi
 
 The basic concept of list comprehension is based on the concept of mathematical “set builder” notation.
 
-```
+```ballerina
 int[] nums = [1, 2, 3, 4];
 
 int[] numsTimes10 = from var i in nums
@@ -444,13 +443,13 @@ In the above code example, **``nums``** is an integer array containing a list of
 
 The array **``numTimes10``** is constructed by iterating over nums using the ``from`` clause,  where **``i``** is the iteration value, and then using the ``select`` clause to evaluate the expression *i \* 10* to  include the result in the array. Therefore the end result is a new list *[10,20,30,40]*.
 
-Similarly, you can also apply SQL-like filters to the iterating expression using the ``where`` clause. The array **``evenNums``** is built in that way by introducing the ``where`` clause that filters the values for which the expression evaluates to true. The resultant list is *[2,4]*.<br><br>
+Similarly, you can also apply SQL-like filters to the iterating expression using the ``where`` clause. The array **``evenNums``** is built in that way by introducing the ``where`` clause that filters the values for which the expression evaluates to true. The resultant list is *[2,4]*.
 
 ### Destructuring Records
 
 The list comprehension concept can also be applied to structured types, such as records.
 
-```
+```ballerina
 type Person record {
  string first;
  string last;
@@ -469,18 +468,18 @@ As usual, it iterates over the list of persons records using the ``from`` clause
 
 The binding pattern *{first: f, last: l}* can also be simplified as *{first, last}*.
 
-```
+```ballerina
 var names = from var {first, last} in persons
                 select {first, last};
 ```
 
-In this way, a binding pattern *{ x }* can be substituted for *{ x : x }*.<br><br>
+In this way, a binding pattern *{ x }* can be substituted for *{ x : x }*.
 
 ### Let Clause
 
 You can also have any number of ``let`` clauses within the query expression, between ``from`` and ``select``.
 
-```
+```ballerina
 string[] names = from var {first, last} in persons
                  let int len1 = first.length()
                  where len1 > 0
@@ -492,13 +491,13 @@ string[] names = from var {first, last} in persons
 
 In the above code example, multiple ``let`` and ``where`` clauses are used to construct an array of strings names containing names of all persons, by concatenating their first and last names. The record entries whose first or last names have a length of zero are selected out by using the first and second combination of ``let`` and ``where`` clauses. The overall query expression follows the semantics like XQUERY FLWOR (for, let, where, order by, and return).
 
-You can think of the overall semantics like a pipeline, which starts off by generating a list of bindings in the first stage, and the subsequent stages take the bindings from the previous stage of the pipeline and outputs another set of variable bindings.<br><br>
+You can think of the overall semantics like a pipeline, which starts off by generating a list of bindings in the first stage, and the subsequent stages take the bindings from the previous stage of the pipeline and outputs another set of variable bindings.
 
 ### Ordering
 
 You can also have an ordering of the query results using the ``order by`` clause.
 
-```
+```ballerina
 type Employee record {
     string firstName;
     string lastName;
@@ -521,13 +520,13 @@ The ordering works consistently with the existing `<, <=, >, >=` operators that 
 
 There are some complex cases where ordering cannot be achieved. This happens when the type of the order by expression does not support ordering. For Ballerina, any comparison with nil, floating point NaN are unordered. So if these unordered types are encountered in the query, they will be returned at the end.
 
-A real-world example of an unordered scenario is the price of items on a shopping website. You see some items that have a price, and some items do not have a price due to some reason, or it indicates that the site will send a notification when the price is available. Now, if you want to list all the items based on an order starting from least expensive, then you want to see the items with the price first, instead of the items without the price. That's why applying the query on item's price with ascending order will return the unordered items, with a price value of nil, at the end. The same is applicable for ordering items in descending order when you want to see the most expensive items first.<br><br>
+A real-world example of an unordered scenario is the price of items on a shopping website. You see some items that have a price, and some items do not have a price due to some reason, or it indicates that the site will send a notification when the price is available. Now, if you want to list all the items based on an order starting from least expensive, then you want to see the items with the price first, instead of the items without the price. That's why applying the query on item's price with ascending order will return the unordered items, with a price value of nil, at the end. The same is applicable for ordering items in descending order when you want to see the most expensive items first.
 
 ### ``limit`` Clause
 
 Ballerina also supports the ``limit`` clause within the query expression.
 
-```
+```ballerina
 Employee[] top100 = 
     from var e in employees
     order by e.salary descending
@@ -535,7 +534,7 @@ Employee[] top100 =
     select e
 ```
 
-In the above code example, the query pipeline has a ``limit`` clause which evaluates to an integer with value 100. The pipeline generates a list of **``Employee``** record entries in descending order, based on the *salary* field and the ``limit`` clause limits the generated result to the first 100 entries.<br><br>
+In the above code example, the query pipeline has a ``limit`` clause which evaluates to an integer with value 100. The pipeline generates a list of **``Employee``** record entries in descending order, based on the *salary* field and the ``limit`` clause limits the generated result to the first 100 entries.
 
 ## Table Concept  
 
@@ -547,13 +546,13 @@ Tables are a built-in data structure. They are just like the arrays and maps tha
 
 A table is an array of records, and each record represents a row in the table. The rows are identified by keys, which is similar to maps. Thus, you can either iterate over the table, item by item, like arrays, or directly point to the item using the associated key. But unlike in maps where the keys are of string type and are different from the fields, a table stores the keys as fields in the rows. This approach is similar to the concept of primary keys in a SQL based database table where one of the columns is designated as a primary key, which is uniquely used to identify the database record.
 
-Therefore, a table maintains an invariant that each row is uniquely identified by a key that is not limited to string type and is immutable. Additionally, tables also preserve the order of the rows.<br><br>
+Therefore, a table maintains an invariant that each row is uniquely identified by a key that is not limited to string type and is immutable. Additionally, tables also preserve the order of the rows.
 
 ### Table Syntax
 
 The table syntax in Ballerina looks like this.
 
-```
+```ballerina
 type Employee record {
     readonly string name;
     int salary;
@@ -573,13 +572,13 @@ The table constructor adds the two records. The table constructor is exactly lik
 
 Once the table is constructed, you can look up the records using the key, just like you would do in a map.
 
-```
+```ballerina
 Employee? e = t["Fred"];
 ```
  
 You can use the ``foreach`` loop to iterate over all the rows in the table.
 
-```
+```ballerina
 function increaseSalary(int n) {
     // Iterates over the rows of `t` in the specified order.
     foreach Employee e in t {
@@ -588,13 +587,13 @@ function increaseSalary(int n) {
 }
 ```
 
-There is a direct and simple mapping from a table to JSON. Table to JSON conversion will result in an array of JSON objects where each member of the array corresponds to a member of the table.<br><br>
+There is a direct and simple mapping from a table to JSON. Table to JSON conversion will result in an array of JSON objects where each member of the array corresponds to a member of the table.
 
 ### Multiple Key Fields
 
 You can have a table that has a multiple part key spread over several fields.
 
-```
+```ballerina
 type Employee record {
     readonly string firstName;
     readonly string lastName;
@@ -612,7 +611,7 @@ In the above code example, the **``Employee``** record has three fields: **``fir
 
 Subsequently, you can also look up the table using both keys.
 
-```
+```ballerina
 Employee? e = t["Fred", "Bloggs"];
 ```
 
@@ -620,7 +619,7 @@ Employee? e = t["Fred", "Bloggs"];
 
 The keys are not restricted to string type. You can also have keys belonging to any subtype of plain data, which also includes structured types.
 
-```
+```ballerina
 type Employee record {
     readonly record {
         string first;
@@ -639,17 +638,17 @@ In the above code example, the **``Employee``** record has a field **``name``**,
 
 Accessing the rows in this table works in the same way.
 
-```
+```ballerina
 Employee? e = t[{first: "Fred", last: "Bloggs"}];
 ```
 
-With structured types, you have the ability to define rich keys, with different types, such as arrays of bytes, which makes it a binary key. This is a very powerful way of programming with tables, where you can directly work with the keys, instead of being constrained by faked up string representations of your keys.<br><br>
+With structured types, you have the ability to define rich keys, with different types, such as arrays of bytes, which makes it a binary key. This is a very powerful way of programming with tables, where you can directly work with the keys, instead of being constrained by faked up string representations of your keys.
 
 ### Querying Tables
 
 Apart from looking up rows in a table, you can also combine them with queries.
 
-```
+```ballerina
 type Employee record {|
     readonly int id;
     string firstName;
@@ -668,13 +667,13 @@ int[] salaries = from var {salary} in employees
   
 In the above code example, **``salaries``** is an array constructed from a query that selects the salary of each **``Employee``** record within the table **``employees``**. The query returns the list of all salary figures, which are of integer types.
 
-The actual type of the query output is determined by the context, for example integer array in this case, or the input type.<br><br>
+The actual type of the query output is determined by the context, for example integer array in this case, or the input type.
 
 ### Creating Tables with Query
 
 You can also use a query expression to create tables.
 
-```
+```ballerina
 var highPaidEmployees = 
    table key(id) 
    from var e in employees
@@ -682,13 +681,13 @@ var highPaidEmployees =
    select e;
 ```
 
-In the above code example, a new table is produced from the query expression, which selects all the rows whose **``salary``** field is greater than or equal to 1000. A table is created as a result of the query expression explicitly specifying what to create by starting with the table keyword. The key of the created table can also be specified explicitly.<br><br>
+In the above code example, a new table is produced from the query expression, which selects all the rows whose **``salary``** field is greater than or equal to 1000. A table is created as a result of the query expression explicitly specifying what to create by starting with the table keyword. The key of the created table can also be specified explicitly.
 
 ### Join Clause
 
 Ballerina queries can also leverage the join clause on table keys.
 
-```
+```ballerina
 type User record {|
     readonly int id;
     string name;
@@ -720,7 +719,7 @@ In the above code example, there is a table **``users``** of **``User``** record
 
 The query uses the ``join`` clause to combine the list of **``logins``** and the **``users``** table to create a list of user-friendly login information. It uses the ``on`` condition to match the values of the fields **``userId``** and **``id``**, from **``Login``** and **``User``** records respectively. Finally, it builds out a string containing the fields **``name``** and **``time``** from these two records, separated by a colon symbol.
 
-The ``join`` clause uses an internal hashtable, thereby improving the query  efficiency compared to O(n2) time complexity observed in nested ``from`` clauses.  The type to join on must be anydata.<br><br>
+The ``join`` clause uses an internal hashtable, thereby improving the query  efficiency compared to O(n2) time complexity observed in nested ``from`` clauses.  The type to join on must be anydata.
 
 ## Stream Type
 
@@ -728,13 +727,13 @@ Ballerina supports the concept of stream. A stream is a sequence of values that 
 
 A stream type is a separate basic type but acts as an object. A stream is defined with the stream keyword, as stream *<T,E>*, where members of the stream sequence are of type T and termination value is of type E. A shorter definition of *stream\<T>* can be used to mean *stream<T,( )>*, where the termination value is nil.
 
-Generating the values for a stream can result in an error, in which case the stream is terminated with an error value.<br><br>
+Generating the values for a stream can result in an error, in which case the stream is terminated with an error value.
 
 ### Querying with Streams
 
 You can use the same query expressions with streams.
 
-```
+```ballerina
 type LS stream<string, Error?>;
 
 // strip blank lines.
@@ -753,7 +752,7 @@ Using the stream keyword in front of ``from`` makes this query expression return
 
 You can also iterate over streams, like a loop operation, to perform some computation. However, you cannot use ``foreach`` with a stream that may terminate with an error since foreach cannot produce a value because it is a statement and error values cannot be ignored in Ballerina. You can achieve that with the do clause, in conjunction with the ``from`` clause.
 
-```
+```ballerina
 function count(LS lines) returns int|Error {
     int nLines = 0;
     check from var line in lines
@@ -766,13 +765,13 @@ function count(LS lines) returns int|Error {
 
 In the above code example, the function **``count()``** works on the stream of type **``LS``**. The query iterates over the stream, and the ``do`` clause performs an operation to increment the **``nLines``** to record the number of lines.
 
-The use of the ``check`` keyword before the query handles the scenario where the stream’s termination value can be an error by capturing the error  locally within the function call and returning it.<br><br>
+The use of the ``check`` keyword before the query handles the scenario where the stream’s termination value can be an error by capturing the error  locally within the function call and returning it.
 
 ## Backtick Templates
 
 Ballerina supports the concepts of backticks. A backtick template is composed of a tag followed by a backtick string, enclosed within the ``‘ ` ’`` notation, where you can have expressions that are enclosed in *${ . . . }*.
 
-```
+```ballerina
 string name = "James";
 string s = string `Hello, ${name}`;
 ```
@@ -783,11 +782,11 @@ The backtick template is evaluated in two phases. The first phase accumulates th
 
 In case you want to add the backtick itself, within a backtick template, you can use the same *${ . . . }* syntax.
 
-```
+```ballerina
 string s = string `Backtick:${"`"}`;
 ```
 
-In the above code example, the string **``s``** will be assigned a value of *“Backtick:`’*.<br><br>
+In the above code example, the string **``s``** will be assigned a value of *“Backtick:`’*.
 
 ## Raw Templates
 
@@ -795,11 +794,11 @@ Raw templates are backtick templates without the tag, in which case the phase tw
 
 One of the important use cases of raw templates is the preparation of the database query to pass parameters along with SQL statements.
 
-```
+```ballerina
 db->query(`SELECT * FROM  order WHERE customer_id = ${customerId}’);
 ```
 
-In the above example, assume that **``db``** is a client object making a remote call to a SQL database. The raw template passed to the query method translates to an array of two strings *“SELECT * FROM order WHERE customer_id =”* and “”. The second string is empty as it comes after the expression. Along with that, it also passes an array of expression evaluation which is the value of variable **``customerId``**. Thus, the SQL syntax is turned into the right syntax with the required substitution for the underlying SQL implementation.<br><br>
+In the above example, assume that **``db``** is a client object making a remote call to a SQL database. The raw template passed to the query method translates to an array of two strings *“SELECT * FROM order WHERE customer_id =”* and “”. The second string is empty as it comes after the expression. Along with that, it also passes an array of expression evaluation which is the value of variable **``customerId``**. Thus, the SQL syntax is turned into the right syntax with the required substitution for the underlying SQL implementation.
 
 ## XML Overview
 
@@ -809,7 +808,7 @@ Ballerina uses the template concept to construct xml values. It is designed to w
 
 As part of XML handling, Ballerina provides a navigation syntax with an XPath-like syntax. The xml type also works well with query expressions to provide XQuery FLWOR like functionality.
 
-Overall the XML design in Ballerina is opinionated, and it works more like the regular containers such as lists and tables. Also, Ballerina’s XML representation doesn't support an up pointer. Therefore, the XML elements do not have references to parents and siblings since they do not know where they are in the overall XML structure.<br><br>
+Overall the XML design in Ballerina is opinionated, and it works more like the regular containers such as lists and tables. Also, Ballerina’s XML representation doesn't support an up pointer. Therefore, the XML elements do not have references to parents and siblings since they do not know where they are in the overall XML structure.
 
 ### Sequences
 
@@ -823,7 +822,7 @@ Similarly, the way an XML element is represented is by a sequence of that XML el
 
 The mutability of a sequence is similar to strings. Members of a sequence are also immutable, just like strings. For example, you cannot mutate a sequence of one item into a sequence of two items.
 
-A sequence has no storage identity. Two sequences will match for === operator if their members match for the same operation.<br><br>
+A sequence has no storage identity. Two sequences will match for === operator if their members match for the same operation.
 
 ### XML Data Model
 
@@ -833,13 +832,13 @@ An xml value has four kinds of items. It can have an element, processing instruc
 
 An element item consists of three things, name of string type, attributes of type *map\<string>*, and children of type ``xml``. A text item has no identity, therefore the operator ``==`` has the same meaning as ``===``. Consecutive text items never occur in an xml value. Instead, they are always merged.
 
-An element item is mutable whereas text items are immutable.<br><br>
+An element item is mutable whereas text items are immutable.
 
 ### XML Templates
 
 XML templates are used to create xml values.
 
-```
+```ballerina
 string url = "https://ballerina.io";
 
 xml content = xml`<a href="${url}">Ballerina</a> is an <em>exciting</em> new language!`;
@@ -847,7 +846,7 @@ xml content = xml`<a href="${url}">Ballerina</a> is an <em>exciting</em> new lan
 xml p = xml `<p>${content}</p>`;
 ```
 
-The above code example defines two variables **``content``** and **``p``** of xml type using the backtick template containing the xml tag. In this case the phase two of the template processing does a parsing using the XML 1.0 recommendation’s grammar for content (what XML allows between a start-tag and end-tag). You can place the interpolated expressions of the template within XML content, or in attribute values, as string values.<br><br>
+The above code example defines two variables **``content``** and **``p``** of xml type using the backtick template containing the xml tag. In this case the phase two of the template processing does a parsing using the XML 1.0 recommendation’s grammar for content (what XML allows between a start-tag and end-tag). You can place the interpolated expressions of the template within XML content, or in attribute values, as string values.
 
 ### XML Operations
 
@@ -855,7 +854,7 @@ You can also perform different operations on values of xml type.
 
 You can use the + operator to concatenate two xml values.
 
-```
+```ballerina
 xml x1 = xml `<name>Sherlock Holmes</name>`;
 Xml x2 = xml `<details>
                 <author>Sir Arthur Conan Doyle</author>
@@ -869,7 +868,7 @@ The ``==`` operator does a deep equals comparison.
 
 You can loop through the xml elements with foreach.
 
-```
+```ballerina
 xml x4 = xml `<name>Sherlock Holmes</name><details>
                         <author>Sir Arthur Conan Doyle</author>
                         <language>English</language>
@@ -884,26 +883,26 @@ In the above code example, the code iterates through the xml value in **``x4``**
 
 You can also access the ith element using the `‘[ ]’` notation, and index into them.
 
-```
+```ballerina
 print(x4[0]);
 ```
 
 Similarly, you can use the `‘.’` notation to access the attribute.
 
-```
+```ballerina
 xml x5 = xml `<para id="greeting">Hello</para>`;
 string id = check x5.id;
 ```
 
 If you want to check for optional attributes, use the `‘?’` notation before `‘.’` to return ( ) in case the attribute is not present.
 
-```
+```ballerina
 string? name = check x5?.name;
 ```
 
 Ballerina LangLib provides a *lang.xml* library module for performing operations on xml. For example, you can also mutate an element using **``setChildren( )``** as follows:
 
-```
+```ballerina
 x2.setChildren(xml `<language>French</language>`);
 ```
 
@@ -913,7 +912,7 @@ Ballerina also supports inbuilt subtypes of the xml type. This is beneficial for
 
 You can define a xml element value that belongs to a subtype *xml:Element* of ``xml``.  
 
-```
+```ballerina
 xml:Element p = xml`<p>Hello</p>`;
 ```
 
@@ -921,7 +920,7 @@ In this case, *Element* is a subtype of ``xml`` and **``p``** comprises sequence
 
 An xml value belongs to *xml:Text* type if it consists of a text item or is empty. You can create an xml:Text type from string, and if the string is empty then the xml:Text value is also empty.
 
-```
+```ballerina
 function stringToXml(string s) returns xml:Text  {
         return xml:createText(s);
 }
@@ -931,7 +930,7 @@ function stringToXml(string s) returns xml:Text  {
 
 An xml value belongs to the type *xml<T>* if each of its members belong to *T*. Iterating over the *xml<T>*, gives you access to the items of type *T*.
 
-```
+```ballerina
 function rename(xml x, string oldName, string newName) {
     foreach xml:Element e in x.elements() {
         if e.getName() == oldName {
@@ -944,7 +943,7 @@ function rename(xml x, string oldName, string newName) {
 
 In the above code example, the function **``rename( )``** performs the operation of setting a new name for some XML elements. It takes an argument **``x``** as xml type, and two strings **``oldName``** and **``newName``**.
 
-In the function, the ``foreach`` loop iterates through the list of elements of **``x``**  which is returned by **``elements( )``** and belongs to type *xml<xml:Element>*. Therefore, you can call **``getName( )``** for each *xml:Element* and check for the old name. And if the name matches, **``setName( )``** is called to change the name. The function executes recursively for children of an *xml:Element*.<br><br>
+In the function, the ``foreach`` loop iterates through the list of elements of **``x``**  which is returned by **``elements( )``** and belongs to type *xml<xml:Element>*. Therefore, you can call **``getName( )``** for each *xml:Element* and check for the old name. And if the name matches, **``setName( )``** is called to change the name. The function executes recursively for children of an *xml:Element*.
 
 ### XML Navigation Syntactic Sugar
 
@@ -966,13 +965,13 @@ For accessing every text item in the children of *e* in *x*, use *x/\*.text()*
 
 For accessing every element named *para* in the descendants of *x*, use *x/\*\*/\<para>*. Here the use of * * signifies any number of levels within an xml element.
 
-For accessing the first element named *para* in the children of *e* in *x*, use  *x/\<para>[0]*.Using the *[ ]* syntax you can point to the nth element.<br><br>
+For accessing the first element named *para* in the children of *e* in *x*, use  *x/\<para>[0]*.Using the *[ ]* syntax you can point to the nth element.
 
 ### Querying with XML
 
 You can also use the regular query expression in Ballerina to query XML.
 
-```
+```ballerina
 function paraByLang(xml x, string lang) returns xml {
      return from var para in x.<para>
             where para?.lang == lang
@@ -982,13 +981,13 @@ function paraByLang(xml x, string lang) returns xml {
 
 In the above code example, you can use the query expression to iterate over the xml **``x``**, for all elements *\<para>*, and the variable para is bound to each *\<para>* element at every step in the iteration. It uses the ``where`` clause to check the lang attribute of the element to match it with the string argument **``lang``**. Finally, it selects all the *\<para>* elements that satisfies the ``where`` clause.
 
-This query returns a new xml containing a sequence of *\<para>* elements.<br><br>
+This query returns a new xml containing a sequence of *\<para>* elements.
 
 ### Combining XML Templates and Queries
 
 You can combine the concept of template with queries to build nested templates. With this feature, you build powerful templates having query expressions, with inner templates.
 
-```
+```ballerina
 type Person record {|
     string name;
     string country;
@@ -1008,7 +1007,7 @@ The query expression binds to each **``name``** and **``country``** fields of **
 
 At the end, an xml value containing a sequence of *\<data>* element with zero or more *\<person>* child elements is returned.
 
-This is a very powerful feature unique to Ballerina. In this way, you can also build library functions that build HTML snippets as xml values for your application.<br><br>
+This is a very powerful feature unique to Ballerina. In this way, you can also build library functions that build HTML snippets as xml values for your application.
 
 ### XML Namespaces
 
@@ -1016,18 +1015,18 @@ Ballerina supports XML namespaces without adding another level of complexity in 
 
 When you see a XML element *x* prefixed with the namespace as *ns:x* , under the covers, Ballerina expands the prefix and the colon into a *{url}x* notation where *url* is the namespace name bound to *ns*.
 
-```
+```ballerina
 xml:Element e = xml`<p:e xmlns:p="http://example.com/"/>`;
 string name = e.getName();
 ```
 
-In the above code example, the variable **``name``** is set to an expanded name if **``e``**, which is *{http://example.com}e*.<br><br>
+In the above code example, the variable **``name``** is set to an expanded name if **``e``**, which is *{http://example.com}e*.
 
 ### XMLNS Seclarations
 
 Overall, to make the XML work in Ballerina, you need XML namespace declarations in code. XML namespace declarations look like import declarations.
 
-```
+```ballerina
 xmlns "http://example.com" as eg;
 xml x = xml`<eg:doc>Hello</eg:doc>`;
 ```
@@ -1036,7 +1035,7 @@ In the above code example, the **``eg``** is bound as a prefix to the *namespace
 
 The comparison and assignment of xml elements will implicitly check for and expand the namespace declarations in the correct way.
 
-```
+```ballerina
 xmlns "http://example.com" as ex;
 
 boolean b = (x === x.<ex:doc>);

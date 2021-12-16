@@ -18,9 +18,9 @@ This guide presents the subset of the Ballerina language that is common to most 
 
 ## Programs and Modules
 
-Ballerina programs consist of modules, and each module consists of one or more *.bal* files.
+Ballerina programs consist of modules and each module consists of one or more *`.bal`* files.
   
-The most important thing that a module does is define named functions.
+The most important thing that a module does is defining named functions.
 
 Here's what a simple Ballerina module looks like:
 
@@ -32,17 +32,17 @@ public function main() {
 }
 ```
 
-The ``import`` keyword is used to bind predefined library modules to module prefix. Ballerina modules have two-part names represented by an organization name and a module name. In this case, the organization is **``ballerina``** , and the module is **``io``**. The bound identifier that refers to this library module is set to the module name **``io``**. To override the default identifier binding for the module, you can use the ``as`` keyword as follows, *``import ballerina/io as oi``*.
+The ``import`` keyword is used to bind predefined library modules to the module prefix. Ballerina modules have two-part names represented by an organization name and a module name. In this case, the organization is **``ballerina``**  and the module is **``io``**. The bound identifier that refers to this library module is set to the module name **``io``**. To override the default identifier binding for the module, you can use the ``as`` keyword as follows: *``import ballerina/io as oi``*.
 
-Module hierarchies follow the `‘/’` and `‘.’` notation, for example, *``org/x.y.z``* to refer to modules, and sub-modules. The `‘:’` notation points to a function defined within the module.
+Module hierarchies follow the `‘/’` and `‘.’` notations. For example, *``org/x.y.z``* to refer to modules and sub-modules. The `‘:’` notation points to a function defined within the module.
 
-The main function is the program entry point, and the public keyword makes this function visible outside the module.  This function calls the println( ) function defined in the io module using the `‘:’` notation. Every statement in a Ballerina program code must be terminated with a semicolon.
+The main function is the program entry point and the public keyword makes this function visible outside the module.  This function calls the `println( )` function defined in the `io` module using the `‘:’` notation. Every statement in a Ballerina program code must be terminated with a semicolon.
 
 ## Variables and Types
 
 Modules and functions can declare variables.
 
-Variables have types. Ballerina defines a few built-in types, such as  integers, floating point numbers, strings, and booleans.
+Variables have types. Ballerina defines a few built-in types such as  integers, floating point numbers, strings, and booleans.
 
 Here is a typical way of declaring variables:
 
@@ -74,7 +74,7 @@ function add(int x, int y) returns int {
 }
 ```
 
-In the above code example, you see the definition for **``add``** function. It accepts two parameters of type ``int``, **``x``** and **``y``**. It also returns a value of type int. The ``returns`` keyword specifies the type of return value.
+In the above code example, you see the definition for the **``add``** function. It accepts two parameters of type ``int``, **``x``**, and **``y``**. It also returns a value of type `int`. The ``returns`` keyword specifies the type of return value.
 
 Inside the function, when a simple addition operation is performed, the result is stored and returned in another variable **``sum``** of type ``int`` using the ``return`` statement.
 
@@ -95,9 +95,9 @@ function พิมพ์ชื่อ(string ชื่อ) {
 string `string = “xyz”;
 ```
 
-The overall syntax is pretty-much C like. Comments start with `‘//’` till the end of line. Module definitions/declarations and statements use braces and terminate by semicolon compulsorily.   
+The overall syntax is pretty-much C-like. Comments start with `‘//’` till the end of line. Module definitions/declarations and statements use braces and terminate by semicolon compulsorily.   
 
-You can also use Unicode characters for identifiers. Unicode literals can be defined by using the `\u{H}` to represent Unicode code points in hex format.
+You can also use Unicode characters for identifiers. Unicode literals can be defined by using the `\u{H}` to represent Unicode code points in the hex format.
 
 Keywords such as ``int``, ``function``, ``string`` are reserved keywords in Ballerina. You can use them as identifiers by prefixing them with a single quote.
 
@@ -111,13 +111,13 @@ int m = 1;
 int n  = 0xFFFF;
 ```
 
-The integer data type supports all the basic arithmetic operators, such as `‘+’` ,`’-’` , `‘*’` , `‘/’`, and `‘%’`, the comparison operators, `‘==’` , `‘!=’`, `‘<’` , `‘>’`, `‘<=’`, `‘>=’`, as well as the compound assignment operations `‘+=’` & `‘-=’`. It also supports the usual bitwise operators, `‘&’`, `‘|’` , `‘^’` , `‘~’`  , `‘<<’`  and  `‘>>’`. The operator precedence rules are exactly as per C.
+The integer data type supports all the basic arithmetic operators such as `‘+’` ,`’-’` , `‘*’` , `‘/’`, and `‘%’`, the comparison operators, `‘==’` , `‘!=’`, `‘<’` , `‘>’`, `‘<=’`, `‘>=’` as well as the compound assignment operations `‘+=’` & `‘-=’`. It also supports the usual bitwise operators (i.e., `‘&’`, `‘|’` , `‘^’` , `‘~’`  , `‘<<’`  and  `‘>>’`). The operator precedence rules are exactly as per C.
 
-However, there are a couple of notable deviations in Ballerina. Firstly, increment and decrement operators, `‘++’` and `‘--’` are not supported. Moreover, integer overflow results in a runtime error, unlike in C, where it rolls over.
+However, there are a couple of notable deviations in Ballerina. Firstly, increment and decrement operators (i.e., `‘++’` and `‘--’) are not supported. Moreover, integer overflow results in a runtime error unlike in C where it rolls over.
 
 ## Floating Point Numbers
 
-In Ballerina, floating point numbers have an IEEE 64-bit binary representation, the same as double in Java. They are declared with the ``float`` keyword, and they support all operations similar to the integers, except bitwise operators.
+In Ballerina, floating point numbers have an IEEE 64-bit binary representation similar to `double` in Java. They are declared with the ``float`` keyword and they support all operations similar to the integers except bitwise operators.
 
 ```ballerina
 float x = 1.0;
@@ -127,11 +127,11 @@ float y = x + <float>n;
 
 However, they cannot be implicitly converted to or from integers. You can use the `‘<T>’` notation for explicit conversion.
 
-In Ballerina, NaN, the IEEE defined terminology for Not a Number, equals to itself. Therefore the `‘==’` operator on two NANs will return true. For floating point types, the operator `‘==’` and `‘!=’` test for the same value and is not numerically equivalent as per IEEE defined convention.
+In Ballerina, NaN, the IEEE defined terminology for Not a Number equals to itself. Therefore, the `‘==’` operator on two NANs will return `true`. For floating point types, the `‘==’` operator and `‘!=’` test for the same value and is not numerically equivalent as per the IEEE defined convention.
 
  ## Booleans and Conditionals
 
-Boolean type has only two values, ``true`` and ``false``.
+The boolean type has only two values as ``true`` and ``false``.
 
 ```ballerina
 boolean flag = true;
@@ -161,27 +161,27 @@ Curly braces are required in ``if else`` and all compound statements in Ballerin
 
 ## Nil
 
-Nil is another data type. It has a special significance in Ballerina as it denotes the equivalent of what is known as a null value in other C family languages. If you want to declare the value of any type as nil, here is how it is done.
+Nil is another data type. It has a special significance in Ballerina as it denotes the equivalent of what is known as a null value in other C-family languages. If you want to declare the value of any type as nil, here is how it is done.
 
 ```ballerina
 int? v = ();
 ```
 
-The keyword ``int`` is followed by a `‘?’` notation. It means that **``v``** can take integer value or can be nil. It is initialized to nil which is denoted by `‘( )’`. Types do not allow their values to be set as nil implicitly and there is also no implicit conversion to boolean.
+The keyword ``int`` is followed by a `‘?’` notation. It means that **``v``** can take an integer value or can be nil. It is initialized to `nil`, which is denoted by `‘( )’`. Types do not allow their values to be set as `nil` implicitly and there is also no implicit conversion to boolean.
 
-The comparison operators `‘==’` and `‘!=’` operate on a value to test whether the value is nil.
+The `‘==’` and `‘!=’` comparison operators operate on a value to test whether the value is `nil`.
 
 ```ballerina
 int n = v == ( ) ? 0 : v;
 ```
 
-Similarly, you can also use it in an Elvis operator such as *``x ?: y``* that returns **``x``** if it is not nil or **``y``** otherwise.
+Similarly, you can also use it in an Elvis operator such as *``x ?: y``* that returns **``x``** if it is not `nil` or **``y``** otherwise.
 
 ```ballerina
 int n = v ?: 0;
 ```
 
-Nil is also considered as a returned value for functions. So a function can be written as:
+`Nil` is also considered as a returned value for functions. Therefore, a function can be written as:
 
 ```ballerina
 function foo() returns () {
@@ -189,7 +189,7 @@ function foo() returns () {
 }
 ```
 
-Alternatively, any function that ends without a return statement implicitly returns nil.
+Alternatively, any function that ends without a return statement implicitly returns `nil`.
 
 ## Strings
 
@@ -199,23 +199,23 @@ Strings are an immutable sequence of zero or more unicode characters. To define 
 string grin = “\u{1F600}”
 ```
 
-String literals are enclosed in double quotes and support the usual C style escape sequences as well as numeric escape characters to specific Unicode symbols.
+String literals are enclosed in double quotes and support the usual C-style escape sequences as well as numeric escape characters to specific Unicode symbols.
 
-The string type supports the usual operators. The `‘==’`  operator checks for the same characters. The comparison operators, `‘<’` , `‘<=’`, `‘=>’`, `‘>’` work by comparing code points. The `‘+’` operator is used for concatenation.
+The string type supports the usual operators. The `‘==’`  operator checks for the same characters. The comparison operators (i.e., `‘<’` , `‘<=’`, `‘=>’`, `‘>’`) work by comparing code points. The `‘+’` operator is used for concatenation.
 
 ```ballerina
 string greeting = “Hello” + grin;
 ```
 
-The `‘[i]’` expression on a string value points to the character at index i. The index positions on the string type start with zero.
+The `‘[i]’` expression on a string value points to the character at index `i`. The index positions on the string type starting with zero.
 
-Ballerina does not support the notion of a separate character type, like in C. Instead, a character is considered a single-length string.
+Ballerina does not support the notion of a separate character type like in C. Instead, a character is considered a single-length string.
 
 ## Langlib Functions
 
 Ballerina defines a small library for providing fundamental operations on built-in datatypes. 
 
-For example, you can perform some of the standard operations on string type, like getting the substring or finding the length.
+For example, you can perform some of the standard operations on string type like getting the substring or finding the length.
 
 ```ballerina
 string s = “abc”.substring(1,2);
@@ -225,7 +225,7 @@ int n = s.length( );
 
 The substring and length are the Langlib functions that can be called using the convenient method call syntax. However, these types do not represent objects in this case.
 
-Ballerina imports the Langlib library for *``ballerina/lang.T``* where *``T``* represents every built-in type. So in the case of the above code example, the string length can also be found by calling the **``length( )``** function on *``ballerina/lang.string``* module.
+Ballerina imports the Langlib library for *``ballerina/lang.T``* where *``T``* represents every built-in type. Therefore, in the case of the above code example, the string length can also be found by calling the **``length( )``** function on the *``ballerina/lang.string``* module.
 
 ```ballerina
 int n = string:length(s);
@@ -247,11 +247,11 @@ You can index the individual elements of this array using the `‘[i]’` notati
 int n = v[1];
 ```
 
-Array indexing starts with zero. They are mutable, and ordering is supported based on a lexicographical ordering of members. 
+Array indexing starts with zero. They are mutable and ordering is supported based on a lexicographical ordering of members. 
 
-The comparison operators `‘==’` and `‘!=’` perform a deep comparison of two Arrays based on the members and their order instead of memory location.
+The `‘==’` and `‘!=’` comparison operators perform a deep comparison of two arrays based on the members and their order instead of the memory location.
 
-Langlib functions are available for Arrays to perform simple operations, such as finding the length of an array.
+Langlib functions are available for arrays to perform simple operations such as finding the length of an array.
 
 ```ballerina
 int len = v.length()
@@ -259,7 +259,7 @@ int len = v.length()
 
 ## ``foreach`` Statement
 
-A ``foreach`` statement iterates over an Array by binding a variable to each Array element at every loop iteration.
+A ``foreach`` statement iterates over an array by binding a variable to each array element at every loop iteration.
 
 ```ballerina
 function sum(float[ ] v) returns float {
@@ -271,9 +271,9 @@ function sum(float[ ] v) returns float {
 }
 ```
 
-In this code example, the floating point type **``x``** is bound to each element of the Array **``v``**. Similarly, it also works with string type by iterating over each character in the string.
+In this code example, the **``x``** floating point type is bound to each element of the **``v``**  array. Similarly, it also works with string type by iterating over each character in the string.
 
-The foreach statement can also be constructed from a range expression, ``‘. . <’``.
+The foreach statement can also be constructed from a range expression such as ``‘. . <’``.
 
 ```ballerina
 function sum(float[ ] v) returns float {
@@ -285,11 +285,11 @@ function sum(float[ ] v) returns float {
 }
 ```
 
-Here the integer type **``i``** is set to a sequence of linearly incrementing numbers that ranges from zero to the length of Array **``v``**. Therefore, ``foreach`` statement iterates over the length of the array and increments **``i``** during each iteration.
+Here the integer type **``i``** is set to a sequence of linearly incrementing numbers that ranges from zero to the length of the array **``v``**. Therefore, the ``foreach`` statement iterates over the length of the array and increments **``i``** during each iteration.
 
 ## ``while`` Statement
 
-The while loop in Ballerina behaves exactly like the in C.
+The `while` loop in Ballerina behaves exactly like in C.
 
 ```ballerina
 type LinkedList record {
@@ -321,15 +321,15 @@ Binary data is represented by an array of bytes.
 byte[] data = base64 `yPHaytRgJPg+QjjylUHakEwz1fWPx/wXCW41JSmqYW8=`; 
 ```
 
-An Array of binary data can be represented in source code using base 64 or base 16 literal formats.
+An array of binary data can be represented in the source code using base-64 or base-16 literal formats.
 
-The Byte represents a number between 0 and 0xFF. You can define it with the ``byte`` keyword.
+The byte represents a number between `0` and `0xFF`. You can define it with the ``byte`` keyword.
 
 ```ballerina
 byte b = 0xFF;
 ```
 
-In Ballerina, Byte is not the same as a character in C. It is a subtype of the integer. Therefore it supports all the bitwise operators on integers. Some of these operators produce an integer type, and some like the `‘&’` operator produce a ``byte``.
+In Ballerina, byte is not the same as a character in C. It is a subtype of the integer. Therefore, it supports all the bitwise operators on integers. Some of these operators produce an integer type, and some like the `‘&’` operator produce a ``byte``.
 
 ## Maps
 
@@ -358,7 +358,7 @@ The use of comparison operators `‘==’` and `‘!=’` on a Map will perform 
 
 Ballerina allows you to define a name for a type. You can create user-defined type identifiers from the built-in types supported by the language.
 
-For example, it you have a array of map of string type, *``map<string>[ ]``*, you can define a type for it as follows:
+For example, it you have an array of a map of string type, *``map<string>[ ]``*, you can define a type for it as follows:
 
 ```ballerina
 type MapArray map<string>[];
@@ -373,7 +373,7 @@ This is similar to the typedef concept in C, where the identifier **``MapArray``
 
 ## Records
 
-A Record is a collection of fields of a specific type. With record types you have control over what your keys are.  
+A record is a collection of fields of a specific type. With record types, you have control over what your keys are.  
 
 ```ballerina
 record { int x; int y; } r = {
@@ -401,13 +401,13 @@ Coord c = { x: 1 , y: 2};
 int a = c.x;
 ```
 
-Records are mutable, and the individual record identifier *``c.x``* is lvalue. Rules for record comparison are the same as that for Maps.
+Records are mutable and the individual record identifier *``c.x``* is `lvalue`. Rules for record comparison are the same as that for maps.
 
 ## Structural Typing
 
 In Ballerina, the data types are defined in terms of a set of values. A type is a label for a set of values. These values can be part of a finite set or an infinite set.
 
-For example, the integer type has a finite set consisting of values within the range of  64 bit signed numbers. The string type is an infinite set that contains any number or order of characters. In this way, the universe of all values is partitioned into the basic types supported by Ballerina, such as nil, boolean, integer, floating point, and string. Values of these basic types are  immutable, and each value belongs to exactly one basic type.
+For example, the integer type has a finite set consisting of values within the range of 64-bit signed numbers. The string type is an infinite set that contains any number or order of characters. In this way, the universe of all values is partitioned into the basic types supported by Ballerina such as nil, boolean, integer, floating point, and string. Values of these basic types are  immutable, and each value belongs to exactly one basic type.
 
 There is also a concept of semantic subtyping, which means a subset of the values of the basic types. For example, the byte type is a subset of integer as it allows only a subset of values that are a part of the integer value set.
 

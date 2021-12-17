@@ -6,6 +6,87 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
 ---
 <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/css/home-page-2020.css"/>
+<link rel="stylesheet" href="/css/prism.css">
+<style>
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+  color: #464646;
+  cursor: default;
+  border: transparent;
+  border-bottom: #20b6b0 3px solid !important;
+  background-color: transparent !important;
+}
+
+.nav-tabs > li > a:hover {
+  border-color:transparent !important;
+}
+
+.nav-tabs > li > a{
+   border-bottom: transparent 3px solid !important;
+}
+
+.cBallerina-io-Gray-row {
+  padding-bottom:0px;
+}
+
+a {
+  font-size: 20px;
+  color: #20b6b0;
+  text-decoration: none;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: 0em;
+	width: 0em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+.line-numbers-rows > span {
+	pointer-events: none;
+	display: none;
+	counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+	content: counter(linenumber);
+	color: #999;
+	display: none;
+	padding-right: 0em;
+	text-align: right;
+}
+
+pre.line-numbers {
+  position: relative;
+  padding-left: 15px !important;
+  counter-reset: linenumber;
+}
+
+pre[class*="language-"] {
+  padding: 0em;
+  margin: 0;
+  overflow: auto;
+}
+
+pre{
+   border:none !important;
+}
+
+.playground-button:hover{
+   color: #464646 !important;
+   background-image: url(/img/play-button-hover.svg) !important;
+}
+
+</style>
 <!-- <link rel="stylesheet" href="/css/home-page-old.css"/> -->
 <div class="row cBallerinaIntroSection">
    <div class="container">
@@ -162,58 +243,152 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
    </div>
 </div>
       
-
-
-
-
-
-
-
-
-
   
-<!--START OF WHY BALLERINA TAB DESIGN-->
-
-
-
-
-
-
-   
-
-
-
-
-   
-
-
-
-
-
-
-
-
-<!--END OF WHY BALLERINA TAB DESIGN-->
-
-
+<!--START OF TRY BALLERINA TAB DESIGN-->
 
 <div class="row cWidget cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 6rem; background-color: #f7f7f7;">
    <div class="container">
-   <div class="col-sm-12 col-md-12">
-      <h2>
-         Try Ballerina
-      </h2>
-      </div>
-      <div class="col-sm-12 col-md-12 cColCOntent">
-         <a class="cPlayGround" href="https://play.ballerina.io/">Try in Playground</a>
-     </div>
-     <div class="col-sm-12 col-md-12" style="display: inline-block; width: 100%;">
-      <div class="embed-responsive embed-responsive-21by9 playground">
-         <iframe  class="embed-responsive-item" src="https://play.ballerina.io/index-embedded.html"></iframe>
-       </div>
+      <div class="col-sm-12 col-md-12">
+         <h2>Try Ballerina</h2>
+
+         <ul class="nav nav-tabs">
+            <li class="active" ><a data-toggle="tab"  href="#firstTab" >Restful API</a></li>
+            <li><a data-toggle="tab" href="#secondTab" >Covid Case Marality</a></li>
+            <!-- <li><a data-toggle="tab" href="#thiredTab" >Menu 2</a></li>
+            <li><a data-toggle="tab" href="#fourthTab" >Menu 3</a></li> -->
+          </ul>
+          <div class="tab-content">
+           
+            <div id="firstTab" class="tab-pane fade in active"  >
+               <div class="row" style="background-color: #f5f5f5;"> 
+                  <div class="col-lg-9 col-sm-12" style="padding:0;">
+                     <div class="row cBallerina-io-Gray-row" style="padding-top: 0;">
+               
+                        <div class="FullCode" style="background-color: #f5f5f5;">
+                           <div class="highlight"> 
+                              <pre class="language-ballerina basic ballerina">
+                                 <code class="language-ballerina ballerina">
+import ballerina/http;
+
+# Album represents data about a record album.
+type Album readonly & record {|
+    string id;
+    string title;
+    string artist;
+    decimal price;
+|};
+
+// albums table to seed record album data.
+table<Album> key(id) albums = table [
+        {id: "1", title: "Blue Train", artist: "John Coltrane", price: 56.99},
+        {id: "2", title: "Jeru", artist: "Gerry Mulligan", price: 17.99},
+        {id: "3", title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan", price: 39.99}
+    ];
+
+service / on new http:Listener(8080) {
+    // Responds with the list of all albums as JSON.
+    resource function get albums() returns Album[] {
+        return albums.toArray();
+    }
+
+    // Adds an album from JSON received in the request body.
+    resource function get albums/[string id]() returns Album | http:NotFound {
+        Album? album = albums[id];
+        if album is () {
+            return <http:NotFound>{};
+        } else {
+            return album;
+        }
+    }
+
+    // Locates the album whose ID value matches the id
+    // parameter sent by the client, then returns that album as a response.
+    resource function post albums(@http:Payload Album album) returns Album {
+        // Add the new album to the table.
+        albums.add(album);
+        return album;
+    }
+}
+                                 </code>
+                           </pre>
+                      
+                           </div>
+                        </div>
+                  </div>
+
+                  </div>
+                  <div class="col-lg-3 col-sm-12" style="padding:0;background-color: #f5f5f5;">
+                     <a href="https://play.ballerina.io/?gist=bbd3e202a43a62146d47797ee27f8ec7&file=play.bal">
+                     <button class="playground-button"  id="simple11" style="background:url(/img/play=button.svg)no-repeat scroll right center; color:#20b6b0;padding: 12px 30px ;border: none;float: right;background-size:20px ;font-size: 17px;margin-right: 15px;margin-top: 15px;"> Try in Playground</button>
+                     </a>
+                  </div>
+
+
+               </div>
+               
+
+            </div>
+            <div id="secondTab" class="tab-pane fade"  >
+               <!-- <button class="" id="simple11" style="background-color: #20b6b0; color: #fff;padding: 12px 20px;border: none;float: right;"> Try in Playground</button> -->
+              
+               <div class="row" style="background-color: #f5f5f5;"> 
+                  <div class="col-lg-9 col-sm-12" style="padding:0;">
+                     <div class="row cBallerina-io-Gray-row" style="padding-top: 0;">
+               
+                        <div class="FullCode" style="background-color: #f5f5f5;">
+                           <div class="highlight"> 
+                              <pre class="language-ballerina basic ballerina">
+                                 <code class="language-ballerina ballerina">
+import ballerina/http;
+import ballerina/io;
+
+type Country record {
+    string country;
+    int population;
+    string continent;
+    int cases;
+    int deaths;
+};
+
+public function main() returns error? {
+    http:Client diseaseEp = check new ("https://disease.sh/v3/");
+    Country[] countries = check diseaseEp->get("covid-19/countries");
+    // Top 10 countries having the highest case-fatality ratio.
+    json summary = from var {country, continent, population, cases, deaths} in countries
+        where population > 100000 && deaths > 100
+        let decimal caseFatalityRatio = <decimal>deaths / <decimal>cases * 100
+        order by caseFatalityRatio descending
+        limit 10
+        select {country, continent, population, caseFatalityRatio};
+    io:println(summary);
+}
+
+                                 </code>
+                           </pre>
+                      
+                           </div>
+                        </div>
+                  </div>
+
+                  </div>
+                  <div class="col-lg-3 col-sm-12" style="padding:0;background-color: #f5f5f5;">
+                  <a href="https://play.ballerina.io/?gist=5708b4cdfcc62cd6eaaab4ebc90e6535&file=play.bal">
+                     <button class="playground-button"  id="simple11" style="background:url(/img/play=button.svg)no-repeat scroll right center; color:#20b6b0;padding: 12px 30px ;border: none;float: right;background-size:20px ;font-size: 17px;margin-right: 15px;margin-top: 15px;"> Try in Playground</button>
+                  </a>  
+                  </div>
+
+
+               </div>
+               
+
+            </div>
       </div>
    </div>
 </div>
+
+
+<!--END OF TRY BALLERINA TAB DESIGN-->
+
 
 <div class="row row cWidget cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 6rem;">
 
@@ -405,4 +580,18 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
 
         })
       });
+
+      $(function() {
+  $(".nav-tabs > li > a").click(function() {
+     // remove classes from all
+     $(".nav-tabs > li > button").removeClass("ab");
+     // add class to the one we clicked
+     $(this).addClass("ab");
+  });
+});
+    
+          
 </script>
+
+<script src="/js/prism.js"></script>
+<script src="/js/prism-ballerina.js"></script>

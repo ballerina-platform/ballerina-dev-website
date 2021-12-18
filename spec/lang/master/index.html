@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R1 preview 2021-12-17</h1>
+<h1>Ballerina Language Specification, 2022R1 preview 2021-12-18</h1>
 <p>
 Primary contributors:
 </p>
@@ -8972,7 +8972,9 @@ the static type of an action in an action-stmt is not nil.
 <p>
 A call-stmt is executed by evaluating call-expr as an expression and discarding
 the resulting value, which must be nil. The static type of the call-expr in an
-call-stmt must be a subtype of nil; it is permitted to be <code>never</code>.
+call-stmt must be either <code>()</code> or <code>never</code>. If it is
+<code>never</code>, then it is possible for the call-stmt to complete normally.
+
 </p>
 </section>
 <section>
@@ -13070,6 +13072,9 @@ with the order of dimensions in an expression that accesses the array.</li>
 <li>The static type of an expression now has singleton type when all its
 subexpressions have singleton type.</li>
 <li>Unreachable statements are now an error.</li>
+<li>Conditional variable type narrowing is now smarter. In particular, the types
+of variables can be narrowed in statements following an <code>if</code>
+statement that contains <code>return</code>.</li>
 </ol>
 </section>
 <section>

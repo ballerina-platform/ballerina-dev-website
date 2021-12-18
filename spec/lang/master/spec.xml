@@ -5830,12 +5830,16 @@ static type of <code>expression</code>.
 <h3>Unary expression</h3>
 
 <pre
-class="grammar"><dfn>unary-expr</dfn> :=
+class="grammar"><dfn>unary-expr</dfn> := <abbr>unary-numeric-expr</abbr> | <abbr>unary-logical-expr</abbr>
+</pre>
+
+<section>
+<h4>Unary numeric expression</h4>
+<pre
+class="grammar"><dfn>unary-numeric-expr</dfn> :=
    <code>+</code> <abbr>expression</abbr>
    | <code>-</code> <abbr>expression</abbr>
    | <code>~</code> <abbr>expression</abbr>
-   | <code>!</code> <abbr>expression</abbr>
-
 </pre>
 <p>
 The unary <code>-</code> operator performs negation. The static type of the
@@ -5858,16 +5862,24 @@ in T' if it belongs to int, decimal or float, and T contains a value with the
 same basic type as v.
 </p>
 <p>
-The unary + operator returns the value of its operand expression. The static
+The unary <code>+</code> operator returns the value of its operand expression. The static
 type of the operand must be a number, and the static type of the result is the
 same as the static type of the operand expression, modified by the usual <a
 href="#singleton_typing">singleton typing</a> rules.
 </p>
 <p>
-The ~ operator inverts the bits of its operand expression. The static type of
-the operand must be int, and the static type of the result is int, modified by
-the usual <a href="#singleton_typing">singleton typing</a> rules.
+The <code>~</code> operator inverts the bits of its operand expression. The
+static type of the operand must be int, and the static type of the result is
+int, modified by the usual <a href="#singleton_typing">singleton typing</a>
+rules.
 </p>
+</section>
+
+<section>
+<h4>Unary logical expression</h4>
+<pre
+class="grammar"><dfn>unary-logical-expr</dfn> := <code>!</code> <abbr>expression</abbr>
+</pre>
 <p>
 The <code>!</code> operator performs logical negation. The static type of the
 operand expression must be boolean. The <code>!</code> operator returns true if
@@ -5876,6 +5888,8 @@ result is boolean, modified by the usual <a href="#singleton_typing">singleton
 typing</a> rules.
 </p>
 </section>
+</section>
+
 <section>
 <h3>Multiplicative expression</h3>
 
@@ -9934,16 +9948,10 @@ class="grammar"><dfn>module-enum-decl</dfn> :=
 A module-enum-decl provides a convenient syntax for declaring a union of string constants.
 </p>
 <p>
-Each enum-member is defined as compile-time constant in exactly the same way as
-if it had been defined using a module-const-decl. The result of evaluating the
+Each enum-member is defined as compile-time constant in the same way as if it
+had been defined using a module-const-decl. The result of evaluating the
 const-expr must be a string. If the const-expr is omitted, it defaults to be the
-same as the identifier. It is an error if an enum-member has the same identifier
-as another enum-member in the same module-enum-decl. It is not an error if an
-enum-member turns into a module-const-decl with the same identifier as a another
-module-const-decl in the same module, whether or not resulting from an
-enum-member, provided that the two declarations are equivalent: the strings
-resulting from the const-expr evaluation must be the same, and the declarations
-must either both be public or both not be public.
+same as the identifier.
 </p>
 <p>
 The identifier is defined as a type in the same was as if it had been defined by
@@ -12626,8 +12634,6 @@ is applied to the body of a while statement.</li>
 query expression or action.</li>
 <li>A function call is only allowed with an expression in a match-guard when
 there is no possibility that it can mutate the value being matched.</li>
-<li>A member of an enum declaration can have the same identifier as a member of
-another enum declaration.</li>
 <li>The interpretation of multiple dimensions in an array-type-descriptor has
 been changed to make the order of dimensions in the type-descriptor consistent
 with the order of dimensions in an expression that accesses the array.</li>

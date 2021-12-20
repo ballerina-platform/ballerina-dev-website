@@ -1,6 +1,6 @@
 {
 	"version":"1.2.23",
-	"release-date":"2021-12-14",
+	"release-date":"2021-12-20",
 	"windows-installer":"ballerina-windows-installer-x64-1.2.23.msi",
 	"windows-installer-size":"141mb",
 	"linux-installer":"ballerina-linux-installer-x64-1.2.23.deb",

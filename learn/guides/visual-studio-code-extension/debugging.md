@@ -110,12 +110,6 @@ Follow the steps below to start a remote debug session.
     ```bash
     bal test --debug <DEBUGGEE_PORT> <PACKAGE_PATH>
     ```
-
-    - Debugging Ballerina tests during the build:  
-
-    ```bash 
-    bal build --debug <DEBUGGEE_PORT> <PACKAGE_PATH>
-    ```
     
     The terminal will show the following log:
 

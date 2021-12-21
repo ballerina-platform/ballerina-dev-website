@@ -30,7 +30,7 @@ Let's create a simple Ballerina HTTP service and an HTTP client with a main func
 Let's write a simple HTTP service as shown below in a file with the `.bal` extension:
 
 ***hello_service.bal***
-```bal
+```ballerina
 import ballerina/http;
 
 # A service representing a network-accessible API
@@ -97,7 +97,7 @@ Let's create a Ballerina client with a `main` function to invoke the `hello` ser
 > **Note**: Returning `error?` from the `main` function allows you to use the `check` keyword to avoid handling errors explicitly. This is only done to keep the code simple. However, in real production code, you may have to handle those errors explicitly.
 
 ***hello_client.bal***
-```bal
+```ballerina
 import ballerina/http;
 import ballerina/io;
 
@@ -125,9 +125,5 @@ Then, run it:
 bal run hello_client.bal
 Hello Ballerina!
 ```
-
-## What's Next?
-
-Now, that you have written your first Ballerina program, you can explore more about writing [Ballerina Packages](/learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/).
 
 <style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

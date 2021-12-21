@@ -28,7 +28,7 @@ The video series below explores the language concepts of Ballerina Swan Lake. Th
 
 <br/>
 
-You can also find the [slide deck](/learn/getting-started/language-walkthrough/Ballerina_Language_Presentation-2021-03-08.pdf) used for these presentations below.
+You can also find the [slide deck](/learn/slides/language-walkthrough/Ballerina_Language_Presentation-2021-03-08.pdf) used for these presentations below.
 
 <br/>
 
@@ -36,7 +36,7 @@ You can also find the [slide deck](/learn/getting-started/language-walkthrough/B
 
 <!--<embed width="191" height="207" name="lang-guide-slides" src="/learn/language-guide/Ballerina_Language_Presentation-2021-03-08.pdf" type="application/pdf">-->
 
-<iframe width="1150" height="515" src="/learn/getting-started/language-walkthrough/Ballerina_Language_Presentation-2021-03-08.pdf" frameborder="0" allowfullscreen>
+<iframe width="1150" height="515" src="/learn/slides/language-walkthrough/Ballerina_Language_Presentation-2021-03-08.pdf" frameborder="0" allowfullscreen>
 </iframe>
 
 <!--<style>

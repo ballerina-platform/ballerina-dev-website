@@ -24,9 +24,7 @@ redirect_from:
   - /learn/installing-ballerina/installation-options
 ---
 
-<article class="tip" markdown="1">
 
-<section id="installing-ballerina-via-installers" markdown="1">
 
 ## Installing Ballerina via Installers
 
@@ -63,8 +61,7 @@ For example, for the RPM file:
 ```
 rpm -i ballerina-linux-installer-x64-swan-lake-<VERSION>.rpm 
 ```
-</section>
-<section id="installing-via-the-ballerina-language-zip-file" markdown="1">
+
 
 ## Installing via the Ballerina Language ZIP File
 
@@ -77,8 +74,7 @@ rpm -i ballerina-linux-installer-x64-swan-lake-<VERSION>.rpm
     - **For Windows:** add a new environment variable specifying the following values:
         - **Variable name:** PATH
         - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, `C:\Program Files\Ballerina\ballerina-<VERSION>\bin`
-</section>
-<section id="updating-ballerina" markdown="1">
+
 
 ## Verifying the Installation
 
@@ -109,16 +105,12 @@ If you already have a jBallerina version above 1.1.0 installed, you can use the 
 `bal dist pull <JBALLERINA-VERSION>`|Fetch a specific distribution 
 
 For more information, see [Keeping Ballerina Up to Date](/learn/tooling-guide/cli-tools/update-tool/).
-</section>
 
-<section id="building-from-source" markdown="1">
 
 ## Building from Source
 
 For instructions, see [Building from Source](/learn/user-guide/getting-started/building-from-source/).
-</section>
 
-<section id="uninstalling-ballerina" markdown="1">
 
 
 ## Uninstalling Ballerina
@@ -142,9 +134,7 @@ For example, for the RPM file:
 ```
 rpm -e ballerina-swan-lake-<VERSION>
 ```
-</section>
 
-<section id="whats-next" markdown="1">
 
 ## What's Next?
 
@@ -152,5 +142,3 @@ Once you have successfully installed Ballerina, now you can [write your first Ba
 
 >**Tip:** To get help when you work with Ballerina, see [Community](/community).
 
-</section>
-</article>

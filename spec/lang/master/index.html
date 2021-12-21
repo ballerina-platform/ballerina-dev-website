@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R1 preview 2021-12-19</h1>
+<h1>Ballerina Language Specification, 2022R1 preview 2021-12-21</h1>
 <p>
 Primary contributors:
 </p>
@@ -456,7 +456,12 @@ GitHub repository where this specification is maintained.
 </li>
 <li>7.18 <a href="#section_7.18">Do statement</a>
 </li>
-<li>7.19 <a href="#match_statement">Match statement</a>
+<li>7.19 <a href="#match_statement">Match statement</a><ul>
+<li>7.19.1 <a href="#section_7.19.1">Match patterns</a>
+</li>
+<li>7.19.2 <a href="#section_7.19.2">Match clause reachability and narrowing</a>
+</li>
+</ul>
 </li>
 <li>7.20 <a href="#section_7.20">Loops</a><ul>
 <li>7.20.1 <a href="#section_7.20.1">Foreach statement</a>
@@ -9098,7 +9103,8 @@ A <code>do-stmt</code> is executed by executing its
 <section>
 <h3 id="match_statement">7.19 Match statement</h3>
 
-<pre class="grammar"><span class="ntdfn" id="match-stmt">match-stmt</span> := <code>match</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>{</code> <a href="#match-clause"><span class="ntref">match-clause</span></a>+ <code>}</code>
+<pre class="grammar"><span class="ntdfn" id="match-stmt">match-stmt</span> := <code>match</code> <a href="#match-target"><span class="ntref">match-target</span></a> <code>{</code> <a href="#match-clause"><span class="ntref">match-clause</span></a>+ <code>}</code>
+<span class="ntdfn" id="match-target">match-target</span> := <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a>
 <span class="ntdfn" id="match-clause">match-clause</span> :=
   <a href="#match-pattern-list"><span class="ntref">match-pattern-list</span></a> [<a href="#match-guard"><span class="ntref">match-guard</span></a>] <code>=&gt;</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 <span class="ntdfn" id="match-guard">match-guard</span> := <code>if</code> <a href="#match-guard-expr"><span class="ntref">match-guard-expr</span></a>
@@ -9111,7 +9117,8 @@ value matches.
 A match-stmt is executed as follows:
 </p>
 <ol>
-<li>the expression is evaluated resulting in some value v;</li>
+<li>the match-target is evaluated resulting in some value v, called the
+<em>target value</em>;</li>
 <li>for each match-clause in order:
 <ol>
 <li>a match of match-pattern-list against v is attempted</li>
@@ -9150,6 +9157,8 @@ object whose method is being called must also be a subtype of
 <code>readonly</code>.</li>
 </ul>
 
+<section>
+<h4 id="section_7.19.1">7.19.1 Match patterns</h4>
 <pre class="grammar"><span class="ntdfn" id="match-pattern-list">match-pattern-list</span> := 
   <a href="#match-pattern"><span class="ntref">match-pattern</span></a> (<code>|</code> <a href="#match-pattern"><span class="ntref">match-pattern</span></a>)*
 </pre>
@@ -9248,38 +9257,62 @@ In particular, for the match of an <code>error-match-pattern</code> with an
 <code>error-type-reference</code> against an error value to succeed, the
 error value must belong to the referenced error type.
 </p>
+</section>
+
+<section>
+<h4 id="section_7.19.2">7.19.2 Match clause reachability and narrowing</h4>
 <p>
-A variable is the <em>matched variable</em> of a <code>match-stmt</code> if
-the <code>action-or-expression</code> following <code>match</code> is a
-<code>variable-reference</code> that references this variable. The type of a
-matched variable is subject to narrowing within regions of the
-<code>match-stmt</code> as follows. The matched variable has a narrowed
-type at the start of each match-clause, which is determined by previous
-<code>match-clause</code>s; the type for the first <code>match-clause</code> is
-the normal static type of the variable. Narrowing is applied to each
-<code>match-clause</code> as follows:
+This section uses the <em>read-only intersection</em> between two types, which
+is defined analogously to the read-only difference used for conditional variable
+type narrowing as follows. We use the notation T &amp;<sub>ro</sub> S for the
+read-only intersection of T and S. T &amp;<sub>ro</sub> S is computed separately
+for each uniform type. Let T<sup>U</sup> be the subset of T belonging to uniform
+type U, i.e. the intersection of T and U. For a uniform type U that is
+immutable, T<sup>U</sup> &amp;<sub>ro</sub> S<sup>U</sup> is the same as
+T<sup>U</sup> &amp; S<sup>U</sup>; for a uniform type U that is mutable,
+T<sup>U</sup> &amp;<sub>ro</sub> S<sup>U</sup> is empty if T<sup>U</sup> &amp;
+S<sup>U</sup> is empty, and T<sup>U</sup> otherwise. T &amp;<sub>ro</sub> S is
+the union for every uniform type U of T<sup>U</sup> &amp;<sub>ro</sub>
+S<sup>U</sup>. Note that the read-only intersection operation is not
+commutative.
+</p>
+<p>
+A <code>match-clause</code> is defined to be <em>unguarded</em> if it does not
+have a <code>match-guard</code> or if the static type of the expression in the
+<code>match-guard</code> is singleton true.
+</p>
+<p>
+For each <code>match-clause</code> C, we can compute a type L that the target
+value must <em>look like</em> if the <code>statement-block</code> of C is
+executed. L is computed as the difference of a positive type P and negative type
+N, where
 </p>
 <ul>
-<li>let <var>T</var> be the narrowed type of the matched variable at the start
-of the match-clause;</li>
-<li>let <var>P</var> be the union of the corresponding types of each
-<code>match-pattern</code> in the <code>match-pattern-list</code> of the
-<code>match-clause</code>;</li>
-<li>let <var>N</var> be the intersection of <var>T</var> and
-<var>P</var>;</li>
-<li>let <var>R</var> be the set difference of <var>T</var> and
-<var>P</var>;</li>
-<li>if <var>N</var> is a subtype of <code>readonly</code>, then the narrowed
-type for the <code>match-guard</code>, if any, and <code>statement-block</code>
-of the <code>match-clause</code> is <var>N</var>; otherwise it is
-<var>T</var>;</li>
-<li>if there is a match-guard, then the type narrowing described in <a href="#conditional_variable_type_narrowing">Conditional variable type
-narrowing</a> is done in addition to the type narrowing described here;</li>
-<li>if <var>R</var> is a subtype of <code>readonly</code> and there is no
-<code>match-guard</code>, then the narrowed type for the next
-<code>match-clause</code> is <var>R</var>; otherwise, it is <var>T</var>.</li>
+<li>P is the union of the types corresponding to the match patterns in the
+<code>match-pattern-list</code> of C, and</li>
+<li>N is the union of the types corresponding to the match patterns in the
+<code>match-pattern-list</code> of every unguarded <code>match-clause</code>
+that precedes C.</li>
 </ul>
-
+<p>
+Let T be the static type of the <code>match-target</code>. If the intersection
+of T and L is empty, then it is not possible for the
+<code>match-pattern-list</code> of C to match, and accordingly the statements in
+the statement-block of C are not reachable. If the <code>match-target</code> is
+a <code>variable-reference</code>, then the type of the referenced variable is
+narrowed to T &amp;<sub>ro</sub> L within the <code>match-guard</code>, if any,
+and the <code>statement-block</code> of C. If there is a
+<code>match-guard</code>, then the type narrowing described in <a href="#conditional_variable_type_narrowing">Conditional variable type
+narrowing</a> is in addition applied to the <code>statement-block</code>
+</p>
+<p>
+A <code>match-stmt</code> is <em>exhaustive</em> if and only if the static type
+of the <code>match-target</code> is a subtype of union of the type corresponding
+to the match patterns of the <code>match-pattern-list</code> of every unguarded
+match clause. A <code>match-stmt</code> that is exhaustive can complete normally
+only if at least one of its <code>statement-block</code>s can complete normally.
+</p>
+</section>
 </section>
 <section>
 <h3 id="section_7.20">7.20 Loops</h3>
@@ -13158,6 +13191,8 @@ subexpressions have singleton type.</li>
 <li>Conditional variable type narrowing is now smarter. In particular, the types
 of variables can be narrowed in statements following an <code>if</code>
 statement that contains <code>return</code>.</li>
+<li>Variable type narrowing in a match statement has been improved to work
+better for types that are partially readonly.</li>
 <li>Many expressions now perform nil lifting.</li>
 </ol>
 </section>

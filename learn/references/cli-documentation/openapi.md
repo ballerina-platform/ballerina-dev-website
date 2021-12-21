@@ -56,27 +56,15 @@ bal openapi -i <openapi-contract-path>
 
 ###### Client Mode
 If you want to generate the Ballerina client only, you can set the mode as  `client` when running the OpenAPI tool. 
-The generated client can be used in your applications to call the service defined in the OpenAPI file. This mode will
- generate tests for the generated remote functions as well.
->>>>>>> 89276c24bd9a167a68619c802d1d9d54e8fa0d65
+
+The generated client can be used in your applications to call the service defined in the OpenAPI file. This mode will generate tests for the generated remote functions as well.
 
 ```bash
 bal openapi -i <openapi-contract-path> --mode client [(-o|--output) output file path]
 ```
 
-<<<<<<< HEAD
-###### 1. Client Mode
-If you want to generate the Ballerina client only, you can set the mode as  `client` when running the OpenAPI tool. 
-The generated client can be used in your applications to call the service defined in the OpenAPI file. This mode will
- generate tests for the generated remote functions as well.
-
-```bash
-bal openapi -i <openapi-contract-path> --mode client [(-o|--output) output file path]
-```
-###### 2. Service Mode
-=======
 ###### Service Mode
->>>>>>> 89276c24bd9a167a68619c802d1d9d54e8fa0d65
+
 If you want to generate the Ballerina service only, you can set the mode as `service` when running the OpenAPI tool.
 
 ```bash
@@ -84,10 +72,7 @@ bal openapi -i <openapi-contract-path> --mode service [(-o|--output) output file
 ```
 
 ##### Nullable Flag
-This is an optional flag in the OpenAPI to Ballerina command. If your OpenAPI specification includes JSON schema
-properties that are not marked as `nullable:true`, they may return as null in some responses. It will result a JSON
-schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to 
- generate all data types in the generated record with Ballerina nil support by turing on this flag.
+This is an optional flag in the OpenAPI to Ballerina command. If your OpenAPI specification includes JSON schema properties that are not marked as `nullable:true`, they may return as null in some responses. It will result a JSON schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to generate all data types in the generated record with Ballerina nil support by turing on this flag.
 
 ```bash
 bal openapi -i <openapi-contract-path> [(-n| --nullable)]

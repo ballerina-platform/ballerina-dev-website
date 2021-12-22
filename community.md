@@ -4,10 +4,8 @@ title: The Ballerina Community
 intro: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!
 description: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!.
 keywords: ballerina, community, ballerina community
-permalink: /community/
+permalink: /community-old/
 redirect_from:
-  - /events
-  - /events/
   - /community
 ---
 

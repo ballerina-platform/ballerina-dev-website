@@ -1,6 +1,6 @@
 ---
-layout: ballerina-home-page
-title: Ballerina Community Page
+layout: ballerina-inner-page
+title: Monthly Tech Talk
 description: 
 permalink: /tech-talk/
 intro: 
@@ -149,19 +149,94 @@ font-size: 10px;
     font-weight: 400;
 }
 
-</style>
 
+.gTitle:hover{
+    color: #464646 !important;
+}
+.form-control{
+    border: 1px #20b6b0 solid;
+}
+
+.btn-form-submit:hover{
+    background-color: #464646;
+    color: #fff !important;
+}
+
+.submit-button:hover{
+    background-color: #464646;
+    color: #fff !important;
+}
+
+.leftLink:hover{
+    background:url(/img/toc-bg-hover.svg);
+}
+
+.btn-form-close:hover{
+    background-color: #464646;
+    color: #fff !important;
+}
+
+.exampleModalLabel{
+    color: #464646;
+}
+
+td.cEventDateContainer1 span.cEventDate1{
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    display: inline-block;
+    color: #57595d;
+    margin-bottom: 5px;
+    border: none;
+    text-align: right;
+}
+td.cEventDateContainer, td.cEventDetail, td.cEventURL {
+  border: none !important;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    border-bottom: 1px solid #c7c7c7 !important;
+    padding: 30px 15px !important;
+}
+
+.cEventName{
+    margin-top: -2px;
+    font-size: 20px;
+}
+td.cEventDateContainer{
+  width: 20%;
+}
+.wy-nav-content h1 {
+  font-size: 38px;
+  color: #464646 ;
+  font-weight: 400;
+  margin-bottom: 30px;
+  margin-top:20px
+}
+@media only screen and (max-width: 990px) {
+    a.cEventRegistration, input.cSubmitButton {
+  margin-bottom: 40px !important;
+  margin-left: -8px !important;
+}
+}
+</style>
+<link rel="stylesheet" href="/css/events-page.css">
 
 <div class="container">
 
     <section style="padding-bottom: 30px;">
-        <h2 style="padding-right: 15px;">Ballerina Tech Talk</h2>
         <div class="row">
           
-            <div class="col-sm-12 col-md-6 col-lg-6" style="float: left;padding-left: 0px;">
-              <p style="padding-bottom: 25px;">
-                We host a public tech talk every month, where our engineers discuss different technical topics, show you how Ballerina can be leveraged to implement related use cases, present upcoming features, and answer all your burning questions live. These interactive sessions will give you direct access to our engineers and other community members to discuss Ballerina and your projects.
+            <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;">
+              <p >
+                If you're looking to connect with other Ballerina users and language experts, then look no further. Whether you're planning to grow your own career, business or workplace, we're excited to bring you this monthly tech talk, where our team will discuss different technical topics surrounding the world of Ballerina.
               </p>
+    
+          
+    
+            <p style="margin-top: 10px;">
+                Want to get notified for future Tech Talks?       
+            </p>
               <form id="bio-tech-talk-subscribeForm">
                 <div class="row">
                     <div class="col-sm-12 col-md-8 col-lg-8" style="float: left;padding-left: 0px;">
@@ -185,7 +260,7 @@ font-size: 10px;
                         
                         <div class="text-left checkbox-wrapper">
                             <input type="checkbox" id="terms" class="checkbox">
-                            <label class="checkbox-label" for="terms">We care about your privacy. You can unsubscribe from our emails at any time. See our privacy policy for how we use and protect your data.</label>
+                            <label class="checkbox-label" for="terms">I agree to the WSO2 Data Privacy Policy.</label>
                         </div>
                     
                     </div>
@@ -194,35 +269,41 @@ font-size: 10px;
                     </div>
                 </div>
              </form>
+             <p style="padding-bottom: 10px;padding-bottom: 15px;font-weight: 400;">
+                If you would like to suggest a topic for our next talk, <a id="sumbitTechTalk" data-toggle="modal" data-target="#sumbitTechTalkForm" style="color: #20b6b0;">please fill this form.</a>
+             </p>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;">
-          
-            <div class="row " style="float: left; background-color: #E6EAEB;padding: 25px 20px;">
+        
+            <div class="row " style="float: left; background-color: #e6eaeb5d;padding: 25px 20px;margin: 0px 0px 25px 0px;">
     
-                <h5 style="padding-left:25px;margin-bottom: 20px;"> Next Call</h5>
-                <div class="col-sm-12 col-md-4 col-lg-4" style="" >
-                    <p style="color: #585A5E; font-size:17px;float: right;">Nov 25, 2021</p>
-                    <p style="float: right;">Tuesday</p>
-                    <!-- <p style="float: right;">Virtual</p> -->
-    
+                <h5 style="padding-left:15px;margin:0 0 10px 0;color: #464646;"> Upcoming Tech Talk</h5>
+                <div class="col-sm-12 col-md-12 col-lg-12 " style="float: left; ">
+                    <div class="col-sm-12 col-md-4 col-lg-4" style="" >
+                        <p style="color: #585A5E; font-size:17px;float: right;">Jan 25, 2022</p>
+                        <p style="float: right;margin: 20px 0;">Tuesday</p>
+                        <p style="float: right;margin: 0px 0px 20px 0;">Online Event</p>
+        
+                    </div>
+                    <div class="col-sm-12 col-md-8 col-lg-8" style="border-left: 2px #585A5E solid;">
+                        <p>
+                            Ballerina Tech Talk
+                        </p>
+                        <a><h4 class="gTitle" style="color: #20b6b0;margin-bottom: 18px; line-height: 40px;">Topic Name Comes Here</h4></a>
+                        <p>
+                        <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/"> Dinushan Meeriyagalla</a> Marketing Officer, WSO2
+                        </p>
+                    </div>   
                 </div>
-                <div class="col-sm-12 col-md-8 col-lg-8" style="border-left: 2px #585A5E solid;">
-                    <p>
-                        Tech Talk
-                    </p>
-                    <h4 style="color: #20b6b0;">Ballerina Tech Talk</h4>
-                    <p>
-                        Join us at our upcoming events and be a part of the conversation. 
-                    </p>
-    
-                </div>   
             </div>
     
           
             </div>
         </div> 
     </section>
-    <section style="padding-bottom: 30px;">
+
+
+    <!-- <section style="padding-bottom: 30px;">
         <div class="row">
             <div class="col-sm-12 col-md-1 col-lg-1" style="float: left; padding-left: 0px;">
                 &nbsp;
@@ -237,24 +318,52 @@ font-size: 10px;
             &nbsp;
         </div>
         </div>
-
-
-
-
-    </section>
+    </section> -->
 
     <section style="padding-bottom: 30px;">
-        <h2 style="padding-right: 15px;">Past Tech Talk</h2>
+        <h2 style="padding-right: 15px;">Past Tech Talks</h2>
 
+        <table class="cEventTable cConferencesList" style="width:100% !important;">
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <span class="cEventDate1" style="margin-bottom: 20px;">Jan 5, 2021</span>	
+                   <span class="cEventDate1">Tuesday</span>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail">	
+                   <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Lunch & Learn</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Ballerina: OS Cloud-native Programming Language</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More Info</a></td>	
+            </tr>
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <span class="cEventDate1" style="margin-bottom: 20px;">Jan 5, 2021</span>	
+                   <span class="cEventDate1">Tuesday</span>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail">	
+                   <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Lunch & Learn</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Ballerina: OS Cloud-native Programming Language</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More Info</a></td>	
+            </tr>		
+        </table>
 
     </section>
     
 
 
-     <!--Modal Start for Submit Content-->
+     <!--Modal Start for Submit Tech Talk Content-->
      <div class="modal fade" id="sumbitTechTalkForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
+          <div class="modal-content" style="padding: 15px;">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Suggest Topics or Give Feedback</h5>
               <!--Alert Box Thank you-->
@@ -559,17 +668,25 @@ font-size: 10px;
         </div>
          <!--Modal Finish for Submit Content-->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
+<style>
+    td.cEventDateContainer, td.cEventDetail, td.cEventURL {
+  border: none !important;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    border-bottom: 1px solid #c7c7c7 !important;
+    padding: 30px 35px !important;
+   }
+ 
+   /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+    td.cEventDetail{
+        padding-left: 0px !important;
+    }
+   
+    }
+    .icon-github{
+        display: none;
+    }
+</style>

@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R1 preview 2021-12-22</h1>
+<h1>Ballerina Language Specification, 2022R1 preview 2021-12-23</h1>
 <p>
 Primary contributors:
 </p>
@@ -4155,7 +4155,7 @@ section.
 </p>
 <p>
 A <code>nil-lifted-expr</code> is evaluated by evaluating the subexpressions for
-each operand. If the result of any of these evaluations is nil, then the result
+every operand. If the result of any of these evaluations is nil, then the result
 of the <code>nil-lifted-expr</code> is nil. Otherwise, the evaluation is
 completed in the same way as with the underlying form of the operator.
 </p>

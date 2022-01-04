@@ -366,7 +366,7 @@ type MapArray map<string>[];
 MapArray arr = [
     {"x": "foo"},
     {"y": "bar"}
-]
+];
 ```
 
 This is similar to the typedef concept in C, where the identifier **``MapArray``** acts as an alias for the actual type.

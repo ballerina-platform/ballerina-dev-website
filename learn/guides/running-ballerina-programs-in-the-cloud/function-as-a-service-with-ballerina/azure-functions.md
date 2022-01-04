@@ -17,7 +17,13 @@ redirect_from:
   - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions
 ---
 
-This is done by importing the `ballerinax/azure.functions` module and simply annotating the Ballerina function with the `functions:Function` annotation.
+## Prerequisites
+* Ballerina latest distrubution.
+* Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Login to Azure CLI by executing `az login` command.
+* Create an Azure [Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal) with the given resource group with the following requirements: Make sure to remember the function application name and storage account name as they will be required in code samples.
+   - Runtime stack - `Java 11`
+   - Hosting operating system - `Windows` (default; Linux is not supported in Azure for custom handlers at the moment)
 
 ## Triggers and Bindings
 
@@ -31,59 +37,50 @@ The following Azure Functions triggers and bindings are currently supported in B
 - CosmosDB [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBTrigger), [input](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBInput) binding, and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBOutput) binding
 - Timer [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#TimerTrigger)
 
-## Writing a Function
+## Hello world (HTTP Trigger -> HTTP Output)
 
-The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond back to the caller with a message. 
+The following Ballerina code gives an example of using an HTTP trigger to invoke the function, and an HTTP output binding to respond back to the caller with a message. 
 
 ```ballerina
 import ballerinax/azure_functions as af;
 
 @af:Function
-public function fromHttpToQueue(af:Context ctx, 
-                                @af:HTTPTrigger { authLevel: "anonymous" } af:HTTPRequest req, 
-                                @af:QueueOutput { queueName: "queue1" } af:StringOutputBinding msg) 
-                                returns @af:HTTPOutput af:HTTPBinding {
-    msg.value = req.body;
-    return { statusCode: 200, payload: "Request: " + req.toString() };
+public function hello(@af:HTTPTrigger { authLevel: "anonymous" }
+                      string payload)
+                      returns @af:HTTPOutput string|error {
+    return "Hello, " + payload + "!";
 }
 ```
 
-The first parameter with the [Context](/learn/api-docs/ballerina/#/azure_functions/classes/Context) object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the function's parameter list. The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given `HTTPRequest` value. Then, you declare that you will have a queue output binding by using the `QueueOutput` annotation with a string result by defining a `StringOutputBinding` parameter. Also, you declare an HTTP output binding by annotating the `HTTPBinding` return type with the `HTTPOutput` annotation. This HTTP output binding can also be defined as a parameter with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function. 
+The first parameter with the [Context](/learn/api-docs/ballerina/#/azure_functions/classes/Context) object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the function's parameter list. The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given `HTTPRequest` value. Then, you declare an HTTP output binding by annotating the `HTTPBinding` return type with the `HTTPOutput` annotation. This HTTP output binding can also be defined as a parameter with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function. You can find a example in the http trigger -> queue output example.
 
-## Building the Function
+### Building the Function
 
 The Azure Functions functionality is implemented as a compiler extension. Thus, the artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
 
 ```bash
-$ bal build functions.bal 
+$ bal build
 Compiling source
-	functions.bal
+	wso2/http_azf:0.1.0
 
 Generating executables
-	functions.jar
-	@azure.functions:Function: fromHttpToQueue
+	@azure.functions:Function: hello
 
 	Run the following command to deploy Ballerina Azure Functions:
-	az functionapp deployment source config-zip -g <resource_group> -n <function_app_name> --src azure-functions.zip
+	az functionapp deployment source config-zip -g <resource_group> -n <function_app_name> --src <project_dir>/target/bin/azure-functions.zip
 ```
 
-## Deploying the Function
+>**Note:** A custom [`host.json`](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json) file for the Azure Functions deployment can be optionally provided by placing a `host.json` file in the current working directory in which the Ballerina build is done. The required `host.json` properties are provided/overridden by the values derived from the source code by the compiler extension. 
 
-In order to deploy a Ballerina function in Azure Functions, the following prerequisites must be met.
 
-* Create an Azure [Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal) with the given resource group with the following requirements:
-   - Runtime stack - `Java 11`
-   - Hosting operating system - `Windows` (default; Linux is not supported in Azure for custom handlers at the moment)
-* Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+### Deploying the Function
 
 The created resource group and the function app name should be provided to the placeholders shown in the above-generated usage instructions from the compiler. 
-
-A custom [`host.json`](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json) file for the Azure Functions deployment can be optionally provided by placing a `host.json` file in the current working directory in which the Ballerina build is done. The required `host.json` properties are provided/overridden by the values derived from the source code by the compiler extension. 
 
 A sample execution to deploy the functions to Azure Functions is shown below. 
 
 ```bash
-$ az functionapp deployment source config-zip -g functions1777 -n functions1777 --src azure-functions.zip 
+$ az functionapp deployment source config-zip -g <function_app_name> -n <function_app_name> --src /home/ballerina/http_azf/target/bin/azure-functions.zip
 Getting scm site credentials for zip deployment
 Starting zip deployment. This operation can take a while to complete ...
 Deployment endpoint responded with status code 202
@@ -98,39 +95,103 @@ Deployment endpoint responded with status code 202
   "is_readonly": true,
   "is_temp": false,
   "last_success_end_time": "2020-07-15T07:32:35.5311903Z",
-  "log_url": "https://functions1777.scm.azurewebsites.net/api/deployments/latest/log",
+  "log_url": "https://<function_app_name>.scm.azurewebsites.net/api/deployments/latest/log",
   "message": "Created via a push deployment",
   "progress": "",
   "provisioningState": null,
   "received_time": "2020-07-15T07:32:21.9780071Z",
-  "site_name": "functions1777",
+  "site_name": "<function_app_name>",
   "start_time": "2020-07-15T07:32:23.2044517Z",
   "status": 4,
   "status_text": "",
-  "url": "https://functions1777.scm.azurewebsites.net/api/deployments/latest"
+  "url": "https://<function_app_name>.scm.azurewebsites.net/api/deployments/latest"
 }
 ```
 
-## Invoking the Function
+### Invoking the Function
 
 The deployed Azure Function can be tested by invoking it using an HTTP client such as CURL:
 
 ```bash
-$ curl -d "Hello!" https://functions1777.azurewebsites.net/api/fromHttpToQueue 
-Request: url=https://functions1777.azurewebsites.net/api/fromHttpToQueue method=POST query= headers=Accept=*/* Connection=Keep-Alive Content-Length=6 Content-Type=application/x-www-form-urlencoded Host=functions1777.azurewebsites.net Max-Forwards=9 User-Agent=curl/7.64.0 X-WAWS-Unencoded-URL=/api/fromHttpToQueue CLIENT-IP=10.0.128.31:47794 X-ARR-LOG-ID=c905b483-af19-4cf2-9ce0-0741e5998a98 X-SITE-DEPLOYMENT-ID=functions1777 WAS-DEFAULT-HOSTNAME=functions1777.azurewebsites.net X-Original-URL=/api/fromHttpToQueue X-Forwarded-For=45.30.94.9:47450 X-ARR-SSL=2048|256|C=US, S=Washington, L=Redmond, O=Microsoft Corporation, OU=Microsoft IT, CN=Microsoft IT TLS CA 5|CN=*.azurewebsites.net X-Forwarded-Proto=https X-AppService-Proto=https X-Forwarded-TlsVersion=1.2 DISGUISED-HOST=functions1777.azurewebsites.net params= identities=[{"AuthenticationType":null,"IsAuthenticated":false,"Actor":null,"BootstrapContext":null,"Claims":[],"Label":null,"Name":null,"NameClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","RoleClaimType":"http://schemas.microsoft.com/ws/2008/06/identity/claims/role"}] body=Hello!
+$ curl -d "Hello!" https://<function_app_name>.azurewebsites.net/api/hello 
+Hello, Hello!%
 ```
 
->**Note:** Additionally, when you are using CosmosDB, follow the steps below to configure the connection string of the database manually via the `connectionStringSetting` field.
-1. Click the **Keys** tab of the Cosmos DB page.
-2. Copy the value of the `PRIMARY CONNECTION STRING`.
-3. Click the **Configuration** tab of the Function App page.
-4. Select **New Application Setting** and paste the data you copied above as the value. For the key, use the value of the `connectionStringSetting` key.   
+## More Samples
+
+In this section we will be using different types of triggers, bindings to build azure functions to intergtate with different azure services using concepts explained in the above sections.
+
+### HTTP Trigger -> Queue Output
+
+The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond back to the caller with a message. 
+
+First of all we need to create a queue to hold the outputs of the function. We can do that by accesing the storage account that was created alongside the function app in the prerequisites. Select Queues in the sidebar in the storage accounts. Click on the add queue button and enter the same value as the value of the "queueName" property in the below QueueOutput annotation.
+
+```ballerina
+import ballerinax/azure_functions as af;
+
+@af:Function
+public function fromHttpToQueue(af:Context ctx, 
+                                @af:HTTPTrigger { authLevel: "anonymous" } af:HTTPRequest req, 
+                                @af:QueueOutput { queueName: "queue1" } af:StringOutputBinding msg) 
+                                returns @af:HTTPOutput af:HTTPBinding {
+    msg.value = req.body;
+    return { statusCode: 200, payload: "Request: " + req.toString() };
+}
+```
+
+Lets build the project by executing `bal build` on the project directory and deploy using az cli command shown in the ballerina build output like we did in the previous section.
+
+Now, the deployed Azure Function can be tested by invoking it using an HTTP client such as CURL. 
+
+```bash
+$ curl -d "Hello!" https://<function_app_name>.azurewebsites.net/api/fromHttpToQueue 
+Request: url=https://<function_app_name>.azurewebsites.net/api/fromHttpToQueue method=POST query= headers=Accept=*/* Connection=Keep-Alive Content-Length=6 Content-Type=application/x-www-form-urlencoded Host=<function_app_name>.azurewebsites.net Max-Forwards=9 User-Agent=curl/7.64.0 X-WAWS-Unencoded-URL=/api/fromHttpToQueue CLIENT-IP=10.0.128.31:47794 X-ARR-LOG-ID=c905b483-af19-4cf2-9ce0-0741e5998a98 X-SITE-DEPLOYMENT-ID=<function_app_name> WAS-DEFAULT-HOSTNAME=<function_app_name>.azurewebsites.net X-Original-URL=/api/fromHttpToQueue X-Forwarded-For=45.30.94.9:47450 X-ARR-SSL=2048|256|C=US, S=Washington, L=Redmond, O=Microsoft Corporation, OU=Microsoft IT, CN=Microsoft IT TLS CA 5|CN=*.azurewebsites.net X-Forwarded-Proto=https X-AppService-Proto=https X-Forwarded-TlsVersion=1.2 DISGUISED-HOST=<function_app_name>.azurewebsites.net params= identities=[{"AuthenticationType":null,"IsAuthenticated":false,"Actor":null,"BootstrapContext":null,"Claims":[],"Label":null,"Name":null,"NameClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","RoleClaimType":"http://schemas.microsoft.com/ws/2008/06/identity/claims/role"}] body=Hello!
+```
+
+You can refresh the queue page in the portal and view the added entry.
+
+### CosmosDB Trigger -> Queue Output
+
+The following Ballerina code gives an example of using an CosmosDB trigger to invoke the function and a queue output binding to write an entry to a queue.
+
+Before we start with writing and deploying the code we need to create a CosmosDB and a queue as we are making use of those services.
+1. You can reuse the queue you've created in above sample. (HTTP Trigger -> Queue Output)
+2. Create a [Azure Cosmos DB Account](https://portal.azure.com/#create/Microsoft.DocumentDB) (Core)
+3. Once the databse is icreated, go to Data Exploer and select Create Container.
+4. Enter 'db1' as Database id and 'c1' as collection id and press ok. If you want to change these values make sure to change them in the code as well.
+5. Go to **Keys** tab of the Cosmos DB page.
+6. Copy the value of the `PRIMARY CONNECTION STRING`.
+7. Click the **Configuration** tab of the Function App page.
+8. Select **New Application Setting** and paste the data you copied above as the value. For the key, use the value of the `connectionStringSetting` key and save.
 
 Example application setting is as follows.
 ```
 Name - `CosmosDBConnection`
 Value - `AccountEndpoint=https://db-cosmos.documents.azure.com:443/;AccountKey=12345asda;`
 ```
+
+Alright. Since we have all the infrastrcutre required up and running and configured we can start bulidng and deplying the azure function.
+
+```ballerina
+import ballerina/log;
+import ballerinax/azure_functions as af;
+
+@af:Function
+public function cosmosDBToQueue2(@af:CosmosDBTrigger { 
+        connectionStringSetting: "CosmosDBConnection", databaseName: "db1", 
+        collectionName: "c1" } json req,
+        @af:QueueOutput { queueName: "queue2" } af:StringOutputBinding outMsg) returns error?{
+    json[] entryList = <json[]> req;
+    string name = check entryList[0].name;
+    log:printInfo(name);
+    outMsg.value = name;
+}
+```
+
+Lets build the project by executing `bal build` on the project directory and deploy using az cli command shown in the ballerina build output like we did in the previous section.
+
+Once the function is deployed, you can go to your collection in Data explorer and Add a New Item to the collection. Then you can go to the queue page and observe the added new entry. Addtionally for debugging purposes you can view the logs under **Logs stream** in the function app.
 
 ## What's Next?
 

@@ -10,6 +10,22 @@ redirect_from:
 
 <style>
 
+:root{
+    --header-height:50px;
+}
+
+[id]{
+    scroll-margin-top: calc(var(--header-height)+8rem);
+}
+
+second-nav{
+height: var(--header-height);
+} 
+
+h2 {
+  scroll-margin-top: 10rem !important;
+}
+
 .stuck {
   position: fixed;
   top:80px;
@@ -78,7 +94,8 @@ font-size: 10px;
 }
 .checkbox {
   vertical-align: top;
-  display:inline-block
+  display:inline-block;
+  margin: 5px 0 0 !important;
 }
 .checkbox-label {
   white-space: normal;
@@ -178,7 +195,13 @@ font-size: 10px;
 
 .leftLink:hover{
     color: #464646;
+    background: url("/img/toc-bg-hover.svg") no-repeat scroll right center ;
 }
+
+.leftLink{
+        background: url("/img/toc-bg.svg") no-repeat scroll right center ;
+        padding-right:25px ;
+    }
 
 .btn-form-close:hover{
     background-color: #464646;
@@ -307,6 +330,7 @@ td.cEventDateContainer{
         padding-left: 10 !important;
     }
 
+   
     .contectusButton{
         width: 100% !important;
     }
@@ -321,6 +345,12 @@ td.cEventDateContainer{
     body.cBallerina-io .container {
     padding: 0 15px !important;
     } 
+    .mobileViewAdjustment{
+    border-left: 2px #585A5E solid;
+    }
+    .mobileViewAdjustment p{
+    float:none !important;
+    }
 } 
 
 
@@ -350,46 +380,46 @@ td.cEventDateContainer{
       <p>
         Want to get hand-picked content and the latest news on Ballerina delivered directly to your inbox? Then subscribe to our monthly newsletter today!
       </p>
-      <p>
-        See our <a style="color: #20b6b0;">privacy policy</a> for how we protect your data.
-      </p>
+    
     </div>
     <!-- <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;width: 50%;"> -->
+
         <form id="bio-newsletter-subscribeForm" >
         
         
-        <!-- <div class="row"> -->
-            <div class="col-sm-12 col-md-4 col-lg-4 subscribeNews" style="float: left;">
-             
-                <input type="email" required-field="1" class="form-control text-feild" id="bio-newsletter-subscription" aria-describedby="emailHelp" placeholder="Enter your Email address" style="border-radius: 0;border: #20b6b0 solid 1px;">
-                <!--Alert Box Thank you-->
-                <div class="alert alert-success alert-dismissible fade show" role="alert" id="newsletterSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
-                <strong>Thank you.</strong> You are now subscribed to the Ballerina newsletter.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <!--Alert Box Thank you-->
-                <!--Alert Box Wrong-->
-                <div class="alert alert-success alert-dismissible fade show" role="alert" id="newsletterFailAlert" style="background-color: #E6EAEB;color: #454646;display:none !important;">
-                    <strong>Enter a valid email address.</strong>
+            <!-- <div class="row"> -->
+                <div class="col-sm-12 col-md-4 col-lg-4" style="float: left;">
+                 
+                    <input type="email" required-field="1" class="form-control text-feild" id="userEmailNL" aria-describedby="emailHelp" placeholder="Enter your email address" style="border-radius: 0;border: #20b6b0 solid 1px;">
+                    <!--Alert Box Thank you-->
+    
+                    <div class="alert alert-success alert-dismissible fade show" role="alert" id="newsletterSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0; display:none !important">
+                    <strong>Thank you.</strong> You are now subscribed to the Ballerina newsletter.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                     </div>
-                <!--Alert Box Wrong-->
-
-                <div class="text-left checkbox-wrapper">
-                    <input type="checkbox" id="terms" class="checkbox">
-                    <label class="checkbox-label" for="terms">I agree to the WSO2 Data Privacy Policy.</label>
+                    <!--Alert Box Thank you-->
+                    <!--Alert Box Wrong-->
+                    <!-- <div class="alert alert-success alert-dismissible fade show" role="alert" id="newsletterFailAlert"> -->
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" id="newsletterFailAlert" style="background-color: #E6EAEB;color: #454646; display:none !important">
+                        </div>
+                    <!--Alert Box Wrong-->
+    
+                    <div class="text-left checkbox-wrapper">
+                        <input type="checkbox" id="terms" class="checkbox">
+                        <label class="checkbox-label" for="terms">I agree to the <a href="/privacy-policy" target="_blank" class="getStartLinks">WSO2 Data Privacy Policy</a>.</label>
+                    </div>
                 </div>
-            </div>
+    
+                <div class="col-sm-12 col-md-2 col-lg-2" style="float: right;">
+                    <button type="button" class="submit-button" id="subscribe_button" >Subscribe</button>
+                </div>
+            <!-- </div>  -->
+            </form>
 
-            <div class="col-sm-12 col-md-2 col-lg-2 subscribeNews" style="float: right;">
-                <button type="button" class="submit-button" id="subscribe_button" >Subscribe</button>
-            </div>
-        <!-- </div>  -->
-        </form>
+
+        
     <!-- </div> -->
 </div>
 </section>
@@ -412,7 +442,7 @@ td.cEventDateContainer{
               <li class="active"><a href="#event-section">Events</a></li>
               <li><a href="#resources">Resources</a></li>
               <li><a href="#slack-community">Slack</a></li>
-              <li><a href="#tech-talk">Tech Talk</a></li>
+              <li><a href="#tech-talk">Monthly Tech Talk</a></li>
               <li><a href="#get-involved">Get Involved</a></li>
               <li><a href="#contact-us">Contact Us</a></li>
             </ul>
@@ -429,7 +459,7 @@ td.cEventDateContainer{
       
         <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;">
           <p>
-            Join us at our upcoming events and be a part of the conversation. Each month, we host or are a part of a series of events where we share our roadmap, demos, and language updates.
+            Want to connect with other Ballerina users or language experts? We're excited to offer a variety of events that can help you learn more and connect with experts. 
           </p>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 externalLink" style="float: right;">
@@ -522,16 +552,16 @@ td.cEventDateContainer{
             <div class="cBoxCard"  >
 
                 <div class="card-body text-primary" style="padding: 18px;">
-                  <p class="card-text " style="margin-top: 0;" > Article  </p>
+                  <p class="card-text " style="margin-top: 0;font-weight: 500;" > Article  </p>
                   <a href="https://dzone.com/articles/building-backend-easily-with-ballerina-language"><h4 class="card-title" style="color:#20b6b0;margin-top:0px;line-height: 30px;">Building REST API Backend Easily With Ballerina Language</h4></a>
-                  <p class="card-text " style="margin-bottom: 0;" > By Dhanushka Madushan  </p>
+                  <p class="card-text " style="margin-bottom: 0;" > By Dhanushka Madushan </p>
                 </div>
             </div>
         </div>
         <div class="col-sm-12 col-md-4 col-lg-4" style="padding-left: 0px;">
             <div class="cBoxCard"  >
                 <div class="card-body text-primary" style="padding: 18px;">
-                    <p class="card-text " style="margin-top: 0;"> Blog  </p>
+                    <p class="card-text " style="margin-top: 0;font-weight: 500;"> Blog  </p>
                     <a href="https://medium.com/ballerina-techblog/securing-microservices-with-jwt-a16b738b110f"><h4 class="card-title" style="color:#20b6b0;margin-top:0px;line-height: 30px;">Securing Microservices with JWT</h4></a>
                   <p class="card-text " style="margin-bottom: 0;"> By Chanaka Lakmal </p>
                 </div>
@@ -540,7 +570,7 @@ td.cEventDateContainer{
         <div class="col-sm-12 col-md-4 col-lg-4" style="padding-left: 0px;">
             <div class="cBoxCard"  >
                 <div class="card-body text-primary" style="padding: 18px;">
-                    <p class="card-text " style="margin-top: 0;"> Video & Podcasts </p>
+                    <p class="card-text " style="margin-top: 0;font-weight: 500;"> Videos & Podcasts </p>
                     <a href="https://www.youtube.com/watch?v=ga_cyzIXW38&t=1s"><h4 class="card-title" style="color:#20b6b0;margin-top:0px;line-height: 30px;">Building Real-time Systems with WebSub </h4></a>
                   <p class="card-text " style="margin-bottom: 0;"> By Ayesh Almaida </p>
                 </div>
@@ -563,7 +593,7 @@ td.cEventDateContainer{
                         <form id="bio-slack-subscribeForm">
                             <div class="row">
                                 <div class="col-sm-12 col-md-8 col-lg-8 subscribeSlack" style="float: left;padding-left: 0px;">
-                                    <input type="email" required-field="1" class="form-control text-feild" id="bio-slack-join-email" aria-describedby="emailHelp" placeholder="Enter your Email address" style="border-radius: 0;border: #20b6b0 solid 1px;">
+                                    <input type="email" required-field="1" class="form-control text-feild" id="slackEmail" aria-describedby="emailHelp" placeholder="Enter your email address" style="border-radius: 0;border: #20b6b0 solid 1px;">
                                     <!--Alert Box Thank you-->
                                     <div class="alert alert-success alert-dismissible fade show" role="alert" id="slackSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
                                     <strong>Thank you.</strong>Your invitation has been sent to {your email address}.
@@ -582,24 +612,24 @@ td.cEventDateContainer{
                                     <!--Alert Box Wrong-->
                                     <div class="text-left checkbox-wrapper">
                                         <input type="checkbox" id="terms" class="checkbox">
-                                        <label class="checkbox-label" for="terms">I agree to the WSO2 Data Privacy Policy.</label>
+                                        <label class="checkbox-label" for="terms">I agree to the <a href="/privacy-policy" target="_blank" class="getStartLinks">WSO2 Data Privacy Policy</a>.</label>
                                     </div>
                                 
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-lg-4 subscribeSlack" style="float: right;">
-                                    <button type="button" class="submit-button" id="subscribe_button" >Join Us</button>
+                                    <button type="button" class="submit-button" id="slackSubscribeButton" >Join Us</button>
                                 </div>
                             </div>
                         </form>
 
                         <p style="padding-bottom: 40px; font-weight: 400;">
-                           Are you already member? <a href="https://ballerina-platform.slack.com/" style="color: #20b6b0;">Go to Slack here</a>
+                            Are you already a member?  <a href="https://ballerina-platform.slack.com/" style="color: #20b6b0;">Go to Slack</a>
                         </p>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;">
                         <div class="row">
                             <div class="col-sm-12 col-md-6 col-lg-6 slackTitle" style="float: left;padding-top: 15px;">
-                                <p class="slack-num" style="font-size: 60px;font-weight: 600;float: right;">1000+</p>
+                                <p class="slack-num" style="font-size: 60px;font-weight: 600;float: right;">1000+</p>  
                                 <p class="slack-foot" style="font-size: 23px;font-weight: 400;padding: 0;float: right; margin-top:0px" >Slack Members</p>
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-6 slackImage" style="float: right;">
@@ -620,7 +650,7 @@ td.cEventDateContainer{
       
         <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;">
           <p >
-            We host a public tech talk every month, where our engineers discuss different technical topics, show you how Ballerina can be leveraged to implement related use cases, present upcoming features, and answer all your burning questions live.
+            We host a public tech talk every month, where our engineers discuss different technical topics, show you how Ballerina can be leveraged to implement related use cases, present upcoming features, and answer all your questions live.
           </p>
 
         <p style="padding-bottom: 10px;padding-bottom: 15px;">
@@ -628,12 +658,12 @@ td.cEventDateContainer{
          </p>
 
         <p style="margin-top: 10px;">
-            Want to be notified of future Ballerina Tech Talks? Sign up to get notified
+            Want to register for any upcoming Ballerina Tech Talks? Sign up to get notified. 
         </p>
           <form id="bio-tech-talk-subscribeForm">
             <div class="row">
                 <div class="col-sm-12 col-md-8 col-lg-8 subscribeTechTalk" style="float: left;padding-left: 0px;">
-                    <input type="email" required-field="1" class="form-control text-feild" id="bio-tech-talk-sub-email" aria-describedby="emailHelp" placeholder="Enter your Email address" style="border-radius: 0;border: #20b6b0 solid 1px;">
+                    <input type="email" required-field="1" class="form-control text-feild" id="userEmailTT" aria-describedby="emailHelp" placeholder="Enter your email address" style="border-radius: 0;border: #20b6b0 solid 1px;">
                     <!--Alert Box Thank you-->
                     <div class="alert alert-success alert-dismissible fade show" role="alert" id="bioTechTalkSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
                     <strong>Thank you.</strong> You will receive notifications for our upcoming tech talks.
@@ -653,27 +683,27 @@ td.cEventDateContainer{
                     
                     <div class="text-left checkbox-wrapper">
                         <input type="checkbox" id="terms" class="checkbox">
-                        <label class="checkbox-label" for="terms">I agree to the WSO2 Data Privacy Policy.</label>
+                        <label class="checkbox-label" for="terms">I agree to the <a href="/privacy-policy" target="_blank" class="getStartLinks">WSO2 Data Privacy Policy</a>.</label>
                     </div>
                 
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4 subscribeTechTalk" style="float: right;">
-                    <button type="button" class="submit-button" id="subscribe_button" >Register</button>
+                    <button type="button" class="submit-button" id="tt_subscribe_button" >Register</button>
                 </div>
             </div>
          </form>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;">
         
-            <p class="leftLink" style="text-align: right;">
-                <a href="/tech-talk" target="_blank" style="color: #20b6b0; text-decoration: none; text-align: right;font-weight: 400;font-size: 18px;">View Past Tech Talks </a>
+            <p class="leftLink" style="text-align: right; ">
+                <a href="/tech-talk" target="_blank" style="color: #20b6b0; text-decoration: none; text-align: right;font-weight: 400;font-size: 18px; ">View Past Tech Talks </a>
             </p>
         
         <div class="row " style="float: left; background-color: #e6eaeb5d;padding: 25px 20px;margin: 25px 0;">
 
-            <h5 style="padding-left:15px;margin:0 0 10px 0;color: #464646;"> Next Call</h5>
+            <h5 style="padding-left:15px;margin:0 0 10px 0;color: #464646;"> Upcoming Tech Talk</h5>
             <div class="col-sm-12 col-md-12 col-lg-12 " style="float: left; ">
-                <div class="col-sm-4 col-md-4 col-lg-4" style="" >
+                <div class="col-sm-4 col-md-4 col-lg-4 mobileViewAdjustment"  >
                     <p style="color: #585A5E; font-size:17px;float: right;">Jan 25, 2022</p>
                     <p style="float: right;">Tuesday</p>
                     <p style="float: right;">Online Event</p>
@@ -706,43 +736,41 @@ td.cEventDateContainer{
           
                      <h4 id="running-ballerina-programs-in-the-cloud" class="gTitle1">Contribute to the Source Code
            </h4>
-                <p>Make Ballerina better by contributing to the source code! Read the Contribution Guide and  <a class="getStartLinks" href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md" >get started</a>. Happy contributing!</p>
+                <p>Make Ballerina better by contributing to the source code. Read the <a class="getStartLinks" href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md" >Contribution Guide</a> and  get started. Happy contributing!</p>
            
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 card">
            
                      <h4 id="running-ballerina-programs-in-the-cloud" class="gTitle1">Contribute to Ballerina Central
            </h4>
-                <p>Let the whole community benefit from your work by <a class="getStartLinks" href="https://central.ballerina.io/" >creating and publishing</a> your own Ballerina module. </p>
+                <p>Let the whole community benefit from your work by <a class="getStartLinks" href="https://ballerina.io/learn/publishing-packages-to-ballerina-central/" >creating and publishing</a> your own module to <a class="getStartLinks" href="https://central.ballerina.io/" >Ballerina Central</a>. </p>
            
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 card" style="margin-right:0px !important;">
             
                      <h4 id="running-ballerina-programs-in-the-cloud" class="gTitle1">Report Issues
            </h4>
-                <p><a id="reportissues" class="getStartLinks">Report issues</a> in the GitHub repositories of the areas and components listed.</p>
+                <p>Report issues in the GitHub repositories of the areas and components listed <a id="reportissues" class="getStartLinks">here</a>.</p>
         </div>
        
     </div>
     <div class="row" style="padding-bottom: 20px;">
         <div class="col-lg-4 col-md-4 col-sm-12 card">
            
-                     <h4 id="running-ballerina-programs-in-the-cloud" class="gTitle1">Contribute to our Resource Library
-           </h4>
-                <p><a  id="myBtn" class="getStartLinks" >Submit</a> an article, blog or video to our Community-driven collection of resources.</p>
+                     <h4 id="running-ballerina-programs-in-the-cloud" class="gTitle1">Contribute to the Resource Library</h4>
+                <p><a  id="myBtn" class="getStartLinks" >Submit</a> an article, blog or video to our community-driven collection of resources.</p>
            
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 card">
             
                      <h4 id="running-ballerina-programs-in-the-cloud" class="gTitle1">Submit a Use Case 
            </h4>
-                <p><a id="submitUseCase" class="getStartLinks">Tell us</a> how you're using Ballerina for your project and be a part of our Community Stories. </p>
+                <p><a id="submitUseCase" class="getStartLinks">Tell us</a> how you're using Ballerina in your project and be a part of our community stories. </p>
            
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 card" style="margin-right:0px !important;">
-            <a href="" >
-                     <h4 id="running-ballerina-programs-in-the-cloud" class="gTitle1">Host a Ballerina Event
-           </h4></a>
+          
+                     <h4 id="running-ballerina-programs-in-the-cloud" class="gTitle1">Host a Ballerina Event</h4>
                 <p>Want to talk about Ballerina at your local tech meetup? Reach us at <a class="getStartLinks" href="mailto:contact@ballerina.io">contact@ballerina.io</a> and we will help you with any presentation content.</p>
            
         </div>

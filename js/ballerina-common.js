@@ -250,7 +250,17 @@ $("table").addClass('table-striped');
      */
     $("#subscribe_button").click(function(event) {
         event.preventDefault();
-        subscribeUser($(this).val());
+        subscribeUserOS();
+    });
+
+    $("#tt_subscribe_button").click(function(event) {
+        event.preventDefault();
+        subscribeTechTalk();
+    });
+
+    $("#usecase_submit").click(function(event) {alert("3");
+        event.preventDefault();
+        submitUsecase();
     });
 
     $('#emailUser').on('keypress', function(event) {

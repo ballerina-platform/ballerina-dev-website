@@ -1724,7 +1724,7 @@
             },
             {
                 "name": "Client - OAuth2 Client Credentials Grant Type",
-                "url": "websocket-client-oauth2-client-credentials-grant-type",
+                "url": "websocket-client-oauth2-client-cred-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,

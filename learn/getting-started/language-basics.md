@@ -364,8 +364,8 @@ For example, it you have an array of a map of string type, *``map<string>[ ]``*,
 type MapArray map<string>[];
 
 MapArray arr = [
-    { “x” : “foo” },
-    { “y” : “bar” }
+    {"x": "foo"},
+    {"y": "bar"}
 ]
 ```
 

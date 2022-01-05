@@ -5,8 +5,7 @@ description: Learn how to structure Ballerina tests.
 keywords: ballerina, programming language, testing
 permalink: /learn/testing-ballerina-code/structuring-the-tests/
 active: structuring-the-tests
-intro: The Ballerina Test Framework follows a general organized structure that allows for testing code under various 
-conditions by making use of resources and configurations. 
+intro: The Ballerina Test Framework follows a general organized structure that allows for testing code under various conditions by making use of resources and configurations. 
 redirect_from:
 - /learn/testing-ballerina-code/
 - /learn/testing-ballerina-code

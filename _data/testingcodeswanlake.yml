@@ -25,15 +25,6 @@
         - title: Using Assertions
           url: /learn/testing-ballerina-code/writing-tests/#using-assertions
           active: using-assertions
-        - title: Setup and Teardown
-          url: /learn/testing-ballerina-code/writing-tests/#setup-and-teardown
-          active: setup-and-teardown
-        - title: test:AfterGroups {}
-          url: /learn/testing-ballerina-code/writing-tests/#testaftergroups-
-          active: testaftergroups-
-        - title: Test Dependencies
-          url: /learn/testing-ballerina-code/writing-tests/#test-dependencies
-          active: test-dependencies
         - title: What’s Next?
           url: /learn/testing-ballerina-code/writing-tests/#whats-next
           active: whats-next
@@ -49,6 +40,21 @@
         - title: Test Configurations
           url: /learn/testing-ballerina-code/structuring-the-tests/#test-configurations
           active: test-configurations
+    - title: Configuring Tests
+      url : '#'
+      sublinks:
+        - title: Setup and Teardown
+          url: /learn/testing-ballerina-code/configuring-tests/#setup-and-teardown
+          active: setup-and-teardown
+        - title: Test specific Configurations
+          url: /learn/testing-ballerina-code/configuring-tests/#test-specific-configurations
+          active: test-specific-configurations
+        - title: Test-only Dependencies
+          url: /learn/testing-ballerina-code/configuring-tests/#test-only-dependencies
+          active: test-only-dependencies
+        - title: Testing with Resources
+          url: /learn/testing-ballerina-code/configuring-tests/#test-with-resources
+          active: test-with-resources
     - title: Testing Services and Clients
       url: '#'
       sublinks:

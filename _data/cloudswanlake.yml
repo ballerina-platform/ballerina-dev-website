@@ -22,15 +22,6 @@
             - title: Code to Cloud Samples
               url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#code-to-cloud-samples
               active: code-to-cloud-samples
-        - title: Code to Cloud Samples
-          url: '#'
-          sublinks:
-            - title: Hello World Sample
-              url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-samples/#hello-world-sample
-              active: hello-world-sample
-            - title: Resource Limits and Auto Scaling Sample
-              url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-samples/#resource-limits-and-auto-scaling-sample
-              active: resource-limits-and-auto-scaling-sample
     - title: Function as a Service (FaaS) with Ballerina
       url: '#'
       sublinks:

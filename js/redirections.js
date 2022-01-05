@@ -52,7 +52,6 @@ let redirections = {
     "/1.2/learn/making-ballerina-programs-configurable/trying-out-configurability":"/page-not-available.html",
     "/1.2/learn/observing-ballerina-programs/observing-your-application-with-choreo/":"/page-not-available.html",
     "/1.2/learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/":"/page-not-available.html",
-    "/1.2/learn/running-ballerina-programs-in-the-cloud/code-to-cloud-samples/":"/page-not-available.html",
     "/1.2/learn/managing-dependencies/":"/page-not-available.html",
     "/1.2/learn/publishing-packages-to-ballerina-central/":"/page-not-available.html",
     "/1.2/learn/language-introduction/":"/page-not-available.html",

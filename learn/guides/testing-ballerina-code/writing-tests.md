@@ -28,20 +28,6 @@ package-directory/
 
 ```
 
-
-
-## Test Source Files
-
-Unit tests bound to a module need to be placed in a sub folder called `tests/` within the module. In a standard
- Ballerina package, a module is mapped to a test suite. All tests within a module’s `tests/` subfolder are considered to be part of the same test suite.
-
-The test source files could have any name. The test functions are just Ballerina functions, which use a special annotation to mark the function as a test. Test functions must be specified with the `@test:Config {}` annotation and there is no restriction on the test function name.
-
-
-## Test Resources
-
-The resources sub directory found within the *tests/* directory is meant to contain any files or resources that are exclusively required for testing. You can access the resource files either using the absolute path or using the path relative to the package root.
-
 ## Defining a Test
 
 The test module provides the necessary annotations to construct a test suite. Therefore, importing the test module is essential in order to write Ballerina tests.
@@ -580,14 +566,6 @@ function afterFunc() {
     io:println("I'm the after suite function!");
 }
 ```
-
-## Test Configurations
-
-Configurations for testing can be provided using configurable variables. The values for configurable
-variables can be provided in a file named `Config.toml` located in the tests directory.
-
-For information on using configurable variables, see
- [Configurable Variables](/learn/user-guide/configurability/defining-configurable-variables/).
 
 ## Test Dependencies
 

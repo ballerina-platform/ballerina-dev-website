@@ -16,12 +16,6 @@
         - title: Project Structure
           url: /learn/testing-ballerina-code/writing-tests/#project-structure
           active: project-structure
-        - title: Test Source Files
-          url: /learn/testing-ballerina-code/writing-tests/#test-source-files
-          active: test-source-files
-        - title: Test Resources
-          url: /learn/testing-ballerina-code/writing-tests/#test-resources
-          active: test-resources
         - title: Defining a Test
           url: /learn/testing-ballerina-code/writing-tests/#defining-a-test
           active: defining-a-test
@@ -37,15 +31,24 @@
         - title: test:AfterGroups {}
           url: /learn/testing-ballerina-code/writing-tests/#testaftergroups-
           active: testaftergroups-
-        - title: Test Configurations
-          url: /learn/testing-ballerina-code/writing-tests/#test-configurations
-          active: test-configurations
         - title: Test Dependencies
           url: /learn/testing-ballerina-code/writing-tests/#test-dependencies
           active: test-dependencies
         - title: What’s Next?
           url: /learn/testing-ballerina-code/writing-tests/#whats-next
           active: whats-next
+    - title: Structuring the tests
+      url: '#'
+      sublinks:
+        - title: Test Source Files
+          url: /learn/testing-ballerina-code/structuring-the-tests/#test-source-files
+          active: test-source-files
+        - title: Test Resources
+          url: /learn/testing-ballerina-code/structuring-the-tests/#test-resources
+          active: test-resources
+        - title: Test Configurations
+          url: /learn/testing-ballerina-code/structuring-the-tests/#test-configurations
+          active: test-configurations
     - title: Testing Services and Clients
       url: '#'
       sublinks:

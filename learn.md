@@ -198,8 +198,8 @@ redirect_from:
 		<p>Details of publishing your library package to Ballerina Central.  </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
-<a href="/learn/calling-java-code-from-ballerina-and-vice-versa/">
- <h3 id="calling-java-code-from-ballerina-and-vice-versa">Calling Java Code from Ballerina and Vice Versa</h3></a>
+<a href="/learn/calling-java-code-from-ballerina/">
+ <h3 id="calling-java-code-from-ballerina">Calling Java Code from Ballerina</h3></a>
 		<p>Instructions on the supported interoperability features. </p>
 </div>
 </div>

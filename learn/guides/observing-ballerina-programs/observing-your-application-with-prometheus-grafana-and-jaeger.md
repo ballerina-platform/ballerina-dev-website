@@ -217,7 +217,7 @@ metrics from the Ballerina service, while [Grafana] can be used to connect to Pr
 
 #### Setting Up Prometheus
 [Prometheus] is used as the monitoring system, which pulls out the metrics collected from the Ballerina service
-'/metrics'. This section focuses on the quick installation of Prometheus with Docker and the configuration required to 
+`/metrics`. This section focuses on the quick installation of Prometheus with Docker and the configuration required to 
 collect metrics from the Ballerina service with default configurations. Follow the steps below to configure 
 Prometheus. 
 
@@ -228,30 +228,30 @@ Prometheus.
 
 2. Add the following content to `/tmp/prometheus.yml`.
 
-```yaml
-global:
-  scrape_interval:     15s
-  evaluation_interval: 15s
+    ```yaml
+    global:
+      scrape_interval:     15s
+      evaluation_interval: 15s
+    
+    scrape_configs:
+      - job_name: 'prometheus'
+        static_configs:
+          - targets: ['a.b.c.d:9797']
+    ```
 
-scrape_configs:
-  - job_name: 'prometheus'
-    static_configs:
-      - targets: ['a.b.c.d:9797']
-```
-
-Here the targets `'a.b.c.d:9797'` should contain the host and port of the `/metrics` service that's exposed from 
-Ballerina for metrics collection. Add the IP of the host in which the Ballerina service is running as `a.b.c.d` and its
-port (default `9797`).
-If you need more information, go to the [Prometheus Documentation](https://prometheus.io/docs/introduction/first_steps/).
-
-If your Ballerina service is running on localhost and Prometheus in a Docker container,
-add the target as `host.docker.internal:9797` to access the localhost from Docker.
+    Here the targets `'a.b.c.d:9797'` should contain the host and port of the `/metrics` service that's exposed from 
+    Ballerina for metrics collection. Add the IP of the host in which the Ballerina service is running as `a.b.c.d` and its
+    port (default `9797`).
+    If you need more information, go to the [Prometheus Documentation](https://prometheus.io/docs/introduction/first_steps/).
+    
+    If your Ballerina service is running on localhost and Prometheus in a Docker container,
+    add the target as `host.docker.internal:9797` to access the localhost from Docker.
 
 3.  Start the Prometheus server in a Docker container with the command below.
 
-```bash
-$ docker run -p 19090:9090 -v /tmp/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
-```
+    ```bash
+    $ docker run -p 19090:9090 -v /tmp/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+    ```
     
 4.  Go to <http://localhost:19090/> and check whether you can see the Prometheus graph.
 Ballerina metrics should appear in Prometheus graph's metrics list when Ballerina service is started.
@@ -262,10 +262,10 @@ Prometheus as a data source. Follow the steps below to configure Grafana.
 
 1. Start Grafana as a Docker container with the command below.
 
-```bash
-$ docker run -d --name=grafana -p 3000:3000 grafana/grafana
-```
-For more information, go to [Grafana in Docker Hub](https://hub.docker.com/r/grafana/grafana/).
+    ```bash
+    $ docker run -d --name=grafana -p 3000:3000 grafana/grafana
+    ```
+    For more information, go to [Grafana in Docker Hub](https://hub.docker.com/r/grafana/grafana/).
 
 2. Go to <http://localhost:3000/> to access the Grafana dashboard running on Docker.
 
@@ -273,13 +273,13 @@ For more information, go to [Grafana in Docker Hub](https://hub.docker.com/r/gra
 
 4. Add Prometheus as a data source with `Browser` access configuration as provided below.
 
-![Grafana Prometheus Datasource](/learn/images/grafana-prometheus-datasource.png "Grafana Prometheus Datasource")
+    ![Grafana Prometheus Datasource](/learn/images/grafana-prometheus-datasource.png "Grafana Prometheus Datasource")
 
 5. Import the Grafana dashboard designed to visualize Ballerina metrics from [https://grafana.com/dashboards/5841](https://grafana.com/dashboards/5841).
 This dashboard consists of service and client invocation level metrics in near real-time view. 
 
-Ballerina HTTP Service Metrics Dashboard Panel will be as below.
-![Ballerina Service Metrics](/learn/images/grafana-ballerina-metrics-1.png "Ballerina Sample Service Metrics Dashboard")
+    Ballerina HTTP Service Metrics Dashboard Panel will be as below.
+    ![Ballerina Service Metrics](/learn/images/grafana-ballerina-metrics-1.png "Ballerina Sample Service Metrics Dashboard")
 
 
 
@@ -365,15 +365,15 @@ There are many possible ways to deploy Jaeger. For more information, see [Deploy
 
 1. Install Jaeger via Docker and start the Docker container by executing the command below.
 
-```bash
-$ docker run -d -p 13133:13133 -p 16686:16686 -p 55680:55680 jaegertracing/opentelemetry-all-in-one
-```
+    ```bash
+    $ docker run -d -p 13133:13133 -p 16686:16686 -p 55680:55680 jaegertracing/opentelemetry-all-in-one
+    ```
 
 2. Go to <http://localhost:16686> and load the web UI of the Jaeger to make sure it is functioning properly.
 
-The image below is the sample tracing information you can see from Jaeger.
-
-![Jaeger Tracing Dashboard](/learn/images/jaeger-tracing-dashboard.png "Jaeger Tracing Dashboard")
+    The image below is the sample tracing information you can see from Jaeger.
+    
+    ![Jaeger Tracing Dashboard](/learn/images/jaeger-tracing-dashboard.png "Jaeger Tracing Dashboard")
 
 
 
@@ -407,81 +407,81 @@ Alternatively, Docker containers can be used to set up Elasticsearch and Kibana 
 
 1. Download the Docker images using the following commands.
 
-```bash
-# Elasticsearch Image
-$ docker pull docker.elastic.co/elasticsearch/elasticsearch:6.5.1
-# Kibana Image
-$ docker pull docker.elastic.co/kibana/kibana:6.5.1
-# Filebeat Image
-$ docker pull docker.elastic.co/beats/filebeat:6.5.1
-# Logstash Image
-$ docker pull docker.elastic.co/logstash/logstash:6.5.1
-```
+    ```bash
+    # Elasticsearch Image
+    $ docker pull docker.elastic.co/elasticsearch/elasticsearch:6.5.1
+    # Kibana Image
+    $ docker pull docker.elastic.co/kibana/kibana:6.5.1
+    # Filebeat Image
+    $ docker pull docker.elastic.co/beats/filebeat:6.5.1
+    # Logstash Image
+    $ docker pull docker.elastic.co/logstash/logstash:6.5.1
+    ```
 
 2. Start Elasticsearch and Kibana containers by executing the following commands.
 
-```bash
-$ docker run -p 9200:9200 -p 9300:9300 -it -h elasticsearch --name elasticsearch docker.elastic.co/elasticsearch/elasticsearch:6.5.1
-$ docker run -p 5601:5601 -h kibana --name kibana --link elasticsearch:elasticsearch docker.elastic.co/kibana/kibana:6.5.1
-```
-
-If you run on Linux you may have to increase the `vm.max_map_count` for the Elasticsearch container to start. 
-Execute the following command to do that.
-
-```bash
-$ sudo sysctl -w vm.max_map_count=262144
-```
+    ```bash
+    $ docker run -p 9200:9200 -p 9300:9300 -it -h elasticsearch --name elasticsearch docker.elastic.co/elasticsearch/elasticsearch:6.5.1
+    $ docker run -p 5601:5601 -h kibana --name kibana --link elasticsearch:elasticsearch docker.elastic.co/kibana/kibana:6.5.1
+    ```
+    
+    If you run on Linux you may have to increase the `vm.max_map_count` for the Elasticsearch container to start. 
+    Execute the following command to do that.
+    
+    ```bash
+    $ sudo sysctl -w vm.max_map_count=262144
+    ```
 
 3. Create a `logstash.conf` file in the `/tmp/pipeline/` directory and include the following content in the file.
 
-```
-input {
-  beats {
-    port => 5044
+    ```
+    input {
+      beats {
+        port => 5044
+        }
     }
-}
-filter {
-  grok  {
-    match => { "message" => "%{TIMESTAMP_ISO8601:date}%{SPACE}%{WORD:logLevel}%{SPACE}\[%{GREEDYDATA:module}\]%{SPACE}\-%{SPACE}%{GREEDYDATA:logMessage}"}
-  }
-}
-output {
-    elasticsearch {
-        hosts => "elasticsearch:9200"
-        index => "ballerina"
-      document_type => "ballerina_logs"
+    filter {
+      grok  {
+        match => { "message" => "%{TIMESTAMP_ISO8601:date}%{SPACE}%{WORD:logLevel}%{SPACE}\[%{GREEDYDATA:module}\]%{SPACE}\-%{SPACE}%{GREEDYDATA:logMessage}"}
+      }
     }
-}
-```
-
-Here, the 3 stages are specified in the pipeline. Input is specified as beats and listens to port 5044. 
-A grok filter is used to structure the Ballerina logs and the output is specified to push to Elasticsearch on
-`elasticsearch:9200`.
+    output {
+        elasticsearch {
+            hosts => "elasticsearch:9200"
+            index => "ballerina"
+          document_type => "ballerina_logs"
+        }
+    }
+    ```
+    
+    Here, the 3 stages are specified in the pipeline. Input is specified as beats and listens to port 5044. 
+    A grok filter is used to structure the Ballerina logs and the output is specified to push to Elasticsearch on
+    `elasticsearch:9200`.
 
 4. Start the Logstash container by the following command.
 
-```bash
-$ docker run -h logstash --name logstash --link elasticsearch:elasticsearch -it --rm -v /tmp/pipeline:/usr/share/logstash/pipeline/ -p 5044:5044 docker.elastic.co/logstash/logstash:6.5.1
-```
+    ```bash
+    $ docker run -h logstash --name logstash --link elasticsearch:elasticsearch -it --rm -v /tmp/pipeline:/usr/share/logstash/pipeline/ -p 5044:5044 docker.elastic.co/logstash/logstash:6.5.1
+    ```
 
 5. Configure Filebeat to ship the Ballerina logs. Create a `filebeat.yml` file in the `/tmp/` directory and include the following content in the file.
 
-```
-filebeat.prospectors:
-- type: log
-  paths:
-    - /usr/share/filebeat/ballerina.log
-output.logstash:
-  hosts: ["logstash:5044"]
-```
-
+    ```
+    filebeat.prospectors:
+    - type: log
+      paths:
+        - /usr/share/filebeat/ballerina.log
+    output.logstash:
+      hosts: ["logstash:5044"]
+    ```
+    
 6. Start the Filebeat container with the following command.
 
-```bash
-$ docker run -v /tmp/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /<path-to-ballerina.log>/ballerina.log:/usr/share/filebeat/ballerina.log --link logstash:logstash docker.elastic.co/beats/filebeat:6.5.1
-```
-
-The `-v` flag is used for bind mounting, where the container will read the file from the host machine. Provide the path to the ballerina.log file to be bind-mounted to the filebeat container.
+    ```bash
+    $ docker run -v /tmp/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /<path-to-ballerina.log>/ballerina.log:/usr/share/filebeat/ballerina.log --link logstash:logstash docker.elastic.co/beats/filebeat:6.5.1
+    ```
+    
+    The `-v` flag is used for bind mounting, where the container will read the file from the host machine. Provide the path to the ballerina.log file to be bind-mounted to the filebeat container.
 
 7. Access Kibana to visualize the logs at <http://localhost:5601>. Add an index named `ballerina` and click on `Discover` to visualize the logs.
 

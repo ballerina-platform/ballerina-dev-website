@@ -25,6 +25,10 @@ considered to be part of the same test suite. The test source files could have a
 Ballerina functions, which use a special annotation to mark the function as a test. Test functions must be specified 
 with the `@test:Config {}` annotation and there is no restriction on the test function name.
 
+The functions, services, and the global variables defined in a module are accessible from within the test files.
+Hence, you cannot redefine a symbol in the test files if it is already declared in the module.
+On the other hand, symbols defined in the test files will not be visible inside the module source files.
+
 ## Test Resources
 The `resources/` subdirectory found within the `tests/` directory is meant to contain any files or resources that are 
 exclusively required for testing. You can access the resource files either using the absolute path or using the path 

@@ -7,27 +7,15 @@
         - title: Writing a Simple Function
           url: /learn/testing-ballerina-code/quick-start-on-testing/#writing-a-simple-function
           active: writing-a-simple-function
-        - title: What’s Next?
-          url: /learn/testing-ballerina-code/quick-start-on-testing/#whats-next
-          active: whats-next
     - title: Writing Tests
       url: '#'
       sublinks:
-        - title: Project Structure
-          url: /learn/testing-ballerina-code/writing-tests/#project-structure
-          active: project-structure
         - title: Defining a Test
           url: /learn/testing-ballerina-code/writing-tests/#defining-a-test
           active: defining-a-test
-        - title: Visibility of Symbols
-          url: /learn/testing-ballerina-code/writing-tests/#visibility-of-symbols
-          active: visibility-of-symbols
         - title: Using Assertions
           url: /learn/testing-ballerina-code/writing-tests/#using-assertions
           active: using-assertions
-        - title: What’s Next?
-          url: /learn/testing-ballerina-code/writing-tests/#whats-next
-          active: whats-next
     - title: Structuring the tests
       url: '#'
       sublinks:

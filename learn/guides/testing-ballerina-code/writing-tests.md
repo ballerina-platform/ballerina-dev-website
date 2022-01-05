@@ -14,20 +14,6 @@ redirect_from:
   - /learn/user-guide/testing-ballerina-code/writing-tests/
 ---
 
-## Project Structure
-
-
-```bash
-package-directory/
-    Ballerina.toml
-    main.bal
-    [resources]
-    tests/              # tests for default module
-        main_test.bal   # The test file for main.bal
-        [resources]     # Resources for the tests
-
-```
-
 ## Defining a Test
 
 The test module provides the necessary annotations to construct a test suite. Therefore, importing the test module is essential in order to write Ballerina tests.
@@ -43,15 +29,23 @@ Once the test module is imported, the following annotation can be used to write 
 
 ### '@test:Config {}'
 
-The function specified after the annotation is a test function. This annotation supports the following value fields.
+The function specified after the annotation is a test function. This annotation supports fields to configure the test case with the following.
 
+*   Enable/disable the test.
+    ***enable: {true&#124;false}*** - Default: true
+    
+*   Setup and tear down prerequisites required for a test case.
+    ***before: &lt;function name&gt;*** - The function to be run just before the test is run. Default: none
+    ***after: &lt;function name&gt;*** - The function to be run just after the test is run. Default: none
+    
+*   Define the order of test execution.
+    ***dependsOn: [&lt;function names>, …]*** - List of functions on which the test function depends. The order in which the comma-separated list appears has no prominence. In case there needs to be an order, the `dependsOn` parameter can be used to create an ordered sequence of functions with one function depending on the other.
 
-*   ***enable: {true&#124;false}*** - Enable/disable the test. Default: true
-*   ***before: &lt;function name&gt;*** - The function to be run just before the test is run. Default: none
-*   ***after: &lt;function name&gt;*** - The function to be run just after the test is run. Default: none
-*   ***dependsOn: [&lt;function names>, …]*** - List of functions on which the test function depends. The order in which the comma-separated list appears has no prominence. In case there needs to be an order, the `dependsOn` parameter can be used to create an ordered sequence of functions with one function depending on the other.
-*   ***dataProvider: &lt;function name>*** - Specifies the function that will be used to provide the data sets for the test.
-*   ***groups: [“&lt;test group name”, …]*** - A comma-separated list of test group names (one or more) to which this test
+*   Define data sets for data-driven tests.
+    ***dataProvider: &lt;function name>*** - Specifies the function that will be used to provide the data sets for the test.
+
+*   Group test cases using test groups
+    ***groups: [“&lt;test group name”, …]*** - A comma-separated list of test group names (one or more) to which this test
  belongs.
 
 ***Example:***
@@ -127,12 +121,6 @@ function mapDataProvider() returns map<[int, int, string]>|error {
 }
 ```
 
-## Visibility of Symbols
-
-The functions, services, and the global variables defined in a module are accessible from within the test files. Hence, you cannot redefine a symbol in the test files if it is already declared in the module. 
-
-On the other hand, symbols defined in the test files will not be visible inside the module source files. When running tests, the symbols in the module source files will be initialized first followed by the ones in the test files.
-
 ## Using Assertions
 
 The Ballerina test framework supports the following assertions, which help to verify the expected behavior of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
@@ -186,7 +174,7 @@ The Ballerina test framework supports the following assertions, which help to ve
     </tr>
 </table>
 
-### Difference between expected and actual values when using 'assertEquals'
+### Troubleshooting assertion failures when using 'assertEquals'
 
 
 #### Values with different types
@@ -344,12 +332,3 @@ function testAssertTuples() {
         expected: '12 John'
         actual  : '10 John'
 ```
-
-## What's Next?
-
- As an integration language, you will be using lots of connectors when writing Ballerina code. Setting up mock backends
-  for these external endpoints will be a tedious task (e.g., email client and SalesForce client). The mocking support in
-   Ballerina will allow you to unit test your code without needing to set up mock backends by allowing you to control
-    what the client objects return without actually sending requests to backends.
-
-To learn about the mocking API, see [Mocking](/learn/testing-ballerina-code/mocking).

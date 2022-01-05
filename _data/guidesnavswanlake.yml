@@ -39,6 +39,9 @@
     - title: Writing Tests
       url: /learn/testing-ballerina-code/writing-tests/
       active: writing-tests
+    - title: Structuring the tests
+      url: /learn/testing-ballerina-code/structuring-the-tests/
+      active: structuring-the-tests
     - title: Testing Services and Clients
       url: /learn/testing-ballerina-code/testing-services-and-clients/
       active: testing-services-and-clients

@@ -161,8 +161,8 @@ redirect_from:
 <div class="row">
 
 <div class="col-lg-6 col-md-6 col-sm-12 card"   >
- <a href="/learn/making-ballerina-programs-configurable/defining-configurable-variables/">
-  	<h3 id="making-ballerina-programs-configurable">Making Ballerina Programs Configurable</h3></a>
+ <a href="/learn/configuring-ballerina-programs/">
+  	<h3 id="configuring-ballerina-programs">Configuring Ballerina Programs</h3></a>
  	<p>The language support for configurability.   </p>
 
 </div>

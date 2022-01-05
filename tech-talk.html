@@ -62,7 +62,8 @@ margin-bottom: 5px;
 font-weight: 400;
 font-size: 10px;
 }
-  
+
+
 .checkbox-wrapper {
   white-space: nowrap
 }
@@ -229,7 +230,7 @@ td.cEventDateContainer{
           
             <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;">
               <p >
-                If you're looking to connect with other Ballerina users and language experts, then look no further. We're excited to bring you this monthly tech talk, where our team will discuss different technical topics surrounding the world of Ballerina.
+                If you're looking to connect with other Ballerina users and language experts, then look no further. Whether you're planning to grow your own career, business or workplace, we're excited to bring you this monthly tech talk, where our team will discuss different technical topics surrounding the world of Ballerina.
               </p>
     
           
@@ -239,7 +240,7 @@ td.cEventDateContainer{
             </p>
               <form id="bio-tech-talk-subscribeForm">
                 <div class="row">
-                    <div class="col-sm-12 col-md-8 col-lg-8" style="float: left;padding-left: 0px;">
+                    <div class="col-sm-12 col-md-8 col-lg-8 subscribeTechTalk" style="float: left;padding-left: 0px;">
                         <input type="email" required-field="1" class="form-control text-feild" id="bio-tech-talk-sub-email" aria-describedby="emailHelp" placeholder="Enter you email address" style="border-radius: 0;border: #20b6b0 solid 1px;">
                         <!--Alert Box Thank you-->
                         <div class="alert alert-success alert-dismissible fade show" role="alert" id="bioTechTalkSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
@@ -264,7 +265,7 @@ td.cEventDateContainer{
                         </div>
                     
                     </div>
-                    <div class="col-sm-12 col-md-4 col-lg-4" style="float: right;">
+                    <div class="col-sm-12 col-md-4 col-lg-4 subscribeTechTalk" style="float: right;">
                         <button type="button" class="submit-button" id="subscribe_button" >Register</button>
                     </div>
                 </div>
@@ -279,7 +280,7 @@ td.cEventDateContainer{
     
                 <h5 style="padding-left:15px;margin:0 0 10px 0;color: #464646;"> Upcoming Tech Talk</h5>
                 <div class="col-sm-12 col-md-12 col-lg-12 " style="float: left; ">
-                    <div class="col-sm-12 col-md-4 col-lg-4" style="" >
+                    <div class="col-sm-12 col-md-4 col-lg-4 mobileViewAdjustment" style="" >
                         <p style="color: #585A5E; font-size:17px;float: right;">Jan 25, 2022</p>
                         <p style="float: right;margin: 20px 0;">Tuesday</p>
                         <p style="float: right;margin: 0px 0px 20px 0;">Online Event</p>
@@ -409,7 +410,7 @@ td.cEventDateContainer{
                     <input type="email" class="form-control" id="techtalkSubEmail" required>
                 </div>
                 <div class="form-group">
-                    <label for="techtalkSubCompany" class="col-form-label">Company Name (Optional)</label>
+                    <label for="techtalkSubCompany" class="col-form-label">Company name (optional)</label>
                     <input type="text" class="form-control" id="techtalkSubCompany">
                 </div>
                 <div class="form-group">
@@ -665,7 +666,7 @@ td.cEventDateContainer{
                         </select>
                 </div> 
                 <div class="form-group">
-                  <label for="techtalkSubMessege" class="col-form-label">Topic Suggestion or Feedback</label>
+                  <label for="techtalkSubMessege" class="col-form-label">Topic suggestion or feedback</label>
                   <textarea class="form-control" id="techtalkSubMessege"></textarea>
                 </div>
                 <div class="text-left checkbox-wrapper">
@@ -703,5 +704,22 @@ td.cEventDateContainer{
     }
     .icon-github{
         display: none;
+    }
+    @media only screen and (max-width: 600px) {
+        td.cEventDateContainer, td.cEventDetail, td.cEventURL {
+    padding: 30px 10px !important;
+   }
+   .mobileViewAdjustment{
+    border-left: 2px #585A5E solid;
+    }
+    .mobileViewAdjustment p{
+    float:none !important;
+    }
+    .subscribeTechTalk{
+        float: none !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
     }
 </style>

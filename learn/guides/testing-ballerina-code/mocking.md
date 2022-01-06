@@ -508,8 +508,3 @@ public function mockIntAdd(int a, int b) returns int {
     return (a - b);
 }
 ```
-
-## What's Next?
- 
-Now, that you are aware of the details on writing tests, learn the different options that can be used when [Executing
- Tests](/learn/testing-ballerina-code/executing-tests).

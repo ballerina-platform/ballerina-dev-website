@@ -55,6 +55,15 @@
         - title: JaCoCo XML Report
           url: /learn/testing-ballerina-code/configuring-tests/#jacoco-xml-report
           active: jacoco-xml-report
+    - title: Data-driven Tests
+      url : '#'
+      sublinks:
+        - title: Using data providers
+          url: /learn/testing-ballerina-code/configuring-tests/#using-data-providers
+          active: using-data-providers
+        - title: Executing specific data sets
+          url: /learn/testing-ballerina-code/configuring-tests/#executing-specific-data-sets
+          active: executing-specific-data-sets
     - title: Testing Services and Clients
       url: '#'
       sublinks:

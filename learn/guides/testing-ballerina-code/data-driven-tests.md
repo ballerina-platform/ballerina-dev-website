@@ -1,0 +1,164 @@
+---
+layout: ballerina-testing-code-left-nav-pages-swanlake
+title: Data-driven Tests
+description: Learn how to do write data-driven tests using the ballerina test framework.
+keywords: ballerina, programming language, testing
+permalink: /learn/testing-ballerina-code/data-driven-tests/
+active: data-driven-tests
+intro: The Ballerina Test Framework follows a general organized structure that allows for testing code under various conditions by making use of resources and configurations. 
+redirect_from:
+- /learn/testing-ballerina-code/
+- /learn/testing-ballerina-code
+- /swan-lake/learn/testing-ballerina-code/data-driven-tests/
+- /swan-lake/learn/testing-ballerina-code/data-driven-tests
+- /learn/user-guide/testing-ballerina-code/data-driven-tests
+- /learn/user-guide/testing-ballerina-code/data-driven-tests/
+- /learn/user-guide/testing-ballerina-code/
+- /learn/user-guide/testing-ballerina-code
+- /learn/user-guide/testing-ballerina-code/data-driven-tests/
+---
+
+## Using data providers
+
+A data provider is a function that will be used to provide the data sets for a test function.
+ A data provider function supports one of the following return types.
+
+### Map of tuple or error
+
+The key to represent a specific data set can be specified using the key of an entry and data can be specified using
+ the value of an entry. The data provider function can return an error to indicate an issue with the data sets.
+ 
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+@test:Config {
+    dataProvider: dataGen
+}
+function fruitsDataProviderTest(int value1, int value2, string fruit) returns error? {
+    test:assertEquals(value1, value2, msg = "The sum is not correct");
+    test:assertEquals(fruit.length(), 6);
+}
+
+function dataGen() returns map<[int, int, string]>|error {
+    map<[int, int, string]> dataSet = {
+        "banana": [10, 10, "banana"],
+        "cherry": [5, 5, "cherry"]
+    };
+    return dataSet;
+}
+```
+
+***Output:***
+
+```bash
+Compiling source
+        ballerina_tests/dataproviders:0.1.0
+
+Running Tests
+
+        dataproviders
+
+		[pass] fruitsDataProviderTest#'banana'
+		[pass] fruitsDataProviderTest#'cherry'
+
+		2 passing
+		0 failing
+		0 skipped
+```
+
+
+### Array of arrays or error
+
+***Example:***
+
+```ballerina
+import ballerina/test;
+
+@test:Config{
+    dataProvider: dataGen
+}
+function stringDataProviderTest (string fValue, string sValue, string result) returns error? {
+    int value1 = check 'int:fromString(fValue);
+    int value2 = check 'int:fromString(sValue);
+    int result1 = check 'int:fromString(result);
+    test:assertEquals(value1 + value2, result1, msg = "The sum is not correct");
+    return;
+}
+
+function dataGen() returns (string[][]) {
+    return [["1", "2", "3"], ["10", "20", "30"], ["5", "6", "11"]];
+}
+```
+
+***Output:***
+
+```
+Compiling source
+        ballerina_tests/dataproviders:0.1.0
+
+Running Tests
+
+        dataproviders
+
+                [pass] stringDataProviderTest#0
+                [pass] stringDataProviderTest#1
+                [pass] stringDataProviderTest#2
+
+                3 passing
+                0 failing
+                0 skipped
+```
+
+## Executing specific data sets
+
+* If you need to run only a specific case from the given data set, you can use the test name with the key to do that.
+You can make use of wild cards(`*`) to capture multiple cases as well.
+
+***Example for map data sets:***
+
+```
+$ bal test --tests fruitsDataProviderTest#"'banana'"
+
+Compiling source
+	intg_tests/dataproviders:0.0.0
+
+Running Tests
+
+	dataproviders
+
+		[pass] fruitsDataProviderTest#'banana'
+
+		1 passing
+		0 failing
+		0 skipped
+```
+
+>**Note:** Make sure to include the key within double quotes. 
+
+***Example for array of array data sets:***
+
+```
+$ bal test --tests stringDataProviderTest#1
+
+Compiling source
+        ballerina_tests/dataproviders:0.1.0
+
+Running Tests
+
+        dataproviders
+
+                [pass] stringDataProviderTest#1
+                
+                1 passing
+                0 failing
+                0 skipped
+```
+
+* Re-run failed tests
+
+When you re-run failed tests using the `--rerun-failed` flag, only the failed cases from the data set will get executed.
+
+For more information on test execution options, see
+[Executing Tests](learn/user-guide/testing-ballerina-code/executing-tests/).

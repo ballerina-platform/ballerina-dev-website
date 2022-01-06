@@ -48,6 +48,9 @@
     - title: Code coverage and Reporting
       url: /learn/testing-ballerina-code/code-coverage-and-reporting/
       active: code-coverage-and-reporting
+    - title: Data-driven Tests
+      url: /learn/testing-ballerina-code/data-drive-tests/
+      active: data-drive-tests
     - title: Testing Services and Clients
       url: /learn/testing-ballerina-code/testing-services-and-clients/
       active: testing-services-and-clients

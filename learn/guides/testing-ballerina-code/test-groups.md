@@ -1,0 +1,123 @@
+---
+layout: ballerina-testing-code-left-nav-pages-swanlake
+title: Test groups
+description: Learn how to use Ballerina Testframework grouping functionality
+keywords: ballerina, programming language, testing
+permalink: /learn/testing-ballerina-code/test-groups/
+active: test-groups
+intro: The Ballerina Testframework allows grouping of tests 
+redirect_from:
+- /learn/testing-ballerina-code/
+- /learn/testing-ballerina-code
+- /swan-lake/learn/testing-ballerina-code/test-groups/
+- /swan-lake/learn/testing-ballerina-code/test-groups
+- /learn/user-guide/testing-ballerina-code/test-groups
+- /learn/user-guide/testing-ballerina-code/test-groups/
+- /learn/user-guide/testing-ballerina-code/
+- /learn/user-guide/testing-ballerina-code
+- /learn/user-guide/testing-ballerina-code/test-groups/
+---
+
+## Grouping tests
+Test grouping allows us to control the execution of tests by partitioning them into groups. The Test Framework allows
+for a single test to have multiple groups. 
+
+A test is assigned to a group via the test configuration `groups` key which accepts a string array of groups. 
+
+***Example:*** 
+
+```ballerina
+import ballerina/io;
+import ballerina/test;
+
+@test:Config { groups: ["g1"] }
+function testFunction1() {
+    io:println("I'm a test belonging to group g1!");
+    test:assertTrue(true, msg = "Failed!");
+}
+
+@test:Config { groups: ["g1", "g2"] }
+function testFunction2() {
+    io:println("I'm a test belonging to groups g1 and g2!");
+    test:assertTrue(true, msg = "Failed!");
+}
+
+@test:Config { groups: ["g2"] }
+function testFunction3() {
+    io:println("I'm a test belonging to group g2!");
+    test:assertTrue(true, msg = "Failed!");
+}
+```
+
+## Grouping commands
+
+### Executing Grouped tests
+To execute groups of tests, the `--groups` flag is used during test execution.
+
+```
+$bal test --groups g1
+
+Compiling source
+        user/Testing:0.1.0
+
+Running Tests
+
+        Testing
+I'm a test belonging to group g1!
+I'm a test belonging to groups g1 and g2!
+
+                [pass] testFunction1
+                [pass] testFunction2
+
+                2 passing
+                0 failing
+                0 skipped
+```
+
+The groups flag supports executing multiple groups by using comma separated arguments
+
+```
+$bal test --groups g1,g2
+
+Compiling source
+        user/Testing:0.1.0
+
+Running Tests
+
+        Testing
+I'm a test belonging to group g1!
+I'm a test belonging to groups g1 and g2!
+I'm a test belonging to group g2!
+
+                [pass] testFunction1
+                [pass] testFunction2
+                [pass] testFunction3
+
+                3 passing
+                0 failing
+                0 skipped
+```
+
+### Disabling Grouped tests
+
+To skip execution of certain groups of tests, the `--disable-groups` flag is used during test execution.
+
+`bal test --disable-groups g2`
+
+which results in an output of :
+
+```
+Compiling source
+        user/Testing:0.1.0
+
+Running Tests
+
+        Testing
+I'm a test belonging to group g1!
+
+                [pass] testFunction1
+
+                1 passing
+                0 failing
+                0 skipped
+```

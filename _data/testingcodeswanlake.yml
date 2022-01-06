@@ -59,11 +59,20 @@
       url : '#'
       sublinks:
         - title: Using data providers
-          url: /learn/testing-ballerina-code/configuring-tests/#using-data-providers
+          url: /learn/testing-ballerina-code/data-driven-tests/#using-data-providers
           active: using-data-providers
         - title: Executing specific data sets
-          url: /learn/testing-ballerina-code/configuring-tests/#executing-specific-data-sets
+          url: /learn/testing-ballerina-code/data-driven-tests/#executing-specific-data-sets
           active: executing-specific-data-sets
+    - title: Test groups
+      url: "#"
+      sublinks:
+        - title: Grouping tests
+          url: /learn/testing-ballerina-code/test-groups/#grouping-tests
+          active: grouping-tests
+        - title: Grouping commands
+          url: /learn/testing-ballerina-code/test-groups/#grouping-commands
+          active: groupsing-commands
     - title: Testing Services and Clients
       url: '#'
       sublinks:

@@ -270,6 +270,3 @@ Dependencies meant to be resolved only during testing and can be specified in th
     path = "/user/foo/libs/abc.jar"
     scope = "testOnly"
     ```
-
-## Testing with Resources
-

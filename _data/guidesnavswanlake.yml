@@ -42,6 +42,12 @@
     - title: Structuring the tests
       url: /learn/testing-ballerina-code/structuring-the-tests/
       active: structuring-the-tests
+    - title: Configuring Tests
+      url: /learn/testing-ballerina-code/configuring-tests/
+      active: configuring-tests
+    - title: Code coverage and Reporting
+      url: /learn/testing-ballerina-code/code-coverage-and-reporting/
+      active: code-coverage-and-reporting
     - title: Testing Services and Clients
       url: /learn/testing-ballerina-code/testing-services-and-clients/
       active: testing-services-and-clients

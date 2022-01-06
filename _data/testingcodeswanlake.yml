@@ -43,6 +43,18 @@
         - title: Testing with Resources
           url: /learn/testing-ballerina-code/configuring-tests/#test-with-resources
           active: test-with-resources
+    - title: Code coverage and Reporting
+      url : '#'
+      sublinks:
+        - title: Test Report
+          url: /learn/testing-ballerina-code/configuring-tests/#test-report
+          active: test-report
+        - title: Code Coverage Report
+          url: /learn/testing-ballerina-code/configuring-tests/#code-coverage-report
+          active: code-coverage-report
+        - title: JaCoCo XML Report
+          url: /learn/testing-ballerina-code/configuring-tests/#jacoco-xml-report
+          active: jacoco-xml-report
     - title: Testing Services and Clients
       url: '#'
       sublinks:

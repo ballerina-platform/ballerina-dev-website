@@ -1,9 +1,13 @@
 ---
-layout: ballerina-configurable-left-nav-pages-swanlake title: Configuring Ballerina Programs description: Ballerina
-supports configurability through the configurable, module-level variables. keywords: ballerina, programming language,
-configurable, variables, permalink: /learn/configuring-ballerina-programs/ active: configuring-ballerina-programs intro:
-Ballerina supports configurability through the configurable, module-level variables. redirect_from:
+layout: ballerina-configurable-left-nav-pages-swanlake 
+title: Configuring Ballerina Programs 
+description: Ballerina supports configurability through the configurable, module-level variables. 
+keywords: ballerina, programming language, configurable, variables
+permalink: /learn/configuring-ballerina-programs/ 
+active: configuring-ballerina-programs 
+intro: Ballerina supports configurability through the configurable, module-level variables. 
 
+redirect_from:
 - /learn/user-guide/configurability/defining-configurable-variables
 - /learn/user-guide/configurability/defining-configurable-variables/
 - /learn/user-guide/configurability/

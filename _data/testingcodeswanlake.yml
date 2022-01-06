@@ -100,18 +100,12 @@
     - title: Executing Tests
       url: '#'
       sublinks:
-        - title: Executing Tests Using CLI Commands
-          url: /learn/testing-ballerina-code/executing-tests/#executing-tests-using-cli-commands
-          active: executing-tests-using-cli-commands
-        - title: Test Report
-          url: /learn/testing-ballerina-code/executing-tests/#test-report
-          active: test-report
-        - title: Code Coverage Report
-          url: /learn/testing-ballerina-code/executing-tests/#code-coverage-report
-          active: code-coverage-report
-        - title: JaCoCo XML Report
-          url: /learn/testing-ballerina-code/executing-tests/#jacoco-xml-report
-          active: jacoco-xml-report
-
-
-
+        - title: Test Execution Behavior
+          url: /learn/testing-ballerina-code/executing-tests/#test-execution-behaviour
+          active: test-execution-behaviour
+        - title: Behavior During Failures
+          url: /learn/testing-ballerina-code/executing-tests/#behaviour-during-failures
+          active: behaviour-during-failures
+        - title: Test Execution Options
+          url: /learn/testing-ballerina-code/executing-tests/#test-execution-options
+          active: test-execution-options

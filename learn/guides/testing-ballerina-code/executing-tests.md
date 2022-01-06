@@ -14,15 +14,48 @@ redirect_from:
   - /learn/user-guide/testing-ballerina-code/executing-tests/
 ---
 
+## Test Execution Behavior
+
+Following is the expected order of execution for setup and teardown functions of a test.
+
+![Test Execution Order](/learn/images/test-execution-order.png)
+
+
+## Behavior During Failures
+
+* If BeforeSuite function fails,
+ every other following function is skipped.
+
+* If a BeforeGroups function fails,
+ the tests belonging to that group, setup and teardown functions specific to those tests will fail.
+ The AfterGroups functions for that test group will be skipped. Other setup and teardown functions will be executed as expected.
+ Tests belonging to other groups will not be affected.
+
+* If BeforeEach function fails,
+Every test will be skipped. Since BeforeSuite is already executed, AfterSuite will be executed.
+ Even though the BeforeGroups function is executed prior to BeforeEach, the AfterGroups function will not be
+ executed unless marked as `alwaysRun`.
+
+* If a test function fails, none of the other functions get skipped.
+
+* If the before test function fails, the test function and the after function for that test will be skipped.
+
+* If AfterEach function fails, every following BeforeEach, AfterEach and test function will get skipped.
+
+* If `alwaysRun` property is enabled, AfterGroups & AfterSuite functions will run  irrespective of the status of other functions.
+
+
 ## Executing Tests Using CLI Commands
 
-Tests will be automatically executed when you run the build command or you can explicitly run them using the test command. 
+Tests will be executed when you run the test command.
 
 Execute all the tests in the current package with the following command.
 
 ```
 $ bal test
 ```
+
+### Run tests for a group
 
 List all the test groups in the package.
 
@@ -42,6 +75,8 @@ Run the tests in the current package excluding the given group(s).
 $ bal test --disable-groups <group_1>
 ```
 
+### Run selected tests
+
 Run only the given test function(s) in the current package.
 
 ```
@@ -60,6 +95,18 @@ Run all the functions in the given module.
 $ bal test --tests PackageName.<module_name>:*
 ```
 
+### Re-run failed tests
+
+Run only the previously-failed test cases in the current package.
+
+```
+$ bal test --rerun-failed
+```
+
+### Run selected data sets in data-driven tests
+
+Data-driven tests can be executed using the `bal test` command as any other test.
+
 Run only the specified cases of a data set provided using the `dataProvider` attribute.
 Use `#` as the separator and append the case identifier to end of the test function name.
 
@@ -67,11 +114,13 @@ Use `#` as the separator and append the case identifier to end of the test funct
 $ bal test --tests <test_function>#Case1
 ```
 
-Run only the previously-failed test cases in the current package.
+Run only the previously-failed cases in a data set.
 
 ```
 $ bal test --rerun-failed
 ```
+
+### Generate test report and code coverage
 
 Generate an HTML test report without code coverage information.
 Also, dump the test results in the JSON format.
@@ -106,6 +155,7 @@ Also, dump the test results in the JSON format.
 ```
 $ bal test --test-report --code-coverage --coverage-format=xml
 ```
+
 
 For more options of the test command, run the following.
 

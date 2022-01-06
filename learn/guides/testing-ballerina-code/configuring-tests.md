@@ -259,8 +259,9 @@ test is run
 Configurations for testing can be provided using configurable variables. The values for configurable variables can be
 provided in a file named `Config.toml` located in the `tests/` directory.
 
-For information on using configurable variables, see
-[Configurable Variables](/learn/user-guide/configurability/defining-configurable-variables/).
+Configurable variables are useful when we require separate configurations that cannot be feasibly used outside of 
+testing. This is particularly useful when testing services and clients in which different host values can be 
+initialized when running the application and when testing the same.
 
 ## Test-only Dependencies
 Dependencies meant to be resolved only during testing and can be specified in the Ballerina.toml file by specifying the scope

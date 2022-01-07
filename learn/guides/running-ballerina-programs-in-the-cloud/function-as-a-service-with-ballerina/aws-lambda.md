@@ -24,18 +24,18 @@ redirect_from:
 * Install the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 * Go to [users](https://console.aws.amazon.com/iam/home?#/users) and click add user.
 * Enter username, enable programmatic access and make sure the user has AWSLambda_FullAccess or higher permissions.
-* Configure AWS CLI (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) using the access key and secret generated in the user creation.
-* Go to [roles] (https://console.aws.amazon.com/iamv2/home#/roles ) and create role that has AWSLambdaBasicExecutionRole or higher permission.
+* Configure AWS CLI(https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) using the access key and secret generated in the user creation.
+* Go to [roles](https://console.aws.amazon.com/iamv2/home#/roles ) and create role that has AWSLambdaBasicExecutionRole or higher permission.
 * Go to the newly created role and copy the role arn to use when lambda function is being deployed.
 
 ## Supported Triggers
 AWS lambda function can be triggered by various AWS services. You can find the list of supported notification types below.
 - Direct invocation
-- Simple Queue Service [SQS] (https://aws.amazon.com/sqs/)
-- Simple Storage Service [S3] (https://aws.amazon.com/s3/)
-- [DynamoDB] (https://aws.amazon.com/dynamodb/)
-- Simple Email Service [SES] (https://aws.amazon.com/ses/)
-- [API Gateway] (https://aws.amazon.com/api-gateway/)
+- Simple Queue Service [SQS](https://aws.amazon.com/sqs/)
+- Simple Storage Service [S3](https://aws.amazon.com/s3/)
+- [DynamoDB](https://aws.amazon.com/dynamodb/)
+- Simple Email Service [SES](https://aws.amazon.com/ses/)
+- [API Gateway](https://aws.amazon.com/api-gateway/)
 
 ## Writing a Function
 
@@ -81,11 +81,11 @@ Generating executables
 
 ## Deploying the Function
 
-Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer. As shown in the above instructions output, this information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console, or the [AWS CLI](https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html) to deploy the functions. When you are deploying, make sure to replace the $LAMBDA_ROLE_ARN placeholder wit the role arn you copied in prerequisites.
+Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer. As shown in the above instructions output, this information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console, or the [AWS CLI](https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html) to deploy the functions. When you are deploying, make sure to replace the `$LAMBDA_ROLE_ARN` placeholder wit the role arn you copied in prerequisites.
 
 Execute the command below to deploy the echo function as an AWS Lambda is shown below. 
 
->**Info:** Please visit [create-function documentation] (https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html) to see supported parameters. You might need to change parameters such as memory-size and timeout depending your application and connection speed. 
+>**Info:** Please visit [create-function documentation](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html) to see supported parameters. You might need to change parameters such as memory-size and timeout depending your application and connection speed. 
 
 ```bash
 $ aws lambda create-function --function-name echo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.echo --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6
@@ -180,7 +180,7 @@ public function notifyDynamoDB(awslambda:Context ctx,
 ```
 Now you can build and deploy the function as we did in previous sample.
 In order for us to invoke this function, we need to create a dynamodb table first.
-1. Go to [roles] (https://console.aws.amazon.com/iamv2/home#/roles ) and add AWSLambdaDynamoDBExecutionRole to the created role in the prerequisites.
+1. Go to [roles](https://console.aws.amazon.com/iamv2/home#/roles ) and add `AWSLambdaDynamoDBExecutionRole` to the created role in the prerequisites.
 2. Go to [DynamoDB](https://us-west-1.console.aws.amazon.com/dynamodbv2) 
 3. Click on Create Table and enter the table name, partition key and create the table. If you already have a table you can skip this step.
 4. Click on the dynamodb table and go exports and streams tab.
@@ -189,8 +189,7 @@ In order for us to invoke this function, we need to create a dynamodb table firs
 
 Now we can add an entry to dynamodb table to invoke our lambda function. We can go to [Items](https://us-west-1.console.aws.amazon.com/dynamodbv2) in dynamodb, select the table and click Create item. Once the item is entered in to the table you can go to the lambda function and check logs via cloudwatch to see the object identifier in the logs.
 
-## What's Next?
 
-In a more practical scenario, the AWS Lambda functions will be used by associating them to an external event source such as Amazon DynamoDB or Amazon SQS. For more information on this, go to [AWS Lambda event source mapping documentation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html).
+>**Note:** In a more practical scenario, the AWS Lambda functions will be used by associating them to an external event source such as Amazon DynamoDB or Amazon SQS. For more information on this, go to [AWS Lambda event source mapping documentation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html).
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

@@ -37,7 +37,7 @@ The following Azure Functions triggers and bindings are currently supported in B
 - CosmosDB [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBTrigger), [input](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBInput) binding, and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBOutput) binding
 - Timer [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#TimerTrigger)
 
-## Hello world (HTTP Trigger -> HTTP Output)
+## Writing a Function
 
 The following Ballerina code gives an example of using an HTTP trigger to invoke the function, and an HTTP output binding to respond back to the caller with a message. 
 
@@ -193,8 +193,6 @@ Lets build the project by executing `bal build` on the project directory and dep
 
 Once the function is deployed, you can go to your collection in Data explorer and Add a New Item to the collection. Then you can go to the queue page and observe the added new entry. Additionally for debugging purposes you can view the logs under `Logs stream` in the function app.
 
-## What's Next?
-
-For a full sample with all the supported Azure Functions triggers and bindings in Ballerina, see [Azure Functions Deployment Example](/learn/by-example/azure-functions-deployment.html).
+>**Note:** For a full sample with all the supported Azure Functions triggers and bindings in Ballerina, see [Azure Functions Deployment Example](/learn/by-example/azure-functions-deployment.html).
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

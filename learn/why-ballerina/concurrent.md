@@ -6,7 +6,7 @@ keywords: ballerina, ballerina platform, api documentation, testing, ide, baller
 permalink: /why-ballerina/concurrent/
 active: concurrent
 intro: Concurrency in Ballerina is enabled by strands, which are lightweight threads.
-redirct_from:
+redirect_from:
   - /learn/user-guide/why-ballerina/concurrent
   - /learn/user-guide/why-ballerina/concurrent/
   - /learn/why-ballerina/concurrent

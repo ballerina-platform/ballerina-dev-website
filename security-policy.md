@@ -48,6 +48,13 @@ Here is an overview of our approach to handling vulnerabilities:
 
 Your efforts in reporting vulnerabilities or any other issues related to the security of Ballerina will be recognized and honored via the [WSO2 Security Reward and Acknowledgement Program](https://docs.wso2.com/display/Security/WSO2+Security+Reward+and+Acknowledgement+Program). 
 
+## Security Advisories
+
+The below are the Ballerina security advisories that are already published.
+
+### Compiler, Runtime, and CLI Tooling
+
+- [CVE-2021-32700](https://github.com/ballerina-platform/ballerina-lang/security/advisories/GHSA-f5qg-fqrw-v5ww)
 
 >**Note:** The reward program is currently applicable to vulnerabilities reported only in the compiler, runtime, CLI tooling, standard library, VS Code plugin and,  [website](https://ballerina.io).
 

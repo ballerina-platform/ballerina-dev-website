@@ -6,7 +6,7 @@ keywords: ballerina, ballerina platform, api documentation, testing, ide, baller
 permalink: /why-ballerina/reliable-maintainable/
 active: reliable-maintainable
 intro: The sections below explain how the explicit error handling, static types, and concurrency safety combined with a familiar, readable syntax make programs reliable and maintainable. 
-redirect_from:
+redirct_from:
   - /learn/user-guide/why-ballerina/reliable-and-maintainable/
   - /learn/user-guide/why-ballerina/reliable-maintainable
   - /learn/why-ballerina/reliable-maintainable

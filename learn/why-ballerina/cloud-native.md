@@ -35,11 +35,13 @@ Ballerina's type system is specifically focused on aiding the development of net
 The sample below demonstrates a few simple usages of `json` and `xml` types.
 
 ```ballerina
+import ballerina/io;
+
 public function main() returns error? {
     string name = "Katie Melua";
 
     // XML literal.
-    xml album = xml 
+    xml album = xml
     `<Album>
         <name>Piece By Piece</name>
         <artist>${name}</artist>
@@ -49,7 +51,8 @@ public function main() returns error? {
     io:println("XML Value: ", album);
 
     // Extract the list of song names from the XML value using a query expression.
-    string[] songs = from var song in album/<song> select song.data();
+    string[] songs = from var song in album/<song>
+        select song.data();
     io:println("Extracted song names: ", songs);
 
     // JSON literal.
@@ -76,9 +79,9 @@ Output:
 Compiling source
         xml_json_sample.bal
 
-Running executable.
+Running executable
 
-<Album>
+XML Value: <Album>
         <name>Piece By Piece</name>
         <artist>Katie Melua</artist>
         <song>Spider's Web</song>
@@ -212,8 +215,7 @@ The following code snippet shows how the Ballerina compiler can generate YAML fi
 import ballerina/http;
 
 service /hello on new http:Listener(9090) {
-    resource function get sayHello() returns string
-            returns error? {
+    resource function get sayHello() returns string {
         check caller->respond("Hello, World!");
     }
 }
@@ -235,7 +237,7 @@ import ballerinax/awslambda;
 // generate an AWS Lambda function
 @awslambda:Function
 public function echo(awslambda:Context ctx, json input) returns json {
-   return input;
+    return input;
 }
 ```
 
@@ -243,7 +245,6 @@ public function echo(awslambda:Context ctx, json input) returns json {
 Azure Functions is a serverless solution that allows you to write less code, maintain less infrastructure, and save on costs. Ballerina functions can be deployed in Azure by annotating a Ballerina function with `@azure_functions:Function`.
 
 ```ballerina
-import ballerina/uuid;
 import ballerinax/azure_functions as af;
 
 // HTTP request/response with no authentication

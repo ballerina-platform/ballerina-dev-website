@@ -56,6 +56,6 @@ To get started, let's set up the Ballerina package to run tests.
     }
     ```
 
-4. Finally, lets execute the tests using the following command
+4. We can execute the tests using the following command
 
-    `$ bal test`
+    ```$ bal test```

@@ -47,13 +47,13 @@
       url : '#'
       sublinks:
         - title: Test Report
-          url: /learn/testing-ballerina-code/configuring-tests/#test-report
+          url: /learn/testing-ballerina-code/code-coverage-and-reporting/#test-report
           active: test-report
         - title: Code Coverage Report
-          url: /learn/testing-ballerina-code/configuring-tests/#code-coverage-report
+          url: /learn/testing-ballerina-code/code-coverage-and-reporting/#code-coverage-report
           active: code-coverage-report
         - title: JaCoCo XML Report
-          url: /learn/testing-ballerina-code/configuring-tests/#jacoco-xml-report
+          url: /learn/testing-ballerina-code/code-coverage-and-reporting/#jacoco-xml-report
           active: jacoco-xml-report
     - title: Data-driven Tests
       url : '#'
@@ -94,18 +94,15 @@
         - title: Mocking Functions
           url: /learn/testing-ballerina-code/mocking/#mocking-functions
           active: mocking-functions
-        - title: What’s Next?
-          url: /learn/testing-ballerina-code/mocking/#whats-next
-          active: whats-next
     - title: Executing Tests
       url: '#'
       sublinks:
-        - title: Test Execution Behavior
-          url: /learn/testing-ballerina-code/executing-tests/#test-execution-behaviour
-          active: test-execution-behaviour
-        - title: Behavior During Failures
-          url: /learn/testing-ballerina-code/executing-tests/#behaviour-during-failures
-          active: behaviour-during-failures
-        - title: Test Execution Options
-          url: /learn/testing-ballerina-code/executing-tests/#test-execution-options
-          active: test-execution-options
+        - title: Test Execution behavior
+          url: /learn/testing-ballerina-code/executing-tests/#test-execution-behavior
+          active: test-execution-behavior
+        - title: behavior During Failures
+          url: /learn/testing-ballerina-code/executing-tests/#behavior-during-failures
+          active: behavior-during-failures
+        - title: Executing Tests Using CLI Commands
+          url: /learn/testing-ballerina-code/executing-tests/#executing-tests-using-cli-commands
+          active: executing-tests-using-cli-commands

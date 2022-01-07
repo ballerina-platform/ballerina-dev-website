@@ -21,12 +21,12 @@ redirect_from:
 ## Using data providers
 
 A data provider is a function that will be used to provide the data sets for a test function.
- A data provider function supports one of the following return types.
+A data provider function supports one of the following return types.
 
 ### Map of tuple or error
 
-The key to represent a specific data set can be specified using the key of an entry and data can be specified using
- the value of an entry. The data provider function can return an error to indicate an issue with the data sets.
+The key to represent a specific data set can be specified using the key of an entry and data can be specified using the 
+value of an entry. The data provider function can return an error to indicate an issue with the data sets.
  
 ***Example:***
 
@@ -94,7 +94,7 @@ function dataGen() returns (string[][]) {
 
 ***Output:***
 
-```
+```bash
 Compiling source
         ballerina_tests/dataproviders:0.1.0
 
@@ -113,12 +113,12 @@ Running Tests
 
 ## Executing specific data sets
 
-* If you need to run only a specific case from the given data set, you can use the test name with the key to do that.
+If you need to run only a specific case from the given data set, you can use the test name with the key to do that.
 You can make use of wild cards(`*`) to capture multiple cases as well.
 
 ***Example for map data sets:***
 
-```
+```bash
 $ bal test --tests fruitsDataProviderTest#"'banana'"
 
 Compiling source
@@ -139,7 +139,7 @@ Running Tests
 
 ***Example for array of array data sets:***
 
-```
+```bash
 $ bal test --tests stringDataProviderTest#1
 
 Compiling source
@@ -155,10 +155,3 @@ Running Tests
                 0 failing
                 0 skipped
 ```
-
-* Re-run failed tests
-
-When you re-run failed tests using the `--rerun-failed` flag, only the failed cases from the data set will get executed.
-
-For more information on test execution options, see
-[Executing Tests](learn/user-guide/testing-ballerina-code/executing-tests/).

@@ -77,7 +77,7 @@ This is useful when testing the full extent of the client by mocking responses t
 be difficult to reproduce in an actual scenario. This would cover a variety of scenarios that the
 client is capable of handling without having the service to actually be up and running.
 
-***Example**
+***Example***
 The following is a simple example on how mocking can be used to stub responses to services that you 
 may not be able to access during the test execution.
 

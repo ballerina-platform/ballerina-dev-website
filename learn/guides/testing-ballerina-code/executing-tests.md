@@ -51,7 +51,7 @@ Tests will be executed when you run the test command.
 
 Execute all the tests in the current package with the following command.
 
-```
+```bash
 $ bal test
 ```
 
@@ -59,19 +59,19 @@ $ bal test
 
 List all the test groups in the package.
 
-```
+```bash
 $ bal test --list-groups
 ```
 
 Run only the tests belonging to the given group(s) in the current package.
 
-```
+```bash
 $ bal test --groups <group_1>,<group_2>
 ```
 
 Run the tests in the current package excluding the given group(s).
 
-```
+```bash
 $ bal test --disable-groups <group_1>
 ```
 
@@ -79,7 +79,7 @@ $ bal test --disable-groups <group_1>
 
 Run only the given test function(s) in the current package.
 
-```
+```bash
 $ bal test --tests <test_function>
 ```
 
@@ -91,7 +91,7 @@ $ bal test --tests PackageName:<test_function>
 
 Run all the functions in the given module.
 
-```
+```bash
 $ bal test --tests PackageName.<module_name>:*
 ```
 
@@ -99,7 +99,7 @@ $ bal test --tests PackageName.<module_name>:*
 
 Run only the previously-failed test cases in the current package.
 
-```
+```bash
 $ bal test --rerun-failed
 ```
 
@@ -110,13 +110,13 @@ Data-driven tests can be executed using the `bal test` command as any other test
 Run only the specified cases of a data set provided using the `dataProvider` attribute.
 Use `#` as the separator and append the case identifier to end of the test function name.
 
-```
+```bash
 $ bal test --tests <test_function>#Case1
 ```
 
 Run only the previously-failed cases in a data set.
 
-```
+```bash
 $ bal test --rerun-failed
 ```
 
@@ -125,40 +125,42 @@ $ bal test --rerun-failed
 Generate an HTML test report without code coverage information.
 Also, dump the test results in the JSON format.
 
-```
+```bash
 $ bal test --test-report
 ```
 
 Dump only the test results in the JSON format.
 
-```
+```bash
 $ bal test --code-coverage
 ```
 
 Generate an HTML test report with code coverage information.
 Also, dump the test results in the JSON format.
 
-```
+```bash
 $ bal test --test-report --code-coverage
 ```
 
 Generate a JaCoCo XML test report with code coverage information.
 Also, dump the test results in the JSON format.
 
-```
+```bash
 $ bal test --code-coverage --coverage-format=xml
 ```
 
 Generate an HTML test report and a JaCoCo XML test report with code coverage information.
 Also, dump the test results in the JSON format.
 
-```
+```bash
 $ bal test --test-report --code-coverage --coverage-format=xml
 ```
 
 
 For more options of the test command, run the following.
 
-`$ bal test --help` 
+```bash
+$ bal test --help
+``` 
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

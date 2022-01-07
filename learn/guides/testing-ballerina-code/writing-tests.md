@@ -19,7 +19,7 @@ redirect_from:
 The test module provides the necessary annotations to construct a test suite. Therefore, importing the test module is essential in order to write Ballerina tests.
 
 
-```
+```ballerina
 import ballerina/test;
 ```
 

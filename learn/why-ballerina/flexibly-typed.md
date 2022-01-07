@@ -67,7 +67,7 @@ A type in Ballerina represents a set of possible shapes it can have. So any valu
 
 ### Subtypes in Ballerina
 
-Subtyping in Ballerina is semantic. It is defined through shapes, where `S` is a subtype of `T` if the set of shapes denoted by `S` is a subset of the shapes denoted by `T`. The examples below demonstrate this behavior.
+Subtyping in Ballerina is semantic. It is defined through shapes where `S` is a subtype of `T` if the set of shapes denoted by `S` is a subset of the shapes denoted by `T`. The examples below demonstrate this behavior.
 
 The type `boolean` is a simple basic type in Ballerina without storage identity, so its values become equivalent to its shapes. Therefore, the `boolean` type is defined as having two shapes, `true` and `false`.
 
@@ -95,7 +95,7 @@ boolean bv2 = true;
 bv2 = bv1;
 ```
 
-As you can see, `bv1` of type `boolean_false` can be assigned to `bv2` of type `boolean` because `bv1`’s type is a subtype of `bv2`’s type. In simple terms, all the values that can be held by the variable `bv1` can be held by the variable `bv2`, thus the assignment is possible.
+As you can see, `bv1` of type `boolean_false` can be assigned to `bv2` of type `boolean` because `bv1`’s type is a subtype of `bv2`’s type. In simple terms, all the values that can be held by the variable `bv1` can be held by the variable `bv2`, and thereby, the assignment is possible.
 
 We have now seen how Ballerina’s subtyping works in relation to simple types. Let’s take a look at creating subtypes of records by revisiting our `DoorState` scenario. Here, we will create a new type `EmergencyDoorState`, where the `locked` field has to always have the value `false`. The resultant types and their shapes can be seen below in Figure 4.
 
@@ -182,11 +182,11 @@ type Person record {|
 |};
 ```
 
-Here, the type `Person` is an open record type, the notation `json...;` denotes that this record type can contain additional fields that are not explicitly mentioned in the record type descriptor, as long as these additional fields belong to type `json`.
+Here, the type `Person` is an open record type and the notation `json...;` denotes that this record type can contain additional fields that are not explicitly mentioned in the record type descriptor as long as these additional fields belong to type `json`.
 
 The earlier `DoorState` record type was defined explicitly as a closed record type. Therefore, you were able to list out all the possible shapes in the `DoorState` type. If this type was defined as an open record, you would have an infinite number of shapes since `DoorState` values can have any arbitrary set of fields in the code.
 
-The `Person` record type above has an <a href="/learn/by-example/optional-fields">optional field</a> `creditScore` (denoted by the suffix `"?"`). This means the `creditScore` field may not be set (i.e., not mandatory) when creating a value of type `Person`. Later on, this field can be accessed using field access (`"."`) or optional field access (`"?."`). The static type of this access would be `CreditScore?` which is equivalent to the union type `CreditScore|()`. At runtime, accessing the optional field will return the value (belonging to the type of the field `CreditScore`) if the field is present, else if the field is not present it will return nil. In Ballerina, the nil value and the type are represented by `()`. Field access can be used to access optional fields only when the type of the field does not contain nil (such as `creditScore` in this example).
+The `Person` record type above has an <a href="/learn/by-example/optional-fields">optional field</a> `creditScore` (denoted by the suffix `"?"`). This means the `creditScore` field may not be set (i.e., not mandatory) when creating a value of type `Person`. Later on, this field can be accessed using field access (`"."`) or optional field access (`"?."`). The static type of this access would be `CreditScore?`, which is equivalent to the union type `CreditScore|()`. At runtime, accessing the optional field will return the value (belonging to the type of the field `CreditScore`) if the field is present, else, if the field is not present it will return nil. In Ballerina, the nil value and the type are represented by `()`. Field access can be used to access optional fields only when the type of the field does not contain nil (such as `creditScore` in this example).
 
 Let’s create a new type `Student`, which will be a subtype of the `Person` type.
 

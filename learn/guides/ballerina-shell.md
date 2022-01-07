@@ -31,13 +31,29 @@ Type /exit to exit and /help to list available commands.
 =$ 
 ```
 
-## Stopping the Shell
+## Ballerina Shell help command
 
-Execute the `/exit` command to exit the Shell.
+Execute the `/help` command to view available commands.
 
 ```bash
-=$ /exit                                                                                                                                                                                                           
-| Bye!!!
+=$ /help                 
+| Ballerina Shell Help
+| 
+| Type a Ballerina language expression, statement, or declaration.
+| Or type one of the following commands:
+| 
+| /exit           - Exit the shell.
+| /debug          - Toggle the debug mode ON/OFF.
+| /reset          - Reset REPL state.
+|                   All previous code snippets will be removed from REPL memory.
+| /file <FILE>    - Load declarations defined in <FILE>. e.g., /file my_file.bal
+| /remove <NAMES> - Delete the declarations specified by <NAMES>. e.g., /remove function1 var1 var2
+| /imports        - List the available imports.
+| /vars           - List the declared variables and their values.
+| /dclns          - List the user defined module level declarations.
+| /help           - Displays the help text.
+| /help <TOPIC>   - Get help on <TOPIC>. eg: /help var
+| /help topics    - See all available topic names.
 ```
 
 ## Evaluating Code Snippets
@@ -61,7 +77,7 @@ Execute the `/imports` command to view the list of the imported modules.
 
 ```bash
 =$ /imports
-| ('io) import ballerina/'io as 'io;
+| (io) import ballerina/io;
 ```
 
 ### Executing Statements
@@ -69,7 +85,7 @@ Execute the `/imports` command to view the list of the imported modules.
 Any valid Ballerina statement can be evaluated in the Shell. The example below evaluates a variable declaration statement.
 
 ```bash
-=$ string name = "Ballerina Shell" 
+=$ string name = "Ballerina Shell"
 ```
 
 
@@ -78,33 +94,15 @@ Any valid Ballerina statement can be evaluated in the Shell. The example below e
 An expression always produces a value when evaluated. You can use the Shell to evaluate any arbitrary expression. It will output the result of the evaluation.
 
 ```bash
-=$ 10 + 20 * 5                                                                                                                                                                                                       
+=$ 10 + 20 * 5
 110
 ```
 
 A reference to a variable is also an expression. Thus, evaluating the name of the previously-defined variable will return its value.
 
 ```bash
-=$ name                                                                                                                                                                                                            
+=$ name
 "Ballerina Shell"
-```
-
-###  Defining Types
-
-Type definitions can be written just as you write them in a source file. The Shell supports multi-line snippets.
-
-```bash
-=$ type Person record {                                                                                                                                                                                              
- > string name;
- > int age;
- > }
-```
-
-Execute the `/dclns` command to view the defined types (and other module-level declarations).
-
-```bash
-=$ /dclns                                                                                                                                                                                                          
-| ('Person) type Person record {string name;int age;};
 ```
 
 ### Defining Variables
@@ -112,14 +110,14 @@ Execute the `/dclns` command to view the defined types (and other module-level d
 Variables defined in the Shell prompt will be treated as module-level variables. Once defined, these can be used in any subsequent evaluation.
 
 ```bash
-=$ Person person = {name: "Bal Shell", age: 4}  
+=$ int a = 10  
 ```
 
 Execute the `/vars` command as shown below to view the declared variables.
 
 ```bash
-=$ /vars                                                                                                                                                                                                             
-| ('person) Person 'person = {"name":"Bal Shell","age":4}
+=$ /vars
+| (a) int a = 10
 ```
 
 ### Defining Functions
@@ -133,22 +131,38 @@ The same rules described above apply when defining a function.
  > }
 ```
 
-Now, the list of declarations includes the `sum()` function as well.
+Execute the `/dclns` command to view the module-level declarations.
 
 ```bash
 =$ /dclns                                                                                                                                                                                                          
-| ('Person) type Person record {string name;int age;};
-| ('sum) function sum(int a, int b) returns int {int sum = a + b;return sum;}
+| (sum) function sum(int a, int b) returns int {int sum = a + b;return sum;}
 ```
-
-
-The function can in turn be called and assigned to a variable. 
+The function can in turn be called and assigned to a variable.
 
 ```bash
 =$ var total = sum(10, 20)                                                                                                                                                                                           
 
 =$ total                                                                                                                                                                                                          
 30
+```
+
+###  Defining Types
+
+Type definitions can be written just as you write them in a source file. The Shell supports multi-line snippets.
+
+```bash
+=$ type Person record {                                                                                                                                                                                              
+ > string name;
+ > int age;
+ > }
+```
+
+Now, the list of declarations includes the `Person` record as well.
+
+```bash
+=$ /dclns                                                                                                                                                                                                          
+| (sum) function sum(int a, int b) returns int {int sum = a + b;return sum;}
+| (Person) type Person record {string name;int age;};
 ```
 
 ### Modifying Definitions
@@ -161,9 +175,8 @@ The example below modifies the `sum()`function.
 =$ function sum(float a, float b) returns float => a + b 
                                                                                                                                                             
 =$ /dclns                                                                                                                                                                                                           
-| ('sum) function sum(float a, float b) returns float => a + b;
+| (sum) function sum(float a, float b) returns float => a + b;
 ```
-
 
 Now, `sum()` is an expression-bodied function accepting float parameters and returning a float value.
 
@@ -175,12 +188,42 @@ If you have any definitions in source files, you can load these definitions to t
 
 If the source file contains a main function, the Shell will disregard it.
 
+```ballerina
+import ballerina/io;
+
+function add(int a, int b) returns int {                                                                                                                                                                        
+    int sum = a + b;
+    return sum;
+}
+
+function subtract(int a, int b) returns int {                                                                                                                                                                        
+    int subtraction = a + b;
+    return subtraction ;
+}
+
+
+function mulitply(int a, int b) returns int {                                                                                                                                                                        
+    int multiply = a * b;
+    return multiply;
+}
+
+public function main() {
+    int a = 5;
+    int b = 10;
+
+    io:println(add(a,b));
+    io:println(subtract(a,b));
+    io:println(mulitply(a,b));
+}
+```
+
 ```bash
 =$ /file test.bal                                                                                                                                                                                                  
 
 =$ /dclns                                                                                                                                                                                                           
-| ('Pet) type Pet record {    string name;};
-| ('PI) const PI = 3.14;
+| (subtract) function subtract(int a, int b) returns...ction = a + b;    return subtraction ;}
+| (add) function add(int a, int b) returns int ...       int sum = a + b;    return sum;}
+| (mulitply) function mulitply(int a, int b) returns... multiply = a * b;    return multiply;}
 ```
 
 ## Resetting the State
@@ -189,8 +232,9 @@ The `/reset` command can be used to clear the current definitions in the memory 
 
 ```bash
 =$ /dclns                                                                                                                                                                                                          
-| ('Pet) type Pet record {    string name;};
-| ('PI) const PI = 3.14;
+| (subtract) function subtract(int a, int b) returns...ction = a + b;    return subtraction ;}
+| (add) function add(int a, int b) returns int ...       int sum = a + b;    return sum;}
+| (mulitply) function mulitply(int a, int b) returns... multiply = a * b;    return multiply;}
 
 =$ /reset                                                                                                                                                                                                            
 | REPL state was reset.
@@ -198,3 +242,18 @@ The `/reset` command can be used to clear the current definitions in the memory 
 =$ /dclns                                                                                                                                                                                                          
 | 
 ```
+
+## Stopping the Shell
+
+Execute the `/exit` command to exit the Shell.
+
+```bash
+=$ /exit
+| Bye!!!                                          
+```
+
+
+>**Please Note:** Ballerina Shell currently not supports following features and will be added in future releases.
+> Services
+> Isolation
+> Concurrency

@@ -15,9 +15,12 @@ It allows you to evaluate snippets of code without having to write complete prog
 
 This will particularly be useful if you are looking to try out the language and its new features, and also for debugging purposes.
 
+>**Please Note:** Ballerina Shell currently supports subset of the language features. Ballerina Shell doesn't support 
+> services and isolation features. Also, Ballerina Shell provides limited feature support for the worker related implementations.
+
 ## Setting up the Prerequisites
 
-The Ballerina Shell is a part of the Ballerina distribution. It was first shipped with Ballerina Swan Lake Alpha1. Therefore, if you are using Swan Lake Alpha1 or a later version, you are all set. If not, for information on installing the latest version of Ballerina, see [downloads](https://ballerina.io/downloads/).
+The Ballerina Shell is a part of the Ballerina distribution. Therefore, if you already installed Ballerina, you are all set. If not, for information on installing the latest version of Ballerina, see [downloads](https://ballerina.io/downloads/).
 
 ## Starting the Shell
 
@@ -31,7 +34,7 @@ Type /exit to exit and /help to list available commands.
 =$ 
 ```
 
-## Ballerina Shell help command
+## Available commands
 
 Execute the `/help` command to view available commands.
 
@@ -61,9 +64,9 @@ Execute the `/help` command to view available commands.
 The types of code snippets below are supported in the Shell.
 
 - Import declarations
-- Module-level declarations (except services)
 - Statements
 - Expressions
+- Module-level declarations
 
 ### Importing a Module
 
@@ -120,9 +123,24 @@ Execute the `/vars` command as shown below to view the declared variables.
 | (a) int a = 10
 ```
 
+### Remove Variables
+
+`/remove` command can be used to remove declarations.
+
+```bash
+=$ /remove a
+```
+
+Execute the `/vars` command as shown below to view the declared variables.
+
+```bash
+=$ /vars
+|
+```
+
 ### Defining Functions
 
-The same rules described above apply when defining a function.
+Functions can be written just as you write them in a source file. The Shell supports multi-line snippets.
 
 ```bash
 =$ function sum(int a, int b) returns int {                                                                                                                                                                        
@@ -148,7 +166,7 @@ The function can in turn be called and assigned to a variable.
 
 ###  Defining Types
 
-Type definitions can be written just as you write them in a source file. The Shell supports multi-line snippets.
+Type definitions can be written same as a function.
 
 ```bash
 =$ type Person record {                                                                                                                                                                                              
@@ -176,35 +194,35 @@ The example below modifies the `sum()`function.
                                                                                                                                                             
 =$ /dclns                                                                                                                                                                                                           
 | (sum) function sum(float a, float b) returns float => a + b;
+| (Person) type Person record {string name;int age;};
 ```
 
-Now, `sum()` is an expression-bodied function accepting float parameters and returning a float value.
+Now, `sum()` is a function accepting float parameters and returning a float value.
 
->**Caution:** Modifying definitions in incompatible ways will lead to undefined behavior.
+>**Caution:** Modifying definitions can cause undefined behavior in some cases.
 
-## Loading Definitions from a File
+### Loading Definitions from a File
 
-If you have any definitions in source files, you can load these definitions to the REPL through the `/file <FILE_PATH>` command. 
+If you have any definitions in source files, you can load these definitions to the Shell through the `/file <FILE_PATH>` command. 
 
 If the source file contains a main function, the Shell will disregard it.
+
+Consider following sample `text.bal` file
 
 ```ballerina
 import ballerina/io;
 
 function add(int a, int b) returns int {                                                                                                                                                                        
-    int sum = a + b;
-    return sum;
+    return a + b;
 }
 
 function subtract(int a, int b) returns int {                                                                                                                                                                        
-    int subtraction = a + b;
-    return subtraction ;
+    return a - b ;
 }
 
 
 function mulitply(int a, int b) returns int {                                                                                                                                                                        
-    int multiply = a * b;
-    return multiply;
+    return a * b;
 }
 
 public function main() {
@@ -221,9 +239,9 @@ public function main() {
 =$ /file test.bal                                                                                                                                                                                                  
 
 =$ /dclns                                                                                                                                                                                                           
-| (subtract) function subtract(int a, int b) returns...ction = a + b;    return subtraction ;}
-| (add) function add(int a, int b) returns int ...       int sum = a + b;    return sum;}
-| (mulitply) function mulitply(int a, int b) returns... multiply = a * b;    return multiply;}
+| (subtract) function subtract(int a, int b) returns...                        return a - b ;}
+| (add) function add(int a, int b) returns int ...                         return a + b;}
+| (mulitply) function mulitply(int a, int b) returns...                         return a * b;}
 ```
 
 ## Resetting the State
@@ -232,9 +250,9 @@ The `/reset` command can be used to clear the current definitions in the memory 
 
 ```bash
 =$ /dclns                                                                                                                                                                                                          
-| (subtract) function subtract(int a, int b) returns...ction = a + b;    return subtraction ;}
-| (add) function add(int a, int b) returns int ...       int sum = a + b;    return sum;}
-| (mulitply) function mulitply(int a, int b) returns... multiply = a * b;    return multiply;}
+| (subtract) function subtract(int a, int b) returns...                        return a - b ;}
+| (add) function add(int a, int b) returns int ...                         return a + b;}
+| (mulitply) function mulitply(int a, int b) returns...                         return a * b;}
 
 =$ /reset                                                                                                                                                                                                            
 | REPL state was reset.
@@ -252,8 +270,28 @@ Execute the `/exit` command to exit the Shell.
 | Bye!!!                                          
 ```
 
+## Help
 
->**Please Note:** Ballerina Shell currently not supports following features and will be added in future releases.
-> Services
-> Isolation
-> Concurrency
+### View available topics
+
+Execute the `/help topics` command to view available topics.
+
+### View specific topic details
+
+Execute the `/help <TOPIC>` command to view details related to mentioned topic.
+
+Consider following example
+
+```bash
+=$ /help strings
+| 
+| Topic description :
+| 
+|  The `string` type represents immutable sequence of zero or more Unicode characters. 
+|  There is no separate character type: a character is represented by a `string` of length 1.
+|  Two `string` values are `==` if both sequences have the same characters.
+|  You can use `<`, `<=`, `>`, and `>=` operators on `string` values and they work by comparing code points.
+|  Unpaired surrogates are not allowed.
+| 
+| For examples visit : https://ballerina.io/learn/by-example/strings
+```

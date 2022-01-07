@@ -180,7 +180,10 @@ font-size: 10px;
 .exampleModalLabel{
     color: #464646;
 }
-
+.cEventDateNum{
+    font-size: 20px !important;
+    font-weight: 450 !important;
+}
 td.cEventDateContainer1 span.cEventDate1{
     width: 100%;
     font-size: 18px;
@@ -238,8 +241,8 @@ td.cEventDateContainer{
             <p style="margin-top: 10px;">
                 Want to register for any upcoming Ballerina Tech Talks? Sign up to get notified.      
             </p>
-            <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x79m" width="100%" type="text/html" frameborder="0" allowTransparency="true" style="border: 0;height: 10vh;"></iframe>
-             <p style="padding-bottom: 10px;padding-bottom: 15px;font-weight: 400;">
+            <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x79m" width="100%" type="text/html" frameborder="0" allowTransparency="true" style="border: 0;display: inline-block;"></iframe>
+             <p style="padding-bottom: 15px;font-weight: 400;margin-top:-45px" class="underText">
                 If you would like to suggest a topic for our next talk, <a id="sumbitTechTalk" data-toggle="modal" data-target="#sumbitTechTalkForm" style="color: #20b6b0;">please fill this form.</a>
              </p>
             </div>
@@ -249,21 +252,22 @@ td.cEventDateContainer{
     
                 <h5 style="padding-left:15px;margin:0 0 10px 0;color: #464646;"> Upcoming Tech Talk</h5>
                 <div class="col-sm-12 col-md-12 col-lg-12 " style="float: left; ">
-                    <div class="col-sm-12 col-md-4 col-lg-4 mobileViewAdjustment" style="" >
-                        <p style="color: #585A5E; font-size:17px;float: right;">Jan 25, 2022</p>
-                        <p style="float: right;margin: 20px 0;">Tuesday</p>
-                        <p style="float: right;margin: 0px 0px 20px 0;">Online Event</p>
+                    <div class="col-sm-4 col-md-4 col-lg-4 mobileViewAdjustment"  >
+                        <p class="dateDisplay" style="color: #585A5E; font-size:18px;float: right; font-weight: 500;">Jan 25, 2022</p>
+                        <p  class="dateDisplay" style="float: right;">Tuesday</p>
+                        <p style="float: right;">Online Event</p>
         
                     </div>
-                    <div class="col-sm-12 col-md-8 col-lg-8" style="border-left: 2px #585A5E solid;">
-                        <p>
+                    <div class="col-sm-8 col-md-8 col-lg-8 mobileViewAdjustment1" style="border-left: 2px #585A5E solid;">
+                        <p style="font-weight: 400;">
                             Ballerina Tech Talk
                         </p>
-                        <a><h4 class="gTitle" style="color: #20b6b0;margin-bottom: 18px; line-height: 40px;">Topic Name Comes Here</h4></a>
+                        <h4 style="color: #20b6b0;margin-bottom: 24px;" class="gTitle1">Topic Name Comes Here</h4>
                         <p>
                         <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/"> Dinushan Meeriyagalla</a> Marketing Officer, WSO2
                         </p>
-                    </div>   
+        
+                    </div>    
                 </div>
             </div>
     
@@ -296,7 +300,7 @@ td.cEventDateContainer{
         <table class="cEventTable cConferencesList" style="width:100% !important;">
             <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                 <td class="cEventDateContainer cEventDateContainer1">	
-                   <span class="cEventDate1" style="margin-bottom: 20px;">Jan 5, 2021</span>	
+                   <span class="cEventDate1 cEventDateNum" style="margin-bottom: 20px;">Jan 5, 2021</span>	
                    <span class="cEventDate1">Tuesday</span>	
                    <p class="cEventLocation" style="text-align: right;">Online</p>	
                 </td>	
@@ -311,7 +315,7 @@ td.cEventDateContainer{
             </tr>
             <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                 <td class="cEventDateContainer cEventDateContainer1">	
-                   <span class="cEventDate1" style="margin-bottom: 20px;">Jan 5, 2021</span>	
+                   <span class="cEventDate1 cEventDateNum" style="margin-bottom: 20px;">Jan 5, 2021</span>	
                    <span class="cEventDate1">Tuesday</span>	
                    <p class="cEventLocation" style="text-align: right;">Online</p>	
                 </td>	
@@ -326,7 +330,7 @@ td.cEventDateContainer{
             </tr>
             <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                 <td class="cEventDateContainer cEventDateContainer1">	
-                   <span class="cEventDate1" style="margin-bottom: 20px;">Jan 5, 2021</span>	
+                   <span class="cEventDate1 cEventDateNum" style="margin-bottom: 20px;">Jan 5, 2021</span>	
                    <span class="cEventDate1">Tuesday</span>	
                    <p class="cEventLocation" style="text-align: right;">Online</p>	
                 </td>	
@@ -348,7 +352,7 @@ td.cEventDateContainer{
      <!--Modal Start for Submit Tech Talk Content-->
      <div class="modal fade" id="sumbitTechTalkForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content" style="padding: 20px; width: 100%;">
+            <div class="modal-content subModelMobile" style="padding: 20px; width: 100%;">
               <div class="modal-header" style="padding-left:0px ;">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
@@ -356,7 +360,7 @@ td.cEventDateContainer{
                     <h5 class="modal-title" id="exampleModalLabel">Suggest topics or give feedback</h5>
               </div>
               
-                  <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x767" frameborder="0" style="height: 53vh; width: 100%;overflow:auto;"></iframe>
+                  <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x767" frameborder="0" style="height: 56vh; width: 100%;overflow:auto;" class="subCMobile"></iframe>
             </div>
         </div>
         </div>
@@ -388,16 +392,54 @@ td.cEventDateContainer{
     padding: 30px 10px !important;
    }
    .mobileViewAdjustment{
-    border-left: 2px #585A5E solid;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 15px;
+    border-top: 1px #565656 solid;
+    }
+    .mobileViewAdjustment1{
+    padding-left: 0px;
+    padding-right: 0px;
+    border: none !important;
     }
     .mobileViewAdjustment p{
     float:none !important;
+    line-height: 20px;
+    }
+    .mobileViewAdjustment1 h4{
+    line-height: 0.8 !important;
+   margin-top:15px !important;
+    margin-bottom: 15px !important;
+    }
+    .dateDisplay {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 0px !important;
     }
     .subscribeTechTalk{
         float: none !important;
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
+    .underText{
+        margin-top: 10px !important;
+    }
+    .Sendemail {
+       width: 100% !important;
+   }
+   .subCMobile{
+       height: 70vh !important;
+   }
+   .subModelMobile{
+    height: 680px !important;
+   }
+   .cUsecaseMobile{
+       height: 76vh;
+   }
+   .cUseCaseModel{
+    height: 800px !important;
+   }
+
 
     }
 </style>

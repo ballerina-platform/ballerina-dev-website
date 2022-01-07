@@ -68,7 +68,7 @@ Once you execute the command, only the operations related to given tags will inc
 
 In code first, based on the business plan, You developer can implement your Ballerina APIs directly, then you can convert your APIs into a human-readable or machine-readable document such as OpenAPI documents later by using the below the Ballerina to OpenAPI command.
 
-### Using the Ballerina to OpenAPI CLI tool
+#### Using the Ballerina to OpenAPI CLI tool
 Export the Ballerina service to an OpenAPI Specification 3.0 definition. For the export to work properly, the input Ballerina service should be defined using the basic service and resource-level HTTP annotations.
 ```bash
 $ bal openapi [-i | --input] <ballerina-service-file-path> [(-o | --output) <output-location>]
@@ -76,12 +76,12 @@ $ bal openapi [-i | --input] <ballerina-service-file-path> [(-o | --output) <out
 Parameter **ballerina-service-file-path** specifies the path of the ballerina service file (e.g., my-api.bal) and is mandatory.
 If your Ballerina file include multiple services, this command generates OpenAPI contract for each service in the Ballerina file.
 
-### Generating OpenAPI specification with `json` format
+#### Generating OpenAPI specification with `json` format
 Use `--json` flag If you need the Ballerina service to OpenAPI output as JSON. The default is YAML.
 ```bash
 $ bal openapi -i <ballerina resource file> [--json]
 ```
-### Generating OpenAPI specification for given service
+#### Generating OpenAPI specification for given service
 If you need to document an OpenAPI contract for only one given service, then use this command. Use service name as the service `absolute-resource-path`.
 
 ```bash
@@ -99,14 +99,14 @@ $ bal openapi -i helloService.bal -s "/hello"
 
 This will generate the OpenAPI contracts for the Ballerina service which absolute-resource-path is `/hello`, which are in the `helloService.bal` Ballerina file.
 
-### Generate your OpenAPI contract with the given title and version
+#### Generate your OpenAPI contract with the given title and version
 
 You can use annotation for storing title and version information about generated OpenAPI contract in ballerina to OpenAPI tool.
 ```ballerina
     @openapi:ServiceInfo{
-    [contract: "/path/to/openapi.json|yaml"],
-    [ title : "store" ],
-    [ ‘version: "0.1.0"]
+       [contract: "/path/to/openapi.json|yaml"],
+       [title : "store" ],
+       [‘version: "0.1.0"]
     }
 ```
 - **Contract (Optional) : string?** :
@@ -156,7 +156,7 @@ Client generated successfully. Following files were created.
 -- types.bal
 -- utils.bal
 ```
-### Generate client with tests boiler-plates
+#### Generate client with tests boiler-plates
 By providing this flag with client mode can be generated a Ballerina client including boiler-plate test cases for all the client remote functions based on the given OpenAPI contract.
 ```bash
 $ bal openapi -i <openapi contract> [--mode client] [--with-tests]
@@ -168,7 +168,7 @@ $ bal openapi -i hello.yaml --mode client --with-tests
 ```
 In addition to above-mentioned generated file in default client generation, this will generate `tests.bal` .
 
-### Generate with nillable types
+#### Generate with nillable types
 This is an optional flag in the OpenAPI to Ballerina command. If your OpenAPI specification includes JSON schema properties that are not marked as **nullable:true**, they may return as null in some responses. It will result in a JSON schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to generate all data types in the generated record with Ballerina nil support by turning on this flag.
 ```bash
 $ bal openapi -i <openapi contract> [-n |--nullable]
@@ -181,20 +181,22 @@ $ bal openapi -i <openapi contract> [-n |--nullable]
 ## Contribute to WSO2 openapi-connectors repository
 If you are willing to see your new client in ballerina central in the future, please follow the below steps and send a GitHub Pull Request.
 
-### **Step 01 :** Set up the prerequisites 
+#### **Step 01 :** Set up the prerequisites 
 1. Fork and clone the [openapi-connectors](https://github.com/ballerina-platform/openapi-connectors) repository. Connectors generated from the Ballerina OpenAPI tool are managed at this repository. 
 2. Set the BALLERINA_HOME environment variable to the ballerina distribution directory. `eg. /usr/lib/ballerina`
-### **Step 02 :** Add ballerina client
+
+#### **Step 02 :** Add ballerina client
 1. Open the clone repository and navigate to `/openapi` directory.
 2. Run `bal new <connector_name> -t lib` to create a new Ballerina package. 
-3. Copy the generated files(**client.bal, types.bal, utils.bal**) into the <connector_name> directory. 
+3. Copy the [generated files](#generate-client-from-openapi-specification)(**client.bal, types.bal, utils.bal**) into the <connector_name> directory. 
 4. Run `bal build` to check whether the newly generated connector is compiling successfully. 
 5. Run necessary unit tests to verify the functionality of the generated connector. 
 6. Add license header at the top of each `.bal` file. 
 7. Add Package.md ([guide here](https://github.com/ballerina-platform/ballerina-extended-library/discussions/77)) and Module.md ([guide here](https://github.com/ballerina-platform/ballerina-extended-library/discussions/78))
 8. Add connector icon to the root of the connector. Icon needs to be a png of 200x200 px size with name icon.png 
 9. Update Ballerina.toml file referring to the [guide here](https://github.com/ballerina-platform/ballerina-extended-library/discussions/72).
-### **Step 03:** Send PR to openapi-connectors
+
+#### **Step 03:** Send PR to openapi-connectors
 1. Run ./gradlew build. 
 2. Push the changes and create a Pull Request to the master branch of the `openapi-connectors` repository.
 

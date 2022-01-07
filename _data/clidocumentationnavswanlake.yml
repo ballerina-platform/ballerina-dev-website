@@ -28,9 +28,28 @@
         - title: Using the Capabilities of the OpenAPI Tools
           url: /learn/cli-documentation/openapi/#using-the-capabilities-of-the-openapi-tools
           active: using-the-capabilities-of-the-openapi-tools
-        - title: OpenAPI Validator Compiler Plugin
-          url: /learn/cli-documentation/openapi/#openapi-validator-compiler-plugin
-          active: openapi-validator-compiler-plugin
+        - title: Generate service from OpenAPI (Design-First)
+          url: /learn/cli-documentation/openapi/#generate-service-from-openapi-design-first
+          active: generate-service-from-openapi-design-first
+        - title: Export OpenAPI from a service (Code-First)
+          url: /learn/cli-documentation/openapi/#export-openapi-from-a-service-code-first
+          active: export-openapi-from-a-service-code-first
+        - title: Keep your implementation and definition in sync with the OpenAPI validator
+          url: /learn/cli-documentation/openapi/#keep-your-implementation-and-definition-in-sync-with-the-openapi-validator
+          active: keep-your-implementation-and-definition-in-sync-with-the-openapi-validator
+        - title: Generate client from OpenAPI specification
+          url: /learn/cli-documentation/openapi/#generate-client-from-openapi-specification
+          active: generate-client-from-openapi-specification
+        - title: Contribute to WSO2 openapi-connectors repository
+          url: /learn/cli-documentation/openapi/#contribute-to-wso2-openapi-connectors-repository
+          active: contribute-to-wso2-openapi-connectors-repository
+        - title: OpenAPI to Ballerina Command Reference
+          url: /learn/cli-documentation/openapi/#openapi-to-ballerina-command-reference
+          active: openapi-to-ballerina-command-reference
+        - title: OpenAPI Annotation Reference
+          url: /learn/cli-documentation/openapi/#openapi-annotation-reference
+          active: openapi-annotation-reference
+
     - title: GRPC
       url: /learn/cli-documentation/grpc/
       sublinks:

@@ -18,7 +18,7 @@ redirect_from:
 ---
 
 ## Prerequisites
-* Ballerina latest distrubution.
+* Ballerina latest distribution.
 * Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Login to Azure CLI by executing `az login` command.
 * Create an Azure [Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal) with the given resource group with the following requirements: Make sure to remember the function application name and storage account name as they will be required in code samples.
@@ -119,13 +119,13 @@ Hello, Hello!%
 
 ## More Samples
 
-In this section we will be using different types of triggers, bindings to build azure functions to intergtate with different azure services using concepts explained in the above sections.
+In this section we will be using different types of triggers, bindings to build azure functions to integrate with different azure services using concepts explained in the above sections.
 
 ### HTTP Trigger -> Queue Output
 
 The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond back to the caller with a message. 
 
-First of all we need to create a queue to hold the outputs of the function. We can do that by accesing the storage account that was created alongside the function app in the prerequisites. Select Queues in the sidebar in the storage accounts. Click on the add queue button and enter the same value as the value of the "queueName" property in the below QueueOutput annotation.
+First of all we need to create a queue to hold the outputs of the function. We can do that by accessing the storage account that was created alongside the function app in the prerequisites. Select Queues in the sidebar in the storage accounts. Click on the add queue button and enter the same value as the value of the "queueName" property in the below QueueOutput annotation.
 
 ```ballerina
 import ballerinax/azure_functions as af;
@@ -158,7 +158,7 @@ The following Ballerina code gives an example of using an CosmosDB trigger to in
 Before we start with writing and deploying the code we need to create a CosmosDB and a queue as we are making use of those services.
 1. You can reuse the queue you've created in above sample. (HTTP Trigger -> Queue Output)
 2. Create a [Azure Cosmos DB Account](https://portal.azure.com/#create/Microsoft.DocumentDB) (Core)
-3. Once the databse is icreated, go to Data Exploer and select Create Container.
+3. Once the database is created, go to Data Exploder and select Create Container.
 4. Enter 'db1' as Database id and 'c1' as collection id and press ok. If you want to change these values make sure to change them in the code as well.
 5. Go to **Keys** tab of the Cosmos DB page.
 6. Copy the value of the `PRIMARY CONNECTION STRING`.
@@ -171,7 +171,7 @@ Name - `CosmosDBConnection`
 Value - `AccountEndpoint=https://db-cosmos.documents.azure.com:443/;AccountKey=12345asda;`
 ```
 
-Alright. Since we have all the infrastrcutre required up and running and configured we can start bulidng and deplying the azure function.
+Alright. Since we have all the infrastructure required up and running and configured we can start building and deploying the azure function.
 
 ```ballerina
 import ballerina/log;
@@ -191,7 +191,7 @@ public function cosmosDBToQueue2(@af:CosmosDBTrigger {
 
 Lets build the project by executing `bal build` on the project directory and deploy using az cli command shown in the ballerina build output like we did in the previous section.
 
-Once the function is deployed, you can go to your collection in Data explorer and Add a New Item to the collection. Then you can go to the queue page and observe the added new entry. Addtionally for debugging purposes you can view the logs under **Logs stream** in the function app.
+Once the function is deployed, you can go to your collection in Data explorer and Add a New Item to the collection. Then you can go to the queue page and observe the added new entry. Additionally for debugging purposes you can view the logs under `Logs stream` in the function app.
 
 ## What's Next?
 

@@ -20,11 +20,11 @@ redirect_from:
 ---
 
 ## Prerequisites
-* Ballerina latest distrubution
+* Ballerina latest distribution
 * Install the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 * Go to [users](https://console.aws.amazon.com/iam/home?#/users) and click add user.
-* Enter username, enable progamatic access and make sure the user has AWSLambda_FullAccess or higher permissions.
-* Configure AWS CLI (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) using the acess key and secret generated in the user creation.
+* Enter username, enable programmatic access and make sure the user has AWSLambda_FullAccess or higher permissions.
+* Configure AWS CLI (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) using the access key and secret generated in the user creation.
 * Go to [roles] (https://console.aws.amazon.com/iamv2/home#/roles ) and create role that has AWSLambdaBasicExecutionRole or higher permission.
 * Go to the newly created role and copy the role arn to use when lambda function is being deployed.
 
@@ -39,7 +39,7 @@ AWS lambda function can be triggered by various AWS services. You can find the l
 
 ## Writing a Function
 
-The following Ballerina code gives an example on how to expose a simlpe echo function in AWS Lambda. 
+The following Ballerina code gives an example on how to expose a simple echo function in AWS Lambda. 
 
 ```ballerina
 import ballerina/log;
@@ -52,7 +52,7 @@ public function echo(awslambda:Context ctx, json input) returns json {
 }
 ```
 
-Functions annoted as @awslambda:Function should always have the first parameter with the [awslambda:Context](https://lib.ballerina.io/ballerinax/awslambda/latest/classes/Context) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
+Functions annotated as @awslambda:Function should always have the first parameter with the [awslambda:Context](https://lib.ballerina.io/ballerinax/awslambda/latest/classes/Context) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
 
 The second parameter with the `json` value contains the input request data. This input value format will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). The return type of the function is `json`. When the function is triggered by the event, the function body executes and it simply logs the input json and returns the json.
 
@@ -139,7 +139,7 @@ $ cat echo-response.txt
 {"MESSAGE":"HELLO"}
 ```
 
-If you want to check the logs of the execusion, you have to go to `echo` lambda function in the portal then click on Monitor tab and Logs button.
+If you want to check the logs of the execution, you have to go to `echo` lambda function in the portal then click on Monitor tab and Logs button.
 
 ## More Samples
 

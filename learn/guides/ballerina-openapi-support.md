@@ -1,19 +1,26 @@
 ---
-layout: ballerina-cli-documentation-left-nav-pages-swanlake
+layout: ballerina-openapi-support-left-nav-pages-swanlake
 title: Ballerina OpenAPI Support 
 description: Check out how the Ballerina OpenAPI tooling makes it easy for users to start developing a service documented in the OpenAPI contract.
 keywords: ballerina, programming language, openapi, open api, restful api
-permalink: /learn/cli-documentation/openapi/
+permalink: /learn/ballerina-openapi-support/
 active: openapi
 intro: OpenAPI Specification is a specification that creates a RESTFUL contract for APIs, detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina OpenAPI tooling will make it easy for users to start the development of a service documented in an OpenAPI contract in Ballerina by generating Ballerina service and client skeletons. It supports the user to take the code first API design approach by generating an OpenAPI contract for the given service implementation.
 redirect_from:
   - /learn/how-to-use-openapi-tools/
   - /learn/how-to-use-openapi-tools
+  - /learn/using-the-openapi-tools/
   - /learn/using-the-openapi-tools
   - /swan-lake/learn/using-the-openapi-tools/
   - /swan-lake/learn/using-the-openapi-tools
   - /learn/tooling-guide/cli-tools/openapi
   - /learn/tooling-guide/cli-tools/openapi/
+  - /learn/ballerina-openapi-support/openapi
+  - /learn/cli-documentation/openapi/#using-the-capabilities-of-the-openapi-tools/
+  - /learn/cli-documentation/openapi/#using-the-capabilities-of-the-openapi-tools
+  - /learn/cli-documentation/openapi/#openapi-validator-compiler-plugin/
+  - /learn/cli-documentation/openapi/#openapi-validator-compiler-plugin
+  - /learn/cli-documentation/openapi/
   - /learn/cli-documentation/openapi
 ---
 
@@ -136,7 +143,32 @@ info:
 ...
 ```
 
-## Keep your implementation and definition in sync with the OpenAPI validator
+## OpenAPI Validator Compiler Plugin
+
+The OpenAPI Validator Compiler plugin validates a service against a given OpenAPI contract. The Compiler Plugin has activated if a service has the `openapi:ServiceInfo` annotation. This plugin compares the service and the OpenAPI contract and validates both against a pre-defined set of validation rules. If any of the rules fail, the plugin will give the result as one or more compilation errors.
+#### Annotation for Validator Plugin
+The `@openapi:ServiceInfo` annotation is used to bind the service with an OpenAPI Contract. You need to add this annotation to the service file with the required values for enabling the validations. **Note :** Providing a `contract` path attribute is mandatory for OpenAPI validator.
+
+The following is an example of annotation usage in ballerina file.
+```ballerina
+import ballerina/openapi;
+
+@openapi:ServiceInfo{
+    contract: “/path/to/openapi.json|yaml”,
+    [ tag : “store” ],
+    [ operations: [“op1”, “op2”] ] 
+    [ failOnErrors]: true/false → default : true
+    [ excludeTags ]: [“pets”, “user”]
+    [ excludeOperations: [“op1”, “op2”] ]
+   }
+service greet on new http:Listener(9090) {
+    ...
+}
+
+```
+
+Please refer the following [OpenAPI annotation reference](#openapi-annotation-reference) for annotation attributes details.
+
 ## Generate client from OpenAPI specification
 If you want to generate the Ballerina client only, you can set the mode as the client when running the OpenAPI tool. The generated client can be used in your applications to call the service defined in the OpenAPI file.
 

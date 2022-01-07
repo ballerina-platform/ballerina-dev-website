@@ -148,7 +148,7 @@ redirect_from:
 <div class="col-lg-6 col-md-6 col-sm-12 card"  >
   <a href="/learn/testing-ballerina-code/testing-quick-start/">
    <h3 id="testing-ballerina-code">Testing Ballerina Code</h3> </a>
-    <p >Details of writing automated tests using the built-in test framework.  </p>
+    <p>Details of writing automated tests using the built-in test framework.  </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important">
   <a href="/learn/generating-code-documentation/">
@@ -216,9 +216,13 @@ redirect_from:
 </div>
 </div>
 
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card">
+ <a href="/learn/ballerina-openapi-support/">
+    <h3 id="ballerina-openapi">Ballerina OpenAPI Support </h3></a>
+    <p >Details of all the features of the Ballerina OpenAPI tools. </p>
 </div>
-
-
+</div>
 
 <div class="row" style="margin-bottom:30px">
 	<h2 id="references">References</h2>

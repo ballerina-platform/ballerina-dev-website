@@ -69,7 +69,7 @@ A type in Ballerina represents a set of possible shapes it can have. So any valu
 
 Subtyping in Ballerina is semantic. It is defined through shapes where `S` is a subtype of `T` if the set of shapes denoted by `S` is a subset of the shapes denoted by `T`. The examples below demonstrate this behavior.
 
-The type `boolean` is a simple basic type in Ballerina without storage identity, so its values become equivalent to its shapes. Therefore, the `boolean` type is defined as having two shapes, `true` and `false`.
+The type `boolean` is a simple basic type in Ballerina without storage identity so its values become equivalent to its shapes. Therefore, the `boolean` type is defined as having two shapes, `true` and `false`.
 
 The `boolean` type’s shapes can be defined in set notation as `Sboolean = { true, false }`. This can be visualized as seen in Figure 2 below.
 

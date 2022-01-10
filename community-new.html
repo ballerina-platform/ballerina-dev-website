@@ -391,6 +391,7 @@ td.cEventDateContainer{
 
 
 </style>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.32.min.js"></script>
 <link rel="stylesheet" href="/css/events-page.css">
 <div class="container" id="wrapper">
 
@@ -600,19 +601,13 @@ td.cEventDateContainer{
                                 <div class="col-sm-12 col-md-8 col-lg-8 subscribeSlack" style="float: left;padding-left: 0px;">
                                     <input type="email" required-field="1" class="form-control text-feild" id="slackEmail" aria-describedby="emailHelp" placeholder="Enter your email address *" style="border-radius: 0;border: #20b6b0 solid 1px;">
                                     <!--Alert Box Thank you-->
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert" id="slackSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
+                                    <div class="alert alert-success alert-dismissible" role="alert" id="slackSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
                                     <strong>Thank you.</strong>Your invitation has been sent to {your email address}.
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
                                     </div>
                                     <!--Alert Box Thank you-->
                                     <!--Alert Box Wrong-->
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert" id="slackFailAlert" style="background-color: #E6EAEB;color: #454646;display:none !important;">
+                                    <div class="alert alert-success alert-dismissible" role="alert" id="slackFailAlert" style="background-color: #E6EAEB;color: #454646;display:none !important;">
                                     <strong>Enter a valid email address.</strong>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
                                     </div>
                                     <!--Alert Box Wrong-->
                                     <div class="text-left checkbox-wrapper">

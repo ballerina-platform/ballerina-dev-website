@@ -60,8 +60,8 @@ Follow the steps below to observe a sample Ballerina service.
 
 ### Step 1 - Setting up the Prerequisites
 
-Make sure you have already installed [Docker](https://www.docker.com/) to set up external systems such as Jaeger,
-Prometheus, etc. You can follow [Docker documentation](https://docs.docker.com/install/) to install Docker.
+Install [Docker](https://www.docker.com/) to set up external systems such as Jaeger,
+Prometheus, etc. For instructions, go to the [Docker documentation](https://docs.docker.com/install/) to install Docker.
 
 ### Step 2 - Installing and Configuring the External Systems
 
@@ -103,8 +103,8 @@ by using the `--observability-included` build flag or by adding the following se
 observabilityIncluded=true
 ```
 
->**Note:** the above configuration is by default included in the `Ballerina.toml` file generated when initiating a new 
-> project using the `bal new` command. .
+>**Note:** the above configuration is included by default in the `Ballerina.toml` file generated when initiating a new 
+> project using the `bal new` command.
 
 To include the Prometheus and Jaeger extensions into the executable, the
 `ballerinax/prometheus` and `ballerinax/jaeger` modules need to be imported in your Ballerina code.
@@ -126,7 +126,7 @@ tracingProvider="jaeger"
 ```
 
 The created configuration file can be passed to the Ballerina program with the `BAL_CONFIG_FILES` environment variable along with
-the path of the configuration file.  This is not necessary if the `Config.toml` file is present in the current working directory.
+the path of the configuration file. This is not necessary if the `Config.toml` file is present in the current working directory.
 
 ```bash
 $ BAL_CONFIG_FILES=<path-to-conf>/Config.toml bal run --observability-included hello_world_service.bal
@@ -152,7 +152,7 @@ $ BAL_CONFIG_FILES=<path-to-conf>/Config.toml nohup bal run --observability-incl
 
 ### Step 5 - Sending Requests
  
-Send requests to <http://localhost:9090/hello/sayHello>
+Send requests to <http://localhost:9090/hello/sayHello>.
 
 Example cURL command:
 
@@ -165,15 +165,15 @@ $ curl http://localhost:9090/hello/sayHello
 View the tracing information on Jaeger via <http://localhost:16686/> and view metrics information from the Grafana
 dashboard on <http://localhost:3000/>.
 
-Sample view of Grafana dashboard for hello_world_service.bal is shown below.
+A sample view of the Grafana dashboard for the `hello_world_service.bal` is shown below.
 ![Grafana Sample Dashboard](/learn/images/grafana-sample-hello-world-service-stats.png "Grafana HelloWorld Service Sample Dashboard")
 
-Sample view of Jaeger dashboard for hello_world_service.bal is shown below. 
+Sample view of the Jaeger dashboard for the `hello_world_service.bal` is shown below. 
 ![Jaeger Sample Dashboard](/learn/images/jaeger-sample-dashboard.png "Jaeger Sample Dashboard")
 
 ### Step 7 - Visualizing the Logs
  
-If you have configured log analytics, the logs can be viewed in Kibana via <http://localhost:5601>
+If you have configured log analytics, the logs can be viewed in Kibana via <http://localhost:5601>.
 ![Kibana Sample Dashboard](/learn/images/kibana-sample-dashboard.png "Kibana Sample Dashboard")
 
 
@@ -213,20 +213,20 @@ ballerinax.prometheus. host | The name of the host in which the service '/metric
 
 ### Setting Up the External Systems for Metrics
 There are mainly two systems involved in collecting and visualizing the metrics. [Prometheus] is used to collect the
-metrics from the Ballerina service, while [Grafana] can be used to connect to Prometheus and visualize the metrics in the dashboard.
+metrics from the Ballerina service while [Grafana] can be used to connect to Prometheus and visualize the metrics on the dashboard.
 
 #### Setting Up Prometheus
 [Prometheus] is used as the monitoring system, which pulls out the metrics collected from the Ballerina service
 `/metrics`. This section focuses on the quick installation of Prometheus with Docker and the configuration required to 
-collect metrics from the Ballerina service with default configurations. Follow the steps below to configure 
+collect metrics from the Ballerina service with the default configurations. Follow the steps below to configure 
 Prometheus. 
 
->**Tip:** There are many other ways to install the Prometheus and you can find possible options from the
+>**Tip:** There are many other ways to install Prometheus and you can find possible options from the
 [installation guide](https://prometheus.io/docs/prometheus/latest/installation/).
 
 1. Create a `prometheus.yml` file in the `/tmp/` directory.
 
-2. Add the following content to `/tmp/prometheus.yml`.
+2. Add the following content to the `/tmp/prometheus.yml` file.
 
     ```yaml
     global:
@@ -239,7 +239,7 @@ Prometheus.
           - targets: ['a.b.c.d:9797']
     ```
 
-    Here the targets `'a.b.c.d:9797'` should contain the host and port of the `/metrics` service that's exposed from 
+    Here, the `'a.b.c.d:9797'` targets should contain the host and port of the `/metrics` service that is exposed from 
     Ballerina for metrics collection. Add the IP of the host in which the Ballerina service is running as `a.b.c.d` and its
     port (default `9797`).
     If you need more information, go to the [Prometheus Documentation](https://prometheus.io/docs/introduction/first_steps/).
@@ -278,7 +278,7 @@ Prometheus as a data source. Follow the steps below to configure Grafana.
 5. Import the Grafana dashboard designed to visualize Ballerina metrics from [https://grafana.com/dashboards/5841](https://grafana.com/dashboards/5841).
 This dashboard consists of service and client invocation level metrics in near real-time view. 
 
-    Ballerina HTTP Service Metrics Dashboard Panel will be as below.
+    The Ballerina HTTP Service Metrics Dashboard Panel will be as shown below.
     ![Ballerina Service Metrics](/learn/images/grafana-ballerina-metrics-1.png "Ballerina Sample Service Metrics Dashboard")
 
 
@@ -371,14 +371,14 @@ There are many possible ways to deploy Jaeger. For more information, see [Deploy
 
 2. Go to <http://localhost:16686> and load the web UI of the Jaeger to make sure it is functioning properly.
 
-    The image below is the sample tracing information you can see from Jaeger.
+    The image below is the sample tracing information you can see in Jaeger.
     
     ![Jaeger Tracing Dashboard](/learn/images/jaeger-tracing-dashboard.png "Jaeger Tracing Dashboard")
 
 
 
 ## Distributed Logging
-In Ballerina, distributed logging and analysis is supported by Elastic Stack. Ballerina has a log module for logging to the console. In order to monitor the logs, the Ballerina standard output needs to be redirected to a file.
+In Ballerina, distributed logging and analysis are supported by the Elastic Stack. Ballerina has a log module for logging into the console. In order to monitor the logs, the Ballerina standard output needs to be redirected to a file.
 
 This can be done by running the Ballerina service as below.
 
@@ -425,7 +425,7 @@ Alternatively, Docker containers can be used to set up Elasticsearch and Kibana 
     $ docker run -p 5601:5601 -h kibana --name kibana --link elasticsearch:elasticsearch docker.elastic.co/kibana/kibana:6.5.1
     ```
     
-    If you run on Linux you may have to increase the `vm.max_map_count` for the Elasticsearch container to start. 
+    If you are using Linux, you may have to increase the `vm.max_map_count` for the Elasticsearch container to start. 
     Execute the following command to do that.
     
     ```bash
@@ -455,10 +455,10 @@ Alternatively, Docker containers can be used to set up Elasticsearch and Kibana 
     ```
     
     Here, the 3 stages are specified in the pipeline. Input is specified as beats and listens to port 5044. 
-    A grok filter is used to structure the Ballerina logs and the output is specified to push to Elasticsearch on
+    A Grok filter is used to structure the Ballerina logs and the output is specified to push to Elasticsearch on
     `elasticsearch:9200`.
 
-4. Start the Logstash container by the following command.
+4. Start the Logstash container by executing the following command.
 
     ```bash
     $ docker run -h logstash --name logstash --link elasticsearch:elasticsearch -it --rm -v /tmp/pipeline:/usr/share/logstash/pipeline/ -p 5044:5044 docker.elastic.co/logstash/logstash:6.5.1
@@ -489,5 +489,3 @@ Alternatively, Docker containers can be used to set up Elasticsearch and Kibana 
 [Grafana]: https://grafana.com/
 [Jaeger]: https://www.jaegertracing.io/
 [Elastic Stack]: https://www.elastic.co/
-
-

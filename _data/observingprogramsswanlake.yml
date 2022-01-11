@@ -1,23 +1,23 @@
 - title: Observing Ballerina Programs
   url: '#'
   sublinks:
-    - title: Observing Your Application with Prometheus, Grafana, and Jaeger
+    - title: Observing Your Application with Prometheus, Grafana, Jaeger, and the Elastic Stack
       url: '#'
       sublinks:
         - title: Providing Observability in Ballerina
-          url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/#providing-observability-in-ballerina
+          url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#providing-observability-in-ballerina
           active: providing-observability-in-ballerina
         - title: Observing a Ballerina Service
-          url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/#observing-a-ballerina-service
+          url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#observing-a-ballerina-service
           active: observing-a-ballerina-service
         - title: Monitoring Metrics
-          url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/#monitoring-metrics
+          url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#monitoring-metrics
           active: monitoring-metrics
         - title: Distributed Tracing
-          url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/#distributed-tracing
+          url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#distributed-tracing
           active: distributed-tracing
         - title: Distributed Logging
-          url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/#distributed-logging
+          url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#distributed-logging
           active: distributed-logging
     - title: Observing Your Application with Choreo
       url: '#'

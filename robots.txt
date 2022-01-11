@@ -2,3 +2,6 @@ User-Agent: *
 Allow: /
 User-agent: Twitterbot
 Allow: *  
+User-agent: *
+Disallow: /1.0/
+Disallow: /1.1/

@@ -363,10 +363,10 @@ For example, it you have an array of a map of string type, *``map<string>[ ]``*,
 ```ballerina
 type MapArray map<string>[];
 
-MapArray arr = {
-    { “x” : “foo” },
-    { “y” : “bar” }
-}
+MapArray arr = [
+    {"x": "foo"},
+    {"y": "bar"}
+];
 ```
 
 This is similar to the typedef concept in C, where the identifier **``MapArray``** acts as an alias for the actual type.

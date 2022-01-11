@@ -7,6 +7,7 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
 <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/css/home-page-2020.css"/>
 <link rel="stylesheet" href="/css/prism.css">
+
 <style>
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
   color: #464646;
@@ -86,7 +87,32 @@ pre{
    background-image: url(/img/play-button-hover.svg) !important;
 }
 
+td.cEventDateContainer1 span.cEventDate1{
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    display: inline-block;
+    color: #57595d;
+    margin-bottom: 5px;
+    border: none;
+    text-align: right;
+}
+
+
+.cEventName{
+    margin-top: -2px;
+    font-size: 20px;
+}
+td.cEventDateContainer{
+  width: 20%;
+}
+.cEventDateNum{
+    font-size: 20px !important;
+    font-weight: 450 !important;
+}
+.cEventDate1{text-align: right;}
 </style>
+<link rel="stylesheet" href="/css/events-page.css">
 <!-- <link rel="stylesheet" href="/css/home-page-old.css"/> -->
 <div class="row cBallerinaIntroSection">
    <div class="container">
@@ -253,7 +279,7 @@ pre{
 
          <ul class="nav nav-tabs">
             <li class="active" ><a data-toggle="tab"  href="#firstTab" >Restful API</a></li>
-            <li><a data-toggle="tab" href="#secondTab" >Covid Case Marality</a></li>
+            <li><a data-toggle="tab" href="#secondTab" >Covid Case Morality</a></li>
             <!-- <li><a data-toggle="tab" href="#thiredTab" >Menu 2</a></li>
             <li><a data-toggle="tab" href="#fourthTab" >Menu 3</a></li> -->
           </ul>
@@ -423,6 +449,45 @@ public function main() returns error? {
 
 </div>
 
+<!--START OF TRY BALLERINA EVENT-->
+<div class="row row cWidget cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 6rem;">
+
+   
+   <a class="cBookmarkTop" id="Developer-First"></a>
+   <div id="" class="container">
+      <div class="col-sm-12 col-md-8 cColCOntent">
+         <h2>Events</h2>
+         <h3 style="padding-right: 15px;padding-bottom: 20px;">Upcoming Events</h2>
+    </div>
+  
+      <div class="row">
+          <table class="cEventTable cConferencesList" style="width:100% !important;">
+              <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                  <td class="cEventDateContainer cEventDateContainer1">	
+                     <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">January 5, 2021</p>	
+                     <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                     <p class="cEventLocation" style="text-align: right;">Online</p>	
+                  </td>	
+                  <td class="cEventDetail" id="eventDetails" >	
+                     <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
+                        <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Lunch & Learn</p>	
+                     </a>	
+                     <h5 style="margin-bottom: 18px;">Ballerina: OS Cloud-native Programming Language</h5>		
+                     <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
+                  </td>	
+                  <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank" style="text-align: center;">Register Now</a></td>	
+              </tr>
+          </table>
+          
+      </div> 
+
+   <div class="clearfix"></div></br>
+     
+   </div>
+
+</div>
+<!--END OF TRY BALLERINA EVENT-->
+
 <!--<div class="row cBallerinaFeatureSection">
    <div class="container">
       <div class="col-sm-12 col-md-12">
@@ -585,3 +650,55 @@ public function main() returns error? {
 
 <script src="/js/prism.js"></script>
 <script src="/js/prism-ballerina.js"></script>
+<style>
+   td.cEventDateContainer, td.cEventDetail, td.cEventURL {
+  border: none !important;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    /* border-bottom: 1px solid #c7c7c7 !important; */
+    padding: 30px 35px !important;
+   }
+
+   td.cEventURL{
+    padding: 30px 0px 30px 35px !important;
+   }
+   .table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color:transparent !important;
+    }
+    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+  border-bottom: none!important;
+  }
+   /* Large devices (laptops/desktops, 992px and up) */
+   @media only screen and (max-width: 992px) {
+      td.cEventDateContainer, td.cEventDetail, td.cEventURL{
+         padding: 30px 35px !important;
+
+      }
+      a.cEventRegistration{
+         margin: 0px;
+         margin-top: 15px;
+      }
+      td.cEventDateContainer1 span.cEventDate1{text-align: left !important}
+      .cEventLocation{text-align: left !important;}
+      table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {padding: 0px 15px 10px 15px !important;}
+      .dateDisplay {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 10px !important;
+    }
+    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils tr.cLastTableRow td.cEventDateContainer {
+    border:none !important;
+    }
+    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+     border-bottom: none!important;}
+     
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+      #eventDetails{padding-left: 0px !important;}
+
+    }
+ 
+   
+</style>

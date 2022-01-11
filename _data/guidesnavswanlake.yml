@@ -53,18 +53,32 @@
   url: /learn/generating-code-documentation
   active: generating-code-documentation
 
-- title: Making Ballerina Programs Configurable
+- title: Configuring Ballerina Programs
   url: '#'
   sublinks:
-    - title: Defining Configurable Variables
-      url: /learn/making-ballerina-programs-configurable/defining-configurable-variables/
-      active: defining-configurable-variables
+    - title: Configuring a Sample Ballerina Service
+      url: /learn/configuring-ballerina-programs/configuring-a-sample-ballerina-service
+      active: configuring-a-sample-ballerina-service
     - title: Providing Values to Configurable Variables
-      url: /learn/making-ballerina-programs-configurable/providing-values-to-configurable-variables/
+      url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables
       active: providing-values-to-configurable-variables
-    - title: Trying Out Configurability
-      url: /learn/making-ballerina-programs-configurable/trying-out-configurability/
-      active: trying-out-configurability
+      sublinks:
+        - title: Providing configuration values through Command Line Arguments
+          url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-configuration-values-through-command-line-arguments
+          active: providing-values-through-command-line-arguments
+        - title: Providing configuration values through TOML Syntax
+          url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-configuration-values-through-toml-syntax
+          active: providing-configuration-values-through-toml-syntax
+    - title: Providing module information of the configurable variable
+      url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-module-information-of-the-configurable-variable
+      active: providing-module-info-of-configurable-variable
+    - title: Configure values in Kubernetes Environments
+      url: /learn/configuring-ballerina-programs/configure-values-in-kubernetes-environment/
+      active: configure-values-in-kubernetes-environment
+      sublinks:
+        - title: Securing sensitive data using configurable variables
+          url: /learn/configuring-ballerina-programs/configure-values-in-kubernetes-environment/#securing-sensitive-data-using-configurable-variables
+          active: securing-sensitive-data-using-configurable-variables
 
 - title: Observing Ballerina Programs
   url: '#'
@@ -99,7 +113,7 @@
           url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
           active: azure-functions
 
-- title: Managing Dependencies 
+- title: Managing Dependencies
   url: /learn/managing-dependencies/
   active: managing-dependencies
 

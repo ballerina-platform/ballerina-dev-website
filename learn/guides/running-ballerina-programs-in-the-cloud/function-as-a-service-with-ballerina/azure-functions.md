@@ -53,8 +53,11 @@ public function hello(@af:HTTPTrigger { authLevel: "anonymous" }
     return "Hello, " + payload + "!";
 }
 ```
+The first parameter with the [Context](/learn/api-docs/ballerina/#/azure_functions/classes/Context) object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the function's parameter list.
 
-The first parameter with the [Context](/learn/api-docs/ballerina/#/azure_functions/classes/Context) object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the function's parameter list. The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given `HTTPRequest` value. Then, you declare an HTTP output binding by annotating the `HTTPBinding` return type with the `HTTPOutput` annotation. This HTTP output binding can also be defined as a parameter with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function. You can find a example in the http trigger -> queue output example.
+The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given `HTTPRequest` value. Then, you declare an HTTP output binding by annotating the `HTTPBinding` return type with the `HTTPOutput` annotation.
+
+This HTTP output binding can also be defined as a parameter with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function. You can find an example in the [http trigger -> queue](/learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output) output example.
 
 ### Building the Function
 
@@ -158,10 +161,10 @@ Refresh the queue page in the portal and view the added entry.
 The following Ballerina code gives an example of using a Cosmos DB trigger to invoke the function and a queue output binding to write an entry to a queue.
 
 Before writing and deploying the code, create a Cosmos DB and a queue to make use of those services later.
-1. You can reuse the queue you've created in above sample. (HTTP Trigger -> Queue Output)
-2. Create a [Azure Cosmos DB Account](https://portal.azure.com/#create/Microsoft.DocumentDB) (Core)
-3. Once the database is created, go to Data Exploder and select Create Container.
-4. Enter 'db1' as Database ID and 'c1' as the collection ID, and click **Ok**. 
+1. You can reuse the queue you created in the above sample. [HTTP Trigger -> Queue Output](/learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output)
+2. Create an [Azure Cosmos DB account](https://portal.azure.com/#create/Microsoft.DocumentDB) and Select Cosmos DB Core.
+3. Once the database is created, go to the **Data Explorer**, and select **Create Container**.
+4. Enter 'db1' as Database ID and 'c1' as the collection ID, and click **Ok**.
 
 **Note:** If you want to change these values, make sure to change them in the code as well.
 5. Go to the **Keys** tab of the Cosmos DB page.
@@ -195,7 +198,12 @@ public function cosmosDBToQueue2(@af:CosmosDBTrigger {
 
 Build the project by executing the `bal build`command on the project directory, and deploy it using the `az cli` command shown in the Ballerina build output as in the previous section.
 
-Once the function is deployed, you can go to your collection in Data explorer and Add a New Item to the collection. Then you can go to the queue page and observe the added new entry. Additionally for debugging purposes you can view the logs under `Logs stream` in the function app.
+Once the function is deployed, You need to add item to the collection.
+1. Go to the created collection in the **Data explorer**.
+2. Click **New Item** to add a new item to the collection.
+3. Go to the queue page and observe the added new entry.
+
+**Info:** Additionally, for debugging purposes, view the logs under the **Logs stream** in the function app.
 
 >**Note:** For a full sample with all the supported Azure Functions triggers and bindings in Ballerina, see the [Azure Functions Deployment Example](/learn/by-example/azure-functions-deployment.html).
 

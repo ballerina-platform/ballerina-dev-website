@@ -157,7 +157,7 @@ Refresh the queue page in the portal and view the added entry.
 
 The following Ballerina code gives an example of using a Cosmos DB trigger to invoke the function and a queue output binding to write an entry to a queue.
 
-Before we start with writing and deploying the code we need to create a CosmosDB and a queue as we are making use of those services.
+Before writing and deploying the code, create a Cosmos DB and a queue to make use of those services later.
 1. You can reuse the queue you've created in above sample. (HTTP Trigger -> Queue Output)
 2. Create a [Azure Cosmos DB Account](https://portal.azure.com/#create/Microsoft.DocumentDB) (Core)
 3. Once the database is created, go to Data Exploder and select Create Container.

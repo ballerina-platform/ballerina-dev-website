@@ -181,11 +181,11 @@ public function notifyDynamoDB(awslambda:Context ctx,
 }
 ```
 Now, you can build and deploy the function as in the previous sample.
-In order for us to invoke this function, we need to create a dynamodb table first.
+In order to invoke this function, create a DynamoDB table.
 1. Go to [roles](https://console.aws.amazon.com/iamv2/home#/roles), and add `AWSLambdaDynamoDBExecutionRole` to the created role in the prerequisites.
 2. Go to the [DynamoDB](https://us-west-1.console.aws.amazon.com/dynamodbv2).
 3. Click **Create Table**, enter the table name, partition key, and create the table. If you already have a table created, you can skip this step.
-4. Click on the dynamodb table and go exports and streams tab.
+4. Click on the DynamoDB table, and then click the **Exports and streams** tab.
 5. Click **enable DynamoDB stream details**, and select the key attributes only for the event type.
 6. Once it's enabled, click **Create a trigger**, select the `notifyDynamoDB` from the dropdown, and create a trigger.
 

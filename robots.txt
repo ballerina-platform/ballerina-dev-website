@@ -1,4 +1,13 @@
-User-Agent: *	
+User-agent: *	
 Allow: /
+
 User-agent: Twitterbot
-Allow: *  
+Allow: * 
+
+User-agent: *
+Disallow: /1.0/
+Disallow: /1.1/
+
+User-agent: Algolia Crawler
+Allow: * 
+     

@@ -64,21 +64,23 @@ Usually, a function handles errors by passing them up to the caller. Even the ma
 The function below returns information about the provided domain name. It internally does a WHOIS database lookup via the provided TCP client. The code is correct and readable but it is verbose. Most of the time, you don’t need to handle every error. Instead, you pass errors to the caller. 
 
 ```ballerina
+import ballerina/tcp;
+
 function whois(string domain, tcp:Client whoisClient) returns string|error {
-   error? err = whoisClient->writeBytes(domain.toBytes());
-   // The `is` operator tests whether a value belongs to a type.
-   if err is error {
- // The `is` operator causes the type to be narrowed.
-       // The type of `err` variable is `error` in this block.
-       return err;
-   }
- 
-   byte[]|error bytes = whoisClient->readBytes();
-   if bytes is error {
-       return bytes;
-   } else {
-       return string:fromBytes(bytes);
-   }
+    error? err = whoisClient->writeBytes(domain.toBytes());
+    // The `is` operator tests whether a value belongs to a type.
+    if err is error {
+        // The `is` operator causes the type to be narrowed.
+        // The type of `err` variable is `error` in this block.
+        return err;
+    }
+
+    byte[]|error bytes = whoisClient->readBytes();
+    if bytes is error {
+        return bytes;
+    } else {
+        return string:fromBytes(bytes);
+    }
 }
 ```
 
@@ -93,26 +95,30 @@ This `is` operator-based error checking pattern is very common and you would end
 Ballerina provides a much more lightweight, shorthand for this pattern. The behavior of the function below is the same as the previous version but it is much more elegant. The `check expr` check expression performs an explicit error check, and the control flow also remains explicit.
 
 ```ballerina
+import ballerina/tcp;
+
 function whois(string domain, tcp:Client whoisClient) returns string|error {
-   // If `writeBytes` failed with an error, then `check` makes
-   //  the function return that error immediately
-   check whoisClient->writeBytes(domain.toBytes());
-   byte[] bytes = check whoisClient->readBytes();
-   return string:fromBytes(bytes);
+    // If `writeBytes` failed with an error, then `check` makes
+    //  the function to return that error immediately.
+    check whoisClient->writeBytes(domain.toBytes());
+    byte[] bytes = check whoisClient->readBytes();
+    return string:fromBytes(bytes);
 }
 ```
 
 This function shows another pattern that handles errors in a single place. You can attach an `on fail` clause to some Ballerina statements such as `do`, `while`, `transactions`, `foreach`, etc.  In this example, check does not simply return on error. The enclosing block decides how to handle the error. If the enclosing block has an `on fail` clause, it catches the error. If the enclosing block does not have an `on fail` block, it passes the error up to its enclosing block. Finally, the function handles the error by returning the error. This behavior is different from exceptions in that control flow is explicit. 
 
 ```ballerina
+import ballerina/tcp;
+
 function whois(string domain, tcp:Client whoisClient) returns string|error {
-   do {
-       check whoisClient->writeBytes(domain.toBytes());
-       byte[] bytes = check whoisClient->readBytes();
-       return string:fromBytes(bytes);
-   } on fail var err {
-       return error("Failed to communicate with the given whois server", cause = err);
-   }
+    do {
+        check whoisClient->writeBytes(domain.toBytes());
+        byte[] bytes = check whoisClient->readBytes();
+        return string:fromBytes(bytes);
+    } on fail var err {
+        return error("Failed to communicate with the given whois server", cause = err);
+    }
 }
 ```
 
@@ -149,9 +155,9 @@ Abnormal errors can be reported using the `panic` statement. Some language const
 
 ```ballerina
 function toInt(any a) returns int {
-   // This is a programming bug
-   // Raise a panic if the value of `a` is not an `int`
-   return <int>a;
+    // This is a programming bug.
+    // Raise a panic if the value of `a` is not an `int`.
+    return <int>a;
 }
 ```
 
@@ -159,10 +165,10 @@ A panic always has an associated error value as illustrated in the example below
 
 ```ballerina
 function divide(int m, int n) returns int {
-   if n == 0 {
-       panic error("division by 0");
-   }
-   return m / n;
+    if n == 0 {
+        panic error("division by 0");
+    }
+    return m / n;
 }
 ```
 

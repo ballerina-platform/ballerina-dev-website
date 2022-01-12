@@ -129,7 +129,7 @@ function loadAuthors() returns AuthorTable|error {
         {"id": 5, "name": "Deepak S. Turaga"}
     ];
 
-    // Iterates through `authors` JSON array, constructs `Author` records, and collects them into a table.
+    // Iterates through the `authors` JSON array, constructs the `Author` records, and collects them into a table.
     return table key(id) from var author in authors
         select check author.cloneWithType(Author)
         on conflict onConflictError;
@@ -159,7 +159,7 @@ function loadCategories() returns CategoryTable|error {
                        </category>
                    </categories>`;
 
-    // Iterates through `categories` xml array, constructs `Category` records, and collects them into a table.
+    // Iterates through the `categories` XML array, constructs the `Category` records, and collects them into a table.
     return table key(id) from var category in categories/<category>
         select {
             id: check 'int:fromString((category/**/<id>/*).toString()),
@@ -173,7 +173,7 @@ The above method iterates through a `categories` XML array and constructs a tabl
 
 ```ballerina
 function getCategories(CategoryTable categories, int[] ids) returns Category[] {
-    // Query `categories` for each id, and collects matching categories into an array.
+    // Queries the `categories` of each ID and collects the matching categories into an array.
     return from int id in ids
         join Category c in categories on id equals c.id
         select c;
@@ -184,7 +184,7 @@ The above method returns the book category names according to the given category
 
 ```ballerina
 function getAuthors(AuthorTable authors, int[] ids) returns Author[] {
-    // Query `authors` for each id, and collects matching authors into an array.
+    // Queries the `authors` of each ID and collects the matching authors into an array.
     return from int id in ids
         join Author a in authors on id equals a.id
         select a;
@@ -202,7 +202,7 @@ function loadBooks() returns BookTable|error {
         {"id": 4, "title": "Fantastic Beasts", "year": 2001, "price": 29.99, "authors": [2], "categories": [2, 3]}
     ];
 
-    // Iterates through `books` map<anydata> array, constructs `Book` records, and collects them into a table.
+    // Iterates through the `books` map<anydata> array, constructs the `Book` records, and collects them into a table.
     return table key(id) from var book in books
         let AuthorTable authors = check loadAuthors()
         let CategoryTable categories = check loadCategories()
@@ -219,14 +219,14 @@ function loadBooks() returns BookTable|error {
 
 ```
 
-Now, the author details and book category details exist as individual table values. The book details exist as an array. Further, this array has the necessary keys to identify the respective authors and book categories. Hence, there is a requirement to generate a table that contains the relevant book details, author names, and category names. As shown in the above example, Ballerina query expressions can be utilized to create such table values.  
+Now, the author details and book category details exist as individual table values. The book details exist as an array. Further, this array has the necessary keys to identify the respective authors and book categories. Hence, there is a requirement to generate a table, which contains the relevant book details, author names, and category names. As shown in the above example, Ballerina query expressions can be utilized to create such table values.  
 
 ```ballerina
 function getPopularBooks(stream<Sale> sales, int minSales, int 'limit) returns Book[]|error {
-    // Join each sale value from `sales` stream with retrieved `BookTable`
+    // Join each sale value from the `sales` stream with the retrieved `BookTable`,
     // filter books with at least `minSales` number of sales,
     // order filtered books by sales quantity,
-    // and collect `'limit` number of books into an array.
+    // and collect the `'limit` number of books into an array.
     return from Sale s in sales
         join Book b in check loadBooks() on s.bookId equals b.id
         where s.qty >= minSales
@@ -247,7 +247,7 @@ public function main() returns error? {
         {bookId: 4, qty: 2100}
     ];
 
-    // Retrieve 2 most popular books with at least 1000 sales.
+    // Retrieve the two most popular books with at least 1000 sales.
     Book[]|error mostPopular2Books = getPopularBooks(sales.toStream(), 1000, 2);
     io:println(mostPopular2Books);
 }

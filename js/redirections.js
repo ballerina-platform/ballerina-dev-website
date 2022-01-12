@@ -42,6 +42,7 @@ let redirections = {
     "/learn/tooling-guide/ballerina-shell/":"/learn/by-example/",
     "/learn/cli-documentation/update-tool/":"/learn/by-example/",
     "/learn/cli-documentation/openapi/":"/learn/by-example/",
+    "/learn/running-ballerina-programs-in-the-cloud/code-to-cloud-samples/":"/page-not-available.html",
     "/1.2/learn/ballerina-shell/":"/page-not-available.html",
     "/1.2/learn/language-walkthrough/":"/page-not-available.html",
     "/1.2/learn/visual-studio-code-extension/vs-code-commands/":"/page-not-available.html",

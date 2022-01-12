@@ -22,7 +22,7 @@ The Ballerina community has been bootstrapped by <a href="https://wso2.com" targ
 We curate a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
 <ul class="cInlinelinklist">
-<li><a class="cGreenLinkArrow" href="/community/newsletter/2021-6/" target="_blank">Latest Ballerina Newsletter</a></li>
+<li><a class="cGreenLinkArrow" href="/community/newsletter/2021-7/" target="_blank">Latest Ballerina Newsletter</a></li>
 <li><a class="cGreenLinkArrow" href="/community/newsletter/#past-issues" target="_blank">Past newsletter issues</a></li>
 
 </ul>
@@ -430,9 +430,9 @@ body {font-family: Arial;}
          <p class="cEventLocation">Online</p>
       </td>
       <td class="cEventDetail">
-         <a target="_blank" href="https://www.meetup.com/CloudDC/">
+         <!-- <a target="_blank" href="https://www.meetup.com/CloudDC/"> -->
             <h4>Cloud DC Meetup</h4>
-         </a>
+         <!-- </a> -->
          <h5>Cloud Native Development with Ballerina</h5>
          <b>Jadd Jennings,</b> Hub Solutions Engineer, Oracle Cloud Solution Hub<br/>
          <b>Dhvani Sheth,</b> Senior Solutions Engineer, Oracle

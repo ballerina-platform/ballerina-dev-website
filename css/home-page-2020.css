@@ -4,7 +4,10 @@
 }
 
 .embed-responsive.playground {
-    height: 650px;
+    height: 500px;
+    background-color: #494949;
+    font-family: "Lucida Console", "Courier New", monospace !important;
+    font-size: 20px;
 }
 
 #iMainNavigation {

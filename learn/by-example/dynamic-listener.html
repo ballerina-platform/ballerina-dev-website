@@ -16,7 +16,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">runtime</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 
-<span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">httpListener</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+<span class="nx">final</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">httpListener</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
 
 <span class="nx">http</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">helloService</span> <span class="p">=</span>  <span class="kd">service</span> <span class="nx">object</span> <span class="p">{</span>
 
@@ -137,7 +137,7 @@ import ballerina/log;
                             <div class="cTR">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>http:Listener httpListener = check new (9090);
+                                    <div class="highlight"><pre><code class=language-ballerina>final http:Listener httpListener = check new (9090);
 </code></pre></div>
 
                                 </div>

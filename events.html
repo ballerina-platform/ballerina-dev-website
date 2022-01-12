@@ -1,8 +1,8 @@
 ---
 layout: ballerina-inner-page
-title: Ballerina Events
+title: Events
 description: 
-permalink: /events/
+permalink: community/events/
 intro: 
 redirect_from:
 
@@ -246,11 +246,15 @@ td.cEventDateContainer{
   margin-bottom: 30px;
   margin-top:20px
 }
+a.cTopLink{display:none !important;}
 @media only screen and (max-width: 990px) {
-    a.cEventRegistration, input.cSubmitButton {
-  margin-bottom: 40px !important;
-  margin-left: -8px !important;
-}
+   
+.dateDisplay {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 0px !important;
+        padding-top: 20px;
+    }
 }
 </style>
 <link rel="stylesheet" href="/css/events-page.css">
@@ -331,98 +335,85 @@ td.cEventDateContainer{
             <table class="cEventTable cConferencesList" style="width:100% !important;">
                 <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                     <td class="cEventDateContainer cEventDateContainer1">	
-                       <span class="cEventDate1 cEventDateNum" style="margin-bottom: 20px;">Jan 5, 2021</span>	
-                       <span class="cEventDate1">Tuesday</span>	
+                       <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">January 25, 2022</p>	
+                       <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
                        <p class="cEventLocation" style="text-align: right;">Online</p>	
                     </td>	
-                    <td class="cEventDetail">	
+                    <td class="cEventDetail" id="eventDetails" >	
                        <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
-                          <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Lunch & Learn</p>	
+                          <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Tech Talk</p>	
                        </a>	
-                       <h5 style="margin-bottom: 18px;">Ballerina: OS Cloud-native Programming Language</h5>		
-                       <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
+                       <h5 style="margin-bottom: 18px;">OpenAPI</h5>		
+                       <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" href="">Speaker TBC</a>
                     </td>	
-                    <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More Info</a></td>	
+                    <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank" style="text-align: center;">Register Now</a></td>	
                 </tr>
                 <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                     <td class="cEventDateContainer cEventDateContainer1">	
-                       <span class="cEventDate1 cEventDateNum" style="margin-bottom: 20px;">Jan 5, 2021</span>	
-                       <span class="cEventDate1">Tuesday</span>	
+                       <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">January 5, 2021</p>	
+                       <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
                        <p class="cEventLocation" style="text-align: right;">Online</p>	
                     </td>	
-                    <td class="cEventDetail">	
+                    <td class="cEventDetail" id="eventDetails" >	
                        <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
                           <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Lunch & Learn</p>	
                        </a>	
                        <h5 style="margin-bottom: 18px;">Ballerina: OS Cloud-native Programming Language</h5>		
-                       <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
+                       <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
                     </td>	
-                    <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More Info</a></td>	
+                    <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank" style="text-align: center;">Register Now</a></td>	
                 </tr>
                 <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                     <td class="cEventDateContainer cEventDateContainer1">	
-                       <span class="cEventDate1 cEventDateNum" style="margin-bottom: 20px;">Jan 5, 2021</span>	
-                       <span class="cEventDate1">Tuesday</span>	
+                       <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">January 5, 2021</p>	
+                       <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
                        <p class="cEventLocation" style="text-align: right;">Online</p>	
                     </td>	
-                    <td class="cEventDetail">	
+                    <td class="cEventDetail" id="eventDetails" >	
                        <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
                           <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Lunch & Learn</p>	
                        </a>	
                        <h5 style="margin-bottom: 18px;">Ballerina: OS Cloud-native Programming Language</h5>		
-                       <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
+                       <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
                     </td>	
-                    <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More Info</a></td>	
+                    <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank" style="text-align: center;">Register Now</a></td>	
                 </tr>
-                <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
-                    <td class="cEventDateContainer cEventDateContainer1">	
-                       <span class="cEventDate1 cEventDateNum" style="margin-bottom: 20px;">Jan 5, 2021</span>	
-                       <span class="cEventDate1">Tuesday</span>	
-                       <p class="cEventLocation" style="text-align: right;">Online</p>	
-                    </td>	
-                    <td class="cEventDetail">	
-                       <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
-                          <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Lunch & Learn</p>	
-                       </a>	
-                       <h5 style="margin-bottom: 18px;">Ballerina: OS Cloud-native Programming Language</h5>		
-                       <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
-                    </td>	
-                    <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More Info</a></td>	
-                </tr>				
+            </table>
+            
             </table>
         </div>
         <div id="past-event" class="tab-pane fade">
             <table class="cEventTable cConferencesList" style="width:100% !important;">
                 <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                     <td class="cEventDateContainer cEventDateContainer1">	
-                       <span class="cEventDate1 cEventDateNum" style="margin-bottom: 20px;">Jan 5, 2021</span>	
-                       <span class="cEventDate1">Tuesday</span>	
+                       <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">January 5, 2021</p>	
+                       <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
                        <p class="cEventLocation" style="text-align: right;">Online</p>	
                     </td>	
-                    <td class="cEventDetail">	
+                    <td class="cEventDetail" id="eventDetails" >	
                        <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
                           <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Lunch & Learn</p>	
                        </a>	
                        <h5 style="margin-bottom: 18px;">Ballerina: OS Cloud-native Programming Language</h5>		
-                       <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
+                       <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
                     </td>	
-                    <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More Info</a></td>	
+                    <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank" style="text-align: center;">Register Now</a></td>	
                 </tr>
                 <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                     <td class="cEventDateContainer cEventDateContainer1">	
-                       <span class="cEventDate1 cEventDateNum" style="margin-bottom: 20px;">Jan 5, 2021</span>	
-                       <span class="cEventDate1">Tuesday</span>	
+                       <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">January 5, 2021</p>	
+                       <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
                        <p class="cEventLocation" style="text-align: right;">Online</p>	
                     </td>	
-                    <td class="cEventDetail">	
+                    <td class="cEventDetail" id="eventDetails" >	
                        <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
                           <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Lunch & Learn</p>	
                        </a>	
                        <h5 style="margin-bottom: 18px;">Ballerina: OS Cloud-native Programming Language</h5>		
-                       <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
+                       <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
                     </td>	
-                    <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More Info</a></td>	
-                </tr>		
+                    <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank" style="text-align: center;">Register Now</a></td>	
+                </tr>
             </table>
         </div>
        
@@ -440,6 +431,7 @@ td.cEventDateContainer{
    .icon-github{
         display: none;
     }
+    .cEventDate1{margin: 0 0 15px 0 !important;text-align: right}
    /* Large devices (laptops/desktops, 992px and up) */
     @media only screen and (min-width: 992px) {
     td.cEventDetail{
@@ -451,6 +443,41 @@ td.cEventDateContainer{
         td.cEventDateContainer, td.cEventDetail, td.cEventURL {
     padding: 30px 10px !important;
    }
+     /* Large devices (laptops/desktops, 992px and up) */
+     @media only screen and (max-width: 992px) {
+      td.cEventDateContainer, td.cEventDetail, td.cEventURL{
+         padding: 30px 35px !important;
+         display: inherit;
+         border-bottom: none !important;
 
+      }
+      
+      td.cEventURL{border-bottom: 1px solid #c7c7c7 !important;}
+      a.cEventRegistration{
+         margin: 0px;
+         margin-top: 15px;
+      }
+      .cEventTable{margin-top:10px !important}
+      td.cEventDateContainer1 span.cEventDate1{text-align: left !important}
+      .cEventLocation{text-align: left !important;}
+      table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {padding: 0px 15px 10px 15px !important;}
+      .dateDisplay {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 0px !important;
+    }
+    a.cEventRegistration, input.cSubmitButton {margin-bottom: 30px !important;}
+    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils tr.cLastTableRow td.cEventDateContainer {
+    border:none !important;
+    }
+    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+     border-bottom: none!important;}
+     a.cEventRegistration {margin-left: 1px !important;}
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+      #eventDetails{padding-left: 0px !important;}
+
+    }
     }
 </style>

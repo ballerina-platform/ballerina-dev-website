@@ -21,9 +21,9 @@ Follow the steps below to observe a Ballerina service without logging in to Chor
 
 ## Step 1 - Creating a Hello World Ballerina Service
 
-Create a hello world service as given below and save it as `hello_world.bal`.
+Create a `hello world` service as given below and save it as `hello_world.bal`.
 
->**Info:** Import the `ballerinax/choreo` module as demonstrated in the sample below in order to add the Choreo extension to the executable.
+>**Info:** Import the `ballerinax/choreo` module as demonstrated in the sample below to add the Choreo extension to the executable.
 
 ```ballerina
 import ballerina/http;
@@ -61,7 +61,8 @@ Follow the steps below to enable observability in the executable created by Ball
 
 ## Step 3 - Observing the Ballerina Service
 
-1. Once the configuration file has been created, execute the command below to pass it to the Ballerina program with the `BAL_CONFIG_FILES` environment variable. This is not necessary if the `Config.toml` file is present in the current working directory.
+1. Once the configuration file has been created, execute the command below to pass it to the Ballerina program with the `BAL_CONFIG_FILES` environment variable.
+   >**Tip:** This is not necessary if the `Config.toml` file is present in the current working directory.
 
     ```bash 
     $ BAL_CONFIG_FILES=<path-to-conf>/Config.toml bal run --observability-included hello_world.bal
@@ -81,8 +82,9 @@ Follow the steps below to enable observability in the executable created by Ball
     [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
     ```
 
-2. Click on the URL provided. You will be directed to the Choreo portal where you can view the metrics and traces exposed via the throughput and latency graphs.
-   >**Note:** If you haven't sent any requests to the Ballerina service, you may see a banner with the message "No request received during the selected time period".
+2. Click on the URL provided.
+   This directs you to the Choreo portal in which you can view the metrics and traces exposed via the throughput and latency graphs.
+   >**Note:** If you haven't sent any requests to the Ballerina service, you may see a banner with the message `No request received during the selected time period`.
 
 
 ## Step 4 - Sending Requests

@@ -99,7 +99,7 @@ import ballerina/tcp;
 
 function whois(string domain, tcp:Client whoisClient) returns string|error {
     // If `writeBytes` failed with an error, then `check` makes
-    //  the function return that error immediately
+    //  the function to return that error immediately.
     check whoisClient->writeBytes(domain.toBytes());
     byte[] bytes = check whoisClient->readBytes();
     return string:fromBytes(bytes);
@@ -155,8 +155,8 @@ Abnormal errors can be reported using the `panic` statement. Some language const
 
 ```ballerina
 function toInt(any a) returns int {
-    // This is a programming bug
-    // Raise a panic if the value of `a` is not an `int`
+    // This is a programming bug.
+    // Raise a panic if the value of `a` is not an `int`.
     return <int>a;
 }
 ```

@@ -538,7 +538,7 @@ $(document).ready(function() {
                 if (result.body.ok) {
                     $("#slackSuccessAlert").show(); 
                     $('#slackEmail').val('');
-                    $("#slackSuccessAlert").html( "Your invitation has been sent to "+email+".");
+                    $("#slackSuccessAlert").html( "Thank you for your interest in joining the Ballerina Slack channel. Please check your inbox for an invitation to join Slack.");
                 } else if(result.body.error == "already_in_team"){
                     $("#slackSuccessAlert").show(); 
                     $("#slackSuccessAlert").html( "This email is already subscribed.");

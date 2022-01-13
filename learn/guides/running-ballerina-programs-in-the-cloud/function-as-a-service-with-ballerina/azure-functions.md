@@ -43,6 +43,12 @@ The following Azure Functions triggers and bindings are currently supported in B
 
 The following Ballerina code gives an example of using an HTTP trigger to invoke the function and an HTTP output binding to respond back to the caller with a message. 
 
+Create a ballerina package.
+```bash
+$ bal new azure_functions_deployment
+```
+Replace the contents of the generated bal file with the following content.
+
 ```ballerina
 import ballerinax/azure_functions as af;
 
@@ -66,7 +72,7 @@ The Azure Functions functionality is implemented as a compiler extension. Thus, 
 ```bash
 $ bal build
 Compiling source
-	wso2/http_azf:0.1.0
+	wso2/azure_functions_deployment:0.1.0
 
 Generating executables
 	@azure.functions:Function: hello
@@ -85,7 +91,7 @@ The created resource group and the function app name should be provided to the p
 A sample execution to deploy the functions to Azure Functions is shown below. 
 
 ```bash
-$ az functionapp deployment source config-zip -g <function_app_name> -n <function_app_name> --src /home/ballerina/http_azf/target/bin/azure-functions.zip
+$ az functionapp deployment source config-zip -g <function_app_name> -n <function_app_name> --src <project_dir>/target/bin/azure-functions.zip
 Getting scm site credentials for zip deployment
 Starting zip deployment. This operation can take a while to complete ...
 Deployment endpoint responded with status code 202

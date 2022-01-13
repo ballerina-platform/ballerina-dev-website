@@ -20,6 +20,8 @@ redirect_from:
     <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMapGrpcBidirectionalStreaming</span><span class="p">()</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="s">&quot;Chat&quot;</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// The generated code of the Ballerina gRPC command does not contain ChatStringCaller.</span>
+    <span class="c1">// To show the usage of a caller, this RPC call uses a caller to send messages to the client.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">chat</span><span class="p">(</span><span class="nx">ChatStringCaller</span> <span class="nx">caller</span><span class="p">,</span>
                     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="c1">// Reads and processes each message in the client stream.</span>
@@ -240,12 +242,31 @@ bal grpc --input grpc_bidirectional_streaming.proto  --output stubs
     descMap: getDescriptorMapGrpcBidirectionalStreaming()
 }
 service &quot;Chat&quot; on new grpc:Listener(9090) {
-    remote function chat(ChatStringCaller caller,
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function chat(ChatStringCaller caller,
                     stream&lt;ChatMessage, error?&gt; clientStream) returns error? {
 </code></pre></div>
 
                                 </div>
                                 <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The generated code of the Ballerina gRPC command does not contain ChatStringCaller.
+ To show the usage of a caller, this RPC call uses a caller to send messages to the client.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </div>
                             </div>

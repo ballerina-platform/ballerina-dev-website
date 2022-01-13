@@ -34,18 +34,33 @@ redirect_from:
 ## Starting a Debug Session
 
 The VS Code Ballerina extension gives you the same debugging experience as the conventional VS Code Debugger.
+We can start a quick debug session instantly to debug a ballerina program with `CodeLens`. We also can start a debug session with configurations
+like program arguments and environment variables by adding them into the `launch.json` file.
+
+### Quick Debug Session with CodeLens
+
+Ballerina extension provides multiple options to debug your Ballerina program and the easiest way will be using our context-aware `Debug` CodeLens support provided by the extension.
+The extension can detect any program entry points (main function/service definition) on the fly, and the CodeLens will appear automatically. 
+
+Quick Debug Session is useful to debug main function, services and single tests. 
 
 Follow the steps below to start a quick debug session.
 
-![Start Quick Debug Session](/learn/images/start-quick-debug-session.gif)
+![Start_Main Quick Debug Session](/learn/images/start-quick-main-debug-session.gif)
 
 <br/>
 
-1. Open the folder, which includes the Ballerina program you want to debug, and select the file.
+![Start_Test Quick Debug Session](/learn/images/start-quick-test-debug-session.gif)
+
+<br/>
+
+1. Open the folder, which includes the Ballerina program you want to debug, and open the source file in the editor.
 
 2. Add the debug points you require by clicking in front of the line numbers of the file you want to debug.
 
 3. Click the `Debug` CodeLens which is just above the `main()` method.
+
+### Debug Session with Configurations.
 
 Follow the steps below to start a debug session with configurations. All the configurations need to be added in the `launch.json` file.
 
@@ -71,7 +86,7 @@ Then, you can start a program, test, or remote debug session as shown below.
 
 <br/>
 
-### Starting a Program Debug Session
+#### Starting a Program Debug Session
 
 Follow the steps below to start a program debug session.
 
@@ -85,7 +100,7 @@ Follow the steps below to start a program debug session.
 
 <br/>
 
-### Starting a Test Debug Session
+#### Starting a Test Debug Session
 
 Follow the steps below to start a test debug session.
 
@@ -99,7 +114,7 @@ Follow the steps below to start a test debug session.
 
 <br/>
 
-### Starting a Remote Debug Session
+#### Starting a Remote Debug Session
 
 Follow the steps below to start a remote debug session.
 

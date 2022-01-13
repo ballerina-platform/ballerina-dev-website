@@ -15,12 +15,12 @@ It allows you to evaluate snippets of code without having to write complete prog
 
 This will particularly be useful if you are looking to try out the language and its new features, and also for debugging purposes.
 
->**Please Note:** Ballerina Shell currently supports subset of the language features. Ballerina Shell doesn't support 
-> services and isolation features. Also, Ballerina Shell provides limited feature support for the worker related implementations.
+>**Note:** Ballerina Shell currently supports a subset of the language features. Ballerina Shell doesn't support 
+> services and isolation features. Also, Ballerina Shell provides limited feature support for the worker-related implementations.
 
 ## Setting up the Prerequisites
 
-The Ballerina Shell is a part of the Ballerina distribution. Therefore, if you already installed Ballerina, you are all set. If not, for information on installing the latest version of Ballerina, see [downloads](https://ballerina.io/downloads/).
+Ballerina Shell is a part of the Ballerina distribution. Therefore, if you already installed Ballerina, you are all set. If not, for information on installing the latest version of Ballerina, see [downloads](https://ballerina.io/downloads/).
 
 ## Starting the Shell
 
@@ -34,21 +34,21 @@ Type /exit to exit and /help to list available commands.
 =$ 
 ```
 
-## Available commands
+## Available Commands
 
-Execute the `/help` command to view available commands.
+Execute the `/help` command to view the available commands.
 
 ```bash
 =$ /help                 
 | Ballerina Shell Help
 | 
 | Type a Ballerina language expression, statement, or declaration.
-| Or type one of the following commands:
+| Or, type one of the following commands:
 | 
 | /exit           - Exit the shell.
 | /debug          - Toggle the debug mode ON/OFF.
-| /reset          - Reset REPL state.
-|                   All previous code snippets will be removed from REPL memory.
+| /reset          - Reset the REPL state.
+|                   All the previous code snippets will be removed from the REPL memory.
 | /file <FILE>    - Load declarations defined in <FILE>. e.g., /file my_file.bal
 | /remove <NAMES> - Delete the declarations specified by <NAMES>. e.g., /remove function1 var1 var2
 | /imports        - List the available imports.
@@ -56,7 +56,7 @@ Execute the `/help` command to view available commands.
 | /dclns          - List the user defined module level declarations.
 | /help           - Displays the help text.
 | /help <TOPIC>   - Get help on <TOPIC>. eg: /help var
-| /help topics    - See all available topic names.
+| /help topics    - See all the available topic names.
 ```
 
 ## Evaluating Code Snippets
@@ -125,7 +125,7 @@ Execute the `/vars` command as shown below to view the declared variables.
 
 ### Remove Variables
 
-`/remove` command can be used to remove declarations.
+The `/remove` command can be used to remove declarations.
 
 ```bash
 =$ /remove a
@@ -143,7 +143,7 @@ Execute the `/vars` command as shown below to view the declared variables.
 Functions can be written just as you write them in a source file. The Shell supports multi-line snippets.
 
 ```bash
-=$ function sum(int a, int b) returns int {                                                                                                                                                                        
+=$ function sum(int a, int b) returns int {
  > int sum = a + b;
  > return sum;
  > }
@@ -152,24 +152,24 @@ Functions can be written just as you write them in a source file. The Shell supp
 Execute the `/dclns` command to view the module-level declarations.
 
 ```bash
-=$ /dclns                                                                                                                                                                                                          
+=$ /dclns
 | (sum) function sum(int a, int b) returns int {int sum = a + b;return sum;}
 ```
 The function can in turn be called and assigned to a variable.
 
 ```bash
-=$ var total = sum(10, 20)                                                                                                                                                                                           
+=$ var total = sum(10, 20)
 
-=$ total                                                                                                                                                                                                          
+=$ total
 30
 ```
 
 ###  Defining Types
 
-Type definitions can be written same as a function.
+Type definitions can be written the same as a function.
 
 ```bash
-=$ type Person record {                                                                                                                                                                                              
+=$ type Person record {
  > string name;
  > int age;
  > }
@@ -178,7 +178,7 @@ Type definitions can be written same as a function.
 Now, the list of declarations includes the `Person` record as well.
 
 ```bash
-=$ /dclns                                                                                                                                                                                                          
+=$ /dclns
 | (sum) function sum(int a, int b) returns int {int sum = a + b;return sum;}
 | (Person) type Person record {string name;int age;};
 ```
@@ -190,16 +190,16 @@ A definition can be modified by providing a new definition with the same name. T
 The example below modifies the `sum()`function.
 
 ```bash
-=$ function sum(float a, float b) returns float => a + b 
+=$ function sum(float a, float b) returns float => a + b
                                                                                                                                                             
-=$ /dclns                                                                                                                                                                                                           
+=$ /dclns
 | (sum) function sum(float a, float b) returns float => a + b;
 | (Person) type Person record {string name;int age;};
 ```
 
 Now, `sum()` is a function accepting float parameters and returning a float value.
 
->**Caution:** Modifying definitions can cause undefined behavior in some cases.
+>**Caution:** Modifying definitions can cause undefined behaviors in some cases.
 
 ### Loading Definitions from a File
 
@@ -207,38 +207,37 @@ If you have any definitions in source files, you can load these definitions to t
 
 If the source file contains a main function, the Shell will disregard it.
 
-Consider following sample `text.bal` file
+For example, see the sample `text.bal` file below.
 
 ```ballerina
 import ballerina/io;
 
-function add(int a, int b) returns int {                                                                                                                                                                        
+function add(int a, int b) returns int {
     return a + b;
 }
 
-function subtract(int a, int b) returns int {                                                                                                                                                                        
-    return a - b ;
+function subtract(int a, int b) returns int {
+    returns a - b;
 }
 
-
-function mulitply(int a, int b) returns int {                                                                                                                                                                        
-    return a * b;
+function multiply(int a, int b) returns int {
+    returns a * b;
 }
 
 public function main() {
     int a = 5;
     int b = 10;
-
+    
     io:println(add(a,b));
     io:println(subtract(a,b));
-    io:println(mulitply(a,b));
-}
+    io:println(multiply);
+}    
 ```
 
 ```bash
-=$ /file test.bal                                                                                                                                                                                                  
+=$ /file test.bal                                                                                      
 
-=$ /dclns                                                                                                                                                                                                           
+=$ /dclns
 | (subtract) function subtract(int a, int b) returns...                        return a - b ;}
 | (add) function add(int a, int b) returns int ...                         return a + b;}
 | (mulitply) function mulitply(int a, int b) returns...                         return a * b;}
@@ -249,15 +248,15 @@ public function main() {
 The `/reset` command can be used to clear the current definitions in the memory of the Shell.
 
 ```bash
-=$ /dclns                                                                                                                                                                                                          
+=$ /dclns
 | (subtract) function subtract(int a, int b) returns...                        return a - b ;}
 | (add) function add(int a, int b) returns int ...                         return a + b;}
 | (mulitply) function mulitply(int a, int b) returns...                         return a * b;}
 
-=$ /reset                                                                                                                                                                                                            
+=$ /reset
 | REPL state was reset.
 
-=$ /dclns                                                                                                                                                                                                          
+=$ /dclns                                                                                               
 | 
 ```
 
@@ -270,17 +269,17 @@ Execute the `/exit` command to exit the Shell.
 | Bye!!!                                          
 ```
 
-## Help
+## Help Commands
 
-### View available topics
+### View Available Topics
 
-Execute the `/help topics` command to view available topics.
+Execute the `/help topics` command to view the available topics.
 
-### View specific topic details
+### View Specific Topic Details
 
-Execute the `/help <TOPIC>` command to view details related to mentioned topic.
+Execute the `/help <TOPIC>` command to view details related to the mentioned topic.
 
-Consider following example
+For example, see below.
 
 ```bash
 =$ /help strings

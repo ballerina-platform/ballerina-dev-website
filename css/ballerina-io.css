@@ -1473,6 +1473,20 @@ li pre code span.line-numbers-rows {
         position: absolute;
         z-index: 9999999999999 !important;
     }
+    .cInfoBannerVersionHandling {
+        background:  #494949;
+        width: 100%;
+        display: inline-block;
+        color: #fff;
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+        font-weight: 200;
+        font-size: 15px !important;
+        position: absolute;
+        z-index: 9999999999999 !important;
+    }
+    .cInfoBannerLink{font-weight: 200;font-size: 15px !important;color: #20b6b0;}
     .navbar-nav > li:last-child a.cSerachIcon {
         display: none;
     }

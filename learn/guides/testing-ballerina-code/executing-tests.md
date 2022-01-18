@@ -55,7 +55,7 @@ Execute all the tests in the current package with the following command.
 $ bal test
 ```
 
-### Run tests for a group
+### Run tests for a Group
 
 List all the test groups in the package.
 
@@ -75,7 +75,7 @@ Run the tests in the current package excluding the given group(s).
 $ bal test --disable-groups <group_1>
 ```
 
-### Run selected tests
+### Run Selected Tests
 
 Run only the given test function(s) in the current package.
 
@@ -95,7 +95,7 @@ Run all the functions in the given module.
 $ bal test --tests PackageName.<module_name>:*
 ```
 
-### Re-run failed tests
+### Re-run Failed Tests
 
 Run only the previously-failed test cases in the current package.
 
@@ -103,7 +103,7 @@ Run only the previously-failed test cases in the current package.
 $ bal test --rerun-failed
 ```
 
-### Run selected data sets in data-driven tests
+### Run Selected Data Sets in Data-driven Tests
 
 Data-driven tests can be executed using the `bal test` command as any other test.
 
@@ -120,7 +120,7 @@ Run only the previously-failed cases in a data set.
 $ bal test --rerun-failed
 ```
 
-### Generate test report and code coverage
+### Generate Test Report and Code Coverage
 
 Generate an HTML test report without code coverage information.
 Also, dump the test results in the JSON format.

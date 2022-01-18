@@ -1,6 +1,6 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Test groups
+title: Test Groups
 description: Learn how to use Ballerina Testframework grouping functionality
 keywords: ballerina, programming language, testing
 permalink: /learn/testing-ballerina-code/test-groups/
@@ -18,7 +18,7 @@ redirect_from:
 - /learn/user-guide/testing-ballerina-code/test-groups/
 ---
 
-## Grouping tests
+## Grouping Tests
 Test grouping allows us to control the execution of tests by partitioning them into groups. The Test Framework allows
 for a single test to have multiple groups. 
 
@@ -49,9 +49,9 @@ function testFunction3() {
 }
 ```
 
-## Grouping commands
+## Grouping Commands
 
-### Executing Grouped tests
+### Executing Grouped Tests
 To execute groups of tests, the `--groups` flag is used during test execution.
 
 ```bash
@@ -98,7 +98,7 @@ I'm a test belonging to group g2!
                 0 skipped
 ```
 
-### Disabling Grouped tests
+### Disabling Grouped Tests
 
 To skip execution of certain groups of tests, the `--disable-groups` flag is used during test execution.
 

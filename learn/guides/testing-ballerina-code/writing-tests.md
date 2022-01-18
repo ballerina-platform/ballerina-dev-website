@@ -34,7 +34,7 @@ The function specified after the annotation is a test function. This annotation 
 *   Enable/disable the test.
     ***enable: {true&#124;false}*** - Default: true
     
-*   Setup and tear down prerequisites required for a test case.
+*   Set up and tear down prerequisites required for a test case.
     ***before: &lt;function name&gt;*** - The function to be run just before the test is run. Default: none
     ***after: &lt;function name&gt;*** - The function to be run just after the test is run. Default: none
     
@@ -174,10 +174,10 @@ The Ballerina test framework supports the following assertions, which help to ve
     </tr>
 </table>
 
-### Troubleshooting assertion failures when using 'assertEquals'
+### Troubleshooting Assertion Failures when Using 'assertEquals'
 
 
-#### Values with different types
+#### Values with Different Types
 
 The `diff` shows the expected and actual values preceded by the type within the angle brackets.
 
@@ -203,7 +203,7 @@ function testAssertStringAndInt() {
         actual  : <int> '1'
 ```
 
-##### Values of the `string` type
+##### Values of the `string` Type
 
 The `diff` is displayed in the GNU format using `+` and `-` to show the
  line differences.
@@ -243,7 +243,7 @@ function testAssertString() {
          Welcome to Ballerina
 ```
 
-#### Values of the `JSON/record/map` type
+#### Values of the `JSON/record/map` Type
 
 The `diff` lists the JSON key mismatch using the `expected keys` and `actual keys`.
 The JSON value mismatch is listed per key showing the `expected` and `actual` values.
@@ -306,7 +306,7 @@ Diff    :
 
 ```
 
-#### Values of other `anydata` type
+#### Values of other `anydata` Type
 
 The `diff` is displayed showing the `expected` and `actual` values.
 

@@ -18,12 +18,12 @@ redirect_from:
 - /learn/user-guide/testing-ballerina-code/data-driven-tests/
 ---
 
-## Using data providers
+## Using Data Providers
 
 A data provider is a function that will be used to provide the data sets for a test function.
 A data provider function supports one of the following return types.
 
-### Map of tuple or error
+### Map of Tuple or Error
 
 The key to represent a specific data set can be specified using the key of an entry and data can be specified using the 
 value of an entry. The data provider function can return an error to indicate an issue with the data sets.
@@ -69,7 +69,7 @@ Running Tests
 ```
 
 
-### Array of arrays or error
+### Array of Arrays or Error
 
 ***Example:***
 
@@ -111,7 +111,7 @@ Running Tests
                 0 skipped
 ```
 
-## Executing specific data sets
+## Executing Ppecific Data Sets
 
 If you need to run only a specific case from the given data set, you can use the test name with the key to do that.
 You can make use of wild cards(`*`) to capture multiple cases as well.

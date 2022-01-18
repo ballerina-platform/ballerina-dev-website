@@ -1,6 +1,6 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Configuring tests
+title: Configuring Tests
 description: Learn how to configure Ballerina tests.
 keywords: ballerina, programming language, testing
 permalink: /learn/testing-ballerina-code/configuring-tests/
@@ -22,7 +22,7 @@ redirect_from:
 The following test annotations can be used to set up and tear down the instructions. These configuration annotations 
 enable executing instructions at various levels.
 
-### Suite level
+### Suite Level
 
 #### @test:BeforeSuite {}
 The function annotated with the `BeforeSuite` annotation will be run once before any of the tests in the test suite. 
@@ -78,7 +78,7 @@ function afterFunc() {
 }
 ```
 
-### Group level
+### Group Level
 
 #### @test:BeforeGroups {}
 For each group specified in this annotation, the `BeforeGroups` annotated function will be executed once before any of 
@@ -157,7 +157,7 @@ function afterGroupsFunc2() {
 }
 ```
 
-### Test case level
+### Test Case Level
 
 #### @test:BeforeEach
 The `BeforeEach` annotated function will be run before each test in the test suite. This can be used to initialize the 
@@ -235,7 +235,7 @@ function testFunction3() {
 }
 ```
 
-### Each test case
+### Each Test Case
 
 #### @test:Config { before : “ “ }
 The test config annotation makes use of ‘before’ to denote which function needs to execute before the particular 
@@ -246,7 +246,7 @@ The test config annotation makes use of ‘after’ to denote which function nee
 test is run
 
 
-## Test specific Configurations
+## Test Specific Configurations
 Configurations for testing can be provided using configurable variables. The values for configurable variables can be
 provided in a file named `Config.toml` located in the `tests/` directory which will only be initialized when the tests
 are run. It is important to note that if the `Config.toml` is not specified in the `tests/` directory, the values will

@@ -1,15 +1,27 @@
-# Tutorial: Developing a GraphQL API with Ballerina
+---
+layout: ballerina-language-basics-left-nav-pages-swanlake
+title: Writing a GraphQL API with Ballerina
+description: This is a simple guide that walks through the steps to write a GraphQL API using Ballerina.
+keywords: ballerina, graphql, ballerina packages, language-guide, standard library
+permalink: /learn/user-guides/getting-started/writing-a-graphql-api-with-ballerina
+active: language-basics
+intro: This is a simple guide that walks through the steps to write a GraphQL API using Ballerina.
+redirect_from:
+- /learn/getting-started/writing-a-graphql-api-with-ballerina
+- /learn/getting-started/writing-a-graphql-api-with-ballerina/
+- /learn/user-guide/getting-started/writing-a-graphql-api-with-ballerina
+- /learn/user-guide/getting-started/writing-a-graphql-api-with-ballerina/
+---
 
 ## Table of Contents
-- [Tutorial: Developing a GraphQL API with Ballerina](#tutorial-developing-a-graphql-api-with-ballerina)
-    - [Table of Contents](#table-of-contents)
-    - [Prerequisites](#prerequisites)
-    - [Design the GraphQL endpoint](#design-the-graphql-endpoint)
-    - [Create a Ballerina Project](#create-a-ballerina-project)
-    - [Create a Datasource for the Project](#create-a-datasource-for-the-project)
-    - [Write Ballerina service](#write-ballerina-service)
-        - [Create GraphQL Object Types](#create-graphql-object-types)
-        - [Writing the GraphQL service](#writing-the-graphql-service)
+- [Table of Contents](#table-of-contents)
+- [Prerequisites](#prerequisites)
+- [Design the GraphQL endpoint](#design-the-graphql-endpoint)
+- [Create a Ballerina Project](#create-a-ballerina-project)
+- [Create a Datasource for the Project](#create-a-datasource-for-the-project)
+- [Write Ballerina service](#write-ballerina-service)
+    - [Create GraphQL Object Types](#create-graphql-object-types)
+    - [Writing the GraphQL service](#writing-the-graphql-service)
 
 This simple guide helps you understand the basics of Ballerina constructs which allow you to write GraphQL APIs.
 

@@ -49,13 +49,13 @@ Execute the `/help` command to view the available commands.
 | /debug          - Toggle the debug mode ON/OFF.
 | /reset          - Reset the REPL state.
 |                   All the previous code snippets will be removed from the REPL memory.
-| /file <FILE>    - Load declarations defined in <FILE>. e.g., /file my_file.bal
-| /remove <NAMES> - Delete the declarations specified by <NAMES>. e.g., /remove function1 var1 var2
+| /file <FILE>    - Load declarations defined in the <FILE> (e.g., /file my_file.bal).
+| /remove <NAMES> - Delete the declarations specified by <NAMES> (e.g., /remove function1 var1 var2).
 | /imports        - List the available imports.
 | /vars           - List the declared variables and their values.
-| /dclns          - List the user defined module level declarations.
+| /dclns          - List the user-defined module-level declarations.
 | /help           - Displays the help text.
-| /help <TOPIC>   - Get help on <TOPIC>. eg: /help var
+| /help <TOPIC>   - Get help on the <TOPIC> (e.g., /help var).
 | /help topics    - See all the available topic names.
 ```
 

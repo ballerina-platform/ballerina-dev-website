@@ -41,11 +41,11 @@ An AWS Lambda function can be triggered by various AWS services. You can find th
 
 The following Ballerina code gives an example on how to expose a simple echo function in AWS Lambda. 
 
-Create a ballerina package.
+Create a Ballerina package.
 ```bash
 $ bal new aws_lambda_deployment
 ```
-Replace the contents of the generated bal file with the following content.
+Replace the contents of the generated BAL file with the following content.
 
 ```ballerina
 import ballerina/log;

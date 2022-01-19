@@ -24,7 +24,7 @@ redirect_from:
 * Install the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 * Go to [users](https://console.aws.amazon.com/iam/home?#/users), and click **Add User**.
 * Enter the username, enable programmatic access, and make sure the user has the `AWSLambda_FullAccess` or higher permissions.
-* Configure the AWS CLI(https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) using the access key and secret generated in the user creation.
+* Configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) using the access key and secret generated in the user creation.
 * Go to [roles](https://console.aws.amazon.com/iamv2/home#/roles), and create a role that has the `AWSLambdaBasicExecutionRole` or higher permissions.
 * Go to the newly created role, and copy the role ARN to use when the Lambda function is being deployed.
 
@@ -40,6 +40,12 @@ An AWS Lambda function can be triggered by various AWS services. You can find th
 ## Writing a Function
 
 The following Ballerina code gives an example on how to expose a simple echo function in AWS Lambda. 
+
+Create a Ballerina package.
+```bash
+$ bal new aws_lambda_deployment
+```
+Replace the contents of the generated BAL file with the following content.
 
 ```ballerina
 import ballerina/log;
@@ -63,20 +69,19 @@ The AWS Lambda functionality is implemented as a compiler extension. Thus, the a
 Execute the command below to build the above code. 
 
 ```bash
-$ bal build functions.bal 
+$ bal build
 Compiling source
-	functions.bal
+	wso2/aws_lambda_deployment:0.1.0
 
 Generating executables
-	functions.jar
 	@awslambda:Function: echo
 
         Run the following command to deploy each Ballerina AWS Lambda function:
-        aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb:///aws-ballerina-lambda-functions.zip --handler functions.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
+        aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb://<project_dir>/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
 
         Run the following command to re-deploy an updated Ballerina AWS Lambda function:
-        aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip
-        functions.jar
+        aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://<project_dir>/target/bin/aws-ballerina-lambda-functions.zip
+        target/bin/aws_lambda_deployment.jar
 ```
 
 ## Deploying the Function
@@ -90,14 +95,14 @@ Execute the command below to deploy the echo function as an AWS Lambda as shown 
 >**Info:**  For the supported parameters, go to the [`create-function` documentation](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html). You might need to change parameters such as the memory- size and timeout depending on your application and connection speed. 
 
 ```bash
-$ aws lambda create-function --function-name echo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.echo --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6
+$ aws lambda create-function --function-name echo --zip-file fileb://<project_dir>/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6
 
 {
     "FunctionName": "echo",
-    "FunctionArn": "arn:aws:lambda:us-west-1:908363916138:functions:echo",
+    "FunctionArn": "arn:aws:lambda:us-west-1:908363916138:aws_lambda_deployment:echo",
     "Runtime": "provided",
     "Role": "arn:aws:iam::908363916138:role/lambda-role",
-    "Handler": "functions.echo",
+    "Handler": "aws_lambda_deployment.echo",
     "CodeSize": 22160569,
     "Description": "",
     "Timeout": 3,

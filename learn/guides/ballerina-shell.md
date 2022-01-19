@@ -292,5 +292,5 @@ For example, see below.
 |  You can use `<`, `<=`, `>`, and `>=` operators on `string` values and they work by comparing code points.
 |  Unpaired surrogates are not allowed.
 | 
-| For examples visit : https://ballerina.io/learn/by-example/strings
+| For examples, visit https://ballerina.io/learn/by-example/strings
 ```

@@ -16,7 +16,20 @@ redirect_from:
         width: 100%;
         display: inline-block;      
     }
-
+    .disabled {
+        pointer-events: none;
+        cursor: default;
+        background-color: #57595d !important;
+    }
+    .gTitle1{color:#57595d !important} 
+    .eventBanner{
+        background-color: #f5f5f5;
+        padding: 30px;
+        font-size: 18px;
+        margin-top: 15px;
+        font-weight: 400;
+        text-align: center;
+    }
     .submit-button{
         padding: 10px 20px;
         display: inline-block;
@@ -333,7 +346,7 @@ a.cTopLink{display:none !important;}
         
         <div id="upcoming-event" class="tab-pane fade in active">
             <table class="cEventTable cConferencesList" style="width:100% !important;">
-                <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <!-- <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                     <td class="cEventDateContainer cEventDateContainer1">	
                        <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">January 25, 2022</p>	
                        <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
@@ -347,7 +360,11 @@ a.cTopLink{display:none !important;}
                        <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" href="https://www.linkedin.com/in/joseph-fonseka-04b538a/">Joseph Foneska</a>, Director - Ballerina Team, WSO2
                     </td>	
                     <td class="cEventURL"><a class="cEventRegistration" href="" target="_blank" style="text-align: center;">Notify Me</a></td>	
-                </tr>
+                </tr> -->
+
+                <div class="col-lg-12 col-md-12 col-sm-12 eventBanner">
+                    No upcoming events for this month. For details on our upcoming Monthly Tech Talks, please see  <a href="/community/tech-talk/" target="_blank" style="color: #20b6b0; text-decoration: none; text-align: right;font-weight: 400;font-size: 18px; ">Monthly Tech Talk</a>
+                </div>
                 
                 
             </table>
@@ -369,7 +386,7 @@ a.cTopLink{display:none !important;}
                        <h5 style="margin-bottom: 18px;">Ballerina Swan Lake: The Open Source Cloud-Native Programming Language Revamped</h5>		
                        <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" href="https://www.linkedin.com/in/imeshasudasingha/">Imesha Sudasingha </a>, Senior Software Engineer, WSO2
                     </td>	
-                    <td class="cEventURL"><a class="cEventRegistration" href="" target="_blank" style="text-align: center;">Await Recording</a></td>	
+                    <td class="cEventURL"><a class="cEventRegistration disabled" href="" target="_blank" style="text-align: center;">Await Recording</a></td>	
                 </tr>
                 <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                     <td class="cEventDateContainer cEventDateContainer1">	
@@ -384,7 +401,7 @@ a.cTopLink{display:none !important;}
                        <h5 style="margin-bottom: 18px;">Ballerina - A Cloud-Native Programming Language</h5>		
                        <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" href="https://twitter.com/james_clark">James Clark </a>
                     </td>	
-                    <td class="cEventURL"><a class="cEventRegistration" href="" target="_blank" style="text-align: center;">Await Recording</a></td>	
+                    <td class="cEventURL"><a class="cEventRegistration disabled" href="" target="_blank" style="text-align: center;">Await Recording</a></td>	
                 </tr>
                 <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                     <td class="cEventDateContainer cEventDateContainer1">	
@@ -414,7 +431,7 @@ a.cTopLink{display:none !important;}
                        <h5 style="margin-bottom: 18px;">Cloud Native Middleware as a Programming Language</h5>		
                        <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" href="https://twitter.com/lafernando">Anjana Fernando </a>, Director - Developer Relations, WSO2 
                     </td>	
-                    <td class="cEventURL"><a class="cEventRegistration" href="" target="_blank" style="text-align: center;">Await Recording</a></td>	
+                    <td class="cEventURL"><a class="cEventRegistration disabled" href="" target="_blank" style="text-align: center;">Await Recording</a></td>	
                 </tr>
                 <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                     <td class="cEventDateContainer cEventDateContainer1">	

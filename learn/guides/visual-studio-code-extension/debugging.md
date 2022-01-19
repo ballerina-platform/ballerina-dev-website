@@ -5,7 +5,7 @@ description: Describes debugging functionalities provided by Ballerina in Visual
 keywords: ballerina debugging, ballerina debug, ballerina debugger, ballerina vscode
 permalink: /learn/visual-studio-code-extension/debugging/
 active: debugging
-intro: The VS Code Ballerina extension allows you to either run your Ballerina program (without debugging) or debug them easily by launching its debugger. 
+intro: The VS Code Ballerina language extension comes with in-built debugging capabilities and provides the same debugging experience as the conventional VS Code Debugging.
 redirect_from:
   - /learn/tools-ides/vscode-plugin/run-and-debug
   - /learn/tools-ides/vscode-plugin/run-and-debug/
@@ -29,11 +29,8 @@ redirect_from:
   - /learn/visual-studio-code-extension/debugging
 ---
 
->**Info:** For more information on debugging your code using VS Code, go to the [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
-
 ## Starting a Debug Session
 
-The VS Code Ballerina extension gives you the same debugging experience as the conventional VS Code Debugger.
 We can start a quick debug session instantly to debug a ballerina program with `CodeLens`. We also can start a debug session with configurations
 like program arguments and environment variables by adding them into the `launch.json` file.
 
@@ -56,7 +53,7 @@ Follow the steps below to start a quick debug session.
 
 ### Starting a Test Debug Session
 
-The Ballerina test functions can also be debugged with the similar steps explained above.
+The Ballerina test functions can also be debugged using the codelens. The `debug` codelens will automatically appear on top of each Ballerina test function and the users are able to execute/debug only a selected test case by clicking on the corresponding codelens, as shown below.
 
 ![Start_Test Quick Debug Session](/learn/images/start-quick-test-debug-session.gif)
 
@@ -120,9 +117,13 @@ Follow the steps below to start a test debug session.
 
 Follow the steps below to start a remote debug session.
 
-1. Select **Ballerina Remote** from the drop-down available in the upper left corner to start a remote debugging session.
+1. Create the `launch.json` configuration file if it is not created already. Refer [Debug Session with Configurations](#debug-session-with-configurations) section on how to create the `launch.json` file.
 
-2. Open the Terminal and execute the Ballerina command, which you want to debug, out of the supported remote debugging commands below. 
+2. Open `launch.json` file and configure `debuggeeHost` and `debuggeePort` attributes under `Ballerina Remote` configurations section accordingly.
+
+3. After setting the remote debug configurations, select **Ballerina Remote** from the drop-down available in the upper left corner to start a remote debugging session.
+
+4. Open the Terminal and execute the Ballerina command, which you want to debug, out of the supported remote debugging commands below. 
 
     - Debugging a Ballerina package or a single file: 
 
@@ -148,83 +149,13 @@ Follow the steps below to start a remote debug session.
     Listening for transport dt_socket at address: 5005
     ```
 
-3. Click the **Start Debugging** icon on the upper left corner to start debugging.
+5. Click the **Start Debugging** icon on the upper left corner to start debugging.
 
     You view the output in the **DEBUG CONSOLE**.
 
     ![Remote Debug](/learn/images/remote-debug.gif)
 
 <br/>
-
-## Using the Debugging Features
-
-Visual Studio Code allows you to debug Ballerina programs through the Ballerina extension. The debugging features below are supported by Ballerina.
-
-- Launch/Attach
-- Breakpoints
-  - Conditional Breakpoints
-  - Logpoints
-- Pause & Continue
-- Step In/Out/Over
-- Variables
-- Call Stacks
-- Strands
-- Expression Evaluation
-
->**Info** The Ballerina debugger is an open-source project and contributors are most welcome to get engaged with it via the [ballerina-lang](https://github.com/ballerina-platform/ballerina-lang) GitHub repository. If you encounter any difficulties when using this feature, feel free to create an issue on it.
-
-<!--For more information on the above features, see [Using the Debugging Features](/learn/tooling-guide/visual-studio-code-extension/run-and-debug/using-the-debugging-features/).-->
-
-### Conditional Breakpoints
-
-The Ballerina debugger provides the ability of setting Ballerina expression-based conditions for regular breakpoints. 
-The debugger will suspend at the breakpoint whenever the expression evaluates to true.
-
-![Debugger Conditional Breakpoints](/learn/images/debugger-conditional-breakpoints.gif)                
-                      
-### Logpoints        
-
-Logpoints are another variant of breakpoints, which do not "break" the program execution but instead log a message to the console. Logpoints are especially useful for injecting logging while debugging production servers that cannot be paused or stopped.
-
-Logpoints can also be enabled/disabled and can be controlled by conditions similar to regular breakpoints.
-
-![Debugger Logpoints](/learn/images/debugger-logpoints.gif)
-
-Log messages can either be plain texts or string templates, which can contain expressions to be evaluated within the `${}` syntax.
-
-![Debugger String Temaplate Logpoints](/learn/images/debugger-logpoints-template.gif)
-
-### Pause/Continue
-
-Any running Ballerina programs can be suspended immediately at the current execution line of the program using the `pause` command in VSCode as shown below. 
-With this feature, you are able to suspend (and resume) the remote VM resulting in a debug hit at the current execution line of the program. 
-
-![Debugger Pause/Resume Commands](/learn/images/debugger-pause-resume-commands.gif)
-
-This feature will be useful in contexts where the program seems to be hanged due to blocking operations/infinite loops, and when you want to know the exact line that the program is waiting on.
-
-### Expression Evaluation
-
-Ballerina expression evaluator allows evaluating Ballerina variables and expressions at runtime allowing them to be viewed when the IDE is in the break mode.
-
-The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
-
-#### Using the Debug Console
-
-![Debugger Evaluation Console](/learn/images/debugger-evaluation-console.gif)
-
-<br/>
-
-#### Using the Watch Window
-
-![Debugger Watch Window](/learn/images/debugger-watch-window.gif)
-
-<br/>
-
-#### Existing Limitations
-
-- Anonymous function, let, and constructor expressions are currently not supported.
-- Limited support for Ballerina actions (only remote method call actions are supported)
 
 ## Debug Configurations
 
@@ -283,6 +214,76 @@ The following attributes are supported for all Ballerina `attach` configurations
 
 - `debuggeeHost` - Host address of the remote process to be attached (If not specified, the default value will be the localhost(`127.0.0.1`)).
 - `debuggeePort` - Port number of the remote process to be attached.
+
+## Using the Debugging Features
+
+The following debugging features are currently supported by the Ballerina VScode extension.
+
+- Launch/Attach
+- Breakpoints
+  - Conditional Breakpoints
+  - Logpoints
+- Pause & Continue
+- Step In/Out/Over
+- Variables
+- Call Stacks
+- Strands
+- Expression Evaluation
+
+>**Info:** For more information on debugging features using VS Code, go to the [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
+
+<!--For more information on the above features, see [Using the Debugging Features](/learn/tooling-guide/visual-studio-code-extension/run-and-debug/using-the-debugging-features/).-->
+
+### Conditional Breakpoints
+
+The Ballerina debugger provides the ability of setting Ballerina expression-based conditions for regular breakpoints. 
+The debugger will suspend at the breakpoint whenever the expression evaluates to true.
+
+![Debugger Conditional Breakpoints](/learn/images/debugger-conditional-breakpoints.gif)                
+                      
+### Logpoints        
+
+Logpoints are another variant of breakpoints, which do not "break" the program execution but instead log a message to the console. Logpoints are especially useful for injecting logging while debugging production servers that cannot be paused or stopped.
+
+Logpoints can also be enabled/disabled and can be controlled by conditions similar to regular breakpoints.
+
+![Debugger Logpoints](/learn/images/debugger-logpoints.gif)
+
+Log messages can either be plain texts or string templates, which can contain expressions to be evaluated within the `${}` syntax.
+
+![Debugger String Temaplate Logpoints](/learn/images/debugger-logpoints-template.gif)
+
+### Pause/Continue
+
+Any running Ballerina programs can be suspended immediately at the current execution line of the program using the `pause` command in VSCode as shown below. 
+With this feature, you are able to suspend (and resume) the remote VM resulting in a debug hit at the current execution line of the program. 
+
+![Debugger Pause/Resume Commands](/learn/images/debugger-pause-resume-commands.gif)
+
+This feature will be useful in contexts where the program seems to be hanged due to blocking operations/infinite loops, and when you want to know the exact line that the program is waiting on.
+
+### Expression Evaluation
+
+Ballerina expression evaluator allows evaluating Ballerina variables and expressions at runtime allowing them to be viewed when the IDE is in the break mode.
+
+The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
+
+#### Using the Debug Console
+
+![Debugger Evaluation Console](/learn/images/debugger-evaluation-console.gif)
+
+<br/>
+
+#### Using the Watch Window
+
+![Debugger Watch Window](/learn/images/debugger-watch-window.gif)
+
+<br/>
+
+#### Existing Limitations
+
+- Anonymous function, let, and constructor expressions are currently not supported.
+- Limited support for Ballerina actions (only remote method call actions are supported)
 
 
 

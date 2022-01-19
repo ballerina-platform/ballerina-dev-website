@@ -83,35 +83,37 @@ The example below provides in-depth knowledge on how to utilize the capabilities
 
 ```ballerina
 import ballerina/io;
- 
+
 type Author record {|
-   readonly int id;
-   string name;
+    readonly int id;
+    string name;
 |};
- 
+
 type Category record {|
-   readonly int id;
-   string name;
+    readonly int id;
+    string name;
 |};
- 
+
 type Book record {|
-   readonly int id;
-   string title;
-   int year;
-   float price;
-   Author[] authors;
-   Category[] categories;
+    readonly int id;
+    string title;
+    int year;
+    float price;
+    Author[] authors;
+    Category[] categories;
 |};
- 
+
 type Sale record {|
-   int bookId;
-   int qty;
+    int bookId;
+    int qty;
 |};
- 
+
 type AuthorTable table<Author> key(id);
+
 type CategoryTable table<Category> key(id);
+
 type BookTable table<Book> key(id);
- 
+
 error onConflictError = error("Key Conflict", message = "record with same key exists.");
 ```
 
@@ -119,18 +121,18 @@ In the above code, the necessary custom types and variables are created to perfo
 
 ```ballerina
 function loadAuthors() returns AuthorTable|error {
-   json[] authors = [
-       {"id": 1, "name": "Giada De Laurentiis"},
-       {"id": 2, "name": "J. K. Rowling"},
-       {"id": 3, "name": "Henrique C. M. Andrade"},
-       {"id": 4, "name": "Buğra Gedik"},
-       {"id": 5, "name": "Deepak S. Turaga"}
-       ];
- 
-   // Iterates through `authors` JSON array, constructs `Author` records, and collects them into a table.
-   return table key(id) from var author in authors
-       select check author.cloneWithType(Author)
-       on conflict onConflictError;
+    json[] authors = [
+        {"id": 1, "name": "Giada De Laurentiis"},
+        {"id": 2, "name": "J. K. Rowling"},
+        {"id": 3, "name": "Henrique C. M. Andrade"},
+        {"id": 4, "name": "Buğra Gedik"},
+        {"id": 5, "name": "Deepak S. Turaga"}
+    ];
+
+    // Iterates through the `authors` JSON array, constructs the `Author` records, and collects them into a table.
+    return table key(id) from var author in authors
+        select check author.cloneWithType(Author)
+        on conflict onConflictError;
 }
 ```
 
@@ -138,7 +140,7 @@ Here, the author details are represented as JSON elements. In this method, the r
 
 ```ballerina
 function loadCategories() returns CategoryTable|error {
-   xml categories = xml `<categories>
+    xml categories = xml `<categories>
                        <category>
                            <id>1</id>
                            <name>cooking</name>
@@ -156,14 +158,14 @@ function loadCategories() returns CategoryTable|error {
                            <name>education</name>
                        </category>
                    </categories>`;
- 
-   // Iterates through `categories` xml array, constructs `Category` records, and collects them into a table.
-   return table key(id) from var category in categories/<category>
-       select {
-           id: check 'int:fromString((category/**/<id>/*).toString()),
-           name: (category/**/<name>/*).toString()
-       }
-       on conflict onConflictError;
+
+    // Iterates through the `categories` XML array, constructs the `Category` records, and collects them into a table.
+    return table key(id) from var category in categories/<category>
+        select {
+            id: check 'int:fromString((category/**/<id>/*).toString()),
+            name: (category/**/<name>/*).toString()
+        }
+        on conflict onConflictError;
 }
 ```
 
@@ -171,10 +173,10 @@ The above method iterates through a `categories` XML array and constructs a tabl
 
 ```ballerina
 function getCategories(CategoryTable categories, int[] ids) returns Category[] {
-   // Query `categories` for each id, and collects matching categories into an array.
-   return from int id in ids
-       join Category c in categories on id equals c.id
-       select c;
+    // Queries the `categories` of each ID and collects the matching categories into an array.
+    return from int id in ids
+        join Category c in categories on id equals c.id
+        select c;
 }
 ```
 
@@ -182,10 +184,10 @@ The above method returns the book category names according to the given category
 
 ```ballerina
 function getAuthors(AuthorTable authors, int[] ids) returns Author[] {
-   // Query `authors` for each id, and collects matching authors into an array.
-   return from int id in ids
-       join Author a in authors on id equals a.id
-       select a;
+    // Queries the `authors` of each ID and collects the matching authors into an array.
+    return from int id in ids
+        join Author a in authors on id equals a.id
+        select a;
 }
 ```
 
@@ -193,43 +195,44 @@ Here, the author names are identified according to the author IDs. As similar to
 
 ```ballerina
 function loadBooks() returns BookTable|error {
-   map<anydata>[] books = [
-       {"id": 1, "title": "Everyday Italian", "year": 2005, "price": 30.00, "authors": [1], "categories": [1]},
-       {"id": 2, "title": "Harry Potter", "year": 1997, "price": 29.99, "authors": [2], "categories": [2, 3]},
-       {"id": 3, "title": "Fundamentals of Stream Processing", "year": 2014, "price": 123.99, "authors": [3, 4, 5], "categories": [4]},
-       {"id": 4, "title": "Fantastic Beasts", "year": 2001, "price": 29.99, "authors": [2], "categories": [2, 3]}
-       ];
- 
-   // Iterates through `books` map<anydata> array, constructs `Book` records, and collects them into a table.
-   return table key(id) from var book in books
-       let AuthorTable authors = check loadAuthors()
-       let CategoryTable categories = check loadCategories()
-       select {
-           id: <int>book["id"],
-           title: <string>book["title"],
-           year: <int>book["year"],
-           price: <float>book["price"],
-           authors: getAuthors(authors, check book["authors"].cloneWithType()),
-           categories: getCategories(categories, check book["categories"].cloneWithType())
-       }
-       on conflict onConflictError;
+    map<anydata>[] books = [
+        {"id": 1, "title": "Everyday Italian", "year": 2005, "price": 30.00, "authors": [1], "categories": [1]},
+        {"id": 2, "title": "Harry Potter", "year": 1997, "price": 29.99, "authors": [2], "categories": [2, 3]},
+        {"id": 3, "title": "Fundamentals of Stream Processing", "year": 2014, "price": 123.99, "authors": [3, 4, 5], "categories": [4]},
+        {"id": 4, "title": "Fantastic Beasts", "year": 2001, "price": 29.99, "authors": [2], "categories": [2, 3]}
+    ];
+
+    // Iterates through the `books` map<anydata> array, constructs the `Book` records, and collects them into a table.
+    return table key(id) from var book in books
+        let AuthorTable authors = check loadAuthors()
+        let CategoryTable categories = check loadCategories()
+        select {
+            id: <int>book["id"],
+            title: <string>book["title"],
+            year: <int>book["year"],
+            price: <float>book["price"],
+            authors: getAuthors(authors, check book["authors"].cloneWithType()),
+            categories: getCategories(categories, check book["categories"].cloneWithType())
+        }
+        on conflict onConflictError;
 }
+
 ```
 
-Now, the author details and book category details exist as individual table values. The book details exist as an array. Further, this array has the necessary keys to identify the respective authors and book categories. Hence, there is a requirement to generate a table that contains thenrelevant book details, author names, and category names. As shown in the above example, Ballerina query expressions can be utilized to create such table values.  
+Now, the author details and book category details exist as individual table values. The book details exist as an array. Further, this array has the necessary keys to identify the respective authors and book categories. Hence, there is a requirement to generate a table, which contains the relevant book details, author names, and category names. As shown in the above example, Ballerina query expressions can be utilized to create such table values.  
 
 ```ballerina
 function getPopularBooks(stream<Sale> sales, int minSales, int 'limit) returns Book[]|error {
-   // Join each sale value from `sales` stream with retrieved `BookTable`
-   // filter books with at least `minSales` number of sales,
-   // order filtered books by sales quantity,
-   // and collect `'limit` number of books into an array.
-   return from Sale s in sales
-       join Book b in check loadBooks() on s.bookId equals b.id
-       where s.qty >= minSales
-       order by s.qty descending
-       limit 'limit
-       select b;
+    // Join each sale value from the `sales` stream with the retrieved `BookTable`,
+    // filter books with at least `minSales` number of sales,
+    // order filtered books by sales quantity,
+    // and collect the `'limit` number of books into an array.
+    return from Sale s in sales
+        join Book b in check loadBooks() on s.bookId equals b.id
+        where s.qty >= minSales
+        order by s.qty descending
+        limit 'limit
+        select b;
 }
 ```
 
@@ -237,16 +240,16 @@ Now, you have the book details as a table value and there is a requirement to id
 
 ```ballerina
 public function main() returns error? {
-   Sale[] sales = [
-       {bookId: 1, qty: 150},
-       {bookId: 2, qty: 3500},
-       {bookId: 3, qty: 1250},
-       {bookId: 4, qty: 2100}
-   ];
- 
-   // Retrieve 2 most popular books with at least 1000 sales.
-   Book[]|error mostPopular2Books = getPopularBooks(sales.toStream(), 1000, 2);
-   io:println(mostPopular2Books);
+    Sale[] sales = [
+        {bookId: 1, qty: 150},
+        {bookId: 2, qty: 3500},
+        {bookId: 3, qty: 1250},
+        {bookId: 4, qty: 2100}
+    ];
+
+    // Retrieve the two most popular books with at least 1000 sales.
+    Book[]|error mostPopular2Books = getPopularBooks(sales.toStream(), 1000, 2);
+    io:println(mostPopular2Books);
 }
 ```
 

@@ -1,8 +1,9 @@
 <!-- at the end of the HEAD -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
-/>
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"/> -->
+<link rel="stylesheet" href="/css/ballerina-search-button.css"/>
+<link rel="stylesheet" href="/css/ballerina-search-modal.css"/>
+<link rel="stylesheet" href="/css/ballerina-search-variables.css"/>
+<link rel="stylesheet" href="/css/ballerina-search-style.css"/>
 <style>
   .algolia-search-cont {
     margin-top: -10px;
@@ -25,7 +26,7 @@
   }
 </style>
 <div class="algolia-search-cont">
-  <div class="algolia-search-wrap form-control">
+  <!-- <div class="algolia-search-wrap form-control">
     <span
       class="glyphicon glyphicon-search search-icon"
       aria-hidden="true"
@@ -42,19 +43,19 @@
       class="algolia-search-box"
       id="algolia-search-box"
     />
-  </div>
+  </div> -->
 </div>
 
 <!-- at the end of the BODY -->
 <script
   type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"
+  src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"
 ></script>
 <script type="text/javascript">
-  docsearch({
-    apiKey: "6a63d4bcf6378ddf3f8724185ddcf626",
-    indexName: "ballerina",
-    inputSelector: "#algolia-search-box",
-    debug: false, // Set debug to true if you want to inspect the dropdown
-  });
+docsearch({
+  container: '.algolia-search-cont',
+  appId: '8LWM72S9RU',
+  apiKey: '17c77e6bf87e0ae7c4b8caad2582c560',
+  indexName: 'ballerina', // it does not change
+});
 </script>

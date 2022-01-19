@@ -44,9 +44,9 @@ type DoorState record {|
 Now, let’s create some values of the `DoorState` record type:
 
 ```ballerina
-DoorState v1 = { open: false, locked: true };
-DoorState v2 = { open: false, locked: true };
-DoorState v3 = { open: false, locked: true };
+DoorState v1 = {open: false, locked: true};
+DoorState v2 = {open: false, locked: true};
+DoorState v3 = {open: false, locked: true};
 ```
 
 The three variables above all represent a single state of the door being closed and locked. Nonetheless, we have created three different values where each variable is stored in a distinct memory reference. If we ignore the storage identity of these variables, we are left with the representation of the data it has, which is `{ open: false, locked: true }`. This is a single shape of the type `DoorState`.
@@ -54,10 +54,10 @@ The three variables above all represent a single state of the door being closed 
 In this way, there are four possible shapes for DoorState as shown in the variables below:
 
 ```ballerina
-DoorState ds1 = { open: true, locked: true };
-DoorState ds2 = { open: true, locked: false };
-DoorState ds3 = { open: false, locked: true };
-DoorState ds4 = { open: false, locked: false };
+DoorState ds1 = {open: true, locked: true};
+DoorState ds2 = {open: true, locked: false};
+DoorState ds3 = {open: false, locked: true};
+DoorState ds4 = {open: false, locked: false};
 ```
 
 A type in Ballerina represents a set of possible shapes it can have. So any value that belongs to either of the above four shapes will be considered to be of the type `DoorState`.
@@ -67,9 +67,9 @@ A type in Ballerina represents a set of possible shapes it can have. So any valu
 
 ### Subtypes in Ballerina
 
-Subtyping in Ballerina is semantic. It is defined through shapes, where `S` is a subtype of `T` if the set of shapes denoted by `S` are a subset of the shapes denoted by `T`. The examples below demonstrate this behavior.
+Subtyping in Ballerina is semantic. It is defined through shapes where `S` is a subtype of `T` if the set of shapes denoted by `S` is a subset of the shapes denoted by `T`. The examples below demonstrate this behavior.
 
-The type `boolean` is a simple basic type in Ballerina without a storage identity, so its values become equivalent to its shapes. Therefore, the `boolean` type is defined as having two shapes, `true` and `false`.
+The type `boolean` is a simple basic type in Ballerina without storage identity so its values become equivalent to its shapes. Therefore, the `boolean` type is defined as having two shapes, `true` and `false`.
 
 The `boolean` type’s shapes can be defined in set notation as `Sboolean = { true, false }`. This can be visualized as seen in Figure 2 below.
 
@@ -87,7 +87,7 @@ The new type `boolean_false` can be defined in Ballerina code in the following m
 type boolean_false false;
 ```
 
-This example uses the value `false` in defining the new `boolean_false` type. In a more practical scenario, you can provide multiple values as a union when defining new types using the `T1|T2` syntax. A type that only denotes a single shape is called a singleton type. This new type can be used in the code in the following way.
+This example uses the value `false` to define the new `boolean_false` type. In a more practical scenario, you can provide multiple values as a union when defining new types using the `T1|T2` syntax. A type that denotes only a single shape is called a singleton type. This new type can be used in the code in the following way.
 
 ```ballerina
 boolean_false bv1 = false;
@@ -95,7 +95,7 @@ boolean bv2 = true;
 bv2 = bv1;
 ```
 
-As you can see, `bv1` of type `boolean_false` can be assigned to `bv2` of type boolean because `bv1`’s type is a subset of `bv2`’s type. In simple terms, all the values that can be held in the variable `bv1` can be held in the variable `bv2`, thus the assignment is possible.
+As you can see, `bv1` of type `boolean_false` can be assigned to `bv2` of type `boolean` because `bv1`’s type is a subtype of `bv2`’s type. In simple terms, all the values that can be held by the variable `bv1` can be held by the variable `bv2`, and thereby, the assignment is possible.
 
 We have now seen how Ballerina’s subtyping works in relation to simple types. Let’s take a look at creating subtypes of records by revisiting our `DoorState` scenario. Here, we will create a new type `EmergencyDoorState`, where the `locked` field has to always have the value `false`. The resultant types and their shapes can be seen below in Figure 4.
 
@@ -118,9 +118,9 @@ In this manner, the type `EmergencyDoorState` can only have the shapes `{ open: 
 The following code snippet shows a sample usage of the `EmergencyDoorState` type:
 
 ```ballerina
-EmergencyDoorState eds1 = { open: true };
+EmergencyDoorState eds1 = {open: true};
 DoorState eds2 = eds1;
-io:println("Door - Open: ", eds2.open, " Locked: ", eds2.locked);
+io:println("Door - Open: ", eds2.open, ", Locked: ", eds2.locked);
 ```
 
 ### Benefits of a Structural Type System
@@ -132,19 +132,26 @@ type Result record {|
     string college;
     int grade;
 |};
-...
-Result[] results = from var person in persons
-                  let int lgrade = (grades[person.name] ?: 0), string targetCollege = "Stanford"
-                  where lgrade > 75
-                  select {
-                      name: person.name,
-                      college: targetCollege,
-                      grade: lgrade
-                  };
 
+type Person record {|
+    string name;
+    int age;
+|};
+
+function filterResults(Person[] persons, map<int> grades) returns Result[] {
+    Result[] results = from var person in persons
+                        let int lgrade = (grades[person.name] ?: 0), string targetCollege = "Stanford"
+                        where lgrade > 75
+                        select {
+                            name: person.name,
+                            college: targetCollege,
+                            grade: lgrade
+                        };
+    return results;
+}
 ```
 
-In the example above, you filter records from a list and create a new value using the `select` clause. Its structure is defined dynamically at that time and the values are created. These values are assigned to an array of `Result` records, which is possible because the generated values are structurally compatible with the `Result` record type.
+In the example above, you filter records from a list and create a new value of type `Result` using the `select` clause. These values are assigned to an array of `Result` records, which is possible because the generated values are of the `Result` record type.
 
 In situations such as above, a separate system from our core application may be generating values to be consumed by us. In these cases, instead of worrying about sharing the code for the data type definitions, you can simply concentrate on the compatibility of the data in order to ensure interoperability.
 
@@ -152,11 +159,11 @@ In situations such as above, a separate system from our core application may be 
 
 Ballerina’s open-by-default concept is tied around the <a href="https://en.wikipedia.org/wiki/Robustness_principle">robustness principle</a>. This means that you should design network-aware programs to accept all the data that is sent to you and make the best effort to understand it. Also, when sending data, you should make the best effort to conform to the standard protocols that were agreed upon beforehand. This strategy makes sure you have the best chance of interacting with different systems reliably.
 
-The main facilitator of this in the type system is the open record concept in Ballerina. The sections above demonstrated closed records and the sections below demonstrate a record type to represent the details of a person.
+The main facilitator of this in the type system is the open record concept in Ballerina. The sections above demonstrated closed records and the sections below demonstrate open records with a record type that represents the details of a person.
 
 ### Get Started
 
-The code snippet below shows a call to a simple HTTP GET request endpoint:
+The code snippet below shows a simple HTTP GET request to an endpoint:
 
 ```ballerina
 enum CreditScore {
@@ -175,11 +182,11 @@ type Person record {|
 |};
 ```
 
-Here, the type `Person` is an open record type, the notation `json...;` denotes that this record type can contain additional fields that are not mentioned in the record type descriptor, as long as these additional fields belong to type `json`.
+Here, the type `Person` is an open record type and the notation `json...;` denotes that this record type can contain additional fields that are not explicitly mentioned in the record type descriptor as long as these additional fields belong to type `json`.
 
-The earlier `DoorState` record type was defined explicitly as a closed record type. Therefore, you were able to list out all the possible shapes in the `DoorState` type. If this type was defined as an open record, you would have an infinite number of shapes since `DoorState` values can have any arbitrary fieldset in the code.
+The earlier `DoorState` record type was defined explicitly as a closed record type. Therefore, you were able to list out all the possible shapes in the `DoorState` type. If this type was defined as an open record, you would have an infinite number of shapes since `DoorState` values can have any arbitrary set of fields in the code.
 
-The `Person` record type above has an <a href="/learn/by-example/optional-fields">optional field</a> `creditScore` (denoted by the suffix `"?"`). This means the field value of `creditScore` of a `Person` record can be skipped without setting a value. Later on, this field can be accessed using the `"?."` operator, which would return a value of type `CreditScore?`, which is equivalent to the union type `CreditScore|()`. In Ballerina, the nil value and the type are represented by `()`.
+The `Person` record type above has an <a href="/learn/by-example/optional-fields">optional field</a> `creditScore` (denoted by the suffix `"?"`). This means the `creditScore` field may not be set (i.e., not mandatory) when creating a value of type `Person`. Later on, this field can be accessed using field access (`"."`) or optional field access (`"?."`). The static type of this access would be `CreditScore?`, which is equivalent to the union type `CreditScore|()`. At runtime, accessing the optional field will return the value (belonging to the type of the field `CreditScore`) if the field is present, else, if the field is not present it will return nil. In Ballerina, the nil value and the type are represented by `()`. Field access can be used to access optional fields only when the type of the field does not contain nil (such as `creditScore` in this example).
 
 Let’s create a new type `Student`, which will be a subtype of the `Person` type.
 
@@ -193,7 +200,7 @@ type Student record {|
 |};
 ```
 
-The `Student` type defined above has an extra field college of type `string` compared to the `Person` type. All the possible shapes in the `Student` type are included in the set of shapes in `Person` as well. This is possible because the `Person` type is an open record. If we make the `Person` type a closed record, `Student` will no longer be a subtype of `Person`.
+The `Student` type defined above has an extra field `college` of type `string` compared to the `Person` type. All the possible shapes belonging to the `Student` type are included in the set of shapes belonging to `Person` as well. This is possible because the `Person` type is an open record. If we make the `Person` type a closed record, `Student` will no longer be a subtype of `Person`.
 
 Sample usage of the above types is shown below:
 
@@ -248,14 +255,14 @@ P2's credit score: GOOD
 The type system features for records in Ballerina can be used when implementing <a href="/learn/by-example/http-data-binding.html">data binding</a> operations with structural validation, data types handling, and payload passthrough operations. The functionality will be demonstrated using an HTTP service in Ballerina:
 
 ```ballerina
-http:Client highCreditStoreCustomersDb = check new ("http://example.com/");
+final http:Client highCreditStoreCustomersDb = check new ("http://example.com/");
 
 service / on new http:Listener(8080) {
 
-    resource function post 'record(@http:Payload {} Person entry) returns error? {
+    resource function post 'record(@http:Payload {} Person entry) returns string|error {
         if entry?.creditScore == GOOD || entry?.creditScore == EXCELLENT {
             io:println("High credit score ", entry);
-            http:Response r = check highCreditStoreCustomersDb->post("/store", entry);
+            http:Response _ = check highCreditStoreCustomersDb->post("/store", entry);
         } else {
             io:println("Low credit score ", entry);
         }
@@ -265,8 +272,7 @@ service / on new http:Listener(8080) {
 ```
 
 ```bash
-$ bal run sample.bal 
-[ballerina/http] started HTTP/WS listener 0.0.0.0:8080
+$ bal run sample.bal
 ```
 
 ### Test Scenarios
@@ -280,7 +286,7 @@ $ bal run sample.bal
                                 <tr>
                                     <td>
                                         <span>
-                                       A request is sent without setting the <code>married</code> field. Since this field has a default value in the <code>Person</code> type, the value is automatically populated to that. The <code>ethnicity</code> field is not set since it is marked as optional.
+                                       A request is sent without setting the <code>married</code> field. Since this field has a default value in the <code>Person</code> type, the value is automatically populated to that. The <code>creditScore</code> field is not set since it is marked as optional.
                                        </span>
                                     </td>
                                     <td>
@@ -296,11 +302,12 @@ $ bal run sample.bal
                                        <span class="cTableCode"><code>curl -d '{ "name": "John Little",  "birthYear": "1855" }' http://localhost:8080/record</code></span>
                                     </td>
                                     <td>
-                                        <span class="cTableCode"><code>data binding failed: error {ballerina/lang.typedesc}ConversionError message='map '<' json > ' value cannot be converted to 'Person'</code></span>
+                                        <span class="cTableCode"><code>data binding failed: error("{ballerina/lang.value}ConversionError",message="'map<json>' value cannot be converted to 'Person': 
+                field 'birthYear' in record 'Person' should be of type 'int', found '"1855"'")</code></span>
                                     </td>
                                  </tr> 
                               <tr>
-                                    <td>A request is sent with the optional <code>ethnicity</code> field also set. </td>
+                                    <td>A request is sent with the optional <code>creditScore</code> field also set. </td>
                                     <td>
                                        <span class="cTableCode"><code>curl -d '{ "name": "Sunil Perera",  "birthYear": 1950, "married": true, "creditScore": "GOOD" }' http://localhost:8080/record</code></span>
                                     </td>
@@ -310,12 +317,13 @@ $ bal run sample.bal
                                     </td>
                                  </tr>
                                    <tr>
-                                    <td>A request is sent with a non-existing value of the <code>Ethnicity</code> union type. This is validated by the service and the request fails.</td>
+                                    <td>A request is sent with a non-existing value of the <code>CreditScore</code> enum. This is validated by the service and the request fails.</td>
                                     <td>
                                        <span class="cTableCode"><code>curl -d '{ "name": "Tim Kern",  "birthYear": 1995, "creditScore": "HIGH", "country": "Japan", "zipcode": "98101" }' http://localhost:8080/record</code></span>
                                     </td>
                                     <td>
-                                       <span class="cTableCode"><code>data binding failed: error {ballerina/lang.typedesc}ConversionError message='map< json >' value cannot be converted to 'Person'</code></span>
+                                       <span class="cTableCode"><code>data binding failed: error("{ballerina/lang.value}ConversionError",message="'map<json>' value cannot be converted to 'Person': 
+                field 'creditScore' in record 'Person' should be of type 'CreditScore', found '"HIGH"'")</code></span>
 </td>
                                  </tr>
                                   <tr>

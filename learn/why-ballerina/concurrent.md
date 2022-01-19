@@ -44,10 +44,10 @@ function process(Person[] members, int[] quantities) {
 
     worker w2 {
         int total = int:sum(...quantities);
-        
+
         int employedCount = <- w1;
 
-        int avg = employedCount == 0 ? 0 : total/employedCount;
+        int avg = employedCount == 0 ? 0 : total / employedCount;
         string `Average: ${avg}` -> function;
     }
 
@@ -86,7 +86,7 @@ function process(Person[] members, int[] quantities) {
     int quantitiesSum = int:sum(...quantities);
     int employedMemCount = <- w1;
 
-    io:println("Average: ", employedMemCount == 0 ? 0 : quantitiesSum/employedMemCount);
+    io:println("Average: ", employedMemCount == 0 ? 0 : quantitiesSum / employedMemCount);
 }
 ```
 
@@ -117,24 +117,24 @@ function process(map<Details> & readonly entities) {
     // exact same entries with the exact same fields.
     worker w1 {
         foreach var name in detailsWithoutLocation {
-            persistId(<record {| int id; |} & readonly> entities.get(name));
+            persistId(<record {|int id;|} & readonly>entities.get(name));
         }
     }
 
     worker w2 {
         foreach var name in detailsWithLocation {
             persistIdWithLocation(
-                <record {| int id; string location; |} & readonly> entities.get(name));
+                <record {|int id; string location;|} & readonly>entities.get(name));
         }
     }
 }
 
-function persistId(record {| int id; |} rec) {
-    
+function persistId(record {|int id;|} rec) {
+
 }
 
-function persistIdWithLocation(record {| int id; string location; |} rec) {
-    
+function persistIdWithLocation(record {|int id; string location;|} rec) {
+
 }
 ```
 

@@ -36,7 +36,7 @@ Ballerina yet does not have a release channel for nightly builds that give you a
 
 Patch releases of Ballerina distributions contain bug fixes and fixes for critical stability and security related issues. Occasionally, you would see on-demand patch releases for 2201.0.x.
 
-*Example patch releases: 1.0.6, 1.1.5, 1.1.10*
+*Example patch releases: 2201.0.1, 2201.1.1*
 
 ## Installing Ballerina
 

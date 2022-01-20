@@ -30,6 +30,7 @@ redirect_from:
     }
 
     .getStartLinks{ color: #20b6b0; font-weight: 400;}
+    .getStartLinks:hover{ color: #464646 !important;}
 
     .submit-button{
         padding: 10px 20px;
@@ -123,6 +124,8 @@ font-size: 10px;
     padding-bottom:180px; 
     display:block;
 }
+.card-title{color:#20b6b0;margin-top:0px;line-height: 30px;}
+.card-title:hover{color:#464646 !important}
 
 h4.card-title{height: 90px;}
 .card h4{
@@ -288,11 +291,11 @@ td.cEventDateContainer{
   margin-bottom: 30px !important;
   margin-top:20px !important;
 }
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     body {
         margin-bottom: 50px;
     }
-    .second-nav {
+    /* .second-nav {
         position: fixed;
         top: unset;
         bottom: 0;
@@ -300,7 +303,8 @@ td.cEventDateContainer{
         right: 0;
         z-index: 100;
         
-    }
+    } */
+    .second-nav {display: none;}
 }
 
 
@@ -456,7 +460,7 @@ td.cEventDateContainer{
 
 <section   style="padding-bottom: 30px;">
     <span class="bookMarkOnPage" id="events"></span>
-    <h2 style="padding-right: 15px;">Events</h2>
+    <h2 class="tabViewFix" style="padding-right: 15px;">Events</h2>
     <div class="row" >
       
         <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;">
@@ -554,8 +558,9 @@ td.cEventDateContainer{
                    <a target="_blank" href="/community/monthly-tech-talk">	
                       <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
                    </a>	
-                   <h5 style="margin-bottom: 18px; width:41.5vh">Ballerina OpenAPI Support </h5>		
-                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/joseph-fonseka-04b538a/">Joseph Fonseka</a>, Director - Ballerina Team, WSO2
+                   <h5 style="margin-bottom: 18px;">Ballerina OpenAPI Support </h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/joseph-fonseka-04b538a/">Joseph Fonseka</a>, Director - Ballerina Team, WSO2<br>
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/sumudu-nissanka/">Sumudu Nissanka</a>, Senior Software Engineer, WSO2
                 </td>	
                 <td class="cEventURL"><a class="cEventRegistration" href="/community/monthly-tech-talk" target="_blank" style="text-align: center;">Notify Me</a></td>	
             </tr>
@@ -591,7 +596,7 @@ td.cEventDateContainer{
 
                 <div class="card-body text-primary" style="padding: 18px;">
                   <p class="card-text " style="margin-top: 0;font-weight: 500;" > Articles  </p>
-                  <a target="_blank" href="https://dzone.com/articles/how-to-use-ballerina-local-repository"><h4 class="card-title" style="color:#20b6b0;margin-top:0px;line-height: 30px;">How to Use Ballerina Local Repository</h4></a>
+                  <a target="_blank" href="https://dzone.com/articles/how-to-use-ballerina-local-repository"><h4 class="card-title" >How to Use Ballerina Local Repository</h4></a>
                   <p class="card-text " style="margin-bottom: 0;" > By Pramodya Mendis </p>
                 </div>
             </div>
@@ -600,7 +605,7 @@ td.cEventDateContainer{
             <div class="cBoxCard"  >
                 <div class="card-body text-primary" style="padding: 18px;">
                     <p class="card-text " style="margin-top: 0;font-weight: 500;"> Blog Posts  </p>
-                    <a target="_blank" href="https://medium.com/ballerina-techblog/practical-guide-for-the-language-server-protocol-3091a122b750"><h4 class="card-title" style="color:#20b6b0;margin-top:0px;line-height: 30px;">A Practical Guide for Language Server Protocol                    </h4></a>
+                    <a target="_blank" href="https://medium.com/ballerina-techblog/practical-guide-for-the-language-server-protocol-3091a122b750"><h4 class="card-title" >A Practical Guide for Language Server Protocol</h4></a>
                   <p class="card-text " style="margin-bottom: 0;"> By Malintha Ranasinghe </p>
                 </div>
             </div>
@@ -609,7 +614,7 @@ td.cEventDateContainer{
             <div class="cBoxCard"  >
                 <div class="card-body text-primary" style="padding: 18px;">
                     <p class="card-text " style="margin-top: 0;font-weight: 500;"> Videos & Podcasts </p>
-                    <a target="_blank" href="https://www.infoq.com/podcasts/james-clark-ballerina-language-network-data-concurrency/?utm_source=twitter&utm_medium=link&utm_campaign=calendar"><h4 class="card-title" style="color:#20b6b0;margin-top:0px;line-height: 30px;">How Ballerina Handles Network Interaction, Data, and Concurrency </h4></a>
+                    <a target="_blank" href="https://www.infoq.com/podcasts/james-clark-ballerina-language-network-data-concurrency/?utm_source=twitter&utm_medium=link&utm_campaign=calendar"><h4 class="card-title">How Ballerina Handles Network Interaction, Data, and Concurrency </h4></a>
                   <p class="card-text " style="margin-bottom: 0;"> By James Clark and Charles Humble </p>
                 </div>
             </div>
@@ -706,7 +711,7 @@ td.cEventDateContainer{
         
         <div class="row " style="float: left; background-color: #e6eaeb5d;padding: 25px 20px;margin: 25px 0;">
 
-            <h5 style="padding-left:15px;margin:0 0 10px 0;color: #464646;"> Upcoming Monthly Tech Talk</h5>
+            <h5 style="padding-left:15px;margin:0 0 20px 0;color: #464646;"> Upcoming Monthly Tech Talk</h5>
             <div class="col-sm-12 col-md-12 col-lg-12 " style="float: left; ">
                 <div class="col-sm-4 col-md-4 col-lg-4 mobileViewAdjustment"  >
                     <p class="dateDisplay" style="color: #585A5E; font-size:18px;float: right; font-weight: 500;">Jan 25, 2022</p>
@@ -720,7 +725,8 @@ td.cEventDateContainer{
                     </p>
                     <h4 style="color: #20b6b0;margin-bottom: 24px;" class="gTitle1">Ballerina OpenAPI Support </h4>
                     <p>
-                    <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/joseph-fonseka-04b538a/">Joseph Fonseka</a>, Director - Ballerina Team, WSO2
+                    <a target="_blank" style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/joseph-fonseka-04b538a/">Joseph Fonseka</a>, Director - Ballerina Team, WSO2<br>
+                    <a target="_blank" style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/sumudu-nissanka/">Sumudu Nissanka</a>, Senior Software Engineer, WSO2
                     </p>
     
                 </div>   
@@ -760,7 +766,7 @@ td.cEventDateContainer{
         </div>
        
     </div>
-    <div class="row" style="padding-bottom: 20px;">
+    <div class="row" >
         <div class="col-lg-4 col-md-6 col-sm-12 card">
            
                      <h4 id="running-ballerina-programs-in-the-cloud" class="gTitle1">Contribute to the Resource Library</h4>
@@ -1012,7 +1018,7 @@ document.onscroll = function() {
          display: inherit;
 
       }
-      
+      h1{margin-top: 60px !important;}
       .table-striped > tbody > tr:nth-of-type(2n+1) {
         background-color: transparent !important;
        }
@@ -1041,7 +1047,10 @@ document.onscroll = function() {
     .slackCount img{width: 157px !important; float: left; padding-left: 30px;}
     .subscribeSlack{padding-left: 0px;}
     }
-    
+    @media only screen and (max-width: 810px) {
+        .secNavSticky{display: none;}
+        .tabViewFix{margin-top: -20px !important;}
+    }
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media only screen and (min-width: 1200px) {
       #eventDetails{padding-left: 0px !important;}

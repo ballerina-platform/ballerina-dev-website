@@ -13,6 +13,9 @@
     - title: Writing Your First Ballerina Program 
       url: /learn/user-guide/getting-started/writing-your-first-ballerina-program/
       active: writing-your-first-ballerina-program
+    - title: Writing a gRPC service with Ballerina
+      url: /learn/user-guide/getting-started/writing-a-grpc-service-with-ballerina
+      active: writing-a-grpc-service-with-ballerina
 
 - title: Ballerina Packages
   url: '#'

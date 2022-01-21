@@ -55,8 +55,6 @@ Compiling source
 	hello_service.bal
 
 Running executable
-
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 ```
 This confirms that the service is up and running. 
 

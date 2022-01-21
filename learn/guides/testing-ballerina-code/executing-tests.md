@@ -16,33 +16,33 @@ redirect_from:
 
 ## Test Execution Behavior
 
-Following is the expected order of execution for setup and teardown functions of a test.
+The following is the expected order of execution for setup and teardown functions of a test.
 
 ![Test Execution Order](/learn/images/test-execution-order.png)
 
 
 ## Behavior During Failures
 
-* If BeforeSuite function fails,
+* If a `BeforeSuite` function fails,
  every other following function is skipped.
 
-* If a BeforeGroups function fails,
- the tests belonging to that group, setup and teardown functions specific to those tests will fail.
- The AfterGroups functions for that test group will be skipped. Other setup and teardown functions will be executed as expected.
+* If a `BeforeGroups` function fails,
+ the tests belonging to that group, setup, and teardown functions specific to those tests will fail.
+ The `AfterGroups` functions for that test group will be skipped. Other setup and teardown functions will be executed as expected.
  Tests belonging to other groups will not be affected.
 
-* If BeforeEach function fails,
-Every test will be skipped. Since BeforeSuite is already executed, AfterSuite will be executed.
- Even though the BeforeGroups function is executed prior to BeforeEach, the AfterGroups function will not be
+* If a `BeforeEach` function fails,
+Every test will be skipped. Since `BeforeSuite` is already executed, `AfterSuite` will be executed.
+ Even though the `BeforeGroups` function is executed prior to BeforeEach, the `AfterGroups` function will not be
  executed unless marked as `alwaysRun`.
 
 * If a test function fails, none of the other functions get skipped.
 
 * If the before test function fails, the test function and the after function for that test will be skipped.
 
-* If AfterEach function fails, every following BeforeEach, AfterEach and test function will get skipped.
+* If an `AfterEach` function fails, every following `BeforeEach`, `AfterEach` and test function will get skipped.
 
-* If `alwaysRun` property is enabled, AfterGroups & AfterSuite functions will run  irrespective of the status of other functions.
+* If `alwaysRun` property is enabled, AfterGroups and AfterSuite functions will run  irrespective of the status of other functions.
 
 
 ## Executing Tests Using CLI Commands
@@ -108,7 +108,7 @@ $ bal test --rerun-failed
 Data-driven tests can be executed using the `bal test` command as any other test.
 
 Run only the specified cases of a data set provided using the `dataProvider` attribute.
-Use `#` as the separator and append the case identifier to end of the test function name.
+Use `#` as the separator and append the case identifier to the end of the test function name.
 
 ```bash
 $ bal test --tests <test_function>#Case1

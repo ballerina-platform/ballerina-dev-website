@@ -16,7 +16,7 @@
         - title: Using Assertions
           url: /learn/testing-ballerina-code/writing-tests/#using-assertions
           active: using-assertions
-    - title: Structuring the tests
+    - title: Structuring Tests
       url: '#'
       sublinks:
         - title: Test Source Files
@@ -34,16 +34,13 @@
         - title: Setup and Teardown
           url: /learn/testing-ballerina-code/configuring-tests/#setup-and-teardown
           active: setup-and-teardown
-        - title: Test specific Configurations
+        - title: Test Specific Configurations
           url: /learn/testing-ballerina-code/configuring-tests/#test-specific-configurations
           active: test-specific-configurations
         - title: Test-only Dependencies
           url: /learn/testing-ballerina-code/configuring-tests/#test-only-dependencies
           active: test-only-dependencies
-        - title: Testing with Resources
-          url: /learn/testing-ballerina-code/configuring-tests/#test-with-resources
-          active: test-with-resources
-    - title: Code coverage and Reporting
+    - title: Code Coverage and Reporting
       url : '#'
       sublinks:
         - title: Test Report
@@ -55,22 +52,22 @@
         - title: JaCoCo XML Report
           url: /learn/testing-ballerina-code/code-coverage-and-reporting/#jacoco-xml-report
           active: jacoco-xml-report
-    - title: Data-driven Tests
+    - title: Data-Driven Tests
       url : '#'
       sublinks:
-        - title: Using data providers
+        - title: Using Data Providers
           url: /learn/testing-ballerina-code/data-driven-tests/#using-data-providers
           active: using-data-providers
-        - title: Executing specific data sets
+        - title: Executing Specific Data Sets
           url: /learn/testing-ballerina-code/data-driven-tests/#executing-specific-data-sets
           active: executing-specific-data-sets
-    - title: Test groups
+    - title: Test Groups
       url: "#"
       sublinks:
-        - title: Grouping tests
+        - title: Grouping Tests
           url: /learn/testing-ballerina-code/test-groups/#grouping-tests
           active: grouping-tests
-        - title: Grouping commands
+        - title: Grouping Commands
           url: /learn/testing-ballerina-code/test-groups/#grouping-commands
           active: groupsing-commands
     - title: Testing Services and Clients
@@ -97,10 +94,10 @@
     - title: Executing Tests
       url: '#'
       sublinks:
-        - title: Test Execution behavior
+        - title: Test Execution Behavior
           url: /learn/testing-ballerina-code/executing-tests/#test-execution-behavior
           active: test-execution-behavior
-        - title: behavior During Failures
+        - title: Behavior During Failures
           url: /learn/testing-ballerina-code/executing-tests/#behavior-during-failures
           active: behavior-during-failures
         - title: Executing Tests Using CLI Commands

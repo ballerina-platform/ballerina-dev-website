@@ -27,7 +27,7 @@ redirect_from:
 
 To get started, let's set up the Ballerina package to run tests.
 
-1. Create a folder in the root directory of the package named `tests` in which the test files will be stored.
+1. Create a directory in the root directory of the package named `tests` in which the test files will be stored.
 
     ```bash
     package-directory/
@@ -37,7 +37,7 @@ To get started, let's set up the Ballerina package to run tests.
             main_test.bal
     ```
 
-2. We will be testing the following function in the ***main.bal*** file
+2. Create the following function in the ***main.bal*** file
 
     ```ballerina
     public function intAdd(int a, int b) returns (int) {
@@ -45,7 +45,8 @@ To get started, let's set up the Ballerina package to run tests.
     }
     ```
 
-3. In the **main_test.bal**, we make use of the test module to test out the functionality of the `intAdd` function in the ***main.bal***
+3. In the **main_test.bal**, make use of the test module to test out the functionality of the `intAdd` function in 
+the ***main.bal***
 
     ```ballerina
     import ballerina/test;
@@ -56,6 +57,6 @@ To get started, let's set up the Ballerina package to run tests.
     }
     ```
 
-4. We can execute the tests using the following command
+4. Execute the tests using the following command
 
     ```$ bal test```

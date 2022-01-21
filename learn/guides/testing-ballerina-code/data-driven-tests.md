@@ -1,11 +1,11 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Data-driven Tests
+title: Data-Driven Tests
 description: Learn how to do write data-driven tests using the ballerina test framework.
 keywords: ballerina, programming language, testing
 permalink: /learn/testing-ballerina-code/data-driven-tests/
 active: data-driven-tests
-intro: The Ballerina Test Framework follows a general organized structure that allows for testing code under various conditions by making use of resources and configurations. 
+intro: The Ballerina Test Framework allows you to specify a function that returns a set of data values as a data-provider.
 redirect_from:
 - /learn/testing-ballerina-code/
 - /learn/testing-ballerina-code
@@ -20,7 +20,7 @@ redirect_from:
 
 ## Using Data Providers
 
-A data provider is a function that will be used to provide the data sets for a test function.
+A data provider is a function, which will be used to provide the data sets for a test function.
 A data provider function supports one of the following return types.
 
 ### Map of Tuple or Error
@@ -111,7 +111,7 @@ Running Tests
                 0 skipped
 ```
 
-## Executing Ppecific Data Sets
+## Executing Specific Data Sets
 
 If you need to run only a specific case from the given data set, you can use the test name with the key to do that.
 You can make use of wild cards(`*`) to capture multiple cases as well.
@@ -135,9 +135,9 @@ Running Tests
 		0 skipped
 ```
 
->**Note:** Make sure to include the key within double quotes. 
+>**Note:** Include the key within double-quotes. 
 
-***Example for array of array data sets:***
+***Example for an array of array data sets:***
 
 ```bash
 $ bal test --tests stringDataProviderTest#1

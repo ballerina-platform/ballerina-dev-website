@@ -24,7 +24,7 @@ enable executing instructions at various levels.
 
 ### Suite Level
 
-#### @test:BeforeSuite {}
+#### `@test:BeforeSuite {}`
 The function annotated with the `BeforeSuite` annotation will be run once before any of the tests in the test suite. 
 This can be used for initializing the test suite level pre-requisites.
 
@@ -55,7 +55,7 @@ function testFunction2() {
 }
 ```
 
-#### @test:AfterSuite {}
+#### `@test:AfterSuite {}`
 The `AfterSuite` annotated function will be run once after all the tests in the test suite are run. This can be used for 
 cleaning up the test suite level aspects. A test suite covers tests related to a module.
 
@@ -80,7 +80,7 @@ function afterFunc() {
 
 ### Group Level
 
-#### @test:BeforeGroups {}
+#### `@test:BeforeGroups {}`
 For each group specified in this annotation, the `BeforeGroups` annotated function will be executed once before any of 
 the tests belonging to the group.
 
@@ -119,7 +119,7 @@ function testFunction2() {
 }
 ```
 
-#### @test:AfterGroups {}
+#### `@test:AfterGroups {}`
 For each group specified in this annotation, the `AfterGroups` annotated function will be executed once after all the 
 tests belonging to the group is executed.
 
@@ -159,7 +159,7 @@ function afterGroupsFunc2() {
 
 ### Test Case Level
 
-#### @test:BeforeEach
+#### `@test:BeforeEach`
 The `BeforeEach` annotated function will be run before each test in the test suite. This can be used to initialize the 
 test-level prerequisites repeatedly before every test function.
 
@@ -169,7 +169,7 @@ test-level prerequisites repeatedly before every test function.
 import ballerina/io;
 import ballerina/test;
 
-// The `BeforeEach` function, which is executed before each test function
+// The `BeforeEach` function, which is executed before each test function.
 @test:BeforeEach
 function beforeFunc() {
     io:println("I'm the before function!");
@@ -197,7 +197,7 @@ function testFunction3() {
 }
 ```
 
-#### @test:AfterEach
+#### `@test:AfterEach`
 The `AfterEach` annotated function will be run after each test within the test suite. This can be used to clean up the 
 test-level aspects repeatedly after every test function.
 
@@ -237,30 +237,33 @@ function testFunction3() {
 
 ### Each Test Case
 
-#### @test:Config { before : “ “ }
+#### `@test:Config { before : “ “ }`
 The test config annotation makes use of ‘before’ to denote which function needs to execute before the particular 
-test is run
+test is run.
 
-#### @test:Config { after : “ “ }
+#### `@test:Config { after : “ “ }`
 The test config annotation makes use of ‘after’ to denote which function needs to execute before the particular 
-test is run
+test is run.
 
 
 ## Test Specific Configurations
 Configurations for testing can be provided using configurable variables. The values for configurable variables can be
-provided in a file named `Config.toml` located in the `tests/` directory which will only be initialized when the tests
-are run. It is important to note that if the `Config.toml` is not specified in the `tests/` directory, the values will
+provided in a file named `Config.toml` located in the `tests/` directory, which will only be initialized when the tests
+are run. 
+
+>**Note:** If the `Config.toml` is not specified in the `tests/` directory, the values will
 be either taken from the `Config.toml` in the root directory or default values will be used.
 
-Configurable variables are useful when we require separate configurations that cannot be feasibly used outside of 
-testing. This is particularly useful when testing services and clients where we may need different host values when we
+Configurable variables are useful when you require separate configurations that cannot be feasibly used outside of 
+testing. This is particularly useful when testing services and clients where you may need different host values when you
 are trying to test the service or client.
 
 
 ## Test-only Dependencies
-Dependencies meant to be resolved only during testing and can be specified in the Ballerina.toml file by specifying the scope
+Dependencies meant to be resolved only during testing and can be specified in the `Ballerina.toml` file by specifying the 
+scope.
 
-    ```
+    ```toml
     [[platform.java11.dependency]]
     path = "/user/foo/libs/abc.jar"
     scope = "testOnly"

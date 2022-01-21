@@ -22,7 +22,7 @@ redirect_from:
 Test grouping allows us to control the execution of tests by partitioning them into groups. The Test Framework allows
 for a single test to have multiple groups. 
 
-A test is assigned to a group via the test configuration `groups` key which accepts a string array of groups. 
+A test is assigned to a group via the test configuration `groups` key, which accepts a string array of groups. 
 
 ***Example:*** 
 
@@ -74,7 +74,7 @@ I'm a test belonging to groups g1 and g2!
                 0 skipped
 ```
 
-The groups flag supports executing multiple groups by using comma separated arguments
+The groups flag supports executing multiple groups by using comma-separated arguments.
 
 ```bash
 $bal test --groups g1,g2
@@ -100,11 +100,11 @@ I'm a test belonging to group g2!
 
 ### Disabling Grouped Tests
 
-To skip execution of certain groups of tests, the `--disable-groups` flag is used during test execution.
+To skip the execution of certain groups of tests, the `--disable-groups` flag is used during test execution.
 
 ```bal test --disable-groups g2```
 
-which results in an output of :
+The above results in an output of :
 
 ```bash
 Compiling source

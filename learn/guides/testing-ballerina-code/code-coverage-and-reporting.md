@@ -1,7 +1,7 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
 title: Code Coverage and Reporting
-description: Learn how to do code coverage and reporting for ballerina tests.
+description: Learn how to perform code coverage and reporting for Ballerina tests.
 keywords: ballerina, programming language, testing
 permalink: /learn/testing-ballerina-code/code-coverage-and-reporting/
 active: code-coverage-and-reporting
@@ -62,7 +62,7 @@ A sample view of the code coverage report is shown below.
 
 ## JaCoCo XML Report
 
-You can pass the `--coverage-format=xml`  flag along with the `--code-coverage` flag in the test execution command and
+You can pass the `--coverage-format=xml` flag along with the `--code-coverage` flag in the test execution command and
  generate the JaCoCo XML report at the end of the test execution.
- This file can be uploaded to CI/CD tools (e.g., CodeCov) to display the coverage information for both Ballerina and
+ This file can be uploaded to the CI/CD tools (e.g., CodeCov) to display the coverage information for both Ballerina and
   the native Java sources used within a Ballerina package.

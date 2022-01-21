@@ -29,24 +29,24 @@ Once the test module is imported, the following annotation can be used to write 
 
 ### '@test:Config {}'
 
-The function specified after the annotation is a test function. This annotation supports fields to configure the test case with the following.
+The function specified after the annotation is a test function. This annotation supports fields to configure the test 
+case with the following.
 
 *   Enable/disable the test.
-    ***enable: {true&#124;false}*** - Default: true
+    ***enable: {true&#124;false}*** - The default value is `true`.
     
 *   Set up and tear down prerequisites required for a test case.
-    ***before: &lt;function name&gt;*** - The function to be run just before the test is run. Default: none
-    ***after: &lt;function name&gt;*** - The function to be run just after the test is run. Default: none
+    ***before: &lt;function name&gt;*** - The function to be run just before the test is run. The default value is `none`.
+    ***after: &lt;function name&gt;*** - The function to be run just after the test is run. The default value is `none`.
     
-*   Define the order of test execution.
+*   Defines the order of the test execution.
     ***dependsOn: [&lt;function names>, …]*** - List of functions on which the test function depends. The order in which the comma-separated list appears has no prominence. In case there needs to be an order, the `dependsOn` parameter can be used to create an ordered sequence of functions with one function depending on the other.
 
-*   Define data sets for data-driven tests.
-    ***dataProvider: &lt;function name>*** - Specifies the function that will be used to provide the data sets for the test.
+*   Defines data sets for data-driven tests.
+    ***dataProvider: &lt;function name>*** - Specifies the function, which will be used to provide the data sets for the test.
 
 *   Group test cases using test groups
-    ***groups: [“&lt;test group name”, …]*** - A comma-separated list of test group names (one or more) to which this test
- belongs.
+    ***groups: [“&lt;test group name”, …]*** - A comma-separated list of test group names (one or more) to which this test belongs.
 
 ***Example:***
 

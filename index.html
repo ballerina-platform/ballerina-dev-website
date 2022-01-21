@@ -28,7 +28,7 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
 .cBallerina-io-Gray-row {
   padding-bottom:0px;
 }
-
+tr:last-child >td{border-bottom: 0 !important;}
 a {
   font-size: 20px;
   color: #20b6b0;
@@ -478,6 +478,21 @@ public function main() returns error? {
                   </td>	
                   <td class="cEventURL"><a class="cEventRegistration" href="/community/monthly-tech-talk/" target="_blank" style="text-align: center;">More Info</a></td>	
               </tr>
+              <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+               <td class="cEventDateContainer cEventDateContainer1" style="border-bottom: none !important;">	
+                  <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">February 2, 2022</p>	
+                  <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Wednesday</p>	
+                  <p class="cEventLocation" style="text-align: right;">Online</p>	
+               </td>	
+               <td class="cEventDetail" id="eventDetails" style="border-bottom: none !important;">	
+                  <a target="_blank" href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/">	
+                     <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Meetup: CodeSeeker's Endless Programming Languages</p>	
+                  </a>	
+                  <h5 style="margin-bottom: 18px;">Ballerina - A Cloud Native Programming Language</h5>		
+                  <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/hasithaaravinda/">Hasitha Aravinda</a>, Associate Director/Architect, WSO2
+               </td>	
+               <td class="cEventURL" style="border-bottom: none !important;"><a class="cEventRegistration" href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/" target="_blank" style="text-align: center;">More Info</a></td>	
+           </tr>
               
           </table>
           
@@ -658,19 +673,19 @@ public function main() returns error? {
     border-bottom-color: currentcolor;
     border-bottom-style: none;
     border-bottom-width: medium;
-    /* border-bottom: 1px solid #c7c7c7 !important; */
+    border-bottom: 1px solid #c7c7c7 !important;
     padding: 30px 35px !important;
    }
-
+   tr:last-child >td{border-bottom: 0 !important;}
    td.cEventURL{
     padding: 30px 0px 30px 35px !important;
    }
    .table-striped > tbody > tr:nth-of-type(2n+1) {
     background-color:transparent !important;
     }
-    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+    /* table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
   border-bottom: none!important;
-  }
+  } */
    /* Large devices (laptops/desktops, 992px and up) */
    @media only screen and (max-width: 992px) {
       td.cEventDateContainer, td.cEventDetail, td.cEventURL{
@@ -689,18 +704,17 @@ public function main() returns error? {
         display:inline-block;
         padding-right: 10px;
         margin-bottom: 10px !important;
+        padding-top: 20px;
     }
-    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils tr.cLastTableRow td.cEventDateContainer {
-    border:none !important;
-    }
-    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
-     border-bottom: none!important;}
-     
+    a.cEventRegistration, input.cSubmitButton {margin-bottom: 30px !important;}
+    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils tr.cLastTableRow td.cEventDateContainer {border:none !important;}
+    /* table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+     border-bottom: none!important;} */
     }
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media only screen and (min-width: 1200px) {
       #eventDetails{padding-left: 0px !important;}
-
+      td.cEventURL {width: 25%;}
     }
  
    

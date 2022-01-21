@@ -231,3 +231,8 @@ see the below output print on the console.
 ```
 Response : Hello Ballerina
 ```
+
+To learn more about gRPC support in Ballerina, take a look at the following:
+- [gRPC Library Documentation](https://lib.ballerina.io/ballerina/grpc/latest)
+- [gRPC CLI tooling guide](https://ballerina.io/learn/cli-documentation/grpc/)
+- [gRPC Examples](https://ballerina.io/learn/by-example/grpc-simple.html?is_ref_by_example=true)

@@ -12,6 +12,8 @@ redirect_from:
  - /learn/publishing-packages-to-ballerina-central
 ---
 
+Dependencies used in a package are Ballerina library packages. A library package can be created with the `bal new` command.
+
 ## Creating a Library Package
 
 Execute the `bal new -t lib` command to create a new library package.
@@ -20,7 +22,7 @@ Execute the `bal new -t lib` command to create a new library package.
 bal new hello --template lib
 ```
 
-This will create a new Ballerina package with a `hello` function. The `bal new` command generates the below for a library package:
+This will create the `Ballerina.toml` file, the `hello.bal` source file and the `Package.md`. For more information on these files, see [Package Layout](/learn/organizing-ballerina-code/package-layout/).
 
 ```bash
 cd hello
@@ -35,7 +37,7 @@ hello
 
 It creates the `Ballerina.toml` file. Apart from it, the `hello.bal` source file and the [Package.md](/learn/organizing-ballerina-code/package-layout/#packagemd) files are created. For more information on these, see [Package Layout](/learn/organizing-ballerina-code/package-layout/).
 
-The `Ballerina.toml` file will include the content below.
+You can edit the `Ballerina.toml` file to change the org name, package name and version as you prefer.
 
 ```toml
 [package]
@@ -47,10 +49,10 @@ version = "0.1.0"
 observabilityIncluded = true
 ```
 
-Execute the `bal build -c` to build the Ballerina archive of the package.
+Execute the `bal pack` command to generate the Ballerina archive.
 
 ```bash
-bal build -c
+bal pack
 Compiling source
 	user/hello:0.1.0
 
@@ -60,11 +62,9 @@ Creating bala
 
 ## Publishing a Library Package to Ballerina Central
 
-Now, that you have a package to share with others, it can be published to the [Ballerina Central](https://central.ballerina.io/). 
+A Ballerina archive can be published to the [Ballerina Central](https://central.ballerina.io/). Before you publish, Ensure the package works as intended because a publish is **permanent**. Once published to Ballerina Central, the version can never be overwritten and the package cannot be removed. However, the number of versions of a package that can be pushed to Ballerina Central is not restricted.
 
-Ensure the package works as intended because a publish is **permanent**. Once published to Ballerina Central, the version can never be overwritten and the package cannot be removed. However, the number of versions of a package that can be pushed to Ballerina Central is not restricted.
-
->**Tip:** As a precaution, use the [local repository](/learn/managing-dependencies/#overriding-dependencies) first to test out the functionality of the library package before publishing it to Ballerina Central.
+>**Tip:** As a precaution, use the [local repository](/learn/managing-dependencies/#using-dependencies-from-the-local-repository) first to test out the functionality of the library package before publishing it to Ballerina Central.
 
 
 ### Preparing for Publishing
@@ -101,4 +101,4 @@ bal push
 
 After publishing your first package, you can create a second package and use the already-published package in it.
 
-Any package published in Ballerina Central is public and they can be used in packages as explained in [Dependencies](/learn/managing-dependencies/).
+Any package published in Ballerina Central is public and they can be used in packages as explained in [Dependencies](/learn/managing-dependencies/#importing-a-module).

@@ -1,0 +1,144 @@
+---
+layout: ballerina-organizing-code-left-nav-pages-swanlake
+title: Organizing Ballerina Code
+description: The sections below include information about packages, and how the growth of your source code can be managed.
+keywords: ballerina, programming language, ballerina packages, dependencies, importing modules
+permalink: /learn/organizing-ballerina-code/
+active: managing-dependencies
+intro: The sections below include information about packages, and how the growth of your source code can be managed.
+redirect_from:
+- /learn/user-guide/ballerina-packages/organizing-ballerina-code
+- /learn/user-guide/ballerina-packages/organizing-ballerina-code/
+- /learn/organizing-ballerina-code
+- /learn/user-guide/structuring-ballerina-code/
+- /learn/user-guide/structuring-ballerina-code
+- /learn/user-guide/ballerina-packages/
+- /learn/user-guide/ballerina-packages
+---
+
+## Package Structure
+
+Writing code in an organized manner from the beginning of the project is important for the lifecycle of the project and its maintainability in the long run. Organized code will make it easy to extend and improve your project over time. Ballerina project structure makes it easy to write clean code by eliminating repetitions, writing reusable code, adding new features without changing the existing code etc. To achieve this, Ballerina has the concept of Packages and modules. 
+
+Ballerina code is organized in a single shareable unit called a Package. Package is a collection of modules and a module is a collection of Ballerina source files, test files and resources. A package should contain at least one module which is called the default module. Each module has its own directory which is used to organize source files, test files and resources.
+
+A package is a collection of related modules that are versioned and distributed as a single unit. It is common in small projects to have only one module (default) in a package. As a result, the default module’s content is placed directly in the root of the package directory.
+
+`bal new` command creates the Package with the default module. This will generate the `Ballerina.toml` which identifies a directory as a package and will additionally generate a sample source file in the default module.
+
+### Creating your first Ballerina package
+
+You can create a Ballerina package with the `bal new` command as follows. 
+
+```bash
+bal new hello_world
+```
+
+This will create a new Ballerina package with a main function. 
+
+The `bal new` command generates the following file structure.
+
+```bash
+cd hello_world
+tree .
+.
+├── Ballerina.toml
+└── main.bal
+    
+0 directories, 2 files
+```
+
+You may also try creating a service or a lib package instead of a main function. 
+
+#### Creating a Ballerina service package
+
+```bash
+bal new -t service hello_service
+```
+
+This will create a Ballerina source containing a service declaration with Ballerina tests to test the service. The following file structure will be generated with the service template.  
+
+```bash
+cd hello_service
+.
+├── Ballerina.toml
+├── service.bal
+└── tests
+    └── service_test.bal
+
+1 directory, 3 files
+```
+
+#### Creating a library Package
+
+```bash
+bal new -t lib hello_lib
+```
+
+This will create a Ballerina source file containing a function that prints `Hello, world!` along with a test file to test the function. 
+Additionally, it will also create the `Package.md` file which is required to [publish a package to Ballerina Central]((/learn/user-guide/publishing-packages-to-ballerina-central).
+
+```bash
+
+├── Ballerina.toml
+├── hello_lib.bal
+├── Module.md
+├── Package.md
+├── resources
+└── tests
+    └── lib_test.bal
+```
+
+### The Default Module
+
+When a package is created with `bal new` command, the `Ballerina.toml` and the `main.bal` is created. The `main.bal` file is a Ballerina source file which belongs to the default module. The root directory of the default module is the root directory of the package as well. 
+Therefore, the package root directory contains files that belong to the package as well the default module.
+
+You can add more source files at the root and symbols such as functions and variables in one file are visible to other files because they are in the same namespace. This namespace is called the default module of the package. The package name, which is specified in the Ballerina.toml file, is also used to refer to the default module.
+
+### Non-default modules
+
+As projects grow in complexity, the need arises to organize code better. This could be because you want to separate the functionalities of the package and/or to add boundaries to visibility of certain functionalities. Therefore, Ballerina allows subdividing the code into multiple modules as well.
+
+You can add more modules to the package using the `bal add` command:
+
+```bash
+cd hello_world
+bal add util
+```
+
+This will create the `modules` directory in the package root. The `modules/util` directory is the root of the `hello_world.util` module. 
+The package structure after adding a non-default module will have the directory structure below.
+```bash
+.
+├── Ballerina.toml
+├── main.bal
+└── modules
+     └── util
+         └── util.bal
+
+2 directories, 3 files
+```
+
+## Importing a module from the same package 
+
+You can access any public symbol from another module of the package by importing the particular module using an import declaration. 
+The import declaration syntax is as follows.
+
+```bash
+import module-name [as import-prefix];
+```
+
+* The `import-prefix` has to be a valid Ballerina identifier and the `import-prefix` is used to refer to public symbols in the declared module.
+* The `import-prefix` is optional. If it is not available, the last part of the module name can be used.
+
+In a package which has the default module containing the main.bal and a non-default module `hello-world.util`, 
+you can add a public function in the `hello_world.util` module and use this function in the `main.bal` file in the default module.
+
+```bal
+import hello_world.util;
+
+String formattedMsg = util:properCaseMessage("hello world!");
+```
+
+Since the `import-prefix` is not given here, the module name `util` is used to refer to the symbols in the `hello_world.util` module. 

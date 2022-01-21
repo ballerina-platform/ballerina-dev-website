@@ -312,6 +312,14 @@ redirect_from:
 </div>
 </div>
 
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card" >
+  <a href="/learn/style-guide/package-references/">
+ 	 <h3 id="style-guide">Package References</h3></a>
+		<p>References related to Ballerina Packages.</p>
+</div>
+</div>
+
 
 <div class="row" style=" margin-bottom:30px">
 <h2 id="getting-started">Talks</h2>

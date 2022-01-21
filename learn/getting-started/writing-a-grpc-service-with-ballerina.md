@@ -231,10 +231,3 @@ see the below output print on the console.
 ```
 Response : Hello Ballerina
 ```
-
-
-
-
-
-
-

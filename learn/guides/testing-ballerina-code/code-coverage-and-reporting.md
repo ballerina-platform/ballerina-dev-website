@@ -5,7 +5,7 @@ description: Learn how to perform code coverage and reporting for Ballerina test
 keywords: ballerina, programming language, testing
 permalink: /learn/testing-ballerina-code/code-coverage-and-reporting/
 active: code-coverage-and-reporting
-intro: The Ballerina Test Framework follows a general organized structure that allows for testing code under various conditions by making use of resources and configurations. 
+intro: The Ballerina Test Framework allows you to generate Test reports and Code coverage reports for the executed tests.
 redirect_from:
 - /learn/testing-ballerina-code/
 - /learn/testing-ballerina-code

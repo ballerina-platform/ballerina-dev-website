@@ -116,7 +116,9 @@ Running Tests
 If you need to run only a specific case from the given data set, you can use the test name with the key to do that.
 You can make use of wild cards(`*`) to capture multiple cases as well.
 
-***Example for map data sets:***
+***Example:***
+
+The following is an example to execute map data sets.
 
 ```bash
 $ bal test --tests fruitsDataProviderTest#"'banana'"
@@ -137,7 +139,9 @@ Running Tests
 
 >**Note:** Include the key within double-quotes. 
 
-***Example for an array of array data sets:***
+***Example:***
+
+The following is an example to execute array data sets.
 
 ```bash
 $ bal test --tests stringDataProviderTest#1

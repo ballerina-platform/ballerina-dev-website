@@ -16,7 +16,8 @@ redirect_from:
 
 ## Defining a Test
 
-The test module provides the necessary annotations to construct a test suite. Therefore, importing the test module is essential in order to write Ballerina tests.
+The test module provides the necessary annotations to construct a test suite. Therefore, importing the test module is 
+essential in order to write Ballerina tests.
 
 
 ```ballerina
@@ -123,7 +124,8 @@ function mapDataProvider() returns map<[int, int, string]>|error {
 
 ## Using Assertions
 
-The Ballerina test framework supports the following assertions, which help to verify the expected behavior of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
+The Ballerina test framework supports the following assertions, which help to verify the expected behavior of a piece of
+ code. These assertions can be used to decide if the test is passing or failing based on the condition.
 
 <table class="table cCodeTable" >
     <tr>

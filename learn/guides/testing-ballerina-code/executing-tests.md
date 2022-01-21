@@ -23,26 +23,26 @@ The following is the expected order of execution for setup and teardown function
 
 ## Behavior During Failures
 
-* If a `BeforeSuite` function fails,
+* If a `BeforeSuite` function fails, 
  every other following function is skipped.
 
-* If a `BeforeGroups` function fails,
- the tests belonging to that group, setup, and teardown functions specific to those tests will fail.
- The `AfterGroups` functions for that test group will be skipped. Other setup and teardown functions will be executed as expected.
- Tests belonging to other groups will not be affected.
+* If a `BeforeGroups` function fails, the tests belonging to that group, setup, and teardown functions specific to those
+ tests will fail. The `AfterGroups` functions for that test group will be skipped. Other setup and teardown functions 
+ will be executed as expected. Tests belonging to other groups will not be affected.
 
 * If a `BeforeEach` function fails,
-Every test will be skipped. Since `BeforeSuite` is already executed, `AfterSuite` will be executed.
- Even though the `BeforeGroups` function is executed prior to BeforeEach, the `AfterGroups` function will not be
- executed unless marked as `alwaysRun`.
+ every test will be skipped. Since `BeforeSuite` is already executed, `AfterSuite` will be executed. Even though the 
+ `BeforeGroups` function is executed prior to BeforeEach, the `AfterGroups` function will not be executed unless marked 
+ as `alwaysRun`.
 
 * If a test function fails, none of the other functions get skipped.
 
-* If the before test function fails, the test function and the after function for that test will be skipped.
+* If the `before` test function fails, the test function and the `after` function for that test will be skipped.
 
 * If an `AfterEach` function fails, every following `BeforeEach`, `AfterEach` and test function will get skipped.
 
-* If `alwaysRun` property is enabled, AfterGroups and AfterSuite functions will run  irrespective of the status of other functions.
+* If `alwaysRun` property is enabled, `AfterGroups` and `AfterSuite` functions will run irrespective of the status of 
+other functions.
 
 
 ## Executing Tests Using CLI Commands
@@ -85,7 +85,7 @@ $ bal test --tests <test_function>
 
 Run a given set of functions in the default module only.
 
-```
+```bash
 $ bal test --tests PackageName:<test_function>
 ```
 

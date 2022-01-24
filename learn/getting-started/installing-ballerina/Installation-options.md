@@ -50,16 +50,16 @@ The installer should put the `C:\Program Files\Ballerina\<BALLERINA-DIRECTORY>\b
 - For DEB file:  `/usr/lib/ballerina`
 - For RPM file:  `/usr/lib64/ballerina`
 
-> **Info:** Alternatively, you can use either of the commands below to install Ballerina using the downloaded DEB or RPM file. Replace the `ballerina-linux-installer-x64-<BALLERINA-VERSION>.deb` or `ballerina-linux-installer-x64<BALLERINA-VERSION>.rpm` with the actual file path. 
+> **Info:** Alternatively, you can use either of the commands below to install Ballerina using the downloaded DEB or RPM file. Replace the `ballerina-<BALLERINA-VERSION>-linux-x64.deb` or `ballerina-<BALLERINA-VERSION>-linux-x64.rpm` with the actual file path. 
 
 For example, for the DEB file:
 ```
-dpkg -i ballerina-linux-installer-x64-swan-lake-<VERSION>.deb 
+dpkg -i ballerina-<VERSION>-swan-lake-linux-x64.deb 
 ```
 
 For example, for the RPM file:
 ```
-rpm -i ballerina-linux-installer-x64-swan-lake-<VERSION>.rpm 
+rpm -i ballerina-<VERSION>-swan-lake-linux-x64.rpm 
 ```
 
 
@@ -89,9 +89,9 @@ bal -v
 Make certain the command output shows the version that you downloaded as shown below.
 
 ```bash
-Ballerina Swan Lake <VERSION>
+Ballerina <VERSION> (Swan Lake)
 Language specification 2021R1
-Update Tool 1.3.6
+Update Tool 1.3.7
 ```
 
 ## Updating Ballerina
@@ -127,12 +127,12 @@ To remove:
 
 For example, for the DEB file:
 ```
-apt-get remove ballerina-swan-lake-<VERSION>
+apt-get remove ballerina-<VERSION>-swan-lake
 ```
 
 For example, for the RPM file:
 ```
-rpm -e ballerina-swan-lake-<VERSION>
+rpm -e ballerina-<VERSION>-swan-lake
 ```
 
 

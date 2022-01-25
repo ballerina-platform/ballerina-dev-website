@@ -19,7 +19,7 @@ redirect_from:
 
 ## Usage of the Tool
 
-The code generation tool can produce `service/client stub files` and `service/client skeletons` in Ballerina Language.
+The code generation tool can produce `service/client stub files` and `service/client skeletons` in the Ballerina Language.
  
 > In Ballerina, Protocol Buffers serialization is only supported in the gRPC module. Therefore, you can only use
 > this tool to generate Ballerina source code for gRPC service definitions.
@@ -49,14 +49,14 @@ If the package is not specified, the output will be written to a 'temp' director
 generated.
 
 `-- proto-path` - Path to a directory in which to look for '.proto' files when resolving import directives. If 
-omitted, the current directory is used. The '.proto' file specified in 'input', must reside in 'proto-path' so that the 
+omitted, the current directory is used. The '.proto' file specified in the 'input' must reside in the 'proto-path' so that the 
 compiler can determine its canonical name.
 
 
 
 ## Sample
 
-The below example shows how you can generate Ballerina source code from the following Protocol Buffers definition (in the `helloworld.proto` file).
+The example below shows how you can generate Ballerina source code from the following Protocol Buffers definition (in the `helloworld.proto` file).
 
 ```proto
 syntax = "proto3";
@@ -79,7 +79,7 @@ message HelloReply {
  string message = 1;
 }
 ```
-Note: The sample service definition is taken from the quick start guide in gRPC official site.
+**Note:** The sample service definition is taken from the quick start guide on the gRPC official site.
 
 ### Executing the Sample
 
@@ -92,7 +92,7 @@ Once you execute the command, the stub file (`helloworld_pb.bal`) and the servic
 
 
 * Execute the below command to generate the client/service stub and client template.
-```
+```bash
 $ bal grpc --input helloworld.proto --mode client --output client
 ```
 Once you execute the command, the stub file (`helloworld_pb.bal`) and the client template file (`greeter_client.bal`) are generated inside the client directory.

@@ -107,12 +107,6 @@ If you already have a jBallerina version above 1.1.0 installed, you can use the 
 For more information, see [Keeping Ballerina Up to Date](/learn/tooling-guide/cli-tools/update-tool/).
 
 
-## Building from Source
-
-For instructions, see [Building from Source](/learn/user-guide/getting-started/building-from-source/).
-
-
-
 ## Uninstalling Ballerina
 
 Usually, the installation location is `/Library/Ballerina/` in macOS, `/usr/lib/ballerina/` for DEB and `/usr/lib64/ballerina/` for RPM in Linux, and `C:\Program Files\Ballerina\` in Windows.

@@ -117,6 +117,51 @@ codeCoverage = true
 cloud = "k8s"
 ```
 
+### Packaging Java Libraries
+
+When you compile a Ballerina package with `bal build`, the compiler creates an executable JAR file. However, if the package does not contain an entry point, it will produce a non-executable JAR file (a library package), which can be used in another package/program. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives.
+
+You are free to store the JAR files anywhere in your file system. As a best practice, maintain Java libraries inside the package.
+The platform-specific library information needs to be specified in the `Ballerina.toml` file. Java libraries are considered as platform-specific libraries.
+Here, is how you can specify a JAR file dependency in the `Ballerina.toml` file.
+
+```toml
+[[platform.java11.dependency]]
+# Absolute or relative path to the JAR file
+path = "<path-to-jar-file-1>"
+# An optional comma-separated list of Ballerina module names (to restrict the usage of this JAR)
+modules = ["<ballerina-module-1>"]
+```
+
+Alternatively, you can also specify Maven dependencies as platform-specific libraries. These dependencies specified would then get resolved into the `target/platform-libs` directory when building the package. You can specify a Maven dependency in the `Ballerina.toml` file as shown below.
+
+```toml
+[[platform.java11.dependency]]
+# An optional comma-separated list of Ballerina module names (to restrict the usage of this JAR)
+modules = ["<ballerina-module-1>"]
+# Group ID of the Maven dependency
+groupId = "<group-id>"
+# Artifact ID of the Maven dependency
+artifactId = "<artifact-id>"
+# Version of the Maven dependency
+version = "<version>"
+```
+
+If you wish to use a custom Maven repository, you can specify it in the `Ballerina.toml` file as shown below.
+```toml
+[[platform.java11.repository]]
+id = "<maven-repository-id>"
+url = "<maven-repository-url>"
+username = "<maven-repository-username>"
+password = "<maven-repository-password>"
+```
+
+If your package has only the default root module, then you can attach all the JAR file dependencies to your default root module as the best practice.
+
+If your package is a Ballerina library package, then you should specify the JAR file dependencies in each Ballerina module if that module depends on the JAR file.
+
+The `bal build` packages all JARs specified in the `Ballerina.toml` file with the executable JAR file.
+
 ## `Dependencies.toml`
 
 The [`Dependencies.toml`](/learn/managing-dependencies/#managing-dependencies) locks the versions of the dependencies so that you can have a repeatable build.

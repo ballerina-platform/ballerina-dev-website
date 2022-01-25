@@ -200,7 +200,7 @@ redirect_from:
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
 <a href="/learn/calling-java-code-from-ballerina/">
  <h3 id="calling-java-code-from-ballerina">Calling Java Code from Ballerina</h3></a>
-		<p>Instructions on the supported interoperability features. </p>
+		<p>Details of calling Java code from Ballerina using Java interoperability.  </p>
 </div>
 </div>
 
@@ -267,6 +267,15 @@ redirect_from:
 </div>
 
 </div>
+
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card" >
+  <a href="/learn/java-interoperability/">
+     <h3 id="the-bal-tool">Java Interoperability</h3></a>
+		<p>Instructions on the supported Java interoperability features.  </p>
+</div>
+</div>
+
 </div>
 
 

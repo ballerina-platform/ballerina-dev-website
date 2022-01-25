@@ -5,7 +5,7 @@ description: Let’s set up a Ballerina development environment and write a simp
 keywords: ballerina, programming language, ballerina packages, getting started
 permalink: /learn/getting-started-with-ballerina
 active: getting-started-with-ballerina
-intro: Let’s get you set up a Ballerina development environment and write a simple Ballerina program.
+intro: Let’s set up a Ballerina development environment and write a simple Ballerina program.
 ---
 ```
 

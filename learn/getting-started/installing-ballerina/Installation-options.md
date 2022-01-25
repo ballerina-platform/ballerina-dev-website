@@ -135,10 +135,3 @@ For example, for the RPM file:
 rpm -e ballerina-<VERSION>-swan-lake
 ```
 
-
-## What's Next?
-
-Once you have successfully installed Ballerina, now you can [write your first Ballerina program](/learn/user-guide/getting-started/writing-your-first-ballerina-program/).
-
->**Tip:** To get help when you work with Ballerina, see [Community](/community).
-

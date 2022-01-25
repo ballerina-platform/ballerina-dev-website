@@ -66,7 +66,7 @@ In this code:
 
 - The first line is an import statement that makes the capabilities in the `[ballerina/io](https://lib.ballerina.io/ballerina/io/latest)` module available to your program. This module contains functions to write to the console, read from the console, and perform read/write operations on files.,
 - The `main` function is your program’s entry point and you can execute it by running the program. 
-- This function contains a statement that prints `Hello, World!` to the console. This statement calls the `println` function in the `io` with `Hello, World!`.
+- This function contains a statement that prints `Hello, World!` in the console. This statement calls the `println` function in the `io` with `Hello, World!`.
 
 If you are interested in learning more about the language, read our [Language Basics](https://ballerina.io/learn/language-basics/) guide. 
 

@@ -6,7 +6,6 @@
       active: java-interoperability
     - title: The Bindgen Tool
       url: /learn/java-interoperability/the-bindgen-tool/
-      active: the-bindgen-tool
       sublinks:
         - title: The Bindgen Command
           url: /learn/java-interoperability/the-bindgen-tool/#the-bindgen-command
@@ -25,7 +24,6 @@
           active: support-for-java-casting
     - title: Ballerina FFI
       url: /learn/java-interoperability/ballerina-ffi/
-      active: ballerina-ffi
       sublinks:
         - title: The External Function Body
           url: /learn/java-interoperability/ballerina-ffi/#the-external-function-body

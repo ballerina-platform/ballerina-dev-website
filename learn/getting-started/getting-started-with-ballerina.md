@@ -35,7 +35,7 @@ $bal version
 
 Let’s write a Ballerina program that prints “Hello, World!”. Use the `bal new` command to create a new Ballerina project. 
 
-```
+```bash
 $ bal new greeter
 ```
 

@@ -97,7 +97,7 @@ Hello, World!
 
 ## Write a simple REST API
 
-Now let’s change our greeter application to a REST API. Ballerina has first-class abstractions for services, resources, etc., and they make network service development easier and more fun. 
+Now, let’s change our `greeter` application to a REST API. Ballerina has first-class abstractions for services, resources, etc., and they make network service development easier and more fun. 
 
 You can replace the `main.bal` content with the following code.
 

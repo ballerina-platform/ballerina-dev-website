@@ -1,7 +1,7 @@
 ---
 layout: ballerina-language-basics-left-nav-pages-swanlake
 title: Writing a gRPC Service with Ballerina
-description: This guide will walk you through writing a simple Ballerina gRPC service and invoking the service through Ballerina gRPC client application.
+description: This guide will walk you through writing a simple Ballerina gRPC service and invoking the service through a Ballerina gRPC client application.
 keywords: ballerina, grpc, protocol buffers, protobuf, ballerina packages, language-guide, standard library
 permalink: /learn/user-guides/getting-started/writing-a-grpc-service-with-ballerina
 active: language-basics
@@ -67,7 +67,9 @@ As with any other Ballerina Program, you need to start with creating a Ballerina
 
 A new Ballerina project can be created by executing the following command in the directory in which you want to create the project.
 
-```$ bal new greeter_service```
+```bash
+$ bal new greeter_service
+```
 
 > **Note:** For more information on creating Ballerina packages, please see the [link]().
 
@@ -149,7 +151,9 @@ Similar to the service, the client application also starts with creating a new B
 
 A new Ballerina project can be created by executing the following command in the directory in which you want to create the project.
 
-```$ bal new greeter_client```
+```bash
+$ bal new greeter_client
+```
 
 > **Note:** For more information on creating Ballerina packages, please see the [link]().
 
@@ -205,7 +209,7 @@ client has remote methods that can use to talk to a remote server.
 
 Let’s run this project in your terminal:
 
-```
+```bash
 $ bal run
 Compiling source
 	example/greeter_client:0.1.0

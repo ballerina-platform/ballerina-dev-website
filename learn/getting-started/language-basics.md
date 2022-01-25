@@ -193,7 +193,7 @@ Alternatively, any function that ends without a return statement implicitly retu
 
 ## Strings
 
-Strings are an immutable sequence of zero or more unicode characters. To define a string type, you use the keyword ``string`` in Ballerina.
+Strings are an immutable sequence of zero or more Unicode characters. To define a string type, you use the keyword ``string`` in Ballerina.
 
 ```ballerina
 string grin = “\u{1F600}”
@@ -201,7 +201,7 @@ string grin = “\u{1F600}”
 
 String literals are enclosed in double quotes and support the usual C-style escape sequences as well as numeric escape characters to specific Unicode symbols.
 
-The string type supports the usual operators. The `‘==’`  operator checks for the same characters. The comparison operators (i.e., `‘<’` , `‘<=’`, `‘=>’`, `‘>’`) work by comparing code points. The `‘+’` operator is used for concatenation.
+The string type supports the usual operators. The `‘==’`  operator checks for the same characters. The comparison operators (i.e., `‘<’`, `‘<=’`, `‘=>’`, `‘>’`) work by comparing code points. The `‘+’` operator is used for concatenation.
 
 ```ballerina
 string greeting = “Hello” + grin;
@@ -792,7 +792,7 @@ function mtest(any v) returns string {
 }
 ```
 
-The match statement defines multiple clause statement blocks with the `‘=>’` operator. The left hand side of the `‘=>’` operator in each clause is the pattern for value match. It can contain literals or identifiers referring to a constant.Additionally, it can also contain multiple patterns specified using `‘|’`, and `‘_’` to match any value that is not an error.  
+The match statement defines multiple clause statement blocks with the `‘=>’` operator. The left hand side of the `‘=>’` operator in each clause is the pattern for value match. It can contain literals or identifiers referring to a constant. Additionally, it can also contain multiple patterns specified using `‘|’`, and `‘_’` to match any value that is not an error.  
 
 In the above example, the match uses the value held by **``v``**, and matches it against six match clauses having distinct patterns. During execution, the patterns will be evaluated in order, using equals equals (==) to test the pattern match, and the matched clause’s statement block will be executed.
 

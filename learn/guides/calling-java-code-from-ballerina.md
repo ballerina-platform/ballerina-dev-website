@@ -25,7 +25,7 @@ redirect_from:
 ---
 
 ## Writing Ballerina Bindings
-We have introduced a CLI tool called `bindgen` to ease the process of generating Ballerina bindings for given Java APIs. This guide shows you how to use it, if you need more details on how the bindgen tool works, you can refer its reference guide [here](/learn/java-interoperability/the-bindgen-tool/).
+The `bindgen` is a CLI tool, which eases the process of generating Ballerina bindings for given Java APIs. This guide shows you how to use it. For more details on how the bindgen tool works, see [The `bindgen` Tool](/learn/java-interoperability/the-bindgen-tool/).
 
 The [Package Layout Guide](/learn/organizing-ballerina-code/package-layout/) explains how to package Java libraries (JAR files) with Ballerina programs. When you generate bindings for a Java library using the bindgen tool, this part is already handled. However, you could gain an in-depth understanding of how Java libraries and their transitive dependencies are packaged with Ballerina programs to produce self-contained executable programs.
 

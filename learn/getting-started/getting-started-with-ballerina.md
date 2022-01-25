@@ -68,7 +68,7 @@ In this code:
 - The `main` function is your program’s entry point and you can execute it by running the program. 
 - This function contains a statement that prints `Hello, World!` in the console. This statement calls the `println` function in the `io` with `Hello, World!`.
 
-If you are interested in learning more about the language, read our [Language Basics](https://ballerina.io/learn/language-basics/) guide. 
+If you are interested in learning more about the language, see [Language Basics](https://ballerina.io/learn/language-basics/). 
 
 Let’s run this project by running `bal run` in your terminal:
 

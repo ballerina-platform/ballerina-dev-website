@@ -34,7 +34,7 @@ The [Ballerina FFI Guide](/learn/java-interoperability/ballerina-ffi/) explains 
 ## Using the SnakeYAML Java Library in Ballerina
 SnakeYAML is a YAML parser for Java. In this section, you will learn how to use this library to parse a YAML document using Ballerina. 
 
-We'll develop a Ballerina program that parses the given YAML file and writes the content to the standard out.
+You will develop a Ballerina program that parses the given YAML file and writes the content to the standard out.
 
 Let's get started.
 

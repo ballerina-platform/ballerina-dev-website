@@ -17,12 +17,12 @@ Language-integrated queries can process any Ballerina iterable collection.
 
 In this tutorial, you will be writing queries to filter, sort, and join with other data sets and produce new data sets.
 
-1. Creating a new Ballerina project
-2. Defining the Covid dataset to be processed
-3. Finding all countries which have more than 10,000,000 Covid cases
-4. Finding the top three countries by the number of reported Covid cases
-5. Joining the table with an array to find the number of recovered patients
-6. Finding any discrepancies in reported Covid dataset while maintaining intermediate states
+1. Creating a new Ballerina project.
+2. Defining the Covid dataset to be processed.
+3. Finding all countries which have more than 10,000,000 Covid cases.
+4. Finding the top three countries by the number of reported Covid cases.
+5. Joining the table with an array to find the number of recovered patients.
+6. Finding any discrepancies in reported Covid dataset while maintaining intermediate states.
 
 ## Prerequisite
 
@@ -56,7 +56,7 @@ tree .
 
 ## Defining the Covid Dataset To Be Processed
 
-For the sake of keeping the tutorial simple, you will be using an in-memory table to store the Covid dataset. Each record of type `CovidEntry` in the table represents the Covid data related to a particular country. The `iso_code` is used to uniquely identify a country and other fields are self-explanatory.
+To keep of keeping the tutorial simple, you will be using an in-memory table to store the Covid dataset. Each record of type `CovidEntry` in the table represents the Covid data related to a particular country. The `iso_code` is used to uniquely identify a country and other fields are self-explanatory.
 ```ballerina
 public type CovidEntry record {|
     readonly string iso_code;

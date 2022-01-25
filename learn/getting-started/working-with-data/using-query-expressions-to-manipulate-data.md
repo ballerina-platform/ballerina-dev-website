@@ -17,12 +17,12 @@ Language integrated queries can process any ballerina iterable collection.
 
 In this tutorial, you will be writing queries to filter, sort and join with other data sets and produce new data sets.
 
-1. Create a new Ballerina project
-2. Define the Covid dataset to be processed
-3. Find all countries which have more than 10,000,000 Covid cases
-4. Find the top three countries by the number of reported Covid cases
-5. Join the table with an array to find the number of recovered patients of three random countries
-6. Find any discrepancies in reported Covid dataset while maintaining intermediate states
+1. Creating a new Ballerina project
+2. Defining the Covid dataset to be processed
+3. Finding all countries which have more than 10,000,000 Covid cases
+4. Finding the top three countries by the number of reported Covid cases
+5. Joining the table with an array to find the number of recovered patients of three random countries
+6. Finding any discrepancies in reported Covid dataset while maintaining intermediate states
 
 ## Prerequisite
 
@@ -32,7 +32,7 @@ Following two prerequisites are needed for this tutorial.
 2. Install [VSCode](https://code.visualstudio.com/download) with [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.Ballerina)
 
 
-## Create a New Ballerina Project
+## Creating a New Ballerina Project
 
 To create a new Ballerina package, use the `bal new` command as shown below.
 
@@ -54,7 +54,7 @@ tree .
 0 directories, 2 files
 ```
 
-## Define the Covid Dataset To Be Processed
+## Defining the Covid Dataset To Be Processed
 
 For the sake of keeping the tutorial simple, we will be using an in-memory table to store Covid dataset. Each record of type `CovidEntry` in the table, represents the Covid data related to a particular country. The `iso_code` is used to uniquely identify a country and other fields are self-explanatory
 ```ballerina
@@ -76,7 +76,7 @@ public final table<CovidEntry> key(iso_code) covidTable = table [
 ```
 Copy the above code snippet to `main.bal`. This will act as our Covid Dataset.
 
-## Find All Countries Which Have More Than 10,000,000 Covid Cases
+## Finding All Countries Which Have More Than 10,000,000 Covid Cases
 
 Let's define a function which will filter out the records which have values higher than 100,000 for `cases` field.
 
@@ -111,7 +111,7 @@ Running executable
 
 Countries with more than 10 million cases: ["USA","India"]
 ```
-## Find the Top Three Countries By the Number Of Reported Covid Deaths
+## Finding the Top Three Countries By the Number Of Reported Covid Deaths
 
 Let's define a new function to find the top three countries with highest number of covid deaths. In this function, we will use queries to sort a table and retrieve a *limit*ed number of sorted records from the table.
 
@@ -152,7 +152,7 @@ Countries with more than 10 million cases: ["USA","India"]
 Countries with highest deaths:[["India",980976],["USA",880976],["Afghanistan",7386]]
 ```
 
-## Join the Table With an Array To Find the Number Of Recovered Patients Of Three Countries
+## Joining the Table With an Array To Find the Number Of Recovered Patients Of Three Countries
 
 Using query expressions, we can join two collections and produce new collection. The `join` operation is similar to SQL join. In this tutorial, we will be joining the `covidTable` with a string array which contains three countries.
 
@@ -194,7 +194,7 @@ Countries with more than 10 million cases: ["USA","India"]
 Countries with highest deaths:[["India",980976],["USA",880976],["Afghanistan",7386]]
 Countries with number of Recovered patients:[["Afghanistan",146084],["USA",43892277],["India",33892279]]
 ```
-## Find Any Discrepancies In Reported Covid Dataset Using Intermediate States
+## Finding Any Discrepancies In Reported Covid Dataset Using Intermediate States
 
 This examples merely shows how we can use `let` clause to maintain an intermediate state while iterating a collection using query expression and use that intermediate state for further processing. For example, in this dataset, The total number of reported cases should be equal to the sum of number of deaths, recovered and active. If they are not equal, something has gone wrong while the dataset is populated.
 

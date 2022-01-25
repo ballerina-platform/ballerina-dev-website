@@ -85,6 +85,10 @@ BALLERINA COMMANDS
         version         Print the Ballerina version
         bindgen         Generate the Ballerina bindings for Java APIs
         shell           Run Ballerina interactive REPL [EXPERIMENTAL]
+        
+   Update commands:
+        dist            Manage Ballerina distributions
+        update          Update the Ballerina tool
 ```
 
 You can use it in the below format.

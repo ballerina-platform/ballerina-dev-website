@@ -198,7 +198,7 @@ Countries with number of Recovered patients:[["Afghanistan",146084],["USA",43892
 
 This examples merely shows how we can use `let` clause to maintain an intermediate state while iterating a collection using query expression and use that intermediate state for further processing. For example, in this dataset, The total number of reported cases should be equal to the sum of number of deaths, recovered and active. If they are not equal, something has gone wrong while the dataset is populated.
 
-Let's define a function called `printErroneousData` to find any erroneous records in the dataset. If there is any record where the number of reported `cases` are not equal to the sum of `recovered`, `active` and `deaths`, This function will print them.
+Let's define a function called `printErroneousData` to find any erroneous records in the dataset. If there is any record where the number of reported `cases` are not equal to the sum of `recovered`, `active`, and `deaths`, This function will print them.
 
 ```ballerina
 public function printErroneousData(table<CovidEntry> dataTable) {

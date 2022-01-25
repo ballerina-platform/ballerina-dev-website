@@ -1,7 +1,7 @@
 ```
 layout: getting-started-with-ballerina-left-nav-pages
 title: Getting Started with Ballerina
-description: Let’s get you set up a Ballerina development environment and write a simple Ballerina program.
+description: Let’s set up a Ballerina development environment and write a simple Ballerina program.
 keywords: ballerina, programming language, ballerina packages, getting started
 permalink: /learn/getting-started-with-ballerina
 active: getting-started-with-ballerina

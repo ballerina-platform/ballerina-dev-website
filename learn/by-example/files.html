@@ -23,7 +23,7 @@ redirect_from:
 
     <span class="c1">// Checks whether the file exists on the provided path.</span>
     <span class="kt">boolean</span> <span class="nx">fileExists</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">test</span><span class="p">(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">EXISTS</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Is the bar.txt file exist: &quot;</span><span class="p">,</span> <span class="nx">fileExists</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Does the bar.txt file exist: &quot;</span><span class="p">,</span> <span class="nx">fileExists</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 
     <span class="c1">// Checks whether the file is readable or not.</span>
     <span class="nx">fileExists</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">file</span><span class="p">:</span><span class="nx">test</span><span class="p">(</span><span class="s">&quot;bar.txt&quot;</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span><span class="nx">READABLE</span><span class="p">);</span>
@@ -104,7 +104,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=23221da32bb0580aa059c5a2c419408d&file=files.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=2a43497465eebfd8f404314118b0bd4e&file=files.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -167,7 +167,7 @@ import ballerina/io;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    boolean fileExists = check file:test(&quot;bar.txt&quot;, file:EXISTS);
-    io:println(&quot;Is the bar.txt file exist: &quot;, fileExists.toString());
+    io:println(&quot;Does the bar.txt file exist: &quot;, fileExists.toString());
 </code></pre></div>
 
                                 </div>
@@ -313,7 +313,7 @@ import ballerina/io;
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run files.bal
 The bar.txt file created successfully.
-Is the bar.txt file exists: true
+Does the bar.txt file exist: true
 Is the bar.txt file readable: true
 Is the bar.txt file writeable: true
 The bar.txt file copied successfully.
@@ -321,7 +321,8 @@ The bar.txt file renamed successfully.
 File path: /A/B/bar1.txt
 File size: 0
 Is directory: false
-Modified at 1621858537 0.851000000
+Modified at [1643011228,0.178000000]
+Files removed successfully.
 </code></pre></div>
 
                                 </div>

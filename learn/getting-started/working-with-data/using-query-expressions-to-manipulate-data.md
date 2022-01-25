@@ -164,7 +164,9 @@ public function findRecoveredPatientsOfCountries(table<CovidEntry> dataTable, st
     return countriesWithRecovered;
 }
 ```
-The `findRecoveredPatientsOfCountries` function uses a query expression to join the `dataTable` table with an array of strings named `countries`. When the table is joined with the array, a condition is provided after the `on` keyword. For every record in the `dataTable`, all the elements in the `countries` array will be joined and the new array of tuples will have the country and the number of recovered patients only if the condition after the `on` keyword is satisfied for that particular pair of table record and element of the array being joined.
+The `findRecoveredPatientsOfCountries` function uses a query expression to join the `dataTable` table with an array of strings named `countries`. When the table is joined with the array, a condition is provided after the `on` keyword. 
+
+For every record in the `dataTable`, all the elements in the `countries` array will be joined and the new array of tuples will have the country and the number of recovered patients only if the condition after the `on` keyword is satisfied for that particular pair of table record and element of the array being joined.
 
 Now, change the existing `main` function by calling the `findRecoveredPatientsOfCountries` function at the end to get the number of recovered patients. In this tutorial, you will retrieve the number of recovered patients in the USA, India, and Afghanistan. The updated `main` function looks like the one below.
 

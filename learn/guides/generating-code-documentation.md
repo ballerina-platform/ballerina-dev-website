@@ -234,7 +234,7 @@ Compiling source
 Generating API Documentation
 Saved to: apidocs
 ```
->**Note:** If you replaced the existing code in `math/modules/world/world.bal` file, you might get a compilation error. This is due to the sample unit tests in `math/modules/world/tests/lib_test.bal` file. In that case you can delete the `math/modules/world/tests` directory and run the `bal doc` command again.
+>**Note:** If you replaced the existing code in  the `math/modules/world/world.bal` file, you might get a compilation error. This is due to the sample unit tests in the`math/modules/world/tests/lib_test.bal` file. In that case, delete the `math/modules/world/tests` directory, and run the `bal doc` command again.
 
 `target/apidocs/user/math/0.1.0` folder would contain the following;
 ```bash

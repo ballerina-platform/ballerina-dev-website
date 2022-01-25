@@ -25,13 +25,9 @@ redirect_from:
 
 ## Writing a Simple Function
 
-To get started, let's write a simple Ballerina function and test it.
+To get started, let's set up the Ballerina package to run tests.
 
-1. First, let’s create a Ballerina package. Use the `bal new` command to create the package.
-For more information on the command, see [Structuring Ballerina Code](/learn/structuring-ballerina-code/).
-
-    A **tests** directory needs to be created to store the test files. In this example, the ***main_test.bal*** test file needs to be
-    added within a tests directory. 
+1. Create a directory in the root directory of the package named `tests` in which the test files will be stored.
 
     ```bash
     package-directory/
@@ -41,99 +37,26 @@ For more information on the command, see [Structuring Ballerina Code](/learn/str
             main_test.bal
     ```
 
-2. Let's write a function which handles sending a get request in the ***main.bal*** file of the default module.
- 
+2. Create the following function in the ***main.bal*** file
+
     ```ballerina
-    // main.bal
-    import ballerina/io;
-    import ballerina/http;
-    import ballerina/regex;
-
-    http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
-
-    // This function performs a `get` request to the Chuck Norris API and returns a random joke 
-    // with the name replaced by the provided name or an error if the API invocation fails.
-    function getRandomJoke(string name) returns @tainted string|error {
-        http:Response response = check clientEndpoint->get("/random");
-        if (response.statusCode == http:STATUS_OK) {
-            var payload = response.getJsonPayload();
-            if (payload is json) {
-                json joke = check payload.value;
-                string replacedText = regex:replaceAll(joke.toString(), "Chuck Norris", name);
-                return replacedText;
-            }
-        } else {
-            error err = error("error occurred while sending GET request");
-            io:println(err.message(), ", status code: ", response.statusCode, ", reason: ", response.getJsonPayload());
-            return err;
-        }
-
-        error err = error("error occurred while sending GET request");
-        return err;
+    public function intAdd(int a, int b) returns (int) {
+        return a + b;
     }
     ```
 
-3. Now, let’s write a simple test case to verify the behavior of the `main` function in the ***main_test.bal*** file.
+3. In the **main_test.bal**, make use of the test module to test out the functionality of the `intAdd` function in 
+the ***main.bal***
 
     ```ballerina
-    // main_test.bal
-    import ballerina/io;
     import ballerina/test;
-    import ballerina/http;
-    
-    // This test function tests the behavior of the `getRandomJoke` when
-    // the API returns a successful response.
+
     @test:Config {}
-    function testGetRandomJoke() {
-        // Create a default mock HTTP Client and assign it to the `clientEndpoint`
-        clientEndpoint = test:mock(http:Client);
-        // Stub the behavior of the `get` function to return the specified mock response.
-        test:prepare(clientEndpoint).when("get").thenReturn(getMockResponse());
-        // Invoke the function to test.
-        string result = checkpanic getRandomJoke("Sheldon");
-        io:println(result);
-        // Verify the return value.   
-        test:assertEquals(result, "When Sheldon wants an egg, he cracks open a chicken.");
-    }
-    
-    // Returns a mock HTTP response to be used for the jokes API invocation.
-    function getMockResponse() returns http:Response {
-        http:Response mockResponse = new;
-        json mockPayload = {"value":"When Chuck Norris wants an egg, he cracks open a chicken."};
-        mockResponse.setPayload(mockPayload);
-        return mockResponse;
+    function intAddTest() {
+        test:assertEquals(intAdd(1, 3), 4);
     }
     ```
 
-4. Finally, let’s execute the tests using the following command.
+4. Execute the tests using the following command
 
-    `$ bal test --code-coverage`
-
-    This will print an output similar to the following.
-
-    ```
-    Compiling source
-        foo/joke:0.1.0
-
-    Running Tests with Coverage
-        joke
-    When Sheldon wants an egg, he cracks open a chicken.
-
-        [pass] testGetRandomJoke
-
-        1 passing
-        0 failing
-        0 skipped
-
-    Generating Test Report
-        target/test_results.json
-
-    ```
- 
- 
-## What's Next?
-
-Now, that you have an understanding of how a test case can be written and executed, you can dive deep into the available
- features in the [Writing Tests](/learn/testing-ballerina-code/writing-tests) section.
-
-<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
+    ```$ bal test```

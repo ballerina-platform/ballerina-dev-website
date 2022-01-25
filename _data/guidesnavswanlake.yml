@@ -39,6 +39,21 @@
     - title: Writing Tests
       url: /learn/testing-ballerina-code/writing-tests/
       active: writing-tests
+    - title: Structuring Tests
+      url: /learn/testing-ballerina-code/structuring-tests/
+      active: structuring-tests
+    - title: Configuring Tests
+      url: /learn/testing-ballerina-code/configuring-tests/
+      active: configuring-tests
+    - title: Code Coverage and Reporting
+      url: /learn/testing-ballerina-code/code-coverage-and-reporting/
+      active: code-coverage-and-reporting
+    - title: Data-Driven Tests
+      url: /learn/testing-ballerina-code/data-driven-tests/
+      active: data-drive-tests
+    - title: Test Groups
+      url: /learn/testing-ballerina-code/test-groups/
+      active: test-groups
     - title: Testing Services and Clients
       url: /learn/testing-ballerina-code/testing-services-and-clients/
       active: testing-services-and-clients

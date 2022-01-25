@@ -29,8 +29,6 @@ redirect_from:
 
 Before getting started, make sure you have installed the [Visual Studio Code editor](https://code.visualstudio.com/download) and [Ballerina](/downloads).
 
->**Tip:** The VSCode Ballerina extension supports both the Ballerina Swan Lake and 1.2.x versions.
-
 ## Installing the Ballerina Extension
 
 Follow the steps below to install the Ballerina extension.

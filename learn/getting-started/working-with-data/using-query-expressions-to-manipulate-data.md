@@ -21,7 +21,7 @@ In this tutorial, you will be writing queries to filter, sort and join with othe
 2. Defining the Covid dataset to be processed
 3. Finding all countries which have more than 10,000,000 Covid cases
 4. Finding the top three countries by the number of reported Covid cases
-5. Joining the table with an array to find the number of recovered patients of three random countries
+5. Joining the table with an array to find the number of recovered patients
 6. Finding any discrepancies in reported Covid dataset while maintaining intermediate states
 
 ## Prerequisite
@@ -152,7 +152,7 @@ Countries with more than 10 million cases: ["USA","India"]
 Countries with highest deaths:[["India",980976],["USA",880976],["Afghanistan",7386]]
 ```
 
-## Joining the Table With an Array To Find the Number Of Recovered Patients Of Three Countries
+## Joining the Table With an Array To Find the Number Of Recovered Patients
 
 Using query expressions, we can join two collections and produce new collection. The `join` operation is similar to SQL join. In this tutorial, we will be joining the `covidTable` with a string array which contains three countries.
 

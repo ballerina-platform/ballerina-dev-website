@@ -90,7 +90,7 @@ Make certain the command output shows the version that you downloaded as shown b
 
 ```bash
 Ballerina <VERSION> (Swan Lake)
-Language specification 2021R1
+Language specification 2022R1
 Update Tool 1.3.7
 ```
 

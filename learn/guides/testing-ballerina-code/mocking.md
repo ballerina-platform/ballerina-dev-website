@@ -17,22 +17,26 @@ redirect_from:
 
 ## Mocking Objects
 
-The `Test` module provides capabilities to mock an object for unit testing. This allows you to control the behavior of the object member functions and values of member fields via stubbing or replacing the entire object with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.
+The `Test` module provides capabilities to mock an object for unit testing. This allows you to control the behavior of 
+the object member functions and values of member fields via stubbing or replacing the entire object with a user-defined 
+equivalent. This feature will help you to test the Ballerina code independently of other modules and external endpoints.
 
 Mocking objects can be done in two ways.
 
 1. Creating a test double (providing an equivalent object in place of the real)
-2. Stubbing the member function or member variable (specifying the behavior of the functions and values of the variables)
+2. Stubbing the member function or member variable (specifying the behavior of the functions and values of the 
+variables)
 
 
 ### Creating a Test Double
 
-You can write a custom mock object and substitute it in place of the real object. The custom object should be made structurally equivalent to the real object via the mocking features in the test module.
+You can write a custom mock object and substitute it in place of the real object. The custom object should be made 
+structurally equivalent to the real object via the mocking features in the test module.
 
 ***Example:***
 
-Let's make changes to the example in the [Quick Start](/learn/testing-ballerina-code/testing-quick-start) to define a test
- double for the  `clientEndpont` object.
+Let's make changes to the example in the [Quick Start](/learn/testing-ballerina-code/testing-quick-start) to define a 
+test double for the  `clientEndpont` object.
 
 >**Note:** Only the `get` function is implemented since it is the only function used in the sample. Attempting to call
  any other member function of the `clientEndpoint` will result in a runtime error. 
@@ -70,11 +74,14 @@ public function testGetRandomJoke() {
 
 ### Stubbing Member Functions and Variables of an Object
 
-Instead of creating a test double, you may also choose to create a default mock object and stub the functions to return a specific value or to do nothing.
+Instead of creating a test double, you may also choose to create a default mock object and stub the functions to return 
+a specific value or to do nothing.
 
 ***Example:***
 
-The example in the [Quick Start](/learn/testing-ballerina-code/testing-quick-start) shows how the `get` function of the client object can be stubbed to return a value. Let’s make changes to that example to get a random joke from a specific category (e.g., food or movies).
+The example in the [Quick Start](/learn/testing-ballerina-code/testing-quick-start) shows how the `get` function of the 
+client object can be stubbed to return a value. Let’s make changes to that example to get a random joke from a specific 
+category (e.g., food or movies).
 
 ***main.bal***
 
@@ -210,9 +217,9 @@ public function testGetRandomJoke() {
 
 ***main_test.bal***
 
-This test stubs the behavior of the `get` function to return a specified sequence of values for each `get` function
- invocation (i.e., the first call to the `get` function will return the first argument and the second call will return the second
-  argument).
+This test stubs the behavior of the `get` function to return a specified sequence of values for each `get` function 
+invocation (i.e., the first call to the `get` function will return the first argument and the second call will return 
+the second argument).
 
 ```ballerina
 import ballerina/test;
@@ -363,13 +370,20 @@ function testSendNotification() {
 
 ## Mocking Functions
 
-The Ballerina test framework provides the capability to mock a function. You can easily mock a function in a module that you are testing or a function of an imported module by using the mocking feature. This feature will help you to test your Ballerina code independently from other modules and functions.
+The Ballerina test framework provides the capability to mock a function. You can easily mock a function in a module that
+you are testing or a function of an imported module by using the mocking feature. This feature will help you to test 
+your Ballerina code independently from other modules and functions.
 
-The object specified with the `@test:Mock {}` annotation will be considered as a mock function, which gets triggered in place of the real function.
+The object specified with the `@test:Mock {}` annotation will be considered as a mock function, which gets triggered in 
+place of the real function.
 
-*   ***moduleName : "&lt;moduleName&gt;"*** - (optional) Name of the module in which the function to be mocked resides in. If the function is within the same module, this can be left blank or "." (no module) can be passed. If the function is in a different module but within the same package, just passing the module name will suffice. For functions in completely separate modules, the fully-qualified module name must be passed, which includes the `packageOrg` (i.e., `packageOrg/moduleName`). For native functions, the Ballerina module needs to be specified.
+* ***moduleName : "&lt;moduleName&gt;"*** - (optional) Name of the module in which the function to be mocked resides 
+in. If the function is within the same module, this can be left blank or "." (no module) can be passed. If the function 
+is in a different module but within the same package, just passing the module name will suffice. For functions in 
+completely separate modules, the fully-qualified module name must be passed, which includes the `packageOrg` 
+(i.e., `packageOrg/moduleName`). For native functions, the Ballerina module needs to be specified.
 
-*   ***functionName : "&lt;functionName&gt;"*** - Name of the function to be mocked.
+* ***functionName : "&lt;functionName&gt;"*** - Name of the function to be mocked.
 
 ***Example:***
 
@@ -508,8 +522,3 @@ public function mockIntAdd(int a, int b) returns int {
     return (a - b);
 }
 ```
-
-## What's Next?
- 
-Now, that you are aware of the details on writing tests, learn the different options that can be used when [Executing
- Tests](/learn/testing-ballerina-code/executing-tests).

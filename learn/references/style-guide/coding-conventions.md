@@ -24,13 +24,13 @@ redirect_from:
   - /learn/style-guide/coding-conventions
 ---
 
-> You can follow your own coding style when writing Ballerina source code. Also, plugins and tools can be configured to match your coding style.
+> You can follow your own coding style when writing Ballerina source code.
 
 ## Indentation and Line Length
 * Use four spaces (not tabs) for each level of indentation.
 * Keep the maximum length of a line to 120 characters. 
 
-> **Note:** You can configure tools and plugins to use tabs when indenting and to change the number of maximum characters of the line length.
+> **Note:** You can configure tools and plugins to use spaces when indenting and to change the number of maximum characters in a line.
 
 ## Line Spacing
 
@@ -118,8 +118,6 @@ function setName(string name) {
 function setAge(int age) {
 }
 ```
-  
-> **Note:** You can configure tools and plugins to change the number of minimum and maximum blank lines used when formatting. 
  
 ## Blocks
 * Opening curly braces of a block should be placed inline.
@@ -300,25 +298,5 @@ map<int|string> registry = {
     name: "marcus"
 };
 ```
-
-## Top-Level Definitions
-
-For style guidelines on imports, service definition, object definition, record definition, referencing record or object, etc., see [Top-Level Definitions](/learn/style-guide/definitions).
-
-## Operators, Keywords, and Types
-
-For style guidelines on operators, keywords, and types, see [Operators, Keywords, and Types](/learn/style-guide/operators_keywords_and_types).
-
-## Statements
-
-For style guidelines on statements such as if, match, transaction, etc., see [Statements](/learn/style-guide/statements).
-
-## Expressions
-
-For style guidelines on function invocation, literals, tuple, type casting, etc. see [Expressions](/learn/style-guide/expressions).
-
-## Annotations, Documentation, and Comments
-
-For style guidelines on annotations, documentation, and comments, see [Annotations, Documentation, and Comments](/learn/style-guide/annotations_documentation_and_comments).
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

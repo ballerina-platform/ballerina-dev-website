@@ -129,7 +129,3 @@ For more information, see [Update Tool](/learn/tooling-guide/cli-tools/update-to
 ## Installing the VSCode Extension
 
 Ballerina provides an extension to try out its development capabilities in Visual Studio Code. For instructions on setting it up, see [Quick Start](/learn/visual-studio-code-extension/quick-start/).
-
-## What's Next?
-
-Now, that your environment for Ballerina is all set up and running, let's [write your first Ballerina program](/learn/user-guide/getting-started/writing-your-first-ballerina-program/).

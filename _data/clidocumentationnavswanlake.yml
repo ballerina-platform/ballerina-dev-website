@@ -22,15 +22,6 @@
     - title: Update Tool
       url: /learn/cli-documentation/update-tool/
       active: update-tool
-    - title: OpenAPI
-      url: /learn/cli-documentation/openapi/
-      sublinks:
-        - title: Using the Capabilities of the OpenAPI Tools
-          url: /learn/cli-documentation/openapi/#using-the-capabilities-of-the-openapi-tools
-          active: using-the-capabilities-of-the-openapi-tools
-        - title: OpenAPI Validator Compiler Plugin
-          url: /learn/cli-documentation/openapi/#openapi-validator-compiler-plugin
-          active: openapi-validator-compiler-plugin
     - title: GRPC
       url: /learn/cli-documentation/grpc/
       sublinks:

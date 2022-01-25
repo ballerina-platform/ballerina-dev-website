@@ -112,7 +112,7 @@ redirect_from:
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
- <a href="/learn/getting-started/hello-world/writing-your-first-ballerina-program/">
+ <a href="/learn/hello-world/writing-your-first-ballerina-program/">
     <h3 id="hello-world">Hello World</h3></a>
    <p >Writing your first Ballerina program and creating your first Ballerina package. </p>
 </div>
@@ -132,7 +132,7 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
- <a href="/learn/distinctive-language-features/">
+ <a href="/learn/distinctive-language-features/network-interaction/">
   <h3 id="distinctive-language-features">Distinctive Language Features</h3></a>
  	<p>A guide to the language features that make Ballerina distinctive.  </p>
 </div>
@@ -146,9 +146,9 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card"  >
-  <a href="/learn/testing-ballerina-code/testing-quick-start/">
+  <a href="/learn/testing-ballerina-code/quick-start-on-testing/">
    <h3 id="testing-ballerina-code">Testing Ballerina Code</h3> </a>
-    <p >Details of writing automated tests using the built-in test framework.  </p>
+    <p>Details of writing automated tests using the built-in test framework.  </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important">
   <a href="/learn/generating-code-documentation/">
@@ -178,7 +178,7 @@ redirect_from:
 <div class="row">
 
 <div class="col-lg-6 col-md-6 col-sm-12 card"  >
- <a href="/learn/running-ballerina-programs-in-the-cloud/code-to-cloud/">
+ <a href="/learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/">
   		<h3 id="running-ballerina-programs-in-the-cloud">Running Ballerina Programs in the Cloud
 </h3></a>
  	<p>The cloud offerings for running Ballerina programs.  </p>
@@ -210,15 +210,19 @@ redirect_from:
 <p>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
- <a href="/learn/visual-studio-code-extension/quick-start/">
+ <a href="/learn/visual-studio-code-extension/vs-code-quick-start/">
     <h3 id="installing-ballerina">Visual Studio Code Extension</h3></a>
     <p >Details of all the features of the Ballerina Visual Studio Code extension. </p>
 </div>
 </div>
 
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card">
+ <a href="/learn/ballerina-openapi-support/">
+    <h3 id="ballerina-openapi">Ballerina OpenAPI Support </h3></a>
+    <p >Details of all the features of the Ballerina OpenAPI tools. </p>
 </div>
-
-
+</div>
 
 <div class="row" style="margin-bottom:30px">
 	<h2 id="references">References</h2>
@@ -258,14 +262,6 @@ redirect_from:
   <a href="/learn/style-guide/coding-conventions/">
  	 <h3 id="style-guide">Style Guide</h3></a>
 		<p>Best practices to follow when formatting Ballerina code.   </p>
-</div>
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
- <a href="/learn/language-introduction/">
-  	<h3 id="language-introduction-slides">Language Introduction</h3></a>
-		<p>Presentation slides on the Ballerina language that you can use to talk about the language.</p>
-</div>
-
 </div>
 </div>
 

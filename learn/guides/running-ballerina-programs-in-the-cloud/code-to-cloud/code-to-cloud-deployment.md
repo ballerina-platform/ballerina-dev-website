@@ -34,8 +34,9 @@ As of now, Ballerina code to cloud supports generating the deployment artifacts 
 
 ## Setting Up the Prerequisites
 
-1. You need to have Docker installed and configured in your machine.
-2. You need to have kubectl installed and configured in a Kubernetes cluster in order to deploy.
+To complete this tutorial, you need:
+1. Docker installed and configured in your machine.
+2. `kubectl` installed and configured to a Kubernetes cluster.
 
 ## How Code to Cloud Works
 

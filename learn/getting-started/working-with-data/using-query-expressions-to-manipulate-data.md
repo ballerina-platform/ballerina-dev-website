@@ -13,9 +13,9 @@ This simple guide helps you understand how query expressions (a.k.a language int
 
 Ballerina supports first-class support for writing SQL-like queries to process data.
 
-Language integrated queries can process any ballerina iterable collection.
+Language-integrated queries can process any Ballerina iterable collection.
 
-In this tutorial, you will be writing queries to filter, sort and join with other data sets and produce new data sets.
+In this tutorial, you will be writing queries to filter, sort, and join with other data sets and produce new data sets.
 
 This tutorial includes the following steps.
 
@@ -58,7 +58,7 @@ tree .
 
 ## Define the Covid dataset to be processed
 
-For the sake of keeping the tutorial simple, we will be using an in-memory table to store Covid dataset. Each record of type `CovidEntry` in the table, represents the Covid data related to a particular country. The `iso_code` is used to uniquely identify a country and other fields are self-explanatory
+For the sake of keeping the tutorial simple, we will be using an in-memory table to store the Covid dataset. Each record of type `CovidEntry` in the table represents the Covid data related to a particular country. The `iso_code` is used to uniquely identify a country and other fields are self-explanatory.
 ```ballerina
 public type CovidEntry record {|
     readonly string iso_code;
@@ -80,7 +80,7 @@ Copy the above code snippet to `main.bal`. This will act as our Covid Dataset.
 
 ## Find all countries which have more than 10,000,000 Covid cases
 
-Let's define a function which will filter out the records which have values higher than 100,000 for `cases` field.
+Let's define a function, which will filter out the records, which have values higher than 100,000 for the `cases` field.
 
 ```ballerina
 public function filterCountriesByCases(table<CovidEntry> dataTable, decimal noOfCases) returns string[] {
@@ -91,9 +91,9 @@ public function filterCountriesByCases(table<CovidEntry> dataTable, decimal noOf
 }
 ```
 
-`filterCountriesByCases` uses a query expression to iterate the records in the table `dataTable` and filter only records which has more than `noOfCases` cases. To filter, `where` clause with a condition, is used. All records which satisfy the condition in the `where` clause, will be _selected_. Copy above code snippet and paste on to `main.bal`, just below the definition of `covidTable`.
+The `filterCountriesByCases` function uses a query expression to iterate the records in the `dataTable` table and filter only the records, which have more than `noOfCases` cases. To filter, a `where` clause with a condition is used. All records, which satisfy the condition in the `where` clause will be _selected_. Copy the above code snippet and paste it on to `main.bal` just below the definition of the `covidTable`.
 
-Let's call `filterCountriesByCases` function inside the `main` function.
+Let's call the `filterCountriesByCases` function from inside the `main` function.
 
 ```ballerina
 public function main() {
@@ -101,9 +101,9 @@ public function main() {
     io:println("Countries with more than 10 million cases: ", countries);
 }
 ```
-In `main` function, we have called `filterCountriesByCases` function and have provided `covidTable` and `10000000` as parameters, so that the function will filter the countries which have more than 10000000 covid cases. In the next line we have printed the result from the function. Copy the above code onto `main.bal` and execute `bal run` from within the `query_expression` project folder.
+In the `main` function, you have called the `filterCountriesByCases` function and have provided `covidTable` and `10000000` as parameters so that the function will filter the countries, which have more than 10000000 covid cases. In the next line, you have printed the result from the function. Copy the above code onto `main.bal` and execute `bal run` from within the `query_expression` project folder.
 
-The result will print something similar to below.
+The result will print something similar to the below.
 
 ```bash
 Compiling source
@@ -115,7 +115,7 @@ Countries with more than 10 million cases: ["USA","India"]
 ```
 ## Find the top three countries by the number of reported Covid deaths
 
-Let's define a new function to find the top three countries with highest number of covid deaths. In this function, we will use queries to sort a table and retrieve a *limit*ed number of sorted records from the table.
+Let's define a new function to find the top three countries with the highest number of Covid deaths. In this function, we will use queries to sort a table and retrieve a *limit*ed number of sorted records from the table.
 
 ```ballerina
 public function findCountriesByHighestNoOfDeaths(table<CovidEntry> dataTable, int n) returns [string, decimal][] {
@@ -126,9 +126,9 @@ public function findCountriesByHighestNoOfDeaths(table<CovidEntry> dataTable, in
     return countriesWithDeaths;
 }
 ```
-`findCountriesByHighestNoOfDeaths` function uses queries to find the top three countries with highest Covid deaths. `order by` clause is used to sort the records in the table in `descending` order and limit the number of output records of the query to `n`. Here, as the result, query produces an array of tuples of type `[string, decimal]`. A tuple contain the country and the number of reported deaths. The produced array is in descending order by the number of deaths.
+The `findCountriesByHighestNoOfDeaths` function uses queries to find the top three countries with the highest Covid deaths. The `order by` clause is used to sort the records in the table in `descending` order and limit the number of output records of the query to `n`. Here, as the result, the query produces an array of tuples of type `[string, decimal]`. A tuple contains the country and the number of reported deaths. The produced array is in descending order by the number of deaths.
 
-Let's call `findCountriesByHighestNoOfDeaths` function in `main` function to find the top three countries by the number of deaths.
+Let's call the `findCountriesByHighestNoOfDeaths` function from within the `main` function to find the top three countries by the number of deaths.
 
 ```ballerina
 public function main() {
@@ -140,9 +140,9 @@ public function main() {
 }
 ```
 
-The last two lines were added to print the Top three countries by number of deaths. Copy  the last two lines of the above code onto `main.bal` and execute `bal run` from within the `query_expression` project folder.
+The last two lines were added to print the top three countries by the number of deaths. Copy the last two lines of the above code onto `main.bal` and execute `bal run` from within the `query_expression` project folder.
 
-The output will look like below.
+The output will look like the below.
 
 ```bash
 Compiling source
@@ -156,7 +156,7 @@ Countries with highest deaths:[["India",980976],["USA",880976],["Afghanistan",73
 
 ## Join the table with an array to find the number of recovered patients of three countries
 
-Using query expressions, we can join two collections and produce new collection. The `join` operation is similar to SQL join. In this tutorial, we will be joining the `covidTable` with a string array which contains three countries.
+Using query expressions, we can join two collections and produce a new collection. The `join` operation is similar to the SQL `join` operation. In this tutorial, we will be joining the `covidTable` with a string array, which contains three countries.
 
 ```ballerina
 public function findRecoveredPatientsOfCountries(table<CovidEntry> dataTable, string[] countries) returns [string, decimal][] {
@@ -166,9 +166,9 @@ public function findRecoveredPatientsOfCountries(table<CovidEntry> dataTable, st
     return countriesWithRecovered;
 }
 ```
-`findRecoveredPatientsOfCountries` function uses a query expression to join the `dataTable` table with an array of strings `countries`. When the table is joined with the array, a condition is provided after `on` keyword. For every record in `dataTable`, all the elements in `countries` array, will be joined and the new array of tuples will have the country and number of recovered patients only if the condition after `on` keyword is satisfied for that particular pair of table record and element of array being joined.
+The `findRecoveredPatientsOfCountries` function uses a query expression to join the `dataTable` table with an array of strings named `countries`. When the table is joined with the array, a condition is provided after the `on` keyword. For every record in the `dataTable`, all the elements in the `countries` array will be joined and the new array of tuples will have the country and the number of recovered patients only if the condition after the `on` keyword is satisfied for that particular pair of table record and element of the array being joined.
 
-Now change the existing `main` function by calling the `findRecoveredPatientsOfCountries` function at the end to get number of the recovered patients. In this tutorial we will retrieve the number of recovered patients of USA, India, and Afghanistan. The updated `main` function looks like below.
+Now, change the existing `main` function by calling the `findRecoveredPatientsOfCountries` function at the end to get the number of recovered patients. In this tutorial, we will retrieve the number of recovered patients in the USA, India, and Afghanistan. The updated `main` function looks like the one below.
 
 ```ballerina
 public function main() {
@@ -184,7 +184,7 @@ public function main() {
 }
 ```
 
-Now, if you execute `bal run` inside `query_expressions`, you will get an output similar to below.
+Now, if you execute `bal run` from inside the `query_expressions`, you will get an output similar to below.
 
 ```bash
 Compiling source
@@ -198,9 +198,9 @@ Countries with number of Recovered patients:[["Afghanistan",146084],["USA",43892
 ```
 ## Find any discrepancies in reported Covid dataset using intermediate states
 
-This examples merely shows how we can use `let` clause to maintain an intermediate state while iterating a collection using query expression and use that intermediate state for further processing. For example, in this dataset, The total number of reported cases should be equal to the sum of number of deaths, recovered and active. If they are not equal, something has gone wrong while the dataset is populated.
+This example shows how we can use the `let` clause to maintain an intermediate state while iterating a collection using a query expression and how to use that intermediate state for further processing. For example, in this dataset, The total number of reported cases should be equal to the sum of the number of deaths, recovered, and active. If they are not equal, an error should have occurred while the dataset is populated.
 
-Let's define a function called `printErroneousData` to find any erroneous records in the dataset. If there is any record where the number of reported `cases` are not equal to the sum of `recovered`, `active` and `deaths`, This function will print them.
+Let's define a function called `printErroneousData` to find any erroneous records in the dataset. If there is any record in which the number of reported `cases` is not equal to the sum of `recovered`, `active`, and `deaths`, this function will print it.
 
 ```ballerina
 public function printErroneousData(table<CovidEntry> dataTable) {
@@ -215,9 +215,11 @@ public function printErroneousData(table<CovidEntry> dataTable) {
     }
 }
 ```
-Here, we use `sum` variable to hold the results of intermediate calculations in the query expression. Note that in this particular example, we could have done the calculations inline within the `where` clause too. But for the sake of demonstration of usage of `let` clause, a separate variable is used.
+Here, we use the `sum` variable to hold the results of intermediate calculations in the query expression. 
 
-Now let's call this function in `main` function. The final version of `main` function looks like below.
+>**Note:** Even though this particular example uses a separate variable to demonstrate the usage of the `let` clause, you can do the calculations inline from within the `where` clause also.
+
+Now, let's call this function in the `main` function. The final version of the `main` function looks like below.
 
 ```ballerina
 public function main() {
@@ -235,7 +237,7 @@ public function main() {
 }
 ```
 
-Now execute `bal run` from within `query_expression` folder and you will see an output similar to below
+Now, execute `bal run` from within the `query_expression` folder and you will see an output similar to below.
 
 ```bash
 Compiling source

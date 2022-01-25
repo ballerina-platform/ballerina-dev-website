@@ -235,7 +235,7 @@ public function main() {
 }
 ```
 
-Now run execute `bal run` from within `query_expression` folder and you will see an output similar to below
+Now execute `bal run` from within `query_expression` folder and you will see an output similar to below
 
 ```bash
 Compiling source

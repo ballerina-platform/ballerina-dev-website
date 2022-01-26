@@ -7,7 +7,7 @@ permalink: /learn/getting-started-with-ballerina/
 active: getting-started-with-ballerina
 intro: Let’s set up a Ballerina development environment and write a simple Ballerina program.
 redirect_from:
-- /learn/getting-started-with-ballerina/
+- /learn/getting-started-with-ballerina
 - /learn/getting-started/hello-world/creating-your-first-ballerina-package
 - /learn/getting-started/hello-world/creating-your-first-ballerina-package/
 - /learn/getting-started/hello-world/writing-your-first-ballerina-program

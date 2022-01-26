@@ -81,7 +81,7 @@ public function foo(int i, string s) returns boolean {
 }
 ```
 
-### Sample Usage
+**Sample Usage**
 
 ```ballerina
 # Submits an HTTP request to a service with the specified HTTP verb.

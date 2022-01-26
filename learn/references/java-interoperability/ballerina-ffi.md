@@ -25,7 +25,7 @@ function doSomething(int i) returns string {
 }
 ```
 
-Ballerina also allows you to define a function without a function body and marks it with the `external` keyword to express that the implementation is not provided by the Ballerina source file.
+Ballerina also allows you to define a function without a function body and mark it with the `external` keyword to express that the implementation is not provided by the Ballerina source file.
 
 ```ballerina
 function doSomething(int i) returns string = external;

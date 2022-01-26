@@ -12,7 +12,7 @@ redirect_from:
  - /learn/publishing-packages-to-ballerina-central
 ---
 
-Dependencies used in a package are Ballerina library packages. A library package can be created with the `bal new` command.
+Dependencies used in a package are Ballerina library packages. A library package can be created by executing the `bal new` command.
 
 ## Creating a Library Package
 

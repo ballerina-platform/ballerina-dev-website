@@ -1,5 +1,5 @@
 ---
-layout: ballerina-using-query-expressions-to-manipulate-data-swan-lake
+layout: ballerina-using-query-expressions-to-manipulate-data-swanlake
 title: Using Query Expressions to Manipulate Data
 permalink: /learn/using-query-expressions-to-manipulate-data
 keywords: query expressions, language integrated queries, programming language, getting started

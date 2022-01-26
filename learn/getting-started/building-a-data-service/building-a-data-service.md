@@ -62,7 +62,7 @@ A new Ballerina project can be created by executing the following command in the
 bal new data_service
 ``` 
 
->**Info:** For more information on creating Ballerina packages, see [Creating your First Ballerina Package](/learn/hello-world/creating-your-first-ballerina-package/#creating-the-package/).
+>**Info:** For more information on creating Ballerina packages, see [Getting Started with Ballerina](/learn/getting-started-with-ballerina).
 
 ### Creating a Record to Represent an Employee
 

@@ -28,7 +28,7 @@ redirect_from:
 
 ## Installing Ballerina via Installers
 
-Follow the instructions below to install the latest Ballerina version using the installer. The installer will automatically uninstall the old Ballerina version if you have one already installed.
+Follow the instructions below to install the latest Ballerina version using the installer. The installer will automatically set the latest version as the active distribution after the installation.
 
 >**Info:** Ballerina installers support operating systems such as Windows, Ubuntu, Red Hat Enterprise Linux, macOS, and CentOS. If you are using an unsupported operating system, [install via the Ballerina language ZIP file](#installing-via-the-ballerina-language-zip-file).
 
@@ -96,13 +96,13 @@ Update Tool 1.3.7
 
 ## Updating Ballerina
 
-If you already have a jBallerina version above 1.1.0 installed, you can use the update tool to update to the latest jBallerina version and set it as the active version by executing either of the commands below.
+If you already have a Ballerina version above 1.1.0 installed, you can use the update tool to update to the latest Ballerina version and set it as the active version by executing either of the commands below.
 
 **Command**|**Description**
 :-----:|:-----:
 `bal dist update`|Update to the latest patch version of the active distribution
-`bal dist pull latest`|Update to the latest jballerina version
-`bal dist pull <JBALLERINA-VERSION>`|Fetch a specific distribution 
+`bal dist pull latest`|Update to the latest Ballerina version
+`bal dist pull <VERSION>`|Fetch a specific distribution 
 
 For more information, see [Keeping Ballerina Up to Date](/learn/tooling-guide/cli-tools/update-tool/).
 
@@ -113,9 +113,9 @@ Usually, the installation location is `/Library/Ballerina/` in macOS, `/usr/lib/
 
 To remove:
 
-- a specific jBallerina version (via the update tool): execute `bal dist remove` 
+- a specific Ballerina version (via the update tool): execute `bal dist remove <VERSION>` 
 - all non-active distributions (via the update tool): execute `bal dist remove -a` 
-- all the installed jBallerina versions: delete the `/../Ballerina` directory in the respective installation location
+- all the installed Ballerina versions: delete the `/../Ballerina` directory in the respective installation location
 
 > **Info:** Alternatively, you can uninstall Ballerina using the commands below by replacing the actual package name in Linux and from the control panel in Windows.
 

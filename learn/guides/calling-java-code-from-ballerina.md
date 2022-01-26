@@ -73,7 +73,9 @@ Here, we've used four Java classes.
 - `java.io.InputStream`
 - `java.util.Map`
 
-You can see them in the imported class list. We encourage you to generate Ballerina bindings for these four classes as a start.  
+You can see them in the imported class list. 
+
+>**Tip:** We encourage you to generate Ballerina bindings for these four classes as a start.  
 
 Now, we'll create an environment for our Ballerina program. 
 

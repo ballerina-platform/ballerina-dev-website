@@ -16,13 +16,13 @@ redirect_from:
 
 ## Setting up the Prerequisites
 
-To complete this tutorial, you need:
+To complete this tutorial, you need the below.
 
 1. A command terminal
 2. A text editor
     >**Tip:** Prefarably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
-3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/). 
-4. Prior programming experience. 
+3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
+4. Prior programming experience
 
 ## Meeting `bal`
 

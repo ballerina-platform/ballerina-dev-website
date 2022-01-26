@@ -65,7 +65,7 @@ A new Ballerina project can be created by executing the following command in the
 bal new data_service
 ``` 
 
->For more information on creating Ballerina packages, see [creating your first Ballerina package](/learn/hello-world/creating-your-first-ballerina-package/#creating-the-package/).
+>For more information on creating Ballerina packages, see [Creating your First Ballerina Package](/learn/hello-world/creating-your-first-ballerina-package/#creating-the-package/).
 
 
 ### Creating a Record to Represent an Employee
@@ -139,7 +139,7 @@ configurable int PORT = ?;
 configurable string DATABASE = ?;
 ```
 
->For more information on defining configurable variables in Ballerina, see [defining configurable variables](/learn/making-ballerina-programs-configurable/defining-configurable-variables/).
+>For more information on defining configurable variables in Ballerina, see [Defining Configurable Variables](/learn/making-ballerina-programs-configurable/defining-configurable-variables/).
 
 
 ### Connecting to the Database

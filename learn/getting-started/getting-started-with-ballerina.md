@@ -1,11 +1,11 @@
 ```
 layout: getting-started-with-ballerina-left-nav-pages
 title: Getting Started with Ballerina
-description: Let’s get you set up a Ballerina development environment and write a simple Ballerina program.
+description: Let’s set up a Ballerina development environment and write a simple Ballerina program.
 keywords: ballerina, programming language, ballerina packages, getting started
 permalink: /learn/getting-started-with-ballerina
 active: getting-started-with-ballerina
-intro: Let’s get you set up a Ballerina development environment and write a simple Ballerina program.
+intro: Let’s set up a Ballerina development environment and write a simple Ballerina program.
 ---
 ```
 
@@ -46,7 +46,7 @@ greeter/
 ```
 
 - `Ballerina.toml` contains metadata that describes your project. Also, `bal` tool uses `Ballerina.toml` to identify the root of a project.
-- `main.bal` is a source file, and it should contain Ballerina code that prints “Hello, World!” to the console. You can addput any number of source files into the `greeter` directory.
+- `main.bal` is a source file and it should contain Ballerina code that prints “Hello, World!” to the console. You can add any number of source files into the `greeter` directory.
 
 ## Say “Hello, World!”
 
@@ -66,7 +66,7 @@ In this code:
 - The `main` function is your program’s entry point, and you can execute it by running the program. 
 - This function contains a statement that prints `Hello, World!` to the console. This statement calls the `println` function in the `io` with `Hello, World!`.
 
-If you are interested in learning more about the language, read our [Language Basics](https://ballerina.io/learn/language-basics/) guide. 
+If you are interested in learning more about the language, see [Language Basics](https://ballerina.io/learn/language-basics/). 
 
 Let’s run this project by running `bal run` in your terminal:
 
@@ -100,7 +100,7 @@ Hello, World!
 
 ## Write a simple REST API
 
-Now let’s change our greeter application to a REST API. Ballerina has first-class abstractions for services, resources, etc., and they make network service development easier and more fun. 
+Now, let’s change our `greeter` application to a REST API. Ballerina has first-class abstractions for services, resources, etc., and they make network service development easier and more fun. 
 
 You can replace the `main.bal` content with the following code.
 
@@ -124,7 +124,7 @@ Let’s take a moment to digest new constructs in this code:
 
 - The [http](https://lib.ballerina.io/ballerina/http/latest) module provides high-level abstractions to work with the HTTP protocol. 
 - The listener declaration creates a new HTTP listener with port 8080. Listener is the entity that receives the network input and then routes it to the attached service(s).
-- The service declaration specifies the listener, to which the service gets attached, and a collection of remotely accessible methods. There are two kinds of methods: `resource` and `remote` methods.
+- The service declaration specifies the listener to which the service gets attached and a collection of remotely accessible methods. There are two kinds of methods: `resource` and `remote` methods.
 - Services use remote methods to expose services in procedural style: remote methods are named by verbs, and resource methods for data-oriented protocols: resources are named by nouns.
 - In this example, there are two resource methods: The first one responds to HTTP GET requests with the path `/greeting`, and the other one responds to `GET` requests with the path `/greeting/{name}`.
 - These resource methods return a `string` value that maps to the content-type `text/plan` in the HTTP response.

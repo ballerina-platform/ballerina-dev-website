@@ -10,15 +10,15 @@ redirect_from:
  - /learn/building-a-data-service
 ---
 
-This tutorial will cover how you can connect to a MySQL database and perform queries against it using Ballerina. 
-In addition, this tutorial will also elaborate on how you can create an HTTP RESTful API using Ballerina that can be used
-by end-users to perform basic CRUD operations on the database.
+This tutorial covers how you can connect to a MySQL database and perform queries against it using Ballerina. 
+In addition, this tutorial also elaborates on how you can create an HTTP RESTful API using Ballerina that can be used
+to perform basic CRUD operations on the database.
 
 ![Data Service Architecture](/learn/images/data-service-architecture.png "Data Service Architecture")
 
 The methodology outlined in this tutorial can be used to work with PostgreSQL, SQL Server, OracleDB or any other 
 relational database as well using the [`PostgreSQL`](https://central.ballerina.io/ballerinax/postgresql),
-[`MSSQL`](https://central.ballerina.io/ballerinax/mssql), [`OracleDB`](https://central.ballerina.io/ballerinax/oraceldb)
+[`MSSQL`](https://central.ballerina.io/ballerinax/mssql), [`OracleDB`](https://central.ballerina.io/ballerinax/oraceldb),
 and [`JDBC`](https://central.ballerina.io/ballerinax/java.jdbc) connectors for Ballerina respectively.
 
 ## Prerequisites
@@ -26,17 +26,17 @@ and [`JDBC`](https://central.ballerina.io/ballerinax/java.jdbc) connectors for B
 ### Setting up a MySQL Server Instance
 
 There are several methods you can use to set up a MySQL server.
-1. Install a MySQL server on your machine locally by downloading and installing MySQL as detailed on the [MySQL website](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing) for different platforms.
-2. Using a cross-platform web-server solution such as [XAMPP](https://www.apachefriends.org/index.html) or [WampServer](https://www.wampserver.com/en/).
-3. Using [Docker](https://dev.mysql.com/doc/mysql-installation-excerpt/8.0/en/docker-mysql-getting-started.html) to create a MySQL server deployment.
-4. Using a cloud-based MySQL solution such as Google’s [CloudSQL](https://cloud.google.com/sql), Amazon’s [RDS for MySQL](https://aws.amazon.com/rds/sqlserver/), or Microsoft’s [Azure Database for MySQL](https://azure.microsoft.com/en-us/services/mysql/).
+1. Install a MySQL server on your machine locally by downloading and installing [MySQL](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing) for different platforms.
+2. Use a cross-platform web-server solution such as [XAMPP](https://www.apachefriends.org/index.html) or [WampServer](https://www.wampserver.com/en/).
+3. Use [Docker](https://dev.mysql.com/doc/mysql-installation-excerpt/8.0/en/docker-mysql-getting-started.html) to create a MySQL server deployment.
+4. Use a cloud-based MySQL solution such as Google’s [CloudSQL](https://cloud.google.com/sql), Amazon’s [RDS for MySQL](https://aws.amazon.com/rds/sqlserver/), or Microsoft’s [Azure Database for MySQL](https://azure.microsoft.com/en-us/services/mysql/).
 
->Be sure to note down the connection and authentication details for connecting to the MySQL server including the hostname, port, username and password.
+>**Note:** Keep the connection and authentication details for connecting to the MySQL server including the hostname, port, username and password.
 
 ### Creating a Database and Table
 
 Connect to the MySQL server using the terminal (or any other preferred method) and execute the following commands to 
-create a database and table. This tutorial will demonstrate the basic use-case of creating, maintaining and
+create a database and table. This tutorial demonstrates the basic use-case of creating, maintaining, and
 interacting with a database of employees in an organization.
 
 ```roomsql
@@ -82,13 +82,13 @@ public type Employee record {|
 |};
 ```
 
-This record-type will be the basis for interacting with the database.
+This record-type is the basis for interacting with the database.
 
 ## Connecting to and Interacting with the Database
 
 ### Adding the MySQL Driver
 
-The MySQL driver JAR is necessary in order to connect to and interact with a MySQL server. There are several methods of doing this.
+The MySQL driver JAR is necessary to connect to and interact with a MySQL server. There are several methods of doing this.
 
 1. Import the `ballerinax/mysql.driver` package in your `main.bal` file. This Package bundles the latest MySQL driver so that the MySQL connector can be used in ballerina projects easily.
    ```ballerina
@@ -131,7 +131,7 @@ configurable int PORT = ?;
 configurable string DATABASE = ?;
 ```
 
->For more information on defining configurable variables in Ballerina, see [Defining Configurable Variables](/learn/making-ballerina-programs-configurable/defining-configurable-variables/).
+>**Note:** For more information on defining configurable variables in Ballerina, see [Defining Configurable Variables](/learn/making-ballerina-programs-configurable/defining-configurable-variables/).
 
 ### Connecting to the Database
 
@@ -140,6 +140,7 @@ and [`SQL`](https://central.ballerina.io/ballerina/sql) packages must be importe
 
 ```ballerina
 import ballerinax/mysql;
+import ballerinax/sql;
 ```
 
 The `mysql:Client` can be used to connect to the database. Include the following code in your `main.bal` file and
@@ -153,16 +154,16 @@ final mysql:Client dbClient = check new(
 );
 ```
 
->The MySQL package provides additional connection options and the ability to configure connection pool 
->properties when connecting to the database which is not covered in this tutorial. To learn more about this, 
->see the API docs for [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/1.2.0/clients/Client).
+>**Info:** The MySQL package provides additional connection options and the ability to configure connection pool 
+>properties when connecting to the database which, are not covered in this tutorial. To learn more about this, 
+>see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/1.2.0/clients/Client).
 
 ### Executing Queries
 
-`mysql:Client` provides two primary remote methods for performing queries.
+The `mysql:Client` provides two primary remote methods for performing queries.
 
 1. `query()` - Executes an SQL query and returns the results (rows) from the query. 
-   `queryRow()` is a variation of this method, which returns at most, a single row from the result.
+   The `queryRow()` method is a variation of this method, which returns at most a single row from the result.
 
 2. `execute()` - Executes an SQL query and returns only the metadata of the execution.
 
@@ -235,16 +236,16 @@ isolated function removeEmployee(int id) returns int|error {
 
 ## Exposing the Database via an HTTP RESTful API
 
-After you have defined the methods necessary to manipulate the database, you can expose these selectively via an HTTP
-RESTful API. For this, you would first need to import the Ballerina [`HTTP` module](https://central.ballerina.io/ballerina/http).
+After you have defined the methods necessary to manipulate the database, expose these selectively via an HTTP
+RESTful API. For this, first need to import the Ballerina [`HTTP` module](https://central.ballerina.io/ballerina/http).
 
 ```ballerina
 import ballerina/http;
 ```
 
 ### Creating a Service
-Afterwards, you can create a service as follows. This would create an endpoint `/employees` on port `8080` which can 
-be accessed on a browser by visiting `locahost:8080/employees` after executing the command `bal run`.
+Afterwards, you can create a service as follows. This creates an `/employees` endpoint on port `8080` which can 
+be accessed via a browser by visiting `http://locahost:8080/employees` after executing the command `bal run`.
 
 ```ballerina
 service /employees on new http:Listener(8080) {
@@ -289,7 +290,7 @@ curl --location --request POST 'http://localhost:8080/employees/' \
 ```
 
 
-Similarly, you can define resource functions within the service for each of our use cases as demonstrated below.
+Similarly, you can define resource functions within the service for each of the use cases as demonstrated below.
 
 ```ballerina
 service /employees on new http:Listener(8080) {
@@ -317,7 +318,6 @@ service /employees on new http:Listener(8080) {
 }
 ```
 
->**Note:** 
->This tutorial does not cover topics such as authentication, rate-limiting, usage monitoring, billing, caching, 
->observability, load balancing and security.
+>**Note:** This tutorial does not cover topics such as authentication, rate-limiting, usage monitoring, billing, 
+> caching, observability, load balancing, and security.
 >Ballerina provides features and modules to cover these aspects as well.

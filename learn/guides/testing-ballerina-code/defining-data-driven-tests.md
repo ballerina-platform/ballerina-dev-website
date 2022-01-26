@@ -1,21 +1,21 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Data-Driven Tests
+title: Defining Data-Driven Tests
 description: Learn how to do write data-driven tests using the ballerina test framework.
 keywords: ballerina, programming language, testing
-permalink: /learn/testing-ballerina-code/data-driven-tests/
-active: data-driven-tests
+permalink: /learn/testing-ballerina-code/defining-data-driven-tests/
+active: defining-data-driven-tests
 intro: The Ballerina Test Framework allows you to specify a function that returns a set of data values as a data-provider.
 redirect_from:
 - /learn/testing-ballerina-code/
 - /learn/testing-ballerina-code
-- /swan-lake/learn/testing-ballerina-code/data-driven-tests/
-- /swan-lake/learn/testing-ballerina-code/data-driven-tests
-- /learn/user-guide/testing-ballerina-code/data-driven-tests
-- /learn/user-guide/testing-ballerina-code/data-driven-tests/
+- /swan-lake/learn/testing-ballerina-code/defining-data-driven-tests/
+- /swan-lake/learn/testing-ballerina-code/defining-data-driven-tests
+- /learn/user-guide/testing-ballerina-code/defining-data-driven-tests
+- /learn/user-guide/testing-ballerina-code/defining-data-driven-tests/
 - /learn/user-guide/testing-ballerina-code/
 - /learn/user-guide/testing-ballerina-code
-- /learn/user-guide/testing-ballerina-code/data-driven-tests/
+- /learn/user-guide/testing-ballerina-code/defining-data-driven-tests/
 ---
 
 ## Using Data Providers

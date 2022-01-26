@@ -1,21 +1,21 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Test Groups
+title: Defining Test Groups
 description: Learn how to use Ballerina Testframework grouping functionality
 keywords: ballerina, programming language, testing
-permalink: /learn/testing-ballerina-code/test-groups/
+permalink: /learn/testing-ballerina-code/defining-test-groups/
 active: test-groups
 intro: The Ballerina Testframework allows grouping of tests 
 redirect_from:
 - /learn/testing-ballerina-code/
 - /learn/testing-ballerina-code
-- /swan-lake/learn/testing-ballerina-code/test-groups/
-- /swan-lake/learn/testing-ballerina-code/test-groups
-- /learn/user-guide/testing-ballerina-code/test-groups
-- /learn/user-guide/testing-ballerina-code/test-groups/
+- /swan-lake/learn/testing-ballerina-code/defining-test-groups/
+- /swan-lake/learn/testing-ballerina-code/defining-test-groups
+- /learn/user-guide/testing-ballerina-code/defining-test-groups
+- /learn/user-guide/testing-ballerina-code/defining-test-groups/
 - /learn/user-guide/testing-ballerina-code/
 - /learn/user-guide/testing-ballerina-code
-- /learn/user-guide/testing-ballerina-code/test-groups/
+- /learn/user-guide/testing-ballerina-code/defining-test-groups/
 ---
 
 ## Grouping Tests

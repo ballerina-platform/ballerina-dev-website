@@ -18,7 +18,8 @@ redirect_from:
 - /learn/user-guide/testing-ballerina-code/configuring-tests/
 ---
 
-## Setup and Teardown
+## Setting Up and Tearing Down
+
 The following test annotations can be used to set up and tear down the instructions. These configuration annotations 
 enable executing instructions at various levels.
 
@@ -246,7 +247,7 @@ The test config annotation makes use of ‘after’ to denote which function nee
 test is run.
 
 
-## Test Specific Configurations
+## Defining Test Specific Configurations
 Configurations for testing can be provided using configurable variables. The values for configurable variables can be
 provided in a file named `Config.toml` located in the `tests/` directory, which will only be initialized when the tests
 are run. 
@@ -259,7 +260,7 @@ testing. This is particularly useful when testing services and clients where you
 are trying to test the service or client.
 
 
-## Test-only Dependencies
+## Defining Test-only Dependencies
 Dependencies meant to be resolved only during testing and can be specified in the `Ballerina.toml` file by specifying the 
 scope.
 

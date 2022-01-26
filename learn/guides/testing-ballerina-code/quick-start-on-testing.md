@@ -23,7 +23,7 @@ redirect_from:
   - /learn/testing-ballerina-code/quick-start-on-testing
 ---
 
-## Writing a Simple Function
+## Testing a Simple Function
 
 To get started, let's set up the Ballerina package to run tests.
 

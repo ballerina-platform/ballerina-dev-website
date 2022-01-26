@@ -12,7 +12,7 @@ redirect_from:
 - /learn/managing-dependencies
 ---
 
-## Specifying dependencies
+## Specifying Dependencies
 
 A package can depend on other packages that are available in Ballerina repositories. By default, Ballerina searches for the dependencies in 2 repositories: The distribution repository and the Ballerina Central repository. It also supports a third repository named the `local repository`, which is useful in the package development phase and for bug fixing. The local repository is used to temporarily override dependencies for testing or development purposes.
 
@@ -31,7 +31,7 @@ the remote repository will be queried only if the specified version is not prese
 The local repository is also a file system repository, which will be created in the `<USER_HOME>` location. The repository location is `<USER_HOME>/.ballerina/repositories/local/repo/bala`. 
 For details on using the local repository, see [local repository](/learn/user-guide/ballerina-packages/dependencies/#local-repository).
 
-### Importing a module
+### Importing a Module
 
 By using an import statement in the Ballerina code, you can use exported modules of any of the packages. This enables access to all public symbols in the imported module. 
 
@@ -92,7 +92,7 @@ service / on gmailEventListener {
 
 ```
 
-## Specifying dependency versions
+## Specifying Dependency Versions
 
 The dependency versions are automatically figured out by the compiler when a package is built. The latest compatible versions of the dependencies are resolved by searching the packages of dependencies in the distribution repository and the Ballerina Central repository and if specified from the local repository as well.
 
@@ -108,7 +108,7 @@ The `Dependencies.toml` file is auto-generated and managed by the Ballerina CLI 
 Updating the versions of the existing dependencies, adding dependency entries related to a newly-added import statement, and deleting entries 
 of a removed import statement are handled by the CLI itself. 
 
-## Using dependencies from the Local Repository
+## Using Dependencies from the Local Repository
 
 The local repository is useful to test a package that is in the development phase or else for fixing bugs. To specify a dependency from the local repository, first, you need to publish it to the local repository by following the steps below.
 
@@ -144,14 +144,14 @@ During the compilation, the version specified in the `Ballerina.toml` is conside
 and the dependency will be resolved from the local repository. Nonetheless, if the compiler finds a newer patch version in Distribution or Central repositories, 
 then, the latest version is always given priority. At this point, the compiler resolves the latest version and ignores the dependency version in the local repository. 
 
-## Achieving reproducible builds
+## Achieving Reproducible Builds
 
 By default, the compiler always looks up the latest compatible versions of the dependencies in the repositories when building a package. 
 This minimizes the hassle to the package developer in terms of dependency updates since the compiler is smart enough to 
 keep the package updated all the time. However, if you want to repeat a constant behavior to make the build more predictable, 
 then, Ballerina facilitates this using offline and sticky modes.
 
-### Sticky mode.
+### Sticky mode
 
 Using the `--sticky` flag with `bal build` will force the compiler to stick to the exact versions locked in the `Dependencies.toml`. 
 In other words, the automatic-update feature is disabled when the `--sticky` flag is provided.
@@ -183,8 +183,8 @@ A few examples would be as follows:
 * `1.0.0` and `2.0.0` are considered incompatible since the major versions are different.
 
 When building the dependency graph, if there are more than one version for a specific dependency, the versions are chosen as follows:
-if the versions are compatible, the latest version is picked
-if the versions are incompatible, an error will be thrown with a build failure.
+* if the versions are compatible, the latest version is picked
+* if the versions are incompatible, an error will be thrown with a build failure.
 
 For example, if one dependency in your package depends on the `1.0.0` version of the `ballerina/observe` package and another dependency depends on `0.9.0` of the same, the build will fail with the following error message.
 

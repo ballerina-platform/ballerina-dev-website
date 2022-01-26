@@ -20,13 +20,16 @@ redirect_from:
 
 Writing code in an organized manner from the beginning of the project is important for the lifecycle of the project and its maintainability in the long run. Organized code will make it easy to extend and improve your project over time. Ballerina project structure makes it easy to write clean code by eliminating repetitions, writing reusable code, adding new features without changing the existing code, etc. To achieve this, Ballerina has the concept of packages and modules. 
 
-Ballerina code is organized in a single shareable unit called a Package. Package is a collection of modules and a module is a collection of Ballerina source files, test files and resources. A package should contain at least one module which is called the default module. Each module has its own directory which is used to organize source files, test files and resources.
+Ballerina code is organized in a single shareable unit called a Package. 
+A package is a collection of modules and a module is a collection of Ballerina source files, test files and resources. 
+A package should contain at least one module, which is called the default module. Each module has its own directory, 
+which is used to organize source files, test files, and resources.
 
-A package is a collection of related modules that are versioned and distributed as a single unit. It is common in small projects to have only one module (default) in a package. As a result, the default module’s content is placed directly in the root of the package directory.
+It is common in small projects to have only one module (default) in a package. As a result, the default module’s content is placed directly in the root of the package directory.
 
-`bal new` command creates the Package with the default module. This will generate the `Ballerina.toml` which identifies a directory as a package and will additionally generate a sample source file in the default module.
+The `bal new` command creates a package with the default module. This will generate the `Ballerina.toml` file, which identifies a directory as a package and will additionally generate a sample source file in the default module.
 
-### Creating your first Ballerina package
+### Creating your First Ballerina Package
 
 Create a Ballerina package with the `bal new` command as follows. 
 
@@ -50,7 +53,7 @@ tree .
 
 >**Tip:** You may also try creating a service or a lib package instead of the main function. 
 
-#### Creating a Ballerina service package
+#### Creating a Ballerina Service Package
 
 ```bash
 bal new -t service hello_service
@@ -69,7 +72,7 @@ cd hello_service
 1 directory, 3 files
 ```
 
-#### Creating a library Package
+#### Creating a Library Package
 
 ```bash
 bal new -t lib hello_lib
@@ -96,7 +99,7 @@ Therefore, the package root directory contains files that belong to the package 
 
 You can add more source files at the root, and symbols such as functions and variables in one file are visible to other files because they are in the same namespace. This namespace is called the default module of the package. The package name, which is specified in the Ballerina.toml file is also used to refer to the default module.
 
-### Non-default modules
+### Non-default Modules
 
 As projects grow in complexity, the need arises to organize code better. This could be because you want to separate the functionalities of the package and/or to add boundaries to the visibility of certain functionalities. Therefore, Ballerina allows subdividing the code into multiple modules as well.
 
@@ -120,7 +123,7 @@ The package structure after adding a non-default module will have the directory 
 2 directories, 3 files
 ```
 
-## Importing a module from the same package 
+## Importing a Module from the same Package 
 
 You can access any public symbol from another module of the package by importing the particular module using an import declaration. 
 The import declaration syntax is as follows.
@@ -132,7 +135,7 @@ import module-name [as import-prefix];
 * The `import-prefix` has to be a valid Ballerina identifier and the `import-prefix` is used to refer to public symbols in the declared module.
 * The `import-prefix` is optional. If it is not available, the last part of the module name can be used.
 
-In a package which has the default module containing the main.bal and a non-default module `hello-world.util`, 
+In a package, which has the default module containing the `main.bal` file and a non-default module named `hello-world.util`, 
 you can add a public function in the `hello_world.util` module and use this function in the `main.bal` file in the default module.
 
 ```bal

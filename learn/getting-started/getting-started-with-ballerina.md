@@ -9,14 +9,12 @@ intro: Let’s get you set up a Ballerina development environment and write a si
 ---
 ```
 
-Let’s get you set up a Ballerina development environment and write a simple Ballerina program.
-
 ## Prerequisites
 
 To complete this tutorial, you need:
 
-- A command terminalA text editor.
-- [VSCode](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed is our preferred choice, and it has good support for Ballerina.
+- A command terminal.
+- A text editor. VSCode](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed is our preferred choice, and it has good support for Ballerina.
 - A Ballerina installation. Follow the steps in [Installing Ballerina](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/).
 - Some experience with at least one programming language. 
 
@@ -26,7 +24,7 @@ To complete this tutorial, you need:
 
 You can get the latest `bal` tool version with the Ballerina installation. Open your terminal and run the following commands just to make sure everything is ready:
 
-```
+```bash
 $bal
 $bal version
 ```
@@ -35,13 +33,13 @@ $bal version
 
 Let’s write a Ballerina program that prints “Hello, World!”. Use the `bal new` command to create a new Ballerina project. 
 
-```
+```bash
 $ bal new greeter
 ```
 
 This command creates a new directory called `greeter`. Let’s move into this directory to see what’s in there. 
 
-```
+```bash
 greeter/
 ├── Ballerina.toml
 └── main.bal
@@ -64,7 +62,7 @@ public function main() {
 
 In this code:
 
-- The first line is an import statement that makes the capabilities in the `[ballerina/io](https://lib.ballerina.io/ballerina/io/latest)` module available to your program. This module contains functions to write to the console, read from the console, and perform read/write operations on files.,
+- The first line is an import statement that makes the capabilities in the [ballerina/io](https://lib.ballerina.io/ballerina/io/latest) module available to your program. This module contains functions to write to the console, read from the console, and perform read/write operations on files.
 - The `main` function is your program’s entry point, and you can execute it by running the program. 
 - This function contains a statement that prints `Hello, World!` to the console. This statement calls the `println` function in the `io` with `Hello, World!`.
 
@@ -72,7 +70,7 @@ If you are interested in learning more about the language, read our [Language Ba
 
 Let’s run this project by running `bal run` in your terminal:
 
-```
+```bash
 $ bal run
 Compiling source
 	example/greeter:0.1.0
@@ -84,13 +82,18 @@ Hello, World!
 
 You can also generate an executable program with `bal build`:
 
-```$ bal buildCompiling source	sameera/greeter:0.1.0
-Generating executable	target/bin/greeter.jar
+```bash
+$ bal build
+Compiling source
+	example/greeter:0.1.0
+
+Generating executable
+	target/bin/greeter.jar
 ```
 
 Then, use `bal run` as follows.
 
-```
+```bash
 $ bal run target/bin/greeter.jar
 Hello, World!
 ```
@@ -101,7 +104,7 @@ Now let’s change our greeter application to a REST API. Ballerina has first-cl
 
 You can replace the `main.bal` content with the following code.
 
-```
+```ballerina
 import ballerina/http;
 
 listener http:Listener httpListener = new (8080);
@@ -119,20 +122,20 @@ service / on httpListener {
 
 Let’s take a moment to digest new constructs in this code:
 
-- The `[http](https://lib.ballerina.io/ballerina/http/latest)` module provides high-level abstractions to work with the HTTP protocol. 
+- The [http](https://lib.ballerina.io/ballerina/http/latest) module provides high-level abstractions to work with the HTTP protocol. 
 - The listener declaration creates a new HTTP listener with port 8080. Listener is the entity that receives the network input and then routes it to the attached service(s).
 - The service declaration specifies the listener, to which the service gets attached, and a collection of remotely accessible methods. There are two kinds of methods: `resource` and `remote` methods.
 - Services use remote methods to expose services in procedural style: remote methods are named by verbs, and resource methods for data-oriented protocols: resources are named by nouns.
-- In this example, there are two resource methods: The first one responds to `HTTP` `GET` requests with the path `/greeting`, and the other one responds to `GET` requests with the path `/greeting/{name}`.
-- These resource methods return a `string` value that maps to the content-type `text/plan` in the `HTTP` response.
+- In this example, there are two resource methods: The first one responds to HTTP GET requests with the path `/greeting`, and the other one responds to `GET` requests with the path `/greeting/{name}`.
+- These resource methods return a `string` value that maps to the content-type `text/plan` in the HTTP response.
 
 
 
-If you are interested in learning more about services, read our [Network Interaction](https://ballerina.io/learn/distinctive-language-features/network-interaction/) guide. 
+To learn more about services, see our [Network Interaction](https://ballerina.io/learn/distinctive-language-features/network-interaction/) guide. 
 
 Let’s run this project in your terminal:
 
-```
+```bash
 $ bal run
 Compiling source
 	example/greeter:0.1.0
@@ -140,9 +143,9 @@ Compiling source
 Running executable
 ```
 
-In another terminal window, try out the following commands:
+In another terminal window, run the following commands:
 
-```
+```bash
 $ curl localhost:8080/greeting
 Hello, World!
 
@@ -150,9 +153,9 @@ $ curl localhost:8080/greeting/Ballerina
 Hello Ballerina
 ```
 
-## Do more with Ballerina
+## Learn more
 
-In this short tutorial, you set up your development environment and wrote two Ballerina applications.
+In this tutorial, you set up your development environment and wrote two Ballerina applications.
 
 To learn more about Ballerina, take a look at the following tutorials:
 

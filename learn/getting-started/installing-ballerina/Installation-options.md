@@ -98,6 +98,8 @@ Update Tool 1.3.7
 
 If you already have a Ballerina version above 1.1.0 installed, you can use the update tool to update to the latest Ballerina version and set it as the active version by executing either of the commands below.
 
+>**Info:**You might need to first update the Update Tool to its latest version. If you have an Update Tool version below 0.8.14, execute the `ballerina update` command or else execute the `bal update` command to do this.
+
 **Command**|**Description**
 :-----:|:-----:
 `bal dist update`|Update to the latest patch version of the active distribution

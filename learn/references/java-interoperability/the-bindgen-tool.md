@@ -197,7 +197,7 @@ Generated Ballerina bindings will support the following type mappings between Ja
 
 The Ballerina binding classes will store a handle reference of the Java object using its `jObj` field.
 
-The following table summarizes how Java primitive types are mapped to corresponding Ballerina primitive types. This is applicable when mapping a return type of a Java method to a Ballerina type.
+The following table summarizes how Java primitive types are mapped to the corresponding Ballerina primitive types. This is applicable when mapping a return type of a Java method to a Ballerina type.
 
 Java Type | Ballerina Type
 ---------- | --------------

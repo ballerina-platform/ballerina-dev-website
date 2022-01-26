@@ -292,7 +292,7 @@ public function getFileCountRecursively(string path) returns int = @java:Method 
 ```
 
 ### Mapping Java Classes into Ballerina Classes
-The following pattern is useful if you want to present a clearer Ballerina API, which calls to the underneath Java code. This pattern creates wrapper Ballerina classes for each Java class that you want to expose via your API.
+The following pattern is useful if you want to present a clearer Ballerina API, which calls the underneath Java code. This pattern creates wrapper Ballerina classes for each Java class that you want to expose via your API.
 
 Imagine that you want to design an API to manipulate a stack of string values by using the Java `ArrayDeque` utility. You can create a Ballerina class as follows.
 

@@ -225,9 +225,9 @@ redirect_from:
 		<p>Details of publishing your library package to Ballerina Central.  </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
-<a href="/learn/calling-java-code-from-ballerina-and-vice-versa/">
- <h3 id="calling-java-code-from-ballerina-and-vice-versa">Calling Java Code from Ballerina and Vice Versa</h3></a>
-		<p>Instructions on the supported interoperability features. </p>
+<a href="/learn/calling-java-code-from-ballerina/">
+ <h3 id="calling-java-code-from-ballerina">Calling Java Code from Ballerina</h3></a>
+		<p>Details of calling Java code from Ballerina using Java interoperability.  </p>
 </div>
 </div>
 
@@ -289,6 +289,12 @@ redirect_from:
   <a href="/learn/style-guide/coding-conventions/">
  	 <h3 id="style-guide">Style Guide</h3></a>
 		<p>Best practices to follow when formatting Ballerina code.   </p>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+  <a href="/learn/java-interoperability/">
+     <h3 id="the-bal-tool">Java Interoperability</h3></a>
+		<p>Instructions on the supported Java interoperability features.  </p>
 </div>
 </div>
 

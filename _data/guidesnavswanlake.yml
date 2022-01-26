@@ -135,7 +135,7 @@
   url: /learn/publishing-packages-to-ballerina-central/
   active: publishing-packages-to-ballerina-central
 
-- title: Calling Java Code from Ballerina and Vice Versa
-  url: /learn/calling-java-code-from-ballerina-and-vice-versa/
-  active: calling-java-code-from-ballerina-and-vice-versa
+- title: Calling Java Code from Ballerina
+  url: /learn/calling-java-code-from-ballerina/
+  active: calling-java-code-from-ballerina
 

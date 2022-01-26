@@ -199,7 +199,7 @@ function builderWithStudentList(handle list, int index) returns handle = @java:C
 ```
 
 ## Calling Java Methods
-You can use the `java:@Method` annotation to link Ballerina functions with Java static and instance methods. There is a small but important difference in calling Java static methods vs calling instance methods.
+You can use the `java:@Method` annotation to link Ballerina functions with Java static and instance methods. There is a minor but important difference in calling Java static methods vs calling instance methods.
 
 ### Calling Static Methods
 Let’s first look at how to call a static method. The `java.util.UUID` class  has a static method with the `static UUID randomString()` signature.

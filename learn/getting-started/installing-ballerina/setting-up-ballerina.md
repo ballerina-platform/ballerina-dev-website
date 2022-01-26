@@ -29,27 +29,6 @@ redirect_from:
   - /learn/installing-ballerina
 ---
 
-## Trying Ballerina in the Playground
-
-You can use the Ballerina Playground to write Ballerina programs without installing anything.
-
-<link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/css/home-page.css"/>
-<style>a.cMobileLogo img {display: block;}
-       .nav > li.cVersionItem {display: block !important};
-</style>
-<div class="row cBallerinaIntroSection">
-   <div class="container">
-      <div class="col-sm-12 col-md-12 cTopLayer">
-         <div class="col-sm-12 col-md-4 cMainCTAContainer">
-            <a class="cBallerina-io-Home-main-download-button cPlayButton" target="_blank" href="https://play.ballerina.io">
-               Try Ballerina
-               <p>Try without installing <br>in the playground</p>
-            </a>
-         </div>
-   </div></div></div>
-<div class="clearfix"></div>
-
 ## Downloading Ballerina
 
 [Download](/downloads) Ballerina based on the operating system you are using and install it.

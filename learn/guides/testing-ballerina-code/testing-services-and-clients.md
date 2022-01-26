@@ -23,7 +23,7 @@ you to send requests directly to the service in order to test its functionality.
 >**Note:** You need to have tests defined in the respective module where the service is defined in
 order for the service to start automatically.
 
-***Example***
+***Example:***
 
 To test a service, you can create a client in the test source, which sends requests directly to
 the service and use the test assertion functions to assert the responses. This can be used for both
@@ -77,7 +77,7 @@ This is useful when testing the full extent of the client by mocking responses t
 be difficult to reproduce in an actual scenario. This would cover a variety of scenarios that the
 client is capable of handling without having the service to actually be up and running.
 
-***Example**
+***Example:***
 The following is a simple example on how mocking can be used to stub responses to services that you 
 may not be able to access during the test execution.
 

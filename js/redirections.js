@@ -42,6 +42,7 @@ let redirections = {
     "/learn/tooling-guide/ballerina-shell/":"/learn/by-example/",
     "/learn/cli-documentation/update-tool/":"/learn/by-example/",
     "/learn/cli-documentation/openapi/":"/learn/by-example/",
+    "/learn/running-ballerina-programs-in-the-cloud/code-to-cloud-samples/":"/page-not-available.html",
     "/1.2/learn/ballerina-shell/":"/page-not-available.html",
     "/1.2/learn/language-walkthrough/":"/page-not-available.html",
     "/1.2/learn/visual-studio-code-extension/vs-code-commands/":"/page-not-available.html",
@@ -117,6 +118,7 @@ let redirections = {
     "/1.2/learn/api-docs/ballerina/ftp/index.html":"/page-not-available.html",
     "/1.1/learn/api-docs/ballerina/ftp/index.html":"/page-not-available.html",
     "/1.0/learn/api-docs/ballerina/ftp/index.html":"/page-not-available.html",
+    "/learn/getting-started/installing-ballerina/building-from-source.md":"/page-not-available.html",
 
 
 

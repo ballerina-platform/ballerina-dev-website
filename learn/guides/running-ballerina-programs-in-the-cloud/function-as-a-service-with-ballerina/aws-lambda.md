@@ -19,25 +19,48 @@ redirect_from:
   - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina
 ---
 
-Exposing a Ballerina function as an AWS Lambda function is done by importing the `ballerinax/awslambda` module and simply annotating the Ballerina function with the `awslambda:Function` annotation. Also, the Ballerina function must have the following signature: `function (awslambda:Context, json) returns json|error`. 
+## Prerequisites
+* Install the latest Ballerina distribution.
+* Install the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+* Go to [users](https://console.aws.amazon.com/iam/home?#/users), and click **Add User**.
+* Enter the username, enable programmatic access, and make sure the user has the `AWSLambda_FullAccess` or higher permissions.
+* Configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) using the access key and secret generated in the user creation.
+* Go to [roles](https://console.aws.amazon.com/iamv2/home#/roles), and create a role that has the `AWSLambdaBasicExecutionRole` or higher permissions.
+* Go to the newly created role, and copy the role ARN to use when the Lambda function is being deployed.
+
+## Supported Triggers
+An AWS Lambda function can be triggered by various AWS services. You can find the list of supported notification types below.
+- Direct Invocation
+- Simple Queue Service [SQS](https://aws.amazon.com/sqs/)
+- Simple Storage Service [S3](https://aws.amazon.com/s3/)
+- [DynamoDB](https://aws.amazon.com/dynamodb/)
+- Simple Email Service [SES](https://aws.amazon.com/ses/)
+- [API Gateway](https://aws.amazon.com/api-gateway/)
 
 ## Writing a Function
 
-The following Ballerina code gives an example on how to expose a function in AWS Lambda, which generates a SHA256 hash from the given input. 
+The following Ballerina code gives an example on how to expose a simple echo function in AWS Lambda. 
+
+Create a Ballerina package.
+```bash
+$ bal new aws_lambda_deployment
+```
+Replace the contents of the generated BAL file with the following content.
 
 ```ballerina
+import ballerina/log;
 import ballerinax/awslambda;
-import ballerina/crypto;
 
 @awslambda:Function
-public function hash(awslambda:Context ctx, json input) returns json|error {
-    return crypto:hashSha256(input.toJsonString().toBytes()).toBase16();
+public function echo(awslambda:Context ctx, json input) returns json {
+   log:printInfo(input.toJsonString());
+   return input;
 }
 ```
 
-The first parameter with the [awslambda:Context](https://lib.ballerina.io/ballerinax/awslambda/latest/classes/Context) object contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
+Functions annotated as `@awslambda:Function` should always have the first parameter with the [`awslambda:Context`](https://lib.ballerina.io/ballerinax/awslambda/latest/classes/Context) object, which contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
 
-The second parameter with the `json` value contains the input request data. This input value format will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). The return type of the function is `json|error`, which means in a successful scenario, the function can return a `json` value with the response, or else in an error situation, the function will return an `error` value, which provides information on the error to the system.
+The second parameter with the `json` value contains the input request data. This input value format will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). The return type of the function is `json`. When the function is triggered by the event, the function body executes and it simply logs the input JSON and returns the JSON.
 
 ## Building the Function
 
@@ -46,47 +69,40 @@ The AWS Lambda functionality is implemented as a compiler extension. Thus, the a
 Execute the command below to build the above code. 
 
 ```bash
-bal build functions.bal 
-```
-You view the output below.
-
-```bash
+$ bal build
 Compiling source
-	functions.bal
+	wso2/aws_lambda_deployment:0.1.0
 
 Generating executables
-	functions.jar
-	@awslambda:Function: hash
+	@awslambda:Function: echo
 
         Run the following command to deploy each Ballerina AWS Lambda function:
-        aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb:///aws-ballerina-lambda-functions.zip --handler functions.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
+        aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb://<project_dir>/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
 
         Run the following command to re-deploy an updated Ballerina AWS Lambda function:
-        aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip
-        functions.jar
+        aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://<project_dir>/target/bin/aws-ballerina-lambda-functions.zip
+        target/bin/aws_lambda_deployment.jar
 ```
 
 ## Deploying the Function
 
-Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer. As shown in the above instructions output, this information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console, or the [AWS CLI](https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html) to deploy the functions. An [AWS Lambda Role](https://console.aws.amazon.com/iam/home?#/roles) for the user must be created with the `AWSLambdaBasicExecutionRole` permission in order to deploy the AWS Lambda functions. The created AWS Lambda Role ARN is required when deploying the functions through the CLI.
+Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer. As shown in the above instructions output, this information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console or the [AWS CLI](https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html) to deploy the functions. 
 
-Execute the command below to deploy the hash function as an AWS Lambda is shown below. 
+**Info:** When you are deploying, make sure to replace the `$LAMBDA_ROLE_ARN` placeholder with the role ARN you copied in the prerequisites.
 
->**Info:** You need to change the memory size and timeout in the command below according to your application requirements. If not, the default values will be applied.
+Execute the command below to deploy the echo function as an AWS Lambda as shown below. 
 
-```bash
-aws lambda create-function --function-name hash --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.hash --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6
-```
-
-You view the output below.
+>**Info:**  For the supported parameters, go to the [`create-function` documentation](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html). You might need to change parameters such as the memory- size and timeout depending on your application and connection speed. 
 
 ```bash
+$ aws lambda create-function --function-name echo --zip-file fileb://<project_dir>/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6
+
 {
-    "FunctionName": "hash",
-    "FunctionArn": "arn:aws:lambda:us-west-1:908363916138:functions:hash",
+    "FunctionName": "echo",
+    "FunctionArn": "arn:aws:lambda:us-west-1:908363916138:aws_lambda_deployment:echo",
     "Runtime": "provided",
     "Role": "arn:aws:iam::908363916138:role/lambda-role",
-    "Handler": "functions.hash",
+    "Handler": "aws_lambda_deployment.echo",
     "CodeSize": 22160569,
     "Description": "",
     "Timeout": 3,
@@ -114,33 +130,73 @@ Execute the command below to test the deployed AWS Lambda function by invoking i
 >**Info:** The payload should be a valid JSON object.
 
 ```bash
-echo '{"x":5}' > input.json
-```
-
-You view the output below.
-
-```bash
-aws lambda invoke --function-name hash --payload fileb://input.json response.txt 
+$ echo '{"MESSAGE":"HELLO"}' > input.json
+$ aws lambda invoke --function-name echo --payload fileb://input.json echo-response.txt
 {
     "StatusCode": 200,
     "ExecutedVersion": "$LATEST"
 }
 ```
 
-Execute the command below to view the response in the `response.txt` file.
+Execute the command below to view the response in the `echo-response.txt` file.
 
 ```bash
-cat response.txt 
+$ cat echo-response.txt
+
+{"MESSAGE":"HELLO"}
 ```
 
-You view the output below.
+If you want to check the logs of the execution, you have to go to the `echo` lambda function in the portal, and then click on the **Monitor** tab and **Logs** button.
 
-```bash
-"dd9446a11b2021b753a5df48d11f339055375b59cd81d7559d36b652aaff849d"
+## More Samples
+
+### S3 Trigger
+This sample creates a function, which will be executed for each object creation in AWS S3.
+
+```ballerina
+import ballerinax/awslambda;
+
+@awslambda:Function
+public function notifyS3(awslambda:Context ctx, 
+                         awslambda:S3Event event) returns json {
+                            io:println (event.Records[0].s3.'object.key);
+    return event.Records[0].s3.'object.key;
+}
 ```
 
-## What's Next?
+Now, you can build and deploy the function as in the previous sample.
+In order to invoke this function, create an S3 bucket in AWS.
+1. Go to [AWS S3](https://s3.console.aws.amazon.com/s3/), in the portal and create a bucket.
+2. Click on the created bucket, go to the **Properties** tab, and click on the **Create event** notification under the **Event notifications** section.
+3. Enable `All object create events under` event types. Select the Lambda function as the destination, and choose the `notifyS3` Lambda function from the dropdown.
 
-In a more practical scenario, the AWS Lambda functions will be used by associating them to an external event source such as Amazon DynamoDB or Amazon SQS. For more information on this, go to [AWS Lambda event source mapping documentation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html).
+Now, click **Upload** to upload an object to the S3 bucket, and view the Lambda logs via CloudWatch to see the object name.
+
+### DynamoDB Trigger
+This sample creates a function, which will be executed for each entry added to a database in the DynamoDB.
+
+```ballerina
+import ballerinax/awslambda;
+
+@awslambda:Function
+public function notifyDynamoDB(awslambda:Context ctx, 
+                               awslambda:DynamoDBEvent event) returns json {
+                                  io:println (event.Records[0].dynamodb.Keys.toString());
+    return event.Records[0].dynamodb.Keys.toString();
+}
+```
+Now, you can build and deploy the function as in the previous sample.
+In order to invoke this function, create a DynamoDB table.
+1. Go to [roles](https://console.aws.amazon.com/iamv2/home#/roles), and add `AWSLambdaDynamoDBExecutionRole` to the created role in the prerequisites.
+2. Go to the [DynamoDB](https://us-west-1.console.aws.amazon.com/dynamodbv2).
+3. Click **Create Table**, enter the table name, partition key, and create the table. If you already have a table created, you can skip this step.
+4. Click on the DynamoDB table, and then click the **Exports and streams** tab.
+5. Click **enable DynamoDB stream details**, and select the key attributes only for the event type.
+6. Once it's enabled, click **Create a trigger**, select the `notifyDynamoDB` from the dropdown, and create a trigger.
+
+Now, add an entry to the DynamoDB table to invoke the Lambda function. For this, go to [Items](https://us-west-1.console.aws.amazon.com/dynamodbv2) in the DynamoDB, select the table, and click **Create item**. Once the item is entered into the table, go to the Lambda function, and check the logs via CloudWatch to see the object identifier in the logs.
+
+
+>**Note:** In a more practical scenario, the AWS Lambda functions will be used by associating them to an external event source such as Amazon DynamoDB or Amazon SQS. For more information on this, go to [AWS Lambda event source mapping documentation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html).
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

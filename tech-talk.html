@@ -2,7 +2,7 @@
 layout: ballerina-inner-page
 title: Monthly Tech Talk
 description: 
-permalink: /tech-talk/
+permalink: community/monthly-tech-talk/
 intro: 
 redirect_from:
 
@@ -15,7 +15,7 @@ redirect_from:
         width: 100%;
         display: inline-block;      
     }
-
+ 
     .submit-button{
         padding: 10px 20px;
         display: inline-block;
@@ -62,7 +62,8 @@ margin-bottom: 5px;
 font-weight: 400;
 font-size: 10px;
 }
-  
+
+
 .checkbox-wrapper {
   white-space: nowrap
 }
@@ -78,7 +79,7 @@ font-size: 10px;
   color: #57595d;
   padding-left: 8px;
 }
-
+.gTitle1{color:#57595d !important} 
 .card p{
     margin-top:15px !important;
     margin-bottom:0px !important;
@@ -179,7 +180,10 @@ font-size: 10px;
 .exampleModalLabel{
     color: #464646;
 }
-
+.cEventDateNum{
+    font-size: 20px !important;
+    font-weight: 450 !important;
+}
 td.cEventDateContainer1 span.cEventDate1{
     width: 100%;
     font-size: 18px;
@@ -218,82 +222,65 @@ td.cEventDateContainer{
   margin-bottom: 40px !important;
   margin-left: -8px !important;
 }
+.dateDisplay {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 0px !important;
+        padding-top: 20px;
+}
+.dateDisplay1 {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 0px !important;
+        padding-top: 20px;
+}
 }
 </style>
 <link rel="stylesheet" href="/css/events-page.css">
 
-<div class="container">
+
 
     <section style="padding-bottom: 30px;">
         <div class="row">
           
-            <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;">
+            <div class="col-sm-12 col-md-6 col-lg-6 leftpadding" style="float: left; padding-left: 0px;">
               <p >
-                If you're looking to connect with other Ballerina users and language experts, then look no further. We're excited to bring you this monthly tech talk, where our team will discuss different technical topics surrounding the world of Ballerina.
+                If you're looking to meet other Ballerina users and language specialists, this is the place for you. We're excited to bring you our Monthly Tech Talk, where our team will discuss different technical topics surrounding the world of Ballerina.
               </p>
     
           
     
             <p style="margin-top: 10px;">
-                Want to register for any upcoming Ballerina Tech Talks? Sign up to get notified.      
+                Want to register for any upcoming tech talks? Sign up to get notified.      
             </p>
-              <form id="bio-tech-talk-subscribeForm">
-                <div class="row">
-                    <div class="col-sm-12 col-md-8 col-lg-8" style="float: left;padding-left: 0px;">
-                        <input type="email" required-field="1" class="form-control text-feild" id="bio-tech-talk-sub-email" aria-describedby="emailHelp" placeholder="Enter you email address" style="border-radius: 0;border: #20b6b0 solid 1px;">
-                        <!--Alert Box Thank you-->
-                        <div class="alert alert-success alert-dismissible fade show" role="alert" id="bioTechTalkSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
-                        <strong>Thank you.</strong> You will receive notifications for our upcoming tech talks.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <!--Alert Box Thank you-->
-                        <!--Alert Box Wrong-->
-                        <div class="alert alert-success alert-dismissible fade show" role="alert" id="bioTechTalkWrongAlert" style="background-color: #E6EAEB;color: #454646;display:none !important;">
-                        <strong>Enter a valid email address.</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <!--Alert Box Wrong-->
-                        
-                        <div class="text-left checkbox-wrapper">
-                            <input type="checkbox" id="terms" class="checkbox">
-                            <label class="checkbox-label" for="terms">I agree to the <a href="/privacy-policy" target="_blank" class="getStartLinks">WSO2 Data Privacy Policy</a>.</label>
-                        </div>
-                    
-                    </div>
-                    <div class="col-sm-12 col-md-4 col-lg-4" style="float: right;">
-                        <button type="button" class="submit-button" id="subscribe_button" >Register</button>
-                    </div>
-                </div>
-             </form>
-             <p style="padding-bottom: 10px;padding-bottom: 15px;font-weight: 400;">
-                If you would like to suggest a topic for our next talk, <a id="sumbitTechTalk" data-toggle="modal" data-target="#sumbitTechTalkForm" style="color: #20b6b0;">please fill this form.</a>
+            <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x79m" width="100%" type="text/html" frameborder="0" allowTransparency="true" style="border: 0;height: 140px;" class="mobileViewTechTalk"></iframe>
+             <p style="padding-bottom: 15px;font-weight: 400;margin-top:0px" class="underText">
+                If you would like to suggest a topic for our next talk or give feedback, <a id="sumbitTechTalk" data-toggle="modal" data-target="#sumbitTechTalkForm" style="color: #20b6b0;">please fill this form.</a>
              </p>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;">
+            <div class="col-sm-12 col-md-6 col-lg-6 rightpadding" style="float: right;padding-right: 0px;">
         
             <div class="row " style="float: left; background-color: #e6eaeb5d;padding: 25px 20px;margin: 0px 0px 25px 0px;">
     
-                <h5 style="padding-left:15px;margin:0 0 10px 0;color: #464646;"> Upcoming Tech Talk</h5>
+                <h5 style="padding-left:15px;margin:0 0 20px 0;color: #464646;"> Upcoming Monthly Tech Talk</h5>
                 <div class="col-sm-12 col-md-12 col-lg-12 " style="float: left; ">
-                    <div class="col-sm-12 col-md-4 col-lg-4" style="" >
-                        <p style="color: #585A5E; font-size:17px;float: right;">Jan 25, 2022</p>
-                        <p style="float: right;margin: 20px 0;">Tuesday</p>
-                        <p style="float: right;margin: 0px 0px 20px 0;">Online Event</p>
+                    <div class="col-sm-4 col-md-4 col-lg-4 mobileViewAdjustment" style="padding-left: 0px;" >
+                        <p class="dateDisplay1" style="color: #585A5E; font-size:18px;float: right; font-weight: 500;">Jan 25, 2022</p>
+                        <p  class="dateDisplay1" style="float: right;">Tue., 9:00 a.m. PST</p>
+                        <p style="float: right;">Online Event</p>
         
                     </div>
-                    <div class="col-sm-12 col-md-8 col-lg-8" style="border-left: 2px #585A5E solid;">
-                        <p>
-                            Ballerina Tech Talk
+                    <div class="col-sm-8 col-md-8 col-lg-8 mobileViewAdjustment1" style="border-left: 2px #585A5E solid;">
+                        <p style="font-weight: 400;">
+                            Monthly Tech Talk
                         </p>
-                        <a><h4 class="gTitle" style="color: #20b6b0;margin-bottom: 18px; line-height: 40px;">Topic Name Comes Here</h4></a>
+                        <h4 style="color: #20b6b0;margin-bottom: 24px;" class="gTitle1">Ballerina OpenAPI Support</h4>
                         <p>
-                        <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/"> Dinushan Meeriyagalla</a> Marketing Officer, WSO2
+                        <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/joseph-fonseka-04b538a/">Joseph Fonseka</a>, Director - Ballerina Team, WSO2<br>
+                        <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/sumudu-nissanka/">Sumudu Nissanka</a>, Senior Software Engineer, WSO2
                         </p>
-                    </div>   
+        
+                    </div>    
                 </div>
             </div>
     
@@ -326,49 +313,199 @@ td.cEventDateContainer{
         <table class="cEventTable cConferencesList" style="width:100% !important;">
             <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                 <td class="cEventDateContainer cEventDateContainer1">	
-                   <span class="cEventDate1" style="margin-bottom: 20px;">Jan 5, 2021</span>	
-                   <span class="cEventDate1">Tuesday</span>	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Nov 30, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
                    <p class="cEventLocation" style="text-align: right;">Online</p>	
                 </td>	
-                <td class="cEventDetail">	
-                   <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
-                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Lunch & Learn</p>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://www.youtube.com/watch?v=ga_cyzIXW38">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
                    </a>	
-                   <h5 style="margin-bottom: 18px;">Ballerina: OS Cloud-native Programming Language</h5>		
-                   <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
+                   <h5 style="margin-bottom: 18px;">Building Real-time Systems with WebSub</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/ayesh-almeida-5a7630a2/">Ayesh Almeida</a>, Senior Software Engineer - Integration, WSO2
                 </td>	
-                <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">View Tech Talk</a></td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=ga_cyzIXW38" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
             </tr>
             <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                 <td class="cEventDateContainer cEventDateContainer1">	
-                   <span class="cEventDate1" style="margin-bottom: 20px;">Jan 5, 2021</span>	
-                   <span class="cEventDate1">Tuesday</span>	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Oct 26, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
                    <p class="cEventLocation" style="text-align: right;">Online</p>	
                 </td>	
-                <td class="cEventDetail">	
-                   <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
-                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Lunch & Learn</p>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://www.youtube.com/watch?v=8Z-i0VxTvK4&t=6s">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
                    </a>	
-                   <h5 style="margin-bottom: 18px;">Ballerina: OS Cloud-native Programming Language</h5>		
-                   <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
+                   <h5 style="margin-bottom: 18px;">Managing Dependencies in Ballerina</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/sameerajayasoma/"> Sameera Jayasoma</a>, Senior Director, Platform Architecture, WSO2
                 </td>	
-                <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">View Tech Talk</a></td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=8Z-i0VxTvK4&t=6s" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
             </tr>
             <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                 <td class="cEventDateContainer cEventDateContainer1">	
-                   <span class="cEventDate1" style="margin-bottom: 20px;">Jan 5, 2021</span>	
-                   <span class="cEventDate1">Tuesday</span>	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Sep 28, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
                    <p class="cEventLocation" style="text-align: right;">Online</p>	
                 </td>	
-                <td class="cEventDetail">	
-                   <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
-                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Lunch & Learn</p>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://www.youtube.com/watch?v=81XCTewSo8I&t=5s">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
                    </a>	
-                   <h5 style="margin-bottom: 18px;">Ballerina: OS Cloud-native Programming Language</h5>		
-                   <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
+                   <h5 style="margin-bottom: 18px;">Using Language Integrated Queries</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/chiranfernando/"> Chiran Fernando</a>, Associate Technical Lead, WSO2
                 </td>	
-                <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">View Tech Talk</a></td>	
-            </tr>		
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=81XCTewSo8I&t=5s" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Aug 31, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://www.youtube.com/watch?v=clmGc2oZpYE&t=2311s">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">GraphQL and Ballerina: A Match Made in Heaven</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/chiranfernando/"> Dimuthu Madushan</a>, Software Engineer, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=clmGc2oZpYE&t=2311s" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+                        <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">July 27, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://youtu.be/l5KWZwHZdSA">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Changes in the HTTP Package in Ballerina Swan Lake</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/chamil-elladeniya/"> Chamil Elladeniya</a>, Associate Technical Lead, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/l5KWZwHZdSA" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+           <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">June 29, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://youtu.be/9ZqDZ3TgnDU">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Ballerina Swan Lake Release</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/sameerajayasoma/"> Sameera Jayasoma</a>, Senior Director, Platform Architecture, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/9ZqDZ3TgnDU" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">March 30, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://youtu.be/dYito-DW6ZA">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Ballerina Swan Lake Release</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/nipunaranasinghe/"> Nipuna Ranasinghe</a>, Associate Technical Lead, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/dYito-DW6ZA" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Feb 23, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://youtu.be/hKBjatIFxyw">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Services and Network Communication</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/lafernando/">Anjana Fernando</a>, Director - Developer Relations, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/hKBjatIFxyw" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+    <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Jan 26, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://youtu.be/36U5RoTdYhc">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Code to Cloud with Ballerina</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/anuruddha-liyanarachchi-6b259652/">Anuruddha Liyanarachchi</a>, Associate Technical Lead, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/36U5RoTdYhc" target="_blank" style="text-align: center;">Watch Tech Talk</a></td> 
+                </tr>
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Dec 8, 2020</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://youtu.be/4EINEJAtAg4">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Java Interoperability in Ballerina</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" href="https://www.linkedin.com/in/irushiliyanage/">Irushi Liyanage</a>, Senior Software Engineer, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/4EINEJAtAg4" target="_blank" style="text-align: center;">Watch Tech Talk</a></td> 
+                </tr>
+               <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Nov 10, 2020</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://www.youtube.com/watch?v=lLqvaLtC3m0">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Java Interoperability in Ballerina</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/niveathika/">Niveathika Rajendran</a>, Associate Technical Lead, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=lLqvaLtC3m0" target="_blank" style="text-align: center;">Watch Tech Talk</a></td> 
+                </tr>
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Oct 13, 2020</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://www.youtube.com/watch?v=12gosblVlhY">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Serverless in Ballerina</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/lafernando/">Anjana Fernando</a>, Director - Developer Relations, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=12gosblVlhY" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+       <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Sep 8, 2020</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://www.youtube.com/watch?v=ADZPZtXK5e8">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">gRPC in Ballerina</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/buddhi-kothalawala-6782b5115/">Buddhi Kothalawala</a>, Senior Software Engineer, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=ADZPZtXK5e8" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
         </table>
 
     </section>
@@ -378,312 +515,21 @@ td.cEventDateContainer{
      <!--Modal Start for Submit Tech Talk Content-->
      <div class="modal fade" id="sumbitTechTalkForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content" style="padding: 15px;">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Suggest Topics or Give Feedback</h5>
-              <!--Alert Box Thank you-->
-              <div class="alert alert-success alert-dismissible fade show" role="alert" id="newsletterSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
-                <strong>Thank you for your submission.</strong> 
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <!--Alert Box Thank you-->
-                <!--Alert Box Wrong-->
-                <div class="alert alert-success alert-dismissible fade show" role="alert" id="newsletterSuccessAlert" style="background-color: #E6EAEB;color: #454646;display:none !important;">
-                    <strong>Oops! Something went wrong.</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <div class="modal-content subModelMobile" style="padding: 20px; width: 100%;">
+              <div class="modal-header" style="padding-left:0px ;">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
-                    </div>
-                <!--Alert Box Wrong-->
+                    <h5 class="modal-title" id="exampleModalLabel">Suggest Topics or Give Feedback</h5>
+              </div>
+              
+                  <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x767" frameborder="0" style="height: 600px; width: 100%;overflow:auto;" class="subCMobile"></iframe>
             </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="techtalkSubName" class="col-form-label">Name</label>
-                  <input type="text" class="form-control" id="techtalkSubName" required>
-                </div>
-                <div class="form-group">
-                    <label for="techtalkSubEmail" class="col-form-label">Email address</label>
-                    <input type="email" class="form-control" id="techtalkSubEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="techtalkSubCompany" class="col-form-label">Company Name (Optional)</label>
-                    <input type="text" class="form-control" id="techtalkSubCompany">
-                </div>
-                <div class="form-group">
-                    <label for="techtalkSubcountry" class="col-form-label">Country</label>
-                    <select name="country" class="form-control" id="techtalkSubcountry" required>
-                        <option value="">Please Select</option>
-                        <option value="Afganistan">Afghanistan</option>
-                        <option value="Albania">Albania</option>
-                        <option value="Algeria">Algeria</option>
-                        <option value="American Samoa">American Samoa</option>
-                        <option value="Andorra">Andorra</option>
-                        <option value="Angola">Angola</option>
-                        <option value="Anguilla">Anguilla</option>
-                        <option value="Antigua & Barbuda">Antigua & Barbuda</option>
-                        <option value="Argentina">Argentina</option>
-                        <option value="Armenia">Armenia</option>
-                        <option value="Aruba">Aruba</option>
-                        <option value="Australia">Australia</option>
-                        <option value="Austria">Austria</option>
-                        <option value="Azerbaijan">Azerbaijan</option>
-                        <option value="Bahamas">Bahamas</option>
-                        <option value="Bahrain">Bahrain</option>
-                        <option value="Bangladesh">Bangladesh</option>
-                        <option value="Barbados">Barbados</option>
-                        <option value="Belarus">Belarus</option>
-                        <option value="Belgium">Belgium</option>
-                        <option value="Belize">Belize</option>
-                        <option value="Benin">Benin</option>
-                        <option value="Bermuda">Bermuda</option>
-                        <option value="Bhutan">Bhutan</option>
-                        <option value="Bolivia">Bolivia</option>
-                        <option value="Bonaire">Bonaire</option>
-                        <option value="Bosnia & Herzegovina">Bosnia & Herzegovina</option>
-                        <option value="Botswana">Botswana</option>
-                        <option value="Brazil">Brazil</option>
-                        <option value="British Indian Ocean Ter">British Indian Ocean Ter</option>
-                        <option value="Brunei">Brunei</option>
-                        <option value="Bulgaria">Bulgaria</option>
-                        <option value="Burkina Faso">Burkina Faso</option>
-                        <option value="Burundi">Burundi</option>
-                        <option value="Cambodia">Cambodia</option>
-                        <option value="Cameroon">Cameroon</option>
-                        <option value="Canada">Canada</option>
-                        <option value="Canary Islands">Canary Islands</option>
-                        <option value="Cape Verde">Cape Verde</option>
-                        <option value="Cayman Islands">Cayman Islands</option>
-                        <option value="Central African Republic">Central African Republic</option>
-                        <option value="Chad">Chad</option>
-                        <option value="Channel Islands">Channel Islands</option>
-                        <option value="Chile">Chile</option>
-                        <option value="China">China</option>
-                        <option value="Christmas Island">Christmas Island</option>
-                        <option value="Cocos Island">Cocos Island</option>
-                        <option value="Colombia">Colombia</option>
-                        <option value="Comoros">Comoros</option>
-                        <option value="Congo">Congo</option>
-                        <option value="Cook Islands">Cook Islands</option>
-                        <option value="Costa Rica">Costa Rica</option>
-                        <option value="Cote DIvoire">Cote DIvoire</option>
-                        <option value="Croatia">Croatia</option>
-                        <option value="Cuba">Cuba</option>
-                        <option value="Curaco">Curacao</option>
-                        <option value="Cyprus">Cyprus</option>
-                        <option value="Czech Republic">Czech Republic</option>
-                        <option value="Denmark">Denmark</option>
-                        <option value="Djibouti">Djibouti</option>
-                        <option value="Dominica">Dominica</option>
-                        <option value="Dominican Republic">Dominican Republic</option>
-                        <option value="East Timor">East Timor</option>
-                        <option value="Ecuador">Ecuador</option>
-                        <option value="Egypt">Egypt</option>
-                        <option value="El Salvador">El Salvador</option>
-                        <option value="Equatorial Guinea">Equatorial Guinea</option>
-                        <option value="Eritrea">Eritrea</option>
-                        <option value="Estonia">Estonia</option>
-                        <option value="Ethiopia">Ethiopia</option>
-                        <option value="Falkland Islands">Falkland Islands</option>
-                        <option value="Faroe Islands">Faroe Islands</option>
-                        <option value="Fiji">Fiji</option>
-                        <option value="Finland">Finland</option>
-                        <option value="France">France</option>
-                        <option value="French Guiana">French Guiana</option>
-                        <option value="French Polynesia">French Polynesia</option>
-                        <option value="French Southern Ter">French Southern Ter</option>
-                        <option value="Gabon">Gabon</option>
-                        <option value="Gambia">Gambia</option>
-                        <option value="Georgia">Georgia</option>
-                        <option value="Germany">Germany</option>
-                        <option value="Ghana">Ghana</option>
-                        <option value="Gibraltar">Gibraltar</option>
-                        <option value="Great Britain">Great Britain</option>
-                        <option value="Greece">Greece</option>
-                        <option value="Greenland">Greenland</option>
-                        <option value="Grenada">Grenada</option>
-                        <option value="Guadeloupe">Guadeloupe</option>
-                        <option value="Guam">Guam</option>
-                        <option value="Guatemala">Guatemala</option>
-                        <option value="Guinea">Guinea</option>
-                        <option value="Guyana">Guyana</option>
-                        <option value="Haiti">Haiti</option>
-                        <option value="Hawaii">Hawaii</option>
-                        <option value="Honduras">Honduras</option>
-                        <option value="Hong Kong">Hong Kong</option>
-                        <option value="Hungary">Hungary</option>
-                        <option value="Iceland">Iceland</option>
-                        <option value="Indonesia">Indonesia</option>
-                        <option value="India">India</option>
-                        <option value="Iran">Iran</option>
-                        <option value="Iraq">Iraq</option>
-                        <option value="Ireland">Ireland</option>
-                        <option value="Isle of Man">Isle of Man</option>
-                        <option value="Israel">Israel</option>
-                        <option value="Italy">Italy</option>
-                        <option value="Jamaica">Jamaica</option>
-                        <option value="Japan">Japan</option>
-                        <option value="Jordan">Jordan</option>
-                        <option value="Kazakhstan">Kazakhstan</option>
-                        <option value="Kenya">Kenya</option>
-                        <option value="Kiribati">Kiribati</option>
-                        <option value="Korea North">Korea North</option>
-                        <option value="Korea Sout">Korea South</option>
-                        <option value="Kuwait">Kuwait</option>
-                        <option value="Kyrgyzstan">Kyrgyzstan</option>
-                        <option value="Laos">Laos</option>
-                        <option value="Latvia">Latvia</option>
-                        <option value="Lebanon">Lebanon</option>
-                        <option value="Lesotho">Lesotho</option>
-                        <option value="Liberia">Liberia</option>
-                        <option value="Libya">Libya</option>
-                        <option value="Liechtenstein">Liechtenstein</option>
-                        <option value="Lithuania">Lithuania</option>
-                        <option value="Luxembourg">Luxembourg</option>
-                        <option value="Macau">Macau</option>
-                        <option value="Macedonia">Macedonia</option>
-                        <option value="Madagascar">Madagascar</option>
-                        <option value="Malaysia">Malaysia</option>
-                        <option value="Malawi">Malawi</option>
-                        <option value="Maldives">Maldives</option>
-                        <option value="Mali">Mali</option>
-                        <option value="Malta">Malta</option>
-                        <option value="Marshall Islands">Marshall Islands</option>
-                        <option value="Martinique">Martinique</option>
-                        <option value="Mauritania">Mauritania</option>
-                        <option value="Mauritius">Mauritius</option>
-                        <option value="Mayotte">Mayotte</option>
-                        <option value="Mexico">Mexico</option>
-                        <option value="Midway Islands">Midway Islands</option>
-                        <option value="Moldova">Moldova</option>
-                        <option value="Monaco">Monaco</option>
-                        <option value="Mongolia">Mongolia</option>
-                        <option value="Montserrat">Montserrat</option>
-                        <option value="Morocco">Morocco</option>
-                        <option value="Mozambique">Mozambique</option>
-                        <option value="Myanmar">Myanmar</option>
-                        <option value="Nambia">Nambia</option>
-                        <option value="Nauru">Nauru</option>
-                        <option value="Nepal">Nepal</option>
-                        <option value="Netherland Antilles">Netherland Antilles</option>
-                        <option value="Netherlands">Netherlands (Holland, Europe)</option>
-                        <option value="Nevis">Nevis</option>
-                        <option value="New Caledonia">New Caledonia</option>
-                        <option value="New Zealand">New Zealand</option>
-                        <option value="Nicaragua">Nicaragua</option>
-                        <option value="Niger">Niger</option>
-                        <option value="Nigeria">Nigeria</option>
-                        <option value="Niue">Niue</option>
-                        <option value="Norfolk Island">Norfolk Island</option>
-                        <option value="Norway">Norway</option>
-                        <option value="Oman">Oman</option>
-                        <option value="Pakistan">Pakistan</option>
-                        <option value="Palau Island">Palau Island</option>
-                        <option value="Palestine">Palestine</option>
-                        <option value="Panama">Panama</option>
-                        <option value="Papua New Guinea">Papua New Guinea</option>
-                        <option value="Paraguay">Paraguay</option>
-                        <option value="Peru">Peru</option>
-                        <option value="Phillipines">Philippines</option>
-                        <option value="Pitcairn Island">Pitcairn Island</option>
-                        <option value="Poland">Poland</option>
-                        <option value="Portugal">Portugal</option>
-                        <option value="Puerto Rico">Puerto Rico</option>
-                        <option value="Qatar">Qatar</option>
-                        <option value="Republic of Montenegro">Republic of Montenegro</option>
-                        <option value="Republic of Serbia">Republic of Serbia</option>
-                        <option value="Reunion">Reunion</option>
-                        <option value="Romania">Romania</option>
-                        <option value="Russia">Russia</option>
-                        <option value="Rwanda">Rwanda</option>
-                        <option value="St Barthelemy">St Barthelemy</option>
-                        <option value="St Eustatius">St Eustatius</option>
-                        <option value="St Helena">St Helena</option>
-                        <option value="St Kitts-Nevis">St Kitts-Nevis</option>
-                        <option value="St Lucia">St Lucia</option>
-                        <option value="St Maarten">St Maarten</option>
-                        <option value="St Pierre & Miquelon">St Pierre & Miquelon</option>
-                        <option value="St Vincent & Grenadines">St Vincent & Grenadines</option>
-                        <option value="Saipan">Saipan</option>
-                        <option value="Samoa">Samoa</option>
-                        <option value="Samoa American">Samoa American</option>
-                        <option value="San Marino">San Marino</option>
-                        <option value="Sao Tome & Principe">Sao Tome & Principe</option>
-                        <option value="Saudi Arabia">Saudi Arabia</option>
-                        <option value="Senegal">Senegal</option>
-                        <option value="Seychelles">Seychelles</option>
-                        <option value="Sierra Leone">Sierra Leone</option>
-                        <option value="Singapore">Singapore</option>
-                        <option value="Slovakia">Slovakia</option>
-                        <option value="Slovenia">Slovenia</option>
-                        <option value="Solomon Islands">Solomon Islands</option>
-                        <option value="Somalia">Somalia</option>
-                        <option value="South Africa">South Africa</option>
-                        <option value="Spain">Spain</option>
-                        <option value="Sri Lanka">Sri Lanka</option>
-                        <option value="Sudan">Sudan</option>
-                        <option value="Suriname">Suriname</option>
-                        <option value="Swaziland">Swaziland</option>
-                        <option value="Sweden">Sweden</option>
-                        <option value="Switzerland">Switzerland</option>
-                        <option value="Syria">Syria</option>
-                        <option value="Tahiti">Tahiti</option>
-                        <option value="Taiwan">Taiwan</option>
-                        <option value="Tajikistan">Tajikistan</option>
-                        <option value="Tanzania">Tanzania</option>
-                        <option value="Thailand">Thailand</option>
-                        <option value="Togo">Togo</option>
-                        <option value="Tokelau">Tokelau</option>
-                        <option value="Tonga">Tonga</option>
-                        <option value="Trinidad & Tobago">Trinidad & Tobago</option>
-                        <option value="Tunisia">Tunisia</option>
-                        <option value="Turkey">Turkey</option>
-                        <option value="Turkmenistan">Turkmenistan</option>
-                        <option value="Turks & Caicos Is">Turks & Caicos Is</option>
-                        <option value="Tuvalu">Tuvalu</option>
-                        <option value="Uganda">Uganda</option>
-                        <option value="United Kingdom">United Kingdom</option>
-                        <option value="Ukraine">Ukraine</option>
-                        <option value="United Arab Erimates">United Arab Emirates</option>
-                        <option value="United States of America">United States of America</option>
-                        <option value="Uraguay">Uruguay</option>
-                        <option value="Uzbekistan">Uzbekistan</option>
-                        <option value="Vanuatu">Vanuatu</option>
-                        <option value="Vatican City State">Vatican City State</option>
-                        <option value="Venezuela">Venezuela</option>
-                        <option value="Vietnam">Vietnam</option>
-                        <option value="Virgin Islands (Brit)">Virgin Islands (Brit)</option>
-                        <option value="Virgin Islands (USA)">Virgin Islands (USA)</option>
-                        <option value="Wake Island">Wake Island</option>
-                        <option value="Wallis & Futana Is">Wallis & Futana Is</option>
-                        <option value="Yemen">Yemen</option>
-                        <option value="Zaire">Zaire</option>
-                        <option value="Zambia">Zambia</option>
-                        <option value="Zimbabwe">Zimbabwe</option>
-                        </select>
-                </div> 
-                <div class="form-group">
-                  <label for="techtalkSubMessege" class="col-form-label">Topic Suggestion or Feedback</label>
-                  <textarea class="form-control" id="techtalkSubMessege"></textarea>
-                </div>
-                <div class="text-left checkbox-wrapper">
-                    <input type="checkbox" id="terms" class="checkbox">
-                    <label class="checkbox-label" for="terms">By submitting this form, you agree to let Ballerina use your company name and/or other details on our website and other marketing material.</label>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-form-close" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-form-submit">Submit</button>
-            </div>
-          </div>
         </div>
         </div>
          <!--Modal Finish for Submit Content-->
 
-</div>
+
 <style>
     td.cEventDateContainer, td.cEventDetail, td.cEventURL {
   border: none !important;
@@ -693,7 +539,8 @@ td.cEventDateContainer{
     border-bottom: 1px solid #c7c7c7 !important;
     padding: 30px 35px !important;
    }
- 
+   a.cTopLink{display:none !important;}
+   tr:last-child >td{border-bottom: 0 !important;}
    /* Large devices (laptops/desktops, 992px and up) */
     @media only screen and (min-width: 992px) {
     td.cEventDetail{
@@ -703,5 +550,123 @@ td.cEventDateContainer{
     }
     .icon-github{
         display: none;
+    }
+    @media only screen and (max-width: 600px) {
+        td.cEventDateContainer, td.cEventDetail, td.cEventURL {
+    padding: 30px 10px !important;
+   }
+   .leftpadding{padding-right: 0px !important;}
+   .rightpadding{padding-right: 15px!important;}
+   .mobileViewAdjustment{
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 15px;
+    border-top: 1px #565656 solid;
+    }
+    .mobileViewAdjustment1{
+    padding-left: 0px;
+    padding-right: 0px;
+    border: none !important;
+    }
+    .mobileViewAdjustment p{
+    float:none !important;
+    line-height: 20px;
+    }
+    .mobileViewAdjustment1 h4{
+    line-height: 0.8 !important;
+   margin-top:15px !important;
+    margin-bottom: 15px !important;
+    }
+    .dateDisplay {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 0px !important;
+    }
+    .dateDisplay1 {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 0px !important;
+        padding-top: 0px;
+    }
+    .subscribeTechTalk{
+        float: none !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .underText{
+        margin-top: 10px !important;
+    }
+    .Sendemail {
+       width: 100% !important;
+   }
+   .subCMobile{
+       height: 75vh !important;
+   }
+   .subModelMobile{
+    height: 750px !important;
+   }
+   .cUsecaseMobile{
+       height: 76vh;
+   }
+   .cUseCaseModel{
+    height: 800px !important;
+   }
+
+
+    }
+
+    .cEventDate1{margin: 0 0 15px 0 !important;text-align: right}
+   /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+    td.cEventDetail{
+        padding-left: 0px !important;
+    }
+    }
+
+    @media only screen and (max-width: 600px) {
+        td.cEventDateContainer, td.cEventDetail, td.cEventURL {
+    padding: 30px 10px !important;
+   }
+
+     /* Large devices (laptops/desktops, 992px and up) */
+     @media only screen and (max-width: 992px) {
+      td.cEventDateContainer, td.cEventDetail, td.cEventURL{
+         padding: 30px 35px !important;
+         display: inherit;
+         border-bottom: none !important;
+
+      }
+      h1{margin-top: 60px !important;}
+      .mobileViewTechTalk{height: 190px !important;}
+      td.cEventURL{border-bottom: 1px solid #c7c7c7 !important;}
+      a.cEventRegistration{
+         margin: 0px;
+         margin-top: 15px;
+      }
+      .cEventTable{margin-top:10px !important}
+      td.cEventDateContainer1 span.cEventDate1{text-align: left !important}
+      .cEventLocation{text-align: left !important;}
+      table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {padding: 0px 15px 10px 15px !important;}
+      .dateDisplay {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 0px !important;
+    }
+    a.cEventRegistration, input.cSubmitButton {margin-bottom: 30px !important;}
+    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils tr.cLastTableRow td.cEventDateContainer {
+    border:none !important;
+    }
+    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+     border-bottom: none!important;}
+     a.cEventRegistration {margin-left: 1px !important;}
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+      #eventDetails{padding-left: 0px !important;}
+
+    }
+    }
+    @media only screen and (min-width: 768px) {
+        h1{margin-top: 60px !important;}
     }
 </style>

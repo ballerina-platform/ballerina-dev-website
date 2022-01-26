@@ -39,6 +39,21 @@
     - title: Writing Tests
       url: /learn/testing-ballerina-code/writing-tests/
       active: writing-tests
+    - title: Structuring Tests
+      url: /learn/testing-ballerina-code/structuring-tests/
+      active: structuring-tests
+    - title: Configuring Tests
+      url: /learn/testing-ballerina-code/configuring-tests/
+      active: configuring-tests
+    - title: Code Coverage and Reporting
+      url: /learn/testing-ballerina-code/code-coverage-and-reporting/
+      active: code-coverage-and-reporting
+    - title: Data-Driven Tests
+      url: /learn/testing-ballerina-code/data-driven-tests/
+      active: data-drive-tests
+    - title: Test Groups
+      url: /learn/testing-ballerina-code/test-groups/
+      active: test-groups
     - title: Testing Services and Clients
       url: /learn/testing-ballerina-code/testing-services-and-clients/
       active: testing-services-and-clients
@@ -53,18 +68,34 @@
   url: /learn/generating-code-documentation
   active: generating-code-documentation
 
-- title: Making Ballerina Programs Configurable
+- title: Configuring Ballerina Programs
   url: '#'
   sublinks:
-    - title: Defining Configurable Variables
-      url: /learn/making-ballerina-programs-configurable/defining-configurable-variables/
-      active: defining-configurable-variables
+    - title: Quick Start on Using Configurable Variables
+      url: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables
+      active: quick-start-on-configurable-variables
+      sublinks:
+        - title: Configuring a Sample Ballerina Service
+          url: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables/configuring-a-sample-ballerina-service
+          active: configuring-a-sample-ballerina-service
     - title: Providing Values to Configurable Variables
-      url: /learn/making-ballerina-programs-configurable/providing-values-to-configurable-variables/
-      active: providing-values-to-configurable-variables
-    - title: Trying Out Configurability
-      url: /learn/making-ballerina-programs-configurable/trying-out-configurability/
-      active: trying-out-configurability
+      url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables
+      sublinks:
+        - title: Providing Configuration Values Through Command Line Arguments
+          url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-configuration-values-through-command-line-arguments
+          active: providing-values-through-command-line-arguments
+        - title: Providing Configuration Values Through TOML Syntax
+          url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-configuration-values-through-toml-syntax
+          active: providing-configuration-values-through-toml-syntax
+        - title: Providing Module Information of the Configurable Variable
+          url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-module-information-of-the-configurable-variable
+          active: providing-module-info-of-configurable-variable
+    - title: Configuring Values in Kubernetes Environments
+      url: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/
+      sublinks:
+        - title: Securing Sensitive Data Using Configurable Variables
+          url: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/#securing-sensitive-data-using-configurable-variables
+          active: securing-sensitive-data-using-configurable-variables
 
 - title: Observing Ballerina Programs
   url: '#'
@@ -86,9 +117,6 @@
         - title: Code to Cloud Deployment
           url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-deployment
           active: code-to-cloud-deployment
-        - title: Code to Cloud Samples
-          url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-samples
-          active: code-to-cloud-samples
     - title: Function as a Service (FaaS) with Ballerina
       url: '#'
       sublinks:
@@ -99,7 +127,7 @@
           url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
           active: azure-functions
 
-- title: Managing Dependencies 
+- title: Managing Dependencies
   url: /learn/managing-dependencies/
   active: managing-dependencies
 

@@ -54,7 +54,7 @@ service / on ep1 {
     }
 ```
 
-## Imports
+## Import Declaration
 
 * Do not keep spaces between the organization name, divider `/`, and module name.
 
@@ -195,7 +195,7 @@ type Person record {|
 |}
 ```
 
-## Referencing Record or Object 
+## Referencing Record or Object
 * Do not keep spaces between the `*` and the object name or the record name.
   
 **Example,**

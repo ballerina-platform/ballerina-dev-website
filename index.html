@@ -7,6 +7,7 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
 <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/css/home-page-2020.css"/>
 <link rel="stylesheet" href="/css/prism.css">
+
 <style>
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
   color: #464646;
@@ -19,7 +20,11 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
 .nav-tabs > li > a:hover {
   border-color:transparent !important;
 }
-
+.disabled {
+        pointer-events: none;
+        cursor: default;
+        background-color: #57595d !important;
+}
 .nav-tabs > li > a{
    border-bottom: transparent 3px solid !important;
 }
@@ -27,7 +32,7 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
 .cBallerina-io-Gray-row {
   padding-bottom:0px;
 }
-
+tr:last-child >td{border-bottom: 0 !important;}
 a {
   font-size: 20px;
   color: #20b6b0;
@@ -86,7 +91,32 @@ pre{
    background-image: url(/img/play-button-hover.svg) !important;
 }
 
+td.cEventDateContainer1 span.cEventDate1{
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    display: inline-block;
+    color: #57595d;
+    margin-bottom: 5px;
+    border: none;
+    text-align: right;
+}
+
+
+.cEventName{
+    margin-top: -2px;
+    font-size: 20px;
+}
+td.cEventDateContainer{
+  width: 20%;
+}
+.cEventDateNum{
+    font-size: 20px !important;
+    font-weight: 450 !important;
+}
+.cEventDate1{text-align: right;}
 </style>
+<link rel="stylesheet" href="/css/events-page.css">
 <!-- <link rel="stylesheet" href="/css/home-page-old.css"/> -->
 <div class="row cBallerinaIntroSection">
    <div class="container">
@@ -245,17 +275,16 @@ pre{
       
   
 <!--START OF TRY BALLERINA TAB DESIGN-->
-
 <div class="row cWidget cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 6rem; background-color: #f7f7f7;">
    <div class="container">
       <div class="col-sm-12 col-md-12">
          <h2>Try Ballerina</h2>
 
          <ul class="nav nav-tabs">
-            <li class="active" ><a data-toggle="tab"  href="#firstTab" >Restful API</a></li>
-            <li><a data-toggle="tab" href="#secondTab" >Covid Case Marality</a></li>
-            <!-- <li><a data-toggle="tab" href="#thiredTab" >Menu 2</a></li>
-            <li><a data-toggle="tab" href="#fourthTab" >Menu 3</a></li> -->
+            <li class="active" ><a data-toggle="tab"  href="#firstTab" >RESTful API</a></li>
+            <li><a data-toggle="tab" href="#secondTab" >Consuming Services</a></li>
+            <li><a data-toggle="tab" href="#thiredTab" >Working with Data</a></li> 
+            <!-- <li><a data-toggle="tab" href="#fourthTab" >Menu 3</a></li> --> 
           </ul>
           <div class="tab-content">
            
@@ -268,47 +297,55 @@ pre{
                            <div class="highlight"> 
                               <pre class="language-ballerina basic ballerina">
                                  <code class="language-ballerina ballerina">
+// Provide high-level abstractions to work with the HTTP protocol 
 import ballerina/http;
-
-# Album represents data about a record album.
-type Album readonly & record {|
-    string id;
-    string title;
-    string artist;
-    decimal price;
-|};
-
-// albums table to seed record album data.
-table<Album> key(id) albums = table [
-        {id: "1", title: "Blue Train", artist: "John Coltrane", price: 56.99},
-        {id: "2", title: "Jeru", artist: "Gerry Mulligan", price: 17.99},
-        {id: "3", title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan", price: 39.99}
-    ];
-
-service / on new http:Listener(8080) {
-    // Responds with the list of all albums as JSON.
-    resource function get albums() returns Album[] {
-        return albums.toArray();
-    }
-
-    // Adds an album from JSON received in the request body.
-    resource function get albums/[string id]() returns Album | http:NotFound {
-        Album? album = albums[id];
-        if album is () {
-            return <http:NotFound>{};
-        } else {
-            return album;
+                                    
+// Define an immutable closed record type to describe both the data in memory and data on the wire
+// A closed record type allows exclusively what is specified in the definition
+// Let's be conservative in what we send
+   type Album readonly & record {|
+      string id;
+      string title;
+      string artist;
+      decimal price;
+   |};
+                                    
+// A table is a collection of records where each record represents a row of the table
+// Each row is uniquly identified by a key
+   table<Album> key(id) albums = table [
+      {id: "1", title: "Blue Train", artist: "John Coltrane", price: 56.99},
+      {id: "2", title: "Jeru", artist: "Gerry Mulligan", price: 17.99},
+      {id: "3", title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan", price: 39.99}
+   ];
+                                    
+// HTTP listener receives requests and then routes them to resources 
+// A Service declaration specifies the listener, and a collection of remotely accessible methods.
+   service / on new http:Listener(8080) {
+   // Respond to HTTP GET requests with the path '/albums'
+   // Convert the return value to a response payload with the media type 'application/json'
+   resource function get albums() returns Album[] {
+      return albums.toArray();
+   }
+                                    
+// Respond to HTTP GET requests with the path '/albums/{id}'
+// Resource names can be hierarchical with multiple path segments
+resource function get albums/[string id]() returns Album | http:NotFound {
+   Album? album = albums[id];
+   if album is () {
+      return <http:NotFound>{};
+   else {
+      return album;
         }
-    }
-
-    // Locates the album whose ID value matches the id
-    // parameter sent by the client, then returns that album as a response.
-    resource function post albums(@http:Payload Album album) returns Album {
-        // Add the new album to the table.
-        albums.add(album);
-        return album;
-    }
-}
+   }
+                                    
+   // Respond to HTTP POST requests with the path '/albums'
+   // Request payload is mapped to the application-specific type 'Album'
+   resource function post albums(@http:Payload Album album) returns Album {
+      // Add the new album to the table.
+      albums.add(album);
+      return album;
+   }
+}                            
                                  </code>
                            </pre>
                       
@@ -318,9 +355,9 @@ service / on new http:Listener(8080) {
 
                   </div>
                   <div class="col-lg-3 col-sm-12" style="padding:0;background-color: #f5f5f5;">
-                     <a href="https://play.ballerina.io/?gist=bbd3e202a43a62146d47797ee27f8ec7&file=play.bal">
+                     <!-- <a href="https://play.ballerina.io/?gist=bbd3e202a43a62146d47797ee27f8ec7&file=play.bal">
                      <button class="playground-button"  id="simple11" style="background:url(/img/play=button.svg)no-repeat scroll right center; color:#20b6b0;padding: 12px 30px ;border: none;float: right;background-size:20px ;font-size: 17px;margin-right: 15px;margin-top: 15px;"> Try in Playground</button>
-                     </a>
+                     </a> -->
                   </div>
 
 
@@ -340,29 +377,48 @@ service / on new http:Listener(8080) {
                               <pre class="language-ballerina basic ballerina">
                                  <code class="language-ballerina ballerina">
 import ballerina/http;
-import ballerina/io;
-
-type Country record {
-    string country;
-    int population;
-    string continent;
-    int cases;
-    int deaths;
+import ballerinax/googleapis.sheets;
+                                    
+// Declare your configurable variables at module-level
+// Supply values at runtime (e.g. by a TOML file)
+configurable string githubPAT = ?;                      // '?' means configuration is required
+configurable string sheetsAccessToken = ?;
+configurable string spreadSheetId = ?;
+configurable string sheetName = "Sheet1";               // Configuration is optional
+                                    
+map<string> httpHeaders = {
+   "Accept": "application/vnd.github.v3+json",
+   "Authorization": "token " + githubPAT
 };
-
+                                    
+// Define an open record type to describe the GitHub payload on the wire
+type PR record {                                         
+   string url;
+   string title;
+   string state;
+   string created_at;
+   string updated_at;
+   // GitHub PR has fields other than these specified here
+   // Open records allow those unspecified fields 
+};
+                                    
 public function main() returns error? {
-    http:Client diseaseEp = check new ("https://disease.sh/v3/");
-    Country[] countries = check diseaseEp->get("covid-19/countries");
-    // Top 10 countries having the highest case-fatality ratio.
-    json summary = from var {country, continent, population, cases, deaths} in countries
-        where population > 100000 && deaths > 100
-        let decimal caseFatalityRatio = <decimal>deaths / <decimal>cases * 100
-        order by caseFatalityRatio descending
-        limit 10
-        select {country, continent, population, caseFatalityRatio};
-    io:println(summary);
+   // Create a new HTTP client
+   http:Client github = check new ("https://api.github.com/repos/");
+   // Perform a GET request and convert the JSON payload to the type 'PR'                  
+   PR[] prs = check github->get("ballerina-platform/ballerina-lang/pulls", httpHeaders);   
+                                    
+   // Create a new Spreadsheet client and append a row with column titles
+   sheets:Client gsheets = check new ({auth: {token: sheetsAccessToken}});
+   check gsheets->appendRowToSheet(spreadSheetId, sheetName,
+                  ["Issue", "Title", "State", "Created At", "Updated At"]);
+                                    
+   // Destructure each record value with a binding pattern
+   foreach var {url, title, state, created_at, updated_at} in prs {    
+      check gsheets->appendRowToSheet(spreadSheetId, sheetName,
+                  [url, title, state, created_at, updated_at]);
+   }
 }
-
                                  </code>
                            </pre>
                       
@@ -372,7 +428,69 @@ public function main() returns error? {
 
                   </div>
                   <div class="col-lg-3 col-sm-12" style="padding:0;background-color: #f5f5f5;">
-                  <a href="https://play.ballerina.io/?gist=5708b4cdfcc62cd6eaaab4ebc90e6535&file=play.bal">
+                  <!-- <a href="https://play.ballerina.io/?gist=5708b4cdfcc62cd6eaaab4ebc90e6535&file=play.bal">
+                     <button class="playground-button"  id="simple11" style="background:url(/img/play=button.svg)no-repeat scroll right center; color:#20b6b0;padding: 12px 30px ;border: none;float: right;background-size:20px ;font-size: 17px;margin-right: 15px;margin-top: 15px;"> Try in Playground</button>
+                  </a>   -->
+                  </div>
+
+
+               </div>
+               
+
+            </div>
+
+            <div id="thiredTab" class="tab-pane fade"  >
+               <!-- <button class="" id="simple11" style="background-color: #20b6b0; color: #fff;padding: 12px 20px;border: none;float: right;"> Try in Playground</button> -->
+              
+               <div class="row" style="background-color: #f5f5f5;"> 
+                  <div class="col-lg-9 col-sm-12" style="padding:0;">
+                     <div class="row cBallerina-io-Gray-row" style="padding-top: 0;">
+               
+                        <div class="FullCode" style="background-color: #f5f5f5;">
+                           <div class="highlight"> 
+                              <pre class="language-ballerina basic ballerina">
+                                 <code class="language-ballerina ballerina">
+import ballerina/http;
+import ballerina/io;
+                                    
+// Define an open record type to describe both the payload on the wire and the data in memory
+type Country record {
+   string country;
+   int population;
+   string continent;
+   int cases;
+   int deaths;
+   // Open records allow fields other than those specified 
+};
+                                    
+// Prints the top 10 countries having the highest case-fatality ratio.
+public function main() returns error? {
+   http:Client diseaseEp = check new ("https://disease.sh/v3/");
+   // Perform a GET request and convert the JSON payload to the type 'Country'      
+   Country[] countries = check diseaseEp->get("covid-19/countries");
+                                    
+   // Process data declaratively with language-integrated queries
+   json summary =
+         // Destructure each record value with a binding pattern
+         from var {country, continent, population, cases, deaths} in countries
+            where population >= 100000 && deaths >= 100
+            let decimal caseFatalityRatio = <decimal>deaths / <decimal>cases * 100
+            order by caseFatalityRatio descending
+            limit 10
+            // Create a JSON object for each filtered country
+            select {country, continent, population, caseFatalityRatio};
+   io:println(summary);
+}
+                                 </code>
+                           </pre>
+                      
+                           </div>
+                        </div>
+                  </div>
+
+                  </div>
+                  <div class="col-lg-3 col-sm-12" style="padding:0;background-color: #f5f5f5;">
+                  <a target="_blank" href="https://play.ballerina.io/?gist=30a51792b6b4d46c2cbdfdd424fb3b45&file=play.bal">
                      <button class="playground-button"  id="simple11" style="background:url(/img/play=button.svg)no-repeat scroll right center; color:#20b6b0;padding: 12px 30px ;border: none;float: right;background-size:20px ;font-size: 17px;margin-right: 15px;margin-top: 15px;"> Try in Playground</button>
                   </a>  
                   </div>
@@ -382,15 +500,17 @@ public function main() returns error? {
                
 
             </div>
+
       </div>
    </div>
+</div>
 </div>
 
 
 <!--END OF TRY BALLERINA TAB DESIGN-->
 
 
-<div class="row row cWidget cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 6rem;">
+<div class="row row cWidget cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 6rem;background-color: #fff;">
 
    
    <a class="cBookmarkTop" id="Developer-First"></a>
@@ -413,15 +533,68 @@ public function main() returns error? {
       
     </div>
 
-
-
-
     
       <div class="clearfix"></div></br>
      
    </div>
 
 </div>
+
+<!--START OF TRY BALLERINA EVENT-->
+<div class="row row cWidget cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 3rem;background-color: #f7f7f7;">
+
+   
+   <a class="cBookmarkTop" id="Developer-First"></a>
+   <div id="" class="container">
+      <div class="col-sm-12 col-md-8 cColCOntent">
+         <h2>Events</h2>
+         <h3 style="padding-right: 15px;padding-bottom: 20px;">Upcoming Events</h2>
+    </div>
+  
+      <div class="row">
+          <table class="cEventTable cConferencesList" style="width:100% !important;">
+              <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                  <td class="cEventDateContainer cEventDateContainer1">	
+                     <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;margin-top: -18px;">January 25, 2022</p>	
+                     <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tue., 9:00 a.m. PST</p>	
+                     <p class="cEventLocation" style="text-align: right;">Online</p>	
+                  </td>	
+                  <td class="cEventDetail" id="eventDetails" >	
+                     <a target="_blank" href="/community/monthly-tech-talk/">	
+                        <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                     </a>	
+                     <h5 style="margin-bottom: 18px;">Ballerina OpenAPI Support</h5>		
+                     <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/joseph-fonseka-04b538a/">Joseph Fonseka</a>, Director - Ballerina Team, WSO2<br>
+                     <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/sumudu-nissanka/">Sumudu Nissanka</a>, Senior Software Engineer, WSO2
+                  </td>	
+                  <td class="cEventURL"><a class="cEventRegistration" href="/community/monthly-tech-talk/" target="_blank" style="text-align: center;">More Info</a></td>	
+              </tr>
+              <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+               <td class="cEventDateContainer cEventDateContainer1" style="border-bottom: none !important;">	
+                  <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">February 2, 2022</p>	
+                  <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Wed., 6.00 p.m. IST</p>	
+                  <p class="cEventLocation" style="text-align: right;">Online</p>	
+               </td>	
+               <td class="cEventDetail" id="eventDetails" style="border-bottom: none !important;">	
+                  <a target="_blank" href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/">	
+                     <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Meetup: CodeSeeker's Endless Programming Languages</p>	
+                  </a>	
+                  <h5 style="margin-bottom: 18px;">Ballerina - A Cloud Native Programming Language</h5>		
+                  <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/hasithaaravinda/">Hasitha Aravinda</a>, Associate Director/Architect, WSO2
+               </td>	
+               <td class="cEventURL" style="border-bottom: none !important;"><a class="cEventRegistration " href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/events/283458600/" target="_blank" style="text-align: center;">More Info</a></td>	
+           </tr>
+              
+          </table>
+          
+      </div> 
+
+   <div class="clearfix"></div></br>
+     
+   </div>
+
+</div>
+<!--END OF TRY BALLERINA EVENT-->
 
 <!--<div class="row cBallerinaFeatureSection">
    <div class="container">
@@ -585,3 +758,60 @@ public function main() returns error? {
 
 <script src="/js/prism.js"></script>
 <script src="/js/prism-ballerina.js"></script>
+<style>
+   td.cEventDateContainer, td.cEventDetail, td.cEventURL {
+  border: none !important;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    border-bottom: 1px solid #c7c7c7 !important;
+    padding: 30px 35px !important;
+   }
+   tr:last-child >td{border-bottom: 0 !important;}
+   td.cEventURL{
+    padding: 30px 0px 30px 35px !important;
+   }
+   .table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color:transparent !important;
+    }
+    /* table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+  border-bottom: none!important;
+  } */
+   /* Large devices (laptops/desktops, 992px and up) */
+   @media only screen and (max-width: 992px) {
+      td.cEventDateContainer, td.cEventDetail, td.cEventURL{
+         padding: 30px 35px !important;
+
+      }
+      a.cEventRegistration{
+         margin: 0px;
+         margin-top: 15px;
+      }
+      
+      td.cEventDateContainer1 span.cEventDate1{text-align: left !important}
+      .cEventLocation{text-align: left !important;}
+      table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {padding: 0px 15px 10px 15px !important;}
+      .dateDisplay {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 10px !important;
+        padding-top: 20px;
+    }
+    a.cEventRegistration, input.cSubmitButton {margin-bottom: 30px !important;}
+    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils tr.cLastTableRow td.cEventDateContainer {border:none !important;}
+    /* table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+     border-bottom: none!important;} */
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+      #eventDetails{padding-left: 0px !important;}
+      td.cEventURL {width: 25%;}
+    }
+    @media only screen and (max-width: 600px) {
+    .nav-tabs > li > a {
+    font-size: 10px;
+  /* padding: 10px 10px; */
+     }
+    }
+   
+</style>

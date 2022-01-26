@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Request Error Interceptor
 description: This BBE demonstrates the HTTP Request Error Interceptors in Ballerina.
 keywords: ballerina, ballerina by example, bbe, http, interceptor, request, error, filter
@@ -49,18 +49,6 @@ redirect_from:
 
 <span class="nx">RequestInterceptor2</span> <span class="nx">requestInterceptor2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 
-<span class="kd">service</span> <span class="nx">class</span> <span class="nx">RequestInterceptor3</span> <span class="p">{</span>
-    <span class="o">*</span><span class="nx">http</span><span class="p">:</span><span class="nx">RequestInterceptor</span><span class="p">;</span>
-
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greeting</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">RequestContext</span> <span class="nx">ctx</span><span class="p">)</span> 
-            <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">NextService</span><span class="p">|</span><span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Executing Request Interceptor 3&quot;</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">RequestInterceptor3</span> <span class="nx">requestInterceptor3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-
 <span class="c1">// A Request Error Interceptor service class implementation. It intercepts the request when an error occurrs in the interceptor execution,</span>
 <span class="c1">// and adds a header before it is dispatched to the target HTTP resource. Also, a Request Error Interceptor service class can have only one resource function.</span>
 <span class="kd">service</span> <span class="nx">class</span> <span class="nx">RequestErrorInterceptor</span> <span class="p">{</span>
@@ -87,9 +75,6 @@ redirect_from:
                    <span class="nx">requestErrorInterceptor</span><span class="p">]</span> 
 <span class="p">});</span>
 
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">interceptors</span><span class="p">:</span> <span class="p">[</span><span class="nx">requestInterceptor3</span><span class="p">]</span>
-<span class="p">}</span>
 <span class="kd">service</span> <span class="o">/</span> <span class="nx">on</span> <span class="nx">interceptorListener</span> <span class="p">{</span>
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greeting</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> 
@@ -114,9 +99,9 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Request Error Interceptor</h2>
                             <p><p>A <code>RequestErrorInterceptor</code> is used to handle the errors that occurred in the interceptor pipeline execution.
- When an error is returned from a <code>RequestInterceptor</code> service, the intercetpor pipeline execution jumps to the
+ When an error is returned from a <code>RequestInterceptor</code> service, the interceptor pipeline execution jumps to the
  nearest <code>RequestErrorInterceptor</code>. However, if there is no <code>RequestErrorInterceptor</code> in the pipeline, then,
- the error response is retunred to the client without executing the actual resource in the target service.
+ the error response is returned to the client without executing the actual resource in the target service.
  For more information, see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/">HTTP module</a>.</p>
 </p>
 
@@ -324,48 +309,6 @@ import ballerina/io;
                                 </div>
                             </div>
                             
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service class RequestInterceptor3 {
-    *http:RequestInterceptor;
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get greeting(http:RequestContext ctx) 
-            returns http:NextService|error? {
-        io:println(&quot;Executing Request Interceptor 3&quot;);
-        return ctx.next();
-    }
-}
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>RequestInterceptor3 requestInterceptor3 = new;
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
@@ -487,10 +430,7 @@ import ballerina/io;
                             <div class="cTR">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>@http:ServiceConfig {
-    interceptors: [requestInterceptor3]
-}
-service / on interceptorListener {
+                                    <div class="highlight"><pre><code class=language-ballerina>service / on interceptorListener {
 </code></pre></div>
 
                                 </div>
@@ -586,7 +526,6 @@ error: Http header does not exist
            RequestInterceptor1:$default$**(http_request_error_interceptor.bal:18)
 Executing Request Error Interceptor
 Error occurred : Http header does not exist
-Executing Request Interceptor 3
 Executing Target Resource
 </code></pre></div>
 

@@ -1236,7 +1236,7 @@
             },
             {
                 "name": "Service - OAuth2",
-                "url": "ce-oauth2",
+                "url": "http-service-oauth2",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1533,6 +1533,15 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "File Upload",
+                "url": "graphql-file-upload",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1724,7 +1733,7 @@
             },
             {
                 "name": "Client - OAuth2 Client Credentials Grant Type",
-                "url": "websocket-client-oauth2-client-credentials-grant-type",
+                "url": "websocket-client-oauth2-client-cred-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,

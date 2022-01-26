@@ -132,7 +132,6 @@ redirect_from:
     <h3 id="working-with-data">Working with Data in Ballerina</h3></a>
     <p >Learn how to use Ballerina query expressions to filter, sort, and join different iterable collections. </p>
 </div>
-
 </div>
 
 </div>

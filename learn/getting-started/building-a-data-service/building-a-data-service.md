@@ -23,7 +23,6 @@ and [`JDBC`](https://central.ballerina.io/ballerinax/java.jdbc) connectors for B
 
 ## Prerequisites
 
-
 ### Setting up a MySQL Server Instance
 
 There are several methods you can use to set up a MySQL server.
@@ -33,7 +32,6 @@ There are several methods you can use to set up a MySQL server.
 4. Using a cloud-based MySQL solution such as Google’s [CloudSQL](https://cloud.google.com/sql), Amazon’s [RDS for MySQL](https://aws.amazon.com/rds/sqlserver/), or Microsoft’s [Azure Database for MySQL](https://azure.microsoft.com/en-us/services/mysql/).
 
 >Be sure to note down the connection and authentication details for connecting to the MySQL server including the hostname, port, username and password.
-
 
 ### Creating a Database and Table
 
@@ -56,7 +54,6 @@ CREATE TABLE Company.Employees (
 )
 ```
 
-
 ### Creating a Ballerina Project
 
 A new Ballerina project can be created by executing the following command in the directory in which you want to create the project.
@@ -66,7 +63,6 @@ bal new data_service
 ``` 
 
 >For more information on creating Ballerina packages, see [Creating your First Ballerina Package](/learn/hello-world/creating-your-first-ballerina-package/#creating-the-package/).
-
 
 ### Creating a Record to Represent an Employee
 
@@ -88,10 +84,7 @@ public type Employee record {|
 
 This record-type will be the basis for interacting with the database.
 
-
-
 ## Connecting to and Interacting with the Database
-
 
 ### Adding the MySQL Driver
 
@@ -116,7 +109,6 @@ The MySQL driver JAR is necessary in order to connect to and interact with a MyS
    path = "/path/to/mysql/driver.jar”
    ```
    
-
 ### Defining Configurations
 
 In the project directory, create a new file named `Config.toml` and specify the configurations necessary to connect to the MySQL database.
@@ -141,9 +133,7 @@ configurable string DATABASE = ?;
 
 >For more information on defining configurable variables in Ballerina, see [Defining Configurable Variables](/learn/making-ballerina-programs-configurable/defining-configurable-variables/).
 
-
 ### Connecting to the Database
-
 
 Firstly, the [`MySQL`](https://central.ballerina.io/ballerinax/mysql) 
 and [`SQL`](https://central.ballerina.io/ballerina/sql) packages must be imported into your `main.bal` file.
@@ -166,7 +156,6 @@ final mysql:Client dbClient = check new(
 >The MySQL package provides additional connection options and the ability to configure connection pool 
 >properties when connecting to the database which is not covered in this tutorial. To learn more about this, 
 >see the API docs for [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/1.2.0/clients/Client).
-
 
 ### Executing Queries
 
@@ -244,8 +233,6 @@ isolated function removeEmployee(int id) returns int|error {
 }
 ```
 
-
-
 ## Exposing the Database via an HTTP RESTful API
 
 After you have defined the methods necessary to manipulate the database, you can expose these selectively via an HTTP
@@ -255,7 +242,6 @@ RESTful API. For this, you would first need to import the Ballerina [`HTTP` modu
 import ballerina/http;
 ```
 
-
 ### Creating a Service
 Afterwards, you can create a service as follows. This would create an endpoint `/employees` on port `8080` which can 
 be accessed on a browser by visiting `locahost:8080/employees` after executing the command `bal run`.
@@ -264,7 +250,6 @@ be accessed on a browser by visiting `locahost:8080/employees` after executing t
 service /employees on new http:Listener(8080) {
 }
 ```
-
 
 ### Creating Resource Functions
 
@@ -332,10 +317,7 @@ service /employees on new http:Listener(8080) {
 }
 ```
 
-
 >**Note:** 
 >This tutorial does not cover topics such as authentication, rate-limiting, usage monitoring, billing, caching, 
 >observability, load balancing and security.
 >Ballerina provides features and modules to cover these aspects as well.
-
-<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

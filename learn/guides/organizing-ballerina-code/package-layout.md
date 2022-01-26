@@ -129,7 +129,7 @@ Here, is how you can specify a JAR file dependency in the `Ballerina.toml` file.
 [[platform.java11.dependency]]
 # Absolute or relative path of the JAR file.
 path = "<path-to-jar-file-1>"
-# An optional comma-separated list of Ballerina module names (to restrict the usage of this JAR)
+# An optional comma-separated list of Ballerina module names (to restrict the usage of this JAR).
 modules = ["<ballerina-module-1>"]
 ```
 

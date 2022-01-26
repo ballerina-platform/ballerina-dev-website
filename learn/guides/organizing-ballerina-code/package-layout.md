@@ -123,7 +123,7 @@ When you compile a Ballerina package with `bal build`, the compiler creates an e
 
 You are free to store the JAR files anywhere in your file system. As a best practice, maintain Java libraries inside the package.
 The platform-specific library information needs to be specified in the `Ballerina.toml` file. Java libraries are considered as platform-specific libraries.
-Here, is how you can specify a JAR file dependency in the `Ballerina.toml` file.
+Yow you can specify a JAR file dependency in the `Ballerina.toml` file as shown below.
 
 ```toml
 [[platform.java11.dependency]]

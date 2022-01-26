@@ -1,0 +1,17 @@
+- title: Building a Data Service in Ballerina
+  url: '#'
+  sublinks:
+    - title: Prerequisites
+      url: '#'
+      active: prerequisites
+      sublinks:
+        - title: Setting up a MySQL Server Instance
+          url: /learn/building-a-data-service/#setting-up-a-mysql-server-instance/
+          active: setting-up-a-mysql-server-instance
+    - title: Connecting to and Interacting with the Database
+      url: /learn/building-a-data-service/#connecting-to-and-interacting-with-the-database/
+      active: connecting-to-and-interacting-with-the-database
+    - title: Exposing the Database via an HTTP RESTful API
+      url: /learn/building-a-data-service/#exposing-the-database-via-an-http-restful-api/
+      active: exposing-the-database-via-an-http-restful-api
+

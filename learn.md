@@ -124,6 +124,13 @@ redirect_from:
     <p >Get started with the basics that are common to all C-family programming languages. </p>
 </div>
 
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+<a href="/learn/building-a-data-service/">
+    <h3 id="building-a-data-service">Building a Data Service</h3></a>
+    <p >Connecting to a MySQL database and executing queries using an HTTP RESTful API </p>
+</div>
+
+
 </div>
 </div>
 

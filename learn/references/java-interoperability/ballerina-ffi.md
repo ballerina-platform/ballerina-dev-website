@@ -478,7 +478,7 @@ The `detail`:
 - The `cause` field is set to the Ballerina error that represents this Java exception’s cause.
 
 ## Null Safety
-Ballerina provides strict null safety compared to Java with optional types.  The Java null reference can be assigned to any reference type. However, in Ballerina, you cannot assign the nil value to a variable unless the variable’s type is an optional type.
+Ballerina provides strict null safety compared to Java with optional types. The Java null reference can be assigned to any reference type. However, in Ballerina, you cannot assign the nil value to a variable unless the variable’s type is an optional type.
 
 As explained above, Ballerina handle values cannot be created in Ballerina code. They are created and returned by foreign functions and a variable of the handle type refers to a Java reference value. Since Java null is also a valid reference value, this variable can refer to a Java null value.
 

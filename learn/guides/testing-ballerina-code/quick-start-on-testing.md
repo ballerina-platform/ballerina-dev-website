@@ -37,7 +37,7 @@ To get started, let's set up the Ballerina package to run tests.
             main_test.bal
     ```
 
-2. Create the following function in the ***main.bal*** file
+2. Create the following function in the ***main.bal*** file.
 
     ```ballerina
     public function intAdd(int a, int b) returns (int) {
@@ -46,7 +46,7 @@ To get started, let's set up the Ballerina package to run tests.
     ```
 
 3. In the **main_test.bal**, make use of the test module to test out the functionality of the `intAdd` function in 
-the ***main.bal***
+the ***main.bal***.
 
     ```ballerina
     import ballerina/test;
@@ -57,6 +57,6 @@ the ***main.bal***
     }
     ```
 
-4. Execute the tests using the following command
+4. Execute the tests using the following command.
 
     ```$ bal test```

@@ -165,6 +165,10 @@ redirect_from:
     <h3 id="building-a-data-service">Building a Data Service</h3></a>
     <p >Connecting to a MySQL database and executing queries using an HTTP RESTful API </p>
 </div>
+<div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
+<a href="/learn/writing-a-restful-api-with-ballerina/">
+ <h3 id="writing-a-restful-api-with-ballerina">Writing a RESTful API with Ballerina</h3></a>
+		<p>This simple guide helps you understand the basics of Ballerina constructs which allow you to write RESTful APIs.</p>
 </div>
 </div>
 
@@ -262,11 +266,6 @@ redirect_from:
  <a href="/learn/ballerina-openapi-support/">
     <h3 id="ballerina-openapi">Ballerina OpenAPI Support </h3></a>
     <p >Details of all the features of the Ballerina OpenAPI tools. </p>
-</div>
-<div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
-<a href="/learn/writing-a-restful-api-with-ballerina/">
- <h3 id="writing-a-restful-api-with-ballerina">Writing a RESTful API with Ballerina</h3></a>
-		<p>This simple guide helps you understand the basics of Ballerina constructs which allow you to write RESTful APIs.</p>
 </div>
 </div>
 

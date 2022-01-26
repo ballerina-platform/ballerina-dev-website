@@ -1,0 +1,36 @@
+- title: Writing a gRPC Service with Ballerina
+  url: #
+  sublinks:
+    - title: Prerequisites
+      url: /learn/writing-a-grpc-service-with-ballerina/#prerequisites/
+    - title: Creating the Service Definition
+      url: /learn/writing-a-grpc-service-with-ballerina/#creating-the-service-definition/
+    - title: Implementation
+      url: /learn/writing-a-grpc-service-with-ballerina/#implementation/
+      sublinks:
+        - title: Developing a gRPC service
+          url: /learn/writing-a-grpc-service-with-ballerina/#developing-a-grpc-service/
+          active: developing-a-grpc-service
+          sublinks:
+            - title: Creating a Ballerina project
+              url: /learn/writing-a-grpc-service-with-ballerina/#developing-a-grpc-service/#creating-a-ballerina-project/
+              active: creating-a-ballerina-project
+            - title: Generating the source code
+              url: /learn/writing-a-grpc-service-with-ballerina/#developing-a-grpc-service/#generating-the-source-code/
+              active: generating-the-source-code
+            - title: Update and run the application
+              url: /learn/writing-a-grpc-service-with-ballerina/#developing-a-grpc-service/#update-and-run-the-application/
+              active: update-and-run-the-application
+        - title: Developing a gRPC client
+          url: /learn/writing-a-grpc-service-with-ballerina/#developing-a-grpc-client/
+          active: developing-a-grpc-client
+          sublinks:
+            - title: Creating a Ballerina project
+              url: /learn/writing-a-grpc-service-with-ballerina/#developing-a-grpc-client/#creating-a-ballerina-project/
+              active: creating-a-ballerina-project
+            - title: Generating the source code
+              url: /learn/writing-a-grpc-service-with-ballerina/#developing-a-grpc-client/#generating-the-source-code/
+              active: generating-the-source-code
+            - title: Update and run the application
+              url: /learn/writing-a-grpc-service-with-ballerina/#developing-a-grpc-client/#update-and-run-the-application/
+              active: update-and-run-the-application

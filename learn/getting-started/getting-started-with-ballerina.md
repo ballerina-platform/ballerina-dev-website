@@ -20,7 +20,7 @@ To complete this tutorial, you need:
 
 1. A command terminal
 2. A text editor
-    >**Tip:** [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed is preferred as it has good support for Ballerina.
+    >**Tip:** Prefarably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
 3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/). 
 4. Prior programming experience. 
 
@@ -37,7 +37,7 @@ $bal version
 
 ## Creating a New Project
 
-Let’s write a Ballerina program, which prints “Hello, World!”. Use the `bal new` command to create a new Ballerina project. 
+Let’s write a Ballerina program, which prints `Hello, World!`. Use the `bal new` command to create a new Ballerina project. 
 
 ```bash
 $ bal new greeter
@@ -70,11 +70,11 @@ greeter/
 
 In this code:
 
-- The first line is an import statement that makes the capabilities in the [`ballerina/i`o`](https://lib.ballerina.io/ballerina/io/latest) module available for your program. This module contains functions to write to the console, read from the console, and perform read/write operations on the files.
+- The first line is an import statement that makes the capabilities in the [`ballerina/io`](https://lib.ballerina.io/ballerina/io/latest) module available for your program. This module contains functions to write to the console, read from the console, and perform read/write operations on the files.
 - The `main` function is your program’s entry point, and you can execute it by running the program. 
 - This function contains a statement, which prints `Hello, World!` to the console. This statement calls the `println` function in the `io` with `Hello, World!`.
 
->**Info:** To learn more about the language, see [Language Basics](https://ballerina.io/learn/language-basics/). 
+>**Info:** To learn more about the language, see [Language Basics](/learn/language-basics/). 
 
 ## Running the Project
 
@@ -90,7 +90,7 @@ Running executable
 Hello, World!
 ```
 
-You can also generate an executable program with `bal build`
+You can also generate an executable program with `bal build`,
 
 ```bash
 $ bal build

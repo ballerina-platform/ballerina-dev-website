@@ -24,7 +24,7 @@ That’s why sequence diagrams are the foundation for designing the syntax and s
 
 ## Sequence Diagrams in Ballerina
 
-Being based on sequence diagrams, Ballerina allows you to visualize a program written in Ballerina as a sequence diagram. The diagram will display  the logic and network interaction of a function or a service resource. You can view and edit these diagrams using the Ballerina VSCode plugin.
+Being based on sequence diagrams, Ballerina allows you to visualize a program written in Ballerina as a sequence diagram. The diagram will display the logic and network interaction of a function or a service resource. You can view and edit these diagrams using the Ballerina VSCode plugin.
 
 <img src="/img/why-pages/sequence-diagrams-for-programming-1.png" alt="Ballerina sequence diagram"  style="width:100%; border: 1px solid #eee;">
 

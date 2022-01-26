@@ -2,24 +2,24 @@
   url: #
   sublinks:
     - title: Setting up the Prerequisites
-      url: /learn/getting-started-with-ballerina/setting-up-the-prerequisites
+      url: /learn/getting-started-with-ballerina/#setting-up-the-prerequisites
       active: setting-up-the-prerequisites
     - title: Meeting `bal`
-      url: /learn/getting-started-with-ballerina/meeting-bal
+      url: /learn/getting-started-with-ballerina/#meeting-bal
       active: meeting-bal
     - title: Creating a New Project
-      url: /learn/getting-started-with-ballerina/creating-a-new-project
+      url: /learn/getting-started-with-ballerina/#creating-a-new-project
       active: creating-a-new-project
     - title: Saying `Hello, World!`
-      url: /learn/getting-started-with-ballerina/saying-hello-world
+      url: /learn/getting-started-with-ballerina/#saying-hello-world
       active: saying-hello-world
     - title: Running the Project
-      url: /learn/getting-started-with-ballerina/running-the-project
+      url: /learn/getting-started-with-ballerina/#running-the-project
       active: running-the-project
     - title: Writing a Simple REST API
-      url: /learn/getting-started-with-ballerina/writing-a-simple-rest-api
+      url: /learn/getting-started-with-ballerina/#writing-a-simple-rest-api
       active: writing-a-simple-rest-api
     - title: Learning More
-      url: /learn/getting-started-with-ballerina/learning-more
+      url: /learn/getting-started-with-ballerina/#learning-more
       active: learning-more
 

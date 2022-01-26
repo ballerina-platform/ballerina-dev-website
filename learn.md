@@ -130,8 +130,28 @@ redirect_from:
     <h3 id="language-basics">Language Basics</h3></a>
     <p >Get started with the basics that are common to all C-family programming languages. </p>
 </div>
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+ <a href="/learn/deploying-ballerina-on-kubernetes/">
+    <h3 id="hello-world">Deploying Your service on Kubernetes</h3></a>
+   <p >Dockerizing your application and deploying it in Kubernetes. </p>
+</div>
+
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card">
+<a href="/learn/working-with-data/">
+    <h3 id="working-with-data">Working with Data in Ballerina</h3></a>
+    <p >Learn how to use Ballerina query expressions to filter, sort, and join different iterable collections. </p>
+</div>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+<a href="/learn/building-a-data-service/">
+    <h3 id="building-a-data-service">Building a Data Service</h3></a>
+    <p >Connecting to a MySQL database and executing queries using an HTTP RESTful API </p>
+</div>
 
 </div>
+
 </div>
 
 <div class="row" style="margin-bottom:30px;">

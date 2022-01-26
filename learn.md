@@ -130,7 +130,6 @@ redirect_from:
     <p >Connecting to a MySQL database and executing queries using an HTTP RESTful API </p>
 </div>
 
-
 </div>
 </div>
 

@@ -11,9 +11,7 @@ redirect_from:
 
 This simple guide helps you understand the basics of Ballerina constructs which allow you to write RESTful APIs. 
 
-Due to the batteries included nature of Ballerin language there is no need to add any third party libraries to implement the RESTful API. The Ballerina standard library itself is adequate. In this API you will be writing a simple CRUD like RESTful service. 
-
-To get the best out of the guide it is better to have some idea about Ballerina.
+Due to the batteries included nature of the Ballerin language, there is no need to add any third-party libraries to implement the RESTful API. The Ballerina standard library itself is adequate. In this API, you will be writing a simple CRUD-like RESTful service.
 
 In this tutorial, you will be creating a RESTful API with two endpoints. The sample is built around a set of covid19 data.
 
@@ -144,7 +142,7 @@ The body of the response is of type `ErrorMsg` which simply has a string field n
 
 ## Write a Resource to Get Filtered Covid19 Data by ISO Code
 
-This resource is a bit more different than the first two resources. As you already know resource functions have accessors. In addition, it also supports hierarchical paths. Making it ideal for implementing RESTful APIs. Hierarchical paths can have path params. In this case iso_code is used as the path param which intern becomes a string variable. 
+This resource is a bit more different than the first two resources. As explained earlier, resource functions have accessors. In addition, it also supports hierarchical paths making it ideal for implementing RESTful APIs. Hierarchical paths can have path params. In this case, `iso_code` is used as the path param, which in turn, becomes a string variable.
 
 ```ballerina
 resource function get countries/[string iso_code]() returns CovidEntry|InvalidIsoCodeError {
@@ -160,7 +158,7 @@ resource function get countries/[string iso_code]() returns CovidEntry|InvalidIs
 }
 ```
 
-As in the previous example, this resource also includes its own return types. But the basic principle behind them is as the previous example. Following is the type definition of `InvalidIsoCodeError`.
+As in the previous example, this resource also includes its own return types. However, the basic principle behind them is as the previous example. The following is the type definition of the `InvalidIsoCodeError`.
 
 ```ballerina
 public type InvalidIsoCodeError record {|
@@ -170,15 +168,15 @@ public type InvalidIsoCodeError record {|
 ```
 ## The Complete Code
 
-It is always a good practice to document your interfaces. However, this example has omitted documentation for brevity. But any production ready API interface must include API documentation. 
+It is always a good practice to document your interfaces. However, this example has omitted documentation for brevity. Nevertheless, any production-ready API interface must include API documentation. 
 
 You can run the service by executing the following command inside the `covid19` folder. 
 
 `bal run`
 
-> **Note**: Console should have warning logs related to isolatedness of resources. It is a built-in service concurrency safety feature in Ballerina. 
+> **Note**: The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 
-You can also try generating OpenAPI specification for the written service by executing the following command which creates a `yaml` file in the current folder.
+You can also try generating an OpenAPI specification for the written service by executing the following command, which creates a `yaml` file in the current folder.
 
 `bal openapi -i service.bal`
 

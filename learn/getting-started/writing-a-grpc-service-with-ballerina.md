@@ -71,7 +71,7 @@ A new Ballerina project can be created by executing the following command in the
 $ bal new greeter_service
 ```
 
-> **Note:** For more information on creating Ballerina packages, please see the [link]().
+> **Note:** For more information on creating Ballerina packages, please see the [link](/learn/getting-started-with-ballerina).
 
 The automatically-created `main.bal` file along with the project creation is removed as you are not going to use it in this guide.
 
@@ -155,7 +155,7 @@ A new Ballerina project can be created by executing the following command in the
 $ bal new greeter_client
 ```
 
-> **Note:** For more information on creating Ballerina packages, please see the [link]().
+> **Note:** For more information on creating Ballerina packages, please see the [link](/learn/getting-started-with-ballerina).
 
 The automatically-created `main.bal` file along with project creation is removed as you are not going to use it in this guide.
 

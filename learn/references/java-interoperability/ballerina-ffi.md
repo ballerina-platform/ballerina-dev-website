@@ -270,7 +270,7 @@ As you can see, you need to first construct an instance of the `ArrayDeque` clas
 
 Ballerina internally uses a fixed number of threads. Therefore, when calling a Java method, it should return in a reasonable time frame in order to avoid starvation in the Ballerina code execution.
 
-If the given Java method executes a time consuming (i.e., blocking) task such as an IO operation, better to do that in a separate thread while yielding the original thread to continue the Ballerina code execution.
+If the given Java method executes a time-consuming task (i.e., blocking)such as an IO operation, better to do that in a separate thread while yielding the original thread to continue the Ballerina code execution.
 In this case, the Ballerina Scheduler needs to be informed that the work is being completed asynchronously by invoking the `markAsync` method in the `BalEnv` object. When the work is completed, the `complete` method has to be called with the return value.
 
 >**Note:** The original return value is ignored.

@@ -139,7 +139,7 @@ function UUID_randomUUID() returns UUID {
 ```
 
 ### Fields
-All public fields of a Java class will be exposed through Ballerina bindings in the form of getters and setters. Instance fields will have the respective getter and setter methods inside the Ballerina class, whereas the static fields will have getter and setter functions outside the Ballerina class.
+All public fields of a Java class will be exposed through Ballerina bindings in the form of getters and setters. Instance fields will have the respective getter and setter methods inside the Ballerina class, whereas, the static fields will have getter and setter functions outside the Ballerina class.
 
 The getter and setter functions of an instance field will take the name of the field prefixed with a `get` or `set` at the beginning.
 

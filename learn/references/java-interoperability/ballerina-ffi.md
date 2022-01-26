@@ -42,7 +42,7 @@ function doSomething(int i) returns string = @java:Method {
 } external;
 ```
 
-The `@java:Method` annotation instructs the jBallerina compiler to link to the `doSomethingInJava` static method in the `a.b.c.Foo` Java class. There are a set of annotations and other utilities available in the `ballerina/jballerina.java` module to make Java interoperability work that is covered in this guide.```
+The `@java:Method` annotation instructs the jBallerina compiler to link to the `doSomethingInJava` static method in the `a.b.c.Foo` Java class. There are a set of annotations and other utilities available in the `ballerina/jballerina.java` module to make Java interoperability work that is covered in this guide.
 
 ## The Handle Type
 The handle type describes a reference to an externally-managed storage. These values can only be created by a Ballerina function with an external function body. Within the context of jBallerina, a `handle` type variable can refer to any Java reference type value: a Java object, an array, or the null value.
@@ -53,7 +53,7 @@ Consider the `randomUUID` method in the Java UUID class, which gives you a UUID 
 static UUID randomUUID()
 ```
 
-Here, is the corresponding Ballerina function that returns a value of the handle type.
+Below is the corresponding Ballerina function that returns a value of the handle type.
 
 ```ballerina
 import ballerina/jballerina.java;
@@ -118,7 +118,7 @@ public ArrayDeque(int numElements);
 public ArrayDeque(Collection<? extends E> c);
 ```
 
-Here, is the updated Ballerina code.
+Below is the updated Ballerina code.
 
 ```ballerina
 import ballerina/jballerina.java;
@@ -182,7 +182,7 @@ public Builder(Person[][] list, int index);
 public Builder(Student[][] list, int index);
 ```
 
-Here, is the corresponding Ballerina code.
+Below is the corresponding Ballerina code.
 
 ```ballerina
 import ballerina/jballerina.java;
@@ -235,7 +235,7 @@ E pop();
 void push(E e);
 ```
 
-Here, are the corresponding Ballerina functions that are linked to these methods.
+Below are the corresponding Ballerina functions that are linked to these methods.
 
 ```ballerina
 function pop(handle arrayDequeObj) returns handle = @java:Method {
@@ -270,7 +270,7 @@ As you can see, you need to first construct an instance of the `ArrayDeque` clas
 
 Ballerina internally uses a fixed number of threads. Therefore, when calling a Java method, it should return in a reasonable time frame in order to avoid starvation in the Ballerina code execution.
 
-If the given Java method executes a time-consuming task (i.e., blocking)such as an IO operation, better to do that in a separate thread while yielding the original thread to continue the Ballerina code execution.
+If the given Java method executes a time-consuming task (i.e., blocking) such as an IO operation, better to do that in a separate thread while yielding the original thread to continue the Ballerina code execution.
 In this case, the Ballerina Scheduler needs to be informed that the work is being completed asynchronously by invoking the `markAsync` method in the `BalEnv` object. When the work is completed, the `complete` method has to be called with the return value.
 
 >**Note:** The original return value is ignored.
@@ -330,7 +330,7 @@ function push(handle receiver, handle element) = @java:Method {
 } external;
 ```
 
-This class presents a much clearer API compared to the previous API. Here, is a sample usage of this class.
+This class presents a much clearer API compared to the previous API. Below is a sample usage of this class.
 
 ```ballerina
 public function main() {
@@ -351,7 +351,7 @@ StringBuffer append(StringBuffer sb);
 StringBuffer append(char[] str);
 ```
 
-Here, is the set of Ballerina functions that are linked with the above Java methods. Notice the usage of the `paramTypes` annotation field. You can find more details of this field in the [Instantiating Java Classes](#instantiating-java-classes) section.
+Below is the set of Ballerina functions that are linked with the above Java methods. Notice the usage of the `paramTypes` annotation field. You can find more details of this field in the [Instantiating Java Classes](#instantiating-java-classes) section.
 
 ```ballerina
 function appendBool(handle sbObj, boolean b) returns handle = @java:Method {
@@ -390,7 +390,6 @@ A function call in Ballerina may complete abruptly by returning an error or by r
 
 Errors in Ballerina belong to the built-int type `error`. The error type can be considered as a distinct type from all other types. The `error` type does not belong to the `any` type, which is the supertype of all other Ballerina types. Therefore, errors are explicit in Ballerina programs and it is almost impossible to ignore them. For more details, see [BBEs](https://ballerina.io/learn/by-example/).
 
-How are Java exceptions mapped to Ballerina errors?
 A Java function call may complete abruptly by throwing either a checked exception or an unchecked exception. Unchecked exceptions are usually not part of the Java method signature unlike the checked exceptions.
 
 Java interoperability layer in Ballerina handles checked exceptions differently from unchecked exceptions as explained below.
@@ -417,7 +416,7 @@ public function main() {
 }
 ```
 
-Here, is the output:
+Below is the output:
 
 ```
 error: java.util.NoSuchElementException
@@ -515,7 +514,7 @@ Since the queue is empty in this case, `peek` should return null i.e., `element`
 	   array_deque:main(array_deque.bal:27)
 ```
 
-This is equivalent to a Java NPE. In such situations, you should check for null using the `java:isNull()` function. Here, is the modified example.
+This is equivalent to a Java NPE. In such situations, you should check for null using the `java:isNull()` function. Below is the modified example.
 
 ```ballerina
 public function main() {

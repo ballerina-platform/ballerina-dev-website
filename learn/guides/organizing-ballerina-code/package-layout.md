@@ -121,9 +121,9 @@ cloud = "k8s"
 
 When you compile a Ballerina package with `bal build`, the compiler creates an executable JAR file. However, if the package does not contain an entry point, it will produce a non-executable JAR file (a library package), which can be used in another package/program. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives.
 
-You are free to store the JAR files anywhere in your file system. As a best practice, maintain Java libraries inside the package.
-The platform-specific library information needs to be specified in the `Ballerina.toml` file. Java libraries are considered as platform-specific libraries.
-Yow you can specify a JAR file dependency in the `Ballerina.toml` file as shown below.
+You can store the JAR files anywhere in your file system. As a best practice, maintain Java libraries inside the package.
+The platform-specific library information need to be specified in the `Ballerina.toml` file. Java libraries are considered as platform-specific libraries.
+You can specify a JAR file dependency in the `Ballerina.toml` file as shown below.
 
 ```toml
 [[platform.java11.dependency]]
@@ -137,13 +137,13 @@ Alternatively, you can also specify Maven dependencies as platform-specific libr
 
 ```toml
 [[platform.java11.dependency]]
-# An optional comma-separated list of Ballerina module names (to restrict the usage of this JAR)
+# An optional comma-separated list of Ballerina module names (to restrict the usage of this JAR).
 modules = ["<ballerina-module-1>"]
-# Group ID of the Maven dependency
+# Group ID of the Maven dependency.
 groupId = "<group-id>"
-# Artifact ID of the Maven dependency
+# Artifact ID of the Maven dependency.
 artifactId = "<artifact-id>"
-# Version of the Maven dependency
+# Version of the Maven dependency.
 version = "<version>"
 ```
 

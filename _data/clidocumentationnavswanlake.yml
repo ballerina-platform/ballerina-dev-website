@@ -22,15 +22,15 @@
     - title: Update Tool
       url: /learn/cli-documentation/update-tool/
       active: update-tool
-    - title: GRPC
+    - title: gRPC/Protocol Buffers
       url: /learn/cli-documentation/grpc/
       sublinks:
         - title: Usage of the Tool
           url: /learn/cli-documentation/grpc/#usage-of-the-tool
           active: usage-of-the-tool
-        - title: CLI Command
-          url: /learn/cli-documentation/grpc/#cli-command
-          active: cli-command
+        - title: Protocol Buffers to Ballerina
+          url: /learn/cli-documentation/grpc/#protocol-buffers-to-ballerina
+          active: protocol-buffers-to-ballerina
         - title: Sample
           url: /learn/cli-documentation/grpc/#sample
           active: sample

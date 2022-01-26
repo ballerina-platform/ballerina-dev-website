@@ -116,6 +116,13 @@ redirect_from:
     <h3 id="hello-world">Hello World</h3></a>
    <p >Writing your first Ballerina program and creating your first Ballerina package. </p>
 </div>
+
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+<a href="/learn/writing-a-grpc-service-with-ballerina/">
+    <h3 id="building-a-data-service">Writing a gRPC Service with Ballerina</h3></a>
+    <p >Writing a simple Ballerina gRPC service and invoking the service through a Ballerina gRPC client. </p>
+</div>
+
 </div>
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">

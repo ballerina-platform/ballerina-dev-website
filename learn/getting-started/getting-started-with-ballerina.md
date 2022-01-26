@@ -14,7 +14,7 @@ redirect_from:
 - /learn/getting-started/hello-world/writing-your-first-ballerina-program/
 ---
 
-## Prerequisites
+## Setting up the Prerequisites
 
 To complete this tutorial, you need:
 

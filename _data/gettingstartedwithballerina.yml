@@ -1,9 +1,9 @@
 - title: Getting Started with Ballerina
   url: #
   sublinks:
-    - title: Prerequisites
-      url: /learn/getting-started-with-ballerina/prerequisites
-      active: prerequisites
+    - title: Setting up the Prerequisites
+      url: /learn/getting-started-with-ballerina/setting-up-the-prerequisites
+      active: setting-up-the-prerequisites
     - title: Meeting `bal`
       url: /learn/getting-started-with-ballerina/meeting-bal
       active: meeting-bal

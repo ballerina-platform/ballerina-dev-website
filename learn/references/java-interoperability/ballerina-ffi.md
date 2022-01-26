@@ -678,6 +678,6 @@ public function main() {
 }
 ```
 
-In this example, the `pi()` function returns the value of the `java.lang.Math.PI` static field. This uses the annotation field `name` to specify the name of the field. Likewise, if you want to access an instance field, you need to pass the relevant object instance as discussed in the instance methods section.
+In this example, the `pi()` function returns the value of the `java.lang.Math.PI` static field. This uses the `name` annotation field to specify the name of the field. Likewise, if you want to access an instance field, you need to pass the relevant object instance as discussed in the instance methods section.
 
 The `@java:FieldSet` annotation has the same structure as the above.

@@ -1,13 +1,14 @@
-```
-layout: getting-started-with-ballerina-left-nav-pages
+---
+layout: ballerina-getting-started-left-nav-pages-swanlake
 title: Getting Started with Ballerina
 description: Let’s set up a Ballerina development environment and write a simple Ballerina program.
 keywords: ballerina, programming language, ballerina packages, getting started
-permalink: /learn/getting-started-with-ballerina
+permalink: /learn/getting-started-with-ballerina/
 active: getting-started-with-ballerina
 intro: Let’s set up a Ballerina development environment and write a simple Ballerina program.
+redirect_from:
+- /learn/getting-started-with-ballerina/
 ---
-```
 
 ## Prerequisites
 
@@ -18,7 +19,7 @@ To complete this tutorial, you need:
 - A Ballerina installation. Follow the steps in [Installing Ballerina](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/).
 - Some experience with at least one programming language. 
 
-## Meet `bal`
+## Meeting `bal`
 
 `bal` is the Ballerina build tool and package manager. Among other things, `bal` helps you to create, build, test, and run your project. 
 
@@ -29,7 +30,7 @@ $bal
 $bal version
 ```
 
-## Create a new project
+## Creating a New Project
 
 Let’s write a Ballerina program that prints “Hello, World!”. Use the `bal new` command to create a new Ballerina project. 
 
@@ -48,7 +49,7 @@ greeter/
 - `Ballerina.toml` contains metadata that describes your project. Also, `bal` tool uses `Ballerina.toml` to identify the root of a project.
 - `main.bal` is a source file and it should contain Ballerina code that prints “Hello, World!” to the console. You can add any number of source files into the `greeter` directory.
 
-## Say “Hello, World!”
+## Saying “Hello, World!”
 
 You can open the project directory in your text editor. If you are using VSCode, run `code .` inside the `greeter` directory. Then, open `main.bal` to see the generated source.
 
@@ -98,7 +99,7 @@ $ bal run target/bin/greeter.jar
 Hello, World!
 ```
 
-## Write a simple REST API
+## Writing a Simple REST API
 
 Now, let’s change our `greeter` application to a REST API. Ballerina has first-class abstractions for services, resources, etc., and they make network service development easier and more fun. 
 
@@ -129,8 +130,6 @@ Let’s take a moment to digest new constructs in this code:
 - In this example, there are two resource methods: The first one responds to HTTP GET requests with the path `/greeting`, and the other one responds to `GET` requests with the path `/greeting/{name}`.
 - These resource methods return a `string` value that maps to the content-type `text/plan` in the HTTP response.
 
-
-
 To learn more about services, see our [Network Interaction](https://ballerina.io/learn/distinctive-language-features/network-interaction/) guide. 
 
 Let’s run this project in your terminal:
@@ -153,7 +152,7 @@ $ curl localhost:8080/greeting/Ballerina
 Hello Ballerina
 ```
 
-## Learn more
+## Learning More
 
 In this tutorial, you set up your development environment and wrote two Ballerina applications.
 

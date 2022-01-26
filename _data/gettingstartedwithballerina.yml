@@ -1,0 +1,22 @@
+- title: Getting Started with Ballerina
+  url: #
+  sublinks:
+    - title: Prerequisites
+      url: /learn/getting-started-with-ballerina/prerequisites
+      active: prerequisites
+    - title: Meeting `bal`
+      url: /learn/getting-started-with-ballerina/meeting-bal
+      active: meeting-bal
+    - title: Creating a New Project
+      url: /learn/getting-started-with-ballerina/creating-a-new-project
+      active: creating-a-new-project
+    - title: Saying “Hello, World!”
+      url: /learn/getting-started-with-ballerina/saying-hello-world
+      active: saying-hello-world
+    - title: Writing a Simple REST API
+      url: /learn/getting-started-with-ballerina/writing-a-simple-rest-api
+      active: writing-a-simple-rest-api
+    - title: Learning More
+      url: /learn/getting-started-with-ballerina/learning-more
+      active: learning-more
+

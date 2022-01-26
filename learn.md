@@ -112,8 +112,8 @@ redirect_from:
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
- <a href="/learn/hello-world/writing-your-first-ballerina-program/">
-    <h3 id="hello-world">Hello World</h3></a>
+ <a href="/learn/getting-started-with-ballerina/">
+    <h3 id="hello-world">Getting Started with Ballerina</h3></a>
    <p >Writing your first Ballerina program and creating your first Ballerina package. </p>
 </div>
 

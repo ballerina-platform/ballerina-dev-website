@@ -33,6 +33,14 @@
         - title: Executing Queries
           url: /learn/building-a-data-service/#executing-queries
           active: executing-queries
+    - title: Exposing the Database via an HTTP RESTful API
+      url: /learn/building-a-data-service/#exposing-the-database-via-an-HTTP RESTful API
+      active: exposing-the-database-via-an-HTTP RESTful API
+      sublinks:
+        - title: Creating a Service
+          url: /learn/building-a-data-service/#creating-a-service
+          active: creating-a-service
         - title: Creating Resource Functions
           url: /learn/building-a-data-service/#creating-resource-functions
           active: creating-resource-functions
+

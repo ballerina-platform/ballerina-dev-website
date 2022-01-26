@@ -2,14 +2,13 @@
 layout: using-query-expressions-to-manipulate-data
 title: Using Query Expressions to Manipulate Data
 permalink: /learn/using-query-expressions-to-manipulate-data
-description: This simple guide helps you understand how query expressions can be used on data to produce new data 
+keywords: query expressions, language integrated queries, programming language, getting started
+description: Learn how to use Ballerina query expressions to filter, sort, and join different iterable collections.
 active: using-query-expressions-to-manipulate-data
-intro: This simple guide helps you understand how query expressions can be used on data to produce new data 
+intro: This simple guide helps you understand how query expressions (a.k.a language integrated queries) can be used on data to produce new data.
 redirect_from:
   - /learn/using-query-expressions-to-manipulate-data
 ---
-
-This simple guide helps you understand how query expressions (a.k.a language integrated queries) can be used on data to produce new data.
 
 Ballerina supports first-class support for writing SQL-like queries to process data.
 

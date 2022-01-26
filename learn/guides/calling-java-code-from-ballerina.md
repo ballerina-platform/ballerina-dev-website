@@ -208,7 +208,7 @@ public class SnakeYamlSample {
 ```
 
 #### Creating the `FileInputStream`
-Our goal here is to create a new `java.io.FileInputStream` instance from the filename. In [Step 3](step-3---generating-the-ballerina-bindings), you generated bindings for the required Java classes. The following is the code snippet that does the job.
+Our goal here is to create a new `java.io.FileInputStream` instance from the filename. In [Step 3](#step-3---generating-the-ballerina-bindings), you generated bindings for the required Java classes. The following is the code snippet that does the job.
 
 ```ballerina
 javaio:FileInputStream | javaio:FileNotFoundException fileInputStream = javaio:newFileInputStream3(filename);

@@ -123,6 +123,12 @@ redirect_from:
     <h3 id="language-basics">Language Basics</h3></a>
     <p >Get started with the basics that are common to all C-family programming languages. </p>
 </div>
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+ <a href="/learn/deploying-ballerina-on-kubernetes/">
+    <h3 id="hello-world">Deploying your service on Kubernetes</h3></a>
+   <p >Dockerizing your application and deploying it in Kubernetes. </p>
+</div>
+</div>
 
 </div>
 </div>

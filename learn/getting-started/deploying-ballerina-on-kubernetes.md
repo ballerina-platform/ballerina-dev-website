@@ -9,7 +9,7 @@ intro: Let’s dockerize deploy your ballerina service and deploy into kubernete
 ---
 ```
 
-In this section we will be write a simple ballerina service and the we will dockerize the application and deploy it in kuberentes.
+In this section, you will be writing a simple ballerina service and then, you will Dockerize the application and deploy it in Kubernetes.
 
 ## Prerequisites
 
@@ -18,15 +18,16 @@ To complete this tutorial, you need:
 - A Ballerina installation. Follow the steps in [Installing Ballerina](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/).
 - Docker installed and configured in your machine.
 - `kubectl` installed and configured to a Kubernetes cluster.
+- Docker hub account
 
 
 ## Code to Cloud
 
-Code to cloud is a compiler extension which is packed with ballerina which makes it easier to generate artifacts required for the cloud from the user's ballerina code. Currently, You could generate docker and kubernetes artifacts from the ballerina code. This process encourages users to write cloud ready code from the day one without any additional effort. 
+Code to cloud is a compiler extension, which is packed with Ballerina, which makes it easier to generate artifacts required for the cloud from your Ballerina code. Currently, you could generate Docker and Kubernetes artifacts from the Ballerina code. This process encourages you to write cloud-ready code from day one without any additional effort. 
 
-## Write the ballerina service
+## Writing the ballerina service
 
-Let’s write a Ballerina program that returns “Hello, World!” string from upon invoking the resource. Use the `bal new` command to create a new Ballerina project. 
+Let’s write a Ballerina program that returns a `Hello, World!` string upon invoking the resource. Execute the `bal new` command to create a new Ballerina project. 
 
 ```
 $ bal new greeter
@@ -44,6 +45,7 @@ You can replace the `main.bal` content with the following code.
 
 ```
 import ballerina/http;
+
 listener http:Listener httpListener = new (8080);
 service / on httpListener {
     resource function get greeting() returns string { 
@@ -53,8 +55,7 @@ service / on httpListener {
 ```
 
 
-In order to enable the code to cloud functionality in the ballerina project, you need to add `cloud="k8s"` to the build-options in Ballerina.toml
-
+In order to enable the code to cloud functionality in the Ballerina project, you need to add the `cloud="k8s"` property to the build-options in the `Ballerina.toml` file.
 
 ***Ballerina.toml***
 
@@ -63,7 +64,18 @@ In order to enable the code to cloud functionality in the ballerina project, you
 cloud = "k8s"
 ```
 
-Now when we build the ballerina project cloud artifacts should be generated inside the target/ directory.
+5. Create a file named `Cloud.toml` in the package directory and add the content below. Make sure to replace the value of repository field with your Docker hub repository name.
+
+***Cloud.toml***
+
+```toml
+[container.image]
+repository="wso2inc" # Docker hub repository name.
+name="greeter" # container name
+tag="latest"
+```
+
+Now, when we build the Ballerina project, the cloud artifacts should be generated inside the `target/` directory.
 
 ```
 $ bal build
@@ -86,7 +98,13 @@ Generating artifacts...
         kubectl expose deployment greeter-deployment --type=NodePort --name=greeter-svc-local
 ```
 
-Execute the commands displayed from the compiler above to deploy the ballerina application into the kubernetes cluster.
+Let's push the created docker image into docker hub now. You should replace the wso2inc name with your repository name.
+```
+$ docker push wso2inc/greeter:latest
+The push refers to repository [docker.io/wso2inc/greeter]
+```
+
+Execute the commands displayed from the compiler above to deploy the Ballerina application into the Kubernetes cluster.
 
 ```
 $ kubectl apply -f /home/example/greeter/target/kubernetes/greeter
@@ -95,6 +113,4 @@ deployment.apps/greeter-deployment created
 horizontalpodautoscaler.autoscaling/greeter-hpa created
 ```
 
-## Next steps
-
-You can visit the [Code to cloud Deployment guide](/learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment.html) for in depth information about executing these deployed applications and the supported customizations in code to cloud.
+**Info:** For in-depth information about executing these deployed applications and the supported customizations in code to cloud, see [Code to cloud Deployment](/learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment.html).

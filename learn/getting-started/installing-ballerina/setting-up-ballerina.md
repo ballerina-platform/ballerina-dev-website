@@ -97,4 +97,4 @@ For more installation options, see [Installation Options](/learn/user-guide/gett
 
 ## Installing the VSCode Extension
 
-Ballerina provides an extension to try out its development capabilities in Visual Studio Code. For instructions on setting it up, see [Quick Start](/learn/visual-studio-code-extension/quick-start/).
+Ballerina provides an extension to try out its development capabilities in Visual Studio Code. For instructions on setting it up, go to [The Ballerina Extension for Visual Studio Code](https://github.com/wso2/ballerina-plugin-vscode/blob/main/README.md).

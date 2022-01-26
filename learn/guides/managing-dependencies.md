@@ -141,14 +141,14 @@ repository = "local"
 
 Once the above steps are completed, the dependency will be picked from the local repository when the package is built. 
 During the compilation, the version specified in the `Ballerina.toml` is considered as the minimum required version for that particular dependency 
-and the dependency will be resolved from the local repository. Nonetheless, if the compiler finds a newer patch version in Distribution or Central repositories, 
+and the dependency will be resolved from the local repository. Nonetheless, if the compiler finds a newer patch version in distribution or Ballerina central repositories, 
 then, the latest version is always given priority. At this point, the compiler resolves the latest version and ignores the dependency version in the local repository. 
 
 ## Achieving Reproducible Builds
 
 By default, the compiler always looks up the latest compatible versions of the dependencies in the repositories when building a package. 
-This minimizes the hassle to the package developer in terms of dependency updates since the compiler is smart enough to 
-keep the package updated all the time. However, if you want to repeat a constant behavior to make the build more predictable, 
+This minimizes the hassle of managing dependency versions to the package developer since the compiler is smart enough to 
+keep the package updated with latest compatible dependencies all the time. However, if you want to repeat a constant behavior to make the build more predictable, 
 then, Ballerina facilitates this using offline and sticky modes.
 
 ### Sticky mode

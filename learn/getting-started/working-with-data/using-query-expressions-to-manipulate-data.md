@@ -15,7 +15,7 @@ Ballerina supports first-class support for writing SQL-like queries to process d
 
 Language-integrated queries can process any Ballerina iterable collection.
 
-In this tutorial, you will be writing queries to filter, sort, and join with other data sets and produce new data sets.
+In this tutorial, you will be writing queries to filter, sort, and join with different data sets and produce new data sets.
 
 1. Creating a new Ballerina project.
 2. Defining the Covid dataset to be processed.
@@ -56,7 +56,7 @@ tree .
 
 ## Defining the Covid Dataset To Be Processed
 
-To keep of keeping the tutorial simple, you will be using an in-memory table to store the Covid dataset. Each record of type `CovidEntry` in the table represents the Covid data related to a particular country. The `iso_code` is used to uniquely identify a country and other fields are self-explanatory.
+To keep the tutorial simple, you will be using an in-memory table to store the Covid dataset. Each record of type `CovidEntry` in the table represents the Covid data related to a particular country. The `iso_code` is used to uniquely identify a country and other fields are self-explanatory.
 ```ballerina
 public type CovidEntry record {|
     readonly string iso_code;
@@ -85,7 +85,7 @@ public function filterCountriesByCases(table<CovidEntry> dataTable, decimal noOf
     string[] countries = from CovidEntry entry in dataTable
         where entry.cases > noOfCases
         select entry.country;
-    return countries;
+    return filteredCountries;
 }
 ```
 
@@ -113,7 +113,7 @@ Countries with more than 10 million cases: ["USA","India"]
 ```
 ## Finding the Top Three Countries By the Number Of Reported Covid Deaths
 
-Let's define a new function to find the top three countries with the highest number of Covid deaths. In this function, you will use queries to sort a table and retrieve a *limit*ed number of sorted records from the table.
+Let's define a new function to find the top three countries with the highest number of Covid deaths. In this function, you will use another query to sort and retrieve a *limit*ed number of records from the table.
 
 ```ballerina
 public function findCountriesByHighestNoOfDeaths(table<CovidEntry> dataTable, int n) returns [string, decimal][] {
@@ -124,7 +124,7 @@ public function findCountriesByHighestNoOfDeaths(table<CovidEntry> dataTable, in
     return countriesWithDeaths;
 }
 ```
-The `findCountriesByHighestNoOfDeaths` function uses queries to find the top three countries with the highest Covid deaths. The `order by` clause is used to sort the records in the table in `descending` order and limit the number of output records of the query to `n`. Here, as the result, the query produces an array of tuples of type `[string, decimal]`. A tuple contains the country and the number of reported deaths. The produced array is in descending order by the number of deaths.
+The `findCountriesByHighestNoOfDeaths` function uses query expression to find the top three countries with the highest Covid deaths. The `order by` clause is used to sort the records in the table in `descending` order and `limit` clause to limit the number of output records of the query to `n`. As the result, the query produces an array of tuples of type `[string, decimal]`. Each tuple contains the country name and the number of reported deaths. The produced array is in descending order by the number of deaths.
 
 Let's call the `findCountriesByHighestNoOfDeaths` function from within the `main` function to find the top three countries by the number of deaths.
 
@@ -138,7 +138,7 @@ public function main() {
 }
 ```
 
-The last two lines were added to print the top three countries by the number of deaths. Copy the last two lines of the above code onto `main.bal` and execute `bal run` from within the `query_expression` project folder.
+Copy the last two lines of the above code onto `main.bal` and execute `bal run` from within the `query_expression` project folder.
 
 The output will look like the below.
 
@@ -164,11 +164,12 @@ public function findRecoveredPatientsOfCountries(table<CovidEntry> dataTable, st
     return countriesWithRecovered;
 }
 ```
-The `findRecoveredPatientsOfCountries` function uses a query expression to join the `dataTable` table with an array of strings named `countries`. When the table is joined with the array, a condition is provided after the `on` keyword. 
+The `findRecoveredPatientsOfCountries` function uses a query expression to join the `dataTable` table with an array of strings named `countries`. The join condition is provided after the `on` keyword. 
 
 For every record in the `dataTable`, all the elements in the `countries` array will be joined. The output array of tuples will have the country and the number of recovered patients only if the condition after the `on` keyword is satisfied for that particular pair of table record and element of the array being joined.
 
-Now, change the existing `main` function by calling the `findRecoveredPatientsOfCountries` function at the end to get the number of recovered patients. In this tutorial, you will retrieve the number of recovered patients in the USA, India, and Afghanistan. The updated `main` function looks like the one below.
+Now, change the existing `main` function by calling the `findRecoveredPatientsOfCountries` function at the end to get the number of recovered patients. 
+You will get the number of recovered patients in USA, India, and Afghanistan. The updated `main` function should look like the one below.
 
 ```ballerina
 public function main() {
@@ -198,7 +199,8 @@ Countries with number of Recovered patients:[["Afghanistan",146084],["USA",43892
 ```
 ## Finding Any Discrepancies In Reported Covid Dataset Using Intermediate States
 
-This example shows how you can use the `let` clause to maintain an intermediate state while iterating a collection using a query expression and how to use that intermediate state for further processing. For example, in this dataset, The total number of reported cases should be equal to the sum of the number of deaths, recovered, and active. If they are not equal, an error should have occurred while the dataset is populated.
+This example shows how you can use the `let` clause to maintain an intermediate state while iterating a collection using query expression and how to use that intermediate state for further processing. 
+For example, in this dataset, the total number of reported cases should be equal to the sum of the number of deaths, recovered, and active. If they are not equal, an error should have occurred while the dataset is populated.
 
 Let's define a function called `printErroneousData` to find any erroneous records in the dataset. If there is any record in which the number of reported `cases` is not equal to the sum of `recovered`, `active`, and `deaths`, this function will print it.
 

@@ -1,27 +1,27 @@
-- title: Developing a RESTful API with Ballerina
+- title: Writing a RESTful API with Ballerina
   url: #
   sublinks:
     - title: Prerequisite
-      url: /learn/developing-a-restful-api-with-ballerina/#prerequisite
+      url: /learn/writing-a-restful-api-with-ballerina/#prerequisite
       active: prerequisite
     - title: Design the Two Endpoints
-      url: /learn/developing-a-restful-api-with-ballerina/#design-the-two-endpoints
+      url: /learn/writing-a-restful-api-with-ballerina/#design-the-two-endpoints
       active: design-the-two-endpoints
     - title: Create a Package for Your Code
-      url: /learn/developing-a-restful-api-with-ballerina/#create-a-package-for-your-code
+      url: /learn/writing-a-restful-api-with-ballerina/#create-a-package-for-your-code
       active: reate-a-package-for-your-code
     - title: Create the Covid19 Dataset
-      url: /learn/developing-a-restful-api-with-ballerina/#create-the-covid19-dataset 
+      url: /learn/writing-a-restful-api-with-ballerina/#create-the-covid19-dataset 
       active: create-the-covid19-dataset
     - title: Write a Resource to Get All the Covid19 Data
-      url: /learn/developing-a-restful-api-with-ballerina/#write-a-Resource-to-get-all-the-covid19-data
+      url: /learn/writing-a-restful-api-with-ballerina/#write-a-Resource-to-get-all-the-covid19-data
       active: write-a-Resource-to-get-all-the-covid19-data
     - title: Write a Resource to Add Covid19 Data by ISO Code
-      url: /learn/developing-a-restful-api-with-ballerina/#write-a-resource-to-add-covid19-data-by-iso-code
+      url: /learn/writing-a-restful-api-with-ballerina/#write-a-resource-to-add-covid19-data-by-iso-code
       active: write-a-resource-to-add-covid19-data-by-iso-code
     - title: Write a Resource to Get Filtered Covid19 Data by ISO Code
-      url: /learn/developing-a-restful-api-with-ballerina/#write-a-resource-to-get-filtered-covid19-data-by-iso-code
+      url: /learn/writing-a-restful-api-with-ballerina/#write-a-resource-to-get-filtered-covid19-data-by-iso-code
       active: write-a-resource-to-get-filtered-covid19-data-by-iso-code
     - title: The Complete Code
-      url: /learn/developing-a-restful-api-with-ballerina/#the-complete-code
+      url: /learn/writing-a-restful-api-with-ballerina/#the-complete-code
       active: the-complete-code

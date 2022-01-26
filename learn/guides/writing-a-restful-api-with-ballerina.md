@@ -1,12 +1,12 @@
 ---
-layout: developing-a-restful-api-with-ballerina
-title: Developing a RESTful API with Ballerina
-permalink: /learn/developing-a-restful-api-with-ballerina/
+layout: writing-a-restful-api-with-ballerina
+title: Writing a RESTful API with Ballerina
+permalink: /learn/writing-a-restful-api-with-ballerina/
 description: This simple guide helps you understand the basics of Ballerina constructs which allow you to write RESTful APIs. 
-active: developing-a-restful-api-with-ballerina
+active: writing-a-restful-api-with-ballerina
 intro: This simple guide helps you understand the basics of Ballerina constructs which allow you to write RESTful APIs. 
 redirect_from:
-  - /learn/developing-a-restful-api-with-ballerina
+  - /learn/writing-a-restful-api-with-ballerina
 ---
 
 This simple guide helps you understand the basics of Ballerina constructs which allow you to write RESTful APIs. 

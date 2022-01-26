@@ -31,6 +31,9 @@
           - title: Installing via the Ballerina Language ZIP File
             url: /learn/installing-ballerina/installation-options/#installing-via-the-ballerina-language-zip-file
             active: installing-via-the-ballerina-language-zip-file
+          - title: Verifying the Installation
+            url: /learn/installing-ballerina/installation-options/#verifying-the-installation
+            active: verifying-the-installation
           - title: Updating Ballerina
             url: /learn/installing-ballerina/installation-options/#updating-ballerina
             active: updating-ballerina

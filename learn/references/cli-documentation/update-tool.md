@@ -34,9 +34,9 @@ Ballerina yet does not have a release channel for nightly builds that give you a
 
 #### Patch Releases
 
-Patch releases of Ballerina distributions contain bug fixes and fixes for critical stability and security related issues. Occasionally, you would see on-demand patch releases for 1.2.x.
+Patch releases of Ballerina distributions contain bug fixes and fixes for critical stability and security related issues. Occasionally, you would see on-demand patch releases for 2201.0.x.
 
-*Example patch releases: 1.0.6, 1.1.5, 1.1.10*
+*Example patch releases: 2201.0.1, 2201.1.1*
 
 ## Installing Ballerina
 
@@ -135,53 +135,31 @@ The `bal dist list` command lists the installed distributions in your local envi
 → bal dist list
 Distributions available locally: 
 
-  [slalpha4] Alpha 3
-* [slalpha5] Alpha 4
+  slalpha4 
+  slalpha5 
+  slbeta3
+  slbeta6
+* 2201.0.0  
 
 Distributions available remotely:
 
 1.* channel
 
-  [1.0.0] jballerina version 1.0.0
-  [1.0.1] jballerina version 1.0.1
-  [1.0.2] jballerina version 1.0.2
-  [1.0.3] jballerina version 1.0.3
-  [1.0.4] jballerina version 1.0.4
-  [1.0.5] jballerina version 1.0.5
-  [1.1.0] jballerina version 1.1.0
-  [1.1.1] jballerina version 1.1.1
-  [1.1.2] jballerina version 1.1.2
-  [1.1.3] jballerina version 1.1.3
-  [1.1.4] jballerina version 1.1.4
-  [1.2.0] jballerina version 1.2.0
-  [1.2.1] jballerina version 1.2.1
-  [1.2.2] jballerina version 1.2.2
-  [1.2.3] jballerina version 1.2.3
-  [1.2.4] jballerina version 1.2.4
-  [1.2.5] jballerina version 1.2.5
-  [1.2.6] jballerina version 1.2.6
-  [1.2.7] jballerina version 1.2.7
-  [1.2.8] jballerina version 1.2.8
-  [1.2.9]  jballerina version 1.2.9
-  [1.2.10] jballerina version 1.2.10
-  [1.2.11] jballerina version 1.2.11
-  [1.2.12] jballerina version 1.2.12
-  [1.2.13] jballerina version 1.2.13
+...To list all the previous distributions execute 'bal dist list -a'
+  1.2.10
+  1.2.11
+  1.2.12
+  1.2.13
+  1.2.14
+  1.2.15
+  1.2.17
+  1.2.16
+  1.2.20
+  1.2.23 - latest
 
 Swan Lake channel
 
-  [slp1] Preview 1
-  [slp2] Preview 2
-  [slp3] Preview 3
-  [slp4] Preview 4
-  [slp5] Preview 5
-  [slp7] Preview 7
-  [slp8] Preview 8
-  [slalpha1] Alpha 1
-  [slalpha2] Alpha 2
-  [slalpha3] Alpha 3
-  [slalpha4] Alpha 4
-* [slalpha5] Alpha 5
+* 2201.0.0 - latest
 
 Use 'bal help dist' for more information on specific commands.
 ```

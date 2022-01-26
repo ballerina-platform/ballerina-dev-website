@@ -1,5 +1,5 @@
 ---
-layout: ballerina-layer-page
+layout: ballerina-layer-page-wo-breadcrumbs
 title: Community
 description: 
 permalink: /community/
@@ -11,7 +11,6 @@ redirect_from:
 <style>
 
  h2 {
-  overflow: visible;
   scroll-margin-top: 150px !important;
 } 
 .eventBanner{
@@ -24,11 +23,19 @@ redirect_from:
     }
 .stuck {
   position: fixed;
-  top:80px;
+  top:0px;
   width: 100%;
   z-index:999;
+  display: block !important;
 }
-
+.nonVisible{
+    display:none;
+}
+.disabled {
+        pointer-events: none;
+        cursor: default;
+        background-color: #57595d !important;
+}
     .text-feild{
         padding: 20px 20px;
         margin: 5px 0px;
@@ -127,9 +134,10 @@ font-size: 10px;
 }
 
 .bookMarkOnPage {
-    margin-top:-180px;
-    padding-bottom:180px; 
+    margin-top:-130px;
+    padding-bottom:130px; 
     display:block;
+    scroll-margin-top: 100px !important;
 }
 .card-title{color:#20b6b0;margin-top:0px;line-height: 30px;}
 .card-title:hover{color:#464646 !important}
@@ -403,9 +411,45 @@ td.cEventDateContainer{
 </style>
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.32.min.js"></script>
 <link rel="stylesheet" href="/css/events-page.css">
+<div class="container-fluid secNavSticky" style="background-color: #F8F8F8; margin-bottom: 30px;height: 70px; padding-top: 10px; ">
+    <section id="secondary-nav-bar" >
+       <div class="container">
+       <nav class="navbar navbar-white second-nav" style="position: sticky;"> 
+       <a class="navbar-brand" href="/community" style="font-size: 28.5px; padding-left: 15px; font-weight: 500; color: #464646;height:0px;">The Ballerina Community</a>
+             <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+               </button>
+             </div>
+             <div class="collapse navbar-collapse" id="myNavbar">
+               <ul class="nav navbar-nav secondary-nav" >
+                 <li class="active"><a href="#subscribe-to-newsletter" style="padding-left: 0;">Newsletter</a></li>
+                 <li><a href="#events">Events</a></li>
+                 <li><a href="#resources">Resources</a></li>
+                 <li><a href="#ballerina-slack-community">Slack</a></li>
+                 <li><a href="#monthly-tech-talk">Tech Talk</a></li>
+                 <li><a href="#get-involved">Get Involved</a></li>
+                 <li><a href="#contact-us">Contact Us</a></li>
+               </ul>
+               
+             </div>
+         </nav> 
+       </div>
+   </section> 
+   </div>
 <div class="container" id="wrapper">
+    <div class="row" id="cballerina-intro-desktop">
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;margin-bottom: 30px;">
+            <p>
+                Welcome to the Ballerina community! Use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource.
+            </p>
+           
+          </div>
 
-<div class="section" style="padding-bottom: 30px;">
+</div>
+<div class="section" style="padding-bottom: 30px;padding-top: 30px !important;" id="cballerina-intro-mob">
     <h1 id="the-ballerina-community" class="wy-nav-content" >The Ballerina Community </h1>
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;">
@@ -418,8 +462,11 @@ td.cEventDateContainer{
     </div>
 </div>
 
-<section id="subscribe-newsletter" style="padding-bottom: 40px;">
-<h2 style="padding-right: 15px;">Subscribe to our Newsletter</h2>
+
+<section  style="padding-bottom: 40px;">
+<span class="bookMarkOnPage" id="subscribe-to-newsletter"></span>
+<h2 style="padding-right: 15px;">Subscribe to Newsletter</h2>
+
 
 <div class="row" >
   
@@ -436,7 +483,7 @@ td.cEventDateContainer{
 </section>
 </div>
 
-<div class="container-fluid secNavSticky" style="background-color: #F8F8F8; margin-bottom: 30px; box-shadow: 0px 22px 24px 3px rgba(184,188,197,0.31)">
+<!-- <div class="container-fluid secNavSticky" style="background-color: #F8F8F8; margin-bottom: 30px; box-shadow: 0px 22px 24px 3px rgba(184,188,197,0.31);display:none;">
  <section id="secondary-nav-bar" >
     <div class="container">
     <nav class="navbar navbar-white second-nav" style="position: sticky;"> 
@@ -449,8 +496,9 @@ td.cEventDateContainer{
             </button>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav secondary-nav" >
-              <li class="active"><a href="#events">Events</a></li>
+            <ul class="nav navbar-nav secondary-nav" style="float: left;">
+              <li class="active"><a href="#subscribe-to-newsletter" style="padding-left: 0;">Subscribe to Newsletter</a></li>
+              <li><a href="#events">Events</a></li>
               <li><a href="#resources">Resources</a></li>
               <li><a href="#ballerina-slack-community">Ballerina Slack Community</a></li>
               <li><a href="#monthly-tech-talk">Monthly Tech Talk</a></li>
@@ -462,12 +510,12 @@ td.cEventDateContainer{
       </nav> 
     </div>
 </section> 
-</div>
+</div> -->
 <div class="container" id="wrapper">
 
 <section   style="padding-bottom: 30px;">
     <span class="bookMarkOnPage" id="events"></span>
-    <h2 class="tabViewFix" style="padding-right: 15px;">Events</h2>
+    <h2 class="tabViewFix" style="padding-right: 15px;margin-top: 20px;">Events</h2>
     <div class="row" >
       
         <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;">
@@ -568,7 +616,7 @@ td.cEventDateContainer{
                    <h5 style="margin-bottom: 18px;">Ballerina - A Cloud Native Programming Language </h5>		
                    <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/hasithaaravinda/">Hasitha Aravinda</a>, Associate Director/Architect, WSO2
                 </td>	
-                <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/" target="_blank" style="text-align: center;">More Info</a></td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/events/283458600/" target="_blank" style="text-align: center;">More Info</a></td>	
             </tr>
            
         </table>
@@ -930,15 +978,18 @@ td.cEventDateContainer{
   
 
 var secondary = document.querySelector(".secNavSticky");
+var mainNav = document.querySelector(".cBallerina-io-Nav");
 
 var fromTop = secondary.offsetTop;
 
 document.onscroll = function() {
-  if (!secondary.classList.contains("stuck") && window.pageYOffset >= 625) {
+  if (!secondary.classList.contains("stuck") && window.pageYOffset >= 70) {
     secondary.classList.add("stuck");
+    mainNav.classList.add("nonVisible");
   }
-  else if (secondary.classList.contains("stuck") && window.pageYOffset < 625){
+  else if (secondary.classList.contains("stuck") && window.pageYOffset < 70){
     secondary.classList.remove("stuck");
+    mainNav.classList.remove("nonVisible");
   }
 };
 
@@ -1015,7 +1066,7 @@ document.onscroll = function() {
    .cUseCaseModel{
     height: 800px !important;
    }
-
+   #cballerina-intro-desktop{display: none;}
     }
     
     
@@ -1057,13 +1108,14 @@ document.onscroll = function() {
     .subscribeSlack{padding-left: 0px;}
     }
     @media only screen and (max-width: 810px) {
-        .secNavSticky{display: none;}
+        .secNavSticky{display: none !important;}
         .tabViewFix{margin-top: -20px !important;}
+        #cballerina-intro-desktop{display: none;}
     }
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media only screen and (min-width: 1200px) {
       #eventDetails{padding-left: 0px !important;}
-
+      #cballerina-intro-mob{display: none;}
     }
  </style>
 

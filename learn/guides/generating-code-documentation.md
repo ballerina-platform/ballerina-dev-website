@@ -163,9 +163,13 @@ $ tree
 ├── main.bal
 └── modules
     └── world
+        ├── Module.md
+        ├── resources
+        ├── tests
+        │   └── lib_test.bal
         └── world.bal
 
-2 directories, 3 files
+4 directories, 5 files
 ```
 Now, let's add a function to the `math` module to be documented. Copy and paste the following code into the `math/main.bal` file.
 
@@ -228,12 +232,13 @@ Output:
 Compiling source
 	user/math:0.1.0
 Generating API Documentation
-Saved to: target/apidocs
+Saved to: apidocs
 ```
+>**Note:** If you replaced the existing code in  the `math/modules/world/world.bal` file, you might get a compilation error. This is due to the sample unit tests in the`math/modules/world/tests/lib_test.bal` file. In that case, delete the `math/modules/world/tests` directory, and run the `bal doc` command again.
 
-`target/apidocs/organization/math/0.1.0` folder would contain the following;
+`target/apidocs/user/math/0.1.0` folder would contain the following;
 ```bash
-$ ls target/apidocs/organization/math/0.1.0/
+$ ls target/apidocs/user/math/0.1.0/
 bundle.js  index.html  ...
 ```
 

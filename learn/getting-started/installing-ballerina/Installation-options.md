@@ -83,14 +83,14 @@ After installing Ballerina, run the following test to verify if Ballerina has be
 Execute the command below from the command shell of the operating system.
 
 ```bash
-bal -v
+bal version
 ```
 
 Make certain the command output shows the version that you downloaded as shown below.
 
 ```bash
 Ballerina <VERSION> (Swan Lake)
-Language specification 2021R1
+Language specification 2022R1
 Update Tool 1.3.7
 ```
 
@@ -105,12 +105,6 @@ If you already have a jBallerina version above 1.1.0 installed, you can use the 
 `bal dist pull <JBALLERINA-VERSION>`|Fetch a specific distribution 
 
 For more information, see [Keeping Ballerina Up to Date](/learn/tooling-guide/cli-tools/update-tool/).
-
-
-## Building from Source
-
-For instructions, see [Building from Source](/learn/user-guide/getting-started/building-from-source/).
-
 
 
 ## Uninstalling Ballerina
@@ -134,11 +128,4 @@ For example, for the RPM file:
 ```
 rpm -e ballerina-<VERSION>-swan-lake
 ```
-
-
-## What's Next?
-
-Once you have successfully installed Ballerina, now you can [write your first Ballerina program](/learn/user-guide/getting-started/writing-your-first-ballerina-program/).
-
->**Tip:** To get help when you work with Ballerina, see [Community](/community).
 

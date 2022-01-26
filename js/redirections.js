@@ -118,6 +118,7 @@ let redirections = {
     "/1.2/learn/api-docs/ballerina/ftp/index.html":"/page-not-available.html",
     "/1.1/learn/api-docs/ballerina/ftp/index.html":"/page-not-available.html",
     "/1.0/learn/api-docs/ballerina/ftp/index.html":"/page-not-available.html",
+    "/learn/getting-started/installing-ballerina/building-from-source.md":"/page-not-available.html",
 
 
 

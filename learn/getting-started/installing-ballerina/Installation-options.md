@@ -101,7 +101,7 @@ If you already have a Ballerina version above 1.1.0 installed, you can use the u
 **Command**|**Description**
 :-----:|:-----:
 `bal dist update`|Update to the latest patch version of the active distribution
-`bal dist pull latest`|Update to the latest ballerina version
+`bal dist pull latest`|Update to the latest Ballerina version
 `bal dist pull <VERSION>`|Fetch a specific distribution 
 
 For more information, see [Keeping Ballerina Up to Date](/learn/tooling-guide/cli-tools/update-tool/).

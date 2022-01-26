@@ -1,5 +1,5 @@
 ---
-layout: ballerina-deploying-ballerina-on-kubernetes-left-nav-pages
+layout: ballerina-deploying-ballerina-on-kubernetes-left-nav-pages-swan-lake
 title: Deploying your service on Kubernetes
 description: Let’s dockerize deploy your ballerina service and deploy into kubernetes.
 keywords: ballerina, programming language, cloud, kubernetes, docker, cloud-native

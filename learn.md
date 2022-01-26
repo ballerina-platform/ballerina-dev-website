@@ -125,6 +125,16 @@ redirect_from:
 </div>
 
 </div>
+
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card">
+<a href="/learn/working-with-data/">
+    <h3 id="working-with-data">Working with Data in Ballerina</h3></a>
+    <p >Learn how to use Ballerina query expressions to filter, sort, and join different iterable collections. </p>
+</div>
+
+</div>
+
 </div>
 
 <div class="row" style="margin-bottom:30px;">

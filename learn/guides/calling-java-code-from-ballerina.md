@@ -139,7 +139,7 @@ comments: >
 ```
 
 ### Step 3 - Generating the Ballerina Bindings 
-In this step, you'll use the `bindgen` tool to generate Ballerina bindings for those four classes that we talked about in [Step 1](#step-1---writing-the-java-code). If you want more information about the tool, see [The Bindgen Tool](/learn/java-interoperability/the-bindgen-tool/) reference guide.
+In this step, you'll use the `bindgen` tool to generate Ballerina bindings for those four classes that we talked about in [Step 1](/learn/calling-java-code-from-ballerina/#step-1---writing-the-java-code). If you want more information about the tool, see [The Bindgen Tool](/learn/java-interoperability/the-bindgen-tool/) reference guide.
 
 ```sh
 > bal bindgen -mvn org.yaml:snakeyaml:1.25 org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
@@ -208,7 +208,7 @@ public class SnakeYamlSample {
 ```
 
 #### Creating the `FileInputStream`
-Our goal here is to create a new `java.io.FileInputStream` instance from the filename. In [Step 3](#step-3---generating-the-ballerina-bindings), you generated bindings for the required Java classes. The following is the code snippet that does the job.
+Our goal here is to create a new `java.io.FileInputStream` instance from the filename. In [Step 3](/learn/calling-java-code-from-ballerina/#step-3---generating-the-ballerina-bindings), you generated bindings for the required Java classes. The following is the code snippet that does the job.
 
 ```ballerina
 javaio:FileInputStream | javaio:FileNotFoundException fileInputStream = javaio:newFileInputStream3(filename);

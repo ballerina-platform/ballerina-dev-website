@@ -13,14 +13,14 @@ This simple guide helps you understand how query expressions (a.k.a language int
 
 Ballerina supports first-class support for writing SQL-like queries to process data.
 
-Language-integrated queries can process any Ballerina iterable collection.
+Language-integrated queries can process any Ballerina iterable.
 
 In this tutorial, you will be writing queries to filter, sort, and join with different data sets and produce new data sets.
 
 1. Creating a new Ballerina project.
 2. Defining the Covid dataset to be processed.
-3. Finding all countries which have more than 10,000,000 Covid cases.
-4. Finding the top three countries by the number of reported Covid cases.
+3. Filtering all countries which have more than 10,000,000 Covid cases.
+4. Sorting the top three countries by the number of reported Covid cases.
 5. Joining the table with an array to find the number of recovered patients.
 6. Finding any discrepancies in reported Covid dataset while maintaining intermediate states.
 
@@ -76,13 +76,13 @@ public final table<CovidEntry> key(iso_code) covidTable = table [
 ```
 Copy the above code snippet to `main.bal`. This will act as our Covid Dataset.
 
-## Finding All Countries Which Have More Than 10,000,000 Covid Cases
+## Filtering All Countries Which Have More Than 10,000,000 Covid Cases
 
 Let's define a function, which will filter out the records, which have values higher than 100,000 for the `cases` field.
 
 ```ballerina
 public function filterCountriesByCases(table<CovidEntry> dataTable, decimal noOfCases) returns string[] {
-    string[] countries = from CovidEntry entry in dataTable
+    string[] filteredCountries = from CovidEntry entry in dataTable
         where entry.cases > noOfCases
         select entry.country;
     return filteredCountries;
@@ -111,7 +111,7 @@ Running executable
 
 Countries with more than 10 million cases: ["USA","India"]
 ```
-## Finding the Top Three Countries By the Number Of Reported Covid Deaths
+## Sorting the Top Three Countries By the Number Of Reported Covid Deaths
 
 Let's define a new function to find the top three countries with the highest number of Covid deaths. In this function, you will use another query to sort and retrieve a *limit*ed number of records from the table.
 

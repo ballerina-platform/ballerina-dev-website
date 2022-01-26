@@ -87,7 +87,7 @@ If there are multiple classes with the same simple name, they need to be generat
 
 The format for specifying inner classes using the command is `<package-name>.ClassName$InnerClassName`. The dollar sign might have to be escaped using the backslash key.
 
-E.g., The command to generate bindings for `java.lang.Character.Subset` class will be as follows.
+E.g., the command to generate bindings for `java.lang.Character.Subset` class will be as follows.
 ```sh
 > bal bindgen java.lang.Character\$Subset
 ```

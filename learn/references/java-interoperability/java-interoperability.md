@@ -13,7 +13,7 @@ redirect_from:
 ---
 
 ## Ballerina Bindings to Java Code
-You can write Ballerina code (Ballerina bindings) that let you call the corresponding Java API as illustrated in the below diagram.
+You can write Ballerina code (Ballerina bindings) that lets you call the corresponding Java API as illustrated in the diagram below.
 
 <img src="/learn/images/interoperability-diagram-new.png" alt="Ballerina bindings to Java code" width="300" height="450">
 

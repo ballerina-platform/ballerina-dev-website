@@ -322,6 +322,5 @@ redirect_from:
   <p >A video series, which explains the language and its reference slide deck. </p>
 </div>
 </div>
-
-
 </div>
+ 

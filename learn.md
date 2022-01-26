@@ -259,21 +259,11 @@ redirect_from:
  	 <h3 id="style-guide">Style Guide</h3></a>
 		<p>Best practices to follow when formatting Ballerina code.   </p>
 </div>
-<div class="row">
+
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
- <a href="/learn/language-introduction/">
-  	<h3 id="language-introduction-slides">Language Introduction</h3></a>
-		<p>Presentation slides on the Ballerina language that you can use to talk about the language.</p>
-</div>
-
-</div>
-
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card" >
   <a href="/learn/java-interoperability/">
      <h3 id="the-bal-tool">Java Interoperability</h3></a>
 		<p>Instructions on the supported Java interoperability features.  </p>
-</div>
 </div>
 
 </div>

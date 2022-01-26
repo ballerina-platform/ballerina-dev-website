@@ -52,13 +52,13 @@ A set of additional `.bal` files will be generated to store the error types used
 
 The generated bindings will be inside the specified output directory as follows.
 ```sh
-	<module-dir>
-	    ├── <class-name>.bal // generated classes
-        ├── ...
-	    ├── <class-name>.bal // generated dependent classes
-	    ├── ...
-	    ├── <class-name>.bal // generated error types
-	    └── ...
+<module-dir>
+    ├── <class-name>.bal // generated classes
+    ├── ...
+    ├── <class-name>.bal // generated dependent classes
+    ├── ...
+    ├── <class-name>.bal // generated error types
+    └── ...
 ```
 
 ## Java to Ballerina Mapping

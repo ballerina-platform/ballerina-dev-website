@@ -41,7 +41,9 @@ Let's get started.
 ### Step 1 - Writing the Java Code
 It is recommended to always start by writing the Java code. It gives you an idea of the set of Java classes required to implement your logic. Then, we can use the `bindgen` tool to generate Ballerina bindings for those classes. 
 
-The Java code below uses the SnakeYAML API to parse the given YAML file. Note that this is not the most idiomatic way of writing the Java code for this scenario. 
+The Java code below uses the SnakeYAML API to parse the given YAML file. 
+
+>**Note:** This is not the most idiomatic way of writing the Java code for this scenario. 
 
 ```java
 import org.yaml.snakeyaml.Yaml;

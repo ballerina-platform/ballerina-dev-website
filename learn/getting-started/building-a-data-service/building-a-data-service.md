@@ -31,7 +31,7 @@ There are several methods you can use to set up a MySQL server.
 3. Use [Docker](https://dev.mysql.com/doc/mysql-installation-excerpt/8.0/en/docker-mysql-getting-started.html) to create a MySQL server deployment.
 4. Use a cloud-based MySQL solution such as Google’s [CloudSQL](https://cloud.google.com/sql), Amazon’s [RDS for MySQL](https://aws.amazon.com/rds/sqlserver/), or Microsoft’s [Azure Database for MySQL](https://azure.microsoft.com/en-us/services/mysql/).
 
->**Note:** Keep the connection and authentication details for connecting to the MySQL server including the hostname, port, username and password.
+>**Tip:** Keep the connection and authentication details for connecting to the MySQL server including the hostname, port, username and password noted down.
 
 ### Creating a Database and Table
 
@@ -62,7 +62,7 @@ A new Ballerina project can be created by executing the following command in the
 bal new data_service
 ``` 
 
->For more information on creating Ballerina packages, see [Creating your First Ballerina Package](/learn/hello-world/creating-your-first-ballerina-package/#creating-the-package/).
+>**Info:** For more information on creating Ballerina packages, see [Creating your First Ballerina Package](/learn/hello-world/creating-your-first-ballerina-package/#creating-the-package/).
 
 ### Creating a Record to Represent an Employee
 
@@ -318,6 +318,6 @@ service /employees on new http:Listener(8080) {
 }
 ```
 
->**Note:** This tutorial does not cover topics such as authentication, rate-limiting, usage monitoring, billing, 
+>**Info:** This tutorial does not cover topics such as authentication, rate-limiting, usage monitoring, billing, 
 > caching, observability, load balancing, and security.
 >Ballerina provides features and modules to cover these aspects as well.

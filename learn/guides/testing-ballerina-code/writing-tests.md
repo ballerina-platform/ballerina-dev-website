@@ -33,21 +33,21 @@ Once the test module is imported, the following annotation can be used to write 
 The function specified after the annotation is a test function. This annotation supports fields to configure the test 
 case with the following.
 
-*   Enable/disable the test.
-    ***enable: {true&#124;false}*** - The default value is `true`.
+* ***enable: {true&#124;false}*** - Enable/disable the test. The default value is `true`.
     
-*   Set up and tear down prerequisites required for a test case.
-    ***before: &lt;function name&gt;*** - The function to be run just before the test is run. The default value is `none`.
-    ***after: &lt;function name&gt;*** - The function to be run just after the test is run. The default value is `none`.
-    
-*   Defines the order of the test execution.
-    ***dependsOn: [&lt;function names>, …]*** - List of functions on which the test function depends. The order in which the comma-separated list appears has no prominence. In case there needs to be an order, the `dependsOn` parameter can be used to create an ordered sequence of functions with one function depending on the other.
+* ***before: &lt;function name&gt;*** - The function to be run just before the test is run. The default value is `none`.
 
-*   Defines data sets for data-driven tests.
-    ***dataProvider: &lt;function name>*** - Specifies the function, which will be used to provide the data sets for the test.
+* ***after: &lt;function name&gt;*** - The function to be run just after the test is run. The default value is `none`.
+ 
+* ***dependsOn: [&lt;function names>, …]*** - List of functions on which the test function depends. The order in which 
+the comma-separated list appears has no prominence. In case there needs to be an order, the `dependsOn` parameter can 
+be used to create an ordered sequence of functions with one function depending on the other.
 
-*   Group test cases using test groups
-    ***groups: [“&lt;test group name”, …]*** - A comma-separated list of test group names (one or more) to which this test belongs.
+* ***dataProvider: &lt;function name>*** - Specifies the function, which will be used to provide the data sets for the 
+test.
+
+* ***groups: [“&lt;test group name”, …]*** - A comma-separated list of test group names (one or more) to which this test
+belongs.
 
 ***Example:***
 
@@ -176,7 +176,7 @@ The Ballerina test framework supports the following assertions, which help to ve
     </tr>
 </table>
 
-### Troubleshooting Assertion Failures when Using 'assertEquals'
+### Troubleshooting Assertion Failures when Using `assertEquals`
 
 
 #### Values with Different Types

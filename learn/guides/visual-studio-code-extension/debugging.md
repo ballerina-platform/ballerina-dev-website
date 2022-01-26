@@ -5,7 +5,7 @@ description: Describes debugging functionalities provided by Ballerina in Visual
 keywords: ballerina debugging, ballerina debug, ballerina debugger, ballerina vscode
 permalink: /learn/visual-studio-code-extension/debugging/
 active: debugging
-intro: The VS Code Ballerina extension allows you to either run your Ballerina program (without debugging) or debug them easily by launching its debugger. 
+intro: The Visual Studio Code Ballerina language extension comes with in-built debugging capabilities and provides the same debugging experience as the conventional VS Code Debugging.
 redirect_from:
   - /learn/tools-ides/vscode-plugin/run-and-debug
   - /learn/tools-ides/vscode-plugin/run-and-debug/
@@ -29,11 +29,39 @@ redirect_from:
   - /learn/visual-studio-code-extension/debugging
 ---
 
->**Info:** For more information on debugging your code using VS Code, go to the [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
-
 ## Starting a Debug Session
 
-The VS Code Ballerina extension gives you the same debugging experience as the conventional VS Code Debugger. Follow the steps below to start a debug session.
+You can start a quick debug session instantly to debug a Ballerina program with `CodeLens`. Also, you can start a debug session with configurations
+like program arguments and environment variables by adding them into the `launch.json` file.
+
+### Starting a Program Debug Session
+
+The Ballerina extension provides multiple options to debug your Ballerina program and the easiest way will be using the context-aware `Debug` CodeLens support provided by the extension.
+The extension can detect any program entry points (main function/service definition) on the fly and the CodeLens will appear automatically.  
+
+Follow the steps below to start a quick debug session.
+
+![Start_Main Quick Debug Session](/learn/images/start-quick-main-debug-session.gif)
+
+<br/>
+
+1. Open the folder, which includes the Ballerina program you want to debug, and open the source file in the editor.
+
+2. Add the debug points you require by clicking in front of the line numbers of the file you want to debug.
+
+3. Click the `Debug` CodeLens, which is just above the `main()` method.
+
+### Starting a Test Debug Session
+
+The Ballerina test functions can also be debugged using the codelens. The `debug` codelens will automatically appear on top of each Ballerina test function and you are able to execute/debug only a selected test case by clicking on the corresponding codelens as shown below.
+
+![Start_Test Quick Debug Session](/learn/images/start-quick-test-debug-session.gif)
+
+<br/>
+
+### Debug Session with Configurations
+
+Follow the steps below to start a debug session with configurations. All the configurations need to be added in the `launch.json` file.
 
 ![Start Debug Session](/learn/images/start-debug-session.gif)
 
@@ -57,7 +85,7 @@ Then, you can start a program, test, or remote debug session as shown below.
 
 <br/>
 
-### Starting a Program Debug Session
+#### Starting a Program Debug Session
 
 Follow the steps below to start a program debug session.
 
@@ -71,7 +99,7 @@ Follow the steps below to start a program debug session.
 
 <br/>
 
-### Starting a Test Debug Session
+#### Starting a Test Debug Session
 
 Follow the steps below to start a test debug session.
 
@@ -89,9 +117,13 @@ Follow the steps below to start a test debug session.
 
 Follow the steps below to start a remote debug session.
 
-1. Select **Ballerina Remote** from the drop-down available in the upper left corner to start a remote debugging session.
+1. Create the `launch.json` configuration file if it is not created already. For instructions on creating the `launch.json` file, see [Debug Session with Configurations](#debug-session-with-configurations).
 
-2. Open the Terminal and execute the Ballerina command, which you want to debug, out of the supported remote debugging commands below. 
+2. Open the `launch.json` file and configure the `debuggeeHost` and `debuggeePort` attributes under the `Ballerina Remote` configurations section accordingly.
+
+3. After setting the remote debug configurations, select **Ballerina Remote** from the drop-down available in the upper left corner to start a remote debugging session.
+
+4. Open the Terminal and execute the Ballerina command, which you want to debug out of the supported remote debugging commands below. 
 
     - Debugging a Ballerina package or a single file: 
 
@@ -117,7 +149,7 @@ Follow the steps below to start a remote debug session.
     Listening for transport dt_socket at address: 5005
     ```
 
-3. Click the **Start Debugging** icon on the upper left corner to start debugging.
+5. Click the **Start Debugging** icon on the upper left corner to start debugging.
 
     You view the output in the **DEBUG CONSOLE**.
 
@@ -125,25 +157,69 @@ Follow the steps below to start a remote debug session.
 
 <br/>
 
-### Running Without Debugging
+## Debug Configurations
 
-Follow the steps below to run your program (without debugging).
+The Ballerina debugger supports various debug configuration options via the `launch.json` file. 
 
-1. On the VSCode editor, open the Ballerina program file you want to run.
+>**Info:** You can either add configurations to the existing `launch.json` file (which is located in your workspace root under the `.vscode` directory), or you can generate the `launch.json` configurations file with default values by,
 
-2. Click **Run** in the top menu, and then click **Run Without Debugging**.
+1. Click the **Run and Debug** icon in the left menu or press the **Control + Shift + D** keys to launch the Debugger view (for Mac - **Command + Shift +D**).
 
-3. Select **Ballerina Debug** as the **Environment**.
+2. Click on **create a launch.json file** and then select **Ballerina Debug**.
 
-You view the program being executed in the **DEBUG CONSOLE** as shown below.
-
-![Run Without Debugging](/learn/images/run-without-debugging.gif)
+![Run And Debug](/learn/images/run-and-debug.png)
 
 <br/>
 
+![Ballerina Debug](/learn/images/ballerina-debug.png)
+
+<br/>
+
+Here are the default configurations generated for the Ballerina debugging:
+
+![Debug Configurations](/learn/images/debug-configurations.png)
+
+<br/>
+
+>**Info:** You can debug a Ballerina program without generating the `launch.json` configurations file but it is not possible to manage launch configurations and set up advanced debugging.
+
+### Ballerina `launch.json` Attributes
+
+The auto-generated `launch.json` file consists of three main configurations namely, `Ballerina Debug`, `Ballerina Test`, and `Ballerina Remote`. Each configuration supports different attributes and those attributes can be identified with the help of IntelliSense suggestions (`⌃Space`).
+
+The following attributes are mandatory for all configurations.
+
+- `name` - The reader-friendly name to appear in the Debug launch configuration dropdown.
+- `type` - The type of debugger to use for this launch configuration. The attribute value must be kept as `ballerina` for all Ballerina debugging configuration types.
+- `request` - The request type of this launch configuration. Currently, launch and attach are supported.
+
+The following attributes are supported for all Ballerina `launch` configurations.
+
+- `programArgs` - Any program arguments that are required to be passed into the `main` function of the Ballerina program to be launched can be passed as a list of strings.
+- `commandOptions` - If required, you can configure command options for the Ballerina program to be launched as a list of strings. You can see the list of all the available command options by executing the following CLI commands in your terminal.
+    - For the `Ballerina Debug` configuration:
+
+    ```bash
+    bal run --help
+    ```
+
+    - For the `Ballerina Test` configuration:
+
+    ```bash
+    bal test --help
+    ```
+
+- `env` - Any environment variables you need to configure for launching the Ballerina program can be passed as a map of strings (name and value).
+- `debugTests` - Indicates whether to debug the tests for the given script.
+
+The following attributes are supported for all Ballerina `attach` configurations.
+
+- `debuggeeHost` - Host address of the remote process to be attached (if not specified, the default value will be the localhost(`127.0.0.1`)).
+- `debuggeePort` - Port number of the remote process to be attached.
+
 ## Using the Debugging Features
 
-Visual Studio Code allows you to debug Ballerina programs through the Ballerina extension. The debugging features below are supported by Ballerina.
+The following debugging features are currently supported by the Ballerina VScode extension.
 
 - Launch/Attach
 - Breakpoints
@@ -155,8 +231,6 @@ Visual Studio Code allows you to debug Ballerina programs through the Ballerina 
 - Call Stacks
 - Strands
 - Expression Evaluation
-
->**Info** The Ballerina debugger is an open-source project and contributors are most welcome to get engaged with it via the [ballerina-lang](https://github.com/ballerina-platform/ballerina-lang) GitHub repository. If you encounter any difficulties when using this feature, feel free to create an issue on it.
 
 <!--For more information on the above features, see [Using the Debugging Features](/learn/tooling-guide/visual-studio-code-extension/run-and-debug/using-the-debugging-features/).-->
 
@@ -211,64 +285,7 @@ The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
 - Anonymous function, let, and constructor expressions are currently not supported.
 - Limited support for Ballerina actions (only remote method call actions are supported)
 
-## Debug Configurations
-
-Ballerina debugger supports various debug configuration options via `launch.json` file. You can either add configurations to the existing `launch.json` file (which is located in your workspace root under the `.vscode` directory), or you can generate `launch.json` configurations file with default values by,
-
-1. Click the **Run and Debug** icon in the left menu or press the **Control + Shift + D** keys, to launch the Debugger view. (for Mac - **Command + Shift +D**).
-
-2. Click on **create a launch.json file** and then select **Ballerina Debug**.
-
-![Run And Debug](/learn/images/run-and-debug.png)
-
-<br/>
-
-![Ballerina Debug](/learn/images/ballerina-debug.png)
-
-<br/>
-
-Here are the default configurations generated for the Ballerina debugging:
-
-![Debug Configurations](/learn/images/debug-configurations.png)
-
-<br/>
-
->**Info:** You can debug a Ballerina program without generating the `launch.json` configurations file, but it is not possible to manage launch configurations and set up advanced debugging.
-
-### Ballerina launch.json attributes
-
-The auto-generated `launch.json` file consists of three main configurations, namely, `Ballerina Debug`, `Ballerina Test`, and `Ballerina Remote`. Each configuration supports different attributes, and those attributes can be identified with the help of IntelliSense suggestions (`⌃Space`).
-
-The following attributes are mandatory for all configurations.
-
-- `name` - The reader-friendly name to appear in the Debug launch configuration dropdown.
-- `type` - The type of debugger to use for this launch configuration. The attribute value must be kept as `ballerina` for all Ballerina debugging configuration types.
-- `request` - The request type of this launch configuration. Currently, launch and attach are supported.
-
-The following attributes are supported for all Ballerina `launch` configurations.
-
-- `programArgs` - Any program arguments that are required to be passed into the `main` function of the Ballerina program to be launched, can be passed as a list of strings.
-- `commandOptions` - If required, you can configure command options for the Ballerina program to be launched, as a list of strings. You can see the list of all the available command options by executing the following CLI commands in your terminal.
-    - For `Ballerina Debug` configuration:
-
-    ```bash
-    bal run --help
-    ```
-
-    - For `Ballerina Test` configuration:
-
-    ```bash
-    bal test --help
-    ```
-
-- `env` - Any environment variables you need to configure for the launching Ballerina program can be passed as a map of strings (name and value).
-- `debugTests` - Indicates whether to debug the tests for the given script.
-
-The following attributes are supported for all Ballerina `attach` configurations.
-
-- `debuggeeHost` - Host address of the remote process to be attached (If not specified, the default value will be the localhost(`127.0.0.1`)).
-- `debuggeePort` - Port number of the remote process to be attached.
-
+>**Info:** For more information on debugging features using VS Code, go to the [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
 
 
 

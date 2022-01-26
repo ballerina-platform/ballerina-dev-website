@@ -1236,7 +1236,7 @@
             },
             {
                 "name": "Service - OAuth2",
-                "url": "ce-oauth2",
+                "url": "http-service-oauth2",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,

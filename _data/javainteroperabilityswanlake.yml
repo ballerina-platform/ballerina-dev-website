@@ -1,0 +1,51 @@
+- title: Java Interoperability
+  url: #
+  sublinks:
+    - title: Ballerina Bindings to Java Code
+      url: /learn/java-interoperability/
+      active: java-interoperability
+    - title: The Bindgen Tool
+      url: /learn/java-interoperability/the-bindgen-tool/
+      sublinks:
+        - title: The Bindgen Command
+          url: /learn/java-interoperability/the-bindgen-tool/#the-bindgen-command
+          active: the-bindgen-command
+        - title: Generated Bridge Code
+          url: /learn/java-interoperability/the-bindgen-tool/#generated-bridge-code
+          active: generated-bridge-code
+        - title: Java to Ballerina Mapping
+          url: /learn/java-interoperability/the-bindgen-tool/#java-to-ballerina-mapping
+          active: java-to-ballerina-mapping
+        - title: Support for Java Subtyping
+          url: /learn/java-interoperability/the-bindgen-tool/#support-for-java-subtyping
+          active: support-for-java-subtyping
+        - title: Support for Java Casting
+          url: /learn/java-interoperability/the-bindgen-tool/#support-for-java-casting
+          active: support-for-java-casting
+    - title: Ballerina FFI
+      url: /learn/java-interoperability/ballerina-ffi/
+      sublinks:
+        - title: The External Function Body
+          url: /learn/java-interoperability/ballerina-ffi/#the-external-function-body
+          active: the-external-function-body
+        - title: The Handle Type
+          url: /learn/java-interoperability/ballerina-ffi/#the-handle-type
+          active: the-handle-type
+        - title: Instantiating Java Classes
+          url: /learn/java-interoperability/ballerina-ffi/#instantiating-java-classes
+          active: instantiating-java-classes
+        - title: Calling Java Methods
+          url: /learn/java-interoperability/ballerina-ffi/#calling-java-methods
+          active: calling-java-methods
+        - title: Java Exceptions as Ballerina Errors
+          url: /learn/java-interoperability/ballerina-ffi/#java-exceptions-as-ballerina-errors
+          active: java-exceptions-as-ballerina-errors
+        - title: Null Safety
+          url: /learn/java-interoperability/ballerina-ffi/#null-safety
+          active: null-safety
+        - title: Mapping Java Types to Ballerina Types and Vice Versa
+          url: /learn/java-interoperability/ballerina-ffi/#mapping-java-types-to-ballerina-types-and-vice-versa
+          active: mapping-java-types-to-ballerina-types-and-vice-versa
+        - title: Access or Mutate Java Fields
+          url: /learn/java-interoperability/ballerina-ffi/#access-or-mutate-java-fields
+          active: access-or-mutate-java-fields

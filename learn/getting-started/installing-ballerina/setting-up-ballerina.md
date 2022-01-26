@@ -29,27 +29,6 @@ redirect_from:
   - /learn/installing-ballerina
 ---
 
-## Trying Ballerina in the Playground
-
-You can use the Ballerina Playground to write Ballerina programs without installing anything.
-
-<link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/css/home-page.css"/>
-<style>a.cMobileLogo img {display: block;}
-       .nav > li.cVersionItem {display: block !important};
-</style>
-<div class="row cBallerinaIntroSection">
-   <div class="container">
-      <div class="col-sm-12 col-md-12 cTopLayer">
-         <div class="col-sm-12 col-md-4 cMainCTAContainer">
-            <a class="cBallerina-io-Home-main-download-button cPlayButton" target="_blank" href="https://play.ballerina.io">
-               Try Ballerina
-               <p>Try without installing <br>in the playground</p>
-            </a>
-         </div>
-   </div></div></div>
-<div class="clearfix"></div>
-
 ## Downloading Ballerina
 
 [Download](/downloads) Ballerina based on the operating system you are using and install it.
@@ -116,20 +95,6 @@ Double-click on the package file you downloaded above to launch the installer. T
 
 For more installation options, see [Installation Options](/learn/user-guide/getting-started/installation-options/).
 
-## Updating Ballerina
-
-Once you have Ballerina installed, you can use the Update Tool to update it to the latest version. To do this, execute the command below in a new CLI tab.
-
-`bal dist update`
-
->**Info:** If you want to pull a specific Ballerina version, execute the `bal dist pull <VERSION>` command (e.g., `bal dist pull slbeta3`).
-
-For more information, see [Update Tool](/learn/tooling-guide/cli-tools/update-tool/).
-
 ## Installing the VSCode Extension
 
-Ballerina provides an extension to try out its development capabilities in Visual Studio Code. For instructions on setting it up, see [Quick Start](/learn/visual-studio-code-extension/quick-start/).
-
-## What's Next?
-
-Now, that your environment for Ballerina is all set up and running, let's [write your first Ballerina program](/learn/user-guide/getting-started/writing-your-first-ballerina-program/).
+Ballerina provides an extension to try out its development capabilities in Visual Studio Code. For instructions on setting it up, go to [The Ballerina Extension for Visual Studio Code](https://github.com/wso2/ballerina-plugin-vscode/blob/main/README.md).

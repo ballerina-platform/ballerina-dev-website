@@ -237,7 +237,7 @@ isolated function removeEmployee(int id) returns int|error {
 ## Exposing the Database via an HTTP RESTful API
 
 After you have defined the methods necessary to manipulate the database, expose these selectively via an HTTP
-RESTful API. For this, first need to import the Ballerina [`HTTP` module](https://central.ballerina.io/ballerina/http).
+RESTful API. For this, first need to import the Ballerina [`HTTP` module](https://lib.ballerina.io/ballerina/http/latest).
 
 ```ballerina
 import ballerina/http;
@@ -318,6 +318,7 @@ service /employees on new http:Listener(8080) {
 }
 ```
 
->**Info:** This tutorial does not cover topics such as authentication, rate-limiting, usage monitoring, billing, 
-> caching, observability, load balancing, and security.
->Ballerina provides features and modules to cover these aspects as well.
+To learn more about MySQL and HTTP support in Ballerina, see the following:
+- [MySQL module documentation](https://central.ballerina.io/ballerinax/mysql)
+- [HTTP module documentation](https://lib.ballerina.io/ballerina/http/latest)
+- [MySQL Examples](/learn/by-example/mysql-query-operation.html)

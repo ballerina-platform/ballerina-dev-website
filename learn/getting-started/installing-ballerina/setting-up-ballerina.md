@@ -116,16 +116,6 @@ Double-click on the package file you downloaded above to launch the installer. T
 
 For more installation options, see [Installation Options](/learn/user-guide/getting-started/installation-options/).
 
-## Updating Ballerina
-
-Once you have Ballerina installed, you can use the Update Tool to update it to the latest version. To do this, execute the command below in a new CLI tab.
-
-`bal dist update`
-
->**Info:** If you want to pull a specific Ballerina version, execute the `bal dist pull <VERSION>` command (e.g., `bal dist pull slbeta3`).
-
-For more information, see [Update Tool](/learn/tooling-guide/cli-tools/update-tool/).
-
 ## Installing the VSCode Extension
 
 Ballerina provides an extension to try out its development capabilities in Visual Studio Code. For instructions on setting it up, see [Quick Start](/learn/visual-studio-code-extension/quick-start/).

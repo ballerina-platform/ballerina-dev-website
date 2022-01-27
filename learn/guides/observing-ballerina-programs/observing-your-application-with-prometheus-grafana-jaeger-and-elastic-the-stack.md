@@ -69,7 +69,7 @@ Prometheus, etc. For instructions, go to the [Docker documentation](https://docs
 * Set up Prometheus for collecting metrics information by following the section on [Setting up Prometheus](#setting-up-prometheus)
 * Set up Grafana to visualize metrics by following the section on [Setting up Grafana](#setting-up-grafana)
 * Set up Jaeger analyze tracing as mentioned in the section [Setting up Jaeger](#setting-up-the-jaeger-server)
-* Set up Elastic Stack only if you are interested in analysing logs by following the section on [Setting up Elastic Stack](#setting-up-elastic-stack)
+* Set up Elastic Stack only if you are interested in analysing logs by following the section on [Setting up the Elastic Stack](#setting-up-the-elastic-stack)
 
 ### Step 3 - Creating a 'Hello World' Ballerina Service
  

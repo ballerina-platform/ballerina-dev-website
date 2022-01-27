@@ -17,9 +17,9 @@ to perform basic CRUD operations on the database.
 ![Data Service Architecture](/learn/images/data-service-architecture.png "Data Service Architecture")
 
 The methodology outlined in this tutorial can be used to work with PostgreSQL, SQL Server, OracleDB or any other 
-relational database as well using the [`PostgreSQL`](https://central.ballerina.io/ballerinax/postgresql),
-[`MSSQL`](https://central.ballerina.io/ballerinax/mssql), [`OracleDB`](https://central.ballerina.io/ballerinax/oraceldb),
-and [`JDBC`](https://central.ballerina.io/ballerinax/java.jdbc) connectors for Ballerina respectively.
+relational database as well using the [`PostgreSQL`](https://lib.ballerina.io/ballerinax/postgresql/latest),
+[`MSSQL`](https://lib.ballerina.io/ballerinax/mssql/latest), [`OracleDB`](https://lib.ballerina.io/ballerinax/oracledb/latest),
+and [`JDBC`](https://lib.ballerina.io/ballerinax/java.jdbc/latest) connectors for Ballerina respectively.
 
 ## Prerequisites
 
@@ -131,12 +131,12 @@ configurable int PORT = ?;
 configurable string DATABASE = ?;
 ```
 
->**Note:** For more information on defining configurable variables in Ballerina, see [Defining Configurable Variables](/learn/making-ballerina-programs-configurable/defining-configurable-variables/).
+>**Note:** For more information on defining configurable variables in Ballerina, see [Defining Configurable Variables](/learn/configuring-ballerina-programs/providing-values-to-configurable-variables/).
 
 ### Connecting to the Database
 
-Firstly, the [`MySQL`](https://central.ballerina.io/ballerinax/mysql) 
-and [`SQL`](https://central.ballerina.io/ballerina/sql) packages must be imported into your `main.bal` file.
+Firstly, the [`MySQL`](https://lib.ballerina.io/ballerinax/mysql/latest) 
+and [`SQL`](https://lib.ballerina.io/ballerina/sql/latest) packages must be imported into your `main.bal` file.
 
 ```ballerina
 import ballerinax/mysql;
@@ -156,7 +156,7 @@ final mysql:Client dbClient = check new(
 
 >**Info:** The MySQL package provides additional connection options and the ability to configure connection pool 
 >properties when connecting to the database which, are not covered in this tutorial. To learn more about this, 
->see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/1.2.0/clients/Client).
+>see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest/clients/Client).
 
 ### Executing Queries
 
@@ -319,6 +319,6 @@ service /employees on new http:Listener(8080) {
 ```
 
 To learn more about MySQL and HTTP support in Ballerina, see the following:
-- [MySQL module documentation](https://central.ballerina.io/ballerinax/mysql)
+- [MySQL module documentation](https://lib.ballerina.io/ballerinax/mysql/latest)
 - [HTTP module documentation](https://lib.ballerina.io/ballerina/http/latest)
 - [MySQL Examples](/learn/by-example/mysql-query-operation.html)

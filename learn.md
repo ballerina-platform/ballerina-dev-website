@@ -148,7 +148,7 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
-<a href="/learn/working-with-data/">
+<a href="/learn/working-with-data-in-ballerina/">
     <h3 id="working-with-data">Working with Data in Ballerina</h3></a>
     <p >Learn how to use Ballerina query expressions to filter, sort, and join different iterable collections. </p>
 </div>

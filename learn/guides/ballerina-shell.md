@@ -20,7 +20,7 @@ This will particularly be useful if you are looking to try out the language and 
 
 ## Setting up the Prerequisites
 
-Ballerina Shell is a part of the Ballerina distribution. Therefore, if you already installed Ballerina, you are all set. If not, for information on installing the latest version of Ballerina, see [downloads](https://ballerina.io/downloads/).
+Ballerina Shell is a part of the Ballerina distribution. Therefore, if you have already installed Ballerina, you are all set. If not, for information on installing the latest version of Ballerina, see [downloads](https://ballerina.io/downloads/).
 
 ## Starting the Shell
 

@@ -29,10 +29,10 @@ Developers can write the documentation in line with the Ballerina source code us
 
 Ballerina documentation design and usage is aligned with the package and module semantics of Ballerina. You can generate documentation for modules using the `bal doc` command.
 
-* Ballerina programmers can place the documentation inline with the source code using the documentation syntax.
+* Ballerina programmers can place the documentation in line with the source code using the documentation syntax.
 * Ballerina type definitions, global variables, annotations, listeners, etc. can be documented using the documentation syntax.
 * Fields, parameters, return values, etc. can be marked using documentation attributes.
-* Ballerina uses a React app to render the documentation, and the data required is stored as a JSON in `api-docs.js` file. The React app source code can be found in the [Dev-Tools](https://github.com/ballerina-platform/ballerina-dev-tools/tree/main/docerina-ui) Github repo. Developers are welcome to customize and tryout themes and styles in the React app.
+* Ballerina uses a React app to render the documentation, and the data required is stored as a JSON in the `api-docs.js` file. The React app source code can be found in the [Dev-Tools](https://github.com/ballerina-platform/ballerina-dev-tools/tree/main/docerina-ui) Github repo. Developers are welcome to customize and try out themes and styles in the React app.
 
 ## Writing Ballerina Documentation
 
@@ -68,7 +68,7 @@ The supported structure of documentation syntax is as follows:
 #            <return_parameter_description_line_2>
 ```
 
->**Tip:** Always, add a full stop at the end of a function description. However, for the parameter and return type descriptions, omit the full stop if you have only one sentence. If there are multiple sentences, add the full stop at the end of each sentence. For example,
+>**Tip:** Always add a period at the end of a function description. However, for the parameter and return type descriptions, omit the full stop if you have only one sentence. If there are multiple sentences, add the full stop at the end of each sentence. For example,
 
 ```ballerina
 # Description of the function.
@@ -81,7 +81,7 @@ public function foo(int i, string s) returns boolean {
 }
 ```
 
-### Sample Usage
+**Sample Usage**
 
 ```ballerina
 # Submits an HTTP request to a service with the specified HTTP verb.
@@ -186,7 +186,7 @@ public isolated function pow(float a, float b) returns float {
     return 0;
 }
 ```
-Add the following class definition to the `world` module. Copy and paste the following code in to the `math/modules/world/world.bal` file.
+Add the following class definition to the `world` module. Copy and paste the following code into the `math/modules/world/world.bal` file.
 
 ```ballerina
 # Represents a person object.
@@ -234,7 +234,7 @@ Compiling source
 Generating API Documentation
 Saved to: apidocs
 ```
->**Note:** If you replaced the existing code in  the `math/modules/world/world.bal` file, you might get a compilation error. This is due to the sample unit tests in the`math/modules/world/tests/lib_test.bal` file. In that case, delete the `math/modules/world/tests` directory, and run the `bal doc` command again.
+>**Note:** If you replaced the existing code in the `math/modules/world/world.bal` file, you might get a compilation error. This is due to the sample unit tests in the `math/modules/world/tests/lib_test.bal` file. In that case, delete the `math/modules/world/tests` directory, and run the `bal doc` command again.
 
 `target/apidocs/user/math/0.1.0` folder would contain the following;
 ```bash

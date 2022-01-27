@@ -31,9 +31,9 @@
             - title: Supported Triggers
               url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/#supported-triggers
               active: supported-triggers
-            - title: Writing a Function
+            - title: Writing the Function
               url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/#writing-a-function
-              active: writing-a-function
+              active: writing-the-function
             - title: Building the Function
               url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/#building-the-function
               active: building-the-function
@@ -52,9 +52,9 @@
             - title: Triggers and Bindings
               url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#triggers-and-bindings
               active: triggers-and-bindings
-            - title: Writing a Function
+            - title: Writing the Function
               url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#writing-a-function
-              active: writing-a-function
+              active: writing-the-function
             - title: Building the Function
               url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#building-the-function
               active: building-the-function

@@ -38,7 +38,7 @@ Patch releases of Ballerina distributions contain bug fixes and fixes for critic
 
 *Example patch releases: 2201.0.1, 2201.1.1*
 
-## Installing Ballerina
+## Using the Update Tool
 
 If you haven’t installed Ballerina yet, see [Installing Ballerina](/learn/installing-ballerina/) for the instructions.
 

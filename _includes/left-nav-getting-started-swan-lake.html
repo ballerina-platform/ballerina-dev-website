@@ -1,4 +1,4 @@
-{% for entry in site.data.usingqueryexpressionstomanipulatedataswanlake %}
+{% for entry in site.data.gettingstartedwithballerina %}
 {% capture fullurl %}{{ site.baseurl }}{{ entry.url }}{% endcapture %}
 {% if fullurl == page.url %}
 {% assign current_page = fullurl %}
@@ -10,7 +10,7 @@
 <!-- Then we build the nav bar. -->
 <nav class="cLeftNavContainer cLeftNavContainerScroll">
    <ul class="cMainLeftNav">
-      {% for entry in site.data.usingqueryexpressionstomanipulatedataswanlake %}
+      {% for entry in site.data.gettingstartedwithballerina %}
       {% if entry.url == current_page %}
       {% assign current = ' class="current"' %}
       {% else %}

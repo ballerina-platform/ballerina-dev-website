@@ -1,17 +1,17 @@
 ---
-layout: ballerina-configurable-left-nav-pages-swanlake 
-title: Configuring Values in Kubernetes Environment 
-description: In Kubernetes environments, the configuration TOML files can be used to configure values at deployment. 
-keywords: ballerina, programming language, configurable, variables, kubernetes, pod 
-permalink: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/ 
-active: configuring-values-in-kubernetes-environment 
+layout: ballerina-configurable-left-nav-pages-swanlake
+title: Configuring Values in Kubernetes Environment
+description: In Kubernetes environments, the configuration TOML files can be used to configure values at deployment.
+keywords: ballerina, programming language, configurable, variables, kubernetes, pod
+permalink: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/
+active: configuring-values-in-kubernetes-environment
 redirect_from:
 - /learn/making-ballerina-programs-configurable/configuring-values-in-kubernetes-environment
 - /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment
 
 ---
 
-In Kubernetes environment, a pod can use the configuration TOML file that contains the configuration values in the
+In the Kubernetes environment, a pod can use the configuration TOML file that contains the configuration values in the
 following ways.
 
 - as files in a data volume that is mounted on one or more of its containers
@@ -26,7 +26,7 @@ normal configuration by prefixing the file path in the `BAL_CONFIG_FILES` enviro
 
 The configuration of sensitive data can be handled at the deployment of the Ballerina program.
 
-In a Kubernetes environment , a Kubernetes secret can be used to inject sensitive data to the containers. The TOML file
+In a Kubernetes environment, a Kubernetes secret can be used to inject sensitive data into the containers. The TOML file
 that contains the sensitive data can be stored as a secret resource in Kubernetes and can be placed in a volume mount
 when running a pod. The file path can be specified via an environment variable as above.
 

@@ -127,8 +127,8 @@ redirect_from:
     <p >Get started with the basics that are common to all C-family programming languages. </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
-<a href="/learn/writing-a-rest-api-with-ballerina/">
-    <h3 id="working-with-data">Writing a REST API with Ballerina</h3></a>
+<a href="/learn/writing-a-restful-api-with-ballerina/">
+    <h3 id="working-with-data">Writing a RESTful API with Ballerina</h3></a>
     <p >Learn how to write a REST API with Ballerina. </p>
 </div>
 </div>
@@ -148,13 +148,13 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
-<a href="/learn/working-with-data/">
+<a href="/learn/working-with-data-in-ballerina/">
     <h3 id="working-with-data">Working with Data in Ballerina</h3></a>
     <p >Learn how to use Ballerina query expressions to filter, sort, and join different iterable collections. </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
  <a href="/learn/deploying-ballerina-on-kubernetes/">
-    <h3 id="hello-world">Deploying Your service on Kubernetes</h3></a>
+    <h3 id="hello-world">Deploying Ballerina on Kubernetes</h3></a>
    <p >Dockerizing your application and deploying it in Kubernetes. </p>
 </div>
 </div>
@@ -206,7 +206,7 @@ redirect_from:
 <div class="row">
 
 <div class="col-lg-6 col-md-6 col-sm-12 card"   >
- <a href="/learn/configuring-ballerina-programs/">
+ <a href="/learn/configuring-ballerina-programs/quick-start-on-configurable-variables">
   	<h3 id="configuring-ballerina-programs">Configuring Ballerina Programs</h3></a>
  	<p>The language support for configurability.   </p>
 
@@ -313,6 +313,14 @@ redirect_from:
   <a href="/learn/java-interoperability/">
      <h3 id="the-bal-tool">Java Interoperability</h3></a>
 		<p>Instructions on the supported Java interoperability features.  </p>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card" >
+  <a href="/learn/style-guide/package-references/">
+ 	 <h3 id="style-guide">Package References</h3></a>
+		<p>References related to Ballerina Packages.</p>
 </div>
 </div>
 

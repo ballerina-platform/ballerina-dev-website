@@ -225,7 +225,6 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 <td class="cDescription">Use this tool for auto-generating Ballerina bridge code for Java APIs. For more information, see <a href="/learn/calling-java-code-from-ballerina">Calling Java Code from Ballerina</a>.</td>
 </tr>
 <tr>
-<tr>
 <td class="cCommand">shell</td>
 <td class="cDescription"> Use this to run a REPL instance of Ballerina and execute small snippets of code.</td>
 </tr>

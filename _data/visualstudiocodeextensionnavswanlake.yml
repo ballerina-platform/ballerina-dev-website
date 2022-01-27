@@ -33,19 +33,37 @@
       sublinks:
         - title: Starting a Debug Session
           url: /learn/visual-studio-code-extension/debugging/#starting-a-debug-session
-          active: starting-a-debug-session
-        - title: Running Without Debugging
-          url: /learn/visual-studio-code-extension/debugging/#running-without-debugging
-          active: running-without-debugging
+          sublinks:
+            - title: Starting a Program Debug Session
+              url: /learn/visual-studio-code-extension/debugging/#starting-a-program-debug-session
+              active: starting-a-program-debug-session
+            - title: Starting a Test Debug Session
+              url: /learn/visual-studio-code-extension/debugging/#starting-a-test-debug-session
+              active: starting-a-test-debug-session
+            - title: Starting a Debug Session with Configurations
+              url: /learn/visual-studio-code-extension/debugging/#starting-a-debug-session-with-configurations
+              active: starting-a-debug-session-with-configurations
+            - title: Starting a Remote Debug Session
+              url: /learn/visual-studio-code-extension/debugging/#starting-a-remote-debug-session
+              active: starting-a-remote-debug-session
+        - title: Using Debug Configurations
+          url: /learn/visual-studio-code-extension/debugging/#using-debug-configurations
+          active: using-debug-configurations
         - title: Using the Debugging Features
           url: /learn/visual-studio-code-extension/debugging/#using-the-debugging-features
-          active: using-the-debugging-features
-        - title: Debug Configurations
-          url: /learn/visual-studio-code-extension/debugging/#debug-configurations
-          active: debug-configurations
-        - title: Debug Configurations
-          url: /learn/visual-studio-code-extension/debugging/#debug-configurations
-          active: debug-configurations
+          sublinks:
+            - title: Conditional Breakpoints
+              url: /learn/visual-studio-code-extension/debugging/#conditional-breakpoints
+              active: conditional-breakpoints
+            - title: Logpoints
+              url: /learn/visual-studio-code-extension/debugging/#logpoints
+              active: logpoints
+            - title: Pause & Continue
+              url: /learn/visual-studio-code-extension/debugging/#pause-and-continue
+              active: pause-and-continue
+            - title: Expression Evaluation
+              url: /learn/visual-studio-code-extension/debugging/#expression-evaluation
+              active: expression-evaluation
     - title: VS Code Commands
       url: /learn/visual-studio-code-extension/vs-code-commands/
       sublinks:

@@ -1,6 +1,6 @@
 ---
 layout: ballerina-deploying-ballerina-on-kubernetes-left-nav-pages-swanlake
-title: Deploying Your service on Kubernetes
+title: Deploying ballerina on Kubernetes
 description: Let’s dockerize deploy your ballerina service and deploy into kubernetes.
 keywords: ballerina, programming language, cloud, kubernetes, docker, cloud-native
 permalink: /learn/deploying-ballerina-on-kubernetes/
@@ -26,7 +26,7 @@ To complete this tutorial, you need:
 
 Code to cloud is a compiler extension, which is packed with Ballerina, which makes it easier to generate artifacts required for the cloud from your Ballerina code. Currently, you could generate Docker and Kubernetes artifacts from the Ballerina code. This process encourages you to write cloud-ready code from day one without any additional effort. 
 
-## Writing the ballerina service
+## Writing the Ballerina Service
 
 Let’s write a Ballerina program that returns a `Hello, World!` string upon invoking the resource. Execute the `bal new` command to create a new Ballerina project. 
 
@@ -103,6 +103,7 @@ Let's push the created docker image into docker hub now. You should replace the 
 ```
 $ docker push wso2inc/greeter:latest
 The push refers to repository [docker.io/wso2inc/greeter]
+latest: digest: sha256:c1acf5165848d70c347a970d6b5c32f63669cdbb0d4c1daca2c91cfbe32f61b2 size: 13718
 ```
 
 Execute the commands displayed from the compiler above to deploy the Ballerina application into the Kubernetes cluster.

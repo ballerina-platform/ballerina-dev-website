@@ -129,8 +129,8 @@ This is an optional attribute. You can use this to add the version of the `info`
 **Ballerina service file with the OpenAPI annotation**
 ```ballerina
  @openapi:ServiceInfo{
-     title : "Store Management APIs" ,
-     ‘version: "1.1.0" 
+     title : "Store Management APIs",
+     'version: "1.1.0" 
    }
 service /greet on new http:Listener(9090) {
     ...
@@ -279,15 +279,15 @@ The `@openapi:ServiceInfo` annotation supports several usages in the Ballerina O
 
 ```ballerina
 @openapi:ServiceInfo{
-    [contract: “/path/to/openapi.json|yaml”],
+    [ contract: “/path/to/openapi.json|yaml”],
     [ tags : “store” ],
     [ operations: [“op1”, “op2”] ], 
     [ failOnErrors]: true/false → default : true,
     [ excludeTags ]: [“pets”, “user”],
     [ excludeOperations: [“op1”, “op2”] ],
     [ title : “store” ],
-    [ ‘version: “0.1.0” ],
-    [embed: false/true -> default: true]
+    [ 'version: “0.1.0” ],
+    [ embed: false/true -> default: true]
    }
 service /greet on new http:Listener(9090) {
     ...

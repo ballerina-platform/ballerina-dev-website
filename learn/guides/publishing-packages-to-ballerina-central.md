@@ -35,7 +35,7 @@ hello
 0 directories, 3 files
 ```
 
-It creates the `Ballerina.toml` file. Apart from it, the `hello.bal` source file and the [Package.md](/learn/organizing-ballerina-code/package-layout/#packagemd) files are created. For more information on these, see [Package Layout](/learn/organizing-ballerina-code/package-layout/).
+It creates the `Ballerina.toml` file. Apart from it, the `hello.bal` source file and the [Package.md](/learn/package-references/#packagemd) files are created. For more information on these, see [Package Layout](/learn/organizing-ballerina-code/package-layout/).
 
 You can edit the `Ballerina.toml` file to change the org name, package name and version as you prefer.
 
@@ -85,7 +85,7 @@ password = ""
 
 ### Organizations
 
-When you push a package to Ballerina Central, the organizations are validated against the value of the `org` field defined in the [Ballerina.toml](/learn/organizing-ballerina-code/package-layout/#ballerinatoml) file. Therefore, when you have more than one organizations in Ballerina Central, pick the organization name that you intend to push the package into, set that as the `org` in the `Ballerina.toml` file inside the package directory, and rebuild the package.
+When you push a package to Ballerina Central, the organizations are validated against the value of the `org` field defined in the [Ballerina.toml](/learn/package-references/#ballerinatoml) file. Therefore, when you have more than one organizations in Ballerina Central, pick the organization name that you intend to push the package into, set that as the `org` in the `Ballerina.toml` file inside the package directory, and rebuild the package.
 
 Also, organization names starting with `ballerina` (e.g., `ballerina`, `ballerinax`, `ballerinai`, etc.) are reserved for system use, and thereby, you cannot publish any packages starting with the `ballerina` prefix to Ballerina Central. Therefore, if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
 
@@ -101,4 +101,4 @@ bal push
 
 After publishing your first package, you can create a second package and use the already-published package in it.
 
-Any package published in Ballerina Central is public and they can be used in packages as explained in [Dependencies](/learn/managing-dependencies/#importing-a-module).
+Any package published in Ballerina Central is public and they can be used in packages. For more information, see [Importing a Module](/learn/managing-dependencies/#importing-a-module).

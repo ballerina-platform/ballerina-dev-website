@@ -182,7 +182,7 @@ redirect_from:
  	<p>A guide to the language features that make Ballerina distinctive.  </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
- <a href="/learn/organizing-ballerina-code/package-layout/">
+ <a href="/learn/organizing-ballerina-code">
   <h3 id="organizing-ballerina-code">Organizing Ballerina Code</h3></a>
  	<p>Basics of projects, packages, and modules.  </p>
 </div>

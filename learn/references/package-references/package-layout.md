@@ -3,7 +3,7 @@ layout: ballerina-organizing-code-left-nav-pages-swanlake
 title: Package Layout
 description: The sections below include information about the structure of a package directory. It explains the purpose of each file in a package.
 keywords: ballerina, programming language, ballerina packages, package structure, package layout
-permalink: /learn/organizing-ballerina-code/package-layout/
+permalink: /learn/package-references/
 active: package-layout
 intro: The sections below include information about the structure of a package directory. It explains the purpose of each file in a package.
 redirect_from:

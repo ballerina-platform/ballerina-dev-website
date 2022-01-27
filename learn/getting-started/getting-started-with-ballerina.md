@@ -20,7 +20,7 @@ To complete this tutorial, you need the below.
 
 1. A command terminal
 2. A text editor
-    >**Tip:** Prefarably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
+    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
 3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
 4. Prior programming experience
 
@@ -58,13 +58,13 @@ greeter/
 
 You can open the project directory in your text editor. If you are using VSCode, run `code .` inside the `greeter` directory. Then, open `main.bal` to see the generated source.
 
-    ```ballerina
-    import ballerina/io;
+ ```ballerina
+ import ballerina/io;
 
-    public function main() {
-        io:println("Hello, World!");
-    }
-    ```
+ public function main() {
+     io:println("Hello, World!");
+ }
+ ```
 
 In this code:
 

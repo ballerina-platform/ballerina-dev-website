@@ -156,7 +156,7 @@ Generating artifacts...
         target/bin/hello_docker.jar
 ```
 
-Before invoking the container, let’s observe the dockerfile below that has been generated. This is a dockerfile created by the compiler extension from your code to run your HTTP service in the Docker environment easily.
+Before invoking the container, let’s observe the Dockerfile below that has been generated. This is a Dockerfile created by the compiler extension from your code to run your HTTP service in the Docker environment easily.
 
 ***target/docker/hello/Dockerfile***
 
@@ -215,7 +215,7 @@ Follow the steps below to execute the Docker image separately.
 ## Kubernetes Deployment
 
 ### Creating the Ballerina Package
-In this sample, we are gonna write a ballerina application that reads a greeting string from a config map and greets the user upon HTTP request. We are going to make a Kubernetes deployment that has container resource limits, horizontal pod autoscaling, config maps and liveness, readiness probes with the help of Code to Cloud.
+In this sample, we are gonna write a Ballerina application that reads a greeting string from a config map and greets the user upon HTTP request. We are going to make a Kubernetes deployment that has container resource limits, horizontal pod autoscaling, config maps and liveness, readiness probes with the help of Code to Cloud.
 
 1. Execute the `bal new hello_k8s` command to create a new package named `hello_k8s` and go into that directory.
 
@@ -346,7 +346,7 @@ Generating artifacts...
         target/bin/hello_k8s.jar
 ```
 
->**Note:** Before invoking the kubernetes service, let’s observe the kubernetes yamls that have been generated. You should be able to find services for ports that have been exposed, HorizontalPodAutoscaler for scaling and Deployment, and Config maps.
+>**Note:** Before invoking the Kubernetes service, let’s observe the Kubernetes yamls that have been generated. You should be able to find services for ports that have been exposed, HorizontalPodAutoscaler for scaling and Deployment, and Config maps.
 
 ***target/kubernetes/hello_k8s***
 
@@ -513,4 +513,4 @@ Follow the steps below to execute the Kubernetes service.
     Hello, Kubernetes!
     ```
 
->**Note:** You can visit the [Code to Cloud specification](https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md) for detailed information about all the supported features. As mentioned in the beginning Code to Cloud is a tool created to make the development process easier. It does not cover the operational properties in kubernetes. If you want to have these additional features in your deployment or you need to change the generated kubernetes artifacts, we recommend using [Kustomize](https://kustomize.io/) for modifying the generated YAML.
+>**Note:** You can visit the [Code to Cloud specification](https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md) for detailed information about all the supported features. As mentioned in the beginning Code to Cloud is a tool created to make the development process easier. It does not cover the operational properties in kubernetes. If you want to have these additional features in your deployment or you need to change the generated Kubernetes artifacts, we recommend using [Kustomize](https://kustomize.io/) for modifying the generated YAML.

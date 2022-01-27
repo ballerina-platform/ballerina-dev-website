@@ -4,9 +4,9 @@
     - title: Quick Start on Testing 
       url: '#'
       sublinks:
-        - title: Writing a Simple Function
-          url: /learn/testing-ballerina-code/quick-start-on-testing/#writing-a-simple-function
-          active: writing-a-simple-function
+        - title: Testing a Simple Function
+          url: /learn/testing-ballerina-code/quick-start-on-testing/#testing-a-simple-function
+          active: testing-a-simple-function
     - title: Writing Tests
       url: '#'
       sublinks:
@@ -31,28 +31,28 @@
     - title: Configuring Tests
       url : '#'
       sublinks:
-        - title: Setup and Teardown
-          url: /learn/testing-ballerina-code/configuring-tests/#setup-and-teardown
-          active: setup-and-teardown
-        - title: Test Specific Configurations
-          url: /learn/testing-ballerina-code/configuring-tests/#test-specific-configurations
-          active: test-specific-configurations
-        - title: Test-only Dependencies
-          url: /learn/testing-ballerina-code/configuring-tests/#test-only-dependencies
-          active: test-only-dependencies
+        - title: Setting Up and Tearing Down
+          url: /learn/testing-ballerina-code/configuring-tests/#settingup-and-tearingdown
+          active: settingup-and-tearingdown
+        - title: Defining Test Specific Configurations
+          url: /learn/testing-ballerina-code/configuring-tests/#defining-test-specific-configurations
+          active: defining-test-specific-configurations
+        - title: Defining Test-only Dependencies
+          url: /learn/testing-ballerina-code/configuring-tests/#defining-test-only-dependencies
+          active: defining-test-only-dependencies
     - title: Code Coverage and Reporting
       url : '#'
       sublinks:
-        - title: Test Report
-          url: /learn/testing-ballerina-code/code-coverage-and-reporting/#test-report
-          active: test-report
-        - title: Code Coverage Report
-          url: /learn/testing-ballerina-code/code-coverage-and-reporting/#code-coverage-report
-          active: code-coverage-report
-        - title: JaCoCo XML Report
-          url: /learn/testing-ballerina-code/code-coverage-and-reporting/#jacoco-xml-report
-          active: jacoco-xml-report
-    - title: Data-Driven Tests
+        - title: Generating a Test Report
+          url: /learn/testing-ballerina-code/code-coverage-and-reporting/#generating-a-test-report
+          active: generating-a-test-report
+        - title: Generating a Code Coverage Report
+          url: /learn/testing-ballerina-code/code-coverage-and-reporting/#generating-a-code-coverage-report
+          active: generating-a-code-coverage-report
+        - title: Generating a JaCoCo XML Report
+          url: /learn/testing-ballerina-code/code-coverage-and-reporting/#generating-a-jacoco-xml-report
+          active: generating-a-jacoco-xml-report
+    - title: Defining Data-Driven Tests
       url : '#'
       sublinks:
         - title: Using Data Providers
@@ -61,7 +61,7 @@
         - title: Executing Specific Data Sets
           url: /learn/testing-ballerina-code/data-driven-tests/#executing-specific-data-sets
           active: executing-specific-data-sets
-    - title: Test Groups
+    - title: Defining Test Groups
       url: "#"
       sublinks:
         - title: Grouping Tests
@@ -94,12 +94,12 @@
     - title: Executing Tests
       url: '#'
       sublinks:
-        - title: Test Execution Behavior
-          url: /learn/testing-ballerina-code/executing-tests/#test-execution-behavior
-          active: test-execution-behavior
-        - title: Behavior During Failures
-          url: /learn/testing-ballerina-code/executing-tests/#behavior-during-failures
-          active: behavior-during-failures
+        - title: Understanding the Test Execution Behavior
+          url: /learn/testing-ballerina-code/executing-tests/#understanding-the-test-execution-behavior
+          active: understanding-the-test-execution-behavior
+        - title: Understanding the Behavior During Failures
+          url: /learn/testing-ballerina-code/executing-tests/#understanding-the-behavior-during-failures
+          active: understanding-the-behavior-during-failures
         - title: Executing Tests Using CLI Commands
           url: /learn/testing-ballerina-code/executing-tests/#executing-tests-using-cli-commands
           active: executing-tests-using-cli-commands

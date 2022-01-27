@@ -27,8 +27,7 @@ import ballerina/test;
 
 Once the test module is imported, the following annotation can be used to write a test function.
 
-
-### '@test:Config {}'
+### `@test:Config {}`
 
 The function specified after the annotation is a test function. This annotation supports fields to configure the test 
 case with the following.

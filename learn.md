@@ -137,7 +137,7 @@ redirect_from:
 <div class="col-lg-6 col-md-6 col-sm-12 card">
 <a href="/learn/writing-a-graphql-api-with-ballerina/">
     <h3 id="working-with-data">Writing a GraphQL API with Ballerina</h3></a>
-    <p >Understand the basics of Ballerina constructs, which allow you to write GraphQL APIs. </p>
+    <p >Write a GraphQL API with Ballerina. </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
 <a href="/learn/writing-a-grpc-service-with-ballerina/">

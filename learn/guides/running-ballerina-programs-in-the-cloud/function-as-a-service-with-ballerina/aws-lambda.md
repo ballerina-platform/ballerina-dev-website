@@ -92,7 +92,7 @@ Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer
 
 Execute the command below to deploy the echo function as an AWS Lambda as shown below. 
 
->**Info:**  For the supported parameters, go to the [`create-function` documentation](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html). You might need to change parameters such as the memory-size, and timeout depending on your application and connection speed. 
+>**Info:**  For the supported parameters, go to the [`create-function` documentation](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html). You might need to change parameters such as the memory size and timeout depending on your application and connection speed. 
 
 ```bash
 $ aws lambda create-function --function-name echo --zip-file fileb://<project_dir>/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6

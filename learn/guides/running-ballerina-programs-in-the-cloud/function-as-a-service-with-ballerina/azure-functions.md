@@ -151,7 +151,7 @@ public function fromHttpToQueue(af:Context ctx,
 }
 ```
 
-Build the project by executing the `bal build` command on the project directory, and then deploy it using the `az cli` command shown in the Ballerina build output as in the previous section.
+Build the project by executing the `bal build` command on the project directory, and then, deploy it using the `az cli` command shown in the Ballerina build output as in the previous section.
 
 Now, the deployed Azure Function can be tested by invoking it using an HTTP client such as CURL. 
 

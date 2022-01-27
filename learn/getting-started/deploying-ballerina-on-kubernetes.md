@@ -1,11 +1,11 @@
 ---
 layout: ballerina-deploying-ballerina-on-kubernetes-left-nav-pages-swanlake
-title: Deploying ballerina on Kubernetes
-description: Let’s dockerize deploy your ballerina service and deploy into kubernetes.
+title: Deploying Ballerina on Kubernetes
+description: Let’s dockerize deploy your ballerina service and deploy it into kubernetes.
 keywords: ballerina, programming language, cloud, kubernetes, docker, cloud-native
 permalink: /learn/deploying-ballerina-on-kubernetes/
 active: deploying-ballerina-on-kubernetes
-intro: Let’s dockerize deploy your ballerina service and deploy into kubernetes.
+intro: Let’s dockerize deploy your ballerina service and deploy it into kubernetes.
 redirect_from:
 - /learn/deploying-ballerina-on-kubernetes
 ---
@@ -24,7 +24,7 @@ To complete this tutorial, you need:
 
 ## Code to Cloud
 
-Code to cloud is a compiler extension, which is packed with Ballerina, which makes it easier to generate artifacts required for the cloud from your Ballerina code. Currently, you could generate Docker and Kubernetes artifacts from the Ballerina code. This process encourages you to write cloud-ready code from day one without any additional effort. 
+Code to Cloud is a compiler extension, which is packed with Ballerina, which makes it easier to generate artifacts required for the cloud from your Ballerina code. Currently, you could generate Docker and Kubernetes artifacts from the Ballerina code. This process encourages you to write cloud-ready code from day one without any additional effort. 
 
 ## Writing the Ballerina Service
 
@@ -56,7 +56,7 @@ service / on httpListener {
 ```
 
 
-In order to enable the code to cloud functionality in the Ballerina project, you need to add the `cloud="k8s"` property to the build-options in the `Ballerina.toml` file.
+To enable the code to cloud functionality in the Ballerina project, you need to add the `cloud="k8s"` property to the `build-options` in the `Ballerina.toml` file.
 
 ***Ballerina.toml***
 
@@ -65,7 +65,7 @@ In order to enable the code to cloud functionality in the Ballerina project, you
 cloud = "k8s"
 ```
 
-5. Create a file named `Cloud.toml` in the package directory and add the content below. Make sure to replace the value of repository field with your Docker hub repository name.
+5. Create a file named `Cloud.toml` in the package directory and add the content below. Make sure to replace the value of the repository field with your Docker hub repository name.
 
 ***Cloud.toml***
 

@@ -48,6 +48,8 @@ Follow the steps below to start a quick debug session using CodeLens.
 
 ![Start_Main Quick Debug Session](/learn/images/start-quick-main-debug-session.gif)
 
+<br/>
+
 ### Starting a Test Debug Session
 
 The Ballerina test functions can also be debugged using the codelens. The `debug` codelens will automatically appear on top of each Ballerina test function, 
@@ -79,7 +81,7 @@ Then, you can start a program, test, or remote debug session as shown below.
 
 >**Info:** If you launch the debug session through VS Code, the working directory will be the Ballerina package root. However, you can use remote debugging for alternative working directories.
 
-#### Starting a Program Debug Session
+#### Starting a Program Debug Session with Configurations
 
 Follow the steps below to start a program debug session.
 
@@ -91,7 +93,9 @@ Follow the steps below to start a program debug session.
 
     ![Program Debug](/learn/images/program-debug.gif)
 
-#### Starting a Test Debug Session
+<br/>
+
+#### Starting a Test Debug Session with Configurations
 
 Follow the steps below to start a test debug session.
 
@@ -173,8 +177,6 @@ Here are the default configurations generated for the Ballerina debugging:
 
 <br/>
 
->**Info:** You can debug a Ballerina program without generating the `launch.json` configurations file but it is not possible to manage launch configurations and set up advanced debugging.
-
 ### Ballerina `launch.json` Attributes
 
 The auto-generated `launch.json` file consists of three main configurations named `Ballerina Debug`, `Ballerina Test` and `Ballerina Remote` 
@@ -232,7 +234,9 @@ The Ballerina debugger provides the ability of setting Ballerina expression-base
 The debugger will suspend at the breakpoint whenever the expression evaluates to true.
 
 ![Debugger Conditional Breakpoints](/learn/images/debugger-conditional-breakpoints.gif)                
-                      
+
+<br/>
+
 ### Logpoints        
 
 Logpoints are another variant of breakpoints, which do not "break" the program execution but instead log a message to the console. Logpoints are especially useful for injecting logging while debugging production servers that cannot be paused or stopped.
@@ -244,6 +248,8 @@ Logpoints can also be enabled/disabled and can be controlled by conditions simil
 Log messages can either be plain texts or string templates, which can contain expressions to be evaluated within the `${}` syntax.
 
 ![Debugger String Temaplate Logpoints](/learn/images/debugger-logpoints-template.gif)
+
+<br/>
 
 ### Pause/Continue
 
@@ -263,8 +269,6 @@ The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
 #### Using the Debug Console
 
 ![Debugger Evaluation Console](/learn/images/debugger-evaluation-console.gif)
-
-<br/>
 
 #### Using the Watch Window
 

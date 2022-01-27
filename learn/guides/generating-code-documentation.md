@@ -68,7 +68,7 @@ The supported structure of documentation syntax is as follows:
 #            <return_parameter_description_line_2>
 ```
 
->**Tip:** Always add a period at the end of a function description. However, for the parameter and return type descriptions, omit the full stop if you have only one sentence. If there are multiple sentences, add the full stop at the end of each sentence. For example,
+>**Tip:** Always add a period (**.**) at the end of a function description. However, for the parameter and return type descriptions, omit the period if you have only one sentence. If there are multiple sentences, add the period at the end of each sentence. For example,
 
 ```ballerina
 # Description of the function.

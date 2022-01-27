@@ -96,7 +96,7 @@ public function foo(int i, string s) returns boolean {
 #
 # + httpVerb - The HTTP verb value
 # + path - The resource path
-# + request - An HTTP outbound request or any allowed payload
+# + message - An HTTP outbound request or any allowed payload
 # + return - An `http:HttpFuture` that represents an asynchronous service invocation 
 #            or an `http:ClientError` if the submission fails
 remote isolated function submit(string httpVerb, string path, RequestMessage message) returns HttpFuture|ClientError {

@@ -127,8 +127,8 @@ redirect_from:
     <p >Get started with the basics that are common to all C-family programming languages. </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
-<a href="/learn/writing-a-rest-api-with-ballerina/">
-    <h3 id="working-with-data">Writing a REST API with Ballerina</h3></a>
+<a href="/learn/writing-a-restful-api-with-ballerina/">
+    <h3 id="working-with-data">Writing a RESTful API with Ballerina</h3></a>
     <p >Learn how to write a REST API with Ballerina. </p>
 </div>
 </div>

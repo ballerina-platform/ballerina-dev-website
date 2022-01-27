@@ -85,8 +85,8 @@ $ bal grpc --mode service --input helloworld.proto --output greeter_service/
 Once successfully executed, you will see the output below.
 
 ```
-Successfully extracted library files.
-Successfully generated ballerina file.
+Successfully extracted the library files.
+Successfully generated the Ballerina file.
 ```
 
 Once you move into the directory, you will see the following two files,
@@ -168,8 +168,8 @@ $ bal grpc --mode client --input helloworld.proto --output greeter_client/
 
 Once successfully executed, you could be able to view the below output.
 ```
-Successfully extracted library files.
-Successfully generated ballerina file.
+Successfully extracted the library files.
+Successfully generated the Ballerina file.
 ```
 
 Once you move into the directory, you will see the following two new files.

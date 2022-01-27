@@ -26,7 +26,7 @@ To complete this tutorial, you need:
 
 Code to cloud is a compiler extension, which is packed with Ballerina, which makes it easier to generate artifacts required for the cloud from your Ballerina code. Currently, you could generate Docker and Kubernetes artifacts from the Ballerina code. This process encourages you to write cloud-ready code from day one without any additional effort. 
 
-## Writing the Ballerina service
+## Writing the Ballerina Service
 
 Let’s write a Ballerina program that returns a `Hello, World!` string upon invoking the resource. Execute the `bal new` command to create a new Ballerina project. 
 

@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R1 preview 2021-12-07</h1>
+<h1>Ballerina Language Specification, 2022R1 preview 2022-01-12</h1>
 <p>
 Primary contributors:
 </p>
@@ -236,7 +236,9 @@ GitHub repository where this specification is maintained.
 </li>
 <li>6.2.4 <a href="#singleton_typing">Singleton typing</a>
 </li>
-<li>6.2.5 <a href="#section_6.2.5">Isolated expressions</a>
+<li>6.2.5 <a href="#nil_lifting">Nil lifting</a>
+</li>
+<li>6.2.6 <a href="#section_6.2.6">Isolated expressions</a>
 </li>
 </ul>
 </li>
@@ -306,7 +308,12 @@ GitHub repository where this specification is maintained.
 </li>
 <li>6.21 <a href="#section_6.21">Typeof expression</a>
 </li>
-<li>6.22 <a href="#section_6.22">Unary expression</a>
+<li>6.22 <a href="#section_6.22">Unary expression</a><ul>
+<li>6.22.1 <a href="#section_6.22.1">Unary numeric expression</a>
+</li>
+<li>6.22.2 <a href="#section_6.22.2">Unary logical expression</a>
+</li>
+</ul>
 </li>
 <li>6.23 <a href="#section_6.23">Multiplicative expression</a>
 </li>
@@ -382,7 +389,14 @@ GitHub repository where this specification is maintained.
 </li>
 </ul>
 </li>
-<li>7.4 <a href="#section_7.4">Statement execution</a>
+<li>7.4 <a href="#section_7.4">Statements</a><ul>
+<li>7.4.1 <a href="#section_7.4.1">Statement execution</a>
+</li>
+<li>7.4.2 <a href="#section_7.4.2">Statement blocks</a>
+</li>
+<li>7.4.3 <a href="#section_7.4.3">Unreachability</a>
+</li>
+</ul>
 </li>
 <li>7.5 <a href="#section_7.5">Fork statement</a>
 </li>
@@ -442,7 +456,12 @@ GitHub repository where this specification is maintained.
 </li>
 <li>7.18 <a href="#section_7.18">Do statement</a>
 </li>
-<li>7.19 <a href="#match_statement">Match statement</a>
+<li>7.19 <a href="#match_statement">Match statement</a><ul>
+<li>7.19.1 <a href="#section_7.19.1">Match patterns</a>
+</li>
+<li>7.19.2 <a href="#section_7.19.2">Match clause reachability and narrowing</a>
+</li>
+</ul>
 </li>
 <li>7.20 <a href="#section_7.20">Loops</a><ul>
 <li>7.20.1 <a href="#section_7.20.1">Foreach statement</a>
@@ -4353,15 +4372,12 @@ same identifier in the same symbol space also with block-scope.
    | <a href="#let-expr"><span class="ntref">let-expr</span></a>
    | <a href="#type-cast-expr"><span class="ntref">type-cast-expr</span></a>
    | <a href="#typeof-expr"><span class="ntref">typeof-expr</span></a>
-   | <a href="#unary-expr"><span class="ntref">unary-expr</span></a>
-   | <a href="#multiplicative-expr"><span class="ntref">multiplicative-expr</span></a>
-   | <a href="#additive-expr"><span class="ntref">additive-expr</span></a>
-   | <a href="#shift-expr"><span class="ntref">shift-expr</span></a>
+   | <a href="#unary-logical-expr"><span class="ntref">unary-logical-expr</span></a>
+   | <a href="#nil-lifted-expr"><span class="ntref">nil-lifted-expr</span></a>
    | <a href="#range-expr"><span class="ntref">range-expr</span></a>
    | <a href="#relational-expr"><span class="ntref">relational-expr</span></a>
    | <a href="#is-expr"><span class="ntref">is-expr</span></a>
    | <a href="#equality-expr"><span class="ntref">equality-expr</span></a>
-   | <a href="#binary-bitwise-expr"><span class="ntref">binary-bitwise-expr</span></a>
    | <a href="#logical-expr"><span class="ntref">logical-expr</span></a>
    | <a href="#conditional-expr"><span class="ntref">conditional-expr</span></a>
    | <a href="#checking-expr"><span class="ntref">checking-expr</span></a>
@@ -4672,7 +4688,47 @@ types.
 </p>
 </section>
 <section>
-<h4 id="section_6.2.5">6.2.5 Isolated expressions</h4>
+<h4 id="nil_lifting">6.2.5 Nil lifting</h4>
+
+<pre class="grammar"><span class="ntdfn" id="nil-lifted-expr">nil-lifted-expr</span> := 
+  <a href="#unary-numeric-expr"><span class="ntref">unary-numeric-expr</span></a>
+  | <a href="#multiplicative-expr"><span class="ntref">multiplicative-expr</span></a>
+  | <a href="#additive-expr"><span class="ntref">additive-expr</span></a>
+  | <a href="#shift-expr"><span class="ntref">shift-expr</span></a>
+  | <a href="#binary-bitwise-expr"><span class="ntref">binary-bitwise-expr</span></a>
+</pre>
+<p>
+A <code>nil-lifted-expr</code> supports nil lifting for its operands. This means
+that the operators used in a <code>nil-lifted-expr</code> have two forms: an
+underlying form and a lifted form. The underlying form of the operator is used
+when the static type of the subexpressions for all operands does not allow nil;
+this form of the operator is described in the section for each kind of operator.
+The lifted form of the operator is used when the static type of the
+subexpressions for one or more operands does allow nil; the semantics of this
+form of the operator are derived from the underlying form as described in this
+section.
+</p>
+<p>
+A <code>nil-lifted-expr</code> is evaluated by evaluating the subexpressions for
+every operand. If the result of any of these evaluations is nil, then the result
+of the <code>nil-lifted-expr</code> is nil. Otherwise, the evaluation is
+completed in the same way as with the underlying form of the operator.
+</p>
+<p>
+The static types of the operand subexpressions with nil removed must be valid
+for the underlying form of the operator. The static type of the
+<code>nil-lifted-expr</code> is T<code>?</code>, where T is what the static type
+of the <code>nil-lifted-expr</code> would be if nil was removed from the static
+type of the operand subexpressions, except that the usual <a href="#singleton_rules">singleton typing</a> rules are not applied in computing
+T. (The singleton typing rules are applied to the static types before the
+removal of nil and thus have no effect, because the lifted form of the operator
+is never applicable when all operands have singleton type.)
+</p>
+
+</section>
+
+<section>
+<h4 id="section_6.2.6">6.2.6 Isolated expressions</h4>
 <p>
 Ballerina defines requirements for when an expression is <em>isolated</em>. If
 an expression meets the requirements, then it is compile-time guaranteed that
@@ -4736,15 +4792,12 @@ different types of number; there are no implicit conversions.
    | <a href="#structural-constructor-expr"><span class="ntref">structural-constructor-expr</span></a>
    | <a href="#constant-reference-expr"><span class="ntref">constant-reference-expr</span></a>
    | <a href="#type-cast-expr"><span class="ntref">type-cast-expr</span></a>
-   | <a href="#unary-expr"><span class="ntref">unary-expr</span></a>
-   | <a href="#multiplicative-expr"><span class="ntref">multiplicative-expr</span></a>
-   | <a href="#additive-expr"><span class="ntref">additive-expr</span></a>
-   | <a href="#shift-expr"><span class="ntref">shift-expr</span></a>
+   | <a href="#unary-logical-expr"><span class="ntref">unary-logical-expr</span></a>
+   | <a href="#nil-lifted-expr"><span class="ntref">nil-lifted-expr</span></a>
    | <a href="#range-expr"><span class="ntref">range-expr</span></a>
    | <a href="#relational-expr"><span class="ntref">relational-expr</span></a>
    | <a href="#is-expr"><span class="ntref">is-expr</span></a>
    | <a href="#equality-expr"><span class="ntref">equality-expr</span></a>
-   | <a href="#binary-bitwise-expr"><span class="ntref">binary-bitwise-expr</span></a>
    | <a href="#logical-expr"><span class="ntref">logical-expr</span></a>
    | <a href="#conditional-expr"><span class="ntref">conditional-expr</span></a>
    | <code>(</code> <a href="#const-expr"><span class="ntref">const-expr</span></a> <code>)</code>
@@ -4797,30 +4850,29 @@ the same as a const-expr.
 <span class="ntdfn" id="numeric-literal">numeric-literal</span> := <a href="#int-literal"><span class="ntref">int-literal</span></a> | <a href="#floating-point-literal"><span class="ntref">floating-point-literal</span></a>
 </pre>
 <p>
-A numeric-literal represents a value belonging to one of the basic types
-int, float or decimal. The basic type to which the value belongs is determined
-as follows:
+A numeric-literal represents a value belonging to one of the basic types int,
+float or decimal. The basic type to which the value belongs is determined in
+three stages.
 </p>
+<ol>
+<li>The syntactic form of numeric literal determines which of int, float and
+decimal are candidates:
 <ul>
-<li>if the numeric-literal includes a <code>FloatTypeSuffix</code>, then the
-basic type is float;</li>
+<li>if the numeric-literal includes a <code>FloatTypeSuffix</code> or is a
+<code>HexFloatingPointLiteral</code>, then the the only candidate is float;</li>
 <li>if the numeric-literal includes a <code>DecimalTypeSuffix</code>, then the
-basic type is decimal;</li>
-<li>if the numeric-literal is a <code>HexFloatingPointLiteral</code>, then the
-basic type is float;</li>
-<li>otherwise, the basic type depends on the applicable expected numeric type
-(where the possible basic types are int, float and decimal):
-<ul>
-<li>if the applicable contextually expected type is a subtype of decimal, then
-the basic type is decimal;</li>
-<li>if the applicable contextually expected type is a subtype of float, then the
-basic type is float;</li>
-<li>otherwise, if the numeric literal is an int-literal, then the basic type is
-int;</li>
-<li>otherwise, the basic type is float.</li>
+only candidate is decimal;</li>
+<li>otherwise, if the numeric-literal is a <code>floating-point-literal</code>,
+the candidates are float and decimal;</li>
+<li>otherwise, all three basic types are candidates.</li>
 </ul>
 </li>
-</ul>
+<li>Any candidate basic type N such that the intersection of N with the
+contextually expected type is empty is eliminated, unless this would eliminate
+all candidates remaining after the first stage.</li>
+<li>From remaining candidates, the first in the order int, float, decimal is
+selected.</li>
+</ol>
 <p>
 The precise type of a numeric-literal is the singleton type containing just the
 shape of the value that the numeric-literal represents. The broad type is
@@ -5666,12 +5718,29 @@ that when called will call the method with <code>self</code> bound to
 <var>obj</var>; the isolated bit of the new function value is set if and only if
 the isolated bits of both <var>obj</var> and the method are set; the type
 descriptor of the new function value will have the same annotations as the type
-descriptor of the method. The rest of this subsection applies when T is not a
-subtype of the object basic type.
+descriptor of the method.
 </p>
 <p>
 Let T' be the intersection of T and basic type mapping, let K be the singleton type
 containing just the string field-name, and let M be the member type for K in T'.
+</p>
+<p>
+If the following all apply:
+</p>
+<ul>
+<li>the type descriptor for T is not lax;</li>
+<li>T is a subtype of the mapping basic type (i.e. T' is the same as T);</li>
+<li>K is not a required key type for T;</li>
+<li>the type descriptor for T includes field-name as an
+individual-field-descriptor (or, if the type descriptor is a union, at least one
+member of the union does so);</li>
+<li>M does not include nil;</li>
+</ul>
+<p>
+then the field-access-expr is treated as an optional-field-access-expr.
+Otherwise, the rest of this section applies.
+</p>
+<p>
 The compile-time requirements on the field-access-expr depend on whether the
 type descriptor describing T is lax:
 </p>
@@ -6335,13 +6404,18 @@ static type of <code>expression</code>.
 <section>
 <h3 id="section_6.22">6.22 Unary expression</h3>
 
-<pre class="grammar"><span class="ntdfn" id="unary-expr">unary-expr</span> :=
+<section>
+<h4 id="section_6.22.1">6.22.1 Unary numeric expression</h4>
+<pre class="grammar"><span class="ntdfn" id="unary-numeric-expr">unary-numeric-expr</span> :=
    <code>+</code> <a href="#expression"><span class="ntref">expression</span></a>
    | <code>-</code> <a href="#expression"><span class="ntref">expression</span></a>
    | <code>~</code> <a href="#expression"><span class="ntref">expression</span></a>
-   | <code>!</code> <a href="#expression"><span class="ntref">expression</span></a>
-
 </pre>
+<p>
+The operators occurring in a <code>unary-numeric-expr</code> have both lifted
+form, which is specified in the <a href="#nil_lifting">Nil lifting</a> section,
+and an underlying form, which is specified in this section.
+</p>
 <p>
 The unary <code>-</code> operator performs negation. The static type of the
 operand must be a number; the static type of the result is the basic type of the
@@ -6362,15 +6436,22 @@ in T' if it belongs to int, decimal or float, and T contains a value with the
 same basic type as v.
 </p>
 <p>
-The unary + operator returns the value of its operand expression. The static
+The unary <code>+</code> operator returns the value of its operand expression. The static
 type of the operand must be a number, and the static type of the result is the
 same as the static type of the operand expression, modified by the usual <a href="#singleton_typing">singleton typing</a> rules.
 </p>
 <p>
-The ~ operator inverts the bits of its operand expression. The static type of
-the operand must be int, and the static type of the result is int, modified by
-the usual <a href="#singleton_typing">singleton typing</a> rules.
+The <code>~</code> operator inverts the bits of its operand expression. The
+static type of the operand must be int, and the static type of the result is
+int, modified by the usual <a href="#singleton_typing">singleton typing</a>
+rules.
 </p>
+</section>
+
+<section>
+<h4 id="section_6.22.2">6.22.2 Unary logical expression</h4>
+<pre class="grammar"><span class="ntdfn" id="unary-logical-expr">unary-logical-expr</span> := <code>!</code> <a href="#expression"><span class="ntref">expression</span></a>
+</pre>
 <p>
 The <code>!</code> operator performs logical negation. The static type of the
 operand expression must be boolean. The <code>!</code> operator returns true if
@@ -6379,6 +6460,8 @@ result is boolean, modified by the usual <a href="#singleton_typing">singleton
 typing</a> rules.
 </p>
 </section>
+</section>
+
 <section>
 <h3 id="section_6.23">6.23 Multiplicative expression</h3>
 
@@ -6389,7 +6472,9 @@ typing</a> rules.
 </pre>
 <p>
 The <code>*</code> operator performs multiplication; the <code>/</code> operator
-performs division; the <code>%</code> operator performs remainder.
+performs division; the <code>%</code> operator performs remainder. These
+operators have both lifted form, which is specified in the <a href="#nil_lifting">Nil lifting</a> section, and an underlying form, which is
+specified in this section.
 </p>
 <p>
 The static type of both operand expressions is required to be a subtype of the
@@ -6474,7 +6559,9 @@ same basic type as v.
 </pre>
 <p>
 The <code>+</code> operator is used for both addition and concatenation; the
-<code>-</code> operator is used for subtraction.
+<code>-</code> operator is used for subtraction. These operators have both
+lifted form, which is specified in the <a href="#nil_lifting">Nil lifting</a>
+section, and an underlying form, which is specified in this section.
 </p>
 <p>
 It is required that either:
@@ -6546,11 +6633,15 @@ with the same basic type as v.
    <a href="#expression"><span class="ntref">expression</span></a> <code>&gt;&gt;&gt;</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
-A shift-expr performs a bitwise shift. Both operand expressions must have static
-type that is a subtype of int. The left hand operand is the value to be shifted;
-the right hand value is the shift amount; all except the bottom 6 bits of the
-shift amount are masked out (as if by x &amp; 0x3F). Then a bitwise shift is
-performed depending on the operator:
+A shift-expr performs a bitwise shift. The shift operators have both lifted
+form, which is specified in the <a href="#nil_lifting">Nil lifting</a> section,
+and an underlying form, which is specified in this section.
+</p>
+<p>
+Both operand expressions must have static type that is a subtype of int. The
+left hand operand is the value to be shifted; the right hand value is the shift
+amount; all except the bottom 6 bits of the shift amount are masked out (as if
+by x &amp; 0x3F). Then a bitwise shift is performed depending on the operator:
 </p>
 <ul>
 <li>
@@ -6740,6 +6831,8 @@ precision of the value. For example, <code>1.0 == 1.00</code> is true but
 </pre>
 <p>
 A binary-bitwise-expr does a bitwise AND, XOR, or OR operation on its operands.
+These operators have both lifted form, which is specified in the <a href="#nil_lifting">Nil lifting</a> section, and an underlying form, which is
+specified in this section.
 </p>
 <p>
 The static type of both operands must be a subtype of int. The static type of
@@ -7741,7 +7834,7 @@ is called concurrently on multiple strands.
 </section>
 </section>
 <section>
-<h3 id="section_7.4">7.4 Statement execution</h3>
+<h3 id="section_7.4">7.4 Statements</h3>
 
 <pre class="grammar"><span class="ntdfn" id="statement">statement</span> := 
    <a href="#action-stmt"><span class="ntref">action-stmt</span></a>
@@ -7765,28 +7858,6 @@ is called concurrently on multiple strands.
    | <a href="#return-stmt"><span class="ntref">return-stmt</span></a>
    | <a href="#fork-stmt"><span class="ntref">fork-stmt</span></a>
 </pre>
-<p>
-The execution of any statement may involve the evaluation of actions and
-expressions, and the execution of substatements. The following sections
-describes how each kind of statement is evaluated, assuming that the evaluation
-of those expressions and actions completes normally, and assuming that the
-execution of any substatements does not cause termination of the current worker.
-Except where explicitly stated to the contrary, statements handle abrupt
-completion of the evaluation of expressions and actions as follows. There are
-two possibilities.
-</p>
-<ul>
-<li>If the abrupt termination is a check-fail with associated value e, then
-control flow is transferred as if by a <code>fail-stmt</code> with an expression
-that evaluates to e.</li>
-<li>If the abrupt termination is a panic with associated value, then the current
-worker is terminated as if by a <code>panic-stmt</code> with an expression that
-evaluates to e.</li>
-</ul>
-<p>
-If the execution of a substatement causes termination of the current worker,
-then the execution of the statement terminates at that point.
-</p>
 
 <pre class="grammar">
 <span class="ntdfn" id="regular-compound-stmt">regular-compound-stmt</span> :=
@@ -7800,13 +7871,79 @@ then the execution of the statement terminates at that point.
 A <code>regular-compound-stmt</code> can be combined with an
 <code>on-fail-clause</code> to make a <code>stmt-with-on-fail</code>.
 </p>
+
+<section>
+<h4 id="section_7.4.1">7.4.1 Statement execution</h4>
+<p>
+The execution of a statement completes in one of three ways:
+</p>
+<ul>
+<li>it may complete normally;</li>
+<li>it may complete by terminating the current worker; or</li>
+<li>it may complete by transferring control within the same worker.</li>
+</ul>
+<p>
+When the execution of a statement involves the evaluation of an action or an
+expression, and that evaluation completes abruptly, then, except where
+explicitly stated to the contrary, the execution of the statement completes as
+follows.
+</p>
+<ul>
+<li>If the abrupt completion is a check-fail with associated value e, then
+control flow is transferred as if by a <code>fail-stmt</code> with an expression
+that evaluates to e.</li>
+<li>If the abrupt completion is a panic with associated value e, then the
+current worker is terminated as if by a <code>panic-stmt</code> with an
+expression that evaluates to e.</li>
+</ul>
+<p>
+The following sections describe for each kind of statement any other cases in
+which the execution of that kind of statement does not completely normally.
+</p>
+</section>
+
+<section>
+<h4 id="section_7.4.2">7.4.2 Statement blocks</h4>
 <pre class="grammar">
 <span class="ntdfn" id="statement-block">statement-block</span> := <code>{</code> <a href="#statement"><span class="ntref">statement</span></a>* <code>}</code>
 </pre>
 <p>
-A <code>statement-block</code> is a syntactic grouping of statements, which are
-executed sequentially.
+A <code>statement-block</code> is executed by executing its
+<code>statement</code>s sequentially. This means that when the execution of one
+<code>statement</code> completes normally, the immediately following
+<code>statement</code> is executed. However, when the executon
+<code>statement</code> does not complete normally, then none of the following
+<code>statement</code>s in the <code>statement-block</code> are executed. The
+execution of the <code>statement-block</code> completes normally if and only if
+the execution of all of its <code>statement</code>s completes normally.
 </p>
+</section>
+
+<section>
+<h4 id="section_7.4.3">7.4.3 Unreachability</h4>
+<p>
+A statement is <em>reachable</em> if the analysis described in this section
+determines that there is a possibility that the statement will be executed. It
+is a compile error if a <code>statement</code> is not reachable.
+</p>
+<p>
+The analysis proceeds by determining recursively for each statement whether it
+is possible for the statement to complete normally, assuming that the statement
+is reachable. Each <code>statement</code> in a <code>statement-block</code>
+after the first <code>statement</code> is reachable only if it is possible for
+all of the preceding <code>statement</code>s to complete normally.
+</p>
+<p>
+When the execution of a statement or a transfer of control is conditional on the
+result of evaluating an expression, then the analysis assumes that it is
+possible for the statement to be executed or control to be transferred, unless
+the static type of the expression makes it impossible. Similarly, when the
+evaluation of a subexpression is conditional on the result of previously
+evaluating another subexpression, then the analysis assumes that the second
+evaluation is possible unles the static type of the first subexpression makes it
+impossible.
+</p>
+</section>
 
 </section>
 
@@ -8372,9 +8509,9 @@ variable will belong to a type that is narrower than the declared type. In these
 cases, references to the variable within particular regions of code will have a
 static type that is narrower that the variable type. One kind of case, which is
 described in this section, is when a variable is used in a boolean expression in
-a conditional context. The other kind of case is when a variable is used in a
-match statement; this is described in the <a href="#match_statement">Match
-statement</a> section.
+a conditional context. This is sometimes called <em>occurrence typing</em>. The
+other kind of case is when a variable is used in a match statement; this is
+described in the <a href="#match_statement">Match statement</a> section.
 </p>
 <p>
 Type narrowing makes use of the <em>read-only difference</em> between two types,
@@ -8397,14 +8534,14 @@ Given an expression E with static type boolean, and a variable x with static
 type Tx, we define how to determine
 </p>
 <ul>
-<li>a narrowed type for x implied by truth of E and</li>
-<li>a narrowed type for x implied by falsity of E</li>
+<li>a narrowed type for x implied by truth of E, and</li>
+<li>a narrowed type for x implied by falsity of E.</li>
 </ul>
 <p>
 based on the syntactic form of E as follows.
 </p>
 <ul>
-<li>If E has the form x is T, then
+<li>If E has the form x <code>is</code> T, then
 <ul>
 <li>the narrowed type for x implied by truth of E is the intersection of Tx and
 T</li>
@@ -8412,52 +8549,70 @@ T</li>
 −<sub><em>ro</em></sub> T</li>
 </ul>
 </li>
-<li>If E has the form x == E1 or E1 == x where the static type of E1 is an
-expression whose static type is a singleton simple type T1, then
+<li>If E has the form x <code>==</code> E<sub>1</sub> or E<sub>1</sub>
+<code>==</code> x where the static type of E<sub>1</sub> is an expression whose
+static type is a singleton simple type T<sub>1</sub>, then
 <ul>
 <li>the narrowed type for x implied by truth of E is the intersection of Tx and
-T1</li>
+T<sub>1</sub>
+</li>
 <li>the narrowed type for x implied by falsity of E is Tx
-−<sub><em>ro</em></sub> T1</li>
+−<sub><em>ro</em></sub> T<sub>1</sub>
+</li>
 </ul>
 </li>
-<li>If E has the form x != E1 or E1 != x where the static type of E1 is an
-expression whose static type is a singleton simple type T1, then
+<li>If E has the form x <code>!=</code> E<sub>1</sub> or E<sub>1</sub>
+<code>!=</code> x where the static type of E<sub>1</sub> is an expression whose
+static type is a singleton simple type T<sub>1</sub>, then
 <ul>
 <li>the narrowed type for x implied by truth of E is Tx
-−<sub><em>ro</em></sub> T1</li>
+−<sub><em>ro</em></sub> T<sub>1</sub>
+</li>
 <li>the narrowed type for x implied by falsity of E is the intersection of Tx
-and T1</li>
+and T<sub>1</sub>
+</li>
 </ul>
 </li>
-<li>If E has the form !E1, then
+<li>If E has the form <code>!</code>E<sub>1</sub>, then
 <ul>
 <li>the narrowed type for x implied by truth of E is the narrowed type for x
-implied by falsity of E1</li>
+implied by falsity of E<sub>1</sub>
+</li>
 <li>the narrowed type for x implied by falsity of E is the narrowed type for x
-implied by truth of E1</li>
+implied by truth of E<sub>1</sub>
+</li>
 </ul>
 </li>
-<li>If E has the form E1 &amp;&amp; E2
+<li>If E has the form E<sub>1</sub> <code>&amp;&amp;</code> E<sub>2</sub>
 <ul>
-<li>the narrowed type for x implied by truth of E is the intersection of T1 and
-T2, where T1 is the narrowed type for x implied by the truth of T1 and T2 is the
-narrowed type for x implied by the truth of T2</li>
-<li>the narrowed type for x implied by falsity of E is T1|T2, where T1 is the
-narrowed type for x implied by the falsity of E1, and T2 is the intersection of
-T3 and T4, where T3 is the narrowed type for x implied by the truth of E1 and T4
-is the narrowed type for x implied by the falsity of E2</li>
+<li>the narrowed type for x implied by truth of E is the intersection of
+T<sub>1</sub> and T<sub>2</sub>, where T<sub>1</sub> is the narrowed type for x
+implied by the truth of T<sub>1</sub> and T<sub>2</sub> is the narrowed type for
+x implied by the truth of T<sub>2</sub>
+</li>
+<li>the narrowed type for x implied by falsity of E is
+T<sub>1</sub>|T<sub>2</sub>, where T<sub>1</sub> is the narrowed type for x
+implied by the falsity of E<sub>1</sub>, and T<sub>2</sub> is the intersection
+of T<sub>3</sub> and T<sub>4</sub>, where T<sub>3</sub> is the narrowed type for
+x implied by the truth of E<sub>1</sub> and T<sub>4</sub> is the narrowed type
+for x implied by the falsity of E<sub>2</sub>
+</li>
 </ul>
 </li>
-<li>If E has the form E1 || E2, then
+<li>If E has the form E<sub>1</sub> <code>||</code> E<sub>2</sub>, then
 <ul>
-<li> the narrowed type for x implied by truth of E is T1|T2, where T1 is the
-narrowed type for x implied by the truth of E1, and T2 is the intersection of T3
-and T4, where T3 is the narrowed type for x implied by the falsity of E1 and T4
-is the narrowed type for x implied by the truth of E2</li>
-<li>the narrowed type for x implied by falsity of E is the intersection of T1
-and T2, where T1 is narrowed type for x implied by the falsity of E1 and T2 is
-the narrowed type for x implied by the falsity of E2</li>
+<li>the narrowed type for x implied by truth of E is
+T<sub>1</sub>|T<sub>2</sub>, where T<sub>1</sub> is the narrowed type for x
+implied by the truth of E<sub>1</sub>, and T<sub>2</sub> is the intersection of
+T<sub>3</sub> and T<sub>4</sub>, where T<sub>3</sub> is the narrowed type for x
+implied by the falsity of E<sub>1</sub> and T<sub>4</sub> is the narrowed type
+for x implied by the truth of E<sub>2</sub>
+</li>
+<li>the narrowed type for x implied by falsity of E is the intersection of
+T<sub>1</sub> and T<sub>2</sub>, where T<sub>1</sub> is narrowed type for x
+implied by the falsity of E<sub>1</sub> and T<sub>2</sub> is the narrowed type
+for x implied by the falsity of E<sub>2</sub>
+</li>
 </ul>
 </li>
 <li>If E has any other form, then
@@ -8468,29 +8623,82 @@ the narrowed type for x implied by the falsity of E2</li>
 </li>
 </ul>
 <p>
-Narrowed types apply to regions of code as follows:
+Narrowed types implied by the truth or falsity of an expression apply to regions
+of code as follows:
 </p>
 <ul>
-<li>in an expression E1 || E2, the narrowed types implied by the falsity of E1
-apply within E2</li>
-<li>in an expression E1 &amp;&amp; E2, the narrowed types implied by the truth of E1
-apply within E2</li>
-<li>in an expression E1 ? E2 : E3, the narrowed types implied by the truth of E1
-apply within E2 and the narrowed types implied by the falsity of E1 apply within
-E3</li>
-<li>in a statement if E1 { B1 } else { B2 }, the narrowed types implied by the
-truth of E1 apply within B1 and the narrowed types implied by the falsity of E1
-apply within E2</li>
-<li>in a statement while E { B }, the narrowed types implied by the truth of E
+<li>in an expression E<sub>1</sub> <code>||</code> E<sub>2</sub>, the narrowed
+types implied by the falsity of E<sub>1</sub> apply within E<sub>2</sub>
+</li>
+<li>in an expression E<sub>1</sub> <code>&amp;&amp;</code> E<sub>2</sub>, the
+narrowed types implied by the truth of E<sub>1</sub> apply within
+E<sub>2</sub>
+</li>
+<li>in an expression E<sub>1</sub> <code>?</code> E<sub>2</sub> <code>:</code>
+E<sub>3</sub>, the narrowed types implied by the truth of E<sub>1</sub> apply
+within E<sub>2</sub> and the narrowed types implied by the falsity of
+E<sub>1</sub> apply within E<sub>3</sub>
+</li>
+<li>in a statement <code>if</code> E<sub>1</sub> B<sub>1</sub> <code>else</code>
+B<sub>2</sub>, the narrowed types implied by the truth of E<sub>1</sub> apply
+within B<sub>1</sub> and the narrowed types implied by the falsity of
+E<sub>1</sub> apply within E<sub>2</sub>
+</li>
+<li>in a statement <code>while</code> E B, the narrowed types implied by the truth of E
 apply with B</li>
-<li>in a match-clause P if E =&gt; { B }, the narrowed types implied by the truth
-of E apply within B</li>
+<li>in a match-clause P <code>if</code> E <code>=&gt;</code> B, the narrowed types
+implied by the truth of E apply within B</li>
 <li>in a query-expr or query-action, the narrowed types implied by the truth of
 the expression in a where-clause apply within all following clauses in that
 query-expr or query-action</li>
-<li>the narrowed type for a variable x no longer applies as soon as there is a
-possibility of x being assigned to</li>
 </ul>
+<p>
+Given a statement or statement-block S, and a variable x that is in-scope for S
+and has static type Tx, we define how to determine a narrowed type for x implied
+by the normal completion of S as follows.
+</p>
+<ul>
+<li>When it is not possible for S to complete normally, then the narrowed type for x implied by the normal completion of S is never (the empty type).</li>
+<li>If S has the form <code>{</code> S<sub>1</sub> S<sub>2</sub> ...
+S<sub>n</sub> <code>}</code>, then the narrowed type for x implied by the normal
+completion of S is the narrowed type for x implied by the normal completion of
+S<sub>n</sub>.</li>
+<li>If S has the form <code>do</code> B, the narrowed type for x implied by the
+normal completion of S is the narrowed type for x implied by the normal
+completion of B.</li>
+<li>If S has the form <code>if</code> E B<sub>1</sub> <code>else</code>
+B<sub>2</sub>, the narrowed type for x implied by the normal completion of S is
+the union of T<sub>1</sub> and T<sub>2</sub>, where T<sub>1</sub> is the
+narrowed type for x implied by the normal completion of B<sub>1</sub> and
+T<sub>2</sub> is the narrowed type for x implied by the normal completion of
+B<sub>2</sub>. (The truth or falsity of E may imply a narrowed type for x that
+applies in B<sub>1</sub> or B<sub>2</sub>, which may affect the narrowed type
+for x implied by the normal completion of B<sub>1</sub> or B<sub>2</sub>.)</li>
+<li>Otherwise, the narrowed type for x implied by the completion of S is Tx.</li>
+</ul>
+<p>
+The narrowed types implied by the normal completion of a statement are applied
+within a statement-block as follows: in a statement-block <code>{</code>
+S<sub>1</sub> S<sub>2</sub> ... Sn <code>}</code>, for each i in 2,..., n, the
+narrowed types implied by the normal completion of S<sub>i - 1</sub> apply to
+S<sub>i</sub>.
+</p>
+<p>
+In the above rules, a if-else-stmt without an <code>else</code> clause is
+treated as if it had an <code>else</code> followed by an empty statement-block,
+and <code>else if</code> clause is treated like a nested if-else-stmt.
+</p>
+<p>
+A narrowed type for a variable x implied by an expression in which x occurs
+ceases to apply in a region of code where there is a possibility at runtime that
+x has been assigned to since the evaluation of the expression. It is an error if
+this results in the type of a variable reference being affected by assignments
+that lexically follow the variable reference. Specifically, when a variable x is
+narrowed outside a while-stmt, foreach-stmt or query-action S, an assignment to
+x within S must not result in the possibility of x having being assigned to when
+the statement-block of S completes normally or when a continue-stmt is executed.
+</p>
+
 </section>
 <section>
 <h3 id="XML_namespace_declaration_statement">7.13 XML namespace declaration statement</h3>
@@ -8783,12 +8991,15 @@ is potentially uninitialized.
 </p>
 <p>
 Let T1 be the static type of lvexpr, and let T2 be the static type of
-action-expr. Then let T3 be the static type of an expression E1 BinaryOp E2
-where E1 has type T1 and E2 has type T2. It is a compile error if T3 is not a
+action-expr. Let E be an expression E1 BinaryOperator E2, where E1 has type T1
+and E2 has type T2. E must be valid according to the static typing rules
+applicable to the underlying form of the BinaryOperator (not the lifted form
+described in the <a href="#nil_lifting">Nil lifting</a> section). Let T be the
+static type of E according to those rules. It is a compile error if T is not a
 subtype of T1.
 </p>
 <p>
-It is executed as follows:
+A compound-assignment-stmt is executed as follows:
 </p>
 <ol>
 <li>execute action-or-expr to get a value <var>v2</var>;</li>
@@ -8830,7 +9041,30 @@ of this type.
 A binding pattern within a destructuring assignment must not refer to a variable
 declared by a module-var-decl that includes <code>isolated</code>.
 </p>
-
+<p>
+Note that a destucturing-assignment-stmt with a wildcard-binding-pattern can
+be used to ensure that a a variable has been narrowed as expected.
+</p>
+<pre>
+type T X|Y|Z;
+function foo(T v) {
+   if v is X {
+       handleX(v);
+   }
+   else if v is Y {
+       handleY(v);
+   }
+   else {
+     Z _ = v;
+     handleOther(v);
+   }
+}
+</pre>
+<p>
+If <code>T</code> is subsequently modified to add another possibility in
+addition to <code>X</code>, <code>Y</code> and <code>Z</code>, then
+<code>foo</code> will get a compile error.
+</p>
 </section>
 </section>
 <section>
@@ -8856,7 +9090,9 @@ the static type of an action in an action-stmt is not nil.
 <p>
 A call-stmt is executed by evaluating call-expr as an expression and discarding
 the resulting value, which must be nil. The static type of the call-expr in an
-call-stmt must be a subtype of nil; it is permitted to be <code>never</code>.
+call-stmt must be either <code>()</code> or <code>never</code>. If it is
+<code>never</code>, then it is possible for the call-stmt to complete normally.
+
 </p>
 </section>
 <section>
@@ -8889,7 +9125,8 @@ A <code>do-stmt</code> is executed by executing its
 <section>
 <h3 id="match_statement">7.19 Match statement</h3>
 
-<pre class="grammar"><span class="ntdfn" id="match-stmt">match-stmt</span> := <code>match</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>{</code> <a href="#match-clause"><span class="ntref">match-clause</span></a>+ <code>}</code>
+<pre class="grammar"><span class="ntdfn" id="match-stmt">match-stmt</span> := <code>match</code> <a href="#match-target"><span class="ntref">match-target</span></a> <code>{</code> <a href="#match-clause"><span class="ntref">match-clause</span></a>+ <code>}</code>
+<span class="ntdfn" id="match-target">match-target</span> := <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a>
 <span class="ntdfn" id="match-clause">match-clause</span> :=
   <a href="#match-pattern-list"><span class="ntref">match-pattern-list</span></a> [<a href="#match-guard"><span class="ntref">match-guard</span></a>] <code>=&gt;</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 <span class="ntdfn" id="match-guard">match-guard</span> := <code>if</code> <a href="#match-guard-expr"><span class="ntref">match-guard-expr</span></a>
@@ -8902,7 +9139,8 @@ value matches.
 A match-stmt is executed as follows:
 </p>
 <ol>
-<li>the expression is evaluated resulting in some value v;</li>
+<li>the match-target is evaluated resulting in some value v, called the
+<em>target value</em>;</li>
 <li>for each match-clause in order:
 <ol>
 <li>a match of match-pattern-list against v is attempted</li>
@@ -8941,6 +9179,8 @@ object whose method is being called must also be a subtype of
 <code>readonly</code>.</li>
 </ul>
 
+<section>
+<h4 id="section_7.19.1">7.19.1 Match patterns</h4>
 <pre class="grammar"><span class="ntdfn" id="match-pattern-list">match-pattern-list</span> := 
   <a href="#match-pattern"><span class="ntref">match-pattern</span></a> (<code>|</code> <a href="#match-pattern"><span class="ntref">match-pattern</span></a>)*
 </pre>
@@ -9039,38 +9279,62 @@ In particular, for the match of an <code>error-match-pattern</code> with an
 <code>error-type-reference</code> against an error value to succeed, the
 error value must belong to the referenced error type.
 </p>
+</section>
+
+<section>
+<h4 id="section_7.19.2">7.19.2 Match clause reachability and narrowing</h4>
 <p>
-A variable is the <em>matched variable</em> of a <code>match-stmt</code> if
-the <code>action-or-expression</code> following <code>match</code> is a
-<code>variable-reference</code> that references this variable. The type of a
-matched variable is subject to narrowing within regions of the
-<code>match-stmt</code> as follows. The matched variable has a narrowed
-type at the start of each match-clause, which is determined by previous
-<code>match-clause</code>s; the type for the first <code>match-clause</code> is
-the normal static type of the variable. Narrowing is applied to each
-<code>match-clause</code> as follows:
+This section uses the <em>read-only intersection</em> between two types, which
+is defined analogously to the read-only difference used for conditional variable
+type narrowing as follows. We use the notation T &amp;<sub>ro</sub> S for the
+read-only intersection of T and S. T &amp;<sub>ro</sub> S is computed separately
+for each uniform type. Let T<sup>U</sup> be the subset of T belonging to uniform
+type U, i.e. the intersection of T and U. For a uniform type U that is
+immutable, T<sup>U</sup> &amp;<sub>ro</sub> S<sup>U</sup> is the same as
+T<sup>U</sup> &amp; S<sup>U</sup>; for a uniform type U that is mutable,
+T<sup>U</sup> &amp;<sub>ro</sub> S<sup>U</sup> is empty if T<sup>U</sup> &amp;
+S<sup>U</sup> is empty, and T<sup>U</sup> otherwise. T &amp;<sub>ro</sub> S is
+the union for every uniform type U of T<sup>U</sup> &amp;<sub>ro</sub>
+S<sup>U</sup>. Note that the read-only intersection operation is not
+commutative.
+</p>
+<p>
+A <code>match-clause</code> is defined to be <em>unguarded</em> if it does not
+have a <code>match-guard</code> or if the static type of the expression in the
+<code>match-guard</code> is singleton true.
+</p>
+<p>
+For each <code>match-clause</code> C, we can compute a type L that the target
+value must <em>look like</em> if the <code>statement-block</code> of C is
+executed. L is computed as the difference of a positive type P and negative type
+N, where
 </p>
 <ul>
-<li>let <var>T</var> be the narrowed type of the matched variable at the start
-of the match-clause;</li>
-<li>let <var>P</var> be the union of the corresponding types of each
-<code>match-pattern</code> in the <code>match-pattern-list</code> of the
-<code>match-clause</code>;</li>
-<li>let <var>N</var> be the intersection of <var>T</var> and
-<var>P</var>;</li>
-<li>let <var>R</var> be the set difference of <var>T</var> and
-<var>P</var>;</li>
-<li>if <var>N</var> is a subtype of <code>readonly</code>, then the narrowed
-type for the <code>match-guard</code>, if any, and <code>statement-block</code>
-of the <code>match-clause</code> is <var>N</var>; otherwise it is
-<var>T</var>;</li>
-<li>if there is a match-guard, then the type narrowing described in <a href="#conditional_variable_type_narrowing">Conditional variable type
-narrowing</a> is done in addition to the type narrowing described here;</li>
-<li>if <var>R</var> is a subtype of <code>readonly</code> and there is no
-<code>match-guard</code>, then the narrowed type for the next
-<code>match-clause</code> is <var>R</var>; otherwise, it is <var>T</var>.</li>
+<li>P is the union of the types corresponding to the match patterns in the
+<code>match-pattern-list</code> of C, and</li>
+<li>N is the union of the types corresponding to the match patterns in the
+<code>match-pattern-list</code> of every unguarded <code>match-clause</code>
+that precedes C.</li>
 </ul>
-
+<p>
+Let T be the static type of the <code>match-target</code>. If the intersection
+of T and L is empty, then it is not possible for the
+<code>match-pattern-list</code> of C to match, and accordingly the statements in
+the statement-block of C are not reachable. If the <code>match-target</code> is
+a <code>variable-reference</code>, then the type of the referenced variable is
+narrowed to T &amp;<sub>ro</sub> L within the <code>match-guard</code>, if any,
+and the <code>statement-block</code> of C. If there is a
+<code>match-guard</code>, then the type narrowing described in <a href="#conditional_variable_type_narrowing">Conditional variable type
+narrowing</a> is in addition applied to the <code>statement-block</code>
+</p>
+<p>
+A <code>match-stmt</code> is <em>exhaustive</em> if and only if the static type
+of the <code>match-target</code> is a subtype of union of the type corresponding
+to the match patterns of the <code>match-pattern-list</code> of every unguarded
+match clause. A <code>match-stmt</code> that is exhaustive can complete normally
+only if at least one of its <code>statement-block</code>s can complete normally.
+</p>
+</section>
 </section>
 <section>
 <h3 id="section_7.20">7.20 Loops</h3>
@@ -9104,15 +9368,15 @@ result of calling c.iterator()</li>
 </ol>
 </li>
 <li>call i.next() resulting in a value n</li>
-<li>if n is nil, then terminate execution of the foreach statement</li>
+<li>if n is nil, then the execution of the foreach statement completes normally</li>
 <li>match typed-binding-pattern to n.value causing assignments to any variables
 that were created in typed-binding-pattern</li>
 <li>execute statement-block with the variable bindings from step 5 in scope; in the
 course of so doing
 <ol>
-<li>the execution of a break-stmt terminates execution of the foreach statement</li>
-<li>the execution of a continue-stmt causes execution to proceed immediately to
-step 3</li>
+<li>the execution of a break-stmt causes execution of the foreach statement to
+complete normally</li>
+<li>the execution of a continue-stmt causes a transfer of control to step 3</li>
 </ol>
 </li>
 <li>go back to step 3</li>
@@ -9146,9 +9410,9 @@ In more detail, a while statement executes as follows:
 statement;</li>
 <li>execute statement-block; in the course of so doing
 <ol>
-<li>the execution of a break-stmt results in termination of execution of the
-while statement</li>
-<li>the execution of a continue-stmt causes execution to proceed immediately to
+<li>the execution of a break-stmt results in the execution of the
+while statement completing normally</li>
+<li>the execution of a continue-stmt causes a transfer of control to
 step 1</li>
 </ol>
 </li>
@@ -9164,10 +9428,10 @@ The static type of <code>expression</code> must be a subtype of boolean.
 <pre class="grammar"><span class="ntdfn" id="continue-stmt">continue-stmt</span> := <code>continue</code> <code>;</code>
 </pre>
 <p>
-A continue statement is only allowed if it is lexically within a
-while-stmt or a foreach-stmt. Executing a continue statement causes execution of
-the nearest enclosing while-stmt or foreach-stmt to jump to the end of the
-outermost statement-block in the while-stmt or foreach-stmt.
+A continue statement is only allowed if it is lexically within a while-stmt or a
+foreach-stmt. Execution a continue statement results in a transfer of control
+that causes the execution of the outermost statement-block in the nearest
+enclosing while-stmt or foreach-stmt to complete normally.
 </p>
 </section>
 <section>
@@ -9176,9 +9440,10 @@ outermost statement-block in the while-stmt or foreach-stmt.
 <pre class="grammar"><span class="ntdfn" id="break-stmt">break-stmt</span> := <code>break</code> <code>;</code>
 </pre>
 <p>
-A break statement is only allowed if it is lexically within a
-while-stmt or a foreach-stmt. Executing a break statement causes the nearest
-enclosing while-stmt or foreach-stmt to terminate.
+A break statement is only allowed if it is lexically within a while-stmt or a
+foreach-stmt. Execution of a break statement results in a transfer of control
+that causes the execution of nearest enclosing while-stmt or foreach-stmt to
+complete normally.
 </p>
 </section>
 </section>
@@ -10258,16 +10523,10 @@ the type-descriptor.
 A module-enum-decl provides a convenient syntax for declaring a union of string constants.
 </p>
 <p>
-Each enum-member is defined as compile-time constant in exactly the same way as
-if it had been defined using a module-const-decl. The result of evaluating the
+Each enum-member is defined as compile-time constant in the same way as if it
+had been defined using a module-const-decl. The result of evaluating the
 const-expr must be a string. If the const-expr is omitted, it defaults to be the
-same as the identifier. It is an error if an enum-member has the same identifier
-as another enum-member in the same module-enum-decl. It is not an error if an
-enum-member turns into a module-const-decl with the same identifier as a another
-module-const-decl in the same module, whether or not resulting from an
-enum-member, provided that the two declarations are equivalent: the strings
-resulting from the const-expr evaluation must be the same, and the declarations
-must either both be public or both not be public.
+same as the identifier.
 </p>
 <p>
 The identifier is defined as a type in the same was as if it had been defined by
@@ -10856,7 +11115,7 @@ public isolated function enumerate(Type[] arr) returns [int, Type][] = external;
 # + arr - the array
 # + func - a function to apply to each member
 # + return - new array containing result of applying `func` to each member of `arr` in order
-public isolated function map(Type[] arr, @isolatedParam function(Type val) returns Type1 func) returns Type1[] = external;
+public isolated function 'map(Type[] arr, @isolatedParam function(Type val) returns Type1 func) returns Type1[] = external;
 
 # Applies a function to each member of an array.
 # The function `func` is applied to each member of array `arr` in order.
@@ -11702,7 +11961,7 @@ public isolated function entries(map&lt;Type&gt; m) returns map&lt;[string, Type
 # + m - the map
 # + func - a function to apply to each member
 # + return - new map containing result of applying function `func` to each member
-public isolated function map(map&lt;Type&gt; m, @isolatedParam function(Type val) returns Type1 func) returns map&lt;Type1&gt; = external;
+public isolated function 'map(map&lt;Type&gt; m, @isolatedParam function(Type val) returns Type1 func) returns map&lt;Type1&gt; = external;
 
 # Applies a function to each member of a map.
 # The function `func` is applied to each member of `m`.
@@ -11875,7 +12134,7 @@ public isolated function close(stream&lt;Type,CompletionType&gt; stm) returns Co
 # + stm - the stream
 # + func - a function to apply to each member
 # + return - new stream containing result of applying `func` to each member of `stm` in order
-public isolated function map(stream&lt;Type,CompletionType&gt; stm, @isolatedParam function(Type val) returns Type1 func)
+public isolated function 'map(stream&lt;Type,CompletionType&gt; stm, @isolatedParam function(Type val) returns Type1 func)
    returns stream&lt;Type1,CompletionType&gt; = external;
 
 # Applies a function to each member of a stream.
@@ -11971,7 +12230,7 @@ public isolated function codePointCompare(string str1, string str2) returns int 
 # + strs - strings to be joined
 # + return - a string consisting of all of `strs` concatenated in order
 #     with `separator` in between them
-public isolated function join(string separator, string... strs) returns string = external;
+public isolated function 'join(string separator, string... strs) returns string = external;
 
 # Finds the first occurrence of one string in another string.
 #
@@ -12945,13 +13204,26 @@ is applied to the body of a while statement.</li>
 query expression or action.</li>
 <li>A function call is only allowed with an expression in a match-guard when
 there is no possibility that it can mutate the value being matched.</li>
-<li>A member of an enum declaration can have the same identifier as a member of
-another enum declaration.</li>
 <li>The interpretation of multiple dimensions in an array-type-descriptor has
 been changed to make the order of dimensions in the type-descriptor consistent
 with the order of dimensions in an expression that accesses the array.</li>
 <li>The static type of an expression now has singleton type when all its
 subexpressions have singleton type.</li>
+<li>Unreachable statements are now an error.</li>
+<li>Conditional variable type narrowing is now smarter. In particular, the types
+of variables can be narrowed in statements following an <code>if</code>
+statement that contains <code>return</code>.</li>
+<li>Variable type narrowing in a match statement has been improved to work
+better for types that are partially readonly.</li>
+<li>Many expressions now perform nil lifting.</li>
+<li>The rules for determining the basic type of a numeric literal have been
+revised to work better in the case where the contextually expected type allows
+two of the three possible numeric basic types.</li>
+<li>Restrictions have been introduced on assigning within a loop to a variable
+whose type has been narrowed outside the loop.</li>
+<li>Optional fields can be accessed using the <code>.</code> operator as well as
+the <code>?.</code> operator, when the type of the accessed field does not allow
+nil.</li>
 </ol>
 </section>
 <section>

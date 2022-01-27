@@ -7,16 +7,19 @@
     - title: Starting the Shell
       url: /learn/ballerina-shell/#starting-the-shell
       active: starting-the-shell
-    - title: Stopping the Shell
-      url: /learn/ballerina-shell/#stopping-the-shell
-      active: stopping-the-shell
+    - title: Available Commands
+      url: /learn/ballerina-shell/#available-commands
+      active: available-commands
     - title: Evaluating Code Snippets
       url: /learn/ballerina-shell/#evaluating-code-snippets
       active: evaluating-code-snippets
-    - title: Loading Definitions from a File
-      url: /learn/ballerina-shell/#loading-definitions-from-a-file
-      active: loading-definitions-from-a-file
     - title: Resetting the State
       url: /learn/ballerina-shell/#resetting-the-state
       active: resetting-the-state
+    - title: Stopping the Shell
+      url: /learn/ballerina-shell/#stopping-the-shell
+      active: stopping-the-shell
+    - title: Help Commands
+      url: /learn/ballerina-shell/#help-commands
+      active: help-commands
 

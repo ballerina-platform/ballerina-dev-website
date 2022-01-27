@@ -26,8 +26,8 @@ redirect_from:
 				<div class="cFeaturedVersion">
 					<h2 id="swanlake">{{ site.data.swanlake-latest.metadata.display-version }} <span id="versionInfo">({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2>
 					<div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;">
-						<p>If you are already using Ballerina, use the <a href="/learn/tooling-guide/cli-tools/update-tool/">Ballerina Update Tool</a> to directly update to {{ site.data.swanlake-latest.metadata.display-version }} by running the command below. 
-						<pre>bal dist pull {{ site.data.swanlake-latest.metadata.short-version}}</pre>
+						<p>If you are already using Ballerina, use the <a href="/learn/tooling-guide/cli-tools/update-tool/">Ballerina Update Tool</a> to directly update to {{ site.data.swanlake-latest.metadata.display-version }}. First, run the command below to update the update tool to its latest version. </p> <pre>bal update</pre>
+						<p>If your <strong>Update Tool is below version 0.8.14</strong>, use the <code class="highlighter-rouge language-plaintext">ballerina update</code> command. Next, run the command below to update to {{ site.data.swanlake-latest.metadata.display-version }}.</p> <pre>bal dist pull {{ site.data.swanlake-latest.metadata.short-version}}</pre>
 						<p>For further details, see the <a href="/downloads/swan-lake-release-notes/">Release Note</a>. </p>
 					</div>
             </br> 
@@ -177,7 +177,7 @@ redirect_from:
             </p>-->
                            <h2><span id="versionInfo">{{ site.data.stable-latest.metadata.version }} ({{ site.data.stable-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2>
                            <div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;">
-                              <p> If you already have jBallerina version 1.2.0 or above installed, you can use the <a href="/1.2/learn/keeping-ballerina-up-to-date/">Ballerina Update Tool</a> to directly update to {{ site.data.stable-latest.metadata.version }}. To do this, first, execute the command below to get the Update Tool updated to its latest version. </p> <pre>bal update</pre>
+                              <p> If you already have jBallerina version 1.2.0 or above installed, you can use the <a href="/1.2/learn/keeping-ballerina-up-to-date/">Ballerina Update Tool</a> to directly update to {{ site.data.stable-latest.metadata.version }}. To do this, first, execute the command below to get the Update Tool updated to its latest version. </p> <pre>ballerina update</pre>
                               <p>Next, execute the command below to update to jBallerina {{ site.data.stable-latest.metadata.version }}.</p> <pre>bal dist update</pre>
                               <p>For further details, see the <a href="/downloads/1.2.x-release-notes/">Release Note</a>.</p>
                            </div>

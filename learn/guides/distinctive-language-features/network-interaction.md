@@ -8,8 +8,10 @@ active: network-interaction
 intro: In this part, you will learn about the features of the Ballerina programming language that are distinctive. These features revolve around key design considerations that make Ballerina suitable for cloud application programming using small and medium-sized programs.
 redirect_from:
 - /learn/distinctive-language-features/what-makes-ballerina-distinctive
+- /learn/distinctive-language-features/what-makes-ballerina-distinctive/
 - /learn/distinctive-language-features/
 - /learn/distinctive-language-features
+- /learn/distinctive-language-features/network-interaction
 ---
 
 Ballerina aims to be as pragmatic as possible by taking cues from existing patterns used in programming. It models cloud-era applications that make heavy use of network interaction, network data, and concurrency. In addition, Ballerina focuses on providing integration that acts like glue for orchestrating other programs and ensures reliability and maintainability while also assuring moderate cognitive load on programmers.

@@ -112,18 +112,63 @@ redirect_from:
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
- <a href="/learn/getting-started/hello-world/writing-your-first-ballerina-program/">
-    <h3 id="hello-world">Hello World</h3></a>
+ <a href="/learn/getting-started-with-ballerina/">
+    <h3 id="hello-world">Getting Started with Ballerina</h3></a>
    <p >Writing your first Ballerina program and creating your first Ballerina package. </p>
 </div>
 </div>
+
 <div class="row">
+
+
 <div class="col-lg-6 col-md-6 col-sm-12 card">
 <a href="/learn/language-basics/">
     <h3 id="language-basics">Language Basics</h3></a>
     <p >Get started with the basics that are common to all C-family programming languages. </p>
 </div>
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+<a href="/learn/writing-a-rest-api-with-ballerina/">
+    <h3 id="working-with-data">Writing a REST API with Ballerina</h3></a>
+    <p >Learn how to write a REST API with Ballerina. </p>
+</div>
+</div>
 
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card">
+<a href="/learn/writing-a-graphql-api-with-ballerina/">
+    <h3 id="working-with-data">Writing a GraphQL API with Ballerina</h3></a>
+    <p >Learn how to write a GraphQL API with Ballerina. </p>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+<a href="/learn/writing-a-grpc-service-with-ballerina/">
+    <h3 id="building-a-data-service">Writing a gRPC Service with Ballerina</h3></a>
+    <p >Writing a simple Ballerina gRPC service and invoking the service through a Ballerina gRPC client. </p>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card">
+<a href="/learn/working-with-data/">
+    <h3 id="working-with-data">Working with Data in Ballerina</h3></a>
+    <p >Learn how to use Ballerina query expressions to filter, sort, and join different iterable collections. </p>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+ <a href="/learn/deploying-ballerina-on-kubernetes/">
+    <h3 id="hello-world">Deploying Your service on Kubernetes</h3></a>
+   <p >Dockerizing your application and deploying it in Kubernetes. </p>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card">
+<a href="/learn/building-a-data-service/">
+    <h3 id="building-a-data-service">Building a Data Service</h3></a>
+    <p >Connecting to a MySQL database and executing queries using an HTTP RESTful API </p>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
+<a href="/learn/writing-a-restful-api-with-ballerina/">
+ <h3 id="writing-a-restful-api-with-ballerina">Writing a RESTful API with Ballerina</h3></a>
+		<p>This simple guide helps you understand the basics of Ballerina constructs which allow you to write RESTful APIs.</p>
 </div>
 </div>
 
@@ -132,7 +177,7 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
- <a href="/learn/distinctive-language-features/">
+ <a href="/learn/distinctive-language-features/network-interaction/">
   <h3 id="distinctive-language-features">Distinctive Language Features</h3></a>
  	<p>A guide to the language features that make Ballerina distinctive.  </p>
 </div>
@@ -146,9 +191,9 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card"  >
-  <a href="/learn/testing-ballerina-code/testing-quick-start/">
+  <a href="/learn/testing-ballerina-code/quick-start-on-testing/">
    <h3 id="testing-ballerina-code">Testing Ballerina Code</h3> </a>
-    <p >Details of writing automated tests using the built-in test framework.  </p>
+    <p>Details of writing automated tests using the built-in test framework.  </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important">
   <a href="/learn/generating-code-documentation/">
@@ -161,14 +206,14 @@ redirect_from:
 <div class="row">
 
 <div class="col-lg-6 col-md-6 col-sm-12 card"   >
- <a href="/learn/configuring-ballerina-programs/">
+ <a href="/learn/configuring-ballerina-programs/quick-start-on-configurable-variables">
   	<h3 id="configuring-ballerina-programs">Configuring Ballerina Programs</h3></a>
  	<p>The language support for configurability.   </p>
 
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important">
-  <a href="/learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/">
+  <a href="/learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/">
  	<h3 id="observing-ballerina-programs">Observing Ballerina Programs
 </h3></a>
   		<p>Basics of the observability functionalities that are provided for Ballerina programs. </p>
@@ -178,7 +223,7 @@ redirect_from:
 <div class="row">
 
 <div class="col-lg-6 col-md-6 col-sm-12 card"  >
- <a href="/learn/running-ballerina-programs-in-the-cloud/code-to-cloud/">
+ <a href="/learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/">
   		<h3 id="running-ballerina-programs-in-the-cloud">Running Ballerina Programs in the Cloud
 </h3></a>
  	<p>The cloud offerings for running Ballerina programs.  </p>
@@ -198,9 +243,9 @@ redirect_from:
 		<p>Details of publishing your library package to Ballerina Central.  </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
-<a href="/learn/calling-java-code-from-ballerina-and-vice-versa/">
- <h3 id="calling-java-code-from-ballerina-and-vice-versa">Calling Java Code from Ballerina and Vice Versa</h3></a>
-		<p>Instructions on the supported interoperability features. </p>
+<a href="/learn/calling-java-code-from-ballerina/">
+ <h3 id="calling-java-code-from-ballerina">Calling Java Code from Ballerina</h3></a>
+		<p>Details of calling Java code from Ballerina using Java interoperability.  </p>
 </div>
 </div>
 
@@ -210,15 +255,19 @@ redirect_from:
 <p>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
- <a href="/learn/visual-studio-code-extension/quick-start/">
+ <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina">
     <h3 id="installing-ballerina">Visual Studio Code Extension</h3></a>
     <p >Details of all the features of the Ballerina Visual Studio Code extension. </p>
 </div>
 </div>
 
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card">
+ <a href="/learn/ballerina-openapi-support/">
+    <h3 id="ballerina-openapi">Ballerina OpenAPI Support </h3></a>
+    <p >Details of all the features of the Ballerina OpenAPI tools. </p>
 </div>
-
-
+</div>
 
 <div class="row" style="margin-bottom:30px">
 	<h2 id="references">References</h2>
@@ -259,13 +308,19 @@ redirect_from:
  	 <h3 id="style-guide">Style Guide</h3></a>
 		<p>Best practices to follow when formatting Ballerina code.   </p>
 </div>
-<div class="row">
+
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
- <a href="/learn/language-introduction/">
-  	<h3 id="language-introduction-slides">Language Introduction</h3></a>
-		<p>Presentation slides on the Ballerina language that you can use to talk about the language.</p>
+  <a href="/learn/java-interoperability/">
+     <h3 id="the-bal-tool">Java Interoperability</h3></a>
+		<p>Instructions on the supported Java interoperability features.  </p>
+</div>
 </div>
 
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card" >
+  <a href="/learn/style-guide/package-references/">
+ 	 <h3 id="style-guide">Package References</h3></a>
+		<p>References related to Ballerina Packages.</p>
 </div>
 </div>
 
@@ -279,6 +334,5 @@ redirect_from:
   <p >A video series, which explains the language and its reference slide deck. </p>
 </div>
 </div>
-
-
 </div>
+ 

@@ -39,6 +39,21 @@
     - title: Writing Tests
       url: /learn/testing-ballerina-code/writing-tests/
       active: writing-tests
+    - title: Structuring Tests
+      url: /learn/testing-ballerina-code/structuring-tests/
+      active: structuring-tests
+    - title: Configuring Tests
+      url: /learn/testing-ballerina-code/configuring-tests/
+      active: configuring-tests
+    - title: Code Coverage and Reporting
+      url: /learn/testing-ballerina-code/code-coverage-and-reporting/
+      active: code-coverage-and-reporting
+    - title: Defining Data-Driven Tests
+      url: /learn/testing-ballerina-code/defining-data-driven-tests/
+      active: defining-data-driven-tests
+    - title: Defining Test Groups
+      url: /learn/testing-ballerina-code/defining-test-groups/
+      active: defining-test-groups
     - title: Testing Services and Clients
       url: /learn/testing-ballerina-code/testing-services-and-clients/
       active: testing-services-and-clients
@@ -56,28 +71,30 @@
 - title: Configuring Ballerina Programs
   url: '#'
   sublinks:
-    - title: Configuring a Sample Ballerina Service
-      url: /learn/configuring-ballerina-programs/configuring-a-sample-ballerina-service
-      active: configuring-a-sample-ballerina-service
+    - title: Quick Start on Using Configurable Variables
+      url: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables
+      active: quick-start-on-configurable-variables
+      sublinks:
+        - title: Configuring a Sample Ballerina Service
+          url: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables/#configuring-a-sample-ballerina-service
+          active: configuring-a-sample-ballerina-service
     - title: Providing Values to Configurable Variables
       url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables
-      active: providing-values-to-configurable-variables
       sublinks:
-        - title: Providing configuration values through Command Line Arguments
+        - title: Providing Configuration Values Through Command Line Arguments
           url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-configuration-values-through-command-line-arguments
           active: providing-values-through-command-line-arguments
-        - title: Providing configuration values through TOML Syntax
+        - title: Providing Configuration Values Through TOML Syntax
           url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-configuration-values-through-toml-syntax
           active: providing-configuration-values-through-toml-syntax
-    - title: Providing module information of the configurable variable
-      url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-module-information-of-the-configurable-variable
-      active: providing-module-info-of-configurable-variable
-    - title: Configure values in Kubernetes Environments
-      url: /learn/configuring-ballerina-programs/configure-values-in-kubernetes-environment/
-      active: configure-values-in-kubernetes-environment
+        - title: Providing Module Information of the Configurable Variable
+          url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-module-information-of-the-configurable-variable
+          active: providing-module-info-of-configurable-variable
+    - title: Configuring Values in Kubernetes Environments
+      url: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/
       sublinks:
-        - title: Securing sensitive data using configurable variables
-          url: /learn/configuring-ballerina-programs/configure-values-in-kubernetes-environment/#securing-sensitive-data-using-configurable-variables
+        - title: Securing Sensitive Data Using Configurable Variables
+          url: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/#securing-sensitive-data-using-configurable-variables
           active: securing-sensitive-data-using-configurable-variables
 
 - title: Observing Ballerina Programs
@@ -118,7 +135,7 @@
   url: /learn/publishing-packages-to-ballerina-central/
   active: publishing-packages-to-ballerina-central
 
-- title: Calling Java Code from Ballerina and Vice Versa
-  url: /learn/calling-java-code-from-ballerina-and-vice-versa/
-  active: calling-java-code-from-ballerina-and-vice-versa
+- title: Calling Java Code from Ballerina
+  url: /learn/calling-java-code-from-ballerina/
+  active: calling-java-code-from-ballerina
 

@@ -161,8 +161,8 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
-<a href="/learn/building-a-data-service/">
-    <h3 id="building-a-data-service">Building a Data Service</h3></a>
+<a href="/learn/building-a-data-service-in-ballerina/">
+    <h3 id="building-a-data-service-in-ballerina">Building a Data Service in Ballerina</h3></a>
     <p >Connecting to a MySQL database and executing queries using an HTTP RESTful API </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">

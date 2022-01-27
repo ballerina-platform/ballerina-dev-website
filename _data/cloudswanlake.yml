@@ -18,10 +18,28 @@
               active: package-layout
             - title: Docker Deployment
               url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#docker-deployment
-              active: docker-deployment
+              sublinks:
+                - title: Creating the Ballerina Package
+                  url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#creating-the-ballerina-package
+                  active: creating-the-ballerina-package
+                - title: Generating the Artifacts
+                  url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#generating-the-artifacts
+                  active: generating-the-artifacts
+                - title: Executing the Docker Image
+                  url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#executing-the-docker-image
+                  active: executing-the-docker-image
             - title: Kubernetes Deployment
               url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#kubernetes-deployment
-              active: kubernetes-deployment
+              sublinks:
+                - title: Creating the Ballerina Package
+                  url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#creating-the-ballerina-package-1
+                  active: creating-the-ballerina-package
+                - title: Generating the Artifacts
+                  url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#generating-the-artifacts-1
+                  active: generating-the-artifacts
+                - title: Executing the Kubernetes Service
+                  url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/#executing-the-kubernetes-service
+                  active: executing-the-kubernetes-service
     - title: Function as a Service (FaaS) with Ballerina
       url: '#'
       sublinks:
@@ -45,7 +63,13 @@
               active: invoking-the-function
             - title: More Samples
               url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/#more-samples
-              active: more-samples
+              sublinks:
+                - title: S3 Trigger
+                  url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/#s3-trigger
+                  active: s3-trigger
+                - title: DynamoDB Trigger
+                  url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/#dynamodb-trigger
+                  active: dynamodb-trigger
         - title: Azure Functions
           url: '#'
           sublinks:
@@ -66,5 +90,11 @@
               active: invoking-the-function
             - title: More Samples
               url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#more-samples
-              active: more-samples
+              sublinks:
+                - title: HTTP Trigger to Queue Output
+                  url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output
+                  active: http-trigger---queue-output
+                - title: CosmosDB Trigger to Queue Output
+                  url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#cosmosdb-trigger---queue-output
+                  active: cosmosdb-trigger---queue-output
 

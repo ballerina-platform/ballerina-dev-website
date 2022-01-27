@@ -237,14 +237,14 @@ isolated function removeEmployee(int id) returns int|error {
 ## Exposing the Database via an HTTP RESTful API
 
 After you have defined the methods necessary to manipulate the database, expose these selectively via an HTTP
-RESTful API. For this, first need to import the Ballerina [`HTTP` module](https://lib.ballerina.io/ballerina/http/latest).
+RESTful API. For this, you first need to import the Ballerina [`HTTP` module](https://lib.ballerina.io/ballerina/http/latest).
 
 ```ballerina
 import ballerina/http;
 ```
 
 ### Creating a Service
-Afterwards, you can create a service as follows. This creates an `/employees` endpoint on port `8080` which can 
+Afterwards, you can create a service as shown below. This creates an `/employees` endpoint on port `8080` which can 
 be accessed via a browser by visiting `http://locahost:8080/employees` after executing the command `bal run`.
 
 ```ballerina

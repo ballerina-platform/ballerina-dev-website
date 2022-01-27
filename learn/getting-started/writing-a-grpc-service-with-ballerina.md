@@ -23,8 +23,8 @@ redirect_from:
 
 ## Creating the Service Definition
 
-In an RPC program, the first step is to define the interface of the service using an Interface Definition Language(IDL). gRPC commonly uses Protocol Buffers as the IDL.
-Here you are going to use a simple service definition to illustrate the server and client implementation in the Ballerina Language.
+In an RPC program, the first step is to define the service interface using an Interface Definition Language(IDL). 
+gRPC commonly uses Protocol Buffers as the IDL. Let's write a simple service definition in Protocol Buffers as below.
 
 ```proto
 syntax = "proto3";
@@ -47,13 +47,13 @@ message HelloReply {
  string message = 1;
 }
 ```
-> **Note:** The sample service definition is taken from the quick start guide in the gRPC official site.
+> **Note:** The sample service definition is taken from the quick start guide on the gRPC official site.
 
 Let’s start implementing a Ballerina service and client for the above definition.
 
 ## Implementation
 
-As illustrated in the diagram below, you first need to compile the service definition file (i.e., `helloworld.proto`), and generate the source code for both the client and service applications. In Ballerina, you can generate the source code using the built-in 'Protocol Buffers to Ballerina' tool.
+As illustrated in the diagram below, you first need to compile the service definition file (i.e., `helloworld.proto`), and generate the source code for both the client and service applications. In Ballerina, you can generate the source code using the built-in `Protocol Buffers to Ballerina` tool.
 
 ![gRPC Getting Started](/learn/images/grpc-getting-started.png)
 
@@ -61,7 +61,7 @@ Let’s walk through the instructions on implementing the gRPC service and clien
 
 ### Developing a gRPC service
 
-As with any other Ballerina Program, you need to start with creating a Ballerina project. Then, you can generate the service code in the project and write the business logic.
+As with any other Ballerina Program, you need to create a Ballerina project. Then, you can generate the service code in the project and write the business logic.
 
 #### Creating a Ballerina project
 
@@ -141,7 +141,7 @@ Compiling source
 Running executable
 ```
 
-Now you completed the server-side implementation and it is running on port 9090. Let’s move on to the gRPC client-side implementation.
+Now you completed the server-side implementation, and it is running on port 9090. Let’s move on to the gRPC client-side implementation.
 
 ### Developing a gRPC client
 
@@ -184,11 +184,11 @@ greeter_client
 Here,
 - The `helloworld_pb.bal` file is the stub file that contains the classes that the client/service uses to talk to each 
 other and the Ballerina types corresponding to request and response messages.
-- The `greeter_client.bal` file is the client template file that contains the main function with the client declaration.
+- The `greeter_client.bal` file is the client template file that contains the `main` function with the client declaration.
 
 #### Update and Run the application
 
-Let’s update the client template file (i.e., `greeter_client.bal`) and write code to do a remote call with the server and get the server response back. Sample code is as follows,
+Let’s update the client template file (i.e., `greeter_client.bal`) and write code to call the remote function in the server and get the server response back. Sample code is as follows,
 
 ```ballerina
 import ballerina/io;
@@ -202,9 +202,8 @@ public function main() returns error? {
 
 In this code,
 
-- The client declaration creates a connection to the remote server which is listening on port 9090. The generated 
-client has remote methods that can use to talk to a remote server.
-- The main function contains the statements that call the `sayHello` remote function and prints the response to the 
+- The client declaration creates a connection to the remote server which is listening on port 9090. The generated client has remote methods that can use to talk to a remote server.
+- The `main` function contains the statements that call the `sayHello` remote function and prints the response to the
   console.
 
 Let’s run this project in your terminal:

@@ -119,6 +119,7 @@ You can make use of wild cards(`*`) to capture multiple cases as well.
 ***Example:***
 
 The following is an example to execute map data sets.
+>**Note:** Include the key within double-quotes.
 
 ```bash
 $ bal test --tests fruitsDataProviderTest#"'banana'"
@@ -136,8 +137,6 @@ Running Tests
 		0 failing
 		0 skipped
 ```
-
->**Note:** Include the key within double-quotes. 
 
 ***Example:***
 

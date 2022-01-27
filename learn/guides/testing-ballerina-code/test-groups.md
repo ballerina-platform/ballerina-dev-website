@@ -54,8 +54,11 @@ function testFunction3() {
 ### Executing Grouped Tests
 To execute groups of tests, the `--groups` flag is used during test execution.
 
+```$bal test --groups g1```
+
+The above results in an output of :
+
 ```bash
-$bal test --groups g1
 
 Compiling source
         user/Testing:0.1.0
@@ -76,8 +79,11 @@ I'm a test belonging to groups g1 and g2!
 
 The groups flag supports executing multiple groups by using comma-separated arguments.
 
+```$bal test --groups g1,g2```
+
+The above results in an output of :
+
 ```bash
-$bal test --groups g1,g2
 
 Compiling source
         user/Testing:0.1.0

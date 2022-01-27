@@ -1,4 +1,4 @@
-- title: Deploying your Service on Kubernetes
+- title: Deploying Ballerina on Kubernetes
   url: #
   sublinks:
     - title: Prerequisites

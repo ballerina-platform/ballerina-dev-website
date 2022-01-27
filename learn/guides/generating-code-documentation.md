@@ -151,14 +151,6 @@ First, let's create a new Ballerina package:
 ```bash
 $ bal new math
 Created new Ballerina package 'math' at math
-```
-
-Next, move into the package directory and execute `bal add <module-name>` to add a new Ballerina module.
-
-```bash
-$ cd math/
-$ bal add world
-Added new ballerina module at 'modules/world'.
 $ tree
 └── math
     ├── Ballerina.toml

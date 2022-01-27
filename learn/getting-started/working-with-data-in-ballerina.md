@@ -1,7 +1,7 @@
 ---
 layout: ballerina-working-with-data-in-ballerina-swanlake
 title: Working With Data in Ballerina
-permalink: /learn/working-with-data-in-ballerina
+permalink: /learn/working-with-data-in-ballerina/
 keywords: query expressions, language integrated queries, programming language, getting started
 description: Learn how to use Ballerina query expressions to filter, sort, and join different iterable collections.
 active: working-with-data-in-ballerina

@@ -173,8 +173,9 @@ public isolated function pow(float a, float b) returns float {
 }
 ```
 
-Now, let's generate documentation of the package:
+Now, move into the `math` directory and run `bal doc` command to generate documentation of the package:
 ```bash
+$ cd math
 $ bal doc
 ```
 Output:

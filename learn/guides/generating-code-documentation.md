@@ -149,28 +149,14 @@ First, let's create a new Ballerina package:
 ```bash
 $ bal new math
 Created new Ballerina package 'math' at math
-```
-
-Next, move into the package directory and execute `bal add <module-name>` to add a new Ballerina module.
-
-```bash
-$ cd math/
-$ bal add world
-Added new ballerina module at 'modules/world'.
 $ tree
-.
-├── Ballerina.toml
-├── main.bal
-└── modules
-    └── world
-        ├── Module.md
-        ├── resources
-        ├── tests
-        │   └── lib_test.bal
-        └── world.bal
+└── math
+    ├── Ballerina.toml
+    └── main.bal
 
-4 directories, 5 files
+1 directory, 2 files
 ```
+
 Now, let's add a function to the `math` module to be documented. Copy and paste the following code into the `math/main.bal` file.
 
 ```ballerina
@@ -186,43 +172,7 @@ public isolated function pow(float a, float b) returns float {
     return 0;
 }
 ```
-Add the following class definition to the `world` module. Copy and paste the following code into the `math/modules/world/world.bal` file.
 
-```ballerina
-# Represents a person object.
-#
-# + name - Name of the person
-# + age - Age of the person in years
-# + address - Address of the person
-# + wealth - Account balance of the person
-public class Person {
-    public string name = "";
-    public int age = 0;
-    public string address = "";
-    public float wealth = 0;
-
-    # Gets invoked to initialize the `Person` object.
-    #
-    # + name - Name of the person for the constructor
-    # + age - Age of the person for the constructor
-    public function init(string name, int age) {
-    }
-
-    # Get the address of the person.
-    #
-    # + return - New address of the person
-    public function getAddress() returns string {
-        return self.address ;
-    }
-
-    # Add the wealth of the person.
-    #
-    # + amt - Amount to be added
-    # + rate - Interest rate
-    public function addWealth(int[] amt, float rate=1.5) {
-    }
-}
-```
 Now, let's generate documentation of the package:
 ```bash
 $ bal doc
@@ -234,7 +184,6 @@ Compiling source
 Generating API Documentation
 Saved to: apidocs
 ```
->**Note:** If you replaced the existing code in the `math/modules/world/world.bal` file, you might get a compilation error. This is due to the sample unit tests in the `math/modules/world/tests/lib_test.bal` file. In that case, delete the `math/modules/world/tests` directory, and run the `bal doc` command again.
 
 `target/apidocs/user/math/0.1.0` folder would contain the following;
 ```bash

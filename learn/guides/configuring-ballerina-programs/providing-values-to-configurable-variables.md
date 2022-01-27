@@ -20,8 +20,8 @@ given through multiple ways when retrieving configurable values:
 
 - **Command-line Arguments**
 
-The values can be configured through the command-line arguments when executing the Ballerina program. The configurable
-The value provided through a command-line argument is expected to be the `toString()` representation of the intended 
+The values can be configured through the command-line arguments when executing the Ballerina program. The configurable 
+value provided through a command-line argument is expected to be the `toString()` representation of the intended 
 value.
 
 - **Configuration Files**

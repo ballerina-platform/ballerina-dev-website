@@ -31,41 +31,37 @@ redirect_from:
 
 ## Starting a Debug Session
 
-You can start a quick debug session instantly to debug a Ballerina program with `CodeLens`. Also, you can start a debug session with configurations
-like program arguments and environment variables by adding them into the `launch.json` file.
+The Ballerina extension provides multiple options to debug Ballerina applications, and the most convenient way will be using the context-aware debug codelens support.
+
+However, if you require launching debug sessions with additional configurations (i.e., program arguments, environment variables), you can use `launch.json` configurations
+(For more information, see [Starting a Debug Session with Configurations](#starting-a-debug-session-with-configurations).
 
 ### Starting a Program Debug Session
 
-The Ballerina extension provides multiple options to debug your Ballerina program and the easiest way will be using the context-aware `Debug` CodeLens support provided by the extension.
-The extension can detect any program entry points (main function/service definition) on the fly and the CodeLens will appear automatically.  
+Follow the steps below to start a quick debug session using CodeLens.
 
-Follow the steps below to start a quick debug session.
+1. Open the folder which includes the Ballerina program you want to debug, and open the source file in the editor.
+
+2. Add the debug points you require by clicking in front of the line numbers of the file you want to debug.
+
+3. Click the `Debug` CodeLens, which will appear just above the `main()` method.
 
 ![Start_Main Quick Debug Session](/learn/images/start-quick-main-debug-session.gif)
 
 <br/>
 
-1. Open the folder, which includes the Ballerina program you want to debug, and open the source file in the editor.
-
-2. Add the debug points you require by clicking in front of the line numbers of the file you want to debug.
-
-3. Click the `Debug` CodeLens, which is just above the `main()` method.
-
 ### Starting a Test Debug Session
 
-The Ballerina test functions can also be debugged using the codelens. The `debug` codelens will automatically appear on top of each Ballerina test function and you are able to execute/debug only a selected test case by clicking on the corresponding codelens as shown below.
+The Ballerina test functions can also be debugged using the codelens. The `debug` codelens will automatically appear on top of each Ballerina test function, 
+and you are able to execute/debug only the selected test case by clicking on the corresponding codelens as shown below.
 
 ![Start_Test Quick Debug Session](/learn/images/start-quick-test-debug-session.gif)
 
 <br/>
 
-### Debug Session with Configurations
+### Starting a Debug Session with Configurations
 
 Follow the steps below to start a debug session with configurations. All the configurations need to be added in the `launch.json` file.
-
-![Start Debug Session](/learn/images/start-debug-session.gif)
-
-<br/>
 
 1. Open the folder, which includes the Ballerina program you want to debug, and select the file.
 
@@ -79,13 +75,13 @@ Follow the steps below to start a debug session with configurations. All the con
 
 5. Add the debug points you require by clicking in front of the line numbers of the file you want to debug.
 
+![Start Debug Session](/learn/images/start-debug-session.gif)
+
 Then, you can start a program, test, or remote debug session as shown below.
 
 >**Info:** If you launch the debug session through VS Code, the working directory will be the Ballerina package root. However, you can use remote debugging for alternative working directories.
 
-<br/>
-
-#### Starting a Program Debug Session
+#### Starting a Program Debug Session with Configurations
 
 Follow the steps below to start a program debug session.
 
@@ -99,7 +95,7 @@ Follow the steps below to start a program debug session.
 
 <br/>
 
-#### Starting a Test Debug Session
+#### Starting a Test Debug Session with Configurations
 
 Follow the steps below to start a test debug session.
 
@@ -181,11 +177,11 @@ Here are the default configurations generated for the Ballerina debugging:
 
 <br/>
 
->**Info:** You can debug a Ballerina program without generating the `launch.json` configurations file but it is not possible to manage launch configurations and set up advanced debugging.
-
 ### Ballerina `launch.json` Attributes
 
-The auto-generated `launch.json` file consists of three main configurations namely, `Ballerina Debug`, `Ballerina Test`, and `Ballerina Remote`. Each configuration supports different attributes and those attributes can be identified with the help of IntelliSense suggestions (`⌃Space`).
+The auto-generated `launch.json` file consists of three main configurations named `Ballerina Debug`, `Ballerina Test` and `Ballerina Remote` 
+
+Each configuration supports a different set of attributes, which will be provided via IntelliSense completion suggestions.
 
 The following attributes are mandatory for all configurations.
 
@@ -227,12 +223,10 @@ The following debugging features are currently supported by the Ballerina VScode
   - Logpoints
 - Pause & Continue
 - Step In/Out/Over
-- Variables
-- Call Stacks
-- Strands
+- Ballerina Strand and Stacktrace view
+- Variable view
+- Variable/Expression Watch Window
 - Expression Evaluation
-
-<!--For more information on the above features, see [Using the Debugging Features](/learn/tooling-guide/visual-studio-code-extension/run-and-debug/using-the-debugging-features/).-->
 
 ### Conditional Breakpoints
 
@@ -240,7 +234,9 @@ The Ballerina debugger provides the ability of setting Ballerina expression-base
 The debugger will suspend at the breakpoint whenever the expression evaluates to true.
 
 ![Debugger Conditional Breakpoints](/learn/images/debugger-conditional-breakpoints.gif)                
-                      
+
+<br/>
+
 ### Logpoints        
 
 Logpoints are another variant of breakpoints, which do not "break" the program execution but instead log a message to the console. Logpoints are especially useful for injecting logging while debugging production servers that cannot be paused or stopped.
@@ -252,6 +248,8 @@ Logpoints can also be enabled/disabled and can be controlled by conditions simil
 Log messages can either be plain texts or string templates, which can contain expressions to be evaluated within the `${}` syntax.
 
 ![Debugger String Temaplate Logpoints](/learn/images/debugger-logpoints-template.gif)
+
+<br/>
 
 ### Pause/Continue
 
@@ -272,22 +270,11 @@ The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
 
 ![Debugger Evaluation Console](/learn/images/debugger-evaluation-console.gif)
 
-<br/>
-
 #### Using the Watch Window
 
 ![Debugger Watch Window](/learn/images/debugger-watch-window.gif)
 
 <br/>
 
-#### Existing Limitations
-
-- Anonymous function, let, and constructor expressions are currently not supported.
-- Limited support for Ballerina actions (only remote method call actions are supported)
-
->**Info:** For more information on debugging features using VS Code, go to the [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
-
-
-
-
+>**Info:** For more information on VSCode debugging features, go to [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
 

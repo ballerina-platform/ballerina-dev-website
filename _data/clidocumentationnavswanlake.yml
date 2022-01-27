@@ -16,9 +16,6 @@
         - title: Other Commands
           url: /learn/cli-documentation/cli-commands/#other-commands
           active: other-commands
-        - title: Update Commands
-          url: /learn/cli-documentation/cli-commands/#update-commands
-          active: update-commands
     - title: Update Tool
       url: /learn/cli-documentation/update-tool/
       active: update-tool

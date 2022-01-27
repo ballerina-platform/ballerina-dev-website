@@ -158,7 +158,7 @@ import ballerina/openapi;
 
 @openapi:ServiceInfo{
     contract: “/path/to/openapi.json|yaml”,
-    [ tag : “store” ],
+    [ tags : “store” ],
     [ operations: [“op1”, “op2”] ] 
     [ failOnErrors]: true/false → default : true
     [ excludeTags ]: [“pets”, “user”]
@@ -202,7 +202,7 @@ $ bal openapi -i <openapi-contract> [--mode client] [--with-tests]
 ```bash
 $ bal openapi -i hello.yaml --mode client --with-tests
 ```
-In addition to the above-mentioned generated file, this will generate a`tests.bal` file in the default client generation.
+In addition to the above-mentioned generated file, this will generate a `test.bal` file in the default client generation.
 
 #### Generating with Nillable Types
 This is an optional flag in the OpenAPI to Ballerina command. If your OpenAPI specification includes JSON schema properties that are not marked as **nullable:true**, they may be returned as null in some responses. It will result in a JSON schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to generate all data types in the generated record with Ballerina nil support by turning this flag on.
@@ -275,12 +275,12 @@ $ bal openapi -i <openapi-contract> [-n |--nullable]
 This is optional. It works with the client generation command and generates a boiler-plate test for all the remote functions of the generated client.
 
 ## OpenAPI Annotation Reference
-The `@openapi:ServiceInfo` annotation supports several usages in the Ballerina OpenAPI tool. It contains attributes such as `contract` , `tag`, `operations`, `failOnErrors`, `excludeTags`, `excludeOperations`, `title`, `version`, and `embed` for each particular purpose. These attributes are optional to be used in the annotation.
+The `@openapi:ServiceInfo` annotation supports several usages in the Ballerina OpenAPI tool. It contains attributes such as `contract` , `tags`, `operations`, `failOnErrors`, `excludeTags`, `excludeOperations`, `title`, `version`, and `embed` for each particular purpose. These attributes are optional to be used in the annotation.
 
 ```ballerina
 @openapi:ServiceInfo{
     [contract: “/path/to/openapi.json|yaml”],
-    [ tag : “store” ],
+    [ tags : “store” ],
     [ operations: [“op1”, “op2”] ], 
     [ failOnErrors]: true/false → default : true,
     [ excludeTags ]: [“pets”, “user”],
@@ -289,7 +289,7 @@ The `@openapi:ServiceInfo` annotation supports several usages in the Ballerina O
     [ ‘version: “0.1.0” ],
     [embed: false/true -> default: true]
    }
-service greet on new http:Listener(9090) {
+service /greet on new http:Listener(9090) {
     ...
 }
 ```

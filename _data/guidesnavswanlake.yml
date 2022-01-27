@@ -76,7 +76,7 @@
       active: quick-start-on-configurable-variables
       sublinks:
         - title: Configuring a Sample Ballerina Service
-          url: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables/configuring-a-sample-ballerina-service
+          url: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables/#configuring-a-sample-ballerina-service
           active: configuring-a-sample-ballerina-service
     - title: Providing Values to Configurable Variables
       url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables

@@ -1,23 +1,23 @@
-- title: Using Query Expressions to Manipulate Data
+- title: Working With Data in Ballerina
   url: #
   sublinks:
     - title: Creating a New Ballerina Project
-      url: /learn/using-query-expressions-to-manipulate-data/#creating-a-new-ballerina-project
+      url: /learn/working-with-data-in-ballerina/#creating-a-new-ballerina-project
       active: creating-a-new-ballerina-project
     - title: Defining the Covid Dataset To Be Processed
-      url: /learn/using-query-expressions-to-manipulate-data/#defining-the-covid-dataset-to-be-processed
+      url: /learn/working-with-data-in-ballerina/#defining-the-covid-dataset-to-be-processed
       active: defining-the-covid-dataset-to-be-processed
     - title: Filtering All Countries Which Have More Than 10,000,000 Covid Cases
-      url: /learn/using-query-expressions-to-manipulate-data/#filtering-all-countries-which-have-more-than-10,000,000-covid-cases
+      url: /learn/working-with-data-in-ballerina/#filtering-all-countries-which-have-more-than-10,000,000-covid-cases
       active: filtering-all-countries-which-have-more-than-10,000,000-covid-cases
     - title: Sorting the Top Three Countries By the Number Of Reported Covid Deaths
-      url: /learn/using-query-expressions-to-manipulate-data/#sorting-the-top-three-countries-by-the-number-of-reported-covid-deaths
+      url: /learn/working-with-data-in-ballerina/#sorting-the-top-three-countries-by-the-number-of-reported-covid-deaths
       active: sorting-the-top-three-countries-by-the-number-of-reported-covid-deaths
     - title: Joining the Table With an Array To Find the Number Of Recovered Patients
-      url: /learn/using-query-expressions-to-manipulate-data/#joining-the-table-with-an-array-to-find-the-number-of-recovered-patients
+      url: /learn/working-with-data-in-ballerina/#joining-the-table-with-an-array-to-find-the-number-of-recovered-patients
       active: joining-the-table-with-an-array-to-find-the-number-of-recovered-patients
     - title: Finding Any Discrepancies In Reported Covid Dataset Using Intermediate States
-      url: /learn/using-query-expressions-to-manipulate-data/#finding-any-discrepancies-in-reported-covid-dataset-using-intermediate-states
+      url: /learn/working-with-data-in-ballerina/#finding-any-discrepancies-in-reported-covid-dataset-using-intermediate-states
       active: finding-any-discrepancies-in-reported-covid-dataset-using-intermediate-states
 
 

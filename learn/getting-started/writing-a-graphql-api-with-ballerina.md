@@ -3,7 +3,7 @@ layout: ballerina-language-basics-left-nav-pages-swanlake
 title: Writing a GraphQL API with Ballerina
 description: This is a simple guide that walks through the steps to write a GraphQL API using Ballerina.
 keywords: ballerina, graphql, ballerina packages, language-guide, standard library
-permalink: /learn/user-guides/getting-started/writing-a-graphql-api-with-ballerina
+permalink: /learn/user-guides/getting-started/writing-a-graphql-api-with-ballerina/
 active: language-basics
 intro: This is a simple guide that walks through the steps to write a GraphQL API using Ballerina.
 redirect_from:
@@ -13,24 +13,11 @@ redirect_from:
 - /learn/user-guide/getting-started/writing-a-graphql-api-with-ballerina/
 ---
 
-## Table of Contents
-- [Table of Contents](#table-of-contents)
-- [Prerequisites](#prerequisites)
-- [Design the GraphQL endpoint](#design-the-graphql-endpoint)
-- [Create a Ballerina Project](#create-a-ballerina-project)
-- [Create a Datasource for the Project](#create-a-datasource-for-the-project)
-- [Write Ballerina service](#write-ballerina-service)
-    - [Create GraphQL Object Types](#create-graphql-object-types)
-    - [Writing the GraphQL service](#writing-the-graphql-service)
-
 This simple guide helps you understand the basics of Ballerina constructs which allow you to write GraphQL APIs.
 
 Due to the batteries included nature of the Ballerina language, there is no need to add any third party libraries to
 implement the GraphQL API. The Ballerina standard library itself is adequate. In this guide, you will be writing a simple
 GraphQL service to serve a dummy dataset related to Covid-19.
-
-To get the best out of the guide, it is better to have some sense about Ballerina language capabilities such as queries,
-isolation, etc.
 
 This tutorial includes the following steps:
 
@@ -41,20 +28,19 @@ This tutorial includes the following steps:
     - Filter Covid-19 data using the `isoCode`
     - Add Covid-19 data
 
-## Prerequisites
+## Prerequisite
 
-- [Ballerina SwanLake](https://ballerina.io/downloads/)
-- A tool to edit the code. 
-**Tip:** [VSCode with the Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.Ballerina) is recommended. 
-  
-- A command terminal.
+Following two prerequisites are needed for this tutorial. 
+
+1. [Ballerina Swan Lake](https://ballerina.io/downloads/)
+2. [VSCode](https://code.visualstudio.com/download) with [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.Ballerina)
 
 ## Design the GraphQL Endpoint
 
 Usually, a GraphQL endpoint is defined using a GraphQL schema. Some languages require the GraphQL schema to create a
 GraphQL service (schema-first approach) while some languages do not need the schema to create the service
 (code-first approach). Ballerina GraphQL package uses the latter. Therefore, you do not need the schema file to create
-our service. But for the sake of the design, let's look at the GraphQL schema.
+your service. However, to understand the design, let's look at the GraphQL schema.
 
 ```graphql
 type Query {
@@ -87,8 +73,8 @@ input CovidEntry {
 }
 ```
 
-> Note: The `Decimal` type used here is coming from the `decimal` type in Ballerina language. We are using this type
-> to store the case counts. More about this later.
+> Note: The `Decimal` type used here is coming from the [`decimal`](https://ballerina.io/learn/by-example/decimal-type) type in Ballerina language. This type is used
+> to store the case counts.
 
 After creating the design, now, let's create the project.
 
@@ -125,7 +111,7 @@ source of the GraphQL service.
 
 Now, let's add the data needed for the GraphQL service inside this module.
 
-First, we have to define our data types. We can use Ballerina records for this. Let's first define a Ballerina record to
+First, define the data types using Ballerina records. Let's first define a Ballerina record to
 store an entry in the database. Although the Covid-19 database has many fields, this guide uses only the `isoCode`
 , `continent`, `location`, `date`, `totalCases`, and `newCases`. Let's create a record with these fields.
 
@@ -143,7 +129,7 @@ public type CovidEntry record {|
 |};
 ```
 
-Now we need a table to store the sample data. For this tutorial, we are going to use an in-memory table with just three
+Now, create a table to store the sample data. For this tutorial uses an in-memory table with just three
 entries. Let's define the table inside the auto-created `datasource.bal` file as follows:
 
 ```ballerina
@@ -200,7 +186,7 @@ Now, as the data source is completed, let's move on to writing the GraphQL servi
 
 ## Writing the Ballerina Service
 
-As per our schema (as mentioned in the [design section]) we first have to define the `CovidData` object type. In
+As per your schema (as mentioned in the [design section](), first define the `CovidData` object type. In
 Ballerina GraphQL, the preferred way to define output objects is to use service types.
 > **Note:** Ballerina records can be used as output objects as well.
 

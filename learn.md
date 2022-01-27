@@ -155,7 +155,7 @@ redirect_from:
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
  <a href="/learn/deploying-ballerina-on-kubernetes/">
     <h3 id="hello-world">Deploying Ballerina on Kubernetes</h3></a>
-   <p >Dockerize your application and deploy it in Kubernetes. </p>
+   <p >Dockerize your application and deploy it on Kubernetes. </p>
 </div>
 </div>
 

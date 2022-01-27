@@ -56,9 +56,7 @@ greeter/
 
 ## Saying `Hello, World!`
 
-1. Open the project directory in your text editor. 
-2. If you are using VS Code, run `code .` inside the `greeter` directory. 
-3. Open the `main.bal` to see the generated source below.
+You can open the project directory in your text editor. If you are using VSCode, run `code .` inside the `greeter` directory. Then, open `main.bal` to see the generated source.
 
     ```ballerina
     import ballerina/io;

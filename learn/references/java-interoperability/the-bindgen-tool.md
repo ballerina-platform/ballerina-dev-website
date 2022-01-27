@@ -5,7 +5,7 @@ description: The bindgen tool is a CLI tool, which generates Ballerina bindings 
 keywords: ballerina, programming language, java, interoperability, bindgen
 permalink: /learn/java-interoperability/the-bindgen-tool/
 active: the-bindgen-tool
-intro: The bindgen tool is a CLI tool, which generates Ballerina bindings for Java classes.
+intro: The `bindgen` tool is a CLI tool, which generates Ballerina bindings for Java classes.
 redirect_from:
   - /learn/tooling-guide/cli-tools/bindgen-tool/
   - /learn/tooling-guide/cli-tools/bindgen-tool
@@ -28,10 +28,10 @@ ballerina bindgen [(-cp|--classpath) <classpath>...]
 ```
 
 `(-cp|--classpath) <classpath>...`
-This optional parameter could be used to specify one or more comma-delimited classpaths for retrieving the required Java libraries needed by the bindgen tool execution. The classpath could be provided as comma-separated paths of JAR files or as comma-separated paths of directories containing all the relevant Java libraries. If the Ballerina bindings are to be generated from a standard Java library, from a library available inside the Ballerina SDK, or from a platform library specified in the `Ballerina.toml`, then you need not specify the classpath explicitly.
+This optional parameter could be used to specify one or more comma-delimited classpaths for retrieving the Java libraries required for the generation of the Ballerina bindings. The classpath could be provided as comma-separated paths of JAR files or as comma-separated paths of directories containing all the relevant Java libraries. If the Ballerina bindings are to be generated from a standard Java library, from a library available inside the Ballerina SDK, or from a platform library specified in the `Ballerina.toml`, then you need not specify the classpath explicitly.
 
 `(-mvn|--maven) <groupId>:<artifactId>:<version>`
-This optional parameter could be used to specify a Maven dependency required for the generation of the Ballerina bindings. Here, the specified library and its transitive dependencies will be resolved into the `target/platform-libs` directory of the package. If the tool is not executed inside a package or if the output path does not point to a package, the `target/platform-libs` directory structure will be created in the output path to store the Maven dependencies. The tool will also update the `Ballerina.toml` file with the platform libraries if the command is executed inside a Ballerina package.
+This optional parameter could be used to specify a Maven dependency required for the generation of the Ballerina bindings. Here, the specified library and its transitive dependencies will be resolved into the `target/platform-libs` directory of the Ballerina package. If the tool is not executed inside a package or if the output path does not point to a package, the `target/platform-libs` directory structure will be created in the output path to store the Maven dependencies. The tool will also update the `Ballerina.toml` file with the platform libraries if the command is executed inside a Ballerina package.
 
 `(-o|--output) <output>`
 This optional parameter could be used to generate all the bindings inside a single directory instead of generating module level mappings. This option could be used in instances where all the mappings are required inside a single module. The specified directory doesn't always have to be inside a Ballerina package.
@@ -40,13 +40,13 @@ This optional parameter could be used to generate all the bindings inside a sing
 Set the visibility modifier of the generated binding classes to public. This flag will be applicable only if the bindings are generated inside a single directory.
 
 `<class-name>...`
-One or more space-separated fully-qualified Java class names for which the Ballerina bridge code is to be generated. Please note that these class names should be provided at the end of the command.
+One or more space-separated fully-qualified Java class names for which the Ballerina bridge code is to be generated. These class names should be provided at the end of the command.
 
 ## Generated Bridge Code
 
-When the tool is run, a `.bal` file will be created to represent each Java class. This would contain the respective Ballerina binding class along with the required Java interoperability mappings. These `.bal` files will be generated inside separate modules representing the Java package structure by default. If the `[(-o|--output) <output-path>]` option is used, they will be generated inside a single directory.
+When the tool is run, a `.bal` file will be created to represent each Java class. This would contain the respective Ballerina binding class along with the required Java interoperability mappings. By default, these `.bal` files will be generated inside separate modules representing each Java package. If the `[(-o|--output) <output-path>]` option is used, they will be generated inside a single directory.
 
-Apart from creating bindings for the specified Java classes, the command will also generate empty Ballerina binding classes for the dependent Java classes. A Java class would be considered dependent if it is used inside one of the generated Ballerina binding classes.
+Apart from creating bindings for the specified Java classes, the command will also generate empty Ballerina binding classes for dependent Java classes. A Java class would be considered dependent if it is used inside one of the generated Ballerina binding classes.
 
 A set of additional `.bal` files will be generated to store the error types used within the Ballerina binding classes.
 
@@ -74,6 +74,7 @@ E.g., the generated Ballerina class of the `java.util.ArrayDeque` class will be 
 distinct class ArrayDeque {
 
     *java:JObject;
+    *AbstractCollection;
 
     public handle jObj;
 
@@ -170,7 +171,7 @@ function read() returns int|IOException {
 >**Note:** If a Java exception class is explicitly generated as a Ballerina binding class, it would follow the naming convention `JException` or `JError`. For instance, the binding class's name for `java.io.FileNotFoundException` would be as `JFileNotFoundException`.
 
 ### Dependent Classes
-When there are dependent Java classes present inside generated Ballerina bindings (as parameters or return types), the bindgen tool generates an empty Ballerina binding class to represent each one of these classes. This will represent a Java class mapping without the constructors, methods, or field bindings. If one of these classes is required later, the bindgen tool could be re-run to generate the complete implementation of the Ballerina bindings.
+When there are dependent Java classes present inside generated Ballerina bindings (as parameters or return types), the `bindgen` tool generates an empty Ballerina binding class to represent each one of these classes. This will represent a Java class mapping without the constructors, methods, or field bindings. If one of these classes is required later, the `bindgen` tool could be re-run to generate the complete implementation of the Ballerina bindings.
 
 E.g., the generated dependent class representing `java.util.List` will be as follows.
 ```ballerina

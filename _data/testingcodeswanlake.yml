@@ -43,15 +43,15 @@
     - title: Code Coverage and Reporting
       url : '#'
       sublinks:
-        - title: Generating Test Report
-          url: /learn/testing-ballerina-code/code-coverage-and-reporting/#generating-test-report
-          active: generating-test-report
-        - title: Generating Code Coverage Report
-          url: /learn/testing-ballerina-code/code-coverage-and-reporting/#generating-code-coverage-report
-          active: generating-code-coverage-report
-        - title: Generating JaCoCo XML Report
-          url: /learn/testing-ballerina-code/code-coverage-and-reporting/#generating-jacoco-xml-report
-          active: generating-jacoco-xml-report
+        - title: Generating a Test Report
+          url: /learn/testing-ballerina-code/code-coverage-and-reporting/#generating-a-test-report
+          active: generating-a-test-report
+        - title: Generating a Code Coverage Report
+          url: /learn/testing-ballerina-code/code-coverage-and-reporting/#generating-a-code-coverage-report
+          active: generating-a-code-coverage-report
+        - title: Generating a JaCoCo XML Report
+          url: /learn/testing-ballerina-code/code-coverage-and-reporting/#generating-a-jacoco-xml-report
+          active: generating-a-jacoco-xml-report
     - title: Defining Data-Driven Tests
       url : '#'
       sublinks:
@@ -94,9 +94,9 @@
     - title: Executing Tests
       url: '#'
       sublinks:
-        - title: Understanding Test Execution Behavior
-          url: /learn/testing-ballerina-code/executing-tests/#understanding-test-execution-behavior
-          active: understanding-test-execution-behavior
+        - title: Understanding the Test Execution Behavior
+          url: /learn/testing-ballerina-code/executing-tests/#understanding-the-test-execution-behavior
+          active: understanding-the-test-execution-behavior
         - title: Understanding the Behavior During Failures
           url: /learn/testing-ballerina-code/executing-tests/#understanding-the-behavior-during-failures
           active: understanding-the-behavior-during-failures

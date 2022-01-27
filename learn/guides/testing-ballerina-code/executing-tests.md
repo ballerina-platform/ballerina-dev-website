@@ -14,14 +14,14 @@ redirect_from:
   - /learn/user-guide/testing-ballerina-code/executing-tests/
 ---
 
-## Understanding Test Execution Behavior
+## Understanding the Test Execution Behavior
 
 The following is the expected order of execution for setup and teardown functions of a test.
 
 ![Test Execution Order](/learn/images/test-execution-order.png)
 
 
-## Understanding Behavior During Failures
+## Understanding the Behavior During Failures
 
 * If a `BeforeSuite` function fails, 
  every other following function is skipped.

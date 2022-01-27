@@ -1,11 +1,11 @@
 ---
 layout: ballerina-cli-documentation-left-nav-pages-swanlake
 title: gRPC/Protocol Buffers
-description: The 'Protocol Buffers to Ballerina' tool provides capabilities to generate Ballerina source code for the Protocol Buffer definition.
+description: The `Protocol Buffers to Ballerina` tool provides capabilities to generate Ballerina source code for the Protocol Buffer definition.
 keywords: ballerina, protocol buffers, programming language
 permalink: /learn/cli-documentation/grpc/
 active: grpc
-intro: Protocol Buffers is an open-source cross-platform data format used to serialize structured data. gRPC uses Protocol Buffers as Interface Definition Language to create service contracts, detailing all of its remote functions and message formats. The 'Protocol Buffers to Ballerina' tooling makes it easy for users to develop service documented in a Protocol Buffers by generating Ballerina service/client stub files and skeletons.
+intro: Protocol Buffers is an open-source cross-platform data format used to serialize structured data. gRPC uses Protocol Buffers as Interface Definition Language to create service contracts, detailing all of its remote functions and message formats. The `Protocol Buffers to Ballerina` tooling makes it easy for users to develop a service documented in a Protocol Buffers by generating Ballerina service/client stub files and skeletons.
 redirect_from:
   - /learn/how-to-generate-code-for-protocol-buffers
   - /learn/how-to-generate-code-for-protocol-buffers/
@@ -21,7 +21,7 @@ redirect_from:
 
 The code generation tool can produce `service/client stub files` and `service/client skeletons` in the Ballerina Language.
  
-> In Ballerina, Protocol Buffers serialization is only supported in the gRPC module. Therefore, you can only use
+> In Ballerina, Protocol Buffers serialization is supported only in the gRPC module. Therefore, you can only use
 > this tool to generate Ballerina source code for gRPC service definitions.
 
 ## Protocol Buffers to Ballerina
@@ -83,7 +83,7 @@ message HelloReply {
 
 ### Executing the Sample
 
-* Execute the below command to generate the service template file.
+* Execute the below command to generate the client/service stub and service template files.
 ```
 $ bal grpc --input helloworld.proto --mode service --output service
 ```
@@ -91,14 +91,14 @@ Once you execute the command, the stub file (`helloworld_pb.bal`) and the servic
 > **Note:** If you have multiple services in a Protocol Buffers definition, this command will generate a stub file with common message types and a service template file for each service definition. This is to avoid duplicating message types in all the service files.
 
 
-* Execute the below command to generate the client/service stub and client template.
+* Execute the below command to generate the client/service stub and client template files.
 ```bash
 $ bal grpc --input helloworld.proto --mode client --output client
 ```
 Once you execute the command, the stub file (`helloworld_pb.bal`) and the client template file (`greeter_client.bal`) are generated inside the client directory.
 
 
-* Execute the below command to generate only the client/service stub.
+* Execute the below command to generate only the client/service stub file.
 ```
 $ bal grpc --input helloworld.proto --output stubs
 ```

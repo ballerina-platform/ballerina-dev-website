@@ -16,7 +16,7 @@ It allows you to evaluate snippets of code without having to write complete prog
 This will particularly be useful if you are looking to try out the language and its new features, and also for debugging purposes.
 
 >**Note:** Ballerina Shell currently supports a subset of the language features. Ballerina Shell doesn't support 
-> services and isolation features. Also, Ballerina Shell provides limited feature support for the worker-related implementations.
+> services and isolation features. Also, Ballerina Shell provides limited feature support for worker-related implementations.
 
 ## Setting up the Prerequisites
 
@@ -187,7 +187,7 @@ Now, the list of declarations includes the `Person` record as well.
 
 A definition can be modified by providing a new definition with the same name. This effectively overwrites the previous definition with the same name. 
 
-The example below modifies the `sum()`function.
+The example below modifies the `sum()` function.
 
 ```bash
 =$ function sum(float a, float b) returns float => a + b
@@ -205,7 +205,7 @@ Now, `sum()` is a function accepting float parameters and returning a float valu
 
 If you have any definitions in source files, you can load these definitions to the Shell through the `/file <FILE_PATH>` command. 
 
-If the source file contains a main function, the Shell will disregard it.
+If the source file contains the main function, the Shell will disregard it.
 
 For example, see the sample `text.bal` file below.
 

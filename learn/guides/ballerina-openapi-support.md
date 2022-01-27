@@ -40,7 +40,7 @@ SwanLake versions support for your OpenAPI specification with version 3.0.0
 
 If you want to generate only the Ballerina service, you can use the below CLI command of the OpenAPI tool.
 ```bash
-$ bal openapi -i <openapi contract> --mode service
+$ bal openapi -i <openapi-contract> --mode service
 ```
 This generated service can be used as a code template to start the service implementation.
 
@@ -49,17 +49,17 @@ This generated service can be used as a code template to start the service imple
 $ bal openapi -i hello.yaml --mode service
 ```
 
-This will generate a Ballerina service for the `hello.yaml` OpenAPI contract named `hello-service` and schemas named types. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project.
+This will generate a Ballerina service for the `hello.yaml` OpenAPI contract named `hello_service` and schemas named types. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project.
 
 ```bash
 The service generation process is complete. The following files were created.
--- hello-service.bal
+-- hello_service.bal
 -- types.bal
 ```
 #### Generating Ballerina Service from Tags
 To generate the Ballerina service stub with a subset of tags defined in the OpenAPI contract, use the `--tags` option and specify the tags you need as specified in the OpenAPI definition.
 ```bash
-$ bal openapi -i <openapi contract> [--tags <"tag1","tag2">]
+$ bal openapi -i <openapi-contract> [--tags <"tag1","tag2">]
 ```
 
 **Example:**
@@ -81,19 +81,19 @@ Export the Ballerina service to an OpenAPI Specification 3.0 definition. For the
 ```bash
 $ bal openapi [-i | --input] <ballerina-service-file-path> [(-o | --output) <output-location>]
 ```
-Parameter `ballerina-service-file-path` specifies the path of the ballerina service file (e.g., `my-api.bal`) and is mandatory.
+Parameter `ballerina-service-file-path` specifies the path of the ballerina service file (e.g., `my_api.bal`) and is mandatory.
 If your Ballerina file includes multiple services, this command generates OpenAPI contract for each service in the Ballerina file.
 
 #### Generating an OpenAPI Specification with in JSON Format
 Use the `--json` flag If you need the Ballerina service to OpenAPI output in JSON. The default is YAML.
 ```bash
-$ bal openapi -i <ballerina resource file> [--json]
+$ bal openapi -i <ballerina-resource-file> [--json]
 ```
 #### Generating an OpenAPI Specification for Given Service
 If you need to document an OpenAPI contract for only one given service, then use this command. Specify the service name as the `absolute-resource-path`.
 
 ```bash
-$ bal openapi -i <ballerina resource file> [-s|--service] <service-name>
+$ bal openapi -i <ballerina-resource-file> [-s|--service] <service-name>
 ```
 **Example:**
 ```bash
@@ -122,7 +122,7 @@ Here, you can provide a path to the OpenAPI contract as a string and the OpenAPI
 - **Title: string?** :
 This is an optional attribute. You can use this to add the title of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool takes the absolute base path as the title to the OAS contract.
 - **Version: string?** :
-This is an optional attribute. You can use this to add the version of the info section in the generated OpenAPI contract. If this attribute is not provided, then the tool picks the Ballerina package version as the OAS version.
+This is an optional attribute. You can use this to add the version of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool picks the Ballerina package version as the OAS version.
 
 **Example:**
 
@@ -132,7 +132,7 @@ This is an optional attribute. You can use this to add the version of the info s
      title : "Store Management APIs" ,
      ‘version: "1.1.0" 
    }
-service greet on new http:Listener(9090) {
+service /greet on new http:Listener(9090) {
     ...
 }
 ```
@@ -147,7 +147,7 @@ info:
 
 ## OpenAPI Validator Compiler Plugin
 
-The OpenAPI Validator Compiler plugin validates a service against a given OpenAPI contract. The Compiler Plugin gets activated if a service has the `openapi:ServiceInfo` annotation. This plugin compares the service and the OpenAPI contract and validates both against a pre-defined set of validation rules. If any of the rules fail, the plugin will give the result as one or more compilation errors.
+The OpenAPI Validator Compiler plugin validates a service against a given OpenAPI contract. The Compiler Plugin gets activated if a service has the `@openapi:ServiceInfo` annotation. This plugin compares the service and the OpenAPI contract and validates both against a pre-defined set of validation rules. If any of the rules fail, the plugin will give the result as one or more compilation errors.
 #### Annotation for Validator Plugin
 The `@openapi:ServiceInfo` annotation is used to bind the service with an OpenAPI contract. You need to add this annotation to the service file with the required values for enabling the validations.
 >**Note:** Providing a `contract` path attribute is mandatory for the OpenAPI validator.
@@ -164,7 +164,7 @@ import ballerina/openapi;
     [ excludeTags ]: [“pets”, “user”]
     [ excludeOperations: [“op1”, “op2”] ]
    }
-service greet on new http:Listener(9090) {
+service /greet on new http:Listener(9090) {
     ...
 }
 
@@ -178,7 +178,7 @@ The generated client can be used in your applications to call the service define
 - **Note :** Before generating your client using the command-line tool, please check if a pre-generated client for your API already exists in the [Ballerina Central](https://central.ballerina.io/). (If so, you can refer to the client's API documentation for more information on how to use the pre-generated client in your code.)
 
 ```bash
-$ bal openapi -i <openapi contract> --mode client
+$ bal openapi -i <openapi-contract> --mode client
 ```
 **Example:**
 ```bash
@@ -195,7 +195,7 @@ Client generated successfully. The following files were created.
 #### Generating a Ballerina Client with Boiler-Plate Tests
 Use the `--with-tests` flag in the client mode to generate a Ballerina client with boilerplate test cases for all the remote functions available in it.
 ```bash
-$ bal openapi -i <openapi contract> [--mode client] [--with-tests]
+$ bal openapi -i <openapi-contract> [--mode client] [--with-tests]
 ```
 
 **Example:**
@@ -207,7 +207,7 @@ In addition to the above-mentioned generated file, this will generate a`tests.ba
 #### Generating with Nillable Types
 This is an optional flag in the OpenAPI to Ballerina command. If your OpenAPI specification includes JSON schema properties that are not marked as **nullable:true**, they may be returned as null in some responses. It will result in a JSON schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to generate all data types in the generated record with Ballerina nil support by turning this flag on.
 ```bash
-$ bal openapi -i <openapi contract> [-n |--nullable]
+$ bal openapi -i <openapi-contract> [-n |--nullable]
 ```
 
 >**Info:** For more command options, see [OpenAPI to Ballerina Command Reference](#openapi-to-ballerina-command-reference).
@@ -254,22 +254,22 @@ Mode type is optional and can be either a service or client. The Ballerina servi
 - ##### `--tags`
 To generate the Ballerina client or service stub with a subset of tags defined in the OpenAPI contract, use the `--tags` option and specify the tags you need as specified in the OpenAPI definition.
 ```bash
-$ bal openapi -i <openapi contract>  [--tags < "tag1","tag2">]
+$ bal openapi -i <openapi-contract>  [--tags < "tag1","tag2">]
 ```
 - ##### `--operations`
 To generate the Ballerina client or service stub with a subset of operations defined in the OpenAPI contract, use the `--operations` option and specify the operations you need as specified in the OpenAPI definition.
 ```bash
-$ bal openapi -i <openapi contract> [--operations <"op1", "op2">]
+$ bal openapi -i <openapi-contract> [--operations <"op1", "op2">]
 ```
 - ##### `--license`
 If you want to generate the Ballerina files with the given copyright or license header, you can use this `--license` flag with your copyright text.
 ```bash
-$ bal openapi -i <openapi contract> [--license <license-file-path>]
+$ bal openapi -i <openapi-contract> [--license <license-file-path>]
 ```
 - ##### `-n |--nullable`
 This is an optional flag in the OpenAPI to Ballerina command. If your OpenAPI specification includes JSON schema properties that are not marked as **nullable:true**, they may return as null in some responses. It will result in a JSON schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to generate all data types in the generated record with Ballerina nil support by turning on this flag.
 ```bash
-$ bal openapi -i <openapi contract> [-n |--nullable]
+$ bal openapi -i <openapi-contract> [-n |--nullable]
 ```
 - ##### `--with-tests`
 This is optional. It works with the client generation command and generates a boiler-plate test for all the remote functions of the generated client.
@@ -308,6 +308,6 @@ If you need to turn off the validation, add this to the annotation with the valu
 - ##### `Title: string?`
 You can use this to add the title of the `info` section in the generated OpenAPI contract.
 - ##### `Version: string?`
-Use this to add the version of the`info` section in the generated OpenAPI contract.
+Use this to add the version of the `info` section in the generated OpenAPI contract.
 - ##### `Embed: string?`
 If you need to turn off generating OpenAPI documentation for service for introspection endpoint support, use this attribute with `false` in the annotation.

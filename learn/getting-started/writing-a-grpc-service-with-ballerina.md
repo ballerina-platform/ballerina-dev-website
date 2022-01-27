@@ -54,6 +54,7 @@ Let’s start implementing a Ballerina service and client for the above definiti
 ## Implementation
 
 As illustrated in the diagram below, you first need to compile the service definition file (i.e., `helloworld.proto`), and generate the source code for both the client and service applications. In Ballerina, you can generate the source code using the built-in `Protocol Buffers to Ballerina` tool.
+
 ![gRPC Getting Started](/learn/images/grpc-getting-started.png)
 
 Let’s walk through the instructions on implementing the gRPC service and client in the Ballerina language.

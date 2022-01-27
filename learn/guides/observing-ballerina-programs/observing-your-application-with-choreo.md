@@ -99,6 +99,4 @@ After sending a few requests, you view the graphs rendered with data. The sample
 
 ![Choreo Observability View](/learn/images/choreo-observability-view.png "Choreo Observability View")
 
->**Info:** Currently monitoring logs is not supported by default. To enable log monitoring for your service, see [Setting up Elastic Stack](/learn/user-guide/observability/observing-ballerina-code/#setting-up-the-external-systems-for-log-analytics) to configure [Elastic Stack](https://www.elastic.co/).
-
-<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
+>**Info:** Currently monitoring logs is not supported by default. To enable log monitoring for your service, see [Setting up the Elastic Stack](/learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#setting-up-the-elastic-stack) to configure [Elastic Stack](https://www.elastic.co/).

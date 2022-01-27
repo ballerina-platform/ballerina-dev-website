@@ -3,11 +3,11 @@ layout: ballerina-building-a-data-service-left-nav-pages-swanlake
 title: Building a Data Service in Ballerina 
 description: Connecting to a MySQL database and executing queries using an HTTP RESTful API using Ballerina.
 keywords: ballerina, data service, mysql, database, REST, API
-permalink: /learn/building-a-data-service/
+permalink: /learn/building-a-data-service-in-ballerina/
 active: building-a-data-service
 intro: Connecting to a MySQL database and executing queries using an HTTP RESTful API using Ballerina.
 redirect_from:
- - /learn/building-a-data-service
+ - /learn/building-a-data-service-in-ballerina
 ---
 
 This tutorial covers how you can connect to a MySQL database and perform queries against it using Ballerina. 
@@ -17,9 +17,9 @@ to perform basic CRUD operations on the database.
 ![Data Service Architecture](/learn/images/data-service-architecture.png "Data Service Architecture")
 
 The methodology outlined in this tutorial can be used to work with PostgreSQL, SQL Server, OracleDB or any other 
-relational database as well using the [`PostgreSQL`](https://central.ballerina.io/ballerinax/postgresql),
-[`MSSQL`](https://central.ballerina.io/ballerinax/mssql), [`OracleDB`](https://central.ballerina.io/ballerinax/oraceldb),
-and [`JDBC`](https://central.ballerina.io/ballerinax/java.jdbc) connectors for Ballerina respectively.
+relational database as well using the [`PostgreSQL`](https://lib.ballerina.io/ballerinax/postgresql/latest),
+[`MSSQL`](https://lib.ballerina.io/ballerinax/mssql/latest), [`OracleDB`](https://lib.ballerina.io/ballerinax/oracledb/latest),
+and [`JDBC`](https://lib.ballerina.io/ballerinax/java.jdbc/latest) connectors for Ballerina respectively.
 
 ## Prerequisites
 
@@ -131,12 +131,12 @@ configurable int PORT = ?;
 configurable string DATABASE = ?;
 ```
 
->**Note:** For more information on defining configurable variables in Ballerina, see [Defining Configurable Variables](/learn/making-ballerina-programs-configurable/defining-configurable-variables/).
+>**Note:** For more information on defining configurable variables in Ballerina, see [Defining Configurable Variables](/learn/configuring-ballerina-programs/providing-values-to-configurable-variables/).
 
 ### Connecting to the Database
 
-Firstly, the [`MySQL`](https://central.ballerina.io/ballerinax/mysql) 
-and [`SQL`](https://central.ballerina.io/ballerina/sql) packages must be imported into your `main.bal` file.
+Firstly, the [`MySQL`](https://lib.ballerina.io/ballerinax/mysql/latest) 
+and [`SQL`](https://lib.ballerina.io/ballerina/sql/latest) packages must be imported into your `main.bal` file.
 
 ```ballerina
 import ballerinax/mysql;
@@ -156,7 +156,7 @@ final mysql:Client dbClient = check new(
 
 >**Info:** The MySQL package provides additional connection options and the ability to configure connection pool 
 >properties when connecting to the database which, are not covered in this tutorial. To learn more about this, 
->see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/1.2.0/clients/Client).
+>see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest/clients/Client).
 
 ### Executing Queries
 
@@ -237,14 +237,14 @@ isolated function removeEmployee(int id) returns int|error {
 ## Exposing the Database via an HTTP RESTful API
 
 After you have defined the methods necessary to manipulate the database, expose these selectively via an HTTP
-RESTful API. For this, first need to import the Ballerina [`HTTP` module](https://lib.ballerina.io/ballerina/http/latest).
+RESTful API. For this, you first need to import the Ballerina [`HTTP` module](https://lib.ballerina.io/ballerina/http/latest).
 
 ```ballerina
 import ballerina/http;
 ```
 
 ### Creating a Service
-Afterwards, you can create a service as follows. This creates an `/employees` endpoint on port `8080` which can 
+Afterwards, you can create a service as shown below. This creates an `/employees` endpoint on port `8080` which can 
 be accessed via a browser by visiting `http://locahost:8080/employees` after executing the command `bal run`.
 
 ```ballerina
@@ -319,6 +319,6 @@ service /employees on new http:Listener(8080) {
 ```
 
 To learn more about MySQL and HTTP support in Ballerina, see the following:
-- [MySQL module documentation](https://central.ballerina.io/ballerinax/mysql)
+- [MySQL module documentation](https://lib.ballerina.io/ballerinax/mysql/latest)
 - [HTTP module documentation](https://lib.ballerina.io/ballerina/http/latest)
 - [MySQL Examples](/learn/by-example/mysql-query-operation.html)

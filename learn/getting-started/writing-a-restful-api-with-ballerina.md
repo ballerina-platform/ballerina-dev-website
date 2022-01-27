@@ -1,5 +1,5 @@
 ---
-layout: writing-a-restful-api-with-ballerina
+layout: ballerina-rest-api-guide-left-nav-pages-swanlake
 title: Writing a RESTful API with Ballerina
 permalink: /learn/writing-a-restful-api-with-ballerina/
 description: This simple guide helps you understand the basics of Ballerina constructs which allow you to write RESTful APIs. 
@@ -11,7 +11,7 @@ redirect_from:
 
 This simple guide helps you understand the basics of Ballerina constructs which allow you to write RESTful APIs. 
 
-Due to the batteries included nature of the Ballerin language, there is no need to add any third-party libraries to implement the RESTful API. The Ballerina standard library itself is adequate. In this API, you will be writing a simple CRUD-like RESTful service.
+Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement the RESTful API. The Ballerina standard library itself is adequate. In this API, you will be writing a simple CRUD-like RESTful service.
 
 In this tutorial, you will be creating a RESTful API with two endpoints. The sample is built around a set of covid19 data.
 

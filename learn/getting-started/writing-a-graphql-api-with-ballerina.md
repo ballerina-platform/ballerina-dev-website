@@ -1,5 +1,5 @@
 ---
-layout: ballerina-language-basics-left-nav-pages-swanlake
+layout: ballerina-graphql-guide-left-nav-pages-swanlake
 title: Writing a GraphQL API with Ballerina
 description: This is a simple guide that walks through the steps to write a GraphQL API using Ballerina.
 keywords: ballerina, graphql, ballerina packages, language-guide, standard library

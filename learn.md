@@ -255,7 +255,7 @@ redirect_from:
 <p>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
- <a href="/learn/visual-studio-code-extension/vs-code-quick-start/">
+ <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina">
     <h3 id="installing-ballerina">Visual Studio Code Extension</h3></a>
     <p >Details of all the features of the Ballerina Visual Studio Code extension. </p>
 </div>

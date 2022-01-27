@@ -85,8 +85,8 @@ public function foo(int i, string s) returns boolean {
 
 ```ballerina
 # Submits an HTTP request to a service with the specified HTTP verb.
-# The `submit()` function does not give out a `Response` as the result,
-# rather it returns an `HttpFuture`, which can be used to do further 
+# The `HttpClient->submit()` function does not give out an `http:Response` as the result.
+# Rather, it returns an `http:HttpFuture`, which can be used to do further 
 # interactions with the endpoint.
 #
 # Example:
@@ -96,10 +96,10 @@ public function foo(int i, string s) returns boolean {
 #
 # + httpVerb - The HTTP verb value
 # + path - The resource path
-# + request - An HTTP outbound request message
-# + return - An `HttpFuture` that represents an asynchronous service invocation 
-#            or an `error` if the submission fails
-public function submit(@sensitive string httpVerb, string path, Request request) returns HttpFuture|error;
+# + message - An HTTP outbound request or any allowed payload
+# + return - An `http:HttpFuture` that represents an asynchronous service invocation 
+#            or an `http:ClientError` if the submission fails
+remote isolated function submit(string httpVerb, string path, RequestMessage message) returns HttpFuture|ClientError {
 ```
 
 ## Documenting a Module

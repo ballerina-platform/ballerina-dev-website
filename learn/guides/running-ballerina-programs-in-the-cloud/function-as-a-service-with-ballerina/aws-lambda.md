@@ -37,7 +37,7 @@ An AWS Lambda function can be triggered by various AWS services. You can find th
 - Simple Email Service [SES](https://aws.amazon.com/ses/)
 - [API Gateway](https://aws.amazon.com/api-gateway/)
 
-## Writing a Function
+## Writing the Function
 
 The following Ballerina code gives an example on how to expose a simple echo function in AWS Lambda. 
 

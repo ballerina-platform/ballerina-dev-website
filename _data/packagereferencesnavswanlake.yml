@@ -1,0 +1,27 @@
+- title: Package References
+  url: '#'
+  sublinks:
+    - title: Package Layout
+      url: '#'
+      sublinks:
+        - title: Ballerina.toml
+          url: /learn/package-references/#ballerinatoml
+          active: ballerinatoml
+        - title: Dependencies.toml
+          url: /learn/package-references/#dependenciestoml
+          active: dependenciestoml
+        - title: Package.md
+          url: /learn/package-references/#packagemd
+          active: packagemd
+        - title: The target/ Directory
+          url: /learn/package-references/#the-target-directory
+          active: the-target-directory
+        - title: The resources/, tests/ Directories, and Module.md
+          url: /learn/package-references/#the-resources-tests-directories-and-modulemd
+          active: the-resources-tests-directories-and-modulemd
+        - title: The modules/ Directory
+          url: /learn/package-references/#the-modules-directory
+          active: the-modules-directory
+        - title: Module Layout
+          url: /learn/package-references/#module-layout
+          active: module-layout

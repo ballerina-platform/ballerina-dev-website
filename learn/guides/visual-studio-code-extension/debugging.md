@@ -153,7 +153,7 @@ Follow the steps below to start a remote debug session.
 
 <br/>
 
-## Debug Configurations
+## Using Debug Configurations
 
 The Ballerina debugger supports various debug configuration options via the `launch.json` file. 
 
@@ -251,9 +251,9 @@ Log messages can either be plain texts or string templates, which can contain ex
 
 <br/>
 
-### Pause/Continue
+### Pause and Continue
 
-Any running Ballerina programs can be suspended immediately at the current execution line of the program using the `pause` command in VSCode as shown below. 
+Any running Ballerina programs can be suspended immediately at the current execution line of the program, using the `pause` command in VSCode as shown below. 
 With this feature, you are able to suspend (and resume) the remote VM resulting in a debug hit at the current execution line of the program. 
 
 ![Debugger Pause/Resume Commands](/learn/images/debugger-pause-resume-commands.gif)

@@ -58,7 +58,7 @@
             - title: Logpoints
               url: /learn/visual-studio-code-extension/debugging/#logpoints
               active: logpoints
-            - title: Pause & Continue
+            - title: Pause and Continue
               url: /learn/visual-studio-code-extension/debugging/#pause-and-continue
               active: pause-and-continue
             - title: Expression Evaluation

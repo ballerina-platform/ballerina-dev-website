@@ -114,30 +114,30 @@ The local repository is useful to test a package that is in the development phas
 
 1. Create the Ballerina archive.
 
-```bash
-bal pack
-```
+   ```bash
+   bal pack
+   ```
 
 2. Publish to the local repository.
-```bash
-bal push -–repository local
-```
+   ```bash
+   bal push -–repository local
+   ```
 
-If you already have the Ballerina Archive, then you can simply execute the following command:
+   If you already have the Ballerina Archive, then you can simply execute the following command:
 
-```bash
-bal push –-repository local <path-to-bala-archive>
-```
+    ```bash
+    bal push –-repository local <path-to-bala-archive>
+    ```
 
 3. Specify the dependency in the `Ballerina.toml` file.
 
-```toml
-[[dependency]]
-org = "ballerinax"
-name = "googleapis.gmail"
-version = "2.1.1"
-repository = "local"
-```
+    ```toml
+    [[dependency]]
+    org = "ballerinax"
+    name = "googleapis.gmail"
+    version = "2.1.1"
+    repository = "local"
+    ```
 
 Once the above steps are completed, the dependency will be picked from the local repository when the package is built. 
 During the compilation, the version specified in the `Ballerina.toml` is considered as the minimum required version for that particular dependency 

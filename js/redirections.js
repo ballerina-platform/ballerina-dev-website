@@ -57,6 +57,11 @@ let redirections = {
     "/1.2/learn/managing-dependencies/":"/page-not-available.html",
     "/1.2/learn/publishing-packages-to-ballerina-central/":"/page-not-available.html",
     "/1.2/learn/language-introduction/":"/page-not-available.html",
+    "/learn/visual-studio-code-extension/vs-code-quick-start/":"https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina",
+    "/learn/visual-studio-code-extension/diagram-editor/":"https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina",
+    "/learn/visual-studio-code-extension/vs-code-commands/":"https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina",
+    "/learn/visual-studio-code-extension/language-support/":"https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina",
+    "/learn/visual-studio-code-extension/configurations/":"https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina",
 
     // BBEs not available.
     "/1.1/learn/by-example/jdbc-streaming-big-dataset.html":"/page-not-available.html",

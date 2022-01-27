@@ -7,9 +7,9 @@
     - title: Defining the Covid Dataset To Be Processed
       url: /learn/working-with-data-in-ballerina/#defining-the-covid-dataset-to-be-processed
       active: defining-the-covid-dataset-to-be-processed
-    - title: Filtering All Countries Which Have More Than 10,000,000 Covid Cases
-      url: /learn/working-with-data-in-ballerina/#filtering-all-countries-which-have-more-than-10,000,000-covid-cases
-      active: filtering-all-countries-which-have-more-than-10,000,000-covid-cases
+    - title: Filtering All Countries Which Have More Than 10000000 Covid Cases
+      url: /learn/working-with-data-in-ballerina/#filtering-all-countries-which-have-more-than-10000000-covid-cases
+      active: filtering-all-countries-which-have-more-than-10000000-covid-cases
     - title: Sorting the Top Three Countries By the Number Of Reported Covid Deaths
       url: /learn/working-with-data-in-ballerina/#sorting-the-top-three-countries-by-the-number-of-reported-covid-deaths
       active: sorting-the-top-three-countries-by-the-number-of-reported-covid-deaths

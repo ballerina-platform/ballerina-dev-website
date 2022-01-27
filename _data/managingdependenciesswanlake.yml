@@ -1,15 +1,18 @@
 - title: Managing Dependencies
   url: #
   sublinks:
-    - title: Importing Modules
-      url: /learn/managing-dependencies/#importing-modules
-      active: importing-modules
-    - title: Handling Dependencies
-      url: /learn/managing-dependencies/#handling-dependencies
-      active: handling-dependencies
+    - title: Specifying Dependencies
+      url: /learn/managing-dependencies/#specifying-dependencies
+      active: specifying-dependencies
+    - title: Specifying Dependency Versions
+      url: /learn/managing-dependencies/#specifying-dependency-versions
+      active: specifying-dependency-versions
+    - title: Local Repository
+      url: /learn/managing-dependencies/#using-dependencies-from-the-local-repository
+      active: using-dependencies-from-the-local-repository
+    - title: Achieving Reproducible Builds
+      url: /learn/managing-dependencies/#achieving-reproducible-builds
+      active: achieving-reproducible-builds
     - title: Version Compatibility
       url: /learn/managing-dependencies/#version-compatibility
       active: version-compatibility
-    - title: Overriding Dependencies
-      url: /learn/managing-dependencies/#overriding-dependencies
-      active: overriding-dependencies

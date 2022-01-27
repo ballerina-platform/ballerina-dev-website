@@ -39,4 +39,4 @@ Configurations for testing can be provided using configurable variables. The val
 provided in a file named `Config.toml` located in the `tests/` directory.
 
 For information on using configurable variables, see
-[Configurable Variables](/learn/user-guide/configurability/defining-configurable-variables/).
+[Configurable Variables](/learn/configuring-ballerina-programs/quick-start-on-configurable-variables).

@@ -5,7 +5,7 @@ description: Learn how to use Ballerina's built-in test framework to write testa
 keywords: ballerina, programming language, testing
 permalink: /learn/testing-ballerina-code/quick-start-on-testing/
 active: quick-start-on-testing
-intro: The Ballerina Language has a built-in robust test framework, which allows you to achieve multiple levels of the test pyramid including unit testing, integration testing, and end to end testing.  It provides features such as assertions, data providers, mocking, and code coverage, which enable the programmers to write comprehensive tests.
+intro: The Ballerina Language has a built-in robust test framework, which allows you to achieve multiple levels of the test pyramid including unit testing, integration testing, and end-to-end testing.  It provides features such as assertions, data providers, mocking, and code coverage, which enable the programmers to write comprehensive tests.
 redirect_from:
   - /learn/how-to-test-ballerina-code/
   - /learn/how-to-test-ballerina-code

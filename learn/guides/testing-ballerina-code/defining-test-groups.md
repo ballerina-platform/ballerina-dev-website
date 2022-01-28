@@ -77,7 +77,7 @@ I'm a test belonging to groups g1 and g2!
                 0 skipped
 ```
 
-The groups flag supports executing multiple groups by using comma-separated arguments.
+The `groups` flag supports executing multiple groups by using comma-separated arguments.
 
 ```$bal test --groups g1,g2```
 

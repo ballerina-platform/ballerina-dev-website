@@ -29,7 +29,7 @@ It is common in small projects to have only one module (default) in a package. A
 
 The `bal new` command creates a package with the default module. This will generate the `Ballerina.toml` file, which identifies a directory as a package and will additionally generate a sample source file in the default module.
 
-### Creating your First Ballerina Package
+### Creating Your First Ballerina Package
 
 Create a Ballerina package with the `bal new` command as follows. 
 
@@ -99,7 +99,7 @@ Therefore, the package root directory contains files that belong to the package 
 
 You can add more source files at the root, and symbols such as functions and variables in one file are visible to other files because they are in the same namespace. This namespace is called the default module of the package. The package name, which is specified in the Ballerina.toml file is also used to refer to the default module.
 
-### Non-default Modules
+### Non-Default Modules
 
 As projects grow in complexity, the need arises to organize code better. This could be because you want to separate the functionalities of the package and/or to add boundaries to the visibility of certain functionalities. Therefore, Ballerina allows subdividing the code into multiple modules as well.
 
@@ -123,7 +123,7 @@ The package structure after adding a non-default module will have the directory 
 2 directories, 3 files
 ```
 
-## Importing a Module from the same Package 
+## Importing a Module from the Same Package 
 
 You can access any public symbol from another module of the package by importing the particular module using an import declaration. 
 The import declaration syntax is as follows.

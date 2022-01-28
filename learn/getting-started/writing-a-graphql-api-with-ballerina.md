@@ -16,6 +16,8 @@ This guide includes the following steps:
 
 ## Setting up the Prerequisites
 
+To complete this tutorial, you need the below. 
+
 1. A command terminal
 2. A text editor
     >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.

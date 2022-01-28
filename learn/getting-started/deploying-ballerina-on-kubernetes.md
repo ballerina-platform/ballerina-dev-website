@@ -20,11 +20,10 @@ To complete this tutorial, you need the below.
 2. A text editor
     >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
 3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
-5. [Docker](https://www.docker.com/) installed and configured in your machine
-6. [Kubectl](https://kubernetes.io/docs/reference/kubectl/) installed and configured in a Kubernetes cluster
-7. A [Docker Hub](https://hub.docker.com/) account
-8. Prior programming experience related to Docker and Kubernetes
-
+4. [Docker](https://www.docker.com/) installed and configured in your machine
+5. A [Docker Hub](https://hub.docker.com/) account
+6. [Kubectl](https://kubernetes.io/docs/reference/kubectl/) installed and configured in a Kubernetes cluster 
+7. Prior programming experience related to Docker and Kubernetes
 
 ## Code to Cloud
 

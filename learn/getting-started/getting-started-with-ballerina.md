@@ -58,13 +58,13 @@ greeter/
 
 You can open the project directory in your text editor. If you are using VSCode, run `code .` inside the `greeter` directory. Then, open `main.bal` to see the generated source.
 
-    ```ballerina
-    import ballerina/io;
+```ballerina
+import ballerina/io;
 
-    public function main() {
-        io:println("Hello, World!");
-    }
-    ```
+public function main() {
+    io:println("Hello, World!");
+}
+```
 
 In this code:
 

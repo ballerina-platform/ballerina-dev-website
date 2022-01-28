@@ -45,9 +45,9 @@ tree .
 0 directories, 2 files
 ```
 
-## Defining the Covid Dataset To Be Processed
+## Defining the COVID-19 Dataset To Be Processed
 
-To keep the tutorial simple, you will be using an in-memory table to store the Covid dataset. Each record of type `CovidEntry` in the table represents the Covid data related to a particular country. The `iso_code` is used to uniquely identify a country and other fields are self-explanatory.
+To keep the tutorial simple, you will be using an in-memory table to store the COVID-19 dataset. Each record of type `CovidEntry` in the table represents the COVID-19 data related to a particular country. The `iso_code` is used to uniquely identify a country and other fields are self-explanatory.
 ```ballerina
 public type CovidEntry record {|
     readonly string iso_code;
@@ -65,9 +65,9 @@ public final table<CovidEntry> key(iso_code) covidTable = table [
         {iso_code: "IND", country: "India", cases: 80808350, deaths: 980976, recovered: 33892279, active: 35035095}
     ];
 ```
-Copy the above code snippet to `main.bal`. This will act as our Covid Dataset.
+Copy the above code snippet to `main.bal`. This will act as our COVID-19 Dataset.
 
-## Filtering All Countries Which Have More Than 10,000,000 Covid Cases
+## Filtering All Countries Which Have More Than 10,000,000 COVID-19 Cases
 
 Let's define a function, which will filter out the records, which have values higher than 100,000 for the `cases` field.
 
@@ -90,7 +90,7 @@ public function main() {
     io:println("Countries with more than 10 million cases: ", countries);
 }
 ```
-In the `main` function, you have called the `filterCountriesByCases` function and have provided `covidTable` and `10000000` as parameters so that the function will filter the countries, which have more than 10000000 covid cases. In the next line, you have printed the result from the function. Copy the above code onto `main.bal` and execute `bal run` from within the `query_expression` project folder.
+In the `main` function, you have called the `filterCountriesByCases` function and have provided `covidTable` and `10000000` as parameters so that the function will filter the countries, which have more than 10000000 COVID-19 cases. In the next line, you have printed the result from the function. Copy the above code onto `main.bal` and execute `bal run` from within the `query_expression` project folder.
 
 The result will print something similar to the below.
 
@@ -102,9 +102,9 @@ Running executable
 
 Countries with more than 10 million cases: ["USA","India"]
 ```
-## Sorting the Top Three Countries By the Number Of Reported Covid Deaths
+## Sorting the Top Three Countries By the Number Of Reported COVID-19 Deaths
 
-Let's define a new function to find the top three countries with the highest number of Covid deaths. In this function, you will use another query to sort and retrieve a *limit*ed number of records from the table.
+Let's define a new function to find the top three countries with the highest number of COVID-19 deaths. In this function, you will use another query to sort and retrieve a *limit*ed number of records from the table.
 
 ```ballerina
 public function findCountriesByHighestNoOfDeaths(table<CovidEntry> dataTable, int n) returns [string, decimal][] {
@@ -115,7 +115,7 @@ public function findCountriesByHighestNoOfDeaths(table<CovidEntry> dataTable, in
     return countriesWithDeaths;
 }
 ```
-The `findCountriesByHighestNoOfDeaths` function uses query expression to find the top three countries with the highest Covid deaths. The `order by` clause is used to sort the records in the table in `descending` order and `limit` clause to limit the number of output records of the query to `n`. As the result, the query produces an array of tuples of type `[string, decimal]`. Each tuple contains the country name and the number of reported deaths. The produced array is in descending order by the number of deaths.
+The `findCountriesByHighestNoOfDeaths` function uses query expression to find the top three countries with the highest COVID-19 deaths. The `order by` clause is used to sort the records in the table in `descending` order and the `limit` clause to limit the number of output records of the query to `n`. As the result, the query produces an array of tuples of type `[string, decimal]`. Each tuple contains the country name and the number of reported deaths. The produced array is in descending order by the number of deaths.
 
 Let's call the `findCountriesByHighestNoOfDeaths` function from within the `main` function to find the top three countries by the number of deaths.
 
@@ -188,7 +188,7 @@ Countries with more than 10 million cases: ["USA","India"]
 Countries with highest deaths:[["India",980976],["USA",880976],["Afghanistan",7386]]
 Countries with number of Recovered patients:[["Afghanistan",146084],["USA",43892277],["India",33892279]]
 ```
-## Finding Any Discrepancies In Reported Covid Dataset Using Intermediate States
+## Finding Any Discrepancies In Reported COVID-19 Dataset Using Intermediate States
 
 This example shows how you can use the `let` clause to maintain an intermediate state while iterating a collection using query expression and how to use that intermediate state for further processing. 
 For example, in this dataset, the total number of reported cases should be equal to the sum of the number of deaths, recovered, and active. If they are not equal, an error should have occurred while the dataset is populated.
@@ -212,7 +212,7 @@ Here, you use the `sum` variable to hold the results of intermediate calculation
 
 >**Note:** Even though this particular example uses a separate variable to demonstrate the usage of the `let` clause, you can do the calculations inline from within the `where` clause also.
 
-Now, let's call this function in the `main` function. The final version of the `main` function looks like below.
+Now, let's call this function inside the `main` function. The final version of the `main` function looks like below.
 
 ```ballerina
 public function main() {

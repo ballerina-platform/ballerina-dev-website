@@ -29,7 +29,7 @@ the remote repository will be queried only if the specified version is not prese
 **Local repository**
 
 The local repository is also a file system repository, which will be created in the `<USER_HOME>` location. The repository location is `<USER_HOME>/.ballerina/repositories/local/repo/bala`. 
-For details on using the local repository, see [local repository](/learn/user-guide/ballerina-packages/dependencies/#local-repository).
+For details on using the local repository, see [local repository](/learn/managing-dependencies/#using-dependencies-from-the-local-repository).
 
 ### Importing a Module
 
@@ -50,7 +50,7 @@ The module name of the default module is always the package name.
 The following example shows how we can import modules from the `ballerina/io` package.
 
 ```bal
-import ballerina/io;`// imports default module of io package
+import ballerina/io; // imports default module of io package
 
 public function main() {
 	io:println("Hello world!");

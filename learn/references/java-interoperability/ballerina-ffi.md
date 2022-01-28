@@ -388,7 +388,7 @@ function appendStringBuffer(handle sbObj, handle sb) returns handle = @java:Meth
 ## Java Exceptions as Ballerina Errors
 A function call in Ballerina may complete abruptly by returning an error or by raising a panic. Panics are rare in Ballerina. The best practice is to handle errors in your normal control flow. Raising a panic is similar to throwing a Java exception. The `trap` action will stop a panic and give you the control back in Ballerina and the `try-catch` statement does the same in Java.
 
-Errors in Ballerina belong to the built-in type `error`. The error type can be considered as a distinct type from all other types. The `error` type does not belong to the `any` type, which is the supertype of all other Ballerina types. Therefore, errors are explicit in Ballerina programs and it is almost impossible to ignore them. For more details, see [Reference by Examples](https://ballerina.io/learn/by-example/).
+Errors in Ballerina belong to the built-in type `error`. The error type can be considered as a distinct type from all other types. The `error` type does not belong to the `any` type, which is the supertype of all other Ballerina types. Therefore, errors are explicit in Ballerina programs and it is almost impossible to ignore them. For more details, see [Ballerina By Example](https://ballerina.io/learn/by-example/).
 
 A Java function call may complete abruptly by throwing either a checked exception or an unchecked exception. Unchecked exceptions are usually not a part of the Java method signature, unlike the checked exceptions.
 

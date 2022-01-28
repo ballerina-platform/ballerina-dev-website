@@ -14,7 +14,7 @@
       url: /learn/user-guide/getting-started/writing-your-first-ballerina-program/
       active: writing-your-first-ballerina-program
     - title: Writing a GraphQL API with Ballerina
-      url: /learn/user-guide/getting-started/writing-a-graphql-api-with-ballerina/
+      url: /learn/writing-a-graphql-api-with-ballerina/
       active: writing-a-graphql-api-with-ballerina
 
 - title: Ballerina Packages

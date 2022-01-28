@@ -181,7 +181,7 @@ string name = <string>person.name;
 
 ## Table Literal
 
-* Follow formatting guidelines of [Record Literals](/learn/style-guide/expressions/#record-literal) when formatting a table block.
+* Follow the formatting guidelines of [Record Literals](/learn/style-guide/expressions/#record-literal) when formatting a table block.
   
 **Example,**
   

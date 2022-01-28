@@ -373,6 +373,8 @@ Now, you can run this service to serve a GraphQL API to our datasource. To run, 
 bal run
 ```
 
+> **Note:** The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
+
 If you connect to this service using the GraphQL Playground tool, you can see the following generated schema.
 
 ![Generated Schema](/learn/images/graphql-generated-schema.png)

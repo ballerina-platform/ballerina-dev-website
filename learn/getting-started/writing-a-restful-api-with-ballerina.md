@@ -48,13 +48,13 @@ Ballerina uses packages to group code. In this case, a package with the default 
 
 `bal new covid19 -t service`
 
-This creates a folder named covid19 along with a sample code for a service. Move to the new folder and execute the following command to start VSCode.
+This creates a folder named `covid19` along with a sample code for a service. Move to the new folder and execute the following command to start VSCode.
 
 `code .`
 
 `Ballerina.toml` is the file which actually makes the folder a Ballerina package. It also contains a test directory to include tests for the service. But for the sake of simplicity, we will ignore it in this tutorial. You can just go through the sample to get a look and feel about Ballerina services. However, we will be starting with a blank page. Hence, before you start you can delete the entire code or edit it if you wish.
 
-## Create the Covid19 Dataset 
+## Create the COVID-19 Dataset 
 
 To keep things simple a in-memory dataset is used with three entries. Ballerina tables are used to store data. Each entry in the table is represented by a Ballerina record. Following is the definition of the record and the declaration of the table.
 
@@ -74,7 +74,7 @@ public final table<CovidEntry> key(iso_code) covidTable = table [
 ];
 ```
 
-## Write a Resource to Get All the Covid19 Data
+## Write a Resource to Get All the COVID-19 Data
 
 As mentioned earlier, the first endpoint has two parts: getting data as well as adding data. In this section, the focus is on getting data. 
 
@@ -101,7 +101,7 @@ Unlike normal functions, resource functions can have accessors. In this case, ac
 
 Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. The default status code HTTP responses are 200 OK.
 
-## Write a Resource to Add Covid19 Data by ISO Code
+## Write a Resource to Add COVID-19 Data by ISO Code
 
 The second part of the first endpoint is about adding or appending new data to the dataset. Following is the second resource associated with the first endpoint.
 
@@ -140,7 +140,7 @@ As you can see, there is something new here. `*http:Conflict` is the Ballerina w
 
 The body of the response is of type `ErrorMsg` which simply has a string field named `errmsg`. Based on the need users can have any data type for their response body.
 
-## Write a Resource to Get Filtered Covid19 Data by ISO Code
+## Write a Resource to Get Filtered COVID-19 Data by ISO Code
 
 This resource is a bit more different than the first two resources. As explained earlier, resource functions have accessors. In addition, it also supports hierarchical paths making it ideal for implementing RESTful APIs. Hierarchical paths can have path params. In this case, `iso_code` is used as the path param, which in turn, becomes a string variable.
 

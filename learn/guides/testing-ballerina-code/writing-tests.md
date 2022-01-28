@@ -27,16 +27,18 @@ import ballerina/test;
 
 Once the test module is imported, the following annotation can be used to write a test function.
 
-### `@test:Config {}`
+```ballerina
+`@test:Config {}`
+```
 
-The function specified after the annotation is a test function. This annotation supports fields to configure the test 
-case with the following.
+The function defined after the above annotation will be detected as a test function. This annotation supports the following attributes in order to configure the test 
+execution.
 
 * ***enable: {true&#124;false}*** - Enable/disable the test. The default value is `true`.
     
-* ***before: &lt;function name&gt;*** - The function to be run just before the test is run. The default value is `none`.
+* ***before: &lt;function name&gt;*** - The function to be run just before the test is run. The default value is `nil`.
 
-* ***after: &lt;function name&gt;*** - The function to be run just after the test is run. The default value is `none`.
+* ***after: &lt;function name&gt;*** - The function to be run just after the test is run. The default value is `nil`.
  
 * ***dependsOn: [&lt;function names>, …]*** - List of functions on which the test function depends. The order in which 
 the comma-separated list appears has no prominence. In case there needs to be an order, the `dependsOn` parameter can 
@@ -85,14 +87,12 @@ function testFunction2 (int value) returns error? {
     test:assertEquals(value, 1, msg = "value is not correct");
 }
 
-
 function dataGen() returns (int[][]) {
     return [[1]];
 }
 
 // This is a random test function. This will randomly execute without depending  on
 // the other functions. However, note that the `testFunction2` function depends on this.
-
 @test:Config {
     groups: ["g1", "g2"]
 }

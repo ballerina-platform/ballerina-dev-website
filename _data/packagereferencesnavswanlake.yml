@@ -1,27 +1,59 @@
 - title: Package References
   url: '#'
   sublinks:
-    - title: Package Layout
-      url: '#'
+    - title: The `Ballerina.toml` File
+      url: /learn/package-references/#ballerinatoml
+      active: ballerinatoml
       sublinks:
-        - title: Ballerina.toml
-          url: /learn/package-references/#ballerinatoml
-          active: ballerinatoml
-        - title: Dependencies.toml
-          url: /learn/package-references/#dependenciestoml
-          active: dependenciestoml
-        - title: Package.md
-          url: /learn/package-references/#packagemd
-          active: packagemd
-        - title: The target/ Directory
-          url: /learn/package-references/#the-target-directory
-          active: the-target-directory
-        - title: The resources/, tests/ Directories, and Module.md
-          url: /learn/package-references/#the-resources-tests-directories-and-modulemd
-          active: the-resources-tests-directories-and-modulemd
-        - title: The modules/ Directory
-          url: /learn/package-references/#the-modules-directory
-          active: the-modules-directory
-        - title: Module Layout
-          url: /learn/package-references/#module-layout
-          active: module-layout
+        - title: The `org` Field
+          url: /learn/package-references/#the-org-field
+          active: the-org-field
+        - title: The `name` Field
+          url: /learn/package-references/#the-name-field
+          active: the-name-field
+        - title: The `version` Field
+          url: /learn/package-references/#the-version-field
+          active: the-version-field
+        - title: Build Options
+          url: /learn/package-references/#build-options
+          active: build-options
+        - title: Packaging Java Libraries
+          url: /learn/package-references/#packaging-java-libraries
+          active: packaging-java-libraries
+    - title: The `Dependencies.toml` File
+      url: /learn/package-references/#dependenciestoml
+      active: dependenciestoml
+    - title: The `Package.md` File
+      url: /learn/package-references/#packagemd
+      active: packagemd
+    - title: The `target/` Directory
+      url: /learn/package-references/#the-target-directory
+      active: the-target-directory
+    - title: The `resources/`, `tests/` Directories, and `Module.md`
+      url: /learn/package-references/#the-resources-tests-directories-and-modulemd
+      active: the-resources-tests-directories-and-modulemd
+    - title: The `modules/` Directory
+      url: /learn/package-references/#the-modules-directory
+      active: the-modules-directory
+    - title: Module Layout
+      url: /learn/package-references/#module-layout
+      active: module-layout
+      sublinks:
+        - title: Module Directories
+          url: /learn/package-references/#module-directories
+          active: module-directories
+        - title: The `.bal` Source Files
+          url: /learn/package-references/#the-bal-source-files
+          active: the-bal-source-files
+        - title: The `Module.md` File
+          url: /learn/package-references/#module-md
+          active: module-md
+        - title: The `resources/` Directory
+          url: /learn/package-references/#the-resources-directory
+          active: the-resources-directory
+        - title: The `tests/` Directory
+          url: /learn/package-references/#the-tests-directory
+          active: the-tests-directory
+  
+
+

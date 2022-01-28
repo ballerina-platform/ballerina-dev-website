@@ -128,8 +128,8 @@ redirect_from:
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
 <a href="/learn/writing-a-restful-api-with-ballerina/">
-    <h3 id="working-with-data">Understand the basics of Ballerina constructs, which allow you to write RESTful APIs.</h3></a>
-    <p >Write a REST API with Ballerina. </p>
+    <h3 id="working-with-data">Writing a RESTful API with Ballerina</h3></a>
+    <p >Understand the basics of Ballerina constructs, which allow you to write RESTful APIs. </p>
 </div>
 </div>
 

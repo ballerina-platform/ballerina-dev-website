@@ -19,7 +19,7 @@ redirect_from:
 
 The below are the most stable versions of the lanuguage specification, which are in sync with the Ballerina releases.
 
-> **Note:** The `ChangeLog` section of the specification identifies the changes that have occurred in each version of the specification.
+> **Note:** The `CHANGES SINCE PREVIOUS VERSIONS` section of the specification identifies the changes that have occurred in each version of the specification.
 
 | Version | Release Date | Description |
 | ------- | ------------ | ----------- | 

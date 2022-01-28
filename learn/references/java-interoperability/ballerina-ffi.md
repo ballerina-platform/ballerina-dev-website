@@ -107,7 +107,7 @@ function newArrayDeque() returns handle = @java:Constructor {
 } external;
 ```
 
->**Note:** that these `@java:*` annotations cannot be attached to Ballerina class methods at the moment.
+>**Note:** These `@java:*` annotations cannot be attached to Ballerina class methods at the moment.
 
 ### Dealing with Overloaded Constructors
 When there are two constructors with the same number of arguments available, you need to specify the exact constructor that you want to link with the Ballerina function. The `ArrayDeque` class contains three constructors and the last two are overloaded ones.
@@ -172,7 +172,7 @@ As per the above definition, `paramTypes` field takes an array of Java classes o
 Java Type | Description | Example
 --------- | ----------- | -------
 Primitive | The Java class name of a primitive type is the same as the name of the primitive type.  | The `boolean.class.getName()` expression evaluates to `boolean`. Similarly, the `int.class.getName()` expression evaluates to `int`.
-Class | Fully-qualified class name | `java.lang.String`
+Class | Fully-qualified class name. | `java.lang.String`
 Array | Use the `ArrayType` record defined above to specify Java array types in overloaded methods. |  The value of the `paramField` for the method signature `void append(boolean[] states, long l, String[][] args)` evaluates to `[{'class:"boolean", dimensions: 1}, "long", {'class:"java.lang.String", dimensions: 2}]`
 
 For more details, look at the following example.
@@ -202,7 +202,7 @@ function builderWithStudentList(handle list, int index) returns handle = @java:C
 You can use the `java:@Method` annotation to link Ballerina functions with Java static and instance methods. There is a minor but important difference in calling Java static methods vs calling instance methods.
 
 ### Calling Static Methods
-Let’s first look at how to call a static method. The `java.util.UUID` class  has a static method with the `static UUID randomString()` signature.
+First look at how to call a static method. The `java.util.UUID` class  has a static method with the `static UUID randomString()` signature.
 
 ```ballerina
 import ballerina/jballerina.java;
@@ -228,7 +228,7 @@ function randomUUID() returns handle = @java:Method {
 ```
 
 ### Calling Instance Methods
-Now, let’s look at how to call Java instance methods using the same `ArrayDeque` class in the `java.util` package. It can be used as a stack with its `pop` and `push` instance methods with the following method signatures.
+Now, look at how to call Java instance methods using the same `ArrayDeque` class in the `java.util` package. It can be used as a stack with its `pop` and `push` instance methods with the following method signatures.
 
 ```java
 E pop();
@@ -310,7 +310,7 @@ public class StringStack {
 
    public function pop() returns string {
        handle handleEle = pop(self.jObj);
-       // Let's talk about error handling and null satefy later in this guide
+       // Error handling and null safety are discussed later in this guide
        // This example uses an empty string for now.
        return java:toString(handleEle) ?: "";
 
@@ -341,7 +341,7 @@ public function main() {
 ```
 
 ### Calling Overloaded Java Methods
-The [Instantiating Java Classes](/learn/java-interoperability/ballerina-ffi/#instantiating-java-classes) section presents how to deal with overloaded constructors. You need to use the same approach to deal with overloaded Java methods. Let’s try to call the overloaded `append` methods in the `java.lang.StringBuffer` class. Below is a subset of those methods.
+The [Instantiating Java Classes](/learn/java-interoperability/ballerina-ffi/#instantiating-java-classes) section presents how to deal with overloaded constructors. You need to use the same approach to deal with overloaded Java methods. Try to call the overloaded `append` methods in the `java.lang.StringBuffer` class. Below is a subset of those methods.
 
 ```java
 StringBuffer append(boolean b);
@@ -440,7 +440,7 @@ public function main() {
 }
 ```
 ### Java Checked Exceptions
-Let’s see how you can call a Java method that throws a checked exception. As illustrated in the following example, the corresponding Ballerina function should have the `error` type as part of its return type.
+Below, you can see how to call a Java method that throws a checked exception. As illustrated in the following example, the corresponding Ballerina function should have the `error` type as part of its return type.
 
 The `java.util.zip.ZipFile` class is used to read entries in a ZIP file. There are many constructors in this class. Here, the constructor that takes the file name as an argument is used.
 
@@ -464,7 +464,7 @@ public function main() {
 ```
 
 ### Mapping a Java Exception to a Ballerina Error Value
-Now, let’s briefly look at how a Java exception is converted to a Ballerina error value at runtime. A Ballerina error value contains three components: a message, a detail, and a stack trace.
+Now, look at how a Java exception is converted to a Ballerina error value at runtime. A Ballerina error value contains three components: a message, a detail, and a stack trace.
 
 The `message`:
 - This is a string identifier for the error category.
@@ -483,9 +483,9 @@ The `stack trace`:
 ## Null Safety
 Ballerina provides strict null safety compared to Java with optional types. The Java null reference can be assigned to any reference type. However, in Ballerina, you cannot assign the nil value to a variable unless the variable’s type is optional.
 
-As explained above, Ballerina handle values cannot be created in the Ballerina code. They are created and returned by foreign functions and a variable of the handle type refers to a Java reference value. Since Java null is also a valid reference value, this variable can refer to a Java null value.
+As explained above, Ballerina handle values cannot be created in the Ballerina code. They are created and returned by foreign functions and a variable of the handle type refers to a Java reference value. Since, Java null is also a valid reference value, this variable can refer to a Java null value.
 
-Let’s look at an example that deals with Java null. The following code uses the `peek` method in the `ArrayDeque` class. `Peek` retrieves but does not remove the head of the queue or returns null if the queue is empty.
+An example Ballerina code is given below that deals with Java null. It uses the `peek` method in the `ArrayDeque` class. `Peek` retrieves but does not remove the head of the queue or returns null if the queue is empty.
 
 ```ballerina
 import ballerina/jballerina.java;

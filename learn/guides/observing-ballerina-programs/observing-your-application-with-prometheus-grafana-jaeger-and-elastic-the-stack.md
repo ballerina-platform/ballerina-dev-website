@@ -34,7 +34,7 @@ redirect_from:
 Observability consists of three major pillars.
 
 ### Metrics
-Numeric values that are collected and aggregated over a period of time
+Numeric values that are collected and aggregated over a period of time.
 
 ### Tracing
 The activities that occur when a request/transaction occurs in the system from the point of entry to exit.
@@ -68,7 +68,7 @@ Prometheus, etc. For instructions, go to the [Docker documentation](https://docs
 
 * Set up Prometheus for collecting metrics information by following the section on [Setting up Prometheus](#setting-up-prometheus)
 * Set up Grafana to visualize metrics by following the section on [Setting up Grafana](#setting-up-grafana)
-* Set up Jaeger analyze tracing as mentioned in the section [Setting up Jaeger](#setting-up-the-jaeger-server)
+* Set up Jaeger to analyze tracing as mentioned in the section [Setting up Jaeger](#setting-up-the-jaeger-server)
 * Set up Elastic Stack only if you are interested in analyzing logs by following the section on [Setting up the Elastic Stack](#setting-up-the-elastic-stack)
 
 ### Step 3 - Creating a 'Hello World' Ballerina Service
@@ -209,16 +209,15 @@ Configuration Key | Description | Default Value | Possible Values
 --- | --- | --- | --- 
 ballerina.observe. metricsEnabled | Whether metrics monitoring is enabled (true) or disabled (false) | false | true or false
 ballerina.observe. metricsReporter | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | choreo | prometheus or if any custom implementation, the name of the reporter.
-ballerinax.prometheus. port | The value of the port to which the service '/metrics' will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service. | 9797 | Any suitable value for port 0 - 0 - 65535. However, within that range, ports 0 - 1023 are generally reserved for specific purposes, therefore it is advisable to select a port without that range. 
-ballerinax.prometheus. host | The name of the host to which the service '/metrics' will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service. | 0.0.0.0 | IP or Hostname or 0.0.0.0 of the node in which the Ballerina service is running.
+ballerinax.prometheus. port | The value of the port to which the '/metrics' service will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service. | 9797 | Any suitable value for port 0 - 0 - 65535. However, within that range, ports 0 - 1023 are generally reserved for specific purposes, therefore it is advisable to select a port without that range. 
+ballerinax.prometheus. host | The name of the host to which the '/metrics' service will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service. | 0.0.0.0 | IP or Hostname or 0.0.0.0 of the node in which the Ballerina service is running.
 
 ### Setting Up the External Systems for Metrics
 There are mainly two systems involved in collecting and visualizing the metrics. [Prometheus] is used to collect the
 metrics from the Ballerina service while [Grafana] can be used to connect to Prometheus and visualize the metrics on the dashboard.
 
 #### Setting Up Prometheus
-[Prometheus] is used as the monitoring system, which pulls out the metrics collected from the Ballerina service
-`/metrics`. This section focuses on the quick installation of Prometheus with Docker and the configuration required to 
+[Prometheus] is used as the monitoring system, which pulls out the metrics collected from the Ballerina `/metrics` service. This section focuses on the quick installation of Prometheus with Docker and the configuration required to 
 collect metrics from the Ballerina service with the default configurations. Follow the steps below to configure 
 Prometheus. 
 
@@ -270,7 +269,7 @@ Prometheus as a data source. Follow the steps below to configure Grafana.
 
 2. Go to <http://localhost:3000/> to access the Grafana dashboard running on Docker.
 
-3. Log in to the dashboard with the default user, username: `admin` and password: `admin`
+3. Login to the dashboard with the default user, username: `admin` and password: `admin`
 
 4. Add Prometheus as a data source with `Browser` access configuration as provided below.
 
@@ -314,7 +313,7 @@ Tracing can be enabled in Ballerina with the few configurations mentioned above 
 [Observing a Ballerina Service](#observing-a-ballerina-service) section.
 This section mainly focuses on the configuration options with the description and possible values.
 
-The sample configuration that enables tracing and uses Jaeger as the tracer is provided below.
+A sample configuration that enables tracing and uses Jaeger as the tracer is provided below.
 
 ```toml
 [ballerina.observe]
@@ -362,7 +361,7 @@ You can configure Ballerina to support distributed tracing with Jaeger. This sec
 Jaeger with Docker as a quick installation.
 
 #### Setting Up the Jaeger Server
-There are many possible ways to deploy Jaeger. For more information, see [Deployment](https://www.jaegertracing.io/docs/deployment/). This focuses on an all-in-one deployment with Docker.
+There are many possible ways to deploy Jaeger. For more information, see [Jaeger Deployment](https://www.jaegertracing.io/docs/deployment/). This focuses on an all-in-one deployment with Docker.
 
 1. Install Jaeger via Docker and start the Docker container by executing the command below.
 
@@ -370,7 +369,7 @@ There are many possible ways to deploy Jaeger. For more information, see [Deploy
     $ docker run -d -p 13133:13133 -p 16686:16686 -p 55680:55680 jaegertracing/opentelemetry-all-in-one
     ```
 
-2. Go to <http://localhost:16686> and load the web UI of the Jaeger to make sure it is functioning properly.
+2. Go to <http://localhost:16686> and load the web UI of Jaeger to make sure it is functioning properly.
 
     The image below is the sample tracing information you can see in Jaeger.
     
@@ -400,8 +399,8 @@ The Elastic Stack comprises the following components.
 
 1. Beats - Multiple agents that ship data to Logstash or Elasticsearch. In our context, Filebeat will ship the Ballerina logs to Logstash. Filebeat should be a container running on the same host as the Ballerina service. This is so that the log file (ballerina.log) can be mounted to the Filebeat container.
 2. Logstash - Used to process and structure the log files received from Filebeat and send them to Elasticsearch.
-3. Elasticsearch - Storage and indexing of the logs received by Logstash.
-4. Kibana - Visualizes the data stored in Elasticsearch
+3. Elasticsearch - Storage and indexing of the logs sent by Logstash.
+4. Kibana - Visualizes the data stored in Elasticsearch.
 
 Elasticsearch and Kibana are provided as [Cloud Services](https://www.elastic.co/cloud).
 Alternatively, Docker containers can be used to set up Elasticsearch and Kibana as well.
@@ -482,7 +481,7 @@ Alternatively, Docker containers can be used to set up Elasticsearch and Kibana 
     $ docker run -v /tmp/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /<path-to-ballerina.log>/ballerina.log:/usr/share/filebeat/ballerina.log --link logstash:logstash docker.elastic.co/beats/filebeat:6.5.1
     ```
     
-    The `-v` flag is used for bind mounting, where the container will read the file from the host machine. Provide the path to the ballerina.log file to be bind-mounted to the filebeat container.
+    The `-v` flag is used for bind mounting, where the container will read the file from the host machine. Provide the path to the `ballerina.log` file to be bind-mounted to the filebeat container.
 
 7. Access Kibana to visualize the logs at <http://localhost:5601>. Add an index named `ballerina` and click on `Discover` to visualize the logs.
 

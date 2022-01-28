@@ -243,16 +243,16 @@ The test config annotation makes use of ‘before’ to denote which function ne
 test is run.
 
 #### `@test:Config { after : “ “ }`
-The test config annotation makes use of ‘after’ to denote which function needs to execute before the particular 
+The test config annotation makes use of ‘after’ to denote which function needs to execute after the particular 
 test is run.
 
 
 ## Defining Test Specific Configurations
 Configurations for testing can be provided using configurable variables. The values for configurable variables can be
-provided in a file named `Config.toml` located in the `tests/` directory, which will only be initialized when the tests
+provided in a file named `Config.toml` located in the `tests` directory, which will only be initialized when the tests
 are run. 
 
->**Note:** If the `Config.toml` is not specified in the `tests/` directory, the values will
+>**Note:** If the `Config.toml` is not specified in the `testsare ` directory, the values will
 be either taken from the `Config.toml` in the root directory or default values will be used.
 
 Configurable variables are useful when you require separate configurations that cannot be feasibly used outside of 
@@ -261,11 +261,11 @@ are trying to test the service or client.
 
 
 ## Defining Test-only Dependencies
-Dependencies meant to be resolved only during testing and can be specified in the `Ballerina.toml` file by specifying the 
+Dependencies are meant to be resolved only during testing and can be specified in the `Ballerina.toml` file by specifying the 
 scope.
 
-    ```toml
-    [[platform.java11.dependency]]
-    path = "/user/foo/libs/abc.jar"
-    scope = "testOnly"
-    ```
+```toml
+[[platform.java11.dependency]]
+path = "/user/foo/libs/abc.jar"
+scope = "testOnly"
+```

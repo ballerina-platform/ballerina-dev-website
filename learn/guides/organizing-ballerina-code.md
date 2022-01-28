@@ -51,7 +51,7 @@ tree .
 0 directories, 2 files
 ```
 
->**Tip:** You may also try creating a service or a lib package instead of the main function. 
+You may also try creating a service or a lib package instead of the main function as explained in the sections below. 
 
 #### Creating a Ballerina Service Package
 

@@ -108,13 +108,13 @@ redirect_from:
 <div class="col-lg-6 col-md-6 col-sm-12 card" >
   <a href="/learn/installing-ballerina/setting-up-ballerina/">
     <h3 id="installing-ballerina">Installing Ballerina</h3> </a>
-    <p >Setting up the Ballerina development environment.  </p>
+    <p >Set up the Ballerina development environment.  </p>
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
  <a href="/learn/getting-started-with-ballerina/">
     <h3 id="hello-world">Getting Started with Ballerina</h3></a>
-   <p >Writing your first Ballerina program and creating your first Ballerina package. </p>
+   <p >Write your first Ballerina program and create your first Ballerina package. </p>
 </div>
 </div>
 
@@ -128,8 +128,8 @@ redirect_from:
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
 <a href="/learn/writing-a-restful-api-with-ballerina/">
-    <h3 id="working-with-data">Writing a RESTful API with Ballerina</h3></a>
-    <p >Learn how to write a REST API with Ballerina. </p>
+    <h3 id="working-with-data">Understand the basics of Ballerina constructs, which allow you to write RESTful APIs.</h3></a>
+    <p >Write a REST API with Ballerina. </p>
 </div>
 </div>
 
@@ -137,12 +137,12 @@ redirect_from:
 <div class="col-lg-6 col-md-6 col-sm-12 card">
 <a href="/learn/writing-a-graphql-api-with-ballerina/">
     <h3 id="working-with-data">Writing a GraphQL API with Ballerina</h3></a>
-    <p >Learn how to write a GraphQL API with Ballerina. </p>
+    <p >Understand the basics of Ballerina constructs, which allow you to write GraphQL APIs. </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
 <a href="/learn/writing-a-grpc-service-with-ballerina/">
     <h3 id="building-a-data-service">Writing a gRPC Service with Ballerina</h3></a>
-    <p >Writing a simple Ballerina gRPC service and invoking the service through a Ballerina gRPC client. </p>
+    <p >Write a simple Ballerina gRPC service and invoke the service through a Ballerina gRPC client. </p>
 </div>
 </div>
 
@@ -150,12 +150,12 @@ redirect_from:
 <div class="col-lg-6 col-md-6 col-sm-12 card">
 <a href="/learn/working-with-data-in-ballerina/">
     <h3 id="working-with-data">Working with Data in Ballerina</h3></a>
-    <p >Learn how to use Ballerina query expressions to filter, sort, and join different iterable collections. </p>
+    <p >Use Ballerina query expressions to filter, sort, and join different iterable collections. </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
  <a href="/learn/deploying-ballerina-on-kubernetes/">
     <h3 id="hello-world">Deploying Ballerina on Kubernetes</h3></a>
-   <p >Dockerizing your application and deploying it in Kubernetes. </p>
+   <p >Dockerize your application and deploy it on Kubernetes. </p>
 </div>
 </div>
 
@@ -163,12 +163,7 @@ redirect_from:
 <div class="col-lg-6 col-md-6 col-sm-12 card">
 <a href="/learn/building-a-data-service-in-ballerina/">
     <h3 id="building-a-data-service-in-ballerina">Building a Data Service in Ballerina</h3></a>
-    <p >Connecting to a MySQL database and executing queries using an HTTP RESTful API </p>
-</div>
-<div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
-<a href="/learn/writing-a-restful-api-with-ballerina/">
- <h3 id="writing-a-restful-api-with-ballerina">Writing a RESTful API with Ballerina</h3></a>
-		<p>This simple guide helps you understand the basics of Ballerina constructs which allow you to write RESTful APIs.</p>
+    <p >Connect to a MySQL database and execute queries using an HTTP RESTful API. </p>
 </div>
 </div>
 
@@ -182,7 +177,7 @@ redirect_from:
  	<p>A guide to the language features that make Ballerina distinctive.  </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
- <a href="/learn/organizing-ballerina-code/package-layout/">
+ <a href="/learn/organizing-ballerina-code">
   <h3 id="organizing-ballerina-code">Organizing Ballerina Code</h3></a>
  	<p>Basics of projects, packages, and modules.  </p>
 </div>

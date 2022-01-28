@@ -579,7 +579,7 @@ typedesc | io.ballerina.runtime.api.values.BTypedesc |
 error | io.ballerina.runtime.api.values.BError |
 
 ### Using Ballerina Arrays and Maps in Java
-There is no direct mapping between Ballerina arrays and maps to primitive Java arrays and maps. In order to facilitate the use of Ballerina arrays and maps in Java, the `ballerina-runtime` libraries have to be added as a dependency to the Java project and the relevant classes need to be imported from the `ballerina-runtime` library. For more information on all the released versions go to [ballerina-runtime](https://maven.wso2.org/nexus/content/repositories/releases/org/ballerinalang/ballerina-runtime/) Maven repository. The latest version of the dependency can be added to Gradle using the following:
+There is no direct mapping between Ballerina arrays and maps to primitive Java arrays and maps. In order to facilitate the use of Ballerina arrays and maps in Java, the `ballerina-runtime` libraries have to be added as a dependency to the Java project and the relevant classes need to be imported from the `ballerina-runtime` library. For more information on all the released versions, go to [`ballerina-runtime`](https://maven.wso2.org/nexus/content/repositories/releases/org/ballerinalang/ballerina-runtime/). The latest version of the dependency can be added to Gradle using the following:
 ```groovy
 repositories {
    // Use WSO2's Nexus repository manager for resolving dependencies.

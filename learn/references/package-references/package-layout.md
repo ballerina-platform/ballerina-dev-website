@@ -117,7 +117,9 @@ cloud = "k8s"
 When you compile a Ballerina package with `bal build`, the compiler creates an executable JAR file. However, if the package does not contain an entry point, it will produce a non-executable JAR file (a library package), which can be used in another package/program. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives.
 
 You can store the JAR files anywhere in your file system. As a best practice, maintain Java libraries inside the package.
-The platform-specific library information need to be specified in the `Ballerina.toml` file. Java libraries are considered as platform-specific libraries.
+The platform-specific library information needs to be specified in the `Ballerina.toml` file. Java libraries are considered as platform-specific libraries.
+
+#### Adding JAR File Dependencies
 You can specify a JAR file dependency in the `Ballerina.toml` file as shown below.
 
 ```toml
@@ -128,6 +130,7 @@ path = "<path-to-jar-file-1>"
 modules = ["<ballerina-module-1>"]
 ```
 
+#### Adding Maven Dependencies
 Alternatively, you can also specify Maven dependencies as platform-specific libraries. These specified dependencies would then get resolved into the `target/platform-libs` directory when building the package. You can specify a Maven dependency in the `Ballerina.toml` file as shown below.
 
 ```toml
@@ -142,6 +145,7 @@ artifactId = "<artifact-id>"
 version = "<version>"
 ```
 
+#### Adding Custom Maven Repositories
 If you wish to use a custom Maven repository, you can specify it in the `Ballerina.toml` file as shown below.
 ```toml
 [[platform.java11.repository]]

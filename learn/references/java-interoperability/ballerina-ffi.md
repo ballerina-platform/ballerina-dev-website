@@ -71,7 +71,7 @@ The following sections describe various aspects of Java interoperability in Ball
 ## Instantiating Java Classes
 Let's look at how you can create Java objects in a Ballerina program. The `@java:Constructor` annotation instructs the compiler to link a Ballerina function with a Java constructor.
 
-The `ArrayDeque` class in the `java.util` package has a default constructor. The following Ballerina code creates a new `ArrayDeque` object. As you can see, the `newArrayDeque` function is linked with the default constructor. This function returns a handle value and it refers the constructed `ArrayDeque` instance.
+The `ArrayDeque` class in the `java.util` package has a default constructor. The following Ballerina code creates a new `ArrayDeque` object. As you can see, the `newArrayDeque` function is linked with the default constructor. This function returns a handle value and it refers to the constructed `ArrayDeque` instance.
 
 ```ballerina
 import ballerina/jballerina.java;
@@ -107,7 +107,7 @@ function newArrayDeque() returns handle = @java:Constructor {
 } external;
 ```
 
->**Note:** that these `@java:*` annotations cannot be attached to Ballerina object methods at the moment.
+>**Note:** that these `@java:*` annotations cannot be attached to Ballerina class methods at the moment.
 
 ### Dealing with Overloaded Constructors
 When there are two constructors with the same number of arguments available, you need to specify the exact constructor that you want to link with the Ballerina function. The `ArrayDeque` class contains three constructors and the last two are overloaded ones.
@@ -341,7 +341,7 @@ public function main() {
 ```
 
 ### Calling Overloaded Java Methods
-The [Instantiating Java Classes](#instantiating-java-classes) section presents how to deal with overloaded constructors. You need to use the same approach to deal with overloaded Java methods. Let’s try to call the overloaded `append` methods in the `java.lang.StringBuffer` class. Below is a subset of those methods.
+The [Instantiating Java Classes](/learn/java-interoperability/ballerina-ffi/#instantiating-java-classes) section presents how to deal with overloaded constructors. You need to use the same approach to deal with overloaded Java methods. Let’s try to call the overloaded `append` methods in the `java.lang.StringBuffer` class. Below is a subset of those methods.
 
 ```java
 StringBuffer append(boolean b);
@@ -351,7 +351,7 @@ StringBuffer append(StringBuffer sb);
 StringBuffer append(char[] str);
 ```
 
-Below is the set of Ballerina functions that are linked with the above Java methods. Notice the usage of the `paramTypes` annotation field. You can find more details of this field in the [Instantiating Java Classes](#instantiating-java-classes) section.
+Below is the set of Ballerina functions that are linked with the above Java methods. Notice the usage of the `paramTypes` annotation field. You can find more details of this field in the [Instantiating Java Classes](/learn/java-interoperability/ballerina-ffi/#instantiating-java-classes) section.
 
 ```ballerina
 function appendBool(handle sbObj, boolean b) returns handle = @java:Method {
@@ -388,9 +388,9 @@ function appendStringBuffer(handle sbObj, handle sb) returns handle = @java:Meth
 ## Java Exceptions as Ballerina Errors
 A function call in Ballerina may complete abruptly by returning an error or by raising a panic. Panics are rare in Ballerina. The best practice is to handle errors in your normal control flow. Raising a panic is similar to throwing a Java exception. The `trap` action will stop a panic and give you the control back in Ballerina and the `try-catch` statement does the same in Java.
 
-Errors in Ballerina belong to the built-int type `error`. The error type can be considered as a distinct type from all other types. The `error` type does not belong to the `any` type, which is the supertype of all other Ballerina types. Therefore, errors are explicit in Ballerina programs and it is almost impossible to ignore them. For more details, see [BBEs](https://ballerina.io/learn/by-example/).
+Errors in Ballerina belong to the built-in type `error`. The error type can be considered as a distinct type from all other types. The `error` type does not belong to the `any` type, which is the supertype of all other Ballerina types. Therefore, errors are explicit in Ballerina programs and it is almost impossible to ignore them. For more details, see [Ballerina By Example](https://ballerina.io/learn/by-example/).
 
-A Java function call may complete abruptly by throwing either a checked exception or an unchecked exception. Unchecked exceptions are usually not part of the Java method signature unlike the checked exceptions.
+A Java function call may complete abruptly by throwing either a checked exception or an unchecked exception. Unchecked exceptions are usually not a part of the Java method signature, unlike the checked exceptions.
 
 Java interoperability layer in Ballerina handles checked exceptions differently from unchecked exceptions as explained below.
 
@@ -464,7 +464,7 @@ public function main() {
 ```
 
 ### Mapping a Java Exception to a Ballerina Error Value
-Now, let’s briefly look at how a Java exception is converted to a Ballerina error value at runtime. A Ballerina error value contains three components: a message, a detail, and stack trace.
+Now, let’s briefly look at how a Java exception is converted to a Ballerina error value at runtime. A Ballerina error value contains three components: a message, a detail, and a stack trace.
 
 The `message`:
 - This is a string identifier for the error category.
@@ -476,12 +476,16 @@ The `detail`:
 - The `message` field is set to `e.getMessage()`.
 - The `cause` field is set to the Ballerina error that represents this Java exception’s cause.
 
+The `stack trace`:
+- An object representing the stack trace of the error value.
+- The first member of the array represents the top of the call stack.
+
 ## Null Safety
 Ballerina provides strict null safety compared to Java with optional types. The Java null reference can be assigned to any reference type. However, in Ballerina, you cannot assign the nil value to a variable unless the variable’s type is an optional type.
 
 As explained above, Ballerina handle values cannot be created in Ballerina code. They are created and returned by foreign functions and a variable of the handle type refers to a Java reference value. Since Java null is also a valid reference value, this variable can refer to a Java null value.
 
-Let’s look at an example, which deals with Java null. The following code uses the `peek` method in the `ArrayDeque` class. `Peek` retrieves but does not remove the head of the queue or returns null if the queue is empty.
+Let’s look at an example that deals with Java null. The following code uses the `peek` method in the `ArrayDeque` class. `Peek` retrieves but does not remove the head of the queue or returns null if the queue is empty.
 
 ```ballerina
 import ballerina/jballerina.java;
@@ -575,7 +579,7 @@ typedesc | io.ballerina.runtime.api.values.BTypedesc |
 error | io.ballerina.runtime.api.values.BError |
 
 ### Using Ballerina Arrays and Maps in Java
-There is no direct mapping between Ballerina arrays and maps to primitive Java arrays and maps. In order to facilitate the use of Ballerina arrays and maps in Java, the `ballerina-runtime` libraries have to be added as a dependency to the Java project and the relevant classes need to be imported from the `ballerina-runtime` library. You can find all the released versions of the `ballerina-runtime` library [here](https://maven.wso2.org/nexus/content/repositories/releases/org/ballerinalang/ballerina-runtime/). The latest version of the dependency can be added to Gradle using the following:
+There is no direct mapping between Ballerina arrays and maps to primitive Java arrays and maps. In order to facilitate the use of Ballerina arrays and maps in Java, the `ballerina-runtime` libraries have to be added as a dependency to the Java project and the relevant classes need to be imported from the `ballerina-runtime` library. For more information on all the released versions, go to [`ballerina-runtime`](https://maven.wso2.org/nexus/content/repositories/releases/org/ballerinalang/ballerina-runtime/). The latest version of the dependency can be added to Gradle using the following:
 ```groovy
 repositories {
    // Use WSO2's Nexus repository manager for resolving dependencies.

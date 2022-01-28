@@ -22,21 +22,6 @@
         - title: Line Breaks
           url: /learn/style-guide/coding-conventions/#line-breaks
           active: line-breaks
-        - title: Top-Level Definitions
-          url: /learn/style-guide/coding-conventions/#top-level-definitions
-          active: top-level-definitions
-        - title: Operators, Keywords, and Types
-          url: /learn/style-guide/coding-conventions/#operators-keywords-and-types
-          active: operators-keywords-and-types
-        - title: Statements
-          url: /learn/style-guide/coding-conventions/#statements
-          active: statements
-        - title: Expressions
-          url: /learn/style-guide/coding-conventions/#expressions
-          active: expressions
-        - title: Annotations, Documentation, and Comments
-          url: /learn/style-guide/coding-conventions/#annotations-documentation-and-comments
-          active: annotations-documentation-and-comments
     - title: Top-Level Definitions
       url: /learn/style-guide/top-level-definitions/
       sublinks:

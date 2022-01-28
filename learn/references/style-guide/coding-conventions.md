@@ -24,8 +24,6 @@ redirect_from:
   - /learn/style-guide/coding-conventions
 ---
 
-> You can follow your own coding style when writing Ballerina source code.
-
 ## Indentation and Line Length
 * Use four spaces (not tabs) for each level of indentation.
 * Keep the maximum length of a line to 120 characters. 
@@ -260,7 +258,7 @@ string s2 =
     getPersonNameWithUpperCaseLetters();
 ``` 
 
-* If a line exceeds the max line length, start from the end of the line and come towards the start of the line until you find a point, which matches the above rules to break the line.
+* If a line exceeds the maximum line length, start from the end of the line and come towards the start of the line until you find a point, which matches the above rules to break the line.
 * Indent split lines with relation to the starting position of the statement or definition.
   
 **Example,**

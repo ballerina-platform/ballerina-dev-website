@@ -38,7 +38,8 @@ Ballerina documentation design and usage is aligned with the package and module 
 
 ## Writing Ballerina Documentation
 
-Ballerina Flavored Markdown documentation is a first-class syntax in the Ballerina language. The `#` at the beginning of a line denotes a line of documentation. If necessary, you can have multiple lines of documentation, which you can group together.
+Ballerina Flavored Markdown documentation is a first-class syntax in the Ballerina language. The `#` at the beginning of a line denotes a line of documentation. 
+If necessary, you can have multiple lines of documentation, which you can group together.
 
 ```ballerina
 # <documentation line 1>
@@ -46,7 +47,7 @@ Ballerina Flavored Markdown documentation is a first-class syntax in the Balleri
 # ...
 ```
 
-When you write documentation, you can use the markdown documentation syntax given above. For example,
+When writing the documentation for Ballerina APIs, you can use the standard markdown documentation syntax as shown below.
 
 ```ballerina
 # Provides the HTTP actions for interacting with an HTTP server. Apart from the standard 
@@ -102,6 +103,8 @@ public function foo(int i, string s) returns boolean {
 # + return - An `http:HttpFuture` that represents an asynchronous service invocation 
 #            or an `http:ClientError` if the submission fails
 remote isolated function submit(string httpVerb, string path, RequestMessage message) returns HttpFuture|ClientError {
+    // function body
+}
 ```
 
 ## Documenting a Module
@@ -112,7 +115,7 @@ A typical package structure of a Ballerina package is like this:
 
 ```
 /
-  Ballerina.toml       # Configuration, which defines the package intent
+  Ballerina.toml       # Configuration, which defines the package intent.
   main.bal
   Module.md            # Contains descriptive metadata of the default module to be displayed in
                        # API documentation. This is optional.
@@ -120,11 +123,11 @@ A typical package structure of a Ballerina package is like this:
                        # Ballerina Central. This is optional.
     modules
       module1/             
-        Module.md          # Contains descriptive metadata to be displayed in
-                           # Ballerina Central. This is optional.
+        Module.md      # Contains descriptive metadata to be displayed in 
+                       # Ballerina Central. This is optional.
         *.bal
-        [tests/]           # Module-specific unit and integration tests
-        [resources/]       # Module-specific resources
+        [tests/]       # Module-specific unit and integration tests.
+        [resources/]   # Module-specific resources.
 
       module2/
         Module.md
@@ -132,9 +135,9 @@ A typical package structure of a Ballerina package is like this:
         [tests/]
         [resources/]
 
-  [resources/]         # Resources included in every module in the package
+  [resources/]         # Resources included in every module in the package.
 
-  target/              # Compiled executables and other artifacts end up here
+  target/              # Compiled executables and other artifacts end up here.
 ```
 
 The `bal doc` command will read the `Package.md` and `Module.md` files and prepend them to the generated HTML file.

@@ -9,8 +9,6 @@ redirect_from:
   - /learn/writing-a-restful-api-with-ballerina
 ---
 
-This simple guide helps you understand the basics of Ballerina constructs which allow you to write RESTful APIs. 
-
 Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement the RESTful API. The Ballerina standard library itself is adequate. In this API, you will be writing a simple CRUD-like RESTful service.
 
 In this tutorial, you will be creating a RESTful API with two endpoints. The sample is built around a set of COVID-19 data.
@@ -48,15 +46,15 @@ Ballerina uses packages to group code. In this case, a package with the default 
 
 `bal new covid19 -t service`
 
-This creates a folder named `covid19` along with a sample code for a service. Move to the new folder and execute the following command to start VSCode.
+This creates a folder named `covid19` along with a sample code for service. Move to the new folder and execute the following command to start VSCode.
 
 `code .`
 
-`Ballerina.toml` is the file which actually makes the folder a Ballerina package. It also contains a test directory to include tests for the service. But for the sake of simplicity, we will ignore it in this tutorial. You can just go through the sample to get a look and feel about Ballerina services. However, we will be starting with a blank page. Hence, before you start you can delete the entire code or edit it if you wish.
+`Ballerina.toml` is the file that makes the folder a Ballerina package. It also contains a test directory to include tests for the service. But for the sake of simplicity, we will ignore it in this tutorial. You can just go through the sample to get a look and feel about Ballerina services. However, we will be starting with a blank page. Hence, before you start you can delete the entire code or edit it if you wish.
 
 ## Create the COVID-19 Dataset 
 
-To keep things simple a in-memory dataset is used with three entries. Ballerina tables are used to store data. Each entry in the table is represented by a Ballerina record. Following is the definition of the record and the declaration of the table.
+To keep things simple an in-memory dataset is used with three entries. Ballerina tables are used to store data. Each entry in the table is represented by a Ballerina record. Following is the definition of the record and the declaration of the table.
 
 ```ballerina
 public type CovidEntry record {|
@@ -67,6 +65,7 @@ public type CovidEntry record {|
     decimal recovered;
     decimal active;
 |};
+
 public final table<CovidEntry> key(iso_code) covidTable = table [
     { iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833 },
     { iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656 },
@@ -78,9 +77,9 @@ public final table<CovidEntry> key(iso_code) covidTable = table [
 
 As mentioned earlier, the first endpoint has two parts: getting data as well as adding data. In this section, the focus is on getting data. 
 
-Ballerina resources can only be inside a service. Therefore, first, a service needs to be created. If you have noticed, both endpoints have a common URL segment. When creating the service, the common URL segment can be moved to service level as the base path. 
+Ballerina resources can only be inside a service. Therefore, first, a service needs to be created. If you have noticed, both endpoints have a common URL segment. When creating the service, the common URL segment can be moved to the service level as the base path. 
 
-Each service is associated with an `http:Listener`, it is the Ballerina abstraction which deals with network-level details such as host, port, SSL, etc. 
+Each service is associated with an `http:Listener`, it is the Ballerina abstraction that deals with network-level details such as host, port, SSL, etc. 
 
 ```ballerina
 service /covid/status on new http:Listener(9000) {
@@ -97,7 +96,7 @@ service /covid/status on new http:Listener(9000){
 }
 ```
 
-Unlike normal functions, resource functions can have accessors. In this case, accessor is set to `get`, which means only HTTP GET requests could hit this resource. 
+Unlike normal functions, resource functions can have accessors. In this case, the accessor is set to `get`, which means only HTTP GET requests could hit this resource. 
 
 Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. The default status code HTTP responses are 200 OK.
 
@@ -124,19 +123,20 @@ Copying this straightway results in an error which is expected as the `Conflicti
 
 This resource is a bit more interesting than the second resource. To begin with, there is a resource argument named `covidEntry` annotated with `@http:Payload`. This means the resource is expecting a payload with type `CovideEntry`. 
 
-Finally, as the return values there are two types of records `CovidEntry` and `ConflictingIsoCodeError`. The former is the same record that was used in the first resource. The other is a bit different and the following is the definition of `ConflictingIsoCodeError`.
+Finally, as the return values, there are two types of records `CovidEntry` and `ConflictingIsoCodeError`. The former is the same record that was used in the first resource. The other is a bit different and the following is the definition of `ConflictingIsoCodeError`.
 
 ```ballerina
 public type ConflictingIsoCodeError record {|
     *http:Conflict;
     ErrorMsg body;
 |};
+
 public type ErrorMsg record {|
     string errmsg;
 |};
 ```
 
-As you can see, there is something new here. `*http:Conflict` is the Ballerina way of saying one type is a subtype another. In this case `ConflictingIsoCodeError` is a subtype of `*http:Conflict`.Ballerina has defined a set of types for each HTTP status code. This allows users to write services in a type oriented way which is, in turn, helpful when it comes to tooling and generating OpenAPI specification for HTTP services. Returning this record results in HTTP 409 response with JSON payload. 
+As you can see, there is something new here. `*http:Conflict` is the Ballerina way of saying one type is a subtype another. In this case `ConflictingIsoCodeError` is a subtype of `*http:Conflict`.Ballerina has defined a set of types for each HTTP status code. This allows users to write services in a type oriented way which is, in turn, helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. Returning this record results in HTTP 409 response with JSON payload. 
 
 The body of the response is of type `ErrorMsg` which simply has a string field named `errmsg`. Based on the need users can have any data type for their response body.
 
@@ -223,11 +223,13 @@ public type CovidEntry record {|
     decimal recovered;
     decimal active;
 |};
+
 public final table<CovidEntry> key(iso_code) covidTable = table [
     { iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833 },
     { iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656 },
     { iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097 }
 ];
+
 public type CreatedCovidEntry record {|
     *http:Created;
     CovidEntry body;
@@ -237,10 +239,12 @@ public type ConflictingIsoCodeError record {|
     *http:Conflict;
     ErrorMsg body;
 |};
+
 public type InvalidIsoCodeError record {|
     *http:NotFound;
     ErrorMsg body;
 |};
+
 public type ErrorMsg record {|
     string errmsg;
 |};

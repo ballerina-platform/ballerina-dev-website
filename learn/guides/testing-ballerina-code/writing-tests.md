@@ -19,11 +19,9 @@ redirect_from:
 The test module provides the necessary annotations to construct a test suite. Therefore, importing the test module is 
 essential in order to write Ballerina tests.
 
-
 ```ballerina
 import ballerina/test;
 ```
-
 
 Once the test module is imported, the following annotation can be used to write a test function.
 
@@ -31,8 +29,8 @@ Once the test module is imported, the following annotation can be used to write 
 `@test:Config {}`
 ```
 
-The function defined after the above annotation will be detected as a test function. This annotation supports the following attributes in order to configure the test 
-execution.
+The function defined after the above annotation will be detected as a test function. 
+This annotation supports the following attributes in order to configure the test execution.
 
 * ***enable: {true&#124;false}*** - Enable/disable the test. The default value is `true`.
     

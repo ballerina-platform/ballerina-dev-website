@@ -21,7 +21,7 @@ redirect_from:
 * Install the latest Ballerina distribution.
 * Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Log in to the Azure CLI by executing the `az login` command.
-* Create an [Azure Function app](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal) with the given resource group with the following requirements.
+* Create an [Azure Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal) with the given resource group with the following requirements.
 
 >**Note:** Make sure to remember the function application name and storage account name as they will be required in the code samples.
    - Runtime stack - `Java 11`
@@ -63,11 +63,11 @@ The first parameter with the [Context](/learn/api-docs/ballerina/#/azure_functio
 
 The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given `HTTPRequest` value. Then, you declare an HTTP output binding by annotating the `HTTPBinding` return type with the `HTTPOutput` annotation.
 
-This HTTP output binding can also be defined as a parameter with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function. You can find an example in the [http trigger -> queue](/learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output) output example.
+This HTTP output binding can also be defined as a parameter with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function. You can find an example in the [HTTP Trigger -> Queue Output](/learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output) output example.
 
 ### Building the Function
 
-The Azure Functions functionality is implemented as a compiler extension. Thus, the artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
+The Azure Functions functionality is implemented as a compiler extension. Thus, artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
 
 ```bash
 $ bal build
@@ -151,7 +151,7 @@ public function fromHttpToQueue(af:Context ctx,
 }
 ```
 
-Build the project by executing the `bal build` command on the project directory, and deploy it using the `az cli` command shown in the Ballerina build output as in the previous section.
+Build the project by executing the `bal build` command on the project directory, and then, deploy it using the `az cli` command shown in the Ballerina build output as in the previous section.
 
 Now, the deployed Azure Function can be tested by invoking it using an HTTP client such as CURL. 
 
@@ -202,10 +202,10 @@ public function cosmosDBToQueue2(@af:CosmosDBTrigger {
 }
 ```
 
-Build the project by executing the `bal build`command on the project directory, and deploy it using the `az cli` command shown in the Ballerina build output as in the previous section.
+Build the project by executing the `bal build` command on the project directory, and then deploy it using the `az cli` command shown in the Ballerina build output as in the previous section.
 
-Once the function is deployed, You need to add item to the collection.
-1. Go to the created collection in the **Data explorer**.
+Once the function is deployed, You need to add an item to the collection.
+1. Go to the created collection in the **Data Explorer**.
 2. Click **New Item** to add a new item to the collection.
 3. Go to the queue page and observe the added new entry.
 

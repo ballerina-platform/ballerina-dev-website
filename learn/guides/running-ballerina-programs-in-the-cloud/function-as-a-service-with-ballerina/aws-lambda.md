@@ -39,7 +39,7 @@ An AWS Lambda function can be triggered by various AWS services. You can find th
 
 ## Writing the Function
 
-The following Ballerina code gives an example on how to expose a simple echo function in AWS Lambda. 
+The following Ballerina code gives an example of how to expose a simple echo function in AWS Lambda. 
 
 Create a Ballerina package.
 ```bash
@@ -64,7 +64,7 @@ The second parameter with the `json` value contains the input request data. This
 
 ## Building the Function
 
-The AWS Lambda functionality is implemented as a compiler extension. Thus, the artifact generation happens automatically when you build a Ballerina module. 
+The AWS Lambda functionality is implemented as a compiler extension. Thus, artifact generation happens automatically when you build a Ballerina module. 
 
 Execute the command below to build the above code. 
 
@@ -92,7 +92,7 @@ Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer
 
 Execute the command below to deploy the echo function as an AWS Lambda as shown below. 
 
->**Info:**  For the supported parameters, go to the [`create-function` documentation](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html). You might need to change parameters such as the memory- size and timeout depending on your application and connection speed. 
+>**Info:**  For the supported parameters, go to the [`create-function` documentation](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html). You might need to change parameters such as the memory size and timeout depending on your application and connection speed. 
 
 ```bash
 $ aws lambda create-function --function-name echo --zip-file fileb://<project_dir>/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6
@@ -168,7 +168,7 @@ Now, you can build and deploy the function as in the previous sample.
 In order to invoke this function, create an S3 bucket in AWS.
 1. Go to [AWS S3](https://s3.console.aws.amazon.com/s3/), in the portal and create a bucket.
 2. Click on the created bucket, go to the **Properties** tab, and click on the **Create event** notification under the **Event notifications** section.
-3. Enable `All object create events under` event types. Select the Lambda function as the destination, and choose the `notifyS3` Lambda function from the dropdown.
+3. Enable `All object create events` under event types. Select the Lambda function as the destination, and choose the `notifyS3` Lambda function from the dropdown.
 
 Now, click **Upload** to upload an object to the S3 bucket, and view the Lambda logs via CloudWatch to see the object name.
 

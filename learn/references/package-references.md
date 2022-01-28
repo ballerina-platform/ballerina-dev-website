@@ -4,12 +4,14 @@ title: Package References
 description: The sections below include information about the structure of a package directory. It explains the purpose of each file in a package.
 keywords: ballerina, programming language, ballerina packages, package structure, package layout
 permalink: /learn/package-references/
-active: package-layout
+active: package-references
 intro: The sections below include information about the structure of a package directory. It explains the purpose of each file in a package.
 redirect_from:
   - /learn/package-layout
   - /learn/package-layout/
 ---
+
+## Package Layout
 
 ```bash
 .
@@ -55,7 +57,7 @@ Organization names can only contain alphanumerics, underscore, and the maximum l
 
 When you run the `bal new` command, the organization name by default will be set to the user name of your machine. You can choose to update the `Ballerina.toml` file to amend the organization name appropriately.
 
-As described in [organization](/learn/user-guide/publishing-packages-to-ballerina-central/), the restrictions for the organization name of a package when publishing to [Ballerina Central](https://central.ballerina.io/) should also be considered before choosing an organization name.
+As described in [Organizations](/learn/publishing-packages-to-ballerina-central/#organizations), the restrictions for the organization name of a package when publishing to [Ballerina Central](https://central.ballerina.io/) should also be considered before choosing an organization name.
 
 
 ### The `name` Field

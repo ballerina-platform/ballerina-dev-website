@@ -45,7 +45,7 @@ function doSomething(int i) returns string = @java:Method {
 The `@java:Method` annotation instructs the jBallerina compiler to link to the `doSomethingInJava` static method in the `a.b.c.Foo` Java class. There are a set of annotations and other utilities available in the `ballerina/jballerina.java` module to make Java interoperability work that is covered in this guide.
 
 ## The Handle Type
-The handle type describes a reference to an externally-managed storage. These values can only be created by a Ballerina function with an external function body. Within the context of jBallerina, a `handle` type variable can refer to any Java reference type value: a Java object, an array, or the null value.
+The handle type describes a reference to externally-managed storage. These values can only be created by a Ballerina function with an external function body. Within the context of jBallerina, a `handle` type variable can refer to any Java reference type value: a Java object, an array, or the null value.
 
 Consider the `randomUUID` method in the Java UUID class, which gives you a UUID object. This is the Java method signature.
 
@@ -71,7 +71,7 @@ The following sections describe various aspects of Java interoperability in Ball
 ## Instantiating Java Classes
 Let's look at how you can create Java objects in a Ballerina program. The `@java:Constructor` annotation instructs the compiler to link a Ballerina function with a Java constructor.
 
-The `ArrayDeque` class in the `java.util` package has a default constructor. The following Ballerina code creates a new `ArrayDeque` object. As you can see, the `newArrayDeque` function is linked with the default constructor. This function returns a handle value and it refers to the constructed `ArrayDeque` instance.
+The `ArrayDeque` class in the `java.util` package has a default constructor. The following Ballerina code creates a new `ArrayDeque` object. As you can see, the `newArrayDeque` function is linked with the default constructor. This function returns a handle value and refers to the constructed `ArrayDeque` instance.
 
 ```ballerina
 import ballerina/jballerina.java;
@@ -263,12 +263,12 @@ public function main() {
 }
 ```
 
-As you can see, you need to first construct an instance of the `ArrayDeque` class. The `arrayDequeObj` variable refers to an `ArrayDeque` object. Then, you need to pass this variable to both the `pop` and `push` functions because the corresponding Java methods are instance methods of the `ArrayDeque` class. Therefore, you need an instance of the `ArrayDeque` class in order to invoke its instance methods. You can think of the `arrayDequeObj` variable as the method receiver.
+As you can see, you need to first construct an instance of the `ArrayDeque` class. The `arrayDequeObj` variable refers to an `ArrayDeque` object. Then, you need to pass this variable to both the `pop` and `push` functions because the corresponding Java methods are instance methods of the `ArrayDeque` class. Therefore, you need an instance of the `ArrayDeque` class to invoke its instance methods. You can think of the `arrayDequeObj` variable as the method receiver.
 
 
 ### Calling Methods Asynchronously
 
-Ballerina internally uses a fixed number of threads. Therefore, when calling a Java method, it should return in a reasonable time frame in order to avoid starvation in the Ballerina code execution.
+Ballerina internally uses a fixed number of threads. Therefore, when calling a Java method, it should return in a reasonable time frame to avoid starvation in the Ballerina code execution.
 
 If the given Java method executes a time-consuming task (i.e., blocking) such as an IO operation, better to do that in a separate thread while yielding the original thread to continue the Ballerina code execution.
 In this case, the Ballerina Scheduler needs to be informed that the work is being completed asynchronously by invoking the `markAsync` method in the `BalEnv` object. When the work is completed, the `complete` method has to be called with the return value.
@@ -481,9 +481,9 @@ The `stack trace`:
 - The first member of the array represents the top of the call stack.
 
 ## Null Safety
-Ballerina provides strict null safety compared to Java with optional types. The Java null reference can be assigned to any reference type. However, in Ballerina, you cannot assign the nil value to a variable unless the variable’s type is an optional type.
+Ballerina provides strict null safety compared to Java with optional types. The Java null reference can be assigned to any reference type. However, in Ballerina, you cannot assign the nil value to a variable unless the variable’s type is optional.
 
-As explained above, Ballerina handle values cannot be created in Ballerina code. They are created and returned by foreign functions and a variable of the handle type refers to a Java reference value. Since Java null is also a valid reference value, this variable can refer to a Java null value.
+As explained above, Ballerina handle values cannot be created in the Ballerina code. They are created and returned by foreign functions and a variable of the handle type refers to a Java reference value. Since Java null is also a valid reference value, this variable can refer to a Java null value.
 
 Let’s look at an example that deals with Java null. The following code uses the `peek` method in the `ArrayDeque` class. `Peek` retrieves but does not remove the head of the queue or returns null if the queue is empty.
 
@@ -579,7 +579,7 @@ typedesc | io.ballerina.runtime.api.values.BTypedesc |
 error | io.ballerina.runtime.api.values.BError |
 
 ### Using Ballerina Arrays and Maps in Java
-There is no direct mapping between Ballerina arrays and maps to primitive Java arrays and maps. In order to facilitate the use of Ballerina arrays and maps in Java, the `ballerina-runtime` libraries have to be added as a dependency to the Java project and the relevant classes need to be imported from the `ballerina-runtime` library. For more information on all the released versions, go to [`ballerina-runtime`](https://maven.wso2.org/nexus/content/repositories/releases/org/ballerinalang/ballerina-runtime/). The latest version of the dependency can be added to Gradle using the following:
+There is no direct mapping between Ballerina arrays and maps to primitive Java arrays and maps. To facilitate the use of Ballerina arrays and maps in Java, the `ballerina-runtime` libraries have to be added as a dependency to the Java project and the relevant classes need to be imported from the `ballerina-runtime` library. For more information on all the released versions, go to [`ballerina-runtime`](https://maven.wso2.org/nexus/content/repositories/releases/org/ballerinalang/ballerina-runtime/). The latest version of the dependency can be added to Gradle using the following:
 ```groovy
 repositories {
    // Use WSO2's Nexus repository manager for resolving dependencies.

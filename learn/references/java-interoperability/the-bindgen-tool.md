@@ -28,13 +28,13 @@ ballerina bindgen [(-cp|--classpath) <classpath>...]
 ```
 
 `(-cp|--classpath) <classpath>...`
-This optional parameter could be used to specify one or more comma-delimited classpaths for retrieving the Java libraries required for the generation of the Ballerina bindings. The classpath could be provided as comma-separated paths of JAR files or as comma-separated paths of directories containing all the relevant Java libraries. If the Ballerina bindings are to be generated from a standard Java library, from a library available inside the Ballerina SDK, or from a platform library specified in the `Ballerina.toml`, then you need not specify the classpath explicitly.
+This optional parameter could be used to specify one or more comma-delimited classpath for retrieving the Java libraries required for the generation of the Ballerina bindings. The classpath could be provided as comma-separated paths of JAR files or as comma-separated paths of directories containing all the relevant Java libraries. If the Ballerina bindings are to be generated from a standard Java library, from a library available inside the Ballerina SDK, or a platform library specified in the `Ballerina.toml`, then you need not specify the classpath explicitly.
 
 `(-mvn|--maven) <groupId>:<artifactId>:<version>`
 This optional parameter could be used to specify a Maven dependency required for the generation of the Ballerina bindings. Here, the specified library and its transitive dependencies will be resolved into the `target/platform-libs` directory of the Ballerina package. If the tool is not executed inside a package or if the output path does not point to a package, the `target/platform-libs` directory structure will be created in the output path to store the Maven dependencies. The tool will also update the `Ballerina.toml` file with the platform libraries if the command is executed inside a Ballerina package.
 
 `(-o|--output) <output>`
-This optional parameter could be used to generate all the bindings inside a single directory instead of generating module level mappings. This option could be used in instances where all the mappings are required inside a single module. The specified directory doesn't always have to be inside a Ballerina package.
+This optional parameter could be used to generate all the bindings inside a single directory instead of generating module-level mappings. This option could be used in instances where all the mappings are required inside a single module. The specified directory doesn't always have to be inside a Ballerina package.
 
 `--public`
 Set the visibility modifier of the generated binding classes to public. This flag will be applicable only if the bindings are generated inside a single directory.
@@ -94,7 +94,7 @@ E.g., the command to generate bindings for `java.lang.Character.Subset` class wi
 > bal bindgen java.lang.Character\$Subset
 ```
 
-When referring a Java code to figure out the imported classes, you should be cautious about the Java classes from the `java.lang` package since these will not be visible as imports in the Java code. However, you need not generate bindings for the `java.lang.String` class since it is mapped into the Ballerina `string` type from within the generated Ballerina bindings.
+When referring to a Java code to figure out the imported classes, you should be cautious about the Java classes from the `java.lang` package since these will not be visible as imports in the Java code. However, you need not generate bindings for the `java.lang.String` class since it is mapped into the Ballerina `string` type from within the generated Ballerina bindings.
 
 ### Constructors
 Constructors of Java classes will be mapped to functions outside the Ballerina class. These function names are comprised of the constructor name prefixed with the `new` keyword. If there are multiple constructors, they will be suffixed with an auto-incremented number.
@@ -168,7 +168,7 @@ function read() returns int|IOException {
 }
 ```
 
->**Note:** If a Java exception class is explicitly generated as a Ballerina binding class, it would follow the naming convention `JException` or `JError`. For instance, the binding class's name for `java.io.FileNotFoundException` would be as `JFileNotFoundException`.
+>**Note:** If a Java exception class is explicitly generated as a Ballerina binding class, it would follow the naming convention `JException` or `JError`. For instance, the binding class's name for `java.io.FileNotFoundException` would be `JFileNotFoundException`.
 
 ### Dependent Classes
 When there are dependent Java classes present inside generated Ballerina bindings (as parameters or return types), the `bindgen` tool generates an empty Ballerina binding class to represent each one of these classes. This will represent a Java class mapping without the constructors, methods, or field bindings. If one of these classes is required later, the `bindgen` tool could be re-run to generate the complete implementation of the Ballerina bindings.
@@ -219,7 +219,7 @@ InputStream inputStream = check newFileInputStream3("sample.txt");
 ## Support for Java Casting
 The `ballerina/jballerina.java` module of the Ballerina standard library provides the `cast` function to support Java casting. This could be used to cast Ballerina binding classes into their subtypes based on assignability.
 
-E.g., a Ballerina binding class instance mapping the `java.io.InputStream` Java class `inputStream` could be casted onto a Ballerina binding class mapping the `java.io.FileInputStream` Java class as follows.
+E.g., a Ballerina binding class instance mapping the `java.io.InputStream` Java class `inputStream` could be cast onto a Ballerina binding class mapping the `java.io.FileInputStream` Java class as follows.
 ```ballerina
 FileInputStream fileInputStream = check java:cast(inputStream);
 ```

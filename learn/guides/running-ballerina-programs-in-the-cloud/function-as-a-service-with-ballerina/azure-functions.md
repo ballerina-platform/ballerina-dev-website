@@ -20,7 +20,7 @@ redirect_from:
 ## Prerequisites
 * Install the latest Ballerina distribution.
 * Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
-* Log in to the Azure CLI by executing the `az login` command.
+* Login to the Azure CLI by executing the `az login` command.
 * Create an [Azure Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal) with the given resource group with the following requirements.
 
 >**Note:** Make sure to remember the function application name and storage account name as they will be required in the code samples.
@@ -41,7 +41,7 @@ The following Azure Functions triggers and bindings are currently supported in B
 
 ## Writing the Function
 
-The following Ballerina code gives an example of using an HTTP trigger to invoke the function and an HTTP output binding to respond back to the caller with a message. 
+The following Ballerina code gives an example of using an HTTP trigger to invoke the function, and an HTTP output binding to respond to the caller with a message. 
 
 Create a Ballerina package.
 ```bash
@@ -134,7 +134,7 @@ This section uses different types of triggers and bindings to build Azure functi
 
 ### HTTP Trigger -> Queue Output
 
-The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond back to the caller with a message. 
+The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond to the caller with a message. 
 
 First, create a queue to hold the outputs of the function by accessing the storage account that was created alongside the function app in the prerequisites. Select **Queues** in the sidebar in the storage accounts. Click the *Add queue** button, and enter the same value as the value of the `queueName` property in the below `QueueOutput` annotation.
 
@@ -175,7 +175,7 @@ Before writing and deploying the code, create a Cosmos DB and a queue to make us
 **Note:** If you want to change these values, make sure to change them in the code as well.
 5. Go to the **Keys** tab of the Cosmos DB page.
 6. Copy the value of the `PRIMARY CONNECTION STRING`.
-7. Click the **Configuration** tab in the Function app page.
+7. Click the **Configuration** tab on the Function app page.
 8. Select **New Application Setting**, and paste the data you copied above as the value. For the key, use the value of the `connectionStringSetting` key and save.
 
 Example application setting is as follows.

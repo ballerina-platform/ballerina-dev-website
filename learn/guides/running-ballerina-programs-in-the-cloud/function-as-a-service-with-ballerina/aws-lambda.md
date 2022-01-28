@@ -165,7 +165,7 @@ public function notifyS3(awslambda:Context ctx,
 ```
 
 Now, you can build and deploy the function as in the previous sample.
-In order to invoke this function, create an S3 bucket in AWS.
+To invoke this function, create an S3 bucket in AWS.
 1. Go to [AWS S3](https://s3.console.aws.amazon.com/s3/), in the portal and create a bucket.
 2. Click on the created bucket, go to the **Properties** tab, and click on the **Create event** notification under the **Event notifications** section.
 3. Enable `All object create events` under event types. Select the Lambda function as the destination, and choose the `notifyS3` Lambda function from the dropdown.
@@ -186,7 +186,7 @@ public function notifyDynamoDB(awslambda:Context ctx,
 }
 ```
 Now, you can build and deploy the function as in the previous sample.
-In order to invoke this function, create a DynamoDB table.
+To invoke this function, create a DynamoDB table.
 1. Go to [roles](https://console.aws.amazon.com/iamv2/home#/roles), and add `AWSLambdaDynamoDBExecutionRole` to the created role in the prerequisites.
 2. Go to the [DynamoDB](https://us-west-1.console.aws.amazon.com/dynamodbv2).
 3. Click **Create Table**, enter the table name, partition key, and create the table. If you already have a table created, you can skip this step.

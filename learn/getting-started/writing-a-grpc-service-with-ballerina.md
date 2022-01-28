@@ -15,11 +15,13 @@ redirect_from:
 
 ## Prerequisites
 
-- Command Line Interface (CLI)
-- A text editor. [VSCode](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed is our preferred 
-  choice, and it has good support for Ballerina.
-- A Ballerina installation. Follow the steps in [Installing Ballerina](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/).
-- Some experience in gRPC service at least one programming language
+To complete this tutorial, you need the below.
+
+1. A command terminal
+2. A text editor
+    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
+3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
+4. Prior programming experience related to gRPC services
 
 ## Creating the Service Definition
 

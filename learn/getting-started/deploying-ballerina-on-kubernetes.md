@@ -12,14 +12,18 @@ redirect_from:
 
 In this section, you will be writing a simple Ballerina service and then, you will Dockerize the application and deploy it in Kubernetes.
 
-## Prerequisites
+## Setting up the Prerequisites
 
-To complete this tutorial, you need:
+To complete this tutorial, you need the below. 
 
-- A Ballerina installation. Follow the steps in [Installing Ballerina](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/).
-- Docker installed and configured in your machine.
-- `kubectl` installed and configured to a Kubernetes cluster.
-- Docker hub account
+1. A command terminal
+2. A text editor
+    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
+3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
+5. [Docker](https://www.docker.com/) installed and configured in your machine
+6. [Kubectl](https://kubernetes.io/docs/reference/kubectl/) installed and configured in a Kubernetes cluster
+7. A [Docker Hub](https://hub.docker.com/) account
+8. Prior programming experience related to Docker and Kubernetes
 
 
 ## Code to Cloud
@@ -54,7 +58,6 @@ service / on httpListener {
     }
 }
 ```
-
 
 To enable the code to cloud functionality in the Ballerina project, you need to add the `cloud="k8s"` property to the `build-options` in the `Ballerina.toml` file.
 

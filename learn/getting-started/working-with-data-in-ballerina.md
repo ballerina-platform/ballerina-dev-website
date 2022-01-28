@@ -10,25 +10,19 @@ redirect_from:
   - /learn/working-with-data-in-ballerina
 ---
 
-Ballerina supports first-class support for writing SQL-like queries to process data.
-
-Language-integrated queries can process any Ballerina iterable.
+Ballerina supports first-class support for writing SQL-like queries to process data. Language-integrated queries can process any Ballerina iterable.
 
 In this tutorial, you will be writing queries to filter, sort, and join with different data sets and produce new data sets.
 
-1. Creating a new Ballerina project.
-2. Defining the Covid dataset to be processed.
-3. Filtering all countries which have more than 10,000,000 Covid cases.
-4. Sorting the top three countries by the number of reported Covid cases.
-5. Joining the table with an array to find the number of recovered patients.
-6. Finding any discrepancies in reported Covid dataset while maintaining intermediate states.
-
-## Prerequisite
+## Setting up the Prerequisite
 
 Following two prerequisites are needed for this tutorial. 
 
-1. Install [Ballerina Swan Lake](https://ballerina.io/downloads/)
-2. Install [VSCode](https://code.visualstudio.com/download) with [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.Ballerina)
+1. A command terminal
+2. A text editor
+    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
+3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
+4. Prior programming experience related to SQL
 
 
 ## Creating a New Ballerina Project

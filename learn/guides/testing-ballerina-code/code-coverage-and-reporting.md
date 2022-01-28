@@ -5,7 +5,7 @@ description: Learn how to perform code coverage and reporting for Ballerina test
 keywords: ballerina, programming language, testing
 permalink: /learn/testing-ballerina-code/code-coverage-and-reporting/
 active: code-coverage-and-reporting
-intro: The Ballerina Test Framework allows you to generate Test reports and Code coverage reports for the executed tests.
+intro: The Ballerina Test Framework allows you to generate test reports and code coverage reports for the executed tests.
 redirect_from:
 - /learn/testing-ballerina-code/
 - /learn/testing-ballerina-code
@@ -48,7 +48,7 @@ In addition to the test results, this file would contain details about the sourc
 *   Module-level coverage as an average
 *   Individual source file coverage
 
-The code coverage only includes the Ballerina source files being tested and not any files under the **_tests/_** directory.
+The code coverage only includes the Ballerina source files being tested and not any files under the `tests` directory.
 
 ***Example:***
 

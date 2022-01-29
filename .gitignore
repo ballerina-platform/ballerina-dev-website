@@ -24,7 +24,12 @@ hs_err_pid*
 
 # IDE related
 .idea
+*.iml
 
 # Jekyll related files.
 _site/
 .sass-cache
+
+# macOS
+.DS_Store
+ 

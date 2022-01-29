@@ -36,10 +36,11 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Asynchronous Function Calls</h2>
-                            <p><p>start calls a function asynchronously and the function runs on a separate logical thread (&ldquo;strand&rdquo;): cooperatively multitasked by default
- Result will be of type <code>future&lt;T&gt;</code> and <code>future</code> is a separate basic type.
- Waiting for the same future more than once gives an error.
- Use <code>f.cancel()</code> to terminate a future.</p>
+                            <p><p><code>start</code> calls a function asynchronously and the function runs on a separate logical thread (<code>strand</code>).
+ It is cooperatively multitasked by default.
+ The result will be of type <code>future&lt;T&gt;</code> and <code>future</code> is a separate basic type.
+ Waiting for the same <code>future</code> more than once gives an <code>error</code>.
+ Use <code>f.cancel()</code> to terminate a <code>future</code>.</p>
 </p>
 
                         </td>
@@ -80,7 +81,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a1525a228e41885076683088626def31&file=asynchronous_function_calls.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c2d679d62b5939ccd5342864209e4ef8&file=asynchronous_function_calls.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

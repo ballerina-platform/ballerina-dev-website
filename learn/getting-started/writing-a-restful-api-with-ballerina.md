@@ -98,19 +98,26 @@ Ballerina automatically serializes Ballerina records as JSON and sends them over
 The second part of the first endpoint is about adding or appending new data to the dataset. Following is the second resource associated with the first endpoint.
 
 ```ballerina
-resource function post countries(@http:Payload CovidEntry covidEntry) 
-                                    returns CreatedCovidEntry|ConflictingIsoCodeError {
-    if covidTable.hasKey(covidEntry.iso_code) {
-        return <ConflictingIsoCodeError>{ 
+resource function post countries(@http:Payload CovidEntry[] covidEntries) 
+                                    returns CreatedCovidEntries|ConflictingIsoCodesError {
+
+    string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
+                               where covidTable.hasKey(covidEntry.iso_code)
+                               select covidEntry.iso_code;
+
+    if conflictingISOs.length() > 0 {
+        return <ConflictingIsoCodesError>{ 
             body : { 
-                errmsg : string `Conflicting ISO Code: ${covidEntry.iso_code}`
-            } 
+                errmsg : string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
+            }
         };
+    } else {
+        covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
+        return <CreatedCovidEntries>{ body: covidEntries }; 
     }
-    covidTable.add(covidEntry); 
-    return <CreatedCovidEntry>{ body: covidEntry }; 
 }
 ```
+> **Note**: To keep things simple, in this case, it was chosen to either accept the entire payload or send back an error. 
 
 Copying this straightway results in an error which is expected as the `ConflictingIsoCodeError` type is not defined yet.
 
@@ -182,17 +189,23 @@ service /covid/status on new http:Listener(9000) {
         return covidTable.toArray();
     }
 
-    resource function post country(@http:Payload CovidEntry covidEntry) 
-                                    returns CreatedCovidEntry|ConflictingIsoCodeError {
-        if covidTable.hasKey(covidEntry.iso_code) {
-            return <ConflictingIsoCodeError>{ 
+    resource function post countries(@http:Payload CovidEntry[] covidEntries) 
+                                    returns CreatedCovidEntries|ConflictingIsoCodesError {
+
+        string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
+                                where covidTable.hasKey(covidEntry.iso_code)
+                                select covidEntry.iso_code;
+
+        if conflictingISOs.length() > 0 {
+            return <ConflictingIsoCodesError>{ 
                 body : { 
-                    errmsg : string `Conflicting ISO Code: ${covidEntry.iso_code}`
-                } 
+                    errmsg : string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
+                }
             };
+        } else {
+            covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
+            return <CreatedCovidEntries>{ body: covidEntries }; 
         }
-        covidTable.add(covidEntry); 
-        return <CreatedCovidEntry>{ body: covidEntry }; 
     }
 
     resource function get countries/[string iso_code]() returns CovidEntry|InvalidIsoCodeError {

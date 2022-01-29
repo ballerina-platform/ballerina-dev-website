@@ -45,7 +45,7 @@ A `join` clause performs an inner or left outer equijoin. In the `join` clause, 
 
 #### 'order by' Clause 
 
-The `order by` clause allows ordering the result in the ascending and/or descending order based on the specified attributes. Ordering will be done in an ascending manner by default. You can use the `descending`the keyword to order in a descending manner. Here, attributes that are considered for the `order by` operations are order-keys, which should be an ordered type. You can define more than one order key in the `order by` clause and it’s possible to have more than one `order by` clause. 
+The `order by` clause allows ordering the result in the ascending and/or descending order based on the specified attributes. Ordering will be done in an ascending manner by default. You can use the `descending` keyword to order in a descending manner. Here, attributes that are considered for the `order by` operations are order-keys, which should be an ordered type. You can define more than one order key in the `order by` clause and it’s possible to have more than one `order by` clause. 
 
 #### 'limit' Clause
 
@@ -67,14 +67,14 @@ Query actions are executed in the same way as the clauses in the query expressio
 
 ```ballerina
 var x = from var person in personList
-        from var dept in deptList
-        let string hrDepartment = "Human Resource"
-        do {
-            if (dept.name == "HR") {
-                Employee employee = {firstName: person.firstName, lastName: person.lastName, deptAccess: hrDepartment};
-                employeeList[employeeList.length()] = employee;
-            }
-        };
+    from var dept in deptList
+    let string hrDepartment = "Human Resource"
+    do {
+        if (dept.name == "HR") {
+            Employee employee = {firstName: person.firstName, lastName: person.lastName, deptAccess: hrDepartment};
+            employeeList[employeeList.length()] = employee;
+        }
+    };
 ```
 
 ## Writing Integrated Queries
@@ -216,7 +216,6 @@ function loadBooks() returns BookTable|error {
         }
         on conflict onConflictError;
 }
-
 ```
 
 Now, the author details and book category details exist as individual table values. The book details exist as an array. Further, this array has the necessary keys to identify the respective authors and book categories. Hence, there is a requirement to generate a table, which contains the relevant book details, author names, and category names. As shown in the above example, Ballerina query expressions can be utilized to create such table values.  
@@ -226,7 +225,7 @@ function getPopularBooks(stream<Sale> sales, int minSales, int 'limit) returns B
     // Join each sale value from the `sales` stream with the retrieved `BookTable`,
     // filter books with at least `minSales` number of sales,
     // order filtered books by sales quantity,
-    // and collect the `'limit` number of books into an array.
+    // and collect the `limit` number of books into an array.
     return from Sale s in sales
         join Book b in check loadBooks() on s.bookId equals b.id
         where s.qty >= minSales

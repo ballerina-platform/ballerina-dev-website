@@ -2,7 +2,7 @@
 layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Concurrent
 description: Concurrency in Ballerina is enabled by strands, which are lightweight threads. 
-keywords: ballerina, ballerina platform, api documentation, testing, ide, ballerina central
+keywords: ballerina, ballerina platform, concurrency, workers, strands, threads, lightweight threads
 permalink: /why-ballerina/concurrent/
 active: concurrent
 intro: Concurrency in Ballerina is enabled by strands, which are lightweight threads.
@@ -59,7 +59,7 @@ function process(Person[] members, int[] quantities) {
 }
 ```
 
-Worker message passing (via Ballerina’s `send (->)` and `receive (<-)` actions) is used for communication between workers. The compiler also explicitly verifies that the `send` and `receive` actions are in a consistent state in order to avoid any deadlock scenarios at runtime.
+Worker message passing (via Ballerina’s `send (->)` and `receive (<-)` actions) is used for communication between workers. The compiler also explicitly verifies that the `send` and `receive` actions are in a consistent state to avoid any deadlock scenarios at runtime.
 
 The `@strand` annotation can be used on a named worker or start action to make the corresponding strand run on a separate thread.
 

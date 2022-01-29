@@ -122,7 +122,7 @@ cloud = "k8s"
 
 ### Packaging Java Libraries
 
-When you compile a Ballerina package with `bal build`, the compiler creates an executable JAR file. However, if the package does not contain an entry point, it will produce a non-executable JAR file (a library package) which, can be used in another package/program.
+When you compile a Ballerina package with `bal build`, the compiler creates an executable JAR file. However, if the package does not contain an entry point, it will produce a non-executable JAR file (a library package), which can be used in another package/program.
 In both cases, the Ballerina compiler creates self-contained archives. There are situations in which you need to package JAR files with these archives.
 
 You can store the JAR files anywhere in your file system. As a best practice, maintain Java libraries inside the package.

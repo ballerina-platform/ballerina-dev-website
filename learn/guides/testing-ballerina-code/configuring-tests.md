@@ -2,7 +2,7 @@
 layout: ballerina-testing-code-left-nav-pages-swanlake
 title: Configuring Tests
 description: Learn how to configure Ballerina tests.
-keywords: ballerina, programming language, testing
+keywords: ballerina, programming language, testing, test setup
 permalink: /learn/testing-ballerina-code/configuring-tests/
 active: configuring-tests
 intro: The Ballerina Test framework has configurations at various levels to streamline the testing process and ensure that the tests are written with a comprehensible structure.

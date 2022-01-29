@@ -18,7 +18,7 @@ A package can depend on other packages that are available in Ballerina repositor
 * The distribution repository
 * The Ballerina Central repository
 
-It also supports a third repository named the `local repository`. It temporarily overrides dependencies which, is useful for the package development and bug fixing phases.
+It also supports a third repository named the `local repository`. It temporarily overrides dependencies, which is useful for the package development and bug fixing phases.
 
 **Distribution repository**
 

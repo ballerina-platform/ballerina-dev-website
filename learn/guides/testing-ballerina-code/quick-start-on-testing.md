@@ -27,17 +27,23 @@ redirect_from:
 
 To get started, let's set up the Ballerina package to run tests.
 
-1. Create a directory in the root directory of the package named `tests` in which the test files will be stored.
+1. Create a Ballerina package with the `bal new` command as follows.
+
+   ```bash
+   bal new hello_world
+   ```
+
+2. Create a directory in the root directory of the package named `tests` in which the test files will be stored.
 
     ```bash
-    package-directory/
+    hello_world/
         Ballerina.toml
         main.bal
         tests/
             main_test.bal
     ```
 
-2. Create the following function in the ***main.bal*** file.
+3. Create the following function in the `main.bal` file.
 
     ```ballerina
     public function intAdd(int a, int b) returns (int) {
@@ -45,8 +51,7 @@ To get started, let's set up the Ballerina package to run tests.
     }
     ```
 
-3. In the **main_test.bal**, make use of the test module to test out the functionality of the `intAdd` function in 
-the ***main.bal***.
+4. In the `main_test.bal` file, make use of the test module to test out the functionality of the `intAdd` function in the `main.bal` file.
 
     ```ballerina
     import ballerina/test;
@@ -57,6 +62,24 @@ the ***main.bal***.
     }
     ```
 
-4. Execute the tests using the following command.
+5. Execute the tests using the following command.
 
-    ```$ bal test```
+   ```bash
+   $ bal test
+   ```
+   Then you can see the output as follows.
+
+   ```bash
+   Compiling source
+        user/hello_world:0.1.0
+
+   Running Tests
+
+           hello
+
+                   [pass] intAddTest
+
+                   1 passing
+                   0 failing
+                   0 skipped
+   ```

@@ -113,8 +113,8 @@ You can use an annotation for storing the title and version information about th
 ```ballerina
     @openapi:ServiceInfo{
        [contract: "/path/to/openapi.json|yaml"],
-       [title : "store" ],
-       [‘version: "0.1.0"]
+       [title : "Store Management"],
+       ['version: "0.1.0"]
     }
 ```
 - **Contract: string?** :
@@ -128,12 +128,12 @@ This is an optional attribute. You can use this to add the version of the `info`
 
 **Ballerina service file with the OpenAPI annotation**
 ```ballerina
- @openapi:ServiceInfo{
-     title : "Store Management APIs",
-     'version: "1.1.0" 
-   }
+@openapi:ServiceInfo {
+    title: "Store Management APIs",
+    'version: "1.1.0"
+}
 service /greet on new http:Listener(9090) {
-    ...
+...
 }
 ```
 **Generated OpenAPI contract with the given details**
@@ -157,12 +157,12 @@ The following is an example of the annotation usage in the Ballerina file.
 import ballerina/openapi;
 
 @openapi:ServiceInfo{
-    contract: “/path/to/openapi.json|yaml”,
-    [ tags : “store” ],
-    [ operations: [“op1”, “op2”] ] 
+    contract: "/path/to/openapi.json|yaml",
+    [ tags : "store" ],
+    [ operations: ["op1", "op2"] ] 
     [ failOnErrors]: true/false → default : true
-    [ excludeTags ]: [“pets”, “user”]
-    [ excludeOperations: [“op1”, “op2”] ]
+    [ excludeTags ]: ["pets", "user"]
+    [ excludeOperations: ["op1", "op2"] ]
    }
 service /greet on new http:Listener(9090) {
     ...
@@ -279,14 +279,14 @@ The `@openapi:ServiceInfo` annotation supports several usages in the Ballerina O
 
 ```ballerina
 @openapi:ServiceInfo{
-    [ contract: “/path/to/openapi.json|yaml”],
-    [ tags : “store” ],
-    [ operations: [“op1”, “op2”] ], 
+    [ contract: "/path/to/openapi.json|yaml"],
+    [ tags : "store" ],
+    [ operations: ["op1", "op2"] ], 
     [ failOnErrors]: true/false → default : true,
-    [ excludeTags ]: [“pets”, “user”],
-    [ excludeOperations: [“op1”, “op2”] ],
-    [ title : “store” ],
-    [ 'version: “0.1.0” ],
+    [ excludeTags ]: ["pets", "user"],
+    [ excludeOperations: ["op1", "op2"] ],
+    [ title : "store" ],
+    [ 'version: "0.1.0" ],
     [ embed: false/true -> default: true]
    }
 service /greet on new http:Listener(9090) {

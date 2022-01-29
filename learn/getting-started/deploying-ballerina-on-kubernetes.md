@@ -23,7 +23,6 @@ To complete this tutorial, you need the below.
 4. [Docker](https://www.docker.com/) installed and configured in your machine
 5. A [Docker Hub](https://hub.docker.com/) account
 6. [Kubectl](https://kubernetes.io/docs/reference/kubectl/) installed and configured in a Kubernetes cluster 
-7. Prior programming experience related to Docker and Kubernetes
 
 ## Code to Cloud
 

@@ -14,26 +14,28 @@ redirect_from:
 
 ## Specifying Dependencies
 
-A package can depend on other packages that are available in Ballerina repositories. By default, Ballerina searches for the dependencies in 2 repositories: The distribution repository and the Ballerina Central repository. It also supports a third repository named the `local repository`, which is useful in the package development phase and for bug fixing. The local repository is used to temporarily override dependencies for testing or development purposes.
+A package can depend on other packages that are available in Ballerina repositories. By default, Ballerina searches for the dependencies in the repositories below.
+* The distribution repository
+* The Ballerina Central repository
+
+It also supports a third repository named the `local repository`. It temporarily overrides dependencies which, is useful for the package development and bug fixing phases.
 
 **Distribution repository**
 
-The distribution repository is a file system repository that comes with the local Ballerina installation. The repository is located at `<BALLERINA_HOME>/repo/bala`.
+The distribution repository is a file system repository added with the local Ballerina installation. The repository is located at `<BALLERINA_HOME>/repo/bala`.
 
 **Ballerina Central repository**
 
-The Ballerina Central repository is a remote repository, and thereby, it comes with a local file system cache, which is located at 
-`<USER_HOME>/.ballerina/repositories/central.ballerina.io/repo/bala`. When resolving a dependency, 
-the remote repository will be queried only if the specified version is not present in its local cache.
+The Ballerina Central is a remote repository and creates a local file system cache at `<USER_HOME>/.ballerina/repositories/central.ballerina.io/repo/bala`. Ballerina queries the remote repository only if the specified dependency version is not present in its local cache.
 
 **Local repository**
 
 The local repository is also a file system repository, which will be created in the `<USER_HOME>` location. The repository location is `<USER_HOME>/.ballerina/repositories/local/repo/bala`. 
-For details on using the local repository, see [local repository](/learn/user-guide/ballerina-packages/dependencies/#local-repository).
+For more information, see [Using Dependencies from the Local Repository](/learn/managing-dependencies/#using-dependencies-from-the-local-repository).
 
 ### Importing a Module
 
-By using an import statement in the Ballerina code, you can use exported modules of any of the packages. This enables access to all public symbols in the imported module. 
+To use exported modules of any package, add an import statement in the Ballerina code. It enables access to all public symbols in the imported module.
 
 The import declaration syntax is as follows.
 
@@ -41,29 +43,32 @@ The import declaration syntax is as follows.
 import [org-name /] module-name [as import-prefix];
 ```
 
-* The `import-prefix` has to be a valid Ballerina identifier and the import-prefix is used to refer to public symbols in the declared module.
-* The import-prefix is optional. If it is not available, the last part of the module name can be used.
+* The `import-prefix` has to be a valid Ballerina identifier and it is used to refer to public symbols in the declared module.
+* The import-prefix is optional. You can use the last part of the module name if an `import-prefix` is unavailable.
 
-You can import a module by providing the organization name and the module name. The module name is constructed using the package name and the name of the root directory of the module. 
+You can import a module by providing the organization name and the module name. The module name consists of the package name and the name of the module root directory.
 The module name of the default module is always the package name. 
 
 The following example shows how we can import modules from the `ballerina/io` package.
 
 ```bal
-import ballerina/io;`// imports default module of io package
+import ballerina/io; // imports default module of io package
 
 public function main() {
 	io:println("Hello world!");
 }
 ```
+
 The following is another example that shows the usage of multiple modules from different libraries.
 
 ```bal
 // Imports the default module from the `ballerina/log` package.
 import ballerina/log;
-// Imports the default module from the `googleapis.gmail` package with an import prefix.
+// Imports the default module from the `googleapis.gmail` package
+// with an import prefix.
 import ballerinax/googleapis.gmail as gmail;
-// Imports the only non-default module from the `googleapis.gmail` package with an import prefix.
+// Imports the only non-default module from the `googleapis.gmail` package
+// with an import prefix.
 import ballerinax/googleapis.gmail.'listener as gmailListener;
 
 configurable string refreshToken = ?;
@@ -82,7 +87,8 @@ gmail:ConnectionConfig gmailConfig = {
         }
 };
 
-listener gmailListener:Listener gmailEventListener = new(port, gmailConfig, project, pushEndpoint);
+listener gmailListener:Listener gmailEventListener =
+                            new(port, gmailConfig, project, pushEndpoint);
 
 service / on gmailEventListener {
    remote function onNewEmail(gmail:Message message) returns error? {
@@ -94,13 +100,12 @@ service / on gmailEventListener {
 
 ## Specifying Dependency Versions
 
-The dependency versions are automatically figured out by the compiler when a package is built. The latest compatible versions of the dependencies are resolved by searching the packages of dependencies in the distribution repository and the Ballerina Central repository and if specified from the local repository as well.
+When building a package, the compiler figures out the dependency versions automatically. Ballerina searches the latest compatible versions of the package dependencies in the distribution repository, Ballerina Central repository, and the local repository(if specified).
 
 When you execute `bal build` for the first time on the package, the CLI operation will auto-generate the `Dependencies.toml` in the package root. 
 This will contain the resolved dependency versions. From thereon, the versions locked in the `Dependencies.toml` are considered as the minimum required versions for the subsequent builds.
 
-In the subsequent builds, the compiler will automatically update the versions of the dependencies at the patch level. Therefore, if any patch release has been done for a dependency, 
-the compiler will intelligently pick the latest patch version when the package is built.
+In the subsequent builds, the compiler will automatically update the versions of the dependencies at the patch level. Therefore, if any patch release is available for a dependency, the compiler will intelligently pick the latest patch version during package build.
 
 >**Note:** Automatic updates for minor and major versions are not supported by the compiler yet but you can achieve it by deleting the `Dependencies.toml` file if it is absolutely necessary.
 
@@ -110,9 +115,9 @@ of a removed import statement are handled by the CLI itself.
 
 ## Using Dependencies from the Local Repository
 
-The local repository is useful to test a package that is in the development phase or else for fixing bugs. To specify a dependency from the local repository, first, you need to publish it to the local repository by following the steps below.
+The local repository is useful to test a package in the development phase or to fix bugs. To specify a dependency from the local repository, first, you need to publish it to the local repository by following the steps below.
 
-1. Create the Ballerina archive.
+1. Create a Ballerina library package and generate the Ballerina archive.
 
    ```bash
    bal pack
@@ -123,7 +128,7 @@ The local repository is useful to test a package that is in the development phas
    bal push -–repository local
    ```
 
-   If you already have the Ballerina Archive, then you can simply execute the following command:
+   If you already have the path of Ballerina archive, then you can simply execute the following command.
 
     ```bash
     bal push –-repository local <path-to-bala-archive>
@@ -139,36 +144,36 @@ The local repository is useful to test a package that is in the development phas
     repository = "local"
     ```
 
-Once the above steps are completed, the dependency will be picked from the local repository when the package is built. 
-During the compilation, the version specified in the `Ballerina.toml` is considered as the minimum required version for that particular dependency 
-and the dependency will be resolved from the local repository. Nonetheless, if the compiler finds a newer patch version in distribution or Ballerina central repositories, 
-then, the latest version is always given priority. At this point, the compiler resolves the latest version and ignores the dependency version in the local repository. 
+Once you complete the above steps, the dependency will be picked from the local repository when building the package.
+Ballerina considers the version specified in the Ballerina.toml as the minimum required version and uses the local repository to resolve the dependency.
+However, the compiler gives priority to the latest version if a new patch version is found in distribution or Ballerina Central repositories.
+At this point, the compiler resolves the latest version and ignores the dependency version in the local repository.
 
 ## Achieving Reproducible Builds
 
-By default, the compiler always looks up the latest compatible versions of the dependencies in the repositories when building a package. 
-This minimizes the hassle of managing dependency versions to the package developer since the compiler is smart enough to 
-keep the package updated with latest compatible dependencies all the time. However, if you want to repeat a constant behavior to make the build more predictable, 
-then, Ballerina facilitates this using offline and sticky modes.
+By default, the compiler always looks up the latest compatible versions of the dependencies in the repositories when building a package.
+ It minimizes the hassle of managing dependency versions to the package developer since the compiler is smart enough to keep the package updated with the latest compatible dependencies all the time.
+ However, if you need to repeat a constant behavior to make the build more predictable, Ballerina facilitates this using offline and sticky modes.
 
-### Sticky mode
+### The Sticky Mode
 
 Using the `--sticky` flag with `bal build` will force the compiler to stick to the exact versions locked in the `Dependencies.toml`. 
 In other words, the automatic-update feature is disabled when the `--sticky` flag is provided.
-This can also be set in the `Ballerina.toml` file under the `[build-options]` table as follows:
+This can also be set in the `Ballerina.toml` file under the `[build-options]` table as follows.
 
 ```toml
 [build-options]
 sticky = true
 ```
-### Offline mode
+
+### The Offline Mode
 
 Using the` –-offline` flag with `bal build` will run the build offline without connecting to Ballerina Central. 
-This will save time of the build since the packages are resolved using the distribution repository and the filesystem cache of the Ballerina Central repository. 
+This will save build time since the packages are resolved using the distribution repository and the filesystem cache of the Ballerina Central repository.
 
 Using the `--offline` flag along with the `--sticky` flag will ensure a predictable build with optimal time for compilation. 
 
->**Note:** To optimize the time between frequent builds, the automatic update is restricted to run once a day. The `target/build` file is used for this purpose.
+>**Note:** The automatic update runs only once a day to optimize the time taken during frequent builds. The `target/build` file is used for this purpose.
 
 ## Version Compatibility
 
@@ -176,19 +181,20 @@ Abiding by the specifications of [Semantic Versioning](https://semver.org/), Bal
 
 A few examples would be as follows:
 
-* `0.2.3` and `0.2.4` are considered incompatible since the major version is zero. The major version zero is considered as unstable.
+* `0.2.3` and `0.2.4` are considered incompatible since the major version is `0`. The major version `0` is unstable.
 * `1.2.3`, `1.2.4`, and `1.4.5` are compatible. `1.4.5` will be considered as the latest.
-* `1.2.3-alpha`, `1.2.3-alpha.2`, and `1.2.3-beta` are compatible and `1.2.3-beta` is considered as the latest.
-* `1.2.3-alpha`, `1.2.3-beta`, `1.2.4-alpha` are compatible and `1.2.4-alpha` is considered as the latest.
+* `1.2.3-alpha`, `1.2.3-alpha.2`, and `1.2.3-beta` are compatible and `1.2.3-beta` is considered the latest.
+* `1.2.3-alpha`, `1.2.3-beta`, `1.2.4-alpha` are compatible and `1.2.4-alpha` is considered the latest.
 * `1.0.0` and `2.0.0` are considered incompatible since the major versions are different.
 
-When building the dependency graph, if there are more than one version for a specific dependency, the versions are chosen as follows:
-* if the versions are compatible, the latest version is picked
-* if the versions are incompatible, an error will be thrown with a build failure.
+When building the dependency graph, if there is more than one version for a specific dependency, the versions are chosen according to the following.
+* If the versions are compatible, pick the latest version.
+* If the versions are incompatible, throw an error with a build failure.
 
-For example, if one dependency in your package depends on the `1.0.0` version of the `ballerina/observe` package and another dependency depends on `0.9.0` of the same, the build will fail with the following error message.
+For example, assume one dependency in your package depends on the 1.0.0 version of the ballerina/observe package, and another dependency depends on 0.9.0 of the same. The build fails with the following error message.
 
 ```bash
-error: compilation failed: Two incompatible versions exist in the dependency graph: ballerina/observe versions: 0.9.0, 1.0.0
+error: compilation failed: Two incompatible versions exist in the dependency graph:
+ballerina/observe versions: 0.9.0, 1.0.0
 ```
 

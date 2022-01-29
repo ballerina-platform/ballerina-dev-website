@@ -1,24 +1,42 @@
 - title: Writing a GraphQL API with Ballerina
   url: #
   sublinks:
-    - title: Prerequisite
-      url: /learn/writing-a-graphql-api-with-ballerina/#prerequisite
-      active: prerequisite
-    - title: Design the GraphQL Endpoint
-      url: /learn/writing-a-graphql-api-with-ballerina/#design-the-graphql-endpoint
-      active: design-the-graphql-endpoint
-    - title: Create a Ballerina Project
-      url: /learn/writing-a-graphql-api-with-ballerina/#create-a-ballerina-project
-      active: create-a-ballerina-project
-    - title: Create a Datasource for the Project
-      url: /learn/writing-a-graphql-api-with-ballerina/#create-a-datasource-for-the-project
-      active: create-a-datasource-for-the-project
+    - title: Setting up the Prerequisites
+      url: /learn/writing-a-graphql-api-with-ballerina/#setting-up-the-prerequisites
+      active: setting-up-the-prerequisites
+    - title: Designing the GraphQL Endpoint
+      url: /learn/writing-a-graphql-api-with-ballerina/#designing-the-graphql-endpoint
+      active: designing-the-graphql-endpoint
+      sublinks:
+        - title: The `Query` Type
+          url: /learn/writing-a-graphql-api-with-ballerina/#the-query-type
+          active: the-query-type
+        - title: The `Mutation` Type
+          url: /learn/writing-a-graphql-api-with-ballerina/#the-mutation-type
+          active: the-mutation-type
+    - title: Creating a Ballerina Project
+      url: /learn/writing-a-graphql-api-with-ballerina/#creating-a-ballerina-project
+      active: creating-a-ballerina-project
+    - title: Creating a Datasource for the Project
+      url: /learn/writing-a-graphql-api-with-ballerina/#creating-a-datasource-for-the-project
+      active: creating-a-datasource-for-the-project
+      sublinks:
+        - title: Defining the Types for the Datasource
+          url: /learn/writing-a-graphql-api-with-ballerina/#defining-the-types-for-the-datasource
+          active: defining-the-types-for-the-datasource
+        - title: Adding data to the Datasource
+          url: /learn/writing-a-graphql-api-with-ballerina/#adding-data-to-the-datasource
+          active: adding-data-to-the-datasource
     - title: Writing the Ballerina Service
       url: /learn/writing-a-graphql-api-with-ballerina/#writing-the-ballerina-service
       active: writing-the-ballerina-service
-    - title: Create GraphQL Object Types
-      url: /learn/writing-a-graphql-api-with-ballerina/#create-graphql-object-types
-      active: create-graphql-object-types
-    - title: Writing the GraphQL service
-      url: /learn/writing-a-graphql-api-with-ballerina/#writing-the-graphal-service
-      active: writing-the-graphal-service
+      sublinks:
+        - title: Creating the GraphQL Object Types
+          url: /learn/writing-a-graphql-api-with-ballerina/#creating-the-graphql-object-types
+          active: creating-the-graphql-object-types
+        - title: Writing the GraphQL service
+          url: /learn/writing-a-graphql-api-with-ballerina/#writing-the-graphql-service
+          active: writing-the-graphql-service
+    - title: Accessing the GraphQL Endpoint
+      url: /learn/writing-a-graphql-api-with-ballerina/#accessing-the-graphql-endpoint
+      active: accessing-the-graphql-endpoint

@@ -55,14 +55,13 @@ Consider the following step-by-step guide to configuring a Ballerina package tha
    }
    ```
 
-   Here, we created a Ballerina Package `greetings` that contains configurable variables `port` and `greeting` with
-   respective types `int` and  `Greeting`. These variables are used in an HTTP service where the resource function
-   `greeting()` provides a configured message.<br><br>
-   The variable `port` is initialized with a default value `9090`, which indicates the configuration is optional. This
-   value will be used for the variable initialization if the configuration value is not provided.<br><br>
-   The variable `greeting` is initialized with a `?`  expression, which indicates the configuration is mandatory. The
-   program will fail if such a value is not provided.
-
+   Here, we created a Ballerina package named `greetings` that contains configurable variables `port` and `greeting` with
+   respective types `int` and  `Greeting`. These variables are used in the HTTP service where the resource function
+   `greeting()` provides a configured message.<br>
+   The variable `port` is initialized with a default value `9090`, which indicates that the configuration is optional. This
+   value will be used for the variable initialization in case the configuration value will not be provided by the user at the runtime.<br>
+   The variable `greeting` is initialized with the `?` syntax, which indicates that providing a configuration value is mandatory. Therefore,
+   the program will finish the execution abruptly with a runtime exception, if the value is not provided at the runtime.
 
 3. To provide the values for `port` and `greeting` through a configuration file, create a file named `Config.toml`
    with the following content in the package root directory.

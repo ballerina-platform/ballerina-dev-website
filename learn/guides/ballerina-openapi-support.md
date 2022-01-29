@@ -111,11 +111,11 @@ This will generate the OpenAPI contracts for the Ballerina service of which the 
 
 You can use an annotation for storing the title and version information about the OpenAPI contract generated via the Ballerina to OpenAPI tool.
 ```ballerina
-    @openapi:ServiceInfo{
-       [contract: "/path/to/openapi.json|yaml"],
-       [title : "Store Management"],
-       ['version: "0.1.0"]
-    }
+@openapi:ServiceInfo {
+    [contract: "/path/to/openapi.json|yaml"],
+    [title: "Store Management"],
+    ['version: "0.1.0"]
+}    
 ```
 - **Contract: string?** :
 Here, you can provide a path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`. This is an optional attribute. When you use the Ballerina to OpenAPI tool, it will provide an attached OpenAPI contract as the output for a given service. If this attribute is not provided, then the tool generates an OAS contract for the given BAL file content.
@@ -156,18 +156,17 @@ The following is an example of the annotation usage in the Ballerina file.
 ```ballerina
 import ballerina/openapi;
 
-@openapi:ServiceInfo{
+@openapi:ServiceInfo {
     contract: "/path/to/openapi.json|yaml",
-    [ tags : "store" ],
-    [ operations: ["op1", "op2"] ] 
-    [ failOnErrors]: true/false → default : true
-    [ excludeTags ]: ["pets", "user"]
-    [ excludeOperations: ["op1", "op2"] ]
-   }
-service /greet on new http:Listener(9090) {
-    ...
+    [tags: "store"],
+    [operations: ["op1", "op2"]],
+    [failOnErrors: true/false → default: true],
+    [excludeTags: ["pets", "user"]],
+    [excludeOperations: ["op1", "op2"]]
 }
-
+service /greet on new http:Listener(9090) {
+  ...
+}
 ```
 
 For annotation attributes details, see the [OpenAPI annotation reference](#openapi-annotation-reference).
@@ -237,9 +236,9 @@ To see your new client in Ballerina central in the future, follow the steps belo
 ```bash
 bal openapi [-i | --input] <openapi-contract-file-path> 
             [-o | --output] <output-location>
-            [--mode <mode-type>]
-            [--tags <tag-names>] 
-            [--operations <operation-names>] 
+            [--mode] <mode-type>
+            [--tags] <tag-names> 
+            [--operations] <operation-names> 
             [-n | --nullable]
             [--license] <license-file-path> 
             [--with-tests]
@@ -278,19 +277,19 @@ This is optional. It works with the client generation command and generates a bo
 The `@openapi:ServiceInfo` annotation supports several usages in the Ballerina OpenAPI tool. It contains attributes such as `contract` , `tags`, `operations`, `failOnErrors`, `excludeTags`, `excludeOperations`, `title`, `version`, and `embed` for each particular purpose. These attributes are optional to be used in the annotation.
 
 ```ballerina
-@openapi:ServiceInfo{
-    [ contract: "/path/to/openapi.json|yaml"],
-    [ tags : "store" ],
-    [ operations: ["op1", "op2"] ], 
-    [ failOnErrors]: true/false → default : true,
-    [ excludeTags ]: ["pets", "user"],
-    [ excludeOperations: ["op1", "op2"] ],
-    [ title : "store" ],
-    [ 'version: "0.1.0" ],
-    [ embed: false/true -> default: true]
-   }
+@openapi:ServiceInfo {
+    [contract: "/path/to/openapi.json|yaml"],
+    [tags: "store"],
+    [operations: ["op1", "op2"]],
+    [failOnErrors: true/false → default: true],
+    [excludeTags: ["pets", "user"]],
+    [excludeOperations: ["op1", "op2"]],
+    [title: "store"],
+    ['version: "0.1.0"],
+    [embed: false/true → default:true]
+}
 service /greet on new http:Listener(9090) {
-    ...
+   ...
 }
 ```
 - ##### `Contract: string?`

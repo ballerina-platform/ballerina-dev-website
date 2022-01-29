@@ -22,7 +22,7 @@ redirect_from:
 
 ## If Statement
 
-* Avoid enclosing the condition with parentheses in if statements.
+* Avoid enclosing the condition with parentheses.
   
 **Do's**
 

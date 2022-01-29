@@ -2,7 +2,7 @@
 layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Graphical
 description: See why the support for a graphical model lays the foundation for designing the syntax and semantics of the Ballerina programming language.
-keywords: ballerina, programming lanaguage, sequence diagram, graphical, diagram editor, why ballerina
+keywords: ballerina, programming language, sequence diagram, graphical, diagram editor, why ballerina
 permalink: /why-ballerina/graphical/
 active: graphical
 redirect_from:
@@ -28,14 +28,14 @@ Being based on sequence diagrams, Ballerina allows you to visualize a program wr
 
 <img src="/img/why-pages/sequence-diagrams-for-programming-1.png" alt="Ballerina sequence diagram"  style="width:100%; border: 1px solid #eee;">
 
-One of the key benefits of the diagram is that it acts as documentation to the code. It makes it far easier to comprehend the program than reading the source code. Even if you are not familiar with Ballerina code syntax it is easier to understand the diagram.
+One of the key benefits of the diagram is that it acts as a documentation of the code. It makes it far easier to comprehend the program than reading the source code. Even if you are not familiar with Ballerina code syntax it is easier to understand the diagram.
 
 > ***"[With Ballerina] you can get sequence diagrams automatically. When things start to get complicated and you need to understand and socialize with the rest of your team what it is that you're building, these diagrams become very helpful." -- Christian Posta, field CTO, solo.io***
 
 
 ### Get Started
 
-The Ballerina IDE plugin (the [VSCode plugin](/learn/tooling-guide/visual-studio-code-extension/quick-start/) can generate a sequence diagram dynamically from the source code. To start generating a sequence diagram from your Ballerina code, [download the VSCode plugin and launch the graphical viewer](/learn/tooling-guide/visual-studio-code-extension/quick-start/).
+The [Ballerina Extension for Visual Studio Code](/learn/visual-studio-code-extension/vs-code-quick-start/) can generate a sequence diagram dynamically from the source code. To start generating a sequence diagram from your Ballerina code, [download](https://marketplace.visualstudio.com/items?itemName=wso2.ballerina) the VSCode extension and launch the graphical viewer.
 
 
 ## Graphical Representation
@@ -51,23 +51,22 @@ Functions in Ballerina are visualized as a sequence diagram. The diagram will ha
 
 ### Client Objects and Remote Methods
 
-Ballerina has special network client objects, like HTTP clients and database connections, that have their own lifeline to represent its functionality and the messages that it can receive. The messages sent to or the invocations done on these network clients are called _remote methods_ — a special method inside a client object that represents a call through the network. Remote calls are distinguished from normal method calls by using the arrow “`->`” notation.
+Ballerina has special network client objects, like HTTP clients and database connections, that have their own lifeline to represent its functionality and the messages that it can receive. The messages sent to or the invocations are done on these network clients are called _remote methods_ — a special method inside a client object that represents a call through the network. Remote calls are distinguished from normal method calls by using the arrow “`->`” notation.
 
 The following code shows an HTTP client that is used to do GET and POST requests to a remote endpoint:
 
 
 ```ballerina
-function execute() returns error?{
-   http:Client lookupService = check new(lookupUrl);
-   http:Client reportService = check new(reportUrl);
+function execute() returns error? {
+    http:Client lookupService = check new (lookupUrl);
+    http:Client reportService = check new (reportUrl);
 
-   json result = check lookupService->get("/query");
-   http:Response response = check reportService->post("/report", result);
+    json result = check lookupService->get("/query");
+    http:Response response = check reportService->post("/report", result);
 }
 ```
 
-
-The HTTP clients represented by `lookupService` and `reportService` variables are of type `http:Client`, which represents remote HTTP endpoints. The following diagram shows the generated sequence diagram for the above remote method calls
+The HTTP clients represented by `lookupService` and `reportService` variables are of type `http:Client`, which represents remote HTTP endpoints. The following diagram shows the generated sequence diagram for the above remote method calls.
 
 
 

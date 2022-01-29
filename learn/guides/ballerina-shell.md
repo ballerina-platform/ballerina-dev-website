@@ -155,7 +155,7 @@ Execute the `/dclns` command to view the module-level declarations.
 =$ /dclns
 | (sum) function sum(int a, int b) returns int {int sum = a + b;return sum;}
 ```
-The function can in turn be called and assigned to a variable.
+The defined function can be called and assigned to a variable.
 
 ```bash
 =$ var total = sum(10, 20)
@@ -207,7 +207,7 @@ If you have any definitions in source files, you can load these definitions to t
 
 If the source file contains the main function, the Shell will disregard it.
 
-For example, see the sample `text.bal` file below.
+For example, see the sample `test.bal` file below.
 
 ```ballerina
 import ballerina/io;
@@ -217,11 +217,11 @@ function add(int a, int b) returns int {
 }
 
 function subtract(int a, int b) returns int {
-    returns a - b;
+    return a - b;
 }
 
 function multiply(int a, int b) returns int {
-    returns a * b;
+    return a * b;
 }
 
 public function main() {

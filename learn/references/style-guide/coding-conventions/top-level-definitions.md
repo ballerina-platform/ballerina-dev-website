@@ -125,7 +125,7 @@ service / on new http:Listener(9090) {
 ```
 
 * When formatting service-level method definitions, block indent each element and
-  follow the [function formatting guidelines](#function-definition).
+  follow the [Function Definition](/learn/style-guide/top-level-definitions/#function-definition) formatting guidelines.
   
 **Example,**
 
@@ -147,7 +147,7 @@ service / on new http:Listener(9090) {
 
 * Block indent each field definition, method definition and type inclusion on their own line.
 * Init method should be placed before all the other methods.
-* For method definitions in the class definition, follow the [function formatting guidelines](#function-definition).
+* For method definitions in the class definition, follow the [Function Definition](/learn/style-guide/top-level-definitions/#function-definition) formatting guidelines.
 
 **Example,**
 

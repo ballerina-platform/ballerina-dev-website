@@ -15,11 +15,12 @@ redirect_from:
 
 ## Prerequisites
 
-- Command Line Interface (CLI)
-- A text editor. [VSCode](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed is our preferred 
-  choice, and it has good support for Ballerina.
-- A Ballerina installation. Follow the steps in [Installing Ballerina](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/).
-- Some experience in gRPC service at least one programming language
+To complete this tutorial, you need:
+
+1. A command terminal
+2. A text editor
+    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
+3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
 
 ## Creating the Service Definition
 
@@ -86,8 +87,8 @@ $ bal grpc --mode service --input helloworld.proto --output greeter_service/
 Once successfully executed, you will see the output below.
 
 ```
-Successfully extracted library files.
-Successfully generated ballerina file.
+Successfully extracted the library files.
+Successfully generated the Ballerina file.
 ```
 
 Once you move into the directory, you will see the following two files,
@@ -169,8 +170,8 @@ $ bal grpc --mode client --input helloworld.proto --output greeter_client/
 
 Once successfully executed, you could be able to view the below output.
 ```
-Successfully extracted library files.
-Successfully generated ballerina file.
+Successfully extracted the library files.
+Successfully generated the Ballerina file.
 ```
 
 Once you move into the directory, you will see the following two new files.

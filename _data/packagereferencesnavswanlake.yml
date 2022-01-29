@@ -1,6 +1,9 @@
 - title: Package References
   url: '#'
   sublinks:
+    - title: Package Layout
+      url: /learn/package-references/#package-layout
+      active: package-layout
     - title: The `Ballerina.toml` File
       url: /learn/package-references/#ballerinatoml
       active: ballerinatoml
@@ -21,11 +24,11 @@
           url: /learn/package-references/#packaging-java-libraries
           active: packaging-java-libraries
     - title: The `Dependencies.toml` File
-      url: /learn/package-references/#dependenciestoml
-      active: dependenciestoml
+      url: /learn/package-references/#the-dependenciestoml-file
+      active: the-dependenciestoml-file
     - title: The `Package.md` File
-      url: /learn/package-references/#packagemd
-      active: packagemd
+      url: /learn/package-references/#the-packagemd-file
+      active: the-packagemd-file
     - title: The `target/` Directory
       url: /learn/package-references/#the-target-directory
       active: the-target-directory
@@ -46,8 +49,8 @@
           url: /learn/package-references/#the-bal-source-files
           active: the-bal-source-files
         - title: The `Module.md` File
-          url: /learn/package-references/#module-md
-          active: module-md
+          url: /learn/package-references/#the-modulemd-file
+          active: the-modulemd-file
         - title: The `resources/` Directory
           url: /learn/package-references/#the-resources-directory
           active: the-resources-directory

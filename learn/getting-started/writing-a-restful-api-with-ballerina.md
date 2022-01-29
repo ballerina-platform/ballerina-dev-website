@@ -45,7 +45,7 @@ This creates a folder named `covid19` along with a sample code for service. Navi
 
 `code .`
 
-`Ballerina.toml` is the file that makes the folder a Ballerina package. It also contains a test directory to include tests for the service. But for the sake of simplicity, we will ignore it in this tutorial. You can just go through the sample in `service.bal` to get a look and feel about Ballerina services. However, we will be starting with a blank page. Hence, before you start, you can delete the entire code or edit it if you wish.
+`Ballerina.toml` is the file that makes the folder a Ballerina package. It also contains a test directory to include tests for the service. However, for the sake of simplicity, it will be ignored in this tutorial. You can just go through the sample in the `service.bal` to get a look and feel about Ballerina services. However, since you will be doing it from scratch, you can delete the entire code or edit it if you wish.
 
 ## Creating the COVID-19 Dataset 
 

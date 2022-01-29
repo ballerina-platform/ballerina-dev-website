@@ -119,7 +119,7 @@ resource function post countries(@http:Payload CovidEntry[] covidEntries)
         };
     } else {
         covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
-        return <CreatedCovidEntries>{body: covidEntries};
+        return <CreatedCovidEntries>{ body: covidEntries };
     }
 }
 ```
@@ -239,7 +239,7 @@ service /covid/status on new http:Listener(9000) {
             };
         } else {
             covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
-            return <CreatedCovidEntries>{body: covidEntries};
+            return <CreatedCovidEntries>{ body: covidEntries };
         }
     }
 

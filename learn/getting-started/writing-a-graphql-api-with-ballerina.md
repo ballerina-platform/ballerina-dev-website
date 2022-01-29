@@ -365,6 +365,35 @@ bal run
 
 > **Note:** The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 
-If you connect to this service using the GraphQL Playground tool, you can see the following generated schema.
+If you connect to this service using any GraphQL client tools, it will show the following schema.
 
-![Generated Schema](/learn/images/graphql-generated-schema.png)
+```graphql
+type CovidData {
+    isoCode: String!
+    country: String!
+    cases: Decimal
+    recovered: Decimal
+    active: Decimal
+    deaths: Decimal
+}
+
+input CovidEntry {
+    isoCode: String!
+    country: String!
+    cases: Decimal
+    recovered: Decimal
+    active: Decimal
+    deaths: Decimal
+}
+
+Scalar Decimal
+
+type Query {
+    all: [CovidData!]!
+    filter(isoCode: String!): CovidData
+}
+
+type Mutation {
+    add(entry: CovidEntry!): CovidData!
+}
+```

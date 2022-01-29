@@ -26,7 +26,7 @@ redirect_from:
 
     <span class="c1">// Gets triggered when a message is received by the queue.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">,</span>
-                                <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
 
         <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="p">&#39;string:fromBytes(</span><span class="kt">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
         <span class="k">if</span> <span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span> <span class="p">{</span>
@@ -38,11 +38,11 @@ redirect_from:
         <span class="c1">// or will rollback otherwise.</span>
         <span class="nx">transaction</span> <span class="p">{</span>
             <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">basicAck</span><span class="p">();</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span>
                             <span class="s">&quot;Error occurred while acknowledging the message.&quot;</span><span class="p">);</span>
             <span class="p">}</span>
-            <span class="nx">error</span><span class="err">?</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
+            <span class="nx">check</span> <span class="nx">commit</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -173,7 +173,7 @@ import ballerinax/rabbitmq;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    remote function onMessage(rabbitmq:Message message,
-                                rabbitmq:Caller caller) {
+                        rabbitmq:Caller caller) returns error? {
 </code></pre></div>
 
                                 </div>
@@ -209,11 +209,11 @@ import ballerinax/rabbitmq;
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>        transaction {
             rabbitmq:Error? result = caller-&gt;basicAck();
-            if (result is error) {
+            if result is error {
                 log:printError(
                             &quot;Error occurred while acknowledging the message.&quot;);
             }
-            error? res = commit;
+            check commit;
         }
     }
 }

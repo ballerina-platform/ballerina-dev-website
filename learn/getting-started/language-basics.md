@@ -409,31 +409,31 @@ Records are mutable. *``c.x``* is an ``lvalue``. Rules for record comparison are
 
 In Ballerina, the data types are defined in terms of a set of values. A type is a label for a set of values. These values can be part of a finite set or an infinite set.
 
-For example, the integer type has a finite set consisting of values within the range of 64-bit signed numbers. The string type is an infinite set that contains any number or order of characters. In this way, the universe of all values is partitioned into the basic types supported by Ballerina such as nil, boolean, integer, floating point, and string. Values of these basic types are  immutable, and each value belongs to exactly one basic type.
+For example, the ``int`` type has a finite set consisting of values within the range of 64-bit signed numbers. The ``string`` type is an infinite set that contains sequences of any number or order of characters. In this way, the universe of all values is partitioned into the basic types supported by Ballerina such as nil, boolean, integer, floating point, and string. Values of these basic types are immutable, and each value belongs to exactly one basic type.
 
-There is also a concept of semantic subtyping, which means a subset of the values of the basic types. For example, the byte type is a subset of integer as it allows only a subset of values that are a part of the integer value set.
+There is also a concept of semantic subtyping, which means a subset of the values of the basic types. For example, the ``byte`` type is a subset of integer as it allows only a subset of values that are a part of the integer value set.
 
-Additionally, Ballerina allows you to define your own types, such as arrays, maps and records, which are mutable.
+Additionally, Ballerina allows you to define your own types, such as arrays, maps, and records, which are mutable.
 
 ## Unions
 
-Ballerina’s type system allows you some flexibility to define custom types based on the combination of two or more types. A union is, therefore, a superset of that combination.
+Ballerina's type system allows you to define custom types based on the combination of two or more types. A union is, therefore, a superset of that combination.
  
-You have already seen this with the `‘T?’` notation where a variable can be of type T or nil.   
+You have already seen this with the ``T?`` notation where a variable of type ``T?`` can hold a value of type `T` or nil.   
 
-Similarly, you can define a type that holds an integer as well as a string.
+Similarly, you can define a variable that holds an integer or a string.
 
 ```ballerina
 type flexType string|int;
 
 flexType a = 1;
 
-flexType a = “Hello”;
+flexType b = "Hello";
 ```
 
-Using the `‘|’` symbol in the type definition, you can create a Union of multiple types. Therefore, in the above example, **``flexType``** can hold an integer value as well as a string value and the Ballerina compiler won’t complain.
+Using the ``|`` symbol in the type definition, you can create a union of multiple types. Therefore, in the above example, **``flexType``** can hold an integer value as well as a string value, and the Ballerina compiler won't complain.
 
-You can also apply the concept of union to structured data types like records. So it is possible to have a union of a record containing string type fields and a basic string type.
+You can also apply the concept of unions to structured data types like records. So it is possible to have a union of a record type containing fields of the ``string`` type and the basic ``string`` type.
 
 ```ballerina
 type StructuredName record {
@@ -444,14 +444,14 @@ type StructuredName record {
 type Name StructuredName|string;
 ```
  
-At runtime, you can define the business logic by checking the currently held value of the union using the `is` operator.
+At runtime, you can define the business logic by checking the currently held value of the union-typed variable using the `is` operator.
 
 ```ballerina
 function nameToString(Name nm) returns string {
    
     if nm is string {
         return nm;
-        } else {
+    } else {
         return nm.firstName + " " + nm.lastName;
     }
 }
@@ -461,7 +461,7 @@ In this way, the ``is`` operator in a condition causes the declared type to be n
 
 ## Error Reporting
 
-Ballerina does not support the notion of exception. Instead, errors are handled as part of the normal control flow. Errors are first-class citizens in Ballerina. There are a few mechanisms for handling errors, which are centered around an error type. error is a basic type in Ballerina, and error values can be passed around just like any other type.
+Ballerina does not support the notion of exceptions. Instead, errors are handled as part of the normal control flow. Errors are first-class citizens in Ballerina. There are a few mechanisms for handling errors, which are centered around an ``error`` type. The ``error`` type is a basic type in Ballerina, and error values can be passed around just like values of any other type.
 
 Errors are reported by functions returning error values.
 
@@ -482,15 +482,15 @@ function parse(string s) returns int|error {
 }
 ```
  
-In the above code example, the function **``parse()``** returns a union of integer or error type. At the point of returning the error, the function *``error(“not a digit”)``*  is called.
+In the above code example, the function **``parse()``** returns either an integer or an error. At the point of returning the error, the error constructor *``error("not a digit")``*  is called.
 
-In case a function is expected to return only error values, a return type of ``error?`` is used.   Ignoring an error also has to be done explicitly.
+In case a function is expected to explicitly return only error values, a return type of ``error?`` is used. Ignoring an error also has to be done explicitly.
 
-An error value includes a string message and the stack trace from the point where *``error( )``* is called, and it is immutable.
+An error value includes a string message and the stack trace from the point where *``error(...)``* is called. An error value is immutable.
 
 ## Error Handling
 
-When an error is reported from a function, it is passed up to its caller. Ultimately it is handled at the main function, which can return it. Alternatively, you can use the ``is`` operator to check for the error type as part of the regular control flow to make a decision.
+When an error is reported from a function, it is passed up to its caller. Ultimately it is handled at the ``main`` function, which can return it. Alternatively, you can use the ``is`` operator to check for the error type as part of the regular control flow to make a decision.
 
 ```ballerina
 function intFromBytes(byte[] bytes) returns int|error {
@@ -505,11 +505,11 @@ function intFromBytes(byte[] bytes) returns int|error {
 }
 ```
 
-So, in the above code example, the function defines a local variable **``ret``** to hold the returned value of function **``fromBytes( )``**. **``ret``** is a union of string or error type. Therefore to ascertain the actual type, ``is`` operator is used.
+In the above code example, the function defines a local variable **``ret``** to hold the value returned by the **``string:fromBytes()``** function. The **``ret``** variable is of a union type of the ``string`` and ``error`` type. Therefore to ascertain the actual type, ``is`` operator is used.
 
 ## ``check`` Expression
 
-Instead of using the ``is`` operator within the regular conditional flow for checking errors, Ballerina has a shorthand method available. Using the ``check`` keyword, error handling and return statements are much more concise.
+Instead of using the ``is`` operator within the regular conditional flow to check for errors, Ballerina has a shorthand method available. Using the ``check`` keyword, error handling and return statements are much more concise.
 
 So the **``intFromBytes()``** function defined in the previous section can now be written as: 
 
@@ -522,7 +522,7 @@ function intFromBytes(byte[] bytes) returns int|error {
 }
 ```
   
-In this case, the expression following the ``check`` keyword is evaluated and the function returns immediately if it results in an error.
+In this case, the expression following the ``check`` keyword is evaluated and the **``intFromBytes``** function returns immediately if the **``string:fromBytes()``** function returns an error.
 
 ## Error Subtyping
 
@@ -553,7 +553,7 @@ function desc(Err err) returns string {
 
 In Ballerina, there is a distinction between normal and abnormal errors. Normal errors are the ones that you typically handle as part of the usual business logic and are under your control. But some errors are not under the control of the programmer. These are abnormal errors. Things such as bugs in library code or out of memory errors fall under this category.
 
-Normal errors are handled by returning values of the error type. Abnormal errors are handled using the panic statement.
+Normal errors are handled by returning values of the ``error`` type. Abnormal errors are handled using the ``panic`` statement.
 
 ```ballerina
 function divide(int m, int n) returns int {
@@ -568,7 +568,7 @@ A panic statement results in immediate program termination and has an associated
 
 ## ``any`` Type
 
-Ballerina also allows an ``any`` type, which means any value except an error. A variable of type any can be cast to a specific type using the ``‘< >’`` symbol enclosure.
+Ballerina also allows an ``any`` type, which means any value except an error. A variable of type any can be cast to a specific type using the ```< >``` symbol enclosure.
 
 ```ballerina
 any x = 1;
@@ -597,7 +597,7 @@ Ballerina does not allow silently ignoring return values of functions unless the
 doX( );
 ```
 
-To ignore the return value, you can assign it to `‘_’`, which acts as an implicitly declared variable of any type that cannot be referenced.
+To ignore the return value, you can assign it to ``_``, which acts as an implicitly declared variable of any type that cannot be referenced.
 
 ```ballerina
 _ = getX( );
@@ -645,7 +645,7 @@ function demoMyClass( ) {
 }
 ```
 
-In the above code example, the function **``demoMyClass()``** creates an object **``x``** of class **``MyClass``** using the ``new`` operator. You can use the `‘.’` notation to call the object’s methods or access its fields.
+In the above code example, the function **``demoMyClass()``** creates an object **``x``** of class **``MyClass``** using the ``new`` operator. You can use the ``.`` notation to call the object’s methods or access its fields.
 
 ## Defining Classes
 
@@ -699,7 +699,7 @@ Usually, the return type of **``init()``** is nil if not specified. It also mean
 
 ## Identity
 
-In Ballerina, the identity of an object is determined by the memory location where the object resides in runtime. To check the identity, you can use the `‘===’` and `‘!===’` notation.
+In Ballerina, the identity of an object is determined by the memory location where the object resides in runtime. To check the identity, you can use the ``===`` and ``!===`` notation.
 
 ```ballerina
 MyClass obj1 = new MyClass();
@@ -714,7 +714,7 @@ boolean b2 = (obj1 === obj2);
 
 In the above code example, both **``obj1``** and **``obj2``** are objects of **``MyClass``**. Therefore *``obj1 === obj1``* returns true as both operands of the operation refer to the same memory location. Similarly *``obj1 === obj2``* returns false.
  
-The `‘==’` operator is used to check for contents of a structure type like Arrays.
+The ``==`` operator is used to check for contents of a structure type like Arrays.
 
 ```ballerina
 //true
@@ -724,9 +724,9 @@ boolean b3 = ([1,2,3] == [1,2,3]);
 boolean b4 = ([1,2,3] === [1,2,3]);
 ```
 
-In the above code example, the first operation results in true as both the arrays have exactly the same content. However, the second operation is false because it is using the `‘===’` operator to check for memory location, and the two inline arrays point to different memory locations, even though their contents are the same.  
+In the above code example, the first operation results in true as both the arrays have exactly the same content. However, the second operation is false because it is using the ``===`` operator to check for memory location, and the two inline arrays point to different memory locations, even though their contents are the same.  
 
-In the case of floating point numbers, IEEE defines -0.0 and +0.0 as the same. Therefore applying `‘==’` to compare -0.0 and +0.0 would return a true, whereas *``-0.0 === +0.0``* would always be false as they are not identical.
+In the case of floating point numbers, IEEE defines -0.0 and +0.0 as the same. Therefore applying ``==`` to compare -0.0 and +0.0 would return a true, whereas *``-0.0 === +0.0``* would always be false as they are not identical.
 
 ## ``const`` and ``final``
 
@@ -794,7 +794,7 @@ function mtest(any v) returns string {
 }
 ```
 
-The match statement defines multiple clause statement blocks with the `‘=>’` operator. The left hand side of the `‘=>’` operator in each clause is the pattern for value match. It can contain literals or identifiers referring to a constant. Additionally, it can also contain multiple patterns specified using `‘|’`, and `‘_’` to match any value that is not an error.  
+The match statement defines multiple clause statement blocks with the ``=>`` operator. The left hand side of the ``=>`` operator in each clause is the pattern for value match. It can contain literals or identifiers referring to a constant. Additionally, it can also contain multiple patterns specified using ``|``, and ``_`` to match any value that is not an error.  
 
 In the above example, the match uses the value held by **``v``**, and matches it against six match clauses having distinct patterns. During execution, the patterns will be evaluated in order, using equals equals (==) to test the pattern match, and the matched clause’s statement block will be executed.
 
@@ -910,7 +910,7 @@ In case you want to terminate the ``future``, you can do a *``f.cancel( )``*.
 
 ## Documentation
 
-Ballerina supports a structured way for documenting the code. Use the `‘#’` as a starting character in the line, defines a structured documentation in Markdown format.
+Ballerina supports a structured way for documenting the code. Use the ``#`` as a starting character in the line, defines a structured documentation in Markdown format.
 
 ```ballerina
 # Adds two integers.
@@ -927,7 +927,7 @@ The above code example adds documentation for describing the parameters, and the
 
 ## Annotations
 
-Annotations are defined using the `‘@’` notation followed by a tag. This is a way of defining metadata to the code.
+Annotations are defined using the ``@`` notation followed by a tag. This is a way of defining metadata to the code.
 
 ```ballerina
 @display {

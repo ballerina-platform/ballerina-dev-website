@@ -16,7 +16,7 @@ In this tutorial, you will be writing queries to filter, sort, and join with dif
 
 ## Setting up the Prerequisite
 
-To complete this tutorial, you need the below.
+To complete this tutorial, you need:
 
 1. A command terminal
 2. A text editor

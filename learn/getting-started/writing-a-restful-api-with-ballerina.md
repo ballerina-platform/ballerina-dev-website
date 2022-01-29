@@ -17,7 +17,7 @@ In this tutorial, you will be creating a RESTful API with two endpoints. The sam
 
 ## Setting up the Prerequisites
 
-To complete this tutorial, you need the below. 
+To complete this tutorial, you need:
 
 1. A command terminal
 2. A text editor

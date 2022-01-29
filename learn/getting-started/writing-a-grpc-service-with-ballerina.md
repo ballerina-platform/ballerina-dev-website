@@ -15,7 +15,7 @@ redirect_from:
 
 ## Prerequisites
 
-To complete this tutorial, you need the below.
+To complete this tutorial, you need:
 
 1. A command terminal
 2. A text editor

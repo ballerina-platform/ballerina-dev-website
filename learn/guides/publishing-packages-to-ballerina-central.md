@@ -21,25 +21,28 @@ A package uses Ballerina library packages as dependencies. Use the `bal new` com
 Execute the `bal new -t lib` command to create a new library package.
 
 ```bash
-bal new hello --template lib
+bal new --template lib hello
 ```
 
-This will create the `Ballerina.toml` file, the `hello.bal` source file and the `Package.md`. For more information on these files, see [Package Layout](/learn/package-references/#package-layout).
+This will create the `Ballerina.toml` file, the `hello.bal` source file, the `Package.md`, the `resources/`, `tests/` directories, and `Module.md`.
+ For more information on these files, see [Package Layout](/learn/package-references/#package-layout).
 
 ```bash
-cd hello
-tree .
-hello
-    ├── Ballerina.toml 
+> cd hello
+> tree .
+    .
+    ├── Ballerina.toml
+    ├── Module.md
+    ├── Package.md
     ├── hello.bal
-    └── Package.md
+    ├── resources
+    └── tests
+        └── lib_test.bal
 
-0 directories, 3 files
+2 directories, 5 files
 ```
 
-It creates the `Ballerina.toml` file. Apart from it, the `hello.bal` source file and the [Package.md](/learn/package-references/#the-packagemd-file) files are created. For more information on these, see [Package Layout](/learn/package-references/#package-layout).
-
-You can edit the `Ballerina.toml` file to change the org name, package name and version as you prefer.
+You can edit the `Ballerina.toml` file to change the org name, package name, and version as you prefer.
 
 ```toml
 [package]
@@ -64,7 +67,8 @@ Creating bala
 
 ## Publishing a Library Package to Ballerina Central
 
-A Ballerina archive can be published to the [Ballerina Central](https://central.ballerina.io/). Before you publish, Ensure the package works as intended because a publish is **permanent**. Once published to Ballerina Central, the version can never be overwritten and the package cannot be removed. However, the number of versions of a package that can be pushed to Ballerina Central is not restricted.
+You can publish a Ballerina archive to the [Ballerina Central](https://central.ballerina.io/).
+Before you publish, ensure the package works as intended because a publish is **permanent**. Once published to Ballerina Central, you cannot overwrite the version or remove the package. However, the number of package versions you can push to Ballerina Central is not restricted.
 
 >**Tip:** As a precaution, use the [local repository](/learn/managing-dependencies/#using-dependencies-from-the-local-repository) first to test out the functionality of the library package before publishing it to Ballerina Central.
 
@@ -88,9 +92,9 @@ password = ""
 
 ### Organizations
 
-When you push a package to Ballerina Central, the organizations are validated against the value of the `org` field defined in the [Ballerina.toml](/learn/package-references/#the-ballerinatoml-file) file. Therefore, when you have more than one organizations in Ballerina Central, pick the organization name that you intend to push the package into, set that as the `org` in the `Ballerina.toml` file inside the package directory, and rebuild the package.
+When you push a package to Ballerina Central, the organizations are validated against the value of the `org` field defined in the [Ballerina.toml](/learn/package-references/#the-ballerinatoml-file) file. Therefore, when you have more than one organization in Ballerina Central, pick the organization name that you intend to push the package into, set that as the `org` in the `Ballerina.toml` file inside the package directory, and rebuild the package.
 
-Also, organization names starting with `ballerina` (e.g., `ballerina`, `ballerinax`, `ballerinai`, etc.) are reserved for system use, and thereby, you cannot publish any packages starting with the `ballerina` prefix to Ballerina Central. Therefore, if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
+Also, organization names starting with `ballerina` (e.g., `ballerina`, `ballerinax`, `ballerinai`, etc.) are reserved for system use, and you cannot publish any packages starting with the `ballerina` prefix to Ballerina Central. Therefore, if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
 
 ### Publishing the Package
 
@@ -102,6 +106,6 @@ bal push
 
 ## Using the Packages in Ballerina Central
 
-After publishing your first package, you can create a second package and use the already-published package in it.
-
-Any package published in Ballerina Central is public and they can be used in packages. For more information, see [Importing a Module](/learn/managing-dependencies/#importing-a-module).
+After publishing your first package, you can create a second package and use the already published package in it.
+Any package published in Ballerina Central is public and can be used in other packages.
+ For more information, see [Importing a Module](/learn/managing-dependencies/#importing-a-module).

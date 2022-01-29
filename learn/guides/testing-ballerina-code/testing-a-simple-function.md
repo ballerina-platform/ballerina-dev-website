@@ -1,10 +1,10 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Quick Start on Testing
+title: Testing a Simple Function
 description: Learn how to use Ballerina's built-in test framework to write testable code. The test framework provides a set of building blocks to help write and run tests.
 keywords: ballerina, programming language, testing
-permalink: /learn/testing-ballerina-code/quick-start-on-testing/
-active: quick-start-on-testing
+permalink: /learn/testing-ballerina-code/testing-a-simple-function/
+active: testing-a-simple-function
 intro: The Ballerina Language has a built-in robust test framework, which allows you to achieve multiple levels of the test pyramid including unit testing, integration testing, and end-to-end testing.  It provides features such as assertions, data providers, mocking, and code coverage, which enable the programmers to write comprehensive tests.
 redirect_from:
   - /learn/how-to-test-ballerina-code/
@@ -20,10 +20,8 @@ redirect_from:
   - /learn/user-guide/testing-ballerina-code/
   - /learn/user-guide/testing-ballerina-code
   - /learn/user-guide/testing-ballerina-code/testing-quick-start/
-  - /learn/testing-ballerina-code/quick-start-on-testing
+  - /learn/testing-ballerina-code/testing-a-simple-function
 ---
-
-## Testing a Simple Function
 
 To get started, let's set up the Ballerina package to run tests.
 

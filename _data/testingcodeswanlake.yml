@@ -1,12 +1,9 @@
 - title: Testing Ballerina Code 
   url: '#'
   sublinks:
-    - title: Quick Start on Testing 
-      url: '#'
-      sublinks:
-        - title: Testing a Simple Function
-          url: /learn/testing-ballerina-code/quick-start-on-testing/#testing-a-simple-function
-          active: testing-a-simple-function
+    - title: Testing a Simple Function
+      url: /learn/testing-ballerina-code/testing-a-simple-function
+      active: testing-quick-start
     - title: Writing Tests
       url: '#'
       sublinks:

@@ -39,7 +39,7 @@
 - title: Testing Ballerina Code
   url: '#'
   sublinks:
-    - title: Quick Start
+    - title: Testing a Simple Function
       url: /learn/user-guide/testing-ballerina-code/testing-quick-start
       active: testing-quick-start
     - title: Writing Tests

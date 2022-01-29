@@ -1,11 +1,11 @@
 ---
 layout: ballerina-organizing-code-left-nav-pages-swanlake
 title: Organizing Ballerina Code
-description: The sections below include information about packages, and how the growth of your source code can be managed.
+description: The sections below include information about packages, and how you can manage the growth of your source code.
 keywords: ballerina, programming language, ballerina packages, dependencies, importing modules
 permalink: /learn/organizing-ballerina-code/
 active: organizing-ballerina-code
-intro: The sections below include information about packages, and you can manage the growth of your source code.
+intro: The sections below include information about packages, and how you can manage the growth of your source code.
 redirect_from:
 - /learn/user-guide/ballerina-packages/organizing-ballerina-code
 - /learn/user-guide/ballerina-packages/organizing-ballerina-code/

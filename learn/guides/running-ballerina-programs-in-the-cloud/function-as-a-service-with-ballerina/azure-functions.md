@@ -2,7 +2,7 @@
 layout: ballerina-cloud-left-nav-pages-swanlake
 title: Azure Functions
 description: Learn how to write and deploy Azure Functions using ballerina
-keywords: ballerina, programming language, serverless, cloud, Azure, Functions, Cloud Native
+keywords: ballerina, programming language, serverless, cloud, azure, functions, cloud native
 permalink: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
 active: azure-functions
 intro: The Azure Functions extension provides the functionality to expose a Ballerina function as a serverless function in the Azure Functions platform.
@@ -20,8 +20,8 @@ redirect_from:
 ## Prerequisites
 * Install the latest Ballerina distribution.
 * Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
-* Log in to the Azure CLI by executing the `az login` command.
-* Create an [Azure Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal) with the given resource group with the following requirements.
+* Login to the Azure CLI by executing the `az login` command.
+* Create an [Azure Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal) with the given resource group with following requirements.
 
 >**Note:** Make sure to remember the function application name and storage account name as they will be required in the code samples.
    - Runtime stack - `Java 11`
@@ -29,7 +29,7 @@ redirect_from:
 
 ## Triggers and Bindings
 
-An Azure Function consists of a trigger and optional bindings. A trigger defines how a function is invoked. A binding is an approach in which you can declaratively connect other resources to the function. There are *input* and *output* bindings. An input binding is a source of data into the function. An output binding allows to output data from the function out to an external resource. For more information, go to [Azure Functions triggers and bindings concepts](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings).
+An Azure Function consists of a trigger and optional bindings. A trigger defines how a function is invoked. A binding is an approach in which you can declaratively connect other resources to the function. There are *input* and *output* bindings. An input binding is a source of data into the function. An output binding allows outputting data from the function to an external resource. For more information, go to [Azure Functions triggers and bindings concepts](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings).
 
 The following Azure Functions triggers and bindings are currently supported in Ballerina:
 - HTTP [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#HTTPTrigger) and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#HTTPOutput) binding
@@ -41,7 +41,7 @@ The following Azure Functions triggers and bindings are currently supported in B
 
 ## Writing the Function
 
-The following Ballerina code gives an example of using an HTTP trigger to invoke the function and an HTTP output binding to respond back to the caller with a message. 
+The following Ballerina code gives an example of using an HTTP trigger to invoke the function, and an HTTP output binding to respond to the caller with a message. 
 
 Create a Ballerina package.
 ```bash
@@ -59,7 +59,7 @@ public function hello(@af:HTTPTrigger { authLevel: "anonymous" }
     return "Hello, " + payload + "!";
 }
 ```
-The first parameter with the [Context](/learn/api-docs/ballerina/#/azure_functions/classes/Context) object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the function's parameter list.
+The first parameter with the [Context](https://lib.ballerina.io/ballerinax/azure_functions/latest/classes/Context) object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the function's parameter list.
 
 The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given `HTTPRequest` value. Then, you declare an HTTP output binding by annotating the `HTTPBinding` return type with the `HTTPOutput` annotation.
 
@@ -121,7 +121,7 @@ Deployment endpoint responded with status code 202
 
 ### Invoking the Function
 
-The deployed Azure Function can be tested by invoking it using an HTTP client such as CURL:
+The deployed Azure Function can be tested by invoking it using an HTTP client such as cURL:
 
 ```bash
 $ curl -d "Hello!" https://<function_app_name>.azurewebsites.net/api/hello 
@@ -134,9 +134,9 @@ This section uses different types of triggers and bindings to build Azure functi
 
 ### HTTP Trigger -> Queue Output
 
-The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond back to the caller with a message. 
+The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond to the caller with a message. 
 
-First, create a queue to hold the outputs of the function by accessing the storage account that was created alongside the function app in the prerequisites. Select **Queues** in the sidebar in the storage accounts. Click the *Add queue** button, and enter the same value as the value of the `queueName` property in the below `QueueOutput` annotation.
+First, create a queue to hold the outputs of the function by accessing the storage account that was created alongside the function app in the prerequisites. Select **Queues** in the sidebar in the storage accounts. Click the **Add queue** button, and enter the same value as the value of the `queueName` property in the below `QueueOutput` annotation.
 
 ```ballerina
 import ballerinax/azure_functions as af;
@@ -153,7 +153,7 @@ public function fromHttpToQueue(af:Context ctx,
 
 Build the project by executing the `bal build` command on the project directory, and then, deploy it using the `az cli` command shown in the Ballerina build output as in the previous section.
 
-Now, the deployed Azure Function can be tested by invoking it using an HTTP client such as CURL. 
+Now, the deployed Azure Function can be tested by invoking it using an HTTP client such as cURL. 
 
 ```bash
 $ curl -d "Hello!" https://<function_app_name>.azurewebsites.net/api/fromHttpToQueue 
@@ -162,20 +162,20 @@ Request: url=https://<function_app_name>.azurewebsites.net/api/fromHttpToQueue m
 
 Refresh the queue page in the portal and view the added entry.
 
-### CosmosDB Trigger -> Queue Output
+### Cosmos DB Trigger -> Queue Output
 
 The following Ballerina code gives an example of using a Cosmos DB trigger to invoke the function and a queue output binding to write an entry to a queue.
 
 Before writing and deploying the code, create a Cosmos DB and a queue to make use of those services later.
-1. You can reuse the queue you created in the above sample. [HTTP Trigger -> Queue Output](/learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output)
-2. Create an [Azure Cosmos DB account](https://portal.azure.com/#create/Microsoft.DocumentDB) and Select Cosmos DB Core.
+1. You can reuse the queue you created in the above [HTTP Trigger -> Queue Output](/learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output) sample.
+2. Create an [Azure Cosmos DB account](https://portal.azure.com/#create/Microsoft.DocumentDB) and select Cosmos DB Core.
 3. Once the database is created, go to the **Data Explorer**, and select **Create Container**.
-4. Enter 'db1' as Database ID and 'c1' as the collection ID, and click **Ok**.
+4. Enter `db1` as Database ID and `c1` as the collection ID, and click **Ok**.
 
 **Note:** If you want to change these values, make sure to change them in the code as well.
 5. Go to the **Keys** tab of the Cosmos DB page.
 6. Copy the value of the `PRIMARY CONNECTION STRING`.
-7. Click the **Configuration** tab in the Function app page.
+7. Click the **Configuration** tab on the Function app page.
 8. Select **New Application Setting**, and paste the data you copied above as the value. For the key, use the value of the `connectionStringSetting` key and save.
 
 Example application setting is as follows.

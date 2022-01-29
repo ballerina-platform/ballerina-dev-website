@@ -2,7 +2,7 @@
 layout: ballerina-cloud-left-nav-pages-swanlake
 title: AWS Lambda
 description: Learn how to write and deploy AWS Lambda functions using ballerina
-keywords: ballerina, programming language, serverless, cloud, AWS, Lambda, Cloud Native
+keywords: ballerina, programming language, serverless, cloud, aws, lambda, cloud native
 permalink: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
 active: aws-lambda
 intro: The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function.
@@ -45,7 +45,7 @@ Create a Ballerina package.
 ```bash
 $ bal new aws_lambda_deployment
 ```
-Replace the contents of the generated BAL file with the following content.
+Replace the contents of the generated `.bal` file with the following content.
 
 ```ballerina
 import ballerina/log;
@@ -86,13 +86,13 @@ Generating executables
 
 ## Deploying the Function
 
-Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer. As shown in the above instructions output, this information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console or the [AWS CLI](https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html) to deploy the functions. 
+Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer. As shown in the above instructions' output, this information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console or the [AWS CLI](https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html) to deploy the functions. 
 
 **Info:** When you are deploying, make sure to replace the `$LAMBDA_ROLE_ARN` placeholder with the role ARN you copied in the prerequisites.
 
 Execute the command below to deploy the echo function as an AWS Lambda as shown below. 
 
->**Info:**  For the supported parameters, go to the [`create-function` documentation](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html). You might need to change parameters such as the memory size and timeout depending on your application and connection speed. 
+>**Info:**  For the supported parameters, go to the [`create-function` documentation](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html). You might need to change parameters such as the `MemorySize` and `Timeout` depending on your application and connection speed. 
 
 ```bash
 $ aws lambda create-function --function-name echo --zip-file fileb://<project_dir>/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6
@@ -146,7 +146,7 @@ $ cat echo-response.txt
 {"MESSAGE":"HELLO"}
 ```
 
-If you want to check the logs of the execution, you have to go to the `echo` lambda function in the portal, and then click on the **Monitor** tab and **Logs** button.
+To check the logs of the execution, go to the `echo` lambda function in the portal, and then click on the **Monitor** tab and the **Logs** button.
 
 ## More Samples
 
@@ -154,6 +154,7 @@ If you want to check the logs of the execution, you have to go to the `echo` lam
 This sample creates a function, which will be executed for each object creation in AWS S3.
 
 ```ballerina
+import ballerina/io;
 import ballerinax/awslambda;
 
 @awslambda:Function
@@ -165,9 +166,9 @@ public function notifyS3(awslambda:Context ctx,
 ```
 
 Now, you can build and deploy the function as in the previous sample.
-In order to invoke this function, create an S3 bucket in AWS.
-1. Go to [AWS S3](https://s3.console.aws.amazon.com/s3/), in the portal and create a bucket.
-2. Click on the created bucket, go to the **Properties** tab, and click on the **Create event** notification under the **Event notifications** section.
+To invoke this function, create an S3 bucket in AWS.
+1. Go to [AWS S3](https://s3.console.aws.amazon.com/s3/) portal and create a bucket.
+2. Click on the created bucket, go to the **Properties** tab, and click on the **Create event notification** under the **Event notifications** section.
 3. Enable `All object create events` under event types. Select the Lambda function as the destination, and choose the `notifyS3` Lambda function from the dropdown.
 
 Now, click **Upload** to upload an object to the S3 bucket, and view the Lambda logs via CloudWatch to see the object name.
@@ -176,6 +177,7 @@ Now, click **Upload** to upload an object to the S3 bucket, and view the Lambda 
 This sample creates a function, which will be executed for each entry added to a database in the DynamoDB.
 
 ```ballerina
+import ballerina/io;
 import ballerinax/awslambda;
 
 @awslambda:Function
@@ -186,10 +188,10 @@ public function notifyDynamoDB(awslambda:Context ctx,
 }
 ```
 Now, you can build and deploy the function as in the previous sample.
-In order to invoke this function, create a DynamoDB table.
+To invoke this function, create a DynamoDB table.
 1. Go to [roles](https://console.aws.amazon.com/iamv2/home#/roles), and add `AWSLambdaDynamoDBExecutionRole` to the created role in the prerequisites.
 2. Go to the [DynamoDB](https://us-west-1.console.aws.amazon.com/dynamodbv2).
-3. Click **Create Table**, enter the table name, partition key, and create the table. If you already have a table created, you can skip this step.
+3. Click **Create Table**, enter the table name, partition key, and create the table (If you already have a table created, you can skip this step).
 4. Click on the DynamoDB table, and then click the **Exports and streams** tab.
 5. Click **enable DynamoDB stream details**, and select the key attributes only for the event type.
 6. Once it's enabled, click **Create a trigger**, select the `notifyDynamoDB` from the dropdown, and create a trigger.

@@ -34,8 +34,8 @@
   url: '#'
   sublinks:
     - title: Quick Start on Testing
-      url: /learn/testing-ballerina-code/quick-start-on-testing/
-      active: quick-start-on-testing
+      url: /learn/testing-ballerina-code/testing-a-simple-function/
+      active: testing-a-simple-function
     - title: Writing Tests
       url: /learn/testing-ballerina-code/writing-tests/
       active: writing-tests

@@ -35,7 +35,7 @@ structurally equivalent to the real object via the mocking features in the test 
 
 ***Example:***
 
-Let's make changes to the example in the [Quick Start](/learn/testing-ballerina-code/quick-start-on-testing/) to define a 
+Let's make changes to the example in the [Testing a Simple Function](/learn/testing-ballerina-code/testing-a-simple-function/) to define a 
 test double for the `clientEndpont` object.
 
 >**Note:** Only the `get` function is implemented since it is the only function used in the sample. Attempting to call
@@ -79,7 +79,7 @@ a specific value or to do nothing.
 
 ***Example:***
 
-The example in the [Quick Start](/learn/testing-ballerina-code/quick-start-on-testing/) shows how the `get` function of the 
+The example in [Testing a Simple Function](/learn/testing-ballerina-code/testing-a-simple-function/) shows how the `get` function of the 
 client object can be stubbed to return a value. Let’s make changes to that example to get a random joke from a specific 
 category (e.g., food or movies).
 

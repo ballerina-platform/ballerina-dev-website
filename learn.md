@@ -186,7 +186,7 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card"  >
-  <a href="/learn/testing-ballerina-code/quick-start-on-testing/">
+  <a href="/learn/testing-ballerina-code/testing-a-simple-function/">
    <h3 id="testing-ballerina-code">Testing Ballerina Code</h3> </a>
     <p>Details of writing automated tests using the built-in test framework.  </p>
 </div>

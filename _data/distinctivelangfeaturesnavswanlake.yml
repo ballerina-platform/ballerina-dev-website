@@ -5,8 +5,8 @@
       url: #
       sublinks:
           - title: Consuming Services - Client Objects
-            url: /learn/distinctive-language-features/network-interaction/#consuming-services-client-objects
-            active: consuming-services-client-objects
+            url: /learn/distinctive-language-features/network-interaction/#consuming-services---client-objects
+            active: consuming-services---client-objects
           - title: Providing Services
             url: /learn/distinctive-language-features/network-interaction/#providing-services
             active: providing-services

@@ -196,6 +196,7 @@ a.cBallerina-io-Home-main-download-button {
     margin-bottom: 10px;
     min-width: 400px;
     border: 1px solid #20b6b0;
+    margin-top: 8px;
 }
 a.cBallerina-io-Home-main-download-button:hover {
     background-color: #eeeeee;

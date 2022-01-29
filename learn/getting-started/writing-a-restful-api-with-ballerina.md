@@ -138,7 +138,7 @@ public type ErrorMsg record {|
 |};
 ```
 
-As you can see, there is something new here. `*http:Conflict` is the Ballerina way of saying one type is a subtype another. In this case `ConflictingIsoCodeError` is a subtype of `*http:Conflict`.Ballerina has defined a set of types for each HTTP status code. This allows users to write services in a type oriented way which is, in turn, helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. Returning this record results in HTTP `409` response with JSON payload.
+As you can see, there is something new here. `*http:Conflict` is the Ballerina way of saying one type is a subtype of another. In this case, `ConflictingIsoCodeError` is a subtype of `*http:Conflict`. Ballerina has defined a set of types for each HTTP status code. This allows you to write services in a type-oriented way, which in turn is helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. Returning this record results in an HTTP `409` response with a JSON payload.
 
 The body of the response is of type `ErrorMsg`, which simply has a string field named `errmsg`. You can have any data type for their response body based on the need.
 

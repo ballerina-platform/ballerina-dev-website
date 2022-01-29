@@ -505,7 +505,7 @@ function intFromBytes(byte[] bytes) returns int|error {
 }
 ```
 
-In the above code example, the function defines a local variable **``ret``** to hold the value returned by the **``string:fromBytes()``** function. The **``ret``** variable is of a union type of the ``string`` and ``error`` type. Therefore to ascertain the actual type, ``is`` operator is used.
+In the above code example, the function defines a local variable **``ret``** to hold the value returned by the **``string:fromBytes()``** function. The **``ret``** variable is of a union type of the ``string`` and ``error`` types. Therefore to ascertain the actual type, ``is`` operator is used.
 
 ## ``check`` Expression
 
@@ -568,7 +568,7 @@ A panic statement results in immediate program termination and has an associated
 
 ## ``any`` Type
 
-Ballerina also allows an ``any`` type, which means any value except an error. A variable of type any can be cast to a specific type using the ```< >``` symbol enclosure.
+Ballerina also has an ``any`` type, which means any value except an error value. A variable of type ``any`` can be cast to a specific type using the type cast expression (``<T>x``).
 
 ```ballerina
 any x = 1;
@@ -579,10 +579,10 @@ int n = <int>x;
 It can be converted to string.
 
 ```ballerina
-string s = x.toString( );
+string s = x.toString();
 ```
 
-You can also use the ``is`` operator to test its type.
+You can also use the ``is`` operator to test the type of the actual value held by the variable.
 
 ```ballerina
 float f = x is int|float ? <float>x : 0.0;
@@ -594,48 +594,48 @@ Ballerina does not allow silently ignoring return values of functions unless the
 
 ```ballerina
 // Allowed only if return value is ()
-doX( );
+doX();
 ```
 
 To ignore the return value, you can assign it to ``_``, which acts as an implicitly declared variable of any type that cannot be referenced.
 
 ```ballerina
-_ = getX( );
+_ = getX();
 ```
 
-When a function returns an error type, it has to be handled. ``checkpanic`` keyword can be used otherwise but it panics on error rather than returning.
+When a function's return type includes an ``error`` type, it has to be handled explicitly. Otherwise, the ``checkpanic`` keyword can be used but it panics on error rather than returning.
 
 ```ballerina
-checkpanic tryX( );
+checkpanic tryX();
 ```
 
 ## Covariance
 
-Ballerina's typing system follows a structured type system based on the set of values that belongs to a type. For example, the integer type allows a set of values. Similarly, the any type also allows a set of values, including the subset of values that belong to the integer type.
+Ballerina's type system follows a structured type system based on the set of values that belongs to a type. For example, the integer type allows a set of values. Similarly, the ``any`` type also allows a set of values, including the subset of values that belong to the integer type.
 
-Therefore, you can have an array of integer type that is assigned to an array of any type.
+Therefore, you can have an array of the integer type that is assigned to an array of the ``any`` type.
 
 ```ballerina
-int [ ] iv = [ 1, 2, 3];
+int[] iv = [1, 2, 3];
 
-any [ ] av = iv;
+any[] av = iv;
 ```
   
-This is perfectly valid in Ballerina because the set of values allowed by an array of integer type is a subset of the values allowed by an array of any type. So this way, you can have some flexibility in allowing fixed inherent type substitution based on the set of values.
+This is perfectly valid in Ballerina because the set of values allowed by an array of the integer type is a subset of the values allowed by an array of the ``any`` type. So this way, you can have some flexibility in allowing fixed inherent type substitution based on the set of values.
 
-Ballerina’s static type checking ensures that the result of a read operation on the array  **``av``** will be consistent with static type. However, writing will result in an error because the Array iv has an inherent type set to integer. As a result, this code will lead to a runtime error since it is trying to mutate the Array to a type other than the inherent type.
+Ballerina's static type checking ensures that the result of a read operation on the array  **``av``** will be consistent with static type. However, writing may result in an error because the inherent type of the ``iv`` array is array of integers. As a result, the code below will lead to a runtime error since it is trying to mutate the array to a type other than the inherent type (``int[]``).
 
 ```ballerina
-av[0] = “str”; //Error
+av[0] = "str"; // panics
 ```
 
 This is covariance, which means that a write to a mutable structure may result in a runtime error. Apart from arrays, maps and records are the other data structures with an inherent type that constrains mutation.
 
 ## Object
 
-Ballerina provides another basic type which is an Object that bundles together code and data.
+Ballerina provides another basic type which is the object type. Object types bundle together code and data.
 
-Objects are initialized based on a class defined within some module.
+Objects are initialized based on a class defined within a module.
 
 ```ballerina
 function demoMyClass( ) {
@@ -645,11 +645,11 @@ function demoMyClass( ) {
 }
 ```
 
-In the above code example, the function **``demoMyClass()``** creates an object **``x``** of class **``MyClass``** using the ``new`` operator. You can use the ``.`` notation to call the object’s methods or access its fields.
+In the above code example, the function **``demoMyClass()``** uses the ``new`` expression to create an object **``x``** using the **``MyClass``** class that is defined in module `m`. You can use the ``.`` notation to call the object's methods or access its fields.
 
 ## Defining Classes
 
-Ballerina supports the concept of class which is a structured type containing data and behavior.
+Ballerina supports the concept of a class which is a structured type containing data and behavior.
 
 ```ballerina
 class MyClass {
@@ -670,11 +670,11 @@ class MyClass {
 }
 ```
 
-The **``init``** method is the constructor for this class, and the keyword ``self`` is used to access the object. It also uses the standard access specifiers, ``private`` and ``public``, which translates to accessibility within the class definition and outside of it.
+The **``init``** method is the constructor for this class, and the keyword ``self`` is used to access the object. It also uses the standard access specifiers, ``private`` and ``public``, which translate to accessibility within the class definition and outside of it.
 
 ## ``init`` Return Type
 
-The **``init()``** method of a class can have a return type which must be a subtype of the union of error and nil.
+The **``init()``** method of a class can have a return type. The return type must be a subtype of the union of ``error`` and ``nil``.
 
 ```ballerina
 class File {
@@ -688,55 +688,55 @@ class File {
         self.contents = check io:fileReadString(p);
     }
 
-};
+}
 
-File f = check new File(“text.txt”);
+File f = check new File("text.txt");
 ```
  
-If *``init( )``* call returns normally, the newly constructed object is returned. Otherwise, the new operator returns the error value.
+If the *``init()``* call returns normally, the newly constructed object is returned. Otherwise, the ``new`` expression returns the error value.
 
-Usually, the return type of **``init()``** is nil if not specified. It also means that init will never return an error.
+The return type of the **``init()``** method is nil if a return type is not explicitly specified. It also means that the ``init`` method will never return an error.
 
 ## Identity
 
-In Ballerina, the identity of an object is determined by the memory location where the object resides in runtime. To check the identity, you can use the ``===`` and ``!===`` notation.
+In Ballerina, the identity of an object is determined by the memory location in which the object resides at runtime. To check the identity, you can use the ``===`` and ``!==`` equality expressions.
 
 ```ballerina
 MyClass obj1 = new MyClass();
 MyClass obj2 = new MyClass();
 
-//true
+// true
 boolean b1 = (obj1 === obj1);
 
-//false
+// false
 boolean b2 = (obj1 === obj2);
 ```
 
-In the above code example, both **``obj1``** and **``obj2``** are objects of **``MyClass``**. Therefore *``obj1 === obj1``* returns true as both operands of the operation refer to the same memory location. Similarly *``obj1 === obj2``* returns false.
+In the above code example, both **``obj1``** and **``obj2``** are **``MyClass``** objects. *``obj1 === obj1``* returns true as both operands of the operation refer to the same memory location. Similarly, *``obj1 === obj2``* returns false since they refer to different memory locations.
  
-The ``==`` operator is used to check for contents of a structure type like Arrays.
+The ``==`` operator is used to check for contents of a structure type like arrays.
 
 ```ballerina
-//true
+// true
 boolean b3 = ([1,2,3] == [1,2,3]);
 
-//false
+// false
 boolean b4 = ([1,2,3] === [1,2,3]);
 ```
 
-In the above code example, the first operation results in true as both the arrays have exactly the same content. However, the second operation is false because it is using the ``===`` operator to check for memory location, and the two inline arrays point to different memory locations, even though their contents are the same.  
+In the above code example, the first operation results in true as both the arrays have exactly the same content. However, the second operation is false because it is using the ``===`` operator to check for memory locations, and the two inline arrays point to different memory locations, even though their contents are the same.  
 
-In the case of floating point numbers, IEEE defines -0.0 and +0.0 as the same. Therefore applying ``==`` to compare -0.0 and +0.0 would return a true, whereas *``-0.0 === +0.0``* would always be false as they are not identical.
+In the case of floating point numbers, IEEE defines -0.0 and +0.0 as the same. Therefore applying ``==`` to compare -0.0 and +0.0 would return ``true``, whereas *``-0.0 === +0.0``* would always be ``false`` as they are not identical.
 
 ## ``const`` and ``final``
 
-Ballerina supports ``const``, which is an immutable singleton type having a value known at compile time.
+Ballerina supports constants. Constants are defined using the ``const`` keyword and are immutable singleton types having a value known at compile time.
 
 ```ballerina
 const MAX_VALUE = 1000;
 ```
 
-Apart from ``const``, there is also support for ``final``. Variables defined with the ``final`` keyword cannot be reassigned after being initialized.
+Apart from ``const``, there is also support for ``final``. Variables defined with the ``final`` keyword cannot be reassigned to after being initialized.
 
 ```ballerina
 final string msg = loadMessage();
@@ -746,7 +746,7 @@ This is also applicable for class fields.
 
 ## Enumerations
 
-Ballerina supports the notion of Enumerations which is a shorthand way for expressing union of string constants.
+Ballerina supports the notion of enumerations which is a shorthand way for expressing unions of string constants.
 
 ```ballerina
 enum Color {
@@ -754,14 +754,14 @@ enum Color {
 }
 ```
 
-Using the ``enum`` keyword, you can define this enumeration of three strings “RED”, “GREEN” and “BLUE”, which would be otherwise defined separately as a constant:
+Using the ``enum`` keyword, you can define this enumeration of three string values "RED", "GREEN", and "BLUE", which would otherwise be defined separately as a union of string constants:
 
 ```ballerina
-const RED = “RED”;
-const GREEN = “GREEN”;
-const BLUE = “BLUE”;
+const RED = "RED";
+const GREEN = "GREEN";
+const BLUE = "BLUE";
 
-type Color = RED|GREEN|BLUE;
+type Color RED|GREEN|BLUE;
 ```
  
 You can also have an enumeration where members define associated string values explicitly.
@@ -779,24 +779,24 @@ enum Language {
 The ``match`` statement is like the switch case statement in C, but it is more flexible. You can use it to match values of different types.
 
 ```ballerina
-const KEY = “xyzzy”;
+const KEY = "xyzzy";
 
 function mtest(any v) returns string {
 
     match v {
-        17     =>  { return “number”; }
-        true   =>  { return “ boolean”; }
-        “str”  =>  { return “string” ; }
-        KEY    =>  { return “constant”; }
-        0|1    =>  { return “or”; }
-        _      =>  { return “any”; }
+        17 => { return "number"; }
+        true => { return " boolean"; }
+        "str" => { return "string"; }
+        KEY => { return "constant"; }
+        0|1 => { return "or"; }
+        _ => { return "any"; }
     }
 }
 ```
 
-The match statement defines multiple clause statement blocks with the ``=>`` operator. The left hand side of the ``=>`` operator in each clause is the pattern for value match. It can contain literals or identifiers referring to a constant. Additionally, it can also contain multiple patterns specified using ``|``, and ``_`` to match any value that is not an error.  
+The match statement defines multiple clause statement blocks with the ``=>`` operator. The left-hand side of the ``=>`` operator in each clause is the pattern for the value match. It can contain literals or identifiers referring to constants. It can also contain multiple patterns specified using ``|``. Additionally, ``_`` can be used to match any value that is not an error.  
 
-In the above example, the match uses the value held by **``v``**, and matches it against six match clauses having distinct patterns. During execution, the patterns will be evaluated in order, using equals equals (==) to test the pattern match, and the matched clause’s statement block will be executed.
+In the above example, the match statement uses the value held by **``v``** and matches it against six match clauses having distinct patterns. During execution, the patterns will be evaluated in order, using the equality expression (``==``) to test the pattern match, and the matched clause's statement block will be executed.
 
 ## Type Inference
 
@@ -808,7 +808,7 @@ This feature is a convenient way to use a generic type for a local variable and 
 var x = "str";
 ```
 
-In this code example, the keyword ``var`` is used to declare the variable **``x``**. It means that the variable’s actual will be inferred from the type of expression used to initialize it. In this case, it is the string type.
+In this code example, the keyword ``var`` is used to declare the variable **``x``**. It means that the variable's actual type will be inferred from the type of the expression used to initialize it. In this case, it is the ``string`` type.
 
 This is especially useful in a ``foreach`` loop to declare the local variable for iterating over a collection, like arrays.
 
@@ -822,23 +822,27 @@ function printLines(string[] sv) {
 }
 ```
 
-In this code example, the type of variable **``s``** is inferred to be of type string, from the type of **``sv``**, which is an array of type string.
+In this code example, the type of variable **``s``** is inferred to be of type ``string``, from the type of **``sv``**, which is an array of type ``string``.
 
 Type inference also works with classes.
 
 ```ballerina
 var x = new MyClass();
+```
 
+Here the variable **``x``** is declared with ``var`` and the type is inferred as **``MyClass``**. 
+
+The opposite syntax is also valid, wherein the variable **``x``** is defined with the **``MyClass``** type and is initialized with ``new``.
+
+```ballerina
 MyClass x = new;
 ```
 
-Here the variable **``x``** is declared as ``var`` but the type is inferred as **``MyClass``**. The opposite syntax is also valid, wherein the **``x``** is defined as a type of **``MyClass``** and is initialized with ``new``.
-
-Type inference is applicable for variables in local scope. Therefore ``var`` should be used sparingly for variables used within a very limited scope, like in a ``foreach`` loop. Overusing it makes the code harder to understand.
+Type inference is applicable for variables in local scopes. Therefore ``var`` should be used sparingly for variables used within a very limited scope, like in a ``foreach`` loop. Overusing it makes the code harder to understand.
 
 ## Functional Programming
 
-Ballerina defines functions also as values and they work as closures. Therefore function is also a type, which can be defined as a basic type as follows:
+Ballerina defines functions also as values, and they work as closures. Therefore ``function`` is also a type, which can be defined as a basic type as follows:
 
 ```ballerina
 var isOdd = function(int n) returns boolean {
@@ -854,17 +858,17 @@ function isEven(int n) returns boolean {
 IntFilter f = isEven;
 ```
 
-In the above example, the variable **``isOdd``** defines an anonymous function. **``IntFilter``** is a function type that accepts a function with an int argument and returns a boolean value. And later on, the **``isEven``** function, with a matching signature, is assigned to a variable of this type.
+In the above example, the variable **``isOdd``** defines an anonymous function. **``IntFilter``** is a function type that accepts a function with an ``int`` argument and returns a ``boolean`` value. And later on, the **``isEven``** function, with a matching signature, is assigned to a variable of this type.
 
-These function values can be passed around as arguments. For example, the Langlib library for arrays defines a function **``filter(f)``** which accepts a function type **``f``** for performing specific filtering operations on arrays.
+These function values can be passed around as arguments. For example, the lang library for arrays defines a function **``filter(f)``** which accepts a function type **``f``** to perform specific filtering operations on arrays.
 
 ```ballerina
-int[  ] nums = [1, 2, 3];
+int[] nums = [1, 2, 3];
 
-int[  ] evenNums = nums.filter(f);
+int[] evenNums = nums.filter(f);
 ```
 
-**``filter()``** takes the function value as a parameter, which is **``isEven``**, assigned to **``f``**. Therefore passing it as the arguments returns true for those integer values that are even numbers.  
+The **``filter()``** function takes the function value as a parameter, which is **``isEven``**, assigned to **``f``**. Therefore, passing it as the argument results in ``filter()`` returning an array of even numbers.  
 
 Instead of passing a function variable, you can also pass anonymous functions as an argument.
 
@@ -872,23 +876,23 @@ Instead of passing a function variable, you can also pass anonymous functions as
 int[] oddNums = nums.filter(n => n % 2 != 0);
 ```
 
-As shown for the array **``oddNums``**, type of parameter **``n``** is inferred from the array with which the **``filter( )``** function is used.
+As shown for the array **``oddNums``**, the type of parameter **``n``** is inferred from the array with which the **``filter()``** function is used.
 
 ## Asynchronous Function Calls
 
 Ballerina also supports asynchronous function calls. You can call a function asynchronously as follows:
 
 ```ballerina
-future<int> f1 = start foo( );
+future<int> f1 = start foo();
 
-future<int> f2 = start foo( );
+future<int> f2 = start foo();
 ```
 
-The use of ``start`` keyword before the function call makes it asynchronous. Each asynchronous invocation runs on a separate logical thread, also known as strand, that is cooperatively multitasked by default.
+The use of the ``start`` keyword before the function call makes it asynchronous. Each asynchronous call runs on a separate logical thread, also known as strand, that is cooperatively multitasked by default.
 
 The result of this invocation is returned as a future. It is a separate basic type that has an attached type *``T``* as *``future<T>``*.
 
-You can then wait for the function call with the ``wait`` keyword.
+You can then wait for the result with the ``wait`` keyword.
 
 ```ballerina
 int x1 = check wait f1;
@@ -897,20 +901,20 @@ int x2 = check wait f2;
 
 Waiting on a *``future<T>``* returns *``T|error``*. Waiting on the same future more than once returns an error value.
 
-Instead of separately waiting for the function, you can use a better way.
+Instead of waiting for each future separately, you can also do the following.
 
 ```ballerina
-var f = wait {f1, f2};
+record {| int|error f1; int|error f2; |} f = wait {f1, f2};
 
 int x1 = check f.f1;
 int x2 = check f.f2;
 ```
  
-In case you want to terminate the ``future``, you can do a *``f.cancel( )``*.
+In case you want to terminate the ``future``, you can do *``f.cancel( )``*.
 
 ## Documentation
 
-Ballerina supports a structured way for documenting the code. Use the ``#`` as a starting character in the line, defines a structured documentation in Markdown format.
+Ballerina supports a structured way to document code. Documentation lines start with ``#`` and contain structured documentation in Markdown format.
 
 ```ballerina
 # Adds two integers.
@@ -919,15 +923,15 @@ Ballerina supports a structured way for documenting the code. Use the ``#`` as a
 # + return - the sum of `x` and `y`
 public function add(int x, int y)
                      returns int {
-  return x + y;
+    return x + y;
 }
 ```
 
-The above code example adds documentation for describing the parameters, and the return type of the function **``add()``**.  This is a Ballerina-flavoured Markdown (BFM) which makes it more convenient to generate pretty documentation using one of the platform tools.
+The above code example adds documentation to describe the parameters and the return type of the **``add()``** function. This is Ballerina-flavoured Markdown (BFM) which makes it convenient to generate pretty documentation using one of the platform tools.
 
 ## Annotations
 
-Annotations are defined using the ``@`` notation followed by a tag. This is a way of defining metadata to the code.
+Annotations are defined using the ``@`` notation followed by a tag. This is a way of attaching metadata to the code.
 
 ```ballerina
 @display {
@@ -940,7 +944,7 @@ public function transform(string s) returns string {
 future<int> fut = @strand { thread: "any" } start foo();
 ```
 
-In the above code example, the annotation *``@display``* is attached to the function **``transform()``** and *``@strand``* applies to the keyword ``start``, calling the function **``foo()``** asynchronously. As you can see, this annotation uses a mapping constructor expression, which is one of the ways to define them.
+In the above code example, the *``@display``* annotation is attached to the function **``transform()``**, and the *``@strand``* annotation applies to the keyword ``start``, calling the function **``foo()``** asynchronously. These annotations use mapping constructor expressions, which is one of the ways to define them.
 
-The annotations shown above are using unprefixed tags that refer to standard platform-defined annotations. You can also have prefixed tags for user-defined annotations declared in modules.
+The annotations shown above use unprefixed tags and refer to standard platform-defined annotations. You can also have prefixed tags for user-defined annotations declared in modules.
  

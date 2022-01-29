@@ -1,6 +1,8 @@
 ---
 layout: ballerina-inner-page
 title: Security Policy
+description: We take security issues very seriously and all the vulnerability reports are treated with the highest priority and confidentiality.
+keywords: ballerina, programming language, security, security-policy, security advisories
 intro: We take security issues very seriously and all the vulnerability reports are treated with the highest priority and confidentiality.
 permalink: /security-policy/
 redirect_from:
@@ -49,7 +51,7 @@ Here is an overview of our approach to handling vulnerabilities:
 Your efforts in reporting vulnerabilities or any other issues related to the security of Ballerina will be recognized and honored via the [WSO2 Security Reward and Acknowledgement Program](https://docs.wso2.com/display/Security/WSO2+Security+Reward+and+Acknowledgement+Program). 
 
 
->**Note:** The reward program is currently applicable to vulnerabilities reported only in the compiler, runtime, CLI tooling, standard library, VS Code plugin and,  [website](https://ballerina.io).
+>**Note:** The reward program is currently applicable to vulnerabilities reported only in the [compiler, runtime, CLI tooling](https://github.com/ballerina-platform/ballerina-lang/), [standard library](https://github.com/ballerina-platform/ballerina-standard-library), [VS Code extension](https://marketplace.visualstudio.com/items?itemName=wso2.ballerina) and, [website](https://ballerina.io).
 
 ## Security Advisories
 

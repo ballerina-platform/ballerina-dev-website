@@ -10,20 +10,23 @@ redirect_from:
  - /learn/building-a-data-service-in-ballerina
 ---
 
-This tutorial covers how you can connect to a MySQL database and perform queries against it using Ballerina. 
-In addition, this tutorial also elaborates on how you can create an HTTP RESTful API using Ballerina that can be used
-to perform basic CRUD operations on the database.
+This tutorial covers how you can connect to a MySQL database and perform queries against it using Ballerina. In addition, this tutorial also elaborates on how you can create an HTTP RESTful API using Ballerina that can be used to perform basic CRUD operations on the database.
 
 ![Data Service Architecture](/learn/images/data-service-architecture.png "Data Service Architecture")
 
-The methodology outlined in this tutorial can be used to work with PostgreSQL, SQL Server, OracleDB or any other 
-relational database as well using the [`PostgreSQL`](https://lib.ballerina.io/ballerinax/postgresql/latest),
-[`MSSQL`](https://lib.ballerina.io/ballerinax/mssql/latest), [`OracleDB`](https://lib.ballerina.io/ballerinax/oracledb/latest),
+The methodology outlined in this tutorial can be used to work with PostgreSQL, SQL Server, OracleDB or any other relational database as well using the [`PostgreSQL`](https://lib.ballerina.io/ballerinax/postgresql/latest),[`MSSQL`](https://lib.ballerina.io/ballerinax/mssql/latest), [`OracleDB`](https://lib.ballerina.io/ballerinax/oracledb/latest),
 and [`JDBC`](https://lib.ballerina.io/ballerinax/java.jdbc/latest) connectors for Ballerina respectively.
 
-## Prerequisites
+## Setting up the Prerequisites
 
-### Setting up a MySQL Server Instance
+To complete this tutorial, you need:
+
+1. A command terminal
+2. A text editor
+    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
+3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
+
+## Setting up a MySQL Server Instance
 
 There are several methods you can use to set up a MySQL server.
 1. Install a MySQL server on your machine locally by downloading and installing [MySQL](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing) for different platforms.
@@ -33,7 +36,7 @@ There are several methods you can use to set up a MySQL server.
 
 >**Tip:** Keep the connection and authentication details for connecting to the MySQL server including the hostname, port, username and password noted down.
 
-### Creating a Database and Table
+## Creating a Database and Table
 
 Connect to the MySQL server using the terminal (or any other preferred method) and execute the following commands to 
 create a database and table. This tutorial demonstrates the basic use-case of creating, maintaining, and
@@ -54,7 +57,7 @@ CREATE TABLE Company.Employees (
 )
 ```
 
-### Creating a Ballerina Project
+## Creating a Ballerina Project
 
 A new Ballerina project can be created by executing the following command in the directory in which you want to create the project.
 
@@ -64,7 +67,7 @@ bal new data_service
 
 >**Info:** For more information on creating Ballerina packages, see [Getting Started with Ballerina](/learn/getting-started-with-ballerina).
 
-### Creating a Record to Represent an Employee
+## Creating a Record to Represent an Employee
 
 In Ballerina, records are a data-type that maps keys to values. You can define a closed record to represent a single row
 in the `Employees` table in the `main.bal` file.
@@ -158,7 +161,7 @@ final mysql:Client dbClient = check new(
 >properties when connecting to the database which, are not covered in this tutorial. To learn more about this, 
 >see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest/clients/Client).
 
-### Executing Queries
+### Executing the Queries
 
 The `mysql:Client` provides two primary remote methods for performing queries.
 

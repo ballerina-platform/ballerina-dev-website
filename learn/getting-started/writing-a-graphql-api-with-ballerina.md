@@ -10,28 +10,18 @@ intro: This guide walks through the steps of writing a GraphQL API in Ballerina.
 
 This guide helps you understand the basics of Ballerina constructs which allow you to write GraphQL APIs.
 
-Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to
-implement the GraphQL API. The Ballerina standard library itself is adequate. In this guide, you will be writing a
-GraphQL service to serve a sample dataset related to Covid-19.
+Due to the batteries included nature of the Ballerina language, there is no need to add any third party libraries to implement the GraphQL API. The Ballerina standard library itself is adequate. In this guide, you will be writing a simple GraphQL service to serve a dummy dataset related to Covid-19.
 
 This guide includes the following steps:
 
-1. Designing the GraphQL endpoint.
-2. Creating the Covid-19 dataset
-3. Writing the GraphQL service to:
-    - Get all the Covid-19 data
-    - Filter Covid-19 data using the `isoCode`
-    - Add Covid-19 data
-
 ## Setting up the Prerequisites
 
-To complete this tutorial, you need the below.
+To complete this tutorial, you need:
 
 1. A command terminal
 2. A text editor
     >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
 3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
-4. Prior programming experience
 
 ## Designing the GraphQL Endpoint
 

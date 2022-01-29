@@ -178,7 +178,7 @@ The Ballerina test framework supports the following assertions, which help to ve
 
 #### Values with Different Types
 
-The `diff` shows the expected and actual values preceded by the type within the angle brackets.
+The assertion failure shows the `expected` and `actual` values preceded by the type within the angle brackets.
 
 ***Example:***
 
@@ -204,7 +204,7 @@ function testAssertStringAndInt() {
 
 ##### Values of the `string` Type
 
-The `diff` is displayed in the GNU format using `+` and `-` to show the
+The `Diff` is displayed in the GNU format using `+` and `-` to show the
  line differences.
 
 ***Example:***
@@ -244,7 +244,7 @@ function testAssertString() {
 
 #### Values of the `JSON/record/map` Type
 
-The `diff` lists the JSON key mismatch using the `expected keys` and `actual keys`.
+The `Diff` lists the JSON key mismatch using the `expected keys` and `actual keys`.
 The JSON value mismatch is listed per key showing the `expected` and `actual` values.
 
 ***Example:***
@@ -307,7 +307,7 @@ Diff    :
 
 #### Values of other `anydata` Type
 
-The `diff` is displayed showing the `expected` and `actual` values.
+The assertion failure is displayed showing the `expected` and `actual` values.
 
 ***Example:***
 

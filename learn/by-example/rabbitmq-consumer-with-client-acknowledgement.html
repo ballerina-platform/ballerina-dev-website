@@ -27,14 +27,14 @@ redirect_from:
 <span class="c1">// Attaches the service to the listener.</span>
 <span class="kd">service</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">on</span> <span class="nx">channelListener</span> <span class="p">{</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">,</span>
-                                                    <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="kt">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
         <span class="k">if</span> <span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Received message: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
         <span class="p">}</span>
 
         <span class="c1">// Positively acknowledges a single message.</span>
-        <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">basicAck</span><span class="p">();</span>
+        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">basicAck</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -157,7 +157,7 @@ import ballerinax/rabbitmq;
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>service rabbitmq:Service on channelListener {
     remote function onMessage(rabbitmq:Message message,
-                                                    rabbitmq:Caller caller) {
+                            rabbitmq:Caller caller) returns error? {
         string|error messageContent = string:fromBytes(message.content);
         if messageContent is string {
             log:printInfo(&quot;Received message: &quot; + messageContent);
@@ -180,7 +180,7 @@ import ballerinax/rabbitmq;
                             <div class="cTR hover-enable">
 
                                 <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>        rabbitmq:Error? result = caller-&gt;basicAck();
+                                    <div class="highlight"><pre><code class=language-ballerina>        check caller-&gt;basicAck();
     }
 }
 </code></pre></div>

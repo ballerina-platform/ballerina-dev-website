@@ -37,3 +37,6 @@
         - title: Writing the GraphQL service
           url: /learn/writing-a-graphql-api-with-ballerina/#writing-the-graphql-service
           active: writing-the-graphql-service
+    - title: Accessing the GraphQL Endpoint
+      url: /learn/writing-a-graphql-api-with-ballerina/#accessing-the-graphql-endpoint
+      active: accessing-the-graphql-endpoint

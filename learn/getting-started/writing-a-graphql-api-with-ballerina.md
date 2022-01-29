@@ -10,28 +10,18 @@ intro: This guide walks through the steps of writing a GraphQL API in Ballerina.
 
 This guide helps you understand the basics of Ballerina constructs which allow you to write GraphQL APIs.
 
-Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to
-implement the GraphQL API. The Ballerina standard library itself is adequate. In this guide, you will be writing a
-GraphQL service to serve a sample dataset related to Covid-19.
+Due to the batteries included nature of the Ballerina language, there is no need to add any third party libraries to implement the GraphQL API. The Ballerina standard library itself is adequate. In this guide, you will be writing a simple GraphQL service to serve a dummy dataset related to Covid-19.
 
 This guide includes the following steps:
 
-1. Designing the GraphQL endpoint.
-2. Creating the Covid-19 dataset
-3. Writing the GraphQL service to:
-    - Get all the Covid-19 data
-    - Filter Covid-19 data using the `isoCode`
-    - Add Covid-19 data
-
 ## Setting up the Prerequisites
 
-To complete this tutorial, you need the below.
+To complete this tutorial, you need:
 
 1. A command terminal
 2. A text editor
     >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
 3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
-4. Prior programming experience
 
 ## Designing the GraphQL Endpoint
 
@@ -375,6 +365,73 @@ bal run
 
 > **Note:** The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 
-If you connect to this service using the GraphQL Playground tool, you can see the following generated schema.
+If you connect to this service using any GraphQL client tools, it will show the following schema.
 
-![Generated Schema](/learn/images/graphql-generated-schema.png)
+```graphql
+type CovidData {
+    isoCode: String!
+    country: String!
+    cases: Decimal
+    recovered: Decimal
+    active: Decimal
+    deaths: Decimal
+}
+
+input CovidEntry {
+    isoCode: String!
+    country: String!
+    cases: Decimal
+    recovered: Decimal
+    active: Decimal
+    deaths: Decimal
+}
+
+Scalar Decimal
+
+type Query {
+    all: [CovidData!]!
+    filter(isoCode: String!): CovidData
+}
+
+type Mutation {
+    add(entry: CovidEntry!): CovidData!
+}
+```
+
+## Accessing the GraphQL Endpoint
+
+To access the endpoint, you can use cURL or a GraphQL client such as [GraphiQL](https://github.com/graphql/graphiql). 
+
+The following cURL request will retrieve all the data from the endpoint:
+
+```shell
+curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d '{ "query": "query { all { country cases active}  }" }' 'http://localhost:9000/covid19'
+```
+
+In this request, an HTTP POST request is sent to the GraphQL endpoint. The request body contains the GraphQL query.
+
+The result of this request is the following JSON.
+
+```json
+{
+  "data": {
+    "all": [
+      {
+        "country": "Afghanistan",
+        "cases": 159.303,
+        "active": 5.833
+      },
+      {
+        "country": "Sri Lanka",
+        "cases": 598.536,
+        "active": 14.656
+      },
+      {
+        "country": "USA",
+        "cases": 69808.35,
+        "active": 25035.097
+      }
+    ]
+  }
+}
+```

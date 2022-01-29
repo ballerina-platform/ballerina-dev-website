@@ -24,9 +24,9 @@ To complete this tutorial, you need:
 
 ## Designing the Two Endpoints 
 
-The first endpoint is about getting data from the service as well as adding data to the service. Therefore, the service should handle both HTTP GET and POST requests.
-- The GET request is to get data, and the response should be `200 OK`.
-- The POST request is to add data, and the response should be `201 created`.
+The first endpoint is about getting data from the service as well as adding data to the service. Therefore, the service should handle both HTTP `GET` and `POST` requests.
+- The `GET` request is to get data, and the response should be `200 OK`.
+- The `POST` request is to add data, and the response should be `201 Created`.
 
 The second endpoint is about getting data filtered from the service. The data is filtered by the ISO code. Therefore, the second service accepts the ISO code as part of the URL and responds with the `200 OK` status code. In the event of an error, the relevant error is sent back to the client.
 
@@ -39,11 +39,15 @@ Following is the URL for each endpoint, respectively.
 
 Ballerina uses packages to group code. In this case, a package with the default module is created by executing the following command.
 
-`bal new covid19 -t service`
+```bash
+$ bal new covid19 -t service
+```
 
 This creates a folder named `covid19` along with a sample code for service. Navigate to the `covid19` directory, and execute the following command to start VSCode.
 
-`code .`
+```bash
+$ code .
+```
 
 `Ballerina.toml` is the file that makes the folder a Ballerina package. It also contains a test directory to include tests for the service. However, for the sake of simplicity, it will be ignored in this tutorial. You can just go through the sample in the `service.bal` to get a look and feel about Ballerina services. However, since you will be doing it from scratch, you can delete the entire code or edit it if you wish.
 
@@ -91,7 +95,7 @@ service /covid/status on new http:Listener(9000){
 }
 ```
 
-Unlike normal functions, resource functions can have accessors. In this case, the accessor is set to `get`, which means only HTTP GET requests could hit this resource. 
+Unlike normal functions, resource functions can have accessors. In this case, the accessor is set to `get`, which means only HTTP `GET` requests could hit this resource. 
 
 Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. The default status code HTTP responses are `200 OK`.
 
@@ -100,47 +104,56 @@ Ballerina automatically serializes Ballerina records as JSON and sends them over
 The second part of the first endpoint is about adding or appending new data to the dataset. Following is the second resource associated with the first endpoint.
 
 ```ballerina
-resource function post countries(@http:Payload CovidEntry[] covidEntries) 
-                                    returns CreatedCovidEntry|ConflictingIsoCodeError {
+resource function post countries(@http:Payload CovidEntry[] covidEntries)
+                                    returns CreatedCovidEntries|ConflictingIsoCodesError {
 
     string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
-                               where covidTable.hasKey(covidEntry.iso_code)
-                               select covidEntry.iso_code;
+        where covidTable.hasKey(covidEntry.iso_code)
+        select covidEntry.iso_code;
 
     if conflictingISOs.length() > 0 {
-        return <ConflictingIsoCodeError>{
+        return <ConflictingIsoCodesError>{
             body: {
                 errmsg: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
             }
         };
     } else {
         covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
-        return <CreatedCovidEntry>{body: covidEntries};
+        return <CreatedCovidEntries>{body: covidEntries};
     }
 }
 ```
 > **Note**: To keep things simple, in this case, it was chosen to either accept the entire payload or send back an error. 
 
-Copying this straightway results in an error which is expected as the `ConflictingIsoCodeError` type is not defined yet.
+Copying this straightway results in an error which is expected as the `CreatedCovidEntries` and `ConflictingIsoCodesError` types are not defined yet.
 
-This resource is a bit more interesting than the second resource. To begin with, there is a resource argument named `covidEntry` annotated with `@http:Payload`. This means the resource is expecting a payload with type `CovideEntry`. 
+This resource is a bit more interesting than the second resource. To begin with, there is a resource argument named `covidEntries` annotated with `@http:Payload`. This means the resource is expecting a payload with type `CovideEntry[]`. 
 
-Finally, as the return values, there are two types of records `CovidEntry` and `ConflictingIsoCodeError`. The former is the same record that was used in the first resource. The other is a bit different and the following is the definition of `ConflictingIsoCodeError`.
+Finally, as the return values there are two types of records `CreatedCovidEntries` and `ConflictingIsoCodesError`. Following is the definition of `CreatedCovidEntries`.
 
 ```ballerina
-public type ConflictingIsoCodeError record {|
-    *http:Conflict;
-    ErrorMsg body;
-|};
-
-public type ErrorMsg record {|
-    string errmsg;
+public type CreatedCovidEntries record {|
+   *http:Created;
+   CovidEntry[] body;
 |};
 ```
+ 
+As you can see, there is something new here. `*http:Created` is the Ballerina way of saying one type is a subtype of another. In this case, `CreatedCovidEntries` is a subtype of `*http:Created`. Ballerina has defined a set of types for each HTTP status code. This allows you to write services in a type-oriented way, which in turn is helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. Returning this record results in an HTTP `201` response with a JSON payload. The body of the response is of type `CovidEntry[]`.
 
-As you can see, there is something new here. `*http:Conflict` is the Ballerina way of saying one type is a subtype of another. In this case, `ConflictingIsoCodeError` is a subtype of `*http:Conflict`. Ballerina has defined a set of types for each HTTP status code. This allows you to write services in a type-oriented way, which in turn is helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. Returning this record results in an HTTP `409` response with a JSON payload.
-
-The body of the response is of type `ErrorMsg`, which simply has a string field named `errmsg`. You can have any data type for their response body based on the need.
+Similarly, the following is the definition of `ConflictingIsoCodesError`.
+ 
+```ballerina
+public type ConflictingIsoCodesError record {|
+   *http:Conflict;
+   ErrorMsg body;
+|};
+ 
+public type ErrorMsg record {|
+   string errmsg;
+|};
+```
+ 
+The body of the response is of type `ErrorMsg` which simply has a string field named `errmsg`. Based on the need users can have any data type for their response body.
 
 ## Writing a Resource to Get Filtered COVID-19 Data by ISO Code
 
@@ -174,14 +187,34 @@ It is always a good practice to document your interfaces. However, this example 
 
 You can run the service by executing the following command inside the `covid19` folder. 
 
-`bal run`
+```bash
+$ bal run
+```
 
 > **Note**: The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 
+In another terminal, execute the following `curl` commands to try out the service.
+
+```bash
+$ curl http://localhost:9000/covid/status/countries
+
+[{"iso_code":"AFG", "country":"Afghanistan", "cases":159303, "deaths":7386, "recovered":146084, "active":5833}, {"iso_code":"SL", "country":"Sri Lanka", "cases":598536, "deaths":15243, "recovered":568637, "active":14656}, {"iso_code":"US", "country":"USA", "cases":69808350, "deaths":880976, "recovered":43892277, "active":25035097}]
+
+$ curl http://localhost:9000/covid/status/countries/AFG
+
+{"iso_code":"AFG", "country":"Afghanistan", "cases":159303, "deaths":7386, "recovered":146084, "active":5833}
+
+$ curl http://localhost:9000/covid/status/countries -d '[{"iso_code":"DEU", "country":"Germany", "cases":159333, "deaths":7390, "recovered":126084, "active":6833}]'
+
+[{"iso_code":"DEU", "country":"Germany", "cases":159333.0, "deaths":7390.0, "recovered":126084.0, "active":6833.0}]
+```
+
 You can also try generating an OpenAPI specification for the written service by executing the following command, which creates a `yaml` file in the current folder.
 
-`bal openapi -i service.bal`
-
+```bash
+$ bal openapi -i service.bal
+```
+The following is the complete code.
 ```ballerina
 import ballerina/http;
 
@@ -192,21 +225,21 @@ service /covid/status on new http:Listener(9000) {
     }
 
     resource function post countries(@http:Payload CovidEntry[] covidEntries)
-                                    returns CreatedCovidEntry|ConflictingIsoCodeError {
+                                    returns CreatedCovidEntries|ConflictingIsoCodesError {
 
         string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
             where covidTable.hasKey(covidEntry.iso_code)
             select covidEntry.iso_code;
 
         if conflictingISOs.length() > 0 {
-            return <ConflictingIsoCodeError>{
+            return <ConflictingIsoCodesError>{
                 body: {
                     errmsg: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
                 }
             };
         } else {
             covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
-            return <CreatedCovidEntry>{body: covidEntries};
+            return <CreatedCovidEntries>{body: covidEntries};
         }
     }
 
@@ -233,17 +266,17 @@ public type CovidEntry record {|
 |};
 
 public final table<CovidEntry> key(iso_code) covidTable = table [
-    {iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
-    {iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
-    {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
+    { iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833 },
+    { iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656 },
+    { iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097 }
 ];
 
-public type CreatedCovidEntry record {|
+public type CreatedCovidEntries record {|
     *http:Created;
     CovidEntry[] body;
 |};
 
-public type ConflictingIsoCodeError record {|
+public type ConflictingIsoCodesError record {|
     *http:Conflict;
     ErrorMsg body;
 |};

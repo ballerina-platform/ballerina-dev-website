@@ -1,9 +1,9 @@
 - title: Deploying Ballerina on Kubernetes
   url: #
   sublinks:
-    - title: Prerequisites
-      url: /learn/deploying-ballerina-on-kubernetes/#prerequisites
-      active: prerequisites
+    - title: Setting up the Prerequisites
+      url: /learn/deploying-ballerina-on-kubernetes/#setting-up-the-prerequisites
+      active: setting-up-the-prerequisites
     - title: Code to Cloud
       url: /learn/deploying-ballerina-on-kubernetes/#code-to-cloud
       active: code-to-cloud

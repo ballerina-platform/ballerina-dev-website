@@ -153,7 +153,7 @@ public type ErrorMsg record {|
 |};
 ```
  
-The body of the response is of type `ErrorMsg` which simply has a string field named `errmsg`. Based on the need users can have any data type for their response body.
+The body of the response is of type `ErrorMsg`, which simply has a string field named `errmsg`. Based on the need, users can have any data type for their response body.
 
 ## Writing a Resource to Get Filtered COVID-19 Data by ISO Code
 

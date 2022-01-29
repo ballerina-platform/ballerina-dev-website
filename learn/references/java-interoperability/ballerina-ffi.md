@@ -5,6 +5,7 @@ description: The reference guide on the list of language features that enable Ba
 keywords: ballerina, programming language, ffi, foreign function invocation
 permalink: /learn/java-interoperability/ballerina-ffi/
 active: ballerina-ffi
+intro: The reference guide on the list of language features that enable Ballerina developers to call foreign code written in other programming languages.
 redirect_from:
   - /learn/tooling-guide/cli-tools/ballerina-ffi/
   - /learn/tooling-guide/cli-tools/ballerina-ffi

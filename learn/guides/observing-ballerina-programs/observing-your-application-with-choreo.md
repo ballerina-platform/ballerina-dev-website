@@ -79,7 +79,6 @@ Follow the steps below to enable observability in the executable created by Ball
     ballerina: initializing connection with observability backend periscope.choreo.dev:443
     ballerina: visit http://console.choreo.dev/observe/app/918e4591-b7a3-11eb-8af4-bb5c98e5b4d6/918e502d-b7a3-11eb-8af4-bb5c98e5b4d6 to access observability data
     ballerina: started publishing metrics to Choreo
-    [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
     ```
 
 2. Click on the URL provided.

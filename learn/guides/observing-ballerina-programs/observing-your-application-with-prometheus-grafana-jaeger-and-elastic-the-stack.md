@@ -5,7 +5,7 @@ description: See how Ballerina supports observability by exposing itself via met
 keywords: ballerina, observability, metrics, tracing, logs, prometheus, grafana, jaeger, elastic
 permalink: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/
 active: observing-your-application-with-prometheus-grafana-and-jaeger-and-the-elastic-stack
-intro: Observability is a measure of how well the internal states of a system can be inferred from knowledge of its external outputs.
+intro: Observability is a measure of how well the internal states of a system can be inferred from the knowledge of its external outputs.
 redirect_from:
   - /learn/how-to-observe-ballerina-code
   - /learn/how-to-observe-ballerina-code/
@@ -132,10 +132,8 @@ the path of the configuration file. This is not necessary if the `Config.toml` f
 ```bash
 $ BAL_CONFIG_FILES=<path-to-conf>/Config.toml bal run --observability-included hello_world_service.bal
 
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9797
 ballerina: started Prometheus HTTP listener 0.0.0.0:9797
 ballerina: started publishing traces to Jaeger on localhost:55680
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
 ```
 
 When Ballerina observability is enabled, the Ballerina runtime exposes internal metrics via an HTTP endpoint (/metrics) for

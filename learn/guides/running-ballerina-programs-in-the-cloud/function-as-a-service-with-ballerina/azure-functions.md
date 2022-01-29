@@ -2,7 +2,7 @@
 layout: ballerina-cloud-left-nav-pages-swanlake
 title: Azure Functions
 description: Learn how to write and deploy Azure Functions using ballerina
-keywords: ballerina, programming language, serverless, cloud, Azure, Functions, Cloud Native
+keywords: ballerina, programming language, serverless, cloud, azure, functions, cloud native
 permalink: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
 active: azure-functions
 intro: The Azure Functions extension provides the functionality to expose a Ballerina function as a serverless function in the Azure Functions platform.
@@ -59,7 +59,7 @@ public function hello(@af:HTTPTrigger { authLevel: "anonymous" }
     return "Hello, " + payload + "!";
 }
 ```
-The first parameter with the [Context](/learn/api-docs/ballerina/#/azure_functions/classes/Context) object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the function's parameter list.
+The first parameter with the [Context](https://lib.ballerina.io/ballerinax/azure_functions/latest/classes/Context) object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the function's parameter list.
 
 The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given `HTTPRequest` value. Then, you declare an HTTP output binding by annotating the `HTTPBinding` return type with the `HTTPOutput` annotation.
 

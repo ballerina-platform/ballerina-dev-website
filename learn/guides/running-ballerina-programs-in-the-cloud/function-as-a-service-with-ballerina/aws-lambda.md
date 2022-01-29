@@ -2,7 +2,7 @@
 layout: ballerina-cloud-left-nav-pages-swanlake
 title: AWS Lambda
 description: Learn how to write and deploy AWS Lambda functions using ballerina
-keywords: ballerina, programming language, serverless, cloud, AWS, Lambda, Cloud Native
+keywords: ballerina, programming language, serverless, cloud, aws, lambda, cloud native
 permalink: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
 active: aws-lambda
 intro: The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function.
@@ -154,6 +154,7 @@ To check the logs of the execution, go to the `echo` lambda function in the port
 This sample creates a function, which will be executed for each object creation in AWS S3.
 
 ```ballerina
+import ballerina/io;
 import ballerinax/awslambda;
 
 @awslambda:Function
@@ -167,7 +168,7 @@ public function notifyS3(awslambda:Context ctx,
 Now, you can build and deploy the function as in the previous sample.
 To invoke this function, create an S3 bucket in AWS.
 1. Go to [AWS S3](https://s3.console.aws.amazon.com/s3/) portal and create a bucket.
-2. Click on the created bucket, go to the **Properties** tab, and click on the **Create event** notification under the **Event notifications** section.
+2. Click on the created bucket, go to the **Properties** tab, and click on the **Create event notification** under the **Event notifications** section.
 3. Enable `All object create events` under event types. Select the Lambda function as the destination, and choose the `notifyS3` Lambda function from the dropdown.
 
 Now, click **Upload** to upload an object to the S3 bucket, and view the Lambda logs via CloudWatch to see the object name.
@@ -176,6 +177,7 @@ Now, click **Upload** to upload an object to the S3 bucket, and view the Lambda 
 This sample creates a function, which will be executed for each entry added to a database in the DynamoDB.
 
 ```ballerina
+import ballerina/io;
 import ballerinax/awslambda;
 
 @awslambda:Function

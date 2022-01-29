@@ -20,7 +20,7 @@ This guide presents the subset of the Ballerina language that is common to most 
 
 Ballerina programs consist of modules and each module consists of one or more *`.bal`* files.
   
-The most important thing that a module does is defining named functions.
+The most important thing that a module does is define named functions.
 
 Here's what a simple Ballerina module looks like:
 
@@ -36,7 +36,7 @@ The ``import`` keyword is used to bind predefined library modules to the module 
 
 Module hierarchies follow the ``/`` and ``.`` notations. For example, *``org/x.y.z``* represents a hierarchical module name. The ``z:f`` notation points to a symbol ``f`` (e.g., a function) defined within the module ``x.y.z``.
 
-The `main` function is the program entry point and the `public` keyword makes this function visible outside the module. This function calls the `println()` function defined in the `io` module. Every statement in Ballerina code must terminate with a semicolon.
+The ``main`` function is the program entry point and the ``public`` keyword makes this function visible outside the module. This ``main`` function calls the ``println()`` function defined in the ``ballerina/io`` module. Every statement in Ballerina code must terminate with a semicolon.
 
 ## Variables and Types
 
@@ -111,7 +111,7 @@ int m = 1;
 int n = 0xFFFF;
 ```
 
-The integer data type supports all the basic arithmetic operators such as ``+`` ,``-`` , ``*`` , ``/``, and ``%``, the comparison operators, ``==`` , ``!=``, ``<`` , ``>``, ``<=``, ``>=`` as well as the compound assignment operations ``+=`` & ``-=``. It also supports the usual bitwise operators (i.e., ``&``, ``|`` , ``^`` , ``~``  , ``<<``,  and  ``>>``). The operator precedence rules are exactly as per C.
+The integer data type supports all the basic arithmetic operators: ``+``, ``-``, ``*``, ``/``, and ``%``, the comparison operators: ``==``, ``!=``, ``<``, ``>``, ``<=``, and ``>=`` as well as the compound assignment operators: ``+=`` and ``-=``. It also supports the usual bitwise operators (i.e., ``&``, ``|``, ``^``, ``~``, ``<<``,  and  ``>>``). The operator precedence rules are exactly as per C.
 
 However, there are a couple of notable deviations in Ballerina. Firstly, increment and decrement operators (i.e., ``++`` and ``--``) are not supported. Moreover, integer overflow results in a runtime error unlike in C where it rolls over.
 
@@ -128,7 +128,7 @@ float y = x + <float>n;
 
 However, they cannot be implicitly converted to or from integers. You can use the ``<T>`` notation for explicit conversion.
 
-In Ballerina, ``NaN``, the IEEE defined terminology for Not a Number is equal to itself. Therefore, the ``==`` operator on two ``NaN``s will return `true`. For floating point types, the ``==`` and ``!=`` operators test for the same value and does not numerical equivalence as per the IEEE convention.
+In Ballerina, ``NaN``, the IEEE defined terminology for Not a Number is equal to itself. Therefore, the ``==`` operator on two ``NaN``s will return `true`. For floating point types, the ``==`` and ``!=`` operators test for the same value and do not test for numerical equivalence as per the IEEE convention.
 
 ## Booleans and Conditionals
 
@@ -138,7 +138,7 @@ The boolean type has only two values: ``true`` and ``false``.
 boolean flag = true;
 ```
 
-Ballerina supports the logical operators, ``!`` , ``||``, and ``&&`` with boolean values. The ``||`` and ``&&`` operators support the same short-circuit behavior as in C. Implicit conversion between boolean and integer is not supported.
+Ballerina supports the logical operators, ``!``, ``||``, and ``&&`` with boolean values. The ``||`` and ``&&`` operators support the same short-circuit behavior as in C. Implicit conversion between boolean and integer is not supported.
 
 Booleans are also used in conditional expressions like:
 
@@ -146,7 +146,7 @@ Booleans are also used in conditional expressions like:
 int n = flag ? 1 : 2;
 ```
 
-As usual booleans can be used in if-else statements like:
+As usual, booleans can be used in if-else statements like:
 
 ```ballerina
 function foo() {
@@ -162,21 +162,21 @@ Curly braces are required in if-else statements and all compound statements in B
 
 ## Nil
 
-Nil is another data type. It has a special significance in Ballerina as it denotes the equivalent of what is known as a null value in other C-family languages. If you want to declare a variable or a value of type ``nil``, here is how it is done.
+Nil is another data type. It has a special significance in Ballerina as it denotes the equivalent of what is known as a null value in other C-family languages. If you want to declare a variable or a value of type nil, here is how it is done.
 
 ```ballerina
 int? v = ();
 ```
 
-The keyword ``int`` is followed by a ``?`` notation. It means that **``v``** can take an integer value or can be nil. It is initialized to `nil`, which is denoted by ``()``. Types do not allow their values to be set as `nil` implicitly. There is also no implicit conversion to boolean.
+The keyword ``int`` is followed by a ``?`` notation. It means that **``v``** can take an integer value or can be nil. It is initialized to nil, which is denoted by ``()``. Types do not allow their values to be set as nil implicitly. There is also no implicit conversion to boolean.
 
-The ``==`` and ``!=`` comparison operators operate on a value to test whether the value is `nil`.
+The ``==`` and ``!=`` comparison operators operate on a value to test whether the value is nil.
 
 ```ballerina
 int n = v == () ? 0 : v;
 ```
 
-Similarly, you can also use the Elvis operator like *``x ?: y``* that returns **``x``** if it is not `nil` or **``y``** otherwise.
+Similarly, you can also use the Elvis operator like *``x ?: y``* that returns **``x``** if it is not nil or **``y``** otherwise.
 
 ```ballerina
 int n = v ?: 0;
@@ -396,7 +396,7 @@ type Coord record {
 Subsequently, you can declare the **``Coord``** record and set or access its field values.
 
 ```ballerina
-Coord c = { x: 1 , y: 2};
+Coord c = {x: 1, y: 2};
 
 int a = c.x;
 ```
@@ -898,7 +898,7 @@ Waiting on a *``future<T>``* returns *``T|error``*. Waiting on the same future m
 Instead of separately waiting for the function, you can use a better way.
 
 ```ballerina
-var f = wait { f1 , f2 };
+var f = wait {f1, f2};
 
 int x1 = check f.f1;
 int x2 = check f.f2;

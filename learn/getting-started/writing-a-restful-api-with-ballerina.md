@@ -28,7 +28,7 @@ The first endpoint is about getting data from the service as well as adding data
 - The GET request is to get data, and the response should be `200 OK`.
 - The POST request is to add data, and the response should be `201 created`.
 
-The second endpoint is about getting filtered data from the service. The data is filtered by the ISO code. Therefore, the second service accepts the ISO code as part of the URL and responds with `200 OK` status code. In the event of an error, the relevant error is sent back to the client.
+The second endpoint is about getting data filtered from the service. The data is filtered by the ISO code. Therefore, the second service accepts the ISO code as part of the URL and responds with the `200 OK` status code. In the event of an error, the relevant error is sent back to the client.
 
 Following is the URL for each endpoint, respectively.
 

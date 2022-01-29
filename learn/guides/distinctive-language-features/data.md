@@ -12,7 +12,7 @@ redirect_from:
 
 ## Plain Data
 
-Let’s now take a look at the network data. This is the data that is independent of any specific code operating on the data. This data is typically exchanged through network interfaces between programs. In Ballerina, this is known as plain data.
+Let's now take a look at network data. This is the data that is independent of any specific code operating on the data. This data is typically exchanged through network interfaces between programs. In Ballerina, this is known as plain data.
 
 This concept is the opposite of objects, which combine data and code as one entity. But when you are writing network interfaces, you want to work with plain data. It supports a bunch of operations such as deep copy and deep equality checks. You can also serialize and deserialize it without worrying about coupling between the data and its associated code, like objects.
 
@@ -22,35 +22,35 @@ As a programming language designed for network programming over the cloud, Balle
 
 If you categorize all the types of data supported by Ballerina, it is easier for you to know whether they are plain data.
 
-Broadly, all Ballerina values belong to exactly one basic type which are of four kinds. These are, simple types, sequences, structures, and behavioral.
+Broadly, all Ballerina values belong to exactly one kind of basic type. These are simple types, sequences, structures, and behavioral types.
 
 Simple types are nil, boolean, integers, floating points, and decimal. These are always plain data.
 
-Sequence types are string and xml. These are also plain data always.
+Sequence types are string and xml. These are also always plain data.
 
 Structural types are array, map, record, tuple, and table. These are plain data only if their members are plain data.
 
-And finally, the behavioral types include function, object, error, stream, typedesc, handle. These are not plain data.
+And finally, the behavioral types include the function, object, error, stream, typedesc, and handle types. These are not plain data.
 
 ## ``decimal`` Type
 
-Ballerina supports one more numeric data type like integers and floating points, which is called decimal. However, it does not support implicit conversion.  
+Ballerina supports one more numeric data type like integers and floating points, which is the ``decimal`` type. The ``decimal`` type also does not support implicit conversion.  
 
-You can use the ``decimal`` keyword to declare a decimal variable.
+You can use the ``decimal`` keyword to declare a variable of the ``decimal`` type.
 
 ```ballerina
 function floatSurprise() {
-
     float f = 100.10 - 0.01;
-    // will print 100.08999999999999
+    // Will print 100.08999999999999
     io:println(f);
-
 }
 
 decimal nanos = 1d/1000000000d;
 ```
 
-A decimal number represents a decimal fraction exactly. That means that the precisions are preserved, unlike in floating point numbers. For example, a decimal value of 2.1 kg is not the same as 2.10 kg. You can use a literal character `‘d’` to indicate a decimal number, and similarly `‘f’` for float.
+A decimal number represents a decimal fraction exactly. That means that the precisions are preserved, unlike ``float`` values. For example, a ``decimal`` value of 2.1 kg is not the same as 2.10 kg. 
+
+You can use a literal character ``d`` to indicate a ``decimal`` value, and similarly ``f`` for a ``float`` value.
 
 Decimal numbers are not the same as binary floating point numbers defined as per IEEE standard. They are not built into the ALU logic on the processor. Therefore their computation is slower yet more accurate and precise.
 
@@ -58,11 +58,11 @@ In Ballerina, decimal numbers do not offer infinite precision. It is limited to 
 
 ## Plain Data Basic Types To Come
 
-Ballerina supports two more plain data types that we have not covered yet.
+Ballerina supports two more plain data types that have not been covered yet.
 
-The first one is the table.  It is designed to work with arrays and maps. It contains an array of records. It provides random access based on a key, which is a concept similar to relational databases. The keys are stored in fields of records, and these fields are immutable.
+The first one is the ``table`` type. It is designed to work with arrays and maps. It contains an array of records. It provides random access based on a key, which is a concept similar to relational databases. The keys are stored in fields of records, and these fields are immutable.
 
-The second one is the XML type. It is a sequence type built on a sequence of XML items like elements, text, processing instructions, comments. It is a similar concept to strings and XQuery. XML attributes are represented by *map\<string>* and it supports writing XML literals using XML syntax.
+The second one is the ``xml`` type. It is a sequence type built on a sequence of XML items like elements, text, processing instructions, and comments. It is a concept similar to strings and XQuery. XML attributes are represented by *``map\<string>``*. XML literals can be written using the XML syntax.
 
 ## Immutability
 
@@ -74,55 +74,55 @@ Ballerina's notion of immutability is deep. This means that if you have an immut
 
 ## ``anydata`` Type
 
-You can use ``anydata`` keyword to define plain data.
+You can use the ``anydata`` keyword to define plain data.
 
 ```ballerina
 anydata x1 = [1, "string", true];
 ```
 
-It is a subtype of any. `‘==’` and `‘!=’`  operators on anydata test for deep equality.
+The ``anydata`` type is a subtype of the ``any`` type. The ``==`` and ``!=``  operators available on ``anydata`` test for deep equality.
 
-You can clone anydata using the **``clone( )``** function.
+You can clone an ``anydata`` value using the **``clone()``** function.
 
 ```ballerina
 anydata x2 = x1.clone();
 ```
 
-This returns a new anydata **``x2``**, with the same mutability as **``x1``**. There is another function **``cloneReadOnly( )``** that returns an immutable deep copy. Both the functions do not copy the immutable part of the anydata variable. This ensures that the clone operations are safe for concurrency.  
+This returns a new ``anydata`` **``x2``** value, with the same mutability as **``x1``**. There is another function **``cloneReadOnly()``** that returns an immutable deep copy. Both the functions do not copy the immutable parts of the ``anydata`` value. This ensures that the clone operations are safe for concurrency.  
 
-anydata also allows boolean comparison and ``const``.
+``anydata`` also allows boolean comparison and can be used to defined constants.
 
 ```ballerina
 boolean eq = (x1 == x2);
 
-const RED = {R: 0xFF, G: 0, B: 0};
+const map<int> RED = {R: 0xFF, G: 0, B: 0};
 ```
 
-The equality operation also takes care of cycles within anydata structure values.
+The equality operation also takes care of cycles within ``anydata`` structure values.
 
 ## Configurable Variables
 
-Ballerina also has a concept of a configurable variable. A module level variable can be declared as configurable. This is useful when some of the application code is defined just to configure things. You can use the ``configurable`` keyword in this case.
+Ballerina also has a concept of a configurable variable. A module-level variable can be declared as a configurable variable. This is useful when some of the application code is defined just to configure things. You can use the ``configurable`` keyword in this case.
 
 ```ballerina
 configurable int port = 8080;
 ```
 
-The initializer of a configurable variable can be overridden in runtime. A variable where configuration is required can use an initializer `‘?’`.
+The initializer of a configurable variable can be overridden at runtime. A variable where runtime configuration is required can use ``?`` as the initializer.
 
 ```ballerina
 configurable string password = ?;
 ```
 
-A configurable variable must be a subtype of anydata.
+A configurable variable must be a subtype of ``anydata``.
 
 ## Optional Fields
 
-Ballerina’s type system is unique from other programming languages because it describes data both in program memory as well as in the wire. This is especially relevant for the cloud era, where more applications use APIs which provide network interfaces to a different system to send and receive data on the wire.  
+Ballerina's type system is unique from other programming languages because it describes data both in program memory as well as on the wire. This is especially relevant for the cloud era, where more applications use APIs which provide network interfaces to a different system to send and receive data on the wire.  
 
 Therefore, Ballerina's type system design is based on defining a data type interface that works consistently across the memory buffers of the process in which the data is processed and in the network.
 
-To facilitate this requirement, the typing system needs to do a few things differently than the regular type system. It must be flexible, like a schema language. And one of the ways it is done in Ballerina is by using optional fields.
+To facilitate this requirement, the type system needs to do a few things differently than a regular type system. It must be flexible, like a schema language. And one of the ways it is done in Ballerina is by using optional fields.
 
 You can define a record with an optional field.
 
@@ -133,24 +133,22 @@ type Headers record {
 
    // Records can have optional fields
    string subject?;
-
 };
 ```
 
-In the above type declaration, the record Headers has three fields. The field subject is suffixed with `‘?’` , which tells the compiler that it is an optional field. Thus, you can define a variable of type Headers with or without the optional field.
+In the above type declaration, the ``Headers`` record type has three fields. The ``subject`` field is suffixed with ``?``, which tells the compiler that it is an optional field. Thus, you can define a variable of type ``Headers`` with or without the optional field.
 
 ```ballerina
 Headers h = {
-
-    from: “John”,
-    to: “Jill”
-
+    'from: "John",
+    to: "Jill"
 };
 
-string? Subject = h?.subject;  
+string? subject = h?.subject;  
 ```
 
-You can use `‘?.’` to access the optional field. It will return Nil if the field is not present.
+You can use ``?.`` to access the optional field. It will return nil if the field is not present.
+
 This feature is handy for describing the type of data payloads transferred across network interfaces that typically contain mandatory and optional fields.
 
 ## Open Records
@@ -168,21 +166,23 @@ type Employee record {
 };
 
 Employee e = {
-    name: "James", id: 10
+    name: "James",
+    id: 10
 };
 
 Person p = e;
 
 Person p2 = {
-    name: "John", "country": "UK"
+    name: "John",
+    "country": "UK"
 };
 ```
 
-In the above code example, the record type **``Person``** and **``Employee``** are declared initially.  **``Person``** has a string field **``name``**, yet, **``p2``** is initialized with another field, “country”. This field is of type anydata since it was not specified initially. It is important to put the unspecified fields within quotes.
+In the above code example, the record types **``Person``** and **``Employee``** are declared. The **``Person``** type has a ``string`` field **``name``**, yet, **``p2``** is initialized with another field, ``country``. This field can be of type ``anydata`` since it was not specified initially. It is required to specify the keys of the unspecified fields within quotes.
 
-Similarly, the **``Person p``** also accepts the variable **``e``**, which is of **``Employee``** type. In this case, the field **``id``** is treated as anydata within **``p``**.  In this way, Ballerina allows a record to be open such that additional unspecified fields can be added in runtime.
+Similarly, the variable **``p``** of type **``Person``** also accepts the variable **``e``**, which is of the **``Employee``** type. In this case, the field **``id``** is treated as ``anydata`` within **``p``**.  In this way, Ballerina allows a record to be open such that additional unspecified fields can be added at runtime.
 
-An open record is equivalent to *map\<anydata>* where the key is anydata that is referring to any field within the record.
+An open record is equivalent to *``map\<anydata>``*.
 
 ## Controlling Openness
 
@@ -194,14 +194,17 @@ type Coord record {|
     float y;
 |};
 
-Coord x = { x: 1.0, y: 2.0 };
+Coord x = {
+    x: 1.0,
+    y: 2.0
+};
 
 map<float> m1 = x;
 ```
 
-In the above code example, using a `‘{|’` and `‘|}’` delimiter indicates that the record is closed. The record type **``Coord``** has two closed fields **``x``** and **``y``** of float type. So you can also treat it as a map of float.  
+In the above code example, using the ``{|`` and ``|}`` delimiters indicates that the record is closed. The record type **``Coord``** has only the two fields **``x``** and **``y``** of the ``float`` type. So you can also treat it as a map of float.  
 
-You can also use a `‘...’` notation to allow other fields of the same type T within a record.
+You can also use a ``...`` notation to allow other fields of a type ``T`` within a record.
 
 ```ballerina
 type Headers record {|
@@ -211,26 +214,29 @@ type Headers record {|
 |};
 
 Headers h = {
-    'from: "Jane", to: "John"
+    'from: "Jane",
+    to: "John"
 };
-
 
 map<string> m2 = h;
 ```
 
-If you have an open record, then additional fields of anydata can be added. But otherwise, use *T…* to allow other fields of type T. Therefore *``map<T>``* is same as *``record {| T. . . ; |}``*.
+If you have an open record, then additional fields of the ``anydata`` type can be added. But otherwise, use *``T…;``* to allow other fields of type ``T``. Therefore *``map<T>``* is the same as *``record {| T...; |}``*.
 
 ## ``json`` Type
 
 Ballerina defines another type ``json``.
 
 ```ballerina
-json j = { "x": 1, "y": 2 };
+json j = {
+    "x": 1,
+    "y": 2
+};
 ```
 
-``json`` type is a union of ``( ) | boolean | int | float | decimal | string | json[ ] | map<json>`` .  
+The ``json`` type is the union of ``( ) | boolean | int | float | decimal | string | json[ ] | map<json>`` .  
 
-A ``json`` value can be converted to and from JSON format in a straightforward way, except for the numeric types in Ballerina, which are not natively available in JSON specification.
+A ``json`` value can be converted to and from JSON format in a straightforward way, except for the numeric types in Ballerina, which are not natively available in the JSON specification.
 
 ```ballerina
 string s = j.toJsonString();
@@ -240,23 +246,23 @@ json j2 = check value:fromJsonString(s);
 json j3 = null;
 ```
 
-Ballerina also allows the use of ``null`` keyword instead of `‘( )’` for the sake of JSON compatibility. The LangLib provides a few functions like **``toJson()``** and **``fromJson()``** to recursively convert between ``anydata`` and ``json``.  In that case, the table values are converted to arrays, and XML values are converted to strings.
+Ballerina also allows the use of the ``null`` keyword instead of ``()`` for JSON compatibility. The lang libraries provide several functions such as **``toJson()``** and **``fromJson()``** to convert between ``anydata`` and ``json``.  Table values are converted to arrays, and XML values are converted to strings.
 
-``json`` is basically ``anydata`` but without ``table`` and ``xml``. ``json`` and ``xml`` types are not parallel.
+The ``json`` type is basically ``anydata`` but without ``table`` and ``xml``. ``json`` and ``xml`` types are not parallel.
 
 ## Working with JSON - Two Approaches
 
 Ballerina allows two approaches to work with JSON data.
 
-The first approach enables you to work with ``json`` value directly.  This is easy since valid JSON data is also a legitimate Ballerina syntax.
+The first approach enables you to work with ``json`` values directly.  This is easy since valid JSON data is also legitimate Ballerina syntax.
 
-Additionally, it is also possible to convert from JSON to application specific type as a second approach. For example, you can convert from JSON to a user-defined subtype of anydata, process that data in an application specific subtype, and convert it back to JSON.
+Additionally, it is also possible to convert from JSON to application specific types as a second approach. For example, you can convert from JSON to a user-defined subtype of ``anydata``, process that data in an application specific subtype, and convert it back to JSON.
 
 The second approach is something where Ballerina really shines compared to other languages because it is very hard to translate between JSON and the native types in other languages.
 
 ## Working with JSON Directly
 
-Working directly with JSON data is easy with the use of json type.
+Working directly with JSON data is easy with the use of the ``json`` type.
 
 ```ballerina
 json j = {
@@ -272,12 +278,12 @@ json v = check j.x.y.z;
 string s = check v;
 ```
 
-You can define any ``json`` structure like **``j``** and access its fields using  **``j.x``** or **``j?.x``** to check for nil.  The json field values are implicitly converted to unstructured types.  
+You can define any ``json`` structure like **``j``** and access its fields using  **``j.x``** or **``j?.x``**. The JSON field values are implicitly converted to unstructured types.  
 
-Ballerina supports runtime checking of the ``json`` structure to raise runtime errors using the ``check`` expression. This gives a feel of working with a dynamic language where the JSON structure is unknown at compile time. Additionally, LangLib functions are also provided to check for types explicitly.
+Ballerina supports runtime type checking of the ``json`` structure to raise runtime errors using the ``check`` expression. This gives a feel of working with a dynamic language where the JSON structure is unknown at compile time. Additionally, lang library functions are also provided to check for types explicitly.
 
 ```ballerina
-string s = check value:ensureType(v, string);
+string s = check value:ensureType(v);
 ```
 
 ## ``match`` Statements with Maps
@@ -298,7 +304,7 @@ function foo(json j) returns error? {
 }
 ```
 
-In the above code example, the ``match`` expression uses the json value **``j``**. The interesting thing is that the match pattern also binds to a variable **``x``** used within the code for additional processing. In this way, you can directly use ``json`` structure within the control flow of your program.
+In the above code example, the ``match`` expression matches the json value **``j``**. The interesting thing is that the match pattern also binds to a variable **``x``** used within the code for additional processing. In this way, you can directly use ``json`` structures within the control flow of your program.
 
 ``match`` schematics are open, and you do not have to specify all the fields of the ``json`` value in the pattern for matching.
 
@@ -314,12 +320,15 @@ type ClosedCoord record {|
     float y;
 |};
 
-Coord coord = { x: 1.0, y: 2.0 };
+ClosedCoord coord = {
+    x: 1.0,
+    y: 2.0
+};
 
 json j = coord;
 ```
 
-In the case of open types, things are a bit complicated. For that purpose, LangLib provides functions to make your work easier.
+In the case of open types, things are a bit complicated. For that purpose, lang libraries provide functions to make your work easier.
 
 ```ballerina
 type Coord record {
@@ -327,10 +336,15 @@ type Coord record {
     float y;
 };
 
+Coord coord = {
+    x: 1.0,
+    y: 2.0
+};
+
 json j = coord.toJson();
 ```
 
-In the above code example, **``Coord``** is an open record.  Therefore any number of ``anydata`` fields can be added to it, including tables and xml. The **``toJson( )``** function converts ``anydata`` to ``json``, such that all the sub-types, including tables and xml are handled appropriately.
+In the above code example, **``Coord``** is an open record. Therefore any number of ``anydata`` fields can be added to it, including tables and XML. The **``toJson()``** function converts ``anydata`` to ``json``, such that all the sub-types, including tables and XML are handled appropriately.
 
 ## Converting from JSON to User-defined Type
 
@@ -769,7 +783,7 @@ The use of the ``check`` keyword before the query handles the scenario where the
 
 ## Backtick Templates
 
-Ballerina supports the concepts of backticks. A backtick template is composed of a tag followed by a backtick string, enclosed within the ``‘ ` ’`` notation, where you can have expressions that are enclosed in *${ . . . }*.
+Ballerina supports the concepts of backticks. A backtick template is composed of a tag followed by a backtick string, enclosed within the ``` ` ``` notation, where you can have expressions that are enclosed in *${ . . . }*.
 
 ```ballerina
 string name = "James";
@@ -881,20 +895,20 @@ foreach var item in x4 {
 
 In the above code example, the code iterates through the xml value in **``x4``** to  print the *\<name>* and *\<details>* elements.
 
-You can also access the ith element using the `‘[ ]’` notation, and index into them.
+You can also access the ith element using the ``[ ]`` notation, and index into them.
 
 ```ballerina
 print(x4[0]);
 ```
 
-Similarly, you can use the `‘.’` notation to access the attribute.
+Similarly, you can use the ``.`` notation to access the attribute.
 
 ```ballerina
 xml x5 = xml `<para id="greeting">Hello</para>`;
 string id = check x5.id;
 ```
 
-If you want to check for optional attributes, use the `‘?’` notation before `‘.’` to return ( ) in case the attribute is not present.
+If you want to check for optional attributes, use the ``?`` notation before ``.`` to return ( ) in case the attribute is not present.
 
 ```ballerina
 string? name = check x5?.name;

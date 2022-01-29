@@ -125,7 +125,7 @@ resource function post countries(@http:Payload CovidEntry[] covidEntries)
 ```
 > **Note**: To keep things simple, in this case, it was chosen to either accept the entire payload or send back an error. 
 
-Copying this straightway results in an error which is expected as the `CreatedCovidEntries` and `ConflictingIsoCodesError` types are not defined yet.
+Copying this straightway results in an error, which is expected as the `CreatedCovidEntries` and `ConflictingIsoCodesError` types are not defined yet.
 
 This resource is a bit more interesting than the second resource. To begin with, there is a resource argument named `covidEntries` annotated with `@http:Payload`. This means the resource is expecting a payload with type `CovideEntry[]`. 
 

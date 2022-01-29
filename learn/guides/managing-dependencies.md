@@ -40,19 +40,19 @@ To use exported modules of any package, add an import statement in the Ballerina
 The import declaration syntax is as follows.
 
 ```bash
-import [org-name /] module-name [as import-prefix];
+import [org-name/] module-name [as import-prefix];
 ```
 
-* The `import-prefix` has to be a valid Ballerina identifier and it is used to refer to public symbols in the declared module.
-* The import-prefix is optional. You can use the last part of the module name if an `import-prefix` is unavailable.
+* The `import-prefix` has to be a valid Ballerina identifier, and it is used to refer to public symbols in the declared module.
+* The `import-prefix` is optional. You can use the last part of the module name if an `import-prefix` is unavailable.
 
-You can import a module by providing the organization name and the module name. The module name consists of the package name and the name of the module root directory.
+You can import a module by providing the organization name, and the module name. The module name consists of the package name, and the name of the module root directory.
 The module name of the default module is always the package name. 
 
-The following example shows how we can import modules from the `ballerina/io` package.
+The following example shows how to import modules from the `ballerina/io` package.
 
-```bal
-import ballerina/io; // imports default module of io package
+```ballerina
+import ballerina/io; // Imports the default module of io package
 
 public function main() {
 	io:println("Hello world!");
@@ -61,7 +61,7 @@ public function main() {
 
 The following is another example that shows the usage of multiple modules from different libraries.
 
-```bal
+```ballerina
 // Imports the default module from the `ballerina/log` package.
 import ballerina/log;
 // Imports the default module from the `googleapis.gmail` package
@@ -84,18 +84,17 @@ gmail:ConnectionConfig gmailConfig = {
         refreshToken: refreshToken,
         clientId: clientId,
         clientSecret: clientSecret
-        }
+    }
 };
 
 listener gmailListener:Listener gmailEventListener =
-                            new(port, gmailConfig, project, pushEndpoint);
+                            new (port, gmailConfig, project, pushEndpoint);
 
 service / on gmailEventListener {
-   remote function onNewEmail(gmail:Message message) returns error? {
-           log:printInfo("New Email : " , message = message);
-   }   
+    remote function onNewEmail(gmail:Message message) returns error? {
+        log:printInfo("New Email : ", message = message);
+    }
 }
-
 ```
 
 ## Specifying Dependency Versions
@@ -107,7 +106,7 @@ This will contain the resolved dependency versions. From thereon, the versions l
 
 In the subsequent builds, the compiler will automatically update the versions of the dependencies at the patch level. Therefore, if any patch release is available for a dependency, the compiler will intelligently pick the latest patch version during package build.
 
->**Note:** Automatic updates for minor and major versions are not supported by the compiler yet but you can achieve it by deleting the `Dependencies.toml` file if it is absolutely necessary.
+>**Note:** Automatic updates for minor and major versions are not supported by the compiler yet, but you can achieve it by deleting the `Dependencies.toml` file if it is absolutely necessary.
 
 The `Dependencies.toml` file is auto-generated and managed by the Ballerina CLI and does not need user intervention. 
 Updating the versions of the existing dependencies, adding dependency entries related to a newly-added import statement, and deleting entries 
@@ -169,7 +168,7 @@ sticky = true
 ### The Offline Mode
 
 Using the` –-offline` flag with `bal build` will run the build offline without connecting to Ballerina Central. 
-This will save build time since the packages are resolved using the distribution repository and the filesystem cache of the Ballerina Central repository.
+This will save build time since the packages are resolved using the distribution repository, and the file system cache of the Ballerina Central repository.
 
 Using the `--offline` flag along with the `--sticky` flag will ensure a predictable build with optimal time for compilation. 
 
@@ -191,7 +190,7 @@ When building the dependency graph, if there is more than one version for a spec
 * If the versions are compatible, pick the latest version.
 * If the versions are incompatible, throw an error with a build failure.
 
-For example, assume one dependency in your package depends on the 1.0.0 version of the ballerina/observe package, and another dependency depends on 0.9.0 of the same. The build fails with the following error message.
+For example, assume one dependency in your package depends on the `1.0.0` version of the `ballerina/observe` package, and another dependency depends on `0.9.0` of the same. The build fails with the following error message.
 
 ```bash
 error: compilation failed: Two incompatible versions exist in the dependency graph:

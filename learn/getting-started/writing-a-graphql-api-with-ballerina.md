@@ -397,3 +397,42 @@ type Mutation {
     add(entry: CovidEntry!): CovidData!
 }
 ```
+
+## Accessing the GraphQL Endpoint
+
+To access the endpoint, you can use a GraphQL client such as [GraphiQL](https://github.com/graphql/graphiql) or simply,
+cURL.
+
+The following cURL request will retrieve all the data from the endpoint:
+
+```shell
+curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d '{ "query": "query { all { country cases active}  }" }' 'http://localhost:9000/covid19'
+```
+
+In this request, an HTTP POST request is sent to the GraphQL endpoint. The request body contains the GraphQL query.
+
+The result of this request is the following JSON.
+
+```json
+{
+  "data": {
+    "all": [
+      {
+        "country": "Afghanistan",
+        "cases": 159.303,
+        "active": 5.833
+      },
+      {
+        "country": "Sri Lanka",
+        "cases": 598.536,
+        "active": 14.656
+      },
+      {
+        "country": "USA",
+        "cases": 69808.35,
+        "active": 25035.097
+      }
+    ]
+  }
+}
+```

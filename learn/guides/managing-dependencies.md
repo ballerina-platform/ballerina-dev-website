@@ -29,7 +29,7 @@ the remote repository will be queried only if the specified version is not prese
 **Local repository**
 
 The local repository is also a file system repository, which will be created in the `<USER_HOME>` location. The repository location is `<USER_HOME>/.ballerina/repositories/local/repo/bala`. 
-For details on using the local repository, see [local repository](/learn/managing-dependencies/#using-dependencies-from-the-local-repository).
+For more information, see [Using Dependencies from the Local Repository](/learn/managing-dependencies/#using-dependencies-from-the-local-repository).
 
 ### Importing a Module
 
@@ -151,7 +151,7 @@ This minimizes the hassle of managing dependency versions to the package develop
 keep the package updated with latest compatible dependencies all the time. However, if you want to repeat a constant behavior to make the build more predictable, 
 then, Ballerina facilitates this using offline and sticky modes.
 
-### Sticky mode
+### The Sticky Mode
 
 Using the `--sticky` flag with `bal build` will force the compiler to stick to the exact versions locked in the `Dependencies.toml`. 
 In other words, the automatic-update feature is disabled when the `--sticky` flag is provided.
@@ -161,7 +161,7 @@ This can also be set in the `Ballerina.toml` file under the `[build-options]` ta
 [build-options]
 sticky = true
 ```
-### Offline mode
+### The Offline Mode
 
 Using the` –-offline` flag with `bal build` will run the build offline without connecting to Ballerina Central. 
 This will save time of the build since the packages are resolved using the distribution repository and the filesystem cache of the Ballerina Central repository. 

@@ -51,7 +51,7 @@ greeter/
 ```
 
 - `Ballerina.toml` contains metadata that describes your project. Also, the `bal` tool uses `Ballerina.toml` to identify the root of a project.
-- `main.bal` is a source file and it should contain Ballerina code that prints “Hello, World!” to the console. You can add any number of source files into the `greeter` directory.
+- `main.bal` is a source file and it contains the Ballerina code that prints “Hello, World!” to the console. You can add any number of source files into the `greeter` directory.
 
 ## Saying `Hello, World!`
 

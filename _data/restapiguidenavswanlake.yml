@@ -10,18 +10,18 @@
     - title: Create a Package for Your Code
       url: /learn/writing-a-restful-api-with-ballerina/#create-a-package-for-your-code
       active: reate-a-package-for-your-code
-    - title: Create the Covid19 Dataset
-      url: /learn/writing-a-restful-api-with-ballerina/#create-the-covid19-dataset 
-      active: create-the-covid19-dataset
-    - title: Write a Resource to Get All the Covid19 Data
-      url: /learn/writing-a-restful-api-with-ballerina/#write-a-Resource-to-get-all-the-covid19-data
-      active: write-a-Resource-to-get-all-the-covid19-data
-    - title: Write a Resource to Add Covid19 Data by ISO Code
-      url: /learn/writing-a-restful-api-with-ballerina/#write-a-resource-to-add-covid19-data-by-iso-code
-      active: write-a-resource-to-add-covid19-data-by-iso-code
-    - title: Write a Resource to Get Filtered Covid19 Data by ISO Code
-      url: /learn/writing-a-restful-api-with-ballerina/#write-a-resource-to-get-filtered-covid19-data-by-iso-code
-      active: write-a-resource-to-get-filtered-covid19-data-by-iso-code
+    - title: Create the COVID-19 Dataset
+      url: /learn/writing-a-restful-api-with-ballerina/#create-the-covid-19-dataset
+      active: create-the-covid-19-dataset
+    - title: Write a Resource to Get All the COVID-19 Data
+      url: /learn/writing-a-restful-api-with-ballerina/#write-a-resource-to-get-all-the-covid-19-data
+      active: write-a-resource-to-get-all-the-covid-19-data
+    - title: Write a Resource to Add COVID-19 Data by ISO Code
+      url: /learn/writing-a-restful-api-with-ballerina/#write-a-resource-to-add-covid-19-data-by-iso-code
+      active: write-a-resource-to-add-covid-19-data-by-iso-code
+    - title: Write a Resource to Get Filtered COVID-19 Data by ISO Code
+      url: /learn/writing-a-restful-api-with-ballerina/#write-a-resource-to-get-filtered-covid-19-data-by-iso-code
+      active: write-a-resource-to-get-filtered-covid-19-data-by-iso-code
     - title: The Complete Code
       url: /learn/writing-a-restful-api-with-ballerina/#the-complete-code
       active: the-complete-code

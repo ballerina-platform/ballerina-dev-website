@@ -10,9 +10,11 @@ redirect_from:
  - /learn/user-guide/ballerina-packages/sharing-a-library-package
  - /learn/user-guide/ballerina-packages/sharing-a-library-package/
  - /learn/publishing-packages-to-ballerina-central
+ - /learn/user-guide/publishing-packages-to-ballerina-central
+ - /learn/user-guide/publishing-packages-to-ballerina-central/
 ---
 
-Dependencies used in a package are Ballerina library packages. A library package can be created by executing the `bal new` command.
+A package uses Ballerina library packages as dependencies. Use the `bal new` command to create a library package.
 
 ## Creating a Library Package
 
@@ -22,7 +24,7 @@ Execute the `bal new -t lib` command to create a new library package.
 bal new hello --template lib
 ```
 
-This will create the `Ballerina.toml` file, the `hello.bal` source file and the `Package.md`. For more information on these files, see [Package Layout](/learn/organizing-ballerina-code/package-layout/).
+This will create the `Ballerina.toml` file, the `hello.bal` source file and the `Package.md`. For more information on these files, see [Package Layout](/learn/package-references/#package-layout).
 
 ```bash
 cd hello
@@ -35,7 +37,7 @@ hello
 0 directories, 3 files
 ```
 
-It creates the `Ballerina.toml` file. Apart from it, the `hello.bal` source file and the [Package.md](/learn/package-references/#packagemd) files are created. For more information on these, see [Package Layout](/learn/organizing-ballerina-code/package-layout/).
+It creates the `Ballerina.toml` file. Apart from it, the `hello.bal` source file and the [Package.md](/learn/package-references/#the-packagemd-file) files are created. For more information on these, see [Package Layout](/learn/package-references/#package-layout).
 
 You can edit the `Ballerina.toml` file to change the org name, package name and version as you prefer.
 
@@ -71,9 +73,10 @@ A Ballerina archive can be published to the [Ballerina Central](https://central.
 
 1. Create an account on Ballerina Central. To register, [visit the home page](https://central.ballerina.io) and log in via a Google or GitHub account.
 
-2. Navigate to the [Dashboard](https://central.ballerina.io/dashboard) and acquire an access token.
+2. Navigate to the [Dashboard](https://central.ballerina.io/dashboard?tab=token) and acquire an access token.
 
-3. Download and place the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`). If you already have a `Settings.toml` file configured in your home repository, follow the other option and copy the access token into the `Settings.toml`. Else, if you are connected to the internet via an HTTP proxy, add the following section to `Settings.toml` and change accordingly.
+3. Download and place the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`). If you already have a `Settings.toml` file configured in your home repository, follow the other option and copy the access token into the `Settings.toml`. 
+   If you are connected to the internet via an HTTP proxy, add the following section to `Settings.toml` and change accordingly.
 
 ```toml
 [proxy]
@@ -85,7 +88,7 @@ password = ""
 
 ### Organizations
 
-When you push a package to Ballerina Central, the organizations are validated against the value of the `org` field defined in the [Ballerina.toml](/learn/package-references/#ballerinatoml) file. Therefore, when you have more than one organizations in Ballerina Central, pick the organization name that you intend to push the package into, set that as the `org` in the `Ballerina.toml` file inside the package directory, and rebuild the package.
+When you push a package to Ballerina Central, the organizations are validated against the value of the `org` field defined in the [Ballerina.toml](/learn/package-references/#the-ballerinatoml-file) file. Therefore, when you have more than one organizations in Ballerina Central, pick the organization name that you intend to push the package into, set that as the `org` in the `Ballerina.toml` file inside the package directory, and rebuild the package.
 
 Also, organization names starting with `ballerina` (e.g., `ballerina`, `ballerinax`, `ballerinai`, etc.) are reserved for system use, and thereby, you cannot publish any packages starting with the `ballerina` prefix to Ballerina Central. Therefore, if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
 

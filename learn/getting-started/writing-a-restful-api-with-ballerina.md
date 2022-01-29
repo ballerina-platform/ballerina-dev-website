@@ -41,7 +41,7 @@ Ballerina uses packages to group code. In this case, a package with the default 
 
 `bal new covid19 -t service`
 
-This creates a folder named `covid19` along with a sample code for service. Move to the `covid19` and execute the following command to start VSCode.
+This creates a folder named `covid19` along with a sample code for service. Navigate to the `covid19` directory, and execute the following command to start VSCode.
 
 `code .`
 

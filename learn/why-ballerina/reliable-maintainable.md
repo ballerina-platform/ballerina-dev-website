@@ -57,7 +57,7 @@ remote function write(byte[] bytes) returns error? {}
 
 ### Error Checking 
 
-Ballerina has language constructs for explicit error checking. Both explicit error reporting and checking improve code readability and maintainability simply because they are explicit. When you read Ballerina code, you can quickly notice the code, which reports errors and you can check for errors.  
+Ballerina has language constructs for explicit error checking. Both explicit error reporting and checking improve code readability and maintainability simply because they are explicit. When you read Ballerina code, you can quickly notice the code, which reports errors, and you can check for errors.  
 
 Usually, a function handles errors by passing them up to the caller. Even the main function, which is the program entry point can return an error resulting in an error printed in your terminal. 
 

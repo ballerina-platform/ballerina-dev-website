@@ -129,7 +129,7 @@ Copying this straightway results in an error, which is expected as the `CreatedC
 
 This resource is a bit more interesting than the second resource. To begin with, there is a resource argument named `covidEntries` annotated with `@http:Payload`. This means the resource is expecting a payload with type `CovideEntry[]`. 
 
-Finally, as the return values there are two types of records `CreatedCovidEntries` and `ConflictingIsoCodesError`. Following is the definition of `CreatedCovidEntries`.
+Finally, as the return values, there are two types of records `CreatedCovidEntries` and `ConflictingIsoCodesError`. Following is the definition of `CreatedCovidEntries`.
 
 ```ballerina
 public type CreatedCovidEntries record {|

@@ -25,10 +25,10 @@ To complete this tutorial, you need:
 ## Designing the Two Endpoints 
 
 The first endpoint is about getting data from the service as well as adding data to the service. Therefore, the service should handle both HTTP GET and POST requests.
-- The GET request is to get data, and the response should be 200 OK.
-- The POST request is to add data, and the response should be 201 created.
+- The GET request is to get data, and the response should be `200 OK`.
+- The POST request is to add data, and the response should be `201 created`.
 
-The second endpoint is about getting filtered data from the service. The ISO code filters the data. Therefore, the second service accepts the ISO code as part of the URL and responds with 200 OK status code. In the event of an error, the relevant error is sent back to the client.
+The second endpoint is about getting filtered data from the service. The data is filtered by the ISO code. Therefore, the second service accepts the ISO code as part of the URL and responds with `200 OK` status code. In the event of an error, the relevant error is sent back to the client.
 
 Following is the URL for each endpoint, respectively.
 
@@ -93,7 +93,7 @@ service /covid/status on new http:Listener(9000){
 
 Unlike normal functions, resource functions can have accessors. In this case, the accessor is set to `get`, which means only HTTP GET requests could hit this resource. 
 
-Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. The default status code HTTP responses are 200 OK.
+Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. The default status code HTTP responses are `200 OK`.
 
 ## Writing a Resource to Add COVID-19 Data by ISO Code
 
@@ -101,21 +101,21 @@ The second part of the first endpoint is about adding or appending new data to t
 
 ```ballerina
 resource function post countries(@http:Payload CovidEntry[] covidEntries) 
-                                    returns CreatedCovidEntries|ConflictingIsoCodesError {
+                                    returns CreatedCovidEntry|ConflictingIsoCodeError {
 
     string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
                                where covidTable.hasKey(covidEntry.iso_code)
                                select covidEntry.iso_code;
 
     if conflictingISOs.length() > 0 {
-        return <ConflictingIsoCodesError>{ 
-            body : { 
-                errmsg : string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
+        return <ConflictingIsoCodeError>{
+            body: {
+                errmsg: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
             }
         };
     } else {
         covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
-        return <CreatedCovidEntries>{ body: covidEntries }; 
+        return <CreatedCovidEntry>{body: covidEntries};
     }
 }
 ```
@@ -138,7 +138,7 @@ public type ErrorMsg record {|
 |};
 ```
 
-As you can see, there is something new here. `*http:Conflict` is the Ballerina way of saying one type is a subtype another. In this case `ConflictingIsoCodeError` is a subtype of `*http:Conflict`.Ballerina has defined a set of types for each HTTP status code. This allows users to write services in a type oriented way which is, in turn, helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. Returning this record results in HTTP 409 response with JSON payload. 
+As you can see, there is something new here. `*http:Conflict` is the Ballerina way of saying one type is a subtype another. In this case `ConflictingIsoCodeError` is a subtype of `*http:Conflict`.Ballerina has defined a set of types for each HTTP status code. This allows users to write services in a type oriented way which is, in turn, helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. Returning this record results in HTTP `409` response with JSON payload.
 
 The body of the response is of type `ErrorMsg`, which simply has a string field named `errmsg`. Users can have any data type for their response body based on the need.
 
@@ -191,30 +191,30 @@ service /covid/status on new http:Listener(9000) {
         return covidTable.toArray();
     }
 
-    resource function post countries(@http:Payload CovidEntry[] covidEntries) 
-                                    returns CreatedCovidEntries|ConflictingIsoCodesError {
+    resource function post countries(@http:Payload CovidEntry[] covidEntries)
+                                    returns CreatedCovidEntry|ConflictingIsoCodeError {
 
         string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
-                                where covidTable.hasKey(covidEntry.iso_code)
-                                select covidEntry.iso_code;
+            where covidTable.hasKey(covidEntry.iso_code)
+            select covidEntry.iso_code;
 
         if conflictingISOs.length() > 0 {
-            return <ConflictingIsoCodesError>{ 
-                body : { 
-                    errmsg : string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
+            return <ConflictingIsoCodeError>{
+                body: {
+                    errmsg: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
                 }
             };
         } else {
             covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
-            return <CreatedCovidEntries>{ body: covidEntries }; 
+            return <CreatedCovidEntry>{body: covidEntries};
         }
     }
 
     resource function get countries/[string iso_code]() returns CovidEntry|InvalidIsoCodeError {
         CovidEntry? covidEntry = covidTable[iso_code];
         if covidEntry is () {
-            return { 
-                body: { 
+            return {
+                body: {
                     errmsg: string `Invalid ISO Code: ${iso_code}`
                 }
             };
@@ -233,14 +233,14 @@ public type CovidEntry record {|
 |};
 
 public final table<CovidEntry> key(iso_code) covidTable = table [
-    { iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833 },
-    { iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656 },
-    { iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097 }
+    {iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
+    {iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
+    {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
 ];
 
 public type CreatedCovidEntry record {|
     *http:Created;
-    CovidEntry body;
+    CovidEntry[] body;
 |};
 
 public type ConflictingIsoCodeError record {|
@@ -256,4 +256,5 @@ public type InvalidIsoCodeError record {|
 public type ErrorMsg record {|
     string errmsg;
 |};
+
 ```

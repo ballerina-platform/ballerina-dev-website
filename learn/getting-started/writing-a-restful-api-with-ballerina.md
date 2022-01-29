@@ -31,11 +31,13 @@ Following two prerequisites are needed for this tutorial.
 
 ## Design the Two Endpoints 
 
-The first endpoint is about getting data from the service as well as adding data to the service. Therefore, the service should handle both HTTP GET and POST requests. The GET request is to get data whereas the POST request is to add data. In the case of the GET request, the response should be 200 OK whereas in the case of POST request the response should be 201 created.
+The first endpoint is about getting data from the service as well as adding data to the service. Therefore, the service should handle both HTTP GET and POST requests.
+- The GET request is to get data, and the response should be 200 OK.
+- The POST request is to add data, and the response should be 201 created.
 
-The second endpoint is about getting filtered data from the service. The data is filtered by the ISO code. Therefore, the second service accepts the ISO code as part of the URL and then responds with 200 OK status code. In the event of an error, the relevant error is sent back to the client.
+The second endpoint is about getting filtered data from the service. The ISO code filters the data. Therefore, the second service accepts the ISO code as part of the URL and responds with 200 OK status code. In the event of an error, the relevant error is sent back to the client.
 
-Following is the URL for each endpoint respectively.
+Following is the URL for each endpoint, respectively.
 
 1. /covid/status/countries
 2. /covid/status/countries/{iso_code}
@@ -46,15 +48,15 @@ Ballerina uses packages to group code. In this case, a package with the default 
 
 `bal new covid19 -t service`
 
-This creates a folder named `covid19` along with a sample code for service. Move to the new folder and execute the following command to start VSCode.
+This creates a folder named `covid19` along with a sample code for service. Move to the `covid19` and execute the following command to start VSCode.
 
 `code .`
 
-`Ballerina.toml` is the file that makes the folder a Ballerina package. It also contains a test directory to include tests for the service. But for the sake of simplicity, we will ignore it in this tutorial. You can just go through the sample to get a look and feel about Ballerina services. However, we will be starting with a blank page. Hence, before you start you can delete the entire code or edit it if you wish.
+`Ballerina.toml` is the file that makes the folder a Ballerina package. It also contains a test directory to include tests for the service. But for the sake of simplicity, we will ignore it in this tutorial. You can just go through the sample in `service.bal` to get a look and feel about Ballerina services. However, we will be starting with a blank page. Hence, before you start, you can delete the entire code or edit it if you wish.
 
 ## Create the COVID-19 Dataset 
 
-To keep things simple an in-memory dataset is used with three entries. Ballerina tables are used to store data. Each entry in the table is represented by a Ballerina record. Following is the definition of the record and the declaration of the table.
+To keep things simple, an in-memory dataset is used with three entries. Ballerina tables are used to store data. Each entry in the table is represented by a Ballerina record. Following is the definition of the record and the declaration of the table.
 
 ```ballerina
 public type CovidEntry record {|
@@ -138,7 +140,7 @@ public type ErrorMsg record {|
 
 As you can see, there is something new here. `*http:Conflict` is the Ballerina way of saying one type is a subtype another. In this case `ConflictingIsoCodeError` is a subtype of `*http:Conflict`.Ballerina has defined a set of types for each HTTP status code. This allows users to write services in a type oriented way which is, in turn, helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. Returning this record results in HTTP 409 response with JSON payload. 
 
-The body of the response is of type `ErrorMsg` which simply has a string field named `errmsg`. Based on the need users can have any data type for their response body.
+The body of the response is of type `ErrorMsg`, which simply has a string field named `errmsg`. Users can have any data type for their response body based on the need.
 
 ## Write a Resource to Get Filtered COVID-19 Data by ISO Code
 

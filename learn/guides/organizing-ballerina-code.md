@@ -5,7 +5,7 @@ description: The sections below include information about packages, and how the 
 keywords: ballerina, programming language, ballerina packages, dependencies, importing modules
 permalink: /learn/organizing-ballerina-code/
 active: organizing-ballerina-code
-intro: The sections below include information about packages, and how the growth of your source code can be managed.
+intro: The sections below include information about packages, and you can manage the growth of your source code.
 redirect_from:
 - /learn/user-guide/ballerina-packages/organizing-ballerina-code
 - /learn/user-guide/ballerina-packages/organizing-ballerina-code/
@@ -23,9 +23,8 @@ Organized code will make it easy to extend and improve your project over time. B
 To achieve this, Ballerina has the concept of packages and modules. 
 
 Ballerina code is organized in a single shareable unit called a Package. 
-A package is a collection of modules and a module is a collection of Ballerina source files, test files and resources. 
-A package should contain at least one module, which is called the default module. Each module has its own directory, 
-which is used to organize source files, test files, and resources.
+A package is a collection of modules, and a module is a collection of Ballerina source files, test files, and resources.
+A package should contain at least one module called the default module. Each module has its own directory, which organizes source files, test files, and resources.
 
 It is common in small projects to have only one (default) module in a package. As a result, the default module’s content is placed directly in the root of the package directory.
 
@@ -101,7 +100,7 @@ The `main.bal` file is a Ballerina source file, which belongs to the default mod
 The root directory of the default module is the root directory of the package as well. 
 Therefore, the package root directory contains files that belong to the package as well as the default module.
 
-You can add more source files at the package root, and all the top-level symbols (i.e. functions, variables, etc.) defined in one file will also be visible to other files as they share the same namespace. 
+You can add more source files at the package root, and all the top-level symbols (i.e., functions, variables, etc.) defined in one file will also be visible to other files as they share the same namespace.
 This namespace is called the default module of the package. The package name, which is specified in the `Ballerina.toml` file is also used to refer to the default module.
 
 ### Non-Default Modules
@@ -124,10 +123,14 @@ The package structure after adding a non-default module will have the directory 
 ├── Ballerina.toml
 ├── main.bal
 └── modules
-     └── util
-         └── util.bal
+    └── util
+        ├── Module.md
+        ├── resources
+        ├── tests
+        │   └── lib_test.bal
+        └── util.bal
 
-2 directories, 3 files
+4 directories, 5 files
 ```
 
 ## Importing a Module from the Same Package 
@@ -135,7 +138,7 @@ The package structure after adding a non-default module will have the directory 
 You can access any public symbol from another module of the package by importing the particular module using an import declaration. 
 The import declaration syntax is as follows.
 
-```bash
+```ballerina
 import module-name [as import-prefix];
 ```
 
@@ -145,7 +148,7 @@ import module-name [as import-prefix];
 In a package, which has the default module containing the `main.bal` file and a non-default module named `hello-world.util`, 
 you can add a public function in the `hello_world.util` module and use this function in the `main.bal` file in the default module.
 
-```bal
+```ballerina
 import hello_world.util;
 
 String formattedMsg = util:properCaseMessage("hello world!");

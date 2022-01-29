@@ -213,19 +213,19 @@ Ballerina does not support the notion of a separate character type like in C. In
 
 ## Langlib Functions
 
-Ballerina defines a small library for providing fundamental operations on built-in datatypes. 
+Ballerina defines lang libraries to provide fundamental operations on built-in datatypes. 
 
-For example, you can perform some of the standard operations on string type like getting the substring or finding the length.
+For example, you can perform standard operations such as getting a substring or finding the length of the string on values of the ``string`` type.
 
 ```ballerina
-string s = “abc”.substring(1,2);
+string s = "abc".substring(1,2);
 
-int n = s.length( );
+int n = s.length();
 ```
 
-The substring and length are the Langlib functions that can be called using the convenient method call syntax. However, these types do not represent objects in this case.
+The ``substring()`` and ``length()`` functions are ``string`` lang library functions called using the convenient method call syntax. However, the functions are called on variables/values of the ``string`` type rather than objects.
 
-Ballerina imports the Langlib library for *``ballerina/lang.T``* where *``T``* represents every built-in type. Therefore, in the case of the above code example, the string length can also be found by calling the **``length( )``** function on the *``ballerina/lang.string``* module.
+Ballerina imports the lang library for **``ballerina/lang.T``** where **``T``** represents a built-in type. Therefore, in the case of the above code example, the length of the string value can also be found by importing the **``ballerina/lang.string``** module and calling the **``length()``** function using the function call syntax.
 
 ```ballerina
 int n = string:length(s);
@@ -235,34 +235,34 @@ int n = string:length(s);
 
 Arrays are sequential data structures consisting of values of the same type.  
 
-An array of ``int`` type is declared as:
+You can declare an array of integers as:
 
 ```ballerina
 int[] v = [1,2,3];  
 ```
 
-You can index the individual elements of this array using the `‘[i]’` notation. So the second element of **``v``** can be accessed as *``v[1]``*.
+You can index the individual elements of this array using the ``v[i]`` notation. Array indexing starts with zero. So the second element of **``v``** can be accessed as *``v[1]``*.
 
 ```ballerina
 int n = v[1];
 ```
 
-Array indexing starts with zero. They are mutable and ordering is supported based on a lexicographical ordering of members. 
+Arrays are mutable. Ordering is supported based on a lexicographical ordering of members. 
 
-The `‘==’` and `‘!=’` comparison operators perform a deep comparison of two arrays based on the members and their order instead of the memory location.
+The ``==`` and ``!=`` comparison operators perform a deep comparison of two arrays based on the members and their order instead of the memory location.
 
-Langlib functions are available for arrays to perform simple operations such as finding the length of an array.
+Langlib functions for arrays are available to perform operations such as finding the length of an array.
 
 ```ballerina
-int len = v.length()
+int len = v.length();
 ```
 
 ## ``foreach`` Statement
 
-A ``foreach`` statement iterates over an array by binding a variable to each array element at every loop iteration.
+A ``foreach`` statement iterates over an array by binding a variable to each array member at every loop iteration.
 
 ```ballerina
-function sum(float[ ] v) returns float {
+function sum(float[] v) returns float {
     float r = 0.0;
     foreach float x in v {
         r += x;
@@ -271,9 +271,9 @@ function sum(float[ ] v) returns float {
 }
 ```
 
-In this code example, the **``x``** floating point type is bound to each element of the **``v``**  array. Similarly, it also works with string type by iterating over each character in the string.
+In this code example, the **``x``** variable of the ``float`` type is bound to each element of the **``v``**  array. Similarly, it also works with the ``string`` type by iterating over each character in the string.
 
-The foreach statement can also be constructed from a range expression such as ``‘. . <’``.
+The foreach statement can also be constructed using a range expression such as ``..<``.
 
 ```ballerina
 function sum(float[ ] v) returns float {
@@ -285,7 +285,7 @@ function sum(float[ ] v) returns float {
 }
 ```
 
-Here the integer type **``i``** is set to a sequence of linearly incrementing numbers that ranges from zero to the length of the array **``v``**. Therefore, the ``foreach`` statement iterates over the length of the array and increments **``i``** during each iteration.
+Here the **``i``** variable of the ``int`` type is set to a sequence of linearly incrementing numbers that ranges from zero to the length of the array **``v``**. Therefore, the ``foreach`` statement iterates over the length of the array and increments **``i``** during each iteration.
 
 ## ``while`` Statement
 
@@ -300,9 +300,11 @@ type LinkedList record {
 function len(LinkedList ll) returns int {
     int n = 0;
     
-    while ll != () {
+    LinkedList? nextLL = ll.next;
+
+    while nextLL != () {
         n += 1;
-        Ll = ll.next();
+        nextLL = nextLL.next;
     }
 
     return n;
@@ -311,7 +313,7 @@ function len(LinkedList ll) returns int {
 
 In this example, the ``while`` loop is checking for a boolean condition to check for the end of the linked list **``ll``**.
 
-It also supports the usual ``break`` and ``continue`` statements.
+The ``while`` statement also supports the usual ``break`` and ``continue`` statements.
 
 ## Binary Data
 
@@ -321,44 +323,44 @@ Binary data is represented by an array of bytes.
 byte[] data = base64 `yPHaytRgJPg+QjjylUHakEwz1fWPx/wXCW41JSmqYW8=`; 
 ```
 
-An array of binary data can be represented in the source code using base-64 or base-16 literal formats.
+An array of bytes can also be represented in the source code using base-64 or base-16 literal formats.
 
-The byte represents a number between `0` and `0xFF`. You can define it with the ``byte`` keyword.
+The ``byte`` type represents a number between ``0`` and ``0xFF``. You can define a variable of the ``byte`` type with the ``byte`` keyword.
 
 ```ballerina
 byte b = 0xFF;
 ```
 
-In Ballerina, byte is not the same as a character in C. It is a subtype of the integer. Therefore, it supports all the bitwise operators on integers. Some of these operators produce an integer type, and some like the `‘&’` operator produce a ``byte``.
+In Ballerina, ``byte`` is not the same as a character in C. It is a subtype of the integer type. Therefore, it supports all the bitwise operators available on integers. Some of these operators produce a value that belongs to the integer type, and some operators like the ``&`` operator produce a value that belongs to the ``byte`` type.
 
 ## Maps
 
-A map is an associative structure of multiple string values as keys and their values.  If you want to create a map with integer type, then you would define it as:
+A map is an associative structure of multiple string values as keys and their values.  If you want to create a map of integers, then you would define it as:
 
 ```ballerina
 map<int> m = {
-  “x”  :  1,
-  “Y”  :  2
+    "x": 1,
+    "y": 2
 };
 ```
  
-The syntax of a map is very similar to JSON. Maps are mutable, and *``m[“x”]``* will return the integer value stored in *``“x”``*, or nil if missing.
+The syntax to define a map is very similar to JSON. Maps are mutable, and *``m["x"]``* will return the integer value stored against *``x``* as the key, or nil if the key is not present.
 
 ```ballerina
-m[“x”] = 5;
+m["x"] = 5;
 
-int? v = m[“x”];
+int? v = m["x"];
 ```
   
-When used within a ``foreach`` loop, it will iterate over all the values of a Map. You can also use the Langlib functions such as *``get(k)``* to get the value mapped to the string key *``k``*, or *``keys( )``* to return an Array containing all the key strings of the Map.
+When used in a ``foreach`` loop, it will iterate over all the values of the map. You can also use lang library functions such as *``get(k)``* to get the value mapped to the string key *``k``*, or *``keys( )``* to return an array containing all the key strings of the map.
 
-The use of comparison operators `‘==’` and `‘!=’` on a Map will perform a deep comparison. Two Maps are equal if they have the same set of keys and the values for each key are equal.
+The use of comparison operators ``==`` and ``!=`` on a map will perform a deep comparison. Two maps are equal if they have the same set of keys and the values for each key are equal.
 
 ## Type Definitions
 
-Ballerina allows you to define a name for a type. You can create user-defined type identifiers from the built-in types supported by the language.
+Ballerina allows you to define a name for a type. You can create user-defined type identifiers for the built-in types supported by the language.
 
-For example, it you have an array of a map of string type, *``map<string>[ ]``*, you can define a type for it as follows:
+For example, if you have an array of maps of the ``string`` type, *``map<string>[]``*, you can define a type definition for it as follows:
 
 ```ballerina
 type MapArray map<string>[];
@@ -390,10 +392,10 @@ You can also define it using the type definition as follows:
 type Coord record {
     int x;
     int y;
-}
+};
 ```
 
-Subsequently, you can declare the **``Coord``** record and set or access its field values.
+Subsequently, you can use the **``Coord``** record to declare a variable and set or access its field values.
 
 ```ballerina
 Coord c = {x: 1, y: 2};
@@ -401,7 +403,7 @@ Coord c = {x: 1, y: 2};
 int a = c.x;
 ```
 
-Records are mutable and the individual record identifier *``c.x``* is `lvalue`. Rules for record comparison are the same as that for maps.
+Records are mutable. *``c.x``* is an ``lvalue``. Rules for record comparison are the same as those for maps.
 
 ## Structural Typing
 

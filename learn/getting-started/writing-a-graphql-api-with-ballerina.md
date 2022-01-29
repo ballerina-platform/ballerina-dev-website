@@ -400,8 +400,7 @@ type Mutation {
 
 ## Accessing the GraphQL Endpoint
 
-To access the endpoint, you can use a GraphQL client such as [GraphiQL](https://github.com/graphql/graphiql) or simply 
-cURL.
+To access the endpoint, you can use cURL or a GraphQL client such as [GraphiQL](https://github.com/graphql/graphiql). 
 
 The following cURL request will retrieve all the data from the endpoint:
 

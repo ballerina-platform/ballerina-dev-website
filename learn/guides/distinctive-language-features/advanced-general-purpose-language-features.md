@@ -1,51 +1,58 @@
 ---
 layout: ballerina-distinctive-language-features-left-nav-pages-swanlake
 title: Advanced, General-Purpose Language Features
-description: Let’s now look at the other features of the Ballerina language. These are a mixed bag of additional options to the language, making everything fit together to build a Ballerina application.
+description: Let's now look at the other features of the Ballerina language. These are a mixed bag of additional options to the language, making everything fit together to build a Ballerina application.
 keywords: ballerina, programming language, ballerina packages,language-guide
 permalink: /learn/distinctive-language-features/advanced-general-purpose-language-features/
 active: advanced-general-purpose-language-features
-intro: Let’s now look at the other features of the Ballerina language. These are a mixed bag of additional options to the language, making everything fit together to build a Ballerina application.
+intro: Let's now look at the other features of the Ballerina language. These are a mixed bag of additional options to the language, making everything fit together to build a Ballerina application.
 redirect_from:
 - /learn/distinctive-language-features/advanced-general-purpose-language-features
 ---
 
 ## Default Values for Function Parameters
 
-Ballerina allows the setting of default values for function parameters. You can use literal values or even expressions as default values to parameters. Additionally, the default value expressions can use the values of preceding parameters.
+Ballerina allows specifying default values for function parameters. You can use any expression such as a literal or a function call as the default value of a parameter. Additionally, the default value expressions can use the values of preceding parameters.
 
 ```ballerina
-function substring(
-    string str, 
-    int start = 0,
-    int end = str.length()
-) returns int | ( ) {
-  //….
+function substring(string str, int 'start = 0, int end = str.length()) 
+            returns int? {
+    // ...
 }
 ```
 
-The way it works is, the type descriptor contains closures for every defaultable parameter, which has the values for previous parameters as parameters for those closures. Using those closures, the compiler generates code to fill missing values at the call site for this function. This is not part of the function type and is not applicable when functions are passed around as a first class value.
+The way it works is, the type descriptor contains closures for every defaultable parameter, which has the values for previous parameters as parameters for those closures. Using those closures, the compiler generates code to fill missing values at the call site for this function. This is not part of the function type and is not applicable when functions are passed around as a first-class value.
 
 ## Providing Function Arguments by Name
 
 In addition to default values for parameters, it is also useful to call functions with argument names. Ballerina allows you to call functions where arguments can be supplied by name.
 
-If you define a function as *foo(int x, int y, int z) { . .  }* , then you can call it using any of the following syntax:
+Consider the function below.
 
-- `*foo(1,2,3)*`
-- `*foo(x = 1, y = 2, z = 3)*`
-- `*foo(z = 3, y = 2, x = 1)*`
-- `*foo(1, z = 3, y = 2)*`
+```ballerina
+function foo(int x, int y, int z) {
+    
+}
+```
 
-The first option calls the function in the usual way without using the names for arguments. The second and third options use named arguments that transformed into positional arguments by the Ballerina compiler. Arguments list of the function are described by a tuple type, and names are not part of that type. You can also combine the named arguments with unnamed ones, as shown in the fourth option.
+This function can be called in any of the following ways:
 
-You have to pay special attention to argument names of remote methods and resource methods, since these names are exposed as public interfaces for API endpoints. This is also applicable for public function in a module. Changing the argument names of such functions makes the module incompatible when it is imported into other modules.
+```ballerina
+foo(1, 2, 3);
+foo(x = 1, y = 2, z = 3);
+foo(z = 3, y = 2, x = 1);
+foo(1, z = 3, y = 2);
+```
+
+The first option calls the function in the usual way without using the names of the arguments. The second and third options use named arguments that are transformed into positional arguments by the Ballerina compiler. The argument list of a function is described by a tuple type, and names are not part of that type. You can also combine the named arguments with unnamed ones, as shown in the fourth option.
+
+You have to pay special attention to argument names of remote methods and resource methods since these names are exposed as public interfaces for API endpoints. This is also applicable for public functions in a module. Changing the argument names of such functions makes the module incompatible when it is imported into other modules.
 
 ## Type Inclusion for Records
 
-There are times when it is beneficial to create a record by combining fields of other records. For example, suppose you have a **``Date``** record, which has a year, month, day fields, and you also have a **``TimeOfDay``** record having hour, minute, and seconds fields. 
+There are times when it is beneficial to create a record by combining fields of other records. For example, suppose you have a **``Date``** record, which has ``year``, ``month``, and ``day`` fields and you also have a **``TimeOfDay``** record having ``hour``, ``minute``, and ``seconds`` fields. 
 
-You can create a **``Time``** record that has all the fields of Date and TimeOfDay, using the ``‘*’`` notation.
+You can create a **``Time``** record that has all the fields of ``Date`` and ``TimeOfDay``, using the ``*T`` notation.
 
 ```ballerina
 type Date record {
@@ -66,102 +73,105 @@ type Time record {
 };
 ```
    
-By using the *\*T* notation, you can include the record type *T* in the record type descriptor of another record. This effect is similar to copying the fields of the included records, **``Date``** & **``TimeOfDay``**, into including record, **``Time``**.
+Using the **``*T``** notation, you can include the record type **``T``** in the record type descriptor of another record. This is effectively the same as copying the fields of the included records, **``Date``** and **``TimeOfDay``**, into the including record, **``Time``**.
 
 ## Included Record Parameters
 
 While designing API interfaces in Ballerina, you invoke the function with named arguments. Alternatively, you can also pass all the arguments within a record value. In this case, the mapping constructor is used as part of function invocation.
 
-Ballerina allows you to define functions with included record parameters. In this case, the function defines records for named parameters. But the caller can pass parameters by name, which are the same as the record field names.  The `‘*”` can be used for this purpose.
+Ballerina allows you to define functions with included record parameters. In this case, the function defines records for named parameters. But the caller can pass parameters by name, which are the same as the record field names.  The ``*T`` notation can be used for this purpose.
 
 ```ballerina
-type Options record { |
+type Options record {|
     boolean verbose = false;
-    string? outputFile = ( );
-| };
+    string? outputFile = ();
+|};
 
-function foo(string inputFile, 
-                       *Options options){ 
+function foo(string inputFile, *Options options){ 
 }   
 
-function main( ){
-    foo(“file.txt” , verbose = true);
+public function main(){
+    foo("file.txt", verbose = true);
 }
 ```
 
-The function **``foo( )``** accepts a string **``inputFile``**, and also includes the parameters of the **``Options``** record. So apart from calling this function by directly passing a value of **``Options``** record, you can also pass named arguments having the same name as the fields in **``Options``** records.
+The function **``foo()``** has a ``string`` parameter **``inputFile``** and an included record parameter of the **``Options``** record type. So apart from calling this function by directly passing a value of the **``Options``** record type, you can also pass named arguments having the same names as the fields in the **``Options``** record.
 
 This way of including record fields as named arguments in a function provides a consistent experience to the caller.
 
 ## Default Values for Record Fields
 
-Ballerina also allows default values for record fields as part of the record’s type descriptor. A default value is an expression, which can also be a closure that is computed in the context of the enclosing module scope.
+Ballerina also allows default values for record fields as part of the record's type descriptor. A default value is an expression, which can also be a closure that is computed in the context of the enclosing module scope.
 
 ```ballerina
 type X record {
     string str = "";
 };
 
-X x = { };
+X x = {};
 ```
   
-In the above code example, the record **``X``** has field **``str``** which is defaulted to empty string. The variable **``x``** is of type **``X``** and contains the default empty string.
+In the above code example, the record **``X``** has a field **``str``** which is defaulted to empty string. Since the variable **``x``** of type **``X``** is initialized without specifying a value for the ``str`` field, the constructed ``X`` value will use the default empty string value for the ``str`` field.
 
-Default value does not affect static typing. It only affects the use of type descriptors to construct records. Calling *cloneWithType(T)* on a record *T* will make use of defaults in *T*. Similarly, using *\*T* also copies the default values.
+Default values do not affect static typing. They only affect the use of type descriptors to construct records. Calling the ``value:cloneWithType()`` function with a record type-descriptor **``T``** will make use of default values in **``T``** if required. Similarly, using **``*T``** also copies the default values.
 
 ## Object Types
 
-Ballerina also allows you to define object types that define just the type without the implementation. Unlike classes, which give you the type as well as the implementation that you can instantiate through ``new``, an Object type is a definition without any implementation. It is similar to the concept of an Interface, as defined in the Java programming language.
+Ballerina also allows you to define object types that define just the type without the implementation. Unlike classes, which give you the type as well as the implementation that you can instantiate through ``new``, an object type is a definition without any implementation. It is similar to the concept of an interface, as defined in the Java programming language.
 
 ```ballerina
 type Hashable object {
-    function hash( ) returns int;
+    function hash() returns int;
 };
 
-function h( ) returns Hashable {
+function h() returns Hashable {
     var obj = object {
-        function hash( ) returns int {
+        function hash() returns int {
             return 42;
-         }
+        }
     };
     return obj;
-};
+}
 ```
 
-In the above code example, **``Hashable``** is an object type, and its value has a function called **``hash( )``**  that returns an integer. The function **``h( )``** returns the object type **``Hashable``**. Inside **``h( )``**, an object of type **``Hashabe``** is created by defining the function **``hash( )``** and assigned to **``obj``**, which is finally returned.
+In the above code example, **``Hashable``** is an object type, and it has a method called **``hash( )``**  that returns an integer. The function **``h()``** returns the object type **``Hashable``**. Inside **``h()``**, an object of type **``Hashabe``** is created by defining the **``hash()``** method and assigned to the **``obj``** variable, which is finally returned.
 
-Object typing is structural, and object type looks like a pattern that the object must match. In this case the match is done to check that the returned Object matches the pattern of **``Hashable``** object type which contains a function **``hash( )``** returning an integer.
+Object typing is structural, and an object type looks like a pattern that the object must match. In this case, the match is done to check that the returned object matches the pattern of the **``Hashable``** object type which contains a **``hash()``** method returning an integer.
 
 ## Object Type Inclusion
 
-You can also include the object types using the *\*T* syntax. You have two options for that. First, you can include an object type in another object type, such that one interface extends another interface. Secondly, you can also have a class that includes a type, like the class implementing the interface.
+You can also include object types using the **``*T``** syntax. You have two options for that. First, you can include an object type in another object type, such that one interface extends another interface. Secondly, you can also have a class that includes a type, like the class implementing the interface.
 
 ```ballerina
 type Cloneable object {
-    function clone( ) returns Cloneable;
+    function clone() returns Cloneable;
 };
 
 type Shape object {
     *Cloneable;
-    function draw( );
-}
+    
+    function draw();
+};
 
 class Circle {
     *Shape;
-    function clone( ) returns Circle {
+
+    function clone() returns Circle {
         return new;
     }
-    function draw( ) {   }
+
+    function draw() {
+    }
 }
 ```
 
-In the above code example, **``Cloneable``** is an object type. It is included as part of the interface for the **``Shape``** object type. Therefore **``Shape``** defines an interface containing the function **``draw( )``** which is part of its own type as well as the function **``clone( )``** included from **``Cloneable``**. The class **``Circle``** includes the **``Shape``** object type. Therefore it has to implement both the **``clone( )``** and **``draw( )``** functions. The function **``clone( )``** returns a **``Circle``** and is considered valid since the **``Circle``** becomes a subtype of **``Cloneable``** once it includes the **``Cloneable``** object type.  
+In the above code example, **``Cloneable``** is an object type. It is included as part of the interface for the **``Shape``** object type. Therefore **``Shape``** defines an interface containing the function **``draw()``** which is part of its own type as well as the function **``clone()``** included from the **``Cloneable``** type. The class **``Circle``** includes the **``Shape``** object type. Therefore it has to implement both the **``clone()``** and **``draw()``** methods. The function **``clone( )``** returns a **``Circle``** and is considered valid since the **``Circle``** type becomes a subtype of **``Cloneable``** type once it includes the **``Cloneable``** object type.  
 
-The implementation of object type within the class that includes the type is checked at the compile time. This provides interface inheritance. Ballerina does not support implementation inheritance.
+The implementation of the object type within the class that includes the type is checked at the compile time. This provides interface inheritance. Ballerina does not support implementation inheritance.
 
 ## Distinct Object Types
 
-Ballerina also supports the concept of distinct object types. This allows you to define a type with a name that is significant, similar to nominal typing within a structured type system. It is done by using the ``distinct`` keyword in the type definition.
+Ballerina also supports the concept of ``distinct`` object types. This allows you to define a type with a name that is significant, similar to nominal typing, within a structured type system. It is done by using the ``distinct`` keyword in the type definition.
 
 ```ballerina
 type Person distinct object {
@@ -170,20 +180,22 @@ type Person distinct object {
 
 distinct class Employee {
     *Person;
+    
     function init(string name) {
         self.name = name;
     }
-};
+}
 
 distinct class Manager {
     *Person;
+    
     function init(string name) {
         self.name = name;
     }
-};
+}
 ```
 
-In the above code example, the type **``Person``** is defined as distinct. This means that the compiler will give this type a unique name, with which the object value will be tagged and is unique across all the distinct types defined in the program. The **``Employee``** type includes the **``Person``** type, so it belongs to the distinct **``Person``** type as well as distinct **``Employee``** type. Similarly, the class **``Manager``** also inherits the **``Person``** type.
+In the above code example, the **``Person``** type is defined as ``distinct``. This means that the compiler will give this type a unique name, with which the object value will be tagged and is unique across all the distinct types defined in the program. The **``Employee``** type includes the **``Person``** type, so it belongs to the distinct **``Person``** type as well as the distinct **``Employee``** type. Similarly, the **``Manager``** class also inherits the **``Person``** type.
 
 Conceptually, a distinct type including another distinct type results in multiple interface inheritance. So a type check on the value of the **``Employee``** object will return true both for the **``Employee``** as well as the **``Person``**. The same applies to **``Manager``** type.
 
@@ -192,33 +204,33 @@ One scenario where you would want to use a distinct object type is when you are 
 
 ## Readonly Objects and Classes
 
-You can also define readonly objects and classes. An object is ``readonly`` if all its fields are final and have readonly type. You can use *readonly & T* to declare an object *T* as ``readonly``.
+You can also define read-only objects and classes. An object is ``readonly`` if all of its fields are ``final`` and are of types that are subtypes of the ``readonly`` type. You can use **``readonly & T``** to declare an object ``T`` as ``readonly``.
 
 ```ballerina
 type TimeZone readonly & object {
-    function getOffset(decimal utc)
-                 returns decimal;
+    function getOffset(decimal utc) returns decimal;
 };
 ```
 
-You can also have a class that belongs to readonly type, by prefixing the ``readonly`` keyword in the class declaration.
+You can also have a class that belongs to the ``readonly`` type by prefixing the ``readonly`` keyword in the class declaration.
 
-```
+```ballerina
 readonly class FixedTimeZone {
     *TimeZone;
+
     final decimal offset;
+
     function init(decimal offset) {
         self.offset = offset;
     }
 
-    function getOffset(decimal utc)
-                                  returns decimal {
+    function getOffset(decimal utc) returns decimal {
         return self.offset;
     }
 }
 ```
 
-In the above code example, the class **``FixedTimeZone``** is of readonly type. It includes the **``Timezone``** which is also a readonly type, and it has a final decimal field named **``offset``**. If this class defines any object type *T* within its body, that will also become *readonly & T*.
+In the above code example, the **``FixedTimeZone``** class is of the ``readonly`` type. It includes the **``Timezone``** type which is also a ``readonly`` type, and it has a ``final`` ``decimal`` field named **``offset``**. If the class declaration uses ``readonly`` then the object type defined by the class is ``readonly & T``, where ``T`` is the type defined in the class body.
 
 ## Error Detail
 

@@ -126,41 +126,44 @@ redirect_from:
     <h3 id="language-basics">Language Basics</h3></a>
     <p >Get started with the basics that are common to all C-family programming languages. </p>
 </div>
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+
+</div>
+
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card">
 <a href="/learn/writing-a-restful-api-with-ballerina/">
     <h3 id="working-with-data">Writing a RESTful API with Ballerina</h3></a>
     <p >Understand the basics of Ballerina constructs, which allow you to write RESTful APIs. </p>
 </div>
-</div>
-
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card">
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
 <a href="/learn/writing-a-graphql-api-with-ballerina/">
     <h3 id="working-with-data">Writing a GraphQL API with Ballerina</h3></a>
     <p >Understand the basics of Ballerina constructs, which allow you to write GraphQL APIs. </p>
 </div>
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+
+</div>
+
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card">
 <a href="/learn/writing-a-grpc-service-with-ballerina/">
     <h3 id="building-a-data-service">Writing a gRPC Service with Ballerina</h3></a>
     <p >Write a simple Ballerina gRPC service and invoke the service through a Ballerina gRPC client. </p>
 </div>
-</div>
-
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card">
+<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
 <a href="/learn/working-with-data-in-ballerina/">
     <h3 id="working-with-data">Working with Data in Ballerina</h3></a>
     <p >Use Ballerina query expressions to filter, sort, and join different iterable collections. </p>
 </div>
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
- <a href="/learn/deploying-ballerina-on-kubernetes/">
-    <h3 id="hello-world">Deploying Ballerina on Kubernetes</h3></a>
-   <p >Dockerize your application and deploy it on Kubernetes. </p>
-</div>
+
 </div>
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
+ <a href="/learn/deploying-ballerina-on-kubernetes/">
+    <h3 id="hello-world">Deploying Ballerina on Kubernetes</h3></a>
+   <p >Dockerize your application and deploy it on Kubernetes. </p>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
 <a href="/learn/building-a-data-service-in-ballerina/">
     <h3 id="building-a-data-service-in-ballerina">Building a Data Service in Ballerina</h3></a>
     <p >Connect to a MySQL database and execute queries using an HTTP RESTful API. </p>

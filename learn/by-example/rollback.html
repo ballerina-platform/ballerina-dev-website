@@ -1,7 +1,7 @@
 ---
 layout: ballerina-example-page-old
 title: Rollback
-description: This BBE demonstrate `rollback` operation in Ballerina
+description: This BBE demonstrates `rollback` operation in Ballerina.
 keywords: ballerina, ballerina by example, bbe, rollback, rollback transaction
 permalink: /learn/by-example/rollback
 active: rollback
@@ -22,14 +22,17 @@ redirect_from:
 
     <span class="c1">// Creates an array of `Update` records.</span>
     <span class="nx">Update</span><span class="p">[]</span> <span class="nx">updates</span> <span class="p">=</span>
-    <span class="p">[{</span><span class="nx">updateIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">stockMnt</span><span class="p">:</span> <span class="mi">2000</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">updateIndex</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">stockMnt</span><span class="p">:</span> <span class="o">-</span><span class="mi">1000</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">updateIndex</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">stockMnt</span><span class="p">:</span> <span class="mi">1500</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">updateIndex</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">stockMnt</span><span class="p">:</span> <span class="o">-</span><span class="mi">1000</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">updateIndex</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">stockMnt</span><span class="p">:</span> <span class="o">-</span><span class="mi">2000</span><span class="p">}];</span>
+    <span class="p">[</span>
+        <span class="p">{</span><span class="nx">updateIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">stockMnt</span><span class="p">:</span> <span class="mi">2000</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">updateIndex</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">stockMnt</span><span class="p">:</span> <span class="o">-</span><span class="mi">1000</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">updateIndex</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">stockMnt</span><span class="p">:</span> <span class="mi">1500</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">updateIndex</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">stockMnt</span><span class="p">:</span> <span class="o">-</span><span class="mi">1000</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">updateIndex</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">stockMnt</span><span class="p">:</span> <span class="o">-</span><span class="mi">2000</span><span class="p">}</span>
+    <span class="p">];</span>
     <span class="c1">// If an error is returned from the `transfer` function,</span>
     <span class="c1">// the error is returned from the `main` and it exits.</span>
     <span class="nx">check</span> <span class="nx">transfer</span><span class="p">(</span><span class="nx">updates</span><span class="p">);</span>
+
     <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -43,7 +46,7 @@ redirect_from:
             <span class="nx">check</span> <span class="nx">doUpdate</span><span class="p">(</span><span class="nx">u</span><span class="p">);</span>
 
         <span class="p">}</span>
-        <span class="c1">// `commit` will not be called,because of an implicit rollback.</span>
+        <span class="c1">// `commit` will not be called because of an implicit rollback.</span>
         <span class="nx">check</span> <span class="nx">commit</span><span class="p">;</span>
 
     <span class="p">}</span>
@@ -111,7 +114,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=0bc33cda944a7231cc4871fdea0eec09&file=rollback.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=9a4927fc9fc1749bf323bc8f23edfc46&file=rollback.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -163,11 +166,13 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    Update[] updates =
-    [{updateIndex: 0, stockMnt: 2000},
-    {updateIndex: 1, stockMnt: -1000},
-    {updateIndex: 2, stockMnt: 1500},
-    {updateIndex: 3, stockMnt: -1000},
-    {updateIndex: 4, stockMnt: -2000}];
+    [
+        {updateIndex: 0, stockMnt: 2000},
+        {updateIndex: 1, stockMnt: -1000},
+        {updateIndex: 2, stockMnt: 1500},
+        {updateIndex: 3, stockMnt: -1000},
+        {updateIndex: 4, stockMnt: -2000}
+    ];
 </code></pre></div>
 
                                 </div>
@@ -187,8 +192,6 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    check transfer(updates);
-    return;
-}
 </code></pre></div>
 
                                 </div>
@@ -201,6 +204,19 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    return;
+}
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
                                     
                                 </div>
                             </div>
@@ -291,7 +307,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>commit</code> will not be called,because of an implicit rollback.</p>
+                                            <p><code>commit</code> will not be called because of an implicit rollback.</p>
 
                                         </div>
                                     </div>

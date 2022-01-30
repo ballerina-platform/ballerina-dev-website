@@ -784,74 +784,74 @@ The use of the ``check`` keyword before the query handles the scenario where the
 
 ## Backtick Templates
 
-Ballerina supports the concepts of backticks. A backtick template is composed of a tag followed by a backtick string, enclosed within the ``` ` ``` notation, where you can have expressions that are enclosed in *${ . . . }*.
+Ballerina supports the concepts of backtick templates. A backtick template is composed of a tag followed by a backtick string, enclosed within the `` ` `` notation, where you can have expressions that are enclosed in **``${...}``**.
 
 ```ballerina
 string name = "James";
 string s = string `Hello, ${name}`;
 ```
   
-In the above code example, the value of **``s``** is evaluated as *“Hello, James”* from the backtick template. It has a string tag, and the expression *${name}* evaluates to the value of variable **``name``**, which is interpolated within the backtick string to return a string value.
+In the above code example, the value of **``s``** is evaluated as ``"Hello, James"`` from the backtick template. It has a ``string`` tag, and the expression **``${name}``** evaluates to the value held by the variable **``name``**, which is interpolated within the backtick string to return a string value.
 
-The backtick template is evaluated in two phases. The first phase accumulates the contents of the template in a list of strings and a list of expressions. In the second phase, depending on the tag, the expression is evaluated and turned into the type of tag. In this case, it converts the result of the expression into a string, since the tag is a string.  
+The backtick template is evaluated in two phases. The first phase accumulates the contents of the template in a list of strings and a list of expressions. In the second phase, depending on the tag, the expression is evaluated and turned into the type of tag. In this case, it converts the result of the expression into a string, since the tag is ``string``.  
 
-In case you want to add the backtick itself, within a backtick template, you can use the same *${ . . . }* syntax.
+In case you want to add the backtick itself, within a backtick template, you can use the same **``${...}``** syntax.
 
 ```ballerina
 string s = string `Backtick:${"`"}`;
 ```
 
-In the above code example, the string **``s``** will be assigned a value of *“Backtick:`’*.
+In the above code example, the string **``s``** will be assigned a value of ``"Backtick:`"``.
 
 ## Raw Templates
 
-Raw templates are backtick templates without the tag, in which case the phase two of the template evaluation only performs expression evaluation. A raw template returns an object containing an array of strings separated by insertions and an array of the results of expression evaluation.
+Raw templates are backtick templates without the tag, in which case phase two of the template evaluation only performs expression evaluation. A raw template returns an object containing an array of strings separated by insertions and an array of the results of expression evaluation.
 
-One of the important use cases of raw templates is the preparation of the database query to pass parameters along with SQL statements.
+One of the important use cases of raw templates is parameterized SQL queries.
 
 ```ballerina
-db->query(`SELECT * FROM  order WHERE customer_id = ${customerId}’);
+db->query(`SELECT * FROM  order WHERE customer_id = ${customerId}`);
 ```
 
-In the above example, assume that **``db``** is a client object making a remote call to a SQL database. The raw template passed to the query method translates to an array of two strings *“SELECT * FROM order WHERE customer_id =”* and “”. The second string is empty as it comes after the expression. Along with that, it also passes an array of expression evaluation which is the value of variable **``customerId``**. Thus, the SQL syntax is turned into the right syntax with the required substitution for the underlying SQL implementation.
+In the above example, assume that **``db``** is a client object making a remote call to a SQL database. The raw template passed to the query method translates to an array of two strings ``"SELECT * FROM order WHERE customer_id ="`` and ``""``. The second string is empty as it comes after the expression. Along with that, it also passes an array of evaluated expressions which is the value of the **``customerId``** variable here. Thus, the SQL syntax is turned into the right syntax with the required substitution for the underlying SQL implementation.
 
 ## XML Overview
 
-In Ballerina, XML is a separate basic type. It is based on the concept of sequence, and is derived from the concept of XQuery as well as XPath2. The model of XML used in Ballerina is based on XML Infoset, which follows the basic concept of XML elements and attributes, rather than the XML schema, as in the case of PSVI (Post-Schema Validation Infoset).
+In Ballerina, XML is a separate basic type. It is based on the concept of sequence and is derived from the concept of XQuery as well as XPath2. The model of XML used in Ballerina is based on XML Infoset, which follows the basic concept of XML elements and attributes, rather than the XML schema, as in the case of PSVI (Post-Schema Validation Infoset).
 
-Ballerina uses the template concept to construct xml values. It is designed to work with the underlying concepts of elements and attributes, which also forms the basis for HTML also. Therefore Ballerina treats HTML as XML.
+Ballerina uses the template concept to construct ``xml`` values. It is designed to work with the underlying concepts of elements and attributes, which also forms the basis for HTML. Therefore Ballerina treats HTML as XML.
 
-As part of XML handling, Ballerina provides a navigation syntax with an XPath-like syntax. The xml type also works well with query expressions to provide XQuery FLWOR like functionality.
+As part of XML handling, Ballerina provides an XPath-like navigation syntax. The ``xml`` type also works well with query expressions to provide XQuery FLWOR-like functionality.
 
-Overall the XML design in Ballerina is opinionated, and it works more like the regular containers such as lists and tables. Also, Ballerina’s XML representation doesn't support an up pointer. Therefore, the XML elements do not have references to parents and siblings since they do not know where they are in the overall XML structure.
+Overall the XML design in Ballerina is opinionated, and it works more like the regular containers such as lists and tables. Also, Ballerina's XML representation doesn't support an up pointer. Therefore, the XML elements do not have references to parents and siblings since they do not know where they are in the overall XML structure.
 
 ### Sequences
 
-A sequence is another categorization of types within Ballerina that we briefly mentioned earlier. It is a basic type. string and xml are the two sequence types in Ballerina.
+A sequence is another categorization of types within Ballerina that we briefly mentioned earlier. It is a basic type. The ``string`` and ``xml`` types are the two sequence types in Ballerina.
 
-A sequence is formed by having a value of basic type T and concatenating it with another sequence of values of type T. An empty sequence of basic type T or a singleton of basic type T is also considered a sequence.
+A sequence is formed by having a value of basic type ``T`` and concatenating it with another sequence of values of type ``T``. An empty sequence of basic type ``T`` or a singleton of basic type ``T`` is also considered a sequence.
 
-Sequences are different from arrays in the sense that they are not nested, unlike arrays. In the same way, you do not have a string of strings, but just a linear sequence of characters. Also, there is no difference between a singleton x and a sequence consisting of just x. The basic type of sequence determines the basic type of members.
+Sequences are different from arrays in the sense that they are not nested. In the same way, you do not have a string of strings, but just a linear sequence of characters. Also, there is no difference between a singleton ``x`` and a sequence consisting of just ``x``. The basic type of a sequence determines the basic type of its members.
 
 Similarly, the way an XML element is represented is by a sequence of that XML element.
 
 The mutability of a sequence is similar to strings. Members of a sequence are also immutable, just like strings. For example, you cannot mutate a sequence of one item into a sequence of two items.
 
-A sequence has no storage identity. Two sequences will match for === operator if their members match for the same operation.
+A sequence has no storage identity. Two sequences will match for the ``===`` operator if their members match for the same operation.
 
 ### XML Data Model
 
-In Ballerina, an xml value is a sequence representing the parsed content of an XML item.
+In Ballerina, an ``xml`` value is a sequence representing the parsed content of an XML item.
 
-An xml value has four kinds of items. It can have an element, processing instruction or a comment item, all of which correspond 1:1 to XML infoset items. The fourth item is the text item that corresponds to a chunk of XML infoset defined character information items. An XML document is represented by an xml sequence with only one element, that includes one XML element, processing instructions, and comments, but no text.
+An ``xml`` value has four kinds of items. It can have an element, processing instruction, or a comment item, all of which correspond 1:1 with the XML infoset items. The fourth item is the text item that corresponds to a chunk of XML infoset defined character information items. An XML document is represented by an XML sequence with only one element and no text.
 
-An element item consists of three things, name of string type, attributes of type *map\<string>*, and children of type ``xml``. A text item has no identity, therefore the operator ``==`` has the same meaning as ``===``. Consecutive text items never occur in an xml value. Instead, they are always merged.
+An element item consists of three things, name of type ``string``, attributes of type ``map\<string>``, and children of type ``xml``. A text item has no identity, therefore the ``==`` operator has the same meaning as ``===``. Consecutive text items never occur in an ``xml`` value. Instead, they are always merged.
 
 An element item is mutable whereas text items are immutable.
 
 ### XML Templates
 
-XML templates are used to create xml values.
+XML templates are used to create ``xml`` values.
 
 ```ballerina
 string url = "https://ballerina.io";
@@ -861,17 +861,17 @@ xml content = xml`<a href="${url}">Ballerina</a> is an <em>exciting</em> new lan
 xml p = xml `<p>${content}</p>`;
 ```
 
-The above code example defines two variables **``content``** and **``p``** of xml type using the backtick template containing the xml tag. In this case the phase two of the template processing does a parsing using the XML 1.0 recommendation’s grammar for content (what XML allows between a start-tag and end-tag). You can place the interpolated expressions of the template within XML content, or in attribute values, as string values.
+The above code example defines two variables **``content``** and **``p``** of the ``xml`` type using backtick templates containing the ``xml`` tag. In this case, phase two of the template processing does a parsing using the XML 1.0 recommendation's grammar for content (what XML allows between a start-tag and end-tag). You can place the interpolated expressions of the template within XML content, or in attribute values as ``string`` values.
 
 ### XML Operations
 
-You can also perform different operations on values of xml type.
+You can also perform different operations on values of the ``xml`` type.
 
-You can use the + operator to concatenate two xml values.
+You can use the ``+`` operator to concatenate two ``xml`` values.
 
 ```ballerina
 xml x1 = xml `<name>Sherlock Holmes</name>`;
-Xml x2 = xml `<details>
+xml x2 = xml `<details>
                 <author>Sir Arthur Conan Doyle</author>
                 <language>English</language>
               </details>`;
@@ -881,41 +881,41 @@ xml x3 = x1 + x2;
 
 The ``==`` operator does a deep equals comparison.
 
-You can loop through the xml elements with foreach.
+You can loop through the ``xml`` elements in a ``foreach`` statement.
 
 ```ballerina
 xml x4 = xml `<name>Sherlock Holmes</name><details>
-                        <author>Sir Arthur Conan Doyle</author>
-                        <language>English</language>
-                  </details>`;
+                    <author>Sir Arthur Conan Doyle</author>
+                    <language>English</language>
+                </details>`;
 
 foreach var item in x4 {
     io:println(item);
 }
 ```
 
-In the above code example, the code iterates through the xml value in **``x4``** to  print the *\<name>* and *\<details>* elements.
+In the above code example, the code iterates through the ``xml`` value in **``x4``** to print the *\<name>* and *\<details>* elements.
 
-You can also access the ith element using the ``[ ]`` notation, and index into them.
+You can also access the ``i``th element using the ``x[i]`` notation, and index into them.
 
 ```ballerina
-print(x4[0]);
+io:println(x4[0]);
 ```
 
-Similarly, you can use the ``.`` notation to access the attribute.
+Similarly, you can use the ``.`` notation to access attributes.
 
 ```ballerina
 xml x5 = xml `<para id="greeting">Hello</para>`;
 string id = check x5.id;
 ```
 
-If you want to check for optional attributes, use the ``?`` notation before ``.`` to return ( ) in case the attribute is not present.
+If you want to check for optional attributes, use the ``?`` notation before ``.`` to get ``()`` in case the attribute is not present.
 
 ```ballerina
 string? name = check x5?.name;
 ```
 
-Ballerina LangLib provides a *lang.xml* library module for performing operations on xml. For example, you can also mutate an element using **``setChildren( )``** as follows:
+The **``lang.xml``** lang library provides operations on ``xml`` values. For example, you can also mutate an element using the **``setChildren( )``** function as follows:
 
 ```ballerina
 x2.setChildren(xml `<language>French</language>`);
@@ -923,27 +923,27 @@ x2.setChildren(xml `<language>French</language>`);
 
 ### XML Subtyping
 
-Ballerina also supports inbuilt subtypes of the xml type. This is beneficial for performing operations on some xml values that represent an element rather than the entire xml sequence. Similarly, it does not make sense to set children for an XML text item since it does not have any children. So such checks can be taken care of with the type system by defining subtypes.
+Ballerina also supports built-in subtypes of the ``xml`` type. This is beneficial for performing operations on some ``xml`` values that represent an element rather than the entire XML sequence. Similarly, it does not make sense to set children on an XML text item since it does not have any children. So such checks can be taken care of by the type system by defining subtypes.
 
-You can define a xml element value that belongs to a subtype *xml:Element* of ``xml``.  
+You can define an XML element value that belongs to the **``xml:Element``** subtype of ``xml``.  
 
 ```ballerina
 xml:Element p = xml`<p>Hello</p>`;
 ```
 
-In this case, *Element* is a subtype of ``xml`` and **``p``** comprises sequences of length one containing one element. Similarly, *xml:Comment* and *xml:ProcessingInstruction* subtypes are also available.
+In this case, ``xml:Element`` is a subtype of ``xml`` and **``p``** comprises sequences of length one containing one element. Similarly, ``xml:Comment`` and ``xml:ProcessingInstruction`` subtypes are also available.
 
-An xml value belongs to *xml:Text* type if it consists of a text item or is empty. You can create an xml:Text type from string, and if the string is empty then the xml:Text value is also empty.
+An ``xml`` value belongs to the ``xml:Text`` type if it consists of a text item or is empty. You can create a value of the  ``xml:Text`` type from a ``string`` value, and if the string is empty, then the ``xml:Text`` value is also empty.
 
 ```ballerina
 function stringToXml(string s) returns xml:Text  {
-        return xml:createText(s);
+    return xml:createText(s);
 }
 ```
 
-**``createText( )``** is part of the *lang.xml* and all functions defined in *lang.xml* work in a typesafe way across the subtypes of xml, without you having to cast all the time.
+The **``createText()``** function is part of the **``lang.xml``** lang library and all functions defined in it work in a typesafe way across the subtypes of ``xml``, without you having to cast all the time.
 
-An xml value belongs to the type *xml<T>* if each of its members belong to *T*. Iterating over the *xml<T>*, gives you access to the items of type *T*.
+An ``xml`` value belongs to the type **``xml<T>``** if each of its members belongs to **``T``**. Iterating over an **``xml<T>``** value gives you access to the items of type **``T``**.
 
 ```ballerina
 function rename(xml x, string oldName, string newName) {
@@ -956,51 +956,51 @@ function rename(xml x, string oldName, string newName) {
 }
 ```
 
-In the above code example, the function **``rename( )``** performs the operation of setting a new name for some XML elements. It takes an argument **``x``** as xml type, and two strings **``oldName``** and **``newName``**.
+In the above code example, the **``rename()``** function sets a new name for some XML elements. It takes an argument **``x``** of the ``xml`` type, and two strings **``oldName``** and **``newName``**.
 
-In the function, the ``foreach`` loop iterates through the list of elements of **``x``**  which is returned by **``elements( )``** and belongs to type *xml<xml:Element>*. Therefore, you can call **``getName( )``** for each *xml:Element* and check for the old name. And if the name matches, **``setName( )``** is called to change the name. The function executes recursively for children of an *xml:Element*.
+In the function, the ``foreach`` loop iterates through the list of elements of **``x``**  which is returned by the **``elements()``** lang library function and belongs to type **``xml<xml:Element>``**. Therefore, you can call the **``getName()``** function for each ``xml:Element`` value and check for the old name. And if the name matches, the **``setName()``** function is called to change the name. The function executes recursively for children of an ``xml:Element``.
 
 ### XML Navigation Syntactic Sugar
 
-Ballerina supports the use of navigational syntax to access items within the xml value. This is similar to the functionality of XPath.
+Ballerina supports the use of navigational syntax to access items within an ``xml`` value. This is similar to the functionality of XPath.
 
-To explain this navigational syntax, you can assume to have a xml value *x* which contains one or more elements *e*. Now there are several possibilities to navigate through *x*.  
+To explain this navigational syntax, you can assume to have an ``xml`` value **``x``** which contains one or more elements **``e``**. Now there are several possibilities to navigate through ``x``.  
 
-To access every element in *x\** named *para* you can use *x.\<para>*. Use of the angle brackets *\<* and *\>* selects an element.
+To access every element in ``x`` named ``para`` you can use **``x.\<para>``**. Use of the angle brackets ``\<`` and ``\>`` selects an element.
 
-To access the children of *e*, for all the elements e in *x*, you can use *x/\**. Use of / take the navigation down one level in *x*.
+To access the children of ``e``, for every element ``e`` in ``x``, you can use **``x/\*``**. Use of ``/`` takes the navigation down one level in ``x``.
 
-To access every element para in the children of *e* in *x*, use *x/\<para>*.
+To access every element named ``para`` in the children of ``e``, for every element ``e`` in ``x``, use **``x/\<para>``**.
 
-For accessing any element th of *td* which is a children of *e* in *x*, use *x/\<th|td>*.
+To access every element named ``th`` or ``td`` in the children of ``e``, for every element ``e`` in ``x``, use **``x/\<th\|td>``**.
 
-For accessing every element in the children of *e* in *x*, use *x/\<*>*.
+To access every element in the children of ``e``, for every element ``e`` in ``x``, use **``x/\<\*>``**.
 
-For accessing every text item in the children of *e* in *x*, use *x/\*.text()*
+To access every text item in the children of ``e``, for every element ``e`` in ``x``, use **`x/\*.text()`**.
 
-For accessing every element named *para* in the descendants of *x*, use *x/\*\*/\<para>*. Here the use of * * signifies any number of levels within an xml element.
+To access every element named ``para`` in the descendants of ``e``, for every element ``e`` in ``x``, use **``x/\*\*/\<para>``**. Here the use of ``**`` signifies any number of levels within an xml element.
 
-For accessing the first element named *para* in the children of *e* in *x*, use  *x/\<para>[0]*.Using the *[ ]* syntax you can point to the nth element.
+To access the first element named ``para`` in the children of ``e``, for every element ``e`` in ``x``, use  **``x/\<para>[0]``**. You can point to the nth element using the ``[]`` syntax.
 
 ### Querying with XML
 
-You can also use the regular query expression in Ballerina to query XML.
+You can also use query expressions to query XML.
 
 ```ballerina
 function paraByLang(xml x, string lang) returns xml {
-     return from var para in x.<para>
+    return from var para in x.<para>
             where para?.lang == lang
             select para;
 }
 ```
 
-In the above code example, you can use the query expression to iterate over the xml **``x``**, for all elements *\<para>*, and the variable para is bound to each *\<para>* element at every step in the iteration. It uses the ``where`` clause to check the lang attribute of the element to match it with the string argument **``lang``**. Finally, it selects all the *\<para>* elements that satisfies the ``where`` clause.
+In the above code example, you can use the query expression to iterate over all elements ``\<para>`` in ``x``, and the variable ``para`` is bound to each ``\<para>`` element at every step in the iteration. It uses the ``where`` clause to check the ``lang`` attribute of the element to match it with the ``string`` parameter **``lang``**. Finally, it selects all the ``\<para>`` elements that satisfy the ``where`` clause.
 
-This query returns a new xml containing a sequence of *\<para>* elements.
+This query returns a new ``xml`` value containing a sequence of ``\<para>`` elements.
 
 ### Combining XML Templates and Queries
 
-You can combine the concept of template with queries to build nested templates. With this feature, you build powerful templates having query expressions, with inner templates.
+You can combine the concept of templates with queries to build nested templates. With this feature, you can build powerful templates having query expressions, with inner templates.
 
 ```ballerina
 type Person record {|
@@ -1009,35 +1009,35 @@ type Person record {|
 |};
 
 function personsToXml(Person[] persons) returns xml {
-    return xml`<data>${from var {name, country} in persons
-           select xml`<person                                        country="${country}">${name}</person>`}</data>`;
+    return xml `<data>${from var {name, country} in persons
+           select xml`<person country="${country}">${name}</person>`}</data>`;
 }
 ```
 
-In the above code example, **``Person``** is a record containing the **``name``** and **``country``** fields. The function **``personsToXml()``** takes an argument **``persons``** as an array of **``Person``** records, and returns an xml sequence containing all the array elements.
+In the above code example, the **``Person``** type is a record type containing the **``name``** and **``country``** fields. The **``personsToXml()``** function takes an array of **``Person``** records as the **``persons``** parameter, and returns an ``xml`` sequence containing all the array elements.
 
-To achieve this conversion, it builds a xml template having *\<data>* as the parent element. To populate the list of **``persons``**, the template is appended with the *${ }* placeholder containing a query expression.
+To achieve this conversion, it builds a ``xml`` template having ``\<data>`` as the parent element. To populate the list of **``persons``**, the template includes a ``${...}`` interpolation containing a query expression.
 
-The query expression binds to each **``name``** and **``country``** fields of **``Person``**, and returns another xml template containing the *\<person>* XML element. This inner template adds the country value as an attribute of *\<person>* and **``name``** as the text item, using the *${ }* notation.
+The query expression binds to each **``name``** and **``country``** field of the **``Person``** value and returns another ``xml`` template containing the ``\<person>`` XML element. This inner template adds the country value as an attribute of ``\<person>`` and **``name``** as the text item, using interpolations.
 
-At the end, an xml value containing a sequence of *\<data>* element with zero or more *\<person>* child elements is returned.
+At the end, an ``xml`` value containing a sequence of the ``\<data>`` element with zero or more ``\<person>`` child elements is returned.
 
-This is a very powerful feature unique to Ballerina. In this way, you can also build library functions that build HTML snippets as xml values for your application.
+This is a very powerful feature unique to Ballerina. In this way, you can also build library functions that build HTML snippets as ``xml`` values for your application.
 
 ### XML Namespaces
 
-Ballerina supports XML namespaces without adding another level of complexity in the existing xml type system. But this is optional and you can use XML without using the namespaces also.
+Ballerina supports XML namespaces without adding another level of complexity to the existing ``xml`` type system. But this is optional and you can use XML without using namespaces also.
 
-When you see a XML element *x* prefixed with the namespace as *ns:x* , under the covers, Ballerina expands the prefix and the colon into a *{url}x* notation where *url* is the namespace name bound to *ns*.
+When you see an XML element ``x`` prefixed with a namespace as **``ns:x``**, under the covers, Ballerina expands the prefix and the colon into a **``{url}x``** notation where ``url`` is the namespace name bound to ``ns``.
 
 ```ballerina
 xml:Element e = xml`<p:e xmlns:p="http://example.com/"/>`;
 string name = e.getName();
 ```
 
-In the above code example, the variable **``name``** is set to an expanded name if **``e``**, which is *{http://example.com}e*.
+In the above code example, an expanded name of **``e``**, which is ``{http://example.com}e ``is set to the variable **``name``**.
 
-### XMLNS Seclarations
+### XMLNS Declarations
 
 Overall, to make the XML work in Ballerina, you need XML namespace declarations in code. XML namespace declarations look like import declarations.
 
@@ -1046,16 +1046,18 @@ xmlns "http://example.com" as eg;
 xml x = xml`<eg:doc>Hello</eg:doc>`;
 ```
 
-In the above code example, the **``eg``** is bound as a prefix to the *namespace* url. You can use that prefix in the xml template and it will get expanded to the correct representation with the namespace.
+In the above code example, the **``eg``** is bound as a prefix to a namespace URL. You can use that prefix in the ``xml`` template and it will get expanded to the correct representation with the namespace.
 
-The comparison and assignment of xml elements will implicitly check for and expand the namespace declarations in the correct way.
+The comparison and assignment of ``xml`` elements will implicitly check for and expand the namespace declarations in the correct way.
 
 ```ballerina
 xmlns "http://example.com" as ex;
 
+// Will be true.
 boolean b = (x === x.<ex:doc>);
 
+// Will be "{http://example.com}doc".
 string exdoc = ex:doc;
 ```
 
-In the above code example, **``ex``** declares the same namespace declaration as **``eg``** previously. Therefore the boolean **``b``** will be true since the xml type **``x``** containing *\<eg:doc>* will be the same as *\<ex:doc>*. Similarly the string *exdoc* will be assigned a value of *{http://example.com}doc*, which includes the namespace declaration at the top. These declarations are also allowed at the block level.
+In the above code example, **``ex``** declares the same namespace declaration as **``eg``** previously. Therefore the boolean **``b``** will be true since the **``x``** variable containing ``\<eg:doc>`` will be the same as ``\<ex:doc>``. Similarly, the ``exdoc`` string variable will be assigned a value of ``{http://example.com}doc``, which includes the namespace declaration at the top. These declarations are also allowed at the block level.

@@ -28,7 +28,7 @@ redirect_from:
 * Use four spaces (not tabs) for each level of indentation.
 * Keep the maximum length of a line to 120 characters. 
 
-> **Note:** You can configure tools and plugins to use spaces when indenting and to change the number of maximum characters in a line.
+> **Note:** You can configure tools and plugins to use spaces when indenting and to change the maximum number of characters in a line.
 
 ## Line Spacing
 

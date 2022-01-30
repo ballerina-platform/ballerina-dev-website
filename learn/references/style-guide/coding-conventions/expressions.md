@@ -23,7 +23,7 @@ redirect_from:
 
 * Do not keep spaces between the function name and opening parentheses `(`.
   
-* If it is unable to keep the function invocation in a single line due to it exceeding the maximum line length, split it into a new line based on the best practices given in [Line Breaks](/learn/style-guide/coding-conventions/#line-breaks).
+* If it is not possible to keep the function invocation in a single line due to it exceeding the maximum line length, split it into a new line based on the best practices given in [Line Breaks](/learn/style-guide/coding-conventions/#line-breaks).
     
 **Example,**
 
@@ -61,7 +61,7 @@ Person person = {
 };
 ```
 
-* You can define the fields in new lines. If so, make sure all the fields are in a separate line and they are block-indented.
+* You can define the fields in new lines. If you do so, make sure each field is in a separate line and is block-indented.
 
 **Do's**
 

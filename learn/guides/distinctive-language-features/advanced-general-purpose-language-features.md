@@ -234,49 +234,44 @@ In the above code example, the **``FixedTimeZone``** class is of the ``readonly`
 
 ## Error Detail
 
-In Ballerina, you can associate additional payloads to an error type that contains more specific details about the context of the error.
+In Ballerina, you can associate additional fields with an error type to include more specific details about the context of the error.
 
 ```ballerina
-error err =
-    error("Whoops", httpCode = 27);
+error err = error("Whoops", httpCode = 27);
 
 type HttpDetail record {
     int httpCode;
 };
 
-error<HttpDetail> err =
-    error("Whoops", httpCode = 27);
+error<HttpDetail> httpError = error("Whoops", httpCode = 27);
 
-HttpDetail d = err.detail();
+HttpDetail d = httpError.detail();
 ```
 
-In the above code example, **``err``** is an error type constructed from named arguments to add some details to the error value. You can also describe the error details as a type *T* by using the *error<T>* syntax. **``HttpDetail``** is a record type that defines the field **``httpCode``**. When included in the declaration of the **``err``** Error type, it adds the error detail record as per **``HttpDetail``** record. When you want to get the detail out of the error, you can use the LangLib function *error:detail( )* to get back the **``HttpDetail``** record.
+In the above code example, **``err``** is an error type constructed from named arguments to add some details to the error value. You can also describe the error details as a type **``T``** by using the **``error<T>``** syntax. The **``HttpDetail``** type is a record type that defines the field **``httpCode``** of type ``int``. When included in the declaration of the **``error<HttpDetail>``** error type, it uses the **``HttpDetail``** record type as the error detail record. When you want to get the detail out of the error, you can use the lang library function ``error:detail()`` to get the detail value of the **``HttpDetail``** record type.
 
 ## Error Cause
 
-You can also have a cause in the error type. You can add it as an optional positional argument.
+You can also have a cause in an error value. You can pass it as a positional argument to the error constructor. The cause argument is optional in the error constructor.
 
 ```ballerina
-function foo(string s)
-                   returns error|int {
+function foo(string s) returns error|int {
     var res = int:fromString(s);
     if res is error {
-        return error("not an integer",
-          res);
-    }
-    else {
+        return error("not an integer", res);
+    } else {
         return res;
     }
 }
 ```
 
-In the above code example, the error constructor is called with the additional argument **``res``**, which is the error type returned in the case of **``fromString( )``** returning an error.
+In the above code example, the error constructor is called with the additional argument **``res``**, which is the error returned in case the **``int:fromString()``** function returns an error.
 
-You can also call the LangLib function *error:cause( )* on the error type to extract the cause value.
+You can also call the lang library function **``error:cause()``** on an error to extract the cause.
 
 ## Type Intersection for Error Types
 
-If you want to have an error type that is both distinct and has a constraint, you can use Ballerina’s type intersection to define such an error type.
+If you want to have an error type that is both distinct and has a constraint, you can use Ballerina's type intersection to define such an error type.
 
 ```ballerina
 type IoError distinct error;
@@ -285,15 +280,14 @@ type FileErrorDetail record {
     string filename;
 };
 
-type FileIoError
-    IoError & error<FileErrorDetail>;
+type FileIoError IoError & error<FileErrorDetail>;
 ```
  
-In the above code example, the error type **``FileIoError``** is declared through a type intersection of distinct error type **``IoError``** and the error detail record **``FileErrorDetail``**, using the `‘&’` notation.
+In the above code example, the **``FileIoError``** error type is declared using a type intersection of the distinct error type **``IoError``** and an error type with the **``FileErrorDetail``** type as the detail type, using the ``&`` notation.
 
 ## Type Intersection
 
-Type intersection is a generic feature that can be used for other types also. For example, you can use it to combine two objects.
+Type intersection is a generic feature that can be used with other types also. For example, you can use it to combine two objects.
 
 ```ballerina
 type Foo object {
@@ -306,18 +300,18 @@ type Bar object {
 
 type FooBar Foo & Bar;
 
-// same as
+// Same as
 type FooBar object {
     *Foo;
     *Bar;
 };
 ```
 
-In the above code example, **``Foo``** and **``Bar``** are two separate object types. The type **``FooBar``** is defined through the type intersection of **``Foo``** and **``Bar``** using `‘&’` notation. This has the same result as including the types using the `*` notation. It provides a neat alternative to type inclusion, but is less flexible.
+In the above code example, **``Foo``** and **``Bar``** are two separate object types. The **``FooBar``** type is defined using the type intersection of **``Foo``** and **``Bar``** using the ``&`` notation. This has the same result as including the types using the ``*`` notation. It provides a neat alternative to type inclusion but is less flexible.
 
-## Expression-oriented Style
+## Expression-Oriented Style
 
-Ballerina’s general philosophy is to make the programming syntax familiar to those familiar with the C-family of languages. It has a distinction between statements and expressions, just like in C. This is the imperative style of programming which is considered less intuitive. That’s why there is a shift towards a functional style of programming which is more expression oriented..  
+Ballerina's general philosophy is to make the programming syntax familiar to those familiar with the C-family of languages. It has a distinction between statements and expressions, just like in C. This is the imperative style of programming which is considered less intuitive. That's why there is a shift towards a functional style of programming that is more expression-oriented.
 
 Ballerina tries to provide a few options to make it possible to do more things with expressions. You have already seen a few examples of expressions, such as query expressions, constructor expressions for structured types, and nil expressions for functions returning nil values.
 
@@ -326,17 +320,18 @@ Here, are a few more things that you can do using expressions in Ballerina.
 ```ballerina
 function inc(int x) returns int => x + 1;
 
-// same as
+// Same as
 function inc(int x) returns int {
     return x + 1;
 }
 ```
 
-You can use expressions to return the body of a function using the `‘=>’` notation instead of using curly braces to define the function block.
+You can define the return value expression using the ``=>`` notation instead of using curly braces to define the function body block.
 
 ```ballerina
 var obj = object {
     private int x = 1;
+
     function getX() returns int => self.x;
 };
 ```
@@ -344,13 +339,13 @@ var obj = object {
 This works even within objects where methods are implemented.
 
 ```ballerina
-// let expressions
-function hypot(float x) =>
+// Let expressions.
+function hypot(float x) returns float =>
     let float x2 = x * x in
         float:sqrt(x2 + x2);
 ```
 
-And it also works with query statements where you can have expressions following the let clause using the ``in`` clause.
+And it also works with query statements where you can have expressions following the ``let`` clause using the ``in`` clause.
 
 ## Computed Field Key
 
@@ -402,7 +397,7 @@ But tuples are most suitable for describing lists with multiple types. In the ab
 byte[*] a = base16`DEADBEEF`;
 ```
 
-You can also infer the length of an array from the initializer expression. In the above code example, the array **``a``** is initialized with a fixed length, but the declaration uses a `‘*’` notation instead of specifying the length. This means that the compiler will allocate the array length based on the values used as the initializer expression.
+You can also infer the length of an array from the initializer expression. In the above code example, the array **``a``** is initialized with a fixed length, but the declaration uses a ``*`` notation instead of specifying the length. This means that the compiler will allocate the array length based on the values used as the initializer expression.
 
 
 ## Destructuring Tuples
@@ -474,7 +469,7 @@ If you consider the two types of values, lists and mappings, lists are indexed b
 
 Both the list and mappings types can be described in two ways, using uniform member types, and per-index member types. A list with uniform member type *T* is an array, declared as *T[ ]*. A mapping with uniform type member *T*  is a map, declared as *map \<T>*.  Similarly, a list with per-index member types *T0* and *T1* is a tuple, declared as *[T0, T1]*. And a mapping with per-indexed members is a record, declared as *record { Tx x; Ty  y; }*.
 
-Using the `‘ . . .’` notation you can have an open type. In case of lists, an open type is declared as a tuple type as  *[T0, Tr. . .]*. In case of mapping, it is a record type declared as *record {| Tx x; Tr . . .; |}*.
+Using the `` . . .`` notation you can have an open type. In case of lists, an open type is declared as a tuple type as  *[T0, Tr. . .]*. In case of mapping, it is a record type declared as *record {| Tx x; Tr . . .; |}*.
 
 ## Rest Parameters
 
@@ -508,7 +503,7 @@ In the above code example, service **``h1``** has a resource method which is *fi
 
 ## Spread Operator . . .x
 
-The spread operator `‘. . .’`  allows you to spread out the members of a structured type. If you declare *. . .T*, where *T* is a list or mapping, this is equivalent to specifying each member of *T* separated by a comma. In case of lists, it is specified by positions, and in the case of mapping, it is specified by name.
+The spread operator ``. . .``  allows you to spread out the members of a structured type. If you declare *. . .T*, where *T* is a list or mapping, this is equivalent to specifying each member of *T* separated by a comma. In case of lists, it is specified by positions, and in the case of mapping, it is specified by name.
 
 ```ballerina
 type Date record {|
@@ -757,7 +752,7 @@ m:IntConstraints? c
     = PositiveInt.@m:ConstrainedInt;
 ```
 
-In the above code example, the **``ConstrainedInt``** annotation is defined with just the **``minInclusive``** field. It is applied to a type **``PositiveInt``**.  At runtime, a typedesc value can be used to access the annotations. You can use a reference to **``PositiveInt``** to get the typedesc value and then use the `‘.@’` notation on it followed by the annotation tag to retrieve the particular annotation. If the annotation is present, annotation access will return a value of the associated type **``IntConstraints``**. Since the annotation may or may not be specified, annotation access may also return nil. Therefore, the result of annotation access will be the union of **``IntConstraints``** and nil.
+In the above code example, the **``ConstrainedInt``** annotation is defined with just the **``minInclusive``** field. It is applied to a type **``PositiveInt``**.  At runtime, a typedesc value can be used to access the annotations. You can use a reference to **``PositiveInt``** to get the typedesc value and then use the ``.@`` notation on it followed by the annotation tag to retrieve the particular annotation. If the annotation is present, annotation access will return a value of the associated type **``IntConstraints``**. Since the annotation may or may not be specified, annotation access may also return nil. Therefore, the result of annotation access will be the union of **``IntConstraints``** and nil.
 
 ## Trapping Panics
 

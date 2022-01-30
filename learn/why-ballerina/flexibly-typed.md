@@ -24,13 +24,13 @@ With more services being available in the cloud, the network-distributed program
 
 ## Statically Typed and Structural
 
-Ballerina is a statically-typed language, which means type compatibility between the constructs is checked at compile-time. Statically-typed languages are generally more robust to changes and refactorings, easier to debug, and aids in creating better language tooling.
+Ballerina is a statically-typed language, which means type compatibility between the constructs is checked at compile-time. Statically-typed languages are generally more robust to changes and refactorings, easier to debug, and aid in creating better language tooling.
 
  The type system of the Ballerina language is primarily structural with added support for nominal typing. This means that the type compatibility is identified by considering the structure of the value rather than just relying on the name of the type. This is different from languages like Java, C++, and C# that have nominal type systems in which it is bound by the name of the actual type.
 
 ### Shapes in Ballerina
 
-Types in Ballerina deal with an abstraction of values that don’t consider storage identity. This abstraction is called a shape. For simple types like int and boolean, there is no difference between a shape and a value because they don’t have a storage identity. To understand the concept of a shape, let’s look at the [`record` type](/learn/by-example/records.html) in Ballerina. Because records have storage identity, a reference to the value is stored in the variable rather than storing the actual value. This is comparable to references in Java or pointers in C++.
+Types in Ballerina deal with an abstraction of values that don't consider storage identity. This abstraction is called a shape. For simple types like `int` and `boolean`, there is no difference between a shape and a value because they don't have a storage identity. To understand the concept of a shape, let’s look at the [`record` type](/learn/by-example/records.html) in Ballerina. Because records have storage identity, a reference to the value is stored in the variable rather than storing the actual value. This is comparable to references in Java or pointers in C++.
 
 Here’s an example of a record that stores the state of a door:
 
@@ -49,9 +49,9 @@ DoorState v2 = {open: false, locked: true};
 DoorState v3 = {open: false, locked: true};
 ```
 
-The three variables above all represent a single state of the door being closed and locked. Nonetheless, we have created three different values where each variable is stored in a distinct memory reference. If we ignore the storage identity of these variables, we are left with the representation of the data it has, which is `{ open: false, locked: true }`. This is a single shape of the type `DoorState`.
+The three variables above all represent a single state of the door being closed and locked. Nonetheless, we have created three different values where each variable is stored in a distinct memory reference. If we ignore the storage identity of these variables, we are left with the representation of the data it has, which is `{open: false, locked: true}`. This is a single shape of the type `DoorState`.
 
-In this way, there are four possible shapes for DoorState as shown in the variables below:
+In this way, there are four possible shapes for `DoorState` as shown in the variables below:
 
 ```ballerina
 DoorState ds1 = {open: true, locked: true};
@@ -71,12 +71,12 @@ Subtyping in Ballerina is semantic. It is defined through shapes where `S` is a 
 
 The type `boolean` is a simple basic type in Ballerina without storage identity so its values become equivalent to its shapes. Therefore, the `boolean` type is defined as having two shapes, `true` and `false`.
 
-The `boolean` type’s shapes can be defined in set notation as `Sboolean = { true, false }`. This can be visualized as seen in Figure 2 below.
+The `boolean` type's shapes can be defined in set notation as `Sboolean = { true, false }`. This can be visualized as seen in Figure 2 below.
 
 <img src="/learn/images/why-diagram-02-new.png"/>
 <p class="cCaption">Figure 2: Set of shapes of the type <code>boolean</code></p>
 
-Now, according to our subtyping rules, we can derive new types based on the `boolean` type by creating subsets of its shapes. For example, a new type we can create is `boolean_false` where its only supported shape/value would be `false`. The new type is shown in Figure 3 below.
+Now, according to our subtyping rules, we can derive new types based on the `boolean` type by creating subsets of its shapes. For example, a new type we can create is `boolean_false`, where its only supported shape/value would be `false`. The new type is shown in Figure 3 below.
 
 <img src="/learn/images/why-diagram-03-new.png"/>
 <p class="cCaption">Figure 3: Shapes sets of types <code>boolean</code> and <code>boolean_false</code></p>
@@ -95,9 +95,9 @@ boolean bv2 = true;
 bv2 = bv1;
 ```
 
-As you can see, `bv1` of type `boolean_false` can be assigned to `bv2` of type `boolean` because `bv1`’s type is a subtype of `bv2`’s type. In simple terms, all the values that can be held by the variable `bv1` can be held by the variable `bv2`, and thereby, the assignment is possible.
+As you can see, `bv1` of type `boolean_false` can be assigned to `bv2` of type `boolean` because `bv1`'s type is a subtype of `bv2`'s type. In simple terms, all the values that can be held by the variable `bv1` can be held by the variable `bv2`, and thereby, the assignment is possible.
 
-We have now seen how Ballerina’s subtyping works in relation to simple types. Let’s take a look at creating subtypes of records by revisiting our `DoorState` scenario. Here, we will create a new type `EmergencyDoorState`, where the `locked` field has to always have the value `false`. The resultant types and their shapes can be seen below in Figure 4.
+We have now seen how Ballerina's subtyping works in relation to simple types. Let's take a look at creating subtypes of records by revisiting our `DoorState` scenario. Here, we will create a new type `EmergencyDoorState`, where the `locked` field has to always have the value `false`. The resultant types and their shapes can be seen below in Figure 4.
 
 <img src="/learn/images/why-diagram-04-new.png"/>
 <p class="cCaption">Figure 4: Shapes sets of types <code>DoorState</code> and <code>EmergencyDoorState</code></p>
@@ -113,7 +113,7 @@ type EmergencyDoorState record {|
 
 In the above type, we have modified the field `locked` to be of type `boolean_false`, which allows its only value to be `false`. In this type definition, default values in Ballerina records have been used, wherein the absence of an explicit value provided by the user, the default value mentioned here will be used.
 
-In this manner, the type `EmergencyDoorState` can only have the shapes `{ open: true, locked: false }` and `{ open: false, locked: false }`. These two elements make it a subset of the `DoorState` shapes set, thus `EmergencyDoorState` is a subtype of `DoorState`.
+In this manner, the type `EmergencyDoorState` can only have the shapes `{open: true, locked: false}` and `{open: false, locked: false}`. These two elements make it a subset of the `DoorState` shapes set, thus `EmergencyDoorState` is a subtype of `DoorState`.
 
 The following code snippet shows a sample usage of the `EmergencyDoorState` type:
 
@@ -124,7 +124,7 @@ io:println("Door - Open: ", eds2.open, ", Locked: ", eds2.locked);
 ```
 
 ### Benefits of a Structural Type System
-A structural type system proves beneficial when you have multiple systems interacting with each other since data exchange and type compatibilities can be resolved easier. Let’s dive into a Ballerina <a href="/learn/by-example/query-expressions">integrated query</a> example, which shows this behavior.
+A structural type system proves beneficial when you have multiple systems interacting with each other since data exchange and type compatibilities can be resolved easier. Let's dive into a Ballerina <a href="/learn/by-example/query-expressions">integrated query</a> example, which shows this behavior.
 
 ```ballerina
 type Result record {|
@@ -157,7 +157,7 @@ In situations such as above, a separate system from our core application may be 
 
 ## Open-by-Default
 
-Ballerina’s open-by-default concept is tied around the <a href="https://en.wikipedia.org/wiki/Robustness_principle">robustness principle</a>. This means that you should design network-aware programs to accept all the data that is sent to you and make the best effort to understand it. Also, when sending data, you should make the best effort to conform to the standard protocols that were agreed upon beforehand. This strategy makes sure you have the best chance of interacting with different systems reliably.
+Ballerina's open-by-default concept is tied around the <a href="https://en.wikipedia.org/wiki/Robustness_principle">robustness principle</a>. This means that you should design network-aware programs to accept all the data that is sent to you and make the best effort to understand it. Also, when sending data, you should make the best effort to conform to the standard protocols that were agreed upon beforehand. This strategy makes sure you have the best chance of interacting with different systems reliably.
 
 The main facilitator of this in the type system is the open record concept in Ballerina. The sections above demonstrated closed records and the sections below demonstrate open records with a record type that represents the details of a person.
 
@@ -204,7 +204,7 @@ The `Student` type defined above has an extra field `college` of type `string` c
 
 Sample usage of the above types is shown below:
 
-```balleirna
+```ballerina
 public function main() {
     Student s1 = {
         name: "Tom",
@@ -335,7 +335,7 @@ $ bal run sample.bal
                                        <span class="cTableCode"><code>High credit score {"name":"Tim Kern","birthYear":1995,"married":false,"creditScore":"EXCELLENT","country":"Japan","zipcode":"98101"}</code></span>
                                     </td>
                                  </tr> 
-                              </table>
+</table>
 
 <style>
 .nav > li.cVersionItem {

@@ -80,8 +80,8 @@
             url: /learn/distinctive-language-features/data/#json-type
             active: json-type
           - title: Working with JSON - Two Approaches
-            url: /learn/distinctive-language-features/data/#working-with-json-two-approaches
-            active: working-with-json-two-approaches
+            url: /learn/distinctive-language-features/data/#working-with-json---two-approaches
+            active: working-with-json---two-approaches
           - title: Working with JSON Directly
             url: /learn/distinctive-language-features/data/#working-with-json-directly
             active: working-with-json-directly
@@ -95,8 +95,8 @@
             url: /learn/distinctive-language-features/data/#converting-from-json-to-user-defined-type
             active: converting-from-json-to-user-defined-type
           - title: Converting to User-defined Type - cloneWithType
-            url: /learn/distinctive-language-features/data/#converting-to-user-defined-type-clonewithtype
-            active: converting-to-user-defined-type-clonewithtype
+            url: /learn/distinctive-language-features/data/#converting-to-user-defined-type---clonewithtype
+            active: converting-to-user-defined-type---clonewithtype
           - title: Resource Method Typing
             url: /learn/distinctive-language-features/data/#resource-method-typing
             active: resource-method-typing

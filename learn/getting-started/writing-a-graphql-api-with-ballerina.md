@@ -10,7 +10,7 @@ intro: This guide walks through the steps of writing a GraphQL API in Ballerina.
 
 This guide helps you understand the basics of Ballerina constructs which allow you to write GraphQL APIs.
 
-Due to the batteries included nature of the Ballerina language, there is no need to add any third party libraries to implement the GraphQL API. The Ballerina standard library itself is adequate. In this guide, you will be writing a simple GraphQL service to serve a dummy dataset related to Covid-19.
+Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement the GraphQL API. The Ballerina standard library itself is adequate. In this guide, you will be writing a simple GraphQL service to serve a dummy dataset related to COVID-19.
 
 This guide includes the following steps:
 
@@ -66,7 +66,7 @@ This will create a new Ballerina project inside a directory named `covid19`.
 ## Creating a Datasource for the Project
 
 Before writing the GraphQL service, let's create a data source for the project. This will mimic a database that stores
-the data for the service. In this guide, you are going to use an in-memory table in Ballerina as the datasource.
+the data for the service. In this guide, you are going to use an in-memory table in Ballerina as the data source.
 
 ### Defining the Types for the Datasource
 
@@ -165,7 +165,7 @@ the data set. Each resource method in this service represents a field of the Gra
 the resource method is the type of the field.
 The resource methods returning `isoCode` and the `country` have the return type `string`, which means these fields
 cannot be `null` in the GraphQL response, in other words, these fields have `NON_NULL` types. (In GraphQL, these are
-represented by the exclamation mark `!`. Eg.: `String!`). But the resource methods returning numbers can return `null`
+represented by the exclamation mark `!`. Eg.: `String!`). However, the resource methods returning numbers can return `null`
 values. Therefore, the type of fields represented by those resource methods is nullable.
 
 > **Note:**  The `decimal` type is used as a return type. This will add a `Scalar` type named `Decimal` to the GraphQL
@@ -238,7 +238,7 @@ service /covid19 on new graphql:Listener(9000) {
 The resource method definition has the accessor `get`, which is used to identify the resource methods as a field of the
 `Query` type. No other accessor is allowed. Then, comes the name of the field. The return type is the type of the field.
 
-The above resource method first retrieves the array of `CovidEntry` records from the datasource as an array, then
+The above resource method first retrieves the array of `CovidEntry` records from the data source as an array, then
 returns an array of `CovidData` service type array as the result using the built-in `map` function.
 
 Similarly, we can define another resource method to add the `filter` field.
@@ -261,7 +261,7 @@ corresponding data for the given `isoCode`, if such data is available in our dat
 
 As the `Query` type is completed now, you need to define the `Mutation` type using remote methods.
 
-Let's define a remote method to add an entry to our datasource:
+Let's define a remote method to add an entry to our data source:
 
 ```ballerina
 remote function add(CovidEntry entry) returns CovidData {
@@ -357,7 +357,7 @@ service /covid19 on new graphql:Listener(9000) {
 }
 ```
 
-Now, you can run this service to serve a GraphQL API to our datasource. To run, execute the following command:
+Now, you can run this service to serve a GraphQL API to our data source. To run, execute the following command:
 
 ```shell
 bal run

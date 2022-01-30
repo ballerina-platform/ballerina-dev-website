@@ -299,12 +299,12 @@ td.cEventDateContainer{
 .linkText:hover{
   color:#57595d !important;
 }
-.wy-nav-content h1 {
-  font-size: 38px !important;
-  color: #464646 !important;
-  font-weight: 400 !important;
-  margin-bottom: 30px !important;
-  margin-top:20px !important;
+.wy-nav-content {
+    font-size: 38px;
+    color: #585a5e;
+    font-weight: 200 !important;
+    margin-bottom: 30px;
+    /* margin-top:20px !important; */
 }
 @media only screen and (max-width: 768px) {
     body {
@@ -415,7 +415,7 @@ td.cEventDateContainer{
     <section id="secondary-nav-bar" >
        <div class="container">
        <nav class="navbar navbar-white second-nav" style="position: sticky;"> 
-       <a class="navbar-brand" href="/community" style="font-size: 28.5px; padding-left: 15px; font-weight: 500; color: #464646;height:0px;">The Ballerina Community</a>
+       <!-- <a class="navbar-brand" href="/community" style="font-size: 28.5px; padding-left: 15px; font-weight: 500; color: #464646;height:0px;">The Ballerina Community</a> -->
              <div class="navbar-header">
                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                  <span class="icon-bar"></span>
@@ -440,16 +440,8 @@ td.cEventDateContainer{
    </section> 
    </div>
 <div class="container" id="wrapper">
-    <div class="row" id="cballerina-intro-desktop">
-        <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;margin-bottom: 30px;">
-            <p>
-                Welcome to the Ballerina community! Use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource.
-            </p>
-           
-          </div>
-
-</div>
-<div class="section" style="padding-bottom: 30px;padding-top: 30px !important;" id="cballerina-intro-mob">
+  
+<div class="intro-section" style="padding-bottom: 30px;">
     <h1 id="the-ballerina-community" class="wy-nav-content" >The Ballerina Community </h1>
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;">
@@ -462,8 +454,7 @@ td.cEventDateContainer{
     </div>
 </div>
 
-
-<section  style="padding-bottom: 40px;">
+<section  style="padding-bottom:30px;">
 <span class="bookMarkOnPage" id="subscribe-to-newsletter"></span>
 <h2 style="padding-right: 15px;">Subscribe to Newsletter</h2>
 
@@ -1077,6 +1068,7 @@ document.onscroll = function() {
          display: inherit;
 
       }
+      .intro-section{margin-top: 100px;}
       h1{margin-top: 60px !important;}
       .table-striped > tbody > tr:nth-of-type(2n+1) {
         background-color: transparent !important;
@@ -1114,7 +1106,7 @@ document.onscroll = function() {
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     @media only screen and (min-width: 1200px) {
       #eventDetails{padding-left: 0px !important;}
-      #cballerina-intro-mob{display: none;}
+      /* #cballerina-intro-mob{display: none;} */
     }
  </style>
 

@@ -49,12 +49,12 @@ redirect_from:
                             <h2>Inferring Isolated</h2>
                             <p><p><code>isolated</code> is a complex feature, which would be a lot for an application developer to understand.
  A typical Ballerina application consists of a single module that imports multiple library modules.
- Within a single module, we can infer <code>isolated</code> qualifiers. Object w/o mutable fields is
- inherently <code>isolated</code>. Application developer&rsquo;s responsibility is to use <code>lock</code> statement where
+ Within a single module, the compiler infers <code>isolated</code> qualifiers. An object without mutable fields is
+ inherently <code>isolated</code>. It is the application developer&rsquo;s responsibility to use <code>lock</code> statements where
  needed. e.g.,
  <ul>
- <li>access self in a <code>service</code> object with mutable state</li>
- <li>access mutable module-level variables</li>
+ <li>accessing <code>self</code> in a <code>service</code> object with mutable state</li>
+ <li>accessing mutable module-level variables</li>
  </ul>
  <br></br>
  <p>Compiler can inform developer where missing locks are preventing a <code>service</code> object or method from
@@ -99,7 +99,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=ec0ee76409475e1e8afc824dff21d5e9&file=inferring_isolated.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=c49c79fb03f6e8cfb81c70a8e7c18841&file=inferring_isolated.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

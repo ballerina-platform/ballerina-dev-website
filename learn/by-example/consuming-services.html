@@ -17,7 +17,7 @@ redirect_from:
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// A client object is created by applying `new` to a client class.</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.github.com/&quot;</span><span class="p">);</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://api.github.com&quot;</span><span class="p">);</span>
 
     <span class="c1">// The remote method calls use the `-&gt;` syntax. This enables the sequence diagram view.</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">resp</span> <span class="p">=</span>
@@ -78,7 +78,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=27bfd3a1c6057d16e493729bd4b93a50&file=consuming_services.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=58263a1801b1064bb888e544ad163ed8&file=consuming_services.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -120,7 +120,7 @@ import ballerina/io;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client httpClient = check new (&quot;https://api.github.com/&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    http:Client httpClient = check new (&quot;https://api.github.com&quot;);
 </code></pre></div>
 
                                 </div>

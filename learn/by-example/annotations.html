@@ -13,18 +13,19 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
 <span class="c1">// The `@display` annotation applies to the transform function.</span>
 <span class="nd">@display {</span>
     <span class="nx">label</span><span class="p">:</span> <span class="s">&quot;Transform&quot;</span><span class="p">,</span>
     <span class="nx">iconPath</span><span class="p">:</span> <span class="s">&quot;transform.png&quot;</span>
 <span class="p">}</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">transform</span><span class="p">(</span><span class="kt">string</span> <span class="nx">s</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-   <span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">toUpperAscii</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">s</span><span class="p">.</span><span class="nx">toUpperAscii</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// The `@strand` annotation applies to the `start` action.</span>
-    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">fut</span> <span class="p">=</span> <span class="nd">@strand {</span> <span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span> <span class="p">}</span> <span class="nx">start</span> <span class="nx">foo</span><span class="p">();</span>
+    <span class="nx">future</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">fut</span> <span class="p">=</span> <span class="nd">@strand {</span><span class="nx">thread</span><span class="p">:</span> <span class="s">&quot;any&quot;</span><span class="p">}</span> <span class="nx">start</span> <span class="nx">foo</span><span class="p">();</span>
 
     <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">wait</span> <span class="nx">fut</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
@@ -44,7 +45,7 @@ redirect_from:
                             <h2>Annotations</h2>
                             <p><p>Annotations start with <code>@tag</code> and they come before what they apply to.
  Unprefixed tags refer to standard platform-defined annotations and
- Prefixed tags refer to annotations declared in modules.
+ prefixed tags refer to annotations declared in modules.
  <code>@tag</code> can be followed by record constructor expression.</p>
 </p>
 
@@ -86,7 +87,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=dc6810ae7638d652a081aa3427f7a96e&file=annotations.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=f26f484925fe6949060e679904ee7d18&file=annotations.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -120,7 +121,7 @@ redirect_from:
     iconPath: &quot;transform.png&quot;
 }
 public function transform(string s) returns string {
-   return s.toUpperAscii();
+    return s.toUpperAscii();
 }
 </code></pre></div>
 
@@ -152,7 +153,7 @@ public function transform(string s) returns string {
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; fut = @strand { thread: &quot;any&quot; } start foo();
+                                    <div class="highlight"><pre><code class=language-ballerina>    future&lt;int&gt; fut = @strand {thread: &quot;any&quot;} start foo();
 </code></pre></div>
 
                                 </div>

@@ -13,7 +13,7 @@ redirect_from:
 - /learn/user-guide/getting-started/writing-a-grpc-service-with-ballerina/
 ---
 
-## Prerequisites
+## Setting up the Prerequisites
 
 To complete this tutorial, you need:
 

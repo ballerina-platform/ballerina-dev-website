@@ -437,10 +437,11 @@ This is particularly useful when the **``update()``** function is called from a 
 
 ### ``lock`` Statement
 
-The ``lock`` statement allows the access of mutable state from multiple strands running on separate threads, with well defined results.
+The ``lock`` statement allows the access of mutable state from multiple strands running on separate threads, with well-defined results.
 
 ```ballerina
 int n = 0;
+
 function inc() {
     lock {
         n += 1;
@@ -450,13 +451,13 @@ function inc() {
 
 In the above code example, the ``lock`` block allows the safe mutation of the variable **``n``** from multiple strands running on separate threads.  
 
-The semantics of the lock block is like an atomic section, and the execution of outer lock blocks is not interleaved. From an implementation point of view, developers can think of this as a single global lock. The Ballerina compiler will optimize this by inferring a more fine grain set of locks to have the same semantic with better performance characteristics.
+The semantics of the ``lock`` block is like an atomic section, and the execution of the outer ``lock`` blocks is not interleaved. From an implementation point of view, developers can think of this as a single global lock. The Ballerina compiler will optimize this by inferring a more fine-grain set of locks to have the same semantic with better performance characteristics.
 
 ### Service Concurrency
 
 Ballerina's main goal for service concurrency is to achieve decent performance and a decent level of safety.  
 
-Decent performance means that the Listener can have multiple threads serving incoming requests concurrently. Similarly, a decent level of safety boils down to the expectation that there are no undetected data races that lead to wrong results. Additionally, the safety mechanism strives to detect such errors in runtime that cannot be caught at compile time. It is difficult to do it entirely at compile time since it would entail a more complex and restrictive system.
+Decent performance means that the Listener can have multiple threads serving incoming requests concurrently. Similarly, a decent level of safety boils down to the expectation that there are no undetected data races that lead to wrong results. However, certain errors that cannot be detected at compile-time may be detected at runtime. It is difficult to do it entirely at compile time since it would entail a more complex and restrictive system.
 
 You can expect Ballerina to figure out the code and tell whether the program is safe for strands to be executed on separate threads or not. In case it is safe, it is guaranteed that there will not be any undetected data races.
 
@@ -464,9 +465,9 @@ The ``lock`` statement is not enough to achieve this safety since it is left to 
 
 ### ``isolated`` Functions
 
-To achieve the intended goals of safety, Ballerina offers the concept of isolated function. An isolated function is a function that is concurrency safe if its arguments are safe. So it is not unconditionally safe, but if called with the right arguments, it is safe.
+To achieve the intended goals of safety, Ballerina offers the concept of ``isolated`` functions. An ``isolated`` function is a function that is concurrency safe if its arguments are safe. So it is not unconditionally safe, but if called with the right arguments, it is safe.
 
-An isolated function is allowed to access a mutable state only through its parameters. Further, it can only call a function that is isolated.
+An ``isolated`` function is allowed to access a mutable state only through its parameters. Further, it can only call a function that is ``isolated``.
 
 ```ballerina
 type R record {
@@ -474,47 +475,46 @@ type R record {
 };
 
 isolated function set(R r) returns R {
-   r.v = N;
+   r.v = 1;
    return r;
 }
 ```
 
-In the above code example, the function **``set( )``** is an ``isolated`` function. Given the right input parameter, it will be concurrency safe.
+In the above code example, the **``set()``** function is an ``isolated`` function. Given the right input parameter, it will be concurrency safe.
 
-The constraints for isolated functions are applied at compile time. This concept of isolation functions is a weaker version of the pure function concept found in the D programming language.
+The constraints for ``isolated`` functions are applied at compile time. This concept of ``isolated`` functions is a weaker version of the pure function concept found in the D programming language.
 
 ### ``readonly`` Type
 
-In  Ballerina, you have a ``readonly`` type whose value is immutable. This is represented as a type to which values belong only if they are immutable.
+In  Ballerina, you have a ``readonly`` type that represents immutable values. This is represented as a type to which values belong only if they are immutable.
 
 ```ballerina
-//Value of s is immutable array
-readonly & string[ ] s = [
-    “Foo”, “bar”
-];
+// The type of `s` is an immutable `string`` array.
+// The value is also constructed as an immutable value.
+readonly & string[] s = ["foo", "bar"];
  
 type Row record {
-    //Both field and its value
-    //are immutable
-    readonly string[ ] k;
-    int value;
+    // Both the field and its value are immutable.
+    readonly string[] k;
+
+    int v;
 };
 
-table<Row> key(k) = table ]
-    //can safely used s as a key
-    { key: s, value: 17 }
-]
+table<Row> key(k) t = table [
+    // Can safely use `s` as a key.
+    {k: s, v: 17}
+];
 ```
 
-In the above code example, the string array **``s``** is declared as readonly using the type intersection operator ``&``. The type of **``s``** is both an array of strings as well as readonly, which means that it is an immutable array. This is enforced at the compile time to ensure that the values of the array **``s``** are immutable. Therefore it is safe to pass it as an argument to an isolated function.
+In the above code example, the string array **``s``** is declared as read-only using the type intersection operator ``&``. The type of **``s``** is both an array of strings as well as readonly, which means that it is an immutable array. This is enforced at compile-time to ensure that the values of the array **``s``** are immutable. Therefore it is safe to pass it as an argument to an ``isolated`` function.
 
-This concept is different from the const keyword in C. So a *const char *s* in C is not the same as *readonly & string[ ] s* in Ballerina, because here you are making the values of the type immutable whereas, in case of C the const identifier refers to a variable whose value can be assigned to another variable with the const qualifier.
+This concept is different from the const keyword in C. So a *const char s* in C is not the same as *readonly & string[] s* in Ballerina, because here you are making the values of the type immutable whereas, in the case of C the const identifier refers to a variable whose value can be assigned to another variable with the const qualifier.
 
-If the ``readonly`` keyword is used within a structured type, it makes both the field and the value immutable. In the above code example, the field **``k``** of record Row is readonly. This means that the field **``k``** cannot be assigned to a new value, and the values of the field cannot be mutated by changing the array **``s``**.
+If the ``readonly`` keyword is used within a structured type, it makes both the field and the value immutable. In the above code example, the field **``k``** of the ``Row`` record type has the ``readonly`` qualifier. This means that the field **``k``** cannot be assigned a new value, and the values of the field cannot be mutated by changing the array **``s``**.
 
 ### ``readonly`` and ``isolated``
 
-readonly ensures safety in accessing data, and isolation provides a safe execution environment for a function. These two concepts can be combined to build a robust concurrency safety mechanism within a Ballerina program. Isolated functions can access final variables with ``readonly`` type without locking.
+``readonly`` ensures safety in accessing data, and isolation provides a safe execution environment for a function. These two concepts can be combined to build a robust concurrency safety mechanism within a Ballerina program. Isolated functions can access final variables of the ``readonly`` type without locking.
 
 ```ballerina
 type Entry map<json>;
@@ -523,7 +523,7 @@ type RoMap readonly & map<Entry>;
 final RoMap m = loadMap();
 
 function loadMap() returns RoMap {
-    . . . 
+    ... 
 }
 
 isolated function lookup(string s) returns readonly & Entry? {
@@ -531,23 +531,23 @@ isolated function lookup(string s) returns readonly & Entry? {
 }
 ```
 
-In the above code example, there are two map types declared at the top, **``Entry``** and **``RoMap``**. **``RoMap``** is also readonly. The **``loadMap( )``** function loads a map from a file and assigns to **``m``** which is of type **``RoMap``**.
+In the above code example, there are two map types declared at the top, **``Entry``** and **``RoMap``**. **``RoMap``** is also a subtype of ``readonly``. The **``loadMap( )``** function loads a map from a file and assigns it to **``m``** which is of type **``RoMap``**.
 
-This variable **``m``** is ``final``, which means that it cannot be set again. It is also ``readonly``, which means that its value is deeply immutable. Because of that, it is completely safe to access **``m``** from multiple threads. Therefore, when it is accessed in the isolated function **``lookup( )``**, it returns the **``Entry``** type which is also readonly type, thereby ensuring complete concurrency safety.
+This variable **``m``** is ``final``, which means that it cannot be set again. It is also ``readonly``, which means that its value is deeply immutable. Because of that, it is completely safe to access **``m``** from multiple threads. Therefore, when it is accessed in the ``isolated`` function **``lookup()``** without a ``lock`` statement. It returns a value of the **``Entry``** type which is also readonly type, thereby ensuring complete concurrency safety.
 
-In this way, ``readonly`` type complements isolated functions. If such a function is part of a method for service listeners where it has to read or write data and execute some code, the isolated specifier provides information about the function’s execution context, and readonly specifier provides information about immutability of the data.
+In this way, the ``readonly`` type complements ``isolated`` functions. If such a function is part of a method for service listeners where it has to read or write data and execute some code, the ``isolated`` specifier provides information about the function’s execution context, and ``readonly`` specifier provides information about immutability of the data.
 
 ### Combining Isolated Function with Lock
 
-To keep things from getting overly complex, you can combine the isolated function with lock to access mutable module-level state.
+To keep things from getting overly complex, you can combine isolated functions with lock statements to access mutable module-level state.
 
-A module-level mutable variable follows the concept of isolated root. It is an isolated island that guards access to the variable. For example, a value *r* is an isolated root if the mutable state reachable from *r* cannot be reached from outside except through *r*.
+A module-level mutable variable follows the concept of an isolated root. It is an isolated island that guards access to the variable. For example, a value ``r`` is an isolated root if the mutable state reachable from ``r`` cannot be reached from outside except through ``r``.
 
-Similarly, an expression is an isolated expression if it follows rules that guarantee that its value will be an isolated root. As an example, an expression with a type that is a subtype of readonly is always isolated. Similarly, an expression *[E1, E2]* is isolated if *E1* and *E2* are isolated. Also, an expression *f(E1, E2)* is isolated if *E1* and *E2* are isolated, and the type of *f* is an isolated function.
+Similarly, an expression is an isolated expression if it follows rules that guarantee that its value will be an isolated root. As an example, an expression of a type that is a subtype of ``readonly`` is always isolated. Similarly, an expression ``[E1, E2]`` is isolated if ``E1`` and ``E2`` are isolated. Also, an expression ``f(E1, E2)`` is isolated if ``E1`` and ``E2`` are isolated, and the type of ``f`` is an ``isolated`` function.
 
 ### Isolated Variables
 
-You can extend the concept of isolated functions to module-level variables. When a module-level variable is declared as isolated, the compiler guarantees that it is an isolated root and is accessed only within a lock statement.
+You can extend the concept of ``isolated`` functions to module-level variables. When a module-level variable is declared as ``isolated``, the compiler guarantees that it is an isolated root and is accessed only within a lock statement.
 
 ```ballerina
 isolated int[] stack = [];
@@ -565,23 +565,23 @@ isolated function pop() returns int {
 }
 ```
 
-In the above code example, **``stack``** is an isolated variable. Therefore, it can only be accessed within lock, as shown in the function **``push( )``** and **``pop( )``**, both being isolated functions.
+In the above code example, **``stack``** is an isolated variable. Therefore, it can only be accessed within ``lock`` statements, as shown in the functions **``push()``** and **``pop( )``**. Both functions are ``isolated`` functions.
 
-There are certain constraints with respect to defining isolated variables. First, they can be declared only at the module level with isolated expression. Second, they cannot be public.
+There are certain constraints with respect to defining ``isolated`` variables. They can be declared only at the module level and have to be initialized with isolated expressions. Isolated variables cannot be public.
 
-Additionally, some more constraints apply to the usage of isolated variables. The lock statement can only access one isolated variable. Further, it can only call isolated functions and use isolated expressions for transfer of values in and out of the block. Isolated functions are allowed to access isolated module-level variables as long as they adhere to the above constraints.
+Additionally, more constraints apply to the usage of ``isolated`` variables. A ``lock`` statement can access only one ``isolated`` variable. Within a ``lock`` statement that accesses an ``isolated`` variable, only ``isolated`` functions can be called. Moreover, isolated expressions have to be used to transfer values in and out of the ``lock`` statement. Isolated functions are allowed to access ``isolated`` module-level variables as long as they adhere to the above constraints.
 
 ### Isolated Methods
 
-The concept of isolation can also be applied to object methods.  An isolated object method is the same as an isolated function. It has an implicit reference to self, which is treated as a parameter.  
+The concept of isolation can also be applied to object methods. An ``isolated`` object method is the same as an ``isolated`` function. It has an implicit reference to ``self``, which is treated as a parameter.  
 
-An isolated method is concurrency-safe if both the object and the arguments are safe. But this is not quite enough for service concurrency. When a listener makes a call to a remote or resource method, it controls the parameters that are passed to the methods. Therefore, it can ensure the safety of the remote methods and ensure that the arguments to the method are safe. However, it cannot ensure the safety of the service object as the object may contain mutable fields.
+An ``isolated`` method is concurrency-safe if both the object and the arguments are safe. But this is not quite enough for service concurrency. When a listener makes a call to a remote or resource method, it controls the parameters that are passed to the methods. Therefore, it can ensure the safety of the remote methods and ensure that the arguments to the method are safe. However, it cannot ensure the safety of the service object as the object may contain mutable fields.
 
-Therefore, just having isolated methods alone does not guarantee complete concurrency safety.
+Therefore, just having ``isolated`` methods alone does not guarantee complete concurrency safety.
 
 ### Isolated Objects
 
-To bridge this concurrency gap in isolated methods, you can also define isolated objects. An isolated object is just like a module with isolated module-level variables.
+To bridge this concurrency gap in ``isolated`` methods, you can also define ``isolated`` objects. An ``isolated`` object is just like a module with ``isolated`` module-level variables.
 
 ```ballerina
 isolated class Counter {
@@ -602,14 +602,15 @@ isolated class Counter {
 }
 ```
   
-In the above code example, **``Counter``** is an isolated object. In this isolated object, mutable field **``n``** must be private and can be accessed only using ``self``. In addition, the field must be initialized with an isolated expression and only accessed within a lock statement. The lock statement follows the same rules for self as for an isolated module-level variable. An object field is mutable unless it is final and has a type that is a subtype of readonly.
+In the above code example, **``Counter``** is an ``isolated`` object. Mutable fields of an ``isolated`` object must be private. In addition, fields must be initialized with an isolated expression and can be accessed only within a ``lock`` statement. The ``lock`` statement follows the same rules for ``self`` as for an ``isolated`` module-level variable. An object field is mutable unless it is ``final`` and has a type that is a subtype of ``readonly``.
 
-This approach makes the service objects fully concurrency safe when accessed from within a Listener to call remote methods. The isolated root concept treats the isolated objects as opaque. Additionally, isolated functions can access a final variable whose type is an isolated object.
+This approach makes the service objects fully concurrency safe when accessed from within a Listener to call remote methods. The isolated root concept treats the ``isolated`` objects as opaque. Additionally, ``isolated`` functions can access a ``final`` variable whose type is an ``isolated`` object.
 
-### Inferring isolated
+### Inferring ``isolated``
 
-The whole concept around isolation is quite confusing for an application developer to understand. It is a complex feature, but you do not have to worry about it because the compiler can figure it out for you most of the time.
+    The whole concept around isolation is quite confusing for an application developer to understand. It is a complex feature, but you do not have to worry about it because the compiler can figure it out for you most of the time.
 
-A typical Ballerina application consists of a single module that imports multiple library modules. With a single module, the compiler can infer isolated qualifiers. For example, if there is a service object without mutable fields, then it is inherently isolated.
+    A typical Ballerina application consists of a single module that imports multiple library modules. With a single module, the compiler can infer ``isolated`` qualifiers. For example, if there is a service object without mutable fields, then it is inherently ``isolated``.
 
-The application programmer must use the lock statement responsibly wherever it is needed to safeguard the mutability of the data. This is applicable both to accessing self in a service object with a mutable state or for accessing mutable module-level variables. Additionally, the Ballerina compiler can warn the developer where missing locks are preventing a service object or method from being isolated.
+    The application programmer must use the ``lock`` statement responsibly wherever it is needed to safeguard the mutability of the data. This is applicable to both accessing ``self`` in a service object with mutable state and accessing mutable module-level variables. Additionally, the Ballerina compiler can warn the developer where missing locks are preventing a service object or method from being ``isolated``.
+    

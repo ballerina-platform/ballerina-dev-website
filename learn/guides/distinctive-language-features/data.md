@@ -62,7 +62,7 @@ Ballerina supports two more plain data types that have not been covered yet.
 
 The first one is the ``table`` type. It is designed to work with arrays and maps. It contains an array of records. It provides random access based on a key, which is a concept similar to relational databases. The keys are stored in fields of records, and these fields are immutable.
 
-The second one is the ``xml`` type. It is a sequence type built on a sequence of XML items like elements, text, processing instructions, and comments. It is a concept similar to strings and XQuery. XML attributes are represented by *``map\<string>``*. XML literals can be written using the XML syntax.
+The second one is the ``xml`` type. It is a sequence type built on a sequence of XML items like elements, text, processing instructions, and comments. It is a concept similar to strings and XQuery. XML attributes are represented by *``map<string>``*. XML literals can be written using the XML syntax.
 
 ## Immutability
 
@@ -182,7 +182,7 @@ In the above code example, the record types **``Person``** and **``Employee``** 
 
 Similarly, the variable **``p``** of type **``Person``** also accepts the variable **``e``**, which is of the **``Employee``** type. In this case, the field **``id``** is treated as ``anydata`` within **``p``**.  In this way, Ballerina allows a record to be open such that additional unspecified fields can be added at runtime.
 
-An open record is equivalent to *``map\<anydata>``*.
+An open record is equivalent to *``map<anydata>``*.
 
 ## Controlling Openness
 
@@ -740,7 +740,7 @@ The ``join`` clause uses an internal hashtable, thereby improving the query effi
 
 Ballerina supports the concept of a stream. A stream is a sequence of values that are generated as needed. This concept is the opposite of a list that is pre-populated with values before you perform any operations on it.
 
-A stream type is a separate basic type but acts as an object. A stream is defined with the ``stream`` keyword, as **``stream\<T, E>``**, where members of the stream sequence are of type ``T`` and the termination value is of type ``E``. A shorter definition of **``stream\<T>``** can be used to mean **``stream\<T,()>``**, where the termination value is nil.
+A stream type is a separate basic type but acts as an object. A stream is defined with the ``stream`` keyword, as **``stream<T, E>``**, where members of the stream sequence are of type ``T`` and the termination value is of type ``E``. A shorter definition of **``stream<T>``** can be used to mean **``stream<T,()>``**, where the termination value is nil.
 
 Generating the values for a stream can result in an error, in which case the stream is terminated with an error value.
 
@@ -845,7 +845,7 @@ In Ballerina, an ``xml`` value is a sequence representing the parsed content of 
 
 An ``xml`` value has four kinds of items. It can have an element, processing instruction, or a comment item, all of which correspond 1:1 with the XML infoset items. The fourth item is the text item that corresponds to a chunk of XML infoset defined character information items. An XML document is represented by an XML sequence with only one element and no text.
 
-An element item consists of three things, name of type ``string``, attributes of type ``map\<string>``, and children of type ``xml``. A text item has no identity, therefore the ``==`` operator has the same meaning as ``===``. Consecutive text items never occur in an ``xml`` value. Instead, they are always merged.
+An element item consists of three things, name of type ``string``, attributes of type ``map<string>``, and children of type ``xml``. A text item has no identity, therefore the ``==`` operator has the same meaning as ``===``. Consecutive text items never occur in an ``xml`` value. Instead, they are always merged.
 
 An element item is mutable whereas text items are immutable.
 
@@ -966,21 +966,21 @@ Ballerina supports the use of navigational syntax to access items within an ``xm
 
 To explain this navigational syntax, you can assume to have an ``xml`` value **``x``** which contains one or more elements **``e``**. Now there are several possibilities to navigate through ``x``.  
 
-To access every element in ``x`` named ``para`` you can use **``x.\<para>``**. Use of the angle brackets ``\<`` and ``\>`` selects an element.
+To access every element in ``x`` named ``para`` you can use **``x.<para>``**. Use of the angle brackets ``\<`` and ``\>`` selects an element.
 
-To access the children of ``e``, for every element ``e`` in ``x``, you can use **``x/\*``**. Use of ``/`` takes the navigation down one level in ``x``.
+To access the children of ``e``, for every element ``e`` in ``x``, you can use **``x/*``**. Use of ``/`` takes the navigation down one level in ``x``.
 
-To access every element named ``para`` in the children of ``e``, for every element ``e`` in ``x``, use **``x/\<para>``**.
+To access every element named ``para`` in the children of ``e``, for every element ``e`` in ``x``, use **``x/<para>``**.
 
-To access every element named ``th`` or ``td`` in the children of ``e``, for every element ``e`` in ``x``, use **``x/\<th\|td>``**.
+To access every element named ``th`` or ``td`` in the children of ``e``, for every element ``e`` in ``x``, use **``x/<th|td>``**.
 
-To access every element in the children of ``e``, for every element ``e`` in ``x``, use **``x/\<\*>``**.
+To access every element in the children of ``e``, for every element ``e`` in ``x``, use **``x/<*>``**.
 
-To access every text item in the children of ``e``, for every element ``e`` in ``x``, use **`x/\*.text()`**.
+To access every text item in the children of ``e``, for every element ``e`` in ``x``, use **`x/*.text()`**.
 
-To access every element named ``para`` in the descendants of ``e``, for every element ``e`` in ``x``, use **``x/\*\*/\<para>``**. Here the use of ``**`` signifies any number of levels within an xml element.
+To access every element named ``para`` in the descendants of ``e``, for every element ``e`` in ``x``, use **``x/**/<para>``**. Here the use of ``**`` signifies any number of levels within an xml element.
 
-To access the first element named ``para`` in the children of ``e``, for every element ``e`` in ``x``, use  **``x/\<para>[0]``**. You can point to the nth element using the ``[]`` syntax.
+To access the first element named ``para`` in the children of ``e``, for every element ``e`` in ``x``, use  **``x/<para>[0]``**. You can point to the nth element using the ``[]`` syntax.
 
 ### Querying with XML
 
@@ -994,9 +994,9 @@ function paraByLang(xml x, string lang) returns xml {
 }
 ```
 
-In the above code example, you can use the query expression to iterate over all elements ``\<para>`` in ``x``, and the variable ``para`` is bound to each ``\<para>`` element at every step in the iteration. It uses the ``where`` clause to check the ``lang`` attribute of the element to match it with the ``string`` parameter **``lang``**. Finally, it selects all the ``\<para>`` elements that satisfy the ``where`` clause.
+In the above code example, you can use the query expression to iterate over all elements ``<para>`` in ``x``, and the variable ``para`` is bound to each ``<para>`` element at every step in the iteration. It uses the ``where`` clause to check the ``lang`` attribute of the element to match it with the ``string`` parameter **``lang``**. Finally, it selects all the ``<para>`` elements that satisfy the ``where`` clause.
 
-This query returns a new ``xml`` value containing a sequence of ``\<para>`` elements.
+This query returns a new ``xml`` value containing a sequence of ``<para>`` elements.
 
 ### Combining XML Templates and Queries
 
@@ -1016,11 +1016,11 @@ function personsToXml(Person[] persons) returns xml {
 
 In the above code example, the **``Person``** type is a record type containing the **``name``** and **``country``** fields. The **``personsToXml()``** function takes an array of **``Person``** records as the **``persons``** parameter, and returns an ``xml`` sequence containing all the array elements.
 
-To achieve this conversion, it builds a ``xml`` template having ``\<data>`` as the parent element. To populate the list of **``persons``**, the template includes a ``${...}`` interpolation containing a query expression.
+To achieve this conversion, it builds a ``xml`` template having ``<data>`` as the parent element. To populate the list of **``persons``**, the template includes a ``${...}`` interpolation containing a query expression.
 
-The query expression binds to each **``name``** and **``country``** field of the **``Person``** value and returns another ``xml`` template containing the ``\<person>`` XML element. This inner template adds the country value as an attribute of ``\<person>`` and **``name``** as the text item, using interpolations.
+The query expression binds to each **``name``** and **``country``** field of the **``Person``** value and returns another ``xml`` template containing the ``<person>`` XML element. This inner template adds the country value as an attribute of ``<person>`` and **``name``** as the text item, using interpolations.
 
-At the end, an ``xml`` value containing a sequence of the ``\<data>`` element with zero or more ``\<person>`` child elements is returned.
+At the end, an ``xml`` value containing a sequence of the ``<data>`` element with zero or more ``<person>`` child elements is returned.
 
 This is a very powerful feature unique to Ballerina. In this way, you can also build library functions that build HTML snippets as ``xml`` values for your application.
 
@@ -1060,4 +1060,4 @@ boolean b = (x === x.<ex:doc>);
 string exdoc = ex:doc;
 ```
 
-In the above code example, **``ex``** declares the same namespace declaration as **``eg``** previously. Therefore the boolean **``b``** will be true since the **``x``** variable containing ``\<eg:doc>`` will be the same as ``\<ex:doc>``. Similarly, the ``exdoc`` string variable will be assigned a value of ``{http://example.com}doc``, which includes the namespace declaration at the top. These declarations are also allowed at the block level.
+In the above code example, **``ex``** declares the same namespace declaration as **``eg``** previously. Therefore the boolean **``b``** will be true since the **``x``** variable containing ``<eg:doc>`` will be the same as ``<ex:doc>``. Similarly, the ``exdoc`` string variable will be assigned a value of ``{http://example.com}doc``, which includes the namespace declaration at the top. These declarations are also allowed at the block level.

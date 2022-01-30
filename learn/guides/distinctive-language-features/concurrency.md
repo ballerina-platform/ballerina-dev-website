@@ -18,41 +18,45 @@ One of the key aspects of the Ballerina language is to support concurrency. With
 
 One of the main ideas in Ballerina is to have a graphical view of the program. This concept is all about providing deeper insights into what the program is doing rather than spewing out the static syntax tree. Consider the three most important aspects of the Ballerina language, namely data handling, network interaction, and concurrency. Of these three features, network interaction and concurrency add a fair bit of complexity to an application. Based on common wisdom, a sequence diagram provides the most incisive view of a program involving network interaction and concurrency.
 
-In Ballerina, concurrency related features are built into the language as first-class citizens, and they map directly onto sequence diagrams. For example, you can define a concurrent flow of control using a named worker.
+In Ballerina, concurrency-related features are built into the language as first-class citizens, and they map directly onto sequence diagrams. For example, you can define a concurrent flow of control using a named worker.
 
 ```ballerina
+import ballerina/io;
+
 public function main() {
-    
+
     io:println("Initializing");
-    
+
     worker A {
-        io:println(‘In worker A");
+        io:println("In worker A");
     }
 
     worker B {
-        io:println(‘In worker B");
+        io:println("In worker B");
     }
 
-    io:println(‘In function worker");
+    io:println("In function worker");
 }
 ```
 
-The keyword ``worker`` is used to define a named worker. In the above code example, the function **``main( )``** has a default worker. Normally, a function’s code belongs to the function’s default worker, which has a single logical thread of control. However, a function can also declare named workers which run concurrently with the function's default worker and other named workers. The function **``main( )``** has two named workers **``A``** and **``B``**. These two workers execute concurrently with the code in the default worker of the function.
+The keyword ``worker`` is used to define a named worker. In the above code example, the function **``main()``** has a default worker. Normally, a function's code belongs to the function's default worker, which has a single logical thread of control. However, a function can also declare named workers, which run concurrently with the function's default worker and other named workers. The function **``main()``** has two named workers **``A``** and **``B``**. These two workers execute concurrently with the code in the default worker of the function.
 
-The named workers do not start executing until their declaration point. This means that the code before the named workers is always executed before they start. However, the variables declared before all the named workers and function parameters are accessible within the code inside named workers.
+The named workers do not start executing until their declaration point. This means that the code before the named workers is always executed before the workers start. However, the variables declared before all the named workers and the function parameters are accessible within the named workers.
 
 ### Sequence Diagram
 
-A function can be viewed as a sequence diagram. To translate a Ballerina function into a sequence diagram based depiction, you can consider each worker (default and named) as a lifeline, depicted by a vertical line. Therefore the previous code example can be regarded as a sequence diagram consisting of three lifelines, two for the named workers and one for the default worker of the function.
+A function can be viewed as a sequence diagram. To translate a Ballerina function into a sequence diagram-based depiction, you can consider each worker (default and named) as a lifeline, depicted by a vertical line. Therefore the previous code example can be regarded as a sequence diagram consisting of three lifelines, two for the named workers and one for the default worker of the function.
 
-Additionally, if the function also has a client object for interacting with a remote system, then that client object also has a lifeline. If a worker makes a remote method call on a client object, that is represented as a horizontal line between the lifelines of the worker making the call and the remote object.
+Additionally, if the function also has a client object to interact with a remote system, then that client object also has a lifeline. If a worker makes a remote method call on a client object, that is represented as a horizontal line between the lifelines of the worker making the call and the remote object.
 
 
 ### Waiting for Workers
 
-Named workers can continue to execute even after the function’s default worker terminates and the function returns. So if you want to wait for the worker to terminate before returning from the function, you have to wait for it explicitly.
+Named workers can continue to execute even after the function's default worker terminates and the function returns. So if you want to wait for the worker to terminate before returning from the function, you have to wait for it explicitly.
 
 ```ballerina
+import ballerina/io;
+
 public function main() {
     io:println("Initializing");
 
@@ -66,11 +70,11 @@ public function main() {
 }
 ```
 
-In the above code example, the keyword ``wait`` is used to wait for the named worker **``A``** before returning from the function **``main( )``**.
+In the above code example, the ``wait`` keyword is used to wait for the named worker **``A``** before returning from the **``main()``** function.
 
 ### Strands
 
-Ballerina’s way of worker-based concurrency follows a unique concept known as strands. A strand is a logical thread of control assigned to every worker, which is multitasked cooperatively instead of preemptively.
+Ballerina's way of worker-based concurrency follows a unique concept known as strands. A strand is a logical thread of control assigned to every worker, which is multitasked cooperatively instead of preemptively.
 
 The execution of a strand switches only at specific yield points, such as doing a wait or calling a blocking system call. This approach avoids the need for locking variables accessed across multiple workers to manage tricky issues related to race conditions and deadlocks.
 
@@ -78,7 +82,7 @@ While a strand has a separate logical thread of control, the actual execution st
 
 ### Named Worker Return Values
 
-Named workers can have return values just like functions, which is nil by default. You can also use ``check`` to handle errors.
+Named workers can have a return type just like in a function, which is nil by default. You can also use ``check`` to handle errors.
 
 ```ballerina
 function demo(string s) returns int|error {
@@ -93,9 +97,9 @@ function demo(string s) returns int|error {
 }
 ```
 
-In the above code example, the worker **``A``** returns either an integer or an error. Under normal circumstances, the worker will return an integer value, and the function **``demo( )``** waits for **``A``**, assigns the returned integer value to **``y``**, and returns the result of incrementing that value by one.  
+In the above code example, the worker **``A``** returns either an integer or an error. Under normal circumstances, the worker will return an integer value, and the function **``demo()``** waits for **``A``**, assigns the returned integer value to **``y``**, and returns the result of incrementing that value by one.  
 
-In case the *int:fromString(s)* call within the worker returns an error, the check will fail, causing the worker **``A``** to return the error. Subsequently, the check expression within **``demo( )``** will also return the error. The ``return`` statement in a named worker terminates the worker and not the enclosing function.
+In case the ``int:fromString(s)`` call within the worker returns an error, the check will fail, causing the worker **``A``** to return the error. Subsequently, the check expression within **``demo()``** will also return the error. The ``return`` statement in a named worker terminates the worker and not the enclosing function.
 
 ### Alternate Wait
 
@@ -121,9 +125,9 @@ function altFetch(string urlA, string urlB) returns string|error {
 }
 ```
 
-In the above code example, the function **``altFetch( )``** declares two workers **``A``** and **``B``**. Both call a function **``fetch( )``** passing in the parameters from **``altFetch( )``**. In the end, the **``altFetch( )``** does a *return wait A | B* . This means that it will return as soon as either **``A``** or **``B``** returns.  
+In the above code example, the function **``altFetch()``** declares two workers **``A``** and **``B``**. Both call a function **``fetch()``** passing in the parameters from **``altFetch()``**. In the end, the **``altFetch()``** function does **``return wait A | B``**. This means that it will return as soon as either **``A``** or **``B``** returns.  
 
-The return value of both the functions and workers is a union of string and error. In case an error is returned by the  the workers or the **``fetch( )``** function, it is returned from the function **``altFetch( )``** also.
+The return value of both the functions and workers is a union of string and error. In case an error is returned by the  the workers or the **``fetch()``** function, it is returned from the function **``altFetch()``** also.
 
 ### Multiple Wait
 
@@ -151,13 +155,13 @@ Result res =  multiFetch("https://…..",
                              "https://…..");
 ```
 
-In the above code example, the function **``multiFetch( )``** declares two workers in the same way as the example in the previous section. The only difference is in the ``wait``. In this case,  it waits for both the workers **``WA``** and **``WB``** and packages their returned value in a record **``Result``** with the fields **``a``** and **``b``**.  
+In the above code example, the function **``multiFetch()``** declares two workers similar to the example in the previous section. The only difference is in the ``wait``. In this case, it waits for both the workers **``WA``** and **``WB``** and packages their returned value in a record of type **``Result``** with the fields **``a``** and **``b``**.  
 
-Instead of explicitly constructing the record constructor in the ``wait`` expression, you can also use the shorthand *wait { X , Y }* which equates to *{ X:X , Y:Y}*. This works with the concept of futures also, as explained in the next section.
+Instead of explicitly constructing the record in the ``wait`` expression, you can also use the shorthand ``wait {X , Y}`` which equates to ``wait {X: X, Y: Y}``. This works with the concept of futures also, as explained in the next section.
 
-### Named workers and futures
+### Named workers and Futures
 
-Workers and futures are the same things. A named worker referred to as a value, becomes a future. This return type of the worker becomes the type of future.
+Workers and futures are the same. A named worker referred to as a variable becomes a future. The return type of the worker becomes the type of future.
 
 ```ballerina
 function demo() returns future<int> {
@@ -166,11 +170,10 @@ function demo() returns future<int> {
     }
     
     return A;
-
 }
 ```
 
-In the above code example, the function **``demo( )``** returns a future, which is the worker **``A``**. The type of the future is the return type of the worker, which is int in this case.
+In the above code example, the function **``demo()``** returns a future, which is the worker **``A``**. The type of the future is the return type of the worker, which is ``int`` in this case.
 
 Alternatively, you can use the ``start`` keyword. It is a sugar for calling a function within a named worker and returning a reference to the worker as a future.
 
@@ -185,11 +188,11 @@ future<int> c = startInt(() => 100);
 int d = check wait c;
 ```
 
-In the above code example, the function **``startInt( )``** expects an argument of the function type **``FuncInt``** as an argument. When called, it starts the execution of the function on a separate strand and returns a future for it.
+In the above code example, the function **``startInt()``** expects an argument of the **``FuncInt``** function type. When called, it starts the execution of the function on a separate strand and returns a future for it.
 
 ### Inter-worker Message Passing
 
-You can pass messages between workers using the `‘->’` and `‘<-’` notation.
+You can pass messages between workers using the ``->`` and ``<-`` notation.
 
 ```ballerina
 public function main() {
@@ -216,15 +219,15 @@ public function main() {
 }
 ```
 
-In the above code example, worker **``A``** sends an integer value 1 to worker **``B``** and an integer value 2 to worker **``C``** , using the `‘->’` notation. Both **``B``** and **``C``** receive the values and store them in **``x1``** and **``x2``**, respectively, using the `‘<-’` notation. And then, they send them to the main function’s default worker, which receives them via another set of `‘<-’` and computes the addition of the two integers.
+In the above code example, worker **``A``** sends the integer value ``1`` to worker **``B``** and the integer value ``2`` to worker **``C``**, using the ``->`` notation. Both **``B``** and **``C``** receive the values and store them in variables **``x1``** and **``x2``**, respectively, using the ``<-`` notation. And then, they send them to the ``main`` function’s default worker, which receives them via another set of ``<-`` and computes the addition of the two integers.
 
-The message passing with the **``main( )``** uses the ``function`` keyword to refer to the default worker. All messages are copied using **``clone( )``**, which also implies that immutable values are passed without copying.
+Message passing with the **``main()``** function uses the ``function`` keyword to refer to the default worker. All messages are copied using the **``clone()``** function, which also implies that immutable values are passed without copying.
 
-The pairing of message send and receive expression with  `‘->’` and `‘<-’` notation is done at the compile time. Thus, each pair turns into a horizontal line in the sequence diagram, thereby representing an interaction between two workers.  
+The pairing of message send and receive expressions (with  ``->`` and ``<-`` notation) is done at the compile time. Thus, each pair turns into a horizontal line in the sequence diagram, thereby representing an interaction between two workers.  
 
-This way of message passing is easy to use as it avoids the complex deadlocks but has limited expressiveness.
+This way of message passing is easy to use as it avoids complex deadlocks but has limited expressiveness.
 
-### Inter-worker failure propagation
+### Inter-worker Failure Propagation
 
 In the ideal case, pairing the sends and receives guarantees that every message sent will be received, and vice versa. But what if the sender worker has an error before passing the message to the receiver worker?
 
@@ -241,7 +244,7 @@ function demo() returns int|error {
 }
 ```
 
-In the above code example, the worker **``A``** is sending an integer value to the default worker. However, before sending, it has to call another function **``foo( )``** which may return an error. In that case, the send will never happen, and the error will propagate to the default worker. Consequently, either an integer value or error is received. That’s why the check expression is used in the default worker along with the `‘<-’` notation at the receiver side for capturing the error. Panics are also propagated similarly.
+In the above code example, the worker **``A``** is sending an integer value to the default worker. However, before sending, it has to call another function **``foo()``** which may return an error. In that case, the send will never happen, and the error will propagate to the default worker. Consequently, either an integer value or error is received. That's why the ``check`` expression is used in the default worker along with the ``<-`` notation at the receiver side to handle the error. Panics are also propagated similarly.
 
 ## Transactions
 
@@ -502,7 +505,7 @@ table<Row> key(k) = table ]
 ]
 ```
 
-In the above code example, the string array **``s``** is declared as readonly using the type intersection operator `‘&’`. The type of **``s``** is both an array of strings as well as readonly, which means that it is an immutable array. This is enforced at the compile time to ensure that the values of the array **``s``** are immutable. Therefore it is safe to pass it as an argument to an isolated function.
+In the above code example, the string array **``s``** is declared as readonly using the type intersection operator ``&``. The type of **``s``** is both an array of strings as well as readonly, which means that it is an immutable array. This is enforced at the compile time to ensure that the values of the array **``s``** are immutable. Therefore it is safe to pass it as an argument to an isolated function.
 
 This concept is different from the const keyword in C. So a *const char *s* in C is not the same as *readonly & string[ ] s* in Ballerina, because here you are making the values of the type immutable whereas, in case of C the const identifier refers to a variable whose value can be assigned to another variable with the const qualifier.
 

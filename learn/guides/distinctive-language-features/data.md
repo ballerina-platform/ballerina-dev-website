@@ -348,9 +348,9 @@ In the above code example, **``Coord``** is an open record. Therefore any number
 
 ## Converting from JSON to User-defined Type
 
-There are a few nuances involved in converting from JSON to user-defined type.
+There are a few nuances involved in converting from JSON to a user-defined type.
 
-One obvious mechanism is typecasting.
+An obvious mechanism is typecasting.
 
 ```ballerina
 type Coord record {
@@ -358,19 +358,23 @@ type Coord record {
     float y;
 };
 
-json j = { x: 1.0 , y; 2.0 };
+json j = {
+    x: 1.0,
+    y: 2.0
+};
 
-//Runtime error
-Coord c = <Coord>j
+// Runtime error.
+Coord c = <Coord>j;
 ```
 
-However, this does not work because the json fields can be later assigned to something other than float, and therefore the typecasting operation would not be type safe.  This goes back to the concept of covariance you learned earlier that limits mutation on type structures with inherent types. Therefore you can only create a read-only copy, and use it in the type cast expression.
+However, this does not work because the ``json`` fields can later be assigned to something other than ``float``. Therefore, the typecasting operation would not be type-safe. This goes back to the concept of covariance that limits mutation on type structures with inherent types. Therefore you can only create a read-only copy, and use it in the type cast expression.
 
 ```ballerina
-Coord c = <Coord>j.cloneReadOnly( );
+json rj = j.cloneReadOnly();
+Coord c = <Coord>rj;
 ```
 
-## Converting to User-defined Type - `cloneWithType`
+## Converting to a User-defined Type - `cloneWithType`
 
 There is another way of converting from JSON to a user-defined type.
 
@@ -385,62 +389,60 @@ json j = {x: 1.0, y: 2.0};
 Coord c = check j.cloneWithType(Coord);
 ```
 
-In the above example, the function **``cloneWithType( )``** uses the typedesc argument **``Coord``** as inherent type, and works recursively to clone every part of the valve, including immutable structural values.
+In the above example, the **``cloneWithType( )``** function uses the ``typedesc`` argument **``Coord``** as inherent type, and works recursively to clone every part of the value, including immutable structural values.
 
-This is a LangLib function. You can also use the function without the argument from lang.value.
+This is a ``lang.value`` lang library function. You can also use the function without the argument, in which case the argument will be inferred from the contextually-expected type.
 
 ```ballerina
 Coord c = check j.cloneWithType();
 ```
 
-In this case, the argument is implicitly obtained from the context.
-
 ## Resource Method Typing
 
-The features of JSON to user-defined type conversion and vice versa are advantageous when you write the service object in Ballerina.
+The features of JSON to user-defined type conversion and vice versa are advantageous when you write service objects in Ballerina.
 
-Here is a code that defines a service for a calculator API with the add endpoint.
+Here is code that defines a service for a calculator API with the ``add`` endpoint.
 
 ```ballerina
 import ballerina/http;
 
-type Args {|
+type Args record {|
     decimal x;
     decimal y;
 |};
 
-listener h = new http:Listener(9090);
+listener http:Listener h = new (9090);
 
 service /calc on h {
     resource function post add(@http:Payload Args args) returns decimal {
-            return args.x + argos.y;
+        return args.x + args.y;
     }
 }
 ```
 
-In the above code example, **``Args``** is a closed record. It is passed as an argument to the resource function for performing the HTTP POST operation whenever the API */calc/add* is triggered.
+In the above code example, the **``Args``** record is a closed record. It is used as a parameter of the resource method corresponding to the HTTP POST operation whenever the API **``/calc/add``** is triggered.
 
-Thanks to the implicit data binding and conversion feature of Ballerina, the JSON payload coming in the wire as part of the HTTP request is converted to the **``Args``** record, using **``cloneWithType( )``**. Therefore its fields **``x``** and **``y``** are readily accessible. The return value of the resource function is a decimal type which is a subtype of anydata and is mapped to the protocol format in the wire, which in most cases is JSON.  This is how Ballerina types can be used to describe data on the wire, or on network interfaces.
+Thanks to the implicit data binding and conversion feature of Ballerina, the JSON payload coming in the wire as part of the HTTP request is converted to the **``Args``** record, using the **``cloneWithType()``** function. Therefore its fields **``x``** and **``y``** are readily accessible. The return type of the resource method is the ``decimal`` type which is a subtype of ``anydata`` and is mapped to the protocol format on the wire, which in most cases is JSON.  This is how Ballerina types can be used to describe data on the wire, or on network interfaces.
 
-Annotations added to this code also helps in refining the mapping between Ballerina-declared type and wire format. Further, the service declaration can also be used to generate OpenAPI spec.
+Annotations added to this code also help in refining the mapping between Ballerina-declared types and the wire format. Further, the service declaration can also be used to generate an OpenAPI specification.
 
 ## JSON Numbers
 
-There is one complication in dealing with JSON in Ballerina. This is because Ballerina allows the json type to have a union of integer, floating point number, and decimal. Whereas the JSON specification only has one numeric type. It does not distinguish between integers and floating point numbers.
+There is one complication in dealing with JSON in Ballerina. This is because Ballerina allows the ``json`` type to have a union of ``int``, ``float``, and ``decimal``. Whereas the JSON specification has only one numeric type. It does not distinguish between integers and floating point numbers.
 
-While converting from Ballerina’s numeric types to JSON, using the **``toJsonString( )``** converts the Ballerina’s integer, floating point and decimal types to the JSON numeric syntax. This is straightforward.
+While converting from Ballerina's numeric types to JSON, using the **``toJsonString()``** function converts Ballerina's ``int``, ``float``, and ``decimal`` values to the JSON numeric syntax. This is straightforward.
 
-But converting from JSON to Ballerina’s numeric types requires additional interpretation. The **``fromJsonString( )``** converts JSON numeric syntax into integer type, if possible, and decimal otherwise, to preserve the number precision of the numeric data in JSON. This is the case in which you do not have any type information. Subsequently, you can use **``cloneWithType( )``** or **``ensureType( )``** to convert from integer or decimal to the user’s chosen numeric type.  
+But converting from JSON to Ballerina's numeric types requires additional interpretation. The **``fromJsonString()``** function converts JSON numeric syntax into the ``int`` type, if possible, and ``decimal`` otherwise, to preserve the number precision of the numeric data in JSON. This is the case in which you do not have any information about types. Subsequently, you can use **``cloneWithType()``** or **``ensureType()``** to convert from integer or decimal to the user's chosen numeric type.  
 
-The net result is the same, and you can convert between JSON and Ballerina’s numeric types across the full range of all values. But based on how far you go in the conversion process within the program, the types will be dependent based on that. The one exception to this conversion is -0. It is an edge case and represented as float type.
+The net result is the same, and you can convert between JSON and Ballerina's numeric types across the full range of all values. But the types will depend on how far you go in the conversion process within the program. The one exception to this conversion is ``-0``. It is an edge case and is represented as ``float``.
 
 ## Query Expressions
 
 ### SQL-like Syntax for List Comprehensions
 
-Ballerina supports SQL-like query syntax for performing list comprehensions. This is similar to C# and Python’s way of list comprehension. In this case, the list is defined as an array.
+Ballerina supports SQL-like query syntax to perform list comprehensions. This is similar to C# and Python's way of list comprehension. In this case, the list is defined as an array.
 
-The basic concept of list comprehension is based on the concept of mathematical “set builder” notation.
+The basic concept of list comprehension is based on the concept of mathematical "set builder" notation.
 
 ```ballerina
 int[] nums = [1, 2, 3, 4];
@@ -455,9 +457,9 @@ int[] evenNums = from var i in nums
 
 In the above code example, **``nums``** is an integer array containing a list of numbers.
 
-The array **``numTimes10``** is constructed by iterating over nums using the ``from`` clause,  where **``i``** is the iteration value, and then using the ``select`` clause to evaluate the expression *i \* 10* to  include the result in the array. Therefore the end result is a new list *[10,20,30,40]*.
+The array **``numTimes10``** is constructed by iterating over nums using the ``from`` clause,  where **``i``** is the iteration value, and then using the ``select`` clause to evaluate the expression **``i \* 10``** to include the result in the array. Therefore the result is a new list **``[10,20,30,40]``**.
 
-Similarly, you can also apply SQL-like filters to the iterating expression using the ``where`` clause. The array **``evenNums``** is built in that way by introducing the ``where`` clause that filters the values for which the expression evaluates to true. The resultant list is *[2,4]*.
+Similarly, you can also apply SQL-like filters to the iteration value using the ``where`` clause. The array **``evenNums``** is built in that way by introducing the ``where`` clause that filters the values for which the expression evaluates to ``true``. The resultant list is **``[2,4]``**.
 
 ### Destructuring Records
 
@@ -465,29 +467,29 @@ The list comprehension concept can also be applied to structured types, such as 
 
 ```ballerina
 type Person record {
- string first;
- string last;
- int yearOfBirth;
+    string first;
+    string last;
+    int yearOfBirth;
 };
 
-Person[] persons = [ ]
+Person[] persons = [];
 
 var names = from var {first: f, last: l} in persons
                 select {first: f, last: l};
 ```
 
-In the above code example, **``persons``** is an array of records. The variable **``names``** is constructed from a binding pattern *{first: f, last: l}* that allows you to destructure records using a pattern. This results in variable **``f``** being bound to the first field of the record and **``l``** is bound to the last field.  
+In the above code example, **``persons``** is an array of records. The variable **``names``** is constructed from a binding pattern **``{first: f, last: l}``** that allows you to destructure records using a pattern. This results in variable **``f``** being bound to the ``first`` field of the record and **``l``** being bound to the ``last`` field.  
 
-As usual, it iterates over the list of persons records using the ``from`` clause. At each iteration, the fields of the record are bound to the **``f``** and **``l``** variables, and then the ``select`` clause is used to construct a new array of records containing the fields **``first``** and **``last``**.
+As usual, the query expression iterates over the list of persons records using the ``from`` clause. At each iteration, the fields of the record are bound to the **``f``** and **``l``** variables, and then the ``select`` clause is used to construct a new array of records containing only the fields **``first``** and **``last``**.
 
-The binding pattern *{first: f, last: l}* can also be simplified as *{first, last}*.
+The binding pattern **``{first: f, last: l}``** can also be simplified as **``{first, last}``**.
 
 ```ballerina
 var names = from var {first, last} in persons
                 select {first, last};
 ```
 
-In this way, a binding pattern *{ x }* can be substituted for *{ x : x }*.
+In this way, a binding pattern **``{x}``** can be substituted for **``{x : x}``**.
 
 ### Let Clause
 
@@ -503,9 +505,9 @@ string[] names = from var {first, last} in persons
                  select name;
 ```
 
-In the above code example, multiple ``let`` and ``where`` clauses are used to construct an array of strings names containing names of all persons, by concatenating their first and last names. The record entries whose first or last names have a length of zero are selected out by using the first and second combination of ``let`` and ``where`` clauses. The overall query expression follows the semantics like XQUERY FLWOR (for, let, where, order by, and return).
+In the above code example, multiple ``let`` and ``where`` clauses are used to construct an array of strings names containing names of all persons, by concatenating their first and last names. The record entries whose first or last names have a length of zero are filtered out by using the first and second combination of ``let`` and ``where`` clauses. The overall query expression follows semantics like XQUERY FLWOR (for, let, where, order by, and return).
 
-You can think of the overall semantics like a pipeline, which starts off by generating a list of bindings in the first stage, and the subsequent stages take the bindings from the previous stage of the pipeline and outputs another set of variable bindings.
+You can think of the overall semantics like a pipeline, which starts off by generating a list of bindings in the first stage, and the subsequent stages take the bindings from the previous stage of the pipeline and output another set of variable bindings.
 
 ### Ordering
 
@@ -522,33 +524,33 @@ Employee[] employees = [
     // ...
 ];
 
- Employee[] sorted = 
+Employee[] sorted = 
     from var e in employees
     order by e.lastName ascending, e.firstName ascending
     select e;
 ```
 
-In the above code example, an ``order by`` clause is added to the query, along with the keys that you want to sort by, and the order of sorting. In this case, the keys are the *lastName* and *firstName* fields of the **``Employee``** record, and the order is set to ascending. So this query takes a list of variable bindings, sorts them and generates a new array of records in the specified sorted order.
+In the above code example, an ``order by`` clause is added to the query, along with the keys that you want to sort by, and the order of sorting. In this case, the keys are the ``lastName`` and ``firstName`` fields of the **``Employee``** record, and the order is set to ``ascending``. So this query takes a list of variable bindings, sorts them, and generates a new array of records in the specified sorted order.
 
-The ordering works consistently with the existing `<, <=, >, >=` operators that Ballerina already has. The ``order by`` clause also allows other expressions apart from field access. In case the ordering needs to be done for unicode strings, a library module can be used to specify the sort key such that ordering can be achieved in a locale specific way.
+The ordering works consistently with the ``<``, ``<=``, ``>``, and ``>=`` operators. The ``order by`` clause also allows other expressions apart from field access. In case the ordering needs to be done for Unicode strings, a library module can be used to specify the sort key such that ordering can be achieved in a locale-specific way.
 
-There are some complex cases where ordering cannot be achieved. This happens when the type of the order by expression does not support ordering. For Ballerina, any comparison with nil, floating point NaN are unordered. So if these unordered types are encountered in the query, they will be returned at the end.
+There are some complex cases where ordering cannot be achieved. This happens when the type of the ``order by`` expression does not support ordering. For Ballerina, any comparison with nil or floating point ``NaN`` are unordered. So if these unordered types are encountered in the query, they will be returned at the end.
 
 A real-world example of an unordered scenario is the price of items on a shopping website. You see some items that have a price, and some items do not have a price due to some reason, or it indicates that the site will send a notification when the price is available. Now, if you want to list all the items based on an order starting from least expensive, then you want to see the items with the price first, instead of the items without the price. That's why applying the query on item's price with ascending order will return the unordered items, with a price value of nil, at the end. The same is applicable for ordering items in descending order when you want to see the most expensive items first.
 
 ### ``limit`` Clause
 
-Ballerina also supports the ``limit`` clause within the query expression.
+Ballerina also supports the ``limit`` clause within query expressions.
 
 ```ballerina
 Employee[] top100 = 
     from var e in employees
     order by e.salary descending
     limit 100
-    select e
+    select e;
 ```
 
-In the above code example, the query pipeline has a ``limit`` clause which evaluates to an integer with value 100. The pipeline generates a list of **``Employee``** record entries in descending order, based on the *salary* field and the ``limit`` clause limits the generated result to the first 100 entries.
+In the above code example, the query pipeline has a ``limit`` clause which evaluates to an integer value of 100. The pipeline generates a list of **``Employee``** record entries in descending order, based on the ``salary`` field and the ``limit`` clause limits the generated result to the first 100 entries.
 
 ## Table Concept  
 
@@ -558,9 +560,9 @@ Ballerina's philosophy is to use tables as containers for building centralized d
 
 Tables are a built-in data structure. They are just like the arrays and maps that you have seen so far. Therefore, they have some array-like and some map-like features.
 
-A table is an array of records, and each record represents a row in the table. The rows are identified by keys, which is similar to maps. Thus, you can either iterate over the table, item by item, like arrays, or directly point to the item using the associated key. But unlike in maps where the keys are of string type and are different from the fields, a table stores the keys as fields in the rows. This approach is similar to the concept of primary keys in a SQL based database table where one of the columns is designated as a primary key, which is uniquely used to identify the database record.
+A table is an array of records, and each record represents a row in the table. The rows are identified by keys, which is similar to maps. Thus, you can either iterate over the table, item by item, like arrays, or directly point to the item using the associated key. But unlike in maps where the keys are of ``string`` type and are different from the fields, a table stores the keys as fields in the rows. This approach is similar to the concept of primary keys in a SQL-based database table where one of the columns is designated as a primary key, which is used to uniquely identify the database record.
 
-Therefore, a table maintains an invariant that each row is uniquely identified by a key that is not limited to string type and is immutable. Additionally, tables also preserve the order of the rows.
+Therefore, a table maintains an invariant that each row is uniquely identified by a key that is not limited to the ``string`` type and is immutable. Additionally, tables also preserve the order of the rows.
 
 ### Table Syntax
 
@@ -573,18 +575,18 @@ type Employee record {
 };
 
 table<Employee> key(name) t = table [
-    { name: "John", salary: 100 },
-    { name: "Jane", salary: 200 }
+    {name: "John", salary: 100},
+    {name: "Jane", salary: 200}
 ];
 ```
 
-In the above code example, **``Employee``** is a record type that contains the two fields **``name``** and **``salary``**. **``name``** is marked as readonly, which prevents updates to the field after record creation.
+In the above code example, **``Employee``** is a record type that contains the two fields **``name``** and **``salary``**. The **``name``** field is marked as **``readonly``**, which prevents updates to the field after record creation.
   
 Table **``t``** is defined with the ``table`` keyword. The definition also takes the type for the row, which is **``Employee``**, and the key field, which is **``name``**. It is declared with the ``key`` keyword.
 
-The table constructor adds the two records. The table constructor is exactly like an array constructor, except that it uses the ``table`` keyword in front.
+The table constructor adds two records. The table constructor is exactly like an array constructor, except that it uses the ``table`` keyword in front.
 
-Once the table is constructed, you can look up the records using the key, just like you would do in a map.
+Once the table is constructed, you can look up the records using the key, just like you would do with a map.
 
 ```ballerina
 Employee? e = t["Fred"];
@@ -605,7 +607,7 @@ There is a direct and simple mapping from a table to JSON. Table to JSON convers
 
 ### Multiple Key Fields
 
-You can have a table that has a multiple part key spread over several fields.
+You can have a table with a multipart key spread over several fields.
 
 ```ballerina
 type Employee record {
@@ -615,13 +617,12 @@ type Employee record {
 };
 
 table<Employee> key(firstName, lastName) t = table [
-        {firstName: "John", lastName: "Smith", salary: 100},
-        {firstName: "Fred", lastName: "Bloggs", salary: 200}
-    ];
-
+    {firstName: "John", lastName: "Smith", salary: 100},
+    {firstName: "Fred", lastName: "Bloggs", salary: 200}
+];
 ```
 
-In the above code example, the **``Employee``** record has three fields: **``firstName``**, **``lastName``** and **``salary``**. The table **``t``** is defined with both the **``firstName``** and **``lastName``** as keys.
+In the above code example, the **``Employee``** record has three fields: **``firstName``**, **``lastName``**, and **``salary``**. The table **``t``** is defined with both the **``firstName``** and **``lastName``** fields as keys.
 
 Subsequently, you can also look up the table using both keys.
 
@@ -631,7 +632,7 @@ Employee? e = t["Fred", "Bloggs"];
 
 ### Structured Keys
 
-The keys are not restricted to string type. You can also have keys belonging to any subtype of plain data, which also includes structured types.
+The keys are not restricted to the ``string`` type. You can also have keys belonging to any subtype of plain data, which also includes structured types.
 
 ```ballerina
 type Employee record {
@@ -643,12 +644,12 @@ type Employee record {
 };
 
 table<Employee> key(name) t = table [
-        {name: {first: "John", last: "Smith"}, salary: 100},
-        {name: {first: "Fred", last: "Bloggs"}, salary: 200}
+    {name: {first: "John", last: "Smith"}, salary: 100},
+    {name: {first: "Fred", last: "Bloggs"}, salary: 200}
 ];
 ```
 
-In the above code example, the **``Employee``** record has a field **``name``**, which is also a record type having two fields, **``first``** and **``last``**. The table **``t``** uses name field as the key.
+In the above code example, the **``Employee``** record has a **``name``** field, which is also a record type having two fields, **``first``** and **``last``**. The table **``t``** uses the ``name`` field as the key.
 
 Accessing the rows in this table works in the same way.
 
@@ -656,7 +657,7 @@ Accessing the rows in this table works in the same way.
 Employee? e = t[{first: "Fred", last: "Bloggs"}];
 ```
 
-With structured types, you have the ability to define rich keys, with different types, such as arrays of bytes, which makes it a binary key. This is a very powerful way of programming with tables, where you can directly work with the keys, instead of being constrained by faked up string representations of your keys.
+With structured types, you can define rich keys, with different types, such as arrays of bytes, which makes it a binary key. This is a very powerful way of programming with tables, where you can directly work with the keys, instead of being constrained by faked up string representations of your keys.
 
 ### Querying Tables
 
@@ -676,12 +677,12 @@ table<Employee> key(id) employees = table [
 ];
 
 int[] salaries = from var {salary} in employees
-    select salary;
+                    select salary;
 ```
   
-In the above code example, **``salaries``** is an array constructed from a query that selects the salary of each **``Employee``** record within the table **``employees``**. The query returns the list of all salary figures, which are of integer types.
+In the above code example, **``salaries``** is an array constructed from a query that selects the salary of each **``Employee``** record within the table **``employees``**. The query returns the list of all salary figures, which are of the integer type.
 
-The actual type of the query output is determined by the context, for example integer array in this case, or the input type.
+The actual type of the query output is determined by the context, for example, integer array in this case, or the input type.
 
 ### Creating Tables with Query
 
@@ -695,7 +696,7 @@ var highPaidEmployees =
    select e;
 ```
 
-In the above code example, a new table is produced from the query expression, which selects all the rows whose **``salary``** field is greater than or equal to 1000. A table is created as a result of the query expression explicitly specifying what to create by starting with the table keyword. The key of the created table can also be specified explicitly.
+In the above code example, a new table is produced from the query expression, which selects all the rows whose **``salary``** field is greater than or equal to 1000. A table is created as a result of the query expression explicitly specifying what to create by starting with the ``table`` keyword. The key of the created table can also be specified explicitly.
 
 ### Join Clause
 
@@ -713,9 +714,9 @@ type Login record {|
 |};
 
 table<User> key(id) users = table [
-        {id: 1234, name: "Keith"},
-        {id: 6789, name: "Anne"}
-    ];
+    {id: 1234, name: "Keith"},
+    {id: 6789, name: "Anne"}
+];
 
 Login[] logins = [
     {userId: 6789, time: "20:10:23"},
@@ -724,62 +725,62 @@ Login[] logins = [
 ];
 
 string[] loginLog = from var login in logins
-                    join var user in users
-                    on login.userId equals user.id
-                    select user.name + ":" + login.time;
+                        join var user in users
+                        on login.userId equals user.id
+                        select user.name + ":" + login.time;
 ```
 
 In the above code example, there is a table **``users``** of **``User``** records and an array **``logins``** of **``Login``** records.
 
-The query uses the ``join`` clause to combine the list of **``logins``** and the **``users``** table to create a list of user-friendly login information. It uses the ``on`` condition to match the values of the fields **``userId``** and **``id``**, from **``Login``** and **``User``** records respectively. Finally, it builds out a string containing the fields **``name``** and **``time``** from these two records, separated by a colon symbol.
+The query uses the ``join`` clause to combine the list of **``logins``** and the **``users``** table to create a list of user-friendly login information. It uses the ``on`` condition to match the values of the fields **``userId``** and **``id``**, from the **``Login``** and **``User``** records respectively. Finally, it builds out a string containing the fields **``name``** and **``time``** from these two records, separated by a colon symbol.
 
-The ``join`` clause uses an internal hashtable, thereby improving the query  efficiency compared to O(n2) time complexity observed in nested ``from`` clauses.  The type to join on must be anydata.
+The ``join`` clause uses an internal hashtable, thereby improving the query efficiency compared to O(n2) time complexity observed in nested ``from`` clauses.  The type to join on must be ``anydata``.
 
 ## Stream Type
 
-Ballerina supports the concept of stream. A stream is a sequence of values that are generated as needed. This concept is the opposite of a list that is pre-populated with values before you perform any operations on it.
+Ballerina supports the concept of a stream. A stream is a sequence of values that are generated as needed. This concept is the opposite of a list that is pre-populated with values before you perform any operations on it.
 
-A stream type is a separate basic type but acts as an object. A stream is defined with the stream keyword, as stream *<T,E>*, where members of the stream sequence are of type T and termination value is of type E. A shorter definition of *stream\<T>* can be used to mean *stream<T,( )>*, where the termination value is nil.
+A stream type is a separate basic type but acts as an object. A stream is defined with the ``stream`` keyword, as **``stream\<T, E>``**, where members of the stream sequence are of type ``T`` and the termination value is of type ``E``. A shorter definition of **``stream\<T>``** can be used to mean **``stream\<T,()>``**, where the termination value is nil.
 
 Generating the values for a stream can result in an error, in which case the stream is terminated with an error value.
 
 ### Querying with Streams
 
-You can use the same query expressions with streams.
+You can use query expressions with streams.
 
 ```ballerina
-type LS stream<string, Error?>;
+type LS stream<string, error?>;
 
-// strip blank lines.
+// Strip blank lines.
 function strip(LS lines) returns LS {
     return stream from var line in lines
-             where line.trim().length() > 0
-             select line;
- }
+            where line.trim().length() > 0
+            select line;
+}
 ```
 
-In the above code example, **``LS``** is a stream type that represents a line stream. This stream contains a sequence of string values and terminates with error or nil. The function **``strip()``** executes a query on a stream of type **``LS``** and returns the same type. The query operates over the stream, and for each member of the stream, the ``where`` clause filters out the strings whose length is zero, after stripping out the whitespaces.
+In the above code example, **``LS``** is a stream type that represents a line stream. This stream contains a sequence of ``string`` values and terminates with an ``error`` value or nil. The function **``strip()``** executes a query on a stream of type **``LS``** and returns the same type. The query expression operates over the stream, and for each member of the stream, the ``where`` clause filters out the strings whose length is zero after stripping out the whitespaces.
 
 The important thing to note here is that the query works the stream lazily. It does not read the whole stream and evaluate it at once when the strip function is called.
 
-Using the stream keyword in front of ``from`` makes this query expression return a new stream with the same type. An error is returned if the iteration results in an error. However, if there is an error as a result of evaluation, then it will result in the returned stream being terminated with that error value. You can capture that error only while reading the returned stream.
+Using the stream keyword in front of ``from`` makes this query expression return a new ``stream`` value of the same type. An error is returned if the iteration results in an error. However, if there is an error as a result of evaluation, then it will result in the returned stream being terminated with that error value. You can capture that error only while reading the returned stream.
 
-You can also iterate over streams, like a loop operation, to perform some computation. However, you cannot use ``foreach`` with a stream that may terminate with an error since foreach cannot produce a value because it is a statement and error values cannot be ignored in Ballerina. You can achieve that with the do clause, in conjunction with the ``from`` clause.
+You can also iterate over streams, like a loop operation, to perform some computation. However, you cannot use ``foreach`` with a stream that may terminate with an error since the ``foreach`` statement cannot produce a value because it is a statement, and error values cannot be ignored in Ballerina. You can achieve that with the ``do`` clause, in conjunction with the ``from`` clause.
 
 ```ballerina
-function count(LS lines) returns int|Error {
+function count(LS lines) returns int|error {
     int nLines = 0;
     check from var line in lines
-             do {
-                  nLines += 1;
-              };
+        do {
+            nLines += 1;
+        };
     return nLines;
 }
 ```
 
-In the above code example, the function **``count()``** works on the stream of type **``LS``**. The query iterates over the stream, and the ``do`` clause performs an operation to increment the **``nLines``** to record the number of lines.
+In the above code example, the function **``count()``** works on the stream of type **``LS``**. The query iterates over the stream and the ``do`` clause performs an operation to increment the **``nLines``** variable to record the number of lines.
 
-The use of the ``check`` keyword before the query handles the scenario where the stream’s termination value can be an error by capturing the error  locally within the function call and returning it.
+The use of the ``check`` keyword before the query handles the scenario where the stream’s termination value can be an error by capturing the error locally within the function call and returning it.
 
 ## Backtick Templates
 

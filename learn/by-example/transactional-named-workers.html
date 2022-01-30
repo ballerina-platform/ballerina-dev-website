@@ -28,17 +28,15 @@ redirect_from:
         <span class="nx">check</span> <span class="nx">exec</span><span class="p">(</span><span class="nx">newUpdate</span><span class="p">);</span>
         <span class="nx">check</span> <span class="nx">commit</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c1">// Transactional function can only be called from a transactional context</span>
+<span class="c1">// A `transactional` function can only be called from a `transactional` context</span>
 <span class="nx">transactional</span> <span class="kd">function</span> <span class="nx">exec</span><span class="p">(</span><span class="nx">Update</span> <span class="nx">u</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Transactional named workers starts a transaction branch</span>
+    <span class="c1">// A `transactional` named worker starts a transaction branch</span>
     <span class="c1">// in the current transaction.</span>
     <span class="nx">transactional</span> <span class="kd">worker</span> <span class="nx">A</span> <span class="p">{</span>
         <span class="nx">bar</span><span class="p">();</span>
     <span class="p">}</span>
-    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nx">transactional</span> <span class="kd">function</span> <span class="nx">bar</span><span class="p">()</span> <span class="p">{</span>
@@ -53,7 +51,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Transactional Named Workers</h2>
-                            <p><p>A named worker within a transactional function can be declared as transactional.
+                            <p><p>A named worker within a transactional function can be declared as <code>transactional</code>.
  This will start a new transaction branch for the named worker, as with a distributed transaction.</p>
 </p>
 
@@ -95,7 +93,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=3bf4e55fd18236100702da671d655362&file=transactional_named_workers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=a52b9e828d1780d01ce29d82801a5921&file=transactional_named_workers.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -148,7 +146,6 @@ redirect_from:
         check exec(newUpdate);
         check commit;
     }
-    return;
 }
 </code></pre></div>
 
@@ -169,7 +166,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Transactional function can only be called from a transactional context</p>
+                                            <p>A <code>transactional</code> function can only be called from a <code>transactional</code> context</p>
 
                                         </div>
                                     </div>
@@ -183,7 +180,6 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>    transactional worker A {
         bar();
     }
-    return;
 }
 </code></pre></div>
 
@@ -192,7 +188,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Transactional named workers starts a transaction branch
+                                            <p>A <code>transactional</code> named worker starts a transaction branch
  in the current transaction.</p>
 
                                         </div>

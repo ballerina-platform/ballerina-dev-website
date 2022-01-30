@@ -16,12 +16,10 @@ redirect_from:
 
 ## Testing Services
 
-Any services defined in the package will start up on their defined ports and will remain running
-for the duration of the testing phase after which they will be automatically shut down. This allows
-you to send requests directly to the service in order to test its functionality.
+Any services defined in the package will start up on the specified ports and will remain running for the duration of the testing phase. After completing tests, the services will shut down automatically.
+ It allows you to send requests directly to the service to test its functionality.
 
->**Note:** You need to have tests defined in the respective module where the service is defined in
-order for the service to start automatically.
+>**Note:** The service starts automatically, only if you have tests in the module where it is defined.
 
 ***Example:***
 
@@ -72,10 +70,9 @@ public function testGet() returns error? {
 ## Testing Clients
 
 In cases where a fully fledged client is already defined for a particular service, you can make use
-of object mocking to mock the calls to the service and return curated responses to the client.
-This is useful when testing the full extent of the client by mocking responses that normally would
-be difficult to reproduce in an actual scenario. This would cover a variety of scenarios that the
-client is capable of handling without having the service to actually be up and running.
+of `object mocking` to mock the calls to the service and return curated responses to the client.
+It is useful when testing the full extent of the client by mocking responses that are difficult to reproduce in actual scenarios.
+ It would cover a variety of cases that the client can handle without having the service to be up and running.
 
 ***Example:***
 The following is a simple example on how mocking can be used to stub responses to services that you 

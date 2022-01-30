@@ -248,7 +248,7 @@ In the above code example, the worker **``A``** is sending an integer value to t
 
 ## Transactions
 
-Transactions are an important aspect of the Ballerina’s concurrency feature. The Ballerina runtime has built-in support for interacting with a transaction manager. The Ballerina runtime includes a transaction manager, and the language provides syntax for delimiting transactions.
+Transactions are an important aspect of Ballerina's concurrency feature. The Ballerina runtime has built-in support for interacting with a transaction manager. The Ballerina runtime includes a transaction manager, and the language provides syntax for delimiting transactions.
 
 The current transaction is part of the execution context of a strand.
 
@@ -258,24 +258,24 @@ This concept is not the same as transactional memory, where the memory space is 
 
 ### ``transaction`` Statement
 
-You can define a transaction within a transaction block as follows.
+You can define a transaction using a ``transaction`` block as follows.
 
 ```ballerina
 transaction {
-        doStage1();
-        doStage2();
+    doStage1();
+    doStage2();
 
-        check commit;
+    check commit;
 }
 ```
 
-In the above code example, a transaction block is used to perform two function calls that must be part of the transaction. The ``transaction`` statement starts the new transaction and the ``commit`` statement must be included explicitly to commit the transaction.
+In the above code example, a ``transaction`` block is used to perform two function calls that must be part of the transaction. The ``transaction`` statement starts the new transaction and the ``commit`` statement must be included explicitly to commit the transaction.
 
-It is normal for commits to fail. You can use the check expression to handle errors.
+It is normal for commits to fail. You can use the ``check`` expression to handle errors.
 
 ### ``check`` Semantics
 
-The check expression is not merely for returning errors. When ``check`` gets an error, it fails and the enclosing block decides what to do with the error. Most blocks pass the failure up to the enclosing block and function definitions handle failure by returning the error. Alternatively, to handle the errors returned from transactions, you can use the ``on fail`` statement as part of the check semantics.
+The ``check`` expression is not merely for returning errors. When ``check`` gets an error, it fails and the enclosing block decides what to do with the error. Most blocks pass the failure up to the enclosing block and function definitions handle failure by returning the error. Alternatively, to handle the errors returned from transactions, you can use the ``on fail`` clause as part of the ``check`` semantics.
 
 ```ballerina
 public function main() returns error? {
@@ -286,21 +286,20 @@ public function main() returns error? {
         if !isOK() {
             fail error("not OK");
         }
-    }
-    on fail var e {
+    } on fail var e {
         io:println(e);
         return e;
     }
 }
 ```
 
-In the above code example, there are two check expressions inside the ``do`` block. When there is an error, the check fails. However, instead of propagating the error, you can catch it by using the ``on fail`` block. If one of the check statements fails in the do block, the control shifts to the ``on fail`` block and then the error value is assigned to the variable **``e``** . The ``fail`` statement is like a ``check``, but it always fails.  
+In the above code example, there are two ``check`` expressions inside the ``do`` block. When there is an error, the check fails. However, instead of propagating the error, you can catch it using the ``on fail`` block. If one of the ``check`` statements fails in the do block, the control shifts to the ``on fail`` block, and then the error value is assigned to the variable **``e``** . The ``fail`` statement is like ``check``, but it always fails.  
 
-You can say that this is very similar to exception handling, where exceptions are raised in the code and caught under a catch block. However, in Ballerina, the control flow is explicitly defined for how the error is handled.
+You can say that this is very similar to exception handling, where exceptions are raised in the code and caught in a catch block. However, in Ballerina, the control flow is explicitly defined for how the error is handled.
 
 ### Rollback
 
-In the case of transactions, a failure or panic in executing the block results in a rollback.
+In the case of transactions, a failure or panic when executing the block results in a rollback.
 
 ```ballerina
 function transfer(Update[] updates) returns error? {
@@ -319,17 +318,19 @@ function doUpdate(Update u) returns error? {
 }
 ```
  
-In the above code example, the function **``transfer( )``** defines a transaction that runs a ``foreach`` loop that calls another function **``doUpdate( )``**. If  **``doUpdate( )``** returns an error, the check expression returns it.  This is treated as a failure within the transaction block, and results in a rollback of the transaction.  
+In the above code example, the **``transfer()``** function defines a transaction that runs a ``foreach`` loop that calls another function **``doUpdate()``**. If the **``doUpdate( )``** function returns an error, the ``check`` expression returns it. This is treated as a failure within the transaction block and results in a rollback of the transaction.  
 
-There are four ways in which a transaction block can exit in Ballerina. Under normal cases, passing through an explicit ``commit`` or a ``rollback`` statement results in the transaction being terminated. The other two scenarios are failures, resulting from a failed exit (e.g., from check), and panic exit.
+There are four ways in which a transaction block can exit in Ballerina. Under normal cases, passing through an explicit ``commit`` or a ``rollback`` statement results in the transaction being terminated. The other two scenarios are failures, resulting from a failed exit (e.g., from ``check``) and panic exit.
 
 The rollback operation does not automatically restore Ballerina variables to values before the transaction. Instead, it only tells the transaction manager to roll back the execution point.
 
 ### ``retry`` Transaction Statement
 
-Transactional errors are often transient, and may go away when retried. As a result, you can retry the transaction if it fails due to an error within the transaction block.
+Transactional errors are often transient and may go away when retried. As a result, you can retry the transaction if it fails due to an error within the transaction block.
 
 ```ballerina
+import ballerina/io;
+
 public function main() returns error? {
     retry transaction {
         check doStage1();
@@ -347,19 +348,19 @@ function doStage2() returns error? {
 }
 ```
 
-In the above code example, the ``retry`` keyword is used in front of the transaction statement. Using the retry keyword implicitly creates a DefaultRetryManager object, as *retry<DefaultRetryManager>(3)*, that retries the transaction three times.
+In the above code example, the ``retry`` keyword is used in front of the transaction statement. Using the ``retry`` keyword implicitly creates a ``DefaultRetryManager`` object, as ``retry<DefaultRetryManager>(3)``, that retries the transaction three times.
 
-You can specify an optional type parameter which belongs to the RetryManager object with retry, when defining the transaction. If the transaction block fails with an error, the RetryManager object calls *shouldRetry(e)* with the error value *e*. Based on this, the RetryManager decides whether or not to retry the transaction. The DefaultRetryManager is used in case a RetryManager object is not passed explicitly. It is part of the error module.
+You can specify an optional type parameter, which belongs to the ``RetryManager`` object with the ``retry`` keyword when defining the transaction. If the transaction block fails with an error, the ``shouldRetry()`` method of the ``RetryManager`` object is called with the error value ``e``. Based on this, the ``RetryManager`` decides whether or not to retry the transaction. The ``DefaultRetryManager`` is used in case a ``RetryManager`` object is not specified explicitly. It is part of the ``lang.error`` lang library.
 
-The RetryManager has a predefined set of errors that are retriable. So the retry happens only if one of those error types is what caused the transaction to fail. This is in addition to the check for retry counts not exceeding the retry limit set in the RetryManager object.
+The ``RetryManager`` has a predefined set of errors that are retriable. So the retry happens only if one of those error types is what caused the transaction to fail. This is in addition to the check for retry counts not exceeding the retry limit set in the ``RetryManager`` object.
 
 This retry mechanism can be used even without transactions. So any block of code in Ballerina can be enclosed with retry.
 
-### Transactional Qualifier
+### The `transactional` Qualifier
 
-At compile time, Ballerina can identify the regions of the code that execute within a transactional context. Within a transaction statement, the body of the statement is a transaction context. Therefore, when executing a code within the transaction context, you are guaranteed at compile-time to have a current transaction for that transaction context.
+At compile time, Ballerina can identify the regions of the code that execute within a transactional context. Within a transaction statement, the body of the statement is a transaction context. Therefore, when executing code within the transaction context, you are guaranteed at compile-time to have a current transaction for that transaction context.
 
-By using the transactional qualifier in a function, it is restricted to be called only in a transaction context. Moreover, the body of such a function will itself be a transactional context.
+By using the ``transactional`` qualifier in a function, it is restricted to be called only in a transactional context. Moreover, the body of such a function will itself be a transactional context.
 
 ```ballerina
 transactional function doUpdate(Update u) returns error? {
@@ -379,17 +380,17 @@ transactional function bar(Update u) {
 }
 ```
 
-In the above code example, the functions **``doUpdate( )``** and **``bar( )``** have a ``transactional`` qualifier. Calling **``doUpdate( )``** establishes a transactional context within which, calls to  **``foo( )``** and **``bar( )``** are made. The transactional function **``bar( )``** can be called within **``doUpdate( )``** since it is also a transactional function, which results in its body being a transactional context.
+In the above code example, the functions **``doUpdate()``** and **``bar()``** have the ``transactional`` qualifier. Calling **``doUpdate()``** establishes a transactional context within which, calls to  **``foo()``** and **``bar()``** are made. The transactional function **``bar( )``** can be called within **``doUpdate()``** since it is also a transactional function, which results in its body being a transactional context.
 
-The transactional expression is also used as a boolean test to check whether a current transaction is active at runtime. Using a transactional expression in a condition results in a transactional context. Inside the function **``foo( )``** the ``if`` statement is used to check for a current transaction before calling the transactional function **``bar( )``**. In this way, you can check for the transactional context even inside a non-transactional function to perform transaction dependent operations.
+The ``transactional`` expression is also used as a boolean test to check whether a current transaction is active at runtime. Using a ``transactional`` expression in a condition results in a transactional context. Inside the function **``foo()``** the ``if`` statement is used to check for a current transaction before calling the transactional function **``bar( )``**. In this way, you can check for the transactional context even inside a non-transactional function to perform transaction dependent operations.
 
-### Distributed transactions
+### Distributed Transactions
 
 Ballerina is designed so that transactions work together with network interactions. Therefore, the resource and remote methods of service objects and remote methods of client objects can be declared transactional. But the actual working of transactional behavior is implementation-dependent which is kept under the covers to avoid complications.
 
 Transactions follow a branching pattern starting from a global transaction and then multiple transactions branch out from it. Therefore the current transaction is always a branch of the global transaction. When a new transaction is created as a global transaction, the current transaction becomes the root branch.
 
-You can also have client objects and listener objects that are transaction-aware. To communicate with remote systems in a transaction-aware way, they need to associate the network messages with a global transaction and allow the transaction manager of the Ballerina program to communicate with other transaction managers. For that, you need a protocol to communicate between the distributed programs. And this is not limited to two Ballerina programs. They can work in programs written in different languages or from Ballerina to a database, so long as both sides understand the same protocol, including industry standard protocols such as XA. Ballerina has a micro-transaction protocol to support this interaction, and you can implement it in other programming languages.
+You can also have client objects and listener objects that are transaction-aware. To communicate with remote systems in a transaction-aware way, they need to associate the network messages with a global transaction and allow the transaction manager of the Ballerina program to communicate with other transaction managers. For that, you need a protocol to communicate between the distributed programs. And this is not limited to two Ballerina programs. They can work in programs written in different languages or from Ballerina to a database, so long as both sides understand the same protocol, including industry-standard protocols such as XA. Ballerina has a micro-transaction protocol to support this interaction, and you can implement it in other programming languages.
 
 A transaction-aware client object or Listener needs a network protocol to associate a network message with a global transaction and to allow the transaction manager of the Ballerina program to communicate with other transaction managers. There is a separate API for interfacing with the Ballerina transaction manager to enable clients and listeners.  
 
@@ -397,7 +398,7 @@ When a transaction-aware listener determines that the request is part of a globa
 
 ### ``transactional`` Named Workers
 
-The ``transactional`` qualifier can be applied to a named worker in a transactional function also.
+The ``transactional`` qualifier can be applied to a named worker in a ``transactional`` function also.
 
 ```ballerina
 transactional function exec(Update u) returns error? {
@@ -412,13 +413,13 @@ transactional function bar() {
 }
 ```
 
-In the above code example, the named worker **``A``** has a ``transactional`` qualifier. Therefore the strand for execution of the code within **``A``** will have a new transaction that is branched from the calling transactional context within the function **``exec( )``**.
+In the above code example, the named worker **``A``** has the ``transactional`` qualifier. Therefore the strand for execution of the code within **``A``** will have a new transaction that is branched from the calling transactional context within the function **``exec()``**.
 
-### Commit/rollback Handlers
+### Commit/Rollback Handlers
 
 Often, there is a need to execute additional code depending upon whether the transaction was committed or not. In Ballerina, you can check for the status of a transaction and execute additional code to handle the specific outcome of the transaction, either for commit or rollback.
 
-One way is to do this inline within the transaction statement. However, this approach is  inconvenient when handling undo changes in rollback, from a modularity perspective. Moreover, this approach also does not suit the distributed transaction interaction with another program. Therefore, commit and rollback handlers are provided as functions that run based on a transaction's respective outcome.
+One way is to do this inline within the transaction statement. However, this approach is inconvenient when handling undo changes in rollback, from a modularity perspective. Moreover, this approach also does not suit the distributed transaction interaction with another program. Therefore, commit and rollback handlers are provided as functions that run based on a transaction's respective outcome.
 
 ```ballerina
 transactional function update() returns error? {
@@ -428,9 +429,9 @@ transactional function update() returns error? {
 }
 ```
 
-In the above code example, the function **``update( )``** has a transactional context. Based on the outcome of calling the **``updateDatabase( )``** function, it can either commit or rollback the transaction.  The last line of the code adds the commit handler. This means that if the transaction commits successfully, the function **``sendEmail()``** is called.  
+In the above code example, the function **``update()``** has a transactional context. Based on the outcome of calling the **``updateDatabase()``** function, it can either commit or rollback the transaction. The last line of the code adds the commit handler. This means that if the transaction commits successfully, the function **``sendEmail()``** is called.  
 
-This is particularly useful when the **``update( )``** function is called from a remote or resource transactional method, in a service object, and is invoked by another remote Ballerina program as a result of service invocation. The transaction manager of the Ballerina program that initiated the transaction, will send a message to the Ballerina program in which this function is running. The two transaction managers follow a two phase commit, such that when the remote Ballerina program knows that commit is successful, it will then arrange for the transaction manager of the Ballerina program running the **``update( )``** function to call the commit handler.
+This is particularly useful when the **``update()``** function is called from a remote or resource transactional method, in a service object, and is invoked by another remote Ballerina program as a result of a service invocation. The transaction manager of the Ballerina program that initiated the transaction, will send a message to the Ballerina program in which this function is running. The two transaction managers follow a two-phase commit, such that when the remote Ballerina program knows that commit is successful, it will then arrange for the transaction manager of the Ballerina program running the **``update()``** function to call the commit handler.
 
 ## Concurency Safety
 

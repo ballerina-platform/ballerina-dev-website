@@ -112,7 +112,6 @@ Ballerina supports the following build options.
 ```toml
 [build-options]
 observabilityIncluded = true
-sticky = true
 offline = true
 skipTests = true
 testReport = true

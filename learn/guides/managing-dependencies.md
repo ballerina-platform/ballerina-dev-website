@@ -116,7 +116,7 @@ of a removed import statement are handled by the CLI itself.
 
 The local repository is useful to test a package in the development phase or to fix bugs. To specify a dependency from the local repository, first, you need to publish it to the local repository by following the steps below.
 
-1. Create a Ballerina library package and generate the Ballerina archive.
+1. Generate the Ballerina archive after editing the package source files as required.
 
    ```bash
    bal pack
@@ -157,12 +157,10 @@ By default, the compiler always looks up the latest compatible versions of the d
 ### The Sticky Mode
 
 Using the `--sticky` flag with `bal build` will force the compiler to stick to the exact versions locked in the `Dependencies.toml`. 
-In other words, the automatic-update feature is disabled when the `--sticky` flag is provided.
-This can also be set in the `Ballerina.toml` file under the `[build-options]` table as follows.
-
-```toml
-[build-options]
-sticky = true
+In other words, the CLI disables the automatic-update feature when you provide the `--sticky` flag.
+   
+```bash
+bal build --sticky
 ```
 
 ### The Offline Mode

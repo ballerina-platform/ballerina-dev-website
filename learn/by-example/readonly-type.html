@@ -25,7 +25,7 @@ redirect_from:
 <span class="p">};</span>
 
 <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Row</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span> <span class="nx">t</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[</span>
-    <span class="p">{</span> <span class="nx">k</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">17</span> <span class="p">}</span>
+    <span class="p">{</span><span class="nx">k</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">17</span><span class="p">}</span>
 <span class="p">];</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
@@ -44,7 +44,7 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Readonly Type</h2>
                             <p><p>The <code>readonly</code> type consists of values that are immutable. For structural type <code>T</code>, <code>T &amp; readonly</code> means
- immutable <code>T</code>. <code>T &amp; readonly</code> is subtype of <code>T</code> and subtype of <code>readonly</code>. Guaranteed that if declared
+ immutable <code>T</code>. <code>T &amp; readonly</code> is a subtype of <code>T</code> and a subtype of <code>readonly</code>. Guaranteed that if declared
  type of a value is a subtype of <code>readonly</code>, then at runtime the value can never be mutated. It is enforced
  by runtime checks on the mutating structures. With <code>readonly</code> field, both the field and its value
  are immutable.</p>
@@ -88,7 +88,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=cbd31e1e168ae3b983b70580900a424a&file=readonly_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=eb3dd37b9ef1deb09597e101479f1a7b&file=readonly_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -181,7 +181,7 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>table&lt;Row&gt; key(k) t = table [
-    { k: &quot;John&quot;, value: 17 }
+    {k: &quot;John&quot;, value: 17}
 ];
 </code></pre></div>
 

@@ -22,13 +22,13 @@ redirect_from:
     <span class="c1">// The `json` type allows `int|float|decimal`.</span>
     <span class="kt">json</span><span class="p">[]</span> <span class="nx">d</span> <span class="p">=</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">];</span>
 
-    <span class="c1">// `toJsonString` will convert `int|float|decimal` into JSON </span>
+    <span class="c1">// `toJsonString()` will convert `int|float|decimal` into JSON</span>
     <span class="c1">// numeric syntax.</span>
     <span class="kt">string</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">();</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
 
-    <span class="c1">// `fromJsonString` converts JSON numeric syntax into `int`, </span>
+    <span class="c1">// `fromJsonString()` converts JSON numeric syntax into `int`,</span>
     <span class="c1">// if possible, and otherwise `decimal`.</span>
     <span class="kt">json</span> <span class="nx">f</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">e</span><span class="p">.</span><span class="nx">fromJsonString</span><span class="p">();</span>
 
@@ -40,7 +40,7 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">typeof</span> <span class="nx">g</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">typeof</span> <span class="nx">g</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
 
-    <span class="c1">// `cloneWithType` or `ensureType` will convert from `int` or `decimal` into the user&#39;s</span>
+    <span class="c1">// `cloneWithType()` or `ensureType()` will convert from `int` or `decimal` into the user&#39;s</span>
     <span class="c1">// chosen numeric type.</span>
     <span class="kt">float</span> <span class="nx">h</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">g</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">ensureType</span><span class="p">();</span>
 
@@ -63,10 +63,10 @@ redirect_from:
                             <h2>JSON Numbers</h2>
                             <p><p>Ballerina has three numeric types; but JSON has one.
  The <code>json</code> type allows <code>int|float|decimal</code>.
- <code>toJsonString</code> will convert <code>int|float|decimal</code> into JSON numeric syntax.
- <code>fromJsonString</code> converts JSON numeric syntax into <code>int</code>, if possible, and
+ <code>toJsonString()</code> will convert <code>int|float|decimal</code> into JSON numeric syntax.
+ <code>fromJsonString()</code> converts JSON numeric syntax into <code>int</code>, if possible, and
  otherwise <code>decimal</code>.
- <code>cloneWithType</code> or <code>ensureType</code> will convert from <code>int</code> or <code>decimal</code> into user&rsquo;s
+ <code>cloneWithType()</code> or <code>ensureType()</code> will convert from <code>int</code> or <code>decimal</code> into user&rsquo;s
  chosen numeric type.
  Net result is that you can use <code>json</code> to exchange full range of all three Ballerina
  numeric types.
@@ -111,7 +111,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a96bf0d83d981478e564bdc9fb0a5449&file=json_numbers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=2a72e363d24f62dc20f4b8345979dcc9&file=json_numbers.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -182,7 +182,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>toJsonString</code> will convert <code>int|float|decimal</code> into JSON
+                                            <p><code>toJsonString()</code> will convert <code>int|float|decimal</code> into JSON
  numeric syntax.</p>
 
                                         </div>
@@ -214,7 +214,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>fromJsonString</code> converts JSON numeric syntax into <code>int</code>,
+                                            <p><code>fromJsonString()</code> converts JSON numeric syntax into <code>int</code>,
  if possible, and otherwise <code>decimal</code>.</p>
 
                                         </div>
@@ -272,7 +272,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>cloneWithType</code> or <code>ensureType</code> will convert from <code>int</code> or <code>decimal</code> into the user&rsquo;s
+                                            <p><code>cloneWithType()</code> or <code>ensureType()</code> will convert from <code>int</code> or <code>decimal</code> into the user&rsquo;s
  chosen numeric type.</p>
 
                                         </div>

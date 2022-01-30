@@ -1,10 +1,10 @@
 ---
 layout: ballerina-left-nav-release-notes
 title: Swan Lake 2201.0.0
-permalink: /downloads/swan-lake-release-notes/swan-lake-2201.0.0/
-active: swan-lake-2201.0.0
+permalink: /downloads/swan-lake-release-notes/swan-lake-2201-0-0/
+active: swan-lake-2201-0-0
 redirect_from: 
-    - /downloads/swan-lake-release-notes/swan-lake-2201.0.0
+    - /downloads/swan-lake-release-notes/swan-lake-2201-0-0
     - /downloads/swan-lake-release-notes/
     - /downloads/swan-lake-release-notes
 ---

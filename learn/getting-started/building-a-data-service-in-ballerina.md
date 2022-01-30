@@ -73,6 +73,8 @@ In Ballerina, records are a data-type that maps keys to values. You can define a
 in the `Employees` table in the `main.bal` file.
 
 ```ballerina
+import ballerina/time;
+
 public type Employee record {|
     int employee_id?;
     string first_name;
@@ -143,7 +145,7 @@ and [`SQL`](https://lib.ballerina.io/ballerina/sql/latest) packages must be impo
 
 ```ballerina
 import ballerinax/mysql;
-import ballerinax/sql;
+import ballerina/sql;
 ```
 
 The `mysql:Client` can be used to connect to the database. Include the following code in your `main.bal` file and
@@ -233,7 +235,12 @@ isolated function removeEmployee(int id) returns int|error {
     sql:ExecutionResult result = check dbClient->execute(`
         DELETE FROM Employees WHERE employee_id = ${id}
     `);
-    return result.affectedRowCount;
+    int? affectedRowCount = result.affectedRowCount;
+    if affectedRowCount is int {
+        return affectedRowCount;
+    } else {
+        return error("Unable to obtain the affected row count");
+    }
 }
 ```
 
@@ -324,4 +331,4 @@ service /employees on new http:Listener(8080) {
 To learn more about MySQL and HTTP support in Ballerina, see the following:
 - [MySQL module documentation](https://lib.ballerina.io/ballerinax/mysql/latest)
 - [HTTP module documentation](https://lib.ballerina.io/ballerina/http/latest)
-- [MySQL Examples](/learn/by-example/mysql-query-operation.html)
+- [MySQL examples](/learn/by-example/mysql-query-operation.html)

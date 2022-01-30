@@ -66,9 +66,9 @@ public type CovidEntry record {|
 |};
 
 public final table<CovidEntry> key(iso_code) covidTable = table [
-    { iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833 },
-    { iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656 },
-    { iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097 }
+    {iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
+    {iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
+    {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
 ];
 ```
 
@@ -119,7 +119,7 @@ resource function post countries(@http:Payload CovidEntry[] covidEntries)
         };
     } else {
         covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
-        return <CreatedCovidEntries>{ body: covidEntries };
+        return <CreatedCovidEntries>{body: covidEntries};
     }
 }
 ```
@@ -239,7 +239,7 @@ service /covid/status on new http:Listener(9000) {
             };
         } else {
             covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
-            return <CreatedCovidEntries>{ body: covidEntries };
+            return <CreatedCovidEntries>{body: covidEntries};
         }
     }
 
@@ -266,9 +266,9 @@ public type CovidEntry record {|
 |};
 
 public final table<CovidEntry> key(iso_code) covidTable = table [
-    { iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833 },
-    { iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656 },
-    { iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097 }
+    {iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
+    {iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
+    {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
 ];
 
 public type CreatedCovidEntries record {|
@@ -289,5 +289,4 @@ public type InvalidIsoCodeError record {|
 public type ErrorMsg record {|
     string errmsg;
 |};
-
 ```

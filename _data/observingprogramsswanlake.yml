@@ -1,38 +1,18 @@
-- title: Observing Ballerina Programs
-  url: '#'
+- title: Observing Your Application with Prometheus, Grafana, Jaeger, and the Elastic Stack
+  url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/
   sublinks:
-    - title: Observing Your Application with Prometheus, Grafana, Jaeger, and the Elastic Stack
-      url: '#'
-      sublinks:
-        - title: Providing Observability in Ballerina
-          url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#providing-observability-in-ballerina
-          active: providing-observability-in-ballerina
-        - title: Observing a Ballerina Service
-          url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#observing-a-ballerina-service
-          active: observing-a-ballerina-service
-        - title: Monitoring Metrics
-          url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#monitoring-metrics
-          active: monitoring-metrics
-        - title: Distributed Tracing
-          url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#distributed-tracing
-          active: distributed-tracing
-        - title: Distributed Logging
-          url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#distributed-logging
-          active: distributed-logging
-    - title: Observing Your Application with Choreo
-      url: '#'
-      sublinks:
-        - title: Step 1 - Creating a Hello World Ballerina Service
-          url: /learn/observing-ballerina-programs/observing-your-application-with-choreo/#step-1---creating-a-hello-world-ballerina-service
-          active: step-1---creating-a-hello-world-ballerina-service
-        - title: Step 2 - Configuring Choreo to Observe a Ballerina Service
-          url: /learn/observing-ballerina-programs/observing-your-application-with-choreo/#step-2---configuring-choreo-to-observe-a-ballerina-service
-          active: step-2---configuring-choreo-to-observe-a-ballerina-service
-        - title: Step 3 - Observing the Ballerina Service
-          url: /learn/observing-ballerina-programs/observing-your-application-with-choreo/#step-3---observing-the-ballerina-service
-          active: step-3---observing-the-ballerina-service
-        - title: Step 4 - Sending Requests
-          url: /learn/observing-ballerina-programs/observing-your-application-with-choreo/#step-4---sending-requests
-          active: step-4---sending-requests
-
-
+    - title: Providing Observability in Ballerina
+      url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#providing-observability-in-ballerina
+      active: providing-observability-in-ballerina
+    - title: Observing a Ballerina Service
+      url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#observing-a-ballerina-service
+      active: observing-a-ballerina-service
+    - title: Monitoring Metrics
+      url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#monitoring-metrics
+      active: monitoring-metrics
+    - title: Distributed Tracing
+      url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#distributed-tracing
+      active: distributed-tracing
+    - title: Distributed Logging
+      url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/#distributed-logging
+      active: distributed-logging

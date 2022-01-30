@@ -54,7 +54,7 @@ CREATE TABLE Company.Employees (
 	hire_date   DATE NOT NULL,
 	manager_id  INTEGER REFERENCES Employees(employee_id),
 	job_title   VARCHAR(255) NOT NULL
-)
+);
 ```
 
 ## Creating a Ballerina Project
@@ -69,7 +69,7 @@ bal new data_service
 
 ## Creating a Record to Represent an Employee
 
-In Ballerina, records are a data-type that maps keys to values. You can define a closed record to represent a single row
+In Ballerina, records are a data type that maps keys to values. You can define a closed record to represent a single row
 in the `Employees` table in the `main.bal` file.
 
 ```ballerina
@@ -85,13 +85,13 @@ public type Employee record {|
 |};
 ```
 
-This record-type is the basis for interacting with the database.
+This record type is the basis for interacting with the database.
 
 ## Connecting to and Interacting with the Database
 
 ### Adding the MySQL Driver
 
-The MySQL driver JAR is necessary to connect to and interact with a MySQL server. There are several methods of doing this.
+The MySQL driver JAR is necessary to connect to and there are several methods to interact with a MySQL server.
 
 1. Import the `ballerinax/mysql.driver` package in your `main.bal` file. This Package bundles the latest MySQL driver so that the MySQL connector can be used in ballerina projects easily.
    ```ballerina
@@ -170,7 +170,7 @@ The `mysql:Client` provides two primary remote methods for performing queries.
 
 2. `execute()` - Executes an SQL query and returns only the metadata of the execution.
 
-Using these, you can define methods to perform basic CRUD operations against the MySQL database.
+Use `query()`, `queryRow()` and `execute()` methods to define methods that can perform basic CRUD operations against the MySQL database.
 
 ```ballerina
 isolated function addEmployee(Employee emp) returns int|error {
@@ -247,7 +247,7 @@ import ballerina/http;
 ```
 
 ### Creating a Service
-Afterwards, you can create a service as shown below. This creates an `/employees` endpoint on port `8080` which can 
+Now, you can create a service as shown below. This creates an `/employees` endpoint on port `8080` which can 
 be accessed via a browser by visiting `http://locahost:8080/employees` after executing the command `bal run`.
 
 ```ballerina
@@ -270,7 +270,7 @@ service /employees on new http:Listener(8080) {
 }
 ```
 
-This resource function may be invoked by sending a `POST` request to `http://localhost:8080/employees` with the 
+Invoke defined resource function by sending a `POST` request to `http://localhost:8080/employees` with the 
 required data as a JSON payload.
 
 ```shell

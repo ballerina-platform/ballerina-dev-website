@@ -287,7 +287,7 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
 - Removed the deprecated `add` method in the `graphql:Context` object.
 
 ##### `grpc` Package
-- Changed the `--proto_path` option of the gRPC CLI to `--proto-path`
+- Changed the `--proto_path` option of the gRPC command to `--proto-path`
 
 ##### `websub` Package
 - Added the support for `readonly` parameters of remote methods

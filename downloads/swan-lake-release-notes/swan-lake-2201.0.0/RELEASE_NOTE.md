@@ -350,8 +350,8 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://git
 - Improved the OAS response header mapping for contexts in which the header details are defined within the return type
 
 ###### Ballerina Service Generation
-- Added the support for OAS query parameters with nested/optional/nullable types and default values
-- Added the support for OAS header parameters with optional/nullable types and default values
+- Added support for OAS query parameters with nested/optional/nullable types and default values
+- Added support for OAS header parameters with optional/nullable types and default values
 
 #### Bug Fixes
 

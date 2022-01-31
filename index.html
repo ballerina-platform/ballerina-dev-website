@@ -353,9 +353,9 @@ public function main() returns error? {
                   </div>
                </div>
             </div>
-            <div id="fourthTab" class="tab-pane fade in active"  >
-               <div class="row" style="background-color: #f5f5f5;">
-                  <div class="col-lg-12 col-md-12 col-sm-12 focusPane " style="padding:20px;">
+            <div id="fourthTab" class="tab-pane fade"  >
+               <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                  <div class="col-lg-7 col-md-12 col-sm-12 focusPane codeBlock noBottomBorder" style="padding:20px;border: 1px #c7c7c7 solid;">
                      <div class="FullCode" style="background-color: #f5f5f5;">
                         <div class="highlight"> 
                            <pre class="language-ballerina basic ballerina">
@@ -380,6 +380,11 @@ table<ReadOnlyAlbum> key(id) albums = table [
 @grpc:ServiceDescriptor {descriptor: ROOT_DESCRIPTOR_RECORD_STORE, descMap: getDescriptorMapRecordStore()}
 service "RecordStore" on ep {
 
+      remote function storeAlbum(Album album) returns Album|error {
+         albums.add(album.cloneReadOnly());
+         return album;
+      }
+
       remote function getAlbumFromId(string id) returns Album|error {
          ReadOnlyAlbum? album = albums[id];
          if album is ReadOnlyAlbum {
@@ -388,15 +393,40 @@ service "RecordStore" on ep {
          return error grpc:NotFoundError(string `Related album for ID ${id} not found`);
       }
 
-      remote function storeAlbum(Album album) returns Album|error {
-         albums.add(album.cloneReadOnly());
-         return album;
-      }
-
       remote function getAlbums() returns stream<Album, error?>|error {
          return albums.toArray().toStream();
       }
-}                                 
+}
+                                 
+                                 
+
+                              </code>
+                           </pre>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-5 col-md-12 col-sm-12 focusPane cColHeight1 diagramBox" style="padding:20px;border: 1px #c7c7c7 solid;">
+                     <div class="FullCode" style="background-color: #f5f5f5;">
+                        <div class="highlight"> 
+                           <pre class="language-ballerina basic ballerina">
+                              <code class="language-proto highlighter-rouge" style="font-size: 12px !important;">
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+
+service RecordStore {
+   rpc storeAlbum(Album) returns (Album);
+   rpc getAlbumFromId(google.protobuf.StringValue) returns (Album);
+   rpc getAlbums(google.protobuf.Empty) returns (stream Album);
+}
+
+message Album {
+      string id = 1;
+      string title = 2;
+      string artist = 3;
+      float price = 4;
+};
                               </code>
                            </pre>
                         </div>

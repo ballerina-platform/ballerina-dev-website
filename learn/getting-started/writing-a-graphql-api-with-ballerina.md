@@ -20,7 +20,7 @@ To complete this tutorial, you need:
 
 1. A command terminal
 2. A text editor
-    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
+    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
 3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
 
 ## Designing the GraphQL Endpoint
@@ -400,7 +400,7 @@ type Mutation {
 
 ## Accessing the GraphQL Endpoint
 
-To access the endpoint, you can use cURL or a GraphQL client such as [GraphiQL](https://github.com/graphql/graphiql). 
+To access the endpoint, you can use cURL or a GraphQL client such as [GraphiQL](https://github.com/graphql/graphiql).
 
 The following cURL request will retrieve all the data from the endpoint:
 

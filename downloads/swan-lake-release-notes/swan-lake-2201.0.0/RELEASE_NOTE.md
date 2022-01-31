@@ -293,7 +293,7 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
 - Added support for `readonly` parameters in remote methods
 
 #### `websubhub` Package
-- Added the support for `readonly` parameters of remote methods
+- Added support for `readonly` parameters in remote methods
 
 ##### `kafka` Package
 - Made the `kafka:Caller` optional in the `onConsumerRecord` method of the `kafka:Service`

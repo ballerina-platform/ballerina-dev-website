@@ -297,7 +297,7 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
 
 ##### `kafka` Package
 - Made the `kafka:Caller` optional in the `onConsumerRecord` method of the `kafka:Service`
-- Allow the `readonly & kafka:ConsumerRecord[]` parameter type in the `onConsumerRecord` method
+- Allowed the `readonly & kafka:ConsumerRecord[]` parameter type in the `onConsumerRecord` method
 
 #### Bug Fixes
 
@@ -320,8 +320,8 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://git
 
 ##### Ballerina Shell
 
-- Added the module auto-import feature to the Ballerina Shell
-- Added the import statement for a module, which has a reference without an import statement based on the user’s input
+- Added the module auto-import feature to the Ballerina Shell. If the user code contains a module prefix for a module that has not been imported, the Ballerina Shells provides the option to import the module.
+
 
    For example, see below.
    ```ballerina
@@ -345,7 +345,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://git
 ##### Ballerina OpenAPI Tool
 ###### OpenAPI Contract Generation
 - Added the support for Ballerina HTTP headers with type `int`, `int[]`, `boolean`, and `boolean[]`
-- Added the support for Ballerina HTTP payloads with type `map<string>`
+- Added support for HTTP payloads of type `map<string>`
 - Improved the OAS response header mapping for contexts in which the header details are defined within the return type
 
 ###### Ballerina Service Generation

@@ -14,7 +14,7 @@ redirect_from:
 
 Let's now take a look at network data. This is the data that is independent of any specific code operating on the data. This data is typically exchanged through network interfaces between programs. In Ballerina, this is known as plain data.
 
-This concept is the opposite of objects, which combine data and code as one entity. But when you are writing network interfaces, you want to work with plain data. It supports a bunch of operations such as deep copy and deep equality checks. You can also serialize and deserialize it without worrying about coupling between the data and its associated code, like objects.
+This concept is the opposite of objects, which combine data and code as one entity. However, when you are writing network interfaces, you want to work with plain data. It supports a bunch of operations such as deep copy and deep equality checks. You can also serialize and deserialize it without worrying about coupling between the data and its associated code, like objects.
 
 As a programming language designed for network programming over the cloud, Ballerina makes it easy to work with plain data, and it defines a different type for it.
 
@@ -26,11 +26,12 @@ Broadly, all Ballerina values belong to exactly one kind of basic type. These ar
 
 Simple types are nil, boolean, integers, floating points, and decimal. These are always plain data.
 
-Sequence types are string and xml. These are also always plain data.
+Sequence types are string and XML. These are also always plain data.
 
 Structural types are array, map, record, tuple, and table. These are plain data only if their members are plain data.
 
-And finally, the behavioral types include the function, object, error, stream, typedesc, and handle types. These are not plain data.
+And finally, the behavioral types include the `function`, `object`, `error`, `stream`, `typedesc`, and `handle` types. 
+These are not plain data.
 
 ## ``decimal`` Type
 
@@ -52,7 +53,7 @@ A decimal number represents a decimal fraction exactly. That means that the prec
 
 You can use a literal character ``d`` to indicate a ``decimal`` value, and similarly ``f`` for a ``float`` value.
 
-Decimal numbers are not the same as binary floating point numbers defined as per IEEE standard. They are not built into the ALU logic on the processor. Therefore their computation is slower yet more accurate and precise.
+Decimal numbers are not the same as binary floating-point numbers defined as per IEEE standard. They are not built into the ALU logic on the processor. Therefore their computation is slower yet more accurate and precise.
 
 In Ballerina, decimal numbers do not offer infinite precision. It is limited to 34 digits only, which is more than enough for representing large physical measurements, such as the universe's age, which takes 27 digits. Additionally, decimal numbers do not support infinity, NaN, or negative zero.
 
@@ -68,7 +69,7 @@ The second one is the ``xml`` type. It is a sequence type built on a sequence of
 
 One of the crucial features of plain data is that it can be made immutable. You cannot do that for objects. Plain data consisting of simple and string values are inherently immutable.
 
-Structural values can be constructed either as mutable or immutable. The value includes a flag that indicates whether it's immutable or not and it is fixed at the time of construction of the value. Attempting to mutate an immutable structure causes a panic at runtime.
+Structural values can be constructed either as mutable or immutable. The value includes a flag that indicates whether it's immutable or not and it is fixed at the time of construction of the value. Attempting to mutate an immutable structure causes a `panic` at runtime.
 
 Ballerina's notion of immutability is deep. This means that if you have an immutable structure, all its members have to be immutable. This also makes it safer to pass immutable values to other threads for concurrent access.
 
@@ -88,9 +89,9 @@ You can clone an ``anydata`` value using the **``clone()``** function.
 anydata x2 = x1.clone();
 ```
 
-This returns a new ``anydata`` **``x2``** value, with the same mutability as **``x1``**. There is another function **``cloneReadOnly()``** that returns an immutable deep copy. Both the functions do not copy the immutable parts of the ``anydata`` value. This ensures that the clone operations are safe for concurrency.  
+This returns a new ``anydata`` value, with the same mutability as **``x1``**. There is another function **``cloneReadOnly()``** that returns an immutable deep copy. Both the functions do not copy the immutable parts of the ``anydata`` value. This ensures that the clone operations are safe for concurrency.  
 
-``anydata`` also allows boolean comparison and can be used to defined constants.
+``anydata`` also allows boolean comparison and can be used to define constants.
 
 ```ballerina
 boolean eq = (x1 == x2);
@@ -102,7 +103,7 @@ The equality operation also takes care of cycles within ``anydata`` structure va
 
 ## Configurable Variables
 
-Ballerina also has a concept of a configurable variable. A module-level variable can be declared as a configurable variable. This is useful when some of the application code is defined just to configure things. You can use the ``configurable`` keyword in this case.
+Ballerina also has a concept of a configurable variable. A module-level variable can be declared as a configurable variable. This is useful when some application code is defined just to configure things. You can use the ``configurable`` keyword in this case.
 
 ```ballerina
 configurable int port = 8080;

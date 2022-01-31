@@ -304,7 +304,7 @@ function foo(json j) returns error? {
 }
 ```
 
-In the above code example, the ``match`` expression matches the json value **``j``**. The interesting thing is that the match pattern also binds to a variable **``x``** used within the code for additional processing. In this way, you can directly use ``json`` structures within the control flow of your program.
+In the above code example, the ``match`` expression matches the json value **``j``**. The interesting thing is that the match pattern also binds to a variable **``x``** that is used within the code for additional processing. In this way, you can directly use ``json`` structures within the control flow of your program.
 
 ``match`` schematics are open, and you do not have to specify all the fields of the ``json`` value in the pattern for matching.
 
@@ -344,7 +344,7 @@ Coord coord = {
 json j = coord.toJson();
 ```
 
-In the above code example, **``Coord``** is an open record. Therefore any number of ``anydata`` fields can be added to it, including tables and XML. The **``toJson()``** function converts ``anydata`` to ``json``, such that all the sub-types, including tables and XML are handled appropriately.
+In the above code example, **``Coord``** is an open record. Therefore, any number of ``anydata`` fields can be added to it, including tables and XML. The **``toJson()``** function converts ``anydata`` to ``json``, such that all the subtypes, including tables and XML, are handled appropriately.
 
 ## Converting from JSON to User-defined Type
 
@@ -367,7 +367,7 @@ json j = {
 Coord c = <Coord>j;
 ```
 
-However, this does not work because the ``json`` fields can later be assigned to something other than ``float``. Therefore, the typecasting operation would not be type-safe. This goes back to the concept of covariance that limits mutation on type structures with inherent types. Therefore you can only create a read-only copy, and use it in the type cast expression.
+However, this does not work because the ``json`` fields can later be assigned to something other than ``float``. Therefore, the typecasting operation would not be type-safe. This goes back to the concept of covariance that limits mutation on type structures with inherent types. Therefore, you can only create a read-only copy, and use it in the type cast expression.
 
 ```ballerina
 json rj = j.cloneReadOnly();
@@ -389,7 +389,7 @@ json j = {x: 1.0, y: 2.0};
 Coord c = check j.cloneWithType(Coord);
 ```
 
-In the above example, the **``cloneWithType( )``** function uses the ``typedesc`` argument **``Coord``** as inherent type, and works recursively to clone every part of the value, including immutable structural values.
+In the above example, the **``cloneWithType()``** function uses the ``typedesc`` argument **``Coord``** as inherent type, and works recursively to clone every part of the value, including immutable structural values.
 
 This is a ``lang.value`` lang library function. You can also use the function without the argument, in which case the argument will be inferred from the contextually-expected type.
 
@@ -422,7 +422,7 @@ service /calc on h {
 
 In the above code example, the **``Args``** record is a closed record. It is used as a parameter of the resource method corresponding to the HTTP POST operation whenever the API **``/calc/add``** is triggered.
 
-Thanks to the implicit data binding and conversion feature of Ballerina, the JSON payload coming in the wire as part of the HTTP request is converted to the **``Args``** record, using the **``cloneWithType()``** function. Therefore its fields **``x``** and **``y``** are readily accessible. The return type of the resource method is the ``decimal`` type which is a subtype of ``anydata`` and is mapped to the protocol format on the wire, which in most cases is JSON.  This is how Ballerina types can be used to describe data on the wire, or on network interfaces.
+Thanks to the implicit data binding and conversion feature of Ballerina, the JSON payload coming in the wire as part of the HTTP request is converted to the **``Args``** record, using the **``cloneWithType()``** function. Therefore, its fields **``x``** and **``y``** are readily accessible. The return type of the resource method is the ``decimal`` type which is a subtype of ``anydata`` and is mapped to the protocol format on the wire, which in most cases is JSON.  This is how Ballerina types can be used to describe data on the wire, or on network interfaces.
 
 Annotations added to this code also help in refining the mapping between Ballerina-declared types and the wire format. Further, the service declaration can also be used to generate an OpenAPI specification.
 

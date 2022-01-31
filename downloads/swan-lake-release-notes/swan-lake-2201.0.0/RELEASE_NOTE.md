@@ -340,7 +340,7 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
 ##### Ballerina OpenAPI Tool
 
 ###### OpenAPI Contract Generation
-- Added the support for Ballerina HTTP headers with type `int`, `int[]`, `boolean`, and `boolean[]`
+- Added support for HTTP headers of types `int`, `int[]`, `boolean`, and `boolean[]`
 - Added support for HTTP payloads of type `map<string>`
 - Improved the OAS response header mapping for contexts in which the header details are defined within the return type
 

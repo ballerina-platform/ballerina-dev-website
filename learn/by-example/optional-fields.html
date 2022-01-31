@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Optional Fields
 description: This BBE demonstrates optional record fields in Ballerina.
 keywords: ballerina, ballerina by example, bbe, optional, fields, record
@@ -18,7 +18,7 @@ redirect_from:
    <span class="kt">string</span> <span class="err">&#39;</span><span class="nx">from</span><span class="p">;</span>
    <span class="kt">string</span> <span class="nx">to</span><span class="p">;</span>
 
-   <span class="c1">// Records can have optional fields</span>
+   <span class="c1">// Records can have optional fields.</span>
    <span class="kt">string</span> <span class="nx">subject</span><span class="err">?</span><span class="p">;</span>
 
 <span class="p">};</span>
@@ -28,7 +28,7 @@ redirect_from:
   <span class="nx">to</span><span class="p">:</span> <span class="s">&quot;Jill&quot;</span>
 <span class="p">};</span>
 
-<span class="c1">//Use ?. operator to access optional field</span>
+<span class="c1">// Use the `?.` operator to access the optional field.</span>
 <span class="kt">string</span><span class="err">?</span> <span class="nx">subject</span> <span class="p">=</span> <span class="nx">h</span><span class="err">?</span><span class="p">.</span><span class="nx">subject</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
@@ -44,9 +44,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Optional Fields</h2>
-                            <p><p>Fields of a record can be marked as optional. These fields can be omitted when creating a record.
- Such fields can be accessed via optional field access (e.g., <code>p?.name</code>) or member access (e.g., <code>p[&quot;name&quot;]</code>)
- which will both return <code>()</code> if the field is not present in the record.</p>
+                            <p><p>Fields of a <code>record</code> type can be marked as optional. These fields can be omitted when creating a value of the <code>record</code> type.
+ Such fields can be accessed via optional field access (e.g., <code>p?.name</code>) or member access (e.g., <code>p[&quot;name&quot;]</code>),
+ which will both return <code>()</code> if the field is not present in the <code>record</code> value.</p>
 </p>
 
                         </td>
@@ -87,7 +87,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=9eff868da9f22f6020728d8082b3c65b&file=optional_fields.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=7ee6f8f91f12a926363bef93b4c0df11&file=optional_fields.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -138,7 +138,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Records can have optional fields</p>
+                                            <p>Records can have optional fields.</p>
 
                                         </div>
                                     </div>
@@ -184,7 +184,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Use ?. operator to access optional field</p>
+                                            <p>Use the <code>?.</code> operator to access the optional field.</p>
 
                                         </div>
                                     </div>

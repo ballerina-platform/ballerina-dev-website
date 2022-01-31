@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Covariance
 description: This BBE demonstrates covariance in Ballerina
 keywords: ballerina, ballerina by example, bbe, covariance, arrays, maps
@@ -15,8 +15,8 @@ redirect_from:
                 <div class="highlight"><pre><span class="kt">int</span><span class="p">[]</span> <span class="nx">iv</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
 
 <span class="c1">// Assigning `int[]` to `any[]` is allowed.</span>
-<span class="c1">// - set of values allowed by `int` is subset of set of values allowed by `any`</span>
-<span class="c1">// - set of values allowed by `int[]` is subset of set of values allowed by `any[]`</span>
+<span class="c1">// The set of values allowed by `int` is a subset of set of values allowed by `any`</span>
+<span class="c1">// The set of values allowed by `int[]` is a subset of set of values allowed by `any[]`</span>
 <span class="kt">any</span><span class="p">[]</span> <span class="nx">av</span> <span class="p">=</span> <span class="nx">iv</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
@@ -79,7 +79,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=a7757c4a2ec20e9a88e00d67cce21179&file=covariance.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=b91d539b66f48534228417f98e17f749&file=covariance.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -117,8 +117,8 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Assigning <code>int[]</code> to <code>any[]</code> is allowed.
- - set of values allowed by <code>int</code> is subset of set of values allowed by <code>any</code>
- - set of values allowed by <code>int[]</code> is subset of set of values allowed by <code>any[]</code></p>
+ The set of values allowed by <code>int</code> is a subset of set of values allowed by <code>any</code>
+ The set of values allowed by <code>int[]</code> is a subset of set of values allowed by <code>any[]</code></p>
 
                                         </div>
                                     </div>

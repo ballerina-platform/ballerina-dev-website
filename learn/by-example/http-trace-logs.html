@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Trace logs
 description: BBE on how trace logs can be used to monitor the HTTP traffic in Ballerina.
 keywords: ballerina, ballerina by example, bbe, http, trace logs
@@ -17,7 +17,7 @@ redirect_from:
 <span class="kd">service</span> <span class="o">/</span><span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="p">.(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://httpstat.us&quot;</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://httpstat.us&quot;</span><span class="p">);</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/200&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
         <span class="k">return</span> <span class="nx">resp</span><span class="p">;</span>
     <span class="p">}</span>
@@ -116,7 +116,7 @@ redirect_from:
 
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    resource function get .(http:Request req) returns http:Response|error {
-        http:Client clientEP = check new (&quot;http://httpstat.us&quot;);
+        http:Client clientEP = check new (&quot;https://httpstat.us&quot;);
         http:Response resp = check clientEP-&gt;forward(&quot;/200&quot;, req);
         return resp;
     }

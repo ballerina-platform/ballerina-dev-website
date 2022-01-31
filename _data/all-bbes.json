@@ -1236,7 +1236,7 @@
             },
             {
                 "name": "Service - OAuth2",
-                "url": "ce-oauth2",
+                "url": "http-service-oauth2",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1533,6 +1533,15 @@
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "File Upload",
+                "url": "graphql-file-upload",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disableVerificationReason": "Needs prerequisite condition",
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1601,6 +1610,7 @@
                 "url": "websocket-text-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
@@ -1608,6 +1618,7 @@
                 "url": "websocket-binary-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
+                "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
@@ -1724,7 +1735,7 @@
             },
             {
                 "name": "Client - OAuth2 Client Credentials Grant Type",
-                "url": "websocket-client-oauth2-client-credentials-grant-type",
+                "url": "websocket-client-oauth2-client-cred-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -2629,7 +2640,7 @@
                 "name": "Cache Invalidation",
                 "url": "cache-invalidation",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "disableVerificationReason": "Intermittently failing with github api rate limiting",
                 "isLearnByExample": false
             }
@@ -2739,21 +2750,21 @@
                 "name": "Schedule Job recurrence by Frequency",
                 "url": "task-frequency-job-execution",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Schedule one time job",
                 "url": "task-one-time-job-execution",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": false
             },
             {
                 "name": "Manage Scheduled Jobs",
                 "url": "manage-scheduled-jobs",
                 "verifyBuild": true,
-                "verifyOutput": false,
+                "verifyOutput": true,
                 "isLearnByExample": false
             }
         ]

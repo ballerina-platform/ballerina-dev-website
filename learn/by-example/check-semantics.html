@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Check Semantics
 description: This BBE explains the `check` semantics in Ballerina.
 keywords: ballerina, ballerina by example, bbe, check, fail, exceptions, on fail, error
@@ -16,14 +16,14 @@ redirect_from:
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">do</span> <span class="p">{</span>
-        <span class="c1">// If either `foo()` or `bar()` invocations returns an `error`,</span>
+        <span class="c1">// If either `foo()` or `bar()` invocations returns an error,</span>
         <span class="c1">// the error will be returned from the `main` function and execution</span>
         <span class="c1">// of the `main` function ends.</span>
         <span class="nx">check</span> <span class="nx">foo</span><span class="p">();</span>
         <span class="nx">check</span> <span class="nx">bar</span><span class="p">();</span>
 
         <span class="k">if</span> <span class="p">!</span><span class="nx">isOK</span><span class="p">()</span> <span class="p">{</span>
-            <span class="c1">// Fails explicitly with an `error`.</span>
+            <span class="c1">// Fails explicitly with an error.</span>
             <span class="nx">fail</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;not OK&quot;</span><span class="p">);</span>
 
         <span class="p">}</span>
@@ -61,14 +61,14 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Check Semantics</h2>
-                            <p><p><code>check</code> semantics is not simply to return on error.
- When <code>check</code> gets an error, it fails.
- Enclosing block decide how to handle failure.
- Most blocks pass failure up to enclosing block.
- Function definition handles failure by returning the error.
+                            <p><p><code>check</code> semantics is not to simply return on an <code>error</code> value.
+ When <code>check</code> gets an <code>error</code> value, it fails.
+ The enclosing block decides how to handle the failure.
+ Most blocks pass the failure up to the enclosing block.
+ Function definition handles the failure by returning the error.
  <code>on fail</code> can catch the error.
- <code>fail</code> statement is like <code>check</code> but always fails.
- Differs from exceptions in that control flow is explicit</p>
+ <code>fail</code> statement is like <code>check</code>, but it always fails.
+ Differs from exceptions in that control flow is explicit.</p>
 </p>
 
                         </td>
@@ -109,7 +109,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=4313529781fa81eb4a4479b5a6091602&file=check_semantics.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=eade6f3946a3da12bb167f564939128e&file=check_semantics.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -160,7 +160,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If either <code>foo()</code> or <code>bar()</code> invocations returns an <code>error</code>,
+                                            <p>If either <code>foo()</code> or <code>bar()</code> invocations returns an error,
  the error will be returned from the <code>main</code> function and execution
  of the <code>main</code> function ends.</p>
 
@@ -193,7 +193,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Fails explicitly with an <code>error</code>.</p>
+                                            <p>Fails explicitly with an error.</p>
 
                                         </div>
                                     </div>

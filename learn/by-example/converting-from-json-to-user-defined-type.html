@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Converting From JSON to User-Defined Type
 description: This BBE demonstrates converting JSON to a user-defined type
 keywords: ballerina, ballerina by example, bbe, conversion, json
@@ -21,11 +21,13 @@ redirect_from:
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">json</span> <span class="nx">j</span> <span class="p">=</span> <span class="p">{</span><span class="nx">x</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nx">y</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">};</span>
-
+    
+    
     <span class="c1">// With mutable values, it would not be type-safe to allow a cast.</span>
     <span class="c1">// Cast to `T` will work on the mutable structure `s` only if the inherent type</span>
     <span class="c1">// of `s` is a subtype of `T`.</span>
-    <span class="c1">// Casting of immutable value will work.</span>
+    <span class="c1">// Use `cloneReadOnly()` to create a read-only copy of the mutable value.</span>
+    <span class="c1">// Then, you can cast the resulting immutable value successfully.</span>
     <span class="kt">json</span> <span class="nx">k</span> <span class="p">=</span> <span class="nx">j</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
     <span class="nx">Coord</span> <span class="nx">c</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Coord</span><span class="p">&gt;</span> <span class="nx">k</span><span class="p">;</span>
 
@@ -41,11 +43,11 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Converting From JSON to User-Defined Type</h2>
-                            <p><p>With mutable values, would not be type-safe to allow a cast.
+                            <p><p>With mutable values, it would not be type-safe to allow a cast.
  Mutable structures have the <code>inherent</code> type that limits mutation.
  Cast to <code>T</code> will work on mutable structure <code>s</code> only if the <code>inherent</code> type
  of <code>s</code> is a subtype of <code>T</code>.
- Casting of immutable value will work but it does not do numeric conversions.</p>
+ Casting immutable values will work but it does not do numeric conversions.</p>
 </p>
 
                         </td>
@@ -86,7 +88,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6ae137bf71ba1fbd7b1c55e3e1850c5e&file=converting_from_json_to_user_defined_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=4ff1c7815b3bec836574918c034eb12f&file=converting_from_json_to_user_defined_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -132,6 +134,8 @@ redirect_from:
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
     json j = {x: 1.0, y: 2.0};
+    
+    
 </code></pre></div>
 
                                 </div>
@@ -155,7 +159,8 @@ redirect_from:
                                             <p>With mutable values, it would not be type-safe to allow a cast.
  Cast to <code>T</code> will work on the mutable structure <code>s</code> only if the inherent type
  of <code>s</code> is a subtype of <code>T</code>.
- Casting of immutable value will work.</p>
+ Use <code>cloneReadOnly()</code> to create a read-only copy of the mutable value.
+ Then, you can cast the resulting immutable value successfully.</p>
 
                                         </div>
                                     </div>

@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Anydata Type
 description: This BBE demonstrates anydata type in Ballerina.
 keywords: ballerina, ballerina by example, bbe, anydata type
@@ -34,9 +34,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Anydata Type</h2>
-                            <p><p>The type for plain data is <code>anydata</code>. The subtype of <code>any</code>. <code>==</code> and <code>!=</code> operators tests for deep equality.
- <code>x.clone()</code> returns a deep copy, with the same mutability. <code>x.cloneReadOnly()</code> returns a deep copy that is
- immutable. Ballerina syntax uses <code>ReadOnly</code> to mean immutable. Both <code>x.clone</code> and <code>cloneReadOnly()</code> do
+                            <p><p>The type for plain data is <code>anydata</code>. It is a subtype of <code>any</code>. <code>==</code> and <code>!=</code> operators test for deep equality.
+ <code>x.clone()</code> returns a deep copy with the same mutability. <code>x.cloneReadOnly()</code> returns a deep copy that is
+ immutable. Ballerina syntax uses <code>readonly</code> to mean immutable. Both <code>x.clone()</code> and <code>x.cloneReadOnly()</code> do
  not copy immutable parts of <code>x</code>. <code>const</code> structures are allowed. Equality and cloning handle cycles.</p>
 </p>
 
@@ -78,7 +78,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=0b56414053c5b314337f1b1e93df7b1a&file=anydata_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=dc75bda8f64c34be3e6b9e597fbb0b46&file=anydata_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

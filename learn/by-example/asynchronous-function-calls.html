@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Asynchronous Function Calls
 description: This BBE demonstrates how to use start action to call a function asynchronouly.
 keywords: ballerina, ballerina by example, bbe, start, Asynchronous function call
@@ -36,10 +36,11 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Asynchronous Function Calls</h2>
-                            <p><p>start calls a function asynchronously and the function runs on a separate logical thread (&ldquo;strand&rdquo;): cooperatively multitasked by default
- Result will be of type <code>future&lt;T&gt;</code> and <code>future</code> is a separate basic type.
- Waiting for the same future more than once gives an error.
- Use <code>f.cancel()</code> to terminate a future.</p>
+                            <p><p><code>start</code> calls a function asynchronously and the function runs on a separate logical thread (<code>strand</code>).
+ It is cooperatively multitasked by default.
+ The result will be of type <code>future&lt;T&gt;</code> and <code>future</code> is a separate basic type.
+ Waiting for the same <code>future</code> more than once gives an <code>error</code>.
+ Use <code>f.cancel()</code> to terminate a <code>future</code>.</p>
 </p>
 
                         </td>
@@ -80,7 +81,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=4c35ea6b1b63fdf2f063f7ff558f1ffb&file=asynchronous_function_calls.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=e4a30945f56976072611b477c2fbe6e0&file=asynchronous_function_calls.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

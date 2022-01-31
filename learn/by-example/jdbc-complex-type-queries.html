@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Query With Complex Types
 description: This BBE on the use of JDBC client with complex data types such as arrays, binary, blobs, clob, and date/time fields in Ballerina.
 keywords: ballerina, ballerina by example, bbe, jdbc, datatype, blobs, date, time
@@ -59,9 +59,10 @@ redirect_from:
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Binary types Result :&quot;</span><span class="p">);</span>
     <span class="c1">// Iterates the `binaryResultStream`.</span>
-    <span class="nx">check</span> <span class="nx">binaryResultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">BinaryType</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-    <span class="p">});</span>
+    <span class="nx">check</span> <span class="nx">from</span> <span class="nx">BinaryType</span> <span class="nx">result</span> <span class="nx">in</span> <span class="nx">binaryResultStream</span>
+        <span class="nx">do</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="p">};</span>
 
     <span class="c1">// Since the `rowType` is provided as an `ArrayType`, the `arrayResultStream` will</span>
     <span class="c1">// have `ArrayType` records.</span>
@@ -70,9 +71,10 @@ redirect_from:
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Array types Result :&quot;</span><span class="p">);</span>
     <span class="c1">// Iterates the `arrayResultStream`.</span>
-    <span class="nx">check</span> <span class="nx">arrayResultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ArrayType</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-    <span class="p">});</span>
+    <span class="nx">check</span> <span class="nx">from</span> <span class="nx">ArrayType</span> <span class="nx">result</span> <span class="nx">in</span> <span class="nx">arrayResultStream</span>
+        <span class="nx">do</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="p">};</span>
 
     <span class="c1">// Since the `rowType` is provided as a `DateTimeType`, the `dateResultStream`</span>
     <span class="c1">// will have `DateTimeType` records. The `Date`, `Time`, `DateTime`, and</span>
@@ -83,9 +85,10 @@ redirect_from:
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;DateTime types Result :&quot;</span><span class="p">);</span>
     <span class="c1">// Iterates the `dateResultStream`.</span>
-    <span class="nx">check</span> <span class="nx">dateResultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">DateTimeType</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-    <span class="p">});</span>
+    <span class="nx">check</span> <span class="nx">from</span> <span class="nx">DateTimeType</span> <span class="nx">result</span> <span class="nx">in</span> <span class="nx">dateResultStream</span>
+        <span class="nx">do</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="p">};</span>
 
     <span class="c1">// Performs the cleanup after the example.</span>
     <span class="nx">check</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">);</span>
@@ -98,11 +101,12 @@ redirect_from:
 <span class="s">            INTEGER NOT NULL, blob_type BLOB(1024), clob_type CLOB(1024), </span>
 <span class="s">            binary_type BINARY(27), PRIMARY KEY (row_id))`</span><span class="p">);</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE ARRAY_TYPES (row_id</span>
-<span class="s">            INTEGER NOT NULL, int_array ARRAY, long_array ARRAY, </span>
-<span class="s">            float_array ARRAY, double_array ARRAY, boolean_array ARRAY, </span>
-<span class="s">            string_array ARRAY, PRIMARY KEY (row_id))`</span><span class="p">);</span>
+<span class="s">            INTEGER NOT NULL, int_array INT ARRAY, long_array BIGINT ARRAY,</span>
+<span class="s">            float_array FLOAT ARRAY, double_array DOUBLE ARRAY,</span>
+<span class="s">            boolean_array BOOLEAN ARRAY, string_array VARCHAR ARRAY,</span>
+<span class="s">            PRIMARY KEY (row_id))`</span><span class="p">);</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE DATE_TIME_TYPES(row_id</span>
-<span class="s">            INTEGER NOT NULL, date_type DATE, time_type TIME, </span>
+<span class="s">            INTEGER NOT NULL, date_type DATE, time_type TIME,</span>
 <span class="s">            timestamp_type timestamp, datetime_type  datetime, </span>
 <span class="s">            PRIMARY KEY (row_id))`</span><span class="p">);</span>
 
@@ -114,9 +118,10 @@ redirect_from:
 <span class="s">            X&#39;77736F322062616C6C6572696E612062696E61727920746573742E&#39;)`</span><span class="p">);</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO ARRAY_TYPES (row_id,</span>
 <span class="s">            int_array, long_array, float_array, double_array, boolean_array, </span>
-<span class="s">            string_array) VALUES (1, (1, 2, 3), (100000000, 200000000, </span>
-<span class="s">            300000000), (245.23, 5559.49, 8796.123), (245.23, 5559.49, </span>
-<span class="s">            8796.123), (TRUE, FALSE, TRUE), (&#39;Hello&#39;, &#39;Ballerina&#39;))`</span><span class="p">);</span>
+<span class="s">            string_array) VALUES (1, ARRAY[1, 2, 3], ARRAY[100000000,</span>
+<span class="s">            200000000, 300000000], ARRAY[245.23, 5559.49, 8796.123],</span>
+<span class="s">            ARRAY[245.23, 5559.49, 8796.123], ARRAY[TRUE, FALSE, TRUE],</span>
+<span class="s">            ARRAY[&#39;Hello&#39;, &#39;Ballerina&#39;])`</span><span class="p">);</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`Insert into DATE_TIME_TYPES (row_id,</span>
 <span class="s">            date_type, time_type, timestamp_type, datetime_type) values (1, </span>
 <span class="s">            &#39;2017-05-23&#39;, &#39;14:15:23&#39;, &#39;2017-01-25 16:33:55&#39;, </span>
@@ -145,7 +150,8 @@ redirect_from:
  such as arrays, binary, blobs, clob, and date/time fields. Note that the
  relevant database driver JAR should be defined in the <code>Ballerina.toml</code> file as a dependency.
  This sample is based on an H2 database and the H2 database driver JAR need to be added to <code>Ballerina.toml</code> file.
- For a sample configuration and more information on the underlying module, see the <a href="https://docs.central.ballerina.io/ballerinax/java.jdbc/latest/">JDBC module</a>.<br><br></p>
+ For a sample configuration and more information on the underlying module, see the <a href="https://docs.central.ballerina.io/ballerinax/java.jdbc/latest/">JDBC module</a>.<br><br>
+ This sample is written using H2 2.0.6 and it is recommended to use H2 JAR with versions higher than 2.0.2.</p>
 </p>
 
                         </td>
@@ -374,9 +380,10 @@ import ballerina/time;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check binaryResultStream.forEach(function(BinaryType result) {
-        io:println(result);
-    });
+                                    <div class="highlight"><pre><code class=language-ballerina>    check from BinaryType result in binaryResultStream
+        do {
+            io:println(result);
+        };
 </code></pre></div>
 
                                 </div>
@@ -428,9 +435,10 @@ import ballerina/time;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check arrayResultStream.forEach(function(ArrayType result) {
-        io:println(result);
-    });
+                                    <div class="highlight"><pre><code class=language-ballerina>    check from ArrayType result in arrayResultStream
+        do {
+            io:println(result);
+        };
 </code></pre></div>
 
                                 </div>
@@ -484,9 +492,10 @@ import ballerina/time;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check dateResultStream.forEach(function(DateTimeType result) {
-        io:println(result);
-    });
+                                    <div class="highlight"><pre><code class=language-ballerina>    check from DateTimeType result in dateResultStream
+        do {
+            io:println(result);
+        };
 </code></pre></div>
 
                                 </div>
@@ -548,11 +557,12 @@ import ballerina/time;
             INTEGER NOT NULL, blob_type BLOB(1024), clob_type CLOB(1024), 
             binary_type BINARY(27), PRIMARY KEY (row_id))`);
     _ = check jdbcClient-&gt;execute(`CREATE TABLE ARRAY_TYPES (row_id
-            INTEGER NOT NULL, int_array ARRAY, long_array ARRAY, 
-            float_array ARRAY, double_array ARRAY, boolean_array ARRAY, 
-            string_array ARRAY, PRIMARY KEY (row_id))`);
+            INTEGER NOT NULL, int_array INT ARRAY, long_array BIGINT ARRAY,
+            float_array FLOAT ARRAY, double_array DOUBLE ARRAY,
+            boolean_array BOOLEAN ARRAY, string_array VARCHAR ARRAY,
+            PRIMARY KEY (row_id))`);
     _ = check jdbcClient-&gt;execute(`CREATE TABLE DATE_TIME_TYPES(row_id
-            INTEGER NOT NULL, date_type DATE, time_type TIME, 
+            INTEGER NOT NULL, date_type DATE, time_type TIME,
             timestamp_type timestamp, datetime_type  datetime, 
             PRIMARY KEY (row_id))`);
 </code></pre></div>
@@ -580,9 +590,10 @@ import ballerina/time;
             X&#39;77736F322062616C6C6572696E612062696E61727920746573742E&#39;)`);
     _ = check jdbcClient-&gt;execute(`INSERT INTO ARRAY_TYPES (row_id,
             int_array, long_array, float_array, double_array, boolean_array, 
-            string_array) VALUES (1, (1, 2, 3), (100000000, 200000000, 
-            300000000), (245.23, 5559.49, 8796.123), (245.23, 5559.49, 
-            8796.123), (TRUE, FALSE, TRUE), (&#39;Hello&#39;, &#39;Ballerina&#39;))`);
+            string_array) VALUES (1, ARRAY[1, 2, 3], ARRAY[100000000,
+            200000000, 300000000], ARRAY[245.23, 5559.49, 8796.123],
+            ARRAY[245.23, 5559.49, 8796.123], ARRAY[TRUE, FALSE, TRUE],
+            ARRAY[&#39;Hello&#39;, &#39;Ballerina&#39;])`);
     _ = check jdbcClient-&gt;execute(`Insert into DATE_TIME_TYPES (row_id,
             date_type, time_type, timestamp_type, datetime_type) values (1, 
             &#39;2017-05-23&#39;, &#39;14:15:23&#39;, &#39;2017-01-25 16:33:55&#39;, 
@@ -693,7 +704,7 @@ bal run
 Array types Result :
 {&quot;row_id&quot;:1,&quot;int_array&quot;:[1,2,3],&quot;long_array&quot;:[100000000,200000000,300000000],&quot;float_array&quot;:[245.23,5559.49,8796.123],&quot;double_array&quot;:[245.23,5559.49,8796.123],&quot;boolean_array&quot;:[true,false,true],&quot;string_array&quot;:[&quot;Hello&quot;,&quot;Ballerina&quot;]}
 DateTime types Result :
-{&quot;row_id&quot;:1,&quot;date_type&quot;:&quot;2017-05-23&quot;,&quot;time_type&quot;:31523000,&quot;timestamp_type&quot;:1485342235 0,&quot;datetime_type&quot;:&quot;2017-01-25 16:33:55.0&quot;}
+{&quot;row_id&quot;:1,&quot;date_type&quot;:&quot;2017-05-23&quot;,&quot;time_type&quot;:31523000,&quot;timestamp_type&quot;:[1485342235,0E-9],&quot;datetime_type&quot;:&quot;2017-01-25 16:33:55.0&quot;}
 </code></pre></div>
 
                                 </div>

@@ -1,0 +1,12 @@
+- title: Deploying Ballerina on Kubernetes
+  url: #
+  sublinks:
+    - title: Setting up the Prerequisites
+      url: /learn/deploying-ballerina-on-kubernetes/#setting-up-the-prerequisites
+      active: setting-up-the-prerequisites
+    - title: Code to Cloud
+      url: /learn/deploying-ballerina-on-kubernetes/#code-to-cloud
+      active: code-to-cloud
+    - title: Writing the Ballerina Service
+      url: /learn/deploying-ballerina-on-kubernetes/#writing-the-ballerina-service
+      active: writing-the-ballerina-service

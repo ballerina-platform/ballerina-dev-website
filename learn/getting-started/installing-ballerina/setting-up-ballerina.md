@@ -29,27 +29,6 @@ redirect_from:
   - /learn/installing-ballerina
 ---
 
-## Trying Ballerina in the Playground
-
-You can use the Ballerina Playground to write Ballerina programs without installing anything.
-
-<link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/css/home-page.css"/>
-<style>a.cMobileLogo img {display: block;}
-       .nav > li.cVersionItem {display: block !important};
-</style>
-<div class="row cBallerinaIntroSection">
-   <div class="container">
-      <div class="col-sm-12 col-md-12 cTopLayer">
-         <div class="col-sm-12 col-md-4 cMainCTAContainer">
-            <a class="cBallerina-io-Home-main-download-button cPlayButton" target="_blank" href="https://play.ballerina.io">
-               Try Ballerina
-               <p>Try without installing <br>in the playground</p>
-            </a>
-         </div>
-   </div></div></div>
-<div class="clearfix"></div>
-
 ## Downloading Ballerina
 
 [Download](/downloads) Ballerina based on the operating system you are using and install it.
@@ -58,55 +37,55 @@ You can use the Ballerina Playground to write Ballerina programs without install
 <script src="/js/download-page.js"></script>
 <div class="clearfix"></div>
 <div class="row cDownloads">
-   <div class="container">
-      <div class=" ">
+      <div class="">
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-            <p class="cWindows"><b>Windows</b></p>
-            <a id="packWindows" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}" class="cGTMDownload cDownload cDownloadNew smallMargin" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.windows-installer }}">
-               <div class="cSize">Installer  msi <span id="packWindowsName">{{ site.data.swanlake-latest.metadata.windows-installer-size }}</span></div>
-            </a>
-            <ul class="cDiwnloadSubLinks">
-               <li style="font-size:13px;"><a id="packWindowsMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.md5">md5</a></li>
-               <li style="font-size:13px;"><a id="packWindowsSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.sha1">SHA-1</a></li>
-               <li style="font-size:13px;"><a id="packWindowsAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.asc">asc</a></li>
-            </ul>
-         </div>
-         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-            <p class="cLinux"><b>Linux</b></p>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: 0;">
-               <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}" class="cGTMDownload cDownload cLinuxPKGs  cDownloadNew smallMargin" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.linux-installer }}">
-                  <div class="cSize">deb  <span id="packLinuxName">{{ site.data.swanlake-latest.metadata.linux-installer-size }}</span></div>
-               </a>
-               <ul class="cDiwnloadSubLinks">
-                  <li style="font-size:13px;"><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}.md5">md5</a></li>
-                  <li style="font-size:13px;"><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}.sha1">SHA-1</a></li>
-                  <li style="font-size:13px;"><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}.asc">asc</a></li>
-               </ul>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: 0;">
-               <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}" class="cGTMDownload cDownload cLinuxPKGs cDownloadNew smallMargin" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.rpm-installer }}">
-                  <div class="cSize">rpm  <span id="packLinuxName">{{ site.data.swanlake-latest.metadata.rpm-installer-size }}</span></div>
-               </a>
-               <ul class="cDiwnloadSubLinks">
-                  <li style="font-size:13px;"><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}.md5">md5</a></li>
-                  <li style="font-size:13px;"><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}.sha1">SHA-1</a></li>
-                  <li style="font-size:13px;"><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}.asc">asc</a></li>
-               </ul>
-            </div>
-         </div>
-         <div class="clearfix"></div>
-         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-            <p class="cMac"><b>macOS</b></p>
-            <a id="packMac" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}" class="cGTMDownload cDownload cDownloadNew smallMargin" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.macos-installer }}">
-               <div class="cSize">Installer pkg <span id="packWindowsName">{{ site.data.swanlake-latest.metadata.windows-installer-size }}</span></div>
-            </a>
-            <ul class="cDiwnloadSubLinks">
-               <li style="font-size:13px;"><a id="packMacMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.md5">md5</a></li>
-               <li style="font-size:13px;"><a id="packMacSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.sha1">SHA-1</a></li>
-               <li style="font-size:13px;"><a id="packMacAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.asc">asc</a></li>
-            </ul>
-         </div>
-         </div></div></div>
+					<h3 class="cWindows">Windows</h3>
+					<a id="packWindows" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}" class="cGTMDownload cDownload cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.windows-installer }}">
+						<div class="cSize">msi <span id="packWindowsName">{{ site.data.swanlake-latest.metadata.windows-installer-size }}</span></div>
+					</a>
+					<ul class="cDiwnloadSubLinks">
+						<li><a id="packWindowsMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.md5">md5</a></li>
+						<li><a id="packWindowsSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.sha1">SHA-1</a></li>
+						<li><a id="packWindowsAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.asc">asc</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
+					<h3 class="cLinux">Linux </h3>
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cMarginSmall" style="padding: 0;">
+						<a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}" class="cGTMDownload cDownload cLinuxPKGs  cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.linux-installer }}">
+							<div class="cSize">deb <span id="packLinuxName">{{ site.data.swanlake-latest.metadata.linux-installer-size }}</span></div>
+						</a>
+						<ul class="cDiwnloadSubLinks">
+							<li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}.md5">md5</a></li>
+							<li><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}.sha1">SHA-1</a></li>
+							<li><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}.asc">asc</a></li>
+						</ul>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cMarginSmall" style="padding: 0;">
+						<a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}" class="cGTMDownload cDownload cLinuxPKGs cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.rpm-installer }}">
+							<div class="cSize">rpm <span id="packLinuxName">{{ site.data.swanlake-latest.metadata.rpm-installer-size }}</span></div>
+						</a>
+						<ul class="cDiwnloadSubLinks">
+							<li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}.md5">md5</a></li>
+							<li><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}.sha1">SHA-1</a></li>
+							<li><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}.asc">asc</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
+					<h3 class="cMac">macOS</h3>
+					<a id="packMac" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}" class="cGTMDownload cDownload cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.macos-installer }}">
+						<div class="cSize">pkg <span id="packWindowsName">{{ site.data.swanlake-latest.metadata.macos-installer-size }}</span></div>
+					</a>
+					<ul class="cDiwnloadSubLinks">
+						<li><a id="packMacMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.md5">md5</a></li>
+						<li><a id="packMacSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.sha1">SHA-1</a></li>
+						<li><a id="packMacAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.asc">asc</a></li>
+					</ul>
+				</div>
+      </div>
+   </div>
+
 
 For more download options, see [Downloads](/download).
 
@@ -114,24 +93,41 @@ For more download options, see [Downloads](/download).
 
 Double-click on the package file you downloaded above to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution.
 
-For more installation options, see [Installation Options](/learn/user-guide/getting-started/installation-options/).
-
-## Updating Ballerina
-
-Once you have Ballerina installed, you can use the Update Tool to update it to the latest version. To do this, execute the command below in a new CLI tab.
-
-`bal dist update`
-
->**Info:** If you want to pull a specific Ballerina version, execute the `bal dist pull <VERSION>` command (e.g., `bal dist pull slbeta3`).
-
-> **Info:** You might need to first update the Update Tool to its latest version. If you have an Update Tool version below 0.8.14, execute the `ballerina update` command or else execute the `bal update` command to do this.
-
-For more information, see [Update Tool](/learn/tooling-guide/cli-tools/update-tool/).
+For more installation options, see [Installation Options](/learn/installing-ballerina/installation-options/).
 
 ## Installing the VSCode Extension
 
-Ballerina provides an extension to try out its development capabilities in Visual Studio Code. For instructions on setting it up, see [Quick Start](/learn/visual-studio-code-extension/quick-start/).
+Ballerina provides an extension to try out its development capabilities in Visual Studio Code. For instructions on setting it up, go to [The Ballerina Extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
+<style>
 
-## What's Next?
+a.cDownload .cSize {
+  font-family: monaco, Consolas, "Lucida Console", monospace;
+  font-size: 12px;
+  color: #d9dadb;
+  margin-top: -4px;
+  padding-left: 10px;
+}
 
-Now, that your environment for Ballerina is all set up and running, let's [write your first Ballerina program](/learn/user-guide/getting-started/writing-your-first-ballerina-program/).
+a.cDownload {
+  padding: 20px 10px 20px 40px;
+  background-position: left 10px top 20px;
+  margin: 0 ;
+}
+
+
+ul.cDiwnloadSubLinks {
+  padding: 10px 10px;
+}
+ul.cDiwnloadSubLinks li {
+  list-style: none;
+  font-size: 13px !important;
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+      .cMarginSmall{
+         padding: 0;
+         width: 48%;
+         margin-right: 2px
+      }
+    }
+</style>

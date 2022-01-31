@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Bidirectional Streaming RPC
 description: This Ballerina by Example has a gRPC streaming service and a streaming client. Both the client and the server sends a stream of messages to each other.
 keywords: ballerina, ballerina by example, bbe, grpc, bidirectional streaming
@@ -20,13 +20,16 @@ redirect_from:
     <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMapGrpcBidirectionalStreaming</span><span class="p">()</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="s">&quot;Chat&quot;</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">chat</span><span class="p">(</span><span class="nx">ChatStringCaller</span> <span class="nx">caller</span><span class="p">,</span>
+    <span class="c1">// The generated code of the Ballerina gRPC command does not contain ChatStringCaller.</span>
+    <span class="c1">// To show the usage of a caller, this RPC call uses a caller to send messages to the client.</span>
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">chat</span><span class="p">(</span><span class="nx">ChatStringCaller</span> <span class="nx">caller</span><span class="p">,</span>
                     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="c1">// Reads and processes each message in the client stream.</span>
-        <span class="nx">check</span> <span class="nx">clientStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ChatMessage</span> <span class="nx">chatMsg</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">sendString</span><span class="p">(</span>
-                                <span class="kt">string</span> <span class="s">`${chatMsg.name}: ${chatMsg.message}`</span><span class="p">);</span>
-        <span class="p">});</span>
+        <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">from</span> <span class="nx">ChatMessage</span> <span class="nx">chatMsg</span> <span class="nx">in</span> <span class="nx">clientStream</span>
+            <span class="nx">do</span> <span class="p">{</span>
+                <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">sendString</span><span class="p">(</span>
+                    <span class="kt">string</span> <span class="s">`${chatMsg.name}: ${chatMsg.message}`</span><span class="p">);</span>
+            <span class="p">};</span>
         <span class="c1">// Once the client sends a notification to indicate the end of the stream, &#39;()&#39; is returned by the stream.</span>
         <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
     <span class="p">}</span>
@@ -240,8 +243,6 @@ bal grpc --input grpc_bidirectional_streaming.proto  --output stubs
     descMap: getDescriptorMapGrpcBidirectionalStreaming()
 }
 service &quot;Chat&quot; on new grpc:Listener(9090) {
-    remote function chat(ChatStringCaller caller,
-                    stream&lt;ChatMessage, error?&gt; clientStream) returns error? {
 </code></pre></div>
 
                                 </div>
@@ -253,10 +254,32 @@ service &quot;Chat&quot; on new grpc:Listener(9090) {
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        check clientStream.forEach(function(ChatMessage chatMsg) {
-            checkpanic caller-&gt;sendString(
-                                string `${chatMsg.name}: ${chatMsg.message}`);
-        });
+                                    <div class="highlight"><pre><code class=language-ballerina>    isolated remote function chat(ChatStringCaller caller,
+                    stream&lt;ChatMessage, error?&gt; clientStream) returns error? {
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The generated code of the Ballerina gRPC command does not contain ChatStringCaller.
+ To show the usage of a caller, this RPC call uses a caller to send messages to the client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        _ = check from ChatMessage chatMsg in clientStream
+            do {
+                checkpanic caller-&gt;sendString(
+                    string `${chatMsg.name}: ${chatMsg.message}`);
+            };
 </code></pre></div>
 
                                 </div>

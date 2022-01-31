@@ -13,6 +13,9 @@
     - title: Writing Your First Ballerina Program 
       url: /learn/user-guide/getting-started/writing-your-first-ballerina-program/
       active: writing-your-first-ballerina-program
+    - title: Writing a GraphQL API with Ballerina
+      url: /learn/writing-a-graphql-api-with-ballerina/
+      active: writing-a-graphql-api-with-ballerina
 
 - title: Ballerina Packages
   url: '#'
@@ -36,7 +39,7 @@
 - title: Testing Ballerina Code
   url: '#'
   sublinks:
-    - title: Quick Start
+    - title: Testing a Simple Function
       url: /learn/user-guide/testing-ballerina-code/testing-quick-start
       active: testing-quick-start
     - title: Writing Tests

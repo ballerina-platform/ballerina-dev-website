@@ -1,0 +1,12 @@
+- title: Writing a gRPC Service with Ballerina
+  url: #
+  sublinks:
+    - title: Setting up the Prerequisites
+      url: /learn/writing-a-grpc-service-with-ballerina/#setting-up-the-prerequisites
+      active: setting-up-the-prerequisites
+    - title: Creating the Service Definition
+      url: /learn/writing-a-grpc-service-with-ballerina/#creating-the-service-definition
+      active: creating-the-service-definition
+    - title: Implementation
+      url: /learn/writing-a-grpc-service-with-ballerina/#implementation
+      active: implementation

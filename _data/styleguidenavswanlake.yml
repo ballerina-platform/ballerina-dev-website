@@ -29,8 +29,8 @@
           url: /learn/style-guide/top-level-definitions/#general-practices
           active: general-practices
         - title: Imports
-          url: /learn/style-guide/top-level-definitions/#imports
-          active: imports
+          url: /learn/style-guide/top-level-definitions/#import-declaration
+          active: import-declaration
         - title: Function Definition
           url: /learn/style-guide/top-level-definitions/#function-definition
           active: function-definition

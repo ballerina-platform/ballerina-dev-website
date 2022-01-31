@@ -197,8 +197,9 @@ td.cEventDateContainer{
          <ul class="nav nav-tabs">
             <li class="active" ><a data-toggle="tab"  href="#firstTab" >RESTful API</a></li>
             <li><a data-toggle="tab" href="#secondTab" >Consuming Services</a></li>
-            <li><a data-toggle="tab" href="#thiredTab" >Working with Data</a></li> 
-            <li><a data-toggle="tab" href="#fourthTab" >gRPC Service</a></li> 
+            <li><a data-toggle="tab" href="#thiredTab" >Working with Data</a></li>
+            <li><a data-toggle="tab" href="#fourthTab" >gRPC API</a></li>
+             <li><a data-toggle="tab" href="#fifthTab" >Kafka Service</a></li>
          </ul>
          <div class="tab-content">
             <div id="firstTab" class="tab-pane fade in active"  >
@@ -228,7 +229,7 @@ service / on new http:Listener(8080) {
         return albums.toArray();
     }
 
-    resource function get albums/[string id]() returns Album | http:NotFound {
+    resource function get albums/[string id]() returns Album|http:NotFound {
         Album? album = albums[id];
         if album is () {
             return &lt;http:NotFound&gt;{};
@@ -353,11 +354,11 @@ public function main() returns error? {
                   </div>
                </div>
             </div>
-            <div id="fourthTab" class="tab-pane fade"  >
-               <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
-                  <div class="col-lg-7 col-md-12 col-sm-12 focusPane codeBlock noBottomBorder" style="padding:20px;border: 1px #c7c7c7 solid;">
-                     <div class="FullCode" style="background-color: #f5f5f5;">
-                        <div class="highlight"> 
+             <div id="fourthTab" class="tab-pane fade"  >
+                 <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                     <div class="col-lg-7 col-md-12 col-sm-12 focusPane codeBlock noBottomBorder" style="padding:20px;border: 1px #c7c7c7 solid;">
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
                            <pre class="language-ballerina basic ballerina">
                               <code class="language-ballerina ballerina" style="font-size: 12px !important;">
 import ballerina/grpc;
@@ -412,15 +413,15 @@ service "RecordStore" on ep {
       remote function getAlbums() returns stream&lt;Album, error?&gt;|error {
          return albums.toArray().toStream();
       }
-}  
+}
                               </code>
                            </pre>
-                        </div>
+                             </div>
+                         </div>
                      </div>
-                  </div>
-                  <div class="col-lg-5 col-md-12 col-sm-12 focusPane cColHeight1 diagramBox" style="padding:20px;border: 1px #c7c7c7 solid;">
-                     <div class="FullCode" style="background-color: #f5f5f5;">
-                        <div class="highlight"> 
+                     <div class="col-lg-5 col-md-12 col-sm-12 focusPane cColHeight1 diagramBox" style="padding:20px;border: 1px #c7c7c7 solid;">
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
                            <pre class="highlight">
                               <code class="language-proto highlighter-rouge" style="font-size: 12px !important;">
 syntax = "proto3";
@@ -429,11 +430,11 @@ import "google/protobuf/wrappers.proto";
 import "google/protobuf/empty.proto";
 
 service RecordStore {
-   rpc storeAlbum(Album) 
+   rpc storeAlbum(Album)
                      returns (Album);
-   rpc getAlbumById(google.protobuf.StringValue) 
+   rpc getAlbumById(google.protobuf.StringValue)
                      returns (Album);
-   rpc getAlbums(google.protobuf.Empty) 
+   rpc getAlbums(google.protobuf.Empty)
                      returns (stream Album);
 }
 
@@ -445,11 +446,69 @@ message Album {
 };
                               </code>
                            </pre>
-                        </div>
+                             </div>
+                         </div>
                      </div>
-                  </div>
-               </div>
-            </div>
+                 </div>
+             </div>
+            <div id="fifthTab" class="tab-pane fade in active"  >
+                <div class="row" style="background-color: #f5f5f5;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 focusPane " style="padding:20px;">
+                        <div class="FullCode" style="background-color: #f5f5f5;">
+                            <div class="highlight">
+                                <pre class="language-ballerina basic ballerina">
+                                    <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerinax/kafka;
+import ballerina/lang.value;
+import ballerina/log;
+
+type Order readonly & record {|
+    int id;
+    string name;
+    PaymentStatus status;
+|};
+
+enum PaymentStatus {
+    SUCCESS,FAIL
+}
+
+kafka:ConsumerConfiguration consumerConfigs = {
+    groupId: "processing-consumer",
+    topics: ["order-topic"],
+    offsetReset: kafka:OFFSET_RESET_EARLIEST,
+    pollingInterval: 1
+};
+
+service kafka:Service on new kafka:Listener(kafka:DEFAULT_URL, consumerConfigs) {
+
+    remote function onConsumerRecord(kafka:Caller caller, kafka:ConsumerRecord[] records) returns error? {
+        error? err = from Order 'order in check getOrdersFromRecords(records) where 'order.status == SUCCESS do {
+            log:printInfo("Received order: " + 'order.toString());
+        };
+        if err is error {
+            log:printError("Error occured", err);
+        }
+    }
+}
+
+function getOrdersFromRecords(kafka:ConsumerRecord[] records) returns Order[]|error {
+    Order[] receivedOrders = [];
+    foreach kafka:ConsumerRecord 'record in records {
+        string messageContent = check string:fromBytes('record.value);
+        json jsonContent = check value:fromJsonString(messageContent);
+        Order receivedOrder = check jsonContent.cloneReadOnly().ensureType(Order);
+        receivedOrders.push(receivedOrder);
+    }
+    return receivedOrders;
+}
+
+                                    </code>
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
          </div>
       </div>
    </div>

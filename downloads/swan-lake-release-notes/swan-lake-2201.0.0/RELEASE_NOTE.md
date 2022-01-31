@@ -320,7 +320,7 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
 
 ##### Ballerina Shell
 
-- Added the module auto-import feature to the Ballerina Shell. If the user code contains a module prefix for a module that has not been imported, the Ballerina Shells provides the option to import the module.
+- Added the module auto-import feature to the Ballerina Shell. If the user code contains a module prefix for a module that has not been imported, the Ballerina Shell provides the option to import the module.
 
 
    For example, see below.

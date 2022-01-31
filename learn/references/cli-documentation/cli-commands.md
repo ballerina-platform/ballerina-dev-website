@@ -234,7 +234,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">help</td>
-<td class="cDescription">Prints the usage details of any Ballerina command (e.g., `bal help pull`).
+<td class="cDescription">Prints the usage details of any Ballerina command (e.g., <code>bal help pull</code>).
 </td>
 </tr>
 </table>

@@ -130,9 +130,6 @@
           - title: Transactions
             url: /learn/distinctive-language-features/concurrency/#transactions
             active: transactions
-          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">transaction</code> Statement
-            url: /learn/distinctive-language-features/concurrency/#transaction-statement
-            active: transaction-statement
     - title: Advanced, General-Purpose Language Features
       url: #
       sublinks:

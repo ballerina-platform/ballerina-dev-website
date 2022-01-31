@@ -37,7 +37,7 @@ The Ballerina OpenAPI tooling support provides the following capabilities.
 
  > **Note**: Ballerina SwanLake supports OpenAPI Specification version 3.0.0 onwards.
 
-### Generating a Ballerina Service from an OpenAPI Definition (Design-First Approach)
+## Generating a Ballerina Service from an OpenAPI Definition (Design-First Approach)
 
 To generate only the Ballerina service, you can use the following CLI command of the OpenAPI tool.
 ```bash
@@ -72,7 +72,7 @@ Once you execute the command, only the operations related to the given tags will
 >**Info:** For more command options, see
 [OpenAPI to Ballerina Command Reference](#openapi-to-ballerina-command-reference)
 
-### Exporting an OpenAPI Contract from a Ballerina service (Code-First Approach)
+## Exporting an OpenAPI Contract from a Ballerina service (Code-First Approach)
 
 You can convert your Ballerina service APIs into human-readable or machine-readable documents such as OpenAPI documents by using the Ballerina to OpenAPI command as follows.
 
@@ -146,7 +146,7 @@ info:
 ...
 ```
 
-### OpenAPI Validator Compiler Plugin
+## OpenAPI Validator Compiler Plugin
 
 The OpenAPI Validator Compiler plugin validates a service against a given OpenAPI contract. The Compiler Plugin gets activated if a service has the `@openapi:ServiceInfo` annotation. This plugin compares the service and the OpenAPI contract and validates both against a pre-defined set of validation rules. If any of the rules fail, the plugin provides compilation errors.
 #### Annotation for Validator Plugin
@@ -172,7 +172,7 @@ service /greet on new http:Listener(9090) {
 
 For annotation attributes details, see [OpenAPI annotation reference](#openapi-annotation-reference).
 
-### Generating a Ballerina Client from an OpenAPI Definition
+## Generating a Ballerina Client from an OpenAPI Definition
 The generated client can be used in your applications to call the service defined in the OpenAPI file. If you want to generate only the Ballerina client, you can set the `mode` as the `client` when running the OpenAPI tool. 
 
 - **Note :** Before generating your client using the command-line tool, please check if a pre-generated client for your API already exists in the [Ballerina Central](https://central.ballerina.io/). (If so, you can refer to the client's API documentation for more information on how to use the pre-generated client in your code.)

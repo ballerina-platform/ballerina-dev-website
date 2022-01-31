@@ -1487,7 +1487,10 @@ li pre code span.line-numbers-rows {
         z-index: 9999999999999 !important;
     }
     .cInfoBannerLink{font-weight: 200;font-size: 15px !important;color: #20b6b0;}
+<<<<<<< HEAD
+=======
 
+>>>>>>> 69019f41480c7e2fc78aba503409877c1da980b5
     .navbar-nav > li:last-child a.cSerachIcon {
         display: none;
     }

@@ -192,7 +192,7 @@ service on new http:Listener(8080) {
 
 This is an example of a resource method. Instead of ``remote``, it uses the ``resource`` keyword, and the definition has two parts, **``get``** and **``hello``**. **``get``** is the accessor for the resource, which represents the HTTP method in this case. **``name``** is the resource name. This is similar to the getter and setter methods in object-oriented programming but generalized for network-oriented programming.
 
-So this service object defines a resource *"/hello"* with a query parameter **``name``**.
+So this service object defines a resource **``/hello``** with a query parameter **``name``**.
 
 ## Hierarchical Resources
 
@@ -207,7 +207,7 @@ service /demo on new http:Listener(8080) {
 }
 ```
 
-In the above code example, the service object is attached to the HTTP listener with the base resource path *"/demo"* and defines a resource method *"greeting/hello"*. Thus, the actual resource path exposed by this service to the external world is a combination of the base path and resource path, which is *"/demo/greeting/hello"*.
+In the above code example, the service object is attached to the HTTP listener with the base resource path **``/demo``** and defines a resource method **``greeting/hello``**. Thus, the actual resource path exposed by this service to the external world is a combination of the base path and resource path, which is **``/demo/greeting/hello``**.
 
 A single listener can have multiple services attached to it, each with different base paths.
 
@@ -225,7 +225,7 @@ service /demo on new http:Listener(8080) {
 }
 ```
 
-In this case, the fixed resource path is *"/demo/greeting"* followed by a parameterized segment defined within `'[ ]'` in the resource method. This arrangement is similar to how HTTP resources are defined with parameterized path segments for RESTful services.
+In this case, the fixed resource path is **``/demo/greeting``** followed by a parameterized segment defined within `'[ ]'` in the resource method. This arrangement is similar to how HTTP resources are defined with parameterized path segments for RESTful services.
 
 ## Hierarchical Services
 

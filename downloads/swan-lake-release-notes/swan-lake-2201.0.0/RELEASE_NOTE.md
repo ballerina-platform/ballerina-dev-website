@@ -320,8 +320,8 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://git
 
 ##### Ballerina Shell
 
-- Added the module auto-import feature to the Ballerina Shell
-- Added the import statement for a module, which has a reference without an import statement based on the user’s input
+- Added the module auto-import feature to the Ballerina Shell. If the user code contains a module prefix for a module that has not been imported, the Ballerina Shells provides the option to import the module.
+
 
    For example, see below.
     ```ballerina

@@ -302,7 +302,7 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
 ### Code to Cloud Updates
 
 #### Improvements
-- Removed the `awslambda` and `azure_functions` packages support in single file projects
+- Removed `awslambda` and `azure_functions` module support for single `.bal` files
 
 #### Bug Fixes
 

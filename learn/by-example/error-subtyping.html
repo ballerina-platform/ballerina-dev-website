@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Error Subtyping
 description: This BBE demonstrates how subtypes of errors are defined in Ballerina
 keywords: ballerina, ballerina by example, bbe, error, error subtypes
@@ -21,8 +21,8 @@ redirect_from:
 <span class="nx">type</span> <span class="nx">Err</span> <span class="nx">XErr</span><span class="p">|</span><span class="nx">YErr</span><span class="p">;</span>
 
 <span class="c1">// The name of the distinct type can be used with the error</span>
-<span class="c1">// constructor to create an error value of that type.</span>
-<span class="c1">// `err` holds an error value of type `XErr`.</span>
+<span class="c1">// constructor to create an `error` value of that type.</span>
+<span class="c1">// `err` holds an `error` value of type `XErr`.</span>
 <span class="nx">Err</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">error</span> <span class="nx">XErr</span><span class="p">(</span><span class="s">&quot;Whoops!&quot;</span><span class="p">);</span>
 
 <span class="kd">function</span> <span class="nx">desc</span><span class="p">(</span><span class="nx">Err</span> <span class="nx">err</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
@@ -45,9 +45,9 @@ redirect_from:
                             <h2>Error Subtyping</h2>
                             <p><p><code>distinct</code> creates a new subtype and can be used to define
  subtypes of <code>error</code>.
- The name of the distinct error type can be used with the error
- constructor to create an error value of that type.
- Works like a nominal type: <code>is</code> operator can be used to
+ The name of the distinct <code>error</code> type can be used with the error
+ constructor to create an <code>error</code> value of that type.
+ Works like a nominal type. The <code>is</code> operator can be used to
  distinguish distinct subtypes.
  Each occurrence of <code>distinct</code> has a unique identifier that is
  used to tag instances of the type.</p>
@@ -91,7 +91,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=0d40d9a8c86cfa34bf921f866ab9232d&file=error_subtyping.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=d0f9af8d4f709d02bcfc82ae77534bf2&file=error_subtyping.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -161,8 +161,8 @@ type YErr distinct error;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The name of the distinct type can be used with the error
- constructor to create an error value of that type.
- <code>err</code> holds an error value of type <code>XErr</code>.</p>
+ constructor to create an <code>error</code> value of that type.
+ <code>err</code> holds an <code>error</code> value of type <code>XErr</code>.</p>
 
                                         </div>
                                     </div>

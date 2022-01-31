@@ -1,41 +1,27 @@
-- title: Making Ballerina Programs Configurable 
+- title: Configuring Ballerina Programs
   url: '#'
   sublinks:
-    - title: Defining Configurable Variables 
-      url: '#'
+    - title: Quick Start on Using Configurable Variables
+      url: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables
       sublinks:
-        - title: Initialising Configurable Variables
-          url: /learn/making-ballerina-programs-configurable/defining-configurable-variables/#initialising-configurable-variables
-          active: initialising-configurable-variables
-        - title: Providing Values to Configurable Variables
-          url: /learn/making-ballerina-programs-configurable/defining-configurable-variables/#providing-values-to-configurable-variables
-          active: providing-values-to-configurable-variables
-        - title: Securing Sensitive Data Using Configurable Variables
-          url: /learn/making-ballerina-programs-configurable/defining-configurable-variables/#securing-sensitive-data-using-configurable-variables
-          active: securing-sensitive-data-using-configurable-variables
-        - title: Trying it Out
-          url: /learn/making-ballerina-programs-configurable/defining-configurable-variables/#trying-it-out
-          active: trying-it-out
+        - title: Configuring a Sample Ballerina Service
+          url: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables/#configuring-a-sample-ballerina-service
+          active: configuring-a-sample-ballerina-service
     - title: Providing Values to Configurable Variables
-      url: '#'
+      url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables
       sublinks:
-        - title: Providing Values Through TOML Syntax
-          url: /learn/making-ballerina-programs-configurable/providing-values-to-configurable-variables/#providing-values-through-toml-syntax
-          active: providing-values-through-toml-syntax
-        - title: Mapping of the Types
-          url: /learn/making-ballerina-programs-configurable/providing-values-to-configurable-variables/#mapping-of-the-types
-          active: mapping-of-the-types
-        - title: Providing Values Through Command-Line Arguments
-          url: /learn/making-ballerina-programs-configurable/providing-values-to-configurable-variables/#providing-values-through-command-line-arguments
+        - title: Providing Configuration Values Through Command Line Arguments
+          url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-configuration-values-through-command-line-arguments
           active: providing-values-through-command-line-arguments
-    - title: Trying Out Configurability
-      url: '#'
+        - title: Providing Configuration Values Through TOML Syntax
+          url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-configuration-values-through-toml-syntax
+          active: providing-configuration-values-through-toml-syntax
+        - title: Providing Module Information of the Configurable Variable
+          url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-module-information-of-the-configurable-variable
+          active: providing-module-info-of-configurable-variable
+    - title: Configuring Values in Kubernetes Environments
+      url: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/
       sublinks:
-        - title: Creating the Ballerina Package
-          url: /learn/making-ballerina-programs-configurable/trying-out-configurability/#creating-the-ballerina-package
-          active: creating-the-ballerina-package
-        - title: Running the Ballerina Package
-          url: /learn/making-ballerina-programs-configurable/trying-out-configurability/#running-the-ballerina-package
-          active: running-the-ballerina-package
-
-
+        - title: Securing Sensitive Data Using Configurable Variables
+          url: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/#securing-sensitive-data-using-configurable-variables
+          active: securing-sensitive-data-using-configurable-variables

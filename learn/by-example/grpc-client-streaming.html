@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Client Streaming RPC
 description: This Ballerina by Example has a gRPC service and a streaming client. The client sends a stream of request messages and gets a response message.
 keywords: ballerina, ballerina by example, bbe, grpc, client streaming
@@ -21,13 +21,15 @@ redirect_from:
     <span class="nx">descMap</span><span class="p">:</span> <span class="nx">getDescriptorMapGrpcClientStreaming</span><span class="p">()</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="s">&quot;HelloWorld&quot;</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">lotsOfGreetings</span><span class="p">(</span><span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span>
-                                    <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+    <span class="nx">isolated</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">lotsOfGreetings</span><span class="p">(</span>
+                            <span class="nx">stream</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span>
+                            <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Client connected successfully.&quot;</span><span class="p">);</span>
         <span class="c1">// Reads and processes each message in the client stream.</span>
-        <span class="nx">check</span> <span class="nx">clientStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">isolated</span> <span class="kd">function</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Greet received: &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
-        <span class="p">});</span>
+        <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">from</span> <span class="kt">string</span> <span class="nx">name</span> <span class="nx">in</span> <span class="nx">clientStream</span>
+            <span class="nx">do</span> <span class="p">{</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="kt">string</span> <span class="s">`Greet received: ${name}`</span><span class="p">);</span>
+            <span class="p">};</span>
         <span class="c1">// Once the client sends a notification to indicate the end of the stream, &#39;()&#39; is returned by the stream.</span>
         <span class="k">return</span> <span class="s">&quot;Ack&quot;</span><span class="p">;</span>
     <span class="p">}</span>
@@ -225,8 +227,9 @@ import ballerina/log;
     descMap: getDescriptorMapGrpcClientStreaming()
 }
 service &quot;HelloWorld&quot; on new grpc:Listener(9090) {
-    remote function lotsOfGreetings(stream&lt;string, grpc:Error?&gt; clientStream)
-                                    returns string|error {
+    isolated remote function lotsOfGreetings(
+                            stream&lt;string, error?&gt; clientStream)
+                            returns string|error {
         log:printInfo(&quot;Client connected successfully.&quot;);
 </code></pre></div>
 
@@ -239,9 +242,10 @@ service &quot;HelloWorld&quot; on new grpc:Listener(9090) {
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        check clientStream.forEach(isolated function(string name) {
-            log:printInfo(&quot;Greet received: &quot; + name);
-        });
+                                    <div class="highlight"><pre><code class=language-ballerina>        _ = check from string name in clientStream
+            do {
+                log:printInfo(string `Greet received: ${name}`);
+            };
 </code></pre></div>
 
                                 </div>

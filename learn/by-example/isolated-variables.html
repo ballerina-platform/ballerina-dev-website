@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Isolated Variables
 description: This BBE introduces isolated variables in Ballerina.
 keywords: ballerina, ballerina by example, bbe, isolated variables
@@ -47,12 +47,11 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Isolated Variables</h2>
-                            <p><p>When a variable is declared as <code>isolated</code>, compiler guarantees that it is an <code>isolated</code> root and
- accessed only within a <code>lock</code> statement. An <code>isolated</code> variable declaration must be at module-level,
- not public, and initialized with an <code>isolated</code> expression. A <code>lock</code> statement that accesses an
- <code>isolated</code> variable must maintain <code>isolated</code> root invariant:
+                            <p><p>When a variable is declared as <code>isolated</code>, the compiler guarantees that it is an <code>isolated</code> root and
+ accessed only within a <code>lock</code> statement. An isolated variable declaration must be a non-public
+ module-level variable declaration initialized with an <code>isolated</code> expression. A <code>lock</code> statement
+ that accesses an <code>isolated</code> variable must maintain <code>isolated</code> root invariant:
  <ul>
- <li>access only one <code>isolated</code> variable</li>
  <li>access only one <code>isolated</code> variable</li>
  <li>call only <code>isolated</code> functions</li>
  <li>transfers of values in and out must use <code>isolated</code> expressions</li>
@@ -100,7 +99,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=e3e2a0160052dbd36f459d08bf57f4aa&file=isolated_variables.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=01c423d8a3eb24078b9e2f15893c8b7f&file=isolated_variables.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

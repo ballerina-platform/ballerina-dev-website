@@ -1,0 +1,24 @@
+- title: Working with Data in Ballerina
+  url: #
+  sublinks:
+    - title: Creating a New Ballerina Project
+      url: /learn/working-with-data-in-ballerina/#creating-a-new-ballerina-project
+      active: creating-a-new-ballerina-project
+    - title: Defining the COVID-19 Dataset To Be Processed
+      url: /learn/working-with-data-in-ballerina/#defining-the-covid-19-dataset-to-be-processed
+      active: defining-the-covid-19-dataset-to-be-processed
+    - title: Filtering All Countries Which Have More Than 10000000 COVID-19 Cases
+      url: /learn/working-with-data-in-ballerina/#filtering-all-countries-which-have-more-than-10000000-covid-19-cases
+      active: filtering-all-countries-which-have-more-than-10000000-covid-19-cases
+    - title: Sorting the Top Three Countries By the Number Of Reported COVID-19 Deaths
+      url: /learn/working-with-data-in-ballerina/#sorting-the-top-three-countries-by-the-number-of-reported-covid-19-deaths
+      active: sorting-the-top-three-countries-by-the-number-of-reported-covid-19-deaths
+    - title: Joining the Table With an Array To Find the Number Of Recovered Patients
+      url: /learn/working-with-data-in-ballerina/#joining-the-table-with-an-array-to-find-the-number-of-recovered-patients
+      active: joining-the-table-with-an-array-to-find-the-number-of-recovered-patients
+    - title: Finding Any Discrepancies In Reported COVID-19 Dataset Using Intermediate States
+      url: /learn/working-with-data-in-ballerina/#finding-any-discrepancies-in-reported-covid-19-dataset-using-intermediate-states
+      active: finding-any-discrepancies-in-reported-covid-19-dataset-using-intermediate-states
+
+
+

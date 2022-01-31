@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Raw Templates
 description: This BBE demonstrates raw templates in Ballerina.
 keywords: ballerina, ballerina by example, bbe, raw templates
@@ -22,9 +22,9 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Uses a raw template to create `Orders` table.</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE IF NOT EXISTS Orders</span>
-<span class="s">                                 (orderId INTEGER NOT NULL IDENTITY,</span>
-<span class="s">                                  customerId INTEGER, noOfItems INTEGER,</span>
-<span class="s">                                  PRIMARY KEY (orderId))`</span><span class="p">);</span>
+<span class="s">                                (orderId INTEGER NOT NULL,</span>
+<span class="s">                                customerId INTEGER, noOfItems INTEGER,</span>
+<span class="s">                                PRIMARY KEY (orderId))`</span><span class="p">);</span>
     <span class="c1">// Uses a raw template to insert values to `Orders` table.</span>
     <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO Orders (orderId, customerId,</span>
 <span class="s">                                noOfItems) VALUES (1, 1, 20)`</span><span class="p">);</span>
@@ -63,7 +63,11 @@ redirect_from:
  <li>an <code>array</code> of the results of expression evaluation and an <code>array</code> of <code>strings</code> separating</li>
  </ul>
 <br></br>
- <p>Important use case: SQL parameters.</p></p>
+ <p>Important use case: SQL parameters.</p>
+ Note that the relevant database driver JAR should be defined in the <code>Ballerina.toml</code> file as a dependency.
+ This sample is based on an H2 database and the H2 database driver JAR need to be added to <code>Ballerina.toml</code> file.
+ For a sample configuration and more information on the underlying module, see the <a href="https://docs.central.ballerina.io/ballerinax/java.jdbc/latest/">JDBC module</a> .<br><br>
+ This sample is written using H2 2.1.210 and it is recommended to use H2 JAR with versions higher than 2.1.210.</p>
 </p>
 
                         </td>
@@ -157,9 +161,9 @@ import ballerina/sql;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    _ = check dbClient-&gt;execute(`CREATE TABLE IF NOT EXISTS Orders
-                                 (orderId INTEGER NOT NULL IDENTITY,
-                                  customerId INTEGER, noOfItems INTEGER,
-                                  PRIMARY KEY (orderId))`);
+                                (orderId INTEGER NOT NULL,
+                                customerId INTEGER, noOfItems INTEGER,
+                                PRIMARY KEY (orderId))`);
 </code></pre></div>
 
                                 </div>
@@ -268,11 +272,45 @@ import ballerina/sql;
 
                         <div class="cBBE-body">
                             
+                            <div class="cTR">
+
+                                <div class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>[[platform.java11.dependency]]
+path = &quot;h2-2.1.210.jar&quot;
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="codeSnippeset">
+
+                        <div class="cBBE-body">
+                            
+                            <div class="cTR cOutputTr">
+
+                                <div class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Create a Ballerina project.
+# Copy the example to the project and add relevant database driver jar details to the `Ballerina.toml` file.
+# Execute the command below to build and run the project.
+bal run
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
                             <div class="cTR cOutputTr">
 
                                 <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>bal run raw_templates.bal
-{&quot;ORDERID&quot;:1,&quot;CUSTOMERID&quot;:1,&quot;NOOFITEMS&quot;:20}
+                                    <div class="highlight"><pre><code class=shell-session>{&quot;ORDERID&quot;:1,&quot;CUSTOMERID&quot;:1,&quot;NOOFITEMS&quot;:20}
 {&quot;ORDERID&quot;:2,&quot;CUSTOMERID&quot;:1,&quot;NOOFITEMS&quot;:15}
 </code></pre></div>
 

@@ -7,6 +7,16 @@
     - title: Publishing a Library Package to Ballerina Central
       url: /learn/publishing-packages-to-ballerina-central/#publishing-a-library-package-to-ballerina-central
       active: publishing-a-library-package-to-ballerina-central
+      sublinks:
+        - title: Preparing for Publishing
+          url: /learn/publishing-packages-to-ballerina-central/#preparing-for-publishing
+          active: preparing-for-publishing
+        - title: Organizations
+          url: /learn/publishing-packages-to-ballerina-central/#organizations
+          active: organizations
+        - title: Publishing the Package
+          url: /learn/publishing-packages-to-ballerina-central/#publishing-the-package
+          active: publishing-the-package
     - title: Using the Packages in Ballerina Central
       url: /learn/publishing-packages-to-ballerina-central/#using-the-packages-in-ballerina-central
       active: using-the-packages-in-ballerina-central

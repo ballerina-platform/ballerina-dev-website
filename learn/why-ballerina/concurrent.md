@@ -2,7 +2,7 @@
 layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Concurrent
 description: Concurrency in Ballerina is enabled by strands, which are lightweight threads. 
-keywords: ballerina, ballerina platform, api documentation, testing, ide, ballerina central
+keywords: ballerina, ballerina platform, concurrency, workers, strands, threads, lightweight threads
 permalink: /why-ballerina/concurrent/
 active: concurrent
 intro: Concurrency in Ballerina is enabled by strands, which are lightweight threads.
@@ -44,10 +44,10 @@ function process(Person[] members, int[] quantities) {
 
     worker w2 {
         int total = int:sum(...quantities);
-        
+
         int employedCount = <- w1;
 
-        int avg = employedCount == 0 ? 0 : total/employedCount;
+        int avg = employedCount == 0 ? 0 : total / employedCount;
         string `Average: ${avg}` -> function;
     }
 
@@ -59,7 +59,7 @@ function process(Person[] members, int[] quantities) {
 }
 ```
 
-Worker message passing (via Ballerina’s `send (->)` and `receive (<-)` actions) is used for communication between workers. The compiler also explicitly verifies that the `send` and `receive` actions are in a consistent state in order to avoid any deadlock scenarios at runtime.
+Worker message passing (via Ballerina’s `send (->)` and `receive (<-)` actions) is used for communication between workers. The compiler also explicitly verifies that the `send` and `receive` actions are in a consistent state to avoid any deadlock scenarios at runtime.
 
 The `@strand` annotation can be used on a named worker or start action to make the corresponding strand run on a separate thread.
 
@@ -86,7 +86,7 @@ function process(Person[] members, int[] quantities) {
     int quantitiesSum = int:sum(...quantities);
     int employedMemCount = <- w1;
 
-    io:println("Average: ", employedMemCount == 0 ? 0 : quantitiesSum/employedMemCount);
+    io:println("Average: ", employedMemCount == 0 ? 0 : quantitiesSum / employedMemCount);
 }
 ```
 
@@ -117,24 +117,24 @@ function process(map<Details> & readonly entities) {
     // exact same entries with the exact same fields.
     worker w1 {
         foreach var name in detailsWithoutLocation {
-            persistId(<record {| int id; |} & readonly> entities.get(name));
+            persistId(<record {|int id;|} & readonly>entities.get(name));
         }
     }
 
     worker w2 {
         foreach var name in detailsWithLocation {
             persistIdWithLocation(
-                <record {| int id; string location; |} & readonly> entities.get(name));
+                <record {|int id; string location;|} & readonly>entities.get(name));
         }
     }
 }
 
-function persistId(record {| int id; |} rec) {
-    
+function persistId(record {|int id;|} rec) {
+
 }
 
-function persistIdWithLocation(record {| int id; string location; |} rec) {
-    
+function persistIdWithLocation(record {|int id; string location;|} rec) {
+
 }
 ```
 

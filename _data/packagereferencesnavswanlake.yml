@@ -1,0 +1,29 @@
+- title: Package References
+  url: '#'
+  sublinks:
+    - title: Package Layout
+      url: /learn/package-references/#package-layout
+      active: package-layout
+    - title: The <code class="highlighter-rouge language-plaintext" id="cBackground">Ballerina.toml</code> File
+      url: /learn/package-references/#ballerinatoml
+      active: ballerinatoml
+    - title: The <code class="highlighter-rouge language-plaintext" id="cBackground">Dependencies.toml</code> File
+      url: /learn/package-references/#the-dependenciestoml-file
+      active: the-dependenciestoml-file
+    - title: The <code class="highlighter-rouge language-plaintext" id="cBackground">Package.md</code> File
+      url: /learn/package-references/#the-packagemd-file
+      active: the-packagemd-file
+    - title: The <code class="highlighter-rouge language-plaintext" id="cBackground">target/</code> Directory
+      url: /learn/package-references/#the-target-directory
+      active: the-target-directory
+    - title: The <code class="highlighter-rouge language-plaintext" id="cBackground">resources/</code>, <code class="highlighter-rouge language-plaintext" id="cBackground">tests/</code> Directories, and <code class="highlighter-rouge language-plaintext" id="cBackground">Module.md</code>
+      url: /learn/package-references/#the-resources-tests-directories-and-modulemd
+      active: the-resources-tests-directories-and-modulemd
+    - title: The <code class="highlighter-rouge language-plaintext" id="cBackground">modules/</code> Directory
+      url: /learn/package-references/#the-modules-directory
+      active: the-modules-directory
+    - title: Module Layout
+      url: /learn/package-references/#module-layout
+      active: module-layout
+
+

@@ -3,10 +3,9 @@ layout: ballerina-inner-page
 title: Events
 description: Check out the events that we will be presenting at and covering the Ballerina programming language.
 keywords: ballerina, events, programming language, ballerina events
-permalink: /events/
+permalink: /events-old/
 redirect_from:
-- /learn/events
-- /learn/events/
+
 ---
 <script src="/js/events.js"></script>
 <link rel="stylesheet" href="/css/events-page.css">

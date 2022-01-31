@@ -2,7 +2,7 @@
 layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Reliable, Maintainable
 description: The sections below explain how the explicit error handling, static types, and concurrency safety combined with a familiar, readable syntax make programs reliable and maintainable.
-keywords: ballerina, ballerina platform, api documentation, testing, ide, ballerina central
+keywords: ballerina, ballerina platform, error handling, concurrency safety, reliability, maintainability
 permalink: /why-ballerina/reliable-maintainable/
 active: reliable-maintainable
 intro: The sections below explain how the explicit error handling, static types, and concurrency safety combined with a familiar, readable syntax make programs reliable and maintainable. 
@@ -48,7 +48,7 @@ When the `read` method is completed successfully, it returns a `byte[]` value. I
 remote function read() returns byte[] | error {}
 ```
 
-The `write` method does not return anything if it completes successfully but it returns an error otherwise. Optional types in Ballerina can be used to describe this behavior. Options types are syntactic sugar for union types containing the nil type, which is written as `()`. The `error?` is sugar for `error | ()`. The examples below show how you can check whether a function returns the expected value or an error.
+The `write` method does not return anything if it completes successfully. However, it returns an error otherwise. Optional types in Ballerina can be used to describe this behavior. Options types are syntactic sugar for union types containing the nil type, which is written as `()`. The `error?` is sugar for `error | ()`. The examples below show how you can check whether a function returns the expected value or an error.
 
 ```ballerina
 # Writes bytes to the connected remote host.
@@ -57,28 +57,30 @@ remote function write(byte[] bytes) returns error? {}
 
 ### Error Checking 
 
-Ballerina has language constructs for explicit error checking. Both explicit error reporting and checking improves code readability and maintainability simply because they are explicit. When you read Ballerina code, you can quickly notice code that reports errors and checks for errors.  
+Ballerina has language constructs for explicit error checking. Both explicit error reporting and checking improve code readability and maintainability simply because they are explicit. When you read Ballerina code, you can quickly notice the code, which reports errors, and you can check for errors.  
 
 Usually, a function handles errors by passing them up to the caller. Even the main function, which is the program entry point can return an error resulting in an error printed in your terminal. 
 
-The function below returns information about the provided domain name. It internally does a WHOIS database lookup via the provided TCP client. The code is correct and readable but it is verbose. Most of the time, you don’t need to handle every error. Instead, you pass errors to the caller. 
+The function below returns information about the provided domain name. It internally does a WHOIS database lookup via the provided TCP client. The code is correct and readable. However, it is verbose. Most of the time, you don’t need to handle every error. Instead, you pass errors to the caller. 
 
 ```ballerina
+import ballerina/tcp;
+
 function whois(string domain, tcp:Client whoisClient) returns string|error {
-   error? err = whoisClient->writeBytes(domain.toBytes());
-   // The `is` operator tests whether a value belongs to a type.
-   if err is error {
- // The `is` operator causes the type to be narrowed.
-       // The type of `err` variable is `error` in this block.
-       return err;
-   }
- 
-   byte[]|error bytes = whoisClient->readBytes();
-   if bytes is error {
-       return bytes;
-   } else {
-       return string:fromBytes(bytes);
-   }
+    error? err = whoisClient->writeBytes(domain.toBytes());
+    // The `is` operator tests whether a value belongs to a type.
+    if err is error {
+        // The `is` operator causes the type to be narrowed.
+        // The type of `err` variable is `error` in this block.
+        return err;
+    }
+
+    byte[]|error bytes = whoisClient->readBytes();
+    if bytes is error {
+        return bytes;
+    } else {
+        return string:fromBytes(bytes);
+    }
 }
 ```
 
@@ -90,29 +92,33 @@ This `is` operator-based error checking pattern is very common and you would end
    }
 ```
 
-Ballerina provides a much more lightweight, shorthand for this pattern. The behavior of the function below is the same as the previous version but it is much more elegant. The `check expr` check expression performs an explicit error check, and the control flow also remains explicit.
+Ballerina provides a much more lightweight, shorthand for this pattern. The behavior of the function below is the same as the previous version. However, it is much more elegant. The `check expr` check expression performs an explicit error check, and the control flow also remains explicit.
 
 ```ballerina
+import ballerina/tcp;
+
 function whois(string domain, tcp:Client whoisClient) returns string|error {
-   // If `writeBytes` failed with an error, then `check` makes
-   //  the function return that error immediately
-   check whoisClient->writeBytes(domain.toBytes());
-   byte[] bytes = check whoisClient->readBytes();
-   return string:fromBytes(bytes);
+    // If `writeBytes` failed with an error, then `check` makes
+    //  the function return that error immediately.
+    check whoisClient->writeBytes(domain.toBytes());
+    byte[] bytes = check whoisClient->readBytes();
+    return string:fromBytes(bytes);
 }
 ```
 
 This function shows another pattern that handles errors in a single place. You can attach an `on fail` clause to some Ballerina statements such as `do`, `while`, `transactions`, `foreach`, etc.  In this example, check does not simply return on error. The enclosing block decides how to handle the error. If the enclosing block has an `on fail` clause, it catches the error. If the enclosing block does not have an `on fail` block, it passes the error up to its enclosing block. Finally, the function handles the error by returning the error. This behavior is different from exceptions in that control flow is explicit. 
 
 ```ballerina
+import ballerina/tcp;
+
 function whois(string domain, tcp:Client whoisClient) returns string|error {
-   do {
-       check whoisClient->writeBytes(domain.toBytes());
-       byte[] bytes = check whoisClient->readBytes();
-       return string:fromBytes(bytes);
-   } on fail var err {
-       return error("Failed to communicate with the given whois server", cause = err);
-   }
+    do {
+        check whoisClient->writeBytes(domain.toBytes());
+        byte[] bytes = check whoisClient->readBytes();
+        return string:fromBytes(bytes);
+    } on fail var err {
+        return error("Failed to communicate with the given whois server", cause = err);
+    }
 }
 ```
 
@@ -139,19 +145,19 @@ However, Ballerina does not allow ignoring the value of an expression if the typ
 _ =  whois("ballerina.io", whoisClient);
 ```
 
-As explained earlier, `_` is like an implicitly declared variable of the `any;` this is a union type that includes all the types in Ballerina except for the error type. Therefore, the type that includes all values supported by Ballerina is `any|error`. As per the typing rules in Ballerina, the above statement causes a compilation error because `string|error` is not a subtype of the `any` type.
+As explained earlier, `_` is like an implicitly declared variable of the `any` type; this is a union type that includes all the types in Ballerina except for the error type. Therefore, the type, which includes all values supported by Ballerina is `any|error`. As per the typing rules in Ballerina, the above statement causes a compilation error because `string|error` is not a subtype of the `any` type.
 
 ### Dealing with Abnormal Errors
 
-ballerina has made a conscious decision to distinguish normal errors from abnormal errors. The sections above explained how to deal with normal errors. Out of memory, division by zero, programming bugs are examples of abnormal errors in Ballerina. Such errors typically result in immediate program termination. 
+Ballerina has made a conscious decision to distinguish normal errors from abnormal errors. The sections above explained how to deal with normal errors. Out of memory, division by zero, programming bugs are examples of abnormal errors in Ballerina. Such errors typically result in immediate program termination. 
 
 Abnormal errors can be reported using the `panic` statement. Some language constructs such as type casts generate panics. 
 
 ```ballerina
 function toInt(any a) returns int {
-   // This is a programming bug
-   // Raise a panic if the value of `a` is not an `int`
-   return <int>a;
+    // This is a programming bug.
+    // Raise a panic if the value of `a` is not an `int`.
+    return <int>a;
 }
 ```
 
@@ -159,10 +165,10 @@ A panic always has an associated error value as illustrated in the example below
 
 ```ballerina
 function divide(int m, int n) returns int {
-   if n == 0 {
-       panic error("division by 0");
-   }
-   return m / n;
+    if n == 0 {
+        panic error("division by 0");
+    }
+    return m / n;
 }
 ```
 
@@ -172,8 +178,6 @@ Panics can be trapped with a `trap` expression. Ballerina raises a panic on an i
 int|error result = trap (m + n);
 ```
 
-<<<<<<< HEAD:learn/guides/why-ballerina/reliable-maintainable.md
-=======
 <style>
 .nav > li.cVersionItem {
     display: none !important;
@@ -182,4 +186,3 @@ int|error result = trap (m + n);
    display:none !important;
 } */
 </style>
->>>>>>> 89276c24bd9a167a68619c802d1d9d54e8fa0d65:learn/why-ballerina/reliable-maintainable.md

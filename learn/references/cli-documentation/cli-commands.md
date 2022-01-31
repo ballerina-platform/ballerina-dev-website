@@ -28,7 +28,7 @@ The Ballerina Tool is a command-line tool for managing Ballerina source code. It
 
 It also enables you to easily install, update, and switch among Ballerina distributions. 
 
-In the CLI, execute the `bal help` command to view all the actions you can perform with the Ballerina Tool as shown below:
+In the CLI, execute the `bal help` command to view all the actions you can perform with the Ballerina Tool as shown below.
 
 ```sh
 → bal help
@@ -63,35 +63,41 @@ BALLERINA COMMANDS
         The below is a list of the available subcommands:
 
    Core Commands:
-        build           Compile a Ballerina program into an executable
-        run             Build and run a Ballerina program
+        build           Compile the current package
+        run             Compile and run the current package
         test            Run package tests
-        doc             Generate API documentation
-        clean           Clean the artifacts generated during the build
-        format          Format Ballerina sources
+        doc             Generate current package's documentation
+        pack            Create distribution format of the current package
 
    Package Commands:
         new             Create a new Ballerina package
-        init            Initialise a new Ballerina package in the current directory
-        add             Add a new Ballerina module in the package
+        init            Create a new Ballerina package in an existing directory
+        add             Add a new Ballerina module to the current package
         pull            Pull a package from Ballerina Central
-        push            Upload a package to Ballerina Central
+        push            Publish a package to Ballerina Central
         search          Search Ballerina Central for packages
 
    Other Commands:
+        clean           Clean the artifacts generated during the build
+        format          Format Ballerina source files
         grpc            Generate the Ballerina sources for a given Protocol Buffer definition
         openapi         Generate the Ballerina sources for a given OpenAPI definition and
-                        vice versa [EXPERIMENTAL]
-        version         Print the Ballerina version
+                        vice versa
         bindgen         Generate the Ballerina bindings for Java APIs
-        shell           Run Ballerina interactive REPL [EXPERIMENTAL]
+        shell           Run Ballerina interactive REPL
+        version         Print the Ballerina version
+
+   Update Commands:
+        dist            Manage Ballerina distributions
+        update          Update the Ballerina tool
+
 ```
 
-You can use it in the below format.
+You can use it in the following format.
 
-> `bal <THE-COMMAND> <ITS-ARGUEMENTS>`
+> `bal <COMMAND> <ARGUMENTS>`
 
-> **Tip:** You can view details of the commands below by executing the `bal help <COMMAND>`. For example, the below is the output of the `bal help pull` command.
+> **Tip:** You can view details of the commands by executing the `bal help <COMMAND>`. For example, the following is the output of the `bal help pull` command.
 
 ```sh
 → bal help pull
@@ -99,14 +105,12 @@ NAME
        ballerina-pull - Fetch packages from Ballerina Central
 
 SYNOPSIS
-       bal pull <org-name>/<package-name>
-       bal pull <org-name>/<package-name>:<version>
+       bal pull <org-name>/<package-name>[:<version>]
 
 
 DESCRIPTION
-       Download the specified package from Ballerina Central
-       along with its dependencies and cache it in the
-       '.ballerina' directory in the user home.
+       Download the specified package from Ballerina Central along with its
+       dependencies and cache it in the '.ballerina' directory in the user home.
 
        Ballerina Central is a package repository hosted at
        https://central.ballerina.io/. A package repository organizes packages
@@ -118,11 +122,11 @@ DESCRIPTION
 EXAMPLES
        Pull the latest version of the 'gmail' connector in the 'wso2' organization
        from Ballerina Central.
-          $ bal pull wso2/gmail
+           $ bal pull wso2/gmail
 
        Pull the '1.1.0' version of the 'gmail' connector in the 'wso2' organization
        from Ballerina Central.
-          $ bal pull wso2/gmail:1.1.0
+           $ bal pull wso2/gmail:1.1.0
 ```
 
 ## Core Commands
@@ -132,12 +136,12 @@ These everyday commands are your best friends! They address the very basics of p
 <table class="cComandTable">
 <tr>
 <td class="cCommand">build</td>
-<td class="cDescription">Compile a standalone `.bal` file, or an entire package into an executable JAR file. For more information, see <a href="/learn/user-guide/getting-started/writing-your-first-ballerina-program">Writing Your First Ballerina Program</a>.
+<td class="cDescription">Compile a standalone <code>.bal</code> file, or an entire package into an executable JAR file. For more information, see <a href="/learn/getting-started-with-ballerina/">Writing Your First Ballerina Program</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">run</td>
-<td class="cDescription">Build and run a standalone `.bal` file, an entire package, or a previously-built program. For more information, see <a href="/learn/user-guide/getting-started/writing-your-first-ballerina-program">Writing Your First Ballerina Program</a>.
+<td class="cDescription">Build and run a standalone <code>.bal</code> file, an entire package, or a previously-built program. For more information, see <a href="/learn/getting-started-with-ballerina/">Writing Your First Ballerina Program</a>.
 </td>
 </tr>
 <tr>
@@ -151,13 +155,9 @@ These everyday commands are your best friends! They address the very basics of p
 </td>
 </tr>
 <tr>
-<td class="cCommand">clean</td>
-<td class="cDescription">Clean all artifacts generated by the build command for a package.
+<td class="cCommand">pack</td>
+<td class="cDescription">Create the distribution format (<code>.bala</code>) of the current package
 </td>
-</tr>
-<tr>
-<td class="cCommand">format</td>
-<td class="cDescription">Format Ballerina source files as per the <a href="/learn/coding-conventions">Coding Conventions</a>.</td>
 </tr>
 </table>
 
@@ -168,7 +168,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 <table class="cComandTable">
 <tr>
 <td class="cCommand">new</td>
-<td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/user-guide/ballerina-packages/creating-your-first-ballerina-package">Ballerina Packages</a>.
+<td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/getting-started-with-ballerina/#creating-a-new-project">Ballerina Packages</a>.
 </td>
 </tr>
 <tr>
@@ -178,7 +178,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </tr>
 <tr>
 <td class="cCommand">add</td>
-<td class="cDescription">Create a new Ballerina module in a package.
+<td class="cDescription">Add a new module to the current package.
 </td>
 </tr>
 <tr>
@@ -188,7 +188,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </tr>
 <tr>
 <td class="cCommand">push</td>
-<td class="cDescription">Upload a package to Ballerina Central. For more information, see <a href="/learn/user-guide/ballerina-packages/sharing-a-library-package/#publishing-a-library-package-to-ballerina-central">Publishing a library package to Ballerina Central</a>.
+<td class="cDescription">Publish a package to Ballerina Central. For more information, see <a href="/learn/user-guide/ballerina-packages/sharing-a-library-package/#publishing-a-library-package-to-ballerina-central">Publishing a library package to Ballerina Central</a>.
 </td>
 </tr>
 <tr>
@@ -204,9 +204,13 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 
 <table class="cComandTable">
 <tr>
-<td class="cCommand">encrypt</td>
-<td class="cDescription">Use this tool to encrypt sensitive data and pass them to a Ballerina program via the configuration system.
+<td class="cCommand">clean</td>
+<td class="cDescription">Clean all artifacts generated by the build command for a package.
 </td>
+</tr>
+<tr>
+<td class="cCommand">format</td>
+<td class="cDescription">Format Ballerina source files as per the <a href="/learn/coding-conventions">Coding Conventions</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">grpc</td>
@@ -214,15 +218,19 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">openapi</td>
-<td class="cDescription">This is the OpenAPI (Swagger) stub/skeleton generation tool. For more information, see <a href="/learn/using-the-openapi-tools">Using the OpenAPI Tools</a>.</td>
-</tr>
-<tr>
-<td class="cCommand">version</td>
-<td class="cDescription">Tells you the version of the distribution you are currently using, the language specification version on which it is based, and the update tool version, which is currently in use.</td>
+<td class="cDescription">This is the OpenAPI (Swagger) stub/skeleton generation tool. For more information, see <a href="/learn/ballerina-openapi-support/">Using the OpenAPI Tools</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">bindgen</td>
 <td class="cDescription">Use this tool for auto-generating Ballerina bridge code for Java APIs. For more information, see <a href="/learn/calling-java-code-from-ballerina">Calling Java Code from Ballerina</a>.</td>
+</tr>
+<tr>
+<td class="cCommand">shell</td>
+<td class="cDescription"> Use this to run a REPL instance of Ballerina and execute small snippets of code.</td>
+</tr>
+<tr>
+<td class="cCommand">version</td>
+<td class="cDescription">Tells you the version of the distribution you are currently using, the language specification version on which it is based, and the update tool version, which is currently in use.</td>
 </tr>
 <tr>
 <td class="cCommand">help</td>

@@ -250,7 +250,17 @@ $("table").addClass('table-striped');
      */
     $("#subscribe_button").click(function(event) {
         event.preventDefault();
-        subscribeUser($(this).val());
+        subscribeUserOS();
+    });
+
+    $("#tt_subscribe_button").click(function(event) {
+        event.preventDefault();
+        subscribeTechTalk();
+    });
+
+    $("#usecase_submit").click(function(event) {alert("3");
+        event.preventDefault();
+        submitUsecase();
     });
 
     $('#emailUser').on('keypress', function(event) {
@@ -479,67 +489,71 @@ $(document).ready(function() {
     }
     
     //Slack user form
+    $("#slackSuccessAlert").hide();
+    $("#slackFailAlert").hide();
     $("#slackSubscribeButton").click(function(event) {
         event.preventDefault();
         inviteSlackUser();
     });
-    $('#slackEmail').on('keypress', function(event) {
-        if (event.which === 13) {
-            event.preventDefault();
-            $(this).attr("disabled", "disabled");
-            var email = $("#slackEmail").val();
-            if (email == "") {
-                $('#slackEmail').val('');
-                $("#slackEmail").attr("placeholder", "Please enter your email.");
-            } else if (!isEmail(email)) {
-                $('#slackEmail').val('');
-                $("#slackEmail").attr("placeholder", "Please enter a valid email.");
+
+    function inviteSlackUser(){
+            
+        var email = $("#slackEmail").val();
+        if (email == "") {
+            $("#slackFailAlert").show();
+            $("#slackFailAlert").html("Please enter your email.");
+        } else if (!isEmail(email)) {
+            $("#slackFailAlert").show();
+            $("#slackFailAlert").html("Please enter a valid email.");
+        } else {
+            $("#slackFailAlert").hide();
+            $("#slackSuccessAlert").show();
+            $("#slackSuccessAlert").html("Processing...");
+
+            AWS.config.region = 'us-east-1';
+            AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+                IdentityPoolId: atob('dXMtZWFzdC0xOjhiMGViNzYzLTUwNWEtNGE0NS04ODA1LTNkY2ZlZGQwNDVhMA=='),
+            }); 
+            var lambda = new AWS.Lambda();
+            var result;
+            
+            if (email == null || email == '') {
+                input = {};
             } else {
-                $('#slackEmail').val('');
-                $("#slackEmail").attr("placeholder", "Processing...");
+                input = {
+                email: email
+                };
+            }
 
-                AWS.config.region = 'us-east-1';
-                AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-                    IdentityPoolId: atob('dXMtZWFzdC0xOjhiMGViNzYzLTUwNWEtNGE0NS04ODA1LTNkY2ZlZGQwNDVhMA=='),
-                }); 
-                var lambda = new AWS.Lambda();
-                var result;
-                
-                if (email == null || email == '') {
-                    input = {};
+            lambda.invoke({
+                FunctionName: 'slackService',
+                Payload: JSON.stringify(input)
+            }, function(err, data) {
+                if (err) {
+                result = err;
                 } else {
-                    input = {
-                    email: email
-                    };
+                result = JSON.parse(data.Payload);
                 }
-
-                lambda.invoke({
-                    FunctionName: 'slackService',
-                    Payload: JSON.stringify(input)
-                }, function(err, data) {
-                    if (err) {
-                    result = err;
-                    } else {
-                    result = JSON.parse(data.Payload);
-                    }
-                    if (result.body.ok) {
-                        $('#slackEmail').val('');
-                        $("#slackEmail").attr("placeholder", "Your invitation has been sent to "+email+".");
-                    } else if(result.body.error == "already_in_team"){
-                        $('#slackEmail').val('');
-                        $("#slackEmail").attr("placeholder", "This email is already subscribed.");
-                    }else if(result.body.error == "already_invited"){
-                        $('#slackEmail').val('');
-                        $("#slackEmail").attr("placeholder", "This email is already invited.");
-                    }else{
-                        $('#slackEmail').val('');
-                        $("#slackEmail").attr("placeholder", "Something went wrong, please try again.");
-                    }
-                });
-            }            
-            $(this).removeAttr("disabled");
-        }
-    });
+                $("#slackFailAlert").hide();
+                if (result.body.ok) {
+                    $("#slackSuccessAlert").show(); 
+                    $('#slackEmail').val('');
+                    $("#slackSuccessAlert").html( "Thank you for your interest in joining the Ballerina Slack Community. Please check your inbox for an invitation to join Slack.");
+                } else if(result.body.error == "already_in_team"){
+                    $("#slackSuccessAlert").show(); 
+                    $("#slackSuccessAlert").html( "This email is already subscribed.");
+                }else if(result.body.error == "already_invited"){
+                    $("#slackSuccessAlert").show(); 
+                    $("#slackSuccessAlert").html("This email is already invited.");
+                }else{
+                    $("#slackSuccessAlert").hide();
+                    $("#slackFailAlert").show();
+                    $("#slackFailAlert").html("Something went wrong, please try again.");
+                }
+            });
+        }            
+            
+    }
 
 
     //Lunr Search field

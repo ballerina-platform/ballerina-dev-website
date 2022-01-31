@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Retry
 description: BBE on how transient failures can be handled using the WebSocket client. When it comes to WebSocket, the key attribute is maintaining a live connection. This BBE shows how the WebSocket client can be made resilient with its reconnect feature.
 keywords: ballerina, ballerina by example, bbe, websocket, ws, retry
@@ -13,7 +13,6 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">runtime</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websocket</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -25,9 +24,8 @@ redirect_from:
     <span class="c1">// Read the message sent from the server upon upgrading to a WebSocket connection.</span>
     <span class="kt">string</span> <span class="nx">text</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">readTextMessage</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sleeping for 5 seconds. Please shutdown the server now.&quot;</span><span class="p">);</span>
-    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Please restart the server now.&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Please shutdown the server now.&quot;</span> <span class="o">+</span>
+                        <span class="s">&quot;And restart at least within 15 seconds&quot;</span><span class="p">);</span>
     <span class="c1">// Client will retry 20 times(20 seconds in time) until the server gets started.</span>
     <span class="kt">string</span> <span class="nx">retryMsg</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">readTextMessage</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">retryMsg</span><span class="p">);</span>
@@ -99,7 +97,6 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/lang.runtime;
 import ballerina/websocket;
 </code></pre></div>
 
@@ -148,9 +145,8 @@ import ballerina/websocket;
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    string text = check wsClient-&gt;readTextMessage();
     io:println(text);
-    io:println(&quot;Sleeping for 5 seconds. Please shutdown the server now.&quot;);
-    runtime:sleep(5);
-    io:println(&quot;Please restart the server now.&quot;);
+    io:println(&quot;Please shutdown the server now.&quot; +
+                        &quot;And restart at least within 15 seconds&quot;);
 </code></pre></div>
 
                                 </div>
@@ -203,8 +199,7 @@ import ballerina/websocket;
 # Start the server after 5 seconds so that the client will start retrying to connect to the server and read messages.
 bal run websocket_retry_client.bal
 Hello World!
-Sleeping for 5 seconds. Please shutdown the server now.
-Please restart the server now.
+Please shutdown the server now. And restart at least within 15 seconds
 Hello World!
 </code></pre></div>
 

@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Match Statement With Maps
 description: This BBE demonstrates using the match statement with maps.
 keywords: ballerina, ballerina by example, bbe, match, json, map
@@ -41,8 +41,8 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="nx">check</span> <span class="nx">foo</span><span class="p">({</span><span class="nx">command</span><span class="p">:</span> <span class="s">&quot;add&quot;</span><span class="p">,</span> <span class="nx">amount</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">status</span><span class="p">:</span> <span class="s">&quot;pending&quot;</span><span class="p">});</span> 
-    <span class="nx">check</span> <span class="nx">foo</span><span class="p">({</span><span class="nx">command</span><span class="p">:</span> <span class="s">&quot;add&quot;</span><span class="p">,</span> <span class="nx">amount</span><span class="p">:</span> <span class="mi">10</span><span class="p">});</span>   
+    <span class="nx">check</span> <span class="nx">foo</span><span class="p">({</span><span class="nx">command</span><span class="p">:</span> <span class="s">&quot;add&quot;</span><span class="p">,</span> <span class="nx">amount</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">status</span><span class="p">:</span> <span class="s">&quot;pending&quot;</span><span class="p">});</span>
+    <span class="nx">check</span> <span class="nx">foo</span><span class="p">({</span><span class="nx">command</span><span class="p">:</span> <span class="s">&quot;add&quot;</span><span class="p">,</span> <span class="nx">amount</span><span class="p">:</span> <span class="mi">10</span><span class="p">});</span>
     <span class="nx">check</span> <span class="nx">foo</span><span class="p">({</span><span class="nx">command</span><span class="p">:</span> <span class="s">&quot;subtract&quot;</span><span class="p">,</span> <span class="nx">amount</span><span class="p">:</span> <span class="mi">100</span><span class="p">});</span>
     <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
@@ -100,7 +100,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=1da380dff270103344388b5818e1fd98&file=match_statement_with_maps.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=b5d26372a223782d0879a7919153c1cd&file=match_statement_with_maps.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -213,8 +213,8 @@ redirect_from:
 
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
-    check foo({command: &quot;add&quot;, amount: 100, status: &quot;pending&quot;}); 
-    check foo({command: &quot;add&quot;, amount: 10});   
+    check foo({command: &quot;add&quot;, amount: 100, status: &quot;pending&quot;});
+    check foo({command: &quot;add&quot;, amount: 10});
     check foo({command: &quot;subtract&quot;, amount: 100});
     return;
 }

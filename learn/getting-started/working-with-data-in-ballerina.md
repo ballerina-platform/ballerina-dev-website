@@ -5,7 +5,7 @@ permalink: /learn/working-with-data-in-ballerina/
 keywords: query expressions, language integrated queries, programming language, getting started
 description: Learn how to use Ballerina query expressions to filter, sort, and join different iterable collections.
 active: working-with-data-in-ballerina
-intro: This simple guide helps you understand how query expressions (a.k.a language integrated queries) can be used on data to produce new data.
+intro: This simple guide helps you understand how query expressions (a.k.a. language integrated queries) can be used on data to produce new data.
 redirect_from:
   - /learn/working-with-data-in-ballerina
 ---
@@ -20,7 +20,7 @@ To complete this tutorial, you need:
 
 1. A command terminal
 2. A text editor
-    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
+    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
 3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
 
 ## Creating a New Ballerina Project
@@ -45,7 +45,7 @@ tree .
 0 directories, 2 files
 ```
 
-## Defining the COVID-19 Dataset To Be Processed
+## Defining the Dataset To Be Processed
 
 To keep the tutorial simple, you will be using an in-memory table to store the COVID-19 dataset. Each record of type `CovidEntry` in the table represents the COVID-19 data related to a particular country. The `iso_code` is used to uniquely identify a country and other fields are self-explanatory.
 ```ballerina
@@ -67,7 +67,7 @@ public final table<CovidEntry> key(iso_code) covidTable = table [
 ```
 Copy the above code snippet to `main.bal`. This will act as our COVID-19 Dataset.
 
-## Filtering All Countries Which Have More Than 10,000,000 COVID-19 Cases
+## Filtering the data
 
 Let's define a function, which will filter out the records, which have values higher than 100,000 for the `cases` field.
 
@@ -102,7 +102,7 @@ Running executable
 
 Countries with more than 10 million cases: ["USA","India"]
 ```
-## Sorting the Top Three Countries By the Number Of Reported COVID-19 Deaths
+## Sorting Countries By COVID-19 Deaths
 
 Let's define a new function to find the top three countries with the highest number of COVID-19 deaths. In this function, you will use another query to sort and retrieve a *limit*ed number of records from the table.
 
@@ -143,7 +143,7 @@ Countries with more than 10 million cases: ["USA","India"]
 Countries with highest deaths:[["India",980976],["USA",880976],["Afghanistan",7386]]
 ```
 
-## Joining the Table With an Array To Find the Number Of Recovered Patients
+## Joining with another data source
 
 Using query expressions, you can join two collections and produce a new collection. The `join` operation is similar to the SQL `join` operation. In this tutorial, you will be joining the `covidTable` with a string array, which contains three countries.
 
@@ -160,7 +160,7 @@ The `findRecoveredPatientsOfCountries` function uses a query expression to join 
 For every record in the `dataTable`, all the elements in the `countries` array will be joined. The output array of tuples will have the country and the number of recovered patients only if the condition after the `on` keyword is satisfied for that particular pair of table record and element of the array being joined.
 
 Now, change the existing `main` function by calling the `findRecoveredPatientsOfCountries` function at the end to get the number of recovered patients. 
-You will get the number of recovered patients in USA, India, and Afghanistan. The updated `main` function should look like the one below.
+You will get the number of recovered patients in the USA, India, and Afghanistan. The updated `main` function should look like the one below.
 
 ```ballerina
 public function main() {
@@ -188,7 +188,7 @@ Countries with more than 10 million cases: ["USA","India"]
 Countries with highest deaths:[["India",980976],["USA",880976],["Afghanistan",7386]]
 Countries with number of Recovered patients:[["Afghanistan",146084],["USA",43892277],["India",33892279]]
 ```
-## Finding Any Discrepancies In Reported COVID-19 Dataset Using Intermediate States
+## Finding Discrepancies In the Dataset
 
 This example shows how you can use the `let` clause to maintain an intermediate state while iterating a collection using query expression and how to use that intermediate state for further processing. 
 For example, in this dataset, the total number of reported cases should be equal to the sum of the number of deaths, recovered, and active. If they are not equal, an error should have occurred while the dataset is populated.
@@ -230,7 +230,7 @@ public function main() {
 }
 ```
 
-Now, execute `bal run` from within the `query_expression` folder and you will see an output similar to below.
+Now, execute `bal run` from within the `query_expression` folder, and you will see an output similar to below.
 
 ```bash
 Compiling source

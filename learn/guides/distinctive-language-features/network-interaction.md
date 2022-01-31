@@ -136,9 +136,9 @@ service on new udp:Listener(8080) {
 }
 ```
  
-In the above code example, a service object is created and attached to a ``udp:Listener`` initialized in-line. The body of the service declaration, which is an object constructor block defines the ``onDatagram`` remote method.
+In the above code example, a service object is created and attached to a ``udp:Listener`` initialized in-line. The body of the service declaration, which is an object constructor block, defines the ``onDatagram`` remote method.
 
-The type of service object is determined by the type of Listener. So as per this example, the **``udp:Listener``** expects a ``udp:Service`` service object with an **``onDatagram``** remote method that accepts a parameter of type **``udp:Datagram & readonly``**.  
+The type of service object is determined by the type of the listener. So as per this example, the **``udp:Listener``** expects a ``udp:Service`` service object with an **``onDatagram``** remote method that accepts a parameter of type **``udp:Datagram & readonly``**.  
 
 The above code can also be written in a desugared way by having the service object created using an object constructor, and explicitly attaching it to the listener.
 
@@ -146,11 +146,11 @@ The above code can also be written in a desugared way by having the service obje
 import ballerina/io;
 import ballerina/udp;
 
-listener udp:Listener u = new(8080);
+listener udp:Listener u = new (8080);
 
 udp:Service obj = service object {
-    remote function onDatagram(udp:Datagram & readonly dg){
-        io:println("bytes received: ", dg.data.length());        
+    remote function onDatagram(udp:Datagram & readonly dg) {
+        io:println("bytes received: ", dg.data.length());
     }
 };
 

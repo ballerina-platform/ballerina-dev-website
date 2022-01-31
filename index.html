@@ -392,15 +392,15 @@ final kafka:Producer kafkaProducer = check new (KAFKA_ENDPOINT);
 service on new kafka:Listener(KAFKA_ENDPOINT, consumerConfigs) {
     remote function onConsumerRecord(kafka:Caller caller, kafka:ConsumerRecord[] records) returns error? {
         check from var {value} in records
-            let var mContent = check string:fromBytes(value)
-            let Order 'order = check value:fromJsonStringWithType(mContent, Order)
+            let var orderString = check string:fromBytes(value)
+            let Order 'order = check value:fromJsonStringWithType(orderString, Order)
             where 'order.status == SUCCESS
             do {
-                kafka:ProducerRecord proRec = {
+                kafka:ProducerRecord successfulOrder = {
                     topic: PUBLISH_TOPIC,
                     value: 'order.toString().toBytes()
                 };
-                check kafkaProducer->send(proRec);
+                check kafkaProducer->send(successfulOrder);
             };
     }
 }

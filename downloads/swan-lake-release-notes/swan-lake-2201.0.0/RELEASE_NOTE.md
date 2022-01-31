@@ -29,7 +29,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 ##### Support to Refer to Parameters and Local Variables in Object Constructor Expressions
 
-Object constructor expressions can now refer to parameters and local variables. This feature is also available when using an object constructor expression with the `service` qualifier to create a service object. These references can be in field initializers and object methods including the `init` method.
+Object constructor expressions can now refer to parameters and local variables. This feature is also available when using an object constructor expression with the `service` qualifier to create a service object. These references can be in field initializers and object methods, including the `init` method.
 
 ```ballerina
 type Person object {

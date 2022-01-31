@@ -424,11 +424,11 @@ import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
-configurable string USER = ?;
-configurable string PASSWORD = ?;
-configurable string HOST = ?;
-configurable int PORT = ?;
-configurable string DATABASE = ?;
+configurable string user = ?;
+configurable string password = ?;
+configurable string host = ?;
+configurable int port = ?;
+configurable string database = ?;
 
 type Album record {|
     string id;
@@ -437,7 +437,7 @@ type Album record {|
     decimal price;
 |};
 
-final mysql:Client dbClient = check new (HOST, USER, PASSWORD, DATABASE, PORT);
+final mysql:Client dbClient = check new (host, user, password, database, port);
 
 service / on new http:Listener(8080) {
     resource function get albums() returns Album[]|sql:Error? {

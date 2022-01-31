@@ -99,59 +99,59 @@ function getCode(int id) returns string|error {
 
 - Fixed a spec deviation in type narrowing. This may result in types that were previously narrowed no longer being narrowed
 
-Consider the following records.
+   Consider the following records.
 
-  ```ballerina
-  type Employee record {
-     int id;
-     string name;
-     string department;
-  };
-   
-  type Student record {
-     string id;
-     string name;
-     int grade;
-  };
-  ```
+   ```ballerina
+   type Employee record {
+      int id;
+      string name;
+      string department;
+   };
+      
+   type Student record {
+      string id;
+      string name;         
+      int grade;
+   };
+   ```
 
-Previously, when a type test was used as follows, the type of `v` in the else block was narrowed to `Student`.
+   Previously, when a type test was used as follows, the type of `v` in the else block was narrowed to `Student`.
 
-  ```ballerina
-  function fn(Employee|Student v) {
-     if v is Employee {
-         // `v` is narrowed to `Employee` here.
-         string dept = v.department;
-     } else {
-         // `v` was previously narrowed to `Student` here.
-         // Will now result in a compilation error.
-         int grade = v.grade;
-     }
-  }
-  ```
+   ```ballerina
+   function fn(Employee|Student v) {
+      if v is Employee {
+            // `v` is narrowed to `Employee` here.
+            string dept = v.department;
+      } else {
+            // `v` was previously narrowed to `Student` here.
+            // Will now result in a compilation error.
+            int grade = v.grade;
+      }
+   }
+   ```
 
-Even though jBallerina currently allows only values that belong to either `Employee` or `Student` to be passed as arguments for the parameter of type `Employee|Student`, the Ballerina specification defines subtyping to be semantic. This, along with mutability, would mean that a value that does not belong to `Employee` nor `Student` but belongs to `Employee|Student` can be passed as an argument here, which results in the possibility of the value not belonging to `Student` in the else block.
+   Even though jBallerina currently allows only values that belong to either `Employee` or `Student` to be passed as arguments for the parameter of type `Employee|Student`, the Ballerina specification defines subtyping to be semantic. This, along with mutability, would mean that a value that does not belong to `Employee` nor `Student` but belongs to `Employee|Student` can be passed as an argument here, which results in the possibility of the value not belonging to `Student` in the else block.
 
-For example, one would be able to call `fn` with the following.
+   For example, one would be able to call `fn` with the following.
 
-  ```ballerina
-  public function main() {
-     record {|
-         int|string id;
-         string name;
-         anydata grade;
-         anydata department;
-     |} rec = {
-         id: "A1234",
-         name: "Amy",
-         department: ["physics", 1],
-         grade: 12
-     };
-     fn(rec);
-  }
-  ```
+   ```ballerina
+   public function main() {
+      record {|
+            int|string id;
+            string name;
+            anydata grade;
+            anydata department;
+      |} rec = {
+            id: "A1234",
+            name: "Amy",
+            department: ["physics", 1],
+            grade: 12
+      };
+      fn(rec);
+   }
+   ```
 
-Although it is not possible to call this function in this manner at the moment since jBallerina does not support semantic subtyping, the changes to narrowing have been introduced in this release to minimize future incompatibility issues.
+   Although it is not possible to call this function in this manner at the moment since jBallerina does not support semantic subtyping, the changes to narrowing have been introduced in this release to minimize future incompatibility issues.
 
 - Fixed a spec deviation that allowed non-required fields of records/maps and error detail records/maps to be bound using mapping and error binding patterns in variable declarations and destructuring assignment statements. Attempting to bind a non-required field will now result in a compilation error.
 
@@ -210,28 +210,28 @@ Although it is not possible to call this function in this manner at the moment s
 
 - Fixed a bug that caused classes with all `final` fields of immutable types to be considered a `readonly class` (i.e., a subtype of `readonly`).
 
-Such a class can no longer be used in a context that expects a subtype of `readonly`.
+   Such a class can no longer be used in a context that expects a subtype of `readonly`.
 
-  ```ballerina
-  class Person {
-     final string name;
-     final string[] & readonly address;
-   
-     function init(string name, string[] address) {
-         self.name = name;
-         self.address = address.cloneReadOnly();
-     }
-   
-     function getAddress() returns string => string:'join(", ", ...self.address);
-  }
-   
-  public function main() {
-     Person person = new ("May", ["Palm Grove", "Colombo 3"]);
-    
-     // This, which was allowed previously results in an error now.
-     readonly readOnlyValue = person;
-  }
-  ```
+   ```ballerina
+   class Person {
+      final string name;
+      final string[] & readonly address;
+      
+      function init(string name, string[] address) {
+            self.name = name;
+            self.address = address.cloneReadOnly();
+      }
+      
+      function getAddress() returns string => string:'join(", ", ...self.address);
+   }
+      
+   public function main() {
+      Person person = new ("May", ["Palm Grove", "Colombo 3"]);
+      
+      // This, which was allowed previously results in an error now.
+      readonly readOnlyValue = person;
+   }
+   ```
 
 - Fixed a bug that resulted in invalid table lookups due to not distinguishing between `int`, `float`, and `decimal` zero.
 
@@ -307,7 +307,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://git
 ### Code to Cloud Updates
 
 #### Improvements
-- The `awslambda` and `azure_functions` packages are no longer supported in single file projects
+- Removed the `awslambda` and `azure_functions` packages support in single file projects
 
 #### Bug Fixes
 
@@ -322,7 +322,8 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://git
 
 - Added the module auto-import feature to the Ballerina Shell
 - Added the import statement for a module, which has a reference without an import statement based on the user’s input
-For example, see below.
+
+   For example, see below.
     ```ballerina
     =$ io:println("HelloWorld")
     |
@@ -359,12 +360,5 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.0.0 of the reposi
 - [Update Tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+project%3Aballerina-platform%2F32)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+2201.0.0%22)
 
-#### Ballerina Packages Updates
-
-#### Bug Fixes
-
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+2201.0.0%22+label%3AType%2FBug).
-
-### Breaking Changes
 
 <style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style>

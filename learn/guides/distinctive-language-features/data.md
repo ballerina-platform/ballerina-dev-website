@@ -582,7 +582,7 @@ table<Employee> key(name) t = table [
 ];
 ```
 
-In the above code example, **``Employee``** is a record type that contains the two fields **``name``** and **``salary``**. The **``name``** field is marked as **``readonly``**, which prevents updates to the field after record creation.
+In the above code example, **``Employee``** is a record type that contains the two fields **``name``** and **``salary``**. The **``name``** field is marked as ``readonly``, which prevents updates to the field after record creation.
   
 Table **``t``** is defined with the ``table`` keyword. The definition also takes the type for the row, which is **``Employee``**, and the key field, which is **``name``**. It is declared with the ``key`` keyword.
 
@@ -651,7 +651,7 @@ table<Employee> key(name) t = table [
 ];
 ```
 
-In the above code example, the **``Employee``** record has a **``name``** field, which is also a record type having two fields, **``first``** and **``last``**. The table **``t``** uses the ``name`` field as the key.
+In the above code example, the **``Employee``** record has a **``name``** field, which is also a record type having two fields, **``first``** and **``last``**. The table **``t``** uses the **``name``** field as the key.
 
 Accessing the rows in this table works in the same way.
 
@@ -659,7 +659,7 @@ Accessing the rows in this table works in the same way.
 Employee? e = t[{first: "Fred", last: "Bloggs"}];
 ```
 
-With structured types, you can define rich keys, with different types, such as arrays of bytes, which makes it a binary key. This is a very powerful way of programming with tables, where you can directly work with the keys, instead of being constrained by faked up string representations of your keys.
+With structured types, you can define rich keys with different types such as arrays of bytes, which makes it a binary key. This is a very powerful way of programming with tables, where you can directly work with the keys, instead of being constrained by faked up string representations of your keys.
 
 ### Querying Tables
 

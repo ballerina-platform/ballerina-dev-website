@@ -15,7 +15,7 @@ redirect_from:
 
 ### Updating Ballerina
 
-If you are already using Ballerina, use the [Ballerina Update Tool](/learn/tooling-guide/cli-tools/update-tool/) to directly update to Swan Lake by running the command below.
+If you are already using Ballerina, use the [Ballerina Update Tool](/learn/tooling-guide/cli-tools/update-tool/) to directly update to Swan Lake 2201.0.0 by running the command below.
 
 > `bal dist pull 2201.0.0`
 
@@ -263,10 +263,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://git
 
 ### Runtime Updates
 
-#### New Features
-
-#### Improvements
-
 #### Bug Fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+2201.0.0%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
@@ -310,16 +306,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://git
 
 ### Code to Cloud Updates
 
-#### New Features
-
 #### Improvements
 - The `awslambda` and `azure_functions` packages are no longer supported in single file projects
 
 #### Bug Fixes
 
-To view bug fixes, see the GitHub milestone for Swan Lake 2201.0.0 of the repositories below.
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+2201.0.0%22).
 
-- [C2C](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+2201.0.0%22)
 
 ### Developer Tools Updates
 
@@ -367,10 +360,6 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.0.0 of the reposi
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+2201.0.0%22)
 
 #### Ballerina Packages Updates
-
-#### New Features
-
-#### Improvements
 
 #### Bug Fixes
 

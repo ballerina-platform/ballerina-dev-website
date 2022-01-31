@@ -363,11 +363,11 @@ public function main() returns error? {
 import ballerinax/kafka;
 import ballerina/lang.value;
 
-configurable string GROUP_ID = ?;
-configurable string LISTENING_TOPIC = ?;
-configurable string PUBLISH_TOPIC = ?;
-configurable decimal POLLING_INTERVAL = ?;
-configurable string KAFKA_ENDPOINT = ?;
+configurable string groupId = "group-id";
+configurable string listeningTopic = "topic-orders";
+configurable string publishingTopic = "topic-success-orders";
+configurable decimal pollingInterval = 1;
+configurable string kafkaEndpoint = kafka:DEFAULT_URL;
 
 type Order readonly & record {|
     int id;
@@ -381,15 +381,15 @@ enum PaymentStatus {
 }
 
 final kafka:ConsumerConfiguration consumerConfigs = {
-    groupId: GROUP_ID,
-    topics: [LISTENING_TOPIC],
+    groupId: groupId,
+    topics: [listeningTopic],
     offsetReset: kafka:OFFSET_RESET_EARLIEST,
-    pollingInterval: POLLING_INTERVAL
+    pollingInterval: pollingInterval
 };
 
-final kafka:Producer kafkaProducer = check new (KAFKA_ENDPOINT);
+final kafka:Producer kafkaProducer = check new (kafkaEndpoint);
 
-service on new kafka:Listener(KAFKA_ENDPOINT, consumerConfigs) {
+service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
     remote function onConsumerRecord(kafka:ConsumerRecord[] records) returns error? {
         check from var {value} in records
             let var orderString = check string:fromBytes(value)
@@ -397,7 +397,7 @@ service on new kafka:Listener(KAFKA_ENDPOINT, consumerConfigs) {
             where 'order.status == SUCCESS
             do {
                 kafka:ProducerRecord successfulOrder = {
-                    topic: PUBLISH_TOPIC,
+                    topic: publishingTopic,
                     value: 'order.toString().toBytes()
                 };
                 check kafkaProducer->send(successfulOrder);

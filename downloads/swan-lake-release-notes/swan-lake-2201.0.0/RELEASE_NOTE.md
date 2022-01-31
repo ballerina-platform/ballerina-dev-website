@@ -311,7 +311,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://git
 
 #### Bug Fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+2201.0.0%22).
+To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+2201.0.0%22+label%3AType%2FBug).
 
 
 ### Developer Tools Updates

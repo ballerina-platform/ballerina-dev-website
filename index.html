@@ -227,7 +227,7 @@ service / on new http:Listener(8080) {
         return albums.toArray();
     }
 
-    resource function get albums/[string id]() returns Album | http:NotFound {
+    resource function get albums/[string id]() returns Album|http:NotFound {
         Album? album = albums[id];
         if album is () {
             return &lt;http:NotFound&gt;{};

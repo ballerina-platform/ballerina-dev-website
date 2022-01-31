@@ -320,7 +320,7 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
 
    For example, see below.
    ```ballerina
-    =$ io:println("HelloWorld")
+    =$ io:println("Hello World")
     |
     | Found following undefined module(s).
     | io
@@ -332,7 +332,7 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
     | Adding import: import ballerina/io
     | Import added: import ballerina/io
     
-    HelloWorld
+    Hello World
     ```
 
 #### Improvements

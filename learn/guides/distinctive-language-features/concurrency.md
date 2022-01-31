@@ -608,9 +608,9 @@ This approach makes the service objects fully concurrency safe when accessed fro
 
 ### Inferring ``isolated``
 
-    The whole concept around isolation is quite confusing for an application developer to understand. It is a complex feature, but you do not have to worry about it because the compiler can figure it out for you most of the time.
+The whole concept around isolation is quite confusing for an application developer to understand. It is a complex feature, but you do not have to worry about it because the compiler can figure it out for you most of the time.
 
-    A typical Ballerina application consists of a single module that imports multiple library modules. With a single module, the compiler can infer ``isolated`` qualifiers. For example, if there is a service object without mutable fields, then it is inherently ``isolated``.
+A typical Ballerina application consists of a single module that imports multiple library modules. With a single module, the compiler can infer ``isolated`` qualifiers. For example, if there is a service object without mutable fields, then it is inherently ``isolated``.
 
-    The application programmer must use the ``lock`` statement responsibly wherever it is needed to safeguard the mutability of the data. This is applicable to both accessing ``self`` in a service object with mutable state and accessing mutable module-level variables. Additionally, the Ballerina compiler can warn the developer where missing locks are preventing a service object or method from being ``isolated``.
+The application programmer must use the ``lock`` statement responsibly wherever it is needed to safeguard the mutability of the data. This is applicable to both accessing ``self`` in a service object with mutable state and accessing mutable module-level variables. Additionally, the Ballerina compiler can warn the developer where missing locks are preventing a service object or method from being ``isolated``.
     

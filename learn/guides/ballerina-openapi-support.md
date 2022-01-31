@@ -16,7 +16,6 @@ redirect_from:
   - /learn/tooling-guide/cli-tools/openapi
   - /learn/tooling-guide/cli-tools/openapi/
   - /learn/ballerina-openapi-support/openapi
-  - /learn/ballerina-openapi-support/openapi/
   - /learn/cli-documentation/openapi/#using-the-capabilities-of-the-openapi-tools/
   - /learn/cli-documentation/openapi/#using-the-capabilities-of-the-openapi-tools
   - /learn/cli-documentation/openapi/#openapi-validator-compiler-plugin/

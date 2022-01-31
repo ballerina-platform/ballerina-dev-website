@@ -97,7 +97,7 @@ function getCode(int id) returns string|error {
   }
   ```
 
-- Fixed a spec deviation in type narrowing. This may result in types that were previously narrowed no longer being narrowed
+- Fixed a spec deviation in type narrowing. This may result in types that were previously narrowed no longer being narrowed.
 
    Consider the following records.
 
@@ -188,7 +188,7 @@ function getCode(int id) returns string|error {
   }
   ```
 
-- Fixed a bug in the compiler that resulted in some illegal variable shadowing scenarios not being detected. Ballerina allows shadowing only variables that belong to the module scope
+- Fixed a bug in the compiler that resulted in some illegal variable shadowing scenarios not being detected. Ballerina allows shadowing only variables that belong to the module scope.
 
   ```ballerina
   function fn(int y, int z) returns int {

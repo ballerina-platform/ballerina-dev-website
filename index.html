@@ -197,7 +197,8 @@ td.cEventDateContainer{
          <ul class="nav nav-tabs">
             <li class="active" ><a data-toggle="tab"  href="#firstTab" >RESTful API</a></li>
             <li><a data-toggle="tab" href="#secondTab" >Consuming Services</a></li>
-            <li><a data-toggle="tab" href="#thiredTab" >Working with Data</a></li> 
+            <li><a data-toggle="tab" href="#thiredTab" >Working with Data</a></li>
+            <li><a data-toggle="tab" href="#fifthTab" >Kafka Consumer/Producer</a></li>
          </ul>
          <div class="tab-content">
             <div id="firstTab" class="tab-pane fade in active"  >
@@ -352,6 +353,64 @@ public function main() returns error? {
                   </div>
                </div>
             </div>
+            <div id="fifthTab" class="tab-pane fade"  >
+            <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                <div class="col-lg-12 col-md-12 col-sm-12 focusPane codeBlock noBottomBorder" style="padding:20px;border: 1px #c7c7c7 solid;">
+                    <div class="FullCode" style="background-color: #f5f5f5;">
+                        <div class="highlight">
+                            <pre class="language-ballerina basic ballerina">
+                                <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerinax/kafka;
+import ballerina/lang.value;
+
+configurable string GROUP_ID = ?;
+configurable string LISTENING_TOPIC = ?;
+configurable string PUBLISH_TOPIC = ?;
+configurable decimal POLLING_INTERVAL = ?;
+configurable string KAFKA_ENDPOINT = ?;
+
+type Order readonly & record {|
+    int id;
+    string name;
+    PaymentStatus status;
+|};
+
+enum PaymentStatus {
+    SUCCESS,
+    FAIL
+}
+
+final kafka:ConsumerConfiguration consumerConfigs = {
+    groupId: GROUP_ID,
+    topics: [LISTENING_TOPIC],
+    offsetReset: kafka:OFFSET_RESET_EARLIEST,
+    pollingInterval: POLLING_INTERVAL
+};
+
+final kafka:Producer kafkaProducer = check new (KAFKA_ENDPOINT);
+
+service on new kafka:Listener(KAFKA_ENDPOINT, consumerConfigs) {
+    remote function onConsumerRecord(kafka:Caller caller, kafka:ConsumerRecord[] records) returns error? {
+        check from var {value} in records
+            let var mContent = check string:fromBytes(value)
+            let Order 'order = check value:fromJsonStringWithType(mContent, Order)
+            where 'order.status == SUCCESS
+            do {
+                kafka:ProducerRecord proRec = {
+                    topic: PUBLISH_TOPIC,
+                    value: 'order.toString().toBytes()
+                };
+                check kafkaProducer->send(proRec);
+            };
+    }
+}
+                                    </code>
+                                </pre>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
          </div>
       </div>
    </div>

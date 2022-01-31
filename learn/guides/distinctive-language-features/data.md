@@ -53,7 +53,7 @@ A decimal number represents a decimal fraction exactly. That means that the prec
 
 You can use a literal character ``d`` to indicate a ``decimal`` value, and similarly ``f`` for a ``float`` value.
 
-Decimal numbers are not the same as binary floating-point numbers defined as per IEEE standard. They are not built into the ALU logic on the processor. Therefore their computation is slower yet more accurate and precise.
+Decimal numbers are not the same as binary floating point numbers defined as per IEEE standard. They are not built into the ALU logic on the processor. Therefore, their computation is slower yet more accurate and precise.
 
 In Ballerina, decimal numbers do not offer infinite precision. It is limited to 34 digits only, which is more than enough for representing large physical measurements, such as the universe's age, which takes 27 digits. Additionally, decimal numbers do not support infinity, NaN, or negative zero.
 
@@ -69,7 +69,7 @@ The second one is the ``xml`` type. It is a sequence type built on a sequence of
 
 One of the crucial features of plain data is that it can be made immutable. You cannot do that for objects. Plain data consisting of simple and string values are inherently immutable.
 
-Structural values can be constructed either as mutable or immutable. The value includes a flag that indicates whether it's immutable or not and it is fixed at the time of construction of the value. Attempting to mutate an immutable structure causes a `panic` at runtime.
+Structural values can be constructed either as mutable or immutable. The value includes a flag that indicates whether it's immutable or not, and it is fixed at the time of construction of the value. Attempting to mutate an immutable structure causes a panic at runtime.
 
 Ballerina's notion of immutability is deep. This means that if you have an immutable structure, all its members have to be immutable. This also makes it safer to pass immutable values to other threads for concurrent access.
 
@@ -119,7 +119,7 @@ A configurable variable must be a subtype of ``anydata``.
 
 ## Optional Fields
 
-Ballerina's type system is unique from other programming languages because it describes data both in program memory as well as on the wire. This is especially relevant for the cloud era, where more applications use APIs which provide network interfaces to a different system to send and receive data on the wire.  
+Ballerina's type system is unique from other programming languages because it describes data both in program memory and on the wire. This is especially relevant for the cloud era, where more applications use APIs which provide network interfaces to a different system to send and receive data on the wire.  
 
 Therefore, Ballerina's type system design is based on defining a data type interface that works consistently across the memory buffers of the process in which the data is processed and in the network.
 

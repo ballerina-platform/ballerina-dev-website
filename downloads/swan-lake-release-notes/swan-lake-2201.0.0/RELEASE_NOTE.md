@@ -33,42 +33,42 @@ Object constructor expressions can now refer to parameters and local variables. 
 
 ```ballerina
 type Person object {
-   string name;
-   string code;
-  
-   function getRegistrationId(string prefix) returns string;
+    string name;
+    string code;
+
+    function getRegistrationId(string prefix) returns string;
 };
- 
+
 function createPerson(string name, int id, string department) returns Person|error {
-   string codeId = check getCode(id);
- 
-   Person person = object {
-       string name;
-       string code = codeId; // Refers to the `codeId` local variable.
- 
-       function init() {
-           self.name = name; // Refers to the `name` parameter.
-       }
- 
-       function getRegistrationId(string prefix) returns string {
-           string regId = department + ":" + self.code; // Refers to the `department` parameter.
- 
-           if (prefix.length() > 0) {
-               return prefix + "-" + regId;
-           }
- 
-           return regId;
-       }
-   };
- 
-   return person;
+    string codeId = check getCode(id);
+
+    Person person = object {
+        string name;
+        string code = codeId; // Refers to the `codeId` local variable.
+
+        function init() {
+            self.name = name; // Refers to the `name` parameter.
+        }
+
+        function getRegistrationId(string prefix) returns string {
+            string regId = department + ":" + self.code; // Refers to the `department` parameter.
+
+            if (prefix.length() > 0) {
+                return prefix + "-" + regId;
+            }
+
+            return regId;
+        }
+    };
+
+    return person;
 }
- 
+
 function getCode(int id) returns string|error {
-   if id < 0 {
-       return error("Invalid ID");
-   }
-   return id.toString();
+    if id < 0 {
+        return error("Invalid ID");
+    }
+    return id.toString();
 }
 ```
 

@@ -101,7 +101,7 @@ This way of including record fields as named arguments in a function provides a 
 
 ## Default Values for Record Fields
 
-Ballerina also allows default values for record fields as part of the record's type descriptor. A default value is an expression, which can also be a closure that is computed in the context of the enclosing module scope.
+Ballerina also allows default values for record fields as part of the record's type descriptor. A default value is an expression, which can also be a closure computed in the context of the enclosing module scope.
 
 ```ballerina
 type X record {
@@ -117,7 +117,7 @@ Default values do not affect static typing. They only affect the use of type des
 
 ## Object Types
 
-Ballerina also allows you to define object types that define just the type without the implementation. Unlike classes, which give you the type as well as the implementation that you can instantiate through ``new``, an object type is a definition without any implementation. It is similar to the concept of an interface, as defined in the Java programming language.
+Ballerina also allows you to define object types that define just the type without the implementation. Unlike classes, which give you the type as well as the implementation that you can instantiate through ``new``, an object type is a definition without any implementation. It is similar to an interface, as defined in the Java programming language.
 
 ```ballerina
 type Hashable object {
@@ -171,7 +171,7 @@ The implementation of the object type within the class that includes the type is
 
 ## Distinct Object Types
 
-Ballerina also supports the concept of ``distinct`` object types. This allows you to define a type with a name that is significant, similar to nominal typing, within a structured type system. It is done by using the ``distinct`` keyword in the type definition.
+Ballerina also supports the concept of ``distinct`` object types. This concept allows you to define a type with a name that is significant, similar to nominal typing, within a structured type system. It is done using the ``distinct`` keyword in the type definition.
 
 ```ballerina
 type Person distinct object {
@@ -195,7 +195,7 @@ distinct class Manager {
 }
 ```
 
-In the above code example, the **``Person``** type is defined as ``distinct``. This means that the compiler will give this type a unique name, with which the object value will be tagged and is unique across all the distinct types defined in the program. The **``Employee``** type includes the **``Person``** type, so it belongs to the distinct **``Person``** type as well as the distinct **``Employee``** type. Similarly, the **``Manager``** class also inherits the **``Person``** type.
+In the above code example, the **``Person``** type is defined as ``distinct``. This means that the compiler will give this type a unique name, with which the object value will be tagged and is unique across all the distinct types defined in the program. The **``Employee``** type includes the **``Person``** type, so it belongs to the distinct **``Person``** type and the distinct **``Employee``** type. Similarly, the **``Manager``** class also inherits the **``Person``** type.
 
 Conceptually, a distinct type including another distinct type results in multiple interface inheritance. So a type check on the value of the **``Employee``** object will return true both for the **``Employee``** as well as the **``Person``**. The same applies to **``Manager``** type.
 
@@ -367,7 +367,7 @@ This is useful when you have a complex or a long key name, like an URL, which yo
 
 ## Tuples
 
-The tuple type is another structured type supported by Ballerina, which creates a list of values just like arrays. The main difference between arrays and tuples is that an array has only one type applicable to every member of its list, whereas in a tuple type you can individually specify the types for each member.
+The tuple type is another structured type supported by Ballerina, which creates a list of values like arrays. The main difference between arrays and tuples is that an array has only one type applicable to every member of its list. In contrast, in a tuple type, you can individually specify the types for each member.
 
 ```ballerina
 // Fixed length array

@@ -145,9 +145,9 @@ td.cEventDateContainer{
    <div class="col-sm-12 col-md-7">
    <p>Ballerina is an open-source programming language for the cloud that makes it easier to use, combine, and create network services.
    </p>
-  
 
-  
+
+
    </div>
    <!-- <div class="col-sm-12 col-md-1">&nbsp;</div> -->
    <div class="col-sm-12 col-md-5 cMainCTAContainer">
@@ -164,15 +164,15 @@ td.cEventDateContainer{
    Download Ballerina
    <p>Distributions are available for <br>Linux, OS X, and Windows</p>
    </a> -->
-  
+
 
    <!-- <ul>
-     
+
       <li style="margin: 0;"><a class="cIconLink" href="/learn/by-example/" target="_blank">Ballerina By Example</a></li>
       <li ><a class="cIconLink" href="/learn/installing-ballerina/setting-up-ballerina/">Get Started</a></li>
-      
+
    </ul> -->
-   
+
    </div>
 
    </div>
@@ -186,7 +186,7 @@ td.cEventDateContainer{
 
 </div>
 
-  
+
 
 </div>
 <!--START OF TRY BALLERINA TAB DESIGN 1-->
@@ -199,13 +199,14 @@ td.cEventDateContainer{
             <li><a data-toggle="tab" href="#secondTab" >Consuming Services</a></li>
             <li><a data-toggle="tab" href="#thiredTab" >Working with Data</a></li>
             <li><a data-toggle="tab" href="#fifthTab" >Kafka Service</a></li>
+            <li><a data-toggle="tab" href="#seventhTab" >Working with Database</a></li>
          </ul>
          <div class="tab-content">
             <div id="firstTab" class="tab-pane fade in active"  >
                <div class="row" style="background-color: #f5f5f5;">
                   <div class="col-lg-12 col-md-12 col-sm-12 focusPane " style="padding:20px;">
                      <div class="FullCode" style="background-color: #f5f5f5;">
-                        <div class="highlight"> 
+                        <div class="highlight">
                            <pre class="language-ballerina basic ballerina">
                               <code class="language-ballerina ballerina" style="font-size: 12px !important;">
 import ballerina/http;
@@ -258,7 +259,7 @@ service / on new http:Listener(8080) {
                <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
                   <div class="col-lg-7 col-md-12 col-sm-12 focusPane codeBlock noBottomBorder" id="column1" style="padding:20px;border: 1px #c7c7c7 solid; ">
                      <div class="FullCode" style="background-color: #f5f5f5;">
-                        <div class="highlight"> 
+                        <div class="highlight">
                            <pre class="language-ballerina basic ballerina">
                               <code class="language-ballerina ballerina" style="font-size: 12px !important;">
 import ballerina/http;
@@ -311,7 +312,7 @@ public function main() returns error? {
                <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
                   <div class="col-lg-7 col-md-12 col-sm-12 focusPane codeBlock noBottomBorder" style="padding:20px;border: 1px #c7c7c7 solid;">
                      <div class="FullCode" style="background-color: #f5f5f5;">
-                        <div class="highlight"> 
+                        <div class="highlight">
                            <pre class="language-ballerina basic ballerina">
                               <code class="language-ballerina ballerina" style="font-size: 12px !important;">
 import ballerina/http;
@@ -349,7 +350,7 @@ public function main() returns error? {
                      <img src="img/working-with-data-diagram.svg" style="max-width: 520px;" />
                      <a target="_blank" href="https://play.ballerina.io/?gist=30a51792b6b4d46c2cbdfdd424fb3b45&file=play.bal" style="z-index: 999;">
                         <button class="playground-button"  id="simple11" style="background:url(/img/play=button.svg)no-repeat scroll right center; color:#20b6b0;padding: 12px 30px ;border: none;float: right;background-size:20px ;font-size: 17px;margin-right: 50px;margin-top: 50px;"> Try in Playground</button>
-                     </a>  
+                     </a>
                   </div>
                </div>
             </div>
@@ -411,6 +412,64 @@ function getOrdersFromRecords(kafka:ConsumerRecord[] records) returns Order[]|er
                     </div>
                 </div>
              </div>
+             <div id="seventhTab" class="tab-pane fade in active"  >
+                 <div class="row" style="background-color: #f5f5f5;">
+                     <div class="col-lg-12 col-md-12 col-sm-12 focusPane " style="padding:20px;">
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
+                               <pre class="language-ballerina basic ballerina">
+                                <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/http;
+import ballerina/sql;
+import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
+
+configurable string USER = ?;
+configurable string PASSWORD = ?;
+configurable string HOST = ?;
+configurable int PORT = ?;
+configurable string DATABASE = ?;
+
+type Album record {|
+    string id;
+    string title;
+    string artist;
+    decimal price;
+|};
+
+final mysql:Client dbClient = check new (HOST, USER, PASSWORD, DATABASE, PORT);
+
+service / on new http:Listener(8080) {
+    resource function get albums() returns Album[]|sql:Error? {
+        stream<Album, sql:Error?> albumStream = dbClient->query(`SELECT * FROM Albums`);
+        Album[]? albums = check from Album album in albumStream select album;
+        check albumStream.close();
+        return albums;
+    }
+
+    resource function get albums/[string id]() returns Album|http:NotFound|sql:Error {
+        Album|sql:Error result = dbClient->queryRow(`SELECT * FROM Albums WHERE id = ${id}`);
+        if result is sql:NoRowsError {
+            return <http:NotFound>{};
+        } else {
+            return result;
+        }
+    }
+
+    resource function post album(@http:Payload Album album) returns Album|sql:Error {
+        _ = check dbClient->execute(`
+            INSERT INTO Albums (id, title, artist, price)
+            VALUES (${album.id}, ${album.title}, ${album.artist}, ${album.price});`);
+        return album;
+    }
+}
+                                </code>
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
          </div>
       </div>
    </div>
@@ -439,7 +498,7 @@ function getOrdersFromRecords(kafka:ConsumerRecord[] records) returns Order[]|er
                      Info</a></li>
             </ul>
          </div>
-      </div> 
+      </div>
 
 
       <div class="col-sm-12 col-md-4">
@@ -458,7 +517,7 @@ function getOrdersFromRecords(kafka:ConsumerRecord[] records) returns Order[]|er
       <div class="col-sm-12 col-md-4">
          <div class="cHomeWhyBallerinaBox">
             <img src="/img/home-page/icons/data-transformation.svg"/>
-            <h3>Data Oriented</h3> 
+            <h3>Data Oriented</h3>
          <p>Type-safe, declarative processing of JSON, XML, and tabular data with language-integrated queries.</p>
       <ul class="cInlinelinklist">
             <li><a class="cGreenLinkArrow" href="/why-ballerina/data-oriented/">More Info</a></li>
@@ -475,7 +534,7 @@ function getOrdersFromRecords(kafka:ConsumerRecord[] records) returns Order[]|er
       <div class="col-sm-12 col-md-4">
          <div class="cHomeWhyBallerinaBox">
             <img src="/img/home-page/icons/graphical.svg"/>
-            <h3>Graphical</h3> 
+            <h3>Graphical</h3>
             <p>Programs have both a textual syntax and an equivalent graphical form based on sequence diagrams.
             </p>
             <ul class="cInlinelinklist">
@@ -488,7 +547,7 @@ function getOrdersFromRecords(kafka:ConsumerRecord[] records) returns Order[]|er
       <div class="col-sm-12 col-md-4">
          <div class="cHomeWhyBallerinaBox">
             <img src="/img/home-page/icons/concurrent.svg"/>
-            <h3>Concurrent</h3> 
+            <h3>Concurrent</h3>
          <p>Easy and efficient  concurrency with sequence diagrams and language-managed threads without the complexity of asynchronous functions.
          </p>
          <ul class="cInlinelinklist">
@@ -512,13 +571,13 @@ function getOrdersFromRecords(kafka:ConsumerRecord[] records) returns Order[]|er
 
    </div>
 </div>
-      
-  
+
+
 
 
 <div class="row row cWidget cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 6rem;background-color: #f5f5f5;">
 
-   
+
    <a class="cBookmarkTop" id="Developer-First"></a>
    <div id="" class="container">
       <div class="col-sm-12 col-md-8 cColCOntent">
@@ -529,19 +588,19 @@ function getOrdersFromRecords(kafka:ConsumerRecord[] records) returns Order[]|er
       <a class="cVideoLink video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/My_uqtHvXV8" data-target="#iBallerinaVideo">
          <img src="/img/tutorial.jpg" alt="Ballerina Language Concepts"/>
       </a>
-      
+
     </div>
     <div class="col-sm-12 col-md-6 cVideoImage">
       <h3 style="text-align: left; font-size: 20px;">Tutorial: Creating a Service in Ballerina</h3><br/>
       <a class="cVideoLink video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/NxyIKoHl3Dw" data-target="#iBallerinaVideo">
          <img src="/img/tutorial-thumbnail.png" alt="Tutorial: Creating a Service in Ballerina" />
       </a>
-      
+
     </div>
 
-    
+
       <div class="clearfix"></div></br>
-     
+
    </div>
 
 </div>
@@ -549,53 +608,53 @@ function getOrdersFromRecords(kafka:ConsumerRecord[] records) returns Order[]|er
 <!--START OF TRY BALLERINA EVENT-->
 <div class="row row cWidget cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 3rem;background-color: #fff;">
 
-   
+
    <a class="cBookmarkTop" id="Developer-First"></a>
    <div id="" class="container">
       <div class="col-sm-12 col-md-8 cColCOntent">
          <h2>Events</h2>
          <h3 style="padding-right: 15px;padding-bottom: 20px;">Upcoming Events</h2>
     </div>
-  
+
       <div class="row">
           <table class="cEventTable cConferencesList" style="width:100% !important;">
-              <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
-                  <td class="cEventDateContainer cEventDateContainer1">	
-                     <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;margin-top: -18px;">February 2, 2022</p>	
-                     <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Wed., 6.00 p.m. IST</p>	
-                     <p class="cEventLocation" style="text-align: right;">Online</p>	
-                  </td>	
-                  <td class="cEventDetail" id="eventDetails" >	
-                     <a target="_blank" href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/events/283458600/">	
-                        <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Meetup: CodeSeeker's Endless Programming Languages</p>	
-                     </a>	
-                     <h5 style="margin-bottom: 18px;">Ballerina - A Cloud Native Programming Language</h5>		
+              <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">
+                  <td class="cEventDateContainer cEventDateContainer1">
+                     <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;margin-top: -18px;">February 2, 2022</p>
+                     <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Wed., 6.00 p.m. IST</p>
+                     <p class="cEventLocation" style="text-align: right;">Online</p>
+                  </td>
+                  <td class="cEventDetail" id="eventDetails" >
+                     <a target="_blank" href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/events/283458600/">
+                        <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Meetup: CodeSeeker's Endless Programming Languages</p>
+                     </a>
+                     <h5 style="margin-bottom: 18px;">Ballerina - A Cloud Native Programming Language</h5>
                      <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/hasithaaravinda/">Hasitha Aravinda</a>, Associate Director/Architect, WSO2
-                  </td>	
-                  <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/events/283458600/" target="_blank" style="text-align: center;">More Info</a></td>	
+                  </td>
+                  <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/events/283458600/" target="_blank" style="text-align: center;">More Info</a></td>
               </tr>
-              <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
-               <td class="cEventDateContainer cEventDateContainer1" style="border-bottom: none !important;">	
-                  <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">February 22, 2022</p>	
-                  <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tue., 9.00 p.m. PST</p>	
-                  <p class="cEventLocation" style="text-align: right;">Online</p>	
-               </td>	
-               <td class="cEventDetail" id="eventDetails" style="border-bottom: none !important;">	
-                  <a target="_blank" href="/community/monthly-tech-talk/">	
-                     <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
-                  </a>	
-                  <h5 style="margin-bottom: 18px;">Language Support and Extending the Tooling support for Ballerina</h5>		
+              <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">
+               <td class="cEventDateContainer cEventDateContainer1" style="border-bottom: none !important;">
+                  <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">February 22, 2022</p>
+                  <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tue., 9.00 p.m. PST</p>
+                  <p class="cEventLocation" style="text-align: right;">Online</p>
+               </td>
+               <td class="cEventDetail" id="eventDetails" style="border-bottom: none !important;">
+                  <a target="_blank" href="/community/monthly-tech-talk/">
+                     <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>
+                  </a>
+                  <h5 style="margin-bottom: 18px;">Language Support and Extending the Tooling support for Ballerina</h5>
                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/imeshasudasingha/">Imesha Sudasingha</a>, Senior Software Engineer, WSO2
-               </td>	
-               <td class="cEventURL" style="border-bottom: none !important;"><a class="cEventRegistration " href="/community/monthly-tech-talk/" target="_blank" style="text-align: center;">More Info</a></td>	
+               </td>
+               <td class="cEventURL" style="border-bottom: none !important;"><a class="cEventRegistration " href="/community/monthly-tech-talk/" target="_blank" style="text-align: center;">More Info</a></td>
            </tr>
-              
+
           </table>
-          
-      </div> 
+
+      </div>
 
    <div class="clearfix"></div></br>
-     
+
    </div>
 
 </div>
@@ -713,7 +772,7 @@ function getOrdersFromRecords(kafka:ConsumerRecord[] records) returns Order[]|er
            <div class="modal-body">
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                    <span aria-hidden="true">&times;</span>
-               </button>          
+               </button>
 
 
                <!-- 16:9 aspect ratio -->
@@ -736,7 +795,7 @@ function getOrdersFromRecords(kafka:ConsumerRecord[] records) returns Order[]|er
 
 
 
-        // when the modal is opened autoplay it  
+        // when the modal is opened autoplay it
         $('#iBallerinaVideo').on('shown.bs.modal', function (e) {
 
             // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
@@ -793,7 +852,7 @@ function getOrdersFromRecords(kafka:ConsumerRecord[] records) returns Order[]|er
          margin: 0px;
          margin-top: 15px;
       }
-      
+
       td.cEventDateContainer1 span.cEventDate1{text-align: left !important}
       .cEventLocation{text-align: left !important;}
       table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {padding: 0px 15px 10px 15px !important;}
@@ -823,5 +882,5 @@ function getOrdersFromRecords(kafka:ConsumerRecord[] records) returns Order[]|er
      .diagramBox{height: 470px;}
      .playground-button{margin-right: 70px !important;}
     }
-   
+
 </style>

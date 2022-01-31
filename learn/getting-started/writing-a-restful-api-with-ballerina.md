@@ -3,6 +3,7 @@ layout: ballerina-rest-api-guide-left-nav-pages-swanlake
 title: Writing a RESTful API with Ballerina
 permalink: /learn/writing-a-restful-api-with-ballerina/
 description: This guide helps you understand the basics of Ballerina constructs, which allow you to write RESTful APIs.
+keywords: ballerina, programming language, restful-api, ballerina packages, language-guide
 active: writing-a-restful-api-with-ballerina
 intro: This guide helps you understand the basics of Ballerina constructs, which allow you to write RESTful APIs.
 redirect_from:

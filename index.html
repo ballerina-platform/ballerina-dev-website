@@ -198,6 +198,7 @@ td.cEventDateContainer{
             <li class="active" ><a data-toggle="tab"  href="#firstTab" >RESTful API</a></li>
             <li><a data-toggle="tab" href="#secondTab" >Consuming Services</a></li>
             <li><a data-toggle="tab" href="#thiredTab" >Working with Data</a></li> 
+            <li><a data-toggle="tab" href="#fourthTab" >gRPC Service</a></li> 
          </ul>
          <div class="tab-content">
             <div id="firstTab" class="tab-pane fade in active"  >
@@ -350,6 +351,61 @@ public function main() returns error? {
                         <button class="playground-button"  id="simple11" style="background:url(/img/play=button.svg)no-repeat scroll right center; color:#20b6b0;padding: 12px 30px ;border: none;float: right;background-size:20px ;font-size: 17px;margin-right: 50px;margin-top: 50px;"> Try in Playground</button>
                      </a>  
                   </div>
+               </div>
+            </div>
+            <div id="fourthTab" class="tab-pane fade in active"  >
+               <div class="row" style="background-color: #f5f5f5;">
+                  <div class="col-lg-12 col-md-12 col-sm-12 focusPane " style="padding:20px;">
+                     <div class="FullCode" style="background-color: #f5f5f5;">
+                        <div class="highlight"> 
+                           <pre class="language-ballerina basic ballerina">
+                              <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/grpc;
+
+listener grpc:Listener ep = new (9090);
+
+type ReadOnlyAlbum readonly & record {|
+      string id;
+      string title;
+      string artist;
+      float price;
+|};
+
+table<ReadOnlyAlbum> key(id) albums = table [
+         {id: "1", title: "Blue Train", artist: "John Coltrane", price: 56.99},
+         {id: "2", title: "Jeru", artist: "Gerry Mulligan", price: 17.99},
+         {id: "3", title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan", price: 39.99}
+      ];
+
+@grpc:ServiceDescriptor {descriptor: ROOT_DESCRIPTOR_RECORD_STORE, descMap: getDescriptorMapRecordStore()}
+service "RecordStore" on ep {
+
+      remote function getAlbumFromId(string id) returns Album|error {
+         ReadOnlyAlbum? album = albums[id];
+         if album is ReadOnlyAlbum {
+            return <Album>album;
+         }
+         return error grpc:NotFoundError(string `Related album for ID ${id} not found`);
+      }
+
+      remote function storeAlbum(Album album) returns Album|error {
+         albums.add(album.cloneReadOnly());
+         return album;
+      }
+
+      remote function getAlbums() returns stream<Album, error?>|error {
+         return albums.toArray().toStream();
+      }
+}                                 
+                              </code>
+                           </pre>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- <div class="col-lg-5 col-sm-12 focusPane" style="padding:20px;border: 1px #c7c7c7 solid;">
+                     <img src="img/consuming-services-diagram.svg" style="max-width: 520px;" />
+
+                  </div> -->
                </div>
             </div>
          </div>

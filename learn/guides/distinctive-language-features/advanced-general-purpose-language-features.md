@@ -21,11 +21,11 @@ function substring(string str, int 'start = 0, int end = str.length())
 }
 ```
 
-The way it works is, the type descriptor contains closures for every defaultable parameter, which has the values for previous parameters as parameters for those closures. Using those closures, the compiler generates code to fill missing values at the call site for this function. This is not part of the function type and is not applicable when functions are passed around as a first-class value.
+The type descriptor contains closures for every defaultable parameter. These closures accept the values specified for the previous parameters as arguments. Using those closures, the compiler generates code to fill missing values at the call site for this function. This is not part of the function type and is not applicable when functions are passed around as a first-class value.
 
 ## Providing Function Arguments by Name
 
-In addition to default values for parameters, it is also useful to call functions with argument names. Ballerina allows you to call functions where arguments can be supplied by name.
+In addition to default values for parameters, it is also useful to call functions with named arguments. Ballerina allows you to call functions with named arguments, and these named arguments do not have to be in the same order as the parameters.
 
 Consider the function below.
 
@@ -44,7 +44,7 @@ foo(z = 3, y = 2, x = 1);
 foo(1, z = 3, y = 2);
 ```
 
-The first option calls the function in the usual way without using the names of the arguments. The second and third options use named arguments that are transformed into positional arguments by the Ballerina compiler. The argument list of a function is described by a tuple type, and names are not part of that type. You can also combine the named arguments with unnamed ones, as shown in the fourth option.
+The first statement calls the function in the usual way without using the names of the arguments. The second and third statements use named arguments in an order different from that of the parameters of the function definition. The Ballerina compiler transforms them into positional arguments. The argument list of a function is described by a tuple type, and names are not part of that type. You can also combine the named arguments with positional arguments, as shown in the fourth option, given that they are specified after the positional arguments.
 
 You have to pay special attention to argument names of remote methods and resource methods since these names are exposed as public interfaces for API endpoints. This is also applicable for public functions in a module. Changing the argument names of such functions makes the module incompatible when it is imported into other modules.
 

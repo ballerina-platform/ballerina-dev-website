@@ -199,6 +199,7 @@ td.cEventDateContainer{
             <li><a data-toggle="tab" href="#secondTab" >Consuming Services</a></li>
             <li><a data-toggle="tab" href="#thiredTab" >Working with Data</a></li>
             <li><a data-toggle="tab" href="#fifthTab" >Kafka Consumer/Producer</a></li>
+            <li><a data-toggle="tab" href="#sixthTab" >GraphQL API</a></li>
          </ul>
          <div class="tab-content">
             <div id="firstTab" class="tab-pane fade in active"  >
@@ -402,6 +403,73 @@ service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
                 };
                 check kafkaProducer->send(successfulOrder);
             };
+    }
+}
+                                    </code>
+                                </pre>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div id="sixthTab" class="tab-pane fade"  >
+                 <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                     <div class="col-lg-12 col-md-12 col-sm-12 focusPane" style="padding:20px;border: 1px #c7c7c7 solid;">
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
+                            <pre class="language-ballerina basic ballerina">
+                                <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/graphql;
+import ballerina/http;
+import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
+
+configurable string user = ?;
+configurable string password = ?;
+configurable string host = ?;
+configurable int port = ?;
+configurable string database = ?;
+configurable string apiEndpoint = ?;
+
+public type Album record {
+    string id;
+    string title;
+    string artist;
+    decimal price;
+};
+
+public enum Currency {
+    USD,
+    LKR,
+    EUR,
+    GBP
+}
+
+service / on new graphql:Listener(9000) {
+    private final mysql:Client dbClient;
+    private final http:Client httpClient;
+    private final Currency baseCurrency;
+
+    function init() returns error? {
+        self.dbClient = check new (host, user, password, database, port);
+        self.httpClient = check new (apiEndpoint);
+        self.baseCurrency = USD;
+    }
+
+    resource function get search(string id, Currency currency) returns Album|error {
+        Album album = check self.dbClient->queryRow(`SELECT * FROM Albums WHERE id=${id}`);
+
+        if currency != self.baseCurrency {
+            string query = string `from=${self.baseCurrency}&to=${currency}`;
+            json response = check self.httpClient->get("/currencyExchange?" + query);
+            var conversionRate = response.conversionRate;
+            if conversionRate is decimal {
+                album.price = album.price * conversionRate;
+            } else {
+                return error("An error occurred while converting the currency");
+            }
+        }
+        return album;
     }
 }
                                     </code>

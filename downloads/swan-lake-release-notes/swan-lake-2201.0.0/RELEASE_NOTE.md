@@ -279,7 +279,7 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
 - Implemented typed `headers` for the HTTP response
 - Added the `map<string>` data binding support for `application/www-x-form-urlencoded`
 - Added support to provide an inline request/response body with `x-form-urlencoded` content
-- Added compiler validation for the payload annotation usage
+- Added compiler plugin validation for usage of the `@http:Payload` annotation
 
 #### Improvements
 

@@ -130,7 +130,7 @@ Previously, when a type test was used as follows, the type of `v` in the else bl
   }
   ```
 
-Even though jBallerina currently allows only values that belong to either `Employee` or `Student` to be passed as arguments for the parameter of type `Employee|Student`, the Ballerina specification defines subtyping to be semantic. This along with mutability would mean that a value that does not belong to `Employee` nor `Student` but belongs to `Employee|Student` can be passed as an argument here, which results in the possibility of the value not belonging to `Student` in the else block.
+Even though jBallerina currently allows only values that belong to either `Employee` or `Student` to be passed as arguments for the parameter of type `Employee|Student`, the Ballerina specification defines subtyping to be semantic. This, along with mutability, would mean that a value that does not belong to `Employee` nor `Student` but belongs to `Employee|Student` can be passed as an argument here, which results in the possibility of the value not belonging to `Student` in the else block.
 
 For example, one would be able to call `fn` with the following.
 

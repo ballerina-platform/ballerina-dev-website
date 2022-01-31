@@ -265,7 +265,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://git
 
 #### Bug Fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+2201.0.0%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
+To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FjBallerina+milestone%3A%22Ballerina+2201.0.0%22).
 
 ### Standard Library Updates
 
@@ -279,7 +279,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://git
 - Implemented typed `headers` for the HTTP response
 - Added the `map<string>` data binding support for `application/www-x-form-urlencoded`
 - Added support to provide an inline request/response body with `x-form-urlencoded` content
-- Added compiler validation for the payload annotation usage
+- Added compiler plugin validation for usage of the `@http:Payload` annotation
 
 #### Improvements
 
@@ -287,13 +287,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.0](https://git
 - Removed the deprecated `add` method in the `graphql:Context` object.
 
 ##### `grpc` Package
-- Changed the `--proto_path` option of the gRPC CLI to `--proto-path`
+- Changed the `--proto_path` option of the gRPC command to `--proto-path`
 
 ##### `websub` Package
-- Added the support for `readonly` parameters of remote methods
+- Added support for `readonly` parameters in remote methods
 
 #### `websubhub` Package
-- Added the support for `readonly` parameters of remote methods
+- Added support for `readonly` parameters in remote methods
 
 ##### `kafka` Package
 - Made the `kafka:Caller` optional in the `onConsumerRecord` method of the `kafka:Service`

@@ -91,7 +91,7 @@ This record type is the basis for interacting with the database.
 
 ### Adding the MySQL Driver
 
-The MySQL driver JAR is necessary to connect to and there are several methods to interact with a MySQL server.
+The MySQL driver JAR is necessary to connect to and interact with a MySQL server. There are several methods of doing this.
 
 1. Import the `ballerinax/mysql.driver` package in your `main.bal` file. This Package bundles the latest MySQL driver so that the MySQL connector can be used in ballerina projects easily.
    ```ballerina
@@ -270,7 +270,7 @@ service /employees on new http:Listener(8080) {
 }
 ```
 
-Invoke defined resource function by sending a `POST` request to `http://localhost:8080/employees` with the 
+Invoke the defined resource function by sending a `POST` request to `http://localhost:8080/employees` with the 
 required data as a JSON payload.
 
 ```shell

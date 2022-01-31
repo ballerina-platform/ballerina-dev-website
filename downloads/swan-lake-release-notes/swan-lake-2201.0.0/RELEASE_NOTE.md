@@ -208,7 +208,7 @@ Although it is not possible to call this function in this manner at the moment s
   }
   ```
 
-- Fixed a bug that caused classes with all `final` fields of immutable types to be considered a `readonly class` (i,e., a subtype of `readonly`).
+- Fixed a bug that caused classes with all `final` fields of immutable types to be considered a `readonly class` (i.e., a subtype of `readonly`).
 
 Such a class can no longer be used in a context that expects a subtype of `readonly`.
 

@@ -390,7 +390,7 @@ final kafka:ConsumerConfiguration consumerConfigs = {
 
 service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
 
-    kafka:Producer kafkaProducer;
+    private kafka:Producer kafkaProducer;
 
     function init() returns error? {
         self.kafkaProducer = check new (kafkaEndpoint);

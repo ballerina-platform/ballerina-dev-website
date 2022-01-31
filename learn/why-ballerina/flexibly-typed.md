@@ -302,7 +302,7 @@ $ bal run sample.bal
                                        <span class="cTableCode"><code>curl -d '{ "name": "John Little",  "birthYear": "1855" }' http://localhost:8080/record</code></span>
                                     </td>
                                     <td>
-                                        <span class="cTableCode"><code>data binding failed: error("{ballerina/lang.value}ConversionError",message="'map<json>' value cannot be converted to 'Person': 
+                                        <span class="cTableCode"><code>data binding failed: error("{ballerina/lang.value}ConversionError",message="'map&lt;json&gt;' value cannot be converted to 'Person': 
                 field 'birthYear' in record 'Person' should be of type 'int', found '"1855"'")</code></span>
                                     </td>
                                  </tr> 
@@ -322,7 +322,7 @@ $ bal run sample.bal
                                        <span class="cTableCode"><code>curl -d '{ "name": "Tim Kern",  "birthYear": 1995, "creditScore": "HIGH", "country": "Japan", "zipcode": "98101" }' http://localhost:8080/record</code></span>
                                     </td>
                                     <td>
-                                       <span class="cTableCode"><code>data binding failed: error("{ballerina/lang.value}ConversionError",message="'map<json>' value cannot be converted to 'Person': 
+                                       <span class="cTableCode"><code>data binding failed: error("{ballerina/lang.value}ConversionError",message="'map&lt;json&gt;' value cannot be converted to 'Person': 
                 field 'creditScore' in record 'Person' should be of type 'CreditScore', found '"HIGH"'")</code></span>
 </td>
                                  </tr>

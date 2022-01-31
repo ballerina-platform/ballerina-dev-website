@@ -60,7 +60,7 @@ OPTIONS
 
 
 BALLERINA COMMANDS
-        The below is a list of the available subcommands:
+        Below is a list of the available subcommands:
 
    Core Commands:
         build           Compile the current package

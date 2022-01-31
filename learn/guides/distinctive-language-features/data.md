@@ -137,7 +137,7 @@ type Headers record {
 };
 ```
 
-In the above type declaration, the ``Headers`` record type has three fields. The ``subject`` field is suffixed with ``?``, which tells the compiler that it is an optional field. Thus, you can define a variable of type ``Headers`` with or without the optional field.
+In the above type declaration, the **``Headers``** record type has three fields. The **``subject``** field is suffixed with ``?``, which tells the compiler that it is an optional field. Thus, you can define a variable of type **``Headers``** with or without the optional field.
 
 ```ballerina
 Headers h = {
@@ -179,11 +179,11 @@ Person p2 = {
 };
 ```
 
-In the above code example, the record types **``Person``** and **``Employee``** are declared. The **``Person``** type has a ``string`` field **``name``**, yet, **``p2``** is initialized with another field, ``country``. This field can be of type ``anydata`` since it was not specified initially. It is required to specify the keys of the unspecified fields within quotes.
+In the above code example, the record types **``Person``** and **``Employee``** are declared. The **``Person``** type has a ``string`` field **``name``**, yet, **``p2``** is initialized with another field, **``country``**. This field can be of type ``anydata`` since it was not specified initially. It is required to specify the keys of the unspecified fields within quotes.
 
 Similarly, the variable **``p``** of type **``Person``** also accepts the variable **``e``**, which is of the **``Employee``** type. In this case, the field **``id``** is treated as ``anydata`` within **``p``**.  In this way, Ballerina allows a record to be open such that additional unspecified fields can be added at runtime.
 
-An open record is equivalent to *``map<anydata>``*.
+An open record is equivalent to a *``map<anydata>``*.
 
 ## Controlling Openness
 
@@ -203,9 +203,9 @@ Coord x = {
 map<float> m1 = x;
 ```
 
-In the above code example, using the ``{|`` and ``|}`` delimiters indicates that the record is closed. The record type **``Coord``** has only the two fields **``x``** and **``y``** of the ``float`` type. So you can also treat it as a map of float.  
+In the above code example, using the ``{|`` and ``|}`` delimiters indicate that the record is closed. The record type **``Coord``** has only the two fields **``x``** and **``y``** of the ``float`` type. So you can also treat it as a map of float.  
 
-You can also use a ``...`` notation to allow other fields of a type ``T`` within a record.
+You can also use a ``T...`` notation to allow other fields of a type ``T`` within a record.
 
 ```ballerina
 type Headers record {|
@@ -216,13 +216,14 @@ type Headers record {|
 
 Headers h = {
     'from: "Jane",
-    to: "John"
+    to: "John",
+    "cc": "James"
 };
 
 map<string> m2 = h;
 ```
 
-If you have an open record, then additional fields of the ``anydata`` type can be added. But otherwise, use *``T…;``* to allow other fields of type ``T``. Therefore *``map<T>``* is the same as *``record {| T...; |}``*.
+If you have an open record, then additional fields of the ``anydata`` type can be added. But otherwise, use *``T…;``* to allow other fields of type ``T``. Therefore, *``map<T>``* is the same as *``record {| T...; |}``*.
 
 ## ``json`` Type
 
@@ -429,7 +430,7 @@ Annotations added to this code also help in refining the mapping between Balleri
 
 ## JSON Numbers
 
-There is one complication in dealing with JSON in Ballerina. This is because Ballerina allows the ``json`` type to have a union of ``int``, ``float``, and ``decimal``. Whereas the JSON specification has only one numeric type. It does not distinguish between integers and floating point numbers.
+There is one complication in dealing with JSON in Ballerina. This is because Ballerina allows the ``json`` type to have a union of ``int``, ``float``, and ``decimal``. Whereas the JSON specification has only one numeric type, it does not distinguish between integers and floating-point numbers.
 
 While converting from Ballerina's numeric types to JSON, using the **``toJsonString()``** function converts Ballerina's ``int``, ``float``, and ``decimal`` values to the JSON numeric syntax. This is straightforward.
 

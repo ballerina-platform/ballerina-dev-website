@@ -11,7 +11,7 @@ redirect_from:
 
 ### Overview of Ballerina Swan Lake 2201.0.0
 
-<em>Swan Lake 2201.0.0 is the first major release of 2021 and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2021R1 version of the Language Specification.</em> 
+<em>Swan Lake 2201.0.0 is the first major release of 2022, and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R1 version of the Language Specification.</em> 
 
 ### Updating Ballerina
 

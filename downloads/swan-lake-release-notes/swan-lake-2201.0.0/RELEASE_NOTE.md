@@ -290,7 +290,7 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
 - Changed the `--proto_path` option of the gRPC command to `--proto-path`
 
 ##### `websub` Package
-- Added the support for `readonly` parameters of remote methods
+- Added support for `readonly` parameters in remote methods
 
 #### `websubhub` Package
 - Added the support for `readonly` parameters of remote methods

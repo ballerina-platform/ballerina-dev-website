@@ -76,9 +76,7 @@ function func1() {
 }
 ```
 
-* If the function needs to be split into new lines due to it exceeding the max line length,
-  - can break lines from the parameter list by moving a parameter value only to a 
-    new line and indenting it with four spaces from the starting position of the function.
+* If the function needs to be split into new lines due to it exceeding the max line length, you can break lines from the parameter list by moving only a parameter value to a new line and indenting it with four spaces from the starting position of the function.
     
 **Example,**
 
@@ -89,7 +87,7 @@ function getAddress(int value,
 }
 ```
 
-  - can break before the `returns` keyword and indent it with four spaces from the starting position of the function.
+  - You can break before the `returns` keyword and indent it with four spaces from the starting position of the function.
     
 **Example,**
 
@@ -100,7 +98,7 @@ function getAddress(int value, string name)
 }    
 ```
 
-  - can break after the `returns` keyword by moving the return value to a new line
+  - You can break after the `returns` keyword by moving the return value to a new line
     and indenting it with four spaces from the starting position of the function.
     
 **Example,**
@@ -146,7 +144,7 @@ service / on new http:Listener(9090) {
 ## Class Definition
 
 * Block indent each field definition, method definition and type inclusion on their own line.
-* Init method should be placed before all the other methods.
+* The `init` method should be placed before all the other methods.
 * For method definitions in the class definition, follow the [Function Definition](/learn/style-guide/top-level-definitions/#function-definition) formatting guidelines.
 
 **Example,**

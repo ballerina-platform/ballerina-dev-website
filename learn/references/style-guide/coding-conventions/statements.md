@@ -1,6 +1,8 @@
 ---
 layout: ballerina-style-guide-left-nav-pages-swanlake
 title: Statements
+description: The Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. The Ballerina code formatting tools are based on this guide.
+keywords: ballerina, programming language, ballerina style guide, statements
 active: statements
 permalink: /learn/style-guide/statements/
 intro: The sections below include the coding conventions with respect to statements.

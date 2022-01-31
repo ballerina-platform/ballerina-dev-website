@@ -1,10 +1,10 @@
 ---
 layout: ballerina-left-nav-release-notes
-title: Swan Lake 2201.0.0
-permalink: /downloads/swan-lake-release-notes/swan-lake-2201-0-0/
-active: swan-lake-2201-0-0
+title: 2201.0.0 (Swan Lake) 
+permalink: /downloads/swan-lake-release-notes/2201-0-0-swan-lake/
+active: 2201-0-0-swan-lake
 redirect_from: 
-    - /downloads/swan-lake-release-notes/swan-lake-2201-0-0
+    - /downloads/swan-lake-release-notes/2201-0-0-swan-lake
     - /downloads/swan-lake-release-notes/
     - /downloads/swan-lake-release-notes
 ---
@@ -284,7 +284,7 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
 #### Improvements
 
 ##### `graphql` Package
-- Removed the deprecated `add` method in the `graphql:Context` object.
+- Removed the deprecated `add` method in the `graphql:Context` object
 
 ##### `grpc` Package
 - Changed the `--proto_path` option of the gRPC command to `--proto-path`

@@ -195,12 +195,14 @@ td.cEventDateContainer{
       <div class="col-sm-12 col-md-12">
          <h2>Ballerina in Action</h2>
          <ul class="nav nav-tabs">
-            <li class="active" ><a data-toggle="tab"  href="#firstTab" >RESTful API</a></li>
-            <li><a data-toggle="tab" href="#secondTab" >Consuming Services</a></li>
-            <li><a data-toggle="tab" href="#thiredTab" >Working with Data</a></li> 
+            <li class="active" ><a data-toggle="tab"  href="#firstTab" >Consuming Services</a></li>
+            <li><a data-toggle="tab" href="#secondTab" >RESTful API</a></li>
+            <li><a data-toggle="tab" href="#thiredTab" >Working with Data</a></li>
+            <li><a data-toggle="tab" href="#sixthTab" >GraphQL API</a></li>
+            <li><a data-toggle="tab" href="#seventhTab" >Kafka Consumer/Producer</a></li>
          </ul>
          <div class="tab-content">
-            <div id="firstTab" class="tab-pane fade in active"  >
+            <div id="secondTab" class="tab-pane fade "  >
                <div class="row" style="background-color: #f5f5f5;">
                   <div class="col-lg-12 col-md-12 col-sm-12 focusPane " style="padding:20px;">
                      <div class="FullCode" style="background-color: #f5f5f5;">
@@ -253,7 +255,7 @@ service / on new http:Listener(8080) {
                   </div> -->
                </div>
             </div>
-            <div id="secondTab" class="tab-pane fade"  >
+            <div id="firstTab" class="tab-pane fade in active"  >
                <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
                   <div class="col-lg-7 col-md-12 col-sm-12 focusPane codeBlock noBottomBorder" id="column1" style="padding:20px;border: 1px #c7c7c7 solid; ">
                      <div class="FullCode" style="background-color: #f5f5f5;">
@@ -352,6 +354,131 @@ public function main() returns error? {
                   </div>
                </div>
             </div>
+             <div id="sixthTab" class="tab-pane fade"  >
+                 <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                     <div class="col-lg-12 col-md-12 col-sm-12 focusPane" style="padding:20px;border: 1px #c7c7c7 solid;">
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
+                            <pre class="language-ballerina basic ballerina">
+                                <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/graphql;
+import ballerina/http;
+import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
+
+configurable string user = ?;
+configurable string password = ?;
+configurable string host = ?;
+configurable int port = ?;
+configurable string database = ?;
+configurable string apiEndpoint = ?;
+
+public type Album record {
+    string id;
+    string title;
+    string artist;
+    decimal price;
+    Currency currency = USD;
+};
+
+public enum Currency {
+    USD,
+    LKR,
+    EUR,
+    GBP
+}
+
+service / on new graphql:Listener(9000) {
+    private final mysql:Client db;
+    private final http:Client forex;
+    private final Currency baseCurrency;
+
+    function init() returns error? {
+        self.db = check new (host, user, password, database, port);
+        self.forex = check new (apiEndpoint);
+        self.baseCurrency = USD;
+    }
+
+    resource function get album(string id, Currency currency = USD) returns Album|error {
+        Album album = check self.db->queryRow(`SELECT * FROM Albums WHERE id=${id}`);
+        if currency != self.baseCurrency {
+            string query = string `from=${self.baseCurrency}&to=${currency}`;
+            record {decimal rate;} exchange = check self.forex->get(string`/curerncyConversion?${query}`);
+            album.price = album.price * exchange.rate;
+            album.currency = currency;
+        }
+        return album;
+    }
+}
+                                    </code>
+                                </pre>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div id="seventhTab" class="tab-pane fade"  >
+                 <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                     <div class="col-lg-12 col-md-12 col-sm-12 focusPane" style="padding:20px;border: 1px #c7c7c7 solid;">
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
+                                <pre class="language-ballerina basic ballerina">
+                                    <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/lang.value;
+import ballerinax/kafka;
+
+configurable string groupId = "order-consumers";
+configurable string orders = "orders";
+configurable string paymentSuccessOrders = "payment-success-orders";
+configurable decimal pollingInterval = 1;
+configurable string kafkaEndpoint = kafka:DEFAULT_URL;
+
+type Order readonly & record {|
+    int id;
+    string desc;
+    PaymentStatus paymentStatus;
+|};
+
+enum PaymentStatus {
+    SUCCESS,
+    FAIL
+}
+
+final kafka:ConsumerConfiguration consumerConfigs = {
+    groupId: groupId,
+    topics: [orders],
+    offsetReset: kafka:OFFSET_RESET_EARLIEST,
+    pollingInterval: pollingInterval
+};
+
+service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
+    private final kafka:Producer orderProducer;
+
+    function init() returns error? {
+        self.orderProducer = check new (kafkaEndpoint);
+    }
+
+    remote function onConsumerRecord(kafka:ConsumerRecord[] records) returns error? {
+        check from var {value} in records
+            let var orderString = check string:fromBytes(value)
+            let Order 'order = check value:fromJsonStringWithType(orderString)
+            where 'order.paymentStatus == SUCCESS
+            do {
+                kafka:ProducerRecord successfulOrder = {
+                    topic: paymentSuccessOrders,
+                    value: 'order.toString().toBytes()
+                };
+                check self.orderProducer->send(successfulOrder);
+            };
+    }
+}
+                                    </code>
+                                </pre>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
          </div>
       </div>
    </div>
@@ -502,7 +629,7 @@ public function main() returns error? {
           <table class="cEventTable cConferencesList" style="width:100% !important;">
               <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                   <td class="cEventDateContainer cEventDateContainer1">	
-                     <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;margin-top: -18px;">February 2, 2022</p>	
+                     <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;margin-top: -18px;">Feb 2, 2022</p>	
                      <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Wed., 6.00 p.m. IST</p>	
                      <p class="cEventLocation" style="text-align: right;">Online</p>	
                   </td>	
@@ -517,7 +644,7 @@ public function main() returns error? {
               </tr>
               <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                <td class="cEventDateContainer cEventDateContainer1" style="border-bottom: none !important;">	
-                  <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">February 22, 2022</p>	
+                  <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Feb 22, 2022</p>	
                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tue., 9.00 p.m. PST</p>	
                   <p class="cEventLocation" style="text-align: right;">Online</p>	
                </td>	

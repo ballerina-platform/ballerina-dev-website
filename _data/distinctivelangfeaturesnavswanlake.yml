@@ -16,7 +16,7 @@
           - title: Module Lifecycle
             url: /learn/distinctive-language-features/network-interaction/#module-lifecycle
             active: module-lifecycle
-          - title: Module init Function
+          - title: Module <code class="highlighter-rouge language-plaintext" id="cBackground">init</code> Function
             url: /learn/distinctive-language-features/network-interaction/#module-init-function
             active: module-init-function
           - title: Constructing Objects Without Classes
@@ -52,7 +52,7 @@
           - title: Ballerina Basic Types
             url: /learn/distinctive-language-features/data/#ballerina-basic-types
             active: ballerina-basic-types
-          - title: decimal Type
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">decimal</code> Type
             url: /learn/distinctive-language-features/data/#decimal-type
             active: decimal-type
           - title: Plain Data Basic Types To Come
@@ -61,7 +61,7 @@
           - title: Immutability
             url: /learn/distinctive-language-features/data/#immutability
             active: immutability
-          - title: anydata Type
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">anydata</code> Type
             url: /learn/distinctive-language-features/data/#anydata-type
             active: anydata-type
           - title: Configurable Variables
@@ -76,7 +76,7 @@
           - title: Controlling Openness
             url: /learn/distinctive-language-features/data/#controlling-openness
             active: controlling-openness
-          - title: json Type
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">json</code> Type
             url: /learn/distinctive-language-features/data/#json-type
             active: json-type
           - title: Working with JSON - Two Approaches
@@ -85,16 +85,16 @@
           - title: Working with JSON Directly
             url: /learn/distinctive-language-features/data/#working-with-json-directly
             active: working-with-json-directly
-          - title: match Statements with Maps
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">match</code> Statements with Maps
             url: /learn/distinctive-language-features/data/#match-statements-with-maps
             active: match-statements-with-maps
-          - title: Converting from User-defined Types to JSON
+          - title: Converting from User-Defined Types to JSON
             url: /learn/distinctive-language-features/data/#converting-from-user-defined-types-to-json
             active: converting-from-user-defined-types-to-json
-          - title: Converting from JSON to User-defined Type
-            url: /learn/distinctive-language-features/data/#converting-from-json-to-user-defined-type
-            active: converting-from-json-to-user-defined-type
-          - title: Converting to User-defined Type - cloneWithType
+          - title: Converting from JSON to User-Defined Types
+            url: /learn/distinctive-language-features/data/#converting-from-json-to-user-defined-types
+            active: converting-from-json-to-user-defined-types
+          - title: Converting to User-Defined Type - <code class="highlighter-rouge language-plaintext" id="cBackground">cloneWithType</code>
             url: /learn/distinctive-language-features/data/#converting-to-user-defined-type---clonewithtype
             active: converting-to-user-defined-type---clonewithtype
           - title: Resource Method Typing
@@ -124,15 +124,15 @@
     - title: Concurrency
       url: #
       sublinks:
-          - title: Sequence-diagram based concurrency
+          - title: Sequence Diagram-Based Concurrency
             url: /learn/distinctive-language-features/concurrency/#sequence-diagram-based-concurrency
             active: sequence-diagram-based-concurrency
           - title: Transactions
             url: /learn/distinctive-language-features/concurrency/#transactions
             active: transactions
-          - title: transaction Statement
-            url: /learn/distinctive-language-features/concurrency/#transaction-statement
-            active: transaction-statement
+          - title: Concurrency Safety
+            url: /learn/distinctive-language-features/concurrency/#concurrency-safety
+            active: concurrency-safety
     - title: Advanced, General-Purpose Language Features
       url: #
       sublinks:
@@ -175,7 +175,7 @@
           - title: Type Intersection
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#type-intersection
             active: type-intersection
-          - title: Expression-oriented Style
+          - title: Expression-Oriented Style
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#expression-oriented-style
             active: expression-oriented-style
           - title: Computed Field Key
@@ -199,7 +199,7 @@
           - title: Rest Parameters
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#rest-parameters
             active: rest-parameters
-          - title: Spread Operator . . .x
+          - title: Spread Operator <code class="highlighter-rouge language-plaintext" id="cBackground">...x</code>
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#spread-operator---x
             active: spread-operator---x
           - title: Spread in Binding Patterns
@@ -208,7 +208,7 @@
           - title: Binding Patterns in match Statement
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#binding-patterns-in-match-statement
             active: binding-patterns-in-match-statement
-          - title: never Type
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">never</code> Type
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#never-type
             active: never-type
           - title: Interfacing to External Code
@@ -220,10 +220,10 @@
           - title: Built-in String Subtype
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#built-in-string-subtype
             active: built-in-string-subtype
-          - title: typedesc Type
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">typedesc</code> Type
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#typedesc-type
             active: typedesc-type
-          - title: ensureType Function
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">ensureType</code> Function
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#ensuretype-function
             active: ensuretype-function
           - title: Dependent Types

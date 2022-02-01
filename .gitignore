@@ -33,3 +33,7 @@ hs_err_pid*
 # Jekyll related files.
 _site/
 .sass-cache
+
+# macOS
+.DS_Store
+             

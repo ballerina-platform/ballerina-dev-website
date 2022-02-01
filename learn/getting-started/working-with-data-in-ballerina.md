@@ -1,6 +1,6 @@
 ---
 layout: ballerina-working-with-data-in-ballerina-swanlake
-title: Working With Data in Ballerina
+title: Working with Data in Ballerina
 permalink: /learn/working-with-data-in-ballerina/
 keywords: query expressions, language integrated queries, programming language, getting started
 description: Learn how to use Ballerina query expressions to filter, sort, and join different iterable collections.
@@ -14,7 +14,7 @@ Ballerina supports first-class support for writing SQL-like queries to process d
 
 In this tutorial, you will be writing queries to filter, sort, and join with different data sets and produce new data sets.
 
-## Setting up the Prerequisite
+## Setting up the Prerequisites
 
 To complete this tutorial, you need:
 
@@ -45,7 +45,7 @@ tree .
 0 directories, 2 files
 ```
 
-## Defining the Dataset To Be Processed
+## Defining the Dataset to be Processed
 
 To keep the tutorial simple, you will be using an in-memory table to store the COVID-19 dataset. Each record of type `CovidEntry` in the table represents the COVID-19 data related to a particular country. The `iso_code` is used to uniquely identify a country and other fields are self-explanatory.
 ```ballerina
@@ -67,7 +67,7 @@ public final table<CovidEntry> key(iso_code) covidTable = table [
 ```
 Copy the above code snippet to `main.bal`. This will act as our COVID-19 Dataset.
 
-## Filtering the data
+## Filtering the Data
 
 Let's define a function, which will filter out the records, which have values higher than 100,000 for the `cases` field.
 
@@ -102,7 +102,7 @@ Running executable
 
 Countries with more than 10 million cases: ["USA","India"]
 ```
-## Sorting Countries By COVID-19 Deaths
+## Sorting Countries by COVID-19 Deaths
 
 Let's define a new function to find the top three countries with the highest number of COVID-19 deaths. In this function, you will use another query to sort and retrieve a *limit*ed number of records from the table.
 
@@ -143,7 +143,7 @@ Countries with more than 10 million cases: ["USA","India"]
 Countries with highest deaths:[["India",980976],["USA",880976],["Afghanistan",7386]]
 ```
 
-## Joining with another data source
+## Joining with Another Datasource
 
 Using query expressions, you can join two collections and produce a new collection. The `join` operation is similar to the SQL `join` operation. In this tutorial, you will be joining the `covidTable` with a string array, which contains three countries.
 
@@ -188,7 +188,7 @@ Countries with more than 10 million cases: ["USA","India"]
 Countries with highest deaths:[["India",980976],["USA",880976],["Afghanistan",7386]]
 Countries with number of Recovered patients:[["Afghanistan",146084],["USA",43892277],["India",33892279]]
 ```
-## Finding Discrepancies In the Dataset
+## Finding Discrepancies in the Dataset
 
 This example shows how you can use the `let` clause to maintain an intermediate state while iterating a collection using query expression and how to use that intermediate state for further processing. 
 For example, in this dataset, the total number of reported cases should be equal to the sum of the number of deaths, recovered, and active. If they are not equal, an error should have occurred while the dataset is populated.

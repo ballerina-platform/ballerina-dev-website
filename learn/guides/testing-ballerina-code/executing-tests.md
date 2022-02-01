@@ -55,7 +55,7 @@ Execute all the tests in the current package with the following command.
 $ bal test
 ```
 
-### Running tests for a Group
+### Running Tests for a Group
 
 List all the test groups in the package.
 

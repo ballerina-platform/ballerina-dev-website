@@ -29,7 +29,7 @@ For further information, see [Ballerina Swan Lake is on the Horizon](https://blo
 
 #### Troubleshooting 
 
-If you already ran the `bal dist pull update` or `bal dist pull 2201.0.0` commands before the `bal update` command, follow the instructions below to recover your installation.
+If you already ran the `bal dist pull update` or `bal dist pull 2201.0.0` before the `bal update` command, follow the instructions below to recover your installation.
 
 ##### For macOS Users (`.pkg` installations)
 
@@ -51,7 +51,7 @@ If you already ran the `bal dist pull update` or `bal dist pull 2201.0.0` comman
 
 ##### For Windows Users (`.msi` installations)
 
-1. Run the `rm ~/.ballerina/ballerina-version` command to delete the version configuration.
+1. Run the `del %userprofile%\.ballerina\ballerina-version` command to delete the version configuration.
 2. Run the `bal dist use 2201.0.0` command to switch to the 2201.0.0 version.
 3. Run the `chmod 755 /usr/lib64/ballerina/distributions/ballerina-2201.0.0/bin/bal` command to provide execute permissions for the `bal` command.
 

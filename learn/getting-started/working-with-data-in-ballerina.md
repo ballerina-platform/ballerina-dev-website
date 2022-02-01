@@ -1,6 +1,6 @@
 ---
 layout: ballerina-working-with-data-in-ballerina-swanlake
-title: Working With Data in Ballerina
+title: Working with Data in Ballerina
 permalink: /learn/working-with-data-in-ballerina/
 keywords: query expressions, language integrated queries, programming language, getting started
 description: Learn how to use Ballerina query expressions to filter, sort, and join different iterable collections.
@@ -14,7 +14,7 @@ Ballerina supports first-class support for writing SQL-like queries to process d
 
 In this tutorial, you will be writing queries to filter, sort, and join with different data sets and produce new data sets.
 
-## Setting up the Prerequisite
+## Setting up the Prerequisites
 
 To complete this tutorial, you need:
 
@@ -102,7 +102,7 @@ Running executable
 
 Countries with more than 10 million cases: ["USA","India"]
 ```
-## Sorting Countries By COVID-19 Deaths
+## Sorting Countries by COVID-19 Deaths
 
 Let's define a new function to find the top three countries with the highest number of COVID-19 deaths. In this function, you will use another query to sort and retrieve a *limit*ed number of records from the table.
 

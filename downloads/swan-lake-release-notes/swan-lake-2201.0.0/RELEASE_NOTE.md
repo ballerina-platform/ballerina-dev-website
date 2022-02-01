@@ -15,6 +15,8 @@ redirect_from:
 
 ### Updating Ballerina
 
+>**Info:** The version format has been revised. `2201.0.0 (Swan Lake)` represents the format of `$YYMM.$UPDATE.$PATCH ($CODE_NAME)`. For further information, see [Ballerina Swan Lake is on the Horizon](https://blog.ballerina.io/posts/ballerina-swan-lake-is-on-the-horizon/).
+
 If you are already using Ballerina, use the [Ballerina Update Tool](/learn/cli-documentation/update-tool/#using-the-update-tool) to directly update to 2201.0.0 (Swan Lake). To do this: 
 
 1. Run the command below to get the latest version of the Update Tool.
@@ -26,8 +28,6 @@ If you are already using Ballerina, use the [Ballerina Update Tool](/learn/cli-d
    `bal dist update`
 
 #### Troubleshooting 
-
->**Info:** The version format has been revised. `2201.0.0 (Swan Lake)` represents the format of `$YYMM.$UPDATE.$PATCH ($CODE_NAME)`. For further information, see [Ballerina Swan Lake is on the Horizon](https://blog.ballerina.io/posts/ballerina-swan-lake-is-on-the-horizon/).
 
 If you already ran the `bal dist update` (or `bal dist pull 2201.0.0`) before the `bal update` command, follow the instructions below to recover your installation.
 

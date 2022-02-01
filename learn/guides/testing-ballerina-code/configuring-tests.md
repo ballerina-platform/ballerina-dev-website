@@ -238,7 +238,7 @@ function testFunction3() {
 
 ### Each Test Case
 
-#### The `before` Attribute in `@test:Config {}` Annotation
+#### The `before` Attribute of the `@test:Config {}` Annotation
 The test config annotation makes use of ‘before’ to denote which function needs to execute before the particular 
 test is run.
 
@@ -252,7 +252,7 @@ function testFunction3() {
 }
 ```
 
-#### The `after` Attribute in `@test:Config {}` Annotation
+#### The `after` Attribute of the `@test:Config {}` Annotation
 The test config annotation makes use of ‘after’ to denote which function needs to execute after the particular 
 test is run.
 

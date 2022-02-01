@@ -303,7 +303,7 @@ type FooBar object {
 
 In the above code example, **``Foo``** and **``Bar``** are two separate object types. The type **``FooBar``** is defined through the type intersection of **``Foo``** and **``Bar``** using `‘&’` notation. This has the same result as including the types using the `*` notation. It provides a neat alternative to type inclusion, but is less flexible.
 
-## Expression-oriented Style
+## Expression-Oriented Style
 
 Ballerina’s general philosophy is to make the programming syntax familiar to those familiar with the C-family of languages. It has a distinction between statements and expressions, just like in C. This is the imperative style of programming which is considered less intuitive. That’s why there is a shift towards a functional style of programming which is more expression oriented..  
 

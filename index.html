@@ -199,6 +199,7 @@ td.cEventDateContainer{
             <li><a data-toggle="tab" href="#secondTab" >RESTful API</a></li>
             <li><a data-toggle="tab" href="#thiredTab" >Working with Data</a></li>
             <li><a data-toggle="tab" href="#sixthTab" >GraphQL API</a></li>
+            <li><a data-toggle="tab" href="#databaseTab" >Working with Databases</a></li>
             <li><a data-toggle="tab" href="#seventhTab" >Kafka Consumer/Producer</a></li>
          </ul>
          <div class="tab-content">
@@ -411,6 +412,68 @@ service / on new graphql:Listener(9000) {
     }
 }
                                     </code>
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+             <div id="databaseTab" class="tab-pane fade in active"  >
+                 <div class="row" style="background-color: #f5f5f5;">
+                     <div class="col-lg-12 col-md-12 col-sm-12 focusPane " style="padding:20px;">
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
+                               <pre class="language-ballerina basic ballerina">
+                                <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/http;
+import ballerina/sql;
+import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
+
+configurable string host = ?;
+configurable int port = ?;
+configurable string user = ?;
+configurable string password = ?;
+configurable string database = ?;
+
+type Album record {|
+    string id;
+    string title;
+    string artist;
+    decimal price;
+|};
+
+service / on new http:Listener(8080) {
+    private final mysql:Client db;
+
+    function init() returns error? {
+        self.db = check new (host, user, password, database, port);
+    }
+
+    resource function get albums() returns Album[]|error? {
+        stream<Album, sql:Error?> albumStream = self.db->query(`SELECT * FROM Albums`);
+        Album[]? albums = check from Album album in albumStream select album;
+        check albumStream.close();
+        return albums;
+    }
+
+    resource function get albums/[string id]() returns Album|http:NotFound|error {
+        Album|sql:Error result = self.db->queryRow(`SELECT * FROM Albums WHERE id = ${id}`);
+        if result is sql:NoRowsError {
+            return <http:NotFound>{};
+        } else {
+            return result;
+        }
+    }
+
+    resource function post album(@http:Payload Album album) returns Album|error {
+        _ = check self.db->execute(`
+            INSERT INTO Albums (id, title, artist, price)
+            VALUES (${album.id}, ${album.title}, ${album.artist}, ${album.price});`);
+        return album;
+    }
+}
+                                </code>
                                 </pre>
                              </div>
                          </div>

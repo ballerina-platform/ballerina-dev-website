@@ -10,9 +10,9 @@ redirect_from:
 - /learn/distinctive-language-features/concurrency
 ---
 
-## Sequence-diagram based concurrency
+## Sequence-Diagram Based Concurrency
 
-### Named workers
+### Named Workers
 
 One of the key aspects of the Ballerina language is to support concurrency. With more and more applications needing to support network interaction, concurrency becomes important for handling scale. But at the same time, it introduces complexities in data handling.
 
@@ -159,7 +159,7 @@ In the above code example, the function **``multiFetch()``** declares two worker
 
 Instead of explicitly constructing the record in the ``wait`` expression, you can also use the shorthand ``wait {X , Y}`` which equates to ``wait {X: X, Y: Y}``. This works with the concept of futures also, as explained in the next section.
 
-### Named workers and Futures
+### Named Workers and Futures
 
 Workers and futures are the same. A named worker referred to as a variable becomes a future. The return type of the worker becomes the type of future.
 
@@ -190,7 +190,7 @@ int d = check wait c;
 
 In the above code example, the function **``startInt()``** expects an argument of the **``FuncInt``** function type. When called, it starts the execution of the function on a separate strand and returns a future for it.
 
-### Inter-worker Message Passing
+### Inter-Worker Message Passing
 
 You can pass messages between workers using the ``->`` and ``<-`` notation.
 
@@ -227,7 +227,7 @@ The pairing of message send and receive expressions (with  ``->`` and ``<-`` not
 
 This way of message passing is easy to use as it avoids complex deadlocks but has limited expressiveness.
 
-### Inter-worker Failure Propagation
+### Inter-Worker Failure Propagation
 
 In the ideal case, pairing the sends and receives guarantees that every message sent will be received, and vice versa. But what if the sender worker has an error before passing the message to the receiver worker?
 
@@ -608,9 +608,9 @@ This approach makes the service objects fully concurrency safe when accessed fro
 
 ### Inferring ``isolated``
 
-    The whole concept around isolation is quite confusing for an application developer to understand. It is a complex feature, but you do not have to worry about it because the compiler can figure it out for you most of the time.
+The whole concept around isolation is quite confusing for an application developer to understand. It is a complex feature, but you do not have to worry about it because the compiler can figure it out for you most of the time.
 
-    A typical Ballerina application consists of a single module that imports multiple library modules. With a single module, the compiler can infer ``isolated`` qualifiers. For example, if there is a service object without mutable fields, then it is inherently ``isolated``.
+A typical Ballerina application consists of a single module that imports multiple library modules. With a single module, the compiler can infer ``isolated`` qualifiers. For example, if there is a service object without mutable fields, then it is inherently ``isolated``.
 
-    The application programmer must use the ``lock`` statement responsibly wherever it is needed to safeguard the mutability of the data. This is applicable to both accessing ``self`` in a service object with mutable state and accessing mutable module-level variables. Additionally, the Ballerina compiler can warn the developer where missing locks are preventing a service object or method from being ``isolated``.
+The application programmer must use the ``lock`` statement responsibly wherever it is needed to safeguard the mutability of the data. This is applicable to both accessing ``self`` in a service object with mutable state and accessing mutable module-level variables. Additionally, the Ballerina compiler can warn the developer where missing locks are preventing a service object or method from being ``isolated``.
     

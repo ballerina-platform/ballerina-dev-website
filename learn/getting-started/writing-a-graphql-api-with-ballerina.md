@@ -65,7 +65,7 @@ public type CovidEntry record {|
 |};
 ```
 
-### Adding data to the Datasource
+### Adding Data to the Datasource
 Now you can add define the data table.
 
 ```ballerina

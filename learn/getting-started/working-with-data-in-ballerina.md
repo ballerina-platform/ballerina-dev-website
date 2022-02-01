@@ -67,7 +67,7 @@ public final table<CovidEntry> key(iso_code) covidTable = table [
 ```
 Copy the above code snippet to `main.bal`. This will act as our COVID-19 Dataset.
 
-## Filtering the data
+## Filtering the Data
 
 Let's define a function, which will filter out the records, which have values higher than 100,000 for the `cases` field.
 

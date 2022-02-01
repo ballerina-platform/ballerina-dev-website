@@ -136,22 +136,22 @@ These everyday commands are your best friends! They address the very basics of p
 <table class="cComandTable">
 <tr>
 <td class="cCommand">build</td>
-<td class="cDescription">Compile a standalone <code>.bal</code> file, or an entire package into an executable JAR file. For more information, see <a href="/learn/getting-started-with-ballerina/">Writing Your First Ballerina Program</a>.
+<td class="cDescription">Compile a standalone <code>.bal</code> file, or an entire package into an executable JAR file. For more information, see <a href="/learn/getting-started-with-ballerina/">Getting Started with Ballerina</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">run</td>
-<td class="cDescription">Build and run a standalone <code>.bal</code> file, an entire package, or a previously-built program. For more information, see <a href="/learn/getting-started-with-ballerina/">Writing Your First Ballerina Program</a>.
+<td class="cDescription">Build and run a standalone <code>.bal</code> file, an entire package, or a previously-built program. For more information, see <a href="/learn/getting-started-with-ballerina/">Getting Started with Ballerina</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">test</td>
-<td class="cDescription">Run tests of a Ballerina package. For more information, see <a href="/learn/testing-ballerina-code/testing-quick-start/">Testing Ballerina Code</a>.
+<td class="cDescription">Run tests of a Ballerina package. For more information, see <a href="/learn/testing-ballerina-code/testing-a-simple-function/">Testing a Simple Function</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">doc</td>
-<td class="cDescription">Generate API documents for all public symbols of a Ballerina package. For more information, see <a href="/learn/documenting-ballerina-code">Documenting Ballerina Code</a>.
+<td class="cDescription">Generate API documents for all public symbols of a Ballerina package. For more information, see <a href="/learn/generating-code-documentation">Generating Code Documentation</a>.
 </td>
 </tr>
 <tr>

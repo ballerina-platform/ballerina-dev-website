@@ -25,7 +25,7 @@ enable executing instructions at various levels.
 
 ### Suite Level
 
-#### `@test:BeforeSuite {}`
+#### The `@test:BeforeSuite {}` Annotation
 The function annotated with the `BeforeSuite` annotation will be run once before any of the tests in the test suite. 
 This can be used for initializing the test suite level pre-requisites.
 
@@ -56,7 +56,7 @@ function testFunction2() {
 }
 ```
 
-#### `@test:AfterSuite {}`
+#### The `@test:AfterSuite {}` Annotation
 The `AfterSuite` annotated function will be run once after all the tests in the test suite are run. This can be used for 
 cleaning up the test suite level aspects. A test suite covers tests related to a module.
 
@@ -81,7 +81,7 @@ function afterFunc() {
 
 ### Group Level
 
-#### `@test:BeforeGroups {}`
+#### The `@test:BeforeGroups {}` Annotation
 For each group specified in this annotation, the `BeforeGroups` annotated function will be executed once before any of 
 the tests belonging to the group.
 
@@ -120,7 +120,7 @@ function testFunction2() {
 }
 ```
 
-#### `@test:AfterGroups {}`
+#### The `@test:AfterGroups {}` Annotation
 For each group specified in this annotation, the `AfterGroups` annotated function will be executed once after all the 
 tests belonging to the group is executed.
 
@@ -160,7 +160,7 @@ function afterGroupsFunc2() {
 
 ### Test Case Level
 
-#### `@test:BeforeEach`
+#### The `@test:BeforeEach` Annotation
 The `BeforeEach` annotated function will be run before each test in the test suite. This can be used to initialize the 
 test-level prerequisites repeatedly before every test function.
 
@@ -198,7 +198,7 @@ function testFunction3() {
 }
 ```
 
-#### `@test:AfterEach`
+#### The `@test:AfterEach` Annotation
 The `AfterEach` annotated function will be run after each test within the test suite. This can be used to clean up the 
 test-level aspects repeatedly after every test function.
 
@@ -238,14 +238,33 @@ function testFunction3() {
 
 ### Each Test Case
 
-#### `@test:Config { before : “ “ }`
+#### The `before` Attribute in `@test:Config {}` Annotation
 The test config annotation makes use of ‘before’ to denote which function needs to execute before the particular 
 test is run.
 
-#### `@test:Config { after : “ “ }`
+***Example:***
+
+```bal
+@test:Config { before : testFunction1 }
+function testFunction3() {
+    io:println("I'm in test function 3!");
+    test:assertTrue(true, msg = "Failed!");
+}
+```
+
+#### The `after` Attribute in `@test:Config {}` Annotation
 The test config annotation makes use of ‘after’ to denote which function needs to execute after the particular 
 test is run.
 
+***Example:***
+
+```bal
+@test:Config { after : testFunction3 }
+function testFunction2() {
+    io:println("I'm in test function 2!");
+    test:assertTrue(true, msg = "Failed!");
+}
+```
 
 ## Defining Test Specific Configurations
 Configurations for testing can be provided using configurable variables. The values for configurable variables can be

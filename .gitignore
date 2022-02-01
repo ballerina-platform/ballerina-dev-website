@@ -28,6 +28,7 @@ hs_err_pid*
 # IDE related
 .idea
 *.iml
+.vscode
 
 # Jekyll related files.
 _site/

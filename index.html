@@ -449,14 +449,14 @@ type Album record {|
 final mysql:Client dbClient = check new (host, user, password, database, port);
 
 service / on new http:Listener(8080) {
-    resource function get albums() returns Album[]|sql:Error? {
+    resource function get albums() returns Album[]|error? {
         stream<Album, sql:Error?> albumStream = dbClient->query(`SELECT * FROM Albums`);
         Album[]? albums = check from Album album in albumStream select album;
         check albumStream.close();
         return albums;
     }
 
-    resource function get albums/[string id]() returns Album|http:NotFound|sql:Error {
+    resource function get albums/[string id]() returns Album|http:NotFound|error {
         Album|sql:Error result = dbClient->queryRow(`SELECT * FROM Albums WHERE id = ${id}`);
         if result is sql:NoRowsError {
             return <http:NotFound>{};
@@ -465,7 +465,7 @@ service / on new http:Listener(8080) {
         }
     }
 
-    resource function post album(@http:Payload Album album) returns Album|sql:Error {
+    resource function post album(@http:Payload Album album) returns Album|error {
         _ = check dbClient->execute(`
             INSERT INTO Albums (id, title, artist, price)
             VALUES (${album.id}, ${album.title}, ${album.artist}, ${album.price});`);

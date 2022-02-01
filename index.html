@@ -361,19 +361,19 @@ public function main() returns error? {
                         <div class="highlight">
                             <pre class="language-ballerina basic ballerina">
                                 <code class="language-ballerina ballerina" style="font-size: 12px !important;">
-import ballerinax/kafka;
 import ballerina/lang.value;
+import ballerinax/kafka;
 
 configurable string groupId = "group-id";
-configurable string listeningTopic = "topic-orders";
-configurable string publishingTopic = "topic-success-orders";
+configurable string ordersTopic = "topic-orders";
+configurable string successfulOrdersTopic = "topic-success-orders";
 configurable decimal pollingInterval = 1;
 configurable string kafkaEndpoint = kafka:DEFAULT_URL;
 
 type Order readonly & record {|
     int id;
-    string name;
-    PaymentStatus status;
+    string desc;
+    PaymentStatus paymentStatus;
 |};
 
 enum PaymentStatus {
@@ -383,30 +383,29 @@ enum PaymentStatus {
 
 final kafka:ConsumerConfiguration consumerConfigs = {
     groupId: groupId,
-    topics: [listeningTopic],
+    topics: [ordersTopic],
     offsetReset: kafka:OFFSET_RESET_EARLIEST,
     pollingInterval: pollingInterval
 };
 
 service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
-
-    private kafka:Producer kafkaProducer;
+    private kafka:Producer successfulOrderProducer;
 
     function init() returns error? {
-        self.kafkaProducer = check new (kafkaEndpoint);
+        self.successfulOrderProducer = check new (kafkaEndpoint);
     }
 
     remote function onConsumerRecord(kafka:ConsumerRecord[] records) returns error? {
         check from var {value} in records
             let var orderString = check string:fromBytes(value)
-            let Order 'order = check value:fromJsonStringWithType(orderString, Order)
-            where 'order.status == SUCCESS
+            let Order 'order = check value:fromJsonStringWithType(orderString)
+            where 'order.paymentStatus == SUCCESS
             do {
                 kafka:ProducerRecord successfulOrder = {
-                    topic: publishingTopic,
+                    topic: successfulOrdersTopic,
                     value: 'order.toString().toBytes()
                 };
-                check self.kafkaProducer->send(successfulOrder);
+                check self.successfulOrderProducer->send(successfulOrder);
             };
     }
 }

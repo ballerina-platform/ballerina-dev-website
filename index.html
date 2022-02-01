@@ -389,14 +389,12 @@ Album[] albums = [
 }
 service "Albums" on new grpc:Listener(port) {
    remote function getAlbum(string id) returns Album|error {
-      Album[] filteredAlbums = albums.filter(album =&gt; album.id === id);
+      Album[] filteredAlbums = albums.filter(album =&gt; album.id == id);
       if filteredAlbums.length() &gt; 0 {
          return filteredAlbums.pop();
       }
 
-      return error grpc:NotFoundError(
-         string `The related album for ID ${id} cannot be found`
-         );
+      return error grpc:NotFoundError(string `Cannot find the album for ID ${id}`);
    }
 
    remote function addAlbum(Album album) returns Album|error {

@@ -1007,24 +1007,24 @@ ul.nav.nav-tabs.cSamplesList {
 }
 .cHscroll {
 	width: 100%;
-	overflow-x: scroll;
-	overflow-y: hidden;
-	background: #fff;
-	border: 1px #20b6b0 solid !important;
-	margin-bottom: 22px;
+	/* overflow-x: scroll;
+	overflow-y: hidden; */
+	background: #f5f5f5;
+	border: 1px #c7c7c7  solid !important;
+	/* margin-bottom: 22px; */
 }
 
 ul.nav.nav-tabs.cSamplesList li a {
 	width: auto;
 	display: inline-block;
 	word-wrap: break-word;
-	font-size: 18px;
-	width: 246px;
+	font-size: 16px;
+	/* max-width: 246px; */
 	text-align: center;
 }
 
 ul.nav.nav-tabs.cSamplesList li.active a:hover {
-   color: #fff !important;
+   color: #555 !important;
 }
 
 
@@ -1037,11 +1037,11 @@ ul.nav.nav-tabs.cSamplesList li.active a:hover {
 
 
 .cHscroll .nav-tabs > li.active > a, .cHscroll .nav-tabs > li.active > a:focus, .cHscroll .nav-tabs > li.active > a:hover {
-	color: #fff !important ;
+	color: #555 !important ;
 	cursor: default;
 	border: transparent;
-	border-bottom: none;
-	background-color: #20b6b0 !important;
+	border-bottom: #20b6b0 3px solid !important;
+	/* background-color: #20b6b0 !important; */
   
 }
 
@@ -1061,7 +1061,22 @@ ul.nav.nav-tabs.cSamplesList li.active a:hover {
          margin: 0px;
          margin-top: 15px;
       }
-      
+      .cHscroll {
+	   width: 100%;
+	   overflow-x: scroll;
+	   overflow-y: hidden;
+	   background: #f5f5f5;
+	   border: 1px #c7c7c7  solid !important;
+	   /* margin-bottom: 22px; */
+     }
+     ul.nav.nav-tabs.cSamplesList li a {
+	  width: auto;
+	  display: inline-block;
+	  word-wrap: break-word;
+	  font-size: 16px;
+	  width: 246px; 
+	  text-align: center;
+     }
       td.cEventDateContainer1 span.cEventDate1{text-align: left !important}
       .cEventLocation{text-align: left !important;}
       table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {padding: 0px 15px 10px 15px !important;}

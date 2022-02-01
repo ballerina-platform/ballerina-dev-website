@@ -493,7 +493,7 @@ service / on new graphql:Listener(9000) {
         Album album = check self.db->queryRow(`SELECT * FROM Albums WHERE id=${id}`);
         if currency != self.baseCurrency {
             string query = string `from=${self.baseCurrency}&to=${currency}`;
-            record {decimal rate;} exchange = check self.forex->get(string`/curerncyConversion?${query}`);
+            record {decimal rate;} exchange = check self.forex->get(string `/curerncyConversion?${query}`);
             album.price = album.price * exchange.rate;
             album.currency = currency;
         }

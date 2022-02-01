@@ -3,6 +3,7 @@ layout: ballerina-ballerina-shell-left-nav-pages-swanlake
 title: Ballerina Shell
 permalink: /learn/ballerina-shell/
 description: The Ballerina Shell is a Read-Evaluate-Print Loop (REPL) for Ballerina.
+keywords: ballerina shell, REPL, ballerina, programming language
 active: ballerina-shell
 intro: The Ballerina Shell is a Read-Evaluate-Print Loop (REPL) for Ballerina.
 redirect_from:

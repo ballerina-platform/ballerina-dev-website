@@ -14,7 +14,7 @@ redirect_from:
 
 Let's now take a look at network data. This is the data that is independent of any specific code operating on the data. This data is typically exchanged through network interfaces between programs. In Ballerina, this is known as plain data.
 
-This concept is the opposite of objects, which combine data and code as one entity. But when you are writing network interfaces, you want to work with plain data. It supports a bunch of operations such as deep copy and deep equality checks. You can also serialize and deserialize it without worrying about coupling between the data and its associated code, like objects.
+This concept is the opposite of objects, which combine data and code as one entity. However, when you are writing network interfaces, you want to work with plain data. It supports a bunch of operations such as deep copy and deep equality checks. You can also serialize and deserialize it without worrying about coupling between the data and its associated code, like objects.
 
 As a programming language designed for network programming over the cloud, Ballerina makes it easy to work with plain data, and it defines a different type for it.
 
@@ -26,11 +26,12 @@ Broadly, all Ballerina values belong to exactly one kind of basic type. These ar
 
 Simple types are nil, boolean, integers, floating points, and decimal. These are always plain data.
 
-Sequence types are string and xml. These are also always plain data.
+Sequence types are string and XML. These are also always plain data.
 
 Structural types are array, map, record, tuple, and table. These are plain data only if their members are plain data.
 
-And finally, the behavioral types include the function, object, error, stream, typedesc, and handle types. These are not plain data.
+And finally, the behavioral types include the `function`, `object`, `error`, `stream`, `typedesc`, and `handle` types. 
+These are not plain data.
 
 ## ``decimal`` Type
 
@@ -52,7 +53,7 @@ A decimal number represents a decimal fraction exactly. That means that the prec
 
 You can use a literal character ``d`` to indicate a ``decimal`` value, and similarly ``f`` for a ``float`` value.
 
-Decimal numbers are not the same as binary floating point numbers defined as per IEEE standard. They are not built into the ALU logic on the processor. Therefore their computation is slower yet more accurate and precise.
+Decimal numbers are not the same as binary floating point numbers defined as per IEEE standard. They are not built into the ALU logic on the processor. Therefore, their computation is slower yet more accurate and precise.
 
 In Ballerina, decimal numbers do not offer infinite precision. It is limited to 34 digits only, which is more than enough for representing large physical measurements, such as the universe's age, which takes 27 digits. Additionally, decimal numbers do not support infinity, NaN, or negative zero.
 
@@ -68,7 +69,7 @@ The second one is the ``xml`` type. It is a sequence type built on a sequence of
 
 One of the crucial features of plain data is that it can be made immutable. You cannot do that for objects. Plain data consisting of simple and string values are inherently immutable.
 
-Structural values can be constructed either as mutable or immutable. The value includes a flag that indicates whether it's immutable or not and it is fixed at the time of construction of the value. Attempting to mutate an immutable structure causes a panic at runtime.
+Structural values can be constructed either as mutable or immutable. The value includes a flag that indicates whether it's immutable or not, and it is fixed at the time of construction of the value. Attempting to mutate an immutable structure causes a panic at runtime.
 
 Ballerina's notion of immutability is deep. This means that if you have an immutable structure, all its members have to be immutable. This also makes it safer to pass immutable values to other threads for concurrent access.
 
@@ -88,9 +89,9 @@ You can clone an ``anydata`` value using the **``clone()``** function.
 anydata x2 = x1.clone();
 ```
 
-This returns a new ``anydata`` **``x2``** value, with the same mutability as **``x1``**. There is another function **``cloneReadOnly()``** that returns an immutable deep copy. Both the functions do not copy the immutable parts of the ``anydata`` value. This ensures that the clone operations are safe for concurrency.  
+This returns a new ``anydata`` value, with the same mutability as **``x1``**. There is another function **``cloneReadOnly()``** that returns an immutable deep copy. Both the functions do not copy the immutable parts of the ``anydata`` value. This ensures that the clone operations are safe for concurrency.  
 
-``anydata`` also allows boolean comparison and can be used to defined constants.
+``anydata`` also allows boolean comparison and can be used to define constants.
 
 ```ballerina
 boolean eq = (x1 == x2);
@@ -102,7 +103,7 @@ The equality operation also takes care of cycles within ``anydata`` structure va
 
 ## Configurable Variables
 
-Ballerina also has a concept of a configurable variable. A module-level variable can be declared as a configurable variable. This is useful when some of the application code is defined just to configure things. You can use the ``configurable`` keyword in this case.
+Ballerina also has a concept of a configurable variable. A module-level variable can be declared as a configurable variable. This is useful when some application code is defined just to configure things. You can use the ``configurable`` keyword in this case.
 
 ```ballerina
 configurable int port = 8080;
@@ -118,7 +119,7 @@ A configurable variable must be a subtype of ``anydata``.
 
 ## Optional Fields
 
-Ballerina's type system is unique from other programming languages because it describes data both in program memory as well as on the wire. This is especially relevant for the cloud era, where more applications use APIs which provide network interfaces to a different system to send and receive data on the wire.  
+Ballerina's type system is unique from other programming languages because it describes data both in program memory and on the wire. This is especially relevant for the cloud era, where more applications use APIs which provide network interfaces to a different system to send and receive data on the wire.  
 
 Therefore, Ballerina's type system design is based on defining a data type interface that works consistently across the memory buffers of the process in which the data is processed and in the network.
 
@@ -136,7 +137,7 @@ type Headers record {
 };
 ```
 
-In the above type declaration, the ``Headers`` record type has three fields. The ``subject`` field is suffixed with ``?``, which tells the compiler that it is an optional field. Thus, you can define a variable of type ``Headers`` with or without the optional field.
+In the above type declaration, the **``Headers``** record type has three fields. The **``subject``** field is suffixed with ``?``, which tells the compiler that it is an optional field. Thus, you can define a variable of type **``Headers``** with or without the optional field.
 
 ```ballerina
 Headers h = {
@@ -178,11 +179,11 @@ Person p2 = {
 };
 ```
 
-In the above code example, the record types **``Person``** and **``Employee``** are declared. The **``Person``** type has a ``string`` field **``name``**, yet, **``p2``** is initialized with another field, ``country``. This field can be of type ``anydata`` since it was not specified initially. It is required to specify the keys of the unspecified fields within quotes.
+In the above code example, the record types **``Person``** and **``Employee``** are declared. The **``Person``** type has a ``string`` field **``name``**, yet, **``p2``** is initialized with another field, **``country``**. This field can be of type ``anydata`` since it was not specified initially. It is required to specify the keys of the unspecified fields within quotes.
 
 Similarly, the variable **``p``** of type **``Person``** also accepts the variable **``e``**, which is of the **``Employee``** type. In this case, the field **``id``** is treated as ``anydata`` within **``p``**.  In this way, Ballerina allows a record to be open such that additional unspecified fields can be added at runtime.
 
-An open record is equivalent to *``map<anydata>``*.
+An open record is equivalent to a *``map<anydata>``*.
 
 ## Controlling Openness
 
@@ -202,9 +203,9 @@ Coord x = {
 map<float> m1 = x;
 ```
 
-In the above code example, using the ``{|`` and ``|}`` delimiters indicates that the record is closed. The record type **``Coord``** has only the two fields **``x``** and **``y``** of the ``float`` type. So you can also treat it as a map of float.  
+In the above code example, using the ``{|`` and ``|}`` delimiters indicate that the record is closed. The record type **``Coord``** has only the two fields **``x``** and **``y``** of the ``float`` type. So you can also treat it as a map of float.  
 
-You can also use a ``...`` notation to allow other fields of a type ``T`` within a record.
+You can also use a ``T...`` notation to allow other fields of a type ``T`` within a record.
 
 ```ballerina
 type Headers record {|
@@ -215,13 +216,14 @@ type Headers record {|
 
 Headers h = {
     'from: "Jane",
-    to: "John"
+    to: "John",
+    "cc": "James"
 };
 
 map<string> m2 = h;
 ```
 
-If you have an open record, then additional fields of the ``anydata`` type can be added. But otherwise, use *``T…;``* to allow other fields of type ``T``. Therefore *``map<T>``* is the same as *``record {| T...; |}``*.
+If you have an open record, then additional fields of the ``anydata`` type can be added. But otherwise, use *``T…;``* to allow other fields of type ``T``. Therefore, *``map<T>``* is the same as *``record {| T...; |}``*.
 
 ## ``json`` Type
 
@@ -304,7 +306,7 @@ function foo(json j) returns error? {
 }
 ```
 
-In the above code example, the ``match`` expression matches the json value **``j``**. The interesting thing is that the match pattern also binds to a variable **``x``** used within the code for additional processing. In this way, you can directly use ``json`` structures within the control flow of your program.
+In the above code example, the ``match`` expression matches the json value **``j``**. The interesting thing is that the match pattern also binds to a variable **``x``** that is used within the code for additional processing. In this way, you can directly use ``json`` structures within the control flow of your program.
 
 ``match`` schematics are open, and you do not have to specify all the fields of the ``json`` value in the pattern for matching.
 
@@ -344,7 +346,7 @@ Coord coord = {
 json j = coord.toJson();
 ```
 
-In the above code example, **``Coord``** is an open record. Therefore any number of ``anydata`` fields can be added to it, including tables and XML. The **``toJson()``** function converts ``anydata`` to ``json``, such that all the sub-types, including tables and XML are handled appropriately.
+In the above code example, **``Coord``** is an open record. Therefore, any number of ``anydata`` fields can be added to it, including tables and XML. The **``toJson()``** function converts ``anydata`` to ``json``, such that all the subtypes, including tables and XML, are handled appropriately.
 
 ## Converting from JSON to User-defined Type
 
@@ -367,7 +369,7 @@ json j = {
 Coord c = <Coord>j;
 ```
 
-However, this does not work because the ``json`` fields can later be assigned to something other than ``float``. Therefore, the typecasting operation would not be type-safe. This goes back to the concept of covariance that limits mutation on type structures with inherent types. Therefore you can only create a read-only copy, and use it in the type cast expression.
+However, this does not work because the ``json`` fields can later be assigned to something other than ``float``. Therefore, the typecasting operation would not be type-safe. This goes back to the concept of covariance that limits mutation on type structures with inherent types. Therefore, you can only create a read-only copy, and use it in the type cast expression.
 
 ```ballerina
 json rj = j.cloneReadOnly();
@@ -389,7 +391,7 @@ json j = {x: 1.0, y: 2.0};
 Coord c = check j.cloneWithType(Coord);
 ```
 
-In the above example, the **``cloneWithType( )``** function uses the ``typedesc`` argument **``Coord``** as inherent type, and works recursively to clone every part of the value, including immutable structural values.
+In the above example, the **``cloneWithType()``** function uses the ``typedesc`` argument **``Coord``** as inherent type, and works recursively to clone every part of the value, including immutable structural values.
 
 This is a ``lang.value`` lang library function. You can also use the function without the argument, in which case the argument will be inferred from the contextually-expected type.
 
@@ -422,13 +424,13 @@ service /calc on h {
 
 In the above code example, the **``Args``** record is a closed record. It is used as a parameter of the resource method corresponding to the HTTP POST operation whenever the API **``/calc/add``** is triggered.
 
-Thanks to the implicit data binding and conversion feature of Ballerina, the JSON payload coming in the wire as part of the HTTP request is converted to the **``Args``** record, using the **``cloneWithType()``** function. Therefore its fields **``x``** and **``y``** are readily accessible. The return type of the resource method is the ``decimal`` type which is a subtype of ``anydata`` and is mapped to the protocol format on the wire, which in most cases is JSON.  This is how Ballerina types can be used to describe data on the wire, or on network interfaces.
+Thanks to the implicit data binding and conversion feature of Ballerina, the JSON payload coming in the wire as part of the HTTP request is converted to the **``Args``** record, using the **``cloneWithType()``** function. Therefore, its fields **``x``** and **``y``** are readily accessible. The return type of the resource method is the ``decimal`` type which is a subtype of ``anydata`` and is mapped to the protocol format on the wire, which in most cases is JSON.  This is how Ballerina types can be used to describe data on the wire, or on network interfaces.
 
 Annotations added to this code also help in refining the mapping between Ballerina-declared types and the wire format. Further, the service declaration can also be used to generate an OpenAPI specification.
 
 ## JSON Numbers
 
-There is one complication in dealing with JSON in Ballerina. This is because Ballerina allows the ``json`` type to have a union of ``int``, ``float``, and ``decimal``. Whereas the JSON specification has only one numeric type. It does not distinguish between integers and floating point numbers.
+There is one complication in dealing with JSON in Ballerina. This is because Ballerina allows the ``json`` type to have a union of ``int``, ``float``, and ``decimal``. Whereas the JSON specification has only one numeric type, it does not distinguish between integers and floating-point numbers.
 
 While converting from Ballerina's numeric types to JSON, using the **``toJsonString()``** function converts Ballerina's ``int``, ``float``, and ``decimal`` values to the JSON numeric syntax. This is straightforward.
 
@@ -580,7 +582,7 @@ table<Employee> key(name) t = table [
 ];
 ```
 
-In the above code example, **``Employee``** is a record type that contains the two fields **``name``** and **``salary``**. The **``name``** field is marked as **``readonly``**, which prevents updates to the field after record creation.
+In the above code example, **``Employee``** is a record type that contains the two fields **``name``** and **``salary``**. The **``name``** field is marked as ``readonly``, which prevents updates to the field after record creation.
   
 Table **``t``** is defined with the ``table`` keyword. The definition also takes the type for the row, which is **``Employee``**, and the key field, which is **``name``**. It is declared with the ``key`` keyword.
 
@@ -649,7 +651,7 @@ table<Employee> key(name) t = table [
 ];
 ```
 
-In the above code example, the **``Employee``** record has a **``name``** field, which is also a record type having two fields, **``first``** and **``last``**. The table **``t``** uses the ``name`` field as the key.
+In the above code example, the **``Employee``** record has a **``name``** field, which is also a record type having two fields, **``first``** and **``last``**. The table **``t``** uses the **``name``** field as the key.
 
 Accessing the rows in this table works in the same way.
 
@@ -657,7 +659,7 @@ Accessing the rows in this table works in the same way.
 Employee? e = t[{first: "Fred", last: "Bloggs"}];
 ```
 
-With structured types, you can define rich keys, with different types, such as arrays of bytes, which makes it a binary key. This is a very powerful way of programming with tables, where you can directly work with the keys, instead of being constrained by faked up string representations of your keys.
+With structured types, you can define rich keys with different types such as arrays of bytes, which makes it a binary key. This is a very powerful way of programming with tables, where you can directly work with the keys, instead of being constrained by faked up string representations of your keys.
 
 ### Querying Tables
 

@@ -26,7 +26,7 @@ To complete this tutorial, you need:
     >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
 3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
 
-## Setting up a MySQL Server Instance
+### Setting up a MySQL Server Instance
 
 There are several methods you can use to set up a MySQL server.
 1. Install a MySQL server on your machine locally by downloading and installing [MySQL](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing) for different platforms.
@@ -36,7 +36,7 @@ There are several methods you can use to set up a MySQL server.
 
 >**Tip:** Keep the connection and authentication details for connecting to the MySQL server including the hostname, port, username and password noted down.
 
-## Creating a Database and Table
+### Creating a Database and Table
 
 Connect to the MySQL server using the terminal (or any other preferred method) and execute the following commands to 
 create a database and table. This tutorial demonstrates the basic use-case of creating, maintaining, and
@@ -54,10 +54,10 @@ CREATE TABLE Company.Employees (
 	hire_date   DATE NOT NULL,
 	manager_id  INTEGER REFERENCES Employees(employee_id),
 	job_title   VARCHAR(255) NOT NULL
-)
+);
 ```
 
-## Creating a Ballerina Project
+### Creating a Ballerina Project
 
 A new Ballerina project can be created by executing the following command in the directory in which you want to create the project.
 
@@ -67,12 +67,14 @@ bal new data_service
 
 >**Info:** For more information on creating Ballerina packages, see [Getting Started with Ballerina](/learn/getting-started-with-ballerina).
 
-## Creating a Record to Represent an Employee
+### Creating a Record to Represent an Employee
 
-In Ballerina, records are a data-type that maps keys to values. You can define a closed record to represent a single row
+In Ballerina, records are a data type that maps keys to values. You can define a closed record to represent a single row
 in the `Employees` table in the `main.bal` file.
 
 ```ballerina
+import ballerina/time;
+
 public type Employee record {|
     int employee_id?;
     string first_name;
@@ -85,7 +87,7 @@ public type Employee record {|
 |};
 ```
 
-This record-type is the basis for interacting with the database.
+This record type is the basis for interacting with the database.
 
 ## Connecting to and Interacting with the Database
 
@@ -143,7 +145,7 @@ and [`SQL`](https://lib.ballerina.io/ballerina/sql/latest) packages must be impo
 
 ```ballerina
 import ballerinax/mysql;
-import ballerinax/sql;
+import ballerina/sql;
 ```
 
 The `mysql:Client` can be used to connect to the database. Include the following code in your `main.bal` file and
@@ -170,7 +172,7 @@ The `mysql:Client` provides two primary remote methods for performing queries.
 
 2. `execute()` - Executes an SQL query and returns only the metadata of the execution.
 
-Using these, you can define methods to perform basic CRUD operations against the MySQL database.
+Use `query()`, `queryRow()` and `execute()` methods to define methods that can perform basic CRUD operations against the MySQL database.
 
 ```ballerina
 isolated function addEmployee(Employee emp) returns int|error {
@@ -233,7 +235,12 @@ isolated function removeEmployee(int id) returns int|error {
     sql:ExecutionResult result = check dbClient->execute(`
         DELETE FROM Employees WHERE employee_id = ${id}
     `);
-    return result.affectedRowCount;
+    int? affectedRowCount = result.affectedRowCount;
+    if affectedRowCount is int {
+        return affectedRowCount;
+    } else {
+        return error("Unable to obtain the affected row count");
+    }
 }
 ```
 
@@ -247,7 +254,7 @@ import ballerina/http;
 ```
 
 ### Creating a Service
-Afterwards, you can create a service as shown below. This creates an `/employees` endpoint on port `8080` which can 
+Now, you can create a service as shown below. This creates an `/employees` endpoint on port `8080` which can 
 be accessed via a browser by visiting `http://locahost:8080/employees` after executing the command `bal run`.
 
 ```ballerina
@@ -270,7 +277,7 @@ service /employees on new http:Listener(8080) {
 }
 ```
 
-This resource function may be invoked by sending a `POST` request to `http://localhost:8080/employees` with the 
+Invoke the defined resource function by sending a `POST` request to `http://localhost:8080/employees` with the 
 required data as a JSON payload.
 
 ```shell
@@ -324,4 +331,4 @@ service /employees on new http:Listener(8080) {
 To learn more about MySQL and HTTP support in Ballerina, see the following:
 - [MySQL module documentation](https://lib.ballerina.io/ballerinax/mysql/latest)
 - [HTTP module documentation](https://lib.ballerina.io/ballerina/http/latest)
-- [MySQL Examples](/learn/by-example/mysql-query-operation.html)
+- [MySQL examples](/learn/by-example/mysql-query-operation.html)

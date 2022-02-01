@@ -34,8 +34,8 @@ import ballerina/email;
 function mailDemo() returns error? {
 
     email:SmtpClient sc = check new ("smtp.example.com",
-                                     "user123@example.com",
-                                     "Passwd123");
+                                    "user123@example.com",
+                                    "Passwd123");
     check sc->sendMessage({
         to: "contact@ballerina.io",
         subject: "Ballerina",
@@ -44,7 +44,7 @@ function mailDemo() returns error? {
 }
 ```
 
-In the above code example, the client object **``sc``** belongs to a client class *SmtpClient*. The connection parameters are passed to ``new`` when creating the object.
+In the above code example, the client object **``sc``** belongs to a client class **``SmtpClient``**. The connection parameters are passed to ``new`` when creating the object.
 
 The **``sendEmailMessage()``** remote method is called on the client object **``sc``** with the ``->`` call syntax. This notation signifies that it is a remote call to a network service. It augurs well with the sequence diagram view of the application and provides a syntactically distinguished view for better readability.
 
@@ -60,7 +60,7 @@ The first is a service object. These objects are defined by applications and con
 
 The second is a Listener object. It receives network input and makes calls to remote methods of attached service objects. Service objects are attached to Listeners, which are registered with a module that is the third key entity in providing network services.
 
-Modules have a lifecycle and are initialized on program startup. Post initializations, the registered listeners start up, and when the program shuts down, the registered listeners also shut down.
+Modules have a lifecycle and are initialized on program startup. Post initializations, the registered listeners are started up, and when the program shuts down, the registered listeners are also shut down.
 
 ## Listener Declaration
 
@@ -69,7 +69,7 @@ A listener declaration looks very much like a variable declaration.
 ```ballerina
 import ballerina/http;
 
-listener http:Listener h = new(8080);
+listener http:Listener h = new (8080);
 ```
 
 This also registers the Listener with the enclosing module. If the ``new`` expression returns an error, the module initialization fails and exits with an error at runtime.
@@ -78,7 +78,7 @@ This also registers the Listener with the enclosing module. If the ``new`` expre
 
 As mentioned earlier, all modules have a lifecycle, so let's understand a few aspects of the lifecycle.
 
-During initialization, all module listeners are registered. The initialization sequence is ordered such that if module A imports module B, then module A is initialized after module B. The initialization phase ends by calling the ``main`` function if present.
+During initialization, all module listeners are registered. The initialization sequence is ordered such that if module ``A`` imports module ``B``, then module ``A`` is initialized after module ``B``. The initialization phase ends by calling the ``main`` function if present.
 
 If there are registered listeners in a module, the module initialization phase is followed by the listening phase. The listening phase begins by calling the start method on each registered listener. It ends when the program is terminated with a signal (for example, SIGINT or SIGTERM). This is followed by a call to either *gracefulStop* or *immediateStop* on each registered listener, depending on what kind of signal was used to terminate the program.
 
@@ -116,7 +116,7 @@ var obj = object {
 string greeting = obj.greet();
 ```
 
-In the above code example, the ``object`` keyword is used in the expression that initializes the **``obj``** variable. This is called an object constructor. It has one method **``greet()``** that returns a string "Hello World". So there is no class involved in this case.
+In the above code example, the ``object`` keyword is used in the expression that initializes the **``obj``** variable. This is called an object constructor. It has one method **``greet()``** that returns a string ``"Hello World"``. So there is no class involved in this case.
 
 ## Service Declaration
 
@@ -136,9 +136,9 @@ service on new udp:Listener(8080) {
 }
 ```
  
-In the above code example, a service object is created and attached to a ``udp:Listener`` initialized in-line. The body of the service declaration, which is an object constructor block defines the ``onDatagram`` remote method.
+In the above code example, a service object is created and attached to a ``udp:Listener`` initialized in-line. The body of the service declaration, which is an object constructor block, defines the ``onDatagram`` remote method.
 
-The type of service object is determined by the type of Listener. So as per this example, the **``udp:Listener``** expects a ``udp:Service`` service object with an **``onDatagram``** remote method that accepts a parameter of type **``udp:Datagram & readonly``**.  
+The type of service object is determined by the type of the listener. So as per this example, the **``udp:Listener``** expects a ``udp:Service`` service object with an **``onDatagram``** remote method that accepts a parameter of type **``udp:Datagram & readonly``**.  
 
 The above code can also be written in a desugared way by having the service object created using an object constructor, and explicitly attaching it to the listener.
 
@@ -146,11 +146,11 @@ The above code can also be written in a desugared way by having the service obje
 import ballerina/io;
 import ballerina/udp;
 
-listener udp:Listener u = new(8080);
+listener udp:Listener u = new (8080);
 
 udp:Service obj = service object {
-    remote function onDatagram(udp:Datagram & readonly dg){
-        io:println("bytes received: ", dg.data.length());        
+    remote function onDatagram(udp:Datagram & readonly dg) {
+        io:println("bytes received: ", dg.data.length());
     }
 };
 
@@ -192,7 +192,7 @@ service on new http:Listener(8080) {
 
 This is an example of a resource method. Instead of ``remote``, it uses the ``resource`` keyword, and the definition has two parts, **``get``** and **``hello``**. **``get``** is the accessor for the resource, which represents the HTTP method in this case. **``name``** is the resource name. This is similar to the getter and setter methods in object-oriented programming but generalized for network-oriented programming.
 
-So this service object defines a resource *"/hello"* with a query parameter **``name``**.
+So this service object defines a resource **``/hello``** with a query parameter **``name``**.
 
 ## Hierarchical Resources
 
@@ -207,7 +207,7 @@ service /demo on new http:Listener(8080) {
 }
 ```
 
-In the above code example, the service object is attached to the HTTP listener with the base resource path *"/demo"* and defines a resource method *"greeting/hello"*. Thus, the actual resource path exposed by this service to the external world is a combination of the base path and resource path, which is *"/demo/greeting/hello"*.
+In the above code example, the service object is attached to the HTTP listener with the base resource path **``/demo``** and defines a resource method **``greeting/hello``**. Thus, the actual resource path exposed by this service to the external world is a combination of the base path and resource path, which is **``/demo/greeting/hello``**.
 
 A single listener can have multiple services attached to it, each with different base paths.
 
@@ -225,7 +225,7 @@ service /demo on new http:Listener(8080) {
 }
 ```
 
-In this case, the fixed resource path is *"/demo/greeting"* followed by a parameterized segment defined within `'[ ]'` in the resource method. This arrangement is similar to how HTTP resources are defined with parameterized path segments for RESTful services.
+In this case, the fixed resource path is **``/demo/greeting``** followed by a parameterized segment defined within `'[ ]'` in the resource method. This arrangement is similar to how HTTP resources are defined with parameterized path segments for RESTful services.
 
 ## Hierarchical Services
 

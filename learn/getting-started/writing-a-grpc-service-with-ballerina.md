@@ -19,12 +19,12 @@ To complete this tutorial, you need:
 
 1. A command terminal
 2. A text editor
-    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
+    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
 3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
 
 ## Creating the Service Definition
 
-In an RPC program, the first step is to define the service interface using an Interface Definition Language(IDL). 
+In an RPC program, the first step is to define the service interface using an Interface Definition Language(IDL).
 gRPC commonly uses Protocol Buffers as the IDL. Let's write a simple service definition in Protocol Buffers as below.
 
 ```proto
@@ -101,9 +101,9 @@ greeter_service
 ```
 
 Here,
-- The `helloworld_pb.bal` file is the stub file. It contains classes that the client/service uses to talk to each other 
+- The `helloworld_pb.bal` file is the stub file. It contains classes that the client/service uses to talk to each other
 and the Ballerina types corresponding to the request and response messages.
-- The `greeter_service.bal` file is the service template file. It contains service(s) with all the remote methods 
+- The `greeter_service.bal` file is the service template file. It contains service(s) with all the remote methods
   defined in the PROTO file.
 
 #### Update and run the application
@@ -112,12 +112,12 @@ Let’s update the service template file (i.e., `greeter_service.bal`) and add t
 
 ```ballerina
 import ballerina/grpc;
- 
+
 listener grpc:Listener grpcListener = new (9090);
- 
+
 @grpc:ServiceDescriptor {descriptor: ROOT_DESCRIPTOR_HELLOWORLD, descMap: getDescriptorMapHelloworld()}
 service "Greeter" on grpcListener {
- 
+
    remote function sayHello(HelloRequest value) returns HelloReply|error {
        return { message: "Hello " + value.name};
    }
@@ -125,11 +125,11 @@ service "Greeter" on grpcListener {
 ```
 
 In this code,
-- The Listener declaration creates a new gRPC listener with port 9090. The listener is the entity that listens to the 
+- The Listener declaration creates a new gRPC listener with port 9090. The listener is the entity that listens to the
 input coming to the port and then dispatches it to the correct service(s).
-- The service declaration creates a service and attaches it to the listener. The service annotation is to create an 
+- The service declaration creates a service and attaches it to the listener. The service annotation is to create an
   internal mapping between the service declarations and the PROTO definition. Do not change it.
-- The gRPC service can have one or more remote methods depending on the proto definition. Here, this service has only one 
+- The gRPC service can have one or more remote methods depending on the proto definition. Here, this service has only one
   method called `sayHello` that has the `HelloRequest` type as the request and `HelloReply` type as the response.
 
 Let’s run this project in your terminal:
@@ -183,7 +183,7 @@ greeter_client
 ```
 
 Here,
-- The `helloworld_pb.bal` file is the stub file that contains the classes that the client/service uses to talk to each 
+- The `helloworld_pb.bal` file is the stub file that contains the classes that the client/service uses to talk to each
 other and the Ballerina types corresponding to request and response messages.
 - The `greeter_client.bal` file is the client template file that contains the `main` function with the client declaration.
 
@@ -193,7 +193,7 @@ Let’s update the client template file (i.e., `greeter_client.bal`) and write c
 
 ```ballerina
 import ballerina/io;
- 
+
 GreeterClient ep = check new ("http://localhost:9090");
 public function main() returns error? {
    HelloReply sayHello = check ep->sayHello({name: "Ballerina"});
@@ -217,8 +217,8 @@ Compiling source
 Running executable
 ```
 
-Since the server is up and running, once the client application is successfully executed, the client application 
-invokes the `sayHello` function with the  `HelloRequest` message and receives the `HelloReply` as the response. You will 
+Since the server is up and running, once the client application is successfully executed, the client application
+invokes the `sayHello` function with the  `HelloRequest` message and receives the `HelloReply` as the response. You will
 see the output below printed on the console.
 
 ```

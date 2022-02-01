@@ -506,7 +506,7 @@ table<Row> key(k) t = table [
 ];
 ```
 
-In the above code example, the string array **``s``** is declared as read-only using the type intersection operator ``&``. The type of **``s``** is both an array of strings and readonly, which means that it is an immutable array. This is enforced at compile-time to ensure that the values of the array **``s``** are immutable. Therefore, it is safe to pass it as an argument to an ``isolated`` function.
+In the above code example, the string array **``s``** is declared as read-only using the type intersection operator ``&``. The type of **``s``** is both an array of strings and ``readonly,`` which means that it is an immutable array. This is enforced at compile-time to ensure that the values of the array **``s``** are immutable. Therefore, it is safe to pass it as an argument to an ``isolated`` function.
 
 This concept is different from the const keyword in C. So a *const char s* in C is not the same as *readonly & string[] s* in Ballerina, because here you are making the values of the type immutable whereas, in the case of C the const identifier refers to a variable whose value can be assigned to another variable with the const qualifier.
 

@@ -450,16 +450,16 @@ The basic concept of list comprehension is based on the concept of mathematical 
 int[] nums = [1, 2, 3, 4];
 
 int[] numsTimes10 = from var i in nums
-                    select i * 10;
+    select i * 10;
 
 int[] evenNums = from var i in nums
-                    where i % 2 == 0
-                    select i;
+    where i % 2 == 0
+    select i;
 ```
 
 In the above code example, **``nums``** is an integer array containing a list of numbers.
 
-The array **``numTimes10``** is constructed by iterating over nums using the ``from`` clause,  where **``i``** is the iteration value, and then using the ``select`` clause to evaluate the expression **``i \* 10``** to include the result in the array. Therefore the result is a new list **``[10,20,30,40]``**.
+The array **``numTimes10``** is constructed by iterating over **``nums``** using the ``from`` clause,  where **``i``** is the iteration value, and then using the ``select`` clause to evaluate the expression **``i \* 10``** to include the result in the array. Therefore, the result is a new list **``[10,20,30,40]``**.
 
 Similarly, you can also apply SQL-like filters to the iteration value using the ``where`` clause. The array **``evenNums``** is built in that way by introducing the ``where`` clause that filters the values for which the expression evaluates to ``true``. The resultant list is **``[2,4]``**.
 
@@ -477,18 +477,18 @@ type Person record {
 Person[] persons = [];
 
 var names = from var {first: f, last: l} in persons
-                select {first: f, last: l};
+    select {first: f, last: l};
 ```
 
 In the above code example, **``persons``** is an array of records. The variable **``names``** is constructed from a binding pattern **``{first: f, last: l}``** that allows you to destructure records using a pattern. This results in variable **``f``** being bound to the ``first`` field of the record and **``l``** being bound to the ``last`` field.  
 
-As usual, the query expression iterates over the list of persons records using the ``from`` clause. At each iteration, the fields of the record are bound to the **``f``** and **``l``** variables, and then the ``select`` clause is used to construct a new array of records containing only the fields **``first``** and **``last``**.
+As usual, the query expression iterates over the **``persons``** list using the ``from`` clause. At each iteration, the fields of the record are bound to the **``f``** and **``l``** variables, and then the ``select`` clause is used to construct a new array of records containing only the fields **``first``** and **``last``**.
 
 The binding pattern **``{first: f, last: l}``** can also be simplified as **``{first, last}``**.
 
 ```ballerina
 var names = from var {first, last} in persons
-                select {first, last};
+    select {first, last};
 ```
 
 In this way, a binding pattern **``{x}``** can be substituted for **``{x : x}``**.
@@ -499,15 +499,15 @@ You can also have any number of ``let`` clauses within the query expression, bet
 
 ```ballerina
 string[] names = from var {first, last} in persons
-                 let int len1 = first.length()
-                 where len1 > 0
-                 let int len2 = last.length()
-                 where len2 > 0
-                 let string name = first + " " + last
-                 select name;
+    let int len1 = first.length()
+    where len1 > 0
+    let int len2 = last.length()
+    where len2 > 0
+    let string name = first + " " + last
+    select name;
 ```
 
-In the above code example, multiple ``let`` and ``where`` clauses are used to construct an array of strings names containing names of all persons, by concatenating their first and last names. The record entries whose first or last names have a length of zero are filtered out by using the first and second combination of ``let`` and ``where`` clauses. The overall query expression follows semantics like XQUERY FLWOR (for, let, where, order by, and return).
+In the above code example, multiple ``let`` and ``where`` clauses are used to construct an array of strings **``names``** containing names of all persons, by concatenating their first and last names. The record entries whose first or last names have a length of zero are filtered out by using the first and second combination of ``let`` and ``where`` clauses. The overall query expression follows semantics like XQUERY FLWOR (for, let, where, order by, and return).
 
 You can think of the overall semantics like a pipeline, which starts off by generating a list of bindings in the first stage, and the subsequent stages take the bindings from the previous stage of the pipeline and output another set of variable bindings.
 
@@ -526,8 +526,7 @@ Employee[] employees = [
     // ...
 ];
 
-Employee[] sorted = 
-    from var e in employees
+Employee[] sorted = from var e in employees
     order by e.lastName ascending, e.firstName ascending
     select e;
 ```
@@ -545,8 +544,7 @@ A real-world example of an unordered scenario is the price of items on a shoppin
 Ballerina also supports the ``limit`` clause within query expressions.
 
 ```ballerina
-Employee[] top100 = 
-    from var e in employees
+Employee[] top100 = from var e in employees
     order by e.salary descending
     limit 100
     select e;
@@ -821,7 +819,7 @@ In the above example, assume that **``db``** is a client object making a remote 
 
 In Ballerina, XML is a separate basic type. It is based on the concept of sequence and is derived from the concept of XQuery as well as XPath2. The model of XML used in Ballerina is based on XML Infoset, which follows the basic concept of XML elements and attributes, rather than the XML schema, as in the case of PSVI (Post-Schema Validation Infoset).
 
-Ballerina uses the template concept to construct ``xml`` values. It is designed to work with the underlying concepts of elements and attributes, which also forms the basis for HTML. Therefore Ballerina treats HTML as XML.
+Ballerina uses the template concept to construct ``xml`` values. It is designed to work with the underlying concepts of elements and attributes, which also forms the basis for HTML. Therefore, Ballerina treats HTML as XML.
 
 As part of XML handling, Ballerina provides an XPath-like navigation syntax. The ``xml`` type also works well with query expressions to provide XQuery FLWOR-like functionality.
 
@@ -980,7 +978,7 @@ To access every element in the children of ``e``, for every element ``e`` in ``x
 
 To access every text item in the children of ``e``, for every element ``e`` in ``x``, use **`x/*.text()`**.
 
-To access every element named ``para`` in the descendants of ``e``, for every element ``e`` in ``x``, use **``x/**/<para>``**. Here the use of ``**`` signifies any number of levels within an xml element.
+To access every element named ``para`` in the descendants of ``e``, for every element ``e`` in ``x``, use **``x/**/<para>``**. Here the use of ``**`` signifies any number of levels within a xml element.
 
 To access the first element named ``para`` in the children of ``e``, for every element ``e`` in ``x``, use  **``x/<para>[0]``**. You can point to the nth element using the ``[]`` syntax.
 
@@ -1028,7 +1026,7 @@ This is a very powerful feature unique to Ballerina. In this way, you can also b
 
 ### XML Namespaces
 
-Ballerina supports XML namespaces without adding another level of complexity to the existing ``xml`` type system. But this is optional and you can use XML without using namespaces also.
+Ballerina supports XML namespaces without adding another level of complexity to the existing ``xml`` type system. But this is optional, and you can use XML without using namespaces also.
 
 When you see an XML element ``x`` prefixed with a namespace as **``ns:x``**, under the covers, Ballerina expands the prefix and the colon into a **``{url}x``** notation where ``url`` is the namespace name bound to ``ns``.
 
@@ -1048,7 +1046,7 @@ xmlns "http://example.com" as eg;
 xml x = xml`<eg:doc>Hello</eg:doc>`;
 ```
 
-In the above code example, the **``eg``** is bound as a prefix to a namespace URL. You can use that prefix in the ``xml`` template and it will get expanded to the correct representation with the namespace.
+In the above code example, the **``eg``** is bound as a prefix to a namespace URL. You can use that prefix in the ``xml`` template, and it will get expanded to the correct representation with the namespace.
 
 The comparison and assignment of ``xml`` elements will implicitly check for and expand the namespace declarations in the correct way.
 
@@ -1062,4 +1060,4 @@ boolean b = (x === x.<ex:doc>);
 string exdoc = ex:doc;
 ```
 
-In the above code example, **``ex``** declares the same namespace declaration as **``eg``** previously. Therefore the boolean **``b``** will be true since the **``x``** variable containing ``<eg:doc>`` will be the same as ``<ex:doc>``. Similarly, the ``exdoc`` string variable will be assigned a value of ``{http://example.com}doc``, which includes the namespace declaration at the top. These declarations are also allowed at the block level.
+In the above code example, **``ex``** declares the same namespace declaration as **``eg``** previously. Therefore, the boolean **``b``** will be true since the **``x``** variable containing ``<eg:doc>`` will be the same as ``<ex:doc>``. Similarly, the ``exdoc`` string variable will be assigned a value of ``{http://example.com}doc``, which includes the namespace declaration at the top. These declarations are also allowed at the block level.

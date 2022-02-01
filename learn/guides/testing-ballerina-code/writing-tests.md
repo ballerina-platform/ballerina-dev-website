@@ -305,7 +305,7 @@ Diff    :
 
 ```
 
-#### Values of other `anydata` Type
+#### Values of Other `anydata` Type
 
 The assertion failure is displayed showing the `expected` and `actual` values.
 

@@ -740,7 +740,7 @@ The ``join`` clause uses an internal hashtable, thereby improving the query effi
 
 Ballerina supports the concept of a stream. A stream is a sequence of values that are generated as needed. This concept is the opposite of a list that is pre-populated with values before you perform any operations on it.
 
-A stream type is a separate basic type but acts as an object. A stream is defined with the ``stream`` keyword, as **``stream<T, E>``**, where members of the stream sequence are of type ``T`` and the termination value is of type ``E``. A shorter definition of **``stream<T>``** can be used to mean **``stream<T,()>``**, where the termination value is nil.
+The ``stream`` type is a separate basic type but acts as an object. A stream is defined with the ``stream`` keyword, as **``stream<T, E>``**, where members of the stream sequence are of type ``T`` and the termination value is of type ``E``. A shorter definition of **``stream<T>``** can be used to mean **``stream<T,()>``**, where the termination value is nil.
 
 Generating the values for a stream can result in an error, in which case the stream is terminated with an error value.
 
@@ -754,12 +754,12 @@ type LS stream<string, error?>;
 // Strip blank lines.
 function strip(LS lines) returns LS {
     return stream from var line in lines
-            where line.trim().length() > 0
-            select line;
+        where line.trim().length() > 0
+        select line;
 }
 ```
 
-In the above code example, **``LS``** is a stream type that represents a line stream. This stream contains a sequence of ``string`` values and terminates with an ``error`` value or nil. The function **``strip()``** executes a query on a stream of type **``LS``** and returns the same type. The query expression operates over the stream, and for each member of the stream, the ``where`` clause filters out the strings whose length is zero after stripping out the whitespaces.
+In the above code example, **``LS``** is a ``stream`` type that represents a line stream. This stream contains a sequence of ``string`` values and terminates with an ``error`` value or nil. The function **``strip()``** executes a query on a stream of type **``LS``** and returns the same type. The query expression operates over the stream, and for each member of the stream, the ``where`` clause filters out the strings whose length is zero after stripping out the whitespaces.
 
 The important thing to note here is that the query works the stream lazily. It does not read the whole stream and evaluate it at once when the strip function is called.
 

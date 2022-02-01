@@ -283,11 +283,6 @@ configurable string sheetsAccessToken = ?;
 configurable string spreadSheetId = ?;
 configurable string sheetName = "Sheet1";
 
-map&lt;string&gt; httpHeaders = {
-    "Accept": "application/vnd.github.v3+json",
-    "Authorization": "token " + githubPAT
-};
-
 type PR record {
     string url;
     string title;
@@ -298,7 +293,11 @@ type PR record {
 
 public function main() returns error? {
     http:Client github = check new ("https://api.github.com/repos/");
-    PR[] prs = check github->get(repository + "/pulls", httpHeaders);
+    map&lt;string&gt; headers = {
+        "Accept": "application/vnd.github.v3+json",
+        "Authorization": "token " + githubPAT
+    };
+    PR[] prs = check github->get(string `/${repository}/pulls`, headers);
 
     sheets:Client gsheets = check new ({auth: {token: sheetsAccessToken}});
     check gsheets->appendRowToSheet(spreadSheetId, sheetName,
@@ -340,8 +339,8 @@ type Country record {
 
 // Prints the top 10 countries having the highest case-fatality ratio.
 public function main() returns error? {
-    http:Client diseaseEp = check new ("https://disease.sh/v3/");
-    Country[] countries = check diseaseEp->get("covid-19/countries");
+    http:Client diseaseEp = check new ("https://disease.sh/v3");
+    Country[] countries = check diseaseEp->get("/covid-19/countries");
 
     json summary =
         from var {country, continent, population, cases, deaths} in countries

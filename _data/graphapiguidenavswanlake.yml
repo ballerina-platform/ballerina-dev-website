@@ -7,9 +7,6 @@
     - title: Designing the GraphQL Endpoint
       url: /learn/writing-a-graphql-api-with-ballerina/#designing-the-graphql-endpoint
       active: designing-the-graphql-endpoint
-    - title: Creating a Ballerina Project
-      url: /learn/writing-a-graphql-api-with-ballerina/#creating-a-ballerina-project
-      active: creating-a-ballerina-project
     - title: Creating a Datasource for the Project
       url: /learn/writing-a-graphql-api-with-ballerina/#creating-a-datasource-for-the-project
       active: creating-a-datasource-for-the-project

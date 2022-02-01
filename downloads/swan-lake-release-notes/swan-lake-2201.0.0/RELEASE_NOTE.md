@@ -29,7 +29,7 @@ For further information, see [Ballerina Swan Lake is on the Horizon](https://blo
 
 #### Troubleshooting 
 
-If you already ran the `bal dist pull update` or `bal dist pull 2201.0.0` before the `bal update` command, follow the instructions below to recover your installation.
+If you already ran the `bal dist update` or `bal dist pull 2201.0.0` before the `bal update` command, follow the instructions below to recover your installation.
 
 ##### For macOS Users (`.pkg` installations)
 

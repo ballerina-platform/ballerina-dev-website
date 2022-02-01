@@ -50,7 +50,7 @@ message HelloReply {
 ```
 > **Note:** The sample service definition is taken from the quick start guide on the gRPC official site.
 
-Let’s start implementing a Ballerina service and client for the above definition. Create a new service definition file (i.e., `helloworld.proto`) in which you want to create the project. 
+Let’s start implementing a Ballerina service and client for the above definition. Create a new service definition file (i.e., `helloworld.proto`) in which you want to create the project and copy the above service definition.
 
 ## Implementation
 

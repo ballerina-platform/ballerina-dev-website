@@ -72,7 +72,7 @@ Execute the following command to create a new Ballerina project in the directory
 $ bal new greeter_service
 ```
 
-> **Note:** For more information on creating Ballerina packages, please see the [link](/learn/getting-started-with-ballerina).
+> **Note:** For more information on creating Ballerina packages, see [Getting Started with Ballerina](/learn/getting-started-with-ballerina).
 
 Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
 
@@ -104,7 +104,7 @@ Here,
 - The `helloworld_pb.bal` file is the stub file. It contains classes that the client/service uses to talk to each other
 and the Ballerina types corresponding to the request and response messages.
 - The `greeter_service.bal` file is the service template file. It contains service(s) with all the remote methods
-  defined in the PROTO file.
+  defined in the `.proto` file.
 
 #### Update and Run the Application
 
@@ -156,7 +156,7 @@ Execute the following command to create a new Ballerina project in the directory
 $ bal new greeter_client
 ```
 
-> **Note:** For more information on creating Ballerina packages, please see the [link](/learn/getting-started-with-ballerina).
+> **Note:** For more information on creating Ballerina packages, see [Getting Started with Ballerina](/learn/getting-started-with-ballerina).
 
 Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
 

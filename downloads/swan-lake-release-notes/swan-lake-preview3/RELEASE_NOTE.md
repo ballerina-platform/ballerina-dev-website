@@ -212,7 +212,7 @@ Furthermore, the line with the error would be replaced with a function call as s
 Grade grades = mapNameAndGradeToGrade(student);
 ```
 
-For more information, see [Code Actions](/learn/tooling-guide/visual-studio-code-extension/language-support/#code-actions).
+For more information, see [Code Actions](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
 
 ##### Test Framework
 

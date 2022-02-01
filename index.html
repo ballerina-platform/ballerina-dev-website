@@ -377,6 +377,7 @@ public type Album record {
     string title;
     string artist;
     decimal price;
+    Currency currency = USD;
 };
 
 public enum Currency {
@@ -387,28 +388,23 @@ public enum Currency {
 }
 
 service / on new graphql:Listener(9000) {
-    private final mysql:Client dbClient;
-    private final http:Client httpClient;
+    private final mysql:Client db;
+    private final http:Client forex;
     private final Currency baseCurrency;
 
     function init() returns error? {
-        self.dbClient = check new (host, user, password, database, port);
-        self.httpClient = check new (apiEndpoint);
+        self.db = check new (host, user, password, database, port);
+        self.forex = check new (apiEndpoint);
         self.baseCurrency = USD;
     }
 
-    resource function get search(string id, Currency currency) returns Album|error {
-        Album album = check self.dbClient->queryRow(`SELECT * FROM Albums WHERE id=${id}`);
-
+    resource function get album(string id, Currency currency = USD) returns Album|error {
+        Album album = check self.db->queryRow(`SELECT * FROM Albums WHERE id=${id}`);
         if currency != self.baseCurrency {
             string query = string `from=${self.baseCurrency}&to=${currency}`;
-            json response = check self.httpClient->get("/currencyExchange?" + query);
-            var conversionRate = response.conversionRate;
-            if conversionRate is decimal {
-                album.price = album.price * conversionRate;
-            } else {
-                return error("An error occurred while converting the currency");
-            }
+            record {decimal rate;} exchange = check self.forex->get(string`/curerncyConversion?${query}`);
+            album.price = album.price * exchange.rate;
+            album.currency = currency;
         }
         return album;
     }

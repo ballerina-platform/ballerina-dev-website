@@ -130,43 +130,43 @@ The Ballerina test framework supports the following assertions, which help to ve
        <th class="cCodeCol">Description</th>
     </tr>
     <tr>
-       <td>assertTrue(boolean expression, string message)</td>
+       <td><code>assertTrue(boolean expression, string message)</code></td>
        <td>
           Asserts that the expression is true with an optional message.
        </td>
     </tr>
     <tr>
-       <td>assertFalse(boolean expression, string message)</td>
+       <td><code>assertFalse(boolean expression, string message)</code></td>
        <td>
           Asserts that the expression is false with an optional message.
        </td>
     </tr>
     <tr>
-       <td>assertEquals(anydata|error actual, anydata expected, string message)</td>
+       <td><code>assertEquals(anydata|error actual, anydata expected, string message)</code></td>
        <td>
           Asserts that the actual value is equal to the expected value with an optional message.
        </td>
     </tr>
     <tr>
-       <td>assertNotEquals(anydata actual, anydata expected, string message)</td>
+       <td><code>assertNotEquals(anydata actual, anydata expected, string message)</code></td>
        <td>
           Asserts that the actual value is not equal to the expected value with an optional message.
        </td>
     </tr>
     <tr>
-       <td>assertExactEquals(any|error actual, any|error expected, string message)</td>
+       <td><code>assertExactEquals(any|error actual, any|error expected, string message)</code></td>
        <td>
           Asserts that the actual entity is exactly equal to the expected entity with an optional message.
        </td>
     </tr>
     <tr>
-       <td>assertNotExactEquals(any|error actual, any|error expected, string message)</td>
+       <td><code>assertNotExactEquals(any|error actual, any|error expected, string message)</code></td>
        <td>
           Asserts that the actual entity is not exactly equal to the expected entity with an optional message.
        </td>
     </tr>
     <tr>
-       <td>assertFail(string message)</td>
+       <td><code>assertFail(string message)</code></td>
        <td>
            Fails the test. This is useful to fail a test based on a check for a condition while it is in execution.
        </td>

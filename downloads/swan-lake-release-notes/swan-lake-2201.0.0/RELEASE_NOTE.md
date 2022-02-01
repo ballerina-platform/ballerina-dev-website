@@ -23,7 +23,7 @@ If you are already using Ballerina, use the [Ballerina Update Tool](/learn/cli-d
 
 2. Run the command below to update your Ballerina version to 2201.0.0 (Swan Lake).
 
-   `bal dist pull 2201.0.0`
+   `bal dist update`
 
 The version format has been revised. `2201.0.0 (Swan Lake)` represents the format of `$YYMM.$UPDATE.$PATCH ($CODE_NAME)`. 
 

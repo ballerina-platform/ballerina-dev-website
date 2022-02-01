@@ -78,7 +78,7 @@ Remove the automatically-created `main.bal` file as you are not going to use it 
 
 #### Generating the Source Code
 
-Execute the following command inside the same directory where you created the Ballerina project to generate source code related to the service definition.
+Execute the following command inside the same directory in which you created the Ballerina project to generate the source code related to the service definition.
 
 ```bash
 $ bal grpc --mode service --input helloworld.proto --output greeter_service/
@@ -162,7 +162,7 @@ Remove the automatically-created `main.bal` file as you are not going to use it 
 
 #### Generating the Source Code
 
-Execute the following command inside the same directory where you created the Ballerina project to generate source code related to the service definition.
+Execute the following command inside the same directory in which you created the Ballerina project to generate the source code related to the service definition.
 
 ```bash
 $ bal grpc --mode client --input helloworld.proto --output greeter_client/

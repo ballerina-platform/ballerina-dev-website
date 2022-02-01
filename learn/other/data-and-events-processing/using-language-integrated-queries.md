@@ -338,7 +338,7 @@ ReportTable|error result =
 
 Query actions are executed in the same way as the clauses in a query expression. However, it does not generate an output such as a list. Rather, it executes a set of defined statements. The block inside the `do` clause is executed in each iteration.
 
-The below is an example of a query action.
+Below is an example of a query action.
 
 ```ballerina
 var x = from var person in personList
@@ -404,7 +404,7 @@ res.setPayload("Order is accepted, Total grocery bill amount is " +
 var result = caller->respond(res);
 ```
 
-The below is the complete Ballerina code for writing the integrated query for the online product order use case above.
+Below is the complete Ballerina code for writing the integrated query for the online product order use case above.
 
 ```ballerina
 import ballerina/http;

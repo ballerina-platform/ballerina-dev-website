@@ -45,7 +45,7 @@ tree .
 0 directories, 2 files
 ```
 
-## Defining the Dataset To Be Processed
+## Defining the Dataset to be Processed
 
 To keep the tutorial simple, you will be using an in-memory table to store the COVID-19 dataset. Each record of type `CovidEntry` in the table represents the COVID-19 data related to a particular country. The `iso_code` is used to uniquely identify a country and other fields are self-explanatory.
 ```ballerina
@@ -143,7 +143,7 @@ Countries with more than 10 million cases: ["USA","India"]
 Countries with highest deaths:[["India",980976],["USA",880976],["Afghanistan",7386]]
 ```
 
-## Joining with another data source
+## Joining with Another Datasource
 
 Using query expressions, you can join two collections and produce a new collection. The `join` operation is similar to the SQL `join` operation. In this tutorial, you will be joining the `covidTable` with a string array, which contains three countries.
 
@@ -188,7 +188,7 @@ Countries with more than 10 million cases: ["USA","India"]
 Countries with highest deaths:[["India",980976],["USA",880976],["Afghanistan",7386]]
 Countries with number of Recovered patients:[["Afghanistan",146084],["USA",43892277],["India",33892279]]
 ```
-## Finding Discrepancies In the Dataset
+## Finding Discrepancies in the Dataset
 
 This example shows how you can use the `let` clause to maintain an intermediate state while iterating a collection using query expression and how to use that intermediate state for further processing. 
 For example, in this dataset, the total number of reported cases should be equal to the sum of the number of deaths, recovered, and active. If they are not equal, an error should have occurred while the dataset is populated.

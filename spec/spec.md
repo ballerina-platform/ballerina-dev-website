@@ -23,6 +23,7 @@ The below are the most stable versions of the lanuguage specification, which are
 
 | Version | Release Date | Description |
 | ------- | ------------ | ----------- | 
+| <a target="_blank" href="/spec/lang/2022R1/">2022R1</a> | 2021-06-02 | First release of 2022. This is the basis for Ballerina 2201.0.0 (Swan Lake). |
 | <a target="_blank" href="/spec/lang/2021R1/">2021R1</a> | 2021-06-02 | First release of 2021. This is the basis for Ballerina Swan Lake Beta1. |
 | <a target="_blank" href="/spec/lang/2020R1/">2020R1</a> | 2020-03-20 | First release of 2020. This is the basis for jBallerina 1.2.0. |
 | <a target="_blank" href="/spec/lang/2019R3/">2019R3</a> | 2019-09-07 | Stable release used as the basis for jBallerina 1.0.0 implementation. Mostly a cleanup from 2019R2 |

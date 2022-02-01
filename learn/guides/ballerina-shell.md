@@ -3,6 +3,7 @@ layout: ballerina-ballerina-shell-left-nav-pages-swanlake
 title: Ballerina Shell
 permalink: /learn/ballerina-shell/
 description: The Ballerina Shell is a Read-Evaluate-Print Loop (REPL) for Ballerina.
+keywords: ballerina shell, REPL, ballerina, programming language
 active: ballerina-shell
 intro: The Ballerina Shell is a Read-Evaluate-Print Loop (REPL) for Ballerina.
 redirect_from:
@@ -16,11 +17,11 @@ It allows you to evaluate snippets of code without having to write complete prog
 This will particularly be useful if you are looking to try out the language and its new features, and also for debugging purposes.
 
 >**Note:** Ballerina Shell currently supports a subset of the language features. Ballerina Shell doesn't support 
-> services and isolation features. Also, Ballerina Shell provides limited feature support for the worker-related implementations.
+> services and isolation features. Also, Ballerina Shell provides limited feature support for worker-related implementations.
 
 ## Setting up the Prerequisites
 
-Ballerina Shell is a part of the Ballerina distribution. Therefore, if you already installed Ballerina, you are all set. If not, for information on installing the latest version of Ballerina, see [downloads](https://ballerina.io/downloads/).
+Ballerina Shell is a part of the Ballerina distribution. Therefore, if you have already installed Ballerina, you are all set. If not, for information on installing the latest version of Ballerina, see [downloads](https://ballerina.io/downloads/).
 
 ## Starting the Shell
 
@@ -155,7 +156,7 @@ Execute the `/dclns` command to view the module-level declarations.
 =$ /dclns
 | (sum) function sum(int a, int b) returns int {int sum = a + b;return sum;}
 ```
-The function can in turn be called and assigned to a variable.
+The defined function can be called and assigned to a variable.
 
 ```bash
 =$ var total = sum(10, 20)
@@ -187,7 +188,7 @@ Now, the list of declarations includes the `Person` record as well.
 
 A definition can be modified by providing a new definition with the same name. This effectively overwrites the previous definition with the same name. 
 
-The example below modifies the `sum()`function.
+The example below modifies the `sum()` function.
 
 ```bash
 =$ function sum(float a, float b) returns float => a + b
@@ -205,9 +206,9 @@ Now, `sum()` is a function accepting float parameters and returning a float valu
 
 If you have any definitions in source files, you can load these definitions to the Shell through the `/file <FILE_PATH>` command. 
 
-If the source file contains a main function, the Shell will disregard it.
+If the source file contains the main function, the Shell will disregard it.
 
-For example, see the sample `text.bal` file below.
+For example, see the sample `test.bal` file below.
 
 ```ballerina
 import ballerina/io;
@@ -217,11 +218,11 @@ function add(int a, int b) returns int {
 }
 
 function subtract(int a, int b) returns int {
-    returns a - b;
+    return a - b;
 }
 
 function multiply(int a, int b) returns int {
-    returns a * b;
+    return a * b;
 }
 
 public function main() {

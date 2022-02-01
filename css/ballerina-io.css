@@ -705,7 +705,7 @@ button.navbar-toggle {
 }
 
 a.cMobileLogo {
-    margin-top: 10px;
+    margin-top: 3px;
 
     display: inline-block;
 }
@@ -1651,6 +1651,7 @@ li pre code span.line-numbers-rows {
     .navbar-header {
         float: none;
     }
+    .cIUnderstand{margin-top:10px;}
     .navbar-toggle {
         display: block;
     }
@@ -1828,7 +1829,8 @@ ul.wy-breadcrumbs {
 
 .cCookie-Policy p a {
     color: #57595d !important;
-    font-weight: 600;
+    font-weight: 400;
+    font-size: 16px;
 }
 .cCookie-Policy p a:hover {
     color: #fff !important;
@@ -1840,7 +1842,11 @@ ul.wy-breadcrumbs {
     color: #fff;
     padding: 10px 20px;
     display: inline-block;
-    margin-top: 10px;
+    font-size: 16px;
+}
+.cIUnderstand:hover{
+    background-color: #eeeeee;
+    color: #57595d ;
 }
 
 .cBlallerina-io-docs-content-container ul li {

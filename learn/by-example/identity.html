@@ -12,7 +12,9 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="nx">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="nx">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -20,17 +22,34 @@ redirect_from:
     <span class="nx">MyClass</span> <span class="nx">obj1</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">MyClass</span><span class="p">();</span>
     <span class="nx">MyClass</span> <span class="nx">obj2</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">MyClass</span><span class="p">();</span>
     <span class="c1">// `b1` will be true.</span>
-    <span class="kt">boolean</span> <span class="nx">_</span> <span class="p">=</span> <span class="p">(</span><span class="nx">obj1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">obj1</span><span class="p">);</span>
+    <span class="kt">boolean</span> <span class="nx">b1</span> <span class="p">=</span> <span class="p">(</span><span class="nx">obj1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">obj1</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b1</span><span class="p">);</span>
+
     <span class="c1">// `b2` will be false.</span>
-    <span class="kt">boolean</span> <span class="nx">_</span> <span class="p">=</span> <span class="p">(</span><span class="nx">obj1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">obj2</span><span class="p">);</span>
+    <span class="kt">boolean</span> <span class="nx">b2</span> <span class="p">=</span> <span class="p">(</span><span class="nx">obj1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">obj2</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b2</span><span class="p">);</span>
+
     <span class="c1">// `b3` will be true.</span>
-    <span class="kt">boolean</span> <span class="nx">_</span> <span class="p">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]);</span>
+    <span class="kt">boolean</span> <span class="nx">b3</span> <span class="p">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b3</span><span class="p">);</span>
+
     <span class="c1">// `b4` will be false.</span>
-    <span class="kt">boolean</span> <span class="nx">_</span> <span class="p">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span><span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]);</span>
+    <span class="kt">boolean</span> <span class="nx">b4</span> <span class="p">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">==</span><span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b4</span><span class="p">);</span>
+
     <span class="c1">// `b5` will be true.</span>
-    <span class="kt">boolean</span> <span class="nx">_</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.0</span> <span class="o">==</span> <span class="o">+</span><span class="mf">0.0</span><span class="p">);</span>
+    <span class="kt">boolean</span> <span class="nx">b5</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.0</span> <span class="o">==</span> <span class="o">+</span><span class="mf">0.0</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b5</span><span class="p">);</span>
+
     <span class="c1">// `b6` will be false.</span>
-    <span class="kt">boolean</span> <span class="nx">_</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.0</span> <span class="o">==</span><span class="p">=</span> <span class="o">+</span><span class="mf">0.0</span><span class="p">);</span>
+    <span class="kt">boolean</span> <span class="nx">b6</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.0</span> <span class="o">==</span><span class="p">=</span> <span class="o">+</span><span class="mf">0.0</span><span class="p">);</span>
+
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b6</span><span class="p">);</span>
 
 <span class="p">}</span>
 </pre></div>
@@ -42,7 +61,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Identity</h2>
-                            <p><p><code>===</code> and <code>!==</code> operators test for identity. Identical for mutable basic types means stored at the same address.
+                            <p><p><code>===</code> and <code>!==</code> operators test for identity. Values of mutable basic types are identical if and only if they are stored in the same address.
  <code>==</code> and <code>!=</code> are not defined for objects. <code>-0.0</code> and <code>+0.0</code> are equal but not identical.</p>
 </p>
 
@@ -84,7 +103,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=f63dbfadad33c66dadd543336258ce12&file=identity.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ebc6e31f8fb85c6b657be44e719e62db&file=identity.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -97,6 +116,18 @@ redirect_from:
                     <div class="codeSnippeset">
 
                         <div class="cBBE-body">
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
                             
                             <div class="cTR">
 
@@ -129,7 +160,7 @@ redirect_from:
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    boolean _ = (obj1 === obj1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean b1 = (obj1 === obj1);
 </code></pre></div>
 
                                 </div>
@@ -145,10 +176,22 @@ redirect_from:
                                 </div>
                             </div>
                             
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(b1);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    boolean _ = (obj1 === obj2);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean b2 = (obj1 === obj2);
 </code></pre></div>
 
                                 </div>
@@ -164,10 +207,22 @@ redirect_from:
                                 </div>
                             </div>
                             
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(b2);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    boolean _ = ([1,2,3] == [1,2,3]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean b3 = ([1, 2, 3] == [1, 2, 3]);
 </code></pre></div>
 
                                 </div>
@@ -183,10 +238,22 @@ redirect_from:
                                 </div>
                             </div>
                             
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(b3);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    boolean _ = ([1,2,3] === [1,2,3]);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean b4 = ([1, 2, 3] === [1, 2, 3]);
 </code></pre></div>
 
                                 </div>
@@ -202,10 +269,22 @@ redirect_from:
                                 </div>
                             </div>
                             
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(b4);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    boolean _ = (-0.0 == +0.0);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean b5 = (-0.0 == +0.0);
 </code></pre></div>
 
                                 </div>
@@ -221,10 +300,22 @@ redirect_from:
                                 </div>
                             </div>
                             
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(b5);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    boolean _ = (-0.0 === +0.0);
+                                    <div class="highlight"><pre><code class=language-ballerina>    boolean b6 = (-0.0 === +0.0);
 </code></pre></div>
 
                                 </div>
@@ -236,6 +327,18 @@ redirect_from:
 
                                         </div>
                                     </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(b6);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
                                     
                                 </div>
                             </div>
@@ -263,6 +366,12 @@ redirect_from:
 
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run identity.bal
+true
+false
+true
+false
+true
+false
 </code></pre></div>
 
                                 </div>

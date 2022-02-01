@@ -28,7 +28,7 @@ The Ballerina Tool is a command-line tool for managing Ballerina source code. It
 
 It also enables you to easily install, update, and switch among Ballerina distributions. 
 
-In the CLI, execute the `bal help` command to view all the actions you can perform with the Ballerina Tool as shown below:
+In the CLI, execute the `bal help` command to view all the actions you can perform with the Ballerina Tool as shown below.
 
 ```sh
 → bal help
@@ -93,11 +93,11 @@ BALLERINA COMMANDS
 
 ```
 
-You can use it in the below format.
+You can use it in the following format.
 
-> `bal <THE-COMMAND> <ITS-ARGUEMENTS>`
+> `bal <COMMAND> <ARGUMENTS>`
 
-> **Tip:** You can view details of the commands below by executing the `bal help <COMMAND>`. For example, the below is the output of the `bal help pull` command.
+> **Tip:** You can view details of the commands by executing the `bal help <COMMAND>`. For example, the following is the output of the `bal help pull` command.
 
 ```sh
 → bal help pull
@@ -136,12 +136,12 @@ These everyday commands are your best friends! They address the very basics of p
 <table class="cComandTable">
 <tr>
 <td class="cCommand">build</td>
-<td class="cDescription">Compile a standalone `.bal` file, or an entire package into an executable JAR file. For more information, see <a href="/learn/user-guide/getting-started/writing-your-first-ballerina-program">Writing Your First Ballerina Program</a>.
+<td class="cDescription">Compile a standalone <code>.bal</code> file, or an entire package into an executable JAR file. For more information, see <a href="/learn/getting-started-with-ballerina/">Writing Your First Ballerina Program</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">run</td>
-<td class="cDescription">Build and run a standalone `.bal` file, an entire package, or a previously-built program. For more information, see <a href="/learn/user-guide/getting-started/writing-your-first-ballerina-program">Writing Your First Ballerina Program</a>.
+<td class="cDescription">Build and run a standalone <code>.bal</code> file, an entire package, or a previously-built program. For more information, see <a href="/learn/getting-started-with-ballerina/">Writing Your First Ballerina Program</a>.
 </td>
 </tr>
 <tr>
@@ -156,7 +156,7 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">pack</td>
-<td class="cDescription">Create the distribution format (`.bala`) of the current package
+<td class="cDescription">Create the distribution format (<code>.bala</code>) of the current package
 </td>
 </tr>
 </table>
@@ -168,7 +168,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 <table class="cComandTable">
 <tr>
 <td class="cCommand">new</td>
-<td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/user-guide/ballerina-packages/creating-your-first-ballerina-package">Ballerina Packages</a>.
+<td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/getting-started-with-ballerina/#creating-a-new-project">Ballerina Packages</a>.
 </td>
 </tr>
 <tr>
@@ -218,13 +218,12 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">openapi</td>
-<td class="cDescription">This is the OpenAPI (Swagger) stub/skeleton generation tool. For more information, see <a href="/learn/using-the-openapi-tools">Using the OpenAPI Tools</a>.</td>
+<td class="cDescription">This is the OpenAPI (Swagger) stub/skeleton generation tool. For more information, see <a href="/learn/ballerina-openapi-support/">Using the OpenAPI Tools</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">bindgen</td>
 <td class="cDescription">Use this tool for auto-generating Ballerina bridge code for Java APIs. For more information, see <a href="/learn/calling-java-code-from-ballerina">Calling Java Code from Ballerina</a>.</td>
 </tr>
-<tr>
 <tr>
 <td class="cCommand">shell</td>
 <td class="cDescription"> Use this to run a REPL instance of Ballerina and execute small snippets of code.</td>

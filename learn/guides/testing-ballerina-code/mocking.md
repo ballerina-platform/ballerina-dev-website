@@ -1,9 +1,9 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
 title: Mocking
-description: Learn how to use Ballerina's built-in mocking API provided by the test to test modules
- independent from other modules and external endpoints.
-keywords: ballerina, programming language, testing, mocking
+description: Learn how to use the mocking API of Ballerina test framework to test modules
+ independent from other modules, and external endpoints.
+keywords: ballerina, programming language, testing, mocking, object mocking
 permalink: /learn/testing-ballerina-code/mocking/
 active: mocking
 intro: Mocking is useful to control the behavior of functions and objects to control the communication with other modules and external endpoints. A mock can be created by defining return values or replacing the entire object or function with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.
@@ -17,14 +17,14 @@ redirect_from:
 
 ## Mocking Objects
 
-The `Test` module provides capabilities to mock an object for unit testing. This allows you to control the behavior of 
+The `Test` module provides capabilities to mock an object for unit testing. This allows you to control the behaviour of 
 the object member functions and values of member fields via stubbing or replacing the entire object with a user-defined 
 equivalent. This feature will help you to test the Ballerina code independently of other modules and external endpoints.
 
 Mocking objects can be done in two ways :
 
 1. Creating a test double (providing an equivalent object in place of the real object)
-2. Stubbing the member function or member variable (specifying the behavior of the functions and values of the 
+2. Stubbing the member function or member variable (specifying the behaviour of the functions and values of the 
 variables)
 
 
@@ -35,8 +35,8 @@ structurally equivalent to the real object via the mocking features in the test 
 
 ***Example:***
 
-Let's make changes to the example in the [Quick Start](/learn/testing-ballerina-code/testing-quick-start) to define a 
-test double for the  `clientEndpont` object.
+Let's make changes to the example in the [Testing a Simple Function](/learn/testing-ballerina-code/testing-a-simple-function/) to define a 
+test double for the `clientEndpont` object.
 
 >**Note:** Only the `get` function is implemented since it is the only function used in the sample. Attempting to call
  any other member function of the `clientEndpoint` will result in a runtime error. 
@@ -79,7 +79,7 @@ a specific value or to do nothing.
 
 ***Example:***
 
-The example in the [Quick Start](/learn/testing-ballerina-code/testing-quick-start) shows how the `get` function of the 
+The example in [Testing a Simple Function](/learn/testing-ballerina-code/testing-a-simple-function/) shows how the `get` function of the 
 client object can be stubbed to return a value. Let’s make changes to that example to get a random joke from a specific 
 category (e.g., food or movies).
 
@@ -184,7 +184,7 @@ function getCategoriesResponse() returns http:Response {
 
 ***main_test.bal***
  
-This test stubs the behavior of the `get` function to return a specific value in 2 ways:
+This test stubs the behaviour of the `get` function to return a specific value in 2 ways:
 
 1. Stubbing to return a specific value in general
 2. Stubbing to return a specific value based on the input
@@ -217,7 +217,7 @@ public function testGetRandomJoke() {
 
 ***main_test.bal***
 
-This test stubs the behavior of the `get` function to return a specified sequence of values for each `get` function 
+This test stubs the behaviour of the `get` function to return a specified sequence of values for each `get` function 
 invocation (i.e., the first call to the `get` function will return the first argument and the second call will return 
 the second argument).
 
@@ -272,7 +272,7 @@ ProductInventory inventory = table [
             {code: 3, name: "Apple", quantity: "750g"}
         ];
 
-# This client represets a product.
+# This client represents a product.
 #
 # + productCode - An int code used to identify the product.
 public client class ProductClient {
@@ -283,7 +283,7 @@ public client class ProductClient {
     }
 }
 
-// The Client which represents the product with the code `1` (i.e. "Milk").
+// The Client represents the product with the code `1` (i.e. "Milk").
 ProductClient productClient = new (1);
 
 # Get the name of the product represented by the ProductClient.
@@ -347,7 +347,7 @@ function sendNotification(string[] emailIds) returns error? {
 ```
 ***main_test.bal***
 
-This test stubs the behavior of the `send` function to do nothing for testing the `sendNotification` function.
+This test stubs the behaviour of the `send` function to do nothing for testing the `sendNotification` function.
 
 ```ballerina
 import ballerina/test;
@@ -374,7 +374,7 @@ The Ballerina test framework provides the capability to mock a function. You can
 you are testing or a function of an imported module by using the mocking feature. This feature will help you to test 
 your Ballerina code independently from other modules and functions.
 
-The object specified with the `@test:Mock {}` annotation will be considered as a mock function, which gets triggered in 
+The object specified with the `@test:Mock{}` annotation will be considered as a mock function, which gets triggered in 
 place of the real function.
 
 * ***moduleName : "&lt;moduleName&gt;"*** - (optional) Name of the module in which the function to be mocked resides 
@@ -412,12 +412,11 @@ import ballerina/test;
 test:MockFunction intAddMockFn = new();
 ```
 
-After the initialization, the following options can be used to stub the behavior of a function written in the
- module being tested.
+After the initialization, the following options can be used to stub the behaviour of a function written in the module being tested.
  
 ### Stubbing to Return a Specific Value
   
- This test stubs the behavior of the `get` function to return a specific value in 2 ways:
+ This test stubs the behaviour of the `get` function to return a specific value in 2 ways:
      
  1. Stubbing to return a specific value in general
  2. Stubbing to return a specific value based on the input
@@ -443,7 +442,7 @@ function testReturn() {
 
 ### Stubbing to Invoke Another Function in Place of the Real
 
-This test stubs the behavior of the `intAdd` function to substitute it with a user-defined mock function.
+This test stubs the behaviour of the `intAdd` function to substitute it with a user-defined mock function.
 
 ```ballerina
 import ballerina/test;
@@ -465,7 +464,7 @@ public function mockIntAdd(int a, int b) returns int {
 }
 ```
 
-This test stubs the behavior of an imported function to substitute it with a user-defined mock function.
+This test stubs the behaviour of an imported function to substitute it with a user-defined mock function.
 
 ```ballerina
 import ballerina/test;
@@ -514,7 +513,6 @@ function testCallOriginal() {
     // Stub to call the original `intAdd` function.
     test:when(intAddMockFn).callOriginal();
     test:assertEquals(addValues(11, 6), 17, msg = "function mocking failed");
-    
 }
     
 // The mock function to be used in place of the `intAdd` function

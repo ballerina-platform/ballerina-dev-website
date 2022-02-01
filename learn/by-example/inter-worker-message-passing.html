@@ -53,10 +53,10 @@ redirect_from:
                             <h2>Inter-Worker Message Passing</h2>
                             <p><p>Use <code>-&gt; W</code> or <code>&lt;- W</code> to send a message to or receive a message from worker <code>W</code> (use
  <code>function</code> to refer to the function&rsquo;s default worker).
- Messages are copied using <code>clone()</code>; implies immutable values are passed
- without copy.
+ The messages are copied using <code>clone()</code>. It implies immutable values are passed
+ without a copy.
  Message sends and receives are paired up at compile-time.
- Each pair turns into horizontal line in the sequence diagram.
+ Each pair turns into a horizontal line in the sequence diagram.
  Easy to use and safe, but limited expressiveness.</p>
 </p>
 
@@ -98,7 +98,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=83296551b69d07e07c96e3d8c4fb305a&file=inter_worker_message_passing.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=235aa9d40fcf8c80f9d4634cf19692eb&file=inter_worker_message_passing.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>

@@ -19,25 +19,24 @@ redirect_from:
 The test module provides the necessary annotations to construct a test suite. Therefore, importing the test module is 
 essential in order to write Ballerina tests.
 
-
 ```ballerina
 import ballerina/test;
 ```
 
-
 Once the test module is imported, the following annotation can be used to write a test function.
 
+```ballerina
+@test:Config {}
+```
 
-### '@test:Config {}'
-
-The function specified after the annotation is a test function. This annotation supports fields to configure the test 
-case with the following.
+The function defined after the above annotation will be detected as a test function. 
+This annotation supports the following attributes in order to configure the test execution.
 
 * ***enable: {true&#124;false}*** - Enable/disable the test. The default value is `true`.
     
-* ***before: &lt;function name&gt;*** - The function to be run just before the test is run. The default value is `none`.
+* ***before: &lt;function name&gt;*** - The function to be run just before the test is run. The default value is `nil`.
 
-* ***after: &lt;function name&gt;*** - The function to be run just after the test is run. The default value is `none`.
+* ***after: &lt;function name&gt;*** - The function to be run just after the test is run. The default value is `nil`.
  
 * ***dependsOn: [&lt;function names>, …]*** - List of functions on which the test function depends. The order in which 
 the comma-separated list appears has no prominence. In case there needs to be an order, the `dependsOn` parameter can 
@@ -86,14 +85,12 @@ function testFunction2 (int value) returns error? {
     test:assertEquals(value, 1, msg = "value is not correct");
 }
 
-
 function dataGen() returns (int[][]) {
     return [[1]];
 }
 
 // This is a random test function. This will randomly execute without depending  on
 // the other functions. However, note that the `testFunction2` function depends on this.
-
 @test:Config {
     groups: ["g1", "g2"]
 }
@@ -181,7 +178,7 @@ The Ballerina test framework supports the following assertions, which help to ve
 
 #### Values with Different Types
 
-The `diff` shows the expected and actual values preceded by the type within the angle brackets.
+The assertion failure shows the `expected` and `actual` values preceded by the type within the angle brackets.
 
 ***Example:***
 
@@ -207,7 +204,7 @@ function testAssertStringAndInt() {
 
 ##### Values of the `string` Type
 
-The `diff` is displayed in the GNU format using `+` and `-` to show the
+The `Diff` is displayed in the GNU format using `+` and `-` to show the
  line differences.
 
 ***Example:***
@@ -247,7 +244,7 @@ function testAssertString() {
 
 #### Values of the `JSON/record/map` Type
 
-The `diff` lists the JSON key mismatch using the `expected keys` and `actual keys`.
+The `Diff` lists the JSON key mismatch using the `expected keys` and `actual keys`.
 The JSON value mismatch is listed per key showing the `expected` and `actual` values.
 
 ***Example:***
@@ -310,7 +307,7 @@ Diff    :
 
 #### Values of other `anydata` Type
 
-The `diff` is displayed showing the `expected` and `actual` values.
+The assertion failure is displayed showing the `expected` and `actual` values.
 
 ***Example:***
 

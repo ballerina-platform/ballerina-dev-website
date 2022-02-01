@@ -42,7 +42,7 @@ The package automatically sets your PATH environment variable for you. You may n
 
 [Download the MSI file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `C:\Program Files\Ballerina` directory.
 
-The installer should put the `C:\Program Files\Ballerina\<BALLERINA-DIRECTORY>\bin` directory in your PATH environment variable. You may have to restart any open command prompts for the change to take effect.
+The installer sets the `C:\Program Files\Ballerina\<BALLERINA-DIRECTORY>\bin` directory in your PATH environment variable. You may have to restart any open command prompts for the change to take effect.
 
 ### Installing on Linux
 
@@ -91,7 +91,7 @@ Make certain the command output shows the version that you downloaded as shown b
 ```bash
 Ballerina <VERSION> (Swan Lake)
 Language specification 2022R1
-Update Tool 1.3.7
+Update Tool 1.3.8
 ```
 
 ## Updating Ballerina
@@ -106,7 +106,7 @@ If you already have a Ballerina version above 1.1.0 installed, you can use the u
 `bal dist pull latest`|Update to the latest Ballerina version
 `bal dist pull <VERSION>`|Fetch a specific distribution 
 
-For more information, see [Keeping Ballerina Up to Date](/learn/tooling-guide/cli-tools/update-tool/).
+For more information, see [Keeping Ballerina Up to Date](/learn/cli-documentation/update-tool/).
 
 
 ## Uninstalling Ballerina

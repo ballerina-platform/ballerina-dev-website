@@ -21,7 +21,13 @@
           active: update-commands
     - title: Update Tool
       url: /learn/cli-documentation/update-tool/
-      active: update-tool
+      sublinks:
+        - title: Using the Update Tool
+          url: /learn/cli-documentation/update-tool/#using-the-update-tool
+          active: using-the-update-tool
+        - title: Managing your Ballerina Distributions
+          url: /learn/cli-documentation/update-tool/#managing-your-ballerina-distributions
+          active: managing-your-ballerina-distributions
     - title: gRPC/Protocol Buffers
       url: /learn/cli-documentation/grpc/
       sublinks:

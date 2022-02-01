@@ -21,7 +21,7 @@ redirect_from:
         <span class="c1">// A return statement in a named worker terminates </span>
         <span class="c1">// the worker, not the function.</span>
         <span class="c1">// Similarly, when `check` is used and the expression evaluates</span>
-        <span class="c1">// to an error, the error value is returned terminating only the worker.</span>
+        <span class="c1">// to an `error`, the `error` value is returned terminating only the worker.</span>
         <span class="kt">int</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">check</span> <span class="kt">int</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
         <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 
@@ -41,7 +41,6 @@ redirect_from:
 
     <span class="nx">res</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">demo</span><span class="p">(</span><span class="s">&quot;50m&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -53,10 +52,10 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Named Worker Return Values</h2>
                             <p><p>Named workers have a return type, which defaults to nil.
- A return statement in a named worker terminates
+ A <code>return</code> statement in a named worker terminates
  the worker, not the function.
  Similarly, when <code>check</code> is used and the expression evaluates
- to an error, the error value is returned terminating the worker.
+ to an <code>error</code>, the <code>error</code> value is returned terminating the worker.
  Waiting on a named worker will give its return value.</p>
 </p>
 
@@ -98,7 +97,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=08480779bd76ffafff90d3595c49b0e0&file=named_worker_return_values.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=78cf80aac3ba3d258b2a427a8ed618c5&file=named_worker_return_values.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -171,7 +170,7 @@ redirect_from:
                                             <p>A return statement in a named worker terminates
  the worker, not the function.
  Similarly, when <code>check</code> is used and the expression evaluates
- to an error, the error value is returned terminating only the worker.</p>
+ to an <code>error</code>, the <code>error</code> value is returned terminating only the worker.</p>
 
                                         </div>
                                     </div>
@@ -254,7 +253,6 @@ redirect_from:
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    res = check demo(&quot;50m&quot;);
     io:println(res);
-    return;
 }
 </code></pre></div>
 

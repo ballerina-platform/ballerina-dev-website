@@ -30,7 +30,7 @@ Ballerina distribution is a term, which refers to these jBallerina and nBallerin
 
 Ballerina distributions are released via two different release channels at the moment. Swan Lake release channel is the primary release channel and the other one is the 1.x release channel. It is recommended to use Swan Lake release channel, if you are new to Ballerina.
 
-Ballerina yet does not have a release channel for nightly builds that give you access to the latest perhaps unstable features.
+Ballerina does not have a release channel yet for nightly builds that give you access to the latest perhaps unstable features.
 
 #### Patch Releases
 
@@ -38,11 +38,11 @@ Patch releases of Ballerina distributions contain bug fixes and fixes for critic
 
 *Example patch releases: 2201.0.1, 2201.1.1*
 
-## Installing Ballerina
+## Using the Update Tool
 
 If you haven’t installed Ballerina yet, see [Installing Ballerina](/learn/installing-ballerina/) for the instructions.
 
-Once the installation is complete, you would see the directory structure below inside the installation directory.
+Once the installation is complete, you would see the following directory structure inside the installation directory.
 
 ```sh
 .
@@ -90,7 +90,7 @@ If you want to update the Ballerina distribution, use 'bal dist update'
 
 ## Managing your Ballerina Distributions
 
-After updating the Ballerina Tool, you can use the `bal dist` command of it to manage Ballerina distributions. The `bal help dist` output below shows all the details about the `bal dist` command.
+After updating the Ballerina Tool, you can use the `bal dist` command to manage Ballerina distributions. The `bal help dist` output below shows all the details about the `bal dist` command.
 
 ```sh
 → bal help dist
@@ -168,7 +168,7 @@ Use 'bal help dist' for more information on specific commands.
 
 ### Removing a Distribution
 
-The `bal dist remove <distribution>` command allows you to delete a particular distribution from your local environment. If you’ve been updating Ballerina regularly, you may have accumulated many unused distribution versions. This command helps you to clean them up.
+The `bal dist remove <distribution>` command allows you to delete a particular distribution from your local environment. If you have been updating Ballerina regularly, you may have accumulated many unused distribution versions. This command helps you to clean them up.
 
 ```sh
 → bal dist remove slalpha5

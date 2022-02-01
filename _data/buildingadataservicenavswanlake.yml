@@ -1,46 +1,12 @@
 - title: Building a Data Service in Ballerina
   url: '#'
   sublinks:
-    - title: Prerequisites
-      url: /learn/building-a-data-service/#prerequisites
-      active: prerequisites
-      sublinks:
-        - title: Setting up a MySQL Server Instance
-          url: /learn/building-a-data-service/#setting-up-a-mysql-server-instance
-          active: setting-up-a-mysql-server-instance
-        - title: Creating a Database and Table
-          url: /learn/building-a-data-service/#creating-a-database-and-table
-          active: creating-a-database-and-table
-        - title: Creating a Ballerina Project
-          url: /learn/building-a-data-service/#creating-a-ballerina-project
-          active: creating-a-ballerina-project
-        - title: Creating a Record to Represent an Employee
-          url: /learn/building-a-data-service/#creating-a-record-to-represent-an-employee
-          active: creating-a-record-to-represent-an-employee
+    - title: Setting up the Prerequisites
+      url: /learn/building-a-data-service-in-ballerina/#setting-up-the-prerequisites
+      active: setting-up-the-prerequisites
     - title: Connecting to and Interacting with the Database
-      url: /learn/building-a-data-service/#connecting-to-and-interacting-with-the-database
+      url: /learn/building-a-data-service-in-ballerina/#connecting-to-and-interacting-with-the-database
       active: connecting-to-and-interacting-with-the-database
-      sublinks:
-        - title: Adding the MySQL Driver
-          url: /learn/building-a-data-service/#adding-the-mysql-driver
-          active: adding-the-mysql-driver
-        - title: Defining Configurations
-          url: /learn/building-a-data-service/#defining-configurations
-          active: defining-configurations
-        - title: Connecting to the Database
-          url: /learn/building-a-data-service/#connecting-to-the-database
-          active: connecting-to-the-database
-        - title: Executing Queries
-          url: /learn/building-a-data-service/#executing-queries
-          active: executing-queries
     - title: Exposing the Database via an HTTP RESTful API
-      url: /learn/building-a-data-service/#exposing-the-database-via-an-HTTP RESTful API
+      url: /learn/building-a-data-service-in-ballerina/#exposing-the-database-via-an-HTTP RESTful API
       active: exposing-the-database-via-an-HTTP RESTful API
-      sublinks:
-        - title: Creating a Service
-          url: /learn/building-a-data-service/#creating-a-service
-          active: creating-a-service
-        - title: Creating Resource Functions
-          url: /learn/building-a-data-service/#creating-resource-functions
-          active: creating-resource-functions
-

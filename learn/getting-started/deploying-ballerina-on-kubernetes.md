@@ -1,32 +1,34 @@
 ---
 layout: ballerina-deploying-ballerina-on-kubernetes-left-nav-pages-swanlake
-title: Deploying Your service on Kubernetes
-description: Let’s dockerize deploy your ballerina service and deploy into kubernetes.
+title: Deploying Ballerina on Kubernetes
+description: Let’s dockerize deploy your ballerina service and deploy it into kubernetes.
 keywords: ballerina, programming language, cloud, kubernetes, docker, cloud-native
 permalink: /learn/deploying-ballerina-on-kubernetes/
 active: deploying-ballerina-on-kubernetes
-intro: Let’s dockerize deploy your ballerina service and deploy into kubernetes.
+intro: Let’s dockerize deploy your ballerina service and deploy it into Kubernetes.
 redirect_from:
 - /learn/deploying-ballerina-on-kubernetes
 ---
 
-In this section, you will be writing a simple ballerina service and then, you will Dockerize the application and deploy it in Kubernetes.
+In this section, you will be writing a simple Ballerina service and then, you will dockerize the application and deploy it in Kubernetes.
 
-## Prerequisites
+## Setting up the Prerequisites
 
 To complete this tutorial, you need:
 
-- A Ballerina installation. Follow the steps in [Installing Ballerina](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/).
-- Docker installed and configured in your machine.
-- `kubectl` installed and configured to a Kubernetes cluster.
-- Docker hub account
-
+1. A command terminal
+2. A text editor
+    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
+3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
+4. [Docker](https://www.docker.com/) installed and configured in your machine
+5. A [Docker Hub](https://hub.docker.com/) account
+6. [Kubectl](https://kubernetes.io/docs/tasks/tools/) installed and configured in a [Kubernetes cluster](https://minikube.sigs.k8s.io/docs/start/)
 
 ## Code to Cloud
 
-Code to cloud is a compiler extension, which is packed with Ballerina, which makes it easier to generate artifacts required for the cloud from your Ballerina code. Currently, you could generate Docker and Kubernetes artifacts from the Ballerina code. This process encourages you to write cloud-ready code from day one without any additional effort. 
+Code to Cloud is a compiler extension, which is packed with Ballerina, which makes it easier to generate artifacts required for the cloud from your Ballerina code. Currently, you could generate Docker and Kubernetes artifacts from the Ballerina code. This process encourages you to write cloud-ready code from day one without any additional effort. 
 
-## Writing the ballerina service
+## Writing the Ballerina Service
 
 Let’s write a Ballerina program that returns a `Hello, World!` string upon invoking the resource. Execute the `bal new` command to create a new Ballerina project. 
 
@@ -55,8 +57,7 @@ service / on httpListener {
 }
 ```
 
-
-In order to enable the code to cloud functionality in the Ballerina project, you need to add the `cloud="k8s"` property to the build-options in the `Ballerina.toml` file.
+To enable the code to cloud functionality in the Ballerina project, you need to add the `cloud="k8s"` property to the `build-options` in the `Ballerina.toml` file.
 
 ***Ballerina.toml***
 
@@ -65,7 +66,7 @@ In order to enable the code to cloud functionality in the Ballerina project, you
 cloud = "k8s"
 ```
 
-5. Create a file named `Cloud.toml` in the package directory and add the content below. Make sure to replace the value of repository field with your Docker hub repository name.
+5. Create a file named `Cloud.toml` in the package directory and add the content below. Make sure to replace the value of the repository field with your Docker hub repository name.
 
 ***Cloud.toml***
 
@@ -103,6 +104,7 @@ Let's push the created docker image into docker hub now. You should replace the 
 ```
 $ docker push wso2inc/greeter:latest
 The push refers to repository [docker.io/wso2inc/greeter]
+latest: digest: sha256:c1acf5165848d70c347a970d6b5c32f63669cdbb0d4c1daca2c91cfbe32f61b2 size: 13718
 ```
 
 Execute the commands displayed from the compiler above to deploy the Ballerina application into the Kubernetes cluster.
@@ -114,4 +116,4 @@ deployment.apps/greeter-deployment created
 horizontalpodautoscaler.autoscaling/greeter-hpa created
 ```
 
-**Info:** For in-depth information about executing these deployed applications and the supported customizations in code to cloud, see [Code to cloud Deployment](/learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment.html).
+**Info:** For in-depth information about executing these deployed applications and the supported customizations in code to cloud, see [Code to cloud Deployment](/learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/).

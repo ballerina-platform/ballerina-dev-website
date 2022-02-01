@@ -1,0 +1,27 @@
+- title: Writing a RESTful API with Ballerina
+  url: #
+  sublinks:
+    - title: Setting up the Prerequisites
+      url: /learn/writing-a-restful-api-with-ballerina/#setting-up-the-prerequisites
+      active: setting-up-the-prerequisites
+    - title: Designing the Two Endpoints
+      url: /learn/writing-a-restful-api-with-ballerina/#designing-the-two-endpoints
+      active: designing-the-two-endpoints
+    - title: Creating a Package for Your Code
+      url: /learn/writing-a-restful-api-with-ballerina/#creating-a-package-for-your-code
+      active: creating-a-package-for-your-code
+    - title: Creating the COVID-19 Dataset
+      url: /learn/writing-a-restful-api-with-ballerina/#creating-the-covid-19-dataset
+      active: creating-the-covid-19-dataset
+    - title: Writing a Resource to Get All the COVID-19 Data
+      url: /learn/writing-a-restful-api-with-ballerina/#writing-a-resource-to-get-all-the-covid-19-data
+      active: writing-a-resource-to-get-all-the-covid-19-data
+    - title: Writing a Resource to Add COVID-19 Data by ISO Code
+      url: /learn/writing-a-restful-api-with-ballerina/#writing-a-resource-to-add-covid-19-data-by-iso-code
+      active: writing-a-resource-to-add-covid-19-data-by-iso-code
+    - title: Writing a Resource to Get Filtered COVID-19 Data by ISO Code
+      url: /learn/writing-a-restful-api-with-ballerina/#writing-a-resource-to-get-filtered-covid-19-data-by-iso-code
+      active: writing-a-resource-to-get-filtered-covid-19-data-by-iso-code
+    - title: The Complete Code
+      url: /learn/writing-a-restful-api-with-ballerina/#the-complete-code
+      active: the-complete-code

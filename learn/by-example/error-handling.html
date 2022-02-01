@@ -14,7 +14,7 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="c1">// Converts bytes to a string and then to an int.</span>
+<span class="c1">// Converts `bytes` to a `string` value and then to an `int` value.</span>
 <span class="kd">function</span> <span class="nx">intFromBytes</span><span class="p">(</span><span class="nx">byte</span><span class="p">[]</span> <span class="nx">bytes</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
 
     <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">ret</span> <span class="p">=</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">bytes</span><span class="p">);</span>
@@ -29,13 +29,13 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// The `main` function can return an error.</span>
+<span class="c1">// The `main` function can return an `error` value.</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
 
     <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">intFromBytes</span><span class="p">([</span><span class="mi">104</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">111</span><span class="p">]);</span>    
     <span class="k">if</span> <span class="nx">res</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
-        <span class="c1">// The `check` expression is shorthand for this pattern of</span>
-        <span class="c1">// checking if a value is an error and returning that value.</span>
+        <span class="c1">// The `check` expression is the shorthand for this pattern of</span>
+        <span class="c1">// checking if a value is an `error` value and returning that value.</span>
         <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
 
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -53,7 +53,7 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Error Handling</h2>
                             <p><p>Usually, a function handles errors by passing them up to its caller.
- The <code>main</code> function can also return an error.</p>
+ The <code>main</code> function can also return an <code>error</code> value.</p>
 </p>
 
                         </td>
@@ -94,7 +94,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=8d2e1e61408dcb76065358c9dedfec0c&file=error_handling.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=84e74c29d3d94f94b5346e4a8fc3c644&file=error_handling.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -131,7 +131,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Converts bytes to a string and then to an int.</p>
+                                            <p>Converts <code>bytes</code> to a <code>string</code> value and then to an <code>int</code> value.</p>
 
                                         </div>
                                     </div>
@@ -198,7 +198,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>main</code> function can return an error.</p>
+                                            <p>The <code>main</code> function can return an <code>error</code> value.</p>
 
                                         </div>
                                     </div>
@@ -230,8 +230,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>check</code> expression is shorthand for this pattern of
- checking if a value is an error and returning that value.</p>
+                                            <p>The <code>check</code> expression is the shorthand for this pattern of
+ checking if a value is an <code>error</code> value and returning that value.</p>
 
                                         </div>
                                     </div>

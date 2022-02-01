@@ -244,3 +244,14 @@ pre.line-numbers > code {
 			padding-right: 0.8em;
 			text-align: right;
 }
+
+#cBackground{
+	color: #20b6b0 !important;
+	background: #E0E0E0 !important;
+	text-shadow: none !important;
+ }
+ #cBackground:hover{
+	color: #585A5E !important ;
+	background: #E0E0E0 !important;
+	text-shadow: none !important;
+ }

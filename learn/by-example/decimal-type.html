@@ -25,6 +25,11 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">floatSurprise</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">nanos</span><span class="p">);</span>
+
+    <span class="c1">// Numeric literals can use the `d` suffix for them to be interpreted as `decimal` values</span>
+    <span class="c1">// (similarly, the `f` suffix can be used for `float`).</span>
+    <span class="k">var</span> <span class="nx">d</span> <span class="p">=</span> <span class="mi">12345</span><span class="nx">d</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">d</span> <span class="nx">is</span> <span class="nx">decimal</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -35,16 +40,12 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Decimal Type</h2>
-                            <p><p>It is the third numeric type. Works like <code>int</code> and <code>float</code>. No implicit conversion.
- Represents <code>decimal</code> fractions exactly. Avoids surprises that you get with <code>float</code>. Preserves precision.
- Separate basic type; counts as <code>anydata</code>. Literal uses the suffix <code>d</code>(<code>f</code> suffix is for <code>float</code>).
- Floating point, not infinite precision.
- <ul>
- <li>34 decimal digits</li>
- <li>22 digits are enough for US national debt in <code>¢</code></li>
- <li>27 digits are enough for an age of universe in <code>ns</code></li>
- <li>No <code>infinity</code>, <code>NaN</code> or negative zero</li>
- </ul></p>
+                            <p><p>The <code>decimal</code> type is the third numeric type. It works like <code>int</code> and <code>float</code> types.
+ It is a separate basic type and belongs to the <code>anydata</code> type.
+ There is no implicit conversions between <code>decimal</code> and other numeric types.
+ It can represent <code>decimal</code> fractions exactly and it preserves precision.
+ The <code>decimal</code> type does not include infinity, NaN, or negative zero.
+ It supports floating-point precision to 34 decimal digits.</p>
 </p>
 
                         </td>
@@ -85,7 +86,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=46b58ef4fefa61301b029475c3b9b0ea&file=decimal_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=37786ad59a0bf58d1eb9993d1b5e2dbb&file=decimal_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -147,15 +148,36 @@ redirect_from:
                             
                             <div class="cTR">
 
-                                <div class="code">
+                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() {
     floatSurprise();
     io:println(nanos);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    var d = 12345d;
+    io:println(d is decimal);
 }
 </code></pre></div>
 
                                 </div>
                                 <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Numeric literals can use the <code>d</code> suffix for them to be interpreted as <code>decimal</code> values
+ (similarly, the <code>f</code> suffix can be used for <code>float</code>).</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </div>
                             </div>
@@ -173,6 +195,7 @@ redirect_from:
                                     <div class="highlight"><pre><code class=shell-session>bal run decimal_type.bal
 100.08999999999999
 1E-9
+true
 </code></pre></div>
 
                                 </div>

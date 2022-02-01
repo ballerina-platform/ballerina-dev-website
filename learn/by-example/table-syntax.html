@@ -19,7 +19,7 @@ redirect_from:
     <span class="kt">int</span> <span class="nx">salary</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="c1">// Creates a `table` with `Employee` type members, where each</span>
+<span class="c1">// Creates a `table` with members of the `Employee` type, where each</span>
 <span class="c1">// member is uniquely identified using their `name` field.</span>
 <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="nx">t</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[</span>
     <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mi">100</span> <span class="p">},</span>
@@ -31,11 +31,11 @@ redirect_from:
     <span class="nx">foreach</span> <span class="nx">Employee</span> <span class="nx">e</span> <span class="nx">in</span> <span class="nx">t</span> <span class="p">{</span>
         <span class="nx">e</span><span class="p">.</span><span class="nx">salary</span> <span class="o">+=</span> <span class="nx">n</span><span class="p">;</span>
     <span class="p">}</span>
-
+    
 <span class="p">}</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Retrieves `Employee` with key value `Fred`.</span>
+    <span class="c1">// Retrieves the `Employee` member with `&quot;Fred&quot;` as the value of the key.</span>
     <span class="nx">Employee</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">t</span><span class="p">[</span><span class="s">&quot;Fred&quot;</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">toBalString</span><span class="p">());</span>
 
@@ -106,7 +106,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=5a9d3ab9c2d7c0f3a66b26c182d33651&file=table_syntax.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=8959b19a788dd256a661e4d04cb13ef4&file=table_syntax.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -161,7 +161,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates a <code>table</code> with <code>Employee</code> type members, where each
+                                            <p>Creates a <code>table</code> with members of the <code>Employee</code> type, where each
  member is uniquely identified using their <code>name</code> field.</p>
 
                                         </div>
@@ -188,6 +188,8 @@ redirect_from:
                                     <div class="highlight"><pre><code class=language-ballerina>    foreach Employee e in t {
         e.salary += n;
     }
+    
+}
 </code></pre></div>
 
                                 </div>
@@ -199,18 +201,6 @@ redirect_from:
 
                                         </div>
                                     </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>}
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
                                     
                                 </div>
                             </div>
@@ -239,7 +229,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Retrieves <code>Employee</code> with key value <code>Fred</code>.</p>
+                                            <p>Retrieves the <code>Employee</code> member with <code>&quot;Fred&quot;</code> as the value of the key.</p>
 
                                         </div>
                                     </div>

@@ -124,12 +124,15 @@
     - title: Concurrency
       url: #
       sublinks:
-          - title: Sequence-diagram based concurrency
+          - title: Sequence Diagram-Based Concurrency
             url: /learn/distinctive-language-features/concurrency/#sequence-diagram-based-concurrency
             active: sequence-diagram-based-concurrency
           - title: Transactions
             url: /learn/distinctive-language-features/concurrency/#transactions
             active: transactions
+          - title: Concurrency Safety
+            url: /learn/distinctive-language-features/concurrency/#concurrency-safety
+            active: concurrency-safety
     - title: Advanced, General-Purpose Language Features
       url: #
       sublinks:

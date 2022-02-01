@@ -10,7 +10,7 @@ redirect_from:
 - /learn/distinctive-language-features/concurrency
 ---
 
-## Sequence-diagram based concurrency
+## Sequence Diagram-Based Concurrency
 
 ### Named workers
 
@@ -433,7 +433,7 @@ In the above code example, the function **``update()``** has a transactional con
 
 This is particularly useful when the **``update()``** function is called from a remote or resource transactional method, in a service object, and is invoked by another remote Ballerina program as a result of a service invocation. The transaction manager of the Ballerina program that initiated the transaction, will send a message to the Ballerina program in which this function is running. The two transaction managers follow a two-phase commit, such that when the remote Ballerina program knows that commit is successful, it will then arrange for the transaction manager of the Ballerina program running the **``update()``** function to call the commit handler.
 
-## Concurency Safety
+## Concurrency Safety
 
 ### ``lock`` Statement
 

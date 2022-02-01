@@ -32,7 +32,7 @@ Code to Cloud is a compiler extension, which is packed with Ballerina, which mak
 
 Let’s write a Ballerina program that returns a `Hello, World!` string upon invoking the resource. Execute the `bal new` command to create a new Ballerina project. 
 
-```
+```bash
 $ bal new greeter
 ```
 
@@ -46,7 +46,7 @@ greeter/
 
 You can replace the `main.bal` content with the following code.
 
-```
+```ballerina
 import ballerina/http;
 
 listener http:Listener httpListener = new (8080);

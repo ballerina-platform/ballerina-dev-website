@@ -23,6 +23,7 @@ The below are the most stable versions of the lanuguage specification, which are
 
 | Version | Release Date | Description |
 | ------- | ------------ | ----------- | 
+| <a target="_blank" href="/spec/lang/2022R1/">2022R1</a> | 2022-01-31 | First release of 2022. This is the basis for Ballerina 2201.0.0 (Swan Lake). |
 | <a target="_blank" href="/spec/lang/2021R1/">2021R1</a> | 2021-06-02 | First release of 2021. This is the basis for Ballerina Swan Lake Beta1. |
 | <a target="_blank" href="/spec/lang/2020R1/">2020R1</a> | 2020-03-20 | First release of 2020. This is the basis for jBallerina 1.2.0. |
 | <a target="_blank" href="/spec/lang/2019R3/">2019R3</a> | 2019-09-07 | Stable release used as the basis for jBallerina 1.0.0 implementation. Mostly a cleanup from 2019R2 |
@@ -49,11 +50,11 @@ For the proposals for improving Ballerina, see the <a target="_blank" href="http
 
 | Specification | Latest Released Version | Current Snapshot |
 | ---- | --------------- | ---------------- |
-| Code to Cloud | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2021R1/c2c/code-to-cloud-spec.md">2021R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md">Snapshot</a> |
-| Configurable | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2021R1/configurable/spec.md">2021R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/configurable/spec.md">Snapshot</a> |
-| Language Extensions - Deprecation | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2021R1/langext/deprecation/spec.md">2021R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/langext/deprecation/spec.md">Snapshot</a> |
-| Package | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2021R1/packages/package-spec.md">2021R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/packages/package-spec.md">Snapshot</a> |
-| Test Framework | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2021R1/test/test-framework-spec.md">2021R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/test/test-framework-spec.md">Snapshot</a> |
+| Code to Cloud | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/c2c/code-to-cloud-spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md">Snapshot</a> |
+| Configurable | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/configurable/spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/configurable/spec.md">Snapshot</a> |
+| Language Extensions - Deprecation | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/langext/deprecation/spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/langext/deprecation/spec.md">Snapshot</a> |
+| Package | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/packages/package-spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/packages/package-spec.md">Snapshot</a> |
+| Test Framework | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/test/test-framework-spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/test/test-framework-spec.md">Snapshot</a> |
 
 ## About Ballerina Specifications
 

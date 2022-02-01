@@ -31,8 +31,13 @@ redirect_from:
                <p>For more details, see the <a href="https://blog.ballerina.io/posts/2022-02-01-announcing-ballerina-2201.0.0-swan-lake/">Swan Lake GA release announcement </a> and <a href="/downloads/swan-lake-release-notes/">release note.</a></p><br/> 
 					<!-- <h2 id="swanlake">{{ site.data.swanlake-latest.metadata.display-version }} <span id="versionInfo">({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2> -->
 					<div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;">
-						<p>If you are already using Ballerina, use the <a href="/learn/tooling-guide/cli-tools/update-tool/">Ballerina Update Tool</a> to directly update to {{ site.data.swanlake-latest.metadata.display-version }} by running the command below. </p> <pre>bal dist pull 2201.0.0</pre>
-						<p>If your Update Tool is below version 0.8.14, use the <code class="highlighter-rouge language-plaintext">ballerina update</code> command.</p> 
+						<p>If you are already using Ballerina, you can use the <a href="/learn/tooling-guide/cli-tools/update-tool/">Ballerina Update Tool</a> to directly update to {{ site.data.swanlake-latest.metadata.display-version }}. To do this:</p><br> 
+                  <p>1. Run the command below to get the latest version of the Update Tool.</p> 
+                  <p><pre>bal update</pre></p>
+                  <p>2. Run the command below to update your Ballerina version to {{ site.data.swanlake-latest.metadata.display-version }}.</p>
+                  <p><pre>bal dist update</pre></p>
+                  <!-- <p>Next, run the command below to update your Ballerina version to {{ site.data.swanlake-latest.metadata.display-version }}.</p>	 -->
+                  <p>If you already ran <code class="highlighter-rouge language-plaintext">bal dist update</code> (or <code class="highlighter-rouge language-plaintext">bal dist pull 2201.0.0)</code> before <code class="highlighter-rouge language-plaintext">bal update</code>, see <a href="/downloads/swan-lake-release-notes/2201-0-0-swan-lake/#troubleshooting">Updating Ballerina</a> to recover your installation.</p>
 					</div>
             </br> 
          </div> 

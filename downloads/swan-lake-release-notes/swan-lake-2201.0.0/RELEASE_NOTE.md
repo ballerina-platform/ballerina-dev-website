@@ -349,8 +349,8 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
 - Added support for OAS header parameters with optional/nullable types and default values
 
 ##### Ballerina Update Tool
-- Improved view for `bal dist list` with `-a` flag.
-- Improved `bal dist use` command to check for the distribution availability prior to the download suggestion.
+- Improved the view for `bal dist list` with the `-a` flag
+- Improved the `bal dist use` command to check for the distribution availability prior to the download suggestion
 
 #### Bug Fixes
 

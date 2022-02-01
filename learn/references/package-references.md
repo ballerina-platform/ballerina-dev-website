@@ -1,6 +1,6 @@
 ---
 layout: ballerina-package-references-left-nav-pages-swanlake
-title: Package References
+title: Package Layout
 description: The sections below include information about the structure of a package directory. It explains the purpose of each file in a package.
 keywords: ballerina, programming language, ballerina packages, package structure, package layout
 permalink: /learn/package-references/
@@ -10,8 +10,6 @@ redirect_from:
   - /learn/package-layout
   - /learn/package-layout/
 ---
-
-## Package Layout
 
 ```bash
 .

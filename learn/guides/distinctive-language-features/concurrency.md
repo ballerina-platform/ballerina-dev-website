@@ -12,7 +12,7 @@ redirect_from:
 
 ## Sequence Diagram-Based Concurrency
 
-### Named workers
+### Named Workers
 
 One of the key aspects of the Ballerina language is to support concurrency. With more and more applications needing to support network interaction, concurrency becomes important for handling scale. But at the same time, it introduces complexities in data handling.
 
@@ -159,7 +159,7 @@ In the above code example, the function **``multiFetch()``** declares two worker
 
 Instead of explicitly constructing the record in the ``wait`` expression, you can also use the shorthand ``wait {X , Y}`` which equates to ``wait {X: X, Y: Y}``. This works with the concept of futures also, as explained in the next section.
 
-### Named workers and Futures
+### Named Workers and Futures
 
 Workers and futures are the same. A named worker referred to as a variable becomes a future. The return type of the worker becomes the type of future.
 
@@ -190,7 +190,7 @@ int d = check wait c;
 
 In the above code example, the function **``startInt()``** expects an argument of the **``FuncInt``** function type. When called, it starts the execution of the function on a separate strand and returns a future for it.
 
-### Inter-worker Message Passing
+### Inter-Worker Message Passing
 
 You can pass messages between workers using the ``->`` and ``<-`` notation.
 
@@ -227,7 +227,7 @@ The pairing of message send and receive expressions (with  ``->`` and ``<-`` not
 
 This way of message passing is easy to use as it avoids complex deadlocks but has limited expressiveness.
 
-### Inter-worker Failure Propagation
+### Inter-Worker Failure Propagation
 
 In the ideal case, pairing the sends and receives guarantees that every message sent will be received, and vice versa. But what if the sender worker has an error before passing the message to the receiver worker?
 

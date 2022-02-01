@@ -79,7 +79,7 @@ tag="latest"
 
 Now, when we build the Ballerina project, the cloud artifacts should be generated inside the `target/` directory.
 
-```
+```bash
 $ bal build
 Compiling source
         example/greeter:0.1.0
@@ -101,7 +101,8 @@ Generating artifacts...
 ```
 
 Let's push the created docker image into docker hub now. You should replace the wso2inc name with your repository name.
-```
+
+```bash
 $ docker push wso2inc/greeter:latest
 The push refers to repository [docker.io/wso2inc/greeter]
 latest: digest: sha256:c1acf5165848d70c347a970d6b5c32f63669cdbb0d4c1daca2c91cfbe32f61b2 size: 13718
@@ -109,7 +110,7 @@ latest: digest: sha256:c1acf5165848d70c347a970d6b5c32f63669cdbb0d4c1daca2c91cfbe
 
 Execute the commands displayed from the compiler above to deploy the Ballerina application into the Kubernetes cluster.
 
-```
+```bash
 $ kubectl apply -f /home/example/greeter/target/kubernetes/greeter
 service/greeter-svc created
 deployment.apps/greeter-deployment created

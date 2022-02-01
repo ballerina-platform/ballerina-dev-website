@@ -18,7 +18,7 @@ redirect_from:
 - /learn/user-guide/testing-ballerina-code/configuring-tests/
 ---
 
-## Setting Up and Tearing Down
+## Setting up and Tearing down
 
 The following test annotations can be used to set up and tear down the instructions. These configuration annotations 
 enable executing instructions at various levels.

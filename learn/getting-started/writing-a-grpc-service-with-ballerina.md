@@ -160,7 +160,7 @@ $ bal new greeter_client
 
 Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
 
-#### Generating the source code
+#### Generating the Source Code
 
 Execute the following command inside the Ballerina project directory to generate source code related to the service definition.
 
@@ -187,7 +187,7 @@ Here,
 other and the Ballerina types corresponding to request and response messages.
 - The `greeter_client.bal` file is the client template file that contains the `main` function with the client declaration.
 
-#### Update and Run the application
+#### Update and Run the Application
 
 Let’s update the client template file (i.e., `greeter_client.bal`) and write code to call the remote function in the server and get the server response back. Sample code is as follows,
 

@@ -27,7 +27,33 @@ The version format has been revised. `2201.0.0 (Swan Lake)` represents the forma
 
 For further information, see [Ballerina Swan Lake is on the Horizon](https://blog.ballerina.io/posts/ballerina-swan-lake-is-on-the-horizon/).
 
->**Info:** If you already ran the `bal dist pull update` command, first run the `rm ~/.ballerina/ballerina-version ` command to delete the version configuration, and then, run the `bal dist use 2201.0.0` command to switch to 2201.0.0 version.
+#### Troubleshooting 
+
+If you already ran the `bal dist pull update` or `bal dist pull 2201.0.0` commands before the `bal update` command, follow the instructions below to recover your installation.
+
+##### For macOS Users (`.pkg` installations)
+
+1. Run the `rm ~/.ballerina/ballerina-version` command to delete the version configuration.
+2. Run the `bal dist use 2201.0.0` command to switch to the 2201.0.0 version.
+3. Run the `chmod 755 /Library/Ballerina/distributions/ballerina-2201.0.0/bin/bal` command to provide execute permissions for the `bal` command.
+
+##### For Ubuntu Users (`.deb` installations)
+
+1. Run the `rm ~/.ballerina/ballerina-version` command to delete the version configuration.
+2. Run the `bal dist use 2201.0.0` command to switch to the 2201.0.0 version.
+3. Run the `chmod 755 /usr/lib/ballerina/distributions/ballerina-2201.0.0/bin/bal` command to provide execute permissions for the `bal` command.
+
+##### For CentOS Users (`.rpm` installations)
+
+1. Run the `rm ~/.ballerina/ballerina-version` command to delete the version configuration.
+2. Run the `bal dist use 2201.0.0` command to switch to the 2201.0.0 version.
+3. Run the `chmod 755 /usr/lib64/ballerina/distributions/ballerina-2201.0.0/bin/bal` command to provide execute permissions for the `bal` command.
+
+##### For Windows Users (`.msi` installations)
+
+1. Run the `rm ~/.ballerina/ballerina-version` command to delete the version configuration.
+2. Run the `bal dist use 2201.0.0` command to switch to the 2201.0.0 version.
+3. Run the `chmod 755 /usr/lib64/ballerina/distributions/ballerina-2201.0.0/bin/bal` command to provide execute permissions for the `bal` command.
 
 ### Installing Ballerina
 

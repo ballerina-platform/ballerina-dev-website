@@ -500,7 +500,7 @@ service on hl {
 
 In the above code example, the service has a resource method which is **``file/``**. It has a string rest parameter. As a result, you can append any number of levels to the base path **``file/``** to represent a URL denoting a complete file path.
 
-## Spread Operator ...x
+## Spread Operator ``...x``
 
 The spread operator ``...x``  allows you to spread out the members of a structured type. If you declare **``...x``**, where ``x`` is a list or mapping, this is equivalent to specifying each member of ``x`` separated by a comma. In the case of lists, it is specified by positions, and in the case of mappings, it is specified by name.
 

@@ -978,7 +978,7 @@ To access every element in the children of ``e``, for every element ``e`` in ``x
 
 To access every text item in the children of ``e``, for every element ``e`` in ``x``, use **`x/*.text()`**.
 
-To access every element named ``para`` in the descendants of ``e``, for every element ``e`` in ``x``, use **``x/**/<para>``**. Here the use of ``**`` signifies any number of levels within a xml element.
+To access every element named ``para`` in the descendants of ``e``, for every element ``e`` in ``x``, use **``x/**/<para>``**. Here the use of ``**`` signifies any number of levels within a XML element.
 
 To access the first element named ``para`` in the children of ``e``, for every element ``e`` in ``x``, use  **``x/<para>[0]``**. You can point to the nth element using the ``[]`` syntax.
 

@@ -244,7 +244,7 @@ test is run.
 
 ***Example:***
 
-```bal
+```ballerina
 @test:Config { before : testFunction1 }
 function testFunction3() {
     io:println("I'm in test function 3!");
@@ -258,7 +258,7 @@ test is run.
 
 ***Example:***
 
-```bal
+```ballerina
 @test:Config { after : testFunction3 }
 function testFunction2() {
     io:println("I'm in test function 2!");

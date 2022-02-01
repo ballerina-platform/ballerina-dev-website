@@ -50,11 +50,11 @@ For the proposals for improving Ballerina, see the <a target="_blank" href="http
 
 | Specification | Latest Released Version | Current Snapshot |
 | ---- | --------------- | ---------------- |
-| Code to Cloud | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2021R1/c2c/code-to-cloud-spec.md">2021R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md">Snapshot</a> |
-| Configurable | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2021R1/configurable/spec.md">2021R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/configurable/spec.md">Snapshot</a> |
-| Language Extensions - Deprecation | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2021R1/langext/deprecation/spec.md">2021R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/langext/deprecation/spec.md">Snapshot</a> |
-| Package | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2021R1/packages/package-spec.md">2021R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/packages/package-spec.md">Snapshot</a> |
-| Test Framework | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2021R1/test/test-framework-spec.md">2021R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/test/test-framework-spec.md">Snapshot</a> |
+| Code to Cloud | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/c2c/code-to-cloud-spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md">Snapshot</a> |
+| Configurable | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/configurable/spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/configurable/spec.md">Snapshot</a> |
+| Language Extensions - Deprecation | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/langext/deprecation/spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/langext/deprecation/spec.md">Snapshot</a> |
+| Package | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/packages/package-spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/packages/package-spec.md">Snapshot</a> |
+| Test Framework | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/test/test-framework-spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/test/test-framework-spec.md">Snapshot</a> |
 
 ## About Ballerina Specifications
 

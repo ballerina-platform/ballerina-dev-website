@@ -19,6 +19,10 @@ If you are already using Ballerina, use the [Ballerina Update Tool](/learn/cli-d
 
 > `bal dist pull 2201.0.0`
 
+The version format has been revised. `2201.0.0 (Swan Lake)` represents the format of `$YYMM.$UPDATE.$PATCH ($CODE_NAME)`. 
+
+For further information, see [Ballerina Swan Lake is on the Horizon](https://blog.ballerina.io/posts/ballerina-swan-lake-is-on-the-horizon/).
+
 ### Installing Ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.

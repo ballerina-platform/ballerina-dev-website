@@ -15,7 +15,11 @@ redirect_from:
 
 ### Updating Ballerina
 
-If you are already using Ballerina, use the [Ballerina Update Tool](/learn/cli-documentation/update-tool/#using-the-update-tool) to directly update to 2201.0.0 (Swan Lake) by running the command below.
+If you are already using Ballerina, use the [Ballerina Update Tool](/learn/cli-documentation/update-tool/#using-the-update-tool) to directly update to 2201.0.0 (Swan Lake). To do this, first run the command below to get the latest version of the Update Tool.
+
+> `bal update`
+
+Next, run the command below to update your Ballerina version to 2201.0.0 (Swan Lake).
 
 > `bal dist pull 2201.0.0`
 

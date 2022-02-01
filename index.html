@@ -378,36 +378,36 @@ import ballerina/grpc;
 configurable int port = 9090;
 
 Album[] albums = [
-      {id: "1", title: "Blue Train", artist: "John Coltrane", price: 56.99},
-      {id: "2", title: "Jeru", artist: "Gerry Mulligan", price: 17.99},
-      {id: "3", title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan", price: 39.99}
+   {id: "1", title: "Blue Train", artist: "John Coltrane", price: 56.99},
+   {id: "2", title: "Jeru", artist: "Gerry Mulligan", price: 17.99},
+   {id: "3", title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan", price: 39.99}
 ];
 
 @grpc:ServiceDescriptor {
-      descriptor: ROOT_DESCRIPTOR_RECORD_STORE,
-      descMap: getDescriptorMapRecordStore()
+   descriptor: ROOT_DESCRIPTOR_RECORD_STORE,
+   descMap: getDescriptorMapRecordStore()
 }
 service "Albums" on new grpc:Listener(port) {
-      remote function listAlbums() returns stream&lt;Album, error?&gt;|error {
-         return albums.toStream();
+   remote function listAlbums() returns stream&lt;Album, error?&gt;|error {
+      return albums.toStream();
+   }
+
+   remote function getAlbum(string id) returns Album|error {
+      Album[] filteredAlbums = albums.filter(album =&gt; album.id === id);
+      if filteredAlbums.length() &gt; 0 {
+         return filteredAlbums.pop();
       }
 
-      remote function getAlbum(string id) returns Album|error {
-         Album[] filteredAlbums = albums.filter(album =&gt; album.id === id);
-         if filteredAlbums.length() &gt; 0 {
-            return filteredAlbums.pop();
-         }
+      return error grpc:NotFoundError(
+         string `The related album for ID ${id} cannot be found`
+         );
+   }
 
-         return error grpc:NotFoundError(
-            string `The related album for ID ${id} cannot be found`
-            );
-      }
-
-      remote function addAlbum(Album album) returns Album|error {
-         albums.push(album);
-         return album;
-      }
-}
+   remote function addAlbum(Album album) returns Album|error {
+      albums.push(album);
+      return album;
+   }
+}                                     
                                     </code>
                                  </pre>
                              </div>
@@ -432,10 +432,10 @@ service Albums {
 }
 
 message Album {
-      string id = 1;
-      string title = 2;
-      string artist = 3;
-      float price = 4;
+   string id = 1;
+   string title = 2;
+   string artist = 3;
+   float price = 4;
 };
                                     </code>
                                  </pre>

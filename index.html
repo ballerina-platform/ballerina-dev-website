@@ -542,7 +542,7 @@ service / on new http:Listener(8080) {
     }
 
     resource function get albums() returns Album[]|error? {
-        stream&gt;Album, sql:Error?&lt; albumStream = self.db->query(`SELECT * FROM Albums`);
+        stream&lt;Album, sql:Error?&gt; albumStream = self.db->query(`SELECT * FROM Albums`);
         Album[]? albums = check from Album album in albumStream select album;
         check albumStream.close();
         return albums;
@@ -551,7 +551,7 @@ service / on new http:Listener(8080) {
     resource function get albums/[string id]() returns Album|http:NotFound|error {
         Album|sql:Error result = self.db->queryRow(`SELECT * FROM Albums WHERE id = ${id}`);
         if result is sql:NoRowsError {
-            return &gt;http:NotFound&lt;{};
+            return &lt;http:NotFound&gt;{};
         } else {
             return result;
         }

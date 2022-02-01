@@ -27,6 +27,8 @@ The version format has been revised. `2201.0.0 (Swan Lake)` represents the forma
 
 For further information, see [Ballerina Swan Lake is on the Horizon](https://blog.ballerina.io/posts/ballerina-swan-lake-is-on-the-horizon/).
 
+>**Info:** If you already ran the `bal dist pull update` command, first run the `rm ~/.ballerina/ballerina-version ` command to delete the version configuration, and then, run the `bal dist use 2201.0.0` command to switch to 2201.0.0 version.
+
 ### Installing Ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.

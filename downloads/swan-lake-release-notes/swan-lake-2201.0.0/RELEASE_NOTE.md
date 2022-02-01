@@ -53,7 +53,6 @@ If you already ran the `bal dist pull update` or `bal dist pull 2201.0.0` before
 
 1. Run the `del %userprofile%\.ballerina\ballerina-version` command to delete the version configuration.
 2. Run the `bal dist use 2201.0.0` command to switch to the 2201.0.0 version.
-3. Run the `chmod 755 /usr/lib64/ballerina/distributions/ballerina-2201.0.0/bin/bal` command to provide execute permissions for the `bal` command.
 
 ### Installing Ballerina
 

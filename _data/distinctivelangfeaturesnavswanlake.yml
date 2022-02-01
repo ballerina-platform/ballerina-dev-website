@@ -200,8 +200,8 @@
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#rest-parameters
             active: rest-parameters
           - title: Spread Operator <code class="highlighter-rouge language-plaintext" id="cBackground">...x</code>
-            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#spread-operator---x
-            active: spread-operator---x
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#spread-operator-x
+            active: spread-operator-x
           - title: Spread in Binding Patterns
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#spread-in-binding-patterns
             active: spread-in-binding-patterns

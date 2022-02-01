@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Context
 description: A GraphQL service endpoint written in Ballerina
 keywords: ballerina, ballerina by example, bbe, graphql, graphql context
@@ -26,10 +26,10 @@ redirect_from:
         <span class="c1">// Initialize the `graphql:Context` object.</span>
         <span class="nx">graphql</span><span class="p">:</span><span class="nx">Context</span> <span class="nx">context</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 
-        <span class="c1">// Retrieve the header named `scope` and add it to the context with the</span>
+        <span class="c1">// Retrieve the header named `scope` and set it to the context with the</span>
         <span class="c1">// `scope` key. If the header does not exist, this will return an</span>
         <span class="c1">// `error`, and thereby, the request will not be processed.</span>
-        <span class="nx">check</span> <span class="nx">context</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s">&quot;scope&quot;</span><span class="p">,</span> <span class="nx">check</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;scope&quot;</span><span class="p">));</span>
+        <span class="nx">context</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s">&quot;scope&quot;</span><span class="p">,</span> <span class="nx">check</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;scope&quot;</span><span class="p">));</span>
 
         <span class="c1">// Finally, the context object has to be returned.</span>
         <span class="k">return</span> <span class="nx">context</span><span class="p">;</span>
@@ -145,9 +145,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="graphql-service-ssl-tls.html?is_ref_by_example=true">
+                                    <a class="next" href="graphql-file-upload.html?is_ref_by_example=true">
                                         <span>NEXT ></span>
-                                        <p>Service - SSL/TLS</p>
+                                        <p>File Upload</p>
                                     </a>
                                 </div>
                                 
@@ -251,7 +251,7 @@ import ballerina/lang.value;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        check context.add(&quot;scope&quot;, check request.getHeader(&quot;scope&quot;));
+                                    <div class="highlight"><pre><code class=language-ballerina>        context.set(&quot;scope&quot;, check request.getHeader(&quot;scope&quot;));
 </code></pre></div>
 
                                 </div>
@@ -259,7 +259,7 @@ import ballerina/lang.value;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Retrieve the header named <code>scope</code> and add it to the context with the
+                                            <p>Retrieve the header named <code>scope</code> and set it to the context with the
  <code>scope</code> key. If the header does not exist, this will return an
  <code>error</code>, and thereby, the request will not be processed.</p>
 
@@ -682,7 +682,7 @@ service /graphql on new graphql:Listener(4000) {
                                     <div class="highlight"><pre><code class=shell-session> # Now, send a query with the `scope` header value set to `user`. This will return an error in the `salary` field.
  # The query used: { profile { name salary } }
  curl -X POST -H &quot;Content-type: application/json&quot; -H &quot;scope: user&quot; -d &#39;{ &quot;query&quot;: &quot;{ profile { name salary } }&quot; }&#39; &#39;http://localhost:4000/graphql&#39;
- {&quot;errors&quot;:[{&quot;message&quot;:&quot;Permission denied&quot;, &quot;locations&quot;:[{&quot;line&quot;:1, &quot;column&quot;:18}], &quot;path&quot;:[&quot;profile&quot;, &quot;salary&quot;]}], &quot;data&quot;:{&quot;profile&quot;:{&quot;name&quot;:&quot;Walter White&quot;}}}
+ {&quot;errors&quot;:[{&quot;message&quot;:&quot;Permission denied&quot;, &quot;locations&quot;:[{&quot;line&quot;:1, &quot;column&quot;:18}], &quot;path&quot;:[&quot;profile&quot;, &quot;salary&quot;]}], &quot;data&quot;:null}
 </code></pre></div>
 
                                 </div>
@@ -697,8 +697,7 @@ service /graphql on new graphql:Listener(4000) {
                                     <div class="highlight"><pre><code class=shell-session> # Now, send a query with the `scope` header value set to `unknown`. This will return an error in the `profile` field.
  # The query used: { profile { name salary } }
  curl -X POST -H &quot;Content-type: application/json&quot; -H &quot;scope: unknown&quot; -d &#39;{ &quot;query&quot;: &quot;{ profile { name salary } }&quot; }&#39; &#39;http://localhost:4000/graphql&#39;
- {&quot;errors&quot;:[{&quot;message&quot;:&quot;Permission denied&quot;, &quot;locations&quot;:[{&quot;line&quot;:1,
- &quot;column&quot;:3}], &quot;path&quot;:[&quot;profile&quot;]}]}
+ {&quot;errors&quot;:[{&quot;message&quot;:&quot;Permission denied&quot;, &quot;locations&quot;:[{&quot;line&quot;:1, &quot;column&quot;:3}], &quot;path&quot;:[&quot;profile&quot;]}], &quot;data&quot;:null}
 </code></pre></div>
 
                                 </div>

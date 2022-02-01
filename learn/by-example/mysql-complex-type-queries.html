@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Query With Complex Types
 description: This BBE on the use of MySQL client with complex data types such as JSON, binary, blobs, and date/time fields in Ballerina.
 keywords: ballerina, ballerina by example, bbe, mysql, datatype, blobs, json, json_array, date, time
@@ -55,9 +55,10 @@ redirect_from:
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Binary types Result :&quot;</span><span class="p">);</span>
     <span class="c1">// Iterates the `binaryResultStream`.</span>
-    <span class="nx">check</span> <span class="nx">binaryResultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">BinaryType</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-    <span class="p">});</span>
+    <span class="nx">check</span> <span class="nx">from</span> <span class="nx">BinaryType</span> <span class="nx">result</span> <span class="nx">in</span> <span class="nx">binaryResultStream</span>
+        <span class="nx">do</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="p">};</span>
 
     <span class="c1">// Since the `rowType` is provided as an `JsonType`, the `jsonResultStream` will</span>
     <span class="c1">// have `JsonType` records.</span>
@@ -66,9 +67,10 @@ redirect_from:
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Json type Result :&quot;</span><span class="p">);</span>
     <span class="c1">// Iterates the `jsonResultStream`.</span>
-    <span class="nx">check</span> <span class="nx">jsonResultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">JsonType</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-    <span class="p">});</span>
+    <span class="nx">check</span> <span class="nx">from</span> <span class="nx">JsonType</span> <span class="nx">result</span> <span class="nx">in</span> <span class="nx">jsonResultStream</span>
+        <span class="nx">do</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="p">};</span>
 
     <span class="c1">// Since the `rowType` is provided as a `DateTimeType`, the `dateResultStream`</span>
     <span class="c1">// will have `DateTimeType` records. The `Date`, `Time`, `DateTime`, and</span>
@@ -79,9 +81,10 @@ redirect_from:
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;DateTime types Result :&quot;</span><span class="p">);</span>
     <span class="c1">// Iterates the `dateResultStream`.</span>
-    <span class="nx">check</span> <span class="nx">dateResultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">DateTimeType</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-    <span class="p">});</span>
+    <span class="nx">check</span> <span class="nx">from</span> <span class="nx">DateTimeType</span> <span class="nx">result</span> <span class="nx">in</span> <span class="nx">dateResultStream</span>
+        <span class="nx">do</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="p">};</span>
 
     <span class="c1">// Performs the cleanup after the example.</span>
     <span class="nx">check</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
@@ -370,9 +373,10 @@ import ballerina/time;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check binaryResultStream.forEach(function(BinaryType result) {
-        io:println(result);
-    });
+                                    <div class="highlight"><pre><code class=language-ballerina>    check from BinaryType result in binaryResultStream
+        do {
+            io:println(result);
+        };
 </code></pre></div>
 
                                 </div>
@@ -424,9 +428,10 @@ import ballerina/time;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check jsonResultStream.forEach(function(JsonType result) {
-        io:println(result);
-    });
+                                    <div class="highlight"><pre><code class=language-ballerina>    check from JsonType result in jsonResultStream
+        do {
+            io:println(result);
+        };
 </code></pre></div>
 
                                 </div>
@@ -480,9 +485,10 @@ import ballerina/time;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check dateResultStream.forEach(function(DateTimeType result) {
-        io:println(result);
-    });
+                                    <div class="highlight"><pre><code class=language-ballerina>    check from DateTimeType result in dateResultStream
+        do {
+            io:println(result);
+        };
 </code></pre></div>
 
                                 </div>
@@ -719,7 +725,7 @@ bal run
 Json type Result :
 {&quot;row_id&quot;:1,&quot;json_doc&quot;:{&quot;age&quot;:18,&quot;lastName&quot;:&quot;Bob&quot;,&quot;firstName&quot;:&quot;Jhon&quot;},&quot;json_array&quot;:[1,2,3]}
 DateTime types Result :
-{&quot;row_id&quot;:1,&quot;date_type&quot;:&quot;2017-05-23&quot;,&quot;time_type&quot;:11723000,&quot;timestamp_type&quot;:[1485342235,0],&quot;datetime_type&quot;:&quot;2017-01-25 11:03:55.0&quot;}
+{&quot;row_id&quot;:1,&quot;date_type&quot;:&quot;2017-05-23&quot;,&quot;time_type&quot;:11723000,&quot;timestamp_type&quot;:[1485342235,0E-9],&quot;datetime_type&quot;:&quot;2017-01-25 11:03:55.0&quot;}
 </code></pre></div>
 
                                 </div>

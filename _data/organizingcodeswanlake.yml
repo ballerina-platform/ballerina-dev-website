@@ -1,40 +1,18 @@
 - title: Organizing Ballerina Code 
   url: '#'
   sublinks:
-    - title: Package Layout
-      url: '#'
+    - title: Package Structure
+      url: /learn/organizing-ballerina-code/package-structure
       sublinks:
-        - title: Ballerina.toml
-          url: /learn/organizing-ballerina-code/package-layout/#ballerinatoml
-          active: ballerinatoml
-        - title: Dependencies.toml
-          url: /learn/organizing-ballerina-code/package-layout/#dependenciestoml
-          active: dependenciestoml
-        - title: Package.md
-          url: /learn/organizing-ballerina-code/package-layout/#packagemd
-          active: packagemd
-        - title: The target/ Directory
-          url: /learn/organizing-ballerina-code/package-layout/#the-target-directory
-          active: the-target-directory
-        - title: The resources/, tests/ Directories, and Module.md
-          url: /learn/organizing-ballerina-code/package-layout/#the-resources-tests-directories-and-modulemd
-          active: the-resources-tests-directories-and-modulemd
-        - title: The modules/ Directory
-          url: /learn/organizing-ballerina-code/package-layout/#the-modules-directory
-          active: the-modules-directory
-    - title: Modules
-      url: '#'
-      sublinks:
-        - title: Module Layout
-          url: /learn/organizing-ballerina-code/modules/#module-layout
-          active: module-layout
+        - title: Creating your First Ballerina Package
+          url: /learn/organizing-ballerina-code/#creating-your-first-ballerina-package
+          active: creating-your-first-ballerina-package
         - title: The Default Module
-          url: /learn/organizing-ballerina-code/modules/#the-default-module
+          url: /learn/organizing-ballerina-code/#the-default-module
           active: the-default-module
-        - title: Other Modules
-          url: /learn/organizing-ballerina-code/modules/#other-modules
-          active: other-modules
-        - title: Exporting Modules
-          url: /learn/organizing-ballerina-code/modules/#exporting-modules
-          active: exporting-modules
-
+        - title: Non-Default Modules
+          url: /learn/organizing-ballerina-code/#non-default-modules
+          active: non-default-modules
+    - title: Importing a Module from the Same Package
+      url: /learn/organizing-ballerina-code/#importing-a-module-from-the-same-package
+      active: importing-a-module-from-the-same-package

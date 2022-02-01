@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Batch Execute
 description: This BBE demonstrates how to use the MySQL client to execute a batch of DDL/DML operations in Ballerina.
 keywords: ballerina, ballerina by example, bbe, mysql, insert, update, delete, batch update
@@ -72,9 +72,10 @@ redirect_from:
         <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM Customers`</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Data in Customers table:&quot;</span><span class="p">);</span>
-    <span class="nx">check</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="p">});</span>
+    <span class="nx">check</span> <span class="nx">from</span> <span class="nx">record</span> <span class="p">{}</span> <span class="nx">resultRecord</span> <span class="nx">in</span> <span class="nx">resultStream</span>
+        <span class="nx">do</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">resultRecord</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+        <span class="p">};</span>
 
     <span class="c1">// Performs the cleanup after the example.</span>
     <span class="nx">check</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
@@ -360,9 +361,10 @@ import ballerina/sql;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Data in Customers table:&quot;);
-    check resultStream.forEach(function(record {} result) {
-        io:println(result.toString());
-    });
+    check from record {} resultRecord in resultStream
+        do {
+            io:println(resultRecord.toString());
+        };
 </code></pre></div>
 
                                 </div>

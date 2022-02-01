@@ -1,0 +1,27 @@
+- title: Ballerina OpenAPI Support
+  url: #
+  sublinks:
+    - title: Using the Capabilities of the OpenAPI Tools
+      url: /learn/ballerina-openapi-support/#using-the-capabilities-of-the-openapi-tools
+      active: using-the-capabilities-of-the-openapi-tools
+    - title: Generating a Ballerina Service from an OpenAPI Definition (Design-First Approach)
+      url: /learn/ballerina-openapi-support/#generating-a-ballerina-service-from-an-openapi-definition-design-first-approach
+      active: generate-a-ballerina-service-from-an-openapi-design-first-approach
+    - title: Exporting an OpenAPI Contract from a Ballerina Service (Code-First Approach)
+      url: /learn/ballerina-openapi-support/#exporting-an-openapi-contract-from-a-ballerina-service-code-first-approach
+      active: exporting-an-openapi-contract-from-a-ballerina-service-code-first-approach
+    - title: OpenAPI Validator Compiler Plugin
+      url: /learn/ballerina-openapi-support/#openapi-validator-compiler-plugin
+      active: openapi-validator-compiler-plugin
+    - title: Generating a Ballerina Client from an OpenAPI Definition
+      url: /learn/ballerina-openapi-support/#generating-a-ballerina-client-from-an-openapi-definition
+      active: generating-a-ballerina-client-from-an-openapi-definition
+    - title: Contributing to the WSO2 openapi-connectors Repository
+      url: /learn/ballerina-openapi-support/#contributing-to-the-wso2-openapi-connectors-repository
+      active: contributing-to-the-wso2-openapi-connectors-repository
+    - title: OpenAPI to Ballerina Command Reference
+      url: /learn/ballerina-openapi-support/#openapi-to-ballerina-command-reference
+      active: openapi-to-ballerina-command-reference
+    - title: OpenAPI Annotation Reference
+      url: /learn/ballerina-openapi-support/#openapi-annotation-reference
+      active: openapi-annotation-reference

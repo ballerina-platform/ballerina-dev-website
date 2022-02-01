@@ -1,6 +1,8 @@
 ---
 layout: ballerina-style-guide-left-nav-pages-swanlake
 title: Expressions
+description: The Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. The Ballerina code formatting tools are based on this guide.
+keywords: ballerina, programming language, ballerina style guide, expressions
 active: expressions
 permalink: /learn/style-guide/expressions/
 intro: The sections below include the coding conventions with respect to expressions.
@@ -23,7 +25,7 @@ redirect_from:
 
 * Do not keep spaces between the function name and opening parentheses `(`.
   
-* If it is unable to keep the function invocation in a single line due to it exceeding the max line length, split it into a new line based on the best practices given in [line breaks](/learn/style-guide/coding-conventions/#line-breaks).
+* If it is not possible to keep the function invocation in a single line due to it exceeding the maximum line length, split it into a new line based on the best practices given in [Line Breaks](/learn/style-guide/coding-conventions/#line-breaks).
     
 **Example,**
 
@@ -61,7 +63,7 @@ Person person = {
 };
 ```
 
-* You can define the fields in new lines. If so, make sure all the fields are in a separate line and they are block-indented.
+* You can define the fields in new lines. If you do so, make sure each field is in a separate line and is block-indented.
 
 **Do's**
 
@@ -94,7 +96,7 @@ Person p = {
 
 ## Map Literal
 
-* For map literals, follow the same formatting guidelines as [record literals](#record-literal).
+* For map literals, follow the same formatting guidelines as [Record Literals](/learn/style-guide/expressions/#record-literal).
   
 **Example,**
 
@@ -139,7 +141,7 @@ map<string> mapOfString2 = {
 string[] names = ["john", "doe", "jane", "doe"];
 ```
 
-* If an array cannot be placed on a single line due to it exceeding the max line length, split each value in the array to its own block-indented line.
+* If an array cannot be placed on a single line due to it exceeding the maximum line length, split each value in the array to its own block-indented line.
     
 **Example,**
 
@@ -181,7 +183,7 @@ string name = <string>person.name;
 
 ## Table Literal
 
-* Follow [record literals](#record-literal) formatting when formatting a table block.
+* Follow the formatting guidelines of [Record Literals](/learn/style-guide/expressions/#record-literal) when formatting a table block.
   
 **Example,**
   

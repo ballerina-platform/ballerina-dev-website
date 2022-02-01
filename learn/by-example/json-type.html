@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: JSON Type
 description: This BBE demonstrates json type in Ballerina.
 keywords: ballerina, ballerina by example, bbe, json type, json
@@ -15,7 +15,7 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
 
-<span class="kt">json</span> <span class="nx">j</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;x&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;y&quot;</span><span class="p">:</span> <span class="mi">2</span> <span class="p">};</span>
+<span class="kt">json</span> <span class="nx">j</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;x&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;y&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">};</span>
 
 <span class="c1">// Returns the `string` that represents `j` in JSON format.</span>
 <span class="kt">string</span> <span class="nx">s</span> <span class="p">=</span> <span class="nx">j</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">();</span>
@@ -85,7 +85,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=42c60f3b83e2e5e0ba16952e6a8952f4&file=json_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=899d467643aa66ca1a83d6b017793f88&file=json_type.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -115,7 +115,7 @@ import ballerina/lang.value;
                             <div class="cTR">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>json j = { &quot;x&quot;: 1, &quot;y&quot;: 2 };
+                                    <div class="highlight"><pre><code class=language-ballerina>json j = {&quot;x&quot;: 1, &quot;y&quot;: 2};
 </code></pre></div>
 
                                 </div>

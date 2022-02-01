@@ -6,6 +6,128 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
 ---
 <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/css/home-page-2020.css"/>
+<link rel="stylesheet" href="/css/prism.css">
+
+<style>
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+  color: #464646;
+  cursor: default;
+  border: transparent;
+  border-bottom: #20b6b0 3px solid !important;
+  background-color: transparent !important;
+}
+
+.nav-tabs > li > a:hover {
+  border-color:transparent !important;
+}
+.disabled {
+        pointer-events: none;
+        cursor: default;
+        background-color: #57595d !important;
+}
+.nav-tabs > li > a{
+   border-bottom: transparent 3px solid !important;
+}
+
+.cBallerina-io-Gray-row {
+  padding-bottom:0px;
+}
+tr:last-child >td{border-bottom: 0 !important;}
+a {
+  font-size: 20px;
+  color: #20b6b0;
+  text-decoration: none;
+}
+.focusPane{
+   transition: transform .2s; /* Animation */
+   border: 1px #c7c7c7 solid;
+}
+.focusPane:hover{
+   transform: scale(1.019);
+   background-color: #f5f5f5;
+   border: 1px #20b6b0 solid !important;
+   z-index: 7;
+}
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: 0em;
+	width: 0em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+.code[class*="language-"], .pre[class*="language-"] {
+  font-size: 12px !important;
+}
+.line-numbers-rows > span {
+	pointer-events: none;
+	display: none;
+	counter-increment: linenumber;
+}
+/* .cColHeight1{height:665px} */
+.line-numbers-rows > span:before {
+	content: counter(linenumber);
+	color: #999;
+	display: none;
+	padding-right: 0em;
+	text-align: right;
+}
+
+pre.line-numbers {
+  position: relative;
+  padding-left: 15px !important;
+  counter-reset: linenumber;
+}
+
+pre[class*="language-"] {
+  padding: 0em;
+  margin: 0;
+  overflow: auto;
+}
+
+pre{
+   border:none !important;
+}
+
+.playground-button:hover{
+   color: #464646 !important;
+   background-image: url(/img/play-button-hover.svg) !important;
+}
+
+td.cEventDateContainer1 span.cEventDate1{
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    display: inline-block;
+    color: #57595d;
+    margin-bottom: 5px;
+    border: none;
+    text-align: right;
+}
+
+
+.cEventName{
+    margin-top: -2px;
+    font-size: 20px;
+}
+td.cEventDateContainer{
+  width: 20%;
+}
+.cEventDateNum{
+    font-size: 20px !important;
+    font-weight: 450 !important;
+}
+.cEventDate1{text-align: right;}
+</style>
+<link rel="stylesheet" href="/css/events-page.css">
 <!-- <link rel="stylesheet" href="/css/home-page-old.css"/> -->
 <div class="row cBallerinaIntroSection">
    <div class="container">
@@ -29,25 +151,27 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
    </div>
    <!-- <div class="col-sm-12 col-md-1">&nbsp;</div> -->
    <div class="col-sm-12 col-md-5 cMainCTAContainer">
-      <!--<a class="cBallerina-io-Home-main-download-button cPlayButton" target="_blank" href="https://play.ballerina.io">
-         Try Ballerina
-         <p>Try without installing <br>in interactive playground</p>
-      </a>-->
-   <a class="cBallerina-io-Home-main-download-button" href="/downloads">
+
+      <a class="cBallerina-io-Home-main-download-button" target="_blank" href="/learn/getting-started-with-ballerina/">
+         Get Started
+         <p>Install Ballerina, set it all up <br>and take it for a spin.</p>
+      </a>
+      <a class="cBallerina-io-Home-main-download-button cPlayButton" target="_blank" href="/learn/by-example/">
+         Examples
+         <p>Explore and try Ballerina examples.<br> &nbsp;</p>
+      </a>
+   <!-- <a class="cBallerina-io-Home-main-download-button" href="/downloads">
    Download Ballerina
    <p>Distributions are available for <br>Linux, OS X, and Windows</p>
-   </a>
-   <!--<a class="cBallerina-io-Home-main-download-button cPlayButton" target="_blank" href="/learn/user-guide/getting-started/">
-      Get Started
-      <p>Install Ballerina, set it all up <br>and take it for a spin.</p>
-   </a>-->
+   </a> -->
+  
 
-   <ul>
+   <!-- <ul>
      
-      <li style="margin: 0;"><a class="cIconLink" href="/learn/by-example/introduction/" target="_blank">Ballerina By Example</a></li>
-      <li ><a class="cIconLink" href="/learn/user-guide/getting-started/">Get Started</a></li>
+      <li style="margin: 0;"><a class="cIconLink" href="/learn/by-example/" target="_blank">Ballerina By Example</a></li>
+      <li ><a class="cIconLink" href="/learn/installing-ballerina/setting-up-ballerina/">Get Started</a></li>
       
-      </ul>
+   </ul> -->
    
    </div>
 
@@ -65,6 +189,453 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
   
 
 </div>
+<!--START OF TRY BALLERINA TAB DESIGN 1-->
+<div class="row cWidget cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 8.5rem; background-color: #f5f5f5;">
+   <div class="container">
+      <div class="col-sm-12 col-md-12">
+         <h2>Ballerina in Action</h2>
+
+         <div class="cHscroll">
+         <ul class="nav nav-tabs cSamplesList">
+            <li class="active" ><a data-toggle="tab"  href="#firstTab" >Consuming Services</a></li>
+            <li><a data-toggle="tab" href="#thirdTab" >Working with Data</a></li>
+            <li><a data-toggle="tab" href="#secondTab" >RESTful API</a></li>
+          
+             <li><a data-toggle="tab" href="#fourthTab" >gRPC API</a></li>
+            <li><a data-toggle="tab" href="#sixthTab" >GraphQL API</a></li>
+
+            <li><a data-toggle="tab" href="#seventhTab" >Kafka Consumer/Producer</a></li>
+            <li><a data-toggle="tab" href="#databaseTab" >Working with Databases</a></li>
+         
+
+
+         </ul>
+      </div>
+         <div class="tab-content">
+            <div id="secondTab" class="tab-pane fade "  >
+               <div class="row" style="background-color: #f5f5f5;">
+                  <div class="col-lg-12 col-md-12 col-sm-12 focusPane " style="padding:20px;">
+                     <div class="FullCode" style="background-color: #f5f5f5;">
+                        <div class="highlight"> 
+                           <pre class="language-ballerina basic ballerina">
+                              <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/http;
+
+configurable int port = 8080;
+
+type Album readonly & record {|
+    string id;
+    string title;
+    string artist;
+    decimal price;
+|};
+
+table&lt;Album&gt; key(id) albums = table [
+        {id: "1", title: "Blue Train", artist: "John Coltrane", price: 56.99},
+        {id: "2", title: "Jeru", artist: "Gerry Mulligan", price: 17.99},
+        {id: "3", title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan", price: 39.99}
+    ];
+
+service / on new http:Listener(port) {
+    resource function get albums() returns Album[] {
+        return albums.toArray();
+    }
+
+    resource function get albums/[string id]() returns Album|http:NotFound {
+        Album? album = albums[id];
+        if album is () {
+            return &lt;http:NotFound&gt;{};
+        } else {
+            return album;
+        }
+    }
+
+    resource function post albums(@http:Payload Album album) returns Album {
+        albums.add(album);
+        return album;
+    }
+}
+
+                              </code>
+                           </pre>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- <div class="col-lg-5 col-sm-12 focusPane" style="padding:20px;border: 1px #c7c7c7 solid;">
+                     <img src="img/consuming-services-diagram.svg" style="max-width: 520px;" />
+
+                  </div> -->
+               </div>
+            </div>
+            <div id="firstTab" class="tab-pane fade in active"  >
+               <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                  <div class="col-lg-7 col-md-12 col-sm-12 focusPane codeBlock noBottomBorder" id="column1" style="padding:20px;border: 1px #c7c7c7 solid; ">
+                     <div class="FullCode" style="background-color: #f5f5f5;">
+                        <div class="highlight"> 
+                           <pre class="language-ballerina basic ballerina">
+                              <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/http;
+import ballerinax/googleapis.sheets;
+
+configurable string githubPAT = ?;
+configurable string repository = "ballerina-platform/ballerina-lang";
+configurable string sheetsAccessToken = ?;
+configurable string spreadSheetId = ?;
+configurable string sheetName = "Sheet1";
+
+map&lt;string&gt; httpHeaders = {
+    "Accept": "application/vnd.github.v3+json",
+    "Authorization": "token " + githubPAT
+};
+
+type PR record {
+    string url;
+    string title;
+    string state;
+    string created_at;
+    string updated_at;
+};
+
+public function main() returns error? {
+    http:Client github = check new ("https://api.github.com/repos/");
+    PR[] prs = check github->get(repository + "/pulls", httpHeaders);
+
+    sheets:Client gsheets = check new ({auth: {token: sheetsAccessToken}});
+    check gsheets->appendRowToSheet(spreadSheetId, sheetName,
+            ["Issue", "Title", "State", "Created At", "Updated At"]);
+
+    foreach var {url, title, state, created_at, updated_at} in prs {
+        check gsheets->appendRowToSheet(spreadSheetId, sheetName,
+                [url, title, state, created_at, updated_at]);
+    }
+}
+                              </code>
+                           </pre>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-5 col-md-12 col-sm-12 focusPane" id="column2" style="padding:20px;border: 1px #c7c7c7 solid;">
+                     <img src="img/consuming-services-diagram.svg" style="max-width: 520px;" />
+
+                  </div>
+               </div>
+            </div>
+            <div id="thirdTab" class="tab-pane fade"  >
+               <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                  <div class="col-lg-7 col-md-12 col-sm-12 focusPane codeBlock noBottomBorder" style="padding:20px;border: 1px #c7c7c7 solid;">
+                     <div class="FullCode" style="background-color: #f5f5f5;">
+                        <div class="highlight"> 
+                           <pre class="language-ballerina basic ballerina">
+                              <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/http;
+import ballerina/io;
+
+type Country record {
+    string country;
+    int population;
+    string continent;
+    int cases;
+    int deaths;
+};
+
+// Prints the top 10 countries having the highest case-fatality ratio.
+public function main() returns error? {
+    http:Client diseaseEp = check new ("https://disease.sh/v3/");
+    Country[] countries = check diseaseEp->get("covid-19/countries");
+
+    json summary =
+        from var {country, continent, population, cases, deaths} in countries
+            where population >= 100000 && deaths >= 100
+            let decimal caseFatalityRatio = &lt;decimal&gt;deaths / &lt;decimal&gt;cases * 100
+            order by caseFatalityRatio descending
+            limit 10
+            select {country, continent, population, caseFatalityRatio};
+    io:println(summary);
+}
+
+                              </code>
+                           </pre>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-5 col-md-12 col-sm-12 focusPane cColHeight1 diagramBox" style="padding:20px;border: 1px #c7c7c7 solid;">
+                     <img src="img/working-with-data-diagram.svg" style="max-width: 520px;" />
+                     <a target="_blank" href="https://play.ballerina.io/?gist=30a51792b6b4d46c2cbdfdd424fb3b45&file=play.bal" style="z-index: 999;">
+                        <button class="playground-button"  id="simple11" style="background:url(/img/play=button.svg)no-repeat scroll right center; color:#20b6b0;padding: 12px 30px ;border: none;float: right;background-size:20px ;font-size: 17px;margin-right: 50px;margin-top: 50px;"> Try in Playground</button>
+                     </a>  
+                  </div>
+               </div>
+            </div>
+             <div id="fourthTab" class="tab-pane fade"  >
+                 <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                     <div class="col-lg-7 col-md-12 col-sm-12 focusPane codeBlock noBottomBorder" style="padding:20px;border: 1px #c7c7c7 solid;">
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
+                                 <pre class="language-ballerina basic ballerina">
+                                    <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/grpc;
+
+configurable int port = 9090;
+
+Album[] albums = [
+    {id: "1", title: "Blue Train", artist: "John Coltrane", price: 56.99},
+    {id: "2", title: "Jeru", artist: "Gerry Mulligan", price: 17.99},
+    {id: "3", title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan", price: 39.99}
+];
+
+@grpc:ServiceDescriptor {
+    descriptor: ROOT_DESCRIPTOR_RECORD_STORE,
+    descMap: getDescriptorMapRecordStore()
+}
+service "Albums" on new grpc:Listener(port) {
+    remote function getAlbum(string id) returns Album|error {
+        Album[] filteredAlbums = albums.filter(album =&gt; album.id == id);
+        if filteredAlbums.length() &gt; 0 {
+            return filteredAlbums.pop();
+        }
+
+        return error grpc:NotFoundError(string `Cannot find the album for ID ${id}`);
+    }
+
+    remote function addAlbum(Album album) returns Album|error {
+        albums.push(album);
+        return album;
+    }
+
+    remote function listAlbums() returns stream&lt;Album, error?&gt;|error {
+        return albums.toStream();
+    }
+}
+                                    </code>
+                                 </pre>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-lg-5 col-md-12 col-sm-12 focusPane cColHeight1 diagramBox" style="padding:20px;border: 1px #c7c7c7 solid;">
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
+                                 <pre class="language-ballerina basic ballerina">
+                                    <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+
+service Albums {
+    rpc getAlbum(google.protobuf.StringValue)
+            returns (Album);
+    rpc addAlbum(Album) returns (Album);
+    rpc listAlbums(google.protobuf.Empty)
+            returns (stream Album);
+}
+
+message Album {
+    string id = 1;
+    string title = 2;
+    string artist = 3;
+    float price = 4;
+};
+                                    </code>
+                                 </pre>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div id="sixthTab" class="tab-pane fade"  >
+                 <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                     <div class="col-lg-12 col-md-12 col-sm-12 focusPane" style="padding:20px;border: 1px #c7c7c7 solid;">
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
+                            <pre class="language-ballerina basic ballerina">
+                                <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/graphql;
+import ballerina/http;
+import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
+
+configurable string user = ?;
+configurable string password = ?;
+configurable string host = ?;
+configurable int port = ?;
+configurable string database = ?;
+configurable string apiEndpoint = ?;
+
+public type Album record {
+    string id;
+    string title;
+    string artist;
+    decimal price;
+    Currency currency = USD;
+};
+
+public enum Currency {
+    USD,
+    LKR,
+    EUR,
+    GBP
+}
+
+service / on new graphql:Listener(9000) {
+    private final mysql:Client db;
+    private final http:Client forex;
+    private final Currency baseCurrency;
+
+    function init() returns error? {
+        self.db = check new (host, user, password, database, port);
+        self.forex = check new (apiEndpoint);
+        self.baseCurrency = USD;
+    }
+
+    resource function get album(string id, Currency currency = USD) returns Album|error {
+        Album album = check self.db->queryRow(`SELECT * FROM Albums WHERE id=${id}`);
+        if currency != self.baseCurrency {
+            string query = string `from=${self.baseCurrency}&to=${currency}`;
+            record {decimal rate;} exchange = check self.forex->get(string `/curerncyConversion?${query}`);
+            album.price = album.price * exchange.rate;
+            album.currency = currency;
+        }
+        return album;
+    }
+}
+                                    </code>
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+
+             <div id="databaseTab" class="tab-pane fade"  >
+                 <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                     <div class="col-lg-12 col-md-12 col-sm-12 focusPane" style="padding:20px;border: 1px #c7c7c7 solid;">
+
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
+                               <pre class="language-ballerina basic ballerina">
+                                <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/http;
+import ballerina/sql;
+import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
+
+configurable string host = ?;
+configurable int port = ?;
+configurable string user = ?;
+configurable string password = ?;
+configurable string database = ?;
+
+type Album record {|
+    string id;
+    string title;
+    string artist;
+    decimal price;
+|};
+
+service / on new http:Listener(8080) {
+    private final mysql:Client db;
+
+    function init() returns error? {
+        self.db = check new (host, user, password, database, port);
+    }
+
+    resource function get albums() returns Album[]|error? {
+        stream&lt;Album, sql:Error?&gt; albumStream = self.db->query(`SELECT * FROM Albums`);
+        Album[]? albums = check from Album album in albumStream select album;
+        check albumStream.close();
+        return albums;
+    }
+
+    resource function get albums/[string id]() returns Album|http:NotFound|error {
+        Album|sql:Error result = self.db->queryRow(`SELECT * FROM Albums WHERE id = ${id}`);
+        if result is sql:NoRowsError {
+            return &lt;http:NotFound&gt;{};
+        } else {
+            return result;
+        }
+    }
+
+    resource function post album(@http:Payload Album album) returns Album|error {
+        _ = check self.db->execute(`
+            INSERT INTO Albums (id, title, artist, price)
+            VALUES (${album.id}, ${album.title}, ${album.artist}, ${album.price});`);
+        return album;
+    }
+}
+                                </code>
+                                </pre>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div id="seventhTab" class="tab-pane fade"  >
+                 <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                     <div class="col-lg-12 col-md-12 col-sm-12 focusPane" style="padding:20px;border: 1px #c7c7c7 solid;">
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
+                                <pre class="language-ballerina basic ballerina">
+                                    <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/lang.value;
+import ballerinax/kafka;
+
+configurable string groupId = "order-consumers";
+configurable string orders = "orders";
+configurable string paymentSuccessOrders = "payment-success-orders";
+configurable decimal pollingInterval = 1;
+configurable string kafkaEndpoint = kafka:DEFAULT_URL;
+
+type Order readonly & record {|
+    int id;
+    string desc;
+    PaymentStatus paymentStatus;
+|};
+
+enum PaymentStatus {
+    SUCCESS,
+    FAIL
+}
+
+final kafka:ConsumerConfiguration consumerConfigs = {
+    groupId: groupId,
+    topics: [orders],
+    offsetReset: kafka:OFFSET_RESET_EARLIEST,
+    pollingInterval: pollingInterval
+};
+
+service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
+    private final kafka:Producer orderProducer;
+
+    function init() returns error? {
+        self.orderProducer = check new (kafkaEndpoint);
+    }
+
+    remote function onConsumerRecord(kafka:ConsumerRecord[] records) returns error? {
+        check from var {value} in records
+            let var orderString = check string:fromBytes(value)
+            let Order 'order = check value:fromJsonStringWithType(orderString)
+            where 'order.paymentStatus == SUCCESS
+            do {
+                kafka:ProducerRecord successfulOrder = {
+                    topic: paymentSuccessOrders,
+                    value: 'order.toString().toBytes()
+                };
+                check self.orderProducer->send(successfulOrder);
+            };
+    }
+}
+                                    </code>
+                                </pre>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!--END OF TRY BALLERINA TAB DESIGN 1-->
 
 
 
@@ -78,7 +649,7 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
       </div>
 
    <div class="cHomeWhyBallerinaRow">
-      <div class="col-sm-12 col-md-4">
+      <div class="col-sm-12  col-md-4">
          <div class="cHomeWhyBallerinaBox">
             <img src="/img/home-page/icons/cloud-native.svg"/>
             <h3>Cloud Native</h3>
@@ -162,60 +733,10 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
    </div>
 </div>
       
-
-
-
-
-
-
-
-
-
   
-<!--START OF WHY BALLERINA TAB DESIGN-->
 
 
-
-
-
-
-   
-
-
-
-
-   
-
-
-
-
-
-
-
-
-<!--END OF WHY BALLERINA TAB DESIGN-->
-
-
-
-<div class="row cWidget cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 6rem; background-color: #f7f7f7;">
-   <div class="container">
-   <div class="col-sm-12 col-md-12">
-      <h2>
-         Try Ballerina
-      </h2>
-      </div>
-      <div class="col-sm-12 col-md-12 cColCOntent">
-         <a class="cPlayGround" href="https://play.ballerina.io/">Try in Playground</a>
-     </div>
-     <div class="col-sm-12 col-md-12" style="display: inline-block; width: 100%;">
-      <div class="embed-responsive embed-responsive-21by9 playground">
-         <iframe  class="embed-responsive-item" src="https://play.ballerina.io/index-embedded.html"></iframe>
-       </div>
-      </div>
-   </div>
-</div>
-
-<div class="row row cWidget cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 6rem;">
+<div class="row row cWidget cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 6rem;background-color: #f5f5f5;">
 
    
    <a class="cBookmarkTop" id="Developer-First"></a>
@@ -238,15 +759,67 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
       
     </div>
 
-
-
-
     
       <div class="clearfix"></div></br>
      
    </div>
 
 </div>
+
+<!--START OF TRY BALLERINA EVENT-->
+<div class="row row cWidget cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 3rem;background-color: #fff;">
+
+   
+   <a class="cBookmarkTop" id="Developer-First"></a>
+   <div id="" class="container">
+      <div class="col-sm-12 col-md-8 cColCOntent">
+         <h2>Events</h2>
+         <h3 style="padding-right: 15px;padding-bottom: 20px;">Upcoming Events</h2>
+    </div>
+  
+      <div class="row">
+          <table class="cEventTable cConferencesList" style="width:100% !important;">
+              <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                  <td class="cEventDateContainer cEventDateContainer1">	
+                     <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;margin-top: -18px;">Feb 2, 2022</p>	
+                     <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Wed., 6.00 p.m. IST</p>	
+                     <p class="cEventLocation" style="text-align: right;">Online</p>	
+                  </td>	
+                  <td class="cEventDetail" id="eventDetails" >	
+                     <a target="_blank" href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/events/283458600/">	
+                        <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Meetup: CodeSeeker's Endless Programming Languages</p>	
+                     </a>	
+                     <h5 style="margin-bottom: 18px;">Ballerina - A Cloud Native Programming Language</h5>		
+                     <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/hasithaaravinda/">Hasitha Aravinda</a>, Associate Director/Architect, WSO2
+                  </td>	
+                  <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/events/283458600/" target="_blank" style="text-align: center;">More Info</a></td>	
+              </tr>
+              <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+               <td class="cEventDateContainer cEventDateContainer1" style="border-bottom: none !important;">	
+                  <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Feb 22, 2022</p>	
+                  <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tue., 9.00 p.m. PST</p>	
+                  <p class="cEventLocation" style="text-align: right;">Online</p>	
+               </td>	
+               <td class="cEventDetail" id="eventDetails" style="border-bottom: none !important;">	
+                  <a target="_blank" href="/community/monthly-tech-talk/">	
+                     <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                  </a>	
+                  <h5 style="margin-bottom: 18px;">Language Support and Extending the Tooling support for Ballerina</h5>		
+                  <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/imeshasudasingha/">Imesha Sudasingha</a>, Senior Software Engineer, WSO2
+               </td>	
+               <td class="cEventURL" style="border-bottom: none !important;"><a class="cEventRegistration " href="/community/monthly-tech-talk/" target="_blank" style="text-align: center;">More Info</a></td>	
+           </tr>
+              
+          </table>
+          
+      </div> 
+
+   <div class="clearfix"></div></br>
+     
+   </div>
+
+</div>
+<!--END OF TRY BALLERINA EVENT-->
 
 <!--<div class="row cBallerinaFeatureSection">
    <div class="container">
@@ -405,4 +978,135 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
 
         })
       });
+
 </script>
+
+<script src="/js/prism.js"></script>
+<script src="/js/prism-ballerina.js"></script>
+<style>
+   td.cEventDateContainer, td.cEventDetail, td.cEventURL {
+  border: none !important;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    border-bottom: 1px solid #c7c7c7 !important;
+    padding: 30px 35px !important;
+   }
+   tr:last-child >td{border-bottom: 0 !important;}
+   td.cEventURL{
+    padding: 30px 0px 30px 35px !important;
+   }
+   .table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color:transparent !important;
+    }
+
+ul.nav.nav-tabs.cSamplesList {
+   display: flex;
+}
+.cHscroll {
+	width: 100%;
+	/* overflow-x: scroll;
+	overflow-y: hidden; */
+	background: #f5f5f5;
+	border: 1px #c7c7c7  solid !important;
+   border-bottom:none !important;
+	/* margin-bottom: 22px; */
+}
+
+ul.nav.nav-tabs.cSamplesList li a {
+	width: auto;
+	display: inline-block;
+	word-wrap: break-word;
+	font-size: 16px;
+	/* max-width: 246px; */
+	text-align: center;
+}
+
+ul.nav.nav-tabs.cSamplesList li.active a:hover {
+   color: #555 !important;
+}
+
+
+.cHscroll .nav-tabs > li > a {
+	margin-right: 2px;
+	line-height: 1.42857143;
+	border: 1px solid transparent;
+	border-radius: 0 0;
+}
+
+
+.cHscroll .nav-tabs > li.active > a, .cHscroll .nav-tabs > li.active > a:focus, .cHscroll .nav-tabs > li.active > a:hover {
+	color: #555 !important ;
+	cursor: default;
+	border: transparent;
+	border-bottom: #20b6b0 3px solid !important;
+	/* background-color: #20b6b0 !important; */
+  
+}
+
+
+
+    /* table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+  border-bottom: none!important;
+  } */
+   /* Large devices (laptops/desktops, 992px and up) */
+   @media only screen and (max-width: 992px) {
+      .noBottomBorder{border-bottom: none !important;}
+      td.cEventDateContainer, td.cEventDetail, td.cEventURL{
+         padding: 30px 35px !important;
+
+      }
+      a.cEventRegistration{
+         margin: 0px;
+         margin-top: 15px;
+      }
+      .cHscroll {
+	   width: 100%;
+	   overflow-x: scroll;
+	   overflow-y: hidden;
+	   background: #f5f5f5;
+	   border: 1px #c7c7c7  solid !important;
+      border-bottom:none !important;
+
+	   /* margin-bottom: 22px; */
+     }
+     ul.nav.nav-tabs.cSamplesList li a {
+	  width: auto;
+	  display: inline-block;
+	  word-wrap: break-word;
+	  font-size: 16px;
+	  width: 246px; 
+	  text-align: center;
+     }
+     
+      td.cEventDateContainer1 span.cEventDate1{text-align: left !important}
+      .cEventLocation{text-align: left !important;}
+      table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {padding: 0px 15px 10px 15px !important;}
+      .dateDisplay {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 10px !important;
+        padding-top: 20px;
+    }
+    a.cEventRegistration, input.cSubmitButton {margin-bottom: 30px !important;}
+    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils tr.cLastTableRow td.cEventDateContainer {border:none !important;}
+    /* table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+     border-bottom: none!important;} */
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+      #eventDetails{padding-left: 0px !important;}
+      td.cEventURL {width: 25%;}
+      .codeBlock{border-right: none !important;}
+      .cdisplayFlex{    -ms-box-orient: horizontal;   display: -webkit-box;   display: -moz-box;   display: -ms-flexbox;   display: -moz-flex;   display: -webkit-flex;   display: flex; }
+    }
+    @media only screen and (max-width: 600px) {
+    .nav-tabs > li > a {
+    font-size: 10px;
+  /* padding: 10px 10px; */
+     }
+     .diagramBox{height: 470px;}
+     .playground-button{margin-right: 70px !important;}
+    }
+   
+</style>

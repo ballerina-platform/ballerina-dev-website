@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: AWS Lambda
 description: 
 keywords: 
@@ -296,7 +296,20 @@ public function apigwRequest(awslambda:Context ctx,
                             <div class="cTR cOutputTr">
 
                                 <div class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Prerequisites: AWS CLI tools installation and configuration
+                                    <div class="highlight"><pre><code class=shell-session># Prerequisites: AWS CLI tools installation and configuration. Visit [AWS Lambda Deployment Guide](https://ballerina.io/learn/deployment/aws-lambda/) for detailed steps.
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR cOutputTr">
+
+                                <div class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Create a ballerina package and replace the contents of the generated bal file with the contents above.
+bal new aws_lambda_deployment
 </code></pre></div>
 
                                 </div>
@@ -309,9 +322,9 @@ public function apigwRequest(awslambda:Context ctx,
 
                                 <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Build the Ballerina program to generate the AWS Lambda functions
-$ bal build functions.bal
+$ bal build
 Compiling source
-	functions.bal
+	wso2/aws_lambda_deployment:0.1.0
 </code></pre></div>
 
                                 </div>
@@ -324,7 +337,6 @@ Compiling source
 
                                 <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Generating executables
-	functions.jar
 	@awslambda:Function: echo, uuid, ctxinfo, notifySQS, notifyS3
 </code></pre></div>
 
@@ -338,7 +350,7 @@ Compiling source
 
                                 <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>	Run the following command to deploy each Ballerina AWS Lambda function:
-	aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip --handler functions.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
+	aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb://&lt;project_dir&gt;/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
 </code></pre></div>
 
                                 </div>
@@ -351,19 +363,10 @@ Compiling source
 
                                 <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>	Run the following command to re-deploy an updated Ballerina AWS Lambda function:
-	aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR cOutputTr">
-
-                                <div class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Execute the AWS CLI commands to create and publish the functions; and set your respective AWS $LAMBDA_ROLE_ARN, $REGION_ID, and $FUNCTION_NAME values; following are some examples:-
+	aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://&lt;project_dir&gt;/target/bin/aws-ballerina-lambda-functions.zip
+    
+    target/bin/aws_lambda_deployment.jar
+# Execute the AWS CLI commands to create and publish the functions; and set your respective AWS $LAMBDA_ROLE_ARN, $REGION_ID, and $FUNCTION_NAME values; following are some examples:-
 $ aws lambda create-function --function-name echo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role
  --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
 $ aws lambda create-function --function-name uuid --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.uuid --runtime provided --role arn:aws:iam::908363916111:role/lambda-role

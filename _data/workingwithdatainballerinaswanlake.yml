@@ -1,0 +1,27 @@
+- title: Working with Data in Ballerina
+  url: #
+  sublinks:
+    - title: Setting up the Prerequisites
+      url: /learn/working-with-data-in-ballerina/#setting-up-the-prerequisites
+      active: setting-up-the-prerequisites
+    - title: Creating a New Ballerina Project
+      url: /learn/working-with-data-in-ballerina/#creating-a-new-ballerina-project
+      active: creating-a-new-ballerina-project
+    - title: Defining the Dataset to be Processed
+      url: /learn/working-with-data-in-ballerina/#defining-the-dataset-to-be-processed
+      active: defining-the-dataset-to-be-processed
+    - title: Filtering the Data
+      url: /learn/working-with-data-in-ballerina/#filtering-the-data
+      active: filtering-the-data
+    - title: Sorting Countries by COVID-19 Deaths
+      url: /learn/working-with-data-in-ballerina/#sorting-countries-by-covid-19-deaths
+      active: sorting-countries-by-covid-19-deaths
+    - title: Joining with Another Datasource
+      url: /learn/working-with-data-in-ballerina/#joining-with-another-datasource
+      active: joining-with-another-datasource
+    - title: Finding Discrepancies in the Dataset
+      url: /learn/working-with-data-in-ballerina/#finding-discrepancies-in-the-dataset
+      active: finding-discrepancies-in-the-dataset
+
+
+

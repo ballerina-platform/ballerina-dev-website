@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Commit/Rollback Handlers
 description: This BBE introduces commit/rollback handlers in Ballerina
 keywords: ballerina, ballerina by example, bbe, transactions, commit, rollback, handlers, commit handlers, rollback handlers
@@ -27,7 +27,6 @@ redirect_from:
     <span class="c1">//  Registers a commit handler to be invoked when the `commit` is executed.</span>
     <span class="p">&#39;transaction:onCommit(</span><span class="nx">sendEmail</span><span class="p">);</span>
     <span class="p">&#39;transaction:onRollback(</span><span class="nx">logError</span><span class="p">);</span>
-    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">updateDatabase</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -52,10 +51,12 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Commit/Rollback Handlers</h2>
-                            <p><p>Often code needs to get executed depending on whether a transaction committed.
- Testing the result of the commit within the transaction statement works, but inconvenient from a modularity perspective, particularly when you want to undo changes on rollback.
- This seems much worse in a distributed transaction, when transaction statement is in another program.
- Ballerina provides commit/rollback handlers which are functions that get run when decision whether to commit is known.</p>
+                            <p><p>Often code needs to get executed depending on whether a transaction is committed.
+ Testing the result of the <code>commit</code> within the transaction statement works. However, it is inconvenient
+ from a modularity perspective, particularly, when you want to undo changes on <code>rollback</code>.
+ This seems much worse in a distributed transaction when the transaction statement is in another program.
+ Ballerina provides <code>commit</code>/<code>rollback</code> handlers, which are functions that get executed when the decision
+ whether to commit is known.</p>
 </p>
 
                         </td>
@@ -96,7 +97,7 @@ redirect_from:
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=d236f48158cb6182eef6ae89a3113939&file=commit_rollback_handlers.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=32a26391e1a92800e889efa6e5acea1c&file=commit_rollback_handlers.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -158,7 +159,6 @@ redirect_from:
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    &#39;transaction:onCommit(sendEmail);
     &#39;transaction:onRollback(logError);
-    return;
 }
 </code></pre></div>
 

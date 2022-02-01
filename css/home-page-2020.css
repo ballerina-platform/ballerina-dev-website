@@ -4,7 +4,10 @@
 }
 
 .embed-responsive.playground {
-    height: 650px;
+    height: 500px;
+    background-color: #494949;
+    font-family: "Lucida Console", "Courier New", monospace !important;
+    font-size: 20px;
 }
 
 #iMainNavigation {
@@ -174,7 +177,8 @@ a.cBallerina-io-Home-main-download-button {
     padding: 10px 70px 10px 20px;
     display: inline-block;
     float: right;
-    background-image: url("/img/main-download-icon.svg");
+    background-image: url("/img/main-right-arrow-home.svg");
+    background-size: 60px 60px;
     background-repeat: no-repeat;
     background-position: right center;
     /* margin-top: 30px; */
@@ -183,16 +187,25 @@ a.cBallerina-io-Home-main-download-button {
     min-width: 400px;
 }
 
+
+
+a.cBallerina-io-Home-main-download-button:hover {
+    background-color: #eeeeee;
+    background-image: url("/img/main-right-arrow-home-hover.svg") !important;
+}
+
 a.cPlayButton {
     background-color: transparent;
-    background-image: url("/img/main-play-green-btn.svg") !important;
+    background-image: url("/img/main-right-arrow-home-hover.svg") !important;
     /* -webkit-transform: rotate(30deg); */
 }
+
 
 a.cBallerina-io-Home-main-download-button {
     margin-bottom: 10px;
     min-width: 400px;
     border: 1px solid #20b6b0;
+    margin-top: 8px;
 }
 a.cBallerina-io-Home-main-download-button:hover {
     background-color: #eeeeee;
@@ -355,10 +368,10 @@ a.video-btn:hover img {
         margin-left: 5px;
     }
     .cBallerina-io-Home-main-download-button.cPlayButton {
-        margin-right: 20px;
+        margin-right: 50px;
     }
     a.cBallerina-io-Home-main-download-button {
-        min-width: 290px;
+        min-width: 325px;
     }
     .cBottomLayer ul li {
         float: left;

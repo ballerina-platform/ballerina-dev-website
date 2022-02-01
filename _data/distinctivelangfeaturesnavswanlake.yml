@@ -1,0 +1,239 @@
+- title: Distinctive Lanuguage Features
+  url: #
+  sublinks:
+    - title: Network Interaction
+      url: #
+      sublinks:
+          - title: Consuming Services - Client Objects
+            url: /learn/distinctive-language-features/network-interaction/#consuming-services---client-objects
+            active: consuming-services---client-objects
+          - title: Providing Services
+            url: /learn/distinctive-language-features/network-interaction/#providing-services
+            active: providing-services
+          - title: Listener Declaration
+            url: /learn/distinctive-language-features/network-interaction/#listener-declaration
+            active: listener-declaration
+          - title: Module Lifecycle
+            url: /learn/distinctive-language-features/network-interaction/#module-lifecycle
+            active: module-lifecycle
+          - title: Module <code class="highlighter-rouge language-plaintext" id="cBackground">init</code> Function
+            url: /learn/distinctive-language-features/network-interaction/#module-init-function
+            active: module-init-function
+          - title: Constructing Objects Without Classes
+            url: /learn/distinctive-language-features/network-interaction/#constructing-objects-without-classes
+            active: constructing-objects-without-classes
+          - title: Service Declaration
+            url: /learn/distinctive-language-features/network-interaction/#service-declaration
+            active: service-declaration
+          - title: Representing Responses
+            url: /learn/distinctive-language-features/network-interaction/#representing-responses
+            active: representing-responses
+          - title: Resource Concept
+            url: /learn/distinctive-language-features/network-interaction/#resource-concept
+            active: resource-concept
+          - title: Resources
+            url: /learn/distinctive-language-features/network-interaction/#resources
+            active: resources
+          - title: Hierarchical Resources
+            url: /learn/distinctive-language-features/network-interaction/#hierarchical-resources
+            active: hierarchical-resources
+          - title: Resource Path Parameters
+            url: /learn/distinctive-language-features/network-interaction/#resource-path-parameters
+            active: resource-path-parameters
+          - title: Hierarchical Services
+            url: /learn/distinctive-language-features/network-interaction/#hierarchical-services
+            active: hierarchical-services
+    - title: Data
+      url: #
+      sublinks:
+          - title: Plain Data
+            url: /learn/distinctive-language-features/data/#plain-data
+            active: plain-data
+          - title: Ballerina Basic Types
+            url: /learn/distinctive-language-features/data/#ballerina-basic-types
+            active: ballerina-basic-types
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">decimal</code> Type
+            url: /learn/distinctive-language-features/data/#decimal-type
+            active: decimal-type
+          - title: Plain Data Basic Types To Come
+            url: /learn/distinctive-language-features/data/#plain-data-basic-types-to-come
+            active: plain-data-basic-types-to-come
+          - title: Immutability
+            url: /learn/distinctive-language-features/data/#immutability
+            active: immutability
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">anydata</code> Type
+            url: /learn/distinctive-language-features/data/#anydata-type
+            active: anydata-type
+          - title: Configurable Variables
+            url: /learn/distinctive-language-features/data/#configurable-variables
+            active: configurable-variables
+          - title: Optional Fields
+            url: /learn/distinctive-language-features/data/#optional-fields
+            active: optional-fields
+          - title: Open Records
+            url: /learn/distinctive-language-features/data/#open-records
+            active: open-records
+          - title: Controlling Openness
+            url: /learn/distinctive-language-features/data/#controlling-openness
+            active: controlling-openness
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">json</code> Type
+            url: /learn/distinctive-language-features/data/#json-type
+            active: json-type
+          - title: Working with JSON - Two Approaches
+            url: /learn/distinctive-language-features/data/#working-with-json---two-approaches
+            active: working-with-json---two-approaches
+          - title: Working with JSON Directly
+            url: /learn/distinctive-language-features/data/#working-with-json-directly
+            active: working-with-json-directly
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">match</code> Statements with Maps
+            url: /learn/distinctive-language-features/data/#match-statements-with-maps
+            active: match-statements-with-maps
+          - title: Converting from User-Defined Types to JSON
+            url: /learn/distinctive-language-features/data/#converting-from-user-defined-types-to-json
+            active: converting-from-user-defined-types-to-json
+          - title: Converting from JSON to User-Defined Types
+            url: /learn/distinctive-language-features/data/#converting-from-json-to-user-defined-types
+            active: converting-from-json-to-user-defined-types
+          - title: Converting to User-Defined Type - <code class="highlighter-rouge language-plaintext" id="cBackground">cloneWithType</code>
+            url: /learn/distinctive-language-features/data/#converting-to-user-defined-type---clonewithtype
+            active: converting-to-user-defined-type---clonewithtype
+          - title: Resource Method Typing
+            url: /learn/distinctive-language-features/data/#resource-method-typing
+            active: resource-method-typing
+          - title: JSON Numbers
+            url: /learn/distinctive-language-features/data/#json-numbers
+            active: json-numbers
+          - title: Query Expressions
+            url: /learn/distinctive-language-features/data/#query-expressions
+            active: query-expressions
+          - title: Table Concept
+            url: /learn/distinctive-language-features/data/#table-concept
+            active: table-concept
+          - title: Stream Type
+            url: /learn/distinctive-language-features/data/#stream-type
+            active: stream-type
+          - title: Backtick Templates
+            url: /learn/distinctive-language-features/data/#backtick-templates
+            active: backtick-templates
+          - title: Raw Templates
+            url: /learn/distinctive-language-features/data/#raw-templates
+            active: raw-templates
+          - title: XML Overview
+            url: /learn/distinctive-language-features/data/#xml-overview
+            active: xml-overview
+    - title: Concurrency
+      url: #
+      sublinks:
+          - title: Sequence Diagram-Based Concurrency
+            url: /learn/distinctive-language-features/concurrency/#sequence-diagram-based-concurrency
+            active: sequence-diagram-based-concurrency
+          - title: Transactions
+            url: /learn/distinctive-language-features/concurrency/#transactions
+            active: transactions
+          - title: Concurrency Safety
+            url: /learn/distinctive-language-features/concurrency/#concurrency-safety
+            active: concurrency-safety
+    - title: Advanced, General-Purpose Language Features
+      url: #
+      sublinks:
+          - title: Default Values for Function Parameters
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#default-values-for-function-parameters
+            active: default-values-for-function-parameters
+          - title: Providing Function Arguments by Name
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#providing-function-arguments-by-name
+            active: providing-function-arguments-by-name
+          - title: Type Inclusion for Records
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#type-inclusion-for-records
+            active: type-inclusion-for-records
+          - title: Included Record Parameters
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#included-record-parameters
+            active: included-record-parameters
+          - title: Default Values for Record Fields
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#default-values-for-record-fields
+            active: default-values-for-record-fields
+          - title: Object Types
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#object-types
+            active: object-types
+          - title: Object Type Inclusion
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#object-type-inclusion
+            active: object-type-inclusion
+          - title: Distinct Object Types
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#distinct-object-types
+            active: distinct-object-types
+          - title: Readonly Objects and Classes
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#readonly-objects-and-classes
+            active: readonly-objects-and-classes
+          - title: Error Detail
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#error-detail
+            active: error-detail
+          - title: Error Cause
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#error-cause
+            active: error-cause
+          - title: Type Intersection for Error Types
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#type-intersection-for-error-types
+            active: type-intersection-for-error-types
+          - title: Type Intersection
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#type-intersection
+            active: type-intersection
+          - title: Expression-Oriented Style
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#expression-oriented-style
+            active: expression-oriented-style
+          - title: Computed Field Key
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#computed-field-key
+            active: computed-field-key
+          - title: Tuples
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#tuples
+            active: tuples
+          - title: Destructuring Tuples
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#destructuring-tuples
+            active: destructuring-tuples
+          - title: Binding Patterns in Assignment
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#binding-patterns-in-assignment
+            active: binding-patterns-in-assignment
+          - title: Rest Type in Tuples
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#rest-type-in-tuples
+            active: rest-type-in-tuples
+          - title: Array/Map Symmetry
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#arraymap-symmetry
+            active: arraymap-symmetry
+          - title: Rest Parameters
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#rest-parameters
+            active: rest-parameters
+          - title: Spread Operator <code class="highlighter-rouge language-plaintext" id="cBackground">...x</code>
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#spread-operator-x
+            active: spread-operator-x
+          - title: Spread in Binding Patterns
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#spread-in-binding-patterns
+            active: spread-in-binding-patterns
+          - title: Binding Patterns in match Statement
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#binding-patterns-in-match-statement
+            active: binding-patterns-in-match-statement
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">never</code> Type
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#never-type
+            active: never-type
+          - title: Interfacing to External Code
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#interfacing-to-external-code
+            active: interfacing-to-external-code
+          - title: Built-in Integer Subtypes
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#built-in-integer-subtypes
+            active: built-in-integer-subtypes
+          - title: Built-in String Subtype
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#built-in-string-subtype
+            active: built-in-string-subtype
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">typedesc</code> Type
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#typedesc-type
+            active: typedesc-type
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">ensureType</code> Function
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#ensuretype-function
+            active: ensuretype-function
+          - title: Dependent Types
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#dependent-types
+            active: dependent-types
+          - title: Annotation Declaration and Access
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#annotation-declaration-and-access
+            active: annotation-declaration-and-access
+          - title: Trapping Panics
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#trapping-panics
+            active: trapping-panics
+
+

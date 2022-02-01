@@ -1,0 +1,12 @@
+- title: Building a Data Service in Ballerina
+  url: '#'
+  sublinks:
+    - title: Setting up the Prerequisites
+      url: /learn/building-a-data-service-in-ballerina/#setting-up-the-prerequisites
+      active: setting-up-the-prerequisites
+    - title: Connecting to and Interacting with the Database
+      url: /learn/building-a-data-service-in-ballerina/#connecting-to-and-interacting-with-the-database
+      active: connecting-to-and-interacting-with-the-database
+    - title: Exposing the Database via an HTTP RESTful API
+      url: /learn/building-a-data-service-in-ballerina/#exposing-the-database-via-an-http-restful-api
+      active: exposing-the-database-via-an-http-restful-api

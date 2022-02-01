@@ -1,0 +1,25 @@
+- title: Getting Started with Ballerina
+  url: <a href="/learn/getting-started-with-ballerina/"></a>
+  sublinks:
+    - title: Setting up the Prerequisites
+      url: /learn/getting-started-with-ballerina/#setting-up-the-prerequisites
+      active: setting-up-the-prerequisites
+    - title: Meeting <code class="highlighter-rouge language-plaintext navCodeBlock" id="cBackground">bal</code>
+      url: /learn/getting-started-with-ballerina/#meeting-bal
+      active: meeting-bal
+    - title: Creating a New Project
+      url: /learn/getting-started-with-ballerina/#creating-a-new-project
+      active: creating-a-new-project
+    - title: Saying <code class="highlighter-rouge language-plaintext navCodeBlock" id="cBackground">Hello, World!</code>
+      url: /learn/getting-started-with-ballerina/#saying-hello-world
+      active: saying-hello-world
+    - title: Running the Project
+      url: /learn/getting-started-with-ballerina/#running-the-project
+      active: running-the-project
+    - title: Writing a Simple REST API
+      url: /learn/getting-started-with-ballerina/#writing-a-simple-rest-api
+      active: writing-a-simple-rest-api
+    - title: Learning More
+      url: /learn/getting-started-with-ballerina/#learning-more
+      active: learning-more
+

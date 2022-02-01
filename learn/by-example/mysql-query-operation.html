@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Simple Query
 description: This BBE demonstrates how to use the MySQL client select query operations with the stream return type in Ballerina.
 keywords: ballerina, ballerina by example, bbe, MySQL, query, select, data
@@ -49,9 +49,10 @@ redirect_from:
     <span class="c1">// If there is any error during the execution of the SQL query or</span>
     <span class="c1">// iteration of the result stream, the result stream will terminate and</span>
     <span class="c1">// return the error.</span>
-    <span class="nx">check</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Full Customer details: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-    <span class="p">});</span>
+    <span class="nx">check</span> <span class="nx">from</span> <span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span> <span class="nx">in</span> <span class="nx">resultStream</span>
+        <span class="nx">do</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Full Customer details: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="p">};</span>
 
     <span class="c1">// The result of the count operation is provided as a record stream.</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{},</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">resultStream2</span> <span class="p">=</span>
@@ -78,9 +79,10 @@ redirect_from:
         <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM Customers`</span><span class="p">);</span>
 
     <span class="c1">// Iterates the customer stream.</span>
-    <span class="nx">check</span> <span class="nx">customerStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">Customer</span> <span class="nx">customer</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Full Customer details: &quot;</span><span class="p">,</span> <span class="nx">customer</span><span class="p">);</span>
-    <span class="p">});</span>
+    <span class="nx">check</span> <span class="nx">from</span> <span class="nx">Customer</span> <span class="nx">customer</span> <span class="nx">in</span> <span class="nx">customerStream</span>
+        <span class="nx">do</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Full Customer details: &quot;</span><span class="p">,</span> <span class="nx">customer</span><span class="p">);</span>
+        <span class="p">};</span>
 
     <span class="c1">// Performs the cleanup after the example.</span>
     <span class="nx">check</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
@@ -306,9 +308,10 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check resultStream.forEach(function(record {} result) {
-        io:println(&quot;Full Customer details: &quot;, result);
-    });
+                                    <div class="highlight"><pre><code class=language-ballerina>    check from record {} result in resultStream
+        do {
+            io:println(&quot;Full Customer details: &quot;, result);
+        };
 </code></pre></div>
 
                                 </div>
@@ -434,9 +437,10 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check customerStream.forEach(function(Customer customer) {
-        io:println(&quot;Full Customer details: &quot;, customer);
-    });
+                                    <div class="highlight"><pre><code class=language-ballerina>    check from Customer customer in customerStream
+        do {
+            io:println(&quot;Full Customer details: &quot;, customer);
+        };
 </code></pre></div>
 
                                 </div>

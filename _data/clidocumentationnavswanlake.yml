@@ -21,25 +21,22 @@
           active: update-commands
     - title: Update Tool
       url: /learn/cli-documentation/update-tool/
-      active: update-tool
-    - title: OpenAPI
-      url: /learn/cli-documentation/openapi/
       sublinks:
-        - title: Using the Capabilities of the OpenAPI Tools
-          url: /learn/cli-documentation/openapi/#using-the-capabilities-of-the-openapi-tools
-          active: using-the-capabilities-of-the-openapi-tools
-        - title: OpenAPI Validator Compiler Plugin
-          url: /learn/cli-documentation/openapi/#openapi-validator-compiler-plugin
-          active: openapi-validator-compiler-plugin
-    - title: GRPC
+        - title: Using the Update Tool
+          url: /learn/cli-documentation/update-tool/#using-the-update-tool
+          active: using-the-update-tool
+        - title: Managing your Ballerina Distributions
+          url: /learn/cli-documentation/update-tool/#managing-your-ballerina-distributions
+          active: managing-your-ballerina-distributions
+    - title: gRPC/Protocol Buffers
       url: /learn/cli-documentation/grpc/
       sublinks:
         - title: Usage of the Tool
           url: /learn/cli-documentation/grpc/#usage-of-the-tool
           active: usage-of-the-tool
-        - title: CLI Command
-          url: /learn/cli-documentation/grpc/#cli-command
-          active: cli-command
+        - title: Protocol Buffers to Ballerina
+          url: /learn/cli-documentation/grpc/#protocol-buffers-to-ballerina
+          active: protocol-buffers-to-ballerina
         - title: Sample
           url: /learn/cli-documentation/grpc/#sample
           active: sample

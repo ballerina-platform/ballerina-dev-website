@@ -142,7 +142,7 @@ function printExamples() {
                         let pathValue = window.location.pathname;
                         let splitedPath = pathValue.split("/learn/");
                         let selectedVersion = splitedPath[0];
-                        div_content += '<li><a href="'+selectedVersion+'/learn/by-example/' + link + '.html?is_ref_by_example=true">' + example['name'] + '</a></li>';
+                        div_content += '<li><a href="'+selectedVersion+'/learn/by-example/' + link + '.html">' + example['name'] + '</a></li>';
                     }
                 });
 

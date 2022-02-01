@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Azure Functions
 description: 
 keywords: 
@@ -213,7 +213,7 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Azure Functions</h2>
                             <p><p>Azure Functions is an event driven, serverless computing platform.
- Ballerina functions can be deployed in Azure Functions by annotating a Ballerina function with &ldquo;@functions:Function&rdquo;.
+ Ballerina functions can be deployed in Azure Functions by annotating a Ballerina function with Azure functions annotation&rdquo;. You can view the code examples below.
  For more information, see the <a href="https://ballerina.io/learn/deployment/azure-functions/">Azure Deployment Guide</a>.</p>
 </p>
 
@@ -729,7 +729,20 @@ public function queuePopulationTimer(
                             <div class="cTR cOutputTr">
 
                                 <div class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Prerequisites: Azure CLI tools installation and configuration
+                                    <div class="highlight"><pre><code class=shell-session># Prerequisites: Azure CLI tools installation and configuration. Visit [Azure Deployment Guide](https://ballerina.io/learn/deployment/azure-functions/) for detailed steps.
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR cOutputTr">
+
+                                <div class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Create a ballerina package and replace the contents of the generated bal file with the contents above.
+bal new azure_functions_deployment
 </code></pre></div>
 
                                 </div>
@@ -742,9 +755,9 @@ public function queuePopulationTimer(
 
                                 <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Build the Ballerina program to generate the Azure Functions
-bal build azure_functions_deployment.bal
+bal build
 Compiling source
-	azure_functions_deployment.bal
+	wso2/azure_functions_deployment:0.1.0
 </code></pre></div>
 
                                 </div>
@@ -757,7 +770,6 @@ Compiling source
 
                                 <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Generating executables
-	azure_functions_deployment.jar
 	@azure_functions:Function: hello, fromHttpToQueue, fromQueueToQueue, fromBlobToQueue, httpTriggerBlobInput, httpTriggerBlobOutput, sendSMS, cosmosDBToQueue1, cosmosDBToQueue2, httpTriggerCosmosDBInput1, httpTriggerCosmosDBInput2, httpTriggerCosmosDBInput3, httpTriggerCosmosDBOutput1, httpTriggerCosmosDBOutput2, httpTriggerCosmosDBOutput3, queuePopulationTimer
 </code></pre></div>
 
@@ -771,20 +783,11 @@ Compiling source
 
                                 <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>	Run the following command to deploy Ballerina Azure Functions:
-	az functionapp deployment source config-zip -g &lt;resource_group&gt; -n &lt;function_app_name&gt; --src azure-functions.zip
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR cOutputTr">
-
-                                <div class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Execute the following Azure CLI command to publish the functions (replace with your respective Azure &lt;resource_group&gt; and &lt;function_app_name&gt;)
-az functionapp deployment source config-zip -g functions1777 -n functions1777 --src  azure-functions.zip 
+	az functionapp deployment source config-zip -g &lt;resource_group&gt; -n &lt;function_app_name&gt; --src &lt;project_dir&gt;/target/bin/azure-functions.zip
+	
+    target/bin/azure_functions_deployment.jar
+# Execute the Azure CLI command given by the compiler to publish the functions (replace with your respective Azure &lt;resource_group&gt; and &lt;function_app_name&gt;)
+az functionapp deployment source config-zip -g functions1777 -n functions1777 --src  &lt;project_dir&gt;/target/bin/azure-functions.zip
 Getting scm site credentials for zip deployment
 Starting zip deployment. This operation can take a while to complete ...
 Deployment endpoint responded with status code 202

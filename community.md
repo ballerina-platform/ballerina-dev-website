@@ -4,11 +4,9 @@ title: The Ballerina Community
 intro: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!
 description: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!.
 keywords: ballerina, community, ballerina community
-permalink: /community/
+permalink: /community-old/
 redirect_from:
-  - /events
-  - /events/
-  - /community
+  
 ---
 
 The Ballerina community has been bootstrapped by <a href="https://wso2.com" target="_blank">WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open source project with all source code licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, Version 2.0</a> and the specifications licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0" target="_blank">Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
@@ -24,7 +22,7 @@ The Ballerina community has been bootstrapped by <a href="https://wso2.com" targ
 We curate a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
 <ul class="cInlinelinklist">
-<li><a class="cGreenLinkArrow" href="/community/newsletter/2021-7/" target="_blank">Latest Ballerina Newsletter</a></li>
+<li><a class="cGreenLinkArrow" href="/community/newsletter/2021-6/" target="_blank">Latest Ballerina Newsletter</a></li>
 <li><a class="cGreenLinkArrow" href="/community/newsletter/#past-issues" target="_blank">Past newsletter issues</a></li>
 
 </ul>

@@ -1,5 +1,5 @@
 ---
-layout: ballerina-example-page
+layout: ballerina-example-page-old
 title: Atomic Batch Execute
 description: This BBE demonstrates how to use the MySQL client to execute a batch of DDL/DML operations inside a transaction block in Ballerina.
 keywords: ballerina, ballerina by example, bbe, mysql, insert, update, delete, batch update, transaction
@@ -78,9 +78,10 @@ redirect_from:
         <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM Customers`</span><span class="p">);</span>
 
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Data in Customers table:&quot;</span><span class="p">);</span>
-    <span class="nx">check</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="p">});</span>
+    <span class="nx">check</span> <span class="nx">from</span> <span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span> <span class="nx">in</span> <span class="nx">resultStream</span>
+        <span class="nx">do</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+        <span class="p">};</span>
 
     <span class="c1">// Performs a cleanup after the example.</span>
     <span class="nx">check</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
@@ -368,9 +369,10 @@ import ballerina/sql;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Data in Customers table:&quot;);
-    check resultStream.forEach(function(record {} result) {
-        io:println(result.toString());
-    });
+    check from record {} result in resultStream
+        do {
+            io:println(result.toString());
+        };
 </code></pre></div>
 
                                 </div>
@@ -582,7 +584,7 @@ bal run
                                     <div class="highlight"><pre><code class=shell-session>Error while executing batch command starting with: &#39;INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
                 VALUES ( ? ,  ? ,
-                 ? ,  ? ,  ? )&#39;.Duplicate entry &#39;1&#39; for key &#39;customers.registrationID&#39;.
+                 ? ,  ? ,  ? )&#39;.Duplicate entry &#39;1&#39; for key &#39;Customers.registrationID&#39;.
 [{&quot;affectedRowCount&quot;:1,&quot;lastInsertId&quot;:null},{&quot;affectedRowCount&quot;:-3,&quot;lastInsertId&quot;:null},{&quot;affectedRowCount&quot;:1,&quot;lastInsertId&quot;:null}]
 Rollback transaction.
 </code></pre></div>

@@ -1,144 +1,39 @@
 - title: Visual Studio Code Extension
   url: #
   sublinks:
-    - title: VS Code Quick Start
-      url: /learn/visual-studio-code-extension/vs-code-quick-start/
-      sublinks:
-        - title: Setting up the Prerequisites
-          url: /learn/visual-studio-code-extension/vs-code-quick-start/#setting-up-the-prerequisites
-          active: setting-up-the-prerequisites
-        - title: Installing the Ballerina Extension
-          url: /learn/visual-studio-code-extension/vs-code-quick-start/#installing-the-ballerina-extension
-          active: installing-the-ballerina-extension
-        - title: Running Your First Ballerina Program
-          url: /learn/visual-studio-code-extension/vs-code-quick-start/#running-your-first-ballerina-program
-          active: running-your-first-ballerina-program
-        - title: What’s Next?
-          url: /learn/visual-studio-code-extension/vs-code-quick-start/#whats-next
-          active: whats-next
-    - title: Diagram Editor
-      url: /learn/visual-studio-code-extension/diagram-editor/
-      sublinks:
-        - title: Diagrams View
-          url: /learn/visual-studio-code-extension/diagram-editor/#diagrams-view
-          active: diagrams-view
-        - title: Show Diagram Button
-          url: /learn/visual-studio-code-extension/diagram-editor/#show-diagram-button
-          active: show-diagram-button
-        - title: Show Diagram Palette Command
-          url: /learn/visual-studio-code-extension/diagram-editor/#show-diagram-palette-command
-          active: show-diagram-palette-command
     - title: Debugging
       url: /learn/visual-studio-code-extension/debugging/
       sublinks:
         - title: Starting a Debug Session
           url: /learn/visual-studio-code-extension/debugging/#starting-a-debug-session
-          active: starting-a-debug-session
-        - title: Running Without Debugging
-          url: /learn/visual-studio-code-extension/debugging/#running-without-debugging
-          active: running-without-debugging
+          sublinks:
+            - title: Starting a Program Debug Session
+              url: /learn/visual-studio-code-extension/debugging/#starting-a-program-debug-session
+              active: starting-a-program-debug-session
+            - title: Starting a Test Debug Session
+              url: /learn/visual-studio-code-extension/debugging/#starting-a-test-debug-session
+              active: starting-a-test-debug-session
+            - title: Starting a Debug Session with Configurations
+              url: /learn/visual-studio-code-extension/debugging/#starting-a-debug-session-with-configurations
+              active: starting-a-debug-session-with-configurations
+            - title: Starting a Remote Debug Session
+              url: /learn/visual-studio-code-extension/debugging/#starting-a-remote-debug-session
+              active: starting-a-remote-debug-session
+        - title: Using Debug Configurations
+          url: /learn/visual-studio-code-extension/debugging/#using-debug-configurations
+          active: using-debug-configurations
         - title: Using the Debugging Features
           url: /learn/visual-studio-code-extension/debugging/#using-the-debugging-features
-          active: using-the-debugging-features
-        - title: Debug Configurations
-          url: /learn/visual-studio-code-extension/debugging/#debug-configurations
-          active: debug-configurations
-        - title: Debug Configurations
-          url: /learn/visual-studio-code-extension/debugging/#debug-configurations
-          active: debug-configurations
-    - title: VS Code Commands
-      url: /learn/visual-studio-code-extension/vs-code-commands/
-      sublinks:
-        - title: Show Examples
-          url: /learn/visual-studio-code-extension/vs-code-commands/#show-examples
-          active: show-examples
-        - title: Build
-          url: /learn/visual-studio-code-extension/vs-code-commands/#build
-          active: build
-        - title: Run
-          url: /learn/visual-studio-code-extension/vs-code-commands/#run
-          active: run
-        - title: Test
-          url: /learn/visual-studio-code-extension/vs-code-commands/#test
-          active: test
-        - title: Build Documentation
-          url: /learn/visual-studio-code-extension/vs-code-commands/#build-documentation
-          active: build-documentation
-        - title: Show Diagram
-          url: /learn/visual-studio-code-extension/vs-code-commands/#show-diagram
-          active: show-diagram
-        - title: Add Module
-          url: /learn/visual-studio-code-extension/vs-code-commands/#add-module
-          active: add-module    
-        - title: Create ‘Cloud.toml’
-          url: /learn/visual-studio-code-extension/vs-code-commands/#create-cloudtoml
-          active: create-cloudtoml
-        - title: Paste JSON as Record
-          url: /learn/visual-studio-code-extension/vs-code-commands/#paste-json-as-record
-          active: paste-json-as-record
-        - title: Paste JSON as Record
-          url: /learn/visual-studio-code-extension/vs-code-commands/#paste-json-as-record
-          active: paste-json-as-record
-    - title: Language Support
-      url: /learn/visual-studio-code-extension/language-support/
-      sublinks:
-        - title: IntelliSense
-          url: /learn/visual-studio-code-extension/language-support/#intellisense
-          active: intellisense
-        - title: Code Navigation
-          url: /learn/visual-studio-code-extension/language-support/#code-navigation
-          active: code-navigation
-        - title: Diagnostics
-          url: /learn/visual-studio-code-extension/language-support/#diagnostics
-          active: diagnostics
-        - title: Data Mapping
-          url: /learn/visual-studio-code-extension/language-support/#data-mapping
-          active: data-mapping
-        - title: Code Formatting
-          url: /learn/visual-studio-code-extension/language-support/#code-formatting
-          active: code-formatting
-        - title: Rename Symbols
-          url: /learn/visual-studio-code-extension/language-support/#rename-symbols
-          active: rename-symbols
-        - title: Code Lenses
-          url: /learn/visual-studio-code-extension/language-support/#code-lenses
-          active: code-lenses
-        - title: Code Actions
-          url: /learn/visual-studio-code-extension/language-support/#code-actions
-          active: code-actions
-    - title: Configurations
-      url: /learn/visual-studio-code-extension/configurations/
-      sublinks:
-        - title: Code Lens - All Enabled
-          url: /learn/visual-studio-code-extension/configurations/#code-lens---all-enabled
-          active: code-lens---all-enabled  
-        - title: Code Lens - Docs Enabled
-          url: /learn/visual-studio-code-extension/configurations/#code-lens---docs-enabled
-          active: code-lens---docs-enabled
-        - title: Code Lens - Executor Enabled
-          url: /learn/visual-studio-code-extension/configurations/#code-lens---executor-enabled
-          active: code-lens---executor-enabled   
-        - title: Data Mapper Enabled
-          url: /learn/visual-studio-code-extension/configurations/#data-mapper-enabled
-          active: data-mapper-enabled    
-        - title: Data Mapper Url
-          url: /learn/visual-studio-code-extension/configurations/#data-mapper-url
-          active: data-mapper-url   
-        - title: Debug Log
-          url: /learn/visual-studio-code-extension/configurations/#debug-log
-          active: debug-log  
-        - title: Enable File Watcher
-          url: /learn/visual-studio-code-extension/configurations/#enable-file-watcher
-          active: enable-file-watcher
-        - title: Enable Telemetry
-          url: /learn/visual-studio-code-extension/configurations/#enable-telemetry
-          active: enable-telemetry
-        - title: Home
-          url: /learn/visual-studio-code-extension/configurations/#home
-          active: home
-        - title: Plugin - Dev Mod
-          url: /learn/visual-studio-code-extension/configurations/#plugin---dev-mod
-          active: plugin---dev-mod
-        - title: Trace Log
-          url: /learn/visual-studio-code-extension/configurations/#trace-log
-          active: trace-log
+          sublinks:
+            - title: Conditional Breakpoints
+              url: /learn/visual-studio-code-extension/debugging/#conditional-breakpoints
+              active: conditional-breakpoints
+            - title: Logpoints
+              url: /learn/visual-studio-code-extension/debugging/#logpoints
+              active: logpoints
+            - title: Pause and Continue
+              url: /learn/visual-studio-code-extension/debugging/#pause-and-continue
+              active: pause-and-continue
+            - title: Expression Evaluation
+              url: /learn/visual-studio-code-extension/debugging/#expression-evaluation
+              active: expression-evaluation

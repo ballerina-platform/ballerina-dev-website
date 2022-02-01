@@ -50,7 +50,7 @@ message HelloReply {
 ```
 > **Note:** The sample service definition is taken from the quick start guide on the gRPC official site.
 
-Let’s start implementing a Ballerina service and client for the above definition.
+Let’s start implementing a Ballerina service and client for the above definition. Create a new service definition file (i.e., `helloworld.proto`) in which you want to create the project and copy the above service definition.
 
 ## Implementation
 
@@ -78,7 +78,7 @@ Remove the automatically-created `main.bal` file as you are not going to use it 
 
 #### Generating the Source Code
 
-Execute the following command inside the Ballerina project directory to generate source code related to the service definition.
+Execute the following command inside the same directory in which you created the Ballerina project to generate the source code related to the service definition.
 
 ```bash
 $ bal grpc --mode service --input helloworld.proto --output greeter_service/
@@ -162,7 +162,7 @@ Remove the automatically-created `main.bal` file as you are not going to use it 
 
 #### Generating the Source Code
 
-Execute the following command inside the Ballerina project directory to generate source code related to the service definition.
+Execute the following command inside the same directory in which you created the Ballerina project to generate the source code related to the service definition.
 
 ```bash
 $ bal grpc --mode client --input helloworld.proto --output greeter_client/

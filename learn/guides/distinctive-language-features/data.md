@@ -310,7 +310,7 @@ In the above code example, the ``match`` expression matches the json value **``j
 
 ``match`` schematics are open, and you do not have to specify all the fields of the ``json`` value in the pattern for matching.
 
-## Converting from User-defined Types to JSON
+## Converting from User-Defined Types to JSON
 
 A user-defined type can be easily converted to JSON. In this case, there are two possibilities.
 
@@ -348,7 +348,7 @@ json j = coord.toJson();
 
 In the above code example, **``Coord``** is an open record. Therefore, any number of ``anydata`` fields can be added to it, including tables and XML. The **``toJson()``** function converts ``anydata`` to ``json``, such that all the subtypes, including tables and XML, are handled appropriately.
 
-## Converting from JSON to User-defined Type
+## Converting from JSON to User-Defined Types
 
 There are a few nuances involved in converting from JSON to a user-defined type.
 
@@ -376,7 +376,7 @@ json rj = j.cloneReadOnly();
 Coord c = <Coord>rj;
 ```
 
-## Converting to a User-defined Type - `cloneWithType`
+## Converting to a User-Defined Type - `cloneWithType`
 
 There is another way of converting from JSON to a user-defined type.
 

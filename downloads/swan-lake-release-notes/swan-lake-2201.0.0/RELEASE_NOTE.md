@@ -15,13 +15,44 @@ redirect_from:
 
 ### Updating Ballerina
 
-If you are already using Ballerina, use the [Ballerina Update Tool](/learn/cli-documentation/update-tool/#using-the-update-tool) to directly update to 2201.0.0 (Swan Lake) by running the command below.
+>**Info:** The version format has been revised. `2201.0.0 (Swan Lake)` represents the format of `$YYMM.$UPDATE.$PATCH ($CODE_NAME)`. For further information, see [Ballerina Swan Lake is on the Horizon](https://blog.ballerina.io/posts/ballerina-swan-lake-is-on-the-horizon/).
 
-> `bal dist pull 2201.0.0`
+If you are already using Ballerina, use the [Ballerina Update Tool](/learn/cli-documentation/update-tool/#using-the-update-tool) to directly update to 2201.0.0 (Swan Lake). To do this: 
 
-The version format has been revised. `2201.0.0 (Swan Lake)` represents the format of `$YYMM.$UPDATE.$PATCH ($CODE_NAME)`. 
+1. Run the command below to get the latest version of the Update Tool.
 
-For further information, see [Ballerina Swan Lake is on the Horizon](https://blog.ballerina.io/posts/ballerina-swan-lake-is-on-the-horizon/).
+   `bal update`
+
+2. Run the command below to update your Ballerina version to 2201.0.0 (Swan Lake).
+
+   `bal dist update`
+
+#### Troubleshooting 
+
+If you already ran the `bal dist update` (or `bal dist pull 2201.0.0`) before the `bal update` command, follow the instructions below to recover your installation.
+
+##### For macOS Users (`.pkg` installations)
+
+1. Run the `rm ~/.ballerina/ballerina-version` command to delete the version configuration.
+2. Run the `chmod 755 /Library/Ballerina/distributions/ballerina-2201.0.0/bin/bal` command to provide execute permissions for the `bal` command.
+3. Run the `bal dist use 2201.0.0` command to switch to the 2201.0.0 version. 
+
+##### For Ubuntu Users (`.deb` installations)
+
+1. Run the `rm ~/.ballerina/ballerina-version` command to delete the version configuration.
+2. Run the `chmod 755 /usr/lib/ballerina/distributions/ballerina-2201.0.0/bin/bal` command to provide execute permissions for the `bal` command.
+3. Run the `bal dist use 2201.0.0` command to switch to the 2201.0.0 version.
+
+##### For CentOS Users (`.rpm` installations)
+
+1. Run the `rm ~/.ballerina/ballerina-version` command to delete the version configuration.
+2. Run the `chmod 755 /usr/lib64/ballerina/distributions/ballerina-2201.0.0/bin/bal` command to provide execute permissions for the `bal` command.
+3. Run the `bal dist use 2201.0.0` command to switch to the 2201.0.0 version.
+
+##### For Windows Users (`.msi` installations)
+
+1. Run the `del %userprofile%\.ballerina\ballerina-version` command to delete the version configuration.
+2. Run the `bal dist use 2201.0.0` command to switch to the 2201.0.0 version.
 
 ### Installing Ballerina
 

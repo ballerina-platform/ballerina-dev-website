@@ -52,7 +52,7 @@
           - title: Ballerina Basic Types
             url: /learn/distinctive-language-features/data/#ballerina-basic-types
             active: ballerina-basic-types
-          - title: decimal Type
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">decimal</code> Type
             url: /learn/distinctive-language-features/data/#decimal-type
             active: decimal-type
           - title: Plain Data Basic Types To Come
@@ -61,7 +61,7 @@
           - title: Immutability
             url: /learn/distinctive-language-features/data/#immutability
             active: immutability
-          - title: anydata Type
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">anydata</code> Type
             url: /learn/distinctive-language-features/data/#anydata-type
             active: anydata-type
           - title: Configurable Variables
@@ -76,7 +76,7 @@
           - title: Controlling Openness
             url: /learn/distinctive-language-features/data/#controlling-openness
             active: controlling-openness
-          - title: json Type
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">json</code> Type
             url: /learn/distinctive-language-features/data/#json-type
             active: json-type
           - title: Working with JSON - Two Approaches
@@ -85,7 +85,7 @@
           - title: Working with JSON Directly
             url: /learn/distinctive-language-features/data/#working-with-json-directly
             active: working-with-json-directly
-          - title: match Statements with Maps
+          - title: <code class="highlighter-rouge language-plaintext" id="cBackground">match</code> Statements with Maps
             url: /learn/distinctive-language-features/data/#match-statements-with-maps
             active: match-statements-with-maps
           - title: Converting from User-defined Types to JSON
@@ -94,7 +94,7 @@
           - title: Converting from JSON to User-defined Type
             url: /learn/distinctive-language-features/data/#converting-from-json-to-user-defined-type
             active: converting-from-json-to-user-defined-type
-          - title: Converting to User-defined Type - cloneWithType
+          - title: Converting to User-defined Type - <code class="highlighter-rouge language-plaintext" id="cBackground">cloneWithType</code>
             url: /learn/distinctive-language-features/data/#converting-to-user-defined-type---clonewithtype
             active: converting-to-user-defined-type---clonewithtype
           - title: Resource Method Typing
@@ -130,9 +130,6 @@
           - title: Transactions
             url: /learn/distinctive-language-features/concurrency/#transactions
             active: transactions
-          - title: transaction Statement
-            url: /learn/distinctive-language-features/concurrency/#transaction-statement
-            active: transaction-statement
     - title: Advanced, General-Purpose Language Features
       url: #
       sublinks:

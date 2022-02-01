@@ -79,7 +79,7 @@ You can see them in the imported class list.
 
 Now, you will create an environment for your Ballerina program.
 
-### Step 2 - Setting Up the Ballerina Package
+### Step 2 - Setting up the Ballerina Package
 
 >**Info:** This section assumes that you have already read [Package Layout](/learn/package-references/#package-layout).
 

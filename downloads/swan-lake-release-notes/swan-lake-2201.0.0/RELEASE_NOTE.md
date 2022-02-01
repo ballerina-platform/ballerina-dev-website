@@ -19,6 +19,10 @@ If you are already using Ballerina, use the [Ballerina Update Tool](/learn/cli-d
 
 > `bal dist pull 2201.0.0`
 
+The version format has been revised. `2201.0.0 (Swan Lake)` represents the format of `$YYMM.$UPDATE.$PATCH ($CODE_NAME)`. 
+
+For further information, see [Ballerina Swan Lake is on the Horizon](https://blog.ballerina.io/posts/ballerina-swan-lake-is-on-the-horizon/).
+
 ### Installing Ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
@@ -347,6 +351,10 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
 ###### Ballerina Service Generation
 - Added support for OAS query parameters with nested/optional/nullable types and default values
 - Added support for OAS header parameters with optional/nullable types and default values
+
+##### Ballerina Update Tool
+- Improved the view for `bal dist list` with the `-a` flag
+- Improved the `bal dist use` command to check for the distribution availability prior to the download suggestion
 
 #### Bug Fixes
 

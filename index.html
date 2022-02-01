@@ -388,10 +388,6 @@ Album[] albums = [
    descMap: getDescriptorMapRecordStore()
 }
 service "Albums" on new grpc:Listener(port) {
-   remote function listAlbums() returns stream&lt;Album, error?&gt;|error {
-      return albums.toStream();
-   }
-
    remote function getAlbum(string id) returns Album|error {
       Album[] filteredAlbums = albums.filter(album =&gt; album.id === id);
       if filteredAlbums.length() &gt; 0 {
@@ -406,6 +402,10 @@ service "Albums" on new grpc:Listener(port) {
    remote function addAlbum(Album album) returns Album|error {
       albums.push(album);
       return album;
+   }
+   
+   remote function listAlbums() returns stream&lt;Album, error?&gt;|error {
+      return albums.toStream();
    }
 }                                     
                                     </code>

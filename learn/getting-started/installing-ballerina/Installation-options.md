@@ -53,12 +53,12 @@ The installer sets the `C:\Program Files\Ballerina\<BALLERINA-DIRECTORY>\bin` di
 > **Info:** Alternatively, you can use either of the commands below to install Ballerina using the downloaded DEB or RPM file. Replace the `ballerina-<BALLERINA-VERSION>-linux-x64.deb` or `ballerina-<BALLERINA-VERSION>-linux-x64.rpm` with the actual file path. 
 
 For example, for the DEB file:
-```
+```bash
 dpkg -i ballerina-<VERSION>-swan-lake-linux-x64.deb 
 ```
 
 For example, for the RPM file:
-```
+```bash
 rpm -i ballerina-<VERSION>-swan-lake-linux-x64.rpm 
 ```
 
@@ -122,12 +122,12 @@ To remove:
 > **Info:** Alternatively, you can uninstall Ballerina using the commands below by replacing the actual package name in Linux and from the control panel in Windows.
 
 For example, for the DEB file:
-```
+```bash
 apt-get remove ballerina-<VERSION>-swan-lake
 ```
 
 For example, for the RPM file:
-```
+```bash
 rpm -e ballerina-<VERSION>-swan-lake
 ```
 

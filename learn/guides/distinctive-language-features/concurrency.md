@@ -413,7 +413,7 @@ transactional function bar() {
 }
 ```
 
-In the above code example, the named worker **``A``** has the ``transactional`` qualifier. Therefore, the strand for execution of the code within **``A``** will have a new transaction that is branched from calling transactional context within the function **``exec()``**.
+In the above code example, the named worker **``A``** has the ``transactional`` qualifier. Therefore, the strand for execution of the code within **``A``** will have a new transaction that is branched from the calling transactional context within the function **``exec()``**.
 
 ### Commit/Rollback Handlers
 

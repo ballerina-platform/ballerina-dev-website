@@ -12,8 +12,6 @@ This guide helps you understand the basics of Ballerina constructs which allow y
 
 Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement the GraphQL API. The Ballerina standard library itself is adequate. In this guide, you will be writing a simple GraphQL service to serve a dummy dataset related to COVID-19.
 
-This guide includes the following steps:
-
 ## Setting up the Prerequisites
 
 To complete this tutorial, you need:
@@ -26,42 +24,23 @@ To complete this tutorial, you need:
 ## Designing the GraphQL Endpoint
 
 Usually, a GraphQL endpoint is defined using a GraphQL schema. Some languages require the GraphQL schema to create a
-GraphQL service (schema-first approach) while some languages do not need the schema to create the service
+GraphQL service (schema-first approach) while others do not need the schema to create the service
 (code-first approach). Ballerina GraphQL package uses the latter. Therefore, you do not need the schema file to create
-your service, instead, once you write the Ballerina service, the Ballerina GraphQL package will generate the schema.
+your service, and instead, once you write the Ballerina service, the Ballerina GraphQL package will generate the schema.
 
 The GraphQL endpoint you are going to create in this guide will have two main operations, `Query` and `Mutation`. The
-`Query` type will be used to read the data in the data source and the `Mutation` operation will be used to update the
+`Query` type will be used to read the data in the data source, and the `Mutation` operation will be used to update the
 data in the data source.
 
 ### The `Query` Type
 The `Query` type has two fields.
 * The `all` field - This field will return all the data in the data source as an array.
 
-* The `filter` field - This field will return the data filtered by the `isoCode` of a country.
+* The `filter` field - This field will return the data filtered by the ISO Code of a country(`isoCode`).
 
 ### The `Mutation` Type
 The `Mutation` type has a single field.
 * The `add` field - This field will add a given entry to the data source.
-
-## Creating a Ballerina Project
-
-1. Open a terminal and move to the directory, in which you want to create the Ballerina project.
-
-   **On Linux or Mac:**
-    ```shell
-    cd your/parent/directory/path
-    ```
-
-   On Windows:
-    ```windows
-    cd your\parent\directory\path
-    ```
-2. Execute the `bal` command to create a new Ballerina project.
-    ```shell
-    bal new covid19
-   ```
-This will create a new Ballerina project inside a directory named `covid19`.
 
 ## Creating a Datasource for the Project
 
@@ -86,7 +65,7 @@ public type CovidEntry record {|
 |};
 ```
 
-### Adding data to the Datasource
+### Adding Data to the Datasource
 Now you can add define the data table.
 
 ```ballerina
@@ -132,28 +111,28 @@ public distinct service class CovidData {
 
     resource function get cases() returns decimal? {
         if self.entryRecord.cases is decimal {
-            return self.entryRecord.cases/1000;
+            return self.entryRecord.cases / 1000;
         }
         return;
     }
 
     resource function get deaths() returns decimal? {
         if self.entryRecord.deaths is decimal {
-            return self.entryRecord.deaths/1000;
+            return self.entryRecord.deaths / 1000;
         }
         return;
     }
 
     resource function get recovered() returns decimal? {
         if self.entryRecord.recovered is decimal {
-            return self.entryRecord.recovered/1000;
+            return self.entryRecord.recovered / 1000;
         }
         return;
     }
 
     resource function get active() returns decimal? {
         if self.entryRecord.active is decimal {
-            return self.entryRecord.active/1000;
+            return self.entryRecord.active / 1000;
         }
         return;
     }
@@ -164,14 +143,14 @@ Here, you are creating the `CovidData` service type to represent the GraphQL `Ob
 the data set. Each resource method in this service represents a field of the GraphQL object type.  The return type of
 the resource method is the type of the field.
 The resource methods returning `isoCode` and the `country` have the return type `string`, which means these fields
-cannot be `null` in the GraphQL response, in other words, these fields have `NON_NULL` types. (In GraphQL, these are
-represented by the exclamation mark `!`. Eg.: `String!`). However, the resource methods returning numbers can return `null`
+cannot be `null` in the GraphQL response. In other words, these fields have `NON_NULL` types. (In GraphQL, these are
+represented by the exclamation mark `!`. E.g., `String!`). However, the resource methods returning numbers can return `null`
 values. Therefore, the type of fields represented by those resource methods is nullable.
 
 > **Note:**  The `decimal` type is used as a return type. This will add a `Scalar` type named `Decimal` to the GraphQL
 > schema, which will be generated by the Ballerina GraphQL package.
 
-### Writing the GraphQL service
+### Writing the GraphQL Service
 
 Now you are all set to write the GraphQL service. To write the service, you need to create a GraphQL listener object.
 To create a listener object, you need to import the Ballerina GraphQL package.
@@ -184,8 +163,8 @@ service /covid19 on new graphql:Listener(9000) {
 }
 ```
 
-In the above code snippet, the path of this service is defined as `/covid19`. If we want to host the service on the
-root, we can remove the path as the following code snippet:
+In the above code snippet, the path of this service is defined as `/covid19`. If you want to host the service on the
+root, you can remove the path as the following code snippet:
 
 ```ballerina
 import ballerina/graphql;
@@ -195,7 +174,7 @@ service on new graphql:Listener(9000) {
 }
 ```
 
-When creating the `graphql:Listener` object, we need to provide the port to which it is listening. Alternatively, an
+When creating the `graphql:Listener` object, you need to provide the port to which it is listening. Alternatively, an
 existing `http:Listener` object can also be used to initialize the `graphql:Listener` as below.
 
 ```ballerina
@@ -222,8 +201,6 @@ Let's first create the `all` field. This should return an array of `CovidData` t
 ```ballerina
 import ballerina/graphql;
 
-import covid19.datasource as ds;
-
 service /covid19 on new graphql:Listener(9000) {
     resource function get all() returns CovidData[] {
         CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
@@ -236,12 +213,12 @@ service /covid19 on new graphql:Listener(9000) {
 > `table`, the corresponding GraphQL field type is a `LIST` type.
 
 The resource method definition has the accessor `get`, which is used to identify the resource methods as a field of the
-`Query` type. No other accessor is allowed. Then, comes the name of the field. The return type is the type of the field.
+`Query` type. No other accessor is allowed. Then comes the name of the field. The return type is the type of the field.
 
 The above resource method first retrieves the array of `CovidEntry` records from the data source as an array, then
 returns an array of `CovidData` service type array as the result using the built-in `map` function.
 
-Similarly, we can define another resource method to add the `filter` field.
+Similarly, you can define another resource method to add the `filter` field.
 
 >**Note:** This field has an input `isoCode` to filter the data.
 
@@ -255,9 +232,9 @@ resource function get filter(string isoCode) returns CovidData? {
 }
 ```
 
-In the above resource method, we define the `filter` field in the root `Query` type. Since this field has an
+In the above resource method, the `filter` field is defined in the root `Query` type. Since this field has an
 input parameter `isoCode`, you have to add an input parameter to the resource method. This method returns the
-corresponding data for the given `isoCode`, if such data is available in our data set, otherwise, it returns `null`.
+corresponding data for the given `isoCode` if such data is available in our data set, otherwise, it returns `null`.
 
 As the `Query` type is completed now, you need to define the `Mutation` type using remote methods.
 
@@ -309,28 +286,28 @@ public distinct service class CovidData {
 
     resource function get cases() returns decimal? {
         if self.entryRecord.cases is decimal {
-            return self.entryRecord.cases/1000;
+            return self.entryRecord.cases / 1000;
         }
         return;
     }
 
     resource function get deaths() returns decimal? {
         if self.entryRecord.deaths is decimal {
-            return self.entryRecord.deaths/1000;
+            return self.entryRecord.deaths / 1000;
         }
         return;
     }
 
     resource function get recovered() returns decimal? {
         if self.entryRecord.recovered is decimal {
-            return self.entryRecord.recovered/1000;
+            return self.entryRecord.recovered / 1000;
         }
         return;
     }
 
     resource function get active() returns decimal? {
         if self.entryRecord.active is decimal {
-            return self.entryRecord.active/1000;
+            return self.entryRecord.active / 1000;
         }
         return;
     }
@@ -412,7 +389,7 @@ In this request, an HTTP POST request is sent to the GraphQL endpoint. The reque
 
 The result of this request is the following JSON.
 
-```json
+```JSON
 {
   "data": {
     "all": [

@@ -10,7 +10,7 @@ redirect_from:
 - /learn/distinctive-language-features/concurrency
 ---
 
-## Sequence-Diagram Based Concurrency
+## Sequence Diagram-Based Concurrency
 
 ### Named Workers
 

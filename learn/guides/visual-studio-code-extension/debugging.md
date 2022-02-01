@@ -26,6 +26,8 @@ redirect_from:
   - /learn/tooling-guide/visual-studio-code-extension/debugging
   - /learn/getting-started/visual-studio-code-extension/debugging
   - /learn/getting-started/visual-studio-code-extension/debugging/
+  - /learn/visual-studio-code-extension
+  - /learn/visual-studio-code-extension/
   - /learn/visual-studio-code-extension/debugging
 ---
 

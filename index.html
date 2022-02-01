@@ -498,9 +498,9 @@ service / on new graphql:Listener(9000) {
                     </div>
                 </div>
              </div>
-             <div id="databaseTab" class="tab-pane fade in active"  >
-                 <div class="row" style="background-color: #f5f5f5;">
-                     <div class="col-lg-12 col-md-12 col-sm-12 focusPane " style="padding:20px;">
+             <div id="databaseTab" class="tab-pane fade"  >
+                 <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                     <div class="col-lg-12 col-md-12 col-sm-12 focusPane" style="padding:20px;border: 1px #c7c7c7 solid;">
                          <div class="FullCode" style="background-color: #f5f5f5;">
                              <div class="highlight">
                                <pre class="language-ballerina basic ballerina">
@@ -531,7 +531,7 @@ service / on new http:Listener(8080) {
     }
 
     resource function get albums() returns Album[]|error? {
-        stream<Album, sql:Error?> albumStream = self.db->query(`SELECT * FROM Albums`);
+        stream&gt;Album, sql:Error?&lt; albumStream = self.db->query(`SELECT * FROM Albums`);
         Album[]? albums = check from Album album in albumStream select album;
         check albumStream.close();
         return albums;
@@ -540,7 +540,7 @@ service / on new http:Listener(8080) {
     resource function get albums/[string id]() returns Album|http:NotFound|error {
         Album|sql:Error result = self.db->queryRow(`SELECT * FROM Albums WHERE id = ${id}`);
         if result is sql:NoRowsError {
-            return <http:NotFound>{};
+            return &gt;http:NotFound&lt;{};
         } else {
             return result;
         }

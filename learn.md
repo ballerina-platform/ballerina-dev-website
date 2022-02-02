@@ -245,19 +245,24 @@ redirect_from:
 </div>
 
 <div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card" >
+<div class="col-lg-6 col-md-6 col-sm-12 card"  >
+<a href="/learn/debugging-ballerina-programs/">
+  		<h3 id="debugging-ballerina-programs">Debugging Ballerina Programs</h3></a>
+		<p>Ballerina tooling support for troubleshooting Ballerina applications.  </p>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
 <h3 id="language-walkthrough-video"><a href="/learn/ballerina-shell/">Ballerina Shell</a></h3>
 <p>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
-</div>
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
- <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina">
-    <h3 id="installing-ballerina">Visual Studio Code Extension</h3></a>
-    <p >Details of all the features of the Ballerina Visual Studio Code extension. </p>
 </div>
 </div>
 
 <div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card">
+<div class="col-lg-6 col-md-6 col-sm-12 card"  >
+ <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina">
+    <h3 id="installing-ballerina">Visual Studio Code Extension</h3></a>
+    <p >Details of all the features of the Ballerina Visual Studio Code extension. </p>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
  <a href="/learn/ballerina-openapi-support/">
     <h3 id="ballerina-openapi">Ballerina OpenAPI Support </h3></a>
     <p >Details of all the features of the Ballerina OpenAPI tools. </p>

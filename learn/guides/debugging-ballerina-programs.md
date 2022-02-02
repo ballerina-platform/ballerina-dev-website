@@ -1,10 +1,10 @@
 ---
-layout: ballerina-visual-studio-code-extension-left-nav-pages-swanlake
-title: Debugging
+layout: debugging-ballerina-programs-left-nav-pages-swanlake
+title: Debugging Ballerina Programs
 description: Describes debugging functionalities provided by Ballerina in Visual Studio Code.  
 keywords: ballerina debugging, ballerina debug, ballerina debugger, ballerina vscode
-permalink: /learn/visual-studio-code-extension/debugging/
-active: debugging
+permalink: /learn/debugging-ballerina-programs/
+active: debugging-ballerina-programs
 intro: The Visual Studio Code Ballerina language extension comes with in-built debugging capabilities and provides the same debugging experience as the conventional VS Code Debugging.
 redirect_from:
   - /learn/tools-ides/vscode-plugin/run-and-debug
@@ -29,6 +29,8 @@ redirect_from:
   - /learn/visual-studio-code-extension
   - /learn/visual-studio-code-extension/
   - /learn/visual-studio-code-extension/debugging
+  - /learn/visual-studio-code-extension/debugging/
+  - /learn/debugging-ballerina-programs
 ---
 
 ## Starting a Debug Session

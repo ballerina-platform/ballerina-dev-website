@@ -58,6 +58,11 @@ If you already ran the `bal dist update` (or `bal dist pull 2201.0.0`) before th
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
+### Migrating from Swan Lake Beta Releases
+>**Info:** If you have been using Swan Lake Beta releases, delete the `Dependencies.toml` files in your Ballerina packages when migrating to Balelrina 2201.0.0 (Swan Lake). 
+
+A few backward-incompatible changes have been introduced during the Swan Lake Beta program, and thereby, some of your existing packages may not compile with Balelrina 2201.0.0 (Swan Lake). Therefore, you need to delete the `Dependencies.toml` file to force the dependency resolver to use the latest versions of your dependencies. 
+
 ### Language Updates
 
 #### New Features

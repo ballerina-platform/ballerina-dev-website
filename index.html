@@ -478,12 +478,11 @@ public enum Currency {
 service / on new graphql:Listener(9000) {
     private final mysql:Client db;
     private final http:Client forex;
-    private final Currency baseCurrency;
+    private final Currency baseCurrency = USD;
 
     function init() returns error? {
         self.db = check new (host, user, password, database, port);
         self.forex = check new (apiEndpoint);
-        self.baseCurrency = USD;
     }
 
     resource function get album(string id, Currency currency = USD) returns Album|error {

@@ -38,7 +38,7 @@ but it is very difficult for a compiler to detect runtime errors like logical er
 program execution after a successful compilation. This is where the dedicated debugging tooling support comes to the rescue.
 
 Currently, we provide a feature-rich debugging experience for troubleshooting Ballerina applications
-by the [Ballerina Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=WSO2.Ballerina).
+via the [Ballerina Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=WSO2.Ballerina).
 
 ## Starting a Debug Session
 

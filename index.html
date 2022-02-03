@@ -609,16 +609,15 @@ service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
     }
 
     remote function onConsumerRecord(kafka:ConsumerRecord[] records) returns error? {
-        check from var {value} in records
-            let var orderString = check string:fromBytes(value)
+        check from kafka:ConsumerRecord {value} in records
+            let string orderString = check string:fromBytes(value)
             let Order 'order = check value:fromJsonStringWithType(orderString)
             where 'order.paymentStatus == SUCCESS
             do {
-                kafka:ProducerRecord successfulOrder = {
+                check self.orderProducer->send({
                     topic: paymentSuccessOrders,
                     value: 'order.toString().toBytes()
-                };
-                check self.orderProducer->send(successfulOrder);
+                });
             };
     }
 }

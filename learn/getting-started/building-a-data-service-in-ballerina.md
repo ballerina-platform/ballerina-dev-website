@@ -1,7 +1,7 @@
 ---
 layout: ballerina-building-a-data-service-left-nav-pages-swanlake
 title: Building a Data Service in Ballerina 
-description: Connecting to a MySQL database and executing queries using an HTTP RESTful API using Ballerina.
+description: This tutorial covers how you can connect to a MySQL database and perform queries against it using Ballerina.
 keywords: ballerina, data service, mysql, database, REST, API
 permalink: /learn/building-a-data-service-in-ballerina/
 active: building-a-data-service
@@ -10,7 +10,7 @@ redirect_from:
  - /learn/building-a-data-service-in-ballerina
 ---
 
-This tutorial covers how you can connect to a MySQL database and perform queries against it using Ballerina. In addition, this tutorial also elaborates on how you can create an HTTP RESTful API using Ballerina that can be used to perform basic CRUD operations on the database.
+In addition, this tutorial also elaborates on how you can create an HTTP RESTful API using Ballerina that can be used to perform basic CRUD operations on the database.
 
 ![Data Service Architecture](/learn/images/data-service-architecture.png "Data Service Architecture")
 
@@ -42,7 +42,7 @@ Connect to the MySQL server using the terminal (or any other preferred method) a
 create a database and table. This tutorial demonstrates the basic use-case of creating, maintaining, and
 interacting with a database of employees in an organization.
 
-```roomsql
+```sql
 CREATE DATABASE IF NOT EXISTS Company;
 
 CREATE TABLE Company.Employees (

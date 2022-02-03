@@ -34,7 +34,7 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
 }
 tr:last-child >td{border-bottom: 0 !important;}
 a {
-  font-size: 20px;
+  /* font-size: 20px; */
   color: #20b6b0;
   text-decoration: none;
 }
@@ -478,12 +478,11 @@ public enum Currency {
 service / on new graphql:Listener(9000) {
     private final mysql:Client db;
     private final http:Client forex;
-    private final Currency baseCurrency;
+    private final Currency baseCurrency = USD;
 
     function init() returns error? {
         self.db = check new (host, user, password, database, port);
         self.forex = check new (apiEndpoint);
-        self.baseCurrency = USD;
     }
 
     resource function get album(string id, Currency currency = USD) returns Album|error {
@@ -610,16 +609,15 @@ service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
     }
 
     remote function onConsumerRecord(kafka:ConsumerRecord[] records) returns error? {
-        check from var {value} in records
-            let var orderString = check string:fromBytes(value)
+        check from kafka:ConsumerRecord {value} in records
+            let string orderString = check string:fromBytes(value)
             let Order 'order = check value:fromJsonStringWithType(orderString)
             where 'order.paymentStatus == SUCCESS
             do {
-                kafka:ProducerRecord successfulOrder = {
+                check self.orderProducer->send({
                     topic: paymentSuccessOrders,
                     value: 'order.toString().toBytes()
-                };
-                check self.orderProducer->send(successfulOrder);
+                });
             };
     }
 }
@@ -780,33 +778,33 @@ service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
           <table class="cEventTable cConferencesList" style="width:100% !important;">
               <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                   <td class="cEventDateContainer cEventDateContainer1">	
-                     <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;margin-top: -18px;">Feb 2, 2022</p>	
-                     <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Wed., 6.00 p.m. IST</p>	
+                     <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Feb 22, 2022</p>	
+                     <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tue., 6.30 p.m. PST</p>	
                      <p class="cEventLocation" style="text-align: right;">Online</p>	
                   </td>	
                   <td class="cEventDetail" id="eventDetails" >	
-                     <a target="_blank" href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/events/283458600/">	
-                        <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Meetup: CodeSeeker's Endless Programming Languages</p>	
+                     <a target="_blank" href="/community/monthly-tech-talk/">	
+                        <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
                      </a>	
-                     <h5 style="margin-bottom: 18px;">Ballerina - A Cloud Native Programming Language</h5>		
-                     <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/hasithaaravinda/">Hasitha Aravinda</a>, Associate Director/Architect, WSO2
+                     <h5 style="margin-bottom: 18px;">Language Support and Extending the Tooling Support for Ballerina</h5>		
+                     <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/imeshasudasingha/">Imesha Sudasingha</a>, Senior Software Engineer, WSO2
                   </td>	
                   <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/events/283458600/" target="_blank" style="text-align: center;">More Info</a></td>	
               </tr>
               <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                <td class="cEventDateContainer cEventDateContainer1" style="border-bottom: none !important;">	
-                  <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Feb 22, 2022</p>	
-                  <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tue., 9.00 p.m. PST</p>	
+                  <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">March 3, 2022</p>	
+                  <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Thurs., 11.00 a.m. PST</p>	
                   <p class="cEventLocation" style="text-align: right;">Online</p>	
                </td>	
                <td class="cEventDetail" id="eventDetails" style="border-bottom: none !important;">	
-                  <a target="_blank" href="/community/monthly-tech-talk/">	
-                     <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                  <a target="_blank" href="">	
+                     <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Webinar</p>	
                   </a>	
-                  <h5 style="margin-bottom: 18px;">Language Support and Extending the Tooling support for Ballerina</h5>		
-                  <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/imeshasudasingha/">Imesha Sudasingha</a>, Senior Software Engineer, WSO2
+                  <h5 style="margin-bottom: 18px;">Introducing Ballerina 2201.0.0 (Swan Lake)</h5>		
+                  <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/sameerajayasoma/">Sameera Jayasoma</a>, Senior Director, Platform Architecture, WSO2
                </td>	
-               <td class="cEventURL" style="border-bottom: none !important;"><a class="cEventRegistration " href="/community/monthly-tech-talk/" target="_blank" style="text-align: center;">More Info</a></td>	
+               <td class="cEventURL" style="border-bottom: none !important;"><a class="cEventRegistration disabled " href="" target="_blank" style="text-align: center;">Await Details</a></td>	
            </tr>
               
           </table>

@@ -32,10 +32,10 @@ redirect_from:
   - /learn/debugging-ballerina-programs
 ---
 
-When writing large-scale applications with complex logic, it is quite possible to be ended up having syntax, semantic 
-or runtime issues in your code. The Ballerina compiler comes handy when detecting syntax and semantic issues, 
-but it is very difficult for a compiler to detect runtime errors like logical errors because they occur during the 
-program execution after a successful compilation. This is where the dedicated debugging tooling support comes to the rescue.
+When writing large-scale applications with complex logic, it is quite possible to have syntax, semantic, 
+or runtime issues in your code. The Ballerina compiler comes in handy when detecting syntax and semantic issues. 
+However, it is very difficult for a compiler to detect runtime errors like logical errors because they occur during the 
+program execution after a successful compilation. This is where the dedicated debugging tooling support becomes important.
 
 Currently, we provide a feature-rich debugging experience for troubleshooting Ballerina applications
 via the [Ballerina Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=WSO2.Ballerina).

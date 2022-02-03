@@ -1,11 +1,10 @@
 ---
-layout: ballerina-visual-studio-code-extension-left-nav-pages-swanlake
-title: Debugging
+layout: debugging-ballerina-programs-left-nav-pages-swanlake
+title: Debugging Ballerina Programs
 description: Describes debugging functionalities provided by Ballerina in Visual Studio Code.  
 keywords: ballerina debugging, ballerina debug, ballerina debugger, ballerina vscode
-permalink: /learn/visual-studio-code-extension/debugging/
-active: debugging
-intro: The Visual Studio Code Ballerina language extension comes with in-built debugging capabilities and provides the same debugging experience as the conventional VS Code Debugging.
+permalink: /learn/debugging-ballerina-programs/
+active: debugging-ballerina-programs
 redirect_from:
   - /learn/tools-ides/vscode-plugin/run-and-debug
   - /learn/tools-ides/vscode-plugin/run-and-debug/
@@ -29,14 +28,24 @@ redirect_from:
   - /learn/visual-studio-code-extension
   - /learn/visual-studio-code-extension/
   - /learn/visual-studio-code-extension/debugging
+  - /learn/visual-studio-code-extension/debugging/
+  - /learn/debugging-ballerina-programs
 ---
+
+When writing large-scale applications with complex logic, it is quite possible to be ended up having syntax, semantic 
+or runtime issues in your code. The Ballerina compiler comes handy when detecting syntax and semantic issues, 
+but it is very difficult for a compiler to detect runtime errors like logical errors because they occur during the 
+program execution after a successful compilation. This is where the dedicated debugging tooling support comes to the rescue.
+
+Currently, we provide a feature-rich debugging experience for troubleshooting Ballerina applications
+via the [Ballerina Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=WSO2.Ballerina).
 
 ## Starting a Debug Session
 
 The Ballerina extension provides multiple options to debug Ballerina applications, and the most convenient way will be using the context-aware debug codelens support.
 
 However, if you require launching debug sessions with additional configurations (i.e., program arguments, environment variables), you can use `launch.json` configurations
-(For more information, see [Starting a Debug Session with Configurations](#starting-a-debug-session-with-configurations).
+(For more information, see [Starting a Debug Session with Configurations](#starting-a-debug-session-with-configurations)).
 
 ### Starting a Program Debug Session
 

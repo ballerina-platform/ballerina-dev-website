@@ -248,7 +248,7 @@ redirect_from:
 <div class="col-lg-6 col-md-6 col-sm-12 card"  >
 <a href="/learn/debugging-ballerina-programs/">
   		<h3 id="debugging-ballerina-programs">Debugging Ballerina Programs</h3></a>
-		<p>Ballerina tooling support for troubleshooting Ballerina applications.  </p>
+		<p>Details of tooling support for troubleshooting Ballerina applications.  </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
 <h3 id="language-walkthrough-video"><a href="/learn/ballerina-shell/">Ballerina Shell</a></h3>

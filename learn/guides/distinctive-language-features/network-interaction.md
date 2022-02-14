@@ -190,7 +190,7 @@ service on new http:Listener(8080) {
 }
 ```
 
-This is an example of a resource method. Instead of ``remote``, it uses the ``resource`` keyword, and the definition has two parts, **``get``** and **``hello``**. **``get``** is the accessor for the resource, which represents the HTTP method in this case. **``name``** is the resource name. This is similar to the getter and setter methods in object-oriented programming but generalized for network-oriented programming.
+This is an example of a resource method. Instead of ``remote``, it uses the ``resource`` keyword, and the definition has two parts, **``get``** and **``hello``**. **``get``** is the accessor for the resource, which represents the HTTP method in this case. **``hello``** is the resource name. This is similar to the getter and setter methods in object-oriented programming but generalized for network-oriented programming.
 
 So this service object defines a resource **``/hello``** with a query parameter **``name``**.
 

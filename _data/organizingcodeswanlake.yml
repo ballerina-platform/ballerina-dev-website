@@ -10,9 +10,9 @@
         - title: The Default Module
           url: /learn/organizing-ballerina-code/#the-default-module
           active: the-default-module
-        - title: Non-default Modules
+        - title: Non-Default Modules
           url: /learn/organizing-ballerina-code/#non-default-modules
           active: non-default-modules
-    - title: Importing a Module from the same Package
+    - title: Importing a Module from the Same Package
       url: /learn/organizing-ballerina-code/#importing-a-module-from-the-same-package
       active: importing-a-module-from-the-same-package

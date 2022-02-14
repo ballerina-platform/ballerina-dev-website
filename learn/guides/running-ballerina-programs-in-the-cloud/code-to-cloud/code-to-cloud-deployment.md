@@ -12,6 +12,8 @@ redirect_from:
   - /swan-lake/learn/deployment/code-to-cloud
   - /learn/deployment/code-to-cloud/
   - /learn/deployment/code-to-cloud
+  - /learn/deployment/docker/
+  - /learn/deployment/docker
   - /learn/user-guide/deployment/code-to-cloud
   - /learn/user-guide/deployment/
   - /learn/user-guide/deployment

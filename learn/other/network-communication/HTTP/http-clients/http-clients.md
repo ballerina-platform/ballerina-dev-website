@@ -45,7 +45,7 @@ The code above creates a client by providing an explicit client configuration, w
 
 After creating an HTTP client object, you can now execute HTTP requests through the [remote methods](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client). 
 
-The below are some of the remote methods that are most often used in the HTTP client object. 
+Below are some of the remote methods that are most often used in the HTTP client object. 
 
 ### GET
 

@@ -235,7 +235,7 @@ a.next {
     /* font-family: "CalibreWeb-Semibold"; */
     font-weight: 600;
     letter-spacing: 1px;
-    color: #57595d;
+    color: #22b7b1;
     width: 100%;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -245,7 +245,7 @@ a.next {
 a.prev:hover,
 a.next:hover {
     background-color: #57595d;
-    color: #22b7b1;
+    color: #ffffff !important;
 }
 
 a.prev:hover p,

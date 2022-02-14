@@ -166,12 +166,12 @@
         if(isFromRefPage){ 
             $('.bbe-by-example-page-row').addClass('hide');
             $('.bbe-by-reference-page-row').removeClass('hide');
-            $('.cTopButtonContainer').show();
+            //$('.cTopButtonContainer').show();
             $('.cVersionItem').hide();
         }else{ 
             $('.bbe-by-example-page-row').removeClass('hide');
             $('.bbe-by-reference-page-row').addClass('hide');
-            $('.cTopButtonContainer').hide();
+            //$('.cTopButtonContainer').hide();
             $('.cVersionItem').show(); 
         }
     }
@@ -217,6 +217,35 @@
 .bbe-by-reference-page-row.hide{
     display: none;
 }
+
+@media only screen and (max-width: 1199px){
+     .cMobileLogo img {
+     max-width: 130px;
+     margin-top: -20px;
+    }
+    .DocSearch-Button {
+        padding: 0 70px 0 20px;
+    }
+    .cVersionItem {
+     padding: 0 5px;
+    }
+    .cBioTopLink{padding: 0 10px;}
+
+}
+   /* Extra large devices (large laptops and desktops, 1200px and up) */
+   @media only screen and (min-width: 1200px) {
+    .cMobileLogo img {
+    max-width: 150px;
+    margin-top: -23px;
+     }
+    .DocSearch-Button {
+        padding: 0 70px 0 20px;
+    }
+    .cVersionItem {
+     padding: 0 5px;
+    }
+    .cBioTopLink{padding: 0 10px;}
+    }
 </style>
 
 

@@ -34,7 +34,7 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
 }
 tr:last-child >td{border-bottom: 0 !important;}
 a {
-  font-size: 20px;
+  /* font-size: 20px; */
   color: #20b6b0;
   text-decoration: none;
 }
@@ -158,7 +158,7 @@ td.cEventDateContainer{
       </a>
       <a class="cBallerina-io-Home-main-download-button cPlayButton" target="_blank" href="/learn/by-example/">
          Examples
-         <p>Testable examples in Ballerina.<br> &nbsp;</p>
+         <p>Explore and try Ballerina examples.<br> &nbsp;</p>
       </a>
    <!-- <a class="cBallerina-io-Home-main-download-button" href="/downloads">
    Download Ballerina
@@ -194,13 +194,25 @@ td.cEventDateContainer{
    <div class="container">
       <div class="col-sm-12 col-md-12">
          <h2>Ballerina in Action</h2>
-         <ul class="nav nav-tabs">
-            <li class="active" ><a data-toggle="tab"  href="#firstTab" >RESTful API</a></li>
-            <li><a data-toggle="tab" href="#secondTab" >Consuming Services</a></li>
-            <li><a data-toggle="tab" href="#thiredTab" >Working with Data</a></li> 
+
+         <div class="cHscroll">
+         <ul class="nav nav-tabs cSamplesList">
+            <li class="active" ><a data-toggle="tab"  href="#firstTab" >Consuming Services</a></li>
+            <li><a data-toggle="tab" href="#thirdTab" >Working with Data</a></li>
+            <li><a data-toggle="tab" href="#secondTab" >RESTful API</a></li>
+          
+             <li><a data-toggle="tab" href="#fourthTab" >gRPC API</a></li>
+            <li><a data-toggle="tab" href="#sixthTab" >GraphQL API</a></li>
+
+            <li><a data-toggle="tab" href="#seventhTab" >Kafka Consumer/Producer</a></li>
+            <li><a data-toggle="tab" href="#databaseTab" >Working with Databases</a></li>
+         
+
+
          </ul>
+      </div>
          <div class="tab-content">
-            <div id="firstTab" class="tab-pane fade in active"  >
+            <div id="secondTab" class="tab-pane fade "  >
                <div class="row" style="background-color: #f5f5f5;">
                   <div class="col-lg-12 col-md-12 col-sm-12 focusPane " style="padding:20px;">
                      <div class="FullCode" style="background-color: #f5f5f5;">
@@ -208,6 +220,8 @@ td.cEventDateContainer{
                            <pre class="language-ballerina basic ballerina">
                               <code class="language-ballerina ballerina" style="font-size: 12px !important;">
 import ballerina/http;
+
+configurable int port = 8080;
 
 type Album readonly & record {|
     string id;
@@ -222,7 +236,7 @@ table&lt;Album&gt; key(id) albums = table [
         {id: "3", title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan", price: 39.99}
     ];
 
-service / on new http:Listener(8080) {
+service / on new http:Listener(port) {
     resource function get albums() returns Album[] {
         return albums.toArray();
     }
@@ -253,7 +267,7 @@ service / on new http:Listener(8080) {
                   </div> -->
                </div>
             </div>
-            <div id="secondTab" class="tab-pane fade"  >
+            <div id="firstTab" class="tab-pane fade in active"  >
                <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
                   <div class="col-lg-7 col-md-12 col-sm-12 focusPane codeBlock noBottomBorder" id="column1" style="padding:20px;border: 1px #c7c7c7 solid; ">
                      <div class="FullCode" style="background-color: #f5f5f5;">
@@ -269,11 +283,6 @@ configurable string sheetsAccessToken = ?;
 configurable string spreadSheetId = ?;
 configurable string sheetName = "Sheet1";
 
-map&lt;string&gt; httpHeaders = {
-    "Accept": "application/vnd.github.v3+json",
-    "Authorization": "token " + githubPAT
-};
-
 type PR record {
     string url;
     string title;
@@ -283,8 +292,12 @@ type PR record {
 };
 
 public function main() returns error? {
-    http:Client github = check new ("https://api.github.com/repos/");
-    PR[] prs = check github->get(repository + "/pulls", httpHeaders);
+    http:Client github = check new ("https://api.github.com/repos");
+    map&lt;string&gt; headers = {
+        "Accept": "application/vnd.github.v3+json",
+        "Authorization": "token " + githubPAT
+    };
+    PR[] prs = check github->get(string `/${repository}/pulls`, headers);
 
     sheets:Client gsheets = check new ({auth: {token: sheetsAccessToken}});
     check gsheets->appendRowToSheet(spreadSheetId, sheetName,
@@ -306,7 +319,7 @@ public function main() returns error? {
                   </div>
                </div>
             </div>
-            <div id="thiredTab" class="tab-pane fade"  >
+            <div id="thirdTab" class="tab-pane fade"  >
                <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
                   <div class="col-lg-7 col-md-12 col-sm-12 focusPane codeBlock noBottomBorder" style="padding:20px;border: 1px #c7c7c7 solid;">
                      <div class="FullCode" style="background-color: #f5f5f5;">
@@ -326,8 +339,8 @@ type Country record {
 
 // Prints the top 10 countries having the highest case-fatality ratio.
 public function main() returns error? {
-    http:Client diseaseEp = check new ("https://disease.sh/v3/");
-    Country[] countries = check diseaseEp->get("covid-19/countries");
+    http:Client diseaseEp = check new ("https://disease.sh/v3");
+    Country[] countries = check diseaseEp->get("/covid-19/countries");
 
     json summary =
         from var {country, continent, population, cases, deaths} in countries
@@ -352,6 +365,269 @@ public function main() returns error? {
                   </div>
                </div>
             </div>
+             <div id="fourthTab" class="tab-pane fade"  >
+                 <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                     <div class="col-lg-7 col-md-12 col-sm-12 focusPane codeBlock noBottomBorder" style="padding:20px;border: 1px #c7c7c7 solid;">
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
+                                 <pre class="language-ballerina basic ballerina">
+                                    <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/grpc;
+
+configurable int port = 9090;
+
+Album[] albums = [
+    {id: "1", title: "Blue Train", artist: "John Coltrane", price: 56.99},
+    {id: "2", title: "Jeru", artist: "Gerry Mulligan", price: 17.99},
+    {id: "3", title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan", price: 39.99}
+];
+
+@grpc:ServiceDescriptor {
+    descriptor: ROOT_DESCRIPTOR_RECORD_STORE,
+    descMap: getDescriptorMapRecordStore()
+}
+service "Albums" on new grpc:Listener(port) {
+    remote function getAlbum(string id) returns Album|error {
+        Album[] filteredAlbums = albums.filter(album =&gt; album.id == id);
+        if filteredAlbums.length() &gt; 0 {
+            return filteredAlbums.pop();
+        }
+
+        return error grpc:NotFoundError(string `Cannot find the album for ID ${id}`);
+    }
+
+    remote function addAlbum(Album album) returns Album|error {
+        albums.push(album);
+        return album;
+    }
+
+    remote function listAlbums() returns stream&lt;Album, error?&gt;|error {
+        return albums.toStream();
+    }
+}
+                                    </code>
+                                 </pre>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-lg-5 col-md-12 col-sm-12 focusPane cColHeight1 diagramBox" style="padding:20px;border: 1px #c7c7c7 solid;">
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
+                                 <pre class="language-ballerina basic ballerina">
+                                    <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+
+service Albums {
+    rpc getAlbum(google.protobuf.StringValue)
+            returns (Album);
+    rpc addAlbum(Album) returns (Album);
+    rpc listAlbums(google.protobuf.Empty)
+            returns (stream Album);
+}
+
+message Album {
+    string id = 1;
+    string title = 2;
+    string artist = 3;
+    float price = 4;
+};
+                                    </code>
+                                 </pre>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div id="sixthTab" class="tab-pane fade"  >
+                 <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                     <div class="col-lg-12 col-md-12 col-sm-12 focusPane" style="padding:20px;border: 1px #c7c7c7 solid;">
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
+                            <pre class="language-ballerina basic ballerina">
+                                <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/graphql;
+import ballerina/http;
+import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
+
+configurable string user = ?;
+configurable string password = ?;
+configurable string host = ?;
+configurable int port = ?;
+configurable string database = ?;
+configurable string apiEndpoint = ?;
+
+public type Album record {
+    string id;
+    string title;
+    string artist;
+    decimal price;
+    Currency currency = USD;
+};
+
+public enum Currency {
+    USD,
+    LKR,
+    EUR,
+    GBP
+}
+
+service / on new graphql:Listener(9000) {
+    private final mysql:Client db;
+    private final http:Client forex;
+    private final Currency baseCurrency = USD;
+
+    function init() returns error? {
+        self.db = check new (host, user, password, database, port);
+        self.forex = check new (apiEndpoint);
+    }
+
+    resource function get album(string id, Currency currency = USD) returns Album|error {
+        Album album = check self.db->queryRow(`SELECT * FROM Albums WHERE id=${id}`);
+        if currency != self.baseCurrency {
+            string query = string `from=${self.baseCurrency}&to=${currency}`;
+            record {decimal rate;} exchange = check self.forex->get(string `/curerncyConversion?${query}`);
+            album.price = album.price * exchange.rate;
+            album.currency = currency;
+        }
+        return album;
+    }
+}
+                                    </code>
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+
+             <div id="databaseTab" class="tab-pane fade"  >
+                 <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                     <div class="col-lg-12 col-md-12 col-sm-12 focusPane" style="padding:20px;border: 1px #c7c7c7 solid;">
+
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
+                               <pre class="language-ballerina basic ballerina">
+                                <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/http;
+import ballerina/sql;
+import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
+
+configurable string host = ?;
+configurable int port = ?;
+configurable string user = ?;
+configurable string password = ?;
+configurable string database = ?;
+
+type Album record {|
+    string id;
+    string title;
+    string artist;
+    decimal price;
+|};
+
+service / on new http:Listener(8080) {
+    private final mysql:Client db;
+
+    function init() returns error? {
+        self.db = check new (host, user, password, database, port);
+    }
+
+    resource function get albums() returns Album[]|error? {
+        stream&lt;Album, sql:Error?&gt; albumStream = self.db->query(`SELECT * FROM Albums`);
+        Album[]? albums = check from Album album in albumStream select album;
+        check albumStream.close();
+        return albums;
+    }
+
+    resource function get albums/[string id]() returns Album|http:NotFound|error {
+        Album|sql:Error result = self.db->queryRow(`SELECT * FROM Albums WHERE id = ${id}`);
+        if result is sql:NoRowsError {
+            return &lt;http:NotFound&gt;{};
+        } else {
+            return result;
+        }
+    }
+
+    resource function post album(@http:Payload Album album) returns Album|error {
+        _ = check self.db->execute(`
+            INSERT INTO Albums (id, title, artist, price)
+            VALUES (${album.id}, ${album.title}, ${album.artist}, ${album.price});`);
+        return album;
+    }
+}
+                                </code>
+                                </pre>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div id="seventhTab" class="tab-pane fade"  >
+                 <div class="row cdisplayFlex" style="background-color: #f5f5f5;">
+                     <div class="col-lg-12 col-md-12 col-sm-12 focusPane" style="padding:20px;border: 1px #c7c7c7 solid;">
+                         <div class="FullCode" style="background-color: #f5f5f5;">
+                             <div class="highlight">
+                                <pre class="language-ballerina basic ballerina">
+                                    <code class="language-ballerina ballerina" style="font-size: 12px !important;">
+import ballerina/lang.value;
+import ballerinax/kafka;
+
+configurable string groupId = "order-consumers";
+configurable string orders = "orders";
+configurable string paymentSuccessOrders = "payment-success-orders";
+configurable decimal pollingInterval = 1;
+configurable string kafkaEndpoint = kafka:DEFAULT_URL;
+
+type Order readonly & record {|
+    int id;
+    string desc;
+    PaymentStatus paymentStatus;
+|};
+
+enum PaymentStatus {
+    SUCCESS,
+    FAIL
+}
+
+final kafka:ConsumerConfiguration consumerConfigs = {
+    groupId: groupId,
+    topics: [orders],
+    offsetReset: kafka:OFFSET_RESET_EARLIEST,
+    pollingInterval: pollingInterval
+};
+
+service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
+    private final kafka:Producer orderProducer;
+
+    function init() returns error? {
+        self.orderProducer = check new (kafkaEndpoint);
+    }
+
+    remote function onConsumerRecord(kafka:ConsumerRecord[] records) returns error? {
+        check from kafka:ConsumerRecord {value} in records
+            let string orderString = check string:fromBytes(value)
+            let Order 'order = check value:fromJsonStringWithType(orderString)
+            where 'order.paymentStatus == SUCCESS
+            do {
+                check self.orderProducer->send({
+                    topic: paymentSuccessOrders,
+                    value: 'order.toString().toBytes()
+                });
+            };
+    }
+}
+                                    </code>
+                                </pre>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
          </div>
       </div>
    </div>
@@ -502,33 +778,34 @@ public function main() returns error? {
           <table class="cEventTable cConferencesList" style="width:100% !important;">
               <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                   <td class="cEventDateContainer cEventDateContainer1">	
-                     <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;margin-top: -18px;">February 2, 2022</p>	
-                     <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Wed., 6.00 p.m. IST</p>	
+                     <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Feb 22, 2022</p>	
+                     <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tue., 6.30 p.m. PST</p>	
                      <p class="cEventLocation" style="text-align: right;">Online</p>	
                   </td>	
                   <td class="cEventDetail" id="eventDetails" >	
-                     <a target="_blank" href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/events/283458600/">	
-                        <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Meetup: CodeSeeker's Endless Programming Languages</p>	
+                     <a target="_blank" href="/community/monthly-tech-talk/">	
+                        <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
                      </a>	
-                     <h5 style="margin-bottom: 18px;">Ballerina - A Cloud Native Programming Language</h5>		
-                     <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/hasithaaravinda/">Hasitha Aravinda</a>, Associate Director/Architect, WSO2
+                     <h5 style="margin-bottom: 18px;">Ballerina Programming with VS Code</h5>		
+                     <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/imeshasudasingha/">Imesha Sudasingha</a>, Senior Software Engineer, WSO2
+	             <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/nadeeshaan/">Nadeeshaan Gunasinghe</a>, Technical Lead, WSO2
                   </td>	
-                  <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/CodeSeekers-Endless-Programming-Languages/events/283458600/" target="_blank" style="text-align: center;">More Info</a></td>	
+                  <td class="cEventURL"><a class="cEventRegistration" href="https://ballerina.io/community/monthly-tech-talk/" target="_blank" style="text-align: center;">More Info</a></td>	
               </tr>
               <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                <td class="cEventDateContainer cEventDateContainer1" style="border-bottom: none !important;">	
-                  <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">February 22, 2022</p>	
-                  <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tue., 9.00 p.m. PST</p>	
+                  <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">March 3, 2022</p>	
+                  <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Thur., 9.00 a.m. PST</p>	
                   <p class="cEventLocation" style="text-align: right;">Online</p>	
                </td>	
                <td class="cEventDetail" id="eventDetails" style="border-bottom: none !important;">	
-                  <a target="_blank" href="/community/monthly-tech-talk/">	
-                     <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                  <a target="_blank" href="">	
+                     <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Webinar</p>	
                   </a>	
-                  <h5 style="margin-bottom: 18px;">Language Support and Extending the Tooling support for Ballerina</h5>		
-                  <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/imeshasudasingha/">Imesha Sudasingha</a>, Senior Software Engineer, WSO2
+                  <h5 style="margin-bottom: 18px;">Introducing Ballerina 2201.0.0 (Swan Lake)</h5>		
+                  <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/sameerajayasoma/">Sameera Jayasoma</a>, Senior Director, Platform Architecture, WSO2
                </td>	
-               <td class="cEventURL" style="border-bottom: none !important;"><a class="cEventRegistration " href="/community/monthly-tech-talk/" target="_blank" style="text-align: center;">More Info</a></td>	
+               <td class="cEventURL" style="border-bottom: none !important;"><a class="cEventRegistration disabled " href="" target="_blank" style="text-align: center;">Await Details</a></td>	
            </tr>
               
           </table>
@@ -713,6 +990,9 @@ public function main() returns error? {
     border-bottom: 1px solid #c7c7c7 !important;
     padding: 30px 35px !important;
    }
+   td.cEventDateContainer{
+      padding: 30px 35px 30px 10px !important;
+   }
    tr:last-child >td{border-bottom: 0 !important;}
    td.cEventURL{
     padding: 30px 0px 30px 35px !important;
@@ -720,6 +1000,53 @@ public function main() returns error? {
    .table-striped > tbody > tr:nth-of-type(2n+1) {
     background-color:transparent !important;
     }
+
+ul.nav.nav-tabs.cSamplesList {
+   display: flex;
+}
+.cHscroll {
+	width: 100%;
+	/* overflow-x: scroll;
+	overflow-y: hidden; */
+	background: #f5f5f5;
+	border: 1px #c7c7c7  solid !important;
+   border-bottom:none !important;
+	/* margin-bottom: 22px; */
+}
+
+ul.nav.nav-tabs.cSamplesList li a {
+	width: auto;
+	display: inline-block;
+	word-wrap: break-word;
+	font-size: 16px;
+	/* max-width: 246px; */
+	text-align: center;
+}
+
+ul.nav.nav-tabs.cSamplesList li.active a:hover {
+   color: #555 !important;
+}
+
+
+.cHscroll .nav-tabs > li > a {
+	margin-right: 2px;
+	line-height: 1.42857143;
+	border: 1px solid transparent;
+	border-radius: 0 0;
+}
+
+
+.cHscroll .nav-tabs > li.active > a, .cHscroll .nav-tabs > li.active > a:focus, .cHscroll .nav-tabs > li.active > a:hover {
+	color: #555 !important ;
+	cursor: default;
+	border: transparent;
+	border-bottom: #20b6b0 3px solid !important;
+	/* background-color: #20b6b0 !important; */
+  
+}
+
+
+
     /* table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
   border-bottom: none!important;
   } */
@@ -734,7 +1061,25 @@ public function main() returns error? {
          margin: 0px;
          margin-top: 15px;
       }
-      
+      .cHscroll {
+	   width: 100%;
+	   overflow-x: scroll;
+	   overflow-y: hidden;
+	   background: #f5f5f5;
+	   border: 1px #c7c7c7  solid !important;
+      border-bottom:none !important;
+
+	   /* margin-bottom: 22px; */
+     }
+     ul.nav.nav-tabs.cSamplesList li a {
+	  width: auto;
+	  display: inline-block;
+	  word-wrap: break-word;
+	  font-size: 16px;
+	  width: 246px; 
+	  text-align: center;
+     }
+     
       td.cEventDateContainer1 span.cEventDate1{text-align: left !important}
       .cEventLocation{text-align: left !important;}
       table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {padding: 0px 15px 10px 15px !important;}

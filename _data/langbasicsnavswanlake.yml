@@ -34,10 +34,10 @@
     - title: Arrays
       url: /learn/language-basics/#arrays
       active: arrays
-    - title: foreach Statement
+    - title: <code class="highlighter-rouge language-plaintext" id="cBackground">foreach</code> Statement
       url: /learn/language-basics/#foreach-statement
       active: foreach-statement
-    - title: while Statement
+    - title: <code class="highlighter-rouge language-plaintext" id="cBackground">while</code> Statement
       url: /learn/language-basics/#while-statement
       active: while-statement
     - title: Binary Data
@@ -64,7 +64,7 @@
     - title: Error Handling
       url: /learn/language-basics/#error-handling
       active: error-handling
-    - title: check Expression
+    - title: <code class="highlighter-rouge language-plaintext" id="cBackground">check</code> Expression
       url: /learn/language-basics/#check-expression
       active: check-expression
     - title: Error Subtyping
@@ -73,7 +73,7 @@
     - title: Panics
       url: /learn/language-basics/#panics
       active: panics
-    - title: any Type
+    - title: <code class="highlighter-rouge language-plaintext" id="cBackground">any</code> Type
       url: /learn/language-basics/#any-type
       active: any-type
     - title: Ignoring Return Values and Errors
@@ -94,13 +94,13 @@
     - title: Identity
       url: /learn/language-basics/#identity
       active: identity
-    - title: const and final
+    - title: <code class="highlighter-rouge language-plaintext" id="cBackground">const</code> and <code class="highlighter-rouge language-plaintext" id="cBackground">final</code>
       url: /learn/language-basics/#const-and-final
       active: const-and-final
     - title: Enumerations
       url: /learn/language-basics/#enumerations
       active: enumerations
-    - title: match Statement
+    - title: <code class="highlighter-rouge language-plaintext" id="cBackground">match</code> Statement
       url: /learn/language-basics/#match-statement
       active: match-statement
     - title: Type Inference

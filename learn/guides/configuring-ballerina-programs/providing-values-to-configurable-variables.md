@@ -90,14 +90,41 @@ The configurable variables can be defined in different modules. Therefore, it is
 the module in which the variable is defined.
 
 The module information requirement can be explained in the following table according to the variable definition.
-
-| **Place where the variable is defined** |                           | **Module Information** |                 |
-|:---------------------------------------:|:-------------------------:|:----------------------:|:---------------:|
-|               **Package**               |         **Module**        | **Organization name**  | **Module Name** |
-| Root package                            | Root module               | optional               | optional        |
-| Root package                            | Non-root module           | optional               | mandatory       |
-| Non-root package                        | Root/ Non-root module     | mandatory              | mandatory       |
-
+<br/>
+<table width="100%">
+<thead>
+<tr>
+<th style="text-align:center" colspan="2"><strong>Place where the variable is defined</strong></th>
+<th style="text-align:center" colspan="2"><strong>Module Information</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>Package</strong></td>
+<td style="text-align:center"><strong>Module</strong></td>
+<td style="text-align:center"><strong>Organization name</strong></td>
+<td style="text-align:center"><strong>Module Name</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">Root package</td>
+<td style="text-align:center">Root module</td>
+<td style="text-align:center">optional</td>
+<td style="text-align:center">optional</td>
+</tr>
+<tr>
+<td style="text-align:center">Root package</td>
+<td style="text-align:center">Non-root module</td>
+<td style="text-align:center">optional</td>
+<td style="text-align:center">mandatory</td>
+</tr>
+<tr>
+<td style="text-align:center">Non-root package</td>
+<td style="text-align:center">Root/ Non-root module</td>
+<td style="text-align:center">mandatory</td>
+<td style="text-align:center">mandatory</td>
+</tr>
+</tbody>
+</table>
 <br/>
 
 >**Note:** The module information is not needed for configuring single `bal` file execution.

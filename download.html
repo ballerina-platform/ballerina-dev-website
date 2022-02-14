@@ -21,21 +21,30 @@ redirect_from:
 				<h1>Downloads</h1> 
          </div>
 		</div>
+      
+
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
 				<div class="cFeaturedVersion">
-					<h2 id="swanlake">{{ site.data.swanlake-latest.metadata.display-version }} <span id="versionInfo">({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2>
+               <h2 id="swanlake">{{ site.data.swanlake-latest.metadata.display-version }}</span></h2>
+               <!-- <h2 id="swanlake">{{ site.data.swanlake-latest.metadata.display-version }} <span id="versionInfo">({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2> -->
+               <p>For more details, see the <a href="https://blog.ballerina.io/posts/2022-02-01-announcing-ballerina-2201.0.0-swan-lake/">Swan Lake GA release announcement </a> and <a href="/downloads/swan-lake-release-notes/">release note.</a></p><br/> 
+					<!-- <h2 id="swanlake">{{ site.data.swanlake-latest.metadata.display-version }} <span id="versionInfo">({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2> -->
 					<div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;">
-						<p>If you are already using Ballerina, use the <a href="/learn/tooling-guide/cli-tools/update-tool/">Ballerina Update Tool</a> to directly update to {{ site.data.swanlake-latest.metadata.display-version }}. First, run the command below to update the update tool to its latest version. </p> <pre>bal update</pre>
-						<p>If your <strong>Update Tool is below version 0.8.14</strong>, use the <code class="highlighter-rouge language-plaintext">ballerina update</code> command. Next, run the command below to update to {{ site.data.swanlake-latest.metadata.display-version }}.</p> <pre>bal dist pull {{ site.data.swanlake-latest.metadata.short-version}}</pre>
-						<p>For further details, see the <a href="/downloads/swan-lake-release-notes/">Release Note</a>. </p>
+						<p>If you are already using Ballerina, you can use the <a href="/learn/tooling-guide/cli-tools/update-tool/">Ballerina Update Tool</a> to directly update to {{ site.data.swanlake-latest.metadata.display-version }}. To do this:</p><br> 
+                  <p>1. Run the command below to get the latest version of the Update Tool.</p> 
+                  <p><pre>bal update</pre></p>
+                  <p>2. Run the command below to update your Ballerina version to {{ site.data.swanlake-latest.metadata.display-version }}.</p>
+                  <p><pre>bal dist update</pre></p>
+                  <!-- <p>Next, run the command below to update your Ballerina version to {{ site.data.swanlake-latest.metadata.display-version }}.</p>	 -->
+                  <p>If you already ran <code class="highlighter-rouge language-plaintext">bal dist update</code> (or <code class="highlighter-rouge language-plaintext">bal dist pull 2201.0.0)</code> before <code class="highlighter-rouge language-plaintext">bal update</code>, see <a href="/downloads/swan-lake-release-notes/2201-0-0-swan-lake/#troubleshooting">Updating Ballerina</a> to recover your installation.</p>
 					</div>
             </br> 
          </div> 
 		</div>
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
-				<p> If you are new to Ballerina, download a Ballerina distribution from below based on your operating system and install it.</p>
+				<p>If you are new to Ballerina, download the relevant Ballerina distribution based on your operating system and install it.</p>
          </br>
 			</div>
 		</div>
@@ -98,9 +107,9 @@ redirect_from:
 			</br>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
-					<p> To <a href="/learn/installing-ballerina/installation-options/#verifying-the-installation">verify if Ballerina was successfully installed</a>, execute the <code class="highlighter-rouge language-plaintext">bal -v</code> command in the Terminal/Shell. For more information on installing, see <a href="/learn/installing-ballerina/installation-options/">Installation Options</a>.</p>
+					<p> To <a href="/learn/installing-ballerina/installation-options/#verifying-the-installation">verify that Ballerina was successfully installed</a>, execute the <code class="highlighter-rouge language-plaintext">bal version</code> command in the Terminal/Shell. For more information on installing Ballerina, see <a href="/learn/installing-ballerina/installation-options/">Installation Options</a>.</p>
                </br>
-               <p>Next, install the Ballerina Visual Studio Code extension from below.</p>
+               <p>Next, install the Ballerina Visual Studio Code extension.</p>
             </div>
 			</div>
 		</div>
@@ -179,7 +188,8 @@ redirect_from:
                and for installation instructions, see <a href="/learn/getting-started/installing-ballerina/">Installing Ballerina</a>.
             </p>
             </p>-->
-                           <h2><span id="versionInfo">{{ site.data.stable-latest.metadata.version }} ({{ site.data.stable-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2>
+                           <h2><span id="versionInfo">{{ site.data.stable-latest.metadata.version }} </span></h2>
+                           <!-- <h2><span id="versionInfo">{{ site.data.stable-latest.metadata.version }} ({{ site.data.stable-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2> -->
                            <div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;">
                               <p> If you already have jBallerina version 1.2.0 or above installed, you can use the <a href="/1.2/learn/keeping-ballerina-up-to-date/">Ballerina Update Tool</a> to directly update to {{ site.data.stable-latest.metadata.version }}. To do this, first, execute the command below to get the Update Tool updated to its latest version. </p> <pre>ballerina update</pre>
                               <p>Next, execute the command below to update to jBallerina {{ site.data.stable-latest.metadata.version }}.</p> <pre>bal dist update</pre>
@@ -302,7 +312,7 @@ redirect_from:
                      <div class="cFeaturedVersion">
                         <div class="cDownloadsHeader">
                            <p style="margin-top: 30px;"></p>
-                           <p>For downloading the VSCode and IntelliJ Ballerina extensions, see <a href="/1.2/learn/setting-up-visual-studio-code/">Setting up Visual Studio Code</a> and <a href="/1.2/learn/setting-up-intellij-idea/">Setting up IntelliJ IDEA</a>, and for installation instructions, see <a href="/1.2/learn/installing-ballerina/">Installing Ballerina</a>. </p>
+                           <p>To download the VSCode and IntelliJ Ballerina extensions, see <a href="/1.2/learn/setting-up-visual-studio-code/">Setting up Visual Studio Code</a> and <a href="/1.2/learn/setting-up-intellij-idea/">Setting up IntelliJ IDEA</a>, and for installation instructions, see <a href="/1.2/learn/installing-ballerina/">Installing Ballerina</a>. </p>
                            </p>
                         </div>
                      </div>

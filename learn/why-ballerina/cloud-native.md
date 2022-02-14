@@ -98,7 +98,7 @@ Services in Ballerina work with a listener object and can have one or more resou
 
 ### Get Started
 
-The below is a simple Hello World service to get you started.
+Below is a simple Hello World service to get you started.
 
 ```ballerina
 import ballerina/http;

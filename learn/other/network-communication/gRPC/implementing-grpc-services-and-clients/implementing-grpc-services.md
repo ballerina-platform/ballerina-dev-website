@@ -50,7 +50,7 @@ remote function add(AddRequest value) returns AddResponse|error {
     return {result: result};
 }
 ```
-The below is the full implementation of the service.
+Below is the full implementation of the service.
 
 ```ballerina
 import ballerina/grpc;

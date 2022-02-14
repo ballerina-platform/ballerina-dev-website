@@ -54,7 +54,6 @@ This guide focuses on enabling Ballerina service observability with some of its 
 Ballerina logs can be fed to any external log monitoring system like the [Elastic Stack] to perform log monitoring and analysis.
 
 
-
 ## Observing a Ballerina Service
 
 Follow the steps below to observe a sample Ballerina service.
@@ -159,7 +158,7 @@ Example cURL command:
 $ curl http://localhost:9090/hello/sayHello
 ```
 
-### Step 6 - View Metrics and Tracing Dashboards
+### Step 6 - Viewing Metrics and Tracing Dashboards
 
 View the tracing information on Jaeger via <http://localhost:16686/> and view metrics information from the Grafana
 dashboard on <http://localhost:3000/>.
@@ -214,7 +213,7 @@ ballerinax.prometheus. host | The name of the host to which the '/metrics' servi
 There are mainly two systems involved in collecting and visualizing the metrics. [Prometheus] is used to collect the
 metrics from the Ballerina service while [Grafana] can be used to connect to Prometheus and visualize the metrics on the dashboard.
 
-#### Setting Up Prometheus
+#### Setting up Prometheus
 [Prometheus] is used as the monitoring system, which pulls out the metrics collected from the Ballerina `/metrics` service. This section focuses on the quick installation of Prometheus with Docker and the configuration required to 
 collect metrics from the Ballerina service with the default configurations. Follow the steps below to configure 
 Prometheus. 
@@ -254,7 +253,7 @@ Prometheus.
 4.  Go to <http://localhost:19090/> and check whether you can see the Prometheus graph.
 Ballerina metrics should appear in Prometheus graph's metrics list when the Ballerina service is started.
 
-#### Setting Up Grafana
+#### Setting up Grafana
 Let’s use [Grafana] to visualize metrics in a dashboard. For this, we need to install Grafana and configure
 Prometheus as a data source. Follow the steps below to configure Grafana.
 
@@ -354,11 +353,11 @@ ballerina.observe. samplerParam | It is a floating value. Based on the sampler t
 ballerina.observe. reporterFlushInterval | The Jaeger client will be sending the spans to the agent at this interval. | 2000 | Any positive integer value.
 ballerina.observe. reporterBufferSize | Queue size of the Jaeger client. | 2000 | Any positive integer value.
 
-### Setting Up the External Systems for Tracing
+### Setting up the External Systems for Tracing
 You can configure Ballerina to support distributed tracing with Jaeger. This section focuses on configuring
 Jaeger with Docker as a quick installation.
 
-#### Setting Up the Jaeger Server
+#### Setting up the Jaeger Server
 There are many possible ways to deploy Jaeger. For more information, see [Jaeger Deployment](https://www.jaegertracing.io/docs/deployment/). This focuses on an all-in-one deployment with Docker.
 
 1. Install Jaeger via Docker and start the Docker container by executing the command below.
@@ -390,9 +389,9 @@ You can view the logs with the command below.
 $ tail -f ~/wso2-ballerina/workspace/ballerina.log
 ```
 
-### Setting Up the External Systems for Log Analytics
+### Setting up the External Systems for Log Analytics
 
-#### Setting Up the Elastic Stack
+#### Setting up the Elastic Stack
 The Elastic Stack comprises the following components.
 
 1. Beats - Multiple agents that ship data to Logstash or Elasticsearch. In our context, Filebeat will ship the Ballerina logs to Logstash. Filebeat should be a container running on the same host as the Ballerina service. This is so that the log file (ballerina.log) can be mounted to the Filebeat container.

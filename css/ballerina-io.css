@@ -1197,6 +1197,25 @@ p.cHomeListItem {
 .nv {
     user-select: none;
 }
+.cVersionChangeBanner{
+    color: #8a6d3b !important;
+    background-image: linear-gradient(to bottom,#fcf8e3 0,#f8efc0 100%);
+    background-repeat: repeat-x;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    }
+    
+.cVersionChangeBanner:hover{
+    color: #684200 !important;
+    text-decoration: none;
+}
 
 ul.cInlinelinklist li {
     list-style: none !important;
@@ -1473,6 +1492,22 @@ li pre code span.line-numbers-rows {
         position: absolute;
         z-index: 9999999999999 !important;
     }
+    .cVersionChangeBanner{
+        color: #8a6d3b;
+        background-image: linear-gradient(to bottom,#fcf8e3 0,#f8efc0 100%);
+        background-repeat: repeat-x;
+        background-color: #fcf8e3;
+        border-color: #faebcc;
+        width: 100%;
+        display: inline-block;
+        padding: 4px !important;
+        text-align: center;
+        font-weight: 200;
+        font-size: 14px !important;
+        position: absolute;
+        z-index: 9999999999999 !important;
+    }
+
     .cInfoBannerVersionHandling {
         background:  #494949;
         width: 100%;
@@ -1487,10 +1522,7 @@ li pre code span.line-numbers-rows {
         z-index: 9999999999999 !important;
     }
     .cInfoBannerLink{font-weight: 200;font-size: 15px !important;color: #20b6b0;}
-<<<<<<< HEAD
-=======
 
->>>>>>> 69019f41480c7e2fc78aba503409877c1da980b5
     .navbar-nav > li:last-child a.cSerachIcon {
         display: none;
     }

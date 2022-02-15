@@ -36,9 +36,7 @@ Follow the instructions below to install the latest Ballerina version using the 
 
 [Download the package file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `/Library/Ballerina` directory.
 
->**Tip:** Alternatively, you can install Ballerina using Homebrew by executing the `brew install bal` command.Homebrew installs the Ballerina distribution in the <code class="language-plaintext highlighter-rouge">/usr/local/Cellar/ballerina/&lt;BALLERINA-VERSION&gt;/libexec</code> directory.
-
-<pre class="cInfoCode"><code>brew install ballerina</code></pre>
+>**Tip:** Alternatively, you can install Ballerina using Homebrew by executing the `brew install bal` command. Homebrew installs the Ballerina distribution in the <code class="language-plaintext highlighter-rouge">/usr/local/Cellar/ballerina/&lt;BALLERINA-VERSION&gt;/libexec</code> directory.
 
 The package automatically sets your PATH environment variable for you. You may need to restart any open Terminal sessions for the change to take effect.
 

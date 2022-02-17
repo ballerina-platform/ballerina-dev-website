@@ -1,0 +1,33 @@
+name: Run Ballerina in Action examples
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python
+        with:
+          python-version: '3.x'
+
+      - name: Install Python Packages
+        run: pip install beautifulsoup4
+
+      - name: Extract bbes from html
+        run: python3 src/ballerina-in-action/bbe-generator.py
+    
+      - name: Ballerina Build
+        uses: ballerina-platform/ballerina-action@master
+        with:
+          env:
+            WORKING_DIR = src/ballerina-in-action
+          args: 
+            build

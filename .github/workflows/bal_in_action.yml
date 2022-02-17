@@ -8,13 +8,18 @@ jobs:
   build:
     
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 3
+      matrix: 
+        bbe: ['action_bbe0.bal', 'action_bbe1.bal', 'action_bbe2.bal',
+        'action_bbe5.bal','action_bbe6.bal','action_bbe7.bal']
     
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
       - name: Setup Python
-        uses: actions/setup-python
+        uses: actions/setup-python@v2
         with:
           python-version: '3.x'
 
@@ -27,7 +32,5 @@ jobs:
       - name: Ballerina Build
         uses: ballerina-platform/ballerina-action@master
         with:
-          env:
-            WORKING_DIR = src/ballerina-in-action
           args: 
-            build
+            build ${{ matrix.bbe }}

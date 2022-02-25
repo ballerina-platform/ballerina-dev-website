@@ -130,9 +130,9 @@ service / on httpListener {
 Let's take a moment to digest the new constructs below in this code:
 
 - The [`http`](https://lib.ballerina.io/ballerina/http/latest) module provides high-level abstractions to work with the HTTP protocol. 
-- The listener declaration creates a new HTTP listener with the port `8080`. Listener is the entity, which receives the network input and then routes it to the attached service(s).
+- The listener declaration creates a new HTTP listener with the port `8080`. The `listener` is the entity, which receives the network input and then routes it to the attached service(s).
 - The service declaration specifies the listener to which the service gets attached and a collection of remotely accessible methods. There are two kinds of methods as `resource` and `remote`.
-- Services use `remote` methods to expose services in a procedural style and they are named by verbs whereas `resource` methods are used for data-oriented protocols and they are are named by nouns.
+- Services use `remote` methods to expose services in a procedural style and they are named by verbs whereas `resource` methods are used for data-oriented protocols and they are named by nouns.
 - In this example, there are two `resource` methods: The first one responds to HTTP GET requests with the `/greeting` path and the other one responds to `GET` requests with the `/greeting/{name}` path.
 - These `resource` methods return a `string` value, which maps to the `text/plan` content-type in the HTTP response.
 

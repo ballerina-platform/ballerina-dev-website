@@ -16,7 +16,7 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
   border-bottom: #20b6b0 3px solid !important;
   background-color: transparent !important;
 }
-
+tr:last-child >td{border-bottom: 0 !important;}
 .nav-tabs > li > a:hover {
   border-color:transparent !important;
 }
@@ -128,6 +128,12 @@ td.cEventDateContainer{
 .cEventDate1{text-align: right;}
 </style>
 <link rel="stylesheet" href="/css/events-page.css">
+<style>
+   table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+  border-bottom: 0px !important;
+
+}
+</style>
 <!-- <link rel="stylesheet" href="/css/home-page-old.css"/> -->
 <div class="row cBallerinaIntroSection">
    <div class="container">
@@ -792,7 +798,7 @@ service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
                   <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Cloud-Native-London/events/283605953/" target="_blank" style="text-align: center;">More Info</a></td>	
               </tr>
                </td>	
-               <td class="cEventURL" style="border-bottom: none !important;"><a class="cEventRegistration" href="https://ballerina.io/community/monthly-tech-talk/" target="_blank" style="text-align: center;">More Info</a></td>	
+               
            </tr>
               
           </table>
@@ -977,6 +983,7 @@ service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
     border-bottom: 1px solid #c7c7c7 !important;
     padding: 30px 35px !important;
    }
+   
    td.cEventDateContainer{
       padding: 30px 35px 30px 10px !important;
    }
@@ -1085,10 +1092,12 @@ ul.nav.nav-tabs.cSamplesList li.active a:hover {
     @media only screen and (min-width: 1200px) {
       #eventDetails{padding-left: 0px !important;}
       td.cEventURL {width: 25%;}
+      
       .codeBlock{border-right: none !important;}
       .cdisplayFlex{    -ms-box-orient: horizontal;   display: -webkit-box;   display: -moz-box;   display: -ms-flexbox;   display: -moz-flex;   display: -webkit-flex;   display: flex; }
     }
     @media only screen and (max-width: 600px) {
+     
     .nav-tabs > li > a {
     font-size: 10px;
   /* padding: 10px 10px; */

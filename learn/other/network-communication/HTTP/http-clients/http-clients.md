@@ -17,7 +17,7 @@ redirect_to:
   - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
-## Creating HTTP Clients
+## Creating HTTP clients
 
 An HTTP client in Ballerina is created by instantiating an `http:Client` object while providing the host and client configurations. The client configuration has a default value of `{}`, and the default values of its fields can be found in the `http:ClientConfiguration` record definition.
 
@@ -41,7 +41,7 @@ http:Client|error clientEp = new("http://example.com", {
 
 The code above creates a client by providing an explicit client configuration, which provides the connection-pooling configuration.
 
-## Basic HTTP Requests
+## Basic HTTP requests
 
 After creating an HTTP client object, you can now execute HTTP requests through the [remote methods](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client). 
 
@@ -101,22 +101,22 @@ Payload: {"args":{},"data":"Hello!","files":{},"form":{},"headers":{"Content-Len
 
 Similar to the [`get`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) and [`post`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#post) remote methods above, there are other methods such as [`put`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#put), [`delete`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#delete), [`patch`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#patch), [`head`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#head), and [`options`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#options) to represent the HTTP methods. There is also a generic [`execute`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#execute) remote method for users to specify the HTTP verb and execute the HTTP action. 
 
-## Multipart Message Handling
+## Multipart message handling
 
 For information on this, see [Multipart Message Handling](/learn/network-communication/http/http-clients/multipart-message-handling).
 
-## Data Binding
+## Data binding
 
 For information on this, see [Data Binding](/learn/network-communication/http/http-clients/data-binding).
 
-## Data Streaming
+## Data streaming
 
 For information on this, see [Data Streaming](/learn/network-communication/http/http-clients/data-streaming).
 
-## Communication Resiliency
+## Communication resiliency
 
 For information on this, see [Communication Resiliency](/learn/network-communication/http/http-clients/communication-resiliency).
 
-## Secure Communication
+## Secure communication
 
 For information on this, see [Secure Communication](/learn/network-communication/http/http-clients/secure-communication).

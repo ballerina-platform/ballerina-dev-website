@@ -17,7 +17,7 @@ redirect_to:
   - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
-## Using MIME Entities
+## Using MIME entities
 
 As used in the HTTP [client API](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client), similarly, multipart messages can be created in service resources by using the Multipurpose Internet Mail Extensions (MIME) standard. You can provide MIME entity values to create single or multi-part HTTP messages using the [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response) object. 
 
@@ -59,7 +59,7 @@ $ curl http://localhost:8080/greeting
 Hello!
 ```
 
-## What's Next?
+## What's next?
 
 For other use cases of HTTP services, see the topics below.
 

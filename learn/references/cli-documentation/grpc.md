@@ -17,7 +17,7 @@ redirect_from:
   - /learn/cli-documentation/grpc
 ---
 
-## Usage of the Tool
+## Usage of the tool
 
 The code generation tool can produce `service/client stub files` and `service/client skeletons` in the Ballerina Language.
  
@@ -35,7 +35,7 @@ $ bal grpc --input <proto-file-path>
          [--proto-path <proto-directory>]
 ```
 
-### CLI Command Options
+### CLI command options
 
 `--input` - Path to a '.proto' file or a directory containing multiple '.proto' files. This is a mandatory field. 
 You need to provide the path of the definition file or the directory that contains multiple ‘.proto’ files.
@@ -81,7 +81,7 @@ message HelloReply {
 ```
 **Note:** The sample service definition is taken from the quick start guide on the gRPC official site.
 
-### Executing the Sample
+### Executing the sample
 
 * Execute the below command to generate the client/service stub and service template files.
 ```

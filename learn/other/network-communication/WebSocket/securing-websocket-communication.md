@@ -17,7 +17,7 @@ redirect_to:
   - https://lib.ballerina.io/ballerina/websocket/latest/
 ---
 
-## Configuring a Secure Socket 
+## Configuring a secure socket 
 
 For your WebSocket service to be compatible with this approach, you can configure a secure socket for your WebSocket listener. This WebSocket listener is the one used in the [WebSocket upgrade](/learn/network-communication/websocket/), so it will be upgrading a TCP connection with TLS.
 
@@ -27,7 +27,7 @@ Afterward, in your WebSocket client, you can use the `wss` protocol scheme to co
 var ws = new WebSocket("wss://localhost:8443/ws");
 ```
 
-## Securing WebSocket Communication Example
+## Securing WebSocket communication example
 
 1. Create a `wss_service.bal` file with the content below.
 

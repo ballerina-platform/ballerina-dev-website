@@ -17,7 +17,7 @@ redirect_to:
   - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
-## Interacting With the Remote Client
+## Interacting with the remote client
 
 This is done by optionally taking in the [`http:Caller`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Caller) and [`http:Request`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request) typed parameters, which represent calling the remote client and the current request information respectively. 
 
@@ -54,7 +54,7 @@ $ curl -d "Jack" http://localhost:8080/greeting
 Hello, Jack!
 ```
 
-## Executing Additional Logic
+## Executing additional logic
 
 Using this approach, you can also execute additional logic even after the response is sent back to the client. For example, in the case of a network issue when responding back to the client, you can do custom operations for failure-recovery or do extended logging operations. 
 
@@ -112,7 +112,7 @@ $ curl -v -d "Jack" http://localhost:8080/greeting
 Hello, Jack!
 ```
 
-## What's Next?
+## What's next?
 
 For other use cases of HTTP services, see the topics below.
 

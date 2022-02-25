@@ -19,6 +19,9 @@
     - title: Writing a Simple REST API
       url: /learn/getting-started-with-ballerina/#writing-a-simple-rest-api
       active: writing-a-simple-rest-api
+    - title: Running the Simple REST API
+      url: /learn/getting-started-with-ballerina/#running-the-simple-rest-api
+      active: running-the-simple-rest-api
     - title: Learning More
       url: /learn/getting-started-with-ballerina/#learning-more
       active: learning-more

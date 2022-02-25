@@ -23,7 +23,7 @@ redirect_from:
   - /learn/generating-code-documentation
 ---
 
-## Generating Documentation for Modules
+## Generating documentation for modules
 
 Developers can write the documentation in line with the Ballerina source code using the lightweight [markdown](https://daringfireball.net/projects/markdown/syntax) markup language.
 They can document special constructs such as parameters, return values, fields, etc., within the code using documentation attributes.
@@ -36,7 +36,7 @@ Ballerina documentation design and usage is aligned with the package and module 
 * Fields, parameters, return values, etc., can be marked using documentation attributes.
 * Ballerina uses a React app to render the documentation, and the data required is stored as a JSON in the `api-docs.js` file. The React app source code can be found in the [ballerina-dev-tools](https://github.com/ballerina-platform/ballerina-dev-tools/tree/main/docerina-ui) GitHub repo. Developers are welcome to customize and try out themes and styles in the React app.
 
-## Writing Ballerina Documentation
+## Writing Ballerina documentation
 
 Ballerina Flavored Markdown documentation is a first-class syntax in the Ballerina language. The `#` at the beginning of a line denotes a line of documentation. 
 If necessary, you can have multiple lines of documentation, which you can group together.
@@ -84,7 +84,7 @@ public function foo(int i, string s) returns boolean {
 }
 ```
 
-**Sample Usage**
+**Sample usage**
 
 ```ballerina
 # Submits an HTTP request to a service with the specified HTTP verb.
@@ -107,7 +107,7 @@ remote isolated function submit(string httpVerb, string path, RequestMessage mes
 }
 ```
 
-## Documenting a Module
+## Documenting a module
 
 A Ballerina module can have a `Module.md` file, which describes the module and its usage.
 
@@ -145,7 +145,7 @@ The `bal doc` command will read the `Package.md` and `Module.md` files and prepe
 Check [HTTP module API documentation](https://lib.ballerina.io/ballerina/http/latest) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
 
 
-## Generating Ballerina Documentation
+## Generating Ballerina documentation
 
 Ballerina provides a `doc` command, which can be executed against a given Ballerina package. This command will result in generating the Ballerina documentation as HTML files for all the modules in the package.
 

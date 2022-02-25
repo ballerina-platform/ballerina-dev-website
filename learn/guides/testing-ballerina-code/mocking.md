@@ -15,7 +15,7 @@ redirect_from:
   - /learn/user-guide/testing-ballerina-code/mocking/
 ---
 
-## Mocking Objects
+## Mocking objects
 
 The `Test` module provides capabilities to mock an object for unit testing. This allows you to control the behaviour of 
 the object member functions and values of member fields via stubbing or replacing the entire object with a user-defined 
@@ -28,7 +28,7 @@ Mocking objects can be done in two ways :
 variables)
 
 
-### Creating a Test Double
+### Creating a test double
 
 You can write a custom mock object and substitute it in place of the real object. The custom object should be made 
 structurally equivalent to the real object via the mocking features in the test module.
@@ -72,7 +72,7 @@ public function testGetRandomJoke() {
 }
 ```
 
-### Stubbing Member Functions and Variables of an Object
+### Stubbing member functions and variables of an object
 
 Instead of creating a test double, you may also choose to create a default mock object and stub the functions to return 
 a specific value or to do nothing.
@@ -180,7 +180,7 @@ function getCategoriesResponse() returns http:Response {
 }
 ```
 
-#### Stubbing to Return a Specific Value
+#### Stubbing to return a specific value
 
 ***main_test.bal***
  
@@ -213,7 +213,7 @@ public function testGetRandomJoke() {
 }
 ```
 
-#### Stubbing with Multiple Values to Return Sequentially for Each Function Call
+#### Stubbing with multiple values to return sequentially for each function call
 
 ***main_test.bal***
 
@@ -242,7 +242,7 @@ public function testGetRandomJoke() {
 }
 ```
 
-#### Stubbing a Member Variable
+#### Stubbing a member variable
 
 If a `client` object has a public member variable, it can be stubbed to return a mock value for testing.
 
@@ -320,7 +320,7 @@ function testMemberVariable() {
 }
 ```
 
-#### Stubbing to Do Nothing
+#### Stubbing to do nothing
 
 If a function has an optional or no return type specified, this function can be mocked to do nothing when writing
  test cases.
@@ -368,7 +368,7 @@ function testSendNotification() {
 }
 ```
 
-## Mocking Functions
+## Mocking functions
 
 The Ballerina test framework provides the capability to mock a function. You can easily mock a function in a module that
 you are testing or a function of an imported module by using the mocking feature. This feature will help you to test 
@@ -414,7 +414,7 @@ test:MockFunction intAddMockFn = new();
 
 After the initialization, the following options can be used to stub the behaviour of a function written in the module being tested.
  
-### Stubbing to Return a Specific Value
+### Stubbing to return a specific value
   
  This test stubs the behaviour of the `get` function to return a specific value in 2 ways:
      
@@ -440,7 +440,7 @@ function testReturn() {
 }
 ```
 
-### Stubbing to Invoke Another Function in Place of the Real
+### Stubbing to invoke another function in place of the real
 
 This test stubs the behaviour of the `intAdd` function to substitute it with a user-defined mock function.
 

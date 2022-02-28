@@ -12,7 +12,7 @@ redirect_from:
 - /learn/managing-dependencies
 ---
 
-## Specifying Dependencies
+## Specifying dependencies
 
 A package can depend on other packages that are available in Ballerina repositories. By default, Ballerina searches for the dependencies in the repositories below.
 * The distribution repository
@@ -33,7 +33,7 @@ The Ballerina Central is a remote repository and creates a local file system cac
 The local repository is also a file system repository, which will be created in the `<USER_HOME>` location. The repository location is `<USER_HOME>/.ballerina/repositories/local/repo/bala`. 
 For more information, see [Using Dependencies from the Local Repository](/learn/managing-dependencies/#using-dependencies-from-the-local-repository).
 
-### Importing a Module
+### Importing a module
 
 To use exported modules of any package, add an import statement in the Ballerina code. It enables access to all public symbols in the imported module.
 
@@ -97,7 +97,7 @@ service / on gmailEventListener {
 }
 ```
 
-## Specifying Dependency Versions
+## Specifying dependency versions
 
 When building a package, the compiler figures out the dependency versions automatically. Ballerina searches the latest compatible versions of the package dependencies in the distribution repository, Ballerina Central repository, and the local repository(if specified).
 
@@ -112,7 +112,7 @@ The `Dependencies.toml` file is auto-generated and managed by the Ballerina CLI 
 Updating the versions of the existing dependencies, adding dependency entries related to a newly-added import statement, and deleting entries 
 of a removed import statement are handled by the CLI itself. 
 
-## Using Dependencies from the Local Repository
+## Using dependencies from the local repository
 
 The local repository is useful to test a package in the development phase or to fix bugs. To specify a dependency from the local repository, first, you need to publish it to the local repository by following the steps below.
 
@@ -148,13 +148,13 @@ Ballerina considers the version specified in the Ballerina.toml as the minimum r
 However, the compiler gives priority to the latest version if a new patch version is found in distribution or Ballerina Central repositories.
 At this point, the compiler resolves the latest version and ignores the dependency version in the local repository.
 
-## Achieving Reproducible Builds
+## Achieving reproducible builds
 
 By default, the compiler always looks up the latest compatible versions of the dependencies in the repositories when building a package.
  It minimizes the hassle of managing dependency versions to the package developer since the compiler is smart enough to keep the package updated with the latest compatible dependencies all the time.
  However, if you need to repeat a constant behavior to make the build more predictable, Ballerina facilitates this using offline and sticky modes.
 
-### The Sticky Mode
+### The sticky mode
 
 Using the `--sticky` flag with `bal build` will force the compiler to stick to the exact versions locked in the `Dependencies.toml`. 
 In other words, the CLI disables the automatic-update feature when you provide the `--sticky` flag.
@@ -163,7 +163,7 @@ In other words, the CLI disables the automatic-update feature when you provide t
 bal build --sticky
 ```
 
-### The Offline Mode
+### The offline mode
 
 Using the` –-offline` flag with `bal build` will run the build offline without connecting to Ballerina Central. 
 This will save build time since the packages are resolved using the distribution repository, and the file system cache of the Ballerina Central repository.
@@ -172,7 +172,7 @@ Using the `--offline` flag along with the `--sticky` flag will ensure a predicta
 
 >**Note:** The automatic update runs only once a day to optimize the time taken during frequent builds. The `target/build` file is used for this purpose.
 
-## Version Compatibility
+## Version compatibility
 
 Abiding by the specifications of [Semantic Versioning](https://semver.org/), Ballerina considers two versions to be **compatible if the major versions are equal and not zero**.
 

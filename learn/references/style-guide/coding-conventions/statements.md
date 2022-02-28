@@ -22,7 +22,7 @@ redirect_from:
 
 ---
 
-## If Statement
+## If statement
 
 * Avoid enclosing the condition with parentheses.
   
@@ -67,9 +67,9 @@ if inProperSallaryRange {
 }
 ```
 
-## Match Statement
+## Match statement
 
-### Match Patterns Clause
+### Match patterns clause
 
 * Block indent each pattern clause in its own line.
 * Keep a single space before and after the `=>` sign.

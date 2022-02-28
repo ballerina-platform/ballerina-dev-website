@@ -16,7 +16,6 @@ keywords: ballerina, ballerinalang, cloud native, microservices, integration, pr
   border-bottom: #20b6b0 3px solid !important;
   background-color: transparent !important;
 }
-
 .nav-tabs > li > a:hover {
   border-color:transparent !important;
 }
@@ -128,6 +127,12 @@ td.cEventDateContainer{
 .cEventDate1{text-align: right;}
 </style>
 <link rel="stylesheet" href="/css/events-page.css">
+<style>
+   table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+  border-bottom: 0px !important;
+
+}
+</style>
 <!-- <link rel="stylesheet" href="/css/home-page-old.css"/> -->
 <div class="row cBallerinaIntroSection">
    <div class="container">
@@ -193,7 +198,7 @@ td.cEventDateContainer{
 <div class="row cWidget cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 8.5rem; background-color: #f5f5f5;">
    <div class="container">
       <div class="col-sm-12 col-md-12">
-         <h2>Ballerina in Action</h2>
+         <h2 id="ballerina-in-action">Ballerina in Action</h2>
 
          <div class="cHscroll">
          <ul class="nav nav-tabs cSamplesList">
@@ -640,7 +645,7 @@ service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
 <div class="row cBallerinaFeatureSection cWhyBallerinaLinks" style="padding-top:3rem; padding-bottom: 6rem; ">
    <div class="container">
       <div class="col-sm-12 col-md-12">
-         <h2>
+         <h2 id="why-ballerina">
             Why Ballerina
          </h2>
       </div>
@@ -739,7 +744,7 @@ service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
    <a class="cBookmarkTop" id="Developer-First"></a>
    <div id="" class="container">
       <div class="col-sm-12 col-md-8 cColCOntent">
-         <h2>Featured Videos</h2>
+         <h2 id="featured-videos">Featured Videos</h2>
     </div>
     <div class="col-sm-12 col-md-6 cVideoImage">
       <h3 style="text-align: left; font-size:20px;">Ballerina Language Concepts</h3><br/>
@@ -770,7 +775,7 @@ service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
    <a class="cBookmarkTop" id="Developer-First"></a>
    <div id="" class="container">
       <div class="col-sm-12 col-md-8 cColCOntent">
-         <h2>Events</h2>
+         <h2 id="events">Events</h2>
          <h3 style="padding-right: 15px;padding-bottom: 20px;">Upcoming Events</h2>
     </div>
   
@@ -778,34 +783,21 @@ service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
           <table class="cEventTable cConferencesList" style="width:100% !important;">
               <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                   <td class="cEventDateContainer cEventDateContainer1">	
-                     <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Feb 22, 2022</p>	
-                     <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tue., 6.30 p.m. PST</p>	
+                     <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">March 3, 2022</p>	
+                     <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Thurs., 8.30 p.m. GMT</p>	
                      <p class="cEventLocation" style="text-align: right;">Online</p>	
                   </td>	
                   <td class="cEventDetail" id="eventDetails" >	
-                     <a target="_blank" href="/community/monthly-tech-talk/">	
-                        <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
-                     </a>	
-                     <h5 style="margin-bottom: 18px;">Ballerina Programming with VS Code</h5>		
-                     <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/imeshasudasingha/">Imesha Sudasingha</a>, Senior Software Engineer, WSO2
-	             <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/nadeeshaan/">Nadeeshaan Gunasinghe</a>, Technical Lead, WSO2
+                     <a target="_blank" href="https://www.meetup.com/Cloud-Native-London/events/283605953/">	
+                        <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Meetup</p>	
+                     </a>
+                     <h5 style="margin-bottom: 18px;">Developing Cloud Native Apps with Ballerina</h5>		
+                     <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/sameerajayasoma">Sameera Jayasoma</a>, Senior Director, Platform Architecture, WSO2
                   </td>	
-                  <td class="cEventURL"><a class="cEventRegistration" href="https://ballerina.io/community/monthly-tech-talk/" target="_blank" style="text-align: center;">More Info</a></td>	
+                  <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Cloud-Native-London/events/283605953/" target="_blank" style="text-align: center;">More Info</a></td>	
               </tr>
-              <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
-               <td class="cEventDateContainer cEventDateContainer1" style="border-bottom: none !important;">	
-                  <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">March 23, 2022</p>	
-                  <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Wed., 9.00 a.m. PDT</p>	
-                  <p class="cEventLocation" style="text-align: right;">Online</p>	
                </td>	
-               <td class="cEventDetail" id="eventDetails" style="border-bottom: none !important;">	
-                  <a target="_blank" href="">	
-                     <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Webinar</p>	
-                  </a>	
-                  <h5 style="margin-bottom: 18px;">Introducing Ballerina 2201.0.0 (Swan Lake)</h5>		
-                  <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/sameerajayasoma/">Sameera Jayasoma</a>, Senior Director, Platform Architecture, WSO2
-               </td>	
-               <td class="cEventURL" style="border-bottom: none !important;"><a class="cEventRegistration disabled " href="" target="_blank" style="text-align: center;">Await Details</a></td>	
+               
            </tr>
               
           </table>
@@ -990,6 +982,7 @@ service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
     border-bottom: 1px solid #c7c7c7 !important;
     padding: 30px 35px !important;
    }
+   
    td.cEventDateContainer{
       padding: 30px 35px 30px 10px !important;
    }

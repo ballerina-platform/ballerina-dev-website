@@ -21,26 +21,26 @@ redirect_to:
   - /learn/by-example/
 ---
 
-## Using Language-Integrated Queries
+## Using language-integrated queries
 
 As of now, language-integrated queries are supported for iterator implementations such as an array, map, stream, and table. The two kinds of integrated queries below can be written in Ballerina.
 
 - [Query Expressions](#query-expressions)
 - [Query Actions](#query-actions)
 
-## Query Expressions
+## Query expressions
 
 Query expressions allow you to generate a list, table, string, or XML. The sections below include the clauses you can use in a query expression.
 
-### Query Clauses
+### Query clauses
 
 Query expressions contain a set of clauses similar to SQL to process the data. They must start with the `from` clause and can perform various operations such as filter, join, sort, limit, and projection. There are various SQL-like clauses to perform these operations.
 
-#### 'From' Clause
+#### 'From' clause
 
 The `from` clause is used to define the input iterator source that is considered for processing the data. Similar to the `for each` statement, you can specify any iterator as the expression. 
 
-**List as the Input**
+**List as the input**
 
 In the example below, the `studentList` variable is a list iterator. 
 
@@ -55,7 +55,7 @@ string[] studentNames = from Student student in studentList
                     select student.firstName + " " + student.lastName;
 ```
 
-**Stream as the Input**
+**Stream as the input**
 
 In the example below, the `numberStream` variable is a stream iterator.
 
@@ -88,11 +88,11 @@ Person[] outputPersonList =
 
 >**Info:** Similar to list and stream, you can use all kinds of iterators as the input in the `from` clause.
 
-#### 'Where' Clause
+#### 'Where' clause
 
 The `where` clause allows you to filter by a condition. You can define any conditional expression, which returns a boolean.
 
-**Filtering with a Simple Equal Check**
+**Filtering with a simple equal check**
 
 The example below has a simple filter condition that performs an equality check.
 
@@ -107,7 +107,7 @@ Person[] outputPersonList =
     };
 ```
 
-**Filtering with Multiple Conditions**
+**Filtering with multiple conditions**
 
 The example below has a `where` clause with complex conditional expressions that contain logical operators, equality, and range checks.
 
@@ -123,7 +123,7 @@ Student[] outputStudentList =
     };
 ```
 
-**Filtering with Multiple `Where` Clauses**
+**Filtering with multiple `Where` clauses**
 
 The example below has multiple `where` clauses defined in the query expression. This is similar to the filtering conditions with a logical `&&` operator.
 
@@ -139,11 +139,11 @@ Person[] outputPersonList =
                 deptAccess: dept.name
           };
 ```
-#### 'Let' Clause
+#### 'Let' clause
 
 The `let` clause allows you to define variables that can be used only within the query expression scope. These variables cannot be accessed out of the query expression.
 
-**Defining Multiple Variables**
+**Defining multiple variables**
 
 The example below defines one or more variables in the `let` clause and uses them within query expressions.
 
@@ -174,11 +174,11 @@ Person[] outputPersonList =
         };
 ```
 
-#### 'Join' Clause
+#### 'Join' clause
 
 A `join` clause performs an `inner` or `left outer` equijoin. In the `join` clause, there are two input iterators. During the joining process, each value of an iterator is matched against all the values in the other iterator based on the given condition, and the output values are generated for all the matching event pairs. Therefore, you can only perform equality checks as the joining condition.
 
-**Inner `Join` Clause**
+**Inner `Join` clause**
 
 The example below joins two lists based on a `join` condition, which is an equality check. This is an `inner join` and if there are no matching values, then, there won’t be any output generated from the `join` operation.
 
@@ -195,7 +195,7 @@ PersonInfo[] personInfoList =
     };
 ```
 
-**Left `Outer Join` Clause**
+**Left `Outer Join` clause**
 
 The example below performs a `left outer join` between the two input iterator lists. The key difference of the `outer join` compared to the `inner join` is even there are no matching values in the other list as per the joining condition, unavailable values are marked as nil.
 
@@ -211,7 +211,7 @@ PersonInfo[] personInfoList =
         };
 ```
 
-#### 'Order by` Clause 
+#### 'Order by` clause 
 
 The `order by` clause allows ordering the results in an ascending and/or descending order based on the specified attributes. Ordering will be done in an ascending manner by default. 
 
@@ -225,7 +225,7 @@ Student[] orderedStudentList = from var student in studentList
                         select student; 
 ```
 
-#### 'Limit` Clause 
+#### 'Limit` clause 
 
 The `limit` clause limits the number of frames/values emitted by a query pipeline. You should define an integer value to specify the number of output values.
 
@@ -242,11 +242,11 @@ Person[] outputPersonList =
         };
 ```
 
-#### 'Select` Clause 
+#### 'Select` clause 
 
 The `select` clause is mandatory in query expressions that are used for projection. You can use this clause to create values required to generate iterators such as list, table, XML, string, and stream. 
 
-**List as an Output**
+**List as an output**
 
 The `select` clause of the example below creates a record that allows generating a list as an output.
 
@@ -260,7 +260,7 @@ Report[] reportList = from var student in studentList
   };
 ```
 
-**XML as an Output**
+**XML as an output**
 
 The `select` clause in the example below is evaluated for each iteration. The emitted values are concatenated to form the XML result.
 
@@ -270,7 +270,7 @@ xml students = from var studentName in school/<student>/<firstName>
     select <xml> studentName; 
 ```
 
-**Stream as an Output**
+**Stream as an output**
 
 The result of the query expression is a stream (`reportStream`), of which the members are the result of the `select` clause. 
 
@@ -286,7 +286,7 @@ stream<Report> reportStream = stream from var student in studentList
   }; 
 ```
 
-**String as an Output**
+**String as an output**
 
 The values emitted from the `select` clause are concatenated to get the string result of the query statement. 
 
@@ -298,7 +298,7 @@ string students = from var student in studentList
             select student.firstName + " " + student.lastName + "\n";
 ```
 
-**Table as an Output**
+**Table as an output**
 
 In the example below, the query expression starts with a `table` keyword. The `key(id)` key specifier specifies the key sequence of the constructed table. The result of the query expression is a table. During the construction of a table, each value emitted from the `select` clause is added as a new member.
 
@@ -316,7 +316,7 @@ ReportTable|error reportTable =
               };
 ```
 
-#### 'On Conflict' Clause
+#### 'On Conflict' clause
 
 An `on conflict` clause is only allowed for a query expression, which constructs a table with a key sequence. The expression is evaluated when the `select` clause emits a value that conflicts with a previous value, in the sense that both values have the same key value in the table.
 
@@ -334,7 +334,7 @@ ReportTable|error result =
     on conflict onConflictError;
 ```
 
-## Query Actions
+## Query actions
 
 Query actions are executed in the same way as the clauses in a query expression. However, it does not generate an output such as a list. Rather, it executes a set of defined statements. The block inside the `do` clause is executed in each iteration.
 
@@ -352,7 +352,7 @@ var x = from var person in personList
         };
 ```
 
-## Writing an Integrated Query
+## Writing an integrated query
 
 Follow the steps below to write an integrated query related to an online product order use case. The code snippets in each step denote how some operations are performed.
 
@@ -462,7 +462,7 @@ function loadPriceInfo() returns table<PriceInfo> {
 }
 ```
 
-## Trying it Out
+## Trying it out
 
 Follow the steps below to try out the above language integrated query example.
 

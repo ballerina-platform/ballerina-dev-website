@@ -11,11 +11,11 @@ redirect_from:
 
 The Ballerina community has been bootstrapped by <a href="https://wso2.com" target="_blank">WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open source project with all source code licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, Version 2.0</a> and the specifications licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0" target="_blank">Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
 
-## Try Out Ballerina
+## Try out Ballerina
 
 [Learn Ballerina](/learn) and try out writing Ballerina code on your own.
 
-## Subscribe to the Newsletter
+## Subscribe to our newsletter
 
 <a class="cBookmark" id="newsletter"></a>
 
@@ -58,7 +58,7 @@ The Ballerina team is now hosting monthly recorded Community Calls! These are in
 
 - Get involved in our next Community Call by <a href="https://docs.google.com/forms/d/e/1FAIpQLSewd7XGlQeuCI2P9XlQ-A8rtFGn9ghbdYpghIi9K03VlxHcRg/viewform" target="_blank">submitting a discussion topic or requesting to do your own quick demo</a>.
 
-## Seek Help
+## Seek help
 
 We are happy to help! Come engage with us on any channel that works for you.
 
@@ -85,7 +85,7 @@ We are happy to help! Come engage with us on any channel that works for you.
    </div> -->
 </div>
 
-## Report Issues
+## Report issues
 
 Report issues in the GitHub repositories of the areas and components listed below.
 
@@ -96,7 +96,7 @@ Report issues in the GitHub repositories of the areas and components listed belo
 - <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">Website, Ballerina Central, API Docs</a>
 - <a href="mailto:security@ballerina.io" target="_blank">Security</a> (For details, see the <a href="/security" target="_blank">security policy</a>.)
 
-## Help Us Grow
+## Help us grow
 
 If you like the experience so far, help us to spread the word.
 
@@ -224,7 +224,7 @@ body {font-family: Arial;}
 }
 </style>
 
-<h2>Join Ballerina Events</h2>
+<h2>Join Ballerina events</h2>
 <p>Click to see information about past and upcoming Ballerina events.</p>
 
 <div class="tab">

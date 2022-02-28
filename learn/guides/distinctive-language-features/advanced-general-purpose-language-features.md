@@ -10,7 +10,7 @@ redirect_from:
 - /learn/distinctive-language-features/advanced-general-purpose-language-features
 ---
 
-## Default Values for Function Parameters
+## Default values for function parameters
 
 Ballerina allows specifying default values for function parameters. You can use any expression such as a literal or a function call as the default value of a parameter. Additionally, the default value expressions can use the values of preceding parameters.
 
@@ -23,7 +23,7 @@ function substring(string str, int 'start = 0, int end = str.length())
 
 The type descriptor contains closures for every defaultable parameter. These closures accept the values specified for the previous parameters as arguments. Using those closures, the compiler generates code to fill missing values at the call site for this function. This is not part of the function type and is not applicable when functions are passed around as a first-class value.
 
-## Providing Function Arguments by Name
+## Providing function arguments by name
 
 In addition to default values for parameters, it is also useful to call functions with named arguments. Ballerina allows you to call functions with named arguments, and these named arguments do not have to be in the same order as the parameters.
 
@@ -48,7 +48,7 @@ The first statement calls the function in the usual way without using the names 
 
 You have to pay special attention to argument names of remote methods and resource methods since these names are exposed as public interfaces for API endpoints. This is also applicable for public functions in a module. Changing the argument names of such functions makes the module incompatible when it is imported into other modules.
 
-## Type Inclusion for Records
+## Type inclusion for records
 
 There are times when it is beneficial to create a record by combining fields of other records. For example, suppose you have a **``Date``** record, which has ``year``, ``month``, and ``day`` fields and you also have a **``TimeOfDay``** record having ``hour``, ``minute``, and ``seconds`` fields. 
 
@@ -75,7 +75,7 @@ type Time record {
    
 Using the **``*T``** notation, you can include the record type **``T``** in the record type descriptor of another record. This is effectively the same as copying the fields of the included records, **``Date``** and **``TimeOfDay``**, into the including record, **``Time``**.
 
-## Included Record Parameters
+## Included record parameters
 
 While designing API interfaces in Ballerina, you invoke the function with named arguments. Alternatively, you can also pass all the arguments within a record value. In this case, the mapping constructor is used as part of function invocation.
 
@@ -99,7 +99,7 @@ The function **``foo()``** has a ``string`` parameter **``inputFile``** and an i
 
 This way of including record fields as named arguments in a function provides a consistent experience to the caller.
 
-## Default Values for Record Fields
+## Default values for record fields
 
 Ballerina also allows default values for record fields as part of the record's type descriptor. A default value is an expression, which can also be a closure computed in the context of the enclosing module scope.
 
@@ -115,7 +115,7 @@ In the above code example, the record **``X``** has a field **``str``** which is
 
 Default values do not affect static typing. They only affect the use of type descriptors to construct records. Calling the ``value:cloneWithType()`` function with a record type-descriptor **``T``** will make use of default values in **``T``** if required. Similarly, using **``*T``** also copies the default values.
 
-## Object Types
+## Object types
 
 Ballerina also allows you to define object types that define just the type without the implementation. Unlike classes, which give you the type as well as the implementation that you can instantiate through ``new``, an object type is a definition without any implementation. It is similar to an interface, as defined in the Java programming language.
 
@@ -138,7 +138,7 @@ In the above code example, **``Hashable``** is an object type, and it has a meth
 
 Object typing is structural, and an object type looks like a pattern that the object must match. In this case, the match is done to check that the returned object matches the pattern of the **``Hashable``** object type which contains a **``hash()``** method returning an integer.
 
-## Object Type Inclusion
+## Object type inclusion
 
 You can also include object types using the **``*T``** syntax. You have two options for that. First, you can include an object type in another object type, such that one interface extends another interface. Secondly, you can also have a class that includes a type, like the class implementing the interface.
 
@@ -169,7 +169,7 @@ In the above code example, **``Cloneable``** is an object type. It is included a
 
 The implementation of the object type within the class that includes the type is checked at the compile time. This provides interface inheritance. Ballerina does not support implementation inheritance.
 
-## Distinct Object Types
+## Distinct object types
 
 Ballerina also supports the concept of ``distinct`` object types. This concept allows you to define a type with a name that is significant, similar to nominal typing, within a structured type system. It is done using the ``distinct`` keyword in the type definition.
 
@@ -202,7 +202,7 @@ Conceptually, a distinct type including another distinct type results in multipl
 One scenario where you would want to use a distinct object type is when you are inter-operating with another program in a different programming language, where you want to have distinct types corresponding to the type structures in the other language. For example, if you are interoperating with Java, you want each of the Ballerina classes to correspond to the Java class to capture the Java semantics correctly. Similarly, while interacting with the external world through API interfaces like GraphQL, you may want to leverage nominal typing via this distinct typing feature of Ballerina.
 
 
-## Readonly Objects and Classes
+## Readonly objects and classes
 
 You can also define read-only objects and classes. An object is ``readonly`` if all of its fields are ``final`` and are of types that are subtypes of the ``readonly`` type. You can use **``readonly & T``** to declare an object ``T`` as ``readonly``.
 
@@ -232,7 +232,7 @@ readonly class FixedTimeZone {
 
 In the above code example, the **``FixedTimeZone``** class is of the ``readonly`` type. It includes the **``Timezone``** type which is also a ``readonly`` type, and it has a ``final`` ``decimal`` field named **``offset``**. If the class declaration uses ``readonly`` then the object type defined by the class is ``readonly & T``, where ``T`` is the type defined in the class body.
 
-## Error Detail
+## Error detail
 
 In Ballerina, you can associate additional fields with an error type to include more specific details about the context of the error.
 
@@ -250,7 +250,7 @@ HttpDetail d = httpError.detail();
 
 In the above code example, **``err``** is an error type constructed from named arguments to add some details to the error value. You can also describe the error details as a type **``T``** by using the **``error<T>``** syntax. The **``HttpDetail``** type is a record type that defines the field **``httpCode``** of type ``int``. When included in the declaration of the **``error<HttpDetail>``** error type, it uses the **``HttpDetail``** record type as the error detail record. When you want to get the detail out of the error, you can use the lang library function ``error:detail()`` to get the detail value of the **``HttpDetail``** record type.
 
-## Error Cause
+## Error cause
 
 You can also have a cause in an error value. You can pass it as a positional argument to the error constructor. The cause argument is optional in the error constructor.
 
@@ -269,7 +269,7 @@ In the above code example, the error constructor is called with the additional a
 
 You can also call the lang library function **``error:cause()``** on an error to extract the cause.
 
-## Type Intersection for Error Types
+## Type intersection for error types
 
 If you want to have an error type that is both distinct and has a constraint, you can use Ballerina's type intersection to define such an error type.
 
@@ -285,7 +285,7 @@ type FileIoError IoError & error<FileErrorDetail>;
  
 In the above code example, the **``FileIoError``** error type is declared using a type intersection of the distinct error type **``IoError``** and an error type with the **``FileErrorDetail``** type as the detail type, using the ``&`` notation.
 
-## Type Intersection
+## Type intersection
 
 Type intersection is a generic feature that can be used with other types also. For example, you can use it to combine two objects.
 
@@ -309,7 +309,7 @@ type FooBar object {
 
 In the above code example, **``Foo``** and **``Bar``** are two separate object types. The **``FooBar``** type is defined using the type intersection of **``Foo``** and **``Bar``** using the ``&`` notation. This has the same result as including the types using the ``*`` notation. It provides a neat alternative to type inclusion but is less flexible.
 
-## Expression-Oriented Style
+## Expression-oriented style
 
 Ballerina's general philosophy is to make the programming syntax familiar to those familiar with the C-family of languages. It has a distinction between statements and expressions, just like in C. This is the imperative style of programming which is considered less intuitive. That's why there is a shift towards a functional style of programming that is more expression-oriented.
 
@@ -347,7 +347,7 @@ function hypot(float x) returns float =>
 
 And it also works with query statements where you can have expressions following the ``let`` clause using the ``in`` clause.
 
-## Computed Field Key
+## Computed field key
 
 Ballerina allows you to have computed values for the names of keys in a map. So, rather than defining it at compile-time, you can compute and use it at runtime.
 
@@ -399,7 +399,7 @@ byte[*] a = [104, 101, 108, 108, 111];
 You can also infer the length of an array from the initializer expression. In the above code example, the array **``a``** is initialized with a fixed length, but the declaration uses a ``*`` notation instead of specifying the length. This means that the compiler will allocate the array length based on the values used as the initializer expression.
 
 
-## Destructuring Tuples
+## Destructuring tuples
 
 Tuples can be accessed normally, like arrays, by specifying the index. However, there is a more intuitive way to use tuples by destructuring them.
 
@@ -419,7 +419,7 @@ In the above code example, the **``Time``** type is a tuple type. It represents 
 
 With this approach, you can read tuple values in a more idiomatic way within the code, instead of using index-based access.
 
-## Binding Patterns in Assignment
+## Binding patterns in assignment
 
 The destructuring syntax of tuples can also be used to bind to variables in assignments.
 
@@ -440,7 +440,7 @@ function swapXY() {
 
 In the above code example, the **``IntPair``** type is a tuple type of two members of type ``int``. Within the function **``assign()``**, the variable **``ip``** of type  **``IntPair``** is destructured and assigned to the two module-level variables **``x``** and **``y``**.  This makes it very efficient to perform some operations, such as swapping two variables. In the function **``swapXY()``** you can see that the swapping is done between **``x``** and **``y``** just by doing tuple destructuring without using a temporary variable.
 
-## Rest Type in Tuples
+## Rest type in tuples
 
 Similar to how maps can be described as record types, arrays can also be defined as tuple types using ``...``.
 
@@ -454,7 +454,7 @@ In the above code example, the tuple type **``Id``** has the first member of the
 
 Therefore, any array of type ``T``, as in ``T[]``, can be described as ``[T...]``, which is a tuple containing zero or more members of type ``T`` in the list. Tuples are not open by default.
 
-## Array/Map Symmetry
+## Array/map symmetry
 
 | Basic<br>type | Index type | JSON   | Constructor                       | Type with<br>uniform<br>member<br>type | Type with<br>per-index member<br>type       | Open type                            |
 |---------------|------------|--------|-----------------------------------|----------------------------------------|---------------------------------------------|--------------------------------------|
@@ -469,7 +469,7 @@ Both list and mappings types can be described in two ways, using uniform member 
 
 Using the ``...`` notation you can have an open type. In the case of lists, an open type is declared as a tuple type as ``[T0, Tr...]``. In the case of mappings, it is a record type declared as ``record {| Tx x; Tr ...; |}``.
 
-## Rest Parameters
+## Rest parameters
 
 Ballerina also supports rest parameters.
 
@@ -500,7 +500,7 @@ service on hl {
 
 In the above code example, the service has a resource method which is **``file/``**. It has a string rest parameter. As a result, you can append any number of levels to the base path **``file/``** to represent a URL denoting a complete file path.
 
-## Spread Operator ``...x``
+## Spread operator ``...x``
 
 The spread operator ``...x``  allows you to spread out the members of a structured type. If you declare **``...x``**, where ``x`` is a list or mapping, this is equivalent to specifying each member of ``x`` separated by a comma. In the case of lists, it is specified by positions, and in the case of mappings, it is specified by name.
 
@@ -533,7 +533,7 @@ Spreading also works in the case of function calls, by calling ``f(...x)`` which
 
 The basic rule to allow the spread operator is that the static type of the expression guarantees type safety with each value. For example, if the **``Date``** and **``TimeofDay``** are open records, containing the same name for a member, then at the time of spreading to construct the record **``DateTime``**, this will lead to a duplication of fields. Therefore, this will not be allowed at compile-time.
 
-## Spread in Binding Patterns
+## Spread in binding patterns
 
 You can use the spread operator in binding patterns.
 
@@ -552,7 +552,7 @@ function process(Id id) {
 
 In the above code example, **``Id``** is a type with ``string`` as the rest type. Inside the function **``process()``**, it is destructured using a binding pattern that uses the spread operator, such that the variable **``path``** will contain all the string values passed within the tuple type. This can be leveraged with records too.
 
-## Binding Patterns in ``match`` Statements
+## Binding patterns in ``match`` statements
 
 You can also use the spread operator in a binding pattern in a match statement. For example, it can be used with an open record in a ``match`` statement.
 
@@ -577,7 +577,7 @@ In the above code example, the ``match`` statement has a binding pattern that ma
 
 The type for ``rest`` can be interpreted as a map of ``anydata``. But when it is included in the binding pattern that includes the fields ``x`` and ``y`` from ``Pair``, we know that the type of ``rest`` should be defined in such a way that it must not contain the fields ``x`` and ``y`` itself. This is achieved through another kind of type called the ``never`` type, which is covered in the next section.
 
-## ``never`` Type
+## ``never`` type
 
 Ballerina also supports a ``never`` type which means that no value belongs to the type. This is useful on quite a few occasions. One simple way to leverage the ``never`` type is to use it as a return type for a function that never returns normally.
 
@@ -618,7 +618,7 @@ In the above code example, **``Pair``** is an open record. Therefore **``p``** i
 
 So this means that **``rest``** can have any field except the fields with keys `x` and `y` since they are already bound. The ``never`` type can be leveraged with optional fields to indicate that that record will never have the particular field.
 
-## Interfacing to External Code
+## Interfacing to external code
 
 Sometimes you want to interface with external code. Instead of implementing the function body the keyword ``external`` can be used. The implementation figures out how to map to the external implementation.
 
@@ -633,7 +633,7 @@ As part of interfacing with external implementation, Ballerina supports another 
 
 The ``handle`` type is basically an opaque handle that can be passed to external functions. There is no typing for ``handle`` and it can be added as a private member of a Ballerina class for better type safety. Alternatively, you can also have an entire module that is implemented in something other than Ballerina.
 
-## Built-in Integer Subtypes
+## Built-in integer subtypes
 
 Another feature that is particularly useful when interacting with external code is the concept of built-in subtypes. Ballerina only has one integer type which is a 64-bit, signed type. But the external code may use different variants of integers, and you need to support those types. The ``lang.int`` lang library provides these variants as subtypes.
 
@@ -656,7 +656,7 @@ Similarly, the ``lang.int`` lang library provides the ``int:Signed32``, ``int:Si
 
 One important thing to remember about these subtypes is that these are not separate basic types. Operations on these subtypes work exactly like integers. These subtypes allow better optimization of storage, particularly for arrays.
 
-## Built-in String Subtype
+## Built-in string subtype
 
 Similar to integer subtypes, the ``lang.string`` lang library also supports a ``Char`` type which is a subtype of ``string``. In Ballerina a single character is defined as a string of length one, but you can still use the subtype ``string:Char``.
 
@@ -691,7 +691,7 @@ In the above code example, the type **``R``** is a record. **``t``** is a ``type
 .
 The ``typeof`` operator gets the dynamic type of a value. Dynamic types for mutable structures are inherent types.
 
-## **``ensureType``** Function
+## **``ensureType``** function
 
 The **``ensureType()``** function is a lang library function that is similar to a cast. It takes a ``typedesc`` value as an argument. With the usual cast operation, you get a panic if the cast is not possible, and this is something that you may not want when dealing with situations such as handling user inputs. With ``ensureType()`` an error is returned.
 
@@ -704,7 +704,7 @@ function demo(anydata v)
 
 In the above code example, **``v``** is cast to the ``float`` type by calling **``ensureType()``**. Therefore the calling function **``demo( )``** can return a ``float`` value or an ``error`` value. **``ensureType()``** also performs numeric conversion just like casting operations.
 
-## Dependent Types
+## Dependent types
 
 Assigning the result of ``ensureType()`` above to ``float`` works without having to use a type case expression (``<T>x``), because Ballerina supports a concept called dependent types that makes the return type of a function dependent on the value of a parameter. Unlike the normal convention where the return type is defined independently, here the return type depends on a parameter which is a type descriptor.
 
@@ -731,7 +731,7 @@ function demo(json j) returns error? {
 
 In the above code example, the **``ensureType()``** function is called on **``j``**, and it returns a ``float`` value which is assigned to **``f``**, which is of the ``float`` type. This happens because the function parameter **``t``** of **``ensureType()``** has a default value of ``<>`` which causes the compiler to infer the argument for **``t``** from the function call context.
 
-## Annotation Declaration and Access
+## Annotation declaration and access
 
 You can declare your own annotations and use them across modules.
 
@@ -762,7 +762,7 @@ m:IntConstraints? c
 
 In the above code example, the **``ConstrainedInt``** annotation is defined with just the **``minInclusive``** field. It is applied to a type **``PositiveInt``**.  At runtime, a ``typedesc`` value can be used to access the annotations. You can use a reference to **``PositiveInt``** to get the ``typedesc`` value and then use the ``.@`` notation on it followed by the annotation tag to retrieve the particular annotation. If the annotation is present, annotation access will return a value of the associated type **``IntConstraints``**. Since the annotation may or may not be specified, annotation access may also return nil. Therefore, the result of annotation access will be the union of **``IntConstraints``** and nil.
 
-## Trapping Panics
+## Trapping panics
 
 Ballerina provides an option to trap panics. By trapping panics using the ``trap`` keyword, you can stop a panic and get access to the associated error value.
 

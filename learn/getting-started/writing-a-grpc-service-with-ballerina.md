@@ -13,7 +13,7 @@ redirect_from:
 - /learn/user-guide/getting-started/writing-a-grpc-service-with-ballerina/
 ---
 
-## Setting up the Prerequisites
+## Setting up the prerequisites
 
 To complete this tutorial, you need:
 
@@ -22,7 +22,7 @@ To complete this tutorial, you need:
     >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
 3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
 
-## Creating the Service Definition
+## Creating the service definition
 
 In an RPC program, the first step is to define the service interface using an Interface Definition Language(IDL).
 gRPC commonly uses Protocol Buffers as the IDL. Let's write a simple service definition in Protocol Buffers as below.
@@ -60,11 +60,11 @@ As illustrated in the diagram below, you first need to compile the service defin
 
 Let’s walk through the instructions on implementing the gRPC service and client in the Ballerina language.
 
-### Developing a gRPC Service
+### Developing a gRPC service
 
 As with any other Ballerina Program, you need to create a Ballerina project. Then, you can generate the service code in the project and write the business logic.
 
-#### Creating a Ballerina Project
+#### Creating a Ballerina project
 
 Execute the following command to create a new Ballerina project in the directory that you want to create the project.
 
@@ -76,7 +76,7 @@ $ bal new greeter_service
 
 Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
 
-#### Generating the Source Code
+#### Generating the source code
 
 Execute the following command inside the same directory in which you created the Ballerina project to generate the source code related to the service definition.
 
@@ -106,7 +106,7 @@ and the Ballerina types corresponding to the request and response messages.
 - The `greeter_service.bal` file is the service template file. It contains service(s) with all the remote methods
   defined in the `.proto` file.
 
-#### Update and Run the Application
+#### Update and run the application
 
 Let’s update the service template file (i.e., `greeter_service.bal`) and add the business logic to the remote method. In this case, you only need to update the `sayHello` method as shown below.
 
@@ -144,11 +144,11 @@ Running executable
 
 Now you completed the server-side implementation, and it is running on port 9090. Let’s move on to the gRPC client-side implementation.
 
-### Developing a gRPC Client
+### Developing a gRPC client
 
 Similar to the service, the client application also starts with creating a new Ballerina project. Once created, you can generate the client code and update the code to call the remote methods exposed by the service.
 
-#### Creating a Ballerina Project
+#### Creating a Ballerina project
 
 Execute the following command to create a new Ballerina project in the directory that you want to create the project.
 
@@ -160,7 +160,7 @@ $ bal new greeter_client
 
 Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
 
-#### Generating the Source Code
+#### Generating the source code
 
 Execute the following command inside the same directory in which you created the Ballerina project to generate the source code related to the service definition.
 
@@ -187,7 +187,7 @@ Here,
 other and the Ballerina types corresponding to request and response messages.
 - The `greeter_client.bal` file is the client template file that contains the `main` function with the client declaration.
 
-#### Update and Run the Application
+#### Update and run the application
 
 Let’s update the client template file (i.e., `greeter_client.bal`) and write code to call the remote function in the server and get the server response back. Sample code is as follows,
 

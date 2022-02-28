@@ -168,7 +168,7 @@ redirect_from:
 </div>
 
 <div class="row" style="margin-bottom:30px;">
-<h2 id="concepts">Guides</h2>
+<h2 id="guides">Guides</h2>
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
@@ -326,7 +326,7 @@ redirect_from:
 
 
 <div class="row" style=" margin-bottom:30px">
-<h2 id="getting-started">Talks</h2>
+<h2 id="talks">Talks</h2>
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
   <a href="/learn/language-walkthrough/">

@@ -17,7 +17,7 @@ redirect_to:
   - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
-## Using the Annotation
+## Using the annotation
 
 To distinguish between query parameters and resource payload parameters, the parameters that represent the resource payload are annotated with [`@http:Payload`](https://docs.central.ballerina.io/ballerina/http/latest/annotations#Payload). The supported parameter types are `string`, `json`, `xml`, `byte[]`, record types, and record array types. 
 
@@ -52,7 +52,7 @@ $ curl -d "XXXXXX" http://localhost:8080/upload/file1
 'file1' uploaded with 6 bytes
 ```
 
-## What's Next?
+## What's next?
 
 For other use cases of HTTP services, see the topics below.
 

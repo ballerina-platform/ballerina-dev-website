@@ -24,13 +24,13 @@ redirect_from:
   - /learn/style-guide/coding-conventions
 ---
 
-## Indentation and Line Length
+## Indentation and line length
 * Use four spaces (not tabs) for each level of indentation.
 * Keep the maximum length of a line to 120 characters. 
 
 > **Note:** You can configure tools and plugins to use spaces when indenting and to change the maximum number of characters in a line.
 
-## Line Spacing
+## Line spacing
 
 * Use only a single space to separate keywords, types, and identifiers. 
    
@@ -90,7 +90,7 @@ service / on ep1, ep2 {
 }
 ```
 
-## Blank Lines
+## Blank lines
 
 Separate both statements and top-level definitions by zero or one blank lines.
 
@@ -183,7 +183,7 @@ match a {
 }
 ```
 
-## Parentheses and Brackets
+## Parentheses and brackets
 * Do not have spaces after opening parenthesis/bracket and before closing parenthesis/bracket.
   
 **Example,**
@@ -209,7 +209,7 @@ int[] a = [];
 int|() result = getResult();
 ```
   
-## Line Breaks
+## Line breaks
 
 * Have only one statement in a line.
 * When splitting lines, which contain operator(s), split them right before an operator.

@@ -21,7 +21,7 @@ redirect_from:
   - /learn/user-guide/style-guide/coding-conventions/expressions/
 ---
 
-## Function Invocation
+## Function invocation
 
 * Do not keep spaces between the function name and opening parentheses `(`.
   
@@ -34,7 +34,7 @@ setAgeForEmployee(employeeName,
     employeeID);
 ```
 
-## Record Literal
+## Record literal
 
 * If empty, keep it as an empty block.
       
@@ -94,7 +94,7 @@ Person p = {
     age: 20};
 ```
 
-## Map Literal
+## Map literal
 
 * For map literals, follow the same formatting guidelines as [Record Literals](/learn/style-guide/expressions/#record-literal).
   
@@ -130,7 +130,7 @@ map<string> mapOfString2 = {
     [nameOfEmployee, ageOfTheEmployee];
 ```
 
-## Array Literal
+## Array literal
 
 * Place simple arrays in a single line.
 * Do not keep any spaces between the opening bracket, value, and the closing bracket.
@@ -154,7 +154,7 @@ string[] names = [
 ];
 ```
 
-## Type Casting
+## Type casting
 
 * Do not keep spaces between the type and the angle brackets (i.e., `<string>`).
 * Do not keep spaces between the closing angle bracket and value reference, which will be casted.
@@ -181,7 +181,7 @@ string name = <string>person.name;
 >
 ```
 
-## Table Literal
+## Table literal
 
 * Follow the formatting guidelines of [Record Literals](/learn/style-guide/expressions/#record-literal) when formatting a table block.
   

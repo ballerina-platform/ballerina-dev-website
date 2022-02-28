@@ -28,7 +28,7 @@ redirect_from:
 * Go to [roles](https://console.aws.amazon.com/iamv2/home#/roles), and create a role that has the `AWSLambdaBasicExecutionRole` or higher permissions.
 * Go to the newly created role, and copy the role ARN to use when the Lambda function is being deployed.
 
-## Supported Triggers
+## Supported triggers
 An AWS Lambda function can be triggered by various AWS services. You can find the list of supported notification types below.
 - Direct Invocation
 - Simple Queue Service [SQS](https://aws.amazon.com/sqs/)
@@ -37,7 +37,7 @@ An AWS Lambda function can be triggered by various AWS services. You can find th
 - Simple Email Service [SES](https://aws.amazon.com/ses/)
 - [API Gateway](https://aws.amazon.com/api-gateway/)
 
-## Writing the Function
+## Writing the function
 
 The following Ballerina code gives an example of how to expose a simple echo function in AWS Lambda. 
 
@@ -62,7 +62,7 @@ Functions annotated as `@awslambda:Function` should always have the first parame
 
 The second parameter with the `json` value contains the input request data. This input value format will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). The return type of the function is `json`. When the function is triggered by the event, the function body executes and it simply logs the input JSON and returns the JSON.
 
-## Building the Function
+## Building the function
 
 The AWS Lambda functionality is implemented as a compiler extension. Thus, artifact generation happens automatically when you build a Ballerina module. 
 
@@ -84,7 +84,7 @@ Generating executables
         target/bin/aws_lambda_deployment.jar
 ```
 
-## Deploying the Function
+## Deploying the function
 
 Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer. As shown in the above instructions' output, this information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console or the [AWS CLI](https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html) to deploy the functions. 
 
@@ -123,7 +123,7 @@ $ aws lambda create-function --function-name echo --zip-file fileb://<project_di
 }
 ```
 
-## Invoking the Function
+## Invoking the function
 
 Execute the command below to test the deployed AWS Lambda function by invoking it directly using the CLI. 
 
@@ -148,9 +148,9 @@ $ cat echo-response.txt
 
 To check the logs of the execution, go to the `echo` lambda function in the portal, and then click on the **Monitor** tab and the **Logs** button.
 
-## More Samples
+## More samples
 
-### S3 Trigger
+### S3 trigger
 This sample creates a function, which will be executed for each object creation in AWS S3.
 
 ```ballerina
@@ -173,7 +173,7 @@ To invoke this function, create an S3 bucket in AWS.
 
 Now, click **Upload** to upload an object to the S3 bucket, and view the Lambda logs via CloudWatch to see the object name.
 
-### DynamoDB Trigger
+### DynamoDB trigger
 This sample creates a function, which will be executed for each entry added to a database in the DynamoDB.
 
 ```ballerina

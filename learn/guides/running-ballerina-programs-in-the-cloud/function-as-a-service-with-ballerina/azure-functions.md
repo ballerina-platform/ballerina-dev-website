@@ -27,7 +27,7 @@ redirect_from:
    - Runtime stack - `Java 11`
    - Hosting operating system - `Windows` (By default, Linux is not supported in Azure for custom handlers at the moment.)
 
-## Triggers and Bindings
+## Triggers and bindings
 
 An Azure Function consists of a trigger and optional bindings. A trigger defines how a function is invoked. A binding is an approach in which you can declaratively connect other resources to the function. There are *input* and *output* bindings. An input binding is a source of data into the function. An output binding allows outputting data from the function to an external resource. For more information, go to [Azure Functions triggers and bindings concepts](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings).
 
@@ -39,7 +39,7 @@ The following Azure Functions triggers and bindings are currently supported in B
 - CosmosDB [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBTrigger), [input](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBInput) binding, and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBOutput) binding
 - Timer [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#TimerTrigger)
 
-## Writing the Function
+## Writing the function
 
 The following Ballerina code gives an example of using an HTTP trigger to invoke the function, and an HTTP output binding to respond to the caller with a message. 
 
@@ -65,7 +65,7 @@ The second parameter with the `HTTPTrigger` annotation signals that this functio
 
 This HTTP output binding can also be defined as a parameter with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function. You can find an example in the [HTTP Trigger -> Queue Output](/learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output) output example.
 
-### Building the Function
+### Building the function
 
 The Azure Functions functionality is implemented as a compiler extension. Thus, artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
 
@@ -84,7 +84,7 @@ Generating executables
 >**Note:** A custom [`host.json`](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json) file for the Azure Functions deployment can be provided optionally by placing a `host.json` file in the current working directory in which the Ballerina build is done. The required `host.json` properties are provided/overridden by the values derived from the source code by the compiler extension. 
 
 
-### Deploying the Function
+### Deploying the function
 
 The created resource group and the function app name should be provided to the placeholders shown in the above-generated usage instructions from the compiler. 
 
@@ -119,7 +119,7 @@ Deployment endpoint responded with status code 202
 }
 ```
 
-### Invoking the Function
+### Invoking the function
 
 The deployed Azure Function can be tested by invoking it using an HTTP client such as cURL:
 
@@ -128,11 +128,11 @@ $ curl -d "Hello!" https://<function_app_name>.azurewebsites.net/api/hello
 Hello, Hello!%
 ```
 
-## More Samples
+## More samples
 
 This section uses different types of triggers and bindings to build Azure functions to integrate with different Azure services using concepts explained in the above sections.
 
-### HTTP Trigger -> Queue Output
+### HTTP Ttigger -> queue output
 
 The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond to the caller with a message. 
 
@@ -162,7 +162,7 @@ Request: url=https://<function_app_name>.azurewebsites.net/api/fromHttpToQueue m
 
 Refresh the queue page in the portal and view the added entry.
 
-### Cosmos DB Trigger -> Queue Output
+### Cosmos DB trigger -> queue output
 
 The following Ballerina code gives an example of using a Cosmos DB trigger to invoke the function and a queue output binding to write an entry to a queue.
 

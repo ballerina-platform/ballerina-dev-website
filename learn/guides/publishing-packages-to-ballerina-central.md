@@ -16,7 +16,7 @@ redirect_from:
 
 A package uses Ballerina library packages as dependencies. Use the `bal new` command to create a library package.
 
-## Creating a Library Package
+## Creating a library package
 
 Execute the `bal new -t lib` command to create a new library package.
 
@@ -65,7 +65,7 @@ Creating bala
 	target/bala/user-hello-any-0.1.0.bala
 ```
 
-## Publishing a Library Package to Ballerina Central
+## Publishing a library package to Ballerina Central
 
 You can publish a Ballerina archive to the [Ballerina Central](https://central.ballerina.io/).
 Before you publish, ensure the package works as intended because a publish is **permanent**. Once published to Ballerina Central, you cannot overwrite the version or remove the package. However, the number of package versions you can push to Ballerina Central is not restricted.
@@ -73,7 +73,7 @@ Before you publish, ensure the package works as intended because a publish is **
 >**Tip:** As a precaution, use the [local repository](/learn/managing-dependencies/#using-dependencies-from-the-local-repository) first to test out the functionality of the library package before publishing it to Ballerina Central.
 
 
-### Preparing for Publishing
+### Preparing for publishing
 
 1. Create an account on Ballerina Central. To register, [visit the home page](https://central.ballerina.io) and log in via a Google or GitHub account.
 
@@ -96,7 +96,7 @@ When you push a package to Ballerina Central, the organizations are validated ag
 
 Also, organization names starting with `ballerina` (e.g., `ballerina`, `ballerinax`, `ballerinai`, etc.) are reserved for system use, and you cannot publish any packages starting with the `ballerina` prefix to Ballerina Central. Therefore, if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
 
-### Publishing the Package
+### Publishing the package
 
 Now, that you are ready to publish, execute the command below to publish the package to Ballerina Central.
 
@@ -104,7 +104,7 @@ Now, that you are ready to publish, execute the command below to publish the pac
 bal push
 ```
 
-## Using the Packages in Ballerina Central
+## Using the packages in Ballerina Central
 
 After publishing your first package, you can create a second package and use the already published package in it.
 Any package published in Ballerina Central is public and can be used in other packages.

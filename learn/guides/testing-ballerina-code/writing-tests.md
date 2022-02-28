@@ -14,7 +14,7 @@ redirect_from:
   - /learn/user-guide/testing-ballerina-code/writing-tests/
 ---
 
-## Defining a Test
+## Defining a test
 
 The test module provides the necessary annotations to construct a test suite. Therefore, importing the test module is 
 essential in order to write Ballerina tests.
@@ -119,7 +119,7 @@ function mapDataProvider() returns map<[int, int, string]>|error {
 }
 ```
 
-## Using Assertions
+## Using assertions
 
 The Ballerina test framework supports the following assertions, which help to verify the expected behavior of a piece of
  code. These assertions can be used to decide if the test is passing or failing based on the condition.
@@ -173,10 +173,10 @@ The Ballerina test framework supports the following assertions, which help to ve
     </tr>
 </table>
 
-### Troubleshooting Assertion Failures when Using `assertEquals`
+### Troubleshooting assertion failures when using `assertEquals`
 
 
-#### Values with Different Types
+#### Values with different types
 
 The assertion failure shows the `expected` and `actual` values preceded by the type within the angle brackets.
 
@@ -202,7 +202,7 @@ function testAssertStringAndInt() {
         actual  : <int> '1'
 ```
 
-##### Values of the `string` Type
+##### Values of the `string` type
 
 The `Diff` is displayed in the GNU format using `+` and `-` to show the
  line differences.
@@ -242,7 +242,7 @@ function testAssertString() {
          Welcome to Ballerina
 ```
 
-#### Values of the `JSON/record/map` Type
+#### Values of the `JSON/record/map` type
 
 The `Diff` lists the JSON key mismatch using the `expected keys` and `actual keys`.
 The JSON value mismatch is listed per key showing the `expected` and `actual` values.
@@ -305,7 +305,7 @@ Diff    :
 
 ```
 
-#### Values of Other `anydata` Type
+#### Values of other `anydata` type
 
 The assertion failure is displayed showing the `expected` and `actual` values.
 

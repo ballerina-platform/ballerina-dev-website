@@ -27,7 +27,7 @@ redirect_from:
 
 ---
 
-## Configuring a Sample Ballerina Service
+## Configuring a sample Ballerina service
 
 Consider the following step-by-step guide to configuring a Ballerina package that contains an HTTP service.
 

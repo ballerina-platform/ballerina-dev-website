@@ -13,7 +13,7 @@ redirect_from:
 
 Thank you for taking the time to [responsibly disclose](https://en.wikipedia.org/wiki/Responsible_disclosure) any vulnerabilities you find.
 
-## Reporting a Vulnerability
+## Reporting a vulnerability
 
 First of all, make sure that you are using the latest Ballerina version before you run an automated security scan or perform a penetration test against it. All security vulnerabilities and any other concerns related to security should be reported by sending an email to [security@ballerina.io](mailto:security@ballerina.io).  
 
@@ -36,7 +36,7 @@ Also, use the following template when reporting vulnerabilities so that it conta
 
 We will keep you informed of the progress towards fixing and disclosing of the vulnerability if the reported issue is identified as a true positive.
 
-## Handling a Vulnerability
+## Handling a vulnerability
 
 Here is an overview of our approach to handling vulnerabilities:
 
@@ -46,18 +46,18 @@ Here is an overview of our approach to handling vulnerabilities:
 4. The fix will be applied to the affected components and a new version will be released immediately if required.
 5. The reported user is kept updated on the progress of the process. 
 
-## Getting Acknowledged and Rewarded
+## Getting acknowledged and rewarded
 
 Your efforts in reporting vulnerabilities or any other issues related to the security of Ballerina will be recognized and honored via the [WSO2 Security Reward and Acknowledgement Program](https://docs.wso2.com/display/Security/WSO2+Security+Reward+and+Acknowledgement+Program). 
 
 
 >**Note:** The reward program is currently applicable to vulnerabilities reported only in the [compiler, runtime, CLI tooling](https://github.com/ballerina-platform/ballerina-lang/), [standard library](https://github.com/ballerina-platform/ballerina-standard-library), [VS Code extension](https://marketplace.visualstudio.com/items?itemName=wso2.ballerina) and, [website](https://ballerina.io).
 
-## Security Advisories
+## Security advisories
 
 The below are the Ballerina security advisories that are already published.
 
-### Compiler, Runtime, and CLI Tooling
+### Compiler, runtime, and CLI tooling
 
 - [CVE-2021-32700](https://github.com/ballerina-platform/ballerina-lang/security/advisories/GHSA-f5qg-fqrw-v5ww)
 

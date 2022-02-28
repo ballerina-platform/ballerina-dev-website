@@ -14,7 +14,7 @@ redirect_from:
   - /why-ballerina/reliable-maintainable
 ---
 
-## Explicit Error Handling  
+## Explicit error handling  
 
 Error handling refers to the act of reacting to and recovering from errors. Error handling plays a critical role in producing reliable, maintainable applications. Ballerina is designed with a conscious decision to have explicit errors instead of exceptions. As a result, Ballerina has explicit error reporting and explicit error testing and handling. It is explained further using examples.
 
@@ -22,7 +22,7 @@ Errors are expected in network handling. In fact, “The network is reliable” 
 
 In Ballerina, errors are reported by functions returning values of the `error` type. The error values are part of their basic type. 
 
-### Error Reporting
+### Error reporting
 
 This example defines a TCP client, which communicates with a remote TCP server. Both `read` and `write` methods interact with the network. Hence, errors can occur at any time. 
 
@@ -55,7 +55,7 @@ The `write` method does not return anything if it completes successfully. Howeve
 remote function write(byte[] bytes) returns error? {}
 ```
 
-### Error Checking 
+### Error checking 
 
 Ballerina has language constructs for explicit error checking. Both explicit error reporting and checking improve code readability and maintainability simply because they are explicit. When you read Ballerina code, you can quickly notice the code, which reports errors, and you can check for errors.  
 
@@ -122,7 +122,7 @@ function whois(string domain, tcp:Client whoisClient) returns string|error {
 }
 ```
 
-### Ignoring Return Values and Error
+### Ignoring return values and error
 
 Ballerina does not allow ignoring return values of expressions. 
 
@@ -147,7 +147,7 @@ _ =  whois("ballerina.io", whoisClient);
 
 As explained earlier, `_` is like an implicitly declared variable of the `any` type; this is a union type that includes all the types in Ballerina except for the error type. Therefore, the type, which includes all values supported by Ballerina is `any|error`. As per the typing rules in Ballerina, the above statement causes a compilation error because `string|error` is not a subtype of the `any` type.
 
-### Dealing with Abnormal Errors
+### Dealing with abnormal errors
 
 Ballerina has made a conscious decision to distinguish normal errors from abnormal errors. The sections above explained how to deal with normal errors. Out of memory, division by zero, programming bugs are examples of abnormal errors in Ballerina. Such errors typically result in immediate program termination. 
 

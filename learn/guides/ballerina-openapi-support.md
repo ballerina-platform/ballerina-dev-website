@@ -24,7 +24,7 @@ redirect_from:
   - /learn/cli-documentation/openapi
 ---
 
-## Using the Capabilities of the OpenAPI Tools
+## Using the capabilities of the OpenAPI tools
 
 The Ballerina OpenAPI tooling support provides the following capabilities.
  1. Generating Ballerina service/client stubs from a given OpenAPI contract file using the CLI tool.
@@ -37,7 +37,7 @@ The Ballerina OpenAPI tooling support provides the following capabilities.
 
  > **Note**: Ballerina SwanLake supports OpenAPI Specification version 3.0.0 onwards.
 
-## Generating a Ballerina Service from an OpenAPI Definition (Design-First Approach)
+## Generating a Ballerina service from an OpenAPI definition (design-first approach)
 
 To generate only the Ballerina service, you can use the following CLI command of the OpenAPI tool.
 ```bash
@@ -57,7 +57,7 @@ The service generation process is complete. The following files were created.
 -- hello_service.bal
 -- types.bal
 ```
-#### Generating a Ballerina Service from Tags
+#### Generating a Ballerina service from tags
 To generate the Ballerina service stub with a subset of tags defined in an OpenAPI contract, use the `--tags` option and specify the tags you need as specified in the OpenAPI definition.
 ```bash
 $ bal openapi -i <openapi-contract> [--tags <"tag1","tag2">]
@@ -72,11 +72,11 @@ Once you execute the command, only the operations related to the given tags will
 >**Info:** For more command options, see
 [OpenAPI to Ballerina Command Reference](#openapi-to-ballerina-command-reference)
 
-## Exporting an OpenAPI Contract from a Ballerina Service (Code-First Approach)
+## Exporting an OpenAPI contract from a Ballerina service (code-first approach)
 
 You can convert your Ballerina service APIs into human-readable or machine-readable documents such as OpenAPI documents by using the Ballerina to OpenAPI command as follows.
 
-#### Using the Ballerina to OpenAPI CLI Tool
+#### Using the Ballerina to OpenAPI CLI tool
 Export the Ballerina service to an OpenAPI Specification 3.0.0 definition. For the export to work properly, the input Ballerina service should be defined using the basic service and resource-level HTTP annotations.
 
 ```bash
@@ -85,12 +85,12 @@ $ bal openapi [-i | --input] <ballerina-service-file-path> [(-o | --output) <out
 Parameter `ballerina-service-file-path` specifies the path of the ballerina service file (e.g., `my_api.bal`) and is mandatory.
 If your Ballerina file includes multiple services, this command generates the OpenAPI contract for each service in the Ballerina file.
 
-#### Generating an OpenAPI Specification in JSON Format
+#### Generating an OpenAPI specification in JSON format
 Use the `--json` flag If you need the Ballerina service to OpenAPI output in JSON. The default is YAML.
 ```bash
 $ bal openapi -i <ballerina-resource-file> [--json]
 ```
-#### Generating an OpenAPI Specification for a Given Service
+#### Generating an OpenAPI specification for a given service
 If you need to document an OpenAPI contract for only one given service, then use the following command, specifying the service name as the `absolute-resource-path`.
 
 ```bash
@@ -108,7 +108,7 @@ $ bal openapi -i helloService.bal -s "/hello"
 
 This will generate the OpenAPI contracts for the Ballerina service in the `hello_service.bal` Ballerina file
 of which the `absolute-resource-path` is `/hello`. 
-#### Generating the OpenAPI Contract with a Given Title and Version
+#### Generating the OpenAPI contract with a given title and version
 
 You can use an annotation for specifying the title and version information of the OpenAPI contract as follows.  
 ```ballerina
@@ -146,7 +146,7 @@ info:
 ...
 ```
 
-## OpenAPI Validator Compiler Plugin
+## OpenAPI validator compiler plugin
 
 The OpenAPI Validator Compiler plugin validates a service against a given OpenAPI contract. The Compiler Plugin gets activated if a service has the `@openapi:ServiceInfo` annotation. This plugin compares the service and the OpenAPI contract and validates both against a pre-defined set of validation rules. If any of the rules fail, the plugin provides compilation errors.
 #### Annotation for Validator Plugin
@@ -172,7 +172,7 @@ service /greet on new http:Listener(9090) {
 
 For annotation attributes details, see [OpenAPI annotation reference](#openapi-annotation-reference).
 
-## Generating a Ballerina Client from an OpenAPI Definition
+## Generating a Ballerina client from an OpenAPI definition
 The generated client can be used in your applications to call the service defined in the OpenAPI file. If you want to generate only the Ballerina client, you can set the `mode` as the `client` when running the OpenAPI tool. 
 
 - **Note :** Before generating your client using the command-line tool, please check if a pre-generated client for your API already exists in the [Ballerina Central](https://central.ballerina.io/). (If so, you can refer to the client's API documentation for more information on how to use the pre-generated client in your code.)
@@ -192,7 +192,7 @@ Client generated successfully. The following files were created.
 -- types.bal
 -- utils.bal
 ```
-#### Generating a Ballerina Client with Boiler-Plate Tests
+#### Generating a Ballerina client with boiler-plate tests
 Use the `--with-tests` flag in the client mode to generate a Ballerina client with boilerplate test cases for all the remote functions available in it.
 ```bash
 $ bal openapi -i <openapi-contract> [--mode client] [--with-tests]
@@ -204,7 +204,7 @@ $ bal openapi -i hello.yaml --mode client --with-tests
 ```
 In addition to the above-mentioned generated file, this will generate a `test.bal` file in the default client generation.
 
-#### Generating with Nillable Types
+#### Generating with nillable types
 This is an optional flag in the OpenAPI to Ballerina command. If your OpenAPI specification includes JSON schema properties that are not marked as **nullable:true**, they may be returned as null in some responses which will result in a JSON schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to generate all data types in the generated record with Ballerina nil support by turning this flag on.
 ```bash
 $ bal openapi -i <openapi-contract> [-n |--nullable]
@@ -212,10 +212,10 @@ $ bal openapi -i <openapi-contract> [-n |--nullable]
 
 >**Info:** For more command options, see [OpenAPI to Ballerina Command Reference](#openapi-to-ballerina-command-reference).
 
-## Contributing to the WSO2 `openapi-connectors` Repository
+## Contributing to the WSO2 `openapi-connectors` repository
 To see your new client in Ballerina central in the future, follow the steps below and send a GitHub Pull Request.
 
-#### **Step 01 :** Set up the Prerequisites 
+#### **Step 01 :** Set up the prerequisites 
 1. Fork and clone the [`openapi-connectors`](https://github.com/ballerina-platform/openapi-connectors) repository. Connectors generated from the Ballerina OpenAPI tool are managed in this repository.
 
 #### **Step 02 :** Add the Ballerina client
@@ -229,11 +229,11 @@ To see your new client in Ballerina central in the future, follow the steps belo
 8. Add a connector icon to the root of the connector. The icon needs to be a `.png` of 200x200 px size named as `icon.png`. 
 9. Update the [`Ballerina.toml` file](https://github.com/ballerina-platform/ballerina-extended-library/discussions/72).
 
-#### **Step 03:** Send a PR to the `openapi-connectors` Repository
+#### **Step 03:** Send a PR to the `openapi-connectors` repository
 1. Run the `./gradlew build` command. 
 2. Push the changes and create a Pull Request to the master branch of the `openapi-connectors` repository.
 
-## OpenAPI to Ballerina Command Reference
+## OpenAPI to Ballerina command reference
 ```bash
 bal openapi [-i | --input] <openapi-contract-file-path> 
             [-o | --output] <output-location>
@@ -274,7 +274,7 @@ $ bal openapi -i <openapi-contract> [-n |--nullable]
 - ##### `--with-tests`
 This is optional. It works with the client generation command and generates a boiler-plate test for all the remote functions of the generated client.
 
-## OpenAPI Annotation Reference
+## OpenAPI annotation reference
 The `@openapi:ServiceInfo` annotation supports several usages in the Ballerina OpenAPI tool. It contains attributes such as `contract` , `tags`, `operations`, `failOnErrors`, `excludeTags`, `excludeOperations`, `title`, `version`, and `embed` for each particular purpose. These attributes are optional to be used in the annotation.
 
 ```ballerina

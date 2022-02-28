@@ -17,7 +17,7 @@ following ways.
 - as files in a data volume that is mounted on one or more of its containers
 - as environment variables for the containers
 
-### Securing Sensitive Data Using Configurable Variables
+### Securing sensitive data using configurable variables
 
 Configuration values containing passwords or secrets should not be passed with the normal configuration.
 

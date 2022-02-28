@@ -18,14 +18,14 @@ redirect_from:
 - /learn/user-guide/testing-ballerina-code/configuring-tests/
 ---
 
-## Setting up and Tearing down
+## Setting up and tearing down
 
 The following test annotations can be used to set up and tear down the instructions. These configuration annotations 
 enable executing instructions at various levels.
 
-### Suite Level
+### Suite level
 
-#### The `@test:BeforeSuite {}` Annotation
+#### The `@test:BeforeSuite {}` annotation
 The function annotated with the `BeforeSuite` annotation will be run once before any of the tests in the test suite. 
 This can be used for initializing the test suite level pre-requisites.
 
@@ -56,7 +56,7 @@ function testFunction2() {
 }
 ```
 
-#### The `@test:AfterSuite {}` Annotation
+#### The `@test:AfterSuite {}` annotation
 The `AfterSuite` annotated function will be run once after all the tests in the test suite are run. This can be used for 
 cleaning up the test suite level aspects. A test suite covers tests related to a module.
 
@@ -79,9 +79,9 @@ function afterFunc() {
 }
 ```
 
-### Group Level
+### Group level
 
-#### The `@test:BeforeGroups {}` Annotation
+#### The `@test:BeforeGroups {}` annotation
 For each group specified in this annotation, the `BeforeGroups` annotated function will be executed once before any of 
 the tests belonging to the group.
 
@@ -120,7 +120,7 @@ function testFunction2() {
 }
 ```
 
-#### The `@test:AfterGroups {}` Annotation
+#### The `@test:AfterGroups {}` annotation
 For each group specified in this annotation, the `AfterGroups` annotated function will be executed once after all the 
 tests belonging to the group is executed.
 
@@ -158,9 +158,9 @@ function afterGroupsFunc2() {
 }
 ```
 
-### Test Case Level
+### Test case level
 
-#### The `@test:BeforeEach` Annotation
+#### The `@test:BeforeEach` annotation
 The `BeforeEach` annotated function will be run before each test in the test suite. This can be used to initialize the 
 test-level prerequisites repeatedly before every test function.
 
@@ -198,7 +198,7 @@ function testFunction3() {
 }
 ```
 
-#### The `@test:AfterEach` Annotation
+#### The `@test:AfterEach` annotation
 The `AfterEach` annotated function will be run after each test within the test suite. This can be used to clean up the 
 test-level aspects repeatedly after every test function.
 
@@ -236,9 +236,9 @@ function testFunction3() {
 }
 ```
 
-### Each Test Case
+### Each test case
 
-#### The `before` Attribute of the `@test:Config {}` Annotation
+#### The `before` attribute of the `@test:Config {}` annotation
 The test config annotation makes use of ‘before’ to denote which function needs to execute before the particular 
 test is run.
 
@@ -252,7 +252,7 @@ function testFunction3() {
 }
 ```
 
-#### The `after` Attribute of the `@test:Config {}` Annotation
+#### The `after` attribute of the `@test:Config {}` annotation
 The test config annotation makes use of ‘after’ to denote which function needs to execute after the particular 
 test is run.
 
@@ -266,7 +266,7 @@ function testFunction2() {
 }
 ```
 
-## Defining Test Specific Configurations
+## Defining test-specific configurations
 Configurations for testing can be provided using configurable variables. The values for configurable variables can be
 provided in a file named `Config.toml` located in the `tests` directory, which will only be initialized when the tests
 are run. 
@@ -279,7 +279,7 @@ testing. This is particularly useful when testing services and clients where you
 are trying to test the service or client.
 
 
-## Defining Test-only Dependencies
+## Defining test-only dependencies
 Dependencies are meant to be resolved only during testing and can be specified in the `Ballerina.toml` file by specifying the 
 scope.
 

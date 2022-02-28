@@ -13,9 +13,9 @@ redirect_from:
   
 ---
 
-## Ballerina Language Specifications and Proposals
+## Ballerina language specifications and proposals
 
-### Released Specifications
+### Released specifications
 
 The below are the most stable versions of the lanuguage specification, which are in sync with the Ballerina releases.
 
@@ -30,25 +30,25 @@ The below are the most stable versions of the lanuguage specification, which are
 | <a target="_blank" href="/spec/lang/2019R2/">2019R2</a> | 2019-07-01 | Major revised edition of the language |
 | <a target="_blank" href="/spec/lang/2019R1/">2019R1</a> | 2019-05-01 | First release with new versioning scheme with significant revisions |
 
-### Current Snapshot
+### Current snapshot
 
 For a snapshot of the current language specification including all changes, see the <a target="_blank" href="https://ballerina.io/spec/lang/master/">main language specification</a>.
 
-### Previous Drafts 
+### Previous drafts 
 
 For previous draft language specifications of a Ballerina release, see the <a target="_blank" href="https://ballerina.io/spec/lang/draft/">draft language specification</a>.
 
-### Specification Versioning Convention
+### Specification versioning convention
 
 From the start of 2019, Ballerina  specifications are versioned chronologically using the convention `20XYRn`, where `XY` is the 2-digit year (e.g., 19), `R` stands for "Release", and `n` is the release number for that year. Prior to 2019, a semver versioning scheme was used. However, that approach was abandoned when the language specification reached 0.980.
 
-### Proposals for Improvements/Enhancements
+### Proposals for improvements/enhancements
 
 For the proposals for improving Ballerina, see the <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/README.md">work in progress proposals</a>.
 
-## Ballerina Platform Specifications
+## Ballerina platform specifications
 
-| Specification | Latest Released Version | Current Snapshot |
+| Specification | Latest released version | Current snapshot |
 | ---- | --------------- | ---------------- |
 | Code to Cloud | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/c2c/code-to-cloud-spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md">Snapshot</a> |
 | Configurable | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/configurable/spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/configurable/spec.md">Snapshot</a> |
@@ -56,7 +56,7 @@ For the proposals for improving Ballerina, see the <a target="_blank" href="http
 | Package | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/packages/package-spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/packages/package-spec.md">Snapshot</a> |
 | Test Framework | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/test/test-framework-spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/test/test-framework-spec.md">Snapshot</a> |
 
-## About Ballerina Specifications
+## About Ballerina specifications
 
 As a platform designed to have multiple implementations, Ballerina semantics are defined by a series of specifications and not by the implementation. Currently, we have only one implementation (i.e., jBallerina, which compiles Ballerina to Java bytecodes). Others will follow, including a compiler which generates native binaries using LLVM.
 

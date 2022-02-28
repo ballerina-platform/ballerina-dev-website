@@ -22,7 +22,7 @@ redirect_from:
   - /learn/cli-documentation/
 ---
 
-## Using the Ballerina Tool
+## Using the Ballerina tool
 
 The Ballerina Tool is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina packages and modules, test, build, and run programs, etc.
 
@@ -129,7 +129,7 @@ EXAMPLES
            $ bal pull wso2/gmail:1.1.0
 ```
 
-## Core Commands
+## Core commands
 
 These everyday commands are your best friends! They address the very basics of programming in Ballerina such as compiling, running, testing programs, and generating their documentation.
 
@@ -161,7 +161,7 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 </table>
 
-## Package Commands
+## Package commands
 
 Ballerina packages are the way to organize real-world Ballerina development tasks. The last 3 commands given below allow you to work with the Ballerina Central and also to share Ballerina packages with others in a safe, secure, and dependable way.
 
@@ -198,7 +198,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </tr>
 </table>
 
-## Other Commands
+## Other commands
 
 These powerful supporting tools extend Ballerina to various ecosystem technologies that are inherently cloud-native. This functionality will grow over time and will even be developer extensible in the future.
 
@@ -239,7 +239,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 </table>
 
-## Update Commands
+## Update commands
 
 <table class="cComandTable">
 <tr>

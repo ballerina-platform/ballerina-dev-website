@@ -17,11 +17,11 @@ redirect_to:
   - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
-## Configuring Secure Communication
+## Configuring secure communication
 
 This is done by providing the optional `secureSocket` property in the [HTTP Listener Configuration](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerConfiguration) instance when creating the [`http:Listener`](https://docs.central.ballerina.io/ballerina/http/latest/listeners/Listener).
 
-## Example of HTTPS Endpoint configured Public Certificate and Private Key
+## Example of HTTPS endpoint configured public certificate and private key
 
 The example below shows how an HTTPS service is configured with public certificate and private key.
 
@@ -44,7 +44,7 @@ service / on securedEP {
 }
 ```
 
-## Example of HTTPS Endpoint configured KeyStore
+## Example of HTTPS endpoint configured KeyStore
 
 The example below shows how an HTTPS service is configured with KeyStore.
 
@@ -69,7 +69,7 @@ service / on securedEP {
 
 For more information on Ballerina’s authentication/authorization features, see the [Authentication & Authorization](/learn/user-guide/security/authentication-and-authorization/).
 
-## What's Next?
+## What's next?
 
 For other use cases of HTTP services, see the topics below.
 

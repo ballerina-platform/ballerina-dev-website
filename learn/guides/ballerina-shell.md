@@ -19,7 +19,7 @@ This will particularly be useful if you are looking to try out the language and 
 >**Note:** Ballerina Shell currently supports a subset of the language features. Ballerina Shell doesn't support 
 > services and isolation features. Also, Ballerina Shell provides limited feature support for worker-related implementations.
 
-## Setting up the Prerequisites
+## Setting up the prerequisites
 
 Ballerina Shell is a part of the Ballerina distribution. Therefore, if you have already installed Ballerina, you are all set. If not, for information on installing the latest version of Ballerina, see [downloads](https://ballerina.io/downloads/).
 
@@ -35,7 +35,7 @@ Type /exit to exit and /help to list available commands.
 =$ 
 ```
 
-## Available Commands
+## Available commands
 
 Execute the `/help` command to view the available commands.
 
@@ -60,7 +60,7 @@ Execute the `/help` command to view the available commands.
 | /help topics    - See all the available topic names.
 ```
 
-## Evaluating Code Snippets
+## Evaluating code snippets
 
 The types of code snippets below are supported in the Shell.
 
@@ -69,7 +69,7 @@ The types of code snippets below are supported in the Shell.
 - Expressions
 - Module-level declarations
 
-### Importing a Module
+### Importing a module
 
 A module can be imported as follows. Once a module is imported, it can be used in any subsequent snippet run in that particular Shell session. This is true for other module-level declarations as well.
 
@@ -84,7 +84,7 @@ Execute the `/imports` command to view the list of the imported modules.
 | (io) import ballerina/io;
 ```
 
-### Executing Statements
+### Executing statements
 
 Any valid Ballerina statement can be evaluated in the Shell. The example below evaluates a variable declaration statement.
 
@@ -93,7 +93,7 @@ Any valid Ballerina statement can be evaluated in the Shell. The example below e
 ```
 
 
-### Evaluating Expressions
+### Evaluating expressions
 
 An expression always produces a value when evaluated. You can use the Shell to evaluate any arbitrary expression. It will output the result of the evaluation.
 
@@ -109,7 +109,7 @@ A reference to a variable is also an expression. Thus, evaluating the name of th
 "Ballerina Shell"
 ```
 
-### Defining Variables
+### Defining variables
 
 Variables defined in the Shell prompt will be treated as module-level variables. Once defined, these can be used in any subsequent evaluation.
 
@@ -124,7 +124,7 @@ Execute the `/vars` command as shown below to view the declared variables.
 | (a) int a = 10
 ```
 
-### Remove Variables
+### Remove variables
 
 The `/remove` command can be used to remove declarations.
 
@@ -139,7 +139,7 @@ Execute the `/vars` command as shown below to view the declared variables.
 |
 ```
 
-### Defining Functions
+### Defining functions
 
 Functions can be written just as you write them in a source file. The Shell supports multi-line snippets.
 
@@ -165,7 +165,7 @@ The defined function can be called and assigned to a variable.
 30
 ```
 
-###  Defining Types
+###  Defining types
 
 Type definitions can be written the same as a function.
 
@@ -184,7 +184,7 @@ Now, the list of declarations includes the `Person` record as well.
 | (Person) type Person record {string name;int age;};
 ```
 
-### Modifying Definitions
+### Modifying definitions
 
 A definition can be modified by providing a new definition with the same name. This effectively overwrites the previous definition with the same name. 
 
@@ -202,7 +202,7 @@ Now, `sum()` is a function accepting float parameters and returning a float valu
 
 >**Caution:** Modifying definitions can cause undefined behaviors in some cases.
 
-### Loading Definitions from a File
+### Loading definitions from a file
 
 If you have any definitions in source files, you can load these definitions to the Shell through the `/file <FILE_PATH>` command. 
 
@@ -244,7 +244,7 @@ public function main() {
 | (mulitply) function mulitply(int a, int b) returns...                         return a * b;}
 ```
 
-## Resetting the State
+## Resetting the state
 
 The `/reset` command can be used to clear the current definitions in the memory of the Shell.
 
@@ -270,13 +270,13 @@ Execute the `/exit` command to exit the Shell.
 | Bye!!!                                          
 ```
 
-## Help Commands
+## Help commands
 
-### View Available Topics
+### View available topics
 
 Execute the `/help topics` command to view the available topics.
 
-### View Specific Topic Details
+### View specific topic details
 
 Execute the `/help <TOPIC>` command to view details related to the mentioned topic.
 

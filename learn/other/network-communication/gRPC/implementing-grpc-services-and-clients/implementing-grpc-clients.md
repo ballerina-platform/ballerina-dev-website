@@ -66,7 +66,7 @@ public function main () returns error? {
 }
 ```
 
-## Executing the Implementations
+## Executing the implementations
 
 After completing the full code for both the client and the service, you can execute them by building and running both modules from the Ballerina project root directory as follows. 
 
@@ -105,7 +105,7 @@ After completing the full code for both the client and the service, you can exec
 
 Now, the client will establish a connection with the gRPC service, invoke the methods in it, and receive the respective response messages. 
 
-## What's Next?
+## What's next?
 
 For information on gRPC streaming, see [Performing gRPC Streaming](/learn/network-communication/grpc/performing-grpc-streaming/).
 

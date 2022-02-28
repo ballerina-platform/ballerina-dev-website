@@ -11,7 +11,7 @@ redirect_from:
 <link rel="stylesheet" href="/css/events-page.css">
 <!--<h2>No upcoming events</h2><br/>-->
 
-<h2>Upcoming Events</h2>	
+<h2>Upcoming events</h2>	
 <table class="cEventTable cConferencesList" style="width:100%;">
    <tr class="event-expiry" style="display:none" data-expiry="February 23, 2021 12:00:00">	
       <td class="cEventDateContainer">	
@@ -58,7 +58,7 @@ redirect_from:
    </tr>	
 </table>
 
-<h2>Past Events</h2>
+<h2>Past events</h2>
 <table class="cEventTable cConferencesList" style="width:100%;">
    <tr class="event-expiry" style="display:none" data-expiry="February 5, 2021 12:00:00">	
       <td class="cEventDateContainer">	

@@ -26,7 +26,7 @@ redirect_from:
 
 
 
-## Installing Ballerina via Installers
+## Installing Ballerina via installers
 
 Follow the instructions below to install the latest Ballerina version using the installer. The installer will automatically set the latest version as the active distribution after the installation.
 
@@ -65,7 +65,7 @@ rpm -i ballerina-<VERSION>-swan-lake-linux-x64.rpm
 ```
 
 
-## Installing via the Ballerina Language ZIP File
+## Installing via the Ballerina language ZIP file
 
 > **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the [AdoptOpenJRE](https://adoptopenjdk.net/) version 11 or above.
 
@@ -78,7 +78,7 @@ rpm -i ballerina-<VERSION>-swan-lake-linux-x64.rpm
         - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, `C:\Program Files\Ballerina\ballerina-<VERSION>\bin`
 
 
-## Verifying the Installation
+## Verifying the installation
 
 After installing Ballerina, run the following test to verify if Ballerina has been successfully installed. 
 

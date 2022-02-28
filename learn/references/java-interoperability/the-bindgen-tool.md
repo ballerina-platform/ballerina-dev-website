@@ -17,7 +17,7 @@ redirect_from:
 
 The following sections explain how the `bindgen` tool works.
 
-## The `bindgen` Command
+## The `bindgen` command
 
 ```sh
 ballerina bindgen [(-cp|--classpath) <classpath>...]
@@ -42,7 +42,7 @@ Set the visibility modifier of the generated binding classes to public. This fla
 `<class-name>...`
 One or more space-separated fully-qualified Java class names for which the Ballerina bridge code is to be generated. These class names should be provided at the end of the command.
 
-## Generated Bridge Code
+## Generated bridge code
 
 When the tool is run, a `.bal` file will be created to represent each Java class. This would contain the respective Ballerina binding class along with the required Java interoperability mappings. By default, these `.bal` files will be generated inside separate modules representing each Java package. If the `[(-o|--output) <output-path>]` option is used, they will be generated inside a single directory.
 
@@ -61,9 +61,9 @@ The generated bindings will be inside the specified output directory as follows.
     └── ...
 ```
 
-## Java to Ballerina Mapping
+## Java to Ballerina mapping
 
-### Java Classes
+### Java classes
 A Java class will be mapped to a Ballerina class. This Ballerina class will have the same name as the Java class.
 
 E.g., the generated Ballerina class of the `java.util.ArrayDeque` class will be as follows.
@@ -151,7 +151,7 @@ For a static field, the getter and setter (if the field is not final) functions 
 
 E.g., `<Class_Name>_get<FIELD_NAME>()` and `<Class_Name>_set<FIELD_NAME>(<type> arg)`
 
-### Java Exceptions
+### Java exceptions
 When generating Ballerina bindings, Java exceptions will be mapped onto Ballerina errors. They will have identical names as that of the corresponding Java exceptions. Instead of returning a generic error from the Java side, the bindings will return a more meaningful error representing the exact Java exception.
 
 E.g., the following `IOException` will be returned from the `read()` function in the `java.io.FileInputStream` Ballerina binding class.
@@ -170,7 +170,7 @@ function read() returns int|IOException {
 
 >**Note:** If a Java exception class is explicitly generated as a Ballerina binding class, it would follow the naming convention `JException` or `JError`. For instance, the binding class's name for `java.io.FileNotFoundException` would be `JFileNotFoundException`.
 
-### Dependent Classes
+### Dependent classes
 When there are dependent Java classes present inside generated Ballerina bindings (as parameters or return types), the `bindgen` tool generates an empty Ballerina binding class to represent each one of these classes. This will represent a Java class mapping without the constructors, methods, or field bindings. If one of these classes is required later, the `bindgen` tool could be re-run to generate the complete implementation of the Ballerina bindings.
 
 E.g., the generated dependent class representing `java.util.List` will be as follows.
@@ -191,7 +191,7 @@ distinct class List {
 };
 ```
 
-### Type Mappings
+### Type mappings
 Generated Ballerina bindings will support the following type mappings between Java and Ballerina.
 - Ballerina primitive - Java primitive
 - Ballerina string type - Java String class
@@ -208,7 +208,7 @@ byte | byte
 int, short, char, long | int
 float, double | float
 
-## Support for Java Subtyping
+## Support for Java subtyping
 Ballerina bindings provide support for Java subtyping with the aid of type inclusions in the language.
 
 E.g., a Ballerina binding class mapping the `java.io.FileInputStream` Java class could be assigned to a Ballerina binding class mapping the `java.io.InputStream` as follows.
@@ -216,7 +216,7 @@ E.g., a Ballerina binding class mapping the `java.io.FileInputStream` Java class
 InputStream inputStream = check newFileInputStream3("sample.txt");
 ```
 
-## Support for Java Casting
+## Support for Java casting
 The `ballerina/jballerina.java` module of the Ballerina standard library provides the `cast` function to support Java casting. This could be used to cast Ballerina binding classes into their subtypes based on assignability.
 
 E.g., a Ballerina binding class instance mapping the `java.io.InputStream` Java class `inputStream` could be cast onto a Ballerina binding class mapping the `java.io.FileInputStream` Java class as follows.

@@ -21,11 +21,11 @@ redirect_to:
   - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
-## Working with HTTP Clients
+## Working with HTTP clients
 
 For information, see [HTTP Clients](/learn/network-communication/http/http-clients/).
 
-## Working with HTTP Services
+## Working with HTTP services
 
 For information, see [HTTP Services](/learn/network-communication/http/http-services/).
 

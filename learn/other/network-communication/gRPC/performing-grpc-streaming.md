@@ -19,13 +19,13 @@ redirect_to:
 
 >**Info:** gRPC supports both client and bi-directional streaming. In client streaming, the client writes a sequence of messages and sends them to the server via a stream. Once the client has finished writing the messages, it waits for the server to read them and return a response. In bi-directional streaming, the client and server each send a sequence of messages using read-write streams that operate independently allowing them to read and write in any order.
 
-## Implementing Bi-Directional Streaming
+## Implementing bi-directional streaming
 
 The diagram below depicts an example implementation of a gRPC client and bi-directional streaming using Ballerina. It shows the `streaming calc service`, which contains the `sum` and `incrementalSum` methods to represent the client and bi-directional streaming operations respectively. 
 
 <img src="/learn/images/streaming-calc-service-new.png" alt="Streaming Calc RPC Service" width="500" height="450">
 
-## Creating the Protobuf Definition of the Service
+## Creating the Protobuf definition of the service
 
 The Protobuf definition of the above service is shown below.
 
@@ -43,7 +43,7 @@ The above definition introduces the stream qualifier for the method parameters a
 
 The `sum` method takes in a stream of int64 values and returns a single int64 value. The `incrementalSum` method takes in and returns a stream of int64 values, which contain the individual results for each intermediate sum value in the calculation. 
 
-## Implementing the Service and Client
+## Implementing the service and client
 
 Follow the steps below to create separate service and client packages, and generate the gRPC service and client code. 
 
@@ -134,7 +134,7 @@ Follow the steps below to create separate service and client packages, and gener
 
     >**Info:** In the above implementation, the `StreamingCalcServiceMessageListener` service is created along with the client code. This service is used as a callback for processing a streaming result from the remote service. A `grpc:StreamingClient` object is also provided when invoking the remote method of the service. This client is used to send streaming values to the active service request.
 
-## Performing Bi-Directional Streaming
+## Performing bi-directional streaming
 
 Follow the steps below to perform a sample run of the above implementation.
 

@@ -14,7 +14,7 @@ redirect_to:
 
 The topics below demonstrates how to implement an [order information query scenario](/learn/user-guide/network-communication/graphql#introducing-the-use-case) using a Ballerina service. 
 
-## Writing the GraphQL Service
+## Writing the GraphQL service
 
 Start with the Ballerina GraphQL service implementation below, which represents the GraphQL root `Query` object fields. 
 
@@ -243,7 +243,7 @@ function loadShipper(int id) returns Shipper|error {
 }
 ```
 
-## Executing the GraphQL Service
+## Executing the GraphQL service
 
 Follow the steps below to do a test run using the full Ballerina service implementation. 
 

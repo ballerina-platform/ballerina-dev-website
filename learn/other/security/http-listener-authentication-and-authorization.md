@@ -103,7 +103,7 @@ Also, the security enforcement that is done for the service using the `http:Serv
 
 ## Basic Auth
 
-### File User Store
+### File user store
 
 Ballerina supports the file user store basic authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have an `http:FileUserStoreConfigWithScopes` record as an element. If the `fileUserStoreConfig` field is assigned with the `http:FileUserStoreConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
@@ -207,7 +207,7 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
 Hello, World!
 ```
 
-#### Imperative Method
+#### Imperative method
 
 There is an imperative method to handle authentication and authorization as follows:
 
@@ -240,7 +240,7 @@ service /foo on securedEP {
 }
 ```
 
-### LDAP User Store
+### LDAP user store
 
 Ballerina supports LDAP user store basic authentication and authorization for services/resources. The `auth` field of a service/resource annotation should have a `http:LdapUserStoreConfigWithScopes` record as an element. If the `ldapUserStoreConfig` field is assigned with the `http:LdapUserStoreConfig` implementation, the authentication will be evaluated. Optionally, you can have the `string|string[]` value for the `scopes` field also. Then, the authorization will be evaluated.
 
@@ -369,7 +369,7 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
 Hello, World!
 ```
 
-#### Imperative Method
+#### Imperative method
 
 There is an imperative method to handle authentication and authorization as follows:
 
@@ -530,7 +530,7 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Bearer <token>'
 Hello, World!
 ```
 
-### Imperative Method
+### Imperative method
 
 There is an imperative method to handle authentication and authorization as follows:
 
@@ -681,7 +681,7 @@ curl -k -v https://localhost:9091/hello -H 'Authorization: Bearer <token>'
 Hello, World!
 ```
 
-### Imperative Method
+### Imperative method
 
 There is an imperative method to handle authorization as follows:
 

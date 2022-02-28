@@ -19,7 +19,7 @@ redirect_to:
   - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
-## Data Streaming Modes
+## Data streaming modes
 
 In Ballerina, the clients automatically switch between the chunked or non-chunked modes based on the size of the content provided as the payload. This is controlled by the [`http:ClientConfiguration`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client) object’s [`http1Settings.chunking`](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings) property, which has a default value of [`AUTO`](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_AUTO). The fully supported modes are as follows.
 
@@ -27,7 +27,7 @@ In Ballerina, the clients automatically switch between the chunked or non-chunke
 - [`ALWAYS:`](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_ALWAYS): The client will always use chunking to stream the payload to the remote endpoint. 
 - [`NEVER:`](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_NEVER): The client will never use chunking, and it will fully read in the payload to memory and send out the request. 
 
-## Creating the Input Data Stream
+## Creating the input data stream
 
 To use the HTTP streaming feature effectively, you need to create an HTTP request with a stream of byte[]. For example, if you want to stream the content of a large file to a remote endpoint and read its content using a function such as [`io:fileReadBytes`](https://docs.central.ballerina.io/ballerina/io/latest/functions#fileReadBytes) to read in the full content as a byte array to memory, then you lose the benefit of streaming the data. 
 
@@ -52,7 +52,7 @@ public function main() returns @tainted error? {
 }
 ```
 
-## What's Next?
+## What's next?
 
 For other use cases of HTTP clients, see the topics below.
 - [Multipart Message Handling](/learn/network-communication/http/multipart-message-handling)

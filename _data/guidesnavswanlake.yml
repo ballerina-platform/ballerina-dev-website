@@ -1,13 +1,13 @@
 - title: Why Ballerina
   url: '#'
   sublinks:
-    - title: Cloud Native
+    - title: Cloud native
       url: /learn/why-ballerina/cloud-native/
       active: cloud-native
-    - title: Flexibly Typed
+    - title: Flexibly typed
       url: /learn/why-ballerina/flexibly-typed/
       active: flexibly-typed
-    - title: Data Oriented
+    - title: Data oriented
       url: /learn/why-ballerina/data-oriented/
       active: data-oriented
     - title: Graphical
@@ -16,105 +16,105 @@
     - title: Concurrent
       url: /learn/why-ballerina/concurrent/
       active: concurrent
-    - title: Reliable, Maintainable
+    - title: Reliable, maintainable
       url: /learn/why-ballerina/reliable-maintainable/
       active: reliable-maintainable
 
-- title: Organizing Ballerina Code
+- title: Organizing Ballerina code
   url: '#'
   sublinks:
-    - title: Package Layout
+    - title: Package layout
       url: /learn/organizing-ballerina-code/package-layout/
       active: package-layout
     - title: Modules
       url: /learn/organizing-ballerina-code/modules/
       active: modules
 
-- title: Testing Ballerina Code
+- title: Testing Ballerina code
   url: '#'
   sublinks:
-    - title: Quick Start on Testing
+    - title: Quick start on testing
       url: /learn/testing-ballerina-code/testing-a-simple-function/
       active: testing-a-simple-function
-    - title: Writing Tests
+    - title: Writing tests
       url: /learn/testing-ballerina-code/writing-tests/
       active: writing-tests
-    - title: Structuring Tests
+    - title: Structuring tests
       url: /learn/testing-ballerina-code/structuring-tests/
       active: structuring-tests
-    - title: Configuring Tests
+    - title: Configuring tests
       url: /learn/testing-ballerina-code/configuring-tests/
       active: configuring-tests
-    - title: Code Coverage and Reporting
+    - title: Code coverage and reporting
       url: /learn/testing-ballerina-code/code-coverage-and-reporting/
       active: code-coverage-and-reporting
-    - title: Defining Data-Driven Tests
+    - title: Defining data-driven tests
       url: /learn/testing-ballerina-code/defining-data-driven-tests/
       active: defining-data-driven-tests
-    - title: Defining Test Groups
+    - title: Defining test groups
       url: /learn/testing-ballerina-code/defining-test-groups/
       active: defining-test-groups
-    - title: Testing Services and Clients
+    - title: Testing services and clients
       url: /learn/testing-ballerina-code/testing-services-and-clients/
       active: testing-services-and-clients
     - title: Mocking
       url: /learn/testing-ballerina-code/mocking/
       active: mocking
-    - title: Executing Tests
+    - title: Executing tests
       url: /learn/testing-ballerina-code/executing-tests/
       active: executing-tests
 
-- title: Generating Code Documentation
+- title: Generating code documentation
   url: /learn/generating-code-documentation
   active: generating-code-documentation
 
-- title: Configuring Ballerina Programs
+- title: Configuring Ballerina programs
   url: '#'
   sublinks:
-    - title: Quick Start on Using Configurable Variables
+    - title: Quick start on using configurable variables
       url: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables
       active: quick-start-on-configurable-variables
       sublinks:
-        - title: Configuring a Sample Ballerina Service
+        - title: Configuring a sample Ballerina service
           url: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables/#configuring-a-sample-ballerina-service
           active: configuring-a-sample-ballerina-service
-    - title: Providing Values to Configurable Variables
+    - title: Providing values to configurable variables
       url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables
       sublinks:
-        - title: Providing Configuration Values Through Command Line Arguments
+        - title: Providing configuration values through Command Line Arguments
           url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-configuration-values-through-command-line-arguments
           active: providing-values-through-command-line-arguments
-        - title: Providing Configuration Values Through TOML Syntax
+        - title: Providing configuration values through TOML syntax
           url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-configuration-values-through-toml-syntax
           active: providing-configuration-values-through-toml-syntax
-        - title: Providing Module Information of the Configurable Variable
+        - title: Providing module information of the configurable variable
           url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-module-information-of-the-configurable-variable
           active: providing-module-info-of-configurable-variable
-    - title: Configuring Values in Kubernetes Environments
+    - title: Configuring values in Kubernetes environments
       url: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/
       sublinks:
-        - title: Securing Sensitive Data Using Configurable Variables
+        - title: Securing sensitive data using configurable variables
           url: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/#securing-sensitive-data-using-configurable-variables
           active: securing-sensitive-data-using-configurable-variables
 
-- title: Observing Ballerina Programs
+- title: Observing Ballerina programs
   url: '#'
   sublinks:
-    - title: Observing Your Application with Prometheus, Grafana, and Jaeger
+    - title: Observing your application with Prometheus, Grafana, and Jaeger
       url: /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/
       active: observing-your-application-with-prometheus-grafana-and-jaeger
-    - title: Observing Your Application with Choreo
+    - title: Observing your application with Choreo
       url: /learn/observing-ballerina-programs/observing-your-application-with-choreo/
       active: observing-your-application-with-choreo
 
-- title: Running Ballerina Programs in the Cloud
+- title: Running Ballerina programs in the cloud
   url: '#'
   sublinks:
     - title: Code to Cloud
       url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/
       active: code-to-cloud
       sublinks:
-        - title: Code to Cloud Deployment
+        - title: Code to Cloud deployment
           url: /learn/running-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-deployment
           active: code-to-cloud-deployment
     - title: Function as a Service (FaaS) with Ballerina
@@ -127,7 +127,7 @@
           url: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
           active: azure-functions
 
-- title: Managing Dependencies
+- title: Managing dependencies
   url: /learn/managing-dependencies/
   active: managing-dependencies
 
@@ -135,7 +135,7 @@
   url: /learn/publishing-packages-to-ballerina-central/
   active: publishing-packages-to-ballerina-central
 
-- title: Calling Java Code from Ballerina
+- title: Calling Java code from Ballerina
   url: /learn/calling-java-code-from-ballerina/
   active: calling-java-code-from-ballerina
 

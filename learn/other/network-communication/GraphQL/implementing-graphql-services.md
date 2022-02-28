@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Implementing GraphQL Services
+title: Implementing GraphQL services
 description: In Ballerina, the GraphQL object structure is modeled using services. A Ballerina GraphQL service contains resource methods that map to the fields of the GraphQL objects and work as resolver functions to provide its data. The GraphQL schema is automatically derived from this service structure and its resources. 
 keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/graphql/implementing-graphql-services/

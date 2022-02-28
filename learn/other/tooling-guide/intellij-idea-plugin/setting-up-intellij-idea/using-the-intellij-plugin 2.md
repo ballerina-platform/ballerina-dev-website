@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Using the IntelliJ Ballerina Plugin
+title: Using the IntelliJ Ballerina plugin
 permalink: /learn/setting-up-intellij-idea/using-the-intellij-plugin/
 active: using-the-intellij-plugin
 intro: The sections below include information to start using the IntelliJ Ballerina plugin after installing it.

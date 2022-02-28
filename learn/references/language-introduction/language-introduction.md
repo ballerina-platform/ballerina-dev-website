@@ -1,6 +1,6 @@
 ---
 layout: ballerina-inner-page
-title: Language Introduction
+title: Language introduction
 permalink: /learn/language-introduction/
 redirect_from:
 - /learn/language-introduction

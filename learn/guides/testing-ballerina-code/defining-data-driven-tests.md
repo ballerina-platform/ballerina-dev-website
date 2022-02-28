@@ -1,6 +1,6 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Defining Data-Driven Tests
+title: Defining data-driven tests
 description: Learn how to do write data-driven tests using the ballerina test framework.
 keywords: ballerina, programming language, testing, data-driven, data providers
 permalink: /learn/testing-ballerina-code/defining-data-driven-tests/

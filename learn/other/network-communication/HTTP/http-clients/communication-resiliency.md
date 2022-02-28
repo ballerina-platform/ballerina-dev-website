@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Communication Resiliency
+title: Communication resiliency
 description: The HTTP client supports multiple communication resiliency options out of the box.
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-clients/communication-resiliency/

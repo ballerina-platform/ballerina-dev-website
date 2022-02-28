@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Implementing gRPC Clients
+title: Implementing gRPC clients
 description: The topics below explain how to implement a gRPC service and write a client to invoke it.
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-clients/

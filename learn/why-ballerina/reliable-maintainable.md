@@ -1,6 +1,6 @@
 ---
 layout: ballerina-why-ballerina-left-nav-pages-swanlake
-title: Reliable, Maintainable
+title: Reliable, maintainable
 description: The sections below explain how the explicit error handling, static types, and concurrency safety combined with a familiar, readable syntax make programs reliable and maintainable.
 keywords: ballerina, ballerina platform, error handling, concurrency safety, reliability, maintainability
 permalink: /why-ballerina/reliable-maintainable/

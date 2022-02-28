@@ -1,6 +1,6 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Executing Tests
+title: Executing tests
 description: Learn how to use different options for executing Ballerina tests.
 keywords: ballerina, programming language, testing, test execution
 permalink: /learn/testing-ballerina-code/executing-tests/

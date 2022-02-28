@@ -10,9 +10,9 @@ redirect_from:
   - /learn/writing-a-restful-api-with-ballerina
 ---
 
-Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement the RESTful API. The Ballerina standard library itself is adequate. In this API, you will be writing a simple CRUD-like RESTful service.
+Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement the RESTful API. The Ballerina standard library itself is adequate. 
 
-In this tutorial, you will be creating a RESTful API with two endpoints. The sample is built around a set of COVID-19 data.
+In this tutorial, you will be creating a RESTful API with two endpoints. In this API, you will be writing a simple CRUD-like RESTful service. The sample is built around a set of COVID-19 data.
 
 ## Setting up the Prerequisites
 
@@ -25,32 +25,32 @@ To complete this tutorial, you need:
 
 ## Designing the Two Endpoints
 
-The first endpoint is about getting data from the service as well as adding data to the service. Therefore, the service should handle both HTTP `GET` and `POST` requests.
-- The `GET` request is to get data, and the response should be `200 OK`.
-- The `POST` request is to add data, and the response should be `201 Created`.
+The first endpoint is for getting data from the service as well as adding data to the service. Therefore, the service should handle both HTTP `GET` and `POST` requests.
+- The `GET` request is to get data and the response should be `200 OK`.
+- The `POST` request is to add data and the response should be `201 Created`.
 
-The second endpoint is about getting data filtered from the service. The data is filtered by the ISO code. Therefore, the second service accepts the ISO code as part of the URL and responds with the `200 OK` status code. In the event of an error, the relevant error is sent back to the client.
+The second endpoint is for getting data filtered from the service. The data is filtered by the ISO code. Therefore, the second service accepts the ISO code as part of the URL and responds with the `200 OK` status code. In the event of an error, the relevant error is sent back to the client.
 
-Following is the URL for each endpoint, respectively.
+Following are the URLs of the endpoints respectively.
 
-1. /covid/status/countries
-2. /covid/status/countries/{iso_code}
+1. `/covid/status/countries`
+2. `/covid/status/countries/{iso_code}`
 
-## Creating a Package for Your Code
+## Creating a Project for Your Code
 
-Ballerina uses packages to group code. In this case, a package with the default module is created by executing the following command.
+Ballerina uses projects to group code. In this case, a project with the default module is created by executing the following command.
 
 ```bash
 $ bal new covid19 -t service
 ```
 
-This creates a folder named `covid19` along with a sample code for service. Navigate to the `covid19` directory, and execute the following command to start VSCode.
+This creates a directory named `covid19` along with a sample code for service. Navigate to the `covid19` directory, and execute the following command to start VS Code.
 
 ```bash
 $ code .
 ```
 
-`Ballerina.toml` is the file that makes the folder a Ballerina package. It also contains a test directory to include tests for the service. However, for the sake of simplicity, it will be ignored in this tutorial. You can just go through the sample in the `service.bal` to get a look and feel about Ballerina services. However, since you will be doing it from scratch, you can delete the entire code or edit it if you wish.
+>**Info:** `Ballerina.toml` is the file that makes the directory a Ballerina project. The `test` directory includes the tests for the service. The sample code in the `service.bal` provides a look and feel about Ballerina services. You can delete this entire code or edit it as required.
 
 ## Creating the COVID-19 Dataset
 

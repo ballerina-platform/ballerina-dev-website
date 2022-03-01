@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: HTTP Services
+title: HTTP services
 description: The topics below cover details on the HTTP services support in Ballerina. They explore the basics of creating an HTTP service and how Ballerina provides a convenient abstraction for defining complex operations.  
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-services/

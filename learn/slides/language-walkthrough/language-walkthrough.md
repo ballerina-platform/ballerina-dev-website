@@ -1,6 +1,6 @@
 ---
 layout: ballerina-inner-page
-title: Language Walkthrough
+title: Language walkthrough
 description: Explores the language concepts of the Ballerina programming language.
 keywords: ballerina, programming language, language walkthrough, specification
 permalink: /learn/language-walkthrough/

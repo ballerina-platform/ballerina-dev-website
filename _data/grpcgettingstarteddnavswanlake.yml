@@ -1,10 +1,10 @@
-- title: Writing a gRPC Service with Ballerina
+- title: Writing a gRPC service with Ballerina
   url: #
   sublinks:
-    - title: Setting up the Prerequisites
+    - title: Setting up the prerequisites
       url: /learn/writing-a-grpc-service-with-ballerina/#setting-up-the-prerequisites
       active: setting-up-the-prerequisites
-    - title: Creating the Service Definition
+    - title: Creating the service definition
       url: /learn/writing-a-grpc-service-with-ballerina/#creating-the-service-definition
       active: creating-the-service-definition
     - title: Implementation

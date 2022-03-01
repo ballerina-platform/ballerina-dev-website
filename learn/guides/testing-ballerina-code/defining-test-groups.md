@@ -1,6 +1,6 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Defining Test Groups
+title: Defining test groups
 description: Learn how to use grouping functionality of the Ballerina test framework.
 keywords: ballerina, programming language, testing, test groups
 permalink: /learn/testing-ballerina-code/defining-test-groups/

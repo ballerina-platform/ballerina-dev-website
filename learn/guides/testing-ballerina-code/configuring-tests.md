@@ -1,6 +1,6 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Configuring Tests
+title: Configuring tests
 description: Learn how to configure Ballerina tests.
 keywords: ballerina, programming language, testing, test setup
 permalink: /learn/testing-ballerina-code/configuring-tests/

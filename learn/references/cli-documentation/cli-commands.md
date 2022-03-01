@@ -244,12 +244,12 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 <table class="cComandTable">
 <tr>
 <td class="cCommand">dist</td>
-<td class="cDescription">Manage Ballerina distributions. For more information, see <a href="/learn/cli-documentation/update-tool/">Update Tool</a>.
+<td class="cDescription">Manage Ballerina distributions. For more information, see <a href="/learn/cli-documentation/update-tool/">update tool</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">update</td>
-<td class="cDescription">Update the Ballerina Tool. For more information, see <a href="/learn/cli-documentation/update-tool/">Update Tool</a>.
+<td class="cDescription">Update the Ballerina Tool. For more information, see <a href="/learn/cli-documentation/update-tool/">update tool</a>.
 </td>
 </tr>
 </table>

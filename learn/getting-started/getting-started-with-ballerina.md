@@ -127,7 +127,7 @@ service / on httpListener {
 }
 ```
 
-Let's take a moment to digest the new constructs below in this code:
+Let's take a moment to digest the new constructs in this code:
 
 - The [`http`](https://lib.ballerina.io/ballerina/http/latest) module provides high-level abstractions to work with the HTTP protocol. 
 - The listener declaration creates a new HTTP listener with the port `8080`. The `listener` is the entity, which receives the network input and then routes it to the attached service(s).

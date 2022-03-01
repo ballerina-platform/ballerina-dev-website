@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Performing gRPC Streaming
+title: Performing gRPC streaming
 description: The topics below demonstrates an example implementation of a gRPC client and bi-directional streaming using Ballerina.
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/user-guide/network-communication/grpc/performing-grpc-streaming/

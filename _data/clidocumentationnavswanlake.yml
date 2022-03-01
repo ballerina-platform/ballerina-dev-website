@@ -1,37 +1,37 @@
-- title: CLI Documentation
+- title: CLI documentation
   url: #
   sublinks:
-    - title: CLI Commands
+    - title: CLI commands
       url: /learn/cli-documentation/cli-commands/
       sublinks:
-        - title: Using the Ballerina Tool
+        - title: Using the Ballerina tool
           url: /learn/cli-documentation/cli-commands/#using-the-ballerina-tool
           active: using-the-ballerina-tool
-        - title: Core Commands
+        - title: Core commands
           url: /learn/cli-documentation/cli-commands/#core-commands
           active: core-commands
-        - title: Package Commands
+        - title: Package commands
           url: /learn/cli-documentation/cli-commands/#package-commands
           active: package-commands
-        - title: Other Commands
+        - title: Other commands
           url: /learn/cli-documentation/cli-commands/#other-commands
           active: other-commands
-        - title: Update Commands
+        - title: Update commands
           url: /learn/cli-documentation/cli-commands/#update-commands
           active: update-commands
-    - title: Update Tool
+    - title: Update tool
       url: /learn/cli-documentation/update-tool/
       sublinks:
-        - title: Using the Update Tool
+        - title: Using the update tool
           url: /learn/cli-documentation/update-tool/#using-the-update-tool
           active: using-the-update-tool
-        - title: Managing your Ballerina Distributions
+        - title: Managing your Ballerina distributions
           url: /learn/cli-documentation/update-tool/#managing-your-ballerina-distributions
           active: managing-your-ballerina-distributions
     - title: gRPC/Protocol Buffers
       url: /learn/cli-documentation/grpc/
       sublinks:
-        - title: Usage of the Tool
+        - title: Usage of the tool
           url: /learn/cli-documentation/grpc/#usage-of-the-tool
           active: usage-of-the-tool
         - title: Protocol Buffers to Ballerina

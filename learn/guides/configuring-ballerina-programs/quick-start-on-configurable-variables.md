@@ -1,6 +1,6 @@
 ---
 layout: ballerina-configurable-left-nav-pages-swanlake
-title: Quick Start on Using Configurable Variables
+title: Quick start on using configurable variables
 description: Ballerina supports configurability through the configurable, module-level variables.
 keywords: ballerina, programming language, configurable, variables
 permalink: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables/

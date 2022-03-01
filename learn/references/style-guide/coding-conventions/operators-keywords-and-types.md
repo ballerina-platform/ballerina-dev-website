@@ -1,6 +1,6 @@
 ---
 layout: ballerina-style-guide-left-nav-pages-swanlake
-title: Operators, Keywords, and Types
+title: Operators, keywords, and types
 description: The Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. The Ballerina code formatting tools are based on this guide.
 keywords: ballerina, programming language, ballerina style guide, operators, keywords, types
 active: operators-keywords-and-types

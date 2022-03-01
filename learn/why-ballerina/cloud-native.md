@@ -1,6 +1,6 @@
 ---
 layout: ballerina-why-ballerina-left-nav-pages-swanlake
-title: Cloud Native
+title: Cloud native
 description: See how the Ballerina programming language has built-in language constructs for network interactions and cloud support. 
 keywords: ballerina, programming language, cloud, kubernetes, docker
 permalink: /why-ballerina/cloud-native/

@@ -1,6 +1,6 @@
 ---
 layout: ballerina-inner-page
-title: Terms of Service
+title: Terms of service
 permalink: /terms-of-service/
 ---
 

@@ -35,7 +35,7 @@ You can use the update tool to update to Ballerina Swan Lake Preview 8 as follow
 
 ##### For Existing Users
 
-If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](http://ballerina.io/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the update tool updated to its latest version. 
+If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina update tool](http://ballerina.io/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the update tool updated to its latest version. 
                         
 > `ballerina update`
 

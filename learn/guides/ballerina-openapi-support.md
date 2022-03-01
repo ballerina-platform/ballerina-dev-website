@@ -1,6 +1,6 @@
 ---
 layout: ballerina-openapi-support-left-nav-pages-swanlake
-title: Ballerina OpenAPI Support 
+title: Ballerina OpenAPI support 
 description: Check out how the Ballerina OpenAPI tooling makes it easy for you to start developing a service documented in an OpenAPI contract.
 keywords: ballerina, programming language, openapi, open api, restful api
 permalink: /learn/ballerina-openapi-support/
@@ -149,7 +149,7 @@ info:
 ## OpenAPI validator compiler plugin
 
 The OpenAPI Validator Compiler plugin validates a service against a given OpenAPI contract. The Compiler Plugin gets activated if a service has the `@openapi:ServiceInfo` annotation. This plugin compares the service and the OpenAPI contract and validates both against a pre-defined set of validation rules. If any of the rules fail, the plugin provides compilation errors.
-#### Annotation for Validator Plugin
+#### Annotation for validator plugin
 The `@openapi:ServiceInfo` annotation is used to bind the service with an OpenAPI contract. You need to add this annotation to the service file with the required values for enabling the validations.
 >**Note:** Providing a `contract` path attribute is mandatory for the OpenAPI validator.
 

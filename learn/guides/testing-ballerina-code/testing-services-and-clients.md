@@ -1,6 +1,6 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Testing Services and Clients
+title: Testing services and clients
 description: Learn how to use Ballerina's built-in test framework to write tests for Services and Clients.
 keywords: ballerina, programming language, testing
 permalink: /learn/testing-ballerina-code/testing-services-and-clients/

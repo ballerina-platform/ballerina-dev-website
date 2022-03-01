@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: HTTP Listener Authentication and Authorization
+title: HTTP listener authentication and authorization
 description: Ballerina HTTP services/resources can be configured to enforce authentication and authorization.
 keywords: ballerina, programming language, security, secure ballerina code, authorization, authentication, iam
 permalink: /learn/user-guide/security/http-listener-authentication-and-authorization/

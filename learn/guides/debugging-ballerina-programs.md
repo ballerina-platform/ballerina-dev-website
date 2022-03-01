@@ -1,6 +1,6 @@
 ---
 layout: debugging-ballerina-programs-left-nav-pages-swanlake
-title: Debugging Ballerina Programs
+title: Debugging Ballerina programs
 description: Describes debugging functionalities provided by Ballerina in Visual Studio Code.  
 keywords: ballerina debugging, ballerina debug, ballerina debugger, ballerina vscode
 permalink: /learn/debugging-ballerina-programs/

@@ -21,13 +21,13 @@ It introduces the new language features planned for the Swan Lake GA release and
 
 ### Updating Ballerina
 
-If you are already using Ballerina, you can use the [Update Tool](/learn/tooling-guide/cli-tools/update-tool/) to directly update to Ballerina Swan Lake Alpha5 as follows. 
+If you are already using Ballerina, you can use the [update tool](/learn/tooling-guide/cli-tools/update-tool/) to directly update to Ballerina Swan Lake Alpha5 as follows. 
 
 To do this, first, execute the command below to get the update tool updated to its latest version. 
 
 > `bal update`
 
-If you are using an **Update Tool version below 0.8.14**, execute the `ballerina update` command to update it. Next, execute the command below to update to Swan Lake Alpha5.
+If you are using an **update tool version below 0.8.14**, execute the `ballerina update` command to update it. Next, execute the command below to update to Swan Lake Alpha5.
 
 > `bal dist pull slalpha5`
 

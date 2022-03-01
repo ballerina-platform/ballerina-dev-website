@@ -1,6 +1,6 @@
 ---
 layout: ballerina-java-interoperability-left-nav-pages-swanlake
-title: Java Interoperability
+title: Java interoperability
 description: The Java Interoperability Guide aims at providing a reference source for the bindgen tool and the Ballerina FFI.
 keywords: ballerina, programming language, java api, interoperability
 permalink: /learn/java-interoperability/

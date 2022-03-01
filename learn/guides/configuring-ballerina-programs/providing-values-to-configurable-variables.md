@@ -1,6 +1,6 @@
 ---
 layout: ballerina-configurable-left-nav-pages-swanlake
-title: Providing Values to Configurable Variables
+title: Providing values to configurable variables
 description: You can supply values to configurable variables using the methods below.
 keywords: ballerina, programming language, configurable, variables, values, toml
 permalink: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/

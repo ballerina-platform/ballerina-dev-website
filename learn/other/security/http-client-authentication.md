@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: HTTP Client Authentication
+title: HTTP client authentication
 description: Ballerina HTTP clients can be configured to enforce authentication.
 keywords: ballerina, programming language, security, secure ballerina code, authentication, iam
 permalink: /learn/user-guide/security/http-client-authentication/

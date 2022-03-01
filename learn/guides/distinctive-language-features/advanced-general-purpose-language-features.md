@@ -1,6 +1,6 @@
 ---
 layout: ballerina-distinctive-language-features-left-nav-pages-swanlake
-title: Advanced, General-Purpose Language Features
+title: Advanced, general-purpose language features
 description: Let's now look at the other features of the Ballerina language. These are a mixed bag of additional options to the language, making everything fit together to build a Ballerina application.
 keywords: ballerina, programming language, ballerina packages,language-guide
 permalink: /learn/distinctive-language-features/advanced-general-purpose-language-features/

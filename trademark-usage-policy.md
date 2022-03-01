@@ -1,6 +1,6 @@
 ---
 layout: ballerina-inner-page
-title: Ballerina Trademark Usage Policy
+title: Ballerina trademark usage policy
 description: Ballerina trademarks should be used in accordance with the sections below or with specific written permission obtained from WSO2. Usage of Trademarks in violation of the guidelines in this policy is prohibited. Any reference to trademarks and marks in this policy will include names, logos, and any service marks relating to Ballerina owned by WSO2, Inc (“Trademarks”).
 keywords: ballerina, community, ballerina community, branding, trademark, logo, brand guildlines, policy
 intro: Ballerina trademarks should be used in accordance with the sections below or with specific written permission obtained from WSO2. Usage of Trademarks in violation of the guidelines in this policy is prohibited. Any reference to trademarks and marks in this policy will include names, logos, and any service marks relating to Ballerina owned by WSO2, Inc (“Trademarks”).

@@ -1,6 +1,6 @@
 ---
 layout: ballerina-cli-documentation-left-nav-pages-swanlake
-title: Update Tool
+title: Update tool
 description: Learn how to maintain your Ballerina programming language installation and keep it up to date with the latest releases.
 keywords: ballerina, programming language, release, update
 permalink: /learn/cli-documentation/update-tool/
@@ -38,7 +38,7 @@ Patch releases of Ballerina distributions contain bug fixes and fixes for critic
 
 *Example patch releases: 2201.0.1, 2201.1.1*
 
-## Using the Update Tool
+## Using the update tool
 
 If you haven’t installed Ballerina yet, see [Installing Ballerina](/learn/installing-ballerina/) for the instructions.
 
@@ -68,7 +68,7 @@ The `distributions` is the directory, in which all your installed distributions 
 
 You can [change this active distribution](#changing-the-active-distribution) at any time or manage it using the Ballerina Tool. However, first, you need to update the Ballerina Tool to its latest version.
 
-### Updating the Ballerina Tool
+### Updating the Ballerina tool
 
 The `bal update` command updates the Ballerina Tool itself to the latest version. Ballerina Tool versions are independent of the Ballerina distribution versions. These tool updates are expected to be rare compared to distribution releases.
 

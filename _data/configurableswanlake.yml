@@ -1,27 +1,27 @@
-- title: Configuring Ballerina Programs
+- title: Configuring Ballerina programs
   url: '#'
   sublinks:
-    - title: Quick Start on Using Configurable Variables
+    - title: Quick start on using configurable variables
       url: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables
       sublinks:
-        - title: Configuring a Sample Ballerina Service
+        - title: Configuring a sample Ballerina service
           url: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables/#configuring-a-sample-ballerina-service
           active: configuring-a-sample-ballerina-service
-    - title: Providing Values to Configurable Variables
+    - title: Providing values to configurable variables
       url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables
       sublinks:
-        - title: Providing Configuration Values Through Command Line Arguments
+        - title: Providing configuration values through Command Line Arguments
           url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-configuration-values-through-command-line-arguments
           active: providing-values-through-command-line-arguments
-        - title: Providing Configuration Values Through TOML Syntax
+        - title: Providing configuration values through TOML syntax
           url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-configuration-values-through-toml-syntax
           active: providing-configuration-values-through-toml-syntax
-        - title: Providing Module Information of the Configurable Variable
+        - title: Providing module information of the configurable variable
           url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-module-information-of-the-configurable-variable
           active: providing-module-info-of-configurable-variable
-    - title: Configuring Values in Kubernetes Environments
+    - title: Configuring values in Kubernetes environments
       url: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/
       sublinks:
-        - title: Securing Sensitive Data Using Configurable Variables
+        - title: Securing sensitive data using configurable variables
           url: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/#securing-sensitive-data-using-configurable-variables
           active: securing-sensitive-data-using-configurable-variables

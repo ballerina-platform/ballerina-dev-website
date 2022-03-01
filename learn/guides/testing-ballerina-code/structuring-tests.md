@@ -1,6 +1,6 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Structuring Tests
+title: Structuring tests
 description: Learn how to structure Ballerina tests.
 keywords: ballerina, programming language, testing
 permalink: /learn/testing-ballerina-code/structuring-the-tests/

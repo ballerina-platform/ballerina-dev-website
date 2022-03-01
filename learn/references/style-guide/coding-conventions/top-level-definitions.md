@@ -1,6 +1,6 @@
 ---
 layout: ballerina-style-guide-left-nav-pages-swanlake
-title: Top-Level Definitions
+title: Top-level definitions
 active: top-level-definitions
 permalink: /learn/style-guide/top-level-definitions/
 intro: The sections below include the coding conventions with respect to top-level definitions.

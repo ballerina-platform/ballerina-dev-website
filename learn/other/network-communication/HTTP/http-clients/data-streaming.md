@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Data Streaming
+title: Data streaming
 description: HTTP data streaming can be attained using chunked transfer encoding.
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-clients/data-streaming/

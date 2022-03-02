@@ -15,17 +15,36 @@ redirect_from:
 
 ## Setting up the prerequisites
 
-To complete this tutorial, you need:
+>**Info:** You need a command terminal to complete this tutorial.
 
-1. A command terminal
-2. A text editor
-    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
-3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
+To set up the other prerequisites, follow these steps:
+
+1. Install [Ballerina](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/).
+2. Install a text editor. 
+  >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
+
+## Understanding the implementation
+
+In an RPC program, you first define the service interface using an Interface Definition Language(IDL) to create the service definition (i.e., `helloworld.proto`). gRPC commonly uses Protocol Buffers as the IDL.
+
+As illustrated in the diagram below, next, you compile the service definition file (i.e., `helloworld.proto`), and generate the source code for both the service (i.e., `greeter_service.bal` file) and client (`greeter_client.bal` file) applications. In Ballerina, you can generate the source code using the built-in `Protocol Buffers to Ballerina` tool.
+
+![gRPC Getting Started](/learn/images/grpc-getting-started.png)
+
 
 ## Creating the service definition
 
-In an RPC program, the first step is to define the service interface using an Interface Definition Language(IDL).
-gRPC commonly uses Protocol Buffers as the IDL. Let's write a simple service definition in Protocol Buffers as below.
+To create a simple service definition in Protocol Buffers, follow these steps:
+
+> **Info:** The sample service definition is taken from the [quick start guide on the gRPC official site](https://grpc.io/docs/languages/go/quickstart/).
+
+1. Create a new directory named `grpc` in a preferred location (this is your main directory.)
+
+2. Inside the `grpc` directory, create a new service definition file (i.e., `helloworld.proto`).
+
+3. Copy the service definition below to the `helloworld.proto` file.
+
+Let's write a simple service definition in Protocol Buffers as below.
 
 ```proto
 syntax = "proto3";
@@ -48,15 +67,9 @@ message HelloReply {
  string message = 1;
 }
 ```
-> **Note:** The sample service definition is taken from the quick start guide on the gRPC official site.
+
 
 Let’s start implementing a Ballerina service and client for the above definition. Create a new service definition file (i.e., `helloworld.proto`) in which you want to create the project and copy the above service definition.
-
-## Implementation
-
-As illustrated in the diagram below, you first need to compile the service definition file (i.e., `helloworld.proto`), and generate the source code for both the client and service applications. In Ballerina, you can generate the source code using the built-in `Protocol Buffers to Ballerina` tool.
-
-![gRPC Getting Started](/learn/images/grpc-getting-started.png)
 
 Let’s walk through the instructions on implementing the gRPC service and client in the Ballerina language.
 

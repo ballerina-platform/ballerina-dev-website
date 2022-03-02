@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Data Binding
+title: Data binding
 description: The sections below explain the how to perform data binding with HTTP clients.
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-clients/data-binding/
@@ -23,7 +23,7 @@ redirect_to:
 
 In the data binding, any HTTP response that returns the 4xx or 5xx status codes are considered as error situations. Therefore, the [`get`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote method will return the error value of the [`http:ClientError`](https://docs.central.ballerina.io/ballerina/http/latest/errors#ClientError) type. 
 
-## Using JSON and XML in Data Binding
+## Using JSON and XML in data binding
 
 The `data_binding_example_one.bal` below illustrates an example of using JSON and XML in data binding.
 
@@ -66,7 +66,7 @@ XML Payload:
 </Response>
 ```
 
-## Using a Custom Record Type in Data Binding
+## Using a custom record type in data binding
 
 Similarly, the `data_binding_example_two.bal` demonstrates the usage of a custom record type in data binding.
 
@@ -110,7 +110,7 @@ Running executable
 City/State/Country: San Jose, CA, United States
 ```
 
-## What's Next?
+## What's next?
 
 For other use cases of HTTP clients, see the topics below.
 - [Multipart Message Handling](/learn/network-communication/http/multipart-message-handling)

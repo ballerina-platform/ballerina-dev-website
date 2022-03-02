@@ -43,11 +43,11 @@ service /ws on new websocket:Listener(8080) {
 
 In the example above, `/ws` is the configured upgrade path, and the `WsService` instance should have functions defined in the [`websocket:Service`](/learn/api-docs/ballerina/#/ballerina/websocket/1.1.2/websocket/abstractObjects/Service) abstract object. These remote functions correspond to the events generated for the WebSocket communication. The sections below describe how these are implemented. 
 
-## Using Primary Events
+## Using primary events
 
 These individual events are notified to the user through their own remote functions in the WebSocket Ballerina service.
 
-### Connection Creation
+### Connection creation
 
 The connection creation state is achieved when the WebSocket client establishes a connection after a successful handshake operation. At this moment, the remote function below is called if it is available in the service.
 
@@ -57,7 +57,7 @@ remote function onOpen(websocket:Caller caller);
 
 This remote function provides an instance of a [`websocket:Caller`](/learn/api-docs/ballerina/#/ballerina/websocket/1.1.2/websocket/clients/Caller) object, which can be used to communicate back with the WebSocket client. This saves the caller object when the connection is created so whenever the application wants to send messages to the connected clients, it can use the stored caller objects to do so.
 
-#### Connection Creation Example
+#### Connection creation example
 
 The example below implements an HTTP service resource to broadcast a message to all the connected WebSocket clients.
 
@@ -130,7 +130,7 @@ The example below implements an HTTP service resource to broadcast a message to 
 
 Now, you view the message above in all the browser tabs you opened with the WebSocket clients.
 
-### Sub-Protocol Handling
+### Sub-protocol handling
 
 When a WebSocket connection is created, you can provide a list of sub-protocols that the client can handle in an order of priority. This is done in the following manner when the WebSocket client is created.
 
@@ -144,7 +144,7 @@ The server-side will be configured to handle zero or multiple sub-protocols. The
 
 The server-side configuration of sub-protocols is done using the [`websocket:ServiceConfig`](https://docs.central.ballerina.io/ballerina/websocket/latest/annotations#ServiceConfig) annotation using its `subProtocols` field.
 
-#### Sub-Protocol Handling Example
+#### Sub-protocol handling example
 
 The example below shows the usage of this by updating the [`/ws` service](#connection-creation) created before to negotiate a sub-protocol and print the selected one in connection open. 
 
@@ -197,7 +197,7 @@ The example below shows the usage of this by updating the [`/ws` service](#conne
    Negotiated sub-protocol: json
    ```
 
-### Data Message
+### Data message
 
 A data message is received when a WebSocket client either sends a text or a binary message to a WebSocket service. If available, the remote functions below are called in the service to handle text and binary messages respectively. 
 
@@ -207,7 +207,7 @@ remote function onTextMessage(websocket:Caller caller, string text);
 remote function onBinaryMessage(websocket:Caller caller, byte[] data);
 ```
 
-#### Data Message Example
+#### Data message example
 
 The example below demonstrates the data message functionality via a simple WebSocket service class, which echoes the message you send to it. 
 
@@ -266,7 +266,7 @@ The example below demonstrates the data message functionality via a simple WebSo
    Echo: Hello!
    ```
 
-### Control Message
+### Control message
 
 A WebSocket contains two control messages: `ping` and `pong`. A WebSocket server or a client can send a `ping` message, and the opposite side should respond with a corresponding `pong` message by returning the same payload sent with the `ping` message. These `ping/pong` sequences are used as a heartbeat mechanism to check if the connection is healthy.
 
@@ -278,7 +278,7 @@ remote function onPing(websocket:Caller caller, byte[] data);
 remote function onPong(websocket:Caller caller, byte[] data);
 ```
 
-#### Control Message Example
+#### Control message example
 
 An example implementation of the `ping/pong` functions is shown below.
 
@@ -295,7 +295,7 @@ remote function onPong(websocket:Caller caller,
 }
 ```
 
-### Connection Error
+### Connection error
 
 In the event of an error in the WebSocket connection, the connection will be closed automatically by generating the required connection close frame. The remote function below can be implemented in the service to receive the notification that this is going to happen and perform any possible cleanup or custom logging operations. 
 
@@ -303,7 +303,7 @@ In the event of an error in the WebSocket connection, the connection will be clo
 remote function onError(websocket:Caller caller, error err);
 ```
 
-### Connection Close
+### Connection close
 
 If the connection is closed from the client-side, the service will be notified by calling the remote function below. 
 
@@ -312,7 +312,7 @@ remote function onClose(websocket:Caller caller, int statusCode,
                         string reason);
 ```
 
-#### Connection Close Example
+#### Connection close example
 
 An example implementation of this remote function, which logs the information about the connection closure is shown below. 
 
@@ -323,6 +323,6 @@ remote function onClose(websocket:Caller caller, int statusCode,
 }
 ```
 
-## Securing WebSocket Communication
+## Securing WebSocket communication
 
 For information on this, see [Securing WebSocket Communication](/learn/network-communication/websocket/securing-websocket-communication/).

@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Implementing gRPC Clients
+title: Implementing gRPC clients
 description: The topics below explain how to implement a gRPC service and write a client to invoke it.
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-clients/
@@ -66,7 +66,7 @@ public function main () returns error? {
 }
 ```
 
-## Executing the Implementations
+## Executing the implementations
 
 After completing the full code for both the client and the service, you can execute them by building and running both modules from the Ballerina project root directory as follows. 
 
@@ -105,7 +105,7 @@ After completing the full code for both the client and the service, you can exec
 
 Now, the client will establish a connection with the gRPC service, invoke the methods in it, and receive the respective response messages. 
 
-## What's Next?
+## What's next?
 
 For information on gRPC streaming, see [Performing gRPC Streaming](/learn/network-communication/grpc/performing-grpc-streaming/).
 

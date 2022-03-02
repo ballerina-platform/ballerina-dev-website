@@ -1,29 +1,29 @@
-- title: Getting Started 
+- title: Getting started 
   url: '#'
   sublinks:
     - title: Setting up Ballerina 
       url: /learn/user-guide/getting-started/setting-up-ballerina/
       active: setting-up-ballerina
-    - title: Installation Options
+    - title: Installation options
       url: /learn/user-guide/getting-started/installation-options/
       active: installation-options
-    - title: Building from Source
+    - title: Building from source
       url: /learn/user-guide/getting-started/building-from-source/
       active: building-from-source
-    - title: Writing Your First Ballerina Program 
+    - title: Writing your first Ballerina program 
       url: /learn/user-guide/getting-started/writing-your-first-ballerina-program/
       active: writing-your-first-ballerina-program
     - title: Writing a GraphQL API with Ballerina
       url: /learn/writing-a-graphql-api-with-ballerina/
       active: writing-a-graphql-api-with-ballerina
 
-- title: Ballerina Packages
+- title: Ballerina packages
   url: '#'
   sublinks:
-    - title: Creating Your First Ballerina Package
+    - title: Creating your first Ballerina package
       url: /learn/user-guide/ballerina-packages/creating-your-first-ballerina-package/
       active: creating-your-first-ballerina-package
-    - title: Package Layout
+    - title: Package layout
       url: /learn/user-guide/ballerina-packages/package-layout/
       active: package-layout
     - title: Modules
@@ -32,87 +32,87 @@
     - title: Dependencies
       url: /learn/user-guide/ballerina-packages/dependencies/
       active: dependencies
-    - title: Sharing a Library Package
+    - title: Sharing a library package
       url: /learn/user-guide/ballerina-packages/sharing-a-library-package/
       active: sharing-a-library-package
 
-- title: Testing Ballerina Code
+- title: Testing Ballerina code
   url: '#'
   sublinks:
-    - title: Testing a Simple Function
+    - title: Testing a simple function
       url: /learn/user-guide/testing-ballerina-code/testing-quick-start
       active: testing-quick-start
-    - title: Writing Tests
+    - title: Writing tests
       url: /learn/user-guide/testing-ballerina-code/writing-tests
       active: writing-tests
-    - title: Testing Services and Clients
+    - title: Testing services and clients
       url: /learn/user-guide/testing-ballerina-code/testing-services-and-clients
       active: testing-services-and-clients
     - title: Mocking
       url: /learn/user-guide/testing-ballerina-code/mocking
       active: mocking
-    - title: Executing Tests
+    - title: Executing tests
       url: /learn/user-guide/testing-ballerina-code/executing-tests
       active: executing-tests
 
-- title: Generating Code Documentation
+- title: Generating code documentation
   url: '#'
   sublinks:
-    - title: Documenting Ballerina Code
+    - title: Documenting Ballerina code
       url: /learn/user-guide/code-organization/documenting-ballerina-code/
       active: documenting-ballerina-code
 
-- title: Style Guide
+- title: Style guide
   url: '#'
   sublinks:
-    - title: Coding Conventions
+    - title: Coding conventions
       url: /learn/user-guide/style-guide/coding-conventions/
       active: coding-conventions
-    - title: Top-Level Definitions
+    - title: Top-level definitions
       url: /learn/user-guide/style-guide/coding-conventions/top-level-definitions/
       active: top-level-definitions
-    - title: Operators, Keywords, and Types
+    - title: Operators, keywords, and types
       url: /learn/user-guide/style-guide/coding-conventions/operators-keywords-and-types/
       active: operators-keywords-and-types
-    - title: Statements
+    - title: statements
       url: /learn/user-guide/style-guide/coding-conventions/statements/
       active: statements
-    - title: Expressions
+    - title: expressions
       url: /learn/user-guide/style-guide/coding-conventions/expressions/
       active: expressions
-    - title: Annotations, Documentation, and Comments
+    - title: annotations, documentation, and comments
       url: /learn/user-guide/style-guide/coding-conventions/annotations-documentation-and-comments/
       active: annotations-documentation-and-comments
 
-- title: Network Communication
+- title: Network communication
   url: '#' 
   sublinks:
     - title: HTTP
       url: /learn/user-guide/network-communication/http/
       active: http 
       sublinks:
-        - title: HTTP Clients
+        - title: HTTP clients
           url: /learn/user-guide/network-communication/http/http-clients/
           active: http-clients
-        - title: HTTP Services
+        - title: HTTP services
           url: /learn/user-guide/network-communication/http/http-services/
           active: http-services
     - title: gRPC
       url: '#' 
       sublinks:
-        - title: Defining the Interface of the Service
+        - title: Defining the interface of the service
           url: /learn/user-guide/network-communication/grpc/defining-the-service-interface/
           active: defining-the-service-interface
-        - title: Implementing gRPC Services and Clients
+        - title: Implementing gRPC services and clients
           url: '#'
           sublinks:
-            - title: Implementing gRPC Services 
+            - title: Implementing gRPC services 
               url: /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-services/
               active: implementing-grpc-services
-            - title: Implementing gRPC Clients
+            - title: Implementing gRPC clients
               url: /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-clients/
               active: implementing-grpc-clients
-        - title: Performing gRPC Streaming
+        - title: Performing gRPC streaming
           url: /learn/user-guide/network-communication/grpc/performing-grpc-streaming/
           active: performing-grpc-streaming
     - title: WebSocket
@@ -122,10 +122,10 @@
       url: /learn/user-guide/network-communication/graphql/
       active: graphql
 
-- title: Data and Events Processing 
+- title: Data and events processing 
   url: '#' 
   sublinks:
-    - title: Using Language-Integrated Queries
+    - title: Using language-integrated queries
       url: /learn/user-guide/data-and-events-processing/using-language-integrated-queries/
       active: using-language-integrated-queries
 
@@ -145,40 +145,40 @@
 - title: Observability
   url: '#' 
   sublinks:
-    - title: Observing Ballerina Code
+    - title: Observing Ballerina code
       url: /learn/user-guide/observability/observing-ballerina-code
       active: observing-ballerina-code
-    - title: Observing Ballerina Services Through Choreo
+    - title: Observing Ballerina services through Choreo
       url: /learn/user-guide/observability/observing-ballerina-services-through-choreo
       active: observing-ballerina-services-through-choreo
 
 - title: Interoperability
   url: '#' 
   sublinks:
-    - title: Calling Java Code from Ballerina
+    - title: Calling Java code from Ballerina
       url: /learn/user-guide/interoperability/calling-java-code-from-ballerina/
       active: calling-java-code-from-ballerina
 
 - title: Configurability
   url: '#' 
   sublinks:
-    - title: Defining Configurable Variables
+    - title: Defining configurable variables
       url: /learn/user-guide/configurability/defining-configurable-variables/
       active: defining-configurable-variables
-    - title: Providing Values to Configurable Variables
+    - title: Providing values to configurable variables
       url: /learn/user-guide/configurability/providing-values-to-configurable-variables/
       active: providing-values-to-configurable-variables
-    - title: Trying it Out
+    - title: Trying it out
       url: /learn/user-guide/configurability/trying-it-out/
       active: trying-it-out
 
 - title: Security
   url: '#' 
   sublinks:
-    - title: HTTP Listener Authentication and Authorization
+    - title: HTTP listener authentication and authorization
       url: /learn/user-guide/security/http-listener-authentication-and-authorization
       active: http-listener-authentication-and-authorization
-    - title: HTTP Client Authentication
+    - title: HTTP client authentication
       url: /learn/user-guide/security/http-client-authentication/
       active: http-client-authentication
 

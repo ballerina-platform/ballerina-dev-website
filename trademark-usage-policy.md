@@ -1,6 +1,6 @@
 ---
 layout: ballerina-inner-page
-title: Ballerina Trademark Usage Policy
+title: Ballerina trademark usage policy
 description: Ballerina trademarks should be used in accordance with the sections below or with specific written permission obtained from WSO2. Usage of Trademarks in violation of the guidelines in this policy is prohibited. Any reference to trademarks and marks in this policy will include names, logos, and any service marks relating to Ballerina owned by WSO2, Inc (“Trademarks”).
 keywords: ballerina, community, ballerina community, branding, trademark, logo, brand guildlines, policy
 intro: Ballerina trademarks should be used in accordance with the sections below or with specific written permission obtained from WSO2. Usage of Trademarks in violation of the guidelines in this policy is prohibited. Any reference to trademarks and marks in this policy will include names, logos, and any service marks relating to Ballerina owned by WSO2, Inc (“Trademarks”).
@@ -11,7 +11,7 @@ redirect_from:
 
 The open-source software licenses under which the Ballerina language is released do not extend to the Ballerina Trademark nor does it give an implied right or license to use the Ballerina Trademarks. 
 
-## The Ballerina Logo
+## The Ballerina logo
 
 You can download the Ballerina logo in the formats below.
 
@@ -35,7 +35,7 @@ You can download the Ballerina logo in the formats below.
    </div>
 </div>
 
-## Logo Colors
+## Logo colors
 
 The coloration of the Ballerina logo is an essential element in setting a recognizable tone and identity. Consistent use of color enhances the strength of the identity.
 
@@ -113,7 +113,7 @@ Web #ffffff
    </div>
 </div>
 
-## General Guidelines
+## General guidelines
 
 It is permitted to use the Ballerina Trademark without damaging its value and goodwill by adhering to the guidelines below.
 
@@ -131,7 +131,7 @@ It is permitted to use the Ballerina Trademark without damaging its value and go
 
 
 
-## Proper Uses
+## Proper uses
 
 If your usage of the logo is within the permitted scenarios listed above, then you should follow these visual guidelines when you are displaying the Ballerina Trademarks.
 
@@ -239,7 +239,7 @@ ________________________________________________________________________________
 </div>
 </div>
 
-## Improper Uses
+## Improper uses
 
 The Ballerina logo should always be seen clearly and consistently. Altering or recreating the Ballerina logo in any way is not allowed. When using the logo, avoid the mistakes below.
 

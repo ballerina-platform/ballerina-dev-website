@@ -1,6 +1,6 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Executing Tests
+title: Executing tests
 description: Learn how to use different options for executing Ballerina tests.
 keywords: ballerina, programming language, testing, test execution
 permalink: /learn/testing-ballerina-code/executing-tests/
@@ -14,14 +14,14 @@ redirect_from:
   - /learn/user-guide/testing-ballerina-code/executing-tests/
 ---
 
-## Understanding the Test Execution Behavior
+## Understanding the test execution behavior
 
 The following is the expected order of execution for setup and teardown functions of a test.
 
 ![Test Execution Order](/learn/images/test-execution-order.png)
 
 
-## Understanding the Behavior During Failures
+## Understanding the behavior during failures
 
 * If a `BeforeSuite` function fails, 
  every other following function is skipped.
@@ -45,7 +45,7 @@ The following is the expected order of execution for setup and teardown function
 other functions.
 
 
-## Executing Tests Using CLI Commands
+## Executing tests using CLI commands
 
 Tests will be executed when you run the test command.
 
@@ -55,7 +55,7 @@ Execute all the tests in the current package with the following command.
 $ bal test
 ```
 
-### Running Tests for a Group
+### Running tests for a group
 
 List all the test groups in the package.
 
@@ -75,7 +75,7 @@ Run the tests in the current package excluding the given group(s).
 $ bal test --disable-groups <group_1>
 ```
 
-### Running Selected Tests
+### Running selected tests
 
 Run only the given test function(s) in the current package.
 
@@ -95,7 +95,7 @@ Run all the functions in the given module.
 $ bal test --tests PackageName.<module_name>:*
 ```
 
-### Re-running Failed Tests
+### Re-running failed tests
 
 Run only the previously-failed test cases in the current package.
 
@@ -103,7 +103,7 @@ Run only the previously-failed test cases in the current package.
 $ bal test --rerun-failed
 ```
 
-### Running Selected Data Sets in Data-driven Tests
+### Running selected data sets in data-driven tests
 
 Data-driven tests can be executed using the `bal test` command as any other test.
 
@@ -120,7 +120,7 @@ Run only the previously-failed cases in a data set.
 $ bal test --rerun-failed
 ```
 
-### Generating Test Report and Code Coverage
+### Generating test report and code coverage
 
 Generate an HTML test report without code coverage information.
 Also, dump the test results in the JSON format.

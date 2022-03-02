@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Multipart Message Handling
+title: Multipart message handling
 description: HTTP multipart messages can be created by using the Multipurpose Internet Mail Extensions (MIME) standard. 
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-clients/multipart-message-handling/
@@ -23,7 +23,7 @@ You can provide MIME entity values to create single or multi-part HTTP messages 
 
 A MIME entity in Ballerina is represented using the [`mime:Entity`](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity) object.
 
-## Setting a Text Payload
+## Setting a text payload
 
 The `multipart_example_one.bal` example below illustrates how to can use a MIME entity in setting a text payload in an HTTP request. 
 
@@ -67,7 +67,7 @@ Execute the `bal run multipart_example_one.bal` command and the output will be a
 
 The code above explicitly creates the MIME entity and sets it in the HTTP request. The same operation happens if you use the [`setTextPayload`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#setTextPayload) method in the [`http:Request`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request) object. These functions are effectively helper functions to set the MIME entities in the HTTP request for often-used content types. 
 
-## Setting the Body with Other Data Types
+## Setting the body with other data types
 
 The [`mime:Entity`](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity) object contains functions for setting the body with other data types such as [binary](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#setTextPayload), [XML](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#setXmlPayload), and [JSON](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#setJsonPayload) as well.
 
@@ -76,7 +76,7 @@ A multipart message can be created by setting the body parts in the [`mime:Entit
 This method takes in an array of [`mime:Entity`](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity) objects, and also optionally, the content type of the enclosing entity, in which, the default is set to [`multipart/form-data`](https://docs.central.ballerina.io/ballerina/mime/latest/constants#MULTIPART_FORM_DATA). 
 
 
-## Using Other Multipart Values
+## Using other multipart values
 
 If required, you can override the default `multipart/form-data` with other multipart values such as [`multipart/mixed`](https://docs.central.ballerina.io/ballerina/mime/latest/constants#MULTIPART_MIXED), [`multipart/alternative`](https://docs.central.ballerina.io/ballerina/mime/latest/constants#MULTIPART_ALTERNATIVE), and [`multipart/related`](https://docs.central.ballerina.io/ballerina/mime/latest/constants#MULTIPART_RELATED). 
 
@@ -109,7 +109,7 @@ public function main() returns @tainted error? {
 ```
 In the above code, the [`setContentDisposition`](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#setContentDisposition) method in the [`mime:Entity'](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity) object is used to set the content disposition of the entity. This provides information on how the recipient should handle the data. For example, if it should be displayed inline, treated as form data, or downloaded as an attachment.
 
-## Processing HTTP Response Entities
+## Processing HTTP response entities
 
 Similar to how you work with MIME entities in HTTP requests, the HTTP response entities can also be processed using the [`getEntity`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getEntity) method in the [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response) object.
 
@@ -137,7 +137,7 @@ Content Type: image/jpeg
 Content Length: 35588
 ```
 
-## What's Next?
+## What's next?
 
 For other use cases of HTTP clients, see the topics below.
 - [Data Binding](/learn/network-communication/http/data-binding)

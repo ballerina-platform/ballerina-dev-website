@@ -22,7 +22,7 @@ In today’s cloud-era, you need technologies that can model distributed systems
 That’s why sequence diagrams are the foundation for designing the syntax and semantics of the Ballerina language. Ballerina provides the flexibility of a general-purpose language while having features to model and visualize solutions based on higher-level abstractions derived from sequence diagrams.
 
 
-## Sequence Diagrams in Ballerina
+## Sequence diagrams in Ballerina
 
 Being based on sequence diagrams, Ballerina allows you to visualize a program written in Ballerina as a sequence diagram. The diagram will display the logic and network interaction of a function or a service resource. You can view and edit these diagrams using the Ballerina VSCode plugin.
 
@@ -33,12 +33,12 @@ One of the key benefits of the diagram is that it acts as a documentation of the
 > ***"[With Ballerina] you can get sequence diagrams automatically. When things start to get complicated and you need to understand and socialize with the rest of your team what it is that you're building, these diagrams become very helpful." -- Christian Posta, field CTO, solo.io***
 
 
-### Get Started
+### Get started
 
 The [Ballerina Extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) can generate a sequence diagram dynamically from the source code. To start generating a sequence diagram from your Ballerina code, [download](https://marketplace.visualstudio.com/items?itemName=wso2.ballerina) the VSCode extension and launch the graphical viewer.
 
 
-## Graphical Representation
+## Graphical representation
 
 ### Functions
 
@@ -49,7 +49,7 @@ Functions in Ballerina are visualized as a sequence diagram. The diagram will ha
 <img src="/img/why-pages/sequence-diagrams-for-programming-2.png" alt="Ballerina sequence diagram of HTTP resource definition" style="width:100%; border: 1px solid #eee;">
 
 
-### Client Objects and Remote Methods
+### Client objects and remote methods
 
 Ballerina has special network client objects, like HTTP clients and database connections, that have their own lifeline to represent its functionality and the messages that it can receive. The messages sent to or the invocations are done on these network clients are called _remote methods_ — a special method inside a client object that represents a call through the network. Remote calls are distinguished from normal method calls by using the arrow “`->`” notation.
 

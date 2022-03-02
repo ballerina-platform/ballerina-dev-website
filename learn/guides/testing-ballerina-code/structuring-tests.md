@@ -1,6 +1,6 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Structuring Tests
+title: Structuring tests
 description: Learn how to structure Ballerina tests.
 keywords: ballerina, programming language, testing
 permalink: /learn/testing-ballerina-code/structuring-the-tests/
@@ -18,7 +18,7 @@ redirect_from:
 - /learn/user-guide/testing-ballerina-code/structuring-tests/
 ---
 
-## Test Source Files
+## Test source files
 Unit tests bound to a module need to be placed in a subfolder called `tests` within the module. 
 In a standard Ballerina package, a module is mapped to a test suite. All tests within a module’s `tests` subdirectory 
 are considered to be part of the same test suite. The test source files could have any name. The test functions are just 
@@ -29,12 +29,12 @@ The functions, services, and global variables defined in a module are accessible
 Hence, you cannot redefine a symbol in the test files if it is already declared in the module.
 On the other hand, symbols defined in the test files will not be visible inside the module source files.
 
-## Test Resources
+## Test resources
 The `resources` subdirectory found within the `tests` directory is meant to contain any files or resources that are 
 exclusively required for testing. You can access the resource files either using the absolute path or using the path 
 relative to the package root.
 
-## Test Configurations
+## Test configurations
 Configurations for testing can be provided using configurable variables. The values for configurable variables can be 
 provided in a file named `Config.toml` located in the `tests` directory.
 

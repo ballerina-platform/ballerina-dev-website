@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Communication Resiliency
+title: Communication resiliency
 description: The HTTP client supports multiple communication resiliency options out of the box.
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-clients/communication-resiliency/
@@ -47,25 +47,25 @@ public function main() returns @tainted error? {
 }
 ```
  
-## Circuit Breaker
+## Circuit breaker
 
 The [Circuit Breaker](https://docs.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker) pattern is used to handle temporary faults when communicating across the network. If a remote endpoint is not available due to a high service load or a network failure, your application may be repeatedly trying to communicate with this service, waiting till it returns a successful result. 
 
 If the requests keep failing continuously and adding more stress to the backend system, it is not a desirable state for your system. Then, you should rather fail-fast and handle the error from the application. This makes sure the caller is not wasting too many resources by waiting for request timeouts etc. Thus, holding back a chain of network calls, which in-turn may hold up resources such as execution threads and network connections. 
 
-### Circuit Breaker 'Closed' State
+### Circuit breaker 'Closed' state
 
 As a solution for this, you can have an intermediary between the service client and the backend service that acts as a circuit breaker. In this manner, when the backend service is healthy, the requests originated from the client go through the circuit breaker and the backend service will successfully return the response to the client through the circuit breaker. This is called the `closed` state in the circuit breaker, which is depicted by the diagram below. 
 
 ![Circuit Breaker Closed State](/learn/images/circuit-breaker-closed-state.png)
 
-### Circuit Breaker 'Open' State
+### Circuit breaker 'Open' state
 
 If the circuit breaker detects that the backend service is repeatedly failing, it can stop forwarding the client requests to the backend service and fail the requests immediately by returning with a specific error message to the client. In this situation, the circuit breaker is in the `open` state, which is depicted by the diagram below. 
 
 ![Circuit Breaker Open State](/learn/images/circuit-breaker-open-state.png)
 
-### Circuit Breaker 'Half-Open' State
+### Circuit breaker 'Half-Open' state
 
 While the circuit breaker is in the `open` state and after a specific timeout since it was in this state, the circuit breaker will allow some requests from the client to be passed to the backend service. This is called the `half-open` state, which is depicted by the diagram below. 
 
@@ -73,7 +73,7 @@ While the circuit breaker is in the `open` state and after a specific timeout si
 
 If the requests sent to the backend service are successful in this state, it will go back to the `closed` state, and all the requests will flow again to the backend service. If the requests sent to the backend in the `half-open` state fails, the circuit breaker will again go back to the `open` state.
 
-### Circuit Breaker Client Configuration
+### Circuit breaker client configuration
 
 The circuit breaker pattern can be used in Ballerina HTTP clients by using its [client configuration](https://docs.central.ballerina.io/ballerina/http/latest/records/CircuitBreakerConfig). This contains the configuration properties below. 
 
@@ -116,11 +116,11 @@ In the above code, the HTTP client is configured with a circuit breaker configur
 
 Otherwise, in the case of 20% requests failure in the rolling window, the circuit will trip and go into the `open` state. Now, the client will immediately return errors until 10 seconds. Then, it will go into a `half-open` state and check again if the backend service is responding with successful responses. If the backend request succeeds, the circuit will go back to the `closed` state and all clients’ requests will be forwarded to the backend service. Or else, it will go back to an `open` state. 
 
-## Load Balancing and Failover
+## Load balancing and failover
 
 In the event of load balancing requests to multiple remote endpoints, Ballerina has the [`http:LoadBalanceClient`](https://docs.central.ballerina.io/ballerina/http/latest/clients/LoadBalanceClient) to provide a list of endpoints, and optionally an implementation of the algorithm to select the endpoint to distribute the traffic. The default load balancer rule is to use a round-robin strategy to distribute the load. 
 
-### HTTP Client-Side Load Balancing
+### HTTP client-side load balancing
 
 The `load-balancer_demo.bal` example below shows a scenario of HTTP client-side load balancing. 
 
@@ -145,7 +145,7 @@ In the above code, the three hosts configured using the `targets` property provi
 
 For more detailed configuration options, see the [`http:LoadBalanceClientConfiguration`](https://docs.central.ballerina.io/ballerina/http/latest/clients/LoadBalanceClient).
 
-## Handling Failover Scenarios
+## Handling failover scenarios
 
 Similarly, Ballerina supports fail-over scenarios using the [`http:FailoverClient`](https://docs.central.ballerina.io/ballerina/http/latest/clients/FailoverClient). In this, a list of target URLs can be provided to attempt requests in a sequence, in which, in the case of failure, it will move on to the next available URL in the list for retrying the request. 
 
@@ -170,7 +170,7 @@ public function main() returns @tainted error? {
 
 For more detailed configuration options of the failover client, see the [`http:FailoverClientConfiguration`](https://docs.central.ballerina.io/ballerina/http/latest/clients/FailoverClient). 
 
-## What's Next?
+## What's next?
 
 For other use cases of HTTP clients, see the topics below.
 - [Multipart Message Handling](/learn/network-communication/http/multipart-message-handling)

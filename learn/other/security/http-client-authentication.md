@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: HTTP Client Authentication
+title: HTTP client authentication
 description: Ballerina HTTP clients can be configured to enforce authentication.
 keywords: ballerina, programming language, security, secure ballerina code, authentication, iam
 permalink: /learn/user-guide/security/http-client-authentication/
@@ -63,7 +63,7 @@ public function main() returns error? {
 }
 ```
 
-## Self-Signed JWT Auth
+## Self-signed JWT Auth
 
 Ballerina supports self-signed JWT Authentication for clients. The `auth` field of the client configurations (`http:ClientConfiguration`) should have the `http:JwtIssuerConfig` record.
 
@@ -152,7 +152,7 @@ public function main() returns error? {
 
 Ballerina supports OAuth2 authorization for clients. It supports the client credentials grant type, password grant type, and refresh token grant type, in which, the credentials can be provided manually, and after that, refreshing is handled internally. The `auth` field of the client configurations (`http:ClientConfiguration`) should have either one of the `http:OAuth2ClientCredentialsGrantConfig`, `http:OAuth2PasswordGrantConfig`, or `http:OAuth2RefreshTokenGrantConfig` records.
 
-### Client Credentials Grant Type
+### Client credentials grant type
 
 The `http:OAuth2ClientCredentialsGrantConfig` configurations include:
 
@@ -204,7 +204,7 @@ public function main() returns error? {
 }
 ```
 
-### Password Grant Type
+### Password grant type
 
 The `http:OAuth2PasswordGrantConfig` configurations include:
 
@@ -277,7 +277,7 @@ public function main() returns error? {
 }
 ```
 
-### Refresh Token Grant Type
+### Refresh token grant type
 
 The `http:OAuth2RefreshTokenGrantConfig` configurations include:
 

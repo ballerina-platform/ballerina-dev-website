@@ -1,6 +1,6 @@
 ---
 layout: ballerina-getting-started-left-nav-pages-swanlake
-title: Getting Started with Ballerina
+title: Getting started with Ballerina
 description: Let’s set up a Ballerina development environment and write a simple Ballerina program.
 keywords: ballerina, programming language, ballerina packages, getting started
 permalink: /learn/getting-started-with-ballerina/
@@ -14,7 +14,7 @@ redirect_from:
 - /learn/getting-started/hello-world/writing-your-first-ballerina-program/
 ---
 
-## Setting up the Prerequisites
+## Setting up the prerequisites
 
 To complete this tutorial, you need the below.
 
@@ -34,7 +34,7 @@ $ bal
 $ bal version
 ```
 
-## Creating a New Project
+## Creating a new project
 
 Let's write a Ballerina program, which prints `Hello, World!`. Use the `bal new` command to create a new Ballerina project. 
 
@@ -73,7 +73,7 @@ In this code:
 
 >**Info:** To learn more about the language, see [Language Basics](/learn/language-basics/). 
 
-## Running the Project
+## Running the project
 
 Run `bal run` in your terminal to run this project.
 
@@ -105,7 +105,7 @@ $ bal run target/bin/greeter.jar
 Hello, World!
 ```
 
-## Writing a Simple REST API
+## Writing a simple REST API
 
 Now, let's change the `greeter` application to a REST API. Ballerina has first-class abstractions for services, resources, etc., and they make network service development easier and more fun. 
 
@@ -160,7 +160,7 @@ $ curl localhost:8080/greeting/Ballerina
 Hello Ballerina
 ```
 
-## Learning More
+## Learning more
 
 In this guide, you set up your development environment and wrote two Ballerina programs. Now, see the other [guides](/learn/) to learn more about Ballerina.
 

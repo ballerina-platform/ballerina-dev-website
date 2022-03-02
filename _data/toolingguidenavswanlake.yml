@@ -1,33 +1,33 @@
 
-- title: Visual Studio Code Extension
+- title: Visual Studio Code extension
   url: '#'
   sublinks:
-    - title: Quick Start
+    - title: Quick start
       url: /learn/tooling-guide/visual-studio-code-extension/quick-start/ 
       active: quick-start
-    - title: Diagram Editor
+    - title: Diagram editor
       url: /learn/tooling-guide/visual-studio-code-extension/diagram-editor/ 
       active: diagram-editor
     - title: Debugging
       url: /learn/tooling-guide/visual-studio-code-extension/debugging/ 
       active: debugging
-    - title: VS Code Commands
+    - title: VS Code commands
       url: /learn/tooling-guide/visual-studio-code-extension/vs-code-commands/ 
       active: vs-code-commands
-    - title: Language Support
+    - title: Language support
       url: /learn/tooling-guide/visual-studio-code-extension/language-support/ 
       active: language-support
     - title: Configurations
       url: /learn/tooling-guide/visual-studio-code-extension/configurations/ 
       active: configurations
 
-- title: CLI Tools 
+- title: CLI tools 
   url: '#'
   sublinks:
-    - title: CLI Commands
+    - title: CLI commands
       url: /learn/tooling-guide/cli-tools/cli-commands 
       active: cli-commands
-    - title: Update Tool
+    - title: Update tool
       url: /learn/tooling-guide/cli-tools/update-tool/ 
       active: update-tool
     - title: OpenAPI 

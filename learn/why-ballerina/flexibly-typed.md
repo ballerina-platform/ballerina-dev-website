@@ -1,6 +1,6 @@
 ---
 layout: ballerina-why-ballerina-left-nav-pages-swanlake
-title: Flexibly Typed
+title: Flexibly typed
 description: See how the Ballerina programming language's flexible type system helps developers work with networked resources in their code.
 keywords: ballerina, programming lanaguage, type system, data binding
 permalink: /why-ballerina/flexibly-typed/
@@ -22,7 +22,7 @@ In a programming language, the type system is the foundation for representing da
 
 With more services being available in the cloud, the network-distributed programming domain has grown. As the developer is given the added responsibility of working with networked resources in their code, the programming language itself must aid in this operation. That’s why Ballerina’s network-friendly type system is specialized for this domain.
 
-## Statically Typed and Structural
+## Statically typed and structural
 
 Ballerina is a statically-typed language, which means type compatibility between the constructs is checked at compile-time. Statically-typed languages are generally more robust to changes and refactorings, easier to debug, and aid in creating better language tooling.
 
@@ -123,7 +123,7 @@ DoorState eds2 = eds1;
 io:println("Door - Open: ", eds2.open, ", Locked: ", eds2.locked);
 ```
 
-### Benefits of a Structural Type System
+### Benefits of a structural type system
 A structural type system proves beneficial when you have multiple systems interacting with each other since data exchange and type compatibilities can be resolved easier. Let's dive into a Ballerina <a href="/learn/by-example/query-expressions">integrated query</a> example, which shows this behavior.
 
 ```ballerina
@@ -155,13 +155,13 @@ In the example above, you filter records from a list and create a new value of t
 
 In situations such as above, a separate system from our core application may be generating values to be consumed by us. In these cases, instead of worrying about sharing the code for the data type definitions, you can simply concentrate on the compatibility of the data in order to ensure interoperability.
 
-## Open-by-Default
+## Open-by-default
 
 Ballerina's open-by-default concept is tied around the <a href="https://en.wikipedia.org/wiki/Robustness_principle">robustness principle</a>. This means that you should design network-aware programs to accept all the data that is sent to you and make the best effort to understand it. Also, when sending data, you should make the best effort to conform to the standard protocols that were agreed upon beforehand. This strategy makes sure you have the best chance of interacting with different systems reliably.
 
 The main facilitator of this in the type system is the open record concept in Ballerina. The sections above demonstrated closed records and the sections below demonstrate open records with a record type that represents the details of a person.
 
-### Get Started
+### Get started
 
 The code snippet below shows a simple HTTP GET request to an endpoint:
 
@@ -250,7 +250,7 @@ P2's credit score: GOOD
 {"name":"Anne","birthYear":1988,"married":true,"creditScore":"GOOD","college":"Harvard"}
 ```
 
-## Network Communication with Data Binding
+## Network communication with data binding
 
 The type system features for records in Ballerina can be used when implementing <a href="/learn/by-example/http-data-binding.html">data binding</a> operations with structural validation, data types handling, and payload passthrough operations. The functionality will be demonstrated using an HTTP service in Ballerina:
 
@@ -275,7 +275,7 @@ service / on new http:Listener(8080) {
 $ bal run sample.bal
 ```
 
-### Test Scenarios
+### Test scenarios
 
 <table class="table cCodeTable cCodeTableFixedLayout" >
                                  <tr>

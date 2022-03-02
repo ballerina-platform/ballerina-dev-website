@@ -1,6 +1,6 @@
 ---
 layout: ballerina-style-guide-left-nav-pages-swanlake
-title: Top-Level Definitions
+title: Top-level definitions
 active: top-level-definitions
 permalink: /learn/style-guide/top-level-definitions/
 intro: The sections below include the coding conventions with respect to top-level definitions.
@@ -21,7 +21,7 @@ redirect_from:
   - /learn/style-guide/top-level-definitions
 ---
 
-## General Practices
+## General practices
 
 * Do not indent the top-level definitions. 
   
@@ -54,7 +54,7 @@ service / on ep1 {
     }
 ```
 
-## Import Declaration
+## Import declaration
 
 * Do not keep spaces between the organization name, divider `/`, and module name.
 
@@ -66,7 +66,7 @@ import ballerina/http;
 
 * Imports should be sorted alphabetically, first by the organization name and then by the module name.
 
-## Function Definition
+## Function definition
 * Do not keep spaces between the function name and the open parentheses `(` of the function signature.
 
 **Example,**
@@ -110,7 +110,7 @@ function getAddress(int value, string name) returns
 }          
 ```
 
-## Service Definition
+## Service definition
 
 * Keep the listener inline with the service signature.
   
@@ -141,7 +141,7 @@ service / on new http:Listener(9090) {
 
 * Block indent each method definition, and field definition inside a service definition.
  
-## Class Definition
+## Class definition
 
 * Block indent each field definition, method definition and type inclusion on their own line.
 * The `init` method should be placed before all the other methods.
@@ -174,7 +174,7 @@ class Person {
 }
 ```
 
-## Record Definition
+## Record definition
 Block indent each of the field definitions (including the rest field) in their own line.
 
 **Example,**
@@ -193,7 +193,7 @@ type Person record {|
 |}
 ```
 
-## Referencing Record or Object
+## Referencing record or object
 * Do not keep spaces between the `*` and the object name or the record name.
   
 **Example,**

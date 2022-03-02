@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Securing WebSocket Communication
+title: Securing WebSocket communication
 description: Whenever possible, you should use WebSocket with TLS. This makes sure that your data communication is secure through the network. 
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/user-guide/network-communication/websocket/securing-websocket-communication/
@@ -17,7 +17,7 @@ redirect_to:
   - https://lib.ballerina.io/ballerina/websocket/latest/
 ---
 
-## Configuring a Secure Socket 
+## Configuring a secure socket 
 
 For your WebSocket service to be compatible with this approach, you can configure a secure socket for your WebSocket listener. This WebSocket listener is the one used in the [WebSocket upgrade](/learn/network-communication/websocket/), so it will be upgrading a TCP connection with TLS.
 
@@ -27,7 +27,7 @@ Afterward, in your WebSocket client, you can use the `wss` protocol scheme to co
 var ws = new WebSocket("wss://localhost:8443/ws");
 ```
 
-## Securing WebSocket Communication Example
+## Securing WebSocket communication example
 
 1. Create a `wss_service.bal` file with the content below.
 

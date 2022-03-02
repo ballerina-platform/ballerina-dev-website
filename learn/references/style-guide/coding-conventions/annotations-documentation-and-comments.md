@@ -1,6 +1,6 @@
 ---
 layout: ballerina-style-guide-left-nav-pages-swanlake
-title: Annotations, Documentation and Comments
+title: Annotations, documentation and comments
 description: The Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. The Ballerina code formatting tools are based on this guide.
 keywords: ballerina, programming language, ballerina style guide, annotations, comments
 permalink: /learn/style-guide/annotations-documentation-and-comments/

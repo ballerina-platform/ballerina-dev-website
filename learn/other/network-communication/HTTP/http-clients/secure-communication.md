@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Secure Communication
+title: Secure communication
 description: The HTTP client supports numerous secure communication features such as Transport Level Security (TLS) and mutual authentication. 
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-clients/secure-communication/
@@ -19,11 +19,11 @@ redirect_to:
   - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
-## Configuring Secure Communication
+## Configuring secure communication
 
 The TLS features are used with the HTTP client by using the `https` protocol in the endpoint URL. Optionally, you can provide the information on the truststore or server public certificate location to use for validating the server certificates received when creating an HTTP connection over TLS. This is provided using the `secureSocket` property in the [HTTP client configuration](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientConfiguration) instance when creating the [`http:Client`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client).
 
-### Communicating with an HTTPS Endpoint
+### Communicating with an HTTPS endpoint
 
 The `https_client_demo.bal` example below shows a scenario of communicating with an HTTPS endpoint.
 
@@ -54,7 +54,7 @@ Payload: {
 }
 ```
 
-### Communicating with an HTTPS Endpoint configured with Public Certificate
+### Communicating with an HTTPS endpoint configured with public certificate
 
 The `https_client_cert_demo.bal` example below shows how a public certificate can be used for the client when communicating with an HTTPS endpoint.
 
@@ -89,7 +89,7 @@ Payload: {
 }
 ```
 
-### Communicating with an HTTPS Endpoint configured with TrustStore
+### Communicating with an HTTPS endpoint configured with TrustStore
 
 The `https_client_truststore_demo.bal` example below shows how a truststore can be used for the client when communicating with an HTTPS endpoint.
 
@@ -157,7 +157,7 @@ public function main() returns error? {
 
 For more information on Ballerina’s authentication/authorization features, see the [Authentication & Authorization](/learn/user-guide/security/authentication-and-authorization/).
 
-## What's Next?
+## What's next?
 
 For other use cases of HTTP clients, see the topics below.
 - [Multipart Message Handling](/learn/network-communication/http/multipart-message-handling)

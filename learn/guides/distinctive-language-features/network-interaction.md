@@ -1,6 +1,6 @@
 ---
 layout: ballerina-distinctive-language-features-left-nav-pages-swanlake
-title: Network Interaction
+title: Network interaction
 description: In this part, you will learn about the features of the Ballerina programming language that are distinctive. These features revolve around key design considerations that make Ballerina suitable for cloud application programming using small and medium-sized programs.
 keywords: ballerina, programming language, ballerina packages,language-guide
 permalink: /learn/distinctive-language-features/network-interaction/
@@ -22,7 +22,7 @@ Individually these features may not stand out. However, it is the combination of
 
 This and the subsequent two parts will talk about these features. Let’s start with network interaction. The two fundamental operations in any network interaction are consuming services and providing services.
 
-## Consuming Services - Client Objects
+## Consuming services - client objects
 
 Client applications consume network services. Therefore, Ballerina supports defining client objects to allow a program to interact with remote network services using remote methods.
 
@@ -52,7 +52,7 @@ Remote method calls have some restrictions. For example, they are not allowed in
 
 Applications typically do not need to write client classes. Instead, these classes are either provided by the library modules or generated from some flavor of interface definition language.
 
-## Providing Services
+## Providing services
 
 Providing services is a more complex interaction with three main things involved.
 
@@ -62,7 +62,7 @@ The second is a Listener object. It receives network input and makes calls to re
 
 Modules have a lifecycle and are initialized on program startup. Post initializations, the registered listeners are started up, and when the program shuts down, the registered listeners are also shut down.
 
-## Listener Declaration
+## Listener declaration
 
 A listener declaration looks very much like a variable declaration.
 
@@ -74,7 +74,7 @@ listener http:Listener h = new (8080);
 
 This also registers the Listener with the enclosing module. If the ``new`` expression returns an error, the module initialization fails and exits with an error at runtime.
 
-## Module Lifecycle
+## Module lifecycle
 
 As mentioned earlier, all modules have a lifecycle, so let's understand a few aspects of the lifecycle.
 
@@ -84,7 +84,7 @@ If there are registered listeners in a module, the module initialization phase i
 
 These lifecycle-related activities are built into Ballerina, and as a programmer, you do not have to handle them when writing small programs which do not deal with network services.
 
-## Module ``init`` Function
+## Module ``init`` function
 
 Modules have an *init* function, just like objects. It gets called after all the other variables within the module are initialized.
 
@@ -101,7 +101,7 @@ The return type of this **``init()``** function must be a subtype of ``error?``.
 
 Ballerina considers it an error to import a module and not use it. If you want to import a module because of what its initialization does, then use *``as _``* in the import declaration.
 
-## Constructing Objects Without Classes
+## Constructing objects without classes
 
 Ballerina allows you to construct objects even without classes. This is useful for initializing service objects.
 
@@ -118,7 +118,7 @@ string greeting = obj.greet();
 
 In the above code example, the ``object`` keyword is used in the expression that initializes the **``obj``** variable. This is called an object constructor. It has one method **``greet()``** that returns a string ``"Hello World"``. So there is no class involved in this case.
 
-## Service Declaration
+## Service declaration
 
 The above pattern for creating an object directly without the involvement of classes is helpful for service declarations.
 
@@ -159,7 +159,7 @@ function init() returns error? {
 }
 ```
 
-## Representing Responses
+## Representing responses
 
 Traditionally, all network protocols use a standard request-response pattern. In Ballerina when a client remote method makes a request, the return value of the method provides a response. Similarly, when the service remote method is invoked, the return value of the method provides the response.
 
@@ -167,7 +167,7 @@ However, there are two limitations to this approach. Firstly, the application ha
 
 A more flexible approach is to include a client object as a parameter in the service's remote method, representing the caller. This way, the service object's remote method responds by making remote calls on the client object via this parameter.
 
-## Resource Concept
+## Resource concept
 
 Similar to remote methods, service objects have another concept called resources.
 
@@ -194,7 +194,7 @@ This is an example of a resource method. Instead of ``remote``, it uses the ``re
 
 So this service object defines a resource **``/hello``** with a query parameter **``name``**.
 
-## Hierarchical Resources
+## Hierarchical resources
 
 Resources are hierarchical. They have a path, which consists of a base path and multiple segments.
 
@@ -211,7 +211,7 @@ In the above code example, the service object is attached to the HTTP listener w
 
 A single listener can have multiple services attached to it, each with different base paths.
 
-## Resource Path Parameters
+## Resource path parameters
 
 The resource paths can also be parameterized such that instead of having fixed, static paths, they can be dynamically assigned during the service invocation.  
 
@@ -227,7 +227,7 @@ service /demo on new http:Listener(8080) {
 
 In this case, the fixed resource path is **``/demo/greeting``** followed by a parameterized segment defined within `'[ ]'` in the resource method. This arrangement is similar to how HTTP resources are defined with parameterized path segments for RESTful services.
 
-## Hierarchical Services
+## Hierarchical services
 
 Like hierarchical resources, you can also have hierarchical service objects.
 

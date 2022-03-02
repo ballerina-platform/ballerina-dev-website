@@ -1,6 +1,6 @@
 ---
 layout: ballerina-organizing-code-left-nav-pages-swanlake
-title: Organizing Ballerina Code
+title: Organizing Ballerina code
 description: The sections below include information about packages, and how you can manage the growth of your source code.
 keywords: ballerina, programming language, ballerina packages, dependencies, importing modules
 permalink: /learn/organizing-ballerina-code/
@@ -16,7 +16,7 @@ redirect_from:
 - /learn/user-guide/ballerina-packages
 ---
 
-## Package Structure
+## Package structure
 
 Writing code in an organized manner from the beginning of the project is important for the lifecycle of the project and its maintainability in the long run. 
 Organized code will make it easy to extend and improve your project over time. Ballerina project structure makes it easy to write clean code by eliminating repetitions, writing reusable code, adding new features without changing the existing code, etc. 
@@ -30,7 +30,7 @@ It is common in small projects to have only one (default) module in a package. A
 
 The `bal new` command creates a package with the default module. This will generate the `Ballerina.toml` file, which identifies a directory as a package and will additionally generate a sample source file in the default module.
 
-### Creating Your First Ballerina Package
+### Creating your first Ballerina package
 
 Create a Ballerina package with the `bal new` command as follows. 
 
@@ -54,7 +54,7 @@ tree .
 
 You may also try creating a service or a library package instead of the main function as explained in the sections below. 
 
-#### Creating a Ballerina Service Package
+#### Creating a Ballerina service package
 
 ```bash
 bal new -t service hello_service
@@ -73,7 +73,7 @@ cd hello_service
 1 directory, 3 files
 ```
 
-#### Creating a Library Package
+#### Creating a library package
 
 ```bash
 bal new -t lib hello_lib
@@ -93,7 +93,7 @@ Additionally, it will also create the `Package.md` file, which is required to [p
     └── lib_test.bal
 ```
 
-### The Default Module
+### The default module
 
 When a package is created with the `bal new` command, the `Ballerina.toml` and the `main.bal` files are created. 
 The `main.bal` file is a Ballerina source file, which belongs to the default module. 
@@ -103,7 +103,7 @@ Therefore, the package root directory contains files that belong to the package 
 You can add more source files at the package root, and all the top-level symbols (i.e., functions, variables, etc.) defined in one file will also be visible to other files as they share the same namespace.
 This namespace is called the default module of the package. The package name, which is specified in the `Ballerina.toml` file is also used to refer to the default module.
 
-### Non-Default Modules
+### Non-default modules
 
 As projects grow in complexity, the need arises to organize code better. 
 This could be because you want to separate the functionalities of the package and/or to add boundaries to the visibility of certain functionalities. 
@@ -133,7 +133,7 @@ The package structure after adding a non-default module will have the directory 
 4 directories, 5 files
 ```
 
-## Importing a Module from the Same Package 
+## Importing a module from the same package 
 
 You can access any public symbol from another module of the package by importing the particular module using an import declaration. 
 The import declaration syntax is as follows.

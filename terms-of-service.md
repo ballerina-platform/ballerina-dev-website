@@ -1,6 +1,6 @@
 ---
 layout: ballerina-inner-page
-title: Terms of Service
+title: Terms of service
 permalink: /terms-of-service/
 ---
 
@@ -23,7 +23,7 @@ You understand and agree that the Sites and all Services on it are provided “A
 
 You agree that you are responsible for your own use of the Services, for any posts you make, or code or data files you provide and for any consequences thereof. You agree that you will use the Services in compliance with all applicable local, state, national, and international laws, rules and regulations, including any laws regarding the transmission of technical data exported from your country of residence and all United States export control laws.
 
-## Your use of the Sites and Services
+## Your use of the sites and services
 
 1. As a condition to using certain Services on the Sites, we may require that you log in with your existing SSO credentials through certain federated identity service providers as set out in the account registration procedure on the Sites. You will provide us with true, accurate, current, and complete information. You may not use anyone else’s password. You are solely responsible for maintaining the confidentiality of your account and password. You agree to immediately notify WSO2 of any unauthorized use of your password or accounts or any other breach of security. WSO2 will not be responsible for any loss or damage that may result if you fail to comply with these requirements. You will not employ the use of automation, mashups, programs, robots, or agents in the process of registering your account.
 
@@ -120,11 +120,11 @@ You alone are responsible for your involvement and interactions with other users
 2. The following names, trademarks, service marks, logos, and product and service names are trademarks of WSO2: “Ballerina”, “BallerinaCon”, “Ballerina Central”, and “WSO2” and the WSO2 and Ballerina logos. Without WSO2’s prior permission, you agree not to display or use in any manner such names and marks, except for reasonable attribution purposes as per the terms in the [Ballerina trademark usage policy](/trademark-usage-policy/).
 
 
-## Third party Sites and Services
+## Third party sites and services
 
 The Sites and Services may hyperlink to and integrate with third-party applications, websites, and other services. You decide whether and how to use and interact with such services. We do not make any warranty regarding such services or content they may provide, and will not be liable to you for any damages related to such services. Use of such third-party services may be governed by other terms and privacy notices that are not part of this Agreement and are not controlled by us.
 
-## Revisions to these Terms and termination
+## Revisions to these terms and termination
 
 1. We may at any time revise these Terms by updating this page. We will not send individual email notifications on these updates. By using the Ballerina Sites and Services, you agree to be bound by any such revisions and are therefore encouraged to periodically visit this page. Your continued use of the Sites and Services after revisions are made to this policy will constitute your acceptance of such revised terms.
 

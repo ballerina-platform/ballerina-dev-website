@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: HTTP Services
+title: HTTP services
 description: The topics below cover details on the HTTP services support in Ballerina. They explore the basics of creating an HTTP service and how Ballerina provides a convenient abstraction for defining complex operations.  
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-services/
@@ -17,7 +17,7 @@ redirect_to:
   - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
-## Structuring an HTTP Service
+## Structuring an HTTP service
 
 A Ballerina service’s structure and its semantics are defined by the service type (i.e., the type of the listener attached to it). A basic HTTP service is structured in Ballerina as shown below. 
 
@@ -68,7 +68,7 @@ $ curl http://localhost:8080/greeting
 Hello!
 ```
 
-## Creating Hierarchical Resources
+## Creating hierarchical resources
 
 Hierarchical resources in HTTP services are defined by providing the hierarchical path of the resource as the resource name. The path segments are separated using `/`. The example below shows how the `/base/foo/bar` path is represented in an HTTP service resource.
 
@@ -95,7 +95,7 @@ $ curl http://localhost:8080/base/foo/bar
 Hi!
 ```
 
-### Defining Resource Path Segments
+### Defining resource path segments
 
 Resource path segments can be defined with parameters similar to how we define function parameters. This is done with the `[<type> <name>]` syntax in the path segment. The parameter type must be one of these types: `int`, `string`, `float`, `boolean`, `decimal`. Path parameters for the HTTP resource can be defined using this functionality. An example is shown below. 
 
@@ -122,7 +122,7 @@ $ curl http://localhost:8080/person/1001
 Person with id 1001
 ```
 
-### Defining Resource Path Segment Parameters
+### Defining resource path segment parameters
 
 There can be multiple resource path segment parameters and they can be mixed and located anywhere with general path segments. 
 
@@ -183,7 +183,7 @@ $ curl http://localhost:8080/log/1/2/3
 Path: ["1","2","3"]
 ```
 
-## Defining Query Parameters
+## Defining query parameters
 
 In a resource function, the query parameters are represented using the resource function parameters. The parameter type must be one of the types: `int`, `string`, `float`, `boolean`, and `decimal`. The name of the parameter represents the query parameter name. An example of this functionality is shown below.
 
@@ -212,18 +212,18 @@ $ curl "http://localhost:8080/search/aliens?offset=20&size=10"
 Search: k=aliens o=20 s=10
 ```
 
-## Payload Data Binding
+## Payload data binding
 
 For information on this, see [Payload Data Binding](/learn/network-communication/http/http-services/payload-data-binding/).
 
-## Extended Request/Response Access
+## Extended request/response access
 
 For information on this, see [Extended Request/Response Access](/learn/network-communication/http/http-services/extended-request-response-access/).
 
-## Multipart Message Handling
+## Multipart message handling
 
 For information on this, see [Multipart Message Handling](/learn/network-communication/http/http-services/multipart-message-handling/).
 
-## Secure Communication
+## Secure communication
 
 For information on this, see [Secure Communication](/learn/network-communication/http/http-services/secure-communication/).

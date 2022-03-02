@@ -1,6 +1,6 @@
 ---
 layout: ballerina-inner-page
-title: The Ballerina Community
+title: The Ballerina community
 intro: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!
 description: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!.
 keywords: ballerina, community, ballerina community
@@ -11,11 +11,11 @@ redirect_from:
 
 The Ballerina community has been bootstrapped by <a href="https://wso2.com" target="_blank">WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open source project with all source code licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, Version 2.0</a> and the specifications licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0" target="_blank">Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
 
-## Try Out Ballerina
+## Try out Ballerina
 
 [Learn Ballerina](/learn) and try out writing Ballerina code on your own.
 
-## Subscribe to the Newsletter
+## Subscribe to our newsletter
 
 <a class="cBookmark" id="newsletter"></a>
 
@@ -58,7 +58,7 @@ The Ballerina team is now hosting monthly recorded Community Calls! These are in
 
 - Get involved in our next Community Call by <a href="https://docs.google.com/forms/d/e/1FAIpQLSewd7XGlQeuCI2P9XlQ-A8rtFGn9ghbdYpghIi9K03VlxHcRg/viewform" target="_blank">submitting a discussion topic or requesting to do your own quick demo</a>.
 
-## Seek Help
+## Seek help
 
 We are happy to help! Come engage with us on any channel that works for you.
 
@@ -85,7 +85,7 @@ We are happy to help! Come engage with us on any channel that works for you.
    </div> -->
 </div>
 
-## Report Issues
+## Report issues
 
 Report issues in the GitHub repositories of the areas and components listed below.
 
@@ -96,7 +96,7 @@ Report issues in the GitHub repositories of the areas and components listed belo
 - <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">Website, Ballerina Central, API Docs</a>
 - <a href="mailto:security@ballerina.io" target="_blank">Security</a> (For details, see the <a href="/security" target="_blank">security policy</a>.)
 
-## Help Us Grow
+## Help us grow
 
 If you like the experience so far, help us to spread the word.
 
@@ -224,7 +224,7 @@ body {font-family: Arial;}
 }
 </style>
 
-<h2>Join Ballerina Events</h2>
+<h2>Join Ballerina events</h2>
 <p>Click to see information about past and upcoming Ballerina events.</p>
 
 <div class="tab">
@@ -262,7 +262,7 @@ body {font-family: Arial;}
          <h5>Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h5>
          <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
       </td>	
-      <td class="cEventURL"><a class="cEventRegistration" href="https://stackconf.eu/" target="_blank">More Info</a></td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://stackconf.eu/" target="_blank">More info</a></td>	
    </tr>
     <tr class="event-expiry" style="display:none" data-expiry="">	
       <td class="cEventDateContainer">	
@@ -299,7 +299,7 @@ body {font-family: Arial;}
          <b>Caludio Guidi,</b> Jolie Evangelist and Project Co-Leader<br/>	
          <b>Anjana Fernando,</b> Senior Director - Solutions Architecture, WSO2
       </td>	
-      <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More Info</a></td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More info</a></td>	
    </tr>	
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -327,7 +327,7 @@ body {font-family: Arial;}
          <h5>Code to Kubernetes: Deployment Shouldn't be an Afterthought</h5>
          <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More info</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -341,7 +341,7 @@ body {font-family: Arial;}
          <h5>Automatic Microservices Observability with Ballerina</h5>
          <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More info</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -355,7 +355,7 @@ body {font-family: Arial;}
          <h5>Code to Kubernetes: Deployment Shouldn't be an Afterthought</h5>
          <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://osad-munich.org/en/featured-speakers/code-to-kubernetes-deployment-shouldnt-be-an-afterthought/" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://osad-munich.org/en/featured-speakers/code-to-kubernetes-deployment-shouldnt-be-an-afterthought/" target="_blank">More info</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -383,7 +383,7 @@ body {font-family: Arial;}
          <h5>Code to Kubernetes: Deployment Shouldn't Be an Afterthought</h5>
          <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://emamo.com/event/developerweek-global-cloud-2020/s/open-talk-code-to-kubernetes-deployment-shouldnt-be-an-afterthought-NyPYlo" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://emamo.com/event/developerweek-global-cloud-2020/s/open-talk-code-to-kubernetes-deployment-shouldnt-be-an-afterthought-NyPYlo" target="_blank">More info</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -535,7 +535,7 @@ body {font-family: Arial;}
          <h5>Ballerina - A Modern Cloud-based Open Source Programming Language</h5>
          <b>Paul Fremantle,</b> CTO and Co-founder, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://www.opensourcesummit.paris/" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.opensourcesummit.paris/" target="_blank">More info</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">

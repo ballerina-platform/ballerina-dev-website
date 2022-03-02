@@ -1,6 +1,6 @@
 ---
 layout: ballerina-java-interoperability-left-nav-pages-swanlake
-title: Java Interoperability
+title: Java interoperability
 description: The Java Interoperability Guide aims at providing a reference source for the bindgen tool and the Ballerina FFI.
 keywords: ballerina, programming language, java api, interoperability
 permalink: /learn/java-interoperability/
@@ -12,7 +12,7 @@ redirect_from:
   - /swan-lake/learn/java-interoperability
 ---
 
-## Ballerina Bindings to Java Code
+## Ballerina bindings to Java code
 You can write Ballerina code (Ballerina bindings) that lets you call the corresponding Java API as illustrated in the diagram below.
 
 <img src="/learn/images/interoperability-diagram-new.png" alt="Ballerina bindings to Java code" width="300" height="450">

@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
-title: Defining the Service Interface 
+title: Defining the service interface 
 description: gRPC is an open-source remote procedure call (RPC) technology, which uses HTTP/2 for transport and is based on Google’s Protocol Buffers. It promises high performance, efficient network communication, features such as schema evolution, blocking and non-blocking communication, and bidirectional streaming. The topics below explain how gRPC works and the tools and techniques that are required to implement it using Ballerina.
 keywords: ballerina, cli, command line interface, programming language
 permalink: /learn/user-guide/network-communication/grpc/defining-the-service-interface/ 
@@ -25,7 +25,7 @@ For example, the diagram below shows a sample RPC service, which contains the ac
 
 <img src="/learn/images/grpc-admin-service-new.png" alt="Admin RPC Service" width="450" height="400">
 
-### Creating the Proto File
+### Creating the Proto file
 
 A proto file starts by mentioning the Protobuf syntax version. The latest version is `proto3`. This is mentioned as follows.
 
@@ -72,7 +72,7 @@ Commonly-used Protobuf types and the respective  Ballerina types that can be map
 - `bytes` - `byte[]`
 - `stream` - `stream`
 
-### Defining the Service
+### Defining the service
 
 A service is defined in Protobuf as follows. 
 
@@ -128,12 +128,12 @@ service AdminService {
 
 The above is the full Protobuf definition for the service. 
 
-## Implementing gRPC Services and Clients
+## Implementing gRPC services and clients
 
 For instructions on implementing the above service and writing a client to invoke it, see [Implementing gRPC Services and Clients](/learn/network-communication/grpc/implementing-grpc-services-and-clients/).
 
 
-## Performing gRPC Streaming
+## Performing gRPC streaming
 
 For instructions on this, see [Performing gRPC Streaming](/learn/network-communication/grpc/performing-grpc-streaming/).
 

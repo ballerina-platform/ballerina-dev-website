@@ -11,7 +11,7 @@ redirect_from:
 <link rel="stylesheet" href="/css/events-page.css">
 <!--<h2>No upcoming events</h2><br/>-->
 
-<h2>Upcoming Events</h2>	
+<h2>Upcoming events</h2>	
 <table class="cEventTable cConferencesList" style="width:100%;">
    <tr class="event-expiry" style="display:none" data-expiry="February 23, 2021 12:00:00">	
       <td class="cEventDateContainer">	
@@ -25,7 +25,7 @@ redirect_from:
          <h5></h5>	
          <b></b>
       </td>	
-      <td class="cEventURL"><a class="cEventRegistration" href="https://docs.google.com/document/d/1TPi0ktNvk-gQhVh46ckP5_LyhvwLJSQ3NJeSfv8459A/edit" target="_blank">More Info</a></td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://docs.google.com/document/d/1TPi0ktNvk-gQhVh46ckP5_LyhvwLJSQ3NJeSfv8459A/edit" target="_blank">More info</a></td>	
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="June 16, 2021 12:00:00">	
       <td class="cEventDateContainer">	
@@ -39,7 +39,7 @@ redirect_from:
          <h5>Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h5>	
          <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
       </td>	
-      <td class="cEventURL"><a class="cEventRegistration" href="https://stackconf.eu/" target="_blank">More Info</a></td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://stackconf.eu/" target="_blank">More info</a></td>	
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="April 30, 2021 12:00:00">	
       <td class="cEventDateContainer">	
@@ -54,11 +54,11 @@ redirect_from:
          <h5>Automatic Microservices Observability with Open-Source Programming Language: Ballerina</h5>
          <b>Anjana Fernando,</b> Senior Director - Solutions Architecture, WSO2
       </td>	
-      <td class="cEventURL"><a class="cEventRegistration" href="https://www.wurreka.com/ict/virtual-conference/gids-2021/sessions" target="_blank">More Info</a></td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.wurreka.com/ict/virtual-conference/gids-2021/sessions" target="_blank">More info</a></td>	
    </tr>	
 </table>
 
-<h2>Past Events</h2>
+<h2>Past events</h2>
 <table class="cEventTable cConferencesList" style="width:100%;">
    <tr class="event-expiry" style="display:none" data-expiry="February 5, 2021 12:00:00">	
       <td class="cEventDateContainer">	
@@ -73,7 +73,7 @@ redirect_from:
          <b>Caludio Guidi,</b> Jolie Evangelist and Project Co-Leader<br/>	
          <b>Anjana Fernando,</b> Senior Director - Solutions Architecture, WSO2
       </td>	
-      <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More Info</a></td>	
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">More info</a></td>	
    </tr>	
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -101,7 +101,7 @@ redirect_from:
          <h5>Code to Kubernetes: Deployment Shouldn't be an Afterthought</h5>
          <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More info</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -115,7 +115,7 @@ redirect_from:
          <h5>Automatic Microservices Observability with Ballerina</h5>
          <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/conference/speakers/" target="_blank">More info</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -129,7 +129,7 @@ redirect_from:
          <h5>Code to Kubernetes: Deployment Shouldn't be an Afterthought</h5>
          <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://osad-munich.org/en/featured-speakers/code-to-kubernetes-deployment-shouldnt-be-an-afterthought/" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://osad-munich.org/en/featured-speakers/code-to-kubernetes-deployment-shouldnt-be-an-afterthought/" target="_blank">More info</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -157,7 +157,7 @@ redirect_from:
          <h5>Code to Kubernetes: Deployment Shouldn't Be an Afterthought</h5>
          <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://emamo.com/event/developerweek-global-cloud-2020/s/open-talk-code-to-kubernetes-deployment-shouldnt-be-an-afterthought-NyPYlo" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://emamo.com/event/developerweek-global-cloud-2020/s/open-talk-code-to-kubernetes-deployment-shouldnt-be-an-afterthought-NyPYlo" target="_blank">More info</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -185,7 +185,7 @@ redirect_from:
          <h5>Let's Dance Together! Ballerina</h5>
          <b>Vanjikumaran Sivajothy,</b> Senior Lead Solutions Engineer, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://novacodecamp.org/app/speakers/aa20c381-1fa5-42c6-8095-a01ca1bab0b7" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://novacodecamp.org/app/speakers/aa20c381-1fa5-42c6-8095-a01ca1bab0b7" target="_blank">More info</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -312,7 +312,7 @@ redirect_from:
          <h5>Ballerina - A Modern Cloud-based Open Source Programming Language</h5>
          <b>Paul Fremantle,</b> CTO and Co-founder, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://www.opensourcesummit.paris/" target="_blank">More Info</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.opensourcesummit.paris/" target="_blank">More info</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">

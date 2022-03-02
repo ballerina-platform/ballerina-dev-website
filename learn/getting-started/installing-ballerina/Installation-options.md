@@ -1,6 +1,6 @@
 ---
 layout: ballerina-installing-ballerina-left-nav-pages-swanlake
-title: Installation Options
+title: Installation options
 description: Get started with the Ballerina programming language by following these instructions on installing and setting up Ballerina.
 keywords: ballerina, installing ballerina, programming language, ballerina installation
 permalink: /learn/installing-ballerina/installation-options/
@@ -26,7 +26,7 @@ redirect_from:
 
 
 
-## Installing Ballerina via Installers
+## Installing Ballerina via installers
 
 Follow the instructions below to install the latest Ballerina version using the installer. The installer will automatically set the latest version as the active distribution after the installation.
 
@@ -65,7 +65,7 @@ rpm -i ballerina-<VERSION>-swan-lake-linux-x64.rpm
 ```
 
 
-## Installing via the Ballerina Language ZIP File
+## Installing via the Ballerina language ZIP file
 
 > **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the [AdoptOpenJRE](https://adoptopenjdk.net/) version 11 or above.
 
@@ -78,7 +78,7 @@ rpm -i ballerina-<VERSION>-swan-lake-linux-x64.rpm
         - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, `C:\Program Files\Ballerina\ballerina-<VERSION>\bin`
 
 
-## Verifying the Installation
+## Verifying the installation
 
 After installing Ballerina, run the following test to verify if Ballerina has been successfully installed. 
 
@@ -93,14 +93,14 @@ Make certain the command output shows the version that you downloaded as shown b
 ```bash
 Ballerina <VERSION> (Swan Lake)
 Language specification 2022R1
-Update Tool 1.3.8
+update tool 1.3.8
 ```
 
 ## Updating Ballerina
 
 If you already have a Ballerina version above 1.1.0 installed, you can use the update tool to update to the latest Ballerina version and set it as the active version by executing either of the commands below.
 
->**Info:**You might need to first update the Update Tool to its latest version. If you have an Update Tool version below 0.8.14, execute the `ballerina update` command or else execute the `bal update` command to do this.
+>**Info:**You might need to first update the update tool to its latest version. If you have an update tool version below 0.8.14, execute the `ballerina update` command or else execute the `bal update` command to do this.
 
 **Command**|**Description**
 :-----:|:-----:

@@ -27,7 +27,7 @@ To set up the other prerequisites, follow these steps:
 
 In an RPC program, you first define the service interface using an Interface Definition Language(IDL) to create the service definition (i.e., `helloworld.proto`). gRPC commonly uses Protocol Buffers as the IDL.
 
-As illustrated in the diagram below, next, you compile the service definition file (i.e., `helloworld.proto`), and generate the source code for both the service (i.e., `greeter_service.bal` file) and client (`greeter_client.bal` file) applications. In Ballerina, you can generate the source code using the built-in `Protocol Buffers to Ballerina` tool.
+As illustrated in the diagram below, next, you compile the service definition file (i.e., `helloworld.proto`), and generate the source code for both the service and client applications. In Ballerina, you can generate the source code using the built-in `Protocol Buffers to Ballerina` tool.
 
 ![gRPC Getting Started](/learn/images/grpc-getting-started.png)
 
@@ -75,7 +75,7 @@ As with any other Ballerina Program, you need to create a Ballerina project. The
 
 In the terminal, navigate to the `grpc` directory, and execute the command below to create the Ballerina project for the gRPC service implementation:
 
-> **Note:** For more information on creating Ballerina packages, see [Getting started with Ballerina](/learn/getting-started-with-ballerina).
+> **Note:** For more information on Ballerina packages, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
 ```bash
 $ bal new greeter_service
@@ -91,9 +91,8 @@ This creates a directory named `greeter_service` with the files below.
 
 ```bash
 .
-└── greeter_service
-    ├── Ballerina.toml
-    └── main.bal
+├── Ballerina.toml
+└── main.bal
 ```
 
 >**Tip:** Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
@@ -117,8 +116,8 @@ Successfully generated the Ballerina file.
 This creates two files below inside the `greeter_service` directory.
 
 ```bash
-greeter_service
-├── - - -
+.
+├── Ballerina.toml
 ├── greeter_service.bal
 └── helloworld_pb.bal
 ```
@@ -157,8 +156,6 @@ input coming to the port and then dispatches it to the correct service(s).
 
 In the terminal, navigate to the `greeter_service` directory, and execute the command below to run the service project
 
-> **Note:** For more information on creating Ballerina packages, see [Getting started with Ballerina](/learn/getting-started-with-ballerina).
-
 ```bash
 $ bal run
 ```
@@ -182,7 +179,7 @@ Similar to the service, the client application also starts with creating a new B
 
 In a new tab of the terminal, navigate to the `grpc` directory, and execute the command below to create the Ballerina project for the gRPC client implementation:
 
-> **Note:** For more information on creating Ballerina packages, see [Getting started with Ballerina](/learn/getting-started-with-ballerina).
+> **Note:** For more information on Ballerina projects, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
 ```bash
 $ bal new greeter_client
@@ -198,9 +195,8 @@ This creates a directory named `greeter_client` with the files below.
 
 ```bash
 .
-└── greeter_client
-    ├── Ballerina.toml
-    └── main.bal
+├── Ballerina.toml
+└── main.bal
 ```
 
 >**Tip:** Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
@@ -224,8 +220,8 @@ Successfully generated the Ballerina file.
 This creates two files below inside the `greeter_service` directory.
 
 ```bash
-greeter_service
-├── - - -
+.
+├── Ballerina.toml
 ├── greeter_client.bal
 └── helloworld_pb.bal
 ```
@@ -257,8 +253,6 @@ In this code,
 ## Running the client
 
 In the terminal, navigate to the `greeter_client` directory, and execute the command below to run the service project
-
-> **Note:** For more information on creating Ballerina packages, see [Getting started with Ballerina](/learn/getting-started-with-ballerina).
 
 ```bash
 $ bal run

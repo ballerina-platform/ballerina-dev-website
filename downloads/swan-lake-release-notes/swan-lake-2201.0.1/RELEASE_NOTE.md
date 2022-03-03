@@ -33,23 +33,25 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 ## Language Updates
 
-### Bug Fixes
-
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.1](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+2201.0.1%22+is%3Aclosed).
+
+## Runtime Updates
+
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.1](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+2201.0.1%22+label%3ATeam%2FjBallerina).
 
 ## Standard Library Updates
 
-### Bug Fixes
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.1](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+2201.0.1%22+label%3AType%2FBug).
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.1](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.0.1%22+is%3Aclosed).
+## Package Updates
+
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.1](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FProjectAPI+milestone%3A%22Ballerina+2201.0.1%22+is%3Aclosed).
 
 ## Developer Tools Updates
 
-### Bug Fixes
-
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.0.1 of the repositories below.
 
-- [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FLanguageServer+milestone%3A%22Ballerina+Swan+Lake+GA%22)
+- [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3ATeam%2FLanguageServer+milestone%3A%22Ballerina+2201.0.1%22+)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FDebugger+milestone%3A%22Ballerina+2201.0.1%22+is%3Aclosed)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/milestone/13)
 

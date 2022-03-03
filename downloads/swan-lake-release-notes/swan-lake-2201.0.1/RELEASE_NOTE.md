@@ -15,7 +15,7 @@ redirect_from:
 
 ## Updating Ballerina
 
-**If you are already using Ballerina 2201.0.0 (Swan Lake)**, run either of the commands below to directly update to 2201.0.1 using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/) to directly update to 2201.0.1 (Swan Lake).
+**If you are already using Ballerina 2201.0.0 (Swan Lake)**, run either of the commands below to directly update to 2201.0.1 (Swan Lake) using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/).
 
 `bal dist update` (or `bal dist pull 2201.0.1`)
 
@@ -33,7 +33,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 ## Language Updates
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.1](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+2201.0.1%22+is%3Aclosed).
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.1](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FCompilerFE+milestone%3A%22Ballerina+2201.0.1%22).
 
 ## Runtime Updates
 

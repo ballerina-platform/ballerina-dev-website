@@ -19,7 +19,7 @@
         - title: Update commands
           url: /learn/cli-documentation/cli-commands/#update-commands
           active: update-commands
-    - title: Update tool
+    - title: Update Tool
       url: /learn/cli-documentation/update-tool/
       sublinks:
         - title: Using the update tool

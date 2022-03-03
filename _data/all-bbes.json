@@ -2,17 +2,17 @@
     {
         "title": "Hello World",
         "column": 0,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Hello World Main",
+                "name": "Hello world main",
                 "url": "hello-world",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Hello World Service",
+                "name": "Hello world service",
                 "url": "hello-world-service",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -24,17 +24,17 @@
     {
         "title": "Basics",
         "column": 0,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Programs and Modules",
+                "name": "Programs and modules",
                 "url": "programs-and-modules",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Variables and Types",
+                "name": "Variables and types",
                 "url": "variables-and-types",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -50,9 +50,9 @@
         ]
     },
     {
-        "title": "Simple Basic Types",
+        "title": "Simple basic types",
         "column": 0,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
                 "name": "Integers",
@@ -62,14 +62,14 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Floating Point Numbers",
+                "name": "Floating point Nnmbers",
                 "url": "floating-point-numbers",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Decimal Type",
+                "name": "Decimal type",
                 "url": "decimal-type",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -87,7 +87,7 @@
     {
         "title": "Strings",
         "column": 0,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
                 "name": "Strings",
@@ -99,19 +99,19 @@
         ]
     },
     {
-        "title": "Conditional Statements",
+        "title": "Conditional statements",
         "column": 0,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Booleans and Conditionals",
+                "name": "Booleans and conditionals",
                 "url": "booleans",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Match Statement",
+                "name": "Match statement",
                 "url": "match-statement",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -122,7 +122,7 @@
     {
         "title": "Functions",
         "column": 0,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
                 "name": "Functions",
@@ -132,7 +132,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Function Values",
+                "name": "Function values",
                 "url": "function-values",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -143,17 +143,17 @@
     {
         "title": "Iteration",
         "column": 0,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Foreach Statement",
+                "name": "Foreach statement",
                 "url": "foreach-statement",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "While Statement",
+                "name": "While statement",
                 "url": "while-statement",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -163,12 +163,12 @@
         ]
     },
     {
-        "title": "Lang Library",
+        "title": "Lang library",
         "column": 0,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Langlib Functions",
+                "name": "Langlib functions",
                 "url": "langlib-functions",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -177,9 +177,9 @@
         ]
     },
     {
-        "title": "Types and Typing",
+        "title": "Types and typing",
         "column": 0,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
                 "name": "Arrays",
@@ -189,14 +189,14 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Binary Data",
+                "name": "Binary data",
                 "url": "binary-data",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Structural Typing",
+                "name": "Structural typing",
                 "url": "structural-typing",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -218,21 +218,21 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Anydata Type",
+                "name": "Anydata type",
                 "url": "anydata-type",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Any Type",
+                "name": "Any type",
                 "url": "any-type",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Type Definitions",
+                "name": "Type definitions",
                 "url": "type-definitions",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -246,7 +246,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Type Inference ",
+                "name": "Type inference ",
                 "url": "type-inference",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -257,7 +257,7 @@
     {
         "title": "Mappings",
         "column": 1,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
                 "name": "Maps",
@@ -278,24 +278,24 @@
     {
         "title": "Records",
         "column": 1,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Optional Fields",
+                "name": "Optional fields",
                 "url": "optional-fields",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Open Records",
+                "name": "Open records",
                 "url": "open-records",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Controlling Openness",
+                "name": "Controlling openness",
                 "url": "controlling-openness",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -306,7 +306,7 @@
     {
         "title": "Objects",
         "column": 1,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
                 "name": "Object",
@@ -316,14 +316,14 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Defining Classes",
+                "name": "Defining classes",
                 "url": "defining-classes",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Init Return Type",
+                "name": "Init return type",
                 "url": "init-return-type",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -332,26 +332,26 @@
         ]
     },
     {
-        "title": "Error Handling",
+        "title": "Error handling",
         "column": 1,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Error Handling",
+                "name": "Error handling",
                 "url": "error-handling",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Check Expression",
+                "name": "Check expression",
                 "url": "check-expression",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Error Subtyping",
+                "name": "Error subtyping",
                 "url": "error-subtyping",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -368,12 +368,12 @@
         ]
     },
     {
-        "title": "Ignoring Return Values and Errors",
+        "title": "Ignoring return values and errors",
         "column": 1,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Ignoring Return Values and Errors",
+                "name": "Ignoring return values and errors",
                 "url": "ignoring-return-values-and-errors",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -382,9 +382,9 @@
         ]
     },
     {
-        "title": "Mutability and Identity",
+        "title": "Mutability and identity",
         "column": 1,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
                 "name": "Identity",
@@ -394,7 +394,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Const and Final ",
+                "name": "Const and final ",
                 "url": "const-and-final",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -420,10 +420,10 @@
     {
         "title": "JSON",
         "column": 1,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "JSON Type",
+                "name": "JSON type",
                 "url": "json-type",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -437,35 +437,35 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Match Statement With Maps",
+                "name": "Match statement with maps",
                 "url": "match-statement-with-maps",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Converting From User-Defined Type to JSON",
+                "name": "Converting from user-defined type to JSON",
                 "url": "converting-from-user-defined-type-to-json",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Converting From JSON to User-Defined Type",
+                "name": "Converting from JSON to user-defined type",
                 "url": "converting-from-json-to-user-defined-type",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Converting to User-Defined Type",
+                "name": "Converting to user-defined type",
                 "url": "converting-to-user-defined-type",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Resource Method Typing",
+                "name": "Resource method typing",
                 "url": "resource-method-typing",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -473,7 +473,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "JSON Numbers",
+                "name": "JSON numbers",
                 "url": "json-numbers",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -484,24 +484,24 @@
     {
         "title": "Tables",
         "column": 2,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Table Syntax",
+                "name": "Table syntax",
                 "url": "table-syntax",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Multiple Key Fields",
+                "name": "Multiple key fields",
                 "url": "multiple-key-fields",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Structured Keys",
+                "name": "Structured keys",
                 "url": "structured-keys",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -510,26 +510,26 @@
         ]
     },
     {
-        "title": "Query Expressions",
+        "title": "Query expressions",
         "column": 2,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Query Expressions",
+                "name": "Query expressions",
                 "url": "query-expressions",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Destructuring Records",
+                "name": "Destructuring records",
                 "url": "destructuring-records",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Let Clause",
+                "name": "Let clause",
                 "url": "let-clause",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -543,42 +543,42 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Limit Clause",
+                "name": "Limit clause",
                 "url": "limit-clause",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Querying Tables",
+                "name": "Querying tables",
                 "url": "querying-tables",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Creating Tables With Query",
+                "name": "Creating tables with query",
                 "url": "creating-tables-with-query",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Join Clause",
+                "name": "Join clause",
                 "url": "join-clause",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Stream Type",
+                "name": "Stream type",
                 "url": "stream-type",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Querying With Streams",
+                "name": "Querying with streams",
                 "url": "querying-with-streams",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -587,12 +587,12 @@
         ]
     },
     {
-        "title": "Backtick Templates",
+        "title": "Backtick templates",
         "column": 2,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Raw Templates",
+                "name": "Raw templates",
                 "url": "raw-templates",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -601,14 +601,14 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Backtick Templates",
+                "name": "Backtick templates",
                 "url": "backtick-templates",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "XML Templates",
+                "name": "XML templates",
                 "url": "xml-templates",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -619,24 +619,24 @@
     {
         "title": "XML",
         "column": 2,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "XML Data Model",
+                "name": "XML data model",
                 "url": "xml-data-model",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "XML Operations",
+                "name": "XML operations",
                 "url": "xml-operations",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "XML Subtyping",
+                "name": "XML subtyping",
                 "url": "xml-subtyping",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -644,28 +644,28 @@
                 "isLearnByExample": true
             },
             {
-                "name": "XML Navigation ",
+                "name": "XML navigation ",
                 "url": "xml-navigation",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "XML Templates and Query",
+                "name": "XML templates and query",
                 "url": "xml-templates-and-query",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "XML Namespaces",
+                "name": "XML namespaces",
                 "url": "xml-namespaces",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "XMLNS Declarations",
+                "name": "XMLNS declarations",
                 "url": "xmlns-declarations",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -676,7 +676,7 @@
     {
         "title": "Metadata",
         "column": 2,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
                 "name": "Documentation",
@@ -695,12 +695,12 @@
         ]
     },
     {
-        "title": "Network Interaction",
+        "title": "Network interaction",
         "column": 2,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Consuming Services: Client Objects",
+                "name": "Consuming services: client objects",
                 "url": "consuming-services",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -708,7 +708,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Providing Services",
+                "name": "Providing services",
                 "url": "providing-services",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -717,14 +717,14 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Module Lifecycle",
+                "name": "Module lifecycle",
                 "url": "module-lifecycle",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Service Declaration",
+                "name": "Service declaration",
                 "url": "service-declaration",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -733,7 +733,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Resource Methods",
+                "name": "Resource methods",
                 "url": "resource-methods",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -741,7 +741,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Hierarchical Resources",
+                "name": "Hierarchical resources",
                 "url": "hierarchical-resources",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -749,7 +749,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Resource Path Parameters",
+                "name": "Resource path parameters",
                 "url": "resource-path-parameters",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -761,10 +761,10 @@
     {
         "title": "Configurability",
         "column": 2,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Configurable Variables",
+                "name": "Configurable variables",
                 "url": "configurable-variables",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -775,31 +775,31 @@
     {
         "title": "Concurrency",
         "column": 3,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Asynchronous Function Calls",
+                "name": "Asynchronous function calls",
                 "url": "asynchronous-function-calls",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Named Workers",
+                "name": "Named workers",
                 "url": "named-workers",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Sequence Diagrams",
+                "name": "Sequence diagrams",
                 "url": "sequence-diagrams",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Waiting for Workers",
+                "name": "Waiting for workers",
                 "url": "waiting-for-workers",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -813,14 +813,14 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Named Worker Return Values",
+                "name": "Named worker return values",
                 "url": "named-worker-return-values",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Alternate Wait",
+                "name": "Alternate wait",
                 "url": "alternate-wait",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -828,28 +828,28 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Multiple Wait",
+                "name": "Multiple wait",
                 "url": "multiple-wait",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Named Workers and Futures",
+                "name": "Named workers and futures",
                 "url": "named-workers-and-futures",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Inter-Worker Message Passing",
+                "name": "Inter-worker message passing",
                 "url": "inter-worker-message-passing",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Inter-Worker Failure Propagation",
+                "name": "Inter-worker failure propagation",
                 "url": "inter-worker-failure-propagation",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -860,17 +860,17 @@
     {
         "title": "Transactions",
         "column": 3,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Transaction Statement",
+                "name": "Transaction statement",
                 "url": "transaction-statement",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Check Semantics",
+                "name": "Check semantics",
                 "url": "check-semantics",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -884,28 +884,28 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Retry Transaction Statement",
+                "name": "Retry transaction statement",
                 "url": "retry-transaction-statement",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Transactional Qualifier",
+                "name": "Transactional qualifier",
                 "url": "transactional-qualifier",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Transactional Named Workers",
+                "name": "Transactional named workers",
                 "url": "transactional-named-workers",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Commit/Rollback Handlers",
+                "name": "Commit/rollback handlers",
                 "url": "commit-rollback-handlers",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -914,68 +914,68 @@
         ]
     },
     {
-        "title": "Concurrency Safety",
+        "title": "Concurrency safety",
         "column": 3,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
-                "name": "Lock Statement",
+                "name": "Lock statement",
                 "url": "lock-statement",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Isolated Functions",
+                "name": "Isolated functions",
                 "url": "isolated-functions",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Readonly Type",
+                "name": "Readonly type",
                 "url": "readonly-type",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Readonly and Isolated",
+                "name": "Readonly and isolated",
                 "url": "readonly-and-isolated",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Combining Isolated Functions and Lock",
+                "name": "Combining isolated functions and lock",
                 "url": "combining-isolated-functions-and-lock",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Isolated Variables",
+                "name": "Isolated variables",
                 "url": "isolated-variables",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Isolated Methods",
+                "name": "Isolated methods",
                 "url": "isolated-methods",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Isolated Objects",
+                "name": "Isolated objects",
                 "url": "isolated-objects",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": true
             },
             {
-                "name": "Inferring Isolated",
+                "name": "Inferring isolated",
                 "url": "inferring-isolated",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -986,7 +986,7 @@
     {
         "title": "Testing",
         "column": 3,
-        "category": "Language Concepts",
+        "category": "Language concepts",
         "samples": [
             {
                 "name": "Assertions",
@@ -998,7 +998,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Before and After Test",
+                "name": "Before and after test",
                 "url": "testerina-before-and-after-test",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1007,7 +1007,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Before and After Each",
+                "name": "Before and after each",
                 "url": "testerina-before-and-after-each",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1016,7 +1016,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Before and After Groups",
+                "name": "Before and after groups",
                 "url": "testerina-before-and-after-groups",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1025,7 +1025,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Before and After Suite",
+                "name": "Before and after suite",
                 "url": "testerina-before-and-after-suite",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1034,7 +1034,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Data Driven Tests",
+                "name": "Data driven tests",
                 "url": "testerina-data-driven-tests",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1043,7 +1043,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Guarantee Test Execution Order",
+                "name": "Guarantee test execution order",
                 "url": "testerina-guarantee-test-execution-order",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1052,7 +1052,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Group Tests",
+                "name": "Group tests",
                 "url": "testerina-group-tests",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1061,7 +1061,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Function Mocking",
+                "name": "Function mocking",
                 "url": "testerina-mocking-functions",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1070,7 +1070,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Object Mocking",
+                "name": "Object mocking",
                 "url": "testerina-mocking-objects",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1083,10 +1083,10 @@
     {
         "title": "REST API",
         "column": 0,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
-                "name": "Service Path and Resource Path",
+                "name": "Service path and resource path",
                 "url": "http-absolute-path-and-path",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1094,7 +1094,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service Data Binding",
+                "name": "Service data binding",
                 "url": "http-data-binding",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1102,7 +1102,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Default Resource",
+                "name": "Default resource",
                 "url": "http-default-resource",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1110,7 +1110,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Path Parameter",
+                "name": "Path parameter",
                 "url": "http-path-param",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1118,7 +1118,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Query Parameter",
+                "name": "Query parameter",
                 "url": "http-query-parameter",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1126,7 +1126,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Matrix Parameter",
+                "name": "Matrix parameter",
                 "url": "http-matrix-param",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1134,7 +1134,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Header Parameter",
+                "name": "Header parameter",
                 "url": "http-header-param",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1142,7 +1142,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Typed Resource Responses",
+                "name": "Typed resource responses",
                 "url": "http-resource-returns",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1150,7 +1150,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Restrict By Media Type",
+                "name": "Restrict by media type",
                 "url": "http-restrict-by-media-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1160,9 +1160,9 @@
         ]
     },
     {
-        "title": "REST Client",
+        "title": "REST client",
         "column": 0,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Client",
@@ -1172,7 +1172,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client Data Binding",
+                "name": "Client data binding",
                 "url": "http-client-data-binding",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1180,7 +1180,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Caching Client",
+                "name": "Caching client",
                 "url": "http-caching-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1190,9 +1190,9 @@
         ]
     },
     {
-        "title": "REST API Security",
+        "title": "REST API security",
         "column": 0,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Service - SSL/TLS",
@@ -1203,7 +1203,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Mutual SSL",
+                "name": "Service - mutual SSL",
                 "url": "http-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1211,7 +1211,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth File User Store",
+                "name": "Service - basic auth file user store",
                 "url": "http-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1219,7 +1219,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth LDAP User Store",
+                "name": "Service - basic auth LDAP user store",
                 "url": "http-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1251,7 +1251,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Mutual SSL",
+                "name": "Client - mutual SSL",
                 "url": "http-client-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1275,7 +1275,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Self Signed JWT Auth",
+                "name": "Client - self signed JWT Auth",
                 "url": "http-client-self-signed-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1283,7 +1283,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Client Credentials Grant Type",
+                "name": "Client - OAuth2 client credentials grant type",
                 "url": "http-client-oauth2-client-credentials-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1291,7 +1291,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Password Grant Type",
+                "name": "Client - OAuth2 password grant type",
                 "url": "http-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1299,7 +1299,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Refresh Token Grant Type",
+                "name": "Client - OAuth2 refresh token grant type",
                 "url": "http-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1307,7 +1307,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 JWT Bearer Grant Type",
+                "name": "Client - OAuth2 JWT Bearer grant type",
                 "url": "http-client-oauth2-jwt-bearer-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1317,9 +1317,9 @@
         ]
     },
     {
-        "title": "REST API Advanced",
+        "title": "REST API advanced",
         "column": 0,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Redirects",
@@ -1338,7 +1338,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "100 Continue",
+                "name": "100 continue",
                 "url": "http-100-continue",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1394,7 +1394,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Response With Multiparts",
+                "name": "Response With multiparts",
                 "url": "http-response-with-multiparts",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1402,7 +1402,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Request With Multiparts",
+                "name": "Request With multiparts",
                 "url": "http-request-with-multiparts",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1420,12 +1420,12 @@
         ]
     },
     {
-        "title": "REST API Interceptors",
+        "title": "REST API interceptors",
         "column": 1,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
-                "name": "Request Interceptor At Listener Level",
+                "name": "Request interceptor at listener level",
                 "url": "http-request-interceptor-at-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1433,7 +1433,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Request Interceptor At Service Level",
+                "name": "Request interceptor at service level",
                 "url": "http-request-interceptor-at-service",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1441,7 +1441,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Request Error Interceptor",
+                "name": "Request error interceptor",
                 "url": "http-request-error-interceptor",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1453,10 +1453,10 @@
     {
         "title": "HTTP2",
         "column": 1,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
-                "name": "HTTP 1.1 to 2.0 Protocol Switch",
+                "name": "HTTP 1.1 to 2.0 protocol switch",
                 "url": "http-1-1-to-2-0-protocol-switch",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1464,7 +1464,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "HTTP 2.0 Server Push",
+                "name": "HTTP 2.0 server push",
                 "url": "http-2-0-server-push",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1476,10 +1476,10 @@
     {
         "title": "GraphQL",
         "column": 1,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
-                "name": "Hello World",
+                "name": "Hello world",
                 "url": "graphql-hello-world",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1487,7 +1487,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Returning Record Values",
+                "name": "Returning record values",
                 "url": "graphql-returning-record-values",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1495,7 +1495,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Hierarchical Resource Paths",
+                "name": "Hierarchical resource paths",
                 "url": "graphql-hierarchical-resource-paths",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1503,7 +1503,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Returning Service Objects",
+                "name": "Returning service objects",
                 "url": "graphql-returning-service-objects",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1511,7 +1511,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Input Types",
+                "name": "Input types",
                 "url": "graphql-input-types",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1535,7 +1535,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "File Upload",
+                "name": "File upload",
                 "url": "graphql-file-upload",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1546,9 +1546,9 @@
         ]
     },
     {
-        "title": "GraphQL Security",
+        "title": "GraphQL security",
         "column": 1,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Service - SSL/TLS",
@@ -1559,7 +1559,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Mutual SSL",
+                "name": "Service - mutual SSL",
                 "url": "graphql-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1567,7 +1567,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth File User Store",
+                "name": "Service - Basic Auth file user store",
                 "url": "graphql-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1575,7 +1575,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth LDAP User Store",
+                "name": "Service - Basic Auth LDAP user store",
                 "url": "graphql-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1603,10 +1603,10 @@
     {
         "title": "WebSockets",
         "column": 1,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
-                "name": "Handle Text Messages with Client",
+                "name": "Handle text messages with client",
                 "url": "websocket-text-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1614,7 +1614,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Handle Binary Messages with Client",
+                "name": "Handle binary messages with client",
                 "url": "websocket-binary-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1630,7 +1630,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Listener Functionalities",
+                "name": "Listener functionalities",
                 "url": "websocket-basic-sample",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1641,7 +1641,7 @@
         ]
     },
     {
-        "title": "WebSocket Security",
+        "title": "WebSocket security",
         "column": 1,
         "category": "Working Over the Network",
         "samples": [
@@ -1654,7 +1654,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Mutual SSL",
+                "name": "Service - mutual SSL",
                 "url": "websocket-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1662,7 +1662,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth File User Store",
+                "name": "Service - Basic Auth File user store",
                 "url": "websocket-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1670,7 +1670,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth LDAP User Store",
+                "name": "Service - Basic Auth LDAP user store",
                 "url": "websocket-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1702,7 +1702,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Mutual SSL",
+                "name": "Client - mutual SSL",
                 "url": "websocket-client-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1726,7 +1726,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Self Signed JWT Auth",
+                "name": "Client - self signed JWT Auth",
                 "url": "websocket-client-self-signed-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1734,7 +1734,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Client Credentials Grant Type",
+                "name": "Client - OAuth2 client credentials grant type",
                 "url": "websocket-client-oauth2-client-cred-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1742,7 +1742,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Password Grant Type",
+                "name": "Client - OAuth2 password grant type",
                 "url": "websocket-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1750,7 +1750,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Refresh Token Grant Type",
+                "name": "Client - OAuth2 refresh token grant type",
                 "url": "websocket-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1758,7 +1758,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 JWT Bearer Grant Type",
+                "name": "Client - OAuth2 JWT Bearer grant type",
                 "url": "websocket-client-oauth2-jwt-bearer-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1770,10 +1770,10 @@
     {
         "title": "WebSub",
         "column": 1,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
-                "name": "Websub Subscriber Service",
+                "name": "WebSub subscriber service",
                 "url": "websub-webhook-sample",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1785,10 +1785,10 @@
     {
         "title": "Resiliency",
         "column": 2,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
-                "name": "Circuit Breaker",
+                "name": "Circuit breaker",
                 "url": "http-circuit-breaker",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1796,7 +1796,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Load Balancer",
+                "name": "Load balancer",
                 "url": "http-load-balancer",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1832,10 +1832,10 @@
     {
         "title": "Listeners",
         "column": 2,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
-                "name": "Dynamic Listener",
+                "name": "Dynamic listener",
                 "url": "dynamic-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1847,7 +1847,7 @@
     {
         "title": "gRPC",
         "column": 2,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Simple RPC",
@@ -1859,7 +1859,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Simple RPC With Headers",
+                "name": "Simple RPC with headers",
                 "url": "grpc-simple-with-headers",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1868,7 +1868,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Server Streaming RPC",
+                "name": "Server streaming RPC",
                 "url": "grpc-server-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1877,7 +1877,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client Streaming RPC",
+                "name": "Client streaming RPC",
                 "url": "grpc-client-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1886,7 +1886,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Bidirectional Streaming RPC",
+                "name": "Bidirectional streaming RPC",
                 "url": "grpc-bidirectional-streaming",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1895,7 +1895,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Proto To Ballerina",
+                "name": "Proto to Ballerina",
                 "url": "proto-to-ballerina",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1906,9 +1906,9 @@
         ]
     },
     {
-        "title": "gRPC Security",
+        "title": "gRPC security",
         "column": 2,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Service - SSL/TLS",
@@ -1919,7 +1919,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Mutual SSL",
+                "name": "Service - mutual SSL",
                 "url": "grpc-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1927,7 +1927,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth File User Store",
+                "name": "Service - Basic Auth file user store",
                 "url": "grpc-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1935,7 +1935,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth LDAP User Store",
+                "name": "Service - Basic Auth LDAP user store",
                 "url": "grpc-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1967,7 +1967,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Mutual SSL",
+                "name": "Client - mutual SSL",
                 "url": "grpc-client-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1991,7 +1991,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Self Signed JWT Auth",
+                "name": "Client - self signed JWT Auth",
                 "url": "grpc-client-self-signed-jwt-auth",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1999,7 +1999,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Client Credentials Grant Type",
+                "name": "Client - OAuth2 client credentials grant type",
                 "url": "grpc-client-oauth2-client-credentials-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2007,7 +2007,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Password Grant Type",
+                "name": "Client - OAuth2 password grant type",
                 "url": "grpc-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2015,7 +2015,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 Refresh Token Grant Type",
+                "name": "Client - OAuth2 refresh token grant type",
                 "url": "grpc-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2023,7 +2023,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 JWT Bearer Grant Type",
+                "name": "Client - OAuth2 JWT Bearer grant type",
                 "url": "grpc-client-oauth2-jwt-bearer-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2035,10 +2035,10 @@
     {
         "title": "NATS",
         "column": 2,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
-                "name": "Publish/Subscribe",
+                "name": "Publish/subscribe",
                 "url": "nats-basic-pub-sub",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2047,7 +2047,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Request/Reply",
+                "name": "Request/reply",
                 "url": "nats-basic-request-reply",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2056,7 +2056,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Secured Connection",
+                "name": "Secured connection",
                 "url": "nats-basic-secure-connection",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2069,10 +2069,10 @@
     {
         "title": "STAN",
         "column": 2,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
-                "name": "Publish/Subscribe",
+                "name": "Publish/subscribe",
                 "url": "nats-streaming-pub-sub",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2081,7 +2081,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Queue Groups",
+                "name": "Queue groups",
                 "url": "nats-streaming-queue-group",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2090,7 +2090,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Durable Subscriptions",
+                "name": "Durable subscriptions",
                 "url": "nats-streaming-durable-subscriptions",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2099,7 +2099,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Historical Message Replay",
+                "name": "Historical message replay",
                 "url": "nats-streaming-start-position",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2108,7 +2108,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Secured Connection",
+                "name": "Secured connection",
                 "url": "nats-streaming-secure-connection",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2121,7 +2121,7 @@
     {
         "title": "Kafka",
         "column": 2,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Producer",
@@ -2133,7 +2133,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer Service",
+                "name": "Consumer service",
                 "url": "kafka-consumer-service",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2142,7 +2142,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer Client",
+                "name": "Consumer client",
                 "url": "kafka-consumer-client",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2151,7 +2151,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Transactional Producer",
+                "name": "Transactional producer",
                 "url": "kafka-producer-transactional",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2160,7 +2160,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer Groups",
+                "name": "Consumer groups",
                 "url": "kafka-consumer-group-service",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2169,7 +2169,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "SASL Authentication - Consumer",
+                "name": "SASL authentication - consumer",
                 "url": "kafka-authentication-sasl-plain-consumer",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2178,7 +2178,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "SASL Authentication - Producer",
+                "name": "SASL authentication - producer",
                 "url": "kafka-authentication-sasl-plain-producer",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2191,7 +2191,7 @@
     {
         "title": "RabbitMQ",
         "column": 3,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Producer",
@@ -2212,7 +2212,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client Acknowledgements",
+                "name": "Client acknowledgements",
                 "url": "rabbitmq-consumer-with-client-acknowledgement",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2221,7 +2221,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Transactional Producer",
+                "name": "Transactional producer",
                 "url": "rabbitmq-transaction-producer",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2230,7 +2230,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Transactional Consumer",
+                "name": "Transactional consumer",
                 "url": "rabbitmq-transaction-consumer",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2239,7 +2239,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Secured Connection",
+                "name": "Secured connection",
                 "url": "rabbitmq-secure-connection",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2252,7 +2252,7 @@
     {
         "title": "TCP",
         "column": 3,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Client",
@@ -2273,7 +2273,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Transport Security",
+                "name": "Transport security",
                 "url": "tcp-transport-security",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2286,10 +2286,10 @@
     {
         "title": "UDP",
         "column": 3,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
-                "name": "Connectionless Client",
+                "name": "Connectionless client",
                 "url": "udp-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2298,7 +2298,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Connection-Oriented Client",
+                "name": "Connection-oriented client",
                 "url": "udp-connect-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2320,10 +2320,10 @@
     {
         "title": "Email",
         "column": 3,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
-                "name": "Send Emails",
+                "name": "Send emails",
                 "url": "send-email",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2332,7 +2332,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Receive Emails Using a Client",
+                "name": "Receive emails using a client",
                 "url": "receive-email-using-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2341,7 +2341,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Receive Emails Using a Listener",
+                "name": "Receive emails using a listener",
                 "url": "receive-email-using-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2354,7 +2354,7 @@
     {
         "title": "FTP",
         "column": 3,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Client",
@@ -2379,7 +2379,7 @@
     {
         "title": "SFTP",
         "column": 3,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Client",
@@ -2404,10 +2404,10 @@
     {
         "title": "MySQL",
         "column": 3,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
-                "name": "Simple Query",
+                "name": "Simple query",
                 "url": "mysql-query-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2416,7 +2416,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Query With Complex Types",
+                "name": "Query with complex types",
                 "url": "mysql-complex-type-queries",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2425,7 +2425,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "DML and DDL Operation",
+                "name": "DML and DDL operation",
                 "url": "mysql-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2434,7 +2434,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Batch Execute",
+                "name": "Batch execute",
                 "url": "mysql-batch-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2443,7 +2443,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Atomic Batch Execute",
+                "name": "Atomic batch execute",
                 "url": "mysql-atomic-batch-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2452,7 +2452,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Call Stored Procedures",
+                "name": "Call stored procedures",
                 "url": "mysql-call-stored-procedures",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2465,10 +2465,10 @@
     {
         "title": "JDBC",
         "column": 3,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
-                "name": "Simple Query",
+                "name": "Simple query",
                 "url": "jdbc-query-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2477,7 +2477,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Query With Complex Types",
+                "name": "Query with complex types",
                 "url": "jdbc-complex-type-queries",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2486,7 +2486,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "DML and DDL Operation",
+                "name": "DML and DDL operation",
                 "url": "jdbc-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2495,7 +2495,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Batch Execute",
+                "name": "Batch execute",
                 "url": "jdbc-batch-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2504,7 +2504,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Atomic Batch Execute",
+                "name": "Atomic batch execute",
                 "url": "jdbc-atomic-batch-execute-operation",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2517,10 +2517,10 @@
     {
         "title": "IO",
         "column": 0,
-        "category": "Common Libraries",
+        "category": "Common libraries",
         "samples": [
             {
-                "name": "Read/Write Bytes",
+                "name": "Read/write bytes",
                 "url": "io-bytes",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -2528,28 +2528,28 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Read/Write Strings",
+                "name": "Read/write strings",
                 "url": "io-strings",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Read/Write CSV",
+                "name": "Read/write CSV",
                 "url": "io-csv",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Read/Write JSON",
+                "name": "Read/write JSON",
                 "url": "io-json",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Read/Write XML",
+                "name": "Read/write XML",
                 "url": "io-xml",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -2560,10 +2560,10 @@
     {
         "title": "Security",
         "column": 0,
-        "category": "Common Libraries",
+        "category": "Common libraries",
         "samples": [
             {
-                "name": "Cryptographic Operations",
+                "name": "Cryptographic operations",
                 "url": "security-crypto",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2571,7 +2571,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "JWT Issue/Validate",
+                "name": "JWT issue/validate",
                 "url": "security-jwt-issue-validate",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2583,10 +2583,10 @@
     {
         "title": "URL",
         "column": 0,
-        "category": "Common Libraries",
+        "category": "Common libraries",
         "samples": [
             {
-                "name": "URL Encode/Decode Operations",
+                "name": "URL encode/decode operations",
                 "url": "url-encode-decode",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -2597,10 +2597,10 @@
     {
         "title": "Time",
         "column": 1,
-        "category": "Common Libraries",
+        "category": "Common libraries",
         "samples": [
             {
-                "name": "UTC Time",
+                "name": "UTC time",
                 "url": "time-utc",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2608,7 +2608,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Time with Zone Offset",
+                "name": "Time with zone offset",
                 "url": "time-utc-and-civil",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2616,7 +2616,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Time formatting/Parsing",
+                "name": "Time formatting/parsing",
                 "url": "time-formatting-and-parsing",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -2627,17 +2627,17 @@
     {
         "title": "Cache",
         "column": 1,
-        "category": "Common Libraries",
+        "category": "Common libraries",
         "samples": [
             {
-                "name": "Cache Basics",
+                "name": "Cache basics",
                 "url": "cache-basics",
                 "verifyBuild": true,
                 "verifyOutput": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Cache Invalidation",
+                "name": "Cache invalidation",
                 "url": "cache-invalidation",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -2649,7 +2649,7 @@
     {
         "title": "Log",
         "column": 1,
-        "category": "Common Libraries",
+        "category": "Common libraries",
         "samples": [
             {
                 "name": "Logging",
@@ -2660,7 +2660,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Logging with Context",
+                "name": "Logging with context",
                 "url": "logging-with-context",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2668,7 +2668,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Configure Logging",
+                "name": "Configure logging",
                 "url": "logging-configuration",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2681,10 +2681,10 @@
     {
         "title": "File",
         "column": 2,
-        "category": "Common Libraries",
+        "category": "Common libraries",
         "samples": [
             {
-                "name": "File Paths",
+                "name": "File paths",
                 "url": "filepaths",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2708,7 +2708,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Temp Files and Directories",
+                "name": "Temp files and directories",
                 "url": "temp-files-directories",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2716,7 +2716,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Directory Listener",
+                "name": "Directory listener",
                 "url": "directory-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2729,10 +2729,10 @@
     {
         "title": "Random",
         "column": 2,
-        "category": "Common Libraries",
+        "category": "Common libraries",
         "samples": [
             {
-                "name": "Random Numbers",
+                "name": "Random numbers",
                 "url": "random-numbers",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2744,10 +2744,10 @@
     {
         "title": "Task",
         "column": 2,
-        "category": "Common Libraries",
+        "category": "Common libraries",
         "samples": [
             {
-                "name": "Schedule Job recurrence by Frequency",
+                "name": "Schedule job recurrence by frequency",
                 "url": "task-frequency-job-execution",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -2761,7 +2761,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Manage Scheduled Jobs",
+                "name": "Manage sheduled jobs",
                 "url": "manage-scheduled-jobs",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -2772,7 +2772,7 @@
     {
         "title": "UUID",
         "column": 3,
-        "category": "Common Libraries",
+        "category": "Common libraries",
         "samples": [
             {
                 "name": "Generate UUID",
@@ -2783,7 +2783,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "UUID Operations",
+                "name": "UUID operations",
                 "url": "uuid-operations",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -2794,10 +2794,10 @@
     {
         "title": "XSLT",
         "column": 3,
-        "category": "Common Libraries",
+        "category": "Common libraries",
         "samples": [
             {
-                "name": "XSLT Transformation",
+                "name": "XSLT transformation",
                 "url": "xslt-transformation",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2808,10 +2808,10 @@
     {
         "title": "Regex",
         "column": 3,
-        "category": "Common Libraries",
+        "category": "Common libraries",
         "samples": [
             {
-                "name": "Regular Expressions",
+                "name": "Regular expressions",
                 "url": "regular-expressions",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -2822,10 +2822,10 @@
     {
         "title": "OS",
         "column": 3,
-        "category": "Common Libraries",
+        "category": "Common libraries",
         "samples": [
             {
-                "name": "Environment Variables",
+                "name": "Environment variables",
                 "url": "environment-variables",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2835,12 +2835,12 @@
         ]
     },
     {
-        "title": "XML Data",
+        "title": "XML data",
         "column": 3,
-        "category": "Common Libraries",
+        "category": "Common libraries",
         "samples": [
             {
-                "name": "XML JSON Conversion",
+                "name": "XML JSON conversion",
                 "url": "xml-json-conversion",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -2854,7 +2854,7 @@
         "category": "Observability",
         "samples": [
             {
-                "name": "Distributed Tracing",
+                "name": "Distributed tracing",
                 "url": "tracing",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2863,7 +2863,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Counter-Based Metrics",
+                "name": "Counter-based metrics",
                 "url": "counter-metrics",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2879,7 +2879,7 @@
             "category": "Observability",
             "samples": [
                 {
-                "name": "Gauge-Based Metrics",
+                "name": "Gauge-based metrics",
                 "url": "gauge-metrics",
                 "verifyBuild": false,
                 "verifyOutput": false,

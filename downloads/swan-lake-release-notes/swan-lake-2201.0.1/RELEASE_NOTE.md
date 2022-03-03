@@ -17,15 +17,15 @@ redirect_from:
 
 **If you are already using Ballerina 2201.0.0 (Swan Lake)**, run either of the commands below to directly update to 2201.0.1 using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/) to directly update to 2201.0.1 (Swan Lake).
 
-`bal dist update (or bal dist pull 2201.0.1)`
+`bal dist update` (or `bal dist pull 2201.0.1`)
 
 **If you are using a version below 2201.0.0 (Swan Lake)**, run the commands below to update to 2201.0.1 (Swan Lake).
 
 1. Run `bal update` to get the latest version of the Update Tool.
 
-2. Run `bal dist update` (or `bal dist pull 2201.0.1`) to update your Ballerina version to 2201.0.1 (Swan Lake).
+2. Run `bal dist update` ( or `bal dist pull 2201.0.1`) to update your Ballerina version to 2201.0.1 (Swan Lake).
 
-However, **if you are using a version below 2201.0.0 (Swan Lake) and if you already ran `bal dist update` (or `bal dist pull 2201.0.1`) before `bal update`, see [Updating Ballerina](/downloads/swan-lake-release-notes/2201-0-0-swan-lake/#troubleshooting) to recover your installation.
+However, if you are using a version below 2201.0.0 (Swan Lake) and if you already ran `bal dist update` (or `bal dist pull 2201.0.1`) before `bal update`, see [Updating Ballerina](/downloads/swan-lake-release-notes/2201-0-0-swan-lake/#troubleshooting) to recover your installation.
 
 ## Installing Ballerina
 

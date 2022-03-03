@@ -398,4 +398,4 @@ To view bug fixes, see the GitHub milestone for 2201.0.0 (Swan Lake) of the repo
 - [Update Tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+milestone%3A%22Ballerina+2201.0.0%22+is%3Aclosed+label%3AType%2FBug)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Ballerina+2201.0.0%22+is%3Aclosed)
 
-<style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style>
+<!-- <style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style> -->

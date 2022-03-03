@@ -5,6 +5,8 @@ permalink: /downloads/1.2.x-release-notes-old/
 redirect_from:
   - /downloads/release-notes/
   - /downloads/release-notes
+  - /downloads/1.2.x-release-notes-old/
+  - /downloads/1.2.x-release-notes-old
 ---
 <script src="{{ "/js/release_notes/all_release_notes.js" | prepend: site.baseurl }}"></script>
 

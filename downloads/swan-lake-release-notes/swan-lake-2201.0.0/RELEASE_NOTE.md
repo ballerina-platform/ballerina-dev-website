@@ -5,8 +5,6 @@ permalink: /downloads/swan-lake-release-notes/2201-0-0-swan-lake/
 active: 2201-0-0-swan-lake
 redirect_from: 
     - /downloads/swan-lake-release-notes/2201-0-0-swan-lake
-    - /downloads/swan-lake-release-notes/
-    - /downloads/swan-lake-release-notes
 ---
 
 ### Overview of Ballerina 2201.0.0 (Swan Lake)
@@ -400,4 +398,4 @@ To view bug fixes, see the GitHub milestone for 2201.0.0 (Swan Lake) of the repo
 - [Update Tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+milestone%3A%22Ballerina+2201.0.0%22+is%3Aclosed+label%3AType%2FBug)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Ballerina+2201.0.0%22+is%3Aclosed)
 
-<style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style>
+<!-- <style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style> -->

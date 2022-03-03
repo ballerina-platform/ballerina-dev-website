@@ -22,3 +22,6 @@
     - title: Running the gRPC client
       url: /learn/writing-a-grpc-service-with-ballerina/#implementing-the-grpc-client
       active: implementing-the-grpc-client
+    - title: Learning more
+      url: /learn/writing-a-grpc-service-with-ballerina/#learning-more
+      active: learning-more

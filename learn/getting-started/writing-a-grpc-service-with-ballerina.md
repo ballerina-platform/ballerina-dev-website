@@ -269,6 +269,8 @@ Running executable
 Response : Hello Ballerina
 ```
 
+## Learning more
+
 To learn more about gRPC support in Ballerina, see the following:
 - [gRPC Library Documentation](https://lib.ballerina.io/ballerina/grpc/latest)
 - [gRPC CLI tooling guide](/learn/cli-documentation/grpc/)

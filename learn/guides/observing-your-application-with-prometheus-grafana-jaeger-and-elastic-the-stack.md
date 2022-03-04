@@ -70,7 +70,7 @@ Prometheus, etc. For instructions, go to the [Docker documentation](https://docs
 * Set up Jaeger to analyze tracing as mentioned in the section [Setting up Jaeger](#setting-up-the-jaeger-server)
 * Set up Elastic Stack only if you are interested in analyzing logs by following the section on [Setting up the Elastic Stack](#setting-up-the-elastic-stack)
 
-### Step 3 - creating a 'Hello World' Ballerina service
+### Step 3 - creating a `Hello World` Ballerina service
  
 Create a service as shown below and save it as `hello_world_service.bal`.
 

@@ -1,8 +1,8 @@
 ---
 layout: ballerina-cli-documentation-left-nav-pages-swanlake
 title: CLI commands
-description: Learn all the command line interface (CLI) commands you need to get started, build, test and run programs, work with Ballerina Central, and manage packages.
-keywords: ballerina, cli, command line interface, programming language
+description: Learn all the command-line interface (CLI) commands you need to get started, build, test and run programs, work with Ballerina Central, and manage packages.
+keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/cli-documentation/cli-commands/
 active: cli-commands
 intro: The Ballerina Tool is your one-stop-shop for all the things you do in Ballerina. 

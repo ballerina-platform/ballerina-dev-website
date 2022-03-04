@@ -2,7 +2,7 @@ import sys
 from github import Github
 from os import linesep
 
-# Getting the command line arguments as inputs
+# Getting the command-line arguments as inputs
 token = sys.argv[1]
 version = str(sys.argv[2])
 sha256 = sys.argv[3]

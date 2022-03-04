@@ -128,7 +128,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://githu
 
 #### New Features
 
-##### Providing Values for Configurable Variables via Command Line Arguments
+##### Providing Values for Configurable Variables via Command-line arguments
 
 Configurable values can be provided with the built-in command-line option `-C`.
 

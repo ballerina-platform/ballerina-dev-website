@@ -4,6 +4,9 @@ title: Ballerina Newsletter
 description: This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 keywords: ballerina, community, ballerina community, newsletter
 permalink: /community/ballerina-newsletter/
+redirect_from:
+    - /community/newsletter/
+    - /community/newsletter
 ---
 This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 

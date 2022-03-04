@@ -72,7 +72,7 @@ Execute the following command to create a new Ballerina project in the directory
 $ bal new greeter_service
 ```
 
-> **Note:** For more information on creating Ballerina packages, see [Getting Started with Ballerina](/learn/getting-started-with-ballerina).
+> **Note:** For more information on creating Ballerina packages, see [Getting started with Ballerina](/learn/getting-started-with-ballerina).
 
 Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
 
@@ -156,7 +156,7 @@ Execute the following command to create a new Ballerina project in the directory
 $ bal new greeter_client
 ```
 
-> **Note:** For more information on creating Ballerina packages, see [Getting Started with Ballerina](/learn/getting-started-with-ballerina).
+> **Note:** For more information on creating Ballerina packages, see [Getting started with Ballerina](/learn/getting-started-with-ballerina).
 
 Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
 
@@ -226,6 +226,6 @@ Response : Hello Ballerina
 ```
 
 To learn more about gRPC support in Ballerina, see the following:
-- [gRPC Library Documentation](https://lib.ballerina.io/ballerina/grpc/latest)
+- [gRPC library documentation](https://lib.ballerina.io/ballerina/grpc/latest)
 - [gRPC CLI tooling guide](/learn/cli-documentation/grpc/)
-- [gRPC Examples](/learn/by-example/grpc-simple.html?is_ref_by_example=true)
+- [gRPC examples](/learn/by-example/grpc-simple.html?is_ref_by_example=true)

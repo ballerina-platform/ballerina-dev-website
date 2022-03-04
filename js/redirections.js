@@ -129,5 +129,6 @@ let redirections = {
     // Other
 
     "/downloads/1.2.x-release-notes-old/":"/downloads/1.2.x-release-notes/",
+    "/community/slack/":"/community/#ballerina-slack-community"
 
 }

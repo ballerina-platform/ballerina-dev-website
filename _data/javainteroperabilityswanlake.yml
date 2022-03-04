@@ -4,7 +4,7 @@
     - title: Ballerina bindings to Java Code
       url: /learn/java-interoperability/
       active: java-interoperability
-    - title: The Bindgen tool
+    - title: The Bindgen Tool
       url: /learn/java-interoperability/the-bindgen-tool/
       sublinks:
         - title: The Bindgen command

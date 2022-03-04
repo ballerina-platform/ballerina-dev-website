@@ -25,7 +25,7 @@ redirect_from:
 
 * Do not keep spaces between the function name and opening parentheses `(`.
   
-* If it is not possible to keep the function invocation in a single line due to it exceeding the maximum line length, split it into a new line based on the best practices given in [Line Breaks](/learn/style-guide/coding-conventions/#line-breaks).
+* If it is not possible to keep the function invocation in a single line due to it exceeding the maximum line length, split it into a new line based on the best practices given in [Line breaks](/learn/style-guide/coding-conventions/#line-breaks).
     
 **Example,**
 
@@ -96,7 +96,7 @@ Person p = {
 
 ## Map literal
 
-* For map literals, follow the same formatting guidelines as [Record Literals](/learn/style-guide/expressions/#record-literal).
+* For map literals, follow the same formatting guidelines as [Record literals](/learn/style-guide/expressions/#record-literal).
   
 **Example,**
 
@@ -183,7 +183,7 @@ string name = <string>person.name;
 
 ## Table literal
 
-* Follow the formatting guidelines of [Record Literals](/learn/style-guide/expressions/#record-literal) when formatting a table block.
+* Follow the formatting guidelines of [Record literals](/learn/style-guide/expressions/#record-literal) when formatting a table block.
   
 **Example,**
   

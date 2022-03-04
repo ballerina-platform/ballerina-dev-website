@@ -1,6 +1,6 @@
 ---
 layout: ballerina-java-interoperability-left-nav-pages-swanlake
-title: The Bindgen tool
+title: The Bindgen Tool
 description: The bindgen tool is a CLI tool, which generates Ballerina bindings for Java classes.
 keywords: ballerina, programming language, java, interoperability, bindgen
 permalink: /learn/java-interoperability/the-bindgen-tool/

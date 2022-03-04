@@ -70,7 +70,7 @@ Prometheus, etc. For instructions, go to the [Docker documentation](https://docs
 * Set up Jaeger to analyze tracing as mentioned in the section [Setting up Jaeger](#setting-up-the-jaeger-server)
 * Set up Elastic Stack only if you are interested in analyzing logs by following the section on [Setting up the Elastic Stack](#setting-up-the-elastic-stack)
 
-### Step 3 - creating a 'Hello World' Ballerina service
+### Step 3 - creating a `Hello World` Ballerina service
  
 Create a service as shown below and save it as `hello_world_service.bal`.
 
@@ -172,7 +172,7 @@ A sample view of the Jaeger dashboard for the `hello_world_service.bal` is shown
 ### Step 7 - Visualizing the logs
  
 If you have configured log analytics, the logs can be viewed in Kibana via <http://localhost:5601>.
-![Kibana Sample Dashboard](/learn/images/kibana-sample-dashboard.png "Kibana Sample Dashboard")
+![Kibana sample dashboard](/learn/images/kibana-sample-dashboard.png "Kibana Sample Dashboard")
 
 
 
@@ -239,7 +239,7 @@ Prometheus.
     Here, the `'a.b.c.d:9797'` targets should contain the host and port of the `/metrics` service that is exposed from 
     Ballerina for metrics collection. Add the IP of the host in which the Ballerina service is running as `a.b.c.d` and its
     port (default `9797`).
-    If you need more information, go to the [Prometheus Documentation](https://prometheus.io/docs/introduction/first_steps/).
+    If you need more information, go to the [Prometheus documentation](https://prometheus.io/docs/introduction/first_steps/).
     
     If your Ballerina service is running on localhost and Prometheus in a Docker container,
     add the target as `host.docker.internal:9797` to access the localhost from Docker.
@@ -270,7 +270,7 @@ Prometheus as a data source. Follow the steps below to configure Grafana.
 
 4. Add Prometheus as a data source with `Browser` access configuration as provided below.
 
-    ![Grafana Prometheus Datasource](/learn/images/grafana-prometheus-datasource.png "Grafana Prometheus Datasource")
+    ![Grafana Prometheus datasource](/learn/images/grafana-prometheus-datasource.png "Grafana Prometheus Datasource")
 
 5. Import the Grafana dashboard designed to visualize Ballerina metrics from [https://grafana.com/dashboards/5841](https://grafana.com/dashboards/5841).
 This dashboard consists of service and client invocation level metrics in near real-time view. 
@@ -306,7 +306,7 @@ can be traced using OpenTelemetry implementations like [Jaeger](http://www.jaege
 ### Configuring advanced tracing for Ballerina
 
 Tracing can be enabled in Ballerina with the few configurations mentioned above in the
-[Observing a Ballerina Service](#observing-a-ballerina-service) section.
+[Observing a Ballerina service](#observing-a-ballerina-service) section.
 This section mainly focuses on the configuration options with the description and possible values.
 
 A sample configuration that enables tracing and uses Jaeger as the tracer is provided below.
@@ -357,7 +357,7 @@ You can configure Ballerina to support distributed tracing with Jaeger. This sec
 Jaeger with Docker as a quick installation.
 
 #### Setting up the Jaeger server
-There are many possible ways to deploy Jaeger. For more information, see [Jaeger Deployment](https://www.jaegertracing.io/docs/deployment/). This focuses on an all-in-one deployment with Docker.
+There are many possible ways to deploy Jaeger. For more information, see [Jaeger deployment](https://www.jaegertracing.io/docs/deployment/). This focuses on an all-in-one deployment with Docker.
 
 1. Install Jaeger via Docker and start the Docker container by executing the command below.
 

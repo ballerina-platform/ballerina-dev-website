@@ -21,7 +21,7 @@ redirect_from:
 * Install the latest Ballerina distribution.
 * Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Login to the Azure CLI by executing the `az login` command.
-* Create an [Azure Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal) with the given resource group with following requirements.
+* Create an [Azure Function app](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal) with the given resource group with following requirements.
 
 >**Note:** Make sure to remember the function application name and storage account name as they will be required in the code samples.
    - Runtime stack - `Java 11`
@@ -167,7 +167,7 @@ Refresh the queue page in the portal and view the added entry.
 The following Ballerina code gives an example of using a Cosmos DB trigger to invoke the function and a queue output binding to write an entry to a queue.
 
 Before writing and deploying the code, create a Cosmos DB and a queue to make use of those services later.
-1. You can reuse the queue you created in the above [HTTP Trigger -> Queue Output](/learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output) sample.
+1. You can reuse the queue you created in the above [HTTP trigger -> Queue output](/learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output) sample.
 2. Create an [Azure Cosmos DB account](https://portal.azure.com/#create/Microsoft.DocumentDB) and select Cosmos DB Core.
 3. Once the database is created, go to the **Data Explorer**, and select **Create Container**.
 4. Enter `db1` as Database ID and `c1` as the collection ID, and click **Ok**.
@@ -211,6 +211,6 @@ Once the function is deployed, You need to add an item to the collection.
 
 **Info:** Additionally, for debugging purposes, view the logs under the **Logs stream** in the function app.
 
->**Note:** For a full sample with all the supported Azure Functions triggers and bindings in Ballerina, see the [Azure Functions Deployment Example](/learn/by-example/azure-functions-deployment.html).
+>**Note:** For a full sample with all the supported Azure Functions triggers and bindings in Ballerina, see the [Azure Functions deployment example](/learn/by-example/azure-functions-deployment.html).
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

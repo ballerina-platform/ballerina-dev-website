@@ -2,7 +2,7 @@
 layout: ballerina-left-nav-pages-swanlake
 title: HTTP
 description: The topics below explain how to process HTTP requests and responses using Ballerina.  
-keywords: ballerina, cli, command line interface, programming language
+keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/http/
 active: http
 intro: The topics below explain how to process HTTP requests and responses using Ballerina. 

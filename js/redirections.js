@@ -132,6 +132,6 @@ let redirections = {
     "/community/slack/":"/community/#ballerina-slack-community",
     "/community/slack":"/community/#ballerina-slack-community",
     "/community/newsletter/":"/community/#subscribe-to-newsletter",
-    "/community/newsletter":"/community/#subscribe-to-newsletter",
+    "/community/newsletter":"/community/#subscribe-to-newsletter"
 
 }

@@ -5,8 +5,6 @@ permalink: /downloads/swan-lake-release-notes/2201-0-0-swan-lake/
 active: 2201-0-0-swan-lake
 redirect_from: 
     - /downloads/swan-lake-release-notes/2201-0-0-swan-lake
-    - /downloads/swan-lake-release-notes/
-    - /downloads/swan-lake-release-notes
 ---
 
 ### Overview of Ballerina 2201.0.0 (Swan Lake)
@@ -17,9 +15,9 @@ redirect_from:
 
 >**Info:** The version format has been revised. `2201.0.0 (Swan Lake)` represents the format of `$YYMM.$UPDATE.$PATCH ($CODE_NAME)`. For further information, see [Ballerina Swan Lake is on the Horizon](https://blog.ballerina.io/posts/ballerina-swan-lake-is-on-the-horizon/).
 
-If you are already using Ballerina, use the [Ballerina Update Tool](/learn/cli-documentation/update-tool/#using-the-update-tool) to directly update to 2201.0.0 (Swan Lake). To do this: 
+If you are already using Ballerina, use the [Ballerina update tool](/learn/cli-documentation/update-tool/#using-the-update-tool) to directly update to 2201.0.0 (Swan Lake). To do this: 
 
-1. Run the command below to get the latest version of the Update Tool.
+1. Run the command below to get the latest version of the update tool.
 
    `bal update`
 
@@ -388,7 +386,7 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
 - Added support for OAS query parameters with nested/optional/nullable types and default values
 - Added support for OAS header parameters with optional/nullable types and default values
 
-##### Ballerina Update Tool
+##### Ballerina update tool
 - Improved the view for `bal dist list` with the `-a` flag
 - Improved the `bal dist use` command to check for the distribution availability prior to the download suggestion
 
@@ -397,7 +395,7 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
 To view bug fixes, see the GitHub milestone for 2201.0.0 (Swan Lake) of the repositories below.
 
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+2201.0.0%22+is%3Aclosed+label%3ATeam%2FLanguageServer)
-- [Update Tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+milestone%3A%22Ballerina+2201.0.0%22+is%3Aclosed+label%3AType%2FBug)
+- [update tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+milestone%3A%22Ballerina+2201.0.0%22+is%3Aclosed+label%3AType%2FBug)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Ballerina+2201.0.0%22+is%3Aclosed)
 
-<style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style>
+<!-- <style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style> -->

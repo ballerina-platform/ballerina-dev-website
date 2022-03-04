@@ -31,7 +31,7 @@ The Ballerina Central is a remote repository and creates a local file system cac
 **Local repository**
 
 The local repository is also a file system repository, which will be created in the `<USER_HOME>` location. The repository location is `<USER_HOME>/.ballerina/repositories/local/repo/bala`. 
-For more information, see [Using Dependencies from the Local Repository](/learn/managing-dependencies/#using-dependencies-from-the-local-repository).
+For more information, see [Using dependencies from the local repository](/learn/managing-dependencies/#using-dependencies-from-the-local-repository).
 
 ### Importing a module
 

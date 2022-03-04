@@ -93,14 +93,14 @@ Make certain the command output shows the version that you downloaded as shown b
 ```bash
 Ballerina <VERSION> (Swan Lake)
 Language specification 2022R1
-Update Tool 1.3.8
+update tool 1.3.8
 ```
 
 ## Updating Ballerina
 
 If you already have a Ballerina version above 1.1.0 installed, you can use the update tool to update to the latest Ballerina version and set it as the active version by executing either of the commands below.
 
->**Info:**You might need to first update the Update Tool to its latest version. If you have an Update Tool version below 0.8.14, execute the `ballerina update` command or else execute the `bal update` command to do this.
+>**Info:**You might need to first update the update tool to its latest version. If you have an update tool version below 0.8.14, execute the `ballerina update` command or else execute the `bal update` command to do this.
 
 **Command**|**Description**
 :-----:|:-----:
@@ -108,7 +108,7 @@ If you already have a Ballerina version above 1.1.0 installed, you can use the u
 `bal dist pull latest`|Update to the latest Ballerina version
 `bal dist pull <VERSION>`|Fetch a specific distribution 
 
-For more information, see [Keeping Ballerina Up to Date](/learn/cli-documentation/update-tool/).
+For more information, see [Keeping Ballerina up to date](/learn/cli-documentation/update-tool/).
 
 
 ## Uninstalling Ballerina

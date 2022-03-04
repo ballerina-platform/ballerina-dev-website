@@ -32,7 +32,7 @@ given through multiple ways when retrieving configurable values:
 content is expected to be in the [TOML(v0.4.0) format](https://toml.io/en/v0.4.0).
 >**Note:** Providing multiple configuration values through separate environment variables is not supported.
 
-### Providing configuration values through command line arguments
+### Providing configuration values through command-line arguments
 
 The following syntax can be used to provide values for the variables through the command line parameters:
 

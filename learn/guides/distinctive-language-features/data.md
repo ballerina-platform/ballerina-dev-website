@@ -966,7 +966,7 @@ Ballerina supports the use of navigational syntax to access items within an ``xm
 
 To explain this navigational syntax, you can assume to have an ``xml`` value **``x``** which contains one or more elements **``e``**. Now there are several possibilities to navigate through ``x``.  
 
-To access every element in ``x`` named ``para`` you can use **``x.<para>``**. Use of the angle brackets ``\<`` and ``\>`` selects an element.
+To access every element in ``x`` named ``para`` you can use **``x.<para>``**. Use of the angle brackets ``<`` and ``>`` selects an element.
 
 To access the children of ``e``, for every element ``e`` in ``x``, you can use **``x/*``**. Use of ``/`` takes the navigation down one level in ``x``.
 

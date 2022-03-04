@@ -1504,7 +1504,7 @@ li pre code span.line-numbers-rows {
         background-color: #fcdf4a !important;
         width: 100%;
         display: inline-block;
-        padding: 5px 0px;
+        padding: 5px 10px !important;
         text-align: center;
         font-weight: 500;
         font-size: 15px !important;

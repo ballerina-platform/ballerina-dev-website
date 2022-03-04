@@ -36,11 +36,8 @@ redirect_from:
         display: none;
     }
      .cVersionChangeBanner{
-    color: #8a6d3b;
-    background-image: linear-gradient(to bottom,#fcf8e3 0,#f8efc0 100%);
-    background-repeat: repeat-x;
-    background-color: #fcf8e3;
-    border-color: #faebcc;
+    color: #000000;
+    background-color: #fcdf4a !important;
     width: 100%;
     display: inline-block;
     padding: 10px 0px;
@@ -48,11 +45,19 @@ redirect_from:
     font-weight: 500;
     font-size: 20px;
     transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
     }
-    
-    .cVersionChangeBanner:hover{
-        color: #684200 !important;
-        text-decoration: none;
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+    .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
     }
 </style>
 <!-- BIO THEME END -->
@@ -73,10 +78,10 @@ redirect_from:
         <div class="cTopLine"></div>
     </div>
 </div>
-<a href="https://lib.ballerina.io/" class="cVersionChangeBanner">
-    This API documentation is for Ballerina 1.2.0. View API documentation for the latest release.
-</a>
-<div class="row cBallerina-io-Nav" id="iMainNavigation">
+<div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
 
 </div>
 <div class="clearfix"></div>

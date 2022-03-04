@@ -25,29 +25,29 @@ redirect_from:
 
 2. Run `bal dist update` ( or `bal dist pull 2201.0.1`) to update your Ballerina version to 2201.0.1 (Swan Lake).
 
-However, if you are using a version below 2201.0.0 (Swan Lake) and if you already ran `bal dist update` (or `bal dist pull 2201.0.1`) before `bal update`, see [Updating Ballerina](/downloads/swan-lake-release-notes/2201-0-0-swan-lake/#troubleshooting) to recover your installation.
+However, if you are using a version below 2201.0.0 (Swan Lake) and if you already ran `bal dist update` (or `bal dist pull 2201.0.1`) before `bal update`, see [Troubleshooting](/downloads/swan-lake-release-notes/2201-0-0-swan-lake/#troubleshooting) to recover your installation.
 
 ## Installing Ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
-## Language Updates
+## Language updates
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.1](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FCompilerFE+milestone%3A%22Ballerina+2201.0.1%22).
 
-## Runtime Updates
+## Runtime updates
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.1](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FjBallerina+milestone%3A%22Ballerina+2201.0.1%22).
 
-## Standard Library Updates
+## Standard library updates
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.1](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+2201.0.1%22+label%3AType%2FBug).
 
-## Package Updates
+## Package updates
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.1](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FProjectAPI+milestone%3A%22Ballerina+2201.0.1%22+is%3Aclosed).
 
-## Developer Tools Updates
+## Developer tools updates
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.0.1 of the repositories below.
 

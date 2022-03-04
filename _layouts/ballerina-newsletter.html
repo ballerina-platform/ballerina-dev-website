@@ -28,14 +28,26 @@
                         <div class="rst-content">
                            <div role="main">
                               <div class="section">
-                                 <div class="col-sm-12 col-md-8" style="padding: 0;" >
+                                 <div class="col-xs-11 col-sm-11 cNoPadding">
+                                    <h1>{{ page.title }}</h1>
+                                 </div>
+                                 <div class="col-sm-12 col-md-6" style="padding: 0;" >
                                     <div class="cNLbg">
                                        {{ content }}
                                     </div>
                                  </div>
-                                 <div class="col-sm-12 col-md-4" >
+                                 <div class="col-sm-12 col-md-6 col-lg-6 subscribeSlack" style="float: right;"> 
+                                   
+                                    <p>
+                                       Want to get hand-picked content and the latest news on Ballerina delivered directly to your inbox? Then subscribe to our monthly newsletter today!
+                                     </p>
+                                    <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x14k" width="100%" type="text/html" frameborder="0" allowTransparency="true" style=" width: 100%;border: 0;height: 140px;" class="mobileViewNewsletter"></iframe>
+                                </div> 
+                                 <!-- <div class="col-sm-12 col-md-6" >
                                     <div class="col-sm-12 col-md-12 cFormSection">
                                        <h2>Subscribe</h2>
+
+                                      
                                        <form id="subscribeForm">
                                           <div id="form-error" class="alert alert-danger"></div>
                                           <div id="form-status" class="alert alert-success"></div>
@@ -52,7 +64,7 @@
                                        </form>
 
                                       
-                                    </div>
+                                    </div> -->
                                     <div class="col-sm-12 col-md-12">
                                     <ul class="cInlinelinklist cPastissueslink">
                                           
@@ -257,7 +269,7 @@
          
          @media screen and (max-width: 991px) {
          .cNLbg {
-         padding: 0 15px !important;
+         /* padding: 0 15px !important; */
          margin-right: 0px;
          border: none !important;
          }

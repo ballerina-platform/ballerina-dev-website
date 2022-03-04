@@ -71,7 +71,7 @@ In this code:
 - The `main` function is your program's entry point, and you can execute it by running the program. 
 - This function contains a statement, which prints `Hello, World!` to the console. This statement calls the `println` function in the `io` module with `"Hello, World!"` as an argument.
 
->**Info:** To learn more about the language, see [Language Basics](/learn/language-basics/). 
+>**Info:** To learn more about the language, see [Language basics](/learn/language-basics/). 
 
 ## Running the project
 
@@ -136,7 +136,7 @@ Let's take a moment to digest the new constructs in this code:
 - In this example, there are two `resource` methods: The first one responds to HTTP GET requests with the `/greeting` path and the other one responds to `GET` requests with the `/greeting/{name}` path.
 - These `resource` methods return a `string` value, which maps to the `text/plan` content-type in the HTTP response.
 
->**Info:** To learn more about services, see [Network Interaction](/learn/distinctive-language-features/network-interaction/). 
+>**Info:** To learn more about services, see [Network interaction](/learn/distinctive-language-features/network-interaction/). 
 
 ## Running the simple REST API
 

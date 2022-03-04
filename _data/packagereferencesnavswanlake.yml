@@ -5,8 +5,8 @@
       url: /learn/package-references/#package-layout
       active: package-layout
     - title: The <code class="highlighter-rouge language-plaintext" id="cBackground">Ballerina.toml</code> file
-      url: /learn/package-references/#ballerinatoml
-      active: ballerinatoml
+      url: /learn/package-references/#the-ballerinatoml-file
+      active: the-ballerinatoml-file
     - title: The <code class="highlighter-rouge language-plaintext" id="cBackground">Dependencies.toml</code> file
       url: /learn/package-references/#the-dependenciestoml-file
       active: the-dependenciestoml-file

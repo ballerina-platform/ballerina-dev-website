@@ -130,8 +130,5 @@ let redirections = {
 
     "/downloads/1.2.x-release-notes-old/":"/downloads/1.2.x-release-notes/",
     "/community/slack/":"/community/#ballerina-slack-community"
-<<<<<<< HEAD
-=======
 
->>>>>>> b9ec209635ef95632f58c0bf6e3c1996ba8b58ff
 }

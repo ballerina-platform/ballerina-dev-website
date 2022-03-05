@@ -4,9 +4,24 @@
     - title: Setting up the prerequisites
       url: /learn/writing-a-grpc-service-with-ballerina/#setting-up-the-prerequisites
       active: setting-up-the-prerequisites
+    - title: Understanding the implementation
+      url: /learn/writing-a-grpc-service-with-ballerina/#understanding-the-implementation
+      active: understanding-the-implementation
     - title: Creating the service definition
       url: /learn/writing-a-grpc-service-with-ballerina/#creating-the-service-definition
       active: creating-the-service-definition
-    - title: Implementation
-      url: /learn/writing-a-grpc-service-with-ballerina/#implementation
-      active: implementation
+    - title: Implementing the gRPC service
+      url: /learn/writing-a-grpc-service-with-ballerina/#implementing-the-grpc-service
+      active: implementing-the-grpc-service
+    - title: Running the gRPC service
+      url: /learn/writing-a-grpc-service-with-ballerina/#implementing-the-grpc-service
+      active: implementing-the-grpc-service
+    - title: Implementing the gRPC client
+      url: /learn/writing-a-grpc-service-with-ballerina/#implementing-the-grpc-client
+      active: implementing-the-grpc-client
+    - title: Running the gRPC client
+      url: /learn/writing-a-grpc-service-with-ballerina/#implementing-the-grpc-client
+      active: implementing-the-grpc-client
+    - title: Learning more
+      url: /learn/writing-a-grpc-service-with-ballerina/#learning-more
+      active: learning-more

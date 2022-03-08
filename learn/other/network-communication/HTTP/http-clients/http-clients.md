@@ -2,7 +2,7 @@
 layout: ballerina-left-nav-pages-swanlake
 title: HTTP clients
 description: The topics below explain how to process HTTP requests and responses using Ballerina. It provides in-depth details on how HTTP clients are created and how their functionality can be used effectively. 
-keywords: ballerina, cli, command line interface, programming language
+keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-clients/
 active: http-clients
 intro: The topics below explain how to process HTTP requests and responses using Ballerina. It provides in-depth details on how HTTP clients are created and how their functionality can be used effectively.  

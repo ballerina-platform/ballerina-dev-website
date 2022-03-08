@@ -25,7 +25,7 @@ bal new --template lib hello
 ```
 
 This will create the `Ballerina.toml` file, the `hello.bal` source file, the `Package.md`, the `resources/`, `tests/` directories, and `Module.md`.
- For more information on these files, see [Package Layout](/learn/package-references/#package-layout).
+ For more information on these files, see [Package layout](/learn/package-references/#package-layout).
 
 ```bash
 > cd hello
@@ -108,4 +108,4 @@ bal push
 
 After publishing your first package, you can create a second package and use the already published package in it.
 Any package published in Ballerina Central is public and can be used in other packages.
- For more information, see [Importing a Module](/learn/managing-dependencies/#importing-a-module).
+ For more information, see [Importing a module](/learn/managing-dependencies/#importing-a-module).

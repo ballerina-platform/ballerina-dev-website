@@ -67,7 +67,7 @@ redirect_from:
       </td>	
       <td class="cEventDetail">	
          <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
-            <h4>Lunch & Learn</h4>	
+            <h4>Lunch & learn</h4>	
          </a>	
          <h5>Ballerina: OS Cloud-native Programming Language</h5>	
          <b>Caludio Guidi,</b> Jolie Evangelist and Project Co-Leader<br/>	
@@ -87,7 +87,7 @@ redirect_from:
          <h5>Ballerina: An Open-Source Cloud-Native Programming Language</h5>
          <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/0pKOkMRODF0" target="_blank">Watch Video</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/0pKOkMRODF0" target="_blank">Watch video</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -110,7 +110,7 @@ redirect_from:
       </td>
       <td class="cEventDetail">
          <a target="_blank" href="https://apiworld.co/">
-            <h4>API World Virtual</h4>
+            <h4>API World virtual</h4>
          </a>
          <h5>Automatic Microservices Observability with Ballerina</h5>
          <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
@@ -124,7 +124,7 @@ redirect_from:
       </td>
       <td class="cEventDetail">
          <a target="_blank" href="https://osad-munich.org/en/">
-            <h4>Open Source Automation Days</h4>
+            <h4>Open source automation days</h4>
          </a>
          <h5>Code to Kubernetes: Deployment Shouldn't be an Afterthought</h5>
          <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
@@ -143,7 +143,7 @@ redirect_from:
          <h5>Ballerina - A Cloud Native Programming Language</h5>
          <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=OJUYOFds-s4&ab_channel=CloudColombo" target="_blank">Watch Video</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=OJUYOFds-s4&ab_channel=CloudColombo" target="_blank">Watch video</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -152,7 +152,7 @@ redirect_from:
       </td>
       <td class="cEventDetail">
          <a target="_blank" href="https://www.developerweek.com/global/conference/cloud/schedule/">
-            <h4>DeveloperWeek Global: Cloud</h4>
+            <h4>DeveloperWeek global: Cloud</h4>
          </a>
          <h5>Code to Kubernetes: Deployment Shouldn't Be an Afterthought</h5>
          <b>Lakmal Warusawithana,</b> Senior Director - Developer Relations, WSO2
@@ -166,7 +166,7 @@ redirect_from:
       </td>
       <td class="cEventDetail">
          <a target="_blank" href="https://emamo.com/event/developerweek-global-cloud-2020/r/speaker/anjana-fernando-1">
-            <h4>DeveloperWeek Global: Cloud</h4>
+            <h4>DeveloperWeek global: Cloud</h4>
          </a>
          <h5>Code to Kubernetes: Languages of Infrastructure</h5>
          <b>Anjana Fernando,</b> Director - Developer Relations, WSO2
@@ -194,7 +194,7 @@ redirect_from:
       </td>
       <td class="cEventDetail">
          <a target="_blank" href="https://www.meetup.com/San-Diego-Cloud-Native-Computing-Meetup">
-            <h4>San Diego Cloud Native Computing Meetup</h4>
+            <h4>San Diego Cloud native computing meetup</h4>
          </a>
          <h5>Ballerina – An Open-Source, Cloud-Native Programming Language for Microservices</h5>
          <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
@@ -210,7 +210,7 @@ redirect_from:
          <a target="_blank" href="https://www.meetup.com/CloudDC/">
             <h4>Cloud DC Meetup</h4>
          </a>
-         <h5>Cloud Native Development with Ballerina</h5>
+         <h5>Cloud Native development with Ballerina</h5>
          <b>Jadd Jennings,</b> Hub Solutions Engineer, Oracle Cloud Solution Hub<br/>
          <b>Dhvani Sheth,</b> Senior Solutions Engineer, Oracle
       </td>
@@ -293,7 +293,7 @@ redirect_from:
       </td>
       <td class="cEventDetail">
          <a target="_blank" href="https://www.meetup.com/Silicon-Valley-Cloud-Native-and-Kubernetes-Meetup/events/265530711/">
-            <h4>Cloud-Native and Kubernetes Meetup in Silicon Valley</h4>
+            <h4>Cloud-Native and Kubernetes meetup in Silicon Valley</h4>
          </a>
          <h5>An Introduction to the Ballerina Programming Language</h5>
          <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
@@ -307,7 +307,7 @@ redirect_from:
       </td>
       <td class="cEventDetail">
          <a target="_blank" href="https://www.opensourcesummit.paris/">
-            <h4>Paris Open Source Summit</h4>
+            <h4>Paris open source summit</h4>
          </a>
          <h5>Ballerina - A Modern Cloud-based Open Source Programming Language</h5>
          <b>Paul Fremantle,</b> CTO and Co-founder, WSO2
@@ -321,12 +321,12 @@ redirect_from:
       </td>
       <td class="cEventDetail">
          <a target="_blank" href="https://www.meetup.com/downtown-san-jose-devops/events/265982303/">
-            <h4>Downtown San Jose DevOps Meetup</h4>
+            <h4>Downtown San Jose DevOps meetup</h4>
          </a>
          <h5>Ballerina - A Programming Language for Cloud and DevOps</h5>
          <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/downtown-san-jose-devops-meetup-ballerina-a-programming-language-for-cloud-and-devops-221963732" target="_blank">View Slides</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/downtown-san-jose-devops-meetup-ballerina-a-programming-language-for-cloud-and-devops-221963732" target="_blank">View slides</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -377,12 +377,12 @@ redirect_from:
       </td>
       <td class="cEventDetail">
          <a target="_blank" href="https://www.meetup.com/java-colombo/events/265738162/">
-            <h4>Java Colombo Meetup</h4>
+            <h4>Java Colombo meetup</h4>
          </a>
          <h5>The better java for Java microservice developers</h5>
          <b>Sanjiva Weerawarana,</b> Founder and CEO, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=tZwOl01x8TU" target="_blank">View Video</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=tZwOl01x8TU" target="_blank">View video</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -410,7 +410,7 @@ redirect_from:
          <h5>Ballerina — Cloud-native Middleware as a Programming Language</h5>
          <b>Sameera Jayasoma,</b> Senior Director, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://wso2.com/library/summit/2019/10/wso2-integration-summit-sanfrancisco-2019-ballerina-cloud-native-middleware-as-a-programming-language/" target="_blank">View Video</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://wso2.com/library/summit/2019/10/wso2-integration-summit-sanfrancisco-2019-ballerina-cloud-native-middleware-as-a-programming-language/" target="_blank">View video</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -419,7 +419,7 @@ redirect_from:
       </td>
       <td class="cEventDetail">
          <a target="_blank" href="https://www.meetup.com/columbus-microservices/events/264064167/">
-            <h4>Columbus Microservices Meetup</h4>
+            <h4>Columbus Microservices meetup</h4>
          </a>
          <h5>Effective Microservices Development with Ballerina</h5>
          <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
@@ -433,12 +433,12 @@ redirect_from:
       </td>
       <td class="cEventDetail">
          <a target="_blank" href="https://www.meetup.com/columbus-microservices/events/264064167/">
-            <h4>Columbus Microservices Meetup</h4>
+            <h4>Columbus Microservices meetup</h4>
          </a>
          <h5>Ballerina in Real-World Use-Case</h5>
          <b>Glenn Donaldson & Jim Kittle,</b> Ohio State University
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/secret/AW4Gz2reZ0xNW" target="_blank">View Slides</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/secret/AW4Gz2reZ0xNW" target="_blank">View slides</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">
@@ -452,7 +452,7 @@ redirect_from:
          <h5>Ballerina - Cloud Native Middleware as a Programming Language</h5>
          <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations - CTO Office, WSO2
       </td>
-      <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/wso2.org/wso2-integration-summit-new-york-2019-ballerina-cloud-native-middleware-as-a-programming-language" target="_blank">View Slides</a></td>
+      <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/wso2.org/wso2-integration-summit-new-york-2019-ballerina-cloud-native-middleware-as-a-programming-language" target="_blank">View slides</a></td>
    </tr>
    <tr class="event-expiry" style="display:none" data-expiry="">
       <td class="cEventDateContainer">

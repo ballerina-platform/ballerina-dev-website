@@ -70,7 +70,7 @@ $ bal openapi -i hello.yaml --tags "pets", "list"
 Once you execute the command, only the operations related to the given tags will be included in the generated service file.
 
 >**Info:** For more command options, see
-[OpenAPI to Ballerina Command Reference](#openapi-to-ballerina-command-reference)
+[OpenAPI to Ballerina command reference](#openapi-to-ballerina-command-reference)
 
 ## Exporting an OpenAPI contract from a Ballerina service (code-first approach)
 
@@ -210,7 +210,7 @@ This is an optional flag in the OpenAPI to Ballerina command. If your OpenAPI sp
 $ bal openapi -i <openapi-contract> [-n |--nullable]
 ```
 
->**Info:** For more command options, see [OpenAPI to Ballerina Command Reference](#openapi-to-ballerina-command-reference).
+>**Info:** For more command options, see [OpenAPI to Ballerina command reference](#openapi-to-ballerina-command-reference).
 
 ## Contributing to the WSO2 `openapi-connectors` repository
 To see your new client in Ballerina central in the future, follow the steps below and send a GitHub Pull Request.

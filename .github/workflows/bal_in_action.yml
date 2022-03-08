@@ -1,0 +1,36 @@
+name: Run Ballerina in Action examples
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 3
+      matrix: 
+        bbe: ['action_bbe0.bal', 'action_bbe1.bal', 'action_bbe2.bal',
+        'action_bbe5.bal','action_bbe6.bal','action_bbe7.bal']
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Python Packages
+        run: pip install beautifulsoup4
+
+      - name: Extract bbes from html
+        run: python3 src/ballerina-in-action/bbe-generator.py
+    
+      - name: Ballerina Build
+        uses: ballerina-platform/ballerina-action@master
+        with:
+          args: 
+            build ${{ matrix.bbe }}

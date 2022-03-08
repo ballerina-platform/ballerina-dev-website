@@ -3,9 +3,11 @@ layout: ballerina-newsletter
 title: Ballerina Newsletter
 description: This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 keywords: ballerina, community, ballerina community, newsletter
-permalink: /community/newsletter/
+permalink: /community/ballerina-newsletter/
+redirect_from:
+    - /community/newsletter/
+    - /community/newsletter
 ---
-
 This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
 <ul class="cInlinelinklist">
@@ -37,5 +39,18 @@ This is a periodic newsletter on Ballerina with hand-picked content and regular 
 .cPastissueslink {
     display:none;
 }
-
+@media only screen and (max-width: 600px) {
+    .subscribeSlack{
+        float: none !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-top:30px !important;
+    }
+    h1 {margin-top: 60px !important;}
+}
+ @media only screen and (max-width: 992px) {
+     .subscribeSlack{padding-left: 0px;padding-top:30px;}
+     .mobileViewNewsletter{height: 200px !important;}
+     h1 {margin-top: 60px !important;}
+ }
 </style>

@@ -1198,11 +1198,8 @@ p.cHomeListItem {
     user-select: none;
 }
 .cVersionChangeBanner{
-    color: #8a6d3b !important;
-    background-image: linear-gradient(to bottom,#fcf8e3 0,#f8efc0 100%);
-    background-repeat: repeat-x;
-    background-color: #fcf8e3;
-    border-color: #faebcc;
+    color: #000000 !important;
+    background-color: #fcdf4a !important;
     width: 100%;
     display: inline-block;
     padding: 10px 0px;
@@ -1210,12 +1207,22 @@ p.cHomeListItem {
     font-weight: 500;
     font-size: 20px;
     transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 15 !important;
+    }
+    .cInfoBannerLink{
+        color: #000000 !important;
+        text-decoration: underline;
+    }
+    .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
     }
     
-.cVersionChangeBanner:hover{
-    color: #684200 !important;
-    text-decoration: none;
-}
+
 
 ul.cInlinelinklist li {
     list-style: none !important;
@@ -1493,35 +1500,34 @@ li pre code span.line-numbers-rows {
         z-index: 9999999999999 !important;
     }
     .cVersionChangeBanner{
-        color: #8a6d3b;
-        background-image: linear-gradient(to bottom,#fcf8e3 0,#f8efc0 100%);
-        background-repeat: repeat-x;
-        background-color: #fcf8e3;
-        border-color: #faebcc;
+        color: #000000 !important;
+        background-color: #fcdf4a !important;
         width: 100%;
         display: inline-block;
-        padding: 4px !important;
+        padding: 5px 10px !important;
         text-align: center;
-        font-weight: 200;
-        font-size: 14px !important;
-        position: absolute;
-        z-index: 9999999999999 !important;
-    }
-
-    .cInfoBannerVersionHandling {
-        background:  #494949;
-        width: 100%;
-        display: inline-block;
-        color: #fff;
-        padding: 10px;
-        width: 100%;
-        text-align: center;
-        font-weight: 200;
+        font-weight: 500;
         font-size: 15px !important;
-        position: absolute;
-        z-index: 9999999999999 !important;
-    }
-    .cInfoBannerLink{font-weight: 200;font-size: 15px !important;color: #20b6b0;}
+        transition : all 0.3s;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 50px;
+        z-index: 9;
+        }
+        .cInfoBannerLink{
+            color: #000000;
+            text-decoration: underline;
+            font-weight: 400;
+            font-size: 15px !important;
+        }
+        .cInfoBannerLink:hover{
+            color: #545454 !important;
+            text-decoration: underline !important;
+        }
+
+    
+    
 
     .navbar-nav > li:last-child a.cSerachIcon {
         display: none;

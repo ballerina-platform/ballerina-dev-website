@@ -126,6 +126,10 @@ let redirections = {
     "/1.0/learn/api-docs/ballerina/ftp/index.html":"/page-not-available.html",
     "/learn/getting-started/installing-ballerina/building-from-source.md":"/page-not-available.html",
 
+    // Other
 
+    "/downloads/1.2.x-release-notes-old/":"/downloads/1.2.x-release-notes/",
+    "/community/slack/":"/community/#ballerina-slack-community",
+    "/community/slack":"/community/#ballerina-slack-community"
 
 }

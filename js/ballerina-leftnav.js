@@ -52,7 +52,7 @@ $(function () {
 });
 
 
-  $(function() {
+$(function() {
   $("a").click(function() {
      // remove classes from all
      $("a").removeClass("cLeftMenuInnerLink cTopiAtag highlight");
@@ -86,3 +86,14 @@ $(function() {
   $( "li" ).removeClass( "current-inner-three-sub" )
 
 });  
+
+// Highlights the relevent link in the left nav, 
+// if the click/redirection is initiated within the page content
+$(function() {
+  $(".cBlallerina-io-docs-content-container a").click(function() {
+    if($(this).attr("href").indexOf("#") != -1) {
+      var bookmark = $(this).attr("href");
+      $(".sub-menu a").filter("[href$='"+bookmark+"']").addClass("cLeftMenuInnerLink cTopiAtag highlight");
+    }
+  })
+});

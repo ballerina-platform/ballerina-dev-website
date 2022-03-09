@@ -236,6 +236,16 @@ button.navbar-toggle {
     display: inline-block;
     padding-right: 60px;
     min-height: 400px;
+    text-align: center;
+}
+
+.cHomeWhyBallerinaRow p {
+    height: 100px;
+    text-align: left;
+}
+
+.cHomeWhyBallerinaRow li {
+    text-align: left;
 }
 
 .cHomeWhyBallerinaRow > .col-md-4:last-child > .cHomeWhyBallerinaBox {

@@ -1,29 +1,30 @@
 ---
 layout: ballerina-getting-started-left-nav-pages-swanlake
-title: Getting started with Ballerina
+title: Get started with Ballerina
 description: Let’s set up a Ballerina development environment and write a simple Ballerina program.
 keywords: ballerina, programming language, ballerina packages, getting started
-permalink: /learn/getting-started-with-ballerina/
-active: getting-started-with-ballerina
+permalink: /learn/get-started-with-ballerina/
+active: get-started-with-ballerina
 intro: Let’s set up a Ballerina development environment and write a simple Ballerina program.
 redirect_from:
-- /learn/getting-started-with-ballerina
+- /learn/getting-started-with-ballerina/
+- /learn/getting-started-with-ballerin
 - /learn/getting-started/hello-world/creating-your-first-ballerina-package
 - /learn/getting-started/hello-world/creating-your-first-ballerina-package/
 - /learn/getting-started/hello-world/writing-your-first-ballerina-program
 - /learn/getting-started/hello-world/writing-your-first-ballerina-program/
+- /learn/get-started-with-ballerina
 ---
 
-## Setting up the prerequisites
+## Set up the prerequisites
 
-To complete this tutorial, you need the below.
+To run this tutorial, you need the following prerequisites:
 
-1. A command terminal
+1. [Ballerina 2202.0.0 (Swan Lake)](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/) or greater
 2. A text editor
-    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
-3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
+  >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
 
-## Meeting `bal`
+## Meet `bal`
 
 `bal` is the Ballerina build tool and package manager. Among other things, `bal` helps you to create, build, test, and run your project. The latest `bal` tool version is available with the latest Ballerina installation. 
 
@@ -34,7 +35,7 @@ $ bal
 $ bal version
 ```
 
-## Creating a new project
+## Create a new project
 
 Let's write a Ballerina program, which prints `Hello, World!`. Use the `bal new` command to create a new Ballerina project. 
 
@@ -53,7 +54,7 @@ greeter/
 - The `Ballerina.toml` file contains metadata that describes your project. Also, the `bal` tool uses the `Ballerina.toml` file to identify the root of a project.
 - The `main.bal` file is a source file and it contains the Ballerina code that prints `Hello, World!` to the console. You can add any number of source files into the `greeter` directory.
 
-## Saying `Hello, World!`
+## Say `Hello, World!`
 
 You can open the project directory in your text editor. If you are using VSCode, run `code .` inside the `greeter` directory. Then, open the `main.bal` file to see the generated source.
 
@@ -73,7 +74,7 @@ In this code:
 
 >**Info:** To learn more about the language, see [Language Basics](/learn/language-basics/). 
 
-## Running the project
+## Run the project
 
 Run `bal run` in your terminal to run this project.
 
@@ -105,7 +106,7 @@ $ bal run target/bin/greeter.jar
 Hello, World!
 ```
 
-## Writing a simple REST API
+## Write a simple REST API
 
 Now, let's change the `greeter` application to a REST API. Ballerina has first-class abstractions for services, resources, etc., and they make network service development easier and more fun. 
 
@@ -158,7 +159,7 @@ $ curl localhost:8080/greeting/Ballerina
 Hello Ballerina
 ```
 
-## Learning more
+## Learn more
 
 In this guide, you set up your development environment and wrote two Ballerina programs. Now, see the other [guides](/learn/) to learn more about Ballerina.
 

@@ -1,18 +1,18 @@
-- title: Organizing Ballerina code 
+- title: Organize Ballerina code 
   url: '#'
   sublinks:
     - title: Package structure
-      url: /learn/organizing-ballerina-code/package-structure
+      url: /learn/organize-ballerina-code/package-structure
       sublinks:
-        - title: Creating your first Ballerina package
-          url: /learn/organizing-ballerina-code/#creating-your-first-ballerina-package
-          active: creating-your-first-ballerina-package
+        - title: Create your first Ballerina package
+          url: /learn/organize-ballerina-code/#create-your-first-ballerina-package
+          active: create-your-first-ballerina-package
         - title: The default module
-          url: /learn/organizing-ballerina-code/#the-default-module
+          url: /learn/organize-ballerina-code/#the-default-module
           active: the-default-module
         - title: Non-default modules
-          url: /learn/organizing-ballerina-code/#non-default-modules
+          url: /learn/organize-ballerina-code/#non-default-modules
           active: non-default-modules
-    - title: Importing a module from the same package
-      url: /learn/organizing-ballerina-code/#importing-a-module-from-the-same-package
-      active: importing-a-module-from-the-same-package
+    - title: Import a module from the same package
+      url: /learn/organize-ballerina-code/#import-a-module-from-the-same-package
+      active: import-a-module-from-the-same-package

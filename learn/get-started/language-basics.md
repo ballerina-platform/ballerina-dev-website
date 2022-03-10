@@ -588,7 +588,7 @@ You can also use the ``is`` operator to test the type of the actual value held b
 float f = x is int|float ? <float>x : 0.0;
 ```
 
-## Ignoring return values and errors
+## Ignore return values and errors
 
 Ballerina does not allow silently ignoring return values of functions unless they return nil.
 
@@ -647,7 +647,7 @@ function demoMyClass( ) {
 
 In the above code example, the function **``demoMyClass()``** uses the ``new`` expression to create an object **``x``** using the **``MyClass``** class that is defined in module `m`. You can use the ``.`` notation to call the object's methods or access its fields.
 
-## Defining classes
+## Define classes
 
 Ballerina supports the concept of a class which is a structured type containing data and behavior.
 

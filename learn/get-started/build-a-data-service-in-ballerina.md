@@ -1,13 +1,15 @@
 ---
 layout: ballerina-building-a-data-service-left-nav-pages-swanlake
-title: Building a data service in Ballerina 
+title: Build a data service in Ballerina 
 description: This tutorial covers how you can connect to a MySQL database and perform queries against it using Ballerina.
 keywords: ballerina, data service, mysql, database, REST, API
-permalink: /learn/building-a-data-service-in-ballerina/
-active: building-a-data-service
+permalink: /learn/build-a-data-service-in-ballerina/
+active: build-a-data-service
 intro: Connecting to a MySQL database and executing queries using an HTTP RESTful API using Ballerina.
 redirect_from:
  - /learn/building-a-data-service-in-ballerina
+ - /learn/building-a-data-service-in-ballerina/
+ - /learn/build-a-data-service-in-ballerina
 ---
 
 In addition, this tutorial also elaborates on how you can create an HTTP RESTful API using Ballerina that can be used to perform basic CRUD operations on the database.
@@ -17,7 +19,7 @@ In addition, this tutorial also elaborates on how you can create an HTTP RESTful
 The methodology outlined in this tutorial can be used to work with PostgreSQL, SQL Server, OracleDB or any other relational database as well using the [`PostgreSQL`](https://lib.ballerina.io/ballerinax/postgresql/latest),[`MSSQL`](https://lib.ballerina.io/ballerinax/mssql/latest), [`OracleDB`](https://lib.ballerina.io/ballerinax/oracledb/latest),
 and [`JDBC`](https://lib.ballerina.io/ballerinax/java.jdbc/latest) connectors for Ballerina respectively.
 
-## Setting up the prerequisites
+## Set up the prerequisites
 
 To complete this tutorial, you need:
 
@@ -26,7 +28,7 @@ To complete this tutorial, you need:
     >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
 3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
 
-### Setting up a MySQL server instance
+### Set up a MySQL server instance
 
 There are several methods you can use to set up a MySQL server.
 1. Install a MySQL server on your machine locally by downloading and installing [MySQL](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing) for different platforms.
@@ -36,7 +38,7 @@ There are several methods you can use to set up a MySQL server.
 
 >**Tip:** Keep the connection and authentication details for connecting to the MySQL server including the hostname, port, username and password noted down.
 
-### Creating a database and table
+### Create a database and table
 
 Connect to the MySQL server using the terminal (or any other preferred method) and execute the following commands to 
 create a database and table. This tutorial demonstrates the basic use-case of creating, maintaining, and
@@ -57,7 +59,7 @@ CREATE TABLE Company.Employees (
 );
 ```
 
-### Creating a Ballerina project
+### Create a Ballerina project
 
 A new Ballerina project can be created by executing the following command in the directory in which you want to create the project.
 
@@ -67,7 +69,7 @@ bal new data_service
 
 >**Info:** For more information on creating Ballerina packages, see [Getting Started with Ballerina](/learn/getting-started-with-ballerina).
 
-### Creating a record to represent an employee
+### Create a record to represent an employee
 
 In Ballerina, records are a data type that maps keys to values. You can define a closed record to represent a single row
 in the `Employees` table in the `main.bal` file.
@@ -89,9 +91,9 @@ public type Employee record {|
 
 This record type is the basis for interacting with the database.
 
-## Connecting to and interacting with the database
+## Connect to and interacting with the database
 
-### Adding the MySQL driver
+### Add the MySQL driver
 
 The MySQL driver JAR is necessary to connect to and interact with a MySQL server. There are several methods of doing this.
 
@@ -114,7 +116,7 @@ The MySQL driver JAR is necessary to connect to and interact with a MySQL server
    path = "/path/to/mysql/driver.jar”
    ```
    
-### Defining configurations
+### Define configurations
 
 In the project directory, create a new file named `Config.toml` and specify the configurations necessary to connect to the MySQL database.
 
@@ -138,7 +140,7 @@ configurable string DATABASE = ?;
 
 >**Note:** For more information on defining configurable variables in Ballerina, see [Defining Configurable Variables](/learn/configuring-ballerina-programs/providing-values-to-configurable-variables/).
 
-### Connecting to the database
+### Connect to the database
 
 Firstly, the [`MySQL`](https://lib.ballerina.io/ballerinax/mysql/latest) 
 and [`SQL`](https://lib.ballerina.io/ballerina/sql/latest) packages must be imported into your `main.bal` file.
@@ -163,7 +165,7 @@ final mysql:Client dbClient = check new(
 >properties when connecting to the database which, are not covered in this tutorial. To learn more about this, 
 >see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest/clients/Client).
 
-### Executing the queries
+### Execute the queries
 
 The `mysql:Client` provides two primary remote methods for performing queries.
 
@@ -244,7 +246,7 @@ isolated function removeEmployee(int id) returns int|error {
 }
 ```
 
-## Exposing the database via an HTTP RESTful API
+## Expose the database via an HTTP RESTful API
 
 After you have defined the methods necessary to manipulate the database, expose these selectively via an HTTP
 RESTful API. For this, you first need to import the Ballerina [`HTTP` module](https://lib.ballerina.io/ballerina/http/latest).
@@ -253,7 +255,7 @@ RESTful API. For this, you first need to import the Ballerina [`HTTP` module](ht
 import ballerina/http;
 ```
 
-### Creating a service
+### Create a service
 Now, you can create a service as shown below. This creates an `/employees` endpoint on port `8080` which can 
 be accessed via a browser by visiting `http://locahost:8080/employees` after executing the command `bal run`.
 
@@ -262,7 +264,7 @@ service /employees on new http:Listener(8080) {
 }
 ```
 
-### Creating resource functions
+### Create resource functions
 
 Within this service, you can define resource functions to provide access to the database. The code snippet below 
 demonstrates a resource function that can be used to create a new employee via a `POST` request.

@@ -1,14 +1,15 @@
 ---
 layout: ballerina-configurable-left-nav-pages-swanlake
-title: Configuring values in Kubernetes environment
+title: Configure values in Kubernetes environment
 description: In Kubernetes environments, the configuration TOML files can be used to configure values at deployment.
 keywords: ballerina, programming language, configurable, variables, kubernetes, pod
-permalink: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/
-active: configuring-values-in-kubernetes-environment
+permalink: /learn/configure-ballerina-programs/configure-values-in-kubernetes-environment/
+active: configure-values-in-kubernetes-environment
 redirect_from:
-- /learn/making-ballerina-programs-configurable/configuring-values-in-kubernetes-environment
-- /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment
-
+    - /learn/making-ballerina-programs-configurable/configuring-values-in-kubernetes-environment
+    - /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment
+    - /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/
+    - /learn/configure-ballerina-programs/configure-values-in-kubernetes-environment
 ---
 
 In the Kubernetes environment, a pod can use the configuration TOML file that contains the configuration values in the
@@ -17,7 +18,7 @@ following ways.
 - as files in a data volume that is mounted on one or more of its containers
 - as environment variables for the containers
 
-### Securing sensitive data using configurable variables
+### Secure sensitive data using configurable variables
 
 Configuration values containing passwords or secrets should not be passed with the normal configuration.
 

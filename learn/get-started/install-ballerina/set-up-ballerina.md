@@ -1,10 +1,10 @@
 ---
 layout: ballerina-installing-ballerina-left-nav-pages-swanlake
-title: Setting up Ballerina
+title: Set up Ballerina
 description: Let's get started.
 keywords: ballerina, quick tour, programming language, http service
-permalink: /learn/installing-ballerina/setting-up-ballerina/
-active: setting-up-ballerina
+permalink: /learn/install-ballerina/set-up-ballerina/
+active: set-up-ballerina
 intro: Let's get started.
 redirect_from:
   - /learn/quick-tour
@@ -25,11 +25,13 @@ redirect_from:
   - /learn/getting-started/installing-ballerina/setting-up-ballerina
   - /learn/getting-started/installing-ballerina/setting-up-ballerina/
   - /learn/installing-ballerina/setting-up-ballerina
+  - /learn/installing-ballerina/setting-up-ballerina/
   - /learn/installing-ballerina/
   - /learn/installing-ballerina
+  - /learn/install-ballerina/set-up-ballerina
 ---
 
-## Downloading Ballerina
+## Download Ballerina
 
 [Download](/downloads) Ballerina based on the operating system you are using and install it.
 
@@ -89,13 +91,13 @@ redirect_from:
 
 For more download options, see [Downloads](/download).
 
-## Installing Ballerina
+## Install Ballerina
 
 Double-click on the package file you downloaded above to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution.
 
 For more installation options, see [Installation Options](/learn/installing-ballerina/installation-options/).
 
-## Installing the VS Code extension
+## Install the VS Code extension
 
 Ballerina provides an extension to try out its development capabilities in Visual Studio Code. For instructions on setting it up, go to [The Ballerina Extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
 <style>

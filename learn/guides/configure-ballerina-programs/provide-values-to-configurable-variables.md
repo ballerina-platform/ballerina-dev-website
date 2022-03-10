@@ -1,17 +1,18 @@
 ---
 layout: ballerina-configurable-left-nav-pages-swanlake
-title: Providing values to configurable variables
+title: Providie values to configurable variables
 description: You can supply values to configurable variables using the methods below.
 keywords: ballerina, programming language, configurable, variables, values, toml
-permalink: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/
-active: providing-values-to-configurable-variables
+permalink: /learn/configure-ballerina-programs/provide-values-to-configurable-variables/
+active: provide-values-to-configurable-variables
 redirect_from:
 - /learn/user-guide/configurability/providing-values-to-configurable-variables
 - /learn/user-guide/configurability/providing-values-to-configurable-variables/
 - /learn/making-ballerina-programs-configurable/providing-values-to-configurable-variables
 - /learn/making-ballerina-programs-configurable/providing-values-to-configurable-variables/
 - /learn/configuring-ballerina-programs/providing-values-to-configurable-variables
-
+- /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/
+- /learn/configure-ballerina-programs/provide-values-to-configurable-variables
 ---
 
 The values for configurable variables can be provided through configuration files, command-line arguments, and
@@ -32,7 +33,7 @@ given through multiple ways when retrieving configurable values:
 content is expected to be in the [TOML(v0.4.0) format](https://toml.io/en/v0.4.0).
 >**Note:** Providing multiple configuration values through separate environment variables is not supported.
 
-### Providing configuration values through command line arguments
+### Provide configuration values through command line arguments
 
 The following syntax can be used to provide values for the variables through the command line parameters:
 
@@ -55,7 +56,7 @@ types.
 | xml            | <code>configurable xml book = ?; </code>                                                                                                                                              | `bal run -- -CxmlVar="<book>The Lost World</book>"`               |
 | enum           | <code>enum Country { </code><br>    <code>LK = "Sri Lanka", </code><br>    <code>US = "United States" </code><br> <code>} </code><br> <code>configurable Country country = ?; </code> | `bal run -- -Ccountry="Sri Lanka"`                                |
 
-### Providing configuration values through TOML syntax
+### Provide configuration values through TOML syntax
 
 Ballerina defines a specific TOML syntax to be used when configuring the variables through the configuration files and
 environment variables. Depending on the type of the configurable variable, the way of providing values in the TOML

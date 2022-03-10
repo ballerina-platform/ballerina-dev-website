@@ -3,7 +3,7 @@ layout: ballerina-cloud-left-nav-pages-swanlake
 title: Azure Functions
 description: Learn how to write and deploy Azure Functions using ballerina
 keywords: ballerina, programming language, serverless, cloud, azure, functions, cloud native
-permalink: /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
+permalink: /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
 active: azure-functions
 intro: The Azure Functions extension provides the functionality to expose a Ballerina function as a serverless function in the Azure Functions platform.
 redirect_from:
@@ -15,6 +15,8 @@ redirect_from:
   - /learn/user-guide/deployment/azure-functions
   - /learn/user-guide/deployment/azure-functions/
   - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions
+  - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
+  - /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions
 ---
 
 ## Prerequisites
@@ -39,7 +41,7 @@ The following Azure Functions triggers and bindings are currently supported in B
 - CosmosDB [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBTrigger), [input](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBInput) binding, and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBOutput) binding
 - Timer [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#TimerTrigger)
 
-## Writing the function
+## Write the function
 
 The following Ballerina code gives an example of using an HTTP trigger to invoke the function, and an HTTP output binding to respond to the caller with a message. 
 
@@ -65,7 +67,7 @@ The second parameter with the `HTTPTrigger` annotation signals that this functio
 
 This HTTP output binding can also be defined as a parameter with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function. You can find an example in the [HTTP Trigger -> Queue Output](/learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output) output example.
 
-### Building the function
+### Build the function
 
 The Azure Functions functionality is implemented as a compiler extension. Thus, artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
 
@@ -84,7 +86,7 @@ Generating executables
 >**Note:** A custom [`host.json`](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json) file for the Azure Functions deployment can be provided optionally by placing a `host.json` file in the current working directory in which the Ballerina build is done. The required `host.json` properties are provided/overridden by the values derived from the source code by the compiler extension. 
 
 
-### Deploying the function
+### Deploy the function
 
 The created resource group and the function app name should be provided to the placeholders shown in the above-generated usage instructions from the compiler. 
 
@@ -119,7 +121,7 @@ Deployment endpoint responded with status code 202
 }
 ```
 
-### Invoking the function
+### Invoke the function
 
 The deployed Azure Function can be tested by invoking it using an HTTP client such as cURL:
 

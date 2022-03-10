@@ -1,20 +1,23 @@
 ---
 layout: ballerina-rest-api-guide-left-nav-pages-swanlake
-title: Writing a RESTful API with Ballerina
-permalink: /learn/writing-a-restful-api-with-ballerina/
+title: Write a RESTful API with Ballerina
+permalink: /learn/write-a-restful-api-with-ballerina/
 description: This guide helps you understand the basics of Ballerina constructs, which allow you to write RESTful APIs.
 keywords: ballerina, programming language, restful-api, ballerina packages, language-guide
-active: writing-a-restful-api-with-ballerina
+active: write-a-restful-api-with-ballerina
 intro: This guide helps you understand the basics of Ballerina constructs, which allow you to write RESTful APIs.
 redirect_from:
   - /learn/writing-a-restful-api-with-ballerina
+  - /learn/writing-a-restful-api-with-ballerina/
+  - /learn/write-a-restful-api-with-ballerina/
+  - /learn/write-a-restful-api-with-ballerina
 ---
 
 Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement the RESTful API. The Ballerina standard library itself is adequate. In this API, you will be writing a simple CRUD-like RESTful service.
 
 In this tutorial, you will be creating a RESTful API with two endpoints. The sample is built around a set of COVID-19 data.
 
-## Setting up the prerequisites
+## Set up the prerequisites
 
 To complete this tutorial, you need:
 
@@ -23,7 +26,7 @@ To complete this tutorial, you need:
     >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
 3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
 
-## Designing the two endpoints
+## Design the two endpoints
 
 The first endpoint is about getting data from the service as well as adding data to the service. Therefore, the service should handle both HTTP `GET` and `POST` requests.
 - The `GET` request is to get data, and the response should be `200 OK`.
@@ -36,7 +39,7 @@ Following is the URL for each endpoint, respectively.
 1. /covid/status/countries
 2. /covid/status/countries/{iso_code}
 
-## Creating a package for your code
+## Create a package for your code
 
 Ballerina uses packages to group code. In this case, a package with the default module is created by executing the following command.
 
@@ -52,7 +55,7 @@ $ code .
 
 `Ballerina.toml` is the file that makes the folder a Ballerina package. It also contains a test directory to include tests for the service. However, for the sake of simplicity, it will be ignored in this tutorial. You can just go through the sample in the `service.bal` to get a look and feel about Ballerina services. However, since you will be doing it from scratch, you can delete the entire code or edit it if you wish.
 
-## Creating the COVID-19 dataset
+## Create the COVID-19 dataset
 
 To keep things simple, an in-memory dataset is used with three entries. Ballerina tables are used to store data. Each entry in the table is represented by a Ballerina record. Following is the definition of the record and the declaration of the table.
 
@@ -73,7 +76,7 @@ public final table<CovidEntry> key(iso_code) covidTable = table [
 ];
 ```
 
-## Writing a resource to get all the COVID-19 data
+## Write a resource to get all the COVID-19 data
 
 As mentioned earlier, the first endpoint has two parts: getting data as well as adding data. In this section, the focus is on getting data.
 
@@ -100,7 +103,7 @@ Unlike normal functions, resource functions can have accessors. In this case, th
 
 Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. The default status code HTTP responses are `200 OK`.
 
-## Writing a resource to add COVID-19 data by ISO code
+## Write a resource to add COVID-19 data by ISO code
 
 The second part of the first endpoint is about adding or appending new data to the dataset. Following is the second resource associated with the first endpoint.
 
@@ -156,7 +159,7 @@ public type ErrorMsg record {|
 
 The body of the response is of type `ErrorMsg`, which simply has a string field named `errmsg`. Based on the need, users can have any data type for their response body.
 
-## Writing a resource to get filtered COVID-19 data by ISO code
+## Write a resource to get filtered COVID-19 data by ISO code
 
 This resource is a bit more different than the first two resources. As explained earlier, resource functions have accessors. In addition, it also supports hierarchical paths making it ideal for implementing RESTful APIs. Hierarchical paths can have path params. In this case, `iso_code` is used as the path param, which in turn, becomes a string variable.
 

@@ -1,10 +1,10 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Configuring tests
+title: Configure tests
 description: Learn how to configure Ballerina tests.
 keywords: ballerina, programming language, testing, test setup
-permalink: /learn/testing-ballerina-code/configuring-tests/
-active: configuring-tests
+permalink: /learn/test-ballerina-code/configure-tests/
+active: configure-tests
 intro: The Ballerina Test framework has configurations at various levels to streamline the testing process and ensure that the tests are written with a comprehensible structure.
 redirect_from:
 - /learn/testing-ballerina-code/
@@ -16,9 +16,14 @@ redirect_from:
 - /learn/user-guide/testing-ballerina-code/
 - /learn/user-guide/testing-ballerina-code
 - /learn/user-guide/testing-ballerina-code/configuring-tests/
+- /learn/testing-ballerina-code/configuring-tests/
+- /learn/testing-ballerina-code/configuring-tests
+- /learn/test-ballerina-code/configuring-tests
+- /learn/test-ballerina-code/configuring-test/
+- /learn/test-ballerina-code/configure-tests
 ---
 
-## Setting up and tearing down
+## Set up and tearing down
 
 The following test annotations can be used to set up and tear down the instructions. These configuration annotations 
 enable executing instructions at various levels.
@@ -266,7 +271,7 @@ function testFunction2() {
 }
 ```
 
-## Defining test-specific configurations
+## Define test-specific configurations
 Configurations for testing can be provided using configurable variables. The values for configurable variables can be
 provided in a file named `Config.toml` located in the `tests` directory, which will only be initialized when the tests
 are run. 
@@ -279,7 +284,7 @@ testing. This is particularly useful when testing services and clients where you
 are trying to test the service or client.
 
 
-## Defining test-only dependencies
+## Define test-only dependencies
 Dependencies are meant to be resolved only during testing and can be specified in the `Ballerina.toml` file by specifying the 
 scope.
 

@@ -50,7 +50,7 @@ A function can be viewed as a sequence diagram. To translate a Ballerina functio
 Additionally, if the function also has a client object to interact with a remote system, then that client object also has a lifeline. If a worker makes a remote method call on a client object, that is represented as a horizontal line between the lifelines of the worker making the call and the remote object.
 
 
-### Waiting for workers
+### Wait for workers
 
 Named workers can continue to execute even after the function's default worker terminates and the function returns. So if you want to wait for the worker to terminate before returning from the function, you have to wait for it explicitly.
 
@@ -537,7 +537,7 @@ This variable **``m``** is ``final``, which means that it cannot be set again. I
 
 In this way, the ``readonly`` type complements ``isolated`` functions. If such a function is part of a method for service listeners where it has to read or write data and execute some code, the ``isolated`` specifier provides information about the function’s execution context, and ``readonly`` specifier provides information about immutability of the data.
 
-### Combining isolated function with lock
+### Combine isolated function with lock
 
 To keep things from getting overly complex, you can combine isolated functions with lock statements to access mutable module-level state.
 

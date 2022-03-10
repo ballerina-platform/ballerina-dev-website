@@ -1,13 +1,15 @@
 ---
 layout: ballerina-deploying-ballerina-on-kubernetes-left-nav-pages-swanlake
-title: Deploying Ballerina on Kubernetes
+title: Deploy Ballerina on Kubernetes
 description: Let’s dockerize deploy your ballerina service and deploy it into kubernetes.
 keywords: ballerina, programming language, cloud, kubernetes, docker, cloud-native
-permalink: /learn/deploying-ballerina-on-kubernetes/
-active: deploying-ballerina-on-kubernetes
+permalink: /learn/deploy-ballerina-on-kubernetes/
+active: deploy-ballerina-on-kubernetes
 intro: Let’s dockerize deploy your ballerina service and deploy it into Kubernetes.
 redirect_from:
-- /learn/deploying-ballerina-on-kubernetes
+    - /learn/deploying-ballerina-on-kubernetes
+    - /learn/deploying-ballerina-on-kubernetes/
+    - /learn/deploy-ballerina-on-kubernetes
 ---
 
 In this section, you will be writing a simple Ballerina service and then, you will dockerize the application and deploy it in Kubernetes.

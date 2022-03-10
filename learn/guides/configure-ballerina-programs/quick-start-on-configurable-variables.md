@@ -3,8 +3,8 @@ layout: ballerina-configurable-left-nav-pages-swanlake
 title: Quick start on using configurable variables
 description: Ballerina supports configurability through the configurable, module-level variables.
 keywords: ballerina, programming language, configurable, variables
-permalink: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables/
-active: configuring-ballerina-programs
+permalink: /learn/configure-ballerina-programs/quick-start-on-configurable-variables/
+active: quick-start-on-configurable-variables
 intro: Configurability enables users to modify the system behavior through external user inputs. Ballerina Language provides an in-built functionality to configure values at runtime through configurable  module-level variables.
 redirect_from:
 - /learn/user-guide/configurability/defining-configurable-variables
@@ -22,12 +22,13 @@ redirect_from:
 - /learn/configuring-ballerina-programs
 - /learn/configuring-ballerina-programs/
 - /learn/configuring-ballerina-programs/quick-start-on-configurable-variables
+- /learn/configuring-ballerina-programs/quick-start-on-configurable-variables/
 - /learn/making-ballerina-programs-configurable/defining-configurable-variables/
 - /learn/making-ballerina-programs-configurable/defining-configurable-variables
-
+- /learn/configure-ballerina-programs/quick-start-on-configurable-variables
 ---
 
-## Configuring a sample Ballerina service
+## Configure a sample Ballerina service
 
 Consider the following step-by-step guide to configuring a Ballerina package that contains an HTTP service.
 

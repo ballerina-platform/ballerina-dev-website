@@ -119,7 +119,7 @@ codeCoverage = true
 cloud = "k8s"
 ```
 
-### Packaging Java libraries
+### Package Java libraries
 
 When you compile a Ballerina package with `bal build`, the compiler creates an executable JAR file. However, if the package does not contain an entry point, it will produce a non-executable JAR file (a library package), which can be used in another package/program.
 In both cases, the Ballerina compiler creates self-contained archives. There are situations in which you need to package JAR files with these archives.

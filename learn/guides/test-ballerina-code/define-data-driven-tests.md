@@ -1,14 +1,12 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Defining data-driven tests
+title: Define data-driven tests
 description: Learn how to do write data-driven tests using the ballerina test framework.
 keywords: ballerina, programming language, testing, data-driven, data providers
-permalink: /learn/testing-ballerina-code/defining-data-driven-tests/
-active: defining-data-driven-tests
+permalink: /learn/test-ballerina-code/define-data-driven-tests/
+active: define-data-driven-tests
 intro: The Ballerina Test Framework allows you to specify a function that returns a set of data values as a data-provider.
 redirect_from:
-- /learn/testing-ballerina-code/
-- /learn/testing-ballerina-code
 - /swan-lake/learn/testing-ballerina-code/defining-data-driven-tests/
 - /swan-lake/learn/testing-ballerina-code/defining-data-driven-tests
 - /learn/user-guide/testing-ballerina-code/defining-data-driven-tests
@@ -16,9 +14,14 @@ redirect_from:
 - /learn/user-guide/testing-ballerina-code/
 - /learn/user-guide/testing-ballerina-code
 - /learn/user-guide/testing-ballerina-code/defining-data-driven-tests/
+- /learn/testing-ballerina-code/defining-data-driven-tests/
+- /learn/testing-ballerina-code/defining-data-driven-tests
+- /learn/testing-ballerina-code/define-data-driven-tests/
+- /learn/testing-ballerina-code/define-data-driven-tests
+- /learn/test-ballerina-code/define-data-driven-tests
 ---
 
-## Using data providers
+## Use data providers
 
 A data provider is a function, which will be used to provide the data sets for a test function.
 A data provider function supports one of the following return types.
@@ -111,7 +114,7 @@ Running Tests
                 0 skipped
 ```
 
-## Executing specific data sets
+## Execute specific data sets
 
 If you need to run only a specific case from the given data set, you can use the test name with the key to do that.
 You can make use of wild cards(`*`) to capture multiple cases as well.

@@ -1,20 +1,24 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Writing tests
+title: Write tests
 description: Learn how to use Ballerina's built-in test framework to write tests. The test framework provides a set of annotations and assertions to help write and run tests.
 keywords: ballerina, programming language, testing
-permalink: /learn/testing-ballerina-code/writing-tests/
-active: writing-tests
+permalink: /learn/test-ballerina-code/write-tests/
+active: write-tests
 intro: The sections below include information about writing tests in Ballerina.
 redirect_from:
   - /learn/testing-ballerina-code/writing-tests
+  - /learn/testing-ballerina-code/writing-tests/
   - /swan-lake/learn/testing-ballerina-code/writing-tests/
   - /swan-lake/learn/testing-ballerina-code/writing-tests
   - /learn/user-guide/testing-ballerina-code/writing-tests
   - /learn/user-guide/testing-ballerina-code/writing-tests/
+  - /learn/testing-ballerina-code/write-tests/
+  - /learn/testing-ballerina-code/write-tests
+  - /learn/test-ballerina-code/write-tests
 ---
 
-## Defining a test
+## Define a test
 
 The test module provides the necessary annotations to construct a test suite. Therefore, importing the test module is 
 essential in order to write Ballerina tests.
@@ -119,7 +123,7 @@ function mapDataProvider() returns map<[int, int, string]>|error {
 }
 ```
 
-## Using assertions
+## Use assertions
 
 The Ballerina test framework supports the following assertions, which help to verify the expected behavior of a piece of
  code. These assertions can be used to decide if the test is passing or failing based on the condition.
@@ -173,7 +177,7 @@ The Ballerina test framework supports the following assertions, which help to ve
     </tr>
 </table>
 
-### Troubleshooting assertion failures when using `assertEquals`
+### Troubleshoot assertion failures when using `assertEquals`
 
 
 #### Values with different types

@@ -1,19 +1,21 @@
 ---
 layout: ballerina-organizing-code-left-nav-pages-swanlake
-title: Organizing Ballerina code
+title: Organize Ballerina code
 description: The sections below include information about packages, and how you can manage the growth of your source code.
 keywords: ballerina, programming language, ballerina packages, dependencies, importing modules
-permalink: /learn/organizing-ballerina-code/
-active: organizing-ballerina-code
+permalink: /learn/organize-ballerina-code/
+active: organize-ballerina-code
 intro: The sections below include information about packages, and how you can manage the growth of your source code.
 redirect_from:
 - /learn/user-guide/ballerina-packages/organizing-ballerina-code
 - /learn/user-guide/ballerina-packages/organizing-ballerina-code/
 - /learn/organizing-ballerina-code
+- /learn/organizing-ballerina-code/
 - /learn/user-guide/structuring-ballerina-code/
 - /learn/user-guide/structuring-ballerina-code
 - /learn/user-guide/ballerina-packages/
 - /learn/user-guide/ballerina-packages
+- /learn/organize-ballerina-code
 ---
 
 ## Package structure
@@ -30,7 +32,7 @@ It is common in small projects to have only one (default) module in a package. A
 
 The `bal new` command creates a package with the default module. This will generate the `Ballerina.toml` file, which identifies a directory as a package and will additionally generate a sample source file in the default module.
 
-### Creating your first Ballerina package
+### Create your first Ballerina package
 
 Create a Ballerina package with the `bal new` command as follows. 
 
@@ -54,7 +56,7 @@ tree .
 
 You may also try creating a service or a library package instead of the main function as explained in the sections below. 
 
-#### Creating a Ballerina service package
+#### Create a Ballerina service package
 
 ```bash
 bal new -t service hello_service
@@ -73,7 +75,7 @@ cd hello_service
 1 directory, 3 files
 ```
 
-#### Creating a library package
+#### Create a library package
 
 ```bash
 bal new -t lib hello_lib
@@ -133,7 +135,7 @@ The package structure after adding a non-default module will have the directory 
 4 directories, 5 files
 ```
 
-## Importing a module from the same package 
+## Import a module from the same package 
 
 You can access any public symbol from another module of the package by importing the particular module using an import declaration. 
 The import declaration syntax is as follows.

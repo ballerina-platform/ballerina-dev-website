@@ -1,10 +1,10 @@
 ---
 layout: ballerina-generating-doc-left-nav-pages-swanlake
-title: Generating code documentation
+title: Generate code documentation
 description: Learn how to write unstructured documents with a bit of structure to enable HTML content generation as API documentation.
 keywords: ballerina, programming language, api documentation, api docs
-permalink: /learn/generating-code-documentation/
-active: generating-code-documentation
+permalink: /learn/generate-code-documentation/
+active: generate-code-documentation
 intro: Ballerina has a built-in Ballerina Flavored Markdown (BFM) documentation framework named Docerina. The documentation framework allows you to write unstructured documents with a bit of structure to generate HTML content as API documentation.
 redirect_from:
   - /learn/how-to-document-ballerina-code
@@ -21,9 +21,11 @@ redirect_from:
   - /learn/user-guide/code-organization/
   - /learn/user-guide/code-organization
   - /learn/generating-code-documentation
+  - /learn/generating-code-documentation/
+  - /learn/generate-code-documentation
 ---
 
-## Generating documentation for modules
+## Generate documentation for modules
 
 Developers can write the documentation in line with the Ballerina source code using the lightweight [markdown](https://daringfireball.net/projects/markdown/syntax) markup language.
 They can document special constructs such as parameters, return values, fields, etc., within the code using documentation attributes.
@@ -36,7 +38,7 @@ Ballerina documentation design and usage is aligned with the package and module 
 * Fields, parameters, return values, etc., can be marked using documentation attributes.
 * Ballerina uses a React app to render the documentation, and the data required is stored as a JSON in the `api-docs.js` file. The React app source code can be found in the [ballerina-dev-tools](https://github.com/ballerina-platform/ballerina-dev-tools/tree/main/docerina-ui) GitHub repo. Developers are welcome to customize and try out themes and styles in the React app.
 
-## Writing Ballerina documentation
+## Write Ballerina documentation
 
 Ballerina Flavored Markdown documentation is a first-class syntax in the Ballerina language. The `#` at the beginning of a line denotes a line of documentation. 
 If necessary, you can have multiple lines of documentation, which you can group together.
@@ -107,7 +109,7 @@ remote isolated function submit(string httpVerb, string path, RequestMessage mes
 }
 ```
 
-## Documenting a module
+## Document a module
 
 A Ballerina module can have a `Module.md` file, which describes the module and its usage.
 
@@ -145,7 +147,7 @@ The `bal doc` command will read the `Package.md` and `Module.md` files and prepe
 Check [HTTP module API documentation](https://lib.ballerina.io/ballerina/http/latest) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
 
 
-## Generating Ballerina documentation
+## Generate Ballerina documentation
 
 Ballerina provides a `doc` command, which can be executed against a given Ballerina package. This command will result in generating the Ballerina documentation as HTML files for all the modules in the package.
 

@@ -1,18 +1,20 @@
 ---
 layout: ballerina-managing-dependencies-left-nav-pages-swanlake
-title: Managing dependencies
+title: Manage dependencies
 description: The sections below include information about dependencies, imports, and how they can be used in your package.
 keywords: ballerina, programming language, ballerina packages, dependencies, importing modules
-permalink: /learn/managing-dependencies/
-active: managing-dependencies
+permalink: /learn/manage-dependencies/
+active: manage-dependencies
 intro: The sections below include information about dependencies, imports, and how they can be used in your package.
 redirect_from:
 - /learn/user-guide/ballerina-packages/dependencies
 - /learn/user-guide/ballerina-packages/dependencies/
 - /learn/managing-dependencies
+- /learn/managing-dependencies/
+- /learn/manage-dependencies
 ---
 
-## Specifying dependencies
+## Specify dependencies
 
 A package can depend on other packages that are available in Ballerina repositories. By default, Ballerina searches for the dependencies in the repositories below.
 * The distribution repository
@@ -33,7 +35,7 @@ The Ballerina Central is a remote repository and creates a local file system cac
 The local repository is also a file system repository, which will be created in the `<USER_HOME>` location. The repository location is `<USER_HOME>/.ballerina/repositories/local/repo/bala`. 
 For more information, see [Using Dependencies from the Local Repository](/learn/managing-dependencies/#using-dependencies-from-the-local-repository).
 
-### Importing a module
+### Import a module
 
 To use exported modules of any package, add an import statement in the Ballerina code. It enables access to all public symbols in the imported module.
 
@@ -97,7 +99,7 @@ service / on gmailEventListener {
 }
 ```
 
-## Specifying dependency versions
+## Specify dependency versions
 
 When building a package, the compiler figures out the dependency versions automatically. Ballerina searches the latest compatible versions of the package dependencies in the distribution repository, Ballerina Central repository, and the local repository(if specified).
 
@@ -112,7 +114,7 @@ The `Dependencies.toml` file is auto-generated and managed by the Ballerina CLI 
 Updating the versions of the existing dependencies, adding dependency entries related to a newly-added import statement, and deleting entries 
 of a removed import statement are handled by the CLI itself. 
 
-## Using dependencies from the local repository
+## Use dependencies from the local repository
 
 The local repository is useful to test a package in the development phase or to fix bugs. To specify a dependency from the local repository, first, you need to publish it to the local repository by following the steps below.
 
@@ -148,7 +150,7 @@ Ballerina considers the version specified in the Ballerina.toml as the minimum r
 However, the compiler gives priority to the latest version if a new patch version is found in distribution or Ballerina Central repositories.
 At this point, the compiler resolves the latest version and ignores the dependency version in the local repository.
 
-## Achieving reproducible builds
+## Achieve reproducible builds
 
 By default, the compiler always looks up the latest compatible versions of the dependencies in the repositories when building a package.
  It minimizes the hassle of managing dependency versions to the package developer since the compiler is smart enough to keep the package updated with the latest compatible dependencies all the time.

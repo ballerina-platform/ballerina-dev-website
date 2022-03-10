@@ -1,10 +1,10 @@
 ---
 layout: debugging-ballerina-programs-left-nav-pages-swanlake
-title: Debugging Ballerina programs
+title: Debug Ballerina programs
 description: Describes debugging functionalities provided by Ballerina in Visual Studio Code.  
 keywords: ballerina debugging, ballerina debug, ballerina debugger, ballerina vscode
-permalink: /learn/debugging-ballerina-programs/
-active: debugging-ballerina-programs
+permalink: /learn/debug-ballerina-programs/
+active: debug-ballerina-programs
 redirect_from:
   - /learn/tools-ides/vscode-plugin/run-and-debug
   - /learn/tools-ides/vscode-plugin/run-and-debug/
@@ -30,6 +30,8 @@ redirect_from:
   - /learn/visual-studio-code-extension/debugging
   - /learn/visual-studio-code-extension/debugging/
   - /learn/debugging-ballerina-programs
+  - /learn/debugging-ballerina-programs/
+  - /learn/debug-ballerina-programs
 ---
 
 When writing large-scale applications with complex logic, it is quite possible to have syntax, semantic, 
@@ -40,14 +42,14 @@ program execution after a successful compilation. This is where the dedicated de
 Currently, we provide a feature-rich debugging experience for troubleshooting Ballerina applications
 via the [Ballerina Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=WSO2.Ballerina).
 
-## Starting a debug session
+## Start a debug session
 
 The Ballerina extension provides multiple options to debug Ballerina applications, and the most convenient way will be using the context-aware debug codelens support.
 
 However, if you require launching debug sessions with additional configurations (i.e., program arguments, environment variables), you can use `launch.json` configurations
 (For more information, see [Starting a Debug Session with Configurations](#starting-a-debug-session-with-configurations)).
 
-### Starting a program debug session
+### Start a program debug session
 
 Follow the steps below to start a quick debug session using CodeLens.
 
@@ -61,7 +63,7 @@ Follow the steps below to start a quick debug session using CodeLens.
 
 <br/>
 
-### Starting a test debug session
+### Start a test debug session
 
 The Ballerina test functions can also be debugged using the codelens. The `debug` codelens will automatically appear on top of each Ballerina test function, 
 and you are able to execute/debug only the selected test case by clicking on the corresponding codelens as shown below.
@@ -70,7 +72,7 @@ and you are able to execute/debug only the selected test case by clicking on the
 
 <br/>
 
-### Starting a debug session with configurations
+### Start a debug session with configurations
 
 Follow the steps below to start a debug session with configurations. All the configurations need to be added in the `launch.json` file.
 
@@ -92,7 +94,7 @@ Then, you can start a program, test, or remote debug session as shown below.
 
 >**Info:** If you launch the debug session through VS Code, the working directory will be the Ballerina package root. However, you can use remote debugging for alternative working directories.
 
-#### Starting a program debug session with configurations
+#### Start a program debug session with configurations
 
 Follow the steps below to start a program debug session.
 
@@ -106,7 +108,7 @@ Follow the steps below to start a program debug session.
 
 <br/>
 
-#### Starting a test debug session with configurations
+#### Start a test debug session with configurations
 
 Follow the steps below to start a test debug session.
 
@@ -120,7 +122,7 @@ Follow the steps below to start a test debug session.
 
 <br/>
 
-### Starting a remote debug session
+### Start a remote debug session
 
 Follow the steps below to start a remote debug session.
 
@@ -164,7 +166,7 @@ Follow the steps below to start a remote debug session.
 
 <br/>
 
-## Using debug configurations
+## Use debug configurations
 
 The Ballerina debugger supports various debug configuration options via the `launch.json` file. 
 
@@ -224,7 +226,7 @@ The following attributes are supported for all Ballerina `attach` configurations
 - `debuggeeHost` - Host address of the remote process to be attached (if not specified, the default value will be the localhost(`127.0.0.1`)).
 - `debuggeePort` - Port number of the remote process to be attached.
 
-## Using the debugging features
+## Use the debugging features
 
 The following debugging features are currently supported by the Ballerina VScode extension.
 
@@ -277,11 +279,11 @@ Ballerina expression evaluator allows evaluating Ballerina variables and express
 
 The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
 
-#### Using the debug console
+#### Use the debug console
 
 ![Debugger Evaluation Console](/learn/images/debugger-evaluation-console.gif)
 
-#### Using the watch window
+#### Use the watch window
 
 ![Debugger Watch Window](/learn/images/debugger-watch-window.gif)
 

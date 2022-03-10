@@ -1,20 +1,24 @@
 ---
 layout: ballerina-testing-code-left-nav-pages-swanlake
-title: Testing services and clients
+title: Test services and clients
 description: Learn how to use Ballerina's built-in test framework to write tests for Services and Clients.
 keywords: ballerina, programming language, testing
-permalink: /learn/testing-ballerina-code/testing-services-and-clients/
+permalink: /learn/test-ballerina-code/test-services-and-clients/
 active: testing-services-and-clients
 intro: Testing Ballerina services involves sending specific requests to the service using a client and verifying the responses using the assertion functions. The aim is to make sure that the service and client behave as expected when sending and recieving both expected requests and malformed ones.
 redirect_from:
 - /learn/testing-ballerina-code/testing-services-and-clients
+- /learn/testing-ballerina-code/testing-services-and-clients/
 - /swan-lake/learn/testing-ballerina-code/testing-services-and-clients/
 - /swan-lake/learn/testing-ballerina-code/testing-services-and-clients
 - /learn/user-guide/testing-ballerina-code/testing-services-and-clients
 - /learn/user-guide/testing-ballerina-code/testing-services-and-clients/
+- /learn/testing-ballerina-code/test-services-and-clients/
+- /learn/testing-ballerina-code/test-services-and-clients
+- /learn/test-ballerina-code/test-services-and-clients
 ---
 
-## Testing services
+## Test services
 
 Any services defined in the package will start up on the specified ports and will remain running for the duration of the testing phase. After completing tests, the services will shut down automatically.
  It allows you to send requests directly to the service to test its functionality.
@@ -67,7 +71,7 @@ public function testGet() returns error? {
 }
 ```
 
-## Testing clients
+## Test clients
 
 In cases where a fully fledged client is already defined for a particular service, you can make use
 of `object mocking` to mock the calls to the service and return curated responses to the client.
@@ -106,7 +110,7 @@ function getMockResponse() returns http:Response {
 
 To lean more about how to use mocking to test services, see [Mocking](/learn/testing-ballerina-code/mocking).
 
-## Configuring services and clients
+## Configure services and clients
 
 Service or client configurations can be defined for testing using Configurable variables.
 Maintaining a test configurable configuration allows us to re-define the host or port as required.

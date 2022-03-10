@@ -22,7 +22,7 @@ redirect_from:
   - /learn/cli-documentation/
 ---
 
-## Using the Ballerina tool
+## Use the Ballerina tool
 
 The Ballerina Tool is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina packages and modules, test, build, and run programs, etc.
 

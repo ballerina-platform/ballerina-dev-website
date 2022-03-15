@@ -119,7 +119,6 @@ This creates two files below inside the `greeter_service` directory.
 
 ```bash
 .
-├── Ballerina.toml
 ├── greeter_service.bal
 └── helloworld_pb.bal
 ```
@@ -228,7 +227,6 @@ This creates two files below inside the `greeter_service` directory.
 
 ```bash
 .
-├── Ballerina.toml
 ├── greeter_client.bal
 └── helloworld_pb.bal
 ```

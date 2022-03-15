@@ -4,12 +4,12 @@
     - title: Network interaction
       url: #
       sublinks:
-          - title: Consuming services - client objects
-            url: /learn/distinctive-language-features/network-interaction/#consuming-services---client-objects
-            active: consuming-services---client-objects
-          - title: Providing services
-            url: /learn/distinctive-language-features/network-interaction/#providing-services
-            active: providing-services
+          - title: Consume services - client objects
+            url: /learn/distinctive-language-features/network-interaction/#consume-services---client-objects
+            active: consume-services---client-objects
+          - title: Provide services
+            url: /learn/distinctive-language-features/network-interaction/#provide-services
+            active: provide-services
           - title: Listener declaration
             url: /learn/distinctive-language-features/network-interaction/#listener-declaration
             active: listener-declaration
@@ -19,15 +19,15 @@
           - title: Module <code class="highlighter-rouge language-plaintext" id="cBackground">init</code> function
             url: /learn/distinctive-language-features/network-interaction/#module-init-function
             active: module-init-function
-          - title: Constructing objects without classes
-            url: /learn/distinctive-language-features/network-interaction/#constructing-objects-without-classes
-            active: constructing-objects-without-classes
+          - title: Construct objects without classes
+            url: /learn/distinctive-language-features/network-interaction/#construct-objects-without-classes
+            active: construct-objects-without-classes
           - title: Service declaration
             url: /learn/distinctive-language-features/network-interaction/#service-declaration
             active: service-declaration
-          - title: Representing responses
-            url: /learn/distinctive-language-features/network-interaction/#representing-responses
-            active: representing-responses
+          - title: Represent responses
+            url: /learn/distinctive-language-features/network-interaction/#represent-responses
+            active: represent-responses
           - title: Resource concept
             url: /learn/distinctive-language-features/network-interaction/#resource-concept
             active: resource-concept
@@ -73,30 +73,30 @@
           - title: Open records
             url: /learn/distinctive-language-features/data/#open-records
             active: open-records
-          - title: Controlling openness
-            url: /learn/distinctive-language-features/data/#controlling-openness
-            active: controlling-openness
+          - title: Control openness
+            url: /learn/distinctive-language-features/data/#control-openness
+            active: control-openness
           - title: <code class="highlighter-rouge language-plaintext" id="cBackground">json</code> type
             url: /learn/distinctive-language-features/data/#json-type
             active: json-type
-          - title: Working with JSON - two approaches
-            url: /learn/distinctive-language-features/data/#working-with-json---two-approaches
-            active: working-with-json---two-approaches
-          - title: Working with JSON directly
-            url: /learn/distinctive-language-features/data/#working-with-json-directly
-            active: working-with-json-directly
+          - title: Work with JSON - two approaches
+            url: /learn/distinctive-language-features/data/#work-with-json---two-approaches
+            active: work-with-json---two-approaches
+          - title: Work with JSON directly
+            url: /learn/distinctive-language-features/data/#work-with-json-directly
+            active: work-with-json-directly
           - title: <code class="highlighter-rouge language-plaintext" id="cBackground">match</code> statements with maps
             url: /learn/distinctive-language-features/data/#match-statements-with-maps
             active: match-statements-with-maps
-          - title: Converting from user-defined types to JSON
-            url: /learn/distinctive-language-features/data/#converting-from-user-defined-types-to-json
-            active: converting-from-user-defined-types-to-json
-          - title: Converting from JSON to user-defined types
-            url: /learn/distinctive-language-features/data/#converting-from-json-to-user-defined-types
-            active: converting-from-json-to-user-defined-types
-          - title: Converting to user-defined type - <code class="highlighter-rouge language-plaintext" id="cBackground">cloneWithType</code>
-            url: /learn/distinctive-language-features/data/#converting-to-user-defined-type---clonewithtype
-            active: converting-to-user-defined-type---clonewithtype
+          - title: Convert from user-defined types to JSON
+            url: /learn/distinctive-language-features/data/#convert-from-user-defined-types-to-json
+            active: convert-from-user-defined-types-to-json
+          - title: Convert from JSON to user-defined types
+            url: /learn/distinctive-language-features/data/#convert-from-json-to-user-defined-types
+            active: convert-from-json-to-user-defined-types
+          - title: Convert to user-defined type - <code class="highlighter-rouge language-plaintext" id="cBackground">cloneWithType</code>
+            url: /learn/distinctive-language-features/data/#convert-to-user-defined-type---clonewithtype
+            active: convert-to-user-defined-type---clonewithtype
           - title: Resource method typing
             url: /learn/distinctive-language-features/data/#resource-method-typing
             active: resource-method-typing
@@ -139,9 +139,9 @@
           - title: Default values for function parameters
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#default-values-for-function-parameters
             active: default-values-for-function-parameters
-          - title: Providing function arguments by name
-            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#providing-function-arguments-by-name
-            active: providing-function-arguments-by-name
+          - title: Provide function arguments by name
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#provide-function-arguments-by-name
+            active: provide-function-arguments-by-name
           - title: Type inclusion for records
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#type-inclusion-for-records
             active: type-inclusion-for-records
@@ -184,9 +184,9 @@
           - title: Tuples
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#tuples
             active: tuples
-          - title: Destructuring tuples
-            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#destructuring-tuples
-            active: destructuring-tuples
+          - title: Destructure tuples
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#destructure-tuples
+            active: destructure-tuples
           - title: Binding patterns in assignment
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#binding-patterns-in-assignment
             active: binding-patterns-in-assignment
@@ -211,9 +211,9 @@
           - title: <code class="highlighter-rouge language-plaintext" id="cBackground">never</code> type
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#never-type
             active: never-type
-          - title: Interfacing to external code
-            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#interfacing-to-external-code
-            active: interfacing-to-external-code
+          - title: Interface to external code
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#interface-to-external-code
+            active: interface-to-external-code
           - title: Built-in integer subtypes
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#built-in-integer-subtypes
             active: built-in-integer-subtypes

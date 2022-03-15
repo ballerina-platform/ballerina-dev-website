@@ -1,9 +1,9 @@
-- title: Calling Java Code from Ballerina
+- title: Call Java Code from Ballerina
   url: #
   sublinks:
-    - title: Writing Ballerina bindings
-      url: /learn/calling-java-code-from-ballerina/#writing-ballerina-bindings
-      active: writing-ballerina-bindings
-    - title: Using the SnakeYAML Java library in Ballerina
-      url: /learn/calling-java-code-from-ballerina/#using-the-snakeyaml-java-library-in-ballerina
-      active: using-the-snakeyaml-java-library-in-ballerina
+    - title: Write Ballerina bindings
+      url: /learn/call-java-code-from-ballerina/#write-ballerina-bindings
+      active: write-ballerina-bindings
+    - title: Use the SnakeYAML Java library in Ballerina
+      url: /learn/call-java-code-from-ballerina/#use-the-snakeyaml-java-library-in-ballerina
+      active: use-the-snakeyaml-java-library-in-ballerina

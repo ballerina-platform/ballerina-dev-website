@@ -69,7 +69,7 @@ In Java, you can assign the `null` value to any variable of a reference type. Th
 
 The following sections describe various aspects of Java interoperability in Ballerina. You can copy and paste the following examples into a `.bal` file and run it using the `bal run <file_name.bal>` command.
 
-## Instantiating Java classes
+## Instantiate Java classes
 Let's look at how you can create Java objects in a Ballerina program. The `@java:Constructor` annotation instructs the compiler to link a Ballerina function with a Java constructor.
 
 The `ArrayDeque` class in the `java.util` package has a default constructor. The following Ballerina code creates a new `ArrayDeque` object. As you can see, the `newArrayDeque` function is linked with the default constructor. This function returns a handle value and refers to the constructed `ArrayDeque` instance.
@@ -110,7 +110,7 @@ function newArrayDeque() returns handle = @java:Constructor {
 
 >**Note:** These `@java:*` annotations cannot be attached to Ballerina class methods at the moment.
 
-### Dealing with overloaded constructors
+### Deal with overloaded constructors
 When there are two constructors with the same number of arguments available, you need to specify the exact constructor that you want to link with the Ballerina function. The `ArrayDeque` class contains three constructors and the last two are overloaded ones.
 
 ```ballerina
@@ -199,10 +199,10 @@ function builderWithStudentList(handle list, int index) returns handle = @java:C
 } external;
 ```
 
-## Calling Java methods
+## Call Java methods
 You can use the `java:@Method` annotation to link Ballerina functions with Java static and instance methods. There is a minor but important difference in calling Java static methods vs calling instance methods.
 
-### Calling static methods
+### Call static methods
 First look at how to call a static method. The `java.util.UUID` class  has a static method with the `static UUID randomString()` signature.
 
 ```ballerina
@@ -228,7 +228,7 @@ function randomUUID() returns handle = @java:Method {
 } external;
 ```
 
-### Calling instance methods
+### Call instance methods
 Now, look at how to call Java instance methods using the same `ArrayDeque` class in the `java.util` package. It can be used as a stack with its `pop` and `push` instance methods with the following method signatures.
 
 ```java
@@ -267,7 +267,7 @@ public function main() {
 As you can see, you need to first construct an instance of the `ArrayDeque` class. The `arrayDequeObj` variable refers to an `ArrayDeque` object. Then, you need to pass this variable to both the `pop` and `push` functions because the corresponding Java methods are instance methods of the `ArrayDeque` class. Therefore, you need an instance of the `ArrayDeque` class to invoke its instance methods. You can think of the `arrayDequeObj` variable as the method receiver.
 
 
-### Calling methods asynchronously
+### Call methods asynchronously
 
 Ballerina internally uses a fixed number of threads. Therefore, when calling a Java method, it should return in a reasonable time frame to avoid starvation in the Ballerina code execution.
 
@@ -292,7 +292,7 @@ public function getFileCountRecursively(string path) returns int = @java:Method 
 } external;
 ```
 
-### Mapping Java classes into Ballerina classes
+### Map Java classes into Ballerina classes
 The following pattern is useful if you want to present a clearer Ballerina API, which calls the underneath Java code. This pattern creates wrapper Ballerina classes for each Java class that you want to expose via your API.
 
 Imagine that you want to design an API to manipulate a stack of string values by using the Java `ArrayDeque` utility. You can create a Ballerina class as follows.
@@ -341,7 +341,7 @@ public function main() {
 }
 ```
 
-### Calling overloaded Java methods
+### Call overloaded Java methods
 The [Instantiating Java Classes](/learn/java-interoperability/ballerina-ffi/#instantiating-java-classes) section presents how to deal with overloaded constructors. You need to use the same approach to deal with overloaded Java methods. Try to call the overloaded `append` methods in the `java.lang.StringBuffer` class. Below is a subset of those methods.
 
 ```java
@@ -464,7 +464,7 @@ public function main() {
 }
 ```
 
-### Mapping a Java exception to a Ballerina error value
+### Map a Java exception to a Ballerina error value
 Now, look at how a Java exception is converted to a Ballerina error value at runtime. A Ballerina error value contains three components: a message, a detail, and a stack trace.
 
 The `message`:
@@ -540,8 +540,8 @@ There are situations in which you need to pass a Java null to a method or store 
 handle nullValue = java:createNull();
 ```
 
-## Mapping Java types to Ballerina types and vice versa
-### Mapping Java types to Ballerina types
+## Map Java types to Ballerina types and vice versa
+### Map Java types to Ballerina types
 The following table summarizes how Java types are mapped to corresponding Ballerina types. This is applicable when mapping a return type of a Java method to a Ballerina type.
 
 Java type | Ballerina type | Notes
@@ -556,7 +556,7 @@ long | int, float | widening conversion when long -> float
 float | float | widening conversion
 double | float |
 
-### Mapping Ballerina types to Java types
+### Map Ballerina types to Java types
 The following table summarizes how Ballerina types are mapped to corresponding Java types. These rules are applicable when mapping a Ballerina function argument to a Java method/constructor parameter.
 
 Ballerina type | Java type | Notes
@@ -579,7 +579,7 @@ function | io.ballerina.runtime.api.values.BFunctionPointer |
 typedesc | io.ballerina.runtime.api.values.BTypedesc |
 error | io.ballerina.runtime.api.values.BError |
 
-### Using Ballerina arrays and maps in Java
+### Use Ballerina arrays and maps in Java
 There is no direct mapping between Ballerina arrays and maps to primitive Java arrays and maps. To facilitate the use of Ballerina arrays and maps in Java, the `ballerina-runtime` libraries have to be added as a dependency to the Java project and the relevant classes need to be imported from the `ballerina-runtime` library. For more information on all the released versions, go to [`ballerina-runtime`](https://maven.wso2.org/nexus/content/repositories/releases/org/ballerinalang/ballerina-runtime/). The latest version of the dependency can be added to Gradle using the following:
 ```groovy
 repositories {
@@ -595,7 +595,7 @@ dependencies {
 }
 ```
 
-#### Using Ballerina arrays in Java
+#### Use Ballerina arrays in Java
 To use Ballerina arrays in Java, the `BArray` interface has to be used. The example below illustrates how to write Java interop code that uses Ballerina arrays.
 ```java
 import io.ballerina.runtime.api.values.BArray;
@@ -628,7 +628,7 @@ function arrayReverse(int[] arr) returns int[] = @java:Method {
 } external;
 ```
 
-#### Using Ballerina maps in Java
+#### Use Ballerina maps in Java
 To use Ballerina maps in Java, the `BMap` interface has to be used. The example below illustrates how to write Java interop code that uses Ballerina maps.
 ```java
 import io.ballerina.runtime.api.values.BMap;

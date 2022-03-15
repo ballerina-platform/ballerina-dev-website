@@ -138,26 +138,26 @@ To add the business logic to the remote method (in this case, you only need to u
 
 2. Replace the service template file (i.e., `greeter_service.bal`) with the code below.
 
-    ```ballerina
-    import ballerina/grpc;
+  ```ballerina
+  import ballerina/grpc;
 
-    listener grpc:Listener grpcListener = new (9090);
+  listener grpc:Listener grpcListener = new (9090);
 
-    @grpc:ServiceDescriptor {descriptor: ROOT_DESCRIPTOR_HELLOWORLD, descMap: getDescriptorMapHelloworld()}
-    service "Greeter" on grpcListener {
+  @grpc:ServiceDescriptor {descriptor: ROOT_DESCRIPTOR_HELLOWORLD, descMap: getDescriptorMapHelloworld()}
+  service "Greeter" on grpcListener {
 
-        remote function sayHello(HelloRequest value) returns HelloReply|error {
-            return {message: "Hello " + value.name};
-        }
-    }
-    ```
+      remote function sayHello(HelloRequest value) returns HelloReply|error {
+          return {message: "Hello " + value.name};
+      }
+  }
+  ```
 
     In this code:
     - The listener declaration creates a new gRPC listener with port 9090. The listener is the entity that listens to the
     input coming to the port and then dispatches it to the correct service(s).
     - The service declaration creates a service and attaches it to the listener. The service annotation is to create an
-      internal mapping between the service declarations and the PROTO definition. Do not change it.
-    - The gRPC service can have one or more remote methods depending on the proto definition. Here, this service has only one method called `sayHello` that has the `HelloRequest` type as the request and `HelloReply` type as the response.
+      internal mapping between the service declarations and the `.proto` definition. Do not change it.
+    - The gRPC service can have one or more remote methods depending on the `.proto` definition. Here, this service has only one method called `sayHello` that has the `HelloRequest` type as the request and `HelloReply` type as the response.
 
 ## Run the gRPC service 
 
@@ -239,7 +239,7 @@ other and the Ballerina types corresponding to request and response messages.
 
 ### Update the client template file
 
-Replace the service template file (i.e., `greeter_client.bal`) with the code below to add the business logic to the remote method. In this case, you only need to update the `sayHello` method as shown below.
+Replace the client template file (i.e., `greeter_client.bal`) with the code below to add the business logic to the remote method. 
 
 ```ballerina
 import ballerina/io;

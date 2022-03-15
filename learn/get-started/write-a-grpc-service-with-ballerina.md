@@ -37,13 +37,13 @@ As illustrated in the diagram below, next, you compile the service definition fi
 
 To create a simple service definition in Protocol Buffers, follow these steps:
 
-> **Info:** The sample service definition is taken from the [quick start guide on the gRPC official site](https://grpc.io/docs/languages/go/quickstart/).
-
 1. Create a new directory named `grpc` in a preferred location (this is your main directory.)
 
 2. Inside the `grpc` directory, create a new service definition file (i.e., `helloworld.proto`).
 
 3. Copy the service definition below to the `helloworld.proto` file.
+
+> **Info:** This sample service definition is taken from the [Quick start](https://grpc.io/docs/languages/go/quickstart/) guide on the gRPC official site.
 
   ```proto
   syntax = "proto3";
@@ -52,18 +52,18 @@ To create a simple service definition in Protocol Buffers, follow these steps:
 
   // The greeting service definition.
   service Greeter {
-  // Sends a greeting.
-  rpc sayHello (HelloRequest) returns (HelloReply);
+    // Sends a greeting.
+    rpc sayHello(HelloRequest) returns (HelloReply);
   }
 
   // The request message with the user's name.
   message HelloRequest {
-  string name = 1;
+    string name = 1;
   }
 
   // The response message with the greetings.
   message HelloReply {
-  string message = 1;
+    string message = 1;
   }
   ```
 
@@ -134,7 +134,7 @@ To add the business logic to the remote method (in this case, you only need to u
 
 1. Open the `greeter_service` directory in your text editor. 
 
-    >**Tip:** If you are using VS Code, in the terminal, navigate to the , and execute the `code .` command.
+    >**Tip:** If you have VS Code installed, in the terminal, navigate to the `greeter_service` directory, and execute the `code .` command.
 
 2. Replace the service template file (i.e., `greeter_service.bal`) with the code below.
 
@@ -146,9 +146,9 @@ To add the business logic to the remote method (in this case, you only need to u
     @grpc:ServiceDescriptor {descriptor: ROOT_DESCRIPTOR_HELLOWORLD, descMap: getDescriptorMapHelloworld()}
     service "Greeter" on grpcListener {
 
-      remote function sayHello(HelloRequest value) returns HelloReply|error {
-          return { message: "Hello " + value.name};
-      }
+        remote function sayHello(HelloRequest value) returns HelloReply|error {
+            return {message: "Hello " + value.name};
+        }
     }
     ```
 

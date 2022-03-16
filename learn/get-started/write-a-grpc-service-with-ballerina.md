@@ -180,7 +180,7 @@ Compiling source
 Running executable
 ```
 
-Now you completed the server-side implementation, and it is running on port 9090. Let’s move on to the gRPC client-side implementation.
+Now, you completed the server-side implementation and it is running on port 9090. Let’s move on to the gRPC client-side implementation.
 
 ## Implement the gRPC client
 
@@ -206,8 +206,9 @@ This creates a directory named `greeter_client` with the files below.
 
 ```bash
 .
-├── Ballerina.toml
-└── main.bal
+├── greeter_client
+│   ├── Ballerina.toml
+│   └── main.bal
 ```
 
 >**Tip:** Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
@@ -228,12 +229,13 @@ Successfully extracted the library files.
 Successfully generated the Ballerina file.
 ```
 
-This creates two files below inside the `greeter_service` directory.
+This creates the two files below inside the `greeter_client` directory.
 
 ```bash
 .
-├── greeter_client.bal
-└── helloworld_pb.bal
+├── greeter_client
+│   ├── greeter_client.bal
+│   └── helloworld_pb.bal
 ```
 
 - The `helloworld_pb.bal` file is the stub file, which contains the classes that the client/service uses to talk to each

@@ -37,9 +37,9 @@ As illustrated in the diagram below, next, you compile the service definition fi
 
 To create a simple service definition in Protocol Buffers, follow these steps:
 
-1. Create a new directory named `grpc` in a preferred location (this is your main directory).
+1. Create a new directory named `grpc_sample` in a preferred location (this is your main directory).
 
-2. Inside the `grpc` directory, create a new service definition file (i.e., `helloworld.proto`).
+2. Inside the `grpc_sample` directory, create a new service definition file (i.e., `helloworld.proto`).
 
 3. Copy the service definition below to the `helloworld.proto` file.
   > **Info:** This sample service definition is taken from the [Quick start](https://grpc.io/docs/languages/go/quickstart/) guide on the gRPC official site.
@@ -75,7 +75,7 @@ As with any other Ballerina Program, you need to create a Ballerina project. The
 
 ### Create the service project
 
-In the terminal, navigate to the `grpc` directory, and execute the command below to create the Ballerina project for the gRPC service implementation:
+In the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina project for the gRPC service implementation:
 
 > **Note:** For more information on Ballerina packages, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
@@ -101,7 +101,7 @@ This creates a directory named `greeter_service` with the files below.
 
 ### Generate the source code of the service
 
-In the terminal, from inside the same `grpc` directory, execute the command below to generate the source code related to the service definition.
+In the terminal, from inside the same `grpc_sample` directory, execute the command below to generate the source code related to the service definition.
 
 ```bash
 $ bal grpc --mode service --input helloworld.proto --output greeter_service/
@@ -183,7 +183,7 @@ Similar to the service, the client application also starts with creating a new B
 
 ### Create the client project
 
-In a new tab of the terminal, navigate to the `grpc` directory, and execute the command below to create the Ballerina project for the gRPC client implementation:
+In a new tab of the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina project for the gRPC client implementation:
 
 > **Note:** For more information on Ballerina projects, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
@@ -209,7 +209,7 @@ This creates a directory named `greeter_client` with the files below.
 
 ### Generate the source code of the client
 
-In the terminal, from inside the same `grpc` directory, execute the command below to generate the source code related to the client definition.
+In the terminal, from inside the same `grpc_sample` directory, execute the command below to generate the source code related to the client definition.
 
 ```bash
 $ bal grpc --mode client --input helloworld.proto --output greeter_client/

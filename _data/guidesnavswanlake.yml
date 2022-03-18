@@ -81,19 +81,6 @@
     - title: Provide values to configurable variables
       url: /learn/configure-ballerina-programs/provide-values-to-configurable-variables
       sublinks:
-<<<<<<< HEAD
-        - title: Providing configuration values through Command-line arguments
-          url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-configuration-values-through-command-line-arguments
-          active: providing-values-through-command-line-arguments
-        - title: Providing configuration values through TOML syntax
-          url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-configuration-values-through-toml-syntax
-          active: providing-configuration-values-through-toml-syntax
-        - title: Providing module information of the configurable variable
-          url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-module-information-of-the-configurable-variable
-          active: providing-module-info-of-configurable-variable
-    - title: Configuring values in Kubernetes environments
-      url: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/
-=======
         - title: Provide configuration values through Command Line Arguments
           url: /learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-configuration-values-through-command-line-arguments
           active: provide-values-through-command-line-arguments
@@ -105,7 +92,6 @@
           active: provide-module-info-of-configurable-variable
     - title: Configure values in Kubernetes environments
       url: /learn/configure-ballerina-programs/configure-values-in-kubernetes-environment/
->>>>>>> b5e38bc28daeb5f7dafcd1a9169d1a862fbd18f0
       sublinks:
         - title: Secure sensitive data using configurable variables
           url: /learn/configure-ballerina-programs/configure-values-in-kubernetes-environment/#secure-sensitive-data-using-configurable-variables

@@ -331,7 +331,7 @@ The ``byte`` type represents a number between ``0`` and ``0xFF``. You can define
 byte b = 0xFF;
 ```
 
-In Ballerina, ``byte`` is not the same as a character in C. It is a subtype of the integer type. Therefore, it supports all the bitwise operators available on integers. Some of these operators produce a value that belongs to the integer type, and some operators like the ``&`` operator produce a value that belongs to the ``byte`` type.
+In Ballerina, ``byte`` is a subtype of the integer type. Therefore, it supports all the bitwise operators available on integers. Some of these operators produce a value that belongs to the integer type, and some operators like the ``&`` operator produce a value that belongs to the ``byte`` type.
 
 ## Maps
 

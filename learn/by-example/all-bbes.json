@@ -62,7 +62,7 @@
                 "isLearnByExample": true
             },
             {
-                "name": "Floating point Nnmbers",
+                "name": "Floating point numbers",
                 "url": "floating-point-numbers",
                 "verifyBuild": true,
                 "verifyOutput": true,

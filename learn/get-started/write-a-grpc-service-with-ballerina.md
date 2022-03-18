@@ -27,7 +27,7 @@ To run this tutorial, you need the following prerequisites:
 
 ## Understand the implementation
 
-In an RPC program, you first define the service interface using an Interface Definition Language(IDL) to create the service definition (i.e., `helloworld.proto`). gRPC commonly uses Protocol Buffers as the IDL.
+In an RPC program, you first define the service interface using an Interface Definition Language (IDL) to create the service definition (i.e., `helloworld.proto`). gRPC commonly uses Protocol Buffers as the IDL.
 
 As illustrated in the diagram below, next, you compile the service definition file (i.e., `helloworld.proto`), and generate the source code for both the service and client applications. In Ballerina, you can generate the source code using the built-in `Protocol Buffers to Ballerina` tool.
 
@@ -37,35 +37,39 @@ As illustrated in the diagram below, next, you compile the service definition fi
 
 To create a simple service definition in Protocol Buffers, follow these steps:
 
-1. Create a new directory named `grpc` in a preferred location (this is your main directory.)
+1. Create a new directory named `grpc_sample` in a preferred location (this is your main directory).
 
-2. Inside the `grpc` directory, create a new service definition file (i.e., `helloworld.proto`).
+2. Open the `grpc_sample` directory in your text editor. 
 
-3. Copy the service definition below to the `helloworld.proto` file.
+    >**Tip:** If you have VS Code installed, in the terminal, navigate to the `grpc_sample` directory, and execute the `code .` command.
 
-> **Info:** This sample service definition is taken from the [Quick start](https://grpc.io/docs/languages/go/quickstart/) guide on the gRPC official site.
+3. Inside the `grpc_sample` directory, create a new service definition file (i.e., `helloworld.proto`).
 
-  ```proto
-  syntax = "proto3";
+4. Copy the service definition below to the `helloworld.proto` file.
+  > **Info:** This sample service definition is taken from the [Quick start](https://grpc.io/docs/languages/go/quickstart/) guide on the gRPC official site.
 
-  package helloworld;
 
-  // The greeting service definition.
-  service Greeter {
-    // Sends a greeting.
-    rpc sayHello(HelloRequest) returns (HelloReply);
-  }
+    ```proto
+    syntax = "proto3";
 
-  // The request message with the user's name.
-  message HelloRequest {
-    string name = 1;
-  }
+    package helloworld;
 
-  // The response message with the greetings.
-  message HelloReply {
-    string message = 1;
-  }
-  ```
+    // The greeting service definition.
+    service Greeter {
+      // Sends a greeting.
+      rpc sayHello(HelloRequest) returns (HelloReply);
+    }
+
+    // The request message with the user's name.
+    message HelloRequest {
+      string name = 1;
+    }
+
+    // The response message with the greetings.
+    message HelloReply {
+      string message = 1;
+    }
+    ```
 
 Now, let’s implement the gRPC service and client in the Ballerina language.
 
@@ -75,7 +79,7 @@ As with any other Ballerina Program, you need to create a Ballerina project. The
 
 ### Create the service project
 
-In the terminal, navigate to the `grpc` directory, and execute the command below to create the Ballerina project for the gRPC service implementation:
+In the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina project for the gRPC service implementation:
 
 > **Note:** For more information on Ballerina packages, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
@@ -93,15 +97,16 @@ This creates a directory named `greeter_service` with the files below.
 
 ```bash
 .
-├── Ballerina.toml
-└── main.bal
+├── greeter_service
+│   ├── Ballerina.toml
+│   └── main.bal
 ```
 
 >**Tip:** Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
 
 ### Generate the source code of the service
 
-In the terminal, from inside the same `grpc` directory, execute the command below to generate the source code related to the service definition.
+In the terminal, from inside the same `grpc_sample` directory, execute the command below to generate the source code related to the service definition.
 
 ```bash
 $ bal grpc --mode service --input helloworld.proto --output greeter_service/
@@ -110,17 +115,19 @@ $ bal grpc --mode service --input helloworld.proto --output greeter_service/
 Once successfully executed, you will see the output below.
 
 ```bash
-Continuing with the existing protoc executor file at /var/folders/6p/8h4k83hj0r98n1s6mc3jy0480000gn/T/protoc-3.9.1-osx-x86_64.exe
+Downloading the protoc executor file - protoc-3.9.1-osx-x86_64.exe
+Download successfully completed. Executor file path - /var/folders/6p/8h4k83hj0r98n1s6mc3jy0480000gn/T/protoc-3.9.1-osx-x86_64.exe
 Successfully extracted the library files.
 Successfully generated the Ballerina file.
 ```
 
-This creates two files below inside the `greeter_service` directory.
+This creates the two files below inside the `greeter_service` directory.
 
 ```bash
 .
-├── greeter_service.bal
-└── helloworld_pb.bal
+├── greeter_service
+│   ├── greeter_service.bal
+│   └── helloworld_pb.bal
 ```
 
 - The `helloworld_pb.bal` file is the stub file, which contains classes that the client/service uses to talk to each other and the Ballerina types corresponding to the request and response messages.
@@ -133,30 +140,28 @@ To add the business logic to the remote method (in this case, you only need to u
 
 1. Open the `greeter_service` directory in your text editor. 
 
-    >**Tip:** If you have VS Code installed, in the terminal, navigate to the `greeter_service` directory, and execute the `code .` command.
-
 2. Replace the service template file (i.e., `greeter_service.bal`) with the code below.
 
-  ```ballerina
-  import ballerina/grpc;
+    ```ballerina
+    import ballerina/grpc;
 
-  listener grpc:Listener grpcListener = new (9090);
+    listener grpc:Listener grpcListener = new (9090);
 
-  @grpc:ServiceDescriptor {descriptor: ROOT_DESCRIPTOR_HELLOWORLD, descMap: getDescriptorMapHelloworld()}
-  service "Greeter" on grpcListener {
+    @grpc:ServiceDescriptor {descriptor: ROOT_DESCRIPTOR_HELLOWORLD, descMap: getDescriptorMapHelloworld()}
+    service "Greeter" on grpcListener {
 
-      remote function sayHello(HelloRequest value) returns HelloReply|error {
-          return {message: "Hello " + value.name};
-      }
-  }
-  ```
+        remote function sayHello(HelloRequest value) returns HelloReply|error {
+            return {message: "Hello " + value.name};
+        }
+    }
+    ```
 
     In this code:
-    - The listener declaration creates a new gRPC listener with port 9090. The listener is the entity that listens to the
+      - The listener declaration creates a new gRPC listener with port 9090. The listener is the entity that listens to the
     input coming to the port and then dispatches it to the correct service(s).
-    - The service declaration creates a service and attaches it to the listener. The service annotation is to create an
+      - The service declaration creates a service and attaches it to the listener. The service annotation is to create an
       internal mapping between the service declarations and the `.proto` definition. Do not change it.
-    - The gRPC service can have one or more remote methods depending on the `.proto` definition. Here, this service has only one method called `sayHello` that has the `HelloRequest` type as the request and `HelloReply` type as the response.
+      - The gRPC service can have one or more remote methods depending on the `.proto` definition. Here, this service has only one method called `sayHello` that has the `HelloRequest` type as the request and `HelloReply` type as the response.
 
 ## Run the gRPC service 
 
@@ -175,7 +180,7 @@ Compiling source
 Running executable
 ```
 
-Now you completed the server-side implementation, and it is running on port 9090. Let’s move on to the gRPC client-side implementation.
+Now, you completed the server-side implementation and it is running on port 9090. Let’s move on to the gRPC client-side implementation.
 
 ## Implement the gRPC client
 
@@ -183,7 +188,7 @@ Similar to the service, the client application also starts with creating a new B
 
 ### Create the client project
 
-In a new tab of the terminal, navigate to the `grpc` directory, and execute the command below to create the Ballerina project for the gRPC client implementation:
+In a new tab of the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina project for the gRPC client implementation:
 
 > **Note:** For more information on Ballerina projects, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
@@ -201,15 +206,16 @@ This creates a directory named `greeter_client` with the files below.
 
 ```bash
 .
-├── Ballerina.toml
-└── main.bal
+├── greeter_client
+│   ├── Ballerina.toml
+│   └── main.bal
 ```
 
 >**Tip:** Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
 
 ### Generate the source code of the client
 
-In the terminal, from inside the same `grpc` directory, execute the command below to generate the source code related to the client definition.
+In the terminal, from inside the same `grpc_sample` directory, execute the command below to generate the source code related to the client definition.
 
 ```bash
 $ bal grpc --mode client --input helloworld.proto --output greeter_client/
@@ -223,12 +229,13 @@ Successfully extracted the library files.
 Successfully generated the Ballerina file.
 ```
 
-This creates two files below inside the `greeter_service` directory.
+This creates the two files below inside the `greeter_client` directory.
 
 ```bash
 .
-├── greeter_client.bal
-└── helloworld_pb.bal
+├── greeter_client
+│   ├── greeter_client.bal
+│   └── helloworld_pb.bal
 ```
 
 - The `helloworld_pb.bal` file is the stub file, which contains the classes that the client/service uses to talk to each

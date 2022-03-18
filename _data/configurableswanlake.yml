@@ -1,15 +1,16 @@
-- title: Configuring Ballerina programs
+- title: Configure Ballerina programs
   url: '#'
   sublinks:
     - title: Quick start on using configurable variables
-      url: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables
+      url: /learn/configure-ballerina-programs/quick-start-on-configurable-variables
       sublinks:
-        - title: Configuring a sample Ballerina service
-          url: /learn/configuring-ballerina-programs/quick-start-on-configurable-variables/#configuring-a-sample-ballerina-service
-          active: configuring-a-sample-ballerina-service
-    - title: Providing values to configurable variables
-      url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables
+        - title: Configure a sample Ballerina service
+          url: /learn/configure-ballerina-programs/quick-start-on-configurable-variables/#configure-a-sample-ballerina-service
+          active: configure-a-sample-ballerina-service
+    - title: Provide values to configurable variables
+      url: /learn/configure-ballerina-programs/provide-values-to-configurable-variables
       sublinks:
+<<<<<<< HEAD
         - title: Providing configuration values through command-line arguments
           url: /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/#providing-configuration-values-through-command-line-arguments
           active: providing-values-through-command-line-arguments
@@ -21,7 +22,20 @@
           active: providing-module-info-of-configurable-variable
     - title: Configuring values in Kubernetes environments
       url: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/
+=======
+        - title: Provide configuration values through Command Line Arguments
+          url: /learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-configuration-values-through-command-line-arguments
+          active: provide-values-through-command-line-arguments
+        - title: Provide configuration values through TOML syntax
+          url: /learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-configuration-values-through-toml-syntax
+          active: provide-configuration-values-through-toml-syntax
+        - title: Provide module information of the configurable variable
+          url: /learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-module-information-of-the-configurable-variable
+          active: provide-module-info-of-configurable-variable
+    - title: Configure values in Kubernetes environments
+      url: /learn/configure-ballerina-programs/configure-values-in-kubernetes-environment/
+>>>>>>> b5e38bc28daeb5f7dafcd1a9169d1a862fbd18f0
       sublinks:
-        - title: Securing sensitive data using configurable variables
-          url: /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/#securing-sensitive-data-using-configurable-variables
-          active: securing-sensitive-data-using-configurable-variables
+        - title: Secure sensitive data using configurable variables
+          url: /learn/configure-ballerina-programs/configure-values-in-kubernetes-environment/#secure-sensitive-data-using-configurable-variables
+          active: secure-sensitive-data-using-configurable-variables

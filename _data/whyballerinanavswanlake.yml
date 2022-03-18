@@ -40,9 +40,9 @@
         - title: Query actions 
           url: /why-ballerina/data-oriented/#query-actions
           active: query-actions
-        - title: Writing integrated queries
-          url: /why-ballerina/data-oriented/#writing-integrated-queries
-          active: writing-integrated-queries
+        - title: Write integrated queries
+          url: /why-ballerina/data-oriented/#write-integrated-queries
+          active: write-integrated-queries
     - title: Graphical 
       url: '#'
       sublinks:

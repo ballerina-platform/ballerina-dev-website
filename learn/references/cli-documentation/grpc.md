@@ -81,7 +81,7 @@ message HelloReply {
 ```
 **Note:** The sample service definition is taken from the quick start guide on the gRPC official site.
 
-### Executing the sample
+### Execute the sample
 
 * Execute the below command to generate the client/service stub and service template files.
 ```

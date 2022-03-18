@@ -193,7 +193,7 @@ type Person record {|
 |}
 ```
 
-## Referencing record or object
+## Reference record or object
 * Do not keep spaces between the `*` and the object name or the record name.
   
 **Example,**

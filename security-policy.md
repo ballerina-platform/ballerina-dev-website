@@ -13,7 +13,7 @@ redirect_from:
 
 Thank you for taking the time to [responsibly disclose](https://en.wikipedia.org/wiki/Responsible_disclosure) any vulnerabilities you find.
 
-## Reporting a vulnerability
+## Report a vulnerability
 
 First of all, make sure that you are using the latest Ballerina version before you run an automated security scan or perform a penetration test against it. All security vulnerabilities and any other concerns related to security should be reported by sending an email to [security@ballerina.io](mailto:security@ballerina.io).  
 
@@ -36,7 +36,7 @@ Also, use the following template when reporting vulnerabilities so that it conta
 
 We will keep you informed of the progress towards fixing and disclosing of the vulnerability if the reported issue is identified as a true positive.
 
-## Handling a vulnerability
+## Handle a vulnerability
 
 Here is an overview of our approach to handling vulnerabilities:
 
@@ -46,7 +46,7 @@ Here is an overview of our approach to handling vulnerabilities:
 4. The fix will be applied to the affected components and a new version will be released immediately if required.
 5. The reported user is kept updated on the progress of the process. 
 
-## Getting acknowledged and rewarded
+## Get acknowledged and rewarded
 
 Your efforts in reporting vulnerabilities or any other issues related to the security of Ballerina will be recognized and honored via the [WSO2 Security Reward and Acknowledgement Program](https://docs.wso2.com/display/Security/WSO2+Security+Reward+and+Acknowledgement+Program). 
 

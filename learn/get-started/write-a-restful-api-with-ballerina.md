@@ -9,7 +9,6 @@ intro: This guide helps you understand the basics of Ballerina constructs, which
 redirect_from:
   - /learn/writing-a-restful-api-with-ballerina
   - /learn/writing-a-restful-api-with-ballerina/
-  - /learn/write-a-restful-api-with-ballerina/
   - /learn/write-a-restful-api-with-ballerina
 ---
 
@@ -19,12 +18,12 @@ In this tutorial, you will be creating a RESTful API with two endpoints. The sam
 
 ## Set up the prerequisites
 
-To complete this tutorial, you need:
+To run this tutorial, you need the following prerequisites:
 
-1. A command terminal
+1. [Ballerina 2202.0.0 (Swan Lake)](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/) or greater
 2. A text editor
-    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
-3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
+  >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
+3. A command terminal
 
 ## Design the two endpoints
 

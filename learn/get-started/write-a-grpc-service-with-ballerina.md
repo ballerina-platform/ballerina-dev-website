@@ -115,8 +115,6 @@ $ bal grpc --mode service --input helloworld.proto --output greeter_service/
 Once successfully executed, you will see the output below.
 
 ```bash
-Downloading the protoc executor file - protoc-3.9.1-osx-x86_64.exe
-Download successfully completed. Executor file path - /var/folders/6p/8h4k83hj0r98n1s6mc3jy0480000gn/T/protoc-3.9.1-osx-x86_64.exe
 Successfully extracted the library files.
 Successfully generated the Ballerina file.
 ```
@@ -224,7 +222,6 @@ $ bal grpc --mode client --input helloworld.proto --output greeter_client/
 Once successfully executed, you will see the output below.
 
 ```bash
-Continuing with the existing protoc executor file at /var/folders/6p/8h4k83hj0r98n1s6mc3jy0480000gn/T/protoc-3.9.1-osx-x86_64.exe
 Successfully extracted the library files.
 Successfully generated the Ballerina file.
 ```

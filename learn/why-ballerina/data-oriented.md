@@ -77,7 +77,7 @@ var x = from var person in personList
     };
 ```
 
-## Writing integrated queries
+## Write integrated queries
 
 The example below provides in-depth knowledge on how to utilize the capabilities of the Ballerina query expressions. This example explains the use case of finding popular books in a store.
 

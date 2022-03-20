@@ -31,21 +31,21 @@
         - title: The handle type
           url: /learn/java-interoperability/ballerina-ffi/#the-handle-type
           active: the-handle-type
-        - title: Instantiating Java classes
-          url: /learn/java-interoperability/ballerina-ffi/#instantiating-java-classes
-          active: instantiating-java-classes
-        - title: Calling Java methods
-          url: /learn/java-interoperability/ballerina-ffi/#calling-java-methods
-          active: calling-java-methods
+        - title: Instantiate Java classes
+          url: /learn/java-interoperability/ballerina-ffi/#instantiate-java-classes
+          active: instantiate-java-classes
+        - title: Call Java methods
+          url: /learn/java-interoperability/ballerina-ffi/#call-java-methods
+          active: call-java-methods
         - title: Java exceptions as Ballerina errors
           url: /learn/java-interoperability/ballerina-ffi/#java-exceptions-as-ballerina-errors
           active: java-exceptions-as-ballerina-errors
         - title: Null safety
           url: /learn/java-interoperability/ballerina-ffi/#null-safety
           active: null-safety
-        - title: Mapping Java types to Ballerina types and vice versa
-          url: /learn/java-interoperability/ballerina-ffi/#mapping-java-types-to-ballerina-types-and-vice-versa
-          active: mapping-java-types-to-ballerina-types-and-vice-versa
+        - title: Map Java types to Ballerina types and vice versa
+          url: /learn/java-interoperability/ballerina-ffi/#map-java-types-to-ballerina-types-and-vice-versa
+          active: mapp-java-types-to-ballerina-types-and-vice-versa
         - title: Access or mutate Java fields
           url: /learn/java-interoperability/ballerina-ffi/#access-or-mutate-java-fields
           active: access-or-mutate-java-fields

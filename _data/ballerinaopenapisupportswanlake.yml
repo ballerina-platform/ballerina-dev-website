@@ -1,24 +1,24 @@
 - title: Ballerina OpenAPI support
   url: #
   sublinks:
-    - title: Using the capabilities of the OpenAPI tools
-      url: /learn/ballerina-openapi-support/#using-the-capabilities-of-the-openapi-tools
-      active: using-the-capabilities-of-the-openapi-tools
-    - title: Generating a Ballerina service from an OpenAPI definition (design-first approach)
-      url: /learn/ballerina-openapi-support/#generating-a-ballerina-service-from-an-openapi-definition-design-first-approach
+    - title: Use the capabilities of the OpenAPI tools
+      url: /learn/ballerina-openapi-support/#use-the-capabilities-of-the-openapi-tools
+      active: use-the-capabilities-of-the-openapi-tools
+    - title: Generate a Ballerina service from an OpenAPI definition (design-first approach)
+      url: /learn/ballerina-openapi-support/#generate-a-ballerina-service-from-an-openapi-definition-design-first-approach
       active: generate-a-ballerina-service-from-an-openapi-design-first-approach
-    - title: Exporting an OpenAPI contract from a Ballerina service (code-first approach)
-      url: /learn/ballerina-openapi-support/#exporting-an-openapi-contract-from-a-ballerina-service-code-first-approach
-      active: exporting-an-openapi-contract-from-a-ballerina-service-code-first-approach
+    - title: Export an OpenAPI contract from a Ballerina service (code-first approach)
+      url: /learn/ballerina-openapi-support/#export-an-openapi-contract-from-a-ballerina-service-code-first-approach
+      active: export-an-openapi-contract-from-a-ballerina-service-code-first-approach
     - title: OpenAPI validator compiler plugin
       url: /learn/ballerina-openapi-support/#openapi-validator-compiler-plugin
       active: openapi-validator-compiler-plugin
-    - title: Generating a Ballerina client from an OpenAPI definition
-      url: /learn/ballerina-openapi-support/#generating-a-ballerina-client-from-an-openapi-definition
-      active: generating-a-ballerina-client-from-an-openapi-definition
-    - title: Contributing to the WSO2 openapi-connectors repository
-      url: /learn/ballerina-openapi-support/#contributing-to-the-wso2-openapi-connectors-repository
-      active: contributing-to-the-wso2-openapi-connectors-repository
+    - title: Generate a Ballerina client from an OpenAPI definition
+      url: /learn/ballerina-openapi-support/#generate-a-ballerina-client-from-an-openapi-definition
+      active: generate-a-ballerina-client-from-an-openapi-definition
+    - title: Contribute to the WSO2 openapi-connectors repository
+      url: /learn/ballerina-openapi-support/#contribute-to-the-wso2-openapi-connectors-repository
+      active: contribute-to-the-wso2-openapi-connectors-repository
     - title: OpenAPI to Ballerina command reference
       url: /learn/ballerina-openapi-support/#openapi-to-ballerina-command-reference
       active: openapi-to-ballerina-command-reference

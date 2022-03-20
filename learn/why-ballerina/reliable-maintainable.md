@@ -122,7 +122,7 @@ function whois(string domain, tcp:Client whoisClient) returns string|error {
 }
 ```
 
-### Ignoring return values and error
+### Ignore return values and error
 
 Ballerina does not allow ignoring return values of expressions. 
 
@@ -147,7 +147,7 @@ _ =  whois("ballerina.io", whoisClient);
 
 As explained earlier, `_` is like an implicitly declared variable of the `any` type; this is a union type that includes all the types in Ballerina except for the error type. Therefore, the type, which includes all values supported by Ballerina is `any|error`. As per the typing rules in Ballerina, the above statement causes a compilation error because `string|error` is not a subtype of the `any` type.
 
-### Dealing with abnormal errors
+### Deal with abnormal errors
 
 Ballerina has made a conscious decision to distinguish normal errors from abnormal errors. The sections above explained how to deal with normal errors. Out of memory, division by zero, programming bugs are examples of abnormal errors in Ballerina. Such errors typically result in immediate program termination. 
 

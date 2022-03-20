@@ -22,7 +22,7 @@ Individually these features may not stand out. However, it is the combination of
 
 This and the subsequent two parts will talk about these features. Let’s start with network interaction. The two fundamental operations in any network interaction are consuming services and providing services.
 
-## Consuming services - client objects
+## Consume services - client objects
 
 Client applications consume network services. Therefore, Ballerina supports defining client objects to allow a program to interact with remote network services using remote methods.
 
@@ -52,7 +52,7 @@ Remote method calls have some restrictions. For example, they are not allowed in
 
 Applications typically do not need to write client classes. Instead, these classes are either provided by the library modules or generated from some flavor of interface definition language.
 
-## Providing services
+## Provide services
 
 Providing services is a more complex interaction with three main things involved.
 
@@ -101,7 +101,7 @@ The return type of this **``init()``** function must be a subtype of ``error?``.
 
 Ballerina considers it an error to import a module and not use it. If you want to import a module because of what its initialization does, then use *``as _``* in the import declaration.
 
-## Constructing objects without classes
+## Construct objects without classes
 
 Ballerina allows you to construct objects even without classes. This is useful for initializing service objects.
 
@@ -159,7 +159,7 @@ function init() returns error? {
 }
 ```
 
-## Representing responses
+## Represent responses
 
 Traditionally, all network protocols use a standard request-response pattern. In Ballerina when a client remote method makes a request, the return value of the method provides a response. Similarly, when the service remote method is invoked, the return value of the method provides the response.
 

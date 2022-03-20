@@ -23,7 +23,7 @@ function substring(string str, int 'start = 0, int end = str.length())
 
 The type descriptor contains closures for every defaultable parameter. These closures accept the values specified for the previous parameters as arguments. Using those closures, the compiler generates code to fill missing values at the call site for this function. This is not part of the function type and is not applicable when functions are passed around as a first-class value.
 
-## Providing function arguments by name
+## Provide function arguments by name
 
 In addition to default values for parameters, it is also useful to call functions with named arguments. Ballerina allows you to call functions with named arguments, and these named arguments do not have to be in the same order as the parameters.
 
@@ -398,8 +398,7 @@ byte[*] a = [104, 101, 108, 108, 111];
 
 You can also infer the length of an array from the initializer expression. In the above code example, the array **``a``** is initialized with a fixed length, but the declaration uses a ``*`` notation instead of specifying the length. This means that the compiler will allocate the array length based on the values used as the initializer expression.
 
-
-## Destructuring tuples
+## Destructure tuples
 
 Tuples can be accessed normally, like arrays, by specifying the index. However, there is a more intuitive way to use tuples by destructuring them.
 
@@ -618,7 +617,7 @@ In the above code example, **``Pair``** is an open record. Therefore **``p``** i
 
 So this means that **``rest``** can have any field except the fields with keys `x` and `y` since they are already bound. The ``never`` type can be leveraged with optional fields to indicate that that record will never have the particular field.
 
-## Interfacing to external code
+## Interface to external code
 
 Sometimes you want to interface with external code. Instead of implementing the function body the keyword ``external`` can be used. The implementation figures out how to map to the external implementation.
 

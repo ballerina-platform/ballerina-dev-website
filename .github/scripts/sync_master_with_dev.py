@@ -10,7 +10,6 @@ github = Github(ballerina_bot_token)
 
 def main():
     repo = github.get_repo('ballerina-platform/ballerina-dev-website')
-    create_pull_request(repo, 'master')
 
     # Check whether dev branch already has an unmerged PR from master branch, delete if exists
     pulls = repo.get_pulls(state='open', base='dev')
@@ -19,6 +18,8 @@ def main():
             print ("Dev branch already has an open pull request from master branch")
             pull.edit(state = 'closed')
             break
+
+    create_pull_request(repo, 'master')
 
 def create_pull_request(repo, source_branch):
     try:

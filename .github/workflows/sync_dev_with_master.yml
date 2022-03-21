@@ -26,7 +26,7 @@ jobs:
           pip install PyGithub
       - name: Send pull request
         run: |
-          python3 .github/scripts/sync_lang_dev_with_master.py
+          python3 .github/scripts/sync_dev_with_master.py
         env:
           BALLERINA_BOT_USERNAME: ${{ secrets.BALLERINA_BOT_USERNAME }}
           BALLERINA_BOT_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}

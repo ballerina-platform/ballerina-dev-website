@@ -26,6 +26,8 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+          ref: master
 
     - name: Clone ballerina-release
       run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-release.git

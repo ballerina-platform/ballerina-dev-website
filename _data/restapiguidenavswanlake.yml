@@ -4,24 +4,27 @@
     - title: Set up the prerequisites
       url: /learn/write-a-restful-api-with-ballerina/#set-up-the-prerequisites
       active: set-up-the-prerequisites
-    - title: Design the two endpoints
-      url: /learn/writing-a-restful-api-with-ballerina/#design-the-two-endpoints
-      active: design-the-two-endpoints
-    - title: Create a package for your code
-      url: /learn/write-a-restful-api-with-ballerina/#create-a-package-for-your-code
-      active: create-a-package-for-your-code
-    - title: Create the COVID-19 dataset
-      url: /learn/write-a-restful-api-with-ballerina/#create-the-covid-19-dataset
-      active: create-the-covid-19-dataset
-    - title: Write a resource to get all the COVID-19 data
-      url: /learn/write-a-restful-api-with-ballerina/#write-a-resource-to-get-all-the-covid-19-data
-      active: write-a-resource-to-get-all-the-covid-19-data
-    - title: Write a resource to add COVID-19 data by ISO code
-      url: /learn/write-a-restful-api-with-ballerina/#write-a-resource-to-add-covid-19-data-by-iso-code
-      active: write-a-resource-to-add-covid-19-data-by-iso-code
-    - title: Write a resource to get filtered COVID-19 data by ISO code
-      url: /learn/write-a-restful-api-with-ballerina/#write-a-resource-to-get-filtered-covid-19-data-by-iso-code
-      active: write-a-resource-to-get-filtered-covid-19-data-by-iso-code
-    - title: The complete code
-      url: /learn/write-a-restful-api-with-ballerina/#the-complete-code
-      active: the-complete-code
+    - title: Understand the implementation
+      url: /learn/writing-a-restful-api-with-ballerina/#understand-the-implementation
+      active: understand-the-implementation
+    - title: Create the service project
+      url: /learn/write-a-restful-api-with-ballerina/#create-the-service-project
+      active: create-the-service-project
+    - title: Create the dataset
+      url: /learn/write-a-restful-api-with-ballerina/#create-the-dataset
+      active: create-the-dataset
+    - title: Create the service
+      url: /learn/write-a-restful-api-with-ballerina/#create-the-service
+      active: create-the-service
+    - title: Implement the first endpoint
+      url: /learn/write-a-restful-api-with-ballerina/#implement-the-first-endpoint
+      active: implement-the-first-endpoint
+    - title: Implement the second endpoint
+      url: /learn/write-a-restful-api-with-ballerina/#implement-the-second-endpoint
+      active: implement-the-second-endpoint
+    - title: Run the service
+      url: /learn/write-a-restful-api-with-ballerina/#run-the-service
+      active: run-the-service
+    - title: Try the service
+      url: /learn/write-a-restful-api-with-ballerina/#try-the-service
+      active: try-the-service

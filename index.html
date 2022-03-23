@@ -153,7 +153,7 @@ td.cEventDateContainer1 span.cEventDate1{
     border: none;
     text-align: right;
 }
-
+tr:last-child >td{border-bottom: 0 !important;}
 
 .cEventName{
     margin-top: -2px;
@@ -170,10 +170,11 @@ td.cEventDateContainer{
 </style>
 <link rel="stylesheet" href="/css/events-page.css">
 <style>
-   table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+   /* table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
   border-bottom: 0px !important;
 
-}
+} */
+tr:last-child >td{border-bottom: 0 !important;}
 </style>
 <!-- <link rel="stylesheet" href="/css/home-page-old.css"/> -->
 <div class="row cBallerinaIntroSection">
@@ -828,32 +829,50 @@ service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
     </div>
   
       <div class="row">
-          <!-- <table class="cEventTable cConferencesList" style="width:100% !important;">
-              <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+          <table class="cEventTable cConferencesList" style="width:100% !important;">
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
                   <td class="cEventDateContainer cEventDateContainer1">	
-                     <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">March 10, 2022</p>	
+                     <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">March 24, 2022</p>	
                      <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Thur., 7.00 p.m. IST</p>	
                      <p class="cEventLocation" style="text-align: right;">Online</p>	
                   </td>	
                   <td class="cEventDetail" id="eventDetails" >	
-                     <a target="_blank" href="https://sliitfoss.org/events/ballerina">	
+                     <a target="_blank" href="https://www.meetup.com/Kubernetes-Sri-Lanka/events/284795561/">	
                         <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Virtual event</p>	
                      </a>
-                     <h5 style="margin-bottom: 18px;">Introduction to Compiler Construction: Ballerina as a Case Study</h5>		
-                     <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/manurangaperera">Manuranga Perera</a>, Senior Technical Lead, WSO2
+                     <h5 style="margin-bottom: 18px;">From Code to Cloud with Ballerina</h5>		
+                     <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/sameerajayasoma">Sameera Jayasoma</a>, Senior Director, WSO2
                   </td>	
-                  <td class="cEventURL"><a class="cEventRegistration" href="https://sliitfoss.org/events/ballerina" target="_blank" style="text-align: center;">More info</a></td>	
+                  <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Kubernetes-Sri-Lanka/events/284795561/" target="_blank" style="text-align: center;">More info</a></td>	
               </tr>
                </td>	
            </tr>
-          </table> -->
+           <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+            <td class="cEventDateContainer cEventDateContainer1" style="border-bottom: 0 !important;">	
+               <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">May 25, 2022</p>	
+               <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Wed., 6.30 p.m. PDT</p>	
+               <p class="cEventLocation" style="text-align: right;">Online</p>	
+            </td>	
+            <td class="cEventDetail" id="eventDetails" style="border-bottom: 0 !important;">	
+               <a target="_blank" href="https://www.meetup.com/sfjava/events/284669431">	
+                  <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Meetup</p>	
+               </a>
+               <h5 style="margin-bottom: 18px;">Ballerina: A Language to Develop, Consume and Combine Network Services</h5>		
+               <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/sameerajayasoma">Sameera Jayasoma</a>, Senior Director, WSO2
+            </td>	
+            <td class="cEventURL" style="border-bottom: 0 !important;"><a class="cEventRegistration" href="https://www.meetup.com/sfjava/events/284669431" target="_blank" style="text-align: center;">More info</a></td>	
+        </tr>
+         </td>	
+     </tr>
+
+          </table>
           
       </div> 
-      <div class="col-sm-12 col-md-12 cColCOntent">
+      <!-- <div class="col-sm-12 col-md-12 cColCOntent">
          <div class="col-lg-12 col-md-12 col-sm-12 eventBanner">
             No upcoming events for this month. 
          </div>
-      </div>
+      </div> -->
    <div class="clearfix"></div></br>
      
    </div>
@@ -1146,6 +1165,7 @@ ul.nav.nav-tabs.cSamplesList li.active a:hover {
       #eventDetails{padding-left: 0px !important;}
       td.cEventURL {width: 25%;}
       .codeBlock{border-right: none !important;}
+      tr:last-child >td{border-bottom: 0 !important;}
       .cdisplayFlex{    -ms-box-orient: horizontal;   display: -webkit-box;   display: -moz-box;   display: -ms-flexbox;   display: -moz-flex;   display: -webkit-flex;   display: flex; }
     }
     @media only screen and (max-width: 600px) {

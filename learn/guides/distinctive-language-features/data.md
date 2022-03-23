@@ -185,7 +185,7 @@ Similarly, the variable **``p``** of type **``Person``** also accepts the variab
 
 An open record is equivalent to a *``map<anydata>``*.
 
-## Controlling openness
+## Control openness
 
 If you do not want to allow the open behavior in records, Ballerina has a special syntax.
 
@@ -252,7 +252,7 @@ Ballerina also allows the use of the ``null`` keyword instead of ``()`` for JSON
 
 The ``json`` type is basically ``anydata`` but without ``table`` and ``xml``. ``json`` and ``xml`` types are not parallel.
 
-## Working with JSON - two approaches
+## Work with JSON - two approaches
 
 Ballerina allows two approaches to work with JSON data.
 
@@ -262,7 +262,7 @@ Additionally, it is also possible to convert from JSON to application specific t
 
 The second approach is something where Ballerina really shines compared to other languages because it is very hard to translate between JSON and the native types in other languages.
 
-## Working with JSON directly
+## Work with JSON directly
 
 Working directly with JSON data is easy with the use of the ``json`` type.
 
@@ -310,7 +310,7 @@ In the above code example, the ``match`` expression matches the json value **``j
 
 ``match`` schematics are open, and you do not have to specify all the fields of the ``json`` value in the pattern for matching.
 
-## Converting from user-defined types to JSON
+## Convert from user-defined types to JSON
 
 A user-defined type can be easily converted to JSON. In this case, there are two possibilities.
 
@@ -348,7 +348,7 @@ json j = coord.toJson();
 
 In the above code example, **``Coord``** is an open record. Therefore, any number of ``anydata`` fields can be added to it, including tables and XML. The **``toJson()``** function converts ``anydata`` to ``json``, such that all the subtypes, including tables and XML, are handled appropriately.
 
-## Converting from JSON to user-defined types
+## Convert from JSON to user-defined types
 
 There are a few nuances involved in converting from JSON to a user-defined type.
 
@@ -376,7 +376,7 @@ json rj = j.cloneReadOnly();
 Coord c = <Coord>rj;
 ```
 
-## Converting to a user-defined type - `cloneWithType`
+## Convert to a user-defined type - `cloneWithType`
 
 There is another way of converting from JSON to a user-defined type.
 
@@ -463,7 +463,7 @@ The array **``numTimes10``** is constructed by iterating over **``nums``** using
 
 Similarly, you can also apply SQL-like filters to the iteration value using the ``where`` clause. The array **``evenNums``** is built in that way by introducing the ``where`` clause that filters the values for which the expression evaluates to ``true``. The resultant list is **``[2,4]``**.
 
-### Destructuring records
+### Destructure records
 
 The list comprehension concept can also be applied to structured types, such as records.
 
@@ -659,7 +659,7 @@ Employee? e = t[{first: "Fred", last: "Bloggs"}];
 
 With structured types, you can define rich keys with different types such as arrays of bytes, which makes it a binary key. This is a very powerful way of programming with tables, where you can directly work with the keys, instead of being constrained by faked up string representations of your keys.
 
-### Querying tables
+### Query tables
 
 Apart from looking up rows in a table, you can also combine them with queries.
 
@@ -684,7 +684,7 @@ In the above code example, **``salaries``** is an array constructed from a query
 
 The actual type of the query output is determined by the context, for example, integer array in this case, or the input type.
 
-### Creating tables with query
+### Create tables with query
 
 You can also use a query expression to create tables.
 
@@ -744,7 +744,7 @@ The ``stream`` type is a separate basic type but acts as an object. A stream is 
 
 Generating the values for a stream can result in an error, in which case the stream is terminated with an error value.
 
-### Querying with streams
+### Query with streams
 
 You can use query expressions with streams.
 
@@ -982,7 +982,7 @@ To access every element named ``para`` in the descendants of ``e``, for every el
 
 To access the first element named ``para`` in the children of ``e``, for every element ``e`` in ``x``, use  **``x/<para>[0]``**. You can point to the nth element using the ``[]`` syntax.
 
-### Querying with XML
+### Query with XML
 
 You can also use query expressions to query XML.
 
@@ -998,7 +998,7 @@ In the above code example, you can use the query expression to iterate over all 
 
 This query returns a new ``xml`` value containing a sequence of ``<para>`` elements.
 
-### Combining XML templates and queries
+### Combine XML templates and queries
 
 You can combine the concept of templates with queries to build nested templates. With this feature, you can build powerful templates having query expressions, with inner templates.
 

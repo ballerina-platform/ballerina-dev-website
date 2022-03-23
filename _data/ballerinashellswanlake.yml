@@ -1,24 +1,24 @@
 - title: Ballerina Shell
   url: #
   sublinks:
-    - title: Setting up the prerequisites
-      url: /learn/ballerina-shell/#setting-up-the-prerequisites
-      active: setting-up-the-prerequisites
-    - title: Starting the Shell
-      url: /learn/ballerina-shell/#starting-the-shell
-      active: starting-the-shell
+    - title: Set up the prerequisites
+      url: /learn/ballerina-shell/#set-up-the-prerequisites
+      active: set-up-the-prerequisites
+    - title: Start the Shell
+      url: /learn/ballerina-shell/#start-the-shell
+      active: start-the-shell
     - title: Available commands
       url: /learn/ballerina-shell/#available-commands
       active: available-commands
-    - title: Evaluating code snippets
-      url: /learn/ballerina-shell/#evaluating-code-snippets
-      active: evaluating-code-snippets
-    - title: Resetting the state
-      url: /learn/ballerina-shell/#resetting-the-state
-      active: resetting-the-state
-    - title: Stopping the Shell
-      url: /learn/ballerina-shell/#stopping-the-shell
-      active: stopping-the-shell
+    - title: Evaluate code snippets
+      url: /learn/ballerina-shell/#evaluate-code-snippets
+      active: evaluate-code-snippets
+    - title: Reset the state
+      url: /learn/ballerina-shell/#reset-the-state
+      active: reset-the-state
+    - title: Stop the Shell
+      url: /learn/ballerina-shell/#stop-the-shell
+      active: stop-the-shell
     - title: Help commands
       url: /learn/ballerina-shell/#help-commands
       active: help-commands

@@ -4,9 +4,9 @@
     - title: CLI commands
       url: /learn/cli-documentation/cli-commands/
       sublinks:
-        - title: Using the Ballerina tool
-          url: /learn/cli-documentation/cli-commands/#using-the-ballerina-tool
-          active: using-the-ballerina-tool
+        - title: Use the Ballerina tool
+          url: /learn/cli-documentation/cli-commands/#use-the-ballerina-tool
+          active: use-the-ballerina-tool
         - title: Core commands
           url: /learn/cli-documentation/cli-commands/#core-commands
           active: core-commands
@@ -22,12 +22,12 @@
     - title: Update Tool
       url: /learn/cli-documentation/update-tool/
       sublinks:
-        - title: Using the update tool
-          url: /learn/cli-documentation/update-tool/#using-the-update-tool
-          active: using-the-update-tool
-        - title: Managing your Ballerina distributions
-          url: /learn/cli-documentation/update-tool/#managing-your-ballerina-distributions
-          active: managing-your-ballerina-distributions
+        - title: Use the update tool
+          url: /learn/cli-documentation/update-tool/#use-the-update-tool
+          active: use-the-update-tool
+        - title: Manage your Ballerina distributions
+          url: /learn/cli-documentation/update-tool/#manage-your-ballerina-distributions
+          active: manage-your-ballerina-distributions
     - title: gRPC/Protocol Buffers
       url: /learn/cli-documentation/grpc/
       sublinks:

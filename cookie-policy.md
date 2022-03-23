@@ -3,7 +3,7 @@ layout: ballerina-inner-page
 title: Cookie policy
 permalink: /cookie-policy/
 redirect_from:
-	- /cookie-policy
+- /cookie-policy
 
 ---
 

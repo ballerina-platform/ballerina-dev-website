@@ -89,12 +89,12 @@ If you are located within the UK or European Union or the European Economic Area
 
 If you have any issues with regard to your data security on our website, then in addition to informing us, you also have the right to write directly to the independent data protection monitoring organization in your country. Within the UK, this is the Information Commissioner's Office (ICO). The ICO is the UK’s independent authority set up to uphold information rights in the public interest, promoting openness by public bodies and data privacy for individuals. Please contact our data protection officer if you have any issues, concerns or questions regarding your personal data and we are happy to help.
 
-Data protection officer
-WSO2 (UK) Limited
-Appledram Barns, Birdham Road,
-Chichester, West Sussex,
-PO20 7EQ
-UK
+<p>Data protection officer<br>
+WSO2 (UK) Limited<br>
+Appledram Barns, Birdham Road,<br>
+Chichester, West Sussex,<br>
+PO20 7EQ,<br>
+UK</p>
 
 **Effective March 23, 2022**
 

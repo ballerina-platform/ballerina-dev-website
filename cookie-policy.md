@@ -11,7 +11,7 @@ Below is information about how the [Ballerina site](https://ballerina.io/) (the 
 
 The Site stores and retrieves information on your browser using cookies. This information is used to make the Site work as you expect it to. It is not personally identifiable to you, but it can be used to give you a more personalized web experience.
 
-This Cookie Policy is part of our Privacy Policy. It explains the following:
+This cookie policy is part of our [Privacy policy](/privacy-policy/). It explains the following:
 
 ## What are cookies?
 

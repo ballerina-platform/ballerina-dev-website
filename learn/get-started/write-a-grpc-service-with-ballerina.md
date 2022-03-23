@@ -81,7 +81,7 @@ Ballerina uses projects to group code. You need to create a Ballerina project, g
 
 In the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina project for the gRPC service implementation.
 
-> **Note:** For more information on Ballerina projects, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
+> **Info:** For more information on Ballerina projects, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
 ```bash
 $ bal new greeter_service
@@ -188,7 +188,7 @@ Similar to the service, the client application also starts with creating a new B
 
 In a new tab of the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina project for the gRPC client implementation:
 
-> **Note:** For more information on Ballerina projects, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
+> **Info:** For more information on Ballerina projects, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
 ```bash
 $ bal new greeter_client

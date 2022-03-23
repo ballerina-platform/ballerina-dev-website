@@ -123,7 +123,7 @@ public type ErrorMsg record {|
 
 Ballerina uses projects to group code. You need to create a Ballerina project and write the business logic in it. In the terminal, execute the command below to create the Ballerina project for the API implementation.
 
-> **Note:** For more information on Ballerina projects, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
+> **Info:** For more information on Ballerina projects, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
 ```bash
 $ bal new covid19 -t service

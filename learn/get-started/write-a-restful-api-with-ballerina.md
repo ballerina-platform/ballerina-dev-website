@@ -12,20 +12,20 @@ redirect_from:
   - /learn/write-a-restful-api-with-ballerina
 ---
 
-Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement the RESTful API. The Ballerina standard library itself is adequate. In this API, you will be writing a simple CRUD-like RESTful service.
+Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement a RESTful API. The Ballerina standard library itself is adequate.
 
-In this tutorial, you will be creating a RESTful API with two endpoints. The sample is built around a set of COVID-19 data.
+This guide will walk you through creating a RESTful API with two endpoints. In this API, you will be writing a simple CRUD-like RESTful service. The sample is built around a set of COVID-19 data.
 
 ## Set up the prerequisites
 
-To run this tutorial, you need the following prerequisites:
+To run this guide, you need the following prerequisites:
 
 1. [Ballerina 2202.0.0 (Swan Lake)](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/) or greater
 2. A text editor
   >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
 3. A command terminal
 
-## Design the two endpoints
+## Understand the two endpoints
 
 The first endpoint is about getting data from the service as well as adding data to the service. Therefore, the service should handle both HTTP `GET` and `POST` requests.
 - The `GET` request is to get data, and the response should be `200 OK`.
@@ -38,15 +38,20 @@ Following is the URL for each endpoint, respectively.
 1. /covid/status/countries
 2. /covid/status/countries/{iso_code}
 
-## Create a package for your code
+## Create the project for your code
 
-Ballerina uses packages to group code. In this case, a package with the default module is created by executing the following command.
+Ballerina uses projects to group code. You need to create a Ballerina project and write the business logic in it.
+
+In the terminal, execute the command below to create the Ballerina project for the API implementation:
+
+
+> **Note:** For more information on Ballerina packages, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
 ```bash
 $ bal new covid19 -t service
 ```
 
-This creates a folder named `covid19` along with a sample code for service. Navigate to the `covid19` directory, and execute the following command to start VSCode.
+This creates a package with the default module (i.e., a folder named `covid19`) along with a sample code for the service. Navigate to the `covid19` directory, and execute the following command to start VSCode.
 
 ```bash
 $ code .

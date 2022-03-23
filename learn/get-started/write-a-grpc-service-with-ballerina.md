@@ -18,7 +18,7 @@ redirect_from:
 
 ## Set up the prerequisites
 
-To run this tutorial, you need the following prerequisites:
+To run this guide, you need the following prerequisites:
 
 1. [Ballerina 2202.0.0 (Swan Lake)](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/) or greater
 2. A text editor
@@ -75,7 +75,7 @@ Now, let’s implement the gRPC service and client in the Ballerina language.
 
 ## Implement the gRPC service
 
-As with any other Ballerina Program, you need to create a Ballerina project. Then, you can generate the service code in the project and write the business logic.
+Ballerina uses projects to group code. You need to create a Ballerina project and generate the service code in the project and write the business logic.
 
 ### Create the service project
 

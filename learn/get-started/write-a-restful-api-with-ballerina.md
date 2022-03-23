@@ -25,20 +25,24 @@ To run this guide, you need the following prerequisites:
 
 Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement a RESTful API. The Ballerina standard library itself is adequate.
 
-This guide will walk you through creating a RESTful API with two endpoints. In this API, you will be writing a simple CRUD-like RESTful service. The sample is built around a set of COVID-19 data.
+This guide will walk you through creating a RESTful API with two endpoints. In this API, you will be writing a simple CRUD-like RESTful service. The sample is built around a set of COVID-19 data. Following are the URLs of each of the endpoints.
+
+1. `/covid/status/countries`
+2. `/covid/status/countries/{iso_code}`
+
+## The first endpoint
 
 The first endpoint is about getting data from the service as well as adding data to the service. Therefore, the service should handle both HTTP `GET` and `POST` requests.
 - The `GET` request is to get data, and the response should be `200 OK`.
 - The `POST` request is to add data, and the response should be `201 Created`.
 
+## The second endpoint
+
 The second endpoint is about getting data filtered from the service. The data is filtered by the ISO code. Therefore, the second service accepts the ISO code as part of the URL and responds with the `200 OK` status code. In the event of an error, the relevant error is sent back to the client.
 
-Following is the URL of each endpoint respectively.
+## The complete code
 
-1. `/covid/status/countries`
-2. `/covid/status/countries/{iso_code}`
-
-The below is the complete code of the API implementation.
+The below is the complete code of the service implementation.
 
 ```ballerina
 import ballerina/http;

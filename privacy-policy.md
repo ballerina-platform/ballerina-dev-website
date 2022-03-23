@@ -35,7 +35,7 @@ The information we collect from you maybe used in one of the following ways:
 - To create your online profile, which we create for every user who registers on our site or for a service.
 - To send marketing material, event invitations and updates - If you indicate that you are interested in certain areas or subjects when you give us your contact details, we will send you marketing material and/or event and workshop invitations related to those areas. The email address you provide may also be used to send you important updates related to the site or the services you use.
 - To administer a contest, survey, or other site feature.
-- We track and analyze your actions on our website such as navigation, number of visits, downloads, and search items to gain a better understanding of  our visitors and their movements through the site. Please see our [cookie policy](#cookie-policy) on how we use and store cookies.
+- We track and analyze your actions on our website such as navigation, number of visits, downloads, and search items to gain a better understanding of  our visitors and their movements through the site. Please see our [cookie policy](/cookie-policy/) on how we use and store cookies.
 
 ## Who is your information shared with?
 
@@ -83,63 +83,20 @@ We reserve the right to amend this Privacy Policy at any time. We will not send 
 
 By using the Sites, you consent to our Privacy Policy and any revisions thereto. If you do not agree with our privacy policy or any changes we make to it, you may delete your profile.
 
->**For EU/EEA/Switzerland residents:** If you are located within the European Union, the European Economic Area or Switzerland, WSO2 UK Limited will be the controller of your personal data provided to, or collected by or for, or processed in connection with our services. If you have any issues with regard to your data security on our website, then in addition to informing us, you also have the right to write directly to the independent data protection monitoring organization in your country. Within the UK, this is the [Information Commissioner’s Office](https://ico.org.uk/). The ICO is the UK’s independent authority set up to uphold information rights in the public interest, promoting openness by public bodies and data privacy for individuals. Please do email our data protection officer at [dpo@wso2.com](mailto:dpo@wso2.com) if you have any issues, concerns, or questions regarding your personal data and we are happy to help.
+## Contact us
 
-# <a name="cookie-policy"></a>Cookie policy
+If you are located within the UK or European Union or the European Economic Area, WSO2 UK Limited will be the controller of your personal data provided to, or collected by or for, or processed in connection with our services.
 
-Below is information about how the [Ballerina site](https://ballerina.io/) (the “Site”) uses cookies.
+If you have any issues with regard to your data security on our website, then in addition to informing us, you also have the right to write directly to the independent data protection monitoring organization in your country. Within the UK, this is the Information Commissioner's Office (ICO). The ICO is the UK’s independent authority set up to uphold information rights in the public interest, promoting openness by public bodies and data privacy for individuals. Please contact our data protection officer if you have any issues, concerns or questions regarding your personal data and we are happy to help.
 
-The Site stores and retrieves information on your browser using cookies. This information is used to make the Site work as you expect it to. It is not personally identifiable to you, but it can be used to give you a more personalized web experience.
+<p>Data protection officer<br>
+WSO2 (UK) Limited<br>
+Appledram Barns, Birdham Road,<br>
+Chichester, West Sussex,<br>
+PO20 7EQ,<br>
+UK</p>
 
-This Cookie Policy is part of our Privacy Policy. It explains the following:
-
-## What are cookies?
-
-A browser cookie is a small piece of data that is stored on your device to help websites and mobile apps remember things about you. Other technologies, including Web storage and identifiers associated with your device, may be used for similar purposes. In this policy, we use the term “cookies” to discuss all of these technologies.
-
-## What do we use cookies for?
-
-Cookies are used to protect your data and account on the Ballerina Site. Cookies help us see which features are most popular, count visitors to a page, improve our users’ experience, keep our services secure, and to provide you with a better, more intuitive, and satisfying experience.
-
-We use cookies for the following purposes:
-
-### Security
-
-We use these cookies to help identify and prevent security risks.
-
-For example, we may use these cookies to store your session information to prevent others from changing your password without your username and password.
-
-### Performance
-
-We use these cookies to collect information about how you interact with our services and to help us improve them.
-
-For example, we may use these cookies to determine if you have interacted with a certain page.
-
-### Analytics
-
-We use these cookies to help us improve our services.
-
-For example, we can use these cookies to learn more about which features are the most popular with our users and which ones might need some tweaks.
-
-## Third party cookies
-
-Our website will set several types of third-party cookie, and we do not control the operation of any of them. The third-party cookies, which maybe set include:
-
-- Google Analytics - we use Google Analytics to collect data about website usage. This data does not include personally identifiable information. For more information, view the [Google Privacy Policy](https://policies.google.com/privacy).
-
-## What type of cokkies do we use?
-
-We use session cookies. A session cookie is a cookie that is erased when the user closes the Web browser. The session cookie is stored in temporary memory and is not retained after the browser is closed. Session cookies do not collect information from the users computer.
-
-## How do I control my cookies?
-
-Most browsers allow you to control cookies through their settings preferences. However, if you limit the ability of websites to set cookies, you may worsen your overall user experience since it will no longer be personalized to you. It may also stop you from saving customized settings like login information.
-
-# Contact us
-
-For further information about our Privacy Policy or if you have any questions, complaints, or concerns regarding the use of cookies, please contact our Data Protection Officer at [dpo@wso2.com](mailto:dpo@wso2.com).
-
-**Effective April 12, 2018**
+**Effective March 23, 2022**
 
 <!--<style>
 .nav > li.cVersionItem  , .cBallerinaTocContainer {

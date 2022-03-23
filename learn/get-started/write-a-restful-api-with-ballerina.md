@@ -9,7 +9,6 @@ intro: This guide helps you understand the basics of Ballerina constructs, which
 redirect_from:
   - /learn/writing-a-restful-api-with-ballerina
   - /learn/writing-a-restful-api-with-ballerina/
-  - /learn/write-a-restful-api-with-ballerina/
   - /learn/write-a-restful-api-with-ballerina
 ---
 

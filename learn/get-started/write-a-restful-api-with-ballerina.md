@@ -33,7 +33,7 @@ The first endpoint is about getting data from the service as well as adding data
 
 The second endpoint is about getting data filtered from the service. The data is filtered by the ISO code. Therefore, the second service accepts the ISO code as part of the URL and responds with the `200 OK` status code. In the event of an error, the relevant error is sent back to the client.
 
-Following is the URL for each endpoint, respectively.
+Following is the URL of each endpoint respectively.
 
 1. /covid/status/countries
 2. /covid/status/countries/{iso_code}

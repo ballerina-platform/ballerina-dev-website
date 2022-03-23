@@ -147,16 +147,9 @@ This creates a directory named `covid19` with the default module along with a sa
 - `Ballerina.toml` is the file that makes the folder a Ballerina package. It also contains a test directory to include tests for the service. However, this will not be used in this guide. 
 - The `service.bal` template file provides a look and feel about Ballerina services. 
 
+## Create the dataset
 
-## Update the service implementation
-
-To add the complete business logic below to the API implementation, open the `covid19` directory in your text editor, and update the content of the `service.bal` file as explained in the following sections.
-
-**Tip:** If you have VS Code installed, in the terminal, navigate to the `covid19` directory, and execute the `code .` command. 
-
-### Create the dataset
-
-To add the definition of the record and the declaration of the table, replace the API template file (i.e., `service.bal`) with the code below.
+To keep things simple, an in-memory dataset is used with three entries. To add the definition of the record and the declaration of the table, replace the API template file (i.e., `service.bal`) with the code below.
 
 ```ballerina
 public type CovidEntry record {|
@@ -177,12 +170,12 @@ public final table<CovidEntry> key(iso_code) covidTable = table [
 
 In this code:
 
-- To keep things simple, an in-memory dataset is used with three entries. Ballerina tables are used to store data. Each entry in the table is represented by a Ballerina record.
+- Ballerina tables are used to store data. Each entry in the table is represented by a Ballerina record.
 
 
-### Create the service
+## Create the service
 
-Ballerina resources can only be inside a service. Therefore, first, a service needs to be created. To create the service, add the code below to the API template file (i.e., `service.bal`).
+Ballerina resources can only reside inside a service. Therefore, first, a service needs to be created. To create the service, add the code below to the API template file (i.e., `service.bal`).
 
 ```ballerina
 service /covid/status on new http:Listener(9000) {
@@ -194,13 +187,11 @@ In this code:
 - As both endpoints have a common URL segment, this is moved to the service level as the base path when creating the service.
 - The service is associated with an `http:Listener`, which is the Ballerina abstraction that deals with network-level details such as the host, port, SSL, etc.
 
-### Implement the first endpoint
+## Implement the first endpoint
 
 The first endpoint has two resources one to get data and the other to add data.
 
-#### Create the resources of the first endpoint
-
-##### Create the first resource to get data
+### Create the first resource to get data
 
 To create the first resource of the first endpoint to get data, add the code below to the API template file (i.e., `service.bal`).
 
@@ -218,7 +209,7 @@ In this code:
 
 - Unlike normal functions, resource functions can have accessors. In this case, the accessor is set to `get`, which means only HTTP `GET` requests could hit this resource. Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. The default status code HTTP responses are `200 OK`.
 
-##### Create the second resource to add data
+### Create the second resource to add data
 
 To create the second resource of the first endpoint to add new COVID-19 data to the dataset by ISO code, add the code below to the API template file (i.e., `service.bal`).
 
@@ -248,11 +239,7 @@ In this code:
 
 - It is chosen to either accept the entire payload or send back an error. Copying this straightway results in an error, which is expected as the `CreatedCovidEntries` and `ConflictingIsoCodesError` types are not defined yet.
 
-###### Define the record types
-
-This resource has a resource argument named `covidEntries` annotated with `@http:Payload`. This means the resource is expecting a payload with type `CovideEntry[]`. There are two types of records `CreatedCovidEntries` and `ConflictingIsoCodesError` as the return values. Following is the definition of `CreatedCovidEntries`.
-
-**Define the `CreatedCovidEntries` record**
+#### Define the record type
 
 To define the `CreatedCovidEntries` record, add the code below to the API template file (i.e., `service.bal`).
 
@@ -264,13 +251,14 @@ public type CreatedCovidEntries record {|
 ```
 
 In this code:
+- This resource has a resource argument named `covidEntries` annotated with `@http:Payload`. This means the resource is expecting a payload with type `CovideEntry[]`. There are two types of records `CreatedCovidEntries` and `ConflictingIsoCodesError` as the return values. Following is the definition of `CreatedCovidEntries`.
 - `*http:Created` is the Ballerina way of saying one type is a subtype of another. In this case, `CreatedCovidEntries` is a subtype of `*http:Created`.
 - Ballerina has defined a set of types for each HTTP status code. This allows you to write services in a type-oriented way, which in turn is helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. 
 - Returning this record results in an HTTP `201` response with a JSON payload. The body of the response is of type `CovidEntry[]`.
 
-**Define the `ConflictingIsoCodesError` record**
+#### Define the error records
 
-To define the `ConflictingIsoCodesError` record, add the code below to the API template file (i.e., `service.bal`).
+To define the error records, add the code below to the API template file (i.e., `service.bal`).
 
 ```ballerina
 public type ConflictingIsoCodesError record {|
@@ -286,11 +274,11 @@ public type ErrorMsg record {|
 In this code:
 - The body of the response is of type `ErrorMsg`, which simply has a string field named `errmsg`. Based on the need, users can have any data type for their response body.
 
-### Implement the second endpoint
+## Implement the second endpoint
 
 The second endpoint has only one resource to get COVID-19 data filtered by the ISO code.
 
-#### Create the resource of the second endpoint
+### Create the resource of the second endpoint
 
 To create the resource of the second endpoin, add the code below to the API template file (i.e., `service.bal`).
 
@@ -313,7 +301,7 @@ In this code:
 - In addition, it also supports hierarchical paths making it ideal for implementing RESTful APIs. Hierarchical paths can have path params.
 -  In this case, `iso_code` is used as the path param, which in turn, becomes a string variable.
 
-##### Define the `InvalidIsoCodeError` record
+#### Define the error record
 
 To define the `InvalidIsoCodeError` record, add the code below to the API template file (i.e., `service.bal`).
 
@@ -365,6 +353,20 @@ You view the output below.
 [{"iso_code":"AFG", "country":"Afghanistan", "cases":159303, "deaths":7386, "recovered":146084, "active":5833}, {"iso_code":"SL", "country":"Sri Lanka", "cases":598536, "deaths":15243, "recovered":568637, "active":14656}, {"iso_code":"US", "country":"USA", "cases":69808350, "deaths":880976, "recovered":43892277, "active":25035097}]
 ```
 
+### Add a country by the ISO code 
+
+Execute the cURL command below.
+
+```bash
+$ curl http://localhost:9000/covid/status/countries -d '[{"iso_code":"DEU", "country":"Germany", "cases":159333, "deaths":7390, "recovered":126084, "active":6833}]'
+```
+
+You view the output below.
+
+```bash
+[{"iso_code":"DEU", "country":"Germany", "cases":159333.0, "deaths":7390.0, "recovered":126084.0, "active":6833.0}]
+```
+
 ### Filter a country by the ISO code
 
 Execute the cURL command below.
@@ -377,20 +379,6 @@ You view the output below.
 
 ```bash
 {"iso_code":"AFG", "country":"Afghanistan", "cases":159303, "deaths":7386, "recovered":146084, "active":5833}
-```
-
-### Filter a country by the ISO code and other values
-
-Execute the cURL command below.
-
-```bash
-$ curl http://localhost:9000/covid/status/countries -d '[{"iso_code":"DEU", "country":"Germany", "cases":159333, "deaths":7390, "recovered":126084, "active":6833}]'
-```
-
-You view the output below.
-
-```bash
-[{"iso_code":"DEU", "country":"Germany", "cases":159333.0, "deaths":7390.0, "recovered":126084.0, "active":6833.0}]
 ```
 
 ## Learn more

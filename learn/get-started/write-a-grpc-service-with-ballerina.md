@@ -14,6 +14,8 @@ redirect_from:
 - /learn/writing-a-grpc-service-with-ballerina/
 - /learn/writing-a-grpc-service-with-ballerina
 - /learn/write-a-grpc-service-with-ballerina
+- /learn/getting-started/writing-a-grpc-service-with-ballerina/
+- /learn/getting-started/writing-a-grpc-service-with-ballerina
 ---
 
 ## Set up the prerequisites

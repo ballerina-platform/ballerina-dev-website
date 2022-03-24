@@ -10,6 +10,8 @@ redirect_from:
     - /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment
     - /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/
     - /learn/configure-ballerina-programs/configure-values-in-kubernetes-environment
+    - /learn/guides/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/
+    - /learn/guides/configuring-ballerina-programs/configuring-values-in-kubernetes-environment
 ---
 
 In the Kubernetes environment, a pod can use the configuration TOML file that contains the configuration values in the

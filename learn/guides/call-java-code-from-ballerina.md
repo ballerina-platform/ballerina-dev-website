@@ -24,6 +24,8 @@ redirect_from:
   - /learn/calling-java-code-from-ballerina-and-vice-versa
   - /learn/calling-java-code-from-ballerina-and-vice-versa/
   - /learn/call-java-code-from-ballerina
+  - /learn/guides/calling-java-code-from-ballerina/
+  - /learn/guides/calling-java-code-from-ballerina
 ---
 
 ## Write Ballerina bindings

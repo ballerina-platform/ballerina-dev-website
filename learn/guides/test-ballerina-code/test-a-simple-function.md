@@ -27,6 +27,8 @@ redirect_from:
     - /learn/testing-ballerina-code
     - /learn/test-ballerina-code/
     - /learn/test-ballerina-code
+    - /learn/guides/testing-ballerina-code/testing-a-simple-function
+    - /learn/guides/testing-ballerina-code/testing-a-simple-function
 ---
 
 To get started, let's set up the Ballerina package to run tests.

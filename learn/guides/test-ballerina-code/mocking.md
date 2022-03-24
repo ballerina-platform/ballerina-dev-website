@@ -16,6 +16,8 @@ redirect_from:
   - /learn/user-guide/testing-ballerina-code/mocking/
   - /learn/test-ballerina-code/mocking/
   - /learn/test-ballerina-code/mocking
+  - /learn/guides/testing-ballerina-code/mocking/
+  - /learn/guides/testing-ballerina-code/mocking
 ---
 
 ## Mock objects

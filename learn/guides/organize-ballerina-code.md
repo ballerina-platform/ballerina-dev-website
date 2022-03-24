@@ -16,6 +16,8 @@ redirect_from:
 - /learn/user-guide/ballerina-packages/
 - /learn/user-guide/ballerina-packages
 - /learn/organize-ballerina-code
+- /learn/guides/organizing-ballerina-code/
+- /learn/guides/organizing-ballerina-code
 ---
 
 ## Package structure

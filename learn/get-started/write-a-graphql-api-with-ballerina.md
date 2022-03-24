@@ -10,6 +10,8 @@ redirect_from:
     - /learn/writing-a-graphql-api-with-ballerina/
     - /learn/writing-a-graphql-api-with-ballerina
     - /learn/write-a-graphql-api-with-ballerina
+    - /learn/getting-started/writing-a-graphql-api-with-ballerina/
+    - /learn/getting-started/writing-a-graphql-api-with-ballerina
 ---
 
 Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement the GraphQL API. The Ballerina standard library itself is adequate. In this guide, you will be writing a simple GraphQL service to serve a dummy dataset related to COVID-19.

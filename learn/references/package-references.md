@@ -178,7 +178,7 @@ This file is auto-generated and managed by the Ballerina CLI. It does not need u
 
 The `Package.md` file provides a human-readable description of a package. This file is required for publishing a package to a repository. 
 It is the first page you will see when you navigate to the package in [Ballerina Central](https://central.ballerina.io/).
-This file is in markdown format. It will be auto-generated when you create a library package. For steps to create a library package, see Creating a Library Package](/learn/publishing-packages-to-ballerina-central/#creating-a-library-package)
+This file is in markdown format. It will be auto-generated when you create a library package. For steps to create a library package, see Create a Library Package](/learn/publish-packages-to-ballerina-central/#create-a-library-package)
 
 ## The `target/` directory
 

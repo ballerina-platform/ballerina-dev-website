@@ -10,6 +10,8 @@ redirect_from:
  - /learn/building-a-data-service-in-ballerina
  - /learn/building-a-data-service-in-ballerina/
  - /learn/build-a-data-service-in-ballerina
+ - /learn/getting-started/building-a-data-service-in-ballerina/
+ - /learn/getting-started/building-a-data-service-in-ballerina
 ---
 
 In addition, this tutorial also elaborates on how you can create an HTTP RESTful API using Ballerina that can be used to perform basic CRUD operations on the database.

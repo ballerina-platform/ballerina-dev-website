@@ -17,6 +17,8 @@ redirect_from:
   - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions
   - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
   - /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions
+  - /learn/guides/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
+  - /learn/guides/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions
 ---
 
 ## Prerequisites

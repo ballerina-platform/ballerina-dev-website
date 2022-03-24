@@ -16,6 +16,8 @@ redirect_from:
   - /learn/testing-ballerina-code/write-tests/
   - /learn/testing-ballerina-code/write-tests
   - /learn/test-ballerina-code/write-tests
+  - /learn/guides/testing-ballerina-code/writing-tests/
+  - /learn/guides/testing-ballerina-code/writing-tests
 ---
 
 ## Define a test

@@ -28,6 +28,8 @@ redirect_from:
 - /learn/making-ballerina-programs-configurable/defining-configurable-variables/
 - /learn/making-ballerina-programs-configurable/defining-configurable-variables
 - /learn/configure-ballerina-programs/quick-start-on-configurable-variables
+- /learn/guides/configuring-ballerina-programs/quick-start-on-configurable-variables/
+- /learn/guides/configuring-ballerina-programs/quick-start-on-configurable-variables
 ---
 
 ## Configure a sample Ballerina service

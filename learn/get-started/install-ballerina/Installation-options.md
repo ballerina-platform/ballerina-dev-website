@@ -26,6 +26,8 @@ redirect_from:
   - /learn/installing-ballerina/installation-options
   - /learn/installing-ballerina/installation-options/
   - /learn/instal-ballerina/installation-options
+  - /learn/get-started/install-ballerina/Installation-options/
+  - /learn/get-started/install-ballerina/Installation-options
 ---
 
 ## Install Ballerina via installers

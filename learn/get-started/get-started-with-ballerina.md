@@ -8,12 +8,14 @@ active: get-started-with-ballerina
 intro: Let’s set up a Ballerina development environment and write a simple Ballerina program.
 redirect_from:
 - /learn/getting-started-with-ballerina/
-- /learn/getting-started-with-ballerin
+- /learn/getting-started-with-ballerina
 - /learn/getting-started/hello-world/creating-your-first-ballerina-package
 - /learn/getting-started/hello-world/creating-your-first-ballerina-package/
 - /learn/getting-started/hello-world/writing-your-first-ballerina-program
 - /learn/getting-started/hello-world/writing-your-first-ballerina-program/
 - /learn/get-started-with-ballerina
+- /learn/getting-started/getting-started-with-ballerina/
+- /learn/getting-started/getting-started-with-ballerina
 ---
 
 ## Set up the prerequisites

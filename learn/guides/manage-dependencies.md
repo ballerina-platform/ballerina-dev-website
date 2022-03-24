@@ -12,6 +12,8 @@ redirect_from:
 - /learn/managing-dependencies
 - /learn/managing-dependencies/
 - /learn/manage-dependencies
+- /learn/guides/managing-dependencies/
+- /learn/guides/managing-dependencies
 ---
 
 ## Specify dependencies

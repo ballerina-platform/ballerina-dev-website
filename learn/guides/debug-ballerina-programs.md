@@ -32,6 +32,8 @@ redirect_from:
   - /learn/debugging-ballerina-programs
   - /learn/debugging-ballerina-programs/
   - /learn/debug-ballerina-programs
+  - /learn/guides/debugging-ballerina-programs/
+  - /learn/guides/debugging-ballerina-programs
 ---
 
 When writing large-scale applications with complex logic, it is quite possible to have syntax, semantic, 

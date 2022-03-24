@@ -208,7 +208,7 @@ redirect_from:
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important">
-  <a href="/learn/observe-ballerina-programs/observe-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/">
+  <a href="/learn/observe-ballerina-programs/">
  	<h3 id="observing-ballerina-programs">Observe Ballerina programs
 </h3></a>
   		<p>Basics of the observability functionalities that are provided for Ballerina programs. </p>

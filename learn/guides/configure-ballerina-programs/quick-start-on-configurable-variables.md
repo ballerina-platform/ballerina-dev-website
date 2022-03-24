@@ -21,6 +21,8 @@ redirect_from:
 - /learn/making-ballerina-programs-configurable/trying-out-configurability
 - /learn/configuring-ballerina-programs
 - /learn/configuring-ballerina-programs/
+- /learn/configure-ballerina-programs/
+- /learn/configure-ballerina-programs
 - /learn/configuring-ballerina-programs/quick-start-on-configurable-variables
 - /learn/configuring-ballerina-programs/quick-start-on-configurable-variables/
 - /learn/making-ballerina-programs-configurable/defining-configurable-variables/

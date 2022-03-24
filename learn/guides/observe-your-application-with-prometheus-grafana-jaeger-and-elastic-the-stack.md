@@ -25,6 +25,7 @@ redirect_from:
   - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/
   - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger
   - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack
+  - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/
   - /learn/observing-ballerina-programs/
   - /learn/observing-ballerina-programs
   - /learn/observe-ballerina-programs

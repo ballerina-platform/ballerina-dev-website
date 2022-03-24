@@ -12,7 +12,7 @@ redirect_from:
   - /learn/how-to-call-java-code-from-ballerina
   - /learn/how-to-call-java-code-from-ballerina/
   - /learn/calling-java-code-from-ballerina
-    - /learn/calling-java-code-from-ballerina/
+  - /learn/calling-java-code-from-ballerina/
   - /swan-lake/learn/calling-java-code-from-ballerina
   - /swan-lake/learn/calling-java-code-from-ballerina/
   - /learn/user-guide/calling-java-code-from-ballerina

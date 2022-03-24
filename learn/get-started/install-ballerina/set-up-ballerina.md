@@ -29,6 +29,8 @@ redirect_from:
   - /learn/installing-ballerina/
   - /learn/installing-ballerina
   - /learn/install-ballerina/set-up-ballerina
+  - /learn/install-ballerina/
+  - /learn/install-ballerina
 ---
 
 ## Download Ballerina

@@ -10,7 +10,7 @@ redirect_from:
  - /learn/user-guide/ballerina-packages/sharing-a-library-package
  - /learn/user-guide/ballerina-packages/sharing-a-library-package/
  - /learn/publishing-packages-to-ballerina-central
-  - /learn/publishing-packages-to-ballerina-central/
+ - /learn/publishing-packages-to-ballerina-central/
  - /learn/user-guide/publishing-packages-to-ballerina-central
  - /learn/user-guide/publishing-packages-to-ballerina-central/
  - /learn/publish-packages-to-ballerina-central

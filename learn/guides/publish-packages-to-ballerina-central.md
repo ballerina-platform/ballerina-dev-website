@@ -14,6 +14,8 @@ redirect_from:
  - /learn/user-guide/publishing-packages-to-ballerina-central
  - /learn/user-guide/publishing-packages-to-ballerina-central/
  - /learn/publish-packages-to-ballerina-central
+ - /learn/guides/publishing-packages-to-ballerina-central/
+ - /learn/guides/publishing-packages-to-ballerina-central
 ---
 
 A package uses Ballerina library packages as dependencies. Use the `bal new` command to create a library package.

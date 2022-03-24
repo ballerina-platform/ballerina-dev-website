@@ -22,6 +22,8 @@ redirect_from:
 - /learn/testing-ballerina-code/code-coverage-and-reporting/
 - /learn/test-ballerina-code/code-coverage-and-reporting/
 - /learn/test-ballerina-code/code-coverage-and-reporting
+- /learn/guides/testing-ballerina-code/code-coverage-and-reporting/
+- /learn/guides/testing-ballerina-code/code-coverage-and-reporting
 ---
 
 ## Generate a test report

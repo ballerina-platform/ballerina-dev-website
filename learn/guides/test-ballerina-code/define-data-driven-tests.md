@@ -19,6 +19,8 @@ redirect_from:
 - /learn/testing-ballerina-code/define-data-driven-tests/
 - /learn/testing-ballerina-code/define-data-driven-tests
 - /learn/test-ballerina-code/define-data-driven-tests
+- /learn/guides/testing-ballerina-code/defining-data-driven-tests/
+- /learn/guides/testing-ballerina-code/defining-data-driven-tests
 ---
 
 ## Use data providers

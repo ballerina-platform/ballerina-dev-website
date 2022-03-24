@@ -10,6 +10,8 @@ redirect_from:
     - /learn/deploying-ballerina-on-kubernetes
     - /learn/deploying-ballerina-on-kubernetes/
     - /learn/deploy-ballerina-on-kubernetes
+    - /learn/getting-started/deploying-ballerina-on-kubernetes/
+    - /learn/getting-started/deploying-ballerina-on-kubernetes
 ---
 
 In this section, you will be writing a simple Ballerina service and then, you will dockerize the application and deploy it in Kubernetes.

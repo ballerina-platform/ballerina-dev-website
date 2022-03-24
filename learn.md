@@ -106,8 +106,8 @@ redirect_from:
 <h2 id="getting-started">Get started</h2>
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card" >
-  <a href="/learn/install-ballerina/set-up-ballerina/">
-    <h3 id="installing-ballerina">Instal Ballerina</h3> </a>
+  <a href="/learn/install-ballerina/">
+    <h3 id="installing-ballerina">Install Ballerina</h3> </a>
     <p >Set up the Ballerina development environment.  </p>
 </div>
 
@@ -172,7 +172,7 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
- <a href="/learn/distinctive-language-features/network-interaction/">
+ <a href="/learn/distinctive-language-features/">
   <h3 id="distinctive-language-features">Distinctive language features</h3></a>
  	<p>A guide to the language features that make Ballerina distinctive.  </p>
 </div>
@@ -186,7 +186,7 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card"  >
-  <a href="/learn/test-ballerina-code/test-a-simple-function/">
+  <a href="/learn/test-ballerina-code/">
    <h3 id="testing-ballerina-code">Test Ballerina code</h3> </a>
     <p>Details of writing automated tests using the built-in test framework.  </p>
 </div>
@@ -201,14 +201,14 @@ redirect_from:
 <div class="row">
 
 <div class="col-lg-6 col-md-6 col-sm-12 card"   >
- <a href="/learn/configure-ballerina-programs/quick-start-on-configurable-variables/">
+ <a href="/learn/configure-ballerina-programs/">
   	<h3 id="configuring-ballerina-programs">Configure Ballerina programs</h3></a>
  	<p>The language support for configurability.   </p>
 
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important">
-  <a href="/learn/observe-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/">
+  <a href="/learn/observe-ballerina-programs/observe-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/">
  	<h3 id="observing-ballerina-programs">Observe Ballerina programs
 </h3></a>
   		<p>Basics of the observability functionalities that are provided for Ballerina programs. </p>
@@ -218,7 +218,7 @@ redirect_from:
 <div class="row">
 
 <div class="col-lg-6 col-md-6 col-sm-12 card"  >
- <a href="/learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/">
+ <a href="/learn/run-ballerina-programs-in-the-cloud/">
   		<h3 id="running-ballerina-programs-in-the-cloud">Run Ballerina programs in the cloud
 </h3></a>
  	<p>The cloud offerings for running Ballerina programs.  </p>
@@ -288,7 +288,7 @@ redirect_from:
 	
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card" >
-  <a href="/learn/cli-documentation/cli-commands/">
+  <a href="/learn/cli-documentation/">
  	<h3 id="the-bal-tool">CLI documentation</h3></a>
 		<p>Details of all the CLI commands of the <code class="highlighter-rouge language-plaintext">bal</code> tool.  </p>
 </div>
@@ -304,7 +304,7 @@ redirect_from:
 <div class="row">
 
 <div class="col-lg-6 col-md-6 col-sm-12 card" >
-  <a href="/learn/style-guide/coding-conventions/">
+  <a href="/learn/style-guide/">
  	 <h3 id="style-guide">Style guide</h3></a>
 		<p>Best practices to follow when formatting Ballerina code.   </p>
 </div>

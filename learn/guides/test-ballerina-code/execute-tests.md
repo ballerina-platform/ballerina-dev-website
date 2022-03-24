@@ -16,7 +16,6 @@ redirect_from:
   - /learn/testing-ballerina-code/execute-tests/
   - /learn/testing-ballerina-code/execute-tests
   - /learn/test-ballerina-code/execute-tests/
-  - /learn/test-ballerina-code/execute-tests
   - /learn/guides/testing-ballerina-code/executing-tests/
   - /learn/guides/testing-ballerina-code/executing-tests
 ---

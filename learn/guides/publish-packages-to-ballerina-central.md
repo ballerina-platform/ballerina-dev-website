@@ -46,7 +46,11 @@ This will create the `Ballerina.toml` file, the `hello.bal` source file, the `Pa
 2 directories, 5 files
 ```
 
-You can edit the `Ballerina.toml` file to change the org name, package name, and version as you prefer.
+* The `Ballerina.toml` file identifies the directory as a Ballerina package. You can edit the `Ballerina.toml` file to change the organization, name, and the version of the package. 
+* The `Package.md` is required when you publish a package to a repository. You can edit the content to add a meaningful description about the package.
+* The `hello.bal` file, `resources/` directory `tests/` directory, and the `Module.md` file belong to the default module of the package. 
+ 
+For more information on these files, see [Package Layout](/learn/package-references/#package-layout).
 
 ```toml
 [package]

@@ -21,6 +21,8 @@ redirect_from:
   - /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda
   - /learn/guides/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
   - /learn/guides/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda
+  - /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/
+  - /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina
 ---
 
 ## Prerequisites

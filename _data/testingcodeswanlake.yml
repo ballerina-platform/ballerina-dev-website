@@ -17,13 +17,13 @@
       url: '#'
       sublinks:
         - title: Test source files
-          url: /learn/test-ballerina-code/structure-the-tests/#test-source-files
+          url: /learn/test-ballerina-code/structure-tests/#test-source-files
           active: test-source-files
         - title: Test resources
-          url: /learn/test-ballerina-code/structure-the-tests/#test-resources
+          url: /learn/test-ballerina-code/structure-tests/#test-resources
           active: test-resources
         - title: Test configurations
-          url: /learn/test-ballerina-code/structure-the-tests/#test-configurations
+          url: /learn/test-ballerina-code/structure-tests/#test-configurations
           active: test-configurations
     - title: Configure tests
       url : '#'
@@ -83,10 +83,10 @@
       url: '#'
       sublinks:
         - title: Mock objects
-          url: /learn/test-ballerina-code/mock/#mock-objects
+          url: /learn/test-ballerina-code/mocking/#mock-objects
           active: mock-objects
         - title: Mock functions
-          url: /learn/test-ballerina-code/mock/#mock-functions
+          url: /learn/test-ballerina-code/mocking/#mock-functions
           active: mock-functions
     - title: Execute tests
       url: '#'

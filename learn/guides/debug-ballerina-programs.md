@@ -291,5 +291,5 @@ The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
 
 <br/>
 
->**Info:** For more information on VSCode debugging features, go to [VS Code documentation](https://code.visualstudio.com/docs/editor/debugging).
+>**Info:** For more information on VSCode debugging features, go to [VSCode documentation](https://code.visualstudio.com/docs/editor/debugging).
 

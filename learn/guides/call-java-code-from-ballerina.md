@@ -12,7 +12,7 @@ redirect_from:
   - /learn/how-to-call-java-code-from-ballerina
   - /learn/how-to-call-java-code-from-ballerina/
   - /learn/calling-java-code-from-ballerina
-    - /learn/calling-java-code-from-ballerina/
+  - /learn/calling-java-code-from-ballerina/
   - /swan-lake/learn/calling-java-code-from-ballerina
   - /swan-lake/learn/calling-java-code-from-ballerina/
   - /learn/user-guide/calling-java-code-from-ballerina
@@ -24,6 +24,8 @@ redirect_from:
   - /learn/calling-java-code-from-ballerina-and-vice-versa
   - /learn/calling-java-code-from-ballerina-and-vice-versa/
   - /learn/call-java-code-from-ballerina
+  - /learn/guides/calling-java-code-from-ballerina/
+  - /learn/guides/calling-java-code-from-ballerina
 ---
 
 ## Write Ballerina bindings

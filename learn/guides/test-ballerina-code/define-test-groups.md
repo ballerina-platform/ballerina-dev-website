@@ -21,6 +21,8 @@ redirect_from:
 - /learn/testing-ballerina-code/define-test-groups/
 - /learn/testing-ballerina-code/define-test-groups
 - /learn/test-ballerina-code/define-test-groups
+- /learn/guides/testing-ballerina-code/defining-test-groups/
+- /learn/guides/testing-ballerina-code/defining-test-groups
 ---
 
 ## Group tests

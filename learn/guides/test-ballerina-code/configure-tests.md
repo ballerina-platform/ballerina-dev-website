@@ -21,6 +21,8 @@ redirect_from:
 - /learn/test-ballerina-code/configuring-tests
 - /learn/test-ballerina-code/configuring-test/
 - /learn/test-ballerina-code/configure-tests
+- /learn/guides/testing-ballerina-code/configuring-tests/
+- /learn/guides/testing-ballerina-code/configuring-tests
 ---
 
 ## Set up and tearing down

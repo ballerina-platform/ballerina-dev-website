@@ -1,10 +1,10 @@
 ---
 layout: ballerina-observing-programs-left-nav-pages-swanlake
-title: Observing your application with Prometheus, Grafana, Jaeger, and the Elastic Stack
+title: Observe Ballerina Programs
 description: See how Ballerina supports observability by exposing itself via metrics, tracing, and logs to external systems.
 keywords: ballerina, observability, metrics, tracing, logs, prometheus, grafana, jaeger, elastic
-permalink: /learn/observe-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/
-active: observing-your-application-with-prometheus-grafana-and-jaeger-and-the-elastic-stack
+permalink: /learn/observe-ballerina-programs/
+active: observe-ballerina-programs
 intro: Observability is a measure of how well the internal states of a system can be inferred from the knowledge of its external outputs.
 redirect_from:
   - /learn/how-to-observe-ballerina-code
@@ -25,9 +25,12 @@ redirect_from:
   - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/
   - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger
   - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack
+  - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/
   - /learn/observing-ballerina-programs/
   - /learn/observing-ballerina-programs
   - /learn/observe-ballerina-programs
+  - /learn/guides/observing-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack/
+  - /learn/guides/observing-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack
 ---
 
 ## Observability
@@ -70,11 +73,7 @@ Prometheus, etc. For instructions, go to the [Docker documentation](https://docs
 * Set up Jaeger to analyze tracing as mentioned in the section [Setting up Jaeger](#setting-up-the-jaeger-server)
 * Set up Elastic Stack only if you are interested in analyzing logs by following the section on [Setting up the Elastic Stack](#setting-up-the-elastic-stack)
 
-<<<<<<< HEAD:learn/guides/observing-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack.md
-### Step 3 - creating a `Hello World` Ballerina service
-=======
-### Step 3 - create a 'Hello World' Ballerina service
->>>>>>> b5e38bc28daeb5f7dafcd1a9169d1a862fbd18f0:learn/guides/observe-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack.md
+### Step 3 - create a `Hello World` Ballerina service
  
 Create a service as shown below and save it as `hello_world_service.bal`.
 
@@ -358,13 +357,9 @@ ballerina.observe. reporterBufferSize | Queue size of the Jaeger client. | 2000 
 You can configure Ballerina to support distributed tracing with Jaeger. This section focuses on configuring
 Jaeger with Docker as a quick installation.
 
-<<<<<<< HEAD:learn/guides/observing-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack.md
-#### Setting up the Jaeger server
-There are many possible ways to deploy Jaeger. For more information, see [Jaeger deployment](https://www.jaegertracing.io/docs/deployment/). This focuses on an all-in-one deployment with Docker.
-=======
 #### Set up the Jaeger server
+
 There are many possible ways to deploy Jaeger. For more information, see [Jaeger Deployment](https://www.jaegertracing.io/docs/deployment/). This focuses on an all-in-one deployment with Docker.
->>>>>>> b5e38bc28daeb5f7dafcd1a9169d1a862fbd18f0:learn/guides/observe-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack.md
 
 1. Install Jaeger via Docker and start the Docker container by executing the command below.
 
@@ -377,8 +372,6 @@ There are many possible ways to deploy Jaeger. For more information, see [Jaeger
     The image below is the sample tracing information you can see in Jaeger.
     
     ![Jaeger Tracing Dashboard](/learn/images/jaeger-tracing-dashboard.png "Jaeger Tracing Dashboard")
-
-
 
 ## Distributed logging
 In Ballerina, distributed logging and analysis are supported by the Elastic Stack. Ballerina has a log module for logging into the console. To monitor the logs, the Ballerina standard output needs to be redirected to a file.

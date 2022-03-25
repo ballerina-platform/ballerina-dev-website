@@ -13,6 +13,8 @@ redirect_from:
 - /learn/configuring-ballerina-programs/providing-values-to-configurable-variables
 - /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/
 - /learn/configure-ballerina-programs/provide-values-to-configurable-variables
+- /learn/guides/configuring-ballerina-programs/providing-values-to-configurable-variables/
+- /learn/guides/configuring-ballerina-programs/providing-values-to-configurable-variables
 ---
 
 The values for configurable variables can be provided through configuration files, command-line arguments, and

@@ -21,11 +21,15 @@ redirect_from:
 - /learn/making-ballerina-programs-configurable/trying-out-configurability
 - /learn/configuring-ballerina-programs
 - /learn/configuring-ballerina-programs/
+- /learn/configure-ballerina-programs/
+- /learn/configure-ballerina-programs
 - /learn/configuring-ballerina-programs/quick-start-on-configurable-variables
 - /learn/configuring-ballerina-programs/quick-start-on-configurable-variables/
 - /learn/making-ballerina-programs-configurable/defining-configurable-variables/
 - /learn/making-ballerina-programs-configurable/defining-configurable-variables
 - /learn/configure-ballerina-programs/quick-start-on-configurable-variables
+- /learn/guides/configuring-ballerina-programs/quick-start-on-configurable-variables/
+- /learn/guides/configuring-ballerina-programs/quick-start-on-configurable-variables
 ---
 
 ## Configure a sample Ballerina service

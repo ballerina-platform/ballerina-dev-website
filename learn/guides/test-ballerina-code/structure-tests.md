@@ -20,8 +20,9 @@ redirect_from:
     - /learn/testing-ballerina-code/structure-tests
     - /learn/testing-ballerina-code/structure-the-tests/
     - /learn/testing-ballerina-code/structure-the-tests
-    - /learn/test-ballerina-code/structure-tests/
     - /learn/test-ballerina-code/structure-tests
+    - /learn/guides/testing-ballerina-code/structuring-the-tests/
+    - /learn/guides/testing-ballerina-code/structuring-the-tests
 ---
 
 ## Test source files

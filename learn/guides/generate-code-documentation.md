@@ -23,6 +23,8 @@ redirect_from:
   - /learn/generating-code-documentation
   - /learn/generating-code-documentation/
   - /learn/generate-code-documentation
+  - /learn/guides/generating-code-documentation/
+  - /learn/guides/generating-code-documentation
 ---
 
 ## Generate documentation for modules

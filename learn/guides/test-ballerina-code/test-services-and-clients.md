@@ -16,6 +16,8 @@ redirect_from:
 - /learn/testing-ballerina-code/test-services-and-clients/
 - /learn/testing-ballerina-code/test-services-and-clients
 - /learn/test-ballerina-code/test-services-and-clients
+- /learn/guides/testing-ballerina-code/testing-services-and-clients/
+- /learn/guides/testing-ballerina-code/testing-services-and-clients
 ---
 
 ## Test services

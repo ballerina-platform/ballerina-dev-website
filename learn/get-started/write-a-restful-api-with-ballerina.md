@@ -10,6 +10,8 @@ redirect_from:
   - /learn/writing-a-restful-api-with-ballerina
   - /learn/writing-a-restful-api-with-ballerina/
   - /learn/write-a-restful-api-with-ballerina
+  - /learn/getting-started/writing-a-restful-api-with-ballerina/
+  - /learn/getting-started/writing-a-restful-api-with-ballerina
 ---
 
 Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement the RESTful API. The Ballerina standard library itself is adequate. In this API, you will be writing a simple CRUD-like RESTful service.

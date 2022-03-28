@@ -170,7 +170,7 @@ public type ConstructorData record {|
 As per the above definition, `paramTypes` field takes an array of Java classes or array types. The following table contains more details.
 
 
-Java Type | Description | Example
+Java type | Description | Example
 --------- | ----------- | -------
 Primitive | The Java class name of a primitive type is the same as the name of the primitive type.  | The `boolean.class.getName()` expression evaluates to `boolean`. Similarly, the `int.class.getName()` expression evaluates to `int`.
 Class | Fully-qualified class name. | `java.lang.String`
@@ -341,13 +341,9 @@ public function main() {
 }
 ```
 
-<<<<<<< HEAD
-### Calling overloaded Java methods
-The [Instantiating Java classes](/learn/java-interoperability/ballerina-ffi/#instantiating-java-classes) section presents how to deal with overloaded constructors. You need to use the same approach to deal with overloaded Java methods. Try to call the overloaded `append` methods in the `java.lang.StringBuffer` class. Below is a subset of those methods.
-=======
 ### Call overloaded Java methods
+
 The [Instantiating Java Classes](/learn/java-interoperability/ballerina-ffi/#instantiating-java-classes) section presents how to deal with overloaded constructors. You need to use the same approach to deal with overloaded Java methods. Try to call the overloaded `append` methods in the `java.lang.StringBuffer` class. Below is a subset of those methods.
->>>>>>> b5e38bc28daeb5f7dafcd1a9169d1a862fbd18f0
 
 ```java
 StringBuffer append(boolean b);

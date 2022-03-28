@@ -132,7 +132,7 @@ The Ballerina test framework supports the following assertions, which help to ve
 
 <table class="table cCodeTable" >
     <tr>
-       <th class="cDescription">Assertion Function</th>
+       <th class="cDescription">Assertion function</th>
        <th class="cCodeCol">Description</th>
     </tr>
     <tr>

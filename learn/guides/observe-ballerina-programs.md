@@ -203,7 +203,7 @@ host="0.0.0.0"
 
 The descriptions of each configuration option are provided below with possible values.
 
-Configuration Key | Description | Default Value | Possible Values 
+Configuration key | Description | Default value | Possible values 
 --- | --- | --- | --- 
 ballerina.observe. metricsEnabled | Whether metrics monitoring is enabled (true) or disabled (false) | false | true or false
 ballerina.observe. metricsReporter | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | choreo | prometheus or if any custom implementation, the name of the reporter.
@@ -320,7 +320,7 @@ tracingProvider="jaeger"
 
 The table below provides the descriptions of each configuration option and possible values that can be assigned.
 
-Configuration Key | Description | Default Value | Possible Values
+Configuration key | Description | Default value | Possible values
 --- | --- | --- | --- 
 ballerina.observe.tracingEnabled | Whether tracing is enabled (true) or disabled (false) | false | true or false
 ballerina.observe.tracingProvider | The tracer name, which implements the tracer interface. | choreo | jaeger or the name of the tracer of any custom implementation.
@@ -344,7 +344,7 @@ reporterBufferSize=1000
 
 The table below provides the descriptions of each configuration option and possible values that can be assigned.
 
-Configuration Key | Description | Default Value | Possible Values 
+Configuration key | Description | Default value | Possible values 
 --- | --- | --- | --- 
 ballerina.observe. agentHostname | Hostname of the Jaeger agent | localhost | IP or hostname of the Jaeger agent. If it is running on the same node as Ballerina, it can be localhost. 
 ballerina.observe. agentPort | Port of the Jaeger agent | 55680 | The port on which the Jaeger agent is listening.

@@ -57,7 +57,7 @@ Organization names can only contain alphanumerics, underscore, and the maximum l
 
 When you run the `bal new` command, the organization name by default will be set to the user name of your machine. You can choose to update the `Ballerina.toml` file to amend the organization name appropriately.
 
-As described in [Organizations](/learn/publishing-packages-to-ballerina-central/#organizations), the restrictions for the organization name of a package when publishing to [Ballerina Central](https://central.ballerina.io/) should also be considered before choosing an organization name.
+As described in [Organizations](/learn/publish-packages-to-ballerina-central/#organizations), the restrictions for the organization name of a package when publishing to [Ballerina Central](https://central.ballerina.io/) should also be considered before choosing an organization name.
 
 
 ### The `name` field
@@ -171,7 +171,7 @@ The `bal build` packages all JARs specified in the `Ballerina.toml` file with th
 
 ## The `Dependencies.toml` file
 
-The [`Dependencies.toml`](/learn/managing-dependencies/#specifying-dependency-versions) locks the versions of the dependencies to support repeatable builds.
+The [`Dependencies.toml`](/learn/manage-dependencies/#specify-dependency-versions) locks the versions of the dependencies to support repeatable builds.
 This file is auto-generated and managed by the Ballerina CLI. It does not need user intervention.
 
 ## The `Package.md` file

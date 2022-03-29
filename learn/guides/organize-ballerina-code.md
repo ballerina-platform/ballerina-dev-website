@@ -84,7 +84,7 @@ bal new -t lib hello_lib
 ```
 
 This will create a Ballerina source file containing a function that prints `Hello, world!` along with a test file to test the function. 
-Additionally, it will also create the `Package.md` file, which is required to [publish a package to Ballerina Central](/learn/publishing-packages-to-ballerina-central).
+Additionally, it will also create the `Package.md` file, which is required to [publish a package to Ballerina Central](/learn/publish-packages-to-ballerina-central).
 
 ```bash
 

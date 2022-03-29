@@ -78,7 +78,7 @@ Creating bala
 You can publish a Ballerina archive to the [Ballerina Central](https://central.ballerina.io/).
 Before you publish, ensure the package works as intended because a publish is **permanent**. Once published to Ballerina Central, you cannot overwrite the version or remove the package. However, the number of package versions you can push to Ballerina Central is not restricted.
 
->**Tip:** As a precaution, use the [local repository](/learn/managing-dependencies/#using-dependencies-from-the-local-repository) first to test out the functionality of the library package before publishing it to Ballerina Central.
+>**Tip:** As a precaution, use the [local repository](/learn/manage-dependencies/#use-dependencies-from-the-local-repository) first to test out the functionality of the library package before publishing it to Ballerina Central.
 
 
 ### Prepare for publishing

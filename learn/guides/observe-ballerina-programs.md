@@ -33,17 +33,11 @@ redirect_from:
   - /learn/guides/observing-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack
 ---
 
-## Observability
-Observability consists of three major pillars.
+It consists of the three major pillars below.
 
-### Metrics
-Numeric values that are collected and aggregated over a period of time.
-
-### Tracing
-The activities that occur when a request/transaction occurs in the system from the point of entry to exit.
-
-### Logging
-Text records of activities that occurred with relevant information along with the timestamp.
+- **Metrics:** numeric values that are collected and aggregated over a period of time.
+- **Tracing:** the activities that occur when a request/transaction occurs in the system from the point of entry to exit.
+- **Logging:** text records of activities that occurred with relevant information along with the timestamp.
 
 ## Provide observability in Ballerina
 

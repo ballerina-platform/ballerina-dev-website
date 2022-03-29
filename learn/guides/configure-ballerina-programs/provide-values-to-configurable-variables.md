@@ -35,11 +35,7 @@ given through multiple ways when retrieving configurable values:
 content is expected to be in the [TOML(v0.4.0) format](https://toml.io/en/v0.4.0).
 >**Note:** Providing multiple configuration values through separate environment variables is not supported.
 
-<<<<<<< HEAD:learn/guides/configuring-ballerina-programs/providing-values-to-configurable-variables.md
-### Providing configuration values through command-line arguments
-=======
 ### Provide configuration values through command line arguments
->>>>>>> b5e38bc28daeb5f7dafcd1a9169d1a862fbd18f0:learn/guides/configure-ballerina-programs/provide-values-to-configurable-variables.md
 
 The following syntax can be used to provide values for the variables through the command line parameters:
 
@@ -72,7 +68,7 @@ the respective types.
 
 The mapping of Ballerina types to TOML types can be explained through the following examples:
 
-| Ballerina Type     | Ballerina Example                                                                                                                                                                       | TOML Type                        | TOML Example                                                                                                                                |
+| Ballerina type     | Ballerina example                                                                                                                                                                       | TOML type                        | TOML example                                                                                                                                |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | int, byte          | <code>configurable   byte  age = ?;</code><br/>  <code>configurable   int  port = ?;</code>                                                                                             | Integer                          | `age = 25` <br/>  `port = 9090`                                                                                                             |
 | string             | <code>configurable   string  name = ?; </code>                                                                                                                                          | String                           | `name = "John"`                                                                                                                             |
@@ -102,7 +98,7 @@ The module information requirement can be explained in the following table accor
 <thead>
 <tr>
 <th style="text-align:center" colspan="2"><strong>Place where the variable is defined</strong></th>
-<th style="text-align:center" colspan="2"><strong>Module Information</strong></th>
+<th style="text-align:center" colspan="2"><strong>Module information</strong></th>
 </tr>
 </thead>
 <tbody>

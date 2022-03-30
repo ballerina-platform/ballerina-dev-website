@@ -63,6 +63,8 @@ let redirections = {
     "/learn/visual-studio-code-extension/language-support/":"https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina",
     "/learn/visual-studio-code-extension/configurations/":"https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina",
     "/learn/observing-ballerina-programs/observing-your-application-with-choreo/":"/page-not-available.html",
+    "/learn/ballerina-openapi-support/#generate-a-ballerina-service-from-an-openapi-definition-design-first-approach":"/learn/ballerina-openapi-support/#generate-a-ballerina-service-from-an-openapi-definition",
+    "/learn/ballerina-openapi-support/#export-an-openapi-contract-from-a-ballerina-service-code-first-approach":"/learn/ballerina-openapi-support/#export-an-openapi-contract-from-a-ballerina-service",
 
     // BBEs not available.
     "/1.1/learn/by-example/jdbc-streaming-big-dataset.html":"/page-not-available.html",

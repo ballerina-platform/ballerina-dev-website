@@ -4,12 +4,12 @@
     - title: Use the capabilities of the OpenAPI tools
       url: /learn/ballerina-openapi-support/#use-the-capabilities-of-the-openapi-tools
       active: use-the-capabilities-of-the-openapi-tools
-    - title: Generate a Ballerina service from an OpenAPI definition (design-first approach)
-      url: /learn/ballerina-openapi-support/#generate-a-ballerina-service-from-an-openapi-definition-design-first-approach
-      active: generate-a-ballerina-service-from-an-openapi-design-first-approach
-    - title: Export an OpenAPI contract from a Ballerina service (code-first approach)
-      url: /learn/ballerina-openapi-support/#export-an-openapi-contract-from-a-ballerina-service-code-first-approach
-      active: export-an-openapi-contract-from-a-ballerina-service-code-first-approach
+    - title: Generate a Ballerina service from an OpenAPI definition
+      url: /learn/ballerina-openapi-support/#generate-a-ballerina-service-from-an-openapi-definition
+      active: generate-a-ballerina-service-from-an-openapi-definition
+    - title: Export an OpenAPI contract from a Ballerina service
+      url: /learn/ballerina-openapi-support/#export-an-openapi-contract-from-a-ballerina-service
+      active: export-an-openapi-contract-from-a-ballerina-service
     - title: OpenAPI validator compiler plugin
       url: /learn/ballerina-openapi-support/#openapi-validator-compiler-plugin
       active: openapi-validator-compiler-plugin

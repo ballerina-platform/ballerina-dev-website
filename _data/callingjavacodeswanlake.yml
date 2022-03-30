@@ -6,8 +6,7 @@
       active: write-ballerina-bindings
     - title: Use the SnakeYAML Java library in Ballerina
       url: /learn/call-java-code-from-ballerina/#use-the-snakeyaml-java-library-in-ballerina
-      active: use-the-snakeyaml-java-library-in-ballerina
-        sublinks:
+      sublinks:
           - title: Step 1 - write the Java code
             url: /learn/call-java-code-from-ballerina/#step-1---write-the-java-code
             active: step-1---write-the-java-code

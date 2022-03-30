@@ -24,11 +24,10 @@ redirect_from:
   - /learn/cli-documentation/openapi
 ---
 
-## Use the capabilities of the OpenAPI tools
+The Ballerina OpenAPI tooling support provides the following capabilities.
 
 > **Prerequisite**: Download and install the Ballerina Swan Lake from [downloads](https://ballerina.io/downloads/).
 
-The Ballerina OpenAPI tooling support provides the following capabilities.
  1. Generating Ballerina service/client stubs from a given OpenAPI contract file using the CLI tool.
  2. Exporting the OpenAPI definition from a given Ballerina service implementation using the CLI tool.
  3. Validating the service implementation compliance with a provided OpenAPI contract using the OpenAPI annotation.
@@ -37,9 +36,9 @@ The Ballerina OpenAPI tooling support provides the following capabilities.
 
  > **Note**: Ballerina Swan Lake supports the OpenAPI Specification version 3.0.0 onwards.
 
-## Generate a Ballerina service from an OpenAPI definition
+## Generate a Ballerina service 
 
-This is named as the `design-first approach`. To generate only the Ballerina service, you can use the following CLI command of the OpenAPI tool.
+Generating a Ballerina service from an OpenAPI definition is named as the `design-first approach`. To generate only the Ballerina service, you can use the following CLI command of the OpenAPI tool.
 
 ```bash
 $ bal openapi -i <openapi-contract> --mode service
@@ -76,11 +75,10 @@ Once you execute the command, only the operations related to the given tags will
 >**Info:** For more command options, see
 [OpenAPI to Ballerina command reference](#openapi-to-ballerina-command-reference)
 
-## Export an OpenAPI contract from a Ballerina service 
+## Export an OpenAPI contract
 
-This is named as the `code-first approach`. You can convert your Ballerina service APIs into human-readable or machine-readable documents such as OpenAPI documents by using the Ballerina to OpenAPI command as follows.
+Exporting an OpenAPI contract from a Ballerina service is named as the `code-first approach`. You can convert your Ballerina service APIs into human-readable or machine-readable documents such as OpenAPI documents by using the Ballerina to OpenAPI CLI Tool as follows.
 
-### Use the Ballerina to OpenAPI CLI tool
 Export the Ballerina service to an OpenAPI Specification 3.0.0 definition. For the export to work properly, the input Ballerina service should be defined using the basic service and resource-level HTTP annotations.
 
 ```bash
@@ -89,12 +87,12 @@ $ bal openapi [-i | --input] <ballerina-service-file-path> [(-o | --output) <out
 Parameter `ballerina-service-file-path` specifies the path of the ballerina service file (e.g., `my_api.bal`) and is mandatory.
 If your Ballerina file includes multiple services, this command generates the OpenAPI contract for each service in the Ballerina file.
 
-### Generate an OpenAPI specification in JSON format
+### Export in JSON format
 Use the `--json` flag If you need the Ballerina service to OpenAPI output in JSON. The default is YAML.
 ```bash
 $ bal openapi -i <ballerina-resource-file> [--json]
 ```
-### Generate an OpenAPI specification for a given service
+### Export for a given service
 If you need to document an OpenAPI contract for only one given service, then use the following command, specifying the service name as the `absolute-resource-path`.
 
 ```bash
@@ -114,9 +112,10 @@ $ bal openapi -i helloService.bal -s "/hello"
 
 This will generate the OpenAPI contracts for the Ballerina service in the `hello_service.bal` Ballerina file
 of which the `absolute-resource-path` is `/hello`. 
-### Generate the OpenAPI contract with a given title and version
+### Export with a given title and version
 
-You can use an annotation for specifying the title and version information of the OpenAPI contract as follows.  
+You can use an annotation for specifying the title and version information of the OpenAPI contract as follows.
+
 ```ballerina
 @openapi:ServiceInfo {
     [contract: "/path/to/openapi.json|yaml"],
@@ -124,6 +123,7 @@ You can use an annotation for specifying the title and version information of th
     ['version: "0.1.0"]
 }    
 ```
+
 - **Contract: string?** :
 A path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`. This is an optional attribute. When you use the Ballerina to OpenAPI tool, it will provide an attached OpenAPI contract as the output for a given service. If this attribute is not provided, then the tool generates an OpenAPI Specification(OAS) contract for the given Ballerina file content.
 - **Title: string?** :
@@ -155,8 +155,9 @@ info:
 ## OpenAPI validator compiler plugin
 
 The OpenAPI Validator Compiler plugin validates a service against a given OpenAPI contract. The Compiler Plugin gets activated if a service has the `@openapi:ServiceInfo` annotation. This plugin compares the service and the OpenAPI contract and validates both against a pre-defined set of validation rules. If any of the rules fail, the plugin provides compilation errors.
-### Annotation for validator plugin
+
 The `@openapi:ServiceInfo` annotation is used to bind the service with an OpenAPI contract. You need to add this annotation to the service file with the required values for enabling the validations.
+
 >**Note:** Providing a `contract` path attribute is mandatory for the OpenAPI validator.
 
 The following is an example of the annotation usage in the Ballerina file.
@@ -179,8 +180,9 @@ service /greet on new http:Listener(9090) {
 
 For annotation attributes details, see [OpenAPI annotation reference](#openapi-annotation-reference).
 
-## Generate a Ballerina client from an OpenAPI definition
-The generated client can be used in your applications to call the service defined in the OpenAPI file. If you want to generate only the Ballerina client, you can set the `mode` as the `client` when running the OpenAPI tool. 
+## Generate a Ballerina client
+
+The client generated from an OpenAPI definition can be used in your applications to call the service defined in the OpenAPI file. If you want to generate only the Ballerina client, you can set the `mode` as the `client` when running the OpenAPI tool. 
 
 >**Note:** Before generating your client using the command-line tool, please check if a pre-generated client for your API already exists in the [Ballerina Central](https://central.ballerina.io/). (If so, you can refer to the client's API documentation for more information on how to use the pre-generated client in your code.)
 
@@ -201,7 +203,8 @@ Client generated successfully. The following files were created.
 -- types.bal
 -- utils.bal
 ```
-### Generate a Ballerina client with boiler-plate tests
+### Generate with boiler-plate tests
+
 Use the `--with-tests` flag in the client mode to generate a Ballerina client with boilerplate test cases for all the remote functions available in it.
 ```bash
 $ bal openapi -i <openapi-contract> [--mode client] [--with-tests]
@@ -222,31 +225,38 @@ $ bal openapi -i <openapi-contract> [-n |--nullable]
 
 >**Info:** For more command options, see [OpenAPI to Ballerina command reference](#openapi-to-ballerina-command-reference).
 
-## Contribute to the WSO2 `openapi-connectors` repository
-To see your new client in Ballerina central in the future, follow the steps below and send a GitHub Pull Request.
+## Publish your client
 
-### Step 1 - set up the prerequisites 
+To see your new client in Ballerina central in the future, follow the steps below to send a GitHub Pull Request to the WSO2 `openapi-connectors` repository to publish it.
 
-Fork and clone the [`openapi-connectors`](https://github.com/ballerina-platform/openapi-connectors) repository. Connectors generated from the Ballerina OpenAPI tool are managed in this repository.
+1. Fork and clone the [`openapi-connectors`](https://github.com/ballerina-platform/openapi-connectors) repository. Connectors generated from the Ballerina OpenAPI tool are managed in this repository.
 
-### Step 2 - add the Ballerina client
+2. Open the cloned repository and navigate to the `/openapi` directory.
 
-1. Open the cloned repository and navigate to the `/openapi` directory.
-2. Run the `bal new <connector_name> -t lib` command to create a new Ballerina package. 
-3. Copy the [generated files](#generate-a-ballerina-client-from-an-openapi-definition)(**client.bal, types.bal, utils.bal**) into the `<connector_name>` directory. 
-4. Run the `bal build` command to check whether the newly-generated connector is compiling successfully. 
-5. Run the necessary unit tests to verify the functionality of the generated connector. 
-6. Add the license header at the top of each `.bal` file. 
-7. Add the [`Package.md`](https://github.com/ballerina-platform/ballerina-extended-library/discussions/77) and [`Module.md`](https://github.com/ballerina-platform/ballerina-extended-library/discussions/78) files.
-8. Add a connector icon to the root of the connector. The icon needs to be a `.png` of 200x200 px size named as `icon.png`. 
-9. Update the [`Ballerina.toml` file](https://github.com/ballerina-platform/ballerina-extended-library/discussions/72).
+3. Run the `bal new <connector_name> -t lib` command to create a new Ballerina package. 
 
-### Step 3 - send a PR to the `openapi-connectors` repository
+4. Copy the [generated files](#generate-a-ballerina-client-from-an-openapi-definition)(i.e., `client.bal`, `types.bal`, and `utils.bal`) into the `<connector_name>` directory. 
 
-1. Run the `./gradlew build` command. 
-2. Push the changes and create a Pull Request to the master branch of the `openapi-connectors` repository.
+5. Run the `bal build` command to check whether the newly-generated connector is compiling successfully. 
 
-## OpenAPI to Ballerina command reference
+6. Run the necessary unit tests to verify the functionality of the generated connector.
+
+7. Add the license header at the top of each `.bal` file. 
+
+8. Add the [`Package.md`](https://github.com/ballerina-platform/ballerina-extended-library/discussions/77) and [`Module.md`](https://github.com/ballerina-platform/ballerina-extended-library/discussions/78) files.
+
+9. Add a connector icon to the root of the connector. The icon needs to be a `.png` of 200x200 px size named as `icon.png`. 
+
+10. Update the [`Ballerina.toml` file](https://github.com/ballerina-platform/ballerina-extended-library/discussions/72).
+
+11. Run the `./gradlew build` command. 
+
+12. Push the changes and create a Pull Request to the master branch of the `openapi-connectors` repository.
+
+## Command reference
+
+The OpenAPI to Ballerina command supports several usages in the Ballerina OpenAPI tool as follows.
+
 ```bash
 bal openapi [-i | --input] <openapi-contract-file-path> 
             [-o | --output] <output-location>
@@ -303,7 +313,8 @@ bal openapi [-i | --input] <openapi-contract-file-path>
 - **`--with-tests`**<br/>
   This is optional. It works with the client generation command and generates a boiler-plate test for all the remote functions of the generated client.
 
-## OpenAPI annotation reference
+## Annotation reference
+
 The `@openapi:ServiceInfo` annotation supports several usages in the Ballerina OpenAPI tool. It contains attributes such as `contract` , `tags`, `operations`, `failOnErrors`, `excludeTags`, `excludeOperations`, `title`, `version`, and `embed` for each particular purpose. These attributes are optional to be used in the annotation.
 
 ```ballerina

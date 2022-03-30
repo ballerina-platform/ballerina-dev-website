@@ -1,6 +1,6 @@
 ---
 layout: ballerina-configurable-left-nav-pages-swanlake
-title: Providie values to configurable variables
+title: Provide values to configurable variables
 description: You can supply values to configurable variables using the methods below.
 keywords: ballerina, programming language, configurable, variables, values, toml
 permalink: /learn/configure-ballerina-programs/provide-values-to-configurable-variables/
@@ -87,7 +87,7 @@ The mapping of Ballerina types to TOML types can be explained through the follow
 | record[]           | <code>type  Person  record {</code><br/>    <code>string  name;</code><br/>    <code>int  age;</code><br/><code>};</code><br/>  <code>configurable   Person[]  peope = ?;</code>        | Array of TOML tables             | `[[people]]`<br/>  `name = "John"`<br/> `age = 45`<br/> `[[people]]`<br/>  `name = "Jack"`<br/> `age = 32`                                  |
 | table              | <code>configurable   table &lt;map&lt;string&gt;&gt; users = ?; </code>                                                                                                                 | Array of TOML tables             | `[[users]]`<br/> `name = "Tom"`<br/> `occupation = "Software Engineer"`<br/> `[[users]]`<br/> `name = "Harry"`<br/> `occupation = "Doctor"` |
 
-### Providing module information of the configurable variable
+### Provide module information of the configurable variable
 
 The configurable variables can be defined in different modules. Therefore, it is necessary to provide the information of
 the module in which the variable is defined.

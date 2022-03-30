@@ -72,8 +72,7 @@ $ bal openapi -i hello.yaml --tags "pets", "list"
 ```
 Once you execute the command, only the operations related to the given tags will be included in the generated service file.
 
->**Info:** For more command options, see
-[OpenAPI to Ballerina command reference](#openapi-to-ballerina-command-reference)
+>**Info:** For more command options, see [Command reference](#command-reference).
 
 ## Export an OpenAPI contract
 
@@ -178,7 +177,7 @@ service /greet on new http:Listener(9090) {
 }
 ```
 
-For annotation attributes details, see [OpenAPI annotation reference](#openapi-annotation-reference).
+For annotation attributes details, see [Annotation reference](#annotation-reference).
 
 ## Generate a Ballerina client
 
@@ -223,7 +222,7 @@ This is an optional flag in the OpenAPI to Ballerina command. If your OpenAPI sp
 $ bal openapi -i <openapi-contract> [-n |--nullable]
 ```
 
->**Info:** For more command options, see [OpenAPI to Ballerina command reference](#openapi-to-ballerina-command-reference).
+>**Info:** For more command options, see [Command reference](#command-reference).
 
 ## Publish your client
 
@@ -235,7 +234,7 @@ To see your new client in Ballerina central in the future, follow the steps belo
 
 3. Run the `bal new <connector_name> -t lib` command to create a new Ballerina package. 
 
-4. Copy the [generated files](#generate-a-ballerina-client-from-an-openapi-definition)(i.e., `client.bal`, `types.bal`, and `utils.bal`) into the `<connector_name>` directory. 
+4. Copy the [generated files](#generate-a-ballerina-client) (i.e., `client.bal`, `types.bal`, and `utils.bal`) into the `<connector_name>` directory. 
 
 5. Run the `bal build` command to check whether the newly-generated connector is compiling successfully. 
 

@@ -110,7 +110,7 @@ function getMockResponse() returns http:Response {
 }
 ```
 
-To lean more about how to use mocking to test services, see [Mocking](/learn/testing-ballerina-code/mocking).
+To lean more about how to use mocking to test services, see [Mocking](/learn/test-ballerina-code/mocking).
 
 ## Configure services and clients
 

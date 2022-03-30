@@ -103,7 +103,7 @@ For more installation options, see [Installation options](/learn/installing-ball
 
 ## Install the VS Code extension
 
-Ballerina provides an extension to try out its development capabilities in Visual Studio Code. For instructions on setting it up, go to [The Ballerina extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
+Ballerina provides an extension to try out its development capabilities in Visual Studio Code. For instructions on setting it up, go to the [Ballerina extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
 <style>
 
 a.cDownload .cSize {

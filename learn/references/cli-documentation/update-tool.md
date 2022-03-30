@@ -40,7 +40,7 @@ Patch releases of Ballerina distributions contain bug fixes and fixes for critic
 
 ## Use the update tool
 
-If you haven’t installed Ballerina yet, see [Installing Ballerina](/learn/installing-ballerina/) for the instructions.
+If you haven’t installed Ballerina yet, see [Install Ballerina](/learn/install-ballerina/) for the instructions.
 
 Once the installation is complete, you would see the following directory structure inside the installation directory.
 
@@ -66,7 +66,7 @@ The `distributions` is the directory, in which all your installed distributions 
   
   E.g., when you invoke `bal build`, the Ballerina Tool dispatches this request to the active distribution.
 
-You can [change this active distribution](#changing-the-active-distribution) at any time or manage it using the Ballerina Tool. However, first, you need to update the Ballerina Tool to its latest version.
+You can [change this active distribution](#change-the-active-distribution) at any time or manage it using the Ballerina Tool. However, first, you need to update the Ballerina Tool to its latest version.
 
 ### Update the Ballerina tool
 

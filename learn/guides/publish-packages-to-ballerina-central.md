@@ -50,7 +50,7 @@ This will create the `Ballerina.toml` file, the `hello.bal` source file, the `Pa
 * The `Package.md` is required when you publish a package to a repository. You can edit the content to add a meaningful description about the package.
 * The `hello.bal` file, `resources/` directory `tests/` directory, and the `Module.md` file belong to the default module of the package. 
  
-For more information on these files, see [Package Layout](/learn/package-references/#package-layout).
+For more information on these files, see [Package layout](/learn/package-references/#package-layout).
 
 ```toml
 [package]
@@ -78,7 +78,7 @@ Creating bala
 You can publish a Ballerina archive to the [Ballerina Central](https://central.ballerina.io/).
 Before you publish, ensure the package works as intended because a publish is **permanent**. Once published to Ballerina Central, you cannot overwrite the version or remove the package. However, the number of package versions you can push to Ballerina Central is not restricted.
 
->**Tip:** As a precaution, use the [local repository](/learn/managing-dependencies/#using-dependencies-from-the-local-repository) first to test out the functionality of the library package before publishing it to Ballerina Central.
+>**Tip:** As a precaution, use the [local repository](/learn/manage-dependencies/#use-dependencies-from-the-local-repository) first to test out the functionality of the library package before publishing it to Ballerina Central.
 
 
 ### Prepare for publishing
@@ -116,4 +116,4 @@ bal push
 
 After publishing your first package, you can create a second package and use the already published package in it.
 Any package published in Ballerina Central is public and can be used in other packages.
- For more information, see [Importing a module](/learn/managing-dependencies/#importing-a-module).
+ For more information, see [Import a module](/learn/manage-dependencies/#import-a-module).

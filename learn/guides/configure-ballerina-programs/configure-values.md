@@ -14,6 +14,8 @@ redirect_from:
     - /learn/guides/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/
     - /learn/guides/configuring-ballerina-programs/configuring-values-in-kubernetes-environment
     - /learn/configure-ballerina-programs/configure-values
+    - /learn/configure-ballerina-programs/provide-values-to-configurable-variables/#providing-module-information-of-the-configurable-variable/
+    - /learn/configure-ballerina-programs/provide-values-to-configurable-variables/#providing-module-information-of-the-configurable-variable
 ---
 
 ## Configure in multiple modules

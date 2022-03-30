@@ -33,17 +33,11 @@ redirect_from:
   - /learn/guides/observing-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack
 ---
 
-## Observability
-Observability consists of three major pillars.
+It consists of the three major pillars below.
 
-### Metrics
-Numeric values that are collected and aggregated over a period of time.
-
-### Tracing
-The activities that occur when a request/transaction occurs in the system from the point of entry to exit.
-
-### Logging
-Text records of activities that occurred with relevant information along with the timestamp.
+- **Metrics:** numeric values that are collected and aggregated over a period of time.
+- **Tracing:** the activities that occur when a request/transaction occurs in the system from the point of entry to exit.
+- **Logging:** text records of activities that occurred with relevant information along with the timestamp.
 
 ## Provide observability in Ballerina
 
@@ -96,7 +90,7 @@ service /hello on new http:Listener(9090) {
 }
 ```
 
-### Step 4 - observe the 'Hello World' Ballerina service
+### Step 4 - observe the `Hello World` Ballerina service
 
 By default, observability is not included in the executable created by Ballerina. It can be added
 by using the `--observability-included` build flag or by adding the following section to the `Ballerina.toml` file.
@@ -187,7 +181,7 @@ Therefore, it is imperative to continuously measure the code in production.
 To support Prometheus as the metrics reporter, an HTTP endpoint starts with the context
 of `/metrics` in default port 9797 when starting the Ballerina service.
 
-### Configure advanced metrics for Ballerina
+### Configure advanced metrics 
 This section focuses on the Ballerina configurations that are available for metrics monitoring with Prometheus,
 and the sample configuration is provided below.
 
@@ -304,7 +298,7 @@ span as metadata.
 Ballerina supports [OpenTelemetry](https://opentelemetry.io/) standards by default. This means that Ballerina services
 can be traced using OpenTelemetry implementations like [Jaeger](http://www.jaegertracing.io/).
 
-### Configure advanced tracing for Ballerina
+### Configure advanced tracing 
 
 Tracing can be enabled in Ballerina with the few configurations mentioned above in the
 [Observing a Ballerina service](#observing-a-ballerina-service) section.
@@ -390,7 +384,7 @@ $ tail -f ~/wso2-ballerina/workspace/ballerina.log
 
 ### Set up the external systems for log analytics
 
-#### Set up the Elastic Stack
+#### Set up Elastic Stack
 The Elastic Stack comprises the following components.
 
 1. Beats - Multiple agents that ship data to Logstash or Elasticsearch. In our context, Filebeat will ship the Ballerina logs to Logstash. Filebeat should be a container running on the same host as the Ballerina service. This is so that the log file (ballerina.log) can be mounted to the Filebeat container.

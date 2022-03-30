@@ -6,19 +6,52 @@
       active: use-the-capabilities-of-the-openapi-tools
     - title: Generate a Ballerina service from an OpenAPI definition
       url: /learn/ballerina-openapi-support/#generate-a-ballerina-service-from-an-openapi-definition
-      active: generate-a-ballerina-service-from-an-openapi-definition
+      sublinks:
+        - title: Generate from tags
+          url: /learn/ballerina-openapi-support/#generate-from-tags
+          active: generate-from-tags
     - title: Export an OpenAPI contract from a Ballerina service
       url: /learn/ballerina-openapi-support/#export-an-openapi-contract-from-a-ballerina-service
-      active: export-an-openapi-contract-from-a-ballerina-service
+      sublinks:
+        - title: Use the Ballerina to OpenAPI CLI tool
+          url: /learn/ballerina-openapi-support/#use-the-ballerina-to-openapi-cli-tool
+          active: use-the-ballerina-to-openapi-cli-tool
+        - title: Generate an OpenAPI specification in JSON format
+          url: /learn/ballerina-openapi-support/#generate-an-openapi-specification-in-json-format
+          active: generate-an-openapi-specification-in-json-format
+        - title: Generate an OpenAPI specification for a given service
+          url: /learn/ballerina-openapi-support/#generate-an-openapi-specification-for-a-given-service
+          active: generate-an-openapi-specification-for-a-given-service
+        - title: Generate the OpenAPI contract with a given title and version
+          url: /learn/ballerina-openapi-support/#generate-the-openapi-contract-with-a-given-title-and-version
+          active: generate-the-openapi-contract-with-a-given-title-and-version
     - title: OpenAPI validator compiler plugin
       url: /learn/ballerina-openapi-support/#openapi-validator-compiler-plugin
-      active: openapi-validator-compiler-plugin
+      sublinks:
+        - title: Annotation for validator plugin
+          url: /learn/ballerina-openapi-support/#annotation-for-validator-plugin
+          active: annotation-for-validator-plugin
     - title: Generate a Ballerina client from an OpenAPI definition
       url: /learn/ballerina-openapi-support/#generate-a-ballerina-client-from-an-openapi-definition
-      active: generate-a-ballerina-client-from-an-openapi-definition
-    - title: Contribute to the WSO2 openapi-connectors repository
+      sublinks:
+        - title: Generate a Ballerina client with boiler-plate tests
+          url: /learn/ballerina-openapi-support/#generate-a-ballerina-client-with-boiler-plate-tests
+          active: generate-a-ballerina-client-with-boiler-plate-tests
+        - title: Generate with nillable types
+          url: /learn/ballerina-openapi-support/#generate-with-nillable-types
+          active: generate-with-nillable-types
+    - title: Contribute to the WSO2 <code class="highlighter-rouge language-plaintext" id="cBackground">openapi-connectors</code> repository
       url: /learn/ballerina-openapi-support/#contribute-to-the-wso2-openapi-connectors-repository
-      active: contribute-to-the-wso2-openapi-connectors-repository
+      sublinks:
+        - title: Step 1 - set up the prerequisites
+          url: /learn/ballerina-openapi-support/#step-1---set-up-the-prerequisites
+          active: step-1---set-up-the-prerequisites
+        - title: Step 2 - add the Ballerina client
+          url: /learn/ballerina-openapi-support/#step-2---add-the-ballerina-client
+          active: step-2---add-the-ballerina-client
+        - title: Step 3 - send a PR to the openapi-connectors repository
+          url: /learn/ballerina-openapi-support/#step-3---send-a-pr-to-the-openapi-connectors-repository
+          active: step-3---send-a-pr-to-the-openapi-connectors-repository     
     - title: OpenAPI to Ballerina command reference
       url: /learn/ballerina-openapi-support/#openapi-to-ballerina-command-reference
       active: openapi-to-ballerina-command-reference

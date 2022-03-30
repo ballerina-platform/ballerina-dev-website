@@ -39,7 +39,7 @@ The Ballerina OpenAPI tooling support provides the following capabilities.
 
 ## Generate a Ballerina service from an OpenAPI definition
 
-This is named as the design-first approach. To generate only the Ballerina service, you can use the following CLI command of the OpenAPI tool.
+This is named as the `design-first approach`. To generate only the Ballerina service, you can use the following CLI command of the OpenAPI tool.
 
 ```bash
 $ bal openapi -i <openapi-contract> --mode service
@@ -47,7 +47,8 @@ $ bal openapi -i <openapi-contract> --mode service
 
 The generated service can be used as a code template to start the service implementation.
 
-**Example:** 
+For example,
+
 ```bash
 $ bal openapi -i hello.yaml --mode service
 ```
@@ -59,13 +60,14 @@ The service generation process is complete. The following files were created.
 -- hello_service.bal
 -- types.bal
 ```
-### Generate a Ballerina service from tags
+### Generate from tags
 To generate the Ballerina service stub with a subset of tags defined in an OpenAPI contract, use the `--tags` option and specify the tags you need as specified in the OpenAPI definition.
 ```bash
 $ bal openapi -i <openapi-contract> [--tags <"tag1","tag2">]
 ```
 
-**Example:**
+For example, 
+
 ```bash
 $ bal openapi -i hello.yaml --tags "pets", "list"
 ```
@@ -76,7 +78,7 @@ Once you execute the command, only the operations related to the given tags will
 
 ## Export an OpenAPI contract from a Ballerina service 
 
-This is named as the code-first approach. You can convert your Ballerina service APIs into human-readable or machine-readable documents such as OpenAPI documents by using the Ballerina to OpenAPI command as follows.
+This is named as the `code-first approach`. You can convert your Ballerina service APIs into human-readable or machine-readable documents such as OpenAPI documents by using the Ballerina to OpenAPI command as follows.
 
 ### Use the Ballerina to OpenAPI CLI tool
 Export the Ballerina service to an OpenAPI Specification 3.0.0 definition. For the export to work properly, the input Ballerina service should be defined using the basic service and resource-level HTTP annotations.
@@ -98,7 +100,9 @@ If you need to document an OpenAPI contract for only one given service, then use
 ```bash
 $ bal openapi -i <ballerina-resource-file> [-s|--service] <service-name>
 ```
-**Example:**
+
+For example,
+
 ```bash
 $ bal openapi -i helloService.bal
 ```
@@ -127,7 +131,7 @@ This is an optional attribute. You can use this to add the title of the `info` s
 - **Version: string?** :
 This is an optional attribute. You can use this to add the version of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool picks the Ballerina package version as the OAS version.
 
-**Example:**
+For example,
 
 **Ballerina service file with the OpenAPI annotation**
 ```ballerina
@@ -156,6 +160,7 @@ The `@openapi:ServiceInfo` annotation is used to bind the service with an OpenAP
 >**Note:** Providing a `contract` path attribute is mandatory for the OpenAPI validator.
 
 The following is an example of the annotation usage in the Ballerina file.
+
 ```ballerina
 import ballerina/openapi;
 
@@ -182,7 +187,9 @@ The generated client can be used in your applications to call the service define
 ```bash
 $ bal openapi -i <openapi-contract> --mode client
 ```
-**Example:**
+
+For example, 
+
 ```bash
 $ bal openapi -i hello.yaml --mode client
 ```
@@ -200,7 +207,8 @@ Use the `--with-tests` flag in the client mode to generate a Ballerina client wi
 $ bal openapi -i <openapi-contract> [--mode client] [--with-tests]
 ```
 
-**Example:**
+For example,
+
 ```bash
 $ bal openapi -i hello.yaml --mode client --with-tests
 ```
@@ -217,11 +225,12 @@ $ bal openapi -i <openapi-contract> [-n |--nullable]
 ## Contribute to the WSO2 `openapi-connectors` repository
 To see your new client in Ballerina central in the future, follow the steps below and send a GitHub Pull Request.
 
-### **Step 01 :** Set up the prerequisites 
+### Step 1 - set up the prerequisites 
 
 Fork and clone the [`openapi-connectors`](https://github.com/ballerina-platform/openapi-connectors) repository. Connectors generated from the Ballerina OpenAPI tool are managed in this repository.
 
-### **Step 02 :** Add the Ballerina client
+### Step 2 - add the Ballerina client
+
 1. Open the cloned repository and navigate to the `/openapi` directory.
 2. Run the `bal new <connector_name> -t lib` command to create a new Ballerina package. 
 3. Copy the [generated files](#generate-a-ballerina-client-from-an-openapi-definition)(**client.bal, types.bal, utils.bal**) into the `<connector_name>` directory. 
@@ -232,7 +241,8 @@ Fork and clone the [`openapi-connectors`](https://github.com/ballerina-platform/
 8. Add a connector icon to the root of the connector. The icon needs to be a `.png` of 200x200 px size named as `icon.png`. 
 9. Update the [`Ballerina.toml` file](https://github.com/ballerina-platform/ballerina-extended-library/discussions/72).
 
-### **Step 03:** Send a PR to the `openapi-connectors` repository
+### Step 3 - send a PR to the `openapi-connectors` repository
+
 1. Run the `./gradlew build` command. 
 2. Push the changes and create a Pull Request to the master branch of the `openapi-connectors` repository.
 
@@ -247,6 +257,7 @@ bal openapi [-i | --input] <openapi-contract-file-path>
             [--license] <license-file-path> 
             [--with-tests]
 ```
+
 
 - **`-i | --input`**<br/>
   The `openapi-contract-path` parameter specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`) and is mandatory.<br/>
@@ -311,31 +322,32 @@ service /greet on new http:Listener(9090) {
    ...
 }
 ```
+
 - **`Contract: string?`**<br/>
-  Here, you can provide a path to the OpenAPI contract as a string and the OpenAPI file can either be a `.yaml` or `.json`.<br/> 
+  Here, you can provide a path to the OpenAPI contract as a string and the OpenAPI file can either be a `.yaml` or `.json`.<br/> <br/> 
 
 - **`Tags: string[]?`**<br/>
-  The compiler will only validate resources against operations, which are tagged with a tag specified in the list. If not specified, the compiler will validate resources against all the operations defined in the OpenAPI contract.<br/>
+  The compiler will only validate resources against operations, which are tagged with a tag specified in the list. If not specified, the compiler will validate resources against all the operations defined in the OpenAPI contract.<br/><br/> 
 
 - **`Operations: string[]?`**<br/>
   This should contain a list of operation names that need to be validated against the resources in the service. If not specified, the compiler will validate resources against all the operations defined in the OpenAPI contract.
 
-  If both tags and operations are defined, it will validate against the union set of the resources.<br/>
+  If both tags and operations are defined, it will validate against the union set of the resources.<br/><br/> 
 
 - **`ExcludeTags: string[]?`**<br/>
-  This stores the tags that do not need to be validated. The annotation can not have both the `excludeTags` and `Tags` attributes at the same time.<br/>
+  This stores the tags that do not need to be validated. The annotation can not have both the `excludeTags` and `Tags` attributes at the same time.<br/><br/> 
 
 - **`ExcludeOperations: string[]?`**<br/>
-  This specifies the operations that do not need to be validated.<br/>
+  This specifies the operations that do not need to be validated.<br/><br/> 
 
 - **`FailOnErrors: boolean?`**<br/>
-  To turn off the validation, add this to the annotation with the value as `false`.<br/>
+  To turn off the validation, add this to the annotation with the value as `false`.<br/><br/> 
 
 - **`Title: string?`**<br/>
-  Use this to add the title of the `info` section in the generated OpenAPI contract.<br/>
+  Use this to add the title of the `info` section in the generated OpenAPI contract.<br/><br/> 
 
 - **`Version: string?`**<br/>
-  Use this to add the version of the `info` section in the generated OpenAPI contract.<br/>
+  Use this to add the version of the `info` section in the generated OpenAPI contract.<br/><br/> 
 
 - **`Embed: string?`**<br/>
   To turn off generating OpenAPI documentation for service for introspection endpoint support, use this attribute with `false` in the annotation.

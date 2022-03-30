@@ -121,4 +121,4 @@ deployment.apps/greeter-deployment created
 horizontalpodautoscaler.autoscaling/greeter-hpa created
 ```
 
-**Info:** For in-depth information about executing these deployed applications and the supported customizations in code to cloud, see [Code to Cloud deployment](/learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/).
+**Info:** For in-depth information about executing these deployed applications and the supported customizations in code to cloud, see [Code to Cloud deployment](/learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/).

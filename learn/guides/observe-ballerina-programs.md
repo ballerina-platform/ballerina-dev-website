@@ -68,10 +68,10 @@ Prometheus, etc. For instructions, go to the [Docker documentation](https://docs
 
 ### Step 2 - install and configuring the external systems
 
-* Set up Prometheus for collecting metrics information by following the section on [Setting up Prometheus](#setting-up-prometheus)
-* Set up Grafana to visualize metrics by following the section on [Setting up Grafana](#setting-up-grafana)
-* Set up Jaeger to analyze tracing as mentioned in the section [Setting up Jaeger](#setting-up-the-jaeger-server)
-* Set up Elastic Stack only if you are interested in analyzing logs by following the section on [Setting up the Elastic Stack](#setting-up-the-elastic-stack)
+* Set up Prometheus for collecting metrics information by following the section on [Set up Prometheus](#set-up-prometheus)
+* Set up Grafana to visualize metrics by following the section on [Set up Grafana](#set-up-grafana)
+* Set up Jaeger to analyze tracing as mentioned in the section [Set up Jaeger](#set-up-the-jaeger-server)
+* Set up Elastic Stack only if you are interested in analyzing logs by following the section on [Set up the Elastic Stack](#set-up-the-elastic-stack)
 
 ### Step 3 - create a `Hello World` Ballerina service
  
@@ -203,7 +203,7 @@ host="0.0.0.0"
 
 The descriptions of each configuration option are provided below with possible values.
 
-Configuration Key | Description | Default Value | Possible Values 
+Configuration key | Description | Default value | Possible values 
 --- | --- | --- | --- 
 ballerina.observe. metricsEnabled | Whether metrics monitoring is enabled (true) or disabled (false) | false | true or false
 ballerina.observe. metricsReporter | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | choreo | prometheus or if any custom implementation, the name of the reporter.
@@ -307,7 +307,7 @@ can be traced using OpenTelemetry implementations like [Jaeger](http://www.jaege
 ### Configure advanced tracing for Ballerina
 
 Tracing can be enabled in Ballerina with the few configurations mentioned above in the
-[Observing a Ballerina service](#observing-a-ballerina-service) section.
+[Observe a Ballerina service](#observe-a-ballerina-service) section.
 This section mainly focuses on the configuration options with the description and possible values.
 
 A sample configuration that enables tracing and uses Jaeger as the tracer is provided below.
@@ -320,7 +320,7 @@ tracingProvider="jaeger"
 
 The table below provides the descriptions of each configuration option and possible values that can be assigned.
 
-Configuration Key | Description | Default Value | Possible Values
+Configuration key | Description | Default value | Possible values
 --- | --- | --- | --- 
 ballerina.observe.tracingEnabled | Whether tracing is enabled (true) or disabled (false) | false | true or false
 ballerina.observe.tracingProvider | The tracer name, which implements the tracer interface. | choreo | jaeger or the name of the tracer of any custom implementation.
@@ -344,7 +344,7 @@ reporterBufferSize=1000
 
 The table below provides the descriptions of each configuration option and possible values that can be assigned.
 
-Configuration Key | Description | Default Value | Possible Values 
+Configuration key | Description | Default value | Possible values 
 --- | --- | --- | --- 
 ballerina.observe. agentHostname | Hostname of the Jaeger agent | localhost | IP or hostname of the Jaeger agent. If it is running on the same node as Ballerina, it can be localhost. 
 ballerina.observe. agentPort | Port of the Jaeger agent | 55680 | The port on which the Jaeger agent is listening.

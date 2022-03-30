@@ -83,7 +83,7 @@ As with any other Ballerina Program, you need to create a Ballerina project. The
 
 In the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina project for the gRPC service implementation:
 
-> **Note:** For more information on Ballerina packages, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
+> **Note:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
 ```bash
 $ bal new greeter_service
@@ -190,7 +190,7 @@ Similar to the service, the client application also starts with creating a new B
 
 In a new tab of the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina project for the gRPC client implementation:
 
-> **Note:** For more information on Ballerina projects, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
+> **Note:** For more information on Ballerina projects, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
 ```bash
 $ bal new greeter_client
@@ -283,6 +283,6 @@ Response : Hello Ballerina
 ## Learn more
 
 To learn more about gRPC support in Ballerina, see the following:
-- [gRPC Library Documentation](https://lib.ballerina.io/ballerina/grpc/latest)
+- [`grpc` Library Documentation](https://lib.ballerina.io/ballerina/grpc/latest)
 - [gRPC CLI tooling guide](/learn/cli-documentation/grpc/)
 - [gRPC Examples](/learn/by-example/grpc-simple.html?is_ref_by_example=true)

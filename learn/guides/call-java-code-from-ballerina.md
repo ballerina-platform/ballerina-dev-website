@@ -29,7 +29,7 @@ redirect_from:
 ---
 
 ## Write Ballerina bindings
-The `bindgen` is a CLI tool, which eases the process of generating Ballerina bindings for given Java APIs. This guide shows you how to use it. For more details on how the `bindgen` tool works, see [The Bindgen Tool](/learn/java-interoperability/the-bindgen-tool/).
+The `bindgen` is a CLI tool, which eases the process of generating Ballerina bindings for given Java APIs. This guide shows you how to use it. For more details on how the `bindgen` tool works, see the [Bindgen Tool](/learn/java-interoperability/the-bindgen-tool/).
 
 The [Package layout](/learn/package-references/#package-layout) explains how to package Java libraries (JAR files) with Ballerina programs to produce self-contained executable programs. When you generate bindings for a Java library using the `bindgen` tool, this part is already handled.
 
@@ -143,7 +143,7 @@ comments: >
 ```
 
 ### Step 3 - generate the Ballerina bindings 
-In this step, you will use the `bindgen` tool to generate Ballerina bindings for the four classes that were listed in [Step 1](/learn/calling-java-code-from-ballerina/#step-1---writing-the-java-code). If you want more information about the tool, see [The Bindgen Tool](/learn/java-interoperability/the-bindgen-tool/).
+In this step, you will use the `bindgen` tool to generate Ballerina bindings for the four classes that were listed in [Step 1](/learn/call-java-code-from-ballerina/#step-1---write-the-java-code). If you want more information about the tool, see the [Bindgen Tool](/learn/java-interoperability/the-bindgen-tool/).
 
 ```sh
 > bal bindgen -mvn org.yaml:snakeyaml:1.25 org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
@@ -212,7 +212,7 @@ public class SnakeYamlSample {
 ```
 
 #### Create the `FileInputStream`
-The goal here is to create a new `java.io.FileInputStream` instance from the filename. In [Step 3](/learn/calling-java-code-from-ballerina/#step-3---generating-the-ballerina-bindings), you generated bindings for the required Java classes. The following is the code snippet that does the job.
+The goal here is to create a new `java.io.FileInputStream` instance from the filename. In [Step 3](/learn/call-java-code-from-ballerina/#step-3---generate-the-ballerina-bindings), you generated bindings for the required Java classes. The following is the code snippet that does the job.
 
 ```ballerina
 javaio:FileInputStream | javaio:FileNotFoundException fileInputStream = javaio:newFileInputStream3(filename);
@@ -221,7 +221,7 @@ javaio:FileInputStream | javaio:FileNotFoundException fileInputStream = javaio:n
 Here, `FileInputStream` is the Ballerina class generated for the `java.io.FileInputStream` class.
 - Ballerina bindings for each Java package are mapped onto a separate Ballerina module by default. Therefore, you need to import them when using them inside other modules. Here, the `java.io` Ballerina module (mapping the corresponding Java package) is imported as `javaio`. However, if you wish to generate all the bindings inside a single directory, you can do so by using the `[(-o|--output) <output-path>]` command option.
 - You can find functions that start with `newFileInputStream` in the generated code. Each such function creates a new `java.io.FileInputStream` instance. Ballerina does not support function overloading. Therefore, the `bindgen` tool generates a separate Ballerina function for each overloaded method or constructor. Function names of the generated bindings will be improved in a future release.
-- All the public instance methods in the `java.io.FileInputStream` class are mapped to methods in the generated Ballerina class. You can refer [The Bindgen Tool](/learn/java-interoperability/the-bindgen-tool/) for more details on how other Java class members are mapped into Ballerina bindings.
+- All the public instance methods in the `java.io.FileInputStream` class are mapped to methods in the generated Ballerina class. You can refer the [Bindgen Tool](/learn/java-interoperability/the-bindgen-tool/) for more details on how other Java class members are mapped into Ballerina bindings.
 
 Next, you’ll handle the `error` using a type guard.
 ```ballerina

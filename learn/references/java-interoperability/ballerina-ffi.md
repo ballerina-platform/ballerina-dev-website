@@ -343,7 +343,7 @@ public function main() {
 
 ### Call overloaded Java methods
 
-The [Instantiating Java Classes](/learn/java-interoperability/ballerina-ffi/#instantiating-java-classes) section presents how to deal with overloaded constructors. You need to use the same approach to deal with overloaded Java methods. Try to call the overloaded `append` methods in the `java.lang.StringBuffer` class. Below is a subset of those methods.
+The [Instantiate Java Classes](/learn/java-interoperability/ballerina-ffi/#instantiate-java-classes) section presents how to deal with overloaded constructors. You need to use the same approach to deal with overloaded Java methods. Try to call the overloaded `append` methods in the `java.lang.StringBuffer` class. Below is a subset of those methods.
 
 ```java
 StringBuffer append(boolean b);
@@ -353,7 +353,7 @@ StringBuffer append(StringBuffer sb);
 StringBuffer append(char[] str);
 ```
 
-Below is the set of Ballerina functions that are linked with the above Java methods. Notice the usage of the `paramTypes` annotation field. You can find more details of this field in the [Instantiating Java classes](/learn/java-interoperability/ballerina-ffi/#instantiating-java-classes) section.
+Below is the set of Ballerina functions that are linked with the above Java methods. Notice the usage of the `paramTypes` annotation field. You can find more details of this field in the [Instantiate Java classes](/learn/java-interoperability/ballerina-ffi/#instantiate-java-classes) section.
 
 ```ballerina
 function appendBool(handle sbObj, boolean b) returns handle = @java:Method {

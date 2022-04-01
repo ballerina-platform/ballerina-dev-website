@@ -62,10 +62,10 @@ Prometheus, etc. For instructions, go to the [Docker documentation](https://docs
 
 ### Step 2 - install and configuring the external systems
 
-* Set up Prometheus for collecting metrics information by following the section on [Setting up Prometheus](#setting-up-prometheus)
-* Set up Grafana to visualize metrics by following the section on [Setting up Grafana](#setting-up-grafana)
-* Set up Jaeger to analyze tracing as mentioned in the section [Setting up Jaeger](#setting-up-the-jaeger-server)
-* Set up Elastic Stack only if you are interested in analyzing logs by following the section on [Setting up the Elastic Stack](#setting-up-the-elastic-stack)
+* Set up Prometheus for collecting metrics information by following the section on [Set up Prometheus](#set-up-prometheus)
+* Set up Grafana to visualize metrics by following the section on [Set up Grafana](#set-up-grafana)
+* Set up Jaeger to analyze tracing as mentioned in the section [Set up Jaeger](#set-up-the-jaeger-server)
+* Set up Elastic Stack only if you are interested in analyzing logs by following the section on [Set up the Elastic Stack](#set-up-the-elastic-stack)
 
 ### Step 3 - create a `Hello World` Ballerina service
  
@@ -301,7 +301,7 @@ can be traced using OpenTelemetry implementations like [Jaeger](http://www.jaege
 ### Configure advanced tracing 
 
 Tracing can be enabled in Ballerina with the few configurations mentioned above in the
-[Observing a Ballerina service](#observing-a-ballerina-service) section.
+[Observe a Ballerina service](#observe-a-ballerina-service) section.
 This section mainly focuses on the configuration options with the description and possible values.
 
 A sample configuration that enables tracing and uses Jaeger as the tracer is provided below.

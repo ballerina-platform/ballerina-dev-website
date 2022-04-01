@@ -111,7 +111,7 @@ If you already have a Ballerina version above 1.1.0 installed, you can use the u
 `bal dist pull latest`|Update to the latest Ballerina version
 `bal dist pull <VERSION>`|Fetch a specific distribution 
 
-For more information, see [Keeping Ballerina up to date](/learn/cli-documentation/update-tool/).
+For more information, see [Update Tool](/learn/cli-documentation/update-tool/).
 
 
 ## Uninstall Ballerina

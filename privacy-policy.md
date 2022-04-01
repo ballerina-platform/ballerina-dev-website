@@ -35,7 +35,7 @@ The information we collect from you maybe used in one of the following ways:
 - To create your online profile, which we create for every user who registers on our site or for a service.
 - To send marketing material, event invitations and updates - If you indicate that you are interested in certain areas or subjects when you give us your contact details, we will send you marketing material and/or event and workshop invitations related to those areas. The email address you provide may also be used to send you important updates related to the site or the services you use.
 - To administer a contest, survey, or other site feature.
-- We track and analyze your actions on our website such as navigation, number of visits, downloads, and search items to gain a better understanding of  our visitors and their movements through the site. Please see our [cookie policy](/cookie-policy/) on how we use and store cookies.
+- We track and analyze your actions on our website such as navigation, number of visits, downloads, and search items to gain a better understanding of  our visitors and their movements through the site. Please see our [Cookie policy](/cookie-policy/) on how we use and store cookies.
 
 ## Who is your information shared with?
 
@@ -75,7 +75,7 @@ At our discretion, we may include or offer third party products or services on o
 
 ## Information about our website
 
-This privacy policy applies only to information collected through the Sites and not to information collected offline. Please also visit our [Terms of Service](https://ballerina.io/terms-of-service/) section relating to use, disclaimers, indemnities, and limitations of liability governing the use of our site and services. 
+This privacy policy applies only to information collected through the Sites and not to information collected offline. Please also visit our [Terms of service](https://ballerina.io/terms-of-service/) section relating to use, disclaimers, indemnities, and limitations of liability governing the use of our site and services. 
 
 ## Changes to our Privacy Policy
 

@@ -221,7 +221,7 @@ To see your new client in Ballerina central in the future, follow the steps belo
 ### **Step 02 :** Add the Ballerina client
 1. Open the cloned repository and navigate to the `/openapi` directory.
 2. Run the `bal new <connector_name> -t lib` command to create a new Ballerina package. 
-3. Copy the [generated files](#generating-a-ballerina-client-from-an-openapi-definition)(**client.bal, types.bal, utils.bal**) into the `<connector_name>` directory. 
+3. Copy the [generated files](#generate-a-ballerina-client-from-an-openapi-definition)(**client.bal, types.bal, utils.bal**) into the `<connector_name>` directory. 
 4. Run the `bal build` command to check whether the newly-generated connector is compiling successfully. 
 5. Run the necessary unit tests to verify the functionality of the generated connector. 
 6. Add the license header at the top of each `.bal` file. 

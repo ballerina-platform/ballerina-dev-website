@@ -63,6 +63,12 @@ let redirections = {
     "/learn/visual-studio-code-extension/language-support/":"https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina",
     "/learn/visual-studio-code-extension/configurations/":"https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina",
     "/learn/observing-ballerina-programs/observing-your-application-with-choreo/":"/page-not-available.html",
+    "/learn/configure-ballerina-programs/quick-start-on-configurable-variables/#configure-a-sample-ballerina-service":"/learn/configure-ballerina-programs/configure-a-sample-ballerina-service/",
+    "/learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-configuration-values-through-command-line-arguments":"/learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-via-command-line-arguments/",
+    "/learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-configuration-values-through-toml-syntax":"/learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-via-toml-syntax/",
+    "/learn/configure-ballerina-programs/provide-values-to-configurable-variables/#providing-module-information-of-the-configurable-variable":"/learn/configure-ballerina-programs/configure-values/#configure-in-multiple-modules/",
+    "/learn/configure-ballerina-programs/configure-values-in-kubernetes-environment/":"/learn/configure-ballerina-programs/configure-values/#configure-in-a-kubernetes-environment/",
+    "/learn/configure-ballerina-programs/configure-values-in-kubernetes-environment/#secure-sensitive-data-using-configurable-variables":"/learn/configure-ballerina-programs/configure-values/#configure-sensitive-values",
 
     // BBEs not available.
     "/1.1/learn/by-example/jdbc-streaming-big-dataset.html":"/page-not-available.html",

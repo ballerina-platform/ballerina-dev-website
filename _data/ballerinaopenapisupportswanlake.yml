@@ -1,8 +1,8 @@
 - title: Ballerina OpenAPI support
   url: #
   sublinks:
-    - title: Generate a Ballerina service 
-      url: /learn/ballerina-openapi-support/#generate-a-ballerina-service
+    - title: Generate Ballerina services from OpenAPI contracts 
+      url: /learn/ballerina-openapi-support/#generate-ballerina-services-from-openapi-contracts
       sublinks:
         - title: Generate from tags
           url: /learn/ballerina-openapi-support/#generate-from-tags
@@ -22,8 +22,8 @@
     - title: OpenAPI validator compiler plugin
       url: /learn/ballerina-openapi-support/#openapi-validator-compiler-plugin
       active: openapi-validator-compiler-plugin
-    - title: Generate a Ballerina client 
-      url: /learn/ballerina-openapi-support/#generate-a-ballerina-client
+    - title: Generate Ballerina clients from OpenAPI definitions
+      url: /learn/ballerina-openapi-support/#generate-ballerina-client-from-openapi-definitions
       sublinks:
         - title: Generate with boiler-plate tests
           url: /learn/ballerina-openapi-support/#generate-with-boiler-plate-tests

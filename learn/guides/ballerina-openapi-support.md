@@ -35,9 +35,9 @@ The Ballerina OpenAPI tooling support provides the following capabilities.
  3. Validating the service implementation compliance with a provided OpenAPI contract using the OpenAPI annotation.
 - The OpenAPI compiler plugin will allow you to validate a service implementation against an OpenAPI contract during the compile time. This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract. 
 
-## Generate a Ballerina service 
+## Generate Ballerina services from OpenAPI Contracts 
 
-By following an **API design-first approach**, you can generate only the Ballerina service from an OpenAPI definition using the CLI command of the OpenAPI tool as follows.
+If you are an API developer who prefers the **design-first approach**, you can use an existing or your own OpenAPI definition to generate Ballerina services using the OpenAPI CLI command as follows.
 
 ```bash
 $ bal openapi -i <openapi-contract> --mode service
@@ -77,7 +77,7 @@ Once you execute the command, only the operations related to the given tags will
 
 ## Export an OpenAPI contract
 
-By following an **API code-first approach**, you can convert your Ballerina service APIs into human-readable or machine-readable documents such as OpenAPI documents by using the Ballerina to OpenAPI CLI Tool as follows.
+If you are an API developer who prefer to follow the **code-first approach**, you can convert your Ballerina service APIs into human-readable or machine-readable documents such as OpenAPI documents by using the Ballerina to OpenAPI CLI Tool as follows.
 
 Export the Ballerina service to an OpenAPI Specification 3.0.0 definition. For the export to work properly, the input Ballerina service should be defined using the basic service and resource-level HTTP annotations.
 
@@ -194,7 +194,7 @@ service /greet on new http:Listener(9090) {
 
 For annotation attributes details, see [Annotation reference](#annotation-reference).
 
-## Generate a Ballerina client
+## Generate Ballerina clients from OpenAPI definitions
 
 The client generated from an OpenAPI definition can be used in your applications to call the service defined in the OpenAPI file. If you want to generate only the Ballerina client, you can set the `mode` as the `client` when running the OpenAPI tool. 
 

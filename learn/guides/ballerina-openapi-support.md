@@ -339,7 +339,7 @@ The `@openapi:ServiceInfo` annotation supports several usages in the Ballerina O
     contract: "/path/to/openapi.json|yaml",
     tags: ["store"],
     operations: ["op1", "op2"],
-    failOnErrors: true/false → default: true,
+    failOnErrors: true // (default value => true),
     excludeTags: ["pets", "user"],
     excludeOperations: ["op1", "op2"],
     title: "store",

@@ -344,7 +344,7 @@ The `@openapi:ServiceInfo` annotation supports several usages in the Ballerina O
     excludeOperations: ["op1", "op2"],
     title: "store",
     'version: "0.1.0",
-    embed: false/true → default:true
+    embed: true // (default value => true)
 }
 service /greet on new http:Listener(9090) {
    ...

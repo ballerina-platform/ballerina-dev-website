@@ -183,7 +183,7 @@ import ballerina/openapi;
     contract: "/path/to/openapi.json|yaml",
     tags: ["store"],
     operations: ["op1", "op2"],
-    failOnErrors: true/false → default: true,
+    failOnErrors: true // (default value => true),
     excludeTags: ["pets", "user"],
     excludeOperations: ["op1", "op2"]
 }

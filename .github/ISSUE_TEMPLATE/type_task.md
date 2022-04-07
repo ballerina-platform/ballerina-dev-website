@@ -6,7 +6,10 @@ labels: 'Type/Task'
 ---
 
 **Description:**
-<!-- Give a brief description of the task -->
+<!-- Give a brief description of the task  -->
+
+**Related website/documentation area**
+<!--Add one of the following: `Area/BBEs`, `Area/HomePageSamples`, `Area/LearnPages`, `Area/Blog`, `Area/CommonPages`,` Area/Backend`, `Area/UIUX`, and `Area/Workflows` -->
 
 **Describe your task(s)**
 

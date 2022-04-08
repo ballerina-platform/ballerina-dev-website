@@ -56,7 +56,9 @@ The service generation process is complete. The following files were created.
 -- hello_service.bal
 -- types.bal
 ```
+
 ### Generate from tags
+
 To generate the Ballerina service stub with a subset of tags defined in an OpenAPI contract, use the `--tags` option and specify the tags you need as specified in the OpenAPI definition.
 
 ```bash
@@ -71,7 +73,7 @@ $ bal openapi -i hello.yaml --tags "pets", "list"
 
 Once you execute the command, only the operations related to the given tags will be included in the generated service file.
 
->**Info:** For more command options, see [Command reference](#command-reference).
+>**Info:** For more information on the command options, see [OpenAPI to Ballerina](/learn/cli-documentation/openapi/#openapi-to-ballerina).
 
 ## Export OpenAPI contracts from Ballerina services
 
@@ -97,7 +99,7 @@ $ bal openapi -i <ballerina-resource-file> [--json]
 
 ### Export for a specific service
 
-If you need to document an OpenAPI contract for only one given service, then use the following command, specifying the service name as the `absolute-resource-path`.
+If you need to document an OpenAPI contract for only one given service (when there are multiple), use the following command, specifying the service name as the `absolute-resource-path`.
 
 ```bash
 $ bal openapi -i <ballerina-resource-file> [-s|--service] <service-name>
@@ -190,7 +192,7 @@ service /greet on new http:Listener(9090) {
 }
 ```
 
-For annotation attributes details, see [Annotation reference](#annotation-reference).
+>**Info:** For annotation attributes details, see [Annotation reference](#annotation-reference).
 
 ## Generate Ballerina clients from OpenAPI definitions
 
@@ -239,7 +241,7 @@ If your OpenAPI specification includes JSON schema properties that are not marke
 $ bal openapi -i <openapi-contract> [-n |--nullable]
 ```
 
-For more command options, see [Command reference](#command-reference).
+>**Info:** For more command options, see [OpenAPI to Ballerina](/learn/cli-documentation/openapi/#openapi-to-ballerina).
 
 ## Publish your client
 
@@ -304,3 +306,5 @@ The attributes of the annotation are optional and can be used for each particula
 | `Title: string?`               | Use this to add the title of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                                  |
 | `Version: string?`             | Use this to add the version of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                                |
 | `Embed: string?`               | To turn off generating OpenAPI documentation for service for introspection endpoint support, use this attribute with `false` in the annotation.                                                                                                                                                                                     |
+
+test

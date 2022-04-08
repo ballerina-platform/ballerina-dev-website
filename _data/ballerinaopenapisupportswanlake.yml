@@ -13,8 +13,8 @@
         - title: Export in JSON format
           url: /learn/ballerina-openapi-support/#export-in-json-format
           active: export-in-json-format
-        - title: Export for a given service
-          url: /learn/ballerina-openapi-support/#export-for-a-given-service
+        - title: Export for a specific service
+          url: /learn/ballerina-openapi-support/#export-for-a-specific-service
           active: export-for-a-specific-service
         - title: Export with a given title and version
           url: /learn/ballerina-openapi-support/#export-with-a-given-title-and-version

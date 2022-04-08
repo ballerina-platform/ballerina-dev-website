@@ -6,9 +6,12 @@ labels: 'Type/Improvement'
 ---
 
 **Description:**
-<!-- Give a brief description of the improvement -->
+<!-- Give a brief description of the improvement-->
 
-**Describe your problem(s)**
+**Related website/documentation area**
+<!--Add one of the following: `Area/BBEs`, `Area/HomePageSamples`, `Area/LearnPages`, `Area/Blog`, `Area/CommonPages`,` Area/Backend`, `Area/UIUX`, and `Area/Workflows` -->
+
+**Describe the problem(s)**
 
 **Describe your solution(s)**
 

@@ -8,7 +8,10 @@ labels: 'Type/NewFeature'
 **Description:**
 <!-- Give a brief description of the new feature -->
 
-**Describe your problem(s)**
+**Related website/documentation area**
+<!--Add one of the following: `Area/BBEs`, `Area/HomePageSamples`, `Area/LearnPages`, `Area/Blog`, `Area/CommonPages`,` Area/Backend`, `Area/UIUX`, and `Area/Workflows` -->
+
+**Describe the problem(s)**
 
 **Describe your solution(s)**
 
@@ -20,3 +23,4 @@ labels: 'Type/NewFeature'
 
 **Suggested Assignees (optional):**
 <!--Optional comma separated list of suggested team members who should attend the issue. Non committers can’t assign issues to assignees, so this will help issue creators who are not a committer to suggest possible assignees-->
+

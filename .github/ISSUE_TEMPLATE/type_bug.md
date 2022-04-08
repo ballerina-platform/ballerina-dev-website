@@ -10,15 +10,16 @@ labels: 'Type/Bug'
 
 **Steps to reproduce:**
 
-**Affected Versions:**
+**Affected versions:**
 
-**OS, DB, other environment details and versions:**
+**Related website/documentation area**
+<!--Add one of the following: `Area/BBEs`, `Area/HomePageSamples`, `Area/LearnPages`, `Area/Blog`, `Area/CommonPages`,` Area/Backend`, `Area/UIUX`, and `Area/Workflows` -->
 
-**Related Issues (optional):**
+**Related issues (optional):**
 <!-- Any related issues such as sub tasks, issues reported in other repositories (e.g component repositories), similar problems, etc. -->
 
-**Suggested Labels (optional):**
+**Suggested labels (optional):**
 <!-- Optional comma separated list of suggested labels. Non committers can’t assign labels to issues, so this will help issue creators who are not a committer to suggest possible labels-->
 
-**Suggested Assignees (optional):**
+**Suggested assignees (optional):**
 <!--Optional comma separated list of suggested team members who should attend the issue. Non committers can’t assign issues to assignees, so this will help issue creators who are not a committer to suggest possible assignees-->

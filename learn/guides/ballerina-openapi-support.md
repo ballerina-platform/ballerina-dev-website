@@ -123,7 +123,7 @@ of which the `absolute-resource-path` is `/hello`.
 
 You can use the `@openapi:ServiceInfo` annotation for specifying the title and version information of the OpenAPI contract as follows.
 
->**Info:** These `contract`, `title`, and `'version` are all optional attributes.
+
 
 ```ballerina
 @openapi:ServiceInfo {
@@ -132,18 +132,13 @@ You can use the `@openapi:ServiceInfo` annotation for specifying the title and v
     'version: "0.1.0"
 }    
 ```
+>**Info:** These `contract`, `title`, and `'version` are all optional attributes and can be used as described below.
 
-**Contract: string?**
-
-This is an optional attribute. A path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`. This is an optional attribute. When you use the Ballerina to OpenAPI tool, it will provide an attached OpenAPI contract as the output for a given service. If this attribute is not provided, then the tool generates an OpenAPI Specification(OAS) contract for the given Ballerina file content.
-
-**Title: string?**
-
-This is an optional attribute. You can use this to add the title of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool takes the absolute base path as the title to the OAS contract.
-
-**Version: string?**
-
-This is an optional attribute. You can use this to add the version of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool picks the Ballerina package version as the OAS version.
+| Attribute           | Description                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Contract: string?` | This is an optional attribute. A path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`. This is an optional attribute. When you use the Ballerina to OpenAPI tool, it will provide an attached OpenAPI contract as the output for a given service. If this attribute is not provided, then the tool generates an OpenAPI Specification(OAS) contract for the given Ballerina file content. |
+| `Title: string?`    | This is an optional attribute. You can use this to add the title of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool takes the absolute base path as the title to the OAS contract.                                                                                                                                                                                           |
+| `Version: string?`  | This is an optional attribute. You can use this to add the version of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool picks the Ballerina package version as the OAS version.                                                                                                                                                                                                |
 
 For example,
 
@@ -306,5 +301,4 @@ The attributes of the annotation are optional and can be used for each particula
 | `Title: string?`               | Use this to add the title of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                                  |
 | `Version: string?`             | Use this to add the version of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                                |
 | `Embed: string?`               | To turn off generating OpenAPI documentation for service for introspection endpoint support, use this attribute with `false` in the annotation.                                                                                                                                                                                     |
-
-test
+  

@@ -34,9 +34,6 @@
     - title: Publish your client
       url: /learn/ballerina-openapi-support/#publish-your-client
       active: publish-your-client
-    - title: Command reference
-      url: /learn/ballerina-openapi-support/#command-reference
-      active: command-reference
     - title: Annotation reference
       url: /learn/ballerina-openapi-support/#annotation-reference
       active: annotation-reference

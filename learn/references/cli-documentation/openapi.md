@@ -38,6 +38,26 @@ The command line arguments below can be used with the command for each particula
 | `-n \|--nullable` | This is an optional flag in the OpenAPI to Ballerina command. If your OpenAPI specification includes JSON schema properties that are not marked as `nullable:true`, they may return as null in some responses. It will result in a JSON schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to generate all data types in the generated record with Ballerina nil support by turning on this flag.<br><br>**E.g.,** `bal openapi -i <openapi-contract> [-n \|--nullable]` |
 | `--with-tests`    | This is optional. It works with the client generation command and generates a boiler-plate test for all the remote functions of the generated client.                                                                                                                                                                                                                                                                                                                                                                            |
 
+
+## Ballerina to OpenAPI 
+
+The Ballerina to OpenAPI  command supports several usages in the Ballerina OpenAPI tool as follows.
+
+```bash
+bal openapi [-i | --input] <ballerina-service-file-path> [--json]
+            [-s | --service] <current-service-name>
+            [-o | --output] <output-location>
+```
+
+The command line arguments below can be used with the command for each particular purpose as described below.
+
+| Argument          | Description                                                                                                                                                     |
+|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `-i \|--input`    | The `ballerina-service-file-path` parameter specifies the path of the Ballerina service file (e.g., `my-service.bal`) and is mandatory.                         |
+| `--json`          | Generate the Ballerina service to OpenAPI output as JSON. The default is YAML.                                                                                  |
+| `-s \| --service` | This service name is used to identify the service that needs to be documented as an OpenAPI specification.                                                      |
+| `-o\|--output`    | Location of the generated OpenAPI specification. If this path is not specified, the output will be written to the same directory from which the command is run. |
+
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
 
  

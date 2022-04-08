@@ -75,7 +75,7 @@ Once you execute the command, only the operations related to the given tags will
 
 >**Info:** For more command options, see [Command reference](#command-reference).
 
-## Export an OpenAPI contract
+## Export OpenAPI contracts from Ballerina services
 
 If you are an API developer who prefer to follow the **code-first approach**, you can convert your Ballerina service APIs into human-readable or machine-readable documents such as OpenAPI documents by using the Ballerina to OpenAPI CLI Tool as follows.
 
@@ -97,7 +97,7 @@ Use the `--json` flag If you need the Ballerina service to OpenAPI output in JSO
 $ bal openapi -i <ballerina-resource-file> [--json]
 ```
 
-### Export for a given service
+### Export for a specific service
 
 If you need to document an OpenAPI contract for only one given service, then use the following command, specifying the service name as the `absolute-resource-path`.
 
@@ -332,7 +332,7 @@ bal openapi [-i | --input] <openapi-contract-file-path>
 
 ## Annotation reference
 
-The `@openapi:ServiceInfo` annotation supports several usages in the Ballerina OpenAPI tool. It contains attributes such as `contract` , `tags`, `operations`, `failOnErrors`, `excludeTags`, `excludeOperations`, `title`, `version`, and `embed` for each particular purpose. These attributes are optional to be used in the annotation.
+The `@openapi:ServiceInfo` annotation supports several usages in the Ballerina OpenAPI tool.
 
 ```ballerina
 @openapi:ServiceInfo {
@@ -351,31 +351,17 @@ service /greet on new http:Listener(9090) {
 }
 ```
 
-**`Contract: string?`**<br/>
-  Here, you can provide a path to the OpenAPI contract as a string and the OpenAPI file can either be a `.yaml` or `.json`.<br/> <br/> 
+The attributes of the annotation are optional and can be used for each particular purpose as described below.  
 
-**`Tags: string[]?`**<br/>
-  The compiler will only validate resources against operations, which are tagged with a tag specified in the list. If not specified, the compiler will validate resources against all the operations defined in the OpenAPI contract.<br/><br/> 
 
-**`Operations: string[]?`**<br/>
-  This should contain a list of operation names that need to be validated against the resources in the service. If not specified, the compiler will validate resources against all the operations defined in the OpenAPI contract.
-
-  If both tags and operations are defined, it will validate against the union set of the resources.<br/><br/> 
-
-**`ExcludeTags: string[]?`**<br/>
-  This stores the tags that do not need to be validated. The annotation can not have both the `excludeTags` and `Tags` attributes at the same time.<br/><br/> 
-
-**`ExcludeOperations: string[]?`**<br/>
-  This specifies the operations that do not need to be validated.<br/><br/> 
-
-**`FailOnErrors: boolean?`**<br/>
-  To turn off the validation, add this to the annotation with the value as `false`.<br/><br/> 
-
-**`Title: string?`**<br/>
-  Use this to add the title of the `info` section in the generated OpenAPI contract.<br/><br/> 
-
-**`Version: string?`**<br/>
-  Use this to add the version of the `info` section in the generated OpenAPI contract.<br/><br/> 
-
-**`Embed: string?`**<br/>
-  To turn off generating OpenAPI documentation for service for introspection endpoint support, use this attribute with `false` in the annotation.
+| Attribute                      | Description                                                                                                                                                                                                                                                                                                                         |
+|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Contract: string?`            | Here, you can provide a path to the OpenAPI contract as a string and the OpenAPI file can either be a `.yaml` or `.json`.                                                                                                                                                                                                           |
+| `Tags: string[]?`              | The compiler will only validate resources against operations, which are tagged with a tag specified in the list. If not specified, the compiler will validate resources against all the operations defined in the OpenAPI contract.                                                                                                 |
+| `Operations: string[]?`        | This should contain a list of operation names that need to be validated against the resources in the service. If not specified, the compiler will validate resources against all the operations defined in the OpenAPI contract.  If both tags and operations are defined, it will validate against the union set of the resources. |
+| `ExcludeTags: string[]?`       | This stores the tags that do not need to be validated. The annotation can not have both the `excludeTags` and `Tags` attributes at the same time.                                                                                                                                                                                   |
+| `ExcludeOperations: string[]?` | This specifies the operations that do not need to be validated.                                                                                                                                                                                                                                                                     |
+| `FailOnErrors: boolean?`       | To turn off the validation, add this to the annotation with the value as `false`.                                                                                                                                                                                                                                                   |
+| `Title: string?`               | Use this to add the title of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                                  |
+| `Version: string?`             | Use this to add the version of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                                |
+| `Embed: string?`               | To turn off generating OpenAPI documentation for service for introspection endpoint support, use this attribute with `false` in the annotation.                                                                                                                                                                                     |

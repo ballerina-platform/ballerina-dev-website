@@ -41,7 +41,7 @@ The command line arguments below can be used with the command for each particula
 
 ## Ballerina to OpenAPI 
 
-The Ballerina to OpenAPI  command supports several usages in the Ballerina OpenAPI tool as follows.
+The Ballerina to OpenAPI command supports several usages in the Ballerina OpenAPI tool as follows.
 
 ```bash
 bal openapi [-i | --input] <ballerina-service-file-path> [--json]

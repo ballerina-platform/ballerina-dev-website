@@ -1,0 +1,32 @@
+name: Nightly syncing master branch with dev
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 0 * * *'
+jobs:
+  send_pr_from_master_branch:
+    name: Send a nightly PR to dev
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Python Packages
+        run: |
+          pip install PyGithub
+
+      - name: Send pull request
+        run: |
+          python3 .github/scripts/sync_master_with_dev.py
+        env:
+          BALLERINA_BOT_USERNAME: ${{ secrets.BALLERINA_BOT_USERNAME }}
+          BALLERINA_BOT_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+          BALLERINA_BOT_EMAIL: ${{ secrets.BALLERINA_BOT_EMAIL }}
+            

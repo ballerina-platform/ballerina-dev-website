@@ -69,6 +69,8 @@ let redirections = {
     "/learn/configure-ballerina-programs/provide-values-to-configurable-variables/#providing-module-information-of-the-configurable-variable":"/learn/configure-ballerina-programs/configure-values/#configure-in-multiple-modules/",
     "/learn/configure-ballerina-programs/configure-values-in-kubernetes-environment/":"/learn/configure-ballerina-programs/configure-values/#configure-in-a-kubernetes-environment/",
     "/learn/configure-ballerina-programs/configure-values-in-kubernetes-environment/#secure-sensitive-data-using-configurable-variables":"/learn/configure-ballerina-programs/configure-values/#configure-sensitive-values",
+    "/learn/ballerina-openapi-support/#generate-a-ballerina-service-from-an-openapi-definition-design-first-approach":"/learn/ballerina-openapi-support/#generate-a-ballerina-service-from-an-openapi-definition",
+    "/learn/ballerina-openapi-support/#export-an-openapi-contract-from-a-ballerina-service-code-first-approach":"/learn/ballerina-openapi-support/#export-an-openapi-contract-from-a-ballerina-service",
 
     // BBEs not available.
     "/1.1/learn/by-example/jdbc-streaming-big-dataset.html":"/page-not-available.html",

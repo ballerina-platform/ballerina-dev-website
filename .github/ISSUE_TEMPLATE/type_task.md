@@ -9,7 +9,7 @@ labels: 'Type/Task'
 > A brief description of the task.
 
 ## Related website/documentation area
-> Add/Uncomment the relevant area out of the following. 
+> Add/Uncomment the relevant area label out of the following. 
 
 <!--Area/BBEs-->
 <!--Area/HomePageSamples-->

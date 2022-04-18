@@ -26,6 +26,8 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+          ref: master
 
     - name: Clone ballerina-release
       run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-release.git
@@ -65,6 +67,6 @@ jobs:
       shell: bash
       run: |
         curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-        bin/hub pull-request -b dev -m '[Automated] Update Ballerina By Example(BBEs) pages'
+        bin/hub pull-request -b master -m '[Automated] Update Ballerina By Example(BBEs) pages'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

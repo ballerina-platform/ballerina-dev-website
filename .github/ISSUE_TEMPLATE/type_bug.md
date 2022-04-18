@@ -15,7 +15,7 @@ labels: 'Type/Bug'
 > The versions that are affected by the issue.
 
 ## Related website/documentation area
-> Uncomment the relevant area out of the following. 
+> Add/Uncomment the relevant area out of the following. 
 
 <!--Area/BBEs-->
 <!--Area/HomePageSamples-->

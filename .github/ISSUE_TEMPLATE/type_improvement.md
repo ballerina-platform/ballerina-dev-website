@@ -9,7 +9,7 @@ labels: 'Type/Improvement'
 > A brief description of the improvement.
 
 ## Related website/documentation area
-> Uncomment the relevant area out of the following. 
+> Add/Uncomment the relevant area out of the following. 
 
 <!--Area/BBEs-->
 <!--Area/HomePageSamples-->

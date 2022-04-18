@@ -9,7 +9,7 @@ labels: 'Type/NewFeature'
 > A brief description of the new feature.
 
 ## Related website/documentation area
-> Uncomment the relevant area out of the following. 
+> Add/Uncomment the relevant area out of the following. 
 
 <!--Area/BBEs-->
 <!--Area/HomePageSamples-->

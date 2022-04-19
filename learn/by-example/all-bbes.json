@@ -1211,7 +1211,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - basic auth file user store",
+                "name": "Service - Basic Auth file user store",
                 "url": "http-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1219,7 +1219,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - basic auth LDAP user store",
+                "name": "Service - Basic Auth LDAP user store",
                 "url": "http-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2913,7 +2913,7 @@
             {
                 "name": "Azure Functions",
                 "url": "azure-functions-deployment",
-                "verifyBuild": true,
+                "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
@@ -2922,7 +2922,7 @@
             {
                 "name": "AWS Lambda",
                 "url": "aws-lambda-deployment",
-                "verifyBuild": true,
+                "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,

@@ -1,4 +1,6 @@
-User-agent: *	
+# Algolia-Crawler-Verif: 720EF8ECBD19B46F
+
+User-Agent: *
 Allow: /
 
 User-agent: Twitterbot
@@ -7,6 +9,7 @@ Allow: *
 User-agent: *
 Disallow: /1.0/
 Disallow: /1.1/
+Disallow: /1.2/
 
 User-agent: Algolia Crawler
 Allow: * 

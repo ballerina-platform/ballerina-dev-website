@@ -16,6 +16,8 @@ redirect_from:
 - /learn/why-ballerina/flexibly-typed
 - /learn/why-ballerina/flexibly-typed/
 - /why-ballerina/flexibly-typed
+- /why-ballerina/network-aware-type-system/
+- /why-ballerina/network-aware-type-system
 ---
 
 In a programming language, the type system is the foundation for representing data and implementing logic. It provides the means of creating abstractions to the solutions that you provide. While some languages provide basic functionality, others strive to give in-built functionality for specialized domains.

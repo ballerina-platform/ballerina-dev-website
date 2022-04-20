@@ -15,7 +15,16 @@ labels: 'Type/Bug'
 > The versions that are affected by the issue.
 
 ## Related website/documentation area
-> Add one of the following: `Area/BBEs`, `Area/HomePageSamples`, `Area/LearnPages`, `Area/Blog`, `Area/CommonPages`,` Area/Backend`, `Area/UIUX`, and `Area/Workflows`.
+> Add/Uncomment the relevant area label out of the following. 
+
+<!--Area/BBEs-->
+<!--Area/HomePageSamples-->
+<!--Area/LearnPages-->
+<!--Area/CommonPages-->
+<!--Area/Backend-->
+<!--Area/UIUX-->
+<!--Area/Workflows-->
+<!--Area/Blog-->
 
 ## Related issue(s) (optional)
 > Any related issues such as sub tasks and issues reported in other repositories (e.g., component repositories), similar problems, etc. 

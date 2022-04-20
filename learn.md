@@ -106,7 +106,7 @@ redirect_from:
 <h2 id="get-started">Get started</h2>
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card" >
-  <a href="/learn/install-ballerina/">
+  <a href="/learn/install-ballerina/set-up-ballerina/">
     <h3 id="install-ballerina">Install Ballerina</h3> </a>
     <p >Set up the Ballerina development environment.  </p>
 </div>

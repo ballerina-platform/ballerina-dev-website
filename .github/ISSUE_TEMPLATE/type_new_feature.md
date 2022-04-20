@@ -9,7 +9,16 @@ labels: 'Type/NewFeature'
 > A brief description of the new feature.
 
 ## Related website/documentation area
-> One of the following: `Area/BBEs`, `Area/HomePageSamples`, `Area/LearnPages`, `Area/Blog`, `Area/CommonPages`,` Area/Backend`, `Area/UIUX`, and `Area/Workflows`.
+> Add/Uncomment the relevant area label out of the following. 
+
+<!--Area/BBEs-->
+<!--Area/HomePageSamples-->
+<!--Area/LearnPages-->
+<!--Area/CommonPages-->
+<!--Area/Backend-->
+<!--Area/UIUX-->
+<!--Area/Workflows-->
+<!--Area/Blog-->
 
 ## Describe the problem(s)
 > A detailed description of the purpose of this new feature.

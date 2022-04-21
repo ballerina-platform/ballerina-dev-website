@@ -35,7 +35,9 @@ jobs:
     - name: Clone ballerina-distribution
       run: |
         git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-distribution.git
+        cd ballerina-distribution
         git checkout -b 2201.0.x origin/2201.0.x
+        cd ..
 
     - name: Generate BBEs
       run: |

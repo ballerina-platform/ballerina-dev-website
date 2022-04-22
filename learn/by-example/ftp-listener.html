@@ -40,7 +40,7 @@ redirect_from:
 
     <span class="c1">// When a file event is successfully received, the `onFileChange` method is</span>
     <span class="c1">// called.</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onFileChange</span><span class="p">(</span><span class="nx">ftp</span><span class="p">:</span><span class="nx">WatchEvent</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onFileChange</span><span class="p">(</span><span class="nx">ftp</span><span class="p">:</span><span class="nx">WatchEvent</span> <span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
 
         <span class="c1">// `addedFiles` contains the paths of the newly-added files/directories</span>
         <span class="c1">// after the last polling was called.</span>
@@ -191,7 +191,7 @@ import ballerina/io;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onFileChange(ftp:WatchEvent &amp; readonly event) {
+                                    <div class="highlight"><pre><code class=language-ballerina>    remote function onFileChange(ftp:WatchEvent event) {
 </code></pre></div>
 
                                 </div>

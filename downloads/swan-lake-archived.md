@@ -1,6 +1,6 @@
 ---
 layout: ballerina-no-git-inner-page
-title: Swan Lake Archived Versions
+title: Swan Lake archived versions
 permalink: /downloads/swan-lake-archived/
 ---
 <script src="{{ "/js/download/swan_lake_archived_download.js" | prepend: site.baseurl }}"></script>

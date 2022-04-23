@@ -1,6 +1,6 @@
 ---
 layout: ballerina-configurable-left-nav-pages-swanlake
-title: Providie values to configurable variables
+title: Provide values to configurable variables
 description: You can supply values to configurable variables using the methods below.
 keywords: ballerina, programming language, configurable, variables, values, toml
 permalink: /learn/configure-ballerina-programs/provide-values-to-configurable-variables/
@@ -13,14 +13,16 @@ redirect_from:
 - /learn/configuring-ballerina-programs/providing-values-to-configurable-variables
 - /learn/configuring-ballerina-programs/providing-values-to-configurable-variables/
 - /learn/configure-ballerina-programs/provide-values-to-configurable-variables
+- /learn/guides/configuring-ballerina-programs/providing-values-to-configurable-variables/
+- /learn/guides/configuring-ballerina-programs/providing-values-to-configurable-variables
 ---
 
-The values for configurable variables can be provided through configuration files, command-line arguments, and
+The values for configurable variables can be provided through configuration files, command line arguments, and
 environment variables. The configuration values will be overridden in the following precedence order if the values are
 given through multiple ways when retrieving configurable values:
 
-- **Command-line arguments:** The values can be configured through the command-line arguments when executing the Ballerina program. The configurable
-    value provided through a command-line argument is expected to be the `toString()` representation of the intended 
+- **Command line arguments:** The values can be configured through the command line arguments when executing the Ballerina program. The configurable
+    value provided through a command line argument is expected to be the `toString()` representation of the intended 
     value.
 
 - **Configuration files:** The values can be configured through the configuration files in the [TOML(v0.4) format](https://toml.io/en/v0.4.0). 
@@ -33,11 +35,7 @@ given through multiple ways when retrieving configurable values:
 content is expected to be in the [TOML(v0.4.0) format](https://toml.io/en/v0.4.0).
 >**Note:** Providing multiple configuration values through separate environment variables is not supported.
 
-<<<<<<< HEAD:learn/guides/configuring-ballerina-programs/providing-values-to-configurable-variables.md
-### Providing configuration values through command-line arguments
-=======
-### Provide configuration values through command line arguments
->>>>>>> b5e38bc28daeb5f7dafcd1a9169d1a862fbd18f0:learn/guides/configure-ballerina-programs/provide-values-to-configurable-variables.md
+### Provide via command line arguments
 
 The following syntax can be used to provide values for the variables through the command line parameters:
 
@@ -45,13 +43,13 @@ The following syntax can be used to provide values for the variables through the
 -Ckey=value
 ```
 
-Currently, the command-line based configuration is only supported for configurable variables of types `int`, `byte`,
+Currently, the command line based configuration is only supported for configurable variables of types `int`, `byte`,
 `float`, `boolean`, `string`, `decimal`, `enum` and `xml`.
 
-The following examples explain the way of providing command-line arguments to configure variables of specific Ballerina
+The following examples explain the way of providing command line arguments to configure variables of specific Ballerina
 types.
 
-| Ballerina type | Ballerina example                                                                                                                                                                     | Command-line argument                                             |
+| Ballerina type | Ballerina example                                                                                                                                                                     | Command line argument                                             |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
 | int, byte      | <code>configurable byte age = ?; </code><br> <code>configurable int port = ?;</code>                                                                                                  | `bal run -- -Cage=25 -Cport=9090`                                 |
 | string         | <code>configurable string name = ?; </code>                                                                                                                                           | `bal run -- -Cname=John`                                          |
@@ -60,7 +58,7 @@ types.
 | xml            | <code>configurable xml book = ?; </code>                                                                                                                                              | `bal run -- -CxmlVar="<book>The Lost World</book>"`               |
 | enum           | <code>enum Country { </code><br>    <code>LK = "Sri Lanka", </code><br>    <code>US = "United States" </code><br> <code>} </code><br> <code>configurable Country country = ?; </code> | `bal run -- -Ccountry="Sri Lanka"`                                |
 
-### Provide configuration values through TOML syntax
+### Provide via TOML syntax
 
 Ballerina defines a specific TOML syntax to be used when configuring the variables through the configuration files and
 environment variables. Depending on the type of the configurable variable, the way of providing values in the TOML
@@ -70,7 +68,7 @@ the respective types.
 
 The mapping of Ballerina types to TOML types can be explained through the following examples:
 
-| Ballerina Type     | Ballerina Example                                                                                                                                                                       | TOML Type                        | TOML Example                                                                                                                                |
+| Ballerina type     | Ballerina example                                                                                                                                                                       | TOML type                        | TOML example                                                                                                                                |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | int, byte          | <code>configurable   byte  age = ?;</code><br/>  <code>configurable   int  port = ?;</code>                                                                                             | Integer                          | `age = 25` <br/>  `port = 9090`                                                                                                             |
 | string             | <code>configurable   string  name = ?; </code>                                                                                                                                          | String                           | `name = "John"`                                                                                                                             |
@@ -88,75 +86,5 @@ The mapping of Ballerina types to TOML types can be explained through the follow
 | record             | <code>type  Person  record {</code><br/>    <code>string  name;</code><br/>    <code>int  age;</code><br/><code>};</code><br/>  <code>configurable   Person  person  ?;</code>          | TOML table                       | `[person]`<br/>  `name = "John"`<br/> `age = 45`<br/>                                                                                       |
 | record[]           | <code>type  Person  record {</code><br/>    <code>string  name;</code><br/>    <code>int  age;</code><br/><code>};</code><br/>  <code>configurable   Person[]  peope = ?;</code>        | Array of TOML tables             | `[[people]]`<br/>  `name = "John"`<br/> `age = 45`<br/> `[[people]]`<br/>  `name = "Jack"`<br/> `age = 32`                                  |
 | table              | <code>configurable   table &lt;map&lt;string&gt;&gt; users = ?; </code>                                                                                                                 | Array of TOML tables             | `[[users]]`<br/> `name = "Tom"`<br/> `occupation = "Software Engineer"`<br/> `[[users]]`<br/> `name = "Harry"`<br/> `occupation = "Doctor"` |
-
-### Providing module information of the configurable variable
-
-The configurable variables can be defined in different modules. Therefore, it is necessary to provide the information of
-the module in which the variable is defined.
-
-The module information requirement can be explained in the following table according to the variable definition.
-<br/>
-<table width="100%">
-<thead>
-<tr>
-<th style="text-align:center" colspan="2"><strong>Place where the variable is defined</strong></th>
-<th style="text-align:center" colspan="2"><strong>Module Information</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><strong>Package</strong></td>
-<td style="text-align:center"><strong>Module</strong></td>
-<td style="text-align:center"><strong>Organization name</strong></td>
-<td style="text-align:center"><strong>Module Name</strong></td>
-</tr>
-<tr>
-<td style="text-align:center">Root package</td>
-<td style="text-align:center">Root module</td>
-<td style="text-align:center">optional</td>
-<td style="text-align:center">optional</td>
-</tr>
-<tr>
-<td style="text-align:center">Root package</td>
-<td style="text-align:center">Non-root module</td>
-<td style="text-align:center">optional</td>
-<td style="text-align:center">mandatory</td>
-</tr>
-<tr>
-<td style="text-align:center">Non-root package</td>
-<td style="text-align:center">Root/ Non-root module</td>
-<td style="text-align:center">mandatory</td>
-<td style="text-align:center">mandatory</td>
-</tr>
-</tbody>
-</table>
-<br/>
-
->**Note:** The module information is not needed for configuring single `bal` file execution.
-
-The format of providing module information in each configuration syntax is described below.
-
-#### Command line argument syntax
-
-The key of a CLI parameter can be specified as,
-
-```
--Ckey=value
-```
-
-The key can contain module information as follows.
-
-```
-key:= [[org-name .] module-name .] variable
-```
-
-#### TOML syntax
-
-The following format is used to provide the module information of a variable in the TOML based configuration.
-
-```toml
-[org-name.module-name]
-variable-name = "value"
-```
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

@@ -48,7 +48,7 @@ Here is an overview of our approach to handling vulnerabilities:
 
 ## Get acknowledged and rewarded
 
-Your efforts in reporting vulnerabilities or any other issues related to the security of Ballerina will be recognized and honored via the [WSO2 Security Reward and Acknowledgement Program](https://docs.wso2.com/display/Security/WSO2+Security+Reward+and+Acknowledgement+Program). 
+Your efforts in reporting vulnerabilities or any other issues related to the security of Ballerina will be recognized and honored via the [WSO2 security reward and acknowledgement program](https://docs.wso2.com/display/Security/WSO2+Security+Reward+and+Acknowledgement+Program). 
 
 
 >**Note:** The reward program is currently applicable to vulnerabilities reported only in the [compiler, runtime, CLI tooling](https://github.com/ballerina-platform/ballerina-lang/), [standard library](https://github.com/ballerina-platform/ballerina-standard-library), [VS Code extension](https://marketplace.visualstudio.com/items?itemName=wso2.ballerina) and, [website](https://ballerina.io).

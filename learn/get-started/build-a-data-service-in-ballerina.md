@@ -10,6 +10,8 @@ redirect_from:
  - /learn/building-a-data-service-in-ballerina
  - /learn/building-a-data-service-in-ballerina/
  - /learn/build-a-data-service-in-ballerina
+ - /learn/getting-started/building-a-data-service-in-ballerina/
+ - /learn/getting-started/building-a-data-service-in-ballerina
 ---
 
 In addition, this tutorial also elaborates on how you can create an HTTP RESTful API using Ballerina that can be used to perform basic CRUD operations on the database.
@@ -67,7 +69,7 @@ A new Ballerina project can be created by executing the following command in the
 bal new data_service
 ``` 
 
->**Info:** For more information on creating Ballerina packages, see [Getting started with Ballerina](/learn/getting-started-with-ballerina).
+>**Info:** For more information on creating Ballerina packages, see [Get started with Ballerina](/learn/get-started-with-ballerina).
 
 ### Create a record to represent an employee
 
@@ -138,7 +140,7 @@ configurable int PORT = ?;
 configurable string DATABASE = ?;
 ```
 
->**Note:** For more information on defining configurable variables in Ballerina, see [Defining configurable variables](/learn/configuring-ballerina-programs/providing-values-to-configurable-variables/).
+>**Note:** For more information on defining configurable variables in Ballerina, see [Providie values to configurable variables](/learn/configure-ballerina-programs/provide-values-to-configurable-variables/).
 
 ### Connect to the database
 
@@ -331,6 +333,6 @@ service /employees on new http:Listener(8080) {
 ```
 
 To learn more about MySQL and HTTP support in Ballerina, see the following:
-- [MySQL module documentation](https://lib.ballerina.io/ballerinax/mysql/latest)
-- [HTTP module documentation](https://lib.ballerina.io/ballerina/http/latest)
+- [`mysql` module documentation](https://lib.ballerina.io/ballerinax/mysql/latest)
+- [`http` module documentation](https://lib.ballerina.io/ballerina/http/latest)
 - [MySQL examples](/learn/by-example/mysql-query-operation.html)

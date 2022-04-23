@@ -136,22 +136,22 @@ These everyday commands are your best friends! They address the very basics of p
 <table class="cComandTable">
 <tr>
 <td class="cCommand">build</td>
-<td class="cDescription">Compile a standalone <code>.bal</code> file, or an entire package into an executable JAR file. For more information, see <a href="/learn/getting-started-with-ballerina/">Getting started with Ballerina</a>.
+<td class="cDescription">Compile a standalone <code>.bal</code> file, or an entire package into an executable JAR file. For more information, see <a href="/learn/get-started-with-ballerina/">Getting started with Ballerina</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">run</td>
-<td class="cDescription">Build and run a standalone <code>.bal</code> file, an entire package, or a previously-built program. For more information, see <a href="/learn/getting-started-with-ballerina/">Getting started with Ballerina</a>.
+<td class="cDescription">Build and run a standalone <code>.bal</code> file, an entire package, or a previously-built program. For more information, see <a href="/learn/get-started-with-ballerina/">Getting started with Ballerina</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">test</td>
-<td class="cDescription">Run tests of a Ballerina package. For more information, see <a href="/learn/testing-ballerina-code/testing-a-simple-function/">Testing a Simple Function</a>.
+<td class="cDescription">Run tests of a Ballerina package. For more information, see <a href="/learn/test-ballerina-code/test-a-simple-function/">Testing a Simple Function</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">doc</td>
-<td class="cDescription">Generate API documents for all public symbols of a Ballerina package. For more information, see <a href="/learn/generating-code-documentation">Generating code documentation</a>.
+<td class="cDescription">Generate API documents for all public symbols of a Ballerina package. For more information, see <a href="/learn/generate-code-documentation">Generating code documentation</a>.
 </td>
 </tr>
 <tr>
@@ -168,7 +168,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 <table class="cComandTable">
 <tr>
 <td class="cCommand">new</td>
-<td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/getting-started-with-ballerina/#creating-a-new-project">Creating a new project</a>.
+<td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/get-started-with-ballerina/#create-a-new-project">Create a new project</a>.
 </td>
 </tr>
 <tr>
@@ -188,7 +188,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </tr>
 <tr>
 <td class="cCommand">push</td>
-<td class="cDescription">Publish a package to Ballerina Central. For more information, see <a href="/learn/publishing-packages-to-ballerina-central">Publishing packages to Ballerina Central</a>.
+<td class="cDescription">Publish a package to Ballerina Central. For more information, see <a href="/learn/publish-packages-to-ballerina-central">Publish packages to Ballerina Central</a>.
 </td>
 </tr>
 <tr>
@@ -222,7 +222,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">bindgen</td>
-<td class="cDescription">Use this tool for auto-generating Ballerina bridge code for Java APIs. For more information, see <a href="/learn/calling-java-code-from-ballerina">Calling Java code from Ballerina</a>.</td>
+<td class="cDescription">Use this tool for auto-generating Ballerina bridge code for Java APIs. For more information, see <a href="/learn/call-java-code-from-ballerina">Call Java code from Ballerina</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">shell</td>

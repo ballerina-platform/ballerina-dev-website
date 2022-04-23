@@ -57,7 +57,7 @@ Organization names can only contain alphanumerics, underscore, and the maximum l
 
 When you run the `bal new` command, the organization name by default will be set to the user name of your machine. You can choose to update the `Ballerina.toml` file to amend the organization name appropriately.
 
-As described in [Organizations](/learn/publishing-packages-to-ballerina-central/#organizations), the restrictions for the organization name of a package when publishing to [Ballerina Central](https://central.ballerina.io/) should also be considered before choosing an organization name.
+As described in [Organizations](/learn/publish-packages-to-ballerina-central/#organizations), the restrictions for the organization name of a package when publishing to [Ballerina Central](https://central.ballerina.io/) should also be considered before choosing an organization name.
 
 
 ### The `name` field
@@ -119,7 +119,7 @@ codeCoverage = true
 cloud = "k8s"
 ```
 
-### Package Java libraries
+### Platform dependencies
 
 When you compile a Ballerina package with `bal build`, the compiler creates an executable JAR file. However, if the package does not contain an entry point, it will produce a non-executable JAR file (a library package), which can be used in another package/program.
 In both cases, the Ballerina compiler creates self-contained archives. There are situations in which you need to package JAR files with these archives.
@@ -171,12 +171,14 @@ The `bal build` packages all JARs specified in the `Ballerina.toml` file with th
 
 ## The `Dependencies.toml` file
 
-The [`Dependencies.toml`](/learn/managing-dependencies/#specifying-dependency-versions) locks the versions of the dependencies to support repeatable builds.
+The [`Dependencies.toml`](/learn/manage-dependencies/#specify-dependency-versions) locks the versions of the dependencies to support repeatable builds.
 This file is auto-generated and managed by the Ballerina CLI. It does not need user intervention.
 
 ## The `Package.md` file
 
-The `Package.md` file provides a human-readable description of a package. It is the first page you will see when you navigate to the package in [Ballerina Central](https://central.ballerina.io/). This file is in markdown format.
+The `Package.md` file provides a human-readable description of a package. This file is required for publishing a package to a repository. 
+It is the first page you will see when you navigate to the package in [Ballerina Central](https://central.ballerina.io/).
+This file is in markdown format. It will be auto-generated when you create a library package. For steps to create a library package, see [Create a Library Package](/learn/publish-packages-to-ballerina-central/#create-a-library-package)
 
 ## The `target/` directory
 

@@ -40,3 +40,12 @@
         - title: Sample
           url: /learn/cli-documentation/grpc/#sample
           active: sample
+    - title: OpenAPI
+      url: /learn/cli-documentation/openapi/
+      sublinks:
+        - title: OpenAPI to Ballerina 
+          url: /learn/cli-documentation/openapi/#openapi-to-ballerina
+          active: openapi-to-ballerina
+        - title: Ballerina to OpenAPI 
+          url: /learn/cli-documentation/openapi/#ballerina-to-openapi
+          active: ballerina-to-openapi

@@ -20,8 +20,9 @@ redirect_from:
     - /learn/testing-ballerina-code/structure-tests
     - /learn/testing-ballerina-code/structure-the-tests/
     - /learn/testing-ballerina-code/structure-the-tests
-    - /learn/test-ballerina-code/structure-tests/
     - /learn/test-ballerina-code/structure-tests
+    - /learn/guides/testing-ballerina-code/structuring-the-tests/
+    - /learn/guides/testing-ballerina-code/structuring-the-tests
 ---
 
 ## Test source files
@@ -45,4 +46,4 @@ Configurations for testing can be provided using configurable variables. The val
 provided in a file named `Config.toml` located in the `tests` directory.
 
 For information on using configurable variables, see
-[Configurable variables](/learn/configuring-ballerina-programs/quick-start-on-configurable-variables).
+[Configurable variables](/learn/configure-ballerina-programs/quick-start-on-configurable-variables).

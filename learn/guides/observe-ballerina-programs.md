@@ -1,10 +1,10 @@
 ---
 layout: ballerina-observing-programs-left-nav-pages-swanlake
-title: Observing your application with Prometheus, Grafana, Jaeger, and the Elastic Stack
+title: Observe Ballerina Programs
 description: See how Ballerina supports observability by exposing itself via metrics, tracing, and logs to external systems.
 keywords: ballerina, observability, metrics, tracing, logs, prometheus, grafana, jaeger, elastic
-permalink: /learn/observe-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/
-active: observing-your-application-with-prometheus-grafana-and-jaeger-and-the-elastic-stack
+permalink: /learn/observe-ballerina-programs/
+active: observe-ballerina-programs
 intro: Observability is a measure of how well the internal states of a system can be inferred from the knowledge of its external outputs.
 redirect_from:
   - /learn/how-to-observe-ballerina-code
@@ -25,22 +25,19 @@ redirect_from:
   - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/
   - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger
   - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack
+  - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/
   - /learn/observing-ballerina-programs/
   - /learn/observing-ballerina-programs
   - /learn/observe-ballerina-programs
+  - /learn/guides/observing-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack/
+  - /learn/guides/observing-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack
 ---
 
-## Observability
-Observability consists of three major pillars.
+It consists of the three major pillars below.
 
-### Metrics
-Numeric values that are collected and aggregated over a period of time.
-
-### Tracing
-The activities that occur when a request/transaction occurs in the system from the point of entry to exit.
-
-### Logging
-Text records of activities that occurred with relevant information along with the timestamp.
+- **Metrics:** numeric values that are collected and aggregated over a period of time.
+- **Tracing:** the activities that occur when a request/transaction occurs in the system from the point of entry to exit.
+- **Logging:** text records of activities that occurred with relevant information along with the timestamp.
 
 ## Provide observability in Ballerina
 
@@ -65,16 +62,12 @@ Prometheus, etc. For instructions, go to the [Docker documentation](https://docs
 
 ### Step 2 - install and configuring the external systems
 
-* Set up Prometheus for collecting metrics information by following the section on [Setting up Prometheus](#setting-up-prometheus)
-* Set up Grafana to visualize metrics by following the section on [Setting up Grafana](#setting-up-grafana)
-* Set up Jaeger to analyze tracing as mentioned in the section [Setting up Jaeger](#setting-up-the-jaeger-server)
-* Set up Elastic Stack only if you are interested in analyzing logs by following the section on [Setting up the Elastic Stack](#setting-up-the-elastic-stack)
+* Set up Prometheus for collecting metrics information by following the section on [Set up Prometheus](#set-up-prometheus)
+* Set up Grafana to visualize metrics by following the section on [Set up Grafana](#set-up-grafana)
+* Set up Jaeger to analyze tracing as mentioned in the section [Set up Jaeger](#set-up-the-jaeger-server)
+* Set up Elastic Stack only if you are interested in analyzing logs by following the section on [Set up the Elastic Stack](#set-up-the-elastic-stack)
 
-<<<<<<< HEAD:learn/guides/observing-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack.md
-### Step 3 - creating a `Hello World` Ballerina service
-=======
-### Step 3 - create a 'Hello World' Ballerina service
->>>>>>> b5e38bc28daeb5f7dafcd1a9169d1a862fbd18f0:learn/guides/observe-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack.md
+### Step 3 - create a `Hello World` Ballerina service
  
 Create a service as shown below and save it as `hello_world_service.bal`.
 
@@ -97,7 +90,7 @@ service /hello on new http:Listener(9090) {
 }
 ```
 
-### Step 4 - observe the 'Hello World' Ballerina service
+### Step 4 - observe the `Hello World` Ballerina service
 
 By default, observability is not included in the executable created by Ballerina. It can be added
 by using the `--observability-included` build flag or by adding the following section to the `Ballerina.toml` file.
@@ -188,7 +181,7 @@ Therefore, it is imperative to continuously measure the code in production.
 To support Prometheus as the metrics reporter, an HTTP endpoint starts with the context
 of `/metrics` in default port 9797 when starting the Ballerina service.
 
-### Configure advanced metrics for Ballerina
+### Configure advanced metrics 
 This section focuses on the Ballerina configurations that are available for metrics monitoring with Prometheus,
 and the sample configuration is provided below.
 
@@ -204,7 +197,7 @@ host="0.0.0.0"
 
 The descriptions of each configuration option are provided below with possible values.
 
-Configuration Key | Description | Default Value | Possible Values 
+Configuration key | Description | Default value | Possible values 
 --- | --- | --- | --- 
 ballerina.observe. metricsEnabled | Whether metrics monitoring is enabled (true) or disabled (false) | false | true or false
 ballerina.observe. metricsReporter | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | choreo | prometheus or if any custom implementation, the name of the reporter.
@@ -305,10 +298,10 @@ span as metadata.
 Ballerina supports [OpenTelemetry](https://opentelemetry.io/) standards by default. This means that Ballerina services
 can be traced using OpenTelemetry implementations like [Jaeger](http://www.jaegertracing.io/).
 
-### Configure advanced tracing for Ballerina
+### Configure advanced tracing 
 
 Tracing can be enabled in Ballerina with the few configurations mentioned above in the
-[Observing a Ballerina service](#observing-a-ballerina-service) section.
+[Observe a Ballerina service](#observe-a-ballerina-service) section.
 This section mainly focuses on the configuration options with the description and possible values.
 
 A sample configuration that enables tracing and uses Jaeger as the tracer is provided below.
@@ -321,7 +314,7 @@ tracingProvider="jaeger"
 
 The table below provides the descriptions of each configuration option and possible values that can be assigned.
 
-Configuration Key | Description | Default Value | Possible Values
+Configuration key | Description | Default value | Possible values
 --- | --- | --- | --- 
 ballerina.observe.tracingEnabled | Whether tracing is enabled (true) or disabled (false) | false | true or false
 ballerina.observe.tracingProvider | The tracer name, which implements the tracer interface. | choreo | jaeger or the name of the tracer of any custom implementation.
@@ -345,7 +338,7 @@ reporterBufferSize=1000
 
 The table below provides the descriptions of each configuration option and possible values that can be assigned.
 
-Configuration Key | Description | Default Value | Possible Values 
+Configuration key | Description | Default value | Possible values 
 --- | --- | --- | --- 
 ballerina.observe. agentHostname | Hostname of the Jaeger agent | localhost | IP or hostname of the Jaeger agent. If it is running on the same node as Ballerina, it can be localhost. 
 ballerina.observe. agentPort | Port of the Jaeger agent | 55680 | The port on which the Jaeger agent is listening.
@@ -358,13 +351,9 @@ ballerina.observe. reporterBufferSize | Queue size of the Jaeger client. | 2000 
 You can configure Ballerina to support distributed tracing with Jaeger. This section focuses on configuring
 Jaeger with Docker as a quick installation.
 
-<<<<<<< HEAD:learn/guides/observing-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack.md
-#### Setting up the Jaeger server
-There are many possible ways to deploy Jaeger. For more information, see [Jaeger deployment](https://www.jaegertracing.io/docs/deployment/). This focuses on an all-in-one deployment with Docker.
-=======
 #### Set up the Jaeger server
+
 There are many possible ways to deploy Jaeger. For more information, see [Jaeger Deployment](https://www.jaegertracing.io/docs/deployment/). This focuses on an all-in-one deployment with Docker.
->>>>>>> b5e38bc28daeb5f7dafcd1a9169d1a862fbd18f0:learn/guides/observe-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack.md
 
 1. Install Jaeger via Docker and start the Docker container by executing the command below.
 
@@ -377,8 +366,6 @@ There are many possible ways to deploy Jaeger. For more information, see [Jaeger
     The image below is the sample tracing information you can see in Jaeger.
     
     ![Jaeger Tracing Dashboard](/learn/images/jaeger-tracing-dashboard.png "Jaeger Tracing Dashboard")
-
-
 
 ## Distributed logging
 In Ballerina, distributed logging and analysis are supported by the Elastic Stack. Ballerina has a log module for logging into the console. To monitor the logs, the Ballerina standard output needs to be redirected to a file.
@@ -397,7 +384,7 @@ $ tail -f ~/wso2-ballerina/workspace/ballerina.log
 
 ### Set up the external systems for log analytics
 
-#### Set up the Elastic Stack
+#### Set up Elastic Stack
 The Elastic Stack comprises the following components.
 
 1. Beats - Multiple agents that ship data to Logstash or Elasticsearch. In our context, Filebeat will ship the Ballerina logs to Logstash. Filebeat should be a container running on the same host as the Ballerina service. This is so that the log file (ballerina.log) can be mounted to the Filebeat container.

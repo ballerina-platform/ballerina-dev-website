@@ -32,6 +32,8 @@ redirect_from:
   - /learn/debugging-ballerina-programs
   - /learn/debugging-ballerina-programs/
   - /learn/debug-ballerina-programs
+  - /learn/guides/debugging-ballerina-programs/
+  - /learn/guides/debugging-ballerina-programs
 ---
 
 When writing large-scale applications with complex logic, it is quite possible to have syntax, semantic, 
@@ -47,7 +49,7 @@ via the [Ballerina Visual Studio Code extension](https://marketplace.visualstudi
 The Ballerina extension provides multiple options to debug Ballerina applications, and the most convenient way will be using the context-aware debug codelens support.
 
 However, if you require launching debug sessions with additional configurations (i.e., program arguments, environment variables), you can use `launch.json` configurations
-(For more information, see [Starting a debug session with configurations](#starting-a-debug-session-with-configurations)).
+(For more information, see [Start a debug session with configurations](#start-a-debug-session-with-configurations)).
 
 ### Start a program debug session
 
@@ -126,7 +128,7 @@ Follow the steps below to start a test debug session.
 
 Follow the steps below to start a remote debug session.
 
-1. Create the `launch.json` configuration file if it is not created already. For instructions on creating the `launch.json` file, see [Debug session with configurations](#debug-session-with-configurations).
+1. Create the `launch.json` configuration file if it is not created already. For instructions on creating the `launch.json` file, see [Start a debug session with configurations](#start-a-debug-session-with-configurations).
 
 2. Open the `launch.json` file and configure the `debuggeeHost` and `debuggeePort` attributes under the `Ballerina Remote` configurations section accordingly.
 
@@ -289,5 +291,5 @@ The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
 
 <br/>
 
->**Info:** For more information on VSCode debugging features, go to [VS Code documentation](https://code.visualstudio.com/docs/editor/debugging).
+>**Info:** For more information on VSCode debugging features, go to [VSCode documentation](https://code.visualstudio.com/docs/editor/debugging).
 

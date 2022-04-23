@@ -1,7 +1,7 @@
 ---
 layout: ballerina-example-page-old
 title: Service - Basic Auth LDAP user store
-description: BBE on how to secure GraphQL service with Basic Auth in Ballerina.
+description: BBE on how to secure GraphQL service with Basic auth in Ballerina.
 keywords: ballerina, ballerina by example, bbe, graphql, auth, basic auth
 permalink: /learn/by-example/graphql-service-basic-auth-ldap-user-store
 active: graphql-service-basic-auth-ldap-user-store
@@ -23,8 +23,8 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">);</span>
 
-<span class="c1">// The service can be secured with Basic Auth and can be authorized  optionally.</span>
-<span class="c1">// Basic Auth using the LDAP user store can be enabled by setting the</span>
+<span class="c1">// The service can be secured with Basic auth and can be authorized  optionally.</span>
+<span class="c1">// Basic auth using the LDAP user store can be enabled by setting the</span>
 <span class="c1">// `graphql:LdapUserStoreConfig` configurations.</span>
 <span class="c1">// Authorization is based on scopes. A scope maps to one or more groups.</span>
 <span class="c1">// Authorization can be enabled by setting the `string|string[]` type</span>
@@ -71,8 +71,8 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Service - Basic Auth LDAP user store</h2>
-                            <p><p>A GraphQL service can be secured with Basic Auth and by enforcing
- authorization optionally. Then, it validates the Basic Auth token sent in
+                            <p><p>A GraphQL service can be secured using Basic auth and by enforcing
+ authorization optionally. Then, it validates the Basic auth token sent in
  the <code>Authorization</code> header against the provided configurations. This reads
  data from the configured LDAP. This stores usernames, passwords for
  authentication, and scopes for authorization.<br/>
@@ -207,8 +207,8 @@ service /graphql on securedEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The service can be secured with Basic Auth and can be authorized  optionally.
- Basic Auth using the LDAP user store can be enabled by setting the
+                                            <p>The service can be secured with Basic auth and can be authorized  optionally.
+ Basic auth using the LDAP user store can be enabled by setting the
  <code>graphql:LdapUserStoreConfig</code> configurations.
  Authorization is based on scopes. A scope maps to one or more groups.
  Authorization can be enabled by setting the <code>string|string[]</code> type

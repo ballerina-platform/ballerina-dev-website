@@ -89,6 +89,25 @@ pre > code > span > span {
   width: 90% !important;
 }
 
+.bbe-container {
+  position: relative;
+}
+
+.sidebar {
+  position: absolute;
+  height: 500px;
+  left: 0;
+  top: 80px;
+  bottom: 0;
+  width: var(--sidebar-width);
+  font-size: 0.875em;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-fg);
+}
+
 ol.chapter {
   width: 265px !important;
 }

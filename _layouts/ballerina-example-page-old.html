@@ -39,9 +39,38 @@
       </div>
     </div>
     {% include ballerina-footer.html %}
-    <script src="/js/theme.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
 
-    <!-- hyperlink generator -->
+    <!-- shiki -->
+    <script src="https://unpkg.com/shiki"></script>
+    <script>
+      shiki
+        .getHighlighter({
+          theme: "css-variables",
+          langs: ["ballerina"],
+        })
+        .then((highlighter) => {
+          const code_blocks = document.getElementsByClassName("code-container");
+          for (let i = 0; i < code_blocks.length; i++) {
+            const output = highlighter.codeToHtml(
+              `${code_blocks[i].innerHTML}`,
+              {
+                lang: "ballerina",
+              }
+            );
+            document.getElementsByClassName("code-container")[i].innerHTML =
+              output;
+          }
+        });
+    </script>
+
+    <script src="/js/code-buttons.js"></script>
+    <script src="/js/navigation.js"></script>
+    <script src="/js/theme.js"></script>
     <script src="/js/hyperlink-creator.js"></script>
 
     <script>

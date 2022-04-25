@@ -60,12 +60,13 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Consumer groups</h2>
-                            <p><p>Here, a <code>kafka:Consumer</code> is used as a listener to listen to a
- given set of topic/topics. The listener uses a group of concurrent consumers within
- the service. For this to work properly, an active Kafka broker should be
+                            <p><p>This is an example of a Kafka consumer used as a listener to listen to a
+ given topic/topics. The listener uses a group of concurrent consumers within
+ the service. This consumer uses the builtin <code>string</code> deserializer for the
+ values. For this example to work properly, an active Kafka broker should be
  present.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://lib.ballerina.io/ballerinax/kafka/latest"><code>kafka</code> module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/kafka/latest">Kafka module</a>.</p>
 </p>
 
                         </td>

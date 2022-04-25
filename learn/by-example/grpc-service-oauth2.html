@@ -23,8 +23,8 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">);</span>
 
-<span class="c1">// The service can be secured with OAuth2 and by enforcing authorization</span>
-<span class="c1">// optionally. It can be enabled by setting the</span>
+<span class="c1">// The service can be secured with OAuth2 authentication and can be authorized</span>
+<span class="c1">// optionally. OAuth2 authentication can be enabled by setting the</span>
 <span class="c1">// [`grpc:OAuth2IntrospectionConfig`](https://docs.central.ballerina.io/ballerina/grpc/latest/records/OAuth2IntrospectionConfig) configurations.</span>
 <span class="c1">// Authorization is based on scopes. A scope maps to one or more groups.</span>
 <span class="c1">// Authorization can be enabled by setting the `string|string[]` type</span>
@@ -65,7 +65,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Service - OAuth2</h2>
-                            <p><p>A gRPC service/resource can be secured with OAuth2 and by enforcing
+                            <p><p>A gRPC service/resource can be secured using OAuth2 and by enforcing
  authorization optionally. Then, it validates the OAuth2 token sent in the
  <code>Authorization</code> metadata against the provided configurations. This calls the
  configured introspection endpoint to validate.<br/>
@@ -199,7 +199,7 @@ bal grpc --input grpc_service.proto --output stubs
                             <div class="cTR cOutputTr">
 
                                 <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># For more information on how to use the Ballerina Protocol Buffers tool, see the &lt;a href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto To Ballerina&lt;/a&gt; example.
+                                    <div class="highlight"><pre><code class=shell-session># For more information on how to use the Ballerina Protocol Buffers tool, see the [Proto To Ballerina](https://ballerina.io/learn/by-example/proto-to-ballerina.html) example.
 </code></pre></div>
 
                                 </div>
@@ -283,8 +283,8 @@ service &quot;HelloWorld&quot; on securedEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The service can be secured with OAuth2 and by enforcing authorization
- optionally. It can be enabled by setting the
+                                            <p>The service can be secured with OAuth2 authentication and can be authorized
+ optionally. OAuth2 authentication can be enabled by setting the
  <a href="https://docs.central.ballerina.io/ballerina/grpc/latest/records/OAuth2IntrospectionConfig"><code>grpc:OAuth2IntrospectionConfig</code></a> configurations.
  Authorization is based on scopes. A scope maps to one or more groups.
  Authorization can be enabled by setting the <code>string|string[]</code> type

@@ -1,6 +1,7 @@
 name: Update github release with Swan Lake release
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - prod-sync

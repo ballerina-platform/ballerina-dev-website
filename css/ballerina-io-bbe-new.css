@@ -89,7 +89,7 @@ pre > code > span > span {
   width: 90% !important;
 }
 
-.bbe-container {
+/* .bbe-container {
   position: relative;
 }
 
@@ -106,7 +106,7 @@ pre > code > span > span {
   overscroll-behavior-y: contain;
   background-color: var(--sidebar-bg);
   color: var(--sidebar-fg);
-}
+} */
 
 ol.chapter {
   width: 265px !important;

@@ -2,11 +2,6 @@ name: Update github release with Swan Lake release
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - prod-sync
-    paths:
-      - '_data/swanlake-latest/**'
 
 jobs:
   update-sl-github-release:

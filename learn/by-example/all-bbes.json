@@ -1,6 +1,6 @@
 [
     {
-        "title": "Hello World",
+        "title": "Hello world",
         "column": 0,
         "category": "Language concepts",
         "samples": [
@@ -1203,7 +1203,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - mutual SSL",
+                "name": "Service - Mutual SSL",
                 "url": "http-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1211,7 +1211,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - basic auth file user store",
+                "name": "Service - Basic Auth file user store",
                 "url": "http-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1219,7 +1219,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - basic auth LDAP user store",
+                "name": "Service - Basic Auth LDAP user store",
                 "url": "http-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1251,7 +1251,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - mutual SSL",
+                "name": "Client - Mutual SSL",
                 "url": "http-client-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1283,7 +1283,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 client credentials grant type",
+                "name": "Client - OAuth2 Client Credentials grant type",
                 "url": "http-client-oauth2-client-credentials-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1291,7 +1291,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 password grant type",
+                "name": "Client - OAuth2 Password grant type",
                 "url": "http-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1299,7 +1299,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 refresh token grant type",
+                "name": "Client - OAuth2 Refresh Token grant type",
                 "url": "http-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1394,7 +1394,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Response With multiparts",
+                "name": "Response with multiparts",
                 "url": "http-response-with-multiparts",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1402,7 +1402,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Request With multiparts",
+                "name": "Request with multiparts",
                 "url": "http-request-with-multiparts",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1559,7 +1559,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - mutual SSL",
+                "name": "Service - Mutual SSL",
                 "url": "graphql-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1603,7 +1603,7 @@
     {
         "title": "WebSockets",
         "column": 1,
-        "category": "Working over the network",
+        "category": "Working Over the network",
         "samples": [
             {
                 "name": "Handle text messages with client",
@@ -1643,7 +1643,7 @@
     {
         "title": "WebSocket security",
         "column": 1,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Service - SSL/TLS",
@@ -1654,7 +1654,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - mutual SSL",
+                "name": "Service - Mutual SSL",
                 "url": "websocket-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1662,7 +1662,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth File user store",
+                "name": "Service - Basic Auth file user store",
                 "url": "websocket-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1702,7 +1702,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - mutual SSL",
+                "name": "Client - Mutual SSL",
                 "url": "websocket-client-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1734,7 +1734,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 client credentials grant type",
+                "name": "Client - OAuth2 Client Credentials grant type",
                 "url": "websocket-client-oauth2-client-cred-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1742,7 +1742,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 password grant type",
+                "name": "Client - OAuth2 Password grant type",
                 "url": "websocket-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1750,7 +1750,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 refresh token grant type",
+                "name": "Client - OAuth2 Refresh Token grant type",
                 "url": "websocket-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1773,7 +1773,7 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "WebSub subscriber service",
+                "name": "Websub subscriber service",
                 "url": "websub-webhook-sample",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1919,7 +1919,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - mutual SSL",
+                "name": "Service - Mutual SSL",
                 "url": "grpc-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1967,7 +1967,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - mutual SSL",
+                "name": "Client - Mutual SSL",
                 "url": "grpc-client-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1999,7 +1999,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 client credentials grant type",
+                "name": "Client - OAuth2 Client Credentials grant type",
                 "url": "grpc-client-oauth2-client-credentials-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2007,7 +2007,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 password grant type",
+                "name": "Client - OAuth2 Password grant type",
                 "url": "grpc-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2015,7 +2015,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 refresh token grant type",
+                "name": "Client - OAuth2 Refresh Token grant type",
                 "url": "grpc-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2761,7 +2761,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Manage sheduled jobs",
+                "name": "Manage scheduled jobs",
                 "url": "manage-scheduled-jobs",
                 "verifyBuild": true,
                 "verifyOutput": true,

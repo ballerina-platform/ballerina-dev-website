@@ -165,5 +165,5 @@ Hello Ballerina
 
 ## Learn more
 
-In this guide, you set up your development environment and wrote two Ballerina programs. Now, see the other [guides](/learn/) to learn more about Ballerina.
+In this guide, you set up your development environment and wrote two Ballerina programs. For more learning resources, see [Learn](/learn/).
 

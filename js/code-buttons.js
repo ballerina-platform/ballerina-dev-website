@@ -14,7 +14,7 @@ for (let i = 0; i < code_blocks.length; i++) {
     navigator.clipboard.writeText(code_blocks[i].innerText);
 
     const button2 = clipboard[i].parentElement;
-    const button3 = button2.parentElement.childNodes[3];
+    const button3 = button2.parentElement.childNodes[6];
 
     button2.style.display = "none";
     button3.style.display = "flex";

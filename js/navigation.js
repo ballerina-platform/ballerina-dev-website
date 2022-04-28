@@ -67,14 +67,14 @@ if (leftTitle !== null) {
   leftNavContent.forEach((btn) => {
     btn.addEventListener("mouseover", () => {
       leftTitle.style.textDecoration = "underline";
-      leftTitle.style.color = "#3ad1ca";
-      leftArrow.style.fill = "#3ad1ca";
+      leftTitle.style.color = "#a8dbd9";
+      leftArrow.style.fill = "#a8dbd9";
     });
 
     btn.addEventListener("mouseout", () => {
       leftTitle.style.textDecoration = "none";
-      leftTitle.style.color = "#545cec";
-      leftArrow.style.fill = "#545cec";
+      leftTitle.style.color = "#3ad1ca";
+      leftArrow.style.fill = "#3ad1ca";
     });
   });
 }
@@ -84,14 +84,14 @@ if (rightTitle !== null) {
   rightNavContent.forEach((btn) => {
     btn.addEventListener("mouseover", () => {
       rightTitle.style.textDecoration = "underline";
-      rightTitle.style.color = "#3ad1ca";
-      rightArrow.style.fill = "#3ad1ca";
+      rightTitle.style.color = "#a8dbd9";
+      rightArrow.style.fill = "#a8dbd9";
     });
 
     btn.addEventListener("mouseout", () => {
       rightTitle.style.textDecoration = "none";
-      rightTitle.style.color = "#545cec";
-      rightArrow.style.fill = "#545cec";
+      rightTitle.style.color = "#3ad1ca";
+      rightArrow.style.fill = "#3ad1ca";
     });
   });
 }

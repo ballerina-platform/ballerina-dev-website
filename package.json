@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "markdown-it": "^12.3.2",
+    "markdown-it-container": "^3.0.0",
+    "shiki": "^0.10.1"
+  }
+}

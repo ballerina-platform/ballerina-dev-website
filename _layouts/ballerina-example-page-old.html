@@ -48,6 +48,13 @@
     <!-- shiki -->
     <script src="https://unpkg.com/shiki"></script>
     <script>
+      const removeEscapes = (text) => {
+        text = text.replaceAll("&lt;", "<");
+        text = text.replaceAll("&gt;", ">");
+
+        return text;
+      };
+
       shiki
         .getHighlighter({
           theme: "css-variables",
@@ -56,12 +63,11 @@
         .then((highlighter) => {
           const code_blocks = document.getElementsByClassName("code-container");
           for (let i = 0; i < code_blocks.length; i++) {
-            const output = highlighter.codeToHtml(
-              `${code_blocks[i].innerHTML}`,
-              {
-                lang: "ballerina",
-              }
-            );
+            let codeContent = removeEscapes(code_blocks[i].innerHTML);
+
+            const output = highlighter.codeToHtml(codeContent, {
+              lang: "ballerina",
+            });
             document.getElementsByClassName("code-container")[i].innerHTML =
               output;
           }

@@ -70,7 +70,7 @@ redirect_from:
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/floating-point-numbers.html"
-                  >Floating point Nnmbers</a
+                  >Floating point numbers</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -869,19 +869,19 @@ redirect_from:
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/http-service-mutual-ssl.html"
-                  >Service - mutual SSL</a
+                  >Service - Mutual SSL</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a
                   href="/learn/by-example/http-service-basic-auth-file-user-store.html"
-                  >Service - basic auth file user store</a
+                  >Service - Basic Auth file user store</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a
                   href="/learn/by-example/http-service-basic-auth-ldap-user-store.html"
-                  >Service - basic auth LDAP user store</a
+                  >Service - Basic Auth LDAP user store</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -901,7 +901,7 @@ redirect_from:
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/http-client-mutual-ssl.html"
-                  >Client - mutual SSL</a
+                  >Client - Mutual SSL</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -923,19 +923,19 @@ redirect_from:
               <li class="chapter-item bal-nav-item">
                 <a
                   href="/learn/by-example/http-client-oauth2-client-credentials-grant-type.html"
-                  >Client - OAuth2 client credentials grant type</a
+                  >Client - OAuth2 Client Credentials grant type</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a
                   href="/learn/by-example/http-client-oauth2-password-grant-type.html"
-                  >Client - OAuth2 password grant type</a
+                  >Client - OAuth2 Password grant type</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a
                   href="/learn/by-example/http-client-oauth2-refresh-token-grant-type.html"
-                  >Client - OAuth2 refresh token grant type</a
+                  >Client - OAuth2 Refresh Token grant type</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -1106,7 +1106,7 @@ redirect_from:
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/graphql-service-mutual-ssl.html"
-                  >Service - mutual SSL</a
+                  >Service - Mutual SSL</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -1174,7 +1174,7 @@ redirect_from:
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-service-mutual-ssl.html"
-                  >Service - mutual SSL</a
+                  >Service - Mutual SSL</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -1206,7 +1206,7 @@ redirect_from:
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-client-mutual-ssl.html"
-                  >Client - mutual SSL</a
+                  >Client - Mutual SSL</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -1229,19 +1229,19 @@ redirect_from:
               <li class="chapter-item bal-nav-item">
                 <a
                   href="/learn/by-example/websocket-client-oauth2-client-cred-grant-type.html"
-                  >Client - OAuth2 client credentials grant type</a
+                  >Client - OAuth2 Client Credentials grant type</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a
                   href="/learn/by-example/websocket-client-oauth2-password-grant-type.html"
-                  >Client - OAuth2 password grant type</a
+                  >Client - OAuth2 Password grant type</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a
                   href="/learn/by-example/websocket-client-oauth2-refresh-token-grant-type.html"
-                  >Client - OAuth2 refresh token grant type</a
+                  >Client - OAuth2 Refresh Token grant type</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -1358,7 +1358,7 @@ redirect_from:
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/grpc-service-mutual-ssl.html"
-                  >Service - mutual SSL</a
+                  >Service - Mutual SSL</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -1390,7 +1390,7 @@ redirect_from:
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/grpc-client-mutual-ssl.html"
-                  >Client - mutual SSL</a
+                  >Client - Mutual SSL</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -1412,19 +1412,19 @@ redirect_from:
               <li class="chapter-item bal-nav-item">
                 <a
                   href="/learn/by-example/grpc-client-oauth2-client-credentials-grant-type.html"
-                  >Client - OAuth2 client credentials grant type</a
+                  >Client - OAuth2 Client Credentials grant type</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a
                   href="/learn/by-example/grpc-client-oauth2-password-grant-type.html"
-                  >Client - OAuth2 password grant type</a
+                  >Client - OAuth2 Password grant type</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a
                   href="/learn/by-example/grpc-client-oauth2-refresh-token-grant-type.html"
-                  >Client - OAuth2 refresh token grant type</a
+                  >Client - OAuth2 Refresh Token grant type</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -2091,7 +2091,7 @@ final http:Client backendClientEP = check new ("http://localhost:8080", {
 service / on new http:Listener(9090) {
 
     resource function get timeout() returns string|http:InternalServerError {
-        string|error response = backendClientEP->get("/hello");
+        string|error response = backendClientEP-&gt;get("/hello");
 
         // If `response` is a `string` (text/plain), it is sent back to the
         // client. If `response` is an `http:ClientError`, an internal
@@ -2145,18 +2145,18 @@ service / on new http:Listener(8080) {
 <span class="bal-output bal-execute">*   Trying 127.0.0.1:9090...</span>
 <span class="bal-output bal-execute">* TCP_NODELAY set</span>
 <span class="bal-output bal-execute">* Connected to localhost (127.0.0.1) port 9090 (#0)</span>
-<span class="bal-output bal-execute">> GET /timeout HTTP/1.1</span>
-<span class="bal-output bal-execute">> Host: localhost:9090</span>
-<span class="bal-output bal-execute">> User-Agent: curl/7.68.0</span>
-<span class="bal-output bal-execute">> Accept: */*</span>
-<span class="bal-output bal-execute">> </span>
+<span class="bal-output bal-execute">&gt; GET /timeout HTTP/1.1</span>
+<span class="bal-output bal-execute">&gt; Host: localhost:9090</span>
+<span class="bal-output bal-execute">&gt; User-Agent: curl/7.68.0</span>
+<span class="bal-output bal-execute">&gt; Accept: */*</span>
+<span class="bal-output bal-execute">&gt; </span>
 <span class="bal-output bal-execute">* Mark bundle as not supporting multiuse</span>
-<span class="bal-output bal-execute">< HTTP/1.1 500 Internal Server Error</span>
-<span class="bal-output bal-execute">< content-type: text/plain</span>
-<span class="bal-output bal-execute">< content-length: 48</span>
-<span class="bal-output bal-execute">< server: ballerina</span>
-<span class="bal-output bal-execute">< date: Mon, 21 Sep 2020 20:36:56 +0530</span>
-<span class="bal-output bal-execute">< </span>
+<span class="bal-output bal-execute">&lt; HTTP/1.1 500 Internal Server Error</span>
+<span class="bal-output bal-execute">&lt; content-type: text/plain</span>
+<span class="bal-output bal-execute">&lt; content-length: 48</span>
+<span class="bal-output bal-execute">&lt; server: ballerina</span>
+<span class="bal-output bal-execute">&lt; date: Mon, 21 Sep 2020 20:36:56 +0530</span>
+<span class="bal-output bal-execute">&lt; </span>
 <span class="bal-output bal-execute">* Connection #0 to host localhost left intact</span>
 <span class="bal-output bal-execute">Request timed out. Please try again in sometime.</span>
 </code></pre>

@@ -11,4 +11,4 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
 
     steps:
-      - name:
+      - name: Install Node

@@ -39,7 +39,7 @@ jobs:
           git checkout master
           git merge -s ours pr-branch
           git checkout pr-branch
-          git merge feature
+          git merge master
 
           git config --global user.email ${{ secrets.EMAIL }}
           git config --global user.name ${{ secrets.NAME }}

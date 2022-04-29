@@ -15,4 +15,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 14
+
+      - name: Check Node version
         run: node --version

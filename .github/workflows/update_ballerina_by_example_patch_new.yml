@@ -36,7 +36,7 @@ jobs:
       - name: Push changes to the pr-branch
         run: |
           git checkout -b pr-branch || git checkout pr-branch
-          git remote -v
+          git pull origin pr-branch --allow-unrelated-histories
 
           git config --global user.email ${{ secrets.EMAIL }}
           git config --global user.name ${{ secrets.NAME }}

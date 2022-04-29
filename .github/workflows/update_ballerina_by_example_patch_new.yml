@@ -25,7 +25,9 @@ jobs:
         run: npm i
 
       - name: Clone distribution repository
-        run: git clone https://$GITHUB_TOKEN@github.com/Ballerina-By-Examples/ballerina-distribution.git
+        run: |
+          git clone https://$GITHUB_TOKEN@github.com/Ballerina-By-Examples/ballerina-distribution.git
+          ls
 
       - name: Copy examples to dev website repo
         run: cp -r /ballerina-distribution/examples .

@@ -30,7 +30,7 @@ jobs:
           ls
 
       - name: Copy examples to dev website repo
-        run: cp -r /ballerina-distribution/examples .
+        run: cp -r ./ballerina-distribution/examples .
 
       - name: Run markdown to HTML generation script
-        run: node /js/markdownConverter.js /examples /learn/by-example
+        run: node ./js/markdownConverter.js ./examples ./learn/by-example

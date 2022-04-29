@@ -44,7 +44,7 @@ jobs:
 
           git add ./learn/by-example
           git commit --allow-empty -m "Updated Ballerina Swan Lake by Examples"
-          git push -u origin pr-branch
+          git push --set-upstream origin pr-branch
 
       - name: Create pull request for new BBEs
         shell: bash

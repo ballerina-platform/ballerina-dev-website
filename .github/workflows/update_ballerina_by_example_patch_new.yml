@@ -33,6 +33,9 @@ jobs:
       - name: Run markdown to HTML generation script
         run: node ./js/markdownConverter.js ./examples ./learn/by-example
 
+      - name: Format code using prettier
+        run: npx prettier ./learn/by-example/*.html --write
+
       - name: Push BBE changes
         run: |
           git checkout automate-bbes-$GITHUB_SHA 2>/dev/null || git checkout -b automate-bbes-$GITHUB_SHA

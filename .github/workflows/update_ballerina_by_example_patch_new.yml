@@ -34,3 +34,11 @@ jobs:
 
       - name: Run markdown to HTML generation script
         run: node ./js/markdownConverter.js ./examples ./learn/by-example
+
+      - name: Create pull request for new BBEs
+        shell: bash
+        run: |
+          curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+          bin/hub pull-request -b master -m '[Automated] Update Ballerina By Example(BBEs) pages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

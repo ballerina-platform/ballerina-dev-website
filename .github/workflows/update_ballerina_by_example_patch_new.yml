@@ -35,6 +35,14 @@ jobs:
       - name: Run markdown to HTML generation script
         run: node ./js/markdownConverter.js ./examples ./learn/by-example
 
+      - name: Push changes to the pr-branch
+        run: |
+          git checkout -b pr-branch || git checkout pr-branch
+
+          git add ./learn/by-example
+          git commit -m "Updated Ballerina Swan Lake by Examples"
+          git push -u origin pr-branch
+
       - name: Create pull request for new BBEs
         shell: bash
         run: |

@@ -27,9 +27,6 @@ jobs:
       - name: Clone distribution repository
         run: git clone https://$GITHUB_TOKEN@github.com/Ballerina-By-Examples/ballerina-distribution.git
 
-      - name: Checkout to pr-branch
-        run: git checkout -b pr-branch || git checkout pr-branch
-
       - name: Copy examples to dev website repo
         run: cp -r ./ballerina-distribution/examples .
 
@@ -38,11 +35,15 @@ jobs:
 
       - name: Push changes to the pr-branch
         run: |
+          git checkout -b pr-branch || git checkout pr-branch
+          git checkout master
+          git merge -s ours pr-branch
+          git checkout pr-branch
+          git merge feature
+
           git config --global user.email ${{ secrets.EMAIL }}
           git config --global user.name ${{ secrets.NAME }}
 
-          git add ./learn/by-example
-          git commit --allow-empty -m "Updated Ballerina Swan Lake by Examples"
           git push -u origin pr-branch
 
       - name: Create pull request for new BBEs

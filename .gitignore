@@ -39,5 +39,6 @@ _site/
 
 # Node modules
 /node_modules
+/examples
 package-lock.json
              

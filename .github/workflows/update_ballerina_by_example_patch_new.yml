@@ -14,7 +14,12 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
 
-      - name: Check Node version
-        run: node --version
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          ref: master
+
+      - name: Install dependencies
+        run: npm i

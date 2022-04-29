@@ -36,7 +36,7 @@ jobs:
       - name: Push changes to the pr-branch
         run: |
           git checkout -b pr-branch || git checkout pr-branch
-          git pull --ff-only
+          git pull origin pr-branch --ff-only
           git checkout master
           git merge -s ours pr-branch
           git checkout pr-branch

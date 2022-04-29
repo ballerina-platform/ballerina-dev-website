@@ -42,7 +42,7 @@ latest_version: Swan Lake 2201.0.2
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-exclude: ["downloads/RELEASE_NOTE.md","vendor","0.991/","v1-2","v1-1","v1-0","v0-991","v-0.990","0.990"]
+exclude: ["downloads/RELEASE_NOTE.md","vendor","0.991/","v1-2","v1-1","v1-0","v0-991","v-0.990","0.990","1.0"]
 #   - Gemfile.lock
 #   - node_modules
 #   - vendor/bundle/

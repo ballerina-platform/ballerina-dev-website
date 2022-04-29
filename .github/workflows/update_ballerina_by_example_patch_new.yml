@@ -39,6 +39,9 @@ jobs:
         run: |
           git checkout -b pr-branch || git checkout pr-branch
 
+          git config --global user.email "yasith.18@cse.mrt.ac.lk"
+          git config --global user.name "YasithD"
+
           git add ./learn/by-example
           git commit -m "Updated Ballerina Swan Lake by Examples"
           git push -u origin pr-branch

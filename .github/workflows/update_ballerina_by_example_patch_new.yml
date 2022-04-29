@@ -36,6 +36,7 @@ jobs:
       - name: Push changes to the pr-branch
         run: |
           git checkout -B pr-branch
+          git pull origin pr-branch --ff-only
 
           git config --global user.email ${{ secrets.EMAIL }}
           git config --global user.name ${{ secrets.NAME }}

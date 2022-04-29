@@ -35,7 +35,7 @@ jobs:
 
       - name: Push changes to the pr-branch
         run: |
-          git checkout automate-bbes-$GITHUB_SHA 2>/dev/null || git checkout -b automate-bbes-$GITHUB_SHA
+          git checkout -B pr-branch
 
           git config --global user.email ${{ secrets.EMAIL }}
           git config --global user.name ${{ secrets.NAME }}

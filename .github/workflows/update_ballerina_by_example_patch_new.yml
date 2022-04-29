@@ -40,10 +40,10 @@ jobs:
           git config --global user.email ${{ secrets.EMAIL }}
           git config --global user.name ${{ secrets.NAME }}
 
-          git pull
+          git pull origin pr-branch
           git add ./learn/by-example
           git commit --allow-empty -m "Updated Ballerina Swan Lake by Examples"
-          git push --set-upstream origin pr-branch
+          git push -u origin pr-branch
 
       - name: Create pull request for new BBEs
         shell: bash

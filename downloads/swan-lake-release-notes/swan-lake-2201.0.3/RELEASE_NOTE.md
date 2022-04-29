@@ -7,6 +7,8 @@ redirect_from:
     - /downloads/swan-lake-release-notes/2201-0-3
     - /downloads/swan-lake-release-notes/
     - /downloads/swan-lake-release-notes
+    - /downloads/swan-lake-release-notes/2201-0-3-swan-lake/
+    - /downloads/swan-lake-release-notes/2201-0-3-swan-lake
 ---
 
 ## Overview of Ballerina Swan Lake 2201.0.3

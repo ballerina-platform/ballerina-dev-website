@@ -2,11 +2,6 @@ name: Update github release with Swan Lake release
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - prod-sync
-    paths:
-      - '_data/swanlake-latest/**'
 
 jobs:
   update-sl-github-release:
@@ -29,6 +24,6 @@ jobs:
         #python script takes RN.md as the input and produces out.json as the output
         python3 .github/scripts/sanitize_rn.py _data/swanlake-latest/metadata.json
 
-        if ! curl -v -H "Authorization: token $WEBSITE_TOKEN" -H "Content-Type: application/json" -d @out.json https://api.github.com/repos/ballerina-platform/ballerina-lang/releases --fail; then
+        if ! curl -v -H "Authorization: token $WEBSITE_TOKEN" -H "Content-Type: application/json" -H "Connection: close" -d @out.json https://api.github.com/repos/ballerina-platform/ballerina-lang/releases --fail; then
           exit 1
         fi

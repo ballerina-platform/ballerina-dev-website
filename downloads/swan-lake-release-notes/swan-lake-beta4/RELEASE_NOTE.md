@@ -28,11 +28,11 @@ If you are using an **update tool version below 0.8.14**, execute the `ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
-## Language Updates
+## Language updates
 
-### New Features
+### New features
 
-#### Support for Numeric Operations with Operands of Optional Numeric Types
+#### Support for numeric operations with operands of optional numeric types
 
 Updated unary expressions (`+`, `-`, and `~`), multiplicative expressions, additive expressions, shift expressions, and binary bitwise expressions to be used with operands of optional numeric types. If the static type of an operand is an optional numeric type, the static type of the result will also be an optional numeric type.
 
@@ -62,7 +62,7 @@ public function main() {
 }
 ```
 
-#### Support for Accessing Optional Fields of a Record Using Field Access
+#### Support for accessing optional fields of a record using field access
 
 Updated optional fields of records, which are of types that do not include nil to be accessed using field access expressions.
 
@@ -128,7 +128,7 @@ public function main() {
 
 ### Improvements
 
-#### Restrictions When Calling a Function or a Method in a Match Guard
+#### Restrictions when calling a function or a method in a match guard
 
 Introduced restrictions for when a function or a method is called in a match guard to ensure that the match guard does not mutate the value being matched.
 
@@ -168,7 +168,7 @@ isolated function stillValid(Data data, [int, decimal] values) returns boolean {
 }
 ```
 
-#### Improved Support for Unreachability
+#### Improved support for unreachability
 
 Improved the unreachability analysis of `if-else` statements and `while` statements. Constant conditions that are known to be either true or false at compile-time are now considered in the unreachability analysis.
 
@@ -262,7 +262,7 @@ function fn3(E e) returns int {
 }
 ```
 
-#### Type Narrowing Following an `if` Statement Without an `else` Block if the `if` Statement Block Cannot Complete Normally
+#### Type narrowing following an `if` statement without an `else` block if the `if` statement block cannot complete normally
 
 Narrowed the types following an `if` statement without an `else` block, if the `if` statement block cannot complete normally by building on the improvements introduced to the unreachabillity analysis.
 
@@ -297,7 +297,7 @@ function populate(int[] arr, string str) returns error? {
 }
 ```
 
-#### Restrictions on Assignments to Narrowed Variables within Loops
+#### Restrictions on assignments to narrowed variables within loops
 
 Stopped the possibility to assign a value to a variable that was narrowed outside the statement within a `while` statement or a `foreach` statement. Unless the loop terminates after the assignment (i.e., at the end of the loop body and at every `continue` statement), there must be no possibility that a narrowed variable to be assigned.
 
@@ -329,7 +329,7 @@ public function main() {
 }
 ```
 
-#### Change in Expected Return Statements in a Function with an Optional Type as the Return Type
+#### Change in expected return statements in a function with an optional type as the return type
 
 Updated a function having an optional type that is not a subtype of `error?` as the return type to explicitly return a value. A warning is emitted when such a function does not explicitly return a value and falls off at the end of the function body. 
 
@@ -342,7 +342,7 @@ function parse(string str) returns int? { // Now, results in a warning.
 }
 ```
 
-### Bug Fixes and Breaking Changes
+### Bug fixes and breaking changes
 
 - Disallowed the trailing dot format of the floating-point literal to avoid lexical ambiguity.
 
@@ -634,11 +634,11 @@ function parse(string str) returns int? { // Now, results in a warning.
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta4](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta4%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).
 
-## Runtime Updates
+## Runtime updates
 
 ### Improvements
 
-#### Improved Error Messages on a Type Conversion Failure
+#### Improved error messages on a type conversion failure
 
 Updated the detailed error messages to be given on a type conversion failure narrowing down the specific location of errors in the structural types. A maximum number of 20 errors are shown at a time.
 
@@ -690,7 +690,7 @@ error: {ballerina/lang.value}ConversionError {"message":"'json[]' value cannot b
            errmsg:main(errmsg.bal:18)
 ```
 
-#### Improvement in the Runtime Error Creator API 
+#### Improvement in the runtime error creator API 
 
 Improved the runtime Java error creator API to get a `BMap` as the `details` parameter. 
 
@@ -698,9 +698,9 @@ Improved the runtime Java error creator API to get a `BMap` as the `details` par
 BError createError(Module module, String errorTypeName, BString message, BError cause, BMap<BString, Object> details)
 ```
 
-#### New Runtime Java APIs
+#### New runtime Java APIs
 
-##### API to Access Information of Type Inclusions at the Runtime
+##### API to access information of type inclusions at the runtime
 
 Introduced a new API to retrieve the type IDs of the given `io.ballerina.runtime.api.types.ObjectType`.
 
@@ -708,7 +708,7 @@ Introduced a new API to retrieve the type IDs of the given `io.ballerina.runtime
 TypeIdSet getTypeIdSet();
 ``` 
 
-##### API to Retrieve the Constituent Types of an Intersection Type
+##### API to retrieve the constituent types of an intersection type
 
 Introduced a new API to provide the list of constituent types of a given `io.ballerina.runtime.api.types.IntersectionType`.
 
@@ -716,9 +716,9 @@ Introduced a new API to provide the list of constituent types of a given `io.bal
 List<Type> getConstituentTypes();
 ``` 
 
-### Bug Fixes
+### Bug fixes
 
-#### Removed Supporting the Single-Quote to Mark the Boundary of a JSON String Value 
+#### Removed supporting the single-quote to mark the boundary of a JSON string value 
 
 Stopped the JSON parser supporting single quotes to mark the boundaries of a string to comply with the JSON [specification](https://www.json.org/). Only double quotes are supported now.
 
@@ -730,7 +730,7 @@ public function main() {
 }
 ```
 
-#### Throw Unused Configurable Value Warnings as Errors
+#### Throw unused configurable value warnings as errors
 
 When there is a configuration value provided in the `Config.toml` file or a command-line argument that does not match with the existing configurable variables, it will fail at runtime with an error instead of a warning.
 
@@ -760,52 +760,52 @@ error: [Config.toml:(5:1,5:7)] unused configuration value 'c.d'
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta4](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta4%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
 
-## Standard Library Updates
+## Standard library updates
 
-### New Features
+### New features
 
-#### `mysql` Package
+#### `mysql` package
 - Introduced failover and retry support
 - Added `noAccessToProcedureBodies` options
 
-#### `log` Package
+#### `log` package
 - Introduced the `setOutputFile` function to write the log output to a file
 
-#### `http` Package
+#### `http` package
 - Introduced request and request error interceptors
 
-#### `grpc` Package
+#### `grpc` package
 - Introduced Protobuf `Any` type support
 
 ### Improvements
 
-#### `sql` Package
+#### `sql` package
 - Improved the `queryRow()` function to support union return types
 - Improved the parameterized query to support the escaped backtick as insertions
 
-#### `log` Package
+#### `log` package
 - Added `error:StackFrame[]` as a key-value pair type
     
-#### `http` Package
+#### `http` package
 - Relaxed the data-binding restriction for status codes without content
 - Changed the `Listener.getConfig()` API to return an `InferredListenerConfiguration`
 
-#### `websub` Package
+#### `websub` package
 - Updated to not change the generated unique-service-path after compilation
 
 ### Changes
 - Marked all the standard library services as `distinct`
 - Removed all the `info` logs printed from the listeners
 
-### Bug Fixes
+### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta4](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+Beta4%22+label%3AType%2FBug).
 
-## Developer Tools Updates
+## Developer tools updates
 
-### New Features
+### New features
 	
-### Language Server 
+### Language server 
 - Added `document symbol` support
 - Added the `pull module` code action to pull locally unavailable Ballerina packages from Ballerina Central
 - Added a new code action to add an explicit return statement where required
@@ -821,7 +821,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta4](https://github
 - [Preview Feature] Introduced Ballerina code completion support in the Visual Studio Code debug console. Now, a context-aware completion list will be suggested automatically for Ballerina expressions in the VSCode evaluation window.
 - Added string template support for debug logpoints. Now, you can interpolate expressions within debug logpoint messages by using the `${}` syntax so that the debug logpoints can be used to log state variable information without suspending the program. 
 
-### Bug Fixes
+### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Beta4 of the repositories below.
 

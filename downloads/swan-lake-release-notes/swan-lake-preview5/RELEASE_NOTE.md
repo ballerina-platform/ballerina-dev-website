@@ -229,7 +229,7 @@ isolated function validateArray() {
 
 The Ballerina runtime Java API package name has been changed from `org.ballerinalang.jvm` to `io.ballerina.runtime`. A new `io.ballerina.api.TypeCreator` API is introduced to create Ballerina types at runtime.
 
-#### Standard Library
+#### Standard library
 
 ##### HTTP client remote method API improvement with data-binding support
 
@@ -256,7 +256,7 @@ The SQL data type of the `Out` Parameter can now be defined in the SQL procedure
 sql:OutParameter filterId = new;
 ```
 
-**New Syntax**
+**New syntax**
 ```ballerina
 sql:IntegerOutParameter filterId = new;
 ```
@@ -265,7 +265,7 @@ sql:IntegerOutParameter filterId = new;
 
 The task module now supports the misfire policy. A new `misfirePolicy` field has been introduced in the `task:TimerConfiguration` and `task:AppointmentConfiguration` to specify the policy.
 
-#### Developer Tools
+#### Developer tools
 
 ##### Code formatting
 
@@ -274,7 +274,7 @@ Improved formatting support for all the language features. The new formatter als
 - Range formatting
 - Line wrapping
 
-#### Known Issues
+#### Known issues
 
 - The [WebSub](https://docs.central.ballerina.io/ballerina/websub/latest/) standard library module (ballerina/websub) is not working with Swan Lake Preview 5.
 - The [Socket](https://docs.central.ballerina.io/) standard library module (ballerina/socket) can only be built offline (i.e., with the `--offline` parameter) with Swan Lake Preview 5.

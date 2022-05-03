@@ -562,9 +562,9 @@ public function main() {
 - Error binding patterns and structured match patterns are not yet supported with the new parser.
 
 
-#### Standard Library
+#### Standard library
 
-##### Introduced new SQL module
+##### Introduced new `sql` module
 
 The newly-introduced `sql` module provides a common interface and functionality to interact with a database. The corresponding database clients can be created by using specific database modules such as MySQL or using the Java Database Connectivity module JDBC. 
 
@@ -589,7 +589,7 @@ public function main() returns sql:Error? {
 }
 ```
 
-##### Enhanced log API module
+##### Enhanced `logapi` module
 
 Revamped log API to support `anydata` and improved performance.
 
@@ -621,7 +621,7 @@ public type Fruit object {
 };
 ```
 
-##### Enhanced gRPC module
+##### Enhanced `grpc` module
 
 The client/bidirectional streaming service implementation is revamped to support multiple service resources.
 
@@ -650,7 +650,7 @@ service HelloWorld on new grpc:Listener(9090) {
 
 ```
 
-##### Enhanced Auth module
+##### Enhanced `auth` module
 
 The capability to validate the JWT signature with JWKs is extended now. With that, the JWT signature can be validated either from the TrustStore configuration or JWKs configuration.
 
@@ -670,7 +670,7 @@ jwt:JwtValidatorConfig validatorConfig = {
 };
 ```
 
-##### Enhanced Email module
+##### Enhanced `email` module
 
 The Email Connector clients are given the capability to add custom SMTP properties, custom POP properties, and custom IMAP properties via the configuration of each of the clients.
 
@@ -709,7 +709,7 @@ service emailObserver on emailListener {
 ```
 
 
-##### Adding the Socket module to Ballerina Central
+##### Adding the `socket` module to Ballerina Central
 
 Previously, the Socket module was available only in the Ballerina distribution. From this release onwards, it is available in both the
  released Ballerina distribution and Ballerina Central. This will allow us to release the module independently.
@@ -784,7 +784,7 @@ This provides variable evaluation support. This will allow you to evaluate a var
 
 #### Test framework
 
-###### Introduction of the Mocking API in the Test module
+###### Introduction of the mocking API in the `test` module
 
 The new mocking API simplifies function and object mocking in unit tests via the ***when-then*** convention. 
 

@@ -36,15 +36,15 @@ If you are using an **update tool version below 0.8.14**, execute the `ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
-### Language Updates
+### Language updates
 
-#### New Features
+#### New features
 
-##### Relational Expressions With All Ordered Types
+##### Relational expressions with all ordered types
 
 Relational expressions (`<`, `>`, `<=`, and `>=`) are supported with all [ordered types](https://ballerina.io/spec/lang/draft/v2020-12-17/#ordering). The static type of both operands must belong to the same ordered type.
 
-##### Inferring the Argument of a Dependently-Typed Function from the Contextually-Expected Type
+##### Inferring the argument of a dependently-typed function from the contextually-expected type
 
 When the default value of a `typedesc` parameter of a dependently-typed function is `<>` and an argument is not provided for the parameter when calling the function, the argument will be inferred from the contextually-expected type of the function call.
 
@@ -59,7 +59,7 @@ public function main() {
 
 #### Improvements
 
-##### Improvements to Dependently-Typed Lang Library Functions to Infer the Argument from the Contextually-Expected Type
+##### Improvements to dependently-typed lang library functions to infer the argument from the contextually-expected type
 
 - The `lang:value:ensureType` lang library function is now dependently-typed.
 
@@ -83,7 +83,7 @@ public function main() {
     }
     ```
 
-##### Improvements to the Return Type of `lang.value:cloneReadOnly`
+##### Improvements to the return type of `lang.value:cloneReadOnly`
 
 Changed the return type of the `lang.value:cloneReadOnly` lang library function from the type of the value (`T`) to the intersection of the type and `readonly` (`T & readonly`).
 
@@ -102,11 +102,11 @@ public function main() {
 }
 ```
 
-##### Changes to the Return Types of `lang.value:fromJsonFloatString` and `lang.value:fromJsonDecimalString`
+##### Changes to the return types of `lang.value:fromJsonFloatString` and `lang.value:fromJsonDecimalString`
 
 Changed the return types of the `lang.value:fromJsonFloatString` and `lang.value:fromJsonDecimalString` lang library functions from `json` to `lang.value:JsonFloat` and `lang.value:JsonDecimal` respectively.
 
-#### Breaking Changes
+#### Breaking changes
 
 - A compilation error occurs if the inferred type of an unused variable that is declared with `var` includes a subtype of the `error` type.
 - Removed the `error<*>` syntax.
@@ -120,15 +120,15 @@ Changed the return types of the `lang.value:fromJsonFloatString` and `lang.value
 - Checking keywords (`check` and `checkpanic`) are allowed in a statement only if the statement is a call statement (i.e., when the expression is a function or method call).
 - Lowered the precedence of the `trap` expression.
 
-#### Bug Fixes
+#### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).
 
-### Runtime Updates
+### Runtime updates
 
-#### New Features
+#### New features
 
-##### Providing Values for Configurable Variables via Command-line Arguments
+##### Providing values for configurable variables via command-line arguments
 
 Configurable values can be provided with the built-in command-line option `-C`.
 
@@ -136,7 +136,7 @@ Configurable values can be provided with the built-in command-line option `-C`.
 -Ckey=value
 ```
 
-**Key Syntax:**
+**Key syntax:**
 
 ```bash
 key:= [[org-name .] module-name .] variable
@@ -148,7 +148,7 @@ Command-line arguments are supported for configurable variables with `boolean`, 
 configurable int port = ?;
 ```
 
-**Example Usages:**
+**Example usages:**
 
 - If the configurable variable is defined in the default module or if a single Ballerina file is being used:
 
@@ -172,25 +172,25 @@ configurable int port = ?;
     java -jar executable.jar -Corg-name.module-name.port=9090 
     ```
 
-##### Locating Multiple TOML Files
+##### Locating multiple TOML files
 
 Configurable values can be provided in multiple TOML files using the `BAL_CONFIG_FILES` environment variable.
 
 The file locations can be specified in the environment variable using an OS-specific separator. The precedence order will be determined by the order in which the files are specified in the environment variable. If such an environment variable is not specified, the file located in the current directory with the file name `Config.toml` will be used.
 
-##### Providing TOML Content via Environment Variables
+##### Providing TOML content via environment variables
 
 The configurable values can be provided using the `BAL_CONFIG_DATA` environment variable in which the content is expected to be in the TOML (v0.4) format.
 
-#### Bug Fixes
+#### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
 
-### Standard Library Updates
+### Standard library updates
       
 #### Improvements
 
-##### `time` Package 
+##### `time` package 
 
 Introduced the following APIs to support email-typed string conversions:
 
@@ -219,7 +219,7 @@ import ballerina/time;
 time:Civil|time:Error emailDateTime = time:civilFromEmailString("Wed, 10 Mar 2021 19:51:55 -0820");
 ```
 
-##### `io` Package 
+##### `io` package 
 
 - Improved the print APIs to support string templates.
 
@@ -232,7 +232,7 @@ io:print(`Hello ${val}!!!`);
 
 - Changed streaming APIs to be completed from `nil` return. 
 
-##### `mysql` Package
+##### `mysql` package
 
 - Changed the previous `SSLConfig` Record to `SecureSocket` Record.
 
@@ -246,7 +246,7 @@ public type SecureSocket record {|
 
 - Changed the SSLMode value from `SSL_VERIFY_CERT` to `SSL_VERIFY_CA`.
 
-##### `xmldata` Package 
+##### `xmldata` package 
 
 Updated the API to convert a JSON to an XML to be supported by the `nil` return value.
 
@@ -258,7 +258,7 @@ json data = {
 xml?|Error x = xmldata:fromJson(data);
 ```
 
-##### `java.arrays` Package 
+##### `java.arrays` package 
 
 Renamed the `java.arrays` package’s org and package names as `ballerina` and `jballerina.java.arrays`. 
 
@@ -267,7 +267,7 @@ import ballerina/jballerina.java.arrays;
 handle secondWord = arrays:get(input, 1);
 ```
 
-##### `websub` Package 
+##### `websub` package 
 
 Added pre-built constants for WebSub common-responses.
 
@@ -299,7 +299,7 @@ Added pre-built constants for WebSub common-responses.
 
 ```
 
-##### `kafka` Package 
+##### `kafka` package 
 
 - Updated the `SecureSocket` record.
 
@@ -312,7 +312,7 @@ kafka:Producer kafkaProducer = check new(”localhost:9092”);
 // Same for listener and consumer initialization
 ```
 
-##### `nats` Package 
+##### `nats` package 
 
 Updated the `init` methods of the client and listener.
 
@@ -323,7 +323,7 @@ nats:Client client = check new(”http://google.com:9090”);
 // Same for listener initialization
 ```
 
-##### `stan` Package 
+##### `stan` package 
 
 Updated the `init` methods of the client and listener.
 
@@ -333,7 +333,7 @@ nats:Client client = check new(nats:DEFAULT_URL);
 // Same for listener initialization
 ```
 
-##### `rabbitmq` Package 
+##### `rabbitmq` package 
 
 Updated the  `init` methods of the client and listener.
 
@@ -344,28 +344,28 @@ rabbitmq:Client client = check new(”localhost”, 9090);
 // Same for listener initialization
 ```
 
-#### Security Updates
+#### Security updates
 
 Removed encrypted passwords and hashed passwords support for Basic Auth file user store authentication.
 
-#### Bug Fixes
+#### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+Alpha4%22+label%3AType%2FBug).
 
-### Developer Tools Updates
+### Developer tools updates
 
-#### Bug Fixes
+#### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Alpha4 of the repositories below.
 
 - [Language](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22+label%3AType%2FBug+label%3ATeam%2FDevTools)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22) 
 
-#### Language Server 
+#### Language server 
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha4](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha4%22+label%3AType%2FBug+label%3ATeam%2FLanguageServer).
 
-### Observability Updates
+### Observability updates
 
 - Introduced the open-telemetry standard for Ballerina tracing instead of open-tracing
 - Updated the Jaeger extension to support open-telemetry

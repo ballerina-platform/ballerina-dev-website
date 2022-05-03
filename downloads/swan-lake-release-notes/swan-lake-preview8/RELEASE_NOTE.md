@@ -33,7 +33,7 @@ This release is the eighth preview version of Ballerina Swan Lake. It includes a
 
 You can use the update tool to update to Ballerina Swan Lake Preview 8 as follows.
 
-##### For Existing Users
+##### For existing users
 
 If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina update tool](http://ballerina.io/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the update tool updated to its latest version. 
                         
@@ -45,7 +45,7 @@ If you are already using Ballerina, you can directly update your distribution to
 
 However, if you are using a Ballerina version below 1.1.0, install via the [installers](https://ballerina.io/downloads/).
 
-##### For New Users
+##### For new users
 
 If you have not installed Ballerina, then download the [installers](https://ballerina.io/downloads/) to install.
 
@@ -62,7 +62,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 
 #### Language
 
-##### Support Identifier Escapes Without an Initial Quote
+##### Support identifier escapes without an initial quote
 
 Now, `\` can simply be used to escape the special characters in an identifier without specifying the initial quote. For example, both the formats below are supported now.
 
@@ -71,7 +71,7 @@ int a\-b;
 int 'a\-b;
 ```
 
-##### Included Record Parameters
+##### Included record parameters
 
 Included record parameters can be specified as `*T P` in which `T` denotes a record type descriptor and `P` denotes the name of the parameter.
 
@@ -141,11 +141,11 @@ A named argument in a function call can correspond to the fields of an included 
    }
    ```
 
-##### Service Typing Changes
+##### Service typing changes
 
 Services are now based on objects. The service declaration syntax below is mere syntactic sugar for creating a new instance of a service class and then attaching it to a listener. With this change, the path that the service should serve on can be provided in the service-declaration syntax. This was previously provided using an annotation.
 
-**Previous Syntax**
+**Previous syntax**
 
 ```ballerina
 import ballerina/http;
@@ -158,7 +158,7 @@ service hello on new http:Listener(9090) {
 }
 ```
 
-**New Syntax**
+**New syntax**
 
 ```ballerina
 import ballerina/http;
@@ -216,7 +216,7 @@ string[] basePath = ["hello", "path"]; // service on "/hello/path"
 l.attach(hello, basePath);
 ```
 
-##### Listener Object 
+##### Listener object 
 
 Listener is no longer defined in `ballerina/lang.object` lang-library, now it is a compiler known internal type.
 A type is a listener object type if it is a subtype of the object type Listener<T,A>, for some type `T` that is a subtype of `service object {}` and some type `A` that is a subtype of `string[]|string|()`.
@@ -233,13 +233,13 @@ object {
 }
 ```
 
-##### Transactional Services
+##### Transactional services
 
 Ballerina transaction capabilities have been extended to services. Now, you can define transactional resource methods and transactional remote methods. These methods will be participants of global distributed transactions. Infection and agreement protocols are implemented based on the Ballerina distributed transaction protocol. 
 
 By defining services as participants, all services work as a single unit of work. If any of the services fail, the whole transaction will be reverted and if all the services are successfully called, the transaction will be completed and committed successfully. 
 
-###### Defining Transactional Resource Methods in a Service
+###### Defining transactional resource methods in a service
 
 ```ballerina
 transactional resource function get message(http:Caller caller, http:Request req) {
@@ -250,7 +250,7 @@ transactional resource function get message(http:Caller caller, http:Request req
 }
 ```
 
-###### Defining Transactional Remote Methods in a Client Object
+###### Defining transactional remote methods in a client object
 
 
 ```ballerina
@@ -263,7 +263,7 @@ transactional remote function callMySecondService() returns @tainted any|error {
 }
 ```
 
-###### Calling the Service
+###### Calling the service
 
 ```ballerina
 transaction {
@@ -279,16 +279,16 @@ transaction {
 }
 ```                                                             
 
-#### Standard Library
+#### Standard library
 
-##### HTTP Module Changes
+##### `http` module changes
 
-###### Service Declaration
+###### Service declaration
 
 - Basepath field has been removed from the `ServiceConfig` annotation. Use the `absolute resource path` that begins with `/` as the basePath which is optional and defaults to `/` when not specified.
 - The service type can be added as `http:Service`, which is optional after the `service` keyword.
 
-**Previous Syntax**
+**Previous syntax**
 
 ```ballerina
 @http:ServiceConfig {
@@ -299,7 +299,7 @@ service myService on new http:Listener(9090) {
 }
 ```
 
-**New Syntax**
+**New syntax**
 
 ```ballerina
 service http:Service /hello on new http:Listener(9090) {
@@ -307,7 +307,7 @@ service http:Service /hello on new http:Listener(9090) {
 }
 ```
 
-###### Resource Method Declaration
+###### Resource method declaration
 
 - Use the resource method name to specify the HTTP method to support instead of the `methods` field of the `ResourceConfig` annotation (e.g., `get`).
 - Use `default` as the resource method name when the resource has to support all methods including standard HTTP methods and custom methods (e.g., the passthrough/proxy use case).
@@ -331,7 +331,7 @@ service http:Service /mytest on new http:Listener(9090) {
 ```
 
 
-##### Log Module Changes
+##### `log` module changes
 
 - Log levels are reduced to `INFO` and `ERROR`. There will be no user configuration to control the log level. All the logs will be printed to the standard error stream.
 - There are only two APIs to log messages as follows.
@@ -357,16 +357,16 @@ service http:Service /mytest on new http:Listener(9090) {
 - The API supports passing any number of key/value pairs along with the message.
 - Log messages are printed following the `LogFMT` standards.
 
-##### Email Module Changes
+##### `email` module changes
 
 The methods related to sending and receiving emails were renamed. The Listener API was divided into the POP and IMAP protocols. 
 
-###### Client Changes
+###### Client changes
 
  - The `email:Email` definition is changed to `email:Message`.
  - The `read` method of the `email:ImapClient`, `email:PopClient`, and `email:Listener` (i.e., the new `email:PopListener` and `email:ImapListener`) are changed to `receiveEmailMessage`.
 
-###### Service Declaration
+###### Service declaration
 
 - The `email:Listener` is split into the `email:PopListener` and `email:ImapListener`. Therefore, the `protocol` field is removed from the new protocol-specific listeners. The `email:PopConfig` or `email:ImapConfig` that was used as a field for the `email:Listener` is not required for new the API implementation. The protocol configuration-related fields are made parts of the new listeners.
 - The resource methods are changed to remote methods in the new listener APIs.
@@ -376,7 +376,7 @@ The methods related to sending and receiving emails were renamed. The Listener A
 
 A sample POP3 listener is given below.
 
-**Previous Syntax**
+**Previous syntax**
 
 ```ballerina
 email:PopConfig popConfig = {
@@ -406,7 +406,7 @@ service emailObserver on emailListener {
 }
 ```
 
-**New Syntax**
+**New syntax**
 
 ```ballerina
 listener email:PopListener emailListener = new ({
@@ -431,12 +431,12 @@ service "emailObserver" on emailListener {
 }
 ```
 
-##### WebSub Module Changes
+##### `websub` module changes
 
 - The base path is removed from the `SubscriberServiceConfig` annotation.
 - The `onNotification` and `onIntentVerification` resources are converted to remote methods.
 
-**Previous Syntax**
+**Previous syntax**
 
 ```ballerina
 @websub:SubscriberServiceConfig {
@@ -449,7 +449,7 @@ service websubSubscriber on new websub:Listener(8181) {
 }
 ```
 
-**New Syntax**
+**New syntax**
 
 ```ballerina
 @websub:SubscriberServiceConfig {
@@ -461,7 +461,7 @@ service websub:SubscriberService /websub on new websub:Listener(8181) {
 }
 ```
 
-##### Introduced New Modules
+##### Introduced new modules
 
 ###### GraphQL
 
@@ -480,13 +480,13 @@ The Ballerina UUID module is introduced with this release. This module provides 
 - The WebSocket module has been moved out of the HTTP module. Therefore, you will have to change the import from `ballerina/http` to `ballerina/websocket`.
 - Introduced a new listener for the WebSocket module.
 
-**Previous Syntax**
+**Previous syntax**
 
 ```ballerina
 listener http:Listener wsListener = new (9090);
 ```
 
-**New Syntax**
+**New syntax**
 
 ```ballerina
 listener websocket:Listener wsListener = new (9090);
@@ -498,7 +498,7 @@ listener websocket:Listener wsListener = new (9090);
     1. `websocket:UpgradeService` - This is to handle the WebSocket upgrade. This takes the `http:Request` and `http:Caller` parameters in. This service has a predefined `onUpgrade` remote method that returns a `websocket:Service` or an error. Earlier, this was handled by an HTTP upgrade resource. 
     2. `websocket:Service` - This is to handle events after the WebSocket upgrade. This service is still similar to the earlier WebSocket service, which had predefined resources like `onText`, `onBinary`, `onError`, `onPing`, and `onPong`. With the new syntax, all those resources are converted into remote methods.
 
-**Previous Syntax**
+**Previous syntax**
 
 ```ballerina
 import ballerina/http;
@@ -514,7 +514,7 @@ service echo on socketListener {
 }
 ```
 
-**New Syntax**
+**New syntax**
 
 ```ballerina
 import ballerina/http;

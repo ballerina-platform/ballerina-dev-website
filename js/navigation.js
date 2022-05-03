@@ -5,8 +5,22 @@ const mainCategories = document.querySelectorAll(".part-title > div");
 const toggleMainCategories = document.getElementsByClassName("toggle-category");
 
 // scrollbar
-var active = $(".active").closest("ol").closest("li").prev().position().top;
+let active = $(".active").closest("ol").closest("li").prev().position().top;
 $(".sidebar-scrollbox").scrollTop(active);
+
+// scroll to top
+$(window).scroll(() => {
+  if ($(window).scrollTop() > 0) {
+    $(".scroll-to-top").css("visibility", "visible");
+  } else {
+    $(".scroll-to-top").css("visibility", "hidden");
+  }
+});
+
+const scrollToTopButton = document.getElementsByClassName("scroll-to-top")[0];
+scrollToTopButton.addEventListener("click", () => {
+  $(window).scrollTop(0);
+});
 
 // toggle category animation
 for (let i = 0; i < categories.length; i++) {

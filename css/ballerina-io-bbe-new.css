@@ -201,3 +201,24 @@ pre > button:nth-child(4) {
 .prev-button svg {
   margin-right: 50px;
 }
+
+.scroll-to-top {
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3ad1ca;
+
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 20;
+}
+
+.scroll-to-top:hover {
+  background-color: #2da7a1;
+}

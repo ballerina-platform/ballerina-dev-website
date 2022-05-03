@@ -2,12 +2,6 @@
 
 @import "variables.css";
 
-::-webkit-scrollbar {
-  background: var(--bg);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--scrollbar);
-}
 html {
   scrollbar-color: var(--scrollbar) var(--bg);
 }
@@ -372,12 +366,6 @@ ul#searchresults span.teaser em {
 }
 .sidebar-hidden .sidebar {
   transform: translateX(calc(0px - var(--sidebar-width)));
-}
-.sidebar::-webkit-scrollbar {
-  background: var(--sidebar-bg);
-}
-.sidebar::-webkit-scrollbar-thumb {
-  background: var(--scrollbar);
 }
 
 .sidebar-visible .page-wrapper {

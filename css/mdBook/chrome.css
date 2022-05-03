@@ -345,6 +345,7 @@ ul#searchresults span.teaser em {
 }
 .sidebar .sidebar-scrollbox {
   overflow-y: auto;
+  overflow-x: hidden;
   position: absolute;
   top: 0;
   bottom: 0;

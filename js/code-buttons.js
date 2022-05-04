@@ -1,5 +1,7 @@
+const playground = document.getElementsByClassName("bi-play-circle");
 const github_edit = document.getElementsByClassName("bi-github");
 const clipboard = document.getElementsByClassName("bi-clipboard");
+const check = document.getElementsByClassName("bi-check");
 
 const code_blocks = document.getElementsByClassName("code-container");
 const activeHREF = document
@@ -14,7 +16,7 @@ for (let i = 0; i < code_blocks.length; i++) {
     navigator.clipboard.writeText(code_blocks[i].innerText);
 
     const button2 = clipboard[i].parentElement;
-    const button3 = button2.parentElement.childNodes[6];
+    const button3 = check[i].parentElement;
 
     button2.style.display = "none";
     button3.style.display = "flex";
@@ -26,6 +28,15 @@ for (let i = 0; i < code_blocks.length; i++) {
   });
 
   github_edit[i].addEventListener("click", () => {
-    window.location.href = `https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/${url}`;
+    window.open(
+      `https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/${url}`,
+      "_blank"
+    );
+  });
+
+  playground[i].addEventListener("click", () => {
+    const playgroundLink =
+      playground[i].parentElement.getAttribute("playgroundLink");
+    window.open(playgroundLink, "_blank");
   });
 }

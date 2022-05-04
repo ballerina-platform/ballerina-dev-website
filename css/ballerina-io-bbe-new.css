@@ -145,7 +145,7 @@ pre > button:nth-child(2) {
   margin-left: auto;
 }
 
-pre > button:nth-child(4) {
+.check-button {
   display: none;
 }
 

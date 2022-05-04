@@ -2,6 +2,7 @@
 const md = require("markdown-it")();
 const container = require("markdown-it-container");
 const fs = require("fs");
+const axios = require("axios");
 
 // insert escape characters
 const insertEscapes = (text) => {
@@ -11,12 +12,41 @@ const insertEscapes = (text) => {
   return text;
 };
 
+// playground link generator
+const generatePlaygroundLink = async (line, description) => {
+  let playgroundLink = null;
+  let m = line.trim().match(/code\s+(.*\w)/);
+  let m_fileName = m[1].match(/\w+\.\w+/);
+
+  let content = fs.readFileSync(m[1], "utf-8");
+  let fileName = m_fileName[0];
+
+  const data = {
+    content,
+    description,
+    fileName,
+  };
+
+  try {
+    const result = await axios({
+      url: "https://play.ballerina.io/gists",
+      method: "POST",
+      data,
+    });
+
+    playgroundLink = `https://play.ballerina.io/?gist=${result.data.id}&file=${fileName}`;
+  } catch (error) {
+    console.log(error.response.data);
+  }
+  return playgroundLink;
+};
+
 // markdown-it containers
 md.use(container, "code", {
   validate: function (params) {
     return params.trim().match(/code\s+(.*\w)/);
   },
-  render: function (tokens, idx) {
+  render: function (tokens, idx, options, env, self) {
     const m = tokens[idx].info.trim().match(/code\s+(.*\w)/);
 
     if (tokens[idx].nesting === 1) {
@@ -24,7 +54,17 @@ md.use(container, "code", {
       codeContent = insertEscapes(codeContent);
       return `
 <br />      
-<pre><code id="code" class="code-container">${codeContent}</code>
+<pre><code id="code" class="code-container">${codeContent}</code>${
+        env.playgroundLink !== null
+          ? `
+  <button playgroundLink="${env.playgroundLink}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EEE" class="bi bi-play-circle" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+      <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+    </svg>
+  </button>`
+          : "\n"
+      }
   <button>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EEE" class="bi bi-github" viewBox="0 0 16 16">
       <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
@@ -36,7 +76,7 @@ md.use(container, "code", {
       <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
     </svg>
   </button>
-  <button>
+  <button class="check-button">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#45FF00" class="bi bi-check" viewBox="0 0 16 16">
       <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
     </svg>
@@ -307,25 +347,31 @@ ${liquid}
 };
 
 // generate HTML files for the bbes
-const generate = (examplesDir, outputDir) => {
+const generate = async (examplesDir, outputDir) => {
   try {
     const startTime = Date.now();
-    // bbes folders
-    const bbes = fs.readdirSync(examplesDir);
 
     // index.json file
     const indexContent = fs.readFileSync(`${examplesDir}/index.json`, "utf-8");
     const jsonContent = JSON.parse(indexContent);
 
-    bbes.forEach((bbe) => {
-      let relPath = `${examplesDir}/${bbe}`;
-      if (fs.statSync(relPath).isDirectory()) {
-        const files = fs.readdirSync(relPath);
+    for (const chapter of jsonContent) {
+      let bbes = chapter["samples"];
+
+      for (const bbe of bbes) {
+        let url = bbe["url"];
+        let relPath = `${examplesDir}/${url}`;
+        let files = fs.readdirSync(relPath);
         let metatags = "";
         let codeSection = "";
+        let playground = true;
 
-        files.forEach((file) => {
-          const fileRelPath = `${examplesDir}/${bbe}/${file}`;
+        if (bbe["disablePlayground"] && bbe["disablePlayground"] === true) {
+          playground = false;
+        }
+
+        for (const file of files) {
+          const fileRelPath = `${examplesDir}/${url}/${file}`;
 
           if (fs.statSync(fileRelPath).isFile()) {
             if (file.includes("metatags")) {
@@ -333,25 +379,32 @@ const generate = (examplesDir, outputDir) => {
             } else if (file.includes(".md")) {
               let content = fs.readFileSync(fileRelPath, "utf-8").trim();
               let contentArray = content.split("\n");
-
               let updatedArray = [];
-              contentArray.forEach((line) => {
-                let convertedLine = md.render(line);
+              let playgroundLink = null;
+
+              for (const line of contentArray) {
+                if (line.includes("::: code") && playground) {
+                  playgroundLink = await generatePlaygroundLink(line, url);
+                }
+                let convertedLine = md.render(line, {
+                  playgroundLink,
+                });
                 if (convertedLine === null) {
                   updatedArray.push("");
                 } else {
                   updatedArray.push(convertedLine);
                 }
-              });
+              }
 
               codeSection = updatedArray.join("\n");
             }
           }
-        });
+        }
 
-        generateHTML(bbe, jsonContent, metatags, codeSection, outputDir);
+        generateHTML(url, jsonContent, metatags, codeSection, outputDir);
       }
-    });
+    }
+
     const executionTime = Date.now() - startTime;
     console.log(`Executed in ${executionTime / 1000}s`);
     console.log("HTML generation successful");

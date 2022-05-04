@@ -12,6 +12,12 @@ const insertEscapes = (text) => {
   return text;
 };
 
+// timeout function
+const timeout = (ms) => {
+  const now = Date.now();
+  while (Date.now() < now + ms) {}
+};
+
 // playground link generator
 const generatePlaygroundLink = async (line, description) => {
   let playgroundLink = null;
@@ -33,14 +39,10 @@ const generatePlaygroundLink = async (line, description) => {
       method: "POST",
       data,
     });
-    await setTimeout(() => {}, 1000);
+    timeout(1000);
     playgroundLink = `https://play.ballerina.io/?gist=${result.data.id}&file=${fileName}`;
   } catch (error) {
-    if (error.response.status === 500) {
-      await setTimeout(() => {}, 1000);
-    } else {
-      console.log(error.response.data);
-    }
+    console.log(error.response.data);
   }
   console.log(playgroundLink);
   return playgroundLink;

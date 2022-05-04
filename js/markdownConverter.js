@@ -36,7 +36,12 @@ const generatePlaygroundLink = async (line, description) => {
 
     playgroundLink = `https://play.ballerina.io/?gist=${result.data.id}&file=${fileName}`;
   } catch (error) {
-    console.log(error.response.status);
+    if (error.response.status == 500) {
+      setTimeout(() => {}, 1000);
+      playgroundLink = await generatePlaygroundLink(line, description);
+    } else {
+      console.log(error.response.data);
+    }
   }
   return playgroundLink;
 };

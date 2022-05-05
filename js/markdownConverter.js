@@ -12,10 +12,13 @@ const insertEscapes = (text) => {
   return text;
 };
 
-// timeout function
-const timeout = (ms) => {
-  const now = Date.now();
-  while (Date.now() < now + ms) {}
+// sleeper
+const sleep = (timeout) => {
+  const start = Date.now();
+  let end = null;
+  do {
+    end = Date.now();
+  } while (end < start + timeout);
 };
 
 // playground link generator
@@ -34,6 +37,8 @@ const generatePlaygroundLink = async (line, description) => {
   };
 
   try {
+    const startTime = Date.now();
+    sleep(2000);
     const result = await axios({
       url: "https://play.ballerina.io/gists",
       method: "POST",
@@ -44,7 +49,9 @@ const generatePlaygroundLink = async (line, description) => {
   } catch (error) {
     console.log(error.response.data);
   }
-  console.log(playgroundLink);
+  console.log(
+    `Generated in: ${(Date.now() - startTime) / 1000}s ${playgroundLink}`
+  );
   return playgroundLink;
 };
 

@@ -36,7 +36,6 @@ const generatePlaygroundLink = async (line, description) => {
     fileName,
   };
 
-  const startTime = Date.now();
   try {
     sleep(1000);
     const result = await axios({

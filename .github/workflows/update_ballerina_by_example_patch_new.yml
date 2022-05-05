@@ -30,9 +30,6 @@ jobs:
       - name: Copy examples to dev website repo
         run: cp -r ./ballerina-distribution/examples .
 
-      - name: Authenticate GitHub REST API
-        run: curl -u ${{ secrets.NAME }} https://api.github.com
-
       - name: Run markdown to HTML generation script
         run: node ./js/markdownConverter.js ./examples ./learn/by-example
 

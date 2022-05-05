@@ -36,8 +36,8 @@ const generatePlaygroundLink = async (line, description) => {
     fileName,
   };
 
+  const startTime = Date.now();
   try {
-    const startTime = Date.now();
     sleep(2000);
     const result = await axios({
       url: "https://play.ballerina.io/gists",

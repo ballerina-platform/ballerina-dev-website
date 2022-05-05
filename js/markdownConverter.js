@@ -250,7 +250,6 @@ const generateNavContent = (bbeName, jsonContent) => {
         ${mainNav}
       </ol>
     </div>
-    <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
   </nav>`.trim();
 
   return { bbeTitle, navContent, prevBBE, nextBBE };

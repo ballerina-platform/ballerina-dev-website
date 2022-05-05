@@ -38,7 +38,7 @@ const generatePlaygroundLink = async (line, description) => {
 
   const startTime = Date.now();
   try {
-    sleep(2000);
+    sleep(1000);
     const result = await axios({
       url: "https://play.ballerina.io/gists",
       method: "POST",
@@ -49,9 +49,6 @@ const generatePlaygroundLink = async (line, description) => {
   } catch (error) {
     console.log(error.response.data);
   }
-  console.log(
-    `Generated in: ${(Date.now() - startTime) / 1000}s ${playgroundLink}`
-  );
   return playgroundLink;
 };
 

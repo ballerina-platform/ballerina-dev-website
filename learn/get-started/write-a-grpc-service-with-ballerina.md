@@ -83,11 +83,7 @@ Ballerina uses projects to group code. You need to create a Ballerina project, g
 
 In the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina project for the gRPC service implementation.
 
-<<<<<<< HEAD
-> **Info:** For more information on Ballerina projects, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
-=======
 > **Note:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
->>>>>>> d63271d3f21e6d032c25dcfd1ba62853c981e1bb
 
 ```bash
 $ bal new greeter_service
@@ -194,11 +190,7 @@ Similar to the service, the client application also starts with creating a new B
 
 In a new tab of the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina project for the gRPC client implementation:
 
-<<<<<<< HEAD
-> **Info:** For more information on Ballerina projects, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
-=======
 > **Note:** For more information on Ballerina projects, see [Organize Ballerina code](/learn/organize-ballerina-code/).
->>>>>>> d63271d3f21e6d032c25dcfd1ba62853c981e1bb
 
 ```bash
 $ bal new greeter_client
@@ -290,12 +282,6 @@ Response : Hello Ballerina
 ## Learn more
 
 To learn more about gRPC support in Ballerina, see the following:
-<<<<<<< HEAD
 - [`grpc` library documentation](https://lib.ballerina.io/ballerina/grpc/latest)
 - [gRPC CLI tooling guide](/learn/cli-documentation/grpc/)
 - [Simple RPC](/learn/by-example/grpc-simple.html)
-=======
-- [`grpc` Library Documentation](https://lib.ballerina.io/ballerina/grpc/latest)
-- [gRPC CLI tooling guide](/learn/cli-documentation/grpc/)
-- [gRPC Examples](/learn/by-example/grpc-simple.html)
->>>>>>> d63271d3f21e6d032c25dcfd1ba62853c981e1bb

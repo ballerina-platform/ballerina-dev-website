@@ -1,13 +1,13 @@
 ---
 layout: ballerina-example-page-old
-title: Booleans and conditionals
-description: This BBE introduces the boolean type.
-keywords: ballerina, ballerina by example, bbe, boolean, bool, true, false
-permalink: /learn/by-example/booleans
-active: booleans
+title: Interceptors
+description: This BBE demonstrates the HTTP Interceptors in Ballerina.
+keywords: ballerina, ballerina by example, bbe, http, service, interceptor, response, request, filter
+permalink: /learn/by-example/http-interceptors
+active: http-interceptors
 redirect_from:
-  - /swan-lake/learn/by-example/booleans
-  - /swan-lake/learn/by-example/booleans.html
+  - /swan-lake/learn/by-example/http-interceptors
+  - /swan-lake/learn/by-example/http-interceptors.html
 ---
 
 <div class="bbe-container">
@@ -15,7 +15,7 @@ redirect_from:
     <div class="sidebar-scrollbox">
       <ol class="chapter">
         <li class="chapter-item bal-nav-item affix"></li>
-        <li class="part-title expanded">
+        <li class="part-title">
           <div>Language concepts</div>
           <a class="toggle-category"><div>❱</div></a>
         </li>
@@ -92,16 +92,14 @@ redirect_from:
               </li>
             </ol>
           </li>
-          <li class="chapter-item bal-nav-item expanded">
+          <li class="chapter-item bal-nav-item">
             <div>Conditional statements</div>
             <a class="toggle"><div>❱</div></a>
           </li>
           <li>
             <ol class="section">
-              <li class="chapter-item bal-nav-item expanded">
-                <a
-                  href="/learn/by-example/booleans.html"
-                  class="active bal-active"
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/booleans.html"
                   >Booleans and conditionals</a
                 >
               </li>
@@ -779,7 +777,7 @@ redirect_from:
             </ol>
           </li>
         </ol>
-        <li class="part-title">
+        <li class="part-title expanded">
           <div>Working over the network</div>
           <a class="toggle-category"><div>❱</div></a>
         </li>
@@ -1006,14 +1004,16 @@ redirect_from:
               </li>
             </ol>
           </li>
-          <li class="chapter-item bal-nav-item">
+          <li class="chapter-item bal-nav-item expanded">
             <div>REST API interceptors</div>
             <a class="toggle"><div>❱</div></a>
           </li>
           <li>
             <ol class="section">
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/http-interceptors.html"
+              <li class="chapter-item bal-nav-item expanded">
+                <a
+                  href="/learn/by-example/http-interceptors.html"
+                  class="active bal-active"
                   >Interceptors</a
                 >
               </li>
@@ -2057,48 +2057,162 @@ redirect_from:
     </div>
   </nav>
   <main class="bal-container">
-    <h1>Booleans and conditionals</h1>
+    <h1>Interceptors</h1>
 
     <p>
-      The <code>boolean</code> type has two values: <code>true</code>,
-      <code>false</code>.
+      Interceptors are used to execute some common logic such as logging, header
+      manipulation,
     </p>
 
     <p>
-      The <code>!</code> operator works on booleans only.
-      <code>&amp;&amp;</code> and <code>||</code> operators short-circuit as in
-      C.
+      state publishing, etc. for all the inbound requests and outbound
+      responses. A
     </p>
 
     <p>
-      Usual comparison operators (<code>==</code>, <code>!=</code>,
-      <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, and
-      <code>&gt;=</code>) produce boolean values.
+      <code>RequestInterceptor</code> can be used to intercept the request and
+      execute some custom
+    </p>
+
+    <p>
+      logic. <code>RequestInterceptors</code> have a resource method, which will
+      be executed
+    </p>
+
+    <p>
+      before dispatching the request to the actual resource in the target
+      service. In addition,
+    </p>
+
+    <p>
+      a <code>ResponseInterceptor</code> can be used to intercept the response.
+      <code>ResponseInterceptors</code>
+    </p>
+
+    <p>
+      have a remote method, which will be executed before dispatching the
+      response to the client.
+    </p>
+
+    <p>
+      A collection of these interceptors can be configured as a pipeline at the
+      listener level or service level.
+    </p>
+
+    <p>
+      For more information, see the
+      <a href="https://docs.central.ballerina.io/ballerina/http/latest/"
+        ><code>http</code> module</a
+      >.
     </p>
 
     <br />
-    <pre><code id="code" class="code-container">import ballerina/io;
+    <pre><code id="code" class="code-container">import ballerina/http;
 
-boolean flag = true;
+// Header names to be set to the request in the request interceptor.
+final string interceptor_header1 = "requestHeader1";
+final string interceptor_header2 = "requestHeader2";
 
-// Here's a conditional expression. Uses C syntax.
-int n = flag ? 1 : 2;
+// Header name to be set to the response in the response interceptor.
+final string interceptor_header3 = "responseHeader";
 
-public function main() {
-    // Parentheses are optional in conditions, but curly braces are required in `if/else` and other compound statements.
-    if flag {
-        io:println(1);
-    } else {
-        io:println(2);
+// Header values to be set to the request in the request interceptor.
+final string interceptor_header_value1 = "RequestInterceptor1";
+final string interceptor_header_value2 = "RequestInterceptor2";
+
+// Header value to be set to the response in the response interceptor.
+final string interceptor_header_value3 = "ResponseInterceptor";
+
+// A `Requestinterceptorservice` class implementation. It intercepts the request
+// and adds a header before it is dispatched to the target service. A `RequestInterceptorService`
+// class can have only one resource function.
+service class RequestInterceptor1 {
+    *http:RequestInterceptor;
+
+    // A default resource function, which will be executed for all the requests. 
+    // A `RequestContext` is used to share data between interceptors.
+    resource function 'default [string... path](http:RequestContext ctx, 
+                            http:Request req) returns http:NextService|error? {
+        // Sets a header to the request inside the interceptor service.
+        req.setHeader(interceptor_header1, interceptor_header_value1);
+        // Returns the next interceptor or the target service in the pipeline. 
+        // An error is returned when the call fails.
+        return ctx.next();
     }
+}
 
+// Creates a new `RequestInterceptor`.
+RequestInterceptor1 requestInterceptor1 = new;
+
+// An `Interceptor` service class with a specific path. This interceptor can only be 
+// engaged at the service level.
+service class RequestInterceptor2 {
+    *http:RequestInterceptor;
+
+    // This interceptor is executed only for GET requests with the relative path 
+    // `greeting`. 
+    resource function get greeting(http:RequestContext ctx, 
+                            http:Request req) returns http:NextService|error? {
+        req.setHeader(interceptor_header2, interceptor_header_value2);
+        return ctx.next();
+    }
+}
+
+// Creates another new `RequestInterceptor`.
+RequestInterceptor2 requestInterceptor2 = new;
+
+// A `ResponseInterceptor` service class implementation. It intercepts the response 
+// and adds a header before it is dispatched to the client. A `ResponseInterceptor`
+// service class can have only one remote function : `interceptResponse`.
+service class ResponseInterceptor {
+    *http:ResponseInterceptor;
+
+    // The `interceptResponse` remote function, which will be executed for all the
+    // responses. A `RequestContext` is used to share data between interceptors.
+    remote function interceptResponse(http:RequestContext ctx, 
+            http:Response res) returns http:NextService|error? {
+        // Sets a header to the response inside the interceptor service.
+        res.setHeader(interceptor_header3, interceptor_header_value3);
+        // Returns the next interceptor in the pipeline or `nil` if there is no 
+        // more interceptors to be returned. In case a `nil` value is returned, then,
+        // the modified response will be returned to the client. In addtion to these
+        // return values, an error is returned when the call fails.
+        return ctx.next();
+    }
+}
+
+// Creates a new `ResponseInterceptor`.
+ResponseInterceptor responseInterceptor = new;
+
+// Interceptors can also b engaged at the listener level. In this case, the `RequestInterceptors`
+// can have only the default path.
+listener http:Listener interceptorListener = new http:Listener(9090);
+
+// Engage interceptors at the service level. Interceptor services will be executed in
+// the configured order i.e., request interceptors are executed head to tail and 
+// response interceptors are executed tail to head.
+@http:ServiceConfig {
+    // The interceptor pipeline. The base path of the interceptor services is the same as
+    // the target service. Hence, they will be executed only for this particular service.
+    interceptors: [requestInterceptor1, requestInterceptor2, 
+                   responseInterceptor]
+}
+service /user on interceptorListener {
+
+    resource function get greeting(http:Request req) returns http:Ok|error {
+        return {
+            headers: {
+                "requestHeader1": check req.getHeader(interceptor_header1),
+                "requestHeader2": check req.getHeader(interceptor_header2)
+            },
+            mediaType: "application/org+json",
+            body: {
+                message: "Greetings!"
+            }
+        };
+    }
 }</code>
-  <button playgroundLink="https://play.ballerina.io/?gist=d989b071de5632b781641a454686c27d&file=booleans.bal">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EEE" class="bi bi-play-circle" viewBox="0 0 16 16">
-      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-      <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
-    </svg>
-  </button>
+
   <button>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EEE" class="bi bi-github" viewBox="0 0 16 16">
       <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
@@ -2120,14 +2234,40 @@ public function main() {
     <br />
     <pre
       class="output-container"
-    ><code class="language-bash"><span class="bal-output bal-execute">bal run booleans.bal</span>
-<span class="bal-output bal-execute">1</span>
+    ><code class="language-bash"><span class="bal-output bal-execute"># Invoke the service.</span>
+<span class="bal-output bal-execute">curl -v http://localhost:9090/user/greeting</span>
+<span class="bal-output bal-execute">*   Trying ::1:9090...</span>
+<span class="bal-output bal-execute">* Connected to localhost (::1) port 9090 (#0)</span>
+<span class="bal-output bal-execute">&gt; GET /user/greeting HTTP/1.1</span>
+<span class="bal-output bal-execute">&gt; Host: localhost:9090</span>
+<span class="bal-output bal-execute">&gt; User-Agent: curl/7.77.0</span>
+<span class="bal-output bal-execute">&gt; Accept: */*</span>
+<span class="bal-output bal-execute">&gt; </span>
+<span class="bal-output bal-execute">* Mark bundle as not supporting multiuse.</span>
+<span class="bal-output bal-execute">&lt; HTTP/1.1 200 OK</span>
+<span class="bal-output bal-execute">&lt; requestHeader1: RequestInterceptor1</span>
+<span class="bal-output bal-execute">&lt; requestHeader2: RequestInterceptor2</span>
+<span class="bal-output bal-execute">&lt; content-type: application/org+json</span>
+<span class="bal-output bal-execute">&lt; responseHeader: ResponseInterceptor</span>
+<span class="bal-output bal-execute">&lt; content-length: 24</span>
+<span class="bal-output bal-execute">&lt; server: ballerina</span>
+<span class="bal-output bal-execute">&lt; date: Tue, 19 Apr 2022 12:42:44 +0530</span>
+<span class="bal-output bal-execute">&lt; </span>
+<span class="bal-output bal-execute">* Connection #0 to host localhost left intact</span>
+<span class="bal-output bal-execute">{"message":"Greetings!"}</span>
+</code></pre>
+
+    <br />
+    <pre
+      class="output-container"
+    ><code class="language-bash"><span class="bal-output bal-execute"># Run the service.</span>
+<span class="bal-output bal-execute">bal run http_interceptors.bal</span>
 </code></pre>
     <br />
     <div class="button-container">
       <a
-        title="Strings"
-        href="/learn/by-example/strings.html"
+        title="Passthrough"
+        href="/learn/by-example/http-passthrough.html"
         class="prev-button"
       >
         <svg
@@ -2145,17 +2285,17 @@ public function main() {
         </svg>
         <div class="button-title">
           <span>Previous</span>
-          <div>Strings</div>
+          <div>Passthrough</div>
         </div>
       </a>
       <a
-        title="Match statement"
-        href="/learn/by-example/match-statement.html"
+        title="Error Handling"
+        href="/learn/by-example/http-error-handling.html"
         class="next-button"
       >
         <div class="button-title">
           <span>Next</span>
-          <div>Match statement</div>
+          <div>Error Handling</div>
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

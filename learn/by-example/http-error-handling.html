@@ -1,13 +1,13 @@
 ---
 layout: ballerina-example-page-old
-title: Booleans and conditionals
-description: This BBE introduces the boolean type.
-keywords: ballerina, ballerina by example, bbe, boolean, bool, true, false
-permalink: /learn/by-example/booleans
-active: booleans
+title: Error Handling
+description: This BBE demonstrates how HTTP error handling is done in Ballerina.
+keywords: ballerina, ballerina by example, bbe, http, interceptor, error
+permalink: /learn/by-example/http-error-handling
+active: http-error-handling
 redirect_from:
-  - /swan-lake/learn/by-example/booleans
-  - /swan-lake/learn/by-example/booleans.html
+  - /swan-lake/learn/by-example/http-error-handling
+  - /swan-lake/learn/by-example/http-error-handling.html
 ---
 
 <div class="bbe-container">
@@ -15,7 +15,7 @@ redirect_from:
     <div class="sidebar-scrollbox">
       <ol class="chapter">
         <li class="chapter-item bal-nav-item affix"></li>
-        <li class="part-title expanded">
+        <li class="part-title">
           <div>Language concepts</div>
           <a class="toggle-category"><div>❱</div></a>
         </li>
@@ -92,16 +92,14 @@ redirect_from:
               </li>
             </ol>
           </li>
-          <li class="chapter-item bal-nav-item expanded">
+          <li class="chapter-item bal-nav-item">
             <div>Conditional statements</div>
             <a class="toggle"><div>❱</div></a>
           </li>
           <li>
             <ol class="section">
-              <li class="chapter-item bal-nav-item expanded">
-                <a
-                  href="/learn/by-example/booleans.html"
-                  class="active bal-active"
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/booleans.html"
                   >Booleans and conditionals</a
                 >
               </li>
@@ -779,7 +777,7 @@ redirect_from:
             </ol>
           </li>
         </ol>
-        <li class="part-title">
+        <li class="part-title expanded">
           <div>Working over the network</div>
           <a class="toggle-category"><div>❱</div></a>
         </li>
@@ -1006,7 +1004,7 @@ redirect_from:
               </li>
             </ol>
           </li>
-          <li class="chapter-item bal-nav-item">
+          <li class="chapter-item bal-nav-item expanded">
             <div>REST API interceptors</div>
             <a class="toggle"><div>❱</div></a>
           </li>
@@ -1017,8 +1015,10 @@ redirect_from:
                   >Interceptors</a
                 >
               </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/http-error-handling.html"
+              <li class="chapter-item bal-nav-item expanded">
+                <a
+                  href="/learn/by-example/http-error-handling.html"
+                  class="active bal-active"
                   >Error Handling</a
                 >
               </li>
@@ -2057,48 +2057,100 @@ redirect_from:
     </div>
   </nav>
   <main class="bal-container">
-    <h1>Booleans and conditionals</h1>
+    <h1>Error Handling</h1>
 
     <p>
-      The <code>boolean</code> type has two values: <code>true</code>,
-      <code>false</code>.
+      Error handling is an integral part of any network program. Errors can be
+      returned
     </p>
 
     <p>
-      The <code>!</code> operator works on booleans only.
-      <code>&amp;&amp;</code> and <code>||</code> operators short-circuit as in
-      C.
+      by many components such as interceptors, dispatcher, data-binder, security
+      handlers, etc.
     </p>
 
     <p>
-      Usual comparison operators (<code>==</code>, <code>!=</code>,
-      <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, and
-      <code>&gt;=</code>) produce boolean values.
+      These errors are often handled by a default handler and sent back as error
+      responses
+    </p>
+
+    <p>
+      with an entity-body. With the introduction of error interceptors, you can
+      intercept
+    </p>
+
+    <p>
+      these errors and handle them as you wish. These error interceptors can be
+      placed
+    </p>
+
+    <p>
+      anywhere in the interceptor pipeline. When there is an error, the
+      execution jumps
+    </p>
+
+    <p>to the closest error interceptor.</p>
+
+    <p>
+      For more information, see the
+      <a href="https://docs.central.ballerina.io/ballerina/http/latest/"
+        ><code>http</code> module</a
+      >.
     </p>
 
     <br />
-    <pre><code id="code" class="code-container">import ballerina/io;
+    <pre><code id="code" class="code-container">import ballerina/http;
 
-boolean flag = true;
+// A `ResponseErrorInterceptor` service class implementation. It allows you
+// to intercept the errors and handle them accordingly. A `ResponseErrorInterceptor`
+// service can only have one remote function: `interceptResponseError`.
+service class ResponseErrorInterceptor {
+    *http:ResponseErrorInterceptor;
 
-// Here's a conditional expression. Uses C syntax.
-int n = flag ? 1 : 2;
-
-public function main() {
-    // Parentheses are optional in conditions, but curly braces are required in `if/else` and other compound statements.
-    if flag {
-        io:println(1);
-    } else {
-        io:println(2);
+    // The error occurred in the request-response path can be accessed by the 
+    // mandatory argument : `error`. The remote function can return a response,
+    // which will overwrite the existing error response.
+    remote function interceptResponseError(error err) 
+            returns http:InternalServerError {
+        // In this case, all of the errors are sent as HTTP 500 internal server 
+        // errors with a customized media type and body. Moreover, you can send different
+        // responses according to the error type.        
+        return {
+            mediaType: "application/org+json",
+            body: { message : err.message() }
+        };
     }
+}
 
+// Creates a new `ResponseErrorInterceptor`.
+ResponseErrorInterceptor responseErrorInterceptor = new;
+
+// A `ResponseErrorInterceptor` can be configured at the listener level or 
+// service level. Listener-level error interceptors can handle any error associated 
+// with the listener, whereas, service-level error interceptors can only handle
+// errors occurred during the service execution.
+listener http:Listener interceptorListener = new http:Listener(9090, config = { 
+    // To handle all of the errors, the `ResponseErrorInterceptor` is added as a first
+    // interceptor as it has to be executed last.
+    interceptors: [responseErrorInterceptor] 
+});
+
+service / on interceptorListener {
+
+    // If the request does not include a `checkHeader`, then, this will return an error
+    // and the execution will jump to the nearest `ResponseErrorInterceptor`.
+    resource function get greeting(@http:Header string checkHeader) 
+            returns http:Ok {
+        return {
+            headers: {
+                "checkedHeader" : checkHeader
+            },
+            mediaType: "application/org+json",
+            body: { message : "Greetings!" }
+        };
+    }
 }</code>
-  <button playgroundLink="https://play.ballerina.io/?gist=d989b071de5632b781641a454686c27d&file=booleans.bal">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EEE" class="bi bi-play-circle" viewBox="0 0 16 16">
-      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-      <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
-    </svg>
-  </button>
+
   <button>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EEE" class="bi bi-github" viewBox="0 0 16 16">
       <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
@@ -2120,14 +2172,37 @@ public function main() {
     <br />
     <pre
       class="output-container"
-    ><code class="language-bash"><span class="bal-output bal-execute">bal run booleans.bal</span>
-<span class="bal-output bal-execute">1</span>
+    ><code class="language-bash"><span class="bal-output bal-execute"># Invoke the service.</span>
+<span class="bal-output bal-execute">curl -v http://localhost:9090/greeting</span>
+<span class="bal-output bal-execute">*   Trying ::1:9090...</span>
+<span class="bal-output bal-execute">* Connected to localhost (::1) port 9090 (#0)</span>
+<span class="bal-output bal-execute">&gt; GET /greeting HTTP/1.1</span>
+<span class="bal-output bal-execute">&gt; Host: localhost:9090</span>
+<span class="bal-output bal-execute">&gt; User-Agent: curl/7.77.0</span>
+<span class="bal-output bal-execute">&gt; Accept: */*</span>
+<span class="bal-output bal-execute">&gt; </span>
+<span class="bal-output bal-execute">* Mark bundle as not supporting multiuse.</span>
+<span class="bal-output bal-execute">&lt; HTTP/1.1 500 Internal Server Error</span>
+<span class="bal-output bal-execute">&lt; content-type: application/org+json</span>
+<span class="bal-output bal-execute">&lt; content-length: 53</span>
+<span class="bal-output bal-execute">&lt; server: ballerina</span>
+<span class="bal-output bal-execute">&lt; date: Tue, 19 Apr 2022 10:51:11 +0530</span>
+<span class="bal-output bal-execute">&lt; </span>
+<span class="bal-output bal-execute">* Connection #0 to host localhost left intact</span>
+<span class="bal-output bal-execute">{"message":"no header value found for 'checkHeader'"}</span>
+</code></pre>
+
+    <br />
+    <pre
+      class="output-container"
+    ><code class="language-bash"><span class="bal-output bal-execute"># Run the service.</span>
+<span class="bal-output bal-execute">bal run http_error_handling.bal</span>
 </code></pre>
     <br />
     <div class="button-container">
       <a
-        title="Strings"
-        href="/learn/by-example/strings.html"
+        title="Interceptors"
+        href="/learn/by-example/http-interceptors.html"
         class="prev-button"
       >
         <svg
@@ -2145,17 +2220,17 @@ public function main() {
         </svg>
         <div class="button-title">
           <span>Previous</span>
-          <div>Strings</div>
+          <div>Interceptors</div>
         </div>
       </a>
       <a
-        title="Match statement"
-        href="/learn/by-example/match-statement.html"
+        title="Interceptor Error Handling"
+        href="/learn/by-example/http-interceptor-error-handling.html"
         class="next-button"
       >
         <div class="button-title">
           <span>Next</span>
-          <div>Match statement</div>
+          <div>Interceptor Error Handling</div>
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

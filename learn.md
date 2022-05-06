@@ -270,15 +270,15 @@ redirect_from:
 </div>
 
 <div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
+<div class="col-lg-6 col-md-6 col-sm-12 card" >
  <a href="/learn/ballerina-graphql-support/">
     <h3 id="ballerina-graphql-support">Ballerina GraphQL support </h3></a>
     <p >Details of all the features of the Ballerina GraphQL tools. </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
- <!--<a href="/learn/ballerina-openapi-support/">
-    <h3 id="ballerina-openapi-support">Ballerina OpenAPI support </h3></a>
-    <p >Details of all the features of the Ballerina OpenAPI tools. </p>-->
+ <a href="/learn/ballerina-asyncapi-support/">
+    <h3 id="ballerina-async-support">Ballerina AsyncAPI support </h3></a>
+    <p >Details of all the features of the Ballerina AsyncAPI tools. </p>
 </div>
 </div>
 
@@ -301,7 +301,7 @@ redirect_from:
 	
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card" >
-  <a href="/learn/cli-documentation/">
+  <a href="/learn/cli-documentation/cli-commands/">
  	<h3 id="cli-documentation">CLI documentation</h3></a>
 		<p>Details of all the CLI commands of the <code class="highlighter-rouge language-plaintext">bal</code> tool.  </p>
 </div>

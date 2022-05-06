@@ -30,7 +30,8 @@ Create a GraphQL config file (`graphql.config1.yaml`) with the configuration bel
 
 ```yml
 schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
-documents: <File path to the GraphQL document with the GraphQL queries & mutations>
+documents:
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
 ```
 
 The client generated from the above GraphQL config file can be used in your applications to call the queries/mutations in the GraphQL document against the GraphQL API corresponding to the GraphQL schema defined in the GraphQL config file.
@@ -46,19 +47,25 @@ This will generate a Ballerina client with remote operations corresponding to ea
 ```bash
 bal graphql -i graphql.config1.yaml
 ```
+The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project.
 
-This will generate a Ballerina client stub (`client.bal`), a util file (`utils.bal`) for the relevant `utils` methods related to the client stub, and a schema file (`types.bal`) for the configured GraphQL schema. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project.
+This will generate the files below.
+
+1. `client.bal` - Ballerina client stub 
+2. `utils.bal` - util file for the relevant `utils` methods related to the client stub
+3. `types.bal`- schema file for the configured GraphQL schema
 
 >**Note:** If the GraphQL API contains an authentication mechanism, add the extensions section in the GraphQL config file with the relevant tokens and headers. In this scenario, it is mandatory to configure the schema section with the web URL of the GraphQL schema as shown below.
 
 ```yml
 schema: <The web URL of the GraphQL schema.>
 documents:
-<File path to the GraphQL document with the GraphQL queries & mutations>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
 extensions:
      endpoints:
          default:
               headers: { “<Authorization>”: “<Bearer token>”, “<API_Header_Key1>”: “<API_Header_Value1>”,” <API_Header_Key2>”: “<API_Header_Value2>” }
+
 ```
 
 ## Generate multiple clients from a GraphQL config
@@ -70,10 +77,10 @@ Create a GraphQL config file (`graphql.config2.yaml`) with the configuration bel
 ```yml
 schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
 documents:
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<Add more documents based on your requirement …>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <Add more documents based on your requirement …>
 ```
 
 The clients generated from the GraphQL config file can be used in your applications to call the queries/mutations in each GraphQL document against the GraphQL API corresponding to the GraphQL schema defined in the GraphQL config file.
@@ -89,8 +96,13 @@ This will generate a separate Ballerina client for each GraphQL document with re
 ```bash
 bal graphql -i graphql.config2.yaml
 ```
+The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project.
 
-This will generate a Ballerina client stub (`<document_name>_client.bal`) corresponding to each GraphQL document, a util file (`utils.bal`) for the relevant utils methods related to the client stubs, and a schema file (`types.bal`) for the configured GraphQL schema. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project.
+This will generate the files below.
+
+1. `<document_name>_client.bal` - Ballerina client stub corresponding to each GraphQL document
+2. `utils.bal` - util file for the relevant utils methods related to the client stubs
+3. `types.bal` - schema file for the configured GraphQL schema 
 
 ## Generate multiple modules from a GraphQL config
 
@@ -103,22 +115,22 @@ projects:
     <project1_name>:
 schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
 documents:
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<Add more documents based on your requirement …>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <Add more documents based on your requirement …>
     <project2_name>:
 schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
 documents:
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<Add more documents based on your requirement …>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <Add more documents based on your requirement …>
     <project3_name>:
 schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
 documents:
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<Add more documents based on your requirement …>
-    <Add more projects based on your requirement …>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <Add more documents based on your requirement …>
+    - <Add more projects based on your requirement …>
 ```
 
 This enables you to work with multiple GraphQL APIs. Each GraphQL API should be defined under a separate project in the GraphQL config file. The clients generated under a separate Ballerina module related to each project from the GraphQL config file can be used in your applications to call the queries/mutations in each GraphQL document against the GraphQL API corresponding to the GraphQL schema defined under each project in the GraphQL config file.
@@ -135,5 +147,12 @@ This will generate a separate Ballerina module for each GraphQL project with cli
 bal graphql -i graphql.config3.yaml
 ```
 
-This will generate a Ballerina module (`project_name`) corresponding to each GraphQL project. Each project will generate a Ballerina client stub (`<document_name>_client.bal`) corresponding to each GraphQL document configured under the relevant GraphQL project, a util file (`utils.bal`) for the relevant `utils` methods related to the client stubs, and a schema file (`types.bal`) for the configured GraphQL schema under the relevant GraphQL project. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project.
+The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project.
+
+This will generate the below.
+
+1. `project_name` - a Ballerina module corresponding to each GraphQL project
+2. `<document_name>_client.bal` - each project will generate a Ballerina client stub corresponding to each GraphQL document configured under the relevant GraphQL project
+3. `utils.bal` - util file for the relevant `utils` methods related to the client stubs
+4. `types.bal` - schema file for the configured GraphQL schema under the relevant GraphQL project
   

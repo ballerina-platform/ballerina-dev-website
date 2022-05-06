@@ -24,9 +24,6 @@ The command-line arguments below can be used with the command for each particula
 |----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `-i, --input`  | The `graphql-configuration-file-path` parameter specifies the path of the GraphQL config file (e.g., `graphql.config.yaml`) configured with GraphQL schemas (SDL) and GraphQL documents. This parameter is mandatory. You can point to the GraphQL config file by using the mandatory flag (`-i,   --input`).                                                                 |
 | `-o, --output` | The `output-location` parameter specifies the path of the output location of the generated files. This parameter is optional. If this parameter is not specified, the Ballerina files will be generated at the same location from which the GraphQL command is executed. Optionally, you can point to another directory location by using the optional flag (`-o, --output`). |
-|                |                                                                                                                                                                                                                                                                                                                                                                               |
-                                                                                                      
-
+                                                                                                         
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
-
  

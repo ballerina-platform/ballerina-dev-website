@@ -55,4 +55,10 @@
         - title: GraphQL to Ballerina 
           url: /learn/cli-documentation/graphql/#graphql-to-ballerina
           active: graphql-to-ballerina
-
+    - title: AsyncAPI
+      url: /learn/cli-documentation/asyncapi/
+      sublinks:
+        - title: AsyncAPI to Ballerina 
+          url: /learn/cli-documentation/asyncapi/#asyncapi-to-ballerina
+          active: asyncapi-to-ballerina
+ 

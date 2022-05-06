@@ -24,7 +24,5 @@ The command-line arguments below can be used with the command for each particula
 |----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `-i, --input`  | The `asyncapi-contract-path` parameter specifies the path of the AsyncAPI contract file (e.g., `my-api.yaml` or `my-api.json`) and is mandatory.                                                                 |
 | `-o, --output` | The Ballerina files will be generated at the same location from which the AsyncAPI command is executed. Optionally, you can point to another directory location by using the optional flag `(-o\|--output`). |
-|                |                                                                                                                                                                                                                                                                                                                                                                               |
-                                                                                                      
-
+                                                                                                 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

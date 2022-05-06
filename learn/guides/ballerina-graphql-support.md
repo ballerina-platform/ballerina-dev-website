@@ -28,7 +28,7 @@ The example below demonstrates how to generate a Ballerina client from a GraphQL
 
 Create a GraphQL config file (`graphql.config1.yaml`) with the configuration below.
 
-```yaml
+```yml
 schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
 documents: <File path to the GraphQL document with the GraphQL queries & mutations>
 ```
@@ -51,7 +51,7 @@ This will generate a Ballerina client stub (`client.bal`), a util file (`utils.b
 
 >**Note:** If the GraphQL API contains an authentication mechanism, add the extensions section in the GraphQL config file with the relevant tokens and headers. In this scenario, it is mandatory to configure the schema section with the web URL of the GraphQL schema as shown below.
 
-```yaml
+```yml
 schema: <The web URL of the GraphQL schema.>
 documents:
 <File path to the GraphQL document with the GraphQL queries & mutations>
@@ -67,7 +67,7 @@ The example below demonstrates how to generate multiple Ballerina clients from a
 
 Create a GraphQL config file (`graphql.config2.yaml`) with the configuration below.
 
-```yaml
+```yml
 schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
 documents:
 <File path to the GraphQL document with the GraphQL queries & mutations>

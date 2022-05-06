@@ -28,9 +28,9 @@ The Ballerina OpenAPI tooling support provides the following capabilities.
 
 > **Prerequisite:** Install the latest [Ballerina Swan Lake distribution](https://ballerina.io/downloads/).
 
- 1. Generating Ballerina service/client stubs from a given OpenAPI contract file using the CLI tool.
- 2. Exporting the OpenAPI definition from a given Ballerina service implementation using the CLI tool.
- 3. Validating the service implementation compliance with a provided OpenAPI contract using the OpenAPI annotation.
+ 1. Generate Ballerina service/client stubs from a given OpenAPI contract file using the CLI tool.
+ 2. Export the OpenAPI definition from a given Ballerina service implementation using the CLI tool.
+ 3. Validate the service implementation compliance with a provided OpenAPI contract using the OpenAPI annotation.
 - The OpenAPI compiler plugin will allow you to validate a service implementation against an OpenAPI contract during the compile time. This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract. 
 
 ## Generate Ballerina services from OpenAPI Contracts 

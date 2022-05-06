@@ -1,12 +1,12 @@
 - title: Ballerina GraphQL support
   url: #
   sublinks:
-    - title: Generate a Ballerina client from a GraphQL config file
-      url: /learn/ballerina-openapi-support/#generate-a-ballerina-client-from-a-graphql-config-file
-      active: generate-a-ballerina-client-from-a-graphql-config-file
-    - title: Generate multiple Ballerina clients from a GraphQL config file
-      url: /learn/ballerina-openapi-support/#generate-multiple-ballerina-clients-from-a-graphql-config-file
-      active: generate-multiple-ballerina-clients-from-a-graphql-config-file
-    - title: Generate multiple Ballerina modules from a GraphQL config file
-      url: /learn/ballerina-openapi-support/#generate-multiple-ballerina-modules-from-a-graphql-config-file
-      active: generate-multiple-ballerina-modules-from-a-graphql-config-file
+    - title: Generate a client from a GraphQL config
+      url: /learn/ballerina-openapi-support/#generate-a-client-from-a-graphql-config
+      active: generate-a-ballerina-client-from-a-graphql-config
+    - title: Generate multiple clients from a GraphQL config 
+      url: /learn/ballerina-openapi-support/#generate-multiple-clients-from-a-graphql-config
+      active: generate-multiple-clients-from-a-graphql-config
+    - title: Generate multiple modules from a GraphQL config 
+      url: /learn/ballerina-openapi-support/#generate-multiple-modules-from-a-graphql-config
+      active: generate-multiple-modules-from-a-graphql-config

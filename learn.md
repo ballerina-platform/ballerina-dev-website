@@ -269,6 +269,19 @@ redirect_from:
 </div>
 </div>
 
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
+ <a href="/learn/ballerina-graphql-support/">
+    <h3 id="ballerina-graphql-support">Ballerina GraphQL support </h3></a>
+    <p >Details of all the features of the Ballerina GraphQL tools. </p>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
+ <!--<a href="/learn/ballerina-openapi-support/">
+    <h3 id="ballerina-openapi-support">Ballerina OpenAPI support </h3></a>
+    <p >Details of all the features of the Ballerina OpenAPI tools. </p>-->
+</div>
+</div>
+
 <div class="row" style="margin-bottom:30px">
 	<h2 id="references">References</h2>
 

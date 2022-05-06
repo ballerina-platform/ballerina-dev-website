@@ -5,26 +5,24 @@ description: Check out how the Ballerina GraphQL tooling makes it easy for you t
 keywords: ballerina, programming language, graphql, sdl, schema difinition language
 permalink: /learn/ballerina-graphql-support/
 active: ballerina-graphql-support
-intro: Check out how the Ballerina GraphQL tooling makes it easy for you to start developing a service documented in a GraphQL schema.
+intro: Every GraphQL service defines a set of types, which describe the set of possible data you can query on that service and when queries come in, they are validated and executed against that schema. 
 redirect_from:
   - /learn/ballerina-graphql-support
 --- 
 
-Every GraphQL service defines a set of types, which describe the set of possible data you can query on that service. Then, when queries come in, they are validated and executed against that schema. GraphQL schemas for a service are now most often specified using what’s known as the GraphQL SDL (schema definition language). It is also sometimes referred to as just GraphQL schema language. 
-
-Ballerina GraphQL tooling will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. You can generate multiple clients in Ballerina for multiple GraphQL documents for a given GraphQL SDL. It also enables you to generate multiple Ballerina modules for multiple GraphQL projects to work with different GraphQL APIs. 
+GraphQL schemas for a service are now most often specified using what’s known as the GraphQL SDL (schema definition language). It is also sometimes referred to as just GraphQL schema language. Ballerina GraphQL tooling will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. You can generate multiple clients in Ballerina for multiple GraphQL documents for a given GraphQL SDL. It also enables you to generate multiple Ballerina modules for multiple GraphQL projects to work with different GraphQL APIs. 
 
 The Ballerina GraphQL tooling support provides the following capabilities.
 
 > **Prerequisites:** Install the [GraphQL Foundation VSCode plugin](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql) and the latest [Ballerina Swan Lake distribution](https://ballerina.io/downloads/).
 
-1. Generating a Ballerina client from a given GraphQL config file configured with a GraphQL schema (SDL) and a GraphQL document using the CLI tool.
+1. Generate a Ballerina client from a given GraphQL config file configured with a GraphQL schema (SDL) and a GraphQL document using the CLI tool.
 
-2. Generating multiple Ballerina clients from a given GraphQL config file configured with a GraphQL SDL and multiple GraphQL documents using the CLI tool. Each document will generate a separate Ballerina client.
+2. Generate multiple Ballerina clients from a given GraphQL config file configured with a GraphQL SDL and multiple GraphQL documents using the CLI tool. Each document will generate a separate Ballerina client.
 
-3. Generating multiple Ballerina modules from a given GraphQL config file configured with multiple GraphQL projects. Each project will generate a separate Ballerina module. This enables you to work with multiple GraphQL APIs by configuring each GraphQL API under a separate project.
+3. Generate multiple Ballerina modules from a given GraphQL config file configured with multiple GraphQL projects. Each project will generate a separate Ballerina module. This enables you to work with multiple GraphQL APIs by configuring each GraphQL API under a separate project.
 
-## Generate a Ballerina client from a GraphQL config file
+## Generate a client from a GraphQL config
 
 The example below demonstrates how to generate a Ballerina client from a GraphQL config file configured with a GraphQL schema (SDL) and GraphQL document.
 
@@ -63,7 +61,7 @@ extensions:
               headers: { “<Authorization>”: “<Bearer token>”, “<API_Header_Key1>”: “<API_Header_Value1>”,” <API_Header_Key2>”: “<API_Header_Value2>” }
 ```
 
-## Generate multiple Ballerina clients from a GraphQL config file
+## Generate multiple clients from a GraphQL config
 
 The example below demonstrates how to generate multiple Ballerina clients from a GraphQL config file configured with a GraphQL schema (SDL) and multiple GraphQL documents.
 
@@ -94,7 +92,7 @@ bal graphql -i graphql.config2.yaml
 
 This will generate a Ballerina client stub (`<document_name>_client.bal`) corresponding to each GraphQL document, a util file (`utils.bal`) for the relevant utils methods related to the client stubs, and a schema file (`types.bal`) for the configured GraphQL schema. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project.
 
-## Generate multiple Ballerina modules from a GraphQL config file
+## Generate multiple modules from a GraphQL config
 
 The example below demonstrates how to generate multiple Ballerina modules from a GraphQL config file configured with multiple GraphQL projects.
 

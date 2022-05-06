@@ -1,5 +1,5 @@
 ---
-layout: ballerina-learn-landing-page
+layout: ballerina-learn-left-nav
 title: Learn
 description: Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below.
 keywords: ballerina, learn, documentation, docs, programming language

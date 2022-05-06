@@ -16,6 +16,8 @@ redirect_from:
   - /learn/testing-ballerina-code/write-tests/
   - /learn/testing-ballerina-code/write-tests
   - /learn/test-ballerina-code/write-tests
+  - /learn/guides/testing-ballerina-code/writing-tests/
+  - /learn/guides/testing-ballerina-code/writing-tests
 ---
 
 ## Define a test
@@ -130,7 +132,7 @@ The Ballerina test framework supports the following assertions, which help to ve
 
 <table class="table cCodeTable" >
     <tr>
-       <th class="cDescription">Assertion Function</th>
+       <th class="cDescription">Assertion function</th>
        <th class="cCodeCol">Description</th>
     </tr>
     <tr>

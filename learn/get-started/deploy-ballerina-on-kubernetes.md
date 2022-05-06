@@ -1,15 +1,17 @@
 ---
 layout: ballerina-deploying-ballerina-on-kubernetes-left-nav-pages-swanlake
 title: Deploy Ballerina on Kubernetes
-description: Let’s dockerize deploy your ballerina service and deploy it into kubernetes.
+description: Let’s dockerize your Ballerina service and deploy it into Kubernetes.
 keywords: ballerina, programming language, cloud, kubernetes, docker, cloud-native
 permalink: /learn/deploy-ballerina-on-kubernetes/
 active: deploy-ballerina-on-kubernetes
-intro: Let’s dockerize deploy your ballerina service and deploy it into Kubernetes.
+intro: Let’s dockerize your Ballerina service and deploy it into Kubernetes.
 redirect_from:
     - /learn/deploying-ballerina-on-kubernetes
     - /learn/deploying-ballerina-on-kubernetes/
     - /learn/deploy-ballerina-on-kubernetes
+    - /learn/getting-started/deploying-ballerina-on-kubernetes/
+    - /learn/getting-started/deploying-ballerina-on-kubernetes
 ---
 
 In this section, you will be writing a simple Ballerina service and then, you will dockerize the application and deploy it in Kubernetes.
@@ -119,4 +121,4 @@ deployment.apps/greeter-deployment created
 horizontalpodautoscaler.autoscaling/greeter-hpa created
 ```
 
-**Info:** For in-depth information about executing these deployed applications and the supported customizations in code to cloud, see [Code to Cloud deployment](/learn/running-ballerina-programs-in-the-cloud/code-to-cloud-deployment/).
+**Info:** For in-depth information about executing these deployed applications and the supported customizations in code to cloud, see [Code to Cloud deployment](/learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/).

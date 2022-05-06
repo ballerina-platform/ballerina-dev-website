@@ -21,7 +21,7 @@ The below are the most stable versions of the lanuguage specification, which are
 
 > **Note:** The Changes since previous releases section of the specification identifies the changes that have occurred in each version of the specification.
 
-| Version | Release Date | Description |
+| Version | Release date | Description |
 | ------- | ------------ | ----------- | 
 | <a target="_blank" href="/spec/lang/2022R1/">2022R1</a> | 2022-01-31 | First release of 2022. This is the basis for Ballerina 2201.0.0 (Swan Lake). |
 | <a target="_blank" href="/spec/lang/2021R1/">2021R1</a> | 2021-06-02 | First release of 2021. This is the basis for Ballerina Swan Lake Beta1. |

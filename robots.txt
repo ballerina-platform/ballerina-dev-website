@@ -1,3 +1,5 @@
+# Algolia-Crawler-Verif: 720EF8ECBD19B46F
+
 User-Agent: *
 Disallow: /
 User-Agent: web-site-map	

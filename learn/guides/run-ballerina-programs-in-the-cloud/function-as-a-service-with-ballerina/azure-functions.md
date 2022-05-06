@@ -17,6 +17,8 @@ redirect_from:
   - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions
   - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
   - /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions
+  - /learn/guides/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
+  - /learn/guides/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions
 ---
 
 ## Prerequisites
@@ -65,7 +67,7 @@ The first parameter with the [Context](https://lib.ballerina.io/ballerinax/azure
 
 The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given `HTTPRequest` value. Then, you declare an HTTP output binding by annotating the `HTTPBinding` return type with the `HTTPOutput` annotation.
 
-This HTTP output binding can also be defined as a parameter with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function. You can find an example in the [HTTP Trigger -> Queue Output](/learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output) output example.
+This HTTP output binding can also be defined as a parameter with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function. You can find an example in the [HTTP Trigger -> Queue Output](/learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output) output example.
 
 ### Build the function
 
@@ -134,7 +136,7 @@ Hello, Hello!%
 
 This section uses different types of triggers and bindings to build Azure functions to integrate with different Azure services using concepts explained in the above sections.
 
-### HTTP Ttigger -> queue output
+### HTTP Trigger -> queue output
 
 The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond to the caller with a message. 
 
@@ -169,7 +171,7 @@ Refresh the queue page in the portal and view the added entry.
 The following Ballerina code gives an example of using a Cosmos DB trigger to invoke the function and a queue output binding to write an entry to a queue.
 
 Before writing and deploying the code, create a Cosmos DB and a queue to make use of those services later.
-1. You can reuse the queue you created in the above [HTTP trigger -> Queue output](/learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output) sample.
+1. You can reuse the queue you created in the above [HTTP trigger -> Queue output](/learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output) sample.
 2. Create an [Azure Cosmos DB account](https://portal.azure.com/#create/Microsoft.DocumentDB) and select Cosmos DB Core.
 3. Once the database is created, go to the **Data Explorer**, and select **Create Container**.
 4. Enter `db1` as Database ID and `c1` as the collection ID, and click **Ok**.

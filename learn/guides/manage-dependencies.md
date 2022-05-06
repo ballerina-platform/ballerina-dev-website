@@ -12,6 +12,8 @@ redirect_from:
 - /learn/managing-dependencies
 - /learn/managing-dependencies/
 - /learn/manage-dependencies
+- /learn/guides/managing-dependencies/
+- /learn/guides/managing-dependencies
 ---
 
 ## Specify dependencies
@@ -28,12 +30,12 @@ The distribution repository is a file system repository added with the local Bal
 
 **Ballerina Central repository**
 
-The Ballerina Central is a remote repository and creates a local file system cache at `<USER_HOME>/.ballerina/repositories/central.ballerina.io/repo/bala`. Ballerina queries the remote repository only if the specified dependency version is not present in its local cache.
+The Ballerina Central is a remote repository and creates a local file system cache at `<USER_HOME>/.ballerina/repositories/central.ballerina.io/bala`. Ballerina queries the remote repository only if the specified dependency version is not present in its local cache.
 
 **Local repository**
 
-The local repository is also a file system repository, which will be created in the `<USER_HOME>` location. The repository location is `<USER_HOME>/.ballerina/repositories/local/repo/bala`. 
-For more information, see [Using dependencies from the local repository](/learn/managing-dependencies/#using-dependencies-from-the-local-repository).
+The local repository is also a file system repository, which will be created in the `<USER_HOME>` location. The repository location is `<USER_HOME>/.ballerina/repositories/local/bala`. 
+For more information, see [Use dependencies from the local repository](/learn/manage-dependencies/#use-dependencies-from-the-local-repository).
 
 ### Import a module
 

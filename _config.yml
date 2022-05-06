@@ -20,7 +20,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://ballerina.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
 
@@ -37,12 +37,12 @@ breadcrumbs:
     image: false # Show image or title text  
 github_username:  ballerina-platform
 git_repo: ballerina-dev-website
-latest_version: 1.2
+latest_version: Swan Lake 2201.0.2
 #keep_files: ['0.990','0.991',"1.1"]
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-exclude: ["downloads/RELEASE_NOTE.md","vendor","0.991/","v1-2","v1-1","v1-0","v0-991","v-0.990","0.990"]
+exclude: ["downloads/RELEASE_NOTE.md","vendor","0.991/","v1-2","v1-1","v1-0","v0-991","v-0.990","0.990","1.0"]
 #   - Gemfile.lock
 #   - node_modules
 #   - vendor/bundle/
@@ -74,5 +74,8 @@ defaults:
       path:            "1.2"
     values:
       sitemap:         false
-
-
+  -
+    scope:
+      path:            "_posts"
+    values:
+      sitemap:         false

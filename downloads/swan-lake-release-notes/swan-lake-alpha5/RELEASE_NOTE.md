@@ -35,19 +35,19 @@ If you are using an **update tool version below 0.8.14**, execute the `ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
-### Language Updates
+### Language updates
 
-#### New Features
+#### New features
 
-##### The `lang.xml:data()` Lang Library Function
+##### The `lang.xml:data()` Lang Library function
 
 The `lang.xml:data()`  lang library function has been introduced to get the character data from an `xml` value. This function returns the character data of an `xml:Text` value as a string. For an `xml:Element` value, this returns the concatenation of the result of invoking this function over the children of the element. Calling `lang.xml:data()` on comments, processing instructions, and empty sequences returns an empty string.
 
-##### The `lang.xml:getDescendants()` Lang Library Function
+##### The `lang.xml:getDescendants()` Lang Library function
 
 The `lang.xml:getDescendants()` lang library function has been introduced to retrieve a sequence of the descendant elements for a given element in document order.
 
-##### Bitwise Operations as Constant Expressions
+##### Bitwise operations as constant expressions
 
 Bitwise binary operations `<<`, `>>`, `>>>`, `^`, `&`, `|` are now allowed as constant expressions.
 
@@ -58,7 +58,7 @@ const int SHIFTED = (BASE << 2) | 0xa;
 
 #### Improvements
 
-##### Improvements to the XML Literal
+##### Improvements to the XML literal
 
 XML template literals now support the inclusion of multiple XML items of the same `xml` subtype as well as different `xml` subtypes.
 
@@ -71,7 +71,7 @@ string interpolation = "Interpolation";
 xml<xml:Text> x5 = xml `text ${interpolation}`;
 ```
 
-##### Normalization of XML Attribute Values
+##### Normalization of XML attribute values
 
 In XML template literals, character references within XML attribute values are now normalized to the referring character. For example, the value of the `e.attr` attribute in the following example is now `a&b`.
 
@@ -79,7 +79,7 @@ In XML template literals, character references within XML attribute values are n
 xml:Element e = xml `<elem attr="a&amp;b" />`;
 ```
 
-#### Breaking Changes
+#### Breaking changes
 
 - The `lang.array:lastIndexOf` and `lang.array:indexOf` lang library functions can only be used with arrays of which the element types are subtypes of the `anydata` type.
 - A compilation error occurs if the field visibility qualifiers in the including type and the included type with object type inclusion are not the same.
@@ -97,15 +97,15 @@ xml:Element e = xml `<elem attr="a&amp;b" />`;
 - An invalid attempt to transfer out a value via a return statement that uses `self` in an isolated object method results in a compilation error.
 - In a `readonly` and `class` intersection, the method qualifiers are now preserved from the class.
 
-#### Bug Fixes
+#### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha5](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).
 
-### Runtime Updates
+### Runtime updates
 
-#### New Features
+#### New features
 
-##### Support for Configurable Variables with Records Having Fields of Record Types
+##### Support for configurable variables with records having fields of record types
 
 ```ballerina
 public type Person readonly & record {
@@ -139,7 +139,7 @@ address.country.name="Sri Lanka"
 
 ```
 
-##### Support for Configurable Variables with Arrays Having Fields of Record Types
+##### Support for configurable variables with arrays having fields of record types
 
 ```ballerina
 configurable Person[] & readonly personArray = ?;
@@ -161,7 +161,7 @@ address.city="London"
 address.country.name="UK"
 ```
 
-##### Support for Configurable Variables with Multidimensional Arrays
+##### Support for configurable variables with multidimensional arrays
 
 ```ballerina
 configurable int[][] & readonly int2DArr = ?;
@@ -173,7 +173,7 @@ The  `Config.toml` would be as follows.
 int2DArr = [[1,2],[3,4]]
 ```
 
-##### Support for Optional Module Name in TOML Syntax of Configurable Variables
+##### Support for optional module name in TOML syntax of configurable variables
 
 When providing values for configurable variables, the module information should be provided in the `Config.toml` file according to the following specifications.
 
@@ -218,13 +218,13 @@ modVar = "variable from non-root package"
 
 #### Improvements
 
-##### Improved Command-Line Argument Parsing
+##### Improved command-line argument parsing
 
 The command-line arguments are now parsed into the following.
 - options and option arguments
 - operands 
 
-###### Options and Option Arguments
+###### Options and option arguments
 
 The record parameter is included as the last of the parameter specify options.
 
@@ -293,17 +293,17 @@ bal run file.bal -- --name alice  100 --score=99.9 Good
 
 >**Note:** If there is an operand parameter of type `O[]`, then it cannot be followed by parameters of type `O[]`, `O?`, and `O x = d`. Here, `O` stands for a type that is a subtype of one of `string`, `float`, or `decimal`. 
 
-#### Bug Fixes
+#### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha5](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha5%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
 
-### Standard Library Updates
+### Standard library updates
 
-#### New Features
+#### New features
 
 Added compiler plugin validation for services in the following packages: `email`, `file`, `graphql`, `grpc`, `http`, `kafka`, `nats`, `rabbitmq`, `stan`, `tcp`, `udp`, `websocket, `websub`, and `websubhub`.
 
-##### `graphql` Package
+##### `graphql` package
 
 - Added named fragment support in GraphQL queries.
 - Added enum support for GraphQL services.
@@ -311,7 +311,7 @@ Added compiler plugin validation for services in the following packages: `email`
 
 #### Improvements
 
-##### `jballerina.java` Package 
+##### `jballerina.java` package 
 
 The `java:cast` function is now a dependently-typed function. If the `typedesc` argument is not provided, it is inferred from the contextually-expected type.
 
@@ -320,17 +320,17 @@ FileInputStream|error obj1 = java:cast(inputStream, FileInputStream);
 FileInputStream|error obj2 = java:cast(inputStream); // The second argument is inferred to be `FileInputStream`.
 ```
 
-##### `file` Package 
+##### `file` package 
 
 - Changed the `path` field in the `ListenerConfig` from optional to mandatory.
 - Improved the compiler plugin validation for the service.
 
-##### `log` Package 
+##### `log` package 
 
 - Changed the time format in the log output to RFC3339.
 - Added validation to check log levels in the `Config.toml` file.
 
-##### `sql` Package 
+##### `sql` package 
 
 If return types of the SQL time-related data types are expected as records, then the type of those records will be validated now and should be as follows.
 
@@ -340,17 +340,17 @@ If return types of the SQL time-related data types are expected as records, then
 - TIMESTAMP -> `time:Civil`
 - TIMESTAMP WITH TIME ZONE -> `time:Civil`
 
-##### `websubhub` Package
+##### `websubhub` package
 
 Added the `websubhub:ServiceConfig` annotation.
 
-#### Bug Fixes
+#### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha5](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+Alpha5%22+label%3AType%2FBug).
 
-### Developer Tools Updates
+### Developer tools updates
 
-#### Bug Fixes
+#### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Alpha5 of the repositories below.
 

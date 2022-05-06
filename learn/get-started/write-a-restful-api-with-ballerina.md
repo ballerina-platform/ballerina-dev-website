@@ -10,6 +10,8 @@ redirect_from:
   - /learn/writing-a-restful-api-with-ballerina
   - /learn/writing-a-restful-api-with-ballerina/
   - /learn/write-a-restful-api-with-ballerina
+  - /learn/getting-started/writing-a-restful-api-with-ballerina/
+  - /learn/getting-started/writing-a-restful-api-with-ballerina
 ---
 
 ## Set up the prerequisites

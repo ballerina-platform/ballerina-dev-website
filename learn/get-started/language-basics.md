@@ -8,6 +8,8 @@ active: language-basics
 intro: This page provides an introduction to the Ballerina language to help you get started with the basics that are common to all C-Family programming languages. 
 redirect_from:
 - /learn/language-basics
+- /learn/getting-started/language-basics/
+- /learn/getting-started/language-basics
 ---
 
 ## Familiar subset of Ballerina

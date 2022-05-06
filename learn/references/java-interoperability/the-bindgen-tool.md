@@ -201,7 +201,7 @@ The Ballerina binding classes will store a handle reference of the Java object u
 
 The following table summarizes how Java primitive types are mapped to the corresponding Ballerina primitive types. This is applicable when mapping a return type of a Java method to a Ballerina type.
 
-Java Type | Ballerina Type
+Java type | Ballerina type
 ---------- | --------------
 boolean | boolean
 byte | byte

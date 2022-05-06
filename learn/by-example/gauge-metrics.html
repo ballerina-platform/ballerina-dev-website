@@ -9,865 +9,2334 @@ redirect_from:
   - /swan-lake/learn/by-example/gauge-metrics
   - /swan-lake/learn/by-example/gauge-metrics.html
 ---
-<div class="row cBallerina-io-Gray-row">
-        <div class="container cBallerinaBySampleContainer">
-            <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">observe</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">prometheus</span> <span class="k">as</span> <span class="nx">_</span><span class="p">;</span>
 
-<span class="c1">//Create a gauge as a global variable in the service with the optional field description,</span>
-<span class="c1">//default statistics configurations = { timeWindow: 600000, buckets: 5,</span>
-<span class="c1">// and percentiles: [0.33, 0.5, 0.66, 0.99] }.</span>
-<span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">globalGauge</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;global_gauge&quot;</span><span class="p">,</span> <span class="s">&quot;Global gauge defined&quot;</span><span class="p">);</span>
+<div class="bbe-container">
+  <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+    <div class="sidebar-scrollbox">
+      <ol class="chapter">
+        <li class="chapter-item bal-nav-item affix"></li>
+        <li class="part-title">
+          <div>Language concepts</div>
+          <a class="toggle-category"><div>❱</div></a>
+        </li>
+        <ol>
+          <li class="chapter-item bal-nav-item">
+            <div>Hello World</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/hello-world.html"
+                  >Hello world main</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/hello-world-service.html"
+                  >Hello world service</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Basics</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/programs-and-modules.html"
+                  >Programs and modules</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/variables-and-types.html"
+                  >Variables and types</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/identifiers.html">Identifiers</a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Simple basic types</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/integers.html">Integers</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/floating-point-numbers.html"
+                  >Floating point numbers</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/decimal-type.html">Decimal type</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/nil.html">Nil</a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Strings</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/strings.html">Strings</a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Conditional statements</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/booleans.html"
+                  >Booleans and conditionals</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/match-statement.html"
+                  >Match statement</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Functions</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/functions.html">Functions</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/function-values.html"
+                  >Function values</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Iteration</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/foreach-statement.html"
+                  >Foreach statement</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/while-statement.html"
+                  >While statement</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Lang library</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/langlib-functions.html"
+                  >Langlib functions</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Types and typing</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/arrays.html">Arrays</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/binary-data.html">Binary data</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/structural-typing.html"
+                  >Structural typing</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/unions.html">Unions</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/error-reporting.html">Errors</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/anydata-type.html">Anydata type</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/any-type.html">Any type</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/type-definitions.html"
+                  >Type definitions</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/covariance.html">Covariance</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/type-inference.html"
+                  >Type inference
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Mappings</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/maps.html">Maps</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/records.html">Records</a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Records</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/optional-fields.html"
+                  >Optional fields</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/open-records.html">Open records</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/controlling-openness.html"
+                  >Controlling openness</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Objects</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/object.html">Object</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/defining-classes.html"
+                  >Defining classes</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/init-return-type.html"
+                  >Init return type</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Error handling</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/error-handling.html"
+                  >Error handling</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/check-expression.html"
+                  >Check expression</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/error-subtyping.html"
+                  >Error subtyping</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/panics.html">Panics</a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Ignoring return values and errors</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/ignoring-return-values-and-errors.html"
+                  >Ignoring return values and errors</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Mutability and identity</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/identity.html">Identity</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/const-and-final.html"
+                  >Const and final
+                </a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/enumerations.html">Enumerations</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/immutability.html">Immutability</a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>JSON</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/json-type.html">JSON type</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/working-directly-with-json.html"
+                  >Working directly with JSON</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/match-statement-with-maps.html"
+                  >Match statement with maps</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/converting-from-user-defined-type-to-json.html"
+                  >Converting from user-defined type to JSON</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/converting-from-json-to-user-defined-type.html"
+                  >Converting from JSON to user-defined type</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/converting-to-user-defined-type.html"
+                  >Converting to user-defined type</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/resource-method-typing.html"
+                  >Resource method typing</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/json-numbers.html">JSON numbers</a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Tables</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/table-syntax.html">Table syntax</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/multiple-key-fields.html"
+                  >Multiple key fields</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/structured-keys.html"
+                  >Structured keys</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Query expressions</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/query-expressions.html"
+                  >Query expressions</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/destructuring-records.html"
+                  >Destructuring records</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/let-clause.html">Let clause</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/ordering.html">Ordering</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/limit-clause.html">Limit clause</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/querying-tables.html"
+                  >Querying tables</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/creating-tables-with-query.html"
+                  >Creating tables with query</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/join-clause.html">Join clause</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/stream-type.html">Stream type</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/querying-with-streams.html"
+                  >Querying with streams</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Backtick templates</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/raw-templates.html">Raw templates</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/backtick-templates.html"
+                  >Backtick templates</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/xml-templates.html">XML templates</a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>XML</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/xml-data-model.html"
+                  >XML data model</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/xml-operations.html"
+                  >XML operations</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/xml-subtyping.html">XML subtyping</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/xml-navigation.html"
+                  >XML navigation
+                </a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/xml-templates-and-query.html"
+                  >XML templates and query</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/xml-namespaces.html"
+                  >XML namespaces</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/xmlns-declarations.html"
+                  >XMLNS declarations</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Metadata</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/documentation.html">Documentation</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/annotations.html">Annotations</a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Network interaction</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/consuming-services.html"
+                  >Consuming services: client objects</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/providing-services.html"
+                  >Providing services</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/module-lifecycle.html"
+                  >Module lifecycle</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/service-declaration.html"
+                  >Service declaration</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/resource-methods.html"
+                  >Resource methods</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/hierarchical-resources.html"
+                  >Hierarchical resources</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/resource-path-parameters.html"
+                  >Resource path parameters</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Configurability</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/configurable-variables.html"
+                  >Configurable variables</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Concurrency</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/asynchronous-function-calls.html"
+                  >Asynchronous function calls</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/named-workers.html">Named workers</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/sequence-diagrams.html"
+                  >Sequence diagrams</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/waiting-for-workers.html"
+                  >Waiting for workers</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/strands.html">Strands</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/named-worker-return-values.html"
+                  >Named worker return values</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/alternate-wait.html"
+                  >Alternate wait</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/multiple-wait.html">Multiple wait</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/named-workers-and-futures.html"
+                  >Named workers and futures</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/inter-worker-message-passing.html"
+                  >Inter-worker message passing</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/inter-worker-failure-propagation.html"
+                  >Inter-worker failure propagation</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Transactions</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/transaction-statement.html"
+                  >Transaction statement</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/check-semantics.html"
+                  >Check semantics</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/rollback.html">Rollback</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/retry-transaction-statement.html"
+                  >Retry transaction statement</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/transactional-qualifier.html"
+                  >Transactional qualifier</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/transactional-named-workers.html"
+                  >Transactional named workers</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/commit-rollback-handlers.html"
+                  >Commit/rollback handlers</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Concurrency safety</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/lock-statement.html"
+                  >Lock statement</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/isolated-functions.html"
+                  >Isolated functions</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/readonly-type.html">Readonly type</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/readonly-and-isolated.html"
+                  >Readonly and isolated</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/combining-isolated-functions-and-lock.html"
+                  >Combining isolated functions and lock</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/isolated-variables.html"
+                  >Isolated variables</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/isolated-methods.html"
+                  >Isolated methods</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/isolated-objects.html"
+                  >Isolated objects</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/inferring-isolated.html"
+                  >Inferring isolated</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Testing</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/testerina-assertions.html"
+                  >Assertions</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/testerina-before-and-after-test.html"
+                  >Before and after test</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/testerina-before-and-after-each.html"
+                  >Before and after each</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/testerina-before-and-after-groups.html"
+                  >Before and after groups</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/testerina-before-and-after-suite.html"
+                  >Before and after suite</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/testerina-data-driven-tests.html"
+                  >Data driven tests</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/testerina-guarantee-test-execution-order.html"
+                  >Guarantee test execution order</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/testerina-group-tests.html"
+                  >Group tests</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/testerina-mocking-functions.html"
+                  >Function mocking</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/testerina-mocking-objects.html"
+                  >Object mocking</a
+                >
+              </li>
+            </ol>
+          </li>
+        </ol>
+        <li class="part-title">
+          <div>Working over the network</div>
+          <a class="toggle-category"><div>❱</div></a>
+        </li>
+        <ol>
+          <li class="chapter-item bal-nav-item">
+            <div>REST API</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-absolute-path-and-path.html"
+                  >Service path and resource path</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-data-binding.html"
+                  >Service data binding</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-default-resource.html"
+                  >Default resource</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-path-param.html"
+                  >Path parameter</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-query-parameter.html"
+                  >Query parameter</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-matrix-param.html"
+                  >Matrix parameter</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-header-param.html"
+                  >Header parameter</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-resource-returns.html"
+                  >Typed resource responses</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-restrict-by-media-type.html"
+                  >Restrict by media type</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>REST client</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-client-endpoint.html">Client</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-client-data-binding.html"
+                  >Client data binding</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-caching-client.html"
+                  >Caching client</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>REST API security</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-service-ssl-tls.html"
+                  >Service - SSL/TLS</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-service-mutual-ssl.html"
+                  >Service - Mutual SSL</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/http-service-basic-auth-file-user-store.html"
+                  >Service - Basic Auth file user store</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/http-service-basic-auth-ldap-user-store.html"
+                  >Service - Basic Auth LDAP user store</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-service-jwt-auth.html"
+                  >Service - JWT Auth</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-service-oauth2.html"
+                  >Service - OAuth2</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-client-ssl-tls.html"
+                  >Client - SSL/TLS</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-client-mutual-ssl.html"
+                  >Client - Mutual SSL</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-client-basic-auth.html"
+                  >Client - Basic Auth</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-client-bearer-token-auth.html"
+                  >Client - Bearer Token Auth</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/http-client-self-signed-jwt-auth.html"
+                  >Client - self signed JWT Auth</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/http-client-oauth2-client-credentials-grant-type.html"
+                  >Client - OAuth2 Client Credentials grant type</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/http-client-oauth2-password-grant-type.html"
+                  >Client - OAuth2 Password grant type</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/http-client-oauth2-refresh-token-grant-type.html"
+                  >Client - OAuth2 Refresh Token grant type</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/http-client-oauth2-jwt-bearer-grant-type.html"
+                  >Client - OAuth2 JWT Bearer grant type</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>REST API advanced</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-redirects.html">Redirects</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-cors.html">CORS</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-100-continue.html"
+                  >100 continue</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-streaming.html">Streaming</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-compression.html"
+                  >Compression</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-trace-logs.html">Trace logs</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-access-logs.html"
+                  >Access logs</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-cookies.html">Cookies</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-disable-chunking.html"
+                  >Chunking</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-response-with-multiparts.html"
+                  >Response With multiparts</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-request-with-multiparts.html"
+                  >Request With multiparts</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-passthrough.html"
+                  >Passthrough</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>REST API interceptors</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-interceptors.html"
+                  >Interceptors</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-error-handling.html"
+                  >Error Handling</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-interceptor-error-handling.html"
+                  >Interceptor Error Handling</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>HTTP2</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-1-1-to-2-0-protocol-switch.html"
+                  >HTTP 1.1 to 2.0 protocol switch</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-2-0-server-push.html"
+                  >HTTP 2.0 server push</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>GraphQL</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-hello-world.html"
+                  >Hello world</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-returning-record-values.html"
+                  >Returning record values</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/graphql-hierarchical-resource-paths.html"
+                  >Hierarchical resource paths</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/graphql-returning-service-objects.html"
+                  >Returning service objects</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-input-types.html"
+                  >Input types</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-mutations.html">Mutations</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-context.html">Context</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-file-upload.html"
+                  >File upload</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>GraphQL security</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-service-ssl-tls.html"
+                  >Service - SSL/TLS</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-service-mutual-ssl.html"
+                  >Service - Mutual SSL</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/graphql-service-basic-auth-file-user-store.html"
+                  >Service - Basic Auth file user store</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/graphql-service-basic-auth-ldap-user-store.html"
+                  >Service - Basic Auth LDAP user store</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-service-jwt-auth.html"
+                  >Service - JWT Auth</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-service-oauth2.html"
+                  >Service - OAuth2</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>WebSockets</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/websocket-text-client.html"
+                  >Handle text messages with client</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/websocket-binary-client.html"
+                  >Handle binary messages with client</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/websocket-retry-client.html"
+                  >Retry</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/websocket-basic-sample.html"
+                  >Listener functionalities</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>WebSocket security</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/websocket-service-ssl-tls.html"
+                  >Service - SSL/TLS</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/websocket-service-mutual-ssl.html"
+                  >Service - Mutual SSL</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/websocket-service-basic-auth-file-user-store.html"
+                  >Service - Basic Auth File user store</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/websocket-service-basic-auth-ldap-user-store.html"
+                  >Service - Basic Auth LDAP user store</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/websocket-service-jwt-auth.html"
+                  >Service - JWT Auth</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/websocket-service-oauth2.html"
+                  >Service - OAuth2</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/websocket-client-ssl-tls.html"
+                  >Client - SSL/TLS</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/websocket-client-mutual-ssl.html"
+                  >Client - Mutual SSL</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/websocket-client-basic-auth.html"
+                  >Client - Basic Auth</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/websocket-client-bearer-token-auth.html"
+                  >Client - Bearer Token Auth</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/websocket-client-self-signed-jwt-auth.html"
+                  >Client - self signed JWT Auth</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/websocket-client-oauth2-client-cred-grant-type.html"
+                  >Client - OAuth2 Client Credentials grant type</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/websocket-client-oauth2-password-grant-type.html"
+                  >Client - OAuth2 Password grant type</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/websocket-client-oauth2-refresh-token-grant-type.html"
+                  >Client - OAuth2 Refresh Token grant type</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/websocket-client-oauth2-jwt-bearer-grant-type.html"
+                  >Client - OAuth2 JWT Bearer grant type</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>WebSub</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/websub-webhook-sample.html"
+                  >WebSub subscriber service</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Resiliency</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-circuit-breaker.html"
+                  >Circuit breaker</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-load-balancer.html"
+                  >Load balancer</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-failover.html">Failover</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-retry.html">Retry</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/http-timeout.html">Timeout</a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Listeners</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/dynamic-listener.html"
+                  >Dynamic listener</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>gRPC</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/grpc-simple.html">Simple RPC</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/grpc-simple-with-headers.html"
+                  >Simple RPC with headers</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/grpc-server-streaming.html"
+                  >Server streaming RPC</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/grpc-client-streaming.html"
+                  >Client streaming RPC</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/grpc-bidirectional-streaming.html"
+                  >Bidirectional streaming RPC</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/proto-to-ballerina.html"
+                  >Proto to Ballerina</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>gRPC security</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/grpc-service-ssl-tls.html"
+                  >Service - SSL/TLS</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/grpc-service-mutual-ssl.html"
+                  >Service - Mutual SSL</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/grpc-service-basic-auth-file-user-store.html"
+                  >Service - Basic Auth file user store</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/grpc-service-basic-auth-ldap-user-store.html"
+                  >Service - Basic Auth LDAP user store</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/grpc-service-jwt-auth.html"
+                  >Service - JWT Auth</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/grpc-service-oauth2.html"
+                  >Service - OAuth2</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/grpc-client-ssl-tls.html"
+                  >Client - SSL/TLS</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/grpc-client-mutual-ssl.html"
+                  >Client - Mutual SSL</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/grpc-client-basic-auth.html"
+                  >Client - Basic Auth</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/grpc-client-bearer-token-auth.html"
+                  >Client - Bearer Token Auth</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/grpc-client-self-signed-jwt-auth.html"
+                  >Client - self signed JWT Auth</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/grpc-client-oauth2-client-credentials-grant-type.html"
+                  >Client - OAuth2 Client Credentials grant type</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/grpc-client-oauth2-password-grant-type.html"
+                  >Client - OAuth2 Password grant type</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/grpc-client-oauth2-refresh-token-grant-type.html"
+                  >Client - OAuth2 Refresh Token grant type</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type.html"
+                  >Client - OAuth2 JWT Bearer grant type</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>NATS</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/nats-basic-pub-sub.html"
+                  >Publish/subscribe</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/nats-basic-request-reply.html"
+                  >Request/reply</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/nats-basic-secure-connection.html"
+                  >Secured connection</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>STAN</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/nats-streaming-pub-sub.html"
+                  >Publish/subscribe</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/nats-streaming-queue-group.html"
+                  >Queue groups</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/nats-streaming-durable-subscriptions.html"
+                  >Durable subscriptions</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/nats-streaming-start-position.html"
+                  >Historical message replay</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/nats-streaming-secure-connection.html"
+                  >Secured connection</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Kafka</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/kafka-producer.html">Producer</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/kafka-consumer-service.html"
+                  >Consumer service</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/kafka-consumer-client.html"
+                  >Consumer client</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/kafka-producer-transactional.html"
+                  >Transactional producer</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/kafka-consumer-group-service.html"
+                  >Consumer groups</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/kafka-authentication-sasl-plain-consumer.html"
+                  >SASL authentication - consumer</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/kafka-authentication-sasl-plain-producer.html"
+                  >SASL authentication - producer</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>RabbitMQ</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/rabbitmq-producer.html">Producer</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/rabbitmq-consumer.html">Consumer</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/rabbitmq-consumer-with-client-acknowledgement.html"
+                  >Client acknowledgements</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/rabbitmq-transaction-producer.html"
+                  >Transactional producer</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/rabbitmq-transaction-consumer.html"
+                  >Transactional consumer</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/rabbitmq-secure-connection.html"
+                  >Secured connection</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>TCP</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/tcp-client.html">Client</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/tcp-listener.html">Listener</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/tcp-transport-security.html"
+                  >Transport security</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>UDP</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/udp-client.html"
+                  >Connectionless client</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/udp-connect-client.html"
+                  >Connection-oriented client</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/udp-listener.html">Listener</a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Email</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/send-email.html">Send emails</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/receive-email-using-client.html"
+                  >Receive emails using a client</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/receive-email-using-listener.html"
+                  >Receive emails using a listener</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>FTP</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/ftp-client.html">Client</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/ftp-listener.html">Listener</a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>SFTP</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/sftp-client.html">Client</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/sftp-listener.html">Listener</a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>MySQL</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/mysql-query-operation.html"
+                  >Simple query</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/mysql-complex-type-queries.html"
+                  >Query with complex types</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/mysql-execute-operation.html"
+                  >DML and DDL operation</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/mysql-batch-execute-operation.html"
+                  >Batch execute</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/mysql-atomic-batch-execute-operation.html"
+                  >Atomic batch execute</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/mysql-call-stored-procedures.html"
+                  >Call stored procedures</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>JDBC</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/jdbc-query-operation.html"
+                  >Simple query</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/jdbc-complex-type-queries.html"
+                  >Query with complex types</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/jdbc-execute-operation.html"
+                  >DML and DDL operation</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/jdbc-batch-execute-operation.html"
+                  >Batch execute</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/jdbc-atomic-batch-execute-operation.html"
+                  >Atomic batch execute</a
+                >
+              </li>
+            </ol>
+          </li>
+        </ol>
+        <li class="part-title">
+          <div>Common libraries</div>
+          <a class="toggle-category"><div>❱</div></a>
+        </li>
+        <ol>
+          <li class="chapter-item bal-nav-item">
+            <div>IO</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/io-bytes.html">Read/write bytes</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/io-strings.html"
+                  >Read/write strings</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/io-csv.html">Read/write CSV</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/io-json.html">Read/write JSON</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/io-xml.html">Read/write XML</a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Security</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/security-crypto.html"
+                  >Cryptographic operations</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/security-jwt-issue-validate.html"
+                  >JWT issue/validate</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>URL</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/url-encode-decode.html"
+                  >URL encode/decode operations</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Time</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/time-utc.html">UTC time</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/time-utc-and-civil.html"
+                  >Time with zone offset</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/time-formatting-and-parsing.html"
+                  >Time formatting/parsing</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Cache</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/cache-basics.html">Cache basics</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/cache-invalidation.html"
+                  >Cache invalidation</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Log</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/logging.html">Logging</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/logging-with-context.html"
+                  >Logging with context</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/logging-configuration.html"
+                  >Configure logging</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>File</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/filepaths.html">File paths</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/directories.html">Directories</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/files.html">Files</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/temp-files-directories.html"
+                  >Temp files and directories</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/directory-listener.html"
+                  >Directory listener</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Random</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/random-numbers.html"
+                  >Random numbers</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Task</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/task-frequency-job-execution.html"
+                  >Schedule job recurrence by frequency</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/task-one-time-job-execution.html"
+                  >Schedule one time job</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/manage-scheduled-jobs.html"
+                  >Manage sheduled jobs</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>UUID</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/uuid-generation.html"
+                  >Generate UUID</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/uuid-operations.html"
+                  >UUID operations</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>XSLT</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/xslt-transformation.html"
+                  >XSLT transformation</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Regex</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/regular-expressions.html"
+                  >Regular expressions</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>OS</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/environment-variables.html"
+                  >Environment variables</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>XML data</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/xml-json-conversion.html"
+                  >XML JSON conversion</a
+                >
+              </li>
+            </ol>
+          </li>
+        </ol>
+        <li class="part-title expanded">
+          <div>Observability</div>
+          <a class="toggle-category"><div>❱</div></a>
+        </li>
+        <ol>
+          <li class="chapter-item bal-nav-item">
+            <div>Tracing</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/tracing.html">Distributed tracing</a>
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/counter-metrics.html"
+                  >Counter-based metrics</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item expanded">
+            <div>Metrics</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item expanded">
+                <a
+                  href="/learn/by-example/gauge-metrics.html"
+                  class="active bal-active"
+                  >Gauge-based metrics</a
+                >
+              </li>
+            </ol>
+          </li>
+        </ol>
+        <li class="part-title">
+          <div>Deployment</div>
+          <a class="toggle-category"><div>❱</div></a>
+        </li>
+        <ol>
+          <li class="chapter-item bal-nav-item">
+            <div>Code to Cloud</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/c2c-deployment.html">Kubernetes</a>
+              </li>
+            </ol>
+          </li>
+          <li class="chapter-item bal-nav-item">
+            <div>Function as a Service</div>
+            <a class="toggle"><div>❱</div></a>
+          </li>
+          <li>
+            <ol class="section">
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/azure-functions-deployment.html"
+                  >Azure Functions</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/aws-lambda-deployment.html"
+                  >AWS Lambda</a
+                >
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </ol>
+    </div>
+  </nav>
+  <main class="bal-container">
+    <h1>Gauge-based metrics</h1>
 
-<span class="kd">service</span> <span class="o">/</span><span class="nx">onlineStoreService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+    <p>
+      Ballerina supports Observability out of the box and Metrics is one of the
+      three important aspects of the
+    </p>
 
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">makeOrder</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------------------------------------------&quot;</span><span class="p">);</span>
-        <span class="c1">//Incrementing the global gauge defined by 15.0.</span>
-        <span class="nx">globalGauge</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="mf">15.0</span><span class="p">);</span>
-        <span class="c1">//Log the current state of global gauge.</span>
-        <span class="nx">printGauge</span><span class="p">(</span><span class="nx">globalGauge</span><span class="p">);</span>
+    <p>
+      Observability. To observe Ballerina code, the build time flag
+      <code>--observability-included</code> should be given along with the
+    </p>
 
+    <p>
+      <code>Config.toml</code> file when starting the service. The
+      <code>Config.toml</code> file contains the required runtime configurations
+      related to observability.
+    </p>
 
-        <span class="c1">//Create a gauge with simply a name, and default statistics configurations.</span>
-        <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">localGauge</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;local_operations&quot;</span><span class="p">);</span>
-        <span class="c1">//Increment the local gauge by default value 1.0.</span>
-        <span class="nx">localGauge</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
-        <span class="c1">//Increment the value of the gauge by 20.</span>
-        <span class="nx">localGauge</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="mf">20.0</span><span class="p">);</span>
-        <span class="c1">//Decrement the local gauge by default value 1.0.</span>
-        <span class="nx">localGauge</span><span class="p">.</span><span class="nx">decrement</span><span class="p">();</span>
-        <span class="c1">//Decrement the value of the gauge by 20.</span>
-        <span class="nx">localGauge</span><span class="p">.</span><span class="nx">decrement</span><span class="p">(</span><span class="mf">10.0</span><span class="p">);</span>
-        <span class="c1">//Log the current state of local gauge.</span>
-        <span class="nx">printGauge</span><span class="p">(</span><span class="nx">localGauge</span><span class="p">);</span>
+    <p>
+      The developers can define and use metrics to measure their own logic. A
+      gauge is one type of the metrics that is
+    </p>
 
+    <p>
+      supported by default in Ballerina, and it represents a single numerical
+      value that can arbitrarily go up and down,
+    </p>
 
-        <span class="c1">//Create a gauge with optional fields description, and tags defined.</span>
-        <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">registeredGaugeWithTags</span> <span class="p">=</span>
-                  <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;registered_gauge_with_tags&quot;</span><span class="p">,</span> <span class="s">&quot;RegisteredGauge&quot;</span><span class="p">,</span>
-                       <span class="p">{</span><span class="nx">property</span><span class="p">:</span> <span class="s">&quot;gaugeProperty&quot;</span><span class="p">,</span> <span class="nx">gaugeType</span><span class="p">:</span> <span class="s">&quot;RegisterType&quot;</span><span class="p">});</span>
+    <p>
+      and also based on the statistics configurations provided to the Gauge, it
+      can also report the statistics such as max,
+    </p>
 
-        <span class="c1">//Register the gauge instance, therefore it is stored in the global registry and can be reported to the</span>
-        <span class="c1">//metrics server such as Prometheus. Additionally, this operation will register to the global registry for the</span>
-        <span class="c1">//first invocation and will throw an error if there is already a registration of different metrics instance</span>
-        <span class="c1">//or type. And subsequent invocations of register() will simply retrieve the stored metrics instance</span>
-        <span class="c1">//for the provided name and tags fields, and use that instance for the subsequent operations on the</span>
-        <span class="c1">//Counter instance.</span>
-        <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">registeredGaugeWithTags</span><span class="p">.</span><span class="nx">register</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in registering gauge&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
+    <p>min, mean, percentiles, etc.&lt;br/&gt;&lt;br/&gt;</p>
 
-        <span class="c1">//Set the value of the gauge with the new value.</span>
-        <span class="nx">registeredGaugeWithTags</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
-        <span class="kt">float</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">registeredGaugeWithTags</span><span class="p">.</span><span class="nx">getValue</span><span class="p">();</span>
-        <span class="kt">float</span> <span class="nx">newValue</span> <span class="p">=</span> <span class="nx">value</span> <span class="o">*</span> <span class="mf">12.0</span><span class="p">;</span>
-        <span class="nx">registeredGaugeWithTags</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="nx">newValue</span><span class="p">);</span>
-        <span class="c1">//Log the current state of registered gauge with tags.</span>
-        <span class="nx">printGauge</span><span class="p">(</span><span class="nx">registeredGaugeWithTags</span><span class="p">);</span>
+    <p>
+      For more information about configs and observing applications, see
+      <a href="https://ballerina.io/learn/observing-ballerina-code/"
+        >Observing Ballerina Code</a
+      >.
+    </p>
 
-
-        <span class="c1">//Create a gauge with statistics disabled by passing empty statistics config array.</span>
-        <span class="nx">observe</span><span class="p">:</span><span class="nx">StatisticConfig</span><span class="p">[]</span> <span class="nx">statsConfigs</span> <span class="p">=</span> <span class="p">[];</span>
-        <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">gaugeWithNoStats</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;gauge_with_no_stats&quot;</span><span class="p">,</span>
-                                        <span class="s">&quot;Some description&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="nx">statsConfigs</span><span class="p">);</span>
-        <span class="nx">gaugeWithNoStats</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-        <span class="nx">printGauge</span><span class="p">(</span><span class="nx">gaugeWithNoStats</span><span class="p">);</span>
-
-
-        <span class="c1">//Create gauge with custom statistics config.</span>
-        <span class="nx">observe</span><span class="p">:</span><span class="nx">StatisticConfig</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
-            <span class="nx">timeWindow</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
-            <span class="nx">percentiles</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">],</span>
-            <span class="nx">buckets</span><span class="p">:</span> <span class="mi">3</span>
-        <span class="p">};</span>
-        <span class="nx">statsConfigs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="nx">config</span><span class="p">;</span>
-        <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">gaugeWithCustomStats</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;gauge_with_custom_stats&quot;</span><span class="p">,</span>
-                                        <span class="s">&quot;Some description&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="nx">statsConfigs</span><span class="p">);</span>
-        <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">6</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">gaugeWithCustomStats</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(&lt;</span><span class="kt">float</span><span class="p">&gt;(</span><span class="mi">100</span> <span class="o">*</span> <span class="nx">i</span><span class="p">));</span>
-            <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="c1">//Log the current state of registered gauge with tags.</span>
-        <span class="nx">printGauge</span><span class="p">(</span><span class="nx">gaugeWithCustomStats</span><span class="p">);</span>
-
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------------------------------------------&quot;</span><span class="p">);</span>
-
-        <span class="c1">//Send response to the client.</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="c1">// Use a util method to set a string payload.</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Order Processed!&quot;</span><span class="p">);</span>
-
-        <span class="c1">// Send the response back to the caller.</span>
-        <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nx">error</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">printGauge</span><span class="p">(</span><span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">gauge</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//Get the statistics snapshot of the gauge.</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Gauge - &quot;</span> <span class="o">+</span> <span class="nx">gauge</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot; Snapshot: &quot;</span><span class="p">);</span>
-    <span class="nx">observe</span><span class="p">:</span><span class="nx">Snapshot</span><span class="p">[]</span><span class="err">?</span> <span class="nx">snapshots</span> <span class="p">=</span> <span class="nx">gauge</span><span class="p">.</span><span class="nx">getSnapshot</span><span class="p">();</span>
-    <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">snapshotAsAJson</span> <span class="p">=</span> <span class="nx">snapshots</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="kt">json</span><span class="p">);</span>
-    <span class="k">if</span> <span class="nx">snapshotAsAJson</span> <span class="nx">is</span> <span class="kt">json</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">snapshotAsAJson</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-    <span class="p">}</span>
-    <span class="c1">//Get the current value of the gauge.</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Gauge - &quot;</span><span class="p">,</span> <span class="nx">gauge</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="s">&quot; Current Value: &quot;</span>
-        <span class="p">,</span> <span class="nx">gauge</span><span class="p">.</span><span class="nx">getValue</span><span class="p">());</span>
-<span class="p">}</span>
-</pre></div>
-
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <table class="cTopInfoContainer cTopControlsContainer">
-                    <tr>
-                        <td class="cLeftTD">
-                            <h2>Gauge-based metrics</h2>
-                            <p><p>Ballerina supports Observability out of the box and Metrics is one of the three important aspects of the
- Observability. To observe Ballerina code, the build time flag <code>--observability-included</code> should be given along with the
- <code>Config.toml</code> file when starting the service. The <code>Config.toml</code> file contains the required runtime configurations related to observability.
- The developers can define and use metrics to measure their own logic. A gauge is one type of the metrics that is
- supported by default in Ballerina, and it represents a single numerical value that can arbitrarily go up and down,
- and also based on the statistics configurations provided to the Gauge, it can also report the statistics such as max,
- min, mean, percentiles, etc.<br/><br/>
- For more information about configs and observing applications, see <a href="https://ballerina.io/learn/observing-ballerina-code/">Observing Ballerina Code</a>.</p>
-</p>
-
-                        </td>
-                        <td class="cRightTD">
-                            <div class="cTopButtonContainer">
-                                
-                                <div class="cButtonInfoContainer">
-                                    <a class="prev" href="counter-metrics.html">
-                                        <span>< PREVIOUS</span>
-                                        <p>Counter-based metrics</p>
-                                    </a>
-                                </div>
-                                 
-                                <div class="cButtonInfoContainer">
-                                    <a class="next" href="c2c-deployment.html">
-                                        <span>NEXT ></span>
-                                        <p>Kubernetes</p>
-                                    </a>
-                                </div>
-                                
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="example" id="gauge-metrics">
-                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
-                    <div class="cTopControlsContainer">
-                        <div class="cTopControlsRow">
-                            <div class="cLeftTD">
-                                <div class="cBBE-links">
-                                    <ul>
-                                        <li>
-                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
-                                        </li>
-                                        <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/gauge-metrics/"><img src="/img/github-logo-green.svg" /></a>
-                                        </li>
-                                        
-                                    </ul>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-              
-                    
-                    <div class="codeSnippeset">
-
-                        <div class="cBBE-body">
-                            
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
+    <br />
+    <pre><code id="code" class="code-container">import ballerina/http;
 import ballerina/io;
 import ballerina/log;
 import ballerina/observe;
 import ballerinax/prometheus as _;
-</code></pre></div>
 
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
+//Create a gauge as a global variable in the service with the optional field description,
+//default statistics configurations = { timeWindow: 600000, buckets: 5,
+// and percentiles: [0.33, 0.5, 0.66, 0.99] }.
+observe:Gauge globalGauge = new ("global_gauge", "Global gauge defined");
 
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>observe:Gauge globalGauge = new (&quot;global_gauge&quot;, &quot;Global gauge defined&quot;);
-</code></pre></div>
+service /onlineStoreService on new http:Listener(9090) {
 
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a gauge as a global variable in the service with the optional field description,
-default statistics configurations = { timeWindow: 600000, buckets: 5,
- and percentiles: [0.33, 0.5, 0.66, 0.99] }.</p>
+    resource function get makeOrder(http:Caller caller, http:Request req) {
+        io:println("------------------------------------------");
+        //Incrementing the global gauge defined by 15.0.
+        globalGauge.increment(15.0);
+        //Log the current state of global gauge.
+        printGauge(globalGauge);
 
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
 
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>service /onlineStoreService on new http:Listener(9090) {
-</code></pre></div>
+        //Create a gauge with simply a name, and default statistics configurations.
+        observe:Gauge localGauge = new ("local_operations");
+        //Increment the local gauge by default value 1.0.
+        localGauge.increment();
+        //Increment the value of the gauge by 20.
+        localGauge.increment(20.0);
+        //Decrement the local gauge by default value 1.0.
+        localGauge.decrement();
+        //Decrement the value of the gauge by 20.
+        localGauge.decrement(10.0);
+        //Log the current state of local gauge.
+        printGauge(localGauge);
 
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
 
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get makeOrder(http:Caller caller, http:Request req) {
-        io:println(&quot;------------------------------------------&quot;);
-</code></pre></div>
+        //Create a gauge with optional fields description, and tags defined.
+        observe:Gauge registeredGaugeWithTags =
+                  new ("registered_gauge_with_tags", "RegisteredGauge",
+                       {property: "gaugeProperty", gaugeType: "RegisterType"});
 
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        globalGauge.increment(15.0);
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Incrementing the global gauge defined by 15.0.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        printGauge(globalGauge);
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Log the current state of global gauge.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        observe:Gauge localGauge = new (&quot;local_operations&quot;);
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a gauge with simply a name, and default statistics configurations.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        localGauge.increment();
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Increment the local gauge by default value 1.0.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        localGauge.increment(20.0);
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Increment the value of the gauge by 20.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        localGauge.decrement();
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Decrement the local gauge by default value 1.0.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        localGauge.decrement(10.0);
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Decrement the value of the gauge by 20.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        printGauge(localGauge);
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Log the current state of local gauge.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        observe:Gauge registeredGaugeWithTags =
-                  new (&quot;registered_gauge_with_tags&quot;, &quot;RegisteredGauge&quot;,
-                       {property: &quot;gaugeProperty&quot;, gaugeType: &quot;RegisterType&quot;});
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a gauge with optional fields description, and tags defined.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        error? result = registeredGaugeWithTags.register();
+        //Register the gauge instance, therefore it is stored in the global registry and can be reported to the
+        //metrics server such as Prometheus. Additionally, this operation will register to the global registry for the
+        //first invocation and will throw an error if there is already a registration of different metrics instance
+        //or type. And subsequent invocations of register() will simply retrieve the stored metrics instance
+        //for the provided name and tags fields, and use that instance for the subsequent operations on the
+        //Counter instance.
+        error? result = registeredGaugeWithTags.register();
         if (result is error) {
-            log:printError(&quot;Error in registering gauge&quot;, &#39;error = result);
+            log:printError("Error in registering gauge", 'error = result);
         }
-</code></pre></div>
 
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Register the gauge instance, therefore it is stored in the global registry and can be reported to the
-metrics server such as Prometheus. Additionally, this operation will register to the global registry for the
-first invocation and will throw an error if there is already a registration of different metrics instance
-or type. And subsequent invocations of register() will simply retrieve the stored metrics instance
-for the provided name and tags fields, and use that instance for the subsequent operations on the
-Counter instance.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        registeredGaugeWithTags.increment();
+        //Set the value of the gauge with the new value.
+        registeredGaugeWithTags.increment();
         float value = registeredGaugeWithTags.getValue();
         float newValue = value * 12.0;
         registeredGaugeWithTags.setValue(newValue);
-</code></pre></div>
+        //Log the current state of registered gauge with tags.
+        printGauge(registeredGaugeWithTags);
 
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Set the value of the gauge with the new value.</p>
 
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        printGauge(registeredGaugeWithTags);
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Log the current state of registered gauge with tags.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        observe:StatisticConfig[] statsConfigs = [];
-        observe:Gauge gaugeWithNoStats = new (&quot;gauge_with_no_stats&quot;,
-                                        &quot;Some description&quot;, (), statsConfigs);
+        //Create a gauge with statistics disabled by passing empty statistics config array.
+        observe:StatisticConfig[] statsConfigs = [];
+        observe:Gauge gaugeWithNoStats = new ("gauge_with_no_stats",
+                                        "Some description", (), statsConfigs);
         gaugeWithNoStats.setValue(100);
         printGauge(gaugeWithNoStats);
-</code></pre></div>
 
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a gauge with statistics disabled by passing empty statistics config array.</p>
 
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        observe:StatisticConfig config = {
+        //Create gauge with custom statistics config.
+        observe:StatisticConfig config = {
             timeWindow: 30000,
             percentiles: [0.33, 0.5, 0.9, 0.99],
             buckets: 3
         };
         statsConfigs[0] = config;
-        observe:Gauge gaugeWithCustomStats = new (&quot;gauge_with_custom_stats&quot;,
-                                        &quot;Some description&quot;, (), statsConfigs);
+        observe:Gauge gaugeWithCustomStats = new ("gauge_with_custom_stats",
+                                        "Some description", (), statsConfigs);
         int i = 1;
         while (i &lt; 6) {
             gaugeWithCustomStats.setValue(&lt;float&gt;(100 * i));
             i = i + 1;
         }
-</code></pre></div>
+        //Log the current state of registered gauge with tags.
+        printGauge(gaugeWithCustomStats);
 
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create gauge with custom statistics config.</p>
+        io:println("------------------------------------------");
 
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
+        //Send response to the client.
+        http:Response res = new;
+        // Use a util method to set a string payload.
+        res.setPayload("Order Processed!");
 
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        printGauge(gaugeWithCustomStats);
-</code></pre></div>
+        // Send the response back to the caller.
+        result = caller-&gt;respond(res);
 
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Log the current state of registered gauge with tags.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;------------------------------------------&quot;);
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        http:Response res = new;
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Send response to the client.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        res.setPayload(&quot;Order Processed!&quot;);
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Use a util method to set a string payload.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        result = caller-&gt;respond(res);
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Send the response back to the caller.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>        if (result is error) {
-            log:printError(&quot;Error sending response&quot;, &#39;error = result);
+        if (result is error) {
+            log:printError("Error sending response", 'error = result);
         }
     }
 }
-</code></pre></div>
 
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function printGauge(observe:Gauge gauge) {
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:print(&quot;Gauge - &quot; + gauge.name + &quot; Snapshot: &quot;);
+function printGauge(observe:Gauge gauge) {
+    //Get the statistics snapshot of the gauge.
+    io:print("Gauge - " + gauge.name + " Snapshot: ");
     observe:Snapshot[]? snapshots = gauge.getSnapshot();
     json|error snapshotAsAJson = snapshots.cloneWithType(json);
     if snapshotAsAJson is json {
         io:println(snapshotAsAJson.toJsonString());
     }
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Get the statistics snapshot of the gauge.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Gauge - &quot;, gauge.name, &quot; Current Value: &quot;
+    //Get the current value of the gauge.
+    io:println("Gauge - ", gauge.name, " Current Value: "
         , gauge.getValue());
-}
-</code></pre></div>
+}</code>
 
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Get the current value of the gauge.</p>
+  <button>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EEE" class="bi bi-github" viewBox="0 0 16 16">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+    </svg>
+  </button>
+  <button>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EEE" class="bi bi-clipboard" viewBox="0 0 16 16">
+      <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+      <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+    </svg>
+  </button>
+  <button class="check-button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#45FF00" class="bi bi-check" viewBox="0 0 16 16">
+      <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+    </svg>
+  </button>
+</pre>
 
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
-                    <div class="codeSnippeset">
+    <br />
+    <pre
+      class="output-container"
+    ><code class="language-bash"><span class="bal-output bal-execute">// Invoke the service three times using the cURL commands below.</span>
+<span class="bal-output bal-execute">curl http://localhost:9090/onlineStoreService/makeOrder</span>
+<span class="bal-output bal-execute">Order Processed!</span>
+<span class="bal-output bal-execute">curl http://localhost:9090/onlineStoreService/makeOrder</span>
+<span class="bal-output bal-execute">Order Processed!</span>
+<span class="bal-output bal-execute">curl http://localhost:9090/onlineStoreService/makeOrder</span>
+<span class="bal-output bal-execute">Order Processed!</span>
+</code></pre>
 
-                        <div class="cBBE-body">
-                            
-                            <div class="cTR cOutputTr">
-
-                                <div class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `bal run` command below with the `--observability-included` build time flag and the `Config.toml` runtime configuration file.
-BAL_CONFIG_FILES=Config.toml bal run --observability-included gauge_metrics.bal
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR cOutputTr">
-
-                                <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>ballerina: started Prometheus HTTP listener 0.0.0.0:9797
-------------------------------------------
-Gauge - global_gauge Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:15.0, &quot;max&quot;:15.0, &quot;min&quot;:15.0, &quot;stdDev&quot;:0.0, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.5, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.66, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.75, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.95, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.99, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.999, &quot;value&quot;:15.0}]}]
-Gauge - global_gauge Current Value: 15.0
-Gauge - local_operations Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:13.0390625, &quot;max&quot;:21.1171875, &quot;min&quot;:1.0, &quot;stdDev&quot;:8.180620171277893, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:10.0546875}, {&quot;percentile&quot;:0.5, &quot;value&quot;:10.0546875}, {&quot;percentile&quot;:0.66, &quot;value&quot;:20.1171875}, {&quot;percentile&quot;:0.75, &quot;value&quot;:20.1171875}, {&quot;percentile&quot;:0.95, &quot;value&quot;:21.1171875}, {&quot;percentile&quot;:0.99, &quot;value&quot;:21.1171875}, {&quot;percentile&quot;:0.999, &quot;value&quot;:21.1171875}]}]
-Gauge - local_operations Current Value: 10.0
-Gauge - registered_gauge_with_tags Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:6.515625, &quot;max&quot;:12.0546875, &quot;min&quot;:1.0, &quot;stdDev&quot;:5.515625, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:1.0}, {&quot;percentile&quot;:0.5, &quot;value&quot;:1.0}, {&quot;percentile&quot;:0.66, &quot;value&quot;:12.0546875}, {&quot;percentile&quot;:0.75, &quot;value&quot;:12.0546875}, {&quot;percentile&quot;:0.95, &quot;value&quot;:12.0546875}, {&quot;percentile&quot;:0.99, &quot;value&quot;:12.0546875}, {&quot;percentile&quot;:0.999, &quot;value&quot;:12.0546875}]}]
-Gauge - registered_gauge_with_tags Current Value: 12.0
-Gauge - gauge_with_no_stats Snapshot: null
-Gauge - gauge_with_no_stats Current Value: 100.0
-Gauge - gauge_with_custom_stats Snapshot: [{&quot;timeWindow&quot;:30000, &quot;mean&quot;:300.7, &quot;max&quot;:501.5, &quot;min&quot;:100.0, &quot;stdDev&quot;:141.775033062948, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:200.5}, {&quot;percentile&quot;:0.5, &quot;value&quot;:301.5}, {&quot;percentile&quot;:0.9, &quot;value&quot;:501.5}, {&quot;percentile&quot;:0.99, &quot;value&quot;:501.5}]}]
-Gauge - gauge_with_custom_stats Current Value: 500.0
-------------------------------------------
-------------------------------------------
-Gauge - global_gauge Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:22.53125, &quot;max&quot;:30.0625, &quot;min&quot;:15.0, &quot;stdDev&quot;:7.53125, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.5, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.66, &quot;value&quot;:30.0625}, {&quot;percentile&quot;:0.75, &quot;value&quot;:30.0625}, {&quot;percentile&quot;:0.95, &quot;value&quot;:30.0625}, {&quot;percentile&quot;:0.99, &quot;value&quot;:30.0625}, {&quot;percentile&quot;:0.999, &quot;value&quot;:30.0625}]}]
-Gauge - global_gauge Current Value: 30.0
-Gauge - local_operations Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:13.0390625, &quot;max&quot;:21.1171875, &quot;min&quot;:1.0, &quot;stdDev&quot;:8.180620171277893, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:10.0546875}, {&quot;percentile&quot;:0.5, &quot;value&quot;:10.0546875}, {&quot;percentile&quot;:0.66, &quot;value&quot;:20.1171875}, {&quot;percentile&quot;:0.75, &quot;value&quot;:20.1171875}, {&quot;percentile&quot;:0.95, &quot;value&quot;:21.1171875}, {&quot;percentile&quot;:0.99, &quot;value&quot;:21.1171875}, {&quot;percentile&quot;:0.999, &quot;value&quot;:21.1171875}]}]
-Gauge - local_operations Current Value: 10.0
-Gauge - registered_gauge_with_tags Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:55.4140625, &quot;max&quot;:156.9921875, &quot;min&quot;:1.0, &quot;stdDev&quot;:61.38432884406833, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:12.0546875}, {&quot;percentile&quot;:0.5, &quot;value&quot;:12.0546875}, {&quot;percentile&quot;:0.66, &quot;value&quot;:52.2421875}, {&quot;percentile&quot;:0.75, &quot;value&quot;:52.2421875}, {&quot;percentile&quot;:0.95, &quot;value&quot;:156.9921875}, {&quot;percentile&quot;:0.99, &quot;value&quot;:156.9921875}, {&quot;percentile&quot;:0.999, &quot;value&quot;:156.9921875}]}]
-Gauge - registered_gauge_with_tags Current Value: 156.0
-Gauge - gauge_with_no_stats Snapshot: null
-Gauge - gauge_with_no_stats Current Value: 100.0
-Gauge - gauge_with_custom_stats Snapshot: [{&quot;timeWindow&quot;:30000, &quot;mean&quot;:300.7, &quot;max&quot;:501.5, &quot;min&quot;:100.0, &quot;stdDev&quot;:141.775033062948, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:200.5}, {&quot;percentile&quot;:0.5, &quot;value&quot;:301.5}, {&quot;percentile&quot;:0.9, &quot;value&quot;:501.5}, {&quot;percentile&quot;:0.99, &quot;value&quot;:501.5}]}]
-Gauge - gauge_with_custom_stats Current Value: 500.0
-------------------------------------------
-------------------------------------------
-Gauge - global_gauge Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:30.0625, &quot;max&quot;:45.1875, &quot;min&quot;:15.0, &quot;stdDev&quot;:12.298479750223873, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.5, &quot;value&quot;:30.0625}, {&quot;percentile&quot;:0.66, &quot;value&quot;:30.0625}, {&quot;percentile&quot;:0.75, &quot;value&quot;:45.1875}, {&quot;percentile&quot;:0.95, &quot;value&quot;:45.1875}, {&quot;percentile&quot;:0.99, &quot;value&quot;:45.1875}, {&quot;percentile&quot;:0.999, &quot;value&quot;:45.1875}]}]
-Gauge - global_gauge Current Value: 45.0
-Gauge - local_operations Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:13.0390625, &quot;max&quot;:21.1171875, &quot;min&quot;:1.0, &quot;stdDev&quot;:8.180620171277893, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:10.0546875}, {&quot;percentile&quot;:0.5, &quot;value&quot;:10.0546875}, {&quot;percentile&quot;:0.66, &quot;value&quot;:20.1171875}, {&quot;percentile&quot;:0.75, &quot;value&quot;:20.1171875}, {&quot;percentile&quot;:0.95, &quot;value&quot;:21.1171875}, {&quot;percentile&quot;:0.99, &quot;value&quot;:21.1171875}, {&quot;percentile&quot;:0.999, &quot;value&quot;:21.1171875}]}]
-Gauge - local_operations Current Value: 10.0
-Gauge - registered_gauge_with_tags Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:377.1927083333333, &quot;max&quot;:1887.9921875, &quot;min&quot;:1.0, &quot;stdDev&quot;:676.7534301455432, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:12.0546875}, {&quot;percentile&quot;:0.5, &quot;value&quot;:52.2421875}, {&quot;percentile&quot;:0.66, &quot;value&quot;:156.9921875}, {&quot;percentile&quot;:0.75, &quot;value&quot;:157.9921875}, {&quot;percentile&quot;:0.95, &quot;value&quot;:1887.9921875}, {&quot;percentile&quot;:0.99, &quot;value&quot;:1887.9921875}, {&quot;percentile&quot;:0.999, &quot;value&quot;:1887.9921875}]}]
-Gauge - registered_gauge_with_tags Current Value: 1884.0
-Gauge - gauge_with_no_stats Snapshot: null
-Gauge - gauge_with_no_stats Current Value: 100.0
-Gauge - gauge_with_custom_stats Snapshot: [{&quot;timeWindow&quot;:30000, &quot;mean&quot;:300.7, &quot;max&quot;:501.5, &quot;min&quot;:100.0, &quot;stdDev&quot;:141.775033062948, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:200.5}, {&quot;percentile&quot;:0.5, &quot;value&quot;:301.5}, {&quot;percentile&quot;:0.9, &quot;value&quot;:501.5}, {&quot;percentile&quot;:0.99, &quot;value&quot;:501.5}]}]
-Gauge - gauge_with_custom_stats Current Value: 500.0
-------------------------------------------
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
-                    <div class="codeSnippeset">
-
-                        <div class="cBBE-body">
-                            
-                            <div class="cTR hover-enable cOutputTr">
-
-                                <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>curl http://localhost:9090/onlineStoreService/makeOrder
-Order Processed!
-curl http://localhost:9090/onlineStoreService/makeOrder
-Order Processed!
-curl http://localhost:9090/onlineStoreService/makeOrder
-Order Processed!
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Invoke the service three times using the cURL commands below.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
-
-
-                     
-                </div>
-            </div>
+    <br />
+    <pre
+      class="output-container"
+    ><code class="language-bash"><span class="bal-output bal-execute"># To start the service, navigate to the directory that contains the</span>
+<span class="bal-output bal-execute"># `.bal` file and execute the `bal run` command below with the `--observability-included` build time flag and the `Config.toml` runtime configuration file.</span>
+<span class="bal-output bal-execute">BAL_CONFIG_FILES=Config.toml bal run --observability-included gauge_metrics.bal</span>
+<span class="bal-output bal-execute"></span>
+<span class="bal-output bal-execute">ballerina: started Prometheus HTTP listener 0.0.0.0:9797</span>
+<span class="bal-output bal-execute">------------------------------------------</span>
+<span class="bal-output bal-execute">Gauge - global_gauge Snapshot: [{"timeWindow":600000, "mean":15.0, "max":15.0, "min":15.0, "stdDev":0.0, "percentileValues":[{"percentile":0.33, "value":15.0}, {"percentile":0.5, "value":15.0}, {"percentile":0.66, "value":15.0}, {"percentile":0.75, "value":15.0}, {"percentile":0.95, "value":15.0}, {"percentile":0.99, "value":15.0}, {"percentile":0.999, "value":15.0}]}]</span>
+<span class="bal-output bal-execute">Gauge - global_gauge Current Value: 15.0</span>
+<span class="bal-output bal-execute">Gauge - local_operations Snapshot: [{"timeWindow":600000, "mean":13.0390625, "max":21.1171875, "min":1.0, "stdDev":8.180620171277893, "percentileValues":[{"percentile":0.33, "value":10.0546875}, {"percentile":0.5, "value":10.0546875}, {"percentile":0.66, "value":20.1171875}, {"percentile":0.75, "value":20.1171875}, {"percentile":0.95, "value":21.1171875}, {"percentile":0.99, "value":21.1171875}, {"percentile":0.999, "value":21.1171875}]}]</span>
+<span class="bal-output bal-execute">Gauge - local_operations Current Value: 10.0</span>
+<span class="bal-output bal-execute">Gauge - registered_gauge_with_tags Snapshot: [{"timeWindow":600000, "mean":6.515625, "max":12.0546875, "min":1.0, "stdDev":5.515625, "percentileValues":[{"percentile":0.33, "value":1.0}, {"percentile":0.5, "value":1.0}, {"percentile":0.66, "value":12.0546875}, {"percentile":0.75, "value":12.0546875}, {"percentile":0.95, "value":12.0546875}, {"percentile":0.99, "value":12.0546875}, {"percentile":0.999, "value":12.0546875}]}]</span>
+<span class="bal-output bal-execute">Gauge - registered_gauge_with_tags Current Value: 12.0</span>
+<span class="bal-output bal-execute">Gauge - gauge_with_no_stats Snapshot: null</span>
+<span class="bal-output bal-execute">Gauge - gauge_with_no_stats Current Value: 100.0</span>
+<span class="bal-output bal-execute">Gauge - gauge_with_custom_stats Snapshot: [{"timeWindow":30000, "mean":300.7, "max":501.5, "min":100.0, "stdDev":141.775033062948, "percentileValues":[{"percentile":0.33, "value":200.5}, {"percentile":0.5, "value":301.5}, {"percentile":0.9, "value":501.5}, {"percentile":0.99, "value":501.5}]}]</span>
+<span class="bal-output bal-execute">Gauge - gauge_with_custom_stats Current Value: 500.0</span>
+<span class="bal-output bal-execute">------------------------------------------</span>
+<span class="bal-output bal-execute">------------------------------------------</span>
+<span class="bal-output bal-execute">Gauge - global_gauge Snapshot: [{"timeWindow":600000, "mean":22.53125, "max":30.0625, "min":15.0, "stdDev":7.53125, "percentileValues":[{"percentile":0.33, "value":15.0}, {"percentile":0.5, "value":15.0}, {"percentile":0.66, "value":30.0625}, {"percentile":0.75, "value":30.0625}, {"percentile":0.95, "value":30.0625}, {"percentile":0.99, "value":30.0625}, {"percentile":0.999, "value":30.0625}]}]</span>
+<span class="bal-output bal-execute">Gauge - global_gauge Current Value: 30.0</span>
+<span class="bal-output bal-execute">Gauge - local_operations Snapshot: [{"timeWindow":600000, "mean":13.0390625, "max":21.1171875, "min":1.0, "stdDev":8.180620171277893, "percentileValues":[{"percentile":0.33, "value":10.0546875}, {"percentile":0.5, "value":10.0546875}, {"percentile":0.66, "value":20.1171875}, {"percentile":0.75, "value":20.1171875}, {"percentile":0.95, "value":21.1171875}, {"percentile":0.99, "value":21.1171875}, {"percentile":0.999, "value":21.1171875}]}]</span>
+<span class="bal-output bal-execute">Gauge - local_operations Current Value: 10.0</span>
+<span class="bal-output bal-execute">Gauge - registered_gauge_with_tags Snapshot: [{"timeWindow":600000, "mean":55.4140625, "max":156.9921875, "min":1.0, "stdDev":61.38432884406833, "percentileValues":[{"percentile":0.33, "value":12.0546875}, {"percentile":0.5, "value":12.0546875}, {"percentile":0.66, "value":52.2421875}, {"percentile":0.75, "value":52.2421875}, {"percentile":0.95, "value":156.9921875}, {"percentile":0.99, "value":156.9921875}, {"percentile":0.999, "value":156.9921875}]}]</span>
+<span class="bal-output bal-execute">Gauge - registered_gauge_with_tags Current Value: 156.0</span>
+<span class="bal-output bal-execute">Gauge - gauge_with_no_stats Snapshot: null</span>
+<span class="bal-output bal-execute">Gauge - gauge_with_no_stats Current Value: 100.0</span>
+<span class="bal-output bal-execute">Gauge - gauge_with_custom_stats Snapshot: [{"timeWindow":30000, "mean":300.7, "max":501.5, "min":100.0, "stdDev":141.775033062948, "percentileValues":[{"percentile":0.33, "value":200.5}, {"percentile":0.5, "value":301.5}, {"percentile":0.9, "value":501.5}, {"percentile":0.99, "value":501.5}]}]</span>
+<span class="bal-output bal-execute">Gauge - gauge_with_custom_stats Current Value: 500.0</span>
+<span class="bal-output bal-execute">------------------------------------------</span>
+<span class="bal-output bal-execute">------------------------------------------</span>
+<span class="bal-output bal-execute">Gauge - global_gauge Snapshot: [{"timeWindow":600000, "mean":30.0625, "max":45.1875, "min":15.0, "stdDev":12.298479750223873, "percentileValues":[{"percentile":0.33, "value":15.0}, {"percentile":0.5, "value":30.0625}, {"percentile":0.66, "value":30.0625}, {"percentile":0.75, "value":45.1875}, {"percentile":0.95, "value":45.1875}, {"percentile":0.99, "value":45.1875}, {"percentile":0.999, "value":45.1875}]}]</span>
+<span class="bal-output bal-execute">Gauge - global_gauge Current Value: 45.0</span>
+<span class="bal-output bal-execute">Gauge - local_operations Snapshot: [{"timeWindow":600000, "mean":13.0390625, "max":21.1171875, "min":1.0, "stdDev":8.180620171277893, "percentileValues":[{"percentile":0.33, "value":10.0546875}, {"percentile":0.5, "value":10.0546875}, {"percentile":0.66, "value":20.1171875}, {"percentile":0.75, "value":20.1171875}, {"percentile":0.95, "value":21.1171875}, {"percentile":0.99, "value":21.1171875}, {"percentile":0.999, "value":21.1171875}]}]</span>
+<span class="bal-output bal-execute">Gauge - local_operations Current Value: 10.0</span>
+<span class="bal-output bal-execute">Gauge - registered_gauge_with_tags Snapshot: [{"timeWindow":600000, "mean":377.1927083333333, "max":1887.9921875, "min":1.0, "stdDev":676.7534301455432, "percentileValues":[{"percentile":0.33, "value":12.0546875}, {"percentile":0.5, "value":52.2421875}, {"percentile":0.66, "value":156.9921875}, {"percentile":0.75, "value":157.9921875}, {"percentile":0.95, "value":1887.9921875}, {"percentile":0.99, "value":1887.9921875}, {"percentile":0.999, "value":1887.9921875}]}]</span>
+<span class="bal-output bal-execute">Gauge - registered_gauge_with_tags Current Value: 1884.0</span>
+<span class="bal-output bal-execute">Gauge - gauge_with_no_stats Snapshot: null</span>
+<span class="bal-output bal-execute">Gauge - gauge_with_no_stats Current Value: 100.0</span>
+<span class="bal-output bal-execute">Gauge - gauge_with_custom_stats Snapshot: [{"timeWindow":30000, "mean":300.7, "max":501.5, "min":100.0, "stdDev":141.775033062948, "percentileValues":[{"percentile":0.33, "value":200.5}, {"percentile":0.5, "value":301.5}, {"percentile":0.9, "value":501.5}, {"percentile":0.99, "value":501.5}]}]</span>
+<span class="bal-output bal-execute">Gauge - gauge_with_custom_stats Current Value: 500.0</span>
+<span class="bal-output bal-execute">------------------------------------------</span>
+</code></pre>
+    <br />
+    <div class="button-container">
+      <a
+        title="Counter-based metrics"
+        href="/learn/by-example/counter-metrics.html"
+        class="prev-button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="#3ad1ca"
+          class="bi bi-arrow-left"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+          />
+        </svg>
+        <div class="button-title">
+          <span>Previous</span>
+          <div>Counter-based metrics</div>
         </div>
+      </a>
+      <a
+        title="Kubernetes"
+        href="/learn/by-example/c2c-deployment.html"
+        class="next-button"
+      >
+        <div class="button-title">
+          <span>Next</span>
+          <div>Kubernetes</div>
+        </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="#3ad1ca"
+          class="bi bi-arrow-right"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+          />
+        </svg>
+      </a>
     </div>
-
-     <script>
-            $(document).ready(function() {
-
-                // hljs.initHighlightingOnLoad();
-
-                $(".switch").click(function() {
-                    $(".cCodeRight").toggleClass('cShow');
-                    $(".cCodeLeft").toggleClass('cHide');
-                });
-
-                // get code text
-                var codeSnippet = document.getElementsByClassName('FullCode')[0];
-                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
-
-                // register "copy to clipboard" event to elements with "copy" class
-                var clipboard = new ClipboardJS('.copy', {
-                    text: function(trigger) {
-                        return codeText;
-                    }
-                });
-
-                // Register events show hide tooltip on click event
-                clipboard.on('success', function(e) {
-                    setTooltip(e.trigger, 'Copied!');
-                    hideTooltip(e.trigger);
-                });
-
-                clipboard.on('error', function(e) {
-                    setTooltip(e.trigger, 'Failed!');
-                    hideTooltip(e.trigger);
-                });
-
-                $('.copy').tooltip({
-                    trigger: 'click',
-                    placement: 'bottom'
-                });
-                $("a.copy").unbind("click");
-            });
-
-            function setTooltip(btn, message) {
-                $(btn).attr('data-original-title', message)
-                    .tooltip('show');
-            }
-
-            function hideTooltip(btn) {
-                setTimeout(function() {
-                    $(btn).tooltip('hide').removeAttr('data-original-title');
-                }, 1000);
-            }
-        </script>
+  </main>
+</div>

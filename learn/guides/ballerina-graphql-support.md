@@ -1,30 +1,20 @@
 ---
-layout: ballerina-openapi-support-left-nav-pages-swanlake
-title: Ballerina OpenAPI support 
-description: Check out how the Ballerina OpenAPI tooling makes it easy for you to start developing a service documented in an OpenAPI contract.
+layout: ballerina-graphql-support-left-nav-pages-swanlake
+title: Ballerina GraphQL support 
+description: Check out how the Ballerina GraphQL tooling makes it easy for you to start developing a service documented in a GraphQL schema.
 keywords: ballerina, programming language, openapi, open api, restful api
-permalink: /learn/ballerina-openapi-support/
-active: ballerina-openapi-support
-intro: OpenAPI Specification is a specification that creates a RESTFUL contract for APIs by detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina Swan Lake supports the OpenAPI Specification version 3.0.0 onwards.
+permalink: /learn/ballerina-graphql-support/
+active: ballerina-graphql-support
+intro: Check out how the Ballerina GraphQL tooling makes it easy for you to start developing a service documented in a GraphQL schema.
 redirect_from:
-  - /learn/how-to-use-openapi-tools/
-  - /learn/how-to-use-openapi-tools
-  - /learn/using-the-openapi-tools/
-  - /learn/using-the-openapi-tools
-  - /swan-lake/learn/using-the-openapi-tools/
-  - /swan-lake/learn/using-the-openapi-tools
-  - /learn/tooling-guide/cli-tools/openapi
-  - /learn/tooling-guide/cli-tools/openapi/
-  - /learn/cli-documentation/openapi/#using-the-capabilities-of-the-openapi-tools/
-  - /learn/cli-documentation/openapi/#using-the-capabilities-of-the-openapi-tools
-  - /learn/cli-documentation/openapi/#openapi-validator-compiler-plugin/
-  - /learn/cli-documentation/openapi/#openapi-validator-compiler-plugin
-  - /learn/ballerina-openapi-support
+  - /learn/ballerina-graphql-support
 --- 
 
-Ballerina OpenAPI tooling will make it easy for you to start the development of a service documented in an OpenAPI contract in Ballerina by generating a Ballerina service and client skeletons. It enables you to take the code-first API design approach by generating an OpenAPI contract for the given service implementation.
+Every GraphQL service defines a set of types, which describe the set of possible data you can query on that service. Then, when queries come in, they are validated and executed against that schema. GraphQL schemas for a service are now most often specified using what’s known as the GraphQL SDL (schema definition language). It is also sometimes referred to as just GraphQL schema language. 
 
-The Ballerina OpenAPI tooling support provides the following capabilities.
+Ballerina GraphQL tooling will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. You can generate multiple clients in Ballerina for multiple GraphQL documents for a given GraphQL SDL. It also enables you to generate multiple Ballerina modules for multiple GraphQL projects to work with different GraphQL APIs. 
+
+The Ballerina GraphQL tooling support provides the following capabilities.
 
 > **Prerequisite:** Download and install the Ballerina Swan Lake distribution from [downloads](https://ballerina.io/downloads/).
 

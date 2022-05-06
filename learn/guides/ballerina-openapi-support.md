@@ -26,7 +26,7 @@ Ballerina OpenAPI tooling will make it easy for you to start the development of 
 
 The Ballerina OpenAPI tooling support provides the following capabilities.
 
-> **Prerequisite:** Download and install the Ballerina Swan Lake distribution from [downloads](https://ballerina.io/downloads/).
+> **Prerequisite:** Install the latest [Ballerina Swan Lake distribution](https://ballerina.io/downloads/).
 
  1. Generating Ballerina service/client stubs from a given OpenAPI contract file using the CLI tool.
  2. Exporting the OpenAPI definition from a given Ballerina service implementation using the CLI tool.

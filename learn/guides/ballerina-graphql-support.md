@@ -30,7 +30,8 @@ Create a GraphQL config file (`graphql.config1.yaml`) with the configuration bel
 
 ```yml
 schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
-documents: <File path to the GraphQL document with the GraphQL queries & mutations>
+documents:
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
 ```
 
 The client generated from the above GraphQL config file can be used in your applications to call the queries/mutations in the GraphQL document against the GraphQL API corresponding to the GraphQL schema defined in the GraphQL config file.
@@ -59,11 +60,12 @@ This will generate the files below.
 ```yml
 schema: <The web URL of the GraphQL schema.>
 documents:
-<File path to the GraphQL document with the GraphQL queries & mutations>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
 extensions:
      endpoints:
          default:
               headers: { “<Authorization>”: “<Bearer token>”, “<API_Header_Key1>”: “<API_Header_Value1>”,” <API_Header_Key2>”: “<API_Header_Value2>” }
+
 ```
 
 ## Generate multiple clients from a GraphQL config
@@ -75,10 +77,10 @@ Create a GraphQL config file (`graphql.config2.yaml`) with the configuration bel
 ```yml
 schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
 documents:
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<Add more documents based on your requirement …>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <Add more documents based on your requirement …>
 ```
 
 The clients generated from the GraphQL config file can be used in your applications to call the queries/mutations in each GraphQL document against the GraphQL API corresponding to the GraphQL schema defined in the GraphQL config file.
@@ -113,22 +115,22 @@ projects:
     <project1_name>:
 schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
 documents:
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<Add more documents based on your requirement …>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <Add more documents based on your requirement …>
     <project2_name>:
 schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
 documents:
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<Add more documents based on your requirement …>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <Add more documents based on your requirement …>
     <project3_name>:
 schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
 documents:
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<File path to the GraphQL document with the GraphQL queries & mutations>
-<Add more documents based on your requirement …>
-    <Add more projects based on your requirement …>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <File path to the GraphQL document with the GraphQL queries & mutations>
+    - <Add more documents based on your requirement …>
+    - <Add more projects based on your requirement …>
 ```
 
 This enables you to work with multiple GraphQL APIs. Each GraphQL API should be defined under a separate project in the GraphQL config file. The clients generated under a separate Ballerina module related to each project from the GraphQL config file can be used in your applications to call the queries/mutations in each GraphQL document against the GraphQL API corresponding to the GraphQL schema defined under each project in the GraphQL config file.

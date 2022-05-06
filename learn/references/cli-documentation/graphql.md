@@ -18,7 +18,7 @@ The GraphQL to Ballerina command supports several usages in the Ballerina GraphQ
 bal graphql [-i | --input] <graphql-configuration-file-path> [-o | --output] <output-location> 
 ```
 
-The command line arguments below can be used with the command for each particular purpose as described below.
+The command-line arguments below can be used with the command for each particular purpose as described below.
 
 | Argument       | Description                                                                                                                                                                                                                                                                                                                                                                   |
 |----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

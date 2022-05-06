@@ -2,7 +2,7 @@
 layout: ballerina-graphql-support-left-nav-pages-swanlake
 title: Ballerina GraphQL support 
 description: Check out how the Ballerina GraphQL tooling makes it easy for you to start developing a service documented in a GraphQL schema.
-keywords: ballerina, programming language, graphql, sdl, schema difinition language
+keywords: ballerina, programming language, graphql, sdl, schema definition language
 permalink: /learn/ballerina-graphql-support/
 active: ballerina-graphql-support
 intro: Every GraphQL service defines a set of types, which describe the set of possible data you can query on that service and when queries come in, they are validated and executed against that schema. 

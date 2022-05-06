@@ -1,15 +1,15 @@
 - title: Get Started
-  url: /learn/#get-started/
+  url: /learn/#get-started
   active: get-started
 
 - title: Guides
-  url: /learn/#guides/
+  url: /learn/#guides
   active: guides
 
 - title: References
-  url: /learn/#references/ 
+  url: /learn/#references
   active: references
 
 - title: Talks
-  url: /learn/#talks/ 
+  url: /learn/#talks 
   active: talks

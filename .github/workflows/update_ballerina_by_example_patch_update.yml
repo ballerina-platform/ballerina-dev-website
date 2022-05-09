@@ -30,6 +30,11 @@ jobs:
       - name: Copy examples to dev website repo
         run: cp -r ./ballerina-distribution/examples .
 
+      - name: Delete already existing BBE HTML files
+        run: |
+          find ./learn/by-example -type f \( -name "*.html" ! -name "404.html" ! -name "index.html" \) -delete
+          ls ./learn/by-example
+
       - name: Run markdown to HTML generation script
         run: node ./js/markdownConverter.js ./examples ./learn/by-example
 
@@ -53,6 +58,6 @@ jobs:
         shell: bash
         run: |
           curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-          bin/hub pull-request -b dev -m '[Automated] Update Ballerina By Example(BBEs) pages'
+          bin/hub pull-request -b release-2201.1.0 -m '[Automated] Update Ballerina By Example(BBEs) pages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

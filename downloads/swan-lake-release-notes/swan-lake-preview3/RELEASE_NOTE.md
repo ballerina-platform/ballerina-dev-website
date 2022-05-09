@@ -71,7 +71,7 @@ public static BString getFullName(ObjectValue objectValue) {
 }
 ```
 
-##### Order by clause for sorting 
+##### `Order by` clause for sorting 
 
 This release introduces the `order by` clause support for sorting in query expression/action. An order-by clause is executed by constructing a list of entries.
 
@@ -127,9 +127,9 @@ DeptPerson[] deptPersonList =
         };
 ```
 
-#### Standard Library
+#### Standard library
 
-##### SQL Connectors
+##### SQL connectors
 
 Stored procedures can now be executed through SQL connectors (JDBC & MySQL). 
 
@@ -153,15 +153,15 @@ if (ret is error) {
 }
 
 ```
-##### Module Organization
+##### Module organization
 
 The `ballerina/nats` library was moved to Ballerina Central. Previously, this module was packed in the Ballerina distribution. With this change, this library can now be released independently.
 
-#### Developer Tools
+#### Developer tools
 
-##### Language Server
+##### Language server
 
-###### Introducing AI-based `Data Mapping` Code Action
+###### Introducing AI-based `Data Mapping` code action
 
 Two record types can now be mapped automatically using the `Data Mapping` code action. Once a possible record mapping instance is identified, it suggests a mapping based on an AI algorithm. A mapping function will be generated automatically and added to the workspace to perform the record mapping.
 
@@ -214,7 +214,7 @@ Grade grades = mapNameAndGradeToGrade(student);
 
 For more information, see [Code Actions](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
 
-##### Test Framework
+##### Test framework
 
 ###### Support single test execution
 
@@ -314,7 +314,7 @@ function afterSuiteFunc2() {
 
 #### Code to Cloud
 
-##### Azure Functions Support
+##### Azure Functions support
 
 Ballerina now supports writing serverless functions using the Azure Functions framework. 
 

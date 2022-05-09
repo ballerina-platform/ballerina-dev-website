@@ -30,7 +30,7 @@ jobs:
       - name: Copy examples to dev website repo
         run: cp -r ./ballerina-distribution/examples .
 
-      - name: Delete already existing BBE HTML files
+      - name: Delete already existing BBE HTMLs
         run: |
           find ./learn/by-example -type f \( -name "*.html" ! -name "404.html" ! -name "index.html" \) -delete
           ls ./learn/by-example

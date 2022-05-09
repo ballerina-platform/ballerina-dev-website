@@ -29,7 +29,7 @@ If you are using an **update tool version below 0.8.14**, execute the `ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
-## Language Updates
+## Language updates
 
 ### Improvements
 
@@ -60,49 +60,49 @@ public function main() {
 }
 ```
 
-### Bug Fixes
+### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta6](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta6%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).
 
-## Standard Library Updates
+## Standard library updates
 
-### New Features
+### New features
 
-#### `graphql` Package
+#### `graphql` package
 Added support for the GraphQL list type inputs.
 
-#### `http` Package
+#### `http` package
 Introduced request and request error interceptors at the service level.
 
-#### `xmldata` Package
+#### `xmldata` package
 Added support to convert an XML to a record.
 
-#### `time` Package
+#### `time` package
 Added time zone handling support.
 
 ### Improvements
 
-#### `http` Package
+#### `http` package
 Allowed listener-level interceptors to have only the default path.
 
-### Breaking Changes
+### Breaking changes
 
-#### `graphql` Package
+#### `graphql` package
 Deprecated the `add` function in the `graphql:Context` object and introduced the `set` function.
 
-**Old Method:**
+**Old method:**
 ```ballerina
 graphql:Context context = new;
 graphql:Error? result = context.add("key", "<value>"); // Can return an error
 ```
 
-**New Method:**
+**New method:**
 ```ballerina
 graphql:Context context = new;
 context.set("key", "<value>"); // Does not return anything
 ```
 
-#### `http` Package
+#### `http` package
 - Changed the `RequestContext:add` function to `RequestContext:set`.
 
   ```ballerina
@@ -121,15 +121,15 @@ context.set("key", "<value>"); // Does not return anything
   http:HeaderValue[] values = check http:parseHeader("text/plain;level=1;q=0.6, application/xml;level=2");
   ```
 
-### Bug Fixes
+### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta6](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+Beta6%22+label%3AType%2FBug).
 
-## Developer Tools Updates
+## Developer tools updates
 
 ### Improvements
 
-#### OpenAPI Tool 
+#### OpenAPI tool 
 
 - Added the `--with-tests` option for the OpenAPI client generation command, which will generate a test file template for all the relevant remote functions of the client. For example,
 
@@ -144,19 +144,19 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta6](https://github
 - Introduced the `--target-dir` flag to the `run`, `test`, `doc`, and `clean` commands. With this, you can pass a custom directory to the aforementioned commands.
 - Added support for creating packages using template packages in Ballerina Central. For example, `bal new -t wso2/choreo_sample`.
 
-### Breaking Changes
+### Breaking changes
 
-#### Test Framework 
+#### Test framework 
 
 Improved the `assertFail` function to eliminate the fake return/panic that had to be added after the statement. The signature of the function is changed as follows.
 
-**Old Signature:** 
+**Old signature:** 
 
 ```ballerina
 public isolated function assertFail(string msg = "Test Failed!");
 ```
 
-**New Signature:** 
+**New signature:** 
 ```ballerina
 public isolated function assertFail(string msg = "Test Failed!") returns never;
 ```
@@ -174,7 +174,7 @@ For example, the function below, which compiled without an issue in Beta5 will t
 }
 ```
 
-### Bug Fixes
+### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Beta3 of the repositories below.
 
@@ -182,9 +182,9 @@ To view bug fixes, see the GitHub milestone for Swan Lake Beta3 of the repositor
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta6%22+label%3AType%2FBug)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+label%3AArea%2FDebugger+milestone%3A%22Ballerina+Swan+Lake+-+Beta6%22+is%3Aclosed)
 
-## Ballerina Packages Updates
+## Ballerina packages updates
 
-### New Features
+### New features
 
 Added support to add an `icon` field under the `[package]` table. For example,
 ```toml

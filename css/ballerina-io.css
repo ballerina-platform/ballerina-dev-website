@@ -1748,7 +1748,7 @@ pre[class*="language-"] {
 }
 
 code {
-    background: #f5f5f5 !important;
+    background: #f5f5f5;
     color: #555555;
 }
 

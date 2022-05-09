@@ -4,11 +4,9 @@ title: 2201.0.2 (Swan Lake)
 permalink: /downloads/swan-lake-release-notes/2201-0-2/
 active: 2201-0-2
 redirect_from: 
-    - /downloads/swan-lake-release-notes/2201-0-2
     - /downloads/swan-lake-release-notes/2201-0-2-swan-lake/
     - /downloads/swan-lake-release-notes/2201-0-2-swan-lake
-    - /downloads/swan-lake-release-notes/
-    - /downloads/swan-lake-release-notes
+    - /downloads/swan-lake-release-notes/2201-0-2
 ---
 
 ## Overview of Ballerina Swan Lake 2201.0.2

@@ -36,4 +36,9 @@ _site/
 
 # macOS
 .DS_Store
+
+# Node modules
+/node_modules
+/examples
+package-lock.json
              

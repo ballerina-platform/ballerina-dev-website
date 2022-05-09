@@ -28,11 +28,11 @@ If you are using an **update tool version below 0.8.14**, execute the `ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
-## Language Updates
+## Language updates
 
-### New Features
+### New features
 
-#### Introduction of the `!is` Operator
+#### Introduction of the `!is` operator
 
 The `!is` operator has been introduced to check if a value does not belong to a given type. This is the negation of the `is` operator.
 
@@ -48,7 +48,7 @@ public function main() {
 }
 ```
 
-#### Inferring Types for Numeric Literals in Additive and Multiplicative Expressions
+#### Inferring types for numeric literals in additive and multiplicative expressions
 
 The types for numeric literals in additive and multiplicative expressions are now inferred from the contextually-expected type.
 
@@ -61,7 +61,7 @@ decimal c = 10.0 * 3;
 decimal d = 10 + 5 - 3.0;
 ```
 
-#### Isolated Inference
+#### Isolated inference
 
 The compiler now infers `isolated` for service objects, class definitions, variables, and functions in scenarios in which if all of them explicitly specify an `isolated` qualifier, they would meet the requirements for isolated functions and isolated objects.
 
@@ -96,7 +96,7 @@ service / on new http:Listener(8080) {
 
 The compiler does not infer `isolated` for any constructs that are exposed outside the module.
 
-#### Type Narrowing in the `where` Clause of a Query Expression/Action
+#### Type narrowing in the `where` clause of a query expression/action
 
 The `where` clause in a query now narrows the types similar to `if` statements.
 
@@ -118,7 +118,7 @@ public function main() returns error? {
 
 ### Improvements
 
-#### Enum Declarations with Duplicate Members
+#### Enum declarations with duplicate members
 
 Enum declarations can now have duplicate members.
 
@@ -139,7 +139,7 @@ enum TrailStatus {
 
 However, it is an error if the same enum declaration has duplicate members. Similarly, it is also an error if different enums initialize the same member with different values.
 
-#### Use of `string:Char` as the Static Type of String Member Access
+#### Use of `string:Char` as the static type of string member access
 
 The static type of the member access operation on a value of type `string` has been updated to be `string:Char` instead of `string`.
 
@@ -152,7 +152,7 @@ public function main() {
 }
 ```
 
-#### Directly Calling Function-typed Fields of an Object
+#### Directly calling function-typed fields of an object
 
 Fields of an object that are of a function type can now be called directly via an object value using the method call syntax.
 
@@ -183,7 +183,7 @@ public function main() {
 }
 ```
 
-#### Tuple to JSON Compatibility
+#### Tuple to JSON compatibility
 
 A tuple value whose members are JSON compatible can now be used in a context that expects a JSON value.
 
@@ -193,7 +193,7 @@ A tuple value whose members are JSON compatible can now be used in a context tha
 json b = a;
 ```
 
-#### Error Return in the `init` Method of a Service Declaration
+#### Error return in the `init` method of a service declaration
 
 Previously, the `init` method of a service declaration could not have a return type containing an error. That restriction has been removed with this release.
 If the `init` method of a service declaration returns an error value, it will result in a module initialization failure.
@@ -210,7 +210,7 @@ service / on new http:Listener(8080) {
 }
 ```
 
-#### Using `check` in Object Field Initializers
+#### Using `check` in object field initializers
 
 `check` can now be used in the initializer of an object field if the class or object constructor expression has an `init` method with a compatible return type (i.e., the error type that the expression could evaluate to is a subtype of the return type of the `init` method).
 
@@ -242,7 +242,7 @@ public function main() {
 }
 ```
 
-#### Wildcard Binding Pattern Support in Variable Declarations
+#### Wildcard binding pattern support in variable declarations
 
 The wildcard binding pattern can now be used in a variable declaration with a value that belongs to type `any`.
 
@@ -259,7 +259,7 @@ Using the wildcard binding pattern when the value is an error will result in a c
 var _ = error("custom error"); // Compilation error.
 ```
 
-#### Relaxed Static Type Requirements for `==` and `!=`
+#### Relaxed static type requirements for `==` and `!=`
 
 Previously, `==` and `!=` were allowed only when both operands were of static types that are subtypes of `anydata`. This has now been relaxed to allow `==` and `!=` if the static type of at least one operand is a subtype of `anydata`.
 
@@ -272,7 +272,7 @@ if x == () {
 }
 ``` 
 
-### Bug Fixes
+### Bug fixes
 
 - In a stream type `stream<T, C>;` the completion type `C` should always include nil if it is a bounded stream. A bug which resulted in this not being validated for stream implementors has been fixed.
     ```ballerina
@@ -366,11 +366,11 @@ The code snippet above, which previously printed `\u0061pple` will now print `\u
 
 To view all bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta3%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).
 
-## Runtime Updates
+## Runtime updates
 
 ### Improvements
 
-#### Improved Configurable Variables to Support XML Types Through TOML Syntax
+#### Improved configurable variables to support XML types through TOML syntax
 
 The `configurable` feature is improved to support variables of XML types through the TOML syntax.
 
@@ -386,7 +386,7 @@ the value can be provided in the `Config.toml` file as follows.
 xmlVar = "<book><name>Sherlock Holmes</name></book>"
 ```
 
-#### Support to Provide Extra Fields for Configurable Variables of Open Record Types
+#### Support to provide extra fields for configurable variables of open record types
 
 The `configurable` feature is improved to support configuring extra fields in record variables through TOML syntax.
 
@@ -439,7 +439,7 @@ num1 = 11
 num2 = 26
 ```
 
-#### Improved the Printed Error Stacktrace to Include the Cause
+#### Improved the printed error stacktrace to include the cause
 
 The error stack trace has been improved to include the error cause locations. Stack frames of the wrapped error causes are also added to the stack trace.
 
@@ -474,9 +474,9 @@ at cause_location.0:x(main.bal:11)
 cause_location.0:y(main.bal:8)
 ... 2 more
 ```
-#### New Runtime Java APIs
+#### New runtime Java APIs
 
-##### API to Invoke a Ballerina Object Method Asynchronously
+##### API to invoke a Ballerina object method asynchronously
 
 New Java Runtime APIs are introduced to execute a Ballerina object method from Java. The object method caller can decide whether to execute the object method sequentially or concurrently using the appropriate API.
 
@@ -495,7 +495,7 @@ if (isIsolated) {
 
 > **Info:** The previous `invokeMethodAsync` methods are deprecated.
 
-#####  API to Retrieve whether a Ballerina Object or Method is `isolated`
+#####  API to retrieve whether a Ballerina object or method is `isolated`
 
 The two new APIs below are introduced to the `ObjectType`.
 
@@ -504,12 +504,12 @@ boolean isIsolated();
 boolean isIsolated(String methodName);
 ```
 
-#### Removed Fully-Qualified Package Version from Runtime
+#### Removed fully-qualified package version from runtime
 
 The fully-qualified package version has been removed from the runtime and will only have the major version. Therefore, when you provide the version to the Ballerina runtime Java API (e.g., when creating values), you need to provide only the package runtime version. The stack traces will contain only the major package versions.
 
 
-### Bug Fixes
+### Bug fixes
 
 The completion type of a stream is now considered in runtime assignability checks.
 
@@ -522,14 +522,14 @@ boolean streamCheck = stm is stream<int>;
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta3%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
 
-## Standard Library Updates
+## Standard library updates
 
-### New Features
+### New features
 
-#### `crypto` Package
+#### `crypto` package
 - Improved the hash APIs for cryptographic salt
 
-#### `graphql` Package
+#### `graphql` package
 - Added field alias support for GraphQL documents
 - Added variable support in GraphQL requests
 - Added mutation support for GraphQL services
@@ -538,7 +538,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github
 - Added block string support
 - Added `graphql:Context` to support sharing meta-information between the resolvers
 
-#### `grpc` Package
+#### `grpc` package
 - Added declarative auth configurations
 - Added timestamp, duration, and struct type support
 - Added OAuth2 JWT bearer grant type support for the client
@@ -553,7 +553,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github
     service "HelloWorld" on new grpc:Listener(9090) {
     ```
 
-#### `http` Package
+#### `http` package
 - Enabled HTTP trace and access log support
 - Added HATEOAS link support
 - Introduced the `http:Cache` annotation to the resource signature
@@ -565,17 +565,17 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github
 - Introduce service config treatNilableAsOptional for query and header params
 - Add support to URL with empty scheme in http:Client
 
-#### `jwt` Package
+#### `jwt` package
 - Added HMAC signature support for JWT
   
-#### `log` Package
+#### `log` package
 - Added observability span context values to the log messages when observability is enabled
 - Introduced a function(`log:setOutputFile`) to write the log output to a file
 
-#### `oauth2` Package
+#### `oauth2` package
 - Added JWT bearer grant type support
     
-#### `sql` Package
+#### `sql` package
 - Added support for the `queryRow()` in the database connectors. This method allows retrieving a single row as a record or a single value from the database.
     ```ballerina
     record{} queryResult = sqlClient->queryRow(`SELECT * FROM ExTable where row_id = 1`);
@@ -596,29 +596,29 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github
     sql:ParameterizedQuery sqlQuery = sql:queryConcat(`SELECT * FROM DataTable WHERE id IN (`, sql:arrayFlattenQuery(ids), `)`);
     ```
 
-#### `websocket` Package
+#### `websocket` package
 - Added the OAuth2 JWT bearer grant type support for the client
 - Introduced retrying for the WebSocket client
 - Introduced the header annotation and query param binding support
 
-#### `ftp` Package
+#### `ftp` package
 - Added SFTP and related security
 - Added the support for an anonymous user
 
 ### Improvements
 
-#### `graphql` Package
+#### `graphql` package
 Moved the `maxQueryDepth` validation from compile-time to runtime
 
-#### `http` Package
+#### `http` package
 - Added support for the `map<json>` as the query parameter type
 - Added support for nilable client data binding types
 
-#### `websocket` Package
+#### `websocket` package
 - Made the WebSocket caller isolated
 - Introduced a write timeout for the WebSocket client
 
-#### `ftp` Package
+#### `ftp` package
 - Introduced the byte stream related functionality to the FTP module
 - Renamed the `BasicAuth` record to `Credentials` in the configuration
 - Updated to return an error once an error occurs while the FTP client is initialized
@@ -627,17 +627,17 @@ Moved the `maxQueryDepth` validation from compile-time to runtime
 - Changed the `boolean` typed `compressInput` parameter of the `put` method of the FTP client to an `enum` type with the name `compressionType`
 - Made the access level of the `WatchEvent` to `readonly` in the FTP listener
 
-#### `sql` Package
+#### `sql` package
 - Improved the throughput performance with asynchronous database queries
 - Introduced new array out parameter types in call procedures
 - Changed the return type of the SQL query API to include the completion type as nil in the stream. The SQL query code below demonstrates this change</li>
     
-    **Previous Syntax:**
+    **Previous syntax:**
     ```ballerina
     stream<RowType, error> resultStream = sqlClient->query(``);
     ```
 
-    **New Syntax:**
+    **New syntax:**
     ```ballerina
     stream<RowType, error?> resultStream = sqlClient->query(``);
     ```
@@ -645,24 +645,24 @@ Moved the `maxQueryDepth` validation from compile-time to runtime
 - Improved the error types in the SQL module with the introduction of typed errors for data manipulation under the `sql:ApplicationError`
 - Removed support for the string query parameter
 
-    **Previous Syntax:**
+    **Previous syntax:**
     ```ballerina
     stream<RowType, error?> resultStream = sqlClient->query("SELECT * FROM Students;");
     ```
 
-    **New Syntax:**
+    **New syntax:**
     ```ballerina
     stream<RowType, error?> resultStream = sqlClient->query(`SELECT * FROM Students;`);
     ```
 
-#### `io` Package
+#### `io` package
 Changed the `io:readin` function input parameter to optional. In the previous API, it was required to pass a value to be printed before reading the user input as a string. It was removed due to the breaking change and made optional. It is not recommended to pass a value to print it in the console.
 
-### Bug Fixes
+### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+Beta3%22+label%3AType%2FBug).
 
-## Code to Cloud Updates
+## Code to Cloud updates
 
 ### Improvements
 - Added a flag to disable the Docker image generation
@@ -670,11 +670,11 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github
 - Improved diagnostics for failed value retrievals
 - Added support for multiple volumes
 
-### Bug Fixes
+### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Beta3%22).
 
-## Dependency Management Updates
+## Dependency management updates
 
 With Swan Lake Beta3, the way how dependencies of a package are managed has been changed. The new implementation will ensure the following. 
 
@@ -700,11 +700,11 @@ The following changes have been introduced.
     distibution = "slbeta3"
     ```
     
-## Developer Tools Updates
+## Developer tools updates
 
-### New Features
+### New features
 
-#### Language Server
+#### Language server
 
 - Added the completion extension API for TOML configuration files
 - Added completion support for the `Ballerina.toml` file
@@ -724,7 +724,7 @@ The following changes have been introduced.
     - Function, object method, and action invocations with rest arguments
 - Added evaluation support for expressions with import references
     
-#### Ballerina OpenAPI Tool
+#### Ballerina OpenAPI tool
 - Introduced a new command-line option to generate all the record fields that are not specifically mentioned as `nullable:false` in the OpenAPI schema property as nullable to reduce the type conversion errors in the OpenAPI to Ballerina command.
 
   >`bal openapi -i <openapi-contract-file>  --nullable`
@@ -741,16 +741,16 @@ The following changes have been introduced.
 
 ### Improvements
 
-#### Ballerina OpenAPI Tool
+#### Ballerina OpenAPI tool
 
-##### Ballerina OpenAPI Client and Schema Generation Improvements for the OpenAPI to Ballerina Command
+##### Ballerina OpenAPI client and schema generation improvements for the OpenAPI to Ballerina command
 - Added support to generate suitable client connector authentication mechanisms by mapping the security schemes given in the OpenAPI Specification (OAS)
 - Added support to generate API documentation for the client init method, remote functions, and records
 - Added support to facilitate you to set common client configurations when initializing the connector 
 - Added support to generate records for nested referenced schemas in the OpenAPI specification 
 - Improved the OpenAPI tool to select the `https` server URL when multiple URLs are given in the OpenAPI Specification
  
-##### The Ballerina to OpenAPI Command Improvements
+##### The Ballerina to OpenAPI command improvements
 - Added support for the Language Server extension 
 - Improved the response status code map to `202` when the resource function does not have a return type
 - Improved mapping different status code responses in the resource function
@@ -761,7 +761,7 @@ The following changes have been introduced.
 - Improved reference resolving for accessing a separate module data type to map OAS object schemas
 - Improved nullable record field mapping to an OAS schema property
  
-### Bug Fixes
+### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Beta3 of the repositories below.
 

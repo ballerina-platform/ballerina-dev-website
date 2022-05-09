@@ -8,6 +8,8 @@ active: graphical
 redirect_from:
   - /why/sequence-diagrams-for-programming/
   - /why/sequence-diagrams-for-programming
+  - /why-ballerina/sequence-diagrams-for-programming/
+  - /why-ballerina/sequence-diagrams-for-programming
   - /learn/user-guide/why-ballerina/sequence-diagrams-for-programming
   - /learn/user-guide/why-ballerina/sequence-diagrams-for-programming/
   - /learn/user-guide/why-ballerina/graphical

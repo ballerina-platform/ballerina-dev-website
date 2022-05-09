@@ -37,7 +37,7 @@ This release includes a new set of language features along with improvements and
 
 You can use the update tool to update to Ballerina Swan Lake Preview 7 as follows.
 
-##### For Existing Users
+##### For existing users
 
 If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina update tool](http://ballerina.io/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the update tool updated to its latest version. 
                         
@@ -49,7 +49,7 @@ If you are already using Ballerina, you can directly update your distribution to
 
 However, if you are using a Ballerina version below 1.1.0, install via the [installers](https://ballerina.io/downloads/).
 
-##### For New Users
+##### For new users
 
 If you have not installed Ballerina, then download the [installers](https://ballerina.io/downloads/) to install.
 
@@ -71,8 +71,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 
 ### What is new in Ballerina Swan Lake Preview 7
 
-#### Ballerina Packages 
-
+#### Ballerina packages 
 
 With this release we will be introducing Ballerina Packages. Ballerina Package is a bundle that consist of one or more Ballerina modules. Going forward, the Ballerina Package will be used to share Ballerina libraries. 
 
@@ -85,7 +84,7 @@ For Swan Lake releases Ballerina Central will support users to push and pull Bal
 
 #### Language
 
-##### Support for Configurability
+##### Support for configurability
 
 Now, Ballerina supports configuring module-level, basic variables at the program execution. The value provided in the program will be overridden by the value specified in the configuration file. These variables can be initialized using the `configurable` keyword in the following ways. 
 
@@ -114,7 +113,7 @@ booleanVar = false
 
 Currently, Ballerina supports configurable variables of the types `int`, `float`, `boolean`, and `string`. Future versions will add support for configurable variables of any type that is a subtype of `readonly&anydata`.
 
-##### Isolated Variables
+##### Isolated variables
 
 Module variable declarations with an initial value expression can now be marked as `isolated`. An `isolated` variable can be accessed only within a `lock` statement.
 
@@ -143,7 +142,7 @@ isolated function resetCities() {
 }
 ```
 
-##### Isolated Object Constructor Expressions
+##### Isolated object constructor expressions
 
 Several changes have been introduced to how an object constructor expression can construct an `isolated` object. Now, the `isolated` qualifier can be used with an object constructor expression to construct an `isolated` object.
 
@@ -194,9 +193,9 @@ public function main() {
 }
 ```
 
-##### Support for Distinct Objects
+##### Support for distinct objects
 
-###### Distinct Object Type
+###### Distinct object type
 
 An object type definition can now define a `distinct` object type.
 
@@ -243,13 +242,13 @@ The `ColoredCircle` type is a distinct type that is a subtype of the `Circle` di
 
 Although `ColoredCircleLookAlike` is structurally a subtype of the `Circle` type, since `Circle` is a distinct type and `ColoredCircleLookAlike` does not include it via object type inclusion,`ColoredCircleLookAlike` is not a subtype of `Circle`.
 
-###### Distinct Object Constructor
+###### Distinct object constructor
 
 If no type reference is provided in the object constructor, the contextually-expected type must be definite and the type-ids of the constructed object will be the type-ids of the contextually-expected type. This allows using the object constructor to create distinct objects.
 
 #### Runtime
 
-##### Support for DynamicListener
+##### Support for `DynamicListener`
 
  A dynamic listener can be registered and deregistered at runtime as follows.
 
@@ -269,7 +268,7 @@ public type DynamicListener object {
 };
 ```
 
-##### New Runtime APIs
+##### New runtime APIs
 
 The `io.ballerina.runtime.api.` package will only be exposed to the outside. The runtime API package and its sub packages will contain the required APIs to handle the runtime constructs as follows.
 
@@ -286,9 +285,9 @@ The `io.ballerina.runtime.api.` package will only be exposed to the outside. The
 
 None of the Ballerina runtime internal exceptions will be exposed. The `BError` class should be used to handle Ballerina runtime errors. The `io.ballerina.runtime.api.creators.ErrorCreator` class provides the required APIs to create runtime errors.                                                                         
 
-#### Standard Library
+#### Standard library
 
-##### Revamp File and Filepath Modules
+##### Revamp `file` and `filepath` modules
 
 The `file` and `filepath` APIs have been revamped in this release. A summarized list of the changes done is as follows.
 
@@ -310,7 +309,7 @@ The `file` and `filepath` APIs have been revamped in this release. A summarized 
     - `createTempDir` - to create a temporary directory as above.
     - `test` - checks if a file/directory exists, readable, writable, etc.
 
-##### Improved IO Module
+##### Improved `io` module
 
 The new high-level APIs below were introduced to provide I/O operations.
 
@@ -322,7 +321,7 @@ The new high-level APIs below were introduced to provide I/O operations.
     
     E.g., `io:fileReadBlocksAsStream`, `io:fileReadLinesAsStream`, and `io:fileReadCsvAsStream`
 
-#### Language Server
+#### Language server
 
 1. Introduced a new code-action `Add Type Cast` to add a typecast when variable assignment fails due to incompatible types.
 
@@ -360,7 +359,7 @@ The new high-level APIs below were introduced to provide I/O operations.
 
 2. Removed the Kubernetes module and replaced it by the `c2c` module.
 
-#### Breaking Changes
+#### Breaking changes
 
 1. It is no longer possible to specify the version in an import declaration. A specific version can be imported by specifying the package dependency along with the version in the `Ballerina.toml` file.
 

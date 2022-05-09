@@ -3,22 +3,20 @@ layout: ballerina-newsletter
 title: Ballerina Newsletter
 description: This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 keywords: ballerina, community, ballerina community, newsletter
-permalink: /community/ballerina-newsletter/
+permalink: 
 redirect_from:
-    - /community/newsletter/
-    - /community/newsletter
+
 ---
 This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
 <ul class="cInlinelinklist">
-<li><a class="cGreenLinkArrow" href="/community/newsletter/2022-2/">Latest Ballerina Newsletter</a></li>
+<li><a class="cGreenLinkArrow" href="/community/newsletter/2022-1/">Latest Ballerina Newsletter</a></li>
 </ul>
 
 <div class="col-sm-12 col-md-12" style="padding:0;">
 <h2 id="past-issues">Past issues </h2>
 
 <ul class="cInlinelinklist cPastIssues">
-    <li><a class="cGreenLinkArrow" href="/community/newsletter/2022-1/">2022-1</a>February 17, 2022</li>
     <li><a class="cGreenLinkArrow" href="/community/newsletter/2021-7/">2021-7</a>December 21, 2021</li>
     <li><a class="cGreenLinkArrow" href="/community/newsletter/2021-6/">2021-6</a>November 24, 2021</li>
     <li><a class="cGreenLinkArrow" href="/community/newsletter/2021-5/">2021-5</a>October 21, 2021</li>

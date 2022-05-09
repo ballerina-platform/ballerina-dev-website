@@ -1,7 +1,6 @@
 name: Create PR for new Swan Lake BBEs pages on distribution repo changes
 
 on: 
-  repository_dispatch:
   workflow_dispatch:
 
 jobs:
@@ -26,12 +25,18 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+          ref: master
 
     - name: Clone ballerina-release
       run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-release.git
 
     - name: Clone ballerina-distribution
-      run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-distribution.git
+      run: |
+        git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-distribution.git
+        cd ballerina-distribution
+        git checkout -b 2201.0.x origin/2201.0.x
+        cd ..
 
     - name: Generate BBEs
       run: |

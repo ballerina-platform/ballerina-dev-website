@@ -226,7 +226,7 @@ public function main() {
 }
 ```
 
-#### Standard Library
+#### Standard library
 
 ##### HTTP
 
@@ -276,13 +276,13 @@ The following standard libraries were moved to Ballerina Central. Previously, th
 - ballerina/websub
 - ballerinax/rabbitmq
 
-#### Developer Tools
+#### Developer tools
 
-##### Test Framework
+##### Test framework
 
-###### Improved Mocking API
+###### Improved mocking API
 
-**Object Mocking**
+**Object mocking**
 
 The syntax for initializing a mock object was improved to remove the cast.
 
@@ -298,7 +298,7 @@ New syntax:
 http:Client mockHttpClient = test:mock(http:Client);
 ```
 
-**Function Mocking**
+**Function mocking**
 
 The mocking API now supports scoping and stubbing of mock functions that are declared for functions in imported modules.
 With the above support, the `@MockFn {}` and `@Mock {}` annotations have been unified and now all function mocks can be declared with the `@Mock {}` annotation.

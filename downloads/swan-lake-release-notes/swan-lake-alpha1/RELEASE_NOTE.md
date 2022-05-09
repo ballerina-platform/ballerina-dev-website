@@ -12,69 +12,69 @@ redirect_from:
 This Alpha1 release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, standard library, and developer tooling. This release note lists only the features and updates added after the eighth preview of Ballerina Swan Lake.
 
 - [Updating Ballerina](#updating-ballerina)
-    - [For Existing Users](#for-existing-users)
-    - [For New Users](#for-new-users)
+    - [For existing users](#for-existing-users)
+    - [For new users](#for-new-users)
 - [Highlights](#highlights)
 - [What is new in Ballerina Swan Lake Alpha1](#what-is-new-in-ballerina-swan-lake-alpha1)
     - [Language](#language)
-        - [Intersection Type Support for Errors](#intersection-type-support-for-errors)
-        - [Support for Passing a Closed Record as the Rest Argument](#support-for-passing-a-closed-record-as-the-rest-argument)
-        - [Support for the Empty XML Value](#support-for-the-empty-xml-value)
-        - [Improvements to the Match Statement](#improvements-to-the-match-statement)
-        - [Support for Cyclic Union Types](#support-for-cyclic-union-types)
-        - [Updated Syntax for User-Defined Error Construction](#updated-syntax-for-user-defined-error-construction)
-        - [Changes to Casting with Errors](#changes-to-casting-with-errors)
-        - [Changes to `toString` and `toBalString` with Errors](#changes-to-tostring-and-tobalstring-with-errors)
-        - [Changes to Object Type Inclusion with Qualifiers](#changes-to-object-type-inclusion-with-qualifiers)
-        - [Changes to Record Type Inclusion with Rest Descriptors](#changes-to-record-type-inclusion-with-rest-descriptors)
-        - [Improved Listener Declaration](#improved-listener-declaration)
-        - [Referring Lang Library Modules Without Using Quoted Identifiers](#referring-lang-library-modules-without-using-quoted-identifiers)
-        - [Improved Lang Library Methods](#improved-lang-library-methods)
+        - [Intersection type support for errors](#intersection-type-support-for-errors)
+        - [Support for passing a closed record as the rest argument](#support-for-passing-a-closed-record-as-the-rest-argument)
+        - [Support for the empty XML value](#support-for-the-empty-xml-value)
+        - [Improvements to the match statement](#improvements-to-the-match-statement)
+        - [Support for cyclic union types](#support-for-cyclic-union-types)
+        - [Updated syntax for user-defined error construction](#updated-syntax-for-user-defined-error-construction)
+        - [Changes to casting with errors](#changes-to-casting-with-errors)
+        - [Changes to `toString` and `toBalString` with errors](#changes-to-tostring-and-tobalstring-with-errors)
+        - [Changes to object type inclusion with qualifiers](#changes-to-object-type-inclusion-with-qualifiers)
+        - [Changes to record type inclusion with rest descriptors](#changes-to-record-type-inclusion-with-rest-descriptors)
+        - [Improved listener declaration](#improved-listener-declaration)
+        - [Referring lang library modules without using quoted identifiers](#referring-lang-library-modules-without-using-quoted-identifiers)
+        - [Improved lang library methods](#improved-lang-library-methods)
     - [Packages](#packages)
-        - [Introduction of Hierarchical Package Names](#introduction-of-hierarchical-package-names)
-        - [Introduction of the Dependencies TOML file](#introduction-of-the-dependencies-toml-file)
-        - [Support to Accept an Empty Ballerina TOML File](#support-to-accept-an-empty-ballerina-toml-file)
+        - [Introduction of hierarchical package names](#introduction-of-hierarchical-package-names)
+        - [Introduction of the dependencies TOML file](#introduction-of-the-dependencies-toml-file)
+        - [Support to accept an empty Ballerina TOML file](#support-to-accept-an-empty-ballerina-toml-file)
     - [Runtime](#runtime)
         - [Configurable](#configurable)
-    - [Developer Tools](#developer-tools)
+    - [Developer tools](#developer-tools)
         - [Language Server](#language-server)
         - [Project API](#project-api)
         - [Debugger](#debugger)
-        - [Test Framework](#test-framework)
-        - [Bindgen Tool](#bindgen-tool)
-        - [Maven Resolver](#maven-resolver)
+        - [Test framework](#test-framework)
+        - [Bindgen tool](#bindgen-tool)
+        - [Maven resolver](#maven-resolver)
         - [Ballerina Shell REPL [EXPERIMENTAL]](#ballerina-shell-repl-experimental)
         - [Documentation](#documentation)
-    - [Standard Library](#standard-library)
-        - [HTTP Module Improvements](#http-module-improvements)
-        - [WebSocket Module Improvements](#websocket-module-improvements)
-        - [gRPC Module Improvements](#grpc-module-improvements)
-        - [Security Improvements](#security-improvements)
-        - [GraphQL Module Improvements](#graphql-module-improvements)
-        - [TCP Module Improvements](#tcp-module-improvements)
-        - [UDP Module Improvements](#udp-module-improvements)
-        - [Common Changes in Messaging Modules](#common-changes-in-messaging-modules)
-        - [Kafka Module Improvements](#kafka-module-improvements)
-        - [NATS Module Improvements](#nats-module-improvements)
-        - [NATS Streaming Module Improvements](#nats-streaming-module-improvements)
-        - [RabbitMQ Module Improvements](#rabbitmq-module-improvements)
-        - [Time Module Improvements](#time-module-improvements)
-        - [Rename System Module to OS](#rename-system-module-to-os)
-        - [Runtime Module Improvements](#runtime-module-improvements)
-        - [Email Module Improvements](#email-module-improvements)
-        - [WebSub Module Improvements](#websub-module-improvements)
-        - [Introduced New Modules](#introduced-new-modules)
-        - [Removed Modules](#removed-modules)
+    - [Standard library](#standard-library)
+        - [HTTP module improvements](#http-module-improvements)
+        - [WebSocket module improvements](#websocket-module-improvements)
+        - [gRPC module improvements](#grpc-module-improvements)
+        - [Security improvements](#security-improvements)
+        - [GraphQL module improvements](#graphql-module-improvements)
+        - [TCP module improvements](#tcp-module-improvements)
+        - [UDP module improvements](#udp-module-improvements)
+        - [Common changes in messaging modules](#common-changes-in-messaging-modules)
+        - [Kafka module improvements](#kafka-module-improvements)
+        - [NATS module improvements](#nats-module-improvements)
+        - [NATS streaming module improvements](#nats-streaming-module-improvements)
+        - [RabbitMQ module improvements](#rabbitmq-module-improvements)
+        - [Time module improvements](#time-module-improvements)
+        - [Rename system module to OS](#rename-system-module-to-os)
+        - [Runtime module improvements](#runtime-module-improvements)
+        - [Email module improvements](#email-module-improvements)
+        - [WebSub module improvements](#websub-module-improvements)
+        - [Introduced new modules](#introduced-new-modules)
+        - [Removed modules](#removed-modules)
     - [Code to Cloud](#code-to-cloud)
     - [Observability](#observability)
-    - [Breaking Changes](#breaking-changes)
-    - [Taint Analyzer Update](#taint-analyzer-update)
+    - [Breaking changes](#breaking-changes)
+    - [Taint analyzer update](#taint-analyzer-update)
 
 #### Updating Ballerina
 
 You can use the update tool to update to Ballerina Swan Lake Alpha1 as follows.
 
-##### For Existing Users
+##### For existing users
 
 If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina update tool](/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the update tool updated to its latest version. 
                         
@@ -86,7 +86,7 @@ From now onwards, the `ballerina` command has to be issued as `bal`. Next, execu
 
 However, if you are using a Ballerina version below 1.1.0, install via the [installers](/downloads/#swanlake).
 
-##### For New Users
+##### For new users
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
@@ -107,11 +107,11 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Introduction of the new Random, RegEx, TCP, UDP, and WebSubHub standard library modules
 - Code action and code completion support for Code to Cloud libraries in the VS Code plugin
 
-### What is New in Ballerina Swan Lake Alpha1
+### What is new in Ballerina Swan Lake Alpha1
 
 #### Language
 
-##### Intersection Type Support for Errors
+##### Intersection type support for errors
 
 Intersection types are now allowed with `error` types. An `error` value will belong to the intersection type (`E1 & E2`) only if it belongs to each member error type (`E1` and `E2`) of the intersection. 
 
@@ -132,7 +132,7 @@ public function main() {
 }
 ```
 
-#### Support for Passing a Closed Record as the Rest Argument
+#### Support for passing a closed record as the rest argument
 
 A closed record can be used as the rest argument in a function or method call. This is the same as passing each field in the record value as a named argument.
 
@@ -162,7 +162,7 @@ public function main() {
 }
 ```
 
-##### Support for the Empty XML Value
+##### Support for the empty XML value
 
 Previously, it was possible to define a value of type `xml<never>` (i.e., the empty XML value) only using the `concat` XML lang library method. 
 
@@ -176,11 +176,11 @@ It is now possible to directly create the empty XML value.
 xml<never> emptyXmlValue = xml ``;
 ```
 
-##### Improvements to the Match Statement
+##### Improvements to the match statement
 
-###### Support for More Match Patterns
+###### Support for more match patterns
 
-**List Match Pattern**
+**List match pattern**
 ```ballerina
 match v {
     var [a, b] => {
@@ -194,7 +194,7 @@ match v {
 }
 ```
 
-**Mapping Match Pattern**
+**Mapping match pattern**
 ```ballerina
 match v {
     {a: "hello", b: "world"} => {
@@ -210,7 +210,7 @@ match v {
 }
 ```
 
-**Error Match Pattern**
+**Error match pattern**
 ```ballerina
 match v {
     error ("Message") => {
@@ -222,7 +222,7 @@ match v {
 }
 ```
 
-###### Improved Type Narrowing Within Match Statements
+###### Improved type narrowing within match statements
 
 When code is executed through each match-clause, the type of the matched expression is narrowed. In the example below, the type of `v` in the last match clause is narrowed to `string`.
 
@@ -239,7 +239,7 @@ function getString(boolean|int|string v) returns string {
 }
 ```
 
-##### Support for Cyclic Union Types
+##### Support for cyclic union types
 
 Cyclic union types are now supported. A cyclic union type descriptor can directly refer to its identifier in its type descriptor.
 
@@ -252,21 +252,21 @@ Integers intMap = {i: 1, j: 2};
 Integers integers = [intValue, intArray, intMap];
 ```
 
-##### Updated Syntax for User-Defined Error Construction
+##### Updated syntax for user-defined error construction
 
 The error constructor expression now requires the `error` keyword to construct a user-defined error.
 
-**Previous Syntax:**
+**Previous syntax:**
 ```ballerina
 MyError myError = MyError("Message");
 ```
  
-**New Syntax:**
+**New syntax:**
 ```ballerina
 MyError myError = error MyError("Message");
 ```
 
-#### Changes to Casting with Errors
+#### Changes to casting with errors
 
 Errors cannot be cast away (i.e., if the value that is being cast can be an error, the type to which the cast is attempted should also have a subtype of error). 
 
@@ -311,7 +311,7 @@ This is now disallowed and can be rewritten as follows.
     }
     ```
 
-##### Changes to toString and toBalString with Errors
+##### Changes to `toString` and `toBalString` with errors
 
 It was previously possible to call `toString()` and `toBalString()` on unions of errors and non-errors.
 
@@ -329,14 +329,14 @@ function print(any|error val) {
 }
 ```
 
-#### Changes to Object Type Inclusion with Qualifiers
+#### Changes to object type inclusion with qualifiers
 
 - When object type inclusion is used with an object type descriptor with qualifiers (`isolated`, `client`, `service`), it is now mandatory for the object in which the inclusion is done to also have these qualifiers.
 - Object type descriptors can no longer use object type inclusion with `readonly` classes.
 - Classes can use object type inclusion with `readonly` classes only if the including classes themselves are `readonly` classes.
 - The type reference in an object constructor expression can refer to a `readonly` class only if the object being constructed is `readonly`.
 
-#### Changes to Record Type Inclusion with Rest Descriptors
+#### Changes to record type inclusion with rest descriptors
 
 Record type inclusion now copies the rest descriptor from the included type to the including type. The including type may override the rest descriptor. 
 
@@ -405,7 +405,7 @@ ExclusiveConfiguration exclusiveConfig = {
 
 The rest descriptor type of the `InclusiveConfiguration` is `anydata` and that of the `ExclusiveConfiguration` is `boolean`. The including records override the rest descriptor from the included record.
 
-##### Improved Listener Declaration  
+##### Improved listener declaration  
 
 The listener declaration is improved to allow using listener classes that may return an error on initialization. This allows the following listener declaration where the `init` method of `Listener` may return an error.
 
@@ -447,7 +447,7 @@ public class Listener {
 }
 ```
 
-**Previous Syntax:**
+**Previous syntax:**
 ```ballerina
 listener lsn = new Listener();
 
@@ -466,7 +466,7 @@ public class Listener {
 }
 ```
 
-##### Referring Lang Library Modules Without Using Quoted Identifiers
+##### Referring lang library modules without using quoted identifiers
 
 Lang library module prefixes can now be used without the initial quote. For example, both the approaches below are now supported.
 
@@ -478,9 +478,9 @@ int a = int:sum(1, 2);
 int a = 'int:sum(1, 2);
 ```
 
-##### Improved Lang Library Methods
+##### Improved lang library methods
 
-###### Introduction of the `includes` Method
+###### Introduction of the `includes` method
 
 A new lang library method named `includes`, which tests whether a `string` value includes another `string` value has been added to the `ballerina/lang.string` library. It accepts an optional second argument to indicate the index to start searching from. It returns `true` only if the string contains the other string at an index greater or equal to the start index. The value `false` will be returned otherwise.
 
@@ -489,7 +489,7 @@ string str = "Ballerina Programming Language";
 boolean includes = str.includes("Language", 10);
 ```
 
-###### Introduction of the `sleep` Method
+###### Introduction of the `sleep` method
 
 A new `sleep` method, which pauses the execution of the current strand for a specified time in seconds has been added to the `ballerina/lang.runtime` library.
 
@@ -497,7 +497,7 @@ A new `sleep` method, which pauses the execution of the current strand for a spe
 runtime:sleep(2.0);
 ```
 
-###### Introduction of the `getStackTrace` Method
+###### Introduction of the `getStackTrace` method
 
 A new `getStackTrace` method has been introduced in the `ballerina/lang.runtime` library to get a stack trace for the current call stack for the specified execution point. It returns an array of stack frames. 
 
@@ -505,7 +505,7 @@ A new `getStackTrace` method has been introduced in the `ballerina/lang.runtime`
 runtime:StackFrame[] stackFrames = runtime:getStackTrace();
 ```
 
-###### Introduction of the `Cloneable` Type
+###### Introduction of the `Cloneable` type
 
 A new type named `Cloneable` has been introduced to the `ballerina/lang.value` library. This is a cyclic union type. This type represents the values on which `clone` and `cloneReadOnly` can be applied on.
 
@@ -513,13 +513,13 @@ A new type named `Cloneable` has been introduced to the `ballerina/lang.value` l
 public type Cloneable readonly|xml|Cloneable[]|map<Cloneable>|table<map<Cloneable>>;
 ```
 
-#### Rename of the `ballerina/java` Module
+#### Rename of the `ballerina/java` module
 
 The `ballerina/java` module is renamed to `ballerina/jballerina.java`.
 
 #### Packages
 
-##### Introduction of Hierarchical Package Names
+##### Introduction of hierarchical package names
 
 Now, the package name can take the form of `package-name := identifier(.identifer)*` meaning the dot (`.`) is allowed in the package name.
 
@@ -532,7 +532,7 @@ name = "observe.prometheus"
 version = "1.0.0"
 ```
 
-##### Introduction of the Dependencies TOML file
+##### Introduction of the dependencies TOML file
 
 This is a dedicated file to maintain all the dependencies, which is expected to be created in the package root directory. All the dependencies which were previously declared in the `Ballerina.toml` file should be moved to this file now.
 
@@ -550,7 +550,7 @@ name = "log"
 version = "1.0.5"
 ```
 
-##### Support to Accept an Empty Ballerina TOML File
+##### Support to accept an empty Ballerina TOML file
 
 A valid Ballerina package can now contain an empty `Ballerina.toml` file. This makes it easier to convert an application/service written in a standalone Ballerina file to a Ballerina package.
 
@@ -580,7 +580,7 @@ configurable string[] & readonly strings = ?;
 
 Configurations can be provided at runtime using the `Config.toml` file in the current working directory or by exporting the file path using the `BALCONFIGFILE` environment variable. For the tests, configurations can be overridden by having a `Config.toml` file inside the tests directory.
 
-#### Developer Tools
+#### Developer tools
 
 ##### Language Server
 
@@ -597,14 +597,14 @@ TOML and MD files are made a part of the Project API.
 - Enhanced table variable presentation with the support to view child entries
 - Introduced type test expression evaluation support
 
-##### Test Framework
+##### Test framework
 
 Support for function pointers in the `@test:Config {}` annotation. The fields `before`, `after`, `dependsOn` and `dataProvider`, which previously expected the name of the function as a `string`, now accept function pointers instead.
 
-##### Bindgen Tool
+##### Bindgen tool
 Introduced a `-m|--modules` flag to generate module-level mappings for Java packages generated using the Bindgen tool.
 
-##### Maven Resolver
+##### Maven resolver
 Introduced support for specifying custom Maven repositories in the `Ballerina.toml` file. The configuration below can be used for this purpose.
 
 ```toml
@@ -641,11 +641,11 @@ Type /exit to exit and /help to list available commands.
 
 Now, documentation URLs follow the `orgName/packageName/version/moduleName` structure.
 
-#### Standard Library
+#### Standard library
 
-##### HTTP Module Improvements
+##### HTTP module improvements
 
-###### Allow Multiple Return Types for the Resource Method
+###### Allow multiple return types for the resource method
 
 The `resource` method can return anydata type, an `http:Response` object, `StatusCode` records along with `error?`. Instead of using an `http:Caller`, the response can be sent similarly by returning from the method. 
 
@@ -663,7 +663,7 @@ service on new http:Listener(8080) {
 }
 ```
 
-##### Introduce Status Code Response Records
+##### Introduce status code response records
 
 With the introduction of records for the most commonly used status codes, the response can be sent inline. 
 
@@ -675,7 +675,7 @@ service on helloEP {
 }
 ```
 
-###### Introduce the Response Limit Configuration
+###### Introduce the response limit configuration
 
 
 The `http:Client` facilitates validations on inbound responses based on size limits. Each response that exceeds the limits will be returned as an error.
@@ -688,31 +688,31 @@ http:Client clientEP = new ("http://localhost:9092/hello", config = {responseLim
     }});
 ```
 
-###### Improve Listener/Client Return Type to Union with Error
+###### Improve listener/client return type to union with error
 
 Listener and client initialization may return an error now. When the listener is used in a listener declaration, module initialization will fail if the listener initialization returns an error.
 
-**New Syntax:**
+**New syntax:**
 
 ```ballerina
 http:Listener|http:ListenerError ep = new (9090);
 http:Client|http:ClientError myClient = new ("http://localhost:9100", {httpVersion: "2.0"});
 ```
 
-###### Improve the `getHeader()` and `getHeaders()` return types to Union with Error
+###### Improve the `getHeader()` and `getHeaders()` return types to union with error
 
-**New Syntax:**
+**New syntax:**
 
 ```ballerina
 string|error value = request.getHeader("Content-Type"); 
 string[]|error values = request.getHeaders("Accept");
 ```
 
-###### Remove Status Code Related `http:Caller` Methods
+###### Remove status code related `http:Caller` methods
 
 The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noContent()`, `badRequest()`, `notFound()`, and `internalServerError()` were removed along with the response record introduction
 
-##### WebSocket Module Improvements
+##### WebSocket module improvements
 
 - The Websocket module has been moved out of the HTTP module. Therefore, the import should be changed from `ballerina/http` to `ballerina/websocket`.
 - Introduced a new listener as follows for the WebSocket module.
@@ -721,7 +721,7 @@ The `http:Caller` remote methods such as `ok()`, `created()`, `accepted()`, `noC
     - `websocket:UpgradeService` - This handles the HTTP to WebSocket upgrade. This service has a single get resource, which returns a `websocket:Service` or an error. Optionally, this takes in the `http:Request` parameter. To accept the WebSocket upgrade, this resource should return a `websocket:Service`. Or else, to cancel the WebSocket upgrade, it must return a `websocket:UpgradeError`.
     - `websocket:Service` - This handles the events after the WebSocket upgrade. This service has a predefined set of remote methods like `onTextMessage`, `onBinaryMessage`, `onError`, `onPing`, `onPong`, `onOpen`, `onClose`. Once the connection is successfully updated to a WebSocket connection, upon receiving WebSocket frames/messages, those will get dispatched to these remote methods. 
 
-**New Syntax:**
+**New syntax:**
 
 ```ballerina
 import ballerina/http;
@@ -747,7 +747,7 @@ The `onTextMessage` and `onBinaryMessage` will take in the complete WebSocket me
 
 The `websocket:Caller` has `writeTextMessage`, `writeBinaryMessage`, `ping`, `pong`, and, `close` as remote methods. Unlike earlier versions, `writeTextMessage` doesn't support data binding. Complete messages only in the string format will be accepted by this.
 
-**New Syntax:**
+**New syntax:**
 
 ```ballerina   
 caller->writeTextMessage(text);
@@ -757,7 +757,7 @@ caller->writeBinaryMessage(byteArr);
 - Introduced a WebSocket Async client
     The WebSocket module now has a `websocket:AsyncClient`. This client can take in a `websocket:Service` as a callback service to receive WebSocket messages at the client initialization. This service has a predefined set of remote methods like `onTextMessage`, `onBinaryMessage`, `onError`, `onPing`, `onPong`, `onOpen`, and `onClose`. 
 
-    **New Syntax**
+    **New syntax**
 
     ```ballerina
     import ballerina/websocket;
@@ -776,7 +776,7 @@ caller->writeBinaryMessage(byteArr);
 
     The `websocket:AsyncClient` has the `writeTextMessage`, `writeBinaryMessage`, `ping`, `pong`, and `close` remote methods. 
 
-    **New Syntax:**
+    **New syntax:**
 
     ```ballerina
     asyncClient>writeTextMessage(text);
@@ -786,16 +786,16 @@ caller->writeBinaryMessage(byteArr);
 - Improved the listener/client return type to union with error
     Listener and client initialization may return an error now. When the listener is used in a listener declaration, module initialization will fail if the listener initialization returns an error.
 
-    **New Syntax:**
+    **New syntax:**
 
     ```ballerina
     websocket:Listener|websocket:Error ep = new (9090); 
     websocket:AsyncClient|websocket:Error wsClient = new ("ws://echo.websocket.org");
     ```
 
-##### gRPC Module Improvements
+##### gRPC module improvements
 
-###### Service Changes
+###### Service changes
 
 - Enable returning specific data types directly from the remote methods (even record types and streams).
     ```ballerina
@@ -806,7 +806,7 @@ caller->writeBinaryMessage(byteArr);
     ```
 - Add support to send/receive custom headers in the request/response path.
 
-###### Client Changes
+###### Client changes
 
 - Clients have the capability to receive a stream object in the server streaming scenario.
     ```ballerina
@@ -822,17 +822,17 @@ caller->writeBinaryMessage(byteArr);
     ```
 - Added the support to send/receive custom headers in the request/response path.
 
-###### Protobuf Tool
+###### Protobuf tool
 
 - Generate a custom caller object from the Protobuf tool
 - Generate a custom streaming client from the Protobuf tool
 - Update the Protobuf tool to generate specific types using langlib data types
 
-##### Security Improvements
+##### Security improvements
 
 Ballerina listener authentication and authorization, and client authentication were completely redesigned. The new design is compatible with most of the standard libraries like HTTP, gRPC, WebSocket, etc.,
 
-###### HTTP Listener Authentication and Authorization
+###### HTTP listener authentication and authorization
 
 A Ballerina HTTP listener can be configured to authenticate and authorize the inbound requests. Ballerina has built-in support for the following listener authentication mechanisms.
 
@@ -843,7 +843,7 @@ A Ballerina HTTP listener can be configured to authenticate and authorize the in
 
 For more information, see [HTTP Listener Authentication and Authorization](/swan-lake/learn/security/authentication-and-authorization/#http-listener-authentication-and-authorization).
 
-###### HTTP Client Authentication
+###### HTTP client authentication
 
 The Ballerina HTTP client can be configured to send authentication information to the endpoint being invoked. Ballerina has built-in support for the following client authentication mechanisms.
 
@@ -858,34 +858,34 @@ The Ballerina HTTP client can be configured to send authentication information t
 
 For more information, see [HTTP Client Authentication](/swan-lake/learn/security/authentication-and-authorization/#http-client-authentication).
 
-##### GraphQL Module Improvements
+##### GraphQL module improvements
 
-###### Introspection Support
+###### Introspection support
 
 Ballerina GraphQL services now support introspection queries on the schema.
 
-###### Improved Resource Methods
+###### Improved resource methods
 
 GraphQL resources may now return error values.
 
-##### Common Changes in Messaging Modules
+##### Common changes in messaging modules
 
 - The `resource` methods are changed to `remote` methods in the new listener APIs. 
 - The `service` name is given as a string with the new Ballerina language changes.
 
-##### TCP Module Improvements
+##### TCP module improvements
 
 The Socket module is replaced by the TCP module. Therefore, the import statement needs to be changed from `ballerina/socket` to `ballerina/tcp`.
 
 New APIs for the client and listener are introduced in the TCP module.
 
-###### Client Changes
+###### Client changes
 
 - `tcp:Client` initialization may now return `tcp:Error` if an error occurs while initializing the client.
 - The name of the `write` method changed to `writeBytes`. You don’t have to explicitly write a while loop to ensure the data is written completely as before. Instead, the `writeBytes` method ensures to write the data completely.
 - The name of the `read` method changed to `readBytes`. This method now returns `readonly & byte[]` instead of `[byte[], int]`.
 
-**New Syntax:**
+**New syntax:**
 
 ```ballerina
 import ballerina/tcp;
@@ -902,9 +902,9 @@ public function main() returns tcp:Error? {
 }
 ```
 
-###### Service and Listener Changes
+###### Service and listener changes
 
-**New Syntax:**
+**New syntax:**
 
 ```ballerina
 listener tcp:Listener socketListener = new (9090);
@@ -920,7 +920,7 @@ The service type with resource methods is removed from the module. The new imple
 
 The `read` method is removed from `tcp:Caller`. Also, the `write` method of `Caller` is renamed to `writeBytes`, which is similar to the Client’s `writeBytes` method.
 
-**New Syntax:**
+**New syntax:**
 
 ```ballerina
 import ballerina/tcp;
@@ -950,17 +950,17 @@ service class TCPService {
 }
 ```
 
-##### UDP Module Improvements
+##### UDP module improvements
 
 The UDP module has been moved out of the Socket module. Therefore, it is required to change the import from `ballerina/socket` to `ballerina/udp`.
 
-###### Client Changes
+###### Client changes
 
 - `udp:Client` initialization may now return `udp:Error` if an error occurred while initializing the client.
 - The name of the `sendTo` method changed to `sendDatagram`. This takes a `udp:Datagram` as a parameter. You don’t need to explicitly write a while loop to ensure the data is written completely. The `writeBytes` method ensures to write the data completely.
 - The name of the `receiveFrom` method changed to `receiveDatagram`. This now returns `readonly & udp:Datagram` instead of `[byte[], int, socket:Address]`.
 
-    **New Syntax:**
+    **New syntax:**
 
     ```ballerina
     import ballerina/udp;
@@ -1009,9 +1009,9 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
     }
     ```
 
-##### Kafka Module Improvements
+##### Kafka module improvements
 
-###### Client Changes
+###### Client changes
 
 - The `kafka:Consumer` is separated into `kafka:Listener` (asynchronous) and `kafka:Consumer` (synchronous). 
 - The return type of the `init` methods of the `kafka:Producer` and `kafka:Consumer` is changed to `Error?`. 
@@ -1036,7 +1036,7 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
                                        value: message.toBytes()});
     ```
 
-###### Service and Listener Changes
+###### Service and listener changes
 
 - The return type of the `init` method of `kafka:Listener` is changed to `Error?`. 
 - Has a single type of service that supports the remote method below:
@@ -1054,7 +1054,7 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
     }
     ```
 
-##### NATS Module Improvements
+##### NATS module improvements
 
  - The `ballerinax/nats` module is split into two packages as `ballerinax/nats` (NATS client) and `ballerinax/stan` (NATS Streaming client).
 - The `nats:Connection` object is removed entirely. 
@@ -1083,7 +1083,7 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
     });
     ```
 
-###### Service and Listener Changes
+###### Service and listener changes
 
 - The return type of the `init` method of `nats:Listener` is changed to `Error?`. 
 - Has a single type of service that supports the two types of remote functions below:
@@ -1106,11 +1106,11 @@ The UDP module has been moved out of the Socket module. Therefore, it is require
     }
     ```
 
-##### NATS Streaming Module Improvements
+##### NATS streaming module improvements
 
 A new package named `ballerinax/stan` is introduced to handle the NATS Streaming Server related functionality.
 
-###### Client Changes
+###### Client changes
 
 - `nats:Connection` is removed entirely from the NATS Streaming client as well. 
 - `stan:Client` is introduced to handle the client-side functionality. 
@@ -1129,7 +1129,7 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
     }
     ```
 
-###### Service and Listener Changes
+###### Service and listener changes
 
 - The return type of the `init` method of `stan:Listener` is `Error?`. 
 - Has a single type of service that supports the `onMessage` remote method below:
@@ -1150,9 +1150,9 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
     ```
 
 
-##### RabbitMQ Module Improvements
+##### RabbitMQ module improvements
 
-###### Client Changes
+###### Client changes
 
 - `rabbitmq:Connection` is removed entirely.
 - `rabbitmq:Channel` is renamed to `rabbitmq:Client`, which will handle the client-side functionality. The `init` method of `rabbitmq:Client` returns `Error?`.
@@ -1187,7 +1187,7 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
     }
     ```
 
-###### Service and Listener Changes
+###### Service and listener changes
 
 - The return type of the `init` method of `rabbitmq:Listener` is changed to `Error?`. 
 - Has a single type of service that supports the three types of remote functions below:
@@ -1210,7 +1210,7 @@ A new package named `ballerinax/stan` is introduced to handle the NATS Streaming
     }
     ```
 
-##### Time Module Improvements
+##### Time module improvements
 
 The improvements below have been introduced to the `ballerina/time` module.
 
@@ -1222,16 +1222,16 @@ The improvements below have been introduced to the `ballerina/time` module.
 - Introduced a new `time:getTimezones()` method to retrieve the timezone IDs supported by the underlying native code.
 - Introduced an enum to represent the days of the week and modified the `time:getWeekday()` method to return this enum.
 
-##### Runtime Module Improvements
+##### Runtime module improvements
 
 The methods below have been removed from the `runtime` module since these methods have moved to the `lang:runtime` lang library.
 
 - `sleep`
 - `getCallStack`
 
-##### Email Module Improvements
+##### Email module improvements
 
-###### Common Changes for Client and Server Configurations
+###### Common changes for client and server configurations
 
 - `email:Email` is changed to `email:Message`.
 
@@ -1269,7 +1269,7 @@ string contentType;
 
 - Self-signed certificate support is added while default SSL/TLS support is restricted to self-signed certificates with relevant configurations and CA-certified certificates. Hostname verification is made mandatory for SSL/TLS support. Anyway, hostname verification can be disabled with the configuration by passing the value of the `mail.smtp.ssl.checkserveridentity` property as `”false”`.
 
-###### Client Changes
+###### Client changes
 
 - A new `sendEmail` method is added to the `email:SmtpClient` API to send emails directly without creating the `email:Email` record supporting extra fields as named optional parameters. An example of sending an email with the new API is given below.
 
@@ -1283,7 +1283,7 @@ string contentType;
 
 - All client initializations return an `email:Error` when an error occurs during the initialization.
 
-###### Service and Listener Related Changes
+###### Service and listener related changes
 
 - All listener initializations return an `email:Error` when an error occurs during the initialization.
 
@@ -1299,7 +1299,7 @@ string contentType;
 
 - A sample POP3 listener is given below.
 
-    **New Syntax:**
+    **New syntax:**
 
     ```ballerina
     listener email:PopListener emailListener = new ({
@@ -1322,18 +1322,18 @@ string contentType;
     }
     ```
 
-##### WebSub Module Improvements
+##### WebSub module improvements
 
-###### Hub-Related Changes
+###### Hub-related changes
 
 - Default implementation for the `websub:Hub` has been removed from the module.
 - API specification for the WebSub Hub is moved to the [`websubhub` module](#websubhub).
 
-##### Publisher-Related Changes
+##### Publisher-related changes
 
 - The implementation related to the `websub:PublisherClient` is moved to the `websubhub` module.
 
-##### Subscriber-Related Changes
+##### Subscriber-related changes
 
 - The two new configurations below are introduced to the `@websub:SubscriberServiceConfiguration` for hub/topic discovery.
   - `accept` - The expected media type
@@ -1368,7 +1368,7 @@ string contentType;
     ```
 
 
-##### Introduced New Modules 
+##### Introduced new modules 
 
 ###### Random
 
@@ -1436,7 +1436,7 @@ The `ballerina/regex` module provides RegEx utilities such as checking whether a
     }   
     ```
 
-**Hub Client Implementation**
+**Hub Client implementation**
 
 - `websubhub:Client` is introduced to distribute the updated content to subscribers.
 - The example below is a sample use-case of the WebSub Hub Client.
@@ -1459,11 +1459,11 @@ The `ballerina/regex` module provides RegEx utilities such as checking whether a
         }
     ```
 
-**Publisher Implementation**
+**Publisher implementation**
 
 `websub:PublisherClient` is moved to `ballerina/websubhub` and can now be used as `websubhub:PublisherClient`.
 
-##### Removed Modules 
+##### Removed modules 
 
 ###### Config
 
@@ -1477,7 +1477,7 @@ The APIs related to random number generation were moved to the new `random` modu
 
 The regex-related APIs that were supported by this module have been moved to the new `regex` module. The rest of the APIs have replacements in the langlib packages.
 
-##### Rename System Module to OS
+##### Rename system module to OS
 
 The previous `ballerina/system` module is now renamed to `ballerina/os`. All the Operating System independent functionalities are included in this module.
 
@@ -1531,7 +1531,7 @@ The previous `ballerina/system` module is now renamed to `ballerina/os`. All the
     - Code Completion based on the c2c specification.
     - Code Actions add/modify the probes and environments based on the source code.
 
-#### Breaking Changes
+#### Breaking changes
 
 - Resource method declarations are no longer allowed in object-type descriptors.
 - Resource methods are not considered to be part of the type.
@@ -1539,7 +1539,7 @@ The previous `ballerina/system` module is now renamed to `ballerina/os`. All the
 - The `@icon` annotation has been replaced with the `@display` annotation.
 - The value type of XML iteration, which was previously `xml|string` is now `xml`. Moreover, the value type of `xml<T>` iteration is now `T`. 
 
-#### Taint Analyzer Update
+#### Taint analyzer update
 
 With this release, the taint analyzer does not produce taint errors unless explicitly enabled. However, the taint analyzer still performs the taint flow analysis without producing errors if error logging is not enabled.
 

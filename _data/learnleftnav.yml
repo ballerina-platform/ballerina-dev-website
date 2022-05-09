@@ -1,0 +1,19 @@
+- title: Get Started guides
+  url: /learn/#get-started
+  active: get-started
+
+- title: Learning resources
+  url: /learn/#learning-resources
+  active: learning-resources
+
+- title: Use cases
+  url: /learn/#use-cases
+  active: guides
+
+- title: References
+  url: /learn/#references
+  active: references
+
+- title: Specifications
+  url: /learn/#specifications
+  active: specifications

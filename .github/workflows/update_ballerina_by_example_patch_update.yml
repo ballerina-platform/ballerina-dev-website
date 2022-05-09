@@ -19,7 +19,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
-          ref: dev
+          ref: upstream-dev
 
       - name: Install dependencies
         run: npm i

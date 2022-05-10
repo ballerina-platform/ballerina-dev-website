@@ -31,9 +31,7 @@ jobs:
         run: cp -r ./ballerina-distribution/examples .
 
       - name: Delete already existing BBE HTML files
-        run: |
-          find ./learn/by-example -type f \( -name "*.html" ! -name "404.html" ! -name "index.html" \) -delete
-          ls ./learn/by-example
+        run: find ./learn/by-example -type f \( -name "*.html" ! -name "404.html" ! -name "index.html" \) -delete
 
       - name: Run markdown to HTML generation script
         run: node ./js/markdownConverter.js ./examples ./learn/by-example

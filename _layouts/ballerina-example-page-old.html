@@ -38,60 +38,10 @@
         </div>
       </div>
     </div>
-    <button class="scroll-to-top">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        fill="white"
-        class="bi bi-chevron-up"
-        viewBox="0 0 16 16"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
-        />
-      </svg>
-    </button>
-    {% include bbe-footer.html %}
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.js"
-      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- shiki -->
-    <script src="https://unpkg.com/shiki"></script>
-    <script>
-      const removeEscapes = (text) => {
-        text = text.replaceAll("&lt;", "<");
-        text = text.replaceAll("&gt;", ">");
-
-        return text;
-      };
-
-      shiki
-        .getHighlighter({
-          theme: "css-variables",
-          langs: ["ballerina"],
-        })
-        .then((highlighter) => {
-          const code_blocks = document.getElementsByClassName("code-container");
-          for (let i = 0; i < code_blocks.length; i++) {
-            let codeContent = removeEscapes(code_blocks[i].innerHTML);
-
-            const output = highlighter.codeToHtml(codeContent, {
-              lang: "ballerina",
-            });
-            document.getElementsByClassName("code-container")[i].innerHTML =
-              output;
-          }
-        });
-    </script>
-
-    <script src="/js/code-buttons.js"></script>
-    <script src="/js/navigation.js"></script>
+    {% include ballerina-footer.html %}
     <script src="/js/theme.js"></script>
+
+    <!-- hyperlink generator -->
     <script src="/js/hyperlink-creator.js"></script>
 
     <script>

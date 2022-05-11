@@ -103,7 +103,7 @@ redirect_from:
 </style>
 
 <div class="row" style="margin-bottom:30px !important;">
-<h2 id="get-started-guides">Get started guides</h2>
+<h2 id="get-started">Get started</h2>
 <div class="col-lg-12 col-md-12 col-sm-12 card" >
   <a href="/learn/install-ballerina/set-up-ballerina/">
     <h3 id="install-ballerina">Install Ballerina</h3> </a>
@@ -117,15 +117,15 @@ redirect_from:
 </div>
 </div>
 
-<div class="row" style=" margin-bottom:30px">
-<h2 id="learning-resources">Learning resources</h2>
+<div class="row" style=" margin-bottom:30px !important;">
+<h2 id="learn-the-language">Learn the language</h2>
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12 card" >
 <a href="/learn/by-example/">
-    <h3 id="ballerina-by-example">Ballerina by Example</h3></a>
+    <h3 id="ballerina-by-example">Ballerina By Example</h3></a>
     <p >A series of guided examples to learn the language. </p>
 </div>
-<div class="col-lg-12 col-md-12 col-sm-12 card">
+<div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
 <a href="/learn/language-basics/">
     <h3 id="language-basics">Language basics</h3></a>
     <p >Get started with the basics that are common to all C-family programming languages. </p>
@@ -141,15 +141,18 @@ redirect_from:
 <div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
   <a href="/learn/language-walkthrough/">
    	<h3 id="language-walkthrough">Language walkthrough</h3></a>
-  <p >A video series, which explains the language and its reference slide deck. </p>
+  <p>A video series, which explains the language and its reference slide deck. </p>
 </div>
 </div>
 
 <div class="row" style=" margin-bottom:30px">
 <div class="col-lg-12 col-md-12 col-sm-12 card">
  <a href="https://lib.ballerina.io/">
-  	<h3 id="library-documentation">Library documentation</h3></a>
+  	<h3 id="library-api-documentation">Library API documentation</h3></a>
 		<p>Ballerina library API documentation. </p>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
+
 </div>
 </div>
 
@@ -159,7 +162,7 @@ redirect_from:
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12 card">
 <a href="/learn/write-a-restful-api-with-ballerina/">
-    <h3 id="working-with-data">Write a RESTful API with Ballerina</h3></a>
+    <h3 id="write-a-restful-api-with-ballerina">Write a RESTful API with Ballerina</h3></a>
     <p >Understand the basics of Ballerina constructs, which allow you to write RESTful APIs. </p>
 </div>
 <div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
@@ -177,7 +180,7 @@ redirect_from:
 </div>
 <div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
 <a href="/learn/write-a-graphql-api-with-ballerina/">
-    <h3 id="working-with-data">Write a GraphQL API with Ballerina</h3></a>
+    <h3 id="write-a-graphql-api-with-ballerina">Write a GraphQL API with Ballerina</h3></a>
     <p >Understand the basics of Ballerina constructs, which allow you to write GraphQL APIs. </p>
 </div>
 </div>
@@ -204,7 +207,7 @@ redirect_from:
 </div>
 
 <div class="row">
-<h2 id="references">References</h2>
+<h2 id="learn-about-the-platform">Learn about the platform</h2>
 
 <div class="col-lg-12 col-md-12 col-sm-12 card"  >
  <a href="/learn/organize-ballerina-code/">
@@ -212,26 +215,12 @@ redirect_from:
  	<p>Basics of projects, packages, and modules.  </p>
 </div>
 <div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
-  <a href="/learn/package-references/">
- 	 <h3 id="package-references">Package references</h3></a>
-		<p>References related to Ballerina Packages.</p>
-</div>
-</div>
-
-<div class="row">
-<div class="col-lg-12 col-md-12 col-sm-12 card"  >
   <a href="/learn/test-ballerina-code/">
    <h3 id="test-ballerina-code">Test Ballerina code</h3> </a>
     <p>Details of writing automated tests using the built-in test framework.  </p>
 </div>
-<div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
- <a href="/learn/run-ballerina-programs-in-the-cloud/">
-  		<h3 id="run-ballerina-programs-in-the-cloud">Run Ballerina programs in the cloud</h3></a>
- 	<p>The cloud offerings for running Ballerina programs.  </p>
-</div>
 </div>
 
-<div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12 card"  >
 <a href="/learn/debug-ballerina-programs/">
   		<h3 id="debug-ballerina-programs">Debug Ballerina programs</h3></a>
@@ -242,68 +231,66 @@ redirect_from:
  	<h3 id="manage-dependencies">Manage dependencies </h3></a>
   			<p>Details of declaring and managing dependencies and using the local repository.</p>
 </div>
-</div>
 
-<div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12 card"  >
+ <a href="/learn/run-ballerina-programs-in-the-cloud/">
+  		<h3 id="run-ballerina-programs-in-the-cloud">Run Ballerina programs in the cloud</h3></a>
+ 	<p>The cloud offerings for running Ballerina programs.  </p>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
 <a href="/learn/publish-packages-to-ballerina-central/">
   		<h3 id="publish-packages-to-ballerina-central">Publish packages to Ballerina Central</h3></a>
 		<p>Details of publishing your library package to Ballerina Central.  </p>
 </div>
-<div class="col-lg-12 col-md-12 col-sm-12 card"  style="margin-right:0px !important;">
-<h3 id="ballerina-shell"><a href="/learn/ballerina-shell/">Ballerina Shell</a></h3>
-<p>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
+
+
+<div class="col-lg-12 col-md-12 col-sm-12 card"  >
+  <a href="/learn/java-interoperability/">
+     <h3 id="java-interoperability">Java interoperability</h3></a>
+		<p>Instructions on the supported Java interoperability features.  </p>
 </div>
+<div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
+ <a href="/learn/ballerina-openapi-support/">
+    <h3 id="ballerina-openapi-support">Ballerina OpenAPI support </h3></a>
+    <p >Details of all the features of the Ballerina OpenAPI tools. </p>
 </div>
 
-<div class="row">
+
 <div class="col-lg-12 col-md-12 col-sm-12 card"  >
  <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina">
     <h3 id="visual-studio-code-extension">Visual Studio Code extension</h3></a>
     <p >Details of all the features of the Ballerina Visual Studio Code extension. </p>
 </div>
-<div class="col-lg-12 col-md-12 col-sm-12 card"  style="margin-right:0px !important;">
- <a href="/learn/ballerina-openapi-support/">
-    <h3 id="ballerina-openapi-support">Ballerina OpenAPI support </h3></a>
-    <p >Details of all the features of the Ballerina OpenAPI tools. </p>
-</div>
-</div>
-
-<div class="row">
-<div class="col-lg-12 col-md-12 col-sm-12 card" >
+<div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
   <a href="/learn/cli-documentation/">
  	<h3 id="cli-documentation">CLI documentation</h3></a>
 		<p>Details of all the CLI commands of the <code class="highlighter-rouge language-plaintext">bal</code> tool.  </p>
 </div>
 
+
+<div class="col-lg-12 col-md-12 col-sm-12 card"  >
+<a href="/learn/ballerina-shell/">
+<h3 id="ballerina-shell">Ballerina Shell</h3></a>
+<p>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
+</div>
 <div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
-</div>
-</div>
-
-
-<div class="row" style=" margin-bottom:30px">
-
-<div class="col-lg-12 col-md-12 col-sm-12 card" >
   <a href="/learn/style-guide/">
  	 <h3 id="style-guide">Style guide</h3></a>
 		<p>Best practices to follow when formatting Ballerina code.   </p>
-</div>
-
-<div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
-  <a href="/learn/java-interoperability/">
-     <h3 id="java-interoperability">Java interoperability</h3></a>
-		<p>Instructions on the supported Java interoperability features.  </p>
 </div>
 </div>
 
 <div class="row">
 <h2 id="specifications">Specifications</h2>
-<div class="row">
-<div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
- <a href="/learn/platform-specifications/">
-  <h3 id="platform-specifications">Platform specifications</h3></a>
+<div class="col-lg-12 col-md-12 col-sm-12 card" >
+ <a href="/learn/language-specifications/">
+  <h3 id="language-specifications">Language specifications</h3></a>
 		<p>Details of the Ballerina language specifications and proposals.  </p>
 </div>
+<div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
+ <a href="/learn/other-specifications/">
+  <h3 id="other-specifications">Other specifications</h3></a>
+		<p>Details of the Ballerina specifications other than the language specfications.  </p>
 </div>
 </div>
  

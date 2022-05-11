@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "axios": "^0.27.2",
-    "markdown-it": "^12.3.2",
-    "markdown-it-container": "^3.0.0",
-    "prettier": "^2.6.2",
-    "shiki": "^0.10.1"
-  }
-}

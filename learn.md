@@ -103,7 +103,7 @@ redirect_from:
 </style>
 
 <div class="row" style="margin-bottom:30px !important;">
-<h2 id="get-started-guides">Get started guides</h2>
+<h2 id="get-started">Get started</h2>
 <div class="col-lg-12 col-md-12 col-sm-12 card" >
   <a href="/learn/install-ballerina/set-up-ballerina/">
     <h3 id="install-ballerina">Install Ballerina</h3> </a>
@@ -118,7 +118,7 @@ redirect_from:
 </div>
 
 <div class="row" style=" margin-bottom:30px">
-<h2 id="learning-resources">Learning resources</h2>
+<h2 id="learn-the-language">Learn the language</h2>
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12 card" >
 <a href="/learn/by-example/">
@@ -204,7 +204,7 @@ redirect_from:
 </div>
 
 <div class="row">
-<h2 id="references">References</h2>
+<h2 id="learn-about-the-platform">Learn about the platform</h2>
 
 <div class="col-lg-12 col-md-12 col-sm-12 card"  >
  <a href="/learn/organize-ballerina-code/">

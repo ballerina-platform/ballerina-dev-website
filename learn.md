@@ -122,7 +122,7 @@ redirect_from:
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12 card" >
 <a href="/learn/by-example/">
-    <h3 id="ballerina-by-example">Ballerina by Example</h3></a>
+    <h3 id="ballerina-by-example">Ballerina By Example</h3></a>
     <p >A series of guided examples to learn the language. </p>
 </div>
 <div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
@@ -147,14 +147,12 @@ redirect_from:
 
 <div class="row" style=" margin-bottom:30px">
 <div class="col-lg-12 col-md-12 col-sm-12 card">
- <a href="/learn/language-specifications/">
-  <h3 id="language-specifications">Language specifications</h3></a>
-		<p>Details of the Ballerina language specifications and proposals.  </p>
-</div>
-<div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
  <a href="https://lib.ballerina.io/">
   	<h3 id="library-api-documentation">Library API documentation</h3></a>
 		<p>Ballerina library API documentation. </p>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
+
 </div>
 </div>
 
@@ -164,7 +162,7 @@ redirect_from:
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12 card">
 <a href="/learn/write-a-restful-api-with-ballerina/">
-    <h3 id="working-with-data">Write a RESTful API with Ballerina</h3></a>
+    <h3 id="write-a-restful-api-with-ballerina">Write a RESTful API with Ballerina</h3></a>
     <p >Understand the basics of Ballerina constructs, which allow you to write RESTful APIs. </p>
 </div>
 <div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
@@ -182,7 +180,7 @@ redirect_from:
 </div>
 <div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
 <a href="/learn/write-a-graphql-api-with-ballerina/">
-    <h3 id="working-with-data">Write a GraphQL API with Ballerina</h3></a>
+    <h3 id="write-a-graphql-api-with-ballerina">Write a GraphQL API with Ballerina</h3></a>
     <p >Understand the basics of Ballerina constructs, which allow you to write GraphQL APIs. </p>
 </div>
 </div>
@@ -286,7 +284,7 @@ redirect_from:
 <h2 id="specifications">Specifications</h2>
 <div class="col-lg-12 col-md-12 col-sm-12 card" >
  <a href="/learn/language-specifications/">
-  <h3 id="kanguagespecifications">Language specifications</h3></a>
+  <h3 id="language-specifications">Language specifications</h3></a>
 		<p>Details of the Ballerina language specifications and proposals.  </p>
 </div>
 <div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">

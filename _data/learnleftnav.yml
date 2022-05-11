@@ -1,19 +1,103 @@
 - title: Get Started 
-  url: /learn/#get-started
-  active: get-started
+  url: #
+  sublinks:
+    - title: Install Ballerina
+      url: /learn/#install-ballerina
+      active: set-up-ballerina
+    - title: Get started with Ballerina
+      url: /learn/#get-started-with-ballerina
+      active: get-started-with-ballerina
 
 - title: Learn the language
-  url: /learn/#learn-the-language
-  active: learn-the-language
-
+  url: #
+  sublinks:
+    - title: Ballerina By Example
+      url: /learn/#ballerina-by-example
+      active: ballerina-by-example
+    - title: Language basics
+      url: /learn/#language-basics
+      active: language-basics
+    - title: Distinctive language features
+      url: /learn/#distinctive-language-features
+      active: distinctive-language-features
+    - title: Language walkthrough
+      url: /learn/#language-walkthrough
+      active: language-walkthrough
+    - title: Library API documentation
+      url: /learn/#library-api-documentation
+      active: library-api-documentation
+ 
 - title: Use cases
-  url: /learn/#use-cases
-  active: guides
+  url: #
+  sublinks:
+    - title: Write a RESTful API with Ballerina
+      url: /learn/#write-a-restful-api-with-ballerina
+      active: write-a-restful-api-with-ballerina
+    - title: Write a gRPC service with Ballerina
+      url: /learn/#write-a-grpc-service-with-ballerina
+      active: write-a-grpc-service-with-ballerina
+    - title: Deploy Ballerina on Kubernetes
+      url: /learn/#deploy-ballerina-on-kubernetes
+      active: deploy-ballerina-on-kubernetes
+    - title: Write a GraphQL API with Ballerina
+      url: /learn/#write-a-graphql-api-with-ballerina
+      active: write-a-graphql-api-with-ballerina
+    - title: Build a data service in Ballerina
+      url: /learn/#build-a-data-service-in-ballerina
+      active: build-a-data-service-in-ballerina
+    - title: Work with data in Ballerina
+      url: /learn/#work-with-data-in-ballerina
+      active: work-with-data-in-ballerina
+    - title: Call Java code from Ballerina
+      url: /learn/#call-java-code-from-ballerina
+      active: call-java-code-from-ballerina
 
 - title: Learn about the platform
-  url: /learn/#learn-about-the-platform
-  active: learn-about-the-platform
+  url: #
+  sublinks:
+    - title: Organize Ballerina code
+      url: /learn/#organize-ballerina-code
+      active: organize-ballerina-code
+    - title: Test Ballerina code
+      url: /learn/#test-ballerina-code
+      active: test-ballerina-code
+    - title: Debug Ballerina programs
+      url: /learn/#debug-ballerina-programs
+      active: debug-ballerina-programs
+    - title: Manage dependencies
+      url: /learn/#manage-dependencies
+      active: manage-dependencies
+    - title: Run Ballerina programs in the cloud
+      url: /learn/#run-ballerina-programs-in-the-cloud
+      active: run-ballerina-programs-in-the-cloud
+    - title: Publish packages to Ballerina Central
+      url: /learn/#publish-packages-to-ballerina-central
+      active: publish-packages-to-ballerina-central
+    - title: Java interoperability
+      url: /learn/#java-interoperability
+      active: java-interoperability
+    - title: Ballerina OpenAPI support
+      url: /learn/#ballerina-openapi-support
+      active: ballerina-openapi-support
+    - title: Visual Studio Code extension
+      url: /learn/#visual-studio-code-extension
+      active: visual-studio-code-extension
+    - title: CLI documentation
+      url: /learn/#cli-documentation
+      active: cli-documentation
+    - title: Ballerina Shell
+      url: /learn/#ballerina-shell
+      active: ballerina-shell
+    - title: Style guide
+      url: /learn/#style-guide
+      active: style-guide
 
 - title: Specifications
-  url: /learn/#specifications
-  active: specifications
+  url: #
+  sublinks:
+    - title: Language specifications
+      url: /learn/#language-specifications
+      active: language-specifications
+    - title: Other specifications
+      url: /learn/#other-specifications
+      active: other-specifications

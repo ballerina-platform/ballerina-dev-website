@@ -20,7 +20,7 @@ redirect_from:
 
 ## Set up the prerequisites
 
-To run this tutorial, you need the following prerequisites:
+To run this guide, you need the following prerequisites:
 
 1. [Ballerina 2202.0.0 (Swan Lake)](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/) or greater
 2. A text editor
@@ -77,11 +77,11 @@ Now, let’s implement the gRPC service and client in the Ballerina language.
 
 ## Implement the gRPC service
 
-As with any other Ballerina Program, you need to create a Ballerina project. Then, you can generate the service code in the project and write the business logic.
+Ballerina uses projects to group code. You need to create a Ballerina project, generate the service code in the project, and write the business logic.
 
 ### Create the service project
 
-In the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina project for the gRPC service implementation:
+In the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina project for the gRPC service implementation.
 
 > **Note:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
@@ -258,8 +258,7 @@ public function main() returns error? {
 In this code:
 
 - The client declaration creates a connection to the remote server which is listening on port 9090. The generated client has remote methods that can use to talk to a remote server.
-- The `main` function contains the statements that call the `sayHello` remote function and prints the response to the
-  console.
+- The `main` function contains the statements that call the `sayHello` remote function and prints the response to the console.
 
 ## Run the client
 
@@ -269,9 +268,9 @@ In the terminal, navigate to the `greeter_client` directory, and execute the com
 $ bal run
 ```
 
-Since the server is up and running, once the client application is successfully executed, the client application
-invokes the `sayHello` function with the  `HelloRequest` message and receives the `HelloReply` as the response. You will
-see the output below printed on the console.
+You view the output below printed on the console.
+
+>**Info:** Since the server is up and running, once the client application is successfully executed, the client application invokes the `sayHello` function with the  `HelloRequest` message and receives the `HelloReply` as the response.
 
 ```bash
 Compiling source
@@ -283,6 +282,6 @@ Response : Hello Ballerina
 ## Learn more
 
 To learn more about gRPC support in Ballerina, see the following:
-- [`grpc` Library Documentation](https://lib.ballerina.io/ballerina/grpc/latest)
+- [`grpc` library documentation](https://lib.ballerina.io/ballerina/grpc/latest)
 - [gRPC CLI tooling guide](/learn/cli-documentation/grpc/)
-- [gRPC Examples](/learn/by-example/grpc-simple.html)
+- [Simple RPC](/learn/by-example/grpc-simple.html)

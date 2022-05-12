@@ -74,6 +74,9 @@
 - title: 1.2 release notes
   url: '#'
   sublinks:
+    - title: 1.2.29
+      url: /downloads/1.2.x-release-notes/1.2.29
+      active: 1.2.29
     - title: 1.2.28
       url: /downloads/1.2.x-release-notes/1.2.28
       active: 1.2.28

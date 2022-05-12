@@ -4,7 +4,7 @@
     - title: Test a simple function
       url: /learn/test-ballerina-code/test-a-simple-function
       active: test-a-simple-function
-    - title: Writ tests
+    - title: Write tests
       url: '#'
       sublinks:
         - title: Define a test

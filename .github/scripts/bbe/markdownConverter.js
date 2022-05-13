@@ -367,8 +367,8 @@ const generate = async (examplesDir, outputDir) => {
     const jsonContent = JSON.parse(indexContent);
 
     for (const chapter of jsonContent) {
-      let category = chapter["category"];
-      console.log(`Processing BBE Category : ${category}`);
+      let title = chapter["title"];
+      console.log(`Processing BBE Category : ${title}`);
       let bbes = chapter["samples"];
 
       for (const bbe of bbes) {

@@ -22,7 +22,10 @@ jobs:
           ref: dev
 
       - name: Install dependencies
-        run: npm i
+        run: |
+          cd ./.github/scripts/bbe
+          npm install
+          cd ../../..
 
       - name: Clone ballerina-distribution repository
         run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-distribution.git
@@ -34,7 +37,7 @@ jobs:
         run: find ./learn/by-example -type f \( -name "*.html" ! -name "404.html" ! -name "index.html" \) -delete
 
       - name: Run markdown to HTML generation script
-        run: node ./js/markdownConverter.js ./examples ./learn/by-example
+        run: node ./.github/scripts/bbe/markdownConverter.js ./examples ./learn/by-example
 
       - name: Format code using prettier
         run: npx prettier ./learn/by-example/*.html --write

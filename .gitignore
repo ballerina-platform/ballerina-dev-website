@@ -38,7 +38,6 @@ _site/
 .DS_Store
 
 # Node modules
-/node_modules
-/examples
-package-lock.json
+**/node_modules
+**/package-lock.json
              

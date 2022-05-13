@@ -10,6 +10,7 @@ labels: 'Type/NewFeature'
 
 ## Related website/documentation area
 > Add/Uncomment the relevant area label out of the following. 
+
 <!--Area/BBEs-->
 <!--Area/HomePageSamples-->
 <!--Area/LearnPages-->

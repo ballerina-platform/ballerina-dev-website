@@ -19,7 +19,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
-          ref: bbe-generation-v2
+          ref: upstream-dev
 
       - name: Install dependencies
         run: |
@@ -28,7 +28,7 @@ jobs:
           cd ../../..
 
       - name: Clone ballerina-distribution repository
-        run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-distribution.git
+        run: git clone https://$GITHUB_TOKEN@github.com/Ballerina-By-Examples/ballerina-distribution.git
 
       - name: Copy examples to dev website repo
         run: cp -r ./ballerina-distribution/examples .
@@ -56,8 +56,8 @@ jobs:
         run: |
           git checkout automate-bbes-$GITHUB_SHA 2>/dev/null || git checkout -b automate-bbes-$GITHUB_SHA
 
-          git config --global user.email "ballerina-bot@ballerina.org"
-          git config --global user.name "ballerina-bot"
+          git config --global user.email ${{ secrets.EMAIL }}
+          git config --global user.name ${{ secrets.NAME }}
 
           git add ./learn/by-example
           git commit --allow-empty -m 'Update Ballerina Swan Lake by Examples'
@@ -69,6 +69,6 @@ jobs:
         shell: bash
         run: |
           curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-          bin/hub pull-request -b bbe-generation-v2 -m '[Automated] Update Ballerina By Example(BBEs) pages'
+          bin/hub pull-request -b upstream-dev -m '[Automated] Update Ballerina By Example(BBEs) pages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

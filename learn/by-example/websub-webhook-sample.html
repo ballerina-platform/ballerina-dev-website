@@ -2116,14 +2116,14 @@ service /JuApTOXq19 on new websub:Listener(9090) {
     remote function onEventNotification(
                     websub:ContentDistributionMessage event) returns error? {
         var retrievedContent = event.content;
-        if (retrievedContent is json) {
-            if (retrievedContent.zen is string) {
+        if retrievedContent is json {
+            if retrievedContent.zen is string {
                 int hookId = check retrievedContent.hook_id;
                 json sender = check retrievedContent.sender;
                 int senderId = check sender.id;
                 io:println(string`PingEvent received for webhook [${hookId}]`);
                 io:println(string`Event sender [${senderId}]`);
-            } else if (retrievedContent.ref is string) {
+            } else if retrievedContent.ref is string {
                 json repository = check retrievedContent.repository;
                 string repositoryName =  check repository.name;
                 string lastUpdatedTime =  check repository.updated_at;

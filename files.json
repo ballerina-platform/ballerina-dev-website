@@ -1,0 +1,4448 @@
+{
+    "dirName": "swan lake",
+    "level": 0,
+    "position": 0,
+    "isDir": true,
+    "url": "",
+    "subDirectories": [
+        {
+            "dirName": "guides",
+            "level": 1,
+            "position": 2,
+            "isDir": true,
+            "url": "swan-lake/guides",
+            "subDirectories": [
+                {
+                    "dirName": "ballerina shell",
+                    "level": 2,
+                    "position": 12,
+                    "isDir": false,
+                    "url": "/learn/ballerina-shell"
+                },
+                {
+                    "dirName": "manage dependencies",
+                    "level": 2,
+                    "position": 8,
+                    "isDir": false,
+                    "url": "/learn/manage-dependencies"
+                },
+                {
+                    "dirName": "configure ballerina programs",
+                    "level": 2,
+                    "position": 5,
+                    "isDir": true,
+                    "url": "/learn/configure-ballerina-programs",
+                    "subDirectories": [
+                        {
+                            "dirName": "configure a sample ballerina service",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/configure-ballerina-programs/configure-a-sample-ballerina-service"
+                        },
+                        {
+                            "dirName": "configure values",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/configure-ballerina-programs/configure-values"
+                        },
+                        {
+                            "dirName": "provide values to configurable variables",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/configure-ballerina-programs/provide-values-to-configurable-variables"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "publish packages to ballerina central",
+                    "level": 2,
+                    "position": 9,
+                    "isDir": false,
+                    "url": "/learn/publish-packages-to-ballerina-central"
+                },
+                {
+                    "dirName": "generate code documentation",
+                    "level": 2,
+                    "position": 4,
+                    "isDir": false,
+                    "url": "/learn/generate-code-documentation"
+                },
+                {
+                    "dirName": "organize ballerina code",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": false,
+                    "url": "/learn/organize-ballerina-code"
+                },
+                {
+                    "dirName": "test ballerina code",
+                    "level": 2,
+                    "position": 3,
+                    "isDir": true,
+                    "url": "/learn/test-ballerina-code",
+                    "subDirectories": [
+                        {
+                            "dirName": "structure tests",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/test-ballerina-code/structure-tests"
+                        },
+                        {
+                            "dirName": "mocking",
+                            "level": 3,
+                            "position": 9,
+                            "isDir": false,
+                            "url": "/learn/test-ballerina-code/mocking"
+                        },
+                        {
+                            "dirName": "test a simple function",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/test-ballerina-code/test-a-simple-function"
+                        },
+                        {
+                            "dirName": "configure tests",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/test-ballerina-code/configure-tests"
+                        },
+                        {
+                            "dirName": "code coverage and reporting",
+                            "level": 3,
+                            "position": 5,
+                            "isDir": false,
+                            "url": "/learn/test-ballerina-code/code-coverage-and-reporting"
+                        },
+                        {
+                            "dirName": "write tests",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/test-ballerina-code/write-tests"
+                        },
+                        {
+                            "dirName": "define test groups",
+                            "level": 3,
+                            "position": 7,
+                            "isDir": false,
+                            "url": "/learn/test-ballerina-code/define-test-groups"
+                        },
+                        {
+                            "dirName": "test services and clients",
+                            "level": 3,
+                            "position": 8,
+                            "isDir": false,
+                            "url": "/learn/test-ballerina-code/test-services-and-clients"
+                        },
+                        {
+                            "dirName": "execute tests",
+                            "level": 3,
+                            "position": 10,
+                            "isDir": false,
+                            "url": "/learn/test-ballerina-code/execute-tests"
+                        },
+                        {
+                            "dirName": "define data driven tests",
+                            "level": 3,
+                            "position": 6,
+                            "isDir": false,
+                            "url": "/learn/test-ballerina-code/define-data-driven-tests"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "debug ballerina programs",
+                    "level": 2,
+                    "position": 11,
+                    "isDir": false,
+                    "url": "/learn/debug-ballerina-programs"
+                },
+                {
+                    "dirName": "ballerina openapi support",
+                    "level": 2,
+                    "position": 14,
+                    "isDir": false,
+                    "url": "/learn/ballerina-openapi-support"
+                },
+                {
+                    "dirName": "observe ballerina programs",
+                    "level": 2,
+                    "position": 6,
+                    "isDir": false,
+                    "url": "/learn/observe-ballerina-programs"
+                },
+                {
+                    "dirName": "call java code from ballerina",
+                    "level": 2,
+                    "position": 10,
+                    "isDir": false,
+                    "url": "/learn/call-java-code-from-ballerina"
+                },
+                {
+                    "dirName": "run ballerina programs in the cloud",
+                    "level": 2,
+                    "position": 7,
+                    "isDir": true,
+                    "url": "/learn/run-ballerina-programs-in-the-cloud",
+                    "subDirectories": [
+                        {
+                            "dirName": "function as a service with ballerina",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": true,
+                            "url": "/learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina",
+                            "subDirectories": [
+                                {
+                                    "dirName": "azure functions",
+                                    "level": 4,
+                                    "position": 2,
+                                    "isDir": false,
+                                    "url": "/learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions"
+                                },
+                                {
+                                    "dirName": "aws lambda",
+                                    "level": 4,
+                                    "position": 1,
+                                    "isDir": false,
+                                    "url": "/learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda"
+                                }
+                            ]
+                        },
+                        {
+                            "dirName": "code to cloud",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": true,
+                            "url": "/learn/run-ballerina-programs-in-the-cloud/code-to-cloud",
+                            "subDirectories": [
+                                {
+                                    "dirName": "code to cloud deployment",
+                                    "level": 4,
+                                    "position": 1,
+                                    "isDir": false,
+                                    "url": "/learn/run-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-deployment"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "dirName": "distinctive language features",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": true,
+                    "url": "/learn/distinctive-language-features",
+                    "subDirectories": [
+                        {
+                            "dirName": "concurrency",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/distinctive-language-features/concurrency"
+                        },
+                        {
+                            "dirName": "network interaction",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/distinctive-language-features/network-interaction"
+                        },
+                        {
+                            "dirName": "advanced general purpose language features",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/distinctive-language-features/advanced-general-purpose-language-features"
+                        },
+                        {
+                            "dirName": "data",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/distinctive-language-features/data"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "Visual Studio Code extension",
+                    "level": 2,
+                    "position": 13,
+                    "isDir": false,
+                    "path": "https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina",
+                    "cleaned": false
+                }
+            ]
+        },
+        {
+            "dirName": "images",
+            "level": 1,
+            "position": 0,
+            "isDir": true,
+            "url": "",
+            "subDirectories": [
+                {
+                    "dirName": "orders erd new.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "optimize imports.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "idea logo.jpg",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "circuit breaker closed state.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "type guard variable.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "format document.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "show version on vscode.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "why diagram 04 new.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "output of ballerina service.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc streaming service.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "create intellij project.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "auto detection.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "data service architecture.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "start debug session.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "workspace symbols.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "ballerina debug.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "test.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "annotation field suggestion.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "debugger pause resume commands.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "streaming calc service new.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "debug configurations.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "test report.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "debug log.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "change variable type.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "debug ballerina intellij.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "kibana sample dashboard.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "command palette.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "install plugin via intellij.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "select from overview.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "new ballerina file with main function.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "debugger conditional breakpoints.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "click configure.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "diagrams view command.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "open project structure.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "document this.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "vscode logo.jpg",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "document symbols.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "document all.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "new ballerina project.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "signature help.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "create new ballerina file.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "start quick main debug session.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "run and debug code lenses.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "vscode logo.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "helloworld sequence diagram.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "select file kind.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "why diagram 01 new.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "format code.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "import module.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "add endpoints.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "find usage.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "suggestions.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "interoperability diagram.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc getting started.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "select sdk.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "jump to source view.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "add definitions.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "change parameter type.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "test command.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "debugger watch window.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "test execution order.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http resource anatomy new.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "install via palette.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc service functions list.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "update documentation.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "circuit breaker half open state.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "import modules on the fly.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "create cloud toml.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "data mapper code action.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "docker hub.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "edit mode.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "circuit breaker sequence diagram.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "parameter information.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "output of main function.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "jaeger sample dashboard.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "add workers.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "run and debug.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "run all tests.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "signature help support.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "hover support.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc admin service.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "new ballerina sdk.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "select a ballerina project in intellij.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "run application icon.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "code snippet templates.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "circuit breaker open state.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "format document range.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "install via editor.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "create variable.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "diagrams view.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "code actions.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "implement method.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "paste json as record.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "go to definition intellij.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "create variable and type guard.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grafana ballerina metrics 3.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "create variable and check error.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "view documentation.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "show diagram view.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "show examples.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "debugger logpoints template.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "trace log.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "why diagram 03 new.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "semantic and syntactic.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "experimental features.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "select ballerina distribution.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "run without debugging.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "document.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "documentation viewer.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "run.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "enter project name and location.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "add constructs.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "add check error.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "analyzing semantics.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "intellij logo.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "fix return type.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "code completion.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "expand diagram view.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "start quick test debug session.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "check spellings.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "code folding.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "run and debug.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "ignore return value.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "file templates.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "documentation code lens.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "installing the extension.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "debug logs.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "test debug.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "debugger evaluation console.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "choreo observability view.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "add module.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "show diagram icon.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "streaming calc service.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "why diagram 02 new.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "refactoring options.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "code cov.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grafana ballerina metrics 2.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "download vscode plugin from market place.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "go to definition vscode.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "find all references.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": "/learn/find-all-references.gif"
+                },
+                {
+                    "dirName": "select run command.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "jaeger tracing dashboard.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "symbol information on hover.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grafana prometheus datasource.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "create function.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "apply changes.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "data mapping.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc admin service new.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "interoperability diagram new.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "remote debug.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grafana ballerina metrics 1.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "running your program.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "select project type.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http resource anatomy.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "add type cast.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "graphical editor quick launch.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "show diagram.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "debugger logpoints.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "install via editor preferences.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": "/learn/install-via-editor-preferences.gif"
+                },
+                {
+                    "dirName": "go to definition.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "rename symbols.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "orders erd.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grafana sample hello world service stats.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "import unambiguous modules.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "diagnostics.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "build.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "program debug.gif",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "add new sdk.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                }
+            ]
+        },
+        {
+            "dirName": "by example",
+            "level": 1,
+            "position": 0,
+            "isDir": true,
+            "url": "",
+            "subDirectories": [
+                {
+                    "dirName": "uuid operations.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "creating tables with query.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "udp connect client.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "environment variables.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "temp files directories.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "inter worker failure propagation.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "readonly and isolated.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http path param.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http service basic auth ldap user store.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "time utc.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "mysql complex type queries.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "kafka consumer client.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "images",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": true,
+                    "url": "",
+                    "subDirectories": [
+                        {
+                            "dirName": "sequence diagram.png",
+                            "level": 3,
+                            "position": 0,
+                            "isDir": false,
+                            "url": ""
+                        }
+                    ]
+                },
+                {
+                    "dirName": "http passthrough.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "identifiers.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "table syntax.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "nats basic request reply.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "receive email using client.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "kafka consumer group service.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket client self signed jwt auth.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket service ssl tls.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "join clause.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "asynchronous function calls.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc client oauth2 client credentials grant type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "working directly with json.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "json numbers.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "graphql service oauth2.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http redirects.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "mysql atomic batch execute operation.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "xml json conversion.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "json type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket client bearer token auth.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc service ssl tls.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "inter worker message passing.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "kafka producer.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc service mutual ssl.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "nats basic pub sub.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "match statement with maps.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "time utc and civil.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "logging with context.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http client oauth2 client credentials grant type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "testerina before and after suite.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http client self signed jwt auth.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "io xml.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc simple.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http resource returns.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc client ssl tls.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "graphql returning record values.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "ignoring return values and errors.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "logging configuration.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "ballerina example.css",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "mysql query operation.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "graphql service ssl tls.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "querying tables.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http cors.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "gauge metrics.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "nats streaming durable subscriptions.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "alternate wait.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "io bytes.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket text client.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "structural typing.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "backtick templates.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http service mutual ssl.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "security jwt issue validate.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket basic sample.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "built bbes.json",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "nats streaming secure connection.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "io strings.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "graphql service jwt auth.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http trace logs.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "files.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "graphql file upload.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "query expressions.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "check expression.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http client mutual ssl.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "graphql hierarchical resource paths.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "filepaths.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket service oauth2.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket retry client.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "querying with streams.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "nats streaming start position.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "xml templates and query.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "records.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "mysql call stored procedures.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http 100 continue.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "programs and modules.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "jdbc batch execute operation.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "immutability.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "directories.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "function values.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc client bearer token auth.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket service mutual ssl.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket client oauth2 jwt bearer grant type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http caching client.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc service basic auth ldap user store.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "task frequency job execution.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "consuming services.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "uuid generation.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "azure functions deployment.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "maps.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "kafka consumer service.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "ordering.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http 2 0 server push.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "testerina group tests.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "graphql returning service objects.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc server streaming.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc client oauth2 jwt bearer grant type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http disable chunking.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http service oauth2.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "graphql service basic auth ldap user store.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "udp listener.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "play.png",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "graphql service basic auth file user store.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "converting to user defined type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "unions.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "any type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "counter metrics.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "testerina data driven tests.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "strings.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "url encode decode.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "xmlns declarations.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "object.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "testerina guarantee test execution order.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "error subtyping.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "time formatting and parsing.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "aws lambda deployment.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "raw templates.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "dynamic listener.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "integers.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "testerina mocking objects.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "graphql hello world.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "rollback.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "strands.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket client ssl tls.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc client oauth2 refresh token grant type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "match statement.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "random numbers.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "ftp client.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "nats streaming pub sub.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "manage scheduled jobs.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "booleans.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "destructuring records.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "logging.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "sftp listener.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http client oauth2 password grant type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http default resource.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket service jwt auth.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "anydata type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "cache invalidation.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "isolated functions.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "error reporting.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "binary data.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "structured keys.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "nats streaming queue group.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "error handling.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "mysql batch execute operation.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "arrays.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http service basic auth file user store.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "limit clause.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "type inference.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http 1 1 to 2 0 protocol switch.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "rabbitmq transaction producer.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "all bbes.json",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "enumerations.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http client oauth2 refresh token grant type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http compression.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http data binding.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "resource path parameters.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc service jwt auth.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "jdbc query operation.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket client mutual ssl.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "task one time job execution.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "named worker return values.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "converting from json to user defined type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "functions.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http absolute path and path.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "testerina before and after each.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http client bearer token auth.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "xml namespaces.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "send email.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "identity.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc service oauth2.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "retry transaction statement.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "site.css",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http request with multiparts.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "rabbitmq producer.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websub webhook sample.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "graphql service mutual ssl.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http client data binding.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "transaction statement.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "multiple key fields.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "cache basics.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "hello world service.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "annotations.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http response with multiparts.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "defining classes.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "rabbitmq secure connection.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http header param.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "ftp listener.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "io csv.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket client oauth2 refresh token grant type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http retry.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "favicon.ico",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "configurable variables.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "regular expressions.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "while statement.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http access logs.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http service ssl tls.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "named workers.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "resource methods.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "open records.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket client oauth2 client cred grant type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "service declaration.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "graphql mutations.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http request interceptor at listener.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc service basic auth file user store.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http client basic auth.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "lock statement.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "tcp listener.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "hierarchical resources.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "xslt transformation.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "nil.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "init return type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "transactional named workers.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "multiple wait.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "controlling openness.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http client ssl tls.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc client oauth2 password grant type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "decimal type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http restrict by media type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "kafka authentication sasl plain consumer.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc client streaming.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "xml data model.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket service basic auth file user store.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http client endpoint.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "nats basic secure connection.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "testerina before and after test.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "langlib functions.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "named workers and futures.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "converting from user defined type to json.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "type definitions.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http failover.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "variables and types.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "isolated methods.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "testerina assertions.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "transactional qualifier.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "c2c deployment.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "index.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "providing services.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "isolated objects.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http query parameter.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "tcp client.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "isolated variables.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http service jwt auth.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket client oauth2 password grant type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http streaming.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "graphql input types.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "covariance.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "graphql context.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc bidirectional streaming.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "jdbc complex type queries.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "xml templates.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "io json.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "proto to ballerina.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc client mutual ssl.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http load balancer.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http client oauth2 jwt bearer grant type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc client basic auth.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "rabbitmq consumer.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "xml subtyping.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "xml navigation.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "let clause.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc simple with headers.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "testerina before and after groups.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "mysql execute operation.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "rabbitmq transaction consumer.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http circuit breaker.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "panics.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "floating point numbers.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "udp client.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket service basic auth ldap user store.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "inferring isolated.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "waiting for workers.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "optional fields.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "stream type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "jdbc execute operation.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http request error interceptor.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "hello world.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "const and final.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http matrix param.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "jdbc atomic batch execute operation.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "sftp client.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "kafka producer transactional.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "resource method typing.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "tracing.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "404.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "commit rollback handlers.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "combining isolated functions and lock.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "security crypto.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "readonly type.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "testerina mocking functions.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket binary client.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "xml operations.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "rabbitmq consumer with client acknowledgement.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "foreach statement.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "module lifecycle.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "tcp transport security.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "documentation.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "grpc client self signed jwt auth.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "sequence diagrams.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "websocket client basic auth.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http timeout.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "check semantics.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "kafka authentication sasl plain producer.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http cookies.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "directory listener.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "receive email using listener.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                },
+                {
+                    "dirName": "http request interceptor at service.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                }
+            ]
+        },
+        {
+            "dirName": "get started",
+            "level": 1,
+            "position": 1,
+            "isDir": true,
+            "url": "swan-lake/get-started",
+            "subDirectories": [
+                {
+                    "dirName": "write a grpc service with ballerina",
+                    "level": 2,
+                    "position": 6,
+                    "isDir": false,
+                    "url": "/learn/write-a-grpc-service-with-ballerina"
+                },
+                {
+                    "dirName": "write a restful api with ballerina",
+                    "level": 2,
+                    "position": 4,
+                    "isDir": false,
+                    "url": "/learn/write-a-restful-api-with-ballerina"
+                },
+                {
+                    "dirName": "get started with ballerina",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": false,
+                    "url": "/learn/get-started-with-ballerina"
+                },
+                {
+                    "dirName": "install ballerina",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": true,
+                    "url": "/learn/install-ballerina",
+                    "subDirectories": [
+                        {
+                            "dirName": "set up ballerina",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/install-ballerina/set-up-ballerina"
+                        },
+                        {
+                            "dirName": "Installation options",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/install-ballerina/Installation-options"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "work with data in ballerina",
+                    "level": 2,
+                    "position": 7,
+                    "isDir": false,
+                    "url": "/learn/work-with-data-in-ballerina"
+                },
+                {
+                    "dirName": "build a data service in ballerina",
+                    "level": 2,
+                    "position": 9,
+                    "isDir": false,
+                    "url": "/learn/build-a-data-service-in-ballerina"
+                },
+                {
+                    "dirName": "write a graphql api with ballerina",
+                    "level": 2,
+                    "position": 5,
+                    "isDir": false,
+                    "url": "/learn/write-a-graphql-api-with-ballerina"
+                },
+                {
+                    "dirName": "language basics",
+                    "level": 2,
+                    "position": 3,
+                    "isDir": false,
+                    "url": "/learn/language-basics"
+                },
+                {
+                    "dirName": "deploy ballerina on kubernetes",
+                    "level": 2,
+                    "position": 8,
+                    "isDir": false,
+                    "url": "/learn/deploy-ballerina-on-kubernetes"
+                }
+            ]
+        },
+        {
+            "dirName": "other",
+            "level": 1,
+            "position": 0,
+            "isDir": true,
+            "url": "",
+            "subDirectories": [
+                {
+                    "dirName": "security",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": true,
+                    "url": "",
+                    "subDirectories": [
+                        {
+                            "dirName": "http client authentication",
+                            "level": 3,
+                            "position": 0,
+                            "isDir": false,
+                            "url": ""
+                        },
+                        {
+                            "dirName": "http listener authentication and authorization",
+                            "level": 3,
+                            "position": 0,
+                            "isDir": false,
+                            "url": ""
+                        }
+                    ]
+                },
+                {
+                    "dirName": "tooling guide",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": true,
+                    "url": "",
+                    "subDirectories": [
+                        {
+                            "dirName": "intellij idea plugin",
+                            "level": 3,
+                            "position": 0,
+                            "isDir": true,
+                            "url": "",
+                            "subDirectories": [
+                                {
+                                    "dirName": "set up intellij idea",
+                                    "level": 4,
+                                    "position": 0,
+                                    "isDir": false,
+                                    "url": ""
+                                },
+                                {
+                                    "dirName": "set up intellij idea",
+                                    "level": 4,
+                                    "position": 0,
+                                    "isDir": true,
+                                    "url": "",
+                                    "subDirectories": [
+                                        {
+                                            "dirName": "use the intellij plugin 2",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        },
+                                        {
+                                            "dirName": "use the intellij plugin",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        },
+                                        {
+                                            "dirName": "use intellij plugin features",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        },
+                                        {
+                                            "dirName": "use intellij plugin features 2",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "dirName": "network communication",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": true,
+                    "url": "",
+                    "subDirectories": [
+                        {
+                            "dirName": "HTTP",
+                            "level": 3,
+                            "position": 0,
+                            "isDir": true,
+                            "url": "",
+                            "subDirectories": [
+                                {
+                                    "dirName": "http services",
+                                    "level": 4,
+                                    "position": 0,
+                                    "isDir": true,
+                                    "url": "",
+                                    "subDirectories": [
+                                        {
+                                            "dirName": "http services",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        },
+                                        {
+                                            "dirName": "secure communication",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        },
+                                        {
+                                            "dirName": "multipart message handling",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        },
+                                        {
+                                            "dirName": "extended request response access",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        },
+                                        {
+                                            "dirName": "payload data binding",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        }
+                                    ]
+                                },
+                                {
+                                    "dirName": "http",
+                                    "level": 4,
+                                    "position": 0,
+                                    "isDir": false,
+                                    "url": ""
+                                },
+                                {
+                                    "dirName": "http clients",
+                                    "level": 4,
+                                    "position": 0,
+                                    "isDir": true,
+                                    "url": "",
+                                    "subDirectories": [
+                                        {
+                                            "dirName": "data streaming",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        },
+                                        {
+                                            "dirName": "data binding",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        },
+                                        {
+                                            "dirName": "http clients",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        },
+                                        {
+                                            "dirName": "secure communication",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        },
+                                        {
+                                            "dirName": "multipart message handling",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        },
+                                        {
+                                            "dirName": "communication resiliency",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "dirName": "gRPC",
+                            "level": 3,
+                            "position": 0,
+                            "isDir": true,
+                            "url": "",
+                            "subDirectories": [
+                                {
+                                    "dirName": "perform grpc streaming",
+                                    "level": 4,
+                                    "position": 0,
+                                    "isDir": false,
+                                    "url": ""
+                                },
+                                {
+                                    "dirName": "define the service interface",
+                                    "level": 4,
+                                    "position": 0,
+                                    "isDir": false,
+                                    "url": ""
+                                },
+                                {
+                                    "dirName": "implement grpc services and clients",
+                                    "level": 4,
+                                    "position": 0,
+                                    "isDir": true,
+                                    "url": "",
+                                    "subDirectories": [
+                                        {
+                                            "dirName": "implement grpc clients",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        },
+                                        {
+                                            "dirName": "implement grpc services",
+                                            "level": 5,
+                                            "position": 0,
+                                            "isDir": false,
+                                            "url": ""
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "dirName": "WebSocket",
+                            "level": 3,
+                            "position": 0,
+                            "isDir": true,
+                            "url": "",
+                            "subDirectories": [
+                                {
+                                    "dirName": "secure websocket communication",
+                                    "level": 4,
+                                    "position": 0,
+                                    "isDir": false,
+                                    "url": ""
+                                },
+                                {
+                                    "dirName": "websocket",
+                                    "level": 4,
+                                    "position": 0,
+                                    "isDir": false,
+                                    "url": ""
+                                }
+                            ]
+                        },
+                        {
+                            "dirName": "GraphQL",
+                            "level": 3,
+                            "position": 0,
+                            "isDir": true,
+                            "url": "",
+                            "subDirectories": [
+                                {
+                                    "dirName": "graphql",
+                                    "level": 4,
+                                    "position": 0,
+                                    "isDir": false,
+                                    "url": ""
+                                },
+                                {
+                                    "dirName": "implement graphql services",
+                                    "level": 4,
+                                    "position": 0,
+                                    "isDir": false,
+                                    "url": ""
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "dirName": "data and events processing",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": true,
+                    "url": "",
+                    "subDirectories": [
+                        {
+                            "dirName": "use language integrated queries",
+                            "level": 3,
+                            "position": 0,
+                            "isDir": false,
+                            "url": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "dirName": "references",
+            "level": 1,
+            "position": 3,
+            "isDir": true,
+            "url": "swan-lake/references",
+            "subDirectories": [
+                {
+                    "dirName": "package references",
+                    "level": 2,
+                    "position": 7,
+                    "isDir": false,
+                    "url": "/learn/package-references"
+                },
+                {
+                    "dirName": "Ballerina by Example",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "path": "https://ballerina.io/learn/by-example/",
+                    "cleaned": false
+                },
+                {
+                    "dirName": "Library documentation",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": false,
+                    "path": "https://lib.ballerina.io/",
+                    "cleaned": false
+                },
+                {
+                    "dirName": "cli documentation",
+                    "level": 2,
+                    "position": 3,
+                    "isDir": true,
+                    "url": "/learn/cli-documentation",
+                    "subDirectories": [
+                        {
+                            "dirName": "cli commands",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/cli-documentation/cli-commands"
+                        },
+                        {
+                            "dirName": "openapi",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/cli-documentation/openapi"
+                        },
+                        {
+                            "dirName": "grpc",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/cli-documentation/grpc"
+                        },
+                        {
+                            "dirName": "update tool",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/cli-documentation/update-tool"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "Platform specifications",
+                    "level": 2,
+                    "position": 4,
+                    "isDir": false,
+                    "path": "https://ballerina.io/learn/platform-specifications/",
+                    "cleaned": false
+                },
+                {
+                    "dirName": "style guide",
+                    "level": 2,
+                    "position": 5,
+                    "isDir": true,
+                    "url": "/learn/style-guide",
+                    "subDirectories": [
+                        {
+                            "dirName": "coding conventions",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/style-guide/coding-conventions"
+                        },
+                        {
+                            "dirName": "coding conventions",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": true,
+                            "url": "/learn/style-guide/coding-conventions",
+                            "subDirectories": [
+                                {
+                                    "dirName": "README",
+                                    "level": 4,
+                                    "position": 0,
+                                    "isDir": false,
+                                    "url": "/learn/style-guide/coding-conventions/README"
+                                },
+                                {
+                                    "dirName": "statements",
+                                    "level": 4,
+                                    "position": 3,
+                                    "isDir": false,
+                                    "url": "/learn/style-guide/coding-conventions/statements"
+                                },
+                                {
+                                    "dirName": "expressions",
+                                    "level": 4,
+                                    "position": 4,
+                                    "isDir": false,
+                                    "url": "/learn/style-guide/coding-conventions/expressions"
+                                },
+                                {
+                                    "dirName": "top level definitions",
+                                    "level": 4,
+                                    "position": 1,
+                                    "isDir": false,
+                                    "url": "/learn/style-guide/coding-conventions/top-level-definitions"
+                                },
+                                {
+                                    "dirName": "operators keywords and types",
+                                    "level": 4,
+                                    "position": 2,
+                                    "isDir": false,
+                                    "url": "/learn/style-guide/coding-conventions/operators-keywords-and-types"
+                                },
+                                {
+                                    "dirName": "annotations documentation and comments",
+                                    "level": 4,
+                                    "position": 5,
+                                    "isDir": false,
+                                    "url": "/learn/style-guide/coding-conventions/annotations-documentation-and-comments"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "dirName": "language introduction",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": true,
+                    "url": "/learn/language-introduction",
+                    "subDirectories": [
+                        {
+                            "dirName": "Ballerina _Swan_Lake_Presentation_Deck_V2.0.pdf",
+                            "level": 3,
+                            "position": 0,
+                            "isDir": false,
+                            "url": "/learn/language-introduction/Ballerina _Swan_Lake_Presentation_Deck_V2.0.pdf"
+                        },
+                        {
+                            "dirName": "language introduction",
+                            "level": 3,
+                            "position": 0,
+                            "isDir": false,
+                            "url": "/learn/language-introduction/language-introduction"
+                        },
+                        {
+                            "dirName": "Ballerina_Swan_Lake_Presentation_Deck_V1.0.pdf",
+                            "level": 3,
+                            "position": 0,
+                            "isDir": false,
+                            "url": "/learn/language-introduction/Ballerina_Swan_Lake_Presentation_Deck_V1.0.pdf"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "java interoperability",
+                    "level": 2,
+                    "position": 6,
+                    "isDir": true,
+                    "url": "/learn/java-interoperability",
+                    "subDirectories": [
+                        {
+                            "dirName": "java interoperability",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/java-interoperability/java-interoperability"
+                        },
+                        {
+                            "dirName": "ballerina ffi",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/java-interoperability/ballerina-ffi"
+                        },
+                        {
+                            "dirName": "the bindgen tool",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/java-interoperability/the-bindgen-tool"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "dirName": "why ballerina",
+            "level": 1,
+            "position": 0,
+            "isDir": true,
+            "url": "swan-lake/why-ballerina",
+            "subDirectories": [
+                {
+                    "dirName": "reliable maintainable",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": "/why-ballerina/reliable-maintainable"
+                },
+                {
+                    "dirName": "graphical",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": "/why-ballerina/graphical"
+                },
+                {
+                    "dirName": "data oriented",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": "/why-ballerina/data-oriented"
+                },
+                {
+                    "dirName": "cloud native",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": "/why-ballerina/cloud-native"
+                },
+                {
+                    "dirName": "flexibly typed",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": "/why-ballerina/flexibly-typed"
+                },
+                {
+                    "dirName": "concurrent",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": "/why-ballerina/concurrent"
+                }
+            ]
+        },
+        {
+            "dirName": "slides",
+            "level": 1,
+            "position": 4,
+            "isDir": true,
+            "url": "swan-lake/slides",
+            "subDirectories": [
+                {
+                    "dirName": "language walkthrough",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": true,
+                    "url": "/learn/language-walkthrough",
+                    "subDirectories": [
+                        {
+                            "dirName": "language walkthrough",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/language-walkthrough/language-walkthrough"
+                        },
+                        {
+                            "dirName": "Ballerina_Language_Presentation 2021 01 29.pdf",
+                            "level": 3,
+                            "position": 0,
+                            "isDir": false,
+                            "url": "/learn/language-walkthrough/Ballerina_Language_Presentation-2021-01-29.pdf"
+                        },
+                        {
+                            "dirName": "Ballerina_Language_Presentation 2021 03 08.pdf",
+                            "level": 3,
+                            "position": 0,
+                            "isDir": false,
+                            "url": "/learn/language-walkthrough/Ballerina_Language_Presentation-2021-03-08.pdf"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "dirName": "api docs",
+            "level": 1,
+            "position": 0,
+            "isDir": true,
+            "url": "",
+            "subDirectories": [
+                {
+                    "dirName": "ballerina",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": true,
+                    "url": "",
+                    "subDirectories": [
+                        {
+                            "dirName": "index.html",
+                            "level": 3,
+                            "position": 0,
+                            "isDir": false,
+                            "url": ""
+                        }
+                    ]
+                },
+                {
+                    "dirName": "index.html",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": ""
+                }
+            ]
+        }
+    ]
+}

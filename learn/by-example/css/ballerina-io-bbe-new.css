@@ -1,0 +1,341 @@
+/* Variables */
+:root {
+  --sidebar-width: 300px;
+  --page-padding: 15px;
+  --content-max-width: 750px;
+  --menu-bar-height: 50px;
+}
+
+/* Navigation */
+.bal-nav-item > a {
+  font-family: "pragmatica", sans-serif !important;
+}
+
+.bal-nav-item > div {
+  cursor: pointer !important;
+}
+
+.bal-active {
+  color: #22b7b2 !important;
+}
+
+/* Sidebar */
+
+.sidebar {
+  position: absolute;
+  height: 500px;
+  left: 0;
+  top: 80px;
+  bottom: 0;
+  width: var(--sidebar-width);
+  font-size: 0.875em;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-fg);
+}
+
+.sidebar code {
+  line-height: 2em;
+}
+.sidebar .sidebar-scrollbox {
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 10px;
+}
+
+.chapter {
+  list-style: none outside none;
+  padding-left: 0;
+  line-height: 2.2em;
+}
+
+.chapter ol {
+  width: 100%;
+}
+
+.chapter li {
+  display: flex;
+  color: var(--sidebar-non-existant);
+}
+.chapter li a {
+  display: block;
+  padding: 0;
+  text-decoration: none;
+  color: var(--sidebar-fg);
+}
+
+.chapter li a:hover {
+  color: var(--sidebar-active);
+}
+
+.chapter li a.active {
+  color: var(--sidebar-active);
+}
+
+.chapter li > a.toggle {
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  padding: 0 10px;
+  user-select: none;
+  opacity: 0.68;
+}
+
+.chapter li > a.toggle div {
+  transition: transform 0.5s;
+}
+
+/* collapse the section */
+.chapter li:not(.expanded) + li > ol {
+  display: none;
+}
+
+.chapter li.chapter-item {
+  line-height: 1.5em;
+  margin-top: 0.6em;
+}
+
+.chapter li.expanded > a.toggle div {
+  transform: rotate(90deg);
+}
+
+@media (-moz-touch-enabled: 1), (pointer: coarse) {
+  .chapter li a {
+    padding: 5px 0;
+  }
+}
+
+.section {
+  list-style: none outside none;
+  padding-left: 20px;
+  line-height: 1.9em;
+}
+
+/* Toggle Category */
+.part-title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.part-title > div {
+  cursor: pointer;
+}
+
+.part-title > a {
+  margin-left: auto;
+  padding: 0 10px !important;
+}
+
+.part-title > a > div {
+  transition: transform 0.5s;
+}
+
+.part-title.expanded > a > div {
+  transform: rotate(90deg);
+}
+
+.part-title.expanded + ol {
+  display: block;
+}
+
+.part-title:not(.expanded) + ol {
+  display: none;
+}
+
+/* Page Content */
+.bal-container h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 32px !important;
+  font-weight: 600 !important;
+  color: #464646 !important;
+}
+
+.bal-container p {
+  font-family: inherit;
+  font-size: 16px !important;
+  font-weight: 300 !important;
+  color: #57595d !important;
+  margin-bottom: 20px !important;
+}
+
+.bal-container p > a {
+  color: #3ad1ca !important;
+}
+
+p > code {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 300;
+  color: #57595d;
+}
+
+pre > code > span > span {
+  font-size: 12px !important;
+}
+
+code {
+  font-family: "Source Code Pro", Consolas, "Ubuntu Mono", Menlo,
+    "DejaVu Sans Mono", monospace, monospace !important;
+}
+
+pre {
+  position: relative;
+}
+
+.chapter li.part-title > div {
+  margin: 5px 0px;
+  font-weight: bold;
+}
+
+/* Shiki */
+.shiki {
+  padding: 16px;
+}
+
+.bal-execute,
+.bal-result {
+  color: #3ad1ca;
+}
+
+/* Containers */
+.container {
+  width: 90% !important;
+}
+
+ol.chapter {
+  width: 265px !important;
+}
+
+.bal-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: calc(var(--sidebar-width) + 5%) !important;
+  width: 70% !important;
+}
+
+.code-container {
+  background-color: transparent !important;
+}
+
+.output-container {
+  padding: 16px;
+}
+
+.output-container .language-bash {
+  background-color: inherit !important;
+}
+
+.bal-container > pre {
+  background-color: #263238 !important;
+}
+
+/* Fonts */
+.bal-code {
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 12px;
+}
+
+.bal-output {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 12px;
+}
+
+/* Icons */
+pre > button {
+  display: flex;
+  padding: 5px;
+  margin: 5px;
+  background-color: transparent;
+  border: none !important;
+  height: fit-content;
+}
+
+pre > button:nth-child(2) {
+  margin-left: auto;
+}
+
+.check-button {
+  display: none;
+}
+
+/* Navigation Buttons */
+.bal-container > div {
+  display: flex;
+}
+
+/* Navigation Buttons */
+.button-container {
+  width: 100%;
+  height: 100px;
+}
+
+.button-container > a {
+  display: flex;
+  width: 50%;
+  align-items: center;
+}
+
+.button-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-title > span {
+  font-size: 1.5rem;
+  color: hsla(0, 0%, 19%, 0.7);
+}
+
+.button-title > div {
+  font-size: 1.7rem;
+  color: #3ad1ca;
+}
+
+.next-button {
+  justify-content: end;
+  margin-left: auto;
+}
+
+.next-button svg {
+  margin-left: 50px;
+}
+
+.next-button span {
+  text-align: end;
+}
+
+.prev-button {
+  justify-content: start;
+}
+
+.prev-button svg {
+  margin-right: 50px;
+}
+
+.scroll-to-top {
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3ad1ca;
+
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 20;
+}
+
+.scroll-to-top:hover {
+  background-color: #2da7a1;
+}

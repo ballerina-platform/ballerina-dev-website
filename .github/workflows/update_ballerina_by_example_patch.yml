@@ -1,7 +1,6 @@
 name: Create PR for new Swan Lake BBEs pages on distribution repo changes
 
 on: 
-  repository_dispatch:
   workflow_dispatch:
 
 jobs:

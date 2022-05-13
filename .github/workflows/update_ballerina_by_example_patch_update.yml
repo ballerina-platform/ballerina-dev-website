@@ -33,14 +33,24 @@ jobs:
       - name: Copy examples to dev website repo
         run: cp -r ./ballerina-distribution/examples .
 
-      - name: Delete already existing BBE HTML files
-        run: find ./learn/by-example -type f \( -name "*.html" ! -name "404.html" ! -name "index.html" \) -delete
+      - name: Create a temporary directory for by-example content
+        run: |
+          mkdir ./tempExamples
+          cd ./learn/by-example
+          cp -r css js fonts images favicon.ico play.png *.json *.css 404.html index.html ../../tempExamples
+          cd ../..
+
+      - name: Delete by-example contents
+        run: rm -rf ./learn/by-example/*
 
       - name: Run markdown to HTML generation script
         run: node ./.github/scripts/bbe/markdownConverter.js ./examples ./learn/by-example
 
       - name: Format code using prettier
         run: npx prettier ./learn/by-example/*.html --write
+
+      - name: Copy back the content in temporary directory
+        run: cp ./tempExamples/. ./learn/by-examples
 
       - name: Push BBE changes
         run: |

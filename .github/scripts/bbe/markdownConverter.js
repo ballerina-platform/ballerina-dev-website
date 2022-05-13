@@ -22,12 +22,12 @@ const sleep = (timeout) => {
 };
 
 // playground link generator
-const generatePlaygroundLink = async (line, description) => {
+const generatePlaygroundLink = async (line, exampleDir, description) => {
   let playgroundLink = null;
   let m = line.trim().match(/code\s+(.*\w)/);
   let m_fileName = m[1].match(/\w+\.\w+/);
 
-  let content = fs.readFileSync(m[1], "utf-8");
+  let content = fs.readFileSync(`${exampleDir}/${m[1]}`, "utf-8");
   let fileName = m_fileName[0];
 
   const data = {
@@ -60,7 +60,8 @@ md.use(container, "code", {
     const m = tokens[idx].info.trim().match(/code\s+(.*\w)/);
 
     if (tokens[idx].nesting === 1) {
-      let codeContent = fs.readFileSync(m[1], "utf-8").trim();
+      let filePath = `${env.relPath}/${m[1]}`;
+      let codeContent = fs.readFileSync(filePath, "utf-8").trim();
       codeContent = insertEscapes(codeContent);
       return `
 <br />      
@@ -102,11 +103,12 @@ md.use(container, "out", {
   validate: function (params) {
     return params.trim().match(/out\s+(.*\w)/);
   },
-  render: function (tokens, idx) {
+  render: function (tokens, idx, options, env, self) {
     const m = tokens[idx].info.trim().match(/out\s+(.*\w)/);
 
     if (tokens[idx].nesting === 1) {
-      let outputRead = fs.readFileSync(m[1], "utf-8").trim();
+      let filePath = `${env.relPath}/${m[1]}`;
+      let outputRead = fs.readFileSync(filePath, "utf-8").trim();
       let outputSplitted = outputRead.split("\n");
       let output = `
 <br />
@@ -365,9 +367,13 @@ const generate = async (examplesDir, outputDir) => {
     const jsonContent = JSON.parse(indexContent);
 
     for (const chapter of jsonContent) {
+      let category = chapter["category"];
+      console.log(`Processing BBE Category : ${category}`);
       let bbes = chapter["samples"];
 
       for (const bbe of bbes) {
+        let name = bbe["name"];
+        console.log(`\tProcessing BBE : ${name}`);
         let url = bbe["url"];
         let relPath = `${examplesDir}/${url}`;
         let files = fs.readdirSync(relPath);
@@ -393,10 +399,15 @@ const generate = async (examplesDir, outputDir) => {
 
               for (const line of contentArray) {
                 if (line.includes("::: code") && playground) {
-                  playgroundLink = await generatePlaygroundLink(line, url);
+                  playgroundLink = await generatePlaygroundLink(
+                    line,
+                    relPath,
+                    url
+                  );
                 }
                 let convertedLine = md.render(line, {
                   playgroundLink,
+                  relPath,
                 });
                 if (convertedLine === null) {
                   updatedArray.push("");
@@ -415,8 +426,8 @@ const generate = async (examplesDir, outputDir) => {
     }
 
     const executionTime = Date.now() - startTime;
+    console.log("\nHTML generation completed");
     console.log(`Executed in ${executionTime / 1000}s`);
-    console.log("HTML generation successful");
   } catch ({ message }) {
     console.log(message);
   }

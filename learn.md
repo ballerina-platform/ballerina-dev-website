@@ -147,12 +147,14 @@ redirect_from:
 
 <div class="row" style=" margin-bottom:30px">
 <div class="col-lg-12 col-md-12 col-sm-12 card">
- <a href="https://lib.ballerina.io/">
-  	<h3 id="library-api-documentation">Library API documentation</h3></a>
-		<p>Ballerina library API documentation. </p>
+ <a href="/learn/language-specifications/">
+  <h3 id="language-specifications-1">Language specifications</h3></a>
+		<p>Details of the Ballerina language specifications and proposals.  </p>
 </div>
 <div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
-
+         <a href="https://lib.ballerina.io/">
+  	<h3 id="library-api-documentation">Library API documentation</h3></a>
+		<p>Ballerina library API documentation. </p>
 </div>
 </div>
 
@@ -284,7 +286,7 @@ redirect_from:
 <h2 id="specifications">Specifications</h2>
 <div class="col-lg-12 col-md-12 col-sm-12 card" >
  <a href="/learn/language-specifications/">
-  <h3 id="language-specifications">Language specifications</h3></a>
+  <h3 id="language-specifications-2">Language specifications</h3></a>
 		<p>Details of the Ballerina language specifications and proposals.  </p>
 </div>
 <div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">

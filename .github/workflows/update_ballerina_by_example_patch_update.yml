@@ -50,7 +50,7 @@ jobs:
         run: npx prettier ./learn/by-example/*.html --write
 
       - name: Copy back the content in temporary directory
-        run: cp ./tempExamples/. ./learn/by-examples
+        run: cp -r ./tempExamples/. ./learn/by-examples
 
       - name: Push BBE changes
         run: |

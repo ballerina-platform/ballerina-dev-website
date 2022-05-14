@@ -13,9 +13,6 @@
           - title: Install the VS Code extension
             url: /learn/install-ballerina/set-up-ballerina/#install-the-vscode-extension
             active: install-the-vscode-extension
-          - title: Learn more
-            url: /learn/install-ballerina/set-up-ballerina/#learn-more
-            active: learn-more
     - title: Installation options
       url: /learn/install-ballerina/installation-options/
       sublinks:

@@ -43,7 +43,7 @@ There are several methods you can use to set up a MySQL server.
 ### Create a database and table
 
 Connect to the MySQL server using the terminal (or any other preferred method) and execute the following commands to 
-create a database and table. This tutorial demonstrates the basic use-case of creating, maintaining, and
+create a database and table. This tutorial demonstrates the basic use case of creating, maintaining, and
 interacting with a database of employees in an organization.
 
 ```sql
@@ -69,7 +69,7 @@ A new Ballerina project can be created by executing the following command in the
 bal new data_service
 ``` 
 
->**Info:** For more information on creating Ballerina packages, see [Get started with Ballerina](/learn/get-started-with-ballerina).
+>**Info:** For more information on creating Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
 ### Create a record to represent an employee
 
@@ -140,7 +140,7 @@ configurable int PORT = ?;
 configurable string DATABASE = ?;
 ```
 
->**Note:** For more information on defining configurable variables in Ballerina, see [Providie values to configurable variables](/learn/configure-ballerina-programs/provide-values-to-configurable-variables/).
+>**Note:** For more information on defining configurable variables in Ballerina, see [Provide values to configurable variables](/learn/configure-ballerina-programs/provide-values-to-configurable-variables/).
 
 ### Connect to the database
 

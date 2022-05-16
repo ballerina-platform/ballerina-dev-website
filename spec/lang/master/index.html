@@ -2053,13 +2053,12 @@ An array type-descriptor describes a type of list value by specifying the type
 that the value for all members must belong to, and optionally, a length.
 </p>
 
-<pre class="grammar"><span class="ntdfn" id="array-type-descriptor">array-type-descriptor</span> := <a href="#array-member-type-descriptor"><span class="ntref">array-member-type-descriptor</span></a> <a href="#array-dimension"><span class="ntref">array-dimension</span></a>+
+<pre class="grammar"><span class="ntdfn" id="array-type-descriptor">array-type-descriptor</span> := <a href="#array-member-type-descriptor"><span class="ntref">array-member-type-descriptor</span></a> <a href="#inferable-array-dimension"><span class="ntref">inferable-array-dimension</span></a> <a href="#array-dimension"><span class="ntref">array-dimension</span></a>*
+<span class="ntdfn" id="inferable-array-dimension">inferable-array-dimension</span> := <code>[</code> [ <a href="#inferable-array-length"><span class="ntref">inferable-array-length</span></a> ] <code>]</code>
 <span class="ntdfn" id="array-dimension">array-dimension</span> := <code>[</code> [ <a href="#array-length"><span class="ntref">array-length</span></a> ] <code>]</code>
 <span class="ntdfn" id="array-member-type-descriptor">array-member-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <em>but not</em> <a href="#array-type-descriptor"><span class="ntref">array-type-descriptor</span></a>
-<span class="ntdfn" id="array-length">array-length</span> :=
-   <a href="#int-literal"><span class="ntref">int-literal</span></a>
-   | <a href="#constant-reference-expr"><span class="ntref">constant-reference-expr</span></a>
-   | <a href="#inferred-array-length"><span class="ntref">inferred-array-length</span></a>
+<span class="ntdfn" id="inferable-array-length">inferable-array-length</span> := <a href="#array-length"><span class="ntref">array-length</span></a> | <a href="#inferred-array-length"><span class="ntref">inferred-array-length</span></a>
+<span class="ntdfn" id="array-length">array-length</span> := <a href="#int-literal"><span class="ntref">int-literal</span></a> | <a href="#constant-reference-expr"><span class="ntref">constant-reference-expr</span></a>
 <span class="ntdfn" id="inferred-array-length">inferred-array-length</span> := <code>*</code>
 </pre>
 <p>
@@ -2069,7 +2068,7 @@ addition the length of the list shape is n.
 </p>
 <p>
 When an <code>array-type-descriptor</code> includes multiple
-<code>array-dimension</code>s, the <code>array-dimension</code>s are interpreted
+array dimensions, th array dimensions are interpreted
 so that the order of the dimensions in the <code>array-type-descriptor</code> is
 consistent with the order of the dimensions in a
 <code>member-access-expr</code>. Specifically, a type
@@ -2086,9 +2085,11 @@ recognized as <code>array-member-type-descriptor</code>.
 <p>
 A <code>constant-reference-expr</code> in an <code>array-length</code> must
 evaluate to a non-negative integer. An array length of <code>*</code> means that
-the length of the array is to be inferred from the context; this is allowed only
-within a type descriptor occurring in a context that is specified to be
-inferable; its meaning is the same as if the length was specified explicitly.
+the length of the array is to be inferred from an initializer; this is allowed
+when the array-type-descriptor specifies the type of variable for which an
+initializer is specified, i.e. in a <code>local-init-var-decl-stmt</code>, a
+<code>module-init-var-decl</code> or a <code>module-const-decl</code>; its
+meaning is the same as if the length was specified explicitly.
 </p>
 <p>
 Note also that <code>T[n]</code> is a subtype of <code>T[]</code>, and that if
@@ -13299,6 +13300,9 @@ functions have been added to <code>lang.string</code>.</li>
 <li>The <code>round</code> function in <code>lang.float</code> and
 <code>lang.decimal</code> now takes an optional argument controlling the number
 of digits after the decimal point.</li>
+<li>The length of an array type is allowed to be <code>*</code> only when it is
+the outermost array and there is an initializer from which it can be
+inferred.</li>
 </ol>
 </section>
 <section>

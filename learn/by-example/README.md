@@ -6,7 +6,7 @@ This document is a guide to writing the body content of a BBE using markdown syn
 
 ### 1. Creating the markdown file
 
-- In the BBE resource folder `(./examples/<bbe-url>)`, if a markdown file doesn’t exist, create a new markdown file with the name of the BBE.
+- In the BBE resource folder (`./examples/<bbe-url>`), if a markdown file doesn’t exist, create a new markdown file with the name of the BBE.
 
 > Ex: hello_world.md
 
@@ -60,6 +60,6 @@ Below is the directory structure of examples directory in a `tree format`.
 
 ## Generating the HTML BBE pages from the markdown files
 
-The `markdownConverter.js` script located at **/.github/scripts/bbe** is used to generate the HTML BBE pages using the markdown files.
+The `markdownConverter.js` script located at `./.github/scripts/bbe` is used to generate the HTML BBE pages using the markdown files.
 
 For more details about the markdown converter script, check out this [document](../../.github/scripts/bbe/README.md).

@@ -25,11 +25,11 @@ This document is a guide to writing the body content of a BBE using markdown syn
     </tr>
     <tr>
         <td>Ballerina Code</td>
-        <td><i>::: &lt;code resource_file_name&gt; :::</i></td>
+        <td><i>::: code &lt;resource_file_name&gt; :::</i></td>
     </tr>
     <tr>
         <td>Output</td>
-        <td><i>::: &lt;out resource_file_name&gt; :::</i></td>
+        <td><i>::: out &lt;resource_file_name&gt; :::</i></td>
     </tr>
 </table>
 

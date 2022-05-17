@@ -34,7 +34,7 @@ cd ../../..
 ```
 ### 3. Deleting the existing BBE HTML files
 
-- Delete all the HTML files located in the **./learn/by-examples** directory excluding the `404.html` and `index.html` files.
+- Delete all the HTML files located in the `./learn/by-examples` directory excluding the `404.html` and `index.html` files.
 
 ### 4. Running the script
 

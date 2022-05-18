@@ -1,7 +1,7 @@
 ---
 layout: ballerina-asyncapi-support-left-nav-pages-swanlake
 title: Ballerina AsyncAPI support 
-description: Check out how the Ballerina GraphQL tooling makes it easy for you to start developing a service documented in an AsyncAPI contract.
+description: Check out how the Ballerina AsyncAPI tooling makes it easy for you to start developing a service documented in an AsyncAPI contract.
 keywords: ballerina, programming language, asyncapi, contract
 permalink: /learn/ballerina-asyncapi-support/
 active: ballerina-asyncapi-support

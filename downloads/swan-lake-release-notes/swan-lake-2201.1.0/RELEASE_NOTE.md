@@ -638,7 +638,7 @@ Added the `name` field for the `cloud.config.files` property in the `Cloud.toml`
 
 ### Breaking changes
 
-For existing `ballerinax/awslambda` and `ballerinax/azure_functions` projects, change the version to `2.1.0` in the `Dependencies.toml` file.
+For existing `ballerinax/awslambda` and `ballerinax/azure_functions` projects, delete the `Dependencies.toml` file and build the project.
 
 ### Bug fixes
 

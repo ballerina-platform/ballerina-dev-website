@@ -139,6 +139,8 @@ font-size: 10px;
     padding-bottom:130px; 
     display:block;
     scroll-margin-top: 100px !important;
+    z-index: -999;
+    position: absolute;
 }
 .card-title{color:#20b6b0;margin-top:0px;line-height: 30px;}
 .card-title:hover{color:#464646 !important}
@@ -466,7 +468,7 @@ td.cEventDateContainer{
       <p>
         Want to get hand-picked content and the latest news on Ballerina delivered directly to your inbox? Then subscribe to our monthly newsletter today!
       </p>
-      <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x14k" width="100%" type="text/html" frameborder="0" allowTransparency="true" style=" width: 100%;border: 0;height: 140px;" class="mobileViewNewsletter"></iframe>
+      <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x14k" width="100%" type="text/html" frameborder="0" allowTransparency="true" style="width: 100%;border: 0;height: 160px;z-index: 7;position: sticky;" class="mobileViewNewsletter"></iframe>
       <!-- <p>Click <a class="getStartLinks" target="_blank" href="/community/ballerina-newsletter" >here</a> to read the latest and all past Ballerina newsletter issues.</p> -->
     
     </div>
@@ -835,45 +837,48 @@ td.cEventDateContainer{
      
 
         <div class="col-lg-4 col-md-6 col-sm-12 card">
-          
-                     <h4 id="running-ballerina-programs-in-the-cloud" class="gTitle1">Contribute to the source code
+            <span class="bookMarkOnPage" id="contribute-to-the-source-code"></span>
+                     <h4 id="contribute-to-the-source-code-title" class="gTitle1">Contribute to the source code
            </h4>
                 <p>Make Ballerina better by contributing to its source code. Read the <a class="getStartLinks" target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md" >contribution guide</a> and  get started. Happy contributing!</p>
            
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 card">
-           
-                     <h4 id="running-ballerina-programs-in-the-cloud" class="gTitle1">Contribute to Ballerina Central
+            <span class="bookMarkOnPage" id="contribute-to-ballerina-central"></span>
+                     <h4 id="contribute-to-ballerina-central-title" class="gTitle1">Contribute to Ballerina Central
            </h4>
                 <p>Let the whole community benefit from your work by <a class="getStartLinks" target="_blank" href="https://ballerina.io/learn/publishing-packages-to-ballerina-central/" >creating and publishing</a> your own module to <a class="getStartLinks" target="_blank" href="https://central.ballerina.io/" >Ballerina Central</a>. </p>
            
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
-            
-                     <h4 id="running-ballerina-programs-in-the-cloud" class="gTitle1">Report issues
+            <span class="bookMarkOnPage" id="report-issues"></span>
+                     <h4 id="report-issues-title" class="gTitle1">Report issues
            </h4>
                 <p><a id="reportissues" class="getStartLinks">Report issues</a> in the respective GitHub repositories of the areas and components.</p>
         </div>
        
     </div>
     <div class="row" >
-        <!-- <div class="col-lg-4 col-md-6 col-sm-12 card">
-           
-                <h4 id="running-ballerina-programs-in-the-cloud" class="gTitle1">Contribute to the resource library</h4>
-                <p><a  id="myBtn" class="getStartLinks" >Submit</a> an article, blog, or video to our community-driven collection of resources.</p>
-           
-        </div> -->
         <div class="col-lg-4 col-md-6 col-sm-12 card">
+            <span class="bookMarkOnPage" id="submit-a-use-case"></span>
             
-                     <h4 id="running-ballerina-programs-in-the-cloud" class="gTitle1">Submit a use case 
+                     <h4 id="submit-a-use-case-title" class="gTitle1">Submit a use case 
            </h4>
                 <p><a id="submitUseCase" class="getStartLinks">Tell us</a> how you're using Ballerina in your project and be a part of our community stories. </p>
            
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+        <div class="col-lg-4 col-md-6 col-sm-12 card">
+            <span class="bookMarkOnPage" id="host-a-ballerina-event"></span>
           
-                     <h4 id="running-ballerina-programs-in-the-cloud" class="gTitle1">Host a Ballerina event</h4>
-                <p>Want to talk about Ballerina at your local tech meetup? Reach us at <a class="getStartLinks" href="mailto:contact@ballerina.io">contact@ballerina.io</a>, and we will help you with any presentation content.</p>
+            <h4 id="host-a-ballerina-event-title" class="gTitle1">Host a Ballerina event</h4>
+       <p>Want to talk about Ballerina at your local tech meetup? Reach us at <a class="getStartLinks" href="mailto:contact@ballerina.io">contact@ballerina.io</a>, and we will help you with any presentation content.</p>
+           
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+            <span class="bookMarkOnPage" id="join-dev-google-group"></span>
+          
+                <h4 id="join-dev-google-group-title" class="gTitle1">Join the Dev Google Group </h4>
+                <p>Get invovled in any technical discussions by joining the <a class="getStartLinks" target="_blank" href="https://groups.google.com/g/ballerina-dev">Ballerina Dev Google group</a>.</p>
            
         </div>
     </div>
@@ -1133,7 +1138,7 @@ document.onscroll = function() {
     }
     table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
      border-bottom: none!important;}
-     .mobileViewNewsletter{height: 190px !important;}
+    .mobileViewNewsletter{height: 268px !important;}
     .mobileViewTechTalk{height: 190px !important;}
     h4.card-title {height: unset;}
     .card{max-width: none;}

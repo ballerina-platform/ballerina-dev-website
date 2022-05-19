@@ -137,7 +137,7 @@ Let's take a moment to digest the new constructs in this code:
 - The service declaration specifies the listener to which the service gets attached and a collection of remotely accessible methods. There are two kinds of methods as `resource` and `remote`.
 - Services use `remote` methods to expose services in a procedural style and they are named by verbs whereas `resource` methods are used for data-oriented protocols and they are named by nouns.
 - In this example, there are two `resource` methods: The first one responds to HTTP GET requests with the `/greeting` path and the other one responds to `GET` requests with the `/greeting/{name}` path.
-- These `resource` methods return a `string` value, which maps to the `text/plan` content-type in the HTTP response.
+- These `resource` methods return a `string` value, which maps to the `text/plain` content-type in the HTTP response.
 
 >**Info:** To learn more about services, see [Network interaction](/learn/distinctive-language-features/network-interaction/). 
 

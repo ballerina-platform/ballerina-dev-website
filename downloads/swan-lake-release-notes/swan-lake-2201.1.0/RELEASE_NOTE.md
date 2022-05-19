@@ -1,403 +1,697 @@
 ---
 layout: ballerina-left-nav-release-notes
-title: 2201.0.0 (Swan Lake) 
-permalink: /downloads/swan-lake-release-notes/2201-0-0/
-active: 2201-0-0
+title: Swan Lake 2201.1.0
+permalink: /downloads/swan-lake-release-notes/2201.1.0/
+active: swan-lake-2201.1.0
 redirect_from: 
-    - /downloads/swan-lake-release-notes/2201-0-0
-    - /downloads/swan-lake-release-notes/2201-0-0-swan-lake/
-    - /downloads/swan-lake-release-notes/2201-0-0-swan-lake
+    - /downloads/swan-lake-release-notes/2201-1-0
+    - /downloads/swan-lake-release-notes/2201-1-0-swan-lake/
+    - /downloads/swan-lake-release-notes/2201-1-0-swan-lake
+    - /downloads/swan-lake-release-notes/
+    - /downloads/swan-lake-release-notes
 ---
 
-### Overview of Ballerina 2201.0.0 (Swan Lake)
+### Overview of Ballerina Swan Lake 2201.1.0 (Swan Lake)
 
-<em>2201.0.0 (Swan Lake) is the first major release of 2022, and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R1 version of the Language Specification.</em> 
+<em>2201.1.0 (Swan Lake) is the first update of 2201.1.0 (Swan Lake), and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R2 version of the Language Specification.</em> 
+
 
 ### Updating Ballerina
 
->**Info:** The version format has been revised. `2201.0.0 (Swan Lake)` represents the format of `$YYMM.$UPDATE.$PATCH ($CODE_NAME)`. For further information, see [Ballerina Swan Lake is on the Horizon](https://blog.ballerina.io/posts/ballerina-swan-lake-is-on-the-horizon/).
+If you are already using Ballerina, use the [Ballerina Update Tool](/learn/tooling-guide/cli-tools/update-tool/) to directly update to Swan Lake Beta6 by running the command below.
 
-If you are already using Ballerina, use the [Ballerina update tool](/learn/cli-documentation/update-tool/#using-the-update-tool) to directly update to 2201.0.0 (Swan Lake). To do this: 
-
-1. Run the command below to get the latest version of the update tool.
-
-   `bal update`
-
-2. Run the command below to update your Ballerina version to 2201.0.0 (Swan Lake).
-
-   `bal dist update`
-
-#### Troubleshooting 
-
-If you already ran the `bal dist update` (or `bal dist pull 2201.0.0`) before the `bal update` command, follow the instructions below to recover your installation.
-
-##### For macOS Users (`.pkg` installations)
-
-1. Run the `rm ~/.ballerina/ballerina-version` command to delete the version configuration.
-2. Run the `chmod 755 /Library/Ballerina/distributions/ballerina-2201.0.0/bin/bal` command to provide execute permissions for the `bal` command.
-3. Run the `bal dist use 2201.0.0` command to switch to the 2201.0.0 version. 
-
-##### For Ubuntu Users (`.deb` installations)
-
-1. Run the `rm ~/.ballerina/ballerina-version` command to delete the version configuration.
-2. Run the `chmod 755 /usr/lib/ballerina/distributions/ballerina-2201.0.0/bin/bal` command to provide execute permissions for the `bal` command.
-3. Run the `bal dist use 2201.0.0` command to switch to the 2201.0.0 version.
-
-##### For CentOS Users (`.rpm` installations)
-
-1. Run the `rm ~/.ballerina/ballerina-version` command to delete the version configuration.
-2. Run the `chmod 755 /usr/lib64/ballerina/distributions/ballerina-2201.0.0/bin/bal` command to provide execute permissions for the `bal` command.
-3. Run the `bal dist use 2201.0.0` command to switch to the 2201.0.0 version.
-
-##### For Windows Users (`.msi` installations)
-
-1. Run the `del %userprofile%\.ballerina\ballerina-version` command to delete the version configuration.
-2. Run the `bal dist use 2201.0.0` command to switch to the 2201.0.0 version.
+> `bal dist pull 2201.1.0`
 
 ### Installing Ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
-### Migrating from Swan Lake Beta Releases
->**Info:** If you have been using Swan Lake Beta releases, delete the `Dependencies.toml` files in your Ballerina packages when migrating to Balelrina 2201.0.0 (Swan Lake). 
-
-A few backward-incompatible changes have been introduced during the Swan Lake Beta program, and thereby, some of your existing packages may not compile with Ballerina 2201.0.0 (Swan Lake). Therefore, you need to delete the `Dependencies.toml` file to force the dependency resolver to use the latest versions of your dependencies. 
-
 ### Language Updates
 
-#### New Features
+#### New features
 
-##### Support to Refer to Parameters and Local Variables in Object Constructor Expressions
+##### Support for the spread operator in the list constructor
 
-Object constructor expressions can now refer to parameters and local variables. This feature is also available when using an object constructor expression with the `service` qualifier to create a service object. These references can be in field initializers and object methods, including the `init` method.
+Introduced spread operator support for the list constructor expression.
+
+If the spread operator in a list constructor expression is `...x`, then, `x` is expected to be a list (i.e., an array or a tuple). All the member values of the list that result from evaluating `x` are included in the list value being constructed.
 
 ```ballerina
-type Person object {
-    string name;
-    string code;
+import ballerina/io;
 
-    function getRegistrationId(string prefix) returns string;
+public function main() {
+    int[] a1 = [3, 4];
+    int[] v1 = [1, 2, ...a1];
+    io:println(v1); // [1,2,3,4]
+
+    int[2] a2 = [6, 7];
+    int[] v2 = [1, 2, ...a1, 5, ...a2];
+    io:println(v2); // [1,2,3,4,5,6,7]
+
+    [int, string] t1 = [5, "s"];
+    any[] v3 = [...t1, "x"];
+    io:println(v3); // [5,"s","x"]
+
+    [boolean, int...] t2 = [false, 4, 7];
+    [string, int, string, boolean, int...] v4 = ["x", ...t1, ...t2];
+    io:println(v4); // ["x",5,"s",false,4,7];
+
+    var v5 = [4, ...t1, ...a2];
+    io:println(v5); // [4,5,"s",6,7];
+}
+```
+
+The spread operator is not allowed with a variable-length list if the inherent type of the list being constructed has required members that are not guaranteed to have been provided a value.
+
+```ballerina
+public function main() {
+    [int, string...] t1 = [5, "s"];
+    [int, string, string...] v1 = [...t1]; // results in an error since a value is not guaranteed to have been provided for the second tuple member
+
+    [int, boolean, string, int...] t2 = [5, false, "w"];
+    [int, boolean, anydata...] v2 = [...t2, "x", "y"]; // works as all fixed tuple members are guaranteed to have been provided values
+}
+```
+
+##### Allow `int*float`, `float*int`,` int* decimal`, `decimal*int`, `float/int`, `decimal/int`, `float%int`, and `decimal%int` multiplicative expressions
+
+Multiplicative expressions are now allowed with `int` and `float` operands and `int` and `decimal` operands. The type of the resulting expression will be the fractional type.
+
+This allows the below.
+- Multiplication supports `int*float`, `float*int`, `int*decimal`, and `decimal*int`
+- For division and modulo, only the floating-point operand is supported as the dividend (i.e., `float/int`, `decimal/int`, `float%int`, and `decimal%int` are supported)
+
+```ballerina
+import ballerina/io;
+
+public function main() {
+    int quantity = 5;
+    float weight = 2.5;
+    decimal unitPrice = 10.55;
+
+    float totalWeight = weight * quantity;
+    io:println(totalWeight); // 12.5
+    decimal totalPrice = unitPrice * quantity;
+    io:println(totalPrice); // 52.750
+
+    float weightInGrams = 2456;
+    int gramsPerKG = 1000;
+    float weightInKG = weightInGrams / gramsPerKG;
+    io:println(weightInKG); // 2.456
+
+    decimal totalAmount = 1000.5;
+    int numberOfPersons = 3;
+    decimal remainingAmount = totalAmount % numberOfPersons;
+    io:println(remainingAmount); // 1.5
+}
+```
+
+##### New lang library functions
+
+###### New `lang.array:some()` function
+
+The `lang.array:some()` function tests whether a function returns `true` for some member of a list. 
+
+```ballerina
+import ballerina/io;
+
+function greaterThanTwo(int i) returns boolean {
+    return i > 2;
+}
+
+public function main() {
+    int[] arr = [1, 3];
+    io:println(arr.some(greaterThanTwo)); // true
+
+    [string, string...] tup = ["hello", "world"];
+    io:println(tup.some(x => x.length() == 0)); // false
+}
+```
+###### New `lang.array:every()` function
+
+The `lang.array:every` function tests whether a function returns `true` for every member of a list.
+
+```ballerina
+import ballerina/io;
+
+function greaterThanTwo(int i) returns boolean {
+    return i > 2;
+}
+
+public function main() {
+    int[] arr = [5, 3, 45];
+    io:println(arr.every(greaterThanTwo)); // true
+
+    [string, string] tup = ["", "ballerina"];
+    io:println(tup.every(x => x.length() == 0)); // false
+}
+```
+
+###### New `lang.decimal:quantize()` function
+
+The `lang.decimal:quantize()` function has been introduced to control the precision of decimal values. This returns a value equal to the first operand after rounding, with the exponent of the second operand.
+
+```ballerina
+import ballerina/io;
+
+public function main() {
+    io:println(decimal:quantize(123.123, 1.0)); // 123.1
+    io:println(decimal:quantize(123.123, 1.00)); // 123.12
+    io:println(decimal:quantize(123.123, 1.000)); // 123.123
+}
+```
+
+If the length of the coefficient after the quantize operation is greater than the precision, the function call results in a panic.
+
+```ballerina
+public function main() {
+    decimal _ = decimal:quantize(123.1233, 1E-36); // results in a panic
+}
+```
+
+###### New `lang.float:toFixedString()` and `lang.float:toExpString()` functions
+
+Two new functions, `lang.float:toFixedString()` and `lang.float:toExpString()`, have been introduced to get the string representation of a `float` value in fixed-point notation and scientific notation respectively. Both the functions allow you to specify the number of digits required after the decimal point.
+
+```ballerina
+import ballerina/io;
+
+public function main() {
+    string a = float:toFixedString(5.7, 16); 
+    io:println(a); // 5.7000000000000002
+    string b = float:toFixedString(5.7, 2); 
+    io:println(b); // 5.70
+    
+    float f1 = -45362.12334;
+    string c = float:toExpString(f1, 16); 
+    io:println(c); // -4.5362123339999998e+4
+    string d = float:toExpString(f1, 2); 
+    io:println(d); // -4.54e+4
+}
+```
+
+###### New `lang.string:padStart()`, `lang.string:padEnd()`, and `lang.string:padZero()` functions
+
+The `lang.string:padStart()`, `lang.string:padEnd()`, and `lang.string:padZero()` functions have been introduced to add padding in strings. 
+- `lang.string:padStart()` adds padding to the start of a string. 
+- `lang.string:padEnd()` adds padding to the end of a string. 
+- `lang.string:padZero()` pads a string with zeros.
+
+```ballerina
+import ballerina/io;
+
+public function main() {
+    io:println("abc".padStart(5, "#").toBalString()); // "##abc"
+    io:println("abc".padStart(5).toBalString()); // "  abc"
+    io:println("abc".padEnd(5, "#").toBalString()); // "abc##"
+    io:println("abc".padEnd(5).toBalString()); // "abc  "
+    io:println("123".padZero(5).toBalString()); // "00123"
+    io:println("123".padZero(5, "#").toBalString()); // "##123"
+}
+```
+
+#### Improvements
+
+##### Revamped `lang.float:round` function
+
+The function signature has been changed to have an extra `fractionDigits` parameter, by which, you can specify the number of fraction digits of the rounded result. When `fractionDigits` is zero, the function rounds to an integer.
+
+```ballerina
+import ballerina/io;
+
+public function main() {
+    float x = 555.545;
+    float y = 5.5565;
+    int fractionDigits = 3;
+
+    io:println(555.545.round(1)); // 555.5
+    io:println(555.545.round(2)); // 555.54
+    io:println(float:round(x)); // 556.0
+    io:println(float:round(x, fractionDigits = 0)); // 556.0
+    io:println(float:round(x, 1));  // 555.5
+    io:println(y.round(2)); // 5.56
+    io:println(y.round(fractionDigits)); // 5.556
+}
+```
+
+##### Revamped `lang.decimal:round` function
+
+The function signature has been changed to have an extra `fractionDigits` parameter, by which, you can specify the number of fraction digits of the rounded result. When `fractionDigits` is zero, the function rounds to an integer.
+
+```ballerina
+import ballerina/io;
+
+public function main() {
+    io:println(5.55.round(1)); // 5.6
+    decimal x = 5.55;
+    io:println(decimal:round(x)); // 6
+    io:println(decimal:round(5.55, fractionDigits = 0)); // 6
+    io:println(decimal:round(5.5565, fractionDigits = 3)); // 5.556
+}
+```
+
+##### Removed the compilation error for an unreachable panic statement
+
+An unreachable panic statement no longer results in a compilation error.
+
+```ballerina
+function fn() returns string {
+    int|string a = 10;
+
+    if a is int {
+        return "INT";
+    } else {
+        return "STRING";
+    }
+
+    panic error("Not Reached!"); // unreachable, but not an error.
+}
+```
+
+##### Updated `lang.error:Cloneable` to be `public`
+
+The `Cloneable` type in the `lang.error` module is now `public`.
+
+```ballerina
+import ballerina/io;
+
+public function main() {
+    error:Cloneable x = 4;
+    error e1 = error("reason 1", message = "My Detail");
+    map<error:Cloneable> m1 = e1.detail();
+
+    io:println(x);  // 4
+    io:println(m1); // {"message":"My Detail"}
+}
+```
+
+##### Disallow inferring array length in contexts that are not permitted
+
+Inferring array length has been restricted to list constructors in variable and constant declarations. Moreover, only the first dimension can be inferred in multidimensional arrays.
+
+```ballerina
+int[*] x1 = [1, 2]; // Supported.
+
+int[2] y = [1, 2];
+int[*] x2 = y; // Not supported. Requires a list constructor to infer the array length.
+
+int[*][2] x3 = [[1, 2], [1, 2]]; // Supported.
+int[*][*] x4 = [[1, 2], [1, 2]]; // Not supported. Only the first dimension can be inferred.
+```
+
+#### Bug fixes
+
+- Fixed an invalid sub-typing relationship between `table` and `anydata` 
+
+```ballerina
+public function main() {
+    table<map<any>> tany = table [{"a": 2}];
+    anydata ad = tany; // Results in a compilation error now.
+}
+```
+
+- Fixed an issue that caused a union containing the `null` literal allowing `"null"` as a valid value
+
+```ballerina
+type Foo boolean|null;
+
+public function main() {
+    Foo a = "null"; // Results in a compilation error now.
+    "string"|null b = "null"; // Results in a compilation error now.
+}
+```
+
+- Fixed an issue that caused the value of enum members defined with quoted identifiers to include the quote
+
+```ballerina
+import ballerina/io;
+
+public enum Status {
+    'new,
+    old
+}
+
+public function main() {
+    io:println('new); // Previously printed `'new`, now prints `new`.
+}
+```
+
+- Fixed a bug that resulted in a compilation error not being logged for an extra comma in a mapping match pattern
+
+```ballerina
+type MyRecord record {
+    int field1;
+    int field2;
 };
 
-function createPerson(string name, int id, string department) returns Person|error {
-    string codeId = check getCode(id);
+function fn(MyRecord r1) {
+    match r1 {
+        {field1: 0,} => { // A syntax error is now given for the comma.
 
-    Person person = object {
-        string name;
-        string code = codeId; // Refers to the `codeId` local variable.
-
-        function init() {
-            self.name = name; // Refers to the `name` parameter.
         }
-
-        function getRegistrationId(string prefix) returns string {
-            string regId = department + ":" + self.code; // Refers to the `department` parameter.
-
-            if (prefix.length() > 0) {
-                return prefix + "-" + regId;
-            }
-
-            return regId;
-        }
-    };
-
-    return person;
-}
-
-function getCode(int id) returns string|error {
-    if id < 0 {
-        return error("Invalid ID");
     }
-    return id.toString();
 }
+```
+
+- Fixed qualified identifiers not being allowed in error match patterns 
+
+```ballerina
+function fn(error e) {
+    match e {
+        error(errors:MESSAGE) => { // Match pattern is now allowed.
+
+        }
+    }
+}
+```
+
+- Fixed the inherent type of a list constructed using a list constructor with `any` as the contextually-expected type to be `(any|error)[]` instead of `any[]`
+
+```ballerina
+public function main() {
+    any x = [1, 3, 4];
+    if x is (any|error)[] {
+        x.push(error("invalid!")); // Now allowed, previously failed at runtime.
+    }
+}
+```
+
+- Fixed a bug that allowed additive expressions with operands of types that are union types of different basic types 
+
+```ballerina
+public function main() {
+    int|float a = 4;
+    int|float b = 4.5;
+
+    int _ = a + b; // Now, this results in a compilation error.
+}
+```
+
+#### Bug fixes
+
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FCompilerFE+milestone%3A%22Ballerina+2201.1.0%22).
+
+### Runtime updates
+
+#### Improvements
+
+##### Support to provide values for configurable variables through TOML In-line tables
+
+The configurable feature is improved to support TOML in-line tables through the TOML syntax.
+The values for configurable variables of types `map` and `record` can now beprovided using TOML in-line tables.
+Similarly, the values for configurable variables of types array of `map`, array of `record`, and `table` can now be provided using the TOML array of TOML in-line tables.
+
+For example, if the configurable variables are defined in the following way,
+
+```ballerina
+configurable map<anydata> mapVar = ?;
+configurable Person recordVar = ?;
+configurable table<map<int>> tableVar = ?;
+configurable Person[] recordArrayVar = ?;
+
+```
+
+the values can be provided in the `Config.toml` file as follows.
+
+```
+mapVar = {a = "a", b = 2, c = 3.4, d = [1, 2, 3]}
+
+recordVar = {name = "Jane"}
+
+tableVar = [{a = 1, b = 2}, {c = 3}, {d = 4, e = 5, f = 6}]
+
+recordArrayVar = [{name = "Tom"}, {name = "Harry"}]
+
+```
+
+##### Improved configurable variables to support tuple types through TOML syntax
+
+The configurable feature is improved to support variables of tuple types through the TOML syntax.
+
+For example, if the tuple-typed configurable variables are defined in the following way,
+
+```ballerina
+configurable [int, string, float, decimal, byte, boolean] simpleTuple = ?;
+configurable [int[], [string, int], map<anydata>, table<map<string>>] complexTuple = ?;
+configurable [int, string, int...] restTuple = ?;
+```
+
+the values can be provided in the `Config.toml` file as follows.
+
+```
+simpleTuple = [278, "string", 2.3, 4.5, 2, true]
+
+complexTuple = [[1, 3, 5, 7, 9], ["apple", 2], {name = "Baz Qux", age = 22}, [{a = "a"}, {b = "b", c = "c"}]]
+
+restTuple = [1, "foo", 2, 3, 4, 5]
+```
+
+##### Improved configurable variables to support union types through CLI arguments
+
+The configurable feature is improved to support variables of union types with simple basic typed members through the CLI arguments.
+
+For example, if the configurable variables are defined in the following way,
+
+```ballerina
+configurable float|int|string unionVar = ?; 
+```
+
+the values can be provided via CLI arguments in the following way.
+
+```
+bal run -- -Cval=5.0
+```
+
+##### Improved runtime error creator and value creator API input validations
+
+In order to handle Java Exceptions due to the invalid use of Ballerina runtime error creator and value 
+creator APIs, input validations have been improved to provide proper ballerina runtime errors.
+For example, the following invalid use of the `ValueCreator.createRecordValue` API to create a record value with a Java ArrayList as a field of it will result in a panic.
+
+```java
+ public class App {
+
+    private static Module module = new Module("org", "interop_project.records", "1");
+
+    public static BMap<BString, Object> getRecord(BString recordName) {
+        ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+        Map<String, Object> map = Map.ofEntries(
+                Map.entry("arrList", arrayList)
+        );
+        return ValueCreator.createRecordValue(module, recordName.getValue(), map);
+    }
+}
+```
+
+in modules/records
+```ballerina
+import ballerina/jballerina.java;
+
+public type Foo record {
+    int[] x;    
+};
+
+public function getRecord(string recordName) returns record{} = @java:Method {
+    'class: "javalibs.app.App"
+} external;
+```
+main.bal
+```ballerina
+import interop_project.records;
+
+public function main() {
+    records:Foo foo =  <records:Foo> records:getRecord("Foo");
+}
+```
+Runtime error:
+```
+'class java.util.ArrayList' is not from a valid java runtime class. " +
+        "It should be a subclass of one of the following: java.lang.Number, java.lang.Boolean or " +
+        "from the package 'io.ballerina.runtime.api.values'
+```
+
+#### New runtime Java APIs
+##### Runtime API to create an enum type
+New runtime Java API can be used to create enum types from native code.
+
+
+```java
+public static UnionType createUnionType(List<Type> memberTypes, String name, Module pkg, int typeFlags, boolean isCyclic, long flags)
 ```
 
 #### Bug Fixes
 
-- Fixed a bug that caused constants to be resolved with incorrect types in certain scenarios. The type of constants is now the intersection of readonly and the singleton type containing just the shape of the value named by the constant.
-
-  ```ballerina
-  // Previously, the type of X was `int` and now it is singleton `2`.
-  const int X = 1 + 1;
-   
-  public function main() {
-     // Now results in an error.
-     X y = 3;
-  }
-  ```
-
-  ```ballerina
-  // Previously, the type of X was `map<int>` and now it is the intersection of readonly
-  // and the singleton type containing just the mapping value `{a: 1}`.
-  const map<int> X = {a: 1};
-   
-  public function main() {
-     // Now, this results in an error.
-     X y = {a: 2};
-  }
-  ```
-
-- Fixed a spec deviation in type narrowing. This may result in types that were previously narrowed no longer being narrowed.
-
-   Consider the following records.
-
-   ```ballerina
-   type Employee record {
-      int id;
-      string name;
-      string department;
-   };
-      
-   type Student record {
-      string id;
-      string name;         
-      int grade;
-   };
-   ```
-
-   Previously, when a type test was used as follows, the type of `v` in the else block was narrowed to `Student`.
-
-   ```ballerina
-   function fn(Employee|Student v) {
-      if v is Employee {
-            // `v` is narrowed to `Employee` here.
-            string dept = v.department;
-      } else {
-            // `v` was previously narrowed to `Student` here.
-            // Will now result in a compilation error.
-            int grade = v.grade;
-      }
-   }
-   ```
-
-   Even though jBallerina currently allows only values that belong to either `Employee` or `Student` to be passed as arguments for the parameter of type `Employee|Student`, the Ballerina specification defines subtyping to be semantic. This, along with mutability, would mean that a value that does not belong to `Employee` nor `Student` but belongs to `Employee|Student` can be passed as an argument here, which results in the possibility of the value not belonging to `Student` in the else block.
-
-   For example, one would be able to call `fn` with the following.
-
-   ```ballerina
-   public function main() {
-      record {|
-            int|string id;
-            string name;
-            anydata grade;
-            anydata department;
-      |} rec = {
-            id: "A1234",
-            name: "Amy",
-            department: ["physics", 1],
-            grade: 12
-      };
-      fn(rec);
-   }
-   ```
-
-   Although it is not possible to call this function in this manner at the moment since jBallerina does not support semantic subtyping, the changes to narrowing have been introduced in this release to minimize future incompatibility issues.
-
-- Fixed a spec deviation that allowed non-required fields of records/maps and error detail records/maps to be bound using mapping and error binding patterns in variable declarations and destructuring assignment statements. Attempting to bind a non-required field will now result in a compilation error.
-
-  ```ballerina
-  type Employee record {
-     string name;
-     int age?;
-  };
-   
-  function bindEmployee(Employee emp) {
-     string empName;
-     int empAge;
-   
-     // The 'age' field is optional in the `Employee` record type-descriptor.
-     // Therefore, attempting to bind it will now result in compilation errors.  
-     {name: empName, age: empAge} = emp; // error for `age: empAge`
-     var {name: empNameOne, age: empAgeOne} = emp; // error for `age: empAgeOne`
-   
-     // Similarly, since there is no required `department` field in the `Employee`
-     // record, the following will also result in an error.
-     var {name, department} = emp; // error for `department`
-  }
-   
-  type Error error<record {| int code?; string identifier; boolean...; |}>;
-   
-  function bindError(Error err) {
-     // The 'code' field is optional in the detail record of `Error`.
-     // Therefore, attempting to bind it will now result in a compilation error.
-     Error error(message1, code = code1, identifier = identifier1) = err; // error for 'code = code1'
-   
-     // Similarly, attempting to bind an undefined (non-required) `fatal` field will
-     // also result in a compilation error.
-     var error(message, fatal = fatal) = err; // error for 'fatal = fatal'
-  }
-  ```
-
-- Fixed a bug in the compiler that resulted in some illegal variable shadowing scenarios not being detected. Ballerina allows shadowing only variables that belong to the module scope.
-
-  ```ballerina
-  function fn(int y, int z) returns int {
-     function (int, int, int) returns int f = (x, y, z) => x + y + z; // error: redeclared symbols 'y' and 'z'
-   
-     int x = 34; // This is not in an overlapping scope, so, it does not result in an error.
-     return f(12, 32, 33);
-  }
-   
-  function createService(int age) returns
-         service object { public function getAgeInFiveYears(int age) returns int; } {
-     return service object {
-             public function getAgeInFiveYears(int age) returns int { // error: redeclared symbol 'age'
-                 return 5 + age;
-             }
-         };
-  }
-  ```
-
-- Fixed a bug that caused classes with all `final` fields of immutable types to be considered a `readonly class` (i.e., a subtype of `readonly`).
-
-   Such a class can no longer be used in a context that expects a subtype of `readonly`.
-
-   ```ballerina
-   class Person {
-      final string name;
-      final string[] & readonly address;
-      
-      function init(string name, string[] address) {
-            self.name = name;
-            self.address = address.cloneReadOnly();
-      }
-      
-      function getAddress() returns string => string:'join(", ", ...self.address);
-   }
-      
-   public function main() {
-      Person person = new ("May", ["Palm Grove", "Colombo 3"]);
-      
-      // This, which was allowed previously results in an error now.
-      readonly readOnlyValue = person;
-   }
-   ```
-
-- Fixed a bug that resulted in invalid table lookups due to not distinguishing between `int`, `float`, and `decimal` zero.
-
-  ```ballerina
-  import ballerina/io;
-   
-  type Employee record {|
-     readonly int|float|decimal age;
-     int code;
-  |};
-   
-  public function main() {
-     table<Employee> key(age) empTable = table [
-         {age: 0, code: 100} // int `0` is the key
-     ];
-   
-     Employee? v1 = empTable[0f]; // Lookup with float `0` as the key.
-     io:println(v1 is Employee); // Previously `true`, now `false`.
-   
-     Employee? v2 = empTable[0d]; // Lookup with decimal `0` as the key.
-     io:println(v2 is Employee); // Previously `true`, now `false`.
-   
-     Employee? v3 = empTable[0]; // Lookup with int `0` as the key.
-     io:println(v3 is Employee); // Only this will continue to be `true`.
-  }
-  ```
-
-To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FCompilerFE+milestone%3A%22Ballerina+2201.0.0%22).
-
-### Runtime Updates
-
-#### Bug Fixes
-
-To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FjBallerina+milestone%3A%22Ballerina+2201.0.0%22).
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+2201.1.0%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
 
 ### Standard Library Updates
 
 #### New Features
 
-##### `graphql` Package
-- Added the CORS configuration support
+#### `ftp` Package
+
+- Introduced the `ftp:Caller` API and added it as an optional parameter in the `onFileChange` method
+- Added compiler plugin validation support for the `ftp:Service`
+- Added code-actions to generate a `ftp:Service` template
 
 ##### `http` Package
 
-- Implemented typed `headers` for the HTTP response
-- Added the `map<string>` data binding support for `application/www-x-form-urlencoded`
-- Added support to provide an inline request/response body with `x-form-urlencoded` content
-- Added compiler plugin validation for usage of the `@http:Payload` annotation
+- Introduced `ResponseInterceptor` and `ResponseErrorInterceptor`
+- Introduced `DefaultErrorInterceptor`
+- Added code-actions to generate the interceptor method template
+- Allowed records to be annotated with `@http:Header`
+- Added basic type support for header parameters in addition to `string` and `string[]`
+- Added `anydata` support for service and client data binding
+- Added common constants for HTTP status-code responses
+- Added union type support for service and client data binding
+- Added OpenAPI definition field in the service config
 
-#### Improvements
+##### `websocket` Package
+
+- Introduced the `writeMessage` client and caller APIs
+- Introduced the `onMessage` remote function for services
+- Added `anydata` data binding support for the `writeMessage` API and `onMessage` remote function
 
 ##### `graphql` Package
-- Removed the deprecated `add` method in the `graphql:Context` object
 
-##### `grpc` Package
-- Changed the `--proto_path` option of the gRPC command to `--proto-path`
+- Added the support for GraphQL `subscriptions`
+- Added the support for GraphQL `interfaces`
+- Added the support for GraphQL `documentation`
+- Added the `GraphiQL client` support for GraphQL services
 
 ##### `websub` Package
-- Added support for `readonly` parameters in remote methods
 
-#### `websubhub` Package
-- Added support for `readonly` parameters in remote methods
+- Add code-actions to generate a `websub:SubscriberService` template
 
 ##### `kafka` Package
-- Made the `kafka:Caller` optional in the `onConsumerRecord` method of the `kafka:Service`
-- Allowed the `readonly & kafka:ConsumerRecord[]` parameter type in the `onConsumerRecord` method
 
-### Code to Cloud Updates
+- Added data binding support for `kafka` producer and consumer
+
+##### `rabbitmq` Package
+
+- Added data binding support for `rabbitmq` clients and services
+- Added code-actions to generate a `rabbitmq:Service` template
+
+##### `nats` Package
+
+- Added data binding support for `nats` clients and services
+- Added code-actions to generate a `nats:Service` template
+
+##### `regex` Package
+
+- Introduced the API to extract the first substring from the start index in the given string that matches the regex
+- Introduced the API to extract all substrings in the given string that match the given regex
+- Introduced the API to replace the first substring from the start index in the given string that matches the given regex with the provided replacement string or the string returned by the provided function. The `replaceFirst()` API is being deprecated by introducing this API
+- Allowed passing a replacer function to `replace` and `replaceAll` APIs. Now the regex matches can be replaced with a new string value or the value returned by the specified replacer function
+
+##### `file` Package
+
+- Introduced the constants for path and path list separators
+  - `file:pathSeparator`: It is a character used to separate the parent directories, which make up the path to a specific location. For windows, it’s `\` and for UNIX it’s `/`
+  - `file:pathListSeparator`: It is a character commonly used by the operating system to separate paths in the path list. For windows, it’s `;` and for UNIX it’s `:`
+
+##### `os` Package
+- Introduced the `setEnv()` function to set an environment variable
+- Introduced the `unsetEnv()` function to remove an environment variable from the system
+- Introduced the `listEnv()` function to list the existing environment variables of the system
 
 #### Improvements
-- Removed `awslambda` and `azure_functions` module support for single `.bal` files
+
+##### `http` Package
+
+- Allowed `Caller` to respond an `error` or a `StatusCodeResponse`
+- Appended the HTTPS scheme (`https://`) to the client URL if security is enabled
+- Refactored the auth-desugar response with a `DefaultErrorInterceptor`
+- Hid the subtypes of the `http:Client`
+
+##### `jwt` Package
+
+- Appended the HTTPS scheme (`https://`) to the client URL (of JWKs endpoint) if security is enabled
+
+##### `oauth2` Package
+
+- Appended the HTTPS scheme (`https://`) to the client URL (of token endpoint or introspection endpoint) if security is enabled
 
 #### Bug Fixes
 
-To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+2201.0.0%22+label%3AType%2FBug).
+##### `grpc` Package
 
+- Fix incorrect stub generation for repeated values of any, struct, timestamp, and duration messages
+- Fix incorrect caller type name validation in the gRPC compiler plugin
+- Fix passing protobuf predefined types as repeated values and values in messages
+
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.1.0%22+label%3AType%2FBug).
+
+### Deployment updates
+
+#### New Features
+- Added the `name` field for the `cloud.config.files` property in the `Cloud.toml` file to change the name of the generated config map 
+
+#### Improvements
+- Reduced the package size of `ballerina/cloud`
+- Docker image generation now relies on the user's docker client
+- The `ballerinax/awslambda` package is now available in [Ballerina Central](https://central.ballerina.io/ballerinax/awslambda)
+- The `ballerinax/azure_functions` package is now available in [Ballerina Central](https://central.ballerina.io/ballerinax/azure.functions)
+
+#### Breaking Changes
+- For existing `ballerinax/awslambda` and `ballerinax/azure_functions` projects, change the version to `2.1.0` in the `Dependencies.toml` file.
+
+#### Bug Fixes
+
+To view bug fixes, see the GitHub milestone for Swan Lake 2201.1.0 of the repositories below.
+
+- [C2C](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+2201.1.0%22)
 
 ### Developer Tools Updates
 
 #### New Features
 
-##### Ballerina Shell
+##### AsyncAPI Tool
 
-- Added the module auto-import feature to the Ballerina Shell. If the user code contains a module prefix for a module that has not been imported, the Ballerina Shell provides the option to import the module.
+- Ballerina AsyncAPI tooling will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating Ballerina service and listener skeletons. Ballerina Swan Lake supports the AsyncAPI Specification version 2.x. For more information, see [Ballerina AsyncAPI support](http://ballerina.io/learn/ballerina-asyncapi-support) and [AsyncAPI CLI documentation](http://ballerina.io/learn/cli-documentation/asyncapi/#asyncapi-to-ballerina).
 
+##### GraphQL Tool
 
-   For example, see below.
-   ```ballerina
-    =$ io:println("Hello World")
-    |
-    | Found following undefined module(s).
-    | io
-    |
-    | Following undefined modules can be imported.
-    | 1. io
-    Do you want to import mentioned modules (yes/y) (no/n)? y
-    |
-    | Adding import: import ballerina/io
-    | Import added: import ballerina/io
-    
-    Hello World
-    ```
+- Introduced the Ballerina GraphQL tool, which will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. Ballerina Swan Lake supports the GraphQL specification [October 2021 edition](https://spec.graphql.org/October2021/). For more information, see [Ballerina GraphQL support](http://ballerina.io/learn/ballerina-graphql-support/) and [Graphql CLI documentation](http://ballerina.io/learn/cli-documentation/graphql/#graphql-to-ballerina).
+
+##### Language Server
+
+- Added completion and code action support for already-imported modules in the Ballerina user home
+- Implemented file operation events in the Language Server
 
 #### Improvements
 
-##### Ballerina OpenAPI Tool
+##### Debugger
+- Added rutime breakpoint verification support. With this improvement, the debugger is expected to verify all the valid breakpoint locations in the current debug source. All the breakpoints that are set on non-executable lines of code (i.e., Ballerina line comments, documentation , blank lines, declarations, etc.) will be marked as `unverified` in the editor.
 
-###### OpenAPI Contract Generation
-- Added support for HTTP headers of types `int`, `int[]`, `boolean`, and `boolean[]`
-- Added support for HTTP payloads of type `map<string>`
-- Improved the OAS response header mapping for contexts in which the header details are defined within the return type
+##### Language Server
 
-###### Ballerina Service Generation
-- Added support for OAS query parameters with nested/optional/nullable types and default values
-- Added support for OAS header parameters with optional/nullable types and default values
-
-##### Ballerina update tool
-- Improved the view for `bal dist list` with the `-a` flag
-- Improved the `bal dist use` command to check for the distribution availability prior to the download suggestion
+- Improve the `Document this code` action to support module-level variables
+- Added signature help for included record params
+- Revamp the code action utilities introducing a new API to find the top-level node for a given code action context
+- Improved completion item sorting in several contexts
+- Improved the `Create function` code action to handle named arguments
+- Improved the `Create function` code action to add an isolated qualifier
+- Added signature help for union-typed expressions
 
 #### Bug Fixes
 
-To view bug fixes, see the GitHub milestone for 2201.0.0 (Swan Lake) of the repositories below.
+To view bug fixes, see the GitHub milestone for Swan Lake 2201.1.0 of the repositories below.
 
-- [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+2201.0.0%22+is%3Aclosed+label%3ATeam%2FLanguageServer)
-- [update tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+milestone%3A%22Ballerina+2201.0.0%22+is%3Aclosed+label%3AType%2FBug)
-- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Ballerina+2201.0.0%22+is%3Aclosed)
+- [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FLanguageServer+milestone%3A%22Ballerina+Swan+Lake+2201.1.0%22)
+- [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AArea%2FDebugger+milestone%3A%22Ballerina+2201.1.0%22)
+- [Update Tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+project%3Aballerina-platform%2F32)
+- [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+2201.1.0%22)
 
-<!-- <style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style> -->
+#### Ballerina Packages Updates
+
+#### New Features
+
+#### Improvements
+
+#### Bug Fixes
+
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+2201.1.0%22+label%3AType%2FBug).
+
+### Breaking Changes
+
+<style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style>

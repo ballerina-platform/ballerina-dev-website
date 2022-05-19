@@ -100,50 +100,12 @@ redirect_from:
 		 <a href="/learn/ballerina-openapi-support/">
     <h3 id="ballerina-openapi-support">Ballerina OpenAPI support </h3></a>
     <p >Details of all the features of the Ballerina OpenAPI tools. </p>
-</div>
-</div>
-
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card" >
- <a href="/learn/ballerina-graphql-support/">
+     <a href="/learn/ballerina-graphql-support/">
     <h3 id="ballerina-graphql-support">Ballerina GraphQL support </h3></a>
     <p >Details of all the features of the Ballerina GraphQL tools. </p>
-</div>
-<div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
- <a href="/learn/ballerina-asyncapi-support/">
+     <a href="/learn/ballerina-asyncapi-support/">
     <h3 id="ballerina-async-support">Ballerina AsyncAPI support </h3></a>
     <p >Details of all the features of the Ballerina AsyncAPI tools. </p>
-</div>
-</div>
-
-<div class="row" style="margin-bottom:30px">
-	<h2 id="references">References</h2>
-
-  <div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card" >
-<a href="/learn/by-example/">
-    <h3 id="ballerina-by-example">Ballerina by Example</h3></a>
-    <p >A series of guided examples to learn the language. </p>
-</div>
-<div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
- <a href="https://lib.ballerina.io/">
-  	<h3 id="library-documentation">Library documentation</h3></a>
-		<p>Ballerina library API documentation. </p>
-</div>
-
-</div>
-	
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 card" >
-  <a href="/learn/cli-documentation/cli-commands/">
- 	<h3 id="cli-documentation">CLI documentation</h3></a>
-		<p>Details of all the CLI commands of the <code class="highlighter-rouge language-plaintext">bal</code> tool.  </p>
-		<a href="/learn/ballerina-shell/">
-<h3 id="ballerina-shell">Ballerina Shell</h3></a>
-<p>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
-  <a href="/learn/style-guide/">
- 	 <h3 id="style-guide">Style guide</h3></a>
-		<p>Best practices to follow when formatting Ballerina code.   </p>
 </div>
 </div>
 

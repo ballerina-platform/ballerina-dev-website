@@ -73,7 +73,7 @@ public function main() {
 }
 ```
 
-#### Allowed `int*float`, `float*int`,` int* decimal`, `decimal*int`, `float/int`, `decimal/int`, `float%int`, and `decimal%int` multiplicative expressions
+#### Added support for multiplicative expressions with `int` and `float` or `decimal` operands
 
 Multiplicative expressions are now allowed with `int` and `float` operands and `int` and `decimal` operands. The type of the resulting expression will be the fractional type.
 

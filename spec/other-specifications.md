@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages-swanlake
+layout: ballerina-inner-page
 title: Other specifications
 intro: Read the Ballerina specifications that cover the standard library, built-in language extensions, testing, documentation, and more.
 description: Read the Ballerina specifications that cover the standard library, built-in language extensions, testing, documentation, and more.

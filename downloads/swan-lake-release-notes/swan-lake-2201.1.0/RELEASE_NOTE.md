@@ -11,26 +11,26 @@ redirect_from:
     - /downloads/swan-lake-release-notes
 ---
 
-### Overview of Ballerina Swan Lake 2201.1.0 (Swan Lake)
+## Overview of Ballerina Swan Lake 2201.1.0 (Swan Lake)
 
 <em>2201.1.0 (Swan Lake) is the first update of 2201.1.0 (Swan Lake), and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R2 version of the Language Specification.</em> 
 
 
-### Updating Ballerina
+## Updating Ballerina
 
 If you are already using Ballerina, use the [Ballerina Update Tool](/learn/tooling-guide/cli-tools/update-tool/) to directly update to Swan Lake Beta6 by running the command below.
 
 > `bal dist pull 2201.1.0`
 
-### Installing Ballerina
+## Installing Ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
-### Language updates
+## Language updates
 
-#### New features
+### New features
 
-##### Support for the spread operator in the list constructor
+#### Support for the spread operator in the list constructor
 
 Introduced spread operator support for the list constructor expression.
 
@@ -73,7 +73,7 @@ public function main() {
 }
 ```
 
-##### Allow `int*float`, `float*int`,` int* decimal`, `decimal*int`, `float/int`, `decimal/int`, `float%int`, and `decimal%int` multiplicative expressions
+#### Allow `int*float`, `float*int`,` int* decimal`, `decimal*int`, `float/int`, `decimal/int`, `float%int`, and `decimal%int` multiplicative expressions
 
 Multiplicative expressions are now allowed with `int` and `float` operands and `int` and `decimal` operands. The type of the resulting expression will be the fractional type.
 
@@ -106,9 +106,9 @@ public function main() {
 }
 ```
 
-##### New lang library functions
+#### New lang library functions
 
-###### New `lang.array:some()` function
+##### New `lang.array:some()` function
 
 The `lang.array:some()` function tests whether a function returns `true` for some member of a list. 
 
@@ -127,7 +127,7 @@ public function main() {
     io:println(tup.some(x => x.length() == 0)); // false
 }
 ```
-###### New `lang.array:every()` function
+##### New `lang.array:every()` function
 
 The `lang.array:every` function tests whether a function returns `true` for every member of a list.
 
@@ -147,7 +147,7 @@ public function main() {
 }
 ```
 
-###### New `lang.decimal:quantize()` function
+##### New `lang.decimal:quantize()` function
 
 The `lang.decimal:quantize()` function has been introduced to control the precision of decimal values. This returns a value equal to the first operand after rounding, with the exponent of the second operand.
 
@@ -169,7 +169,7 @@ public function main() {
 }
 ```
 
-###### New `lang.float:toFixedString()` and `lang.float:toExpString()` functions
+##### New `lang.float:toFixedString()` and `lang.float:toExpString()` functions
 
 Two new functions, `lang.float:toFixedString()` and `lang.float:toExpString()`, have been introduced to get the string representation of a `float` value in fixed-point notation and scientific notation respectively. Both the functions allow you to specify the number of digits required after the decimal point.
 
@@ -190,7 +190,7 @@ public function main() {
 }
 ```
 
-###### New `lang.string:padStart()`, `lang.string:padEnd()`, and `lang.string:padZero()` functions
+##### New `lang.string:padStart()`, `lang.string:padEnd()`, and `lang.string:padZero()` functions
 
 The `lang.string:padStart()`, `lang.string:padEnd()`, and `lang.string:padZero()` functions have been introduced to add padding in strings. 
 - `lang.string:padStart()` adds padding to the start of a string. 
@@ -210,9 +210,9 @@ public function main() {
 }
 ```
 
-#### Improvements
+### Improvements
 
-##### Revamped `lang.float:round` function
+#### Revamped `lang.float:round` function
 
 The function signature has been changed to have an extra `fractionDigits` parameter, by which, you can specify the number of fraction digits of the rounded result. When `fractionDigits` is zero, the function rounds to an integer.
 
@@ -234,7 +234,7 @@ public function main() {
 }
 ```
 
-##### Revamped `lang.decimal:round` function
+#### Revamped `lang.decimal:round` function
 
 The function signature has been changed to have an extra `fractionDigits` parameter, by which, you can specify the number of fraction digits of the rounded result. When `fractionDigits` is zero, the function rounds to an integer.
 
@@ -250,7 +250,7 @@ public function main() {
 }
 ```
 
-##### Removed the compilation error for an unreachable panic statement
+#### Removed the compilation error for an unreachable panic statement
 
 An unreachable panic statement no longer results in a compilation error.
 
@@ -268,7 +268,7 @@ function fn() returns string {
 }
 ```
 
-##### Updated `lang.error:Cloneable` to be `public`
+#### Updated `lang.error:Cloneable` to be `public`
 
 The `Cloneable` type in the `lang.error` module is now `public`.
 
@@ -285,7 +285,7 @@ public function main() {
 }
 ```
 
-##### Disallow inferring array length in contexts that are not permitted
+#### Disallow inferring array length in contexts that are not permitted
 
 Inferring array length has been restricted to list constructors in variable and constant declarations. Moreover, only the first dimension can be inferred in multidimensional arrays.
 
@@ -299,7 +299,7 @@ int[*][2] x3 = [[1, 2], [1, 2]]; // Supported.
 int[*][*] x4 = [[1, 2], [1, 2]]; // Not supported. Only the first dimension can be inferred.
 ```
 
-#### Bug fixes
+### Bug fixes
 
 - Fixed an invalid sub-typing relationship between `table` and `anydata` 
 
@@ -387,15 +387,15 @@ public function main() {
 }
 ```
 
-#### Bug fixes
+### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FCompilerFE+milestone%3A%22Ballerina+2201.1.0%22).
 
-### Runtime updates
+## Runtime updates
 
-#### Improvements
+### Improvements
 
-##### Support to provide values for configurable variables through TOML in-line tables
+#### Support to provide values for configurable variables through TOML in-line tables
 
 The configurable feature is improved to support TOML in-line tables through the TOML syntax.
 The values for configurable variables of types `map` and `record` can now beprovided using TOML in-line tables.
@@ -424,7 +424,7 @@ recordArrayVar = [{name = "Tom"}, {name = "Harry"}]
 
 ```
 
-##### Improved configurable variables to support tuple types through TOML syntax
+#### Improved configurable variables to support tuple types through TOML syntax
 
 The configurable feature is improved to support variables of tuple types through the TOML syntax.
 
@@ -446,7 +446,7 @@ complexTuple = [[1, 3, 5, 7, 9], ["apple", 2], {name = "Baz Qux", age = 22}, [{a
 restTuple = [1, "foo", 2, 3, 4, 5]
 ```
 
-##### Improved configurable variables to support union types through CLI arguments
+#### Improved configurable variables to support union types through CLI arguments
 
 The configurable feature is improved to support variables of union types with simple basic typed members through the CLI arguments.
 
@@ -462,7 +462,7 @@ the values can be provided via CLI arguments in the following way.
 bal run -- -Cval=5.0
 ```
 
-##### Improved runtime error creator and value creator API input validations
+#### Improved runtime error creator and value creator API input validations
 
 In order to handle Java Exceptions due to the invalid use of Ballerina runtime error creator and value 
 creator APIs, input validations have been improved to provide proper ballerina runtime errors.
@@ -510,8 +510,8 @@ Runtime error:
         "from the package 'io.ballerina.runtime.api.values'
 ```
 
-#### New runtime Java APIs
-##### Runtime API to create an enum type
+### New runtime Java APIs
+#### Runtime API to create an enum type
 New runtime Java API can be used to create enum types from native code.
 
 
@@ -519,13 +519,13 @@ New runtime Java API can be used to create enum types from native code.
 public static UnionType createUnionType(List<Type> memberTypes, String name, Module pkg, int typeFlags, boolean isCyclic, long flags)
 ```
 
-#### Bug fixes
+### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+2201.1.0%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
 
-### Standard library updates
+## Standard library updates
 
-#### New features
+### New features
 
 #### `ftp` package
 
@@ -533,7 +533,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 - Added compiler plugin validation support for the `ftp:Service`
 - Added code-actions to generate a `ftp:Service` template
 
-##### `http` package
+#### `http` package
 
 - Introduced `ResponseInterceptor` and `ResponseErrorInterceptor`
 - Introduced `DefaultErrorInterceptor`
@@ -545,75 +545,75 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 - Added union type support for service and client data binding
 - Added OpenAPI definition field in the service config
 
-##### `websocket` package
+#### `websocket` package
 
 - Introduced the `writeMessage` client and caller APIs
 - Introduced the `onMessage` remote function for services
 - Added `anydata` data binding support for the `writeMessage` API and `onMessage` remote function
 
-##### `graphql` package
+#### `graphql` package
 
 - Added the support for GraphQL `subscriptions`
 - Added the support for GraphQL `interfaces`
 - Added the support for GraphQL `documentation`
 - Added the `GraphiQL client` support for GraphQL services
 
-##### `websub` package
+#### `websub` package
 
 - Add code-actions to generate a `websub:SubscriberService` template
 
-##### `kafka` package
+#### `kafka` package
 
 - Added data binding support for `kafka` producer and consumer
 
-##### `rabbitmq` package
+#### `rabbitmq` package
 
 - Added data binding support for `rabbitmq` clients and services
 - Added code-actions to generate a `rabbitmq:Service` template
 
-##### `nats` package
+#### `nats` package
 
 - Added data binding support for `nats` clients and services
 - Added code-actions to generate a `nats:Service` template
 
-##### `regex` package
+#### `regex` package
 
 - Introduced the API to extract the first substring from the start index in the given string that matches the regex
 - Introduced the API to extract all substrings in the given string that match the given regex
 - Introduced the API to replace the first substring from the start index in the given string that matches the given regex with the provided replacement string or the string returned by the provided function. The `replaceFirst()` API is being deprecated by introducing this API
 - Allowed passing a replacer function to `replace` and `replaceAll` APIs. Now the regex matches can be replaced with a new string value or the value returned by the specified replacer function
 
-##### `file` package
+#### `file` package
 
 - Introduced the constants for path and path list separators
   - `file:pathSeparator`: It is a character used to separate the parent directories, which make up the path to a specific location. For windows, it’s `\` and for UNIX it’s `/`
   - `file:pathListSeparator`: It is a character commonly used by the operating system to separate paths in the path list. For windows, it’s `;` and for UNIX it’s `:`
 
-##### `os` package
+#### `os` package
 - Introduced the `setEnv()` function to set an environment variable
 - Introduced the `unsetEnv()` function to remove an environment variable from the system
 - Introduced the `listEnv()` function to list the existing environment variables of the system
 
-#### Improvements
+### Improvements
 
-##### `http` package
+#### `http` package
 
 - Allowed `Caller` to respond an `error` or a `StatusCodeResponse`
 - Appended the HTTPS scheme (`https://`) to the client URL if security is enabled
 - Refactored the auth-desugar response with a `DefaultErrorInterceptor`
 - Hid the subtypes of the `http:Client`
 
-##### `jwt` package
+#### `jwt` package
 
 - Appended the HTTPS scheme (`https://`) to the client URL (of JWKs endpoint) if security is enabled
 
-##### `oauth2` package
+#### `oauth2` package
 
 - Appended the HTTPS scheme (`https://`) to the client URL (of token endpoint or introspection endpoint) if security is enabled
 
-#### Bug fixes
+### Bug fixes
 
-##### `grpc` package
+#### `grpc` package
 
 - Fix incorrect stub generation for repeated values of any, struct, timestamp, and duration messages
 - Fix incorrect caller type name validation in the gRPC compiler plugin
@@ -621,49 +621,49 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.1.0%22+label%3AType%2FBug).
 
-### Deployment updates
+## Deployment updates
 
-#### New features
+### New features
 - Added the `name` field for the `cloud.config.files` property in the `Cloud.toml` file to change the name of the generated config map 
 
-#### Improvements
+### Improvements
 - Reduced the package size of `ballerina/cloud`
 - Docker image generation now relies on the user's docker client
 - The `ballerinax/awslambda` package is now available in [Ballerina Central](https://central.ballerina.io/ballerinax/awslambda)
 - The `ballerinax/azure_functions` package is now available in [Ballerina Central](https://central.ballerina.io/ballerinax/azure.functions)
 
-#### Breaking changes
+### Breaking changes
 - For existing `ballerinax/awslambda` and `ballerinax/azure_functions` projects, change the version to `2.1.0` in the `Dependencies.toml` file.
 
-#### Bug fixes
+### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.1.0 of the repositories below.
 
 - [C2C](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+2201.1.0%22)
 
-### Developer tools updates
+## Developer tools updates
 
-#### New features
+### New features
 
-##### AsyncAPI tool
+#### AsyncAPI tool
 
 - Ballerina AsyncAPI tooling will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating Ballerina service and listener skeletons. Ballerina Swan Lake supports the AsyncAPI Specification version 2.x. For more information, see [Ballerina AsyncAPI support](http://ballerina.io/learn/ballerina-asyncapi-support) and [AsyncAPI CLI documentation](http://ballerina.io/learn/cli-documentation/asyncapi/#asyncapi-to-ballerina).
 
-##### GraphQL tool
+#### GraphQL tool
 
 - Introduced the Ballerina GraphQL tool, which will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. Ballerina Swan Lake supports the GraphQL specification [October 2021 edition](https://spec.graphql.org/October2021/). For more information, see [Ballerina GraphQL support](http://ballerina.io/learn/ballerina-graphql-support/) and [Graphql CLI documentation](http://ballerina.io/learn/cli-documentation/graphql/#graphql-to-ballerina).
 
-##### Language server
+#### Language server
 
 - Added completion and code action support for already-imported modules in the Ballerina user home
 - Implemented file operation events in the Language Server
 
-#### Improvements
+### Improvements
 
-##### Debugger
+#### Debugger
 - Added rutime breakpoint verification support. With this improvement, the debugger is expected to verify all the valid breakpoint locations in the current debug source. All the breakpoints that are set on non-executable lines of code (i.e., Ballerina line comments, documentation , blank lines, declarations, etc.) will be marked as `unverified` in the editor.
 
-##### Language server
+#### Language server
 
 - Improve the `Document this code` action to support module-level variables
 - Added signature help for included record params

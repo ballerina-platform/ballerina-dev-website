@@ -18,7 +18,7 @@ redirect_from:
 
 ## Update Ballerina
 
-If you are already using Ballerina, use the [Ballerina Update tool](/learn/tooling-guide/cli-tools/update-tool/) to directly update to Swan Lake Beta6 by running the command below.
+If you are already using Ballerina, use the [Ballerina Update tool](/learn/tooling-guide/cli-tools/update-tool/) to directly update to 2201.1.0 by running the command below.
 
 > `bal dist pull 2201.1.0`
 
@@ -37,26 +37,24 @@ Introduced spread operator support for the list constructor expression.
 If the spread operator in a list constructor expression is `...x`, then, `x` is expected to be a list (i.e., an array or a tuple). All the member values of the list that result from evaluating `x` are included in the list value being constructed.
 
 ```ballerina
-import ballerina/io;
-
 public function main() {
     int[] a1 = [3, 4];
-    int[] v1 = [1, 2, ...a1];
+    int[] v1 = [1, 2, ... a1];
     io:println(v1); // [1,2,3,4]
 
     int[2] a2 = [6, 7];
-    int[] v2 = [1, 2, ...a1, 5, ...a2];
+    int[] v2 = [1, 2, ... a1, 5, ... a2];
     io:println(v2); // [1,2,3,4,5,6,7]
 
     [int, string] t1 = [5, "s"];
-    any[] v3 = [...t1, "x"];
+    any[] v3 = [ ... t1, "x"];
     io:println(v3); // [5,"s","x"]
 
     [boolean, int...] t2 = [false, 4, 7];
-    [string, int, string, boolean, int...] v4 = ["x", ...t1, ...t2];
+    [string, int, string, boolean, int...] v4 = ["x", ... t1, ... t2];
     io:println(v4); // ["x",5,"s",false,4,7];
 
-    var v5 = [4, ...t1, ...a2];
+    var v5 = [4, ... t1, ... a2];
     io:println(v5); // [4,5,"s",6,7];
 }
 ```
@@ -64,16 +62,18 @@ public function main() {
 The spread operator is not allowed with a variable-length list if the inherent type of the list being constructed has required members that are not guaranteed to have been provided a value.
 
 ```ballerina
+import ballerina/io;
+
 public function main() {
     [int, string...] t1 = [5, "s"];
-    [int, string, string...] v1 = [...t1]; // results in an error since a value is not guaranteed to have been provided for the second tuple member
+    [int, string, string...] v1 = [ ... t1]; // Results in an error since a value is not guaranteed to have been provided for the second tuple member.
 
     [int, boolean, string, int...] t2 = [5, false, "w"];
-    [int, boolean, anydata...] v2 = [...t2, "x", "y"]; // Works as all fixed tuple members are guaranteed to have been provided values.
+    [int, boolean, anydata...] v2 = [ ... t2, "x", "y"]; // Works as all fixed tuple members are guaranteed to have been provided values.
 }
 ```
 
-#### Allow `int*float`, `float*int`,` int* decimal`, `decimal*int`, `float/int`, `decimal/int`, `float%int`, and `decimal%int` multiplicative expressions
+#### Allowed `int*float`, `float*int`,` int* decimal`, `decimal*int`, `float/int`, `decimal/int`, `float%int`, and `decimal%int` multiplicative expressions
 
 Multiplicative expressions are now allowed with `int` and `float` operands and `int` and `decimal` operands. The type of the resulting expression will be the fractional type.
 
@@ -166,7 +166,7 @@ If the length of the coefficient after the quantize operation is greater than th
 
 ```ballerina
 public function main() {
-    decimal _ = decimal:quantize(123.1233, 1E-36); // results in a panic
+    decimal _ = decimal:quantize(123.1233, 1E-36); // Results in a panic.
 }
 ```
 
@@ -265,7 +265,7 @@ function fn() returns string {
         return "STRING";
     }
 
-    panic error("Not Reached!"); // unreachable, but not an error.
+    panic error("Not Reached!"); // Unreachable but not an error.
 }
 ```
 
@@ -286,7 +286,7 @@ public function main() {
 }
 ```
 
-#### Disallow inferring array length in contexts that are not permitted
+#### Disallowed inferring array length in contexts that are not permitted
 
 Inferring array length has been restricted to list constructors in variable and constant declarations. Moreover, only the first dimension can be inferred in multidimensional arrays.
 
@@ -394,7 +394,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 ### Improvements
 
-#### Support to provide values for configurable variables through TOML in-line tables
+#### Added support to provide values for configurable variables through TOML in-line tables
 
 The configurable feature is improved to support TOML in-line tables through the TOML syntax.
 The values for configurable variables of types `map` and `record` can now be provided using TOML in-line tables.

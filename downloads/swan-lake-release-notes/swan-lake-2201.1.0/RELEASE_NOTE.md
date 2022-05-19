@@ -18,7 +18,7 @@ redirect_from:
 
 ## Updating Ballerina
 
-If you are already using Ballerina, use the [Ballerina Update Tool](/learn/tooling-guide/cli-tools/update-tool/) to directly update to Swan Lake Beta6 by running the command below.
+If you are already using Ballerina, use the [Ballerina Update tool](/learn/tooling-guide/cli-tools/update-tool/) to directly update to Swan Lake Beta6 by running the command below.
 
 > `bal dist pull 2201.1.0`
 
@@ -193,9 +193,9 @@ public function main() {
 ##### New `lang.string:padStart()`, `lang.string:padEnd()`, and `lang.string:padZero()` functions
 
 The `lang.string:padStart()`, `lang.string:padEnd()`, and `lang.string:padZero()` functions have been introduced to add padding in strings. 
-- `lang.string:padStart()` adds padding to the start of a string. 
-- `lang.string:padEnd()` adds padding to the end of a string. 
-- `lang.string:padZero()` pads a string with zeros.
+- `lang.string:padStart()` adds padding to the start of a string
+- `lang.string:padEnd()` adds padding to the end of a string 
+- `lang.string:padZero()` pads a string with zeros
 
 ```ballerina
 import ballerina/io;
@@ -633,13 +633,12 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 - The `ballerinax/azure_functions` package is now available in [Ballerina Central](https://central.ballerina.io/ballerinax/azure.functions)
 
 ### Breaking changes
-- For existing `ballerinax/awslambda` and `ballerinax/azure_functions` projects, change the version to `2.1.0` in the `Dependencies.toml` file.
+
+For existing `ballerinax/awslambda` and `ballerinax/azure_functions` projects, change the version to `2.1.0` in the `Dependencies.toml` file.
 
 ### Bug fixes
 
-To view bug fixes, see the GitHub milestone for Swan Lake 2201.1.0 of the repositories below.
-
-- [C2C](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+2201.1.0%22)
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+2201.1.0%22).
 
 ## Developer tools updates
 

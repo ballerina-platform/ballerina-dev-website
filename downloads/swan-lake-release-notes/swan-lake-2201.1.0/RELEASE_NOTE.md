@@ -397,7 +397,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 #### Support to provide values for configurable variables through TOML in-line tables
 
 The configurable feature is improved to support TOML in-line tables through the TOML syntax.
-The values for configurable variables of types `map` and `record` can now beprovided using TOML in-line tables.
+The values for configurable variables of types `map` and `record` can now be provided using TOML in-line tables.
 Similarly, the values for configurable variables of types array of `map`, array of `record`, and `table` can now be provided using the TOML array of TOML in-line tables.
 
 For example, if the configurable variables are defined in the following way,
@@ -534,7 +534,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 - Introduced the `ftp:Caller` API and added it as an optional parameter in the `onFileChange` method
 - Added compiler plugin validation support for the `ftp:Service`
-- Added code-actions to generate a `ftp:Service` template
+- Added code-actions to generate an `ftp:Service` template
 
 #### `http` package
 
@@ -620,7 +620,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 - Fixed incorrect stub generation for repeated values of any, struct, timestamp, and duration messages
 - Fixed incorrect caller type name validation in the gRPC compiler plugin
-- Fixed passing protobuf predefined types as repeated values and values in messages
+- Fixed passing Protobuf predefined types as repeated values and values in messages
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.1.0%22+label%3AType%2FBug).
 
@@ -650,11 +650,11 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 #### AsyncAPI tool
 
-Introduced the Ballerina AsyncAPI tool, which will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating Ballerina service and listener skeletons. Ballerina Swan Lake supports the AsyncAPI Specification version 2.x. For more information, see [Ballerina AsyncAPI support](http://ballerina.io/learn/ballerina-asyncapi-support) and [AsyncAPI CLI documentation](http://ballerina.io/learn/cli-documentation/asyncapi/#asyncapi-to-ballerina).
+Introduced the Ballerina AsyncAPI tool, which will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating Ballerina service and listener skeletons. Ballerina Swan Lake supports the AsyncAPI Specification version 2.x. For more information, see [Ballerina AsyncAPI support](/learn/ballerina-asyncapi-support) and [AsyncAPI CLI documentation](/learn/cli-documentation/asyncapi/#asyncapi-to-ballerina).
 
 #### GraphQL tool
 
-Introduced the Ballerina GraphQL tool, which will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. Ballerina Swan Lake supports the GraphQL specification [October 2021 edition](https://spec.graphql.org/October2021/). For more information, see [Ballerina GraphQL support](http://ballerina.io/learn/ballerina-graphql-support/) and [Graphql CLI documentation](http://ballerina.io/learn/cli-documentation/graphql/#graphql-to-ballerina).
+Introduced the Ballerina GraphQL tool, which will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. Ballerina Swan Lake supports the GraphQL specification [October 2021 edition](https://spec.graphql.org/October2021/). For more information, see [Ballerina GraphQL support](/learn/ballerina-graphql-support/) and [GraphQL CLI documentation](/learn/cli-documentation/graphql/#graphql-to-ballerina).
 
 #### Language server
 
@@ -665,7 +665,7 @@ Introduced the Ballerina GraphQL tool, which will make it easy for you to genera
 
 #### Debugger
 
-Added rutime breakpoint verification support. With this improvement, the debugger is expected to verify all the valid breakpoint locations in the current debug source. All the breakpoints that are set on non-executable lines of code (i.e., Ballerina line comments, documentation , blank lines, declarations, etc.) will be marked as `unverified` in the editor.
+Added runtime breakpoint verification support. With this improvement, the debugger is expected to verify all the valid breakpoint locations in the current debug source. All the breakpoints that are set on non-executable lines of code (i.e., Ballerina line comments, documentation , blank lines, declarations, etc.) will be marked as `unverified` in the editor.
 
 #### Language server
 
@@ -683,7 +683,6 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.1.0 of the reposi
 
 - [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FLanguageServer+milestone%3A%22Ballerina+2201.1.0%22+)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AArea%2FDebugger+milestone%3A%22Ballerina+2201.1.0%22)
-- [Update tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+project%3Aballerina-platform%2F32)
-- [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+2201.1.0%22)
+- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/milestone/12)
 
 <style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style>

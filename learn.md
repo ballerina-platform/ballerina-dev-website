@@ -292,7 +292,7 @@ redirect_from:
 <div class="col-lg-12 col-md-12 col-sm-12 card" style="margin-right:0px !important;">
  <a href="/learn/other-specifications/">
   <h3 id="other-specifications">Other specifications</h3></a>
-		<p>Details of the Ballerina specifications other than the language specfications.  </p>
+		<p>Details of the Ballerina specifications other than the language specifications.  </p>
 </div>
 </div>
  

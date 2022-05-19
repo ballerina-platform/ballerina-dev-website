@@ -458,7 +458,7 @@ configurable float|int|string unionVar = ?;
 the values can be provided via CLI arguments in the following way.
 
 ```bash
-bal run -- -Cval=5.0
+bal run -- -CunionVar=5.0
 ```
 
 #### Improved runtime error creator and value creator API input validations

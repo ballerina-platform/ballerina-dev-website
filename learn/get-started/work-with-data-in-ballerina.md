@@ -14,7 +14,7 @@ redirect_from:
   - /learn/getting-started/working-with-data-in-ballerina
 ---
 
-Ballerina supports first-class support for writing SQL-like queries to process data. Language-integrated queries can process any Ballerina iterable.
+Ballerina has first-class support for writing SQL-like queries to process data. Language-integrated queries can process any Ballerina iterable.
 
 In this tutorial, you will be writing queries to filter, sort, and join with different data sets and produce new data sets.
 

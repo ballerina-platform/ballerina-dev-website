@@ -11,18 +11,18 @@ redirect_from:
     - /downloads/swan-lake-release-notes
 ---
 
-## Overview of Ballerina Swan Lake 2201.1.0 (Swan Lake)
+## Overview of Ballerina Swan Lake 2201.1.0 
 
 <em>2201.1.0 (Swan Lake) is the first update of 2201.1.0 (Swan Lake), and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R2 version of the Language Specification.</em> 
 
 
-## Updating Ballerina
+## Update Ballerina
 
 If you are already using Ballerina, use the [Ballerina Update tool](/learn/tooling-guide/cli-tools/update-tool/) to directly update to Swan Lake Beta6 by running the command below.
 
 > `bal dist pull 2201.1.0`
 
-## Installing Ballerina
+## Install Ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
@@ -127,6 +127,7 @@ public function main() {
     io:println(tup.some(x => x.length() == 0)); // false
 }
 ```
+
 ##### New `lang.array:every()` function
 
 The `lang.array:every` function tests whether a function returns `true` for every member of a list.
@@ -149,7 +150,7 @@ public function main() {
 
 ##### New `lang.decimal:quantize()` function
 
-The `lang.decimal:quantize()` function has been introduced to control the precision of decimal values. This returns a value equal to the first operand after rounding, with the exponent of the second operand.
+The `lang.decimal:quantize()` function is introduced to control the precision of decimal values. This returns a value equal to the first operand after rounding with the exponent of the second operand.
 
 ```ballerina
 import ballerina/io;
@@ -303,91 +304,89 @@ int[*][*] x4 = [[1, 2], [1, 2]]; // Not supported. Only the first dimension can 
 
 - Fixed an invalid sub-typing relationship between `table` and `anydata` 
 
-```ballerina
-public function main() {
-    table<map<any>> tany = table [{"a": 2}];
-    anydata ad = tany; // Results in a compilation error now.
-}
-```
+    ```ballerina
+    public function main() {
+        table<map<any>> tany = table [{"a": 2}];
+        anydata ad = tany; // Results in a compilation error now.
+    }
+    ```
 
 - Fixed an issue that caused a union containing the `null` literal allowing `"null"` as a valid value
 
-```ballerina
-type Foo boolean|null;
+    ```ballerina
+    type Foo boolean|null;
 
-public function main() {
-    Foo a = "null"; // Results in a compilation error now.
-    "string"|null b = "null"; // Results in a compilation error now.
-}
-```
+    public function main() {
+        Foo a = "null"; // Results in a compilation error now.
+        "string"|null b = "null"; // Results in a compilation error now.
+    }
+    ```
 
 - Fixed an issue that caused the value of enum members defined with quoted identifiers to include the quote
 
-```ballerina
-import ballerina/io;
+    ```ballerina
+    import ballerina/io;
 
-public enum Status {
-    'new,
-    old
-}
+    public enum Status {
+        'new,
+        old
+    }
 
-public function main() {
-    io:println('new); // Previously printed `'new`, now prints `new`.
-}
-```
+    public function main() {
+        io:println('new); // Previously printed `'new`, now prints `new`.
+    }
+    ```
 
 - Fixed a bug that resulted in a compilation error not being logged for an extra comma in a mapping match pattern
 
-```ballerina
-type MyRecord record {
-    int field1;
-    int field2;
-};
+    ```ballerina
+    type MyRecord record {
+        int field1;
+        int field2;
+    };
 
-function fn(MyRecord r1) {
-    match r1 {
-        {field1: 0,} => { // A syntax error is now given for the comma.
+    function fn(MyRecord r1) {
+        match r1 {
+            {field1: 0,} => { // A syntax error is now given for the comma.
 
+            }
         }
     }
-}
-```
+    ```
 
 - Fixed qualified identifiers not being allowed in error match patterns 
 
-```ballerina
-function fn(error e) {
-    match e {
-        error(errors:MESSAGE) => { // Match pattern is now allowed.
+    ```ballerina
+    function fn(error e) {
+        match e {
+            error(errors:MESSAGE) => { // Match pattern is now allowed.
 
+            }
         }
     }
-}
-```
+    ```
 
 - Fixed the inherent type of a list constructed using a list constructor with `any` as the contextually-expected type to be `(any|error)[]` instead of `any[]`
 
-```ballerina
-public function main() {
-    any x = [1, 3, 4];
-    if x is (any|error)[] {
-        x.push(error("invalid!")); // Now allowed, previously failed at runtime.
+    ```ballerina
+    public function main() {
+        any x = [1, 3, 4];
+        if x is (any|error)[] {
+            x.push(error("invalid!")); // Allowed now. Previously, failed at runtime.
+        }
     }
-}
-```
+    ```
 
 - Fixed a bug that allowed additive expressions with operands of types that are union types of different basic types 
 
-```ballerina
-public function main() {
-    int|float a = 4;
-    int|float b = 4.5;
+    ```ballerina
+    public function main() {
+        int|float a = 4;
+        int|float b = 4.5;
 
-    int _ = a + b; // Now, this results in a compilation error.
-}
-```
-
-### Bug fixes
+        int _ = a + b; // Now, this results in a compilation error.
+    }
+    ```
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FCompilerFE+milestone%3A%22Ballerina+2201.1.0%22).
 
@@ -413,7 +412,7 @@ configurable Person[] recordArrayVar = ?;
 
 the values can be provided in the `Config.toml` file as follows.
 
-```
+```toml
 mapVar = {a = "a", b = 2, c = 3.4, d = [1, 2, 3]}
 
 recordVar = {name = "Jane"}
@@ -438,7 +437,7 @@ configurable [int, string, int...] restTuple = ?;
 
 the values can be provided in the `Config.toml` file as follows.
 
-```
+```toml
 simpleTuple = [278, "string", 2.3, 4.5, 2, true]
 
 complexTuple = [[1, 3, 5, 7, 9], ["apple", 2], {name = "Baz Qux", age = 22}, [{a = "a"}, {b = "b", c = "c"}]]
@@ -458,7 +457,7 @@ configurable float|int|string unionVar = ?;
 
 the values can be provided via CLI arguments in the following way.
 
-```
+```bash
 bal run -- -Cval=5.0
 ```
 
@@ -484,6 +483,7 @@ For example, the following invalid use of the `ValueCreator.createRecordValue` A
 ```
 
 in modules/records
+
 ```ballerina
 import ballerina/jballerina.java;
 
@@ -495,7 +495,9 @@ public function getRecord(string recordName) returns record{} = @java:Method {
     'class: "javalibs.app.App"
 } external;
 ```
-main.bal
+
+`main.bal`
+
 ```ballerina
 import interop_project.records;
 
@@ -510,8 +512,9 @@ Runtime error:
         "from the package 'io.ballerina.runtime.api.values'
 ```
 
-### New runtime Java APIs
-#### Runtime API to create an enum type
+### New features
+
+#### New runtime Java API to create an enum type
 New runtime Java API can be used to create enum types from native code.
 
 
@@ -521,7 +524,7 @@ public static UnionType createUnionType(List<Type> memberTypes, String name, Mod
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+2201.1.0%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+2201.1.0%22+label%3AType%2FBug+label%3ATeam%2FjBallerina+).
 
 ## Standard library updates
 
@@ -560,7 +563,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 #### `websub` package
 
-- Add code-actions to generate a `websub:SubscriberService` template
+- Added code-actions to generate a `websub:SubscriberService` template
 
 #### `kafka` package
 
@@ -615,22 +618,23 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 #### `grpc` package
 
-- Fix incorrect stub generation for repeated values of any, struct, timestamp, and duration messages
-- Fix incorrect caller type name validation in the gRPC compiler plugin
-- Fix passing protobuf predefined types as repeated values and values in messages
+- Fixed incorrect stub generation for repeated values of any, struct, timestamp, and duration messages
+- Fixed incorrect caller type name validation in the gRPC compiler plugin
+- Fixed passing protobuf predefined types as repeated values and values in messages
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.1.0%22+label%3AType%2FBug).
 
 ## Deployment updates
 
 ### New features
-- Added the `name` field for the `cloud.config.files` property in the `Cloud.toml` file to change the name of the generated config map 
+
+Added the `name` field for the `cloud.config.files` property in the `Cloud.toml` file to change the name of the generated config map 
 
 ### Improvements
 - Reduced the package size of `ballerina/cloud`
 - Docker image generation now relies on the user's docker client
-- The `ballerinax/awslambda` package is now available in [Ballerina Central](https://central.ballerina.io/ballerinax/awslambda)
-- The `ballerinax/azure_functions` package is now available in [Ballerina Central](https://central.ballerina.io/ballerinax/azure.functions)
+- Added the `ballerinax/awslambda` package in [Ballerina Central](https://central.ballerina.io/ballerinax/awslambda)
+- Added the `ballerinax/azure_functions` package in [Ballerina Central](https://central.ballerina.io/ballerinax/azure.functions)
 
 ### Breaking changes
 
@@ -646,11 +650,11 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 #### AsyncAPI tool
 
-- Ballerina AsyncAPI tooling will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating Ballerina service and listener skeletons. Ballerina Swan Lake supports the AsyncAPI Specification version 2.x. For more information, see [Ballerina AsyncAPI support](http://ballerina.io/learn/ballerina-asyncapi-support) and [AsyncAPI CLI documentation](http://ballerina.io/learn/cli-documentation/asyncapi/#asyncapi-to-ballerina).
+Introduced the Ballerina AsyncAPI tool, which will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating Ballerina service and listener skeletons. Ballerina Swan Lake supports the AsyncAPI Specification version 2.x. For more information, see [Ballerina AsyncAPI support](http://ballerina.io/learn/ballerina-asyncapi-support) and [AsyncAPI CLI documentation](http://ballerina.io/learn/cli-documentation/asyncapi/#asyncapi-to-ballerina).
 
 #### GraphQL tool
 
-- Introduced the Ballerina GraphQL tool, which will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. Ballerina Swan Lake supports the GraphQL specification [October 2021 edition](https://spec.graphql.org/October2021/). For more information, see [Ballerina GraphQL support](http://ballerina.io/learn/ballerina-graphql-support/) and [Graphql CLI documentation](http://ballerina.io/learn/cli-documentation/graphql/#graphql-to-ballerina).
+Introduced the Ballerina GraphQL tool, which will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. Ballerina Swan Lake supports the GraphQL specification [October 2021 edition](https://spec.graphql.org/October2021/). For more information, see [Ballerina GraphQL support](http://ballerina.io/learn/ballerina-graphql-support/) and [Graphql CLI documentation](http://ballerina.io/learn/cli-documentation/graphql/#graphql-to-ballerina).
 
 #### Language server
 
@@ -660,13 +664,14 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 ### Improvements
 
 #### Debugger
-- Added rutime breakpoint verification support. With this improvement, the debugger is expected to verify all the valid breakpoint locations in the current debug source. All the breakpoints that are set on non-executable lines of code (i.e., Ballerina line comments, documentation , blank lines, declarations, etc.) will be marked as `unverified` in the editor.
+
+Added rutime breakpoint verification support. With this improvement, the debugger is expected to verify all the valid breakpoint locations in the current debug source. All the breakpoints that are set on non-executable lines of code (i.e., Ballerina line comments, documentation , blank lines, declarations, etc.) will be marked as `unverified` in the editor.
 
 #### Language server
 
-- Improve the `Document this code` action to support module-level variables
+- Improved the `Document this code` action to support module-level variables
 - Added signature help for included record params
-- Revamp the code action utilities introducing a new API to find the top-level node for a given code action context
+- Revamped the code action utilities introducing a new API to find the top-level node for a given code action context
 - Improved completion item sorting in several contexts
 - Improved the `Create function` code action to handle named arguments
 - Improved the `Create function` code action to add an isolated qualifier
@@ -676,9 +681,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.1.0 of the repositories below.
 
-- [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FLanguageServer+milestone%3A%22Ballerina+Swan+Lake+2201.1.0%22)
+- [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FLanguageServer+milestone%3A%22Ballerina+2201.1.0%22+)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AArea%2FDebugger+milestone%3A%22Ballerina+2201.1.0%22)
-- [Update Tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+project%3Aballerina-platform%2F32)
+- [Update tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+project%3Aballerina-platform%2F32)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-openapi/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+2201.1.0%22)
 
 <style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style>

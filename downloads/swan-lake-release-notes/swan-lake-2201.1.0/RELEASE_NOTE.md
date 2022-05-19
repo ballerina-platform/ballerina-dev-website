@@ -601,7 +601,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 #### `http` package
 
-- Allowed `Caller` to respond an `error` or a `StatusCodeResponse`
+- Allowed `Caller` to respond to an `error` or a `StatusCodeResponse`
 - Appended the HTTPS scheme (`https://`) to the client URL if security is enabled
 - Refactored the auth-desugar response with a `DefaultErrorInterceptor`
 - Hid the subtypes of the `http:Client`

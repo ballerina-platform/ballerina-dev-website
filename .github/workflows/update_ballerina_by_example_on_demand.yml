@@ -53,7 +53,7 @@ jobs:
 
         wget --header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"  https://api.github.com/repos/ballerina-platform/ballerina-distribution/actions/artifacts/${{ github.event.inputs.artifact }}/zip  -O "ballerina.zip"
         unzip ballerina.zip
-        # unzip ballerina-${BALLERINA_VERSION}.zip
+        unzip ballerina-${BALLERINA_VERSION}-${CODE_NAME}.zip
 
         cp ballerina-${BALLERINA_VERSION}-${CODE_NAME}/distributions/ballerina-${SHORT_VERSION}/examples/index.json ../_data/all-bbes.json
 

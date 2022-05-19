@@ -3,7 +3,7 @@ layout: ballerina-learn-landing-page
 title: Learn
 description: Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below.
 keywords: ballerina, learn, documentation, docs, programming language
-permalink: /learn-new/
+permalink: /learn/
 intro: Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Let's start learning Ballerina.
 redirect_from:
  - /learn-beta2-column
@@ -12,7 +12,7 @@ redirect_from:
 ---
 
 <div class="container">
-<div class="row" style="background-color:#ffffff;padding: 25px 25px 15px 25px; margin-bottom:30px">
+<div class="row" style="background-color:#ffffff; padding-bottom:45px; margin-bottom:25px; border-bottom:1px solid #c7c7c7">
 <h2 id="get-started">Get started</h2>
 <a href="/learn/install-ballerina/set-up-ballerina/">
     <h3 id="install-ballerina">Install Ballerina</h3> </a>
@@ -24,8 +24,8 @@ redirect_from:
 </div>
 
 <div class="container">
-<div class="row" style="background-color:#ffffff;padding: 25px 25px 15px 25px; margin-bottom:30px">
-<h2 id="learn-the-language">Learn the language</h2>
+<div class="row" style="background-color:#ffffff; padding-bottom:45px; margin-bottom:25px; border-bottom:1px solid #c7c7c7">
+<h2 id="learn-the-language" style="padding-top:30px;">Learn the language</h2>
 <a href="/learn/by-example/">
     <h3 id="ballerina-by-example">Ballerina By Example</h3></a>
     <p >A series of guided examples to learn the language. </p>
@@ -48,8 +48,8 @@ redirect_from:
 </div>
 
 <div class="container">
-<div class="row" style="background-color:#ffffff;padding: 25px 25px 15px 25px; margin-bottom:30px">
-<h2 id="use-cases">Use cases</h2>
+<div class="row" style="background-color:#ffffff; padding-bottom:45px; margin-bottom:25px; border-bottom:1px solid #c7c7c7">
+<h2 id="use-cases" style="padding-top:30px;">Use cases</h2>
 <a href="/learn/write-a-restful-api-with-ballerina/">
     <h3 id="write-a-restful-api-with-ballerina">Write a RESTful API with Ballerina</h3></a>
     <p >Understand the basics of Ballerina constructs, which allow you to write RESTful APIs. </p>
@@ -74,8 +74,8 @@ redirect_from:
 </div>
 
 <div class="container">
-<div class="row" style="background-color:#ffffff;padding: 25px 25px 15px 25px;margin-bottom:30px">
-<h2 id="learn-about-the-platform">Learn about the platform</h2>
+<div class="row" style="background-color:#ffffff; padding-bottom:45px; margin-bottom:25px; border-bottom:1px solid #c7c7c7">
+<h2 id="learn-about-the-platform" style="padding-top:30px;">Learn about the platform</h2>
  <a href="/learn/organize-ballerina-code/">
   <h3 id="organize-ballerina-code">Organize Ballerina code</h3></a>
  	<p>Basics of projects, packages, and modules.  </p>
@@ -116,8 +116,8 @@ redirect_from:
 </div>
 
 <div class="container">
-<div class="row" style="background-color:#ffffff;padding: 25px 25px 15px 25px;margin-bottom:30px">
-	<h2 id="specifications">Specifications</h2>
+<div class="row" style="background-color:#ffffff; padding-bottom:45px; margin-bottom:25px">
+	<h2 id="specifications" style="padding-top:30px;">Specifications</h2>
  <a href="/learn/language-specifications/">
   <h3 id="language-specifications-2">Language specifications</h3></a>
 		<p>Details of the Ballerina language specifications and proposals.  </p>

@@ -57,7 +57,7 @@ jobs:
 
         cp ballerina-${BALLERINA_VERSION}-${CODE_NAME}/distributions/ballerina-${SHORT_VERSION}/examples/index.json ../_data/all-bbes.json
 
-        go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples" "swan-lake" "by-example" "true" "true" "true"
+        go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}-${CODE_NAME}/distributions/ballerina-${SHORT_VERSION}/examples" "swan-lake" "by-example" "true" "true" "true"
 
     - name: Remove old examples file
       run: git rm -r learn/by-example

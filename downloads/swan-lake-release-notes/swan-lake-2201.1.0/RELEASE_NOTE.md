@@ -69,7 +69,7 @@ public function main() {
     [int, string, string...] v1 = [...t1]; // results in an error since a value is not guaranteed to have been provided for the second tuple member
 
     [int, boolean, string, int...] t2 = [5, false, "w"];
-    [int, boolean, anydata...] v2 = [...t2, "x", "y"]; // works as all fixed tuple members are guaranteed to have been provided values
+    [int, boolean, anydata...] v2 = [...t2, "x", "y"]; // Works as all fixed tuple members are guaranteed to have been provided values.
 }
 ```
 

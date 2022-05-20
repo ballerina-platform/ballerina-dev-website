@@ -75,7 +75,7 @@ public function main() {
 
 #### Added support for multiplicative expressions with `int` and `float` or `decimal` operands
 
-Multiplicative expressions are now allowed with `int` and `float` operands and `int` and `decimal` operands. The type of the resulting expression will be the fractional type.
+Multiplicative expressions are now allowed with certain combinations of `int` and `float` operands and `int` and `decimal` operands. The type of the resulting expression will be the floating-point type.
 
 This allows the below.
 - Multiplication supports `int*float`, `float*int`, `int*decimal`, and `decimal*int`

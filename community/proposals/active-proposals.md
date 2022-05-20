@@ -1,5 +1,5 @@
 ---
-layout: ballerina-proposals
+layout: ballerina-installing-ballerina-left-nav-pages-swanlake
 title: Active Proposals
 description: Active proposals proposed by the Ballerina community
 keywords: ballerina, community, ballerina community, proposals

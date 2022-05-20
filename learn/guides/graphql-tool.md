@@ -1,6 +1,6 @@
 ---
 layout: ballerina-graphql-support-left-nav-pages-swanlake
-title: GraphQL Tool
+title: GraphQL tool
 description: Check out how the Ballerina GraphQL tooling makes it easy for you to start developing a service documented in a GraphQL schema.
 keywords: ballerina, programming language, graphql, sdl, schema definition language
 permalink: /learn/graphql-tool/

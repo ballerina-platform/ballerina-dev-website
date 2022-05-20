@@ -36,7 +36,7 @@ The Ballerina OpenAPI tool support provides the following capabilities.
 
 ## Generate Ballerina services from OpenAPI Contracts 
 
-If you are an API developer who prefers the **design-first approach**, you can use an existing or your own OpenAPI definition to generate Ballerina services using the OpenAPI CLI command as follows.
+If you are an API developer who prefers the **design-first approach**, you can use an existing or your OpenAPI definition to generate Ballerina services using the OpenAPI CLI command as follows.
 
 ```bash
 $ bal openapi -i <openapi-contract> --mode service
@@ -78,7 +78,7 @@ Once you execute the command, only the operations related to the given tags will
 
 ## Export OpenAPI contracts from Ballerina services
 
-If you are an API developer who prefer to follow the **code-first approach**, you can convert your Ballerina service APIs into human-readable or machine-readable documents such as OpenAPI documents by using the Ballerina to OpenAPI CLI Tool as follows.
+If you prefer to follow the **code-first approach**, you can convert your Ballerina service APIs into human-readable or machine-readable documents such as OpenAPI documents by using the Ballerina to OpenAPI CLI Tool as follows.
 
 Export the Ballerina service to an OpenAPI Specification 3.0.0 definition. For the export to work properly, the input Ballerina service should be defined using the basic service and resource-level HTTP annotations.
 

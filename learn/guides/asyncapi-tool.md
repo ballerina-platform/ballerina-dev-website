@@ -18,7 +18,7 @@ Ballerina AsyncAPI tool will make it easy for you to start the development of an
 
 ## Generate Ballerina services from AsyncAPI contracts
 
-If you prefer the design-first approach, use an existing or your own AsyncAPI definition to generate Ballerina services using the AsyncAPI CLI command below.
+If you prefer the design-first approach, use an existing or your AsyncAPI definition to generate Ballerina services using the AsyncAPI CLI command below.
 
 ```bash
 bal asyncapi -i <asyncapi-contract>

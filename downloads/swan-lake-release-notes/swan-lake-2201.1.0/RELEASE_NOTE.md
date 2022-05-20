@@ -683,20 +683,6 @@ Added runtime breakpoint verification support. With this improvement, the debugg
 - Added support to validate the Ballerina resource headers with OpenAPI operation headers. With this improvement, the validator gives validation errors on missing headers, undocumented headers, and type mismatch of the header parameters.
 - Added support to validate the Ballerina resource return type with OpenAPI operation response. With this improvement, the validator gives validation errors on missing return status codes, missing return payload types, undocumented return status codes, and undocumented payload media types.
 
-## Ballerina packages updates
-
-### Improvements
-Added support to specify the minimum required dependency version in the `Ballerina.toml` file. With this improvement, the dependencies will get updated to the version specified or the latest compatible version.
-
-For example, the minimum version of `ballerinax/mysql` dependency can be specified in the following way.
-```toml
-[[dependency]]
-org = "ballerinax"
-name = "mysql"
-version = "1.3.0”
-```
-  
-
 #### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.1.0 of the repositories below.
@@ -706,3 +692,16 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.1.0 of the reposi
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A1.1.0+is%3Aclosed)
 
 <style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style>
+
+## Ballerina packages updates
+
+### Improvements
+Added support to specify the minimum required dependency version in the `Ballerina.toml` file. With this improvement, the dependencies will get updated to the specified version or the latest compatible version.
+
+For example, the minimum version of the `ballerinax/mysql` dependency can be specified in the following way.
+```toml
+[[dependency]]
+org = "ballerinax"
+name = "mysql"
+version = "1.3.0”
+```

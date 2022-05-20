@@ -649,11 +649,11 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 #### AsyncAPI tool
 
-Introduced the Ballerina AsyncAPI tool, which will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating Ballerina service and listener skeletons. Ballerina Swan Lake supports the [AsyncAPI Specification version 2.x](https://www.asyncapi.com/docs/specifications/v2.0.0.). For more information, see [Ballerina AsyncAPI support](/learn/ballerina-asyncapi-support) and [AsyncAPI CLI documentation](/learn/cli-documentation/asyncapi/#asyncapi-to-ballerina).
+Introduced the AsyncAPI tool, which will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating Ballerina service and listener skeletons. Ballerina Swan Lake supports the [AsyncAPI Specification version 2.x](https://www.asyncapi.com/docs/specifications/v2.0.0.). For more information, see [Ballerina AsyncAPI support](/learn/ballerina-asyncapi-support) and [AsyncAPI CLI documentation](/learn/cli-documentation/asyncapi/#asyncapi-to-ballerina).
 
-#### GraphQL tool
+#### GraphQL client tool
 
-Introduced the Ballerina GraphQL tool, which will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. Ballerina Swan Lake supports the GraphQL specification [October 2021 edition](https://spec.graphql.org/October2021/). For more information, see [Ballerina GraphQL support](/learn/ballerina-graphql-support/) and [GraphQL CLI documentation](/learn/cli-documentation/graphql/#graphql-to-ballerina).
+Introduced the GraphQL client tool, which will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. Ballerina Swan Lake supports the GraphQL specification [October 2021 edition](https://spec.graphql.org/October2021/). For more information, see [Ballerina GraphQL support](/learn/ballerina-graphql-support/) and [GraphQL CLI documentation](/learn/cli-documentation/graphql/#graphql-to-ballerina).
 
 #### Language server
 
@@ -676,7 +676,7 @@ Added runtime breakpoint verification support. With this improvement, the debugg
 - Improved the `Create function` code action to add an isolated qualifier
 - Added signature help for union-typed expressions
 
-#### OpenAPI Tool
+#### OpenAPI tool
 
 ##### Improved the OpenAPI service validator
 

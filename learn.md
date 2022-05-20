@@ -271,9 +271,9 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card" >
- <a href="/learn/graphql-tool/">
-    <h3 id="graphql-tool">GraphQL tool </h3></a>
-    <p >Details of all the features of the Ballerina GraphQL tool. </p>
+ <a href="/learn/graphql-client-tool/">
+    <h3 id="graphql-client-tool">GraphQL client tool </h3></a>
+    <p >Details of all the features of the Ballerina GraphQL client tool. </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
  <a href="/learn/asyncapi-tool/">

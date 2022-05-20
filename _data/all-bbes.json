@@ -1544,14 +1544,6 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Interfaces",
-                "url": "graphql-interfaces",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
                 "name": "Documentation",
                 "url": "graphql-documentation",
                 "verifyBuild": true,
@@ -2158,8 +2150,17 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer client",
-                "url": "kafka-consumer-client",
+                "name": "Consumer client - Poll Payload",
+                "url": "kafka-consumer-client-poll-payload",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Consumer client - Poll ConsumerRecord",
+                "url": "kafka-consumer-client-poll-consumer-record",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2169,15 +2170,6 @@
             {
                 "name": "Transactional producer",
                 "url": "kafka-producer-transactional",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Consumer groups",
-                "url": "kafka-consumer-group-service",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",

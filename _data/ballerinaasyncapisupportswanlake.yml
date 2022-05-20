@@ -1,6 +1,6 @@
-- title: Ballerina AsyncAPI support
+- title: AsyncAPI Tool
   url: #
   sublinks:
     - title: Generate Ballerina services from AsyncAPI contracts
-      url: /learn/ballerina-asyncapi-support/#generate-ballerina-services-from-asyncapi-contracts
+      url: /learn/asyncapi-tool/#generate-ballerina-services-from-asyncapi-contracts
       active: generate-ballerina-services-from-asyncapi-contracts  

@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-release-notes
-title: Swan Lake 2201.1.0
+title: 2201.1.0 (Swan Lake)
 permalink: /downloads/swan-lake-release-notes/2201.1.0/
 active: swan-lake-2201.1.0
 redirect_from:
@@ -11,7 +11,7 @@ redirect_from:
     - /downloads/swan-lake-release-notes
 ---
 
-## Overview of Ballerina Swan Lake 2201.1.0
+## Overview of Ballerina 2201.1.0 (Swan Lake)
 
 <em>2201.1.0 (Swan Lake) is the first update of 2201.1.0 (Swan Lake), and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R2 version of the Language Specification.</em>
 

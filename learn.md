@@ -264,20 +264,20 @@ redirect_from:
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
  <a href="/learn/openapi-tool/">
-    <h3 id="openapi-tool">OpenAPI Tool </h3></a>
-    <p >Details of all the features of the Ballerina OpenAPI Tool. </p>
+    <h3 id="openapi-tool">OpenAPI tool </h3></a>
+    <p >Details of all the features of the Ballerina OpenAPI tool. </p>
 </div>
 </div>
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card" >
  <a href="/learn/graphql-tool/">
-    <h3 id="graphql-tool">GraphQL Tool </h3></a>
+    <h3 id="graphql-tool">GraphQL tool </h3></a>
     <p >Details of all the features of the Ballerina GraphQL tool. </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
  <a href="/learn/asyncapi-tool/">
-    <h3 id="asyncapi-tool">AsyncAPI Tool </h3></a>
+    <h3 id="asyncapi-tool">AsyncAPI tool </h3></a>
     <p >Details of all the features of the Ballerina AsyncAPI tool. </p>
 </div>
 </div>

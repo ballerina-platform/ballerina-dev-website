@@ -17,7 +17,7 @@
           url: /learn/openapi-tool/#export-for-a-specific-service
           active: export-for-a-specific-service
         - title: Export with a given title and version
-          url: /learn/bopenapi-tool/#export-with-a-given-title-and-version
+          url: /learn/openapi-tool/#export-with-a-given-title-and-version
           active: export-with-a-given-title-and-version
     - title: OpenAPI validator compiler plugin
       url: /learn/openapi-tool/#openapi-validator-compiler-plugin

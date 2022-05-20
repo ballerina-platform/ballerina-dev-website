@@ -1,10 +1,10 @@
 ---
 layout: ballerina-openapi-support-left-nav-pages-swanlake
-title: Ballerina OpenAPI support 
+title: OpenAPI Tool
 description: Check out how the Ballerina OpenAPI tooling makes it easy for you to start developing a service documented in an OpenAPI contract.
 keywords: ballerina, programming language, openapi, open api, restful api
-permalink: /learn/ballerina-openapi-support/
-active: ballerina-openapi-support
+permalink: /learn/openapi-tool/
+active: openapi-tool
 intro: OpenAPI Specification is a specification that creates a RESTFUL contract for APIs by detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina Swan Lake supports the OpenAPI Specification version 3.0.0 onwards.
 redirect_from:
   - /learn/how-to-use-openapi-tools/
@@ -20,6 +20,7 @@ redirect_from:
   - /learn/cli-documentation/openapi/#openapi-validator-compiler-plugin/
   - /learn/cli-documentation/openapi/#openapi-validator-compiler-plugin
   - /learn/ballerina-openapi-support
+  - /learn/ballerina-openapi-support/
 --- 
 
 Ballerina OpenAPI tooling will make it easy for you to start the development of a service documented in an OpenAPI contract in Ballerina by generating a Ballerina service and client skeletons. It enables you to take the code-first API design approach by generating an OpenAPI contract for the given service implementation.

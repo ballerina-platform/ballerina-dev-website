@@ -263,22 +263,22 @@ redirect_from:
     <p >Details of all the features of the Ballerina Visual Studio Code extension. </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
- <a href="/learn/ballerina-openapi-support/">
-    <h3 id="ballerina-openapi-support">Ballerina OpenAPI support </h3></a>
-    <p >Details of all the features of the Ballerina OpenAPI tools. </p>
+ <a href="/learn/openapi-tool/">
+    <h3 id="openapi-tool">OpenAPI Tool </h3></a>
+    <p >Details of all the features of the Ballerina OpenAPI Tool. </p>
 </div>
 </div>
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card" >
- <a href="/learn/ballerina-graphql-support/">
-    <h3 id="ballerina-graphql-support">Ballerina GraphQL support </h3></a>
-    <p >Details of all the features of the Ballerina GraphQL tools. </p>
+ <a href="/learn/graphql-tool/">
+    <h3 id="graphql-tool">GraphQL Tool </h3></a>
+    <p >Details of all the features of the Ballerina GraphQL tool. </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
- <a href="/learn/ballerina-asyncapi-support/">
-    <h3 id="ballerina-async-support">Ballerina AsyncAPI support </h3></a>
-    <p >Details of all the features of the Ballerina AsyncAPI tools. </p>
+ <a href="/learn/asyncapi-tool/">
+    <h3 id="asyncapi-tool">AsyncAPI Tool </h3></a>
+    <p >Details of all the features of the Ballerina AsyncAPI tool. </p>
 </div>
 </div>
 

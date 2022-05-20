@@ -1,13 +1,15 @@
 ---
 layout: ballerina-graphql-support-left-nav-pages-swanlake
-title: Ballerina GraphQL support 
+title: GraphQL Tool
 description: Check out how the Ballerina GraphQL tooling makes it easy for you to start developing a service documented in a GraphQL schema.
 keywords: ballerina, programming language, graphql, sdl, schema definition language
-permalink: /learn/ballerina-graphql-support/
-active: ballerina-graphql-support
+permalink: /learn/graphql-tool/
+active: graphql-tool
 intro: Every GraphQL service defines a set of types, which describe the set of possible data you can query on that service and when queries come in, they are validated and executed against that schema. 
 redirect_from:
   - /learn/ballerina-graphql-support
+  - /learn/ballerina-graphql-support/
+  - /learn/graphql-tool
 --- 
 
 GraphQL schemas for a service are now most often specified using what’s known as the GraphQL SDL (schema definition language). It is also sometimes referred to as just GraphQL schema language. Ballerina GraphQL tooling will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. You can generate multiple clients in Ballerina for multiple GraphQL documents for a given GraphQL SDL. It also enables you to generate multiple Ballerina modules for multiple GraphQL projects to work with different GraphQL APIs. 

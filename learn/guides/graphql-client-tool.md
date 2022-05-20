@@ -1,20 +1,22 @@
 ---
 layout: ballerina-graphql-support-left-nav-pages-swanlake
-title: GraphQL tool
-description: Check out how the Ballerina GraphQL tool makes it easy for you to start developing a service documented in a GraphQL schema.
+title: GraphQL client tool
+description: Check out how the Ballerina GraphQL client tool makes it easy for you to start developing a service documented in a GraphQL schema.
 keywords: ballerina, programming language, graphql, sdl, schema definition language
-permalink: /learn/graphql-tool/
-active: graphql-tool
+permalink: /learn/graphql-client-tool/
+active: graphql-client-tool
 intro: Every GraphQL service defines a set of types, which describe the set of possible data you can query on that service and when queries come in, they are validated and executed against that schema. 
 redirect_from:
   - /learn/ballerina-graphql-support
   - /learn/ballerina-graphql-support/
   - /learn/graphql-tool
+  - /learn/graphql-tool/
+  - /learn/graphql-client-tool
 --- 
 
-GraphQL schemas of a service are now most often specified using what’s known as the GraphQL SDL (schema definition language). It is also sometimes referred to as just GraphQL schema language. Ballerina GraphQL tool will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. You can generate multiple clients in Ballerina for multiple GraphQL documents for a given GraphQL SDL. It also enables you to generate multiple Ballerina modules for multiple GraphQL projects to work with different GraphQL APIs. 
+GraphQL schemas of a service are now most often specified using what’s known as the GraphQL SDL (schema definition language). It is also sometimes referred to as just GraphQL schema language. Ballerina GraphQL client tool will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. You can generate multiple clients in Ballerina for multiple GraphQL documents for a given GraphQL SDL. It also enables you to generate multiple Ballerina modules for multiple GraphQL projects to work with different GraphQL APIs. 
 
-The Ballerina GraphQL tool support provides the following capabilities.
+The Ballerina GraphQL client tool support provides the following capabilities.
 
 > **Prerequisites:** Install the [GraphQL Foundation VSCode plugin](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql) and the latest [Ballerina Swan Lake distribution](https://ballerina.io/downloads/).
 

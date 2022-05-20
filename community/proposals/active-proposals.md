@@ -1,10 +1,4 @@
----
-layout: ballerina-proposals
-title: Active Proposals
-description: Active proposals proposed by the Ballerina community
-keywords: ballerina, community, ballerina community, proposals
-permalink: /community/proposals/active-proposals/
----
+
 
 # Ballerina Proposals 
 ### Open Proposals 

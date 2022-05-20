@@ -1,6 +1,6 @@
 ---
 layout: ballerina-asyncapi-support-left-nav-pages-swanlake
-title: AsyncAPI sTool
+title: AsyncAPI tool
 description: Check out how the Ballerina AsyncAPI tooling makes it easy for you to start developing a service documented in an AsyncAPI contract.
 keywords: ballerina, programming language, asyncapi, contract
 permalink: /learn/asyncapi-tool/

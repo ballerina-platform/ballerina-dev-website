@@ -689,7 +689,13 @@ Added runtime breakpoint verification support. With this improvement, the debugg
 
 ### Improved Package resolution
 
-- Added support to specify the dependency version in the `Ballerina.toml` file. With this improvement, the dependencies will get updated to the version specified or the latest compatible version.
+- Added support to specify the minimum required dependency version in the `Ballerina.toml` file. With this improvement, the dependencies will get updated to the version specified or the latest compatible version.
+```toml
+[[dependency]]
+org = "ballerina"
+name = "io"
+version = "1.2.0”
+```
   
 
 #### Bug fixes

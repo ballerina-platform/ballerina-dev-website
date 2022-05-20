@@ -1,7 +1,7 @@
 ---
 layout: ballerina-openapi-support-left-nav-pages-swanlake
 title: OpenAPI tool
-description: Check out how the Ballerina OpenAPI tooling makes it easy for you to start developing a service documented in an OpenAPI contract.
+description: Check out how the Ballerina OpenAPI tool makes it easy for you to start developing a service documented in an OpenAPI contract.
 keywords: ballerina, programming language, openapi, open api, restful api
 permalink: /learn/openapi-tool/
 active: openapi-tool
@@ -23,9 +23,9 @@ redirect_from:
   - /learn/ballerina-openapi-support/
 --- 
 
-Ballerina OpenAPI tooling will make it easy for you to start the development of a service documented in an OpenAPI contract in Ballerina by generating a Ballerina service and client skeletons. It enables you to take the code-first API design approach by generating an OpenAPI contract for the given service implementation.
+Ballerina OpenAPI tool will make it easy for you to start the development of a service documented in an OpenAPI contract in Ballerina by generating a Ballerina service and client skeletons. It enables you to take the code-first API design approach by generating an OpenAPI contract for the given service implementation.
 
-The Ballerina OpenAPI tooling support provides the following capabilities.
+The Ballerina OpenAPI tool support provides the following capabilities.
 
 > **Prerequisite:** Install the latest [Ballerina Swan Lake distribution](https://ballerina.io/downloads/).
 

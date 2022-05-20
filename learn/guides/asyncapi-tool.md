@@ -1,7 +1,7 @@
 ---
 layout: ballerina-asyncapi-support-left-nav-pages-swanlake
 title: AsyncAPI tool
-description: Check out how the Ballerina AsyncAPI tooling makes it easy for you to start developing a service documented in an AsyncAPI contract.
+description: Check out how the Ballerina AsyncAPI tool makes it easy for you to start developing a service documented in an AsyncAPI contract.
 keywords: ballerina, programming language, asyncapi, contract
 permalink: /learn/asyncapi-tool/
 active: asyncapi-tool
@@ -12,7 +12,7 @@ redirect_from:
   - /learn/asyncapi-tool
 --- 
 
-Ballerina AsyncAPI tooling will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating a Ballerina service and listener skeletons.
+Ballerina AsyncAPI tool will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating a Ballerina service and listener skeletons.
 
 > **Prerequisite:** Install the latest [Ballerina Swan Lake distribution](https://ballerina.io/downloads/).
 

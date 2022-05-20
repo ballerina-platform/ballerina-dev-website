@@ -685,16 +685,15 @@ Added runtime breakpoint verification support. With this improvement, the debugg
 
 ## Ballerina packages updates
 
-## Improvements
+### Improvements
+Added support to specify the minimum required dependency version in the `Ballerina.toml` file. With this improvement, the dependencies will get updated to the version specified or the latest compatible version.
 
-### Improved Package resolution
-
-- Added support to specify the minimum required dependency version in the `Ballerina.toml` file. With this improvement, the dependencies will get updated to the version specified or the latest compatible version.
+For example, the minimum version of `ballerinax/mysql` dependency can be specified in the following way.
 ```toml
 [[dependency]]
-org = "ballerina"
-name = "io"
-version = "1.2.0”
+org = "ballerinax"
+name = "mysql"
+version = "1.3.0”
 ```
   
 

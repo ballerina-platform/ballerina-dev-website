@@ -3,7 +3,7 @@ layout: ballerina-left-nav-release-notes
 title: Swan Lake 2201.1.0
 permalink: /downloads/swan-lake-release-notes/2201.1.0/
 active: swan-lake-2201.1.0
-redirect_from: 
+redirect_from:
     - /downloads/swan-lake-release-notes/2201-1-0
     - /downloads/swan-lake-release-notes/2201-1-0-swan-lake/
     - /downloads/swan-lake-release-notes/2201-1-0-swan-lake
@@ -11,9 +11,9 @@ redirect_from:
     - /downloads/swan-lake-release-notes
 ---
 
-## Overview of Ballerina Swan Lake 2201.1.0 
+## Overview of Ballerina Swan Lake 2201.1.0
 
-<em>2201.1.0 (Swan Lake) is the first update of 2201.1.0 (Swan Lake), and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R2 version of the Language Specification.</em> 
+<em>2201.1.0 (Swan Lake) is the first update of 2201.1.0 (Swan Lake), and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R2 version of the Language Specification.</em>
 
 
 ## Update Ballerina
@@ -110,7 +110,7 @@ public function main() {
 
 ##### New `lang.array:some()` function
 
-The `lang.array:some()` function tests whether a function returns `true` for some member of a list. 
+The `lang.array:some()` function tests whether a function returns `true` for some member of a list.
 
 ```ballerina
 import ballerina/io;
@@ -178,24 +178,24 @@ Two new functions, `lang.float:toFixedString()` and `lang.float:toExpString()`, 
 import ballerina/io;
 
 public function main() {
-    string a = float:toFixedString(5.7, 16); 
+    string a = float:toFixedString(5.7, 16);
     io:println(a); // 5.7000000000000002
-    string b = float:toFixedString(5.7, 2); 
+    string b = float:toFixedString(5.7, 2);
     io:println(b); // 5.70
-    
+
     float f1 = -45362.12334;
-    string c = float:toExpString(f1, 16); 
+    string c = float:toExpString(f1, 16);
     io:println(c); // -4.5362123339999998e+4
-    string d = float:toExpString(f1, 2); 
+    string d = float:toExpString(f1, 2);
     io:println(d); // -4.54e+4
 }
 ```
 
 ##### New `lang.string:padStart()`, `lang.string:padEnd()`, and `lang.string:padZero()` functions
 
-The `lang.string:padStart()`, `lang.string:padEnd()`, and `lang.string:padZero()` functions have been introduced to add padding in strings. 
+The `lang.string:padStart()`, `lang.string:padEnd()`, and `lang.string:padZero()` functions have been introduced to add padding in strings.
 - `lang.string:padStart()` adds padding to the start of a string
-- `lang.string:padEnd()` adds padding to the end of a string 
+- `lang.string:padEnd()` adds padding to the end of a string
 - `lang.string:padZero()` pads a string with zeros
 
 ```ballerina
@@ -302,7 +302,7 @@ int[*][*] x4 = [[1, 2], [1, 2]]; // Not supported. Only the first dimension can 
 
 ### Bug fixes
 
-- Fixed an invalid sub-typing relationship between `table` and `anydata` 
+- Fixed an invalid sub-typing relationship between `table` and `anydata`
 
     ```ballerina
     public function main() {
@@ -354,7 +354,7 @@ int[*][*] x4 = [[1, 2], [1, 2]]; // Not supported. Only the first dimension can 
     }
     ```
 
-- Fixed qualified identifiers not being allowed in error match patterns 
+- Fixed qualified identifiers not being allowed in error match patterns
 
     ```ballerina
     function fn(error e) {
@@ -377,7 +377,7 @@ int[*][*] x4 = [[1, 2], [1, 2]]; // Not supported. Only the first dimension can 
     }
     ```
 
-- Fixed a bug that allowed additive expressions with operands of types that are union types of different basic types 
+- Fixed a bug that allowed additive expressions with operands of types that are union types of different basic types
 
     ```ballerina
     public function main() {
@@ -452,7 +452,7 @@ The configurable feature is improved to support variables of union types with si
 For example, if the configurable variables are defined in the following way,
 
 ```ballerina
-configurable float|int|string unionVar = ?; 
+configurable float|int|string unionVar = ?;
 ```
 
 the values can be provided via CLI arguments in the following way.
@@ -463,7 +463,7 @@ bal run -- -CunionVar=5.0
 
 #### Improved runtime error creator and value creator API input validations
 
-In order to handle Java Exceptions due to the invalid use of Ballerina runtime error creator and value 
+In order to handle Java Exceptions due to the invalid use of Ballerina runtime error creator and value
 creator APIs, input validations have been improved to provide proper ballerina runtime errors.
 For example, the following invalid use of the `ValueCreator.createRecordValue` API to create a record value with a Java ArrayList as a field of it will result in a panic.
 
@@ -488,7 +488,7 @@ in modules/records
 import ballerina/jballerina.java;
 
 public type Foo record {
-    int[] x;    
+    int[] x;
 };
 
 public function getRecord(string recordName) returns record{} = @java:Method {
@@ -557,7 +557,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 #### `graphql` package
 
 - Added the support for GraphQL `subscriptions`
-- Added the support for GraphQL `interfaces`
 - Added the support for GraphQL `documentation`
 - Added the `GraphiQL client` support for GraphQL services
 
@@ -628,7 +627,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 ### New features
 
-Added the `name` field for the `cloud.config.files` property in the `Cloud.toml` file to change the name of the generated config map 
+Added the `name` field for the `cloud.config.files` property in the `Cloud.toml` file to change the name of the generated config map
 
 ### Improvements
 - Reduced the package size of `ballerina/cloud`
@@ -679,7 +678,7 @@ Added runtime breakpoint verification support. With this improvement, the debugg
 
 #### OpenAPI Tool
 
-##### Improved the OpenAPI service validator 
+##### Improved the OpenAPI service validator
 
 - Added support to validate the Ballerina resource headers with OpenAPI operation headers. With this improvement, the validator gives validation errors on missing headers, undocumented headers, and type mismatch of the header parameters.
 - Added support to validate the Ballerina resource return type with OpenAPI operation response. With this improvement, the validator gives validation errors on missing return status codes, missing return payload types, undocumented return status codes, and undocumented payload media types.

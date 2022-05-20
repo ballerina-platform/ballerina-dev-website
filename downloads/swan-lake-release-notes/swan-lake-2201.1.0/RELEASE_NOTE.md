@@ -628,6 +628,11 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 ### New features
 
 Added the `name` field for the `cloud.config.files` property in the `Cloud.toml` file to change the name of the generated config map
+```toml
+[[cloud.config.files]]
+file="./conf/Config.toml"
+name="sample-config"
+```
 
 ### Improvements
 - Reduced the package size of `ballerina/cloud`

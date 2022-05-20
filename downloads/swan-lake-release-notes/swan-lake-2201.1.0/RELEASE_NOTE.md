@@ -683,6 +683,15 @@ Added runtime breakpoint verification support. With this improvement, the debugg
 - Added support to validate the Ballerina resource headers with OpenAPI operation headers. With this improvement, the validator gives validation errors on missing headers, undocumented headers, and type mismatch of the header parameters.
 - Added support to validate the Ballerina resource return type with OpenAPI operation response. With this improvement, the validator gives validation errors on missing return status codes, missing return payload types, undocumented return status codes, and undocumented payload media types.
 
+## Ballerina packages updates
+
+## Improvements
+
+### Improved Package resolution
+
+- Added support to specify the dependency version in the `Ballerina.toml` file. With this improvement, the dependencies will get updated to the version specified or the latest compatible version.
+  
+
 #### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.1.0 of the repositories below.

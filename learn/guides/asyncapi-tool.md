@@ -43,9 +43,9 @@ The generated Ballerina sources will be written into the same directory from whi
 bal asyncapi -i hello.yaml -o ./output_path
 ```
   
-## Example on the usage of the tool
+## Example of the usage of the tool
 
-The below is an example of the usage of the AsyncAPI tool based on the the [AsyncAPI specification for Slack](https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/slack/asyncapi.yml).
+Below is an example of the usage of the AsyncAPI tool based on the [AsyncAPI specification for Slack](https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/slack/asyncapi.yml).
 
 ```yaml
 asyncapi: 2.1.0
@@ -100,9 +100,9 @@ channels:
 
 There are custom tags in this YAML starting with `x-ballerina`. Those tags are being used for the purposes below.
 
-- `x-ballerina-event-identifier` - When the listener receives an event from the event source (Slack is the event source in this scenario), there should be a way to identify the event type. This includes two parts, `type` and `path`. Type can be either header or body. In other words, the type of the event can be included in the payload either as a header or as an attribute in the body. 
+- `x-ballerina-event-identifier` - When the listener receives an event from the event source (Slack is the event source in this scenario), there should be a way to identify the event type. This includes two parts, `type` and `path`. Type can be either `header` or `body`. In other words, type of the event can be included in the payload either as a header or as an attribute in the body. 
 
-  >**Note:** Currently, this tool supports only HTTP-based event APIs. The path is equal to the header-name if the type is heade,r or to the JSON path of the attribute if the type is body.
+  >**Note:** Currently, this tool supports only HTTP-based event APIs. The path is equal to the header name if the type is `header` or to the JSON path of the attribute if the type is `body`.
 
 - `x-ballerina-event-type` - This should be there in every event inside the channel. This is the name of the event or the value of the above-mentioned attribute for a specific event.
 
@@ -124,9 +124,9 @@ Then, the generated files can be modified according to the custom requirements. 
 
 ### Publish to Ballerina Central
 
-For instrcutions on how to publish this as a library, see [Publish packages to Ballerina Central](/learn/publish-packages-to-ballerina-central/). 
+For instructions on how to publish this as a library, see [Publish packages to Ballerina Central](/learn/publish-packages-to-ballerina-central/). 
 
-The below are some example libraries generated using the tool.
+Below are some example libraries generated using the tool.
 
 | Library | AsyncAPI specification                                                                         | Generated and modified code                                                       | Published library                                      |
 |---------|------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|--------------------------------------------------------|

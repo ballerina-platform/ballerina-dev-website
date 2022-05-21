@@ -81,6 +81,8 @@ BALLERINA COMMANDS
         clean           Clean the artifacts generated during the build
         format          Format Ballerina source files
         grpc            Generate the Ballerina sources for a given Protocol Buffer definition
+        graphql         Generate Ballerina client sources for a given GraphQL schema(SDL) 
+                        and GraphQL queries
         openapi         Generate the Ballerina sources for a given OpenAPI definition and
                         vice versa
         bindgen         Generate the Ballerina bindings for Java APIs
@@ -215,6 +217,10 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 <tr>
 <td class="cCommand">grpc</td>
 <td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/learn/cli-documentation/grpc">gRPC/Protocol Buffers</a>.</td>
+</tr>
+<tr>
+<td class="cCommand">graphql</td>
+<td class="cDescription">This is the GraphQL client generation tool. For more information, see <a href="/learn/graphql-client-tool/">Ballerina GraphQL client tool support</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">openapi</td>

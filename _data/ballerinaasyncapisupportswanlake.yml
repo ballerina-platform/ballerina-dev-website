@@ -4,3 +4,15 @@
     - title: Generate Ballerina services from AsyncAPI contracts
       url: /learn/asyncapi-tool/#generate-ballerina-services-from-asyncapi-contracts
       active: generate-ballerina-services-from-asyncapi-contracts  
+    - title: Example of the usage of the tool
+      url: /learn/asyncapi-tool/#example-of-the-usage-of-the-tool
+      sublinks:
+       - title: Generate the service
+         url: /learn/asyncapi-tool/#generate-the-service
+         active: generate-the-service
+       - title: Modify the generated service
+         url: /learn/asyncapi-tool/#modify-the-generated-service
+         active: modify-the-generated-service
+       - title: Publish to Ballerina Central
+         url: /learn/asyncapi-tool/#publish-to-ballerina-central
+         active: publish-to-ballerina-central

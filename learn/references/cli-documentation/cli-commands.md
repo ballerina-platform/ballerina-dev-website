@@ -83,6 +83,7 @@ BALLERINA COMMANDS
         grpc            Generate the Ballerina sources for a given Protocol Buffer definition
         openapi         Generate the Ballerina sources for a given OpenAPI definition and
                         vice versa
+        asyncapi        Generate Ballerina sources for a given AsyncAPI definition
         bindgen         Generate the Ballerina bindings for Java APIs
         shell           Run Ballerina interactive REPL
         version         Print the Ballerina version
@@ -219,6 +220,10 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 <tr>
 <td class="cCommand">openapi</td>
 <td class="cDescription">This is the OpenAPI (Swagger) stub/skeleton generation tool. For more information, see <a href="/learn/ballerina-openapi-support/">Ballerina OpenAPI support</a>.</td>
+</tr>
+<tr>
+<td class="cCommand">asyncapi</td>
+<td class="cDescription">Tool to generate Ballerina sources for a given AsyncAPI definition. For more information, see <a href="/learn/ballerina-asyncapi-support/">Ballerina AsyncAPI support</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">bindgen</td>

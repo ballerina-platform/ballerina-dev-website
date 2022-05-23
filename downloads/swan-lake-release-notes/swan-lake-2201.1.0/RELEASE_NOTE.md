@@ -615,12 +615,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 ### Bug fixes
 
-#### `grpc` package
-
-- Fixed incorrect stub generation for repeated values of any, struct, timestamp, and duration messages
-- Fixed incorrect caller type name validation in the gRPC compiler plugin
-- Fixed passing Protobuf predefined types as repeated values and values in messages
-
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.1.0%22+label%3AType%2FBug).
 
 ## Deployment updates
@@ -642,7 +636,7 @@ name="sample-config"
 
 ### Breaking changes
 
-Due to an improvement in `ballerinax/azure_functions` and `ballerinax/awslambda` packages, the versions shipped with previous distributions are incompatible with Swan Lake Update 1, and thereby, they were removed from the distribution. If your packages use these dependencies, delete the `Dependencies.toml` file to force the dependency resolver to use the latest versions from Ballerina Central.
+For existing `ballerinax/awslambda` and `ballerinax/azure_functions` projects, delete the `Dependencies.toml` file and build the project.
 
 ### Bug fixes
 

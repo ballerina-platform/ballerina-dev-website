@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R1</h1>
+<h1>Ballerina Language Specification, 2022R2 preview 2022-05-23</h1>
 <p>
 Primary contributors:
 </p>
@@ -597,21 +597,23 @@ GitHub repository where this specification is maintained.
 <li>A. <a href="#references">References</a>
 </li>
 <li>B. <a href="#changes">Changes since previous releases</a><ul>
-<li>B.1 <a href="#section_B.1">Summary of changes from 2021R1 to 2022R1</a>
+<li>B.1 <a href="#section_B.1">Summary of changes from 2021R1 to 2022R2</a>
 </li>
-<li>B.2 <a href="#section_B.2">Summary of changes from 2020R1 to 2021R1</a>
+<li>B.2 <a href="#section_B.2">Summary of changes from 2021R1 to 2022R1</a>
 </li>
-<li>B.3 <a href="#section_B.3">Summary of changes from 2019R3 to 2020R1</a>
+<li>B.3 <a href="#section_B.3">Summary of changes from 2020R1 to 2021R1</a>
 </li>
-<li>B.4 <a href="#section_B.4">Summary of changes from 2019R2 to 2019R3</a>
+<li>B.4 <a href="#section_B.4">Summary of changes from 2019R3 to 2020R1</a>
 </li>
-<li>B.5 <a href="#section_B.5">Summary of changes from 2019R1 to 2019R2</a>
+<li>B.5 <a href="#section_B.5">Summary of changes from 2019R2 to 2019R3</a>
 </li>
-<li>B.6 <a href="#section_B.6">Summary of changes from 0.990 to 2019R1</a>
+<li>B.6 <a href="#section_B.6">Summary of changes from 2019R1 to 2019R2</a>
 </li>
-<li>B.7 <a href="#section_B.7">Summary of changes from 0.980 to 0.990</a>
+<li>B.7 <a href="#section_B.7">Summary of changes from 0.990 to 2019R1</a>
 </li>
-<li>B.8 <a href="#section_B.8">Summary of changes from 0.970 to 0.980</a>
+<li>B.8 <a href="#section_B.8">Summary of changes from 0.980 to 0.990</a>
+</li>
+<li>B.9 <a href="#section_B.9">Summary of changes from 0.970 to 0.980</a>
 </li>
 </ul>
 </li>
@@ -2051,13 +2053,12 @@ An array type-descriptor describes a type of list value by specifying the type
 that the value for all members must belong to, and optionally, a length.
 </p>
 
-<pre class="grammar"><span class="ntdfn" id="array-type-descriptor">array-type-descriptor</span> := <a href="#array-member-type-descriptor"><span class="ntref">array-member-type-descriptor</span></a> <a href="#array-dimension"><span class="ntref">array-dimension</span></a>+
+<pre class="grammar"><span class="ntdfn" id="array-type-descriptor">array-type-descriptor</span> := <a href="#array-member-type-descriptor"><span class="ntref">array-member-type-descriptor</span></a> <a href="#inferable-array-dimension"><span class="ntref">inferable-array-dimension</span></a> <a href="#array-dimension"><span class="ntref">array-dimension</span></a>*
+<span class="ntdfn" id="inferable-array-dimension">inferable-array-dimension</span> := <code>[</code> [ <a href="#inferable-array-length"><span class="ntref">inferable-array-length</span></a> ] <code>]</code>
 <span class="ntdfn" id="array-dimension">array-dimension</span> := <code>[</code> [ <a href="#array-length"><span class="ntref">array-length</span></a> ] <code>]</code>
 <span class="ntdfn" id="array-member-type-descriptor">array-member-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <em>but not</em> <a href="#array-type-descriptor"><span class="ntref">array-type-descriptor</span></a>
-<span class="ntdfn" id="array-length">array-length</span> :=
-   <a href="#int-literal"><span class="ntref">int-literal</span></a>
-   | <a href="#constant-reference-expr"><span class="ntref">constant-reference-expr</span></a>
-   | <a href="#inferred-array-length"><span class="ntref">inferred-array-length</span></a>
+<span class="ntdfn" id="inferable-array-length">inferable-array-length</span> := <a href="#array-length"><span class="ntref">array-length</span></a> | <a href="#inferred-array-length"><span class="ntref">inferred-array-length</span></a>
+<span class="ntdfn" id="array-length">array-length</span> := <a href="#int-literal"><span class="ntref">int-literal</span></a> | <a href="#constant-reference-expr"><span class="ntref">constant-reference-expr</span></a>
 <span class="ntdfn" id="inferred-array-length">inferred-array-length</span> := <code>*</code>
 </pre>
 <p>
@@ -2067,7 +2068,7 @@ addition the length of the list shape is n.
 </p>
 <p>
 When an <code>array-type-descriptor</code> includes multiple
-<code>array-dimension</code>s, the <code>array-dimension</code>s are interpreted
+array dimensions, th array dimensions are interpreted
 so that the order of the dimensions in the <code>array-type-descriptor</code> is
 consistent with the order of the dimensions in a
 <code>member-access-expr</code>. Specifically, a type
@@ -2084,9 +2085,11 @@ recognized as <code>array-member-type-descriptor</code>.
 <p>
 A <code>constant-reference-expr</code> in an <code>array-length</code> must
 evaluate to a non-negative integer. An array length of <code>*</code> means that
-the length of the array is to be inferred from the context; this is allowed only
-within a type descriptor occurring in a context that is specified to be
-inferable; its meaning is the same as if the length was specified explicitly.
+the length of the array is to be inferred from an initializer; this is allowed
+when the array-type-descriptor specifies the type of variable for which an
+initializer is specified, i.e. in a <code>local-init-var-decl-stmt</code>, a
+<code>module-init-var-decl</code> or a <code>module-const-decl</code>; its
+meaning is the same as if the length was specified explicitly.
 </p>
 <p>
 Note also that <code>T[n]</code> is a subtype of <code>T[]</code>, and that if
@@ -5049,35 +5052,59 @@ structural value that has its read-only bit on.
 <section>
 <h4 id="section_6.7.1">6.7.1 List constructor</h4>
 
-<pre class="grammar"><span class="ntdfn" id="list-constructor-expr">list-constructor-expr</span> := <code>[</code> [ <a href="#expr-list"><span class="ntref">expr-list</span></a> ] <code>]</code>
-<span class="ntdfn" id="expr-list">expr-list</span> := <a href="#expression"><span class="ntref">expression</span></a> (<code>,</code> <a href="#expression"><span class="ntref">expression</span></a>)*
+<pre class="grammar"><span class="ntdfn" id="list-constructor-expr">list-constructor-expr</span> := <code>[</code> [ <a href="#list-member-list"><span class="ntref">list-member-list</span></a> ] <code>]</code>
+<span class="ntdfn" id="list-member-list">list-member-list</span> := <a href="#list-member"><span class="ntref">list-member</span></a> (<code>,</code> <a href="#list-member"><span class="ntref">list-member</span></a>)*
+<span class="ntdfn" id="list-member">list-member</span> := <a href="#single-list-member"><span class="ntref">single-list-member</span></a> | <a href="#spread-list-member"><span class="ntref">spread-list-member</span></a>
+<span class="ntdfn" id="single-list-member">single-list-member</span> := <a href="#expression"><span class="ntref">expression</span></a>
+<span class="ntdfn" id="spread-list-member">spread-list-member</span> := <code>...</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
-A list-constructor-expr creates a new list value. The members of the list come from evaluating each
-expression in the expr-list in order.
+A list-constructor-expr creates a new list value. The list is constructed by
+processing each list-member in the order specified as follows. The expression in
+the list-member is first evaluated resulting in a value <var>v</var>. If the
+list-member is a single-list-member, then <var>v</var> is added to the list
+being constructed. Otherwise <var>v</var> must be a list, and every member of
+<var>v</var> is added in order to the list being constructed. It is a
+compile-time error if the static type of the expression in a spread-list-member
+is not a subtype of list.
 </p>
 <p>
 If there is a contextually expected type, then the inherent type of the newly
 created list is derived from the applicable contextually expected type. If the
 applicable contextually expected type is a list type descriptor, then that used
 as the inherent type. If the applicable contextually expected type is a union
-type descriptor, then any members of the union that do not contain list shapes
-of length N will be ignored, where N is the number of expressions in the
-<code>expr-list</code>; it is a compile-time error if this does not leave a
-single list type descriptor, which is then used as the inherent type. The static
-type of the list-constructor-expr will be the same as the inherent type.
+type descriptor, then it is a compile-time error unless there is exactly one
+member of the union that is a list type descriptor and that allows list shapes
+of a length that the static types of the expressions in the list-member-list
+make it possible for the constructed list to have; this list type descriptor is
+used as the inherent type. If there is a spread-list-member, and the type of its
+expression is not fixed length, then the minimum of the total number of members
+that may be added to the list being constructed by this spread-list-member and
+any previous list-member must be greater than or equal to the minimum length
+required by the inherent type. The static type of the list-constructor-expr will
+be the same as the inherent type.
 </p>
 <p>
 If there is no contextually expected type, then the inherent type will be a
-tuple-type-descriptor with a member-type-descriptor for each expression in the
-expr-list; the type of each member-type-descriptor will be the broad type of the
-corresponding expression in the expr-list.
+tuple-type-descriptor derived from the static type of each expression in the
+list-member-list. Each single-list-member that does not have a preceding
+spread-list-member contributes a member-type-descriptor to the
+tuple-type-descriptor; the type of the member-type-descriptor will be the broad
+type of the expression in the single-list-member. If there is a
+spread-list-member, then a tuple-rest-descriptor <code>T...</code> is added
+where T is the smallest type such that the broad type of the expression in every
+other single-list-member is a subtype of <code>T</code>, and the type of the
+expression in each spread-list-member is a subtype of <code>T[]</code>.
 </p>
 <p>
-If there is a contextually expected type, then the type that the inherent type
-requires for each list member provides the contextually expected type for the
-expression for the member; otherwise there is no contextually expected type for
-the expressions for members.
+If the list-constructor-expr does not have a contextually expected type, then
+the contextually expected type for the expression in a spread-list-member is
+<code>(any|error)[]</code>, and the expression in a single-list-member does not
+have a contextually expected type. Otherwise the contextually expected type for
+each list-member is derived from the contextually expected type of the
+list-constructor-expr. If there is a spread-list-member that is not the last
+list-member in the list-member-list, then the contextually expected type used
+from that point on is approximated with a tuple-rest-descriptor.
 </p>
 <p>
 A member of a list can be filled in automatically if the <a href="#FillMember">FillMember</a> abstract operation would succeed on it. The
@@ -5245,7 +5272,7 @@ a compile-time error if two or more rows of the table have the same key value.
 <p>
 If there is a contextually expected type, then the type that the inherent type
 requires for each table member provides the contextually expected type for the
-expressions in the expr-list; otherwise there is no contextually expected type
+expressions in the row-list; otherwise there is no contextually expected type
 for these expressions.
 </p>
 
@@ -6431,7 +6458,7 @@ zero);</li>
 </ul>
 <p>
 If the contextually expected type for a <code>-</code> expression is T, then the
-contextualy expected type for the operand expressions is T', where a value v is
+contextually expected type for the operand expressions is T', where a value v is
 in T' if it belongs to int, decimal or float, and T contains a value with the
 same basic type as v.
 </p>
@@ -6477,8 +6504,15 @@ operators have both lifted form, which is specified in the <a href="#nil_lifting
 specified in this section.
 </p>
 <p>
-The static type of both operand expressions is required to be a subtype of the
-same basic type. The following basic types are allowed:
+The static type of each operand must be a subtype of <code>int</code>,
+<code>float</code> or <code>decimal</code>. If the static type of both operands
+is not a subtype of the same basic type, then either the second operand must be
+a subtype of <code>int</code>, or the operator must be <code>*</code> and the
+first operand must be a subtype of <code>int</code>; in either case, the
+<code>int</code> operand is first converted to the type of the other operand.
+</p>
+<p>
+The operation performed depends on the basic type of the operands as follows:
 </p>
 <ul>
 <li>int
@@ -6537,7 +6571,7 @@ of <code><var>x</var></code>
 </ul>
 <p>
 The static type of the result of a multiplicative-expr is the basic type of its
-subexpressions, modified by the usual <a href="#singleton_typing">singleton
+subexpressions, after conversion, modified by the usual <a href="#singleton_typing">singleton
 typing</a> rules, except that the result type is always <code>float</code> in
 the case where the operator is <code>/</code> and the right-hand operand is
 singleton float <code>0.0</code>. (This is a consequence of the fact that
@@ -6545,7 +6579,7 @@ singleton float <code>0.0</code>. (This is a consequence of the fact that
 </p>
 <p>
 If the contextually expected type for a multiplicative-expr is T, then the
-contextualy expected type for both operand expressions is T', where a value v is
+contextually expected type for both operand expressions is T', where a value v is
 in T' if it belongs to int, decimal or float, and T contains a value with the
 same basic type as v.
 </p>
@@ -7924,7 +7958,8 @@ the execution of all of its <code>statement</code>s completes normally.
 <p>
 A statement is <em>reachable</em> if the analysis described in this section
 determines that there is a possibility that the statement will be executed. It
-is a compile error if a <code>statement</code> is not reachable.
+is a compile error if a <code>statement</code> other than a
+<code>panic-stmt</code> is not reachable.
 </p>
 <p>
 The analysis proceeds by determining recursively for each statement whether it
@@ -13284,7 +13319,33 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 <section class="appendix">
 <h2 id="changes">B. Changes since previous releases</h2>
 <section>
-<h3 id="section_B.1">B.1 Summary of changes from 2021R1 to 2022R1</h3>
+<h3 id="section_B.1">B.1 Summary of changes from 2021R1 to 2022R2</h3>
+<ol>
+<li>The <code>*</code>, <code>/</code> and <code>%</code> operators now allow
+operands to mix numeric types in specific cases: <code>*</code> allows the case
+where either operand is an <code>int</code>; <code>/</code> and <code>*</code>
+allow the case where the right operand is an <code>int</code>.</li>
+<li>It is no longer an error for a <code>panic-stmt</code> to be
+unreachable.</li>
+<li>The <code>toExpString</code> and <code>toFixedString</code>
+functions have been added to <code>lang.float</code>.</li>
+<li>The <code>padStart</code>, <code>padEnd</code>, <code>padZero</code>
+functions have been added to <code>lang.string</code>.</li>
+<li>The <code>quantize</code> function has been added to
+<code>lang.decimal</code>.</li>
+<li>The <code>some</code> and <code>every</code> functions have been added to
+<code>lang.array</code>.</li>
+<li>The <code>round</code> function in <code>lang.float</code> and
+<code>lang.decimal</code> now takes an optional argument controlling the number
+of digits after the decimal point.</li>
+<li>The length of an array type is allowed to be <code>*</code> only when it is
+the outermost array and there is an initializer from which it can be
+inferred.</li>
+<li>A list constructor can use <code>...E</code> as in an argument list.</li>
+</ol>
+</section>
+<section>
+<h3 id="section_B.2">B.2 Summary of changes from 2021R1 to 2022R1</h3>
 <ol>
 <li>Maps are required to preserve insertion order.</li>
 <li>The static typing rules for <code>==</code> and <code>!=</code> have been
@@ -13326,7 +13387,7 @@ nil.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.2">B.2 Summary of changes from 2020R1 to 2021R1</h3>
+<h3 id="section_B.3">B.3 Summary of changes from 2020R1 to 2021R1</h3>
 <ol>
 <li>There has been a major change to how objects works. All object type
 descriptors are what was previously called <em>abstract</em>: they declare
@@ -13400,7 +13461,7 @@ referenced using the <code>function</code> keyword rather than the
 </ol>
 </section>
 <section>
-<h3 id="section_B.3">B.3 Summary of changes from 2019R3 to 2020R1</h3>
+<h3 id="section_B.4">B.4 Summary of changes from 2019R3 to 2020R1</h3>
 <ol>
 <li>Query expressions and query actions have been added. This is the first stage
 of language-integrated query.</li>
@@ -13436,7 +13497,7 @@ types.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.4">B.4 Summary of changes from 2019R2 to 2019R3</h3>
+<h3 id="section_B.5">B.5 Summary of changes from 2019R2 to 2019R3</h3>
 <ol>
 <li>An import declaration can use <code>as _</code> to include a module in the
 program without using its symbols.</li>
@@ -13448,7 +13509,7 @@ not a named worker.</li>
 </section>
 
 <section>
-<h3 id="section_B.5">B.5 Summary of changes from 2019R1 to 2019R2</h3>
+<h3 id="section_B.6">B.6 Summary of changes from 2019R1 to 2019R2</h3>
 <ol>
 <li>The concept of a built-in method has been replaced by the concept of a lang
 library. A method call on a value of non-object type is now treated as a
@@ -13494,7 +13555,7 @@ replace the old delimited identifier syntax <code>^"<var>s</var>"</code>.</li>
 
 </section>
 <section>
-<h3 id="section_B.6">B.6 Summary of changes from 0.990 to 2019R1</h3>
+<h3 id="section_B.7">B.7 Summary of changes from 0.990 to 2019R1</h3>
 <p>
 The specification has switched to a new versioning scheme. The <var>n</var>-th
 version of the specification released in year 20<var>xy</var> will be labelled
@@ -13563,7 +13624,7 @@ now required to be specified before named arguments.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.7">B.7 Summary of changes from 0.980 to 0.990</h3>
+<h3 id="section_B.8">B.8 Summary of changes from 0.980 to 0.990</h3>
 <p>
 <strong>Structural types and values</strong>
 </p>
@@ -13657,7 +13718,7 @@ definition.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.8">B.8 Summary of changes from 0.970 to 0.980</h3>
+<h3 id="section_B.9">B.9 Summary of changes from 0.970 to 0.980</h3>
 <ol>
 <li>The decimal type has been added.</li>
 <li>There are no longer any implicit numeric conversions.</li>

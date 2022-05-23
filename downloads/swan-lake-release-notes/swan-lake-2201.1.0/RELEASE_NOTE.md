@@ -642,7 +642,7 @@ name="sample-config"
 
 ### Breaking changes
 
-For existing `ballerinax/awslambda` and `ballerinax/azure_functions` projects, delete the `Dependencies.toml` file and build the project.
+Due to an improvement in `ballerinax/azure_functions` and `ballerinax/awslambda` packages, the versions shipped with previous distributions are incompatible with Swan Lake Update 1, and thereby, they were removed from the distribution. If your packages use these dependencies, delete the `Dependencies.toml` file to force the dependency resolver to use the latest versions from Ballerina Central.
 
 ### Bug fixes
 

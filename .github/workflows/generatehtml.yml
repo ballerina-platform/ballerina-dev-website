@@ -7,6 +7,12 @@ on:
         description: "Log lev"
         required: true
         default: "warning"
+  schedule:
+    - cron: "0 0 * * *"
+
+# on:
+#   schedule:
+#   - cron: "0 0 * * *"
 
 #on: push
 

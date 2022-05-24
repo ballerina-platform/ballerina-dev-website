@@ -564,20 +564,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 - Added code-actions to generate a `websub:SubscriberService` template
 
-#### `kafka` package
-
-- Added data binding support for `kafka` producer and consumer
-
-#### `rabbitmq` package
-
-- Added data binding support for `rabbitmq` clients and services
-- Added code-actions to generate a `rabbitmq:Service` template
-
-#### `nats` package
-
-- Added data binding support for `nats` clients and services
-- Added code-actions to generate a `nats:Service` template
-
 #### `regex` package
 
 - Introduced the API to extract the first substring from the start index in the given string that matches the regex
@@ -614,12 +600,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 - Appended the HTTPS scheme (`https://`) to the client URL (of token endpoint or introspection endpoint) if security is enabled
 
 ### Bug fixes
-
-#### `grpc` package
-
-- Fixed incorrect stub generation for repeated values of any, struct, timestamp, and duration messages
-- Fixed incorrect caller type name validation in the gRPC compiler plugin
-- Fixed passing Protobuf predefined types as repeated values and values in messages
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.1.0%22+label%3AType%2FBug).
 

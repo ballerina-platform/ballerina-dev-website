@@ -657,7 +657,7 @@ Introduced the GraphQL client tool, which will make it easy for you to generate 
 #### Language server
 
 - Introduced a new code action called `Make construct public` to make a construct public
-- Added completion and code action support to suggest packages pulled from the Ballerina central
+- Added completion and code action support to suggest packages pulled from Ballerina central
 
 ### Improvements
 

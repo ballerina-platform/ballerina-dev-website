@@ -1,14 +1,14 @@
 name: Generate Proposal HTML
 
-# on:
-#   workflow_dispatch: #periodic
-#     inputs:
-#       logLevel:
-#         description: "Log lev"
-#         required: true
-#         default: "warning"
+on:
+  workflow_dispatch: #periodic
+    inputs:
+      logLevel:
+        description: "Log lev"
+        required: true
+        default: "warning"
 
-on: push
+#on: push
 
 jobs:
   generateHTML:

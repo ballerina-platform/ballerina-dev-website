@@ -564,20 +564,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 - Added code-actions to generate a `websub:SubscriberService` template
 
-#### `kafka` package
-
-- Added data binding support for `kafka` producer and consumer
-
-#### `rabbitmq` package
-
-- Added data binding support for `rabbitmq` clients and services
-- Added code-actions to generate a `rabbitmq:Service` template
-
-#### `nats` package
-
-- Added data binding support for `nats` clients and services
-- Added code-actions to generate a `nats:Service` template
-
 #### `regex` package
 
 - Introduced the API to extract the first substring from the start index in the given string that matches the regex

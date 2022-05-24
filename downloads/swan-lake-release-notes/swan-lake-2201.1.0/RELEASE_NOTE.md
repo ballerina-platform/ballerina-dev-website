@@ -13,7 +13,7 @@ redirect_from:
 
 ## Overview of Ballerina 2201.1.0 (Swan Lake Update 1)
 
-<em>2201.1.0 (Swan Lake Update 1) is the first update of 2201.1.0 (Swan Lake), and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R2 version of the Language Specification.</em>
+<em>2201.1.0 (Swan Lake Update 1) is the first update of 2201.0.0 (Swan Lake), and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R2 version of the Language Specification.</em>
 
 
 ## Update Ballerina

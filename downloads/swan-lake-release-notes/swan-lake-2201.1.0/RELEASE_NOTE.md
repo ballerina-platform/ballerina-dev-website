@@ -656,8 +656,8 @@ Introduced the GraphQL client tool, which will make it easy for you to generate 
 
 #### Language server
 
-- Added completion and code action support for already-imported modules in the Ballerina user home
-- Implemented file operation events in the Language Server
+- Introduced a new code action called `Make construct public` to make a construct public
+- Added completion and code action support to suggest packages pulled from Ballerina central
 
 ### Improvements
 
@@ -667,7 +667,7 @@ Added runtime breakpoint verification support. With this improvement, the debugg
 
 #### Language server
 
-- Improved the `Document this code` action to support module-level variables
+- Improved the `Document this` code action to support module-level variables
 - Added signature help for included record params
 - Revamped the code action utilities introducing a new API to find the top-level node for a given code action context
 - Improved completion item sorting in several contexts

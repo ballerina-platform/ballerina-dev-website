@@ -70,7 +70,7 @@ public function main() returns error? {
         io:println("Repo Count:", repoCount);
     }
     //string fileContent = "# Ballerina Proposals \n### Open Proposals \n" + repoData;
-    string fileContent = "--- \nlayout: ballerina-inner-page \ntitle: Active Proposals \n description: This is a collection of active proposals for Ballerina by the Ballerina community. \nkeywords: ballerina, community, ballerina community, newsletter \npermalink: /community/proposals/active-proposals \n--- \n" + repoData;
+    string fileContent = "--- \nlayout: ballerina-inner-page \ntitle: Active Proposals \ndescription: This is a collection of active proposals for Ballerina by the Ballerina community. \nkeywords: ballerina, community, ballerina community, newsletter \npermalink: /community/proposals/active-proposals \n--- \n" + repoData;
     io:println(fileContent);
     check io:fileWriteString("./community/proposals/active-proposals.md", fileContent);
 }

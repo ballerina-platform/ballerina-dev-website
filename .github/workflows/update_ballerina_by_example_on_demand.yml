@@ -12,6 +12,10 @@ on:
         short_version:
           description: 'Artifact short version'     
           required: true
+        code_name:
+          description: 'Code name of the distribution'
+          required: true
+          default: 'swan-lake'
 
 jobs:
   bbe-sw-gen:
@@ -35,6 +39,8 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+           ref: master
 
     - name: Clone ballerina-release
       run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-release.git
@@ -45,14 +51,15 @@ jobs:
 
         BALLERINA_VERSION=${{ github.event.inputs.version }}
         SHORT_VERSION=${{ github.event.inputs.short_version }}
+        CODE_NAME=${{ github.event.inputs.code_name }}
 
         wget --header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"  https://api.github.com/repos/ballerina-platform/ballerina-distribution/actions/artifacts/${{ github.event.inputs.artifact }}/zip  -O "ballerina.zip"
         unzip ballerina.zip
-        unzip ballerina-${BALLERINA_VERSION}.zip
+        unzip ballerina-${BALLERINA_VERSION}-${CODE_NAME}.zip
 
-        cp ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples/index.json ../_data/all-bbes.json
+        cp ballerina-${BALLERINA_VERSION}-${CODE_NAME}/distributions/ballerina-${SHORT_VERSION}/examples/index.json ../_data/all-bbes.json
 
-        go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}/distributions/ballerina-${SHORT_VERSION}/examples" "swan-lake" "by-example" "true" "true" "true"
+        go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}-${CODE_NAME}/distributions/ballerina-${SHORT_VERSION}/examples" "swan-lake" "by-example" "true" "true" "true"
 
     - name: Remove old examples file
       run: git rm -r learn/by-example
@@ -63,7 +70,6 @@ jobs:
     - name: Push changes for new BBEs
       run: |
         git checkout automate-bbes-$GITHUB_SHA 2>/dev/null || git checkout -b automate-bbes-$GITHUB_SHA
-        git pull origin dev
         
         git config --global user.email "ballerina-bot@ballerina.org"
         git config --global user.name "ballerina-bot"
@@ -79,6 +85,6 @@ jobs:
       shell: bash
       run: |
         curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-        bin/hub pull-request -m '[Automated] Update Ballerina By Example(BBEs) pages'
+        bin/hub pull-request -b master -m '[Automated] Update Ballerina By Example(BBEs) pages'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

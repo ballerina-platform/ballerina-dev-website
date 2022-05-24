@@ -1,7 +1,7 @@
 name: Generate Proposal HTML
 
 on:
-  workflow_dispatch: #periodic method
+  workflow_dispatch: #periodic
     inputs:
       logLevel:
         description: "Log lev"

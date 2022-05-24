@@ -1,3 +1,11 @@
+---
+layout: ballerina-inner-page
+title: Active Proposals
+description: This is a collection of active proposals for Ballerina by the Ballerina community.
+keywords: ballerina, community, ballerina community, newsletter
+permalink: /community/proposals/active-proposals
+---
+
 # Ballerina Proposals 
 ### Open Proposals 
 #### ballerina-lang

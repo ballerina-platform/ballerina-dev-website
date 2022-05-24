@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-release-notes
-title: 2201.1.0 (Swan Lake)
+title: 2201.1.0 (Swan Lake Update 1)
 permalink: /downloads/swan-lake-release-notes/2201.1.0/
 active: swan-lake-2201.1.0
 redirect_from:
@@ -11,9 +11,9 @@ redirect_from:
     - /downloads/swan-lake-release-notes
 ---
 
-## Overview of Ballerina 2201.1.0 (Swan Lake)
+## Overview of Ballerina 2201.1.0 (Swan Lake Update 1)
 
-<em>2201.1.0 (Swan Lake) is the first update of 2201.1.0 (Swan Lake), and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R2 version of the Language Specification.</em>
+<em>2201.1.0 (Swan Lake Update 1) is the first update of 2201.1.0 (Swan Lake), and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R2 version of the Language Specification.</em>
 
 
 ## Update Ballerina
@@ -388,7 +388,7 @@ int[*][*] x4 = [[1, 2], [1, 2]]; // Not supported. Only the first dimension can 
     }
     ```
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FCompilerFE+milestone%3A%22Ballerina+2201.1.0%22).
+To view bug fixes, see the [GitHub milestone for Ballerina 2201.1.0 (Swan Lake Update 1)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FCompilerFE+milestone%3A%22Ballerina+2201.1.0%22).
 
 ## Runtime updates
 
@@ -524,7 +524,7 @@ public static UnionType createUnionType(List<Type> memberTypes, String name, Mod
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+2201.1.0%22+label%3AType%2FBug+label%3ATeam%2FjBallerina+).
+To view bug fixes, see the [GitHub milestone for Ballerina 2201.1.0 (Swan Lake Update 1)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+2201.1.0%22+label%3AType%2FBug+label%3ATeam%2FjBallerina+).
 
 ## Standard library updates
 
@@ -601,7 +601,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://git
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.1.0%22+label%3AType%2FBug).
+To view bug fixes, see the [GitHub milestone for Ballerina 2201.1.0 (Swan Lake Update 1)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.1.0%22+label%3AType%2FBug).
 
 ## Deployment updates
 
@@ -626,7 +626,7 @@ Due to an improvement in `ballerinax/azure_functions` and `ballerinax/awslambda`
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.0](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+2201.1.0%22).
+To view bug fixes, see the [GitHub milestone for Ballerina 2201.1.0 (Swan Lake Update 1)](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+2201.1.0%22).
 
 ## Developer tools updates
 
@@ -670,7 +670,7 @@ Added runtime breakpoint verification support. With this improvement, the debugg
 
 #### Bug fixes
 
-To view bug fixes, see the GitHub milestone for Swan Lake 2201.1.0 of the repositories below.
+To view bug fixes, see the GitHub milestone for Ballerina 2201.1.0 (Swan Lake Update 1) of the repositories below.
 
 - [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FLanguageServer+milestone%3A%22Ballerina+2201.1.0%22+)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.1.0%22+is%3Aclosed)

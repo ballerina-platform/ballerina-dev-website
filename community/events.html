@@ -10,7 +10,7 @@ redirect_from:
 
 ---
 
-
+<script src="/community/event-date.js"></script>
 <style>
     .text-feild{
         padding: 20px 20px;
@@ -356,7 +356,7 @@ a.cTopLink{display:none !important;}
         
         <div id="upcoming-event" class="tab-pane fade in active">
             <table class="cEventTable cConferencesList" style="width:100% !important;">
-                <tr class="event-expiry"  data-expiry="March 24, 2022 19:00:00">	
+                <tr class="bEvent1" style="display: none;">	
                     <td class="cEventDateContainer cEventDateContainer1">	
                        <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">May 25, 2022</p>	
                        <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Wed., 6.30 p.m. PDT</p>	
@@ -371,7 +371,7 @@ a.cTopLink{display:none !important;}
                     </td>	
                     <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/sfjava/events/284669431" target="_blank" style="text-align: center;">More info</a></td>	
                 </tr>
-                 <tr class="event-expiry"  data-expiry="March 24, 2022 19:00:00">	
+                <tr class="bEvent2" style="display: none;" >	
                     <td class="cEventDateContainer cEventDateContainer1">	
                        <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">June 8, 2022</p>	
                        <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Wed., 6.10 a.m. EDT</p>	
@@ -630,6 +630,7 @@ a.cTopLink{display:none !important;}
     @media only screen and (min-width: 992px) {
     td.cEventDetail{
         padding-left: 0px !important;
+        padding-right: 10px !important;
     }
     }
    

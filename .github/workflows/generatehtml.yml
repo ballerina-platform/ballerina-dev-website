@@ -8,7 +8,7 @@ on:
         required: true
         default: "warning"
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "*/5  * * * *"
 
 # on:
 #   schedule:
@@ -37,18 +37,22 @@ jobs:
           echo "/usr/lib/ballerina/dependencies/jdk-11.0.8+10-jre/bin/java" >> $GITHUB_PATH
       - name: Run Proposals Bot
         run: |
-          bal run bal_proposals_bot
+          bal run .github/scripts/bal_proposals_bot
       - name: Commit files
         id: commit
         run: |
-          git config --local user.email "bgpbimsara@gmail.com"
-          git config --local user.name "bimsarapathiraja"
-          git add --all
-          if [-z "$(git status --porcelain)"]; then
-             echo "::set-output name=push::false"
+          if git diff-index --quiet HEAD --; then
+              echo "No changes"
           else
-             git commit -m "Generate proposal HTML" -a
-             echo "::set-output name=push::true"
+              git config --local user.email "bgpbimsara@gmail.com"
+              git config --local user.name "bimsarapathiraja"
+              git add --all
+              if [-z "$(git status --porcelain)"]; then
+                echo "::set-output name=push::false"
+              else
+                git commit -m "Generate proposal HTML" -a
+                echo "::set-output name=push::true"
+              fi
           fi
         shell: bash
       - name: Push changes

@@ -1,6 +1,7 @@
 import ballerina/io;
 import ballerina/lang.runtime;
 import ballerina/http;
+import ballerina/regex;
 
 type Data record {
     int total_count;
@@ -13,9 +14,12 @@ type Issue record {
     string created_at;
     int comments;
     User user;
-    string state;
+    Label[] labels;
 };
 
+type Label record{
+    string name;
+};
 type User record {
     string login;
     string html_url;
@@ -60,7 +64,19 @@ public function main() returns error? {
                 issuelist = issuelist + "[" + string `${issue.user.login}` + "](" + string `${issue.user.html_url}` + ")|";
                 issuelist = issuelist + string `${issue.comments}` + "|";
                 issuelist = issuelist + string `${issue.created_at.substring(0, 10)}` + "|";
-                issuelist = issuelist + string `${issue.state}` + "|";
+
+                string new_status = "N/A";
+                foreach var label in issue.labels{
+                    string status = string `${label.name}`;
+                    if status.length() > 6 {
+                        status = status.substring(0, 6);
+                        if (status == "Status") {
+                            new_status = regex:replaceFirst(string `${label.name}`, "Status/", "");
+                        break;
+                        }
+                    }
+                }
+                issuelist = issuelist + new_status + "|";
                 // issuelist = issuelist + "|";
                 // issuelist = issuelist + "a|";
                 // issuelist = issuelist + "b|";
@@ -68,7 +84,7 @@ public function main() returns error? {
                 // issuelist = issuelist + "d|";
                 issuelist = issuelist + "\n";
             }
-            repoData = repoData + string `#### [${repository}]` + string `(https://github.com/ballerina-platform/${repository})` + "\n\n|Proposal|Author|Comments|Created Date|State| \n|---|----|----|----|----| \n" + string `${issuelist}` + "\n";
+            repoData = repoData + string `#### [${repository}]` + string `(https://github.com/ballerina-platform/${repository})` + "\n\n|Proposal|Author|Comments|Created date|Status| \n|---|----|----|----|----| \n" + string `${issuelist}` + "\n";
         }
 
         io:println("Repo Count:", repoCount);

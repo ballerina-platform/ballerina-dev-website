@@ -13,6 +13,7 @@ type Issue record {
     string created_at;
     int comments;
     User user;
+    string state;
 };
 
 type User record {
@@ -59,7 +60,7 @@ public function main() returns error? {
                 issuelist = issuelist + "[" + string `${issue.user.login}` + "](" + string `${issue.user.html_url}` + ")|";
                 issuelist = issuelist + string `${issue.comments}` + "|";
                 issuelist = issuelist + string `${issue.created_at.substring(0, 10)}` + "|";
-                issuelist = issuelist + string `${issue.created_at.substring(0, 10)}` + "|";
+                issuelist = issuelist + string `${issue.state}` + "|";
                 // issuelist = issuelist + "|";
                 // issuelist = issuelist + "a|";
                 // issuelist = issuelist + "b|";
@@ -67,7 +68,7 @@ public function main() returns error? {
                 // issuelist = issuelist + "d|";
                 issuelist = issuelist + "\n";
             }
-            repoData = repoData + string `#### ${repository}` + "\n\n|Proposal|Author|Comments|Created Date|Status| \n|---|----|----|----|----| \n" + string `${issuelist}` + "\n";
+            repoData = repoData + string `#### ${repository}` + "\n\n|Proposal|Author|Comments|Created Date|State| \n|---|----|----|----|----| \n" + string `${issuelist}` + "\n";
         }
 
         io:println("Repo Count:", repoCount);

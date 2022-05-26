@@ -52,10 +52,13 @@ public function main() returns error? {
         if (issueCount > 0) {
             string issuelist = "";
             foreach var issue in data.items {
+                //io:println(issue);
+                //io:println(string `${issue.sdsdc}`);
                 issuelist = issuelist + "|";
                 issuelist = issuelist + "[" + string `${issue.title}` + "](" + string `${issue.html_url}` + ")|";
                 issuelist = issuelist + "[" + string `${issue.user.login}` + "](" + string `${issue.user.html_url}` + ")|";
                 issuelist = issuelist + string `${issue.comments}` + "|";
+                issuelist = issuelist + string `${issue.created_at.substring(0, 10)}` + "|";
                 issuelist = issuelist + string `${issue.created_at.substring(0, 10)}` + "|";
                 // issuelist = issuelist + "|";
                 // issuelist = issuelist + "a|";
@@ -64,7 +67,7 @@ public function main() returns error? {
                 // issuelist = issuelist + "d|";
                 issuelist = issuelist + "\n";
             }
-            repoData = repoData + string `#### ${repository}` + "\n\n|Proposal|Author|Comments|Created Date| \n|---|----|----|----| \n" + string `${issuelist}` + "\n";
+            repoData = repoData + string `#### ${repository}` + "\n\n|Proposal|Author|Comments|Created Date|Status| \n|---|----|----|----|----| \n" + string `${issuelist}` + "\n";
         }
 
         io:println("Repo Count:", repoCount);

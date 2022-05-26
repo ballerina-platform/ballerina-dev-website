@@ -1,13 +1,13 @@
 ---
 layout: ballerina-example-page-old
-title: Consumer groups
-description: BBE on using kafka consumer as a listener to listen to a given topic/topics.
-keywords: ballerina, ballerina by example, bbe, kafka, consumer, kafka consumer group
-permalink: /learn/by-example/kafka-consumer-group-service
-active: kafka-consumer-group-service
+title: Consumer client - Poll ConsumerRecord
+description: BBE on how to use a `kafka:Consumer` as a simple record consumer.
+keywords: ballerina, ballerina by example, bbe, kafka, consumer, client
+permalink: /learn/by-example/kafka-consumer-client-poll-consumer-record
+active: kafka-consumer-client-poll-consumer-record
 redirect_from:
-  - /swan-lake/learn/by-example/kafka-consumer-group-service
-  - /swan-lake/learn/by-example/kafka-consumer-group-service.html
+  - /swan-lake/learn/by-example/kafka-consumer-client-poll-consumer-record
+  - /swan-lake/learn/by-example/kafka-consumer-client-poll-consumer-record.html
 ---
 
 <div class="bbe-container">
@@ -1089,6 +1089,11 @@ redirect_from:
                   >File upload</a
                 >
               </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-documentation.html"
+                  >Documentation</a
+                >
+              </li>
             </ol>
           </li>
           <li class="chapter-item bal-nav-item">
@@ -1502,20 +1507,21 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/kafka-consumer-client.html"
-                  >Consumer client</a
+                <a
+                  href="/learn/by-example/kafka-consumer-client-poll-payload.html"
+                  >Consumer client - Poll Payload</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item expanded">
+                <a
+                  href="/learn/by-example/kafka-consumer-client-poll-consumer-record.html"
+                  class="active bal-active"
+                  >Consumer client - Poll ConsumerRecord</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/kafka-producer-transactional.html"
                   >Transactional producer</a
-                >
-              </li>
-              <li class="chapter-item bal-nav-item expanded">
-                <a
-                  href="/learn/by-example/kafka-consumer-group-service.html"
-                  class="active bal-active"
-                  >Consumer groups</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -2057,71 +2063,82 @@ redirect_from:
     </div>
   </nav>
   <main class="bal-container">
-    <h1>Consumer groups</h1>
+    <h1>Consumer client - Poll ConsumerRecord</h1>
 
     <p>
-      Here, a <code>kafka:Consumer</code> is used as a listener to listen to a
+      This shows how to use a <code>kafka:Consumer</code> as a simple record
     </p>
 
     <p>
-      given set of topic/topics. The listener uses a group of concurrent
-      consumers within
+      consumer. The records from a subscribed topic can be retrieved using the
+    </p>
+
+    <p><code>poll()</code> function.</p>
+
+    <p>
+      This consumer uses the builtin byte array deserializer for both the key
+      and
     </p>
 
     <p>
-      the service. For this to work properly, an active Kafka broker should be
+      the value, which is the default deserializer in the
+      <code>kafka:Consumer</code>.
     </p>
 
-    <p>present.&lt;br/&gt;&lt;br/&gt;</p>
+    <p>
+      The received records are converted to the user defined type using
+      data-binding.
+    </p>
+
+    <p>For this to work properly, an active Kafka broker should be present.</p>
+
+    <p>&lt;br/&gt;&lt;br/&gt;</p>
 
     <p>For more information on the underlying module,</p>
 
     <p>
       see the
-      <a href="https://lib.ballerina.io/ballerinax/kafka/latest"
-        ><code>kafka</code> module</a
+      <a href="https://lib.ballerina.io/ballerinax/kafka/latest">Kafka module</a
       >.
     </p>
 
     <br />
     <pre><code id="code" class="code-container">import ballerinax/kafka;
-import ballerina/log;
+import ballerina/io;
 
-kafka:ConsumerConfiguration consumerConfigs = {
-    // Uses two concurrent consumers to work as a group.
-    concurrentConsumers: 2,
-
+kafka:ConsumerConfiguration consumerConfiguration = {
     groupId: "group-id",
-    // Subscribes to the `test-kafka-topic`.
-    topics: ["test-kafka-topic"],
+    offsetReset: "earliest",
+    // Subscribes to the topic `test-kafka-topic`.
+    topics: ["test-kafka-topic"]
 
-    pollingInterval: 1
 };
 
-listener kafka:Listener kafkaListener =
-            new (kafka:DEFAULT_URL, consumerConfigs);
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
 
-service kafka:Service on kafkaListener {
-    // This remote function executes when a message or a set of messages are published
-    // to the subscribed topic/topics.
-    remote function onConsumerRecord(kafka:Caller caller,
-                        kafka:ConsumerRecord[] records) returns error? {
-        // The set of Kafka records received by the service are processed one
-        // by one.
-        foreach var kafkaRecord in records {
-            check processKafkaRecord(kafkaRecord);
-        }
+// Create a subtype of `kafka:AnydataConsumerRecord`
+public type OrderConsumerRecord record {|
+    *kafka:AnydataConsumerRecord;
+    Order value;
+|};
 
-    }
-}
+kafka:Consumer orderConsumer =
+                check new (kafka:DEFAULT_URL, consumerConfiguration);
 
-function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) returns error? {
-    byte[] messageContent = kafkaRecord.value;
-    // Converts the `byte[]` to a `string`.
-    string message = check string:fromBytes(messageContent);
+public function main() returns error? {
+    // Polls the consumer for order records.
+    OrderConsumerRecord[] records = check orderConsumer-&gt;poll(1);
 
-    // Prints the retrieved message.
-    log:printInfo("Received Message: " + message);
+    check from OrderConsumerRecord orderRecord in records
+        where orderRecord.value.isValid
+        do {
+            io:println(orderRecord.value.productName);
+        };
 }</code>
 
   <button>
@@ -2145,13 +2162,13 @@ function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) returns error? {
     <br />
     <pre
       class="output-container"
-    ><code class="language-bash"><span class="bal-output bal-execute">bal run kafka_consumer_group_service.bal</span>
+    ><code class="language-bash"><span class="bal-output bal-execute">bal run kafka_consumer_client_poll_consumer_record.bal</span>
 </code></pre>
     <br />
     <div class="button-container">
       <a
-        title="Transactional producer"
-        href="/learn/by-example/kafka-producer-transactional.html"
+        title="Consumer client - Poll Payload"
+        href="/learn/by-example/kafka-consumer-client-poll-payload.html"
         class="prev-button"
       >
         <svg
@@ -2169,17 +2186,17 @@ function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) returns error? {
         </svg>
         <div class="button-title">
           <span>Previous</span>
-          <div>Transactional producer</div>
+          <div>Consumer client - Poll Payload</div>
         </div>
       </a>
       <a
-        title="SASL authentication - consumer"
-        href="/learn/by-example/kafka-authentication-sasl-plain-consumer.html"
+        title="Transactional producer"
+        href="/learn/by-example/kafka-producer-transactional.html"
         class="next-button"
       >
         <div class="button-title">
           <span>Next</span>
-          <div>SASL authentication - consumer</div>
+          <div>Transactional producer</div>
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

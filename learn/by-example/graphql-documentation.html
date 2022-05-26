@@ -1,13 +1,13 @@
 ---
 layout: ballerina-example-page-old
-title: Listener functionalities
-description: This BBE demonstrates the basic functions of a WebSocket server.
-keywords: ballerina, ballerina by example, bbe, websocket, basic sample, server
-permalink: /learn/by-example/websocket-basic-sample
-active: websocket-basic-sample
+title: Documentation
+description: A GraphQL service endpoint written in Ballerina
+keywords: ballerina, ballerina by example, bbe, graphql, graphql documentation
+permalink: /learn/by-example/graphql-documentation
+active: graphql-documentation
 redirect_from:
-  - /swan-lake/learn/by-example/websocket-basic-sample
-  - /swan-lake/learn/by-example/websocket-basic-sample.html
+  - /swan-lake/learn/by-example/graphql-documentation
+  - /swan-lake/learn/by-example/graphql-documentation.html
 ---
 
 <div class="bbe-container">
@@ -1045,7 +1045,7 @@ redirect_from:
               </li>
             </ol>
           </li>
-          <li class="chapter-item bal-nav-item">
+          <li class="chapter-item bal-nav-item expanded">
             <div>GraphQL</div>
             <a class="toggle"><div>❱</div></a>
           </li>
@@ -1089,8 +1089,10 @@ redirect_from:
                   >File upload</a
                 >
               </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/graphql-documentation.html"
+              <li class="chapter-item bal-nav-item expanded">
+                <a
+                  href="/learn/by-example/graphql-documentation.html"
+                  class="active bal-active"
                   >Documentation</a
                 >
               </li>
@@ -1136,7 +1138,7 @@ redirect_from:
               </li>
             </ol>
           </li>
-          <li class="chapter-item bal-nav-item expanded">
+          <li class="chapter-item bal-nav-item">
             <div>WebSockets</div>
             <a class="toggle"><div>❱</div></a>
           </li>
@@ -1157,10 +1159,8 @@ redirect_from:
                   >Retry</a
                 >
               </li>
-              <li class="chapter-item bal-nav-item expanded">
-                <a
-                  href="/learn/by-example/websocket-basic-sample.html"
-                  class="active bal-active"
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/websocket-basic-sample.html"
                   >Listener functionalities</a
                 >
               </li>
@@ -2064,44 +2064,55 @@ redirect_from:
     </div>
   </nav>
   <main class="bal-container">
-    <h1>Listener functionalities</h1>
+    <h1>Documentation</h1>
+
+    <p>A GraphQL schema can include documentation for the schema. These</p>
 
     <p>
-      This explains the basic functions of a WebSocket
-      server.&lt;br/&gt;&lt;br/&gt;
+      documentation can help you to understand the schema.
+      &lt;br/&gt;&lt;br/&gt;
     </p>
 
-    <p>For more information on the underlying module,</p>
+    <p>
+      In Ballerina, the Ballerina doc comments can be used to add documentation
+      to
+    </p>
+
+    <p>various schema members. &lt;br/&gt;&lt;br/&gt;</p>
+
+    <p>For more information on the underlying package, see the</p>
 
     <p>
-      see the
-      <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/"
-        >WebSocket module</a
+      <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/"
+        >GraphQL package</a
       >.
     </p>
 
     <br />
-    <pre><code id="code" class="code-container">import ballerina/io;
-import ballerina/websocket;
+    <pre><code id="code" class="code-container">import ballerina/graphql;
 
-service /basic/ws on new websocket:Listener(9090) {
-   resource function get .()
-                     returns websocket:Service|websocket:Error {
-       // Accept the WebSocket upgrade by returning a `websocket:Service`.
-       return new WsService();
-   }
+service /graphql on new graphql:Listener(4000) {
+
+    # Returns a person using the provided ID.
+    # + id - The ID of the person
+    # + return - The person with the requested ID
+    resource function get profile(int id) returns Person? {
+        if id == 1 {
+            return {name: "Walter White", age: 52};
+        } else if id == 2 {
+            return {name: "Jesse Pinkman", age: 25};
+        }
+        return;
+    }
 }
 
-service class WsService {
-    *websocket:Service;
-    // This `remote function` is triggered when a new text message is received
-    // from a client.
-    remote function onTextMessage(websocket:Caller caller,
-                                 string text) returns websocket:Error? {
-        io:println("\ntext message: " + text);
-        return caller-&gt;writeTextMessage("You said: " + text);
-    }
-}</code>
+# Represents a person.
+# + name - The name of the person
+# + age - The age of the person
+type Person record {
+    string name;
+    int age;
+};</code>
 
   <button>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EEE" class="bi bi-github" viewBox="0 0 16 16">
@@ -2124,13 +2135,23 @@ service class WsService {
     <br />
     <pre
       class="output-container"
-    ><code class="language-bash"><span class="bal-output bal-execute">bal run websocket_basic_sample.bal</span>
+    ><code class="language-bash"><span class="bal-output bal-execute"># Send a query to the GraphQL endpoint using a cURL command.</span>
+<span class="bal-output bal-execute"># The query used: { __schema { queryType { fields { name description type { name description fields { name description } } args { name description } } } } }</span>
+<span class="bal-output bal-execute">curl -X POST -H "Content-type: application/json" -d '{ "query": "{ __schema { queryType { fields { name description type { name description fields { name description } } args { name description } } } } }" }'</span>
+<span class="bal-output bal-execute">'http://localhost:4000/graphql'</span>
+<span class="bal-output bal-execute">{ "data": { "__schema": { "queryType": { "fields": [ { "name": "profile", "description": "Returns a person using the provided id.", "type": { "name": "Person", "description": "Represents a Person.", "fields": [ { "name": "name", "description": "The name of the person" }, { "name": "age", "description": "The age of the person" } ] }, "args": [ { "name": "id", "description": "The ID of the person" } ] } ] } } } }</span>
+</code></pre>
+
+    <br />
+    <pre
+      class="output-container"
+    ><code class="language-bash"><span class="bal-output bal-execute">bal run graphql_documentation.bal</span>
 </code></pre>
     <br />
     <div class="button-container">
       <a
-        title="Retry"
-        href="/learn/by-example/websocket-retry-client.html"
+        title="File upload"
+        href="/learn/by-example/graphql-file-upload.html"
         class="prev-button"
       >
         <svg
@@ -2148,12 +2169,12 @@ service class WsService {
         </svg>
         <div class="button-title">
           <span>Previous</span>
-          <div>Retry</div>
+          <div>File upload</div>
         </div>
       </a>
       <a
         title="Service - SSL/TLS"
-        href="/learn/by-example/websocket-service-ssl-tls.html"
+        href="/learn/by-example/graphql-service-ssl-tls.html"
         class="next-button"
       >
         <div class="button-title">

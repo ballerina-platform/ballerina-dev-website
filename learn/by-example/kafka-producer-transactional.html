@@ -1089,6 +1089,11 @@ redirect_from:
                   >File upload</a
                 >
               </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-documentation.html"
+                  >Documentation</a
+                >
+              </li>
             </ol>
           </li>
           <li class="chapter-item bal-nav-item">
@@ -1502,8 +1507,15 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/kafka-consumer-client.html"
-                  >Consumer client</a
+                <a
+                  href="/learn/by-example/kafka-consumer-client-poll-payload.html"
+                  >Consumer client - Poll Payload</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/kafka-consumer-client-poll-consumer-record.html"
+                  >Consumer client - Poll ConsumerRecord</a
                 >
               </li>
               <li class="chapter-item bal-nav-item expanded">
@@ -1511,11 +1523,6 @@ redirect_from:
                   href="/learn/by-example/kafka-producer-transactional.html"
                   class="active bal-active"
                   >Transactional producer</a
-                >
-              </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/kafka-consumer-group-service.html"
-                  >Consumer groups</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -2059,7 +2066,7 @@ redirect_from:
   <main class="bal-container">
     <h1>Transactional producer</h1>
 
-    <p>This shows you how to do transactional message producing by sending</p>
+    <p>This shows how to do transactional message producing by sending</p>
 
     <p>
       messages to Kafka brokers atomically using the
@@ -2074,15 +2081,15 @@ redirect_from:
 
     <p>
       see the
-      <a href="https://lib.ballerina.io/ballerinax/kafka/latest"
-        ><code>kafka</code> module</a
+      <a href="https://lib.ballerina.io/ballerinax/kafka/latest">Kafka module</a
       >.
     </p>
 
     <br />
-    <pre><code id="code" class="code-container">import ballerina/io;
-import ballerinax/kafka;
+    <pre><code id="code" class="code-container">import ballerinax/kafka;
 
+// Creates a producer config with optional parameters.
+// The `transactionalId` enables transactional message production.
 kafka:ProducerConfiguration producerConfigs = {
     clientId: "basic-producer",
     acks: "all",
@@ -2094,34 +2101,18 @@ kafka:ProducerConfiguration producerConfigs = {
     transactionalId: "test-transactional-id"
 };
 
-kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL, producerConfigs);
+kafka:Producer transactionalProducer =
+                check new (kafka:DEFAULT_URL, producerConfigs);
 
-public function main() {
-    string message = "Hello World Transaction Message";
-    byte[] serializedMessage = message.toBytes();
-    // Creates a producer config with optional parameters.
-    // The `transactionalId` enables transactional message production.
-    kafkaAdvancedTransactionalProduce(serializedMessage);
-}
-
-function kafkaAdvancedTransactionalProduce(byte[] message) {
+public function main() returns error? {
     transaction {
-        kafka:Error? sendResult = kafkaProducer-&gt;send({
+        // Sends the message inside the transaction block.
+        check transactionalProducer-&gt;send({
             topic: "test-kafka-topic",
-            value: message,
-            partition: 0
+            value: "Hello World Transaction Message"
         });
-        // Checks for an error and notifies if an error has occurred.
-        if sendResult is kafka:Error {
-            io:println("Error occurred when sending message ", sendResult);
-        }
 
-        var commitResult = commit;
-        if commitResult is () {
-            io:println("Transaction successful");
-        } else {
-            io:println("Transaction unsuccessful " + commitResult.message());
-        }
+        check commit;
     }
 }</code>
 
@@ -2152,8 +2143,8 @@ function kafkaAdvancedTransactionalProduce(byte[] message) {
     <br />
     <div class="button-container">
       <a
-        title="Consumer client"
-        href="/learn/by-example/kafka-consumer-client.html"
+        title="Consumer client - Poll ConsumerRecord"
+        href="/learn/by-example/kafka-consumer-client-poll-consumer-record.html"
         class="prev-button"
       >
         <svg
@@ -2171,17 +2162,17 @@ function kafkaAdvancedTransactionalProduce(byte[] message) {
         </svg>
         <div class="button-title">
           <span>Previous</span>
-          <div>Consumer client</div>
+          <div>Consumer client - Poll ConsumerRecord</div>
         </div>
       </a>
       <a
-        title="Consumer groups"
-        href="/learn/by-example/kafka-consumer-group-service.html"
+        title="SASL authentication - consumer"
+        href="/learn/by-example/kafka-authentication-sasl-plain-consumer.html"
         class="next-button"
       >
         <div class="button-title">
           <span>Next</span>
-          <div>Consumer groups</div>
+          <div>SASL authentication - consumer</div>
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

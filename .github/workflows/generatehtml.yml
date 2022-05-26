@@ -8,7 +8,7 @@ on:
         required: true
         default: "warning"
   schedule:
-    - cron: "*/5  * * * *"
+    - cron: "0 0 * * *"
 
 # on:
 #   schedule:

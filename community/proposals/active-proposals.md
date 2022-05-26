@@ -5,7 +5,7 @@ description: This is a collection of active proposals for Ballerina by the Balle
 keywords: ballerina, community, ballerina community, newsletter 
 permalink: /community/proposals/active-proposals 
 --- 
-#### ballerina-lang
+#### [ballerina-lang](https://github.com/ballerina-platform/ballerina-lang)
 
 |Proposal|Author|Comments|Created Date|State| 
 |---|----|----|----|----| 
@@ -16,7 +16,7 @@ permalink: /community/proposals/active-proposals
 |[[Proposal] Add support for MacPorts package manager](https://github.com/ballerina-platform/ballerina-lang/issues/9675)|[conradwt](https://github.com/conradwt)|9|2018-07-18|open|
 |[Rename Constants classes](https://github.com/ballerina-platform/ballerina-lang/issues/4558)|[riyafa](https://github.com/riyafa)|4|2018-02-06|open|
 
-#### ballerina-standard-library
+#### [ballerina-standard-library](https://github.com/ballerina-platform/ballerina-standard-library)
 
 |Proposal|Author|Comments|Created Date|State| 
 |---|----|----|----|----| 
@@ -30,12 +30,12 @@ permalink: /community/proposals/active-proposals
 |[Proposal: Ballerina VSCode try-out plugin for REST APIs](https://github.com/ballerina-platform/ballerina-standard-library/issues/2508)|[shafreenAnfar](https://github.com/shafreenAnfar)|0|2021-12-19|open|
 |[Proposal: Improve error handling for passthrough scenarios ](https://github.com/ballerina-platform/ballerina-standard-library/issues/2456)|[shafreenAnfar](https://github.com/shafreenAnfar)|5|2021-12-02|open|
 |[Set default username for SQL client connections](https://github.com/ballerina-platform/ballerina-standard-library/issues/2397)|[niveathika](https://github.com/niveathika)|5|2021-11-17|open|
-|[Proposal: Introducing Initial Support for HATEOAS](https://github.com/ballerina-platform/ballerina-standard-library/issues/2391)|[shafreenAnfar](https://github.com/shafreenAnfar)|13|2021-11-15|open|
+|[Proposal: Introducing Initial Support for HATEOAS](https://github.com/ballerina-platform/ballerina-standard-library/issues/2391)|[shafreenAnfar](https://github.com/shafreenAnfar)|14|2021-11-15|open|
 |[Proposal: `continue` action for HTTP Client API](https://github.com/ballerina-platform/ballerina-standard-library/issues/2038)|[ayeshLK](https://github.com/ayeshLK)|4|2021-10-12|open|
 |[Proposal: xDS API Support for gRPC](https://github.com/ballerina-platform/ballerina-standard-library/issues/2011)|[BuddhiWathsala](https://github.com/BuddhiWathsala)|2|2021-10-06|open|
 |[User has to provide offset to get time local time](https://github.com/ballerina-platform/ballerina-standard-library/issues/1138)|[KRVPerera](https://github.com/KRVPerera)|1|2021-03-23|open|
 
-#### module-ballerina-c2c
+#### [module-ballerina-c2c](https://github.com/ballerina-platform/module-ballerina-c2c)
 
 |Proposal|Author|Comments|Created Date|State| 
 |---|----|----|----|----| 

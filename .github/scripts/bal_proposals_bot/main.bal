@@ -68,7 +68,7 @@ public function main() returns error? {
                 // issuelist = issuelist + "d|";
                 issuelist = issuelist + "\n";
             }
-            repoData = repoData + string `#### ${repository}` + "\n\n|Proposal|Author|Comments|Created Date|State| \n|---|----|----|----|----| \n" + string `${issuelist}` + "\n";
+            repoData = repoData + string `#### [${repository}]` + string `(https://github.com/ballerina-platform/${repository})` + "\n\n|Proposal|Author|Comments|Created Date|State| \n|---|----|----|----|----| \n" + string `${issuelist}` + "\n";
         }
 
         io:println("Repo Count:", repoCount);

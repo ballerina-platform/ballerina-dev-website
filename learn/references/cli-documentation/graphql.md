@@ -10,7 +10,7 @@ redirect_from:
   - /learn/cli-documentation/graphql
 ---
 
-## GrapQL to Ballerina 
+## GraphQL to Ballerina 
 
 The GraphQL to Ballerina command supports several usages in the Ballerina GraphQL tool as follows.
 

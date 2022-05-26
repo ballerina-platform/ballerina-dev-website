@@ -1089,6 +1089,11 @@ redirect_from:
                   >File upload</a
                 >
               </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-documentation.html"
+                  >Documentation</a
+                >
+              </li>
             </ol>
           </li>
           <li class="chapter-item bal-nav-item">
@@ -1502,18 +1507,20 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/kafka-consumer-client.html"
-                  >Consumer client</a
+                <a
+                  href="/learn/by-example/kafka-consumer-client-poll-payload.html"
+                  >Consumer client - Poll Payload</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/kafka-consumer-client-poll-consumer-record.html"
+                  >Consumer client - Poll ConsumerRecord</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/kafka-producer-transactional.html"
                   >Transactional producer</a
-                >
-              </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/kafka-consumer-group-service.html"
-                  >Consumer groups</a
                 >
               </li>
               <li class="chapter-item bal-nav-item expanded">
@@ -2076,8 +2083,7 @@ redirect_from:
 
     <p>
       see the
-      <a href="https://lib.ballerina.io/ballerinax/kafka/latest"
-        ><code>kafka</code> module</a
+      <a href="https://lib.ballerina.io/ballerinax/kafka/latest">Kafka module</a
       >.
     </p>
 
@@ -2088,7 +2094,7 @@ import ballerina/log;
 // Define the relevant SASL URL of the configured Kafka server.
 const string SASL_URL = "localhost:9093";
 
-kafka:ConsumerConfiguration consumerConfig = {
+kafka:ConsumerConfiguration consumerConfigs = {
     groupId: "test-group",
     topics: ["demo-security"],
     // Provide the relevant authentication configurations to authenticate the consumer by [`kafka:AuthenticationConfiguration`](https://docs.central.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration).
@@ -2103,15 +2109,19 @@ kafka:ConsumerConfiguration consumerConfig = {
     securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 
-listener kafka:Listener kafkaListener = new(SASL_URL, consumerConfig);
+// Create a subtype of `kafka:AnydataConsumerRecord`
+public type StringConsumerRecord record {|
+    *kafka:AnydataConsumerRecord;
+    string value;
+|};
 
-service kafka:Service on kafkaListener {
-    remote function onConsumerRecord(kafka:Caller caller,
-                    kafka:ConsumerRecord[] records) returns error? {
-        foreach var consumerRecord in records {
-            string value = check string:fromBytes(consumerRecord.value);
-            log:printInfo(value);
-        }
+service on new kafka:Listener(SASL_URL, consumerConfigs) {
+    remote function onConsumerRecord(StringConsumerRecord[] records)
+    returns error? {
+        check from StringConsumerRecord 'record in records
+            do {
+                log:printInfo("Received message: " + 'record.value);
+            };
     }
 }</code>
 
@@ -2141,8 +2151,8 @@ service kafka:Service on kafkaListener {
     <br />
     <div class="button-container">
       <a
-        title="Consumer groups"
-        href="/learn/by-example/kafka-consumer-group-service.html"
+        title="Transactional producer"
+        href="/learn/by-example/kafka-producer-transactional.html"
         class="prev-button"
       >
         <svg
@@ -2160,7 +2170,7 @@ service kafka:Service on kafkaListener {
         </svg>
         <div class="button-title">
           <span>Previous</span>
-          <div>Consumer groups</div>
+          <div>Transactional producer</div>
         </div>
       </a>
       <a

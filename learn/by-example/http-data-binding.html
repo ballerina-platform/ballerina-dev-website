@@ -1091,6 +1091,11 @@ redirect_from:
                   >File upload</a
                 >
               </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-documentation.html"
+                  >Documentation</a
+                >
+              </li>
             </ol>
           </li>
           <li class="chapter-item bal-nav-item">
@@ -1504,18 +1509,20 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/kafka-consumer-client.html"
-                  >Consumer client</a
+                <a
+                  href="/learn/by-example/kafka-consumer-client-poll-payload.html"
+                  >Consumer client - Poll Payload</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/kafka-consumer-client-poll-consumer-record.html"
+                  >Consumer client - Poll ConsumerRecord</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/kafka-producer-transactional.html"
                   >Transactional producer</a
-                >
-              </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/kafka-consumer-group-service.html"
-                  >Consumer groups</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -2065,14 +2072,13 @@ redirect_from:
     </p>
 
     <p>
-      parameter should be declared with the <code>@Payload</code> annotation.
-      <code>string</code>, <code>json</code>, <code>xml</code>,
-      <code>byte[]</code>, record, and record[]
+      parameter should be declared with the <code>@Payload</code> annotation and
+      the parameter type can be <code>anydata</code>.
     </p>
 
     <p>
-      are supported as parameter types. Binding failures will be responded with
-      400[Bad Request] response&lt;br/&gt;&lt;br/&gt;
+      Binding failures will be responded with 400[Bad Request]
+      response&lt;br/&gt;&lt;br/&gt;
     </p>
 
     <p>For more information on the underlying module,</p>

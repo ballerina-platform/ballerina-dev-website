@@ -1089,6 +1089,11 @@ redirect_from:
                   >File upload</a
                 >
               </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-documentation.html"
+                  >Documentation</a
+                >
+              </li>
             </ol>
           </li>
           <li class="chapter-item bal-nav-item">
@@ -1502,18 +1507,20 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/kafka-consumer-client.html"
-                  >Consumer client</a
+                <a
+                  href="/learn/by-example/kafka-consumer-client-poll-payload.html"
+                  >Consumer client - Poll Payload</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/kafka-consumer-client-poll-consumer-record.html"
+                  >Consumer client - Poll ConsumerRecord</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/kafka-producer-transactional.html"
                   >Transactional producer</a
-                >
-              </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/kafka-consumer-group-service.html"
-                  >Consumer groups</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -2076,8 +2083,7 @@ redirect_from:
 
     <p>
       see the
-      <a href="https://lib.ballerina.io/ballerinax/kafka/latest"
-        ><code>kafka</code> module</a
+      <a href="https://lib.ballerina.io/ballerinax/kafka/latest">Kafka module</a
       >.
     </p>
 
@@ -2101,16 +2107,18 @@ kafka:ProducerConfiguration producerConfig = {
     securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 
-kafka:Producer kafkaProducer = check new(SASL_URL, producerConfig);
+kafka:Producer messageProducer = check new (SASL_URL, producerConfig);
 
-public function main() returns error? {
-    string message = "Hello, World!";
-    check kafkaProducer-&gt;send({
+public function main() {
+    kafka:Error? result = messageProducer-&gt;send({
         topic: "demo-security",
-        value: message.toBytes()
+        value: "Hello, World!"
     });
-    check kafkaProducer-&gt;'flush();
-    io:println("Message published successfully.");
+    if result is kafka:Error {
+        io:println("Message publish unsuccessful : " + result.message());
+    } else {
+        io:println("Message published successfully.");
+    }
 }</code>
 
   <button>

@@ -1089,6 +1089,11 @@ redirect_from:
                   >File upload</a
                 >
               </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-documentation.html"
+                  >Documentation</a
+                >
+              </li>
             </ol>
           </li>
           <li class="chapter-item bal-nav-item">
@@ -1506,18 +1511,20 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/kafka-consumer-client.html"
-                  >Consumer client</a
+                <a
+                  href="/learn/by-example/kafka-consumer-client-poll-payload.html"
+                  >Consumer client - Poll Payload</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/kafka-consumer-client-poll-consumer-record.html"
+                  >Consumer client - Poll ConsumerRecord</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/kafka-producer-transactional.html"
                   >Transactional producer</a
-                >
-              </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/kafka-consumer-group-service.html"
-                  >Consumer groups</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -2074,25 +2081,42 @@ redirect_from:
 
     <p>
       see the
-      <a href="https://lib.ballerina.io/ballerinax/kafka/latest"
-        ><code>kafka</code> module</a
+      <a href="https://lib.ballerina.io/ballerinax/kafka/latest">Kafka module</a
       >.
     </p>
 
     <br />
     <pre><code id="code" class="code-container">import ballerinax/kafka;
 
-kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL);
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
+// Create a subtype of `kafka:AnydataProducerRecord`
+public type OrderProducerRecord record {|
+    *kafka:AnydataProducerRecord;
+    Order value;
+    int key;
+|};
+
+kafka:Producer orderProducer = check new (kafka:DEFAULT_URL);
 
 public function main() returns error? {
-    string message = "Hello World, Ballerina";
+    OrderProducerRecord producerRecord = {
+        key: 1,
+        topic: "test-kafka-topic",
+        value: {
+            orderId: 1,
+            productName: "ABC",
+            price: 27.5,
+            isValid: true
+        }
+    };
     // Sends the message to the Kafka topic.
-    check kafkaProducer-&gt;send({
-                                topic: "test-kafka-topic",
-                                value: message.toBytes() });
-
-    // Flushes the sent messages.
-    check kafkaProducer-&gt;'flush();
+    check orderProducer-&gt;send(producerRecord);
 }</code>
 
   <button>

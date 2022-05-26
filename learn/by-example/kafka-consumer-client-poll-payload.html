@@ -1,13 +1,13 @@
 ---
 layout: ballerina-example-page-old
-title: Consumer client
-description: BBE on how to use a `kafka:Consumer` as a simple record consumer.
+title: Consumer client - Poll Payload
+description: BBE on how to use a `kafka:Consumer` as a payload consumer.
 keywords: ballerina, ballerina by example, bbe, kafka, consumer, client
-permalink: /learn/by-example/kafka-consumer-client
-active: kafka-consumer-client
+permalink: /learn/by-example/kafka-consumer-client-poll-payload
+active: kafka-consumer-client-poll-payload
 redirect_from:
-  - /swan-lake/learn/by-example/kafka-consumer-client
-  - /swan-lake/learn/by-example/kafka-consumer-client.html
+  - /swan-lake/learn/by-example/kafka-consumer-client-poll-payload
+  - /swan-lake/learn/by-example/kafka-consumer-client-poll-payload.html
 ---
 
 <div class="bbe-container">
@@ -1089,6 +1089,11 @@ redirect_from:
                   >File upload</a
                 >
               </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/graphql-documentation.html"
+                  >Documentation</a
+                >
+              </li>
             </ol>
           </li>
           <li class="chapter-item bal-nav-item">
@@ -1503,19 +1508,20 @@ redirect_from:
               </li>
               <li class="chapter-item bal-nav-item expanded">
                 <a
-                  href="/learn/by-example/kafka-consumer-client.html"
+                  href="/learn/by-example/kafka-consumer-client-poll-payload.html"
                   class="active bal-active"
-                  >Consumer client</a
+                  >Consumer client - Poll Payload</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a
+                  href="/learn/by-example/kafka-consumer-client-poll-consumer-record.html"
+                  >Consumer client - Poll ConsumerRecord</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/kafka-producer-transactional.html"
                   >Transactional producer</a
-                >
-              </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/kafka-consumer-group-service.html"
-                  >Consumer groups</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -2057,27 +2063,19 @@ redirect_from:
     </div>
   </nav>
   <main class="bal-container">
-    <h1>Consumer client</h1>
+    <h1>Consumer client - Poll Payload</h1>
 
     <p>
-      This shows how to use a <code>kafka:Consumer</code> as a simple record
+      This shows how to use a <code>kafka:Consumer</code> as a simple payload
     </p>
 
-    <p>
-      consumer. The records from a subscribed topic can be retrieved using the
-    </p>
+    <p>consumer for the instances where the metadata related to the message</p>
 
-    <p><code>poll()</code> function.</p>
+    <p>is not needed.</p>
 
-    <p>
-      This consumer uses the builtin byte array deserializer for both the key
-      and
-    </p>
+    <p>This consumer uses the builtin byte array deserializer for</p>
 
-    <p>
-      the value, which is the default deserializer in the
-      <code>kafka:Consumer</code>. For
-    </p>
+    <p>the value and converts the value to the user defined type. For</p>
 
     <p>this to work properly, an active Kafka broker should be present.</p>
 
@@ -2087,8 +2085,7 @@ redirect_from:
 
     <p>
       see the
-      <a href="https://lib.ballerina.io/ballerinax/kafka/latest"
-        ><code>kafka</code> module</a
+      <a href="https://lib.ballerina.io/ballerinax/kafka/latest">Kafka module</a
       >.
     </p>
 
@@ -2104,20 +2101,25 @@ kafka:ConsumerConfiguration consumerConfiguration = {
 
 };
 
-kafka:Consumer consumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
+kafka:Consumer orderConsumer =
+            check new (kafka:DEFAULT_URL, consumerConfiguration);
 
 public function main() returns error? {
-    // Polls the consumer for messages.
-    kafka:ConsumerRecord[] records = check consumer-&gt;poll(1);
+    // Polls the consumer for payload.
+    Order[] orders = check orderConsumer-&gt;pollPayload(1);
 
-    foreach var kafkaRecord in records {
-        byte[] messageContent = kafkaRecord.value;
-        // Converts the `byte[]` to a `string`.
-        string message = check string:fromBytes(messageContent);
-
-        // Prints the retrieved Kafka record.
-        io:println("Received Message: " + message);
-    }
+    check from Order 'order in orders
+        where 'order.isValid
+        do {
+            io:println('order.productName);
+        };
 }</code>
 
   <button>
@@ -2141,7 +2143,7 @@ public function main() returns error? {
     <br />
     <pre
       class="output-container"
-    ><code class="language-bash"><span class="bal-output bal-execute">bal run kafka_consumer_client.bal</span>
+    ><code class="language-bash"><span class="bal-output bal-execute">bal run kafka_consumer_client_poll_payload.bal</span>
 </code></pre>
     <br />
     <div class="button-container">
@@ -2169,13 +2171,13 @@ public function main() returns error? {
         </div>
       </a>
       <a
-        title="Transactional producer"
-        href="/learn/by-example/kafka-producer-transactional.html"
+        title="Consumer client - Poll ConsumerRecord"
+        href="/learn/by-example/kafka-consumer-client-poll-consumer-record.html"
         class="next-button"
       >
         <div class="button-title">
           <span>Next</span>
-          <div>Transactional producer</div>
+          <div>Consumer client - Poll ConsumerRecord</div>
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

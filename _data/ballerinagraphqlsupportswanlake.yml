@@ -7,12 +7,15 @@
         - title: Create a Ballerina package 
           url: /learn/graphql-client-tool/#create-a-ballerina-package
           active: create-a-ballerina-package
-        - title: Add the GraphQL schema and the GraphQL document
-          url: /learn/graphql-client-tool/#add-the-graphql-schema-and-the-graphql-document
-          active: add-the-graphql-schema-and-the-graphql-document
+        - title: Add the GraphQL document
+          url: /learn/graphql-client-tool/#add-the-graphql-document
+          active: add-the-graphql-document
         - title: Create a GraphQL config
           url: /learn/graphql-client-tool/#create-a-graphql-config
           active: create-a-graphql-config
+        - title: Add the GraphQL queries
+          url: /learn/graphql-client-tool/#add-the-graphql-queries
+          active: add-the-graphql-queries
         - title: Execute the `graphql` CLI command
           url: /learn/graphql-client-tool/#execute-the-graphql-cli-command
           active: execute-the-graphql-cli-command

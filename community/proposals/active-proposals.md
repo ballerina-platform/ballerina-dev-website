@@ -20,7 +20,7 @@ permalink: /community/proposals/active-proposals
 
 |Proposal|Author|Comments|Created Date|State| 
 |---|----|----|----|----| 
-|[Proposal: gRPC Packaging Support](https://github.com/ballerina-platform/ballerina-standard-library/issues/2948)|[dilanSachi](https://github.com/dilanSachi)|5|2022-05-25|open|
+|[Proposal: gRPC Packaging Support](https://github.com/ballerina-platform/ballerina-standard-library/issues/2948)|[dilanSachi](https://github.com/dilanSachi)|6|2022-05-25|open|
 |[Proposal: Introduce a new config in the `fromJson` API to add the root element tag name](https://github.com/ballerina-platform/ballerina-standard-library/issues/2943)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|1|2022-05-23|open|
 |[Proposal: Ballerina Constraint Package](https://github.com/ballerina-platform/ballerina-standard-library/issues/2850)|[ldclakmal](https://github.com/ldclakmal)|18|2022-04-20|open|
 |[Proposal: Introduce API to convert the Ballerina record to XML](https://github.com/ballerina-platform/ballerina-standard-library/issues/2819)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|13|2022-03-28|open|

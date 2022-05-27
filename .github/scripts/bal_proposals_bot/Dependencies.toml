@@ -277,7 +277,7 @@ modules = [
 ]
 
 [[package]]
-org = "bimsarapathiraja"
+org = "runner"
 name = "bal_proposals_bot"
 version = "0.1.0"
 dependencies = [
@@ -288,7 +288,7 @@ dependencies = [
 	{org = "ballerinai", name = "observe"}
 ]
 modules = [
-	{org = "bimsarapathiraja", packageName = "bal_proposals_bot", moduleName = "bal_proposals_bot"}
+	{org = "runner", packageName = "bal_proposals_bot", moduleName = "bal_proposals_bot"}
 ]
 
 

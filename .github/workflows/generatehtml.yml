@@ -52,7 +52,7 @@ jobs:
               if [-z "$(git status --porcelain)"]; then
                 echo "::set-output name=push::false"
               else
-                git commit -m --allow-empty "Generate proposal HTML" -a
+                git commit -m --allow-empty "Generate proposal HTML" 
                 echo "::set-output name=push::true"
               fi
           fi

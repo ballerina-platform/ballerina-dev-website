@@ -3,9 +3,10 @@ layout: ballerina-inner-page
 title: Active Proposals 
 description: This is a collection of active proposals for Ballerina by the Ballerina community. 
 keywords: ballerina, community, ballerina community, newsletter 
-permalink: /community/proposals/active-proposals 
+permalink: /community/active-proposals 
+intro: This is a collection of active proposals for Ballerina by the Ballerina community. 
 --- 
-#### [ballerina-lang](https://github.com/ballerina-platform/ballerina-lang)
+## [ballerina-lang](https://github.com/ballerina-platform/ballerina-lang)
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|----| 
@@ -16,7 +17,7 @@ permalink: /community/proposals/active-proposals
 |[[Proposal] Add support for MacPorts package manager](https://github.com/ballerina-platform/ballerina-lang/issues/9675)|[conradwt](https://github.com/conradwt)|9|2018-07-18|N/A|
 |[Rename Constants classes](https://github.com/ballerina-platform/ballerina-lang/issues/4558)|[riyafa](https://github.com/riyafa)|4|2018-02-06|N/A|
 
-#### [ballerina-standard-library](https://github.com/ballerina-platform/ballerina-standard-library)
+## [ballerina-standard-library](https://github.com/ballerina-platform/ballerina-standard-library)
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|----| 
@@ -35,7 +36,7 @@ permalink: /community/proposals/active-proposals
 |[Proposal: xDS API Support for gRPC](https://github.com/ballerina-platform/ballerina-standard-library/issues/2011)|[BuddhiWathsala](https://github.com/BuddhiWathsala)|2|2021-10-06|Active|
 |[User has to provide offset to get time local time](https://github.com/ballerina-platform/ballerina-standard-library/issues/1138)|[KRVPerera](https://github.com/KRVPerera)|1|2021-03-23|N/A|
 
-#### [module-ballerina-c2c](https://github.com/ballerina-platform/module-ballerina-c2c)
+## [module-ballerina-c2c](https://github.com/ballerina-platform/module-ballerina-c2c)
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|----| 

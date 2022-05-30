@@ -28,3 +28,6 @@
     - title: Try the service
       url: /learn/write-a-restful-api-with-ballerina/#try-the-service
       active: try-the-service
+    - title: Learn more
+      url: /learn/write-a-restful-api-with-ballerina/#learn-more
+      active: learn-more

@@ -148,8 +148,8 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
-<a href="/learn/work-with-data-in-ballerina/">
-    <h3 id="work-with-data-in-ballerina">Work with data in Ballerina</h3></a>
+<a href="/learn/work-with-data-using-queries-in-ballerina/">
+    <h3 id="work-with-data-using-queries-in-ballerina">Work with data using queries in Ballerina</h3></a>
     <p >Use Ballerina query expressions to filter, sort, and join different iterable collections. </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">

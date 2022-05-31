@@ -43,8 +43,4 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.4](https://git
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.4](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+2201.0.4%22+label%3AType%2FBug).
 
-## Developer tools updates
-
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.4](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3ATeam%2FLanguageServer+milestone%3A%222201.0.4%22+label%3AType%2FBug+).
-
 <!-- <style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style> -->

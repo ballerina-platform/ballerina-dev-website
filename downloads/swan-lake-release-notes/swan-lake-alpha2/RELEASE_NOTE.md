@@ -11,39 +11,39 @@ redirect_from:
 This Alpha2 release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, standard library, and developer tooling. This release note lists only the features and updates added after the Alpha1 release of Ballerina Swan Lake.
 
 - [Updating Ballerina](#updating-ballerina)
-    - [For Existing Users](#for-existing-users)
-    - [For New Users](#for-new-users)
+    - [For existing users](#for-existing-users)
+    - [For new users](#for-new-users)
 - [Highlights](#highlights)
 - [What is new in Ballerina Swan Lake Alpha2](#what-is-new-in-ballerina-swan-lake-alpha2)
     - [Language](#language)
-        -  [Support for Mapping and Error Binding Patterns in the Match Statement](#support-for-mapping-and-error-binding-patterns-in-the-match-statement)
+        -  [Support for mapping and error binding patterns in the match statement](#support-for-mapping-and-error-binding-patterns-in-the-match-statement)
     - [Runtime](#runtime)
-        - [Support for Configurable Variables of Record and Table Types](#support-for-configurable-variables-of-record-and-table-types)
-        - [Support for Decrypting String Values Using the New Config Lang Library](#support-for-decrypting-string-values-using-the-new-config-lang-library)
-    - [Standard Library](#standard-library)
-        - [HTTP Module Improvements](#http-module-improvements)
-        - [MIME Module Improvements](#mime-module-improvements)
-        - [WebSocket Module Improvements](#websocket-module-improvements)
-        - [GraphQL Module Improvements](#graphql-module-improvements)
-        - [WebSub Module Improvements](#websub-module-improvements)
-        - [WebSubHub Module Improvements](#websubhub-module-improvements)
-        - [IO Module Improvements](#io-module-improvements)
-        - [Email Module Improvements](#email-module-improvements)
-        - [UDP Module Improvements](#udp-module-improvements)
-        - [Crypto Module Improvements](#crypto-module-improvements)
-        - [JWT Module Improvements](#jwt-module-improvements)
+        - [Support for configurable variables of record and table types](#support-for-configurable-variables-of-record-and-table-types)
+        - [Support for decrypting string values using the new config lang library](#support-for-decrypting-string-values-using-the-new-config-lang-library)
+    - [Standard library](#standard-library)
+        - [HTTP module improvements](#http-module-improvements)
+        - [MIME module improvements](#mime-module-improvements)
+        - [WebSocket module improvements](#websocket-module-improvements)
+        - [GraphQL module improvements](#graphql-module-improvements)
+        - [WebSub module improvements](#websub-module-improvements)
+        - [WebSubHub module improvements](#websubhub-module-improvements)
+        - [IO module improvements](#io-module-improvements)
+        - [Email module improvements](#email-module-improvements)
+        - [UDP module improvements](#udp-module-improvements)
+        - [Crypto module improvements](#crypto-module-improvements)
+        - [JWT module improvements](#jwt-module-improvements)
     - [Code to Cloud](#code-to-cloud)
-    - [Developer Tools](#developer-tools)
+    - [Developer tools](#developer-tools)
         - [Language Server](#language-server)
         - [Debugger](#debugger)
         - [Ballerina Shell REPL - EXPERIMENTAL](#ballerina-shell-repl-experimental)
-    - [Breaking Changes](#breaking-changes)
+    - [Breaking changes](#breaking-changes)
 
 ### Updating Ballerina
 
 You can use the [update tool](/learn/keeping-ballerina-up-to-date/) to update to Ballerina Swan Lake Alpha2 as follows.
 
-#### For Existing Users
+#### For existing users
 
 If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina update tool](/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the update tool updated to its latest version. 
 
@@ -53,7 +53,7 @@ If you are using an **update tool version below 0.8.14**, execute the `ballerina
 
 > `bal dist pull slalpha2`
 
-#### For New Users
+#### For new users
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
@@ -70,9 +70,9 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 #### Language
 
-##### Support for Mapping and Error Binding Patterns in the Match Statement
+##### Support for mapping and error binding patterns in the match statement
 
-**Mapping Binding Pattern**
+**Mapping binding pattern**
 
 The `match` statement now supports mapping and error binding patterns with `var`.
 
@@ -95,7 +95,7 @@ match v {
 }
 ```
 
-**Error Binding Pattern**
+**Error binding pattern**
 
 ```ballerina
 match v {
@@ -118,9 +118,9 @@ match v {
 
 #### Runtime
 
-##### Support for Configurable Variables of Record and Table Types
+##### Support for configurable variables of record and table types
 
-**Record Type**
+**Record type**
 
 Record fields with simple types like `int`, `string`, `boolean`, `float`, `decimal`, and arrays of the respective types are now supported. 
 
@@ -150,7 +150,7 @@ configurable AuthInfo & readonly testUserOne = ?;
 configurable AuthInfo & readonly testUserTwo = ?;
 ```
 
-**Table Type**
+**Table type**
 
 Ballerina now supports configurable variables of type `table` through TOML arrays of tables.
 
@@ -178,7 +178,7 @@ it can be loaded as a configurable variable of a `table` type as follows.
 configurable table<AuthInfo> key(username) & readonly users = ?;
 ```
 
-##### Support for Decrypting String Values Using the New Config Lang Library
+##### Support for decrypting string values using the new config lang library
 
 The `bal encrypt` command can be used to encrypt plain text values and specify those in the `Config.toml` file. Then, the `config:decryptString()` function can be used to decrypt the configurable value. 
 
@@ -200,11 +200,11 @@ public function main() {
 }
 ```
 
-#### Standard Library
+#### Standard library
 
-##### HTTP Module Improvements
+##### HTTP module improvements
 
-###### Introduced Byte Stream Manipulation Functions to the Request and Response 
+###### Introduced byte stream manipulation functions to the request and response 
 
 This introduction enables manipulating the payload as a stream of `byte[]`. The `setByteStream()` and `getByteStream()` methods use the Ballerina stream feature.
 
@@ -218,7 +218,7 @@ http:Response response = new;
 stream<byte[], io:Error>|error str = response.getByteStream();
 ```
 
-###### Introduced the `http:Header` Annotation to Bind Headers in an Inbound Request
+###### Introduced the `http:Header` annotation to bind headers in an inbound request
 
 With the introduction of the `@http:Header` annotation, inbound request headers can be retrieved by binding them to a resource method parameter. Individual headers can be accessed as `string` or `string[]` types while a parameter of type `http:Headers` can be used to access all headers. 
 
@@ -230,9 +230,9 @@ service on helloEP {
 }
 ```
 
-##### MIME Module Improvements
+##### MIME module improvements
 
-###### Introduced Byte Stream Manipulation Methods to the `mime:Entity` Class
+###### Introduced byte stream manipulation methods to the `mime:Entity` class
 
 This introduction enables manipulating the entity body as a stream of `byte[]`.
 
@@ -245,11 +245,11 @@ function getBodyPartsAsStream(int arraySize = 8196) returns stream<byte[], io:Er
 
 ```
 
-#### WebSocket Module Improvements
+#### WebSocket module improvements
 
 Introduced the Sync client. This is the primary client of the WebSocket module. This client is capable of reading and writing messages synchronously.
 
-**Reading and Writing Text Messages**
+**Reading and writing text messages**
 
 ```ballerina
 websocket:Client wsClient = check new ("ws://echo.websocket.org");
@@ -257,7 +257,7 @@ var err = wsClient->writeTextMessage("Text message");
 string textResp = check wsClient->readTextMessage();
 ```
 
-**Reading and Writing Binary Messages**
+**Reading and writing binary messages**
 
 ```ballerina
 websocket:Client wsClient = check new ("ws://echo.websocket.org");
@@ -265,7 +265,7 @@ var err = wsClient->writeBinaryMessage("Binary message".toBytes());
 byte[] byteResp = check wsClient->readBinaryMessage();
 ```
 
-##### GraphQL Module Improvements
+##### GraphQL module improvements
 
 Ballerina GraphQL listeners can now be configured using the same configurations as the listener configurations in `http:Listener`. Additionally, a GraphQL service can be secured by defining a `maxQueryDepth` as an annotation to restrict the depth of a query before execution.
 
@@ -283,7 +283,7 @@ service /graphql on graphqlListener {
 }
 ```
 
-##### WebSub Module Improvements
+##### WebSub module improvements
 
 Included functionality to the `websub:SubscriberService` to respond with user-defined custom payloads/header parameters in error scenarios.
 
@@ -325,7 +325,7 @@ service /subscriber on subscriberListener {
 }
 ```
 
-##### WebSubHub Module Improvements
+##### WebSubHub module improvements
 
 Included functionality to the `websubhub:Service` to respond with user-defined custom payloads/header parameters in error scenarios.
 
@@ -349,7 +349,7 @@ service /websubhub on new websubhub:Listener(9091) {
 }
 ```
 
-##### IO Module Improvements
+##### IO module improvements
 
 Introduce a parameter of type `XmlWriteOptions` to specify the entity type and the document type declaration.
 
@@ -389,7 +389,7 @@ public function main() returns error? {
     <body>Don't forget me this weekend!</body>
 </note>
 ```
-##### Email Module Improvements
+##### Email module improvements
 
 - Make the `body` field of the `email:Message` record optional. This enables sending an email with only the `htmlBody` field set without a text-typed `body` field.
 
@@ -425,21 +425,21 @@ public type SecureSocket record {|
 |};
 ```
 
-##### UDP Module Improvements
+##### UDP module improvements
 
 - The `sendDatagram` method will now send multiple datagrams if the size of the `byte[]` value provided as the `data` field of the datagram exceeds 8KB.
 
 - Returning `Datagram` from the `onDatagram` or `onBytes` remote methods also sends multiple datagrams if the size of the `byte[]` value provided (as the `data` field of the datagram) exceeds 8KB.
 
-##### Crypto Module Improvements
+##### Crypto module improvements
 
 Added support to decode private keys from `.key` files and public keys from `.cert` files and updated the APIs for decoding private/public keys. This enables reading private/public keys from PEM files.
 
-##### JWT Module Improvements
+##### JWT module improvements
 
 Extended the private key support for JWT signature generation and public cert support for JWT signature validation.
 
-##### Log Module Improvements
+##### Log module improvements
 
 Introduced a configuration in the log module to set the output format to JSON. You need to add the entry below in the `Config.toml` file to set the output format to JSON.
 
@@ -454,7 +454,7 @@ format = "json"
 - The `--cloud=docker` build option is implemented. This will build the Dockerfile and Docker image without generating the Kubernetes artifacts.
 
 
-#### Developer Tools
+#### Developer tools
 
 ##### Language Server
 
@@ -473,7 +473,7 @@ Added variable paging support. With this feature, the Ballerina variables, which
 	- The CLI will not wait for unclosed double quotes.
 - Enabled REPL to exit on `Ctrl+D`.
 
-#### Breaking Changes
+#### Breaking changes
 
 - Member access on a value of type `table` now returns `()` if the `table` does not contain a member with the specified key. Otherwise, the result is the member in the `table` value with the given key.
 

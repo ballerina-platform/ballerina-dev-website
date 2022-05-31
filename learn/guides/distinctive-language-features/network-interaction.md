@@ -46,7 +46,7 @@ function mailDemo() returns error? {
 
 In the above code example, the client object **``sc``** belongs to a client class **``SmtpClient``**. The connection parameters are passed to ``new`` when creating the object.
 
-The **``sendEmailMessage()``** remote method is called on the client object **``sc``** with the ``->`` call syntax. This notation signifies that it is a remote call to a network service. It augurs well with the sequence diagram view of the application and provides a syntactically distinguished view for better readability.
+The **``sendMessage()``** remote method is called on the client object **``sc``** with the ``->`` call syntax. This notation signifies that it is a remote call to a network service. It augurs well with the sequence diagram view of the application and provides a syntactically distinguished view for better readability.
 
 Remote method calls have some restrictions. For example, they are not allowed in deeply nested expressions. Additionally, there is a separate symbol space for these methods, and they are implicitly public.
 

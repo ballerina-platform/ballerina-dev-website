@@ -35,7 +35,7 @@ redirect_from:
  This simplifies the experience of developing and deploying Ballerina code in the cloud.
  Code to Cloud builds the containers and required artifacts by deriving the required values from the code.
  If you want to override the default values taken by the compiler, you can use a <code>Cloud.toml</code> file. <br/><br/>
- For more information, see <a href="/learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/">Code to Cloud Deployment</a>.</p>
+ For more information, see <a href="/learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/">Code to Cloud deployment</a>.</p>
 </p>
 
                         </td>
@@ -43,14 +43,14 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="gauge-metrics.html?is_ref_by_example=true">
+                                    <a class="prev" href="gauge-metrics.html">
                                         <span>< PREVIOUS</span>
                                         <p>Gauge-based metrics</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="azure-functions-deployment.html?is_ref_by_example=true">
+                                    <a class="next" href="azure-functions-deployment.html">
                                         <span>NEXT ></span>
                                         <p>Azure Functions</p>
                                     </a>
@@ -143,8 +143,8 @@ redirect_from:
                             <div class="cTR cOutputTr">
 
                                 <div class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Before you build the package, you need to override some of the default values taken by the compiler. To do this, 
-create a filed named `Cloud.toml` in the package directory, and add the content below to it.
+                                    <div class="highlight"><pre><code class=shell-session># Before you build the package, you need to override some of the default values taken by the compiler. To do this, create a filed named `Cloud.toml` 
+in the package directory, and add the content below to it.
 </code></pre></div>
 
                                 </div>
@@ -156,7 +156,7 @@ create a filed named `Cloud.toml` in the package directory, and add the content 
                             <div class="cTR cOutputTr">
 
                                 <div class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># For all the supported key value properties, see [Code to Cloud Deployment](/learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/).
+                                    <div class="highlight"><pre><code class=shell-session># For all the supported key value properties, see [Code to Cloud deployment](/learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/).
 </code></pre></div>
 
                                 </div>
@@ -338,8 +338,7 @@ tag=&quot;v0.1.0&quot;
                             <div class="cTR cOutputTr">
 
                                 <div class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Verify if the Docker image is generated. (If you have used the `minikube docker-env`, skip this and go to 
-the Kubernetes deployment directly.)
+                                    <div class="highlight"><pre><code class=shell-session># Verify if the Docker image is generated. (If you used the `minikube docker-env`, skip this and go to the Kubernetes deployment directly.)
 `docker images`
 </code></pre></div>
 
@@ -438,7 +437,7 @@ service/wso2-hello-0--svc-local exposed
                             <div class="cTR cOutputTr">
 
                                 <div class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Get the IP and port of the Kubernetes service.
+                                    <div class="highlight"><pre><code class=shell-session># Get the IP address and port of the Kubernetes service.
 `kubectl get svc`
 NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 wso2-hello-0--svc-local   NodePort    10.111.61.112    &lt;none&gt;        9090:32437/TCP   4m17s
@@ -467,7 +466,7 @@ wso2-hello-0--svc-local   NodePort    10.111.61.112    &lt;none&gt;        9090:
                             <div class="cTR cOutputTr">
 
                                 <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Access the deployed service via CURL.
+                                    <div class="highlight"><pre><code class=shell-session># Access the deployed service via cURL.
 `curl http://192.168.49.2:32437/helloWorld/sayHello`
 Hello, World from service helloWorld !
 </code></pre></div>

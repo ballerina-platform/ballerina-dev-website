@@ -5,21 +5,32 @@ labels: 'Type/Improvement'
 
 ---
 
-**Description:**
-<!-- Give a brief description of the improvement-->
+## Description
+> A brief description of the improvement.
 
-**Related website/documentation area**
-<!--Add one of the following: `Area/BBEs`, `Area/HomePageSamples`, `Area/LearnPages`, `Area/Blog`, `Area/CommonPages`,` Area/Backend`, `Area/UIUX`, and `Area/Workflows` -->
+## Related website/documentation area
+> Add/Uncomment the relevant area label out of the following. 
 
-**Describe the problem(s)**
+<!--Area/BBEs-->
+<!--Area/HomePageSamples-->
+<!--Area/LearnPages-->
+<!--Area/CommonPages-->
+<!--Area/Backend-->
+<!--Area/UIUX-->
+<!--Area/Workflows-->
+<!--Area/Blog-->
 
-**Describe your solution(s)**
+## Describe the problem(s)
+> A detailed description of the purpose of this improvement.
 
-**Related Issues (optional):**
-<!-- Any related issues such as sub tasks, issues reported in other repositories (e.g component repositories), similar problems, etc. -->
+## Describe your solution(s)
+> A detailed description of how this improvement will solve the problem described above.
 
-**Suggested Labels (optional):**
-<!-- Optional comma separated list of suggested labels. Non committers can’t assign labels to issues, so this will help issue creators who are not a committer to suggest possible labels-->
+## Related issue(s) (optional)
+> Any related issues such as sub tasks and issues reported in other repositories (e.g., component repositories), similar problems, etc. 
 
-**Suggested Assignees (optional):**
-<!--Optional comma separated list of suggested team members who should attend the issue. Non committers can’t assign issues to assignees, so this will help issue creators who are not a committer to suggest possible assignees-->
+## Suggested label(s) (optional)
+> Optional comma-separated list of suggested labels. Non committers can’t assign labels to issues, and thereby, this will help issue creators who are not a committer to suggest possible labels.
+
+## Suggested assignee(s) (optional)
+> Optional comma-separated list of suggested team members who should attend the issue. Non committers can’t assign issues to assignees, and thereby, this will help issue creators who are not a committer to suggest possible assignees.

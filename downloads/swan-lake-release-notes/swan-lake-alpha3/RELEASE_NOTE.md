@@ -36,11 +36,11 @@ If you are using an **update tool version below 0.8.14**, execute the `ballerina
 
 If you are a new user, then download the [installers](/downloads/#swanlake) to install.
 
-### What is New in Ballerina Swan Lake Alpha3
+### What is new in Ballerina Swan Lake Alpha3
 
 #### Language
 
-##### Support for Module-level Variables with List, Mapping, and Error Binding Patterns
+##### Support for module-level variables with list, mapping, and error binding patterns
 
 Variable declarations with list, mapping, or error binding patterns are now allowed at the module level. Unlike simple variables, these variables must be initialized in the declaration.
 
@@ -68,7 +68,7 @@ Person {name: firstName, married: isMarried} = getPerson();
 error error(message, code = errCode) = getError();
 ```
 
-##### Support for Module-level Public Variables
+##### Support for module-level public variables
 
 Module-level variables can now be declared as public using the `public` qualifier. Such variables will be visible outside the modules in which they are declared.
 
@@ -80,7 +80,7 @@ public string name = "Ballerina";
 public [int, float] [a, b] = [1, 2.5];
 ```
 
-##### Improvement to Annotation Attachment with Empty Mapping Constructor Expression
+##### Improvement to annotation attachment with empty mapping constructor expression
 
 If the type of the annotation is a mapping type for which an empty mapping constructor is valid, the mapping constructor expression is no longer mandatory in the annotation attachment.
 
@@ -97,7 +97,7 @@ public function main() {
 }
 ```
 
-##### Introduction of the `function` Function Type Descriptor to Represent Any Function
+##### Introduction of the `function` function type descriptor to represent any function
 
 A new `function` type descriptor has been introduced to represent all function values.
 
@@ -126,7 +126,7 @@ function process(function func, int v1, int v2) returns int {
 }
 ```
 
-##### New Lang Library Functions
+##### New lang library functions
 
 ###### New `xml:text()` function
 
@@ -138,7 +138,7 @@ xml:Text nameText = (name/*).text();
 io:println(nameText); // "DanBrown"
 ```
 
-##### Bug Fixes
+##### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).
 
@@ -152,13 +152,13 @@ BError createError(Module module, String errorTypeName, BString message, BError 
 ```
 The `createDistinctError` API has been deprecated and should not be used to create distinct errors. The new `createError` API can be used instead.
 
-##### Bug Fixes
+##### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
 
-#### Standard Library
+#### Standard library
 
-##### Log Package Updates
+##### Log package updates
 
 ###### Introduced additional log levels and log functions
 
@@ -177,11 +177,11 @@ name = "[ORG_NAME]/[MODULE_NAME]"
 level = "[LOG_LEVEL]"
 ```
 
-##### OS Package Updates
+##### OS package updates
 
 - Removed the `exec` function.
 
-##### Task Package Updates
+##### Task package updates
 
 The module has been revamped by removing the `Scheduler` and `Listener` classes and introducing the following functions to schedule and manage the job either one-time or periodically.
 
@@ -284,7 +284,7 @@ import ballerina/task;
 task:JobId[] jobIds = task:getRunningJobs();
 ```
 
-##### Time Package Updates
+##### Time package updates
 
 Revamped the entire time package as follows:
 
@@ -294,7 +294,7 @@ Revamped the entire time package as follows:
 
 Steps for migration from the previous version to the current version are listed [in this issue](https://github.com/ballerina-platform/ballerina-standard-library/issues/1079).
 
-##### Cache Package Updates
+##### Cache package updates
 
 - Introduced the new `EvictionPolicy` configuration to set the eviction policy in the `CacheConfig` record.
 
@@ -304,7 +304,7 @@ The `EvictionPolicy` record has been introduced with the option `LRU` as the mod
 
 This object type had the common APIs for the cache eviction functionalities to implement a custom eviction policy. It has been removed with the introduction of the above configuration.
 
-##### New `xmldata` Package
+##### New `xmldata` package
 
 A new module is added to convert data in XML format to JSON format and vice-versa.
 
@@ -328,13 +328,13 @@ import ballerina/xmldata;
 json|xmldata:Error j = xmldata:toJson(xml `foo`);
 ```
 
-##### Removed `jsonutils`, `xmlutils`, `runtime`, and `reflect` Packages
+##### Removed `jsonutils`, `xmlutils`, `runtime`, and `reflect` packages
 
 The `jsonutils`, `xmlutils`, `runtime`, and `reflect` packages were removed from Standard Libraries.
 
 The XML/JSON conversation APIs in `jsonutils` and `xmltutils` packages are now supported by the `xmldata` package.
 
-##### HTTP Package Updates
+##### HTTP package updates
 
 - Changed the return types of the client methods to depend on the `targetType` argument. The default `targetType` is `http:Response`.
 
@@ -376,7 +376,7 @@ type ResponseMessage Response|string|xml|json[]|byte[]|int|float|decimal|boolean
 
 - Introduced module error inheritance and remove error union types.
 
-##### WebSocket Package Updates
+##### WebSocket package updates
 
 - Introduced auth support for the WebSocket client.
 The bearer token, Basic Auth, JWT, and OAuth2 support have been introduced with the WebSocket client declarative authentication.
@@ -413,7 +413,7 @@ remote function onPing(byte[] pingData) returns byte[] {
 
 - Removed the support for the `websocket:AsyncClient`.
 
-##### GraphQL Package Updates
+##### GraphQL package updates
 
 - Added the support for hierarchical resource paths.
 The Ballerina GraphQL resources now can have hierarchical resource paths. Each intermediate resource path then maps to a new type in the generated schema.
@@ -448,13 +448,13 @@ resource function get profile/name/first(int id) returns string? {
 }
 ```
 
-##### Email Package Updates
+##### Email package updates
 
 - Enabled read/listen for multiple emails in a single TCP connection.
     
     Each POP3 or IMAP client/listener creation initiates the connection. Then, the email sending, receiving, or listening operations can be performed many times. Finally, the client/listener has to be closed.
 
-**POP3 Client Example**
+**POP3 client example**
 
 ```ballerina
 email:PopClient popClient = check new ("pop.email.com", "reader@email.com","pass456");
@@ -464,7 +464,7 @@ check popClient->close();
 
 A similar format is used in the IMAP client. 
 
-**POP3 Service Example**
+**POP3 service example**
 
 ```ballerina
 service object {} emailObserver = service object {
@@ -507,7 +507,7 @@ email:Message|email:Error? email = popClient->receiveMessage(timeout = 2);
 
 - Made the `body` field of the `send` method mandatory in the `email:SmtpClient`. 
 
-##### WebSub Package Updates
+##### WebSub package updates
 
 - Introduced a websub-listener configuration for the websub-listener.
 
@@ -529,7 +529,7 @@ service /subscriber on new websub:Listener(9090, configs) {
 }
 ```
 
-##### WebSubHub Package Updates
+##### WebSubHub package updates
 
 - Included HTTP Headers parameter into the WebSub Hub API.
 
@@ -609,7 +609,7 @@ service /hub on new websubhub:Listener(9090, configs) {
 }
 ```
 
-##### Security Updates
+##### Security updates
 
 - Renamed the `ballerina/encoding` module as `ballerina/url` and updated the APIs.
 
@@ -693,7 +693,7 @@ public enum CertValidationType {
 
 - Added support for OAuth2 client authentication of the JDK11 client, which is used to call an authorization endpoint.
 
-##### TCP Package Updates
+##### TCP package updates
 
 - Introduced SSL/TLS support for both the client and listener.
 
@@ -767,11 +767,11 @@ service class EchoService {
 
 - Renamed `tcp:ListenerConfig` and `tcp:ClientConfig` to `tcp:ListenerConfiguration` and `tcp:ClientConfiguration`
 
-##### UDP Package Updates
+##### UDP package updates
 
 - Renamed `udp:ListenerConfig` and `udp:ClientConfig` to `udp:ListenerConfiguration` and `udp:ClientConfiguration`
 
-##### Kafka Package Updates
+##### Kafka package updates
 
 - Renamed the `sendProducerRecord` function in the client object `Producer` to `send`.
 
@@ -779,7 +779,7 @@ service class EchoService {
 
 - Replaced the `kafka:ConsumerError` and `kafka:ProducerError` with `kafka:Error`.
 
-##### NATS Package Updates
+##### NATS package updates
 
 - Renamed the `ConnectionConfig` record to `ConnectionConfiguration`. 
 
@@ -787,7 +787,7 @@ service class EchoService {
 
 - Changed the `ConnectionConfiguration` in the client and listener init functions to an included record parameter. This allows the record field values to be passed as named parameters. 
 
-##### STAN Package Updates
+##### STAN package updates
 
 - Renamed the `StreamingConfig` record to `StreamingConfiguration`. 
 
@@ -795,11 +795,11 @@ service class EchoService {
 
 - Changed the `StreamingConfiguration` in the client and listener init functions to an included record parameter. This allows the record field values to be passed as named parameters. 
 
-##### RabbitMQ Package Updates
+##### RabbitMQ package updates
 
 - Renamed the `ConnectionConfig` record to `ConnectionConfiguration`. 
 
-##### Common Standard Library Updates
+##### Common standard library updates
 
 - All the timeout configurations are converted to accept decimal values and the time unit is in seconds.
 
@@ -807,13 +807,13 @@ service class EchoService {
 
 - Removed Docker annotation support.
 
-##### Bug Fixes
+##### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22).
 
-### Ballerina Packages
+### Ballerina packages
 
-#### Introduced Local Repository Support
+#### Introduced local repository support
 
 - Apart from the Ballerina Central remote repository, you can now push packages to the local repository which can be found at `<user-home>/.ballerina/repositories/local`. Refer to the section on changes to CLI commands for information regarding pushing to the local repository.
 - To use a package from the local repository, the 'repository' has to be specified in the TOML table of the relevant dependency in the `Dependencies.toml` file.
@@ -828,11 +828,11 @@ version = "1.0.0"
 repository = "local"
 ```
 
-### Developer Tools
+### Developer tools
 
 #### CLI
 
-##### Changes to CLI Commands
+##### Changes to CLI commands
 
 - Build and test commands
   - Support for providing `[(--key=value)...]` is removed from `bal build`. 
@@ -867,7 +867,7 @@ repository = "local"
     echo "$(bal completion bash)" >> ~/.bash_profile
     ```
 
-#### Test Framework
+#### Test framework
 
 - Moved the Project Test Suite execution to a single JVM. Changed from running each Test Suite in a JVM instance. This improves the user experience when debugging tests. It no longer prompts to debug each test suite of a project.
 - Support for seamless integration of CICD tools by adding inbuilt path fixes to the JaCoCo XML generated for Ballerina packages.
@@ -888,7 +888,7 @@ bal openapi -i <ballerina file> --json
 
 - Added improvements for handling the Ballerina resource method response type in the OpenAPI to Ballerina command.
 
-#### Bindgen Tool
+#### Bindgen tool
 
 - Improved the generated bindings with the use of distinct type classes.
 - Improved the internal mechanism used to generate the bindings. Previous handlebars-based implementation is now changed to a syntax-tree-based implementation.
@@ -941,6 +941,6 @@ The `--force-dumb` command-line option will now have only a long option and the 
 
 Now, the debugger supports conditional breakpoints. Conditional expressions can be configured for Ballerina breakpoints in the VSCode debug view.
 
-#### Breaking Changes
+#### Breaking changes
 1. `==` and `!=` equality expressions can no longer be used with variables of type `readonly`.
 2. Implicit conversion from `xml:Text` to `string` is no longer supported.

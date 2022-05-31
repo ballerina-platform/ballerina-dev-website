@@ -60,12 +60,13 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Consumer groups</h2>
-                            <p><p>Here, a <code>kafka:Consumer</code> is used as a listener to listen to a
- given set of topic/topics. The listener uses a group of concurrent consumers within
- the service. For this to work properly, an active Kafka broker should be
+                            <p><p>This is an example of a Kafka consumer used as a listener to listen to a
+ given topic/topics. The listener uses a group of concurrent consumers within
+ the service. This consumer uses the builtin <code>string</code> deserializer for the
+ values. For this example to work properly, an active Kafka broker should be
  present.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://lib.ballerina.io/ballerinax/kafka/latest"><code>kafka</code> module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/kafka/latest">Kafka module</a>.</p>
 </p>
 
                         </td>
@@ -73,14 +74,14 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="kafka-producer-transactional.html?is_ref_by_example=true">
+                                    <a class="prev" href="kafka-producer-transactional.html">
                                         <span>< PREVIOUS</span>
                                         <p>Transactional producer</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="kafka-authentication-sasl-plain-consumer.html?is_ref_by_example=true">
+                                    <a class="next" href="kafka-authentication-sasl-plain-consumer.html">
                                         <span>NEXT ></span>
                                         <p>SASL authentication - consumer</p>
                                     </a>

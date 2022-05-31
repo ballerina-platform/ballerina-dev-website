@@ -125,9 +125,9 @@ public type ErrorMsg record {|
 - It is always a good practice to document your interfaces. However, this example has omitted documentation for brevity. Nevertheless, any production-ready API interface must include API documentation. 
 - You can also try generating an OpenAPI specification for the written service by executing the following command, which creates a `yaml` file in the current folder.
 
-## Create the service project 
+## Create the service 
 
-Ballerina uses projects to group code. You need to create a Ballerina project and write the business logic in it. In the terminal, execute the command below to create the Ballerina project for the API implementation.
+Ballerina uses packages to group code. You need to create a Ballerina package and write the business logic in it. In the terminal, execute the command below to create the Ballerina package for the API implementation.
 
 > **Info:** For more information on Ballerina projects, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
@@ -323,7 +323,7 @@ In this code:
 
 ## Run the service
 
-In the terminal, navigate to the `covid19` directory, and execute the command below to run the service project.
+In the terminal, navigate to the `covid19` directory, and execute the command below to run the service.
 
 > **Info**: The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 

@@ -37,9 +37,15 @@ $ bal
 $ bal version
 ```
 
-## Create a new project
+## Create a new project with a package
 
-Let's write a Ballerina program, which prints `Hello, World!`. Use the `bal new` command to create a new Ballerina project. 
+Ballerina code is organized in a single shareable unit called a package. A package is a collection of modules, and a module is a collection of Ballerina source files, test files, and resources. 
+
+Ballerina packages are encapsulated in projects. It is common in small projects to have only one (default) module in a package. As a result, the default module’s content is placed directly in the root of the package directory.
+
+>**Info:** For more information, see [Organize Ballerina code](/learn/organize-ballerina-code/).
+
+Let's write a Ballerina program, which prints `Hello, World!`. Use the `bal new` command to create a new Ballerina project with the default package. 
 
 ```bash
 $ bal new greeter

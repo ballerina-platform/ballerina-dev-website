@@ -20,6 +20,7 @@ permalink: /community/proposals/active-proposals
 
 |Proposal|Author|Comments|Created Date|State| 
 |---|----|----|----|----| 
+|[Proposal: Include HTTP status code information into client responses](https://github.com/ballerina-platform/ballerina-standard-library/issues/2956)|[ayeshLK](https://github.com/ayeshLK)|0|2022-05-30|open|
 |[Proposal: gRPC Packaging Support](https://github.com/ballerina-platform/ballerina-standard-library/issues/2948)|[dilanSachi](https://github.com/dilanSachi)|6|2022-05-25|open|
 |[Proposal: Introduce a new config in the `fromJson` API to add the root element tag name](https://github.com/ballerina-platform/ballerina-standard-library/issues/2943)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|1|2022-05-23|open|
 |[Proposal: Ballerina Constraint Package](https://github.com/ballerina-platform/ballerina-standard-library/issues/2850)|[ldclakmal](https://github.com/ldclakmal)|18|2022-04-20|open|

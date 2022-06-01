@@ -31,7 +31,7 @@ permalink: /community/proposals/active-proposals
 |[Proposal: Ballerina VSCode try-out plugin for REST APIs](https://github.com/ballerina-platform/ballerina-standard-library/issues/2508)|[shafreenAnfar](https://github.com/shafreenAnfar)|0|2021-12-19|open|
 |[Proposal: Improve error handling for passthrough scenarios ](https://github.com/ballerina-platform/ballerina-standard-library/issues/2456)|[shafreenAnfar](https://github.com/shafreenAnfar)|5|2021-12-02|open|
 |[Set default username for SQL client connections](https://github.com/ballerina-platform/ballerina-standard-library/issues/2397)|[niveathika](https://github.com/niveathika)|5|2021-11-17|open|
-|[Proposal: Introducing Initial Support for HATEOAS](https://github.com/ballerina-platform/ballerina-standard-library/issues/2391)|[shafreenAnfar](https://github.com/shafreenAnfar)|14|2021-11-15|open|
+|[Proposal: Introducing Initial Support for HATEOAS](https://github.com/ballerina-platform/ballerina-standard-library/issues/2391)|[shafreenAnfar](https://github.com/shafreenAnfar)|15|2021-11-15|open|
 |[Proposal: `continue` action for HTTP Client API](https://github.com/ballerina-platform/ballerina-standard-library/issues/2038)|[ayeshLK](https://github.com/ayeshLK)|4|2021-10-12|open|
 |[Proposal: xDS API Support for gRPC](https://github.com/ballerina-platform/ballerina-standard-library/issues/2011)|[BuddhiWathsala](https://github.com/BuddhiWathsala)|2|2021-10-06|open|
 |[User has to provide offset to get time local time](https://github.com/ballerina-platform/ballerina-standard-library/issues/1138)|[KRVPerera](https://github.com/KRVPerera)|1|2021-03-23|open|

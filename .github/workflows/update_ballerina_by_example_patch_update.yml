@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
-      NGROK_TOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
 
     steps:
       - name: Install Node
@@ -25,7 +24,8 @@ jobs:
       - name: Run container
         run: docker-compose up -d
 
-      - uses: vmactions/ngrok-tunnel@v0.0.1
-        with:
-          protocol: http
-          port: 4000
+      - name: Install ngrok and host the website
+        run: |
+          snap install ngrok
+          ngrok config add-authtoken ${{ secrets.NGROK_AUTHTOKEN }}
+          ngrok http 4000

@@ -27,6 +27,7 @@ jobs:
 
       - name: Install ngrok and host the website
         run: |
-          curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc
+          sudo snap install ngrok
+          sudo chown -R runner:runner /home/runner/.config
           ngrok config add-authtoken ${{ secrets.NGROK_AUTHTOKEN }}
           ngrok http 4000

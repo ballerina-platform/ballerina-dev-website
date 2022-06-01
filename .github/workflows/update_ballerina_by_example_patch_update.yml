@@ -28,6 +28,7 @@ jobs:
       - name: Install ngrok and host the website
         run: |
           sudo snap install ngrok
-          sudo chmod -R 700 /home/runner/.config/ngrok 
+          ls -a /home/runner
+          sudo chmod -R 700 /home/runner
           ngrok config add-authtoken ${{ secrets.NGROK_AUTHTOKEN }}
           ngrok http 4000

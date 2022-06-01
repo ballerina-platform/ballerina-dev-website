@@ -59,4 +59,4 @@ jobs:
         with:
           timeout: 1h
           port: 4000
-          ngrok_authtoken: $GITHUB_TOKEN
+          ngrok_authtoken: ${{ secrets.NGROK_AUTHTOKEN }}

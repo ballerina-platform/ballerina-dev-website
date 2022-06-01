@@ -3,7 +3,6 @@ name: Create a PR for Swan Lake BBE pages on Ballerina distribution repo changes
 on:
   repository_dispatch:
   workflow_dispatch:
-  push:
 
 jobs:
   bbe-sw-gen:

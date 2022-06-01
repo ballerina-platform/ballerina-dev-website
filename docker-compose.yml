@@ -1,0 +1,9 @@
+version: "3"
+services:
+  jekyll-serve:
+    image: jekyll/jekyll:3.8.6
+    volumes:
+      - ".:/srv/jekyll"
+    ports:
+      - "4000:4000"
+    command: "bundle"

@@ -52,23 +52,11 @@ jobs:
       - name: Copy back the content in temporary directory
         run: cp -r ./tempExamples/. ./learn/by-example
 
-      - name: Push BBE changes
-        run: |
-          git checkout automate-bbes-$GITHUB_SHA 2>/dev/null || git checkout -b automate-bbes-$GITHUB_SHA
+      - name: Run container
+        run: docker-compose up -d
 
-          git config --global user.email ${{ secrets.EMAIL }}
-          git config --global user.name ${{ secrets.NAME }}
-
-          git add ./learn/by-example
-          git commit --allow-empty -m 'Update Ballerina Swan Lake by Examples'
-
-          git push --set-upstream origin automate-bbes-$GITHUB_SHA
-          echo 'Successfully pushed to automate-bbes-$GITHUB_SHA branch'
-
-      - name: Create pull request for new BBEs
-        shell: bash
-        run: |
-          curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-          bin/hub pull-request -b bbe-generation-v2 -m '[Automated] Update Ballerina By Example(BBEs) pages'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: apogiatzis/ngrok-tunneling-action@v0.1.4
+        with:
+          timeout: 1h
+          port: 4000
+          ngrok_authtoken: $GITHUB_TOKEN

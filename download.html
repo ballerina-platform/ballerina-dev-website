@@ -23,40 +23,89 @@ redirect_from:
 		</div>
       
 
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
-				<div class="cFeaturedVersion">
-               <h2 id="swanlake">{{ site.data.swanlake-latest.metadata.display-version }}</span></h2>
-               <!-- <h2 id="swanlake">{{ site.data.swanlake-latest.metadata.display-version }} <span id="versionInfo">({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2> -->
-               <!-- <p>For more details, see the <a href="https://blog.ballerina.io/posts/2022-02-01-announcing-ballerina-2201.0.0-swan-lake/">Swan Lake GA release announcement </a> and <a href="/downloads/swan-lake-release-notes/">release note.</a></p><br/>  -->
-					<!-- <h2 id="swanlake">{{ site.data.swanlake-latest.metadata.display-version }} <span id="versionInfo">({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2> -->
-					<div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;">
-						<p><strong>If you are already using Ballerina 2201.0.0 (Swan Lake)</strong>, run either of the commands below to directly update to {{ site.data.swanlake-latest.metadata.display-version }} using the <a href="/learn/tooling-guide/cli-tools/update-tool/">Ballerina Update Tool.</a></p><br> 
-                  <p><code class="highlighter-rouge language-plaintext">bal dist update</code> (or <code class="highlighter-rouge language-plaintext">bal dist pull {{ site.data.swanlake-latest.metadata.version }})</code></p>
-                  </br> 
-                  <p><strong>If you are using a version below 2201.0.0 (Swan Lake)</strong>, run the commands below to update to {{ site.data.swanlake-latest.metadata.display-version }}.</p><br> 
-                  <p>1. Run <code class="highlighter-rouge language-plaintext">bal update</code> to get the latest version of the update tool.</p> 
-                  <!-- <p><pre>bal update</pre></p> -->
-                  <!-- <p>2. Run the command below to update your Ballerina version to {{ site.data.swanlake-latest.metadata.display-version }}.</p> -->
-                  <p>2. Run <code class="highlighter-rouge language-plaintext">bal dist update</code> (or <code class="highlighter-rouge language-plaintext">bal dist pull {{ site.data.swanlake-latest.metadata.version }}</code>) to update your Ballerina version to {{ site.data.swanlake-latest.metadata.display-version }}.</p>
-                  <!-- <p><pre>bal dist update</pre></p> -->
-                  <!-- <p>Next, run the command below to update your Ballerina version to {{ site.data.swanlake-latest.metadata.display-version }}.</p>	 -->
-                  <!-- <p>If you already ran <code class="highlighter-rouge language-plaintext">bal dist update</code> (or <code class="highlighter-rouge language-plaintext">bal dist pull {{ site.data.swanlake-latest.metadata.display-version }})</code> before <code class="highlighter-rouge language-plaintext">bal update</code>, see <a href="/downloads/swan-lake-release-notes/2201-0-0-swan-lake/#troubleshooting">Updating Ballerina</a> to recover your installation.</p> -->
-                  </br> 
-                  <p>However, if you are using a version below 2201.0.0 (Swan Lake) and if you already ran <code class="highlighter-rouge language-plaintext">bal dist update</code> (or <code class="highlighter-rouge language-plaintext">bal dist pull {{ site.data.swanlake-latest.metadata.version }})</code> before <code class="highlighter-rouge language-plaintext">bal update</code>, see <a href="/downloads/swan-lake-release-notes/2201-0-0-swan-lake/#troubleshooting">Troubleshooting</a> to recover your installation.</p>
-               </div>
-            </br> 
-         </div> 
-		</div>
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
-				<p>If you are new to Ballerina, download the relevant Ballerina distribution based on your operating system and install it.</p>
-         </br>
-			</div>
-		</div>
-	</div>
-	</br>
-	<div class="clearfix"></div>
+      <style>
+         body {font-family: Arial;}
+         
+         /* Style the tab */
+         .tab {
+           overflow: hidden;
+           border: 1px solid #ccc;
+           background-color: #f1f1f1;
+         }
+         
+         /* Style the buttons inside the tab */
+         .tab button {
+           background-color: inherit;
+           float: left;
+           border: none;
+           outline: none;
+           cursor: pointer;
+           padding: 14px 16px;
+           transition: 0.3s;
+           font-size: 17px;
+           font-weight: bold;
+           font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
+         }
+         
+         /* Change background color of buttons on hover */
+         .tab button:hover {
+           background-color: #ddd;
+         }
+         
+         /* Create an active/current tablink class */
+         .tab button.active {
+           background-color: #ccc;
+         }
+         
+         /* Style the tab content */
+         .tabcontent {
+           display: none;
+           padding: 6px 12px;
+           border: 1px solid #ccc;
+           border-top: none;
+         }
+         </style>
+<h2>Join Ballerina Events</h2>
+<p>Click to see information about the Ballerina past and upcoming events.</p>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, '2201.1.0')" id="defaultOpen">2201.1.0 (Swan Lake)</button>
+  <button class="tablinks" onclick="openCity(event, '2201.0.4')">2201.0.4 (Swan Lake)</button>
+</div>
+
+<div id="2201.1.0" class="tabcontent">
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
+         <div class="cFeaturedVersion">
+            <h2 id="swanlake">{{ site.data.swanlake-latest.metadata.display-version }}</span></h2>
+            <!-- <h2 id="swanlake">{{ site.data.swanlake-latest.metadata.display-version }} <span id="versionInfo">({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2> -->
+            <!-- <p>For more details, see the <a href="https://blog.ballerina.io/posts/2022-02-01-announcing-ballerina-2201.0.0-swan-lake/">Swan Lake GA release announcement </a> and <a href="/downloads/swan-lake-release-notes/">release note.</a></p><br/>  -->
+            <!-- <h2 id="swanlake">{{ site.data.swanlake-latest.metadata.display-version }} <span id="versionInfo">({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2> -->
+            <div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;">
+               <p><strong>If you are already using Ballerina 2201.0.0 (Swan Lake)</strong>, run either of the commands below to directly update to {{ site.data.swanlake-latest.metadata.display-version }} using the <a href="/learn/tooling-guide/cli-tools/update-tool/">Ballerina Update Tool.</a></p><br> 
+               <p><code class="highlighter-rouge language-plaintext">bal dist update</code> (or <code class="highlighter-rouge language-plaintext">bal dist pull {{ site.data.swanlake-latest.metadata.version }})</code></p>
+               </br> 
+               <p><strong>If you are using a version below 2201.0.0 (Swan Lake)</strong>, run the commands below to update to {{ site.data.swanlake-latest.metadata.display-version }}.</p><br> 
+               <p>1. Run <code class="highlighter-rouge language-plaintext">bal update</code> to get the latest version of the update tool.</p> 
+               <!-- <p><pre>bal update</pre></p> -->
+               <!-- <p>2. Run the command below to update your Ballerina version to {{ site.data.swanlake-latest.metadata.display-version }}.</p> -->
+               <p>2. Run <code class="highlighter-rouge language-plaintext">bal dist update</code> (or <code class="highlighter-rouge language-plaintext">bal dist pull {{ site.data.swanlake-latest.metadata.version }}</code>) to update your Ballerina version to {{ site.data.swanlake-latest.metadata.display-version }}.</p>
+               <!-- <p><pre>bal dist update</pre></p> -->
+               <!-- <p>Next, run the command below to update your Ballerina version to {{ site.data.swanlake-latest.metadata.display-version }}.</p>	 -->
+               <!-- <p>If you already ran <code class="highlighter-rouge language-plaintext">bal dist update</code> (or <code class="highlighter-rouge language-plaintext">bal dist pull {{ site.data.swanlake-latest.metadata.display-version }})</code> before <code class="highlighter-rouge language-plaintext">bal update</code>, see <a href="/downloads/swan-lake-release-notes/2201-0-0-swan-lake/#troubleshooting">Updating Ballerina</a> to recover your installation.</p> -->
+               </br> 
+               <p>However, if you are using a version below 2201.0.0 (Swan Lake) and if you already ran <code class="highlighter-rouge language-plaintext">bal dist update</code> (or <code class="highlighter-rouge language-plaintext">bal dist pull {{ site.data.swanlake-latest.metadata.version }})</code> before <code class="highlighter-rouge language-plaintext">bal update</code>, see <a href="/downloads/swan-lake-release-notes/2201-0-0-swan-lake/#troubleshooting">Troubleshooting</a> to recover your installation.</p>
+            </div>
+         </br> 
+      </div> 
+   </div>
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
+         <p>If you are new to Ballerina, download the relevant Ballerina distribution based on your operating system and install it.</p>
+      </br>
+      </div>
+   </div>
+   <div class="clearfix"></div>
 	<div class="row cDownloads">
 		<div class="container">
 			<div class=" ">
@@ -122,6 +171,60 @@ redirect_from:
 		</br>
 		<div class="clearfix"></div>
    </div>
+</div>
+
+<div id="2201.0.4" class="tabcontent">
+
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+<style>
+   .navbar-nav > li.cActive > a {
+   color: rgb(87, 89, 93) !important;
+   }
+   .navbar-nav > li#Eventsli a  {
+   color: #20b6b0 !important;
+   }
+   .nav > li.cVersionItem {
+   display: none !important;
+   }
+   .cGitButtonContainer {
+   padding-left: 40px;
+   }
+   .cBallerinaTocContainer {
+      display:none;
+   }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+	</br>
+	
    <div class="row cDownloads">
       <div class="container">
          <div class=" ">

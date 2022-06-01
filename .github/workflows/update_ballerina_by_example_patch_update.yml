@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
+      NGROK_TOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
 
     steps:
       - name: Install Node
@@ -55,8 +56,7 @@ jobs:
       - name: Run container
         run: docker-compose up -d
 
-      - uses: apogiatzis/ngrok-tunneling-action@v0.1.4
+      - uses: vmactions/ngrok-tunnel@v0.0.1
         with:
-          timeout: 1h
+          protocol: https
           port: 4000
-          ngrok_authtoken: ${{ secrets.NGROK_AUTHTOKEN }}

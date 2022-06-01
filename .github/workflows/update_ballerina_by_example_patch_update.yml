@@ -3,6 +3,7 @@ name: Create a PR for Swan Lake BBE pages on Ballerina distribution repo changes
 on:
   repository_dispatch:
   workflow_dispatch:
+  push:
 
 jobs:
   bbe-sw-gen:
@@ -26,6 +27,6 @@ jobs:
 
       - name: Install ngrok and host the website
         run: |
-          snap install ngrok
+          sudo snap install ngrok
           ngrok config add-authtoken ${{ secrets.NGROK_AUTHTOKEN }}
           ngrok http 4000

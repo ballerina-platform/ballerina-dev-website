@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R2</h1>
+<h1>Ballerina Language Specification, 2022R3 preview 2022-06-02</h1>
 <p>
 Primary contributors:
 </p>
@@ -597,23 +597,25 @@ GitHub repository where this specification is maintained.
 <li>A. <a href="#references">References</a>
 </li>
 <li>B. <a href="#changes">Changes since previous releases</a><ul>
-<li>B.1 <a href="#section_B.1">Summary of changes from 2021R1 to 2022R2</a>
+<li>B.1 <a href="#section_B.1">Summary of changes from 2021R2 to 2022R3</a>
 </li>
-<li>B.2 <a href="#section_B.2">Summary of changes from 2021R1 to 2022R1</a>
+<li>B.2 <a href="#section_B.2">Summary of changes from 2021R1 to 2022R2</a>
 </li>
-<li>B.3 <a href="#section_B.3">Summary of changes from 2020R1 to 2021R1</a>
+<li>B.3 <a href="#section_B.3">Summary of changes from 2021R1 to 2022R1</a>
 </li>
-<li>B.4 <a href="#section_B.4">Summary of changes from 2019R3 to 2020R1</a>
+<li>B.4 <a href="#section_B.4">Summary of changes from 2020R1 to 2021R1</a>
 </li>
-<li>B.5 <a href="#section_B.5">Summary of changes from 2019R2 to 2019R3</a>
+<li>B.5 <a href="#section_B.5">Summary of changes from 2019R3 to 2020R1</a>
 </li>
-<li>B.6 <a href="#section_B.6">Summary of changes from 2019R1 to 2019R2</a>
+<li>B.6 <a href="#section_B.6">Summary of changes from 2019R2 to 2019R3</a>
 </li>
-<li>B.7 <a href="#section_B.7">Summary of changes from 0.990 to 2019R1</a>
+<li>B.7 <a href="#section_B.7">Summary of changes from 2019R1 to 2019R2</a>
 </li>
-<li>B.8 <a href="#section_B.8">Summary of changes from 0.980 to 0.990</a>
+<li>B.8 <a href="#section_B.8">Summary of changes from 0.990 to 2019R1</a>
 </li>
-<li>B.9 <a href="#section_B.9">Summary of changes from 0.970 to 0.980</a>
+<li>B.9 <a href="#section_B.9">Summary of changes from 0.980 to 0.990</a>
+</li>
+<li>B.10 <a href="#section_B.10">Summary of changes from 0.970 to 0.980</a>
 </li>
 </ul>
 </li>
@@ -9593,24 +9595,24 @@ worker.
 <section>
 <h4 id="section_7.22.2">7.22.2 On fail clause</h4>
 <pre class="grammar"><span class="ntdfn" id="stmt-with-on-fail">stmt-with-on-fail</span> := <a href="#regular-compound-stmt"><span class="ntref">regular-compound-stmt</span></a> <a href="#on-fail-clause"><span class="ntref">on-fail-clause</span></a>
-<span class="ntdfn" id="on-fail-clause">on-fail-clause</span> := <code>on</code> <code>fail</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
+<span class="ntdfn" id="on-fail-clause">on-fail-clause</span> := <code>on</code> <code>fail</code> [<a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a>] <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
 <p>
 A <code>stmt-with-on-fail</code> is executed by executing the
 <code>regular-compound-stmt</code>. A <code>check</code> expression or action,
 or a <code>fail</code> statement may cause control to transfer to the
-<code>on-fail-cause</code>. In this case, the <code>typed-binding-pattern</code>
-is matched to the associated error value, binding the variables occurring within
-the <code>typed-binding-pattern</code>; the <code>statement-block</code> is then
-executed with these bindings in scope. Otherwise, the
-<code>on-fail-clause</code> is not executed.
+<code>on-fail-cause</code>. If so, the <code>statement-block</code> is executed;
+otherwise the <code>statement-block</code> is not executed.
 </p>
 <p>
-The static type of the associated error value is determined from the static type
-of the relevant <code>check</code> expressions and actions, and
-<code>fail</code> statements. It is a compile error unless the match of the
-<code>typed-binding-pattern</code> with the associated error value is guaranteed
-to succeed by the static type of the associated error value.
+If there is a <code>typed-binding-pattern</code>, then it is matched to the
+associated error value, binding the variables occurring within the
+<code>typed-binding-pattern</code>; the <code>statement-block</code> is executed
+with these bindings in scope. The static type of the associated error value is
+determined from the static type of the relevant <code>check</code> expressions
+and actions, and <code>fail</code> statements. It is a compile error unless the
+match of the <code>typed-binding-pattern</code> with the associated error value
+is guaranteed to succeed by the static type of the associated error value.
 </p>
 </section>
 
@@ -13322,7 +13324,15 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 <section class="appendix">
 <h2 id="changes">B. Changes since previous releases</h2>
 <section>
-<h3 id="section_B.1">B.1 Summary of changes from 2021R1 to 2022R2</h3>
+<h3 id="section_B.1">B.1 Summary of changes from 2021R2 to 2022R3</h3>
+<ol>
+<li>The variable declaration in an <code>on fail</code> clause is now
+optional.</li>
+</ol>
+</section>
+
+<section>
+<h3 id="section_B.2">B.2 Summary of changes from 2021R1 to 2022R2</h3>
 <ol>
 <li>The <code>*</code>, <code>/</code> and <code>%</code> operators now allow
 operands to mix numeric types in specific cases: <code>*</code> allows the case
@@ -13348,7 +13358,7 @@ inferred.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.2">B.2 Summary of changes from 2021R1 to 2022R1</h3>
+<h3 id="section_B.3">B.3 Summary of changes from 2021R1 to 2022R1</h3>
 <ol>
 <li>Maps are required to preserve insertion order.</li>
 <li>The static typing rules for <code>==</code> and <code>!=</code> have been
@@ -13390,7 +13400,7 @@ nil.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.3">B.3 Summary of changes from 2020R1 to 2021R1</h3>
+<h3 id="section_B.4">B.4 Summary of changes from 2020R1 to 2021R1</h3>
 <ol>
 <li>There has been a major change to how objects works. All object type
 descriptors are what was previously called <em>abstract</em>: they declare
@@ -13464,7 +13474,7 @@ referenced using the <code>function</code> keyword rather than the
 </ol>
 </section>
 <section>
-<h3 id="section_B.4">B.4 Summary of changes from 2019R3 to 2020R1</h3>
+<h3 id="section_B.5">B.5 Summary of changes from 2019R3 to 2020R1</h3>
 <ol>
 <li>Query expressions and query actions have been added. This is the first stage
 of language-integrated query.</li>
@@ -13500,7 +13510,7 @@ types.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.5">B.5 Summary of changes from 2019R2 to 2019R3</h3>
+<h3 id="section_B.6">B.6 Summary of changes from 2019R2 to 2019R3</h3>
 <ol>
 <li>An import declaration can use <code>as _</code> to include a module in the
 program without using its symbols.</li>
@@ -13512,7 +13522,7 @@ not a named worker.</li>
 </section>
 
 <section>
-<h3 id="section_B.6">B.6 Summary of changes from 2019R1 to 2019R2</h3>
+<h3 id="section_B.7">B.7 Summary of changes from 2019R1 to 2019R2</h3>
 <ol>
 <li>The concept of a built-in method has been replaced by the concept of a lang
 library. A method call on a value of non-object type is now treated as a
@@ -13558,7 +13568,7 @@ replace the old delimited identifier syntax <code>^"<var>s</var>"</code>.</li>
 
 </section>
 <section>
-<h3 id="section_B.7">B.7 Summary of changes from 0.990 to 2019R1</h3>
+<h3 id="section_B.8">B.8 Summary of changes from 0.990 to 2019R1</h3>
 <p>
 The specification has switched to a new versioning scheme. The <var>n</var>-th
 version of the specification released in year 20<var>xy</var> will be labelled
@@ -13627,7 +13637,7 @@ now required to be specified before named arguments.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.8">B.8 Summary of changes from 0.980 to 0.990</h3>
+<h3 id="section_B.9">B.9 Summary of changes from 0.980 to 0.990</h3>
 <p>
 <strong>Structural types and values</strong>
 </p>
@@ -13721,7 +13731,7 @@ definition.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.9">B.9 Summary of changes from 0.970 to 0.980</h3>
+<h3 id="section_B.10">B.10 Summary of changes from 0.970 to 0.980</h3>
 <ol>
 <li>The decimal type has been added.</li>
 <li>There are no longer any implicit numeric conversions.</li>

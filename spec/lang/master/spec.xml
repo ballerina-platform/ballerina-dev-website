@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R2</h1>
+<h1>Ballerina Language Specification, 2022R3 preview 2022-06-02</h1>
 <p>
 Primary contributors:
 </p>
@@ -9099,24 +9099,24 @@ worker.
 <h4>On fail clause</h4>
 <pre
 class="grammar"><dfn>stmt-with-on-fail</dfn> := <abbr>regular-compound-stmt</abbr> <abbr>on-fail-clause</abbr>
-<dfn>on-fail-clause</dfn> := <code>on</code> <code>fail</code> <abbr>typed-binding-pattern</abbr> <abbr>statement-block</abbr>
+<dfn>on-fail-clause</dfn> := <code>on</code> <code>fail</code> [<abbr>typed-binding-pattern</abbr>] <abbr>statement-block</abbr>
 </pre>
 <p>
 A <code>stmt-with-on-fail</code> is executed by executing the
 <code>regular-compound-stmt</code>. A <code>check</code> expression or action,
 or a <code>fail</code> statement may cause control to transfer to the
-<code>on-fail-cause</code>. In this case, the <code>typed-binding-pattern</code>
-is matched to the associated error value, binding the variables occurring within
-the <code>typed-binding-pattern</code>; the <code>statement-block</code> is then
-executed with these bindings in scope. Otherwise, the
-<code>on-fail-clause</code> is not executed.
+<code>on-fail-cause</code>. If so, the <code>statement-block</code> is executed;
+otherwise the <code>statement-block</code> is not executed.
 </p>
 <p>
-The static type of the associated error value is determined from the static type
-of the relevant <code>check</code> expressions and actions, and
-<code>fail</code> statements. It is a compile error unless the match of the
-<code>typed-binding-pattern</code> with the associated error value is guaranteed
-to succeed by the static type of the associated error value.
+If there is a <code>typed-binding-pattern</code>, then it is matched to the
+associated error value, binding the variables occurring within the
+<code>typed-binding-pattern</code>; the <code>statement-block</code> is executed
+with these bindings in scope. The static type of the associated error value is
+determined from the static type of the relevant <code>check</code> expressions
+and actions, and <code>fail</code> statements. It is a compile error unless the
+match of the <code>typed-binding-pattern</code> with the associated error value
+is guaranteed to succeed by the static type of the associated error value.
 </p>
 </section>
 
@@ -12851,6 +12851,14 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 </section>
 <section class="appendix">
 <h2 id="changes">B. Changes since previous releases</h2>
+<section>
+<h3>Summary of changes from 2021R2 to 2022R3</h3>
+<ol>
+<li>The variable declaration in an <code>on fail</code> clause is now
+optional.</li>
+</ol>
+</section>
+
 <section>
 <h3>Summary of changes from 2021R1 to 2022R2</h3>
 <ol>

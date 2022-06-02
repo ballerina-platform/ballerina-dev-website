@@ -32,7 +32,7 @@ redirect_from:
 
     <span class="c1">// Replaces the first substring that matches the given regular expression</span>
     <span class="c1">// with the provided `replacement` string.</span>
-    <span class="nx">new_string</span> <span class="p">=</span> <span class="nx">regex</span><span class="p">:</span><span class="nx">replaceFirst</span><span class="p">(</span><span class="s">&quot;ReplacethisthisTextThis&quot;</span><span class="p">,</span> <span class="s">&quot;this&quot;</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">);</span>
+    <span class="nx">new_string</span> <span class="p">=</span> <span class="nx">regex</span><span class="p">:</span><span class="nx">replace</span><span class="p">(</span><span class="s">&quot;ReplacethisthisTextThis&quot;</span><span class="p">,</span> <span class="s">&quot;this&quot;</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;String after replacing first Match: &quot;</span><span class="p">,</span> <span class="nx">new_string</span><span class="p">);</span>
 
     <span class="c1">// Retrieves an array of strings by splitting a string using the provided</span>
@@ -89,11 +89,11 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/regular-expressions/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.0.4/examples/regular-expressions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                         <li>
-                                            <a target="_blank" href="https://play.ballerina.io/?gist=6ea160b954a8480a287dd1e1de3df5c6&file=regular_expressions.bal"><img src="/img/main-play-green-btn.svg" /></a>
+                                            <a target="_blank" href="https://play.ballerina.io/?gist=ba32633cefcb11afc690bd4fd23ecaa8&file=regular_expressions.bal"><img src="/img/main-play-green-btn.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -180,7 +180,7 @@ import ballerina/regex;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    new_string = regex:replaceFirst(&quot;ReplacethisthisTextThis&quot;, &quot;this&quot;, &quot; &quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    new_string = regex:replace(&quot;ReplacethisthisTextThis&quot;, &quot;this&quot;, &quot; &quot;);
     io:println(&quot;String after replacing first Match: &quot;, new_string);
 </code></pre></div>
 

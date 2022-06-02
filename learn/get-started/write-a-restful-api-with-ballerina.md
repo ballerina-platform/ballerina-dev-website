@@ -261,7 +261,7 @@ service /covid/status on new http:Listener(9000) {
             select covidEntry.iso_code;
 
         if conflictingISOs.length() > 0 {
-            return <ConflictingIsoCodesError>{
+            return {
                 body: {
                     errmsg: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
                 }

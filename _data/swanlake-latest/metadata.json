@@ -1,10 +1,10 @@
 {
 	"version":"2201.1.0",
 	"short-version":"2201.1.0",
-	"display-version":"2201.1.0 (Swan Lake)",
+	"display-version":"2201.1.0 (Swan Lake Update 1)",
 	"release-date":"2022-06-02",
 	"windows-installer":"ballerina-2201.1.0-swan-lake-windows-x64.msi",
-	"windows-installer-size":"156mb",
+	"windows-installer-size":"152mb",
 	"linux-installer":"ballerina-2201.1.0-swan-lake-linux-x64.deb",
 	"linux-installer-size":"175mb",
 	"macos-installer":"ballerina-2201.1.0-swan-lake-macos-x64.pkg",

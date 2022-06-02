@@ -1,0 +1,68 @@
+name: Add issue labels
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  Add-label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        if: ${{ contains(github.event.issue.body, 'Area/BBEs') }}
+        steps:
+          - run: gh issue edit $ISSUE --add-label "Area/BBEs"
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              ISSUE: ${{ github.event.issue.number }}
+
+        if: ${{ contains(github.event.issue.body, 'Area/HomePageSamples') }}
+        steps:
+          - run: gh issue edit $ISSUE --add-label "Area/HomePageSamples"
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              ISSUE: ${{ github.event.issue.number }}
+
+        if: ${{ contains(github.event.issue.body, 'Area/LearnPages') }}
+        steps:
+          - run: gh issue edit $ISSUE --add-label "Area/LearnPages"
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              ISSUE: ${{ github.event.issue.number }}
+
+        if: ${{ contains(github.event.issue.body, 'Area/CommonPages') }}
+        steps:
+          - run: gh issue edit $ISSUE --add-label "Area/CommonPages"
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              ISSUE: ${{ github.event.issue.number }}
+
+        if: ${{ contains(github.event.issue.body, 'Area/Backend') }}
+        steps:
+          - run: gh issue edit $ISSUE --add-label "Area/Backend"
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              ISSUE: ${{ github.event.issue.number }}
+
+        if: ${{ contains(github.event.issue.body, 'Area/UIUX') }}
+        steps:
+          - run: gh issue edit $ISSUE --add-label "Area/UIUX"
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              ISSUE: ${{ github.event.issue.number }}
+
+        if: ${{ contains(github.event.issue.body, 'Area/Workflows') }}
+        steps:
+          - run: gh issue edit $ISSUE --add-label "Area/Workflows"
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              ISSUE: ${{ github.event.issue.number }}
+
+        if: ${{ contains(github.event.issue.body, 'Area/Blog') }}
+        steps:
+          - run: gh issue edit $ISSUE --add-label "Area/Blog"
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              ISSUE: ${{ github.event.issue.number }}
+              
+              

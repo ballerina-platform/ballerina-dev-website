@@ -7,6 +7,8 @@ permalink: /learn/platform-specifications/
 redirect_from:
   - /learn/language-specification
   - /learn/language-specification/
+  - /learn/language-specifications
+  - /learn/language-specifications/
   - /spec
   - /spec/
   - /learn/platform-specifications

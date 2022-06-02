@@ -22,6 +22,9 @@
     - title: Implement the second endpoint
       url: /learn/write-a-restful-api-with-ballerina/#implement-the-second-endpoint
       active: implement-the-second-endpoint
+    - title: The complete code
+      url: /learn/write-a-restful-api-with-ballerina/#the-complete-code
+      active: the-complete-code
     - title: Run the service
       url: /learn/write-a-restful-api-with-ballerina/#run-the-service
       active: run-the-service

@@ -25,7 +25,7 @@ bal openapi [-i | --input] <openapi-contract-file-path>
             [--with-tests]
 ```
 
-The command line arguments below can be used with the command for each particular purpose as described below. 
+The command-line arguments below can be used with the command for each particular purpose as described below. 
 
 | Argument          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

@@ -618,7 +618,7 @@ name="sample-config"
 - Reduced the package size of `ballerina/cloud`
 - Docker image generation now relies on the user's docker client
 - Added the `ballerinax/awslambda` package in [Ballerina Central](https://central.ballerina.io/ballerinax/awslambda)
-- Added the `ballerinax/azure_functions` package in [Ballerina Central](https://central.ballerina.io/ballerinax/azure.functions)
+- Added the `ballerinax/azure_functions` package in [Ballerina Central](https://central.ballerina.io/ballerinax/azure_functions)
 
 ### Breaking changes
 
@@ -634,7 +634,7 @@ To view bug fixes, see the [GitHub milestone for Ballerina 2201.1.0 (Swan Lake U
 
 #### AsyncAPI tool
 
-Introduced the AsyncAPI tool, which will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating Ballerina service and listener skeletons. Ballerina Swan Lake supports the [AsyncAPI Specification version 2.x](https://www.asyncapi.com/docs/specifications/v2.0.0.). For more information, see [Ballerina AsyncAPI support](/learn/ballerina-asyncapi-support) and [AsyncAPI CLI documentation](/learn/cli-documentation/asyncapi/#asyncapi-to-ballerina).
+Introduced the AsyncAPI tool, which will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating Ballerina service and listener skeletons. Ballerina Swan Lake supports the [AsyncAPI Specification version 2.x](https://www.asyncapi.com/docs/specifications/v2.0.0). For more information, see [Ballerina AsyncAPI support](/learn/ballerina-asyncapi-support) and [AsyncAPI CLI documentation](/learn/cli-documentation/asyncapi/#asyncapi-to-ballerina).
 
 #### GraphQL client tool
 

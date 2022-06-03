@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Ballerina Language Specification</title>
+  <title>Ballerina language specification</title>
   <meta charset="utf-8" />
   <style type="text/css">
     body { font-family: sans-serif; line-height: 1.38;  }
@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R2 preview 2022-05-23</h1>
+<h1>Ballerina language specification, 2022R2 preview 2022-05-23</h1>
 <p>
 Primary contributors:
 </p>

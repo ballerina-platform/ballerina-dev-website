@@ -1,0 +1,57 @@
+name: Create a PR for Swan Lake BBE pages on Ballerina distribution repo changes
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bbe-sw-gen:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
+
+    steps:
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          ref: dev
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Clone ballerina-distribution repository
+        run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-distribution.git
+
+      - name: Copy examples to dev website repo
+        run: cp -r ./ballerina-distribution/examples .
+
+      - name: Run markdown to HTML generation script
+        run: node ./js/markdownConverter.js ./examples ./learn/by-example
+
+      - name: Format code using prettier
+        run: npx prettier ./learn/by-example/*.html --write
+
+      - name: Push BBE changes
+        run: |
+          git checkout automate-bbes-$GITHUB_SHA 2>/dev/null || git checkout -b automate-bbes-$GITHUB_SHA
+
+          git config --global user.email "ballerina-bot@ballerina.org"
+          git config --global user.name "ballerina-bot"
+
+          git add ./learn/by-example
+          git commit --allow-empty -m 'Update Ballerina Swan Lake by Examples'
+
+          git push --set-upstream origin automate-bbes-$GITHUB_SHA
+          echo 'Successfully pushed to automate-bbes-$GITHUB_SHA branch'
+
+      - name: Create pull request for new BBEs
+        shell: bash
+        run: |
+          curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+          bin/hub pull-request -b dev -m '[Automated] Update Ballerina By Example(BBEs) pages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

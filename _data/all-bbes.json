@@ -1394,7 +1394,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Response With multiparts",
+                "name": "Response with multiparts",
                 "url": "http-response-with-multiparts",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1402,7 +1402,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Request With multiparts",
+                "name": "Request with multiparts",
                 "url": "http-request-with-multiparts",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1433,7 +1433,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Error Handling",
+                "name": "Error handling",
                 "url": "http-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1441,7 +1441,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Interceptor Error Handling",
+                "name": "Interceptor Error handling",
                 "url": "http-interceptor-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1622,7 +1622,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - Retry",
+                "name": "Client - retry",
                 "url": "websocket-retry-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1643,7 +1643,7 @@
     {
         "title": "WebSocket security",
         "column": 1,
-        "category": "Working Over the Network",
+        "category": "Working over the Network",
         "samples": [
             {
                 "name": "Service - SSL/TLS",
@@ -2142,7 +2142,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer client - Poll Payload",
+                "name": "Consumer client - poll payload",
                 "url": "kafka-consumer-client-poll-payload",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2151,7 +2151,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer client - Poll ConsumerRecord",
+                "name": "Consumer client - poll consumer record",
                 "url": "kafka-consumer-client-poll-consumer-record",
                 "verifyBuild": false,
                 "verifyOutput": false,

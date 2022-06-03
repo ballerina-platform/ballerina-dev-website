@@ -41,16 +41,16 @@ redirect_from:
 <span class="p">);</span>
 
 <span class="kd">service</span> <span class="o">/</span><span class="nx">foo</span> <span class="nx">on</span> <span class="nx">securedEP</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">bar</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Service</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">bar</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Service</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">new</span> <span class="nx">WsService</span><span class="p">();</span>
    <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kd">service</span> <span class="nx">class</span> <span class="nx">WsService</span> <span class="p">{</span>
     <span class="o">*</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Service</span><span class="p">;</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
+    <span class="nx">remote</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">onTextMessage</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
                              <span class="kt">string</span> <span class="nx">text</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeMessage</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeTextMessage</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -84,7 +84,7 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="websocket-service-basic-auth-file-user-store.html">
                                         <span>NEXT ></span>
-                                        <p>Service - Basic Auth File user store</p>
+                                        <p>Service - Basic Auth file user store</p>
                                     </a>
                                 </div>
                                 
@@ -237,7 +237,7 @@ import ballerina/websocket;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>service /foo on securedEP {
-    resource function get bar() returns websocket:Service {
+    resource isolated function get bar() returns websocket:Service {
         return new WsService();
    }
 }
@@ -254,9 +254,9 @@ import ballerina/websocket;
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>service class WsService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller,
+    remote isolated function onTextMessage(websocket:Caller caller,
                              string text) returns websocket:Error? {
-        check caller-&gt;writeMessage(text);
+        check caller-&gt;writeTextMessage(text);
     }
 }
 </code></pre></div>

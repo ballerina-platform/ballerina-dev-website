@@ -14,8 +14,6 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 
-<span class="nx">xmlns</span> <span class="s">&quot;http://www.test.com&quot;</span> <span class="k">as</span> <span class="nx">test</span><span class="p">;</span>
-
 <span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">Name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">Grade</span><span class="p">;</span>
@@ -25,15 +23,21 @@ redirect_from:
 
     <span class="c1">// The `Student` parameter in [Payload annotation](https://docs.central.ballerina.io/ballerina/http/latest/records/Payload)</span>
     <span class="c1">// represents the entity body of the inbound request.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">student</span><span class="p">(</span><span class="err">@</span><span class="nx">http</span><span class="p">:</span><span class="nx">Payload</span> <span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span>
+    <span class="nd">@http:ResourceConfig {</span>
+        <span class="nx">consumes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;application/json&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">bindStudent</span><span class="p">(</span><span class="err">@</span><span class="nx">http</span><span class="p">:</span><span class="nx">Payload</span> <span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span>
             <span class="nx">returns</span> <span class="kt">json</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">student</span><span class="p">.</span><span class="nx">Name</span><span class="p">;</span>
         <span class="k">return</span> <span class="p">{</span><span class="nx">Name</span><span class="p">:</span> <span class="nx">name</span><span class="p">};</span>
     <span class="p">}</span>
 
     <span class="c1">//Binds the XML payload of the inbound request to the `store` variable.</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">store</span><span class="p">(</span><span class="nd">@http:Payload xml store) returns xml {</span>
-        <span class="kt">xml</span> <span class="nx">city</span> <span class="p">=</span> <span class="nx">store</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">test</span><span class="p">:</span> <span class="nx">city</span><span class="p">&gt;;</span>
+    <span class="nd">@http:ResourceConfig {</span>
+        <span class="nx">consumes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;application/xml&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">post</span> <span class="nx">bindXML</span><span class="p">(</span><span class="nd">@http:Payload xml store) returns xml {</span>
+        <span class="kt">xml</span> <span class="nx">city</span> <span class="p">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">selectDescendants</span><span class="p">(</span><span class="s">&quot;{http://www.test.com}city&quot;</span><span class="p">);</span>
         <span class="k">return</span> <span class="nx">city</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -47,8 +51,8 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Service data binding</h2>
                             <p><p>HTTP service data binding helps to access the request payload through a resource signature parameter. The payload
- parameter should be declared with the <code>@Payload</code> annotation and the  parameter type can be <code>anydata</code>.
- Binding failures will be responded with 400[Bad Request] response<br/><br/>
+ parameter should be declared with the <code>@Payload</code> annotation. <code>string</code>, <code>json</code>, <code>xml</code>, <code>byte[]</code>, record, and record[]
+ are supported as parameter types. Binding failures will be responded with 400[Bad Request] response<br/><br/>
  For more information on the underlying module,
  see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/">HTTP module</a>.</p>
 </p>
@@ -116,18 +120,6 @@ redirect_from:
                             <div class="cTR">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>xmlns &quot;http://www.test.com&quot; as test;
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
-
-                                <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>type Student record {
     string Name;
     int Grade;
@@ -155,7 +147,10 @@ redirect_from:
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post student(@http:Payload Student student)
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
+        consumes: [&quot;application/json&quot;]
+    }
+    resource function post bindStudent(@http:Payload Student student)
             returns json {
         string name = student.Name;
         return {Name: name};
@@ -179,8 +174,11 @@ redirect_from:
                             <div class="cTR hover-enable">
 
                                 <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    resource function post store(@http:Payload xml store) returns xml {
-        xml city = store/&lt;test: city&gt;;
+                                    <div class="highlight"><pre><code class=language-ballerina>    @http:ResourceConfig {
+        consumes: [&quot;application/xml&quot;]
+    }
+    resource function post bindXML(@http:Payload xml store) returns xml {
+        xml city = store.selectDescendants(&quot;{http://www.test.com}city&quot;);
         return city;
     }
 }
@@ -228,8 +226,8 @@ redirect_from:
                             <div class="cTR cOutputTr">
 
                                 <div class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the `student` resource, execute the below HTTP request.
-curl http://localhost:9090/hello/student -d &#39;{ &quot;Name&quot;: &quot;John&quot;, &quot;Grade&quot;: 12, &quot;Marks&quot;: {&quot;English&quot; : &quot;85&quot;, &quot;IT&quot; : &quot;100&quot;}}&#39; -H &quot;Content-Type:application/json&quot;
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the `bindStudent` resource, execute the below HTTP request.
+curl http://localhost:9090/hello/bindStudent -d &#39;{ &quot;Name&quot;: &quot;John&quot;, &quot;Grade&quot;: 12, &quot;Marks&quot;: {&quot;English&quot; : &quot;85&quot;, &quot;IT&quot; : &quot;100&quot;}}&#39; -H &quot;Content-Type:application/json&quot;
 {&quot;Name&quot;:&quot;John&quot;}
 </code></pre></div>
 
@@ -242,8 +240,8 @@ curl http://localhost:9090/hello/student -d &#39;{ &quot;Name&quot;: &quot;John&
                             <div class="cTR cOutputTr">
 
                                 <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the `store` resource, execute the below HTTP request.
-curl http://localhost:9090/hello/store -d &quot;&lt;h:Store id = \&quot;AST\&quot; xmlns:h=\&quot;http://www.test.com\&quot;&gt;&lt;h:street&gt;Main&lt;/h:street&gt;&lt;h:city&gt;94&lt;/h:city&gt;&lt;/h:Store&gt;&quot; -H &quot;Content-Type:application/xml&quot;
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the `bindXML` resource, execute the below HTTP request.
+curl http://localhost:9090/hello/bindXML -d &quot;&lt;h:Store id = \&quot;AST\&quot; xmlns:h=\&quot;http://www.test.com\&quot;&gt;&lt;h:street&gt;Main&lt;/h:street&gt;&lt;h:city&gt;94&lt;/h:city&gt;&lt;/h:Store&gt;&quot; -H &quot;Content-Type:application/xml&quot;
 &lt;h:city xmlns:h=&quot;http://www.test.com&quot;&gt;94&lt;/h:city&gt;
 </code></pre></div>
 

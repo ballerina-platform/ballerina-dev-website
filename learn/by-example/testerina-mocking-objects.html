@@ -70,7 +70,7 @@ redirect_from:
     <span class="nx">remote</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">get</span><span class="p">(</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">,</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">string</span><span class="p">[]&gt;</span><span class="err">?</span> <span class="nx">headers</span> <span class="p">=</span> <span class="p">(),</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">TargetType</span> <span class="nx">targetType</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="nx">returns</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">|</span> <span class="nx">anydata</span> <span class="p">|</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ClientError</span> <span class="p">{</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">|</span> <span class="nx">http</span><span class="p">:</span><span class="nx">PayloadType</span> <span class="p">|</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ClientError</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
         <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
@@ -394,7 +394,7 @@ import ballerina/email;
     remote isolated function get(@untainted string path,
     map&lt;string|string[]&gt;? headers = (),
     http:TargetType targetType = http:Response) returns
-    http:Response | anydata | http:ClientError {
+    http:Response | http:PayloadType | http:ClientError {
         http:Response response = new;
         response.statusCode = 500;
         return response;

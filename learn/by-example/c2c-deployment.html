@@ -338,7 +338,7 @@ tag=&quot;v0.1.0&quot;
                             <div class="cTR cOutputTr">
 
                                 <div class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Verify if the Docker image is generated. (If you have used the `minikube docker-env`, skip this and go to the Kubernetes deployment directly.)
+                                    <div class="highlight"><pre><code class=shell-session># Verify if the Docker image is generated. (If you used the `minikube docker-env`, skip this and go to the Kubernetes deployment directly.)
 `docker images`
 </code></pre></div>
 
@@ -437,7 +437,7 @@ service/wso2-hello-0--svc-local exposed
                             <div class="cTR cOutputTr">
 
                                 <div class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Get the IP and port of the Kubernetes service.
+                                    <div class="highlight"><pre><code class=shell-session># Get the IP address and port of the Kubernetes service.
 `kubectl get svc`
 NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 wso2-hello-0--svc-local   NodePort    10.111.61.112    &lt;none&gt;        9090:32437/TCP   4m17s
@@ -466,7 +466,7 @@ wso2-hello-0--svc-local   NodePort    10.111.61.112    &lt;none&gt;        9090:
                             <div class="cTR cOutputTr">
 
                                 <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Access the deployed service via CURL.
+                                    <div class="highlight"><pre><code class=shell-session># Access the deployed service via cURL.
 `curl http://192.168.49.2:32437/helloWorld/sayHello`
 Hello, World from service helloWorld !
 </code></pre></div>

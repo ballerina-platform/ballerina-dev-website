@@ -31,18 +31,16 @@ redirect_from:
     <span class="nx">securityProtocol</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">PROTOCOL_SASL_PLAINTEXT</span>
 <span class="p">};</span>
 
-<span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">messageProducer</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">SASL_URL</span><span class="p">,</span> <span class="nx">producerConfig</span><span class="p">);</span>
+<span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="nx">SASL_URL</span><span class="p">,</span> <span class="nx">producerConfig</span><span class="p">);</span>
 
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">kafka</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">messageProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">({</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello, World!&quot;</span><span class="p">;</span>
+    <span class="nx">check</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">({</span>
         <span class="nx">topic</span><span class="p">:</span> <span class="s">&quot;demo-security&quot;</span><span class="p">,</span>
-        <span class="nx">value</span><span class="p">:</span> <span class="s">&quot;Hello, World!&quot;</span>
+        <span class="nx">value</span><span class="p">:</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">()</span>
     <span class="p">});</span>
-    <span class="k">if</span> <span class="nx">result</span> <span class="nx">is</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Error</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Message publish unsuccessful : &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Message published successfully.&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="nx">check</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="err">&#39;</span><span class="nx">flush</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Message published successfully.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -53,12 +51,12 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>SASL authentication - producer</h2>
-                            <p><p>This shows how the SASL/PLAIN authentication is done in the <code>kafka:Producer</code>.
- For this to work properly, an active Kafka server must be present
+                            <p><p>This is an example of a Kafka producer using the SASL/PLAIN authentication.
+ For this example to work properly, an active Kafka server must be present
  and it should be configured to use the SASL/PLAIN authentication mechanism.
  <br/><br/>
  For more information on the underlying module,
- see the <a href="https://lib.ballerina.io/ballerinax/kafka/latest">Kafka module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/kafka/latest">Kafka module</a>.</p>
 </p>
 
                         </td>
@@ -218,7 +216,7 @@ import ballerinax/kafka;
                             <div class="cTR">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Producer messageProducer = check new (SASL_URL, producerConfig);
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Producer kafkaProducer = check new(SASL_URL, producerConfig);
 </code></pre></div>
 
                                 </div>
@@ -230,16 +228,14 @@ import ballerinax/kafka;
                             <div class="cTR">
 
                                 <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
-    kafka:Error? result = messageProducer-&gt;send({
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
+    string message = &quot;Hello, World!&quot;;
+    check kafkaProducer-&gt;send({
         topic: &quot;demo-security&quot;,
-        value: &quot;Hello, World!&quot;
+        value: message.toBytes()
     });
-    if result is kafka:Error {
-        io:println(&quot;Message publish unsuccessful : &quot; + result.message());
-    } else {
-        io:println(&quot;Message published successfully.&quot;);
-    }
+    check kafkaProducer-&gt;&#39;flush();
+    io:println(&quot;Message published successfully.&quot;);
 }
 </code></pre></div>
 

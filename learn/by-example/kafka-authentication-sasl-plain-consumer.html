@@ -18,7 +18,7 @@ redirect_from:
 <span class="c1">// Define the relevant SASL URL of the configured Kafka server.</span>
 <span class="kd">const</span> <span class="kt">string</span> <span class="nx">SASL_URL</span> <span class="p">=</span> <span class="s">&quot;localhost:9093&quot;</span><span class="p">;</span>
 
-<span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerConfiguration</span> <span class="nx">consumerConfigs</span> <span class="p">=</span> <span class="p">{</span>
+<span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerConfiguration</span> <span class="nx">consumerConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">groupId</span><span class="p">:</span> <span class="s">&quot;test-group&quot;</span><span class="p">,</span>
     <span class="nx">topics</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;demo-security&quot;</span><span class="p">],</span>
     <span class="c1">// Provide the relevant authentication configurations to authenticate the consumer by [`kafka:AuthenticationConfiguration`](https://docs.central.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration).</span>
@@ -33,19 +33,15 @@ redirect_from:
     <span class="nx">securityProtocol</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">PROTOCOL_SASL_PLAINTEXT</span>
 <span class="p">};</span>
 
-<span class="c1">// Create a subtype of `kafka:AnydataConsumerRecord`</span>
-<span class="nx">public</span> <span class="nx">type</span> <span class="nx">StringConsumerRecord</span> <span class="nx">record</span> <span class="p">{|</span>
-    <span class="o">*</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">AnydataConsumerRecord</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">value</span><span class="p">;</span>
-<span class="p">|};</span>
+<span class="nx">listener</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">kafkaListener</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">SASL_URL</span><span class="p">,</span> <span class="nx">consumerConfig</span><span class="p">);</span>
 
-<span class="kd">service</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="nx">SASL_URL</span><span class="p">,</span> <span class="nx">consumerConfigs</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onConsumerRecord</span><span class="p">(</span><span class="nx">StringConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span>
-    <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="nx">check</span> <span class="nx">from</span> <span class="nx">StringConsumerRecord</span> <span class="err">&#39;</span><span class="nx">record</span> <span class="nx">in</span> <span class="nx">records</span>
-            <span class="nx">do</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Received message: &quot;</span> <span class="o">+</span> <span class="err">&#39;</span><span class="nx">record</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
-            <span class="p">};</span>
+<span class="kd">service</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Service</span> <span class="nx">on</span> <span class="nx">kafkaListener</span> <span class="p">{</span>
+    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onConsumerRecord</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
+                    <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">consumerRecord</span> <span class="nx">in</span> <span class="nx">records</span> <span class="p">{</span>
+            <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">consumerRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -57,12 +53,12 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>SASL authentication - consumer</h2>
-                            <p><p>This shows how the SASL/PLAIN authentication is done in the <code>kafka:Consumer</code>.
- For this to work properly, an active Kafka server must be present
+                            <p><p>This is an example of a Kafka consumer using the SASL/PLAIN authentication.
+ For this example to work properly, an active Kafka server must be present
  and it should be configured to use the SASL/PLAIN authentication mechanism.
  <br/><br/>
  For more information on the underlying module,
- see the <a href="https://lib.ballerina.io/ballerinax/kafka/latest">Kafka module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/kafka/latest">Kafka module</a>.</p>
 </p>
 
                         </td>
@@ -70,9 +66,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="kafka-producer-transactional.html">
+                                    <a class="prev" href="kafka-consumer-group-service.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Transactional producer</p>
+                                        <p>Consumer groups</p>
                                     </a>
                                 </div>
                                  
@@ -148,7 +144,7 @@ import ballerina/log;
                             <div class="cTR">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>kafka:ConsumerConfiguration consumerConfigs = {
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:ConsumerConfiguration consumerConfig = {
     groupId: &quot;test-group&quot;,
     topics: [&quot;demo-security&quot;],
 </code></pre></div>
@@ -221,24 +217,14 @@ import ballerina/log;
                                 </div>
                             </div>
                             
-                            <div class="cTR hover-enable">
+                            <div class="cTR">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public type StringConsumerRecord record {|
-    *kafka:AnydataConsumerRecord;
-    string value;
-|};
+                                    <div class="highlight"><pre><code class=language-ballerina>listener kafka:Listener kafkaListener = new(SASL_URL, consumerConfig);
 </code></pre></div>
 
                                 </div>
                                 <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a subtype of <code>kafka:AnydataConsumerRecord</code></p>
-
-                                        </div>
-                                    </div>
                                     
                                 </div>
                             </div>
@@ -246,13 +232,13 @@ import ballerina/log;
                             <div class="cTR">
 
                                 <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>service on new kafka:Listener(SASL_URL, consumerConfigs) {
-    remote function onConsumerRecord(StringConsumerRecord[] records)
-    returns error? {
-        check from StringConsumerRecord &#39;record in records
-            do {
-                log:printInfo(&quot;Received message: &quot; + &#39;record.value);
-            };
+                                    <div class="highlight"><pre><code class=language-ballerina>service kafka:Service on kafkaListener {
+    remote function onConsumerRecord(kafka:Caller caller,
+                    kafka:ConsumerRecord[] records) returns error? {
+        foreach var consumerRecord in records {
+            string value = check string:fromBytes(consumerRecord.value);
+            log:printInfo(value);
+        }
     }
 }
 </code></pre></div>

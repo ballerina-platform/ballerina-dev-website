@@ -1,17 +1,14 @@
 ---
-layout: ballerina-organizing-code-left-nav-pages-swanlake
+layout: ballerina-package-references-left-nav-pages-swanlake
 title: Package references
 description: The sections below include information about the structure of a package directory. It explains the purpose of each file in a package.
 keywords: ballerina, programming language, ballerina packages, package structure, package layout
-permalink: /learn/organize-ballerina-code/package-references/
+permalink: /learn/package-references/
 active: package-references
 intro: The sections below include information about the structure of a package directory. It explains the purpose of each file in a package.
 redirect_from:
   - /learn/package-layout
   - /learn/package-layout/
-  - /learn/package-references/
-  - /learn/package-references/
-  - /learn/organize-ballerina-code/package-references
 ---
 
 ## Package layout

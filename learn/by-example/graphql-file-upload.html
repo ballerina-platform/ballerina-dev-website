@@ -87,7 +87,7 @@ redirect_from:
  can be used to upload files.
  <br/><br/>
  For more information on the underlying package, see the
- <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">GraphQL package</a>.</p>
+ <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/"><code>graphql</code> package</a>.</p>
 </p>
 
                         </td>
@@ -102,9 +102,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="graphql-documentation.html">
+                                    <a class="next" href="graphql-service-ssl-tls.html">
                                         <span>NEXT ></span>
-                                        <p>Documentation</p>
+                                        <p>Service - SSL/TLS</p>
                                     </a>
                                 </div>
                                 
@@ -401,7 +401,7 @@ import ballerina/io;
                                 <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The second part of the request is a `map` field that includes a `JSON-encoded` map of files that occurred in the operations.
 # The `key` is file field name and the `value` is an array of paths in which the files occurred in the `operations`.
-# `map`: { “0”: [&quot;variables.file&quot;] }
+# `map`: { “0”: [&quot;file&quot;] }
 </code></pre></div>
 
                                 </div>
@@ -428,7 +428,7 @@ import ballerina/io;
                                 <div class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session> curl localhost:4000/fileUpload \
   -F operations=&#39;{ &quot;query&quot;: &quot;mutation($file: Upload!) { singleFileUpload(file: $file) }&quot;, &quot;variables&quot;: { &quot;file&quot;: null } }&#39; \
-  -F map=&#39;{ &quot;0&quot;: [&quot;variables.file&quot;] }&#39; \
+  -F map=&#39;{ &quot;0&quot;: [&quot;file&quot;] }&#39; \
   -F 0=@file1.png
  {&quot;data&quot;:{&quot;singleFileUpload&quot;:&quot;Successfully Uploaded&quot;}}
 </code></pre></div>
@@ -459,7 +459,7 @@ import ballerina/io;
                                     <div class="highlight"><pre><code class=shell-session># Same as the single file upload, the `map` value is a JSON-encoded map of paths in which files occurred in the `operations`.
 # Since the `operations` has an array of `null` values, an array index is included in the path value.
 #  E.g., In `file.0`, `0` is the array index.
-# `map`: { &quot;0&quot;: [&quot;variables.file.0&quot;], &quot;1&quot;: [&quot;variables.file.1&quot;]}
+# `map`: { &quot;0&quot;: [&quot;file.0&quot;], &quot;1&quot;: [&quot;file.1&quot;]}
 </code></pre></div>
 
                                 </div>
@@ -487,7 +487,7 @@ import ballerina/io;
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session> curl localhost:4000/fileUpload \
   -F operations=&#39;{ &quot;query&quot;: &quot;mutation($file: [Upload!]!) { multipleFileUpload(files: $file) }&quot;, &quot;variables&quot;: { &quot;file&quot;: [null, null] } }&#39; \
-  -F map=&#39;{ &quot;0&quot;: [&quot;variables.file.0&quot;], &quot;1&quot;: [&quot;variables.file.1&quot;]}&#39; \
+  -F map=&#39;{ &quot;0&quot;: [&quot;file.0&quot;], &quot;1&quot;: [&quot;file.1&quot;]}&#39; \
   -F 0=@file1.png \
   -F 1=@file2.png
   {&quot;data&quot;:{&quot;multipleFileUpload&quot;:[&quot;file1.png&quot;, &quot;file2.png&quot;]}}

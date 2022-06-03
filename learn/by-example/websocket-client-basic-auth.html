@@ -1,7 +1,7 @@
 ---
 layout: ballerina-example-page-old
 title: Client - Basic Auth
-description: BBE on how to secure WebSocket client with Basic Auth in Ballerina.
+description: BBE on how to secure WebSocket client with Basic auth in Ballerina.
 keywords: ballerina, ballerina by example, bbe, websocket, auth, basic auth
 permalink: /learn/by-example/websocket-client-basic-auth
 active: websocket-client-basic-auth
@@ -15,7 +15,7 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websocket</span><span class="p">;</span>
 
-<span class="c1">// Defines the WebSocket client to call the Basic Auth secured APIs.</span>
+<span class="c1">// Defines the WebSocket client to call the Basic auth secured APIs.</span>
 <span class="c1">// The client is enriched with the `Authorization: Basic &lt;token&gt;` header by</span>
 <span class="c1">// passing the [`websocket:CredentialsConfig`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/CredentialsConfig) for the `auth` configuration of the</span>
 <span class="c1">// client.</span>
@@ -30,8 +30,8 @@ redirect_from:
 <span class="p">);</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="nx">check</span> <span class="nx">securedEP</span><span class="o">-&gt;</span><span class="nx">writeMessage</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
-    <span class="kt">string</span> <span class="nx">textMessage</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">securedEP</span><span class="o">-&gt;</span><span class="nx">readMessage</span><span class="p">();</span>
+    <span class="nx">check</span> <span class="nx">securedEP</span><span class="o">-&gt;</span><span class="nx">writeTextMessage</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nx">textMessage</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">securedEP</span><span class="o">-&gt;</span><span class="nx">readTextMessage</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">textMessage</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -43,7 +43,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Client - Basic Auth</h2>
-                            <p><p>A client, which is secured with Basic Auth can be used to connect to
+                            <p><p>A client, which is secured with Basic auth can be used to connect to
  a secured service.<br/>
  The client is enriched with the <code>Authorization: Basic &lt;token&gt;</code> header by
  passing the <code>websocket:CredentialsConfig</code> for the <code>auth</code> configuration of the
@@ -132,7 +132,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines the WebSocket client to call the Basic Auth secured APIs.
+                                            <p>Defines the WebSocket client to call the Basic auth secured APIs.
  The client is enriched with the <code>Authorization: Basic &lt;token&gt;</code> header by
  passing the <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/records/CredentialsConfig"><code>websocket:CredentialsConfig</code></a> for the <code>auth</code> configuration of the
  client.</p>
@@ -147,8 +147,8 @@ import ballerina/websocket;
 
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
-    check securedEP-&gt;writeMessage(&quot;Hello, World!&quot;);
-    string textMessage = check securedEP-&gt;readMessage();
+    check securedEP-&gt;writeTextMessage(&quot;Hello, World!&quot;);
+    string textMessage = check securedEP-&gt;readTextMessage();
     io:println(textMessage);
 }
 </code></pre></div>

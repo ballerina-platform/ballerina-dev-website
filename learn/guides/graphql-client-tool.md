@@ -141,15 +141,15 @@ Use the generated client to execute the queries/mutations on the GraphQL API. Th
 
 2. Add a Ballerina file called `main.bal` with the content below into the root of the Ballerina package.
 
-```ballerina
-import ballerina/io;
+   ```ballerina
+   import ballerina/io;
 
-public function main() returns error? {
-    QuerycountryClient countryClient = check new ("https://countries.trevorblades.com/");
-    CountryByCodeResponse response = check countryClient->countryByCode("LK");
-    io:println(response.country?.name);
-}
-```
+   public function main() returns error? {
+      QuerycountryClient countryClient = check new ("https://countries.trevorblades.com/");
+      CountryByCodeResponse response = check countryClient->countryByCode("LK");
+      io:println(response.country?.name);
+   }
+   ```
 
 3. Build and run the Ballerina package by using the `bal run` command.
 
@@ -165,14 +165,14 @@ Follow the steps below to generate multiple Ballerina clients from a GraphQL con
 
 2. Create a GraphQL config file (`graphql.config.yaml`) in the Ballerina package root directory with the configurations below.
 
-```yml
-schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
-documents:
-   - <File path to the GraphQL document with the GraphQL queries & mutations>
-   - <File path to the GraphQL document with the GraphQL queries & mutations>
-   - <File path to the GraphQL document with the GraphQL queries & mutations>
-   - <Add more documents based on your requirement …>
-```
+   ```yml
+   schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
+   documents:
+      - <File path to the GraphQL document with the GraphQL queries & mutations>
+      - <File path to the GraphQL document with the GraphQL queries & mutations>
+      - <File path to the GraphQL document with the GraphQL queries & mutations>
+      - <Add more documents based on your requirement …>
+   ```
 
 If you want to generate multiple Ballerina clients for a given set of GraphQL documents, use the command below.
 
@@ -204,27 +204,27 @@ Follow the steps below to generate multiple Ballerina modules from a GraphQL con
 
 2. Create a GraphQL config file (`graphql.config.yaml`) in the Ballerina package root directory with the configurations below.
 
-```yaml
-projects:
-   <project1_name>:
-      schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
-      documents:
-         - <File path to the GraphQL document with the GraphQL queries & mutations>
-         - <File path to the GraphQL document with the GraphQL queries & mutations>
-         - <Add more documents based on your requirement …>
-   <project2_name>:
-      schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
-      documents:
-         - <File path to the GraphQL document with the GraphQL queries & mutations>
-         - <File path to the GraphQL document with the GraphQL queries & mutations>
-         - <Add more documents based on your requirement …>
-   <project3_name>:
-      schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
-      documents:
-         - <File path to the GraphQL document with the GraphQL queries & mutations>
-         - <File path to the GraphQL document with the GraphQL queries & mutations>
-         - <Add more documents based on your requirement …>
-```
+   ```yaml
+   projects:
+      <project1_name>:
+         schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
+         documents:
+            - <File path to the GraphQL document with the GraphQL queries & mutations>
+            - <File path to the GraphQL document with the GraphQL queries & mutations>
+            - <Add more documents based on your requirement …>
+      <project2_name>:
+         schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
+         documents:
+            - <File path to the GraphQL document with the GraphQL queries & mutations>
+            - <File path to the GraphQL document with the GraphQL queries & mutations>
+            - <Add more documents based on your requirement …>
+      <project3_name>:
+         schema: <File path to the GraphQL schema or the web URL of the GraphQL schema>
+         documents:
+            - <File path to the GraphQL document with the GraphQL queries & mutations>
+            - <File path to the GraphQL document with the GraphQL queries & mutations>
+            - <Add more documents based on your requirement …>
+   ```
 
 If you want to generate multiple Ballerina modules for a given set of GraphQL projects, use the command below.
 

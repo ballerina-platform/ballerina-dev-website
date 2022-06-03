@@ -1,15 +1,12 @@
 - title: Swan Lake release notes
   url: '#'
   sublinks:
-<<<<<<< HEAD
+    - title: 2201.1.0 (Swan Lake)
+      url: /downloads/swan-lake-release-notes/2201-1-0
+      active: 2201-1-0
     - title: 2201.0.4 (Swan Lake)
       url: /downloads/swan-lake-release-notes/2201.0.4
       active: 2201-0-4
-=======
-    - title: 2201.1.0 (Swan Lake Update 1)
-      url: /downloads/swan-lake-release-notes/2201-1-0
-      active: 2201-1-0
->>>>>>> 8daf522eb520705830d3de9f6371239652d7221b
     - title: 2201.0.3 (Swan Lake)
       url: /downloads/swan-lake-release-notes/2201.0.3
       active: 2201-0-3

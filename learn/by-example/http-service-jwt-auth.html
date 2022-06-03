@@ -1,7 +1,7 @@
 ---
 layout: ballerina-example-page-old
 title: Service - JWT Auth
-description: BBE on how to secure HTTP service with JWT Auth in Ballerina.
+description: BBE on how to secure HTTP service with JWT auth in Ballerina.
 keywords: ballerina, ballerina by example, bbe, http, auth, jwt auth
 permalink: /learn/by-example/http-service-jwt-auth
 active: http-service-jwt-auth
@@ -23,8 +23,8 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">);</span>
 
-<span class="c1">// The service can be secured with JWT Auth and can be authorized</span>
-<span class="c1">// optionally. JWT Auth can be enabled by setting the</span>
+<span class="c1">// The service can be secured with JWT authentication and can be authorized</span>
+<span class="c1">// optionally. JWT authentication can be enabled by setting the</span>
 <span class="c1">// [`http:JwtValidatorConfig`](https://docs.central.ballerina.io/ballerina/http/latest/records/JwtValidatorConfig) configurations.</span>
 <span class="c1">// Authorization is based on scopes. A scope maps to one or more groups.</span>
 <span class="c1">// Authorization can be enabled by setting the `string|string[]` type</span>
@@ -62,7 +62,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Service - JWT Auth</h2>
-                            <p><p>An HTTP service/resource can be secured with JWT and by enforcing
+                            <p><p>An HTTP service/resource can be secured using JWT and by enforcing
  authorization optionally. Then, it validates the JWT sent in the
  <code>Authorization</code> header against the provided configurations.<br/>
  Ballerina uses the concept of scopes for authorization. A resource declared
@@ -181,8 +181,8 @@ service /foo on securedEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The service can be secured with JWT Auth and can be authorized
- optionally. JWT Auth can be enabled by setting the
+                                            <p>The service can be secured with JWT authentication and can be authorized
+ optionally. JWT authentication can be enabled by setting the
  <a href="https://docs.central.ballerina.io/ballerina/http/latest/records/JwtValidatorConfig"><code>http:JwtValidatorConfig</code></a> configurations.
  Authorization is based on scopes. A scope maps to one or more groups.
  Authorization can be enabled by setting the <code>string|string[]</code> type

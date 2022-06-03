@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page-old
-title: WebSub subscriber service
+title: Websub subscriber service
 description: This BBE demonstrates how a WebSub Subscriber service could be registered as a WebHook Service for GitHub.
 keywords: ballerina, ballerina by example, bbe, websub, subscriber
 permalink: /learn/by-example/websub-webhook-sample
@@ -29,19 +29,20 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="o">/</span><span class="nx">JuApTOXq19</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Service path is not specified, hence Subscriber Service will auto generate a unique random service path segment.</span>
+<span class="kd">service</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Defines the remote function that accepts the event notification request for the WebHook.</span>
     <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onEventNotification</span><span class="p">(</span>
                     <span class="nx">websub</span><span class="p">:</span><span class="nx">ContentDistributionMessage</span> <span class="nx">event</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">retrievedContent</span> <span class="p">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
-        <span class="k">if</span> <span class="nx">retrievedContent</span> <span class="nx">is</span> <span class="kt">json</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">zen</span> <span class="nx">is</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">retrievedContent</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">zen</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
                 <span class="kt">int</span> <span class="nx">hookId</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">hook_id</span><span class="p">;</span>
                 <span class="kt">json</span> <span class="nx">sender</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">sender</span><span class="p">;</span>
                 <span class="kt">int</span> <span class="nx">senderId</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">sender</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span><span class="s">`PingEvent received for webhook [${hookId}]`</span><span class="p">);</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">string</span><span class="s">`Event sender [${senderId}]`</span><span class="p">);</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">ref</span> <span class="nx">is</span> <span class="kt">string</span> <span class="p">{</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">ref</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
                 <span class="kt">json</span> <span class="nx">repository</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">retrievedContent</span><span class="p">.</span><span class="nx">repository</span><span class="p">;</span>
                 <span class="kt">string</span> <span class="nx">repositoryName</span> <span class="p">=</span>  <span class="nx">check</span> <span class="nx">repository</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
                 <span class="kt">string</span> <span class="nx">lastUpdatedTime</span> <span class="p">=</span>  <span class="nx">check</span> <span class="nx">repository</span><span class="p">.</span><span class="nx">updated_at</span><span class="p">;</span>
@@ -61,7 +62,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>WebSub subscriber service</h2>
+                            <h2>Websub subscriber service</h2>
                             <p><p>Ballerina provides the capability to easily introduce subscriber services that are WebSub-compliant.
  Ballerina WebSub subscribers can specify the topic and hub to which they wish to subscribe to receive notifications.
  If not specified WebSub Subscriber Services will auto generate a unique random service path segment.
@@ -154,7 +155,6 @@ import ballerina/io;
         }
     }
 }
-service /JuApTOXq19 on new websub:Listener(9090) {
 </code></pre></div>
 
                                 </div>
@@ -172,18 +172,37 @@ service /JuApTOXq19 on new websub:Listener(9090) {
                             
                             <div class="cTR hover-enable">
 
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service on new websub:Listener(9090) {
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Service path is not specified, hence Subscriber Service will auto generate a unique random service path segment.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    remote function onEventNotification(
                     websub:ContentDistributionMessage event) returns error? {
         var retrievedContent = event.content;
-        if retrievedContent is json {
-            if retrievedContent.zen is string {
+        if (retrievedContent is json) {
+            if (retrievedContent.zen is string) {
                 int hookId = check retrievedContent.hook_id;
                 json sender = check retrievedContent.sender;
                 int senderId = check sender.id;
                 io:println(string`PingEvent received for webhook [${hookId}]`);
                 io:println(string`Event sender [${senderId}]`);
-            } else if retrievedContent.ref is string {
+            } else if (retrievedContent.ref is string) {
                 json repository = check retrievedContent.repository;
                 string repositoryName =  check repository.name;
                 string lastUpdatedTime =  check repository.updated_at;
@@ -221,6 +240,7 @@ service /JuApTOXq19 on new websub:Listener(9090) {
 
                                 <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>bal run websub_webhook_sample.bal
+time = 2022-01-24T17:48:07.167+05:30 level = INFO module = ballerina/websub message = &quot;Autogenerated callback &quot; URL = &quot;http://0.0.0.0:9090/OvpK789VTV&quot;
 time = 2022-01-24T17:48:07.207+05:30 level = WARN module = ballerina/websub message = &quot;HTTPS is recommended but using HTTP&quot;
 PingEvent received for webhook [287075824]
 Event sender [77491511]

@@ -86,8 +86,8 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Client data binding</h2>
                             <p><p>Through client data binding, the response payload can be accessed directly. The payload type is inferred from the
- contextually-expected type or from the <code>targetType</code> argument. An <code>anydata</code> type or <code>http:Response</code> is expected as
- the return value type along with the error.
+ contextually-expected type or from the <code>targetType</code> argument. A possible payload type out of <code>string</code>|<code>xml</code>|<code>json</code>|
+ <code>map&lt;json&gt;</code>|<code>byte[]</code>|<code>record</code>|<code>record[]</code> and <code>http:Response</code> is expected as return value type.
  When the user expects client data binding to happen, the HTTP error responses (4XX, 5XX) will be categorized
  as an <code>error</code> (<code>http:ClientRequestError</code>, <code>http:RemoteServerError</code>) of the client remote operation.
  For more information on the underlying module,

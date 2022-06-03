@@ -1,13 +1,13 @@
 ---
 layout: ballerina-example-page-old
-title: Consumer client - Poll ConsumerRecord
+title: Consumer client
 description: BBE on how to use a `kafka&#58;Consumer` as a simple record consumer.
 keywords: ballerina, ballerina by example, bbe, kafka, consumer, client
-permalink: /learn/by-example/kafka-consumer-client-poll-consumer-record
-active: kafka-consumer-client-poll-consumer-record
+permalink: /learn/by-example/kafka-consumer-client
+active: kafka-consumer-client
 redirect_from:
-  - /swan-lake/learn/by-example/kafka-consumer-client-poll-consumer-record
-  - /swan-lake/learn/by-example/kafka-consumer-client-poll-consumer-record.html
+  - /swan-lake/learn/by-example/kafka-consumer-client
+  - /swan-lake/learn/by-example/kafka-consumer-client.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -23,31 +23,20 @@ redirect_from:
 
 <span class="p">};</span>
 
-<span class="nx">public</span> <span class="nx">type</span> <span class="nx">Order</span> <span class="nx">record</span> <span class="p">{|</span>
-    <span class="kt">int</span> <span class="nx">orderId</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">productName</span><span class="p">;</span>
-    <span class="nx">decimal</span> <span class="nx">price</span><span class="p">;</span>
-    <span class="kt">boolean</span> <span class="nx">isValid</span><span class="p">;</span>
-<span class="p">|};</span>
-
-<span class="c1">// Create a subtype of `kafka:AnydataConsumerRecord`</span>
-<span class="nx">public</span> <span class="nx">type</span> <span class="nx">OrderConsumerRecord</span> <span class="nx">record</span> <span class="p">{|</span>
-    <span class="o">*</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">AnydataConsumerRecord</span><span class="p">;</span>
-    <span class="nx">Order</span> <span class="nx">value</span><span class="p">;</span>
-<span class="p">|};</span>
-
-<span class="nx">kafka</span><span class="p">:</span><span class="nx">Consumer</span> <span class="nx">orderConsumer</span> <span class="p">=</span>
-                <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">,</span> <span class="nx">consumerConfiguration</span><span class="p">);</span>
+<span class="nx">kafka</span><span class="p">:</span><span class="nx">Consumer</span> <span class="nx">consumer</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">,</span> <span class="nx">consumerConfiguration</span><span class="p">);</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Polls the consumer for order records.</span>
-    <span class="nx">OrderConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">orderConsumer</span><span class="o">-&gt;</span><span class="nx">poll</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="c1">// Polls the consumer for messages.</span>
+    <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">consumer</span><span class="o">-&gt;</span><span class="nx">poll</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 
-    <span class="nx">check</span> <span class="nx">from</span> <span class="nx">OrderConsumerRecord</span> <span class="nx">orderRecord</span> <span class="nx">in</span> <span class="nx">records</span>
-        <span class="nx">where</span> <span class="nx">orderRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">isValid</span>
-        <span class="nx">do</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">orderRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">productName</span><span class="p">);</span>
-        <span class="p">};</span>
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">kafkaRecord</span> <span class="nx">in</span> <span class="nx">records</span> <span class="p">{</span>
+        <span class="nx">byte</span><span class="p">[]</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+        <span class="c1">// Converts the `byte[]` to a `string`.</span>
+        <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="nx">check</span> <span class="kt">string</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">messageContent</span><span class="p">);</span>
+
+        <span class="c1">// Prints the retrieved Kafka record.</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received Message: &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -57,17 +46,16 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Consumer client - Poll ConsumerRecord</h2>
-                            <p><p>This shows how to use a <code>kafka:Consumer</code> as a simple record
+                            <h2>Consumer client</h2>
+                            <p><p>This is an example on how to use a <code>kafka:Consumer</code> as a simple record
  consumer. The records from a subscribed topic can be retrieved using the
  <code>poll()</code> function.
  This consumer uses the builtin byte array deserializer for both the key and
- the value, which is the default deserializer in the <code>kafka:Consumer</code>.
- The received records are converted to the user defined type using data-binding.
- For this to work properly, an active Kafka broker should be present.
+ the value, which is the default deserializer in the <code>kafka:Consumer</code>. For
+ this example to work properly, an active Kafka broker should be present.
  <br/><br/>
  For more information on the underlying module,
- see the <a href="https://lib.ballerina.io/ballerinax/kafka/latest">Kafka module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/kafka/latest">Kafka module</a>.</p>
 </p>
 
                         </td>
@@ -75,9 +63,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="kafka-consumer-client-poll-payload.html">
+                                    <a class="prev" href="kafka-consumer-service.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Consumer client - Poll Payload</p>
+                                        <p>Consumer service</p>
                                     </a>
                                 </div>
                                  
@@ -93,7 +81,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="kafka-consumer-client-poll-consumer-record">
+            <div class="example" id="kafka-consumer-client">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <div class="cTopControlsContainer">
                         <div class="cTopControlsRow">
@@ -104,11 +92,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-<<<<<<< HEAD:learn/by-example/kafka-consumer-client.html
                                             <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.0.4/examples/kafka-consumer-client/"><img src="/img/github-logo-green.svg" /></a>
-=======
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/kafka-consumer-client-poll-consumer-record/"><img src="/img/github-logo-green.svg" /></a>
->>>>>>> 8daf522eb520705830d3de9f6371239652d7221b:learn/by-example/kafka-consumer-client-poll-consumer-record.html
                                         </li>
                                         
                                     </ul>
@@ -183,47 +167,7 @@ import ballerina/io;
                             <div class="cTR">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public type Order record {|
-    int orderId;
-    string productName;
-    decimal price;
-    boolean isValid;
-|};
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public type OrderConsumerRecord record {|
-    *kafka:AnydataConsumerRecord;
-    Order value;
-|};
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a subtype of <code>kafka:AnydataConsumerRecord</code></p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Consumer orderConsumer =
-                check new (kafka:DEFAULT_URL, consumerConfiguration);
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Consumer consumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
 </code></pre></div>
 
                                 </div>
@@ -247,7 +191,7 @@ import ballerina/io;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    OrderConsumerRecord[] records = check orderConsumer-&gt;poll(1);
+                                    <div class="highlight"><pre><code class=language-ballerina>    kafka:ConsumerRecord[] records = check consumer-&gt;poll(1);
 </code></pre></div>
 
                                 </div>
@@ -255,7 +199,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Polls the consumer for order records.</p>
+                                            <p>Polls the consumer for messages.</p>
 
                                         </div>
                                     </div>
@@ -265,17 +209,53 @@ import ballerina/io;
                             
                             <div class="cTR">
 
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    foreach var kafkaRecord in records {
+        byte[] messageContent = kafkaRecord.value;
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        string message = check string:fromBytes(messageContent);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Converts the <code>byte[]</code> to a <code>string</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
                                 <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check from OrderConsumerRecord orderRecord in records
-        where orderRecord.value.isValid
-        do {
-            io:println(orderRecord.value.productName);
-        };
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;Received Message: &quot; + message);
+    }
 }
 </code></pre></div>
 
                                 </div>
                                 <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Prints the retrieved Kafka record.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </div>
                             </div>
@@ -290,7 +270,7 @@ import ballerina/io;
                             <div class="cTR cOutputTr">
 
                                 <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>bal run kafka_consumer_client_poll_consumer_record.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run kafka_consumer_client.bal
 </code></pre></div>
 
                                 </div>

@@ -14,35 +14,17 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span>
 
-<span class="nx">public</span> <span class="nx">type</span> <span class="nx">Order</span> <span class="nx">record</span> <span class="p">{|</span>
-    <span class="kt">int</span> <span class="nx">orderId</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">productName</span><span class="p">;</span>
-    <span class="nx">decimal</span> <span class="nx">price</span><span class="p">;</span>
-    <span class="kt">boolean</span> <span class="nx">isValid</span><span class="p">;</span>
-<span class="p">|};</span>
-
-<span class="c1">// Create a subtype of `kafka:AnydataProducerRecord`</span>
-<span class="nx">public</span> <span class="nx">type</span> <span class="nx">OrderProducerRecord</span> <span class="nx">record</span> <span class="p">{|</span>
-    <span class="o">*</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">AnydataProducerRecord</span><span class="p">;</span>
-    <span class="nx">Order</span> <span class="nx">value</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="nx">key</span><span class="p">;</span>
-<span class="p">|};</span>
-
-<span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">orderProducer</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">);</span>
+<span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">DEFAULT_URL</span><span class="p">);</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="nx">OrderProducerRecord</span> <span class="nx">producerRecord</span> <span class="p">=</span> <span class="p">{</span>
-        <span class="nx">key</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nx">topic</span><span class="p">:</span> <span class="s">&quot;test-kafka-topic&quot;</span><span class="p">,</span>
-        <span class="nx">value</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">orderId</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="nx">productName</span><span class="p">:</span> <span class="s">&quot;ABC&quot;</span><span class="p">,</span>
-            <span class="nx">price</span><span class="p">:</span> <span class="mf">27.5</span><span class="p">,</span>
-            <span class="nx">isValid</span><span class="p">:</span> <span class="kc">true</span>
-        <span class="p">}</span>
-    <span class="p">};</span>
+    <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello World, Ballerina&quot;</span><span class="p">;</span>
     <span class="c1">// Sends the message to the Kafka topic.</span>
-    <span class="nx">check</span> <span class="nx">orderProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">producerRecord</span><span class="p">);</span>
+    <span class="nx">check</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">({</span>
+                                <span class="nx">topic</span><span class="p">:</span> <span class="s">&quot;test-kafka-topic&quot;</span><span class="p">,</span>
+                                <span class="nx">value</span><span class="p">:</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">()</span> <span class="p">});</span>
+
+    <span class="c1">// Flushes the sent messages.</span>
+    <span class="nx">check</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="err">&#39;</span><span class="nx">flush</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -53,11 +35,12 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Producer</h2>
-                            <p><p>This shows how to send messages to a Kafka topic using a
- <code>kafka:Producer</code> client. For this to work properly, an active Kafka
+                            <p><p>This is an example on how to send messages to a Kafka topic using a
+ <code>kafka:Producer</code> object. The producer is configured to send <code>string</code>
+ values and <code>int</code> keys. For this example to work properly, an active Kafka
  broker should be present.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://lib.ballerina.io/ballerinax/kafka/latest">Kafka module</a>.</p>
+ see the <a href="https://docs.central.ballerina.io/ballerinax/kafka/latest">Kafka module</a>.</p>
 </p>
 
                         </td>
@@ -123,47 +106,7 @@ redirect_from:
                             <div class="cTR">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public type Order record {|
-    int orderId;
-    string productName;
-    decimal price;
-    boolean isValid;
-|};
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR hover-enable">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>public type OrderProducerRecord record {|
-    *kafka:AnydataProducerRecord;
-    Order value;
-    int key;
-|};
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a subtype of <code>kafka:AnydataProducerRecord</code></p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Producer orderProducer = check new (kafka:DEFAULT_URL);
+                                    <div class="highlight"><pre><code class=language-ballerina>kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL);
 </code></pre></div>
 
                                 </div>
@@ -176,16 +119,7 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>public function main() returns error? {
-    OrderProducerRecord producerRecord = {
-        key: 1,
-        topic: &quot;test-kafka-topic&quot;,
-        value: {
-            orderId: 1,
-            productName: &quot;ABC&quot;,
-            price: 27.5,
-            isValid: true
-        }
-    };
+    string message = &quot;Hello World, Ballerina&quot;;
 </code></pre></div>
 
                                 </div>
@@ -196,9 +130,10 @@ redirect_from:
                             
                             <div class="cTR hover-enable">
 
-                                <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check orderProducer-&gt;send(producerRecord);
-}
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    check kafkaProducer-&gt;send({
+                                topic: &quot;test-kafka-topic&quot;,
+                                value: message.toBytes() });
 </code></pre></div>
 
                                 </div>
@@ -207,6 +142,26 @@ redirect_from:
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Sends the message to the Kafka topic.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    check kafkaProducer-&gt;&#39;flush();
+}
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Flushes the sent messages.</p>
 
                                         </div>
                                     </div>

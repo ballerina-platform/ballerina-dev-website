@@ -1,7 +1,7 @@
 ---
 layout: ballerina-example-page-old
-title: Service - Basic Auth File user store
-description: BBE on how to secure WebSocket service with Basic Auth in Ballerina.
+title: Service - Basic Auth file user store
+description: BBE on how to secure WebSocket service with Basic auth in Ballerina.
 keywords: ballerina, ballerina by example, bbe, websocket, auth, basic auth
 permalink: /learn/by-example/websocket-service-basic-auth-file-user-store
 active: websocket-service-basic-auth-file-user-store
@@ -23,8 +23,8 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">);</span>
 
-<span class="c1">// The service can be secured with Basic Auth and can be authorized optionally.</span>
-<span class="c1">// Using Basic Auth with the file user store can be enabled by setting the</span>
+<span class="c1">// The service can be secured with Basic auth and can be authorized optionally.</span>
+<span class="c1">// Using Basic auth with the file user store can be enabled by setting the</span>
 <span class="c1">// [`websocket:FileUserStoreConfig`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/FileUserStoreConfig) configurations.</span>
 <span class="c1">// Authorization is based on scopes. A scope maps to one or more groups.</span>
 <span class="c1">// Authorization can be enabled by setting the `string|string[]` type</span>
@@ -38,16 +38,16 @@ redirect_from:
     <span class="p">]</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="o">/</span><span class="nx">foo</span> <span class="nx">on</span> <span class="nx">securedEP</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">bar</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Service</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">bar</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Service</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">new</span> <span class="nx">WsService</span><span class="p">();</span>
    <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kd">service</span> <span class="nx">class</span> <span class="nx">WsService</span> <span class="p">{</span>
     <span class="o">*</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Service</span><span class="p">;</span>
-    <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
+    <span class="nx">remote</span> <span class="nx">isolated</span> <span class="kd">function</span> <span class="nx">onTextMessage</span><span class="p">(</span><span class="nx">websocket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
                              <span class="kt">string</span> <span class="nx">text</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">websocket</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeMessage</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+        <span class="nx">check</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">writeTextMessage</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -58,9 +58,9 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Service - Basic Auth File user store</h2>
-                            <p><p>A WebSocket service can be secured with Basic Auth and optionally by
- enforcing authorization. Then, it validates the Basic Auth token sent in the
+                            <h2>Service - Basic Auth file user store</h2>
+                            <p><p>A WebSocket service can be secured using Basic auth and optionally by
+ enforcing authorization. Then, it validates the Basic auth token sent in the
  <code>Authorization</code> header against the provided configurations. This reads data
  from a file, which has a TOML format. This stores the usernames, passwords
  for authentication, and scopes for authorization.<br/>
@@ -166,7 +166,7 @@ redirect_from:
     ]
 }
 service /foo on securedEP {
-    resource function get bar() returns websocket:Service {
+    resource isolated function get bar() returns websocket:Service {
         return new WsService();
    }
 }
@@ -177,8 +177,8 @@ service /foo on securedEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The service can be secured with Basic Auth and can be authorized optionally.
- Using Basic Auth with the file user store can be enabled by setting the
+                                            <p>The service can be secured with Basic auth and can be authorized optionally.
+ Using Basic auth with the file user store can be enabled by setting the
  <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/records/FileUserStoreConfig"><code>websocket:FileUserStoreConfig</code></a> configurations.
  Authorization is based on scopes. A scope maps to one or more groups.
  Authorization can be enabled by setting the <code>string|string[]</code> type
@@ -195,9 +195,9 @@ service /foo on securedEP {
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>service class WsService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller,
+    remote isolated function onTextMessage(websocket:Caller caller,
                              string text) returns websocket:Error? {
-        check caller-&gt;writeMessage(text);
+        check caller-&gt;writeTextMessage(text);
     }
 }
 </code></pre></div>

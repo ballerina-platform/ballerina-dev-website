@@ -1,7 +1,7 @@
 ---
 layout: ballerina-example-page-old
 title: Client - self signed JWT Auth
-description: BBE on how to secure gRPC client with self-signed JWT Auth in Ballerina.
+description: BBE on how to secure gRPC client with self-signed JWT auth in Ballerina.
 keywords: ballerina, ballerina by example, bbe, grpc, auth, jwt auth
 permalink: /learn/by-example/grpc-client-self-signed-jwt-auth
 active: grpc-client-self-signed-jwt-auth
@@ -14,7 +14,7 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 
-<span class="c1">// Defines the gRPC client to call the JWT Auth secured APIs.</span>
+<span class="c1">// Defines the gRPC client to call the JWT auth secured APIs.</span>
 <span class="c1">// The client metadata is enriched with the `Authorization: Bearer &lt;token&gt;`</span>
 <span class="c1">// header by passing the [`grpc:JwtIssuerConfig`](https://docs.central.ballerina.io/ballerina/grpc/latest/records/JwtIssuerConfig) for the `auth` configuration</span>
 <span class="c1">// of the client. A self-signed JWT is issued before the request is sent.</span>
@@ -179,7 +179,7 @@ bal grpc --input grpc_client.proto --output stubs
                             <div class="cTR cOutputTr">
 
                                 <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># For more information on how to use the Ballerina Protocol Buffers tool, see the &lt;a href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto To Ballerina&lt;/a&gt; example.
+                                    <div class="highlight"><pre><code class=shell-session># For more information on how to use the Ballerina Protocol Buffers tool, see the [Proto To Ballerina](https://ballerina.io/learn/by-example/proto-to-ballerina.html) example.
 </code></pre></div>
 
                                 </div>
@@ -236,7 +236,7 @@ bal grpc --input grpc_client.proto --output stubs
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines the gRPC client to call the JWT Auth secured APIs.
+                                            <p>Defines the gRPC client to call the JWT auth secured APIs.
  The client metadata is enriched with the <code>Authorization: Bearer &lt;token&gt;</code>
  header by passing the <a href="https://docs.central.ballerina.io/ballerina/grpc/latest/records/JwtIssuerConfig"><code>grpc:JwtIssuerConfig</code></a> for the <code>auth</code> configuration
  of the client. A self-signed JWT is issued before the request is sent.</p>

@@ -81,8 +81,8 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Bidirectional streaming RPC</h2>
                             <p><p>The gRPC Server Connector exposes the gRPC service over HTTP2.
- In a gRPC bidirectional streaming scenario, the gRPC service and the client
- operate when each other sends a sequence of messages using a read-write stream.
+ This example demonstrates how a gRPC bidirectional streaming service and a client
+ operate when each of them sends a sequence of messages using a read-write stream.
  In such scenarios, the two streams operate independently. Therefore, clients and servers can read and write in any order.<br/><br/>
  For more information on the underlying module,
  see the <a href="https://docs.central.ballerina.io/ballerina/grpc/latest/">GRPC module</a>.</p>
@@ -200,7 +200,7 @@ bal grpc --input grpc_bidirectional_streaming.proto  --output stubs
                             <div class="cTR cOutputTr">
 
                                 <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># For more information on how to use the Ballerina Protocol Buffers tool, see the &lt;a href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto To Ballerina&lt;/a&gt; example.
+                                    <div class="highlight"><pre><code class=shell-session># For more information on how to use the Ballerina Protocol Buffers tool, see the [Proto To Ballerina](https://ballerina.io/learn/by-example/proto-to-ballerina.html) example.
 </code></pre></div>
 
                                 </div>

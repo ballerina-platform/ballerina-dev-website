@@ -23,8 +23,8 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">);</span>
 
-<span class="c1">// The service can be secured with OAuth2 and by enforcing authorization</span>
-<span class="c1">// optionally. It can be enabled by setting the</span>
+<span class="c1">// The service can be secured with OAuth2 authentication and can be authorized</span>
+<span class="c1">// optionally. OAuth2 authentication can be enabled by setting the</span>
 <span class="c1">// `graphql:OAuth2IntrospectionConfig` configurations.</span>
 <span class="c1">// Authorization is based on scopes. A scope maps to one or more groups.</span>
 <span class="c1">// Authorization can be enabled by setting the `string|string[]` type</span>
@@ -61,7 +61,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Service - OAuth2</h2>
-                            <p><p>A GraphQL service can be secured with OAuth2 and by enforcing
+                            <p><p>A GraphQL service can be secured using OAuth2 and by enforcing
  authorization optionally. Then, it validates the OAuth2 token sent in the
  <code>Authorization</code> header against the provided configurations. This calls the
  configured introspection endpoint to validate.<br/>
@@ -88,9 +88,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="websocket-client.html">
+                                    <a class="next" href="websocket-text-client.html">
                                         <span>NEXT ></span>
-                                        <p>Client</p>
+                                        <p>Handle text messages with client</p>
                                     </a>
                                 </div>
                                 
@@ -188,8 +188,8 @@ service /graphql on securedEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The service can be secured with OAuth2 and by enforcing authorization
- optionally. It can be enabled by setting the
+                                            <p>The service can be secured with OAuth2 authentication and can be authorized
+ optionally. OAuth2 authentication can be enabled by setting the
  <code>graphql:OAuth2IntrospectionConfig</code> configurations.
  Authorization is based on scopes. A scope maps to one or more groups.
  Authorization can be enabled by setting the <code>string|string[]</code> type

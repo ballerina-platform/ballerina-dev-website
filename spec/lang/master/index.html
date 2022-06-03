@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R2 preview 2022-05-23</h1>
+<h1>Ballerina Language Specification, 2022R3 preview 2022-06-03</h1>
 <p>
 Primary contributors:
 </p>
@@ -238,7 +238,7 @@ GitHub repository where this specification is maintained.
 </li>
 <li>6.2.5 <a href="#nil_lifting">Nil lifting</a>
 </li>
-<li>6.2.6 <a href="#section_6.2.6">Isolated expressions</a>
+<li>6.2.6 <a href="#isolated_expressions">Isolated expressions</a>
 </li>
 </ul>
 </li>
@@ -597,23 +597,25 @@ GitHub repository where this specification is maintained.
 <li>A. <a href="#references">References</a>
 </li>
 <li>B. <a href="#changes">Changes since previous releases</a><ul>
-<li>B.1 <a href="#section_B.1">Summary of changes from 2021R1 to 2022R2</a>
+<li>B.1 <a href="#section_B.1">Summary of changes from 2021R2 to 2022R3</a>
 </li>
-<li>B.2 <a href="#section_B.2">Summary of changes from 2021R1 to 2022R1</a>
+<li>B.2 <a href="#section_B.2">Summary of changes from 2021R1 to 2022R2</a>
 </li>
-<li>B.3 <a href="#section_B.3">Summary of changes from 2020R1 to 2021R1</a>
+<li>B.3 <a href="#section_B.3">Summary of changes from 2021R1 to 2022R1</a>
 </li>
-<li>B.4 <a href="#section_B.4">Summary of changes from 2019R3 to 2020R1</a>
+<li>B.4 <a href="#section_B.4">Summary of changes from 2020R1 to 2021R1</a>
 </li>
-<li>B.5 <a href="#section_B.5">Summary of changes from 2019R2 to 2019R3</a>
+<li>B.5 <a href="#section_B.5">Summary of changes from 2019R3 to 2020R1</a>
 </li>
-<li>B.6 <a href="#section_B.6">Summary of changes from 2019R1 to 2019R2</a>
+<li>B.6 <a href="#section_B.6">Summary of changes from 2019R2 to 2019R3</a>
 </li>
-<li>B.7 <a href="#section_B.7">Summary of changes from 0.990 to 2019R1</a>
+<li>B.7 <a href="#section_B.7">Summary of changes from 2019R1 to 2019R2</a>
 </li>
-<li>B.8 <a href="#section_B.8">Summary of changes from 0.980 to 0.990</a>
+<li>B.8 <a href="#section_B.8">Summary of changes from 0.990 to 2019R1</a>
 </li>
-<li>B.9 <a href="#section_B.9">Summary of changes from 0.970 to 0.980</a>
+<li>B.9 <a href="#section_B.9">Summary of changes from 0.980 to 0.990</a>
+</li>
+<li>B.10 <a href="#section_B.10">Summary of changes from 0.970 to 0.980</a>
 </li>
 </ul>
 </li>
@@ -4731,7 +4733,7 @@ is never applicable when all operands have singleton type.)
 </section>
 
 <section>
-<h4 id="section_6.2.6">6.2.6 Isolated expressions</h4>
+<h4 id="isolated_expressions">6.2.6 Isolated expressions</h4>
 <p>
 Ballerina defines requirements for when an expression is <em>isolated</em>. If
 an expression meets the requirements, then it is compile-time guaranteed that
@@ -6276,10 +6278,10 @@ specified explicitly as usual with a function-signature. With an
 infer-anonymous-function-expr, the type of the function is inferred.
 </p>
 <p>
-If block-function-body refers to a block-scope variable defined
-outside of the block-function-body, the closure will capture a reference to that
-variable; the captured reference will refer to the same storage as the original
-reference not a copy.
+If a variable-reference-expr within an anonymous-function-expr refers to a local
+variable defined outside of the anonymous-function-expr, the closure will
+capture a reference to that variable; the captured reference will refer to the
+same storage as the original reference rather than to a copy.
 </p>
 
 <pre class="grammar"><span class="ntdfn" id="infer-anonymous-function-expr">infer-anonymous-function-expr</span> := <a href="#infer-param-list"><span class="ntref">infer-param-list</span></a> <a href="#expr-function-body"><span class="ntref">expr-function-body</span></a>
@@ -7638,17 +7640,18 @@ to executing another strand. The following actions cause a strand to yield:
 <p>
 In addition, any function with an external-function-body can potentially yield;
 it should only do so if it performs a system call that would block or calls a
-Ballerina function that itself yields. The `sleep` function in
+Ballerina function that itself yields. The <code>sleep</code> function in
 <code>lang.runtime</code> will make the strand yield. Other functions in the
 lang library do not themselves yield, although if they call a function passed as
 an argument, that function may result in yielding.
 </p>
 <p>
 There are two language constructs whose execution causes the creation of new
-strands: named-worker-decl and start-action. These constructs may use
-annotations to indicate that the newly created strand should be in a separate
-thread from the current strand. In the absence of such annotations, the new
-strand must be part of the same thread as the current strand.
+strands: named-worker-decl and start-action. Except in the cases explicitly
+allowed by this specification, the new strand must be part of the same thread as
+the current strand. An implementation may also allow annotations to be used to
+indicate that the newly created strand should be in a separate thread from the
+current strand.
 </p>
 
 </section>
@@ -7717,7 +7720,8 @@ default worker.
 </p>
 <p>
 A function also has zero or more named workers. Each named worker runs on its
-own new strand. The termination of a function is independent of the termination
+own new strand. The strand can run on a separate thread from the default worker if the
+function is isolated. The termination of a function is independent of the termination
 of its named workers. The termination of a named worker does not automatically
 result in the termination of its function. When a function's default worker
 terminates, causing the function to terminate, the function does not
@@ -7845,17 +7849,13 @@ identifier is declared as <code>configurable</code>).</li>
 variable-reference-lvexpr or in a capture-binding-pattern in a
 destructuring-assignment-stmt must not refer to a variable defined by a
 module-var-decl that does not include <code>isolated</code>.</li>
-<li>Captured variables are restricted as follows: if the body is part of an
-anonymous-function-expr, then any captured variable references must refer to
-variables that are both final (either explicitly or implicitly) and have a
-static type that is a subtype of <code>readonly|isolated object {}</code>.</li>
-<li>New workers cannot be started: the following constructs are not allowed
-<ul>
-<li>named-worker-decl</li>
-<li>fork-stmt</li>
-<li>start-action</li>
-</ul>
-</li>
+<li>A variable reference to a captured variable must refer to variables that are
+both final (either explicitly or implicitly) and have a static type that is a
+subtype of <code>readonly|isolated object {}</code>, where a variable reference
+is captured if it occurs within an anonymous-function-expr or named-worker-decl
+and refers to a variable declared within the function but outside of that
+anonymous-function-expr or named-worker-decl.</li>
+<li>A start-action is allowed only if its call-action-or-expression is isolated.</li>
 </ul>
 <p>
 If an isolated function has an <code>external-function-body</code>, then the
@@ -7990,7 +7990,8 @@ impossible.
 </pre>
 <p>
 The fork statement starts one or more named workers, which run in parallel with
-each other, each in its own new strand.
+each other, each in its own new strand. The strand can run on a separate thread
+from the current worker if the fork-stmt occurs in an isolated function.
 </p>
 <p>
 Variables and parameters in scope for the fork-stmt remain in scope within the
@@ -8009,7 +8010,11 @@ block-function-body.
 <section>
 <h3 id="section_7.6">7.6 Start action</h3>
 
-<pre class="grammar"><span class="ntdfn" id="start-action">start-action</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <code>start</code> (<a href="#function-call-expr"><span class="ntref">function-call-expr</span></a>|<a href="#method-call-expr"><span class="ntref">method-call-expr</span></a>|<a href="#client-remote-method-call-action"><span class="ntref">client-remote-method-call-action</span></a>)
+<pre class="grammar"><span class="ntdfn" id="start-action">start-action</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <code>start</code> <a href="#call-action-or-expr"><span class="ntref">call-action-or-expr</span></a>
+<span class="ntdfn" id="call-action-or-expr">call-action-or-expr</span> :=
+   <a href="#function-call-expr"><span class="ntref">function-call-expr</span></a>
+   | <a href="#method-call-expr"><span class="ntref">method-call-expr</span></a>
+   | <a href="#client-remote-method-call-action"><span class="ntref">client-remote-method-call-action</span></a>
 </pre>
 
 <p>
@@ -8021,7 +8026,18 @@ action <code><var>C</var></code> is T, then the static type of <code>start
 <var>C</var></code> is future&lt;T&gt;; it is permitted for T to be
 <code>never</code>.
 </p>
-
+<p>
+A call-action-or-expr is <em>isolated</em> if the function or method it calls
+has a type that is isolated and the expression for every argument is an <a href="#isolated_expressions">isolated expression</a>; for this purpose, the
+object whose method is called by the method-call-expr or
+client-remote-method-call-action is treated as an argument. When a start-action
+has a call-action-or-expr that is isolated then
+</p>
+<ul>
+<li>the start-action is allowed in an isolated function, and</li>
+<li>the strand created by the start-action may run in a separate thread from the
+current thread.</li>
+</ul>
 
 </section>
 <section>
@@ -9593,24 +9609,24 @@ worker.
 <section>
 <h4 id="section_7.22.2">7.22.2 On fail clause</h4>
 <pre class="grammar"><span class="ntdfn" id="stmt-with-on-fail">stmt-with-on-fail</span> := <a href="#regular-compound-stmt"><span class="ntref">regular-compound-stmt</span></a> <a href="#on-fail-clause"><span class="ntref">on-fail-clause</span></a>
-<span class="ntdfn" id="on-fail-clause">on-fail-clause</span> := <code>on</code> <code>fail</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
+<span class="ntdfn" id="on-fail-clause">on-fail-clause</span> := <code>on</code> <code>fail</code> [<a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a>] <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
 <p>
 A <code>stmt-with-on-fail</code> is executed by executing the
 <code>regular-compound-stmt</code>. A <code>check</code> expression or action,
 or a <code>fail</code> statement may cause control to transfer to the
-<code>on-fail-cause</code>. In this case, the <code>typed-binding-pattern</code>
-is matched to the associated error value, binding the variables occurring within
-the <code>typed-binding-pattern</code>; the <code>statement-block</code> is then
-executed with these bindings in scope. Otherwise, the
-<code>on-fail-clause</code> is not executed.
+<code>on-fail-cause</code>. If so, the <code>statement-block</code> is executed;
+otherwise the <code>statement-block</code> is not executed.
 </p>
 <p>
-The static type of the associated error value is determined from the static type
-of the relevant <code>check</code> expressions and actions, and
-<code>fail</code> statements. It is a compile error unless the match of the
-<code>typed-binding-pattern</code> with the associated error value is guaranteed
-to succeed by the static type of the associated error value.
+If there is a <code>typed-binding-pattern</code>, then it is matched to the
+associated error value, binding the variables occurring within the
+<code>typed-binding-pattern</code>; the <code>statement-block</code> is executed
+with these bindings in scope. The static type of the associated error value is
+determined from the static type of the relevant <code>check</code> expressions
+and actions, and <code>fail</code> statements. It is a compile error unless the
+match of the <code>typed-binding-pattern</code> with the associated error value
+is guaranteed to succeed by the static type of the associated error value.
 </p>
 </section>
 
@@ -10301,7 +10317,10 @@ explicitly specified an <code>isolated</code> qualifier, then they all would
 meet the requirements for <a href="#isolated_functions">isolated functions</a>
 and isolated objects. If so, then the isolated bit of values resulting from them
 is set in the same way as if <code>isolated</code> qualifiers had been
-explicitly specified.
+explicitly specified. The analysis should not infer a function or method to be
+<code>isolated</code> if that would be inconsistent with an annotion supported
+by the implementation that provides control over which thread is used for a strand
+created for named-worker-decl or start-action.
 </p>
 <p>
 This inference is purely an optimization to improve service concurrency and is
@@ -11431,7 +11450,10 @@ public isolated function abs(decimal x) returns decimal = external;
 # + return - closest decimal value to `x` that is an integral multiple of 10 raised to the power of `-fractionDigits`
 public isolated function round(decimal x, int fractionDigits = 0) returns decimal = external;
 
-# IEEE quantize operation.
+# Return a decimal with a specified value and exponent.
+# Return a decimal value that has the same value (except for rounding) as the first
+# argument, and the same exponent as the second argument.
+# This is the IEEE quantize operation.
 # + x - decimal value to operate on
 # + y - decimal value from which to get the quantum
 # + return - `x` with the quantum of `y`
@@ -13319,7 +13341,18 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 <section class="appendix">
 <h2 id="changes">B. Changes since previous releases</h2>
 <section>
-<h3 id="section_B.1">B.1 Summary of changes from 2021R1 to 2022R2</h3>
+<h3 id="section_B.1">B.1 Summary of changes from 2021R2 to 2022R3</h3>
+<ol>
+<li>The <code>isolated</code> feature can now be used to identify cases where
+strands created by <code>start</code> and named worker can be run safely on
+separate threads.</li>
+<li>The variable declaration in an <code>on fail</code> clause is now
+optional.</li>
+</ol>
+</section>
+
+<section>
+<h3 id="section_B.2">B.2 Summary of changes from 2021R1 to 2022R2</h3>
 <ol>
 <li>The <code>*</code>, <code>/</code> and <code>%</code> operators now allow
 operands to mix numeric types in specific cases: <code>*</code> allows the case
@@ -13345,7 +13378,7 @@ inferred.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.2">B.2 Summary of changes from 2021R1 to 2022R1</h3>
+<h3 id="section_B.3">B.3 Summary of changes from 2021R1 to 2022R1</h3>
 <ol>
 <li>Maps are required to preserve insertion order.</li>
 <li>The static typing rules for <code>==</code> and <code>!=</code> have been
@@ -13387,7 +13420,7 @@ nil.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.3">B.3 Summary of changes from 2020R1 to 2021R1</h3>
+<h3 id="section_B.4">B.4 Summary of changes from 2020R1 to 2021R1</h3>
 <ol>
 <li>There has been a major change to how objects works. All object type
 descriptors are what was previously called <em>abstract</em>: they declare
@@ -13461,7 +13494,7 @@ referenced using the <code>function</code> keyword rather than the
 </ol>
 </section>
 <section>
-<h3 id="section_B.4">B.4 Summary of changes from 2019R3 to 2020R1</h3>
+<h3 id="section_B.5">B.5 Summary of changes from 2019R3 to 2020R1</h3>
 <ol>
 <li>Query expressions and query actions have been added. This is the first stage
 of language-integrated query.</li>
@@ -13497,7 +13530,7 @@ types.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.5">B.5 Summary of changes from 2019R2 to 2019R3</h3>
+<h3 id="section_B.6">B.6 Summary of changes from 2019R2 to 2019R3</h3>
 <ol>
 <li>An import declaration can use <code>as _</code> to include a module in the
 program without using its symbols.</li>
@@ -13509,7 +13542,7 @@ not a named worker.</li>
 </section>
 
 <section>
-<h3 id="section_B.6">B.6 Summary of changes from 2019R1 to 2019R2</h3>
+<h3 id="section_B.7">B.7 Summary of changes from 2019R1 to 2019R2</h3>
 <ol>
 <li>The concept of a built-in method has been replaced by the concept of a lang
 library. A method call on a value of non-object type is now treated as a
@@ -13555,7 +13588,7 @@ replace the old delimited identifier syntax <code>^"<var>s</var>"</code>.</li>
 
 </section>
 <section>
-<h3 id="section_B.7">B.7 Summary of changes from 0.990 to 2019R1</h3>
+<h3 id="section_B.8">B.8 Summary of changes from 0.990 to 2019R1</h3>
 <p>
 The specification has switched to a new versioning scheme. The <var>n</var>-th
 version of the specification released in year 20<var>xy</var> will be labelled
@@ -13624,7 +13657,7 @@ now required to be specified before named arguments.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.8">B.8 Summary of changes from 0.980 to 0.990</h3>
+<h3 id="section_B.9">B.9 Summary of changes from 0.980 to 0.990</h3>
 <p>
 <strong>Structural types and values</strong>
 </p>
@@ -13718,7 +13751,7 @@ definition.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.9">B.9 Summary of changes from 0.970 to 0.980</h3>
+<h3 id="section_B.10">B.10 Summary of changes from 0.970 to 0.980</h3>
 <ol>
 <li>The decimal type has been added.</li>
 <li>There are no longer any implicit numeric conversions.</li>

@@ -1,0 +1,20 @@
+- title: Get started 
+  url: /learn/#get-started
+  active: get-started
+
+- title: Learn the language
+  url: /learn/#learn-the-language
+  active: learn-the-language
+
+- title: Use cases
+  url: /learn/#use-cases
+  active: use-cases
+
+- title: Learn about the platform
+  url: /learn/#learn-about-the-platform
+  active: learn-about-the-platform
+
+- title: Specifications
+  url: /learn/#specifications
+  active: specifications
+    

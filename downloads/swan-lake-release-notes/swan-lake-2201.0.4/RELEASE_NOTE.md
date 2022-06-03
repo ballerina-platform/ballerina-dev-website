@@ -5,6 +5,7 @@ permalink: /downloads/swan-lake-release-notes/2201-0-4/
 active: 2201-0-4
 redirect_from: 
     - /downloads/swan-lake-release-notes/2201-0-4
+    - /downloads/swan-lake-release-notes/2201.0.4/
     - /downloads/swan-lake-release-notes/
     - /downloads/swan-lake-release-notes
     - /downloads/swan-lake-release-notes/2201-0-4-swan-lake/

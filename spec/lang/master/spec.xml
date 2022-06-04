@@ -1557,8 +1557,8 @@ class="grammar"><dfn>tuple-type-descriptor</dfn> :=
 <dfn>tuple-member-type-descriptors</dfn> :=
    <abbr>member-type-descriptor</abbr> (<code>,</code> <abbr>member-type-descriptor</abbr>)* [<code>,</code> <abbr>tuple-rest-descriptor</abbr>]
    | [ <abbr>tuple-rest-descriptor</abbr> ]
-<dfn>member-type-descriptor</dfn> := <abbr>type-descriptor</abbr>
-<dfn>tuple-rest-descriptor</dfn> := <abbr>type-descriptor</abbr> <code>...</code>
+<dfn>member-type-descriptor</dfn> := [<abbr>annots</abbr>] <abbr>type-descriptor</abbr>
+<dfn>tuple-rest-descriptor</dfn> := [<abbr>annots</abbr>] <abbr>type-descriptor</abbr> <code>...</code>
 
 </pre>
 <p>
@@ -10318,7 +10318,8 @@ The available attachment points are described in the following table.
   </tr>
   <tr>
    <td>type</td>
-   <td>module-type-defn, module-enum-decl, type-cast-expr</td>
+   <td>module-type-defn, module-enum-decl, type-cast-expr,
+       member-type-descriptor, tuple-rest-descriptor</td>
    <td>defined type</td>
   </tr>
   <tr>
@@ -12893,6 +12894,7 @@ optional.</li>
 <li>Query expressions producing xml values will now work properly when used as
 interpolated expressions in XML templates.</li>
 <li>Query expressions may be used to construct maps.</li>
+<li>Annotations are now allowed on members of tuple type descriptors.</li>
 </ol>
 </section>
 

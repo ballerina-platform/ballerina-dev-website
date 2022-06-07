@@ -22,17 +22,14 @@ permalink: /community/proposals/active-proposals
 |---|----|----|----|----| 
 |[Proposal: Metadata retrieval support for SQL connectors](https://github.com/ballerina-platform/ballerina-standard-library/issues/2965)|[kaneeldias](https://github.com/kaneeldias)|0|2022-06-01|open|
 |[Proposal: Ballerina SerDes module](https://github.com/ballerina-platform/ballerina-standard-library/issues/2964)|[MohamedSabthar](https://github.com/MohamedSabthar)|2|2022-06-01|open|
-|[Proposal: OS Command Execution](https://github.com/ballerina-platform/ballerina-standard-library/issues/2963)|[MadhukaHarith92](https://github.com/MadhukaHarith92)|6|2022-06-01|open|
+|[Proposal: OS Command Execution](https://github.com/ballerina-platform/ballerina-standard-library/issues/2963)|[MadhukaHarith92](https://github.com/MadhukaHarith92)|9|2022-06-01|open|
 |[Proposal: gRPC Packaging Support](https://github.com/ballerina-platform/ballerina-standard-library/issues/2948)|[dilanSachi](https://github.com/dilanSachi)|6|2022-05-25|open|
-|[Proposal: Introduce a new config in the `fromJson` API to add the root element tag name](https://github.com/ballerina-platform/ballerina-standard-library/issues/2943)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|1|2022-05-23|open|
+|[Proposal: Introduce a new config in the `fromJson` API to add the root element tag name](https://github.com/ballerina-platform/ballerina-standard-library/issues/2943)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|2|2022-05-23|open|
 |[Proposal: Ballerina Constraint Package](https://github.com/ballerina-platform/ballerina-standard-library/issues/2850)|[ldclakmal](https://github.com/ldclakmal)|18|2022-04-20|open|
 |[Proposal: Introduce API to convert the Ballerina record to XML](https://github.com/ballerina-platform/ballerina-standard-library/issues/2819)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|13|2022-03-28|open|
 |[Proposal: gRPC CLI Improvements](https://github.com/ballerina-platform/ballerina-standard-library/issues/2794)|[BuddhiWathsala](https://github.com/BuddhiWathsala)|5|2022-03-20|open|
-|[Proposal: Data-binding for `application/x-www-form-urlencoded`](https://github.com/ballerina-platform/ballerina-standard-library/issues/2530)|[shafreenAnfar](https://github.com/shafreenAnfar)|5|2021-12-21|open|
 |[Proposal: VSCode command to download OpenAPI specification](https://github.com/ballerina-platform/ballerina-standard-library/issues/2509)|[shafreenAnfar](https://github.com/shafreenAnfar)|0|2021-12-20|open|
 |[Proposal: Ballerina VSCode try-out plugin for REST APIs](https://github.com/ballerina-platform/ballerina-standard-library/issues/2508)|[shafreenAnfar](https://github.com/shafreenAnfar)|0|2021-12-19|open|
-|[Proposal: Improve error handling for passthrough scenarios ](https://github.com/ballerina-platform/ballerina-standard-library/issues/2456)|[shafreenAnfar](https://github.com/shafreenAnfar)|5|2021-12-02|open|
-|[Set default username for SQL client connections](https://github.com/ballerina-platform/ballerina-standard-library/issues/2397)|[niveathika](https://github.com/niveathika)|5|2021-11-17|open|
 |[Proposal: Introducing Initial Support for HATEOAS](https://github.com/ballerina-platform/ballerina-standard-library/issues/2391)|[shafreenAnfar](https://github.com/shafreenAnfar)|15|2021-11-15|open|
 |[Proposal: `continue` action for HTTP Client API](https://github.com/ballerina-platform/ballerina-standard-library/issues/2038)|[ayeshLK](https://github.com/ayeshLK)|4|2021-10-12|open|
 |[Proposal: xDS API Support for gRPC](https://github.com/ballerina-platform/ballerina-standard-library/issues/2011)|[BuddhiWathsala](https://github.com/BuddhiWathsala)|2|2021-10-06|open|

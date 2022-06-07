@@ -34,7 +34,7 @@ Code to Cloud is a compiler extension, which is packed with Ballerina, which mak
 
 ## Writing the Ballerina service
 
-Let’s write a Ballerina program that returns a `Hello, World!` string upon invoking the resource. Execute the `bal new` command to create a new Ballerina project. 
+Let’s write a Ballerina program that returns a `Hello, World!` string upon invoking the resource. Execute the `bal new` command to create a new Ballerina package. 
 
 ```bash
 $ bal new greeter
@@ -61,7 +61,7 @@ service / on httpListener {
 }
 ```
 
-To enable the code to cloud functionality in the Ballerina project, you need to add the `cloud="k8s"` property to the `build-options` in the `Ballerina.toml` file.
+To enable the code to cloud functionality in the Ballerina package, you need to add the `cloud="k8s"` property to the `build-options` in the `Ballerina.toml` file.
 
 ***Ballerina.toml***
 
@@ -81,7 +81,7 @@ name="greeter" # container name
 tag="latest"
 ```
 
-Now, when we build the Ballerina project, the cloud artifacts should be generated inside the `target/` directory.
+Now, when we build the Ballerina package, the cloud artifacts should be generated inside the `target/` directory.
 
 ```bash
 $ bal build

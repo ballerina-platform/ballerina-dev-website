@@ -28,7 +28,7 @@ To run this tutorial, you need the following prerequisites:
 
 ## Meet `bal`
 
-`bal` is the Ballerina build tool and package manager. Among other things, `bal` helps you to create, build, test, and run your project. The latest `bal` tool version is available with the latest Ballerina installation. 
+`bal` is the Ballerina build tool and package manager. Among other things, `bal` helps you to create, build, test, and run your package. The latest `bal` tool version is available with the latest Ballerina installation. 
 
 Open your terminal, and run the following commands to make sure everything is ready.
 
@@ -37,9 +37,9 @@ $ bal
 $ bal version
 ```
 
-## Create a new project
+## Create a new package
 
-Let's write a Ballerina program, which prints `Hello, World!`. Use the `bal new` command to create a new Ballerina project. 
+Let's write a Ballerina program, which prints `Hello, World!`. Use the `bal new` command to create a new Ballerina package. 
 
 ```bash
 $ bal new greeter
@@ -53,12 +53,12 @@ greeter/
 └── main.bal
 ```
 
-- The `Ballerina.toml` file contains metadata, which describes your project. Also, the `bal` tool uses the `Ballerina.toml` file to identify the root of a project.
+- The `Ballerina.toml` file contains metadata, which describes your package. Also, the `bal` tool uses the `Ballerina.toml` file to identify the root of a package.
 - The `main.bal` file is a source file and it contains the Ballerina code that prints `Hello, World!` to the console. You can add any number of source files into the `greeter` directory.
 
 ## Say `Hello, World!`
 
-You can open the project directory in your text editor. If you are using VS Code, run `code .` from inside the `greeter` directory. Then, open the `main.bal` file to see the generated source.
+You can open the package directory in your text editor. If you are using VS Code, run `code .` from inside the `greeter` directory. Then, open the `main.bal` file to see the generated source.
 
 ```ballerina
 import ballerina/io;
@@ -76,9 +76,9 @@ In this code:
 
 >**Info:** To learn more about the language, see [Language basics](/learn/language-basics/). 
 
-## Run the project
+## Run the package
 
-Run `bal run` in your terminal to run this project.
+Run `bal run` in your terminal to run this package.
 
 ```bash
 $ bal run
@@ -143,7 +143,7 @@ Let's take a moment to digest the new constructs in this code:
 
 ## Running the simple REST API
 
-Let's run this project in your terminal:
+Let's run this package in your terminal:
 
 ```bash
 $ bal run

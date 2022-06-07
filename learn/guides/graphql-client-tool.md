@@ -131,7 +131,7 @@ bal graphql [-i | --input] <graphql-configuration-file-path> [-o | --output] <ou
 
 This generates a Ballerina client with remote operations corresponding to each GraphQL query/mutation in the GraphQL document (`.graphql document`). The generated sources gets written into the same directory from which the command is executed (i.e., the Ballerina package root directory). For more information, see [GraphQL to Ballerina](/learn/cli-documentation/graphql/#graphql-to-ballerina).
 
-The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project.
+The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package.
 
 ### Sample usage of the generated client
 

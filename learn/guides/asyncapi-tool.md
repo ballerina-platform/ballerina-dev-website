@@ -37,7 +37,7 @@ This generates a Ballerina source (i.e., the four Ballerina files below) from th
 3. `listener.bal` - contains the HTTP listener, which listens to the relevant third-party service
 4. `dispacther_service.bal` - contains the event dispatching logic
 
-The generated Ballerina sources will be written into the same directory from which the command is run. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project. If you want to generate Ballerina sources to a specific provided output location, you can modify the above command as below.
+The generated Ballerina sources will be written into the same directory from which the command is run. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package. If you want to generate Ballerina sources to a specific provided output location, you can modify the above command as below.
 
 ```bash
 bal asyncapi -i hello.yaml -o ./output_path

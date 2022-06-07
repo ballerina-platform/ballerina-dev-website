@@ -61,9 +61,9 @@ CREATE TABLE Company.Employees (
 );
 ```
 
-### Create a Ballerina project
+### Create a Ballerina package
 
-A new Ballerina project can be created by executing the following command in the directory in which you want to create the project.
+A new Ballerina package can be created by executing the following command in the directory in which you want to create the package.
 
 ```shell
 bal new data_service
@@ -99,7 +99,7 @@ This record type is the basis for interacting with the database.
 
 The MySQL driver JAR is necessary to connect to and interact with a MySQL server. There are several methods of doing this.
 
-1. Import the `ballerinax/mysql.driver` package in your `main.bal` file. This Package bundles the latest MySQL driver so that the MySQL connector can be used in ballerina projects easily.
+1. Import the `ballerinax/mysql.driver` package in your `main.bal` file. This Package bundles the latest MySQL driver so that the MySQL connector can be used in ballerina packages easily.
    ```ballerina
    import ballerinax/mysql.driver as _;
    ```
@@ -120,7 +120,7 @@ The MySQL driver JAR is necessary to connect to and interact with a MySQL server
    
 ### Define configurations
 
-In the project directory, create a new file named `Config.toml` and specify the configurations necessary to connect to the MySQL database.
+In the package directory, create a new file named `Config.toml` and specify the configurations necessary to connect to the MySQL database.
 
 ```toml
 USER="root"

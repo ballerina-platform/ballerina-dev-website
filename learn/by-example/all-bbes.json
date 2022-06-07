@@ -1643,7 +1643,7 @@
     {
         "title": "WebSocket security",
         "column": 1,
-        "category": "Working over the network",
+        "category": "Working over the Network",
         "samples": [
             {
                 "name": "Service - SSL/TLS",

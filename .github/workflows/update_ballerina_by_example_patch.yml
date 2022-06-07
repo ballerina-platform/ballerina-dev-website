@@ -27,17 +27,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          ref: master
+          ref: upstream-master
 
       - name: Clone ballerina-release
-        run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-release.git
+        run: git clone -b bbe-gen https://$GITHUB_TOKEN@github.com/Ballerina-By-Examples/ballerina-release.git
 
       - name: Clone ballerina-distribution
-        run: |
-          git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-distribution.git
-          cd ballerina-distribution
-          git checkout -b 2201.0.x origin/2201.0.x
-          cd ..
+        run: git clone -b bbe-gen https://$GITHUB_TOKEN@github.com/Ballerina-By-Examples/ballerina-distribution.git
 
       - name: Generate BBEs
         run: |
@@ -57,8 +53,8 @@ jobs:
         run: |
           git checkout automate-bbes-$GITHUB_SHA 2>/dev/null || git checkout -b automate-bbes-$GITHUB_SHA
 
-          git config --global user.email "ballerina-bot@ballerina.org"
-          git config --global user.name "ballerina-bot"
+          git config --global user.email ${{ secrets.EMAIL }}
+          git config --global user.name ${{ secrets.NAME }}
 
           git add _data/all-bbes.json
           git add learn/by-example
@@ -71,6 +67,6 @@ jobs:
         shell: bash
         run: |
           curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-          bin/hub pull-request -b master -m '[Automated] Update Ballerina By Example(BBEs) pages'
+          bin/hub pull-request -b upstream-master -m '[Automated] Update Ballerina By Example(BBEs) pages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -41,6 +41,8 @@ $ bal version
 
 Let's write a Ballerina program, which prints `Hello, World!`. Use the `bal new` command to create a new Ballerina package. 
 
+>**Info:** For more information on packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
+
 ```bash
 $ bal new greeter
 ```

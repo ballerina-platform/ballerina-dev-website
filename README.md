@@ -39,3 +39,4 @@ bundle exec jekyll serve
 **Troubleshooting Tips:** 
 1. For more information on the installation instructions, see the [Jekyll Installation Documentation](https://jekyllrb.com/docs/installation/).
 2. If you get the `cannot load such file -- webrick` error, execute the `bundle add webrick` command.
+3. If you get the `Could not locate Gemfile` error, you may not be inside the `ballerina-dev-website` repo directory. Navigate to it in the terminal, and then, execute the required command.

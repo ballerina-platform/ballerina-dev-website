@@ -44,13 +44,15 @@ jobs:
           if git diff-index --quiet HEAD --; then
               echo "No changes"
           else
+              git checkout automate-bbes-$GITHUB_SHA 2>/dev/null || git checkout -b automate-bbes-$GITHUB_SHA
+              git pull origin dev
               git config --local user.email "bgpbimsara@gmail.com"
               git config --local user.name "bimsarapathiraja"
               git add --all
               if [-z "$(git status --porcelain)"]; then
                 echo "::set-output name=push::false"
               else
-                git commit -m "Generate proposal HTML" -a
+                git commit --allow-empty -m "Generate proposal HTML" 
                 echo "::set-output name=push::true"
               fi
           fi
@@ -59,6 +61,13 @@ jobs:
         run: |
           git config --global user.email "bgpbimsara@gmail.com"
           git config --global user.name "bimsarapathiraja"
-          git push 
+          git push --set-upstream origin automate-bbes-$GITHUB_SHA
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+      - name: Create pull request for new BBEs
+        shell: bash
+        run: |
+          curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+          bin/hub pull-request -m '[Automated] Update Ballerina active proposals'
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}

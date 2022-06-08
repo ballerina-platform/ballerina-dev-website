@@ -92,5 +92,5 @@ public function main() returns error? {
     //string fileContent = "# Ballerina Proposals \n### Open Proposals \n" + repoData;
     string fileContent = "--- \nlayout: ballerina-inner-page \ntitle: Active Proposals \ndescription: This is a collection of active proposals for Ballerina by the Ballerina community. \nkeywords: ballerina, community, ballerina community, newsletter \npermalink: /community/active-proposals \nintro: This is a collection of active proposals for Ballerina by the Ballerina community. \n--- \n" + repoData;
     io:println(fileContent);
-    check io:fileWriteString("./community/active-proposals.md", fileContent);
+    check io:fileWriteString("./community/proposals/active-proposals.md", fileContent);
 }

@@ -1441,7 +1441,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Interceptor Error handling",
+                "name": "Interceptor error handling",
                 "url": "http-interceptor-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,

@@ -9,7 +9,7 @@ permalink: /community/proposals/active-proposals
 
 |Proposal|Author|Comments|Created Date|State| 
 |---|----|----|----|----| 
-|[Proposal: Tool to Dump Runtime State](https://github.com/ballerina-platform/ballerina-lang/issues/36284)|[Nadeeshan96](https://github.com/Nadeeshan96)|2|2022-05-23|open|
+|[Proposal: Tool to Dump Runtime State](https://github.com/ballerina-platform/ballerina-lang/issues/36284)|[Nadeeshan96](https://github.com/Nadeeshan96)|4|2022-05-23|open|
 |[Utility to enforce semvar to Ballerina APIs](https://github.com/ballerina-platform/ballerina-lang/issues/32368)|[hevayo](https://github.com/hevayo)|0|2021-08-26|open|
 |[Implement new service typing proposal](https://github.com/ballerina-platform/ballerina-lang/issues/26064)|[rdhananjaya](https://github.com/rdhananjaya)|0|2020-09-24|open|
 |[Suggestion: Ability to attach @resources to a service](https://github.com/ballerina-platform/ballerina-lang/issues/19523)|[ramith](https://github.com/ramith)|0|2019-10-22|open|
@@ -20,11 +20,11 @@ permalink: /community/proposals/active-proposals
 
 |Proposal|Author|Comments|Created Date|State| 
 |---|----|----|----|----| 
+|[Proposal: GraphQL Interceptors](https://github.com/ballerina-platform/ballerina-standard-library/issues/2977)|[DimuthuMadushan](https://github.com/DimuthuMadushan)|1|2022-06-07|open|
 |[Proposal: Metadata retrieval support for SQL connectors](https://github.com/ballerina-platform/ballerina-standard-library/issues/2965)|[kaneeldias](https://github.com/kaneeldias)|0|2022-06-01|open|
 |[Proposal: Ballerina SerDes module](https://github.com/ballerina-platform/ballerina-standard-library/issues/2964)|[MohamedSabthar](https://github.com/MohamedSabthar)|2|2022-06-01|open|
-|[Proposal: OS Command Execution](https://github.com/ballerina-platform/ballerina-standard-library/issues/2963)|[MadhukaHarith92](https://github.com/MadhukaHarith92)|9|2022-06-01|open|
+|[Proposal: OS Command Execution](https://github.com/ballerina-platform/ballerina-standard-library/issues/2963)|[MadhukaHarith92](https://github.com/MadhukaHarith92)|11|2022-06-01|open|
 |[Proposal: gRPC Packaging Support](https://github.com/ballerina-platform/ballerina-standard-library/issues/2948)|[dilanSachi](https://github.com/dilanSachi)|6|2022-05-25|open|
-|[Proposal: Introduce a new config in the `fromJson` API to add the root element tag name](https://github.com/ballerina-platform/ballerina-standard-library/issues/2943)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|2|2022-05-23|open|
 |[Proposal: Ballerina Constraint Package](https://github.com/ballerina-platform/ballerina-standard-library/issues/2850)|[ldclakmal](https://github.com/ldclakmal)|18|2022-04-20|open|
 |[Proposal: Introduce API to convert the Ballerina record to XML](https://github.com/ballerina-platform/ballerina-standard-library/issues/2819)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|13|2022-03-28|open|
 |[Proposal: gRPC CLI Improvements](https://github.com/ballerina-platform/ballerina-standard-library/issues/2794)|[BuddhiWathsala](https://github.com/BuddhiWathsala)|5|2022-03-20|open|

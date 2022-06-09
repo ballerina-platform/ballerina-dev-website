@@ -1394,7 +1394,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Response with multiparts",
+                "name": "Response With multiparts",
                 "url": "http-response-with-multiparts",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1402,7 +1402,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Request with multiparts",
+                "name": "Request With multiparts",
                 "url": "http-request-with-multiparts",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -1433,7 +1433,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Error handling",
+                "name": "Error Handling",
                 "url": "http-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1441,7 +1441,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Interceptor error handling",
+                "name": "Interceptor Error Handling",
                 "url": "http-interceptor-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1622,7 +1622,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - retry",
+                "name": "Client - Retry",
                 "url": "websocket-retry-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1643,7 +1643,7 @@
     {
         "title": "WebSocket security",
         "column": 1,
-        "category": "Working over the Network",
+        "category": "Working Over the Network",
         "samples": [
             {
                 "name": "Service - SSL/TLS",
@@ -2142,7 +2142,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer client - poll payload",
+                "name": "Consumer client - Poll Payload",
                 "url": "kafka-consumer-client-poll-payload",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2151,7 +2151,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer client - poll consumer record",
+                "name": "Consumer client - Poll ConsumerRecord",
                 "url": "kafka-consumer-client-poll-consumer-record",
                 "verifyBuild": false,
                 "verifyOutput": false,
@@ -2416,8 +2416,17 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Query with complex types",
-                "url": "mysql-complex-type-queries",
+                "name": "Query with one result",
+                "url": "mysql-query-row-operation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Query with advanced mapping",
+                "url": "mysql-query-column-mapping",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2477,8 +2486,17 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Query with complex types",
-                "url": "jdbc-complex-type-queries",
+                "name": "Query with one result",
+                "url": "jdbc-query-row-operation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Query with advanced mapping",
+                "url": "jdbc-query-column-mapping",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",

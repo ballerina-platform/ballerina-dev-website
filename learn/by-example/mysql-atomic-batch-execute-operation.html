@@ -13,33 +13,34 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Runs the prerequisite setup for the example.</span>
-    <span class="nx">check</span> <span class="nx">beforeExample</span><span class="p">();</span>
+    <span class="nx">check</span> <span class="nx">initialization</span><span class="p">();</span>
 
-    <span class="c1">// Initializes the MySQL client.</span>
-    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> 
-            <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE&quot;</span><span class="p">);</span>
+    <span class="c1">// Initializes the MySQL client. The `mysqlClient` can be reused to access database throughout the application execution.</span>
+    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span>
+            <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span> <span class="s">&quot;CUSTOMER&quot;</span><span class="p">);</span>
 
     <span class="c1">// Records with the duplicate `registrationID` entry. Here it is `registrationID` = 1.</span>
-    <span class="k">var</span> <span class="nx">insertRecords</span> <span class="p">=</span> <span class="p">[</span>
+    <span class="k">var</span> <span class="nx">customers</span> <span class="p">=</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Linda&quot;</span><span class="p">,</span>
             <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Jones&quot;</span><span class="p">,</span>
             <span class="nx">registrationID</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
             <span class="nx">creditLimit</span><span class="p">:</span> <span class="mf">10000.75</span><span class="p">,</span>
             <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span>
-        <span class="p">},</span> 
+        <span class="p">},</span>
         <span class="p">{</span>
             <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span>
             <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Stuart&quot;</span><span class="p">,</span>
             <span class="nx">registrationID</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
             <span class="nx">creditLimit</span><span class="p">:</span> <span class="mf">5000.75</span><span class="p">,</span>
             <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span>
-        <span class="p">},</span> 
+        <span class="p">},</span>
         <span class="p">{</span>
             <span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Camellia&quot;</span><span class="p">,</span>
             <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Potter&quot;</span><span class="p">,</span>
@@ -50,59 +51,52 @@ redirect_from:
     <span class="p">];</span>
 
     <span class="c1">// Creates a batch parameterized query.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedQuery</span><span class="p">[]</span> <span class="nx">insertQueries</span> <span class="p">=</span> 
-        <span class="nx">from</span> <span class="k">var</span> <span class="nx">data</span> <span class="nx">in</span> <span class="nx">insertRecords</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedQuery</span><span class="p">[]</span> <span class="nx">insertQueries</span> <span class="p">=</span>
+        <span class="nx">from</span> <span class="k">var</span> <span class="nx">customer</span> <span class="nx">in</span> <span class="nx">customers</span>
         <span class="nx">select</span> <span class="s">`INSERT INTO Customers</span>
 <span class="s">                (firstName, lastName, registrationID, creditLimit, country)</span>
-<span class="s">                VALUES (${data.firstName}, ${data.lastName},</span>
-<span class="s">                ${data.registrationID}, ${data.creditLimit}, ${data.country})`</span><span class="p">;</span>
+<span class="s">                VALUES (${customer.firstName}, ${customer.lastName},</span>
+<span class="s">                ${customer.registrationID}, ${customer.creditLimit}, ${customer.country})`</span><span class="p">;</span>
 
     <span class="c1">// The transaction block can be used to roll back if any error occurred.</span>
     <span class="nx">transaction</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">batchExecute</span><span class="p">(</span><span class="nx">insertQueries</span><span class="p">);</span>
+        <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">[]|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">batchExecute</span><span class="p">(</span><span class="nx">insertQueries</span><span class="p">);</span>
         <span class="k">if</span> <span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">BatchExecuteError</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="nx">executionResults</span><span class="p">);</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback transaction.\n&quot;</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback transaction.&quot;</span><span class="p">);</span>
             <span class="nx">rollback</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
             <span class="k">if</span> <span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
-                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while committing: &quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while committing&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="c1">// Checks the data after the batch execution.</span>
-    <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{},</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
-        <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM Customers`</span><span class="p">);</span>
+    <span class="c1">// Closes the MySQL client.</span>
+    <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Data in Customers table:&quot;</span><span class="p">);</span>
-    <span class="nx">check</span> <span class="nx">from</span> <span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span> <span class="nx">in</span> <span class="nx">resultStream</span>
-        <span class="nx">do</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-        <span class="p">};</span>
-
-    <span class="c1">// Performs a cleanup after the example.</span>
-    <span class="nx">check</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
+    <span class="c1">// Performs the cleanup after the example.</span>
+    <span class="nx">check</span> <span class="nx">cleanup</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="c1">// Initializes the database as a prerequisite to the example.</span>
-<span class="kd">function</span> <span class="nx">beforeExample</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">initialization</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">);</span>
 
     <span class="c1">// Creates a database.</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE DATABASE MYSQL_BBE`</span><span class="p">);</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE DATABASE CUSTOMER`</span><span class="p">);</span>
 
     <span class="c1">// Creates a table in the database.</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE MYSQL_BBE.Customers</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE CUSTOMER.Customers</span>
 <span class="s">            (customerId INTEGER NOT NULL AUTO_INCREMENT,</span>
 <span class="s">            firstName VARCHAR(300), lastName  VARCHAR(300), registrationID</span>
 <span class="s">            INTEGER UNIQUE, creditLimit DOUBLE, country  VARCHAR(300),</span>
 <span class="s">            PRIMARY KEY (customerId))`</span><span class="p">);</span>
 
     <span class="c1">// Adds records to the newly-created table.</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO MYSQL_BBE.Customers</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO CUSTOMER.Customers</span>
 <span class="s">            (firstName, lastName, registrationID,creditLimit,country) VALUES</span>
 <span class="s">             (&#39;Peter&#39;, &#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`</span><span class="p">);</span>
 
@@ -110,10 +104,12 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="c1">// Cleans up the database after running the example.</span>
-<span class="kd">function</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">cleanup</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">);</span>
+
     <span class="c1">// Cleans the database.</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP DATABASE MYSQL_BBE`</span><span class="p">);</span>
-    
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP DATABASE CUSTOMER`</span><span class="p">);</span>
+
     <span class="c1">// Closes the MySQL client.</span>
     <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
@@ -187,6 +183,7 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerina/log;
 import ballerinax/mysql;
 import ballerina/sql;
 </code></pre></div>
@@ -212,7 +209,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check beforeExample();
+                                    <div class="highlight"><pre><code class=language-ballerina>    check initialization();
 </code></pre></div>
 
                                 </div>
@@ -231,8 +228,8 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient = check new (user = &quot;root&quot;, 
-            password = &quot;Test@123&quot;, database = &quot;MYSQL_BBE&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient = check new (user = &quot;root&quot;,
+            password = &quot;Test@123&quot;, database = &quot;CUSTOMER&quot;);
 </code></pre></div>
 
                                 </div>
@@ -240,7 +237,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initializes the MySQL client.</p>
+                                            <p>Initializes the MySQL client. The <code>mysqlClient</code> can be reused to access database throughout the application execution.</p>
 
                                         </div>
                                     </div>
@@ -251,21 +248,21 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    var insertRecords = [
+                                    <div class="highlight"><pre><code class=language-ballerina>    var customers = [
         {
             firstName: &quot;Linda&quot;,
             lastName: &quot;Jones&quot;,
             registrationID: 4,
             creditLimit: 10000.75,
             country: &quot;USA&quot;
-        }, 
+        },
         {
             firstName: &quot;Peter&quot;,
             lastName: &quot;Stuart&quot;,
             registrationID: 1,
             creditLimit: 5000.75,
             country: &quot;USA&quot;
-        }, 
+        },
         {
             firstName: &quot;Camellia&quot;,
             lastName: &quot;Potter&quot;,
@@ -292,12 +289,12 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ParameterizedQuery[] insertQueries = 
-        from var data in insertRecords
+                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ParameterizedQuery[] insertQueries =
+        from var customer in customers
         select `INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
-                VALUES (${data.firstName}, ${data.lastName},
-                ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
+                VALUES (${customer.firstName}, ${customer.lastName},
+                ${customer.registrationID}, ${customer.creditLimit}, ${customer.country})`;
 </code></pre></div>
 
                                 </div>
@@ -317,16 +314,16 @@ import ballerina/sql;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    transaction {
-        var result = mysqlClient-&gt;batchExecute(insertQueries);
+        sql:ExecutionResult[]|sql:Error result = mysqlClient-&gt;batchExecute(insertQueries);
         if result is sql:BatchExecuteError {
             io:println(result.message());
             io:println(result.detail()?.executionResults);
-            io:println(&quot;Rollback transaction.\n&quot;);
+            io:println(&quot;Rollback transaction.&quot;);
             rollback;
         } else {
             error? err = commit;
             if err is error {
-                io:println(&quot;Error occurred while committing: &quot;, err);
+                log:printError(&quot;Error occurred while committing&quot;, err);
             }
         }
     }
@@ -348,8 +345,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    stream&lt;record {}, error?&gt; resultStream =
-        mysqlClient-&gt;query(`SELECT * FROM Customers`);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check mysqlClient.close();
 </code></pre></div>
 
                                 </div>
@@ -357,7 +353,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Checks the data after the batch execution.</p>
+                                            <p>Closes the MySQL client.</p>
 
                                         </div>
                                     </div>
@@ -365,26 +361,10 @@ import ballerina/sql;
                                 </div>
                             </div>
                             
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(&quot;Data in Customers table:&quot;);
-    check from record {} result in resultStream
-        do {
-            io:println(result.toString());
-        };
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check afterExample(mysqlClient);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check cleanup();
 }
 </code></pre></div>
 
@@ -393,7 +373,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Performs a cleanup after the example.</p>
+                                            <p>Performs the cleanup after the example.</p>
 
                                         </div>
                                     </div>
@@ -404,7 +384,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function beforeExample() returns sql:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function initialization() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = &quot;root&quot;, password = &quot;Test@123&quot;);
 </code></pre></div>
 
@@ -424,7 +404,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`CREATE DATABASE MYSQL_BBE`);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`CREATE DATABASE CUSTOMER`);
 </code></pre></div>
 
                                 </div>
@@ -443,7 +423,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`CREATE TABLE MYSQL_BBE.Customers
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`CREATE TABLE CUSTOMER.Customers
             (customerId INTEGER NOT NULL AUTO_INCREMENT,
             firstName VARCHAR(300), lastName  VARCHAR(300), registrationID
             INTEGER UNIQUE, creditLimit DOUBLE, country  VARCHAR(300),
@@ -466,7 +446,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`INSERT INTO MYSQL_BBE.Customers
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`INSERT INTO CUSTOMER.Customers
             (firstName, lastName, registrationID,creditLimit,country) VALUES
              (&#39;Peter&#39;, &#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`);
 </code></pre></div>
@@ -500,7 +480,8 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function afterExample(mysql:Client mysqlClient) returns sql:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function cleanup() returns sql:Error? {
+    mysql:Client mysqlClient = check new (user = &quot;root&quot;, password = &quot;Test@123&quot;);
 </code></pre></div>
 
                                 </div>
@@ -519,8 +500,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`DROP DATABASE MYSQL_BBE`);
-    
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`DROP DATABASE CUSTOMER`);
 </code></pre></div>
 
                                 </div>
@@ -580,26 +560,13 @@ bal run
                             
                             <div class="cTR cOutputTr">
 
-                                <div class="code leading cOutput">
+                                <div class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Error while executing batch command starting with: &#39;INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
                 VALUES ( ? ,  ? ,
-                 ? ,  ? ,  ? )&#39;.Duplicate entry &#39;1&#39; for key &#39;Customers.registrationID&#39;.
+                 ? ,  ? ,  ? )&#39;.Duplicate entry &#39;1&#39; for key &#39;customers.registrationID&#39;.
 [{&quot;affectedRowCount&quot;:1,&quot;lastInsertId&quot;:null},{&quot;affectedRowCount&quot;:-3,&quot;lastInsertId&quot;:null},{&quot;affectedRowCount&quot;:1,&quot;lastInsertId&quot;:null}]
 Rollback transaction.
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR cOutputTr">
-
-                                <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Data in Customers table:
-{&quot;customerId&quot;:1,&quot;firstName&quot;:&quot;Peter&quot;,&quot;lastName&quot;:&quot;Stuart&quot;,&quot;registrationID&quot;:1,&quot;creditLimit&quot;:5000.75,&quot;country&quot;:&quot;USA&quot;}
 </code></pre></div>
 
                                 </div>

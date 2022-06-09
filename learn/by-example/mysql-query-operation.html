@@ -16,11 +16,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">mysql</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
 
-<span class="c1">// Defines a record to load the query result schema as shown below in the</span>
-<span class="c1">// &#39;getDataWithTypedQuery&#39; function. In this example, all columns of the </span>
-<span class="c1">// customer table will be loaded. Therefore, the `Customer` record will be </span>
-<span class="c1">// created with all the columns. The column name of the result and the </span>
-<span class="c1">// defined field name of the record will be matched regardless of the letters&#39; case.</span>
+<span class="c1">// Defines a record to load the query result.</span>
 <span class="nx">type</span> <span class="nx">Customer</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">customerId</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
@@ -32,66 +28,54 @@ redirect_from:
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Runs the prerequisite setup for the example.</span>
-    <span class="nx">check</span> <span class="nx">beforeExample</span><span class="p">();</span>
+    <span class="nx">check</span> <span class="nx">initialization</span><span class="p">();</span>
 
-    <span class="c1">// Initializes the MySQL client.</span>
+    <span class="c1">// Initializes the MySQL client. The `mysqlClient` can be reused to access database throughout the application execution.</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span>
-            <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE&quot;</span><span class="p">);</span>
+            <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span> <span class="s">&quot;CUSTOMER&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Select the rows in the database table via the query remote operation.</span>
-    <span class="c1">// The result is returned as a stream and the elements of the stream can</span>
-    <span class="c1">// be either a record or an error. The name and type of the attributes </span>
-    <span class="c1">// within the record from the `resultStream` will be automatically </span>
-    <span class="c1">// identified based on the column name and type of the query result.</span>
+    <span class="kt">float</span> <span class="nx">creditLimit</span> <span class="p">=</span> <span class="mi">5000</span><span class="p">;</span>
+
+    <span class="c1">// Query table with a condition.</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Customer</span><span class="p">,</span> <span class="nx">error</span><span class="err">?</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
-            <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM Customers`</span><span class="p">);</span>
+            <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">`SELECT * FROM Customers</span>
+<span class="s">                                WHERE creditLimit &gt; ${creditLimit};`</span><span class="p">);</span>
 
-    <span class="c1">// If there is any error during the execution of the SQL query or</span>
-    <span class="c1">// iteration of the result stream, the result stream will terminate and</span>
-    <span class="c1">// return the error.</span>
+    <span class="c1">// Iterate the result stream.</span>
     <span class="nx">check</span> <span class="nx">from</span> <span class="nx">Customer</span> <span class="nx">customer</span> <span class="nx">in</span> <span class="nx">resultStream</span>
         <span class="nx">do</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Full Customer details: &quot;</span><span class="p">,</span> <span class="nx">customer</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">`Customer Details: ${customer}`</span><span class="p">);</span>
         <span class="p">};</span>
 
-    <span class="kt">int</span> <span class="nx">customerId</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="c1">// Select a row in the database table via the query row operation.</span>
-    <span class="c1">// This will return utmost one record. If no record is found, it will</span>
-    <span class="c1">// throw an `sql:NoRowsError`.</span>
-    <span class="nx">Customer</span> <span class="nx">customer</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">queryRow</span><span class="p">(</span>
-        <span class="s">`SELECT * FROM Customers where customerId = ${customerId}`</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nCustomer (customerId = 1) : &quot;</span><span class="p">,</span> <span class="nx">customer</span><span class="p">);</span>
+    <span class="c1">// Closes the stream to release resources.</span>
+    <span class="nx">check</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 
-    <span class="c1">// The result of the count operation is provided as an int variable.</span>
-    <span class="c1">// As this query returns only a single column on top of a single row,</span>
-    <span class="c1">// this can be provided as an int variable.</span>
-    <span class="kt">int</span> <span class="nx">totalCustomers</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">queryRow</span><span class="p">(</span>
-                    <span class="s">`SELECT COUNT(*) AS total FROM Customers`</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nTotal customers in the table : &quot;</span><span class="p">,</span> <span class="nx">totalCustomers</span><span class="p">);</span>
+    <span class="c1">// Closes the MySQL client.</span>
+    <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 
     <span class="c1">// Performs the cleanup after the example.</span>
-    <span class="nx">check</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
+    <span class="nx">check</span> <span class="nx">cleanup</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="c1">// Initializes the database as a prerequisite to the example.</span>
-<span class="kd">function</span> <span class="nx">beforeExample</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">initialization</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">);</span>
 
     <span class="c1">// Creates a database.</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE DATABASE MYSQL_BBE`</span><span class="p">);</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE DATABASE CUSTOMER`</span><span class="p">);</span>
 
     <span class="c1">// Creates a table in the database.</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE MYSQL_BBE.Customers</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE CUSTOMER.Customers</span>
 <span class="s">            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName</span>
 <span class="s">            VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER,</span>
 <span class="s">            creditLimit DOUBLE, country  VARCHAR(300),</span>
 <span class="s">            PRIMARY KEY (customerId))`</span><span class="p">);</span>
 
     <span class="c1">// Adds the records to the newly-created table.</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO MYSQL_BBE.Customers</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO CUSTOMER.Customers</span>
 <span class="s">            (firstName, lastName, registrationID,creditLimit,country) VALUES</span>
 <span class="s">            (&#39;Peter&#39;,&#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`</span><span class="p">);</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO MYSQL_BBE.Customers</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO CUSTOMER.Customers</span>
 <span class="s">            (firstName, lastName, registrationID,creditLimit,country) VALUES</span>
 <span class="s">            (&#39;Dan&#39;, &#39;Brown&#39;, 2, 10000, &#39;UK&#39;)`</span><span class="p">);</span>
 
@@ -99,11 +83,12 @@ redirect_from:
 <span class="p">}</span>
 
 <span class="c1">// Cleans up the database after running the example.</span>
-<span class="kd">function</span> <span class="nx">afterExample</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Cleans the database.</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP DATABASE MYSQL_BBE`</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">cleanup</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;Test@123&quot;</span><span class="p">);</span>
 
-    <span class="c1">// Closes the MySQL client.</span>
+    <span class="c1">// Cleans the database.</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`DROP DATABASE CUSTOMER`</span><span class="p">);</span>
+
     <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
@@ -135,9 +120,9 @@ redirect_from:
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="mysql-complex-type-queries.html">
+                                    <a class="next" href="mysql-query-row-operation.html">
                                         <span>NEXT ></span>
-                                        <p>Query with complex types</p>
+                                        <p>Query with one result</p>
                                     </a>
                                 </div>
                                 
@@ -203,11 +188,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines a record to load the query result schema as shown below in the
- &lsquo;getDataWithTypedQuery&rsquo; function. In this example, all columns of the
- customer table will be loaded. Therefore, the <code>Customer</code> record will be
- created with all the columns. The column name of the result and the
- defined field name of the record will be matched regardless of the letters&rsquo; case.</p>
+                                            <p>Defines a record to load the query result.</p>
 
                                         </div>
                                     </div>
@@ -230,7 +211,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check beforeExample();
+                                    <div class="highlight"><pre><code class=language-ballerina>    check initialization();
 </code></pre></div>
 
                                 </div>
@@ -250,7 +231,7 @@ import ballerina/sql;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    mysql:Client mysqlClient = check new (user = &quot;root&quot;,
-            password = &quot;Test@123&quot;, database = &quot;MYSQL_BBE&quot;);
+            password = &quot;Test@123&quot;, database = &quot;CUSTOMER&quot;);
 </code></pre></div>
 
                                 </div>
@@ -258,10 +239,22 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initializes the MySQL client.</p>
+                                            <p>Initializes the MySQL client. The <code>mysqlClient</code> can be reused to access database throughout the application execution.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    float creditLimit = 5000;
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
                                     
                                 </div>
                             </div>
@@ -270,7 +263,8 @@ import ballerina/sql;
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    stream&lt;Customer, error?&gt; resultStream =
-            mysqlClient-&gt;query(`SELECT * FROM Customers`);
+            mysqlClient-&gt;query(`SELECT * FROM Customers
+                                WHERE creditLimit &gt; ${creditLimit};`);
 </code></pre></div>
 
                                 </div>
@@ -278,11 +272,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Select the rows in the database table via the query remote operation.
- The result is returned as a stream and the elements of the stream can
- be either a record or an error. The name and type of the attributes
- within the record from the <code>resultStream</code> will be automatically
- identified based on the column name and type of the query result.</p>
+                                            <p>Query table with a condition.</p>
 
                                         </div>
                                     </div>
@@ -295,7 +285,7 @@ import ballerina/sql;
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>    check from Customer customer in resultStream
         do {
-            io:println(&quot;Full Customer details: &quot;, customer);
+            io:println(`Customer Details: ${customer}`);
         };
 </code></pre></div>
 
@@ -304,9 +294,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If there is any error during the execution of the SQL query or
- iteration of the result stream, the result stream will terminate and
- return the error.</p>
+                                            <p>Iterate the result stream.</p>
 
                                         </div>
                                     </div>
@@ -314,24 +302,10 @@ import ballerina/sql;
                                 </div>
                             </div>
                             
-                            <div class="cTR">
-
-                                <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int customerId = 1;
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    Customer customer = check mysqlClient-&gt;queryRow(
-        `SELECT * FROM Customers where customerId = ${customerId}`);
-    io:println(&quot;\nCustomer (customerId = 1) : &quot;, customer);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check resultStream.close();
 </code></pre></div>
 
                                 </div>
@@ -339,9 +313,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Select a row in the database table via the query row operation.
- This will return utmost one record. If no record is found, it will
- throw an <code>sql:NoRowsError</code>.</p>
+                                            <p>Closes the stream to release resources.</p>
 
                                         </div>
                                     </div>
@@ -352,9 +324,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    int totalCustomers = check mysqlClient-&gt;queryRow(
-                    `SELECT COUNT(*) AS total FROM Customers`);
-    io:println(&quot;\nTotal customers in the table : &quot;, totalCustomers);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check mysqlClient.close();
 </code></pre></div>
 
                                 </div>
@@ -362,9 +332,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The result of the count operation is provided as an int variable.
- As this query returns only a single column on top of a single row,
- this can be provided as an int variable.</p>
+                                            <p>Closes the MySQL client.</p>
 
                                         </div>
                                     </div>
@@ -375,7 +343,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    check afterExample(mysqlClient);
+                                    <div class="highlight"><pre><code class=language-ballerina>    check cleanup();
 }
 </code></pre></div>
 
@@ -395,7 +363,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function beforeExample() returns sql:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function initialization() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = &quot;root&quot;, password = &quot;Test@123&quot;);
 </code></pre></div>
 
@@ -415,7 +383,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`CREATE DATABASE MYSQL_BBE`);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`CREATE DATABASE CUSTOMER`);
 </code></pre></div>
 
                                 </div>
@@ -434,7 +402,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`CREATE TABLE MYSQL_BBE.Customers
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`CREATE TABLE CUSTOMER.Customers
             (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName
             VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER,
             creditLimit DOUBLE, country  VARCHAR(300),
@@ -457,10 +425,10 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`INSERT INTO MYSQL_BBE.Customers
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`INSERT INTO CUSTOMER.Customers
             (firstName, lastName, registrationID,creditLimit,country) VALUES
             (&#39;Peter&#39;,&#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`);
-    _ = check mysqlClient-&gt;execute(`INSERT INTO MYSQL_BBE.Customers
+    _ = check mysqlClient-&gt;execute(`INSERT INTO CUSTOMER.Customers
             (firstName, lastName, registrationID,creditLimit,country) VALUES
             (&#39;Dan&#39;, &#39;Brown&#39;, 2, 10000, &#39;UK&#39;)`);
 </code></pre></div>
@@ -494,7 +462,8 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>function afterExample(mysql:Client mysqlClient) returns sql:Error? {
+                                    <div class="highlight"><pre><code class=language-ballerina>function cleanup() returns sql:Error? {
+    mysql:Client mysqlClient = check new (user = &quot;root&quot;, password = &quot;Test@123&quot;);
 </code></pre></div>
 
                                 </div>
@@ -513,7 +482,7 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`DROP DATABASE MYSQL_BBE`);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check mysqlClient-&gt;execute(`DROP DATABASE CUSTOMER`);
 </code></pre></div>
 
                                 </div>
@@ -529,7 +498,7 @@ import ballerina/sql;
                                 </div>
                             </div>
                             
-                            <div class="cTR hover-enable">
+                            <div class="cTR">
 
                                 <div class="code">
                                     <div class="highlight"><pre><code class=language-ballerina>    check mysqlClient.close();
@@ -538,13 +507,6 @@ import ballerina/sql;
 
                                 </div>
                                 <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Closes the MySQL client.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </div>
                             </div>
@@ -573,33 +535,9 @@ bal run
                             
                             <div class="cTR cOutputTr">
 
-                                <div class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Full Customer details: {&quot;customerId&quot;:1,&quot;firstName&quot;:&quot;Peter&quot;,&quot;lastName&quot;:&quot;Stuart&quot;,&quot;registrationId&quot;:1,&quot;creditLimit&quot;:5000.75,&quot;country&quot;:&quot;USA&quot;}
-Full Customer details: {&quot;customerId&quot;:2,&quot;firstName&quot;:&quot;Dan&quot;,&quot;lastName&quot;:&quot;Brown&quot;,&quot;registrationId&quot;:2,&quot;creditLimit&quot;:10000.0,&quot;country&quot;:&quot;UK&quot;}
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR cOutputTr">
-
-                                <div class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Customer (customerId = 1) : {&quot;customerId&quot;:1,&quot;firstName&quot;:&quot;Peter&quot;,&quot;lastName&quot;:&quot;Stuart&quot;,&quot;registrationId&quot;:1,&quot;creditLimit&quot;:5000.75,&quot;country&quot;:&quot;USA&quot;}
-</code></pre></div>
-
-                                </div>
-                                <div class="docs">
-                                    
-                                </div>
-                            </div>
-                            
-                            <div class="cTR cOutputTr">
-
                                 <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Total customers in the table : 2
+                                    <div class="highlight"><pre><code class=shell-session>Customer details: {&quot;customerId&quot;:1,&quot;firstName&quot;:&quot;Peter&quot;,&quot;lastName&quot;:&quot;Stuart&quot;,&quot;registrationId&quot;:1,&quot;creditLimit&quot;:5000.75,&quot;country&quot;:&quot;USA&quot;}
+Customer details: {&quot;customerId&quot;:2,&quot;firstName&quot;:&quot;Dan&quot;,&quot;lastName&quot;:&quot;Brown&quot;,&quot;registrationId&quot;:2,&quot;creditLimit&quot;:10000.0,&quot;country&quot;:&quot;UK&quot;}
 </code></pre></div>
 
                                 </div>

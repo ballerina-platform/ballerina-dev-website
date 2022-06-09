@@ -1,13 +1,13 @@
 ---
 layout: ballerina-example-page-old
-title: DML and DDL operation
-description: This BBE on the use of the JDBC client with the DDL and DML operations in Ballerina.
-keywords: ballerina, ballerina by example, bbe, jdbc, insert, update, delete
-permalink: /learn/by-example/jdbc-execute-operation
-active: jdbc-execute-operation
+title: Query with one result
+description: This BBE demonstrates how to use the JDBC client select query row operations.
+keywords: ballerina, ballerina by example, bbe, jdbc, query, select, data
+permalink: /learn/by-example/jdbc-query-row-operation
+active: jdbc-query-row-operation
 redirect_from:
-  - /swan-lake/learn/by-example/jdbc-execute-operation
-  - /swan-lake/learn/by-example/jdbc-execute-operation.html
+  - /swan-lake/learn/by-example/jdbc-query-row-operation
+  - /swan-lake/learn/by-example/jdbc-query-row-operation.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -16,6 +16,16 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
 
+<span class="c1">// Defines a record to load the query result.</span>
+<span class="nx">type</span> <span class="nx">Customer</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">int</span> <span class="nx">customerId</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">registrationId</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">creditLimit</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
+<span class="p">|};</span>
+
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="c1">// Initializes the JDBC client. The `jdbcClient` can be reused to access database throughout the application execution.</span>
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;jdbc:h2:file:./target/bbes/java_jdbc&quot;</span><span class="p">,</span>
@@ -23,14 +33,13 @@ redirect_from:
     <span class="c1">// Runs the prerequisite setup for the example.</span>
     <span class="nx">check</span> <span class="nx">initialization</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">);</span>
 
-    <span class="kt">float</span> <span class="nx">newCreditLimit</span> <span class="p">=</span> <span class="mf">15000.5</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">customerId</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="c1">// Query table to return one result.</span>
+    <span class="nx">Customer</span> <span class="nx">customer</span> <span class="p">=</span>
+            <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">queryRow</span><span class="p">(</span><span class="s">`SELECT * FROM Customers</span>
+<span class="s">                                    WHERE customerId &gt; ${customerId};`</span><span class="p">);</span>
 
-    <span class="c1">// Execute the query.</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`UPDATE Customers SET creditLimit = ${newCreditLimit} </span>
-<span class="s">            where customerId = 1`</span><span class="p">);</span>
-
-    <span class="c1">// Process returned metadata.</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">`Updated Row count: ${result?.affectedRowCount}`</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">`Customer (customerId = 1) : ${customer}`</span><span class="p">);</span>
 
     <span class="c1">// Performs the cleanup after the example.</span>
     <span class="nx">check</span> <span class="nx">cleanup</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">);</span>
@@ -41,19 +50,19 @@ redirect_from:
 
 <span class="c1">// Initializes the database as a prerequisite to the example.</span>
 <span class="kd">function</span> <span class="nx">initialization</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">//Creates a table in the database.</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE Customers(customerId INTEGER</span>
-<span class="s">            NOT NULL GENERATED BY DEFAULT AS IDENTITY, firstName  VARCHAR(300),</span>
-<span class="s">            lastName  VARCHAR(300), registrationID INTEGER, creditLimit DOUBLE,</span>
-<span class="s">            country  VARCHAR(300), PRIMARY KEY (customerId))`</span><span class="p">);</span>
+    <span class="c1">// Creates a table in the database.</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`CREATE TABLE Customers</span>
+<span class="s">            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName</span>
+<span class="s">            VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER,</span>
+<span class="s">            creditLimit DOUBLE, country  VARCHAR(300),</span>
+<span class="s">            PRIMARY KEY (customerId))`</span><span class="p">);</span>
 
-    <span class="c1">// Inserts data into the table. The result will have the `affectedRowCount`</span>
-    <span class="c1">// and `lastInsertedId` with the auto-generated ID of the last row.</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO Customers (firstName,</span>
-<span class="s">            lastName, registrationID,creditLimit,country) VALUES (&#39;Peter&#39;,</span>
-<span class="s">            &#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`</span><span class="p">);</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO Customers (firstName,</span>
-<span class="s">            lastName, registrationID,creditLimit,country) VALUES</span>
+    <span class="c1">// Adds the records to the newly-created table.</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO Customers</span>
+<span class="s">            (firstName, lastName, registrationID,creditLimit,country) VALUES</span>
+<span class="s">            (&#39;Peter&#39;,&#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`</span><span class="p">);</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">`INSERT INTO Customers</span>
+<span class="s">            (firstName, lastName, registrationID,creditLimit,country) VALUES</span>
 <span class="s">            (&#39;Dan&#39;, &#39;Brown&#39;, 2, 10000, &#39;UK&#39;)`</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -70,9 +79,9 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>DML and DDL operation</h2>
-                            <p><p>This BBE demonstrates how to use the JDBC client with DDL and
- DML operations. Note that the relevant database driver JAR
+                            <h2>Query with one result</h2>
+                            <p><p>This BBE demonstrates how to use the JDBC client select query row operations.
+ Note that the relevant database driver JAR
  should be defined in the <code>Ballerina.toml</code> file as a dependency.
  This sample is based on an H2 database and the H2 database driver JAR need to be added to <code>Ballerina.toml</code> file.
  For a sample configuration and more information on the underlying module, see the <a href="https://docs.central.ballerina.io/ballerinax/java.jdbc/latest/">JDBC module</a> .<br><br>
@@ -84,16 +93,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="jdbc-query-column-mapping.html">
+                                    <a class="prev" href="jdbc-query-operation.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Query with advanced mapping</p>
+                                        <p>Simple query</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="jdbc-batch-execute-operation.html">
+                                    <a class="next" href="jdbc-query-column-mapping.html">
                                         <span>NEXT ></span>
-                                        <p>Batch execute</p>
+                                        <p>Query with advanced mapping</p>
                                     </a>
                                 </div>
                                 
@@ -102,7 +111,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="jdbc-execute-operation">
+            <div class="example" id="jdbc-query-row-operation">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <div class="cTopControlsContainer">
                         <div class="cTopControlsRow">
@@ -113,7 +122,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.0/examples/jdbc-execute-operation/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.0/examples/jdbc-query-row-operation/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -137,6 +146,32 @@ import ballerina/sql;
 
                                 </div>
                                 <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>type Customer record {|
+    int customerId;
+    string lastName;
+    string firstName;
+    int registrationId;
+    float creditLimit;
+    string country;
+|};
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Defines a record to load the query result.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </div>
                             </div>
@@ -195,7 +230,7 @@ import ballerina/sql;
                             <div class="cTR">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    float newCreditLimit = 15000.5;
+                                    <div class="highlight"><pre><code class=language-ballerina>    int customerId = 1;
 </code></pre></div>
 
                                 </div>
@@ -207,8 +242,9 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    sql:ExecutionResult result = check jdbcClient-&gt;execute(`UPDATE Customers SET creditLimit = ${newCreditLimit} 
-            where customerId = 1`);
+                                    <div class="highlight"><pre><code class=language-ballerina>    Customer customer =
+            check jdbcClient-&gt;queryRow(`SELECT * FROM Customers
+                                    WHERE customerId &gt; ${customerId};`);
 </code></pre></div>
 
                                 </div>
@@ -216,7 +252,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Execute the query.</p>
+                                            <p>Query table to return one result.</p>
 
                                         </div>
                                     </div>
@@ -224,21 +260,14 @@ import ballerina/sql;
                                 </div>
                             </div>
                             
-                            <div class="cTR hover-enable">
+                            <div class="cTR">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(`Updated Row count: ${result?.affectedRowCount}`);
+                                    <div class="highlight"><pre><code class=language-ballerina>    io:println(`Customer (customerId = 1) : ${customer}`);
 </code></pre></div>
 
                                 </div>
                                 <div class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Process returned metadata.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </div>
                             </div>
@@ -304,10 +333,11 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check jdbcClient-&gt;execute(`CREATE TABLE Customers(customerId INTEGER
-            NOT NULL GENERATED BY DEFAULT AS IDENTITY, firstName  VARCHAR(300),
-            lastName  VARCHAR(300), registrationID INTEGER, creditLimit DOUBLE,
-            country  VARCHAR(300), PRIMARY KEY (customerId))`);
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check jdbcClient-&gt;execute(`CREATE TABLE Customers
+            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName
+            VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER,
+            creditLimit DOUBLE, country  VARCHAR(300),
+            PRIMARY KEY (customerId))`);
 </code></pre></div>
 
                                 </div>
@@ -326,11 +356,11 @@ import ballerina/sql;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check jdbcClient-&gt;execute(`INSERT INTO Customers (firstName,
-            lastName, registrationID,creditLimit,country) VALUES (&#39;Peter&#39;,
-            &#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`);
-    _ = check jdbcClient-&gt;execute(`INSERT INTO Customers (firstName,
-            lastName, registrationID,creditLimit,country) VALUES
+                                    <div class="highlight"><pre><code class=language-ballerina>    _ = check jdbcClient-&gt;execute(`INSERT INTO Customers
+            (firstName, lastName, registrationID,creditLimit,country) VALUES
+            (&#39;Peter&#39;,&#39;Stuart&#39;, 1, 5000.75, &#39;USA&#39;)`);
+    _ = check jdbcClient-&gt;execute(`INSERT INTO Customers
+            (firstName, lastName, registrationID,creditLimit,country) VALUES
             (&#39;Dan&#39;, &#39;Brown&#39;, 2, 10000, &#39;UK&#39;)`);
 }
 </code></pre></div>
@@ -340,8 +370,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Inserts data into the table. The result will have the <code>affectedRowCount</code>
- and <code>lastInsertedId</code> with the auto-generated ID of the last row.</p>
+                                            <p>Adds the records to the newly-created table.</p>
 
                                         </div>
                                     </div>
@@ -413,7 +442,7 @@ bal run
                             <div class="cTR cOutputTr">
 
                                 <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Updated Row count: 1
+                                    <div class="highlight"><pre><code class=shell-session>Customer (customerId = 1) : {&quot;customerId&quot;:2,&quot;firstName&quot;:&quot;Dan&quot;,&quot;lastName&quot;:&quot;Brown&quot;,&quot;registrationId&quot;:2,&quot;creditLimit&quot;:10000.0,&quot;country&quot;:&quot;UK&quot;}
 </code></pre></div>
 
                                 </div>

@@ -44,7 +44,7 @@ jobs:
           if git diff-index --quiet HEAD --; then
               echo "No changes"
           else
-              git checkout automate-bbes-$GITHUB_SHA 2>/dev/null || git checkout -b automate-bbes-$GITHUB_SHA
+              git checkout automate-proposals-$GITHUB_SHA 2>/dev/null || git checkout -b automate-proposals-$GITHUB_SHA
               git pull origin dev
               git config --local user.email "bgpbimsara@gmail.com"
               git config --local user.name "bimsarapathiraja"
@@ -61,7 +61,7 @@ jobs:
         run: |
           git config --global user.email "bgpbimsara@gmail.com"
           git config --global user.name "bimsarapathiraja"
-          git push --set-upstream origin automate-bbes-$GITHUB_SHA
+          git push --set-upstream origin automate-proposals-$GITHUB_SHA
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
       - name: Create pull request for new BBEs

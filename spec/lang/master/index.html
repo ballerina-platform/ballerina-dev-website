@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R3 preview 2022-06-07</h1>
+<h1>Ballerina Language Specification, 2022R3 preview 2022-06-11</h1>
 <p>
 Primary contributors:
 </p>
@@ -133,13 +133,15 @@ GitHub repository where this specification is maintained.
 </li>
 <li>5.5.3.3 <a href="#section_5.5.3.3">Methods</a>
 </li>
-<li>5.5.3.4 <a href="#section_5.5.3.4">Resources</a>
+<li>5.5.3.4 <a href="#section_5.5.3.4">Remote methods</a>
 </li>
-<li>5.5.3.5 <a href="#section_5.5.3.5">Visibility</a>
+<li>5.5.3.5 <a href="#section_5.5.3.5">Resources</a>
 </li>
-<li>5.5.3.6 <a href="#section_5.5.3.6">Typing</a>
+<li>5.5.3.6 <a href="#section_5.5.3.6">Visibility</a>
 </li>
-<li>5.5.3.7 <a href="#section_5.5.3.7">Inclusion and type-ids</a>
+<li>5.5.3.7 <a href="#section_5.5.3.7">Typing</a>
+</li>
+<li>5.5.3.8 <a href="#section_5.5.3.8">Inclusion and type-ids</a>
 </li>
 </ul>
 </li>
@@ -427,7 +429,12 @@ GitHub repository where this specification is maintained.
 </li>
 </ul>
 </li>
-<li>7.9 <a href="#section_7.9">Outbound network interaction</a>
+<li>7.9 <a href="#section_7.9">Outbound network interaction</a><ul>
+<li>7.9.1 <a href="#section_7.9.1">Remote methods</a>
+</li>
+<li>7.9.2 <a href="#section_7.9.2">Resources</a>
+</li>
+</ul>
 </li>
 <li>7.10 <a href="#section_7.10">Query action</a>
 </li>
@@ -523,7 +530,9 @@ GitHub repository where this specification is maintained.
 </li>
 <li>8.3.2 <a href="#section_8.3.2">Service declaration</a>
 </li>
-<li>8.3.3 <a href="#section_8.3.3">Isolated inference</a>
+<li>8.3.3 <a href="#section_8.3.3">Hierarchical services</a>
+</li>
+<li>8.3.4 <a href="#section_8.3.4">Isolated inference</a>
 </li>
 </ul>
 </li>
@@ -2744,8 +2753,9 @@ is not allowed in conjunction with <code>public</code>.
 </p>
 
 <p>
-Network interaction objects provide two additional features: remote methods and
-resources.
+Network interaction objects can have, in addition to fields and methods, two
+additional kinds of member: remote methods and resources; both of these are in a
+different symbol space from fields and (non-remote) methods.
 </p>
 
 </section>
@@ -2799,7 +2809,10 @@ The <code>isolated-qual</code> together with the <code>function-signature</code>
 give the function type of the method. An isolated method has the same access to
 the object on which the method is invoked that it has to parameters.
 </p>
+</section>
 
+<section>
+<h5 id="section_5.5.3.4">5.5.3.4 Remote methods</h5>
 <pre class="grammar"><span class="ntdfn" id="remote-method-decl">remote-method-decl</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#remote-method-quals"><span class="ntref">remote-method-quals</span></a> 
    <code>function</code> <a href="#remote-method-name"><span class="ntref">remote-method-name</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <code>;</code>
@@ -2833,7 +2846,7 @@ to allow such a library module to be implemented completely in Ballerina.
 </section>
 
 <section>
-<h5 id="section_5.5.3.4">5.5.3.4 Resources</h5>
+<h5 id="section_5.5.3.5">5.5.3.5 Resources</h5>
 
 <pre class="grammar"><span class="ntdfn" id="resource-method-decl">resource-method-decl</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#resource-method-quals"><span class="ntref">resource-method-quals</span></a>
@@ -2856,132 +2869,89 @@ to allow such a library module to be implemented completely in Ballerina.
 <span class="ntdfn" id="resource-path-segment-param">resource-path-segment-param</span> := <code>[</code>[<a href="#annots"><span class="ntref">annots</span></a>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> [<a href="#param-name"><span class="ntref">param-name</span></a>]<code>]</code>
 <span class="ntdfn" id="resource-path-rest-param">resource-path-rest-param</span> := <code>[</code>[<a href="#annots"><span class="ntref">annots</span></a>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>...</code> [<a href="#param-name"><span class="ntref">param-name</span></a>]<code>]</code>
 </pre>
-
 <p>
-In addition to remote methods, a service object can use <em>resources</em> to
-support network interaction. Resources support a more data-oriented style of
-network interaction, which complements the RPC style supported by remote
-methods. A service object's resources are arranged in a tree. Each resource
-exposes one or more named methods; by convention the method name
-<code>get</code> is used for retrieving the resource. A listener thus identifies
-a resource method to be called using the combination of a hierarchical path,
-which identifies the resource, and the resource method name. A resource method
-can also specify that a segment of the path provided by the listener should be
-treated as a parameter. A resource method can only be invoked by a listener
-object.
+As well as remote methods, a network interaction object may include members that
+are resources. Resources support a more data-oriented style of network
+interaction, which complements the RPC style supported by remote methods. A
+resource of a client object is for outbound network interaction; a resource of a
+service object is for inbound network interaction. A resource of a client object
+can be accessed only using a <code>client-resource-access-action</code>. A
+resource of a service object is accessed by a listener object provided by a
+library module; Ballerina does not yet define a mechanism to allow such a
+library module to be implemented completely in Ballerina.
 </p>
 <p>
-The <code>resource-path</code>
-specifies the node in the service object's resource tree to which the method is
-attached and the <code>resource-method-name</code> specifies the method name. It
-is an error to have two <code>resource-method-defn</code>s that both have the
-same name and have a path that refers to the same node. A
-<code>dot-resource-path</code> specifies the root of the service object's
-resource tree. In a service object's resource tree, each edge from a parent node
-to a child node has a label, which uniquely identifies the child relative to its
-siblings. A label is either a string or one of two special values that indicate
-that the corresponding path segment should be treated as a parameter. It is an
-error for a parent node to have more than one edge to a child node labelled with
-one of the two special values. A <code>resource-path-segment-name</code>
-specifies a label that is a string. The two special label values come from a
-<code>resource-path-segment-param</code> and a
-<code>resource-path-rest-param</code> respectively. A parameter in a
-<code>resource-path-segment-param</code> will be bound to a value representing a
-single path segment; a parameter in a <code>resource-path-rest-param</code> will
-be bound to a list representing zero or more path segments, with each member
-representing a single path segment. The type of a path segment depends on the
-listener, but the listener must be able to convert it into a string. For
-example, in HTTP a path segment is natively a sequence of bytes, and an HTTP
-listener could convert it into a string by decoding with UTF-8. It also depends
-on the listener which types other than string it is able to convert a path
-segment to.
+Each resource is named within an object by a <em>resource path</em>, which
+consists of a list of resource path segments. A resource path segment is most
+commonly a string, but can be any value of type anydata. A resource has one or
+more named methods. A resource method is thus uniquely identified within its
+object by its path and method name. Each resource method corresponds to a way
+that the resource can be accessed; the name <code>get</code> should be used for
+a resource method that just fetches the resource. For a service object, the
+supported resource method names are determined by the listener; a listener that
+supports resources should always support the name <code>get</code>.
+</p>
+<p>
+A <code>resource-method-decl</code> declares a remote method for one or more
+resources. An object can include a <code>resource-method-decl</code> only if it
+is a network interaction object.
+</p>
+<p>
+A <code>resource-path</code> can be mapped onto a tuple type descriptor as
+follows. A <code>dot-resource-path</code> maps to <code>[]</code> (an empty
+tuple type). A <code>resource-path-segment-name</code> maps to a member type
+descriptor that is a singleton string. A
+<code>resource-path-segment-param</code> with type descriptor <code>T</code>
+maps to a member type descriptor <code>T</code>. A
+<code>resource-path-rest-param</code> with type descriptor <code>T</code> maps
+to a tuple rest descriptor <code>T...</code>.
+</p>
+<p>
+It is a compile error if a <code>object-type-descriptor</code> has two
+<code>resource-method-decl</code>s with the same name and with
+<code>resource-path</code>s that map to the same tuple type descriptor.
+</p>
+<p>
+Two tuple type descriptors [X<sub>1</sub>,...,X<sub>m</sub>] and
+[Y<sub>1</sub>,...,Y<sub>n</sub>] <em>diverge at</em> position i if and only if:
+</p>
+<ul>
+<li>i ≤ m;</li>
+<li>i ≤ n;</li>
+<li>for all j &lt; i, X<sub>j</sub> is the same type as as Y<sub>j</sub>;</li>
+<li>X<sub>i</sub> and Y<sub>i</sub> are not the same (to be the same, they must
+both be a member-type-descriptor or both be a tuple-rest-descriptor, and the
+types must be the same).</li>
+</ul>
+<p>
+If two <code>resource-method-decl</code>s diverge at position i, then it is a
+compile-time error unless the <code>resource-path</code> of at least one of them
+maps to a tuple type descriptor that at position i has a
+<code>member-type-descriptor</code> that denotes a singleton string.
+</p>
+<p>
+A <code>resource-path-segment</code> that maps to a singleton string takes
+priority over other types in the following sense. When a
+<code>resource-method-decl</code> R has a resource path that has a
+<code>resource-path-segment</code> at position i that maps to a
+<code>member-type-descriptor</code> that denotes a type T that is not a
+singleton string, then T is narrowed to a type T' by removing every singleton
+string type S such that there is a <code>resource-method-decl</code> that
+diverges from R at position i and has has a resource path that has a
+<code>resource-path-segment</code> at position i that maps to a
+<code>member-type-descriptor</code> that denotes S. The
+<code>resource-method-decl</code> declares resources methods for resources that
+whose corresponding path segment belongs to the narrowed type T' rather than T.
 </p>
 <p>
 The return type of a resource method must not allow values belonging to the
-function basic type. A resource method with a name of <code>get</code> that can
-return a service object represents a subservice. It is subject to the following
-restrictions:
-</p>
-<ul>
-<li>the return type must not allow anything other that service
-objects and errors;</li>
-<li>the resource path must not end with a <code>resource-path-rest-param</code>;</li>
-<li>the method's node must not have any child nodes.</li>
-</ul>
-<p>
-The semantics of hierarchical resources are defined by a lookup function, which
-takes four parameters:
-</p>
-<ul>
-<li>
-<var>m</var> is the name of the method;</li>
-<li>
-<var>p</var> is the resource path;</li>
-<li>
-<var>r</var> refers to a node in the resource tree of a service object;</li>
-<li>
-<var>v</var> is the list path segments bound so far.</li>
-</ul>
-<p>
-It returns an error or a tuple [<var>r</var>, <var>v</var>], where
-</p>
-<ul>
-<li>
-<var>r</var> is a node in the resource tree with an m method, which is the
-method to be called;</li>
-<li>
-<var>v</var> is a list of path segments to be bound to the method’s variable
-resource path parameters.</li>
-</ul>
-<p>
-The function lookup(<var>m</var>, <var>p</var>, <var>r</var>, <var>v</var>) is
-defined as follows:
-</p>
-<ol>
-<li>If <var>r</var> has a <code>get</code> method that can return a service
-object, then call the <code>get</code> method of <var>r</var> using <var>v</var>
-to bind the path parameters; if the result is an error, then return that error;
-otherwise, the result must be a service object. Let <var>r</var>' be the root of
-its resource tree. Return lookup(<var>m</var>, <var>p</var>, <var>r</var>',
-[]).</li>
-<li>If <var>p</var> is empty: 
-<ol>
-<li>if <var>r</var> has a method <var>m</var>, then return
-[<var>r</var>,<var>v</var>];</li>
-<li>otherwise, if <var>r</var> has a child labelled as repeated variable path
-segment and that child has a method <var>m</var>, then let <var>r</var>' be
-child with that label and return [<var>r</var>',<var>v</var>];</li>
-<li>otherwise, return an error.</li> 
-</ol>
-</li>
-<li>Let the first segment in <var>p</var> be <var>s</var> and let <var>p</var>'
-be a list of the 2nd and subsequent members of <var>p</var>.</li>
-<li>If <var>r</var> has a child labelled with the string that results from
-converting <var>s</var> to a string, then let <var>r</var>' be the child with
-that label. Return lookup(<var>m</var>, <var>p</var>', <var>r</var>',
-<var>v</var>).</li>
-<li>If <var>r</var> has an edge to a child labelled as a single path segment
-parameter, then let <var>r</var>' be that child and let <var>v</var>' be the
-result of adding <var>s</var> to the end of <var>v</var>. Return
-lookup(<var>m</var>, <var>p</var>', <var>r</var>', <var>v</var>').</li>
-<li>If <var>r</var> has an edge to a child labelled as a rest parameter and that
-child has a method <var>m</var>, then let <var>r</var>' be that child, and let
-<var>v</var>' be the result of concatenating <var>v</var> and <var>p</var>.
-Return [<var>r</var>',<var>v</var>'].</li>
-<li>Otherwise, return an error.</li>
-</ol>
-<p>
-The syntax allows only the last of a resource method's path parameters to be a
-rest parameter. When a list of path segments is bound to the path parameters of
-a resource method, one path segment is bound to each path parameter that is not
-a rest parameter and a list of the remaining path segments is bound to the rest
-parameter, if any.
+function basic type.
 </p>
 
 </section>
 
 <section>
-<h5 id="section_5.5.3.5">5.5.3.5 Visibility</h5>
+<h5 id="section_5.5.3.6">5.5.3.6 Visibility</h5>
 <p>
 Each field and method of an object has a <em>visibility region</em>, which is
 the region of code within which the field or method is visible and can be
@@ -2993,7 +2963,7 @@ called module-level visibility.
 </p>
 </section>
 <section>
-<h5 id="section_5.5.3.6">5.5.3.6 Typing</h5>
+<h5 id="section_5.5.3.7">5.5.3.7 Typing</h5>
 
 <p>
 The shape of an object consists of a read-only bit, an isolated bit, a network
@@ -3031,7 +3001,7 @@ of T only within the same module as T.
  
 </section>
 <section>
-<h5 id="section_5.5.3.7">5.5.3.7 Inclusion and type-ids</h5>
+<h5 id="section_5.5.3.8">5.5.3.8 Inclusion and type-ids</h5>
 
 <pre class="grammar"><span class="ntdfn" id="object-type-inclusion">object-type-inclusion</span> := <code>*</code> <a href="#type-reference"><span class="ntref">type-reference</span></a> <code>;</code>
 </pre>
@@ -5579,6 +5549,18 @@ when an <code>object-network-qual</code> is present in the
 <code>object-constructor-expr</code>.
 </p>
 
+<p>
+XXX A parameter in a <code>resource-path-segment-param</code> will be bound to a
+value representing a single path segment; a parameter in a
+<code>resource-path-rest-param</code> will be bound to a list representing zero
+or more path segments, with each member representing a single path segment. The
+syntax allows only the last of a resource method's path parameters to be a rest
+parameter. When a list of path segments is bound to the path parameters of a
+resource method, one path segment is bound to each path parameter that is not a
+rest parameter and a list of the remaining path segments is bound to the rest
+parameter, if any.
+</p>
+
 <pre class="grammar"><span class="ntdfn" id="method-defn-body">method-defn-body</span> := <a href="#function-defn-body"><span class="ntref">function-defn-body</span></a>
 </pre>
 <p>
@@ -7610,6 +7592,7 @@ evaluated in transaction mode and false otherwise.
    | <a href="#receive-action"><span class="ntref">receive-action</span></a> 
    | <a href="#flush-action"><span class="ntref">flush-action</span></a>
    | <a href="#client-remote-method-call-action"><span class="ntref">client-remote-method-call-action</span></a>
+   | <a href="#client-resource-access-action"><span class="ntref">client-resource-access-action</span></a>
    | <a href="#query-action"><span class="ntref">query-action</span></a>
    | <a href="#commit-action"><span class="ntref">commit-action</span></a>
 
@@ -8077,6 +8060,7 @@ block-function-body.
    <a href="#function-call-expr"><span class="ntref">function-call-expr</span></a>
    | <a href="#method-call-expr"><span class="ntref">method-call-expr</span></a>
    | <a href="#client-remote-method-call-action"><span class="ntref">client-remote-method-call-action</span></a>
+   | <a href="#client-resource-access-action"><span class="ntref">client-resource-access-action</span></a>
 </pre>
 
 <p>
@@ -8526,6 +8510,11 @@ success before it has executed one member from every send set.</li>
 A client object is a stub that allows a worker to send network messages to a
 remote system according to some protocol. A local variable declared with client
 object type will be depicted as a lifeline in the function's sequence diagram.
+</p>
+
+<section>
+<h4 id="section_7.9.1">7.9.1 Remote methods</h4>
+<p>
 The remote methods of the client object correspond to distinct network messages
 defined by the protocol for the role played by the client object. The return
 value of a remote method represents the protocol's response. A
@@ -8543,6 +8532,36 @@ expression, except that it is used for a client object method with the
 
 </section>
 
+<section>
+<h4 id="section_7.9.2">7.9.2 Resources</h4>
+
+<pre class="grammar"><span class="ntdfn" id="client-resource-access-action">client-resource-access-action</span> :=
+   <a href="#expression"><span class="ntref">expression</span></a> <code>-&gt;</code> <code>/</code> [<a href="#resource-access-path"><span class="ntref">resource-access-path</span></a>] [<code>.</code> <a href="#resource-method-name"><span class="ntref">resource-method-name</span></a>] [<code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code>]
+
+<span class="ntdfn" id="resource-access-path">resource-access-path</span> :=
+   <a href="#resource-access-path-segments"><span class="ntref">resource-access-path-segments</span></a> [<code>/</code> <a href="#resource-access-rest-segment"><span class="ntref">resource-access-rest-segment</span></a>]
+   | <a href="#resource-access-rest-segment"><span class="ntref">resource-access-rest-segment</span></a>
+
+<span class="ntdfn" id="resource-access-path-segments">resource-access-path-segments</span> :=
+   <a href="#resource-access-path-segment"><span class="ntref">resource-access-path-segment</span></a> (<code>/</code> <a href="#resource-access-path-segment"><span class="ntref">resource-access-path-segment</span></a> )* 
+
+<span class="ntdfn" id="resource-access-path-segment">resource-access-path-segment</span> :=
+   <a href="#resource-path-segment-name"><span class="ntref">resource-path-segment-name</span></a>
+   | <a href="#computed-resource-access-path-segment"><span class="ntref">computed-resource-access-path-segment</span></a>
+
+<span class="ntdfn" id="computed-resource-access-path-segment">computed-resource-access-path-segment</span> := <code>[</code> <a href="#expression"><span class="ntref">expression</span></a> <code>]</code>
+
+<span class="ntdfn" id="resource-access-rest-segment">resource-access-rest-segment</span> := <code>[</code> <code>...</code> <a href="#expression"><span class="ntref">expression</span></a> <code>]</code>
+</pre>
+<p>
+In a <code>resource-method-call-action</code>, an omitted
+<code>resource-method-name</code> defaults to <code>get</code>; if the
+parentheses and the <code>arg-list</code> are omitted, then they default to <code>()</code>,
+with arguments being defaulted as usual.
+</p>
+
+</section>
+</section>
 <section>
 <h3 id="section_7.10">7.10 Query action</h3>
 <pre class="grammar"><span class="ntdfn" id="query-action">query-action</span> := <a href="#query-action-pipeline"><span class="ntref">query-action-pipeline</span></a> <a href="#do-clause"><span class="ntref">do-clause</span></a>
@@ -10218,9 +10237,13 @@ objects. A listener object receives network messages from a remote process
 according to some protocol and translates the received messages into calls on
 the remote and resource methods of service objects that have been attached to
 the listener object. It is up to the listener object to determine how this
-translation happens; the type of the listener object constrains the type of a
-service that can be attached to the listener. (This constraint cannot yet be
-fully expressed by Ballerina's type system.)
+translation happens. A resource path segment may correspond to something that at
+the protocol level is not a string. For example, in HTTP a path segment is
+natively a sequence of bytes. In this case, the listener should be able to
+convert this native representation into a string, for example, by using UTF-8
+decoding. The type of the listener object constrains the type of a service that
+can be attached to the listener. (This constraint cannot yet be fully expressed
+by Ballerina's type system.)
 </p>
 <p>
 A service object's remote or resource method uses its return value to indicate
@@ -10367,7 +10390,84 @@ fails.</li>
 </section>
 
 <section>
-<h4 id="section_8.3.3">8.3.3 Isolated inference</h4>
+<h4 id="section_8.3.3">8.3.3 Hierarchical services</h4>
+<p>
+A resource method with a name of <code>get</code> that can return a service
+object represents a subservice. It is subject to the following restrictions:
+</p>
+<ul>
+<li>the return type must not allow anything other than service objects and
+errors;</li>
+<li>the resource path must not end with a <code>resource-path-rest-param</code>;</li>
+<li>the method's node must not have any child nodes.</li>
+</ul>
+<p>
+The semantics of hierarchical resources are defined by a lookup function, which
+takes four parameters:
+</p>
+<ul>
+<li>
+<var>m</var> is the name of the method;</li>
+<li>
+<var>p</var> is the resource path;</li>
+<li>
+<var>r</var> refers to a node in the resource tree of a service object;</li>
+<li>
+<var>v</var> is the list path segments bound so far.</li>
+</ul>
+<p>
+It returns an error or a tuple [<var>r</var>, <var>v</var>], where
+</p>
+<ul>
+<li>
+<var>r</var> is a node in the resource tree with an m method, which is the
+method to be called;</li>
+<li>
+<var>v</var> is a list of path segments to be bound to the method’s variable
+resource path parameters.</li>
+</ul>
+<p>
+The function lookup(<var>m</var>, <var>p</var>, <var>r</var>, <var>v</var>) is
+defined as follows:
+</p>
+<ol>
+<li>If <var>r</var> has a <code>get</code> method that can return a service
+object, then call the <code>get</code> method of <var>r</var> using <var>v</var>
+to bind the path parameters; if the result is an error, then return that error;
+otherwise, the result must be a service object. Let <var>r</var>' be the root of
+its resource tree. Return lookup(<var>m</var>, <var>p</var>, <var>r</var>',
+[]).</li>
+<li>If <var>p</var> is empty: 
+<ol>
+<li>if <var>r</var> has a method <var>m</var>, then return
+[<var>r</var>,<var>v</var>];</li>
+<li>otherwise, if <var>r</var> has a child labelled as repeated variable path
+segment and that child has a method <var>m</var>, then let <var>r</var>' be
+child with that label and return [<var>r</var>',<var>v</var>];</li>
+<li>otherwise, return an error.</li> 
+</ol>
+</li>
+<li>Let the first segment in <var>p</var> be <var>s</var> and let <var>p</var>'
+be a list of the 2nd and subsequent members of <var>p</var>.</li>
+<li>If <var>r</var> has a child labelled with the string that results from
+converting <var>s</var> to a string, then let <var>r</var>' be the child with
+that label. Return lookup(<var>m</var>, <var>p</var>', <var>r</var>',
+<var>v</var>).</li>
+<li>If <var>r</var> has an edge to a child labelled as a single path segment
+parameter, then let <var>r</var>' be that child and let <var>v</var>' be the
+result of adding <var>s</var> to the end of <var>v</var>. Return
+lookup(<var>m</var>, <var>p</var>', <var>r</var>', <var>v</var>').</li>
+<li>If <var>r</var> has an edge to a child labelled as a rest parameter and that
+child has a method <var>m</var>, then let <var>r</var>' be that child, and let
+<var>v</var>' be the result of concatenating <var>v</var> and <var>p</var>.
+Return [<var>r</var>',<var>v</var>'].</li>
+<li>Otherwise, return an error.</li>
+</ol>
+
+</section>
+
+<section>
+<h4 id="section_8.3.4">8.3.4 Isolated inference</h4>
 
 <p>
 A listener object can use the isolated bit of a service object and of a service

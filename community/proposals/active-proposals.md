@@ -9,7 +9,7 @@ permalink: /community/proposals/active-proposals
 
 |Proposal|Author|Comments|Created Date| 
 |---|----|----|----| 
-|[Proposal: Tool to Dump Runtime State](https://github.com/ballerina-platform/ballerina-lang/issues/36284)|[Nadeeshan96](https://github.com/Nadeeshan96)|5|2022-05-23|
+|[Proposal: Tool to Dump Runtime State](https://github.com/ballerina-platform/ballerina-lang/issues/36284){:target="_blank" rel="noopener"}|[Nadeeshan96](https://github.com/Nadeeshan96)|5|2022-05-23|
 |[Utility to enforce semvar to Ballerina APIs](https://github.com/ballerina-platform/ballerina-lang/issues/32368)|[hevayo](https://github.com/hevayo)|0|2021-08-26|
 |[Implement new service typing proposal](https://github.com/ballerina-platform/ballerina-lang/issues/26064)|[rdhananjaya](https://github.com/rdhananjaya)|0|2020-09-24|
 |[Suggestion: Ability to attach @resources to a service](https://github.com/ballerina-platform/ballerina-lang/issues/19523)|[ramith](https://github.com/ramith)|0|2019-10-22|

@@ -11,56 +11,56 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Check for Area/BBEs label
-        if: ${{ contains(github.event.issue.body, 'Area/BBEs') }}
+        if: ${{ contains(github.event.issue.body, 'Area/BBEs') && !(contains(github.event.issue.body, '<!--Area/BBEs-->')) }}
         run: gh issue edit $ISSUE --add-label "Area/BBEs"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE: ${{ github.event.issue.number }}
 
       - name: Check for Area/HomePageSamples label
-        if: ${{ contains(github.event.issue.body, 'Area/HomePageSamples') }}
+        if: ${{ contains(github.event.issue.body, 'Area/HomePageSamples') && !(contains(github.event.issue.body, '<!--Area/HomePageSamples-->')) }}
         run: gh issue edit $ISSUE --add-label "Area/HomePageSamples"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE: ${{ github.event.issue.number }}
 
       - name: Check for Area/LearnPages label
-        if: ${{ contains(github.event.issue.body, 'Area/LearnPages') }}
+        if: ${{ contains(github.event.issue.body, 'Area/LearnPages') && !(contains(github.event.issue.body, '<!--Area/LearnPages-->')) }}
         run: gh issue edit $ISSUE --add-label "Area/LearnPages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE: ${{ github.event.issue.number }}
 
       - name: Check for Area/CommonPages label
-        if: ${{ contains(github.event.issue.body, 'Area/CommonPages') }}
+        if: ${{ contains(github.event.issue.body, 'Area/CommonPages') && !(contains(github.event.issue.body, '<!--Area/CommonPages-->')) }}
         run: gh issue edit $ISSUE --add-label "Area/CommonPages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE: ${{ github.event.issue.number }}
 
       - name: Check for Area/Backend label
-        if: ${{ contains(github.event.issue.body, 'Area/Backend') }}
+        if: ${{ contains(github.event.issue.body, 'Area/Backend') && !(contains(github.event.issue.body, '<!--Area/Backend-->')) }}
         run: gh issue edit $ISSUE --add-label "Area/Backend"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE: ${{ github.event.issue.number }}
 
       - name: Check for Are/UIUX label
-        if: ${{ contains(github.event.issue.body, 'Area/UIUX') }}
+        if: ${{ contains(github.event.issue.body, 'Area/UIUX') && !(contains(github.event.issue.body, '<!--Area/UIUX-->')) }}
         run: gh issue edit $ISSUE --add-label "Area/UIUX"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE: ${{ github.event.issue.number }}
 
       - name: Check for Area/Workflows label
-        if: ${{ contains(github.event.issue.body, 'Area/Workflows') }}
+        if: ${{ contains(github.event.issue.body, 'Area/Workflows') && !(contains(github.event.issue.body, '<!--Area/Workflows-->')) }}
         run: gh issue edit $ISSUE --add-label "Area/Workflows"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE: ${{ github.event.issue.number }}
 
       - name: Check for Area/Blog label
-        if: ${{ contains(github.event.issue.body, 'Area/Blog') }}
+        if: ${{ contains(github.event.issue.body, 'Area/Blog') && !(contains(github.event.issue.body, '<!--Area/Blog-->')) }}
         run: gh issue edit $ISSUE --add-label "Area/Blog"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

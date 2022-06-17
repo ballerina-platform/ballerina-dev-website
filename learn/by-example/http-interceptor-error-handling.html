@@ -1,0 +1,522 @@
+---
+layout: ballerina-example-page-old
+title: Interceptor error handling
+description: This BBE demonstrates how HTTP interceptor error handling is done in Ballerina.
+keywords: ballerina, ballerina by example, bbe, http, interceptor, error, request, filter
+permalink: /learn/by-example/http-interceptor-error-handling
+active: http-interceptor-error-handling
+redirect_from:
+  - /swan-lake/learn/by-example/http-interceptor-error-handling
+  - /swan-lake/learn/by-example/http-interceptor-error-handling.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+
+<span class="c1">// Header name checked by the request interceptor.</span>
+<span class="nx">final</span> <span class="kt">string</span> <span class="nx">check_header</span> <span class="p">=</span> <span class="s">&quot;checkHeader&quot;</span><span class="p">;</span>
+
+<span class="c1">// Header value to be set to the request in the request error interceptor.</span>
+<span class="nx">final</span> <span class="kt">string</span> <span class="nx">request_check_header_value</span> <span class="p">=</span> <span class="s">&quot;RequestErrorInterceptor&quot;</span><span class="p">;</span>
+
+<span class="kd">service</span> <span class="nx">class</span> <span class="nx">RequestInterceptor</span> <span class="p">{</span>
+    <span class="o">*</span><span class="nx">http</span><span class="p">:</span><span class="nx">RequestInterceptor</span><span class="p">;</span>
+
+    <span class="c1">// This will return a `HeaderNotFoundError` if you do not set this header. </span>
+    <span class="c1">// Then, the execution will jump to the nearest `RequestErrorInterceptor`.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">[</span><span class="kt">string</span><span class="o">...</span> <span class="nx">path</span><span class="p">](</span><span class="nx">http</span><span class="p">:</span><span class="nx">RequestContext</span> <span class="nx">ctx</span><span class="p">,</span> 
+            <span class="nd">@http:Header string checkHeader) returns http:NextService|error? {</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Check Header Value : &quot;</span><span class="p">,</span> <span class="nx">checkHeader</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">RequestInterceptor</span> <span class="nx">requestInterceptor</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
+<span class="c1">// A `RequestErrorInterceptor` service class implementation. It allows you to </span>
+<span class="c1">// intercept the error that occurred in the request path and handle it accordingly.</span>
+<span class="c1">// A `RequestErrorInterceptor` service class can have only one resource function.</span>
+<span class="kd">service</span> <span class="nx">class</span> <span class="nx">RequestErrorInterceptor</span> <span class="p">{</span>
+    <span class="o">*</span><span class="nx">http</span><span class="p">:</span><span class="nx">RequestErrorInterceptor</span><span class="p">;</span>
+
+    <span class="c1">// The resource function inside a `RequestErrorInterceptor` is only allowed </span>
+    <span class="c1">// to have the default method and path. The error occurred in the interceptor</span>
+    <span class="c1">// execution can be accessed by the mandatory argument : `error`.</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="err">&#39;</span><span class="k">default</span> <span class="p">[</span><span class="kt">string</span><span class="o">...</span> <span class="nx">path</span><span class="p">](</span><span class="nx">error</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span> 
+            <span class="nx">http</span><span class="p">:</span><span class="nx">RequestContext</span> <span class="nx">ctx</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">NextService</span><span class="p">|</span><span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+        <span class="c1">// In this case, a header is set to the request, and then, the modified request</span>
+        <span class="c1">// is dispatched to the target service. Moreover, you can send different </span>
+        <span class="c1">// responses according to the error type.</span>
+        <span class="nx">req</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="nx">check_header</span><span class="p">,</span> <span class="nx">request_check_header_value</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Creates a new `RequestErrorInterceptor`.</span>
+<span class="nx">RequestErrorInterceptor</span> <span class="nx">requestErrorInterceptor</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+
+
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">interceptorListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="c1">// To handle all of the errors in the request path, the `RequestErrorInterceptor`</span>
+    <span class="c1">// is added as the last interceptor as it has to be executed last. </span>
+    <span class="nx">interceptors</span><span class="p">:</span> <span class="p">[</span><span class="nx">requestInterceptor</span><span class="p">,</span> <span class="nx">requestErrorInterceptor</span><span class="p">]</span> 
+<span class="p">});</span>
+
+<span class="kd">service</span> <span class="o">/</span> <span class="nx">on</span> <span class="nx">interceptorListener</span> <span class="p">{</span>
+
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">greeting</span><span class="p">(</span><span class="err">@</span><span class="nx">http</span><span class="p">:</span><span class="nx">Header</span> <span class="kt">string</span> <span class="nx">checkHeader</span><span class="p">)</span> 
+            <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Ok</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">headers</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">&quot;checkedHeader&quot;</span><span class="p">:</span> <span class="nx">checkHeader</span>
+            <span class="p">},</span>
+            <span class="nx">mediaType</span><span class="p">:</span> <span class="s">&quot;application/org+json&quot;</span><span class="p">,</span>
+            <span class="nx">body</span><span class="p">:</span> <span class="p">{</span>
+                <span class="kt">message</span><span class="p">:</span> <span class="s">&quot;Greetings!&quot;</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Interceptor error handling</h2>
+                            <p><p>Errors that occurred in the request-response pipeline can be intercepted and handled
+ by <code>ResponseErrorInterceptors</code>. In addition, a <code>RequestErrorInterceptor</code>
+ can be used to handle the errors that occurred in the request interceptor execution
+ path. The <code>RequestErrorInterceptor</code> can send a response message according to the
+ error just like a <code>ResponseErrorInterceptor</code>. Moreover, it can modify the
+ request and dipatch it to the target service.
+ For more information, see the <a href="https://docs.central.ballerina.io/ballerina/http/latest/">HTTP module</a>.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="http-error-handling.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Error handling</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="http-1-1-to-2-0-protocol-switch.html">
+                                        <span>NEXT ></span>
+                                        <p>HTTP 1.1 to 2.0 protocol switch</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="http-interceptor-error-handling">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.0/examples/http-interceptor-error-handling/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+              
+                    
+                    <div class="codeSnippeset">
+
+                        <div class="cBBE-body">
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/http;
+import ballerina/io;
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>final string check_header = &quot;checkHeader&quot;;
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Header name checked by the request interceptor.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>final string request_check_header_value = &quot;RequestErrorInterceptor&quot;;
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Header value to be set to the request in the request error interceptor.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service class RequestInterceptor {
+    *http:RequestInterceptor;
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default [string... path](http:RequestContext ctx, 
+            @http:Header string checkHeader) returns http:NextService|error? {
+        io:println(&quot;Check Header Value : &quot;, checkHeader);
+        return ctx.next();
+    }
+}
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This will return a <code>HeaderNotFoundError</code> if you do not set this header.
+ Then, the execution will jump to the nearest <code>RequestErrorInterceptor</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>RequestInterceptor requestInterceptor = new;
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service class RequestErrorInterceptor {
+    *http:RequestErrorInterceptor;
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A <code>RequestErrorInterceptor</code> service class implementation. It allows you to
+ intercept the error that occurred in the request path and handle it accordingly.
+ A <code>RequestErrorInterceptor</code> service class can have only one resource function.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function &#39;default [string... path](error err, http:Request req, 
+            http:RequestContext ctx) returns http:NextService|error? {
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The resource function inside a <code>RequestErrorInterceptor</code> is only allowed
+ to have the default method and path. The error occurred in the interceptor
+ execution can be accessed by the mandatory argument : <code>error</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        req.setHeader(check_header, request_check_header_value);
+        return ctx.next();
+    }
+}
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>In this case, a header is set to the request, and then, the modified request
+ is dispatched to the target service. Moreover, you can send different
+ responses according to the error type.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>RequestErrorInterceptor requestErrorInterceptor = new;
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Creates a new <code>RequestErrorInterceptor</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>listener http:Listener interceptorListener = new http:Listener(9090, config = {
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    interceptors: [requestInterceptor, requestErrorInterceptor] 
+});
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>To handle all of the errors in the request path, the <code>RequestErrorInterceptor</code>
+ is added as the last interceptor as it has to be executed last.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service / on interceptorListener {
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>    resource function get greeting(@http:Header string checkHeader) 
+            returns http:Ok {
+        return {
+            headers: {
+                &quot;checkedHeader&quot;: checkHeader
+            },
+            mediaType: &quot;application/org+json&quot;,
+            body: {
+                message: &quot;Greetings!&quot;
+            }
+        };
+    }
+}
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="codeSnippeset">
+
+                        <div class="cBBE-body">
+                            
+                            <div class="cTR cOutputTr">
+
+                                <div class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Run the service.
+bal run http_interceptor_error_handling.bal
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="codeSnippeset">
+
+                        <div class="cBBE-body">
+                            
+                            <div class="cTR cOutputTr">
+
+                                <div class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Invoke the service.
+curl -v http://localhost:9090/greeting
+*   Trying ::1:9090...
+* Connected to localhost (::1) port 9090 (#0)
+&gt; GET /greeting HTTP/1.1
+&gt; Host: localhost:9090
+&gt; User-Agent: curl/7.77.0
+&gt; Accept: */*
+&gt; 
+* Mark bundle as not supporting multiuse.
+&lt; HTTP/1.1 200 OK
+&lt; checkedHeader: RequestErrorInterceptor
+&lt; content-type: application/org+json
+&lt; content-length: 24
+&lt; server: ballerina
+&lt; date: Tue, 19 Apr 2022 12:37:21 +0530
+&lt; 
+* Connection #0 to host localhost left intact
+{&quot;message&quot;:&quot;Greetings!&quot;}
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+
+                     
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return codeText;
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

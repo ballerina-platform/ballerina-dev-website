@@ -1,32 +1,34 @@
 ---
 layout: ballerina-example-page-old
-title: Handle binary messages with client
+title: Client
 description: This BBE demonstrates how a WebSocket client can be used to connect to and interact with a WebSocket server using Ballerina.
 keywords: ballerina, ballerina by example, bbe, websocket, sync, client
-permalink: /learn/by-example/websocket-binary-client
-active: websocket-binary-client
+permalink: /learn/by-example/websocket-client
+active: websocket-client
 redirect_from:
-  - /swan-lake/learn/by-example/websocket-binary-client
-  - /swan-lake/learn/by-example/websocket-binary-client.html
+  - /swan-lake/learn/by-example/websocket-client
+  - /swan-lake/learn/by-example/websocket-client.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websocket</span><span class="p">;</span>
 
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="c1">// Create a new [WebSocket client](https://docs.central.ballerina.io/ballerina/websocket/latest/clients/Client).</span>
-   <span class="nx">websocket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">wsClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;ws://echo.websocket.org&quot;</span><span class="p">);</span>
+   <span class="c1">// Create a new [WebSocket client](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client).</span>
+   <span class="nx">websocket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">echoClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;ws://localhost:9090/echo&quot;</span><span class="p">);</span>
 
-   <span class="c1">// Write a binary message to the server using [writeBinaryMessage](https://docs.central.ballerina.io/ballerina/websocket/latest/clients/Client#writeBinaryMessage).</span>
-   <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">writeBinaryMessage</span><span class="p">(</span><span class="s">&quot;Binary message&quot;</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">());</span>
+   <span class="c1">// Write a message to the server using [`writeMessage`](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client#writeMessage).</span>
+   <span class="c1">// This function accepts `anydata`. If the given type is a `byte[]`, the message will be sent as binary frames and </span>
+   <span class="c1">// the rest of the data types will be sent as text frames.</span>
+   <span class="c1">// For more information on data binding, see the [spec](https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md)</span>
+   <span class="nx">check</span> <span class="nx">echoClient</span><span class="o">-&gt;</span><span class="nx">writeMessage</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
 
-   <span class="c1">// Read a binary message echoed from the server using [readBinaryMessage](https://docs.central.ballerina.io/ballerina/websocket/latest/clients/Client#readBinaryMessage).</span>
-   <span class="nx">byte</span><span class="p">[]</span> <span class="nx">byteResp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">readBinaryMessage</span><span class="p">();</span>
-   <span class="kt">string</span> <span class="nx">stringResp</span> <span class="p">=</span> <span class="nx">check</span> <span class="p">&#39;string:fromBytes(</span><span class="nx">byteResp</span><span class="p">);</span>
-   <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">stringResp</span><span class="p">);</span>
+   <span class="c1">// Read a message echoed from the server using [`readMessage`](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client#readMessage).</span>
+   <span class="c1">// The contextually-expected data type is inferred from the LHS variable type. The received data will be converted to that particular data type.</span>
+   <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">echoClient</span><span class="o">-&gt;</span><span class="nx">readMessage</span><span class="p">();</span>
+   <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -36,10 +38,10 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Handle binary messages with client</h2>
-                            <p><p>The WebSocket client can be used to connect to and interact with a WebSocket server in a Synchronous manner.This example demonstrates how to read and write binary messages using ballerina websocket client<br/><br/>
+                            <h2>Client</h2>
+                            <p><p>The WebSocket client can be used to connect to and interact with a WebSocket server in a synchronous manner. This example demonstrates how to read and write messages using a Ballerina WebSocket client.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/">WebSocket module</a>.</p>
+ see the <a href="https://lib.ballerina.io/ballerina/websocket/latest/">WebSocket module</a>.</p>
 </p>
 
                         </td>
@@ -47,16 +49,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="websocket-text-client.html">
+                                    <a class="prev" href="graphql-service-oauth2.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Handle text messages with client</p>
+                                        <p>Service - OAuth2</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="websocket-retry-client.html">
                                         <span>NEXT ></span>
-                                        <p>Retry</p>
+                                        <p>Client - retry</p>
                                     </a>
                                 </div>
                                 
@@ -65,7 +67,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="websocket-binary-client">
+            <div class="example" id="websocket-client">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <div class="cTopControlsContainer">
                         <div class="cTopControlsRow">
@@ -76,7 +78,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/websocket-binary-client/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.0/examples/websocket-client/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -94,7 +96,6 @@ redirect_from:
 
                                 <div class="code leading">
                                     <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
-import ballerina/lang.&#39;string;
 import ballerina/websocket;
 </code></pre></div>
 
@@ -119,7 +120,7 @@ import ballerina/websocket;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>   websocket:Client wsClient = check new(&quot;ws://echo.websocket.org&quot;);
+                                    <div class="highlight"><pre><code class=language-ballerina>   websocket:Client echoClient = check new(&quot;ws://localhost:9090/echo&quot;);
 </code></pre></div>
 
                                 </div>
@@ -127,7 +128,7 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a new <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/clients/Client">WebSocket client</a>.</p>
+                                            <p>Create a new <a href="https://lib.ballerina.io/ballerina/websocket/latest/clients/Client">WebSocket client</a>.</p>
 
                                         </div>
                                     </div>
@@ -138,7 +139,7 @@ import ballerina/websocket;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>   check wsClient-&gt;writeBinaryMessage(&quot;Binary message&quot;.toBytes());
+                                    <div class="highlight"><pre><code class=language-ballerina>   check echoClient-&gt;writeMessage(&quot;Hello World!&quot;);
 </code></pre></div>
 
                                 </div>
@@ -146,7 +147,10 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Write a binary message to the server using <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/clients/Client#writeBinaryMessage">writeBinaryMessage</a>.</p>
+                                            <p>Write a message to the server using <a href="https://lib.ballerina.io/ballerina/websocket/latest/clients/Client#writeMessage"><code>writeMessage</code></a>.
+ This function accepts <code>anydata</code>. If the given type is a <code>byte[]</code>, the message will be sent as binary frames and
+ the rest of the data types will be sent as text frames.
+ For more information on data binding, see the <a href="https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md">spec</a></p>
 
                                         </div>
                                     </div>
@@ -157,9 +161,8 @@ import ballerina/websocket;
                             <div class="cTR hover-enable">
 
                                 <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>   byte[] byteResp = check wsClient-&gt;readBinaryMessage();
-   string stringResp = check &#39;string:fromBytes(byteResp);
-   io:println(stringResp);
+                                    <div class="highlight"><pre><code class=language-ballerina>   string message = check echoClient-&gt;readMessage();
+   io:println(message);
 }
 </code></pre></div>
 
@@ -168,7 +171,8 @@ import ballerina/websocket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Read a binary message echoed from the server using <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/clients/Client#readBinaryMessage">readBinaryMessage</a>.</p>
+                                            <p>Read a message echoed from the server using <a href="https://lib.ballerina.io/ballerina/websocket/latest/clients/Client#readMessage"><code>readMessage</code></a>.
+ The contextually-expected data type is inferred from the LHS variable type. The received data will be converted to that particular data type.</p>
 
                                         </div>
                                     </div>
@@ -186,7 +190,7 @@ import ballerina/websocket;
                             <div class="cTR cOutputTr">
 
                                 <div class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>bal run websocket_binary_client.bal
+                                    <div class="highlight"><pre><code class=shell-session>bal run websocket_text_client.bal
 </code></pre></div>
 
                                 </div>
@@ -198,7 +202,7 @@ import ballerina/websocket;
                             <div class="cTR cOutputTr">
 
                                 <div class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Binary message
+                                    <div class="highlight"><pre><code class=shell-session>Hello World!
 </code></pre></div>
 
                                 </div>

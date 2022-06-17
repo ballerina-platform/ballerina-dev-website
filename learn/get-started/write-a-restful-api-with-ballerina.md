@@ -32,98 +32,17 @@ This guide will walk you through creating a RESTful API with two endpoints. In t
 1. `/covid/status/countries`
 2. `/covid/status/countries/{iso_code}`
 
-## The first endpoint
+### The first endpoint
 
 The first endpoint is about getting data from the service as well as adding data to the service. Therefore, the service should handle both HTTP `GET` and `POST` requests.
 - The `GET` request is to get data, and the response should be `200 OK`.
 - The `POST` request is to add data, and the response should be `201 Created`.
 
-## The second endpoint
+### The second endpoint
 
-The second endpoint is about getting data filtered from the service. The data is filtered by the ISO code. Therefore, the second service accepts the ISO code as part of the URL and responds with the `200 OK` status code. In the event of an error, the relevant error is sent back to the client.
+The second endpoint is about getting data filtered from the service. The data is filtered by the ISO code. Therefore, the second endpoint accepts the ISO code as part of the URL and responds with the `200 OK` status code. In the event of an error, the relevant error is sent back to the client.
 
-## The complete code
-
-The below is the complete code of the service implementation.
-
-```ballerina
-import ballerina/http;
-
-service /covid/status on new http:Listener(9000) {
-
-    resource function get countries() returns CovidEntry[] {
-        return covidTable.toArray();
-    }
-
-    resource function post countries(@http:Payload CovidEntry[] covidEntries)
-                                    returns CreatedCovidEntries|ConflictingIsoCodesError {
-
-        string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
-            where covidTable.hasKey(covidEntry.iso_code)
-            select covidEntry.iso_code;
-
-        if conflictingISOs.length() > 0 {
-            return <ConflictingIsoCodesError>{
-                body: {
-                    errmsg: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
-                }
-            };
-        } else {
-            covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
-            return <CreatedCovidEntries>{body: covidEntries};
-        }
-    }
-
-    resource function get countries/[string iso_code]() returns CovidEntry|InvalidIsoCodeError {
-        CovidEntry? covidEntry = covidTable[iso_code];
-        if covidEntry is () {
-            return {
-                body: {
-                    errmsg: string `Invalid ISO Code: ${iso_code}`
-                }
-            };
-        }
-        return covidEntry;
-    }
-}
-
-public type CovidEntry record {|
-    readonly string iso_code;
-    string country;
-    decimal cases;
-    decimal deaths;
-    decimal recovered;
-    decimal active;
-|};
-
-public final table<CovidEntry> key(iso_code) covidTable = table [
-    {iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
-    {iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
-    {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
-];
-
-public type CreatedCovidEntries record {|
-    *http:Created;
-    CovidEntry[] body;
-|};
-
-public type ConflictingIsoCodesError record {|
-    *http:Conflict;
-    ErrorMsg body;
-|};
-
-public type InvalidIsoCodeError record {|
-    *http:NotFound;
-    ErrorMsg body;
-|};
-
-public type ErrorMsg record {|
-    string errmsg;
-|};
-```
-
-- It is always a good practice to document your interfaces. However, this example has omitted documentation for brevity. Nevertheless, any production-ready API interface must include API documentation. 
-- You can also try generating an OpenAPI specification for the written service by executing the following command, which creates a `yaml` file in the current folder.
+>**Info:** For the complete source code of this implementation, see [The complete code](/learn/write-a-restful-api-with-ballerina/#the-complete-code).
 
 ## Create the service project 
 
@@ -320,6 +239,89 @@ public type InvalidIsoCodeError record {|
 
 In this code:
 - As in the previous example, this resource also includes its own return types. However, the basic principle behind them is as the previous example. 
+
+## The complete code
+
+The below is the complete code of the service implementation.
+
+```ballerina
+import ballerina/http;
+
+service /covid/status on new http:Listener(9000) {
+
+    resource function get countries() returns CovidEntry[] {
+        return covidTable.toArray();
+    }
+
+    resource function post countries(@http:Payload CovidEntry[] covidEntries)
+                                    returns CreatedCovidEntries|ConflictingIsoCodesError {
+
+        string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
+            where covidTable.hasKey(covidEntry.iso_code)
+            select covidEntry.iso_code;
+
+        if conflictingISOs.length() > 0 {
+            return {
+                body: {
+                    errmsg: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
+                }
+            };
+        } else {
+            covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
+            return <CreatedCovidEntries>{body: covidEntries};
+        }
+    }
+
+    resource function get countries/[string iso_code]() returns CovidEntry|InvalidIsoCodeError {
+        CovidEntry? covidEntry = covidTable[iso_code];
+        if covidEntry is () {
+            return {
+                body: {
+                    errmsg: string `Invalid ISO Code: ${iso_code}`
+                }
+            };
+        }
+        return covidEntry;
+    }
+}
+
+public type CovidEntry record {|
+    readonly string iso_code;
+    string country;
+    decimal cases;
+    decimal deaths;
+    decimal recovered;
+    decimal active;
+|};
+
+public final table<CovidEntry> key(iso_code) covidTable = table [
+    {iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
+    {iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
+    {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
+];
+
+public type CreatedCovidEntries record {|
+    *http:Created;
+    CovidEntry[] body;
+|};
+
+public type ConflictingIsoCodesError record {|
+    *http:Conflict;
+    ErrorMsg body;
+|};
+
+public type InvalidIsoCodeError record {|
+    *http:NotFound;
+    ErrorMsg body;
+|};
+
+public type ErrorMsg record {|
+    string errmsg;
+|};
+```
+
+- It is always a good practice to document your interfaces. However, this example has omitted documentation for brevity. Nevertheless, any production-ready API interface must include API documentation. 
+- You can also try generating an OpenAPI specification for the written service by executing the following command, which creates a `yaml` file in the current folder.
 
 ## Run the service
 

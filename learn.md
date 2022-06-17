@@ -148,8 +148,8 @@ redirect_from:
 
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card">
-<a href="/learn/work-with-data-in-ballerina/">
-    <h3 id="work-with-data-in-ballerina">Work with data in Ballerina</h3></a>
+<a href="/learn/work-with-data-using-queries-in-ballerina/">
+    <h3 id="work-with-data-using-queries-in-ballerina">Work with data using queries in Ballerina</h3></a>
     <p >Use Ballerina query expressions to filter, sort, and join different iterable collections. </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
@@ -260,12 +260,25 @@ redirect_from:
 <div class="col-lg-6 col-md-6 col-sm-12 card"  >
  <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina">
     <h3 id="visual-studio-code-extension">Visual Studio Code extension</h3></a>
-    <p >Details of all the features of the Ballerina Visual Studio Code extension. </p>
+    <p >Details of the Ballerina Visual Studio Code extension. </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
- <a href="/learn/ballerina-openapi-support/">
-    <h3 id="ballerina-openapi-support">Ballerina OpenAPI support </h3></a>
-    <p >Details of all the features of the Ballerina OpenAPI tools. </p>
+ <a href="/learn/openapi-tool/">
+    <h3 id="openapi-tool">OpenAPI tool </h3></a>
+    <p >Details of the Ballerina OpenAPI tool. </p>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card" >
+ <a href="/learn/graphql-client-tool/">
+    <h3 id="graphql-client-tool">GraphQL client tool </h3></a>
+    <p >Details of the Ballerina GraphQL client tool. </p>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
+ <a href="/learn/asyncapi-tool/">
+    <h3 id="asyncapi-tool">AsyncAPI tool </h3></a>
+    <p >Details of the Ballerina AsyncAPI tool. </p>
 </div>
 </div>
 
@@ -288,9 +301,9 @@ redirect_from:
 	
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-12 card" >
-  <a href="/learn/cli-documentation/">
+  <a href="/learn/cli-documentation/cli-commands/">
  	<h3 id="cli-documentation">CLI documentation</h3></a>
-		<p>Details of all the CLI commands of the <code class="highlighter-rouge language-plaintext">bal</code> tool.  </p>
+		<p>Details of the CLI commands of the <code class="highlighter-rouge language-plaintext">bal</code> tool.  </p>
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-12 card" style="margin-right:0px !important;">

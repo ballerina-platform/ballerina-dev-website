@@ -12,8 +12,7 @@
 	"rpm-installer":"ballerina-2201.1.0-swan-lake-linux-x64.rpm",
 	"rpm-installer-size":"214mb",
 	"other-artefacts":[
-		"ballerina-2201.1.0-swan-lake.zip",
-		"ballerina-metrics-grafana-dashboard-prometheus.json"
+		"ballerina-2201.1.0-swan-lake.zip"
 	],
 	"api-docs":"ballerina-api-docs-2201.1.0.zip",
 	"release-notes":"ballerina-release-notes-2201.1.0.md"

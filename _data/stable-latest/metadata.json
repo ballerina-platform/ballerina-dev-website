@@ -11,8 +11,7 @@
 	"rpm-installer-size":"141mb",
 	"other-artefacts":[
 		"ballerina-1.2.29.zip",
-		"ballerina-1.2.29.vsix",
-		"ballerina-metrics-grafana-dashboard-prometheus.json"
+		"ballerina-1.2.29.vsix"
 	],
 	"api-docs":"ballerina-api-docs-1.2.29.zip",
 	"release-notes":"ballerina-release-notes-1.2.29.md"

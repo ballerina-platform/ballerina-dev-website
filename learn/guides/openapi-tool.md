@@ -1,10 +1,10 @@
 ---
 layout: ballerina-openapi-support-left-nav-pages-swanlake
-title: Ballerina OpenAPI support 
-description: Check out how the Ballerina OpenAPI tooling makes it easy for you to start developing a service documented in an OpenAPI contract.
+title: OpenAPI tool
+description: Check out how the Ballerina OpenAPI tool makes it easy for you to start developing a service documented in an OpenAPI contract.
 keywords: ballerina, programming language, openapi, open api, restful api
-permalink: /learn/ballerina-openapi-support/
-active: openapi
+permalink: /learn/openapi-tool/
+active: openapi-tool
 intro: OpenAPI Specification is a specification that creates a RESTFUL contract for APIs by detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina Swan Lake supports the OpenAPI Specification version 3.0.0 onwards.
 redirect_from:
   - /learn/how-to-use-openapi-tools/
@@ -15,27 +15,28 @@ redirect_from:
   - /swan-lake/learn/using-the-openapi-tools
   - /learn/tooling-guide/cli-tools/openapi
   - /learn/tooling-guide/cli-tools/openapi/
-  - /learn/ballerina-openapi-support/openapi
   - /learn/cli-documentation/openapi/#using-the-capabilities-of-the-openapi-tools/
   - /learn/cli-documentation/openapi/#using-the-capabilities-of-the-openapi-tools
   - /learn/cli-documentation/openapi/#openapi-validator-compiler-plugin/
   - /learn/cli-documentation/openapi/#openapi-validator-compiler-plugin
+  - /learn/ballerina-openapi-support
+  - /learn/ballerina-openapi-support/
 --- 
 
-Ballerina OpenAPI tooling will make it easy for you to start the development of a service documented in an OpenAPI contract in Ballerina by generating a Ballerina service and client skeletons. It enables you to take the code-first API design approach by generating an OpenAPI contract for the given service implementation.
+Ballerina OpenAPI tool will make it easy for you to start the development of a service documented in an OpenAPI contract in Ballerina by generating a Ballerina service and client skeletons. It enables you to take the code-first API design approach by generating an OpenAPI contract for the given service implementation.
 
-The Ballerina OpenAPI tooling support provides the following capabilities.
+The Ballerina OpenAPI tool support provides the following capabilities.
 
-> **Prerequisite:** Download and install the Ballerina Swan Lake distribution from [downloads](https://ballerina.io/downloads/).
+> **Prerequisite:** Install the latest [Ballerina Swan Lake distribution](https://ballerina.io/downloads/).
 
- 1. Generating Ballerina service/client stubs from a given OpenAPI contract file using the CLI tool.
- 2. Exporting the OpenAPI definition from a given Ballerina service implementation using the CLI tool.
- 3. Validating the service implementation compliance with a provided OpenAPI contract using the OpenAPI annotation.
+ 1. Generate Ballerina service/client stubs from a given OpenAPI contract file using the CLI tool.
+ 2. Export the OpenAPI definition from a given Ballerina service implementation using the CLI tool.
+ 3. Validate the service implementation compliance with a provided OpenAPI contract using the OpenAPI annotation.
 - The OpenAPI compiler plugin will allow you to validate a service implementation against an OpenAPI contract during the compile time. This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract. 
 
 ## Generate Ballerina services from OpenAPI Contracts 
 
-If you are an API developer who prefers the **design-first approach**, you can use an existing or your own OpenAPI definition to generate Ballerina services using the OpenAPI CLI command as follows.
+If you are an API developer who prefers the **design-first approach**, you can use an existing or your OpenAPI definition to generate Ballerina services using the OpenAPI CLI command as follows.
 
 ```bash
 $ bal openapi -i <openapi-contract> --mode service
@@ -77,7 +78,7 @@ Once you execute the command, only the operations related to the given tags will
 
 ## Export OpenAPI contracts from Ballerina services
 
-If you are an API developer who prefer to follow the **code-first approach**, you can convert your Ballerina service APIs into human-readable or machine-readable documents such as OpenAPI documents by using the Ballerina to OpenAPI CLI Tool as follows.
+If you prefer to follow the **code-first approach**, you can convert your Ballerina service APIs into human-readable or machine-readable documents such as OpenAPI documents by using the Ballerina to OpenAPI CLI Tool as follows.
 
 Export the Ballerina service to an OpenAPI Specification 3.0.0 definition. For the export to work properly, the input Ballerina service should be defined using the basic service and resource-level HTTP annotations.
 

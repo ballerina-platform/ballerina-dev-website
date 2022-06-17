@@ -1,0 +1,18 @@
+- title: AsyncAPI tool
+  url: #
+  sublinks:
+    - title: Generate Ballerina sources from AsyncAPI contracts
+      url: /learn/asyncapi-tool/#generate-ballerina-sources-from-asyncapi-contracts
+      active: generate-ballerina-sources-from-asyncapi-contracts
+    - title: Example of the usage of the tool
+      url: /learn/asyncapi-tool/#example-of-the-usage-of-the-tool
+      sublinks:
+        - title: Generate Ballerina sources
+          url: /learn/asyncapi-tool/#generate-ballerina-sources
+          active: generate-ballerina-sources
+        - title: Modify the generated sources
+          url: /learn/asyncapi-tool/#modify-the-generated-sources
+          active: modify-the-generated-sources
+        - title: Execute the generated sources
+          url: /learn/asyncapi-tool/#execute-the-generated-sources
+          active: execute-the-generated-sources

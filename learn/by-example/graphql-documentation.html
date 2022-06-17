@@ -1,0 +1,271 @@
+---
+layout: ballerina-example-page-old
+title: Documentation
+description: A GraphQL service endpoint written in Ballerina
+keywords: ballerina, ballerina by example, bbe, graphql, graphql documentation
+permalink: /learn/by-example/graphql-documentation
+active: graphql-documentation
+redirect_from:
+  - /swan-lake/learn/by-example/graphql-documentation
+  - /swan-lake/learn/by-example/graphql-documentation.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">graphql</span><span class="p">;</span>
+
+<span class="kd">service</span> <span class="o">/</span><span class="nx">graphql</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">graphql</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">4000</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="err">#</span> <span class="nx">Returns</span> <span class="nx">a</span> <span class="nx">person</span> <span class="nx">using</span> <span class="nx">the</span> <span class="nx">provided</span> <span class="nx">ID</span><span class="p">.</span>
+    <span class="err">#</span> <span class="o">+</span> <span class="nx">id</span> <span class="o">-</span> <span class="nx">The</span> <span class="nx">ID</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">person</span>
+    <span class="err">#</span> <span class="o">+</span> <span class="k">return</span> <span class="o">-</span> <span class="nx">The</span> <span class="nx">person</span> <span class="nx">with</span> <span class="nx">the</span> <span class="nx">requested</span> <span class="nx">ID</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">get</span> <span class="nx">profile</span><span class="p">(</span><span class="kt">int</span> <span class="nx">id</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Person</span><span class="err">?</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">id</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Walter White&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">52</span><span class="p">};</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">id</span> <span class="o">==</span> <span class="mi">2</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jesse Pinkman&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">};</span>
+        <span class="p">}</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="err">#</span> <span class="nx">Represents</span> <span class="nx">a</span> <span class="nx">person</span><span class="p">.</span>
+<span class="err">#</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">-</span> <span class="nx">The</span> <span class="nx">name</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">person</span>
+<span class="err">#</span> <span class="o">+</span> <span class="nx">age</span> <span class="o">-</span> <span class="nx">The</span> <span class="nx">age</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">person</span>
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Documentation</h2>
+                            <p><p>A GraphQL schema can include documentation for the schema. These
+ documentation can help you to understand the schema. <br/><br/>
+ In Ballerina, the Ballerina doc comments can be used to add documentation to
+ various schema members. <br/><br/>
+ For more information on the underlying package, see the
+ <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">GraphQL package</a>.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="graphql-file-upload.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>File upload</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="graphql-service-ssl-tls.html">
+                                        <span>NEXT ></span>
+                                        <p>Service - SSL/TLS</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="graphql-documentation">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.0/examples/graphql-documentation/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+              
+                    
+                    <div class="codeSnippeset">
+
+                        <div class="cBBE-body">
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/graphql;
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>service /graphql on new graphql:Listener(4000) {
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    # Returns a person using the provided ID.
+    # + id - The ID of the person
+    # + return - The person with the requested ID
+    resource function get profile(int id) returns Person? {
+        if id == 1 {
+            return {name: &quot;Walter White&quot;, age: 52};
+        } else if id == 2 {
+            return {name: &quot;Jesse Pinkman&quot;, age: 25};
+        }
+        return;
+    }
+}
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina># Represents a person.
+# + name - The name of the person
+# + age - The age of the person
+type Person record {
+    string name;
+    int age;
+};
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="codeSnippeset">
+
+                        <div class="cBBE-body">
+                            
+                            <div class="cTR cOutputTr">
+
+                                <div class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>bal run graphql_documentation.bal
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="codeSnippeset">
+
+                        <div class="cBBE-body">
+                            
+                            <div class="cTR cOutputTr">
+
+                                <div class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Send a query to the GraphQL endpoint using a cURL command.
+# The query used: { __schema { queryType { fields { name description type { name description fields { name description } } args { name description } } } } }
+curl -X POST -H &quot;Content-type: application/json&quot; -d &#39;{ &quot;query&quot;: &quot;{ __schema { queryType { fields { name description type { name description fields { name description } } args { name description } } } } }&quot; }&#39;
+&#39;http://localhost:4000/graphql&#39;
+{ &quot;data&quot;: { &quot;__schema&quot;: { &quot;queryType&quot;: { &quot;fields&quot;: [ { &quot;name&quot;: &quot;profile&quot;, &quot;description&quot;: &quot;Returns a person using the provided id.&quot;, &quot;type&quot;: { &quot;name&quot;: &quot;Person&quot;, &quot;description&quot;: &quot;Represents a Person.&quot;, &quot;fields&quot;: [ { &quot;name&quot;: &quot;name&quot;, &quot;description&quot;: &quot;The name of the person&quot; }, { &quot;name&quot;: &quot;age&quot;, &quot;description&quot;: &quot;The age of the person&quot; } ] }, &quot;args&quot;: [ { &quot;name&quot;: &quot;id&quot;, &quot;description&quot;: &quot;The ID of the person&quot; } ] } ] } } } }
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+
+                     
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // get code text
+                var codeSnippet = document.getElementsByClassName('FullCode')[0];
+                var codeText = codeSnippet.getElementsByTagName('pre')[0].textContent;
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return codeText;
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

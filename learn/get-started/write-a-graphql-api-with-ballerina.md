@@ -46,12 +46,12 @@ The `Query` type has two fields.
 The `Mutation` type has a single field.
 * The `add` field - This field will add a given entry to the data source.
 
-## Create a datasource for the package
+## Create a data source for the project
 
-Before writing the GraphQL service, let's create a data source for the package. This will mimic a database that stores
+Before writing the GraphQL service, let's create a data source for the project. This will mimic a database that stores
 the data for the service. In this guide, you are going to use an in-memory table in Ballerina as the data source.
 
-### Define the types for the datasource
+### Define the types for the data source
 
  To create the table, you have to define the data type to use in the table. The following code defines the record type
  `CovidEntry`. A single entry will include the ISO code for the location (`isoCode`), name of the country (`country`),
@@ -69,7 +69,7 @@ public type CovidEntry record {|
 |};
 ```
 
-### Add data to the datasource
+### Add data to the data source
 Now you can add define the data table.
 
 ```ballerina

@@ -339,3 +339,8 @@ pre > button:nth-child(2) {
 .scroll-to-top:hover {
   background-color: #2da7a1;
 }
+
+/* Temporary */
+.shiki {
+  background-color: #eeeeee !important;
+}

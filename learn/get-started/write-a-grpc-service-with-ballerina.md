@@ -77,11 +77,11 @@ Now, let’s implement the gRPC service and client in the Ballerina language.
 
 ## Implement the gRPC service
 
-Ballerina uses projects to group code. You need to create a Ballerina project, generate the service code in the project, and write the business logic.
+Ballerina uses packages to group code. You need to create a Ballerina package, generate the service code in the package, and write the business logic.
 
-### Create the service project
+### Create the service package
 
-In the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina project for the gRPC service implementation.
+In the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina package for the gRPC service implementation.
 
 > **Note:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
@@ -165,7 +165,7 @@ To add the business logic to the remote method (in this case, you only need to u
 
 ## Run the gRPC service 
 
-In the terminal, navigate to the `greeter_service` directory, and execute the command below to run the service project
+In the terminal, navigate to the `greeter_service` directory, and execute the command below to run the service package
 
 ```bash
 $ bal run
@@ -184,13 +184,13 @@ Now, you completed the server-side implementation and it is running on port 9090
 
 ## Implement the gRPC client
 
-Similar to the service, the client application also starts with creating a new Ballerina project. Once created, you can generate the client code and update the code to call the remote methods exposed by the service.
+Similar to the service, the client application also starts with creating a new Ballerina package. Once created, you can generate the client code and update the code to call the remote methods exposed by the service.
 
-### Create the client project
+### Create the client package
 
-In a new tab of the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina project for the gRPC client implementation:
+In a new tab of the terminal, navigate to the `grpc_sample` directory, and execute the command below to create the Ballerina package for the gRPC client implementation:
 
-> **Note:** For more information on Ballerina projects, see [Organize Ballerina code](/learn/organize-ballerina-code/).
+> **Note:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
 ```bash
 $ bal new greeter_client
@@ -262,7 +262,7 @@ In this code:
 
 ## Run the gRPC client
 
-In the terminal, navigate to the `greeter_client` directory, and execute the command below to run the service project
+In the terminal, navigate to the `greeter_client` directory, and execute the command below to run the service package
 
 ```bash
 $ bal run

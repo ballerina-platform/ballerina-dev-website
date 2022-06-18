@@ -29,7 +29,7 @@ To complete this tutorial, you need:
     >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
 3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
 
-## Create a new Ballerina project
+## Create a new Ballerina package
 
 To create a new Ballerina package, use the `bal new` command as shown below.
 
@@ -96,7 +96,7 @@ public function main() {
     io:println("Countries with more than 10 million cases: ", countries);
 }
 ```
-In the `main` function, you have called the `filterCountriesByCases` function and have provided `covidTable` and `10000000` as parameters so that the function will filter the countries, which have more than 10000000 COVID-19 cases. In the next line, you have printed the result from the function. Copy the above code onto `main.bal` and execute `bal run` from within the `query_expression` project folder.
+In the `main` function, you have called the `filterCountriesByCases` function and have provided `covidTable` and `10000000` as parameters so that the function will filter the countries, which have more than 10000000 COVID-19 cases. In the next line, you have printed the result from the function. Copy the above code onto `main.bal` and execute `bal run` from within the `query_expression` package folder.
 
 The result will print something similar to the below.
 
@@ -135,7 +135,7 @@ public function main() {
 }
 ```
 
-Copy the last two lines of the above code onto `main.bal` and execute `bal run` from within the `query_expression` project folder.
+Copy the last two lines of the above code onto `main.bal` and execute `bal run` from within the `query_expression` package folder.
 
 The output will look like the below.
 

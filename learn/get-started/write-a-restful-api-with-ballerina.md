@@ -44,11 +44,11 @@ The second endpoint is about getting data filtered from the service. The data is
 
 >**Info:** For the complete source code of this implementation, see [The complete code](/learn/write-a-restful-api-with-ballerina/#the-complete-code).
 
-## Create the service project 
+## Create the service package 
 
-Ballerina uses projects to group code. You need to create a Ballerina project and write the business logic in it. In the terminal, execute the command below to create the Ballerina project for the API implementation.
+Ballerina uses packages to group code. You need to create a Ballerina package and write the business logic in it. In the terminal, execute the command below to create the Ballerina package for the API implementation.
 
-> **Info:** For more information on Ballerina projects, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
+> **Info:** For more information on Ballerina packages, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
 ```bash
 $ bal new covid19 -t service
@@ -325,7 +325,7 @@ public type ErrorMsg record {|
 
 ## Run the service
 
-In the terminal, navigate to the `covid19` directory, and execute the command below to run the service project.
+In the terminal, navigate to the `covid19` directory, and execute the command below to run the service package.
 
 > **Info**: The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 

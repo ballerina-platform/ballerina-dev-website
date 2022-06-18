@@ -40,3 +40,4 @@ bundle exec jekyll serve
 1. For more information on the installation instructions, see the [Jekyll Installation Documentation](https://jekyllrb.com/docs/installation/).
 2. If you get the `cannot load such file -- webrick` error, execute the `bundle add webrick` command.
 3. If you get the `Could not locate Gemfile` error, you may not be inside the `ballerina-dev-website` repo directory. Navigate to it in the terminal, and then, execute the required command.
+4. If you get the `An error occurred while installing eventmachine (1.2.7), and Bundler cannot continue.` error, execute the `bundle config build.eventmachine --with-cppflags=-I/usr/local/opt/openssl/include` command, and then execute the `bundle install` command.

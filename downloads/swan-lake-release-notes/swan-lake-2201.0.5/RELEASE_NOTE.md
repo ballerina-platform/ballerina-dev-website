@@ -14,8 +14,6 @@ redirect_from:
 
 <em>Swan Lake 2201.0.5 is the fifth patch release of Ballerina 2201.0.0 (Swan Lake) and it includes a new set of improvements to the compiler, runtime, standard library, and developer tooling.</em> 
 
->**Note:** It is recommended to update your active Ballerina distribution to 2201.0.5 as soon as possible because from now onwards, new updates of standard libraries and extensions will not be available for the previous releases. 
-
 ## Updating Ballerina
 
 **If you are already using Ballerina 2201.0.0 (Swan Lake)**, run either of the commands below to directly update to 2201.0.5 (Swan Lake) using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/).

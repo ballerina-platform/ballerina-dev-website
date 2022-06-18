@@ -171,7 +171,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 <table class="cComandTable">
 <tr>
 <td class="cCommand">new</td>
-<td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/get-started-with-ballerina/#create-a-new-project">Create a new project</a>.
+<td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/get-started-with-ballerina/#create-a-new-package">Create a new package</a>.
 </td>
 </tr>
 <tr>

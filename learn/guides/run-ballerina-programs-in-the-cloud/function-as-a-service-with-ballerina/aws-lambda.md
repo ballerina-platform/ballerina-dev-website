@@ -83,10 +83,10 @@ Generating executables
 	@awslambda:Function: echo
 
         Run the following command to deploy each Ballerina AWS Lambda function:
-        aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb://<project_dir>/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
+        aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb://<package_dir>/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
 
         Run the following command to re-deploy an updated Ballerina AWS Lambda function:
-        aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://<project_dir>/target/bin/aws-ballerina-lambda-functions.zip
+        aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://<package_dir>/target/bin/aws-ballerina-lambda-functions.zip
         target/bin/aws_lambda_deployment.jar
 ```
 
@@ -101,7 +101,7 @@ Execute the command below to deploy the echo function as an AWS Lambda as shown 
 >**Info:**  For the supported parameters, go to the [`create-function` documentation](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html). You might need to change parameters such as the `MemorySize` and `Timeout` depending on your application and connection speed. 
 
 ```bash
-$ aws lambda create-function --function-name echo --zip-file fileb://<project_dir>/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6
+$ aws lambda create-function --function-name echo --zip-file fileb://<package_dir>/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6
 
 {
     "FunctionName": "echo",

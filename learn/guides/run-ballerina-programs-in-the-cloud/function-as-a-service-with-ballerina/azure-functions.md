@@ -82,7 +82,7 @@ Generating executables
 	@azure.functions:Function: hello
 
 	Run the following command to deploy Ballerina Azure Functions:
-	az functionapp deployment source config-zip -g <resource_group> -n <function_app_name> --src <project_dir>/target/bin/azure-functions.zip
+	az functionapp deployment source config-zip -g <resource_group> -n <function_app_name> --src <package_dir>/target/bin/azure-functions.zip
 ```
 
 >**Note:** A custom [`host.json`](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json) file for the Azure Functions deployment can be provided optionally by placing a `host.json` file in the current working directory in which the Ballerina build is done. The required `host.json` properties are provided/overridden by the values derived from the source code by the compiler extension. 
@@ -95,7 +95,7 @@ The created resource group and the function app name should be provided to the p
 A sample execution to deploy the functions to Azure Functions is shown below. 
 
 ```bash
-$ az functionapp deployment source config-zip -g <function_app_name> -n <function_app_name> --src <project_dir>/target/bin/azure-functions.zip
+$ az functionapp deployment source config-zip -g <function_app_name> -n <function_app_name> --src <package_dir>/target/bin/azure-functions.zip
 Getting scm site credentials for zip deployment
 Starting zip deployment. This operation can take a while to complete ...
 Deployment endpoint responded with status code 202
@@ -155,7 +155,7 @@ public function fromHttpToQueue(af:Context ctx,
 }
 ```
 
-Build the project by executing the `bal build` command on the project directory, and then, deploy it using the `az cli` command shown in the Ballerina build output as in the previous section.
+Build the package by executing the `bal build` command on the package directory, and then, deploy it using the `az cli` command shown in the Ballerina build output as in the previous section.
 
 Now, the deployed Azure Function can be tested by invoking it using an HTTP client such as cURL. 
 
@@ -206,7 +206,7 @@ public function cosmosDBToQueue2(@af:CosmosDBTrigger {
 }
 ```
 
-Build the project by executing the `bal build` command on the project directory, and then deploy it using the `az cli` command shown in the Ballerina build output as in the previous section.
+Build the package by executing the `bal build` command on the package directory, and then deploy it using the `az cli` command shown in the Ballerina build output as in the previous section.
 
 Once the function is deployed, You need to add an item to the collection.
 1. Go to the created collection in the **Data Explorer**.

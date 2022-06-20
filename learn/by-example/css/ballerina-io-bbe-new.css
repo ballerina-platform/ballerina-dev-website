@@ -4,6 +4,9 @@
   --page-padding: 15px;
   --content-max-width: 750px;
   --menu-bar-height: 50px;
+
+  --code-background-color: #eeeeee;
+  --output-background-color: #263238;
 }
 
 /* Navigation */
@@ -225,16 +228,17 @@ ol.chapter {
   background-color: transparent !important;
 }
 
-.output-container {
+.bal-container > pre:not(.output-container) {
+  background-color: var(--code-background-color) !important;
+}
+
+pre.output-container {
+  background-color: var(--output-background-color) !important;
   padding: 16px;
 }
 
 .output-container .language-bash {
   background-color: inherit !important;
-}
-
-.bal-container > pre {
-  background-color: #eeeeee !important;
 }
 
 /* Fonts */
@@ -342,5 +346,5 @@ pre > button:nth-child(2) {
 
 /* Temporary */
 .shiki {
-  background-color: #eeeeee !important;
+  background-color: var(--code-background-color) !important;
 }

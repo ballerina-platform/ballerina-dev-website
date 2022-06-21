@@ -25,10 +25,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          ref: master
           token: ${{ secrets.BALLERINA_BOT_TOKEN }}
       - name: Download jBallerina deb
         run: |
-          echo "djaebfaefakf"
+          echo "djaebfaefakf MASTER"
           curl -L "https://github.com/ballerina-platform/ballerina-distribution/releases/download/v$JBAL_VERSION/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb" > $HOME/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb
       - name: Install jBallerina deb
         run: |

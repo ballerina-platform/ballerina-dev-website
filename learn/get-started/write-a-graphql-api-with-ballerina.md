@@ -464,6 +464,6 @@ You view the JSON below as the result of this request.
 To learn more about GraphQL services in Ballerina, see the following.
 
 - [`graphql` library documentation](https://lib.ballerina.io/ballerina/graphql/latest)
-- [Hello World](/learn/by-example/graphql-hello-world.html)
+- [GraphQL Hello World](/learn/by-example/graphql-hello-world.html)
 - [GraphQL to Ballerina](/learn/cli-documentation/graphql/#graphql-to-ballerina)
 

@@ -4,9 +4,46 @@
     - title: Set up the prerequisites
       url: /learn/build-a-data-service-in-ballerina/#set-up-the-prerequisites
       active: set-up-the-prerequisites
-    - title: Connect to and interact with the database
-      url: /learn/build-a-data-service-in-ballerina/#connect-to-and-interact-with-the-database
-      active: connect-to-and-interact-with-the-database
+    - title: Set up a MySQL server instance
+      url: /learn/build-a-data-service-in-ballerina/#set-up-a-mysql-server-instance
+      active: set-up-a-mysql-server-instance
+    - title: Create a database and table
+      url: /learn/build-a-data-service-in-ballerina/#create-a-database-and-table
+      active: create-a-database-and-table
+    - title: Create the Ballerina package
+      url: /learn/build-a-data-service-in-ballerina/#create-the-ballerina-package
+      active: create-the-ballerina-package
+    - title: Create a record to represent an employee
+      url: /learn/build-a-data-service-in-ballerina/#create-a-record-to-represent-an-employee
+      active: create-a-record-to-represent-an-employee
+    - title: Add the MySQL driver
+      url: /learn/build-a-data-service-in-ballerina/#add-the-mysql-driver
+      active: add-the-mysql-driver
+    - title: Define MySQL configurations
+      url: /learn/build-a-data-service-in-ballerina/#define-mysql-configurations
+      active: define-mysql-configurations
+    - title: Connect to the database
+      url: /learn/build-a-data-service-in-ballerina/#connect-to-the-database
+      active: connect-to-the-database
+    - title: Execute the queries
+      url: /learn/build-a-data-service-in-ballerina/#execute-the-queries
+      active: execute-the-queries
+    - title: The completed `main.bal` file
+      url: /learn/build-a-data-service-in-ballerina/#the-completed-mainbal-file
+      active: the-completed-mainbal-file
     - title: Expose the database via an HTTP RESTful API
       url: /learn/build-a-data-service-in-ballerina/#expose-the-database-via-an-http-restful-api
       active: expose-the-database-via-an-http-restful-api
+    - title: The completed `service.bal` file
+      url: /learn/build-a-data-service-in-ballerina/#the-completed-servicebal-file
+      active: the-completed-servicebal-file
+    - title: Run the service
+      url: /learn/build-a-data-service-in-ballerina/#run-the-service
+      active: run-the-service
+    - title: Try the service
+      url: /learn/build-a-data-service-in-ballerina/#try-the-service
+      active: try-the-service
+    - title: Learn more
+      url: /learn/build-a-data-service-in-ballerina/#learn-more
+      active: learn-more
+   

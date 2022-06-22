@@ -8,7 +8,7 @@ on:
         required: true
         default: "warning"
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 4 * * *"
 
 # on:
 #   schedule:
@@ -28,7 +28,7 @@ jobs:
           token: ${{ secrets.BALLERINA_BOT_TOKEN }}
       - name: Download jBallerina deb
         run: |
-          echo "djaebfaefakf"
+          echo "djaebfaefakf DEV"
           curl -L "https://github.com/ballerina-platform/ballerina-distribution/releases/download/v$JBAL_VERSION/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb" > $HOME/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb
       - name: Install jBallerina deb
         run: |

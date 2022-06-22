@@ -95,6 +95,6 @@ public function main() returns error? {
     }
     string fileContent = "--- \nlayout: ballerina-inner-page \ntitle: Active proposals \ndescription: This is a collection of active proposals for Ballerina by the Ballerina community. \nkeywords: ballerina, community, ballerina community, newsletter \npermalink: /community/active-proposals \n--- \n" + repoData;
     io:println(fileContent);
-    check io:fileWriteString("./docs/index-all-repos.md", fileContent);
+    check io:fileWriteString("./community/proposals/active-proposals.md.md", fileContent);
 }
 

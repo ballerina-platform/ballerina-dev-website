@@ -50,7 +50,7 @@ For example,
 $ bal openapi -i hello.yaml --mode service
 ```
 
-This will generate a Ballerina service in a file named `hello_service.bal` and relevant schemas in a file named `types.bal` for the `hello.yaml` OpenAPI contract as depicted below. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project.
+This will generate a Ballerina service in a file named `hello_service.bal` and relevant schemas in a file named `types.bal` for the `hello.yaml` OpenAPI contract as depicted below. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package.
 
 ```bash
 The service generation process is complete. The following files were created.
@@ -205,7 +205,7 @@ For example,
 ```bash
 $ bal openapi -i hello.yaml --mode client
 ```
-This will generate a Ballerina client stub (`client.bal`), a util file (`utils.bal`) for the relevant utils methods related to the client stub, and a schemas file (`types.bal`) for the `hello.yaml` OpenAPI contract. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina project.
+This will generate a Ballerina client stub (`client.bal`), a util file (`utils.bal`) for the relevant utils methods related to the client stub, and a schemas file (`types.bal`) for the `hello.yaml` OpenAPI contract. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package.
 
 ```bash
 Client generated successfully. The following files were created. 

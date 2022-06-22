@@ -101,7 +101,7 @@ observabilityIncluded=true
 ```
 
 >**Note:** the above configuration is included by default in the `Ballerina.toml` file generated when initiating a new 
-> project using the `bal new` command.
+package using the `bal new` command.
 
 To include the Prometheus and Jaeger extensions into the executable, the
 `ballerinax/prometheus` and `ballerinax/jaeger` modules need to be imported into your Ballerina code.

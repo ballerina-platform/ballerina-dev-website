@@ -30,16 +30,16 @@ To complete this tutorial, you need:
 Usually, a GraphQL endpoint is defined using a GraphQL schema. Even though some languages require the GraphQL schema to create a GraphQL service (schema-first approach), Ballerina do not need the schema to create the service
 (code-first approach). Once you write the Ballerina service, the Ballerina GraphQL package will generate the schema.
 
-The GraphQL endpoint you are going to create in this guide will have two main operations as `Query` and `Mutation`. The `Query` type will be used to read the data in the data source, and the `Mutation` operation will be used to update the data in the data source.
+The GraphQL endpoint you are going to create in this guide will have two main operations as `query` and `mutation`. The `query` type will be used to read the data in the data source, and the `mutation` operation will be used to update the data in the data source.
 
-### The `Query` type
-The `Query` type has two fields.
+### The `query` type
+The `query` type has two fields.
 * Can be identified by the `resource` keyword in the function description.
 * The `all` field - This field will return all the data in the data source as an array.
 * The `filter` field - This field will return the data filtered by the ISO Code of a country(`isoCode`).
 
-### The `Mutation` type
-The `Mutation` type has a single field.
+### The `mutation` type
+The `mutation` type has a single field.
 * Can be identified by the `remote` keyword in the function description.
 * The `add` field - This field will add a given entry to the data source.
 
@@ -176,7 +176,7 @@ represented by the exclamation mark `!`. E.g., `String!`). However, the resource
 
 ## Create the service
 
-Now you are all set to write the GraphQL service.
+Now, you are all set to write the GraphQL service.
 
 ### Create the listener object
 
@@ -229,7 +229,7 @@ As per the design, there are two fields in the `Query` type and one field in the
 service. The fields of the `Query` type are represented by resource methods in Ballerina, while the fields of the
 `Mutation` type are represented by the remote methods in Ballerina.
 
-#### Create resource methods of the query type
+#### Create query type resource methods
 
 ##### Create the `all` field
 
@@ -249,7 +249,7 @@ service /covid19 on new graphql:Listener(9000) {
 > **Note:** A Ballerina GraphQL resource or remote method can return a `table` as well. When a method is returning a `table`, the corresponding GraphQL field type is a `LIST` type.
 
 In this code:
-- The resource method definition has the accessor `get`, which is used to identify the resource methods as a field of the`Query` type. 
+- The resource method definition has the accessor `get`, which is used to identify the resource methods as a field of the`query` type. 
 - No other accessor is allowed. Then comes the name of the field. The return type is the type of the field.
 - The above resource method first retrieves the array of `CovidEntry` records from the data source as an array, and then, returns an array of `CovidData` service type array as the result using the built-in `map` function.
 
@@ -268,12 +268,12 @@ resource function get filter(string isoCode) returns CovidData? {
 ```
 
 In this code:
-- The `filter` field is defined in the root `Query` type. Since this field has an input parameter `isoCode`, you have to add an input parameter to the resource method. 
+- The `filter` field is defined in the root `query` type. Since this field has an input parameter `isoCode`, you have to add an input parameter to the resource method. 
 - This method returns the corresponding data for the given `isoCode` if such data is available in the data set, and it returns `null` otherwise.
 
-#### Create remote method of the mutation type
+#### Create mutation type remote method 
 
-As the `Query` type is completed now, define the `Mutation` type using remote methods.
+As the `query` type is completed now, define the `mutation` type using remote methods.
 
 To define a remote method to add an entry to the data source, add the code below to the API template file (i.e., `main.bal`). 
 

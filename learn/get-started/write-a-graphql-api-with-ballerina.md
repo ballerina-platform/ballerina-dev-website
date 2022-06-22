@@ -383,6 +383,24 @@ service /covid19 on new graphql:Listener(9000) {
 bal run
 ```
 
+You view the output below.
+
+```bash
+Compiling source
+	praneesha/graphql:0.1.0
+WARNING [main.bal:(25:5,25:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+WARNING [main.bal:(29:5,29:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+WARNING [main.bal:(33:5,33:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+WARNING [main.bal:(40:5,40:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+WARNING [main.bal:(47:5,47:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+WARNING [main.bal:(54:5,54:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+WARNING [main.bal:(63:5,63:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+WARNING [main.bal:(68:5,68:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+WARNING [main.bal:(76:5,76:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+
+Running executable
+```
+
 ## View the generated schema
 
 The console has warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.

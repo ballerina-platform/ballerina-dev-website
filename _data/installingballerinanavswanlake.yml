@@ -25,6 +25,9 @@
           - title: Verify the installation
             url: /learn/install-ballerina/installation-options/#verify-the-installation
             active: verify-the-installation
+          - title: Build from source
+            url: /learn/install-ballerina/installation-options/#build-from-source
+            active: build-from-source
           - title: Update Ballerina
             url: /learn/install-ballerina/installation-options/#update-ballerina
             active: update-ballerina

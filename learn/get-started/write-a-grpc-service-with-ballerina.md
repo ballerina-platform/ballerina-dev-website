@@ -282,6 +282,6 @@ Response : Hello Ballerina
 ## Learn more
 
 To learn more about gRPC support in Ballerina, see the following:
-- [`grpc` library documentation](https://lib.ballerina.io/ballerina/grpc/latest)
+- [`grpc` module documentation](https://lib.ballerina.io/ballerina/grpc/latest)
 - [gRPC CLI tooling guide](/learn/cli-documentation/grpc/)
 - [Simple RPC](/learn/by-example/grpc-simple.html)

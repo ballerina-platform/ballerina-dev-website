@@ -392,5 +392,5 @@ You view the output below.
 ## Learn more
 
 To learn more about RESTful services in Ballerina, see the following:
-- [`http` library documentation](https://lib.ballerina.io/ballerina/http/latest)
+- [`http` module documentation](https://lib.ballerina.io/ballerina/http/latest)
 - [Service path and resource path](/learn/by-example/http-absolute-path-and-path.html)

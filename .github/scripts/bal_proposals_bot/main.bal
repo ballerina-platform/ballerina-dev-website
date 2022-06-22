@@ -59,7 +59,6 @@ public function main() returns error? {
             string repository = repo.name;
 
             if (repoCount % 9 == 0) { //Due to github  rate limit
-                break;
                 io:println("Sleeping at repo count:", repoCount);
                 runtime:sleep(65);
             }
@@ -93,7 +92,7 @@ public function main() returns error? {
             }
             io:println("Repo Count:", repoCount);
         }
-        break;
+        //break;
     }
     string fileContent = "--- \nlayout: ballerina-inner-page \ntitle: Active proposals \ndescription: This is a collection of active proposals for Ballerina by the Ballerina community. \nkeywords: ballerina, community, ballerina community, newsletter \npermalink: /community/active-proposals \n--- \n" + repoData;
     io:println(fileContent);

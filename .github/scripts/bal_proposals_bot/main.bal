@@ -37,6 +37,7 @@ type User record {
 
 public function main() returns error? {
     //arrays:
+    io:println("MASTER**********");
     http:Client github = check new ("https://api.github.com/search/repositories");
     RepoData data_repo = check github->get(string `?q=org:ballerina-platform`);
     int total_repos = data_repo.total_count;

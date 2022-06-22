@@ -8,7 +8,7 @@ on:
         required: true
         default: "warning"
   schedule:
-    - cron: "0 4 * * *"
+    - cron: "30 * * * *"
 
 # on:
 #   schedule:
@@ -25,6 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          ref: master
           token: ${{ secrets.BALLERINA_BOT_TOKEN }}
       - name: Download jBallerina deb
         run: |

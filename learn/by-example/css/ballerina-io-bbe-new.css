@@ -1,9 +1,12 @@
 /* Variables */
 :root {
-  --sidebar-width: 300px;
+  --sidebar-width: 260px;
   --page-padding: 15px;
   --content-max-width: 750px;
   --menu-bar-height: 50px;
+
+  --code-background-color: #eeeeee;
+  --output-background-color: #585a5e;
 }
 
 /* Navigation */
@@ -63,6 +66,7 @@
 .chapter li {
   display: flex;
   color: var(--sidebar-non-existant);
+  font-size: 12px !important;
 }
 .chapter li a {
   display: block;
@@ -211,30 +215,31 @@ pre {
 }
 
 ol.chapter {
-  width: 265px !important;
+  width: -calc(20px - var(--sidebar-width)) !important;
 }
 
 .bal-container {
   display: flex;
   flex-direction: column;
-  margin-left: calc(var(--sidebar-width) + 5%) !important;
-  width: 70% !important;
+  margin-left: calc(var(--sidebar-width) + 2%) !important;
+  width: 77% !important;
 }
 
 .code-container {
   background-color: transparent !important;
 }
 
-.output-container {
+.bal-container > pre:not(.output-container) {
+  background-color: var(--code-background-color) !important;
+}
+
+pre.output-container {
+  background-color: var(--output-background-color) !important;
   padding: 16px;
 }
 
 .output-container .language-bash {
   background-color: inherit !important;
-}
-
-.bal-container > pre {
-  background-color: #263238 !important;
 }
 
 /* Fonts */
@@ -338,4 +343,9 @@ pre > button:nth-child(2) {
 
 .scroll-to-top:hover {
   background-color: #2da7a1;
+}
+
+/* Temporary */
+.shiki {
+  background-color: var(--code-background-color) !important;
 }

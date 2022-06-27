@@ -1,13 +1,13 @@
 ---
 layout: ballerina-example-page-old
-title: Logging
-description: BBE on how to log messages in Ballerina at different log levels including 'DEBUG', 'ERROR', 'INFO', and 'WARN'.
-keywords: ballerina, ballerina by examples, bbe, log, level
-permalink: /learn/by-example/logging
-active: logging
+title: Consumer client - Poll ConsumerRecord
+description: BBE on how to use a `kafka:Consumer` as a simple record consumer.
+keywords: ballerina, ballerina by example, bbe, kafka, consumer, client
+permalink: /learn/by-example/kafka-consumer-client-poll-consumer-record
+active: kafka-consumer-client-poll-consumer-record
 redirect_from:
-  - /swan-lake/learn/by-example/logging
-  - /swan-lake/learn/by-example/logging.html
+  - /swan-lake/learn/by-example/kafka-consumer-client-poll-consumer-record
+  - /swan-lake/learn/by-example/kafka-consumer-client-poll-consumer-record.html
 ---
 
 <div class="bbe-container">
@@ -777,7 +777,7 @@ redirect_from:
             </ol>
           </li>
         </ol>
-        <li class="part-title">
+        <li class="part-title expanded">
           <div>Working over the network</div>
           <a class="toggle-category"><div>❱</div></a>
         </li>
@@ -1492,7 +1492,7 @@ redirect_from:
               </li>
             </ol>
           </li>
-          <li class="chapter-item bal-nav-item">
+          <li class="chapter-item bal-nav-item expanded">
             <div>Kafka</div>
             <a class="toggle"><div>❱</div></a>
           </li>
@@ -1512,9 +1512,10 @@ redirect_from:
                   >Consumer client - Poll Payload</a
                 >
               </li>
-              <li class="chapter-item bal-nav-item">
+              <li class="chapter-item bal-nav-item expanded">
                 <a
                   href="/learn/by-example/kafka-consumer-client-poll-consumer-record.html"
+                  class="active bal-active"
                   >Consumer client - Poll ConsumerRecord</a
                 >
               </li>
@@ -1735,7 +1736,7 @@ redirect_from:
             </ol>
           </li>
         </ol>
-        <li class="part-title expanded">
+        <li class="part-title">
           <div>Common libraries</div>
           <a class="toggle-category"><div>❱</div></a>
         </li>
@@ -1833,18 +1834,14 @@ redirect_from:
               </li>
             </ol>
           </li>
-          <li class="chapter-item bal-nav-item expanded">
+          <li class="chapter-item bal-nav-item">
             <div>Log</div>
             <a class="toggle"><div>❱</div></a>
           </li>
           <li>
             <ol class="section">
-              <li class="chapter-item bal-nav-item expanded">
-                <a
-                  href="/learn/by-example/logging.html"
-                  class="active bal-active"
-                  >Logging</a
-                >
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/logging.html">Logging</a>
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/logging-with-context.html"
@@ -2066,48 +2063,84 @@ redirect_from:
     </div>
   </nav>
   <main class="bal-container">
-    <h1>Logging</h1>
+    <h1>Consumer client - Poll ConsumerRecord</h1>
 
     <p>
-      The Ballerina Log API contains the application log handling
-      functions.&lt;br/&gt;&lt;br/&gt;
+      This shows how to use a <code>kafka:Consumer</code> as a simple record
     </p>
+
+    <p>
+      consumer. The records from a subscribed topic can be retrieved using the
+    </p>
+
+    <p><code>poll()</code> function.</p>
+
+    <p>
+      This consumer uses the builtin byte array deserializer for both the key
+      and
+    </p>
+
+    <p>
+      the value, which is the default deserializer in the
+      <code>kafka:Consumer</code>.
+    </p>
+
+    <p>
+      The received records are converted to the user defined type using
+      data-binding.
+    </p>
+
+    <p>For this to work properly, an active Kafka broker should be present.</p>
+
+    <p>&lt;br/&gt;&lt;br/&gt;</p>
 
     <p>For more information on the underlying module,</p>
 
     <p>
       see the
-      <a href="https://docs.central.ballerina.io/ballerina/log/latest/"
-        >Log module</a
+      <a href="https://lib.ballerina.io/ballerinax/kafka/latest">Kafka module</a
       >.
     </p>
 
     <br />
-    <pre><code id="code" class="code-container">import ballerina/log;
+    <pre><code id="code" class="code-container">import ballerinax/kafka;
+import ballerina/io;
 
-public function main() {
-    // The Ballerina log API provides functions to log at four levels, which are
-    // `DEBUG`, `ERROR`, `INFO`, and `WARN`.
-    log:printDebug("debug log");
-    log:printError("error log");
-    log:printInfo("info log");
-    log:printWarn("warn log");
+kafka:ConsumerConfiguration consumerConfiguration = {
+    groupId: "group-id",
+    offsetReset: "earliest",
+    // Subscribes to the topic `test-kafka-topic`.
+    topics: ["test-kafka-topic"]
 
-    // You can pass any number of key/value pairs, which need to be displayed in the log message.
-    // These can be of the `anydata` type including int, string, and boolean.
-    log:printInfo("info log", id = 845315, name = "foo", successful = true);
+};
 
-    // Optionally, an error can be passed to the functions.
-    error e = error("something went wrong!");
-    log:printError("error log with cause", 'error = e, id = 845315,
-        name = "foo");
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
+// Create a subtype of `kafka:AnydataConsumerRecord`
+public type OrderConsumerRecord record {|
+    *kafka:AnydataConsumerRecord;
+    Order value;
+|};
+
+kafka:Consumer orderConsumer =
+                check new (kafka:DEFAULT_URL, consumerConfiguration);
+
+public function main() returns error? {
+    // Polls the consumer for order records.
+    OrderConsumerRecord[] records = check orderConsumer-&gt;poll(1);
+
+    check from OrderConsumerRecord orderRecord in records
+        where orderRecord.value.isValid
+        do {
+            io:println(orderRecord.value.productName);
+        };
 }</code>
-  <button playgroundLink="https://play.ballerina.io/?gist=545112f7c0cc679881af9aba53b8f3fd&file=logging.bal">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000" class="bi bi-play-circle" viewBox="0 0 16 16">
-      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-      <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
-    </svg>
-  </button>
+
   <button>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000" class="bi bi-github" viewBox="0 0 16 16">
       <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
@@ -2129,19 +2162,13 @@ public function main() {
     <br />
     <pre
       class="output-container"
-    ><code class="language-bash"><span class="bal-output bal-execute">bal run logging.bal</span>
-<span class="bal-output bal-execute">time = 2021-05-25T11:29:58.290+05:30 level = DEBUG module = "" message = "debug log"</span>
-<span class="bal-output bal-execute">time = 2021-05-25T11:29:58.305+05:30 level = ERROR module = "" message = "error log"</span>
-<span class="bal-output bal-execute">time = 2021-05-25T11:29:58.306+05:30 level = INFO module = "" message = "info log"</span>
-<span class="bal-output bal-execute">time = 2021-05-25T11:29:58.307+05:30 level = WARN module = "" message = "warn log"</span>
-<span class="bal-output bal-execute">time = 2021-05-25T11:29:58.307+05:30 level = INFO module = "" message = "info log" name = "foo" id = 845315 successful = true</span>
-<span class="bal-output bal-execute">time = 2021-05-25T11:29:58.317+05:30 level = ERROR module = "" message = "error log with cause" error = "something went wrong!" name = "foo" id = 845315</span>
+    ><code class="language-bash"><span class="bal-output bal-execute">bal run kafka_consumer_client_poll_consumer_record.bal</span>
 </code></pre>
     <br />
     <div class="button-container">
       <a
-        title="Cache invalidation"
-        href="/learn/by-example/cache-invalidation.html"
+        title="Consumer client - Poll Payload"
+        href="/learn/by-example/kafka-consumer-client-poll-payload.html"
         class="prev-button"
       >
         <svg
@@ -2159,17 +2186,17 @@ public function main() {
         </svg>
         <div class="button-title">
           <span>Previous</span>
-          <div>Cache invalidation</div>
+          <div>Consumer client - Poll Payload</div>
         </div>
       </a>
       <a
-        title="Logging with context"
-        href="/learn/by-example/logging-with-context.html"
+        title="Transactional producer"
+        href="/learn/by-example/kafka-producer-transactional.html"
         class="next-button"
       >
         <div class="button-title">
           <span>Next</span>
-          <div>Logging with context</div>
+          <div>Transactional producer</div>
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

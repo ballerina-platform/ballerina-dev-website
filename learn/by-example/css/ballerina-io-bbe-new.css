@@ -202,6 +202,7 @@ pre {
 /* Shiki */
 .shiki {
   padding: 16px;
+  background-color: var(--code-background-color) !important;
 }
 
 .bal-execute,
@@ -345,7 +346,12 @@ pre > button:nth-child(2) {
   background-color: #2da7a1;
 }
 
-/* Temporary */
-.shiki {
-  background-color: var(--code-background-color) !important;
+/* Hyperlinks */
+.output-container a {
+  color: #3ad1ca;
+  text-decoration: underline;
+}
+
+.output-container a:hover {
+  color: #eeeeee !important;
 }

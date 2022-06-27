@@ -1,4 +1,4 @@
-const sessions = document.getElementsByClassName("shell-session");
+const sessions = document.getElementsByClassName("bal-output");
 const hyperlink_type1 = /\[(?:\w|-| )+\]\((?:\w|:|\/|-| |.)+\)/g;
 const hyperlink_type2 =
   /&lt;a href=(?:"|&quot;)(?:\w|:|\/|-| |.)+(?:"|&quot;)&gt;(?:\w|-| )+&lt;\/a&gt;/g;
@@ -64,7 +64,6 @@ for (let i = 0; i < sessions.length; i++) {
     }
 
     const output_string = updated_links.join("");
-    document.getElementsByClassName("shell-session")[i].innerHTML =
-      output_string;
+    document.getElementsByClassName("bal-output")[i].innerHTML = output_string;
   }
 }

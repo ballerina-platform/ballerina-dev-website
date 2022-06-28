@@ -1143,23 +1143,16 @@ redirect_from:
           <li>
             <ol class="section">
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-text-client.html"
-                  >Handle text messages with client</a
-                >
-              </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-binary-client.html"
-                  >Handle binary messages with client</a
-                >
+                <a href="/learn/by-example/websocket-client.html">Client</a>
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-retry-client.html"
-                  >Retry</a
+                  >Client - Retry</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-basic-sample.html"
-                  >Listener functionalities</a
+                  >Service</a
                 >
               </li>
             </ol>
@@ -1673,8 +1666,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/mysql-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/mysql-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/mysql-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item expanded">
@@ -1714,8 +1712,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/jdbc-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/jdbc-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/jdbc-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -2093,52 +2096,44 @@ redirect_from:
       8.0.13.&lt;br&gt;&lt;br&gt;
     </p>
 
-    <br />
     <pre><code id="code" class="code-container">import ballerina/io;
 import ballerinax/mysql;
 import ballerina/sql;
 
 public function main() returns error? {
     // Runs the prerequisite setup for the example.
-    check beforeExample();
+    check initialize();
 
-    // Initializes the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root", 
-            password = "Test@123", database = "MYSQL_BBE");
+    // Initializes the MySQL client. The `mysqlClient` can be reused to access the database throughout the application execution.
+    mysql:Client mysqlClient = check new (user = "root",
+            password = "Test@123", database = "CUSTOMER");
 
     float newCreditLimit = 15000.5;
 
-    // Creates a parameterized query for the record update.
-    sql:ParameterizedQuery updateQuery = 
+    // Execute the query.
+    sql:ExecutionResult result = check mysqlClient-&gt;execute(
             `UPDATE Customers SET creditLimit = ${newCreditLimit} 
-            where customerId = 1`;
+            where customerId = 1`);
 
-    sql:ExecutionResult result = check mysqlClient-&gt;execute(updateQuery);
-    io:println("Updated Row count: ", result?.affectedRowCount);
+    // Process returned metadata.
+    io:println(`Updated Row count: ${result?.affectedRowCount}`);
 
-    string firstName = "Dan";
-
-    // Creates a parameterized query for deleting the records.
-    sql:ParameterizedQuery deleteQuery = 
-            `DELETE FROM Customers WHERE firstName = ${firstName}`;
-
-    result = check mysqlClient-&gt;execute(deleteQuery);
-    io:println("Deleted Row count: ", result.affectedRowCount);
+    // Closes the MySQL client.
+    check mysqlClient.close();
 
     // Performs the cleanup after the example.
-    check afterExample(mysqlClient);
+    check cleanup();
 }
 
 // Initializes the database as a prerequisite to the example.
-function beforeExample() returns sql:Error? {
+function initialize() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Creates a database.
-    sql:ExecutionResult result = 
-        check mysqlClient-&gt;execute(`CREATE DATABASE MYSQL_BBE`);
+    _ = check mysqlClient-&gt;execute(`CREATE DATABASE CUSTOMER`);
 
     //Creates a table in the database.
-    result = check mysqlClient-&gt;execute(`CREATE TABLE MYSQL_BBE.Customers
+    _ = check mysqlClient-&gt;execute(`CREATE TABLE CUSTOMER.Customers
             (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  
             VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER, 
             creditLimit DOUBLE, country VARCHAR(300),
@@ -2146,24 +2141,23 @@ function beforeExample() returns sql:Error? {
 
     // Inserts data into the table. The result will have the `affectedRowCount`
     // and `lastInsertedId` with the auto-generated ID of the last row.
-    result = check mysqlClient-&gt;execute(`INSERT INTO MYSQL_BBE.Customers
+    _ = check mysqlClient-&gt;execute(`INSERT INTO CUSTOMER.Customers
             (firstName, lastName, registrationID,creditLimit,country) VALUES
             ('Peter','Stuart', 1, 5000.75, 'USA')`);
-    result = check mysqlClient-&gt;execute(`INSERT INTO MYSQL_BBE.Customers
+    _ = check mysqlClient-&gt;execute(`INSERT INTO CUSTOMER.Customers
             (firstName, lastName, registrationID,creditLimit,country) VALUES
             ('Dan', 'Brown', 2, 10000, 'UK')`);
-
-    io:println("Rows affected: ", result.affectedRowCount);
-    io:println("Generated Customer ID: ", result.lastInsertId);
 
     check mysqlClient.close();
 }
 
 // Cleans up the database after running the example.
-function afterExample(mysql:Client mysqlClient) returns sql:Error? {
+function cleanup() returns sql:Error? {
+    mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
+
     // Cleans the database.
-    _ = check mysqlClient-&gt;execute(`DROP DATABASE MYSQL_BBE`);
-    
+    _ = check mysqlClient-&gt;execute(`DROP DATABASE CUSTOMER`);
+
     // Closes the MySQL client.
     check mysqlClient.close();
 }</code>
@@ -2186,24 +2180,20 @@ function afterExample(mysql:Client mysqlClient) returns sql:Error? {
   </button>
 </pre>
 
-    <br />
     <pre
       class="output-container"
     ><code class="language-bash"><span class="bal-output bal-execute"># Create a Ballerina project.</span>
-<span class="bal-output bal-execute"># Copy the example to the project and add relevant database driver jar details to the `Ballerina.toml` file.</span>
+<span class="bal-output bal-execute"># Copy the example to the project and add the relevant database driver JAR details to the `Ballerina.toml` file.</span>
 <span class="bal-output bal-execute"># Execute the command below to build and run the project.</span>
 <span class="bal-output bal-execute">bal run</span>
 <span class="bal-output bal-execute"></span>
-<span class="bal-output bal-execute">Rows affected: 1</span>
-<span class="bal-output bal-execute">Generated Customer ID: 2</span>
 <span class="bal-output bal-execute">Updated Row count: 1</span>
-<span class="bal-output bal-execute">Deleted Row count: 1</span>
 </code></pre>
     <br />
     <div class="button-container">
       <a
-        title="Query with complex types"
-        href="/learn/by-example/mysql-complex-type-queries.html"
+        title="Query with advanced mapping"
+        href="/learn/by-example/mysql-query-column-mapping.html"
         class="prev-button"
       >
         <svg
@@ -2221,7 +2211,7 @@ function afterExample(mysql:Client mysqlClient) returns sql:Error? {
         </svg>
         <div class="button-title">
           <span>Previous</span>
-          <div>Query with complex types</div>
+          <div>Query with advanced mapping</div>
         </div>
       </a>
       <a

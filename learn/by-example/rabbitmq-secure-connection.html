@@ -1143,23 +1143,16 @@ redirect_from:
           <li>
             <ol class="section">
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-text-client.html"
-                  >Handle text messages with client</a
-                >
-              </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-binary-client.html"
-                  >Handle binary messages with client</a
-                >
+                <a href="/learn/by-example/websocket-client.html">Client</a>
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-retry-client.html"
-                  >Retry</a
+                  >Client - Retry</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-basic-sample.html"
-                  >Listener functionalities</a
+                  >Service</a
                 >
               </li>
             </ol>
@@ -1675,8 +1668,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/mysql-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/mysql-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/mysql-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -1714,8 +1712,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/jdbc-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/jdbc-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/jdbc-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -2079,7 +2082,6 @@ redirect_from:
       >.
     </p>
 
-    <br />
     <pre><code id="code" class="code-container">import ballerina/log;
 import ballerinax/rabbitmq;
 
@@ -2132,14 +2134,12 @@ service rabbitmq:Service on securedEP {
   </button>
 </pre>
 
-    <br />
     <pre
       class="output-container"
     ><code class="language-bash"><span class="bal-output bal-execute">bal run consumer.bal</span>
 <span class="bal-output bal-execute">time = 2021-05-20T14:49:11.011+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"</span>
 </code></pre>
 
-    <br />
     <pre><code id="code" class="code-container">import ballerinax/rabbitmq;
 
 public function main() returns error? {
@@ -2189,7 +2189,6 @@ public function main() returns error? {
   </button>
 </pre>
 
-    <br />
     <pre
       class="output-container"
     ><code class="language-bash"><span class="bal-output bal-execute">bal run producer.bal</span>

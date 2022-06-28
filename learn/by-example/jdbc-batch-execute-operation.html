@@ -1143,23 +1143,16 @@ redirect_from:
           <li>
             <ol class="section">
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-text-client.html"
-                  >Handle text messages with client</a
-                >
-              </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-binary-client.html"
-                  >Handle binary messages with client</a
-                >
+                <a href="/learn/by-example/websocket-client.html">Client</a>
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-retry-client.html"
-                  >Retry</a
+                  >Client - Retry</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-basic-sample.html"
-                  >Listener functionalities</a
+                  >Service</a
                 >
               </li>
             </ol>
@@ -1673,8 +1666,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/mysql-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/mysql-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/mysql-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -1712,8 +1710,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/jdbc-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/jdbc-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/jdbc-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -2077,8 +2080,8 @@ redirect_from:
     </p>
 
     <p>
-      This sample is based on an H2 database and the H2 database driver JAR need
-      to be added to the <code>Ballerina.toml</code> file.
+      This sample is based on an H2 database and the H2 database driver JAR
+      needs to be added to the <code>Ballerina.toml</code> file.
     </p>
 
     <p>
@@ -2090,38 +2093,39 @@ redirect_from:
     </p>
 
     <p>
-      This sample is written using H2 2.0.6 and it is recommended to use H2 JAR
-      with versions higher than 2.0.2.
+      This sample is written using H2 2.0.6 and it is recommended to use an H2
+      JAR file of a version higher than 2.0.2.
     </p>
 
-    <br />
     <pre><code id="code" class="code-container">import ballerina/io;
 import ballerinax/java.jdbc;
 import ballerina/sql;
 
 public function main() returns error? {
-    // Initializes the JDBC client.
-    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc", 
-        "rootUser", "rootPass");
+
     // Runs the prerequisite setup for the example.
-    check beforeExample(jdbcClient);
+    check initialize();
+
+    // Initializes the JDBC client. The `jdbcClient` can be reused to access the database throughout the application execution.
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
+        "rootUser", "rootPass");
 
     // The records to be inserted.
-    var insertRecords = [
+    var customers = [
         {
             firstName: "Peter",
             lastName: "Stuart",
             registrationID: 1,
             creditLimit: 5000.75,
             country: "USA"
-        }, 
+        },
         {
             firstName: "Stephanie",
             lastName: "Mike",
             registrationID: 2,
             creditLimit: 8000.00,
             country: "USA"
-        }, 
+        },
         {
             firstName: "Bill",
             lastName: "John",
@@ -2131,53 +2135,53 @@ public function main() returns error? {
         }
     ];
 
-    // Creates a batch parameterized query.
-    sql:ParameterizedQuery[] insertQueries = 
-        from var data in insertRecords
+    // Creates a batch-parameterized query.
+    sql:ParameterizedQuery[] insertQueries =
+        from var data in customers
         select `INSERT INTO Customers
                 (firstName, lastName, registrationID, creditLimit, country)
                 VALUES (${data.firstName}, ${data.lastName},
                 ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
 
     // Inserts the records with the auto-generated ID.
-    sql:ExecutionResult[] result = 
+    sql:ExecutionResult[] result =
                             check jdbcClient-&gt;batchExecute(insertQueries);
 
     int[] generatedIds = [];
     foreach var summary in result {
         generatedIds.push(&lt;int&gt;summary.lastInsertId);
     }
-    io:println("\nInsert success, generated IDs are: ", generatedIds, "\n");
+    io:println(`Insert success, generated IDs are: ${generatedIds}`);
 
-    // Checks the data after the batch execution.
-    stream&lt;record {}, error?&gt; resultStream =
-        jdbcClient-&gt;query(`SELECT * FROM Customers`);
-
-    io:println("Data in Customers table:");
-    check from record{} resultRecord in resultStream
-        do {
-            io:println(resultRecord.toString());
-        };
+    // Closes the JDBC client.
+    check jdbcClient.close();
 
     // Performs the cleanup after the example.
-    check afterExample(jdbcClient);
+    check cleanup();
 }
 
 // Initializes the database as a prerequisite to the example.
-function beforeExample(jdbc:Client jdbcClient) returns sql:Error? {
+function initialize() returns sql:Error? {
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
+        "rootUser", "rootPass");
+
     // Creates a table in the database.
     _ = check jdbcClient-&gt;execute(`CREATE TABLE Customers(customerId INTEGER
             NOT NULL GENERATED BY DEFAULT AS IDENTITY, firstName  VARCHAR(300),
             lastName  VARCHAR(300), registrationID INTEGER, creditLimit DOUBLE,
             country  VARCHAR(300), PRIMARY KEY (customerId))`);
+
+    check jdbcClient.close();
 }
 
 // Cleans up the database after running the example.
-function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
+function cleanup() returns sql:Error? {
+    jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc",
+        "rootUser", "rootPass");
+
     // Cleans the database.
     _ = check jdbcClient-&gt;execute(`DROP TABLE Customers`);
-    
-    // Closes the JDBC client.
+
     check jdbcClient.close();
 }</code>
 
@@ -2199,20 +2203,14 @@ function afterExample(jdbc:Client jdbcClient) returns sql:Error? {
   </button>
 </pre>
 
-    <br />
     <pre
       class="output-container"
     ><code class="language-bash"><span class="bal-output bal-execute"># Create a Ballerina project.</span>
-<span class="bal-output bal-execute"># Copy the example to the project and add relevant database driver jar details to the `Ballerina.toml` file.</span>
+<span class="bal-output bal-execute"># Copy the example to the project and add the relevant database driver JAR details to the `Ballerina.toml` file.</span>
 <span class="bal-output bal-execute"># Execute the command below to build and run the project.</span>
 <span class="bal-output bal-execute">bal run</span>
 <span class="bal-output bal-execute"></span>
 <span class="bal-output bal-execute">Insert success, generated IDs are: [1,2,3]</span>
-<span class="bal-output bal-execute"></span>
-<span class="bal-output bal-execute">Data in Customers table:</span>
-<span class="bal-output bal-execute">{"CUSTOMERID":1,"FIRSTNAME":"Peter","LASTNAME":"Stuart","REGISTRATIONID":1,"CREDITLIMIT":5000.75,"COUNTRY":"USA"}</span>
-<span class="bal-output bal-execute">{"CUSTOMERID":2,"FIRSTNAME":"Stephanie","LASTNAME":"Mike","REGISTRATIONID":2,"CREDITLIMIT":8000.0,"COUNTRY":"USA"}</span>
-<span class="bal-output bal-execute">{"CUSTOMERID":3,"FIRSTNAME":"Bill","LASTNAME":"John","REGISTRATIONID":3,"CREDITLIMIT":3000.25,"COUNTRY":"USA"}</span>
 </code></pre>
     <br />
     <div class="button-container">

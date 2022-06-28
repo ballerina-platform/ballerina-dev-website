@@ -1143,23 +1143,16 @@ redirect_from:
           <li>
             <ol class="section">
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-text-client.html"
-                  >Handle text messages with client</a
-                >
-              </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-binary-client.html"
-                  >Handle binary messages with client</a
-                >
+                <a href="/learn/by-example/websocket-client.html">Client</a>
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-retry-client.html"
-                  >Retry</a
+                  >Client - Retry</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-basic-sample.html"
-                  >Listener functionalities</a
+                  >Service</a
                 >
               </li>
             </ol>
@@ -1675,8 +1668,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/mysql-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/mysql-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/mysql-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -1714,8 +1712,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/jdbc-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/jdbc-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/jdbc-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -2085,7 +2088,6 @@ redirect_from:
       >.
     </p>
 
-    <br />
     <pre><code id="code" class="code-container">// This is the service definition for the server streaming scenario.
 syntax = "proto3";
 import "google/protobuf/wrappers.proto";
@@ -2112,7 +2114,6 @@ service HelloWorld {
   </button>
 </pre>
 
-    <br />
     <pre
       class="output-container"
     ><code class="language-bash"><span class="bal-output bal-execute"># Create new Protocol Buffers definition file `grpc_server_streaming.proto` and add service definition.</span>
@@ -2124,14 +2125,12 @@ service HelloWorld {
 <span class="bal-output bal-execute"># For more information on how to use the Ballerina Protocol Buffers tool, see the &lt;a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html"&gt;Proto To Ballerina&lt;/a&gt; example.</span>
 </code></pre>
 
-    <br />
     <pre><code id="code" class="code-container">// This is the server implementation of the server streaming scenario.
 import ballerina/grpc;
 import ballerina/log;
 
 @grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR_GRPC_SERVER_STREAMING,
-    descMap: getDescriptorMapGrpcServerStreaming()
+    descriptor: GRPC_SERVER_STREAMING_DESC
 }
 service "HelloWorld" on new grpc:Listener(9090) {
     remote function lotsOfReplies(string name)
@@ -2167,7 +2166,6 @@ service "HelloWorld" on new grpc:Listener(9090) {
   </button>
 </pre>
 
-    <br />
     <pre
       class="output-container"
     ><code class="language-bash"><span class="bal-output bal-execute"># Create a Ballerina package.</span>
@@ -2183,7 +2181,6 @@ service "HelloWorld" on new grpc:Listener(9090) {
 <span class="bal-output bal-execute">bal run service/target/bin/service.jar</span>
 </code></pre>
 
-    <br />
     <pre><code id="code" class="code-container">// This is the client implementation for the server streaming scenario.
 import ballerina/grpc;
 import ballerina/io;
@@ -2218,7 +2215,6 @@ public function main () returns error? {
   </button>
 </pre>
 
-    <br />
     <pre
       class="output-container"
     ><code class="language-bash"><span class="bal-output bal-execute"># Create a Ballerina package.</span>

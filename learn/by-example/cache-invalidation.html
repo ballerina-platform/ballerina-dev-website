@@ -1143,23 +1143,16 @@ redirect_from:
           <li>
             <ol class="section">
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-text-client.html"
-                  >Handle text messages with client</a
-                >
-              </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-binary-client.html"
-                  >Handle binary messages with client</a
-                >
+                <a href="/learn/by-example/websocket-client.html">Client</a>
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-retry-client.html"
-                  >Retry</a
+                  >Client - Retry</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-basic-sample.html"
-                  >Listener functionalities</a
+                  >Service</a
                 >
               </li>
             </ol>
@@ -1673,8 +1666,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/mysql-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/mysql-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/mysql-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -1712,8 +1710,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/jdbc-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/jdbc-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/jdbc-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -2082,7 +2085,6 @@ redirect_from:
       >.
     </p>
 
-    <br />
     <pre><code id="code" class="code-container">import ballerina/cache;
 import ballerina/io;
 
@@ -2125,7 +2127,7 @@ public function main() returns error? {
     // Gets the keys of the cache entries after all the keys are invalidated.
     io:println("The keys after invalidating all the keys: ", cache.keys());
 }</code>
-  <button playgroundLink="https://play.ballerina.io/?gist=22ba826db3139a7702378a2f2c05d092&file=cache_invalidation.bal">
+  <button playgroundLink="https://play.ballerina.io/?gist=45b26d18cafcdf103c0a0a569d6fabb8&file=cache_invalidation.bal">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000" class="bi bi-play-circle" viewBox="0 0 16 16">
       <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
       <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
@@ -2149,7 +2151,6 @@ public function main() returns error? {
   </button>
 </pre>
 
-    <br />
     <pre
       class="output-container"
     ><code class="language-bash"><span class="bal-output bal-execute">bal run cache_invalidation.bal</span>

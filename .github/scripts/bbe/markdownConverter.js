@@ -4,6 +4,14 @@ const container = require("markdown-it-container");
 const fs = require("fs");
 const axios = require("axios");
 
+// yaml character escapes
+const yamlEscape = (text) => {
+  text = text.replaceAll("&", "&amp;");
+  text = text.replaceAll(":", "&#58;");
+
+  return text;
+};
+
 // insert escape characters
 const insertEscapes = (text) => {
   text = text.replaceAll("<", "&lt;");
@@ -275,7 +283,7 @@ const generateHTML = (
   const liquid = `
 ---
 layout: ballerina-example-page-old
-title: ${bbeTitle}
+title: ${yamlEscape(bbeTitle)}
 ${metatags}
 permalink: /learn/by-example/${bbeName}
 active: ${bbeName}

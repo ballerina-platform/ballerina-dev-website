@@ -1143,23 +1143,16 @@ redirect_from:
           <li>
             <ol class="section">
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-text-client.html"
-                  >Handle text messages with client</a
-                >
-              </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-binary-client.html"
-                  >Handle binary messages with client</a
-                >
+                <a href="/learn/by-example/websocket-client.html">Client</a>
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-retry-client.html"
-                  >Retry</a
+                  >Client - Retry</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-basic-sample.html"
-                  >Listener functionalities</a
+                  >Service</a
                 >
               </li>
             </ol>
@@ -1673,8 +1666,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/mysql-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/mysql-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/mysql-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -1713,8 +1711,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/jdbc-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/jdbc-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/jdbc-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -2096,98 +2099,66 @@ redirect_from:
       8.0.13.&lt;br&gt;&lt;br&gt;
     </p>
 
-    <br />
-    <pre><code id="code" class="code-container">import ballerina/io;
+    <pre><code id="code" class="code-container">import ballerina/log;
 import ballerinax/mysql;
 import ballerina/sql;
 
 public function main() returns error? {
     // Runs the prerequisite setup for the example.
-    check beforeExample();
+    check initialize();
 
-    // Initializes the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root", 
-            password = "Test@123", database = "MYSQL_BBE");
-
-    // Records with the duplicate `registrationID` entry. Here it is `registrationID` = 1.
-    var insertRecords = [
-        {
-            firstName: "Linda",
-            lastName: "Jones",
-            registrationID: 4,
-            creditLimit: 10000.75,
-            country: "USA"
-        }, 
-        {
-            firstName: "Peter",
-            lastName: "Stuart",
-            registrationID: 1,
-            creditLimit: 5000.75,
-            country: "USA"
-        }, 
-        {
-            firstName: "Camellia",
-            lastName: "Potter",
-            registrationID: 5,
-            creditLimit: 2000.25,
-            country: "USA"
-        }
-    ];
-
-    // Creates a batch parameterized query.
-    sql:ParameterizedQuery[] insertQueries = 
-        from var data in insertRecords
-        select `INSERT INTO Customers
-                (firstName, lastName, registrationID, creditLimit, country)
-                VALUES (${data.firstName}, ${data.lastName},
-                ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
+    // Initializes the MySQL client. The `mysqlClient` can be reused to access the database throughout the application execution.
+    mysql:Client mysqlClient = check new (user = "root",
+            password = "Test@123", database = "CUSTOMER");
 
     // The transaction block can be used to roll back if any error occurred.
     transaction {
-        var result = mysqlClient-&gt;batchExecute(insertQueries);
-        if result is sql:BatchExecuteError {
-            io:println(result.message());
-            io:println(result.detail()?.executionResults);
-            io:println("Rollback transaction.\n");
+        _ = check mysqlClient-&gt;execute(`INSERT INTO Customers (firstName, 
+                     lastName, registrationID, creditLimit, country) VALUES 
+                     ('Linda', 'Jones', 4, 10000.75, 'USA')`);
+        log:printInfo("First query executed successfully.");
+
+        // Insert Customer record which violates the unique
+        sql:ExecutionResult|sql:Error result = mysqlClient-&gt;execute(
+                `INSERT INTO Customers (firstName, lastName, registrationID,
+                 creditLimit, country) VALUES ('Peter', 'Stuart', 4, 5000.75,
+                 'USA')`);
+
+        if result is sql:Error {
+            log:printError(result.message());
+            log:printInfo("Second query failed. Rollback transaction.");
             rollback;
         } else {
             error? err = commit;
             if err is error {
-                io:println("Error occurred while committing: ", err);
+                log:printError("Error occurred while committing", err);
             }
         }
     }
 
-    // Checks the data after the batch execution.
-    stream&lt;record {}, error?&gt; resultStream =
-        mysqlClient-&gt;query(`SELECT * FROM Customers`);
+    // Closes the MySQL client.
+    check mysqlClient.close();
 
-    io:println("Data in Customers table:");
-    check from record {} result in resultStream
-        do {
-            io:println(result.toString());
-        };
-
-    // Performs a cleanup after the example.
-    check afterExample(mysqlClient);
+    // Performs the cleanup after the example.
+    check cleanup();
 }
 
 // Initializes the database as a prerequisite to the example.
-function beforeExample() returns sql:Error? {
+function initialize() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Creates a database.
-    _ = check mysqlClient-&gt;execute(`CREATE DATABASE MYSQL_BBE`);
+    _ = check mysqlClient-&gt;execute(`CREATE DATABASE CUSTOMER`);
 
     // Creates a table in the database.
-    _ = check mysqlClient-&gt;execute(`CREATE TABLE MYSQL_BBE.Customers
+    _ = check mysqlClient-&gt;execute(`CREATE TABLE CUSTOMER.Customers
             (customerId INTEGER NOT NULL AUTO_INCREMENT,
             firstName VARCHAR(300), lastName  VARCHAR(300), registrationID
             INTEGER UNIQUE, creditLimit DOUBLE, country  VARCHAR(300),
             PRIMARY KEY (customerId))`);
 
     // Adds records to the newly-created table.
-    _ = check mysqlClient-&gt;execute(`INSERT INTO MYSQL_BBE.Customers
+    _ = check mysqlClient-&gt;execute(`INSERT INTO CUSTOMER.Customers
             (firstName, lastName, registrationID,creditLimit,country) VALUES
              ('Peter', 'Stuart', 1, 5000.75, 'USA')`);
 
@@ -2195,10 +2166,12 @@ function beforeExample() returns sql:Error? {
 }
 
 // Cleans up the database after running the example.
-function afterExample(mysql:Client mysqlClient) returns sql:Error? {
+function cleanup() returns sql:Error? {
+    mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
+
     // Cleans the database.
-    _ = check mysqlClient-&gt;execute(`DROP DATABASE MYSQL_BBE`);
-    
+    _ = check mysqlClient-&gt;execute(`DROP DATABASE CUSTOMER`);
+
     // Closes the MySQL client.
     check mysqlClient.close();
 }</code>
@@ -2221,23 +2194,16 @@ function afterExample(mysql:Client mysqlClient) returns sql:Error? {
   </button>
 </pre>
 
-    <br />
     <pre
       class="output-container"
     ><code class="language-bash"><span class="bal-output bal-execute"># Create a Ballerina project.</span>
-<span class="bal-output bal-execute"># Copy the example to the project and add relevant database driver jar details to the `Ballerina.toml` file.</span>
+<span class="bal-output bal-execute"># Copy the example to the project and add the relevant database driver JAR details to the `Ballerina.toml` file.</span>
 <span class="bal-output bal-execute"># Execute the command below to build and run the project.</span>
 <span class="bal-output bal-execute">bal run</span>
 <span class="bal-output bal-execute"></span>
-<span class="bal-output bal-execute">Error while executing batch command starting with: 'INSERT INTO Customers</span>
-<span class="bal-output bal-execute">                (firstName, lastName, registrationID, creditLimit, country)</span>
-<span class="bal-output bal-execute">                VALUES ( ? ,  ? ,</span>
-<span class="bal-output bal-execute">                 ? ,  ? ,  ? )'.Duplicate entry '1' for key 'Customers.registrationID'.</span>
-<span class="bal-output bal-execute">[{"affectedRowCount":1,"lastInsertId":null},{"affectedRowCount":-3,"lastInsertId":null},{"affectedRowCount":1,"lastInsertId":null}]</span>
-<span class="bal-output bal-execute">Rollback transaction.</span>
-<span class="bal-output bal-execute"></span>
-<span class="bal-output bal-execute">Data in Customers table:</span>
-<span class="bal-output bal-execute">{"customerId":1,"firstName":"Peter","lastName":"Stuart","registrationID":1,"creditLimit":5000.75,"country":"USA"}</span>
+<span class="bal-output bal-execute">time = 2022-06-22T13:48:36.222+05:30 level = INFO module = "" message = "First query executed successfully."</span>
+<span class="bal-output bal-execute">time = 2022-06-22T13:48:36.244+05:30 level = ERROR module = "" message = "Error while executing SQL query: INSERT INTO Customers (firstName, lastName, registrationID,\n                 creditLimit, country) VALUES (\'Peter\', \'Stuart\', 4, 5000.75,\n                 \'USA\'). Duplicate entry \'4\' for key \'customers.registrationID\'."</span>
+<span class="bal-output bal-execute">time = 2022-06-22T13:48:36.245+05:30 level = INFO module = "" message = "Second query failed. Rollback transaction."</span>
 </code></pre>
     <br />
     <div class="button-container">

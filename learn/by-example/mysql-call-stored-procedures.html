@@ -1143,23 +1143,16 @@ redirect_from:
           <li>
             <ol class="section">
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-text-client.html"
-                  >Handle text messages with client</a
-                >
-              </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-binary-client.html"
-                  >Handle binary messages with client</a
-                >
+                <a href="/learn/by-example/websocket-client.html">Client</a>
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-retry-client.html"
-                  >Retry</a
+                  >Client - Retry</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-basic-sample.html"
-                  >Listener functionalities</a
+                  >Service</a
                 >
               </li>
             </ol>
@@ -1673,8 +1666,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/mysql-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/mysql-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/mysql-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -1714,8 +1712,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/jdbc-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/jdbc-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/jdbc-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -2092,7 +2095,6 @@ redirect_from:
       8.0.13.&lt;br&gt;&lt;br&gt;
     </p>
 
-    <br />
     <pre><code id="code" class="code-container">import ballerina/io;
 import ballerinax/mysql;
 import ballerina/sql;
@@ -2106,88 +2108,67 @@ type Student record {
 
 public function main() returns error? {
     // Runs the prerequisite setup for the example.
-    check beforeExample();
+    check initialize();
 
-    // Initializes the MySQL client.
-    mysql:Client mysqlClient = check new (user = "root", 
-            password = "Test@123", database = "MYSQL_BBE");
+    // Initializes the MySQL client. The `mysqlClient` can be reused to access the database throughout the application execution.
+    mysql:Client mysqlClient = check new (user = "root",
+            password = "Test@123", database = "STUDENT");
 
-    // Creates a parameterized query to invoke the procedure.
-    string name = "George";
-    int age = 24;
-    sql:ParameterizedCallQuery sqlQuery = 
-                                `CALL InsertStudent(${name}, ${age})`;
-
-    // Invokes the stored procedure `InsertStudent` with the `IN` parameters.
-    sql:ProcedureCallResult retCall = check mysqlClient-&gt;call(sqlQuery);
-    io:println("Call stored procedure `InsertStudent`." + 
-        "\nAffected Row count: ", retCall.executionResult?.affectedRowCount);
-    check retCall.close();
-
-    // Initializes the `INOUT` and `OUT` parameters.
+    // Initializes the `INOUT` and `OUT` parameters for the procedure call.
     sql:InOutParameter id = new (1);
     sql:IntegerOutParameter totalCount = new;
-    sql:ParameterizedCallQuery sqlQuery2 = 
-                        `{CALL GetCount(${id}, ${totalCount})}`;
 
-    // The stored procedure with the `OUT` and `INOUT` parameters is invoked.
-    sql:ProcedureCallResult retCall2 = check mysqlClient-&gt;call(sqlQuery2);
-    io:println("Call stored procedure `GetCount`.");
-    io:println("Age of the student with id '1' : ", id.get(int));
-    io:println("Total student count: ", totalCount.get(int));
-    check retCall2.close();
+    // The stored procedure is invoked.
+    sql:ProcedureCallResult result =
+        check mysqlClient-&gt;call(`{CALL GetCount(${id}, ${totalCount})}`);
 
-    // Invokes the stored procedure, which returns the data.
-    sql:ProcedureCallResult retCall3 = 
-            check mysqlClient-&gt;call(`{CALL GetStudents()}`, [Student]);
-    io:println("Call stored procedure `GetStudents`.");
+    // Process procedure-call parameters.
+    int studentId = check id.get();
+    int total = check totalCount.get();
 
-    // Processes the returned result stream.
-    stream&lt;record {}, sql:Error?&gt;? result = retCall3.queryResult;
-    if result is stream&lt;record {}, sql:Error?&gt; {
-        stream&lt;Student, sql:Error?&gt; studentStream =
-                &lt;stream&lt;Student, sql:Error?&gt;&gt;result;
-        check from Student student in studentStream
-            do {
-                io:println("Student details: ", student);
-            };
-    }
-    check retCall3.close();
+    io:println(`Age of the student with id '1' : ${studentId}`);
+    io:println(`Total student count: ${total}`);
+
+    // Closes the procedure call result to release the resources.
+    check result.close();
+
+    // Closes the MySQL client.
+    check mysqlClient.close();
 
     // Performs the cleanup after the example.
-    check afterExample(mysqlClient);
+    check cleanup();
 }
 
 // Initializes the database as a prerequisite to the example.
-function beforeExample() returns sql:Error? {
+function initialize() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
 
     // Creates a database.
-    _ = check mysqlClient-&gt;execute(`CREATE DATABASE MYSQL_BBE`);
+    _ = check mysqlClient-&gt;execute(`CREATE DATABASE STUDENT`);
 
     // Creates a table in the database.
-    _ = check mysqlClient-&gt;execute(`CREATE TABLE MYSQL_BBE.Student
+    _ = check mysqlClient-&gt;execute(`CREATE TABLE STUDENT.Student
             (id INT AUTO_INCREMENT, age INT, name VARCHAR(255),
             PRIMARY KEY (id))`);
 
     // Creates the necessary stored procedures using the execute command.
-    _ = check mysqlClient-&gt;execute(`CREATE PROCEDURE
-        MYSQL_BBE.InsertStudent (IN pName VARCHAR(255), IN pAge INT)
-        BEGIN INSERT INTO Student(age, name) VALUES (pAge, pName); END`);
-    _ = check mysqlClient-&gt;execute(`CREATE PROCEDURE MYSQL_BBE.GetCount
+    _ = check mysqlClient-&gt;execute(`CREATE PROCEDURE STUDENT.GetCount
         (INOUT pID INT, OUT totalCount INT) BEGIN SELECT age INTO pID FROM
         Student WHERE id = pID; SELECT COUNT(*) INTO totalCount FROM Student;
         END`);
-    _ = check mysqlClient-&gt;execute(`CREATE PROCEDURE
-        MYSQL_BBE.GetStudents() BEGIN SELECT * FROM Student; END`);
+    // Inserts necessary data.
+    _ = check mysqlClient-&gt;execute(`INSERT INTO STUDENT.Student(name, age)
+                                        VALUES ('George', 24)`);
 
     check mysqlClient.close();
 }
 
 // Cleans up the database after running the example.
-function afterExample(mysql:Client mysqlClient) returns sql:Error? {
+function cleanup() returns sql:Error? {
+    mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
+
     // Cleans the database.
-    _ = check mysqlClient-&gt;execute(`DROP DATABASE MYSQL_BBE`);
+    _ = check mysqlClient-&gt;execute(`DROP DATABASE STUDENT`);
 
     // Closes the MySQL client.
     check mysqlClient.close();
@@ -2211,21 +2192,15 @@ function afterExample(mysql:Client mysqlClient) returns sql:Error? {
   </button>
 </pre>
 
-    <br />
     <pre
       class="output-container"
     ><code class="language-bash"><span class="bal-output bal-execute"># Create a Ballerina project.</span>
-<span class="bal-output bal-execute"># Copy the example to the project and add relevant database driver jar details to the `Ballerina.toml` file.</span>
+<span class="bal-output bal-execute"># Copy the example to the project and add the relevant database driver JAR details to the `Ballerina.toml` file.</span>
 <span class="bal-output bal-execute"># Execute the command below to build and run the project.</span>
 <span class="bal-output bal-execute">bal run</span>
 <span class="bal-output bal-execute"></span>
-<span class="bal-output bal-execute">Call stored procedure `InsertStudent`.</span>
-<span class="bal-output bal-execute">Affected Row count: 1</span>
-<span class="bal-output bal-execute">Call stored procedure `GetCount`.</span>
 <span class="bal-output bal-execute">Age of the student with id '1' : 24</span>
 <span class="bal-output bal-execute">Total student count: 1</span>
-<span class="bal-output bal-execute">Call stored procedure `GetStudents`.</span>
-<span class="bal-output bal-execute">Student details: {"id":1,"age":24,"name":"George"}</span>
 </code></pre>
     <br />
     <div class="button-container">

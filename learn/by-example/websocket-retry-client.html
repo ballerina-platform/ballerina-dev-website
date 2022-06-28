@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page-old
-title: Retry
+title: Client - Retry
 description: BBE on how transient failures can be handled using the WebSocket client. When it comes to WebSocket, the key attribute is maintaining a live connection. This BBE shows how the WebSocket client can be made resilient with its reconnect feature.
 keywords: ballerina, ballerina by example, bbe, websocket, ws, retry
 permalink: /learn/by-example/websocket-retry-client
@@ -1143,25 +1143,18 @@ redirect_from:
           <li>
             <ol class="section">
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-text-client.html"
-                  >Handle text messages with client</a
-                >
-              </li>
-              <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/websocket-binary-client.html"
-                  >Handle binary messages with client</a
-                >
+                <a href="/learn/by-example/websocket-client.html">Client</a>
               </li>
               <li class="chapter-item bal-nav-item expanded">
                 <a
                   href="/learn/by-example/websocket-retry-client.html"
                   class="active bal-active"
-                  >Retry</a
+                  >Client - Retry</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
                 <a href="/learn/by-example/websocket-basic-sample.html"
-                  >Listener functionalities</a
+                  >Service</a
                 >
               </li>
             </ol>
@@ -1675,8 +1668,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/mysql-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/mysql-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/mysql-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -1714,8 +1712,13 @@ redirect_from:
                 >
               </li>
               <li class="chapter-item bal-nav-item">
-                <a href="/learn/by-example/jdbc-complex-type-queries.html"
-                  >Query with complex types</a
+                <a href="/learn/by-example/jdbc-query-row-operation.html"
+                  >Query with one result</a
+                >
+              </li>
+              <li class="chapter-item bal-nav-item">
+                <a href="/learn/by-example/jdbc-query-column-mapping.html"
+                  >Query with advanced mapping</a
                 >
               </li>
               <li class="chapter-item bal-nav-item">
@@ -2064,7 +2067,7 @@ redirect_from:
     </div>
   </nav>
   <main class="bal-container">
-    <h1>Retry</h1>
+    <h1>Client - Retry</h1>
 
     <p>
       If the WebSocket client lost the connection due to some transient failure,
@@ -2085,7 +2088,6 @@ redirect_from:
       >.
     </p>
 
-    <br />
     <pre><code id="code" class="code-container">import ballerina/io;
 import ballerina/websocket;
 
@@ -2096,12 +2098,12 @@ public function main() returns error? {
         retryConfig: { maxCount: 20 }
     });
     // Read the message sent from the server upon upgrading to a WebSocket connection.
-    string text = check wsClient-&gt;readTextMessage();
+    string text = check wsClient-&gt;readMessage();
     io:println(text);
     io:println("Please shutdown the server now." +
                         "And restart at least within 15 seconds");
     // Client will retry 20 times(20 seconds in time) until the server gets started.
-    string retryMsg = check wsClient-&gt;readTextMessage();
+    string retryMsg = check wsClient-&gt;readMessage();
     io:println(retryMsg);
 }</code>
 
@@ -2123,7 +2125,6 @@ public function main() returns error? {
   </button>
 </pre>
 
-    <br />
     <pre
       class="output-container"
     ><code class="language-bash"><span class="bal-output bal-execute"># As a prerequisite, start a sample WebSocket service, which sends a message to the client upon upgrading to a WebSocket connection.</span>
@@ -2138,8 +2139,8 @@ public function main() returns error? {
     <br />
     <div class="button-container">
       <a
-        title="Handle binary messages with client"
-        href="/learn/by-example/websocket-binary-client.html"
+        title="Client"
+        href="/learn/by-example/websocket-client.html"
         class="prev-button"
       >
         <svg
@@ -2157,17 +2158,17 @@ public function main() returns error? {
         </svg>
         <div class="button-title">
           <span>Previous</span>
-          <div>Handle binary messages with client</div>
+          <div>Client</div>
         </div>
       </a>
       <a
-        title="Listener functionalities"
+        title="Service"
         href="/learn/by-example/websocket-basic-sample.html"
         class="next-button"
       >
         <div class="button-title">
           <span>Next</span>
-          <div>Listener functionalities</div>
+          <div>Service</div>
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

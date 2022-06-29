@@ -62,19 +62,19 @@ const generatePlaygroundLink = async (line, exampleDir, description) => {
 // markdown-it containers
 md.use(container, "code", {
   validate: function (params) {
-    return params.trim().match(/code\s+(.*\w)/);
+    return params.trim().match(/code\s+(.+\w)/);
   },
   render: function (tokens, idx, options, env, self) {
-    const m = tokens[idx].info.trim().match(/code\s+(.*\w)/);
+    const m = tokens[idx].info.trim().match(/code\s+(.+\w)/);
 
     if (tokens[idx].nesting === 1) {
       let filePath = `${env.relPath}/${m[1]}`;
       let codeContent = fs.readFileSync(filePath, "utf-8").trim();
       codeContent = insertEscapes(codeContent);
-      return `
-<br />      
-<pre><code id="code" class="code-container">${codeContent}</code>${
-        env.playgroundLink !== null
+      return `<pre style="margin-left: ${
+        env.marginLeftMultiplier * 8
+      }px;"><code id="code" class="code-container">${codeContent}</code>${
+        env.playgroundLink != undefined
           ? `
   <button playgroundLink="${env.playgroundLink}">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000" class="bi bi-play-circle" viewBox="0 0 16 16">
@@ -118,9 +118,9 @@ md.use(container, "out", {
       let filePath = `${env.relPath}/${m[1]}`;
       let outputRead = fs.readFileSync(filePath, "utf-8").trim();
       let outputSplitted = outputRead.split("\n");
-      let output = `
-<br />
-<pre class="output-container"><code class="language-bash">`.trim();
+      let output = `<pre style="margin-left: ${
+        env.marginLeftMultiplier * 8
+      }px;" class="output-container"><code class="language-bash">`;
       outputSplitted.forEach((line) => {
         line = insertEscapes(line);
         output += `<span class="bal-output bal-execute">${line}</span>\n`;
@@ -133,6 +133,15 @@ md.use(container, "out", {
     }
   },
 });
+
+// render code snippet
+const codeSnippetGenerator = (code, marginLeftMultiplier, lang) => {
+  let output = `<pre style="margin-left: ${
+    marginLeftMultiplier * 8
+  }px;" class="code-snippet ${lang}"><code>${code}</code></pre>`;
+
+  return output;
+};
 
 // generate nav template
 const generateNavContent = (bbeName, jsonContent) => {
@@ -403,23 +412,66 @@ const generate = async (examplesDir, outputDir) => {
               let content = fs.readFileSync(fileRelPath, "utf-8").trim();
               let contentArray = content.split("\n");
               let updatedArray = [];
-              let playgroundLink = null;
+
+              let codeSnippetRegex = /(\s*)```(\w+)/;
+              let codeSnippetFound = false;
+              let codeSnippetMarginLeftMultiplier = 0;
+              let codeSnippetLang;
+              let codeSnippetArray = [];
 
               for (const line of contentArray) {
-                if (line.includes("::: code") && playground) {
-                  playgroundLink = await generatePlaygroundLink(
-                    line,
-                    relPath,
-                    url
-                  );
-                }
-                let convertedLine = md.render(line, {
-                  playgroundLink,
-                  relPath,
-                });
-                if (convertedLine === null) {
-                  updatedArray.push("");
+                let convertedLine;
+
+                if (!codeSnippetFound) {
+                  if (line.includes("::: code")) {
+                    let playgroundLink;
+
+                    if (playground) {
+                      playgroundLink = await generatePlaygroundLink(
+                        line,
+                        relPath,
+                        url
+                      );
+                    }
+
+                    let match = line.match(/(\s*):::.*:::/);
+
+                    convertedLine = md.render(line, {
+                      marginLeftMultiplier:
+                        match.length == 1 ? 0 : match[1].length,
+                      playgroundLink,
+                      relPath,
+                    });
+                  } else if (line.includes("::: out")) {
+                    let match = line.match(/(\s*):::.*:::/);
+
+                    convertedLine = md.render(line, {
+                      marginLeftMultiplier:
+                        match.length == 1 ? 0 : match[1].length,
+                      relPath,
+                    });
+                  } else if (line.includes("```")) {
+                    codeSnippetFound = true;
+                    let match = line.match(codeSnippetRegex);
+                    codeSnippetMarginLeftMultiplier = match[1].length;
+                    codeSnippetLang = match[2];
+                  } else {
+                    convertedLine = md.render(line);
+                  }
                 } else {
+                  if (line.includes("```")) {
+                    codeSnippetFound = false;
+                    convertedLine = codeSnippetGenerator(
+                      codeSnippetArray.join("\n"),
+                      codeSnippetMarginLeftMultiplier,
+                      codeSnippetLang
+                    );
+                  } else {
+                    codeSnippetArray.push(line);
+                  }
+                }
+
+                if (!codeSnippetFound) {
                   updatedArray.push(convertedLine);
                 }
               }

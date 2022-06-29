@@ -419,6 +419,8 @@ const generate = async (examplesDir, outputDir) => {
               let codeSnippetLang;
               let codeSnippetArray = [];
 
+              let listRegex = /^(\s*)(\d|-)(?:\.?)+\s*(.*)/;
+
               for (const line of contentArray) {
                 let convertedLine;
 
@@ -455,6 +457,18 @@ const generate = async (examplesDir, outputDir) => {
                     let match = line.match(codeSnippetRegex);
                     codeSnippetMarginLeftMultiplier = match[1].length;
                     codeSnippetLang = match[2];
+                  } else if (listRegex.test(line)) {
+                    let match = line.match(listRegex);
+                    convertedLine = `<ul style="margin-left: ${
+                      match[1].length * 8
+                    }px;">
+                    <li>
+                        <span>${
+                          match[2] === "-" ? `&#8226;&nbsp;` : `${match[2]}.`
+                        }</span>
+                        <span>${match[3]}</span>
+                    </li>
+                </ul>`;
                   } else {
                     convertedLine = md.render(line);
                   }

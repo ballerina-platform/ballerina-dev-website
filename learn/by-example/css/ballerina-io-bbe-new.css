@@ -160,6 +160,59 @@
   font-size: 32px !important;
   font-weight: 600 !important;
   color: #464646 !important;
+  margin-top: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.bal-container h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: 29.3px !important;
+  font-weight: 600 !important;
+  color: #464646 !important;
+  margin-top: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.bal-container h3 {
+  font-family: "Roboto", sans-serif;
+  font-size: 26.7px !important;
+  font-weight: 600 !important;
+  color: #464646 !important;
+  margin-top: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.bal-container h4 {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  color: #464646 !important;
+  margin-top: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.bal-container h5 {
+  font-family: "Roboto", sans-serif;
+  font-size: 21.3px !important;
+  font-weight: 600 !important;
+  color: #464646 !important;
+  margin-top: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.bal-container h6 {
+  font-family: "Roboto", sans-serif;
+  font-size: 18.7px !important;
+  font-weight: 600 !important;
+  color: #464646 !important;
+  margin-top: 0 !important;
+  padding: 0 !important;
+  border: none !important;
 }
 
 .bal-container p {
@@ -167,10 +220,23 @@
   font-size: 16px !important;
   font-weight: 300 !important;
   color: #57595d !important;
+  margin-top: 0 !important;
+  padding: 0 !important;
+  border: none !important;
 }
 
 .bal-container p > a {
   color: #3ad1ca !important;
+}
+
+.bal-container li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.bal-container li > span {
+  font-size: 16px;
+  color: #57595d;
 }
 
 .bal-container > * {

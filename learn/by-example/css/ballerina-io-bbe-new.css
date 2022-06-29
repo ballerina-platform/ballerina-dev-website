@@ -167,11 +167,14 @@
   font-size: 16px !important;
   font-weight: 300 !important;
   color: #57595d !important;
-  margin-bottom: 20px !important;
 }
 
 .bal-container p > a {
   color: #3ad1ca !important;
+}
+
+.bal-container > * {
+  margin-bottom: 20px !important;
 }
 
 p > code {
@@ -228,6 +231,10 @@ ol.chapter {
 
 .code-container {
   background-color: transparent !important;
+}
+
+.code-snippet {
+  padding: 16px;
 }
 
 .bal-container > pre:not(.output-container) {

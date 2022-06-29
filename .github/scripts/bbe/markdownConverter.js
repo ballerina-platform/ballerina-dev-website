@@ -467,7 +467,9 @@ const generate = async (examplesDir, outputDir) => {
                       codeSnippetLang
                     );
                   } else {
-                    codeSnippetArray.push(line);
+                    codeSnippetArray.push(
+                      line.slice(codeSnippetMarginLeftMultiplier)
+                    );
                   }
                 }
 

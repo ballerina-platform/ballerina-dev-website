@@ -466,7 +466,7 @@ const generate = async (examplesDir, outputDir) => {
                         <span>${
                           match[2] === "-" ? `&#8226;&nbsp;` : `${match[2]}.`
                         }</span>
-                        <span>${match[3]}</span>
+                        <span>${md.render(match[3])}</span>
                     </li>
                 </ul>`;
                   } else {

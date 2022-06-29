@@ -243,7 +243,8 @@
   margin-bottom: 20px !important;
 }
 
-p > code {
+p > code,
+li code {
   font-family: inherit;
   font-size: 16px;
   font-weight: 300;
@@ -309,10 +310,11 @@ ol.chapter {
 
 pre.output-container {
   background-color: var(--output-background-color) !important;
-  padding: 16px;
 }
 
-.output-container .language-bash {
+.output-container > code {
+  padding: 16px;
+  align-self: center;
   background-color: inherit !important;
 }
 

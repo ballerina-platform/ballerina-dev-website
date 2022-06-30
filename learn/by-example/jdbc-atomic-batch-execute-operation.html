@@ -2103,7 +2103,9 @@ redirect_from:
       JAR file of a version higher than 2.0.2.
     </p>
 
-    <pre><code id="code" class="code-container">import ballerina/log;
+    <pre
+      style="margin-left: 0px"
+    ><code id="code" class="code-container">import ballerina/log;
 import ballerinax/java.jdbc;
 import ballerina/sql;
 
@@ -2184,19 +2186,20 @@ function cleanup() returns sql:Error? {
     </svg>
   </button>
   <button>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000" class="code-btn bi bi-clipboard" viewBox="0 0 16 16">
       <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
       <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
     </svg>
   </button>
   <button class="check-button">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#45FF00" class="bi bi-check" viewBox="0 0 16 16">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#45FF00" class="code-btn bi bi-check" viewBox="0 0 16 16">
       <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
     </svg>
   </button>
 </pre>
 
     <pre
+      style="margin-left: 0px"
       class="output-container"
     ><code class="language-bash"><span class="bal-output bal-execute"># Create a Ballerina project.</span>
 <span class="bal-output bal-execute"># Copy the example to the project and add the relevant database driver JAR details to the `Ballerina.toml` file.</span>
@@ -2205,8 +2208,20 @@ function cleanup() returns sql:Error? {
 <span class="bal-output bal-execute"></span>
 <span class="bal-output bal-execute">time = 2022-06-22T13:55:32.009+05:30 level = INFO module = root/jdbc_atomic_batch_execute_operation message = "First query executed successfully."</span>
 <span class="bal-output bal-execute">time = 2022-06-22T13:55:32.037+05:30 level = ERROR module = root/jdbc_atomic_batch_execute_operation message = "Error while executing SQL query: INSERT INTO Customers (firstName, lastName, registrationID,\n                 creditLimit, country) VALUES (\'Peter\', \'Stuart\', 4, 5000.75,\n                 \'USA\'). Unique index or primary key violation: \"PUBLIC.CONSTRAINT_INDEX_6 ON PUBLIC.CUSTOMERS(REGISTRATIONID NULLS FIRST) VALUES ( /* 2 */ 4 )\"; SQL statement:\nINSERT INTO Customers (firstName, lastName, registrationID,\n                 creditLimit, country) VALUES (\'Peter\', \'Stuart\', 4, 5000.75,\n                 \'USA\') [23505-206]."</span>
-<span class="bal-output bal-execute">time = 2022-06-22T13:55:32.038+05:30 level = INFO module = root/jdbc_atomic_batch_execute_operation message = "Second query failed. Rollback transaction."</span>
-</code></pre>
+<span class="bal-output bal-execute">time = 2022-06-22T13:55:32.038+05:30 level = INFO module = root/jdbc_atomic_batch_execute_operation message = "Second query failed. Rollback transaction."</span></code>
+      
+  <button>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EEEEEE" class="output-btn bi bi-clipboard" viewBox="0 0 16 16">
+      <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+      <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+    </svg>
+  </button>
+  <button class="check-button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#00FF19" class="output-btn bi bi-check" viewBox="0 0 16 16">
+      <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+    </svg>
+  </button>      
+</pre>
     <br />
     <div class="button-container">
       <a

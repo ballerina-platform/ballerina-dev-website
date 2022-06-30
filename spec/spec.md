@@ -64,6 +64,7 @@ For the proposals for improving Ballerina, see the <a target="_blank" href="http
 | Module | Release date | Description |
 | ------ | ------------ | ----------- | 
 | <a target="_blank" href="/spec/http/">http</a> | {{ site.data.spec-release-dates.http }} | This is the specification for the HTTP standard library of [Ballerina language](https://ballerina.io/), which provides HTTP client-server functionalities to produce and consume HTTP APIs. |
+| <a target="_blank" href="/spec/os/">os</a> | {{ site.data.spec-release-dates.os }} | This is the specification for the OS standard library of [Ballerina language](https://ballerina.io/), which provides APIs to retrieve information about the operating system and its current users. |
 
 ## About Ballerina specifications
 

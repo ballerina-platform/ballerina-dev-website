@@ -6,7 +6,10 @@
       active: ballerina-language-specifications-and-proposals
     - title: Ballerina platform specifications
       url: /learn/platform-specifications/#ballerina-platform-specifications
-      active: ballerina-platform-specifications
+      active: ballerina-platform-
+    - title: Ballerina standard library specifications
+      url: /learn/platform-specifications/#ballerina-standard-library-specifications
+      active: about-ballerina-specifications
     - title: About Ballerina specifications
       url: /learn/platform-specifications/#about-ballerina-specifications
       active: about-ballerina-specifications

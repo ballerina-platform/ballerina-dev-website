@@ -32,6 +32,12 @@ redirect_from:
 ├── modules/
 │     ├── model/
 │     └── module1.test/
+├── documents/
+│     ├── draft.txt
+│     ├── final.pdf
+├── images
+│     ├── default.png
+│     └── profile.jpg
 └── target/
 ```
 
@@ -45,6 +51,7 @@ org = "samjs"
 name = "winery"
 version = "0.1.0"
 export = ["winery", "winery.model"]
+include = ["documents/final.pdf", "images"]
 
 [build-options]
 observabilityIncluded = true
@@ -105,6 +112,12 @@ Ballerina strictly follows the rules of [Semantic Versioning](https://semver.org
 
 *   Once the package is production-ready, you can use a stable version (E.g. 1.0.0). Any subsequent minor or patch releases of the same major version should be backward compatible and, should not break existing builds.
 
+### The `include` field
+
+You can provide paths to any additional resources that needs to be packed in the BALA file during the use of `bal pack` command.
+
+The include field is an array that accepts relative paths from the root of the package to the files or directories. 
+The included files and directories will have a file structure similar to the orginal package from the root of the BALA file.
 
 ### Build options
 

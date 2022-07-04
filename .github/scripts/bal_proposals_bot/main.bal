@@ -1,5 +1,6 @@
 import ballerina/io;
 import ballerina/lang.runtime;
+import ballerina/regex;
 import ballerina/http;
 
 type RepoData record {
@@ -22,6 +23,11 @@ type Issue record {
     string created_at;
     int comments;
     User user;
+    Label[] labels;
+};
+
+type Label record{
+    string name;
 };
 
 type User record {
@@ -63,25 +69,33 @@ public function main() returns error? {
                 string issuelist = "";
                 foreach var issue in data.items {
                     issuelist = issuelist + "|";
-                    issuelist = issuelist + "[" + string `${issue.title}` + "](" + string `${issue.html_url}` + ")|";
-                    issuelist = issuelist + "[" + string `${issue.user.login}` + "](" + string `${issue.user.html_url}` + ")|";
+                    issuelist = issuelist + "[" + string `${issue.title}` + "](" + string `${issue.html_url}` + "){:target=\"_blank\" rel=\"noopener\"}|";
+                    issuelist = issuelist + "[" + string `${issue.user.login}` + "](" + string `${issue.user.html_url}` + "){:target=\"_blank\" rel=\"noopener\"}|";
                     issuelist = issuelist + string `${issue.comments}` + "|";
                     issuelist = issuelist + string `${issue.created_at.substring(0, 10)}` + "|";
-                    // issuelist = issuelist + "|";
-                    // issuelist = issuelist + "a|";
-                    // issuelist = issuelist + "b|";
-                    // issuelist = issuelist + "c|";
-                    // issuelist = issuelist + "d|";
+                    
+                    string new_status = "N/A";
+                    foreach var label in issue.labels{
+                        string status = string `${label.name}`;
+                        if status.length() > 6 {
+                            status = status.substring(0, 6);
+                            if (status == "Status") {
+                                new_status = regex:replaceFirst(string `${label.name}`, "Status/", "");
+                            break;
+                            }
+                        }
+                    }
+                    issuelist = issuelist + new_status + "|";
                     issuelist = issuelist + "\n";
                 }
-                repoData = repoData + string `#### ${repository}` + "\n\n|Proposal|Author|Comments|Created Date| \n|---|----|----|----| \n" + string `${issuelist}` + "\n";
+                repoData = repoData + string `## [${repository}]` + string `(https://github.com/ballerina-platform/${repository})` + "\n\n|Proposal|Author|Comments|Created date|Status| \n|---|----|----|----|---| \n" + string `${issuelist}` + "\n";
             }
             io:println("Repo Count:", repoCount);
         }
-
+        //break;
     }
-    string fileContent = "--- \nlayout: ballerina-inner-page \ntitle: Active Proposals \n description: This is a collection of active proposals for Ballerina by the Ballerina community. \nkeywords: ballerina, community, ballerina community, newsletter \npermalink: /community/proposals/active-proposals \n--- \n" + repoData;
+    string fileContent = "--- \nlayout: ballerina-inner-page \ntitle: Active proposals \ndescription: This is a collection of active proposals for Ballerina by the Ballerina community. \nkeywords: ballerina, community, ballerina community, newsletter \npermalink: /community/active-proposals \n--- \n" + repoData;
     io:println(fileContent);
-    check io:fileWriteString("./community/proposals/active-proposals.md", fileContent);
+    check io:fileWriteString("./community/proposals/active-proposals.md.md", fileContent);
 }
 

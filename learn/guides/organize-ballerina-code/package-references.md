@@ -32,6 +32,9 @@ redirect_from:
 ├── modules/
 │     ├── model/
 │     └── module1.test/
+├── documents/
+├── sample.png
+├── icon.png
 └── target/
 ```
 
@@ -45,6 +48,8 @@ org = "samjs"
 name = "winery"
 version = "0.1.0"
 export = ["winery", "winery.model"]
+include = ["documents", "sample.png"]
+icon = "icon.png"
 
 [build-options]
 observabilityIncluded = true
@@ -105,6 +110,25 @@ Ballerina strictly follows the rules of [Semantic Versioning](https://semver.org
 
 *   Once the package is production-ready, you can use a stable version (E.g. 1.0.0). Any subsequent minor or patch releases of the same major version should be backward compatible and, should not break existing builds.
 
+### The `export` field
+
+You can specify the modules which should be visible to the outside using the `export` field. The export field accepts a string array, which contains the names of the modules which
+need to be publicly visible.
+
+The modules should be referred in the `<pacakge_name>.<module_name>` format. The default module should be referenced by the package name.
+
+### The `icon` field
+
+The `icon` field accepts a path to an icon. The specified icon will be packaged into the `docs/` directory of the BALA.
+
+Only the `.png` format is supported for the icon.
+
+### The `include` field
+
+You can provide paths to any additional resources, which need to be packed in the BALA file during the use of the `bal pack` command.
+
+The `include` field accepts a string array, which contains the directory or file paths to include in the BALA. The paths should be relative to the package root directory.
+The included file paths will be packaged into the root of the BALA preserving its original structure.
 
 ### Build options
 

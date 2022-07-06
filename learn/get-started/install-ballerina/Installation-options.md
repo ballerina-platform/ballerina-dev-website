@@ -99,10 +99,6 @@ Language specification 2022R1
 update tool 1.3.8
 ```
 
-## Build from source
-
-For instructions, see [Build from source](https://github.com/ballerina-platform/ballerina-distribution/blob/master/docs/build-from-source.md).
-
 ## Update Ballerina
 
 If you already have a Ballerina version above 1.1.0 installed, you can use the update tool to update to the latest Ballerina version and set it as the active version by executing either of the commands below.

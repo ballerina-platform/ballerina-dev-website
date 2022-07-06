@@ -45,8 +45,8 @@ jobs:
           if git diff-index --quiet HEAD --; then
               echo "No changes"
           else
-              git checkout automate-proposals-$GITHUB_SHA 2>/dev/null || git checkout -b automate-proposals-$GITHUB_SHA
-              git pull origin master
+              UUID_VAL=$(uuidgen)
+              git checkout automate-proposals-$UUID_VAL 2>/dev/null || git checkout -b automate-proposals-$UUID_VAL
               git config --local user.email "bgpbimsara@gmail.com"
               git config --local user.name "bimsarapathiraja"
               git add --all

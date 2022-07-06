@@ -63,7 +63,7 @@ jobs:
         run: |
           git config --global user.email "bgpbimsara@gmail.com"
           git config --global user.name "bimsarapathiraja"
-          git push --set-upstream origin automate-proposals-$GITHUB_SHA
+          git push --set-upstream origin automate-proposals-$UUID_VAL
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
       - name: Create pull request for new proposals

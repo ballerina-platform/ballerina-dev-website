@@ -1,0 +1,71 @@
+name: Generate Proposal MD
+
+on:
+  workflow_dispatch: #periodic
+    inputs:
+      logLevel:
+        description: "Log lev"
+        required: true
+        default: "warning"
+  schedule:
+    - cron: "0 0 * * *"
+
+# on:
+#   schedule:
+#   - cron: "0 0 * * *"
+
+#on: push
+
+jobs:
+  generateHTML:
+    env:
+      JBAL_VERSION: "2201.0.3"
+      GITHUB_TOKEN: ${{secrets.BALLERINA_BOT_TOKEN}}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: master
+          token: ${{ secrets.BALLERINA_BOT_TOKEN }}
+      - name: Download jBallerina deb
+        run: |
+          echo "djaebfaefakf DEV"
+          curl -L "https://github.com/ballerina-platform/ballerina-distribution/releases/download/v$JBAL_VERSION/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb" > $HOME/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb
+      - name: Install jBallerina deb
+        run: |
+          sudo dpkg -i $HOME/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb
+          echo "/usr/lib/ballerina/bin" >> $GITHUB_PATH
+          echo "/usr/lib/ballerina/dependencies/jdk-11.0.8+10-jre/bin/java" >> $GITHUB_PATH
+      - name: Run Proposals Bot
+        run: |
+          bal run .github/scripts/bal_proposals_bot
+      - name: Commit files and Push
+        id: commit
+        run: |
+          if git diff-index --quiet HEAD --; then
+              echo "No changes"
+          else
+              UUID_VAL=$(uuidgen)
+              echo $UUID_VAL
+              git checkout automate-proposals-$UUID_VAL 2>/dev/null || git checkout -b automate-proposals-$UUID_VAL
+              git config --local user.email "bgpbimsara@gmail.com"
+              git config --local user.name "bimsarapathiraja"
+              git add --all
+              if [-z "$(git status --porcelain)"]; then
+                echo "::set-output name=push::false"
+              else
+                git commit --allow-empty -m "Generate proposal HTML" 
+                echo "::set-output name=push::true"
+              fi
+              git push --set-upstream origin automate-proposals-$UUID_VAL
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        shell: bash
+      - name: Create pull request for new proposals
+        shell: bash
+        run: |
+          curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+          bin/hub pull-request -m '[Automated] Update Ballerina active proposals'
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}

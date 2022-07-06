@@ -7,8 +7,6 @@ redirect_from:
     - /downloads/swan-lake-release-notes/2201-1-0
     - /downloads/swan-lake-release-notes/2201-1-0-swan-lake/
     - /downloads/swan-lake-release-notes/2201-1-0-swan-lake
-    - /downloads/swan-lake-release-notes/
-    - /downloads/swan-lake-release-notes
 ---
 
 ## Overview of Ballerina 2201.1.0 (Swan Lake Update 1)

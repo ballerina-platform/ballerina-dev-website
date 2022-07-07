@@ -1,0 +1,44 @@
+name: Sync artifacts from dev to prod on demand
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version'
+        required: true
+        default: '2201.1.0'
+
+jobs:
+  prod-artifact-sync:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Checkout dev website
+      uses: actions/checkout@v2
+
+    - name: Install jq for json
+      run: sudo apt-get install jq
+
+    - name: Sync artifacts from dev to prod
+      shell: bash
+      env:
+        s3_acc_id: ${{ secrets.S3_ID }}
+        s3_acc_key: ${{ secrets.S3_KEY }}
+      run: |
+        # There is an issue in the LATEST aws/cli.
+        # curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+        # unzip -q awscliv2.zip
+        # sudo ./aws/install
+
+        sudo apt-get install python3-setuptools
+        python3 -m pip install --user awscli
+
+        aws configure set aws_access_key_id $s3_acc_id
+        aws configure set aws_secret_access_key $s3_acc_key
+        aws --version
+
+        version=${{ github.event.inputs.version }}
+        echo "extracted release version: $version"
+
+        aws s3 cp s3://dist-dev.ballerina.io/downloads/$version/ s3://dist.ballerina.io/downloads/$version/ --recursive
+

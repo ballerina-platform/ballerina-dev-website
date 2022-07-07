@@ -46,23 +46,23 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.1](https://git
 - Implemented a publisher subscriber model for internal components and extensions to be notified about various events like project updates
 - Added new code actions to extract anonymous records into records and to generate undefined record types
 - Introduced new code actions to generate getters and setters for class-level variables
-- Added a new code action to make annotation declarations with the 'source' attach point(s) constant
+- Added a new code action to make annotation declarations with the `source` attach point(s) constant
 
 ### Improvements
 
 #### Language Server
 
 - Improved hover feature support to display default values for defaultable parameters when hovering over a function
-- Improved the `Create function` code action to add the isolated keyword to a function
+- Improved the `Create function` code action to add the `isolated` keyword to a function
 - Improved the `Create function` code action to handle named arguments
-- Improved the `Change return type` code action to add optional error for check expression
+- Improved the `Change return type` code action to add an optional error for check expression
 - Extended the `Type Cast` code action to support several unsupported binary operations
 - Improved the completion item sorting in wait actions and already-completed statements
 - Updated the resource function snippet to add default values for the resource method and path
 - Refactored the `CommonUtil` class by introducing several new utilities for the methods that are not used by only a single entity
-- Modified the snippet labels for record type definitions
+- Modified the snippet labels for record-type definitions
 - Improved the renaming support to avoid renaming on a compilation error
 - Improved the strand annotation completion support in variable declarations
-- Added completion support for already-imported modules as well as spread fields and rest fields in records
+- Added completion support for already-imported modules as well as `spread` and `rest` fields in records
 
 <!-- <style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style> -->

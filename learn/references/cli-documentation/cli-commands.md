@@ -33,7 +33,7 @@ In the CLI, execute the `bal help` command to view all the actions you can perfo
 ```sh
 → bal help
 NAME
-       Ballerina's build system and package manager
+       The build system and package manager of Ballerina
 
 SYNOPSIS
        bal <command> [args]

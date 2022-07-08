@@ -223,7 +223,7 @@ service /covid19 on new graphql:Listener(httpListener) {
 
 >**Info:** This is as same as the first code snippet above, which will listen on the port `9000` and serve on `/covid19`.
 
-### Create the service methods
+### Implement the service methods
 
 As per the design, there are two fields in the `Query` type and one field in the `Mutation` type in your GraphQL
 service. The fields of the `Query` type are represented by the resource methods with the `get` accessor in Ballerina, while the fields of the `Mutation` type are represented by the remote methods in Ballerina.

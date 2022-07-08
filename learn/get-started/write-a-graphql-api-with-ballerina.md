@@ -164,7 +164,7 @@ public distinct service class CovidData {
 
 In this code:
 - The endpoint returns the number of cases in thousands. Therefore, a service type is used to define the output object type, and inside the service type, each resource function will return the original value
-divided by 1000.
+divided by `1000`.
 - You are creating the `CovidData` service type to represent the GraphQL `Object` type, which represents an entry in
 the data set. 
 - Each resource method in this service represents a field of the GraphQL object type.  The return type of

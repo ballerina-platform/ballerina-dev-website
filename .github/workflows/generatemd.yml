@@ -42,7 +42,7 @@ jobs:
       - name: Commit files and Push
         id: commit
         run: |
-          if git diff-index --quiet HEAD --; then
+          if git diff --quiet HEAD --; then
               echo "No changes"
           else
               echo "::set-output name=difference::true"

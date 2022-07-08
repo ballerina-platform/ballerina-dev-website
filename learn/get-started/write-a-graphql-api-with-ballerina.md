@@ -32,7 +32,7 @@ Usually, a GraphQL endpoint is defined using a GraphQL schema. Even though some 
 
 The GraphQL endpoint you will create in this guide will have two main operations, `query` and `mutation`. The `query` type will be used to read the data in the data source, and the `mutation` operation will be used to update the data in the data source.
 
-### The `query` type
+### The `Query` type
 The `query` type has two fields.
 * Can be identified by the `resource` keyword in the function description.
 * The `all` field - This field will return all the data in the data source as an array.

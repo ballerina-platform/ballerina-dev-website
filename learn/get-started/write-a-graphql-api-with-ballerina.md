@@ -38,7 +38,7 @@ The `query` type has two fields.
 * The `all` field - This field will return all the data in the data source as an array.
 * The `filter` field - This field will return the data filtered by the ISO Code of a country(`isoCode`).
 
-### The `mutation` type
+### The `Mutation` type
 The `mutation` type has a single field.
 * Can be identified by the `remote` keyword in the function description.
 * The `add` field - This field will add a given entry to the data source.

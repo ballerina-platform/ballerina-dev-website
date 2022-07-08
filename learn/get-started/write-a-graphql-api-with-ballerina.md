@@ -250,7 +250,7 @@ service /covid19 on new graphql:Listener(9000) {
 
 In this code:
 - The resource method definition has the accessor `get`, which is used to identify the resource methods as a field of the`query` type. 
-- No other accessor is allowed. Then comes the name of the field. The return type is the type of the field.
+- Then comes the name of the field. The return type is the type of the field.
 - The above resource method first retrieves the array of `CovidEntry` records from the data source as an array, and then, returns an array of `CovidData` service type array as the result using the built-in `map` function.
 
 ##### Create the `filter` field

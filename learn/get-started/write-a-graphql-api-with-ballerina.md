@@ -273,7 +273,7 @@ In this code:
 
 #### Create mutation type remote method 
 
-As the `query` type is completed now, define the `mutation` type using remote methods.
+As the `Query` type is completed now, define the `Mutation` type using remote methods.
 
 To define a remote method to add an entry to the data source, add the code below to the API template file (i.e., `main.bal`). 
 

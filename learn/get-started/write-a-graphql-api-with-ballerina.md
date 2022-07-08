@@ -34,13 +34,11 @@ The GraphQL endpoint you will create in this guide will have two main operations
 
 ### The `Query` type
 The `query` type has two fields.
-* Can be identified by the `resource` keyword in the function description.
 * The `all` field - This field will return all the data in the data source as an array.
 * The `filter` field - This field will return the data filtered by the ISO Code of a country(`isoCode`).
 
 ### The `Mutation` type
 The `mutation` type has a single field.
-* Can be identified by the `remote` keyword in the function description.
 * The `add` field - This field will add a given entry to the data source.
 
 ## Create the service package
@@ -52,25 +50,23 @@ Ballerina uses packages to group code. You need to create a Ballerina package, g
 In the terminal, execute the command below to create the Ballerina package for the API implementation.
 
 ```bash
-$ bal new graphql
+$ bal new covid19 -t service
 ```
 
 You view the output below.
 
 ```bash
-Created new package 'graphql' at graphql.
+Created new package 'covid19' at covid19.
 ```
 
-This creates a directory named `graphql` with the default module along with a sample code for the service as shown below.
+This creates a directory named `covid19` with the default module along with a sample code for the service as shown below.
 
 ```bash
 .
-├── graphql
+├── covid19
 │   ├── Ballerina.toml
-│   └── main.bal
+│   └── service.bal
 ```
-
->**Tip:** Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
 
 ## Create the data source 
 
@@ -78,7 +74,7 @@ Before writing the GraphQL service, let's create a data source for the project. 
 
 ### Define the types for the data source
 
-To define the data type to use in the table, replace the API template file (i.e., `main.bal`) with the code below. 
+To define the data type to use in the table, replace the `service.bal` file with the code below. 
 
 
 ```ballerina
@@ -98,7 +94,7 @@ In this code:
 
 ### Add data to the data source
 
-To define the data table, add the code below to the API template file (i.e., `main.bal`). 
+To define the data table, add the code below to the `service.bal` file. 
 
 ```ballerina
 table<CovidEntry> key(isoCode) covidEntriesTable = table [
@@ -110,11 +106,11 @@ table<CovidEntry> key(isoCode) covidEntriesTable = table [
 
 ## Create the object types
 
-Since the data map to a GraphQL `Object`, you need to define this object type. In Ballerina, a GraphQL output object can be defined using either a service type or a record type.
+Since the data used in this guide map to a GraphQL Object, you first have to define this object type. In Ballerina, a GraphQL output object can be defined using either a service type or a record type.
 
 > **Note:** Since the GraphQL spec does not allow using an input object as an output object, the same record type cannot be used as the input type of a method and the output type of a method.
 
-To add the definition of the `CovidData` object type, add the code below to the API template file (i.e., `main.bal`). 
+To add the definition of the `CovidData` object type, add the code below to the `service.bal` file.
 
 ```ballerina
 public distinct service class CovidData {
@@ -165,7 +161,7 @@ public distinct service class CovidData {
 In this code:
 - The endpoint returns the number of cases in thousands. Therefore, a service type is used to define the output object type, and inside the service type, each resource function will return the original value
 divided by `1000`.
-- You are creating the `CovidData` service type to represent the GraphQL `Object` type, which represents an entry in
+- The `CovidData` service type represents the GraphQL `Object` type, which represents an entry in
 the data set. 
 - Each resource method in this service represents a field of the GraphQL object type.  The return type of
 the resource method is the type of the field.
@@ -184,7 +180,7 @@ To write the service, you need to create a GraphQL listener object.
 
 #### Import the Ballerina GraphQL package
 
-To import the Ballerina GraphQL package for creating the listener object, add the code below to the API template file (i.e., `main.bal`). 
+To import the Ballerina GraphQL package for creating the listener object, add the code below to the `service.bal` file.
 
 ```ballerina
 import ballerina/graphql;
@@ -208,7 +204,7 @@ root, you can remove the path as the follows:
 
 #### Define the port
 
-When creating the `graphql:Listener` object, you need to provide the port to which it is listening. Alternatively, to use an existing `http:Listener` object, for initializing the `graphql:Listener`, add the code below to the API template file (i.e., `main.bal`). 
+When creating the `graphql:Listener` object, you need to provide the port to which it is listening. Alternatively, to use an existing `http:Listener` object, for initializing the `graphql:Listener`, add the code below to the `service.bal` file. 
 
 ```ballerina
 import ballerina/graphql;
@@ -232,7 +228,7 @@ service. The fields of the `Query` type are represented by the resource methods 
 
 ##### Create the `all` field
 
-To create the `all` field, which returns an array of `CovidData` type, add the code below to the API template file (i.e., `main.bal`). 
+To create the `all` field, which returns an array of `CovidData` type, add the code below to the `service.bal` file.
 
 ```ballerina
 import ballerina/graphql;
@@ -254,7 +250,7 @@ In this code:
 
 ##### Create the `filter` field
 
-To add the `filter` field, which is another resource method with an input `isoCode` to filter the data, add the code below to the API template file (i.e., `main.bal`). 
+To add the `filter` field, which is another resource method with an input `isoCode` to filter the data, add the code below to the `service.bal` file.
 
 ```ballerina
 resource function get filter(string isoCode) returns CovidData? {
@@ -274,7 +270,7 @@ In this code:
 
 As the `Query` type is completed now, define the `Mutation` type using remote methods.
 
-To define a remote method to add an entry to the data source, add the code below to the API template file (i.e., `main.bal`). 
+To define a remote method to add an entry to the data source, add the code below to the `service.bal` file.
 
 ```ballerina
 remote function add(CovidEntry entry) returns CovidData {
@@ -386,16 +382,16 @@ You view the output below.
 
 ```bash
 Compiling source
-	praneesha/graphql:0.1.0
-WARNING [main.bal:(25:5,25:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [main.bal:(29:5,29:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [main.bal:(33:5,33:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [main.bal:(40:5,40:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [main.bal:(47:5,47:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [main.bal:(54:5,54:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [main.bal:(63:5,63:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
-WARNING [main.bal:(68:5,68:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
-WARNING [main.bal:(76:5,76:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+	user/graphql:0.1.0
+WARNING [service.bal:(25:5,25:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+WARNING [service.bal:(29:5,29:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+WARNING [service.bal:(33:5,33:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+WARNING [service.bal:(40:5,40:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+WARNING [service.bal:(47:5,47:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+WARNING [service.bal:(54:5,54:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+WARNING [service.bal:(63:5,63:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+WARNING [service.bal:(68:5,68:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+WARNING [service.bal:(76:5,76:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
 
 Running executable
 ```

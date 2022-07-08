@@ -42,10 +42,11 @@ jobs:
       - name: Commit files and Push
         id: commit
         run: |
+          echo "::set-output name=difference::false"
           if git diff --quiet HEAD --; then
               echo "No changes"
           else
-              echo "::set-output name=difference::true"
+              steps.commit.outputs.difference=true
               UUID_VAL=$(uuidgen)
               echo $UUID_VAL
               git checkout automate-proposals-$UUID_VAL 2>/dev/null || git checkout -b automate-proposals-$UUID_VAL

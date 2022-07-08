@@ -5,7 +5,7 @@ description: This guide walks through the steps of writing a GraphQL API in Ball
 keywords: ballerina, graphql, ballerina packages, language-guide, standard library
 permalink: /learn/write-a-graphql-api-with-ballerina/
 active: write-a-graphql-api-with-ballerina
-intro:  This guide walks you through writing a simple GraphQL service to serve a dummy dataset related to COVID-19.
+intro: This guide walks you through writing a simple GraphQL service to serve a dummy dataset related to COVID-19.
 redirect_from:
     - /learn/writing-a-graphql-api-with-ballerina/
     - /learn/writing-a-graphql-api-with-ballerina

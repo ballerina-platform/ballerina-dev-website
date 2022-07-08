@@ -226,8 +226,7 @@ service /covid19 on new graphql:Listener(httpListener) {
 ### Create the service methods
 
 As per the design, there are two fields in the `Query` type and one field in the `Mutation` type in your GraphQL
-service. The fields of the `Query` type are represented by resource methods in Ballerina, while the fields of the
-`Mutation` type are represented by the remote methods in Ballerina.
+service. The fields of the `Query` type are represented by the resource methods with the `get` accessor in Ballerina, while the fields of the `Mutation` type are represented by the remote methods in Ballerina.
 
 #### Create query type resource methods
 

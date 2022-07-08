@@ -45,6 +45,7 @@ jobs:
           if git diff-index --quiet HEAD --; then
               echo "No changes"
           else
+              echo "::set-output name=difference::true"
               UUID_VAL=$(uuidgen)
               echo $UUID_VAL
               git checkout automate-proposals-$UUID_VAL 2>/dev/null || git checkout -b automate-proposals-$UUID_VAL
@@ -65,7 +66,10 @@ jobs:
       - name: Create pull request for new proposals
         shell: bash
         run: |
-          curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-          bin/hub pull-request -m '[Automated] Update Ballerina active proposals'
+          if [ ${{ steps.commit.outputs.difference }} == true ]
+          then
+            curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+            bin/hub pull-request -m '[Automated] Update Ballerina active proposals'
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}

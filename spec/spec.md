@@ -61,10 +61,10 @@ For the proposals for improving Ballerina, see the <a target="_blank" href="http
 
 ## Ballerina standard library specifications
 
-| Library | Edition | Current snapshot | Description |
+| Module | Edition | Current snapshot | Description |
 | ------- | ------- | ---------------- | ----------- | 
-| `http` | Swan Lake | <a target="_blank" href="/spec/http/">Snapshot</a> | This is the specification for the HTTP standard library of [Ballerina language](https://ballerina.io/), which provides HTTP client-server functionalities to produce and consume HTTP APIs. |
-| `jwt` | Swan Lake | <a target="_blank" href="/spec/jwt/">Snapshot</a> | This is the specification for the JWT standard library of [Ballerina language](https://ballerina.io/), which is used for authorization of listeners and clients (HTTP, gRPC, GraphQL, WebSocket, WebSub, etc.). |
+| `http` | Swan Lake | <a target="_blank" href="/spec/http/">Snapshot</a> | HTTP standard library of Ballerina language, which provides HTTP client-server functionalities to produce and consume HTTP APIs. |
+| `jwt` | Swan Lake | <a target="_blank" href="/spec/jwt/">Snapshot</a> | JWT standard library of Ballerina language, which is used for authorization of listeners and clients (HTTP, gRPC, GraphQL, WebSocket, WebSub, etc.). |
 
 ## About Ballerina specifications
 

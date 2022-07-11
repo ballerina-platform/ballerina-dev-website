@@ -1,11 +1,12 @@
 ---
 layout: ballerina-building-a-data-service-left-nav-pages-swanlake
 title: Build a data service in Ballerina 
-description: Connecting to a MySQL database and executing queries using an HTTP RESTful API using Ballerina.
+description: Connect to a MySQL database and executing queries using an HTTP RESTful API using Ballerina.
 keywords: ballerina, data service, mysql, database, REST, API
 permalink: /learn/build-a-data-service-in-ballerina/
 active: build-a-data-service
-intro: This guide will walk you through connecting to a MySQL database and performing queries against it using Ballerina via a basic use case of creating, maintaining, and interacting with a database of employees in an organization. It also elaborates on how you can create an HTTP RESTful API using Ballerina that can be used to perform basic CRUD operations on the database.
+intro: This guide helps you understand the basics of Ballerina constructs, which allow you to work with data services.
+
 redirect_from:
  - /learn/building-a-data-service-in-ballerina
  - /learn/building-a-data-service-in-ballerina/
@@ -14,18 +15,22 @@ redirect_from:
  - /learn/getting-started/building-a-data-service-in-ballerina
 ---
 
-![Data Service Architecture](/learn/images/data-service-architecture.png "Data Service Architecture")
-
->**Info:** The methodology outlined in this tutorial can be used to work with PostgreSQL, SQL Server, OracleDB, or any other relational database as well using the [`PostgreSQL`](https://lib.ballerina.io/ballerinax/postgresql/latest),[`MSSQL`](https://lib.ballerina.io/ballerinax/mssql/latest), [`OracleDB`](https://lib.ballerina.io/ballerinax/oracledb/latest), and [`JDBC`](https://lib.ballerina.io/ballerinax/java.jdbc/latest) connectors for Ballerina respectively.
-
 ## Set up the prerequisites
 
-To run this guide, you need the following prerequisites:
+To complete this tutorial, you need:
 
 1. [Ballerina 2202.0.0 (Swan Lake)](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/) or greater
 2. A text editor
   >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
 3. A command terminal
+
+## Understand the implementation
+
+This tutorial describes how to connect to a MySQL database and perform queries against it using Ballerina via a basic use case of creating, maintaining, and interacting with a database of employees in an organization. It also elaborates on how you can create an HTTP RESTful API using Ballerina that can be used to perform basic CRUD operations on the database.
+
+![Data Service Architecture](/learn/images/data-service-architecture.png "Data Service Architecture")
+
+>**Info:** The outlined methodology can be used to work with PostgreSQL, SQL Server, OracleDB, or any other relational database as well using the [`PostgreSQL`](https://lib.ballerina.io/ballerinax/postgresql/latest),[`MSSQL`](https://lib.ballerina.io/ballerinax/mssql/latest), [`OracleDB`](https://lib.ballerina.io/ballerinax/oracledb/latest), and [`JDBC`](https://lib.ballerina.io/ballerinax/java.jdbc/latest) connectors for Ballerina respectively.
 
 ## Set up a MySQL server instance
 
@@ -58,7 +63,7 @@ CREATE TABLE Company.Employees (
 );
 ```
 
-## Create the Ballerina package
+## Create the service package
 
 Ballerina uses packages to group code. You need to create a Ballerina package and write the business logic in it. In the terminal, execute the command below to create the Ballerina package for the implementation.
 
@@ -79,7 +84,9 @@ This creates a directory named `data_service` with the files below.
 
 >**Tip:** Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
 
-## Create a record to represent an employee
+## Create the service
+
+### Create a record to represent an employee
 
 In Ballerina, records are a data type that maps keys to values. Define a closed record to represent a single row in the `Employees` table in the `main.bal` file. 
 
@@ -100,7 +107,7 @@ public type Employee record {|
 |};
 ```
 
-## Add the MySQL driver
+### Add the MySQL driver
 
 The MySQL driver JAR is necessary to connect to and interact with a MySQL server. Select one out of the methods below to add it.
 
@@ -124,7 +131,7 @@ The MySQL driver JAR is necessary to connect to and interact with a MySQL server
    path = "/path/to/mysql/driver.jar”
    ```
    
-## Define MySQL configurations
+### Define MySQL configurations
 
 In the package directory, create a new file named `Config.toml` and specify the configurations below to connect to the MySQL database.
 
@@ -148,11 +155,11 @@ configurable string DATABASE = ?;
 
 >**Note:** For more information on defining configurable variables in Ballerina, see [Provide values to configurable variables](/learn/configure-ballerina-programs/provide-values-to-configurable-variables/).
 
-## Connect to the database
+### Connect to the database
 
 You can connect to the MySQL database by creating a client.
 
-### Import the required packages
+#### Import the required packages
 
 To import the [`mysql`](https://lib.ballerina.io/ballerinax/mysql/latest) 
 and [`sql`](https://lib.ballerina.io/ballerina/sql/latest) packages for creating the client, add the code below in the `main.bal` file.
@@ -162,7 +169,7 @@ import ballerinax/mysql;
 import ballerina/sql;
 ```
 
-### Create the MySQL client
+#### Create the MySQL client
 
 To use the `mysql:Client` to the database, add the code below in the `main.bal` file.
 
@@ -172,7 +179,7 @@ final mysql:Client dbClient = check new(
 );
 ```
 
-### Run the MySQL client
+#### Run the MySQL client
 
 Execute the command below to run the client.
 
@@ -186,7 +193,7 @@ If the program runs without throwing an error, that indicates that the connectio
 >properties when connecting to the database which, are not covered in this tutorial. To learn more about this, 
 >see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest/clients/Client).
 
-## Execute the queries
+### Execute the queries
 
 The `mysql:Client` provides two primary remote methods for performing queries.
 
@@ -267,7 +274,7 @@ isolated function removeEmployee(int id) returns int|error {
 }
 ```
 
-## The completed `main.bal` file
+## The  `main.bal` file complete code
 
 ```ballerina
 import ballerina/time;
@@ -370,7 +377,7 @@ After you have defined the methods necessary to manipulate the database, expose 
 RESTful API. 
 
 ### Import the required packages
-For this, create a file names `service.bal` inside Ballerina package directory (`ata_service`), and add the code below to import the Ballerina [`HTTP` module](https://lib.ballerina.io/ballerina/http/latest).
+For this, create a file named `service.bal` inside the Ballerina package directory (`ata_service`), and add the code below to import the Ballerina [`HTTP` module](https://lib.ballerina.io/ballerina/http/latest).
 
 ```ballerina
 import ballerina/http;
@@ -421,7 +428,9 @@ service /employees on new http:Listener(8080) {
 }
 ```
 
-## The completed `service.bal` file
+## The `service.bal` file complete code 
+
+The complete code in the `service.bal` will be as follows.
 
 ```ballerina
 import ballerina/http;

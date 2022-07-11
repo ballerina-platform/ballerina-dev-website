@@ -451,20 +451,18 @@ const generate = async (examplesDir, outputDir) => {
                       );
                     }
 
-                    let match = line.match(/(\s*):::.*:::/);
+                    let match = line.match(/(\s*)(:::.*:::)/);
 
-                    convertedLine = md.render(line, {
-                      marginLeftMultiplier:
-                        match.length == 1 ? 0 : match[1].length,
+                    convertedLine = md.render(match[2], {
+                      marginLeftMultiplier: match[1].length,
                       playgroundLink,
                       relPath,
                     });
                   } else if (line.includes("::: out")) {
-                    let match = line.match(/(\s*):::.*:::/);
+                    let match = line.match(/(\s*)(:::.*:::)/);
 
-                    convertedLine = md.render(line, {
-                      marginLeftMultiplier:
-                        match.length == 1 ? 0 : match[1].length,
+                    convertedLine = md.render(match[2], {
+                      marginLeftMultiplier: match[1].length,
                       relPath,
                     });
                   } else if (line.includes("```")) {

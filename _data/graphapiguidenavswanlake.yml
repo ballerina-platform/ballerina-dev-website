@@ -4,9 +4,9 @@
     - title: Set up the prerequisites
       url: /learn/write-a-graphql-api-with-ballerina/#set-up-the-prerequisites
       active: set-up-the-prerequisites
-    - title: Understand the implementation
-      url: /learn/write-a-graphql-api-with-ballerina/#understand-the-implementation
-      active: understand-the-implementation
+    - title: Design the GraphQL endpoint
+      url: /learn/write-a-graphql-api-with-ballerina/#design-the-graphql-endpoint
+      active: design-the-graphql-endpoint
     - title: Create the service package
       url: /learn/write-a-graphql-api-with-ballerina/#create-the-service-package
       active: create-the-service-package

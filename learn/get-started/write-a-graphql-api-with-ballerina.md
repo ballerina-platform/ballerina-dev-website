@@ -25,20 +25,19 @@ To complete this tutorial, you need:
     >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
 3. A command terminal
 
-## Understand the implementation
+## Design the GraphQL endpoint
 
-Usually, a GraphQL endpoint is defined using a GraphQL schema. Even though some languages require the GraphQL schema to create a GraphQL service (schema-first approach), Ballerina does not need the schema to create the service
-(code-first approach). Once you write the Ballerina service, the Ballerina GraphQL package will generate the schema.
+Usually, a GraphQL endpoint is defined using a GraphQL schema. Some languages require the GraphQL schema to create a GraphQL service (schema-first approach) while others do not need the schema to create the service (code-first approach). Ballerina GraphQL package uses the latter. Therefore, you do not need the schema file to create your service, and instead, once you write the Ballerina service, the Ballerina GraphQL package will generate the schema.
 
 The GraphQL endpoint you will create in this guide will have two main operations, `Query` and `Mutation`. The `Query` type will be used to read the data in the data source, and the `Mutation` operation will be used to update the data in the data source.
 
 ### The `Query` type
-The `query` type has two fields.
+The `Query` type has two fields.
 * The `all` field - This field will return all the data in the data source as an array.
 * The `filter` field - This field will return the data filtered by the ISO Code of a country(`isoCode`).
 
 ### The `Mutation` type
-The `mutation` type has a single field.
+The `Mutation` type has a single field.
 * The `add` field - This field will add a given entry to the data source.
 
 ## Create the service package
@@ -172,15 +171,7 @@ represented by the exclamation mark `!`. E.g., `String!`). However, the resource
 
 ## Create the service
 
-Now, you are all set to write the GraphQL service.
-
-### Create the listener object
-
-To write the service, you need to create a GraphQL listener object.
-
-#### Import the Ballerina GraphQL package
-
-To import the Ballerina GraphQL package for creating the listener object, add the code below to the `service.bal` file.
+Now, you are all set to write the GraphQL service. To write the service, add the code below to the `service.bal` file.
 
 ```ballerina
 import ballerina/graphql;
@@ -190,21 +181,18 @@ service /covid19 on new graphql:Listener(9000) {
 }
 ```
 
-In this code:
-- The path of this service is defined as `/covid19`. If you want to host the service on the
+>**Info:** The path of this service is defined as `/covid19`. If you want to host the service on the
 root, you can remove the path as the follows:
 
-    ```ballerina
-    import ballerina/graphql;
+```ballerina
+import ballerina/graphql;
 
-    service on new graphql:Listener(9000) {
+service on new graphql:Listener(9000) {
 
-    }
-    ```
+}
+```
 
-#### Define the port
-
-When creating the `graphql:Listener` object, you need to provide the port to which it is listening. Alternatively, to use an existing `http:Listener` object, for initializing the `graphql:Listener`, add the code below to the `service.bal` file. 
+>**Info:** When creating the `graphql:Listener` object, you need to provide the port to which it is listening. Alternatively, to use an existing `http:Listener` object, for initializing the `graphql:Listener`, add the code below to the `service.bal` file. 
 
 ```ballerina
 import ballerina/graphql;
@@ -217,23 +205,19 @@ service /covid19 on new graphql:Listener(httpListener) {
 }
 ```
 
->**Info:** This is as same as the first code snippet above, which will listen on the port `9000` and serve on `/covid19`.
+>**Info:** The above is as same as the first code snippet above, which will listen on the port `9000` and serve on `/covid19`.
 
 ### Implement the service methods
 
-As per the design, there are two fields in the `Query` type and one field in the `Mutation` type in your GraphQL
-service. The fields of the `Query` type are represented by the resource methods with the `get` accessor in Ballerina, while the fields of the `Mutation` type are represented by the remote methods in Ballerina.
+As per the design, there are two fields in the `Query` type and one field in the `Mutation` type in your GraphQL service. The fields of the `Query` type are represented by the resource methods with the `get` accessor in Ballerina, while the fields of the `Mutation` type are represented by the remote methods in Ballerina.
 
-#### Create query type resource methods
+#### Create `Query` type resource functions
 
 ##### Create the `all` field
 
 To create the `all` field, which returns an array of `CovidData` type, add the code below to the `service.bal` file.
 
 ```ballerina
-import ballerina/graphql;
-
-service /covid19 on new graphql:Listener(9000) {
     resource function get all() returns CovidData[] {
         CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
         return covidEntries.map(entry => new CovidData(entry));
@@ -266,7 +250,9 @@ In this code:
 - The `filter` field is defined in the root `query` type. Since this field has an input parameter `isoCode`, you have to add an input parameter to the resource method. 
 - This method returns the corresponding data for the given `isoCode` if such data is available in the data set, and it returns `null` otherwise.
 
-#### Create mutation type remote method 
+#### Create `Mutation` type remote function
+
+##### Create the `add` field
 
 As the `Query` type is completed now, define the `Mutation` type using remote methods.
 
@@ -380,6 +366,8 @@ bal run
 
 You view the output below.
 
+>**Info:** The console has warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
+
 ```bash
 Compiling source
 	user/graphql:0.1.0
@@ -397,8 +385,6 @@ Running executable
 ```
 
 ## View the generated schema
-
-The console has warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 
 If you connect to this service using any GraphQL client tools, it will show the schema below.
 

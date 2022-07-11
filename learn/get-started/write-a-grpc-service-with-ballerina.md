@@ -20,7 +20,7 @@ redirect_from:
 
 ## Set up the prerequisites
 
-To run this guide, you need the following prerequisites:
+To complete this tutorial, you need:
 
 1. [Ballerina 2202.0.0 (Swan Lake)](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/) or greater
 2. A text editor

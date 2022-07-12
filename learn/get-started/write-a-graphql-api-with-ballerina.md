@@ -228,7 +228,7 @@ To create the `all` field, which returns an array of `CovidData` type, add the c
 > **Note:** A Ballerina GraphQL resource or remote method can return a `table` as well. When a method is returning a `table`, the corresponding GraphQL field type is a `LIST` type.
 
 In this code:
-- The resource method definition has the accessor `get`, which is used to identify the resource methods as a field of the`query` type. 
+- The resource method definition has the accessor `get`, which is used to identify the resource methods as a field of the `Query` type. 
 - Then comes the name of the field. The return type is the type of the field.
 - The above resource method first retrieves the array of `CovidEntry` records from the data source as an array, and then, returns an array of `CovidData` service type array as the result using the built-in `map` function.
 

@@ -247,7 +247,7 @@ resource function get filter(string isoCode) returns CovidData? {
 ```
 
 In this code:
-- The `filter` field is defined in the root `query` type. Since this field has an input parameter `isoCode`, you have to add an input parameter to the resource method. 
+- The `filter` field is defined in the root `Query` type. Since this field has an input parameter `isoCode`, you have to add an input parameter to the resource method. 
 - This method returns the corresponding data for the given `isoCode` if such data is available in the data set, and it returns `null` otherwise.
 
 #### Create `Mutation` type remote function

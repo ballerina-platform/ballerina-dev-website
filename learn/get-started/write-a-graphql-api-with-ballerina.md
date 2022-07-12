@@ -211,9 +211,9 @@ service /covid19 on new graphql:Listener(httpListener) {
 
 As per the design, there are two fields in the `Query` type and one field in the `Mutation` type in your GraphQL service. The fields of the `Query` type are represented by the resource methods with the `get` accessor in Ballerina, while the fields of the `Mutation` type are represented by the remote methods in Ballerina.
 
-#### Create `Query` type resource functions
+#### Create `Query` type 
 
-##### Create the `all` field
+##### Create the `all` field resource function
 
 To create the `all` field, which returns an array of `CovidData` type, add the code below to the `service.bal` file.
 
@@ -232,7 +232,7 @@ In this code:
 - Then comes the name of the field. The return type is the type of the field.
 - The above resource method first retrieves the array of `CovidEntry` records from the data source as an array, and then, returns an array of `CovidData` service type array as the result using the built-in `map` function.
 
-##### Create the `filter` field
+##### Create the `filter` field resource function
 
 To add the `filter` field, which is another resource method with an input `isoCode` to filter the data, add the code below to the `service.bal` file.
 
@@ -250,9 +250,9 @@ In this code:
 - The `filter` field is defined in the root `Query` type. Since this field has an input parameter `isoCode`, you have to add an input parameter to the resource method. 
 - This method returns the corresponding data for the given `isoCode` if such data is available in the data set, and it returns `null` otherwise.
 
-#### Create `Mutation` type remote function
+#### Create `Mutation` type 
 
-##### Create the `add` field
+##### Create the `add` field remote function
 
 As the `Query` type is completed now, define the `Mutation` type using remote methods.
 

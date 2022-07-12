@@ -60,7 +60,7 @@ tree .
 bal new -t service hello_service
 ```
 
-This will create a Ballerina source containing a service declaration with Ballerina tests to test the service. The following file structure will be generated with the service template.  
+This creates a Ballerina source containing a service declaration with Ballerina tests to test the service. It creates the following file structure with the service template.  
 
 ```bash
 cd hello_service
@@ -79,7 +79,7 @@ cd hello_service
 bal new -t lib hello_lib
 ```
 
-This will create a Ballerina source file containing a function that prints `Hello, world!` along with a test file to test the function. Additionally, it will also create the `Package.md` file, which is required to [publish a package to Ballerina Central](/learn/publish-packages-to-ballerina-central).
+This creates a Ballerina source file containing a function that prints `Hello, world!` along with a test file to test the function. Additionally, it creates the `Package.md` file, which is required to [publish a package to Ballerina Central](/learn/publish-packages-to-ballerina-central).
 
 ```bash
 
@@ -95,6 +95,7 @@ This will create a Ballerina source file containing a function that prints `Hell
 ## The default module
 
 When a package is created with the `bal new` command, the `Ballerina.toml` and the `main.bal` files are created. 
+
 The `main.bal` file is a Ballerina source file, which belongs to the default module. 
 The root directory of the default module is the root directory of the package as well. 
 Therefore, the package root directory contains files that belong to the package as well as the default module.
@@ -154,3 +155,7 @@ String formattedMsg = util:properCaseMessage("hello world!");
 ```
 
 Since the `import-prefix` is not given, the module name `util` is used to refer to the symbols in the `hello_world.util` module. 
+
+## Package references
+
+For information on the structure of a package directory, see [Package references](/learn/organize-ballerina-code/package-references/).

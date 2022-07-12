@@ -4,7 +4,7 @@ window.setInterval(function() {
    
    /* Start expire date for event 1 */
     var current = new Date();
-    var expiry = new Date("2022-05-25T18:30:00.0000-07:00")
+    var expiry = new Date("2022-08-11T18:30:00.0000-07:00")
   
     if (current.getTime() > expiry.getTime()) {
       $('.bEvent1').hide();
@@ -15,7 +15,7 @@ window.setInterval(function() {
     /* Finish expire date for event 1 */
     /* Start expire date for event 2 */
     var current = new Date();
-    var expiry = new Date("2022-09-14T06:10:00.0000-04:00")
+    var expiry = new Date("2022-09-7T06:10:00.0000-04:00")
 
     if (current.getTime() > expiry.getTime()) {
      $('.bEvent2').hide();

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Ballerina language specification</title>
+  <title>Ballerina Language Specification</title>
   <meta charset="utf-8" />
   <style type="text/css">
     body { font-family: sans-serif; line-height: 1.38;  }
@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina language specification, 2022R2 preview 2022-05-23</h1>
+<h1>Ballerina Language Specification, 2022R3 preview 2022-07-11</h1>
 <p>
 Primary contributors:
 </p>
@@ -1557,7 +1557,7 @@ class="grammar"><dfn>tuple-type-descriptor</dfn> :=
 <dfn>tuple-member-type-descriptors</dfn> :=
    <abbr>member-type-descriptor</abbr> (<code>,</code> <abbr>member-type-descriptor</abbr>)* [<code>,</code> <abbr>tuple-rest-descriptor</abbr>]
    | [ <abbr>tuple-rest-descriptor</abbr> ]
-<dfn>member-type-descriptor</dfn> := <abbr>type-descriptor</abbr>
+<dfn>member-type-descriptor</dfn> := [<abbr>annots</abbr>] <abbr>type-descriptor</abbr>
 <dfn>tuple-rest-descriptor</dfn> := <abbr>type-descriptor</abbr> <code>...</code>
 
 </pre>
@@ -2157,6 +2157,7 @@ class="grammar"><dfn>object-type-descriptor</dfn> :=
    <abbr>object-field-descriptor</abbr>
    | <abbr>method-decl</abbr>
    | <abbr>remote-method-decl</abbr>
+   | <abbr>resource-method-decl</abbr>
    | <abbr>object-type-inclusion</abbr>
 </pre>
 
@@ -2195,14 +2196,9 @@ is not allowed in conjunction with <code>public</code>.
 </p>
 
 <p>
-Network interaction objects provide two additional features: remote methods and
-resources. Remote methods are supported by both client and service objects. The
-remote methods of an object are in a separate symbol space from the other
-methods of the object. Resources are supported only by service objects. Object
-type descriptors do not provide a way to describe the resources of a service
-object: whether a service object belongs to an object type is not affected by
-the service object's resources. Resources are described in detail in the <a
-href="#resources">section</a> on object constructors.
+Network interaction objects can have, in addition to fields and methods, two
+additional kinds of member: remote methods and resources; both of these are in a
+different symbol space from fields and (non-remote) methods.
 </p>
 
 </section>
@@ -2258,7 +2254,10 @@ The <code>isolated-qual</code> together with the <code>function-signature</code>
 give the function type of the method. An isolated method has the same access to
 the object on which the method is invoked that it has to parameters.
 </p>
+</section>
 
+<section>
+<h5>Remote methods</h5>
 <pre
 class="grammar"><dfn>remote-method-decl</dfn> :=
    <abbr>metadata</abbr> <abbr>remote-method-quals</abbr> 
@@ -2288,6 +2287,147 @@ The return type of the remote method of a client object must not be
 <code>never</code>. A remote method of a service object is invoked by a listener
 object provided by a library module; Ballerina does not yet define a mechanism
 to allow such a library module to be implemented completely in Ballerina.
+</p>
+
+</section>
+
+<section>
+<h5>Resources</h5>
+
+<pre
+class="grammar"><dfn>resource-method-decl</dfn> :=
+   <abbr>metadata</abbr> <abbr>resource-method-quals</abbr>
+   <code>function</code> <abbr>resource-method-name</abbr> <abbr>resource-path</abbr> <abbr>function-signature</abbr> <code>;</code>
+<dfn>resource-method-quals</dfn> :=
+   <abbr>resource-qual</abbr> <abbr>function-quals</abbr>
+   | <abbr>isolated-qual</abbr> [<abbr>transactional-qual</abbr>] <abbr>resource-qual</abbr>
+   | <abbr>transactional-qual</abbr> [<abbr>isolated-qual</abbr>] <abbr>resource-qual</abbr>
+   | <abbr>isolated-qual</abbr> <abbr>resource-qual</abbr> <abbr>transactional-qual</abbr>
+   | <abbr>transactional-qual</abbr> <abbr>resource-qual</abbr> <abbr>isolated-qual</abbr>
+<dfn>resource-qual</dfn> := <code>resource</code>
+<dfn>resource-method-name</dfn> := <abbr>identifier</abbr>
+<dfn>resource-path</dfn> :=
+   <abbr>dot-resource-path</abbr>
+   | <abbr>resource-path-segment</abbr> (<code>/</code> <abbr>resource-path-segment</abbr>)* [<code>/</code> <abbr>resource-path-rest-param</abbr>]
+   | <abbr>resource-path-rest-param</abbr>
+<dfn>dot-resource-path</dfn> := <code>.</code>
+<dfn>resource-path-segment</dfn> := <abbr>resource-path-segment-name</abbr> | <abbr>resource-path-segment-param</abbr>
+<dfn>resource-path-segment-name</dfn> := <abbr>identifier</abbr>
+<dfn>resource-path-segment-param</dfn> := <code>[</code>[<abbr>annots</abbr>] <abbr>type-descriptor</abbr> [<abbr>param-name</abbr>]<code>]</code>
+<dfn>resource-path-rest-param</dfn> := <code>[</code>[<abbr>annots</abbr>] <abbr>type-descriptor</abbr> <code>...</code> [<abbr>param-name</abbr>]<code>]</code>
+</pre>
+<p>
+As well as remote methods, a network interaction object may include members that
+are resources. Resources support a more data-oriented style of network
+interaction, which complements the RPC style supported by remote methods. A
+resource of a client object is for outbound network interaction; a resource of a
+service object is for inbound network interaction. A resource of a client object
+can be accessed only using a <code>client-resource-access-action</code>. A
+resource of a service object is accessed by a listener object provided by a
+library module; Ballerina does not yet define a mechanism to allow such a
+library module to be implemented completely in Ballerina.
+</p>
+<p>
+Each resource is named within an object by a <em>resource path</em>, which
+consists of a list of resource path segments. A resource path segment is most
+commonly a string, but can be any value of type anydata. A resource has one or
+more named methods. A resource method is thus uniquely identified within its
+object by its path and method name. Each resource method corresponds to a way
+that the resource can be accessed; the name <code>get</code> should be used for
+a resource method that just fetches the resource. For a service object, the
+supported resource method names are determined by the listener; a listener that
+supports resources should always support the name <code>get</code>.
+</p>
+<p>
+A <code>resource-method-decl</code> declares a resource method for one or more
+resources. An object can include a <code>resource-method-decl</code> only if it
+is a network interaction object.
+</p>
+<p>
+A <code>resource-path</code> can be mapped onto a tuple type descriptor as
+follows. A <code>dot-resource-path</code> maps to <code>[]</code> (an empty
+tuple type). A <code>resource-path-segment-name</code> maps to a member type
+descriptor that is a singleton string. A
+<code>resource-path-segment-param</code> with type descriptor <code>T</code>
+maps to a member type descriptor <code>T</code>. A
+<code>resource-path-rest-param</code> with type descriptor <code>T</code> maps
+to a tuple rest descriptor <code>T...</code>.
+</p>
+<p>
+It is a compile error if a <code>object-type-descriptor</code> has two
+<code>resource-method-decl</code>s with the same name and with
+<code>resource-path</code>s that map to the same tuple type descriptor.
+</p>
+<p>
+When a resource with path [s<sub>1</sub>,...,s<sub>m</sub>] of a service object
+S has a method <code>get</code> with a return value that includes a service
+object type, then this has the semantics that the service object S delegates
+each resource with a path [s<sub>1</sub>,...,s<sub>m</sub>,...,s<sub>n</sub>] to
+a resource [s<sub>m+1</sub>,...,s<sub>n</sub>] of the service object returned by
+the <code>get</code> method of S. Accordingly, if the return type of a
+<code>resource-method-decl</code> with a method name of <code>get</code> and a
+<code>resource-path</code> <var>p</var> includes a service object type:
+</p>
+<ul>
+<li>the return type must not allow anything other than service objects and
+errors;</li>
+<li>the <code>resource-path</code> must not end with a
+<code>resource-path-rest-param</code>;</li>
+<li>there must be no <code>resource-method-decl</code> that has a
+<code>resource-path</code> with <var>p</var> as a prefix.</li>
+</ul>
+<p>
+The set of resource method names <em>applicable</em> for a
+<code>resource-method-decl</code> with <code>resource-method-name</code> m at a
+resource path position is defined as follows:
+</p>
+<ul>
+<li>if the position is not the last position of the resource path, then the
+applicable set consists of just <code>get</code></li>
+<li>otherwise, if the <code>resource-path</code> ends with a <code>resource-path-segment</code>,
+then the applicable set consists of just m;</li>
+<li>otherwise, the <code>resource-path</code> ends with
+<code>resource-path-rest-param</code> and the applicable set consists of
+<code>get</code> and m.</li>
+</ul>
+<p>
+Two <code>resource-method-decl</code>s X and Y that map to tuple type descriptors
+[X<sub>1</sub>,...,X<sub>m</sub>] and [Y<sub>1</sub>,...,Y<sub>n</sub>]
+<em>diverge at position</em> i if and only if:
+</p>
+<ul>
+<li>i &#x2264; m;</li>
+<li>i &#x2264; n;</li>
+<li>the intersection of the sets of resource method names applicable for X and Y
+at position i is non-empty;</li>
+<li>for all j &lt; i, X<sub>j</sub> is the same type as as Y<sub>j</sub>;</li>
+<li>X<sub>i</sub> and Y<sub>i</sub> are not the same (to be the same, they must
+both be a member-type-descriptor or both be a tuple-rest-descriptor, and the
+types must be the same).</li>
+</ul>
+<p>
+If two <code>resource-method-decl</code>s diverge at position i, then it is a
+compile-time error unless the <code>resource-path</code> of at least one of them
+maps to a tuple type descriptor that at position i has a
+<code>member-type-descriptor</code> that denotes a singleton string.
+</p>
+<p>
+A <code>resource-path-segment</code> that maps to a singleton string takes
+priority over other types in the following sense. When a
+<code>resource-method-decl</code> R has a resource path that has a
+<code>resource-path-segment</code> at position i that maps to a
+<code>member-type-descriptor</code> that denotes a type T that is not a
+singleton string, then T is narrowed to a type T' by removing every singleton
+string type S such that there is a <code>resource-method-decl</code> that
+diverges from R at position i and has has a resource path that has a
+<code>resource-path-segment</code> at position i that maps to a
+<code>member-type-descriptor</code> that denotes S. The
+<code>resource-method-decl</code> declares resources methods for resources that
+whose corresponding path segment belongs to the narrowed type T' rather than T.
+</p>
+<p>
+The return type of a resource method must not allow values belonging to the
+function basic type and must not allow client object types.
 </p>
 
 </section>
@@ -3798,7 +3938,7 @@ same identifier in the same symbol space also with block-scope.
 <h2 id="expressions">6. Expressions</h2>
 
 <pre
-class="grammar"><dfn>expression</dfn> := 
+class="grammar"><dfn>expr-only</dfn> := 
    <abbr>literal</abbr>
    | <abbr>string-template-expr</abbr>
    | <abbr>xml-template-expr</abbr>
@@ -3817,7 +3957,6 @@ class="grammar"><dfn>expression</dfn> :=
    | <abbr>error-constructor-expr</abbr>
    | <abbr>anonymous-function-expr</abbr>
    | <abbr>let-expr</abbr>
-   | <abbr>type-cast-expr</abbr>
    | <abbr>typeof-expr</abbr>
    | <abbr>unary-logical-expr</abbr>
    | <abbr>nil-lifted-expr</abbr>
@@ -3827,11 +3966,15 @@ class="grammar"><dfn>expression</dfn> :=
    | <abbr>equality-expr</abbr>
    | <abbr>logical-expr</abbr>
    | <abbr>conditional-expr</abbr>
+   | <abbr>xml-navigate-expr</abbr>
+   | <abbr>transactional-expr</abbr>
+
+<dfn>expression</dfn> :=
+   <abbr>expr-only</abbr>
+   | <abbr>type-cast-expr</abbr>
    | <abbr>checking-expr</abbr>
    | <abbr>trap-expr</abbr>
    | <abbr>query-expr</abbr>
-   | <abbr>xml-navigate-expr</abbr>
-   | <abbr>transactional-expr</abbr>
    | <code>(</code> <abbr>expression</abbr> <code>)</code>
 </pre>
 <p>
@@ -4175,7 +4318,7 @@ is never applicable when all operands have singleton type.)
 </section>
 
 <section>
-<h4>Isolated expressions</h4>
+<h4 id="isolated_expressions">Isolated expressions</h4>
 <p>
 Ballerina defines requirements for when an expression is <em>isolated</em>. If
 an expression meets the requirements, then it is compile-time guaranteed that
@@ -4429,12 +4572,16 @@ value at which the value of the expression is to be inserted.</li>
 <li>The static type of an expression occurring in an attribute value must be a
 simple type and must not be nil. The static type type of an expression occurring
 in content can either be xml or a non-nil simple type.</li>
-<li>When the xml-template-expr is evaluated, the interpolated expressions are evaluated
-in the order in which they occur in the <code>BacktickString</code>, and
-converted to strings if necessary. A new copy is made of the xml value and the
-result of the expression evaluations are inserted into the corresponding
+<li>When the xml-template-expr is evaluated, the interpolated expressions are
+evaluated in the order in which they occur in the <code>BacktickString</code>,
+and converted to strings if necessary. A new copy is made of the xml value and
+the result of the expression evaluations are inserted into the corresponding
 position in the newly created xml value. This xml value is the result of the
-evaluation.</li>
+evaluation. The contextually expected type for an interpolated expression that
+occurs within an Attribute Information Item is string, and otherwise is xml;
+this ensures that a query expr will work as expected. Note that if the static
+type is not a subtype of the contextually expected type, it is not an error:
+rather the value will be converted to a string.</li>
 </ol>
 <p>
 An xml-template-expr occurring within a const-expr will construct an xml value
@@ -4864,17 +5011,6 @@ A <code>method-defn</code> defines a method of an object.
 </p>
 
 <pre
-class="grammar"><dfn>remote-method-defn</dfn> :=
-   <abbr>metadata</abbr> <abbr>remote-method-quals</abbr>
-   <code>function</code> <abbr>remote-method-name</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
-</pre>
-<p>
-A <code>remote-method-defn</code> defines a remote method. This is allowed only
-when an <code>object-network-qual</code> is present in the
-<code>object-constructor-expr</code>.
-</p>
-
-<pre
 class="grammar"><dfn>method-defn-body</dfn> := <abbr>function-defn-body</abbr>
 </pre>
 <p>
@@ -4896,147 +5032,69 @@ set and its <code>method-defn-body</code> must satisfy the requirements for an
 </section>
 
 <section>
-<h5 id="resources">Resources</h5>
+<h5>Remote methods</h5>
 
+<pre
+class="grammar"><dfn>remote-method-defn</dfn> :=
+   <abbr>metadata</abbr> <abbr>remote-method-quals</abbr>
+   <code>function</code> <abbr>remote-method-name</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
+</pre>
 <p>
-In addition to remote methods, a service object can use <em>resources</em> to
-support network interaction. Resources support a more data-oriented style of
-network interaction, which complements the RPC style supported by remote
-methods. A service object's resources are arranged in a tree. Each resource
-exposes one or more named methods; by convention the method name
-<code>get</code> is used for retrieving the resource. A listener thus identifies
-a resource method to be called using the combination of a hierarchical path,
-which identifies the resource, and the resource method name. A resource method
-can also specify that a segment of the path provided by the listener should be
-treated as a parameter. A resource method can only be invoked by a listener
-object.
+A <code>remote-method-defn</code> defines a remote method. This is allowed only
+when an <code>object-network-qual</code> is present in the
+<code>object-constructor-expr</code>.
 </p>
+
+</section>
+
+<section>
+<h5 id="resources_defn">Resources</h5>
 
 <pre
 class="grammar"><dfn>resource-method-defn</dfn> :=
    <abbr>metadata</abbr> <abbr>resource-method-quals</abbr>
    <code>function</code> <abbr>resource-method-name</abbr> <abbr>resource-path</abbr> <abbr>function-signature</abbr> <abbr>method-defn-body</abbr>
-<dfn>resource-method-quals</dfn> :=
-   <abbr>resource-qual</abbr> <abbr>function-quals</abbr>
-   | <abbr>isolated-qual</abbr> [<abbr>transactional-qual</abbr>] <abbr>resource-qual</abbr>
-   | <abbr>transactional-qual</abbr> [<abbr>isolated-qual</abbr>] <abbr>resource-qual</abbr>
-   | <abbr>isolated-qual</abbr> <abbr>resource-qual</abbr> <abbr>transactional-qual</abbr>
-   | <abbr>transactional-qual</abbr> <abbr>resource-qual</abbr> <abbr>isolated-qual</abbr>
-<dfn>resource-qual</dfn> := <code>resource</code>
-<dfn>resource-method-name</dfn> := <abbr>identifier</abbr>
-<dfn>resource-path</dfn> :=
-   <abbr>dot-resource-path</abbr>
-   | <abbr>resource-path-segment</abbr> (<code>/</code> <abbr>resource-path-segment</abbr>)* [<code>/</code> <abbr>resource-path-rest-param</abbr>]
-   | <abbr>resource-path-rest-param</abbr>
-<dfn>dot-resource-path</dfn> := <code>.</code>
-<dfn>resource-path-segment</dfn> := <abbr>resource-path-segment-name</abbr> | <abbr>resource-path-segment-param</abbr>
-<dfn>resource-path-segment-name</dfn> := <abbr>identifier</abbr>
-<dfn>resource-path-segment-param</dfn> := <code>[</code>[<abbr>annots</abbr>] <abbr>type-descriptor</abbr> <abbr>param-name</abbr><code>]</code>
-<dfn>resource-path-rest-param</dfn> := <code>[</code>[<abbr>annots</abbr>] <abbr>type-descriptor</abbr> <code>...</code> <abbr>param-name</abbr><code>]</code>
 </pre>
 
 <p>
-A <code>resource-method-defn</code> defines a resource method. This is allowed
-only when an <code>object-network-qual</code> of <code>service</code> is present
-in the <code>object-constructor-expr</code>. The <code>resource-path</code>
-specifies the node in the service object's resource tree to which the method is
-attached and the <code>resource-method-name</code> specifies the method name. It
-is an error to have two <code>resource-method-defn</code>s that both have the
-same name and have a path that refers to the same node. A
-<code>dot-resource-path</code> specifies the root of the service object's
-resource tree. In a service object's resource tree, each edge from a parent node
-to a child node has a label, which uniquely identifies the child relative to its
-siblings. A label is either a string or one of two special values that indicate
-that the corresponding path segment should be treated as a parameter. It is an
-error for a parent node to have more than one edge to a child node labelled with
-one of the two special values. A <code>resource-path-segment-name</code>
-specifies a label that is a string. The two special label values come from a
-<code>resource-path-segment-param</code> and a
-<code>resource-path-rest-param</code> respectively. A parameter in a
-<code>resource-path-segment-param</code> will be bound to a value representing a
-single path segment; a parameter in a <code>resource-path-rest-param</code> will
-be bound to a list representing zero or more path segments, with each member
-representing a single path segment. The type of a path segment depends on the
-listener, but the listener must be able to convert it into a string. For
-example, in HTTP a path segment is natively a sequence of bytes, and an HTTP
-listener could convert it into a string by decoding with UTF-8. It also depends
-on the listener which types other than string it is able to convert a path
-segment to.
+A <code>resource-method-defn</code> defines a resource method for one or more
+resources. This is allowed only when an <code>object-network-qual</code> is
+present in the <code>object-constructor-expr</code>. The semantics of
+<code>resource-method-defn</code> extends the semantics of a
+<code>resource-method-decl</code> by associating a function with each declared
+resource method.
 </p>
 <p>
-The return type of a resource method must not allow values belonging to the
-function basic type. A resource method with a name of <code>get</code> that can
-return a service object represents a subservice. It is subject to the following
-restrictions:
+A network interaction object uses <code>resource-method-defn</code>s to provide
+a resource access operation. The inputs to the resource access operation are a
+string giving the resource method name, a list of values for the resource path,
+and a list of values for the argument list. The operation looks up the function
+associated with the resource method name and resource path, and then invokes the
+function with the supplied argument list.
 </p>
-<ul>
-<li>the return type must not allow anything other that service
-objects and errors;</li>
-<li>the resource path must not end with a <code>resource-path-rest-param</code>;</li>
-<li>the method's node must not have any child nodes.</li>
-</ul>
 <p>
-The semantics of hierarchical resources are defined by a lookup function, which
-takes four parameters:
+The list of values supplied for the resource path are used to bind parameters
+specified in the <code>resource-path</code> before the function is invoked.
+These parameters are in scope in the <code>method-defn-body</code>. A parameter
+in a <code>resource-path-segment-param</code> will be bound to the value at the
+corresponding position in the list; a parameter in a
+<code>resource-path-rest-param</code> will be bound to a list of all the values
+from the corresponding position onwards.
 </p>
-<ul>
-<li><var>m</var> is the name of the method;</li>
-<li><var>p</var> is the resource path;</li>
-<li><var>r</var> refers to a node in the resource tree of a service object;</li>
-<li><var>v</var> is the list path segments bound so far.</li>
-</ul>
 <p>
-It returns an error or a tuple [<var>r</var>, <var>v</var>], where
-</p>
-<ul>
-<li><var>r</var> is a node in the resource tree with an m method, which is the
-method to be called;</li>
-<li><var>v</var> is a list of path segments to be bound to the method’s variable
-resource path parameters.</li>
-</ul>
-<p>
-The function lookup(<var>m</var>, <var>p</var>, <var>r</var>, <var>v</var>) is
-defined as follows:
-</p>
-<ol>
-<li>If <var>r</var> has a <code>get</code> method that can return a service
-object, then call the <code>get</code> method of <var>r</var> using <var>v</var>
-to bind the path parameters; if the result is an error, then return that error;
-otherwise, the result must be a service object. Let <var>r</var>' be the root of
-its resource tree. Return lookup(<var>m</var>, <var>p</var>, <var>r</var>',
-[]).</li>
-<li>If <var>p</var> is empty: 
-<ol>
-<li>if <var>r</var> has a method <var>m</var>, then return
-[<var>r</var>,<var>v</var>];</li>
-<li>otherwise, if <var>r</var> has a child labelled as repeated variable path
-segment and that child has a method <var>m</var>, then let <var>r</var>' be
-child with that label and return [<var>r</var>',<var>v</var>];</li>
-<li>otherwise, return an error.</li> 
-</ol>
-</li>
-<li>Let the first segment in <var>p</var> be <var>s</var> and let <var>p</var>'
-be a list of the 2nd and subsequent members of <var>p</var>.</li>
-<li>If <var>r</var> has a child labelled with the string that results from
-converting <var>s</var> to a string, then let <var>r</var>' be the child with
-that label. Return lookup(<var>m</var>, <var>p</var>', <var>r</var>',
-<var>v</var>).</li>
-<li>If <var>r</var> has an edge to a child labelled as a single path segment
-parameter, then let <var>r</var>' be that child and let <var>v</var>' be the
-result of adding <var>s</var> to the end of <var>v</var>. Return
-lookup(<var>m</var>, <var>p</var>', <var>r</var>', <var>v</var>').</li>
-<li>If <var>r</var> has an edge to a child labelled as a rest parameter and that
-child has a method <var>m</var>, then let <var>r</var>' be that child, and let
-<var>v</var>' be the result of concatenating <var>v</var> and <var>p</var>.
-Return [<var>r</var>',<var>v</var>'].</li>
-<li>Otherwise, return an error.</li>
-</ol>
-<p>
-The syntax allows only the last of a resource method's path parameters to be a
-rest parameter. When a list of path segments is bound to the path parameters of
-a resource method, one path segment is bound to each path parameter that is not
-a rest parameter and a list of the remaining path segments is bound to the rest
-parameter, if any.
+The resource access operation of a service object is responsible for
+implementing the delegation semantics of a resource method that returns a
+service object. A <code>resource-path</code> is <em>delegated</em> if it occurs
+in a <code>resource-method-defn</code> with a <code>resource-method-name</code>
+of <code>get</code> and a return value that includes a service object type that
+has one or more resources. If a resource access operation has a resource path
+<var>r</var>, which has a prefix <var>p</var> (which may be the entire path)
+that is delegated, then the <code>get</code> method that provides the delegation
+is first called with no arguments but with resource parameters bound as usual
+resulting in a value <var>v</var>; if <var>v</var> is an error, then the result
+of the resource access operation is <var>v</var>; otherwise a resource access
+operation is performed on the <var>v</var> with the resource path being
+<var>r</var> with <var>p</var> removed.
 </p>
 
 </section>
@@ -5747,10 +5805,10 @@ specified explicitly as usual with a function-signature. With an
 infer-anonymous-function-expr, the type of the function is inferred.
 </p>
 <p>
-If block-function-body refers to a block-scope variable defined
-outside of the block-function-body, the closure will capture a reference to that
-variable; the captured reference will refer to the same storage as the original
-reference not a copy.
+If a variable-reference-expr within an anonymous-function-expr refers to a local
+variable defined outside of the anonymous-function-expr, the closure will
+capture a reference to that variable; the captured reference will refer to the
+same storage as the original reference rather than to a copy.
 </p>
 
 <pre
@@ -6539,7 +6597,8 @@ comprehensions; future versions will provided richer functionality.
 
 <pre class="grammar"><dfn>query-expr</dfn> := [<abbr>query-construct-type</abbr>] <abbr>query-pipeline</abbr> <abbr>select-clause</abbr> [<abbr>on-conflict-clause</abbr>]
 <dfn>query-construct-type</dfn> :=
-  <code>table</code> <abbr>key-specifier</abbr>
+  <code>map</code>
+  | <code>table</code> <abbr>key-specifier</abbr>
   | <code>stream</code>
 <dfn>query-pipeline</dfn> := <abbr>from-clause</abbr> <abbr>intermediate-clause</abbr>*
 <dfn>intermediate-clause</dfn> :=
@@ -6571,8 +6630,11 @@ result must be one of the following basic types:
 </p>
 <ul>
 <li>list - the constructed list has a member for each emitted value; every
-emitted value must beloing to type T, where T[] is the type of the constructed
+emitted value must belong to type T, where T[] is the type of the constructed
 value</li>
+<li>mapping - the constructed mapping has a member for each emitted value; every
+emitted value must belong to type [string, T], where map&lt;T&gt; is the type
+of the constructed value </li>
 <li>table - the constructed table has a member for each emitted value; every
 emitted value must belong to type T, where table&lt;T&gt; is the type of the
 constructed value</li>
@@ -6598,6 +6660,11 @@ within the query-expr completely abruptly with a panic, then the next operation
 will complete abruptly with a panic.
 </p>
 <p>
+A query-expr that constructs a mapping must start with the <code>map</code> keyword.
+An emitted value <code>[<var>k</var>, <var>v</var>]</code> results in adding a
+field with key <code><var>k</var></code> and value <code><var>v</var></code>.
+</p>
+<p>
 If the query-expr starts with <code>table</code>, then the query-expr will
 construct a table; the key-specifier specifies the key sequence of the
 constructed table in the same way as with a table-constructor-expr. Otherwise,
@@ -6608,7 +6675,15 @@ it is a compile-time error if the static type of this expression is not a
 subtype of one of the basic types that a query expression can construct.
 </p>
 <p>
-When during the construction of a table, an emitted value is added as a new
+When the query-expr is constructing a value of basic type list, mapping, table
+or xml, and the applicable contextually expected type is a subtype of readonly,
+then the query-expr will construct a value with its read-only bit set and the
+static type of the query-expr will be a subtype of readonly. Furthermore, the
+contextually expected type for the expression in the select-clause will also be
+a subtype of readonly.
+</p>
+<p>
+When during the construction of a map or table, an emitted value is added as a new
 member, it replaces any existing member with the same key value; when a new
 member replaces an existing member, it will have the same position in the order
 of members as the existing member. This behavior may be controlled by an
@@ -6886,9 +6961,9 @@ A <code>select</code> clause is executed as follows:
 </pre>
 <p>
 An <code>on conflict</code> clause is allowed only for a query expression that
-constructs a table with a key sequence. The expression is evaluated when the
+constructs a map or table with a key sequence. The expression is evaluated when the
 <code>select</code> clause emits a value that conflicts with a previous value,
-in the sense that both values have the same key value in the table. The
+in the sense that both values have the same key value in the map or table. The
 expression is evaluated with the same frame in scope as the select clause that
 emitted the value that conflicts with the previous value. The static type of the
 expression must be a subtype of <code>error?</code>. If the result of evaluating
@@ -7055,16 +7130,22 @@ class="grammar"><dfn>action</dfn> :=
    | <abbr>receive-action</abbr> 
    | <abbr>flush-action</abbr>
    | <abbr>client-remote-method-call-action</abbr>
+   | <abbr>client-resource-access-action</abbr>
    | <abbr>query-action</abbr>
-   | <abbr>type-cast-action</abbr>
-   | <abbr>checking-action</abbr>
-   | <abbr>trap-action</abbr>
    | <abbr>commit-action</abbr>
+
+<dfn>action-or-expr</dfn> :=
+   <abbr>expr-only</abbr>
+   | <abbr>action</abbr>
+   | <abbr>type-cast-action-or-expr</abbr>
+   | <abbr>checking-action-or-expr</abbr>
+   | <abbr>trap-action-or-expr</abbr>
+   | <abbr>query-action-or-expr</abbr>
    | <code>(</code> <abbr>action</abbr> <code>)</code>
-<dfn>action-or-expr</dfn> := <abbr>action</abbr> | <abbr>expression</abbr>
-<dfn>type-cast-action</dfn> := <code>&lt;</code> <abbr>type-cast-param</abbr> <code>&gt;</code> <abbr>action</abbr>
-<dfn>checking-action</dfn> := <abbr>checking-keyword</abbr> <abbr>action</abbr>
-<dfn>trap-action</dfn> := <code>trap</code> <abbr>action</abbr>
+
+<dfn>type-cast-action-or-expr</dfn> := <code>&lt;</code> <abbr>type-cast-param</abbr> <code>&gt;</code> <abbr>action-or-expr</abbr>
+<dfn>checking-action-or-expr</dfn> := <abbr>checking-keyword</abbr> <abbr>action-or-expr</abbr>
+<dfn>trap-action-or-expr</dfn> := <code>trap</code> <abbr>action-or-expr</abbr>
 </pre>
 <p>
 Actions are an intermediate syntactic category between expressions and
@@ -7074,19 +7155,44 @@ part of a statement or nested inside other actions. This is because actions are
 shown in the sequence diagram in the graphical syntax.
 </p>
 <p>
-The syntax for actions is defined by the above grammar and precedence rules. The
-precedence rules are that a client-remote-method-call-action has higher
-precedence than a checking-action or a trap-action.
+As with the grammar for expression, the grammar for action-or-expr is ambiguous.
+The precedence for action-or-expr is the same as for expression, with the
+addition that the <code>-&gt;</code> operator used in a
+client-remote-method-call-action has the same precedence as the <code>.</code>
+operator used in a method-call-expr.
 </p>
 <p>
 An action is evaluated in the same way as an expression. Static typing for
 actions is the same as for expressions.
 </p>
 <p>
-A <code>type-cast-action</code>, <code>checking-action</code> or
-<code>trap-action</code> is evaluated in the same way as a
+A <code>type-cast-action-or-expr</code>, <code>checking-action-or-expr</code> or
+<code>trap-action-or-expr</code> is evaluated in the same way as a
 <code>type-cast-expr</code>, <code>checking-expr</code> or
 <code>trap-expr</code> respectively.
+</p>
+
+<pre
+class="grammar"><dfn>query-action-or-expr</dfn> :=
+   [<abbr>query-construct-type</abbr>] <abbr>query-action-pipeline</abbr> <abbr>select-action-clause</abbr> [<abbr>on-conflict-clause</abbr>]
+<dfn>query-action-pipeline</dfn> := <abbr>from-action-clause</abbr> <abbr>intermediate-action-clause</abbr>*
+<dfn>intermediate-action-clause</dfn> :=
+   <abbr>from-action-clause</abbr>
+   | <abbr>let-action-clause</abbr>
+   | <abbr>where-clause</abbr>
+   | <abbr>join-clause</abbr>
+   | <abbr>order-by-clause</abbr>
+   | <abbr>limit-clause</abbr>
+
+<dfn>from-action-clause</dfn> := <code>from</code> <abbr>typed-binding-pattern</abbr> <code>in</code> <abbr>action-or-expr</abbr>
+<dfn>let-action-clause</dfn> := <code>let</code> <abbr>let-action-var-decl</abbr> [<code>,</code> <abbr>let-action-var-decl</abbr>]*
+<dfn>let-action-var-decl</dfn> := [<abbr>annots</abbr>] <abbr>typed-binding-pattern</abbr> <code>=</code> <abbr>action-or-expr</abbr>
+<dfn>select-action-clause</dfn> := <code>select</code> <abbr>action-or-expr</abbr>
+</pre>
+<p>
+A <code>query-action-or-expr</code> is a <code>query-expr</code> in which
+certain subexpressions are allowed to be an <code>action-or-expr</code>. It is
+evaluated in the same way as a <code>query-expr</code>.
 </p>
 
 </section>
@@ -7117,17 +7223,18 @@ to executing another strand. The following actions cause a strand to yield:
 <p>
 In addition, any function with an external-function-body can potentially yield;
 it should only do so if it performs a system call that would block or calls a
-Ballerina function that itself yields. The `sleep` function in
+Ballerina function that itself yields. The <code>sleep</code> function in
 <code>lang.runtime</code> will make the strand yield. Other functions in the
 lang library do not themselves yield, although if they call a function passed as
 an argument, that function may result in yielding.
 </p>
 <p>
 There are two language constructs whose execution causes the creation of new
-strands: named-worker-decl and start-action. These constructs may use
-annotations to indicate that the newly created strand should be in a separate
-thread from the current strand. In the absence of such annotations, the new
-strand must be part of the same thread as the current strand.
+strands: named-worker-decl and start-action. Except in the cases explicitly
+allowed by this specification, the new strand must be part of the same thread as
+the current strand. An implementation may also allow annotations to be used to
+indicate that the newly created strand should be in a separate thread from the
+current strand.
 </p>
 
 </section>
@@ -7197,7 +7304,8 @@ default worker.
 </p>
 <p>
 A function also has zero or more named workers. Each named worker runs on its
-own new strand. The termination of a function is independent of the termination
+own new strand. The strand can run on a separate thread from the default worker if the
+function is isolated. The termination of a function is independent of the termination
 of its named workers. The termination of a named worker does not automatically
 result in the termination of its function. When a function's default worker
 terminates, causing the function to terminate, the function does not
@@ -7327,17 +7435,13 @@ identifier is declared as <code>configurable</code>).</li>
 variable-reference-lvexpr or in a capture-binding-pattern in a
 destructuring-assignment-stmt must not refer to a variable defined by a
 module-var-decl that does not include <code>isolated</code>.</li>
-<li>Captured variables are restricted as follows: if the body is part of an
-anonymous-function-expr, then any captured variable references must refer to
-variables that are both final (either explicitly or implicitly) and have a
-static type that is a subtype of <code>readonly|isolated object {}</code>.</li>
-<li>New workers cannot be started: the following constructs are not allowed
-<ul>
-<li>named-worker-decl</li>
-<li>fork-stmt</li>
-<li>start-action</li>
-</ul>
-</li>
+<li>A variable reference to a captured variable must refer to variables that are
+both final (either explicitly or implicitly) and have a static type that is a
+subtype of <code>readonly|isolated object {}</code>, where a variable reference
+is captured if it occurs within an anonymous-function-expr or named-worker-decl
+and refers to a variable declared within the function but outside of that
+anonymous-function-expr or named-worker-decl.</li>
+<li>A start-action is allowed only if its call-action-or-expression is isolated.</li>
 </ul>
 <p>
 If an isolated function has an <code>external-function-body</code>, then the
@@ -7361,6 +7465,7 @@ class="grammar"><dfn>statement</dfn> :=
    | <abbr>compound-assignment-stmt</abbr>
    | <abbr>destructuring-assignment-stmt</abbr>
    | <abbr>call-stmt</abbr>
+   | <abbr>checking-stmt</abbr>
    | <abbr>if-else-stmt</abbr>
    | <abbr>regular-compound-stmt</abbr>
    | <abbr>continue-stmt</abbr>
@@ -7476,7 +7581,8 @@ class="grammar"><dfn>fork-stmt</dfn> := <code>fork</code> <code>{</code> <abbr>n
 </pre>
 <p>
 The fork statement starts one or more named workers, which run in parallel with
-each other, each in its own new strand.
+each other, each in its own new strand. The strand can run on a separate thread
+from the current worker if the fork-stmt occurs in an isolated function.
 </p>
 <p>
 Variables and parameters in scope for the fork-stmt remain in scope within the
@@ -7496,7 +7602,12 @@ block-function-body.
 <h3>Start action</h3>
 
 <pre
-class="grammar"><dfn>start-action</dfn> := [<abbr>annots</abbr>] <code>start</code> (<abbr>function-call-expr</abbr>|<abbr>method-call-expr</abbr>|<abbr>client-remote-method-call-action</abbr>)
+class="grammar"><dfn>start-action</dfn> := [<abbr>annots</abbr>] <code>start</code> <abbr>call-action-or-expr</abbr>
+<dfn>call-action-or-expr</dfn> :=
+   <abbr>function-call-expr</abbr>
+   | <abbr>method-call-expr</abbr>
+   | <abbr>client-remote-method-call-action</abbr>
+   | <abbr>client-resource-access-action</abbr>
 </pre>
 
 <p>
@@ -7508,7 +7619,19 @@ action <code><var>C</var></code> is T, then the static type of <code>start
 <var>C</var></code> is future&lt;T&gt;; it is permitted for T to be
 <code>never</code>.
 </p>
-
+<p>
+A call-action-or-expr is <em>isolated</em> if the function or method it calls
+has a type that is isolated and the expression for every argument is an <a
+href="#isolated_expressions">isolated expression</a>; for this purpose, the
+object whose method is called by the method-call-expr or
+client-remote-method-call-action is treated as an argument. When a start-action
+has a call-action-or-expr that is isolated then
+</p>
+<ul>
+<li>the start-action is allowed in an isolated function, and</li>
+<li>the strand created by the start-action may run in a separate thread from the
+current thread.</li>
+</ul>
 
 </section>
 <section>
@@ -7945,6 +8068,11 @@ success before it has executed one member from every send set.</li>
 A client object is a stub that allows a worker to send network messages to a
 remote system according to some protocol. A local variable declared with client
 object type will be depicted as a lifeline in the function's sequence diagram.
+</p>
+
+<section>
+<h4>Remote methods</h4>
+<p>
 The remote methods of the client object correspond to distinct network messages
 defined by the protocol for the role played by the client object. The return
 value of a remote method represents the protocol's response. A
@@ -7964,9 +8092,75 @@ expression, except that it is used for a client object method with the
 </section>
 
 <section>
+<h4>Resources</h4>
+
+<pre
+class="grammar"><dfn>client-resource-access-action</dfn> :=
+   <abbr>expression</abbr> <code>-&gt;</code> <code>/</code> [<abbr>resource-access-path</abbr>] [<code>.</code> <abbr>resource-method-name</abbr>] [<code>(</code> <abbr>arg-list</abbr> <code>)</code>]
+
+<dfn>resource-access-path</dfn> :=
+   <abbr>resource-access-path-segments</abbr> [<code>/</code> <abbr>resource-access-rest-segment</abbr>]
+   | <abbr>resource-access-rest-segment</abbr>
+
+<dfn>resource-access-path-segments</dfn> :=
+   <abbr>resource-access-path-segment</abbr> (<code>/</code> <abbr>resource-access-path-segment</abbr> )* 
+
+<dfn>resource-access-path-segment</dfn> :=
+   <abbr>resource-path-segment-name</abbr>
+   | <abbr>computed-resource-access-path-segment</abbr>
+
+<dfn>computed-resource-access-path-segment</dfn> := <code>[</code> <abbr>expression</abbr> <code>]</code>
+
+<dfn>resource-access-rest-segment</dfn> := <code>[</code> <code>...</code> <abbr>expression</abbr> <code>]</code>
+</pre>
+<p>
+A <code>client-resource-access-action</code> performs a <a
+href="resources_defn">resource access operation</a> on a client object. An
+omitted <code>resource-method-name</code> defaults to <code>get</code>; if the
+parentheses and the <code>arg-list</code> are omitted, then they default to
+<code>()</code>, with arguments being defaulted as usual.
+</p>
+<p>
+A <code>client-resouce-access-action</code> is evaluated by:
+</p>
+<ul>
+<li>evaluating the code expression preceding the <code>-&gt;</code> resulting in
+a client object <var>c</var>;</li>
+<li>evaluating the <code>resource-access-path</code> to get a list of values
+<var>p</var>
+<ul>
+<li>a <code>resource-access-path</code> that is just <code></code> makes <var>p</var> be
+an empty list</li>
+<li>a <code>resource-path-segment-name</code> appends a string to <var>p</var></li>
+<li>a <code>computed-resource-access-path-segment</code> is evaluated and the
+result is appended to <var>p</var>;</li>
+<li>a <code>resource-access-rest-segment</code> is evaluated and every member
+of the result, which must be a list, is appended to <var>p</var>;</li>
+</ul>
+</li>
+<li>evaluating the <code>arg-list</code> to get an argument list
+<var>a</var>;</li>
+<li>invoking the resource access operation on the <var>c</var> using the
+<code>resource-method-name</code>, <var>p</var> and <var>a</var>, resulting in a value
+<var>v</var>.</li>
+</ul>
+<p>
+The result of the <code>client-resource-access-action</code> is <var>v</var>.
+</p>
+<p>
+The static type of the client object must contain a resource with specified
+method name for every list value that may be constructed by the evaluation of
+the <code>resource-access-path</code>. The argument list and result value are
+typed using the intersection of the function types allowed for the method name
+with any of the resource paths.
+</p>
+
+</section>
+</section>
+<section>
 <h3>Query action</h3>
 <pre
-class="grammar"><dfn>query-action</dfn> := <abbr>query-pipeline</abbr> <abbr>do-clause</abbr>
+class="grammar"><dfn>query-action</dfn> := <abbr>query-action-pipeline</abbr> <abbr>do-clause</abbr>
 <dfn>do-clause</dfn> := <code>do</code> <abbr>statement-block</abbr>
 </pre>
 <p>
@@ -8608,17 +8802,25 @@ the static type of an action in an action-stmt is not nil.
 
 <pre
 class="grammar"><dfn>call-stmt</dfn> := <abbr>call-expr</abbr> <code>;</code>
-<dfn>call-expr</dfn> :=
-   <abbr>function-call-expr</abbr>
-   | <abbr>method-call-expr</abbr>
-   | <abbr>checking-keyword</abbr> <abbr>call-expr</abbr>
+<dfn>call-expr</dfn> := <abbr>function-call-expr</abbr> | <abbr>method-call-expr</abbr>
 </pre>
 <p>
 A call-stmt is executed by evaluating call-expr as an expression and discarding
-the resulting value, which must be nil. The static type of the call-expr in an
+the resulting value, which must be nil. The static type of the call-expr in a
 call-stmt must be either <code>()</code> or <code>never</code>. If it is
 <code>never</code>, then it is possible for the call-stmt to complete normally.
+</p>
+</section>
+<section>
+<h3>Checking statement</h3>
 
+<pre
+class="grammar"><dfn>checking-stmt</dfn> := <abbr>checking-action-or-expr</abbr> <code>;</code>
+</pre>
+<p>
+A checking-stmt is executed by evaluating checking-action-or-expr as an
+expression and discarding the resulting value, which must be nil. The static
+type of the checking-action-or-expr in a checking-stmt must be <code>()</code>.
 </p>
 </section>
 <section>
@@ -9099,24 +9301,24 @@ worker.
 <h4>On fail clause</h4>
 <pre
 class="grammar"><dfn>stmt-with-on-fail</dfn> := <abbr>regular-compound-stmt</abbr> <abbr>on-fail-clause</abbr>
-<dfn>on-fail-clause</dfn> := <code>on</code> <code>fail</code> <abbr>typed-binding-pattern</abbr> <abbr>statement-block</abbr>
+<dfn>on-fail-clause</dfn> := <code>on</code> <code>fail</code> [<abbr>typed-binding-pattern</abbr>] <abbr>statement-block</abbr>
 </pre>
 <p>
 A <code>stmt-with-on-fail</code> is executed by executing the
 <code>regular-compound-stmt</code>. A <code>check</code> expression or action,
 or a <code>fail</code> statement may cause control to transfer to the
-<code>on-fail-cause</code>. In this case, the <code>typed-binding-pattern</code>
-is matched to the associated error value, binding the variables occurring within
-the <code>typed-binding-pattern</code>; the <code>statement-block</code> is then
-executed with these bindings in scope. Otherwise, the
-<code>on-fail-clause</code> is not executed.
+<code>on-fail-cause</code>. If so, the <code>statement-block</code> is executed;
+otherwise the <code>statement-block</code> is not executed.
 </p>
 <p>
-The static type of the associated error value is determined from the static type
-of the relevant <code>check</code> expressions and actions, and
-<code>fail</code> statements. It is a compile error unless the match of the
-<code>typed-binding-pattern</code> with the associated error value is guaranteed
-to succeed by the static type of the associated error value.
+If there is a <code>typed-binding-pattern</code>, then it is matched to the
+associated error value, binding the variables occurring within the
+<code>typed-binding-pattern</code>; the <code>statement-block</code> is executed
+with these bindings in scope. The static type of the associated error value is
+determined from the static type of the relevant <code>check</code> expressions
+and actions, and <code>fail</code> statements. It is a compile error unless the
+match of the <code>typed-binding-pattern</code> with the associated error value
+is guaranteed to succeed by the static type of the associated error value.
 </p>
 </section>
 
@@ -9540,6 +9742,7 @@ class="grammar"><dfn>predeclared-prefix</dfn> :=
    | <code>decimal</code>
    | <code>error</code>
    | <code>float</code>
+   | <code>function</code>
    | <code>future</code>
    | <code>int</code>
    | <code>map</code>
@@ -9646,12 +9849,16 @@ unsuccessful, terminates the program execution.
 Service objects support network interaction using remote methods and resource
 methods. Listeners provide the interface between the network and service
 objects. A listener object receives network messages from a remote process
-according to some protocol and translates the received messages into calls on
-the remote and resource methods of service objects that have been attached to
+according to some protocol and translates the received messages into remote
+methods calls or resource accesses of service objects that have been attached to
 the listener object. It is up to the listener object to determine how this
-translation happens; the type of the listener object constrains the type of a
-service that can be attached to the listener. (This constraint cannot yet be
-fully expressed by Ballerina's type system.)
+translation happens. A resource path segment may correspond to something that at
+the protocol level is not a string. For example, in HTTP a path segment is
+natively a sequence of bytes. In this case, the listener should be able to
+convert this native representation into a string, for example, by using UTF-8
+decoding. The type of the listener object constrains the type of a service that
+can be attached to the listener. (This constraint cannot yet be fully expressed
+by Ballerina's type system.)
 </p>
 <p>
 A service object's remote or resource method uses its return value to indicate
@@ -9798,6 +10005,7 @@ fails.</li>
 </ol>
 </section>
 
+
 <section>
 <h4>Isolated inference</h4>
 
@@ -9818,7 +10026,10 @@ explicitly specified an <code>isolated</code> qualifier, then they all would
 meet the requirements for <a href="#isolated_functions">isolated functions</a>
 and isolated objects. If so, then the isolated bit of values resulting from them
 is set in the same way as if <code>isolated</code> qualifiers had been
-explicitly specified.
+explicitly specified. The analysis should not infer a function or method to be
+<code>isolated</code> if that would be inconsistent with an annotion supported
+by the implementation that provides control over which thread is used for a strand
+created for named-worker-decl or start-action.
 </p>
 <p>
 This inference is purely an optimization to improve service concurrency and is
@@ -10327,8 +10538,8 @@ The available attachment points are described in the following table.
   </tr>
   <tr>
    <td>field</td>
-   <td>individual-field-descriptor, object-field-descriptor</td>
-   <td>type of mapping or object</td>
+   <td>individual-field-descriptor, member-type-descriptor, object-field-descriptor</td>
+   <td>type of mapping, list or object</td>
   </tr>
   <tr>
    <td>object field</td>
@@ -10961,7 +11172,10 @@ public isolated function abs(decimal x) returns decimal = external;
 # + return - closest decimal value to `x` that is an integral multiple of 10 raised to the power of `-fractionDigits`
 public isolated function round(decimal x, int fractionDigits = 0) returns decimal = external;
 
-# IEEE quantize operation.
+# Return a decimal with a specified value and exponent.
+# Return a decimal value that has the same value (except for rounding) as the first
+# argument, and the same exponent as the second argument.
+# This is the IEEE quantize operation.
 # + x - decimal value to operate on
 # + y - decimal value from which to get the quantum
 # + return - `x` with the quantum of `y`
@@ -11388,6 +11602,26 @@ public isolated function toFixedString(float x, int? fractionDigits) returns str
 #    the minimum number of digits required to accurately represent the value
 # + return - string representation of `x` in scientific notation 
 public isolated function toExpString(float x, int? fractionDigits) returns string = external;
+]]></pre>
+
+</section>
+
+<section>
+<h4 id="lang.function"><code>lang.function</code> module</h4>
+
+<p>The <code>lang.function</code> module corresponds to basic type function.</p>
+
+<pre class="langlib"><![CDATA[
+
+# Calls a function dynamically.
+# If the arguments specified in `args` are not of the type required by `func`,
+# then this will panic.
+#
+# + func - the function to be called
+# + args - the arguments to be passed to the function
+# + return - the return value of the call to the function
+public isolated function call(@isolatedParam function func, any|error... args)
+    returns any|error = external;
 ]]></pre>
 
 </section>
@@ -12627,6 +12861,17 @@ public type StackFrame readonly & object {
 # + return - an array representing the current call stack
 # The first member of the array represents the top of the call stack.
 public isolated function getStackTrace() returns StackFrame[] = external;
+
+# Type of the function passed to `onGracefulStop.
+public type StopHandler function() returns error?;
+
+# Registers a function that will be called during graceful shutdown.
+# A call to `onGracefulStop` will result in one call to the handler function
+# that was passed as an argument; the handler functions will be called
+# after calling `gracefulStop` on all registered listeners,
+# in reverse order of the corresponding calls to `onGracefulStop`.
+# + handler - function to be called
+public isolated function onGracefulStop(StopHandler handler) = external;
 ]]></pre>
 
 </section>
@@ -12848,6 +13093,34 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 </section>
 <section class="appendix">
 <h2 id="changes">B. Changes since previous releases</h2>
+<section>
+<h3>Summary of changes from 2021R2 to 2022R3</h3>
+<ol>
+<li>Client objects can declare resource methods, which can be accessed using new
+<code>client-resource-access-action</code> syntax. Resource methods are now part
+of the type of network interaction objects and can be specified in object type
+descriptors.</li>
+<li>The <code>isolated</code> feature can now be used to identify cases where
+a strand created by <code>start</code> or a named worker can be run safely on
+a separate thread.</li>
+<li>The variable declaration in an <code>on fail</code> clause is now
+optional.</li>
+<li>Query expressions producing xml values will now work properly when used as
+interpolated expressions in XML templates.</li>
+<li>Query expressions may be used to construct maps.</li>
+<li>Query expressions can now construct readonly values.</li>
+<li>Annotations are now allowed on members of tuple type descriptors.</li>
+<li>The <code>call</code> function has been added to <code>lang.function</code>
+to allow for dynamically calling a function.</li>
+<li>An <code>onGracefulStop</code> function has been added to
+<code>lang.runtime</code>.</li>
+<li>The grammar now allows an action such as a remote method call to occur
+inside a query.</li>
+<li>A <code>check</code> expression is now allowed as a statement, provided that
+its type is nil.</li>
+</ol>
+</section>
+
 <section>
 <h3>Summary of changes from 2021R1 to 2022R2</h3>
 <ol>

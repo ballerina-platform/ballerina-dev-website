@@ -159,3 +159,7 @@ String formattedMsg = util:properCaseMessage("hello world!");
 ```
 
 Since the `import-prefix` is not given, the module name `util` is used to refer to the symbols in the `hello_world.util` module. 
+
+## Package references
+
+For information about the structure of a package directory, see [Package references](/learn/organize-ballerina-code/package-references/). 

@@ -1,0 +1,11 @@
+{
+  "title": "Identifiers",
+  "description": "This BBE introduces identifiers in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "identifiers"],
+  "permalink": "/learn/by-example/identifiers",
+  "active": "identifiers",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/identifiers",
+    "/swan-lake/learn/by-example/identifiers.html"
+  ]
+}

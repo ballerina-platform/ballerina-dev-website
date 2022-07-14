@@ -1,0 +1,18 @@
+- title: Write a GraphQL API with Ballerina
+  url: #
+  sublinks:
+    - title: Set up the prerequisites
+      url: /learn/write-a-graphql-api-with-ballerina/#set-up-the-prerequisites
+      active: set-up-the-prerequisites
+    - title: Design the GraphQL endpoint
+      url: /learn/write-a-graphql-api-with-ballerina/#design-the-graphql-endpoint
+      active: design-the-graphql-endpoint
+    - title: Create a data source for the package
+      url: /learn/write-a-graphql-api-with-ballerina/#create-a-data-source-for-the-package
+      active: create-a-data-source-for-the-package
+    - title: Write the Ballerina service
+      url: /learn/write-a-graphql-api-with-ballerina/#write-the-ballerina-service
+      active: write-the-ballerina-service
+    - title: Access the GraphQL endpoint
+      url: /learn/write-a-graphql-api-with-ballerina/#access-the-graphql-endpoint
+      active: access-the-graphql-endpoint

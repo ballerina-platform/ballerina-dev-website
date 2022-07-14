@@ -1,0 +1,322 @@
+.nav > li.cVersionItem {
+    display: none !important;
+}
+
+.row.cBallerinaIntroSection {
+    background-color: #fff;
+    padding: 0px 0 0px 0;
+}
+#iMainNavigation {
+    background-color: #fff;
+}
+
+.row.cBallerinaFeatureSection {
+    padding: 0px 0;
+}
+
+.navbar-nav > li > a {
+    /* color: #fff; */
+}
+
+a.cMobileLogo img {
+    display: none;
+}
+
+img.cHomePageLogo {
+    width: 330px;
+}
+.row.cBallerinaIntroSection h1 {
+    color: #464646;
+
+    font-size: 40px;
+
+    font-weight: 100;
+
+    line-height: 50px;
+
+    margin: 40px 0;
+}
+
+.row.cBallerinaIntroSection p {
+    /* color: #c0c0c0; */
+}
+
+.cBottomLayer ul {
+    padding: 0;
+
+    margin: 30px 0;
+
+    display: inline-block;
+}
+
+.cBottomLayer ul li {
+    list-style: none;
+
+    display: inline-block;
+
+    float: left;
+
+    margin-right: 30px;
+}
+
+.cTopLayer,
+.cBottomLayer {
+    padding: 0;
+}
+
+.row.cBallerinaIntroSection .cBallerina-io-Home-main-download-button p {
+    padding: 0;
+    margin: 0;
+    font-family: monaco, Consolas, "Lucida Console", monospace;
+    font-size: 11px;
+    color: #fff;
+    margin-left: 1px;
+    line-height: 15px;
+}
+
+.row.cBallerinaIntroSection .cBallerina-io-Home-main-download-button:hover p {
+    color: #464646;
+}
+
+a.cBBEButton {
+    background-color: #fff;
+    background-image: url("/img/go-bg-green.svg") !important;
+    /* -webkit-transform: rotate(30deg); */
+}
+a.cPlayButton {
+    background-color: #fff;
+    background-image: url("/img/main-play-green-btn.svg") !important;
+    /* -webkit-transform: rotate(30deg); */
+}
+
+a.cBBEButton p,
+a.cPlayButton p {
+    color: #464646 !important;
+}
+a.cBBEButton:hover p {
+    /* color: #ffffff  !important; */
+}
+
+a.cBBEButton img,
+a.cPlayButton img {
+    width: 230px;
+}
+
+a.cIconLink {
+    color: #fff;
+    padding: 10px 0;
+    padding-right: 0px;
+    padding-right: 40px;
+    background-image: url("/img/go-bg-home.svg");
+    background-repeat: no-repeat;
+    background-position: right center;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+a.cIconLink:hover {
+    color: #20b6b0;
+    background-image: url("/img/go-bg-home-hover.svg");
+}
+
+.cBallerina-io p.cQuotes {
+    padding: 30px 0;
+    padding: 40px 0;
+
+    padding-bottom: 40px;
+
+    display: inline-block;
+
+    color: #7f7f7f;
+
+    width: 100%;
+
+    /* font-style: italic; */
+
+    margin-top: 5px;
+
+    font-size: 20px;
+
+    font-weight: 100;
+
+    margin-bottom: 3px;
+
+    font-family: "Special Elite", cursive;
+
+    line-height: 36px;
+
+    padding-bottom: 11px;
+}
+
+.cQuotes span {
+    float: right;
+}
+.cBallerina-io p.cQuotes span a {
+    color: #c7c7c7;
+    font-size: 16px;
+}
+
+body.cBallerina-io .container.cFeatureSection {
+    padding: 20px 0;
+    /* margin-bottom: 80px; */
+    border-bottom: 1px solid #c7c7c7;
+}
+
+body.cBallerina-io .container.cFeatureSection:last-child {
+    border: none !important;
+}
+
+.cFeatureSection p {
+    margin-bottom: 30px;
+}
+table.cFeaturesNav {
+    /* width: 100%; */
+
+    position: sticky;
+
+    top: 0;
+}
+
+table.cFeaturesNav td {
+    text-align: left;
+    padding-right: 50px;
+}
+
+table.cFeaturesNav td a {
+    font-size: 16px;
+    font-weight: 600;
+    color: #20b6b0;
+}
+
+.cColDiagram {
+    text-align: center;
+}
+
+.cColDiagram img {
+    width: 100%;
+}
+
+.row.cBallerinaFeatureSectionNavRow.stick {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+div.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    padding: 10px;
+    z-index: 99999;
+}
+
+a.cBookmarkTop {
+    position: absolute;
+    margin-top: -140px;
+}
+
+.cMainCTAContainer {
+    padding-top: 10px;
+}
+
+a.cBallerina-io-Home-main-download-button {
+    margin-bottom: 10px;
+    min-width: 350px;
+    border: 1px solid #20b6b0;
+}
+
+/* a.cBallerina-io-Home-main-download-button.cBBEButton {
+    background-color: transparent;
+    color: #20b6b0;
+    border: 1px solid #20b6b0;
+    background-image: url("/img/main-go-icon.svg");
+
+}
+
+a.cBallerina-io-Home-main-download-button.cBBEButton:hover {
+    color: #464646;
+    background-color: #fff;
+    border: 1px solid #fff;
+    background-image: url("/img/main-go-icon-green.svg");
+}
+.row.cBallerinaIntroSection .cBallerina-io-Home-main-download-button.cBBEButton p {
+    color: #20b6b0;
+} */
+
+a.cBallerina-io-Home-main-download-button.cCentralButton {
+    background-color: transparent;
+    color: #20b6b0;
+    border: 1px solid #20b6b0;
+    background-image: url("/img/main-go-icon.svg");
+}
+
+a.cBallerina-io-Home-main-download-button.cCentralButton:hover {
+    color: #464646;
+    background-color: #fff;
+    border: 1px solid #fff;
+    background-image: url("/img/main-go-icon-green.svg");
+}
+
+.cSmallImage img {
+    margin-top: 50px;
+}
+
+.row.cBallerinaIntroSection .cBallerina-io-Home-main-download-button.cCentralButton p {
+    color: #20b6b0;
+}
+
+p a {
+    color: #20b6b0;
+}
+
+ul.cInlinelinklist {
+    padding: 0;
+}
+
+ul.cInlinelinklist li a {
+    color: #20b6b0;
+}
+
+ul.cInlinelinklist li {
+    list-style: none !important;
+    padding-left: 40px;
+    background-image: url("/img/toc-bg.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0 0 10px 0;
+    margin-left: 0 !important;
+    width: 100%;
+    display: block;
+    float: none;
+}
+
+@media screen and (max-width: 990px) {
+    .cBallerina-io p.cQuotes {
+        margin-top: 30px;
+    }
+
+    a.cBallerina-io-Home-main-download-button {
+        float: left;
+        margin-bottom: 40px;
+    }
+
+    .cQuotes span {
+        float: left;
+
+        display: inline-block;
+
+        width: 100%;
+
+        margin-top: 20px;
+    }
+    .cFeaturesNav {
+        display: none;
+    }
+    .cFeatureSection img {
+        width: 100%;
+    }
+    button.navbar-toggle {
+        background: #fff;
+    }
+}

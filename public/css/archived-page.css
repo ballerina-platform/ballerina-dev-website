@@ -1,0 +1,45 @@
+.col-lg-6.cBallerina-io-Home-Middle-col {
+    padding: 0 15px;
+    width: 100%;
+}
+
+.cBallerina-io-Home-Left-col {
+ 	display: none;
+}
+
+.cBallerina-io-Home-Middle-col {
+	width: 100% !important;
+}
+
+.wy-nav-content {
+    width: 100% !important;
+	max-width: 100%;
+}
+
+.cStandaloneInstallers h2 {
+	margin: 25px 0;
+}
+
+.cStandaloneInstallers .cInstallers {
+	background-color: #ffffff;
+}
+
+.cInstallers table {
+	width: 100%;
+	margin: 0;
+}
+
+.cInstallers table tr td {
+	padding: 3px 7px 3px 7px;
+	font-size: 13px;
+	font-weight: 400;
+	color: #585a5e;
+}
+
+.cInstallers table tr td a {
+	color: #22b7b1;
+}
+
+.rst-content .section .docutils {
+	display: table;
+}

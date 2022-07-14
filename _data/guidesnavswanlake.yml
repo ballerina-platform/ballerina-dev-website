@@ -1,0 +1,141 @@
+- title: Why Ballerina
+  url: '#'
+  sublinks:
+    - title: Cloud native
+      url: /learn/why-ballerina/cloud-native/
+      active: cloud-native
+    - title: Flexibly typed
+      url: /learn/why-ballerina/flexibly-typed/
+      active: flexibly-typed
+    - title: Data oriented
+      url: /learn/why-ballerina/data-oriented/
+      active: data-oriented
+    - title: Graphical
+      url: /learn/why-ballerina/graphical/
+      active: graphical
+    - title: Concurrent
+      url: /learn/why-ballerina/concurrent/
+      active: concurrent
+    - title: Reliable, maintainable
+      url: /learn/why-ballerina/reliable-maintainable/
+      active: reliable-maintainable
+
+- title: Organize Ballerina code
+  url: '#'
+  sublinks:
+    - title: Package layout
+      url: /learn/organize-ballerina-code/package-layout/
+      active: package-layout
+    - title: Modules
+      url: /learn/organize-ballerina-code/modules/
+      active: modules
+
+- title: Teste Ballerina code
+  url: '#'
+  sublinks:
+    - title: Quick start on testing
+      url: /learn/test-ballerina-code/testing-a-simple-function/
+      active: test-a-simple-function
+    - title: Write tests
+      url: /learn/test-ballerina-code/write-tests/
+      active: write-tests
+    - title: Structure tests
+      url: /learn/test-ballerina-code/structure-tests/
+      active: structure-tests
+    - title: Configure tests
+      url: /learn/test-ballerina-code/configure-tests/
+      active: configure-tests
+    - title: Code coverage and reporting
+      url: /learn/test-ballerina-code/code-coverage-and-reporting/
+      active: code-coverage-and-reporting
+    - title: Define data-driven tests
+      url: /learn/test-ballerina-code/define-data-driven-tests/
+      active: define-data-driven-tests
+    - title: Define test groups
+      url: /learn/test-ballerina-code/define-test-groups/
+      active: define-test-groups
+    - title: Test services and clients
+      url: /learn/test-ballerina-code/test-services-and-clients/
+      active: test-services-and-clients
+    - title: Mock Objects
+      url: /learn/test-ballerina-code/mock-objects/
+      active: mock-objects
+    - title: Execute tests
+      url: /learn/test-ballerina-code/execute-tests/
+      active: execute-tests
+
+- title: Generate code documentation
+  url: /learn/generate-code-documentation
+  active: generate-code-documentation
+
+- title: Configure Ballerina programs
+  url: '#'
+  sublinks:
+    - title: Quick start on using configurable variables
+      url: /learn/configure-ballerina-programs/quick-start-on-configurable-variables
+      active: quick-start-on-configurable-variables
+      sublinks:
+        - title: Configure a sample Ballerina service
+          url: /learn/configure-ballerina-programs/quick-start-on-configurable-variables/#configure-a-sample-ballerina-service
+          active: configure-a-sample-ballerina-service
+    - title: Provide values to configurable variables
+      url: /learn/configure-ballerina-programs/provide-values-to-configurable-variables
+      sublinks:
+        - title: Provide configuration values through Command Line Arguments
+          url: /learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-configuration-values-through-command-line-arguments
+          active: provide-values-through-command-line-arguments
+        - title: Provide configuration values through TOML syntax
+          url: /learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-configuration-values-through-toml-syntax
+          active: provide-configuration-values-through-toml-syntax
+        - title: Provide module information of the configurable variable
+          url: /learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-module-information-of-the-configurable-variable
+          active: provide-module-info-of-configurable-variable
+    - title: Configure values in Kubernetes environments
+      url: /learn/configure-ballerina-programs/configure-values-in-kubernetes-environment/
+      sublinks:
+        - title: Secure sensitive data using configurable variables
+          url: /learn/configure-ballerina-programs/configure-values-in-kubernetes-environment/#secure-sensitive-data-using-configurable-variables
+          active: secure-sensitive-data-using-configurable-variables
+
+- title: Observe Ballerina programs
+  url: '#'
+  sublinks:
+    - title: Observe your application with Prometheus, Grafana, and Jaeger
+      url: /learn/observe-ballerina-programs/observe-your-application-with-prometheus-grafana-and-jaeger/
+      active: observe-your-application-with-prometheus-grafana-and-jaeger
+    - title: Observe your application with Choreo
+      url: /learn/observe-ballerina-programs/observe-your-application-with-choreo/
+      active: observe-your-application-with-choreo
+
+- title: Run Ballerina programs in the cloud
+  url: '#'
+  sublinks:
+    - title: Code to Cloud
+      url: /learn/run-ballerina-programs-in-the-cloud/code-to-cloud/
+      active: code-to-cloud
+      sublinks:
+        - title: Code to Cloud deployment
+          url: /learn/run-ballerina-programs-in-the-cloud/code-to-cloud/code-to-cloud-deployment
+          active: code-to-cloud-deployment
+    - title: Function as a Service (FaaS) with Ballerina
+      url: '#'
+      sublinks:
+        - title: AWS Lambda
+          url: /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
+          active: aws-lambda
+        - title: Azure Functions
+          url: /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
+          active: azure-functions
+
+- title: Manage dependencies
+  url: /learn/manage-dependencies/
+  active: manage-dependencies
+
+- title: Publish packages to Ballerina Central
+  url: /learn/publish-packages-to-ballerina-central/
+  active: publish-packages-to-ballerina-central
+
+- title: Call Java code from Ballerina
+  url: /learn/call-java-code-from-ballerina/
+  active: call-java-code-from-ballerina
+

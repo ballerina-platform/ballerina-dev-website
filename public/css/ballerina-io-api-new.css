@@ -1,0 +1,62 @@
+
+.logo , .row.cBallerina-io-top-row {
+    display: none;
+}
+body.cBallerina-io.pushable {
+    background: #fff !important;
+}
+
+#iMainNavigation .container {
+    width: 100%;
+}
+
+body .content-wrapper .module-title a.functions,  body .content-wrapper .modules  , body .content-wrapper .module-title a.records{
+    color: #20b6b0 !important;
+}
+
+.navi-wrapper .version, .navi-wrapper-sidebar .version {
+
+    text-align: right;
+    margin-right: 7.2em;
+    margin-top: 5px !important;
+    margin-bottom: 2em;
+    margin-right: 1.4em;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+a.toc.item {
+    top: 152px !important;
+}
+
+
+body .content-wrapper .main-wrapper {
+    margin-bottom: 20px !important;
+}
+
+
+
+.module-wrapper h1 {
+    font-size: 45px;
+    color: #585A5E;
+    font-weight: 200;
+    margin-bottom: 30px;
+}
+
+.module-wrapper h2 {
+	font-size: 30px;
+	margin-top: 40px !important;
+	margin-bottom: 40px;
+	font-weight: 600;
+	color: #464646;
+	border-bottom: 2px solid #464646 !important;
+	display: inline-block;
+	padding-bottom: 10px;
+
+    
+}
+
+.table-striped td, .table-striped th {
+    border: none !important;
+    
+}

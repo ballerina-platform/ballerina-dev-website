@@ -1,0 +1,19 @@
+{
+  "title": "Historical message replay",
+  "description": "BBE on using the historical message replay feature of NATS streaming server using Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "nats",
+    "streaming",
+    "message",
+    "replay"
+  ],
+  "permalink": "/learn/by-example/nats-streaming-start-position",
+  "active": "nats-streaming-start-position",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/nats-streaming-start-position",
+    "/swan-lake/learn/by-example/nats-streaming-start-position.html"
+  ]
+}

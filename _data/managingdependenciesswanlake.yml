@@ -1,0 +1,29 @@
+- title: Manage dependencies
+  url: #
+  sublinks:
+    - title: Specify dependencies
+      url: /learn/manage-dependencies/#specify-dependencies
+      active: specify-dependencies
+      sublinks:
+        - title: Import a module
+          url: /learn/manage-dependencies/#import-a-module
+          active: import-a-module
+    - title: Specify dependency versions
+      url: /learn/manage-dependencies/#specify-dependency-versions
+      active: specify-dependency-versions
+    - title: Use dependencies from the local repository
+      url: /learn/manage-dependencies/#use-dependencies-from-the-local-repository
+      active: use-dependencies-from-the-local-repository
+    - title: Achieve reproducible builds
+      url: /learn/manage-dependencies/#achieve-reproducible-builds
+      sublinks:
+        - title: The sticky mode
+          url: /learn/manage-dependencies/#the-sticky-mode
+          active: the-sticky-mode
+        - title: The offline mode
+          url: /learn/manage-dependencies/#the-offline-mode
+          active: the-offline-mode
+      active: achieve-reproducible-builds
+    - title: Version compatibility
+      url: /learn/manage-dependencies/#version-compatibility
+      active: version-compatibility

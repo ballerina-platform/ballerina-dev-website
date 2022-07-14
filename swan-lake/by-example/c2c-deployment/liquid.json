@@ -1,0 +1,11 @@
+{
+  "title": "Kubernetes",
+  "description": "",
+  "keywords": [],
+  "permalink": "/learn/by-example/c2c-deployment",
+  "active": "c2c-deployment",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/c2c-deployment",
+    "/swan-lake/learn/by-example/c2c-deployment.html"
+  ]
+}

@@ -1,0 +1,16 @@
+.cBallerina-io-Home-Middle-col {
+    padding: 0;
+}
+.icon.icon-github {
+    display: none;
+
+}
+
+
+.cBallerina-io-breadcrumbs {
+    padding: 0 15px;
+}
+
+h1 , #table-of-content {
+    display: none !important;
+}

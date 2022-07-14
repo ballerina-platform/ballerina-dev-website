@@ -1,0 +1,110 @@
+.balActionTabs {
+    width: 100%;
+    background: #f5f5f5;
+    border: 1px #c7c7c7 solid !important;
+    /* border-bottom: none !important; */
+    justify-content: space-around;
+}
+
+.balActionTabs li button {
+    color: #20b6b0;
+    cursor: default;
+    background: #f5f5f5;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.balActionTabs li button:focus, .balActionTabs li button:hover {
+    color: #555 !important;
+    border-color: #f5f5f5 !important;
+    isolation: isolate;
+}
+
+.balActionTabs li button[aria-selected="true"],
+.balActionTabs li button[aria-selected="true"]:focus,
+.balActionTabs li button[aria-selected="true"]:hover {
+    color: #555 !important;
+    cursor: default;
+    background-color: #f5f5f5 !important;
+    border: transparent;
+    border-bottom: #20b6b0 3px solid !important;
+}
+
+@media (min-width: 576px) {
+.col1 {
+    padding-right: 0 !important;
+}
+
+.col2 {
+    padding-left: 0 !important;
+}
+}
+
+.focusPane {
+    padding: 20px;
+    border: 1px #c7c7c7 solid;
+    height: 100%;
+}
+
+.focusPane:hover {
+    transform: scale(1.019);
+    background-color: #f5f5f5;
+    border: 1px #20b6b0 solid !important;
+    z-index: 7;
+}
+
+.balActionTabs pre code {
+    font-size: 12px !important;
+}
+
+.balActionTabs .line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: 0em;
+    width: 0em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.balActionTabs .code[class*="language-"], 
+.balActionTabs .pre[class*="language-"] {
+    font-size: 12px !important;
+}
+
+.balActionTabs .line-numbers-rows > span {
+    pointer-events: none;
+    display: none;
+    counter-increment: linenumber;
+}
+
+.balActionTabs .line-numbers-rows > span:before {
+    content: counter(linenumber);
+    color: #999;
+    display: none;
+    padding-right: 0em;
+    text-align: right;
+}
+
+.balActionTabs pre.line-numbers {
+    position: relative;
+    padding-left: 15px !important;
+    counter-reset: linenumber;
+}
+
+.playgroundButton {
+    background: url(/images/play=button.svg)no-repeat scroll right center;
+    color: #20b6b0;
+    padding: 12px 30px;
+    border: none;
+    float: right;
+    background-size: 20px;
+    font-size: 17px;
+    margin-right: 50px;
+    margin-top: 50px;
+}

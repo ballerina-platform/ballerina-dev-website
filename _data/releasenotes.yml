@@ -1,0 +1,175 @@
+- title: Swan Lake release notes
+  url: '#'
+  sublinks:
+    - title: 2201.1.0 (Swan Lake Update 1)
+      url: /downloads/swan-lake-release-notes/2201.1.0
+      active: 2201-1-0
+    - title: 2201.0.4 (Swan Lake)
+      url: /downloads/swan-lake-release-notes/2201.0.4
+      active: 2201-0-4
+    - title: 2201.0.3 (Swan Lake)
+      url: /downloads/swan-lake-release-notes/2201.0.3
+      active: 2201-0-3
+    - title: 2201.0.2 (Swan Lake)
+      url: /downloads/swan-lake-release-notes/2201.0.2
+      active: 2201-0-2
+    - title: 2201.0.1 (Swan Lake)
+      url: /downloads/swan-lake-release-notes/2201.0.1
+      active: 2201-0-1
+    - title: 2201.0.0 (Swan Lake)
+      url: /downloads/swan-lake-release-notes/2201.0.0
+      active: 2201-0-0
+    - title: Swan Lake Beta 6
+      url: /downloads/swan-lake-release-notes/swan-lake-beta6
+      active: swan-lake-beta6
+    - title: Swan Lake Beta 5
+      url: /downloads/swan-lake-release-notes/swan-lake-beta5
+      active: swan-lake-beta5
+    - title: Swan Lake Beta 4
+      url: /downloads/swan-lake-release-notes/swan-lake-beta4
+      active: swan-lake-beta4
+    - title: Swan Lake Beta 3
+      url: /downloads/swan-lake-release-notes/swan-lake-beta3
+      active: swan-lake-beta3
+    - title: Swan Lake Beta 2
+      url: /downloads/swan-lake-release-notes/swan-lake-beta2
+      active: swan-lake-beta2
+    - title: Swan Lake Beta 1
+      url: /downloads/swan-lake-release-notes/swan-lake-beta1
+      active: swan-lake-beta1
+    - title: Swan Lake Alpha 5 
+      url: /downloads/swan-lake-release-notes/swan-lake-alpha5
+      active: swan-lake-alpha5
+    - title: Swan Lake Alpha 4 
+      url: /downloads/swan-lake-release-notes/swan-lake-alpha4
+      active: swan-lake-alpha4
+    - title: Swan Lake Alpha 3 
+      url: /downloads/swan-lake-release-notes/swan-lake-alpha3
+      active: swan-lake-alpha3
+    - title: Swan Lake Alpha 2 
+      url: /downloads/swan-lake-release-notes/swan-lake-alpha2
+      active: swan-lake-alpha2
+    - title: Swan Lake Alpha 1 
+      url: /downloads/swan-lake-release-notes/swan-lake-alpha1
+      active: swan-lake-alpha1
+    - title: Swan Lake Preview 8
+      url: /downloads/swan-lake-release-notes/swan-lake-preview8
+      active: swan-lake-preview8
+    - title: Swan Lake Preview 7
+      url: /downloads/swan-lake-release-notes/swan-lake-preview7
+      active: swan-lake-preview7
+    - title: Swan Lake Preview 6
+      url: /downloads/swan-lake-release-notes/swan-lake-preview6
+      active: swan-lake-preview6
+    - title: Swan Lake Preview 5
+      url: /downloads/swan-lake-release-notes/swan-lake-preview5
+      active: swan-lake-preview5
+    - title: Swan Lake Preview 4
+      url: /downloads/swan-lake-release-notes/swan-lake-preview4
+      active: swan-lake-preview4
+    - title: Swan Lake Preview 3
+      url: /downloads/swan-lake-release-notes/swan-lake-preview3
+      active: swan-lake-preview3
+    - title: Swan Lake Preview 2
+      url: /downloads/swan-lake-release-notes/swan-lake-preview2
+      active: swan-lake-preview2
+    - title: Swan Lake Preview 1
+      url: /downloads/swan-lake-release-notes/swan-lake-preview1
+      active: swan-lake-preview1
+
+- title: 1.2 release notes
+  url: '#'
+  sublinks:
+    - title: 1.2.30
+      url: /downloads/1.2.x-release-notes/1.2.30
+      active: 1.2.30
+    - title: 1.2.29
+      url: /downloads/1.2.x-release-notes/1.2.29
+      active: 1.2.29
+    - title: 1.2.28
+      url: /downloads/1.2.x-release-notes/1.2.28
+      active: 1.2.28
+    - title: 1.2.27
+      url: /downloads/1.2.x-release-notes/1.2.27
+      active: 1.2.27
+    - title: 1.2.26
+      url: /downloads/1.2.x-release-notes/1.2.26
+      active: 1.2.26
+    - title: 1.2.25
+      url: /downloads/1.2.x-release-notes/1.2.25
+      active: 1.2.25
+    - title: 1.2.24
+      url: /downloads/1.2.x-release-notes/1.2.24
+      active: 1.2.24
+    - title: 1.2.23
+      url: /downloads/1.2.x-release-notes/1.2.23
+      active: 1.2.23
+    - title: 1.2.22
+      url: /downloads/1.2.x-release-notes/1.2.22
+      active: 1.2.22
+    - title: 1.2.21
+      url: /downloads/1.2.x-release-notes/1.2.21
+      active: 1.2.21
+    - title: 1.2.20
+      url: /downloads/1.2.x-release-notes/1.2.20
+      active: 1.2.20
+    - title: 1.2.19
+      url: /downloads/1.2.x-release-notes/1.2.19
+      active: 1.2.19
+    - title: 1.2.18
+      url: /downloads/1.2.x-release-notes/1.2.18
+      active: 1.2.18
+    - title: 1.2.17
+      url: /downloads/1.2.x-release-notes/1.2.17
+      active: 1.2.17
+    - title: 1.2.16
+      url: /downloads/1.2.x-release-notes/1.2.16
+      active: 1.2.16
+    - title: 1.2.15
+      url: /downloads/1.2.x-release-notes/1.2.15
+      active: 1.2.15
+    - title: 1.2.14
+      url: /downloads/1.2.x-release-notes/1.2.14
+      active: 1.2.14
+    - title: 1.2.13 
+      url: /downloads/1.2.x-release-notes/1.2.13
+      active: 1.2.13
+    - title: 1.2.12 
+      url: /downloads/1.2.x-release-notes/1.2.12
+      active: 1.2.12
+    - title: 1.2.11 
+      url: /downloads/1.2.x-release-notes/1.2.11
+      active: 1.2.11
+    - title: 1.2.10
+      url: /downloads/1.2.x-release-notes/1.2.10
+      active: 1.2.10
+    - title: 1.2.9 
+      url: /downloads/1.2.x-release-notes/1.2.9
+      active: 1.2.9
+    - title: 1.2.8
+      url: /downloads/1.2.x-release-notes/1.2.8
+      active: 1.2.8
+    - title: 1.2.7
+      url: /downloads/1.2.x-release-notes/1.2.7
+      active: 1.2.7
+    - title: 1.2.6
+      url: /downloads/1.2.x-release-notes/1.2.6
+      active: 1.2.6
+    - title: 1.2.5
+      url: /downloads/1.2.x-release-notes/1.2.5
+      active: 1.2.5
+    - title: 1.2.4
+      url: /downloads/1.2.x-release-notes/1.2.4
+      active: 1.2.4
+    - title: 1.2.3
+      url: /downloads/1.2.x-release-notes/1.2.3
+      active: 1.2.3
+    - title: 1.2.2
+      url: /downloads/1.2.x-release-notes/1.2.2
+      active: 1.2.2
+    - title: 1.2.1
+      url: /downloads/1.2.x-release-notes/1.2.1
+      active: 1.2.1
+    - title: 1.2.0
+      url: /downloads/1.2.x-release-notes/1.2.0
+      active: 1.2.0 

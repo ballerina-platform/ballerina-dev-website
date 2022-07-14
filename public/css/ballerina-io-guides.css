@@ -1,0 +1,112 @@
+.cGreenBox {
+    background-color: #20b6b0;
+    width: 100%;
+    display: inline-block;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.cGreenBoxTitle {
+    color: #ffffff;
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-family: "CalibreWeb-Semibold";
+    letter-spacing: 1px;
+
+}
+
+.cGuidesTabsControls.cSSH , .cGuidesTabsControls.cHTTP {
+    width: 30%;
+}
+.cGuidesTabsControls.cSUBVERSION {
+    width: 40%;
+}
+
+.cGreenBox ul {
+    padding: 0;
+    margin: 0;
+}
+.cGreenBox ul li.cGuidesTabsControls {
+  background: #e6e9ea;
+
+display: inline-block;
+
+float: left;
+
+border: 1px solid #ffffff;
+
+margin-right: -2px;
+}
+.cGreenBox ul li.cGuidesTabsControls.active a {
+    background-color: #ffffff !important;
+    color: #585a5e !important;
+/*    padding-right: 8px !important;*/
+/*    padding: 10px !important;*/
+}
+
+.cGreenBox ul li.cGuidesTabsControls a {
+    text-transform: uppercase;
+/*    color: #23b8b1;*/
+    font-family: "CalibreWeb-Semibold";
+       font-size: 10px;
+        font-weight: bold;
+        width: 100%;
+        text-align: center;
+        padding: 10px 5px;
+        line-height: 10px;
+        letter-spacing: 1px;
+
+
+}
+
+.tab-content {
+    background-color: #ffffff;
+
+    padding: 15px;
+/*    padding-left: 15px;*/
+
+}
+
+a.cBallerina-io-Home-main-download-button.cGuidesDownloadButton {
+    padding: 10px 10px 10px 10px;
+    font-size: 12px;
+    font-family: "CalibreWeb-Semibold";
+    width: 100%;
+    display: inline-block;
+    color: #ffffff;
+    letter-spacing: 1px;
+    background-size: 10%;
+    margin-top: 10px;
+    text-align: center;
+    background-position: 16px center;
+
+}
+.cURL {
+    font-size: 10px;
+
+border: 1px solid #a6a8ab;
+
+width: 85%;
+
+white-space: nowrap;
+
+overflow: hidden;
+
+padding: 3px;
+
+float: left;
+
+display: inline-block;
+
+}
+.cCopyIcon {
+    display: inline-block;
+    float: right;
+    width: 10%;
+}
+
+#gitUrl2 , .icon-github{
+    color: #ffffff;
+}
+

@@ -1,0 +1,64 @@
+- title: Why Ballerina 
+  url: '#'
+  sublinks:
+    - title: Cloud native 
+      url: '#'
+      sublinks:
+        - title: Network-friendly type system
+          url: /why-ballerina/cloud-native/#network-friendly-type-system
+          active: network-friendly-type-system
+        - title: Services 
+          url: /why-ballerina/cloud-native/#services
+          active: services
+        - title: Async network protocol
+          url: /why-ballerina/cloud-native/#async-network-protocol
+          active: async-network-protocol
+        - title: Client objects 
+          url: /why-ballerina/cloud-native/#client-objects
+          active: client-objects
+        - title: Code to Cloud 
+          url: /why-ballerina/cloud-native/#code-to-cloud
+          active: code-to-cloud
+    - title: Flexibly typed
+      url: '#'
+      sublinks:
+        - title: Statically typed and structural
+          url: /why-ballerina/flexibly-typed/#statically-typed-and-structural
+          active: statically-typed-and-structural
+        - title: Open-by-default 
+          url: /why-ballerina/flexibly-typed/#open-by-default
+          active: open-by-default
+        - title: Network communication with data binding
+          url: /why-ballerina/flexibly-typed/#network-communication-with-data-binding
+          active: network-communication-with-data-binding
+    - title: Data oriented
+      url: '#'
+      sublinks:
+        - title: Query expressions
+          url: /why-ballerina/data-oriented/#query-expressions
+          active: query-expressions
+        - title: Query actions 
+          url: /why-ballerina/data-oriented/#query-actions
+          active: query-actions
+        - title: Write integrated queries
+          url: /why-ballerina/data-oriented/#write-integrated-queries
+          active: write-integrated-queries
+    - title: Graphical 
+      url: '#'
+      sublinks:
+        - title: Sequence diagrams in Ballerina
+          url: /why-ballerina/graphical/#sequence-diagrams-in-ballerina
+          active: sequence-diagrams-in-ballerina
+        - title: Graphical representation
+          url: /why-ballerina/graphical/#graphical-representation
+          active: graphical-representation
+    - title: Concurrent
+      url: /why-ballerina/concurrent/
+      active: concurrent
+    - title: Reliable, maintainable 
+      url: '#'
+      sublinks:
+        - title: Explicit error handling
+          url: /why-ballerina/reliable-maintainable/#explicit-error-handling
+          active: sequence-diagrams-in-ballerina
+          

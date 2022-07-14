@@ -1,36 +1,48 @@
-import Head from 'next/head'
+import dynamic from 'next/dynamic';
+import { Col, Row } from 'react-bootstrap';
+
+import Layout from '../layouts/LayoutHome';
+import Intro from '../components/home-page/intro/Intro';
+import WhyBal from '../components/home-page/why-bal/WhyBal';
+import Videos from '../components/home-page/videos/Videos';
+import Events from '../components/home-page/events/Events';
 import styles from '../styles/Home.module.css'
 
-import fs from 'fs';
-import matter from 'gray-matter';
-import Image from 'next/image';
-import Link from 'next/link';
-
-// export async function getStaticProps() {
-//   // Get all our posts
-//   const files = fs.readdirSync('posts');
-
-//   const posts = files.map((fileName) => {
-//     const slug = fileName.replace('.md', '');
-//     const readFile = fs.readFileSync(`posts/${fileName}`, 'utf-8');
-//     const { data: frontmatter } = matter(readFile);
-    
-//     return {
-//       slug,
-//       frontmatter,
-//     };
-//   });
-
-//   return {
-//     props: {
-//       posts,
-//   },
-// };
-
-// }
 
 export default function Home() {
+  const BalAction = dynamic(() => import('../components/home-page/bal-action/BalAction'), { ssr: false });
+
   return (
-    <h1>Ballerina Website Rewrite</h1>
+    <Layout>
+      <Col sm={12}>
+
+        <Row className={styles.homeIntro}>
+          <Intro />
+        </Row>
+
+
+
+        <Row className={styles.homeBalAction}>
+          <BalAction />
+        </Row>
+
+
+
+        <Row className={styles.homeWhyBal}>
+          <WhyBal />
+        </Row>
+
+
+        <Row className={styles.homeVideos}>
+          <Videos />
+        </Row>
+
+
+        <Row className={styles.homeEvents}>
+          <Events />
+        </Row>
+
+      </Col>
+    </Layout>
   );
 }

@@ -1,0 +1,196 @@
+.cSocial-sidebar {
+    display: none;
+}
+.cPhil-title-boxes h3 {
+    font-family: "CalibreWeb-Semibold";
+    text-transform: uppercase;
+    color: #23b8b1;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0;
+/*    margin: 0;*/
+margin-top: 10px;
+    font-weight: 800;
+    
+}
+
+.cBallerina-io-Gray-row {
+    padding-top: 50px;
+}
+
+.cBlallerina-io-docs-content-container {
+    padding: 0;
+    background-color: transparent;
+}
+.wy-nav-content {
+    background-color: transparent !important;
+}
+
+.col-lg-3.cBallerina-io-Home-Left-col , .col-lg-3.cBallerina-io-Home-Right-col{
+    display: none;
+}
+.cBlallerina-io-docs-content-container , .col-lg-9.cBallerina-io-Home-Middle-col {
+    width: 100%;
+    padding: 0;
+}
+
+.section,
+.rst-content,
+.wy-nav-content {
+	width: 100% !important;
+	display: content !important;
+}
+
+.wy-nav-content {
+	max-width: 100%;
+}
+
+ul.cBlogPostContainer {
+    padding: 30px;
+
+    background: #ffffff;
+ 
+    display: inline-block;
+/*    min-height: 400px;*/
+    float: left;
+}
+
+ul.cBlogPostContainer li , .rst-content .section ul li, .rst-content .toctree-wrapper ul li, .wy-plain-list-disc li, article ul li {
+    list-style: none;
+    margin-left: 0;
+    
+}
+.cBlogPostContainer ul li:nth-child(2) p {
+    font-weight: 800;
+    background-color: red;
+}
+
+.cBallerina-io-breadcrumbs {
+    display:none;
+}
+
+.wy-nav-content h2, .release_notes h1, .wy-nav-content .releaseNoteDiv h1 {
+    border: none;
+}
+
+/*THUMB*/
+
+.cBlogPostContainer .cBlogThumbnailContainer {
+    display: inline-block;
+    height: 200px;
+/*    background: red;*/
+    overflow: hidden;  
+    margin-bottom: 20px;
+    
+}
+.cBlogPostContainer .cBlogThumbnailContainer img {
+    max-width: 200% !important;
+    width: auto;
+    margin-top: 0;
+ 
+}
+
+
+
+.rst-content .section ul, .rst-content .toctree-wrapper ul, .wy-plain-list-disc, article ul {
+    margin-bottom: 30px;
+}
+
+
+.section ul {
+      padding: 15px 20px 20px 20px;
+      background: #ffffff;
+     display: inline-block;
+     height: 470px;
+     float: left;
+     margin-bottom: 30px;
+     border-top: 5px solid #ffffff;
+     
+}
+
+
+.section ul li:first-child , .wy-nav-content h2 {
+        font-size: 16px;
+    padding: 0;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    font-family: "CalibreWeb-Semibold", "pragmatica", sans-serif;
+    color: #23B8B1;
+    letter-spacing: 2px;
+    line-height: 20px;
+}
+.section ul li:nth-child(2)  {
+   font-size: 14px;
+   font-weight: 400;
+   margin-bottom: 5px;
+   
+}
+.section ul li:nth-child(3) {
+    font-size: 14px;
+      font-family: "CalibreWeb-Semibold", "pragmatica", sans-serif;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: #57595d;
+}
+.section ul li:nth-child(4) {
+ font-size: 14px;
+ line-height: 20px;
+ 
+ height: 60px;
+ overflow: hidden;
+ padding-bottom: 20px;
+ margin-bottom: 20px;
+ color: #959595;
+    
+}
+
+.section ul li:nth-child(5) {
+display: none;
+}
+
+
+/* styles for '...' */ 
+.section ul li:nth-child(4) {
+  overflow: hidden;
+  position: relative; 
+  max-height: 100px; 
+
+}
+.section ul li:nth-child(4):before {
+
+  content: '...';
+position: absolute;
+right: 0;
+bottom: 0;
+}
+/*.section ul li:nth-child(4):after {
+   points in the end 
+  content: '';
+   absolute position 
+  position: absolute;
+   set position to right bottom corner of text 
+  right: 0;
+  width: 1em;
+
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
+}*/
+
+
+
+/*HOVER */
+.cBlallerina-io-docs-content-container a {
+    cursor: pointer;
+}
+.section ul:hover  {
+/*   background-color: #f3f3f3;*/
+   border-top: 5px solid #20b6b0;
+}
+
+
+hr {
+    display: none;
+}
+
+/*MARKDOWN*/

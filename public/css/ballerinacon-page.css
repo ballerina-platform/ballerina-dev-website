@@ -1,0 +1,25 @@
+img.cInlineLogo {
+    width: 175px;
+    margin: 0;
+}
+.cConVideoContainer {
+    padding: 30px 0 10px 0;
+}
+
+.cBallerina-io-Home-main-download-button.cGuidesDownloadButton.cDownloadSlides {
+  padding: 10px 20px 10px 50px;
+font-size: 12px !important;
+font-family: "CalibreWeb-Semibold";
+
+display: inline-block;
+color: #ffffff !important;
+letter-spacing: 1px;
+background-size: 10%;
+margin-top: 10px;
+text-align: center;
+background-position: 16px center;
+text-transform: uppercase;
+color: #ffffff !important;
+margin-bottom: 20px;
+
+}

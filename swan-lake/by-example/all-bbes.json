@@ -1203,7 +1203,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - mutual SSL",
+                "name": "Service - Mutual SSL",
                 "url": "http-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1211,7 +1211,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - basic auth file user store",
+                "name": "Service - Basic Auth file user store",
                 "url": "http-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1219,7 +1219,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - basic auth LDAP user store",
+                "name": "Service - Basic Auth LDAP user store",
                 "url": "http-service-basic-auth-ldap-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1251,7 +1251,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - mutual SSL",
+                "name": "Client - Mutual SSL",
                 "url": "http-client-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1283,7 +1283,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 client credentials grant type",
+                "name": "Client - OAuth2 Client Credentials grant type",
                 "url": "http-client-oauth2-client-credentials-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1291,7 +1291,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 password grant type",
+                "name": "Client - OAuth2 Password grant type",
                 "url": "http-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1299,7 +1299,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 refresh token grant type",
+                "name": "Client - OAuth2 Refresh Token grant type",
                 "url": "http-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1425,24 +1425,24 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Request interceptor at listener level",
-                "url": "http-request-interceptor-at-listener",
+                "name": "Interceptors",
+                "url": "http-interceptors",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Request interceptor at service level",
-                "url": "http-request-interceptor-at-service",
+                "name": "Error Handling",
+                "url": "http-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Request error interceptor",
-                "url": "http-request-error-interceptor",
+                "name": "Interceptor Error Handling",
+                "url": "http-interceptor-error-handling",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1542,6 +1542,14 @@
                 "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
+            },
+            {
+                "name": "Documentation",
+                "url": "graphql-documentation",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
             }
         ]
     },
@@ -1559,7 +1567,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - mutual SSL",
+                "name": "Service - Mutual SSL",
                 "url": "graphql-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1606,23 +1614,15 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Handle text messages with client",
-                "url": "websocket-text-client",
+                "name": "Client",
+                "url": "websocket-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Handle binary messages with client",
-                "url": "websocket-binary-client",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Retry",
+                "name": "Client - Retry",
                 "url": "websocket-retry-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1630,7 +1630,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Listener functionalities",
+                "name": "Service",
                 "url": "websocket-basic-sample",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1643,7 +1643,7 @@
     {
         "title": "WebSocket security",
         "column": 1,
-        "category": "Working Over the Network",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Service - SSL/TLS",
@@ -1654,7 +1654,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - mutual SSL",
+                "name": "Service - Mutual SSL",
                 "url": "websocket-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1702,7 +1702,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - mutual SSL",
+                "name": "Client - Mutual SSL",
                 "url": "websocket-client-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1734,7 +1734,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 client credentials grant type",
+                "name": "Client - OAuth2 Client Credentials grant type",
                 "url": "websocket-client-oauth2-client-cred-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1742,7 +1742,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 password grant type",
+                "name": "Client - OAuth2 Password grant type",
                 "url": "websocket-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1750,7 +1750,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 refresh token grant type",
+                "name": "Client - OAuth2 Refresh Token grant type",
                 "url": "websocket-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1919,7 +1919,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - mutual SSL",
+                "name": "Service - Mutual SSL",
                 "url": "grpc-service-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1967,7 +1967,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - mutual SSL",
+                "name": "Client - Mutual SSL",
                 "url": "grpc-client-mutual-ssl",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1999,7 +1999,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 client credentials grant type",
+                "name": "Client - OAuth2 Client Credentials grant type",
                 "url": "grpc-client-oauth2-client-credentials-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2007,7 +2007,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 password grant type",
+                "name": "Client - OAuth2 Password grant type",
                 "url": "grpc-client-oauth2-password-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2015,7 +2015,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Client - OAuth2 refresh token grant type",
+                "name": "Client - OAuth2 Refresh Token grant type",
                 "url": "grpc-client-oauth2-refresh-token-grant-type",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2142,8 +2142,17 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer client",
-                "url": "kafka-consumer-client",
+                "name": "Consumer client - Poll Payload",
+                "url": "kafka-consumer-client-poll-payload",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Consumer client - Poll ConsumerRecord",
+                "url": "kafka-consumer-client-poll-consumer-record",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2153,15 +2162,6 @@
             {
                 "name": "Transactional producer",
                 "url": "kafka-producer-transactional",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Consumer groups",
-                "url": "kafka-consumer-group-service",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2416,8 +2416,17 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Query with complex types",
-                "url": "mysql-complex-type-queries",
+                "name": "Query with one result",
+                "url": "mysql-query-row-operation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Query with advanced mapping",
+                "url": "mysql-query-column-mapping",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2477,8 +2486,17 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Query with complex types",
-                "url": "jdbc-complex-type-queries",
+                "name": "Query with one result",
+                "url": "jdbc-query-row-operation",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Query with advanced mapping",
+                "url": "jdbc-query-column-mapping",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2913,7 +2931,7 @@
             {
                 "name": "Azure Functions",
                 "url": "azure-functions-deployment",
-                "verifyBuild": true,
+                "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
@@ -2922,7 +2940,7 @@
             {
                 "name": "AWS Lambda",
                 "url": "aws-lambda-deployment",
-                "verifyBuild": true,
+                "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,

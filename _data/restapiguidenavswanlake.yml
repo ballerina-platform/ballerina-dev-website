@@ -1,0 +1,36 @@
+- title: Write a RESTful API with Ballerina
+  url: #
+  sublinks:
+    - title: Set up the prerequisites
+      url: /learn/write-a-restful-api-with-ballerina/#set-up-the-prerequisites
+      active: set-up-the-prerequisites
+    - title: Understand the implementation
+      url: /learn/writing-a-restful-api-with-ballerina/#understand-the-implementation
+      active: understand-the-implementation
+    - title: Create the service package
+      url: /learn/write-a-restful-api-with-ballerina/#create-the-service-package
+      active: create-the-service-package
+    - title: Create the dataset
+      url: /learn/write-a-restful-api-with-ballerina/#create-the-dataset
+      active: create-the-dataset
+    - title: Create the service
+      url: /learn/write-a-restful-api-with-ballerina/#create-the-service
+      active: create-the-service
+    - title: Implement the first endpoint
+      url: /learn/write-a-restful-api-with-ballerina/#implement-the-first-endpoint
+      active: implement-the-first-endpoint
+    - title: Implement the second endpoint
+      url: /learn/write-a-restful-api-with-ballerina/#implement-the-second-endpoint
+      active: implement-the-second-endpoint
+    - title: The complete code
+      url: /learn/write-a-restful-api-with-ballerina/#the-complete-code
+      active: the-complete-code
+    - title: Run the service
+      url: /learn/write-a-restful-api-with-ballerina/#run-the-service
+      active: run-the-service
+    - title: Try the service
+      url: /learn/write-a-restful-api-with-ballerina/#try-the-service
+      active: try-the-service
+    - title: Learn more
+      url: /learn/write-a-restful-api-with-ballerina/#learn-more
+      active: learn-more

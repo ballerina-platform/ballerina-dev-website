@@ -1,0 +1,105 @@
+/* .abix-tree-list li {
+    list-style: none;
+}
+
+.abix-tree-list .collapsed span.icon, 
+.abix-tree-list .expanded span.icon {
+    margin-right: 6px;
+    cursor: pointer;
+} */
+span.icon {
+    background-color: transparent;
+    width: 14px;
+    height: 14px;
+    background-size: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+span.icon:hover {
+    background-color: #464646;
+}
+
+span.icon.plus-icon {
+    background-image: url("/img/plus.svg");
+}
+
+span.icon.minus-icon {
+    /* background-color: #464646; */
+    background-image: url("/img/minus.svg");
+
+}
+#tree li {
+    /* list-style-image: url("/img/toc-list.svg") !important; */
+}
+.abix-tree-list span.icon {
+    margin-left: 0;
+}
+.abix-tree-list .expanded span.icon {
+    cursor: pointer;
+}
+ul.abix-tree-list {
+    padding-left: 0;
+}
+ul.abix-tree-list li {
+    padding-left: 25px;
+    position: relative;
+    list-style: none;
+}
+ul.abix-tree-list li.expanded:before,
+ul.abix-tree-list li.collapsed:before {
+    /* display: none; */
+}
+ul.abix-tree-list li ul {
+    padding-left: 10px;
+}
+ul.abix-tree-list li ul li:last-child {
+    margin-bottom: 5px;
+}
+.cBallerinaTocContainer ul li::marker {
+    display: none;
+}
+.cBallerinaTocContainer ul li {
+    list-style: none !important;
+}
+ul.abix-tree-list li:before {
+    content: "";
+    display: block;
+    background-color: #20b6b0;
+}
+ul.abix-tree-list li:before,
+ul.abix-tree-list li span.icon {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+}
+ul.abix-tree-list li span.icon {
+    z-index: 2;
+    cursor: pointer; 
+    background-color: #20b6b0;
+
+}
+ul.abix-tree-list li span.icon.plus-icon { 
+    background-color: #20b6b0;
+}
+ul.abix-tree-list li span.icon.plus-icon:hover { 
+    background-color: #464646;
+}
+ul.abix-tree-list li span.icon.minus-icon {
+    background-color: #464646;
+}
+ul.abix-tree-list li a {
+    font-weight: 600;
+    display: block;
+}
+ul.abix-tree-list li li a {
+    font-weight: 500;
+}
+ul.abix-tree-list li li li a {
+    font-weight: 400;
+}
+ul.abix-tree-list li li li li a {
+    font-weight: 300;
+}

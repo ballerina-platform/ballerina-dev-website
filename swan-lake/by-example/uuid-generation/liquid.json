@@ -1,0 +1,11 @@
+{
+  "title": "Generate UUID",
+  "description": "BBE on how to to generate different types of UUIDs.",
+  "keywords": ["ballerina", "ballerina by examples", "bbe", "uuid", "type"],
+  "permalink": "/learn/by-example/uuid-generation",
+  "active": "uuid-generation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/uuid-generation",
+    "/swan-lake/learn/by-example/uuid-generation.html"
+  ]
+}

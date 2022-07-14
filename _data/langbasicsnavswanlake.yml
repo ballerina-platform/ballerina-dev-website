@@ -1,0 +1,122 @@
+- title: Language basics
+  url: #
+  sublinks:
+    - title: Familiar subset of Ballerina
+      url: /learn/language-basics/#familiar-subset-of-ballerina
+      active: familiar-subset-of-ballerina
+    - title: Programs and modules
+      url: /learn/language-basics/#programs-and-modules
+      active: programs-and-modules
+    - title: Variables and types
+      url: /learn/language-basics/#variables-and-types
+      active: variables-and-types
+    - title: Functions
+      url: /learn/language-basics/#functions
+      active: functions
+    - title: Syntax
+      url: /learn/language-basics/#syntax
+      active: syntax
+    - title: Integers
+      url: /learn/language-basics/#integers
+      active: integers
+    - title: Floating point numbers
+      url: /learn/language-basics/#floating-point-numbers
+      active: floating-point-numbers
+    - title: Nil
+      url: /learn/language-basics/#nil
+      active: nil
+    - title: Strings
+      url: /learn/language-basics/#strings
+      active: strings
+    - title: Langlib functions
+      url: /learn/language-basics/#langlib-functions
+      active: langlib-functions
+    - title: Arrays
+      url: /learn/language-basics/#arrays
+      active: arrays
+    - title: <code class="highlighter-rouge language-plaintext" id="cBackground">foreach</code> statement
+      url: /learn/language-basics/#foreach-statement
+      active: foreach-statement
+    - title: <code class="highlighter-rouge language-plaintext" id="cBackground">while</code> statement
+      url: /learn/language-basics/#while-statement
+      active: while-statement
+    - title: Binary data
+      url: /learn/language-basics/#binary-data
+      active: binary-data
+    - title: Maps
+      url: /learn/language-basics/#maps
+      active: maps
+    - title: Type definitions
+      url: /learn/language-basics/#type-definitions
+      active: type-definitions
+    - title: Records
+      url: /learn/language-basics/#records
+      active: records
+    - title: Structural typing
+      url: /learn/language-basics/#structural-typing
+      active: structural-typing
+    - title: Unions
+      url: /learn/language-basics/#unions
+      active: unions
+    - title: Error reporting
+      url: /learn/language-basics/#error-reporting
+      active: error-reporting
+    - title: Error handling
+      url: /learn/language-basics/#error-handling
+      active: error-handling
+    - title: <code class="highlighter-rouge language-plaintext" id="cBackground">check</code> expression
+      url: /learn/language-basics/#check-expression
+      active: check-expression
+    - title: Error subtyping
+      url: /learn/language-basics/#error-subtyping
+      active: error-subtyping
+    - title: Panics
+      url: /learn/language-basics/#panics
+      active: panics
+    - title: <code class="highlighter-rouge language-plaintext" id="cBackground">any</code> type
+      url: /learn/language-basics/#any-type
+      active: any-type
+    - title: Ignore return values and errors
+      url: /learn/language-basics/#ignore-return-values-and-errors
+      active: ignore-return-values-and-errors
+    - title: Covariance
+      url: /learn/language-basics/#covariance
+      active: covariance
+    - title: Object
+      url: /learn/language-basics/#object
+      active: object
+    - title: Define classes
+      url: /learn/language-basics/#define-classes
+      active: define-classes
+    - title: init return type
+      url: /learn/language-basics/#init-return-type
+      active: init-return-type
+    - title: Identity
+      url: /learn/language-basics/#identity
+      active: identity
+    - title: <code class="highlighter-rouge language-plaintext" id="cBackground">const</code> and <code class="highlighter-rouge language-plaintext" id="cBackground">final</code>
+      url: /learn/language-basics/#const-and-final
+      active: const-and-final
+    - title: Enumerations
+      url: /learn/language-basics/#enumerations
+      active: enumerations
+    - title: <code class="highlighter-rouge language-plaintext" id="cBackground">match</code> statement
+      url: /learn/language-basics/#match-statement
+      active: match-statement
+    - title: Type inference
+      url: /learn/language-basics/#type-inference
+      active: type-inference
+    - title: Functional programming
+      url: /learn/language-basics/#functional-programming
+      active: functional-programming
+    - title: Asynchronous function calls
+      url: /learn/language-basics/#asynchronous-function-calls
+      active: asynchronous-function-calls
+    - title: Documentation
+      url: /learn/language-basics/#documentation
+      active: documentation
+    - title: Annotations
+      url: /learn/language-basics/#annotations
+      active: annotations
+
+

@@ -43,53 +43,55 @@ redirect_from:
 <script src="/js/download-page.js"></script>
 <div class="clearfix"></div>
 <div class="row cDownloads">
-      <div class="">
+      <!-- <div class=""> -->
          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
 					<h3 class="cWindows">Windows</h3>
-					<a id="packWindows" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}" class="cGTMDownload cDownload cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.windows-installer }}">
-						<div class="cSize">msi <span id="packWindowsName">{{ site.data.swanlake-latest.metadata.windows-installer-size }}</span></div>
+					<a id="packWindows" href="{{ dist_server }}/downloads/{{ version }}/{{ windows-installer }}" class="cGTMDownload cDownload cDownloadNew" data-download="downloads" data-pack="{{ windows-installer }}">
+						<div class="cSize">msi <span id="packWindowsName">{{ windows-installer-size }}</span></div>
 					</a>
 					<ul class="cDiwnloadSubLinks">
-						<li><a id="packWindowsMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.md5">md5</a></li>
-						<li><a id="packWindowsSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.sha1">SHA-1</a></li>
-						<li><a id="packWindowsAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.asc">asc</a></li>
+						<li><a id="packWindowsMd5" href="{{ dist_server }}/downloads/{{ version }}/{{ windows-installer }}.md5">md5</a></li>
+						<li><a id="packWindowsSha1" href="{{ dist_server }}/downloads/{{ version }}/{{ windows-installer }}.sha1">SHA-1</a></li>
+						<li><a id="packWindowsAsc" href="{{ dist_server }}/downloads/{{ version }}/{{ windows-installer }}.asc">asc</a></li>
 					</ul>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
 					<h3 class="cLinux">Linux </h3>
-					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cMarginSmall" style="padding: 0;">
-						<a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}" class="cGTMDownload cDownload cLinuxPKGs  cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.linux-installer }}">
-							<div class="cSize">deb <span id="packLinuxName">{{ site.data.swanlake-latest.metadata.linux-installer-size }}</span></div>
-						</a>
-						<ul class="cDiwnloadSubLinks">
-							<li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}.md5">md5</a></li>
-							<li><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}.sha1">SHA-1</a></li>
-							<li><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}.asc">asc</a></li>
-						</ul>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cMarginSmall" style="padding: 0;">
-						<a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}" class="cGTMDownload cDownload cLinuxPKGs cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.rpm-installer }}">
-							<div class="cSize">rpm <span id="packLinuxName">{{ site.data.swanlake-latest.metadata.rpm-installer-size }}</span></div>
-						</a>
-						<ul class="cDiwnloadSubLinks">
-							<li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}.md5">md5</a></li>
-							<li><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}.sha1">SHA-1</a></li>
-							<li><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.rpm-installer }}.asc">asc</a></li>
-						</ul>
-					</div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cMarginSmall" style="padding: 0;">
+              <a id="packLinux" href="{{ dist_server }}/downloads/{{ version }}/{{ linux-installer }}" class="cGTMDownload cDownload cLinuxPKGs  cDownloadNew" data-download="downloads" data-pack="{{ linux-installer }}">
+                <div class="cSize">deb <span id="packLinuxName">{{ linux-installer-size }}</span></div>
+              </a>
+              <ul class="cDiwnloadSubLinks">
+                <li><a id="packLinuxMd5" href="{{ dist_server }}/downloads/{{ version }}/{{ linux-installer }}.md5">md5</a></li>
+                <li><a id="packLinuxSha1" href="{{ dist_server }}/downloads/{{ version }}/{{ linux-installer }}.sha1">SHA-1</a></li>
+                <li><a id="packLinuxAsc" href="{{ dist_server }}/downloads/{{ version }}/{{ linux-installer }}.asc">asc</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cMarginSmall" style="padding: 0;">
+              <a id="packLinux" href="{{ dist_server }}/downloads/{{ version }}/{{ rpm-installer }}" class="cGTMDownload cDownload cLinuxPKGs cDownloadNew" data-download="downloads" data-pack="{{ rpm-installer }}">
+                <div class="cSize">rpm <span id="packLinuxName">{{ rpm-installer-size }}</span></div>
+              </a>
+              <ul class="cDiwnloadSubLinks">
+                <li><a id="packLinuxMd5" href="{{ dist_server }}/downloads/{{ version }}/{{ rpm-installer }}.md5">md5</a></li>
+                <li><a id="packLinuxSha1" href="{{ dist_server }}/downloads/{{ version }}/{{ rpm-installer }}.sha1">SHA-1</a></li>
+                <li><a id="packLinuxAsc" href="{{ dist_server }}/downloads/{{ version }}/{{ rpm-installer }}.asc">asc</a></li>
+              </ul>
+            </div>
+          </div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
 					<h3 class="cMac">macOS</h3>
-					<a id="packMac" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}" class="cGTMDownload cDownload cDownloadNew" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.macos-installer }}">
-						<div class="cSize">pkg <span id="packWindowsName">{{ site.data.swanlake-latest.metadata.macos-installer-size }}</span></div>
+					<a id="packMac" href="{{ dist_server }}/downloads/{{ version }}/{{ macos-installer }}" class="cGTMDownload cDownload cDownloadNew" data-download="downloads" data-pack="{{ macos-installer }}">
+						<div class="cSize">pkg <span id="packWindowsName">{{ macos-installer-size }}</span></div>
 					</a>
 					<ul class="cDiwnloadSubLinks">
-						<li><a id="packMacMd5" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.md5">md5</a></li>
-						<li><a id="packMacSha1" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.sha1">SHA-1</a></li>
-						<li><a id="packMacAsc" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.asc">asc</a></li>
+						<li><a id="packMacMd5" href="{{ dist_server }}/downloads/{{ version }}/{{ macos-installer }}.md5">md5</a></li>
+						<li><a id="packMacSha1" href="{{ dist_server }}/downloads/{{ version }}/{{ macos-installer }}.sha1">SHA-1</a></li>
+						<li><a id="packMacAsc" href="{{ dist_server }}/downloads/{{ version }}/{{ macos-installer }}.asc">asc</a></li>
 					</ul>
 				</div>
-      </div>
+      <!-- </div> -->
    </div>
 
 

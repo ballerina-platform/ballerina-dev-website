@@ -1,0 +1,186 @@
+
+.col-xs-12.col-sm-12.col-md-3.col-lg-3.cBallerina-io-Home-Left-col {
+    display: none;
+}
+.col-xs-12.col-sm-12.col-md-9.col-lg-9.cBallerina-io-Home-Middle-col {
+    width: 100%;
+}
+
+
+
+.cEventLogo {
+    width: 300px;
+    margin: 20px 0;
+}
+.cEventRegistration {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.rst-content .section table.cEventTable.docutils {
+    float: none;
+    width:100% !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    background: #f5f6f6 !important;
+    padding: 0px 30px;
+}
+
+
+
+
+
+table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail , table.cEventTable.docutils td.cEventURL {
+    border-bottom: 1px solid #cecfd0 !important;
+    border-spacing: 10px !important;
+    background-color: transparent !important;
+    border-right: none !important;
+}
+
+table.cEventTable.docutils tr.cLastTableRow td.cEventDateContainer , 
+table.cEventTable.docutils tr.cLastTableRow td.cEventDetail , 
+table.cEventTable.docutils tr.cLastTableRow td.cEventURL  {
+  border-bottom: none !important;
+}
+
+td.cEventDateContainer span.cEventDate {
+    font-family: "CalibreWeb-Semibold", "pragmatica", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.cEventDetail b {
+    display: inline-block;
+    width: 100%;
+/*    font-weight: 600;*/
+    margin-bottom: 5px;
+}
+
+a.cEventRegistration{
+    display: block;
+    margin: 0 15px;
+    transition: none !important;
+    font-size: 16px;
+    /* font-weight: 200; */
+    background-color: #20b6b0;
+    color: #ffffff !important;
+    padding: 10px 20px  ; 
+    background-repeat: no-repeat;
+    background-position: left 25px top 18px;
+    text-decoration: none;   
+    border: none;
+    font-family: "pragmatica", sans-serif; 
+    transition: all 0.3s;
+}
+a.cEventRegistration:hover{
+    background-color: #57595d;
+    color: #ffffff !important;
+}
+ input.cSubmitButton {
+    
+    display: inline-block;
+margin: 0 15px;
+transition: none !important;
+font-size: 18px;
+font-weight: 200;
+background-color: #57595d;
+color: #ffffff !important;
+padding: 15px 40px 15px 40px;
+width: auto;
+background-repeat: no-repeat;
+background-position: left 25px top 18px;
+text-decoration: none;
+/*min-height: 85px;*/
+line-height: 27px;
+display: inline-block;
+float: right;
+margin: 0;
+border: none;
+font-family: "pragmatica", sans-serif;
+width: 100%;
+}
+
+td.cEventDetail.c2col img {
+    width: 200px;
+    padding: 0;
+    margin: 0;
+}
+
+td.cEventDetail.c2col {
+    padding-left: 0 !important;
+}
+
+h5 {
+    color: #57595d !important;
+    line-height: 21px;
+    margin-bottom: 10px;
+}
+
+
+td.cEventDateContainer , td.cEventDetail , td.cEventURL {
+    border: none !important;
+    border-bottom: 1px solid #c7c7c7 !important;
+    padding: 30px 0;
+}
+td.cEventURL{
+    padding-left: 15px;
+}
+.nav > li.cVersionItem {
+    display: none !important;
+}
+
+
+
+
+
+@media screen and (max-width: 990px) {
+table.cEventTable.docutils tr.cLastTableRow td.cEventDateContainer , 
+table.cEventTable.docutils tr.cLastTableRow td.cEventDetail , 
+table.cEventTable.docutils tr.cLastTableRow td.cEventURL ,
+table.cEventTable.docutils tr.cLastTableRow td.cEventDetail.c2col ,
+table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+  display: list-item;
+  width: 100%;
+  list-style: none;
+  padding-bottom: 20px;
+
+  padding-left: 0 !important;
+/*  margin-bottom: 30px;*/
+}
+
+table.cEventTable.docutils tr.cLastTableRow td.cEventDateContainer , 
+table.cEventTable.docutils tr.cLastTableRow td.cEventDetail , 
+table.cEventTable.docutils tr.cLastTableRow td.cEventDetail.c2col ,
+table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail {
+      border: none !important;
+}
+
+
+
+table.cEventTable.docutils td.cEventDateContainer , table.cEventTable.docutils tr.cLastTableRow td.cEventDateContainer {
+    padding-top: 40px !important;
+    border-top: 1px solid #cecfd0 !important;
+    
+}
+
+table.cEventTable.docutils tr.cFirstTableRow td.cEventDateContainer {
+    padding-top: 40px !important;
+    border-top: none !important;
+    
+}
+
+
+
+
+
+
+/*table.cEventTable.docutils tr.cLastTableRow td.cEventDateContainer: {
+    border: none !important;
+}*/
+
+
+a.cEventRegistration, input.cSubmitButton {
+    margin-bottom: 40px !important;
+}
+
+}

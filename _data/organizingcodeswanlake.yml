@@ -1,0 +1,21 @@
+- title: Organize Ballerina code 
+  url: '#'
+  sublinks:
+    - title: Package structure
+      url: /learn/organize-ballerina-code/package-structure
+      sublinks:
+        - title: Create your first Ballerina package
+          url: /learn/organize-ballerina-code/#create-your-first-ballerina-package
+          active: create-your-first-ballerina-package
+        - title: The default module
+          url: /learn/organize-ballerina-code/#the-default-module
+          active: the-default-module
+        - title: Non-default modules
+          url: /learn/organize-ballerina-code/#non-default-modules
+          active: non-default-modules
+    - title: Import a module from the same package
+      url: /learn/organize-ballerina-code/#import-a-module-from-the-same-package
+      active: import-a-module-from-the-same-package
+    - title: Package references
+      url: /learn/organize-ballerina-code/package-references/
+      active: package-references

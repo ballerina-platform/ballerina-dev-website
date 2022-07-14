@@ -1,0 +1,50 @@
+h1 {
+	margin-top: -25px;
+}
+
+.cBallerina-io-Home-Left-col {
+	display: none;
+}
+
+.cBallerina-io-breadcrumbs {
+	padding: 20px 0 0px 0;
+}
+
+.col-lg-6.cBallerina-io-Home-Middle-col , .cBallerina-io-Home-Middle-col {
+	padding: 0 15px;
+	width: 100%;
+}
+
+.section,
+.rst-content,
+.wy-nav-content {
+	width: 100% !important;
+	display: content !important;
+}
+
+.wy-nav-content {
+	max-width: 100%;
+}
+
+tbody,
+thead {
+	width: 100% !important;
+}
+
+.rst-content .section .docutils {
+	display: table;
+}
+
+.cBallerina-io-Gray-row {
+	padding-bottom: 90px;
+}
+th:first-child {
+    width: 25%;
+}
+
+th {
+    font-size: 18px !important;
+
+font-weight: 200 !important;
+}
+

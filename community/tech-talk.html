@@ -1,0 +1,707 @@
+---
+layout: ballerina-inner-page
+title: Ballerina tech talk
+description: 
+permalink: community/ballerina-tech-talk/
+intro: 
+redirect_from:
+
+---
+
+<style>
+    .text-feild{
+        padding: 20px 20px;
+        margin: 5px 0px;
+        width: 100%;
+        display: inline-block;      
+    }
+ 
+    .submit-button{
+        padding: 10px 20px;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        background-color: #20b6b0;
+        color: #fff;
+        margin: 5px 0px;
+        border: none;
+    }
+
+    .event-card{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .cBoxCard{
+  
+  border:#E6EAEB solid 0.1px ;
+  text-align: left;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 0;
+  box-shadow: 0;
+  margin-bottom: 15px;
+  margin-top:15px;
+  box-shadow:none;
+    }
+    .cBoxCard-1{
+  
+  
+  text-align: left;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 0;
+  box-shadow: 0;
+  margin-bottom: 15px;
+  margin-top:15px;
+  box-shadow:none;
+    }
+.form-check-label{
+    display: inline-block;
+max-width: 100%;
+margin-bottom: 5px;
+font-weight: 400;
+font-size: 10px;
+}
+
+
+.checkbox-wrapper {
+  white-space: nowrap
+}
+.checkbox {
+  vertical-align: top;
+  display:inline-block
+}
+.checkbox-label {
+  white-space: normal;
+  display:inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  color: #57595d;
+  padding-left: 8px;
+}
+.gTitle1{color:#57595d !important} 
+.card p{
+    margin-top:15px !important;
+    margin-bottom:0px !important;
+}
+
+.card{
+    border: none;
+    margin: 10px 40px 15px 0px;
+    padding: 0px 0px;
+    max-width: 360px;
+}
+
+
+.card h4{
+    color: #20b6b0;
+    height: 45px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #585A5E;
+  background-color: #fff;
+  background-image: none;
+  border-radius: 0px;
+  transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #585A5E;
+  border-radius: 0px;
+  -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+  box-shadow: 0 3px 9px rgba(0,0,0,.5);
+  outline: 0;
+}
+
+.btn-form-submit{
+    padding: 10px 20px;
+        display: inline-block;
+        text-align: center;
+        background-color: #20b6b0;
+        color: #fff;
+        border: none;
+        border-radius: 0px;
+        margin-bottom:5px;
+}
+
+.btn-form-close{
+    padding: 10px 20px;
+        display: inline-block;
+        text-align: center;
+        background-color: #E6EAEB;
+        color: #464646;
+        margin: 5px 0px;
+        border: none;
+        border-radius: 0px;
+}
+.col-form-label{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+.gTitle:hover{
+    color: #464646 !important;
+}
+.form-control{
+    border: 1px #20b6b0 solid;
+}
+
+.btn-form-submit:hover{
+    background-color: #464646;
+    color: #fff !important;
+}
+
+.submit-button:hover{
+    background-color: #464646;
+    color: #fff !important;
+}
+
+.leftLink:hover{
+    background:url(/img/toc-bg-hover.svg);
+}
+
+.btn-form-close:hover{
+    background-color: #464646;
+    color: #fff !important;
+}
+
+.exampleModalLabel{
+    color: #464646;
+}
+.cEventDateNum{
+    font-size: 20px !important;
+    font-weight: 450 !important;
+}
+td.cEventDateContainer1 span.cEventDate1{
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    display: inline-block;
+    color: #57595d;
+    margin-bottom: 5px;
+    border: none;
+    text-align: right;
+}
+td.cEventDateContainer, td.cEventDetail, td.cEventURL {
+  border: none !important;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    border-bottom: 1px solid #c7c7c7 !important;
+    padding: 30px 15px !important;
+}
+
+.cEventName{
+    margin-top: -2px;
+    font-size: 20px;
+}
+td.cEventDateContainer{
+  width: 20%;
+}
+.wy-nav-content h1 {
+    font-size: 38px;
+    color: #585a5e;
+    font-weight: 200 !important;
+    margin-bottom: 30px;
+    margin-top:20px
+}
+@media only screen and (max-width: 990px) {
+    a.cEventRegistration, input.cSubmitButton {
+  margin-bottom: 40px !important;
+  margin-left: -8px !important;
+}
+.dateDisplay {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 0px !important;
+        padding-top: 20px;
+}
+.dateDisplay1 {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 0px !important;
+        padding-top: 20px;
+}
+}
+</style>
+<link rel="stylesheet" href="/css/events-page.css">
+
+
+
+    <section style="padding-bottom: 30px;">
+        <div class="row">
+          
+            <div class="col-sm-12 col-md-6 col-lg-6 leftpadding" style="float: left; padding-left: 0px;">
+              <p  style="margin-top: 0px;">
+                If you're looking to meet other Ballerina users and language specialists, this is the place for you. We're excited to bring a regular Tech Talk, where our team will discuss different technical topics surrounding the world of Ballerina.
+              </p>
+    
+          
+    
+            <!-- <p style="margin-top: 10px;">
+                Want to register for any upcoming tech talks? Sign up to get notified.      
+            </p>
+            <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x79m" width="100%" type="text/html" frameborder="0" allowTransparency="true" style="border: 0;height: 140px;" class="mobileViewTechTalk"></iframe> -->
+             <p style="padding-bottom: 15px;font-weight: 400;margin-top:0px" class="underText">
+                If you would like to suggest a topic for our next talk or give feedback, <a id="sumbitTechTalk" data-toggle="modal" data-target="#sumbitTechTalkForm" style="color: #20b6b0;">please fill this form.</a>
+             </p>
+            </div>
+            <!-- <div class="col-sm-12 col-md-6 col-lg-6 rightpadding" style="float: right;padding-right: 0px;">
+        
+            <div class="row " style="float: left; background-color: #e6eaeb5d;padding: 25px 20px;margin: 0px 0px 25px 0px;">
+    
+                <h5 style="padding-left:15px;margin:0 0 20px 0;color: #464646;"> Upcoming Monthly Tech Talk</h5>
+                <div class="col-sm-12 col-md-12 col-lg-12 " style="float: left; ">
+                    <div class="col-sm-4 col-md-4 col-lg-4 mobileViewAdjustment" style="padding-left: 0px;" >
+                        <p class="dateDisplay1" style="color: #585A5E; font-size:18px;float: right; font-weight: 500;">March 29, 2022</p>
+                        <p  class="dateDisplay1" style="float: right;">Tue., 6:30 p.m. PST</p>
+                        <p style="float: right;">Online Event</p>
+        
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8 mobileViewAdjustment1" style="border-left: 2px #585A5E solid;">
+                        <p style="font-weight: 400;">
+                            Monthly Tech Talk
+                        </p>
+                        <h4 style="color: #20b6b0;margin-bottom: 24px;" class="gTitle1">Await more details!</h4>
+                        <p>
+                        <a style="color: #20b6b0 ;font-weight:400;" href=""></a>,<br>
+                        <h4 style="color: #20b6b0;margin-bottom: 24px;" class="gTitle1">Kafka, NATS and RabbitMQ in Ballerina</h4>
+                        <p>
+                        <a style="color: #20b6b0 ;font-weight:400;" href="https://twitter.com/dil_Reaper">Dilan Sachintha</a>, Software Engineer, WSO2<br>
+                        <a style="color: #20b6b0 ;font-weight:400;" href="https://twitter.com/ar__shika">Arshika Mohottige</a>, Senior Software Engineer, WSO2<br>
+                        </p>
+        
+                    </div>    
+                </div>
+            </div>
+    
+          
+            </div> -->
+        </div> 
+    </section>
+
+
+    <!-- <section style="padding-bottom: 30px;">
+        <div class="row">
+            <div class="col-sm-12 col-md-1 col-lg-1" style="float: left; padding-left: 0px;">
+                &nbsp;
+            </div>
+        <div class="col-sm-12 col-md-7 col-lg-7" style="float: left; text-align: left;">
+            <h3 style="margin-top: 15px;"> Do you want to contribute  Ballerina Tech Talk ? </h3>
+        </div>
+        <div class="col-sm-12 col-md-3 col-lg-3" style="float: left; padding-left: 0px;">
+            <button type="button" class="submit-button" id="sumbitTechTalk" data-toggle="modal" data-target="#sumbitTechTalkForm" >Submit Here</button>
+        </div>
+        <div class="col-sm-12 col-md-1 col-lg-1" style="float: left; padding-left: 0px;">
+            &nbsp;
+        </div>
+        </div>
+    </section> -->
+
+    <section style="padding-bottom: 30px;">
+        <h2 style="padding-right: 15px;">Past Tech Talks</h2>
+
+        <table class="cEventTable cConferencesList" style="width:100% !important;">
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Feb 22, 2022</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://youtu.be/sZmRCRgVnuI?t=35">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Ballerina Programming with VS Code</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/Imesha94">Imesha Sudasingha</a>, Senior Software Engineer, WSO2<br>
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/Nadeeshaan">Nadeeshaan Gunasinghe</a>, Technical Lead, WSO2
+               </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/sZmRCRgVnuI?t=35" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Jan 25, 2022</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://youtu.be/cJwstQ8yynk">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Ballerina OpenAPI Support</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/joseph-fonseka-04b538a/">Joseph Fonseka</a>, Director - Ballerina Team, WSO2<br>
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/sumudu-nissanka/">Sumudu Nissanka</a>, Senior Software Engineer, WSO2
+               </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/cJwstQ8yynk" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Nov 30, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://www.youtube.com/watch?v=ga_cyzIXW38">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Building Real-time Systems with WebSub</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/Ayesh363">Ayesh Almeida</a>, Senior Software Engineer - Integration, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=ga_cyzIXW38" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Oct 26, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://www.youtube.com/watch?v=8Z-i0VxTvK4&t=6s">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Managing Dependencies in Ballerina</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/sameerajayasoma"> Sameera Jayasoma</a>, Senior Director, Platform Architecture, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=8Z-i0VxTvK4&t=6s" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Sep 28, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://www.youtube.com/watch?v=81XCTewSo8I&t=5s">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Using Language Integrated Queries</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/pcnfernando"> Chiran Fernando</a>, Associate Technical Lead, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=81XCTewSo8I&t=5s" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Aug 31, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://www.youtube.com/watch?v=clmGc2oZpYE&t=2311s">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">GraphQL and Ballerina: A Match Made in Heaven</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/chiranfernando/"> Dimuthu Madushan</a>, Software Engineer, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=clmGc2oZpYE&t=2311s" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+                        <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">July 27, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://youtu.be/l5KWZwHZdSA">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Changes in the HTTP Package in Ballerina Swan Lake</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/chamil321"> Chamil Elladeniya</a>, Associate Technical Lead, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/l5KWZwHZdSA" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+           <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">June 29, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://youtu.be/9ZqDZ3TgnDU">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Ballerina Swan Lake Release</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/sameerajayasoma"> Sameera Jayasoma</a>, Senior Director, Platform Architecture, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/9ZqDZ3TgnDU" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">March 30, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://youtu.be/dYito-DW6ZA">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Ballerina Shell and Debugging Tools</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/nipunaranasinghe/"> Nipuna Ranasinghe</a>, Associate Technical Lead, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/dYito-DW6ZA" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Feb 23, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://youtu.be/hKBjatIFxyw">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Services and Network Communication</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/lafernando">Anjana Fernando</a>, Director - Developer Relations, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/hKBjatIFxyw" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+    <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Jan 26, 2021</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://youtu.be/36U5RoTdYhc">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Code to Cloud with Ballerina</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/anuruddha-liyanarachchi-6b259652/">Anuruddha Liyanarachchi</a>, Associate Technical Lead, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/36U5RoTdYhc" target="_blank" style="text-align: center;">Watch Tech Talk</a></td> 
+                </tr>
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Dec 8, 2020</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://youtu.be/4EINEJAtAg4">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Java Interoperability in Ballerina</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" href="https://twitter.com/IrushiL">Irushi Liyanage</a>, Senior Software Engineer, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://youtu.be/4EINEJAtAg4" target="_blank" style="text-align: center;">Watch Tech Talk</a></td> 
+                </tr>
+               <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Nov 10, 2020</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://www.youtube.com/watch?v=lLqvaLtC3m0">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Data Access in Ballerina</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://www.linkedin.com/in/niveathika/">Niveathika Rajendran</a>, Associate Technical Lead, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=lLqvaLtC3m0" target="_blank" style="text-align: center;">Watch Tech Talk</a></td> 
+                </tr>
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Oct 13, 2020</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://www.youtube.com/watch?v=12gosblVlhY">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Serverless in Ballerina</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/lafernando">Anjana Fernando</a>, Director - Developer Relations, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=12gosblVlhY" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+       <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Sep 8, 2020</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Tuesday</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://www.youtube.com/watch?v=ADZPZtXK5e8">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Monthly Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">gRPC in Ballerina</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/BuddhiWK">Buddhi Kothalawala</a>, Senior Software Engineer, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=ADZPZtXK5e8" target="_blank" style="text-align: center;">Watch Tech Talk</a></td>	
+            </tr>
+        </table>
+
+    </section>
+    
+
+
+     <!--Modal Start for Submit Tech Talk Content-->
+     <div class="modal fade" id="sumbitTechTalkForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content subModelMobile" style="padding: 20px; width: 100%;">
+              <div class="modal-header" style="padding-left:0px ;">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">Suggest Topics or Give Feedback</h5>
+              </div>
+              
+                  <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x767" frameborder="0" style="height: 600px; width: 100%;overflow:auto;" class="subCMobile"></iframe>
+            </div>
+        </div>
+        </div>
+         <!--Modal Finish for Submit Content-->
+
+
+<style>
+    td.cEventDateContainer, td.cEventDetail, td.cEventURL {
+  border: none !important;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    border-bottom: 1px solid #c7c7c7 !important;
+    padding: 30px 35px !important;
+   }
+   a.cTopLink{display:none !important;}
+   tr:last-child >td{border-bottom: 0 !important;}
+   /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+    td.cEventDetail{
+        padding-left: 0px !important;
+    }
+   
+    }
+    .icon-github{
+        display: none;
+    }
+    @media only screen and (max-width: 600px) {
+        td.cEventDateContainer, td.cEventDetail, td.cEventURL {
+    padding: 30px 10px !important;
+   }
+   .leftpadding{padding-right: 0px !important;}
+   .rightpadding{padding-right: 15px!important;}
+   .mobileViewAdjustment{
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 15px;
+    border-top: 1px #565656 solid;
+    }
+    .mobileViewAdjustment1{
+    padding-left: 0px;
+    padding-right: 0px;
+    border: none !important;
+    }
+    .mobileViewAdjustment p{
+    float:none !important;
+    line-height: 20px;
+    }
+    .mobileViewAdjustment1 h4{
+    line-height: 0.8 !important;
+   margin-top:15px !important;
+    margin-bottom: 15px !important;
+    }
+    .dateDisplay {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 0px !important;
+    }
+    .dateDisplay1 {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 0px !important;
+        padding-top: 0px;
+    }
+    .subscribeTechTalk{
+        float: none !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .underText{
+        margin-top: 10px !important;
+    }
+    .Sendemail {
+       width: 100% !important;
+   }
+   .subCMobile{
+       height: 75vh !important;
+   }
+   .subModelMobile{
+    height: 750px !important;
+   }
+   .cUsecaseMobile{
+       height: 76vh;
+   }
+   .cUseCaseModel{
+    height: 800px !important;
+   }
+
+
+    }
+
+    .cEventDate1{margin: 0 0 15px 0 !important;text-align: right}
+   /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+    td.cEventDetail{
+        padding-left: 0px !important;
+    }
+    }
+
+    @media only screen and (max-width: 600px) {
+        td.cEventDateContainer, td.cEventDetail, td.cEventURL {
+    padding: 30px 10px !important;
+   }
+
+     /* Large devices (laptops/desktops, 992px and up) */
+     @media only screen and (max-width: 992px) {
+      td.cEventDateContainer, td.cEventDetail, td.cEventURL{
+         padding: 30px 35px !important;
+         display: inherit;
+         border-bottom: none !important;
+
+      }
+      h1{margin-top: 60px !important;}
+      .mobileViewTechTalk{height: 190px !important;}
+      td.cEventURL{border-bottom: 1px solid #c7c7c7 !important;}
+      a.cEventRegistration{
+         margin: 0px;
+         margin-top: 15px;
+      }
+      .cEventTable{margin-top:10px !important}
+      td.cEventDateContainer1 span.cEventDate1{text-align: left !important}
+      .cEventLocation{text-align: left !important;}
+      table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {padding: 0px 15px 10px 15px !important;}
+      .dateDisplay {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 0px !important;
+    }
+    a.cEventRegistration, input.cSubmitButton {margin-bottom: 30px !important;}
+    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils tr.cLastTableRow td.cEventDateContainer {
+    border:none !important;
+    }
+    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+     border-bottom: none!important;}
+     a.cEventRegistration {margin-left: 1px !important;}
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+      #eventDetails{padding-left: 0px !important;}
+
+    }
+    }
+    @media only screen and (min-width: 768px) {
+        h1{margin-top: 60px !important;}
+    }
+</style>

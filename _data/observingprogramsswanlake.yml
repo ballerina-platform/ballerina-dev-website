@@ -1,0 +1,54 @@
+- title: Observe Ballerina Programs
+  url: /learn/observe-ballerina-programs/
+  sublinks:
+    - title: Provide observability in Ballerina
+      url: /learn/observe-ballerina-programs/#provide-observability-in-ballerina
+      active: provide-observability-in-ballerina
+    - title: Observe a Ballerina service
+      url: /learn/observe-ballerina-programs/#observe-a-ballerina-service
+      sublinks:
+        - title: Step 1 - set up the prerequisites
+          url: /learn/observe-ballerina-programs/#step-1---set-up-the-prerequisites
+          active: step-1---set-up-the-prerequisites
+        - title: Step 2 - install and configuring the external systems
+          url: /learn/observe-ballerina-programs/#step-2---install-and-configuring-the-external-systems
+          active: step-2---install-and-configuring-the-external-systems
+        - title: Step 3 - create a <code class="highlighter-rouge language-plaintext" id="cBackground">Hello World</code> Ballerina service
+          url: /learn/observe-ballerina-programs/#step-3---create-a-hello-world-ballerina-service
+          active: step-3---create-a-hello-world-ballerina-service
+        - title: Step 4 - observe the <code class="highlighter-rouge language-plaintext" id="cBackground">Hello World</code> Ballerina service
+          url: /learn/observe-ballerina-programs/#step-4---observe-the-hello-world-ballerina-service
+          active: step-4---observe-the-hello-world-ballerina-service
+        - title: Step 5 - send requests
+          url: /learn/observe-ballerina-programs/#step-5---send-requests
+          active: step-5---send-requests
+        - title: Step 6 - view metrics and tracing dashboards
+          url: /learn/observe-ballerina-programs/#step-6---view-metrics-and-tracing-dashboards
+          active: step-6---view-metrics-and-tracing-dashboards
+        - title: Step 7 - visualize the logs
+          url: /learn/observe-ballerina-programs/#step-7---visualize-the-logs
+          active: step-7---visualize-the-logs
+    - title: Monitor metrics
+      url: /learn/observe-ballerina-programs/#monitor-metrics
+      sublinks:
+        - title: Configure advanced metrics 
+          url: /learn/observe-ballerina-programs/#configure-advanced-metrics
+          active: configure-advanced-metrics
+        - title: Set up the external systems for metrics
+          url: /learn/observe-ballerina-programs/#set-up-the-external-systems-for-metrics
+          active: set-up-the-external-systems-for-metrics
+    - title: Distributed tracing
+      url: /learn/observe-ballerina-programs/#distributed-tracing
+      sublinks:
+        - title: Configure advanced tracing
+          url: /learn/observe-ballerina-programs/#configure-advanced-tracing
+          active: configure-advanced-tracing
+        - title: Set up the external systems for tracing
+          url: /learn/observe-ballerina-programs/#set-up-the-external-systems-for-tracing
+          active: set-up-the-external-systems-for-tracing
+    - title: Distributed logging
+      url: /learn/observe-ballerina-programs/#distributed-logging
+      sublinks:
+        - title: Set up the external systems for log analytics
+          url: /learn/observe-ballerina-programs/#set-up-the-external-systems-for-log-analytics
+          active: set-up-the-external-systems-for-log-analytics

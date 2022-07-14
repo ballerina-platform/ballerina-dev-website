@@ -1,0 +1,256 @@
+li.cSearchMenu {
+    display: none;
+}
+.cVersionItem {
+    padding-right: 0;
+}
+
+#searchBox,
+.ui.fluid.icon.input {
+    width: 100%;
+}
+.wy-nav-content h1 {
+    margin-top: 30px;
+}
+
+table.ui.table td,
+table.ui.table th {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+table.ui.table td p {
+    margin: 0;
+}
+
+td {
+    padding: 10px;
+}
+
+/* SEARCH */
+
+#searchBox {
+    height: 50px;
+    padding: 20px;
+    font-size: 18px;
+    border: 1px solid #20b6b0;
+}
+
+.search-list {
+    border: 0.5px solid #20b6b0;
+    padding: 40px;
+    border-top: none !important;
+}
+
+.search-list h1 {
+    font-size: 35px;
+    padding: 0px 0px 30px 0;
+    font-weight: 800;
+    margin-top: 0;
+}
+
+.search-list table {
+    width: 100%;
+}
+
+.search-list table td {
+    border-left: none !important;
+    border-right: none !important;
+    padding: 8px;
+}
+
+.search-list table td p {
+    margin: 0;
+}
+
+.search-list table td:first-child {
+    width: 30%;
+}
+
+.sub-menu {
+    background-image: none;
+}
+
+.cTopiAtag {
+    font-weight: 800;
+    color: #464646 !important;
+    padding-left: 15px !important;
+}
+.cMainLeftNav ul.sub-ul {
+    padding-left: 15px !important;
+}
+
+/* BREADCRUMBS  */
+
+.wy-breadcrumbs li:last-child a {
+    text-transform: none !important;
+    color: #404040 !important;
+    cursor: text !important;
+}
+
+.wy-breadcrumbs li:nth-child(8),
+.wy-breadcrumbs li:nth-child(9),
+.wy-breadcrumbs li:nth-child(10),
+.wy-breadcrumbs li:nth-child(11),
+.wy-breadcrumbs li:nth-child(12) {
+    text-transform: none !important;
+}
+
+/* DOCS */
+
+.main-method-title h2 {
+    text-decoration: none;
+    border: none;
+    margin-bottom: 0;
+}
+.main-method-title p {
+    display: inline-block;
+}
+.main-method-title {
+    border-bottom: 2px solid #464646;
+    width: 100%;
+    margin-bottom: 40px;
+}
+.method-content table {
+    width: 100%;
+}
+.method-content table td {
+    padding: 8px;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.method-content table p {
+    margin: 0;
+}
+
+.method-content table td.module-title {
+    width: 30%;
+    padding-left: 0;
+}
+
+.returns-listing h3,
+.data-wrapper h3 {
+    display: inline-block;
+}
+
+.returns-listing li,
+.data-wrapper li {
+    list-style: none !important;
+}
+
+.method-sum {
+    display: inline-block;
+}
+
+.data-wrapper p {
+    display: inline-block;
+}
+
+/* 
+ a.records  {
+color: #2067b6 !important;
+ }
+
+ a.objects {
+     color: #6e20b6 !important;
+ }
+
+ a.clients {
+     color: #f16f20 !important;
+ }
+
+ a.listeners {
+     color:#7c5c19 !important;
+ }
+
+  {
+     color: #3c9c2a !important;
+ }
+
+ a.constant  {
+     color: #9c2a9b !important;
+ }
+
+ a.annotations {
+     color: #f3ca24 !important;
+ }
+
+ a.types {
+     color: #9d8e75 !important;
+ }
+ a.errors {
+     color: #ff1e00 !important;
+ }
+
+ a.records:hover ,  a.objects:hover  ,   a.clients:hover  ,  a.listeners:hover   , a.functions:hover  ,  a.annotations:hover  ,   a.types:hover   ,  a.errors:hover   {
+    color: #404040 !important;
+ } */
+
+/* LEFT NAV */
+
+nav.cLeftNavContainer {
+    background-color: #f7f7f7;
+    height: 78vh;
+    overflow: hidden;
+    width: 300px;
+    padding-right: 0px !important;
+    margin-right: 30px !important;
+    border: 1px solid #fff;
+    z-index: 999999;
+    padding-top: 0;
+    margin-top: 10px;
+}
+
+.cLeftNavWrapper {
+    height: 100vh !important;
+    background-color: #f7f7f7;
+    width: 300px;
+}
+
+.cLeftNavWrapper.cFixNav {
+    position: fixed;
+    top: 0;
+    height: 100vh !important;
+}
+
+nav.cLeftNavContainer.cFixNav {
+    position: fixed;
+    top: 0;
+}
+
+/* nav.cLeftNavContainer.cFixNav ul:last-child {
+    padding-bottom: 300px !important;
+} */
+
+nav.cLeftNavContainer:hover {
+    overflow-y: scroll;
+}
+
+.cBallerina-io-Home-Middle-col {
+    padding-left: 50px;
+    padding-bottom: 400px;
+}
+/* .row.cBallerina-io-Gray-row {
+     min-height: 100vh !important;
+     
+ } */
+
+.params-listing {
+    font-weight: 800;
+}
+
+.builtin-type {
+    font-weight: 800;
+}
+
+#iBallerinaFooter {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 99999999;
+}
+
+body {
+    position: relative;
+}

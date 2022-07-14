@@ -1,0 +1,11 @@
+{
+  "title": "Functions",
+  "description": "This BBE introduces functions in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "functions"],
+  "permalink": "/learn/by-example/functions",
+  "active": "functions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/functions",
+    "/swan-lake/learn/by-example/functions.html"
+  ]
+}

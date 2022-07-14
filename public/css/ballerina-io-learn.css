@@ -1,0 +1,196 @@
+.cBallerina-io-Home-Left-col {
+    display: none;
+}
+.cBallerina-io-Home-Middle-col {
+    width: 100%;
+}
+
+.cBlallerina-io-docs-content-container {
+    display: inline-block;
+}
+
+.cBallerinaLearnWrapper {
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.cGrayWrapper {
+    /* background-color: #f5f6f6; */
+    padding: 0px;
+    margin-bottom: 40px;
+}
+.cBallerina-Box {
+    /* background-color: #f5f6f6; */
+    display: inline-block;
+    /* padding: 30px; */
+    padding-left: 0;
+    padding-right: 35px;
+}
+
+.cBallerina-Box h3 {
+    margin-top: 0; 
+}
+
+.cBoxContainer {
+    padding-left: 0;
+}
+
+.cBallerina-Learn-Col {
+    padding: 30px 30px;
+}
+
+.cGrayWrapper h2 {
+    color: #464646;
+    text-decoration: none;
+    border: none;
+    margin-top: 0;
+   
+
+}
+
+a.cBallerinaLearnButtons {
+background-color: #fff;
+padding: 20px 70px 20px 24px;
+/* width: 100%; */
+display: inline-block;
+color: #3b3b3b !important;
+font-weight: 200;
+background-image: url("/img/go-bg.svg");
+background-repeat: no-repeat;
+background-position: right center;
+margin-top: 14px;
+border: 1px solid #20b6b0;
+}
+
+
+a.cBallerinaLearnButtons:hover {
+   background-color: #eeeeee !important;
+   /* color: #fff !important; */
+   border: 1px solid #eeeeee;
+}
+
+.cBallerinaLearnTitleWrapper {
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+a.cBallerina-io-Home-main-download-button {
+    float: left;
+    color: #464646 !important;
+}
+a.cBallerina-io-Home-main-download-button:hover  {
+/* 
+    color: #fff !important; */
+    border: 1px solid #eeeeee;
+}
+
+a.cBallerina-io-Home-main-download-button:hover p {
+    color: #464646 !important;
+}
+
+
+
+a.cGreenLinkArrow {
+    display: inline-block;
+    float: left;
+    margin: 0px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background-image: url("/img/go-bg.svg");
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding: 30px 60px 30px 0;
+    
+    
+}
+
+.cTwoCol {
+
+    padding-left: 0;
+    padding-right: 48px;
+}
+
+.cCommunityIconsContainer {
+    text-align: center;
+    padding-top: 35px;
+
+padding-bottom: 30px;
+}
+
+.cCommunityIconsContainer .cBallerina-Box {
+    padding-right: 0;
+
+}
+
+.cCommunityIconsContainer  img {
+    width: 100px;
+
+}
+
+a.cBallerinaLearnButtons.cButtonswithtext {
+    font-size: 30px;
+    color: #22b7b1 !important;
+    background-color: #fff;
+    border: 1px solid #eeeeee;
+    font-weight: 400;
+}
+a.cBallerinaLearnButtons.cButtonswithtext:hover {
+    color: #fff !important;
+} 
+a.cBallerinaLearnButtons.cButtonswithtext p {
+    /* color: #ffffff; */
+}
+
+
+.cLearnSteps {
+    font-size: 63px;
+
+font-weight: 800;
+
+line-height: 75px;
+
+color: #d2d2d2;
+padding: 0;
+}
+
+.cRowLearnSteps {
+padding-bottom: 30px;
+}
+
+
+.cComandTable {
+    border: none;
+}
+
+.cComandTable td {
+    padding: 30px;
+    border: none !important;
+}
+
+.cComandTable td.cCommand , .code {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
+
+.cBBEButton img  {
+    height: 24px !important;
+}
+
+.cPlayButton img  {
+    height: 24px !important;
+}
+
+
+p.cBoxpara {
+    min-height: 100px;
+
+}
+
+@media (max-width: 768px) {
+    p.cBoxpara {
+        min-height: auto !important;
+    }
+   
+.cBoxContainer {
+    margin-bottom: 50px;
+}
+}

@@ -15,7 +15,7 @@ setCDN("https://unpkg.com/shiki/");
 import Layout from '../../../layouts/LayoutRN';
 import LeftNav from '../../../components/common/left-nav/LeftNav';
 import { prefix } from '../../../utils/prefix';
-import LearnToc from '../../../rl.json';
+import RNToc from '../../../utils/rl.json';
 
 // import { Liquid } from 'liquidjs';
 
@@ -144,11 +144,11 @@ export default function PostPage({ frontmatter, content, id }) {
         <Col sm={3} xxl={2} className='leftNav d-none d-sm-block'>
           <LeftNav launcher='rn' id={id}
             mainDir='swan-lake-release-notes'
-            LearnToc={LearnToc} />
+            LearnToc={RNToc} />
         </Col>
         <Col xs={12} className='d-block d-sm-none'>
           <Button className='learnMob' onClick={handleShow}>
-            Learn documentation
+            Release notes
           </Button>
           <Offcanvas show={show} onHide={handleClose}>
             <Offcanvas.Header closeButton>
@@ -156,7 +156,7 @@ export default function PostPage({ frontmatter, content, id }) {
             <Offcanvas.Body>
               <LeftNav launcher='rn' id={id}
                 mainDir='swan-lake-release-notes'
-                LearnToc={LearnToc} />
+                LearnToc={RNToc} />
             </Offcanvas.Body>
           </Offcanvas>
         </Col>
@@ -240,7 +240,7 @@ export default function PostPage({ frontmatter, content, id }) {
               {content}
             </ReactMarkdown>
 
-            <div className='contentNav'>
+            {/* <div className='contentNav'>
               <Col xs={6} className='prevLink'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#20b6b0" className="bi bi-chevron-left" viewBox="0 0 16 16">
                   <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
@@ -253,7 +253,7 @@ export default function PostPage({ frontmatter, content, id }) {
                   <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                 </svg>
               </Col>
-            </div>
+            </div> */}
           </Container>
         </Col>
         <Col sm={2} className='pageToc d-none d-sm-block'>

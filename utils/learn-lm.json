@@ -1299,7 +1299,7 @@
                 {
                     "dirName": "Reliable, maintainable",
                     "level": 2,
-                    "position": 0,
+                    "position": 6,
                     "isDir": false,
                     "url": "/why-ballerina/reliable-maintainable",
                     "id": "reliable-maintainable"
@@ -1307,7 +1307,7 @@
                 {
                     "dirName": "Graphical",
                     "level": 2,
-                    "position": 0,
+                    "position": 4,
                     "isDir": false,
                     "url": "/why-ballerina/graphical",
                     "id": "graphical"
@@ -1315,7 +1315,7 @@
                 {
                     "dirName": "Data oriented",
                     "level": 2,
-                    "position": 0,
+                    "position": 3,
                     "isDir": false,
                     "url": "/why-ballerina/data-oriented",
                     "id": "data-oriented"
@@ -1323,7 +1323,7 @@
                 {
                     "dirName": "Cloud native",
                     "level": 2,
-                    "position": 0,
+                    "position": 1,
                     "isDir": false,
                     "url": "/why-ballerina/cloud-native",
                     "id": "cloud-native"
@@ -1331,7 +1331,7 @@
                 {
                     "dirName": "Flexibly typed",
                     "level": 2,
-                    "position": 0,
+                    "position": 2,
                     "isDir": false,
                     "url": "/why-ballerina/flexibly-typed",
                     "id": "flexibly-typed"
@@ -1339,7 +1339,7 @@
                 {
                     "dirName": "Concurrent",
                     "level": 2,
-                    "position": 0,
+                    "position": 5,
                     "isDir": false,
                     "url": "/why-ballerina/concurrent",
                     "id": "concurrent"

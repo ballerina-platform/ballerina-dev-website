@@ -121,7 +121,7 @@ export default function LeftNav(props) {
 
           {
             'learn': (category.position > 0) ? <MainDir category={category} /> : null,
-            'why-bal': (category.dirName === 'why ballerina') ? <MainDir category={category} /> : null,
+            'why-bal': (category.dirName === 'Why Ballerina') ? <MainDir category={category} /> : null,
             'rn': (category.position > 0) ? <MainDir category={category} /> : null,
           }[launcher]
         ))}

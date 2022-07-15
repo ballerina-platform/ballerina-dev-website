@@ -19,7 +19,7 @@ import Layout from '../../layouts/LayoutDocs';
 import LeftNav from '../../components/common/left-nav/LeftNav';
 // import PrevNext from '../../components/common/prev-next/PrevNext';
 import { prefix } from '../../utils/prefix';
-import LearnToc from '../../learn-lm.json';
+import LearnToc from '../../utils/learn-lm.json';
 
 
 export async function getStaticProps() {

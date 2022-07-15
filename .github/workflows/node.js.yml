@@ -39,8 +39,8 @@ jobs:
       run: touch ./out/.nojekyll
     - name: Rearrange files to match the urls  
       run: |
-         chmod +x ./rearrangeFiles.sh
-         ./rearrangeFiles.sh
+         chmod +x ./utils/rearrangeFiles.sh
+         ./utils/rearrangeFiles.sh
       shell: bash
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4.3.3

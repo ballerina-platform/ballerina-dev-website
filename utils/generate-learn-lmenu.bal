@@ -27,8 +27,6 @@ public function generateStructure(string path, int level=0) returns Folder|error
     string url = "";
     string id = dirName;
 
-    // io:println(path);
-
     // set the order of the directory
     if (isDir && (dirName === "get-started")) {
         position = 1;

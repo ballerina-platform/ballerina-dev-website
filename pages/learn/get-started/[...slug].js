@@ -221,7 +221,7 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
                   else {
                     id = scanArray(children);
                   }
-                  return <h2 data-id={id}>{children}</h2>
+                  return <h2 id={id}>{children}</h2>
                 },
                 h3({ node, inline, className, children, ...props }) {
                   let id = '';
@@ -231,7 +231,7 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
                   else {
                     id = scanArray(children);
                   }
-                  return <h3 data-id={id}>{children}</h3>
+                  return <h3 id={id}>{children}</h3>
                 },
                 h4({ node, inline, className, children, ...props }) {
                   let id = '';
@@ -241,7 +241,7 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
                   else {
                     id = scanArray(children);
                   }
-                  return <h4 data-id={id}>{children}</h4>
+                  return <h4 id={id}>{children}</h4>
                 },
                 h5({ node, inline, className, children, ...props }) {
                   let id = '';
@@ -251,7 +251,7 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
                   else {
                     id = scanArray(children);
                   }
-                  return <h5 data-id={id}>{children}</h5>
+                  return <h5 id={id}>{children}</h5>
                 },
                 h6({ node, inline, className, children, ...props }) {
                   let id = '';
@@ -261,7 +261,7 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
                   else {
                     id = scanArray(children);
                   }
-                  return <h6 data-id={id}>{children}</h6>
+                  return <h6 id={id}>{children}</h6>
                 },
                 code({ node, inline, className, children, ...props }) {
                   const match = /language-(\w+)/.exec(className || '')

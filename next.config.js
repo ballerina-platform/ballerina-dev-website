@@ -160,6 +160,18 @@ const nextConfig = {
       {
         source: `/${redirectBase}downloads/swan-lake-release-notes`,
         destination: `/${redirectBase}downloads/swan-lake-release-notes/2201.0.2`,
+      },
+      {
+        source: `/${redirectBase}1.2/learn/`,
+        destination: `/${redirectBase}1.2/learn/index.html`,
+      },
+      {
+        source: `/${redirectBase}1.1/learn/`,
+        destination: `/${redirectBase}1.1/learn/index.html`,
+      },
+      {
+        source: `/${redirectBase}1.0/learn/`,
+        destination: `/${redirectBase}1.0/learn/index.html`,
       }
     ]
   },

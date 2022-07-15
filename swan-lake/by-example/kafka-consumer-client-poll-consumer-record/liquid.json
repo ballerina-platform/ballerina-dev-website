@@ -1,0 +1,18 @@
+{
+  "title": "Consumer client - Poll ConsumerRecord",
+  "description": "BBE on how to use a `kafka:Consumer` as a simple record consumer.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "kafka",
+    "consumer",
+    "client"
+  ],
+  "permalink": "/learn/by-example/kafka-consumer-client-poll-consumer-record",
+  "active": "kafka-consumer-client-poll-consumer-record",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/kafka-consumer-client-poll-consumer-record",
+    "/swan-lake/learn/by-example/kafka-consumer-client-poll-consumer-record.html"
+  ]
+}

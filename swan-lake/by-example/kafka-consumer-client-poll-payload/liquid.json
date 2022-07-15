@@ -1,0 +1,18 @@
+{
+  "title": "Consumer client - Poll Payload",
+  "description": "BBE on how to use a `kafka:Consumer` as a payload consumer.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "kafka",
+    "consumer",
+    "client"
+  ],
+  "permalink": "/learn/by-example/kafka-consumer-client-poll-payload",
+  "active": "kafka-consumer-client-poll-payload",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/kafka-consumer-client-poll-payload",
+    "/swan-lake/learn/by-example/kafka-consumer-client-poll-payload.html"
+  ]
+}

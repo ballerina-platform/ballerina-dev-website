@@ -1,0 +1,20 @@
+{
+  "title": "Batch execute",
+  "description": "This BBE demonstrates how to use the JDBC client to execute a batch of DDL/DML operations in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "jdbc",
+    "insert",
+    "update",
+    "delete",
+    "batch update"
+  ],
+  "permalink": "/learn/by-example/jdbc-batch-execute-operation",
+  "active": "jdbc-batch-execute-operation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/jdbc-batch-execute-operation",
+    "/swan-lake/learn/by-example/jdbc-batch-execute-operation.html"
+  ]
+}

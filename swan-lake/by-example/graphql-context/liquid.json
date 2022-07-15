@@ -1,0 +1,17 @@
+{
+  "title": "Context",
+  "description": "A GraphQL service endpoint written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "graphql context"
+  ],
+  "permalink": "/learn/by-example/graphql-context",
+  "active": "graphql-context",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-context",
+    "/swan-lake/learn/by-example/graphql-context.html"
+  ]
+}

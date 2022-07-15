@@ -1,0 +1,11 @@
+{
+  "title": "Anydata type",
+  "description": "This BBE demonstrates anydata type in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "anydata type"],
+  "permalink": "/learn/by-example/anydata-type",
+  "active": "anydata-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/anydata-type",
+    "/swan-lake/learn/by-example/anydata-type.html"
+  ]
+}

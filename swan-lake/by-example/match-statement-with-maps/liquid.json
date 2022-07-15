@@ -1,0 +1,18 @@
+{
+  "title": "Match statement with maps",
+  "description": "This BBE demonstrates using the match statement with maps.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "match",
+    "json",
+    "map"
+  ],
+  "permalink": "/learn/by-example/match-statement-with-maps",
+  "active": "match-statement-with-maps",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/match-statement-with-maps",
+    "/swan-lake/learn/by-example/match-statement-with-maps.html"
+  ]
+}

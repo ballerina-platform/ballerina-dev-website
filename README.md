@@ -1,41 +1,34 @@
-# ballerina-platform.github.io
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-ballerina-platform.github.io - Github pages based ballerina.io website
+## Getting Started
 
-## Run website locally with docker
+First, run the development server:
 
-Execute following command to build the docker image
-
-```shell
-docker build -t ballerina-web . 
+```bash
+npm run dev
+# or
+yarn dev
 ```
 
-Execute following command to run the container.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```shell
-docker run -p 4000:4000 ballerina-web
-```
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-Access website using <http://localhost:4000/>
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-## Run website locally with Jekyll and bundler gems
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-Execute following command to install Jekyll
+## Learn More
 
-```shell
-gem install jekyll bundler
-```
+To learn more about Next.js, take a look at the following resources:
 
-Execute following command to install required gems
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Run `bundle install` within project directory to install required gems.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-Build the site and make it available on a local server
+## Deploy on Vercel
 
-```shell
-bundle exec jekyll serve
-```
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-**Troubleshooting Tips:** 
-1. For more information on the installation instructions, see the [Jekyll Installation Documentation](https://jekyllrb.com/docs/installation/).
-2. If you get the `cannot load such file -- webrick` error, execute the `bundle add webrick` command.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

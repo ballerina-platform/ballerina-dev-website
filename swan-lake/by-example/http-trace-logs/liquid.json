@@ -1,0 +1,17 @@
+{
+  "title": "Trace logs",
+  "description": "BBE on how trace logs can be used to monitor the HTTP traffic in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "trace logs"
+  ],
+  "permalink": "/learn/by-example/http-trace-logs",
+  "active": "http-trace-logs",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-trace-logs",
+    "/swan-lake/learn/by-example/http-trace-logs.html"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Match statement",
+  "description": "This BBE demonstrates match statement in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "match"],
+  "permalink": "/learn/by-example/match-statement",
+  "active": "match-statement",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/match-statement",
+    "/swan-lake/learn/by-example/match-statement.html"
+  ]
+}

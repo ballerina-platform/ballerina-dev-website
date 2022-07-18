@@ -105,7 +105,7 @@ It is our policy to respond to notices of alleged infringement that comply with 
 
 WSO2’s agent for notice of claims of copyright or other intellectual property infringement can be reached as follows:
 
-- **By mail:** Attn: Copyright Agent, WSO2 Inc. 787 Castro Street, Mountain View CA 94041, USA
+- **By mail:** Attn: Copyright Agent, WSO2 LLC. 787 Castro Street, Mountain View CA 94041, USA
 - **By phone:** (+1) 408 754 7388
 - **By Fax:** (+1) 408 689 4328
 

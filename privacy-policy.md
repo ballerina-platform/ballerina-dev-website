@@ -12,7 +12,7 @@ display:none;
 }
 </style>-->
 
-At WSO2, we recognize that privacy is important. This privacy policy applies to the Ballerina sites and services offered at [https://ballerina.io](https://ballerina.io/) and any other site to which a link to these terms may appear. We’ve set out below the details of how we collect, use, share and secure the personal information you provide. “You” or “Your” means the person visiting the above mentioned Ballerina sites (the “Sites”) or using any services on it. “We” “us” and “our” means WSO2 Inc.
+At WSO2, we recognize that privacy is important. This privacy policy applies to the Ballerina sites and services offered at [https://ballerina.io](https://ballerina.io/) and any other site to which a link to these terms may appear. We’ve set out below the details of how we collect, use, share and secure the personal information you provide. “You” or “Your” means the person visiting the above mentioned Ballerina sites (the “Sites”) or using any services on it. “We” “us” and “our” means WSO2 LLC.
 
 ## What information do we collect?
 
@@ -43,7 +43,7 @@ We do not sell, trade, or otherwise share your information with outside parties.
 
 We sometimes need to give our service providers who help us run our website and services access to the data we have in order for them to perform those services. They are only authorised to use information that is strictly relevant for them to perform their tasks and we ensure that they are under obligations of confidentiality to us so that your data is secure.
 
-We may share your data with our subsidiaries or affiliates within our corporate group. WSO2 ‘s parent company is WSO2 Inc. and is located in the United States of America. Our affiliates are WSO2 UK Limited (located in the United Kingdom), WSO2 Lanka (Private) Limited (located in Sri Lanka), and WSO2 Brasil Tecnologia E Software Ltda (located in Brazil). We share information within this group because these entities also carry out support, marketing, account management, and technical operations for WSO2 that are relevant to the provision of the website and services.
+We may share your data with our subsidiaries or affiliates within our corporate group. WSO2 ‘s parent company is WSO2 LLC. and is located in the United States of America. Our affiliates are WSO2 UK Limited (located in the United Kingdom), WSO2 Lanka (Private) Limited (located in Sri Lanka), and WSO2 Brasil Tecnologia E Software Ltda (located in Brazil). We share information within this group because these entities also carry out support, marketing, account management, and technical operations for WSO2 that are relevant to the provision of the website and services.
 
 We may also release your information when we believe release is appropriate to comply with the law, enforce our privacy policy, or protect our or others’ rights, property, or safety.
 

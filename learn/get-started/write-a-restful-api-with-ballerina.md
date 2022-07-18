@@ -18,7 +18,7 @@ redirect_from:
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2202.0.0 (Swan Lake)](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/) or greater
+1. [Ballerina 2202.0.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
 2. A text editor
   >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
 3. A command terminal
@@ -392,5 +392,5 @@ You view the output below.
 ## Learn more
 
 To learn more about RESTful services in Ballerina, see the following:
-- [`http` library documentation](https://lib.ballerina.io/ballerina/http/latest)
+- [`http` module documentation](https://lib.ballerina.io/ballerina/http/latest)
 - [Service path and resource path](/learn/by-example/http-absolute-path-and-path.html)

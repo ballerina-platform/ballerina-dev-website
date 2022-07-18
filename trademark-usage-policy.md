@@ -1,9 +1,9 @@
 ---
 layout: ballerina-inner-page
 title: Ballerina trademark usage policy
-description: Ballerina trademarks should be used in accordance with the sections below or with specific written permission obtained from WSO2. Usage of Trademarks in violation of the guidelines in this policy is prohibited. Any reference to trademarks and marks in this policy will include names, logos, and any service marks relating to Ballerina owned by WSO2, Inc (“Trademarks”).
+description: Ballerina trademarks should be used in accordance with the sections below or with specific written permission obtained from WSO2. Usage of Trademarks in violation of the guidelines in this policy is prohibited. Any reference to trademarks and marks in this policy will include names, logos, and any service marks relating to Ballerina owned by WSO2, LLC. (“Trademarks”).
 keywords: ballerina, community, ballerina community, branding, trademark, logo, brand guildlines, policy
-intro: Ballerina trademarks should be used in accordance with the sections below or with specific written permission obtained from WSO2. Usage of Trademarks in violation of the guidelines in this policy is prohibited. Any reference to trademarks and marks in this policy will include names, logos, and any service marks relating to Ballerina owned by WSO2, Inc (“Trademarks”).
+intro: Ballerina trademarks should be used in accordance with the sections below or with specific written permission obtained from WSO2. Usage of Trademarks in violation of the guidelines in this policy is prohibited. Any reference to trademarks and marks in this policy will include names, logos, and any service marks relating to Ballerina owned by WSO2, LLC. (“Trademarks”).
 permalink: /trademark-usage-policy/
 redirect_from: 
   - /trademark-usage-policy
@@ -322,7 +322,7 @@ The Ballerina logo should always be seen clearly and consistently. Altering or r
 
 WSO2 does not make any express or implied warranties including but not limited to the warranties of non-infringement of any third party intellectual property rights. 
 
-Also, WSO2 shall not be liable for any claims relating to the user’s activities falling within the scope of the permission and the user hereby agrees to indemnify, defend, and hold WSO2 and its contributors harmless against any such claims. All Ballerina Trademarks are owned by WSO2, Inc.,
+Also, WSO2 shall not be liable for any claims relating to the user’s activities falling within the scope of the permission and the user hereby agrees to indemnify, defend, and hold WSO2 and its contributors harmless against any such claims. All Ballerina Trademarks are owned by WSO2, LLC.,
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
 

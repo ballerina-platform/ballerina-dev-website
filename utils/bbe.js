@@ -4,8 +4,11 @@ const copyToClipboard = (text) => {
   navigator.clipboard.writeText(text);
 };
 
-const removeEscapes = (content) => {
-  return content.replace("\\", "");
+const extractOutput = (text) => {
+  const regex = /(?:\n|^)\$\s+(?<exec_command>.*)(?:\n?)/;
+  const match = regex.exec(text);
+
+  return match === null ? "" : match.groups.exec_command;
 };
 
 const shikiTokenizer = async (code, lang) => {
@@ -24,4 +27,4 @@ const shikiTokenizer = async (code, lang) => {
   return output;
 };
 
-export { copyToClipboard, removeEscapes, shikiTokenizer };
+export { copyToClipboard, extractOutput, shikiTokenizer };

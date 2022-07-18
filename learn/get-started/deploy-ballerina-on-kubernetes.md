@@ -14,7 +14,7 @@ redirect_from:
     - /learn/getting-started/deploying-ballerina-on-kubernetes
 ---
 
-Code to Cloud is a compiler extension, which is packed with Ballerina. It makes it easier to generate artifacts required for the cloud from your Ballerina code. Currently, you could generate Docker and Kubernetes artifacts from the Ballerina code. This process encourages you to write cloud-ready code from day one without any additional effort. 
+Code to Cloud is a compiler extension, which is packed with Ballerina. It eases generating the artifacts required for the cloud from your Ballerina code. Currently, you could generate Docker and Kubernetes artifacts from the Ballerina code. This process encourages you to write cloud-ready code from day one without any additional effort. 
 
 ## Set up the prerequisites
 

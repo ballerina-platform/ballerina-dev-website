@@ -11,7 +11,7 @@ export default function Videos() {
     <Col sm={12}>
       <Container>
       <Row>
-        <Col sm={12}>
+        <Col sm={12} className='sectionTitle'>
           <h2 id="featured-videos">Featured videos</h2>
         </Col>
       </Row>

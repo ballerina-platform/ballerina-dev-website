@@ -103,6 +103,19 @@ a {
   font-size: 1.5rem;
 }
 
+.mdContent h2:hover:after, .mdContent h3:hover:after, .mdContent h4:hover:after,
+.mdContent h5:hover:after, .mdContent h6:hover:after,
+.sectionTitle:hover:after {
+  content: "";
+  display:inline-block;
+  height:16px;
+  width:16px;
+  margin-left: 5px;
+  background-size: 16px 16px;
+  background-image: url('/img/icons/permilink.svg');
+  background-repeat: no-repeat;
+}
+
 .mdContent h3,
 .policyContent h3 {
   /* margin-top: 40px; */

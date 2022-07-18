@@ -15,6 +15,14 @@
             "id": "learn-the-platform",
             "subDirectories": [
                 {
+                    "dirName": "Platform specifications",
+                    "level": 2,
+                    "position": 8,
+                    "isDir": false,
+                    "url": "/learn/platform-specifications",
+                    "id": "platform-specifications"
+                },
+                {
                     "dirName": "Ballerina central",
                     "level": 2,
                     "position": 7,

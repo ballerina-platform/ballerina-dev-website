@@ -26,7 +26,7 @@ export async function getStaticProps() {
 
   const fileName = fs.readFileSync(`spec/spec.md`, 'utf-8');
   const { data: frontmatter, content } = matter(fileName);
-  const id = 'platform-specification';
+  const id = 'platform-specifications';
 
   return {
     props: {
@@ -109,8 +109,9 @@ export default function PostPage({ frontmatter, content, id }) {
       <Layout>
         <Col sm={3} xxl={2} className='leftNav d-none d-sm-block'>
           <LeftNav launcher='learn' id={id}
-            mainDir='get-started'
-            LearnToc={LearnToc} />
+            mainDir='learn-the-platform'
+            LearnToc={LearnToc} 
+            sub={id}/>
         </Col>
         <Col xs={12} className='d-block d-sm-none'>
           <Button className='learnMob' onClick={handleShow}>
@@ -121,8 +122,9 @@ export default function PostPage({ frontmatter, content, id }) {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <LeftNav launcher='learn' id={id}
-                mainDir='get-started'
-                LearnToc={LearnToc} />
+                mainDir='learn-the-platform'
+                LearnToc={LearnToc} 
+                sub={id}/>
             </Offcanvas.Body>
           </Offcanvas>
         </Col>

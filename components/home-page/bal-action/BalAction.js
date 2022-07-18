@@ -344,7 +344,7 @@ service / on new http:Listener(8080) {
     <Col sm={12}>
       <Container>
         <Row>
-          <Col sm={12}>
+          <Col sm={12} className='sectionTitle'>
             <h2 id="ballerina-in-action">Ballerina in action</h2>
           </Col>
         </Row>

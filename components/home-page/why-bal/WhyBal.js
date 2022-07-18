@@ -20,7 +20,7 @@ export default function WhyBal() {
     <Col sm={12}>
       <Container>
         <Row>
-          <Col sm={12}>
+          <Col sm={12} className='sectionTitle'>
             <h2 id="why-ballerina">Why Ballerina</h2>
           </Col>
         </Row>

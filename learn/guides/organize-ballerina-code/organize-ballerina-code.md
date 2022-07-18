@@ -24,7 +24,7 @@ redirect_from:
 
 Writing code in an organized manner from the beginning of the project is important for the lifecycle of the project and its maintainability in the long run. Organized code will make it easy to extend and improve your project over time. Ballerina project structure makes it easy to write clean code by eliminating repetitions, writing reusable code, adding new features without changing the existing code, etc. To achieve this, Ballerina has the concept of packages and modules. 
 
-Ballerina code is organized in a single shareable unit called a `Package`.
+Ballerina code is organized in a single shareable unit called a `package`.
 
 A `package` is a collection of `modules`, and a `module` is a collection of Ballerina source files, test files, and resources. A package should contain at least one module called the default module. Each module has its own directory, which organizes source files, test files, and resources.
 

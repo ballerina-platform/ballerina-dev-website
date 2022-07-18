@@ -27,4 +27,4 @@ const shikiTokenizer = async (code, lang) => {
   return output;
 };
 
-export { copyToClipboard, removeEscapes, shikiTokenizer };
+export { copyToClipboard, extractOutput, shikiTokenizer };

@@ -603,7 +603,7 @@
                 {
                     "dirName": "Library documentation",
                     "level": 2,
-                    "position": 5,
+                    "position": 0,
                     "isDir": false,
                     "url": "https://lib.ballerina.io/",
                     "id": "library-documentation"
@@ -611,7 +611,7 @@
                 {
                     "dirName": "By example",
                     "level": 2,
-                    "position": 4,
+                    "position": 0,
                     "isDir": false,
                     "url": "/learn/by-example",
                     "id": "by-example"

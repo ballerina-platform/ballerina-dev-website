@@ -1,15 +1,7 @@
-name: Create a PR for new Swan Lake BBE pages on demand
+name: Create a PR for new Swan Lake BBE pages on distribution repo changes
 
 on:
-  workflow_dispatch:
-    inputs:
-      distribution_branch:
-        description: ballerina-distribution repo branch
-        required: true
-      dev_branch:
-        description: ballerina-dev-website repo branch
-        required: false
-        default: website-revamp
+  repository_dispatch:
 
 jobs:
   bbe-sw-gen:
@@ -38,8 +30,7 @@ jobs:
         run: |
           git clone https://$GITHUB_TOKEN@github.com/Ballerina-By-Examples/ballerina-distribution.git
           cd ballerina-distribution
-          git checkout -b ${{ github.event.inputs.distribution_branch }} origin/${{ github.event.inputs.distribution_branch }}
-          cd ..
+          git checkout -b 2201.1.x origin/2201.1.x
 
       - name: Remove old BBE pages
         run: rm -rf swan-lake/by-example/*
@@ -75,6 +66,6 @@ jobs:
         shell: bash
         run: |
           curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-          bin/hub pull-request -b ${{ github.event.inputs.dev_branch }} -m '[Automated] Update Ballerina By Example(BBEs) pages'
+          bin/hub pull-request -b master -m '[Automated] Update Ballerina By Example(BBEs) pages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

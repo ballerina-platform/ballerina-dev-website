@@ -1,8 +1,3 @@
----
-layout: ballerina-stdlib-specs
-permalink: /spec/http/
----
-
 # Specification: Ballerina HTTP Library
 
 _Owners_: @shafreenAnfar @TharmiganK @ayeshLK @chamil321  

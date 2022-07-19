@@ -5,10 +5,10 @@ on:
   workflow_dispatch:
     inputs:
       distribution_branch:
-        description: Which branch of the ballerina-distribution repo to gen the BBEs from
+        description: ballerina-distribution repo branch
         required: true
       dev_branch:
-        description: Which branch of the ballerina-dev-website repo should the PR be sent
+        description: ballerina-dev-website repo branch
         required: false
         default: website-revamp
 

@@ -37,10 +37,13 @@ jobs:
 
       - name: Clone ballerina-distribution
         run: |
-          git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/Ballerina-By-Examples/ballerina-distribution.git
+          git clone https://$GITHUB_TOKEN@github.com/Ballerina-By-Examples/ballerina-distribution.git
           cd ballerina-distribution
           git checkout -b ${{ github.event.inputs.distribution_branch }} origin/${{ github.event.inputs.distribution_branch }}
           cd ..
+
+      - name: Remove old BBE pages
+        run: rm -rf swan-lake/by-example/*
 
       - name: Copy examples and index.json content
         run: |

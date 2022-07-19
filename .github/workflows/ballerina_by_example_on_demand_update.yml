@@ -66,7 +66,7 @@ jobs:
           git config --global user.email ${{ secrets.EMAIL }}
           git config --global user.name ${{ secrets.NAME }}
 
-          git add swan-lake/by-example
+          git add swan-lake/by-example _data/ballerina-by-example-nav.yml
           git commit --allow-empty -m 'Update Ballerina Swan Lake by Examples'
 
           git push --set-upstream origin automate-bbes-$GITHUB_SHA

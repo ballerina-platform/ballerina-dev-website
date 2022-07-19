@@ -172,6 +172,36 @@ const nextConfig = {
       {
         source: `/${redirectBase}1.0/learn/`,
         destination: `/${redirectBase}1.0/learn/index.html`,
+      },
+
+
+      {
+        source: `/spec/lang/2022R2/`,
+        destination: `/spec/lang/2022R2/index.html`,
+      },
+      {
+        source: `/spec/lang/2022R1/`,
+        destination: `/spec/lang/2022R1/index.html`,
+      },
+      {
+        source: `/spec/lang/2021R1/`,
+        destination: `/spec/lang/2021R1/index.html`,
+      },
+      {
+        source: `/spec/lang/2020R1/`,
+        destination: `/spec/lang/2020R1/index.html`,
+      },
+      {
+        source: `/spec/lang/2019R3/`,
+        destination: `/spec/lang/2019R3/index.html`,
+      },
+      {
+        source: `/spec/lang/2019R2/`,
+        destination: `/spec/lang/2019R2/index.html`,
+      },
+      {
+        source: `/spec/lang/2019R1/`,
+        destination: `/spec/lang/2019R1/index.html`,
       }
     ]
   },

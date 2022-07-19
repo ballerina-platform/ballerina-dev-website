@@ -238,21 +238,21 @@ export default function Downloads() {
                            <tr> </tr>
                            <tr>
                               <td>Install via Homebrew (for macOS)
-                                 <a href={`${prefix}/learn/installing-ballerina/installation-options/#installing-on-macos`} className="cDownloadLinkIcon">
+                                 <a href={`${prefix}/learn/installing-ballerina/installation-options/#installing-on-macos`} className={styles.cDownloadLinkIcon}>
                                     <Image src={`${prefix}/images/right-bg-green-fill.svg`} width={13} height={13} alt="Install via Homebrew (for macOS)"/>
                                  </a>
                               </td>
                            </tr>
                            <tr>
                               <td>Install via the ZIP archive
-                                 <a href={`${prefix}/learn/installing-ballerina/installation-options/#installing-via-the-ballerina-language-zip-file`} className="cDownloadLinkIcon">
+                                 <a href={`${prefix}/learn/installing-ballerina/installation-options/#installing-via-the-ballerina-language-zip-file`} className={styles.cDownloadLinkIcon}>
                                     <Image src={`${prefix}/images/right-bg-green-fill.svg`} width={13} height={13} alt="Install via the ZIP archive"/>
                                  </a>
                               </td>
                            </tr>
                            <tr>
                               <td>Install from source
-                                 <a href={`${prefix}/learn/installing-ballerina/installation-options/#building-from-source`} className="cDownloadLinkIcon">
+                                 <a href={`${prefix}/learn/installing-ballerina/installation-options/#building-from-source`} className={styles.cDownloadLinkIcon}>
                                     <Image src={`${prefix}/images/right-bg-green-fill.svg`} width={13} height={13} alt="Install from source"/>
                                  </a>
                               </td>
@@ -265,7 +265,7 @@ export default function Downloads() {
 
             <Row className={`${styles.donwloadVersion} pageContentRow`}>
                <Col xs={12}>
-                  <h2 id="stable"><span>{stable['display-version']}</span></h2>
+                  <h2 id="stable"><span>{stable['version']}</span></h2>
                </Col>
             </Row>
 
@@ -408,14 +408,14 @@ export default function Downloads() {
                         <table id="insPackages0">
                            <tr>
                               <td>Install via the ZIP archive
-                                 <a href={`${prefix}/1.2/learn/installing-ballerina/#installing-via-the-ballerina-language-zip-file`} className="cDownloadLinkIcon" target="_blank" rel="noreferrer">
+                                 <a href={`${prefix}/1.2/learn/installing-ballerina/#installing-via-the-ballerina-language-zip-file`} className={styles.cDownloadLinkIcon} target="_blank" rel="noreferrer">
                                     <Image src={`${prefix}/images/right-bg-green-fill.svg`} width={13} height={13} alt="Install via the ZIP archive"/>
                                  </a>
                               </td>
                            </tr>
                            <tr>
                               <td>Install from source
-                                 <a href={`${prefix}/1.2/learn/installing-ballerina/#building-from-source`} className="cDownloadLinkIcon" target="_blank" rel="noreferrer">
+                                 <a href={`${prefix}/1.2/learn/installing-ballerina/#building-from-source`} className={styles.cDownloadLinkIcon} target="_blank" rel="noreferrer">
                                     <Image src={`${prefix}/images/right-bg-green-fill.svg`} width={13} height={13} alt="Install from source"/>
                                  </a>
                               </td>

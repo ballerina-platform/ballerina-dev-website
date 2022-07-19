@@ -10,13 +10,11 @@
     font-weight: 400;
 }
 
-.card {
+/* .card {
     border: none;
-    /* margin: 10px 40px 15px 0px; */
     margin: 10px 20px 15px 0px;
-    /* padding: 0px 0px; */
     max-width: 350px;
-}
+} */
 
 .card h4 {
     height: 45px;

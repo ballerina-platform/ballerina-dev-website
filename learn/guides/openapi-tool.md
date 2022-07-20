@@ -237,7 +237,7 @@ If your OpenAPI specification includes JSON schema properties that are not marke
 $ bal openapi -i <openapi-contract> [-n |--nullable]
 ```
 
-### Generate client with given method type
+### Generate with a given method type
 Use the `--client-methods <resource|remote>` option to select the client method type, which can be `resource` or `remote`. (The default option is `remote`).
 ```bash
 $ bal openapi -i <openapi-contract> --mode client --client-methods <resource|remote>

@@ -16,19 +16,40 @@ export default function LeftNav(props) {
     return a.position - b.position;
   }
 
+  function CheckActive(eventKey) {
+
+    if (mainDir !== eventKey) {
+      document.getElementById(mainDir).getElementsByTagName('button')[0].style.color = '#20b6b0';
+      document.getElementById(mainDir).getElementsByTagName('button')[0].style.fontWeight = '500';
+    }
+
+    if (sub && sub !== eventKey) {
+      document.getElementById(sub).getElementsByTagName('button')[0].style.color = '#20b6b0';
+      document.getElementById(sub).getElementsByTagName('button')[0].style.fontWeight = '500';
+    }
+
+    if (third && third !== eventKey) {
+      document.getElementById(third).getElementsByTagName('button')[0].style.color = '#20b6b0';
+      document.getElementById(third).getElementsByTagName('button')[0].style.fontWeight = '500';
+    }
+  }
+
+
+
   const SortedDir = Elements.sort(comparePositions);
 
   function MainDir(props) {
     let category = props.category;
-    // console.log(props);
 
-    return <Accordion.Item eventKey={category.id}>
-      <Accordion.Header className={styles.mainDir}>{category.dirName}</Accordion.Header>
+    return <Accordion.Item eventKey={category.id} className={styles.acItem}>
+      <Accordion.Header className={styles.mainDir} onClick={() => CheckActive(category.id)} id={category.id}>{category.dirName}</Accordion.Header>
       <Accordion.Body className={styles.accordionBody}>
         <ul className={styles.firstTier}>
           {
             (category.subDirectories) ?
-              <SubDir directories={category.subDirectories} activeKey={sub} />
+              <Accordion defaultActiveKey={sub}>
+                <SubDir directories={category.subDirectories} activeKey={sub} />
+              </Accordion>
               : null
           }
         </ul>
@@ -38,27 +59,27 @@ export default function LeftNav(props) {
 
   function SubDir(props) {
     let directories = props.directories.sort(comparePositions);
-    let activeKey = props.activeKey;
+
     return directories.map((directory) => (
       <>
         {
           (directory.isDir && directory.position > 0) ?
             <>
-              <Accordion defaultActiveKey={activeKey}>
-                <Accordion.Item eventKey={directory.id}>
-                  <Accordion.Header>{directory.dirName}</Accordion.Header>
-                  <Accordion.Body className={styles.acBody}>
-                    <ul className={styles.secondTier}>
-                      {
-                        (directory.subDirectories) ?
+              <Accordion.Item eventKey={directory.id} className={styles.acItem}>
+                <Accordion.Header onClick={() => CheckActive(directory.id)} id={directory.id}>{directory.dirName}</Accordion.Header>
+                <Accordion.Body className={styles.acBody}>
+                  <ul className={styles.secondTier}>
+                    {
+                      (directory.subDirectories) ?
+                        <Accordion defaultActiveKey={third}>
                           <ThirdDir directories={directory.subDirectories} activeKey={third} />
-                          : null
-                      }
+                        </Accordion>
+                        : null
+                    }
 
-                    </ul>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
+                  </ul>
+                </Accordion.Body>
+              </Accordion.Item>
             </>
             :
             (directory.position > 0) ?
@@ -77,26 +98,26 @@ export default function LeftNav(props) {
 
   function ThirdDir(props) {
     let tdirectories = props.directories.sort(comparePositions);
-    let activeKey = props.activeKey;
+
     return tdirectories.map((directory) => (
       <>
         {
           (directory.isDir && directory.position > 0) ?
             <>
-              <Accordion defaultActiveKey={activeKey}>
-                <Accordion.Item eventKey={directory.id}>
-                  <Accordion.Header>{directory.dirName}</Accordion.Header>
-                  <Accordion.Body className={styles.acBody}>
-                    <ul className={styles.secondTier}>
-                      {
-                        (directory.subDirectories) ?
+              <Accordion.Item eventKey={directory.id} className={styles.acItem}>
+                <Accordion.Header onClick={() => CheckActive(directory.id)} id={directory.id}>{directory.dirName}</Accordion.Header>
+                <Accordion.Body className={styles.acBody}>
+                  <ul className={styles.secondTier}>
+                    {
+                      (directory.subDirectories) ?
+                        <Accordion defaultActiveKey={third}>
                           <ThirdDir directories={directory.subDirectories} activeKey={third} />
-                          : null
-                      }
-                    </ul>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
+                        </Accordion>
+                        : null
+                    }
+                  </ul>
+                </Accordion.Body>
+              </Accordion.Item>
             </>
             :
             (directory.position > 0) ?

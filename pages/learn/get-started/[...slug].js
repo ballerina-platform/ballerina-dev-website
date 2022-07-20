@@ -88,6 +88,7 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
 
   // const MarkdownNavbar = dynamic(() => import('react-markdown-navbar'), { ssr: false });
 
+  // Update values in markdown files
   const engine = new Liquid();
   const AddLiquid = (content) => {
     const [newContent, setNewContent] = React.useState('');
@@ -110,6 +111,7 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
     return newContent
   }
 
+  // Synatax highlighting
   const HighlightSyntax = (code, language) => {
     const [codeSnippet, setCodeSnippet] = React.useState([]);
     if (language == 'proto') {
@@ -131,13 +133,12 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
     return [codeSnippet]
   }
 
-
+  // Show mobile left nav
   const [show, setShow] = React.useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
+  // Add id attributes to headings
   const extractText = (value) => {
     if (typeof value === 'string') {
       return value
@@ -152,6 +153,9 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
     newId = newId.replace(/ /g, '-');
     return newId
   }
+
+  // Show page toc
+  const [showToc, setShowToc] = React.useState(false);
 
   return (
     <>
@@ -211,6 +215,7 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
               components={{
                 h2({ node, inline, className, children, ...props }) {
                   let id = '';
+                  setShowToc(true);
                   if (children.length === 1) {
                     id = children[0].toLowerCase().replace(/ /g, '-');
                   }
@@ -221,6 +226,7 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
                 },
                 h3({ node, inline, className, children, ...props }) {
                   let id = '';
+                  setShowToc(true);
                   if (children.length === 1) {
                     id = children[0].toLowerCase().replace(/ /g, '-');
                   }
@@ -231,6 +237,7 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
                 },
                 h4({ node, inline, className, children, ...props }) {
                   let id = '';
+                  setShowToc(true);
                   if (children.length === 1) {
                     id = children[0].toLowerCase().replace(/ /g, '-');
                   }
@@ -241,6 +248,7 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
                 },
                 h5({ node, inline, className, children, ...props }) {
                   let id = '';
+                  setShowToc(true);
                   if (children.length === 1) {
                     id = children[0].toLowerCase().replace(/ /g, '-');
                   }
@@ -251,6 +259,7 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
                 },
                 h6({ node, inline, className, children, ...props }) {
                   let id = '';
+                  setShowToc(true);
                   if (children.length === 1) {
                     id = children[0].toLowerCase().replace(/ /g, '-');
                   }
@@ -283,12 +292,19 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
           </Container>
         </Col>
         <Col sm={2} className='pageToc d-none d-sm-block'>
-          <h6>On this page</h6>
-          <MarkdownNavbar
-            source={content}
-            ordered={false}
-            headingTopOffset={150}
-            declarative />
+          {
+            (showToc) ?
+              <>
+                <h6>On this page</h6>
+                <MarkdownNavbar
+                  source={content}
+                  ordered={false}
+                  headingTopOffset={150}
+                  declarative />
+              </>
+              : null
+          }
+
         </Col>
       </Layout>
     </>

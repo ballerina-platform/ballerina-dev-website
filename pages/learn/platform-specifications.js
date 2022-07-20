@@ -42,6 +42,7 @@ export default function PostPage({ frontmatter, content, id }) {
 
   // const MarkdownNavbar = dynamic(() => import('react-markdown-navbar'), { ssr: false });
 
+  // Synatax highlighting
   const HighlightSyntax = (code, language) => {
     const [codeSnippet, setCodeSnippet] = React.useState([]);
     if (language == 'proto') {
@@ -63,11 +64,12 @@ export default function PostPage({ frontmatter, content, id }) {
     return [codeSnippet]
   }
 
+  // Show mobile left nav
   const [show, setShow] = React.useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // Add id attributes to headings
   const extractText = (value) => {
     if (typeof value === 'string') {
       return value
@@ -82,6 +84,9 @@ export default function PostPage({ frontmatter, content, id }) {
     newId = newId.replace(/ /g, '-');
     return newId
   }
+
+  // Show page toc
+  const [showToc, setShowToc] = React.useState(false);
 
   return (
     <>
@@ -110,8 +115,8 @@ export default function PostPage({ frontmatter, content, id }) {
         <Col sm={3} xxl={2} className='leftNav d-none d-sm-block'>
           <LeftNav launcher='learn' id={id}
             mainDir='learn-the-platform'
-            LearnToc={LearnToc} 
-            sub={id}/>
+            LearnToc={LearnToc}
+            sub={id} />
         </Col>
         <Col xs={12} className='d-block d-sm-none'>
           <Button className='learnMob' onClick={handleShow}>
@@ -123,8 +128,8 @@ export default function PostPage({ frontmatter, content, id }) {
             <Offcanvas.Body>
               <LeftNav launcher='learn' id={id}
                 mainDir='learn-the-platform'
-                LearnToc={LearnToc} 
-                sub={id}/>
+                LearnToc={LearnToc}
+                sub={id} />
             </Offcanvas.Body>
           </Offcanvas>
         </Col>
@@ -143,6 +148,7 @@ export default function PostPage({ frontmatter, content, id }) {
               components={{
                 h2({ node, inline, className, children, ...props }) {
                   let id = '';
+                  setShowToc(true);
                   if (children.length === 1) {
                     id = children[0].toLowerCase().replace(/ /g, '-');
                   }
@@ -153,6 +159,7 @@ export default function PostPage({ frontmatter, content, id }) {
                 },
                 h3({ node, inline, className, children, ...props }) {
                   let id = '';
+                  setShowToc(true);
                   if (children.length === 1) {
                     id = children[0].toLowerCase().replace(/ /g, '-');
                   }
@@ -163,6 +170,7 @@ export default function PostPage({ frontmatter, content, id }) {
                 },
                 h4({ node, inline, className, children, ...props }) {
                   let id = '';
+                  setShowToc(true);
                   if (children.length === 1) {
                     id = children[0].toLowerCase().replace(/ /g, '-');
                   }
@@ -173,6 +181,7 @@ export default function PostPage({ frontmatter, content, id }) {
                 },
                 h5({ node, inline, className, children, ...props }) {
                   let id = '';
+                  setShowToc(true);
                   if (children.length === 1) {
                     id = children[0].toLowerCase().replace(/ /g, '-');
                   }
@@ -183,6 +192,7 @@ export default function PostPage({ frontmatter, content, id }) {
                 },
                 h6({ node, inline, className, children, ...props }) {
                   let id = '';
+                  setShowToc(true);
                   if (children.length === 1) {
                     id = children[0].toLowerCase().replace(/ /g, '-');
                   }
@@ -214,12 +224,18 @@ export default function PostPage({ frontmatter, content, id }) {
           </Container>
         </Col>
         <Col sm={2} className='pageToc d-none d-sm-block'>
-          <h6>On this page</h6>
-          <MarkdownNavbar
-            source={content}
-            ordered={false}
-            headingTopOffset={150}
-            declarative />
+          {
+            (showToc) ?
+              <>
+                <h6>On this page</h6>
+                <MarkdownNavbar
+                  source={content}
+                  ordered={false}
+                  headingTopOffset={150}
+                  declarative />
+              </>
+              : null
+          }
         </Col>
       </Layout>
     </>

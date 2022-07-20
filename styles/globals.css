@@ -631,6 +631,10 @@ ul.eventsTabs {
   background-color: #f5f5f5 !important;
 }
 
+.home pre.shiki code, .home pre.shiki span {
+  line-height: 18px;
+}
+
 @media (min-width: 992px) {
   .algolia-search-cont {
     margin-left: 0.5rem;

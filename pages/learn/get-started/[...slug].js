@@ -22,10 +22,6 @@ import LearnToc from '../../../utils/learn-lm.json';
 import SwanLake from '../../../_data/swanlake-latest/metadata.json';
 
 
-
-
-
-
 var traverseFolder = function (dir) {
   var results = [];
   var list = fs.readdirSync(dir);

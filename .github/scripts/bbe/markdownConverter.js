@@ -146,7 +146,7 @@ const generateEditOnGithubLink = (exampleDir) => {
   const metaJson = JSON.parse(metaString);
   const editOnGithubBaseUrl = metaJson["githubBallerinaByExampleBaseURL"];
 
-  // Release tag
+  // release tag
   const metadataString = fs.readFileSync(
     "_data/swanlake-latest/metadata.json",
     "utf-8"
@@ -159,7 +159,7 @@ const generateEditOnGithubLink = (exampleDir) => {
 
 // markdown-it containers
 
-// Ballerina code jsx generator
+// ballerina code jsx generator
 md.use(container, "code", {
   validate: function (params) {
     return params.trim().match(/code\s+(.*\w)/);
@@ -272,6 +272,7 @@ md.use(container, "code", {
   },
 });
 
+// ballerina output jsx generator
 md.use(container, "out", {
   validate: function (params) {
     return params.trim().match(/out\s+(.*\w)/);
@@ -836,10 +837,10 @@ const generate = async (examplesDir, outputDir) => {
     generateIndex(indexArray);
 
     const executionTime = Date.now() - startTime;
-    console.log("\nHTML generation completed");
+    console.log("\nBBE generation completed");
     console.log(`Executed in ${executionTime / 1000}s`);
-  } catch (e) {
-    console.log(e);
+  } catch ({ message }) {
+    console.log(message);
   }
 };
 
